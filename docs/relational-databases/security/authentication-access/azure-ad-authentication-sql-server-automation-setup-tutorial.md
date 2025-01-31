@@ -553,7 +553,7 @@ if ($extension.properties.Settings.AzureAD)
 else
 {
     $aadSettings = , $instanceSettings
-	$extension.properties.Settings | Add-Member -Name 'AzureAD' -Value $aadSettings -MemberType NoteProperty
+    $extension.properties.Settings | Add-Member -Name 'AzureAD' -Value $aadSettings -MemberType NoteProperty
 }
 
 $settingsString = (ConvertTo-Json $extension.properties.Settings).replace("`"", "\`"").replace("`r`n", "")
@@ -707,6 +707,7 @@ if ($extension.properties.Settings.AzureAD)
 else
 {
     $aadSettings = , $instanceSettings
+    $extension.properties.Settings | Add-Member -Name 'AzureAD' -Value $aadSettings -MemberType NoteProperty
 }
 
 $settingsString = (ConvertTo-Json $extension.properties.Settings).replace("`"", "\`"").replace("`r`n", "")
