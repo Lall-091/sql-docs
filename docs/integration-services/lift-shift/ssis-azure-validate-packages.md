@@ -3,7 +3,7 @@ title: "Validate SSIS packages deployed to Azure"
 description: Learn how the SSIS Package Deployment Wizard checks packages for known issues that may prevent the packages from running as expected in Azure.
 author: swinarko
 ms.author: sawinark
-ms.reviewer: maghan, randolphwest
+ms.reviewer: , randolphwest
 ms.date: 11/03/2022
 ms.service: sql
 ms.subservice: integration-services

@@ -3,7 +3,7 @@ title: "Connect to the SSIS Catalog  (SSISDB) in Azure"
 description: Find the connection information you need to connect to the SSIS Catalog (SSISDB) hosted on an Azure SQL Database server.
 author: swinarko
 ms.author: sawinark
-ms.reviewer: maghan
+ms.reviewer: 
 ms.date: "09/23/2018"
 ms.service: sql
 ms.subservice: integration-services

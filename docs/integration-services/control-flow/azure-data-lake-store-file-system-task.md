@@ -3,7 +3,7 @@ title: "Azure Data Lake Store File System Task"
 description: "Azure Data Lake Store File System Task"
 author: "Lingxi-Li"
 ms.author: "lingxl"
-ms.reviewer: maghan
+ms.reviewer: 
 ms.date: "08/22/2017"
 ms.service: sql
 ms.subservice: integration-services

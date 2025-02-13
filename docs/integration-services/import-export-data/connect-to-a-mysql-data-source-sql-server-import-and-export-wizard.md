@@ -3,7 +3,7 @@ title: "Connect to a MySQL Data Source (SQL Server Import and Export Wizard)"
 description: "Connect to a MySQL Data Source (SQL Server Import and Export Wizard)"
 author: chugugrace
 ms.author: chugu
-ms.reviewer: maghan
+ms.reviewer: 
 ms.date: 05/31/2024
 ms.service: sql
 ms.subservice: integration-services

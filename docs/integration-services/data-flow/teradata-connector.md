@@ -3,7 +3,7 @@ title: "Microsoft connector for Teradata"
 description: "Microsoft connector for Teradata"
 author: chugugrace
 ms.author: chugu
-ms.reviewer: maghan
+ms.reviewer: 
 ms.date: 10/10/2022
 ms.service: sql
 ms.subservice: integration-services

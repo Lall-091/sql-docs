@@ -3,7 +3,7 @@ title: "Azure Data Lake Analytics task"
 description: You can submit U-SQL jobs to Azure Data Lake Analytics service with the Data Lake Analytics task.
 author: "yanancai"
 ms.author: "yanacai"
-ms.reviewer: maghan
+ms.reviewer: 
 ms.date: "06/27/2019"
 ms.service: sql
 ms.subservice: integration-services

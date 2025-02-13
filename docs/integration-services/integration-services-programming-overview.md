@@ -3,7 +3,7 @@ title: "Integration Services Programming Overview"
 description: "Integration Services Programming Overview"
 author: chugugrace
 ms.author: chugu
-ms.reviewer: maghan
+ms.reviewer: 
 ms.date: 07/13/2023
 ms.service: sql
 ms.subservice: integration-services
