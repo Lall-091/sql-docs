@@ -113,6 +113,12 @@ A `TRUNCATE TABLE` operation can be rolled back within a transaction.
 
 In Fabric SQL database, truncating a table deletes all mirrored data from Fabric OneLake for that table.
 
+### Deferred deallocation
+
+When a table that uses 128 extents or more is truncated, the [!INCLUDE [ssDE](../../includes/ssde-md.md)] defers the actual page deallocations, and their associated locks, until after the transaction commits. Truncation occurs in two separate phases: logical and physical. In the logical phase, the existing allocation units used by the table and its indexes are marked for deallocation and locked until the transaction commits. In the physical phase, a background process removes the pages marked for deallocation. This means that the space released by `TRUNCATE TABLE` might not be available for new allocations immediately.
+
+If [accelerated database recovery](../../relational-databases/accelerated-database-recovery-concepts.md) is enabled, truncation uses separate logical and physical phases regardless of the number of extents.
+
 ## Limitations
 
 You can't use `TRUNCATE TABLE` on tables that:
@@ -136,12 +142,6 @@ In [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INC
 - `TRUNCATE TABLE` isn't allowed within the `EXPLAIN` statement.
 
 - `TRUNCATE TABLE` can't be executed inside of a transaction.
-
-## Deferred deallocation
-
-When a table that uses 128 extents or more is truncated, the [!INCLUDE [ssDE](../../includes/ssde-md.md)] defers the actual page deallocations, and their associated locks, until after the transaction commits. Truncation occurs in two separate phases: logical and physical. In the logical phase, the existing allocation units used by the table and its indexes are marked for deallocation and locked until the transaction commits. In the physical phase, a background process removes the pages marked for deallocation. This means that the space released by `TRUNCATE TABLE` might not be available for new allocations immediately.
-
-If [accelerated database recovery](../../relational-databases/accelerated-database-recovery-concepts.md) is enabled, truncation uses separate logical and physical phases regardless of the number of extents.
 
 ## Permissions
 
@@ -185,7 +185,7 @@ The following example demonstrates that a `TRUNCATE TABLE` operation inside a tr
 
    ```sql
    USE [tempdb];
-   GO
+   
    CREATE TABLE TruncateTest (ID INT IDENTITY (1, 1) NOT NULL);
    GO
    INSERT INTO TruncateTest DEFAULT VALUES;
@@ -196,7 +196,6 @@ The following example demonstrates that a `TRUNCATE TABLE` operation inside a tr
 
    ```sql
    SELECT ID FROM TruncateTest;
-   GO
    ```
 
 1. Truncate the table within a transaction, and check the number of rows.
@@ -215,10 +214,8 @@ The following example demonstrates that a `TRUNCATE TABLE` operation inside a tr
 
    ```sql
    ROLLBACK TRANSACTION;
-   GO
 
    SELECT ID FROM TruncateTest;
-   GO
    ```
 
    You see all three rows.
@@ -227,7 +224,6 @@ The following example demonstrates that a `TRUNCATE TABLE` operation inside a tr
 
    ```sql
    DROP TABLE TruncateTest;
-   GO
    ```
 
 ## Related content

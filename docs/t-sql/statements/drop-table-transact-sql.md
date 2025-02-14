@@ -105,7 +105,7 @@ In Fabric SQL database, dropping a table drops it both from the database, as wel
 
 ### Deferred deallocation
 
-When a table its indexes with 128 extents or more are dropped, the [!INCLUDE [ssDE](../../includes/ssde-md.md)] defers the actual page deallocations, and their associated locks, until after the transaction commits. The table and indexes are dropped in two separate phases: logical and physical. In the logical phase, the existing allocation units are marked for deallocation and locked until the transaction commits. In the physical phase, a background process removes the pages marked for deallocation. This means that the space released by `DROP TABLE` might not be available for new allocations immediately.
+When a table is dropped, and the table or its indexes have 128 extents or more, the [!INCLUDE [ssDE](../../includes/ssde-md.md)] defers the actual page deallocations, and their associated locks, until after the transaction commits. The table and indexes are dropped in two separate phases: logical and physical. In the logical phase, the existing allocation units are marked for deallocation and locked until the transaction commits. In the physical phase, a background process removes the pages marked for deallocation. This means that the space released by `DROP TABLE` might not be available for new allocations immediately.
 
 If [accelerated database recovery](../../relational-databases/accelerated-database-recovery-concepts.md) is enabled, the separate logical and physical phases are used regardless of the number of extents.
 
