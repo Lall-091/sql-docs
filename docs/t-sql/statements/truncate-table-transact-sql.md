@@ -4,7 +4,7 @@ description: TRUNCATE TABLE removes all rows from a table or specified partition
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest
-ms.date: 12/09/2024
+ms.date: 02/14/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -26,6 +26,7 @@ dev_langs:
   - "TSQL"
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
+
 # TRUNCATE TABLE (Transact-SQL)
 
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricdw-fabricsqldb.md)]
@@ -94,15 +95,15 @@ Compared to the `DELETE` statement, `TRUNCATE TABLE` has the following advantage
 
 - Less transaction log space is used.
 
-  The `DELETE` statement removes rows one at a time and records an entry in the transaction log for each deleted row. `TRUNCATE TABLE` removes the data by deallocating the data pages used to store the table data and records only the page deallocations in the transaction log.
+  The `DELETE` statement removes rows one at a time and records an entry in the transaction log for each deleted row. `TRUNCATE TABLE` removes the data by deallocating the data pages used to store the table and index data and records only the page deallocations in the transaction log.
 
 - Fewer locks are typically used.
 
   When the `DELETE` statement is executed using a row lock, each row in the table is locked for deletion. `TRUNCATE TABLE` always locks the table (including a schema (`SCH-M`) lock) and page, but not each row.
 
-- Without exception, zero pages are left in the table.
+- Without exception, zero pages are left in the table or its indexes.
 
-  After a `DELETE` statement is executed, the table can still contain empty pages. For example, empty pages in a heap can't be deallocated without at least an exclusive (`LCK_M_X`) table lock. If the delete operation doesn't use a table lock, the table (heap) will contain many empty pages. For indexes, the delete operation can leave empty pages behind, although a background cleanup process deallocates these pages quickly.
+  After a `DELETE` statement is executed, the table can still contain empty pages. For example, empty pages in a heap can't be deallocated without at least an exclusive (`LCK_M_X`) table lock. If the delete operation doesn't use a table lock, the table (heap) might contain many empty pages. For indexes, the `DELETE` statement can leave empty pages behind. A background cleanup process then deallocates these pages.
 
 `TRUNCATE TABLE` removes all rows from a table, but the table structure and its columns, constraints, indexes, and so on, remain. To remove the table definition in addition to its data, use the `DROP TABLE` statement.
 
@@ -134,15 +135,17 @@ In [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INC
 
 - `TRUNCATE TABLE` isn't allowed within the `EXPLAIN` statement.
 
-- `TRUNCATE TABLE` can't be ran inside of a transaction.
+- `TRUNCATE TABLE` can't be executed inside of a transaction.
 
-## Truncate large tables
+## Deferred deallocation
 
-[!INCLUDE [msCoName](../../includes/msconame-md.md)] [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] has the ability to drop or truncate tables that have more than 128 extents without holding simultaneous locks on all the extents required for the drop.
+When a table that uses 128 extents or more is truncated, the [!INCLUDE [ssDE](../../includes/ssde-md.md)] defers the actual page deallocations, and their associated locks, until after the transaction commits. Truncation occurs in two separate phases: logical and physical. In the logical phase, the existing allocation units used by the table and its indexes are marked for deallocation and locked until the transaction commits. In the physical phase, a background process removes the pages marked for deallocation. This means that the space released by `TRUNCATE TABLE` might not be available for new allocations immediately.
+
+If [accelerated database recovery](../../relational-databases/accelerated-database-recovery-concepts.md) is enabled, truncation uses separate logical and physical phases regardless of the number of extents.
 
 ## Permissions
 
-The minimum permission required is `ALTER` on *table_name*. `TRUNCATE TABLE` permissions default to the table owner, members of the sysadmin fixed server role, and the db_owner and db_ddladmin fixed database roles, and aren't transferable. However, you can incorporate the `TRUNCATE TABLE` statement within a module, such as a stored procedure, and grant appropriate permissions to the module using the `EXECUTE AS` clause.
+The minimum permission required is `ALTER` on *table_name*. `TRUNCATE TABLE` permissions default to the table owner, members of the `sysadmin` fixed server role, and the `db_owner` and `db_ddladmin` fixed database roles, and aren't transferable. However, you can incorporate the `TRUNCATE TABLE` statement within a module, such as a stored procedure, and grant appropriate permissions to the module using the `EXECUTE AS` clause.
 
 ## Examples
 
@@ -152,18 +155,14 @@ The following example removes all data from the `JobCandidate` table. `SELECT` s
 
 ```sql
 USE AdventureWorks2022;
-GO
 
 SELECT COUNT(*) AS BeforeTruncateCount
 FROM HumanResources.JobCandidate;
-GO
 
 TRUNCATE TABLE HumanResources.JobCandidate;
-GO
 
 SELECT COUNT(*) AS AfterTruncateCount
 FROM HumanResources.JobCandidate;
-GO
 ```
 
 ### B. Truncate table partitions
@@ -196,7 +195,7 @@ The following example demonstrates that a `TRUNCATE TABLE` operation inside a tr
 1. Check the data before truncate.
 
    ```sql
-   SELECT * FROM TruncateTest;
+   SELECT ID FROM TruncateTest;
    GO
    ```
 
@@ -207,7 +206,7 @@ The following example demonstrates that a `TRUNCATE TABLE` operation inside a tr
 
    TRUNCATE TABLE TruncateTest;
 
-   SELECT * FROM TruncateTest;
+   SELECT ID FROM TruncateTest;
    ```
 
    You see that the table is empty.
@@ -218,7 +217,7 @@ The following example demonstrates that a `TRUNCATE TABLE` operation inside a tr
    ROLLBACK TRANSACTION;
    GO
 
-   SELECT * FROM TruncateTest;
+   SELECT ID FROM TruncateTest;
    GO
    ```
 

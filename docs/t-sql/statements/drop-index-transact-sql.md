@@ -4,7 +4,7 @@ description: DROP INDEX removes one or more relational, spatial, filtered, or XM
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest
-ms.date: 05/10/2024
+ms.date: 02/14/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -31,6 +31,7 @@ dev_langs:
   - "TSQL"
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
+
 # DROP INDEX (Transact-SQL)
 
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
@@ -39,7 +40,7 @@ Removes one or more relational, spatial, filtered, or XML indexes from the curre
 
 The `DROP INDEX` statement doesn't apply to indexes created by defining `PRIMARY KEY` or `UNIQUE` constraints. To remove the constraint and corresponding index, use [ALTER TABLE](alter-table-transact-sql.md) with the `DROP CONSTRAINT` clause.
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > The syntax defined in `<drop_backward_compatible_index>` will be removed in a future version of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. Avoid using this syntax in new development work, and plan to modify applications that currently use the feature. Use the syntax specified under `<drop_relational_or_xml_or_spatial_index>` instead. XML indexes can't be dropped using backward compatible syntax.
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
@@ -123,9 +124,9 @@ The name of the schema to which the table or view belongs.
 
 The name of the table or view associated with the index. Spatial indexes are supported only on tables.
 
-To display a report of the indexes on an object, use the [sys.indexes](../../relational-databases/system-catalog-views/sys-indexes-transact-sql.md) catalog view.
+To see the details about all indexes in a database, use the [sys.indexes](../../relational-databases/system-catalog-views/sys-indexes-transact-sql.md) catalog view.
 
-Azure SQL Database supports the three-part name format: `database_name.[schema_name].object_name` when the `database_name` is the current database, or the database_name is `tempdb` and the object_name starts with `#`.
+Azure SQL Database supports the three-part name format: `database_name.schema_name.object_name` when `database_name` is the current database, or the database_name is `tempdb` and `object_name` starts with `#` or `##`.
 
 #### <drop_clustered_index_option>
 
@@ -137,9 +138,9 @@ Controls clustered index options. These options can't be used with other index t
 
 **Applies to**: [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)] and later versions, [!INCLUDE [sssds](../../includes/sssds-md.md)] (Performance Levels P2 and P3 only).
 
-Overrides the **max degree of parallelism** configuration option during the index operation. For more information, see [Configure the max degree of parallelism (server configuration option)](../../database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md). Use `MAXDOP` to limit the number of processors used in a parallel plan execution. The maximum is 64 processors.
+Overrides the `max degree of parallelism` configuration option during the index operation. For more information, see [Configure the max degree of parallelism (server configuration option)](../../database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md). Use `MAXDOP` to limit the number of processors used in the index build operation. The maximum is 64 processors.
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > `MAXDOP` isn't allowed for spatial indexes or XML indexes.
 
 *max_degree_of_parallelism* can be one of the following values.
@@ -147,12 +148,12 @@ Overrides the **max degree of parallelism** configuration option during the inde
 | Value | Description |
 | --- | --- |
 | `1` | Suppresses parallel plan generation |
-| `>1` | Restricts the maximum number of processors used in a parallel index operation to the specified number |
+| `>1` | Restricts the maximum number of processors used in a parallel index build operation to the specified number |
 | `0` (default) | Uses the actual number of processors or fewer based on the current system workload |
 
 For more information, see [Configure Parallel Index Operations](../../relational-databases/indexes/configure-parallel-index-operations.md).
 
-> [!NOTE]  
+> [!NOTE]
 > Parallel index operations aren't available in every edition of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. For a list of features that are supported by the editions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], see [Editions and supported features of SQL Server 2022](../../sql-server/editions-and-components-of-sql-server-2022.md).
 
 #### ONLINE = ON | OFF
@@ -167,7 +168,7 @@ Specifies whether underlying tables and associated indexes are available for que
 
 The `ONLINE` option can only be specified when you drop clustered indexes. For more information, see the [Remarks](#remarks) section.
 
-> [!NOTE]  
+> [!NOTE]
 > Online index operations aren't available in every edition of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. For a list of features that are supported by the editions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], see [Editions and supported features of SQL Server 2022](../../sql-server/editions-and-components-of-sql-server-2022.md).
 
 #### MOVE TO { *partition_scheme_name* ( *column_name* ) | *filegroup_name* | "default" }
@@ -192,12 +193,12 @@ The column name in the scheme isn't restricted to the columns in the index defin
 
 Specifies a filegroup as the location for the resulting table. If no location is specified and the table isn't partitioned, the resulting table is included in the same filegroup as the clustered index. The filegroup must already exist.
 
-#### "default"
+#### [default]
 
 Specifies the default location for the resulting table.
 
-> [!NOTE]  
-> In this context, default isn't a keyword. It's an identifier for the default filegroup and must be delimited, as in `MOVE TO "default"` or `MOVE TO [default]`. If `"default"` is specified, the `QUOTED_IDENTIFIER` option must be set `ON` for the current session. This is the default setting. For more information, see [SET QUOTED_IDENTIFIER](set-quoted-identifier-transact-sql.md).
+> [!NOTE]
+> In this context, `default` isn't a keyword. It's an identifier for the default filegroup and must be delimited, as in `MOVE TO "default"` or `MOVE TO [default]`. If `"default"` is specified, the `QUOTED_IDENTIFIER` option must be set `ON` for the current session. This is the default setting. For more information, see [SET QUOTED_IDENTIFIER](set-quoted-identifier-transact-sql.md).
 
 #### FILESTREAM_ON { *partition_scheme_name* | *filestream_filegroup_name* | "default" }
 
@@ -215,12 +216,12 @@ If you specify a partition scheme for `MOVE TO`, you must use the same partition
 
 Specifies a FILESTREAM filegroup for FILESTREAM data. If no location is specified and the table isn't partitioned, the data is included in the default FILESTREAM filegroup.
 
-#### "default"
+#### [default]
 
 Specifies the default location for the FILESTREAM data.
 
-> [!NOTE]  
-> In this context, default isn't a keyword. It's an identifier for the default filegroup and must be delimited, as in `MOVE TO "default"` or `MOVE TO [default]`. If "default" is specified, the `QUOTED_IDENTIFIER` option must be ON for the current session. This is the default setting. For more information, see [SET QUOTED_IDENTIFIER](set-quoted-identifier-transact-sql.md).
+> [!NOTE]
+> In this context, `default` isn't a keyword. It's an identifier for the default filegroup and must be delimited, as in `MOVE TO "default"` or `MOVE TO [default]`. If `"default"` is specified, the `QUOTED_IDENTIFIER` option must be `ON` for the current session. This is the default setting. For more information, see [SET QUOTED_IDENTIFIER](set-quoted-identifier-transact-sql.md).
 
 ## Remarks
 
@@ -234,9 +235,13 @@ When the clustered index of an indexed view is dropped, all nonclustered indexes
 
 The syntax `<table_or_view_name>.<index_name>` is maintained for backward compatibility. An XML index or spatial index can't be dropped by using the backward compatible syntax.
 
-When indexes with 128 extents or more are dropped, the [!INCLUDE [ssDE](../../includes/ssde-md.md)] defers the actual page deallocations, and their associated locks, until after the transaction commits.
-
 Sometimes indexes are dropped and re-created to reorganize or rebuild the index, such as to apply a new fill factor value or to reorganize data after a bulk load. To do this, using [ALTER INDEX](alter-index-transact-sql.md) is more efficient, especially for clustered indexes. `ALTER INDEX REBUILD` has optimizations to prevent the overhead of rebuilding the nonclustered indexes.
+
+### Deferred deallocation
+
+When indexes with 128 extents or more are dropped, the [!INCLUDE [ssDE](../../includes/ssde-md.md)] defers the actual page deallocations, and their associated locks, until after the transaction commits. Indexes are dropped in two separate phases: logical and physical. In the logical phase, the existing allocation units used by the index are marked for deallocation and locked until the transaction commits. In the physical phase, a background process removes the pages marked for deallocation. This means that the space released by `DROP INDEX` might not be available for new allocations immediately.
+
+If [accelerated database recovery](../../relational-databases/accelerated-database-recovery-concepts.md) is enabled, the separate logical and physical phases are used regardless of the number of extents.
 
 ## Use options with DROP INDEX
 
@@ -246,7 +251,7 @@ Use `MOVE TO` to drop the clustered index and move the resulting table to anothe
 
 When you specify `ONLINE = ON`, queries and modifications to the underlying data and associated nonclustered indexes aren't blocked by the `DROP INDEX` transaction. Only one clustered index can be dropped online at a time. For a complete description of the `ONLINE` option, see [CREATE INDEX](create-index-transact-sql.md).
 
-You can't drop a clustered index online if the index is disabled on a view, or contains **text**, **ntext**, **image**, **varchar(max)**, **nvarchar(max)**, **varbinary(max)**, or **xml** columns in the leaf-level data rows.
+You can't drop a clustered index online if the index is disabled on a view, or contains `text`, `ntext`, `image`, `varchar(max)`, `nvarchar(max)`, `varbinary(max)`, or `xml` columns in the leaf-level data rows.
 
 Using the `ONLINE = ON` and `MOVE TO` options requires more temporary disk space.
 
@@ -264,11 +269,11 @@ When a clustered index is dropped `OFFLINE`, only the upper levels of clustered 
 
 ## XML indexes
 
-Options can't be specified when you drop anXML index. Also, you can't use the `<table_or_view_name>.<index_name>` syntax. When a primary XML index is dropped, all associated secondary XML indexes are automatically dropped. For more information, see [XML indexes (SQL Server)](../../relational-databases/xml/xml-indexes-sql-server.md).
+Options can't be specified when you drop an XML index. Also, you can't use the `<table_or_view_name>.<index_name>` syntax. When a primary XML index is dropped, all associated secondary XML indexes are automatically dropped. For more information, see [XML indexes (SQL Server)](../../relational-databases/xml/xml-indexes-sql-server.md).
 
 ## Spatial indexes
 
-Spatial indexes are supported only on tables. When you drop a spatial index, you can't specify any options or use `.<index_name>`. The correct syntax is as follows:
+Spatial indexes are supported only on tables. When you drop a spatial index, you can't specify any options or use the `<table_or_view_name>..<index_name>` syntax. The correct syntax is as follows:
 
 ```sql
 DROP INDEX <spatial_index_name> ON <spatial_table_name>;
@@ -278,7 +283,7 @@ For more information about spatial indexes, see [Spatial Indexes Overview](../..
 
 ## Permissions
 
-To execute `DROP INDEX`, at a minimum, `ALTER` permission on the table or view is required. This permission is granted by default to the **sysadmin** fixed server role and the **db_ddladmin** and **db_owner** fixed database roles.
+To execute `DROP INDEX`, at a minimum, `ALTER` permission on the table or view is required. This permission is granted by default to the `sysadmin` fixed server role and the `db_ddladmin` and `db_owner` fixed database roles.
 
 ## Examples
 
@@ -329,8 +334,8 @@ CREATE UNIQUE CLUSTERED INDEX
     AK_BillOfMaterials_ProductAssemblyID_ComponentID_StartDate
         ON Production.BillOfMaterials (ProductAssemblyID, ComponentID,
         StartDate)
-    ON 'PRIMARY';
-GO
+    ON [PRIMARY];
+
 -- Verify filegroup location of the clustered index.
 SELECT t.name AS [Table Name], i.name AS [Index Name], i.type_desc,
     i.data_space_id, f.name AS [Filegroup Name]
@@ -353,14 +358,14 @@ IF NOT EXISTS (SELECT name FROM sys.filegroups
 GO
 --Verify new filegroup
 SELECT * from sys.filegroups;
-GO
+
 -- Drop the clustered index and move the BillOfMaterials table to
 -- the Newgroup filegroup.
 -- Set ONLINE = OFF to execute this example on editions other than Enterprise Edition.
 DROP INDEX AK_BillOfMaterials_ProductAssemblyID_ComponentID_StartDate
     ON Production.BillOfMaterials
     WITH (ONLINE = ON, MOVE TO NewGroup);
-GO
+
 -- Verify filegroup location of the moved table.
 SELECT t.name AS [Table Name], i.name AS [Index Name], i.type_desc,
     i.data_space_id, f.name AS [Filegroup Name]
@@ -368,7 +373,6 @@ FROM sys.indexes AS i
     JOIN sys.filegroups AS f ON i.data_space_id = f.data_space_id
     JOIN sys.tables as t ON i.object_id = t.object_id
         AND i.object_id = OBJECT_ID(N'Production.BillOfMaterials','U');
-GO
 ```
 
 ### E. Drop a PRIMARY KEY constraint online
