@@ -4,7 +4,7 @@ description: Mark a subnet as a virtual network service endpoint. Then add the e
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: wiassaf, vanto, mathoma
-ms.date: 05/24/2024
+ms.date: 02/19/2025
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
@@ -71,9 +71,6 @@ For SQL Database, the virtual network rules feature has the following limitation
 - In the firewall for your database in SQL Database, each virtual network rule references a subnet. All these referenced subnets must be hosted in the same geographic region that hosts the database.
 - Each server can have up to 128 ACL entries for any virtual network.
 - Virtual network rules apply only to Azure Resource Manager virtual networks and not to [classic deployment model][arm-deployment-model-568f] networks.
-- Turning on virtual network service endpoints to SQL Database also enables the endpoints for Azure Database for MySQL and Azure Database for PostgreSQL. With endpoints set to **ON**, attempts to connect from the endpoints to your Azure Database for MySQL or Azure Database for PostgreSQL instances might fail.
-  - The underlying reason is that Azure Database for MySQL and Azure Database for PostgreSQL likely don't have a virtual network rule configured. You must configure a virtual network rule for Azure Database for MySQL and Azure Database for PostgreSQL.
-  - To define virtual network firewall rules on a SQL logical server that's already configured with private endpoints, set **Deny public network access** to **No**.
 - On the firewall, IP address ranges do apply to the following networking items, but virtual network rules don't:
   - [Site-to-site (S2S) virtual private network (VPN)][vpn-gateway-indexmd-608y]
   - On-premises via [Azure ExpressRoute](/azure/expressroute/index)
