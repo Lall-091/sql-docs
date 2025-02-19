@@ -1,10 +1,10 @@
 ---
-title: "SQL projects tools"
+title: "SQL Projects Tools"
 description: "This overview reviews the tooling for SQL database projects."
 author: dzsquared
 ms.author: drskwier
-ms.reviewer: maghan
-ms.date: 09/10/2024
+ms.reviewer: randolphwest
+ms.date: 02/19/2025
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: overview
@@ -12,7 +12,15 @@ ms.topic: overview
 
 # SQL projects tools
 
-Tooling for SQL projects is available in several development environments and command line interfaces. The primary tools for SQL projects are the **SqlPackage** command line utility, **SQL Server Data Tools** (SSDT) in Visual Studio, and the **SQL Database Projects extension** for Azure Data Studio and Visual Studio Code. 
+Tooling for SQL projects is available in several development environments and command line interfaces. The primary tools for SQL projects are the **SqlPackage** command line utility, **SQL Server Data Tools** (SSDT) in Visual Studio, and the **SQL Database Projects extension** for Azure Data Studio and Visual Studio Code.
+
+Tools included in this article:
+
+- [Graphical tools](#graphical-tools)
+  - [SQL Server Data Tools](../../ssdt/sql-server-data-tools.md)
+  - [SQL Database Projects extension](https://aka.ms/azuredatastudio-sqlprojects)
+- [Command line tools](#command-line-tools)
+  - [SqlPackage](../sqlpackage/sqlpackage.md)
 
 ## Graphical tools
 
@@ -27,42 +35,41 @@ These tools provide a graphical interface for SQL projects, a T-SQL editor, and 
 | Feature | SDK-style SSDT | SSDT | ADS | VS Code |
 | --- | --- | --- | --- | --- |
 | [Create new empty project](get-started.md) | X | X | X | X |
-| [Create new project from existing database](tutorials/start-from-existing-database.md) |  | X | X | X |
-| Open existing Microsoft.Build.Sql projects | X<sup>1</sup> |  | X | X |
-| Solution management and operations | X | X |  |  |
+| [Create new project from existing database](tutorials/start-from-existing-database.md) | | X | X | X |
+| Open existing Microsoft.Build.Sql projects | X | | X | X |
+| Solution management and operations | X | X | | |
 | Project run build | X | X | X | X |
 | Publish project to existing server | X | X | X | X |
-| Publish project to a local development instance | X<sup>2</sup> | X<sup>2</sup> | X<sup>3</sup> | X<sup>3</sup> |
-| Publish options/properties | X | X | X |  |
+| Publish project to a local development instance | X<sup>1</sup> | X<sup>1</sup> | X<sup>2</sup> | X<sup>2</sup> |
+| Publish options/properties | X | X | X | |
 | [Target platform](concepts/target-platform.md) can be updated | X | X | X | X |
 | [SQLCMD variables](concepts/sqlcmd-variables.md) | X | X | X | X |
-| [Project references](concepts/database-references.md) |  | X | X |  |
-| [Dacpac references](concepts/database-references.md) |  | X | X | X |
-| [Package references](concepts/package-references.md) |  |  | X |  |
-| Publish profile creation | X | X | X |  |
-| SQL files can be added by placing in project folder | X |  | X | X |
-| SQL files can be excluded from build | X | X |  |  |
+| [Project references](concepts/database-references.md) | | X | X | |
+| [Dacpac references](concepts/database-references.md) | | X | X | X |
+| [Package references](concepts/package-references.md) | | | X | |
+| Publish profile creation | X | X | X | |
+| SQL files can be added by placing in project folder | X | | X | X |
+| SQL files can be excluded from build | X | X | | |
 | [Pre/post deployment scripts](concepts/pre-post-deployment-scripts.md) | X | X | X | X |
-| New object templates | X<sup>4</sup> | X | X<sup>4</sup> | X<sup>4</sup> |
+| New object templates | X<sup>3</sup> | X | X<sup>3</sup> | X<sup>3</sup> |
 | Project files can be organized into folders | X | X | X | X |
-| [Schema comparison](concepts/schema-comparison.md) project to database |  | X | X |  |
-| [Schema comparison](concepts/schema-comparison.md) database to project |  | X | X |  |
-| Graphical table designer |  | X | X |  |
-| [Code analysis](concepts/sql-code-analysis/sql-code-analysis.md) – enable/disable rules |  | X |  |  |
-| Project properties – build output settings | X | X |  |  |
-| Project properties – default schema |  | X |  |  |
-| Project properties – database settings |  | X |  |  |
-| Project run [code analysis](concepts/sql-code-analysis/sql-code-analysis.md) standalone |  | X |  |  |
-| Object renaming and refactoring |  | X |  |  |
-| Intellisense provided in database files from project model |  | X |  |  |
+| [Schema comparison](concepts/schema-comparison.md) project to database | | X | X | |
+| [Schema comparison](concepts/schema-comparison.md) database to project | | X | X | |
+| Graphical table designer | | X | X | |
+| [Code analysis](concepts/sql-code-analysis/sql-code-analysis.md) – enable/disable rules | | X | | |
+| Project properties – build output settings | X | X | | |
+| Project properties – default schema | | X | | |
+| Project properties – database settings | | X | | |
+| Project run [code analysis](concepts/sql-code-analysis/sql-code-analysis.md) standalone | | X | | |
+| Object renaming and refactoring | | X | | |
+| Intellisense provided in database files from project model | | X | | |
 | SQL Server object explorer connectivity/view objects | X | X | X | X |
-| SQL Server object explorer context menu items |  | X | X | X |
-| SQL Server query editor connectivity |  | X | X | X |
+| SQL Server object explorer context menu items | | X | X | X |
+| SQL Server query editor connectivity | | X | X | X |
 
-1. In Visual Studio 2022 preview 2, SDK-style projects use the `.sqlprojx` extension instead of `.sqlproj`.
-2. Local development instance is a SQL Server LocalDB instance.
-3. Local development instance is a SQL Server container.
-4. Limited subset of templates available
+1. Local development instance is a SQL Server LocalDB instance.
+1. Local development instance is a SQL Server container.
+1. Limited subset of templates available
 
 ## Command line tools
 
@@ -72,15 +79,24 @@ Custom console applications can be built using the DacFx .NET library to automat
 
 CI/CD pipelines can be built with command line execution or with tasks specific to `.dacpac` and SQL projects deployment. The [GitHub sql-action](https://github.com/azure/sql-action) and [SqlAzureDacpacDeployment in Azure DevOps](/azure/devops/pipelines/tasks/reference/sql-azure-dacpac-deployment-v1) are examples of tasks that use SqlPackage underneath a management layer to facilitate deploying database changes.
 
+### Conversion tools
+
+The process of converting an [existing SQL project to an SDK-style project](howto/convert-original-sql-project.md) is done by manually editing the `.sqlproj` file to include the new SDK-style project format. Before beginning the process, it's recommended to both back up the project file and archive a `.dacpac` of the project. By comparing a "before" and "after" `.dacpac` built from the project, you can ensure that the conversion process has correctly completed.
+
+### Project/solution management
+
+Multiple SQL projects (and other projects) can be logically grouped together in a solution file. The solution file is a container for one or more projects and is used to manage the projects as a group, including the build action. Large solutions can be broken down into smaller solutions to improve performance and manageability, or dynamically generated for the appropriate task at hand. The [slngen solution file generator](https://github.com/microsoft/slngen) is available for Microsoft.Build.Sql projects and can be used to create a solution file for a set of projects programmatically and on-demand.
+
 ## Third-party tools
 
 There are third-party tools available that provide functionality related to SQL projects and database deployment. Some tools are open source, such as [dbatools](https://docs.dbatools.io/Publish-DbaDacPackage.html).
 
 Developers have shared their projects utilizing extensibility points around SQL projects, including [code analysis](concepts/sql-code-analysis/sql-code-analysis.md) rules and customizing deployment plans. Some of these projects are:
 
-- https://github.com/tcartwright/SqlServer.Rules
-- https://github.com/davebally/TSQL-Smells
-- https://github.com/GoEddie/DeploymentContributorFilterer
+- <https://github.com/tcartwright/SqlServer.Rules>
+- <https://github.com/davebally/TSQL-Smells>
+- <https://github.com/ErikEJ/SqlServer.Rules>
+- <https://github.com/GoEddie/DeploymentContributorFilterer>
 
 ## Related content
 

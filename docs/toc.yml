@@ -8683,6 +8683,8 @@ items:
         href: tools/sql-database-projects/howto/author-custom-code-analysis-rules.md
     - name: Concepts
       items:
+      - name: Project properties
+        href: tools/sql-database-projects/concepts/project-properties.md
       - name: Target platform
         href: tools/sql-database-projects/concepts/target-platform.md
       - name: SQLCMD variables
