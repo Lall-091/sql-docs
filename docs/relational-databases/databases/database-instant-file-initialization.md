@@ -1,10 +1,10 @@
 ---
-title: Database instant file initialization
+title: Database Instant File Initialization
 description: Learn about instant file initialization and how to enable it on your database. Instant file initialization (IFI) allows for faster file operations.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest
-ms.date: 09/12/2024
+ms.date: 02/19/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -39,9 +39,10 @@ In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [ss
 
 Historically, transaction log files couldn't be initialized instantaneously. However, starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] (all editions) and in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], transaction log autogrowth events up to 64 MB can benefit from instant file initialization. The default auto growth size increment for new databases is 64 MB. Transaction log file autogrowth events larger than 64 MB can't benefit from instant file initialization.
 
-Instant file initialization is allowed for transaction log growth on databases that have transparent data encryption (TDE) enabled, due to the nature of how the transaction log file is expanded, and the fact that the transaction log is written into in a serial fashion.
+Unlike instant file initialization for data files, which is prevented if transparent data encryption (TDE) is enabled, instant file initialization is allowed for transaction log growth on databases that have TDE enabled, because of how the transaction log file grows, and the fact that the transaction log is written into in a serial fashion.
 
-- Instant file initialization is in use for General Purpose and Business Critical tiers of [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] only to benefit the growth of transaction log files.
+- Instant file initialization is in use for General Purpose and Business Critical tiers of [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], only to benefit the growth of transaction log files.
+
 - Instant file initialization isn't configurable in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)].
 
 ## Enable instant file initialization
@@ -49,7 +50,7 @@ Instant file initialization is allowed for transaction log growth on databases t
 Instant file initialization of data files is only available if the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] service startup account is granted `SE_MANAGE_VOLUME_NAME`. Members of the Windows Administrator group have this right and can grant it to other users by adding them to the **Perform Volume Maintenance Tasks** security policy. The `SE_MANAGE_VOLUME_NAME` right isn't required for instant file initialization of growth events up to 64 MB in the transaction log, which was introduced with the release of [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)].
 
 > [!IMPORTANT]  
-> Some feature usage, such as [Transparent data encryption (TDE)](../security/encryption/transparent-data-encryption.md), can prevent instant file initialization (IFI). Starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], and on [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], IFI is allowed on the transaction log. For more information, see [Instant file initialization and the transaction log](#instant-file-initialization-and-the-transaction-log).
+> Some feature usage, such as [Transparent data encryption (TDE)](../security/encryption/transparent-data-encryption.md), can prevent instant file initialization (IFI). In [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, and on [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], IFI is allowed on the transaction log. For more information, see [Instant file initialization and the transaction log](#instant-file-initialization-and-the-transaction-log).
 
 In [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] and later versions, this permission can be granted to the service account at install time, during setup.
 
@@ -75,11 +76,15 @@ To grant an account the `Perform volume maintenance tasks` permission:
 
    1. If the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] service startup account is granted `SE_MANAGE_VOLUME_NAME`, an informational message that resembles the following example is logged:
 
-      `Database Instant File Initialization: enabled. For security and performance considerations see the topic 'Database Instant File Initialization' in SQL Server Books Online. This is an informational message only. No user action is required.`
+      ```output
+      Database Instant File Initialization: enabled. For security and performance considerations see the topic 'Database Instant File Initialization' in SQL Server Books Online. This is an informational message only. No user action is required.
+      ```
 
    1. If the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] service startup account was **not** granted `SE_MANAGE_VOLUME_NAME`, an informational message that resembles the following example is logged:
 
-      `Database Instant File Initialization: disabled. For security and performance considerations see the topic 'Database Instant File Initialization' in SQL Server Books Online. This is an informational message only. No user action is required.`
+      ```output
+      Database Instant File Initialization: disabled. For security and performance considerations see the topic 'Database Instant File Initialization' in SQL Server Books Online. This is an informational message only. No user action is required.
+      ```
 
    > [!NOTE]  
    > In [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)], use the value of `instant_file_initialization_enabled` in the [sys.dm_server_services](../system-dynamic-management-views/sys-dm-server-services-transact-sql.md) dynamic management view to identify if instant file initialization is enabled for your instance.

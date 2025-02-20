@@ -5,7 +5,7 @@ description: Learn how to buy Azure SQL Database and SQL Managed Instance reserv
 author: rajeshsetlem
 ms.author: rsetlem
 ms.reviewer: wiassaf, mathoma
-ms.date: 12/16/2024
+ms.date: 02/20/2025
 ms.service: azure-sql
 ms.subservice: service-overview
 ms.topic: conceptual
@@ -56,25 +56,27 @@ Further, let's suppose that you plan to deploy the following within the next mon
 
 Also, let's suppose that you know that you will need these resources for at least 1 year. In this case, you should purchase a 32 (2x16) vCores 1-year reservation for single database/elastic pool General Purpose - standard-series (Gen5) and a 40 (2x4 + 32) vCore 1-year reservation for single database/elastic pool Business Critical - standard-series (Gen5).
 
-## Reservations for zone-redundant SQL managed instances
+## Reservations for zone-redundant resources 
 
-When you enable [zone-redundancy](../managed-instance/high-availability-sla-local-zone-redundancy.md#zone-redundant-availability) for Azure SQL Managed Instance, resources are made available in multiple availability zones to provide high availability and fault tolerance. 
+When you enable zone-redundancy, resources are made available in multiple availability zones to provide high availability and fault tolerance. 
 
-_Regular compute resources_ for the primary instance are charged separately to the _zone-redundant add-on_, and both are listed as separate entries on your bill. 
+Compute costs for the following zone-redundant resources include an extra charge for the zone-redundancy add-on, which is billed separately from standard compute: 
+- [Azure SQL Database](high-availability-sla-local-zone-redundancy.md#general-purpose-service-tier): Databases and elastic pools in the General Purpose service tier. 
+- [Azure SQL Managed Instance](../managed-instance/high-availability-sla-local-zone-redundancy.md#business-critical-service-tier-1): Instances in the Business Critical service tier. 
 
-Total compute is calculated by adding the _zone-redundant add-on_ to the _regular compute cost_. While it's possible to pay for reservations for only the regular compute cost, or the zone redundant add-on, to achieve full reservation coverage for zone-redundant instances, you must purchase two separate reservations.
+Reservations can cover compute costs for both standard compute and the zone-redundancy add-on, but they need to be purchased as two separate reservation types:
+
+- **vCore** for standard compute
+- **vCore ZR** for the zone-redundancy add-on
 
 The following lists the compute charges for different reservation scenarios:
-- **No reservation**:   
-   `Regular price for regular compute` + `regular price for zone-redundant add-on`
-- **Full reservation**:   
-   `Discounted reservation for regular compute` + `discounted reservation for zone-redundant add-on`
-- **Reservation for only regular compute**:   
-   `Discounted reservation for regular compute` + `regular price for zone-redundant add-on`
-- **Reservation for only zone-redundant add-on**:   
-   `Regular price for regular compute` + `discounted reservation for zone-redundant add-on`
+- **No reservation**: Pay-as-you-go price for both standard compute and the zone-redundant add-on.
+- **Full reservation (vCore + vCore ZR type)**: Reservation discount applies to both standard compute and the zone-redundant add-on. This scenario is for when you want to fully cover compute costs for zone-redundant resources.  
+- **Reservation for standard compute (vCore type only)**: Reservation discount applies to standard compute only. This scenario is for when you lack zone-redundant resources, or are buying a new reservation for non-zone-redundant resources. 
+- **Reservation for zone-redundant add-on (vCore ZR type only)**: Reservation discount applies to the zone-redundant add-on only. This scenario is for when you already have an existing vCore reservation and are adding zone redundancy to one or more resources.
 
 Carefully evaluate your compute needs and reservation strategy to optimize costs and ensure efficient resource allocation.
+
 
 ## Buy reservations
 
@@ -96,6 +98,7 @@ Carefully evaluate your compute needs and reservation strategy to optimize costs
     |Region      |The Azure region that's covered by the reservation.|
     |Deployment Type|The SQL resource type that you want to buy the reservation for.|
     |Performance Tier|The service tier for the databases or managed instances. |
+    |Type| The reservation type. Select **vCore** for standard compute or **vCore ZR** for the [zone redundancy add-on](#reservations-for-zone-redundant-resources). The **vCore ZR** reservation type is currently only available for the Azure SQL Database General Purpose service tier and Azure SQL Managed Instance Business Critical service tier. |
     |Term        |One year or three years.|
     |Quantity    |The number of vCores in the selected Azure region and service tier covered by the reservation. For example, if you run, or plan to run, multiple databases with a total compute capacity of standard-series (Gen5) 16 vCores in the East US region, then specify the quantity as 16 vCores to maximize the benefit for all the databases. |
 
@@ -109,7 +112,7 @@ You can cancel, exchange, or refund reservations with certain limitations. For m
 
 ## vCore size flexibility
 
-vCore size flexibility helps you scale up or down within a performance tier and region, without losing the reservation benefit. Reservations also provides you with the flexibility to temporarily move your hot databases in and out of elastic pools (within the same region and performance tier) as part of your normal operations without losing the reservation benefit. By keeping an unapplied buffer in your reservation, you can effectively manage the performance spikes without exceeding your budget.
+vCore size flexibility helps you scale up or down within a performance tier and region, without losing the reservation benefit. Reservations also provide you with the flexibility to temporarily move your hot databases in and out of elastic pools (within the same region and performance tier) as part of your normal operations without losing the reservation benefit. By keeping an unapplied buffer in your reservation, you can effectively manage the performance spikes without exceeding your budget.
 
 ## Limitation
 
