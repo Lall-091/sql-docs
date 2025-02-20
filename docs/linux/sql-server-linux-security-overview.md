@@ -3,7 +3,7 @@ title: Security Limitations for SQL Server on Linux
 description: Learn about SQL Server on Linux restrictions, including how using keys stored in Azure Key Vault and extensible Key Management aren't supported.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/18/2024
+ms.date: 02/20/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -17,10 +17,10 @@ ms.custom:
 [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux currently has the following limitations:
 
 - A standard password policy is provided. `MUST_CHANGE` is the only option you might configure. The `CHECK_POLICY` option isn't supported.
-- Extensible Key Management isn't supported.
+- Extensible Key Management isn't supported in [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] CU 11 and earlier versions. Extensible Key Management is only supported through Azure Key Vault (AKV).
 - [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] authentication mode can't be disabled.
 - Password expiration is hard-coded to 90 days if you use [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] authentication.
-- Using keys stored in the Azure Key Vault isn't supported.
+- Using keys stored in the Azure Key Vault isn't supported  in [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] CU 11 and earlier versions.
 - [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] generates its own self-signed certificate for encrypting connections. [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] can be configured to use a user provided certificate for TLS.
 
 > [!NOTE]  
