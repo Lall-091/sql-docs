@@ -67,7 +67,7 @@ Yes, you need to run [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] 
 
 #### What are my options for SQL Server without Software Assurance?
 
-For customers who don't have Software Assurance, the alternative option to get access to ESUs is to migrate to Azure. For variable workloads, we recommend that you migrate on Azure via Pay-As-You-Go, which allows for scaling up or down at any time. For predictable workloads, you should migrate to Azure via Server Subscription and Reserved Instances.
+If you don't have Software Assurance, the alternative option to get access to ESUs is to migrate to Azure. Since you don't have Software Assurance, make sure to use a "License included" license type (pay-as-you-go).
 
 #### Does this offer apply to older versions of SQL Server?
 
@@ -209,7 +209,7 @@ You don't have access to the patches until the VM is online. When the VM is back
 
 #### Will the billing start automatically when I sign up?
 
-While you can sign up at any time, you're charged for ESUs from the beginning of Year 2. When you sign up, your bill includes a one time bill-back charge for each [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)] or [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)] instance with an active ESU subscription, from July 12, 2023, to the current date. Going forward, each server will be billed on an hourly basis. Both charges will use the hourly rate (core count) x (100% of Year 2 ESU license price) / 730. For more information about ESU pricing, see [Plan your Windows Server and SQL Server end of support](https://www.microsoft.com/windows-server/extended-security-updates).
+While you can sign up at any time, you're charged for ESUs from the beginning of Year 2. When you sign up, your bill includes a one time bill-back charge for each [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)] or [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)] instance with an active ESU subscription, from July 12, 2023, to the current date. After the current date, each server is billed on an hourly basis. Both charges use the hourly rate ((core count) x (100% of Year 2 ESU license price) / 730). For more information about ESU pricing, see [Plan your Windows Server and SQL Server end of support](https://www.microsoft.com/windows-server/extended-security-updates).
 
 #### Is Microsoft extending SQL Server 2008 / 2008 R2 and Windows Server 2008 Extended Security Updates?
 
@@ -220,6 +220,24 @@ Customers using Windows Server on Azure, had until January 14, 2024 to upgrade t
 #### Can I subscribe to asynchronous notifications about the published Extended Security Updates?
 
 The [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Extended Security Updates are included in the [Security Update Guide](https://msrc.microsoft.com/update-guide/) published by the Microsoft Security Response Center (MSRC). Customers can subscribe to the RSS feed, use automation services like IFTTT to create automated actions, or subscribe to direct email notifications from that page.
+
+## Azure Arc SQL Server ESU License FAQ
+
+This section presents questions and answers specifically related to SQL Server enabled by Azure Arc ESU License.
+
+#### Does SQL Server ESU License support Standard edition?
+
+No. SQL Server ESU License is an implementation of the unlimited virtualization benefit for ESU. Once activated, the license is billed using an Enterprise edition ESU meter based on the number of physical cores of the servers that host the virtual machine with ESU-eligible SQL Server instances.
+
+#### Does SQL Server ESU license support virtual cores?
+
+No. SQL Server ESU License is an implementation of the unlimited virtualization benefit for ESU. It applies to physical cores of the servers that host the virtual machine with ESU-eligible SQL Server instances with a minimum of 16 cores. The SQL Server instances in the virtual machines hosted by the server(s) get access to the ESUs without an additional charge.
+
+#### Does Software Assurance benefits include Extended Security Updates?
+
+No. Software Assurance (SA) is a prerequisite for Extended Security Updates (ESU) but the ESU subscription must be activated separately. Review [What Licensing programs are eligible for Extended Security Updates?](#what-licensing-programs-are-eligible-for-extended-security-updates)
+
+SQL Server ESU License uses pay-as-you-go (PAYG) billing plan.
 
 ## Related content
 
