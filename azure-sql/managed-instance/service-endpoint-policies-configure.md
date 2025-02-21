@@ -33,7 +33,7 @@ Service endpoint policies only control traffic that originates from the SQL Mana
 
 Enabling service endpoint policies for your Azure SQL Managed Instance has the following limitations:
 
-- Service endpoint policies for Azure Storage in managed instance subnets are available in all Azure regions where SQL Managed Instance is supported except for **China East 2**, **China North 2**,  **Central US EUAP**, **East US 2 EUAP**, **US Gov Arizona**, **US Gov Texas**, **US Gov Virginia**, and **West Central US**.
+- Service endpoint policies for Azure Storage in managed instance subnets are available in all Azure regions where SQL Managed Instance is supported except for **China East 2**, **China North 2**,  **Central US EUAP**, **East US 2 EUAP**, **US Gov Arizona**, **US Gov Texas**, and **US Gov Virginia**.
 - The feature is available only to virtual networks deployed through the Azure Resource Manager deployment model.
 - The feature is available only in subnets that have [service endpoints](/azure/virtual-network/virtual-network-service-endpoints-overview) for Azure Storage enabled.
 - Assigning a service endpoint policy to a service endpoint upgrades the endpoint from regional to global scope. In other words, all traffic to Azure Storage will go through the service endpoint regardless of the region in which the storage account resides.
