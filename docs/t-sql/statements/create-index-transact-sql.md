@@ -4,7 +4,7 @@ description: CREATE INDEX (Transact-SQL)
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: wiassaf, dfurman
-ms.date: 02/17/2025
+ms.date: 02/20/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -62,9 +62,9 @@ Creates a relational index on a table or view. Also called a rowstore index beca
 
 [!INCLUDE [sql-b-tree](../../includes/sql-b-tree.md)]
 
-[!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE[ssPDW](../../includes/sspdw-md.md)] currently don't support unique constraints. Any examples referencing unique constraints are only applicable to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] and [!INCLUDE[ssSDS](../../includes/sssds-md.md)].
+[!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE[ssPDW](../../includes/sspdw-md.md)] currently don't support unique constraints. Any examples referencing unique constraints are only applicable to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)].
 
-For information on index design guidelines, refer to the [SQL Server Index Design Guide](../../relational-databases/sql-server-index-design-guide.md).
+For information on index design guidelines, refer to the [SQL Server index design guide](../../relational-databases/sql-server-index-design-guide.md).
 
 **Examples:**
 
@@ -88,7 +88,7 @@ For information on index design guidelines, refer to the [SQL Server Index Desig
 
 **Key scenario:**
 
-Starting with [!INCLUDE[sssql16-md](../../includes/sssql16-md.md)] and [!INCLUDE[ssSDS](../../includes/sssds-md.md)], you can use a nonclustered index on a columnstore index to improve data warehousing query performance. For more information, see [Columnstore Indexes - Data Warehouse](../../relational-databases/indexes/columnstore-indexes-data-warehouse.md).
+Starting with [!INCLUDE[sssql16-md](../../includes/sssql16-md.md)], in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and in [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)], you can use a nonclustered index on a columnstore index to improve data warehousing query performance. For more information, see [Columnstore indexes - data warehouse](../../relational-databases/indexes/columnstore-indexes-data-warehouse.md).
 
 For additional types of indexes, see:
 
@@ -227,7 +227,7 @@ Creates a unique index on a table or view. A unique index is one in which no two
 
 The [!INCLUDE[ssDE](../../includes/ssde-md.md)] doesn't allow creating a unique index on columns that already include duplicate values, whether or not `IGNORE_DUP_KEY` is set to `ON`. If this is attempted, the [!INCLUDE[ssDE](../../includes/ssde-md.md)] displays an error message. Duplicate values must be removed before a unique index can be created on the column or columns. 
 
-A `UNIQUE` constraint treats `NULL` as a value. If a column is nullable, at most one `NULL` is allowed.
+A `UNIQUE` constraint treats `NULL` as a value. If a column is nullable and a `UNIQUE` constraint exists on the column, at most one row with a `NULL` is allowed.
 
 #### CLUSTERED
 
@@ -394,7 +394,7 @@ The `FILLFACTOR` setting applies only when the index is created or rebuilt. The 
 To view the fill factor setting, use the `fill_factor` column in the [sys.indexes](../../relational-databases/system-catalog-views/sys-indexes-transact-sql.md) catalog view.
 
 > [!IMPORTANT]  
-> Creating an index with a `FILLFACTOR` less than 100 increases the amount of storage space the data occupies because the [!INCLUDE[ssDE](../../includes/ssde-md.md)] redistributes the data according to the fill factor when it creates the clustered index.
+> Creating an index with a `FILLFACTOR` less than 100 increases the amount of storage space the data occupies because the [!INCLUDE[ssDE](../../includes/ssde-md.md)] redistributes the data according to the fill factor when it creates or rebuilds an index.
 
 For more information, see [Specify fill factor for an index](../../relational-databases/indexes/specify-fill-factor-for-an-index.md).
 
@@ -447,7 +447,7 @@ Specifies whether statistics are recomputed. The default is `OFF`.
 To restore automatic statistics updating, set the `STATISTICS_NORECOMPUTE` to OFF, or execute `UPDATE STATISTICS` without the `NORECOMPUTE` clause.
 
 > [!WARNING]  
-> Disabling automatic recomputation of statistics might prevent the query optimizer from picking optimal execution plans for queries involving the table.
+> If you disable automatic recomputation of statistics by setting `STATISTICS_NORECOMPUTE = ON`, you might prevent the query optimizer from picking optimal execution plans for queries involving the table.
 
 Setting `STATISTICS_NORECOMPUTE` to `ON` doesn't prevent the update of index statistics that occurs during the index rebuild operation.
 
@@ -455,7 +455,7 @@ In backward compatible syntax, `WITH STATISTICS_NORECOMPUTE` is equivalent to `W
 
 #### STATISTICS_INCREMENTAL = { ON | OFF }
 
-**Applies to**: [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE[ssSQL14](../../includes/sssql14-md.md)]), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
+**Applies to**: [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (starting with [!INCLUDE[ssSQL14](../../includes/sssql14-md.md)]), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
 
 When `ON`, the statistics created are per partition statistics. When `OFF`, the statistics tree is dropped and [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] re-computes the statistics. The default is `OFF`.
 
@@ -504,11 +504,11 @@ Specifies whether underlying tables and associated indexes are available for que
   Long-term table locks are not held for the duration of the index operation. During the main phase of the index operation, only an intent shared (`IS`) lock is held on the source table. This enables queries or updates to the underlying table and indexes to proceed. At the start of the operation, a shared (`S`) lock is held on the source object for a short period of time. At the end of the operation, for a short period of time, a shared (`S`) lock is acquired on the object if a nonclustered index is being created. A schema modification (`Sch-M`) lock is acquired when a clustered index is created or dropped online and when a clustered or nonclustered index is being rebuilt. `ONLINE` can't be set to `ON` when an index is being created on a local temporary table.
 
   > [!NOTE]  
-  > You can set the `low_priority_lock_wait` options to reduce or avoid blocking during online index operations. For more information, see [WAIT_AT_LOW_PRIORITY with online index operations](#wait-at-low-priority).
+  > You can use the `WAIT_AT_LOW_PRIORITY` option to reduce or avoid blocking during online index operations. For more information, see [WAIT_AT_LOW_PRIORITY with online index operations](#wait-at-low-priority).
 
 - `OFF`
 
-  Table locks are applied for the duration of the index operation. An offline index operation that creates, rebuilds, or drops a clustered, spatial, or XML index, or rebuilds or drops a nonclustered index, acquires a schema modification (`Sch-M`) lock on the table. This prevents all user access to the underlying table for the duration of the operation. An offline index operation that creates a nonclustered index initially acquires a shared (`S`) lock on the table. This prevents modifications of the underlying table definition, but allows reading and modifying the data in the table while the index build is in progress. At the end of the operation, a schema modification lock (`Sch-M`) is acquired.
+  Table locks are applied for the duration of the index operation. An offline index operation that creates, rebuilds, or drops a clustered, spatial, or XML index, or rebuilds or drops a nonclustered index, acquires a schema modification (`Sch-M`) lock on the table. This prevents all user access to the underlying table for the duration of the operation. An offline index operation that creates a nonclustered index initially acquires a shared (`S`) lock on the table. This prevents modifications of the underlying table definition, but allows reading and modifying the data in the table while the index build is in progress.
 
 For more information, see [Perform index operations online](../../relational-databases/indexes/perform-index-operations-online.md) and [Guidelines for online index operations](../../relational-databases/indexes/guidelines-for-online-index-operations.md).
 
@@ -521,14 +521,14 @@ Indexes, including indexes on global temp tables, can be created online except f
 - Clustered columnstore indexes in [!INCLUDE[ssSQL17](../../includes/sssql17-md.md)]) and older
 - Nonclustered columnstore indexes in [!INCLUDE[ssSQL16](../../includes/sssql16-md.md)]) and older
 - Clustered index, if the underlying table contains LOB data types (**image**, **ntext**, **text**) and spatial data types
-- **varchar(max)** and **varbinary(max)** columns can't be part of an index key. In [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)]), in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and in [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)], when a table contains **varchar(max)** or **varbinary(max)** columns, a clustered index containing other columns can be built or rebuilt using the `ONLINE` option.
+- **varchar(max)** and **varbinary(max)** columns can't be part of an index key. In [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (starting with [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)]), in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and in [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)], when a table contains **varchar(max)** or **varbinary(max)** columns, a clustered index containing other columns can be built or rebuilt using the `ONLINE` option.
 - Nonclustered indexes on a table with a clustered columnstore index
 
 For more information, see [How online index operations work](../../relational-databases/indexes/how-online-index-operations-work.md).
 
 #### RESUMABLE = { ON | OFF }
 
-**Applies to**: [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)]), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
+**Applies to**: [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (starting with [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)]), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
 
 Specifies whether an online index operation is resumable.
 
@@ -542,7 +542,7 @@ Specifies whether an online index operation is resumable.
 
 #### MAX_DURATION = *time* [MINUTES] used with `RESUMABLE = ON` (requires `ONLINE = ON`)
 
-**Applies to**: [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)]), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
+**Applies to**: [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (starting with [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)]), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
 
 Specifies for how long, in minutes, a resumable index operation is executed before it's paused.
 
@@ -572,7 +572,7 @@ Specifies whether page locks are allowed. The default is `ON`.
 
 #### OPTIMIZE_FOR_SEQUENTIAL_KEY = { ON | OFF }
 
-**Applies to**: [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)]), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
+**Applies to**: [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (starting with [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)]), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
 
 Specifies whether or not to optimize to avoid last-page insert contention. The default is `OFF`. See the [Sequential keys](#sequential-keys) section for more information.
 
@@ -611,7 +611,7 @@ Specifies the data compression option for the specified index, partition number,
 
   **Applies to**: [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
 
-  Applies only to columnstore indexes, including both nonclustered columnstore and clustered columnstore indexes. Specifying `COLUMNSTORE` removes all other compression options including `COLUMNSTORE_ARCHIVE`.
+  Applies only to columnstore indexes, including both nonclustered columnstore and clustered columnstore indexes.
 
 - `COLUMNSTORE_ARCHIVE`
 
@@ -671,9 +671,9 @@ XML_COMPRESSION = OFF ON PARTITIONS (3, 5)
 
 ## Remarks
 
-When creating the plan for the `CREATE INDEX` statement, the query optimizer might choose to scan another index instead of performing a table scan. The sort operation might be eliminated in some situations. On multiprocessor computers, `CREATE INDEX` can use parallelism for the scan and sort operations associated with creating the index, in the same way that other queries do. For more information, see [Configure parallel index operations](../../relational-databases/indexes/configure-parallel-index-operations.md).
+When creating the query plan for the `CREATE INDEX` statement, the query optimizer might choose to scan another index instead of performing a table scan. The sort operation might be eliminated in some situations. On multiprocessor computers, `CREATE INDEX` can use parallelism for the scan and sort operations associated with creating the index, in the same way that other queries do. For more information, see [Configure parallel index operations](../../relational-databases/indexes/configure-parallel-index-operations.md).
 
-The `CREATE INDEX` operation can be minimally logged if the database recovery model is set to either bulk-logged or simple.
+The `CREATE INDEX` operation might be minimally logged if the database recovery model is set to either bulk-logged or simple.
 
 Indexes can be created on a temporary table. When the table is dropped or goes out of scope, the indexes are dropped.
 
@@ -710,7 +710,7 @@ When partitioning a non-unique, clustered index, the [!INCLUDE[ssDE](../../inclu
 
 Indexed views can be created on partitioned tables in the same manner as indexes on tables. For more information about partitioned indexes, see [Partitioned tables and indexes](../../relational-databases/partitions/partitioned-tables-and-indexes.md) and the [SQL Server index architecture and design guide](../../relational-databases/sql-server-index-design-guide.md).
 
-When a partitioned index is created or rebuilt, the query optimizer uses the default sampling algorithm instead of scanning all the rows in the table. To obtain statistics on partitioned indexes by scanning all the rows in the table, use `CREATE STATISTICS` or `UPDATE STATISTICS` with the `FULLSCAN` clause.
+When an index is created or rebuilt, the query optimizes updates statistics on the index. For a partitioned index, the query optimizer uses the default sampling algorithm instead of scanning all the rows in the table for a nonpartitioned index. To obtain statistics on partitioned indexes by scanning all the rows in the table, use `CREATE STATISTICS` or `UPDATE STATISTICS` with the `FULLSCAN` clause.
 
 ## Filtered indexes
 
@@ -829,13 +829,13 @@ The following guidelines apply for performing index operations online:
 - The underlying table can't be altered, truncated, or dropped while an online index operation is in process.
 - Additional temporary disk space is required during the index operation.
 - Online operations can be performed on partitioned indexes and indexes that contain persisted computed columns, or included columns.
-- The `low_priority_lock_wait` argument option allows you to decide how the index operation proceeds when it waits for a `Sch-M` lock.
+- The `WAIT_AT_LOW_PRIORITY` argument option allows you to decide how the index operation proceeds when it waits for a `Sch-M` lock. For more information, see [WAIT_AT_LOW_PRIORITY](#wait-at-low-priority)
 
 For more information, see [Perform index operations online](../../relational-databases/indexes/perform-index-operations-online.md).
 
 ### <a name="resumable-indexes"></a>Resumable index operations
 
-**Applies to**: [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)]), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
+**Applies to**: [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (starting with [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)]), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
 
 You can make an online index create operation resumable. That means that the index build can be stopped and later restarted from the point where it stopped. To run an index build as resumable, specify the `RESUMABLE = ON` option.
 
@@ -883,7 +883,7 @@ Resumable index create operations have the following limitations:
 
 ### <a name="wait-at-low-priority"></a> WAIT_AT_LOW_PRIORITY with online index operations
 
-**Applies to**: This syntax for `CREATE INDEX` currently applies to [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)] only. For `ALTER INDEX`, this syntax applies to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE[ssSQL14](../../includes/sssql14-md.md)]), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)]. For more information, see [ALTER INDEX](alter-index-transact-sql.md).
+**Applies to**: [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)]
 
 When you don't use the `WAIT_AT_LOW_PRIORITY` option, all active blocking transactions holding locks on the table or index must complete for the index create operation to start and to complete. When the online index operation starts and before it completes, it needs to acquire a shared (`S`) or a schema modification (`Sch-M`) lock on the table and hold it for a short time. Even though the lock is held for a short time only, it might significantly affect workload throughput, increase query latency, or cause execution time-outs.
 
@@ -897,7 +897,7 @@ The wait time (an integer value specified in minutes) that the online index oper
 
 `ABORT_AFTER_WAIT` = [`NONE` | `SELF` | `BLOCKERS` ]
 
-- `NONE`: Continue waiting for the lock with normal (regular) priority.
+- `NONE`: Continue waiting for the lock with normal priority.
 - `SELF`: Exit the online index operation currently being executed, without taking any action. The option `SELF` can't be used when `MAX_DURATION` is 0.
 - `BLOCKERS`: Kill all user transactions that block the online index operation so that the operation can continue. The `BLOCKERS` option requires the principal executing the `CREATE INDEX` or `ALTER INDEX` statement to have the `ALTER ANY CONNECTION` permission.
 
@@ -918,7 +918,7 @@ When `ALLOW_ROW_LOCKS = OFF` and `ALLOW_PAGE_LOCK = OFF`, only a table-level loc
 
 ## Sequential keys
 
-**Applies to**: [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)]), in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and in [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)].
+**Applies to**: [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (starting with [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)]), in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and in [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)].
 
 Last-page insert contention is a common performance problem that occurs when a large number of concurrent threads attempt to insert rows into an index with a sequential key. An index is considered sequential when the leading key column contains values that are always increasing (or decreasing), such as an identity column or a date that defaults to the current date/time. Because the keys being inserted are sequential, all new rows are inserted at the end of the index structure - in other words, on the same page. This leads to contention for the page in memory which can be observed as several threads waiting to acquire a latch for the page in question. The corresponding wait type is `PAGELATCH_EX`.
 
@@ -969,7 +969,10 @@ To view information on existing indexes, you can query the [sys.indexes](../../r
 
 ## Version notes
 
-[!INCLUDE[ssSDS](../../includes/sssds-md.md)] doesn't support filegroup and filestream options.
+- [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] doesn't support filegroups other than `PRIMARY`.
+- [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)] don't support `FILESTREAM` options.
+- Columnstore indexes aren't available before [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)].
+- Resumable index operations are available starting with [!INCLUDE [ssSQL17](../../includes/sssql17-md.md)], in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and in [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)].
 
 ## Examples: All versions. Uses the AdventureWorks database
 
@@ -1270,7 +1273,7 @@ GO
 
 ### N. Create, resume, pause, and abort resumable index operations
 
-**Applies to**: [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)]), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
+**Applies to**: [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (starting with [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)]), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
 
 ```sql
 -- Execute a resumable online index create statement with MAXDOP=1
@@ -1323,7 +1326,7 @@ CREATE CLUSTERED INDEX idx_1 ON dbo.T2 (a) WITH (ONLINE = ON (WAIT_AT_LOW_PRIORI
 
 Create, resume, pause, and abort resumable index operations
 
-**Applies to**: [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)]), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
+**Applies to**: [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (starting with [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)]), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
 
 ```sql
 -- Execute a resumable online index create statement with MAXDOP=1
