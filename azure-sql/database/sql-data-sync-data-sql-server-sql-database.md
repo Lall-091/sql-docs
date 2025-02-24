@@ -277,13 +277,6 @@ The Dynamics 365 bring your own database feature lets administrators export data
 
 ## Related content
 
-### Update the schema of a synced database
-
-Do you have to update the schema of a database in a sync group? Schema changes aren't automatically replicated. For some solutions, see the following articles:
-
-- [Automate the replication of schema changes with SQL Data Sync in Azure](./sql-data-sync-update-sync-schema.md)
-- [Use PowerShell to update the sync schema in an existing sync group](scripts/update-sync-schema-in-sync-group.md)
-
 ### Monitor and troubleshoot
 
 Is SQL Data Sync doing as expected? To monitor activity and troubleshoot issues, see the following articles:

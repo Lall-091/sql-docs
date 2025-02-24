@@ -288,7 +288,5 @@ For more information, see [Resource provider operations RBAC](/azure/role-based-
 - [Data Sync Agent for SQL Data Sync](sql-data-sync-agent-overview.md)
 - [Best practices for Azure SQL Data Sync](sql-data-sync-best-practices.md)
 - [Monitor and performance tuning in Azure SQL Database and Azure SQL Managed Instance](monitor-tune-overview.md)
-- [Automate the replication of schema changes in Azure SQL Data Sync](sql-data-sync-update-sync-schema.md)
-- [Use PowerShell to update the sync schema in an existing sync group](scripts/update-sync-schema-in-sync-group.md)
 - [What is Azure SQL Database?](sql-database-paas-overview.md)
 - [Database Lifecycle Management](/previous-versions/sql/sql-server-guides/jj907294(v=sql.110))

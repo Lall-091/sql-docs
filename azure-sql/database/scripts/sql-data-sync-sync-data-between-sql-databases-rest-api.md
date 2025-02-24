@@ -319,9 +319,6 @@ For more information about SQL Data Sync, see:
 - Best practices - [Best practices for SQL Data Sync in Azure](../sql-data-sync-best-practices.md)
 - Monitor - [Monitor SQL Data Sync with Azure Monitor logs](../monitor-tune-overview.md)
 - Troubleshoot - [Troubleshoot issues with SQL Data Sync in Azure](../sql-data-sync-troubleshoot.md)
-- Update the sync schema
-    - Use Transact-SQL - [Automate the replication of schema changes in SQL Data Sync in Azure](../sql-data-sync-update-sync-schema.md)
-    - Use PowerShell - [Use PowerShell to update the sync schema in an existing sync group](update-sync-schema-in-sync-group.md)
 
 For more information about SQL Database, see:
 

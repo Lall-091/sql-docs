@@ -884,6 +884,16 @@
       "source_path_from_root": "/azure-sql/accelerated-database-recovery.md",
       "redirect_url": "/sql/relational-databases/accelerated-database-recovery-concepts",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/azure-sql/database/sql-data-sync-update-sync-schema.md",
+      "redirect_url": "/azure/azure-sql/database/sql-data-sync-agent-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/azure-sql/database/scripts/update-sync-schema-in-sync-group.md",
+      "redirect_url": "/azure/azure-sql/database/sql-data-sync-agent-overview",
+      "redirect_document_id": false
     }
   ]
 }

@@ -849,8 +849,6 @@
         href: database/database-copy.md
       - name: Replicate to SQL Database
         href: database/replication-to-sql-database.md
-      - name: Replicate schema changes (Data sync)
-        href: database/sql-data-sync-update-sync-schema.md
       - name: Change data capture (CDC)
         href: database/change-data-capture-overview.md
     - name: Database sharding
@@ -1057,8 +1055,6 @@
             href: database/scripts/sql-data-sync-sync-data-between-sql-databases.md
           - name: Sync data from on-premises
             href: database/scripts/sql-data-sync-sync-data-between-azure-onprem.md
-          - name: Update sync schema
-            href: database/scripts/update-sync-schema-in-sync-group.md
     - name: Azure Resource Manager
       href: database/arm-templates-content-guide.md
     - name: Code samples
