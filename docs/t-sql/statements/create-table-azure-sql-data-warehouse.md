@@ -4,7 +4,7 @@ description: "CREATE TABLE creates a new table in Azure Synapse Analytics, Analy
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: vanto, xiaoyul, mariyaali, maghan
-ms.date: 11/01/2024
+ms.date: 02/24/2025
 ms.service: sql
 ms.topic: reference
 ms.custom:
@@ -153,7 +153,7 @@ Stores the table as a clustered columnstore index. The clustered columnstore ind
  Stores the table as a clustered index with one or more key columns. This behavior stores the data by row. Use *index_column_name* to specify the name of one or more key columns in the index. For more information, see [Rowstore Tables](#rowstore-table-heap-or-clustered-index).
 
  `LOCATION = USER_DB`
- This option is deprecated. It's syntactically accepted, but no longer required and no longer affects behavior.
+ This option is deprecated. It's valid syntax but no longer required and no longer affects behavior.
   
 <a id="TableDistributionOptions"></a>
 
@@ -171,10 +171,10 @@ Distributes the rows based on the hash values of up to eight columns, allowing f
 
 > [!NOTE]
 > - To enable the multi-column distribution (MCD) feature, change the database's compatibility level to 50 with this command. For more information on setting the database compatibility level, see [ALTER DATABASE SCOPED CONFIGURATION](alter-database-scoped-configuration-transact-sql.md). For example: `ALTER DATABASE SCOPED CONFIGURATION SET DW_COMPATIBILITY_LEVEL = 50;`
-> - To disable the Multi-Column distribution (MCD) feature, run this command to change the database's compatibility level to AUTO. For example: `ALTER DATABASE SCOPED CONFIGURATION SET DW_COMPATIBILITY_LEVEL = AUTO;` Existing MCD tables will stay but become unreadable. Queries over MCD tables will return this error: `Related table/view is not readable because it distributes data on multiple columns and multi-column distribution is not supported by this product version or this feature is disabled.`
+> - To disable the multi-column distribution (MCD) feature, run this command to change the database's compatibility level to AUTO. For example: `ALTER DATABASE SCOPED CONFIGURATION SET DW_COMPATIBILITY_LEVEL = AUTO;` Existing MCD tables will stay but become unreadable. Queries over MCD tables will return this error: `Related table/view is not readable because it distributes data on multiple columns and multi-column distribution is not supported by this product version or this feature is disabled.`
 >   - To regain access to MCD tables, enable the feature again.
->   - To load data into a MCD table, use CTAS statement and the data source needs be Synapse SQL tables.  
-> - [Generate scripts](../../ssms/scripting/generate-scripts-sql-server-management-studio.md) to create MCD tables is currently supported SSMS version 19 and later versions.
+>   - To load data into an MCD table, use `CREATE TABLE AS SELECT` (CTAS) statement and the data source needs be Synapse SQL tables.  
+> - [Generate scripts](../../ssms/scripting/generate-scripts-sql-server-management-studio.md) to create MCD tables is currently supported SQL Server Management Studio (SSMS) version 19 and later versions.
 
 `DISTRIBUTION = ROUND_ROBIN`
 Distributes the rows evenly across all the distributions in a round-robin fashion. This behavior is the default for [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)].
@@ -216,7 +216,7 @@ Check [Performance tuning with ordered clustered columnstore index](/azure/sql-d
 [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] supports the most commonly used data types. To better understand data types and how to use them, see [Data types for tables in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)]](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types).
 
 >[!NOTE]
->Similar to SQL Server, there is an 8060 byte per row limit. This might become a blocking issue for tables that have many columns, or columns with large data types, such as **nvarchar(max)** or **varbinary(max)**. Inserts or updates that violate the 8060 byte limit will result in error codes 511 or 611. For more information, see [Pages and Extents Architecture Guide](../../relational-databases/pages-and-extents-architecture-guide.md?view=azure-sqldw-latest&preserve-view=true#row-overflow-considerations).
+>Similar to SQL Server, there is an 8,060 byte per row limit. This might become a blocking issue for tables that have many columns, or columns with large data types, such as **nvarchar(max)** or **varbinary(max)**. Inserts or updates that violate the 8060 byte limit will result in error codes 511 or 611. For more information, see [Pages and Extents Architecture Guide](../../relational-databases/pages-and-extents-architecture-guide.md?view=azure-sqldw-latest&preserve-view=true#row-overflow-considerations).
 
 For a table of data type conversions, see the Implicit Conversions section of [CAST and CONVERT (Transact-SQL)](../functions/cast-and-convert-transact-sql.md). For more information, see [Date and time data types and functions (Transact-SQL)](../functions/date-and-time-data-types-and-functions-transact-sql.md).
 
@@ -856,7 +856,7 @@ The user needs to be a member of the Admin, Member, or Contributor roles in the 
 
 ## Remarks
 
-There is limited Transact-SQL functionality in [!INCLUDE [fabricdw](../../includes/fabric-dw.md)]. For more information, see [TSQL Surface Area in [!INCLUDE [fabric](../../includes/fabric.md)]](/fabric/data-warehouse/tsql-surface-area).
+There is limited Transact-SQL functionality in [!INCLUDE [fabricdw](../../includes/fabric-dw.md)]. For more information, see [T-SQL Surface Area in [!INCLUDE [fabric](../../includes/fabric.md)]](/fabric/data-warehouse/tsql-surface-area).
 
 <a id="LockingBehavior"></a>
 
