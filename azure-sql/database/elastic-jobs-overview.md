@@ -1,13 +1,13 @@
 ---
-title: Elastic jobs overview
+title: Elastic Jobs Overview
 description: "Learn about how you can use elastic jobs to run Transact-SQL (T-SQL) scripts across a set of one or more databases in Azure SQL Database."
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: srinia, mathoma
-ms.date: 09/05/2024
+ms.date: 02/03/2025
 ms.service: azure-sql-database
 ms.subservice: elastic-jobs
-ms.topic: overview
+ms.topic: concept-article
 ms.custom:
   - sqldbrb=1
 ---
@@ -25,7 +25,7 @@ In this article, we review the capabilities and details of elastic jobs for Azur
 
 You can create and schedule elastic jobs that could be periodically executed against one or many Azure SQL databases to run Transact-SQL (T-SQL) queries and perform maintenance tasks.
 
-You can define target database or groups of databases where the job will be executed, and also define schedules for running a job. All dates and times in elastic jobs are in the UTC time zone.
+You can define target database or groups of databases where the job will be executed, and also [define schedules](#elastic-job-schedules) for running a job. All dates and times in elastic jobs are in the UTC time zone.
 
 A job handles the task of logging in to the target database. You also define, maintain, and persist Transact-SQL scripts to be executed across a group of databases.
 
@@ -82,13 +82,15 @@ The job database is billed at the same rate as any database in Azure SQL Databas
 
 The *job database* is used for defining jobs and tracking the status and history of job executions. Jobs are executed in target databases. The *job database* is also used to store agent metadata, logs, results, job definitions, and also contains many useful stored procedures and other database objects for creating, running, and managing jobs using T-SQL.
 
-An Azure SQL Database (S1 or higher) is recommended to create an elastic job agent.
+An Azure SQL Database is required to create an elastic job agent. Job Agent will store all its job-related metadata in the *job database*, which should be a new, empty Azure SQL Database.
 
-The *job database* should be a clean, empty, S1 or higher service objective Azure SQL Database.
-
-The recommended service objective of the *job database* is S1 or higher, but the optimal choice depends on the performance needs of your job(s): the number of job steps, the number of job targets, and how frequently jobs are run.
+The recommended service objective of the *job database* is DTU S1 or higher, but the optimal choice depends on the performance needs of your job(s): the number of job steps, the number of job targets, and how frequently jobs are run.
 
 If operations against the job database are slower than expected, [monitor](monitor-tune-overview.md#azure-sql-database-and-azure-sql-managed-instance-resource-monitoring) database performance and the resource utilization in the job database during periods of slowness using Azure portal or the [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV. If utilization of a resource, such as CPU, Data IO, or Log Write approaches 100% and correlates with periods of slowness, consider incrementally scaling the database to higher service objectives (either in the [DTU-based purchasing model](service-tiers-dtu.md) or in the [vCore purchasing model](service-tiers-vcore.md)) until job database performance is sufficiently improved.
+
+The job database itself can be the target of an elastic job. In this scenario, the job database is treated just like any other target database. The job user must be created and granted sufficient permissions in the job database, and the database-scoped credential for the job user must also exist in the job database, just like it does for any other target database.
+
+When job database itself is a target of a job, make sure that your jobs do not modify/delete any Job agent specific metadata stored in that database. Only [job stored procedures](elastic-jobs-tsql-create-manage.md#job-stored-procedures) or [job views](elastic-jobs-tsql-create-manage.md#job-views) should be used for modiying/querying job related information.
 
 > [!IMPORTANT]
 > Do not modify the existing objects or create new objects in the *job database*, though you can read from the tables for reporting and analytics.
@@ -118,13 +120,13 @@ A *target group* defines the set of databases a job step will execute on. A targ
 - **Single database** - specify one or more individual databases to be part of the group.
 
 > [!TIP]  
-> At the moment of job execution, *dynamic enumeration* re-evaluates the set of databases in target groups that include servers or pools. Dynamic enumeration ensures that **jobs run across all databases that exist in the server or pool at the time of job execution**. Re-evaluating the list of databases at runtime is specifically useful for scenarios where pool or server membership changes frequently.
+> At the moment of job execution, *dynamic enumeration* re-evaluates the set of databases in target groups that include servers or pools. Dynamic enumeration ensures that **jobs run across all databases that exist in the server or pool at the time of job execution**. Re-evaluating the list of databases at runtime is useful for scenarios where pool or server membership changes frequently.
 
 Pools and single databases can be specified as included or excluded from the group. This enables creating a target group with any combination of databases. For example, you can add a server to a target group, but exclude specific databases in an elastic pool (or exclude an entire pool).
 
 A target group can include databases in multiple subscriptions, and across multiple regions. Cross-region executions have higher latency than executions within the same region.
 
-The following examples show how different target group definitions are dynamically enumerated at the moment of job execution to determine which databases the job will run:
+The following examples show how different target group definitions are dynamically enumerated at the moment of job execution to determine which databases to affect:
 
 :::image type="content" source="media/elastic-jobs-overview/targetgroup-examples.png" alt-text="Diagram of target group examples.":::
 
@@ -137,21 +139,31 @@ The following examples show how different target group definitions are dynamical
 
 - **Example 5** and **Example 6** show advanced scenarios where servers, elastic pools, and databases can be combined using include and exclude rules.
 
-> [!NOTE]  
-> The job database itself can be the target of a job. In this scenario, the job database is treated just like any other target database. The job user must be created and granted sufficient permissions in the job database, and the database-scoped credential for the job user must also exist in the job database, just like it does for any other target database.
+## Elastic job schedules
+
+Elastic jobs are cloud-first products and designed to start even if a transient network or service availability issue occurs when they are scheduled. Elastic job schedules take into account the schedule start time and requested intervals. When you create an elastic job schedule, the job will run as soon as possible after each scheduled interval event. 
+
+> [!IMPORTANT]
+> As a best practice, create job schedules that start in the future.
+
+Job schedules detected missed events. If you create a new job schedule that begins in the past, the job will execute immediately when enabled. If disabled or otherwise unavailable, the job will run immediately after becoming enabled or available. 
+
+For example, it is currently January 2, 9amUTC. You set up a new job to have scheduled start time of tonight, January 2 at 10:30pmUTC, to run daily. The job will execute at 10:30pmUTC.
+
+To prevent a job from accidentally starting, create schedules that start in the future. In an example that could lead to an accidental job start, you set up a new job to run daily at 10:30pmUTC. You disable the job for a week. Then, if you enable the job on 8:30amUTC, the job will execute *immediately*, catching up from the missed interval event that should have executed last night. After it has executed, the job agent will not run again until the next scheduled execution at 10:30pmUTC. To prevent executing at 8:30amUTC in this scenario, update the job schedule's start to January 8 at 10:30pmUTC, then enable the job. Or, enable the job at a time when the job can run immediately. 
 
 ## Authentication
 
 Choose one method for all targets for an elastic job agent. For example, for a single elastic job agent, you cannot configure one target server to use database-scoped credentials and another to use Microsoft Entra ID authentication.
 
-The elastic job agent can connect to the server(s)/database(s) specified by the target group via two authentication options:
+The elastic job agent can connect to the servers/databases specified by the target group via two authentication options:
 
 - Use [Microsoft Entra (formerly Azure Active Directory) authentication](#authentication-via-user-assigned-managed-identity-umi) with a [user-assigned managed identity (UMI)](#authentication-via-user-assigned-managed-identity-umi).
 - Use [Database-scoped credentials](#authentication-via-database-scoped-credentials).
 
 ### Authentication via user-assigned managed identity (UMI)
 
-[Microsoft Entra (formerly Azure Active Directory)](/entra/fundamentals/new-name) authentication via user-assigned managed identity (UMI) is the recommended option for connecting elastic jobs to Azure SQL Database. With Microsoft Entra ID support, the job agent will be able to connect to target databases (databases, servers, elastic pools) and output database(s) using the UMI.
+[Microsoft Entra (formerly Azure Active Directory)](/entra/fundamentals/new-name) authentication via user-assigned managed identity (UMI) is the recommended option for connecting elastic jobs to Azure SQL Database. With Microsoft Entra ID support, the job agent connects to target databases (databases, servers, elastic pools) and output database using the UMI.
 
 :::image type="content" source="media/elastic-jobs-overview/umi-jobuser.svg" alt-text="Diagram of how user-assigned managed identities (UMI) work with elastic jobs.":::
 
@@ -161,7 +173,7 @@ You can create one UMI, or use an existing UMI, and assign the same UMI to multi
 
 The UMI name must begin with a letter or a number and with a length between 3 to 128. It can contain the `-` and `_` characters.
 
-For more information on UMI in Azure SQL Database, see [Managed identities for Azure SQL](authentication-azure-ad-user-assigned-managed-identity.md?view=azuresql-db&preserve-view=true), including the steps required and benefits of using an UMI as the Azure SQL Database logical server identity. For more information, see [Use Microsoft Entra authentication](authentication-aad-overview.md).
+For more information on UMI in Azure SQL Database, see [Managed identities for Azure SQL](authentication-azure-ad-user-assigned-managed-identity.md?view=azuresql-db&preserve-view=true), including the steps required and benefits of using an UMI as the Azure SQL Database logical server identity. For more information, see [Microsoft Entra authentication for Azure SQL](authentication-aad-overview.md).
 
 > [!IMPORTANT]  
 > When using Microsoft Entra ID authentication, create your `jobuser` user from that Microsoft Entra ID in every target database. Grant that user the permissions needed to execute your job(s) in each target database.
@@ -170,7 +182,7 @@ Using a system-assigned managed identity (SMI) is not supported.
 
 ### Authentication via database-scoped credentials
 
-While Microsoft Entra (formerly Azure Active Directory) authentication is the recommended option, jobs can be configured to use [database-scoped credentials](/sql/t-sql/statements/create-database-scoped-credential-transact-sql) to connect to the databases specified by the target group upon execution. Prior to October 2023, database-scoped credentials were the only authentication option.
+While Microsoft Entra (formerly Azure Active Directory) authentication is the recommended option, jobs can be configured to use [database-scoped credentials](/sql/t-sql/statements/create-database-scoped-credential-transact-sql) to connect to the databases specified by the target group upon execution. Before October 2023, database-scoped credentials were the only authentication option.
 
 If a target group contains servers or pools, these database-scoped credentials are used to connect to the `master` database to enumerate the available databases.
 
@@ -255,7 +267,7 @@ Consider the following best practices when working with elastic database jobs.
 
 - Limit usage of the APIs to trusted individuals.
 - Credentials should have the least privileges necessary to perform the job step. For more information, see [Authorization and Permissions](/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server).
-- When using a server and/or pool target group member, it's highly suggested to create a separate credential with rights on the `master` database to view/list databases that is used to expand the database lists of the server(s) and/or pool(s) prior to the job execution.
+- When using a server and/or pool target group member, it's highly recommended you create a separate credential with rights on the `master` database to view/list databases that is used to expand the database lists of the servers and/or pools prior to the job execution.
 
 ### Elastic job performance
 
@@ -311,7 +323,7 @@ These are the current limitations to the elastic jobs service. We're actively wo
 
 | Issue | Description |
 | :--- | :--- |
-| The elastic job agent needs to be recreated and started in the new region after a failover/move to a new Azure region. | The elastic jobs service stores all its job agent and job metadata in the jobs database. Any failover or move of Azure resources to a new Azure region will also move the jobs database, job agent and jobs metadata to the new Azure region. However, the elastic job agent is a compute only resource and needs to be explicitly re-created and started in the new region before jobs will start executing again in the new region. Once started, the elastic job agent will resume executing jobs in the new region as per the previously defined job schedule. |
+| The elastic job agent needs to be recreated and started in the new region after a failover/move to a new Azure region. | The elastic jobs service stores all its job agent and job metadata in the jobs database. Any failover or move of Azure resources to a new Azure region will also move the jobs database, job agent, and job metadata to the new Azure region. However, the elastic job agent is a compute only resource and needs to be explicitly re-created and started in the new region before jobs will start executing again in the new region. Once started, the elastic job agent will resume executing jobs in the new region as per the previously defined job schedule.|
 | Excessive Audit logs from jobs database | The elastic job agent operates by constantly polling the job database to check for the arrival of new jobs and other CRUD operations. If auditing is enabled on the server that houses a jobs database, a large number of audit logs can be generated by the jobs database. This can be mitigated by filtering out these audit logs using the `Set-AzSqlServerAudit` command with a predicate expression.<br /><br />For example:<br />`Set-AzSqlServerAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -BlobStorageTargetState Enabled -StorageAccountResourceId "/subscriptions/7fe3301d-31d3-4668-af5e-211a890ba6e3/resourceGroups/resourcegroup01/providers/Microsoft.Storage/storageAccounts/mystorage" -PredicateExpression "database_principal_name <> '##MS_JobAccount##'"`<br />This command will only filter out job agent to jobs database audit logs, not job agent to any target databases audit logs. |
 | Use of a Hyperscale database as *job database* | Using a Hyperscale database as a *job database* isn't supported. However, elastic jobs can target Hyperscale databases in the same way as any other database in Azure SQL Database. |
 | Serverless databases and auto-pausing with elastic jobs. | Auto-pause enabled serverless database isn't supported as a *job database*. Serverless databases targeted by elastic jobs do support auto-pausing, and will be resumed by job connections. |
