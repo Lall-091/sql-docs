@@ -6,7 +6,7 @@ ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 # customer intent: As a Report Builder user, I want to learn how to create data strings so that I can connect Report Builder to my data sources.

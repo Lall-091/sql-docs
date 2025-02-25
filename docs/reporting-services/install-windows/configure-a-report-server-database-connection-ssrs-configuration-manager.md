@@ -6,7 +6,7 @@ ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 # customer-intent: As a SQL Server administrator, I want to understand how to configure and manage a SQL Server report server database connection so that I can ensure seamless report server operations.
