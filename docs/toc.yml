@@ -2621,8 +2621,12 @@ items:
         href: relational-databases/json/how-for-json-escapes-special-characters-and-control-characters-sql-server.md
       - name: Use output
         href: relational-databases/json/use-for-json-output-in-sql-server-and-in-client-apps-sql-server.md
+  - name: Fuzzy string match
+    href: relational-databases/fuzzy-string-match/overview.md
   - name: Vectors
     href: relational-databases/vectors/vectors-sql-server.md
+  - name: Regular expressions
+    href: relational-databases/regular-expressions/overview.md
   - name: Language Extensions
     items:
     - name: Overview
@@ -15721,6 +15725,16 @@ items:
           href: t-sql/functions/todatetimeoffset-transact-sql.md
         - name: YEAR
           href: t-sql/functions/year-transact-sql.md
+      - name: Fuzzy string match
+        items:
+        - name: EDIT_DISTANCE
+          href: t-sql/functions/edit-distance-transact-sql.md  
+        - name: EDIT_DISTANCE_SIMILARITY
+          href: t-sql/functions/edit-distance-similarity-transact-sql.md
+        - name: JARO_WINKLER_DISTANCE
+          href: t-sql/functions/jaro-winkler-distance-transact-sql.md
+        - name: JARO_WINKLER_SIMILARITY
+          href: t-sql/functions/jaro-winkler-similarity-transact-sql.md
       - name: Graph
         href: t-sql/functions/graph-functions-transact-sql.md
         items:
@@ -15757,6 +15771,19 @@ items:
           href: t-sql/functions/json-query-transact-sql.md
         - name: JSON_VALUE
           href: t-sql/functions/json-value-transact-sql.md
+      - name: Regular expressions
+        href: t-sql/functions/regular-expressions-functions-transact-sql.md
+        items:
+        - name: REGEXP_LIKE
+          href: t-sql/functions/regexp-like-transact-sql.md
+        - name: REGEXP_REPLACE
+          href: t-sql/functions/regexp-replace-transact-sql.md
+        - name: REGEXP_SUBSTR
+          href: t-sql/functions/regexp-substr-transact-sql.md
+        - name: REGEXP_INSTR
+          href: t-sql/functions/regexp-instr-transact-sql.md
+        - name: REGEXP_COUNT
+          href: t-sql/functions/regexp-count-transact-sql.md
       - name: Mathematical
         href: t-sql/functions/mathematical-functions-transact-sql.md
         items:

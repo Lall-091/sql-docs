@@ -1,10 +1,10 @@
 ---
 title: "DATEADD (Transact-SQL)"
-description: "Transact-SQL reference for the DATEADD function. This function returns a date modified by the specified date part."
+description: DATEADD returns a date modified by the specified date part.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 04/25/2024
+ms.date: 02/25/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -45,10 +45,12 @@ DATEADD (datepart , number , date )
 
 #### *datepart*
 
-The part of *date* to which `DATEADD` adds an **int** *number*. This table lists all valid *datepart* arguments.
+The part of *date* to which `DATEADD` adds an **int** *number*.
 
 > [!NOTE]  
-> `DATEADD` doesn't accept user-defined variable equivalents for the *datepart* arguments.
+> In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [fabric](../../includes/fabric-sqldb.md)], *number* can be expressed as a **bigint**. This feature is in preview.
+
+This table lists all valid *datepart* arguments. `DATEADD` doesn't accept user-defined variable equivalents for the *datepart* arguments.
 
 | *datepart* | Abbreviations |
 | --- | --- |
@@ -70,6 +72,9 @@ The part of *date* to which `DATEADD` adds an **int** *number*. This table lists
 
 An expression that can resolve to an [int](../data-types/int-bigint-smallint-and-tinyint-transact-sql.md) that `DATEADD` adds to a *datepart* of *date*. `DATEADD` accepts user-defined variable values for *number*. `DATEADD` truncates a specified *number* value that has a decimal fraction. It doesn't round the *number* value in this situation.
 
+> [!NOTE]  
+> In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [fabric](../../includes/fabric-sqldb.md)], *number* can be expressed as a **bigint**. This feature is in preview.
+
 #### *date*
 
 An expression that can resolve to one of the following values:
@@ -81,15 +86,15 @@ An expression that can resolve to one of the following values:
 - **smalldatetime**
 - **time**
 
-For *date*, `DATEADD` accepts a column expression, expression, string literal, or user-defined variable. A string literal value must resolve to a **datetime**. Use four-digit years to avoid ambiguity issues. See [Configure the two digit year cutoff (server configuration option)](../../database-engine/configure-windows/configure-the-two-digit-year-cutoff-server-configuration-option.md) for information about two-digit years.
+For *date*, `DATEADD` accepts a column expression, expression, string literal, or user-defined variable. A string literal value must resolve to a **datetime**. Use four-digit years to avoid ambiguity issues. See [Server configuration: two digit year cutoff](../../database-engine/configure-windows/configure-the-two-digit-year-cutoff-server-configuration-option.md) for information about two-digit years.
 
 ## Return types
 
-The return value data type for this method is dynamic. The return type depends on the argument supplied for `date`. If the value for `date` is a string literal date, `DATEADD` returns a **datetime** value. If another valid input data type is supplied for `date`, `DATEADD` returns the same data type. `DATEADD` raises an error if the string literal seconds scale exceeds three decimal place positions (.nnn) or if the string literal contains the time zone offset part.
+The return value data type for this method is dynamic. The return type depends on the argument supplied for `date`. If the value for `date` is a string literal date, `DATEADD` returns a **datetime** value. If another valid input data type is supplied for `date`, `DATEADD` returns the same data type. `DATEADD` raises an error if the string literal seconds scale exceeds three decimal place positions (`.nnn`) or if the string literal contains the time zone offset part.
 
 ## Return value
 
-### datepart argument
+### *datepart* argument
 
 `dayofyear`, `day`, and `weekday` return the same value.
 
@@ -108,33 +113,48 @@ SELECT DATEADD(month, 1, '20240830');
 SELECT DATEADD(month, 1, '2024-08-31');
 ```
 
-### number argument
+### *number* argument
 
-The *number* argument can't exceed the range of **int**. In the following statements, the argument for *number* exceeds the range of **int** by 1. These statements both return the following error message: `Msg 8115, Level 16, State 2, Line 1. Arithmetic overflow error converting expression to data type int.`
+The *number* argument can't exceed the range of **int**. In the following statements, the argument for *number* exceeds the range of **int** by 1.
 
 ```sql
 SELECT DATEADD(year, 2147483648, '20240731');
 SELECT DATEADD(year, -2147483649, '20240731');
 ```
 
-### date argument
+These statements both return the following error message:
 
-`DATEADD` doesn't accept a *date* argument incremented to a value outside the range of its data type. In the following statements, the *number* value added to the *date* value exceeds the range of the *date* data type. `DATEADD` returns the following error message: `Msg 517, Level 16, State 1, Line 1 Adding a value to a 'datetime' column caused overflow.`
+```output
+Msg 8115, Level 16, State 2, Line 1. Arithmetic overflow error converting expression to data type int.
+```
+
+> [!NOTE]  
+> In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [fabric](../../includes/fabric-sqldb.md)], *number* can be expressed as a **bigint**. This feature is in preview.
+
+### *date* argument
+
+`DATEADD` doesn't accept a *date* argument incremented to a value outside the range of its data type. In the following statements, the *number* value added to the *date* value exceeds the range of the *date* data type.
 
 ```sql
 SELECT DATEADD(year, 2147483647, '20240731');
 SELECT DATEADD(year, -2147483647, '20240731');
 ```
 
+`DATEADD` returns the following error message:
+
+```output
+Msg 517, Level 16, State 1, Line 1 Adding a value to a 'datetime' column caused overflow.
+```
+
 ### Return values for a smalldatetime date and a second or fractional seconds datepart
 
 The seconds part of a [smalldatetime](../data-types/smalldatetime-transact-sql.md) value is always 00. For a **smalldatetime** *date* value, the following apply:
 
-- For a *datepart* of `second`, and a *number* value between -30 and +29, `DATEADD` makes no changes.  
+- For a *datepart* of `second`, and a *number* value between -30 and +29, `DATEADD` makes no changes.
 
-- For a *datepart* of `second`, and a *number* value less than -30, or more than +29, `DATEADD` performs its addition beginning at one minute.  
+- For a *datepart* of `second`, and a *number* value less than -30, or more than +29, `DATEADD` performs its addition beginning at one minute.
 
-- For a *datepart* of `millisecond` and a *number* value between -30001 and +29998, `DATEADD` makes no changes.  
+- For a *datepart* of `millisecond` and a *number* value between -30001 and +29998, `DATEADD` makes no changes.
 
 - For a *datepart* of `millisecond` and a *number* value less than -30001, or more than +29998, `DATEADD` performs its addition beginning at one minute.
 
@@ -157,7 +177,7 @@ Milliseconds have a scale of 3 (`.123`), microseconds have a scale of 6 (`.12345
 These statements add a *datepart* of `millisecond`, `microsecond`, or `nanosecond`.
 
 ```sql
-DECLARE @datetime2 DATETIME2 = '2024-01-01 13:10:10.1111111';
+DECLARE @datetime2 AS DATETIME2 = '2024-01-01 13:10:10.1111111';
 
 SELECT '1 millisecond', DATEADD(millisecond, 1, @datetime2)
 UNION ALL
@@ -197,7 +217,7 @@ SELECT '150 nanoseconds', DATEADD(nanosecond, 150, @datetime2);
 Each of these statements increments *datepart* by an interval of 1:
 
 ```sql
-DECLARE @datetime2 DATETIME2 = '2024-01-01 13:10:10.1111111';
+DECLARE @datetime2 AS DATETIME2 = '2024-01-01 13:10:10.1111111';
 
 SELECT 'year', DATEADD(year, 1, @datetime2)
 UNION ALL
@@ -244,12 +264,12 @@ microsecond  2024-01-01 13:10:10.1111121
 nanosecond   2024-01-01 13:10:10.1111111
 ```
 
-### B. Increment more than one level of datepart in one statement
+### B. Increment more than one level of *datepart* in one statement
 
 Each of these statements increments *datepart* by a *number* large enough to additionally increment the next higher *datepart* of *date*:
 
 ```sql
-DECLARE @datetime2 DATETIME2;
+DECLARE @datetime2 AS DATETIME2;
 
 SET @datetime2 = '2024-01-01 01:01:01.1111111';
 
@@ -277,8 +297,8 @@ This example adds `2` (two) days to each value in the `OrderDate` column, to der
 
 ```sql
 SELECT SalesOrderID,
-    OrderDate,
-    DATEADD(day, 2, OrderDate) AS PromisedShipDate
+       OrderDate,
+       DATEADD(day, 2, OrderDate) AS PromisedShipDate
 FROM Sales.SalesOrderHeader;
 ```
 
@@ -309,8 +329,9 @@ SalesOrderID OrderDate               PromisedShipDate
 This example specifies user-defined variables as arguments for *number* and *date*:
 
 ```sql
-DECLARE @days INT = 365,
-    @datetime DATETIME = '2000-01-01 01:01:01.111'; /* 2000 was a leap year */;
+DECLARE
+    @days AS INT = 365,
+    @datetime AS DATETIME = '2000-01-01 01:01:01.111'; /* 2000 was a leap year */
 
 SELECT DATEADD(day, @days, @datetime);
 ```
@@ -343,7 +364,8 @@ This example uses scalar subqueries, `MAX(ModifiedDate)`, as arguments for *numb
 ```sql
 SELECT DATEADD(month,
     (SELECT TOP 1 BusinessEntityID FROM Person.Person),
-    (SELECT MAX(ModifiedDate) FROM Person.Person));
+    (SELECT MAX(ModifiedDate) FROM Person.Person)
+);
 ```
 
 #### Specify numeric expressions and scalar system functions as number and date
@@ -360,15 +382,15 @@ This example uses a ranking function as an argument for *number*.
 
 ```sql
 SELECT p.FirstName,
-    p.LastName,
-    DATEADD(day, ROW_NUMBER() OVER (ORDER BY a.PostalCode), SYSDATETIME()) AS 'Row Number'
+       p.LastName,
+       DATEADD(day, ROW_NUMBER() OVER (ORDER BY a.PostalCode), SYSDATETIME()) AS 'Row Number'
 FROM Sales.SalesPerson AS s
-INNER JOIN Person.Person AS p
-    ON s.BusinessEntityID = p.BusinessEntityID
-INNER JOIN Person.Address AS a
-    ON a.AddressID = p.BusinessEntityID
+     INNER JOIN Person.Person AS p
+         ON s.BusinessEntityID = p.BusinessEntityID
+     INNER JOIN Person.Address AS a
+         ON a.AddressID = p.BusinessEntityID
 WHERE TerritoryID IS NOT NULL
-    AND SalesYTD <> 0;
+      AND SalesYTD <> 0;
 ```
 
 #### Specify an aggregate window function as number
@@ -377,9 +399,9 @@ This example uses an aggregate window function as an argument for *number*.
 
 ```sql
 SELECT SalesOrderID,
-    ProductID,
-    OrderQty,
-    DATEADD(day, SUM(OrderQty) OVER (PARTITION BY SalesOrderID), SYSDATETIME()) AS 'Total'
+       ProductID,
+       OrderQty,
+       DATEADD(day, SUM(OrderQty) OVER (PARTITION BY SalesOrderID), SYSDATETIME()) AS 'Total'
 FROM Sales.SalesOrderDetail
 WHERE SalesOrderID IN (43659, 43664);
 GO
