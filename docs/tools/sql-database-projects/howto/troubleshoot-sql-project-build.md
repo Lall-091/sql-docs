@@ -12,11 +12,11 @@ ms.topic: how-to
 
 # Troubleshoot SQL project build
 
-The SQL project build output provides feedback on the database model construction and T-SQL validation. The default command line output only shows errors and some status information. In this article we will discuss how to enable more verbose logging to help troubleshoot build issues and common errors that are encountered with SQL projects.
+The SQL project build output provides feedback on the database model construction and T-SQL validation. The default command line output only shows errors and some status information. In this article, we discuss how to enable more verbose logging to help troubleshoot build issues and common errors that are encountered with SQL projects.
 
 ## Enable verbose logging
 
-To further troubleshoot build issues for SQL projects, you can use additional command line switches to generate more logs. Additional logging can assist in not only identifying the cause of errors but also degradation in build speed. The two primary options are:
+To further troubleshoot build issues for SQL projects, you can use command line switches to generate more logs. More logging can help in not only identifying the cause of errors but also degradation in build speed. The two primary options are:
 
 - **Binary logger**: This option generates a binary log file (`msbuild.binlog`) that can be viewed using the [MSBuild Log Viewer](https://msbuildlog.com/). This viewer is helpful for diagnosing dependency issues and optimizing the build process. The command to generate this log is:
 
@@ -42,9 +42,9 @@ The full set of switches can be found at the [MSBuild Command-Line Reference](/v
 
 ### Build errors
 
-When the build error indicates invalid syntax, the output will also specify which file contains the erroneous code. If you're using syntax that has been recently added, you may need to update your project SDK version.​
+When the build error indicates invalid syntax, the output also specifies which file contains the erroneous code. If you're using syntax that has been recently added, you may need to update your project SDK version.​
 
-Build errors from a SQL database project should have SQL xxxxx error code​, where xxxxx is a 5-digit number. The error for an unresolved reference (SQL71501/71502)​ can be caused by a number of issues:
+Build errors from a SQL database project should have SQL xxxxx error code​, where xxxxx is a 5-digit number. A number of issues can cause the error for an unresolved reference (SQL71501/71502)​:
 
 - Ambiguous object names​. Recommendations:
   - Use fully resolved names (`[schema].[table].[column]`)​
@@ -77,9 +77,9 @@ If your environment requires private feeds, ensure they are valid and accessible
     dotnet build --interactive or msbuild /p:nugetInteractive=true​
 ```
 
-For other non-SQL error codes, please refer to the following resources:
+For other non-SQL error codes, refer to the following resources:
 
-- MSB errors: [MSBuild Reference​](/visualstudio/msbuild/msbuild-reference)
+- MSBuild errors: [MSBuild Reference​](/visualstudio/msbuild/msbuild-reference)
 - NETSDK errors: [.NET SDK error list ​](/dotnet/core/tools/sdk-errors/)
 - NuGet errors: [NuGet Errors and Warnings Reference](/nuget/reference/errors-and-warnings)
 
