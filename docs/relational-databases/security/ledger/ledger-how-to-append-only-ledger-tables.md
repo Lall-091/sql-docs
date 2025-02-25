@@ -63,8 +63,6 @@ We'll create a `KeyCardEvents` table with the following schema.
    FROM [AccessControl].[KeyCardEvents];
    ```
 
-   :::image type="content" source="media/ledger/append-only-how-to-keycard-event-table.png" alt-text="Screenshot that shows results from querying the KeyCardEvents table.":::
-
 1. View the contents of your KeyCardEvents ledger view along with the ledger transactions system view to identify who added records into the table.
 
    ```sql
