@@ -6,7 +6,7 @@ ms.author: maghan
 ms.date: "02/01/2022"
 ms.service: sql
 ms.subservice: t-sql
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.swb.synonym.general.f1"
 helpviewer_keywords:

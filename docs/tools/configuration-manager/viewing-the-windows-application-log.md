@@ -6,7 +6,7 @@ ms.author: maghan
 ms.date: 12/26/2024
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 helpviewer_keywords:
   - "application logs [SQL Server]"
   - "Windows application logs [SQL Server]"

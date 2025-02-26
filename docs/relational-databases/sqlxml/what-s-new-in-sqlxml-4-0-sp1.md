@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "03/17/2017"
 ms.service: sql
 ms.subservice: xml
-ms.topic: conceptual
+ms.topic: whats-new
 ms.custom: intro-whats-new
 helpviewer_keywords:
   - "registry keys [SQLXML]"

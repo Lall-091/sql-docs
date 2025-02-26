@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "sys XML schema collections [SQL Server]"
   - "schema collections [SQL Server], predefined"

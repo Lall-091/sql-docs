@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 06/29/2022
 ms.service: sql
 ms.subservice: xml
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "computed columns, XML"
   - "XML [SQL Server], computed columns"

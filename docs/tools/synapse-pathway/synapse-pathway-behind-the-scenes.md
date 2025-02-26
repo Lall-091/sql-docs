@@ -7,7 +7,7 @@ ms.reviewer: wiassaf
 ms.date: 02/11/2022
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: template-concept
 monikerRange: "=azure-sqldw-latest"
 ---

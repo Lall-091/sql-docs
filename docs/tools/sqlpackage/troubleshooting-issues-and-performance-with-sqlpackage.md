@@ -7,7 +7,7 @@ ms.reviewer: "maghan"
 ms.date: 02/07/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 ---
 
 # Troubleshoot issues and performance with SqlPackage

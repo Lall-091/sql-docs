@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 12/23/2024
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom:
   - tools|sos
   - intro-installation
