@@ -29,7 +29,7 @@ The first stage of SQL Server A/B testing is to capture a trace on your source s
 
 Considerations:
 
-- Before you starting, be sure to back up the databases from which you'll be capturing the trace.
+- Before you start, be sure to back up the databases from which you'll be capturing the trace.
 - The DEA user must be able to connect to the database by using Windows authentication.
 - A SQL Server service account must be able to access the source trace file path.
 - For DEA to determine whether the performance of a query is improved or degraded, that query must execute at least 15 times during the capture period.

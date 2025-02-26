@@ -36,7 +36,7 @@ After you replay the source trace on both of your target servers, you can genera
    :::image type="content" source="media/database-experimentation-assistant-create-report/dea-newly-created-analysis-report.png" alt-text="Screenshot of Newly created analysis report." lightbox="media/database-experimentation-assistant-create-report/dea-newly-created-analysis-report.png":::
 
    > [!NOTE]  
-   > If any of the the information you entered is invalid, the text boxes containing the incorrect information are highlighted in red. Make any necessary corrections, and then select **Start** again.
+   > If any of the information you entered is invalid, the text boxes containing the incorrect information are highlighted in red. Make any necessary corrections, and then select **Start** again.
 
 ## Frequently asked questions about analysis reports
 
