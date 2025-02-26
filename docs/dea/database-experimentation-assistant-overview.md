@@ -3,8 +3,8 @@ title: Overview of the Database Experimentation Assistant
 description: Learn details about Database Experimentation Assistant (DEA), for example how to evaluate a targeted version of SQL Server for a specific workload.
 author: ajithkr-ms
 ms.author: ajithkr
-ms.reviewer: mathoma
-ms.date: 12/12/2019
+ms.reviewer: mathoma, randolphwest
+ms.date: 02/26/2025
 ms.service: sql
 ms.subservice: dea
 ms.topic: conceptual
@@ -12,7 +12,7 @@ ms.topic: conceptual
 # Overview of Database Experimentation Assistant
 
 > [!NOTE]  
-> This tool will be retired on **December 15, 2024**. We will stop supporting this tool for any issues that arise, and will not issue any bug fixes or further updates.
+> This tool was retired on **December 15, 2024**. We have stopped supporting this tool for any issues that arise, and won't issue any bug fixes or further updates.
 
 Database Experimentation Assistant (DEA) is an experimentation solution for SQL Server upgrades. DEA can help you evaluate a targeted version of SQL Server for a specific workload. Customers upgrading from earlier versions of SQL Server (starting with 2005) to more recent versions of SQL Server can use the analysis metrics that the tool provides.
 
@@ -32,7 +32,7 @@ To install DEA, [download](https://www.microsoft.com/download/details.aspx?id=54
 
 The following diagram shows the solution architecture for a workload comparison. The workload comparison uses DEA and Distributed Replay during an upgrade from SQL Server 2008 to SQL Server 2016.
 
-![Workload comparison solution architecture](./media/database-experimentation-assistant-overview/dea-overview-compare-solution-architecture.png)
+:::image type="content" source="media/database-experimentation-assistant-overview/dea-overview-compare-solution-architecture.png" alt-text="Screenshot of Workload comparison solution architecture.":::
 
 ## DEA prerequisites
 
@@ -50,7 +50,7 @@ In the prerequisite environment architecture, we recommend that you install DEA 
 
 DEA connects to database servers using Windows authentication. Be sure that the user running DEA can connect to database servers (source, target, and analysis) using Windows authentication.
 
-**Capture configuration requirements**
+#### Capture configuration requirements
 
 Capturing a trace requires that the user running DEA:
 
@@ -61,7 +61,7 @@ In addition, the service account running the source database server requires wri
 
 For more information, see [Frequently asked questions about trace capture](database-experimentation-assistant-capture-trace.md#frequently-asked-questions-about-trace-capture).
 
-**Replay configuration requirements**
+#### Replay configuration requirements
 
 Replaying a trace requires that the user running DEA:
 
@@ -76,7 +76,7 @@ In addition, replaying a trace requires that:
 
 For more information, see [Frequently asked questions about trace replay](database-experimentation-assistant-replay-trace.md#frequently-asked-questions-about-trace-replay).
 
-**Analysis configuration requirements**
+#### Analysis configuration requirements
 
 Performing the analysis requires that the user running DEA:
 
@@ -99,13 +99,13 @@ Telemetry data can be collected on four types of events:
 Collecting and sending telemetry data is optional. To specify which events are collected and whether collected events are sent to Microsoft, use the following steps:
 
 1. Go to the location in which DEA is installed (for example, C:\\Program Files (x86)\\Microsoft Corporation\\Database Experimentation Assistant).
-2. Open and modify the .config files **DEA.exe.config** (for the application) and **DEACmd.exe.config** (for the CLI) to address your scenario as appropriate:
-    - To stop collecting a type of event, set the value of *event* (for example, **TraceEvent**) to **false**. To start collecting the event again, set the value to **true**.
-    - To stop saving local copies of events, set the value of **TraceLoggerEnabled** to **false**. To start saving local copies again, set the value to **true**.
-    - To stop sending events to Microsoft, set the value of **AppInsightsLoggerEnabled** to **false**. To start sending events to Microsoft again, set the value to **true**.
+1. Open and modify the .config files **DEA.exe.config** (for the application) and **DEACmd.exe.config** (for the CLI) to address your scenario as appropriate:
+   - To stop collecting a type of event, set the value of *event* (for example, **TraceEvent**) to **false**. To start collecting the event again, set the value to **true**.
+   - To stop saving local copies of events, set the value of **TraceLoggerEnabled** to **false**. To start saving local copies again, set the value to **true**.
+   - To stop sending events to Microsoft, set the value of **AppInsightsLoggerEnabled** to **false**. To start sending events to Microsoft again, set the value to **true**.
 
 DEA is governed by the [Microsoft Privacy Statement](https://aka.ms/dea-privacy).
 
-## See also
+## Related content
 
-- The article [Overview of the workload comparison process](database-experimentation-assistant-get-started.md), which explains the process involved in comparing workloads in two environments.
+- [Overview of the workload comparison process](database-experimentation-assistant-get-started.md)

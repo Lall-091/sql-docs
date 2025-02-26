@@ -1,10 +1,10 @@
 ---
-title: Replay a trace for SQL Server upgrades
+title: Replay a Trace for SQL Server Upgrades
 description: Learn how to replay a captured trace with Database Experimentation Assistant for SQL Server upgrades.
 author: ajithkr-ms
 ms.author: ajithkr
-ms.reviewer: mathoma
-ms.date: 12/12/2019
+ms.reviewer: mathoma, randolphwest
+ms.date: 02/26/2025
 ms.service: sql
 ms.subservice: dea
 ms.topic: conceptual
@@ -13,11 +13,11 @@ ms.topic: conceptual
 # Replay a trace in Database Experimentation Assistant
 
 > [!NOTE]  
-> This tool will be retired on **December 15, 2024**. We will stop supporting this tool for any issues that arise, and will not issue any bug fixes or further updates.
+> This tool was retired on **December 15, 2024**. We have stopped supporting this tool for any issues that arise, and won't issue any bug fixes or further updates.
 
 In Database Experimentation Assistant (DEA), you can replay a captured trace file against an upgraded test environment. For example, consider a production workload that runs on SQL Server 2008 R2. The trace file for the workload must be replayed twice: one time on an environment with the same version of SQL Server that runs in production and a second time on an environment that has the upgrade target SQL Server version, such as SQL Server 2016.
 
-> [!NOTE]
+> [!NOTE]  
 > Replaying a trace requires that you manually set up virtual machines or physical computers to run Distributed Replay traces. For more information, see [Configure Distributed Replay for Database Experimentation Assistant](database-experimentation-assistant-configure-replay.md).
 >
 
@@ -27,35 +27,35 @@ First, you need to perform a trace replay against target 1, which represents you
 
 1. In DEA, on the left-hand navigation bar, select the arrow icon, and then on the **All Replays** page, select **New Replay**.
 
-    ![Create a replay in DEA](./media/database-experimentation-assistant-replay-trace/dea-create-replay.png)
+    :::image type="content" source="media/database-experimentation-assistant-replay-trace/dea-create-replay.png" alt-text="Screenshot of Create a replay in DEA." lightbox="media/database-experimentation-assistant-replay-trace/dea-create-replay.png":::
 
-    > [!NOTE]
+    > [!NOTE]  
     > The Distributed Replay controller computer requires permissions to the user account that you use to remotely connect.
 
-2. On the **New Replay** page, under **Replay details**, enter or select the following information:
+1. On the **New Replay** page, under **Replay details**, enter or select the following information:
 
     - **Replay name**: Enter a name for the trace replay.
     - **Source Trace Format**: Specify the format (Trace or XEvents) of the source trace file.
-    - **Full path to source file**: Specify the full path to the source trace file. If using DReplay, the file must  exist on the computer serving as the DReplay Controller and the user account requires access to the file and folder.
+    - **Full path to source file**: Specify the full path to the source trace file. If using DReplay, the file must exist on the computer serving as the DReplay Controller and the user account requires access to the file and folder.
     - **Replay Tool**: Specify the replay tool (DReplay or InBuilt).
     - **Controller machine name**: Specify the name of the computer serving as the Distributed Replay Controller.
     - **Replay Trace Location**: Specify the path to store trace files/XEvents associated with the trace replay.
 
-        > [!NOTE]
+        > [!NOTE]  
         > For an Azure SQL Database or an Azure SQL Managed Instance, you need to provide the SAS URI of the Azure Blob Storage account.
 
-3. Verify that you have restored the database(s) by selecting the **Yes, I have manually restored the database(s)** check box.
+1. Verify that you have restored the database(s) by selecting the **Yes, I have manually restored the database(s)** check box.
 
-4. Under **SQL Server connection details**, enter or select the following information:
+1. Under **SQL Server connection details**, enter or select the following information:
 
     - **Server Type**: Specify the type of the SQL Server (**SqlServer**, **AzureSqlDb**, **AzureSqlManagedInstance**).
     - **Server name**: Specify the server name or IP address of your SQL Server.
     - **Authentication Type**: For the authentication type, select **Windows**.
     - **Database name**: Enter a name for a database on which to start a server-side trace. If you don't specify a database, trace is captured on all the databases on the server.
 
-5. Select or deselect the **Encrypt connection** and **Trust server certificate** check boxes as appropriate for your scenario.
+1. Select or deselect the **Encrypt connection** and **Trust server certificate** check boxes as appropriate for your scenario.
 
-    ![New Replay page](./media/database-experimentation-assistant-replay-trace/dea-new-replay.png)
+    :::image type="content" source="media/database-experimentation-assistant-replay-trace/dea-new-replay.png" alt-text="Screenshot of New Replay page." lightbox="media/database-experimentation-assistant-replay-trace/dea-new-replay.png":::
 
 ## Start the trace replay on target 1
 
@@ -63,18 +63,18 @@ First, you need to perform a trace replay against target 1, which represents you
 
   If the information you entered is valid, the Distributed Replay process starts. Otherwise, the text boxes that have incorrect information are highlighted with red. Make sure that the values you entered are correct, and then select **Start**.
 
-  ![Replay progress against target 1](./media/database-experimentation-assistant-replay-trace/dea-run-replay-target1.png)
+  :::image type="content" source="media/database-experimentation-assistant-replay-trace/dea-run-replay-target1.png" alt-text="Screenshot of Replay progress against target 1." lightbox="media/database-experimentation-assistant-replay-trace/dea-run-replay-target1.png":::
 
   You can monitor the process as necessary. When the replay is finished running, DEA will store the results in a file at the location you specified.
 
-  ![Replay against target 1 complete](./media/database-experimentation-assistant-replay-trace/dea-replay-target1-complete.png)
+  :::image type="content" source="media/database-experimentation-assistant-replay-trace/dea-replay-target1-complete.png" alt-text="Screenshot of Replay against target 1 complete." lightbox="media/database-experimentation-assistant-replay-trace/dea-replay-target1-complete.png":::
 
 ## Perform the trace replay against target 2
 
 After you finish performing the trace replay against target 1, you need to do the same against your second target, which represents the intended upgrade environment.
 
 1. Configure a trace replay, this time using details associated with your target 2 environment.
-2. Start the trace replay on target 2.
+1. Start the trace replay on target 2.
 
    You can monitor the process as necessary. When the replay is finished running, DEA will store the results in a file at the location you specified.
 
@@ -100,7 +100,7 @@ A replay typically takes the same amount of time as the source trace plus the am
 
 **Q: How large are the target trace files?**
 
-The target trace files can be between 5 and 15  times the size of the source trace. The file size is based on how many queries are run. For instance, query plan blobs might be large. If the statistics for these queries change often, more events are captured.
+The target trace files can be between 5 and 15 times the size of the source trace. The file size is based on how many queries are run. For instance, query plan blobs might be large. If the statistics for these queries change often, more events are captured.
 
 **Q: Why do I need to restore databases?**
 
@@ -133,7 +133,7 @@ You can get more details in the logs in %temp%\\DEA. If the problem persists, co
 
 - Verify that the Distributed Replay controller service is running on the controller machine. To verify, use the Distributed Replay Management Tools (run the command `dreplay.exe status -f 1`).
 - If the replay is started remotely:
-  - Confirm that the computer running DEA can successfully ping the controller. Confirm that firewall settings allow connections per the instructions on the **Configure Replay Environment** page. For more information, see the article [SQL Server Distributed Replay](../tools/distributed-replay/sql-server-distributed-replay.md).
+  - Confirm that the computer running DEA can successfully ping the controller. Confirm that firewall settings allow connections per the instructions on the **Configure Replay Environment** page. For more information, see the article [SQL Server Distributed Replay overview](../tools/distributed-replay/sql-server-distributed-replay.md).
   - Make sure that DCOM Remote Launch and Remote Activation are allowed for the user of the Distributed Replay controller.
   - Make sure that DCOM Remote Access user rights are allowed for the user of the Distributed Replay controller.
 
@@ -153,10 +153,10 @@ This issue might occur because the trace file doesn't have either the replayable
 
 **Q: I see "Unexpected error occurred!" when I try to preprocess my trace files by using the SQL Server 2017 Distributed Replay controller. Why?**
 
-This issue is known in the RTM version of SQL Server 2017. For more information, see [Unexpected error when you use the DReplay feature to replay a captured trace in SQL Server 2017](https://support.microsoft.com/help/4045678/fix-unexpected-error-when-you-use-the-dreplay-feature-to-replay-a).  
-  
-The issue has been addressed in the latest Cumulative Update 1 for SQL Server 2017. Download the latest version of [Cumulative Update 1 for SQL Server 2017](https://support.microsoft.com/help/4038634/cumulative-update-1-for-sql-server-2017).
+This issue is known in the RTM version of SQL Server 2017. For more information, see [Unexpected error when you use the DReplay feature to replay a captured trace in SQL Server 2017](https://support.microsoft.com/help/4045678/fix-unexpected-error-when-you-use-the-dreplay-feature-to-replay-a).
 
-## See also
+The issue has been addressed in the latest Cumulative Update 1 for SQL Server 2017. Download the latest version of [KB4038634 - Cumulative Update 1 for SQL Server 2017](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate1).
 
-- To create an analysis report that helps you gain insights on proposed changes, see [Create reports](database-experimentation-assistant-create-report.md).
+## Related content
+
+- [Create analysis reports in Database Experimentation Assistant (SQL Server)](database-experimentation-assistant-create-report.md)

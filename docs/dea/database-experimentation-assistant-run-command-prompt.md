@@ -1,10 +1,10 @@
 ---
-title: Run Database Experimentation Assistant at a command prompt
+title: Run Database Experimentation Assistant at a Command Prompt
 description: Learn how to capture a trace in Database Experimentation Assistant (DEA) and then analyze the results, all from a command prompt.
 author: ajithkr-ms
 ms.author: ajithkr
-ms.reviewer: mathoma
-ms.date: 05/18/2022
+ms.reviewer: mathoma, randolphwest
+ms.date: 02/26/2025
 ms.service: sql
 ms.subservice: dea
 ms.topic: how-to
@@ -14,34 +14,33 @@ ms.custom: kr2b-contr-experiment
 # Run Database Experimentation Assistant at a command prompt
 
 > [!NOTE]  
-> This tool will be retired on **December 15, 2024**. We will stop supporting this tool for any issues that arise, and will not issue any bug fixes or further updates.
+> This tool was retired on **December 15, 2024**. We have stopped supporting this tool for any issues that arise, and won't issue any bug fixes or further updates.
 
 This article describes how to capture a trace in Database Experimentation Assistant (DEA) and then analyze the results, all from a command prompt.
 
-> [!NOTE]
-> To learn more about each DEA operation, run the following command:
->
-> `Deacmd.exe -o <operation> --help`
->
-> An operation name is required. Valid operations are *Analysis*, *StartCapture*, and *StopCapture*.
+To learn more about each DEA operation, run the following command:
+
+`deacmd.exe -o <operation> --help`
+
+An operation name is required. Valid operations are *Analysis*, *StartCapture*, and *StopCapture*.
 
 ## Start a new workload capture by using the DEA command
 
 To start a new workload capture, at a command prompt, run the following command:
 
 ```cmd
-Deacmd.exe -o StartCapture -n <Trace FileName> -x <Trace Format> -h <SQLServerInstance> -f <database name> -e <Encrypt Connection> -m <Authentication Mode> -u <user name> -p <password> -l <Location of Output Folder> -d <duration>
+deacmd.exe -o StartCapture -n <Trace FileName> -x <Trace Format> -h <SQLServerInstance> -f <database name> -e <Encrypt Connection> -m <Authentication Mode> -u <user name> -p <password> -l <Location of Output Folder> -d <duration>
 ```
 
 For example:
 
 ```cmd
-Deacmd.exe -o StartCapture -n sql2008capture -x 0 -h localhost -f adventureworks -e --trust -m 0 -l c:\test  -d 60
+deacmd.exe -o StartCapture -n sql2008capture -x 0 -h localhost -f adventureworks -e --trust -m 0 -l c:\test  -d 60
 ```
 
-When you start a new workload capture with the `Deacmd.exe` command, you can use the following options:
+When you start a new workload capture with the `deacmd.exe` command, you can use the following options:
 
-| Option| Description |  
+| Option | Description |
 | --- | --- |
 | `-n`, `--name` | Required. Trace file name. |
 | `-x`, `--format` | Required. Format of the trace (0 = Trace, 1 = XEvents). |
@@ -61,48 +60,48 @@ When you start a new workload capture with the `Deacmd.exe` command, you can use
 If you're using Distributed Replay, perform the following steps.
 
 1. Sign in to the Distributed Replay controller computer.
-2. To convert the workload trace that you captured using the DEA command to an IRF file, run the following command:
+1. To convert the workload trace that you captured using the DEA command to an IRF file, run the following command:
 
    ```cmd
    DReplay preprocess -m "dreplaycontroller" -i "Path to first trace file" -d "<Folder path on controller>\IrfFolder"
    ```
 
-3. Start a trace capture on the target computer running SQL Server using *StartReplayCaptureTrace.sql*.
+1. Start a trace capture on the target computer running SQL Server using *StartReplayCaptureTrace.sql*.
 
-    a.  In SQL Server Management Studio (SSMS), open *<Dea_InstallPath\>\Scripts\StartReplayCaptureTrace.sql*.
+   1. In SQL Server Management Studio (SSMS), open *<Dea_InstallPath\>\Scripts\StartReplayCaptureTrace.sql*.
 
-    b.  Run `Set @durationInMins=0` so that the trace capture doesn't stop automatically after a specified time.
+   1. Run `Set @durationInMins=0` so that the trace capture doesn't stop automatically after a specified time.
 
-    c.  To set the maximum file size per trace file, run `Set @maxfilesize`. The recommended size is 200 MB.
+   1. To set the maximum file size per trace file, run `Set @maxfilesize`. The recommended size is 200 MB.
 
-    d.  Edit `@Tracefile` to set a unique name for your trace file.
+   1. Edit `@Tracefile` to set a unique name for your trace file.
 
-    e.  Edit `@dbname` to specify a database name if the workload must be captured only on a specific database. By default, the workload on the entire server is captured.
+   1. Edit `@dbname` to specify a database name if the workload must be captured only on a specific database. By default, the workload on the entire server is captured.
 
-4. To replay the IRF file against the target SQL Server instance, run the following command:
+1. To replay the IRF file against the target SQL Server instance, run the following command:
 
-    ```cmd
-    DReplay replay -m "dreplaycontroller" -d "<Folder Path on Dreplay Controller>\IrfFolder" -o -s "SQL2016Target" -w "dreplaychild1,dreplaychild2,dreplaychild3,dreplaychild4"
-    ```
+   ```cmd
+   DReplay replay -m "dreplaycontroller" -d "<Folder Path on Dreplay Controller>\IrfFolder" -o -s "SQL2016Target" -w "dreplaychild1,dreplaychild2,dreplaychild3,dreplaychild4"
+   ```
 
-    a.  To monitor the status, run the following command:
+   1. To monitor the status, run the following command:
 
-    ```cmd
-    DReplay status -f 1
-    ```
+   ```cmd
+   DReplay status -f 1
+   ```
 
-    b. To stop the replay, for example if you see that the pass percentage is lower than expected, run the following command:
+   1. To stop the replay, for example if you see that the pass percentage is lower than expected, run the following command:
 
-    ```cmd
-    DReplay cancel
-    ```
+   ```cmd
+   DReplay cancel
+   ```
 
-5. Stop the trace capture on the target SQL Server instance.
-6. In SSMS, open *\<Dea_InstallPath>\Scripts\StopCaptureTrace.sql*.
-7. Edit `@Tracefile` to match the trace file path on the target computer running SQL Server.
-8. Run the script against the target computer running SQL Server.
+1. Stop the trace capture on the target SQL Server instance.
+1. In SSMS, open *\<Dea_InstallPath>\Scripts\StopCaptureTrace.sql*.
+1. Edit `@Tracefile` to match the trace file path on the target computer running SQL Server.
+1. Run the script against the target computer running SQL Server.
 
-## Using InBuilt Replay
+## Use InBuilt Replay
 
 If you're using InBuilt Replay, you won't have to set up Distributed Replay. The ability to use InBuilt Replay at the command prompt is on the way. Currently, you can use our GUI to run replay using InBuilt Replay.
 
@@ -111,27 +110,27 @@ If you're using InBuilt Replay, you won't have to set up Distributed Replay. The
 To start a new trace analysis, run the following command:
 
 ```cmd
-Deacmd.exe -o analysis -a <Target1 trace filepath> -b <Target2 trace filepath> -r reportname -h <SQLserverInstance> -e <encryptconnection> -u <username>
+deacmd.exe -o analysis -a <Target1 trace filepath> -b <Target2 trace filepath> -r reportname -h <SQLserverInstance> -e <encryptconnection> -u <username>
 ```
 
 For example:
 
 ```cmd
-Deacmd.exe -o analysis -a C:\Trace\SQL2008Source\Trace.trc -b C:\ Trace\SQL2014Trace\Trace.trc -r upgrade20082014 -h localhost -e
+deacmd.exe -o analysis -a C:\Trace\SQL2008Source\Trace.trc -b C:\ Trace\SQL2014Trace\Trace.trc -r upgrade20082014 -h localhost -e
 ```
 
-To view the analysis reports of these trace files, you need to use the GUI to view charts and organized metrics. However, the analysis database is written to the SQL Server instance specified, so you can also  query the generated analysis tables directly.
+To view the analysis reports of these trace files, you need to use the GUI to view charts and organized metrics. However, the analysis database is written to the SQL Server instance specified, so you can also query the generated analysis tables directly.
 
 When analyzing traces using the DEA command, you can use the following options:
 
-| Option| Description |  
+| Option | Description |
 | --- | --- |
-| `-a`, `--traceA` | Required. File path to the event file for the A instance. Example: *C:\traces\Sql2008trace.trc*.  If there's a batch of files, select the first file and DEA checks for rollover files automatically. If files are in blob, provide the folder path where you want the event files stored locally.  Example: *C:\traces\\* |
-| `-b`, `--traceB` | Required. File path to the event file for the B instance. Example: *C:\traces\Sql2014trace.trc*. If there's a batch of files, select the first file and DEA checks for rollover files automatically. If files are in blob, provide the folder path where you want the event files stored locally.  Example: *C:\traces\\* |
+| `-a`, `--traceA` | Required. File path to the event file for the A instance. Example: *C:\traces\Sql2008trace.trc*. If there's a batch of files, select the first file and DEA checks for rollover files automatically. If files are in blob, provide the folder path where you want the event files stored locally. Example: *C:\traces\\* |
+| `-b`, `--traceB` | Required. File path to the event file for the B instance. Example: *C:\traces\Sql2014trace.trc*. If there's a batch of files, select the first file and DEA checks for rollover files automatically. If files are in blob, provide the folder path where you want the event files stored locally. Example: *C:\traces\\* |
 | `-r`, `--ReportName` | Required. Name for current analysis. The analysis report that gets generated is identified by this name. |
 | `-t`, `--type` | Default: 0. Type of the SQL Server (0 = SqlServer, 1 = AzureSQLDB, 2 = Azure SQL Managed Instance). |
 | `-h`, `--host` | Required. SQL Server host name or instance name. |
-| `-e`, `--encrypt` | Default: True. Encrypt connection to SQL Server instance.|
+| `-e`, `--encrypt` | Default: True. Encrypt connection to SQL Server instance. |
 | `--trust` | Default: False. Trust server certificate while connecting to SQL Server instance. |
 | `-m`, `--authmode` | Default: 0. Authentication mode (0 = Windows, 1 = Sql Authentication). |
 | `-u`, `--username` | User name for connecting to the SQL Server. |
@@ -141,6 +140,6 @@ When analyzing traces using the DEA command, you can use the following options:
 | `--abu` | Blob URL for A instance with SAS key. |
 | `--bbu` | Blob URL for B instance with SAS key. |
 
-## See also
+## Related content
 
-- For more information about using DEA, see [Overview of Database Experimentation Assistant](database-experimentation-assistant-overview.md).
+- [Overview of Database Experimentation Assistant](database-experimentation-assistant-overview.md)
