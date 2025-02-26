@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: 12/15/2023
 ms.service: sql
 ms.subservice: in-memory-oltp
-ms.topic: conceptual
+ms.topic: how-to
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
 ---
 # Plan your adoption of In-Memory OLTP Features in SQL Server

@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "12/02/2016"
 ms.service: sql
 ms.subservice: in-memory-oltp
-ms.topic: conceptual
+ms.topic: how-to
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
 ---
 # Estimate Memory Requirements for Memory-Optimized Tables

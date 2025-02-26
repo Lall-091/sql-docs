@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 03/11/2024
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom:
   - intro-installation
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017"

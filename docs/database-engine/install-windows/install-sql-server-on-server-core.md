@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 09/11/2023
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom: intro-installation
 monikerRange: ">=sql-server-2016"
 ---

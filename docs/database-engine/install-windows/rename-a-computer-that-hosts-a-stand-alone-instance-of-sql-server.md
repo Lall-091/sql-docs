@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 07/25/2024
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "remote login errors [SQL Server]"
   - "standalone computer names [SQL Server]"

@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: 09/17/2024
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 helpviewer_keywords:
   - "components [SQL Server], adding to existing installations"
   - "versions [SQL Server], upgrading"

@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: "09/15/2021"
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 helpviewer_keywords:
   - "IsHadrEnabled server property"
   - "Server Core Installation [SQL Server]"

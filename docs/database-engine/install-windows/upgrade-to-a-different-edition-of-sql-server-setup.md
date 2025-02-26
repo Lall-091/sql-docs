@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 07/22/2024
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 monikerRange: ">=sql-server-2016"
 ---
 # Upgrade to a different edition of SQL Server (Setup)

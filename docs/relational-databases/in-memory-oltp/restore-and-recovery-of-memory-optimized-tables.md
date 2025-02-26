@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "12/31/2017"
 ms.service: sql
 ms.subservice: in-memory-oltp
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Restore and recovery of memory-optimized tables
  [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]

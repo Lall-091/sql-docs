@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: "07/24/2017"
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 helpviewer_keywords:
   - "management tools, upgrading"
 monikerRange: ">=sql-server-2016"

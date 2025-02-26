@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 08/02/2024
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "Windows Firewall ports"
   - "WMI firewall ports"

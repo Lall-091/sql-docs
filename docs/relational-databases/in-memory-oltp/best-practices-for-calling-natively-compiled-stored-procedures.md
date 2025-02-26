@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "03/24/2017"
 ms.service: sql
 ms.subservice: in-memory-oltp
-ms.topic: conceptual
+ms.topic: best-practice
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
 ---
 # Best Practices for Calling Natively Compiled Stored Procedures

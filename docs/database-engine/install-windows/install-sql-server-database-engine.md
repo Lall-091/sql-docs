@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 07/25/2024
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom:
   - intro-installation
 helpviewer_keywords:

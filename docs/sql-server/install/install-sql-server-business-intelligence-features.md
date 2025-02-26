@@ -6,7 +6,7 @@ ms.author: kfollis
 ms.date: "12/13/2019"
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom: intro-installation
 ---
 
