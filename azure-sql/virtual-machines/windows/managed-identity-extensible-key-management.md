@@ -4,7 +4,7 @@ description: Learn how to use managed identities with SQL Server on Azure Virtua
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, mathoma
-ms.date: 01/16/2025
+ms.date: 02/16/2025
 ms.service: azure-vm-sql-server
 ms.subservice: security
 ms.topic: how-to
@@ -26,7 +26,8 @@ Starting with SQL Server 2022 Cumulative Update 17 (CU17), managed identities ar
 
 ## Prerequisites
 
-- A SQL Server on Azure VM with SQL Server 2022 CU17 or later, [configured with Microsoft Entra authentication](configure-azure-ad-authentication-for-sql-vm.md).
+- A SQL Server on Azure VM with SQL Server 2022 CU17 or later [registered with the SQL IaaS Agent extension](sql-agent-extension-manually-register-single-vm.md).
+- The SQL Server instance using a managed identity for EKM must be [configured with Microsoft Entra authentication](configure-azure-ad-authentication-for-sql-vm.md), whether or not it's the instance registered with the extension.
 - An Azure Key Vault and key created in the key vault. For more information, see [Create a key vault](/sql/relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault?tabs=portal#step-2-create-a-key-vault).
 - Managed identities are supported for EKM with AKV. The primary managed identity for the SQL Server on Azure VM needs:
   - To be assigned with a user-assigned managed identity or system-assigned managed identity. For more information, see [Configure managed identities on Azure virtual machines (VMs)](/entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities) and [Enable Microsoft Entra authentication](configure-azure-ad-authentication-for-sql-vm.md#enable-microsoft-entra-authentication).
