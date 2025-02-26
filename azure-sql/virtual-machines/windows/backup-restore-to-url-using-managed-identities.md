@@ -4,7 +4,7 @@ description: Learn how to back up and restore SQL Server databases to Azure Blob
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, mathoma
-ms.date: 01/16/2025
+ms.date: 02/16/2025
 ms.service: azure-vm-sql-server
 ms.subservice: security
 ms.topic: how-to
@@ -23,7 +23,9 @@ Using managed identities in the credentials for the `BACKUP TO URL` and `RESTORE
 
 ## Prerequisites
 
-- A SQL Server on Azure VM with SQL Server 2022 CU17 or later, [configured with Microsoft Entra authentication](configure-azure-ad-authentication-for-sql-vm.md).
+
+- A SQL Server on Azure VM with SQL Server 2022 CU17 or later [registered with the SQL IaaS Agent extension](sql-agent-extension-manually-register-single-vm.md).
+- The SQL Server instance that is backing up to, or restoring from, URL must be [configured with Microsoft Entra authentication](configure-azure-ad-authentication-for-sql-vm.md), whether or not it's the instance registered with the extension.
 - An [Azure Blob storage account](/azure/storage/common/storage-account-create).
 - Valid network access to the Azure Blob storage and Windows Firewall permissions on the host to allow the outbound connection, and valid storage account service endpoints.
 - The primary managed identity for the SQL Server on Azure VM needs:

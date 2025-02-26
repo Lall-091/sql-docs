@@ -6,7 +6,7 @@ ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server-sharepoint
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom:
   - intro-installation
   - updatefrequency5

@@ -67053,6 +67053,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "docs/ssdt/database-project-settings.md",
+      "redirect_url": "/sql/tools/sql-database-projects/concepts/project-properties",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "docs/relational-databases/resource-governor/create-and-test-a-classifier-user-defined-function.md",
       "redirect_url": "/sql/relational-databases/resource-governor/resource-governor-walkthrough",
       "redirect_document_id": false

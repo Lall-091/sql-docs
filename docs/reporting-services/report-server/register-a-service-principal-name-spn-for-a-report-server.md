@@ -6,7 +6,7 @@ ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: updatefrequency5
 #customer-intent: As a Reporting Services user, I want to create a Service Principal Name so that I can deploy Reporting Services in a network that uses the Kerberos protocol for mutual authentication.
 ---

@@ -6,7 +6,7 @@ ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 # customer intent: As a Report Builder user, I want to learn how to use parameters so that I can control and manage my report data.

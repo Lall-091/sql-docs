@@ -6,7 +6,7 @@ ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services
-ms.topic: conceptual
+ms.topic: tutorial
 ms.custom:
   - updatefrequency5
 ---

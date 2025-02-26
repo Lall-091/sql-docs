@@ -6,7 +6,7 @@ ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 # customer intent: As an SSRS user, I want to understand the features supported by different editions of SQL Server so that I can use all of those available to me.

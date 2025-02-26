@@ -4,7 +4,7 @@ description: Learn about the new features for and improvements to SQL Server on 
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest, mathoma, dpless
-ms.date: 02/03/2025
+ms.date: 02/16/2025
 ms.service: azure-vm-sql-server
 ms.topic: whats-new
 ms.custom:
@@ -63,6 +63,7 @@ Learn about significant changes to the SQL Server on Azure VMs documentation. Fo
 | Changes | Details |
 | --- | --- |
 | **FCI with Azure Elastic SAN GA** | Deploy your SQL Server failover cluster instance (FCI) by using an Azure Elastic SAN. Using the Azure Elastic SAN with your failover cluster instance is now generally available. Review [FCI with Azure Elastic SAN](failover-cluster-instance-azure-elastic-san-manually-configure.md) to learn more. |
+| **Enable Microsoft Entra authentication for unregistered instances** | It's now possible to enable Microsoft Entra authentication for unregistered instances SQL Server installed to your Azure VMs, such as when you have multiple instances on the same VM. Review [Microsoft Entra authentication](configure-azure-ad-authentication-for-sql-vm.md#enable-microsoft-entra-authentication-for-unregistered-instances) to learn more. |
 
 ### January 2025
 

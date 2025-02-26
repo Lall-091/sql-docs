@@ -7,7 +7,7 @@ ms.reviewer: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services
-ms.topic: conceptual
+ms.topic: release-notes
 ms.custom:
   - updatefrequency5
 monikerRange: ">=sql-server-2017"
