@@ -4,7 +4,7 @@ description: The sp_invoke_external_rest_endpoint stored procedure invokes an HT
 author: jettermctedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 02/13/2025
+ms.date: 02/25/2025
 ms.service: sql
 ms.topic: "reference"
 ms.custom:
@@ -205,7 +205,7 @@ Only calls to endpoints in the following services are allowed:
 | Azure Logic Apps | *.logic.azure.com |
 | Azure Event Hubs | *.servicebus.windows.net |
 | Azure Event Grid | *.eventgrid.azure.net |
-| Azure Cognitive Services | *.cognitiveservices.azure.com |
+| Azure AI Services | *.cognitiveservices.azure.com <br> *.api.cognitive.microsoft.com |
 | Azure OpenAI | *.openai.azure.com |
 | PowerApps / Dataverse | *.api.crm.dynamics.com |
 | Microsoft Dynamics | *.dynamics.com |

@@ -4,7 +4,7 @@ description: CREATE INDEX (Transact-SQL)
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: wiassaf, dfurman
-ms.date: 02/20/2025
+ms.date: 02/25/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -223,7 +223,7 @@ CREATE [ CLUSTERED | NONCLUSTERED ] INDEX index_name
 
 #### UNIQUE
 
-Creates a unique index on a table or view. A unique index is one in which no two rows are permitted to have the same index key value. A clustered index on a view must be unique.
+Creates a unique index on a table or view. A unique index is one in which no two rows are permitted to have the same index key value.
 
 The [!INCLUDE[ssDE](../../includes/ssde-md.md)] doesn't allow creating a unique index on columns that already include duplicate values, whether or not `IGNORE_DUP_KEY` is set to `ON`. If this is attempted, the [!INCLUDE[ssDE](../../includes/ssde-md.md)] displays an error message. Duplicate values must be removed before a unique index can be created on the column or columns. 
 
@@ -231,22 +231,24 @@ A `UNIQUE` constraint treats `NULL` as a value. If a column is nullable and a `U
 
 #### CLUSTERED
 
-Creates an index in which the logical order of the key values determines the physical order of the corresponding rows in a table. The bottom, or leaf, level of the clustered index contains the actual data rows of the table. A table or view can have at most one clustered index at a time.
+Creates an index in which the sort order specified for the index key columns determines the page order in the index structure on disk. Rows on the pages in the bottom, or leaf, level of the clustered index always contain all columns of the table. Rows on the pages in the upper levels of the index contain key columns only.
 
-A view with a unique clustered index is called an indexed view. Creating a unique clustered index on a view physically materializes the view. A unique clustered index must be created on a view before any other indexes can be defined on the same view. For more information, see [Create indexed views](../../relational-databases/views/create-indexed-views.md).
+A table can have only one clustered index. If a clustered index exists on a table, it contains all data in the table. A table without a clustered index is called a heap.
+
+A view with a unique clustered index is called an indexed view. An indexed view can have only one clustered index. Creating a unique clustered index on a view physically materializes the view. A unique clustered index must be created on a view before any other indexes can be defined on the same view. For more information, see [Create indexed views](../../relational-databases/views/create-indexed-views.md).
 
 Create the clustered index before creating any nonclustered indexes. Existing nonclustered indexes on tables are rebuilt when a clustered index is created, which is a resource-intensive operation if the table is large.
 
 If `CLUSTERED` isn't specified, a nonclustered index is created.
 
 > [!NOTE]  
-> Because the leaf level of a clustered index and the data pages are the same by definition, creating a clustered index and using the `ON partition_scheme_name` or `ON filegroup_name` clause effectively moves a table from the filegroup on which the table was created to the new partition scheme or filegroup. Before creating tables or indexes on specific filegroups, verify which filegroups are available and that they have enough empty space for the index.
+> Because the clustered index contains all data in the table, creating a clustered index and using the `ON partition_scheme_name` or `ON filegroup_name` clause effectively moves the table from the filegroup on which the table was created to the new partition scheme or filegroup. Before creating tables or indexes on specific filegroups, verify which filegroups are available and that they have enough empty space for the index.
 
-In some cases creating a clustered index can enable previously disabled indexes. For more information, see [Enable indexes and constraints](../../relational-databases/indexes/enable-indexes-and-constraints.md) and [Disable indexes and constraints](../../relational-databases/indexes/disable-indexes-and-constraints.md).
+In some cases, creating a clustered index can enable previously disabled indexes. For more information, see [Enable indexes and constraints](../../relational-databases/indexes/enable-indexes-and-constraints.md) and [Disable indexes and constraints](../../relational-databases/indexes/disable-indexes-and-constraints.md).
 
 #### NONCLUSTERED
 
-Creates an index that specifies the order for a subset of columns that is different from the physical order of the table.
+Creates an index in which the sort order specified for the index key columns determines the page order in the index structure on disk. Unlike the clustered index, rows on the pages in the leaf level of a nonclustered index contain only the index key columns. Optionally, a subset of non-key columns can be included using the `INCLUDE` clause.
 
 Each table can have up to 999 nonclustered indexes, regardless of how the indexes are created: either implicitly with the `PRIMARY KEY` and `UNIQUE` constraints, or explicitly with `CREATE INDEX`.
 
