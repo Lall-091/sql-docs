@@ -6,7 +6,7 @@ ms.author: maghan
 ms.date: 02/09/2017
 ms.service: sql
 ms.subservice: ssdt
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # How to: Write a SQL Server Unit Test that Runs within the Scope of a Single Transaction

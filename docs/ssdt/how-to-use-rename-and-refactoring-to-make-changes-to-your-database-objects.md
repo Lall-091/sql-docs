@@ -6,7 +6,7 @@ ms.author: subasak
 ms.date: 05/07/2023
 ms.service: sql
 ms.subservice: ssdt
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql.data.tools.dbrefactoring.previewdialog"
   - "sql.data.tools.editor.howto.refactoring"

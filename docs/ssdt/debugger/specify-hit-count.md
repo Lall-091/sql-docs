@@ -8,7 +8,7 @@ ms.reviewer: drskwier, maghan, randolphwest
 ms.date: 08/29/2024
 ms.service: sql
 ms.subservice: ssdt
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Specify a hit count

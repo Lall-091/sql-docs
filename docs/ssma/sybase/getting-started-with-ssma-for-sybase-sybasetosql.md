@@ -6,7 +6,7 @@ ms.author: cpichuka
 ms.date: "09/30/2017"
 ms.service: sql
 ms.subservice: ssma
-ms.topic: conceptual
+ms.topic: get-started
 ms.collection:
   - sql-migration-content
 ms.custom:

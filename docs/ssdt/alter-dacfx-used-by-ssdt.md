@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 03/15/2024
 ms.service: sql
 ms.subservice: ssdt
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - ignite-2024
 keywords: ssdt dacfx

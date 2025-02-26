@@ -6,7 +6,7 @@ ms.author: maghan
 ms.date: 02/09/2017
 ms.service: sql
 ms.subservice: ssdt
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "Microsoft.VisualStudio.Data.Tools.Project.HelpKeywords.SqlProjectDropDatabaseConfirmationDialog"
   - "sql.data.tools.dropdatabaseconfirmation.dialog"

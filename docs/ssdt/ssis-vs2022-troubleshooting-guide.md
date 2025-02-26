@@ -7,7 +7,7 @@ ms.reviewer: maghan, drskwier, mikeray
 ms.date: 09/17/2024
 ms.service: sql
 ms.subservice: ssdt
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || =azuresqldb-mi-current"
 ---
 # SSIS Projects extension for VS2022 troubleshooting guide

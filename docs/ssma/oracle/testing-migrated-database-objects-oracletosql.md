@@ -6,7 +6,7 @@ ms.author: cpichuka
 ms.date: "04/29/2021"
 ms.service: sql
 ms.subservice: ssma
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 ms.collection:
   - sql-migration-content
 ---

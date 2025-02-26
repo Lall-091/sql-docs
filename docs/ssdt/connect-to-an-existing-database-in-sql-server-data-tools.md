@@ -7,7 +7,7 @@ ms.reviewer: drskwier, randolphwest, maghan
 ms.date: 03/14/2024
 ms.service: sql
 ms.subservice: ssdt
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Connect to an existing database in SSDT

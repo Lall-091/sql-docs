@@ -6,7 +6,7 @@ ms.author: maghan
 ms.date: 02/09/2017
 ms.service: sql
 ms.subservice: ssdt
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 ---
 
 # Upgrade an Older Test Project Containing Database Unit Tests

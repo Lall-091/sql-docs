@@ -7,7 +7,7 @@ ms.reviewer: drskwier, maghan
 ms.date: 08/28/2024
 ms.service: sql
 ms.subservice: ssdt
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "SQL.DATA.TOOLS.EXECUTESTOREDPROCEDURE.DIALOG"
 ---
