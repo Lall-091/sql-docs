@@ -3,7 +3,7 @@ title: "jobs.sp_update_job (Azure Elastic Jobs) (Transact-SQL)"
 description: "jobs.sp_update_job updates a job created for the Azure Elastic Jobs service for Azure SQL Database."
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.date: 08/21/2024
+ms.date: 02/03/2025
 ms.service: azure-sql-database
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -38,23 +38,23 @@ This stored procedure shares the name of `sp_update_job` with a similar object i
 
 #### @job_name
 
-The name of the job to be updated. *job_name* is nvarchar(128).
+The name of the job to be updated. *job_name* is **nvarchar(128)**.
 
 #### @new_name
 
-The new name of the job. *new_name* is nvarchar(128).
+The new name of the job. *new_name* is **nvarchar(128)**.
 
 #### @description
 
-The description of the job. The *description* argument is nvarchar(512).
+The description of the job. The *description* argument is **nvarchar(512)**.
 
 #### @enabled
 
-Specifies whether the job's schedule is enabled (1) or not enabled (0). *@enabled* is bit.
+Specifies whether the job's schedule is enabled (1) or not enabled (0). *@enabled* is **bit**.
 
 #### @schedule_interval_type
 
-Value indicates when the job is to be executed. *schedule_interval_type* is nvarchar(50) and can be one of the following values:
+Value indicates when the job is to be executed. *schedule_interval_type* is **nvarchar(50)** and can be one of the following values:
 
 - 'Once',
 - 'Minutes',
@@ -65,17 +65,19 @@ Value indicates when the job is to be executed. *schedule_interval_type* is nvar
 
 #### @schedule_interval_count
 
-Number of *schedule_interval_count* periods to occur between each execution of the job. *schedule_interval_count* is int, with a default of `1`. The value must be greater than or equal to `1`.
+Number of *schedule_interval_count* periods to occur between each execution of the job. *schedule_interval_count* is **int**, with a default of `1`. The value must be greater than or equal to `1`.
 
 #### @schedule_start_time
 
-Date on which job execution can begin. *schedule_start_time* is DATETIME2, with the default of `0001-01-01 00:00:00.0000000`.
+Date on which job execution can begin. *schedule_start_time* is **datetime2**, with the default of `0001-01-01 00:00:00.0000000`.
 
 All times in elastic jobs are in the UTC time zone.
 
+If you specify a past date, the job will execute immediately. For more information, see [Elastic job schedules](/azure/azure-sql/database/elastic-jobs-overview?view=azuresql-db&preserve-view=true#elastic-job-schedules).
+
 #### @schedule_end_time
 
-Date on which job execution can stop. *schedule_end_time* is DATETIME2, with the default of `9999-12-31 11:59:59.0000000`.
+Date on which job execution can stop. *schedule_end_time* is **datetime2**, with the default of `9999-12-31 11:59:59.0000000`.
 
 All times in elastic jobs are in the UTC time zone.
 
