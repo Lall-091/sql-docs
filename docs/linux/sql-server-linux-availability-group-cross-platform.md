@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: 11/18/2024
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - linux-related-content
 monikerRange: ">=sql-server-2017"

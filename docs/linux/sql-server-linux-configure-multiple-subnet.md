@@ -7,7 +7,7 @@ ms.reviewer: vanto, randolphwest
 ms.date: 01/31/2024
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - linux-related-content
 ---

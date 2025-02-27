@@ -7,7 +7,7 @@ ms.reviewer: amitkh, vanto
 ms.date: 02/13/2025
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: release-notes
 ms.custom:
   - linux-related-content
 ---

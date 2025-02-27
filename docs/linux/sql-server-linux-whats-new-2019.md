@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 01/10/2024
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: whats-new
 ms.custom:
   - intro-whats-new
   - linux-related-content

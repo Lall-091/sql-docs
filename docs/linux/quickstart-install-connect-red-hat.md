@@ -7,7 +7,7 @@ ms.author: randolphwest
 ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: quickstart
 ms.custom:
   - intro-installation
   - linux-related-content

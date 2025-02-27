@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom:
   - linux-related-content
 ---

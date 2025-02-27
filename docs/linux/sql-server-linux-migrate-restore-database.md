@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: 11/18/2024
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 ms.custom:
   - intro-migration
   - linux-related-content
