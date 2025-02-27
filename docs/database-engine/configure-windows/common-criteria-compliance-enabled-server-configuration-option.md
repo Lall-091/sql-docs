@@ -7,7 +7,7 @@ ms.reviewer: dianas
 ms.date: 06/12/2024
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "common criteria compliance"
 helpviewer_keywords:

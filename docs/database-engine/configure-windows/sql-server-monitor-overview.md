@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: "03/04/2017"
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.swb.sqlservermonitor.main.f1"
 helpviewer_keywords:

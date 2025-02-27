@@ -7,7 +7,7 @@ ms.reviewer: david.pless, wiassaf
 ms.date: 08/16/2022
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Configure integrated acceleration and offloading

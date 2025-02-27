@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 07/25/2024
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 helpviewer_keywords:
   - "connections [SQL Server], firewall systems"
   - "firewall systems, [Database Engine]"

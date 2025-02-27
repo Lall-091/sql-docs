@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: "06/07/2021"
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "SQL13.SWB.SSBMSGTYPEPROPERTIES.GENERAL.F1"
   - "SQL13.SWB.SSBCONTRACTPROPERTIES.GENERAL.F1"

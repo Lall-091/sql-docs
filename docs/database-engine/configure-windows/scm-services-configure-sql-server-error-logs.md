@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 07/26/2024
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.swb.configurelogs.configureerrorlogs.f1"
 ---

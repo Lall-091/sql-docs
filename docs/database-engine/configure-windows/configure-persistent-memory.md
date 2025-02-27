@@ -7,7 +7,7 @@ ms.reviewer: mikeray
 ms.date: 09/21/2022
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Configure persistent memory (PMEM) for SQL Server on Windows

@@ -8,7 +8,7 @@ ms.date: "11/22/2024"
 ms.service: sql
 ms.subservice: configuration
 ms.custom: linux-related-content
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "PMEM"
   - "persistent memory"

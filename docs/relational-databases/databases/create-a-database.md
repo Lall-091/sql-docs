@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 07/19/2024
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "databases [SQL Server], creating"
   - "database creation [SQL Server], SQL Server Management Studio"

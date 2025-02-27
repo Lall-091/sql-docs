@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 03/27/2024
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "starting SQL Server, single-user mode"
   - "single-user mode [SQL Server]"

@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: "12/15/2016"
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "Remote WinSock"
   - "RWS"

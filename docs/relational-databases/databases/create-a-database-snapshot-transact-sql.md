@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 10/02/2023
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "database snapshots [SQL Server], creating"
 ---

@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 12/27/2024
 ms.service: sql
 ms.subservice: clr
-ms.topic: conceptual
+ms.topic: whats-new
 ms.custom:
   - intro-whats-new
 ---
