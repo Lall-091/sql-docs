@@ -4,7 +4,7 @@ description: "Create an SDK-style SQL project from an existing project."
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: maghan, randolphwest
-ms.date: 08/30/2024
+ms.date: 02/27/2025
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: how-to
@@ -38,6 +38,7 @@ SDK-style projects aren't supported by SQL Server Data Tools (SSDT) in Visual St
 - the command line
 - the SQL Database Projects extension in Visual Studio Code
 - the SQL Database Projects extension in Azure Data Studio
+- the SQL Server Data Tools, SDK-style (preview) in Visual Studio 2022
 
 ## Prerequisites
 
@@ -122,12 +123,12 @@ Modifying the project file is a manual process, best performed in a text editor.
 
 ### Required: Add the SDK reference
 
-Inside the project element, add an `Sdk` item to reference Microsoft.Build.Sql and the latest version from <https://www.nuget.org/packages/Microsoft.build.sql>.
+Inside the project element, add an `Sdk` item to reference Microsoft.Build.Sql and the latest version from <https://www.nuget.org/packages/Microsoft.build.sql> where `#.#.#` is included in the snippet below.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0">
-  <Sdk Name="Microsoft.Build.Sql" Version="0.2.0-preview" />
+  <Sdk Name="Microsoft.Build.Sql" Version="#.#.#" />
 ...
 ```
 
@@ -156,6 +157,21 @@ Example to remove if present in your `.sqlproj`:
   <Folder Include="Properties" />
 </ItemGroup>
 ```
+
+### Required: Remove Build items included by default
+
+Original SQL projects list all `.sql` files representing database objects explicitly in the project file as `<Build Include="..." />` items. In SDK-style SQL projects, any `.sql` files in the project folder tree (`**/*.sql`) are included by default, so removing the `<Build Include="...." />` items for those files is necessary to avoid build performance issues.
+
+Lines that should be removed from the project file, for example:
+
+```xml
+  <Build Include="SalesLT/Products.sql" />
+  <Build Include="SalesLT/SalesLT.sql" />
+  <Build Include="SalesLT/Categories.sql" />
+  <Build Include="SalesLT/CategoriesProductCount.sql" />
+```
+
+You should not remove `<PreDeploy Include="..." />` or `<PostDeploy Include="..." />` items, because these dictate specific behavior for those files. You should also not remove `<Build Include="..." />` items for files that are not in the SQL project folder tree.
 
 ### Optional: Remove SSDT references
 
@@ -200,6 +216,8 @@ Original SQL projects include two large blocks for Release and Debug build setti
   </PropertyGroup>
 ```
 
+The [project properties](../concepts/project-properties.md) reference lists the available properties and their defaults.
+
 ## Step 4: Build a `.dacpac` file from the modified project for comparison
 
 ::: zone pivot="sq1-visual-studio"
@@ -209,12 +227,13 @@ The SQL project is no longer compatible with Visual Studio 2022. To build or edi
 - the command line
 - the SQL Database Projects extension in Visual Studio Code
 - the SQL Database Projects extension in Azure Data Studio
+- the SQL Server Data Tools, SDK-style (preview) in Visual Studio 2022
 
 ::: zone-end
 
 ::: zone pivot="sq1-visual-studio-sdk"
 
-The project file is now in the SDK-style format, but to open it in Visual Studio 2022, you must have the SQL Server Data Tools, SDK-style (preview) installed and the project must have the file extension `.sqlprojx`. Open the project in Visual Studio 2022 with [SQL Server Data Tools, SDK-style (preview)](../../../ssdt/sql-server-data-tools-sdk-style.md) installed.
+The project file is now in the SDK-style format, but to open it in Visual Studio 2022, you must have the SQL Server Data Tools, SDK-style (preview) installed. Open the project in Visual Studio 2022 with [SQL Server Data Tools, SDK-style (preview)](../../../ssdt/sql-server-data-tools-sdk-style.md) installed.
 
 ::: zone-end
 
