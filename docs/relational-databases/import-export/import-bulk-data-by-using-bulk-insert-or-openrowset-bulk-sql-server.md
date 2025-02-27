@@ -6,7 +6,7 @@ ms.author: maghan
 ms.date: 09/19/2024
 ms.service: sql
 ms.subservice: data-movement
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "BULK INSERT statement, importing data from a remote data file"
   - "bulk importing [SQL Server], methods"

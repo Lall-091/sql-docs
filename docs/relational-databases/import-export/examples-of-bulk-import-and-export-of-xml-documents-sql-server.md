@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 06/21/2023
 ms.service: sql
 ms.subservice: data-movement
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "field terminators [SQL Server]"
   - "bulk importing [SQL Server], data formats"

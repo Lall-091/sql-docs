@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: "09/30/2016"
 ms.service: sql
 ms.subservice: data-movement
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "Unicode [SQL Server], bulk importing and exporting"
   - "data formats [SQL Server], Unicode native"

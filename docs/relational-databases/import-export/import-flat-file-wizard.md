@@ -7,7 +7,7 @@ ms.reviewer: maghan, vanto
 ms.date: 09/16/2024
 ms.service: sql
 ms.subservice: data-movement
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.swb.importflatfile.f1"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"

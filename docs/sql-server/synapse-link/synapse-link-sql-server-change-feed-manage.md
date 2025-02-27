@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: 05/24/2022
 ms.service: sql
 ms.subservice: data-movement
-ms.topic: conceptual
+ms.topic: how-to
 monikerRange: ">=sql-server-ver16 || =azuresqldb-current"
 ---
 

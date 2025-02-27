@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: "09/20/2016"
 ms.service: sql
 ms.subservice: data-movement
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "bulk importing [SQL Server], null values"
   - "bulk importing [SQL Server], default values"

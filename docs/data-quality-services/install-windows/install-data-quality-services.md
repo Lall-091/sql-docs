@@ -6,7 +6,7 @@ ms.author: sawinark
 ms.date: "09/11/2017"
 ms.service: sql
 ms.subservice: data-quality-services
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom: intro-installation
 ---
 

@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 12/20/2023
 ms.service: sql
 ms.subservice: data-movement
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "bulk exporting [SQL Server], format files"
   - "bulk importing [SQL Server], format files"

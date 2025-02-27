@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 12/20/2023
 ms.service: sql
 ms.subservice: data-movement
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "bulk importing [SQL Server], from Azure Blob Storage"
   - "Azure Blob Storage, bulk import to SQL Server"

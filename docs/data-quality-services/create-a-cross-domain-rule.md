@@ -6,7 +6,7 @@ ms.author: sawinark
 ms.date: "11/22/2011"
 ms.service: sql
 ms.subservice: data-quality-services
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.dqs.dm.testcdrule.f1"
   - "sql13.dqs.dm.cdrules.f1"
