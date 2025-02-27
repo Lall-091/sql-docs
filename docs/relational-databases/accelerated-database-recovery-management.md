@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, derekw, dfurman, randolphwest
 ms.date: 02/03/2025
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "accelerated database recovery [SQL Server], recovery-only"
   - "database recovery [SQL Server]"

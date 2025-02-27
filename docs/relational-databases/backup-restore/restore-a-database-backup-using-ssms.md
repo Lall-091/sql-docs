@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 12/08/2023
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.swb.locatebackupfileazure.f1"
   - "sql13.swb.specifybackup.f1"

@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "03/04/2017"
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Disable SQL Server Managed Backup to Microsoft Azure
  [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]

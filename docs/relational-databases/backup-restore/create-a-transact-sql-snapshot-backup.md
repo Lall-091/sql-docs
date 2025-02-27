@@ -7,7 +7,7 @@ ms.reviewer: mikeray, randolphwest
 ms.date: 08/15/2024
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "backing up databases [SQL Server], full backups"
   - "backups [SQL Server], creating"

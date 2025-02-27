@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "12/07/2022"
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "master database [SQL Server], restoring"
 ---

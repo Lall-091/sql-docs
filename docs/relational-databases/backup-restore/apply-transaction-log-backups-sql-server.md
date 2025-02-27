@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "10/23/2019"
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "restoring [SQL Server], log backups"
   - "transaction log backups [SQL Server], applying backups"

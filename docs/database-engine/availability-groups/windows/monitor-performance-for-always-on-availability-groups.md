@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "06/13/2017"
 ms.service: sql
 ms.subservice: availability-groups
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: ag-guide
 ---
 # Monitor performance for Always On availability groups

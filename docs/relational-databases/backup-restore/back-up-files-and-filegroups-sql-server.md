@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "08/03/2016"
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "backing up filegroups [SQL Server]"
   - "file backups [SQL Server], how-to topics"

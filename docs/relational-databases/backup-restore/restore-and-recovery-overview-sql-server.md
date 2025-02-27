@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 12/04/2024
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "restoring tables [SQL Server]"
   - "backups [SQL Server], restore scenarios"

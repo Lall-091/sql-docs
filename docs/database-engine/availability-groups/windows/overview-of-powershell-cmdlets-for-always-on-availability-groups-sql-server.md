@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "08/30/2017"
 ms.service: sql
 ms.subservice: availability-groups
-ms.topic: conceptual
+ms.topic: language-reference
 helpviewer_keywords:
   - "Availability Groups [SQL Server], PowerShell cmdlets"
   - "Availability Groups [SQL Server], about"

@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "07/15/2016"
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "full-text search [SQL Server], back up and restore"
   - "restoring databases [SQL Server], previous SQL Server versions"

@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "08/01/2016"
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "restoring databases [SQL Server], device restores"
   - "backup devices [SQL Server], restoring from"

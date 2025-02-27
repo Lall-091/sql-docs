@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 11/06/2023
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: article
 ---
 # SQL Server back up to URL for Microsoft Azure Blob Storage best practices and troubleshooting
 

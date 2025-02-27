@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "12/17/2019"
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ---
 

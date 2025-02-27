@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "08/09/2018"
 ms.service: sql
 ms.subservice: availability-groups
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.swb.agdashboard.f1"
 helpviewer_keywords:

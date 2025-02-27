@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "10/25/2017"
 ms.service: sql
 ms.subservice: availability-groups
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.swb.availabilitygroup.manualfailover.f1"
 helpviewer_keywords:

@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 04/25/2024
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "backing up databases [SQL Server], expiration dates"
   - "expiration [SQL Server]"

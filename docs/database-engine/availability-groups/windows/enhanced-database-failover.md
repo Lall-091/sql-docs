@@ -7,7 +7,7 @@ ms.reviewer: "mikeray"
 ms.date: 06/03/2020
 ms.service: sql
 ms.subservice: availability-groups
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "Availability Groups [SQL Server], enhanced database failover"
   - "Availability Groups [SQL Server], failover"

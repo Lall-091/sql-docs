@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "01/09/2024"
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "backing up databases [SQL Server], full backups"
   - "backing up databases [SQL Server], SQL Server Management Studio"

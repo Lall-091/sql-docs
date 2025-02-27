@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "08/17/2017"
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Delete backup blob files with active leases
 
