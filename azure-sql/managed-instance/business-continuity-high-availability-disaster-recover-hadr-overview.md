@@ -8,7 +8,7 @@ ms.reviewer: mathoma
 ms.date: 12/28/2023
 ms.service: azure-sql-managed-instance
 ms.subservice: high-availability
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: azure-sql-split, ignite-2023
 keywords:
   - "business continuity"

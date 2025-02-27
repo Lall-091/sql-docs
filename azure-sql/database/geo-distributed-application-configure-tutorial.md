@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 03/12/2019
 ms.service: azure-sql-database
 ms.subservice: high-availability
-ms.topic: conceptual
+ms.topic: tutorial
 ms.custom:
   - sqldbrb=1
   - devx-track-azurecli

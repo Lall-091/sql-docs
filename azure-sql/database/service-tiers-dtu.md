@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 09/27/2024
 ms.service: azure-sql-database
 ms.subservice: service-overview
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - references_regions
   - azure-sql-split

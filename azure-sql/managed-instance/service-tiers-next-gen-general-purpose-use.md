@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 05/27/2024
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Use Next-gen General Purpose service tier (preview) - Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

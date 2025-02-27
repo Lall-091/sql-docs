@@ -8,7 +8,7 @@ ms.reviewer: mathoma
 ms.date: 09/02/2020
 ms.service: azure-sql
 ms.subservice: development
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: sqldbrb=2
 monikerRange: "= azuresql || = azuresql-db || = azuresql-mi"
 ---

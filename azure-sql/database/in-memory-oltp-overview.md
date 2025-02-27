@@ -7,7 +7,7 @@ ms.reviewer: mathoma
 ms.date: 09/19/2024
 ms.service: azure-sql-database
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article 
 ms.custom:
   - sqldbrb=2
 monikerRange: "=azuresql||=azuresql-db"

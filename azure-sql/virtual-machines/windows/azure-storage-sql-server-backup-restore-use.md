@@ -7,7 +7,7 @@ ms.reviewer: mathoma
 ms.date: 06/18/2024
 ms.service: azure-vm-sql-server
 ms.subservice: backup
-ms.topic: conceptual
+ms.topic: how-to
 tags: azure-service-management
 ---
 # Use Azure Storage for SQL Server backup and restore

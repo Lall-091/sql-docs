@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma, moslake, randolphwest
 ms.date: 07/22/2024
 ms.service: azure-sql-database
 ms.subservice: service-overview
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 ---
 # Migrate Azure SQL Database from the DTU-based model to the vCore-based model
 

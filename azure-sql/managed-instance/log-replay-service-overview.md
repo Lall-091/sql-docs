@@ -7,7 +7,7 @@ ms.reviewer: mathoma
 ms.date: 10/30/2024
 ms.service: azure-sql-managed-instance
 ms.subservice: migration
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection:
   - sql-migration-content
 ---

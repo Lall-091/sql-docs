@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 09/05/2024
 ms.service: azure-sql-database
 ms.subservice: scale-out
-ms.topic: conceptual
+ms.topic: concept-article 
 ms.custom:
   - sqldbrb=1
 ---

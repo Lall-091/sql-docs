@@ -8,7 +8,7 @@ ms.reviewer: wiassaf, vanto, mathoma
 ms.date: 11/19/2024
 ms.service: azure-sql-database
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Network Security Perimeter for Azure SQL Database and Azure Synapse Analytics

@@ -8,7 +8,7 @@ ms.date: 02/15/2023
 ms.service: azure-sql-database
 ms.subservice: security
 ms.custom:
-ms.topic: conceptual
+ms.topic: tutorial
 ---
 # Getting started using Always Encrypted with secure enclaves
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

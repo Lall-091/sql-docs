@@ -8,7 +8,7 @@ ms.reviewer: mathoma, randolphwest
 ms.date: 02/04/2024
 ms.service: azure-sql-managed-instance
 ms.subservice: data-movement
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: ignite-2023, build-2024
 ---
 

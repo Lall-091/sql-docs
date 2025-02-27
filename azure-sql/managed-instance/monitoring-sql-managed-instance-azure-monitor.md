@@ -7,7 +7,7 @@ ms.reviewer: wiassaf
 ms.date: 08/23/2024
 ms.service: azure-sql-managed-instance
 ms.subservice: monitoring
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - horz-monitor
 ---

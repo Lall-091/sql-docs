@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 12/04/2018
 ms.service: azure-sql-database
 ms.subservice: scale-out
-ms.topic: conceptual
+ms.topic: glossary
 ms.custom: sqldbrb=1
 ---
 # Elastic Database tools glossary

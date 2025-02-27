@@ -7,7 +7,7 @@ ms.reviewer: urmilano, mathoma, randolphwest
 ms.date: 09/22/2024
 ms.service: azure-sql-managed-instance
 ms.subservice: high-availability
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Configure zone redundancy - Azure SQL Managed Instance
 

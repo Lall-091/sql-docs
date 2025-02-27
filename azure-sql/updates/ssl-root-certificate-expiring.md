@@ -8,7 +8,7 @@ ms.reviewer: mathoma, vanto
 ms.date: 10/11/2023
 ms.service: azure-sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Understanding the changes in the Root CA change for Azure SQL Database & SQL Managed Instance

@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 10/12/2023
 ms.service: azure-sql-database
 ms.subservice: service-overview
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Create a zone-redundant Hyperscale database

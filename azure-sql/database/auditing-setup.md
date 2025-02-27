@@ -8,7 +8,7 @@ ms.reviewer: mathoma, vanto
 ms.date: 09/17/2024
 ms.service: azure-sql-database
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Set up Auditing for Azure SQL Database and Azure Synapse Analytics
 

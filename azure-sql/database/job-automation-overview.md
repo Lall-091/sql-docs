@@ -7,7 +7,7 @@ ms.author: wiassaf
 ms.reviewer: srinia, mathoma
 ms.date: 04/09/2024
 ms.service: azure-sql
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: sqldbrb=1
 dev_langs:
   - "TSQL"

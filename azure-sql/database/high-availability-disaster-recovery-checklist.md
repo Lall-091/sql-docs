@@ -7,7 +7,7 @@ ms.reviewer: rsetlem, mathoma
 ms.date: 12/15/2023
 ms.service: azure-sql-database
 ms.subservice: high-availability
-ms.topic: conceptual
+ms.topic: checklist
 ---
 # High availability and disaster recovery checklist - Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

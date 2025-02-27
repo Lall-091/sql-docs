@@ -9,7 +9,7 @@ ms.date: 09/27/2023
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
 ms.custom: has-azure-ad-ps-ref, azure-ad-ref-level-one-done
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 

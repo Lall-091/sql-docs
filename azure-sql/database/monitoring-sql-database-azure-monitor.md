@@ -7,7 +7,7 @@ ms.reviewer: mathoma, dfurman
 ms.date: 08/23/2024
 ms.service: azure-sql-database
 ms.subservice: monitoring
-ms.topic: conceptual
+ms.topic: concept-article 
 ms.custom:
   - horz-monitor
 ---

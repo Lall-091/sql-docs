@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 08/28/2023
 ms.service: azure-sql-managed-instance
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 ms.custom: sqldbrb=2
 ---
 # Use Resource Health to troubleshoot connectivity for Azure SQL Managed Instance

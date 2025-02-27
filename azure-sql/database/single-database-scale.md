@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma, randolphwest
 ms.date: 12/04/2024
 ms.service: azure-sql-database
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article 
 ms.custom:
   - sqldbrb=1
   - references_regions

@@ -8,7 +8,7 @@ ms.reviewer: wiassaf, mathoma, randolphwest
 ms.date: 12/04/2024
 ms.service: azure-sql-database
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 ms.custom:
   - ignite-2024
 dev_langs:

@@ -7,7 +7,7 @@ ms.reviewer: mathoma, hudequei
 ms.date: 09/23/2024
 ms.service: azure-sql-database
 ms.subservice: sql-data-sync
-ms.topic: conceptual
+ms.topic: best-practice
 ms.custom:
   - sqldbrb=1
 ---

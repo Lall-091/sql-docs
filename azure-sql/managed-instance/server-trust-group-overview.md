@@ -8,7 +8,7 @@ ms.reviewer: mathoma
 ms.date: 11/02/2021
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Set up trust between instances with server trust group (Azure SQL Managed Instance)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

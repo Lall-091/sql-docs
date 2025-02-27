@@ -7,7 +7,7 @@ ms.reviewer: mathoma, randolphwest
 ms.date: 12/04/2024
 ms.service: azure-sql-database
 ms.subservice: replication
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - intro-overview
 helpviewer_keywords:

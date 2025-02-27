@@ -8,7 +8,7 @@ ms.reviewer: mathoma
 ms.date: 04/19/2022
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: sqldbrb=1
 dev_langs:
   - TSQL

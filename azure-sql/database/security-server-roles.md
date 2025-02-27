@@ -8,7 +8,7 @@ ms.reviewer: wiassaf, vanto, mathoma, randolphwest
 ms.date: 05/09/2024
 ms.service: azure-sql-database
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article 
 ---
 
 # Azure SQL Database server roles for permission management

@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, vanto, mathoma
 ms.date: 09/27/2023
 ms.service: azure-sql-database
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - active directory
   - has-adal-ref

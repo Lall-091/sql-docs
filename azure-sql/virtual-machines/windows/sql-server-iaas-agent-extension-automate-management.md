@@ -7,7 +7,7 @@ ms.reviewer: mathoma
 ms.date: 12/19/2024
 ms.service: azure-vm-sql-server
 ms.subservice: management
-ms.topic: conceptual
+ms.topic: concept-article
 tags: azure-resource-manager
 ---
 # Automate management with the Windows SQL Server IaaS Agent extension

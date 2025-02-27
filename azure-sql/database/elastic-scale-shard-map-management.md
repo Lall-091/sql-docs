@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 01/25/2019
 ms.service: azure-sql-database
 ms.subservice: scale-out
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: sqldbrb=1
 ---
 

@@ -8,7 +8,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 03/06/2024
 ms.service: azure-sql-database
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - sqldbrb=1
   - devx-track-azurecli

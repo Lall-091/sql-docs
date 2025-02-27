@@ -7,7 +7,7 @@ ms.reviewer: mathoma, blakhani
 ms.date: 07/02/2024
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
-ms.topic: conceptual
+ms.topic: best-practice
 monikerRange: "= azuresql-mi"
 ---
 # Manage file space for databases in Azure SQL Managed Instance
