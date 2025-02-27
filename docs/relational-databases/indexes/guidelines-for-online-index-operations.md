@@ -4,7 +4,7 @@ description: Guidelines for online index operations.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 02/17/2025
+ms.date: 02/27/2025
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: conceptual
@@ -77,7 +77,7 @@ Although we recommend online operations, you should evaluate your environment an
 
 On multiprocessor computers that are running [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] and later versions, index operations can use parallelism to perform the scan and sort operations associated with the index statement. You can use the `MAXDOP` index option to control the degree of parallelism of the online index operation. In this way, you can balance the resources that are used by index operation with resources of the concurrent users. For more information, see [Configure parallel index operations](configure-parallel-index-operations.md). For more information about the editions of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] that support parallel index operations, see [Editions and supported features of SQL Server 2022](../../sql-server/editions-and-components-of-sql-server-2022.md).
 
-Because a schema stability (`Sch-S`) lock or a schema modification (`Sch-M`) lock is held in the final phase of the index operation, be careful when you run an online index operation inside an explicit user transaction, such as `BEGIN TRANSACTION ... COMMIT` block. Doing this causes the locks to be held until the end of the transaction, potentially blocking other workloads.
+Because a shared (`S`) lock or a schema modification (`Sch-M`) lock is held in the final phase of the index operation, be careful when you run an online index operation inside an explicit user transaction, such as `BEGIN TRANSACTION ... COMMIT` block. Doing this causes the locks to be held until the end of the transaction, potentially blocking other workloads.
 
 If index page locks are disabled using `ALLOW_PAGE_LOCKS=OFF`, online index rebuild can increase index fragmentation when it runs with `MAXDOP` greater than 1. For more information, see [How It Works: Online Index Rebuild - Can Cause Increased Fragmentation](/archive/blogs/psssql/how-it-works-online-index-rebuild-can-cause-increased-fragmentation).
 
