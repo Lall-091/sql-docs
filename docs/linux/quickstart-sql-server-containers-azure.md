@@ -1,5 +1,5 @@
 ---
-title: "Quickstart: Deploy a SQL Server Container Cluster on Azure"
+title: "Quickstart: Deploy a SQL Server Container Cluster on Azure Kubernetes Services or Red Hat OpenShift"
 description: This tutorial shows how to deploy a SQL Server high availability solution with Azure Kubernetes Service or Azure Red Hat OpenShift.
 author: rwestMSFT
 ms.author: randolphwest
@@ -12,7 +12,7 @@ ms.custom:
   - intro-deployment
   - linux-related-content
 ---
-# Quickstart: Deploy a SQL Server container cluster on Azure
+# Quickstart: Deploy a SQL Server container cluster on Azure or Red Hat OpenShift
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
