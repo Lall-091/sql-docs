@@ -4,7 +4,7 @@ description: Tips and tricks for navigating the SQL Server technical documentati
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest, wiassaf
-ms.date: 11/04/2024
+ms.date: 02/28/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: conceptual
@@ -34,11 +34,11 @@ If you'd like to create a PDF, select the **Download PDF** link found at the bot
 
 ## TOC symbols
 
-Entries in the table of contents (TOC) that have a `>` at the end of the entry indicate that you'll be taken to technical documentation with a different table of contents.
+Entries in the table of contents (TOC) that have a `>` at the end of the entry indicate that you're taken to technical documentation with a different table of contents.
 
 :::image type="content" source="media/sql-server-docs-navigation-guide/single-carrots-in-sql-docs-toc.png" alt-text="Screenshot showing a single chevron item in table of contents.":::
 
-Entries in the TOC marked with `>>` indicate that you'll be taken to a different website.
+Entries in the TOC marked with `>>` indicate that you're taken to a different website.
 
 :::image type="content" source="media/sql-server-docs-navigation-guide/double-carrots-in-sql-docs-toc.png" alt-text="Screenshot showing double-chevron table of contents navigation markers.":::
 
@@ -62,7 +62,7 @@ You can use the [version filter](versioning-system-monikers-ui-sql-server.md) to
 
 ## Breadcrumbs
 
-Breadcrumbs can be found below the header and above the table of contents, and indicate where the current article is located in the table of contents.  Not only does this help set the context to what type of content you're reading, but it also allows you to navigate back up the table of contents tree:
+Breadcrumbs can be found below the header and above the table of contents, and indicate where the current article is located in the table of contents. Not only does this help set the context to what type of content you're reading, but it also allows you to navigate back up the table of contents tree:
 
 :::image type="content" source="media/sql-server-docs-navigation-guide/sql-docs-bread-crumbs.gif" alt-text="Screenshot showing the SQL Docs breadcrumbs.":::
 
@@ -80,9 +80,9 @@ The SQL Docs content covers several product lines that work on-premises and in t
 
 | Product | Deployment model | Description |
 | --- | --- | --- |
-| **SQL Server** | On-premises <sup>1</sup>, Azure Virtual Machines <sup>3</sup>, Linux containers <sup>1</sup> | This is [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] that you have full control over. You can install SQL Server on Windows or [Linux](../linux/sql-server-linux-overview.md), deploy it in [a Linux container](../linux/sql-server-linux-overview.md#container-images), or deploy it on an [Azure Virtual Machine](/azure/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview) or other virtual machine platform. You may previously have referred to this as the *boxed product*.<br /><br />Supported versions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] depend on your license agreement, but for the purposes of this documentation, we mean [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] and later versions. Documentation for [!INCLUDE [sssql14-md](../includes/sssql14-md.md)] and previous versions is available at [Previous versions of SQL Server documentation](previous-versions-sql-server.md). To find out which versions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] are currently supported, see [SQL Server end of support options](end-of-support/sql-server-end-of-support-overview.md).<br /><br />**Important:** Doesn't include Azure SQL support. If an article relates to [Azure SQL products](/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview), those products are listed separately in the "Applies to" section. |
-| **Azure SQL Database** | Fully managed <sup>2</sup> | [Azure SQL Database](/azure/azure-sql/database/) is a single database, or part of an elastic pool. SQL Database is a fully managed platform-as-a-service (PaaS) database engine that handles most database management functions such as upgrading, patching, backups, and monitoring, without user involvement. An Azure SQL logical server provide server-level principals such as logins to multiple Azure SQL databases.|
-| **Azure SQL Managed Instance** | Fully managed <sup>2</sup> | [Azure SQL Managed Instance](/azure/azure-sql/managed-instance/) is a fully managed database instance. SQL Managed Instance combines the broadest SQL Server database engine compatibility with all the benefits of a fully managed and evergreen platform-as-a-service (PaaS). SQL Managed Instance has near 100 percent compatibility with the latest SQL Server (Enterprise Edition) database engine.<br /><br />**Important:** Although SQL Managed Instance shares many features with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], there are [some incompatibilities](/azure/azure-sql/managed-instance/transact-sql-tsql-differences-sql-server), especially prior to [!INCLUDE [sssql22-md](../includes/sssql22-md.md)]. |
+| **SQL Server** | On-premises <sup>1</sup>, Azure Virtual Machines <sup>3</sup>, Linux containers <sup>1</sup> | This is [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] that you have full control over. You can install SQL Server on Windows or [Linux](../linux/sql-server-linux-overview.md), deploy it in [a Linux container](../linux/sql-server-linux-overview.md#container-images), or deploy it on an [Azure Virtual Machine](/azure/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview) or other virtual machine platform. You might previously have referred to this as the *boxed product*.<br /><br />Supported versions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] depend on your license agreement, but for the purposes of this documentation, we mean [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] and later versions. Documentation for [!INCLUDE [sssql14-md](../includes/sssql14-md.md)] and previous versions is available at [Previous versions of SQL Server documentation](previous-versions-sql-server.md). To find out which versions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] are currently supported, see [SQL Server end of support options](end-of-support/sql-server-end-of-support-overview.md).<br /><br />**Important:** Doesn't include Azure SQL support. If an article relates to [Azure SQL products](/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview), those products are listed separately in the "Applies to" section. |
+| **Azure SQL Database** | Fully managed <sup>2</sup> | [Azure SQL Database](/azure/azure-sql/database/) is a single database, or part of an elastic pool. SQL Database is a fully managed platform-as-a-service (PaaS) database engine that handles most database management functions such as upgrading, patching, backups, and monitoring, without user involvement. An Azure SQL logical server provides server-level principals such as logins to multiple Azure SQL databases.|
+| **Azure SQL Managed Instance** | Fully managed <sup>2</sup> | [Azure SQL Managed Instance](/azure/azure-sql/managed-instance/) is a fully managed database instance. SQL Managed Instance combines the broadest SQL Server database engine compatibility with all the benefits of a fully managed and evergreen platform-as-a-service (PaaS). SQL Managed Instance has near 100 percent compatibility with the latest SQL Server (Enterprise Edition) database engine.<br /><br />**Important:** Although SQL Managed Instance shares many features with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], there are [some incompatibilities](/azure/azure-sql/managed-instance/transact-sql-tsql-differences-sql-server), especially before [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] was released. |
 | **Analytics Platform System (PDW)** | On-premises, Fully managed <sup>2</sup> | [Microsoft Analytics Platform System (APS)](../analytics-platform-system/home-analytics-platform-system-aps-pdw.md) is a data platform designed for data warehousing and Big Data analytics, offers deep data integration, high-speed query processing, highly scalable storage, and simple maintenance for your end-to-end business intelligence solutions. Analytics Platform System hosts SQL Server Parallel Data Warehouse (PDW), which is the software that runs the massively parallel processing (MPP) data warehouse. |
 | **Azure SQL Edge** | *Connected* mode using Azure IoT Edge, or *disconnected* mode in a Linux container | [Azure SQL Edge](/azure/azure-sql-edge/overview) is an optimized relational database engine geared for IoT and IoT Edge deployments. It provides capabilities to create a high-performance data storage and processing layer for IoT applications and solutions. It shares the same database engine as [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], and includes additional time-series and analytics features. |
 | **Azure Database for MariaDB** | Fully managed <sup>2</sup> | A relational database service based on the MariaDB open-source database engine. A fully managed database-as-a-service (DBaaS) that can handle mission-critical workloads with predictable performance, security, high availability, and dynamic scalability. |
@@ -102,15 +102,13 @@ The SQL Docs content covers several product lines that work on-premises and in t
 
 ## Submit docs feedback
 
-If you find something wrong within an article, you can submit feedback to the SQL Content team for that article by scrolling down to the bottom of the page and selecting **Content feedback**.
+If you find something wrong within an article, you can submit feedback to the Data Docs content team for that article by scrolling down to the bottom of the page and selecting **Yes** or **No** in the **Feedback** section.
 
-:::image type="content" source="media/sql-server-get-help/git-issues.png" alt-text="Screenshot showing GitHub issue content feedback.":::
-
-You can also submit general documentation feedback and suggestions at <https://aka.ms/sqldocsfeedback>.
+:::image type="content" source="media/sql-server-get-help/feedback.png" alt-text="Screenshot of article feedback.":::
 
 [!INCLUDE [contribute-to-content](../includes/paragraph-content/contribute-to-content.md)]
 
-:::image type="content" source="media/sql-server-docs-navigation-guide/edit-sql-docs.gif" alt-text="Screenshot showing the option to edit SQL Docs.":::
+:::image type="content" source="media/sql-server-docs-navigation-guide/edit-sql-docs.gif" alt-text="Screenshot showing the option to edit Data Docs.":::
 
 ## Related content
 
