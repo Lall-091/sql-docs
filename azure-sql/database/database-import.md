@@ -169,8 +169,7 @@ To cancel the import operation, you need to be a member of one of the following 
 
 ## Limitations
 
-- Importing to a database in elastic pool isn't supported through Azure Import and Export Portal. You can import data into a single database and then move the database to an elastic pool or use [SQLPackage Import.](/sql/tools/sqlpackage/sqlpackage-import?view=sql-server-ver16)
-
+- Importing to a database in elastic pool isn't supported through the Azure Import and Export Portal. Instead, use [SQLPackage Import](/sql/tools/sqlpackage/sqlpackage-import), or import data into a single database and then move the database to an elastic pool.
 - Import Export Service does not work when Allow access to Azure services is set to OFF. However, you can work around the problem by manually running SqlPackage from an Azure VM, or performing the export directly in your code by using the DacFx API.
 - Import does not support specifying a backup storage redundancy while creating a new database and creates with the default geo-redundant backup storage redundancy. To work around, first create an empty database with desired backup storage redundancy using Azure portal or PowerShell and then import the bacpac into this empty database.
 - Storage behind a firewall is currently not supported.
