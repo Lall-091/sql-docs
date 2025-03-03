@@ -415,9 +415,6 @@
         ],
         "ado/**/*.md": [
           "sql-server-ver15"
-        ],
-        "big-data-cluster/**/*.md": [
-          "sql-server-ver15"
         ]
       }
     },

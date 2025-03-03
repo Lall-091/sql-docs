@@ -9360,6 +9360,8 @@ items:
           href: sql-server/azure-arc/rotate-certificates.md
         - name: Enable Defender
           href: /azure/defender-for-cloud/defender-for-sql-usage?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
+        - name: Set up Microsoft Entra authentication | Azure Arc
+          href: sql-server/azure-arc/entra-authentication-setup-tutorial.md
         - name: Register Purview
           href: /purview/register-scan-azure-arc-enabled-sql-server?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
         - name: Roles, permissions, & files

@@ -110,17 +110,17 @@ CREATE AVAILABILITY GROUP group_name
 
 #### *group_name*
 
-Specifies the name of the new availability group. *group_name* must be a valid [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)][identifier](../../relational-databases/databases/database-identifiers.md), and it must be unique across all availability groups in the WSFC cluster. The maximum length for an availability group name is 128 characters.  
+Specifies the name of the new availability group. *group_name* must be a valid [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)][identifier](../../relational-databases/databases/database-identifiers.md), and it must be unique across all availability groups in the WSFC cluster. The maximum length for an availability group name is 128 characters for `cluster_type = WSFC` and 64 characters for `cluster_type = NONE` and `EXTERNAL`.
 
 #### AUTOMATED_BACKUP_PREFERENCE = { PRIMARY \| SECONDARY_ONLY \| SECONDARY \| NONE }  
 
-Specifies a preference about how a backup job should evaluate the primary replica when choosing where to perform backups. You can script a given backup job to take the automated backup preference into account. It is important to understand that the preference is not enforced by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], so it has no impact on ad hoc backups.  
+Specifies a preference about how a backup job should evaluate the primary replica when choosing where to perform backups. You can script a given backup job to take the automated backup preference into account. It's important to understand that the preference isn't enforced by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], so it has no impact on ad hoc backups.  
   
 The supported values are as follows:  
   
 ##### PRIMARY  
 
-Specifies that the backups should always occur on the primary replica. This option is useful if you need backup features, such as creating differential backups, that are not supported when backup is run on a secondary replica.  
+Specifies that the backups should always occur on the primary replica. This option is useful if you need backup features, such as creating differential backups, that aren't supported when backup is run on a secondary replica.  
   
 > [!IMPORTANT]  
 >  If you plan to use log shipping to prepare any secondary databases for an availability group, set the automated backup preference to **Primary** until all the secondary databases have been prepared and joined to the availability group.  
@@ -138,10 +138,10 @@ Specifies that backups should occur on a secondary replica except when the prima
 Specifies that you prefer that backup jobs ignore the role of the availability replicas when choosing the replica to perform backups. Note backup jobs might evaluate other factors such as backup priority of each availability replica in combination with its operational state and  connected state.  
   
 > [!IMPORTANT]  
->  There is no enforcement of the AUTOMATED_BACKUP_PREFERENCE setting. The interpretation of this preference depends on the logic, if any, that you script into back jobs for the databases in a given availability group. The automated backup preference setting has no impact on ad hoc backups. For more information, see [Configure Backup on Availability Replicas &#40;SQL Server&#41;](../../database-engine/availability-groups/windows/configure-backup-on-availability-replicas-sql-server.md).  
+>  There's no enforcement of the AUTOMATED_BACKUP_PREFERENCE setting. The interpretation of this preference depends on the logic, if any, that you script into back jobs for the databases in a given availability group. The automated backup preference setting has no impact on ad hoc backups. For more information, see [Configure Backup on Availability Replicas &#40;SQL Server&#41;](../../database-engine/availability-groups/windows/configure-backup-on-availability-replicas-sql-server.md).  
   
 > [!NOTE]  
->  To view the automated backup preference of an existing availability group, select the **automated_backup_preference** or **automated_backup_preference_desc** column of the [sys.availability_groups](../../relational-databases/system-catalog-views/sys-availability-groups-transact-sql.md) catalog view. Additionally, [sys.fn_hadr_backup_is_preferred_replica  &#40;Transact-SQL&#41;](../../relational-databases/system-functions/sys-fn-hadr-backup-is-preferred-replica-transact-sql.md) can be used to determine the preferred backup replica.  This function returns 1 for at least one of the replicas, even when `AUTOMATED_BACKUP_PREFERENCE = NONE`.  
+>  To view the automated backup preference of an existing availability group, select the **automated_backup_preference** or **automated_backup_preference_desc** column of the [sys.availability_groups](../../relational-databases/system-catalog-views/sys-availability-groups-transact-sql.md) catalog view. Additionally, [sys.fn_hadr_backup_is_preferred_replica  &#40;Transact-SQL&#41;](../../relational-databases/system-functions/sys-fn-hadr-backup-is-preferred-replica-transact-sql.md) can be used to determine the preferred backup replica. This function returns 1 for at least one of the replicas, even when `AUTOMATED_BACKUP_PREFERENCE = NONE`.  
   
 #### FAILURE_CONDITION_LEVEL = { 1 \| 2 \| 3 \| 4 \| 5 }  
 
@@ -158,15 +158,15 @@ The failure-condition levels (1-5) range from the least restrictive, level 1, to
 |5|Specifies that an automatic failover should be initiated on any qualified failure conditions, including:<br /><br /> -Exhaustion of SQL Engine worker-threads.<br /><br /> -Detection of an unsolvable deadlock.|  
   
 > [!NOTE]  
->  Lack of response by an instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to client requests is not relevant to availability groups.  
+>  Lack of response by an instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to client requests isn't relevant to availability groups.  
   
 The FAILURE_CONDITION_LEVEL and HEALTH_CHECK_TIMEOUT values, define a *flexible failover policy* for a given group. This flexible failover policy provides you with granular control over what conditions must cause an automatic failover. For more information, see [Flexible Failover Policy for Automatic Failover of an availability group &#40;SQL Server&#41;](../../database-engine/availability-groups/windows/configure-flexible-automatic-failover-policy.md).  
   
 #### HEALTH_CHECK_TIMEOUT = *milliseconds*  
 
-Specifies the wait time (in milliseconds) for the [sp_server_diagnostics](../../relational-databases/system-stored-procedures/sp-server-diagnostics-transact-sql.md) system stored procedure to return server-health information before the WSFC cluster assumes that the server instance is slow or not responding. HEALTH_CHECK_TIMEOUT is set at the group level but is relevant only on availability replicas that are configured for synchronous-commit availability mode with automatic failover (AVAILABILITY_MODE **=** SYNCHRONOUS_COMMIT).  Furthermore, a health-check timeout can trigger an automatic failover only if both the primary and secondary replicas are configured for automatic failover mode (FAILOVER_MODE **=** AUTOMATIC) and the secondary replica is currently synchronized with the primary replica.  
+Specifies the wait time (in milliseconds) for the [sp_server_diagnostics](../../relational-databases/system-stored-procedures/sp-server-diagnostics-transact-sql.md) system stored procedure to return server-health information before the WSFC cluster assumes that the server instance is slow or not responding. HEALTH_CHECK_TIMEOUT is set at the group level but is relevant only on availability replicas that are configured for synchronous-commit availability mode with automatic failover (AVAILABILITY_MODE **=** SYNCHRONOUS_COMMIT). Furthermore, a health-check timeout can trigger an automatic failover only if both the primary and secondary replicas are configured for automatic failover mode (FAILOVER_MODE **=** AUTOMATIC) and the secondary replica is currently synchronized with the primary replica.  
   
-The default HEALTH_CHECK_TIMEOUT value is 30000 milliseconds (30 seconds). The minimum value is 15000 milliseconds (15 seconds), and the maximum value is 4294967295 milliseconds.  
+The default HEALTH_CHECK_TIMEOUT value is 30000 milliseconds (30 seconds). The minimum value is 15,000 milliseconds (15 seconds), and the maximum value is 4,294,967,295 milliseconds.  
   
 > [!IMPORTANT]  
 >  **sp_server_diagnostics** does not perform health checks at the database level.  
@@ -193,13 +193,13 @@ Used to create a basic availability group. Basic availability groups are limited
 
 **Applies to:** [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE[sssql16-md](../../includes/sssql16-md.md)])
 
-Used to create a distributed availability group. This option is used with the AVAILABILITY GROUP ON parameter to connect two availability groups in separate Windows Server Failover Clusters.  For more information, see [Distributed availability groups &#40;Always On availability groups&#41;](../../database-engine/availability-groups/windows/distributed-availability-groups.md). Distributed availability groups are supported beginning in [!INCLUDE[sssql16-md](../../includes/sssql16-md.md)]. 
+Used to create a distributed availability group. This option is used with the AVAILABILITY GROUP ON parameter to connect two availability groups in separate Windows Server Failover Clusters. For more information, see [Distributed availability groups &#40;Always On availability groups&#41;](../../database-engine/availability-groups/windows/distributed-availability-groups.md). Distributed availability groups are supported beginning in [!INCLUDE[sssql16-md](../../includes/sssql16-md.md)]. 
 
 #### CONTAINED [REUSE_SYSTEM_DATABASES]
 
 Introduced in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)].
 
-Create a contained availability group.  This option is used to create an availability group with its own `master` and `msdb` databases, which are kept in sync across the set of replicas in the availability group.  
+Create a contained availability group. This option is used to create an availability group with its own `master` and `msdb` databases, which are kept in sync across the set of replicas in the availability group.  
 The REUSE_SYSTEM_DATABASES option causes the contained `master` and `msdb` databases from a prior version of the availability group to be used in the creation of this new availability group. For more information on contained availability groups, see [Contained availability group Overview &#40;Always On availability groups&#41;](../../database-engine/availability-groups/windows/contained-availability-groups-overview.md).
 
 #### REQUIRED_SYNCHRONIZED_SECONDARIES_TO_COMMIT
@@ -214,7 +214,7 @@ Introduced in [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)]. Sets a mini
 - Minimum: 0.
 - Maximum: Number of replicas minus 1.
 
-REQUIRED_SYNCHRONIZED_SECONDARIES_TO_COMMIT relates to replicas in synchronous commit mode. When replicas are in synchronous commit mode, writes on the primary replica wait until writes on synchronous replicas commit to the replica database transaction log. If a SQL Server that hosts a secondary synchronous replica stops responding, the SQL Server that hosts the primary replica marks that secondary replica as NOT SYNCHRONIZED and proceeds. When the unresponsive database comes back online it will be in a "not synced" state and the replica is marked as unhealthy until the primary can synchronize it again. This setting guarantees that the primary replica does not proceed until the minimum number of replicas have committed each transaction. If the minimum number of replicas is not available, then commits on the primary fail. For cluster type `EXTERNAL` the setting is changed when the availability group is added to a cluster resource. See [High availability and data protection for availability group configurations](../../linux/sql-server-linux-availability-group-ha.md).
+REQUIRED_SYNCHRONIZED_SECONDARIES_TO_COMMIT relates to replicas in synchronous commit mode. When replicas are in synchronous commit mode, writes on the primary replica wait until writes on synchronous replicas commit to the replica database transaction log. If a SQL Server that hosts a secondary synchronous replica stops responding, the SQL Server that hosts the primary replica marks that secondary replica as NOT SYNCHRONIZED and proceeds. When the unresponsive database comes back online, it will be in a "not synced" state and the replica is marked as unhealthy until the primary can synchronize it again. This setting guarantees that the primary replica does not proceed until the minimum number of replicas have committed each transaction. If the minimum number of replicas isn't available, then commits on the primary fail. For cluster type, `EXTERNAL` the setting is changed when the availability group is added to a cluster resource. See [High availability and data protection for availability group configurations](../../linux/sql-server-linux-availability-group-ha.md).
 
 Not supported for CREATE AVAILABILITY GROUP. Beginning with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], you can use ALTER AVAILABILITY GROUP to set REQUIRED_SYNCHRONIZED_SECONDARIES_TO_COMMIT on a distributed availability group. See [ALTER AVAILABILITY GROUP (Transact-SQL)](alter-availability-group-transact-sql.md).
 
@@ -222,11 +222,11 @@ Not supported for CREATE AVAILABILITY GROUP. Beginning with [!INCLUDE [sssql22-m
 
 **Applies to:** [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE[sssql17-md](../../includes/sssql17-md.md)]).
 
-Used to identify if the availability group is on a Windows Server Failover Cluster (WSFC).  Set to WSFC when availability group is on a failover cluster instance on a Windows Server failover cluster. Set to EXTERNAL when the cluster is managed by a cluster manager that is not a Windows Server failover cluster, like Linux Pacemaker. Set to NONE when availability group not using WSFC for cluster coordination. For example, when an availability group includes Linux servers with no cluster manager. 
+Used to identify if the availability group is on a Windows Server Failover Cluster (WSFC). Set to WSFC when availability group is on a failover cluster instance on a Windows Server failover cluster. Set to EXTERNAL when the cluster is managed by a cluster manager that isn't a Windows Server failover cluster, like Linux Pacemaker. Set to NONE when availability group not using WSFC for cluster coordination. For example, when an availability group includes Linux servers with no cluster manager. 
 
 #### DATABASE *database_name*  
 
-Specifies a list of one or more user databases on the local [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance (that is, the server instance on which you are creating the availability group). You can specify multiple databases for an availability group, but each database can belong to only one availability group. For information about the type of databases that an availability group can support, see [Prerequisites, Restrictions, and Recommendations for Always On availability groups &#40;SQL Server&#41;](../../database-engine/availability-groups/windows/prereqs-restrictions-recommendations-always-on-availability.md). To find out which local databases already belong to an availability group, see the **replica_id** column in the [sys.databases](../../relational-databases/system-catalog-views/sys-databases-transact-sql.md) catalog view.  
+Specifies a list of one or more user databases on the local [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance (that is, the server instance on which you're creating the availability group). You can specify multiple databases for an availability group, but each database can belong to only one availability group. For information about the type of databases that an availability group can support, see [Prerequisites, Restrictions, and Recommendations for Always On availability groups &#40;SQL Server&#41;](../../database-engine/availability-groups/windows/prereqs-restrictions-recommendations-always-on-availability.md). To find out which local databases already belong to an availability group, see the **replica_id** column in the [sys.databases](../../relational-databases/system-catalog-views/sys-databases-transact-sql.md) catalog view.  
   
 The DATABASE clause is optional. If you omit it, the new availability group is empty.  
   
@@ -237,16 +237,16 @@ After you have created the availability group, connect to each server instance t
   
 #### REPLICA ON
 
-Specifies from one to five SQL Server instances to host availability replicas in the new availability group.  Each replica is specified by its server instance address followed by a WITH (...) clause. Minimally, you must specify your local server instance, which becomes the initial primary replica. Optionally, you can also specify up to four secondary replicas.  
+Specifies from one to five SQL Server instances to host availability replicas in the new availability group. Each replica is specified by its server instance address followed by a WITH (...) clause. Minimally, you must specify your local server instance, which becomes the initial primary replica. Optionally, you can also specify up to four secondary replicas.  
   
  You need to join every secondary replica to the availability group. For more information, see [ALTER AVAILABILITY GROUP &#40;Transact-SQL&#41;](../../t-sql/statements/alter-availability-group-transact-sql.md).  
   
 > [!NOTE]  
->  If you specify less than four secondary replicas when you create an availability group, you can an additional secondary replica at any time by using the [ALTER AVAILABILITY GROUP](../../t-sql/statements/alter-availability-group-transact-sql.md)[!INCLUDE[tsql](../../includes/tsql-md.md)] statement. You can also use this statement this remove any secondary replica from an existing availability group.  
+>  If you specify less than four secondary replicas when you create an availability group, you can specify an additional secondary replica at any time by using the [ALTER AVAILABILITY GROUP](../../t-sql/statements/alter-availability-group-transact-sql.md)[!INCLUDE[tsql](../../includes/tsql-md.md)] statement. You can also use this statement to remove any secondary replica from an existing availability group.  
   
 #### server_instance
 
-Specifies the address of the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] that is the host for an replica. The address format depends on whether the instance is the default instance or a named instance and whether it is a standalone instance or a failover cluster instance (FCI), as follows:  
+Specifies the address of the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] that is the host for a replica. The address format depends on whether the instance is the default instance or a named instance and whether it's a standalone instance or a failover cluster instance (FCI), as follows:  
 
 `{ '*system_name*[\\*instance_name*]' | '*FCI_network_name*[\\*instance_name*]' }`  
 
@@ -272,7 +272,7 @@ For information about the prerequisites for WSFC nodes and server instances, see
   
 #### ENDPOINT_URL ='TCP://_system-address_:_port_'  
 
-Specifies the URL path for the [database mirroring endpoint](../../database-engine/database-mirroring/the-database-mirroring-endpoint-sql-server.md) on the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] that hosts the availability replica that you are defining in your current REPLICA ON clause.  
+Specifies the URL path for the [database mirroring endpoint](../../database-engine/database-mirroring/the-database-mirroring-endpoint-sql-server.md) on the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] that hosts the availability replica that you're defining in your current REPLICA ON clause.  
   
 The ENDPOINT_URL clause is required. For more information, see [Specify the Endpoint URL When Adding or Modifying an Availability Replica &#40;SQL Server&#41;](../../database-engine/availability-groups/windows/specify-endpoint-url-adding-or-modifying-availability-replica.md).  
   
@@ -302,13 +302,13 @@ Specifies that the primary replica commits transactions without waiting for this
 
 ##### CONFIGURATION_ONLY
 
-Specifies that the primary replica synchronously commit availability group configuration metadata to the master database on this replica. The replica will not contain user data. This option:
+Specifies that the primary replica synchronously commit availability group configuration metadata to the master database on this replica. The replica won't contain user data. This option:
 
 - Can be hosted on any edition of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], including Express Edition.
 - Requires the data mirroring endpoint of the CONFIGURATION_ONLY replica to be type `WITNESS`.
-- Can not be altered.
-- Is not valid when `CLUSTER_TYPE = WSFC`.
-- The options `failover_mode` and `seeding_mode` are not supported when `availability_mode` is set to `configuration_only` for a replica. A sample is shown [here](../../linux/sql-server-linux-availability-group-configure-ha.md).
+- Can't be altered.
+- Isn't valid when `CLUSTER_TYPE = WSFC`.
+- The options `failover_mode` and `seeding_mode` aren't supported when `availability_mode` is set to `configuration_only` for a replica. A sample is shown [here](../../linux/sql-server-linux-availability-group-configure-ha.md).
 
    For more information, see [Configuration only replica](../../linux/sql-server-linux-availability-group-ha.md).
   
@@ -316,14 +316,14 @@ Specifies that the primary replica synchronously commit availability group confi
   
 #### FAILOVER_MODE = { AUTOMATIC | MANUAL }  
 
-Specifies the failover mode of the availability replica that you are defining.  
+Specifies the failover mode of the availability replica that you're defining.  
   
 ##### AUTOMATIC  
 
 Enables automatic failover. This option is supported only if you also specify AVAILABILITY_MODE = SYNCHRONOUS_COMMIT. You can specify AUTOMATIC for two availability replicas, including the primary replica.  
   
 > [!NOTE]  
->  [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Failover Cluster Instances (FCIs) do not support automatic failover by availability groups, so any availability replica that is hosted by an FCI can only be configured for manual failover.  
+>  [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Failover Cluster Instances (FCIs) don't support automatic failover by availability groups, so any availability replica that is hosted by an FCI can only be configured for manual failover.  
   
 ##### MANUAL  
 
@@ -337,7 +337,7 @@ Specifies how the secondary replica is initially seeded.
   
 ##### AUTOMATIC
 
-Enables direct seeding. This method seeds the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica.  
+Enables direct seeding. This method seeds the secondary replica over the network. This method does not require you to back up and restore a copy of the primary database on the replica.  
   
 > [!NOTE]  
 >  For direct seeding, you must allow database creation on each secondary replica by calling **ALTER AVAILABILITY GROUP** with the  **GRANT CREATE ANY DATABASE** option.  
@@ -352,13 +352,13 @@ Specifies your priority for performing backups on this replica relative to the o
   
 -   1..100 indicates that the availability replica could be chosen for performing backups. 1 indicates the lowest priority, and 100 indicates the highest priority. If BACKUP_PRIORITY = 1, the availability replica would be chosen for performing backups only if no higher priority availability replicas are currently available.  
   
--   0 indicates that this availability replica is not for performing backups. This is useful, for example, for a remote availability replica to which you never want backups to fail over.  
+-   0 indicates that this availability replica isn't for performing backups. This is useful, for example, for a remote availability replica to which you never want backups to fail over.  
   
- For more information, see [Active Secondaries: Backup on Secondary Replicas &#40;Always On availability groups&#41;](../../database-engine/availability-groups/windows/active-secondaries-backup-on-secondary-replicas-always-on-availability-groups.md).  
+ For more information, see [Active Secondaries: Back up on Secondary Replicas &#40;Always On availability groups&#41;](../../database-engine/availability-groups/windows/active-secondaries-backup-on-secondary-replicas-always-on-availability-groups.md).  
   
 #### SECONDARY_ROLE ( ... )
 
-Specifies role-specific settings that take effect if this availability replica currently owns the secondary role (that is, whenever it is a secondary replica). Within the parentheses,  specify either or both secondary-role options. If you specify both, use a comma-separated list.  
+Specifies role-specific settings that take effect if this availability replica currently owns the secondary role (that is, whenever it's a secondary replica). Within the parentheses,  specify either or both secondary-role options. If you specify both, use a comma-separated list.  
   
 The secondary role options are as follows:  
   
@@ -368,7 +368,7 @@ Specifies whether the databases of a given availability replica that is performi
   
 ##### NO  
 
-No user connections are allowed to secondary databases of this replica. They are not available for read access. This is the default behavior.  
+No user connections are allowed to secondary databases of this replica. They aren't available for read access. This is the default behavior.  
   
 ##### READ_ONLY
 
@@ -393,7 +393,7 @@ For more information about calculating the read-only routing URL for a replica, 
   
 #### PRIMARY_ROLE ( ... )
 
-Specifies role-specific settings that take effect if this availability replica currently owns the primary role (that is, whenever it is the primary replica). Within the parentheses,  specify either or both primary-role options. If you specify both, use a comma-separated list.  
+Specifies role-specific settings that take effect if this availability replica currently owns the primary role (that is, whenever it's the primary replica). Within the parentheses,  specify either or both primary-role options. If you specify both, use a comma-separated list.  
   
 The primary role options are as follows:  
   
@@ -403,7 +403,7 @@ Specifies the type of connection that the databases of a given availability repl
 
 ##### READ_WRITE  
 
-Connections where the Application Intent connection property is set to **ReadOnly** are disallowed.  When the Application Intent property is set to **ReadWrite** or the Application Intent connection property is not set, the connection is allowed. For more information about Application Intent connection property, see [Using connection String Keywords with SQL Server Native Client](../../relational-databases/native-client/applications/using-connection-string-keywords-with-sql-server-native-client.md).  
+Connections where the Application Intent connection property is set to **ReadOnly** are disallowed. When the Application Intent property is set to **ReadWrite** or the Application Intent connection property isn't set, the connection is allowed. For more information about Application Intent connection property, see [Using connection String Keywords with SQL Server Native Client](../../relational-databases/native-client/applications/using-connection-string-keywords-with-sql-server-native-client.md).  
   
 #### ALL  
 
@@ -412,9 +412,9 @@ All connections are allowed to the databases in the primary replica. This is the
 #### READ_ONLY_ROUTING_LIST = { ('\_server_instance_' [ , ... n ] ) | NONE } 
  Specifies a comma-separated list of server instances that host availability replicas for this availability group that meet the following requirements when running under the secondary role:  
   
--   Be configured to allow all connections or read-only connections (see the ALLOW_CONNECTIONS argument of the SECONDARY_ROLE option, above).  
+-   Be configured to allow all connections or read-only connections (see the ALLOW_CONNECTIONS argument of the SECONDARY_ROLE option).  
   
--   Have their read-only routing URL defined (see the READ_ONLY_ROUTING_URL argument of the SECONDARY_ROLE option, above).  
+-   Have their read-only routing URL defined (see the READ_ONLY_ROUTING_URL argument of the SECONDARY_ROLE option).  
   
  The READ_ONLY_ROUTING_LIST values are as follows:  
   
@@ -428,7 +428,7 @@ Beginning with [!INCLUDE[sssql16-md](../../includes/sssql16-md.md)], you can loa
   
 ##### NONE
 
-Specifies that when this availability replica is the primary replica, read-only routing is not supported. This is the default behavior.  
+Specifies that when this availability replica is the primary replica, read-only routing isn't supported. This is the default behavior.  
 
 #### READ_WRITE_ROUTING_URL = { ('_server_instance_') }
 
@@ -442,7 +442,7 @@ For more information, see [Secondary to primary replica read/write connection re
 
 #### SESSION_TIMEOUT = _integer_
 
-Specifies the session-timeout period in seconds. If you do not specify this option, by default, the time period is 10 seconds. The minimum value is 5 seconds.  
+Specifies the session-timeout period in seconds. If you don't specify this option, by default, the time period is 10 seconds. The minimum value is 5 seconds.  
   
 > [!IMPORTANT]  
 > We recommend that you keep the time-out period at 10 seconds or greater.  
@@ -475,7 +475,7 @@ Is a string, such as a system name, a fully qualified domain name, or an IP addr
   
 ##### _port_
 
-Is a port number that is associated with the mirroring endpoint of the availability group. Note that this is not the port of the listener.  
+Is a port number that is associated with the mirroring endpoint of the availability group. Note that this isn't the port of the listener.  
   
 #### AVAILABILITY_MODE = { SYNCHRONOUS_COMMIT | ASYNCHRONOUS_COMMIT | CONFIGURATION_ONLY }
 
@@ -499,7 +499,7 @@ Specifies the failover mode of the distributed availability group.
 
 Enables planned manual failover or forced manual failover (typically called *forced failover*) by the database administrator.  
   
-The FAILOVER_MODE clause is required, and the only option is MANUAL. Automatic failover to the secondary availability group is not supported.  
+The FAILOVER_MODE clause is required, and the only option is MANUAL. Automatic failover to the secondary availability group isn't supported.  
   
 #### SEEDING_MODE = { AUTOMATIC | MANUAL }  
 
@@ -542,10 +542,10 @@ LISTENER takes one of the following \<listener_option> options:
   
 #####  WITH DHCP [ ON { ('_four\_part\_ipv4\_address_','_four\_part\_ipv4\_mask_') } ]
 
-Specifies that the availability group listener uses the Dynamic Host Configuration Protocol (DHCP).  Optionally, use the ON clause to identify the network on which this listener is created. DHCP is limited to a single subnet that is used for every server instances that hosts a replica in the availability group.  
+Specifies that the availability group listener uses the Dynamic Host Configuration Protocol (DHCP). Optionally, use the ON clause to identify the network on which this listener is created. DHCP is limited to a single subnet that is used for every server instances that hosts a replica in the availability group.  
   
 > [!IMPORTANT]  
->  We do not recommend DHCP in production environment. If there is a down time and the DHCP IP lease expires, extra time is required to register the new DHCP network IP address that is associated with the listener DNS name and impact the client connectivity. However, DHCP is good for setting up your development and testing environment to verify basic functions of availability groups and for integration with your applications.  
+>  We don't recommend DHCP in production environment. If there's a down time and the DHCP IP lease expires, extra time is required to register the new DHCP network IP address that is associated with the listener DNS name and impact the client connectivity. However, DHCP is good for setting up your development and testing environment to verify basic functions of availability groups and for integration with your applications.  
   
  For example:  
   
