@@ -47,7 +47,7 @@ Publishing to any **Azure SQL Database** from a SQL Server database is supported
 
 Publishing to **Fabric SQL database** from a SQL Server database is supported by the following versions of SQL Server:
 
-- SQL Server 2022 [RTM CU12](https://learn.microsoft.com/troubleshoot/sql/releases/sqlserver-2022/cumulativeupdate12) and greater
+- SQL Server 2022 [RTM CU12](/troubleshoot/sql/releases/sqlserver-2022/cumulativeupdate12) and greater
 
 ### Types of replication
 
