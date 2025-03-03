@@ -4,8 +4,8 @@ description: Latest release notes for SQL Server enabled by Azure Arc
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest
-ms.date: 01/30/2025
-ms.topic: release-notes
+ms.date: 02/28/2025
+ms.topic: conceptual
 ms.custom:
   - ignite-2023
 ---
@@ -22,6 +22,23 @@ This article lists:
 - Links to additional feature documentation
 
 Extension versions are cumulative. Higher extension versions include all of the updates from previous versions. A release might include internal features. If the version release notes don't describe features, then the updates were internal.
+
+## February 28, 2025
+
+**Extension version**: `1.1.2971.246`
+
+This release introduces:
+
+- Support for Windows 10 and Windows 11.
+
+- Pay-as-you go billing for the following services:
+
+  - [!INCLUDE [SQL Server](../../includes/ssnoversion-md.md)] [!INCLUDE [Analysis Services](../../includes/ssasnoversion-md.md)]
+  - [!INCLUDE [SQL Server](../../includes/ssnoversion-md.md)] [!INCLUDE [Integration Services](../../includes/ssisnoversion-md.md)]
+  - [!INCLUDE [SQL Server](../../includes/ssnoversion-md.md)] [!INCLUDE [Reporting Services](../../includes/ssrsnoversion-md.md)]
+  - Power BI Report Server
+
+In addition new documentation to describe how to connect without routing through the Internet: [Connect to Azure with a private path for SQL Server enabled by Azure Arc](configure-private-path.md).
 
 ## January 29, 2025
 

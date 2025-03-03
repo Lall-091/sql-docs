@@ -120,7 +120,7 @@ The following diagram illustrates the architecture of [!INCLUDE [ssazurearc](../
 
 [!INCLUDE [features-edition](includes/features-edition.md)]
 
-[!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] provides inventory for the following services:
+[!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] provides inventory and pay-as-you-go billing for the following services:
 
 - SQL Server Analysis Services
 - SQL Server Reporting Services

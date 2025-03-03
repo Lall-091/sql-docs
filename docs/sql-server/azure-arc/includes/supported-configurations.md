@@ -13,6 +13,7 @@ ms.topic: include
 
 ### Operating systems
 
+- Windows 10 and 11
 - [!INCLUDE [winserver2012-md](../../../includes/winserver2012-md.md)] and later versions
 - Ubuntu 20.04 (x64)
 - Red Hat Enterprise Linux (RHEL) 8 (x64)

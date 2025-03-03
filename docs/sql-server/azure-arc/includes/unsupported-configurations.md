@@ -8,6 +8,7 @@ ms.custom: ignite-2023
 
 Azure Arc-enabled [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] doesn't currently support the following configurations:
 
+- Windows Server 2012 or older versions of Windows Server. They do not have the minimum required versions of TLS to securely authenticate to Azure.  Windows Server 2012 R2 is supported because it supports TLS 1.2.
 - [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] running in containers.
 - [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] editions: Business Intelligence.
 - Private Link connections to the Azure Arc data processing service at the `<region>.arcdataservices.com` endpoint used for inventory and usage upload.
@@ -16,3 +17,4 @@ Azure Arc-enabled [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md
 - Multiple instances of [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] installed on the same host operating system with the same instance name.
 - [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] in Azure Virtual Machines.
 - An Always On availability group where one or more replicas is on a failover cluster instance.
+- SQL Server Reporting Services (SharePoint Mode).
