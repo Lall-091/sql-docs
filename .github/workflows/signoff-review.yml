@@ -23,8 +23,9 @@ jobs:
               AccessToken: ${{ secrets.GITHUB_TOKEN }}
               # For testing set to a little used folder as the only target
               MonitoredFolders: '[
-                    "ssms/",
-                    "azure-data-studio/"
+                    "azure-sql/",
+                    "docs/",
+                    "data-migration"
                 ]'
   
             run: |
