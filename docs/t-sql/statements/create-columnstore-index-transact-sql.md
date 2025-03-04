@@ -125,7 +125,7 @@ CREATE [ NONCLUSTERED ]  COLUMNSTORE INDEX index_name
     | column_name { IS | IS NOT | = | <> | != | > | >= | !> | < | <= | !< } constant )
 ```
 
-Syntax for Azure Synapse Analytics and Analytics Platform System (Parallel Data Warehouse):
+Syntax for [!INCLUDE [ssazuresynapse_md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE[sspdw-md](../includes/sspdw-md.md)]:
 
 ```syntaxsql
 CREATE CLUSTERED COLUMNSTORE INDEX index_name
@@ -137,7 +137,7 @@ CREATE CLUSTERED COLUMNSTORE INDEX index_name
 
 ## Version availability
 
-Some of the options aren't available in all database engine versions. The following table shows the versions when the options are introduced in CLUSTERED COLUMNSTORE and NONCLUSTERED COLUMNSTORE indexes:
+Some of the options aren't available in all database engine versions. The following table shows the versions when the options are introduced in clustered columnstore and nonclustered columnstore indexes:
 
 | Option | CLUSTERED | NONCLUSTERED |
 | --- | --- | --- |
@@ -148,6 +148,8 @@ Some of the options aren't available in all database engine versions. The follow
 | ORDER clause | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] | N/A |
 
 All options are available in Azure SQL Database and [!INCLUDE [ssazure-sqlmi-autd](../../includes/ssazure-sqlmi-autd.md)].
+
+For more detail on feature availability, see [What's new in columnstore indexes](../../relational-databases/indexes/columnstore-indexes-what-s-new.md#feature-summary-for-product-releases).
 
 ## Arguments
 
@@ -763,6 +765,7 @@ In [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)] and earlier versions, a
 
     ```sql
     ALTER INDEX mycolumnstoreindex ON dbo.mytable DISABLE;
+
     -- update the data in mytable as necessary
     ALTER INDEX mycolumnstoreindex on dbo.mytable REBUILD;
     ```
