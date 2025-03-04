@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 02/14/2024
 ms.service: sql
 ms.subservice: release-landing
-ms.topic: conceptual
+ms.topic: overview
 ---
 
 # What is SQL Server?

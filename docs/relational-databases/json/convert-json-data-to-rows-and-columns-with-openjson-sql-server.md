@@ -6,7 +6,7 @@ ms.author: jovanpop
 ms.reviewer: jroth, randolphwest
 ms.date: 05/06/2024
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "OPENJSON"
   - "JSON, importing"

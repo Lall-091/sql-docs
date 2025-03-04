@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "12/21/2017"
 ms.service: sql
 ms.subservice: in-memory-oltp
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Resolve Out Of Memory issues
  [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]

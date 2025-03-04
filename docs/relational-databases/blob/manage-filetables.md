@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "08/23/2017"
 ms.service: sql
 ms.subservice: filestream
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "FileTables [SQL Server], security"
   - "FileTables [SQL Server], managing access"

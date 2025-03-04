@@ -5,7 +5,7 @@ author: ntakru
 ms.author: nikitatakru
 ms.reviewer: mikeray, randolphwest
 ms.date: 09/09/2024
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - ignite-2023
 ---

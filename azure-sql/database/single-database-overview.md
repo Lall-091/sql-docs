@@ -7,7 +7,7 @@ ms.reviewer: mathoma, randolphwest
 ms.date: 09/25/2023
 ms.service: azure-sql-database
 ms.subservice: service-overview
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: sqldbrb=1
 ---
 # What is a single database in Azure SQL Database?

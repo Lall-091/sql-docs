@@ -5,7 +5,7 @@ author: "MashaMSFT"
 ms.author: "mathoma"
 ms.date: "03/14/2017"
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "event notifications [SQL Server], target service"
   - "target service [SQL Server]"

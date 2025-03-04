@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "03/01/2017"
 ms.service: sql
 ms.subservice: filestream
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "Windows Firewall [Database Engine], FILESTREAM"
   - "FILESTREAM [SQL Server], Windows Firewall"

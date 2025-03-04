@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: "08/25/2022"
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "credentials [SQL Server], creating"
   - "authentication [SQL Server], credentials"

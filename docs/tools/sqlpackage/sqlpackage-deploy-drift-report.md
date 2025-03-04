@@ -7,7 +7,7 @@ ms.reviewer: "maghan"
 ms.date: 11/14/2021
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ---
 
 # SqlPackage deploy report and drift report

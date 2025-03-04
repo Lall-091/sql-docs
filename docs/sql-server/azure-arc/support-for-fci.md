@@ -5,7 +5,7 @@ author: AbdullahMSFT
 ms.author: amamun 
 ms.reviewer: mikeray, randolphwest
 ms.date: 05/08/2024
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # View Always On failover cluster instances in Azure Arc

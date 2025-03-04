@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "02/27/2023"
 ms.service: sql
 ms.subservice: system-objects
-ms.topic: "language-reference"
+ms.topic: reference
 f1_keywords:
   - "sys.dm_hadr_ag_threads_TSQL"
   - "sys.dm_hadr_ag_threads"

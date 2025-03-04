@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: 10/12/2022
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "Query Store secondary replicas"
 monikerRange: ">=sql-server-ver16"

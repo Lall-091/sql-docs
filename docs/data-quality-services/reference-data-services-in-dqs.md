@@ -6,7 +6,7 @@ ms.author: sawinark
 ms.date: "10/01/2012"
 ms.service: sql
 ms.subservice: data-quality-services
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Reference Data Services in DQS
 

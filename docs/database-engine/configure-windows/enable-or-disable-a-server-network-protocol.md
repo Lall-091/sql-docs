@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 04/11/2024
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "network protocols [SQL Server], disabling"
   - "remote connections [SQL Server], enabling using Configuration Manager"

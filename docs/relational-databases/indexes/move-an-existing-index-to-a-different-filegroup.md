@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "05/11/2021"
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "moving tables"
   - "switching filegroups for index"

@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 01/23/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "expired password [SQL Server], SQL Server Agent"
   - "passwords [SQL Server], SQL Server Agent service"

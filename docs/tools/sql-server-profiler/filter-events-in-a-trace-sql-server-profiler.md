@@ -8,7 +8,7 @@ ms.reviewer: randolphwest
 ms.date: 07/17/2024
 ms.service: sql
 ms.subservice: profiler
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Filter events in a trace (SQL Server Profiler)

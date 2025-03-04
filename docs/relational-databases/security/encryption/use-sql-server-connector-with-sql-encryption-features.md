@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: "09/12/2019"
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "SQL Server Connector, using"
   - "EKM, with SQL Server Connector"

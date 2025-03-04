@@ -7,7 +7,7 @@ ms.reviewer: wiassaf
 ms.date: 11/11/2022
 ms.service: sql
 ms.subservice: supportability
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "delayed durability"
   - "Lazy Commit"

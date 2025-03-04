@@ -6,7 +6,7 @@ ms.author: "jroth"
 ms.date: "08/01/2016"
 ms.service: sql
 ms.subservice: xml
-ms.topic: "language-reference"
+ms.topic: reference
 helpviewer_keywords:
   - "XQuery, atomization"
   - "atomization [XQuery]"

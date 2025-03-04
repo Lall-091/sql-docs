@@ -8,7 +8,7 @@ ms.reviewer: randolphwest
 ms.date: 06/28/2024
 ms.service: sql
 ms.subservice: dma
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 ms.collection:
   - sql-migration-content
 helpviewer_keywords:

@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 04/18/2024
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "primary keys [SQL Server], creating"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current ||=fabric"

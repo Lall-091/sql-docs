@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 04/25/2024
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Create an encrypted backup
 

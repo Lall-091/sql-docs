@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 02/19/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "server alias"
 helpviewer_keywords:

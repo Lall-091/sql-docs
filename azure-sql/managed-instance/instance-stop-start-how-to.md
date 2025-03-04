@@ -8,7 +8,7 @@ ms.date: 05/21/2024
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
 ms.custom: ignite-2023, devx-track-azurecli, devx-track-azurepowershell
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Stop and start an instance - Azure SQL Managed Instance

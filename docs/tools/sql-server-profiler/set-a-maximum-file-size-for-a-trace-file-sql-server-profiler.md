@@ -7,7 +7,7 @@ ms.author: maghan
 ms.date: 03/14/2017
 ms.service: sql
 ms.subservice: profiler
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Set a Maximum File Size for a Trace File (SQL Server Profiler)

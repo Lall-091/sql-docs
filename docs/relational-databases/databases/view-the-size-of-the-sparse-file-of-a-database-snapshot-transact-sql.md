@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: "07/28/2016"
 ms.service: sql
 ms.subservice: supportability
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "snapshots [SQL Server database snapshots], sparse files"
   - "space [SQL Server], sparse files"

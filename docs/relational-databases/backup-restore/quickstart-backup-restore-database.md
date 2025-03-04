@@ -8,7 +8,7 @@ ms.reviewer: randolphwest, markingmyname
 ms.date: 07/18/2024
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: quickstart
 ---
 
 # Quickstart: Backup and restore a SQL Server database with SSMS

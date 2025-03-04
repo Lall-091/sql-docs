@@ -7,7 +7,7 @@ ms.reviewer: mikeray
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: search
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "queries [full-text search], about full-text queries"
   - "queries [full-text search], predicates"

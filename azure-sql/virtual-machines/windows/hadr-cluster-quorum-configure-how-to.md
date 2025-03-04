@@ -7,7 +7,7 @@ ms.reviewer: mathoma
 ms.date: 06/18/2024
 ms.service: azure-vm-sql-server
 ms.subservice: hadr
-ms.topic: conceptual
+ms.topic: concept-article
 tags: azure-service-management
 ---
 

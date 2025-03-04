@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 06/12/2024
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: how-to
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current||=fabric"
 ---
 # Query data in a system-versioned temporal table

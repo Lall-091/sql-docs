@@ -6,7 +6,7 @@ ms.author: "mathoma"
 ms.reviewer: randolphwest
 ms.date: 06/19/2023
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "traces [SQL Server], viewing"
   - "displaying traces"

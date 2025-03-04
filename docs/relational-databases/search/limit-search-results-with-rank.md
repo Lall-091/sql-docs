@@ -7,7 +7,7 @@ ms.reviewer: mikeray
 ms.date: 02/12/2024
 ms.service: sql
 ms.subservice: search
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "row ranking [full-text search]"
   - "relevance ranking values [full-text search]"

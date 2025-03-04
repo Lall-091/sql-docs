@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 07/18/2024
 ms.service: sql
 ms.subservice: data-movement
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
 # Import data from Excel to SQL Server or Azure SQL Database

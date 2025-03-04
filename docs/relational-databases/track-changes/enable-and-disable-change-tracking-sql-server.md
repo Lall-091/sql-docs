@@ -5,7 +5,7 @@ author: MikeRayMSFT
 ms.author: mikeray
 ms.date: "08/08/2016"
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "change tracking [SQL Server], disabling"
   - "data changes [SQL Server]"

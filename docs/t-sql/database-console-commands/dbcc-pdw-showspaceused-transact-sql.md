@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 12/05/2022
 ms.service: sql
 ms.subservice: data-warehouse
-ms.topic: "language-reference"
+ms.topic: reference
 dev_langs:
   - "TSQL"
 monikerRange: ">= aps-pdw-2016 || = azure-sqldw-latest"

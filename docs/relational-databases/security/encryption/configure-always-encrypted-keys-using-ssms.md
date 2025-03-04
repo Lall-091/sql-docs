@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: 12/21/2023
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "SQL13.SWB.COLUMNMASTERKEY.PAGE.F1"
   - "SQL13.SWB.COLUMNENCRYPTIONKEY.PAGE.F1"

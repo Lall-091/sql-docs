@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 04/29/2024
 ms.service: sql
 ms.subservice: language-extensions
-ms.topic: conceptual
+ms.topic: whats-new
 ms.custom:
   - intro-whats-new
 monikerRange: ">=sql-server-ver15 || >=sql-server-linux-ver15"

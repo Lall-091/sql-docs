@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.reviewer: randolphwest
 ms.date: 05/06/2022
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "change tracking [SQL Server], making changes"
   - "change tracking [SQL Server], troubleshooting"

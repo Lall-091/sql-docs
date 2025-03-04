@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: "09/21/2016"
 ms.service: sql
 ms.subservice: data-movement
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "identity values [SQL Server], bulk imports"
   - "data formats [SQL Server], identity values"

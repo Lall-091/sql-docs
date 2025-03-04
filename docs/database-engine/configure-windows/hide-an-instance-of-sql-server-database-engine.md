@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: "08/19/2015"
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "Database Engine [SQL Server], hiding instances"
   - "hiding instances of Database Engine"

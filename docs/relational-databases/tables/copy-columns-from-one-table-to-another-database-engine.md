@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: "09/01/2016"
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "copying columns"
   - "columns [SQL Server], copying"

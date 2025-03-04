@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 09/26/2023
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 helpviewer_keywords:
   - "compatibility [SQL Server], databases"
   - "compatibility levels [SQL Server], after upgrade"

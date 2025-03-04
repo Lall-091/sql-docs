@@ -48,7 +48,7 @@ Constraints can be specified as part of the column definition, for example:
 
 ```sql
 CREATE TABLE Orders (order_id int, order_details JSON NOT NULL
-   CHECK (JSON_PATH_EXISTS(order_details, '$.basket') = 1
+   CHECK (JSON_PATH_EXISTS(order_details, '$.basket') = 1)
 );
 ```
 

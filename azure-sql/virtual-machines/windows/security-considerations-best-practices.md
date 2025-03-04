@@ -7,7 +7,7 @@ ms.reviewer: mathoma, randolphwest
 ms.date: 03/29/2023
 ms.service: azure-vm-sql-server
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: best-practice
 tags: azure-service-management
 ---
 # Security considerations for SQL Server on Azure Virtual Machines

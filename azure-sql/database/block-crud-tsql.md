@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 06/21/2023
 ms.service: azure-sql-database
 ms.subservice: security
-ms.topic: article
+ms.topic: how-to
 ROBOTS: NOINDEX
 ---
 

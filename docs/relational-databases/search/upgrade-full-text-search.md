@@ -7,7 +7,7 @@ ms.reviewer: mikeray
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: search
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 helpviewer_keywords:
   - "full-text search [SQL Server], installing"
   - "migrating full-text indexes [SQL Server]"

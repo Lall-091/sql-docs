@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma, randolphwest
 ms.date: 12/04/2024
 ms.service: azure-sql-database
 ms.subservice: elastic-pools
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - sqldbrb=1
 ---

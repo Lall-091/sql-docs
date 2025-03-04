@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 09/25/2023
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 monikerRange: ">=sql-server-2016"
 ---
 # Choose a Database Engine upgrade method

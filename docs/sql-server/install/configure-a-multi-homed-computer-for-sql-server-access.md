@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: "12/13/2019"
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "ports [SQL Server], multi-homed computer"
   - "multi-homed computer [SQL Server] configuring ports"

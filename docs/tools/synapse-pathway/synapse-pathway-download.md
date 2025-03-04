@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: 09/22/2021
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: intro-installation
 helpviewer_keywords:
   - "Azure Synapse Pathway, download"

@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 03/20/2023
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "logs [SQL Server], Security Log"
   - "server audit [SQL Server]"

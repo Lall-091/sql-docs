@@ -8,7 +8,7 @@ ms.reviewer: mathoma
 ms.date: 01/12/2024
 ms.service: azure-sql-managed-instance
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: best-practice
 ms.custom:
   - sqldbrb=2
   - azure-sql-split

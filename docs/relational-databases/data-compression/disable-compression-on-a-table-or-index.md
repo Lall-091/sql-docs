@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 08/21/2023
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "data compression [SQL Server], disabling"
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016"

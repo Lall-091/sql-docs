@@ -7,7 +7,7 @@ ms.reviewer: dfurman
 ms.date: 02/28/2025
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2024
 helpviewer_keywords:
@@ -165,17 +165,21 @@ By enabling efficient segment elimination, ordered columnstore indexes provide f
 
 ### Ordered columnstore index availability
 
-First introduced with [!INCLUDE [_ss2022](../../includes/applies-to-version/_ss2022.md)], ordered columnstore indexes are available in the following platforms.
+First introduced with [!INCLUDE [_ss2022](../../includes/applies-to-version/_ss2022.md)], ordered columnstore indexes are available in the following platforms:
 
 |Platform|Ordered *clustered* columnstore indexes|Ordered *nonclustered* columnstore indexes|
 |:--|:--|:--|
-|[!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [ssazure-sqlmi-autd](../../includes/ssazure-sqlmi-autd.md)] | Yes | Yes |
-|[!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)] | Yes\* | Yes |
+|[!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] | Yes | Yes |
+|[!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]<sup>AUTD</sup>|Yes|Yes|
+|[!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]<sup>2022</sup>|Yes|No|
+|[!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)] | Yes<sup>1</sup> | Yes |
 |[!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]|Yes|No|
-|[!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]|Yes|No|
 |[!INCLUDE [sss-dedicated-pool-md](../../includes/sss-dedicated-pool-md.md)] in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)]|[Yes](/azure/synapse-analytics/sql-data-warehouse/performance-tuning-ordered-cci)|No|
 
-\* In Fabric SQL database, tables with clustered columnstore indexes are not [mirrored to Fabric OneLake](/fabric/database/sql/mirroring-overview).
+<sup>AUTD</sup> Applies to Azure SQL Managed Instance configured with the [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy).   
+<sup>2022</sup> Applies to Azure SQL Managed Instance configured with the [SQL Server 2022 update policy](/azure/azure-sql/managed-instance/update-policy#sql-server-2022-update-policy).   
+<sup>1</sup>In Fabric SQL database, tables with clustered columnstore indexes are not [mirrored to Fabric OneLake](/fabric/database/sql/mirroring-overview).
+
 
 ## Metadata
 

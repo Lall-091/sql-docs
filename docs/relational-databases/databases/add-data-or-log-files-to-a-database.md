@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "logs [SQL Server], files"
   - "adding data files"

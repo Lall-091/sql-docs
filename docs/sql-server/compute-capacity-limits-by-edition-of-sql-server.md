@@ -7,7 +7,7 @@ ms.reviewer: randolphwest, derekw
 ms.date: 02/10/2025
 ms.service: sql
 ms.subservice: release-landing
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "simultaneous multithreading [SQL Server]"
   - "SMT [SQL Server]"

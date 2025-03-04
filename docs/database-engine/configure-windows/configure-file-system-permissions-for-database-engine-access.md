@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 07/08/2024
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ---
 
 # Configure file system permissions for Database Engine access

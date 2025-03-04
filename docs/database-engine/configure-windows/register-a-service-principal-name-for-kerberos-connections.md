@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 07/22/2024
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "connections [SQL Server], SPNs"
   - "network connections [SQL Server], SPNs"

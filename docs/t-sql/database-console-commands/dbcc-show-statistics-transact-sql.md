@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 08/29/2023
 ms.service: sql
 ms.subservice: t-sql
-ms.topic: "language-reference"
+ms.topic: reference
 f1_keywords:
   - "SHOW_STATISTICS_TSQL"
   - "DBCC SHOW_STATISTICS"

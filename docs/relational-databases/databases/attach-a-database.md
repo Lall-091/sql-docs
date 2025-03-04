@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: "01/31/2022"
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.swb.attachdatabase.f1"
 helpviewer_keywords:

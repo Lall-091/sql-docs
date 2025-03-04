@@ -6,7 +6,7 @@ ms.author: roblescarlos
 ms.reviewer: "mathoma"
 ms.date: "10/19/2023"
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "change data capture, monitoring"
   - "change data capture, administering"

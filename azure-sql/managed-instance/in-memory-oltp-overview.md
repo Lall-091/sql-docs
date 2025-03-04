@@ -7,7 +7,7 @@ ms.reviewer: mathoma
 ms.date: 12/13/2023
 ms.service: azure-sql-managed-instance
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sqldbrb=2
 monikerRange: "=azuresql||=azuresql-mi"

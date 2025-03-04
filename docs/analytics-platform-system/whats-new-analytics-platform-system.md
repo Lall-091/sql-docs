@@ -7,7 +7,7 @@ ms.reviewer: "martinle"
 ms.date: "12/01/2021"
 ms.service: sql
 ms.subservice: data-warehouse
-ms.topic: "conceptual"
+ms.topic: whats-new
 ms.custom: intro-whats-new
 ---
 # What's new in Analytics Platform System, a scale-out MPP data warehouse

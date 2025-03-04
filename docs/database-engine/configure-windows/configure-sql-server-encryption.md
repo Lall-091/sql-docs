@@ -7,7 +7,7 @@ ms.reviewer: sureshka, randolphwest
 ms.date: 10/11/2024
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Configure SQL Server Database Engine for encrypting connections
 

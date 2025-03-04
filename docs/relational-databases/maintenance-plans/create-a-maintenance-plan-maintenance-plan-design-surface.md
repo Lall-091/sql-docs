@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 03/27/2023
 ms.service: sql
 ms.subservice: supportability
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "Maintenance Plan design surface"
 ---

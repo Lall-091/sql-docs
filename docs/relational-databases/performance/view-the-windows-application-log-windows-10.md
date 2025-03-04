@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 12/26/2024
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "viewing logs"
   - "application logs [SQL Server]"

@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: "10/31/2019"
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
 ---
 # Create and store column master keys for Always Encrypted

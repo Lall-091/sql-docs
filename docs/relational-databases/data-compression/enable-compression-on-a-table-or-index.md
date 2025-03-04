@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 06/10/2024
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.swb.compwiz.compressiontype.f1"
   - "sql13.swb.compwiz.outputoptions.f1"

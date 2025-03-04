@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 12/05/2022
 ms.service: sql
 ms.subservice: t-sql
-ms.topic: "language-reference"
+ms.topic: reference
 f1_keywords:
   - "DBCC USEROPTIONS"
   - "DBCC_USEROPTIONS_TSQL"

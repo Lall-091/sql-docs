@@ -7,7 +7,7 @@ ms.reviewer: martinle
 ms.date: 12/04/2023
 ms.service: sql
 ms.subservice: data-warehouse
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Connect to appliance nodes in Analytics Platform System

@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: 08/28/2023
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "foreign keys [SQL Server], deleting"
   - "removing foreign keys"

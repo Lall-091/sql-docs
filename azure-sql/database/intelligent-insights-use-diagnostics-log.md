@@ -8,7 +8,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 01/31/2022
 ms.service: azure-sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article 
 ms.custom: sqldbrb=2
 ---
 

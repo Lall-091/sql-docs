@@ -7,7 +7,7 @@ ms.author: maghan
 ms.date: 03/01/2017
 ms.service: sql
 ms.subservice: profiler
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # View Filter Information (SQL Server Profiler)

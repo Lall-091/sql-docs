@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 03/23/2023
 ms.service: sql
 ms.subservice: t-sql
-ms.topic: "language-reference"
+ms.topic: reference
 f1_keywords:
   - "DROPCLEANBUFFERS"
   - "DBCC_DROPCLEANBUFFERS_TSQL"

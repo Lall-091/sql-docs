@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 12/28/2023
 ms.service: sql
 ms.subservice: supportability
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.swb.dc.reporthistory.calendar.f1"
 helpviewer_keywords:

@@ -7,7 +7,7 @@ ms.reviewer: hudequei
 ms.date: 07/03/2024
 ms.service: sql
 ms.subservice: polybase
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom: intro-installation
 helpviewer_keywords:
   - "PolyBase, installation"

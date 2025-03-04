@@ -7,7 +7,7 @@ ms.reviewer: mathoma
 ms.date: 09/27/2024
 ms.service: sql
 ms.subservice: supportability
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "current databases"
   - "databases currently on server [SQL Server]"

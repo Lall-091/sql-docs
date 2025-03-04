@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: 07/05/2024
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "inserting columns"
   - "columns [SQL Server], adding"

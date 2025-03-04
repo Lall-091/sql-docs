@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 10/18/2024
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.swb.connectionproperties.f1"
 helpviewer_keywords:

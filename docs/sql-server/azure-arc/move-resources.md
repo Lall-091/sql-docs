@@ -5,7 +5,7 @@ author: ntakru
 ms.author: nikitatakru
 ms.reviewer: mikeray, randolphwest
 ms.date: 09/09/2024
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Move SQL Server enabled by Azure Arc resources to a new resource group or subscription

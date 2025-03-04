@@ -5,7 +5,7 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest
 ms.date: 09/09/2024
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Configure SQL Server enabled by Azure Arc

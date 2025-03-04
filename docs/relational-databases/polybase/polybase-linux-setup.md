@@ -8,7 +8,7 @@ ms.reviewer: dakryze, randolphwest
 ms.date: 12/29/2023
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom: intro-installation, linux-related-content
 monikerRange: ">=sql-server-linux-ver15 || >=sql-server-ver15"
 ---

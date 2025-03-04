@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 09/27/2024
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "database backups [SQL Server], recovery models"
   - "recovery [SQL Server], recovery model"

@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 03/30/2024
 ms.service: sql
 ms.subservice: supportability
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.swb.detachdatabase.f1"
 helpviewer_keywords:

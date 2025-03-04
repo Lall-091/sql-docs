@@ -5,7 +5,7 @@ author: rwestMSFT
 ms.author: randolphwest
 ms.date: "06/28/2022"
 ms.service: sql
-ms.topic: conceptual
+ms.topic: language-reference
 f1_keywords:
   - "sql13.swb.udfproperties.general.f1"
   - "sql13.swb.functionproperties.general.f1"

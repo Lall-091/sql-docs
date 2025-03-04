@@ -6,7 +6,7 @@ ms.author: sawinark
 ms.date: "03/01/2017"
 ms.service: sql
 ms.subservice: data-quality-services
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Upgrade SQLCLR assemblies after .NET framework update
 

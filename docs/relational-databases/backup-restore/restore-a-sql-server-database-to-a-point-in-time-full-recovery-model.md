@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "03/17/2017"
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "STOPAT clause [RESTORE LOG statement]"
   - "point in time recovery [SQL Server]"

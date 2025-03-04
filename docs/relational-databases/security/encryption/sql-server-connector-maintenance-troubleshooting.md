@@ -7,7 +7,7 @@ ms.reviewer: vanto, maghan
 ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 helpviewer_keywords:
   - "SQL Server Connector, appendix, EKM"
 ms.custom: references_regions

@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "08/25/2016"
 ms.service: sql
 ms.subservice: filestream
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "FileTables [SQL Server], accessing files with file APIs"
 ---

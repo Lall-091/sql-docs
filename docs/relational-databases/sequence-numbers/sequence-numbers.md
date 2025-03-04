@@ -5,7 +5,7 @@ author: "MashaMSFT"
 ms.author: "mathoma"
 ms.date: 09/27/2024
 ms.service: sql
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "sequence number object, overview"
   - "sequence [Database Engine]"

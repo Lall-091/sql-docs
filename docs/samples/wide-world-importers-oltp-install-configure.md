@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "04/04/2018"
 ms.service: sql
 ms.subservice: samples
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: intro-installation
 ---
 # Installation and configuration

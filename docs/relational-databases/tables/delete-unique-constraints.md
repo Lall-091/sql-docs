@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: "10/12/2016"
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "removing constraints"
   - "UNIQUE constraints [SQL Server], deleting"

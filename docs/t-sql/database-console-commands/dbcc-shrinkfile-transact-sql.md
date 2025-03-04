@@ -7,7 +7,7 @@ ms.reviewer: umajay, dpless, randolphwest
 ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: t-sql
-ms.topic: "language-reference"
+ms.topic: reference
 f1_keywords:
   - "SHRINKFILE"
   - "DBCC_SHRINKFILE_TSQL"

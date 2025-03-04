@@ -7,7 +7,7 @@ ms.reviewer: mikeray
 ms.date: "02/02/2017"
 ms.service: sql
 ms.subservice: search
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "stoplists [full-text search]"
   - "full-text search [SQL Server], stoplists"

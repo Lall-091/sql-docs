@@ -6,7 +6,7 @@ ms.author: jaszymas
 ms.date: "01/15/2021"
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 monikerRange: ">= sql-server-ver15"
 ---
 # Configure the enclave type for Always Encrypted (server configuration option)

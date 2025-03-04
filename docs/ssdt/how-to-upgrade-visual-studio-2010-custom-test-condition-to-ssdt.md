@@ -6,7 +6,7 @@ ms.author: maghan
 ms.date: 02/09/2017
 ms.service: sql
 ms.subservice: ssdt
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 ---
 
 # How to: Upgrade a Visual Studio 2010 Custom Test Condition from a Previous Release to SQL Server Data Tools

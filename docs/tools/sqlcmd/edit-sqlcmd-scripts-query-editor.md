@@ -7,7 +7,7 @@ ms.reviewer: maghan, randolphwest
 ms.date: 08/15/2023
 ms.service: sql
 ms.subservice: ssms
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - ignite-2024
 helpviewer_keywords:

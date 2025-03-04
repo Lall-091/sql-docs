@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 10/22/2023
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Monitor SQL Server Components
 

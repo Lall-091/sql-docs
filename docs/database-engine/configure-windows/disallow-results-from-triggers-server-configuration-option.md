@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 05/25/2023
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "triggers [SQL Server], result sets"
   - "result sets [SQL Server], triggers"

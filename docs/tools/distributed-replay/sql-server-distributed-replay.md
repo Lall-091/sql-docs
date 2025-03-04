@@ -8,7 +8,7 @@ ms.reviewer: mikeray, randolphwest
 ms.date: 12/08/2023
 ms.service: sql
 ms.subservice: distributed-replay
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017"
 ---
 # SQL Server Distributed Replay overview

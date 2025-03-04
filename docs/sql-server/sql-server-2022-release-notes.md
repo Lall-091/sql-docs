@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 02/09/2023
 ms.service: sql
 ms.subservice: release-landing
-ms.topic: "article"
+ms.topic: release-notes
 monikerRange: ">= sql-server-2016"
 ---
 

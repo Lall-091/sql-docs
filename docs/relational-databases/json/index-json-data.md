@@ -8,7 +8,7 @@ ms.date: 08/20/2024
 ms.service: sql
 ms.custom:
   - build-2024
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "JSON, indexing JSON data"
   - "indexing JSON data"

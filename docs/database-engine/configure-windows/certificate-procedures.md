@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 12/08/2022
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Export and import certificates

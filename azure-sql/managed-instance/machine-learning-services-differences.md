@@ -7,7 +7,7 @@ ms.reviewer: mathoma, wiassaf
 ms.date: 11/30/2023
 ms.service: azure-sql-managed-instance
 ms.subservice: machine-learning
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Key differences between Machine Learning Services in Azure SQL Managed Instance and SQL Server

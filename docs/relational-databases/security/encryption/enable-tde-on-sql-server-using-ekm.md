@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: "07/25/2019"
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "encryption [SQL Server], TDE using an EKM"
   - "TDE, EKM how to"

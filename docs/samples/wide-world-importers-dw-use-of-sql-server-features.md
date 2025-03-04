@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: 07/01/2020
 ms.service: sql
 ms.subservice: "samples"
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: ">=sql-server-2016||>=sql-server-linux-2017||=azure-sqldw-latest||>=aps-pdw-2016||=azuresqldb-mi-current"
 ---
 # WideWorldImportersDW use of SQL Server features and capabilities

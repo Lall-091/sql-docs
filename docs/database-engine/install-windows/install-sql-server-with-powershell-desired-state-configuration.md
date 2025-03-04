@@ -6,7 +6,7 @@ ms.author: dareist
 ms.date: "09/17/2021"
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom: intro-installation
 ms.devlang: powershell
 monikerRange: ">=sql-server-2016"

@@ -6,7 +6,7 @@ ms.author: "jroth"
 ms.date: "08/10/2016"
 ms.service: sql
 ms.subservice: xml
-ms.topic: "language-reference"
+ms.topic: reference
 helpviewer_keywords:
   - "fn:true function"
   - "true function"

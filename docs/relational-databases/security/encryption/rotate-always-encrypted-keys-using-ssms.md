@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: 10/01/2019
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "SQL13.SWB.COLUMNMASTERKEY.ROTATION.F1"
   - "sql13.SWB.COLUMNMASTERKEY.CLEANUP.F1"

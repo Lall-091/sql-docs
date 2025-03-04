@@ -4,7 +4,7 @@ description: Learn how to automate database development tasks with SqlPackage. V
 author: "dzsquared"
 ms.author: "drskwier"
 ms.reviewer: "maghan"
-ms.date: 4/29/2024
+ms.date: 3/2/2025
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: conceptual
@@ -47,6 +47,7 @@ Database deployments are the process of updating a database schema to match a de
 ```bash
 SqlPackage {parameters} {properties} {SQLCMD variables}
 ```
+
 More information on the SqlPackage command-line syntax is detailed in the [SqlPackage CLI reference](cli-reference.md) and individual action pages.
 
 ## Utility commands
@@ -86,7 +87,6 @@ SqlPackage authenticates using methods available in [SqlClient](/dotnet/api/micr
     - **Managed identity**
     - Service principal
 
-
 ### Managed identity
 
 [!INCLUDE [entra-id](../../includes/entra-id.md)]
@@ -107,7 +107,7 @@ Managed identities are supported in both [Azure DevOps](/azure/devops/integrate/
 
 [Microsoft Entra application service principals](/azure/azure-sql/database/authentication-aad-service-principal) are security objects within a Microsoft Entra application that define what an application can do in a given tenant. They're set up in the Azure portal during the application registration process and configured to access Azure resources, like Azure SQL. For more information on configuring a service principal for your environment, see the [Service principal documentation](/entra/architecture/service-accounts-principal).
 
-When using SqlPackage with a service principal, it may be required to retrieve the access token and pass it to SqlPackage. The access token can be retrieved using the [Azure PowerShell module](/powershell/azure) or the [Azure CLI](/cli/azure). The access token can be passed to SqlPackage using the `/at` parameter.
+When using SqlPackage with a service principal, you may retrieve an access token and pass it to SqlPackage. The access token can be retrieved using the [Azure PowerShell module](/powershell/azure) or the [Azure CLI](/cli/azure). In this process, the invoking system maintains control over token refresh or invalidation. The access token can be passed to SqlPackage using the `/at` parameter.
 
 ```powershell
 # example export connecting using an access token associated with a service principal
@@ -122,6 +122,8 @@ SqlPackage /at:$($AccessToken_Object.Token) /Action:Export /TargetFile:"C:\Adven
     /SourceConnectionString:"Server=tcp:{yourserver}.database.windows.net,1433;Initial Catalog=AdventureWorksLT;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
 ```
 
+Alternatively, you can pass the service principal client ID and secret to SqlPackage in the connection string. The [connection string format](../../connect/ado-net/sql/azure-active-directory-authentication.md#using-service-principal-authentication) includes `Authentication=Active Directory Service Principal;` and `User Id=AppId; Password=<password>`. When passing the service principal credentials in the connection string, the `/at` parameter isn't required and SqlPackage will refresh the authentication as needed during the operation.
+
 Service principals are supported in both [Azure DevOps](/azure/devops/integrate/get-started/authentication/service-principal-managed-identity) and [GitHub actions](https://github.com/azure/login) CI/CD pipelines.
 
 ## Environment variables
@@ -130,7 +132,6 @@ Service principals are supported in both [Azure DevOps](/azure/devops/integrate/
 
 Connection pooling can be enabled for all connections made by SqlPackage by setting the `CONNECTION_POOLING_ENABLED` environment variable to `True`. This setting is recommended for operations with Microsoft Entra username and password connections to avoid throttling by the Microsoft Authentication Library (MSAL).
 
-
 ### Temporary files
 
 During SqlPackage operations, the table data is written to temporary files before compression or after decompression. For large databases these temporary files can take up a significant amount of disk space but their location can be specified. The export and extract operations include an optional property to specify `/p:TempDirectoryForTableData` to override the SqlPackage's default value.
@@ -138,6 +139,7 @@ During SqlPackage operations, the table data is written to temporary files befor
 The .NET API [GetTempPath](/dotnet/api/system.io.path.gettemppath) is used to determine the default value within SqlPackage.
 
 For Windows, the following environment variables are checked in the following order and the first path that exists is used:
+
 1. The path specified by the `TMP` environment variable.
 2. The path specified by the `TEMP` environment variable.
 3. The path specified by the `USERPROFILE` environment variable.
@@ -148,7 +150,6 @@ For Linux and macOS, if the path isn't specified in the `TMPDIR` environment var
 ## SqlPackage and database users
 
 [Contained database users](../../relational-databases/security/contained-database-users-making-your-database-portable.md) are included in SqlPackage operations. However, the password portion of the definition is set to a randomly generated string by SqlPackage, the existing value isn't transferred. It's recommended that the new user's password is reset to a secure value following the import of a `.bacpac` or the deployment of a `.dacpac`. In an automated environment the password values can be retrieved from a secure keystore, such as Azure Key Vault, in a step following SqlPackage.
-
 
 ## Usage data collection
 

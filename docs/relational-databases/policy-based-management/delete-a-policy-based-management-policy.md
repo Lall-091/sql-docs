@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: "08/01/2016"
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "Policy-Based Management, delete policies"
 ---

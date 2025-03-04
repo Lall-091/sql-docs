@@ -7,7 +7,7 @@ ms.reviewer: mathoma
 ms.date: 05/24/2023
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 monikerRange: "= azuresqldb-current||>= sql-server-ver16||>= sql-server-linux-ver16||=azuresqldb-mi-current"
 ---
 

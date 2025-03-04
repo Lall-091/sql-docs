@@ -7,7 +7,7 @@ ms.reviewer: oslake, mathoma
 ms.date: 01/28/2025
 ms.service: azure-sql-database
 ms.subservice: deployment-configuration
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - sqldbrb=1
 monikerRange: "= azuresql-db"

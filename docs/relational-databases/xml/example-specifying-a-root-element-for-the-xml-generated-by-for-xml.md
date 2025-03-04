@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "RAW mode, specifying root element example"
   - "RAW mode, with FOR XML example"

@@ -7,7 +7,7 @@ ms.author: maghan
 ms.date: 03/14/2017
 ms.service: sql
 ms.subservice: profiler
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Set Trace Definition Defaults (SQL Server Profiler)

@@ -5,7 +5,7 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest
 ms.date: 08/08/2024
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Manage automatic connection for SQL Server enabled by Azure Arc

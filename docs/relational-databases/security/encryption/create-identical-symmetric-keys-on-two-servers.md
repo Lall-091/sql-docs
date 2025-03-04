@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: "12/16/2021"
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "symmetric keys [SQL Server], creating"
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"

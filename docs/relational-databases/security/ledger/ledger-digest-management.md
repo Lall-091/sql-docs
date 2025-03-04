@@ -8,7 +8,7 @@ ms.date: 02/07/2024
 ms.service: sql
 ms.subservice: security
 ms.custom: ignite-2023
-ms.topic: conceptual
+ms.topic: how-to
 monikerRange: "= azuresqldb-current||>= sql-server-ver16||>= sql-server-linux-ver16||=azuresqldb-mi-current"
 ---
 

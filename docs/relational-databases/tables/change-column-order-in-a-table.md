@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: 07/18/2023
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "columns [SQL Server], change order in a table"
   - "column order, change"

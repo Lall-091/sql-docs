@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "03/04/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: "language-reference"
+ms.topic: reference
 ---
 # catalog.set_execution_property_override_value 
 

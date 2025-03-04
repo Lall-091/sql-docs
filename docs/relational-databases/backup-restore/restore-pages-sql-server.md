@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "03/15/2017"
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.swb.restorepage.general.f1"
 helpviewer_keywords:

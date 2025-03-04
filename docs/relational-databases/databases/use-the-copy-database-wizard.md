@@ -5,7 +5,7 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.date: 07/19/2024
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.swb.cdw.packageconfiguration.f1"
   - "sql13.swb.cdw.schedule.f1"

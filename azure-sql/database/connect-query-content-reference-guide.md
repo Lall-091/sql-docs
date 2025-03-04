@@ -8,7 +8,7 @@ ms.reviewer: wiassaf, mathoma, randolphwest
 ms.date: 01/14/2025
 ms.service: azure-sql
 ms.subservice: connect
-ms.topic: conceptual
+ms.topic: concept-article 
 ms.custom:
   - sqldbrb=1
 monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"

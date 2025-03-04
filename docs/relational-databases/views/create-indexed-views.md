@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 01/14/2025
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "indexed views [SQL Server], creating"
   - "clustered indexes, views"

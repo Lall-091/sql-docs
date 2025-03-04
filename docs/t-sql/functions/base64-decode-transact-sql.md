@@ -3,8 +3,8 @@ title: "BASE64_DECODE (Transact-SQL)"
 description: "BASE64_DECODE converts a base64 encoded varchar into the corresponding varbinary."
 author: abledenthusiast
 ms.author: aaronpitman
-ms.reviewer: wiassaf
-ms.date: 09/08/2023
+ms.reviewer: wiassaf, randolphwest
+ms.date: 02/28/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -21,37 +21,44 @@ monikerRange: "=azuresqldb-current||=fabric"
 ---
 
 # BASE64_DECODE (Transact-SQL)
+
 [!INCLUDE [asdb-fabric-se-and-dw](../../includes/applies-to-version/asdb-fabricse-fabricdw.md)]
 
-BASE64_DECODE converts a base64 encoded varchar into the corresponding varbinary.
+`BASE64_DECODE` converts a base64-encoded **varchar** expression into the corresponding **varbinary** expression.
 
-:::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)  
+:::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ## Syntax
 
 ```syntaxsql
-BASE64_DECODE(expression)
+BASE64_DECODE ( expression )
 ```
 
 ## Arguments
 
 #### *expression*
 
-An expression of type varchar (n | max).
+An expression of type **varchar(*n*)** or **varchar(max)**.
 
 ## Return types
 
-- **Varbinary(8000)**.
-- **Varbinary(max)** if the input is varchar(max).
-- If the input expression is null, the output is null.
+- **varbinary(8000)** if the input is **varchar(*n*)**.
+- **varbinary(max)** if the input is **varchar(max)**.
+- If the input expression is `NULL`, the output is `NULL`.
 
 ## Remarks
 
-The encoded string's alphabet must be that of [RFC 4648 Table 1](https://datatracker.ietf.org/doc/html/rfc4648#section-4) and may include padding, though padding is not required. The URL-safe alphabet specified within [RFC 4648 Table 2](https://datatracker.ietf.org/doc/html/rfc4648#section-5) is also accepted. This function ignores whitespace characters: `\n`, `\r`, `\t`, and ` `.
+The encoded string's alphabet must be that of [RFC 4648 Table 1](https://datatracker.ietf.org/doc/html/rfc4648#section-4) and might include padding, though padding isn't required. The URL-safe alphabet specified within [RFC 4648 Table 2](https://datatracker.ietf.org/doc/html/rfc4648#section-5) is also accepted. This function ignores whitespace characters: `\n`, `\r`, `\t`, and ` `.
 
-- When the input contains characters not contained within the standard or URL-safe alphabets specified by RFC 4648 the function returns error "Msg 9803, Level 16, State 20, Line 15, Invalid data for type "Base64Decode"". 
-- If the data has valid characters, but incorrectly formatted, the function returns error Msg 9803, State 21. 
-- If the input contains more than two padding characters or padding characters followed by extra valid input the function returns error Msg 9803, State 23.
+- When the input contains characters not contained within the standard or URL-safe alphabets specified by RFC 4648, the function returns the following error:
+
+  ```output
+  Msg 9803, Level 16, State 20, Line 15, Invalid data for type "Base64Decode"
+  ```
+
+- If the data has valid characters, but incorrectly formatted, the function returns error `Msg 9803, State 21`.
+
+- If the input contains more than two padding characters or padding characters followed by extra valid input the function returns error `Msg 9803, State 23`.
 
 ## Examples
 
@@ -60,17 +67,13 @@ The encoded string's alphabet must be that of [RFC 4648 Table 1](https://datatra
 In the following example, the base64 encoded string is decoded back into varbinary.
 
 ```sql
-SELECT BASE64_DECODE ('qQ==');
+SELECT BASE64_DECODE('qQ==');
 ```
 
-[!INCLUDE[ssResult_md](../../includes/ssresult-md.md)]
+[!INCLUDE [ssResult_md](../../includes/ssresult-md.md)]
 
 ```output
--------------
 0xA9
-
-(1 row affected)
-
 ```
 
 ### B. BASE64_DECODE a standard base64 string
@@ -78,32 +81,27 @@ SELECT BASE64_DECODE ('qQ==');
 In the following example, the string is base64 decoded. Note the string contains URL-unsafe characters `=` and `/`.
 
 ```sql
-SELECT BASE64_DECODE('yv7K/g==')
+SELECT BASE64_DECODE('yv7K/g==');
 ```
 
-[!INCLUDE[ssResult_md](../../includes/ssresult-md.md)]
+[!INCLUDE [ssResult_md](../../includes/ssresult-md.md)]
 
 ```output
-------------  
 0xCAFECAFE
-
-(1 row affected)
 ```
 
 ### C. BASE64_DECODE varchar url_safe base64 string
 
-In contrast to example B, this example base64 string was encoded using RFC 4648 Table 2 (url_safe), but can be decoded the same way as example B.
+In contrast to example B, this example base64 string was encoded using RFC 4648 Table 2 (`url_safe`), but can be decoded the same way as example B.
 
 ```sql
-SELECT BASE64_DECODE('yv7K_g')
+SELECT BASE64_DECODE('yv7K_g');
 ```
 
-[!INCLUDE[ssResult_md](../../includes/ssresult-md.md)]
+[!INCLUDE [ssResult_md](../../includes/ssresult-md.md)]
 
 ```output
-------------  
 0xCAFECAFE
-(1 row affected)
 ```
 
 ### D. BASE64_DECODE varchar contains characters not in the base64 alphabet
@@ -111,16 +109,16 @@ SELECT BASE64_DECODE('yv7K_g')
 This example contains characters that aren't valid base64 characters.
 
 ```sql
-SELECT BASE64_DECODE('qQ!!')
+SELECT BASE64_DECODE('qQ!!');
 ```
 
-[!INCLUDE[ssResult_md](../../includes/ssresult-md.md)]
+[!INCLUDE [ssResult_md](../../includes/ssresult-md.md)]
 
 ```output
 Msg 9803, Level 16, State 20, Line 223
 Invalid data for type "Base64Decode".
 ```
 
-## Next steps
+## Related content
 
-- [BASE64_ENCODE (Transact SQL)](base64-encode-transact-sql.md)
+- [BASE64_ENCODE (Transact-SQL)](base64-encode-transact-sql.md)

@@ -8,7 +8,7 @@ ms.reviewer: randolphwest, mathoma
 ms.date: 07/02/2024
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
-ms.topic: conceptual
+ms.topic: troubleshooting-known-issue
 ms.custom:
   - references_regions
 ---

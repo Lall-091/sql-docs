@@ -7,7 +7,7 @@ ms.reviewer: hudequei
 ms.date: 03/09/2023
 ms.service: sql
 ms.subservice: polybase
-ms.topic: conceptual
+ms.topic: how-to
 monikerRange: ">= sql-server-2016"
 ---
 # Configure PolyBase to access external data in Azure Blob Storage

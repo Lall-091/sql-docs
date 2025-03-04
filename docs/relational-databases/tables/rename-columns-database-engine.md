@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 07/22/2024
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "columns [SQL Server], names"
   - "renaming columns"

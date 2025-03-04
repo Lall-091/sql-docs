@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: 01/19/2024
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "Transparent Data Encryption, moving"
   - "TDE, moving a database"

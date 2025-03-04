@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 07/29/2024
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: how-to
 monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
 # Work with memory-optimized system-versioned temporal tables

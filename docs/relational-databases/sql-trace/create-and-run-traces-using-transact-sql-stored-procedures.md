@@ -5,7 +5,7 @@ author: "MashaMSFT"
 ms.author: "mathoma"
 ms.date: "03/14/2017"
 ms.service: sql
-ms.topic: conceptual
+ms.topic: language-reference
 ---
 # Create and Run Traces Using Transact-SQL Stored Procedures
  [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]

@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 05/30/2024
 ms.service: sql
 ms.subservice: ssdt
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom:
   - ignite-2024
 keywords:

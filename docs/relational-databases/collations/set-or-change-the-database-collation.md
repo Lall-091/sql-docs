@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.reviewer: mathoma
 ms.date: 09/27/2024
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "collations [SQL Server], database"
   - "database collations [SQL Server]"

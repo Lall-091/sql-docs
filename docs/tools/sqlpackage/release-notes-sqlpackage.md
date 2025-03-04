@@ -6,7 +6,7 @@ ms.author: drskwier
 ms.reviewer: "llali"
 ms.date: 02/28/2025
 ms.service: sql
-ms.topic: conceptual
+ms.topic: release-notes
 ms.custom: tools|sos
 ---
 # Release notes for SqlPackage

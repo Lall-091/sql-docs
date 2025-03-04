@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 12/18/2024
 ms.service: sql
 ms.subservice: t-sql
-ms.topic: "language-reference"
+ms.topic: reference
 f1_keywords:
   - "CHECKDB_TSQL"
   - "DBCC_CHECKDB_TSQL"

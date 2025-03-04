@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "restoring files [SQL Server], how-to topics"
   - "restoring files [SQL Server], steps"

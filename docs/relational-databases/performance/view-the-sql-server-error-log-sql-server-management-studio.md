@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: 07/19/2024
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "viewing logs"
   - "displaying logs"

@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 08/29/2022
 ms.service: sql
 ms.subservice: data-movement
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "bulk importing [SQL Server], format files"
   - "format files [SQL Server], importing data using"

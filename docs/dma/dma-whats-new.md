@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 01/08/2025
 ms.service: sql
 ms.subservice: dma
-ms.topic: conceptual
+ms.topic: whats-new
 ms.collection:
   - sql-migration-content
 ms.custom:

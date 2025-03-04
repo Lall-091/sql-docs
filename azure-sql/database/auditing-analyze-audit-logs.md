@@ -8,7 +8,7 @@ ms.reviewer: mathoma
 ms.date: 04/26/2023
 ms.service: azure-sql-database
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Use Auditing to analyze audit logs and reports
 

@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 12/28/2023
 ms.service: sql
 ms.subservice: supportability
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "collection sets [SQL Server], stopping"
   - "collection sets [SQL Server], starting"

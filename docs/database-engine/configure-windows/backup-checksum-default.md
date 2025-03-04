@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 03/28/2024
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Configure the backup checksum default (server configuration option)

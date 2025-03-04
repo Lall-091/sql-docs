@@ -7,7 +7,7 @@ ms.reviewer: danibunny, randolphwest
 ms.date: 06/28/2024
 ms.service: sql
 ms.subservice: big-data-cluster
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom:
   - intro-installation
   - linux-related-content

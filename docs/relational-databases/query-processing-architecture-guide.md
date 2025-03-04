@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.reviewer: maghan, randolphwest, derekw
 ms.date: 01/14/2025
 ms.service: sql
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "guide, query processing architecture"
   - "query processing architecture guide"

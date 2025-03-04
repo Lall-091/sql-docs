@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "protocols [SQL Server]"
   - "configuration options [SQL Server], protocols"

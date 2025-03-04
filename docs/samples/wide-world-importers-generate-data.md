@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "10/23/2020"
 ms.service: sql
 ms.subservice: samples
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # WideWorldImporters data generation

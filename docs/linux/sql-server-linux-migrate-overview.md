@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 ms.custom:
   - intro-migration
   - linux-related-content

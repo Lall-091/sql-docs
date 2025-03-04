@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.reviewer: mlandzic, jovanpop
 ms.date: 11/04/2024
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - ignite-2024
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"

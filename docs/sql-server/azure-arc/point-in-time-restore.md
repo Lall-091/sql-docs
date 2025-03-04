@@ -5,7 +5,7 @@ author: AbdullahMSFT
 ms.author: amamun 
 ms.reviewer: mikeray, randolphwest
 ms.date: 10/25/2023
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: ignite-2023
 ---
 

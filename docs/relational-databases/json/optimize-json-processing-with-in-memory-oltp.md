@@ -6,7 +6,7 @@ ms.author: jovanpop
 ms.reviewer: jroth, randolphwest
 ms.date: 12/21/2022
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
 ---
 # Optimize JSON processing with in-memory OLTP

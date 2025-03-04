@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 12/16/2024
 ms.service: sql
 ms.subservice: failover-cluster-instance
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "upgrading failover cluster instances"
   - "clusters [SQL Server], upgrading"

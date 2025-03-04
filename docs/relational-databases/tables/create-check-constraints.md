@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 04/22/2024
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "table constraints [SQL Server]"
   - "attaching check constraints"

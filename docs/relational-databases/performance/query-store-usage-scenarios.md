@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: 03/07/2022
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2024
 helpviewer_keywords:

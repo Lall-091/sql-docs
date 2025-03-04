@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 03/04/2024
 ms.service: sql
 ms.subservice: t-sql
-ms.topic: "language-reference"
+ms.topic: reference
 f1_keywords:
   - "CLEANTABLE_TSQL"
   - "DBCC_CLEANTABLE_TSQL"

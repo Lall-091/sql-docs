@@ -7,7 +7,7 @@ ms.reviewer: vanto, randolphwest
 ms.date: 02/21/2024
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: ">=sql-server-ver15||>= sql-server-linux-ver16"
 ---
 

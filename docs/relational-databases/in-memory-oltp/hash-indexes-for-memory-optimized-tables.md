@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "12/01/2017"
 ms.service: sql
 ms.subservice: in-memory-oltp
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
 ---
 # Troubleshooting Hash Indexes for Memory-Optimized Tables

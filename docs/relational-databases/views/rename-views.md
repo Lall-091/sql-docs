@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: 06/16/2023
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "views [SQL Server], renaming"
   - "renaming views"

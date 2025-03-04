@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 02/26/2025
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 helpviewer_keywords:
   - "merge replication database upgrades [SQL Server replication]"
   - "replication [SQL Server], upgrading"

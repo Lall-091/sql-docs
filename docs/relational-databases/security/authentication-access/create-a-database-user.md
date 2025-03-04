@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 07/18/2024
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - ignite-2024
 f1_keywords:

@@ -5,7 +5,7 @@ author: VanMSFT
 ms.author: vanto
 ms.date: "4/22/2022"
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
 ---
 # Modify a partition function

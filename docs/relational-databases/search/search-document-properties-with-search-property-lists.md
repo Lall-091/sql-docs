@@ -7,7 +7,7 @@ ms.reviewer: mikeray
 ms.date: "03/06/2017"
 ms.service: sql
 ms.subservice: search
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "full-text search [SQL Server], search property lists"
   - "full-text search [SQL Server], properties"

@@ -7,7 +7,7 @@ ms.reviewer: davidengel, markingmyname
 ms.date: 01/08/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - ignite-2024
 helpviewer_keywords:

@@ -5,7 +5,7 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest
 ms.date: 10/12/2022
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Protect SQL Server with Microsoft Defender for Cloud
 

@@ -7,7 +7,7 @@ ms.reviewer: mihaelab
 ms.date: 09/30/2020
 ms.service: sql
 ms.subservice: big-data-cluster
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom: intro-installation
 ---
 

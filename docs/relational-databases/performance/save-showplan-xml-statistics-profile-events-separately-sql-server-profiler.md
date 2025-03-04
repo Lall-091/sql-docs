@@ -7,7 +7,7 @@ ms.author: mikeray
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "Showplan XML events"
   - "saving Showplan XML events"

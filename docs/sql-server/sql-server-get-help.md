@@ -1,14 +1,14 @@
 ---
-title: SQL Server help and feedback
+title: SQL Server Help and Feedback
 description: A resource for finding ways to get help with your issue or submit feedback for either the SQL Server product, or the SQL Server technical documentation.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: sureshka, randolphwest
-ms.date: 06/01/2023
+ms.date: 02/28/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: conceptual
-monikerRange: ">= aps-pdw-2016 || = azuresqldb-current || = azure-sqldw-latest || >= sql-server-2016 || >= sql-server-linux-2017"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017"
 ---
 
 # SQL Server help and feedback
@@ -35,9 +35,9 @@ You can check the following resources to understand if you encounter any known i
 
 We publish our bug fix list in the [SQL Server builds spreadsheet](https://aka.ms/sqlserverbuilds). This spreadsheet contains tabs with detailed fix list for our mainstream supported versions [!INCLUDE [sssql22-md](../includes/sssql22-md.md)], [!INCLUDE [sssql19-md](../includes/sssql19-md.md)], and [!INCLUDE [sssql17-md](../includes/sssql17-md.md)]. You can sort this list by component and feature, and understand when a specific issue was fixed. Each fix item is also linked to its own article reference, which provides more details about the problem and any applicable workaround.
 
-When we publish a Cumulative Update, we publish a Knowledge Base article that corresponds to that update. For example, [SQL Server 2022 Cumulative Update 2](/troubleshoot/sql/releases/sqlserver-2022/cumulativeupdate2). You can see the table in that article that shows the "Improvements and fixes included in this update".
+When we publish a Cumulative Update, we publish a Knowledge Base article that corresponds to that update. For example, [KB5023127 - Cumulative Update 2 for SQL Server 2022](/troubleshoot/sql/releases/sqlserver-2022/cumulativeupdate2). You can see the table in that article that shows the "Improvements and fixes included in this update".
 
-If we detect that an update introduced a problem or regression, then we immediately add it as a "Known issues in this update" section of the same article. For example in [Cumulative Update 19 for SQL Server 2019](https://support.microsoft.com/kb/5023049), you notice two issues highlighted that were introduced in that update.
+If we detect that an update introduced a problem or regression, then we immediately add it as a "Known issues in this update" section of the same article. For example in [KB5023049 - Cumulative Update 19 for SQL Server 2019](/troubleshoot/sql/releases/sqlserver-2019/cumulativeupdate19), you notice two issues highlighted that were introduced in that update.
 
 Every major release of the product is accompanied by the release notes for that version. The release notes of that version document known issues associated with the release.
 
@@ -67,29 +67,26 @@ There are a few communities that can help you with your SQL Server issues.
 
 You can submit suggestions for improvement and other feedback, including bugs.
 
-- **Azure Data Studio issues**: [Azure Data Studio GitHub](https://github.com/microsoft/azuredatastudio/issues)
+- **SQL Server Management Studio feedback**: [Visual Studio Developer Community](https://aka.ms/ssms-feedback)
 - **Ideas for SQL**: [Have suggestions for improving SQL Server?](https://feedback.azure.com/forums/908035-sql-server)
+- **Azure Data Studio issues**: [Azure Data Studio GitHub](https://github.com/microsoft/azuredatastudio/issues)
 
 ### SQL Server documentation
 
-The best way to reach the SQL Server content team is through Git Issues. You'll find an option to submit a Git Issue at the bottom of most of our pages:
+The best way to reach the Data Docs content team is through article feedback. You'll find an option to submit feedback at the bottom of most of our pages:
 
-:::image type="content" source="media/sql-server-get-help/git-issues.png" alt-text="Screenshot of Git Issue content feedback.":::
-
-If you have something else to share - an idea, a suggestion, feedback, anything! -  you can open a general Git Issue by going to [https://aka.ms/SQLDocsFeedback](https://aka.ms/SQLDocsFeedback) and selecting **New Issues**.
-
-:::image type="content" source="media/sql-server-get-help/new-git-issue.png" alt-text="Screenshot of New Git Issue in SQL Documentation.":::
+:::image type="content" source="media/sql-server-get-help/feedback.png" alt-text="Screenshot of article feedback.":::
 
 ### Blogs
 
 The following SQL Server blogs provide the latest information about SQL Server:
 
-- [SQL Server Blog](https://cloudblogs.microsoft.com/sqlserver/)
-- [Azure SQL Blog](https://techcommunity.microsoft.com/t5/azure-sql-blog/bg-p/AzureSQLBlog)
-- [SQL Support Team](https://techcommunity.microsoft.com/t5/SQL-Server-Support/bg-p/SQLServerSupport/)
+- [SQL Server Blog](https://www.microsoft.com/sql-server/blog/)
+- [Azure SQL Blog](https://techcommunity.microsoft.com/category/azuredatabases/blog/azuresqlblog)
+- [SQL Support Team](https://techcommunity.microsoft.com/category/sql-server/blog/sqlserversupport)
 
 ## SQL Server license information
 
 If you would like to download and review the license information for SQL Server, it can be found at [Microsoft SQL Server Additional Software License Terms](https://www.microsoft.com/download/details.aspx?id=39299).
 
-[!INCLUDE[contribute-to-content](../includes/paragraph-content/contribute-to-content.md)]
+[!INCLUDE [contribute-to-content](../includes/paragraph-content/contribute-to-content.md)]

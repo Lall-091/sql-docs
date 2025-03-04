@@ -7,7 +7,7 @@ ms.reviewer: "wiassaf"
 ms.date: "11/21/2018"
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "comparing execution plans"
   - "compare execution plans"

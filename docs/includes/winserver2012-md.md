@@ -5,4 +5,4 @@ ms.date: 01/29/2024
 ms.service: sql
 ms.topic: include
 ---
- Windows Server 2012 
+ Windows Server 2012 R2

@@ -7,7 +7,7 @@ ms.reviewer: mathoma, randolphwest
 ms.date: 02/26/2025
 ms.service: sql
 ms.subservice: dea
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Configure Distributed Replay for Database Experimentation Assistant

@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 11/21/2024
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "Extensible Key Management"
   - "EKM, with key vault setup"

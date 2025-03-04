@@ -7,7 +7,7 @@ ms.author: mikeray
 ms.date: 01/17/2024
 ms.service: sql
 ms.subservice: polybase
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 f1_keywords:
   - "PolyBase, monitoring"
   - "PolyBase, performance monitoring"

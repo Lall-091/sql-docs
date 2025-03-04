@@ -8,7 +8,7 @@ ms.reviewer: mathoma, dfurman, wiassaf
 ms.date: 01/28/2025
 ms.service: azure-sql-database
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 ms.custom:
   - ignite-2024
 monikerRange: "=azuresql || =azuresql-db || =fabricsql"

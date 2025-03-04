@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 08/04/2023
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "interrupted restore operation"
   - "restoring databases [SQL Server], restarting interrupted operation"

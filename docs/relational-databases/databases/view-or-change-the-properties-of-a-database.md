@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: "01/05/2018"
 ms.service: sql
 ms.subservice: supportability
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "displaying databases"
   - "database viewing [SQL Server]"

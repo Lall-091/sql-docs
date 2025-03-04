@@ -7,7 +7,7 @@ ms.reviewer: jopilov
 ms.date: 04/06/2023
 ms.service: sql
 ms.subservice: supportability
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "guide, thread and task architecture"
   - "thread and task architecture guide"

@@ -6,7 +6,7 @@ ms.author: "mathoma"
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: supportability
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "Log File Viewer, viewing offline logs"
   - "offline log files"

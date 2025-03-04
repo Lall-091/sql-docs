@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: 07/22/2020
 ms.service: sql
 ms.subservice: release-landing
-ms.topic: conceptual
+ms.topic: release-notes
 monikerRange: "<= sql-server-2016"
 ---
 # SQL Server 2014 Release Notes

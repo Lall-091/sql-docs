@@ -7,7 +7,7 @@ ms.reviewer: mathoma, randolphwest
 ms.date: 09/27/2024
 ms.service: azure-vm-sql-server
 ms.subservice: hadr
-ms.topic: conceptual
+ms.topic: best-practice
 editor: monicar
 tags: azure-service-management
 ---

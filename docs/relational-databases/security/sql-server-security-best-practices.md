@@ -7,7 +7,7 @@ ms.reviewer: rohitna, randolphwest
 ms.date: 02/29/2024
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: best-practice
 helpviewer_keywords:
   - "logins [SQL Server], passwords"
   - "passwords [SQL Server], strong"

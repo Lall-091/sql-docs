@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 12/28/2023
 ms.service: sql
 ms.subservice: supportability
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "logs [SQL Server], viewing"
   - "collection sets [SQL Server], viewing logs"

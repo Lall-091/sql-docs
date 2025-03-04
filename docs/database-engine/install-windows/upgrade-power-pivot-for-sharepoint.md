@@ -6,7 +6,7 @@ ms.author: "kfollis"
 ms.reviewer: maghan
 ms.date: 10/17/2022
 ms.service: sql
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 monikerRange: ">=sql-server-2016"
 ---
 

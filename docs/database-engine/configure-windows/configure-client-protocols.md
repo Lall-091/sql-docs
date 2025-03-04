@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: "07/27/2016"
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 helpviewer_keywords:
   - "default protocols"
   - "network protocols [SQL Server], client configuration"

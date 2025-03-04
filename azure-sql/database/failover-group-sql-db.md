@@ -7,7 +7,7 @@ ms.reviewer: rsetlem, mathoma
 ms.date: 01/24/2025
 ms.service: azure-sql-database
 ms.subservice: high-availability
-ms.topic: conceptual
+ms.topic: best-practice
 ms.custom:
   - azure-sql-split
 ---

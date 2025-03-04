@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: "03/23/2022"
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.SWB.SQLAUDIT.FILTER.F1"
   - "sql13.swb.sqlaudit.general.f1"

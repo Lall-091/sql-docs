@@ -7,7 +7,7 @@ ms.reviewer: mikeray
 ms.date: 12/05/2022
 ms.service: sql
 ms.subservice: search
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "full-text indexes [SQL Server], about"
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"

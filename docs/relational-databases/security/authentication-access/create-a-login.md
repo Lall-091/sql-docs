@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: 09/11/2024
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.swb.login.status.f1"
   - "sql13.swb.login.effectivepermissions.f1"

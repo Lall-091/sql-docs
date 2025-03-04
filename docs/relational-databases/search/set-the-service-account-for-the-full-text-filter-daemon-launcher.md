@@ -7,7 +7,7 @@ ms.reviewer: mikeray
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: search
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "full-text search [SQL Server], FDHOST Launcher (MSSQLFDLauncher) service account"
   - "FDHOST Launcher (MSSQLFDLauncher) [SQL Server]"

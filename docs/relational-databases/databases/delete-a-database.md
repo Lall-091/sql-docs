@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: "05/24/2023"
 ms.service: sql
 ms.subservice: supportability
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "database removal [SQL Server], SQL Server Management Studio"
   - "removing databases"

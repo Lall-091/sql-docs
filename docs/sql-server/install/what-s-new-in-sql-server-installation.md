@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 12/07/2023
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: whats-new
 ms.custom:
   - intro-whats-new
 ---

@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 09/28/2022
 ms.service: sql
 ms.subservice: stored-procedures
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - ignite-2024
 helpviewer_keywords:

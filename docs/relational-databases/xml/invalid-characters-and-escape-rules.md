@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "FOR XML clause, invalid characters"
   - "FOR XML clause, escape rules"

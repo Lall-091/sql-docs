@@ -7,7 +7,7 @@ ms.reviewer: mikeray
 ms.date: 08/10/2023
 ms.service: sql
 ms.subservice: search
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "semantic search [SQL Server], enabling"
 ---

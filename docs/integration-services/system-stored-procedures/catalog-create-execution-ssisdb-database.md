@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "12/16/2016"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: "language-reference"
+ms.topic: reference
 ---
 # catalog.create_execution (SSISDB Database)
 

@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: "07/26/2017"
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom: intro-installation
 helpviewer_keywords:
   - "components [SQL Server replication]"

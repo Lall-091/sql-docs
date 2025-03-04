@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: "04/13/2022"
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "constraints [SQL Server], foreign keys"
   - "foreign keys [SQL Server], disabling constraints"

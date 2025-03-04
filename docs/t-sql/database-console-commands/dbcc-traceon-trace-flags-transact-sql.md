@@ -7,7 +7,7 @@ ms.reviewer: wiassaf
 ms.date: 01/16/2025
 ms.service: sql
 ms.subservice: t-sql
-ms.topic: "language-reference"
+ms.topic: reference
 helpviewer_keywords:
   - "trace flags [SQL Server], about trace flags"
   - "trace flags [SQL Server]"

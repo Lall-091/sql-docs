@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: 07/02/2024
 ms.service: sql
 ms.subservice: supportability
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.swb.shrinkfile.f1"
 helpviewer_keywords:

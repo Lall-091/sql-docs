@@ -8,7 +8,7 @@ ms.reviewer: nnikolic, mathoma, derekw
 ms.date: 02/13/2025
 ms.service: azure-sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sqldbrb=2
   - ignite-2024

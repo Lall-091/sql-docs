@@ -7,7 +7,7 @@ ms.reviewer: derekw, randolphwest
 ms.date: 07/22/2022
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - ignite-2024
 f1_keywords:

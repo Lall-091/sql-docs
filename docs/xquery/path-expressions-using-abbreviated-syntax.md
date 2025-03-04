@@ -6,7 +6,7 @@ ms.author: "jroth"
 ms.date: "03/03/2017"
 ms.service: sql
 ms.subservice: xml
-ms.topic: "language-reference"
+ms.topic: reference
 helpviewer_keywords:
   - "axis step [XQuery]"
   - "abbreviated syntax [XQuery]"

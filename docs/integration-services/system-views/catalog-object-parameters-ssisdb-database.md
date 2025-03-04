@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "03/04/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: "language-reference"
+ms.topic: reference
 f1_keywords:
   - "catalog.object_parameters_TSQL"
   - "object_parameters"

@@ -5,7 +5,7 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.date: "03/14/2017"
 ms.service: sql
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 ms.custom: intro-migration
 helpviewer_keywords:
   - "contained database, migrating to"

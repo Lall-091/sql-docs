@@ -7,7 +7,7 @@ ms.reviewer: nvraparl, wiassaf, mathoma
 ms.date: 09/30/2022
 ms.service: azure-sql-database
 ms.subservice: backup-restore
-ms.topic: article
+ms.topic: how-to
 ROBOTS: NOINDEX
 ---
 

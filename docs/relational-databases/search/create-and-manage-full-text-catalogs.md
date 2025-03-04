@@ -7,7 +7,7 @@ ms.reviewer: mikeray
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: search
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.swb.fulltextsearch.ftcatalog.general.f1"
   - "sql13.swb.fulltextsearch.fulltextindexproperties.general.f1"

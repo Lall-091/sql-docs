@@ -7,7 +7,7 @@ ms.reviewer: dpless, randolphwest, mathoma
 ms.date: 11/19/2024
 ms.service: azure-vm-sql-server
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: best-practice
 ms.custom:
   - ignite-2024
 tags: azure-service-management

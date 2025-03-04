@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: 11/05/2024
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - ignite-2024
 helpviewer_keywords:

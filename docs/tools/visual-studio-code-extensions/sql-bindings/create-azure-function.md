@@ -7,7 +7,7 @@ ms.reviewer: drskwier, maghan, randolphwest
 ms.date: 11/18/2024
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Create Azure Functions with the SQL Bindings extension for Visual Studio Code

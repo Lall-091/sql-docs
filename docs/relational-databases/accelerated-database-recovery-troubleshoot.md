@@ -7,7 +7,7 @@ ms.reviewer: derekw, dfurman, randolphwest
 ms.date: 02/03/2025
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 ms.custom:
   - ignite-2024
 helpviewer_keywords:

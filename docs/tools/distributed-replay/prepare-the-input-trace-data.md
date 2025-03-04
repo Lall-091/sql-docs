@@ -8,7 +8,7 @@ ms.reviewer: mikeray, randolphwest
 ms.date: 03/17/2023
 ms.service: sql
 ms.subservice: distributed-replay
-ms.topic: conceptual
+ms.topic: how-to
 monikerRange: ">= sql-server-2016 || >= sql-server-linux-2017"
 ---
 # Prepare input trace data

@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: "03/13/2017"
 ms.service: sql
 ms.subservice: supportability
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - ignite-2024
 helpviewer_keywords:

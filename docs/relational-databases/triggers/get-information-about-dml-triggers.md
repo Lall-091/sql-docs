@@ -5,7 +5,7 @@ author: MikeRayMSFT
 ms.author: mikeray
 ms.date: "03/14/2017"
 ms.service: sql
-ms.topic: conceptual
+ms.topic: language-reference
 helpviewer_keywords:
   - "metadata [SQL Server], triggers"
   - "viewing DML triggers"

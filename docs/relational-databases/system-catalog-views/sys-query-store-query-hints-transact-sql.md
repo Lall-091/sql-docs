@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 11/01/2024
 ms.service: sql
 ms.subservice: system-objects
-ms.topic: "language-reference"
+ms.topic: reference
 f1_keywords:
   - "SYS.QUERY_STORE_QUERY_HINTS"
   - "QUERY_STORE_QUERY_HINTS"

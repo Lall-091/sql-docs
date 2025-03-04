@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: 08/26/2021
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Configure usage and diagnostic data collection for SQL Server (CEIP)
 

@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: 11/28/2023
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: article
 monikerRange: ">=sql-server-ver16||>=sql-server-linux-ver16"
 ---
 # SQL Server back up to URL for S3-compatible object storage best practices and troubleshooting

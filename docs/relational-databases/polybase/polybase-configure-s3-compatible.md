@@ -8,7 +8,7 @@ ms.date: 06/03/2024
 ms.service: sql
 ms.subservice: polybase
 ms.custom: linux-related-content
-ms.topic: conceptual
+ms.topic: how-to
 monikerRange: ">=sql-server-linux-ver16||>=sql-server-ver16"
 ---
 # Configure PolyBase to access external data in S3-compatible object storage

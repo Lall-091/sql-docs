@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: 05/15/2024
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "audits [SQL Server], viewing logs"
   - "viewing audit logs"

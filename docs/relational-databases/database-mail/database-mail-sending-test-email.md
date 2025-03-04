@@ -5,7 +5,7 @@ author: MashaMSFT
 ms.author: mathoma
 ms.date: "04/22/2019"
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "architecture [SQL Server], Database Mail"
   - "Database Mail [SQL Server], architecture"

@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, dfurman
 ms.date: 02/28/2025
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: whats-new
 ms.custom:
   - intro-whats-new
   - ignite-2024
@@ -24,9 +24,9 @@ Learn about which columnstore features available for each version of [!INCLUDE [
 
 This table summarizes key features for columnstore indexes and the products in which they are available.
 
-|Columnstore Index Feature|[!INCLUDE [ssSQL11](../../includes/sssql11-md.md)]|[!INCLUDE [ssSQL14](../../includes/sssql14-md.md)]|[!INCLUDE [sssql16-md](../../includes/sssql16-md.md)]<sup>1</sup>|[!INCLUDE [ssSQL17](../../includes/sssql17-md.md)]|[!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)]|[!INCLUDE [sql-server-2022](../../includes/sssql22-md.md)]|[!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]<sup>1</sup> and [!INCLUDE [ssazure-sqlmi-autd](../../includes/ssazure-sqlmi-autd.md)]|[!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] dedicated SQL pool|
+|Columnstore Index Feature|[!INCLUDE [ssSQL11](../../includes/sssql11-md.md)]|[!INCLUDE [ssSQL14](../../includes/sssql14-md.md)]|[!INCLUDE [sssql16-md](../../includes/sssql16-md.md)]<sup>1</sup>|[!INCLUDE [ssSQL17](../../includes/sssql17-md.md)]|[!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)]|[!INCLUDE [sql-server-2022](../../includes/sssql22-md.md)]|[!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]<sup>2</sup> and [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]<sup>[AUTD](#updatepolicy)</sup>|[!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] dedicated SQL pool|
 |*----|---|---|---|---|---|---|---|---|
-|Batch mode execution for multi-threaded queries<sup>2</sup>|yes|yes|yes|yes|yes|yes|yes|yes|
+|Batch mode execution for multi-threaded queries<sup>3</sup>|yes|yes|yes|yes|yes|yes|yes|yes|
 |Batch mode execution for single-threaded queries|||yes|yes|yes|yes|yes|yes|
 |Archival compression option||yes|yes|yes|yes|yes|yes|yes|
 |Snapshot isolation and read-committed snapshot isolation|||yes|yes|yes|yes|yes|yes|
@@ -34,7 +34,7 @@ This table summarizes key features for columnstore indexes and the products in w
 |Always On supports columnstore indexes|yes|yes|yes|yes|yes|yes|yes|yes|
 |Always On readable secondary supports read-only nonclustered columnstore index|yes|yes|yes|yes|yes|yes|yes|yes|
 |Always On readable secondary supports updateable columnstore indexes|||yes|yes|yes|yes|||
-|Read-only nonclustered columnstore index on heap or B-tree|yes|yes|yes <sup>3</sup>|yes <sup>3</sup>|yes <sup>3</sup>|yes <sup>3</sup>|yes <sup>3</sup>|yes <sup>3</sup>|
+|Read-only nonclustered columnstore index on heap or B-tree|yes|yes|yes <sup>4</sup>|yes <sup>4</sup>|yes <sup>4</sup>|yes <sup>4</sup>|yes <sup>4</sup>|yes <sup>4</sup>|
 |Updateable nonclustered columnstore index on heap or B-tree|||yes|yes|yes|yes|yes|yes|
 |Additional B-tree indexes allowed on a heap or B-tree that has a nonclustered columnstore index|yes|yes|yes|yes|yes|yes|yes|yes|
 |Updateable clustered columnstore index||yes|yes|yes|yes|yes|yes|yes|
@@ -42,7 +42,7 @@ This table summarizes key features for columnstore indexes and the products in w
 |Columnstore index on a memory-optimized table|||yes|yes|yes|yes|yes|yes|
 |Nonclustered columnstore index definition supports using a filtered condition|||yes|yes|yes|yes|yes|yes|
 |Compression delay option for columnstore indexes in `CREATE TABLE` and `ALTER TABLE`|||yes|yes|yes|yes|yes|yes|
-|Support for nvarchar(max) type||||yes|yes|yes|yes|no <sup>4</sup>|
+|Support for nvarchar(max) type||||yes|yes|yes|yes|no <sup>5</sup>|
 |Columnstore index can have a non-persisted computed column||||yes|yes|yes|||
 |Tuple mover background merge support|||||yes|yes|yes|yes|
 |Ordered clustered columnstore indexes||||||yes|yes|yes|
@@ -50,13 +50,14 @@ This table summarizes key features for columnstore indexes and the products in w
 |Online columnstore index create and rebuild||||||yes|yes||
 |Online ordered columnstore index create and rebuild|||||||yes||
 
-<sup>1</sup> For [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], columnstore indexes are available in the DTU Premium tiers, DTU Standard tiers - S3 and above, and all vCore tiers. For [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] SP1 and later versions, columnstore indexes are available in all editions. For [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] (before SP1) and earlier versions, columnstore indexes are only available in the Enterprise Edition.
+<a id="updatepolicy"></a>
+<sup>1</sup> For [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] SP1 and later versions, columnstore indexes are available in all editions. For [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] (before SP1) and earlier versions, columnstore indexes are only available in the Enterprise Edition.   
+<sup>2</sup> For [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], columnstore indexes are available in the DTU Premium tiers, DTU Standard tiers - S3 and above, and all vCore tiers.
+<sup>3</sup> The degree of parallelism (DOP) for [batch mode](../../relational-databases/query-processing-architecture-guide.md#batch-mode-execution) operations is limited to 2 for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Standard Edition and 1 for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Web and Express Editions. This limitation refers to columnstore indexes created over disk-based tables and memory-optimized tables.   
+<sup>4</sup> To create a read-only nonclustered columnstore index, store the index on a read-only filegroup.   
+<sup>5</sup> Not supported in dedicated SQL pools but is supported in serverless SQL pool.   
+<sup>AUTD</sup> Applies to Azure SQL Managed Instance configured with the [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy).
 
-<sup>2</sup> The degree of parallelism (DOP) for [batch mode](../../relational-databases/query-processing-architecture-guide.md#batch-mode-execution) operations is limited to 2 for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Standard Edition and 1 for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Web and Express Editions. This limitation refers to columnstore indexes created over disk-based tables and memory-optimized tables.
-
-<sup>3</sup> To create a read-only nonclustered columnstore index, store the index on a read-only filegroup.
-
-<sup>4</sup> Not supported in dedicated SQL pools but is supported in serverless SQL pool.
 
 ## SQL Server 2022 (16.x)
 

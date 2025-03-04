@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 09/12/2024
 ms.service: azure-sql-database
 ms.subservice: elastic-pools
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - devx-track-azurecli
   - devx-track-azurepowershell

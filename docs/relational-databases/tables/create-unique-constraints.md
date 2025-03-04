@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: 12/20/2023
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "UNIQUE_TSQL"
 helpviewer_keywords:

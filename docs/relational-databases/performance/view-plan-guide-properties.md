@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.swb.planguideprop.general.f1"
 helpviewer_keywords:

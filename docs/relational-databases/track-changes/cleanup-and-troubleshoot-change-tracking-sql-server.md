@@ -6,7 +6,7 @@ ms.author: roblescarlos
 ms.reviewer: randolphwest
 ms.date: 01/03/2024
 ms.service: sql
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 helpviewer_keywords:
   - "change tracking, cleanup"
   - "change tracking, troubleshooting"

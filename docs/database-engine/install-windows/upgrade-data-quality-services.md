@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 06/29/2020
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 monikerRange: ">=sql-server-2016"
 ---
 # Upgrade Data Quality Services

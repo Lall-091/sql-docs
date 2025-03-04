@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: "05/24/2022"
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom: intro-deployment
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
 ---

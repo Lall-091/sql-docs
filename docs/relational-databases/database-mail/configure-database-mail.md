@@ -5,7 +5,7 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.date: 12/15/2023
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.swb.sqlimail.profileandaccountmanagement.f1"
   - "sql13.swb.sqlimail.newaccount.f1"

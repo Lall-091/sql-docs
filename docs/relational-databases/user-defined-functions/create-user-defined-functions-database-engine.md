@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.reviewer: mathoma
 ms.date: 09/27/2024
 ms.service: sql
-ms.topic: conceptual
+ms.topic: language-reference
 helpviewer_keywords:
   - "SCHEMABINDING clause"
   - "schema-bound functions [SQL Server]"

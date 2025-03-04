@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: "10/05/2016"
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "Policy-Based Management, view policy conditions"
   - "Policy-Based Management, modify policy conditions"

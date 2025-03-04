@@ -7,7 +7,7 @@ ms.reviewer: jopilov
 ms.date: 05/04/2023
 ms.service: sql
 ms.subservice: supportability
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "database snapshots [SQL Server], viewing"
   - "displaying database snapshots"

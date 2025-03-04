@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 05/26/2023
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "reducing attackable surface area"
   - "upgrading SQL Server, security"

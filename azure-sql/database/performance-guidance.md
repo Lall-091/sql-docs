@@ -8,7 +8,7 @@ ms.reviewer: mathoma
 ms.date: 01/06/2025
 ms.service: azure-sql-database
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: best-practice
 ms.custom:
   - sqldbrb=2
   - azure-sql-split

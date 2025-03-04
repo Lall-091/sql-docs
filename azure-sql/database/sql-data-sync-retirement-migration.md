@@ -7,7 +7,7 @@ ms.reviewer: hudequei
 ms.date: 12/27/2024
 ms.service: azure-sql-database
 ms.subservice: sql-data-sync
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # SQL Data Sync retirement: Migrate to alternative solutions
 

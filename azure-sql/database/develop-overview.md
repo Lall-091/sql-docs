@@ -8,7 +8,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 11/14/2019
 ms.service: azure-sql
 ms.subservice: development
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sqldbrb=2
   - ignite-2024

@@ -7,7 +7,7 @@ ms.author: mikeray
 ms.reviewer: nathansc, hudequei
 ms.date: 07/26/2023
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # How to tell if external pushdown occurred
 

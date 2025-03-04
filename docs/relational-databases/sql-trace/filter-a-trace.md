@@ -6,7 +6,7 @@ ms.author: "mathoma"
 ms.reviewer: randolphwest
 ms.date: 07/17/2024
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "filters [SQL Server], events"
   - "events [SQL Server], filters"

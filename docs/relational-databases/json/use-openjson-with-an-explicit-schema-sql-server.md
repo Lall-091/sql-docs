@@ -6,7 +6,7 @@ ms.author: jovanpop
 ms.reviewer: jroth
 ms.date: 06/03/2020
 ms.service: sql
-ms.topic: conceptual
+ms.topic: language-reference
 helpviewer_keywords:
   - "OPENJSON, with explicit schema"
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"

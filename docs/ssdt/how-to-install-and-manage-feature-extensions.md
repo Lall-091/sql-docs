@@ -6,7 +6,7 @@ ms.author: maghan
 ms.date: 04/26/2017
 ms.service: sql
 ms.subservice: ssdt
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom: intro-installation
 ---
 

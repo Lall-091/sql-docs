@@ -5,7 +5,7 @@ author: ntakru
 ms.author: nikitatakru
 ms.reviewer: mikeray
 ms.date: 08/22/2023
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Rotate certificates

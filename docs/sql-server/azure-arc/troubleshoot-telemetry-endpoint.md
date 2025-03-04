@@ -121,6 +121,25 @@ You can probe connectivity to all regions with the [test-connectivity.ps1](https
 
 :::code language="powershell" source="~/../sql-server-samples/samples/features/azure-arc/troubleshooting/test-connectivity.ps1":::
 
+## Check TLS version compatibility
+
+The telemetry and data processing service endpoints support the following TLS versions: TLS 1.2 and 1.3.  Supported TLS versions by operating system for Windows Server 2012/R2 are listed below.
+
+|Cipher Suite|WS 2012|WS 2012 R2|
+| -------- | -------- | -------- |
+|`TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 (0xCCA8)`| Not Supported| Not Supported|
+|`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (0xC02F)`| Not Supported| Supported|
+|`TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (0xC030)`| Not Supported| Supported|
+
+If an unsupported TLS version is being used, you may see an error in the log 
+```output
+<date time>|ERROR|SqlServerExtension.Service|Request failed with exception 'System.Net.Http.HttpRequestException: The SSL connection could not be established, see inner exception.
+
+---> System.Security.Authentication.AuthenticationException: Authentication failed because the remote party sent a TLS alert: 'HandshakeFailure'.
+
+---> System.ComponentModel.Win32Exception (0x80090326): The message received was unexpected or badly formatted.
+```
+
 ## Endpoint reference
 
 To connect to Azure, the endpoints use `*.arcdataservices.com`.

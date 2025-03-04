@@ -8,7 +8,7 @@ ms.reviewer: armaha
 ms.date: 11/18/2024
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom:
   - linux-related-content
 ---

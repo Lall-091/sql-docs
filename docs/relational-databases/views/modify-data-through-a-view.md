@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: "10/05/2016"
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "data modifications [SQL Server], views"
   - "views [SQL Server], modifying data through"

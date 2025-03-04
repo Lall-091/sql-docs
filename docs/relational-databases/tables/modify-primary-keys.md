@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: "07/25/2017"
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "modifying primary keys"
   - "primary keys [SQL Server], modifying"

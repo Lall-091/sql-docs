@@ -7,7 +7,7 @@ ms.author: maghan
 ms.date: 08/01/2016
 ms.service: sql
 ms.subservice: profiler
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Create a Trace (SQL Server Profiler)

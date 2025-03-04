@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: "09/30/2016"
 ms.service: sql
 ms.subservice: data-movement
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "native data format [SQL Server]"
   - "data formats [SQL Server], native"

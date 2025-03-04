@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 08/21/2024
 ms.service: sql
 ms.subservice: system-objects
-ms.topic: "language-reference"
+ms.topic: reference
 f1_keywords:
   - "sp_query_store_clear_hints_TSQL"
   - "sys.sp_query_store_clear_hints_TSQL"

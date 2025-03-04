@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.reviewer: vanto
 ms.date: 05/24/2024
 ms.service: sql
-ms.topic: conceptual
+ms.topic: language-reference
 helpviewer_keywords:
   - "triggers [SQL Server], security"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"

@@ -5,7 +5,7 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.date: "03/14/2017"
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: intro-deployment
 f1_keywords:
   - "sql13.swb.dbdeployment.settings.f1"

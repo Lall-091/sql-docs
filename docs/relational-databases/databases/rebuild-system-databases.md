@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.reviewer: randolphwest
 ms.date: 07/19/2024
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "master database [SQL Server], rebuilding"
   - "REBUILDDATABASE parameter"

@@ -7,7 +7,7 @@ ms.reviewer: mikeray
 ms.date: "08/19/2016"
 ms.service: sql
 ms.subservice: search
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.swb.fulltextindexingwizard.welcome.f1"
   - "sql13.swb.fulltextindexingwizard.selectorcreatepopschedules.f1"

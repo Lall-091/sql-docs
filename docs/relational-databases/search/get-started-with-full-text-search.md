@@ -7,7 +7,7 @@ ms.reviewer: mikeray
 ms.date: "03/31/2020"
 ms.service: sql
 ms.subservice: search
-ms.topic: conceptual
+ms.topic: get-started
 ms.custom: intro-get-started
 helpviewer_keywords:
   - "full-text catalogs [SQL Server], creating"

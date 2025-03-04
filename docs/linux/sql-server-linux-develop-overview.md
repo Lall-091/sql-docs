@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 01/03/2024
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: get-started
 ms.custom:
   - linux-related-content
 ---

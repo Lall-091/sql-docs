@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 05/03/2024
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 monikerRange: ">=sql-server-2016"
 ---
 # Repair a failed SQL Server installation

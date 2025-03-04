@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.swb.restoretlog.general.f1"
   - "sql13.swb.restoretlog.options.f1"

@@ -713,6 +713,8 @@
         href: database/standby-replica-how-to-configure.md
       - name: Migrate to availability zone
         href: /azure/reliability/migrate-sql-database?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
+      - name: Deleted server restore
+        href: database/deleted-logical-server-restore.md
     - name: Monitor & Tune
       items:
         - name: Monitor SQL Database

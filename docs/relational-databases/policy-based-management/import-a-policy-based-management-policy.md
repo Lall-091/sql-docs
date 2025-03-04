@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: 08/06/2020
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "Policy-Based Management, import policy"
 ---

@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 07/08/2024
 ms.service: sql
 ms.subservice: filestream
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "FileTables [SQL Server], migrating files"
   - "FileTables [SQL Server], bulk loading"

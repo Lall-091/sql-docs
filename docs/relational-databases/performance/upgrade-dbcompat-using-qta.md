@@ -7,7 +7,7 @@ ms.reviewer: wiassaf
 ms.date: "02/13/2019"
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 f1_keywords:
   - "sql13.swb.querytuning.f1"
 helpviewer_keywords:

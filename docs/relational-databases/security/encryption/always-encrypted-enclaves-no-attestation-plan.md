@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: "02/01/2023"
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: ">= sql-server-ver15"
 ---
 

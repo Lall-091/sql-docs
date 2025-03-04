@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.reviewer: maghan
 ms.date: 06/21/2023
 ms.service: sql
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 ms.custom:
   - ignite-2024
 f1_keywords:

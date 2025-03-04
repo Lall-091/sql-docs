@@ -7,7 +7,7 @@ ms.reviewer: mikeray
 ms.date: 01/29/2024
 ms.service: sql
 ms.subservice: search
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "full-text search [SQL Server], word breakers"
   - "full-text search [SQL Server], filters"

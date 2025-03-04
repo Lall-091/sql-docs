@@ -6,7 +6,7 @@ author: VanMSFT
 ms.author: vanto
 ms.date: 09/16/2024
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.swb.createpartition.progress.f1"
   - "sql13.swb.createpartition.partitioncolumn.f1"

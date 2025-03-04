@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 10/28/2024
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "table dependencies [SQL Server]"
   - "dependencies [SQL Server], tables"

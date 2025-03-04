@@ -4,7 +4,7 @@ description: "Reference database objects with package references."
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: maghan, randolphwest
-ms.date: 08/30/2024
+ms.date: 03/02/2025
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: concept-article
@@ -41,6 +41,33 @@ The following example includes a package reference to the `Contoso.AdventureWork
   </ItemGroup>
 </Project>
 ```
+
+The following example includes a package reference to the `Contoso.AdventureWorks` package as a database reference for a different database (AdventureWorks) on the same server where the objects in the package become part of the database model in the SQL project:
+
+```xml
+...
+  <ItemGroup>
+    <PackageReference Include="Contoso.AdventureWorks" Version="1.1.0">
+      <DatabaseSqlCmdVariable>AdventureDB</DatabaseSqlCmdVariable>
+      <DacpacName>AdventureWorks</DacpacName>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="AdventureDB">
+      <DefaultValue>AdventureWorks</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+</Project>
+```
+
+In this example, the AdventureWorks `.dacpac` file is published as a package `Contoso.AdventureWorks` version `1.1.0` to a NuGet feed. The `<DatabaseSqlCmdVariable>` element specifies the name of the database on the same server where the objects in the package are located and would be used to indicate this reference in three-part naming. The [SQLCMD variable](sqlcmd-variables.md) `AdventureDB` is used to set the database name at deployment time and is used in the project similarly to this example query:
+
+```sql
+SELECT * FROM [$(AdventureDB)].dbo.Customers
+```
+
+The `<DacpacName>` element specifies the name of the `.dacpac` file for the package reference, without the file extension or path. The `<DacpacName>` element is optional and is only required when the name of the `.dacpac` file is different from the name of the package.
 
 ### System databases
 
@@ -82,7 +109,9 @@ Package metadata can be specified by properties inside the `<PropertyGroup>` ele
 <Company>Contoso Outdoors</Company>
 ```
 
-The `.nupkg` file created by the `dotnet pack` command can be published to a NuGet feed for use in SQL projects. This database objects can be viewed by anyone with access to the package, so consideration should be made for selecting a public or private feed location. For more information, see [Hosting with private package feeds](/nuget/hosting-packages/overview).
+The `.nupkg` file created by the `dotnet pack` command can be published to a NuGet feed for use in SQL projects. These database objects can be viewed by anyone with access to the package, so consideration should be made for selecting a public or private feed location. For more information, see [Hosting with private package feeds](/nuget/hosting-packages/overview).
+
+When referencing a package where the `PackageId` is different from the name of the `.dacpac` file, the `<DacpacName>` element is required in the package reference when consuming the package.
 
 ## Related content
 

@@ -6,7 +6,7 @@ ms.author: "mathoma"
 ms.date: 09/25/2024
 ms.service: sql
 ms.subservice: replication
-ms.topic: "language-reference"
+ms.topic: reference
 ms.custom:
   - updatefrequency5
 monikerRange: "=azuresqldb-mi-current||>=sql-server-2016"

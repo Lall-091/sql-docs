@@ -7,7 +7,7 @@ ms.reviewer: wiassaf
 ms.date: 11/18/2021
 ms.service: sql
 ms.subservice: big-data-cluster
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom: intro-installation
 ---
 

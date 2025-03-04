@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 03/19/2024
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "foreign keys [SQL Server], attributes"
   - "displaying foreign keys attributes"

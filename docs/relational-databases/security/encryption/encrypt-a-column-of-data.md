@@ -8,7 +8,7 @@ ms.reviewer: vanto
 ms.date: 03/24/2022
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - ignite-2024
 helpviewer_keywords:

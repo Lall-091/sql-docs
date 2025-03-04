@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: "04/05/2024"
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "service master key [SQL Server], exporting"
 ---

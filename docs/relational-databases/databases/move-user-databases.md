@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.reviewer: randolphwest
 ms.date: 09/19/2024
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "disaster recovery [SQL Server], moving database files"
   - "database files [SQL Server], moving"

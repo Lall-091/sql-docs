@@ -7,7 +7,7 @@ ms.reviewer: wiassaf
 ms.date: 04/23/2019
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2024
 helpviewer_keywords:

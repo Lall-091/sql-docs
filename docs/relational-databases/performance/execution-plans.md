@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, vanto
 ms.date: 09/17/2024
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "query plans [SQL Server]"
   - "execution plans [SQL Server]"

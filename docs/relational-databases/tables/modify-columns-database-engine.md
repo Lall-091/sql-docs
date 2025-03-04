@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: 01/03/2025
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "modifying data types"
   - "column data types [SQL Server]"

@@ -5,7 +5,7 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.date: 04/12/2023
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - intro-deployment
   - ignite-2024

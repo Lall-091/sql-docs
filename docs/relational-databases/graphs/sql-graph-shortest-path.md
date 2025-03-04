@@ -5,7 +5,7 @@ author: MikeRayMSFT
 ms.author: mikeray
 ms.date: 06/28/2023
 ms.service: sql
-ms.topic: "language-reference"
+ms.topic: reference
 ms.custom:
   - ignite-2024
 f1_keywords:

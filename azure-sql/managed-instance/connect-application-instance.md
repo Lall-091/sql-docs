@@ -8,7 +8,7 @@ ms.reviewer: mathoma, bonova, vanto, randolphwest
 ms.date: 05/28/2024
 ms.service: azure-sql-managed-instance
 ms.subservice: connect
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sqldbrb=1
 ---

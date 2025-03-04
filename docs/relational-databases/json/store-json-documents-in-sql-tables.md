@@ -8,7 +8,7 @@ ms.date: 08/20/2024
 ms.service: sql
 ms.custom:
   - build-2024
-ms.topic: conceptual
+ms.topic: how-to
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
 ---
 # Store JSON documents

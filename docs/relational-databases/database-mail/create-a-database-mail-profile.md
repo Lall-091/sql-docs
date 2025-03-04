@@ -5,7 +5,7 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.date: 02/23/2023
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "Database Mail [SQL Server], public profiles"
   - "profiles [SQL Server], Database Mail"

@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.reviewer: jroth, randolphwest, jovanpop
 ms.date: 11/04/2024
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - build-2024
   - ignite-2024

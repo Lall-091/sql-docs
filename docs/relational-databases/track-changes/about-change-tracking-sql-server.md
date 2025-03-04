@@ -6,7 +6,7 @@ ms.author: bspendolini
 ms.reviewer: mathoma
 ms.date: 09/27/2024
 ms.service: sql
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "data changes [SQL Server]"
   - "tracking data changes [SQL Server]"

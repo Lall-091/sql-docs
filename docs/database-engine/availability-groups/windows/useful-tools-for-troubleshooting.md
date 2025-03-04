@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "06/14/2017"
 ms.service: sql
 ms.subservice: availability-groups
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 ---
 # Useful tools for troubleshooting
 [!INCLUDE [SQL Server](../../../includes/applies-to-version/sqlserver.md)]

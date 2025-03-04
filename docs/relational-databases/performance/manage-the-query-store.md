@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: 01/08/2024
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: best-practice
 helpviewer_keywords:
   - "Query Store, best practices"
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"

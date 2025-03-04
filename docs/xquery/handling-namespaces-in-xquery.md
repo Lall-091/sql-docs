@@ -6,7 +6,7 @@ ms.author: "jroth"
 ms.date: "03/07/2017"
 ms.service: sql
 ms.subservice: xml
-ms.topic: "language-reference"
+ms.topic: reference
 helpviewer_keywords:
   - "declaring namespaces"
   - "namespaces [XQuery]"

@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: 01/30/2025
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 monikerRange: ">= sql-server-ver15"
 ---
 # Rotate enclave-enabled keys

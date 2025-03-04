@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 07/26/2024
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "connections [SQL Server], other computers"
 ---

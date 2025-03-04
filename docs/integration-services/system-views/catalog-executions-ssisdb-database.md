@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "04/13/2022"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: "language-reference"
+ms.topic: reference
 helpviewer_keywords:
   - "executions view [Integration Services]"
   - "catalog.executions view [Integration Services]"

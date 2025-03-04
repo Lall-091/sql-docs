@@ -5,7 +5,7 @@ author: MikeRayMSFT
 ms.author: mikeray
 ms.date: 09/16/2024
 ms.service: sql
-ms.topic: conceptual
+ms.topic: tutorial
 ---
 # Tutorials for SQL Server
 

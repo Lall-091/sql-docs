@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 12/02/2024
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "remote servers [SQL Server], connection options"
   - "servers [SQL Server], remote"

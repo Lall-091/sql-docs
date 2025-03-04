@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 09/27/2023
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "restoring databases [SQL Server], moving"
   - "database restores [SQL Server], creating new databases"

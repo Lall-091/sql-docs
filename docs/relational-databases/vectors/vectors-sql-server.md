@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.reviewer: damauri, pookam, jovanpop, randolphwest
 ms.date: 10/22/2024
 ms.service: sql
-ms.topic: conceptual
+ms.topic: language-reference
 ms.custom:
   - intro-quickstart
 ms.collection: ce-skilling-ai-copilot

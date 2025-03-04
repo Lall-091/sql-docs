@@ -7,7 +7,7 @@ ms.reviewer: dfurman, mathoma, oslake, randolphwest, blakhani
 ms.date: 02/10/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sqldbrb=1
 ---

@@ -5,7 +5,7 @@ author: rwestMSFT
 ms.author: randolphwest
 ms.date: 04/26/2024
 ms.service: sql
-ms.topic: conceptual
+ms.topic: language-reference
 helpviewer_keywords:
   - "invoking user-defined functions"
   - "user-defined functions [SQL Server], executing"

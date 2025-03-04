@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 03/28/2024
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "backup checksums [SQL Server]"
   - "disabling checksums"

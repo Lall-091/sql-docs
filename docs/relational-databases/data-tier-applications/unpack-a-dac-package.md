@@ -5,7 +5,7 @@ author: dzsquared
 ms.author: drskwier
 ms.date: "5/9/2024"
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "wizard [DAC], unpack"
   - "data-tier application [SQL Server], unpack"

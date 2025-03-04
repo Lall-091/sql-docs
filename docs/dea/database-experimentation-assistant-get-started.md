@@ -7,7 +7,7 @@ ms.reviewer: mathoma, randolphwest
 ms.date: 02/26/2025
 ms.service: sql
 ms.subservice: dea
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Overview of the workload comparison process

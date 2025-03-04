@@ -10,7 +10,7 @@ ms.subservice: security
 f1_keywords:
   - "sql13.swb.alwaysencryptedwizard.encryption.f1"
   - "sql13.swb.alwaysencryptedwizard.masterkey.f1"
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
 ---
 

@@ -7,7 +7,7 @@ ms.reviewer: mathoma, wiassaf
 ms.date: 12/18/2018
 ms.service: azure-sql-database
 ms.subservice: scenario
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: sqldbrb=1
 ---
 # General guidance for working with Wingtip Tickets sample SaaS apps

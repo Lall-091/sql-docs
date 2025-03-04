@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: supportability
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "removing database snapshots"
   - "deleting database snapshots"

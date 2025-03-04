@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 09/27/2023
 ms.service: sql
 ms.subservice: release-landing
-ms.topic: conceptual
+ms.topic: release-notes
 monikerRange: "<= sql-server-2016"
 ---
 # SQL Server 2012 Service Pack release notes

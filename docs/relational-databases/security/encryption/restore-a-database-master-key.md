@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: "12/16/2021"
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "database master key [SQL Server], importing"
 ---

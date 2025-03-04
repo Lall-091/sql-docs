@@ -5,7 +5,7 @@ author: rwestMSFT
 ms.author: randolphwest
 ms.date: "06/28/2022"
 ms.service: sql
-ms.topic: conceptual
+ms.topic: language-reference
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
 ---
 # Delete user-defined functions

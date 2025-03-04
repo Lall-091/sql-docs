@@ -5,7 +5,7 @@ description: Use the COPY statement in Azure Synapse Analytics and Warehouse in 
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: procha, mikeray, fresantos
-ms.date: 02/11/2025
+ms.date: 02/26/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -700,9 +700,11 @@ To access files on Azure Data Lake Storage (ADLS) Gen2 and Azure Blob Storage lo
 > [!NOTE]
 > When a relative path is passed to *ERRORFILE*, the path is relative to the container path specified in *external_location*. 
 
-Within this directory, there's a folder created based on the time of load submission in the format YearMonthDay -HourMinuteSecond (Ex. 20180330-173205). In this folder a folder with the statement ID is created, and under that folder two types of files are written: an error.Json file containing the reject reasons, and a row.csv file containing the rejected rows.
+Within this directory, there's a folder created based on the time of load submission in the format `YearMonthDay -HourMinuteSecond` (for example, `20180330-173205`). In this folder a folder with the statement ID is created, and under that folder two types of files are written: an error.Json file containing the reject reasons, and a row.csv file containing the rejected rows.
 
 If ERRORFILE has the full path of the storage account defined, then the ERRORFILE_CREDENTIAL is used to connect to that storage. Otherwise, the value mentioned for CREDENTIAL is used. When the same credential that is used for the source data is used for ERRORFILE, restrictions that apply to ERRORFILE_CREDENTIAL also apply.
+
+When using a firewall protected Azure Storage Account, the error file will be created in the same container specified in the storage account path. When considering using the *ERRORFILES* option in this scenario, it is also required to specify the *MAXERROR* parameter. If ERRORFILE has the full path of the storage account defined, then the ERRORFILE_CREDENTIAL is used to connect to that storage. Otherwise, the value mentioned for CREDENTIAL is used. 
 
 #### *ERRORFILE_CREDENTIAL = (IDENTITY= '', SECRET = '')*
 
@@ -819,6 +821,9 @@ GO
 GRANT INSERT to [mike@contoso.com];
 GO
 ```
+
+> [!NOTE]  
+> When using the *ErrorFile* option, the user must have the minimal permission of Blob Storage Contributor on the Storage Account container.
 
 ## Remarks
 

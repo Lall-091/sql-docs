@@ -7,7 +7,7 @@ ms.reviewer: randolphwest, vanto
 ms.date: 01/30/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Special cases for encrypting connections to SQL Server

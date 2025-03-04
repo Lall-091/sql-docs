@@ -5,7 +5,7 @@ author: kfollis
 ms.author: "kfollis"
 ms.date: "12/09/2020"
 ms.service: sql
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 helpviewer_keywords:
   - "upgrading databases"
   - "databases [Analysis Services], upgrading"

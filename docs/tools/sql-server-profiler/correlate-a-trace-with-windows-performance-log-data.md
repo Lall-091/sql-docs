@@ -7,7 +7,7 @@ ms.author: maghan
 ms.date: 07/12/2017
 ms.service: sql
 ms.subservice: profiler
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Correlate a trace with Windows Performance Log data

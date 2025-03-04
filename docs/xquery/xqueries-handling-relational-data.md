@@ -6,7 +6,7 @@ ms.author: "jroth"
 ms.date: "03/03/2017"
 ms.service: sql
 ms.subservice: xml
-ms.topic: "language-reference"
+ms.topic: reference
 helpviewer_keywords:
   - "relational data [XQuery]"
   - "XQuery, relational data"

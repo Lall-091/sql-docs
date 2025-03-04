@@ -5,7 +5,7 @@ author: pochiraju
 ms.author: rajpo
 ms.reviewer: mikeray, randolphwest
 ms.date: 09/09/2024
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Configure best practices assessment for SQL Server enabled by Azure Arc

@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: 10/31/2019
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 ms.custom: intro-migration
 f1_keywords:
   - "SQL13.SWB.COLUMNMASTERKEY.ROTATION.F1"

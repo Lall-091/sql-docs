@@ -5,7 +5,7 @@ author: MikeRayMSFT
 ms.author: mikeray
 ms.date: "09/01/2017"
 ms.service: sql
-ms.topic: conceptual
+ms.topic: language-reference
 helpviewer_keywords:
   - "encryption [SQL Server], DML triggers"
   - "deferred name resolution, DML triggers"

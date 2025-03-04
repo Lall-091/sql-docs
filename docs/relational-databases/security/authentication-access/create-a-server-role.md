@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "SQL13.SWB.SERVERROLE.GENERAL.F1"
   - "sql13.swb.serverrole.memberships.f1"

@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 12/28/2023
 ms.service: sql
 ms.subservice: t-sql
-ms.topic: "language-reference"
+ms.topic: reference
 dev_langs:
   - "TSQL"
 monikerRange: ">= aps-pdw-2016"

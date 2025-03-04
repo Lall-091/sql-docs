@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: 09/25/2024
 ms.service: sql
 ms.subservice: stored-procedures
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - "UpdateFrequency5"
 helpviewer_keywords:

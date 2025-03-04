@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 07/10/2023
 ms.service: sql
 ms.subservice: ssma
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.collection:
   - sql-migration-content
 ms.custom:

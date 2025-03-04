@@ -5,7 +5,7 @@ author: lcwright
 ms.author: lancewright
 ms.reviewer: mikeray, randolphwest
 ms.date: 09/09/2024
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - ignite-2023
 ---

@@ -6,7 +6,7 @@ ms.author: maghan
 ms.date: 02/09/2017
 ms.service: sql
 ms.subservice: ssdt
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 ---
 
 # Troubleshooting SQL Server Database Unit Testing Issues

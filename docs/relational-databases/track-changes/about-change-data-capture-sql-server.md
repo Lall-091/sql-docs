@@ -7,7 +7,7 @@ ms.reviewer: "mathoma"
 ms.date: "10/19/2023"
 ms.service: sql
 ms.subservice: replication
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: intro-overview
 helpviewer_keywords:
   - "change data capture"

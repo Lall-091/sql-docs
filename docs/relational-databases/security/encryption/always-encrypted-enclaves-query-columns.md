@@ -8,7 +8,7 @@ ms.date: 11/14/2023
 ms.service: sql
 ms.subservice: security
 ms.custom: ignite-2023
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Run Transact-SQL statements using secure enclaves
 

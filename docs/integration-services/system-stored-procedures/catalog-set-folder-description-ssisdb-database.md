@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "03/03/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: "language-reference"
+ms.topic: reference
 ---
 # catalog.set_folder_description (SSISDB Database)
 

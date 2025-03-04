@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.reviewer: randolphwest
 ms.date: 08/08/2024
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "renaming triggers"
   - "modifying triggers"

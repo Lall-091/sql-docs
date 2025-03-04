@@ -7,7 +7,7 @@ ms.reviewer: martinle
 ms.date: "06/27/2018"
 ms.service: sql
 ms.subservice: data-warehouse
-ms.topic: "conceptual"
+ms.topic: concept-article
 monikerRange: ">= aps-pdw-2016-au7"
 ---
 # Configure auto statistics

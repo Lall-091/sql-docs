@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "03/06/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: "language-reference"
+ms.topic: reference
 ---
 # catalog.set_environment_variable_value (SSISDB Database)
 

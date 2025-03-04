@@ -8,7 +8,7 @@ ms.reviewer: mathoma
 ms.date: 01/24/2024
 ms.service: azure-sql
 ms.subservice: monitoring
-ms.topic: conceptual
+ms.topic: retired
 ms.custom:
   - subject-monitoring
 monikerRange: "=azuresql||=azuresql-db||=azuresql-mi||=azuresql-vm"

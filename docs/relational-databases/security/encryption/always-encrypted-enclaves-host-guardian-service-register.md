@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: "02/15/2023"
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 monikerRange: ">= sql-server-ver15"
 ---
 

@@ -8,7 +8,7 @@ ms.date: 04/05/2023
 ms.service: sql
 ms.subservice: security
 ms.custom: devx-track-azurepowershell
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Provision enclave-enabled keys
 

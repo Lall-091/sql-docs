@@ -88,8 +88,10 @@ Some project properties are associated with database options that apply to only 
 | ArithAbort | `ARITHABORT` | Database settings, SET ARITHABORT | True | {True&#124;False} |
 | AutoClose | `AUTO_CLOSE` | Database settings, Operational, Auto close | False | {True&#124;False} |
 | AutoCreateStatistics | `AUTO_CREATE_STATISTICS` | Database settings, Operational, Auto create statistics | True | {True&#124;False} |
+| AutoCreateStatisticsIncremental | `AUTO_CREATE_STATISTICS` (`INCREMENTAL`) | Database settings, Operational, Auto create incremental | False | {True&#124;False} |
 | AutoShrink | `AUTO_SHRINK` | Database settings, Operational, Auto shrink | False | {True&#124;False} |
 | AutoUpdateStatistics | `AUTO_UPDATE_STATISTICS` | Database settings, Operational, Auto update statistics | True | {True&#124;False} |
+| AutoUpdateStatisticsAsynchronously | `AUTO_UPDATE_STATISTICS_ASYNC` | Database settings, Operational, Auto update statistics asynchronously | False | {True&#124;False} |
 | ChangeTrackingRetentionPeriod | `CHANGE_RETENTION` | Database settings, Operational, Change tracking retention period | 2 | {integer} |
 | ChangeTrackingRetentionUnit | `CHANGE_RETENTION` | Database settings, Operational, Change tracking retention period | MINUTES | {DAYS&#124;HOURS&#124;MINUTES} |
 | CloseCursorOnCommitEnabled | `CURSOR_CLOSE_ON_COMMIT` | Database settings, Operational, Close cursor on commit enabled | False | {True&#124;False} |

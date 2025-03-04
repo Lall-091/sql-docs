@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: 09/16/2024
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "ODBC Data Source Administrator"
   - "opening ODBC Data Source Administrator"

@@ -5,7 +5,7 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.date: "07/18/2016"
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - ignite-2024
 f1_keywords:

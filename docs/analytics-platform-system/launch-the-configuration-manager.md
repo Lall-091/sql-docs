@@ -7,7 +7,7 @@ ms.reviewer: martinle
 ms.date: 04/17/2018
 ms.service: sql
 ms.subservice: data-warehouse
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Launch the Configuration Manager in Analytics Platform System

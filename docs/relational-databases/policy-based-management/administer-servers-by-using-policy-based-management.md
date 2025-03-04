@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: "08/12/2016"
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "facet See facets"
   - "Declarative Management Framework See Policy-Based Management"

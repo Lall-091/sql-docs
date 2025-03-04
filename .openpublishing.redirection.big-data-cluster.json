@@ -1,0 +1,1076 @@
+{
+  "redirections": [
+    {
+      "source_path": "docs/big-data-cluster/index.yml",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/index",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/big-data-cluster-faq.yml",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/big-data-cluster-faq",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/active-directory-connect.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/active-directory-connect",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/active-directory-deploy.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/active-directory-deploy",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/active-directory-deployment-aks-tutorial.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/active-directory-deployment-aks-tutorial",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/active-directory-deployment-aks.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/active-directory-deployment-aks",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/active-directory-deployment-background.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/active-directory-deployment-background",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/active-directory-dns-reconciliation.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/active-directory-dns-reconciliation",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/active-directory-objects.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/active-directory-objects",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/active-directory-password-rotation.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/active-directory-password-rotation",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/active-directory-prerequisites.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/active-directory-prerequisites",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/app-consume.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/app-consume",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/app-create.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/app-create",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/app-deployment-extension.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/app-deployment-extension",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/app-monitor.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/app-monitor",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/app-run.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/app-run",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/bdc-upgrade-configuration.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/bdc-upgrade-configuration",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/big-data-cluster-key-versions.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/big-data-cluster-key-versions",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/big-data-cluster-overview.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/big-data-cluster-overview",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/change-azdata-password.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/change-azdata-password",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/cluster-common-notebooks.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/cluster-common-notebooks",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/cluster-logging-kibana.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/cluster-logging-kibana",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/cluster-logging-notebooks.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/cluster-logging-notebooks",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/cluster-manage-notebooks.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/cluster-manage-notebooks",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/cluster-monitor-ads.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/cluster-monitor-ads",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/cluster-monitor-cmdlet.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/cluster-monitor-cmdlet",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/cluster-monitor-grafana.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/cluster-monitor-grafana",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/cluster-monitor-notebooks.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/cluster-monitor-notebooks",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/cluster-troubleshooter-notebooks.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/cluster-troubleshooter-notebooks",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/cluster-troubleshooting-commands.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/cluster-troubleshooting-commands",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/concept-application-deployment.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/concept-application-deployment",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/concept-architecture-pods.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/concept-architecture-pods",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/concept-compute-pool.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/concept-compute-pool",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/concept-controller.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/concept-controller",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/concept-data-persistence.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/concept-data-persistence",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/concept-data-pool.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/concept-data-pool",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/concept-master-instance.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/concept-master-instance",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/concept-security.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/concept-security",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/concept-storage-pool.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/concept-storage-pool",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/configure-bdc-overview.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/configure-bdc-overview",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/configure-bdc-postdeployment.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/configure-bdc-postdeployment",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/configure-bdc-pre-configuration.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/configure-bdc-pre-configuration",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/configure-spark-hdfs.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/configure-spark-hdfs",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/configure-sql-server-master-instance.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/configure-sql-server-master-instance",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/connect-to-big-data-cluster.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/connect-to-big-data-cluster",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/data-ingestion-curl.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/data-ingestion-curl",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/data-ingestion-restore-database.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/data-ingestion-restore-database",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/data-virtualization-csv.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/data-virtualization-csv",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/deploy-big-data-tools.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deploy-big-data-tools",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/deploy-get-started.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deploy-get-started",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/deploy-offline.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deploy-offline",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/deploy-on-aks.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deploy-on-aks",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/deploy-openshift.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deploy-openshift",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/deploy-with-kubeadm.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deploy-with-kubeadm",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/deployment-custom-configuration.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deployment-custom-configuration",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/deployment-guidance.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deployment-guidance",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/deployment-high-availability-hdfs-spark.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deployment-high-availability-hdfs-spark",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/deployment-high-availability.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deployment-high-availability",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/deployment-script-single-node-kubeadm.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deployment-script-single-node-kubeadm",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/deployment-upgrade.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/deployment-upgrade",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/distributed-data-copy-hdfs.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/distributed-data-copy-hdfs",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/encryption-at-rest-concepts-and-configuration.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/encryption-at-rest-concepts-and-configuration",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/encryption-at-rest-external-provider.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/encryption-at-rest-external-provider",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/encryption-at-rest-hdfs-encryption-zones.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/encryption-at-rest-hdfs-encryption-zones",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/encryption-at-rest-sql-server-tde.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/encryption-at-rest-sql-server-tde",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/hdfs-tiering-manage-permissions.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/hdfs-tiering-manage-permissions",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/hdfs-tiering-mount-adlsgen2.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/hdfs-tiering-mount-adlsgen2",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/hdfs-tiering-mount-s3.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/hdfs-tiering-mount-s3",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/hdfs-tiering.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/hdfs-tiering",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/known-issues.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/known-issues",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/kubernetes-rbac.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/kubernetes-rbac",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/machine-learning-on-bdc.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/machine-learning-on-bdc",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/machine-learning-services.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/machine-learning-services",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/manage-user-access.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/manage-user-access",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/manage-with-controller-dashboard.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/manage-with-controller-dashboard",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/non-root-containers.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/non-root-containers",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/notebooks-deploy.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/notebooks-deploy",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/notebooks-manage-bdc.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/notebooks-manage-bdc",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/notebooks-tutorial-spark.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/notebooks-tutorial-spark",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/package-management-delta-lake.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/package-management-delta-lake",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/partner-big-data-cluster.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/partner-big-data-cluster",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/performance-guidelines-tuned.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/performance-guidelines-tuned",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/private-deploy.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/private-deploy",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/private-manage.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/private-manage",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/private-restrict-egress-traffic.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/private-restrict-egress-traffic",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/quickstart-big-data-cluster-deploy-aro.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/quickstart-big-data-cluster-deploy-aro",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/quickstart-big-data-cluster-deploy.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/quickstart-big-data-cluster-deploy",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/reference-config-bdc-overview.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-config-bdc-overview",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/reference-config-master-instance.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-config-master-instance",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/reference-config-spark-hadoop.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-config-spark-hadoop",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/reference-deployment-config.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-deployment-config",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/reference-open-source-software.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/reference-open-source-software",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/release-notes-big-data-cluster.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/release-notes-big-data-cluster",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/release-notes-cumulative-update-12.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/release-notes-cumulative-update-12",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/release-notes-cumulative-update-13.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/release-notes-cumulative-update-13",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/release-notes-cumulative-update-14.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/release-notes-cumulative-update-14",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/release-notes-cumulative-update-15.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/release-notes-cumulative-update-15",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/release-notes-cumulative-update-16.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/release-notes-cumulative-update-16",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/release-notes-cumulative-update-17.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/release-notes-cumulative-update-17",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/release-notes-cumulative-update-18.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/release-notes-cumulative-update-18",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/release-notes-cumulative-update-19.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/release-notes-cumulative-update-19",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/release-notes-cumulative-update-20.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/release-notes-cumulative-update-20",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/release-notes-cumulative-update-21.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/release-notes-cumulative-update-21",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/release-notes-cumulative-update-22.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/release-notes-cumulative-update-22",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/release-notes-cumulative-update-23.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/release-notes-cumulative-update-23",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/release-notes-cumulative-updates-history.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/release-notes-cumulative-updates-history",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/runtime-for-apache-spark.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/runtime-for-apache-spark",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/spark-3-upgrade.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/spark-3-upgrade",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/spark-create-machine-learning-model.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/spark-create-machine-learning-model",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/spark-history-server.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/spark-history-server",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/spark-hive-tools-vscode.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/spark-hive-tools-vscode",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/spark-install-packages.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/spark-install-packages",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/spark-machine-learning.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/spark-machine-learning",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/spark-mssql-connector.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/spark-mssql-connector",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/spark-streaming-guide.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/spark-streaming-guide",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/spark-submit-job-command-line.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/spark-submit-job-command-line",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/spark-submit-job-intellij-tool-plugin.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/spark-submit-job-intellij-tool-plugin",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/spark-submit-job.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/spark-submit-job",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/spark-yarn-capacity-scheduler.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/spark-yarn-capacity-scheduler",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/sparklyr-from-RStudio.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/sparklyr-from-RStudio",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/troubleshoot-active-directory.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/troubleshoot-active-directory",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/troubleshoot-ad-hung-deployment-unhealthy-sparkhead-pods.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/troubleshoot-ad-hung-deployment-unhealthy-sparkhead-pods",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/troubleshoot-ad-login-failed-untrusted-domain.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/troubleshoot-ad-login-failed-untrusted-domain",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/troubleshoot-ad-reverse-lookup-zone.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/troubleshoot-ad-reverse-lookup-zone",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/troubleshoot-hdfs-restore-admin.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/troubleshoot-hdfs-restore-admin",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/troubleshoot-hdfs.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/troubleshoot-hdfs",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/troubleshoot-pyspark-notebook.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/troubleshoot-pyspark-notebook",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/tutorial-data-pool-ingest-spark.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/tutorial-data-pool-ingest-spark",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/tutorial-data-pool-ingest-sql.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/tutorial-data-pool-ingest-sql",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/tutorial-load-sample-data.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/tutorial-load-sample-data",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/tutorial-query-hdfs-storage-pool.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/tutorial-query-hdfs-storage-pool",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/tutorial-query-oracle.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/tutorial-query-oracle",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/use-prose-for-big-data-automation.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/use-prose-for-big-data-automation",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    },
+    {
+      "source_path": "docs/big-data-cluster/view-cluster-status.md",
+      "redirect_url": "/previous-versions/sql/big-data-cluster/view-cluster-status",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver15"
+      ]
+    }
+  ]
+}

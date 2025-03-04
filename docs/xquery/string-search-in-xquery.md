@@ -6,7 +6,7 @@ ms.author: "jroth"
 ms.date: "03/04/2017"
 ms.service: sql
 ms.subservice: xml
-ms.topic: "language-reference"
+ms.topic: reference
 helpviewer_keywords:
   - "strings [SQL Server], search"
   - "XML [SQL Server], searching text"

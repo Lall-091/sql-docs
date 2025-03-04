@@ -5,7 +5,7 @@ author: pochiraju
 ms.author: rajpo
 ms.reviewer: mikeray, randolphwest
 ms.date: 02/13/2024
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Assess migration readiness (preview) - SQL Server enabled by Azure Arc

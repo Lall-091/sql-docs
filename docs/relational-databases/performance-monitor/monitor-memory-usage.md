@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: 12/04/2023
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "tuning databases [SQL Server], memory"
   - "monitoring server performance [SQL Server], memory usage"

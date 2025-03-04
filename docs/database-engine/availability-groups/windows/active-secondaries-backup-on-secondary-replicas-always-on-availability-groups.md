@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "09/01/2017"
 ms.service: sql
 ms.subservice: availability-groups
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "backup priority"
   - "backup on secondary replicas"

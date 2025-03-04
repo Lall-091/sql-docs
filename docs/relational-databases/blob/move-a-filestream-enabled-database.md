@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "01/31/2022"
 ms.service: sql
 ms.subservice: filestream
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "FILESTREAM [SQL Server], moving a FILESTREAM-enabled database"
 ---

@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.reviewer: maghan
 ms.date: 04/21/2023
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - ignite-2024
 f1_keywords:

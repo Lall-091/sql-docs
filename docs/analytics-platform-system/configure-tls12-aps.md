@@ -7,7 +7,7 @@ ms.reviewer: "martinle"
 ms.date: "10/29/2018"
 ms.service: sql
 ms.subservice: data-warehouse
-ms.topic: "conceptual"
+ms.topic: how-to
 ---
 
 # Configure TLS 1.2 in APS

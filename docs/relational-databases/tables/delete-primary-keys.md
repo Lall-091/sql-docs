@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 01/23/2025
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "removing primary keys"
   - "deleting primary keys"

@@ -7,7 +7,7 @@ ms.reviewer: mathoma, randolphwest
 ms.date: 03/11/2024
 ms.service: azure-vm-sql-server
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: best-practice
 tags: azure-service-management
 ---
 # Checklist: Best practices for SQL Server on Azure VMs

@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 05/10/2023
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "dropping views"
   - "deleting views"

@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.reviewer: mihaelab, randolphwest
 ms.date: 06/28/2024
 ms.service: sql
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom:
   - intro-installation
 ---

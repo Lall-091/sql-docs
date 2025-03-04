@@ -6,7 +6,7 @@ ms.author: jovanpop
 ms.reviewer: jroth
 ms.date: 06/03/2020
 ms.service: sql
-ms.topic: conceptual
+ms.topic: language-reference
 helpviewer_keywords:
   - "FOR JSON, using in client apps"
   - "FOR JSON, using in SQL Server"

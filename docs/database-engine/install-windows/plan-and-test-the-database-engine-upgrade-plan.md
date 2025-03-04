@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 05/23/2024
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 monikerRange: ">=sql-server-2016"
 ---
 # Plan and test the Database Engine upgrade plan

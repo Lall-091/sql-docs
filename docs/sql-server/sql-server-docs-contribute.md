@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 01/04/2024
 ms.service: sql
 ms.subservice: release-landing
-ms.topic: conceptual
+ms.topic: how-to
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017"
 ---
 
@@ -24,7 +24,7 @@ There are two main workflows you can use to contribute:
 | [Edit in your browser](#githubui) | Good for small, quick edits of any article. |
 | [Edit locally with tools](#tools) | Good for more complex edits, edits involving multiple articles, and frequent contributions. |
 
-SQL content team validates all public contributions for technical accuracy and consistency.
+The Data Docs content team validates all public contributions for technical accuracy and consistency.
 
 ## <a id="githubui"></a> Edit in your browser
 

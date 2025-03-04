@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: 07/19/2024
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "showing table properties"
   - "displaying table properties"

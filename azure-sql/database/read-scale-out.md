@@ -8,7 +8,7 @@ ms.reviewer: wiassaf, mathoma, randolphwest
 ms.date: 11/28/2023
 ms.service: azure-sql
 ms.subservice: scale-out
-ms.topic: conceptual
+ms.topic: concept-article 
 ms.custom:
   - sqldbrb=1
   - devx-track-azurepowershell

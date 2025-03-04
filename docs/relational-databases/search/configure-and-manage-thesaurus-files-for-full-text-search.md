@@ -7,7 +7,7 @@ ms.reviewer: mikeray
 ms.date: 07/01/2020
 ms.service: sql
 ms.subservice: search
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "full-text indexes [SQL Server], thesaurus files"
   - "thesaurus [full-text search], configuring"

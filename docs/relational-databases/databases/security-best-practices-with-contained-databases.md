@@ -7,7 +7,7 @@ ms.reviewer: jaszymas
 ms.date: "03/14/2016"
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: best-practice
 helpviewer_keywords:
   - "contained database, threats"
 ---

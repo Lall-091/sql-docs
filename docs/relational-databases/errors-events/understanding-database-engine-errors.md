@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "03/16/2017"
 ms.service: sql
 ms.subservice: supportability
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "errors [SQL Server], about errors"
   - "errors [SQL Server], Database Engine"

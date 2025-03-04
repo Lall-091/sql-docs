@@ -7,7 +7,7 @@ ms.reviewer: hudequei
 ms.date: 02/09/2023
 ms.service: sql
 ms.subservice: polybase
-ms.topic: conceptual
+ms.topic: how-to
 monikerRange: "=sql-server-2016||=sql-server-2017||=sql-server-ver15"
 ---
 # Configure PolyBase to access external data in Hadoop

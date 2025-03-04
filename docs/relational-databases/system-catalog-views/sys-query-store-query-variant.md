@@ -6,7 +6,7 @@ ms.author: derekw
 ms.date: 11/11/2022
 ms.service: sql
 ms.subservice: system-objects
-ms.topic: "language-reference"
+ms.topic: reference
 f1_keywords:
   - "SYS.QUERY_STORE_QUERY_VARIANT"
   - "QUERY_STORE_QUERY_VARIANT"

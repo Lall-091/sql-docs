@@ -7,7 +7,7 @@ ms.reviewer: martinle
 ms.date: 12/05/2023
 ms.service: sql
 ms.subservice: data-warehouse
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - intro-installation
 ---

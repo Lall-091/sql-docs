@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: 02/28/2023
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: tutorial
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
 ---
 # Database Engine Tutorials

@@ -5,7 +5,7 @@ author: AbdullahMSFT
 ms.author: amamun 
 ms.reviewer: mikeray, randolphwest
 ms.date: 07/30/2024
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: ignite-2023, devx-track-azurecli
 ---
 

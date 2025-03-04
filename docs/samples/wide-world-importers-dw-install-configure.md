@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 08/01/2023
 ms.service: sql
 ms.subservice: samples
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: intro-installation
 monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || >=aps-pdw-2016 || =azuresqldb-mi-current"
 ---

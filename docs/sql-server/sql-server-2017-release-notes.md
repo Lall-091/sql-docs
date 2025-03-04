@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 02/03/2025
 ms.service: sql
 ms.subservice: release-landing
-ms.topic: conceptual
+ms.topic: release-notes
 monikerRange: ">=sql-server-2016"
 ---
 # SQL Server 2017 release notes

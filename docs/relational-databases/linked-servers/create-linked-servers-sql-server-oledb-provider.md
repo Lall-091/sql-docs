@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.reviewer: "MikeRayMSFT"
 ms.date: "07/01/2019"
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Microsoft SQL Server Distributed Queries: OLE DB Connectivity

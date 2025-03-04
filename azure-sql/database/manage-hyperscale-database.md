@@ -7,7 +7,7 @@ ms.reviewer: dfurman, blakhani
 ms.date: 02/10/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - devx-track-azurepowershell
   - devx-track-azurecli

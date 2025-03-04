@@ -7,7 +7,7 @@ ms.reviewer: randolphwest, vanto
 ms.date: 09/25/2024
 ms.service: sql
 ms.subservice: availability-groups
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - intro-overview
   - UpdateFrequency5

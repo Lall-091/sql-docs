@@ -7,7 +7,7 @@ ms.reviewer: urmilano, mathoma
 ms.date: 06/15/2024
 ms.service: azure-sql-managed-instance
 ms.subservice: high-availability
-ms.topic: conceptual
+ms.topic: checklist
 ---
 # High availability and disaster recovery checklist - Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

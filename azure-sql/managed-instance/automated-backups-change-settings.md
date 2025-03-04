@@ -8,7 +8,7 @@ ms.reviewer: wiassaf, mathoma, danil
 ms.date: 07/20/2022
 ms.service: azure-sql-managed-instance
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - references_regions
   - devx-track-azurepowershell

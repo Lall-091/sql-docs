@@ -5,7 +5,7 @@ author: "MashaMSFT"
 ms.author: "mathoma"
 ms.date: "03/01/2017"
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "Profiler [SQL Server Profiler], space"
   - "SQL Server Profiler, space"

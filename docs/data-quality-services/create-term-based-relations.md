@@ -6,7 +6,7 @@ ms.author: sawinark
 ms.date: "11/08/2011"
 ms.service: sql
 ms.subservice: data-quality-services
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.dqs.dm.kbtermsbased.f1"
 ---

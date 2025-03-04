@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: 09/12/2024
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.ins.instwizard.authenticationmode.f1"
   - "sql13.swb.passwordexpired.f1"

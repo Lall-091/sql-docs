@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.reviewer: randolphwest
 ms.date: 11/21/2024
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "databases [SQL Server], size"
   - "increasing database size"

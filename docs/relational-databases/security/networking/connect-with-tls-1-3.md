@@ -7,7 +7,7 @@ ms.reviewer: mikeray
 ms.date: 03/11/2024
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16"
 ---
 

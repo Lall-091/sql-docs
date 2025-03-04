@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: 01/31/2025
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.swb.schemas.general.f1"
 helpviewer_keywords:

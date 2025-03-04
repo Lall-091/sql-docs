@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "03/02/2017"
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "online index disk space"
   - "disk space [SQL Server], indexes"

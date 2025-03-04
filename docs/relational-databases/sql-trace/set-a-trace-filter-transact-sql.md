@@ -6,7 +6,7 @@ ms.author: "mathoma"
 ms.reviewer: randolphwest
 ms.date: 07/17/2024
 ms.service: sql
-ms.topic: conceptual
+ms.topic: language-reference
 helpviewer_keywords:
   - "filters [SQL Server], traces"
   - "traces [SQL Server], filters"

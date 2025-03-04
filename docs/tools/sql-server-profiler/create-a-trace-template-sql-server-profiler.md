@@ -8,7 +8,7 @@ ms.reviewer: maghan
 ms.date: 12/26/2022
 ms.service: sql
 ms.subservice: profiler
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Create a Trace Template (SQL Server Profiler)

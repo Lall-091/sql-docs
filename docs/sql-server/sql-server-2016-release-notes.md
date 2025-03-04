@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 02/03/2025
 ms.service: sql
 ms.subservice: release-landing
-ms.topic: conceptual
+ms.topic: release-notes
 helpviewer_keywords:
   - "build notes"
   - "release issues"

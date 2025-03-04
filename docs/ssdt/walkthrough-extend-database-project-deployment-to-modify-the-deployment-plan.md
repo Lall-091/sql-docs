@@ -7,7 +7,7 @@ ms.reviewer: drskwier
 ms.date: 07/31/2023
 ms.service: sql
 ms.subservice: ssdt
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Walkthrough: Extend Database Project Deployment to Modify the Deployment Plan

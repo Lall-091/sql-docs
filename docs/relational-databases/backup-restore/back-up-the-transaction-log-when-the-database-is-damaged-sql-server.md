@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "03/15/2017"
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "databases [SQL Server], damaged"
   - "backing up [SQL Server]. damaged database"

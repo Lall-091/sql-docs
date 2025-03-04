@@ -4,7 +4,7 @@ description: "Sends an e-mail message to the specified recipients."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 02/27/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -221,7 +221,7 @@ When executing `sp_send_dbmail` without a transaction context, Database Mail sta
 
 ## Permissions
 
-Execute permissions for `sp_send_dbmail` default to all members of the **DatabaseMailUser** database role in the `msdb` database. However, when the user sending the message doesn't have permission to use the profile for the request, `sp_send_dbmail` returns an error and doesn't send the message.
+Execute permissions for `sp_send_dbmail` default to all members of the **DatabaseMailUserRole** database role in the `msdb` database. However, when the user sending the message doesn't have permission to use the profile for the request, `sp_send_dbmail` returns an error and doesn't send the message.
 
 ## Examples
 
@@ -230,7 +230,7 @@ Execute permissions for `sp_send_dbmail` default to all members of the **Databas
 This example sends an e-mail message to your friend using the e-mail address `myfriend@adventure-works.com`. The message has the subject `Automated Success Message`. The body of the message contains the sentence `The stored procedure finished successfully`.
 
 ```sql
-EXEC msdb.dbo.sp_send_dbmail
+EXECUTE msdb.dbo.sp_send_dbmail
     @profile_name = 'Adventure Works Administrator',
     @recipients = 'yourfriend@adventure-works.com',
     @body = 'The stored procedure finished successfully.',
@@ -242,7 +242,7 @@ EXEC msdb.dbo.sp_send_dbmail
 This example sends an e-mail message to your friend using the e-mail address `yourfriend@adventure-works.com`. The message has the subject `Work Order Count`, and executes a query that shows the number of work orders with a `DueDate` less than two days after April 30, 2022. Database Mail attaches the result as a text file.
 
 ```sql
-EXEC msdb.dbo.sp_send_dbmail
+EXECUTE msdb.dbo.sp_send_dbmail
     @profile_name = 'Adventure Works Administrator',
     @recipients = 'yourfriend@adventure-works.com',
     @query = 'SELECT COUNT(*) FROM AdventureWorks2022.Production.WorkOrder
