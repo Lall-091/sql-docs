@@ -67,6 +67,8 @@ PolyBase has the following limitations:
 
 - Server name length is bound by 15-character NetBIOS name length limitation. If you change the server name after creating it to be 16 characters or longer, PolyBase Data Movement service won't start.
 
+- Databases that get installed with PolyBase (DWConfiguration, DWDiagnostics, DWQueue) must be in read-write mode in order for PolyBase to function and for Cumulative Update installations to succeed. Therefore, it is not supported to have these databases in an Availability Group.
+
 <!--SQL Server 2016-->
 ::: moniker range="= sql-server-2016 "
 
