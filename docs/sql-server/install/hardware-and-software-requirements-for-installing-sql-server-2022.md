@@ -173,7 +173,8 @@ The supported storage types for data files are:
 
        If you use advanced format disks that are physically formatted with 4,096 bytes, but expose a logical sector size of 512 bytes, you can read more about the behavior and recommendations in the Tech Community article [SQL Server - New drives use 4K sector size](https://techcommunity.microsoft.com/t5/sql-server-support-blog/sql-server-new-drives-use-4k-sector-size/ba-p/316277).
 
-       Hard disks with sector sizes larger than 4 KB can cause errors when attempting to store SQL Server data files on them. For more information, see [Troubleshoot errors related to system disk sector size greater than 4 KB](/troubleshoot/sql/database-engine/database-file-operations/troubleshoot-os-4kb-disk-sector-size).
+       Hard disks with sector sizes larger than 4 KB can cause errors when attempting to store SQL Server data files on them. See [Troubleshoot errors related to system disk sector size greater than 4 KB](https://support.microsoft.com/kb/926930) for more information on hard disk sector-size support in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. Currently, the `ForcedPhysicalSectorSizeInBytes` registry key is required to successfully install SQL Server on some newer storage devices with system disk sector size greater than 4 KB.
+
   - [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] failover cluster installation supports Local Disk only for installing the `tempdb` files. Ensure that the path specified for the `tempdb` data and log files is valid on all the cluster nodes. During failover, if the `tempdb` directories aren't available on the failover target node, the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] resource fails to come online.
 - Shared Storage
 - [Storage Spaces Direct \(S2D\)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
