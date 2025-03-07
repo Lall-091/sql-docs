@@ -44,7 +44,11 @@ You can optimize the configuration of your SQL Server instances for best perform
 
 [!INCLUDE [entra-id](../../includes/entra-id.md)]
 
-Starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], Azure Arc enabled SQL Servers can utilize Microsoft Entra ID for authentication, bringing a modern centralized identity and access management solution to SQL Server. Microsoft Entra authentication provides greatly enhanced security over traditional username and password-based authentication, which is **not recommended**. For more information about the risks and challenges passwords pose, refer to ["What’s the solution to the growing problem of passwords?"](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). Microsoft Entra authentication removes the need for self-managed secrets entirely when communicating with Azure resources, through managed identity authentication. For user-based authentication, Microsoft Entra ID supports enhanced security measures including multifactor authentication (MFA), single sign-on (SSO), and modern identity practices.
+Azure Arc enabled SQL Servers can utilize Microsoft Entra ID for authentication. This feature brings a modern centralized identity and access management solution to SQL Server. This feature requires [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] or later.
+
+Microsoft Entra authentication provides greatly enhanced security over traditional username and password-based authentication, which is **not recommended**. For more information about the risks and challenges passwords pose, refer to ["What’s the solution to the growing problem of passwords?"](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/).
+
+Microsoft Entra authentication removes the need for self-managed secrets entirely when communicating with Azure resources, through managed identity authentication. For user-based authentication, Microsoft Entra ID supports enhanced security measures including multifactor authentication (MFA), single sign-on (SSO), and modern identity practices.
 
 ## Microsoft Defender for Cloud
 
@@ -120,13 +124,9 @@ The following diagram illustrates the architecture of [!INCLUDE [ssazurearc](../
 
 [!INCLUDE [features-edition](includes/features-edition.md)]
 
-[!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] provides inventory and pay-as-you-go billing for the following services:
+## Feature availability by service type
 
-- SQL Server Analysis Services
-- SQL Server Reporting Services
-- SQL Server Integration Services
-
-Currently, Azure Arc does not provide additional management capabilities for these services.
+[!INCLUDE [features-service-type](includes/features-service-type.md)]
 
 [!INCLUDE [supported-configurations](includes/supported-configurations.md)]
 

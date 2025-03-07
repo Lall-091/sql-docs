@@ -31,14 +31,13 @@ This release introduces:
 
 - Support for Windows 10 and Windows 11.
 
-- Pay-as-you go billing for the following services:
+- Support for SQL Server pay-as-you-go subscriptions and Extended Security Updates subscriptions for the following services:
 
-  - [!INCLUDE [SQL Server](../../includes/ssnoversion-md.md)] [!INCLUDE [Analysis Services](../../includes/ssasnoversion-md.md)]
-  - [!INCLUDE [SQL Server](../../includes/ssnoversion-md.md)] [!INCLUDE [Integration Services](../../includes/ssisnoversion-md.md)]
-  - [!INCLUDE [SQL Server](../../includes/ssnoversion-md.md)] [!INCLUDE [Reporting Services](../../includes/ssrsnoversion-md.md)]
-  - Power BI Report Server
+  [!INCLUDE [sql-server-associated-services](includes/sql-server-associated-services.md)]
 
-In addition new documentation to describe how to connect without routing through the Internet: [Connect to Azure with a private path for SQL Server enabled by Azure Arc](configure-private-path.md).
+  Review [Manage licensing of SQL Server associated services](manage-license-billing.md#manage-ssxs) and [Manage SQL Server ESU subscriptions for the associated services](extended-security-updates.md#esu-subscription-ssxs)
+
+- New documentation that describes how to connect without routing through the Internet: [Connect to Azure with a private path for SQL Server enabled by Azure Arc](configure-private-path.md).
 
 ## January 29, 2025
 
@@ -64,10 +63,7 @@ Minor bug fixes. This release does not enable or introduce new features.
 
 Inventory additional service resources in portal (preview):
 
-- [!INCLUDE [SQL Server](../../includes/ssnoversion-md.md)] [!INCLUDE [Analysis Services](../../includes/ssasnoversion-md.md)]
-- [!INCLUDE [SQL Server](../../includes/ssnoversion-md.md)] [!INCLUDE [Integration Services](../../includes/ssisnoversion-md.md)]
-- [!INCLUDE [SQL Server](../../includes/ssnoversion-md.md)] [!INCLUDE [Reporting Services](../../includes/ssrsnoversion-md.md)]
-- Power BI Report Server
+[!INCLUDE [sql-server-associated-services](includes/sql-server-associated-services.md)]
 
 ### ESU update to bill-back calculation
 

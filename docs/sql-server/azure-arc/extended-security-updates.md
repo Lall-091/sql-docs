@@ -186,6 +186,21 @@ For additional information on passive replica detection logic, review [Manage pa
 
 You can connect any licensed [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance to Azure Arc, including instances that use the Server+CAL licensing model. However, the ESU subscription enabled by Azure Arc isn't available for the out-of-support Server+CAL licensing model. If you want to receive ESUs, you can set the license type to `PAYG` and then enable the ESU subscription.
 
+## <a id="esu-subscription-ssxs"></a> Manage SQL Server ESU subscriptions for the associated services
+
+SQL Server ESU subscriptions support the following associated services:
+
+[!INCLUDE [sql-server-associated-services](includes/sql-server-associated-services.md)]
+
+For details, see [Feature availability by service type](overview.md#feature-availability-by-service-type).
+
+The SQL Server associated services are billed for ESU using the regular ESU meters. For details, see  [Understand ESU usage meters](extended-security-updates.md#esu-usage-metering).
+
+> [!IMPORTANT]
+>
+> - The SQL Server associated service installations are billed for the ESU subscription only when they are installed on the machine as a standalone instance (without SQL Server engine). Otherwise, the SQL Server engine instance is billed.
+> - If a p-core ESU license is activated for the corresponding scope and the machine is configured to use it, the SQL Server associated service is not individually billed for ESU even if it is a standalone instance (without SQL Server engine). For details, see [Manage resources in the scope of an ESU p-core license](manage-configuration.md#manage-esu-license-resources).
+
 ## <a id="license-transition"></a> Manage the transition from a p-core ESU license to a v-core ESU license
 
 Because the p-core ESU license is billed with an ESU meter for the Enterprise edition, it's cost-effective when the out-of-support [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instances are colocated on a set of designated physical hosts. As you upgrade the individual instances or migrate them to Azure, you might lose the cost-effectiveness of the p-core ESU license. Using the v-core ESU licensing might then become more attractive. You can terminate the p-core ESU license and switch to billing the individual VMs for the ESU subscriptions.

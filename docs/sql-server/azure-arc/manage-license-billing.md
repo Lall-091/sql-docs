@@ -4,13 +4,15 @@ description: This article explains how to manage SQL Server licensing options. I
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest, maghan
-ms.date: 09/25/2024
+ms.date: 02/25/2025
 ms.topic: conceptual
 ---
 
 # Manage licensing and billing of SQL Server enabled by Azure Arc
 
-This article explains how to manage licensing and billing of SQL Server enabled by Azure Arc. SQL Server enabled by Azure Arc directly supports only the core-based licensing methods. For information about how you can manage SQL Server instances with a Server+CAL license, see [Manage SQL Server instances with a Server+CAL license](manage-license-billing.md#server-cal). The full range of the licensing options is described in the [SQL Server licensing guide (download link)](https://go.microsoft.com/fwlink/p/?linkid=2215573).
+This article explains how to manage licensing and billing of SQL Server enabled by Azure Arc. SQL Server enabled by Azure Arc directly supports only the core-based licensing methods. For information about how you can manage SQL Server instances with a Server+CAL license, see [Manage SQL Server instances with a Server+CAL license](manage-license-billing.md#server-cal). 
+
+The full range of the licensing options is described in the [SQL Server licensing guide (download link)](https://go.microsoft.com/fwlink/p/?linkid=2215573).
 
 ## Licensing and billing in the production environment
 
@@ -243,6 +245,24 @@ For additional information, review [SQL Server Extended Security Updates enabled
 You can connect any licensed SQL Server instance to Azure Arc, including instances that use the Server+CAL licensing model. If your instance uses this license, you must set the license type to `LicenseOnly`, even if you have active Software Assurance for it.
 
 If you converted your Enterprise Server+CAL license to a core-based license, you should set the license type to `Paid` or `PAYG`. The best practice is to also upgrade the SQL Server edition from Enterprise to Enterprise Core, because the latter provides the complete set of SQL Server capabilities. But even if you didn't upgrade the instances, Azure Extension for SQL Server monitors software usage as Enterprise Core.
+
+## <a id="manage-ssxs"></a> Manage SQL Server associated services
+
+[!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] enabled by Azure Arc provides license management for the following associated services:
+
+[!INCLUDE [sql-server-associated-services](includes/sql-server-associated-services.md)]
+
+For details, see [Feature availability by service type](overview.md#feature-availability-by-service-type).
+
+The SQL Server associated services are represented and managed for licensing purposes as SQL Server instances. Their usage is reported using the same metering rules as described in [Metering software usage](manage-license-billing.md#usage-metering).
+
+> [!IMPORTANT]
+>
+> The SQL Server associated service installations require a separate license only when they are installed on the machine as a standalone instance (without SQL Server database engine). Otherwise, separate license is not required.
+>
+> When the SQL Server associated service is a standalone instance (without SQL Server database engine) and the machine is configured using a pay-as-you-go subscription, the corresponding pay-as-you-go meters are activated for the instance.
+>
+> If a p-core license is activated as a pay-as-you-go subscription in the corresponding scope, and the machine is configured to use it, the SQL Server associated service is not individually billed for the pay-as-you-go subscription when it is a standalone instance (without SQL Server engine). For details, see [Use a physical core license](manage-configuration.md#use-physical-core-license).
 
 ## <a id="usage-metering"></a> Metering software usage
 
