@@ -1,10 +1,10 @@
 ---
-title: SQL projects package references
+title: SQL Projects Package References
 description: "Reference database objects with package references."
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: maghan, randolphwest
-ms.date: 03/02/2025
+ms.date: 03/11/2025
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: concept-article
@@ -13,14 +13,14 @@ ms.custom:
 zone_pivot_groups: sq1-sql-projects-tools
 ---
 
-# SQL projects package references overview
+# SQL projects package references
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Package references in SQL projects allow you to reference database objects from other projects or NuGet packages. The database objects added to a project through package references can be part of the same database, a different database on the same server, or a different database on a different server.
 
 > [!NOTE]  
-> Package references are the recommended method for referencing database objects in new development. Referencing NuGet packages is only supported in SDK-style SQL projects (preview).
+> Package references are the recommended method for referencing database objects in new development. Referencing NuGet packages is only supported in SDK-style SQL projects.
 
 ## Database object package references
 
@@ -64,7 +64,7 @@ The following example includes a package reference to the `Contoso.AdventureWork
 In this example, the AdventureWorks `.dacpac` file is published as a package `Contoso.AdventureWorks` version `1.1.0` to a NuGet feed. The `<DatabaseSqlCmdVariable>` element specifies the name of the database on the same server where the objects in the package are located and would be used to indicate this reference in three-part naming. The [SQLCMD variable](sqlcmd-variables.md) `AdventureDB` is used to set the database name at deployment time and is used in the project similarly to this example query:
 
 ```sql
-SELECT * FROM [$(AdventureDB)].dbo.Customers
+SELECT * FROM [$(AdventureDB)].dbo.Customers;
 ```
 
 The `<DacpacName>` element specifies the name of the `.dacpac` file for the package reference, without the file extension or path. The `<DacpacName>` element is optional and is only required when the name of the `.dacpac` file is different from the name of the package.
@@ -112,6 +112,18 @@ Package metadata can be specified by properties inside the `<PropertyGroup>` ele
 The `.nupkg` file created by the `dotnet pack` command can be published to a NuGet feed for use in SQL projects. These database objects can be viewed by anyone with access to the package, so consideration should be made for selecting a public or private feed location. For more information, see [Hosting with private package feeds](/nuget/hosting-packages/overview).
 
 When referencing a package where the `PackageId` is different from the name of the `.dacpac` file, the `<DacpacName>` element is required in the package reference when consuming the package.
+
+## Extended code analysis rules package references
+
+Package references can also be used to reference more code analysis rules that were developed as part of [code analysis extensibility](code-analysis-extensibility.md). The package reference for a code analysis rule package is similar to the package reference for a database object package. The following example shows a package reference to a custom code analysis rule package:
+
+```xml
+<ItemGroup>
+  <PackageReference Include="Your.CustomCode.AnalysisRules" Version="1.2.3" />
+</ItemGroup>
+```
+
+The package being referenced should be available on a [NuGet feed](/dotnet/core/tools/dotnet-nuget-add-source#examples), such as NuGet.org, Azure Artifacts, or a local source. When a package containing code analysis rules is referenced, the rules are automatically included in the SQL project and are evaluated when the project property `RunSqlCodeAnalysis` is set to true. The rules can be disabled or elevated to return an error individually in the project properties.
 
 ## Related content
 

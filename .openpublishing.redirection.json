@@ -67129,6 +67129,66 @@
     {
       "source_path": "docs/database-engine/availability-groups/windows/availability-replica-is-disconnected.md",
       "redirect_url": "/troubleshoot/sql/database-engine/availability-groups/availability-replica-is-disconnected"
+    },
+    {
+      "source_path": "docs/relational-databases/data-tier-applications/data-tier-applications.md",
+      "redirect_url": "/sql/tools/sql-database-projects/concepts/data-tier-applications/overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/relational-databases/data-tier-applications/delete-a-data-tier-application.md",
+      "redirect_url": "/sql/tools/sql-database-projects/concepts/data-tier-applications/delete-data-tier-application",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/relational-databases/data-tier-applications/deploy-a-data-tier-application.md",
+      "redirect_url": "/sql/tools/sql-database-projects/concepts/data-tier-applications/deploy-data-tier-application",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/relational-databases/data-tier-applications/upgrade-a-data-tier-application.md",
+      "redirect_url": "/sql/tools/sql-database-projects/concepts/data-tier-applications/deploy-data-tier-application",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/ssdt/extract-publish-and-register-dacpac-files.md",
+      "redirect_url": "/sql/tools/sql-database-projects/concepts/data-tier-applications/overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database.md",
+      "redirect_url": "/sql/tools/sql-database-projects/concepts/data-tier-applications/import-bacpac-file-create-new-database",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/relational-databases/data-tier-applications/deploy-a-database-by-using-a-dac.md",
+      "redirect_url": "/sql/tools/sql-database-projects/concepts/data-tier-applications/import-bacpac-file-create-new-database",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/relational-databases/data-tier-applications/export-a-data-tier-application.md",
+      "redirect_url": "/sql/tools/sql-database-projects/concepts/data-tier-applications/export-bacpac-file",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/relational-databases/data-tier-applications/extract-a-dac-from-a-database.md",
+      "redirect_url": "/sql/tools/sql-database-projects/concepts/data-tier-applications/extract-dacpac-from-database",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/relational-databases/data-tier-applications/register-a-database-as-a-dac.md",
+      "redirect_url": "/sql/tools/sql-database-projects/concepts/data-tier-applications/register-database-as-dac",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/relational-databases/data-tier-applications/unpack-a-dac-package.md",
+      "redirect_url": "/sql/tools/sql-database-projects/concepts/data-tier-applications/unpack-dacpac-file",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/relational-databases/data-tier-applications/validate-a-dac-package.md",
+      "redirect_url": "/sql/tools/sql-database-projects/concepts/data-tier-applications/unpack-dacpac-file",
+      "redirect_document_id": false
     }
   ]
 }

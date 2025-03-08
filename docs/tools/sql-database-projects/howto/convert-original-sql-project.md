@@ -1,10 +1,10 @@
 ---
-title: Convert an original SQL project
+title: Convert an Original SQL Project
 description: "Create an SDK-style SQL project from an existing project."
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: maghan, randolphwest
-ms.date: 02/27/2025
+ms.date: 03/11/2025
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: how-to
@@ -28,10 +28,10 @@ Once you convert the project, you can use the new features of the SDK-style proj
 To complete the conversion carefully, we will:
 
 1. Create a backup of the original project file.
-2. Build a `.dacpac` file from the original project for comparison.
-3. Modify the project file to an SDK-style project.
-4. Build a `.dacpac` file from the modified project for comparison.
-5. Verify that the `.dacpac` files are the same.
+1. Build a `.dacpac` file from the original project for comparison.
+1. Modify the project file to an SDK-style project.
+1. Build a `.dacpac` file from the modified project for comparison.
+1. Verify that the `.dacpac` files are the same.
 
 SDK-style projects aren't supported in SQL Server Data Tools (SSDT) in Visual Studio. Once converted, you must use one of the following to build or edit the project:
 
@@ -46,7 +46,7 @@ SDK-style projects aren't supported in SQL Server Data Tools (SSDT) in Visual St
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [Visual Studio 2022 Community, Professional, or Enterprise](https://visualstudio.microsoft.com/downloads/)
-- [SQL Server Data Tools (SSDT) installed in Visual Studio 2022](../../../ssdt/download-sql-server-data-tools-ssdt.md)
+- [Install SQL Server Data Tools (SSDT) for Visual Studio](../../../ssdt/download-sql-server-data-tools-ssdt.md)
 
 ::: zone-end
 
@@ -62,7 +62,7 @@ SDK-style projects aren't supported in SQL Server Data Tools (SSDT) in Visual St
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [VS Code](https://code.visualstudio.com/Download)
-- [SQL Database Projects extension for Azure Data Studio](/azure-data-studio/extensions/sql-database-project-extension) or [SQL Database Projects extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.sql-database-projects-vscode)
+- [SQL Database Projects extension](/azure-data-studio/extensions/sql-database-project-extension) or [SQL Database Projects extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.sql-database-projects-vscode)
 
 ::: zone-end
 
@@ -260,9 +260,21 @@ The build process creates a `.dacpac` file in the `bin\Debug` folder of the proj
 
 ## Step 5: Verify that the `.dacpac` files are the same
 
-To verify that the conversion was successful, compare the `.dacpac` files created from the original and modified projects. The [schema comparison](../concepts/schema-comparison.md) capabilities of SQL projects allow us to visualize the difference in database models.
+To verify that the conversion was successful, compare the `.dacpac` files created from the original and modified projects. The [schema comparison](../concepts/schema-comparison.md) capabilities of SQL projects allow us to visualize the difference in database models between the two `.dacpac` files. Alternatively, the DacpacVerify command-line utility can be used to compare the two `.dacpac` files, including their pre/post-deployment scripts and project settings.
 
-You can use the schema compare tool in Visual Studio, Visual Studio Code, or Azure Data Studio to compare the `.dacpac` files. Community tools based on the [DacFx .NET library](/dotnet/api/microsoft.sqlserver.dac.compare) are also available.
+DacpacVerify is available for install as a [dotnet tool](https://www.nuget.org/packages/Microsoft.dacpacverify). To install the tool, run the following command:
+
+```bash
+dotnet tool install --global Microsoft.DacpacVerify --prerelease
+```
+
+The syntax for DacpacVerify is to specify the filepath to two `.dacpac` files as `dacpacverify <source DACPAC path> <target DACPAC path>`. To compare the two `.dacpac` files, run the following command:
+
+```bash
+DacpacVerify original_project.dacpac modified_project.dacpac
+```
+
+You can use the schema compare tool in Visual Studio or Azure Data Studio to compare objects in the `.dacpac` files.
 
 ::: zone pivot="sq1-visual-studio"
 
@@ -272,7 +284,7 @@ Launch Visual Studio without a project loaded. Go to **Tools** > **SQL Server** 
 
 ::: zone pivot="sq1-visual-studio-sdk"
 
-Graphical schema comparison isn't yet available in the SDK-style SQL projects preview in Visual Studio.  Use Azure Data Studio to compare schemas.
+Graphical schema comparison isn't yet available in the SDK-style SQL projects preview in Visual Studio. Use Azure Data Studio to compare schemas.
 
 ::: zone-end
 
@@ -295,10 +307,10 @@ Graphical schema comparison is available in Visual Studio and Azure Data Studio.
 When schema comparison is run, no results should be displayed. The lack of differences indicates that the original and modified projects are equivalent, producing the same database model in the `.dacpac` file.
 
 > [!NOTE]  
-> The comparison of `.dacpac` files through schema comparison doesn't validate pre/post-deployment scripts, refactorlog, or other project settings. It only validates the database model. Converting the `.dacpac` to a `.zip` archive and manually comparing the contents can provide a more detailed comparison.
+> The comparison of `.dacpac` files through schema comparison doesn't validate pre/post-deployment scripts, refactorlog, or other project settings. It only validates the database model. Using the DacpacVerify command-line utility is the recommended way to validate that the two `.dacpac` files are equivalent.
 
 ## Related content
 
 - [What are SQL database projects?](../sql-database-projects.md)
 - [Get started with SQL database projects](../get-started.md)
-- [SQL projects package references overview](../concepts/package-references.md)
+- [SQL projects package references](../concepts/package-references.md)

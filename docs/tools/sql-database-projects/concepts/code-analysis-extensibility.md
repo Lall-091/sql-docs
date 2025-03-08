@@ -1,10 +1,10 @@
 ---
-title: Code analysis rules extensibility overview
+title: Code Analysis Rules Extensibility Overview
 description: "Create custom T-SQL code analysis rules for use with SQL projects."
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: maghan, randolphwest
-ms.date: 08/30/2024
+ms.date: 03/11/2025
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: concept-article
@@ -37,7 +37,15 @@ For any problems found by the rule, a `Dac.CodeAnalysis.SqlRuleProblem` object i
 
 ## Incorporate custom rules in a SQL project
 
-With the Microsoft.Build.Sql SDK-style SQL projects, you include custom code analysis rules in the project by adding a package reference that contains the rules.
+With the Microsoft.Build.Sql SDK-style SQL projects, you include custom code analysis rules in the project by adding a package reference that contains the rules. The following example shows a package reference to a custom code analysis rule package:
+
+```xml
+<ItemGroup>
+  <PackageReference Include="Your.CustomCode.AnalysisRules" Version="1.2.3" />
+</ItemGroup>
+```
+
+Learn more about referencing a code analysis rules package in a SQL project in [package references](package-references.md).
 
 ## Related content
 

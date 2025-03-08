@@ -3,7 +3,8 @@ title: "Database Lifecycle Management"
 description: Learn how to use database lifecycle management in SQL Server to manage databases and data assets for performance, protection, availability, and cost.
 author: MashaMSFT
 ms.author: mathoma
-ms.date: 09/23/2024
+ms.reviewer: randolphwest
+ms.date: 03/11/2025
 ms.service: sql
 ms.subservice: supportability
 ms.topic: conceptual
@@ -26,19 +27,21 @@ helpviewer_keywords:
   - "SSDT"
   - "Database migration"
   - "Database connectivity"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
 # Database Lifecycle Management
+
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../includes/applies-to-version/sql-asdb-asdbmi.md)]
 
-  Database lifecycle management (DLM) is a policy-based approach to managing databases and data assets. DLM isn't a product but a comprehensive approach to managing the database schema, data, and metadata for a database application. A thoughtful and proactive approach to DLM enables an organization to manage data resources according to appropriate levels of performance, protection, availability, and cost.  
-  
- DLM begins with discussion of project design and intent, continues with database develop, test, build, deploy, maintain, monitor, and backup activities, and ends with data archive. This article provides an overview of the stages of DLM that begin with database development and progress through build, deploy, and monitor actions. Also included are data management activities, and data portability operations like import/export, backup, migrate, and sync.  
-  
- For tools, tutorials, and more information, see the following articles:
+Database lifecycle management (DLM) is a policy-based approach to managing databases and data assets. DLM isn't a product but a comprehensive approach to managing the database schema, data, and metadata for a database application. A thoughtful and proactive approach to DLM enables an organization to manage data resources according to appropriate levels of performance, protection, availability, and cost.
+
+DLM begins with discussion of project design and intent, continues with database develop, test, build, deploy, maintain, monitor, and backup activities, and ends with data archive. This article provides an overview of the stages of DLM that begin with database development and progress through build, deploy, and monitor actions. Also included are data management activities, and data portability operations like import/export, backup, migrate, and sync.
+
+For tools, tutorials, and more information, see the following articles:
 
 **Database projects**
 
+- [SQL database projects](../tools/sql-database-projects/sql-database-projects.md)
 - [Install SQL Server Data Tools (SSDT) for Visual Studio](../ssdt/download-sql-server-data-tools-ssdt.md)
 - [Azure SQL Database Projects extension](/azure-data-studio/extensions/sql-database-project-extension)
 - [Getting started with the SQL Database Projects extension](/azure-data-studio/extensions/sql-database-project-extension-getting-started)
@@ -53,16 +56,14 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
 **BACPAC**
 
 - [Export to a BACPAC file - Azure SQL Database and Azure SQL Managed Instance](/azure/azure-sql/database/database-export)
-- [Import a BACPAC File to Create a New User Database](data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database.md)
+- [Import a BACPAC file to create a new database](../tools/sql-database-projects/concepts/data-tier-applications/import-bacpac-file-create-new-database.md)
 - [Tutorial: Import SQL BACPAC files with ARM templates](/azure/azure-resource-manager/templates/template-tutorial-deploy-sql-extensions-bacpac)
 
 **DACPAC**
 
-- [Data-tier applications (DAC)](data-tier-applications/data-tier-applications.md)
+- [Data-tier applications (DAC) overview](../tools/sql-database-projects/concepts/data-tier-applications/overview.md)
 - [What are SQL database projects?](../tools/sql-database-projects/sql-database-projects.md)
-- [Extract, Publish, and Register .dacpac Files](../ssdt/extract-publish-and-register-dacpac-files.md)
-- [Import a BACPAC File to Create a New User Database](data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database.md)
-- [Deploy a Database By Using a DAC](data-tier-applications/deploy-a-database-by-using-a-dac.md)
+- [Deploy a data-tier application](../tools/sql-database-projects/concepts/data-tier-applications/deploy-data-tier-application.md)
 
 ## Related content
 

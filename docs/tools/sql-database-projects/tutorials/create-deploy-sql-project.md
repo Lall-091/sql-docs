@@ -1,10 +1,10 @@
 ---
-title: Create and deploy a SQL project
+title: Create and Deploy a SQL Project
 description: "Deploy a SQL project tutorial for SQL DevOps."
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: maghan, randolphwest
-ms.date: 08/30/2024
+ms.date: 03/11/2025
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: tutorial
@@ -19,18 +19,18 @@ zone_pivot_groups: sq1-sql-projects-tools
 
 The development cycle of a SQL database project enables database development to be integrated into a continuous integration and continuous deployment (CI/CD) workflows familiar as a development best practice. While deployment of a SQL database project can be done manually, it's recommended to use a deployment pipeline to automate the deployment process such that ongoing deployments are run based on your continued local development without additional effort.
 
-This article steps through creating a new SQL project, adding objects to the project, and setting up a continuous deployment pipeline for building and deploying the project with GitHub actions. The tutorial is a superset of the contents of the [SQL projects getting started](../get-started.md) article. While the tutorial implements the deployment pipeline in GitHub actions, the same concepts apply to Azure DevOps, GitLab, and other automation environments.
+This article steps through creating a new SQL project, adding objects to the project, and setting up a continuous deployment pipeline for building and deploying the project with GitHub actions. The tutorial is a superset of the contents of the [Get started with SQL database projects](../get-started.md) article. While the tutorial implements the deployment pipeline in GitHub actions, the same concepts apply to Azure DevOps, GitLab, and other automation environments.
 
 In this tutorial, you:
 
 1. Create a new SQL project
-2. Add objects to the project
-3. Build the project locally
-4. Check the project into source control
-5. Add a project build step to a continuous deployment pipeline
-6. Add a `.dacpac` deployment step to a continuous deployment pipeline
+1. Add objects to the project
+1. Build the project locally
+1. Check the project into source control
+1. Add a project build step to a continuous deployment pipeline
+1. Add a `.dacpac` deployment step to a continuous deployment pipeline
 
-If you've already completed the steps in the [SQL projects getting started](../get-started.md) article, you can skip to [step 4](#step-4-check-the-project-into-source-control). At this end of this tutorial, your SQL project will be automatically building and deploying changes to a target database.
+If you've already completed the steps to [get started with SQL database projects](../get-started.md), you can skip to [step 4](#step-4-check-the-project-into-source-control). At this end of this tutorial, your SQL project will be automatically building and deploying changes to a target database.
 
 ## Prerequisites
 
@@ -38,7 +38,7 @@ If you've already completed the steps in the [SQL projects getting started](../g
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [Visual Studio 2022 Community, Professional, or Enterprise](https://visualstudio.microsoft.com/downloads/)
-- [SQL Server Data Tools (SSDT) installed in Visual Studio 2022](../../../ssdt/download-sql-server-data-tools-ssdt.md)
+- [Install SQL Server Data Tools (SSDT) for Visual Studio](../../../ssdt/download-sql-server-data-tools-ssdt.md)
 
 ::: zone-end
 
@@ -54,7 +54,7 @@ If you've already completed the steps in the [SQL projects getting started](../g
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [VS Code](https://code.visualstudio.com/Download)
-- [SQL Database Projects extension for Azure Data Studio](/azure-data-studio/extensions/sql-database-project-extension) or [SQL Database Projects extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.sql-database-projects-vscode)
+- [SQL Database Projects extension](/azure-data-studio/extensions/sql-database-project-extension) or [SQL Database Projects extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.sql-database-projects-vscode)
 
 ::: zone-end
 
@@ -71,6 +71,7 @@ dotnet tool install -g Microsoft.SqlPackage
 # install Microsoft.Build.Sql.Templates
 dotnet new install Microsoft.Build.Sql.Templates
 ```
+
 ::: zone-end
 
 Make sure you have the following items to complete the pipeline setup in GitHub:
@@ -126,7 +127,7 @@ Enter a project name in the text input that appears, which doesn't need to match
 
 In the "Select a Folder" dialog that appears, select a directory for the project's folder, `.sqlproj` file, and other contents to reside in.
 
-When prompted whether to create an SDK-style project (preview), select **Yes**.
+When prompted whether to create an SDK-style project, select **Yes**.
 
 Once completed, the empty project is opened and visible in the **Database Projects** view for editing.
 
@@ -186,8 +187,8 @@ The base template for a table can be used as a starting point for creating a new
 ```sql
 CREATE TABLE [dbo].[Table1]
 (
-  [Id] INT NOT NULL PRIMARY KEY
-)
+    [Id] INT NOT NULL PRIMARY KEY
+);
 ```
 
 ::: zone-end
@@ -245,15 +246,15 @@ We will initialize our project as a Git repository and commit the project files 
 
     :::image type="content" source="media/create-deploy-sql-project/vs-git-menu-create-git-repository.png" alt-text="Screenshot of the Create Git Repository option from the Git menu in Visual Studio.":::
 
-2. In the **Create a Git repository** dialog, under the **Push to a new remote** section, choose **GitHub**.
+1. In the **Create a Git repository** dialog, under the **Push to a new remote** section, choose **GitHub**.
 
-3. In the **Create a new GitHub repository** section of the **Create a Git repository** dialog, enter the name of the repo you want to create. (If you haven't yet signed in to your GitHub account, you can do so from this screen, too.)
+1. In the **Create a new GitHub repository** section of the **Create a Git repository** dialog, enter the name of the repo you want to create. (If you haven't yet signed in to your GitHub account, you can do so from this screen, too.)
 
     :::image type="content" source="media/create-deploy-sql-project/vs-git-create-repo-dialog.png" alt-text="Screenshot of the Create Git Repository dialog in Visual Studio with the GitHub selection highlighted." lightbox="media/create-deploy-sql-project/vs-git-create-repo-dialog.png":::
 
     Under **Initialize a local Git Repository**, you should use the **.gitignore template** option to specify any intentionally untracked files that you want Git to ignore. To learn more about .gitignore, see [Ignoring files](https://docs.github.com/get-started/getting-started-with-git/ignoring-files). And to learn more about licensing, see [Licensing a repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).
 
-4. After you sign in and enter your repo info, select the **Create and Push** button to create your repo and add your app.
+1. After you sign in and enter your repo info, select the **Create and Push** button to create your repo and add your app.
 
 ::: zone-end
 
@@ -303,8 +304,8 @@ git push -u origin main
 SQL projects are backed by a .NET library and as a result the projects are built with the `dotnet build` command. This command is a staple of even the most basic continuous integration and continuous deployment (CI/CD) pipelines. The build step can be added to a continuous deployment pipeline we create in GitHub actions.
 
 1. In the root of the repository, create a new directory named `.github/workflows`. This directory will contain the workflow file that defines the continuous deployment pipeline.
-2. In the `.github/workflows` directory, create a new file named `sqlproj-sample.yml`.
-3. Add the following content to the `sqlproj-sample.yml` file, editing the project name to match the name and path of your project:
+1. In the `.github/workflows` directory, create a new file named `sqlproj-sample.yml`.
+1. Add the following content to the `sqlproj-sample.yml` file, editing the project name to match the name and path of your project:
 
     ```yml
     name: sqlproj-sample
@@ -329,8 +330,8 @@ SQL projects are backed by a .NET library and as a result the projects are built
           run: dotnet build MyDatabaseProject.sqlproj
     ```
 
-4. Commit the workflow file to the repository and push the changes to the remote repository.
-5. On GitHub.com, navigate to the main page of the repository. Under your repository name, click **Actions**. In the left sidebar, select the workflow you just created. A recent run of the workflow should appear in the list of workflow runs from when you pushed the workflow file to the repository.
+1. Commit the workflow file to the repository and push the changes to the remote repository.
+1. On GitHub.com, navigate to the main page of the repository. Under your repository name, select **Actions**. In the left sidebar, select the workflow you just created. A recent run of the workflow should appear in the list of workflow runs from when you pushed the workflow file to the repository.
 
 More information on the fundamentals of creating your first GitHub actions workflow is available in the [GitHub Actions quickstart](https://docs.github.com/actions/writing-workflows/quickstart).
 
@@ -350,7 +351,7 @@ The deployment process is idempotent, meaning it can be run multiple times witho
 > Running a deployment from an automation environment requires configuring the database and environment such that the deployment can reach the database and authenticate. In Azure SQL Database or SQL Server in a VM, this might require setting up a firewall rule to allow the automation environment to connect to the database as well as providing a connection string with the necessary credentials. Guidance is provided in the [GitHub sql-action](https://github.com/azure/sql-action) documentation.
 
 1. Open the `sqlproj-sample.yml` file in the `.github/workflows` directory.
-2. Add the following step to the `sqlproj-sample.yml` file after the build step:
+1. Add the following step to the `sqlproj-sample.yml` file after the build step:
 
     ```yml
     - name: Deploy
@@ -361,13 +362,13 @@ The deployment process is idempotent, meaning it can be run multiple times witho
         path: 'bin/Debug/MyDatabaseProject.dacpac'
     ```
 
-3. Before committing the changes, add a secret to the repository that contains the connection string to the target database. In the repository on GitHub.com, navigate to **Settings**, then **Secrets**. Select **New repository secret** and add a secret named `SQL_CONNECTION_STRING` with the value of the connection string to the target database.
+1. Before committing the changes, add a secret to the repository that contains the connection string to the target database. In the repository on GitHub.com, navigate to **Settings**, then **Secrets**. Select **New repository secret** and add a secret named `SQL_CONNECTION_STRING` with the value of the connection string to the target database.
 
     :::image type="content" source="media/create-deploy-sql-project/github-repository-secret.png" alt-text="Screenshot of the GitHub repository settings with the New repository secret button highlighted." lightbox="media/create-deploy-sql-project/github-repository-secret.png":::
 
-4. Commit the changes from `sqlproj-sample.yml` to the repository and push the changes to the remote repository.
-5. Navigate back to the workflow history on GitHub.com and select the most recent run of the workflow. The deployment step should be visible in the list of steps for the workflow run and the workflow returns a success code.
-6. Verify the deployment by connecting to the target database and checking that the objects in the project are present in the database.
+1. Commit the changes from `sqlproj-sample.yml` to the repository and push the changes to the remote repository.
+1. Navigate back to the workflow history on GitHub.com and select the most recent run of the workflow. The deployment step should be visible in the list of steps for the workflow run and the workflow returns a success code.
+1. Verify the deployment by connecting to the target database and checking that the objects in the project are present in the database.
 
 GitHub deployments can be further secured by establishing an environment relationship in a workflow and requiring approval before a deployment is run. More information on environment protection and protecting secrets is available in the [GitHub Actions documentation](https://docs.github.com/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions).
 

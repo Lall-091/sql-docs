@@ -1,10 +1,10 @@
 ---
-title: "Get started with SQL database projects"
+title: "Get Started with SQL Database Projects"
 description: "[Article description]."
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: maghan, randolphwest
-ms.date: 08/30/2024
+ms.date: 03/11/2025
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: get-started
@@ -32,7 +32,7 @@ This article steps through creating a new SQL project, adding objects to the pro
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [Visual Studio 2022 Community, Professional, or Enterprise](https://visualstudio.microsoft.com/downloads/)
-- [SQL Server Data Tools (SSDT) installed in Visual Studio 2022](../../ssdt/download-sql-server-data-tools-ssdt.md)
+- [Install SQL Server Data Tools (SSDT) for Visual Studio](../../ssdt/download-sql-server-data-tools-ssdt.md)
 
 ::: zone-end
 
@@ -48,7 +48,7 @@ This article steps through creating a new SQL project, adding objects to the pro
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [VS Code](https://code.visualstudio.com/Download)
-- [SQL Database Projects extension for Azure Data Studio](/azure-data-studio/extensions/sql-database-project-extension) or [SQL Database Projects extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.sql-database-projects-vscode)
+- [SQL Database Projects extension](/azure-data-studio/extensions/sql-database-project-extension) or [SQL Database Projects extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.sql-database-projects-vscode)
 
 ::: zone-end
 
@@ -115,7 +115,7 @@ Enter a project name in the text input that appears, which doesn't need to match
 
 In the "Select a Folder" dialog that appears, select a directory for the project's folder, `.sqlproj` file, and other contents to reside in.
 
-When prompted whether to create an SDK-style project (preview), select **Yes**.
+When prompted whether to create an SDK-style project, select **Yes**.
 
 Once completed, the empty project is opened and visible in the **Database Projects** view for editing.
 
@@ -175,8 +175,8 @@ The base template for a table can be used as a starting point for creating a new
 ```sql
 CREATE TABLE [dbo].[Table1]
 (
-  [Id] INT NOT NULL PRIMARY KEY
-)
+    [Id] INT NOT NULL PRIMARY KEY
+);
 ```
 
 ::: zone-end

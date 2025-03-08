@@ -1,10 +1,10 @@
 ---
-title: "What are SQL database projects?"
+title: "What Are SQL Database Projects?"
 description: "This overview introduces SQL database projects, which enable database development and CI/CD workflows."
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: maghan, randolphwest
-ms.date: 08/30/2024
+ms.date: 03/11/2025
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: overview
@@ -31,7 +31,7 @@ The SQL database projects framework around your database code that adds two foun
 
 :::image type="content" source="media/sql-database-projects/sqlproj-summary.png" alt-text="Screenshot of Summary of SQL Database Projects containing pre-deployment and post-deployment scripts as well as database objects." lightbox="media/sql-database-projects/sqlproj-summary.png":::
 
-The functionality for SQL database projects is provided by the [Microsoft.SqlServer.DacFx](https://www.nuget.org/packages/Microsoft.SqlServer.DacFx/) .NET library and is surfaced in several [tools for SQL development](sql-projects-tools.md). DacFx has multiple extensibility points, such as modification of deployment steps and the ability to create custom rules for code analysis. The project SDK for SQL projects is [Microsoft.Build.Sql](https://www.nuget.org/packages/Microsoft.Build.Sql/), currently available in preview and [advised for new development](#original-projects-vs-sdk-style-projects-preview).
+The functionality for SQL database projects is provided by the [Microsoft.SqlServer.DacFx](https://www.nuget.org/packages/Microsoft.SqlServer.DacFx/) .NET library and is surfaced in several [tools for SQL development](sql-projects-tools.md). DacFx has multiple extensibility points, such as modification of deployment steps and the ability to create custom rules for code analysis. The project SDK for SQL projects is [Microsoft.Build.Sql](https://www.nuget.org/packages/Microsoft.Build.Sql/), is [advised for new development](#original-projects-vs-sdk-style-projects) and is the format used by the SQL Database Projects extension for Azure Data Studio and VS Code. Support for SDK-style SQL projects in Visual Studio is in preview.
 
 ### Validation
 
@@ -77,11 +77,11 @@ SQL database projects are used to track the source of truth for database state, 
 
 SQL database projects support the SQL Server and Azure SQL family of databases, including Azure SQL Database and Azure Synapse Analytics. Whether you're developing an application or a data warehouse, SQL database projects can be used to manage the schema of your database. SQL projects can be developed from [tools](sql-projects-tools.md) in Visual Studio, VS Code, and Azure Data Studio.
 
-## Original projects vs SDK-style projects (preview)
+## Original projects vs SDK-style projects
 
-The original SQL project format is based on MSBuild (.NET Framework) and is the format used by SQL Server Data Tools in Visual Studio. The SDK-style project format is based on the new SDK-style projects introduced in .NET Core and is the format used by the SQL Database Projects extension for Azure Data Studio and VS Code. Support for SDK-style SQL projects in Visual Studio is on the [roadmap](https://github.com/microsoft/DacFx/issues/180).
+The Microsoft.Build.Sql SDK-style project format is based on the new SDK-style projects introduced in .NET Core and is the format used by the SQL Database Projects extension for Azure Data Studio and VS Code. Microsoft.Build.Sql projects are replacing the original SQL project format based on MSBuild (.NET Framework). Support for SDK-style SQL projects in Visual Studio is currently in preview and under active development, with both the original and SDK-style project formats available in Visual Studio.
 
-New development work should consider using the SDK-style project format, as it's the format that will be supported in the future. The SDK-style project format is more flexible and contains new features not available with the original SQL projects:
+New development work should consider using Microsoft.Build.Sql projects, as SDK-style projects are the format that will be supported in the future. The SDK-style project format is more flexible and contains new features not available with the original SQL projects:
 
 - .NET 8 support (cross platform)
 - NuGet [package references](concepts/package-references.md) for database references
@@ -99,7 +99,7 @@ The exception to the functionality coverage is support for SQLCLR objects, which
 - [Sample CI/CD pipelines for SQL projects](https://github.com/Azure-Samples/sql-projects-devops-samples)
 - [GitHub sql-action](https://github.com/azure/sql-action)
 - [Azure DevOps SQL deployments](/azure/devops/pipelines/targets/azure-sqldb)
-- [Data-tier applications (DAC)](../../relational-databases/data-tier-applications/data-tier-applications.md)
+- [Data-tier applications (DAC) overview](concepts/data-tier-applications/overview.md)
 - [DacFx feedback repository](https://github.com/microsoft/dacfx)
 - [Get started with SQL database projects](get-started.md)
 - [Tutorial: Create and deploy a SQL project](tutorials/create-deploy-sql-project.md)

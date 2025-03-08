@@ -1,10 +1,10 @@
 ---
-title: Analyze T-SQL code to find defects
+title: Analyze T-SQL Code to Find Defects
 description: "How to detect antipatterns and defects with code analysis."
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: maghan, randolphwest
-ms.date: 08/30/2024
+ms.date: 03/11/2025
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: how-to
@@ -17,7 +17,7 @@ zone_pivot_groups: sq1-sql-projects-tools
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
-You can improve the quality of the Transact-SQL code in a database schema by importing it into a database project and analyzing the code against a set of rules. For example, you might want to find any errors in a schema that you didn't develop and whose quality has not been verified. For more information, see the [code analysis overview](../concepts/sql-code-analysis/sql-code-analysis.md).
+You can improve the quality of the Transact-SQL code in a database schema by importing it into a database project and analyzing the code against a set of rules. For example, you might want to find any errors in a schema that you didn't develop and whose quality hasn't been verified. For more information, see the [code analysis overview](../concepts/sql-code-analysis/sql-code-analysis.md).
 
 For this initial assessment, you want to find all the potential problems in the database code. You review the warnings and the code that caused those warnings. To improve the T-SQL code, you correct warnings, potentially suppress a warning, and iteratively analyze the database project.
 
@@ -114,7 +114,7 @@ To disable or enable a specific rule in a SQL project, edit the `.sqlproj` file 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build">
-  <Sdk Name="Microsoft.Build.Sql" Version="0.2.0-preview" />
+  <Sdk Name="Microsoft.Build.Sql" Version="1.0.0" />
   <PropertyGroup>
     <Name>AdventureWorks</Name>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
@@ -136,7 +136,7 @@ Add or modify the element for `SqlCodeAnalysisRules` in the first `<PropertyGrou
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build">
-  <Sdk Name="Microsoft.Build.Sql" Version="0.2.0-preview" />
+  <Sdk Name="Microsoft.Build.Sql" Version="1.0.0" />
   <PropertyGroup>
     <Name>AdventureWorks</Name>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
@@ -156,7 +156,7 @@ To disable or enable a specific rule in a SQL project, edit the `.sqlproj` file 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build">
-  <Sdk Name="Microsoft.Build.Sql" Version="0.2.0-preview" />
+  <Sdk Name="Microsoft.Build.Sql" Version="1.0.0" />
   <PropertyGroup>
     <Name>AdventureWorks</Name>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>

@@ -1,9 +1,10 @@
 ---
-title: SQL Server Data Tools, SDK-style (preview)
+title: "SQL Server Data Tools, SDK-style (preview)"
 description: SDK-style SQL projects in Visual Studio enable the next generation of SQL projects.
 author: dzsquared
 ms.author: drskwier
-ms.date: 09/10/2024
+ms.reviewer: randolphwest
+ms.date: 03/11/2025
 ms.service: sql
 ms.subservice: ssdt
 ms.topic: conceptual
@@ -11,7 +12,7 @@ ms.topic: conceptual
 
 # SQL Server Data Tools, SDK-style (preview)
 
-**SQL Server Data Tools (SSDT)** is a set of development tools in Visual Studio with focused on building SQL Server databases and Azure SQL databases.  SDK-style SQL projects in Visual Studio enable the next generation of SQL projects as part of the **SQL Server Data Tools, SDK-style (preview)** feature available for Visual Studio 2022. The **SQL projects** capability extends to CI/CD pipelines, enabling you to automate the build and deployment of your database projects with the [SqlPackage CLI](../tools/sqlpackage/sqlpackage.md).
+**SQL Server Data Tools (SSDT)** is a set of development tools in Visual Studio with focused on building SQL Server databases and Azure SQL databases. SDK-style SQL projects in Visual Studio enable the next generation of SQL projects as part of the **SQL Server Data Tools, SDK-style (preview)** feature available for Visual Studio 2022. The **SQL projects** capability extends to CI/CD pipelines, enabling you to automate the build and deployment of your database projects with the [SqlPackage CLI](../tools/sqlpackage/sqlpackage.md).
 
 ## Overview
 
@@ -27,7 +28,7 @@ Further documentation on SQL projects is available in the [SQL database projects
 
 ## Install
 
-> [!WARNING]
+> [!WARNING]  
 > The SDK-style SQL projects feature is in preview and side-by-side install with the original SQL projects isn't supported. Installing the SDK-style SQL projects in a standalone Visual Studio instance is advised.
 
 To install the SDK-style SQL projects in Visual Studio 2022, follow these steps:
@@ -40,7 +41,7 @@ To install the SDK-style SQL projects in Visual Studio 2022, follow these steps:
 
 The Visual Studio [documentation](/visualstudio/install/modify-visual-studio#change-workloads-or-individual-components) provides additional information on modifying Visual Studio installations to select individual components.
 
-Unexpected behavior may occur if the SDK-style SQL projects are installed side-by-side with the original SQL projects and installing SDK-style SQL Server Data Tools is advised as a standalone component. To verify what components are part of a Visual Studio install, use the **Help** menu in Visual Studio and select **About Microsoft Visual Studio**. Several approaches are available to utilize multiple Visual Studio instances on a single machine:
+Unexpected behavior can occur if the SDK-style SQL projects are installed side-by-side with the original SQL projects and installing SDK-style SQL Server Data Tools is advised as a standalone component. To verify what components are part of a Visual Studio install, use the **Help** menu in Visual Studio and select **About Microsoft Visual Studio**. Several approaches are available to utilize multiple Visual Studio instances on a single machine:
 
 - Install different release channels of Visual Studio, such as Visual Studio 2022 and Visual Studio 2022 preview.
 - Install [different editions](/visualstudio/install/install-visual-studio-versions-side-by-side#install-different-editions-of-the-same-major-visual-studio-version-side-by-side) of Visual Studio, such as Visual Studio Community and Visual Studio Enterprise.
@@ -51,7 +52,7 @@ Unexpected behavior may occur if the SDK-style SQL projects are installed side-b
 A full comparison of functionality between the SQL projects tools is available in [SQL projects tools](../tools/sql-database-projects/sql-projects-tools.md). The SDK-style SQL projects feature in Visual Studio has the following limitations:
 
 - Side-by-side install with original SQL projects isn't supported
-- The SQL project file uses the extension `.sqlprojx` instead of `.sqlproj` in Visual Studio 17.12 preview 2
+- The SQL project file uses the extension `.sqlprojx` instead of `.sqlproj` in Visual Studio 17.12 preview 2. In Visual Studio 17.12 preview 3 and later, the extension is `.sqlproj`.
 - SQLCLR objects aren't supported
 - Schema compare interface isn't enabled
 - Table designer interface isn't enabled
@@ -66,6 +67,6 @@ Microsoft.Build.Sql SDK-style SQL projects can be created from scratch or conver
 
 ## Related content
 
-- [SQL database projects](../tools/sql-database-projects/sql-database-projects.md)
+- [What are SQL database projects?](../tools/sql-database-projects/sql-database-projects.md)
 - [Visual Studio 2022 preview release notes](/visualstudio/releases/2022/release-notes-preview)
 - [SQL projects in VS Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.sql-database-projects-vscode)

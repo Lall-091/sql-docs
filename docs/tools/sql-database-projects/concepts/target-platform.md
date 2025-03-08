@@ -1,10 +1,10 @@
 ---
-title: SQL projects target platform
+title: SQL Projects Target Platform
 description: "Specify SQL version compatibility for SQL database projects."
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: maghan, randolphwest
-ms.date: 08/30/2024
+ms.date: 03/11/2025
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: concept-article
@@ -28,7 +28,7 @@ The target platform project property is contained in the `DSP` tag in the `.sqlp
 
 ```xml
 <Project DefaultTargets="Build">
-  <Sdk Name="Microsoft.Build.Sql" Version="0.2.4-preview" />
+  <Sdk Name="Microsoft.Build.Sql" Version="1.0.0" />
   <PropertyGroup>
     <Name>AdventureWorks</Name>
     <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureV12DatabaseSchemaProvider</DSP>

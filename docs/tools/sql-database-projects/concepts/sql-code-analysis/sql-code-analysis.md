@@ -1,10 +1,10 @@
 ---
-title: "SQL code analysis"
+title: "SQL Code Analysis"
 description: "Analyzing Database Code to Improve Code Quality"
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: maghan, randolphwest
-ms.date: 08/30/2024
+ms.date: 03/11/2025
 ms.service: sql
 ms.topic: concept-article
 ms.custom:
@@ -29,7 +29,7 @@ By performing static analysis with the [provided rules](#provided-rules), you ca
 - [T-SQL Performance Issues](#t-sql-performance-issues)
   Performance issues include code that might noticeably reduce the speed in which database operations are completed. Many of these issues identify code that will cause a table scan when the code is executed.
 
-    :::image type="content" source="media/sql-code-analysis/static-analysis-rules.png" alt-text="Screenshot of SQL Server Data Tools project settings for code analysis rules." lightbox="media/sql-code-analysis/static-analysis-rules.png":::
+    :::image type="content" source="media/sql-code-analysis/static-analysis-rules.png" alt-text="Screenshot of SQL Server Data Tools project settings for code analysis rules.":::
 
 Code analysis rules are extensible. You can create your own rules to enforce your own coding standards. For more information, see [Code analysis rules extensibility overview](../code-analysis-extensibility.md).
 
@@ -40,7 +40,7 @@ A SQL project file can contain two properties, `RunSqlCodeAnalysis` and `SqlCode
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build">
-  <Sdk Name="Microsoft.Build.Sql" Version="0.2.0-preview" />
+  <Sdk Name="Microsoft.Build.Sql" Version="1.0.0" />
   <PropertyGroup>
     <Name>AdventureWorks</Name>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
@@ -55,7 +55,7 @@ The `SqlCodeAnalysisRules` element specifies the rules and their error/warning b
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build">
-  <Sdk Name="Microsoft.Build.Sql" Version="0.2.0-preview" />
+  <Sdk Name="Microsoft.Build.Sql" Version="1.0.0" />
   <PropertyGroup>
     <Name>AdventureWorks</Name>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>

@@ -2208,31 +2208,6 @@ items:
   - name: Code a client program >
     displayName: ADO, ADO.NET, connect, C#, C++, Java, Node.js, ODBC, OLE DB, PHP, Python, Ruby
     href: ./connect/homepage-sql-connection-programming.md
-  - name: Data tier applications
-    href: relational-databases/data-tier-applications/data-tier-applications.md
-    items:
-    - name: Delete
-      href: relational-databases/data-tier-applications/delete-a-data-tier-application.md
-    - name: Deploy
-      href: relational-databases/data-tier-applications/deploy-a-data-tier-application.md
-    - name: Export
-      href: relational-databases/data-tier-applications/export-a-data-tier-application.md
-    - name: Extract a DAC from a database
-      href: relational-databases/data-tier-applications/extract-a-dac-from-a-database.md
-    - name: Import a BACPAC File to Create a New User Database
-      href: relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database.md
-    - name: Monitor
-      href: relational-databases/data-tier-applications/monitor-data-tier-applications.md
-    - name: Register a database As a DAC
-      href: relational-databases/data-tier-applications/register-a-database-as-a-dac.md
-    - name: Unpack a DAC Package
-      href: relational-databases/data-tier-applications/unpack-a-dac-package.md
-    - name: Upgrade a data-tier Application
-      href: relational-databases/data-tier-applications/upgrade-a-data-tier-application.md
-    - name: Validate a DAC package
-      href: relational-databases/data-tier-applications/validate-a-dac-package.md
-    - name: Deploy a database By using a DAC
-      href: relational-databases/data-tier-applications/deploy-a-database-by-using-a-dac.md
   - name: Common Language Runtime (CLR)
     href: relational-databases/clr-integration/common-language-runtime-integration-overview.md
     items:
@@ -8514,8 +8489,6 @@ items:
           href: ssdt/how-to-view-and-edit-data-in-a-table.md
         - name: 'How to: Delete Objects & Resolve Dependencies'
           href: ssdt/how-to-delete-objects-and-resolve-dependencies.md
-        - name: Extract, Publish, & Register .dacpac Files
-          href: ssdt/extract-publish-and-register-dacpac-files.md
       - name: Compare & Synchronize Data in One or More Tables with Data in a Reference Database
         href: ssdt/compare-and-synchronize-data-in-tables-with-data-in-reference-database.md
         items:
@@ -8689,18 +8662,37 @@ items:
       items:
       - name: Project properties
         href: tools/sql-database-projects/concepts/project-properties.md
-      - name: Target platform
-        href: tools/sql-database-projects/concepts/target-platform.md
-      - name: SQLCMD variables
-        href: tools/sql-database-projects/concepts/sqlcmd-variables.md
-      - name: Pre/post deployment scripts
-        href: tools/sql-database-projects/concepts/pre-post-deployment-scripts.md
-      - name: Schema comparison
-        href: tools/sql-database-projects/concepts/schema-comparison.md
       - name: Database references
         href: tools/sql-database-projects/concepts/database-references.md
       - name: Package references
         href: tools/sql-database-projects/concepts/package-references.md
+      - name: Pre/post deployment scripts
+        href: tools/sql-database-projects/concepts/pre-post-deployment-scripts.md
+      - name: Schema comparison
+        href: tools/sql-database-projects/concepts/schema-comparison.md
+      - name: SQLCMD variables
+        href: tools/sql-database-projects/concepts/sqlcmd-variables.md
+      - name: Target platform
+        href: tools/sql-database-projects/concepts/target-platform.md
+      - name: Data tier applications
+        href: tools/sql-database-projects/concepts/data-tier-applications/overview.md
+        items:
+        - name: Export a bacpac file
+          href: tools/sql-database-projects/concepts/data-tier-applications/export-bacpac-file.md
+        - name: Import a bacpac file
+          href: tools/sql-database-projects/concepts/data-tier-applications/import-bacpac-file-create-new-database.md
+        - name: Deploy a dacpac
+          href: tools/sql-database-projects/concepts/data-tier-applications/deploy-data-tier-application.md
+        - name: Extract a dacpac
+          href: tools/sql-database-projects/concepts/data-tier-applications/extract-dacpac-from-database.md
+        - name: Register a database as a DAC
+          href: tools/sql-database-projects/concepts/data-tier-applications/register-database-as-dac.md
+        - name: Unpack a dacpac file
+          href: tools/sql-database-projects/concepts/data-tier-applications/unpack-dacpac-file.md
+        - name: Verify a dacpac file
+          href: tools/sql-database-projects/concepts/data-tier-applications/verify-dacpac-file.md
+        - name: Delete a data-tier application
+          href: tools/sql-database-projects/concepts/data-tier-applications/delete-data-tier-application.md
       - name: SQL code analysis
         items:
         - name: Overview

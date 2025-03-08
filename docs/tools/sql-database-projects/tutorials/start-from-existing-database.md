@@ -1,10 +1,10 @@
 ---
-title: Start from an existing database
+title: Start from an Existing Database
 description: "Create a SQL project with objects from an existing database."
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: maghan, randolphwest
-ms.date: 08/30/2024
+ms.date: 03/11/2025
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: tutorial
@@ -41,7 +41,7 @@ With [option 2](#option-2-create-a-new-empty-sql-project-and-import-objects-from
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [Visual Studio 2022 Community, Professional, or Enterprise](https://visualstudio.microsoft.com/downloads/)
-- [SQL Server Data Tools (SSDT) installed in Visual Studio 2022](../../../ssdt/download-sql-server-data-tools-ssdt.md)
+- [Install SQL Server Data Tools (SSDT) for Visual Studio](../../../ssdt/download-sql-server-data-tools-ssdt.md)
 
 ::: zone-end
 
@@ -208,7 +208,7 @@ Enter a project name in the text input that appears, which doesn't need to match
 
 In the "Select a Folder" dialog that appears, select a directory for the project's folder, `.sqlproj` file, and other contents to reside in.
 
-When prompted whether to create an SDK-style project (preview), select **Yes**.
+When prompted whether to create an SDK-style project, select **Yes**.
 
 Once completed, the empty project is opened and visible in the **Database Projects** view for editing.
 
