@@ -14,7 +14,7 @@ The Microsoft JDBC Driver for SQL Server is a Type 4 JDBC driver that provides d
 
 ## Download
 
-Version 12.10 is the latest general availability (GA) version. It supports Java 8, 11, 17, 21, 22 and 23. If you need to use an older Java runtime, see the [Java and JDBC specification support matrix](microsoft-jdbc-driver-for-sql-server-support-matrix.md#java-and-jdbc-specification-support) to see if there's a supported driver version you can use. We're continually improving Java connectivity support. As such we highly recommend that you work with the latest version of Microsoft JDBC driver.
+Version 12.10 is the latest general availability (GA) version. It supports Java 8, 11, 17, 21 and 23. If you need to use an older Java runtime, see the [Java and JDBC specification support matrix](microsoft-jdbc-driver-for-sql-server-support-matrix.md#java-and-jdbc-specification-support) to see if there's a supported driver version you can use. We're continually improving Java connectivity support. As such we highly recommend that you work with the latest version of Microsoft JDBC driver.
 
 :::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft JDBC Driver 12.10 for SQL Server (zip)](https://go.microsoft.com/fwlink/?linkid=2283744)**  
 :::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft JDBC Driver 12.10 for SQL Server (tar.gz)](https://go.microsoft.com/fwlink/?linkid=2283563)**

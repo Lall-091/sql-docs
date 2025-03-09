@@ -28,38 +28,34 @@ For the driver in a tar.gz file: [Chinese (Simplified)](https://go.microsoft.com
 
 | Feature | Details |
 | :---------- | :----------- |
-| Java 23 support | The driver is now compatible with Java Development Kit (JDK) version 23.0 in addition to JDK 22.0, 21.0, 17.0, 11.0 and 1.8. |
-| Added provision to set SQLServerBulkCopy options in PreparedStatement | In order to add provision to set SQLServerBulkCopyOptions in PreparedStatement, new connection string options and a method `setBulkCopyOptions` were introduced. |
-| Added configurable retry logic feature, supporting both statement, and connection, retry | Added configurable retry logic for SQL statements, allowing rules to be defined either in the connection string or the `mssql-jdbc.properties` file. The rules specify the errors to retry, the number of retries, and the timing between retries. The retry logic ensures retries only occur when specified conditions are met, such as matching error codes and queries. |
+| Java 23 support | The driver is now compatible with Java Development Kit (JDK) version 23.0 in addition to JDK 21.0, 17.0, 11.0 and 1.8. |
+| Added a provision to set SQLServerBulkCopy options in PreparedStatement | In order to set SQLServerBulkCopyOptions in PreparedStatement when using `useBulkCopyForBatchInsert=true`, new connection string options and a `setBulkCopyOptions` API method were introduced. |
+| Added configurable retry logic feature, supporting both statement and connection retry | Added configurable retry logic for SQL statements, allowing rules to be defined either in the connection string or the `mssql-jdbc.properties` file. The rules specify the errors to retry, the number of retries, and the timing between retries. The retry logic ensures retries only occur when specified conditions are met, such as matching error codes and queries. |
 
 ### Changes in 12.10
 
 | Change | Details |
 | :---------- | :----------- |
-| Added "requireSecret" exclude tag for tests | Added "requireSecret" exclude tag for tests which require adding a secret to app registration. |
-| Check for null when getting DTV values | Added fix to checking for null value of a DTVImpl before calling DTVImpl::getValue has shown some perf gains in our internal benchmark. This fix will change behavior of getBinaryStream /getAsciiStream in ResultSet to be compliant with JDBC specs: a Java input stream that delivers the database column value as a stream of one-byte ASCII characters; if the value is SQL NULL, the value returned is null. |
+| Check for null when getting DTV values | Added a check for a null value of a DTVImpl before calling DTVImpl::getValue. This check has shown performance gains in internal benchmarks. This fix changes the behavior of `getBinaryStream` and `getAsciiStream` in `ResultSet` to be compliant with JDBC API specifications. Returns: a Java input stream that delivers the database column value as a stream of one-byte ASCII characters; if the value is SQL NULL, the value returned is null. |
 | Added com.ibm.security.auth.module and com.sun.security.auth.module as option import | Set resolution=optional for these OSGi imports to prevent deployment failures caused by mandatory imports. |
 | Reverted "Execute Stored Procedures Directly" feature, as well as subsequent changes related to the feature | Reverted the feature due to issues and regressions introduced by these changes. |
-| Changed MSAL logging from FINEST to FINER | This change is made to reduce the verbosity of the logs while still providing sufficient detail for debugging purposes. |
+| Changed MSAL logging from FINEST to FINER | This change is made to reduce the verbosity of the logs while still providing sufficient detail for troubleshooting authentication issues. |
 | Updated dependencies | Updated dependency versions for `azure-identity`, `bouncycastle`, and `juint`. |
-| Updated project pom file to pull dependencies from public Azure Artifacts Feed | For being compliant with the company's security policies updated project pom file to pull dependencies from public Azure Artifacts Feed |
 
 ### Fixes in 12.10
 
 | Fix | Details |
 | :---------- | :----------- |
-| Fixed an issue where fetching the Path for Configurable Retry Logic would fail if the URI scheme was not file: | Fixed an issue where fetching the Path for Configurable Retry Logic would fail if the URI scheme was not file: by removing the scheme component before using Paths.get(). [GitHub Issue #2621](https://github.com/microsoft/mssql-jdbc/issues/2621). |
-| Fixed NPE when bulk copy operation is performed on computed column | Fixed NPE when bulk copy operation is performed on computed column by iterating over keyset in map. [GitHub Issue #2606](https://github.com/microsoft/mssql-jdbc/issues/2606). |
+| Fixed a `NullPointerException` when a bulk copy operation is performed on a computed column | Fixed a `NullPointerException` when a bulk copy operation is performed on a computed column by iterating over the keyset in a map. [GitHub Issue #2606](https://github.com/microsoft/mssql-jdbc/issues/2606). |
 | Fixed the resolution of login module to optional | Fixed the issue where the JAR's manifest contained a non-optional import declaration on com.ibm.security.auth.module and com.sun.security.auth.module, which should be declared with resolution:=optional. [GitHub Issue #2608](https://github.com/microsoft/mssql-jdbc/issues/2608). |
-| Fixed the scope of `BULK_COPY_OPERATION_CACHE` to global | Fixed the issue where `BULK_COPY_OPERATION_CACHE` was defined at a global scope instead of connection scope, which caused incorrect cache hits across connections and potential Out Of Memory (OOM) issues. [GitHub Issue #2585](https://github.com/microsoft/mssql-jdbc/issues/2585). |
-| Fixed broken logic in ConfigurableRetryLogic | Fixed issue for finding `mssql-jdbc.properties` location in test environments. [GitHub Issue #2578](https://github.com/microsoft/mssql-jdbc/issues/2578). |
-| Fixed issue with isIBM check method to use correct login module | Fixed generateDefaultConfiguration method to dynamically check for the presence of com.sun.security.auth.module.Krb5LoginModule and use it if available, otherwise fall back to com.ibm.security.auth.module.Krb5LoginModule. [GitHub Issue #2576](https://github.com/microsoft/mssql-jdbc/issues/2576). |
+| Fixed the scope of `BULK_COPY_OPERATION_CACHE` | Fixed an issue where `BULK_COPY_OPERATION_CACHE` was defined at a global scope instead of the connection scope, which caused incorrect cache hits across connections and potential out of memory issues. [GitHub Issue #2585](https://github.com/microsoft/mssql-jdbc/issues/2585). |
+| Fixed issue with isIBM check method to use correct login module | Fixed the generateDefaultConfiguration method to dynamically check for the presence of com.sun.security.auth.module.Krb5LoginModule and use it if available, otherwise fall back to com.ibm.security.auth.module.Krb5LoginModule. [GitHub Issue #2576](https://github.com/microsoft/mssql-jdbc/issues/2576). |
 | Fixed issue with `SQLServerBulkCopy` from CSV with setEscapeColumnDelimerts set to true | Fixed a regression from 12.8.1 where the method readLineEscapeDelimiters in `SQLServerBulkCSVFileRecord` missed handling the case of a CSV file not having a newline character at the end of the last row. [GitHub Issue #2573](https://github.com/microsoft/mssql-jdbc/issues/2573). |
-| Fixed OffsetDateTime conversion for pre-Gregorian dates | Fixed conversion of DateTimeOffset to `OffsetDateTime` to use `Calendar` class, to handle pre-Gregorian dates. [GitHub Issue #2565](https://github.com/microsoft/mssql-jdbc/issues/2565). |
+| Fixed OffsetDateTime conversion for pre-Gregorian dates | Fixed conversion of DateTimeOffset to `OffsetDateTime` to use the `Calendar` class, to handle pre-Gregorian dates. [GitHub Issue #2565](https://github.com/microsoft/mssql-jdbc/issues/2565). |
 | Fixed getGeneratedKeys functionality for execute API | Fixed getGeneratedKeys functionality for the execute API to correctly report the update count and subsequent result sets. [GitHub Issue #2550](https://github.com/microsoft/mssql-jdbc/issues/2550). |
 | Fixed an issue where `SQLServerConnection` could enter an infinite loop | Fixed an infinite loop in `SQLServerConnection` by ensuring all statements in openStatements are closed and removed explicitly, and made bIsClosed and openStatements volatile. [GitHub Issue #2537](https://github.com/microsoft/mssql-jdbc/issues/2537). |
-| Fixed the driver cutting out the question mark from columns labels (aliases) | Fix to enhance error handling in the buildExecuteMetaData method to manage `SQLServerException` more robustly, ensuring that column labels (aliases) with question marks are correctly processed. [GitHub Issue #2535](https://github.com/microsoft/mssql-jdbc/issues/2535). |
-| Fixed the Kerberos authentication mechanism to provide compatibility with Java 17 and above | Fix addresses the deprecation of the Subject.getSubject() method by falling back to the replacement API when a deprecation exception is thrown. [GitHub Issue #2524](https://github.com/microsoft/mssql-jdbc/issues/2524). |
+| Fixed removal of question marks from columns labels (aliases) | Fix to enhance error handling in the `buildExecuteMetaData` method to better manage `SQLServerException`, ensuring that column labels (aliases) with question marks are correctly processed. [GitHub Issue #2535](https://github.com/microsoft/mssql-jdbc/issues/2535). |
+| Fixed the Kerberos authentication mechanism to provide compatibility with Java 17 and above | Fix addresses the deprecation of the `Subject.getSubject()` method by falling back to the replacement API when a deprecation exception is thrown. [GitHub Issue #2524](https://github.com/microsoft/mssql-jdbc/issues/2524). |
 
 ## Previous releases
 

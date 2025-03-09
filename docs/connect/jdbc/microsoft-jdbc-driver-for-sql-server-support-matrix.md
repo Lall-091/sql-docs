@@ -100,7 +100,7 @@ The following Microsoft JDBC Drivers are supported, until the indicated End of S
 
 |JDBC Driver Version|JRE Versions|JDBC API Version|
 |-|-|-|
-|[12.10](release-notes-for-the-jdbc-driver.md#130)|1.8, 11, 17, 21, 22, 23|4.2, 4.3 (partially)|
+|[12.10](release-notes-for-the-jdbc-driver.md#130)|1.8, 11, 17, 21, 23|4.2, 4.3 (partially)|
 |[12.8](release-notes-for-the-jdbc-driver.md#128)|1.8, 11, 17, 21, 22|4.2, 4.3 (partially)|
 |[12.6](release-notes-for-the-jdbc-driver.md#126)|1.8, 11, 17, 21|4.2, 4.3 (partially)|
 |[12.4](release-notes-for-the-jdbc-driver.md#124)|1.8, 11, 17, 20|4.2, 4.3 (partially)|

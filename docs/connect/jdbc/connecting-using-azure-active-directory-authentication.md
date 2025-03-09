@@ -96,7 +96,7 @@ In addition to the library dependency requirements listed in [Client setup requi
   | Driver version | Required dependencies | Azure services supported |
   |----------------|------------------------|--------------|
   | 7.2 - 11.2 | None | [Azure App Service and Azure Functions](/azure/app-service/overview-managed-identity)<br/>[Azure Virtual Machines](/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token) |
-  | 12.2<br/>12.4<br/>12.6<br/>12.8<br/>12.10 | [azure-identity 1.7.0](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-identity/1.7.0/index.html#managed-identity-support)<br/>[azure-identity 1.9.0](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-identity/1.9.0/index.html#managed-identity-support)<br/>[azure-identity 1.11.1](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-identity/1.11.1/index.html#managed-identity-support)<br/>[azure-identity 1.12.2](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-identity/1.12.2/index.html#managed-identity-support)<br/>[azure-identity 1.15.3](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-identity/1.15.3/index.html#managed-identity-support) | [Azure App Service and Azure Functions](/azure/app-service/overview-managed-identity)<br/>[Azure Arc](/azure/azure-arc/servers/managed-identity-authentication)<br/>[Azure Cloud Shell](/azure/cloud-shell/msi-authorization)<br/>[Azure Kubernetes Service](/azure/aks/use-managed-identity)<br/>[Azure Service Fabric](/azure/service-fabric/concepts-managed-identity)<br/>[Azure Virtual Machines](/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token)<br/>[Azure Virtual Machines Scale Sets](/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vmss) |
+  | 12.2<br/>12.4<br/>12.6<br/>12.8<br/>12.10 | `azure-identity` 1.7.0<br/>`azure-identity` 1.9.0<br/>`azure-identity` 1.11.1<br/>`azure-identity` 1.12.2<br/>`azure-identity` 1.15.3 | [Azure App Service and Azure Functions](/azure/app-service/overview-managed-identity)<br/>[Azure Arc](/azure/azure-arc/servers/managed-identity-authentication)<br/>[Azure Cloud Shell](/azure/cloud-shell/msi-authorization)<br/>[Azure Kubernetes Service](/azure/aks/use-managed-identity)<br/>[Azure Service Fabric](/azure/service-fabric/concepts-managed-identity)<br/>[Azure Virtual Machines](/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token)<br/>[Azure Virtual Machines Scale Sets](/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vmss) |
 
 The following example shows how to use `authentication=ActiveDirectoryManagedIdentity` mode. Run this example from inside an Azure Resource that is configured for Managed Identity.
 
@@ -183,13 +183,13 @@ The `ActiveDirectoryDefault` authentication option uses the Azure Identity clien
 
 The following table lists the `DefaultAzureCredential` credential chain for each JDBC driver version.
 
-| Driver version | azure-identity version docs | `DefaultAzureCredential` chain |
+| Driver version | azure-identity version | `DefaultAzureCredential` chain |
 |----------------|------------------------|--------------|
-| 12.2 | [azure-identity 1.7.0](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-identity/1.7.0/index.html#defaultazurecredential) | Environment<br/>Managed Identity<br/>IntelliJ<br/>Azure CLI<br/>Azure PowerShell |
-| 12.4 | [azure-identity 1.9.0](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-identity/1.9.0/index.html#defaultazurecredential) | Environment<br/>Workload Identity<br/>Managed Identity<br/>Azure Developer CLI<br/>IntelliJ<br/>Azure CLI<br/>Azure PowerShell |
-| 12.6 | [azure-identity 1.11.1](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-identity/1.11.1/index.html#defaultazurecredential) | Environment<br/>Workload Identity<br/>Managed Identity<br/>Azure Developer CLI<br/>IntelliJ<br/>Azure CLI<br/>Azure PowerShell |
-| 12.8 | [azure-identity 1.12.2](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-identity/1.12.2/index.html#defaultazurecredential) | Environment<br/>Workload Identity<br/>Managed Identity<br/>Azure Developer CLI<br/>IntelliJ<br/>Azure CLI<br/>Azure PowerShell |
-| 12.10 | [azure-identity 1.15.3](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-identity/1.15.3/index.html#defaultazurecredential) | Environment<br/>Workload Identity<br/>Managed Identity<br/>Azure Developer CLI<br/>IntelliJ<br/>Azure CLI<br/>Azure PowerShell |
+| 12.2 | `azure-identity` 1.7.0 | Environment<br/>Managed Identity<br/>IntelliJ<br/>Azure CLI<br/>Azure PowerShell |
+| 12.4 | `azure-identity` 1.9.0 | Environment<br/>Workload Identity<br/>Managed Identity<br/>Azure Developer CLI<br/>IntelliJ<br/>Azure CLI<br/>Azure PowerShell |
+| 12.6 | `azure-identity` 1.11.1 | Environment<br/>Workload Identity<br/>Managed Identity<br/>Azure Developer CLI<br/>IntelliJ<br/>Azure CLI<br/>Azure PowerShell |
+| 12.8 | `azure-identity` 1.12.2 | Environment<br/>Workload Identity<br/>Managed Identity<br/>Azure Developer CLI<br/>IntelliJ<br/>Azure CLI<br/>Azure PowerShell |
+| 12.10 | `azure-identity` 1.15.3 | Environment<br/>Workload Identity<br/>Managed Identity<br/>Azure Developer CLI<br/>IntelliJ<br/>Azure CLI<br/>Azure PowerShell |
 
 There are many variables that can be set to configure the `Environment` credential. For details on configuring the `DefaultAzureCredential` chain, including the `Environment` credential, see the relevant version of the azure-identity docs linked in the previous table.
 

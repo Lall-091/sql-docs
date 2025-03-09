@@ -62,7 +62,7 @@ To use the [!INCLUDE[jdbcNoVersion](../../includes/jdbcnoversion_md.md)] to acce
 
 The JDBC Driver 12.10 includes two JAR class libraries in each installation package: **mssql-jdbc-12.10.0.jre8.jar** and **mssql-jdbc-12.10.0.jre11.jar**.
 
-The JDBC Driver 12.10 is designed to work with, and supports all major Java virtual machines, but is tested only on OpenJDK 1.8, OpenJDK 11.0, OpenJDK 17.0, OpenJDK 21.0, OpenJDK 22.0, OpenJDK 23.0, Azul Zulu JRE 1.8, Azul Zulu JRE 11.0, and Azul Zulu JRE 17.0.
+The JDBC Driver 12.10 is designed to work with, and supports all major Java virtual machines, but is tested only on OpenJDK 1.8, OpenJDK 11.0, OpenJDK 17.0, OpenJDK 21.0, OpenJDK 23.0, Azul Zulu JRE 1.8, Azul Zulu JRE 11.0, and Azul Zulu JRE 17.0.
 
 The following chart summarizes support provided by the two JAR files included with Microsoft JDBC Drivers 12.10 for SQL Server:
 
