@@ -186,9 +186,9 @@ XMLLocalName :: =
   
 7.  At the end of the query, add the following two lines:  
   
-     `<XmlData>`  
+     `</XmlData>`  
   
-     `<Query>`  
+     `</Query>`  
   
 8.  Click **Run Query** (!).  
   
