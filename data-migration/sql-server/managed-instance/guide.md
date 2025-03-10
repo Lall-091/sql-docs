@@ -191,4 +191,3 @@ Some SQL Server features are only available once the [database compatibility lev
 - [Tutorial: Migrate SQL Server to Azure SQL Managed Instance with DMS](database-migration-service.md)
 - [Cloud Adoption Framework for Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
 - [Best practices for costing and sizing workloads migrate to Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs)
-- [Overview of Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview)

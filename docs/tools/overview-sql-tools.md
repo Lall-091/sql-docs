@@ -51,7 +51,6 @@ These tools are used to migrate, configure, and provide other features for SQL d
 | Tool | Description |
 | :-- | :-- |
 | **[Configuration Manager](../tools/configuration-manager/sql-server-configuration-manager-help.md)** | Use SQL Server Configuration Manager to configure SQL Server services and configure network connectivity. Configuration Manager runs on Windows |
-| **[Database Experimentation Assistant](../dea/database-experimentation-assistant-overview.md)** | Use Database Experimentation Assistant to evaluate a targeted version of SQL for a given workload. |
 | **[Data Migration Assistant](../dma/dma-overview.md)** | The Data Migration Assistant tool helps you upgrade to a modern data platform by detecting compatibility issues that can affect database functionality in your new version of SQL Server or Azure SQL Database. |
 | **[Distributed Replay](distributed-replay/install-distributed-replay.md)** | Use the Distributed Replay feature to help you assess the impact of future SQL Server upgrades. Also use Distributed Replay to help assess the impact of hardware and operating system upgrades, and SQL Server tuning. |
 | **[ssbdiagnose](../tools/ssbdiagnose/ssbdiagnose-utility-service-broker.md)** | The ssbdiagnose utility reports issues in Service Broker conversations or the configuration of Service Broker services. |

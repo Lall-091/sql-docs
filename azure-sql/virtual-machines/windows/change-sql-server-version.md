@@ -31,7 +31,6 @@ Consider the following prerequisites before upgrading your version of SQL Server
 1. You can review the following articles to help ensure a successful outcome:
 
    - [Video: Modernizing SQL Server | Pam Lahoud & Pedro Lopes | 20 Years of PASS](https://www.youtube.com/watch?v=5RPkuQHcxxs&feature=youtu.be)
-   - [Database Experimentation Assistant for AB testing](/sql/dea/database-experimentation-assistant-overview)
    - [Upgrading Databases by using the Query Tuning Assistant](/sql/relational-databases/performance/upgrade-dbcompat-using-qta)
    - [Change the Database Compatibility Level and use the Query Store](/sql/database-engine/install-windows/change-the-database-compatibility-mode-and-use-the-query-store)
 

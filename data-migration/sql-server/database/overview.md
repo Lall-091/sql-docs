@@ -186,4 +186,3 @@ The Data SQL Engineering team developed these resources. This team's core charte
 - [Azure Total Cost of Ownership Calculator](https://azure.microsoft.com/pricing/tco/calculator/)
 - [Cloud Adoption Framework for Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
 - [Best practices for costing and sizing workloads migrated to Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs)
-- [Overview of Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview)

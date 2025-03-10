@@ -107,7 +107,6 @@ Supported version and edition upgrades:
 
 Tools:
 
-- [Database Experimentation Assistant](../../dea/database-experimentation-assistant-overview.md) can help evaluate the target version of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] for a specific workload.
 - [Data Migration Assistant](../../dma/dma-overview.md) can help detect compatibility issues that can affect database functionality in your new version of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 - [Query Tuning Assistant](../../relational-databases/performance/upgrade-dbcompat-using-qta.md) can help to tune workloads that can experience adverse effects when upgrading the database compatibility.
 

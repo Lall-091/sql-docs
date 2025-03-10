@@ -139,9 +139,6 @@ The test approach to database migration consists of the following activities:
 1. **Run validation tests**: Run validation tests against the source and the target, and then analyze the results.
 1. **Run performance tests**: Run performance tests against the source and target, and then analyze and compare the results.
 
-> [!TIP]  
-> Use the [Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview) to assist with evaluating the target SQL Server performance.
-
 ### Optimize
 
 The post-migration phase is crucial for reconciling any data accuracy issues, verifying completeness, and addressing potential performance issues with the workload.
@@ -163,4 +160,3 @@ For more information about these issues and the steps to mitigate them, see:
 - [Best practices for costing and sizing workloads for migration to Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs)
 - [Change the license model for a SQL virtual machine in Azure](/azure/azure-sql/virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change)
 - [Extend support for SQL Server with Azure](/azure/azure-sql/virtual-machines/windows/sql-server-extend-end-of-support)
-- [Overview of Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview)

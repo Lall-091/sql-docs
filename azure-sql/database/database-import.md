@@ -4,8 +4,8 @@ titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Create a new database in Azure SQL Database or Azure SQL Managed Instance from a bacpac file.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: hudequei, mathoma
-ms.date: 02/22/2024
+ms.reviewer: hudequei, mathoma, drskwier
+ms.date: 02/28/2025
 ms.service: azure-sql
 ms.subservice: backup-restore
 ms.topic: quickstart
@@ -169,7 +169,7 @@ To cancel the import operation, you need to be a member of one of the following 
 
 ## Limitations
 
-- Importing to a database in elastic pool isn't supported. You can import data into a single database and then move the database to an elastic pool.
+- Importing to a database in elastic pool isn't supported through the Azure Portal, Azure PowerShell, or Azure CLI. Instead, create a database in the elastic pool and then use [SQLPackage Import](/sql/tools/sqlpackage/sqlpackage-import), or import data using any method into a single database and then move the database to an elastic pool.
 - Import Export Service does not work when Allow access to Azure services is set to OFF. However, you can work around the problem by manually running SqlPackage from an Azure VM, or performing the export directly in your code by using the DacFx API.
 - Import does not support specifying a backup storage redundancy while creating a new database and creates with the default geo-redundant backup storage redundancy. To work around, first create an empty database with desired backup storage redundancy using Azure portal or PowerShell and then import the bacpac into this empty database.
 - Storage behind a firewall is currently not supported.

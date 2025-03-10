@@ -144,9 +144,6 @@ conceptualContent:
         - text: Database Migration Assistant (DMA)
           url: dma/dma-overview.md
           itemType: overview
-        - text: Database Experimentation Assistant (DEA)
-          url: dea/database-experimentation-assistant-overview.md
-          itemType: overview
         - text: SQL Server Migration Assistant (SSMA)
           url: ssma/sql-server-migration-assistant.md
           itemType: overview

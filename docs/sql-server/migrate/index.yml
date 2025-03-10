@@ -21,14 +21,10 @@ landingContent:
       links:
       - text: Data Migration Assistant (DMA)
         url: ../../dma/dma-overview.md
-      - text: Database Experimentation Assistant
-        url: ../../dea/database-experimentation-assistant-overview.md
     - linkListType: download
       links:
       - text: Data Migration Assistant (DMA)
         url: https://www.microsoft.com/download/details.aspx?id=53595
-      - text: Database Experimentation Assistant
-        url: https://www.microsoft.com/download/details.aspx?id=54090
 
   - title: Non-SQL to SQL & Azure
     linkLists:

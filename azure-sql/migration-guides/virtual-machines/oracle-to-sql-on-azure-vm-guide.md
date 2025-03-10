@@ -348,4 +348,3 @@ The Data SQL Engineering team developed these resources. This team's core charte
   - [Get free extended support for SQL Server](../../virtual-machines/windows/sql-server-extend-end-of-support.md)
 
 - To assess the application access layer, use [Data Access Migration Toolkit Preview](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit).
-- For details on how to do data access layer A/B testing, see [Overview of Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview).

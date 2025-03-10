@@ -169,5 +169,3 @@ The Data SQL Engineering team developed these resources. This team's core charte
 - To learn more about the framework and adoption cycle for cloud migrations, see:
    -  [Cloud Adoption Framework for Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [Best practices for costing and sizing workloads migrated to Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
-
-- For details on how to perform data access layer A/B testing, see [Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview).

@@ -44,6 +44,7 @@ You can use SQL Database auditing to:
 - Enabling auditing on a paused **Azure Synapse SQL pool** isn't supported. To enable auditing, resume the **Synapse SQL pool**.
 - Enabling auditing by using User Assigned Managed Identity (UAMI) isn't supported on **Azure Synapse**.
 - Currently, managed identities aren't supported for Azure Synapse, unless the storage account is behind a virtual network or firewall.
+- Due to performance constraints, we don't audit the **tempdb** and **temporary tables**. While the batch completed action group captures statements against temporary tables, it might not correctly populate the object names. However, the source table is always audited, ensuring that all inserts from the source table to temporary tables are recorded.
 - Auditing for **Azure Synapse SQL pools** supports default audit action groups **only**.
 - When you configure auditing for a [logical server in Azure](logical-servers.md) or Azure SQL Database with the log destination as a storage account, the authentication mode must match the configuration for that storage account. If using storage access keys as the authentication type, the target storage account must be enabled with access to the storage account keys. If the storage account is configured to only use authentication with Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)), auditing can be configured to use managed identities for authentication.
 

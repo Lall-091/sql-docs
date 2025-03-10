@@ -50,6 +50,9 @@ The server audit specification collects many server-level action groups raised b
 
 Server-level audit action groups are described in the article [SQL Server Audit Action Groups and Actions](../../../relational-databases/security/auditing/sql-server-audit-action-groups-and-actions.md).
 
+> [!NOTE] 
+> Due to performance constraints, we don't audit the `tempdb` and temporary tables. While the batch completed action group captures statements against temporary tables, it might not correctly populate the object names. However, the source table is always audited, ensuring that all inserts from the source table to temporary tables are recorded.
+
 ### Database Audit Specification
 
 The *Database Audit Specification* object also belongs to a [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] audit. You can create one database audit specification per [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] database per audit.

@@ -184,4 +184,3 @@ The Data SQL Engineering team developed these resources. This team's core charte
 - [Best practices for costing and sizing workloads migrate to Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs)
 - [Change the license model for a SQL virtual machine in Azure](/azure/azure-sql/virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change)
 - [Extend support for SQL Server with Azure](/azure/azure-sql/virtual-machines/windows/sql-server-extend-end-of-support)
-- [Overview of Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview)

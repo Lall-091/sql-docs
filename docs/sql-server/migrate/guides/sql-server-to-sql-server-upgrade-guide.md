@@ -24,7 +24,6 @@ Learn about the supported versions and considerations for [upgrading SQL Server]
 To prepare for the migration, download and install the following items:
 
 - [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v5.3 or later.
-- [Database Experimentation Assistant](https://www.microsoft.com/download/details.aspx?id=54090).
 
 ## Premigration
 

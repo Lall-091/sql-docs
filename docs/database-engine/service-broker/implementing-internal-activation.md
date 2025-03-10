@@ -4,25 +4,25 @@ description: "This tutorial is intended for users who are new to Service Broker,
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray, maghan
-ms.date: "03/30/2022"
+ms.date: 03/07/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: how-to
 ---
 
-# Implementing Internal Activation
+# Implement internal activation in Service Broker
 
 [!INCLUDE [sql-asdbmi](../../includes/applies-to-version/sql-asdbmi.md)]
 
-This tutorial is intended for users who are new to Service Broker, but are familiar with database concepts and Transact-SQL statements. It will help new users get started by showing them how to implement an internal activation stored procedure to process Service Broker messages.
+This tutorial is intended for users who are new to Service Broker, but are familiar with database concepts and Transact-SQL statements. It helps new users get started by showing them how to implement an internal activation stored procedure to process Service Broker messages.
 
-## What You Will Learn
+## Concepts
 
-This tutorial shows you how to create the database objects that are required to support a simple request-reply Service Broker conversation using an internal activation stored procedure. You will then start a conversation and use it to transmit messages.
+This tutorial shows you how to create the database objects that are required to support a basic request-reply Service Broker conversation using an internal activation stored procedure. You then start a conversation and use it to transmit messages.
 
 Each Service Broker conversation has two ends: the conversation initiator and target. In a request-reply conversation, a request message us sent from the initiator to the target, which returns a reply message. Service Broker internal activation can be used to run a stored procedure whenever there are messages to process. Service Broker can run multiple copies of the stored procedure if there are many messages being transmitted. This tutorial shows you how to create a stored procedure that receives the request messages at the target, and how to configure the target to use internal activation to run the stored procedure.
 
-You will perform the following tasks:
+This lesson guides you to perform the following tasks:
 
 - Create a service and queue for the target and a service and queue for the initiator.
 
@@ -34,53 +34,46 @@ You will perform the following tasks:
 
 - Alter the target queue to enable internal activation of the stored procedure.
 
-You will then perform a simple conversation:
+You then perform a basic conversation:
 
 - Start the conversation.
 
 - Send a request from the initiator to the target.
 
-- Service Broker will then activate the stored procedure. The stored procedure will receive the request at the target and send a reply to the initiator.
+- Service Broker then activates the stored procedure. The stored procedure receives the request at the target, and sends a reply to the initiator.
 
 - Receive the reply at the initiator.
 
 - End the initiator side of the conversation.
 
-- Service Broker will then activate the stored procedure a second time, and the stored procedure will end the target side of the conversation.
+- Service Broker then activates the stored procedure a second time, and the stored procedure ends the target side of the conversation.
 
-Messages are not transmitted across a network for conversations that have both ends in the same instance of the Database Engine. Database Engine security and permissions restricts access to authorized principles. Network encryption is not needed for this scenario.
+Messages aren't transmitted across a network for conversations that have both ends in the same instance of the Database Engine. Database Engine security and permissions restrict access to authorized principles. Network encryption isn't needed for this scenario.
 
-This tutorial is divided into three lessons:
+This tutorial is divided into the following lessons.
 
-- [Lesson 1: Creating the Base Conversation Objects](lesson-1-creating-the-base-conversation-objects.md)  
-    In this lesson, you create the message types, contract, services, and queues that are required to support a basic Service Broker conversation.
-
-- [Lesson 2: Creating an Internal Activation Procedure](lesson-2-creating-an-internal-activation-procedure.md)  
-    In this lesson, you create the stored procedure that will receive messages from the target queue, then alter the target queue to specify internal activation.
-
-- [Lesson 3: Beginning a Conversation and Transmitting Messages](lesson-3-beginning-a-conversation-and-transmitting-messages.md)  
-    In this lesson, you complete a basic conversation by starting the conversation and transmitting a request message from the initiator to the target. The internal activation stored procedure will receive the request message and return a reply message. You will then end the initiator side of the conversation, and the stored procedure will end the target side of the conversation.
-
-- [Lesson 4: Dropping the Conversation Objects](lesson-4-dropping-the-conversation-objects.md)  
-    In this lesson, you drop the objects that were created to support the conversation.
+| Lesson | Description |
+| --- | --- |
+| [Lesson 1: Create the base conversation objects](lesson-1-creating-the-base-conversation-objects.md) | Create the message types, contract, services, and queues that are required to support a basic Service Broker conversation. |
+| [Lesson 2: Create an internal activation procedure](lesson-2-creating-an-internal-activation-procedure.md) | Create the stored procedure that will receive messages from the target queue, then alter the target queue to specify internal activation. |
+| [Lesson 3: Begin a conversation and transmit messages](lesson-3-beginning-a-conversation-and-transmitting-messages.md) | Complete a basic conversation by starting the conversation and transmitting a request message from the initiator to the target. The internal activation stored procedure receives the request message, and returns a reply message. You then end the initiator side of the conversation, and the stored procedure ends the target side of the conversation. |
+| [Lesson 4: Drop the conversation objects](lesson-4-dropping-the-conversation-objects.md) | Drop the objects that were created to support the conversation. |
 
 ## Requirements
 
-To complete this tutorial, you should be familiar with the Transact-SQL language and how to use the Database Engine Query Editor in SQL Server Management Studio. You must be a member of the **db_ddladmin** or **db_owner** fixed database roles for the AdventureWorks2008R2 sample database, or the **sysadmin** fixed server role.
-
-[!INCLUDE [SQL Server Service Broker AdventureWorks2008R2](../../includes/service-broker-adventureworks-2008-r2.md)]
+To complete this tutorial, you should be familiar with the Transact-SQL language and how to use the Database Engine Query Editor in SQL Server Management Studio. You must be a member of the **db_ddladmin** or **db_owner** fixed database roles for the [!INCLUDE [sssampledbobject-md](../../includes/sssampledbobject-md.md)] sample database, or the **sysadmin** fixed server role.
 
 Your system must have the following installed:
 
-- Any edition of SQL Server.
+- Any supported edition of SQL Server.
 
-- Either SQL Server Management Studio or Management Studio Express.
+- [SQL Server Management Studio](/ssms/).
 
 - A supported internet browser.
 
-- The AdventureWorks2008R2 sample database. For more information about how to install the sample databases, see [AdventureWorks sample databases](../../samples/adventureworks-install-configure.md).
+- The [!INCLUDE [sssampledbobject-md](../../includes/sssampledbobject-md.md)] sample database, which you can download from the [Microsoft SQL Server Samples and Community Projects](https://go.microsoft.com/fwlink/?LinkID=85384) home page.
 
-## See also
+## Related content
 
 - [Completing a Conversation in a Single Database](completing-a-conversation-in-a-single-database.md)
 - [Completing a Conversation Between Databases](completing-a-conversation-between-databases.md)

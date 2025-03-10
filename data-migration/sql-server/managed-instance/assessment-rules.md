@@ -545,4 +545,3 @@ More information: [Stored Procedure differences in Azure SQL Managed Instance](/
 - [Azure total Cost of Ownership Calculator](https://azure.microsoft.com/pricing/tco/calculator/)
 - [Cloud Adoption Framework for Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
 - [Best practices for costing and sizing workloads migrate to Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs)
-- [Overview of Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview)
