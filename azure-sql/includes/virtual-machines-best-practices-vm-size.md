@@ -18,3 +18,4 @@ ms.custom:
    - The [M-series family](../virtual-machines/windows/performance-guidelines-best-practices-vm-size.md#memory-optimized-m-series-vms) offers VMs with the highest memory allocation in Azure. 
    - The [Mbsv3 and Mbdsv3 series](../virtual-machines/windows/performance-guidelines-best-practices-vm-size.md#mbsv3-and-mbdsv3-series) VMs provide a high memory allocation and the highest I/O throughput-to-vCore ratio amongst the M-series family, along with a consistent memory-to-vCore ratio of at least 8:1. 
 - Start development environments with the lower-tier D-Series, B-Series, or Av2-series and grow your environment over time.
+- Check [VM supportability](../virtual-machines/windows/performance-guidelines-best-practices-vm-size.md#supportability) to avoid unsupported configurations.

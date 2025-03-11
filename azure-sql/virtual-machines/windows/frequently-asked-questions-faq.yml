@@ -107,7 +107,15 @@ sections:
           How can I migrate my on-premises SQL Server database to the cloud?
         answer: |
              First create an Azure virtual machine with a SQL Server instance. Then migrate your on-premises databases to that instance. For data migration strategies, see [Migration guide: SQL Server to SQL Server on Azure Virtual Machines](../../migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide.md).
-          
+
+      - question: |
+          Can I use Azure Virtual Machine Scale Sets (Azure VMSS) with SQL Server on Azure VMs?
+        answer: |
+             No. Using [Azure VMSS](/azure/virtual-machine-scale-sets/overview) is not supported with SQL Server on Azure VMs. Additionally, enabling the [Automatic guest patching feature](/azure/virtual-machines/automatic-vm-guest-patching) can lead to potential corruption, data loss, and availability issues. 
+
+
+
+
   - name: Licensing
     questions:
       - question: |
@@ -315,7 +323,7 @@ sections:
         answer:    Yes, for specific virtual machines in supported regions. Review [Premium SSDv2 with SQL Server on Azure VMs](storage-configuration-premium-ssd-v2.md) to learn more. If you would like to use Premium SSD v2 with a virtual machine type or region that isn't in the list, you might be able to do so by first deploying the VM, and then adding the Premium SSD v2 drives after the VM is created.
 
       - question: |
-          Why do I see **Not extendable** when I try to make changes to my storage in the SQL virtual machines resource? 
+          Why do I see "Not extendable" when I try to make changes to my storage in the SQL virtual machines resource? 
         answer:   Storage is only extendable for SQL Server VMs that were deployed from a SQL Server image in Azure Marketplace, and not currently supported for [Premium SSD v2](storage-configuration-premium-ssd-v2.md#adjust-performance-values) disks. 
 
   - name: SQL Server IaaS Agent extension

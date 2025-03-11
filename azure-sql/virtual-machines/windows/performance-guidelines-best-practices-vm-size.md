@@ -57,7 +57,7 @@ The following lists the capabilities of the M-series VMs:
 
 The Mbsv3 and Mbdsv3 series are memory optimized VMs designed for large in-memory databases and workloads with high memory-to-CPU ratio needs. The VMs in this series are built on the 4th generation Intel® Xeon® Scalable and offer a range of memory sizes and vCPU counts to meet the needs of your SQL Server workloads. The Mbsv3 and Mbdsv3 series VMs are recommended for mission critical and data warehouse workloads.
 
-The Mbsv3 and Mbdsv3 series VMs support support large in-memory databases and workloads with a high memory-to-CPU ratio perfect for relational database servers, data warehousing, heavy reporting, large caches, and in-memory analytics.
+The Mbsv3 and Mbdsv3 series VMs support large in-memory databases and workloads with a high memory-to-CPU ratio perfect for relational database servers, data warehousing, heavy reporting, large caches, and in-memory analytics.
 
 
 The following are characteristics of VMs in this series: 
@@ -201,6 +201,10 @@ For example, the [M64-32ms](/azure/virtual-machines/constrained-vcpu) requires l
 > 
 > - Medium to large data warehouse workloads may still benefit from [constrained vCore VMs](/azure/virtual-machines/constrained-vcpu), but data warehouse workloads are commonly characterized by fewer users and processes addressing larger amounts of data through query plans that run in parallel.
 > - The compute cost, which includes operating system licensing, will remain the same as the parent virtual machine.
+
+## Supportability
+
+[Azure Virtual Machine Scale Sets (VMSS)](/azure/virtual-machine-scale-sets/overview) are not supported with SQL Server on Azure VMs. If you decide to use VMSS with your SQL Server on Azure VM against this recommendation, and enable the [Automatic guest patching feature](/azure/virtual-machines/automatic-vm-guest-patching), which replaces the OS disk when a new image version is released, you will likely disrupt SQL Server, leading to potential corruption, data loss, and availability issues. 
 
 ## Next steps
 
