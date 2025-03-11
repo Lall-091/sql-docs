@@ -82,10 +82,10 @@ Enabling Active Directory authentication on [!INCLUDE [ssnoversion-md](../includ
    kinit privilegeduser@CONTOSO.COM
    ```
 
-1. Using **adutil**, create the new user that will be used as the privileged Active Directory account by [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
+1. Using **adutil**, create the new user that will be used as the privileged Active Directory account by [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. Replace `<password>` with a valid password.
 
    ```bash
-   adutil user create --name sqluser --distname CN=sqluser,CN=Users,DC=CONTOSO,DC=COM --password 'P@ssw0rd'
+   adutil user create --name sqluser --distname CN=sqluser,CN=Users,DC=CONTOSO,DC=COM --password '<password>'
    ```
 
    Passwords might be specified in any of the three ways:
@@ -118,10 +118,10 @@ Enabling Active Directory authentication on [!INCLUDE [ssnoversion-md](../includ
 
 Create the keytab file that contains entries for each of the four SPNs created previously, and one for the user. The keytab file will be mounted to the container, so it can be created at any location on the host. You can safely change this path, as long as the resulting keytab is mounted correctly when using docker/podman to deploy the container.
 
-To create the keytab for all the SPNs, we can use the `createauto` option:
+To create the keytab for all the SPNs, we can use the `createauto` option. Replace `<password>` with a valid password.
 
 ```bash
-adutil keytab createauto -k /container/sql1/secrets/mssql.keytab -p 5433 -H sql1.contoso.com --password 'P@ssw0rd' -s MSSQLSvc
+adutil keytab createauto -k /container/sql1/secrets/mssql.keytab -p 5433 -H sql1.contoso.com --password '<password>' -s MSSQLSvc
 ```
 
 - `-k`: Path where you would like the `mssql.keytab` file to be created. In the previous example, the directory `/container/sql1/secrets` should already exist on the host.
@@ -142,10 +142,10 @@ adutil keytab createauto --help
 > [!CAUTION]  
 > `arcfour-hmac` is a weak encryption and not a recommended encryption type to be used in a production environment.
 
-To create the keytab for the user, the command is:
+To create the keytab for the user, the command is as follows. Replace `<password>` with a valid password.
 
 ```bash
-adutil keytab create -k /container/sql1/secrets/mssql.keytab -p sqluser --password 'P@ssw0rd'
+adutil keytab create -k /container/sql1/secrets/mssql.keytab -p sqluser --password '<password>'
 ```
 
 - `-k`: Path where you would like the `mssql.keytab` file to be created. In the previous example, the directory `/container/sql1/secrets` should already exist on the host.
@@ -224,10 +224,10 @@ sudo docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" \
 
 When running container on LSM (Linux Security Module) like SELinux enabled hosts, you need to mount the volumes using the `Z` option, which tells docker to label the content with a private unshared label. For more information, see [configure the SE Linux label](https://docs.docker.com/engine/storage/bind-mounts/#configure-the-selinux-label).
 
-Our example would contain the following commands:
+Our example would contain the following commands. Replace `<password>` with a valid password.
 
 ```bash
-sudo docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=P@ssw0rd" -p 5433:1433 --name sql1 \
+sudo docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" -p 5433:1433 --name sql1 \
 -v /container/sql1:/var/opt/mssql/ \
 -v /container/sql1/krb5.conf:/etc/krb5.conf \
 --dns-search contoso.com \

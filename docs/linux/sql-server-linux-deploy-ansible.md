@@ -139,7 +139,7 @@ drwxr-xr-x. 1 user user   20 Jul  2 20:22 tests
 
 After installing the system role, you'll create the SQL Server playbook YAML file. To understand the various role variables, refer to the [documentation](https://github.com/linux-system-roles/mssql/blob/master/README.md) or the README.md included with the SQL Server system role.
 
-The following example shows a playbook file, with role variables defined to configure SQL Server and enable additional functionality:
+The following example shows a playbook file, with role variables defined to configure SQL Server and enable additional functionality. Replace `<password>` with a valid password.
 
 ```yaml
 - hosts: all
@@ -147,7 +147,7 @@ The following example shows a playbook file, with role variables defined to conf
     mssql_accept_microsoft_odbc_driver_17_for_sql_server_eula: true
     mssql_accept_microsoft_cli_utilities_for_sql_server_eula: true
     mssql_accept_microsoft_sql_server_standard_eula: true
-    mssql_password: "YourP@ssw0rd"
+    mssql_password: "<password>"
     mssql_edition: Evaluation
     mssql_enable_sql_agent: true
     mssql_install_fts: true

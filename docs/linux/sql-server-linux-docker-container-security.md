@@ -175,10 +175,10 @@ Following is an example of how the connection can be encrypted to [!INCLUDE [ssn
 
    The `mssql.conf` file is also created under the same folder location `/container/sql1/`. After running the above steps, you should have three files: `mssql.conf`, `mssql.key`, and `mssql.pem` in the `sql1` folder.
 
-1. Deploy the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] container with the following command:
+1. Deploy the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] container with the following command (replace `<password>` with a valid password):
 
    ```bash
-   docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=P@ssw0rd" -p 5434:1433 --name sql1 -h sql1 -v /container/sql1/mssql.conf:/var/opt/mssql/mssql.conf -v   /container/sql1/mssql.pem:/etc/ssl/certs/mssql.pem -v /container/sql1/mssql.key:/etc/ssl/private/mssql.key -d mcr.microsoft.com/mssql/server:2019-latest
+   docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" -p 5434:1433 --name sql1 -h sql1 -v /container/sql1/mssql.conf:/var/opt/mssql/mssql.conf -v   /container/sql1/mssql.pem:/etc/ssl/certs/mssql.pem -v /container/sql1/mssql.key:/etc/ssl/private/mssql.key -d mcr.microsoft.com/mssql/server:2019-latest
    ```
 
    In the previous command, we have mounted the `mssql.conf`, `mssql.pem`, and `mssql.key` files to the container and mapped the 1433 ([!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] default port) port in the container to port 5434 on the host.

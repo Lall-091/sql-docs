@@ -36,12 +36,12 @@ helpviewer_keywords:
   
 1.  Create a login for the other system.  
   
-     The following example creates a login for the system, HOST_B, in the **master** database of the server instance on HOST_A; in this example, the login is named `HOST_B_login`. Substitute a password of your own for the sample password.  
+     The following example creates a login for the system, HOST_B, in the **master** database of the server instance on HOST_A; in this example, the login is named `HOST_B_login`. Replace `<password>` with a valid password.
   
     ```  
     USE master;  
     CREATE LOGIN HOST_B_login   
-       WITH PASSWORD = '1Sample_Strong_Password!@#';  
+       WITH PASSWORD = '<password>';  
     GO  
     ```  
   
@@ -120,7 +120,7 @@ helpviewer_keywords:
  You now need to perform the equivalent inbound steps for HOST_A on HOST_B. These steps are illustrated in the inbound portion of the example in the Example section, below.  
   
 ## Example  
- The following example demonstrates configuring HOST_B for inbound connections.  
+ The following example demonstrates configuring HOST_B for inbound connections. Replace `<password>` with a valid password.
   
 > [!NOTE]  
 >  This example uses a certificate file containing the HOST_A certificate that is created by a code snippet in [Allow a Database Mirroring Endpoint to Use Certificates for Outbound Connections &#40;Transact-SQL&#41;](../../database-engine/database-mirroring/database-mirroring-use-certificates-for-outbound-connections.md).  
@@ -128,7 +128,7 @@ helpviewer_keywords:
 ```  
 USE master;  
 --On HOST_B, create a login for HOST_A.  
-CREATE LOGIN HOST_A_login WITH PASSWORD = 'AStrongPassword!@#';  
+CREATE LOGIN HOST_A_login WITH PASSWORD = '<password>';  
 GO  
 --Create a user, HOST_A_user, for that login.  
 CREATE USER HOST_A_user FOR LOGIN HOST_A_login  

@@ -376,12 +376,12 @@ User input is hidden. This means that nothing is displayed and the cursor stays 
 
 The `SQLCMDPASSWORD` environment variable lets you set a default password for the current session. Therefore, passwords don't have to be hard-coded into batch files. The following example first sets the `SQLCMDPASSWORD` variable at the command prompt and then accesses the **sqlcmd** utility.
 
-At the command prompt, type:
+At the command prompt, type the following. Replace `<password>` with a valid password.
 
 ::: zone pivot="cs1-bash"
 
 ```bash
-SET SQLCMDPASSWORD=p@a$$w0rd
+SET SQLCMDPASSWORD=<password>
 sqlcmd
 ```
 
@@ -390,7 +390,7 @@ sqlcmd
 ::: zone pivot="cs1-powershell"
 
 ```powershell
-SET SQLCMDPASSWORD=p@a$$w0rd
+SET SQLCMDPASSWORD=<password>
 sqlcmd
 ```
 
@@ -399,7 +399,7 @@ sqlcmd
 ::: zone pivot="cs1-cmd"
 
 ```cmd
-SET SQLCMDPASSWORD=p@a$$w0rd
+SET SQLCMDPASSWORD=<password>
 sqlcmd
 ```
 
@@ -442,12 +442,12 @@ If the `-U` option is used with the `-E` option (described later in this article
 
 #### -z *new_password*
 
-Change the password:
+Change the password. Replace `<oldpassword>` with the old password, and `<newpassword>` with the new password.
 
 ::: zone pivot="cs1-bash"
 
 ```bash
-sqlcmd -U someuser -P s0mep@ssword -z a_new_p@a$$w0rd
+sqlcmd -U someuser -P <oldpassword> -z <newpassword>
 ```
 
 ::: zone-end
@@ -455,7 +455,7 @@ sqlcmd -U someuser -P s0mep@ssword -z a_new_p@a$$w0rd
 ::: zone pivot="cs1-powershell"
 
 ```powershell
-sqlcmd -U someuser -P s0mep@ssword -z a_new_p@a$$w0rd
+sqlcmd -U someuser -P <oldpassword> -z <newpassword>
 ```
 
 ::: zone-end
@@ -463,19 +463,19 @@ sqlcmd -U someuser -P s0mep@ssword -z a_new_p@a$$w0rd
 ::: zone pivot="cs1-cmd"
 
 ```cmd
-sqlcmd -U someuser -P s0mep@ssword -z a_new_p@a$$w0rd
+sqlcmd -U someuser -P <oldpassword> -z <newpassword>
 ```
 
 ::: zone-end
 
 #### -Z *new_password*
 
-Change the password and exit:
+Change the password and exit. Replace `<oldpassword>` with the old password, and `<newpassword>` with the new password.
 
 ::: zone pivot="cs1-bash"
 
 ```bash
-sqlcmd -U someuser -P s0mep@ssword -Z a_new_p@a$$w0rd
+sqlcmd -U someuser -P <oldpassword> -Z <newpassword>
 ```
 
 ::: zone-end
@@ -483,7 +483,7 @@ sqlcmd -U someuser -P s0mep@ssword -Z a_new_p@a$$w0rd
 ::: zone pivot="cs1-powershell"
 
 ```powershell
-sqlcmd -U someuser -P s0mep@ssword -Z a_new_p@a$$w0rd
+sqlcmd -U someuser -P <oldpassword> -Z <newpassword>
 ```
 
 ::: zone-end
@@ -491,7 +491,7 @@ sqlcmd -U someuser -P s0mep@ssword -Z a_new_p@a$$w0rd
 ::: zone pivot="cs1-cmd"
 
 ```cmd
-sqlcmd -U someuser -P s0mep@ssword -Z a_new_p@a$$w0rd
+sqlcmd -U someuser -P <oldpassword> -Z <newpassword>
 ```
 
 ::: zone-end

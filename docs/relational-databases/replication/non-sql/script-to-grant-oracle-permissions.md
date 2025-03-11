@@ -23,10 +23,10 @@ helpviewer_keywords:
   
 1.  On the SQL Server Distributor, open a Command Prompt window.  
   
-2.  To use SQL*PLUS to connect to the Oracle database and execute the oracleadmin.sql script from its default install directory, type the following syntax:  
+2.  To use SQL*PLUS to connect to the Oracle database and execute the oracleadmin.sql script from its default install directory, type the following syntax. Replace `<password>` with a valid password.
   
     ```  
-    sqlplus system/P@$$W0rd@orcl @"c:\Program Files\Microsoft SQL Server\<InstanceName>\MSSQL\Install\oracleadmin.sql"  
+    sqlplus system/<password>@orcl @"c:\Program Files\Microsoft SQL Server\<InstanceName>\MSSQL\Install\oracleadmin.sql"  
     ```  
   
      In this example, the built-in Oracle account **system** is used to connect to an Oracle database with a network name of "orcl".  

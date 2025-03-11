@@ -58,9 +58,9 @@ When you connect to a database, SSMA reads the database metadata, and then adds 
 
 1. If you select **Connection string mode**, provide a connection string in the **Connection string** box.
 
-   The following example shows an OLE DB connection string:
+   The following example shows an OLE DB connection string. Replace `<password>` with a valid password.
 
-   `Provider=DB2OLEDB;Data Source=MyDb2DB;User Id=myUsername;Password=myPassword;`
+   `Provider=DB2OLEDB;Data Source=MyDb2DB;User Id=myUsername;Password=<password>;`
 
    The following example shows a Db2 Client connection string that uses integrated security:
 

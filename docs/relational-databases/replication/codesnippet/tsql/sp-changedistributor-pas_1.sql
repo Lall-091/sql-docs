@@ -7,7 +7,7 @@
 USE master;
 GO
 
-DECLARE @password NVARCHAR(50) = "YourLongP@$$w0rdHere";
+DECLARE @password NVARCHAR(50) = "<password>";
 
 EXEC sp_changedistributor_password @password;
 GO

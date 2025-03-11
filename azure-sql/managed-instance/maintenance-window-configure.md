@@ -124,10 +124,10 @@ The following example returns the available maintenance windows for the *eastus2
 
 ### Set the maintenance window while creating a SQL managed instance
 
-The following example creates a new managed instance and sets the maintenance window using [az sql mi create](/cli/azure/sql/mi#az-sql-mi-create). The maintenance window is set on the instance, so all databases in the instance have the same maintenance window schedule. *MaintenanceConfigName* must be a valid value for your instance's region. To get valid values for your region, see [Discover available maintenance windows](#discover-available-maintenance-windows).
+The following example creates a new managed instance and sets the maintenance window using [az sql mi create](/cli/azure/sql/mi#az-sql-mi-create). The maintenance window is set on the instance, so all databases in the instance have the same maintenance window schedule. *MaintenanceConfigName* must be a valid value for your instance's region. To get valid values for your region, see [Discover available maintenance windows](#discover-available-maintenance-windows). Replace `<password>` with a valid password.
 
    ```azurecli
-   az sql mi create -g mygroup -n myinstance -l mylocation -i -u myusername -p mypassword --subnet /subscriptions/{SubID}/resourceGroups/{ResourceGroup}/providers/Microsoft.Network/virtualNetworks/{VNETName}/subnets/{SubnetName} -m /subscriptions/{SubID}/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_{Region}_{MaintenanceConfigName}
+   az sql mi create -g mygroup -n myinstance -l mylocation -i -u myusername -p <password> --subnet /subscriptions/{SubID}/resourceGroups/{ResourceGroup}/providers/Microsoft.Network/virtualNetworks/{VNETName}/subnets/{SubnetName} -m /subscriptions/{SubID}/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_{Region}_{MaintenanceConfigName}
    ```
 
 -----

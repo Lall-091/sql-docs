@@ -49,10 +49,10 @@ CREATE LOGIN [<domain>\service account] FROM WINDOWS;
 
 ### SQL login authentication
 
-In environments where the secondary replicas might not be joined to an Active Directory domain, you must utilize SQL authentication. The following Transact-SQL script creates a login named `dbm_login` and a user named `dbm_user`. Update the script with a strong password. To create the database-mirroring endpoint user, run the following command on all SQL Server instances:
+In environments where the secondary replicas might not be joined to an Active Directory domain, you must utilize SQL authentication. The following Transact-SQL script creates a login named `dbm_login` and a user named `dbm_user`. Replace `<password>` with a valid password. To create the database-mirroring endpoint user, run the following command on all SQL Server instances.
 
 ```sql
-CREATE LOGIN dbm_login WITH PASSWORD = '**<1Sample_Strong_Password!@#>**';
+CREATE LOGIN dbm_login WITH PASSWORD = '<password>';
 CREATE USER dbm_user FOR LOGIN dbm_login;
 ```
 

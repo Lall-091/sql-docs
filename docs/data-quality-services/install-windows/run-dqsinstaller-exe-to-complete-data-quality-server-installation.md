@@ -46,7 +46,7 @@ ms.topic: how-to
 3.  You are prompted to type a password for the database master key. The database master key is required to encrypt the reference data service provider keys that will be stored in the DQS_MAIN database when you set up reference data providers in [!INCLUDE[ssDQSnoversion](../../includes/ssdqsnoversion-md.md)] (DQS) later.  
   
     > [!IMPORTANT]  
-    >  The password must be at least 8 characters long, and must contain characters from three of the following four categories: English upper case letter (A, B, C,... Z), English lowercase letter (a, b, c,... z), Numeral (0, 1, 2,... 9), and nonalphanumeric or special character (~!@#$%^&*()_-+=|\\{}[]:;"'<>,.?/). For example: P@ssword. The installer will prompt you to enter another password if the current password does not match the requirement.  
+    > [!INCLUDE [password-complexity](../../linux/includes/password-complexity.md)]. The installer will prompt you to enter another password if the current password does not match the requirement.
   
 4.  Provide a password, confirm the password, and then press ENTER to continue with the installation.  
   

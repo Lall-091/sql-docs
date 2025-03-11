@@ -23,10 +23,10 @@ helpviewer_keywords:
     rs -i Script.rss -s https://servername/reportserver  
     ```  
   
--   Run Script.rss in the script environment specifying a user name and password for authenticating the Web service calls:  
+-   Run Script.rss in the script environment specifying a user name and password for authenticating the Web service calls. Replace `<password>` with a valid password.
   
     ```  
-    rs -i Script.rss -s https://servername/reportserver -u myusername -p mypassword  
+    rs -i Script.rss -s https://servername/reportserver -u myusername -p <password>  
     ```  
   
 -   Run Script.rss in the script environment specifying a server time-out of 30 seconds:  

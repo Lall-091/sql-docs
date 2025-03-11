@@ -85,10 +85,12 @@ Catalog=DatabaseName;Integrated Security=true"
 
 **Single-database assessment using SQL Server authentication and running feature parity**
 
+Replace `<password>` with a valid password.
+
 ```cmd
 dmacmd.exe /AssessmentName="TestAssessment"
 /AssessmentDatabases="Server=SQLServerInstanceName;Initial
-Catalog=DatabaseName;User Id=myUsername;Password=myPassword;"
+Catalog=DatabaseName;User Id=myUsername;Password=<password>;"
 /AssessmentEvaluateFeatureParity /AssessmentOverwriteResult
 /AssessmentResultCsv="C:\\temp\\Results\\AssessmentReport.csv"
 ```
@@ -145,10 +147,12 @@ dmacmd.exe /Action=AssessTargetReadiness
 
 **Single-database Target Readiness assessment using SQL Server authentication**
 
+Replace `<password>` with a valid password.
+
 ```cmd
 dmacmd.exe /Action=AssessTargetReadiness
 /AssessmentName="TestAssessment"
-/SourceConnections="Server=SQLServerInstanceName;Initial Catalog=DatabaseName;User Id=myUsername;Password=myPassword;" /AssessmentEvaluateFeatureParity
+/SourceConnections="Server=SQLServerInstanceName;Initial Catalog=DatabaseName;User Id=myUsername;Password=<password>;" /AssessmentEvaluateFeatureParity
 /AssessmentOverwriteResult
 /AssessmentResultJson="C:\temp\Results\AssessmentReport.json"
 ```

@@ -42,10 +42,10 @@ helpviewer_keywords:
 |StdDayOfWeek|Enforces the ODBC standard for the DAYOFWEEK scalar. By default this is turned on, but users who need the localized version can change the behavior to use whatever Oracle returns.|1|  
 |GuessTheColDef|Specifies whether or not the driver should return a non-zero value for the *cbColDef* argument of **SQLDescribeCol**. Applies only to columns where there is no Oracle-defined scale, such as computed numeric columns and columns defined as NUMBER without a precision or scale. A **SQLDescribeCol** call returns 130 for the precision when Oracle does not provide that information.|0|  
   
- For example, a connection string that connects to the MyDataSource data source using the MyOracleServerOracle Server and the Oracle User MyUserID would be:  
+ For example, a connection string that connects to the MyDataSource data source using the MyOracleServerOracle Server and the Oracle User MyUserID would be as follows. Replace `<password>` with a valid password.
   
 ```  
-"DSN={MyDataSource};UID={MyUserID};PWD={MyPassword};SERVER={MyOracleServer}"  
+"DSN={MyDataSource};UID={MyUserID};PWD=<password>;SERVER={MyOracleServer}"  
 ```  
   
  A connection string that connects to the MyOtherDataSource data source using operating system authentication and the MyOtherOracleServerOracle Server would be:  

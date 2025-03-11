@@ -6,7 +6,7 @@ GO
 -- Create the database master key if it doesn't exist.
 IF NOT EXISTS (SELECT * FROM sys.symmetric_keys 
 	WHERE [name] LIKE '%DatabaseMasterKey%')
-CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'Pub$p@55w0Rd';
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>';
 
 -- Create the cert_keyProtection certificate if it doesn't exist.
 IF NOT EXISTS (SELECT * FROM sys.certificates 

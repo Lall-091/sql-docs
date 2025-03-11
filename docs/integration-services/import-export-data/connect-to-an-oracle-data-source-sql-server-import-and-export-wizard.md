@@ -60,10 +60,10 @@ The name of the Oracle server.
 The user ID and password to connect.
 
 ### Connection string format
-Here's the format of a typical connection string.
+Here's the format of a typical connection string. Replace `<password>` with a valid password.
 
 ```console
-Driver={Microsoft ODBC for Oracle};Server=myServerAddress;Uid=myUsername;Pwd=myPassword;
+Driver={Microsoft ODBC for Oracle};Server=myServerAddress;Uid=myUsername;Pwd=<password>;
 ```
 
 ### Enter the connection string

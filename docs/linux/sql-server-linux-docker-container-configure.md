@@ -335,10 +335,10 @@ In addition to these container techniques, you can also use standard [!INCLUDE [
 
 Virtual Device Interface (VDI) backup and restore operations are now supported in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] container deployments beginning with CU15 for [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] and CU28 for [!INCLUDE [sssql17-md](../includes/sssql17-md.md)]. Follow these steps to enable VDI-based backup or restores for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] containers:
 
-1. When deploying [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] containers, use the `--shm-size` option. To begin, set the sizing to 1 GB, as shown in the following command:
+1. When deploying [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] containers, use the `--shm-size` option. To begin, set the sizing to 1 GB, as shown in the following command. Replace `<password>` with a valid password.
 
    ```bash
-   docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Mystr0ngP@ssw0rd!" \
+   docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" \
    --shm-size 1g \
    -p 1433:1433 \
    --name sql19 \

@@ -69,21 +69,25 @@ When you connect to an Adaptive Server, SSMA reads the database metadata on the 
   
     1. **Connection strings for Sybase OLE DB Provider:**  
   
-        For Sybase ASE OLE DB 12.5, an example connection string is as follows:  
+        For Sybase ASE OLE DB 12.5, an example connection string is as follows. Replace `<password>` with a valid password.
   
-        `Server Name=sybserver;User ID=MyUserID;Password=MyP@$$word;Provider=Sybase.ASEOLEDBProvider;`  
+        `Server Name=sybserver;User ID=MyUserID;Password=<password>;Provider=Sybase.ASEOLEDBProvider;`  
   
-        For Sybase ASE OLE DB 15, an example connection string is as follows:  
+        For Sybase ASE OLE DB 15, an example connection string is as follows. Replace `<password>` with a valid password.
   
-        `Server=sybserver;User ID=MyUserID;Password=MyP@$$word;Provider= ASEOLEDB;Port=5000;`  
+        `Server=sybserver;User ID=MyUserID;Password=<password>;Provider= ASEOLEDB;Port=5000;`  
   
     2. **Connection string for Sybase ODBC Provider:**  
   
-       `Driver=Adaptive Server Enterprise;Server=sybserver;uid=MyUserID;pwd=MyP@$$word;Port=5000;`  
+       Replace `<password>` with a valid password.
+
+       `Driver=Adaptive Server Enterprise;Server=sybserver;uid=MyUserID;pwd=<password>;Port=5000;`  
   
     3. **Connection string for Sybase ADO.NET Provider:**  
   
-       `Server=sybserver;Port=5000;uid=MyUserID;pwd=MyP@$$word;`  
+       Replace `<password>` with a valid password.
+
+       `Server=sybserver;Port=5000;uid=MyUserID;pwd=<password>;`  
   
     For more information, see [Connect to Sybase &#40;SybaseToSQL&#41;](../../ssma/sybase/connect-to-sybase-sybasetosql.md).  
   

@@ -236,18 +236,18 @@ The JDBC driver automatically instantiates the `SQLServerColumnEncryptionJavaKey
 
 ### Creating a column master key for the Java Key Store
 
-The `SQLServerColumnEncryptionJavaKeyStoreProvider` can be used with JKS or PKCS12 keystore types. To create or import a key to use with this provider use the Java [keytool](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/keytool.html) utility. The key must have the same password as the keystore itself. Here's an example of how to create a public key and its associated private key with the `keytool` utility:
+The `SQLServerColumnEncryptionJavaKeyStoreProvider` can be used with JKS or PKCS12 keystore types. To create or import a key to use with this provider use the Java [keytool](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/keytool.html) utility. The key must have the same password as the keystore itself. Here's an example of how to create a public key and its associated private key with the `keytool` utility. Replace `<password>` with a valid password.
 
 ```console
-keytool -genkeypair -keyalg RSA -alias AlwaysEncryptedKey -keystore keystore.jks -storepass mypassword -validity 360 -keysize 2048 -storetype jks
+keytool -genkeypair -keyalg RSA -alias AlwaysEncryptedKey -keystore keystore.jks -storepass <password> -validity 360 -keysize 2048 -storetype jks
 ```
 
 This command creates a public key and wraps it in an X.509 self-signed certificate, which is stored in the keystore `keystore.jks` along with its associated private key. This entry in the keystore is identified by the alias `AlwaysEncryptedKey`.
 
-Here's an example of the same with a PKCS12 store type:
+Here's an example of the same with a PKCS12 store type. Replace `<password>` with a valid password.
 
 ```console
-keytool -genkeypair -keyalg RSA -alias AlwaysEncryptedKey -keystore keystore.pfx -storepass mypassword -validity 360 -keysize 2048 -storetype pkcs12 -keypass mypassword
+keytool -genkeypair -keyalg RSA -alias AlwaysEncryptedKey -keystore keystore.pfx -storepass <password> -validity 360 -keysize 2048 -storetype pkcs12 -keypass <password>
 ```
 
 If the keystore is of type PKCS12, the keytool utility doesn't prompt for a key password and the key password needs to be provided with `-keypass` option as the **`SQLServerColumnEncryptionJavaKeyStoreProvider`** requires that the keystore and the key have the same password.

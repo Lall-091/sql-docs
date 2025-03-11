@@ -175,16 +175,16 @@ The default authentication type is `Active Directory Integrated` as shown in the
 
 MDS also supports Active Directory password authentication and SQL Server authentication, as shown in the following sample connection strings:
 
-- Active Directory password authentication
+- Active Directory password authentication. Replace `<password>` with a valid password.
 
    ```xml
-   <add name="MDS1" connectionString="Data Source=*****.*****.database.windows.net;Initial Catalog=MasterDataServices;Integrated Security=False;Connect Timeout=60;Authentication=&quot;Active Directory Password&quot; ; UID=bob@example.com; PWD=MyPassWord!" />
+   <add name="MDS1" connectionString="Data Source=*****.*****.database.windows.net;Initial Catalog=MasterDataServices;Integrated Security=False;Connect Timeout=60;Authentication=&quot;Active Directory Password&quot; ; UID=bob@example.com; PWD=<password>" />
    ```
 
-- SQL Server authentication
+- SQL Server authentication. Replace `<password>` with a valid password.
 
    ```xml
-   <add name="MDS1" connectionString="Data Source=*****.*****.database.windows.net;Initial Catalog=MasterDataServices;Integrated Security=False;Connect Timeout=60;User ID=UserName;Password=MyPassword!;" />
+   <add name="MDS1" connectionString="Data Source=*****.*****.database.windows.net;Initial Catalog=MasterDataServices;Integrated Security=False;Connect Timeout=60;User ID=UserName;Password=<password>;" />
    ```
 
 ## Upgrade [!INCLUDE[ssMDSshort_md](../includes/ssmdsshort-md.md)] and SQL Database version

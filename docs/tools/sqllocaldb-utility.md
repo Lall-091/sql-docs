@@ -97,7 +97,7 @@ SqlLocalDB.exe create "DEPARTMENT" 12.0 -s
 
 ### B. Work with a shared instance of LocalDB
 
- Open a command prompt using Administrator privileges.
+ Open a command prompt using Administrator privileges. Replace `<password>` with a valid password.
 
 ```console
 SqlLocalDB.exe create "DeptLocalDB"
@@ -106,17 +106,17 @@ SqlLocalDB.exe start "DeptLocalDB"
 SqlLocalDB.exe info "DeptLocalDB"
 REM The previous statement outputs the Instance pipe name for the next step
 sqlcmd -S np:\\.\pipe\LOCALDB#<use your pipe name>\tsql\query
-CREATE LOGIN NewLogin WITH PASSWORD = 'Passw0rd!!@52';
+CREATE LOGIN NewLogin WITH PASSWORD = '<password>';
 GO
 CREATE USER NewLogin;
 GO
 EXIT
 ```
 
-Execute the following code to connect to the shared instance of **LocalDB** using the `NewLogin` login.
+Execute the following code to connect to the shared instance of **LocalDB** using the `NewLogin` login. Replace `<password>` with a valid password.
 
 ```console
-sqlcmd -S (localdb)\.\DeptSharedLocalDB -U NewLogin -P Passw0rd!!@52
+sqlcmd -S (localdb)\.\DeptSharedLocalDB -U NewLogin -P <password>
 ```
 
 ## See also

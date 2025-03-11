@@ -275,11 +275,11 @@ GO
 
 ### <a id="g-creating-a-login-with-multiple-arguments"></a> G. Create a login with multiple arguments
 
-The following example shows how to string multiple arguments together using commas between each argument.
+The following example shows how to string multiple arguments together using commas between each argument. Replace `<password>` with a valid password.
 
 ```sql
 CREATE LOGIN [MyUser]
-WITH PASSWORD = 'MyPassword',
+WITH PASSWORD = '<password>',
 DEFAULT_DATABASE = MyDatabase,
 CHECK_POLICY = OFF,
 CHECK_EXPIRATION = OFF ;

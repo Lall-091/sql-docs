@@ -73,7 +73,7 @@ For more information, see [Install SQL Server PowerShell module](/powershell/sql
 
 ## Example cmdlet line
 
-Next is the actual cmdlet line that ran to generate the report that is displayed later in this article.
+Next is the actual cmdlet line that ran to generate the report that is displayed later in this article. Replace `<password>` with a valid password.
 
 ```powershell
 Save-SqlMigrationReport `
@@ -83,7 +83,7 @@ Save-SqlMigrationReport `
   -Schema 'dbo' `
   -Object 'Table2' `
   -Username 'MyUserName' `
-  -Password 'MyPassword' `
+  -Password '<password>' `
   -MigrationType 'OLTP' `
 ;
 ```

@@ -334,14 +334,14 @@ EXEC sp_addlinkedserver
     @catalog = 'DatabaseName';
 ```
 
-Add credentials and options to this linked server.
+Add credentials and options to this linked server. Replace `<password>` with a valid password.
 
 ```sql
 EXEC sp_addlinkedsrvlogin
   @rmtsrvname = 'LinkedServerName',
   @useself = 'false',
   @rmtuser = 'LoginName',
-  @rmtpassword = 'myPassword';
+  @rmtpassword = '<password>';
 
 EXEC sp_serveroption 'LinkedServerName', 'rpc out', true;
 ```

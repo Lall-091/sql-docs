@@ -61,13 +61,13 @@ Connection parameters for various providers are as follows:
    | Password | Password | Password |
    | Provider | Provider | Provider |
 
-   For Sybase ASE 12.5, an example connection string is as follows:
+   For Sybase ASE 12.5, an example connection string is as follows. Replace `<password>` with a valid password.
 
-   `Server Name=sybserver;User ID=MyUserID;Password=MyP@$$word;Provider=Sybase.ASEOLEDBProvider;`
+   `Server Name=sybserver;User ID=MyUserID;Password=<password>;Provider=Sybase.ASEOLEDBProvider;`
 
    For Sybase ASE 15, an example connection string is as follows:
 
-   `Server=sybserver;User ID=MyUserID;Password=MyP@$$word;Provider=ASEOLEDB;Port=5000;`
+   `Server=sybserver;User ID=MyUserID;Password=<password>;Provider=ASEOLEDB;Port=5000;`
 
 1. Connection parameters for **ODBC Provider**
 
@@ -79,9 +79,9 @@ Connection parameters for various providers are as follows:
    | Password | Pwd |
    | Port Number | Port |
 
-   For Sybase ASE 12.5 or 15, an example connection string is as follows:
+   For Sybase ASE 12.5 or 15, an example connection string is as follows. Replace `<password>` with a valid password.
 
-   `driver=Adaptive Server Enterprise;Server=sybserver;uid=MyUserID;pwd=MyP@$$word;Port=5000;`
+   `driver=Adaptive Server Enterprise;Server=sybserver;uid=MyUserID;pwd=<password>;Port=5000;`
 
 1. Connection parameters for **ADO.NET Provider**
 
@@ -92,9 +92,9 @@ Connection parameters for various providers are as follows:
    | Password | Pwd |
    | Port Number | Port |
 
-   An example of the Connection string for ADO.NET Provider is as follows:
+   An example of the Connection string for ADO.NET Provider is as follows. Replace `<password>` with a valid password.
 
-   `Server=sybserver;Port=5000;uid=MyUserID;pwd=MyP@$$word;`
+   `Server=sybserver;Port=5000;uid=MyUserID;pwd=<password>;`
 
    For more information, see the ASE documentation.
 

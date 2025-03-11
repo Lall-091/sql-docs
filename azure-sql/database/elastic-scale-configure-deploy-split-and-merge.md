@@ -68,11 +68,11 @@ For the purposes of a simple test deployment for this tutorial, a minimal set of
 
 Use PowerShell to create a self-signed certificate and PFX file. 
 
-First, create a new directory. Then replace the inline values accordingly and run the following PowerShell commands from the new directory: 
+First, create a new directory. Then replace the inline values accordingly and run the following PowerShell commands from the new directory. Replace `<password>` with a valid password.
 
 ```powershell
   $cert = New-SelfSignedCertificate -Subject "CN=*.cloudapp.net" -CertStoreLocation "Cert:\CurrentUser\My" -KeyExportPolicy Exportable -KeySpec Signature -KeyLength 2048 -KeyAlgorithm RSA -HashAlgorithm SHA256
-  $mypwd = ConvertTo-SecureString -String "{myPassword}" -Force -AsPlainText  ## Replace {myPassword}
+  $mypwd = ConvertTo-SecureString -String "<password>" -Force -AsPlainText  ## Replace <password>
   Export-PfxCertificate -Cert $cert -FilePath "C:\Users\admin\Desktop\$certname.pfx" -Password $mypwd   ## Specify your preferred location
 ```
 
@@ -187,27 +187,27 @@ The script files included are:
 
    Running this script wipes out any existing shard map management data structures on the shard map manager database and the shards. It might be useful to rerun the script if you wish to reinitialize the shard map or shards.
 
-   Sample command line:
+   Sample command line. Replace `<password>` with a valid password.
 
    ```cmd
    .\SetupSampleSplitMergeEnvironment.ps1 ^
-   -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
+   -UserName 'mysqluser' -Password '<password>' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-1. Execute the Getmappings.ps1 script to view the mappings that currently exist in the sample environment.
+1. Execute the Getmappings.ps1 script to view the mappings that currently exist in the sample environment. Replace `<password>` with a valid password.
 
    ```cmd
    .\GetMappings.ps1 ^
-   -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
+   -UserName 'mysqluser' -Password '<password>' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
 1. Execute the `ExecuteSampleSplitMerge.ps1` script to execute a split operation (moving half the data on the first shard to the second shard) and then a merge operation (moving the data back onto the first shard). If you configured TLS and left the http endpoint disabled, ensure that you use the https:// endpoint instead.
 
-   Sample command line:
+   Sample command line. Replace `<password>` with a valid password.
 
    ```cmd
    .\ExecuteSampleSplitMerge.ps1 ^
-   -UserName 'mysqluser' -Password 'MySqlPassw0rd' ^
+   -UserName 'mysqluser' -Password '<password>' ^
    -ShardMapManagerServerName 'abcdefghij.database.windows.net' ^
    -SplitMergeServiceEndpoint 'https://mysplitmergeservice.cloudapp.net' ^
    -CertificateThumbprint '0123456789abcdef0123456789abcdef01234567'
@@ -217,10 +217,10 @@ The script files included are:
 
    `Invoke-WebRequest : The underlying connection was closed: Could not establish trust relationship for the SSL/TLSsecure channel.`
 
-   If it succeeds, the output should look like the following output:
+   If it succeeds, the output should look like the following output. Replace `<password>` with a valid password.
 
    ```output
-   .\ExecuteSampleSplitMerge.ps1 -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net' -SplitMergeServiceEndpoint 'http://mysplitmergeservice.cloudapp.net' -CertificateThumbprint 0123456789abcdef0123456789abcdef01234567
+   .\ExecuteSampleSplitMerge.ps1 -UserName 'mysqluser' -Password '<password>' -ShardMapManagerServerName 'abcdefghij.database.windows.net' -SplitMergeServiceEndpoint 'http://mysplitmergeservice.cloudapp.net' -CertificateThumbprint 0123456789abcdef0123456789abcdef01234567
    Sending split request
    Began split operation with id dc68dfa0-e22b-4823-886a-9bdc903c80f3
    Polling split-merge request status. Press Ctrl-C to end

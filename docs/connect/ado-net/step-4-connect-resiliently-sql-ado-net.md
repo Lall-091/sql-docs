@@ -59,7 +59,8 @@ Paste this code into your **Program.cs** file.
   
 Then you must edit the strings for server name, password, and so on. You can find these strings in the method named **GetSqlConnectionString**.  
   
-NOTE: The connection string for server name is geared toward Azure SQL Database, because it includes the four character prefix of **tcp:**. But you can adjust the server string to connect to your Microsoft SQL Server.  
+> [!NOTE]  
+> The connection string for server name is geared toward Azure SQL Database, because it includes the four character prefix of **tcp:**. But you can adjust the server string to connect to your Microsoft SQL Server.
   
   
 ```csharp
@@ -148,8 +149,8 @@ public class Program
         dbCommand.CommandText =
             @"  
 SELECT TOP 3  
-	ob.name,  
-	CAST(ob.object_id as nvarchar(32)) as [object_id]  
+    ob.name,  
+    CAST(ob.object_id as nvarchar(32)) as [object_id]  
   FROM sys.objects as ob  
   WHERE ob.type='IT'  
   ORDER BY ob.name;";
@@ -180,7 +181,7 @@ SELECT TOP 3
             DataSource           = "tcp:myazuresqldbserver.database.windows.net,1433", //["Server"]
             InitialCatalog       = "MyDatabase",                                       //["Database"]
             UserID               = "MyLogin",                                          // "@yourservername"  as suffix sometimes.
-            Password             = "MyPassword",
+            Password             = "<password>",
             // Adjust these values if you like. (ADO.NET 4.5.1 or later.)
             ConnectRetryCount    = 3,
             ConnectRetryInterval = 10, // Seconds.

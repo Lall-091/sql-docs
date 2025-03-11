@@ -70,9 +70,9 @@ Example command line using a provided database and user
 ```bash
 azdata postgres shell --dbname <database> --username <username> --host <host>
 ```
-Example command line to start using a full connection-string.
+Example command line to start using a full connection-string. Replace `<password>` with a valid password.
 ```bash
-azdata postgres shell --dbname postgres://user:passw0rd@example.com:5432/master 
+azdata postgres shell --dbname postgres://user:<password>@example.com:5432/master 
 ```
 ### Optional Parameters
 #### `--dbname -d`

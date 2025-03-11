@@ -136,23 +136,23 @@ $group = New-AzSqlVMGroup -Name <name> -Location <region>
 
 Adding the first SQL Server VM to the cluster creates the cluster. The [az sql vm add-to-group](/cli/azure/sql/vm#az-sql-vm-add-to-group) command creates the cluster with the name previously given, installs the cluster role on the SQL Server VMs, and adds them to the cluster. Subsequent uses of the `az sql vm add-to-group` command add more SQL Server VMs to the newly created cluster. 
 
-The following code snippet creates the cluster and adds the first SQL Server VM to it: 
+The following code snippet creates the cluster and adds the first SQL Server VM to it. Replace `<password>` with a valid password.
 
 # [Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 # Add SQL Server VMs to cluster
 # example: az sql vm add-to-group -n SQLVM1 -g SQLVM-RG --sqlvm-group Cluster `
-#  -b Str0ngAzur3P@ssword! -p Str0ngAzur3P@ssword! -s Str0ngAzur3P@ssword!
+#  -b <password> -p <password> -s <password>
 # example: az sql vm add-to-group -n SQLVM2 -g SQLVM-RG --sqlvm-group Cluster `
-#  -b Str0ngAzur3P@ssword! -p Str0ngAzur3P@ssword! -s Str0ngAzur3P@ssword!
+#  -b <password> -p <password> -s <password>
 
 az sql vm add-to-group -n <VM1 Name> -g <Resource Group Name> --sqlvm-group <cluster name> `
   -b <bootstrap account password> -p <operator account password> -s <service account password>
 az sql vm add-to-group -n <VM2 Name> -g <Resource Group Name> --sqlvm-group <cluster name> `
   -b <bootstrap account password> -p <operator account password> -s <service account password>
 ```
-Use this command to add any other SQL Server VMs to the cluster. Modify only the `-n` parameter for the SQL Server VM name. 
+Use this command to add any other SQL Server VMs to the cluster. Modify only the `-n` parameter for the SQL Server VM name. Replace `<password>` with a valid password.
 
 # [PowerShell](#tab/azure-powershell)
 
@@ -162,15 +162,15 @@ Use this command to add any other SQL Server VMs to the cluster. Modify only the
 
 # $sqlvm1 = Update-AzSqlVM -Name SQLVM1 -ResourceGroupName SQLVM-RG
 #  -SqlVirtualMachineGroupResourceId $group.Id `
-#  -WsfcDomainCredentialsClusterBootstrapAccountPassword Str0ngAzur3P@ssword! `
-#  -WsfcDomainCredentialsClusterOperatorAccountPassword Str0ngAzur3P@ssword! `
-#  -WsfcDomainCredentialsSqlServiceAccountPassword Str0ngAzur3P@ssword! 
+#  -WsfcDomainCredentialsClusterBootstrapAccountPassword <password> `
+#  -WsfcDomainCredentialsClusterOperatorAccountPassword <password> `
+#  -WsfcDomainCredentialsSqlServiceAccountPassword <password> 
 
 # $sqlvm1 = Update-AzSqlVM -Name SQLVM2 -ResourceGroupName SQLVM-RG
 #  -SqlVirtualMachineGroupResourceId $group.Id `
-#  -WsfcDomainCredentialsClusterBootstrapAccountPassword Str0ngAzur3P@ssword! `
-#  -WsfcDomainCredentialsClusterOperatorAccountPassword Str0ngAzur3P@ssword! `
-#  -WsfcDomainCredentialsSqlServiceAccountPassword Str0ngAzur3P@ssword! 
+#  -WsfcDomainCredentialsClusterBootstrapAccountPassword <password> `
+#  -WsfcDomainCredentialsClusterOperatorAccountPassword <password> `
+#  -WsfcDomainCredentialsSqlServiceAccountPassword <password> 
 
 $sqlvm1 = Update-AzSqlVM -ResourceGroupName <Resource Group Name> -Name <VM1 Name> `
    -SqlVirtualMachineGroupResourceId $group.Id `
@@ -311,12 +311,13 @@ To add a new replica to the availability group:
 
 #### Azure CLI
 
-1. Add the SQL Server VM to the cluster group:
+1. Add the SQL Server VM to the cluster group. Replace `<password>` with a valid password.
+
    ```azurecli-interactive
 
    # Add the SQL Server VM to the cluster group
    # example: az sql vm add-to-group -n SQLVM3 -g SQLVM-RG --sqlvm-group Cluster `
-   # -b Str0ngAzur3P@ssword! -p Str0ngAzur3P@ssword! -s Str0ngAzur3P@ssword!
+   # -b <password> -p <password> -s <password>
 
    az sql vm add-to-group -n <VM3 Name> -g <Resource Group Name> --sqlvm-group <cluster name> `
    -b <bootstrap account password> -p <operator account password> -s <service account password>

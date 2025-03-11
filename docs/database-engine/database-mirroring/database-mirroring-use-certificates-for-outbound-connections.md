@@ -39,10 +39,10 @@ helpviewer_keywords:
   
 1.  On the **master** database, create the database Master Key, if none exists. To view the existing keys for a database, use the [sys.symmetric_keys](../../relational-databases/system-catalog-views/sys-symmetric-keys-transact-sql.md) catalog view.  
   
-     To create the database Master Key, use the following [!INCLUDE[tsql](../../includes/tsql-md.md)] command:  
+     To create the database Master Key, use the following [!INCLUDE[tsql](../../includes/tsql-md.md)] command. Replace `<password>` with a valid password.
   
     ```  
-    CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<1_Strong_Password!>';  
+    CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>';  
     GO  
     ```  
   

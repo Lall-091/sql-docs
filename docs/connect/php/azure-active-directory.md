@@ -58,7 +58,7 @@ if ($conn === false) {
 $azureServer = "myazureserver.database.windows.net";
 $azureDatabase = "myazuredatabase";
 $azureUsername = "myuid";
-$azurePassword = "mypassword";
+$azurePassword = "<password>";
 $connectionInfo = array("Database"=>$azureDatabase,
                         "UID"=>$azureUsername,
                         "PWD"=>$azurePassword,
@@ -99,7 +99,7 @@ try {
 $azureServer = "myazureserver.database.windows.net";
 $azureDatabase = "myazuredatabase";
 $azureUsername = "myuid";
-$azurePassword = "mypassword";
+$azurePassword = "<password>";
 $connectionInfo = "Database = $azureDatabase; Authentication = ActiveDirectoryPassword;";
 
 try {

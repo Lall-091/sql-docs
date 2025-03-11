@@ -21,7 +21,7 @@ This **OpenConnection** function is called near the top in all of the functions 
     {
         $serverName = "tcp:myserver.database.windows.net,1433";
         $connectionOptions = array("Database"=>"AdventureWorks",
-            "Uid"=>"MyUser", "PWD"=>"MyPassword");
+            "Uid"=>"MyUser", "PWD"=>"<password>");
         $conn = sqlsrv_connect($serverName, $connectionOptions);
         if($conn == false)
             die(FormatErrors(sqlsrv_errors()));

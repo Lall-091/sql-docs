@@ -55,11 +55,11 @@ helpviewer_keywords:
 ###  <a name="ConfiguringOutboundConnections"></a> Configuring Outbound Connections  
  **To configure Host_A for outbound connections**  
   
-1.  On the master database, create the database master key, if needed.  
+1.  On the master database, create the database master key, if needed. Replace `<password>` with a valid password.
   
     ```  
     USE master;  
-    CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<1_Strong_Password!>';  
+    CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>';  
     GO  
     ```  
   
@@ -149,11 +149,11 @@ helpviewer_keywords:
 ###  <a name="ConfigureInboundConnections"></a> Configuring Inbound Connections  
  **To configure Host_A for inbound connections**  
   
-1.  Create a login on HOST_A for HOST_B.  
+1.  Create a login on HOST_A for HOST_B. Replace `<password>` with a valid password.
   
     ```  
     USE master;  
-    CREATE LOGIN HOST_B_login WITH PASSWORD = '1Sample_Strong_Password!@#';  
+    CREATE LOGIN HOST_B_login WITH PASSWORD = '<password>';  
     GO  
     ```  
   

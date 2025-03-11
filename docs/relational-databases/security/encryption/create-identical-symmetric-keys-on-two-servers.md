@@ -37,10 +37,10 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
   
 2. On the Standard bar, click **New Query**.  
   
-3. Create a key by running the following CREATE MASTER KEY, CREATE CERTIFICATE, and CREATE SYMMETRIC KEY statements.  
+3. Create a key by running the following CREATE MASTER KEY, CREATE CERTIFICATE, and CREATE SYMMETRIC KEY statements. Replace `<password>` with a valid password.
   
     ```sql
-    CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'My p@55w0Rd';  
+    CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>';  
     GO  
     CREATE CERTIFICATE [cert_keyProtection] WITH SUBJECT = 'Key Protection';  
     GO  
