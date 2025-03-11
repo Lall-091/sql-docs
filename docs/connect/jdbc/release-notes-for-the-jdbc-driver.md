@@ -3,7 +3,7 @@ title: Release notes
 description: This article lists the releases of the Microsoft JDBC Driver for SQL Server. For each release version, the changes are named and described.
 author: David-Engel
 ms.author: davidengel
-ms.date: 03/07/2025
+ms.date: 03/17/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -17,12 +17,12 @@ This article lists the releases of the _Microsoft JDBC Driver for SQL Server_. F
 Release number: 12.10.0  
 Released: March 07, 2025
 
-:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft JDBC Driver 12.10.0 for SQL Server (zip)](https://go.microsoft.com/fwlink/?linkid=2281375)**  
-:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft JDBC Driver 12.10.0 for SQL Server (tar.gz)](https://go.microsoft.com/fwlink/?linkid=2281376)**
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft JDBC Driver 12.10.0 for SQL Server (zip)](https://go.microsoft.com/fwlink/?linkid=2310306)**  
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft JDBC Driver 12.10.0 for SQL Server (tar.gz)](https://go.microsoft.com/fwlink/?linkid=2310307)**
 
 If you need to download the driver in a language other than the one detected for you, you can use these direct links.  
-For the driver in a zip file: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2281375&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2281375&clcid=0x404) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2281375&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2281375&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2281375&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2281375&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2281375&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2281375&clcid=0x412) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2281375&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2281375&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2281375&clcid=0x40a)  
-For the driver in a tar.gz file: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2281376&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2281376&clcid=0x404) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2281376&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2281376&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2281376&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2281376&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2281376&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2281376&clcid=0x412) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2281376&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2281376&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2281376&clcid=0x40a)
+For the driver in a zip file: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2310306&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2310306&clcid=0x404) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2310306&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2310306&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2310306&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2310306&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2310306&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2310306&clcid=0x412) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2310306&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2310306&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2310306&clcid=0x40a)  
+For the driver in a tar.gz file: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2310307&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2310307&clcid=0x404) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2310307&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2310307&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2310307&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2310307&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2310307&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2310307&clcid=0x412) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2310307&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2310307&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2310307&clcid=0x40a)
 
 ### New features in 12.10
 

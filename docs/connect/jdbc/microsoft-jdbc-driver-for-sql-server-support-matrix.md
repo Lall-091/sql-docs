@@ -4,7 +4,7 @@ description: This page contains the support matrix and support life-cycle policy
 author: David-Engel
 ms.author: davidengel
 ms.reviewer: randolphwest
-ms.date: 03/07/2025
+ms.date: 03/17/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
