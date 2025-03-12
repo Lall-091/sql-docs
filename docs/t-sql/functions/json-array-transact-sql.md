@@ -4,10 +4,12 @@ description: JSON_ARRAY constructs JSON array text from zero or more expressions
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: umajay
-ms.date: 05/06/2024
+ms.date: 03/06/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - build-2024
 f1_keywords:
   - "JSON_ARRAY"
   - "JSON_ARRAY_TSQL"
@@ -16,9 +18,7 @@ helpviewer_keywords:
   - "JSON, validating"
 dev_langs:
   - "TSQL"
-ms.custom:
-  - build-2024
-monikerRange: "=azuresqldb-current||>=sql-server-ver16||>=sql-server-linux-ver16||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current || =fabric"
 ---
 # JSON_ARRAY (Transact-SQL)
 
@@ -27,7 +27,7 @@ monikerRange: "=azuresqldb-current||>=sql-server-ver16||>=sql-server-linux-ver16
 Constructs JSON array text from zero or more expressions.
 
 ## Syntax
-  
+
 ```syntaxsql
 JSON_ARRAY ( [ <json_array_value> [,...n] ] [ <json_null_clause> ]  )  
 
@@ -37,16 +37,19 @@ JSON_ARRAY ( [ <json_array_value> [,...n] ] [ <json_null_clause> ]  )
       NULL ON NULL
     | ABSENT ON NULL
 ```
-  
+
 ## Arguments
 
 #### *json_array_value*
+
  Is an expression that defines the value of the element in the JSON array.
 
 #### *json_null_clause*
- Can be used to control the behavior of `JSON_OBJECT` function when value_expression is NULL. The option `NULL ON NULL` converts the SQL `NULL` value into a JSON `null` value when generating the value of the element in the JSON array. The option `ABSENT ON NULL` will omit the element in the JSON array if the value is NULL. The default setting for this option is `ABSENT ON NULL`.
+
+ Can be used to control the behavior of `JSON_OBJECT` function when `value_expression` is `NULL`. The option `NULL ON NULL` converts the SQL `NULL` value into a JSON `NULL` value when generating the value of the element in the JSON array. The option `ABSENT ON NULL` will omit the element in the JSON array if the value is `NULL`. The default setting for this option is `ABSENT ON NULL`.
 
 ## Return value
+
 Returns a valid JSON array string of **nvarchar(max)** type.
 
 For more info about what you see in the output of the `JSON_ARRAY` function, see the following articles:  
@@ -62,7 +65,7 @@ For more info about what you see in the output of the `JSON_ARRAY` function, see
 ### Example 1
 
 The following example returns an empty JSON array.
-  
+
 ```sql
 SELECT JSON_ARRAY();
 ```  
@@ -76,8 +79,8 @@ SELECT JSON_ARRAY();
 ### Example 2
 
 The following example returns a JSON array with four elements.  
-  
-```sql  
+
+```sql
 SELECT JSON_ARRAY('a', 1, 'b', 2)
 ```
 
@@ -89,9 +92,9 @@ SELECT JSON_ARRAY('a', 1, 'b', 2)
 
 ### Example 3
 
-The following example returns a JSON array with three elements since one of the input values is NULL. Since the *json_null_clause* is omitted and the default for this option is ABSENT ON NULL, the NULL value in one of the inputs is not converted to a JSON null value.
-  
-```sql  
+The following example returns a JSON array with three elements since one of the input values is `NULL`. Since the *json_null_clause* is omitted and the default for this option is `ABSENT ON NULL`, the `NULL` value in one of the inputs is not converted to a JSON null value.
+
+```sql
 SELECT JSON_ARRAY('a', 1, 'b', NULL)
 ```
 
@@ -100,12 +103,12 @@ SELECT JSON_ARRAY('a', 1, 'b', NULL)
 ```json  
 ["a",1,"b"]
 ```
-  
+
 ### Example 4
 
-The following example returns a JSON array with four elements. The NULL ON NULL option is specified so that any SQL NULL value in the input will be converted to JSON null value in the JSON array.
-  
-```sql  
+The following example returns a JSON array with four elements. The `NULL ON NULL` option is specified so that any SQL `NULL` value in the input will be converted to JSON null value in the JSON array.
+
+```sql
 SELECT JSON_ARRAY('a', 1, NULL, 2 NULL ON NULL)
 ```
 
@@ -118,8 +121,8 @@ SELECT JSON_ARRAY('a', 1, NULL, 2 NULL ON NULL)
 ### Example 5
 
 The following example returns a JSON array with two elements. One element contains a JSON string and another element contains a JSON object.  
-  
-```sql  
+
+```sql
 SELECT JSON_ARRAY('a', JSON_OBJECT('name':'value', 'type':1))
 ```
 
@@ -131,9 +134,9 @@ SELECT JSON_ARRAY('a', JSON_OBJECT('name':'value', 'type':1))
 
 ### Example 6
 
-The following example returns a JSON array with three elements. One element contains a JSON string, another element contains a JSON object & another element contains a JSON array. 
-  
-```sql  
+The following example returns a JSON array with three elements. One element contains a JSON string, another element contains a JSON object and another element contains a JSON array. 
+
+```sql
 SELECT JSON_ARRAY('a', JSON_OBJECT('name':'value', 'type':1), JSON_ARRAY(1, null, 2 NULL ON NULL))
 ```
 
@@ -146,8 +149,8 @@ SELECT JSON_ARRAY('a', JSON_OBJECT('name':'value', 'type':1), JSON_ARRAY(1, null
 ### Example 7
 
 The following example returns a JSON array with the inputs specified as variables or SQL expressions.  
-  
-```sql  
+
+```sql
 DECLARE @id_value nvarchar(64) = NEWID();
 SELECT JSON_ARRAY(1, @id_value, (SELECT @@SPID));
 ```
@@ -161,8 +164,8 @@ SELECT JSON_ARRAY(1, @id_value, (SELECT @@SPID));
 ### Example 8
 
 The following example returns a JSON array per row in the query.  
-  
-```sql  
+
+```sql
 SELECT s.session_id, JSON_ARRAY(s.host_name, s.program_name, s.client_interface_name)
 FROM sys.dm_exec_sessions AS s
 WHERE s.is_user_process = 1;
@@ -175,7 +178,6 @@ WHERE s.is_user_process = 1;
 |52|`["WIN16-VM","Microsoft SQL Server Management Studio - Query",".Net SqlClient Data Provider"]`|
 |55|`["WIN16-VM","Microsoft SQL Server Management Studio - Query",".Net SqlClient Data Provider"]`|
 |56|`["WIN19-VM","SQLServerCEIP",".Net SqlClient Data Provider"]`|
-  
 
 ## Related content
 

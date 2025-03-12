@@ -1,10 +1,10 @@
 ---
-title: "Format query results as JSON with FOR JSON"
+title: "Format Query Results as JSON with fOR JSON"
 description: Format query results as JSON, or export data from SQL Server as JSON, by adding the FOR JSON clause to a SELECT statement.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: jroth, randolphwest, jovanpop
-ms.date: 11/04/2024
+ms.reviewer: randolphwest, jovanpop
+ms.date: 03/12/2025
 ms.service: sql
 ms.topic: how-to
 ms.custom:
@@ -24,6 +24,8 @@ Format query results as JSON, or export data from SQL Server as JSON, by adding 
 
 > [!NOTE]  
 > [Azure Data Studio](/azure-data-studio/download-azure-data-studio) is the recommended query editor for JSON queries because it auto-formats the JSON results, as shown in this article. [!INCLUDE [ssmanstudiofull-md](../../includes/ssmanstudiofull-md.md)] displays an unformatted string.
+
+In Fabric Data Warehouse, `FOR JSON` must be the last operator in the query, and so is not allowed inside subqueries.
 
 ## Format query results
 
@@ -49,7 +51,7 @@ Here's a sample query that uses `PATH` mode with the `FOR JSON` clause. The foll
 
 ### More info about FOR JSON PATH
 
-For more detailed info and examples, see [Format Nested JSON Output with PATH Mode (SQL Server)](format-nested-json-output-with-path-mode-sql-server.md).
+For more detailed info and examples, see [Format Nested JSON Output with PATH Mode](format-nested-json-output-with-path-mode-sql-server.md).
 
 For syntax and usage, see [SELECT - FOR Clause (Transact-SQL)](../../t-sql/queries/select-for-clause-transact-sql.md).
 
@@ -71,7 +73,7 @@ FOR JSON AUTO;
 
 And here's the returned JSON.
 
-```json
+```csharp
 [{
     "name": "John"
 }, {
@@ -137,7 +139,7 @@ GO
 
 And next is the JSON that is output by the preceding SELECT.
 
-```json
+```csharp
 JSON_F52E2B61-18A1-11d1-B105-00805F49916B
 
 [
@@ -208,7 +210,7 @@ Here's an example that demonstrates how the `FOR JSON` clause formats the JSON o
 
 #### JSON output
 
-```json
+```csharp
 [{
     "A": 10,
     "B": 11,

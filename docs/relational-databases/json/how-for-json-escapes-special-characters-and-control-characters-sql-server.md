@@ -1,19 +1,19 @@
 ---
-title: "How FOR JSON escapes special characters and control characters"
+title: "How FOR JSON Escapes Special Characters and Control Characters"
 description: This article describes how the FOR JSON clause of a SQL Server SELECT statement escapes special characters and represents control characters in the JSON output.
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jroth, randolphwest
-ms.date: 07/12/2023
+ms.date: 03/06/2025
 ms.service: sql
 ms.topic: conceptual
 helpviewer_keywords:
   - "FOR JSON, special characters"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
-# How FOR JSON escapes special characters and control characters (SQL Server)
+# How FOR JSON escapes special characters and control characters
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-serverless-pool-only](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-serverless-pool-only.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-serverless-pool-only-fabricse-fabricdw](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-serverless-pool-only-fabricse-fabricdw.md)]
 
 This article describes how the `FOR JSON` clause of a SQL Server `SELECT` statement escapes special characters and represents control characters in the JSON output.
 
@@ -61,7 +61,7 @@ SELECT 'VALUE\    /
 FOR JSON PATH;
 ```
 
-Result:
+**Result:**
 
 ```json
 [
@@ -74,7 +74,7 @@ Result:
 ]
 ```
 
-## Next steps
+## Related content
 
 - [Format Query Results as JSON with FOR JSON (SQL Server)](format-query-results-as-json-with-for-json-sql-server.md)
 - [SELECT - FOR Clause (Transact-SQL)](../../t-sql/queries/select-for-clause-transact-sql.md)
