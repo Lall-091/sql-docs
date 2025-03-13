@@ -48,6 +48,8 @@ The frequency of transaction log backups depends on the compute size and the amo
 > [!CAUTION]
 > Automatic full backups are initiated once a week based on a schedule determined by Microsoft. [User-initiated backups](/sql/relational-databases/backup-restore/copy-only-backups-sql-server) have priority over automatic full backups, so a long-running copy-only backup can affect the timing of the next automatic full backup.
 
+A tail log backup is taken every time before a database or the whole managed instance is deleted.
+
 ### Backup storage redundancy
 
 By default, Azure SQL Managed Instance stores backups in geo-redundant [storage blobs](/azure/storage/common/storage-redundancy) that are replicated to a [paired region](/azure/reliability/cross-region-replication-azure). Geo-redundancy helps protect against outages that affect backup storage in the primary region. It also allows you to restore your instance to a different region in the event of a disaster.
