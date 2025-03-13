@@ -114,19 +114,9 @@ With elastic pools, the In-Memory OLTP storage is shared across all databases in
 - Configure a `Max eDTU` or `Max vCore` for databases that is lower than the eDTU or vCore count for the pool as a whole. This maximum also caps the In-Memory OLTP storage utilization in any database in the pool proportionally.
 - Configure a `Min eDTU` or `Min vCore` that is greater than 0. This minimum guarantees that each database in the pool has the amount of available In-Memory OLTP storage that corresponds to the configured `Min eDTU` or `Min vCore`.
 
-#### Restore a database with In-Memory OLTP objects
-
-If you created any [In-Memory OLTP](in-memory-oltp-overview.md#in-memory-oltp) objects in a database and want to [restore the database](recovery-using-backups.md), you must use the Business Critical or Premium service tiers for the restored database. This applies even if you deleted all In-Memory OLTP objects before the restore point-in-time.
-
-To make future automatic backups of the database restorable in other service tiers, follow this procedure:
-
-1. Restore the database using the Business Critical or Premium service tier.
-1. Scale the database to the General Purpose, Standard, or Basic service tier.
-1. If required, scale the database back to the Business Critical or Premium service tier, or to the Hyperscale service tier.
-
 ### <a id="changing-service-tiers-of-databases-that-use-in-memory-oltp-technologies"></a> Change service tiers of databases that use In-Memory OLTP technologies
 
-In-Memory OLTP isn't supported in the General Purpose, Standard, and Basic service tiers of Azure SQL Database. Therefore, it isn't possible to scale a database that has any In-Memory OLTP objects to one of these tiers. If you want to scale a database to one of these service tiers, remove all memory-optimized tables and table types as well as all natively compiled T-SQL modules, or convert them to disk-based objects and regular T-SQL modules.
+In-Memory OLTP isn't supported in the General Purpose, Standard, and Basic service tiers of Azure SQL Database. Therefore, it isn't possible to scale or [restore](#restore-a-database-with-in-memory-oltp-objects) a database that has any In-Memory OLTP objects to one of these tiers. If you want to scale a database to one of these service tiers, remove all memory-optimized tables and table types as well as all natively compiled T-SQL modules, or convert them to disk-based objects and regular T-SQL modules.
 
 When you scale down a Business Critical or a Premium database, data in the memory-optimized tables must fit within the In-Memory OLTP storage that is available in the destination service objective of the database or elastic pool. If you try to scale down the database or elastic pool, or move a database into an elastic pool, and the destination service objective doesn't have enough available In-Memory OLTP storage, the operation fails.
 
@@ -147,6 +137,15 @@ SELECT * FROM sys.tables WHERE is_memory_optimized = 1;
 SELECT * FROM sys.table_types WHERE is_memory_optimized = 1;
 SELECT * FROM sys.sql_modules WHERE uses_native_compilation = 1;
 ```
+
+### Restore a database with In-Memory OLTP objects
+
+If you created any [In-Memory OLTP](in-memory-oltp-overview.md#in-memory-oltp) objects in a database and want to [restore the database](recovery-using-backups.md), you must use the Business Critical or Premium service tiers for the restored database. This applies even if you deleted all In-Memory OLTP objects before the restore point-in-time.
+
+To make future automatic backups of the database restorable in other service tiers after all In-Memory OLTP objects are deleted, follow this procedure:
+
+1. Scale the database to the General Purpose, Standard, or Basic service tier.
+1. If required, scale the database back to the Business Critical or Premium service tier, or to the Hyperscale service tier.
 
 ## In-memory columnstore
 
