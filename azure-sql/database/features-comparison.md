@@ -5,7 +5,7 @@ description: This article compares the database engine features of Azure SQL Dat
 author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, bonova, mathoma, danil
-ms.date: 12/31/2024
+ms.date: 03/13/2025
 ms.service: azure-sql
 ms.subservice: service-overview
 ms.topic: conceptual
@@ -59,7 +59,7 @@ The following table lists the major features of SQL Server and provides informat
 | [Cross-database transactions](/sql/relational-databases/linked-servers/linked-servers-database-engine) | No | Yes, within the instance. See [Linked server differences](../managed-instance/transact-sql-tsql-differences-sql-server.md#linked-servers) for cross-instance queries. |
 | [Database mail - DbMail](/sql/relational-databases/database-mail/database-mail) | No | Yes |
 | [Database mirroring](/sql/database-engine/database-mirroring/database-mirroring-sql-server) (deprecated) | No | No |
-| [Database mirroring in Microsoft Fabric](/fabric/database/mirrored-database/overview) | Yes | No |
+| [Database mirroring in Microsoft Fabric](/fabric/database/mirrored-database/overview) | Yes | Yes |
 | [Database snapshots](/sql/relational-databases/databases/database-snapshots-sql-server) | No | No |
 | [Database virtualization](../managed-instance/data-virtualization-overview.md) | No | Yes |
 | [DBCC statements](/sql/t-sql/database-console-commands/dbcc-transact-sql) | Most, see individual statements | Yes, see [DBCC differences](../managed-instance/transact-sql-tsql-differences-sql-server.md#dbcc) |
