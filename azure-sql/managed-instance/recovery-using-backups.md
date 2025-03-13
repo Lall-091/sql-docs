@@ -135,6 +135,14 @@ You can restore a deleted database to the deletion time, or an earlier point in 
 > [!IMPORTANT]
 > You can't restore a deleted managed instance. If you delete a managed instance, all its databases are also deleted and can't be restored to the deletion time, or an earlier point in time. If you configured [long-term retention (LTR)](../database/long-term-retention-overview.md), you can still restore a database from deleted instance to another instance and to point in time when LTR backup was taken.
 
+### Restoring a database from deleted SQL managed instance
+If you have accidentally dropped a SQL managed instance, please engage Microsoft’s customer support team immediately to restore it. Make sure to reach out within 5 days of the deletion. Limitations:
+- You need to provide an SQL managed instance on which user databases will be restored to and provide this information to the customer support team with details.
+- The new instance should have the same service tier and the same or higher SLO as the deleted instance.
+- If the deleted instance had encrypted databases protected with customer-managed key (CMK), the key must be available to the new instance. 
+- Only user-created databases can be restored. System databases cannot be restored.
+- Restore is possible only to the latest point-in-time just before the instance deletion. Tail log backup is taken every time before a database is deleted (or in this case before managed instance deletion).
+
 ### [Azure portal](#tab/azure-portal)
 
 To recover a database by using the Azure portal, open the managed instance's overview page and select **Backups**. Choose to show **Deleted** backups, and then select **Restore** next to the deleted backup you want to recover to open the **Create Azure SQL Managed Database** page. Provide target managed instance details on the **Basics** tab, and source managed instance details on the **Data source** tab. Configure retention settings on the **Additional settings** tab. 
