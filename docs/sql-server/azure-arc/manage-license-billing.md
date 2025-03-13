@@ -130,14 +130,14 @@ The option of licensing SQL Server by physical cores with unlimited virtualizati
 - Your infrastructure and the selected payment method support the unlimited virtualization benefit.
 - Licensing your SQL Server instances by v-cores is more expensive than licensing the p-cores of the host.
 
-To use the unlimited virtualization benefit, you need to create a *SQLServerLicense* resource that covers the specific *SQL Server - Azure Arc* instances that you intend to include. For details about creating *SQLServerLicense* resources, see [Create a SQL Server license](manage-configuration.md#create-license-resource).
+To use the unlimited virtualization benefit, you need to create a _SQLServerLicense_ resource that represents a single or multiple physical hosts. The covered SQL Server instances must be connected to Azure Arc and configured to use the p-core license. For details about creating _SQLServerLicense_ resources, see [Create a SQL Server license](/sql/sql-server/azure-arc/manage-configuration?view=sql-server-ver16).
 
 > [!CAUTION]  
 > The unlimited virtualization benefit isn't available to VMs running on infrastructure from any of the [listed providers](https://aka.ms/listedproviders). These VMs can be licensed only by v-cores. If you create a *SQLServerLicense* resource with the intent of licensing these VMs by using unlimited virtualization, you'll be charged for the consumption of v-cores based on the SQL Server configuration of the host. Any existing p-core licenses don't apply to offset such charges.
 
 For more information about licensing by physical cores with unlimited virtualization, see the section "Licensing for maximum virtualization" in the [SQL Server licensing guide (download link)](https://go.microsoft.com/fwlink/p/?linkid=2215573).
 
-A single *SqlServerLicense* resource can cover multiple virtual machines connected to Azure Arc. It includes the following properties that define how the license is applied and billed.
+A single _SqlServerLicense_ resource can cover multiple virtual machines connected to Azure Arc. Its properties define how the license is applied and billed.
 
 ### License category
 
