@@ -48,7 +48,7 @@ The frequency of transaction log backups depends on the compute size and the amo
 > [!CAUTION]
 > Automatic full backups are initiated once a week based on a schedule determined by Microsoft. [User-initiated backups](/sql/relational-databases/backup-restore/copy-only-backups-sql-server) have priority over automatic full backups, so a long-running copy-only backup can affect the timing of the next automatic full backup.
 
-A tail log backup is taken every time before a database or the whole managed instance is deleted.
+A tail log backup is taken every time before a database or SQL managed instance is deleted.
 
 ### Backup storage redundancy
 
