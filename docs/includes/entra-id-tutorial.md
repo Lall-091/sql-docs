@@ -29,11 +29,14 @@ In this tutorial, you learn how to:
 - The server and instance enabled by Azure Arc. For more information, see [Connect your SQL Server to Azure Arc](../sql-server/azure-arc/connect.md).
 - Access to Microsoft Entra ID is available for authentication purpose. For more information, see [Microsoft Entra authentication for SQL Server](../relational-databases/security/authentication-access/azure-ad-authentication-sql-server-overview.md).
 - [SQL Server Management Studio (SSMS)](../ssms/download-sql-server-management-studio-ssms.md) version 18.0 or higher is installed on the client machine. Or download the latest [Azure Data Studio](/azure-data-studio/download-azure-data-studio).
+- A supported certificate.
+
+   Microsoft Entra ID supports CSP certificates. Entra ID does not support CNG certificates.
 
 ### Authentication prerequisites
 
 > [!NOTE]
-> Extended functionality has been implemented in Azure to allow the automatic creation of the Azure Key Vault certificate and Microsoft Entra application during setting up a Microsoft Entra admin for the SQL Server. For more information, see [Tutorial: Using automation to set up the Microsoft Entra admin for SQL Server](../relational-databases/security/authentication-access/azure-ad-authentication-sql-server-automation-setup-tutorial.md).
+> You can use Azure to automatically create the Azure Key Vault certificate and Microsoft Entra application when you set up a Microsoft Entra admin for the server. For more information, see [Tutorial: Using automation to set up the Microsoft Entra admin for SQL Server](../relational-databases/security/authentication-access/azure-ad-authentication-sql-server-automation-setup-tutorial.md).
 
 - Microsoft Entra application registration for SQL Server. Registering a SQL Server instance as a Microsoft Entra application allows the instance to query Microsoft Entra ID, and allows the Microsoft Entra application to authenticate on behalf of the SQL Server instance. Application registration also requires a few permissions, which are used by SQL Server for certain queries.
 
