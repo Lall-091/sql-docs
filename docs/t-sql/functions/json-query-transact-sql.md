@@ -4,7 +4,7 @@ description: JSON_QUERY extracts an object or an array from a JSON string.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: jovanpop
-ms.date: 11/04/2024
+ms.date: 03/06/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -103,7 +103,7 @@ If the format of *path* isn't valid, `JSON_QUERY` returns an error.
 
 ### Use JSON_QUERY with FOR JSON
 
-`JSON_QUERY` returns a valid JSON fragment. As a result, **FOR JSON** doesn't escape special characters in the `JSON_QUERY` return value.
+`JSON_QUERY` returns a valid JSON fragment. As a result, `FOR JSON` doesn't escape special characters in the `JSON_QUERY` return value.
 
 If you're returning results with FOR JSON, and you're including data that's already in JSON format (in a column or as the result of an expression), wrap the JSON data with `JSON_QUERY` without the *path* parameter.
 

@@ -63,10 +63,10 @@ If `url_safe` is true, the base64url string that is generated is incompatible wi
 
 ### A. Standard BASE64_ENCODE
 
-In the following example, simple varbinary is base64 encoded.
+The following example returns the base64 encoded value for the `©` symbol.
 
 ```sql
-SELECT Base64_Encode(0xA9) AS "Encoded &copy; symbol";
+SELECT Base64_Encode(0xA9) AS "Encoded © symbol";
 ```
 
 [!INCLUDE [ssResult_md](../../includes/ssresult-md.md)]

@@ -507,7 +507,7 @@ Specifies how the secondary availability group is initially seeded.
   
 ##### AUTOMATIC
 
-Enables direct seeding. This method seeds the secondary availability group over the network. This method does not require you to backup and restore a copy of the primary database on the replicas of the secondary availability group.
+Enables direct seeding. This method seeds the secondary availability group over the network. This method does not require you to back up and restore a copy of the primary database on the replicas of the secondary availability group.
   
 ##### MANUAL
 
@@ -613,7 +613,7 @@ Three availability replicas are to be hosted by the default server instances on 
 |PRIMARY_ROLE|( ALLOW_CONNECTIONS = READ_WRITE, <br />READ_ONLY_ROUTING_LIST = (COMPUTER03) )|( ALLOW_CONNECTIONS = READ_WRITE, <br />READ_ONLY_ROUTING_LIST = (COMPUTER03) )|( ALLOW_CONNECTIONS = READ_WRITE, <br />READ_ONLY_ROUTING_LIST = NONE )|In the primary role, all the replicas reject read-intent connection attempts.<br /><br /> Read-intent connection requests are routed to COMPUTER03 if the local replica is running under the secondary role. When that replica runs under the primary role, read-only routing is disabled.<br /><br /> This argument is optional.|  
 |SESSION_TIMEOUT|10|10|10|This example specifies the default session timeout value (10). This argument is optional.|  
   
-Finally, the example specifies the optional LISTENER clause to create an availability group listener for the new availability group. A unique DNS name, `MyAgListenerIvP6`, is specified for this listener. The two replicas are on different subnets, so the listener must use static IP addresses. For each of the two availability replicas, the WITH IP clause specifies a static IP address, `2001:4898:f0:f00f::cf3c` and `2001:4898:e0:f213::4ce2`, which use the IPv6 format. This example also specifies uses the optional PORT argument to specify port `60173` as the listener port.  
+Finally, the example specifies the optional LISTENER clause to create an availability group listener for the new availability group. A unique DNS name, `MyAgListenerIvP6`, is specified for this listener. The two replicas are on different subnets, so the listener must use static IP addresses. For each of the two availability replicas, the WITH IP clause specifies a static IP address, `2001:4898:f0:f00f::cf3c` and `2001:4898:e0:f213::4ce2`, which use the IPv6 format. This example also uses the optional PORT argument to specify port `60173` as the listener port.  
   
 ```SQL
 CREATE AVAILABILITY GROUP MyAg   

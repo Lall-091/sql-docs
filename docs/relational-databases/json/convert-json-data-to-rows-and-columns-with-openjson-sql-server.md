@@ -1,21 +1,21 @@
 ---
-title: "Parse and transform JSON data with OPENJSON"
+title: "Parse and Transform JSON Data with OPENJSON"
 description: OPENJSON converts JSON into a set of rows and columns. Use it to run any SQL query on the returned data, or insert it into a SQL Server table.
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jroth, randolphwest
-ms.date: 05/06/2024
+ms.date: 03/06/2025
 ms.service: sql
 ms.topic: how-to
 helpviewer_keywords:
   - "OPENJSON"
   - "JSON, importing"
   - "importing JSON"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
 # Parse and transform JSON data with OPENJSON
 
-[!INCLUDE [SQL Server ASDB, ASDBMI, ASDW](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-serverless-pool-only-fabricse-fabricdw](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-serverless-pool-only-fabricse-fabricdw.md)]
 
 The `OPENJSON` rowset function converts JSON text into a set of rows and columns. After you transform a JSON collection into a rowset with `OPENJSON`, you can run any SQL query on the returned data or insert it into a SQL Server table. For more information about working with JSON data in the [!INCLUDE [ssdenoversion-md](../../includes/ssdenoversion-md.md)], see [JSON data in SQL Server](json-data-sql-server.md).
 

@@ -156,7 +156,7 @@ ALTER AVAILABILITY GROUP group_name
 #### group_name
 Specifies the name of the new availability group. *group_name* must be a valid [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] identifier, and it must be unique across all availability groups in the WSFC cluster.
   
-####AUTOMATED_BACKUP_PREFERENCE = { PRIMARY | SECONDARY_ONLY| SECONDARY | NONE }
+#### AUTOMATED_BACKUP_PREFERENCE = { PRIMARY | SECONDARY_ONLY| SECONDARY | NONE }
 Specifies a preference about how a backup job should evaluate the primary replica when choosing where to perform backups. You can script a given backup job to take the automated backup preference into account. It's important to understand that the preference isn't enforced by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], so it has no impact on ad hoc backups.
   
 Supported only on the primary replica.
@@ -609,7 +609,7 @@ Modifies an existing availability group listener for this availability group. Su
 #### \<modify_listener_option\>
 MODIFY LISTENER takes one of the following options:
   
-#### ADD IP { ('_four_part_ipv4_address_','_four_part_ipv4_mask_') | <b>('*</b>dns_name*ipv6_address*__*')__ }
+#### ADD IP { ('_four_part_ipv4_address_','_four_part_ipv4_mask_') | <b>('*</b>dns_name*ipv6_address__')__ }
 Adds the specified IP address to the availability group listener specified by *dns\_name*.
   
 #### PORT = *listener_port*

@@ -68,7 +68,7 @@ The following features are impacted by the configured update policy:
 
 ## Which update policy to choose?
 
-Unless you're relying on a specific feature that requires the **SQL Server 2022** update policy, we recommend using the **Always-up-to-date** update policy. The **Always-up-to-date** update policy provides you with the latest features and benefits available to Azure SQL Managed Instance. While the latest features may not be directly relevant to you, there are still oftentimes improvements to performance, security, and reliability that can benefit your workload.
+Unless you're relying on a specific feature that requires the **SQL Server 2022** update policy, we recommend using the **Always-up-to-date** update policy. The **Always-up-to-date** update policy provides you with the latest features and benefits available to Azure SQL Managed Instance. While the latest features may not be directly relevant to you, there are still  often improvements to performance, security, and reliability that can benefit your workload.
 
 If you're using the **SQL Server 2022** update policy to copy databases from SQL Managed Instance to SQL Server for regulatory compliance, contractual obligations, or other reasons important to your business, you can often accomplish the same goals by using other features like database export/import, or transactional replication, or services like Azure Data Factory. Using one of these alternative methods allows you to use the **Always-up-to-date** update policy with SQL Managed Instance while still meeting your business requirements.
 

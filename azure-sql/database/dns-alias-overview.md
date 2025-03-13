@@ -55,7 +55,6 @@ The following properties apply to each DNS alias for your server:
 - *Server is required:* A DNS alias cannot be created unless it references exactly one server, and the server must already exist. An updated alias must always reference exactly one existing server.
   - When you drop a server, the Azure system also drops all DNS aliases that refer to the server.
 - *Not bound to any region:* DNS aliases are not bound to a region. Any DNS aliases can be updated to refer to a server that resides in any geographic region.
-  - However, when updating an alias to refer to another server, both servers must exist in the same Azure *subscription*.
 - *Permissions:* To manage a DNS alias, the user must have *Server Contributor* permissions, or higher. For more information, see [Get started with Azure role-based access control in the Azure portal](/azure/role-based-access-control/overview).
 
 ## Manage your DNS aliases
