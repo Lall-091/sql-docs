@@ -4,7 +4,7 @@ description: Utilizing the SQL Server Configuration Manager client
 author: "markingmyname"
 ms.author: "maghan"
 ms.reviewer: randolphwest, vanto
-ms.date: 09/11/2024
+ms.date: 03/14/2025
 ms.service: sql
 ms.topic: conceptual
 helpviewer_keywords:
@@ -18,7 +18,7 @@ helpviewer_keywords:
   - "services [SQL Server], managing"
   - "tools [SQL Server], SQL Server Configuration Manager"
   - "configuration manager [SQL Server]"
-ai.usage: ai-assisted
+  - "ai-assisted"
 ---
 
 # SQL Server Configuration Manager
@@ -29,8 +29,8 @@ SQL Server Configuration Manager is a tool to manage the services associated wit
 
 SQL Server Configuration Manager is installed automatically with your SQL Server installation. It's a Microsoft Management Console (MMC) snap-in that can be accessed from the Start menu or added to any other MMC display. The MMC uses the SQLServerManager<version>.msc file (for example, SQLServerManager16.msc for SQL Server 2022) to open SQL Server Configuration Manager.
 
-| Version                                            | Path                                         |
-|----------------------------------------------------|----------------------------------------------|
+| Version | Path |
+| --- | --- |
 | [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] | `C:\Windows\SysWOW64\SQLServerManager16.msc` |
 | [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] | `C:\Windows\SysWOW64\SQLServerManager15.msc` |
 | [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] | `C:\Windows\SysWOW64\SQLServerManager14.msc` |
@@ -61,7 +61,7 @@ Beginning with [!INCLUDE [sssql22-md](../includes/sssql22-md.md)], you can use S
 
 Manage the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] services using SQL Server Configuration Manager.
 
-> [!IMPORTANT]  
+> [!IMPORTANT]  
 > Always use [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] tools such as SQL Server Configuration Manager to change the account used by the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] or [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Agent services or to change the password for the account. In addition to changing the account name, the SQL Server Configuration Manager performs additional configurations, such as setting permissions in the Windows Registry so that the new account can read the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] settings. Other tools, such as the Windows Services Control Manager, can change the account name but don't change associated settings. If the service can't access the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] portion of the registry, the service might not start properly.
 
 As an extra benefit, passwords changed using SQL Server Configuration Manager, SQL Server Management Objects (SMO), or WMI take effect immediately without restarting the service.
@@ -78,7 +78,7 @@ SQL Server Configuration Manager allows you to create or remove an alias, change
 - Protocol - The network protocol used for the configuration entry.
 - Connection Parameters - The parameters associated with the connection address for the network protocol configuration.
 
-> [!NOTE]  
+> [!NOTE]  
 > SQL Server 2022 and later versions don't support creating aliases using SQL Server Configuration Manager. To create an alias for SQL Server 2022 and later versions, use the [SQL Server Client Network Utility tool](/previous-versions/windows/desktop/odbc/dn170508(v=vs.85)).
 
 The SQL Server Configuration Manager also allows you to view information about failover cluster instances, though Cluster Administrator should be used for some actions, such as starting and stopping the services.
