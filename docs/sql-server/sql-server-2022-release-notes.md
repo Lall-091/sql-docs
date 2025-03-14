@@ -4,7 +4,7 @@ description: Find information about SQL Server 2022 (16.x) limitations, known is
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 02/09/2023
+ms.date: 03/14/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: release-notes
@@ -115,6 +115,18 @@ Currently, MSOLEDBSQL19 prevents the creation of linked servers without encrypti
 You may notice excessive growth in the transaction log size for databases with the [In-Memory OLTP](../relational-databases/in-memory-oltp/overview-and-usage-scenarios.md) feature enabled. This might be coupled with `XTP_CHECKPOINT` as `log_reuse_wait_desc` in [sys.databases](../relational-databases/system-catalog-views/sys-databases-transact-sql.md).
 
 For more information, review [Transaction log file grows for databases with In-Memory OLTP in SQL Server 2022](/troubleshoot/sql/database-engine/general/transaction-log-file-grows-databases-in-memory-oltp).
+
+### DBCC CHECKDB command reports inconsistency after dropping index
+Applies to: [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] databases that originated from [!INCLUDE [ssazuremi-md](../includes/ssazuremi-md.md)]
+
+You may see the following error when you run the DBCC CHECKDB command on a [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] database after you delete an index, or a table with an index, and the database originated from [!INCLUDE [ssazuremi-md](../includes/ssazuremi-md.md)], such as after restoring a backup file, or from the [Managed Instance link feature](/azure/azure-sql/managed-instance/managed-instance-link-feature-overview): 
+
+```
+_Msg 8992, Level 16, State 1, Line <Line_Number>an
+Check Catalog Msg 3853, State 1: Attribute (%ls) of row (%ls) in sys.sysrowsetrefs does not have a matching row (%ls) in sys.indexes._
+```
+
+To work around the issue, first drop the index, or the table with the index, from the source database in [!INCLUDE [ssazuremi-md](../includes/ssazuremi-md.md)], and then restore, or link, the database to [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] again. If recreating the database from the source [!INCLUDE [ssazuremi-md](../includes/ssazuremi-md.md)] isn't possible, please contact Microsoft support to help resolve this issue. 
 
 ## Build number
 

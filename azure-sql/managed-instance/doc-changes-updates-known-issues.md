@@ -5,7 +5,7 @@ description: Learn about the currently known issues with Azure SQL Managed Insta
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest, mathoma
-ms.date: 07/02/2024
+ms.date: 03/14/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: troubleshooting-known-issue
@@ -24,6 +24,7 @@ This article lists the currently known issues with [Azure SQL Managed Instance](
 
 | Issue | Date discovered | Status | Date resolved |
 | --- | --- | --- | --- |
+| [Error 8992 when running DBCC CHECKDB on a SQL Server database that originated from SQL Managed Instance](#error-8992-when-running-dbcc-checkdb-on-a-sql-server-database-that-originated-from-sql-managed-instance) | March 2025 | Has workaround| |
 | [Differential backups aren't taken when an instance is linked to SQL Server](#differential-backups-arent-taken-when-an-instance-is-linked-to-sql-server) | Sept 2024 | By design | |
 | [List of long-term backups in Azure portal shows backup files for active and deleted databases with the same name](#list-of-long-term-backups-in-azure-portal-shows-backup-files-for-active-and-deleted-databases-with-the-same-name) | Mar 2024 | Has Workaround | |
 | [Temporary instance inaccessibility using the failover group listener during scaling operation](#temporary-instance-inaccessibility-using-the-failover-group-listener-during-scaling-operation) | Jan 2024 | No resolution | |
@@ -68,6 +69,17 @@ This article lists the currently known issues with [Azure SQL Managed Instance](
 | Contained databases not supported in SQL Managed Instance | | Resolved | Aug 2019 |
 
 ## Has workaround
+
+### Error 8992 when running DBCC CHECKDB on a SQL Server database that originated from SQL Managed Instance
+
+You may see the following error when you run the DBCC CHECKDB command on a SQL Server 2022 database after you delete an index, or a table with an index, and the database originated from Azure SQL Managed Instance, such as after restoring a backup file, or from the [Managed Instance link feature](/azure/azure-sql/managed-instance/managed-instance-link-feature-overview): 
+
+```
+_Msg 8992, Level 16, State 1, Line <Line_Number>an
+Check Catalog Msg 3853, State 1: Attribute (%ls) of row (%ls) in sys.sysrowsetrefs does not have a matching row (%ls) in sys.indexes._
+```
+
+To work around the issue, first drop the index, or the table with the index, from the source database in Azure SQL Managed Instance, and then restore, or link, the database to SQL Server 2022 again. If recreating the database from the source Azure SQL Managed Instance isn't possible, please contact Microsoft support to help resolve this issue. 
 
 ### List of long-term backups in Azure portal shows backup files for active and deleted databases with the same name
 

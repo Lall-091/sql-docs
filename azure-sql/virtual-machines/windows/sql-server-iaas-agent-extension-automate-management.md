@@ -191,7 +191,7 @@ Starting in March 2023, when you first register with the extension, binaries are
 The SQL IaaS Agent extension only supports: 
 
 - SQL Server VMs deployed through the Azure Resource Manager. SQL Server VMs deployed through the classic model aren't supported. 
-- SQL Server VMs deployed to the public or Azure Government cloud. Deployments to other private or government clouds aren't supported. 
+- SQL Server VMs deployed to the public cloud, Azure Government cloud, and 21Vianet (Azure in China). Deployments to other private or government clouds aren't supported. 
 - TCP/IP must be enabled in SQL Server Configuration Manager and for the VM for the extension to work with your SQL Server on Azure VMs. 
 - SQL Server FCIs with limited functionality. SQL Server FCIs registered with the extension don't support features that require the agent, such as automated backup, patching, and advanced portal management. 
 - VMs with a default instance, or a single named instance when no default instance is present.
