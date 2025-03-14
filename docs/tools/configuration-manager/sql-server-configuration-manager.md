@@ -25,7 +25,7 @@ ai.usage: ai-assisted
 
 [!INCLUDE [sqlserver](../includes/applies-to-version/sqlserver.md)]
 
-SQL Server Configuration Manager is a tool designed to manage the services associated with SQL Server, configure the network protocols used by SQL Server, and manage the network connectivity configuration from SQL Server client computers. In SQL Server 2022 (16.x) and later versions, you can also use SQL Server Configuration Manager to manage the Azure extension for SQL Server.
+SQL Server Configuration Manager is a tool to manage the services associated with SQL Server, configure the network protocols used by SQL Server, and manage the network connectivity configuration from SQL Server client computers. In SQL Server 2022 (16.x) and later versions, you can also use SQL Server Configuration Manager to manage the Azure extension for SQL Server.
 
 SQL Server Configuration Manager is installed automatically with your SQL Server installation. It's a Microsoft Management Console (MMC) snap-in that can be accessed from the Start menu or added to any other MMC display. The MMC uses the SQLServerManager<version>.msc file (for example, SQLServerManager16.msc for SQL Server 2022) to open SQL Server Configuration Manager.
 
