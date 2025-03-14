@@ -83,7 +83,6 @@ TO URL = 'https://<mystorageaccountname>.blob.core.windows.net/<containername>/S
 WITH COPY_ONLY
 ```
 
-
 ## Restore to SQL Server 
 
 Restore the database to SQL Server by using the `WITH MOVE` option of the RESTORE DATABASE T-SQL command and providing explicit file paths for your files on the destination server.
@@ -109,6 +108,7 @@ When you're restoring a database to SQL Server, consider the following:
 - You must use the `WITH MOVE` qualifier and provide explicit paths for the data files. 
 - Databases that are encrypted with service-managed TDE keys can't be restored to SQL Server. You can restore an encrypted database to SQL Server only if it was encrypted with a customer-managed key and the destination server has access to the same key that's used to encrypt the database. For more information, see [Set up SQL Server TDE with Azure Key Vault](/sql/relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault). 
 - This capability is only available to instances with the [**SQL Server 2022** update policy](update-policy.md#sql-server-2022-update-policy). You will not be able to restore your database backup to SQL Server 2022 from an instance with the **Always up to date** update policy. 
+- After restoring an Azure SQL Managed Instance database to SQL Server 2022, and dropping an index, or a table with an index, you may see [Error 8992](doc-changes-updates-known-issues.md#error-8992-when-running-dbcc-checkdb-on-a-sql-server-database-that-originated-from-sql-managed-instance) when running the `DBCC CHECKDB` command.
 
 ## Next steps
 
