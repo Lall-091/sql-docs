@@ -98,7 +98,7 @@ The option of subscribing to SQL Server ESUs by physical cores with unlimited vi
 - Your infrastructure and the selected payment method support the unlimited virtualization benefit for ESU.
 - Subscribing to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] ESUs by v-cores is more expensive than subscribing by the p-cores of the host.
 
-To use the unlimited virtualization benefit, you need to create a *SQLServerEsuLicense* resource that covers the specific *SQL Server - Azure Arc* instances that you intend to include. For details about managing *SQLServerEsuLicense* resources, see [Manage the unlimited virtualization benefit for a SQL Server ESU subscription](manage-configuration.md#manage-pcore-esu-license).
+To use the unlimited virtualization benefit, you need to create a *SQLServerEsuLicense* resource that represents a single or multiple physical hosts. The covered SQL Server instances must be connected to Azure Arc and configured to use the p-core ESU license. For details about managing *SQLServerEsuLicense* resources, see [Manage the unlimited virtualization benefit for a SQL Server ESU subscription](manage-configuration.md#manage-pcore-esu-license).
 
 > [!CAUTION]  
 > The unlimited virtualization benefit isn't available to VMs running on infrastructure from any of the [listed providers](https://aka.ms/listedproviders). These VMs can be licensed only by v-cores. If you create a *SqlServerEsuLicense* resource with the intent of licensing these VMs by using unlimited virtualization, you'll be charged for the consumption of v-cores based on the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] configuration of the host. Any existing p-core licenses don't apply to offset such charges.
@@ -106,8 +106,6 @@ To use the unlimited virtualization benefit, you need to create a *SQLServerEsuL
 For more information about licensing by physical cores with unlimited virtualization, see the section "Licensing for maximum virtualization" in the [SQL Server licensing guide (download link)](https://download.microsoft.com/download/e/2/9/e29a9331-965d-4faa-bd2e-7c1db7cd8348/SQL_Server_2019_Licensing_guide.pdf).
 
 A single *SqlServerEsuLicense* resource can cover multiple virtual machines connected to Azure Arc. It includes several properties that define how the license is applied and billed.
-
-To qualify, each *Machine - Azure Arc* resource must be configured to use a physical core ESU license. Otherwise, the *Machine - Azure Arc* resource is billed for ESUs individually.
 
 ### License details
 
@@ -129,12 +127,13 @@ The **License details** tab includes the standard Azure properties and the ESU l
 
 You can create the license resource in a resource group in any of the [supported regions](overview.md#supported-azure-regions). The location of the resource is set to the location of the selected resource group by default, but you can change it to a different region.
 
-The location of the license resource doesn't affect the scope. It applies to all *Machine - Azure Arc* resources in the selected license scope, regardless of the regions where these resources are onboarded.
-
+The location of the license resource doesn't affect the scope. It applies to all *Machine - Azure Arc* resources in the selected license scope, regardless of the regions where these resources are onboarded. You can associate multiple license resources with the same scope or overlapping scopes. For example, you can add a new license when you deploy additional physical servers during temporary bursts of activity, or to reflect unexpected growth.
+  
 > [!IMPORTANT]  
-> You can associate multiple license resources with the same scope or overlapping scopes. For example, you can add a new license when you deploy additional physical servers during temporary bursts of activity, or to reflect unexpected growth.
->  
-> All the virtual machines running on these physical servers must be connected to Azure Arc in the scope of the license resource. And they must have the `UsePhysicalEsuCoreLicense` host configuration property set to `True`. For more information, see [Use a physical core ESU license](manage-configuration.md#use-physical-core-esu-license).
+> When using the unlimited virtualization benefit, make sure that
+> 1. all the virtual machines on the licensed physical servers are connected to Azure Arc;
+> 1. they are in the scope specified in the license, e.g. subscription or resource group;
+> 1. they have the `UsePhysicalEsuCoreLicense` host configuration property set to `True`. For more information, see [Use a physical core ESU license](manage-configuration.md#use-physical-core-esu-license).
 
 ### License activation
 
