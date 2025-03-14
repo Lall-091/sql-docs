@@ -381,9 +381,9 @@ Connect to the `job_database` and run the following command:
 EXEC jobs.sp_start_job 'CreateTableTest';
 
 -- Execute the latest version of a job and receive the execution ID
-declare @je uniqueidentifier;
-exec jobs.sp_start_job 'CreateTableTest', @job_execution_id = @je output;
-select @je;
+DECLARE @je uniqueidentifier;
+EXEC jobs.sp_start_job 'CreateTableTest', @job_execution_id = @je output;
+SELECT @je;
 
 -- Monitor progress
 SELECT * FROM jobs.job_executions WHERE job_execution_id = @je;
@@ -487,7 +487,7 @@ Connect to the `job_database` and run the following command:
 -- Delete history of a specific job's executions older than the specified date
 EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-01 00:00:00';
 
---Note: job history is automatically deleted if it is >45 days old
+-- Note: job history is automatically deleted if it is >45 days old
 ```
 
 ## Delete a job and all its job history
