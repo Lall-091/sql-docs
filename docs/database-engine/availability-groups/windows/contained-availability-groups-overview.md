@@ -142,12 +142,12 @@ In [!INCLUDE[sssql22-md](../../../includes/sssql22-md.md)] before Cumulative Upd
 
 Starting with [!INCLUDE[sssql22-md](../../../includes/sssql22-md.md)] Cumulative Update 18, if you configure resource governor on an instance connection, resource consumption on either instance connections or contained availability group connections is governed as expected. If you attempt to configure resource governor on a contained availability group connection, you receive an error.
 
-Resource governor works at the [!INCLUDE[ssde-md](../../includes/ssde-md.md)] instance level. Resource governor configuration doesn't propagate to availability replicas. You must configure resource governor on each instance hosting an availability replica.
+Resource governor works at the [!INCLUDE[ssde-md](../../../includes/ssde-md.md)] instance level. Resource governor configuration doesn't propagate to availability replicas. You must configure resource governor on each instance hosting an availability replica.
 
 > [!TIP]
 > We recommend that for a given availability group, you use the same resource governor configuration for all availability replicas.
 
-For more information, see [Resource governor](../../../relational-databases/resource-governor/resource-governor.md) and [Resource governor configuration examples and best practices](resource-governor-walkthrough.md).
+For more information, see [Resource governor](../../../relational-databases/resource-governor/resource-governor.md) and [Resource governor configuration examples and best practices](../../../relational-databases/resource-governor/resource-governor-walkthrough.md).
 
 ### Change data capture
 
