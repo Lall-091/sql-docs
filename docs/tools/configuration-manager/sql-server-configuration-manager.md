@@ -1,6 +1,6 @@
 ---
 title: SQL Server Configuration Manager
-description: Utilizing the SQL Server Configuration Manager client
+description: Utilizing the SQL Server Configuration Manager client.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest, vanto
@@ -42,7 +42,7 @@ SQL Server Configuration Manager is installed automatically with your SQL Server
 
 Because SQL Server Configuration Manager is a snap-in for the [!INCLUDE [msconame-md](../../includes/msconame-md.md)] Management Console program and not a stand-alone program, it doesn't appear as an application in newer versions of Windows.
 
-## Accessing SQL Server Configuration Manager
+## Access SQL Server Configuration Manager
 
 - **Windows 10 and Windows 11:** To open SQL Server Configuration Manager, type `SQLServerManager16.msc` (for SQL Server 2022) in the Start Page. For other versions, replace `16` with the appropriate number. You can pin SQL Server Configuration Manager to the Start Page or Task Bar by right-clicking `SQLServerManager16.msc` and selecting "Open file location." Then, right-click the file and select "Pin to Start" or "Pin to Taskbar".
 - **Windows 8:** In the Search charm, under Apps, type `SQLServerManager<version>.msc` (for example, `SQLServerManager16.msc`) and press Enter.

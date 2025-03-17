@@ -4677,7 +4677,7 @@ items:
         href: database-engine/configure-windows/start-sql-server-in-single-user-mode.md
       - name: Minimal Configuration
         href: database-engine/configure-windows/start-sql-server-with-minimal-configuration.md
-      - name: SQL Server Configuration Manager services -
+      - name: SQL Server Configuration Manager services
         items:
         - name: Connect to another computer
           href: database-engine/configure-windows/scm-services-connect-to-another-computer.md
@@ -8123,6 +8123,8 @@ items:
     href: tools/overview-sql-tools.md
   - name: Azure Data Studio >
     href: azure-data-studio/index.yml
+  - name: SSMS >
+    href: ssms/index.yml
   - name: Command prompt utilities
     href: tools/command-prompt-utility-reference-database-engine.md
     items:
