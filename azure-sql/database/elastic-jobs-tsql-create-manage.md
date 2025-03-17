@@ -4,7 +4,7 @@ description: Learn how to create an elastic job agent and run scripts across man
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: srinia, mathoma
-ms.date: 04/03/2024
+ms.date: 03/17/2025
 ms.service: azure-sql-database
 ms.subservice: elastic-jobs
 ms.topic: how-to
