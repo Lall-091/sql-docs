@@ -43,8 +43,8 @@ curl -O https://download.microsoft.com/download/fae28b9a-d880-42fd-9b98-d779f0fd
 curl -O https://download.microsoft.com/download/7/6/d/76de322a-d860-4894-9945-f0cc5d6a45f8/mssql-tools18_18.4.1.1-1_$architecture.apk
 
 #(Optional) Verify signature, if 'gpg' is missing install it using 'apk add gnupg':
-curl -O https://download.microsoft.com/download/7/6/d/76de322a-d860-4894-9945-f0cc5d6a45f8/msodbcsql18_18.5.1.1-1_$architecture.sig
-curl -O https://download.microsoft.com/download/fae28b9a-d880-42fd-9b98-d779f0fdd77f/msodbcsql18_18.4.1.1-1_$architecture.sig
+curl -O https://download.microsoft.com/download/fae28b9a-d880-42fd-9b98-d779f0fdd77f/msodbcsql18_18.5.1.1-1_$architecture.sig
+curl -O https://download.microsoft.com/download/7/6/d/76de322a-d860-4894-9945-f0cc5d6a45f8/mssql-tools18_18.4.1.1-1_$architecture.sig
 
 curl https://packages.microsoft.com/keys/microsoft.asc  | gpg --import -
 gpg --verify msodbcsql18_18.5.1.1-1_$architecture.sig msodbcsql18_18.5.1.1-1_$architecture.apk
