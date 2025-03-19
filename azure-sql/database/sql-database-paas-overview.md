@@ -48,7 +48,8 @@ The [vCore-based purchasing model](service-tiers-sql-database-vcore.md) offers t
 - The [Business Critical](service-tiers-sql-database-vcore.md#business-critical) service tier is designed for OLTP applications with high transaction rates and low latency I/O requirements. It offers the highest resilience to failures by using several isolated replicas.
 - The [Hyperscale](service-tier-hyperscale.md) service tier is designed for most business workloads. Hyperscale provides great flexibility and high performance with independently scalable compute and storage resources. It offers higher resilience to failures by allowing configuration of more than one isolated database replica.
 
-The [DTU-based purchasing model](service-tiers-dtu.md) offers two service tiers: 
+The [DTU-based purchasing model](service-tiers-dtu.md) offers three service tiers: 
+- The Basic service tier is designed for less demanding workloads. It offers cost-effective solutions for small applications with minimal performance requirements.
 - The Standard service tier is designed for common workloads. It offers budget-oriented balanced compute and storage options.
 - The Premium service tier is designed for OLTP applications with high transaction rates and low latency I/O requirements. It offers the highest resilience to failures by using several isolated replicas.
 
