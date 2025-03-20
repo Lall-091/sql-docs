@@ -48,7 +48,7 @@ Below is a basic example of how to execute an SSIS package in a package catalog 
 
 ```powershell
 (Get-ChildItem SQLSERVER:\SSIS\localhost\Default\Catalogs\SSISDB\Folders\Project1Folder\Projects\'Integration Services Project1'\Packages\ |
-WHERE { $_.Name -eq 'Package.dtsx' }).Execute("false", $null)
+WHERE { $_.Name -eq 'Package.dtsx' }).Execute($false, $null)
 ```
 
 ## PowerShell script
@@ -91,7 +91,7 @@ $package = $project.Packages[$PackageName]
 
 Write-Host "Running " $PackageName "..."
 
-$result = $package.Execute("false", $null)
+$result = $package.Execute($false, $null)
 
 Write-Host "Done."
 ```
