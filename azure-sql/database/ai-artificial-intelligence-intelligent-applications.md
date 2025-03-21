@@ -39,7 +39,7 @@ The following links provide sample code of various options to build intelligent 
 | **[Azure AI Search](#azure-ai-search)** | Use your database together with Azure AI Search to train LLM on your data. |
 | **[Intelligent applications](#intelligent-applications)** | Learn how to create an end-to-end solution using a common pattern that can be replicated in any scenario. |
 | **[Copilot skills in Azure SQL Database](#microsoft-copilot-skills-in-azure-sql-database)** | Learn about the set of AI-assisted experiences designed to streamline the design, operation, optimization, and health of Azure SQL Database-driven applications. |
-| **[Copilot skills in Fabric SQL database](#microsoft-copilot-skills-in-fabric-sql-database-preview)** | Learn about the set of AI-assisted experiences designed to streamline the design, operation, optimization, and health of Fabric SQL database-driven applications. |
+| **[Copilot skills in Fabric SQL database](#microsoft-copilot-in-fabric-sql-database-preview)** | Learn about the set of AI-assisted experiences designed to streamline the design, operation, optimization, and health of Fabric SQL database-driven applications. |
 
 <a id="key-concepts-for-implementing-rag-with-azure-sql-database-and-azure-openai"></a>
 
@@ -214,7 +214,6 @@ A few of samples on using Azure SQL with LangChain:
 End-to-end examples:
 
 - [Build a chatbot on your own data in 1 hour with Azure SQL, Langchain and Chainlit](https://devblogs.microsoft.com/azure-sql/build-a-chatbot-on-your-own-data-in-1-hour-with-azure-sql-langchain-and-chainlit/): Build a chatbot using the RAG pattern on your own data using Langchain for orchestrating LLM calls and Chainlit for the UI.
-- [Building your own DB Copilot for Azure SQL with Azure OpenAI GPT-4](https://devblogs.microsoft.com/azure-sql/building-your-own-db-copilot-for-azure-sql-with-azure-openai-gpt-4/): Build a copilot-like experience to query your databases using natural language.
 
 ### Semantic Kernel integration
 
@@ -228,7 +227,7 @@ An example of how easily Semantic Kernel helps to build AI-enabled solution is h
 
 ## Microsoft Copilot skills in Azure SQL Database
 
-[Microsoft Copilot skills in Azure SQL Database (preview)](../copilot/copilot-azure-sql-overview.md) is a set of AI-assisted experiences designed to streamline the design, operation, optimization, and health of Azure SQL Database-driven applications. Copilot can improve productivity by offering natural language to SQL conversion and self-help for database administration.
+[Microsoft Copilot in Azure SQL Database (preview)](../copilot/copilot-azure-sql-overview.md) is a set of AI-assisted experiences designed to streamline the design, operation, optimization, and health of Azure SQL Database-driven applications.
 
 Copilot provides relevant answers to user questions, simplifying database management by leveraging database context, documentation, dynamic management views, Query Store, and other knowledge sources. For example:
 
@@ -238,16 +237,7 @@ Copilot provides relevant answers to user questions, simplifying database manage
 > [!NOTE]
 > Microsoft Copilot skills in Azure SQL Database are currently in preview for a limited number of early adopters. To sign up for this program, visit [Request Access to Copilot in Azure SQL Database: Preview](https://aka.ms/sqlcopilot-signup).
 
-The preview of Copilot for Azure SQL Database includes two Azure portal experiences:
-
-| Portal location | Experiences |
-| :-- |:-- |
-| **Azure portal Query Editor** | [Natural language to SQL](../copilot/copilot-azure-sql-overview.md?view=azuresql-db&preserve-view=true#natural-language-to-sql-query): This experience within the [Azure portal query editor for Azure SQL Database](query-editor.md) translates natural language queries into SQL, making database interactions more intuitive. For a tutorial and examples of natural language to SQL capabilities, see [Natural language to SQL in the Azure portal query editor (preview)](../copilot/query-editor-natural-language-to-sql-copilot.md). |
-| **Microsoft Copilot for Azure** | [Azure Copilot integration](../copilot/copilot-azure-sql-overview.md?view=azuresql-db&preserve-view=true#microsoft-copilot-in-azure-enhanced-scenarios): This experience adds Azure SQL skills into [Microsoft Copilot for Azure](/azure/copilot/overview), providing customers with self-guided assistance, empowering them to manage their databases and solve issues independently.|
-
-For more information, see [Frequently asked questions about Microsoft Copilot skills in Azure SQL Database (preview)](../copilot/copilot-azure-sql-faq.yml).
-
-## Microsoft Copilot skills in Fabric SQL database (preview)
+## Microsoft Copilot in Fabric SQL database (preview)
 
 [Copilot for SQL database in Microsoft Fabric (preview)](/fabric/database/sql/copilot) includes integrated AI assistance with the following features:
 
@@ -262,7 +252,7 @@ For more information, see [Frequently asked questions about Microsoft Copilot sk
 - **[Chat pane](/fabric/database/sql/copilot-chat-pane)**: Use the chat pane to ask questions to Copilot through natural language. Copilot responds with a generated SQL query or natural language based on the question asked.
 
   - **Natural Language to SQL**: Generate T-SQL code from plain text requests, and get suggestions of questions to ask to accelerate your workflow.
-    
+
   - **Document-based Q&A**: Ask Copilot questions about general SQL database capabilities, and it responds in natural language. Copilot also helps find documentation related to your request.
 
 Copilot for SQL database utilizes table and view names, column names, primary key, and foreign key metadata to generate T-SQL code. Copilot for SQL database does not use data in tables to generate T-SQL suggestions.
