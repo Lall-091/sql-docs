@@ -36,7 +36,8 @@ To configure an Always On availability group, you must have the following prereq
 - A resource group with a domain controller. 
 - One or more domain-joined [VMs in Azure running SQL Server 2016 (or later) Enterprise edition](./create-sql-vm-portal.md) in separate subnets in the same virtual network. The VMs are in either the *same* availability set or *different* availability zones that have been [registered with the SQL IaaS Agent extension](sql-agent-extension-manually-register-single-vm.md).  
 - The latest version of [PowerShell](/powershell/scripting/install/installing-powershell) or the [Azure CLI](/cli/azure/install-azure-cli). 
-- Two available (not used by any entity) IP addresses, in the same subnet as each virtual machine. Each virtual machine will have an IP Address for the availability group listener. 
+- Two available (not used by any entity) IP addresses, in the same subnet as each virtual machine. Each virtual machine will have an IP Address for the availability group listener.
+- Each virtual machine hostname must match the name of their respective SQL Virtual Machine resource. 
 - Windows Server Core is not a supported operating system for the PowerShell commands referenced in this article as there's a dependency on [RSAT](/windows-server/remote/remote-server-administration-tools), which is not included in Core installations of Windows.
 
 ## Permissions
