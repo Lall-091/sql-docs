@@ -1,14 +1,15 @@
 ---
 author: MikeRayMSFT
 ms.author: mikeray
-ms.date: 01/24/2024
+ms.date: 03/25/2025
 ms.topic: include
 ms.custom: ignite-2023
 ---
 
 Azure Arc-enabled [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] doesn't currently support the following configurations:
 
-- Windows Server 2012 or older versions of Windows Server. They do not have the minimum required versions of TLS to securely authenticate to Azure.  Windows Server 2012 R2 is supported because it supports TLS 1.2.
+- Windows Server 2012 or older versions of Windows Server. They do not have the minimum required versions of TLS to securely authenticate to Azure.
+- Windows Server 2012 R2 is supported for DPS because it supports TLS 1.2. Windows Server 2012 R2 does not support telemetry (monitoring).
 - [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] running in containers.
 - [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] editions: Business Intelligence.
 - Private Link connections to the Azure Arc data processing service at the `<region>.arcdataservices.com` endpoint used for inventory and usage upload.

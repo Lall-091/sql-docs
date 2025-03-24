@@ -4,7 +4,7 @@ description: "Describes how to troubleshoot connectivity to the data processing 
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/23/2024
+ms.date: 03/25/2025
 ms.topic: troubleshooting
 ---
 
@@ -123,7 +123,7 @@ You can probe connectivity to all regions with the [test-connectivity.ps1](https
 
 ## Check TLS version compatibility
 
-The telemetry and data processing service endpoints support the following TLS versions: TLS 1.2 and 1.3.  Supported TLS versions by operating system for Windows Server 2012/R2 are listed below.
+The data processing service endpoint supports the following TLS versions: TLS 1.2 and 1.3. Supported TLS versions by operating system for Windows Server 2012/R2 are listed below.
 
 |Cipher Suite|WS 2012|WS 2012 R2|
 | -------- | -------- | -------- |
@@ -131,7 +131,10 @@ The telemetry and data processing service endpoints support the following TLS ve
 |`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (0xC02F)`| Not Supported| Supported|
 |`TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (0xC030)`| Not Supported| Supported|
 
-If an unsupported TLS version is being used, you may see an error in the log 
+For telemetry endpoints, Windows Server 2012 R2 and older are not supported.
+
+If an unsupported TLS version is being used, you may see an error in the log
+
 ```output
 <date time>|ERROR|SqlServerExtension.Service|Request failed with exception 'System.Net.Http.HttpRequestException: The SSL connection could not be established, see inner exception.
 
