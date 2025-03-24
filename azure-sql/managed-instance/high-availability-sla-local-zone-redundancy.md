@@ -29,7 +29,7 @@ This article describes the architecture of Azure SQL Managed Instance that achie
 
 SQL Managed Instance runs on the latest stable version of the SQL Server database engine on the Windows operating system with all applicable patches. SQL Managed Instance automatically handles critical servicing tasks, such as patching, backups, Windows and SQL database engine upgrades, and unplanned events such as underlying hardware, software, or network failures. When an instance is patched or fails over, the downtime isn't impactful if you [employ retry logic](../database/develop-overview.md#resiliency) in your app. SQL Managed Instance can quickly recover even in the most critical circumstances, ensuring that your data is always available. Most users don't notice that upgrades are performed continuously.
 
-By default, Azure SQL Managed Instance achieves *availability* through local redundancy, making your instance available during:
+By default, Azure SQL Managed Instance achieves *availability* through local redundancy, making sure your instance handles disruptions such as:
 
 - Customer initiated [management operations](management-operations-overview.md) that result in a brief downtime
 - Service maintenance operations
@@ -40,7 +40,7 @@ By default, Azure SQL Managed Instance achieves *availability* through local red
 - Other problems with the SQL database engine
 - Other potential unplanned local outages
 
-The default availability solution is designed to ensure that committed data is never lost due to failures, that maintenance operations don't affect your workload, and that the instance isn't a single point of failure in your software architecture.
+The default availability solution is designed to ensure that committed data is never lost due to failures, that maintenance operations have minimal impacts to your workload, and that the instance isn't a single point of failure in your software architecture.
 
 However, to minimize impact to your data in the event of an outage to an entire zone, you can achieve *high availability* by enabling zone redundancy. Without zone redundancy, failovers happen locally within the same data center, which might result in your instance being unavailable until the outage is resolved - the only way to recover is through a disaster recovery solution, such as through a [failover group](failover-group-sql-mi.md), or a [geo-restore](recovery-using-backups.md#geo-restore) of a geo-redundant backup. To learn more, review the [overview of business continuity](business-continuity-high-availability-disaster-recover-hadr-overview.md).
 

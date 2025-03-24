@@ -28,7 +28,7 @@ This article describes the architecture of Azure SQL Database and SQL database i
 
 Azure SQL Database and SQL database in Fabric both run on the latest stable version of the SQL Server Database Engine on the Windows operating system with all applicable patches. SQL Database automatically handles critical servicing tasks, such as patching, backups, Windows and SQL engine upgrades, and unplanned events such as underlying hardware, software, or network failures. When a database or elastic pool in SQL Database is patched or fails over, the downtime isn't impactful if you [employ retry logic](develop-overview.md#resiliency) in your app. SQL Database can quickly recover even in the most critical circumstances, ensuring that your data is always available. Most users don't notice that upgrades are performed continuously.
 
-By default, Azure SQL Database achieves *availability* through local redundancy, making your database available during:
+By default, Azure SQL Database achieves *availability* through local redundancy, making sure your database handles disruptions such as:
 
 - Customer initiated management operations that result in a brief downtime
 - Service maintenance operations
@@ -39,7 +39,7 @@ By default, Azure SQL Database achieves *availability* through local redundancy,
 - Other potential unplanned local outages
 
 
-The default availability solution is designed to ensure that committed data is never lost due to failures, that maintenance operations don't affect your workload, and that the database isn't a single point of failure in your software architecture.
+The default availability solution is designed to ensure that committed data is never lost due to failures, that maintenance operations have minimal impacts to your workload, and that the database isn't a single point of failure in your software architecture.
 
 However, to minimize impact to your data in the event of an outage to an entire zone, you can achieve *high availability* by enabling zone redundancy. Without zone redundancy, failovers happen locally within the same data center, which might result in your database being unavailable until the outage is resolved - the only way to recover is through a disaster recovery solution, such as geo-failover through [active geo-replication](active-geo-replication-overview.md), [failover groups](failover-group-sql-db.md), or a [geo-restore](recovery-using-backups.md#geo-restore) of a geo-redundant backup. To learn more, review the [overview of business continuity](business-continuity-high-availability-disaster-recover-hadr-overview.md).
 
