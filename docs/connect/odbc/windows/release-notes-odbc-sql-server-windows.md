@@ -29,7 +29,7 @@ For the ARM64 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?li
 | Feature added | Details |
 | :------- | :------ |
 | Packet Size option | Expose the Packet Size as a connection string option. |
-| Include Microsoft Driver Authentication API (masql-auth.dll) in the installer | Now included in the base driver installation and the ODBC installer upgrades Microsoft Driver Authentication API. |
+| Include Microsoft SQL Driver Authentication library (mssql-auth.dll) in the installer | Now included in the base driver installation, the installer installs and upgrades the Microsoft SQL Driver Authentication library. |
 | Added 3 new languages | Added support for 3 new languages Czech, Polish, and Turkish. |
 | Install all features | Modify installer to install both features (Core and SDK) by default. |
 | Bug fixes. | [Bug fixes](../bug-fixes.md). |
