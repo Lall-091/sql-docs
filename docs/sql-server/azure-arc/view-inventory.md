@@ -173,6 +173,7 @@ Resources deleted on-premises might not be immediately deleted in Azure. For exa
 
 ## Related content
 
+- [Migration Dashboard](migration-inventory.md)
 - [Feature availability by service type](overview.md#feature-availability-by-service-type)
 - [Protect SQL Server with Microsoft Defender for Cloud](configure-advanced-data-security.md)
 - [Configure best practices assessment for SQL Server enabled by Azure Arc](assess.md)

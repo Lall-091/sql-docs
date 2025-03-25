@@ -9372,6 +9372,8 @@ items:
       items:
       - name: Discover & assess
         href: sql-server/azure-arc/migration-assessment.md
+      - name: Migration dashboard
+        href: sql-server/azure-arc/migration-inventory.md
     - name: FAQ
       href: sql-server/azure-arc/faq.yml
     - name: Data collection & reporting
