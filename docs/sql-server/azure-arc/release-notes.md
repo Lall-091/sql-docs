@@ -53,11 +53,12 @@ This release introduces:
 
 **Extension version**: `1.1.2914.231`
 
-This release includes bug fixes in the HADR detection logic. The client connections to the following system databases are allowed on the free HADR replicas:
+This release includes bug fixes in the high availability and disaster recovery (HADR) detection logic. Client connections to the following system databases are allowed on the free HADR replicas:
+
 - tempdb
 - msdb 
-- master database
-- model database
+- master
+- model
 
 ## November 12, 2024
 
