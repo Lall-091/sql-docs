@@ -79,29 +79,29 @@ After performance testing the new compatibility level and deploying Query Store 
 You can use the `ABORT_QUERY_EXECUTION` query hint to block future execution of known problematic queries, for example non-essential queries causing high resource consumption and impacting critical application workloads.
 
 > [!NOTE]
-> At this time, the `ABORT_QUERY_EXECUTION` query hint is in preview in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] only.
+> At this time, the `ABORT_QUERY_EXECUTION` query hint is available in preview in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] only.
 
 For example, to block future execution of query ID 39, execute the following statement:
 
 ```sql
-EXEC sys.sp_query_store_set_hints @query_id= 39, @query_hints = N'OPTION (USE HINT (''ABORT_QUERY_EXECUTION''))';
+EXEC sys.sp_query_store_set_hints @query_id = 39, @query_hints = N'OPTION (USE HINT (''ABORT_QUERY_EXECUTION''))';
 ```
 
-For more information, see [examples](query-store-hints.md#examples) of using Query Store hints.
+For more information, see Query Store hint [examples](query-store-hints.md#examples).
 
 The following considerations apply:
 
 - When you specify this hint for a query using [sys.sp_query_store_set_hints](../system-stored-procedures/sys-sp-query-store-set-hints-transact-sql.md), an attempt to execute the query fails with error 8778, severity 16, *Query execution has been aborted because the ABORT_QUERY_EXECUTION hint was specified.*
 - To unblock a query, you can clear the hint by passing the same query ID value to the [sys.sp_query_store_clear_hints](../system-stored-procedures/sys-sp-query-store-clear-hints-transact-sql.md) stored procedure.
-- At least one query execution must be recorded in Query Store to use this hint. This execution doesn't have to be successful. This means that future execution of timed out or canceled queries can be blocked.
+- At least one query execution must be recorded in Query Store to specify the hint. This execution doesn't have to be successful. This means that future execution of timed out or canceled queries can be blocked.
 - If a query is already executing when you block it, its execution continues. You can use the [KILL](../../t-sql/language-elements/kill-transact-sql.md) statement to abort the query.
-    - Execution of killed queries isn't recorded in Query Store. If the query isn't yet in Query Store, you need to let the query complete or time out so that its future execution can be blocked.
+    - Execution of killed queries isn't recorded in Query Store. If the query isn't yet in Query Store, you need to let the query complete or time out so that it's recorded in Query Store, and its future execution can be blocked.
 - As with all Query Store hints, you need to have the `ALTER` permission on the database to set and clear the `ABORT_QUERY_EXECUTION` hint.
 - You can use the following example query to find all queries in Query Store that have been blocked:
     ```sql
     SELECT qsh.query_id,
-          q.query_hash,
-          qt.query_sql_text
+           q.query_hash,
+           qt.query_sql_text
     FROM sys.query_store_query_hints AS qsh
     INNER JOIN sys.query_store_query AS q
     ON qsh.query_id = q.query_id
