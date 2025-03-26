@@ -34,11 +34,11 @@ Consider the following use cases as ideal of Query Store hints. For more informa
 
 Using Query Store hints allows you to influence the execution plans of queries without changing application code or database objects. No other feature allows for you to apply query hints quickly and easily. 
 
-You can use Query Store hints, for example, to benefit ETLs without redeploying code. Learn how to improve bulk loading with Query Store hints with this 14-minute video:
+You can use Query Store hints, for example, to benefit ETL without redeploying code. Learn how to improve bulk loading with Query Store hints with this 14-minute video:
 
 > [!VIDEO https://channel9.msdn.com/Shows/data-exposed/using-query-store-hints-to-optimize-memory-grants-improving-performance/player?WT.mc_id=dataexposed-c9-niner]
 
-Query Store hints are lightweight query tuning methods, but if a query becomes problematic it should be addressed with more substantial code changes. If you are regularly finding the need to apply Query Store hints to a query, consider a larger query rewrite. The SQL Server Query Optimizer typically selects the best execution plan for a query, we recommend only using hints as a last resort for experienced developers and database administrators. 
+Query Store hints are lightweight query tuning methods, but if a query becomes problematic it should be addressed with more substantial code changes. If you are regularly finding the need to apply Query Store hints to a query, consider a larger query rewrite. The SQL Server Query Optimizer typically selects the best execution plan for a query. We recommend only using hints as a last resort for experienced developers and database administrators.
 
 For information on which query hints can be applied, see [Supported query hints](../system-stored-procedures/sys-sp-query-store-set-hints-transact-sql.md#supported-query-hints).
 
@@ -70,13 +70,13 @@ For a complete tutorial, see [Query Store hints Examples](query-store-hints.md#e
 
 ### Consider an older compatibility level after upgrade
 
-Another case where Query Store hints can help is where queries cannot be modified directly after a SQL Server instance migration or upgrade. Use Query Store hints to apply a prior compatibility level for a query until it can be rewritten or otherwise addressed to perform well in the latest compatibility level. Identify outlier queries that have regressed in a higher compatibility level using the [Query Store's regressed queries report](monitoring-performance-by-using-the-query-store.md#Regressed), using the [Query Tuning Advisor](upgrade-dbcompat-using-qta.md) tool during a migration, or other query-level application telemetry. For more information on the differences between compatibility levels, review the [Differences between compatibility levels](../../t-sql/statements/alter-database-transact-sql-compatibility-level.md#differences-between-compatibility-levels).
+Another case where Query Store hints can help is where queries cannot be modified directly after a SQL Server instance migration or upgrade. Use Query Store hints to apply a prior compatibility level for a query until it can be rewritten or otherwise addressed to perform well in the latest compatibility level. Identify outlier queries that regressed with a higher compatibility level using the [Query Store's regressed queries report](monitoring-performance-by-using-the-query-store.md#Regressed), using the [Query Tuning Advisor](upgrade-dbcompat-using-qta.md) tool during a migration, or other query-level application telemetry. For more information on the differences between compatibility levels, review the [Differences between compatibility levels](../../t-sql/statements/alter-database-transact-sql-compatibility-level.md#differences-between-compatibility-levels).
 
 After performance testing the new compatibility level and deploying Query Store hints in this way, you can upgrade the entire database's compatibility level while keeping key problematic queries on the prior compatibility level, without any code changes.
 
 ### Block future execution of problematic queries
 
-You can use the `ABORT_QUERY_EXECUTION` query hint to block future execution of known problematic queries, for example non-essential queries causing high resource consumption and impacting critical application workloads.
+You can use the `ABORT_QUERY_EXECUTION` query hint to block future execution of known problematic queries, for example nonessential queries causing high resource consumption and impacting critical application workloads.
 
 > [!NOTE]
 > At this time, the `ABORT_QUERY_EXECUTION` query hint is available in preview in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] only.
@@ -95,9 +95,9 @@ The following considerations apply:
 - To unblock a query, you can clear the hint by passing the same query ID value to the [sys.sp_query_store_clear_hints](../system-stored-procedures/sys-sp-query-store-clear-hints-transact-sql.md) stored procedure.
 - At least one query execution must be recorded in Query Store to specify the hint. This execution doesn't have to be successful. This means that future execution of timed out or canceled queries can be blocked.
 - If a query is already executing when you block it, its execution continues. You can use the [KILL](../../t-sql/language-elements/kill-transact-sql.md) statement to abort the query.
-    - Execution of killed queries isn't recorded in Query Store. If the query isn't yet in Query Store, you need to let the query complete or time out so that it's recorded in Query Store, and its future execution can be blocked.
+    - Execution of killed queries isn't recorded in Query Store. If the query isn't yet in Query Store, you need to let the query complete or time out so that it's recorded in Query Store and you can add the `ABORT_QUERY_EXECUTION` hint.
 - As with all Query Store hints, you need to have the `ALTER` permission on the database to set and clear the `ABORT_QUERY_EXECUTION` hint.
-- You can use the following example query to find all queries in Query Store that have been blocked:
+- You can use the following example query to find all queries in Query Store that are blocked:
     ```sql
     SELECT qsh.query_id,
            q.query_hash,
@@ -123,21 +123,21 @@ Plan guides, forced plans via the Query Store, and Query Store hints override th
 Re-evaluate your existing Query Store hints strategy in the following cases:
 
  - After known large data distribution changes.
- - When the service level objective (SLO) of your Azure SQL Database or Managed Instance or virtual machine has changed.
+ - When the resources available to the database change. For example, when the compute size of your Azure SQL Database, SQL Managed Instance, or SQL Server virtual machine changes.
  - Where plan fixing has become long-lived. Query Store hints are best used for short-term fixes.
  - Unexpected performance regressions.
 
 ### Broad impact potential
 
-Query Store hints will affect all executions of the query, regardless of parameter set, source application, user, or result set. In the case of accidentally performance regression, Query Store hints created with [sys.sp_query_store_set_hints](../system-stored-procedures/sys-sp-query-store-set-hints-transact-sql.md) can be easily removed with [sys.sp_query_store_clear_hints](../system-stored-procedures/sys-sp-query-store-clear-hints-transact-sql.md).
+Query Store hints affect all executions of the query, regardless of parameter set, source application, user, or result set. In the case of accidentally performance regression, Query Store hints created with [sys.sp_query_store_set_hints](../system-stored-procedures/sys-sp-query-store-set-hints-transact-sql.md) can be easily removed with [sys.sp_query_store_clear_hints](../system-stored-procedures/sys-sp-query-store-clear-hints-transact-sql.md).
 
 Carefully load test changes for mission critical or sensitive systems before applying Query Store hints in production. 
 
 ### Forced parameterization and the RECOMPILE hint are not supported
 
-Applying the RECOMPILE query hint with Query Store hints is not supported when the database option [PARAMETERIZATION is set to FORCED](../../t-sql/statements/alter-database-transact-sql-set-options.md#parameterization_option-). For more information, see [Guidelines for Using Forced Parameterization](../../relational-databases/query-processing-architecture-guide.md#forced-parameterization).
+Applying the `RECOMPILE` query hint with Query Store hints is not supported when the database option [PARAMETERIZATION is set to FORCED](../../t-sql/statements/alter-database-transact-sql-set-options.md#parameterization_option-). For more information, see [Guidelines for Using Forced Parameterization](../../relational-databases/query-processing-architecture-guide.md#forced-parameterization).
 
-The RECOMPILE hint is not compatible with forced parameterization set at the database level. If the database has forced parameterization set, and the RECOMPILE hint is part of the hints string set in Query Store for a query, the Database Engine will ignore the RECOMPILE hint and will apply other hints if leveraged. Additionally, starting in July 2022 in Azure SQL Database, a warning (error code 12461) should be issued stating that the RECOMPILE hint was ignored.
+The `RECOMPILE` hint is not compatible with forced parameterization set at the database level. If the database uses forced parameterization, and the `RECOMPILE` hint is part of the hints string set in Query Store for a query, the Database Engine ignores the `RECOMPILE` hint and applies other hints if specified. Additionally, starting in July 2022 in Azure SQL Database, a warning (error code 12461) is issued stating that the `RECOMPILE` hint was ignored.
 
 For information on which query hints can be applied, see [Supported query hints](../system-stored-procedures/sys-sp-query-store-set-hints-transact-sql.md#supported-query-hints).
 
