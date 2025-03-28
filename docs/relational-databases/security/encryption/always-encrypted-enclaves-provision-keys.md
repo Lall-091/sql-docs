@@ -89,7 +89,7 @@ Import-Module "SqlServer" -MinimumVersion 22.0.50
 $serverName = "<server name>"
 $databaseName = "<database name>"
 # Change the authentication method in the connection string, if needed.
-$connStr = "Server = " + $serverName + "; Database = " + $databaseName + "; Integrated Security = True"
+$connStr = "Server = " + $serverName + "; Database = " + $databaseName + "; Integrated Security = True; TrustServerCertificate = True"
 $database = Get-SqlDatabase -ConnectionString $connStr
 
 # Create a SqlColumnMasterKeySettings object for your column master key
@@ -132,7 +132,7 @@ $akvKey = Add-AzKeyVaultKey -VaultName $akvName -Name $akvKeyName -Destination "
 $serverName = "<server name>"
 $databaseName = "<database name>"
 # Change the authentication method in the connection string, if needed.
-$connStr = "Server = " + $serverName + "; Database = " + $databaseName + "; Integrated Security = True"
+$connStr = "Server = " + $serverName + "; Database = " + $databaseName + "; Integrated Security = True; TrustServerCertificate = True"
 $database = Get-SqlDatabase -ConnectionString $connStr
 
 # Obtain an access token for key vaults.

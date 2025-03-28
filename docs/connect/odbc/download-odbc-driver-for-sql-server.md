@@ -37,7 +37,7 @@ Version 18.5.1.1 is the latest general availability (GA) version. If you have a 
 - Released: March 17, 2025
 
 > [!NOTE]
-> If you are accessing this page from a non-English language version, and want to see the most up-to-date content, please select **Read in English** at the top of this page. You can download different languages from the US-English version site by selecting [available languages](#available-languages).
+> If you're accessing this page from a non-English language version, and want to see the most up-to-date content, select **Read in English** at the top of this page. You can download different languages from the US-English version site by selecting [available languages](#available-languages).
 
 ## Available languages
 
@@ -140,6 +140,7 @@ If you need to download the packages for offline installation, all versions are 
 - [SUSE 11 .rpm packages](https://packages.microsoft.com/sles/11/prod/)
 
 ### Ubuntu
+- Ubuntu 24.10 .deb packages: [v18](https://packages.microsoft.com/ubuntu/24.10/prod/pool/main/m/msodbcsql18/)
 - Ubuntu 24.04 .deb packages: [v18](https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/msodbcsql18/)
 - Ubuntu 22.04 .deb packages: [v17](https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/msodbcsql17/) [v18](https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/msodbcsql18/)
 [v18](https://packages.microsoft.com/ubuntu/21.10/prod/pool/main/m/msodbcsql18/)
