@@ -436,7 +436,6 @@
           "connect/jdbc/download-microsoft-jdbc-driver-for-sql-server.md",
           "connect/oledb/download-oledb-driver-for-sql-server.md",
           "connect/odbc/download-odbc-driver-for-sql-server.md",
-          "ssms/download-sql-server-management-studio-ssms.md"
         ]
       },
       "sensitive-language-ma": {
