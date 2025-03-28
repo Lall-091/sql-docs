@@ -4,7 +4,7 @@ description: A list of hardware, software, and operating system requirements for
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest, jopilov, rdorr
-ms.date: 11/21/2024
+ms.date: 03/28/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: conceptual
@@ -68,7 +68,7 @@ The following memory and processor requirements apply to all editions of [!INCLU
 | Internet | Internet functionality requires Internet access (fees can apply). |
 | Memory <sup>1</sup> | **Minimum:**<br /><br />Express Editions: 512 MB<br /><br />All other editions: 1 GB<br /><br />**Recommended:**<br /><br />Express Editions: 1 GB<br /><br />All other editions: At least 4 GB and should be increased as database size increases to ensure optimal performance. |
 | Processor Speed | **Minimum:** x64 Processor: 1.4 GHz<br /><br />**Recommended:** 2.0 GHz or faster |
-| Processor Type | x64 Processor: AMD Opteron, AMD Athlon 64, Intel Xeon with Intel EM64T support, Intel Pentium IV with EM64T support |
+| Processor Type | x64 Processor: All Intel and AMD x86-64 CPUs with [64 cores or less per NUMA node](../compute-capacity-limits-by-edition-of-sql-server.md#numa-64) |
 
 <sup>1</sup> The minimum memory required for installing the [!INCLUDE [ssDQSServer](../../includes/ssdqsserver-md.md)] component in [!INCLUDE [ssDQSnoversion](../../includes/ssdqsnoversion-md.md)] (DQS) is 2 GB of RAM, which is different from the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] minimum memory requirement. For information about installing DQS, see [Install Data Quality Services](../../data-quality-services/install-windows/install-data-quality-services.md).
 
