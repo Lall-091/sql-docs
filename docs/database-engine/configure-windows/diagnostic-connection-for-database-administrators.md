@@ -3,7 +3,7 @@ title: "Diagnostic Connection for Database Administrators"
 description: "Find out about the dedicated administrator connection (DAC). View its restrictions, instructions on how to establish it, and examples demonstrating its use."
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 08/12/2022
+ms.date: 03/28/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -17,24 +17,25 @@ helpviewer_keywords:
   - "connections [SQL Server], dedicated administrator"
   - "ports [SQL Server]"
   - "dedicated administrator connections [SQL Server]"
+monikerRange: ">=sql-server-2016 || >=sql-server-linux-ver15 || =azuresqldb-mi-current || =azuresqldb-current"
 ---
 # Diagnostic connection for database administrators
 
-[!INCLUDE[sql-asdb](../../includes/applies-to-version/sql-asdb.md)]
+[!INCLUDE[sql-asdb-asdbmi](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
 
 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] provides a special diagnostic connection for administrators when standard connections to the server aren't possible. This diagnostic connection allows an administrator to access [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to execute diagnostic queries and troubleshoot problems even when [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] isn't responding to standard connection requests.
 
 This dedicated administrator connection (DAC) supports encryption and other security features of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. The DAC only allows changing the user context to another admin user.
 
-[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] makes every attempt to make DAC connect successfully, but under extreme situations it may not be successful.
+[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] makes every attempt to make DAC connect successfully, but under extreme situations it might not be successful.
 
 ## Connect with DAC
 
-By default, the connection is only allowed from a client running on the server. Network connections aren't permitted unless they're configured by using the `sp_configure` stored procedure with the [remote admin connections option](../../database-engine/configure-windows/remote-admin-connections-server-configuration-option.md).
+By default, the connection is only allowed from a client running on the server. Network connections aren't permitted unless they're configured by using the `sp_configure` stored procedure with the [remote admin connections option](remote-admin-connections-server-configuration-option.md).
 
 Only members of the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] sysadmin role can connect using the DAC.
 
-The DAC is available and supported through the `sqlcmd` command-prompt utility using a special administrator switch (`-A`). For more information about using `sqlcmd`, see [Use sqlcmd with Scripting Variables](../../tools/sqlcmd/sqlcmd-use-scripting-variables.md). You can also connect prefixing `admin:` to the instance name in the format `sqlcmd -S admin:<instance_name>`. You can also initiate a DAC from a [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] Query Editor by connecting to `admin:<instance_name>`.
+The DAC is available and supported through the `sqlcmd` command-prompt utility using a special administrator switch (`-A`). For more information about using `sqlcmd`, see [sqlcmd - Use with scripting variables](../../tools/sqlcmd/sqlcmd-use-scripting-variables.md). You can also connect prefixing `admin:` to the instance name in the format `sqlcmd -S admin:<instance_name>`. You can also initiate a DAC from a [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] Query Editor by connecting to `admin:<instance_name>`.
 
 To establish a DAC from [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)]:
 
@@ -43,6 +44,25 @@ To establish a DAC from [!INCLUDE[ssManStudioFull](../../includes/ssmanstudioful
 - From the menu, select **File > New > Database Engine Query**
 
 - From the connection dialog box in the Server Name field, enter `admin:<server_name>` if using the default instance or `admin:<server_name>\<instance_name>` if using a named instance.
+
+
+## DAC port
+
+[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] listens for the DAC on TCP port 1434 if available or a TCP port dynamically assigned upon [!INCLUDE[ssDE](../../includes/ssde-md.md)] startup. The [error log](../../relational-databases/performance/view-the-sql-server-error-log-sql-server-management-studio.md) contains the port number the DAC is listening on. By default the DAC listener accepts connection on only the local port. For a code sample that activates remote administration connections, see [remote admin connections Server Configuration Option](../../database-engine/configure-windows/remote-admin-connections-server-configuration-option.md).
+
+After the remote administration connection is configured, the DAC listener is enabled without restarting [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] and a client can now connect to the DAC remotely. You can enable the DAC listener to accept connections remotely even if [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is unresponsive by first connecting to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] using the DAC locally, and then executing the `sp_configure` stored procedure to accept connection from remote connections.
+
+On cluster configurations, the DAC will be off by default. Users can execute the remote admin connection option of `sp_configure` to enable the DAC listener to access a remote connection. If [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is unresponsive and the DAC listener isn't enabled, you might have to restart [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to connect with the DAC. Therefore, we recommend that you enable the remote admin connections configuration option on clustered systems.
+
+The DAC port is assigned dynamically by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] during startup. When connecting to the default instance, the DAC avoids using a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Resolution Protocol (SSRP) request to the SQL Server Browser Service when connecting. It first connects over TCP port 1434. If that fails, it makes an SSRP call to get the port. If [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Browser isn't listening for SSRP requests, the connection request returns an error. Refer to the error log to find the port number DAC is listening on. If [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is configured to accept remote administration connections, the DAC must be initiated with an explicit port number:
+
+`sqlcmd -S tcp:<server>,<port>`
+
+The [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] error log lists the port number for the DAC, which is 1434 by default. If [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is configured to accept local DAC connections only, connect using the loopback adapter using the following command:
+
+```powershell
+sqlcmd -S 127.0.0.1,1434
+```
 
 ## Restrictions
 
@@ -66,7 +86,7 @@ Because the DAC exists solely for diagnosing server problems in rare circumstanc
 
   - `BACKUP...`
 
-- Only limited resources are guaranteed to be available with the DAC. Don't use the DAC to run resource-intensive queries (for example. a complex join on large table) or queries that may block. This helps prevent the DAC from compounding any existing server problems. To avoid potential blocking scenarios, if you have to run queries that may block, run the query under snapshot-based isolation levels if possible; otherwise, set the transaction isolation level to READ UNCOMMITTED and set the LOCK_TIMEOUT value to a short value such as 2000 milliseconds, or both. This will prevent the DAC session from getting blocked. However, depending on the state that the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is in, the DAC session might get blocked on a latch. You might be able to terminate the DAC session using CTRL-C but it isn't guaranteed. In that case, your only option may be to restart [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+- Only limited resources are guaranteed to be available with the DAC. Don't use the DAC to run resource-intensive queries or queries that can block other queries. This helps prevent the DAC from compounding any existing server problems. To avoid potential blocking scenarios, if you have to run queries that might block, run the query under snapshot-based isolation levels if possible; otherwise, set the transaction isolation level to READ UNCOMMITTED and set the LOCK_TIMEOUT value to a short value such as 2000 milliseconds, or both. This will prevent the DAC session from getting blocked. However, depending on the state that the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is in, the DAC session might get blocked on a latch. You might be able to terminate the DAC session using CTRL-C but it isn't guaranteed. In that case, your only option might be to restart [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
 
 - To guarantee connectivity and troubleshooting with the DAC, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] reserves limited resources to process commands run on the DAC. These resources are typically only enough for simple diagnostic and troubleshooting functions, such as those listed below.
 
@@ -78,41 +98,29 @@ Although you can theoretically run any [!INCLUDE[tsql](../../includes/tsql-md.md
 
 - Basic DBCC commands such as [DBCC FREEPROCCACHE](../..//t-sql/database-console-commands/dbcc-freeproccache-transact-sql.md), [DBCC FREESYSTEMCACHE](../../t-sql/database-console-commands/dbcc-freesystemcache-transact-sql.md), [DBCC DROPCLEANBUFFERS](../../t-sql/database-console-commands/dbcc-dropcleanbuffers-transact-sql.md), and [DBCC SQLPERF](../../t-sql/database-console-commands/dbcc-sqlperf-transact-sql.md). Avoid resource-intensive commands such as [DBCC CHECKDB](../../t-sql/database-console-commands/dbcc-checkdb-transact-sql.md), [DBCC DBREINDEX](../../t-sql/database-console-commands/dbcc-dbreindex-transact-sql.md), or [DBCC SHRINKDATABASE](../../t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql.md).
 
-- [!INCLUDE[tsql](../../includes/tsql-md.md)] `KILL <spid>` command. Depending on the state of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], the KILL command might not always succeed; then the only option may be to restart [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. The following are some general guidelines:
+- [!INCLUDE[tsql](../../includes/tsql-md.md)] `KILL <spid>` command. Depending on the state of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], the `KILL` command might not succeed. The only option might be to restart the instance, in the case of SQL Server or Azure SQL Managed Instance. The following are some general guidelines:
 
-  - Verify that the SPID was killed by querying `SELECT * FROM sys.dm_exec_sessions WHERE session_id = <spid>`. If it returns no rows, it means the session was killed.
+  - Verify that the SPID was killed by querying `SELECT * FROM sys.dm_exec_sessions WHERE session_id = <spid>;`. If it returns no rows, it means the session was killed.
 
-  - If the session is still there, verify whether there are tasks assigned to this session by running the query `SELECT * FROM sys.dm_os_tasks WHERE session_id = <spid>`. If you see the task there, most likely your session is currently being killed. This may take considerable amount of time and may not succeed at all.
+  - If the session is still there, verify whether there are tasks assigned to this session by running the query `SELECT * FROM sys.dm_os_tasks WHERE session_id = <spid>;`. If you see the task there, most likely your session is currently being killed. This can take considerable amount of time and might not succeed at all.
 
-  - If there are no tasks in the sys.dm_os_tasks associated with this session, but the session remains in sys.dm_exec_sessions after executing the KILL command, it means that you don't have a worker available. Select one of the currently running tasks (a task listed in the sys.dm_os_tasks view with a `sessions_id <> NULL`), and kill the session associated with it to free up the worker. It may not be enough to kill a single session: you may have to kill multiple ones.
+  - If there are no tasks in the `sys.dm_os_tasks` associated with this session, but the session remains in `sys.dm_exec_sessions` after executing the `KILL` command, it means that you don't have a worker available. Select one of the currently running tasks (a task listed in the `sys.dm_os_tasks` view with a `sessions_id <> NULL`), and kill the session associated with it to free up the worker. It might not be enough to kill a single session: you might have to kill multiple ones.
 
-## DAC port
 
-[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] listens for the DAC on TCP port 1434 if available or a TCP port dynamically assigned upon [!INCLUDE[ssDE](../../includes/ssde-md.md)] startup. The [error log](../../relational-databases/performance/view-the-sql-server-error-log-sql-server-management-studio.md) contains the port number the DAC is listening on. By default the DAC listener accepts connection on only the local port. For a code sample that activates remote administration connections, see [remote admin connections Server Configuration Option](../../database-engine/configure-windows/remote-admin-connections-server-configuration-option.md).
+#### Limitation in Azure SQL Database
 
-After the remote administration connection is configured, the DAC listener is enabled without restarting [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] and a client can now connect to the DAC remotely. You can enable the DAC listener to accept connections remotely even if [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is unresponsive by first connecting to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] using the DAC locally, and then executing the `sp_configure` stored procedure to accept connection from remote connections.
+When connecting to the [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] with the DAC, you must also specify the database name in the connection string by using the `-d` option.
 
-On cluster configurations, the DAC will be off by default. Users can execute the remote admin connection option of `sp_configure` to enable the DAC listener to access a remote connection. If [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is unresponsive and the DAC listener isn't enabled, you might have to restart [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to connect with the DAC. Therefore, we recommend that you enable the remote admin connections configuration option on clustered systems.
+#### Limitation in Azure SQL Managed Instance
 
-The DAC port is assigned dynamically by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] during startup. When connecting to the default instance, the DAC avoids using a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Resolution Protocol (SSRP) request to the SQL Server Browser Service when connecting. It first connects over TCP port 1434. If that fails, it makes an SSRP call to get the port. If [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Browser isn't listening for SSRP requests, the connection request returns an error. Refer to the error log to find the port number DAC is listening on. If [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is configured to accept remote administration connections, the DAC must be initiated with an explicit port number:
+The DAC doesn't work over a private endpoint for Azure SQL Managed Instance. On SQL managed instances, the DAC listens on port 1434. Because private endpoints to SQL managed instances only allow connections on port 1433, you cannot use a private endpoint to establish a DAC connection. You must be in the same virtual network as the SQL managed instance to connect with DAC. 
 
-`sqlcmd -S tcp:<server>,<port>`
+## Examples
 
-The [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] error log lists the port number for the DAC, which is 1434 by default. If [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is configured to accept local DAC connections only, connect using the loopback adapter using the following command:
-
-```powershell
-sqlcmd -S 127.0.0.1,1434
-```
-
-> [!TIP]  
-> When connecting to the [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] with the DAC, you must also specify the database name in the connection string by using the `-d` option.
-
-## Example
-
-In this example, an administrator notices that server `URAN123` isn't responding and wants to diagnose the problem. To do this, the user activates the `sqlcmd` command prompt utility and connects to server `URAN123` using `-A` to indicate the DAC.
+In this example, an administrator notices that server `contoso-server` isn't responding and wants to diagnose the problem. To do this, the user activates the `sqlcmd` command prompt utility and connects to server `contoso-server` using `-A` to indicate the DAC.
 
 ```powershell
-sqlcmd -S URAN123 -U sa -P <StrongPassword> -A
+sqlcmd -S contoso-server -U sa -P <StrongPassword> -A
 ```
 
 The administrator can now execute queries to diagnose the problem and possibly terminate the unresponsive sessions.
@@ -123,18 +131,18 @@ A similar example connecting to [!INCLUDE[ssSDS](../../includes/sssds-md.md)] wo
 sqlcmd -S serverName.database.windows.net,1434 -U sa -P <StrongPassword> -d AdventureWorks
 ```
 
-## See also
+## Related content
 
-- [Use sqlcmd with Scripting Variables](../../tools/sqlcmd/sqlcmd-use-scripting-variables.md)  
-- [sqlcmd Utility](../../tools/sqlcmd/sqlcmd-utility.md)  
-- [SELECT &#40;Transact-SQL&#41;](../../t-sql/queries/select-transact-sql.md)  
-- [sp_who &#40;Transact-SQL&#41;](../../relational-databases/system-stored-procedures/sp-who-transact-sql.md)  
-- [sp_lock &#40;Transact-SQL&#41;](../../relational-databases/system-stored-procedures/sp-lock-transact-sql.md)  
-- [KILL &#40;Transact-SQL&#41;](../../t-sql/language-elements/kill-transact-sql.md)  
-- [DBCC CHECKALLOC &#40;Transact-SQL&#41;](../../t-sql/database-console-commands/dbcc-checkalloc-transact-sql.md)  
-- [DBCC CHECKDB &#40;Transact-SQL&#41;](../../t-sql/database-console-commands/dbcc-checkdb-transact-sql.md)  
-- [DBCC OPENTRAN &#40;Transact-SQL&#41;](../../t-sql/database-console-commands/dbcc-opentran-transact-sql.md)  
-- [DBCC INPUTBUFFER &#40;Transact-SQL&#41;](../../t-sql/database-console-commands/dbcc-inputbuffer-transact-sql.md)  
-- [Server Configuration Options &#40;SQL Server&#41;](../../database-engine/configure-windows/server-configuration-options-sql-server.md)  
-- [Transaction Related Dynamic Management Views and Functions &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/transaction-related-dynamic-management-views-and-functions-transact-sql.md)  
-- [Trace Flags &#40;Transact-SQL&#41;](../../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md)
+- [Use sqlcmd with Scripting Variables](../../tools/sqlcmd/sqlcmd-use-scripting-variables.md)
+- [sqlcmd Utility](../../tools/sqlcmd/sqlcmd-utility.md)
+- [SELECT (Transact-SQL)](../../t-sql/queries/select-transact-sql.md)
+- [sp_who (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-who-transact-sql.md)
+- [sp_lock (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-lock-transact-sql.md)
+- [KILL (Transact-SQL)](../../t-sql/language-elements/kill-transact-sql.md)
+- [DBCC CHECKALLOC (Transact-SQL)](../../t-sql/database-console-commands/dbcc-checkalloc-transact-sql.md)
+- [DBCC CHECKDB (Transact-SQL)](../../t-sql/database-console-commands/dbcc-checkdb-transact-sql.md)
+- [DBCC OPENTRAN (Transact-SQL)](../../t-sql/database-console-commands/dbcc-opentran-transact-sql.md)
+- [DBCC INPUTBUFFER (Transact-SQL)](../../t-sql/database-console-commands/dbcc-inputbuffer-transact-sql.md)
+- [Server Configuration Options (SQL Server)](../../database-engine/configure-windows/server-configuration-options-sql-server.md)
+- [Transaction Related Dynamic Management Views and Functions (Transact-SQL)](../../relational-databases/system-dynamic-management-views/transaction-related-dynamic-management-views-and-functions-transact-sql.md)
+- [Trace Flags (Transact-SQL)](../../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md)
