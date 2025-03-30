@@ -193,7 +193,7 @@ Besides its advanced scaling capabilities, Hyperscale is a great option for any 
 
 ## Hardware configuration
 
-Common hardware configurations in the vCore model include standard-series (Gen5), Fsv2-series, and DC-series. Hyperscale also provides an option for premium-series and premium-series memory optimized hardware. Hardware configuration defines compute and memory limits and other characteristics that affect workload performance.
+Common hardware configurations in the vCore model include standard-series (Gen5), premium-series, premium-series memory optimized, and DC-series. Hyperscale also provides an option for premium-series and premium-series memory optimized hardware. Hardware configuration defines compute and memory limits and other characteristics that affect workload performance.
 
 Certain hardware configurations such as standard-series (Gen5) can use more than one type of processor (CPU), as described in [Compute resources (CPU and memory)](#compute-resources-cpu-and-memory). While a given database or elastic pool tends to stay on the hardware with the same CPU type for a long time (commonly for multiple months), there are certain events that can cause a database or pool to be moved to hardware that uses a different CPU type. 
 
@@ -215,10 +215,12 @@ The following table compares compute resources in different hardware configurati
 |Hardware configuration  |CPU  |Memory  |
 |:---------|:---------|:---------|
 |Standard-series (Gen5) |**Provisioned compute**<br>- Intel&reg; E5-2673 v4 (Broadwell) 2.3 GHz, Intel&reg; SP-8160 (Skylake)\*, Intel&reg; 8272CL (Cascade Lake) 2.5 GHz\*, Intel&reg; Xeon&reg; Platinum 8370C (Ice Lake)\*, AMD EPYC 7763v (Milan) processors<br>- Provision up to 128 vCores (hyper-threaded)<br><br>**Serverless compute**<br>- Intel&reg; E5-2673 v4 (Broadwell) 2.3 GHz, Intel&reg; SP-8160 (Skylake)\*, Intel&reg; 8272CL (Cascade Lake) 2.5 GHz\*, Intel&reg; Xeon&reg; Platinum 8370C (Ice Lake)\*, AMD EPYC 7763v (Milan) processors<br>- Autoscale up to 80 vCores (hyper-threaded)<br>- The memory-to-vCore ratio dynamically adapts to memory and CPU usage based on workload demand and can be as high as 24 GB per vCore.  For example, at a given point in time a workload might use and be billed for 240-GB memory and only 10 vCores.|**Provisioned compute**<br>- 5.1 GB per vCore<br>- Provision up to 625 GB<br><br>**Serverless compute**<br>- Autoscale up to 24 GB per vCore<br>- Autoscale up to 240 GB max|
-|Fsv2-series     |- Intel&reg; 8168 (Skylake) processors<br>- Featuring a sustained all core turbo clock speed of 3.4 GHz and a maximum single core turbo clock speed of 3.7 GHz.<br>- Provision up to 72 vCores (hyper-threaded)|- 1.9 GB per vCore<br>- Provision up to 136 GB|
+|Fsv2-series\*\*     |- Intel&reg; 8168 (Skylake) processors<br>- Featuring a sustained all core turbo clock speed of 3.4 GHz and a maximum single core turbo clock speed of 3.7 GHz.<br>- Provision up to 72 vCores (hyper-threaded)|- 1.9 GB per vCore<br>- Provision up to 136 GB|
 |DC-series     | - Intel&reg; Xeon&reg; E-2288G processors<br>- Featuring Intel Software Guard Extension (Intel SGX)<br>- Provision up to 8 vCores (physical) | 4.5 GB per vCore |
 
 \* In the [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dynamic management view, hardware generation for databases using Intel&reg; SP-8160 (Skylake) processors appears as Gen6, hardware generation for databases using Intel&reg; 8272CL (Cascade Lake) appears as Gen7, and hardware generation for databases using Intel&reg; Xeon&reg; Platinum 8370C (Ice Lake) or AMD&reg; EPYC&reg; 7763v (Milan) appear as Gen8. For a given compute size and hardware configuration, resource limits are the same regardless of CPU type (Intel Broadwell, Skylake, Ice Lake, Cascade Lake, or AMD Milan).
+
+\*\* Fsv2-series hardware will be retired October 1, 2026.
 
 For more information, see resource limits for [single databases](resource-limits-vcore-single-databases.md) and [elastic pools](resource-limits-vcore-elastic-pools.md).
 
@@ -226,11 +228,11 @@ For Hyperscale database compute resources and specification, see [Hyperscale com
 
 ### Standard-series (Gen5)
 
-- Standard-series (Gen5) hardware provides balanced compute and memory resources, and is suitable for most database workloads.
+Standard-series (Gen5) hardware provides balanced compute and memory resources, and is suitable for most database workloads.
 
 Standard-series (Gen5) hardware is available in all public regions worldwide.
 
-### Hyperscale premium-series
+### Hyperscale premium-series 
 
 Premium-series hardware options use the latest CPU and memory technology from Intel and AMD. Premium-series provides a boost to compute performance relative to standard-series hardware.
 
@@ -242,14 +244,6 @@ Standard-series, premium-series, and premium-series memory optimized are availab
 For more information, see the [Hyperscale premium series blog announcement](https://aka.ms/AAiq28n).
  
 For regions available, see [Hyperscale premium-series availability](region-availability.md#hyperscale-premium-series-availability).
-
-### Fsv2-series
-
-- Fsv2-series is a compute optimized hardware configuration delivering low CPU latency and high clock speed for the most CPU demanding workloads. Similar to [Hyperscale premium-series](#hyperscale-premium-series) hardware configurations, Fsv2-series is powered by the latest CPU and memory technology from Intel and AMD, allowing customers to take advantage of the latest hardware while using databases and elastic pools in the General Purpose service tier.
-- Depending on the workload, Fsv2-series can deliver more CPU performance per vCore than other types of hardware. For example, the 72 vCore Fsv2 compute size can provide more CPU performance than 80 vCores on Standard-series (Gen5), at lower cost.
-- Fsv2 provides less memory and `tempdb` per vCore than other hardware, so workloads sensitive to those limits might perform better on standard-series (Gen5).
-
-Fsv2-series in only supported in the General Purpose tier. For regions where Fsv2-series is available, see [Fsv2-series availability](region-availability.md#fsv2-series-availability).
 
 ### DC-series
 
@@ -294,11 +288,16 @@ Follow the steps to change configuration, and select hardware configuration as d
 
 ## Hardware availability
 
-For information on previous generation hardware availability, see [Previous generation hardware availability](#previous-generation-hardware).
-
 For information on current generation hardware availability, see [Feature Availability by Region for Azure SQL Database](region-availability.md#vcore-purchasing-model-hardware-availability).
 
 ### Previous generation hardware
+
+#### Fsv2-series
+
+Fsv2-series hardware for Azure SQL Database will be retired October 1, 2026. To minimize service disruption and maintain price-performance, transition to Hyperscale premium-series or Standard-series (Gen5) hardware. For more information, see [Retirement Notice: Azure SQL Database FSV2-series offer](https://azure.microsoft.com/updates?id=485030). For most databases and workloads, Hyperscale premium-series or Standard-series (Gen5) hardware provide similar or better price performance than Fsv2. To make sure, please validate this with your specific database and workloads.
+
+- Fsv2 provides less memory and `tempdb` per vCore than other hardware, so workloads sensitive to those limits might perform better on standard-series (Gen5).
+- Fsv2-series is only supported in the General Purpose tier.
 
 #### Gen4
 

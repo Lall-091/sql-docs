@@ -4,7 +4,7 @@ description: Learn about feature availability by region for Azure SQL Database.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: rsetlem
-ms.date: 03/07/2025
+ms.date: 03/26/2025
 ms.service: azure-sql-database
 ms.topic: concept-article
 ms.custom:
@@ -24,54 +24,6 @@ This article is a centralized list of the availability of various Azure SQL Data
 > For a visualization of Azure regions, see [Azure global infrastructure](https://datacenters.microsoft.com/globe/explore).
 
 <!-- Alphabetization guidance: sort by the region, then the directional. East Asia comes before Australia East. This results in regions kept together, for example, all the US regions. -->
-
-## General Purpose service tier zone-redundancy availability
-
-Minimize impact to your data in the event of an outage to an entire zone by enabling zone redundancy. Zone-redundant availability ensures your data is spread across three Azure availability zones in the primary region. For more information, see [availability through redundancy in Azure SQL Database](high-availability-sla-local-zone-redundancy.md).
-
-For up to date information about the regions that support zone-redundant databases, see [Services support by region](/azure/reliability/availability-zones-region-support).
-
-For General Purpose tier, the zone-redundant configuration is available in the following regions: 
-
-#### [Americas](#tab/americas)
-
-  - Brazil South
-  - Canada Central
-  - Central US
-  - East US
-  - East US 2
-  - South Central US
-  - West US 2
-  - West US 3
-
-#### [Asia Pacific](#tab/asia)
-
-  - East Asia
-  - Southeast Asia
-  - Australia East
-  - China North 3
-  - Central India
-  - Japan East
-  - Korea Central
-  
-#### [Europe, the Middle East, and Africa](#tab/emea)
-
-  - North Europe
-  - West Europe
-  - France Central
-  - Israel Central
-  - Italy North
-  - Germany West Central
-  - Norway East
-  - Poland Central
-  - Qatar Central
-  - South Africa North
-  - Sweden Central
-  - Switzerland North
-  - UAE North
-  - UK South
-
----
 
 ## Maintenance window availability
 

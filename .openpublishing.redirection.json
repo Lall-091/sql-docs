@@ -53448,7 +53448,12 @@
     },
     {
       "source_path": "docs/connect/odbc/linux/connecting-with-sqlcmd.md",
-      "redirect_url": "/sql/connect/odbc/linux-mac/connecting-with-sqlcmd",
+      "redirect_url": "/sql/tools/sqlcmd/sqlcmd-utility",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/connect/odbc/linux-mac/connecting-with-sqlcmd.md",
+      "redirect_url": "/sql/tools/sqlcmd/sqlcmd-utility",
       "redirect_document_id": false
     },
     {

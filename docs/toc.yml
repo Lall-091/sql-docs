@@ -9328,6 +9328,8 @@ items:
         href: sql-server/azure-arc/delete-from-azure-arc.md
       - name: Monitor (preview)
         href: sql-server/azure-arc/sql-monitoring.md
+      - name: Client connection summary
+        href: sql-server/azure-arc/sql-connection-summary.md
       - name: Use activity logs
         href: sql-server/azure-arc/activity-logs.md
       - name: Move resources

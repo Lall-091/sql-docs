@@ -5,7 +5,7 @@ description: Bring Your Own Key (BYOK) support for transparent data encryption (
 author: Pietervanhove
 ms.author: pivanho
 ms.reviewer: wiassaf, vanto, mathoma, randolphwest
-ms.date: 02/04/2025
+ms.date: 03/28/2025
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: conceptual
@@ -27,7 +27,6 @@ Managing the TDE protector at the database level in Azure SQL Database is availa
 
 > [!NOTE]  
 > - This article applies to Azure SQL Database, Azure SQL Managed Instance, and Azure Synapse Analytics (dedicated SQL pools (formerly SQL DW)). For documentation on transparent data encryption for dedicated SQL pools inside Synapse workspaces, see [Azure Synapse Analytics encryption](/azure/synapse-analytics/security/workspaces-encryption).
-> - <a id="doubleencryption"></a> To provide Azure SQL customers with two layers of encryption of data at rest, infrastructure encryption (using AES-256 encryption algorithm) with platform managed keys is being rolled out. This provides an addition layer of encryption at rest along with TDE with customer-managed keys, which is already available. For Azure SQL Database and Azure SQL Managed Instance, all databases, including the `master` database and other system databases, will be encrypted when infrastructure encryption is turned on. At this time, customers must request access to this capability. If you're interested in this capability, contact AzureSQLDoubleEncryptionAtRest@service.microsoft.com.
 
 [!INCLUDE [entra-id](../includes/entra-id.md)]
 
@@ -36,7 +35,7 @@ Managing the TDE protector at the database level in Azure SQL Database is availa
 > [!NOTE]
 > In this article, the terms Customer Managed Key (CMK) and Bring Your Own Key (BYOK) are used interchangeably, but they represent some differences.
 > - **Customer Managed Key (CMK)** - The customer manages the key lifecycle, including key creation, rotation, and deletion. The key is stored in [Azure Key Vault](/azure/key-vault/general/overview) or [Azure Key Vault Managed HSM](/azure/key-vault/managed-hsm/overview) and used for encryption of the Database Encryption Key (DEK) in Azure SQL, SQL Server on Azure VM, and SQL Server on-premises.
-> - **Bring Your Own Key (BYOK)** - The customer securely brings or imports their own key from an on-premises hardware security module (HSM) into Azure Key Vault or Azure Key Vault Managed HSM. Such imported keys may be used as any other key in Azure Key Vault, including as a Customer Managed Key for encryption of the DEK. For more information, see  [Import HSM-protected keys to Managed HSM (BYOK)](/azure/key-vault/managed-hsm/hsm-protected-keys-byok).
+> - **Bring Your Own Key (BYOK)** - The customer securely brings or imports their own key from an on-premises hardware security module (HSM) into Azure Key Vault or Azure Key Vault Managed HSM. Such imported keys might be used as any other key in Azure Key Vault, including as a Customer Managed Key for encryption of the DEK. For more information, see  [Import HSM-protected keys to Managed HSM (BYOK)](/azure/key-vault/managed-hsm/hsm-protected-keys-byok).
 
 Customer-managed TDE provides the following benefits to the customer:
 
@@ -107,7 +106,7 @@ Auditors can use Azure Monitor to review key vault AuditEvent logs, if logging i
 
 ### Requirements for configuring TDE protector
 
-- TDE protector can only be an asymmetric, RSA, or RSA HSM key. The supported key lengths are 2048 bits and 3072 bits.
+- TDE protector can only be an asymmetric, RSA, or RSA HSM key. The supported key lengths are 2,048 bits and 3,072 bits.
 
 - The key activation date (if set) must be a date and time in the past. Expiration date (if set) must be a future date and time.
 
@@ -245,7 +244,7 @@ Once a database is encrypted with TDE using a key from Key Vault, any newly gene
 To restore a backup encrypted with a TDE protector from Key Vault, make sure that the key material is available to the target server. Therefore, we recommend that you keep all the old versions of the TDE protector in key vault, so database backups can be restored.
 
 > [!IMPORTANT]  
-> At any moment there can be not more than one TDE protector set for a server. It's the key marked with "Make the key the default TDE protector" in the Azure portal pane. However, multiple additional keys can be linked to a server without marking them as a TDE protector. These keys aren't used for protecting DEK, but can be used during restore from a backup, if backup file is encrypted with the key with the corresponding thumbprint.
+> There can't be more than one TDE protector set for a server at any moment. The key marked with **Make the key the default TDE protector** in the Azure portal pane is the TDE protector. However, multiple keys can be linked to a server without marking them as a TDE protector. These keys aren't used for protecting the DEK, but can be used during restore from a backup, if the backup file is encrypted with the key with the corresponding thumbprint.
 
 If the key that is needed for restoring a backup is no longer available to the target server, the following error message is returned on the restore try:
 "Target server `<Servername>` doesn't have access to all AKV URIs created between \<Timestamp #1> and \<Timestamp #2>. Retry operation after restoring all AKV URIs."

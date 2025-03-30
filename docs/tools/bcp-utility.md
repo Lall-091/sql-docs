@@ -4,7 +4,7 @@ description: The bulk copy program (bcp) utility bulk copies data between an ins
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: davidengel, markingmyname
-ms.date: 01/08/2025
+ms.date: 03/10/2025
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: how-to
@@ -159,7 +159,7 @@ The following table lists the command-line options available in **bcp**, and whi
 | Command-line option | Supported on Windows | Supported on Linux and macOS |
 | --- | --- | --- |
 | **[\[*database_name*.\]](#database_name) [*schema*](#schema).{[*table_name*](#table_name) \| [*view_name*](#view_name) \| ["*query*"](#query)}** | Yes | Yes |
-| [**{[in](#in) [*data_file*](#data_file) \| [out](#out) [*data_file*](#data_file) \| [queryout](#queryout) [*data_file*](#data_file) \| [format](#format) nul}**]() | Yes | Yes |
+| **{[in](#in) [*data_file*](#data_file) \| [out](#out) [*data_file*](#data_file) \| [queryout](#queryout) [*data_file*](#data_file) \| [format](#format) nul}** | Yes | Yes |
 | [**-a *packet_size***](#-a-packet_size) | Yes | Yes |
 | [**-b *batch_size***](#-b-batch_size) | Yes | Yes |
 | [**-c**](#-c) | Yes | Yes |
@@ -289,7 +289,7 @@ A DSN can be used to:
 - enforce driver options that aren't otherwise accessible from the command line such as MultiSubnetFailover,
 - or to help protect sensitive credentials from being discoverable as command line arguments.
 
-For more information, see *DSN Support in sqlcmd and bcp* in [Connecting with sqlcmd](../connect/odbc/linux-mac/connecting-with-sqlcmd.md).
+For more information, see [DSN support in sqlcmd and bcp](sqlcmd/sqlcmd-utility.md#dsn-support-in-sqlcmd-and-bcp).
 
 #### -e *err_file*
 
@@ -400,7 +400,7 @@ To check if your version of **bcp** includes support for Microsoft Entra authent
   bcp bcptest out "c:\last\data1.dat" -c -D -S myDSN -d testdb
   ```
 
-  #### [Linux](#tab/linux)
+  #### [Linux and macOS](#tab/linux)
 
   Exporting data via **bcp** using a Managed Service Identity on Linux can be configured using a DSN.
 

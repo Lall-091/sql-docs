@@ -3,7 +3,7 @@ title: "Query Store hints"
 description: "Learn about the Query Store hints feature, which can be used to shape query plans without changing application code."
 author: MikeRayMSFT
 ms.author: mikeray
-ms.date: 11/11/2024
+ms.date: 03/26/2025
 ms.service: sql
 ms.subservice: performance
 ms.topic: concept-article
@@ -17,6 +17,7 @@ monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-ver
 ---
 
 # Query Store hints
+
 [!INCLUDE [SQL Server 2022 Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricsqldb.md)]
 
 This article outlines how to apply query hints using the Query Store. Query Store hints provide an easy-to-use method for shaping query plans without changing application code.
@@ -99,11 +100,11 @@ When hints are applied, the following result set appears in the `StmtSimple` ele
 ## Query Store hints and feature interoperability
 
 -   Query Store hints override other hard-coded statement level hints and plan guides.
--   Queries always execute. Opposing Query Store hints are ignored that would otherwise cause an error.
+-   With the exception of the `ABORT_QUERY_EXECUTION` hint, queries with Query Store hints always execute. Opposing Query Store hints are ignored that would otherwise cause an error.
 -   If Query Store hints contradict, SQL Server does not block query execution, and Query Store hint is not applied.
 -   Simple parameterization - Query Store hints are not supported for statements that qualify for simple parameterization.
--   Forced parameterization - The RECOMPILE hint is not compatible with forced parameterization set at the database level. If the database has forced parameterization set, and the RECOMPILE hint is part of the hints string set in Query Store for a query, SQL Server ignores the RECOMPILE hint and will apply any other hints if they are applied.
-    *    Additionally, SQL Server issues a warning (error code 12461) stating that the RECOMPILE hint was ignored.
+-   Forced parameterization - The `RECOMPILE` hint is not compatible with forced parameterization set at the database level. If the database has forced parameterization set, and the `RECOMPILE` hint is part of the hints string set in Query Store for a query, SQL Server ignores the `RECOMPILE` hint and will apply any other hints if they are applied.
+    *    Additionally, SQL Server issues a warning (error code 12461) stating that the `RECOMPILE` hint was ignored.
     *    For more information on forced parameterization use case considerations, see [Guidelines for Using Forced Parameterization](../query-processing-architecture-guide.md#forced-parameterization).
 -   Manually created Query Store hints are exempt from cleanup. The hint and the query will not be cleaned up from Query Store by the automatic retention of the capture policy.
     *   Queries can be [manually removed by users](../system-stored-procedures/sp-query-store-remove-query-transact-sql.md), which would also remove the associated Query Store hint.
