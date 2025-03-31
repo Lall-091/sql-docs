@@ -51,6 +51,14 @@ GeneMi, DevOps = 1467988 (MsEng > TechnicalContent) , 2019/03/19
 ::: moniker range="=sql-server-ver16"
 ## SQL Server 2022 Reporting Services
 
+## 16.0.9218.4306, 2025/03/31
+*(Product Version: 16.0.1117.32)*
+
+- Apply button on subscription page disabled until parameters load 
+- Upgraded version of Angular to 17.0 
+- Security improvements
+- Accessibility improvements
+
 ## 16.0.9101.19239, 2025/01/06
 *(Product Version: 16.0.1116.38)*
 
@@ -144,6 +152,16 @@ Release Candidate 0 (RC0)
 ::: moniker-end
 
 ## SQL Server 2019 Reporting Services
+
+## 15.0.9218.715, 2025/03/31
+*(Product Version: 15.0.1104.29)*
+
+- Fixed issue with custom branding package 
+- Fixed issue with exporting to Excel file format
+- Apply button on subscription page disabled until parameters load 
+- Upgraded version of Angular to 17.0 
+- Security improvements
+- Accessibility improvements
 
 ## 15.0.9098.6826, 2025/01/06
 *(Product Version: 15.0.1103.41)*
