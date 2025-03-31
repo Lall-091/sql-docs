@@ -4,6 +4,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: A detailed description of Azure Monitor Alerts in database watcher
 author: lcwright
 ms.author: lancewright
+ms.reviewer: dfurman
 ms.date: 02/12/2025
 ms.service: azure-sql
 ms.subservice: monitoring

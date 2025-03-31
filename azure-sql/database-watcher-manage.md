@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Setup and configuration details for database watcher
 author: lcwright
 ms.author: lancewright
-ms.reviewer: wiassaf
+ms.reviewer: wiassaf, dfurman
 ms.date: 02/07/2025
 ms.service: azure-sql
 ms.subservice: monitoring
