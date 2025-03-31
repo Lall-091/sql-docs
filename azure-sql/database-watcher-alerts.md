@@ -4,6 +4,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: A detailed description of Azure Monitor Alerts in database watcher
 author: lcwright
 ms.author: lancewright
+ms.reviewer: dfurman
 ms.date: 02/12/2025
 ms.service: azure-sql
 ms.subservice: monitoring
@@ -80,6 +81,7 @@ The following tables describe currently available alert rule templates for each 
 | Workload patterns | Blocked requests | 1 - Error | 5 minutes | Alerts if there is a minimum number of blocked requests in a database that have been waiting longer than a certain duration. |
 | Workload patterns | Deadlock spike | 3 - Informational | 5 minutes | Alerts if the number of deadlocks in a database exceeds a threshold. |
 | Workload patterns | Lock wait spike | 2 - Warning | 5 minutes | Alerts if the cumulative wait time for locks in a database exceeds a threshold. |
+| Workload patterns | Long active transactions | 3 - Informational | 5 minutes | Alerts if there active transactions where transaction duration exceeds a threshold. |
 | Workload patterns | Memory wait spike | 3 - Informational | 5 minutes | Alerts if the cumulative wait time for memory in a database exceeds a threshold. |
 | Workload patterns | Network IO wait spike | 3 - Informational | 5 minutes | Alerts if the cumulative wait time for network IO in a database exceeds a threshold. |
 | Workload patterns | Request rate drop | 3 - Informational | 5 minutes | Alerts if the request rate in a database dropped significantly. |
@@ -120,6 +122,7 @@ The following tables describe currently available alert rule templates for each 
 | Workload patterns | Blocked requests | 1 - Error | 5 minutes | Alerts if there is a minimum number of blocked requests on an instance that have been waiting longer than a certain duration. |
 | Workload patterns | Deadlock spike | 3 - Informational | 5 minutes | Alerts if the number of deadlocks on an instance exceeds a threshold. |
 | Workload patterns | Lock wait spike | 2 - Warning | 5 minutes | Alerts if the cumulative wait time for locks on an instance exceeds a threshold. |
+| Workload patterns | Long active transactions | 3 - Informational | 5 minutes | Alerts if there active transactions where transaction duration exceeds a threshold. |
 | Workload patterns | Memory wait spike | 3 - Informational | 5 minutes | Alerts if the cumulative wait time for memory on an instance exceeds a threshold. |
 | Workload patterns | Network IO wait spike | 3 - Informational | 5 minutes | Alerts if the cumulative wait time for network IO on an instance exceeds a threshold. |
 | Workload patterns | Request rate drop | 3 - Informational | 5 minutes | Alerts if the request rate on an instance dropped significantly. |

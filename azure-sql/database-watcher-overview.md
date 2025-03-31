@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: An overview of database watcher for Azure SQL, a managed monitoring solution for database services in the Azure SQL family.
 author: lcwright
 ms.author: lancewright
-ms.reviewer: wiassaf
+ms.reviewer: wiassaf, dfurman
 ms.date: 03/13/2025
 ms.service: azure-sql
 ms.subservice: monitoring
