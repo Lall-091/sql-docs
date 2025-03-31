@@ -1,8 +1,8 @@
 ---
 title: How to use Azure Storage for SQL Server backup and restore
 description: Learn how to back up SQL Server to Azure Storage. Explains the benefits of backing up SQL databases to Azure Storage.
-author: adbadram
-ms.author: adbadram
+author: AbdullahMSFT
+ms.author: amamun
 ms.reviewer: mathoma
 ms.date: 06/18/2024
 ms.service: azure-vm-sql-server
@@ -58,7 +58,7 @@ The following SQL Server components are used when backing up to Azure Blob stora
 
 ## Next steps
 
-1. Create an Azure account if you don't already have one. If you are evaluating Azure, consider the [free trial](https://azure.microsoft.com/free/).
+1. Create an Azure account if you don't already have one. If you are evaluating Azure, consider the [free trial](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
 2. Then go through one of the following tutorials that walk you through creating a storage account and performing a restore.
    
    * **SQL Server 2014**: [Tutorial: SQL Server 2014 Backup and Restore to Microsoft Azure Blob storage](/previous-versions/sql/2014/relational-databases/backup-restore/sql-server-backup-to-url).

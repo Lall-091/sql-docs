@@ -22,7 +22,7 @@ In this quickstart, you use Node.js to connect to a database and query data.
 
 To complete this quickstart, you need:
 
-- An Azure account with an active subscription and a database in Azure SQL Database, Azure SQL Managed Instance, or SQL Server on Azure VM. [Create an account for free](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- An Azure account with an active subscription and a database in Azure SQL Database, Azure SQL Managed Instance, or SQL Server on Azure VM. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
   | Action | SQL Database | SQL Managed Instance | SQL Server on Azure VM |
   |:--- |:--- |:---|:---|

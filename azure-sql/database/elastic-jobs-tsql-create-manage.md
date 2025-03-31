@@ -4,7 +4,7 @@ description: Learn how to create an elastic job agent and run scripts across man
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: srinia, mathoma
-ms.date: 04/03/2024
+ms.date: 03/17/2025
 ms.service: azure-sql-database
 ms.subservice: elastic-jobs
 ms.topic: how-to
@@ -52,30 +52,37 @@ In each of the target server(s)/database(s), create a contained user mapped to t
 
 - If the elastic job has logical server or pool targets, you must create the contained user mapped to the UMI in the `master` database of the target logical server.
 - For example, to create a contained database login in the `master` database, and a user in the user database, based on the user-assigned managed identity (UMI) named `job-agent-UMI`:
+- To run these T-SQL scripts, use Microsoft Entra authentication for your database connection.
 
 ```sql
---Create a login on the master database mapped to a user-assigned managed identity (UMI)
-CREATE LOGIN [job-agent-UMI] FROM EXTERNAL PROVIDER; 
+-- Connect to the master database of the Azure SQL logical instance of job agent
+-- To run these T-SQL scripts, use Microsoft Entra authentication for your database connection.
+
+-- Create a login on the master database mapped to a user-assigned managed identity (UMI)
+CREATE LOGIN [job-agent-UMI] FROM EXTERNAL PROVIDER;
+
+-- Create a user on the master database mapped to a login
+CREATE USER [job-agent-UMI] FROM EXTERNAL PROVIDER;
 ```
 
 ```sql
---Create a user on a user database mapped to a login.
+-- Create a user on a user database mapped to a login.
 CREATE USER [job-agent-UMI] FROM LOGIN [job-agent-UMI];
 
 -- Grant permissions as necessary to execute your jobs. For example, ALTER and CREATE TABLE:
-GRANT ALTER ON SCHEMA::dbo TO jobuser;
-GRANT CREATE TABLE TO jobuser;
+GRANT ALTER ON SCHEMA::dbo TO job-agent-UMI;
+GRANT CREATE TABLE TO job-agent-UMI;
 ```
 
 - To create a contained database user if a login is not needed on the logical server:
 
 ```sql
---Create a contained database user on a user database mapped to a user-assigned managed identity (UMI)
+-- Create a contained database user on a user database mapped to a user-assigned managed identity (UMI)
 CREATE USER [job-agent-UMI] FROM EXTERNAL PROVIDER; 
 
 -- Grant permissions as necessary to execute your jobs. For example, ALTER and CREATE TABLE:
-GRANT ALTER ON SCHEMA::dbo TO jobuser;
-GRANT CREATE TABLE TO jobuser;
+GRANT ALTER ON SCHEMA::dbo TO job-agent-UMI;
+GRANT CREATE TABLE TO job-agent-UMI;
 ```
 
 ### Use a database-scoped credential for job execution
@@ -85,7 +92,7 @@ A database-scoped credential is used to connect to your target databases for scr
 The same credential must be used to *Create a Login* and *Create a User from Login to grant the Login Database Permissions* on all target databases.
 
 ```sql
---Connect to the new job database specified when creating the elastic job agent
+-- Connect to the new job database specified when creating the elastic job agent
 
 -- Create a database master key if one does not already exist, using your own password.  
 CREATE MASTER KEY ENCRYPTION BY PASSWORD='<password>';  
@@ -93,11 +100,11 @@ CREATE MASTER KEY ENCRYPTION BY PASSWORD='<password>';
 -- Create two database-scoped credentials.  
 -- The credential to connect to the Azure SQL logical server, to execute jobs
 CREATE DATABASE SCOPED CREDENTIAL job_credential WITH IDENTITY = 'job_credential',
-    SECRET = '<password>';
+  SECRET = '<password>';
 GO
 -- The credential to connect to the Azure SQL logical server, to refresh the database metadata in server
 CREATE DATABASE SCOPED CREDENTIAL refresh_credential WITH IDENTITY = 'refresh_credential',
-    SECRET = '<password>';
+  SECRET = '<password>';
 GO
 ```
 
@@ -109,12 +116,12 @@ Then, create logins on the target servers, or contained database users on target
 Create a login in the `master` database of the logical SQL server, and users in each user database.
 
 ```sql
---Create a login on the master database
+-- Create a login on the master database
 CREATE LOGIN job_credential WITH PASSWORD='<password>';
 ```
 
 ```sql
---Create a user on a user database mapped to a login.
+-- Create a user on a user database mapped to a login.
 CREATE USER [job_credential] FROM LOGIN [job_credential];
 
 -- Grant permissions as necessary to execute your jobs. For example, ALTER and CREATE TABLE:
@@ -125,7 +132,7 @@ GRANT CREATE TABLE TO job_credential;
 Create a contained database user if a login is not needed on the logical server. Typically you would only do this if you have a single database to manage with this elastic job agent.
 
 ```sql
---Create a contained database user on a user database mapped to a Microsoft Entra account
+-- Create a contained database user on a user database mapped to a Microsoft Entra account
 CREATE USER [job_credential] WITH PASSWORD='<password>';
 
 -- Grant permissions as necessary to execute your jobs. For example, ALTER and CREATE TABLE:
@@ -147,13 +154,13 @@ EXEC jobs.sp_add_target_group 'ServerGroup1';
 
 -- Add a server target member
 EXEC jobs.sp_add_target_group_member
-@target_group_name = 'ServerGroup1',
-@target_type = 'SqlServer',
-@server_name = 'server1.database.windows.net';
+  @target_group_name = 'ServerGroup1',
+  @target_type = 'SqlServer',
+  @server_name = 'server1.database.windows.net';
 
---View the recently created target group and target group members
-SELECT * FROM jobs.target_groups WHERE target_group_name='ServerGroup1';
-SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
+-- View the recently created target group and target group members
+SELECT * FROM jobs.target_groups WHERE target_group_name = 'ServerGroup1';
+SELECT * FROM jobs.target_group_members WHERE target_group_name = 'ServerGroup1';
 ```
 
 ## Exclude an individual database
@@ -165,7 +172,7 @@ When using Microsoft Entra authentication (formerly Azure Active Directory), omi
 Connect to the `job_database` and run the following command:
 
 ```sql
---Connect to the job database specified when creating the job agent
+-- Connect to the job database specified when creating the job agent
 
 -- Add a target group containing server(s)
 EXEC [jobs].sp_add_target_group N'ServerGroup';
@@ -173,30 +180,30 @@ GO
 
 -- Add a server target member
 EXEC [jobs].sp_add_target_group_member
-@target_group_name = N'ServerGroup',
-@target_type = N'SqlServer',
---@refresh_credential_name = N'refresh_credential', --credential required to refresh the databases in a server
-@server_name = N'London.database.windows.net';
+  @target_group_name = N'ServerGroup',
+  @target_type = N'SqlServer',
+  --@refresh_credential_name = N'refresh_credential', --credential required to refresh the databases in a server
+  @server_name = N'London.database.windows.net';
 GO
 
 -- Add a server target member
 EXEC [jobs].sp_add_target_group_member
-@target_group_name = N'ServerGroup',
-@target_type = N'SqlServer',
---@refresh_credential_name = N'refresh_credential', --credential required to refresh the databases in a server
-@server_name = 'server2.database.windows.net';
+  @target_group_name = N'ServerGroup',
+  @target_type = N'SqlServer',
+  --@refresh_credential_name = N'refresh_credential', --credential required to refresh the databases in a server
+  @server_name = 'server2.database.windows.net';
 GO
 
---Exclude a database target member from the server target group
+-- Exclude a database target member from the server target group
 EXEC [jobs].sp_add_target_group_member
-@target_group_name = N'ServerGroup',
-@membership_type = N'Exclude',
-@target_type = N'SqlDatabase',
-@server_name = N'server1.database.windows.net',
-@database_name = N'MappingDB';
+  @target_group_name = N'ServerGroup',
+  @membership_type = N'Exclude',
+  @target_type = N'SqlDatabase',
+  @server_name = N'server1.database.windows.net',
+  @database_name = N'MappingDB';
 GO
 
---View the recently created target group and target group members
+-- View the recently created target group and target group members
 SELECT * FROM [jobs].target_groups WHERE target_group_name = N'ServerGroup';
 SELECT * FROM [jobs].target_group_members WHERE target_group_name = N'ServerGroup';
 ```
@@ -210,18 +217,18 @@ When using Microsoft Entra authentication (formerly Azure Active Directory), omi
 Connect to the `job_database` and run the following command:
 
 ```sql
---Connect to the job database specified when creating the job agent
+-- Connect to the job database specified when creating the job agent
 
 -- Add a target group containing pool(s)
 EXEC jobs.sp_add_target_group 'PoolGroup';
 
 -- Add an elastic pool(s) target member
 EXEC jobs.sp_add_target_group_member
-@target_group_name = 'PoolGroup',
-@target_type = 'SqlElasticPool',
---@refresh_credential_name = 'refresh_credential', --credential required to refresh the databases in a server
-@server_name = 'server1.database.windows.net',
-@elastic_pool_name = 'ElasticPool-1';
+  @target_group_name = 'PoolGroup',
+  @target_type = 'SqlElasticPool',
+  --@refresh_credential_name = 'refresh_credential', --credential required to refresh the databases in a server
+  @server_name = 'server1.database.windows.net',
+  @elastic_pool_name = 'ElasticPool-1';
 
 -- View the recently created target group and target group members
 SELECT * FROM jobs.target_groups WHERE target_group_name = N'PoolGroup';
@@ -249,16 +256,16 @@ The following example shows how to deploy new schema to all databases.
 Connect to the `job_database` and run the following command:
 
 ```sql
---Connect to the job database specified when creating the job agent
+-- Connect to the job database specified when creating the job agent
 
---Add job for create table
+-- Add job for create table
 EXEC jobs.sp_add_job @job_name = 'CreateTableTest', @description = 'Create Table Test';
 
 -- Add job step for create table
 EXEC jobs.sp_add_jobstep @job_name = 'CreateTableTest',
-@command = N'IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = object_id(''Test''))
-CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
-@target_group_name = 'PoolGroup';
+  @command = N'IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = object_id(''Test''))
+    CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
+  @target_group_name = 'PoolGroup';
 ```
 
 ### Data collection using built-in parameters
@@ -277,7 +284,7 @@ In many data collection scenarios, it can be useful to include some of these scr
 For example, to group all results from the same job execution together, use `$(job_execution_id)` as shown in the following command:
 
 ```sql
-@command= N' SELECT DB_NAME() DatabaseName, $(job_execution_id) AS job_execution_id, * FROM sys.dm_db_resource_stats WHERE end_time > DATEADD(mi, -20, GETDATE());'
+@command = N'SELECT DB_NAME() DatabaseName, $(job_execution_id) AS job_execution_id, * FROM sys.dm_db_resource_stats WHERE end_time > DATEADD(mi, -20, GETDATE());'
 ```
 
 > [!NOTE]
@@ -299,66 +306,67 @@ If you want to manually create the table ahead of time, then it needs to have th
 Connect to the *job database* and run the following commands:
 
 ```sql
---Connect to the job database specified when creating the job agent
+-- Connect to the job database specified when creating the job agent
 
 -- Add a job to collect perf results
 EXEC jobs.sp_add_job @job_name ='ResultsJob', @description='Collection Performance data from all customers'
 
 -- Add a job step w/ schedule to collect results
 EXEC jobs.sp_add_jobstep
-@job_name = 'ResultsJob',
-@command = N' SELECT DB_NAME() DatabaseName, $(job_execution_id) AS job_execution_id, * FROM sys.dm_db_resource_stats WHERE end_time > DATEADD(mi, -20, GETDATE());',
-@target_group_name = 'PoolGroup',
-@output_type = 'SqlDatabase',
-@output_server_name = 'server1.database.windows.net',
-@output_database_name = '<resultsdb>',
-@output_table_name = '<output_table_name>';
+  @job_name = 'ResultsJob',
+  @command = N' SELECT DB_NAME() DatabaseName, $(job_execution_id) AS job_execution_id, * FROM sys.dm_db_resource_stats WHERE end_time > DATEADD(mi, -20, GETDATE());',
+  @target_group_name = 'PoolGroup',
+  @output_type = 'SqlDatabase',
+  @output_server_name = 'server1.database.windows.net',
+  @output_database_name = '<resultsdb>',
+  @output_table_name = '<output_table_name>';
 
---Create a job to monitor pool performance
+-- Create a job to monitor pool performance
 
---Connect to the job database specified when creating the job agent
+-- Connect to the job database specified when creating the job agent
 
 -- Add a target group containing elastic job database
 EXEC jobs.sp_add_target_group 'ElasticJobGroup';
 
 -- Add a server target member
 EXEC jobs.sp_add_target_group_member
-@target_group_name = 'ElasticJobGroup',
-@target_type = 'SqlDatabase',
-@server_name = 'server1.database.windows.net',
-@database_name = 'master';
+  @target_group_name = 'ElasticJobGroup',
+  @target_type = 'SqlDatabase',
+  @server_name = 'server1.database.windows.net',
+  @database_name = 'master';
 
 -- Add a job to collect perf results
 EXEC jobs.sp_add_job
-@job_name = 'ResultsPoolsJob',
-@description = 'Demo: Collection Performance data from all pools',
-@schedule_interval_type = 'Minutes',
-@schedule_interval_count = 15;
+  @job_name = 'ResultsPoolsJob',
+  @description = 'Demo: Collection Performance data from all pools',
+  @schedule_interval_type = 'Minutes',
+  @schedule_interval_count = 15;
 
 -- Add a job step w/ schedule to collect results
 EXEC jobs.sp_add_jobstep
-@job_name='ResultsPoolsJob',
-@command=N'declare @now datetime
-DECLARE @startTime datetime
-DECLARE @endTime datetime
-DECLARE @poolLagMinutes datetime
-DECLARE @poolStartTime datetime
-DECLARE @poolEndTime datetime
-SELECT @now = getutcdate ()
-SELECT @startTime = dateadd(minute, -15, @now)
-SELECT @endTime = @now
-SELECT @poolStartTime = dateadd(minute, -30, @startTime)
-SELECT @poolEndTime = dateadd(minute, -30, @endTime)
+  @job_name='ResultsPoolsJob',
+  @command=N'DECLARE @now datetime
+    DECLARE @startTime datetime
+    DECLARE @endTime datetime
+    DECLARE @poolLagMinutes datetime
+    DECLARE @poolStartTime datetime
+    DECLARE @poolEndTime datetime
+    SELECT @now = getutcdate ()
+    SELECT @startTime = dateadd(minute, -15, @now)
+    SELECT @endTime = @now
+    SELECT @poolStartTime = dateadd(minute, -30, @startTime)
+    SELECT @poolEndTime = dateadd(minute, -30, @endTime)
 
-SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, avg_data_io_percent, avg_log_write_percent, max_worker_percent, max_session_percent,
-        avg_storage_percent, elastic_pool_storage_limit_mb FROM sys.elastic_pool_resource_stats
-        WHERE end_time > @poolStartTime and end_time <= @poolEndTime;
-',
-@target_group_name = 'ElasticJobGroup',
-@output_type = 'SqlDatabase',
-@output_server_name = 'server1.database.windows.net',
-@output_database_name = 'resultsdb',
-@output_table_name = '<output_table_name>';
+    SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, avg_data_io_percent, avg_log_write_percent, max_worker_percent, max_session_percent,
+           avg_storage_percent, elastic_pool_storage_limit_mb 
+    FROM sys.elastic_pool_resource_stats
+    WHERE end_time > @poolStartTime and end_time <= @poolEndTime;
+  ',
+  @target_group_name = 'ElasticJobGroup',
+  @output_type = 'SqlDatabase',
+  @output_server_name = 'server1.database.windows.net',
+  @output_database_name = 'resultsdb',
+  @output_table_name = '<output_table_name>';
 ```
 
 ## Run the job
@@ -368,15 +376,15 @@ The following example shows how to start a job immediately as a manual, unplanne
 Connect to the `job_database` and run the following command:
 
 ```sql
---Connect to the job database specified when creating the job agent
+-- Connect to the job database specified when creating the job agent
 
 -- Execute the latest version of a job
 EXEC jobs.sp_start_job 'CreateTableTest';
 
 -- Execute the latest version of a job and receive the execution ID
-declare @je uniqueidentifier;
-exec jobs.sp_start_job 'CreateTableTest', @job_execution_id = @je output;
-select @je;
+DECLARE @je uniqueidentifier;
+EXEC jobs.sp_start_job 'CreateTableTest', @job_execution_id = @je output;
+SELECT @je;
 
 -- Monitor progress
 SELECT * FROM jobs.job_executions WHERE job_execution_id = @je;
@@ -390,13 +398,13 @@ The following example shows how to schedule a job for future execution on a recu
 Connect to the `job_database` and run the following command:
 
 ```sql
---Connect to the job database specified when creating the job agent
+-- Connect to the job database specified when creating the job agent
 
 EXEC jobs.sp_update_job
-@job_name = 'ResultsJob',
-@enabled=1,
-@schedule_interval_type = 'Minutes',
-@schedule_interval_count = 15;
+  @job_name = 'ResultsJob',
+  @enabled=1,
+  @schedule_interval_type = 'Minutes',
+  @schedule_interval_count = 15;
 ```
 
 ## View job definitions
@@ -406,7 +414,7 @@ The following example shows how to view current job definitions.
 Connect to the `job_database` and run the following command:
 
 ```sql
---Connect to the job database specified when creating the job agent
+-- Connect to the job database specified when creating the job agent
 
 -- View all jobs
 SELECT * FROM jobs.jobs;
@@ -427,18 +435,18 @@ The following example shows how to view execution status details for all jobs.
 Connect to the `job_database` and run the following command:
 
 ```sql
---Connect to the job database specified when creating the job agent
+-- Connect to the job database specified when creating the job agent
 
---View top-level execution status for the job named 'ResultsPoolJob'
+-- View top-level execution status for the job named 'ResultsPoolJob'
 SELECT * FROM jobs.job_executions
 WHERE job_name = 'ResultsPoolsJob' and step_id IS NULL
 ORDER BY start_time DESC;
 
---View all top-level execution status for all jobs
+-- View all top-level execution status for all jobs
 SELECT * FROM jobs.job_executions WHERE step_id IS NULL
 ORDER BY start_time DESC;
 
---View all execution statuses for job named 'ResultsPoolsJob'
+-- View all execution statuses for job named 'ResultsPoolsJob'
 SELECT * FROM jobs.job_executions
 WHERE job_name = 'ResultsPoolsJob'
 ORDER BY start_time DESC;
@@ -456,7 +464,7 @@ The following example shows how to retrieve a job execution ID and then cancel a
 Connect to the `job_database` and run the following command:
 
 ```sql
---Connect to the job database specified when creating the job agent
+-- Connect to the job database specified when creating the job agent
 
 -- View all active executions to determine job execution ID
 SELECT * FROM jobs.job_executions
@@ -475,12 +483,12 @@ The following example shows how to delete job history prior to a specific date.
 Connect to the `job_database` and run the following command:
 
 ```sql
---Connect to the job database specified when creating the job agent
+-- Connect to the job database specified when creating the job agent
 
 -- Delete history of a specific job's executions older than the specified date
 EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-01 00:00:00';
 
---Note: job history is automatically deleted if it is >45 days old
+-- Note: job history is automatically deleted if it is >45 days old
 ```
 
 ## Delete a job and all its job history
@@ -490,12 +498,12 @@ The following example shows how to delete a job and all related job history.
 Connect to the `job_database` and run the following command:
 
 ```sql
---Connect to the job database specified when creating the job agent
+-- Connect to the job database specified when creating the job agent
 
 EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob';
 EXEC jobs.sp_purge_jobhistory @job_name='ResultsPoolsJob';
 
---Note: job history is automatically deleted if it is >45 days old
+-- Note: job history is automatically deleted if it is >45 days old
 ```
 
 ## Job stored procedures

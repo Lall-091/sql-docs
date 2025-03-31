@@ -43,7 +43,7 @@ Migrating with the link gives you:
 
 To use the link with Azure SQL Managed Instance for migration, you need the following prerequisites: 
 
-- An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/free/).
+- An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
 - [Supported version of SQL Server](managed-instance-link-feature-overview.md#prerequisites) with the required service update installed.
 
 ## Assess and discover

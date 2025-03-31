@@ -33,7 +33,7 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
 |**NTUserName**|**nvarchar**|The name of the user that owns the connection that generated this event.|6|Yes|  
 |**ObjectName**|**nvarchar**|The conversation handle of the dialog.|34|No|  
 |**ServerName**|**nvarchar**|The name of the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] being traced.|26|No|  
-|**SPID**|**int**|The server process ID assigned by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to the process associated with the client.|12|Yes|  
+|**SPID**|**int**|The session ID assigned by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to the process associated with the client.|12|Yes|  
 |**StartTime**|**datetime**|The time at which the event started, when available.|14|Yes|  
 |**TextData**|**ntext**|The text of the error message related to the event. For events that do not report an error, this field is empty. The error message may either be a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] error message or a Windows error message.|1|Yes|  
 |**TransactionID**|**bigint**|The system-assigned ID of the transaction.|4|No|  

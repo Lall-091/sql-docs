@@ -1,8 +1,8 @@
 ---
 title: Connect to a SQL Server virtual machine (Resource Manager)
 description: Learn how to connect to your SQL Server virtual machine on Azure. This topic uses the classic deployment model. The scenarios differ depending on the networking configuration and the location of the client.
-author: bluefooted
-ms.author: pamela
+author: dplessMSFT
+ms.author: dpless
 ms.reviewer: mathoma, randolphwest
 ms.date: 03/15/2023
 ms.service: azure-vm-sql-server

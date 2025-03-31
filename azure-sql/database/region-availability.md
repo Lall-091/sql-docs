@@ -4,7 +4,7 @@ description: Learn about feature availability by region for Azure SQL Database.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: rsetlem
-ms.date: 03/07/2025
+ms.date: 03/28/2025
 ms.service: azure-sql-database
 ms.topic: concept-article
 ms.custom:
@@ -25,51 +25,137 @@ This article is a centralized list of the availability of various Azure SQL Data
 
 <!-- Alphabetization guidance: sort by the region, then the directional. East Asia comes before Australia East. This results in regions kept together, for example, all the US regions. -->
 
-## General Purpose service tier zone-redundancy availability
+## vCore purchasing model hardware availability
 
-Minimize impact to your data in the event of an outage to an entire zone by enabling zone redundancy. Zone-redundant availability ensures your data is spread across three Azure availability zones in the primary region. For more information, see [availability through redundancy in Azure SQL Database](high-availability-sla-local-zone-redundancy.md).
+Azure SQL Database hardware is available in all regions, except where indicated. For more information, see [vCore purchasing model - Azure SQL Database](service-tiers-sql-database-vcore.md).
 
-For up to date information about the regions that support zone-redundant databases, see [Services support by region](/azure/reliability/availability-zones-region-support).
+<a id="gen4gen5-1"></a>
 
-For General Purpose tier, the zone-redundant configuration is available in the following regions: 
+<a id="gen5"></a>
+
+### Standard-series (Gen5) availability
+
+Standard-series (Gen5) hardware is available in [all public regions worldwide where Azure SQL Database is available](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/table).
+
+<a id="hyperscale-premium-series-availability"></a>
+
+### Hyperscale premium-series availability
+
+[Premium-series hardware](service-tiers-sql-database-vcore.md#hyperscale-premium-series) is available for single databases and elastic pools. 
+
+[Premium-series memory optimized hardware](service-tiers-sql-database-vcore.md#hyperscale-premium-series) is not currently available in the following regions:
+
+- Brazil South
+- Sweden Central
+- UK West
+
+**Hyperscale premium-series** and **premium-series memory optimized hardware** is available for single databases and elastic pools in the following regions:
 
 #### [Americas](#tab/americas)
 
-  - Brazil South
-  - Canada Central
-  - Central US
-  - East US
-  - East US 2
-  - South Central US
-  - West US 2
-  - West US 3
+| Azure region | Premium-series available | Premium-series memory optimized available | [Availability zone support](high-availability-sla-local-zone-redundancy.md#high-availability-through-zone-redundancy) | 
+|:--|:--|:--|
+| Brazil South | [!INCLUDE [yes](../includes/yes.md)]  |  | [!INCLUDE [yes](../includes/yes.md)]  |
+| Canada Central | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
+| Canada East | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |  |
+| US Central | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
+| US East | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
+| US East 2 | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
+| US North Central | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |  |
+| US South Central | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |  |
+| US West Central | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |  |
+| US West 1 | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |  |
+| US West 2 | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
+| US West 3 | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
+
+\* Includes support for [zone redundancy](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability).
 
 #### [Asia Pacific](#tab/asia)
 
-  - East Asia
-  - Southeast Asia
-  - Australia East
-  - China North 3
-  - Central India
-  - Japan East
-  - Korea Central
-  
+| Azure region | Premium-series available | Premium-series memory optimized available | [Availability zone support](high-availability-sla-local-zone-redundancy.md#high-availability-through-zone-redundancy) | 
+|:--|:--|:--|
+| East Asia | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |  |
+| Southeast Asia | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
+| Australia East | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
+| Australia Southeast | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |  |
+| Central India | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |  |
+| South India | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |  |
+| Japan East | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
+| Japan West | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |  |
+
+\* Includes support for [zone redundancy](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability).
+
 #### [Europe, the Middle East, and Africa](#tab/emea)
 
-  - North Europe
-  - West Europe
-  - France Central
-  - Israel Central
-  - Italy North
-  - Germany West Central
-  - Norway East
-  - Poland Central
-  - Qatar Central
-  - South Africa North
-  - Sweden Central
-  - Switzerland North
-  - UAE North
-  - UK South
+| Azure region | Premium-series available | Premium-series memory optimized available | [Availability zone support](high-availability-sla-local-zone-redundancy.md#high-availability-through-zone-redundancy) | 
+|:--|:--|:--|
+| Europe North | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
+| Europe West | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
+| France Central | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |  |
+| Germany West Central | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
+| Sweden Central | [!INCLUDE [yes](../includes/yes.md)]  |  | [!INCLUDE [yes](../includes/yes.md)]  |
+| Switzerland North | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | |
+| UK South | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
+
+\* Includes support for [zone redundancy](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability).
+
+---
+
+### Fsv2-series availability
+
+Fsv2-series is available in the following regions:
+
+#### [Americas](#tab/americas)
+
+- Brazil South
+- Canada Central
+- US East
+- US West 2
+
+#### [Asia Pacific](#tab/asia)
+
+- East Asia
+- Southeast Asia
+- Australia Central
+- Australia Central 2
+- Australia East
+- Australia Southeast
+- Central India
+- Korea Central
+- Korea South
+
+#### [Europe, the Middle East, and Africa](#tab/emea)
+
+- Europe North
+- Europe West 
+- France Central
+- South Africa North
+- UK South
+- UK West
+
+---
+
+### DC-series availability
+
+If you need DC-series in a currently unsupported region, [submit a support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). 
+
+DC-series is available in the following regions:
+
+#### [Americas](#tab/americas)
+
+- Canada Central
+- US East
+- US West
+
+#### [Asia Pacific](#tab/asia)
+
+- Southeast Asia
+
+#### [Europe, the Middle East, and Africa](#tab/emea)
+
+- Europe North
+- Europe West
+- UK South
 
 ---
 
@@ -260,141 +346,6 @@ Currently, all regions with serverless support 40 vCores and provide [availabili
 | UAE North | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
 | UK South | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
 | UK West | [!INCLUDE [yes](../includes/yes.md)]  |  |
-
----
-
-
-## vCore purchasing model hardware availability
-
-Azure SQL Database hardware is available in all regions, except where indicated. For more information, see [vCore purchasing model - Azure SQL Database](service-tiers-sql-database-vcore.md).
-
-<a id="gen4gen5-1"></a>
-
-<a id="gen5"></a>
-
-### Standard-series (Gen5) availability
-
-Standard-series (Gen5) hardware is available in [all public regions worldwide where Azure SQL Database is available](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/table).
-
-<a id="hyperscale-premium-series-availability"></a>
-
-### Hyperscale premium-series availability
-
-[Premium-series hardware](service-tiers-sql-database-vcore.md#hyperscale-premium-series) is available for single databases and elastic pools. 
-
-[Premium-series memory optimized hardware](service-tiers-sql-database-vcore.md#hyperscale-premium-series) is not currently available in the following regions:
-
-- Brazil South
-- Sweden Central
-- UK West
-
-**Hyperscale premium-series** and **premium-series memory optimized hardware** is available for single databases and elastic pools in the following regions:
-
-#### [Americas](#tab/americas)
-
-| Azure region | Premium-series available | Premium-series memory optimized available | [Availability zone support](high-availability-sla-local-zone-redundancy.md#high-availability-through-zone-redundancy) | 
-|:--|:--|:--|
-| Brazil South | [!INCLUDE [yes](../includes/yes.md)]  |  | [!INCLUDE [yes](../includes/yes.md)]  |
-| Canada Central | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
-| Canada East | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |  |
-| US Central | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
-| US East | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
-| US East 2 | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
-| US North Central | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |  |
-| US South Central | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |  |
-| US West Central | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |  |
-| US West 1 | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |  |
-| US West 2 | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
-| US West 3 | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
-
-\* Includes support for [zone redundancy](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability).
-
-#### [Asia Pacific](#tab/asia)
-
-| Azure region | Premium-series available | Premium-series memory optimized available | [Availability zone support](high-availability-sla-local-zone-redundancy.md#high-availability-through-zone-redundancy) | 
-|:--|:--|:--|
-| East Asia | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |  |
-| Southeast Asia | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
-| Australia East | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
-| Australia Southeast | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |  |
-| Central India | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |  |
-| South India | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |  |
-| Japan East | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
-| Japan West | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |  |
-
-\* Includes support for [zone redundancy](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability).
-
-#### [Europe, the Middle East, and Africa](#tab/emea)
-
-| Azure region | Premium-series available | Premium-series memory optimized available | [Availability zone support](high-availability-sla-local-zone-redundancy.md#high-availability-through-zone-redundancy) | 
-|:--|:--|:--|
-| Europe North | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
-| Europe West | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
-| France Central | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |  |
-| Germany West Central | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
-| Sweden Central | [!INCLUDE [yes](../includes/yes.md)]  |  | [!INCLUDE [yes](../includes/yes.md)]  |
-| Switzerland North | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | |
-| UK South | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
-
-\* Includes support for [zone redundancy](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability).
-
----
-
-### Fsv2-series availability
-
-Fsv2-series is available in the following regions:
-
-#### [Americas](#tab/americas)
-
-- Brazil South
-- Canada Central
-- US East
-- US West 2
-
-#### [Asia Pacific](#tab/asia)
-
-- East Asia
-- Southeast Asia
-- Australia Central
-- Australia Central 2
-- Australia East
-- Australia Southeast
-- Central India
-- Korea Central
-- Korea South
-
-#### [Europe, the Middle East, and Africa](#tab/emea)
-
-- Europe North
-- Europe West 
-- France Central
-- South Africa North
-- UK South
-- UK West
-
----
-
-### DC-series availability
-
-If you need DC-series in a currently unsupported region, [submit a support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). 
-
-DC-series is available in the following regions:
-
-#### [Americas](#tab/americas)
-
-- Canada Central
-- US East
-- US West
-
-#### [Asia Pacific](#tab/asia)
-
-- Southeast Asia
-
-#### [Europe, the Middle East, and Africa](#tab/emea)
-
-- Europe North
-- Europe West
-- UK South
 
 ---
 

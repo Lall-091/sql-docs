@@ -3,7 +3,7 @@ metadata:
   title: Frequently asked questions
   description: Provides questions and answers frequently asked about SQL Server enabled by Azure Arc.
   ms.topic: faq
-  ms.date: 12/09/2024
+  ms.date: 02/25/2025
   ms.author: mikeray
   author: MikeRayMSFT
 title: Frequently asked questions - SQL Server enabled by Azure Arc
@@ -86,6 +86,11 @@ sections:
 
       - question: How do I set the minimum permissions to deploy SQL Server enabled by Azure Arc?
         answer: Least privilege mode uses minimum permissions to deploy SQL Server enabled by Azure Arc. To enable least privilege mode, review [Operate SQL Server enabled by Azure Arc with least privilege](configure-least-privilege.md).
+
+  - name: Associated services
+    questions:
+      - question: How does SQL Server enabled by Azure Arc license management work with associated services? 
+        answer: The associated services are represented as SQL Server instances in Azure Resource Manager (ARM) with a service_type property reflecting if it is an engine or an associated service installation. Review [Manage licensing and billing](manage-license-billing.md) and [Extended Security Updates](extended-security-updates.md) for details. 
 
 additionalContent: |
 

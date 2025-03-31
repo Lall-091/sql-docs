@@ -282,8 +282,6 @@
       href: copilot/copilot-azure-sql-overview.md
     - name: Copilot in SQL Database FAQ
       href: copilot/copilot-azure-sql-faq.yml
-    - name: Natural language to SQL
-      href: copilot/query-editor-natural-language-to-sql-copilot.md
     - name: Intelligent applications and AI
       href: database/ai-artificial-intelligence-intelligent-applications.md
   - name: Quickstarts
@@ -1690,8 +1688,10 @@
           href: virtual-machines/windows/change-sql-server-edition.md
         - name: Change version
           href: virtual-machines/windows/change-sql-server-version.md
-        - name: Storage configuration
+        - name: Premium SSD storage
           href: virtual-machines/windows/storage-configuration.md
+        - name: Azure Elastic SAN Storage
+          href: virtual-machines/windows/storage-configuration-azure-elastic-san.md
 
         - name: Microsoft Entra authentication
           href: virtual-machines/windows/configure-azure-ad-authentication-for-sql-vm.md

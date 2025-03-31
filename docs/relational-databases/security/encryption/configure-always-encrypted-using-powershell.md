@@ -4,7 +4,7 @@ description: Learn how to import and use the SqlServer PowerShell module, which 
 author: Pietervanhove
 ms.author: pivanho
 ms.reviewer: vanto
-ms.date: 04/05/2023
+ms.date: 03/28/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: how-to
@@ -17,11 +17,11 @@ The SqlServer PowerShell module provides cmdlets for configuring [Always Encrypt
 
 ## Security Considerations when using PowerShell to Configure Always Encrypted
 
-Because the primary goal of Always Encrypted is to ensure encrypted sensitive data is safe, even if the database system gets compromised, executing a PowerShell script that processes keys or sensitive data on the SQL Server computer can reduce or defeat the benefits of the feature. For additional security-related recommendations, see [Security Considerations for Key Management](overview-of-key-management-for-always-encrypted.md#security-considerations-for-key-management).
+Because the primary goal of Always Encrypted is to ensure encrypted sensitive data is safe, even if the database system gets compromised, executing a PowerShell script that processes keys or sensitive data on the SQL Server computer can reduce or defeat the benefits of the feature. For more security-related recommendations, see [Security Considerations for Key Management](overview-of-key-management-for-always-encrypted.md#security-considerations-for-key-management).
 
 You can use PowerShell to manage Always Encrypted keys both with and without role separation, providing control over who has access to the actual encryption keys in the key store, and who has access to the database.
 
- For additional recommendations, see [Security Considerations for Key Management](overview-of-key-management-for-always-encrypted.md#security-considerations-for-key-management).
+ For more recommendations, see [Security Considerations for Key Management](overview-of-key-management-for-always-encrypted.md#security-considerations-for-key-management).
 
 ## Prerequisites
 
@@ -76,10 +76,11 @@ $database | Get-SqlColumnMasterKey
 ```
 
 ### Using SQL Server PowerShell Provider
-The [SQL Server PowerShell Provider](/powershell/sql-server/sql-server-powershell-provider) exposes the hierarchy of SQL Server objects in paths similar to file system paths. With SQL Server PowerShell, you can navigate the paths using Windows PowerShell aliases similar to the commands you typically use to navigate file system paths. Once you navigate to the target instance and the database, the subsequent cmdlets target that database, as shown in the following example. 
+
+The [SQL Server PowerShell Provider](/powershell/sql-server/sql-server-powershell-provider) exposes the hierarchy of SQL Server objects in paths similar to file system paths. With SQL Server PowerShell, you can navigate the paths using Windows PowerShell aliases similar to the commands you typically use to navigate file system paths. Once you navigate to the target instance and the database, the subsequent cmdlets target that database, as shown in the following example.
 
 > [!NOTE]
-> This method of connecting to a database works only for SQL Server (it is not supported in Azure SQL Database).
+> This method of connecting to a database works only for SQL Server (it isn't supported in Azure SQL Database).
 
 ```PowerShell
 # Import the SqlServer module.
@@ -135,7 +136,7 @@ The following PowerShell cmdlets are available for Always Encrypted:
 
 
 
-## See Also
+## Related content
 
 - [Always Encrypted](../../../relational-databases/security/encryption/always-encrypted-database-engine.md)
 - [Overview of key management for Always Encrypted](../../../relational-databases/security/encryption/overview-of-key-management-for-always-encrypted.md)

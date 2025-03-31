@@ -4677,8 +4677,10 @@ items:
         href: database-engine/configure-windows/start-sql-server-in-single-user-mode.md
       - name: Minimal Configuration
         href: database-engine/configure-windows/start-sql-server-with-minimal-configuration.md
-      - name: SQL Server Configuration Manager services -
+      - name: SQL Server Configuration Manager services
         items:
+        - name: SQL Server Services
+          href: tools\configuration-manager\sql-server-services.md
         - name: Connect to another computer
           href: database-engine/configure-windows/scm-services-connect-to-another-computer.md
         - name: Set an instance to start automatically
@@ -8123,6 +8125,8 @@ items:
     href: tools/overview-sql-tools.md
   - name: Azure Data Studio >
     href: azure-data-studio/index.yml
+  - name: SSMS >
+    href: /ssms/ssms-21/release-notes-21
   - name: Command prompt utilities
     href: tools/command-prompt-utility-reference-database-engine.md
     items:
@@ -8274,7 +8278,7 @@ items:
       - name: Cancel Option
         href: tools/distributed-replay/cancel-option-distributed-replay-administration-tool.md
   - name: SQL Server Configuration Manager
-    href: tools/configuration-manager/sql-server-services.md
+    href: tools\configuration-manager\sql-server-configuration-manager.md
     items:
     - name: Help
       href: tools/configuration-manager/sql-server-configuration-manager-help.md
@@ -9310,8 +9314,8 @@ items:
       items:
       - name: Assess
         href: sql-server/azure-arc/assess.md
-      - name: View databases
-        href: sql-server/azure-arc/view-databases.md
+      - name: View inventory
+        href: sql-server/azure-arc/view-inventory.md
       - name: Configure SQL Server
         href: sql-server/azure-arc/manage-configuration.md
       - name: Licensing & billing
@@ -9324,6 +9328,8 @@ items:
         href: sql-server/azure-arc/delete-from-azure-arc.md
       - name: Monitor (preview)
         href: sql-server/azure-arc/sql-monitoring.md
+      - name: Client connection summary
+        href: sql-server/azure-arc/sql-connection-summary.md
       - name: Use activity logs
         href: sql-server/azure-arc/activity-logs.md
       - name: Move resources

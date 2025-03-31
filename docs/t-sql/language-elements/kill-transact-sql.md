@@ -106,9 +106,9 @@ Use `KILL` carefully, especially when critical processes are running. You can't 
 - `LOCK MONITOR`
 - `SIGNAL HANDLER`
 
-Use `@@SPID` to display the session ID value for the current session.
+Use `@@SPID` to display the session ID (SPID) value for the current session.
 
-To obtain a report of active session ID values, query the `session_id` column of the `sys.dm_tran_locks`, `sys.dm_exec_sessions`, and `sys.dm_exec_requests` dynamic management views. You can also view the `SPID` column that the `sp_who` system stored procedure returns. If a rollback is in progress for a specific SPID, the `cmd` column in the `sp_who` result set for that SPID indicates `KILLED/ROLLBACK`.
+To obtain a report of active session ID values, query the `session_id` column of the `sys.dm_tran_locks`, `sys.dm_exec_sessions`, and `sys.dm_exec_requests` dynamic management views. You can also view the `SPID` column that the `sp_who` system stored procedure returns. If a rollback is in progress for a specific session ID, the `cmd` column in the `sp_who` result set for that session ID indicates `KILLED/ROLLBACK`.
 
 When a particular connection has a lock on a database resource and blocks the progress of another connection, the session ID of the blocking connection shows up in the `blocking_session_id` column of `sys.dm_exec_requests` or the `blk` column returned by `sp_who`.
 

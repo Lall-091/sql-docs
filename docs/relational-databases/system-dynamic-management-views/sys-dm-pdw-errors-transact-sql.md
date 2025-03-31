@@ -28,7 +28,7 @@ monikerRange: ">=aps-pdw-2016||=azure-sqldw-latest"
 | `pwd_node_id` |**int**|Identifier of the specific node involved, if any. For more information on node IDs, see [sys.dm_pdw_nodes (Transact-SQL)](../../relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-transact-sql.md).||  
 | `session_id` |**nvarchar(32)**|Identifier of the session involved, if any. For more information on session IDs, see  [sys.dm_pdw_exec_sessions (Transact-SQL)](../../relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-sessions-transact-sql.md).||  
 | `request_id` |**nvarchar(32)**|Identifier of the request involved, if any. For more information on request IDs, see [sys.dm_pdw_exec_requests (Transact-SQL)](../../relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql.md). This `request_id` can be corresponded with the `request_id` in [sys.dm_pdw_exec_requests](../../relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql.md)||  
-| `spid` |**int**|spid of the SQL Server session involved, if any.||  
+| `spid` |**int**|Session ID of the SQL Server session involved, if any.||  
 | `thread_id` |**int**|[!INCLUDE [ssInfoNA](../../includes/ssinfona-md.md)]||  
 | `details` |**nvarchar(4000)**|Holds the full error text description.||  
   

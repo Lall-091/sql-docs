@@ -1,8 +1,8 @@
 ---
 title: Extend support for SQL Server
 description: Extend support for SQL Server 2012 by migrating your SQL Server instance to Azure, or purchasing extended support to keep instances on-premises.
-author: bluefooted
-ms.author: pamela
+author: dplessMSFT
+ms.author: dpless
 ms.reviewer: mathoma, randolphwest
 ms.date: 07/10/2023
 ms.service: azure-vm-sql-server

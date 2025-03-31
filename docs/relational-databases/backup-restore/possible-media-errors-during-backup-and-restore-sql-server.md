@@ -63,7 +63,7 @@ helpviewer_keywords:
   
 2.  Logs the error in the SQL Server error log.  
   
-3.  Marks the backup set as containing this type of error (in the **is_damaged** column of **msdb.backupset)**. For more information, see [backupset &#40;Transact-SQL&#41;](../../relational-databases/system-tables/backupset-transact-sql.md).  
+3.  Marks the backup set as containing this type of error (in the **is_damaged** column of **msdb..backupset)**. For more information, see [backupset &#40;Transact-SQL&#41;](../../relational-databases/system-tables/backupset-transact-sql.md).  
   
 4.  Issues a message that the backup was successfully generated, but contains page errors.  
   
@@ -72,7 +72,7 @@ helpviewer_keywords:
   
 -   [Enable or Disable Backup Checksums During Backup or Restore &#40;SQL Server&#41;](../../relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server.md)  
   
- **To control the response to a error during a backup operation**  
+ **To control the response to an error during a backup operation**  
   
 -   [Specify Whether a Backup or Restore Operation Continues or Stops After Encountering an Error &#40;SQL Server&#41;](../../relational-databases/backup-restore/specify-if-backup-or-restore-continues-or-stops-after-error.md)  
   

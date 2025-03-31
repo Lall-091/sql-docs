@@ -13,7 +13,7 @@ ms.custom:
   - azure-sql-split
   - sqldbrb=2
   - ignite-2024
-monikerRange: "=azuresql || =azuresql-db || =fabric"
+monikerRange: "=azuresql || =azuresql-db || =fabricsql"
 ---
 # Monitor performance using dynamic management views
 

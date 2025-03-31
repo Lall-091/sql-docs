@@ -1,10 +1,10 @@
 ---
 title: "Storage: Performance best practices & guidelines"
 description: Provides storage best practices and guidelines to optimize the performance of your SQL Server on Azure Virtual Machines (VM).
-author: bluefooted
-ms.author: pamela
+author: dplessMSFT
+ms.author: dpless
 ms.reviewer: mathoma, randolphwest
-ms.date: 03/01/2024
+ms.date: 02/10/2025
 ms.service: azure-vm-sql-server
 ms.subservice: performance
 ms.topic: best-practice
@@ -45,7 +45,7 @@ You have a choice in the performance level for your disks. The types of managed 
 
 For Standard HDDs, Standard SSDs, and Premium SSDs, the performance of the disk increases with the size of the disk, grouped by [premium disk labels](/azure/virtual-machines/disks-types#premium-ssds) such as the P1 with 4 GiB of space and 120 IOPS to the P80 with 32 TiB of storage and 20,000 IOPS. Premium storage supports a storage cache that helps improve read and write performance for some workloads. For more information, see [Managed disks overview](/azure/virtual-machines/managed-disks-overview).
 
-The performance of Premium SSD v2 and Ultra Disks can be changed independently of the size of the disk, for details see [Ultra disk performance](/azure/virtual-machines/disks-types#ultra-disk-performance) and [Premium SSD v2 performance](/azure/virtual-machines/disks-types#premium-ssd-v2-performance).
+The performance of Premium SSD v2 and Ultra Disks can be changed independently of the size of the disk, for details see [Ultra disk performance](/azure/virtual-machines/disks-types#ultra-disk-performance) and [Premium SSD v2 performance](/azure/virtual-machines/disks-types#premium-ssd-v2-performance). If your workload requires more than 160,000 IOPS, then consider using Premium SSD v2 or Ultra Disks. 
 
 There are also three main [disk roles](/azure/virtual-machines/managed-disks-overview#disk-roles) to consider for your SQL Server on Azure VM -  an OS disk, a temporary disk, and your data disks. Carefully choose what is stored on the operating system drive `(C:\)` and the ephemeral temporary drive `(D:\)`.
 
@@ -80,7 +80,7 @@ Format your data disk to use 64-KB allocation unit size for all data files place
 
 You should use [Premium SSD v2](/azure/virtual-machines/disks-types#premium-ssd-v2) disks when running SQL Server workloads in [supported regions](/azure/virtual-machines/disks-types#regional-availability), if the [current limitations](/azure/virtual-machines/disks-types#premium-ssd-v2-limitations) are suitable for your environment. Depending on your configuration, Premium SSD v2 can be cheaper than Premium SSDs, while also providing performance improvements. With Premium SSD v2, you can individually adjust your throughput or IOPS independently from the size of your disk. Being able to individually adjust performance options allows for this larger cost savings and allows you to script changes to meet performance requirements during anticipated or known periods of need. 
 
-We recommend using Premium SSD v2 when using the [Ebdsv5 or Ebsv5 virtual machine series](/azure/virtual-machines/ebdsv5-ebsv5-series) as it is a more cost-effective solution for these high I/O throughput machines. 
+We recommend using Premium SSD v2 when using the [Ebdsv5 or Ebsv5 virtual machine series](/azure/virtual-machines/ebdsv5-ebsv5-series) as it is a more cost-effective solution for these high I/O throughput machines.  If your workload requires more than 160,000 IOPS, then consider using Premium SSD v2 or Ultra Disks. 
 
 You can [deploy your SQL Server VMs with Premium SSD v2](storage-configuration-premium-ssd-v2.md) by using the Azure portal (currently in preview).
 
@@ -88,23 +88,11 @@ If you're deploying your SQL Server VM by using the Azure portal and want to use
 
 ## Azure Elastic SAN
 
-[Azure Elastic SAN](/azure/storage/elastic-san/elastic-san-introduction) is a network-attached storage offering that provides customers a flexible and scalable solution with the potential to reduce cost through storage consolidation. Azure Elastic SAN delivers a cost-effective, performant, and reliable block storage solution that connects to a variety of Azure compute services over iSCSI protocol. Elastic SAN enables a seamless transition from an existing SAN storage estate to the cloud without having to refactor customer application architecture. 
+[Azure Elastic SAN](storage-configuration-azure-elastic-san.md) is a network-attached storage offering that provides customers a flexible and scalable solution with the potential to reduce cost through storage consolidation. Azure Elastic SAN delivers a cost-effective, performant, and reliable block storage solution that connects to a variety of Azure compute services over iSCSI protocol. Elastic SAN enables a seamless transition from an existing SAN storage estate to the cloud without having to refactor customer application architecture. 
 
-This solution can scale up to millions of IOPS, double-digit GB/s of throughput, and low single-digit millisecond latencies, with built-in resiliency to minimize downtime. Use Azure Elastic SAN if you need to consolidate storage, work with multiple compute services, or have workloads that require high throughput levels when driving storage over network bandwidth. However, since achieving desired IOPS/throughput for SQL Server workloads often requires overprovisioning capacity, _it's not typically appropriate for single SQL Server workloads_. Combining other low-performance workloads with SQL Server might be necessary to attain the most cost-effective solution. 
+This solution can scale up to millions of IOPS, double-digit GB/s of throughput, and low single-digit millisecond latencies, with built-in resiliency to minimize downtime. Use Azure Elastic SAN if you need to consolidate storage, work with multiple compute services, or have workloads that require high throughput levels when driving storage over network bandwidth. However, since achieving desired IOPS/throughput for SQL Server workloads often requires overprovisioning capacity, _it's not typically appropriate for **single** SQL Server workloads_. To attain the most cost-effective solution with Elastic SAN, consider using it as storage for multiple SQL server workloads, or a combination of SQL Server and other low-performance workloads.
 
-When considering VM sizing and performance for Azure Elastic SAN, it's important to understand that storage communication occurs over the network. For example, the VM size E4d_v5 does not support Azure Premium Storage but works well with Azure Elastic SAN as it supports up to 12,500-Mbps network throughput. When using Azure Elastic SAN with this VM size, you must ensure the network and storage throughput requirements for your workload fall under the 12,500-Mbps network throughput limit. 
-
-Determine your network and storage requirements before deploying your SQL Server VM with an Azure Elastic SAN, and then carefully monitor network and storage utilization to confirm the chosen VM can accommodate the workload. To learn more, review [VM performance with Elastic SAN volumes](/azure/storage/elastic-san/elastic-san-performance) and [Elastic SAN metrics](/azure/storage/elastic-san/elastic-san-metrics). 
-
-> [!CAUTION]
-> - VM sizing with Elastic SAN must accommodate production (VM to VM) network throughput requirements in addition to storage throughput. When using Elastic SAN, VM sizes that optimize for IO throughput might not be as cost-effective as VM sizes that optimize for network bandwidth. 
-
-
-Consider placing SQL Server workloads on Elastic SAN for better cost efficiency because: 
-
-- **Storage consolidation and dynamic performance sharing**: Normally for SQL Server on Azure VM workloads, disk storage is provisioned on a per VM basis based on your capacity and peak performance requirements for that VM. This overprovisioned performance is available when needed but the unused performance can't be shared with workloads on other VMs. Elastic SAN, similar to on-premises SAN, allows consolidating storage needs of multiple SQL and non-SQL workloads to achieve better cost efficiency, with the ability to dynamically share provisioned performance across the volumes provisioned to these different workloads based on IO demands. For example, in the East US region, say you have 10 workloads that require 2-TiB capacity and 10K IOPS each, but collectively they don't need more than 60,000 IOPS at any point in time. You can configure an Elastic SAN with 12 base units (1 base unit = $0.08 per GiB/month) that will give you 12 TiB capacity and the needed 60K IOPS, and 8 capacity-only units (1 capacity-only unit = $0.06 per GiB/month), which gives you the remaining 8-TiB capacity at a lower cost. This optimal storage configuration provides better cost efficiency while providing the necessary performance (10K IOPS) to each of these workloads. For more information on Elastic SAN base and capacity-only provisioning units, see [Planning for an Azure Elastic SAN](/azure/storage/elastic-san/elastic-san-planning#storage-and-performance) and for pricing, visit [Azure Elastic SAN - Pricing](https://azure.microsoft.com/pricing/details/elastic-san/).
-- **To drive higher storage throughput**: SQL Server on Azure VM deployments occasionally require overprovisioning a VM due to disk throughput limits for that VM. You can avoid this with Elastic SAN, since you drive higher storage throughput over compute network bandwidth with the iSCSI protocol. For example, a Standard_E32ds_v5 VM is capped at 51,200 IOPS and 865 MBps for disk/storage throughput, but it can achieve up to a maximum of 2,000 MBps network throughput. If the storage throughput requirement for your workload is greater than 865 MBps, you won't have to upgrade the VM to a larger SKU since it can now support up to 2,000 MBps by using Elastic SAN.
-
+Consider placing SQL Server workloads on Elastic SAN for better cost efficiency, storage consolidation, dynamic performance sharing, and to drive higher storage throughput. 
 
 ## Premium SSD
 

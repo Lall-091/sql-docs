@@ -34,7 +34,7 @@ monikerRange: ">=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-curren
 |**NTDomainName**|**nvarchar**|The Windows domain to which the user belongs.|7|Yes|  
 |**NTUserName**|**nvarchar**|The name of the user that owns the connection that generated this event.|6|Yes|  
 |**ServerName**|**nvarchar**|The name of the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] being traced.|26|No|  
-|**SPID**|**int**|The server process ID assigned by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to the process associated with the client.|12|Yes|  
+|**SPID**|**int**|The session ID assigned by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to the process associated with the client.|12|Yes|  
 |**StartTime**|**datetime**|The time at which the event started, when available.|14|Yes|  
 |**TransactionID**|**bigint**|The system-assigned ID of the transaction.|4|No|  
   

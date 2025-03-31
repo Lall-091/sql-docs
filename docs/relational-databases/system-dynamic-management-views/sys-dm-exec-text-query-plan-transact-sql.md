@@ -110,7 +110,7 @@ Requires VIEW SERVER PERFORMANCE STATE permission on the server.
 > [!NOTE]  
 > To run this example, replace the values for *session_id* and *plan_handle* with values specific to your server.  
   
- First, retrieve the server process ID (SPID) for the process that is executing the query or batch by using the `sp_who` stored procedure:  
+ First, retrieve the session ID (SPID) for the process that is executing the query or batch by using the `sp_who` stored procedure:  
   
 ```sql  
 USE master;  
@@ -119,7 +119,7 @@ EXEC sp_who;
 GO  
 ```  
   
- The result set that is returned by `sp_who` indicates that the SPID is `54`. You can use the SPID with the `sys.dm_exec_requests` dynamic management view to retrieve the plan handle by using the following query:  
+ The result set that is returned by `sp_who` indicates that the session ID is `54`. You can use the session ID with the `sys.dm_exec_requests` dynamic management view to retrieve the plan handle by using the following query:  
   
 ```sql  
 USE master;  

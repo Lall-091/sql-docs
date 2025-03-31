@@ -207,7 +207,7 @@ The following table shows some of the common DPS upload status values and what y
 - [Troubleshoot Azure extension for SQL Server](troubleshoot-deployment.md)
 - [Troubleshoot best practices assessment on SQL Server](troubleshoot-assessment.md)
 - [Configure SQL best practices assessment](assess.md)
-- [View SQL Server databases - Azure Arc](view-databases.md)
+- [View SQL Azure Arc inventory](view-inventory.md)
 - [Manage SQL Server license and billing options](manage-configuration.md)
 - [[!INCLUDE [ssazurearc](../../includes/ssazurearc.md)] and Databases activity logs](activity-logs.md)
 - [Data collected by Arc enabled SQL Server](data-collection.md)

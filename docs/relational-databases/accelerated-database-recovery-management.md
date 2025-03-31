@@ -4,7 +4,7 @@ description: "Best practices for managing and configuring accelerated database r
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: wiassaf, derekw, dfurman, randolphwest
-ms.date: 02/03/2025
+ms.date: 03/28/2025
 ms.service: sql
 ms.subservice: backup-restore
 ms.topic: how-to
@@ -25,11 +25,11 @@ This article teaches you to enable and disable [accelerated database recovery (A
 
 ## Who should consider accelerated database recovery
 
-Many customers find accelerated database recovery (ADR) a valuable technology to improve database recovery time.
+Many customers find accelerated database recovery (ADR) a valuable technology to improve database recovery time and avoid lengthy rollbacks.
 
-If your database workloads frequently encounter the following scenarios, you might benefit from ADR:
+If your database workloads frequently encounter the following scenarios, you can benefit from ADR:
 
-- Long running transactions that can't be avoided. For example, in cases where long-running transactions are at risk of being rolled back, ADR can help.
+- Long running transactions that can't be avoided. For example, ADR helps in cases where long-running transactions are at risk of being rolled back.
 - Active transactions that cause the transaction log to grow significantly.
 - Long-running database recovery that impacts the availability of the database (for example, after an unexpected SQL Server restart or manual transaction rollback).
 

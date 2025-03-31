@@ -41,9 +41,9 @@ Use [!INCLUDE[ssSqlProfiler](../../includes/sssqlprofiler-md.md)] to identify th
   
 |Component|Definition|  
 |---------------|----------------|  
-|Server process Id|Server process identifier (SPID), a server assigned identifier for the process owning the lock.|  
+|Server process Id|Session ID (SPID), a server assigned identifier for the process owning the lock.|  
 |Server batch Id|Server batch identifier (SBID).|  
-|Execution context Id|Execution context identifier (ECID). The execution context ID of a given thread associated with a specific SPID.<br /><br /> ECID = {0,1,2,3, *...n*}, where 0 always represents the main or parent thread, and {1,2,3, *...n*} represent the subthreads.|  
+|Execution context Id|Execution context identifier (ECID). The execution context ID of a given thread associated with a specific session ID.<br /><br /> ECID = {0,1,2,3, *...n*}, where 0 always represents the main or parent thread, and {1,2,3, *...n*} represent the subthreads.|  
 |Deadlock priority|Deadlock priority for the process. For more information about possible values, see [SET DEADLOCK_PRIORITY &#40;Transact-SQL&#41;](../../t-sql/statements/set-deadlock-priority-transact-sql.md).|  
 |Log Used|Amount of log space used by the process.|  
 |Owner Id|Transaction ID for the processes which are using transactions and currently waiting on a lock.|  

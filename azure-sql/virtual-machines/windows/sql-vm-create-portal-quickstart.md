@@ -1,9 +1,9 @@
 ---
 title: Create SQL Server on a Windows virtual machine in the Azure portal
 description: This tutorial shows how to create a Windows virtual machine with SQL Server in the Azure portal.
-author: bluefooted
-ms.author: pamela
-ms.reviewer: mathoma
+author: MashaMSFT
+ms.author: mathoma
+ms.reviewer: dpless
 ms.date: 10/14/2022
 ms.service: azure-vm-sql-server
 ms.subservice: deployment
@@ -30,7 +30,7 @@ This quickstart steps through creating a SQL Server virtual machine (VM) in the 
 
 ## <a id="subscription"></a> Get an Azure subscription
 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount?WT.mc_id=A261C142F) before you begin.
 
 ## <a id="select"></a> Select a SQL Server VM image
 

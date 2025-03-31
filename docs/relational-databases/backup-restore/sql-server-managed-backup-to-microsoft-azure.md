@@ -112,9 +112,6 @@ For a database, if there's an existing full database backup job running, then [!
 
 If more than 10 concurrent full database backups are scheduled, a warning is issued through the debug channel of Extended Events. [!INCLUDE [ss-managed-backup](../../includes/ss-managed-backup-md.md)] then maintains a priority queue for the remaining databases that require a backup until the all backups are scheduled and completed.
 
-> [!NOTE]  
-> SQL Server managed backup isn't supported with proxy servers.
->
 
 ## <a id="support_limits"></a> Supportability
 
@@ -135,6 +132,10 @@ The following support limitations and considerations are specific to [!INCLUDE [
 - Backups of databases in an availability group are [copy-only backups](copy-only-backups-sql-server.md).
 
 - If you're offloading your managed backups to a secondary replica of an Always On availability group, the secondary replica must be set to **Readable** for managed backups to stripe multiple files. 
+
+- SQL Server managed backup isn't supported with proxy servers.
+
+- Managed backups aren't supported by the Web edition of SQL Server. 
 
 ## Related content
 

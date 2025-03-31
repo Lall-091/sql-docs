@@ -4,7 +4,7 @@ metadata:
   description: This article provides answers to frequently asked questions about running SQL Server on Azure VMs.
   services: virtual-machines-windows
   documentationcenter: ''
-  author: bluefooted
+  author: MashaMSFT
   editor: ''
   tags: azure-service-management
   ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
@@ -14,8 +14,8 @@ metadata:
   ms.tgt_pltfrm: vm-windows-sql-server
   ms.workload: iaas-sql-server
   ms.date: 07/31/2023
-  ms.author: pamela
-  ms.reviewer: randolphwest, mathoma
+  ms.author: mathoma
+  ms.reviewer: randolphwest, dpless
 title: Frequently asked questions for SQL Server on Azure VMs
 summary: |
   [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -93,8 +93,12 @@ sections:
           Is there a free edition of SQL Server available on Azure Marketplace? 
         answer: |
              Developer and Express editions of SQL Server are available on Azure Marketplace, which doesn't charge you for the SQL Server license. If the Express or Developer edition isn't available for the version of SQL Server you're looking for, deploy a Windows-only Azure virtual machine, and then manually install the version and edition of SQL Server you want. Register your SQL Server VM with the [SQL IaaS Agent extension](sql-agent-extension-manually-register-single-vm.md) if you want to manage your SQL Server VM from the Azure portal.
- 
 
+      - question: |
+          Why is my SQL Server on Azure VM failing to deploy? 
+        answer: |
+             There are certain VM sizes that deploy with an uninitialized ephemeral drive, which leads to the SQL Server on Azure VM deployment failing during provisioning with the error [System Drive returned status not ready for use](/troubleshoot/sql/azure-sql/sql-deployment-fails-drive-not-ready). To resolve this issue, either choose a different VM size, or deploy the VM as just a Windows Server image and then manually install SQL Server. 
+  
           
   - name: Creation
     questions:
@@ -109,11 +113,14 @@ sections:
              First create an Azure virtual machine with a SQL Server instance. Then migrate your on-premises databases to that instance. For data migration strategies, see [Migration guide: SQL Server to SQL Server on Azure Virtual Machines](../../migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide.md).
 
       - question: |
-          Can I use Azure Virtual Machine Scale Sets (Azure VMSS) with SQL Server on Azure VMs?
+          Can I use Azure Virtual Machine Scale Sets with SQL Server on Azure VMs?
         answer: |
-             No. Using [Azure VMSS](/azure/virtual-machine-scale-sets/overview) is not supported with SQL Server on Azure VMs. Additionally, enabling the [Automatic guest patching feature](/azure/virtual-machines/automatic-vm-guest-patching) can lead to potential corruption, data loss, and availability issues. 
+             No. Using [Azure Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/overview) is not supported with SQL Server on Azure VMs. Additionally, enabling the [Automatic guest patching feature](/azure/virtual-machines/automatic-vm-guest-patching) can lead to potential corruption, data loss, and availability issues. 
 
-
+      - question: |
+          My SQL Server is failing to install on an Azure VM with the error `Could not find the Database Engine startup handle.`. What should I do?
+        answer: |
+            This is likely because your disk drive is configured with an 8-KB sector size which [isn't supported](/troubleshoot/sql/azure-sql/sql-installation-fails-sector-size-error-azure-vm). Reinstall SQL Server after you change the disk drive to a 4-KB sector size. 
 
 
   - name: Licensing

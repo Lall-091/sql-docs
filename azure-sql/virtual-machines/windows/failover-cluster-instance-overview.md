@@ -65,7 +65,7 @@ The rest of this section lists the benefits and limitations of each storage opti
 
 - Useful for applications looking to migrate to Azure while keeping their high-availability and disaster recovery (HADR) architecture as is.
 - Can migrate clustered applications to Azure as is because of SCSI Persistent Reservations (SCSI PR) support.
-- Supports shared Azure Premium SSD and Azure Ultra Disk storage.
+- Supports shared Azure Premium SSD, Premium SSDv2 and Azure Ultra Disk storage.
 - Can use a single shared disk or stripe multiple shared disks to create a shared storage pool.
 - Supports FILESTREAM.
 - Premium SSDs support availability sets.

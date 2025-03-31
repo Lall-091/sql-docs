@@ -3,8 +3,8 @@ metadata:
   title: Database watcher FAQ
   titleSuffix: Azure SQL Database & SQL Managed Instance
   description: Frequently asked questions about database watcher for Azure SQL
-  author: dimitri-furman
-  ms.author: dfurman
+  author: lcwright
+  ms.author: lancewright
   ms.date: 02/07/2025
   ms.reviewer: wiassaf
   ms.service: azure-sql

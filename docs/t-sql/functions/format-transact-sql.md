@@ -15,7 +15,8 @@ helpviewer_keywords:
   - "FORMAT function"
 dev_langs:
   - "TSQL"
-ai.usage: ai-assisted
+ai-usage:
+  - "ai-assisted"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =fabric"
 ---
 

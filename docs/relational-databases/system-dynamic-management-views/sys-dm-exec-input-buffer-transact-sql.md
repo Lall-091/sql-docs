@@ -46,9 +46,9 @@ The request_id from [sys.dm_exec_requests](../../relational-databases/system-dyn
 
 |Column name|Data type|Description|
 |-----------------|---------------|-----------------|
-|**event_type**|**nvarchar(256)**|The type of event in the input buffer for the given spid.|
+|**event_type**|**nvarchar(256)**|The type of event in the input buffer for the given session ID (SPID).|
 |**parameters**|**smallint**|Any parameters provided for the statement.|
-|**event_info**|**nvarchar(max)**|The text of the statement in the input buffer for the given spid.|
+|**event_info**|**nvarchar(max)**|The text of the statement in the input buffer for the given session ID (SPID).|
 
 ## Permissions
 

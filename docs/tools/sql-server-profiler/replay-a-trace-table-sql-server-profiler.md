@@ -43,9 +43,9 @@ Replay is the ability to open a saved trace and replay it again. [!INCLUDE[ssSql
   
 7.  Optionally, click the **Advanced Replay Options**tab to specify the following options:  
   
-    -   To replay all server process IDs (SPIDs), select **Replay system SPIDs**.  
+    -   To replay all session IDs, select **Replay system SPIDs**.  
   
-    -   To limit the replay to processes belonging to a specific SPID, select **Replay one SPID only**. In the **SPID to replay**box, type the SPID.  
+    -   To limit the replay to processes belonging to a specific session ID, select **Replay one SPID only**. In the **SPID to replay** box, type the session ID.  
   
     -   To replay events that occurred during a specific time period, select **Limit replay by date and time**. Select a date and time for the **Start time**and **End time**to specify the time period to include in the replay.  
   

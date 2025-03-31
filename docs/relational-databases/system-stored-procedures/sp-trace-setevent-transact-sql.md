@@ -256,7 +256,7 @@ The following table lists the columns that can be added for an event.
 | `9` | `ClientProcessID` | ID assigned by the client computer to the process in which the client application is running. |
 | `10` | `ApplicationName` | Name of the client application that created the connection to an instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. This column is populated with the values passed by the application rather than the displayed name of the program. |
 | `11` | `LoginName` | [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login name of the client. |
-| `12` | `SPID` | Server Process ID assigned by [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to the process associated with the client. |
+| `12` | `SPID` | Session ID assigned by [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to the process associated with the client. |
 | `13` | `Duration` | Amount of elapsed time (in microseconds) taken by the event. This data column isn't populated by the `Hash Warning` event. |
 | `14` | `StartTime` | Time at which the event started, when available. |
 | `15` | `EndTime` | Time at which the event ended. This column isn't populated for starting event classes, such as `SQL:BatchStarting` or `SP:Starting`. It's also not populated by the `Hash Warning` event. |

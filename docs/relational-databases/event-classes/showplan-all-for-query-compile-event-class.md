@@ -46,7 +46,7 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
 |RequestID|**int**|The ID of the request containing the statement.|49|Yes|  
 |ServerName|**nvarchar**|Name of the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] being traced.|26|No|  
 |SessionLoginName|**nvarchar**|Login name of the user who originated the session. For example, if you connect to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] using Login1 and execute a statement as Login2, SessionLoginName shows Login1 and LoginName shows Login2. This column displays both [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] and Windows logins.|64|Yes|  
-|SPID|**int**|Server process ID assigned by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to the process associated with the client.|12|Yes|  
+|SPID|**int**|Session ID assigned by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to the process associated with the client.|12|Yes|  
 |StartTime|**datetime**|Time at which the event started, when available.|14|Yes|  
 |TransactionID|**bigint**|System-assigned ID of the transaction.|4|Yes|  
 |XactSequence|**bigint**|Token used to describe the current transaction.|50|Yes|  

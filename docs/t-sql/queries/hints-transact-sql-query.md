@@ -4,7 +4,7 @@ description: "Query hints specify that the indicated hints are used in the scope
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: wiassaf
-ms.date: 06/07/2024
+ms.date: 03/26/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -54,13 +54,15 @@ helpviewer_keywords:
   - "EXTERNALPUSHDOWN query hint"
   - "USE HINT query hint"
   - "QUERY_PLAN_PROFILE query hint"
+  - "ABORT_QUERY_EXECUTIONquery hint"
 dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
+
 # Query hints (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
+[!INCLUDE [sql-asdb-asdbmi-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-fabricse-fabricdw-fabricsqldb.md)]
 
 Query hints specify that the indicated hints are used in the scope of a query. They affect all operators in the statement. If `UNION` is involved in the main query, only the last query involving a `UNION` operation can have the `OPTION` clause. Query hints are specified as part of the [OPTION clause](option-clause-transact-sql.md). Error 8622 occurs if one or more query hints cause the Query Optimizer not to generate a valid plan.
 
@@ -164,9 +166,16 @@ Query hints specify that the indicated hints are used in the scope of a query. T
 
 Specifies that aggregations that the query's `GROUP BY` or `DISTINCT` clause describes should use hashing or ordering.
 
+- Generally, a hash-based algorithm can improve the performance of queries that involve large or complex grouping sets. 
+- Generally, a sort-based algorithm can improve the performance of queries that involve small or simple grouping sets. 
+
 #### { MERGE | HASH | CONCAT } UNION
 
 Specifies that all `UNION` operations are run by merging, hashing, or concatenating `UNION` sets. If more than one `UNION` hint is specified, the Query Optimizer selects the least expensive strategy from those hints specified.
+
+- Generally, a merge-based algorithm operation can improve the performance of queries that involve sorted inputs.
+- Generally, a hash-based algorithm can improve the performance of queries that involve unsorted or large inputs.
+- Generally, a concatenation-based algorithm can improve the performance of queries that involve distinct or small inputs.
 
 #### { LOOP | MERGE | HASH } JOIN
 
@@ -200,6 +209,8 @@ Specifies that the query is optimized for fast retrieval of the first *integer_v
 #### FORCE ORDER
 
 Specifies that the join order indicated by the query syntax is preserved during query optimization. Using `FORCE ORDER` doesn't affect possible role reversal behavior of the Query Optimizer.
+
+`FORCE ORDER` preserves the join order specified in the query, which might improve the performance or consistency of queries that involve complex join conditions or hints.
 
 > [!NOTE]  
 > In a `MERGE` statement, the source table is accessed before the target table as the default join order, unless the `WHEN SOURCE NOT MATCHED` clause is specified. Specifying `FORCE ORDER` preserves this default behavior.
@@ -331,7 +342,7 @@ If such a plan isn't possible, the Query Optimizer returns an error instead of d
 
 #### <a id="use_hint"></a> USE HINT ( '*hint_name*' )
 
-**Applies to**: [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] (starting with [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] SP1) and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)].
+**Applies to**: [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] (starting with [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] SP1), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)].
 
 Provides one or more extra hints to the query processor. The extra hints are specified with a hint name *inside single quotation marks*.
 
@@ -342,10 +353,11 @@ The following hint names are supported:
 
 | Hint | Description |
 | --- | --- |
-| `'ASSUME_JOIN_PREDICATE_DEPENDS_ON_FILTERS'` <a id="use_hint_join_containment"></a> | Causes [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to generate a query plan using the Simple Containment assumption instead of the default Base Containment assumption for joins, under the Query Optimizer [Cardinality Estimation](../../relational-databases/performance/cardinality-estimation-sql-server.md) model of [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] and later versions. This hint name is equivalent to [Trace Flag](../database-console-commands/dbcc-traceon-trace-flags-transact-sql.md) 9476. |
-| `'ASSUME_MIN_SELECTIVITY_FOR_FILTER_ESTIMATES'` <a id="use_hint_correlation"></a> | Causes [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to generate a plan using minimum selectivity when estimating AND predicates for filters to account for full correlation. This hint name is equivalent to [Trace Flag](../database-console-commands/dbcc-traceon-trace-flags-transact-sql.md) 4137 when used with cardinality estimation model of [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] and earlier versions, and has similar effect when [Trace Flag](../database-console-commands/dbcc-traceon-trace-flags-transact-sql.md) 9471 is used with cardinality estimation model of [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] and later versions. |
-| `'ASSUME_FULL_INDEPENDENCE_FOR_FILTER_ESTIMATES'` | Causes [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to generate a plan using maximum selectivity when estimating AND predicates for filters to account for full independence. This hint name is the default behavior of the cardinality estimation model of [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] and earlier versions, and equivalent to [Trace Flag](../database-console-commands/dbcc-traceon-trace-flags-transact-sql.md) 9472 when used with cardinality estimation model of [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] and later versions.<br /><br />**Applies to**: [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] |
-| `'ASSUME_PARTIAL_CORRELATION_FOR_FILTER_ESTIMATES'` | Causes [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to generate a plan using most to least selectivity when estimating AND predicates for filters to account for partial correlation. This hint name is the default behavior of the cardinality estimation model of [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] and later versions.<br /><br />**Applies to**: [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] |
+| `'ABORT_QUERY_EXECUTION'` <a id="use_hint_abort_query_execution"></a> | Blocks query execution. Intended to be used as a [Query Store hint](../../relational-databases/performance/query-store-hints.md) to let administrators block future execution of known problematic queries, for example non-essential queries impacting application workloads. For more information, see [Block future execution of problematic queries](../../relational-databases/performance/query-store-hints-best-practices.md#block-future-execution-of-problematic-queries).<br /><br />**Applies to**: [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]. This hint is **in preview**. |
+| `'ASSUME_JOIN_PREDICATE_DEPENDS_ON_FILTERS'` <a id="use_hint_join_containment"></a> | Generates a query plan using the Simple Containment assumption instead of the default Base Containment assumption for joins, under the Query Optimizer [Cardinality Estimation](../../relational-databases/performance/cardinality-estimation-sql-server.md) model of [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] and later versions. This hint name is equivalent to [Trace Flag](../database-console-commands/dbcc-traceon-trace-flags-transact-sql.md) 9476. |
+| `'ASSUME_MIN_SELECTIVITY_FOR_FILTER_ESTIMATES'` <a id="use_hint_correlation"></a> | Generates a plan using minimum selectivity when estimating AND predicates for filters to account for full correlation. This hint name is equivalent to [Trace Flag](../database-console-commands/dbcc-traceon-trace-flags-transact-sql.md) 4137 when used with cardinality estimation model of [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] and earlier versions, and has similar effect when [Trace Flag](../database-console-commands/dbcc-traceon-trace-flags-transact-sql.md) 9471 is used with cardinality estimation model of [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] and later versions. |
+| `'ASSUME_FULL_INDEPENDENCE_FOR_FILTER_ESTIMATES'` | Generates a plan using maximum selectivity when estimating AND predicates for filters to account for full independence. This hint name is the default behavior of the cardinality estimation model of [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] and earlier versions, and equivalent to [Trace Flag](../database-console-commands/dbcc-traceon-trace-flags-transact-sql.md) 9472 when used with cardinality estimation model of [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] and later versions.<br /><br />**Applies to**: [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] |
+| `'ASSUME_PARTIAL_CORRELATION_FOR_FILTER_ESTIMATES'` | Generates a plan using most to least selectivity when estimating AND predicates for filters to account for partial correlation. This hint name is the default behavior of the cardinality estimation model of [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] and later versions.<br /><br />**Applies to**: [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] |
 | `'DISABLE_BATCH_MODE_ADAPTIVE_JOINS'` | Disables batch mode adaptive joins. For more information, see [Batch mode Adaptive Joins](../../relational-databases/performance/intelligent-query-processing-details.md#batch-mode-adaptive-joins).<br /><br />**Applies to**: [!INCLUDE [ssSQL17](../../includes/sssql17-md.md)] and later versions, and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] |
 | `'DISABLE_BATCH_MODE_MEMORY_GRANT_FEEDBACK'` | Disables batch mode memory grant feedback. For more information, see [Batch mode memory grant feedback](../../relational-databases/performance/intelligent-query-processing-memory-grant-feedback.md#batch-mode-memory-grant-feedback).<br /><br />**Applies to**: [!INCLUDE [ssSQL17](../../includes/sssql17-md.md)] and later versions, and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] |
 | `'DISABLE_DEFERRED_COMPILATION_TV'` | Disables table variable deferred compilation. For more information, see [Table variable deferred compilation](../../relational-databases/performance/intelligent-query-processing-details.md#table-variable-deferred-compilation).<br /><br />**Applies to**: [!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)] and later versions, and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] |
@@ -403,13 +415,19 @@ Table hints other than `INDEX`, `FORCESCAN`, and `FORCESEEK` are disallowed as q
 
 #### <a id="for-timestamp"></a> FOR TIMESTAMP AS OF '*point_in_time*'
 
-**Applies to**: [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]
+**Applies to**: [!INCLUDE [fabric](../../includes/fabric.md)] Data Warehouse
 
 Use the `TIMESTAMP` syntax in the `OPTION` clause to query data as it existed in the past, part of the time travel feature in Synapse Data Warehouse in Microsoft Fabric.
 
 Specify the *point_in_time* in the format `yyyy-MM-ddTHH:mm:ss[.fff]` to return data as it appeared at that time. The time zone is always in UTC. Use the `CONVERT` syntax for the necessary datetime format with [style 126](../functions/cast-and-convert-transact-sql.md?view=fabric&preserve-view=true#date-and-time-styles).
 
 The `TIMESTAMP AS OF` hint can be specified only once using the `OPTION` clause. For more information and limitations, see [Query data as it existed in the past](/fabric/data-warehouse/time-travel).
+
+#### FORCE [ SINGLE NODE | DISTRIBUTED ] PLAN
+
+**Applies to**: [!INCLUDE [fabric](../../includes/fabric.md)] Data Warehouse
+
+Allows user to choose whether to force a single node plan or a distributed plan for query's execution.
 
 ## Remarks
 
@@ -437,6 +455,26 @@ Table hints other than `INDEX`, `FORCESCAN`, and `FORCESEEK` are disallowed as q
 ## Specify hints with Query Store hints
 
 You can enforce hints on queries identified through Query Store without making code changes, using the [Query Store hints](../../relational-databases/performance/query-store-hints.md) feature. Use the [sys.sp_query_store_set_hints](../../relational-databases/system-stored-procedures/sys-sp-query-store-set-hints-transact-sql.md) stored procedure to apply a hint to a query. See Example N.
+
+## Query hint support in Fabric Data Warehouse
+
+[[!INCLUDE [fabric](../../includes/fabric.md)] Data Warehouse](/fabric/data-warehouse/data-warehousing) supports a subset of query hints:
+
+- `HASH GROUP`
+- `ORDER GROUP`
+- `MERGE UNION`
+- `HASH UNION`
+- `CONCAT UNION`
+- `FORCE ORDER`
+- `USE HINT`
+    - `ASSUME_MIN_SELECTIVITY_FOR_FILTER_ESTIMATES`
+    - `ASSUME_FULL_INDEPENDENCE_FOR_FILTER_ESTIMATES` 
+    - `ASSUME_PARTIAL_CORRELATION_FOR_FILTER_ESTIMATES`
+    - `ASSUME_JOIN_PREDICATE_DEPENDS_ON_FILTERS`
+
+These query hints are exclusive to [!INCLUDE [fabric](../../includes/fabric.md)] Data Warehouse:
+
+- `FORCE SINGLE NODE PLAN`, `FORCE DISTRIBUTED PLAN`
 
 ## Examples
 
@@ -688,7 +726,7 @@ OPTION  (QUERYTRACEON 4199, QUERYTRACEON 4137);
 
 ### N. Use Query Store hints
 
-The [Query Store hints](../../relational-databases/performance/query-store-hints.md) feature in Azure SQL Database provides an easy-to-use method for shaping query plans without changing application code.
+The [Query Store hints](../../relational-databases/performance/query-store-hints.md) feature provides an easy-to-use method for shaping query plans without changing application code.
 
 First, identify the query that has already been executed in the Query Store catalog views, for example:
 
@@ -705,20 +743,27 @@ GO
 The following example applies the hint to force the [legacy cardinality estimator](../../relational-databases/performance/cardinality-estimation-sql-server.md) to query_id 39, identified in Query Store:
 
 ```sql
-EXEC sys.sp_query_store_set_hints @query_id= 39, @query_hints = N'OPTION(USE HINT(''FORCE_LEGACY_CARDINALITY_ESTIMATION''))';
+EXEC sys.sp_query_store_set_hints @query_id = 39, @query_hints = N'OPTION (USE HINT (''FORCE_LEGACY_CARDINALITY_ESTIMATION''))';
 ```
 
 The following example applies the hint to enforce a maximum memory grant size in `PERCENT` of configured memory limit to `query_id` 39, identified in Query Store:
 
 ```sql
-EXEC sys.sp_query_store_set_hints @query_id= 39, @query_hints = N'OPTION(MAX_GRANT_PERCENT=10)';
+EXEC sys.sp_query_store_set_hints @query_id = 39, @query_hints = N'OPTION (MAX_GRANT_PERCENT = 10)';
 ```
 
 The following example applies multiple query hints to query_id 39, including `RECOMPILE`, `MAXDOP 1`, and the [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)] query optimizer behavior:
 
 ```sql
-EXEC sys.sp_query_store_set_hints @query_id= 39,
-    @query_hints = N'OPTION(RECOMPILE, MAXDOP 1, USE HINT(''QUERY_OPTIMIZER_COMPATIBILITY_LEVEL_110''))';
+EXEC sys.sp_query_store_set_hints @query_id = 39,
+    @query_hints = N'OPTION(RECOMPILE, MAXDOP 1, USE HINT (''QUERY_OPTIMIZER_COMPATIBILITY_LEVEL_110''))';
+```
+
+The following example blocks query with the query_id 39 from future execution by applying the `ABORT_QUERY_EXECUTION` hint. The hint is in preview.
+
+```sql
+EXEC sys.sp_query_store_set_hints @query_id = 39,
+    @query_hints = N'OPTION (USE HINT (''ABORT_QUERY_EXECUTION''))';
 ```
 
 ### O. Query data as of a point in time

@@ -1,9 +1,9 @@
 ---
 title: Provision SQL Server on Azure VM (Azure portal)
 description: This detailed guide explains available configuration options when deploying your SQL Server on Azure VM by using the Azure portal.
-author: bluefooted
-ms.author: pamela
-ms.reviewer: mathoma
+author: MashaMSFT
+ms.author: mathoma
+ms.reviewer: dpless
 ms.date: 10/16/2023
 ms.service: azure-vm-sql-server
 ms.subservice: deployment
@@ -19,7 +19,7 @@ This article provides a detailed description of the available configuration opti
 
 ## Prerequisites
 
-An Azure subscription. Create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) to get started. 
+An Azure subscription. Create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount?WT.mc_id=A261C142F) to get started. 
 
 ## <a id="select"></a> Choose Marketplace image
 

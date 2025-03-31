@@ -87,7 +87,7 @@ Customers can use the [vCore](service-tiers-vcore.md) model to choose their pref
 ## Compare service tiers
 
 > [!NOTE]  
-> You can get a free database in Azure SQL Database at the Basic service tier with an Azure free account. For information, see [Create a managed cloud database with your Azure free account](https://azure.microsoft.com/free/services/sql-database/).
+> You can get a free database in Azure SQL Database at the Basic service tier with an Azure free account. For information, see [Create a managed cloud database with your Azure free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccountservices/sql-database/).
 
 Choosing a service tier depends primarily on business continuity, storage, and performance requirements.
 

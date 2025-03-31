@@ -2,8 +2,8 @@
 title: Analyze database watcher monitoring data
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Examples of analytical queries that use database watcher monitoring data
-author: dimitri-furman
-ms.author: dfurman
+author: lcwright
+ms.author: lancewright
 ms.date: 02/07/2025
 ms.service: azure-sql
 ms.subservice: monitoring

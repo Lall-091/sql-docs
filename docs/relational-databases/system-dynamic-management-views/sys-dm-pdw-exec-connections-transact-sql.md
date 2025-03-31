@@ -28,7 +28,7 @@ Returns information about the connections established to this instance of [!INCL
 | `encrypt_option` | **nvarchar(40)** | Indicates `TRUE` (connection is encrypted) or `FALSE` (connection isn't encrypted). |
 | `auth_scheme` | **nvarchar(40)** | Specifies [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or Windows authentication scheme used with this connection. Not nullable. |
 | `client_id` | **varchar(48)** | IP address of the client connecting to this server. Nullable. |
-| `sql_spid` | **int** | The server process ID of the connection. Use `@@SPID` to return the `sql_spid` of the current connection. For most purposes, use the `session_id` instead. |
+| `sql_spid` | **int** | The session ID of the connection. Use `@@SPID` to return the `sql_spid` of the current connection. For most purposes, use the `session_id` instead. |
 
 ## Permissions
 

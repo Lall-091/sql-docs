@@ -4,7 +4,7 @@ description: "Transact-SQL reference for the decimal and numeric data types. Dec
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 09/24/2024
+ms.date: 03/27/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: "reference"
@@ -74,6 +74,8 @@ Before [!INCLUDE [ssSQL16](../../includes/sssql16-md.md)], conversion of **float
 
 ## Examples
 
+### A. Create a table using decimal and numeric data types
+
 The following example creates a table using the **decimal** and **numeric** data types. Values are inserted into each column. The results are returned by using a `SELECT` statement.
 
 ```sql
@@ -97,6 +99,28 @@ FROM dbo.MyTable;
 MyDecimalColumn  MyNumericColumn
 ---------------- ----------------
 123.00           12345.12000
+```
+
+### B. Convert float to decimal with a lower precision and scale
+
+The following example shows how a **float** value is rounded when converted to a **decimal** with a lower precision and scale.
+
+```sql
+CREATE TABLE dbo.MyTable (
+    MyFloatColumn FLOAT,
+    MyDecimalColumn DECIMAL(10, 3)
+);
+GO
+
+DECLARE @value FLOAT;
+SELECT @value = 12345.123456789;
+
+INSERT INTO dbo.MyTable
+VALUES (@value, @value);
+GO
+
+SELECT MyFloatColumn, MyDecimalColumn
+FROM dbo.MyTable;
 ```
 
 ## Related content

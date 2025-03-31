@@ -26,7 +26,7 @@ This quickstart shows how to use the [.NET](https://dotnet.microsoft.com) and C#
 
 To complete this quickstart, you need:
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Visual Studio 2022](https://www.visualstudio.com/downloads/) Community, Professional, or Enterprise edition.
 - A database where you can run a query.
 

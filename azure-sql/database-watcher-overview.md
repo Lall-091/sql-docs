@@ -2,8 +2,8 @@
 title: Monitor Azure SQL workloads with database watcher
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: An overview of database watcher for Azure SQL, a managed monitoring solution for database services in the Azure SQL family.
-author: dimitri-furman
-ms.author: dfurman
+author: lcwright
+ms.author: lancewright
 ms.reviewer: wiassaf
 ms.date: 03/13/2025
 ms.service: azure-sql

@@ -41,7 +41,7 @@ The SQLErrorLogEvent class defines the following properties.
 | InstanceName | Data type: **string**<br /><br />Access type: Read-only<br /><br />Qualifiers: Key<br /><br />The name of the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] where the log file resides. |
 | LogDate | Data type: **datetime**<br /><br />Access type: Read-only<br /><br />Qualifiers: Key<br /><br />The date and time that the event was recorded in the log file. |
 | Message | Data type: **string**<br /><br />Access type: Read-only<br /><br />The event message. |
-| ProcessInfo | Data type: **string**<br /><br />Access type: Read-only<br /><br />Information about the source server process ID (SPID) for the event. |
+| ProcessInfo | Data type: **string**<br /><br />Access type: Read-only<br /><br />Information about the source session ID (SPID) for the event. |
 
 ## Remarks
 

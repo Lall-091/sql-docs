@@ -17,7 +17,7 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
   
 -   The time of the event.  
   
--   The System Process ID (SPID) of the connection when the trigger executed.  
+-   The Session ID (SPID) of the connection when the trigger executed.  
   
 -   The type of event that fired the trigger.  
   

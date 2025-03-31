@@ -106,9 +106,6 @@
         "master-data-services/**/*.md": "SQL Server Master Data Services",
         "master-data-services/microsoft-excel-add-in/**/*.md": "SQL Server MDS Excel Add-in",
         "ssdt/**/*.md": "SQL Server Data Tools (SSDT)",
-        "ssms/**/*.md": "SQL Server Management Studio (SSMS)",
-        "ssms/agent/**/*.md": "SQL Server Agent",
-        "ssms/visual-db-tools/**/*.md": "Visual Database Tools",
         "tools/ssbdiagnose/**/*.md": "ssbdiagnose",
         "data-quality-services/**/*.md": "Data Quality Services (DQS)",
         "azdata/**/*.md": "Azure Data CLI (azdata)",
@@ -185,7 +182,6 @@
         "sql-server/**/*.md": ">= sql-server-2016",
         "ssdt/**/*.md": ">= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-current || = azuresqldb-mi-current || = azure-sqldw-latest || >= aps-pdw-2016 || = fabric",
         "ssma/**/*.md": ">= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-current || = azuresqldb-mi-current || = azure-sqldw-latest || >= aps-pdw-2016",
-        "ssms/**/*.md": ">= aps-pdw-2016 || = azure-sqldw-latest || = azuresqldb-current || = azuresqldb-mi-current || >= sql-server-2016 || = fabric",
         "toc/**/*.md": "=azuresqldb-current||=azuresqldb-mi-current||=azure-sqldw-latest||>=aps-pdw-2016||>=sql-server-2016||>=sql-server-linux-2017 || = fabric",
         "tools/**/*.md": ">=aps-pdw-2016 || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =azuresql || =azuresql-db || =azuresqldb-mi-current || =azuresqldb-current || =fabric",
         "tools/distributed-replay/*.md": "= sql-server-2016 || = sql-server-2017 || = sql-server-ver15 || = sql-server-linux-2017 || = sql-server-linux-ver15",
@@ -440,7 +436,6 @@
           "connect/jdbc/download-microsoft-jdbc-driver-for-sql-server.md",
           "connect/oledb/download-oledb-driver-for-sql-server.md",
           "connect/odbc/download-odbc-driver-for-sql-server.md",
-          "ssms/download-sql-server-management-studio-ssms.md"
         ]
       },
       "sensitive-language-ma": {
@@ -461,7 +456,6 @@
           "relational-databases/system-tables/dbo-systargetservers-transact-sql.md",
           "database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup.md",
           "sql-server/failover-clusters/install/rename-a-sql-server-failover-cluster-instance.md",
-          "ssms/agent/**/*.md",
           "database-engine/install-windows/**/*.md"
         ]
       },

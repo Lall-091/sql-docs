@@ -4,7 +4,7 @@ description: This article discusses the Transact-SQL (T-SQL) differences between
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: wiassaf, mathoma, randolphwest
-ms.date: 11/22/2024
+ms.date: 03/25/2025
 ms.service: azure-sql-database
 ms.subservice: migration
 ms.topic: reference
@@ -13,6 +13,7 @@ ms.collection:
 ms.custom:
   - sqldbrb=1
 ---
+
 # T-SQL differences between SQL Server and Azure SQL Database
 
 When [migrating your database](migrate-to-database-from-sql-server.md) from SQL Server to Azure SQL Database, you might discover that your SQL Server databases require some re-engineering before they can be migrated. This article provides guidance to assist you in both performing this re-engineering and understanding the underlying reasons why the re-engineering is necessary. To detect incompatibilities and migrate databases to Azure SQL Database, use [Azure Data Migration Service](/azure/dms).
@@ -35,6 +36,7 @@ The core DDL statements are available, but DDL statement extensions related to u
 
 - In SQL Server, `CREATE DATABASE` and `ALTER DATABASE` statements have over three dozen options. The statements include file placement, FILESTREAM, and service broker options that only apply to SQL Server. This might not matter if you create databases in SQL Database before you migrate, but if you're migrating T-SQL code that creates databases you should compare [CREATE DATABASE (Azure SQL Database)](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true) with the SQL Server syntax at [CREATE DATABASE (SQL Server T-SQL)](/sql/t-sql/statements/create-database-transact-sql?view=sql-server-ver15&preserve-view=true) to make sure all the options you use are supported. `CREATE DATABASE` for Azure SQL Database also has service objective and elastic pool options that apply only to SQL Database.
 - The `CREATE TABLE` and `ALTER TABLE` statements have `FILETABLE` and `FILESTREAM` options that can't be used on SQL Database because these features aren't supported.
+- Creating, altering, or dropping user objects such as tables, views, or stored procedures using the corresponding `CREATE`, `ALTER`, and `DROP` statements in the `master` database on a [logical server](logical-servers.md) is not supported.
 - `CREATE LOGIN` and `ALTER LOGIN` statements are supported, but don't offer all options available in SQL Server. To make your database more portable, SQL Database encourages using contained database users instead of logins whenever possible. For more information, see [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true), [ALTER LOGIN](/sql/t-sql/statements/alter-login-transact-sql?view=azuresqldb-current&preserve-view=true), and [Authorize database access to SQL Database, SQL Managed Instance, and Azure Synapse Analytics](logins-create-manage.md).
 
 ## T-SQL syntax not supported in Azure SQL Database

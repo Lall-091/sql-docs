@@ -1,8 +1,8 @@
 ---
 title: Price guidance & managing costs
 description: Provides best practices for choosing the right SQL Server virtual machine pricing model.
-author: bluefooted
-ms.author: pamela
+author: dplessMSFT
+ms.author: dpless
 ms.reviewer: mathoma
 ms.date: 04/18/2023
 ms.service: azure-vm-sql-server

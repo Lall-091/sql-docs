@@ -1,11 +1,11 @@
 ---
-title: Azure SQL Database connectivity architecture
-titleSuffix: Azure SQL Database and Azure Synapse Analytics
-description: This article explains the Azure SQL Database connectivity architecture for database connections from within Azure or from outside of Azure.
+title: Connectivity architecture
+titleSuffix: Azure SQL Database and SQL database in Fabric
+description: This article explains the connectivity architecture for database connections from within Azure or from outside of Azure for Azure SQL Database, SQL database in Fabric
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: wiassaf, mathoma, vanto
-ms.date: 05/10/2024
+ms.reviewer: wiassaf, mathoma
+ms.date: 03/18/2025
 ms.service: azure-sql-database
 ms.subservice: connect
 ms.topic: conceptual
@@ -13,17 +13,20 @@ ms.custom:
   - fasttrack-edit
   - sqldbrb=1
   - references_regions
+monikerRange: "=azuresql || =azuresql-db || =fabricsql"
 ---
-# Azure SQL Database and Azure Synapse Analytics connectivity architecture
+# Connectivity architecture
 
-[!INCLUDE [appliesto-sqldb-asa-formerly-sqldw](../includes/appliesto-sqldb-asa-formerly-sqldw.md)]
+[!INCLUDE [appliesto-sqldb-fabricsqldb](../includes/appliesto-sqldb-fabricsqldb.md)]
 
-This article explains architecture of various components that direct network traffic to a server in Azure SQL Database or dedicated SQL pools in Azure Synapse Analytics. It also explains different connection policies and how it impacts clients connecting from within Azure and clients connecting from outside of Azure.
+This article explains architecture of various components that direct network traffic to a server in Azure SQL Database and SQL database in Microsoft Fabric. Learn more about different connection policies and how they impact clients connecting from within Azure and clients connecting from outside of Azure.
 
 - For connection strings to Azure SQL Database, see [Connect and query to Azure SQL Database](connect-query-content-reference-guide.md).
-- For connection strings to Azure Synapse Analytics pools, see [Connect to Synapse SQL](/azure/synapse-analytics/sql/connect-overview).
-- For settings that control connectivity to the [logical server](logical-servers.md) for Azure SQL Database and dedicated SQL pools in Azure Synapse Analytics, see [connectivity settings](connectivity-settings.md).
+- For settings that control connectivity to the [logical server](logical-servers.md) for Azure SQL Database, see [connectivity settings](connectivity-settings.md).
 - This article does *not* apply to **Azure SQL Managed Instance**. Refer to [Connectivity architecture for Azure SQL Managed Instance](../managed-instance/connectivity-architecture-overview.md).
+- This article does *not* apply to decicated SQL pools in Azure Synapse Analytics. 
+    - For settings that control connectivity to dedicated SQL pools in Azure Synapse Analytics, see [Azure Synapse Analytics connectivity settings](/azure/synapse-analytics/security/connectivity-settings).
+    - For connection strings to Azure Synapse Analytics pools, see [Connect to Synapse SQL](/azure/synapse-analytics/sql/connect-overview).
 
 ## Connectivity architecture
 
@@ -31,7 +34,7 @@ The following diagram provides a high-level overview of the connectivity archite
 
 :::image type="content" source="media/connectivity-architecture/connectivity-overview.svg" alt-text="Diagram that shows a high-level overview of the connectivity architecture.":::
 
-The following steps describe how a connection is established to Azure SQL Database:
+The following steps describe how a connection is established:
 
 - Clients connect to the gateway that has a public IP address and listens on port 1433.
 - Depending on the effective connection policy, the gateway redirects or proxies the traffic to the correct database cluster.
@@ -39,18 +42,21 @@ The following steps describe how a connection is established to Azure SQL Databa
 
 ## Connection policy
 
-Servers in SQL Database and dedicated SQL pools (formerly SQL DW) in Azure Synapse support the following three options for the server's connection policy setting. 
-
-> [!NOTE]
-> The connection policy for dedicated SQL pools (formerly SQL DW) in Azure Synapse Analytics is set to **Default**. You cannot change this for dedicated SQL pools in Synapse workspaces.
+Logical SQL servers support the following three options for the server's connection policy setting. 
 
 - **Redirect (recommended):** Clients establish connections directly to the node hosting the database, leading to reduced latency and improved throughput. For connections to use this mode, clients need to:
-  - Allow outbound communication from the client to all Azure SQL IP addresses in the region on ports in the range of 11000 to 11999. Use the Service Tags for SQL to make this easier to manage. If you are using Private Link, see [Use Redirect connection policy with private endpoints](private-endpoint-overview.md#use-redirect-connection-policy-with-private-endpoints) for the port ranges to allow.
-  - Allow outbound communication from the client to Azure SQL Database gateway IP addresses on port 1433.
-  - When using the Redirect connection policy, refer to the [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519) for a list of your region's IP addresses to allow.
+   - Allow outbound communication from the client to all Azure SQL IP addresses in the region on ports in the range of 11000 to 11999. Use the Service Tags for SQL to make this easier to manage. If you are using Private Link, see [Use Redirect connection policy with private endpoints](private-endpoint-overview.md#use-redirect-connection-policy-with-private-endpoints) for the port ranges to allow.
+   - Allow outbound communication from the client to Azure SQL Database gateway IP addresses on port 1433.
+   - When using the Redirect connection policy, refer to the [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519) for a list of your region's IP addresses to allow.
+
+   > [!NOTE]
+   > Currently, the connection policy for [SQL database in Microsoft Fabric](/fabric/database/sql/limitations#connection-policy) is **redirect** and cannot be changed.
+
 - **Proxy:** In this mode, all connections are proxied via the Azure SQL Database gateways, leading to increased latency and reduced throughput. For connections to use this mode, clients need to allow outbound communication from the client to Azure SQL Database gateway IP addresses on port 1433.
-  - When using the Proxy connection policy, refer to the [Gateway IP addresses](#gateway-ip-addresses) list later in this article for your region's IP addresses to allow.
-- **Default:** This is the connection policy in effect on all servers after creation unless you explicitly alter the connection policy to either `Proxy` or `Redirect`. The default policy is `Redirect` for all client connections originating inside of Azure (for example, from an Azure Virtual Machine) and `Proxy` for all client connections originating outside (for example, connections from your local workstation).
+   - When using the Proxy connection policy, refer to the [Gateway IP addresses](#gateway-ip-addresses) list later in this article for your region's IP addresses to allow.
+- **Default:** This is the connection policy in effect on all servers after creation unless you explicitly alter the connection policy to either `Proxy` or `Redirect`. The default policy is:
+   - `Redirect` for all client connections originating inside of Azure (for example, from an Azure Virtual Machine). 
+   - `Proxy` for all client connections originating outside (for example, connections from your local workstation).
 
 We highly recommend the `Redirect` connection policy over the `Proxy` connection policy for the lowest latency and highest throughput. However, you need to meet the extra requirements for allowing network traffic for outbound communication:
 
@@ -61,7 +67,7 @@ To change the connection policy, see [Change the connection policy](connectivity
 
 ## Connectivity from within Azure
 
-If you're connecting from within Azure your connections have a connection policy of `Redirect` by default. A policy of `Redirect` means that after the TCP session is established to Azure SQL Database, the client session is then redirected to the right database cluster with a change to the destination virtual IP from that of the Azure SQL Database gateway to that of the cluster. Thereafter, all subsequent packets flow directly to the cluster, bypassing the Azure SQL Database gateway. The following diagram illustrates this traffic flow.
+If you're connecting from within Azure your connections have a connection policy of `Redirect` by default. A policy of `Redirect` means that after the TCP session is established, the client session is then redirected to the right database cluster with a change to the destination virtual IP from that of the Azure SQL Database gateway to that of the cluster. Thereafter, all subsequent packets flow directly to the cluster, bypassing the gateway. The following diagram illustrates this traffic flow.
 
 :::image type="content" source="media/connectivity-architecture/connectivity-azure.svg" alt-text="Diagram of the architecture overview of Azure SQL connectivity via redirection within Azure.":::
 
@@ -83,9 +89,12 @@ Periodically, Microsoft retires individual **Gateway IP addresses** and migrates
 We strongly encourage customers to move away from relying on **any individual Gateway IP address** (since these will be retired in the future). Instead allow network traffic to reach **both** the individual Gateway IP addresses and Gateway IP address subnets in a region.
 
 > [!IMPORTANT]  
-> - Logins for SQL Database or dedicated SQL pools (formerly SQL DW) in Azure Synapse can land on **any of the individual Gateway IP addresses or Gateway IP address subnets in a region**. For consistent connectivity to SQL Database or dedicated SQL pools (formerly SQL DW) in Azure Synapse, allow network traffic to and from **all the individual Gateway IP addresses and Gateway IP address subnets** in a region.
+> - Logins for SQL Database can land on **any of the individual Gateway IP addresses or Gateway IP address subnets in a region**. For consistent connectivity to SQL Database, allow network traffic to and from **all the individual Gateway IP addresses and Gateway IP address subnets** in a region.
 >
-> - Use the individual Gateway IP addresses and Gateway IP address subnets in this section if you're using a Proxy connection policy to connect to Azure SQL Database. If you're using the Redirect connection policy, refer to the [Azure IP Ranges and Service Tags - Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519) for a list of your region's IP addresses to allow.
+> - Use the individual Gateway IP addresses and Gateway IP address subnets in this section if you're using a Proxy connection policy to connect to the database. 
+> - If you're using the Redirect connection policy, refer to the [Azure IP Ranges and Service Tags - Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519) for a list of your region's IP addresses to allow.
+
+<!-- matches azure-docs\articles\synapse-analytics\security\gateway-ip-addresses.md -->
 
 | Region name          | Gateway IP addresses | Gateway IP address subnets |
 | --- | --- | --- |
@@ -96,14 +105,14 @@ We strongly encourage customers to move away from relying on **any individual Ga
 | Brazil South         | 191.233.200.14, 191.234.144.16, 191.234.152.3 | 191.233.200.32/29, 191.234.144.32/29, 191.234.152.32/27, 191.234.153.32/27, 191.234.157.136/29 |
 | Canada Central       | 52.246.152.0, 20.38.144.1 | 13.71.168.32/29, 20.38.144.32/29, 52.246.152.32/29,20.48.196.32/27 |
 | Canada East          | 40.69.105.9, 40.69.105.10 | 40.69.105.32/29,52.139.106.192/27|
-| Central US           | 104.208.21.1, 13.89.169.20 | 104.208.21.192/29, 13.89.168.192/29, 52.182.136.192/29,20.40.228.128/27 |
 | China East           | 139.219.130.35 |  52.130.112.136/29 |
 | China East 2         | 40.73.82.1 | 52.130.120.88/29 |
 | China North          | | 52.130.128.88/29 |
 | China North 2        | 40.73.50.0         | 52.130.40.64/29 |
+| South East Asia      | 104.43.15.0, 40.78.232.3, 13.67.16.193 | 13.67.16.192/29, 23.98.80.192/29, 40.78.232.192/29,20.195.65.32/27|
 | East Asia            | 13.75.32.4, 13.75.32.14, 20.205.77.200, 20.205.83.224  | 13.75.32.192/29, 13.75.33.192/29, 20.195.72.32/27,20.205.77.176/29, 20.205.77.200/29, 20.205.83.224/29 |
-| East US              | 40.121.158.30, 40.79.153.12, 40.78.225.32 | 20.42.65.64/29, 20.42.73.0/29, 52.168.116.64/29, 20.62.132.160/29 |
-| East US 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 104.208.150.3, 40.70.144.193 | 104.208.150.192/29, 40.70.144.192/29, 52.167.104.192/29,20.62.58.128/27 |
+| North Europe         | 52.138.224.1, 13.74.104.113 | 13.69.233.136/29, 13.74.105.192/29, 52.138.229.72/29, 52.146.133.128/27  |
+| West Europe          | 104.40.168.105, 52.236.184.163  | 104.40.169.32/29, 13.69.112.168/29, 52.236.184.32/29,20.61.99.192/27  |
 | France Central       | 40.79.129.1, 40.79.137.8, 40.79.145.12 | 40.79.136.32/29, 40.79.144.32/29, 40.79.128.32/29, 20.43.47.192/27 |
 | France South         | 40.79.177.0, 40.79.177.10, 40.79.177.12 | 40.79.176.40/29, 40.79.177.32/29, 52.136.185.0/27 |
 | Germany West Central | 51.116.240.0, 51.116.248.0, 51.116.152.0 | 51.116.152.32/29, 51.116.240.32/29, 51.116.248.32/29, 51.116.149.32/27 |
@@ -118,8 +127,6 @@ We strongly encourage customers to move away from relying on **any individual Ga
 | Korea Central        | 52.231.32.42, 52.231.17.22, 52.231.17.23, 20.44.24.32, 20.194.64.33 | 20.194.64.32/29, 20.44.24.32/29, 52.231.16.32/29,20.194.73.64/27 |
 | Korea South          | 52.231.151.96 | 52.231.151.96/27, 52.231.151.88/29, 52.147.112.160/27 |
 | Malaysia South       | | 20.17.67.248/29|
-| North Central US     | 52.162.104.33, 52.162.105.9 | 52.162.105.200/29, 52.162.105.192/29, 20.49.119.32/27, 20.125.171.192/29 |
-| North Europe         | 52.138.224.1, 13.74.104.113 | 13.69.233.136/29, 13.74.105.192/29, 52.138.229.72/29, 52.146.133.128/27  |
 | Norway East          | 51.120.96.0, 51.120.96.33, 51.120.104.32, 51.120.208.32 | 51.120.96.32/29, 51.120.104.32/29, 51.120.208.32/29, 51.120.232.192/27 |
 | Norway West          | 51.120.216.0       | 51.120.217.32/29,51.13.136.224/27 |
 | Poland Central       | | 20.215.27.192/29, 20.215.155.248/29,20.215.19.192/29 |
@@ -127,29 +134,28 @@ We strongly encourage customers to move away from relying on **any individual Ga
 | Spain Central        | | 68.221.99.184/29, 68.221.154.88/29, 68.221.147.192/29 |
 | South Africa North   | 102.133.152.0, 102.133.120.2, 102.133.152.32 | 102.133.120.32/29, 102.133.152.32/29, 102.133.248.32/29, 102.133.221.224/27|
 | South Africa West    | 102.133.24.0       | 102.133.25.32/29,102.37.80.96/27 |
-| South Central US     | 104.214.16.32, 20.45.121.1, 20.49.88.1 | 20.45.121.32/29, 20.49.88.32/29, 20.49.89.32/29, 40.124.64.136/29, 20.65.132.160/27 |
-| South East Asia      | 104.43.15.0, 40.78.232.3, 13.67.16.193 | 13.67.16.192/29, 23.98.80.192/29, 40.78.232.192/29,20.195.65.32/27|
 | Sweden Central       | | 51.12.224.32/29, 51.12.232.32/29|
 | Sweden South         | | 51.12.200.32/29, 51.12.201.32/29 |
 | Switzerland North    | 51.107.56.0 |51.107.56.32/29, 20.208.19.192/29, 51.103.203.192/29, 51.107.242.32/27 |
 | Taiwan North         | | 51.53.107.248/29|
-| Taiwan North west    | | 51.53.187.248/29|
+| Taiwan North West    | | 51.53.187.248/29|
 | Switzerland West     | 51.107.152.0 | 51.107.153.32/29, 51.107.250.64/27 |
 | UAE Central          | 20.37.72.64        | 20.37.72.96/29, 20.37.73.96/29 |
 | UAE North            | 65.52.248.0        | 40.120.72.32/29, 65.52.248.32/29, 20.38.152.24/29, 20.38.143.64/27 |
 | UK South             | 51.140.184.11, 51.105.64.0, 51.140.144.36, 51.105.72.32 | 51.105.64.32/29, 51.105.72.32/29, 51.140.144.32/29, 51.143.209.224/27 |
 | UK West              | 51.141.8.11, 51.140.208.96, 51.140.208.97 | 51.140.208.96/29, 51.140.209.32/29, 20.58.66.128/27 |
-| West Central US      | 13.78.145.25, 13.78.248.43, 13.71.193.32, 13.71.193.33 | 13.71.193.32/29, 20.69.0.32/27 |
-| West Europe          | 104.40.168.105, 52.236.184.163  | 104.40.169.32/29, 13.69.112.168/29, 52.236.184.32/29,20.61.99.192/27  |
+| Central US           | 104.208.21.1, 13.89.169.20 | 104.208.21.192/29, 13.89.168.192/29, 52.182.136.192/29,20.40.228.128/27 |
+| East US              | 40.121.158.30, 40.79.153.12, 40.78.225.32 | 20.42.65.64/29, 20.42.73.0/29, 52.168.116.64/29, 20.62.132.160/29 |
+| East US 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 104.208.150.3, 40.70.144.193 | 104.208.150.192/29, 40.70.144.192/29, 52.167.104.192/29,20.62.58.128/27 |
+| North Central US     | 52.162.104.33, 52.162.105.9 | 52.162.105.200/29, 52.162.105.192/29, 20.49.119.32/27, 20.125.171.192/29 |
+| South Central US     | 104.214.16.32, 20.45.121.1, 20.49.88.1 | 20.45.121.32/29, 20.49.88.32/29, 20.49.89.32/29, 40.124.64.136/29, 20.65.132.160/27 |
 | West US              | 104.42.238.205, 13.86.216.196   | 13.86.217.224/29, 20.168.163.192/29, 20.66.3.64/27 |
 | West US 2            | 40.78.240.8, 40.78.248.10  | 13.66.136.192/29, 40.78.240.192/29, 40.78.248.192/29, 20.51.9.128/27 |
 | West US 3            | 20.150.168.0, 20.150.184.2   | 20.150.168.32/29, 20.150.176.32/29, 20.150.184.32/29, 20.150.241.128/27 |
+| West Central US      | 13.78.145.25, 13.78.248.43, 13.71.193.32, 13.71.193.33 | 13.71.193.32/29, 20.69.0.32/27 |
 
 ## Related content
 
-- For information on how to change the Azure SQL Database connection policy for a server, see [conn-policy](/cli/azure/sql/server/conn-policy).
 - For information about Azure SQL Database connection behavior for clients that use ADO.NET 4.5 or a later version, see [Ports beyond 1433 for ADO.NET 4.5](adonet-v12-develop-direct-route-ports.md).
 - For general application development overview information, see [SQL Database Application Development Overview](develop-overview.md).
-- Refer to [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519)
-- [What is a logical SQL server in Azure SQL Database and Azure Synapse?](logical-servers.md)
-- [What's the difference between Azure Synapse (formerly SQL DW) and Azure Synapse Analytics Workspace](https://aka.ms/dedicatedSQLpooldiff)
+- Refer to [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519).

@@ -3,7 +3,7 @@ title: Release Notes for ODBC Driver for SQL Server on Windows
 description: This release notes article describes the changes in each release of the Microsoft ODBC driver for SQL Server on Windows.
 author: David-Engel
 ms.author: davidengel
-ms.date: 07/31/2024
+ms.date: 03/17/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -11,6 +11,30 @@ ms.topic: conceptual
 # Release Notes for Microsoft ODBC Driver for SQL Server on Windows
 
 This release notes article describes what's new for the Microsoft ODBC driver for SQL Server on Windows.
+
+## 18.5
+
+Version number: 18.5.1.1  
+Released: March 17, 2025
+
+:::image type="icon" source="../../../includes/media/download.svg" border="false"::: **[Download x64 installer](https://go.microsoft.com/fwlink/?linkid=2307162)**  
+:::image type="icon" source="../../../includes/media/download.svg" border="false"::: **[Download x86 installer](https://go.microsoft.com/fwlink/?linkid=2306655)**  
+:::image type="icon" source="../../../includes/media/download.svg" border="false"::: **[Download ARM64 installer](https://go.microsoft.com/fwlink/?linkid=2308434)**
+
+If you need to download the installer in a language other than the one detected for you, you can use these direct links.  
+For the x64 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x404) | [Czech](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x405) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x412) | [Polish](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x415) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x40a) | [Turkish](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x41f)  
+For the x86 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x404) | [Czech](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x405) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x412) | [Polish](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x415) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x40a) | [Turkish](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x41f)  
+For the ARM64 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x404) | [Czech](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x405) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x412) | [Polish](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x415) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x40a) | [Turkish](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x41f)  
+
+| Feature added | Details |
+| :------- | :------ |
+| Packet Size option | Expose the Packet Size as a connection string option. |
+| Include Microsoft SQL Driver Authentication library (mssql-auth.dll) in the installer | Now included in the base driver installation, the installer installs and upgrades the Microsoft SQL Driver Authentication library. |
+| Added 3 new languages | Added support for 3 new languages Czech, Polish, and Turkish. |
+| Install all features | Modify installer to install both features (Core and SDK) by default. |
+| Bug fixes. | [Bug fixes](../bug-fixes.md). |
+
+## Previous Releases
 
 ## 18.4
 
@@ -26,7 +50,7 @@ For the x64 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?link
 For the x86 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2281260&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2281260&clcid=0x404) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2281260&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2281260&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2281260&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2281260&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2281260&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2281260&clcid=0x412) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2281260&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2281260&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2281260&clcid=0x40a)  
 For the ARM64 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2281322&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2281322&clcid=0x404) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2281322&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2281322&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2281322&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2281322&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2281322&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2281322&clcid=0x412) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2281322&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2281322&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2281322&clcid=0x40a)  
 
-| New item | Details |
+| Feature added | Details |
 | :------- | :------ |
 | Microsoft Entra ID | Renamed all occurrences of "Azure Active Directory" to "Microsoft Entra ID". See [New name for Azure Active Directory](/entra/fundamentals/new-name) for more information. |
 | Bug fixes. | [Bug fixes](../bug-fixes.md). |
@@ -66,8 +90,6 @@ For the x86 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?link
 | :------- | :------ |
 | Bug fixes | [Bug fixes](../bug-fixes.md). |
 | Security updates | [KB5037570](https://support.microsoft.com/kb/5037570) |
-
-## Previous Releases
 
 ## 18.3.2
 

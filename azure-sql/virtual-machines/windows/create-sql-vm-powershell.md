@@ -1,9 +1,9 @@
 ---
 title: Create SQL Server VM with PowerShell (Guide)
 description: Provides detailed steps and PowerShell commands to create a Windows SQL Server on Azure Virtual Machine. 
-author: bluefooted
-ms.author: pamela
-ms.reviewer: mathoma
+author: MashaMSFT
+ms.author: mathoma
+ms.reviewer: dpless
 ms.date: 05/29/2024
 ms.service: azure-vm-sql-server
 ms.subservice: deployment
@@ -21,7 +21,7 @@ This guide covers options for using PowerShell to create a SQL Server on Azure V
 
 To complete this guide, you should have the following: 
 
-- An Azure subscription. If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+- An Azure subscription. If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount?WT.mc_id=A261C142F) before you begin.
 - The latest version of Azure PowerShell
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]

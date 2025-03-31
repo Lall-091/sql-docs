@@ -4,7 +4,7 @@ description: Provides VM size guidelines and best practices to optimize the perf
 author: dplessMSFT
 ms.author: dpless
 ms.reviewer: dpless, randolphwest, mathoma
-ms.date: 11/19/2024
+ms.date: 03/24/2024
 ms.service: azure-vm-sql-server
 ms.subservice: performance
 ms.topic: best-practice
@@ -44,6 +44,9 @@ Consider the following VM series based on your SQL Server workloads:
 SQL Server data warehouse and mission critical environments will often need to scale beyond the 8:1 memory-to-vCore ratio. For medium environments, you may want to choose a 16:1 memory-to-vCore ratio, and a 32:1 memory-to-vCore ratio for larger data warehouse environments.
 
 Use the SQL Server VM marketplace images with the storage configuration in the portal. This makes it easier to properly create the storage pools necessary to get the size, IOPS, and throughput necessary for your workloads. It's important to choose SQL Server VMs that support premium storage performance. See the [storage](performance-guidelines-best-practices-storage.md) article to learn more.
+
+> [!CAUTION]
+> SQL Server on Azure VM images aren't supported by VM sizes that deploy with an uninitialized ephemeral disk. To learn more, review [Some SQL Server on Azure VM images fail to deploy](/troubleshoot/sql/azure-sql/sql-deployment-fails-drive-not-ready). 
 
 ## Memory optimized M-series VMs
 
@@ -198,15 +201,19 @@ These new VM sizes have a suffix that specifies the number of active vCPUs to ma
 For example, the [M64-32ms](/azure/virtual-machines/constrained-vcpu) requires licensing only 32 SQL Server vCores with the memory, I/O, and throughput of the [M64ms](/azure/virtual-machines/m-series) and the [M64-16ms](/azure/virtual-machines/constrained-vcpu) requires licensing only 16 vCores. Though while the [M64-16ms](/azure/virtual-machines/constrained-vcpu) has a quarter of the SQL Server licensing cost of the M64ms, the compute cost of the virtual machines is the same.
 
 > [!NOTE] 
-> 
 > - Medium to large data warehouse workloads may still benefit from [constrained vCore VMs](/azure/virtual-machines/constrained-vcpu), but data warehouse workloads are commonly characterized by fewer users and processes addressing larger amounts of data through query plans that run in parallel.
 > - The compute cost, which includes operating system licensing, will remain the same as the parent virtual machine.
 
 ## Supportability
 
-[Azure Virtual Machine Scale Sets (VMSS)](/azure/virtual-machine-scale-sets/overview) are not supported with SQL Server on Azure VMs. If you decide to use VMSS with your SQL Server on Azure VM against this recommendation, and enable the [Automatic guest patching feature](/azure/virtual-machines/automatic-vm-guest-patching), which replaces the OS disk when a new image version is released, you will likely disrupt SQL Server, leading to potential corruption, data loss, and availability issues. 
+Consider the following limitations when installing SQL Server to Azure VMs: 
 
-## Next steps
+- [Azure Virtual Machine Scale Sets (VMSS)](/azure/virtual-machine-scale-sets/overview) are not supported with SQL Server on Azure VMs. If you decide to use VMSS with your SQL Server on Azure VM against this recommendation, and enable the [Automatic guest patching feature](/azure/virtual-machines/automatic-vm-guest-patching), which replaces the OS disk when a new image version is released, you will likely disrupt SQL Server, leading to potential corruption, data loss, and availability issues. 
+- SQL Server isn't supported on systems with more than 64 vCores per NUMA node. [Disable SMT](/sql/sql-server/compute-capacity-limits-by-edition-of-sql-server#disable-smt-in-an-azure-virtual-machine) to use SQL Server on Azure VMs that exceed 64 vCores per NUMA node.
+- SQL Server currently supports disks with a standard native [sector sizes of 512 bytes and 4 KB](/sql/sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2022#StorageTypes). Installing SQL Server to disks with 8-KB sector sizes isn't supported and can lead to [installation failures](/troubleshoot/sql/azure-sql/sql-installation-fails-sector-size-error-azure-vm), as well as [performance degradation from misaligned I/O](/troubleshoot/sql/database-engine/performance/performance-degradation-misaligned-io-sector-error). 
+- SQL Server on Azure VM images fail to deploy with VM sizes that have uninitialized ephemeral disks. To learn more, review [Some SQL Server on Azure VM images fail to deploy](/troubleshoot/sql/azure-sql/sql-deployment-fails-drive-not-ready).
+
+## Related content
 
 To learn more, see the other articles in this best practices series:
 
@@ -215,7 +222,5 @@ To learn more, see the other articles in this best practices series:
 - [Security](security-considerations-best-practices.md)
 - [HADR settings](hadr-cluster-best-practices.md)
 - [Collect baseline](performance-guidelines-best-practices-collect-baseline.md)
-
 - For security best practices, see [Security considerations for SQL Server on Azure Virtual Machines](security-considerations-best-practices.md).
-
 - Review other SQL Server Virtual Machine articles at [SQL Server on Azure Virtual Machines Overview](sql-server-on-azure-vm-iaas-what-is-overview.md). If you have questions about SQL Server virtual machines, see the [Frequently Asked Questions](frequently-asked-questions-faq.yml).

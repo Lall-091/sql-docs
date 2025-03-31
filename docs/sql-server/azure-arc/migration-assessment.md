@@ -137,7 +137,8 @@ Use **Enable Assessment** button to re-enable the SQL Server migration assessmen
 ## Limitations
 
 - SQL Server migration assessment is currently limited to SQL Server running on Windows machines, doesn't  apply to SQL on Linux machines.
-- SQL Server running on Windows Server 2012 and older versions aren't supported.
+- SQL Server running on Windows Server 2012 R2 and older versions aren't supported.
+
 - SQL Server version must be 2012 or above.
 - Failover cluster instances (FCI) aren't supported at this time.
 

@@ -3,7 +3,7 @@ title: "SQL Server security best practices"
 description: This article provides general guidance for securing SQL Server running in an Azure virtual machine.
 author: dplessMSFT
 ms.author: dpless
-ms.reviewer: rohitna, randolphwest
+ms.reviewer: randolphwest
 ms.date: 02/29/2024
 ms.service: sql
 ms.subservice: security

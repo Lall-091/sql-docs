@@ -13,6 +13,7 @@ ms.collection:
 ms.custom:
   - migration
   - aws-to-azure
+  - gcp-to-azure
 ---
 
 # Migration guide: MySQL to Azure SQL Database

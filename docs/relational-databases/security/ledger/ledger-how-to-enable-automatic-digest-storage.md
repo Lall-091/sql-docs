@@ -23,7 +23,7 @@ In this article, we'll describe how you can configure automatic generation and s
 
 ## Prerequisites
 
-- Have an active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/free/).
+- Have an active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
 - An Azure SQL Database
 
 ## Enable automatic digest storage using the Azure portal
@@ -87,7 +87,7 @@ In this article, we'll describe how you can configure automatic generation and s
 
 ## Prerequisites
 
-- Have an active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/free/).
+- Have an active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
 - An Azure SQL Managed Instance
 
 ## Enable automatic digest storage using the Azure portal

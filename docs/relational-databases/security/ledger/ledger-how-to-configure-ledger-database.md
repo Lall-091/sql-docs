@@ -23,7 +23,7 @@ This article provides information on configuring a [ledger database](ledger-over
 
 ## Prerequisites
 
-- Have an active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/free/).
+- Have an active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
 - A logical server.
 
 ## Enable ledger database
@@ -112,7 +112,7 @@ This article provides information on configuring a [ledger database](ledger-over
 
 ## Prerequisites
 
-- Have an active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/free/).
+- Have an active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
 - An Azure SQL Managed Instance.
 
 ## Enable ledger database

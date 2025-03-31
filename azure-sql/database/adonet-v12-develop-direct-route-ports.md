@@ -16,7 +16,7 @@ ms.custom: sqldbrb=1
 This topic describes the Azure SQL Database connection behavior for clients that use ADO.NET 4.5 or a later version.
 
 > [!IMPORTANT]
-> For information about connectivity architecture, see [Azure SQL Database connectivity architecture](connectivity-architecture.md).
+> For information about connectivity architecture, see [Connectivity architecture](connectivity-architecture.md).
 >
 
 ## Outside vs inside

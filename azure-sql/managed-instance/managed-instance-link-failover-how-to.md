@@ -22,7 +22,7 @@ This article teaches you how to fail over a database [linked](managed-instance-l
 
 To fail over your databases to your secondary replica through the link, you need the following prerequisites: 
 
-- An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/free/).
+- An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
 - [Supported version of SQL Server](managed-instance-link-feature-overview.md#prerequisites) with required service update installed.
 - [Link](managed-instance-link-configure-how-to-ssms.md) configured between your primary and secondary replica. 
 - You can fail over the link by using Transact-SQL starting with [SQL Server 2022 CU13 (KB5036432)](/troubleshoot/sql/releases/sqlserver-2022/cumulativeupdate13).

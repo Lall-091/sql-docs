@@ -12,7 +12,7 @@ ms.topic: concept-article
 ms.custom:
   - sqldbrb=2
   - ignite-2024
-monikerRange: "=azuresql || =azuresql-db || =azuresql-mi || =fabric"
+monikerRange: "=azuresql || =azuresql-db || =azuresql-mi || =fabricsql"
 ---
 # Automatic database tuning
 

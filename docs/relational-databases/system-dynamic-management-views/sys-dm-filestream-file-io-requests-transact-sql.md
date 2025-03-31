@@ -26,7 +26,7 @@ Displays a list of I/O requests processed by the Namespace Owner (NSO) at a give
 | Column | Type | Description |
 | --- | --- | --- |
 | `request_context_address` | **varbinary(8)** | Shows the internal address of the NSO memory block that contains the I/O request from the driver. Not nullable. |
-| `current_spid` | **smallint** | Shows the system process ID (SPID) for the current SQL Server's connection. Not nullable. |
+| `current_spid` | **smallint** | Shows the session ID (SPID) for the current SQL Server's connection. Not nullable. |
 | `request_type` | **nvarchar(60)** | Shows the I/O request packet (IRP) type. The possible request types are `REQ_PRE_CREATE`, `REQ_POST_CREATE`, `REQ_RESOLVE_VOLUME`, `REQ_GET_VOLUME_INFO`, `REQ_GET_LOGICAL_NAME`, `REQ_GET_PHYSICAL_NAME`, `REQ_PRE_CLEANUP`, `REQ_POST_CLEANUP`, `REQ_CLOSE`, `REQ_FSCTL`, `REQ_QUERY_INFO`, `REQ_SET_INFO`, `REQ_ENUM_DIRECTORY`, `REQ_QUERY_SECURITY`, and `REQ_SET_SECURITY`. Not nullable. |
 | `request_state` | **nvarchar(60)** | Shows the state of the I/O request in NSO. Possible values are `REQ_STATE_RECEIVED`, `REQ_STATE_INITIALIZED`, `REQ_STATE_ENQUEUED`, `REQ_STATE_PROCESSING`, `REQ_STATE_FORMATTING_RESPONSE`, `REQ_STATE_SENDING_RESPONSE`, `REQ_STATE_COMPLETING`, and `REQ_STATE_COMPLETED`. Not nullable. |
 | `request_id` | **int** | Shows the unique request ID assigned by the driver to this request. Not nullable. |

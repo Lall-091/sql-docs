@@ -73,7 +73,7 @@ Users can control the locking of read operations by:
 
 - Using locking table hints to specify the level of locking for an individual reference of a table in a `FROM` clause. For syntax and restrictions, see [Table hints (Transact-SQL)](../../t-sql/queries/hints-transact-sql-table.md).
 
-All distributed transactions not associated with a session are orphaned transactions. The [!INCLUDE [ssDE](../../includes/ssde-md.md)] assigns all orphaned distributed transactions the SPID value of `-2`, which makes it easier for a user to identify blocking distributed transactions. For more information, see [Use Marked Transactions to Recover Related Databases Consistently](../backup-restore/use-marked-transactions-to-recover-related-databases-consistently.md).
+All distributed transactions not associated with a session are orphaned transactions. The [!INCLUDE [ssDE](../../includes/ssde-md.md)] assigns all orphaned distributed transactions with a session ID of `-2`, which makes it easier for a user to identify blocking distributed transactions. For more information, see [Use Marked Transactions to Recover Related Databases Consistently](../backup-restore/use-marked-transactions-to-recover-related-databases-consistently.md).
 
 ## Permissions
 
@@ -94,7 +94,7 @@ GO
 
 ### B. List a lock from a single-server process
 
-The following example displays information, including locks, about process ID `53`.
+The following example displays information, including locks, about session ID `53`.
 
 ```sql
 USE master;

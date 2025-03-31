@@ -4,7 +4,7 @@ description: FROM clause plus JOIN, APPLY, PIVOT (Transact-SQL)
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 09/25/2024
+ms.date: 03/07/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -59,7 +59,7 @@ This article also discusses the following keywords that can be used on the FROM 
 
 ## Syntax
 
-Syntax for SQL Server, Azure SQL Database, and Fabric SQL database:
+Syntax for SQL Server, Azure SQL Database, and SQL database in Fabric:
 
 ```syntaxsql
 [ FROM { <table_source> } [ , ...n ] ]
@@ -168,8 +168,7 @@ FROM { <table_source> [ , ...n ] }
     | REDISTRIBUTE
 ```
 
-Syntax for Microsoft Fabric:
-
+Syntax for Microsoft Fabric Data Warehouse:
 
 ```syntaxsql
 FROM { <table_source> [ , ...n ] }
@@ -334,19 +333,9 @@ Specifies all rows from the right table not meeting the join condition are inclu
 
 For [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] and [!INCLUDE[ssSDS](../../includes/sssds-md.md)], specifies that the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] query optimizer uses one join hint, or execution algorithm, per join specified in the query FROM clause. For more information, see [Join Hints (Transact-SQL)](../queries/hints-transact-sql-join.md).
 
-For [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE[ssPDW](../../includes/sspdw-md.md)], these join hints apply to INNER joins on two distribution incompatible columns. They can improve query performance by restricting the amount of data movement that occurs during query processing. The allowable join hints for [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE[ssPDW](../../includes/sspdw-md.md)] are as follows:
+For [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], [!INCLUDE[ssPDW](../../includes/sspdw-md.md)], and [!INCLUDE [fabric](../../includes/fabric.md)] Data Warehouse, these join hints apply to `INNER` joins on two distribution incompatible columns. They can improve query performance by restricting the amount of data movement that occurs during query processing. 
 
-#### REDUCE
-
-Reduces the number of rows to be moved for the table on the right side of the join in order to make two distribution incompatible tables compatible. The REDUCE hint is also called a semi-join hint.
-
-#### REPLICATE
-
-Causes the values in the joining column from the table on the right side of the join to be replicated to all nodes. The table on the left is joined to the replicated version of those columns.
-
-#### REDISTRIBUTE
-
-Forces two data sources to be distributed on columns specified in the JOIN clause. For a distributed table, [!INCLUDE[ssPDW](../../includes/sspdw-md.md)] performs a shuffle move. For a replicated table, [!INCLUDE[ssPDW](../../includes/sspdw-md.md)] performs a trim move. To understand these move types, see the "DMS Query Plan Operations" section in the "Understanding Query Plans" article in the [!INCLUDE[pdw-product-documentation](../../includes/pdw-product-documentation-md.md)]. This hint can improve performance when the query plan is using a broadcast move to resolve a distribution incompatible join.
+For more information on `REDUCE`, `REPLICATE`, and `REDISTRIBUTE`, see [Join hints (Transact-SQL)](hints-transact-sql-join.md). 
 
 #### JOIN
 
@@ -681,7 +670,7 @@ The following example assumes that the following tables and table-valued functio
 | Employees | EmpID, EmpLastName, EmpFirstName, EmpSalary |
 | GetReports(MgrID) | EmpID, EmpLastName, EmpSalary |
 
-The `GetReports` table-valued function, returns the list of all employees that report directly or indirectly to the specified `MgrID`.
+The `GetReports` table-valued function returns the list of all employees that report directly or indirectly to the specified `MgrID`.
 
 The example uses `APPLY` to return all departments and all employees in that department. If a particular department doesn't have any employees, there won't be any rows returned for that department.
 
@@ -729,7 +718,7 @@ GO
 
 **Applies to**: [!INCLUDE[sssql16-md](../../includes/sssql16-md.md)] and later versions, and [!INCLUDE[sssds](../../includes/sssds-md.md)].
 
-The following example uses the FOR SYSTEM_TIME AS OF *date_time_literal_or_variable* argument to return table rows that were actual (current) as of January 1, 2014.
+The following example uses the `FOR SYSTEM_TIME AS OF *date_time_literal_or_variable*` argument to return table rows that were actual (current) as of January 1, 2014.
 
 ```sql
 SELECT DepartmentNumber,
@@ -741,7 +730,7 @@ FOR SYSTEM_TIME AS OF '2014-01-01'
 WHERE ManagerID = 5;
 ```
 
-The following example uses the FOR SYSTEM_TIME FROM *date_time_literal_or_variable* TO *date_time_literal_or_variable* argument to return all rows that were active during the period defined as starting with January 1, 2013 and ending with January 1, 2014, exclusive of the upper boundary.
+The following example uses the `FOR SYSTEM_TIME FROM *date_time_literal_or_variable* TO *date_time_literal_or_variable*` argument to return all rows that were active during the period defined as starting with January 1, 2013 and ending with January 1, 2014, exclusive of the upper boundary.
 
 ```sql
 SELECT DepartmentNumber,
@@ -753,7 +742,7 @@ FOR SYSTEM_TIME FROM '2013-01-01' TO '2014-01-01'
 WHERE ManagerID = 5;
 ```
 
-The following example uses the FOR SYSTEM_TIME BETWEEN *date_time_literal_or_variable* AND *date_time_literal_or_variable* argument to return all rows that were active during the period defined as starting with January 1, 2013 and ending with January 1, 2014, inclusive of the upper boundary.
+The following example uses the `FOR SYSTEM_TIME BETWEEN *date_time_literal_or_variable* AND *date_time_literal_or_variable*` argument to return all rows that were active during the period defined as starting with January 1, 2013 and ending with January 1, 2014, inclusive of the upper boundary.
 
 ```sql
 SELECT DepartmentNumber,
@@ -765,7 +754,7 @@ FOR SYSTEM_TIME BETWEEN '2013-01-01' AND '2014-01-01'
 WHERE ManagerID = 5;
 ```
 
-The following example uses the FOR SYSTEM_TIME CONTAINED IN (*date_time_literal_or_variable*, *date_time_literal_or_variable*) argument to return all rows that were opened and closed during the period defined as starting with January 1, 2013 and ending with January 1, 2014.
+The following example uses the `FOR SYSTEM_TIME CONTAINED IN (*date_time_literal_or_variable*, *date_time_literal_or_variable*)` argument to return all rows that were opened and closed during the period defined as starting with January 1, 2013 and ending with January 1, 2014.
 
 ```sql
 SELECT DepartmentNumber,
@@ -797,7 +786,7 @@ WHERE ManagerID = 5;
 
 ### N. Use the INNER JOIN syntax
 
-The following example returns the `SalesOrderNumber`, `ProductKey`, and `EnglishProductName` columns from the `FactInternetSales` and `DimProduct` tables where the join key, `ProductKey`, matches in both tables. The `SalesOrderNumber` and `EnglishProductName` columns each exist in one of the tables only, so it isn't necessary to specify the table alias with these columns, as is shown; these aliases are included for readability. The word **AS** before an alias name isn't required but is recommended for readability and to conform to the ANSI standard.
+The following example returns the `SalesOrderNumber`, `ProductKey`, and `EnglishProductName` columns from the `FactInternetSales` and `DimProduct` tables where the join key, `ProductKey`, matches in both tables. The `SalesOrderNumber` and `EnglishProductName` columns each exist in one of the tables only, so it isn't necessary to specify the table alias with these columns, as is shown; these aliases are included for readability. The keyword `AS` before an alias name isn't required but is recommended for readability and to conform to the ANSI standard.
 
 ```sql
 -- Uses AdventureWorks
@@ -868,7 +857,7 @@ RIGHT OUTER JOIN FactInternetSales AS fis
     ON dp.ProductKey = fis.ProductKey;
 ```
 
-The following query uses the `DimSalesTerritory` table as the left table in a left outer join. It retrieves the `SalesOrderNumber` values from the `FactInternetSales` table. If there are no orders for a particular `SalesTerritoryKey`, the query returns a NULL for the `SalesOrderNumber` for that row. This query is ordered by the `SalesOrderNumber` column, so that any NULLs in this column appear at the top of the results.
+The following query uses the `DimSalesTerritory` table as the left table in a left outer join. It retrieves the `SalesOrderNumber` values from the `FactInternetSales` table. If there are no orders for a particular `SalesTerritoryKey`, the query returns a `NULL` for the `SalesOrderNumber` for that row. This query is ordered by the `SalesOrderNumber` column, so that any `NULL`s in this column appear at the top of the results.
 
 ```sql
 -- Uses AdventureWorks
@@ -898,7 +887,7 @@ ORDER BY fis.SalesOrderNumber;
 
 ### P. Use the FULL OUTER JOIN syntax
 
-The following example demonstrates a full outer join, which returns all rows from both joined tables but returns NULL for values that don't match from the other table.
+The following example demonstrates a full outer join, which returns all rows from both joined tables but returns `NULL` for values that don't match from the other table.
 
 ```sql
 -- Uses AdventureWorks
@@ -998,9 +987,9 @@ ORDER BY SalesOrderNumber;
 
 ### U. Use the REDISTRIBUTE hint to guarantee a Shuffle move for a distribution incompatible join
 
-The following query uses the REDISTRIBUTE query hint on a distribution incompatible join. This guarantees the query optimizer uses a Shuffle move in the query plan. This also guarantees the query plan won't use a Broadcast move, which moves a distributed table to a replicated table.
+The following query uses the `REDISTRIBUTE` query hint on a distribution incompatible join. This guarantees the query optimizer uses a Shuffle move in the query plan. This also guarantees the query plan won't use a Broadcast move, which moves a distributed table to a replicated table.
 
-In the following example, the REDISTRIBUTE hint forces a Shuffle move on the FactInternetSales table because ProductKey is the distribution column for DimProduct, and isn't the distribution column for FactInternetSales.
+In the following example, the `REDISTRIBUTE` hint forces a Shuffle move on the `FactInternetSales` table because `ProductKey` is the distribution column for `DimProduct`, and isn't the distribution column for `FactInternetSales`.
 
 ```sql
 -- Uses AdventureWorks

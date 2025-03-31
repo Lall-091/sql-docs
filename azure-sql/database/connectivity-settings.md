@@ -1,40 +1,40 @@
 ---
-title: Connectivity settings for Azure SQL Database and Azure Synapse Analytics
-titleSuffix: Azure SQL Database and Azure Synapse Analytics
-description: This article explains the Transport Layer Security (TLS) version choice and the Proxy versus Redirect settings for Azure SQL Database and Azure Synapse Analytics.
+title: Connectivity settings
+titleSuffix: Azure SQL Database and SQL database in Fabric
+description: This article explains the Transport Layer Security (TLS) version choice and the Proxy versus Redirect settings for Azure SQL Database and SQL database in Microsoft Fabric.
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: wiassaf, mathoma, vanto
+ms.reviewer: wiassaf, mathoma
 ms.service: azure-sql-database
-ms.date: 09/13/2024
+ms.date: 03/18/2025
 ms.subservice: connect
 ms.topic: how-to
 ms.custom:
   - devx-track-azurepowershell
   - devx-track-azurecli
 ms.devlang: azurecli
+monikerRange: "=azuresql || =azuresql-db || =fabricsql"
 ---
-# Connectivity settings for Azure SQL Database and Azure Synapse Analytics
-[!INCLUDE [appliesto-sqldb-asa](../includes/appliesto-sqldb-asa-formerly-sqldw.md)]
+# Connectivity settings
 
-This article introduces settings that control connectivity to the server for Azure SQL Database and [dedicated SQL pool (formerly SQL DW)](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is) in Azure Synapse Analytics.
+[!INCLUDE [appliesto-sqldb-fabricsqldb](../includes/appliesto-sqldb-fabricsqldb.md)]
+
+This article introduces settings that control connectivity to the server for Azure SQL Database and SQL database in Microsoft Fabric.
 
 - For more information on various components that direct network traffic and connection policies, see [connectivity architecture](connectivity-architecture.md).
 - This article does not apply to Azure SQL Managed Instance, instead see [Connect your application to Azure SQL Managed Instance](../managed-instance/connect-application-instance.md).
-- This article does not apply to dedicated SQL pools in Azure Synapse Analytics workspaces. See [Azure Synapse Analytics IP firewall rules](/azure/synapse-analytics/security/synapse-workspace-ip-firewall) for guidance on how to configure IP firewall rules for Azure Synapse Analytics with workspaces.
+- This article does *not* apply to Azure Synapse Analytics. 
+   - For settings that control connectivity to dedicated SQL pools in Azure Synapse Analytics, see [Azure Synapse Analytics connectivity settings](/azure/synapse-analytics/security/connectivity-settings).
+   - For connection strings to Azure Synapse Analytics pools, see [Connect to Synapse SQL](/azure/synapse-analytics/sql/connect-overview).
+   - See [Azure Synapse Analytics IP firewall rules](/azure/synapse-analytics/security/synapse-workspace-ip-firewall) for guidance on how to configure IP firewall rules for Azure Synapse Analytics with workspaces.
 
 ## Networking and connectivity
 
-You can change these settings in your [logical server](logical-servers.md). A logical SQL server can host both Azure SQL databases and standalone dedicated SQL pools not in an Azure Synapse Analytics workspace.
-
-> [!NOTE]
-> These settings apply to Azure SQL databases and dedicated SQL pools (formerly SQL DW) associated with the logical server. These instructions do not apply to dedicated SQL pools in an Azure Synapse analytics workspace. 
-
-:::image type="content" source="media/connectivity-settings/manage-connectivity-settings.png" alt-text="Screenshot of the Firewalls and virtual networks settings in Azure portal for SQL server.":::
+You can change these settings in your [logical server](logical-servers.md). 
 
 ## Change public network access
 
-It's possible to change the public network access for your Azure SQL Database or standalone dedicated SQL pool via the Azure portal, Azure PowerShell, and the Azure CLI.
+It's possible to change the public network access for your Azure SQL Database via the Azure portal, Azure PowerShell, and the Azure CLI.
 
 > [!NOTE]
 > These settings take effect immediately after they're applied. Your customers might experience connection loss if they don't meet the requirements for each setting.
@@ -42,6 +42,8 @@ It's possible to change the public network access for your Azure SQL Database or
 ### [Portal](#tab/azure-portal)
 
 To enable public network access for the logical server hosting your databases:
+
+:::image type="content" source="media/connectivity-settings/manage-connectivity-settings.png" alt-text="Screenshot of the Firewalls and virtual networks settings in Azure portal for a logical SQL server.":::
 
 1. Go to the Azure portal, and go to the [logical server in Azure](logical-servers.md).
 1. Under **Security**, select the **Networking** page.
@@ -109,7 +111,7 @@ Unable to create or modify firewall rules when public network interface for the 
 To manage server or database level firewall rules, please enable the public network interface.
 ```
 
-Ensure that **Public network access** is set to **Selected networks** to be able to add, remove, or edit any firewall rules for Azure SQL Database and Azure Synapse Analytics.
+Ensure that **Public network access** is set to **Selected networks** to be able to add, remove, or edit any firewall rules for Azure SQL Database.
 
 ## Minimum TLS version
 
@@ -121,7 +123,7 @@ Currently, Azure SQL Database supports TLS 1.0, 1.1, 1.2, and 1.3. Setting a min
 
 Azure has announced that support for older TLS versions (TLS 1.0, and 1.1) ends August 31, 2025. For more information, see [TLS 1.0 and 1.1 deprecation](https://azure.microsoft.com/updates/azure-support-tls-will-end-by-31-october-2024-2/).
 
-Starting November 2024, you will no longer be able to set the minimal TLS version for Azure SQL Database and Azure Synapse Analytics client connections below TLS 1.2. 
+Starting November 2024, you will no longer be able to set the minimal TLS version for Azure SQL Database client connections below TLS 1.2. 
 
 ### Configure minimum TLS version 
 
@@ -209,11 +211,11 @@ You can use the Azure portal and SQL audit logs to identify clients that are con
 
 In the Azure portal, go to **Metrics** under **Monitoring** for your database resource, and then filter by *Successful connections*, and *TLS versions* = `1.0` and `1.1`:
 
-:::image type="content" source="media/connectivity-settings/connections-in-portal.png" alt-text="Screenshot of the monitoring page for the database resource in the Azure portal with successful tls 1.0 and 1.1 connections filtered. "::: 
+:::image type="content" source="media/connectivity-settings/connections-in-portal.png" alt-text="Screenshot of the monitoring page for the database resource in the Azure portal with successful T L S 1.0 and 1.1 connections filtered. "::: 
  
-You can also query [sys.fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql) directly within your database to view the `client_tls_version_name` in the audit file: 
+You can also query [sys.fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql) directly within your database to view the `client_tls_version_name` in the audit file, looking for events named `audit_event`.
 
-:::image type="content" source="media/connectivity-settings/tls-entries-in-audit-file.png" alt-text="Screenshot of a query result of the audit file showing tls version connections. ":::
+:::image type="content" source="media/connectivity-settings/tls-entries-in-audit-file.png" alt-text="Screenshot of a query result of the audit file showing T L S version connections. ":::
 
 
 ## Change the connection policy
@@ -276,6 +278,8 @@ It's possible to change the connection policy for your logical server by using t
 
 ### Azure CLI in a Bash shell
 
+For information on how to change the Azure SQL Database connection policy for a server, see [conn-policy](/cli/azure/sql/server/conn-policy)
+
 The following CLI script shows how to change the connection policy in a Bash shell:
 
 ```azurecli-interactive
@@ -311,5 +315,4 @@ az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
 
 ## Related content
 
-- [Azure SQL Database and Azure Synapse Analytics connectivity architecture](connectivity-architecture.md)
-- [conn-policy](/cli/azure/sql/server/conn-policy)
+- [Connectivity architecture](connectivity-architecture.md)

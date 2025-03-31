@@ -118,7 +118,7 @@ SQL Trace uses data columns in the trace output to describe events that are retu
 |**SessionLoginName**|64|The login name of the user who originated the session. For example, if you connect to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] using **Login1** and execute a statement as **Login2**, **SessionLoginName** displays **Login1**, while **LoginName** displays **Login2**. This data column displays both [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] and Windows logins.|  
 |**Severity**|20|The severity level of the exception event.|  
 |**SourceDatabaseID**|62|The ID of the database in which the source of the object exists.|  
-|\* **SPID**|12|The server process ID (SPID) that is assigned by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to the process that is associated with the client.|  
+|\* **SPID**|12|The session ID (SPID) that is assigned by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to the process that is associated with the client.|  
 |**SqlHandle**|63|64-bit hash based on the text of an ad hoc query or the database and object ID of a SQL object. This value can be passed to **sys.dm_exec_sql_text()** to retrieve the associated SQL text.|  
 |\* **StartTime**|14|The time at which the event started, when available.|  
 |**State**|30|Error state code.|  

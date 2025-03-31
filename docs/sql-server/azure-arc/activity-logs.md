@@ -12,7 +12,7 @@ ms.topic: conceptual
 
 [!INCLUDE [sqlserver](../../includes/applies-to-version/sqlserver.md)]
 
-Activity logs for [!INCLUDE [ssazurearc](../../includes/ssazurearc.md)] provide insight into events related to [SQL Server enabled by Azure Arc](overview.md) and [View Azure Arc-enabled SQL Server databases](view-databases.md) resources. Activity logs contain events that correspond to the creation and modification of resources. These events include SQL Server instance updates (`SqlServerInstance_Update`), SQL Server database updates (`SqlServerDatabases_Update`), and writing of tags to resources.
+Activity logs for [!INCLUDE [ssazurearc](../../includes/ssazurearc.md)] provide insight into events related to [SQL Server enabled by Azure Arc](overview.md) and [View Azure Arc-enabled inventory](view-inventory.md) resources. Activity logs contain events that correspond to the creation and modification of resources. These events include SQL Server instance updates (`SqlServerInstance_Update`), SQL Server database updates (`SqlServerDatabases_Update`), and writing of tags to resources.
 
 This feature helps in auditing operations performed on a resource. The logs provide crucial information such as the time when an operation started, the operation's status, and the party responsible for event creation.
 

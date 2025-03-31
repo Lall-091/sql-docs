@@ -4,7 +4,7 @@ description: "Learn about accelerated database recovery (ADR), which redesigned 
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: wiassaf, derekw, randolphwest, dfurman
-ms.date: 02/05/2025
+ms.date: 03/28/2025
 ms.service: sql
 ms.subservice: backup-restore
 ms.topic: conceptual
@@ -145,7 +145,7 @@ The four key components of ADR are:
 
 ## Workloads that benefit from ADR
 
-ADR is particularly beneficial for workloads that have: 
+ADR benefits most workloads, and is particularly beneficial for workloads that have: 
 
 - Long-running transactions.
 - Active transactions that cause the transaction log to grow significantly.
@@ -155,7 +155,7 @@ ADR isn't supported in databases using [database mirroring](../database-engine/d
 
 ## Best practices for ADR
 
-- Avoid unnecessary long-running transactions. Though ADR speeds up database recovery even with long-running transactions, such transactions can delay version cleanup and increase the size of the PVS.
+- Avoid unnecessary long-running transactions. Though ADR speeds up database recovery even with long-running transactions, such transactions can delay version cleanup and increase PVS size.
 
 - Avoid large transactions that include DDL operations. ADR uses the secondary log stream (SLOG) mechanism to track DDL operations used in recovery. SLOG is only used while the transaction is active. SLOG is checkpointed, so avoiding large transactions that use SLOG can help the overall performance. These scenarios can cause the SLOG to take up more space:
    - Many DDLs are executed in one transaction. For example, in one transaction, rapidly creating and dropping temp tables.
@@ -163,7 +163,7 @@ ADR isn't supported in databases using [database mirroring](../database-engine/d
 
    For more information about SLOG, see [ADR recovery components](#adr-recovery-components).
 
-- Prevent or reduce unnecessary aborted transactions. A high transaction abort rate puts pressure on the PVS cleaner and lower ADR performance. The aborts might come from a high rate of deadlocks, duplicate keys, constraint violations, or query timeouts.
+- Prevent or reduce unnecessary aborted transactions. A high transaction abort rate puts pressure on the PVS cleaner and lowers ADR performance. The aborts might come from a high rate of deadlocks, duplicate keys, constraint violations, query timeouts, or other exceptions.
    The [sys.dm_tran_aborted_transactions](system-dynamic-management-views/sys-dm-tran-aborted-transactions.md) DMV shows all aborted transactions on the database engine instance. The `nested_abort` column indicates that the transaction committed but there are portions that aborted (savepoints or nested transactions) which can also delay the PVS cleanup process.
 
 - Ensure there's sufficient space in the database to account for PVS usage. If the database doesn't have enough room for PVS to grow, ADR might fail to generate versions, causing DML statements to fail.
@@ -174,9 +174,7 @@ ADR isn't supported in databases using [database mirroring](../database-engine/d
 
    If using [CDC](/azure/azure-sql/database/change-data-capture-overview) or [change feed](/azure/synapse-analytics/synapse-link/sql-database-synapse-link) in Azure SQL Database, you might need to increase your service tier or compute size to ensure that sufficient transaction log space is available for the needs of all your workloads. Similarly, in Azure SQL Managed Instance you might need to increase your instance maximum storage size.
 
-- For [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)], isolate the PVS version store on a filegroup on higher tier storage, such as high-end SSD or advanced SSD or Persistent Memory (PMEM), sometimes referred to as Storage Class Memory (SCM). For more information, see [Change the location of the PVS to a different filegroup](accelerated-database-recovery-management.md#change-the-pvs-filegroup).
-
-- For [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)], monitor the error log for `PreallocatePVS` entries. If `PreallocatePVS` entries are present, you might need to increase the ADR ability to preallocate pages using a background task. Preallocating PVS pages in background improves ADR performance by reducing more expensive foreground PVS allocations. You can use the `ADR Preallocation Factor` server configuration to increase this amount. For more information, see [Server configuration: ADR Preallocation Factor](../database-engine/configure-windows/adr-preallocation-factor-server-configuration-option.md).
+- For [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)], when tiered performance storage is available, consider placing the PVS filegroup on higher tier storage. For more information, see [Change the PVS filegroup](accelerated-database-recovery-management.md#change-the-pvs-filegroup).
 
 - For [!INCLUDE[sssql22-md](../includes/sssql22-md.md)] and later, consider enabling multi-threaded PVS cleanup if the single-threaded cleaner performance is insufficient. For more information, see [Server configuration: ADR Cleaner Thread Count](../database-engine/configure-windows/adr-cleaner-thread-count-configuration-option.md).
 

@@ -1,8 +1,8 @@
 ---
 title: Register multiple SQL VMs in Azure with the SQL IaaS Agent extension
 description: Bulk register SQL Server VMs with the SQL IaaS Agent extension to improve manageability.
-author: adbadram
-ms.author: adbadram
+author: dplessMSFT
+ms.author: dpless
 ms.reviewer: mathoma
 ms.date: 10/26/2021
 ms.service: azure-vm-sql-server
@@ -35,7 +35,7 @@ For information about privacy, see the [SQL IaaS Agent extension privacy stateme
 
 To register your SQL Server VM with the extension, you'll need the following: 
 
-- An [Azure subscription](https://azure.microsoft.com/free/) that has been [registered with the **Microsoft.SqlVirtualMachine** resource provider](sql-agent-extension-manually-register-single-vm.md#register-subscription-with-rp) and contains unregistered SQL Server virtual machines.
+- An [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount) that has been [registered with the **Microsoft.SqlVirtualMachine** resource provider](sql-agent-extension-manually-register-single-vm.md#register-subscription-with-rp) and contains unregistered SQL Server virtual machines.
 - Ensure the Azure VM is running.
 - The client credentials used to register the virtual machines exist in any of the following Azure roles: **Virtual Machine contributor**, **Contributor**, or **Owner**. 
 - [Az PowerShell 5.0](/powershell/azure/new-azureps-module-az) - versions higher than 5.0 currently only support MFA and are not compatible with the script to register multiple VMs. 

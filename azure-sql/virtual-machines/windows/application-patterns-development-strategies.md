@@ -1,8 +1,8 @@
 ---
 title: SQL Server application patterns on VMs
 description: This article covers application patterns for SQL Server on Azure Virtual Machines. It provides solution architects and developers a foundation for good application architecture and design.
-author: bluefooted
-ms.author: pamela
+author: dplessMSFT
+ms.author: dpless
 ms.reviewer: mathoma
 ms.date: 05/31/2017
 ms.service: azure-vm-sql-server

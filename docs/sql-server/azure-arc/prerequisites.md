@@ -21,7 +21,7 @@ If your SQL Server VMs are on VMware clusters, review [Support on VMware](#suppo
 
 Before you can Arc-enable an instance of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)], you need to:
 
-- Have an Azure account with an active subscription. If needed, [create a free Azure Account](https://azure.microsoft.com/free/).
+- Have an Azure account with an active subscription. If needed, [create a free Azure Account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
 - Verify [Arc connected machine agent prerequisites](/azure/azure-arc/servers/prerequisites).  The Arc agent must be running in the typical 'full' mode.
 - Verify [Arc connected machine agent network requirements](/azure/azure-arc/servers/network-requirements).
 - Open firewall to [Azure Arc data processing service](#connect-to-azure-arc-data-processing-service).
@@ -108,7 +108,7 @@ If a proxy server is used, set the `NO_PROXY` environment variable to exclude pr
 - `127.0.0.1`
 
 > [!NOTE]
-> Beginning with extension version `1.1.2971.246`, you can set `NO_PROXY` environment variable to bypass proxy for URLs.
+> Beginning with extension version `1.1.2986.256`, you can set `NO_PROXY` environment variable to bypass proxy for URLs.
 > 
 > You can configure the extension to bypass the proxy endpoint for requests to specific URLs while using a proxy server for all other requests.
 > 
@@ -120,6 +120,10 @@ If a proxy server is used, set the `NO_PROXY` environment variable to exclude pr
 
 > [!NOTE]
 > You can't use Azure Private Link connections to the Azure Arc data processing service. See [Unsupported configurations](#unsupported-configurations).
+
+### Network requirements for enabling Entra ID authentication
+
+[!INCLUDE [entra-id-authentication-prerequisites](includes/entra-id-authentication-prerequisites.md)]
 
 ## Supported SQL Server versions and environments
 

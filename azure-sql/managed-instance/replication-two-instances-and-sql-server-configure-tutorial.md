@@ -36,7 +36,7 @@ This tutorial is intended for an experienced audience and assumes that the user 
 
 To complete the tutorial, make sure you have the following prerequisites:
 
-- An [Azure subscription](https://azure.microsoft.com/free/).
+- An [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
 - Experience with deploying two managed instances within the same virtual network.
 - A SQL Server subscriber, either on-premises or on an Azure VM. This tutorial uses an Azure VM.  
 - [SQL Server Management Studio (SSMS) 18.0 or greater](/sql/ssms/download-sql-server-management-studio-ssms).

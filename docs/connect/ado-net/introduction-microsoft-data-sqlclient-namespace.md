@@ -914,14 +914,14 @@ public enum SensitivityRank
 }
 ```
 
-### Server Process ID for an active `SqlConnection`
+### Session ID for an active `SqlConnection`
 
 Microsoft.Data.SqlClient v2.1 introduces a new `SqlConnection` property, `ServerProcessId`, on an active connection.
 
 ```csharp
 public class SqlConnection
 {
-    // Returns the server process Id (SPID) of the active connection.
+    // Returns the session ID (SPID) of the active connection.
     public int ServerProcessId;
 }
 ```

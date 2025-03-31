@@ -40,7 +40,7 @@ You can start [!INCLUDE[ssSqlProfiler](../../includes/sssqlprofiler-md.md)] from
 - In Query Editor, right-click and then select **Trace Query in SQL Server Profiler**.
 
   > [!NOTE]  
-  > The connection context is the editor connection, the trace template is TSQL_SPs, and the applied filter is SPID = query window SPID.  
+  > The connection context is the editor connection, the trace template is TSQL_SPs, and the applied filter is SPID = query window session ID.  
 
 When you start [!INCLUDE[ssSqlProfiler](../../includes/sssqlprofiler-md.md)] in [!INCLUDE [ssms20-md](../../includes/ssms20-md.md)] from the Query Editor, the connection context isn't loaded, and a trace isn't automatically configured.  You must manually [create a trace](create-a-trace-sql-server-profiler.md) and start it.
 
@@ -49,7 +49,7 @@ When you start [!INCLUDE[ssSqlProfiler](../../includes/sssqlprofiler-md.md)] in 
 - In Activity Monitor, click the **Processes** pane, right-click the process that you want to profile, and then click **Trace Process in SQL Server Profiler**.
 
     > [!NOTE]  
-    > When a process is selected, the connection context is the Object Explorer connection when Activity Monitor was opened. The trace template is the default based on the server type, and the SPID equals the SPID for the selected process.  
+    > When a process is selected, the connection context is the Object Explorer connection when Activity Monitor was opened. The trace template is the default based on the server type, and the SPID equals the session ID for the selected process.  
 
 ## .NET Framework Security
 

@@ -22,7 +22,7 @@ In this quickstart, you create a [ledger database](/sql/relational-databases/sec
 
 ## Prerequisite
 
-You need an active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/free/).
+You need an active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
 
 ### Permissions
 

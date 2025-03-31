@@ -157,7 +157,7 @@ Java.exe -Djava.security.auth.login.config=SQLJDBCDriver.conf -Djava.security.kr
 Run the following query in SQL Server Management Studio:
 
 ```sql
-select auth_scheme from sys.dm_exec_connections where session_id=\@\@spid
+select auth_scheme from sys.dm_exec_connections where session_id=@@spid
 ```
 
 Make sure that you have the necessary permission to run this query.

@@ -42,7 +42,7 @@ monikerRange: ">=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-curren
 |OwnerName|**nvarchar**|The broker identifier that the message is directed to.|37|No|  
 |RoleName|**nvarchar**|The role of the conversation handle. Valid values are:<br /><br /> Initiator. This broker initiated the conversation.<br /><br /> Target. This broker is the target of the conversation.|38|No|  
 |ServerName|**nvarchar**|The name of the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] being traced.|26|No|  
-|SPID|**int**|The server process ID assigned by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to the process associated with the client.|12|Yes|  
+|SPID|**int**|The session ID assigned by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to the process associated with the client.|12|Yes|  
 |StartTime|**datetime**|The time at which the event started, when available.|14|Yes|  
 |Success|**int**|The amount of time consumed during the forwarding process.|23|No|  
 |TargetLoginName|**nvarchar**|The network address that this instance sent the message to. Notice that this may be different than the final destination for the message.|42|No|  

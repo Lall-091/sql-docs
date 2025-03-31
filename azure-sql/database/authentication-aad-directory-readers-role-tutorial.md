@@ -143,7 +143,7 @@ Assigning the **Directory Readers** role to the server identity isn't required f
     ```
 
     ```powershell
-    $GrOwner = New-MgGroupOwnerByRef -GroupId $group.Id -DirectoryObjectId $newGroupOwner.Id
+    $GrOwner = New-MgGroupOwnerByRef -GroupId $group.Id -OdataId "https://graph.microsoft.com/v1.0/users/$($newGroupOwner.Id)" 
     ```
 
     Check owners of the group:

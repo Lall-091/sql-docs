@@ -25,7 +25,7 @@ In this quickstart, you'll use the Golang programming language to connect to an 
 
 To complete this quickstart, you need:
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/).
+- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
 - An Azure SQL database or a database in [!INCLUDE [ssazuremi-md](../../docs/includes/ssazuremi-md.md)]. You can use one of these quickstarts to create a database:
 
   | SQL Database | SQL Managed Instance | SQL Server on Azure VM |

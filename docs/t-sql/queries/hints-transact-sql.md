@@ -4,7 +4,7 @@ description: Hints are options or strategies specified for enforcement by the SQ
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/07/2024
+ms.date: 03/07/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -24,7 +24,7 @@ monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-20
 ---
 # Hints (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
+[!INCLUDE [sql-asdb-asdbmi-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-fabricse-fabricdw-fabricsqldb.md)]
 
 Hints are options or strategies specified for enforcement by the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] query processor on `SELECT`, `INSERT`, `UPDATE`, or `DELETE` statements. The hints override any execution plan the query optimizer might select for a query.
 

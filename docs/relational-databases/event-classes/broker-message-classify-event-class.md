@@ -37,7 +37,7 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
 |**OwnerName**|**nvarchar**|The broker identifier that the message is directed to.|37|No|  
 |**RoleName**|**nvarchar**|Indicates whether the message was received from the network, or originated in this [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance.|38|No|  
 |**ServerName**|**nvarchar**|The name of the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] being traced.|26|No|  
-|**SPID**|**int**|The server process ID assigned by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to the process associated with the client.|12|Yes|  
+|**SPID**|**int**|The session ID assigned by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to the process associated with the client.|12|Yes|  
 |**Start Time**|**datetime**|The time at which the event started, when available.|14|Yes|  
 |**TargetUserName**|**nvarchar**|The network address of the next hop broker.|39|No|  
 |**TransactionID**|**bigint**|The system-assigned ID of the transaction.|4|No|  

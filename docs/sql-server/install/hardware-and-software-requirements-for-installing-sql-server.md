@@ -3,7 +3,8 @@ title: "SQL Server 2016 & 2017: Hardware & software requirements"
 description: A list of hardware, software, and operating system requirements for installing and running SQL Server 2016 and SQL Server 2017.
 author: MikeRayMSFT
 ms.author: mikeray
-ms.date: 09/16/2024
+ms.reviewer: randolphwest
+ms.date: 03/28/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: conceptual
@@ -67,7 +68,7 @@ The following hardware requirements apply to SQL Server 2016 and SQL Server 2017
 | Internet | Internet functionality requires Internet access (fees might apply). |
 | Memory \* | **Minimum:**<br /><br />Express Editions: 512 MB<br />All other editions: 1 GB<br />**Recommended:**<br />Express Editions: 1 GB<br />All other editions: At least 4 GB and should be increased as database size increases to ensure optimal performance. |
 | Processor Speed | **Minimum:** x64 Processor: 1.4 GHz<br /><br />**Recommended:** 2.0 GHz or faster |
-| Processor Type | x64 Processor: AMD Opteron, AMD Athlon 64, Intel Xeon with Intel EM64T support, Intel Pentium IV with EM64T support |
+| Processor Type | x64 Processor: All Intel and AMD x86-64 CPUs with [64 cores or less per NUMA node](../compute-capacity-limits-by-edition-of-sql-server.md#numa-64) |
 
 > [!NOTE]  
 > Installation of [!INCLUDE [ssCurrent](../../includes/ssnoversion-md.md)] is supported on x64 processors only. It is no longer supported on x86 processors.

@@ -894,6 +894,11 @@
       "source_path_from_root": "/azure-sql/database/scripts/update-sync-schema-in-sync-group.md",
       "redirect_url": "/azure/azure-sql/database/sql-data-sync-agent-overview",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/azure-sql/copilot/query-editor-natural-language-to-sql-copilot.md",
+      "redirect_url": "/azure/azure-sql/copilot/copilot-azure-sql-overview",
+      "redirect_document_id": false
     }
   ]
 }

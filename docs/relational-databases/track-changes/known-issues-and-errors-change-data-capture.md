@@ -4,7 +4,7 @@ description: "Known issues and errors with change data capture (CDC) in SQL Serv
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: mathoma, randolphwest
-ms.date: 12/04/2024
+ms.date: 03/14/2025
 ms.service: sql
 ms.topic: troubleshooting
 helpviewer_keywords:
@@ -64,11 +64,11 @@ CREATE TABLE T1(
 
 ## Accelerated database recovery (ADR) and change data capture (CDC)
 
-Currently, enabling both change data capture (CDC) and accelerated database recovery (ADR) isn't supported in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+Enabling both change data capture (CDC) and accelerated database recovery (ADR) for the same database isn't supported in [!INCLUDE[sssql19-md](../../includes/sssql19-md.md)]. Enabling both CDC and ADR is supported in later [!INCLUDE[ssnoversion-md](../../includes/ssnoversion-md.md)] versions starting with [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)] Cumulative Update 18.
 
 When you enable CDC, the aggressive log truncation feature of ADR is disabled. This is because the CDC scan accesses the database transaction log. Active transactions continue to hold the transaction log truncation until the transaction commits and CDC scan catches up, or the transaction aborts. If you enable CDC on a database where ADR is enabled, you might observe higher transaction log utilization. Ensure that sufficient transaction log space is available for the needs of all your workloads.
 
-When enabling CDC, we recommend using the Resumable index option. Resumable index doesn't require to keep open a long-running transaction to create or rebuild an index, allowing log truncation during this operation and better log space management. For more information, see [Guidelines for online index operations - Resumable Index considerations](../../relational-databases/indexes/guidelines-for-online-index-operations.md#resumable-index-considerations). 
+When enabling CDC, we recommend using the resumable index option. Resumable index doesn't require to keep open a long-running transaction to create or rebuild an index, allowing log truncation during this operation and better log space management. For more information, see [Guidelines for online index operations - resumable index considerations](../../relational-databases/indexes/guidelines-for-online-index-operations.md#resumable-index-considerations). 
 
 ## Online DDL statements are unsupported
 

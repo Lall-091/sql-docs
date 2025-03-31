@@ -24,7 +24,7 @@ Creating a [single database](single-database-overview.md) is the quickest and si
 
 ## Prerequisites
 
-If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/).
+If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
 
 ### Permissions
 

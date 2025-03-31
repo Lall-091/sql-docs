@@ -3,7 +3,7 @@ title: Release Notes ODBC Driver for SQL Server on Linux and macOS
 description: "Learn what's new and changed in released versions of the Microsoft ODBC Driver for SQL Server."
 author: David-Engel
 ms.author: davidengel
-ms.date: 07/31/2024
+ms.date: 03/17/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.custom: linux-related-content
@@ -28,11 +28,19 @@ Thank you.
 GeneMi.  2019/04/03.
 -->
 
+## 18.5.1, March 2025
+
+| New item | Details |
+| :------- | :------ |
+| New distributions supported. | macOS 15, Alpine Linux 3.20, Azure Linux 3.0, Oracle Linux 9, Ubuntu 24.10 |
+| Packet Size option. | Expose the Packet Size as a connection string option. |
+| Bug fixes. | [Bug fixes](../bug-fixes.md). |
+
 ## 18.4.1, July 2024
 
 | New item | Details |
 | :------- | :------ |
-| New distributions supported. | Ubuntu 24.04, Alpine 3.19  |
+| New distributions supported. | macOS 14, Ubuntu 24.04, Alpine 3.19  |
 | Accept EULA by file presence. | Added the ability to accept the EULA for DEB and RPM packages by the presence of a file. |
 | Microsoft Entra ID | Renamed all occurrences of "Azure Active Directory" to "Microsoft Entra ID". See [New name for Azure Active Directory](/entra/fundamentals/new-name) for more information. |
 | Bug fixes. | [Bug fixes](../bug-fixes.md). |
@@ -71,7 +79,7 @@ GeneMi.  2019/04/03.
 | :------- | :------ |
 | Improved Performance | More efficient packet buffer memory allocation |
 | New Managed Identity (MSI) Authentication Support | Support for MSI authentication for Azure Arc and Azure Cloud Shell and updated to a newer Azure App Service API version |
-| New distributions supported. | Ubuntu 23.04, Alpine 3.17, Alpine 3.18. ARM64 is now supported on Alpine  |
+| New distributions supported. | Ubuntu 23.04, Alpine 3.17, Alpine 3.18. Arm64 is now supported on Alpine  |
 | Bug fixes. | [Bug fixes](../bug-fixes.md). |
 
 ## 18.2.2, June 2023
@@ -110,7 +118,7 @@ GeneMi.  2019/04/03.
 
 | New item | Details |
 | :------- | :------ |
-| New distributions supported. | Ubuntu 22.04, Red Hat 9. ARM64 Linux platforms: Debian 11, Red Hat 8 and 9, Ubuntu 20.04, 22.04 |
+| New distributions supported. | Ubuntu 22.04, Red Hat 9. Arm64 Linux platforms: Debian 11, Red Hat 8 and 9, Ubuntu 20.04, 22.04 |
 | IpAddressPreference option | See [DSN and Connection String Attributes and Keywords](../dsn-connection-string-attribute.md). |
 | RetryExec option | See [DSN and Connection String Attributes and Keywords](../dsn-connection-string-attribute.md). |
 | VBS-NONE enclave attestation protocol | New enclave attestation option to not attest the enclave. See [Using Always Encrypted](../using-always-encrypted-with-the-odbc-driver.md) |
@@ -157,7 +165,7 @@ GeneMi.  2019/04/03.
 | New item | Details |
 | :------- | :------ |
 | New distributions supported. | Ubuntu 21.04, Alpine 3.13 |
-| Support for Apple M1 ARM64 hardware | See [Install the ODBC driver (macOS)](install-microsoft-odbc-driver-sql-server-macos.md). |
+| Support for Apple M1 Arm64 hardware | See [Install the ODBC driver (macOS)](install-microsoft-odbc-driver-sql-server-macos.md). |
 | Replication option added to the connection string | See [DSN and Connection String Attributes and Keywords](../dsn-connection-string-attribute.md). |
 | KeepAlive and KeepAliveInterval options added to the connection string | See [DSN and Connection String Attributes and Keywords](../dsn-connection-string-attribute.md). |
 | Bug fixes. | [Bug fixes](../bug-fixes.md). |
@@ -279,15 +287,15 @@ Support for Azure SQL Managed Instance.
 > [!NOTE]
 > There are a number of differences when using Managed Instance:
 >
-> - FILESTREAM is not supported
-> - Local filesystem access is not supported, but required for things like tracefiles
-> - Create UDT from local path is not supported
-> - Windows Integrated Authentication is not supported
-> - DTC is not supported
-> - 'sa' account is not present (default account is called 'cloudSA')
+> - FILESTREAM isn't supported
+> - Local filesystem access isn't supported, but required for things like tracefiles
+> - Create UDT from local path isn't supported
+> - Windows Integrated Authentication isn't supported
+> - DTC isn't supported
+> - 'sa' account isn't present (default account is called 'cloudSA')
 > - TDS token ERROR (0xAA) returns incorrect server name
 > - Special characters in database name are not supported
-> - ALTER DATABASE [dbname1] MODIFY NAME = [dbname2] is not supported
+> - ALTER DATABASE [dbname1] MODIFY NAME = [dbname2] isn't supported
 > - The error messages are always shown in English, regardless of language settings (same as Azure)
 
 ## 13.1, for [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] on Linux and macOS, May 2017
@@ -324,4 +332,4 @@ The ODBC driver on Linux supports [!INCLUDE[ssHADR](../../../includes/sshadr-md.
 
 The ODBC driver on Linux supports connections to Azure SQL Database.
 
-The `-l` option (login timeout) has been added to `bcp`. For more information, see [Connecting with **bcp**](connecting-with-bcp.md).
+The `-l` option (login time out) has been added to `bcp`. For more information, see [Connecting with **bcp**](connecting-with-bcp.md).

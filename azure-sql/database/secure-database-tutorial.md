@@ -46,7 +46,7 @@ To complete the tutorial, make sure you have the following prerequisites:
 - A [server](logical-servers.md) and a single database
   - Create them with the [Azure portal](single-database-create-quickstart.md), [CLI](az-cli-script-samples-content-guide.md), or [PowerShell](powershell-script-content-guide.md)
 
-If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/) before you begin.
+If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount) before you begin.
 
 ## Sign in to the Azure portal
 

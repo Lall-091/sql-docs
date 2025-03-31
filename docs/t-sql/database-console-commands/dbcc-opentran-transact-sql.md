@@ -62,7 +62,7 @@ Suppresses all informational messages.
 
 ## Remarks
 
-Use `DBCC OPENTRAN` to determine whether an open transaction exists within the transaction log. When you use the `BACKUP LOG` statement, only the inactive part of the log can be truncated; an open transaction can prevent the log from truncating completely. To identify an open transaction, use `sp_who` to obtain the system process ID.
+Use `DBCC OPENTRAN` to determine whether an open transaction exists within the transaction log. When you use the `BACKUP LOG` statement, only the inactive part of the log can be truncated; an open transaction can prevent the log from truncating completely. To identify an open transaction, use `sp_who` to obtain the session ID.
 
 ## Result sets
 

@@ -38,7 +38,7 @@ Before replaying a captured trace with [!INCLUDE[ssSqlProfiler](../../includes/s
  Allows you to use debugging methods such as stepping through each trace. If this option is not selected, replay does not guarantee that events are replayed in an order that is consistent with the order in which events were originally captured.  
   
  **Replay events using multiple threads**  
- Optimizes performance and disables debugging. Events are replayed in the order they were recorded for a particular server process ID (SPID), but ordering of SPIDs is not guaranteed.  
+ Optimizes performance and disables debugging. Events are replayed in the order they were recorded for a particular session ID (SPID), but ordering of session ID is not guaranteed.  
   
  **Display replay results**  
  Display the results of the replay. This is the default option. If the trace you are replaying is very large, you may want to disable this to save disk space.  
@@ -48,10 +48,10 @@ Before replaying a captured trace with [!INCLUDE[ssSqlProfiler](../../includes/s
   
 ## Advanced Replay Options  
  **Replay system SPIDs**  
- Replay all SPIDs. This is the default option.  
+ Replay all session IDs. This is the default option.  
   
  **Replay one SPID only**  
- Replays the SPID number you choose from the list.  
+ Replays the session ID you choose from the list.  
   
  **Limit replay by date and time**  
  Replays the trace for the specified **Start time** and **End time**.  

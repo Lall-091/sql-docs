@@ -41,7 +41,7 @@ monikerRange: ">=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-curren
 |**RoleName**|**nvarchar**|The role of the endpoint receiving this message. One of the following values.<br /><br /> **initiator**: The receiving endpoint is the initiator of the conversation.<br /><br /> **target**:                 The receiving endpoint is the target of the conversation.|38|No|  
 |**ServerName**|**nvarchar**|The name of the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] being traced.|26|No|  
 |**Severity**|**int**|If an error caused [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to drop the message, the severity of the error.|29|No|  
-|**SPID**|**int**|The server process ID assigned by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to the process associated with the client.|12|Yes|  
+|**SPID**|**int**|The session ID assigned by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to the process associated with the client.|12|Yes|  
 |**StartTime**|**datetime**|The time at which the event started, when available.|14|Yes|  
 |**State**|**int**|Indicates the location within the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] source code that produced the event. Each location that may produce this event has a different state code. A Microsoft support engineer can use this state code to find where the event was produced.|30|No|  
 |**TextData**|**ntext**|Description of the corruption detected.|1|Yes|  

@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 description: Learn how to configure an Azure SQL Database and Azure Synapse Analytics to start using Transparent Data Encryption (TDE) for encryption-at-rest using PowerShell or Azure CLI.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: mireks, vanto, mathoma
+ms.reviewer: vanto, mathoma
 ms.date: 02/03/2025
 ms.service: azure-sql
 ms.subservice: security

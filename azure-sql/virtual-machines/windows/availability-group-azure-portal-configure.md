@@ -38,7 +38,7 @@ Although this article uses the Azure portal to configure the availability group 
 
 To configure an Always On availability group by using the Azure portal, you must have the following prerequisites:
 
-- An [Azure subscription](https://azure.microsoft.com/free/)
+- An [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount)
 
 - A resource group
 

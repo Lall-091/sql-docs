@@ -35,6 +35,7 @@ We'll also go over the updated functionality to set up a Microsoft Entra admin f
 - SQL Server is connected to Azure cloud. For more information, see [Connect your SQL Server to Azure Arc](../../../sql-server/azure-arc/connect.md).
 - Microsoft Entra ID is configured for authentication in the same tenant as the Azure Arc instance.
 - An [Azure Key Vault](/azure/key-vault/general/quick-create-portal) is required.
+- [Network requirements for enabling Entra ID authentication](../../../sql-server/azure-arc/prerequisites.md#network-requirements-for-enabling-entra-id-authentication) are met.
 
 <a name='preparation-before-setting-the-azure-ad-admin'></a>
 

@@ -12,6 +12,7 @@ helpviewer_keywords:
   - "SQL Server Configuration Manager, help"
 monikerRange: ">=sql-server-2016"
 ---
+
 # SQL Server Configuration Manager help
 
 [!INCLUDE [SQL Server Windows Only](../../includes/applies-to-version/sql-windows-only.md)]

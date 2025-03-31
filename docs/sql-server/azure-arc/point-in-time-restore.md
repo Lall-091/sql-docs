@@ -61,5 +61,5 @@ az sql db-arc restore --dest-name "new_db" --resource-group "my-rg" --name "myso
 
 ## Related tasks
 
-- [View SQL Server databases - Azure Arc](view-databases.md)
+- [View SQL Azure Arc inventory](view-inventory.md)
 - [Recovery Models (SQL Server)](../../relational-databases/backup-restore/recovery-models-sql-server.md)

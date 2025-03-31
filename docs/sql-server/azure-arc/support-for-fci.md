@@ -80,4 +80,4 @@ The portal displays the databases on the SQL Server instance.
 
 ## Related tasks
 
-- [View SQL Server databases - Azure Arc](view-databases.md)
+- [View SQL Azure Arc inventory](view-inventory.md)

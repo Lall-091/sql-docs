@@ -1,42 +1,44 @@
 ---
-title: View SQL Server databases
-description: Learn how to inventory SQL Server databases, and view properties of databases centrally, as Azure Arc-enabled resources.
-author: ntakru
-ms.author: nikitatakru
+title: Manage inventory
+description: Learn how to inventory SQL Server services, instances, databases, and view properties centrally, as Azure Arc-enabled resources.
+author: anosov1960
+ms.author: sashan
 ms.reviewer: mikeray, randolphwest
-ms.date: 09/09/2024
+ms.date: 03/04/2025
 ms.topic: how-to
 ms.custom:
   - ignite-2023
 ---
 
-# View Azure Arc-enabled SQL Server databases
+# Manage inventory of SQL Server resources with Azure Arc
 
 [!INCLUDE [sqlserver](../../includes/applies-to-version/sqlserver.md)]
 
-You can inventory and view Azure Arc-enabled [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] databases in Azure.
+When SQL Server engine instances or associated services are enabled by Azure Arc, you can use Azure to manage your inventory.
 
 ## Prerequisites
 
-- Verify that the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instance that hosts the databases:
+Verify that the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] service is
 
-  - Is hosted on a physical or virtual machine that's running the Windows operating system.
-  - Is [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)] or later.
-  - Is connected to Azure Arc. See [Connect your SQL Server to Azure Arc](connect.md).
-  - Is connected to the internet directly or through a proxy server.
-
-- Make sure that database names adhere to naming conventions and don't contain reserved words. For a list of reserved words, see [Resolve errors for reserved resource names](/azure/azure-resource-manager/troubleshooting/error-reserved-resource-name).
-
-- To view the database size and space available, make sure that the built-in [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] login **NT AUTHORITY\SYSTEM** is a member of the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] **sysadmin** server role for all the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instances running on the machine.
+- Version [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)] or later.
+- On a physical or virtual machine that's running the Windows operating system.
+- Connected to Azure Arc. See [Connect your SQL Server to Azure Arc](connect.md).
+- Connected to the internet directly or through a proxy server.
 
 ## Inventory databases
+
+To inventory SQL Server databases, make sure that database names adhere to naming conventions and don't contain reserved words. For a list of reserved words, see [Resolve errors for reserved resource names](/azure/azure-resource-manager/troubleshooting/error-reserved-resource-name).
+
+To inventory databases:
 
 1. Locate the instance of [!INCLUDE [ssazurearc](../../includes/ssazurearc.md)] in the Azure portal.
 1. Select the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] resource.
 1. Under **Data management**, select **Databases**.
 1. Use the **SQL Server databases - Azure Arc** area to view the databases that belong to the instance.
 
-## View database properties
+To view the database size and space available, make sure that the built-in [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] login **NT AUTHORITY\SYSTEM** is a member of the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] **sysadmin** server role for all the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instances running on the machine.
+
+### View database properties
 
 To view properties for a specific database, select the database in the portal.
 
@@ -59,11 +61,11 @@ When you select a specific database, all the properties for that database appear
 
 :::image type="content" source="media/view-databases/full-property-list.png" alt-text="Screenshot of a full database property list." lightbox="media/view-databases/full-property-list.png":::
 
-## Use Azure Resource Graph to query data
+### Use Azure Resource Graph to query data
 
 Here are some example scenarios that show how you use [Azure Resource Graph](/azure/governance/resource-graph/overview) to query data that's available when you're viewing Azure Arc-enabled SQL Server databases.
 
-### Scenario 1: Get 10 databases
+#### Scenario 1: Get 10 databases
 
 Get 10 databases and return properties that are available to query:
 
@@ -83,7 +85,7 @@ resources
 
 You can navigate the hierarchy of the properties JSON by using a period between each level of the JSON.
 
-### Scenario 2: Get all the databases that have the database option AUTO_CLOSE set to ON
+#### Scenario 2: Get all the databases that have the database option AUTO_CLOSE set to ON
 
 ```kusto
 | where (type == 'microsoft.azurearcdata/sqlserverinstances/databases' and properties.databaseOptions.isAutoCloseOn == true)
@@ -91,7 +93,7 @@ You can navigate the hierarchy of the properties JSON by using a period between 
 | project name, isAutoCloseOn
 ```
 
-### Scenario 3: Obtain the count of databases that are encrypted vs. not encrypted
+#### Scenario 3: Obtain the count of databases that are encrypted vs. not encrypted
 
 ```kusto
 resources
@@ -101,7 +103,7 @@ resources
 | order by ['isEncrypted'] asc
 ```
 
-### Scenario 4: Show all the databases that aren't encrypted
+#### Scenario 4: Show all the databases that aren't encrypted
 
 ```kusto
 resources
@@ -110,7 +112,7 @@ resources
 | project name, isEncrypted
 ```
 
-### Scenario 5: Get all the databases by region and compatibility level
+#### Scenario 5: Get all the databases by region and compatibility level
 
 This example returns all databases in the `westus3` location with a compatibility level of 160:
 
@@ -121,7 +123,7 @@ resources
 | where properties.compatibilityLevel == "160"
 ```
 
-### Scenario 6: Show the SQL Server version distribution
+#### Scenario 6: Show the SQL Server version distribution
 
 ```kusto
 resources
@@ -130,7 +132,7 @@ resources
 | summarize count() by tostring(SQLversion)
 ```
 
-### Scenario 7: Show a count of databases by compatibility
+#### Scenario 7: Show a count of databases by compatibility
 
 This example returns the number of databases, ordered by the compatibility level:
 
@@ -140,6 +142,26 @@ resources
 | summarize count() by tostring(properties.compatibilityLevel)
 | order by properties_compatibilityLevel asc
 ```
+## Inventory associated services
+
+SQL Server associated services include:
+
+- SQL Server Database Engine
+- SQL Server Analysis Services (SSAS)
+- SQL Server Integration Services (SSIS)
+- SQL Server Reporting Services (SSRS)
+- Power BI Report Server (PBIRS)
+
+Each installation of an associated service is  represented in Azure Resource Manager (ARM) as a SQL Server instance with `serviceType` property showing the specific service. The property is defined as follows:
+```json
+"serviceType":  {
+         "type": "string",
+         "enum": [ "Engine", "SSAS", "SSIS", "SSRS", “PBIRS” ],
+         "default": "Engine"
+     }
+```
+
+## Create inventory dashboard
 
 You can also [create charts and pin them to dashboards](/azure/governance/resource-graph/first-query-portal).
 
@@ -147,9 +169,10 @@ You can also [create charts and pin them to dashboards](/azure/governance/resour
 
 ## Known issues
 
-Databases deleted on-premises might not be immediately deleted in Azure. There's no impact on how database CRUD (create, read, update, delete) operations happen on-premises.
+Resources deleted on-premises might not be immediately deleted in Azure. For example, if you delete a database, the image of the database on Azure remains until the server resource synchronizes.
 
 ## Related content
 
+- [Feature availability by service type](overview.md#feature-availability-by-service-type)
 - [Protect SQL Server with Microsoft Defender for Cloud](configure-advanced-data-security.md)
 - [Configure best practices assessment for SQL Server enabled by Azure Arc](assess.md)

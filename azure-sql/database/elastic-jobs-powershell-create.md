@@ -36,7 +36,7 @@ These cmdlets were updated in November 2023.
 
 ### Install the latest elastic jobs cmdlets
 
-If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/free/) before you begin.
+If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount) before you begin.
 
 If not already present, install the latest versions of the `Az.Sql` and `SqlServer` modules. Run the following commands in PowerShell with administrative access.
 

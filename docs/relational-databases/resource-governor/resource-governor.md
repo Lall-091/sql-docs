@@ -4,7 +4,7 @@ description: Learn about the SQL Server resource governor feature that limits th
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: dfurman
-ms.date: 01/02/2025
+ms.date: 03/16/2025
 ms.service: sql
 ms.subservice: performance
 ms.topic: conceptual
@@ -49,7 +49,7 @@ Resource governor has the following limitations:
 - Very short queries, such as queries in some OLTP workloads, might not use CPU long enough to apply CPU bandwidth controls. This might skew CPU usage statistics and limit the effectiveness of CPU resource governance.
 - The ability to govern physical I/O applies only to user operations and not system tasks. System tasks perform transaction log, checkpoint, and lazy writer I/O. Resource governor governs user physical reads I/O but not write I/O performed by system tasks.
 - You can't modify resource governance controls for the `internal` resource pool and workload group.
-- Resource governor works at the instance level. Resource governor with a [contained availability group](../../database-engine/availability-groups/windows/contained-availability-groups-overview.md) isn't applicable.
+- If you use contained availability groups, see [Interactions with other features](../../database-engine/availability-groups/windows/contained-availability-groups-overview.md#resource-governor) for more information.
 
 ## Resource concepts
 

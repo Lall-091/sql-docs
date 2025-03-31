@@ -1,8 +1,8 @@
 ---
 title: Integrate Key Vault with SQL Server on Windows VMs in Azure (Resource Manager)
 description: Learn how to automate the configuration of SQL Server encryption for use with Azure Key Vault. This topic explains how to use Azure Key Vault Integration with SQL virtual machines created with Resource Manager.
-author: adbadram
-ms.author: adbadram
+author: dplessMSFT
+ms.author: dpless
 ms.reviewer: mathoma, vanto
 ms.date: 11/21/2024
 ms.service: azure-vm-sql-server

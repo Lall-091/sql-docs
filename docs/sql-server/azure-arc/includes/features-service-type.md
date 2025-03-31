@@ -17,7 +17,7 @@ The following table identifies features available by [!INCLUDE [ssnoversion-md](
 | SQL Server inventory | Yes | Yes | Yes | Yes | Yes |
 | [Best practices assessment](../assess.md) | Yes | No | No | No | No |
 | [Migration readiness (preview)](../migration-assessment.md) | Yes | No | No | No | No |
-| [Database inventory](../view-databases.md#inventory-databases) | Yes | Not applicable | Not applicable | Not applicable | Not applicable |
+| [Detailed inventory](../view-inventory.md#inventory-databases) | Yes | Not applicable | Not applicable | Not applicable | Not applicable |
 | [Microsoft Entra ID authentication](../../../relational-databases/security/authentication-access/azure-ad-authentication-sql-server-overview.md)  | Yes <sup>1</sup> | No | No | No | No |
 | [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-sql-usage) | Yes | No | No | No | No |
 | [Microsoft Purview: Govern using DevOps and data owner policies](/azure/purview/tutorial-register-scan-on-premises-sql-server) | Yes | No | No | No | No |

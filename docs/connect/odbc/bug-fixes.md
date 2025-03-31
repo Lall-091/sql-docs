@@ -3,7 +3,7 @@ title: List of bugs fixed
 description: This page contains a listing of bugs fixed in each release, starting with Microsoft ODBC Driver 17 for SQL Server.
 author: David-Engel
 ms.author: davidengel
-ms.date: 07/31/2024
+ms.date: 03/17/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -13,6 +13,12 @@ helpviewer_keywords:
 # List of bugs fixed
 
 This page contains a listing of bugs fixed in each release, starting with [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 17 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+
+### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 18.5.1.1 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+
+- Fix connection recovery to obtain the active primary node when a server moves
+- Fix crashes under low-memory conditions
+- Fix some error messages
 
 ### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 18.4.1.1 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
 
@@ -100,7 +106,7 @@ This page contains a listing of bugs fixed in each release, starting with [!INCL
 ### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 18.0 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
 
 - Fix UI issues where text was cut off and position of items was off.
-- Fix issue with Active Directory Interactive login where attempting to login after closing the window of the first failure would automatically succeed if cached credentials were available.
+- Fix issue with Active Directory Interactive login where attempting to log in after closing the window of the first failure would automatically succeed if cached credentials were available.
 - Fix use of XADTC with Azure SQL Managed Instance.
 - Fix loss of Microsoft Entra authentication mode when reconnecting an idle connection.
 - Fix an issue with federated authentication when using PingFed.
@@ -122,7 +128,7 @@ This page contains a listing of bugs fixed in each release, starting with [!INCL
 ### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 17.9 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
 
 - Fix UI issues where text was cut off and position of items was off.
-- Fix issue with Active Directory Interactive login where attempting to login after closing the window of the first failure would automatically succeed if cached credentials were available.
+- Fix issue with Active Directory Interactive login where attempting to log in after closing the window of the first failure would automatically succeed if cached credentials were available.
 - Fix use of XADTC with Azure SQL Managed Instance.
 - Fix loss of Microsoft Entra authentication mode when reconnecting an idle connection.
 - Fix an issue with federated authentication when using PingFed.

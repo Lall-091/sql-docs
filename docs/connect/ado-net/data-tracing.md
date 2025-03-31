@@ -41,7 +41,7 @@ For connection operations, the Microsoft SqlClient Data Provider for SQL Server 
 You can get the client connection ID programmatically by using the `SqlConnection.ClientConnectionID` property.
 
 > [!NOTE]
-> The Microsoft SqlClient Data Provider for SQL Server supports the server process ID since version 2.1.0. You can get it programmatically by using the `SqlConnection.ServerProcessId` property.
+> The Microsoft SqlClient Data Provider for SQL Server supports the session ID (SPID) since version 2.1.0. You can get it programmatically by using the `SqlConnection.ServerProcessId` property.
 
 The `ClientConnectionID` and `ServerProcessId` are available for a <xref:Microsoft.Data.SqlClient.SqlConnection> object that successfully establishes a connection. If a connection attempt fails, `ClientConnectionID` may be available via `SqlException.ToString`.
 

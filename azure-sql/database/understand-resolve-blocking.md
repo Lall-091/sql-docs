@@ -22,7 +22,7 @@ The article describes blocking in Azure SQL Database and Fabric SQL database, an
 
 ## Objective
 
-In this article, the term connection refers to a single logged-on session of the database. Each connection appears as a session ID (SPID), or `session_id` in many DMVs. Each of these SPIDs is often referred to as a process, although it isn't a separate process context in the usual sense. Rather, each SPID consists of the server resources and data structures necessary to service the requests of a single connection from a given client. A single client application might have one or more connections. From the perspective of Azure SQL Database, there's no difference between multiple connections from a single client application on a single client computer and multiple connections from multiple client applications or multiple client computers; they're atomic. One connection can block another connection, regardless of the source client.
+In this article, the term connection refers to a single logged-on session of the database. Each connection appears as a session ID, or `session_id` in many DMVs. Each of these session IDs is often referred to as a process, although it isn't a separate process context in the usual sense. Rather, each session ID consists of the server resources and data structures necessary to service the requests of a single connection from a given client. A single client application might have one or more connections. From the perspective of Azure SQL Database, there's no difference between multiple connections from a single client application on a single client computer and multiple connections from multiple client applications or multiple client computers; they're atomic. One connection can block another connection, regardless of the source client.
 
 For information on troubleshooting deadlocks, see [Analyze and prevent deadlocks in Azure SQL Database and Fabric SQL database](analyze-prevent-deadlocks.md).
 
@@ -32,7 +32,7 @@ For information on troubleshooting deadlocks, see [Analyze and prevent deadlocks
 
 ## Understand blocking
  
-Blocking is an unavoidable and by-design characteristic of any relational database management system (RDBMS) with lock-based concurrency. Blocking in a database in Azure SQL Database occurs when one session holds a lock on a specific resource and a second SPID attempts to acquire a conflicting lock type on the same resource. Typically, the time frame for which the first SPID locks the resource is small. When the owning session releases the lock, the second connection is then free to acquire its own lock on the resource and continue processing. This behavior is normal, and can happen many times throughout the course of a day with no noticeable effect on system performance.
+Blocking is an unavoidable and by-design characteristic of any relational database management system (RDBMS) with lock-based concurrency. Blocking in a database in Azure SQL Database occurs when one session holds a lock on a specific resource and a second session ID attempts to acquire a conflicting lock type on the same resource. Typically, the time frame for which the first session ID locks the resource is small. When the owning session releases the lock, the second connection is then free to acquire its own lock on the resource and continue processing. This behavior is normal, and can happen many times throughout the course of a day with no noticeable effect on system performance.
 
 Each new database in Azure SQL Database has the [read committed snapshot](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true#read_committed_snapshot--on--off--1) (RCSI) database setting enabled by default. Blocking between sessions reading data and sessions writing data is minimized under RCSI, which uses row versioning to increase concurrency. However, blocking and deadlocks can still occur in databases in Azure SQL Database because:
 
@@ -65,11 +65,11 @@ For queries executed within an [explicit transaction](/sql/relational-databases/
 
 When locking and blocking persists to the point where there's a detrimental effect on system performance, it's due to one of the following reasons:
 
-* A SPID holds locks on a set of resources for an extended period of time before releasing them. This type of blocking resolves itself over time but can cause performance degradation.
+* A session ID holds locks on a set of resources for an extended period of time before releasing them. This type of blocking resolves itself over time but can cause performance degradation.
 
-* A SPID holds locks on a set of resources and never releases them. This type of blocking doesn't resolve itself and prevents access to the affected resources indefinitely.
+* A session ID holds locks on a set of resources and never releases them. This type of blocking doesn't resolve itself and prevents access to the affected resources indefinitely.
 
-In the first scenario, the situation can be very fluid as different SPIDs cause blocking on different resources over time, creating a moving target. These situations are difficult to troubleshoot using [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) to narrow down the issue to individual queries. In contrast, the second situation results in a consistent state that can be easier to diagnose.
+In the first scenario, the situation can be very fluid as different session IDs cause blocking on different resources over time, creating a moving target. These situations are difficult to troubleshoot using [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) to narrow down the issue to individual queries. In contrast, the second situation results in a consistent state that can be easier to diagnose.
 
 ### Optimized locking
 
@@ -114,7 +114,7 @@ The first is to query dynamic management objects (DMOs) and store the results fo
 
 ## Gather information from DMVs
 
-Referencing DMVs to troubleshoot blocking has the goal of identifying the SPID (session ID) at the head of the blocking chain and the SQL Statement. Look for victim SPIDs that are being blocked. If any SPID is being blocked by another SPID, then investigate the SPID owning the resource (the blocking SPID). Is that owner SPID being blocked as well? You can walk the chain to find the head blocker then investigate why it's maintaining its lock.
+Referencing DMVs to troubleshoot blocking has the goal of identifying the session ID at the head of the blocking chain and the SQL Statement. Look for victim session IDs that are being blocked. If any session ID is being blocked by another session ID, then investigate the session ID owning the resource (the blocking session ID). Is that owner session ID being blocked as well? You can walk the chain to find the head blocker then investigate why it's maintaining its lock.
 
 Remember to run each of these scripts in the target database in Azure SQL Database.
 
@@ -266,30 +266,30 @@ Refer to the document that explains how to use the [Extended Events New Session 
 
 ## Identify and resolve common blocking scenarios
 
-By examining the previous information, you can determine the cause of most blocking problems. The rest of this article is a discussion of how to use this information to identify and resolve some common blocking scenarios. This discussion assumes you have used the blocking scripts (referenced earlier) to capture information on the blocking SPIDs and have captured application activity using an XEvent session.
+By examining the previous information, you can determine the cause of most blocking problems. The rest of this article is a discussion of how to use this information to identify and resolve some common blocking scenarios. This discussion assumes you have used the blocking scripts (referenced earlier) to capture information on the blocking session IDs and have captured application activity using an XEvent session.
 
 ## Analyze blocking data 
 
 * Examine the output of the DMVs `sys.dm_exec_requests` and `sys.dm_exec_sessions` to determine the heads of the blocking chains, using `blocking_these` and `session_id`. This most clearly identifies which requests are blocked and which are blocking. Look further into the sessions that are blocked and blocking. Is there a common or root to the blocking chain? They likely share a common table, and one or more of the sessions involved in a blocking chain is performing a write operation. 
 
-* Examine the output of the DMVs `sys.dm_exec_requests` and `sys.dm_exec_sessions` for information on the SPIDs at the head of the blocking chain. Look for the following fields: 
+* Examine the output of the DMVs `sys.dm_exec_requests` and `sys.dm_exec_sessions` for information on the session IDs at the head of the blocking chain. Look for the following fields: 
 
     -    `sys.dm_exec_requests.status`  
-    This column shows the status of a particular request. Typically, a sleeping status indicates that the SPID has completed execution and is waiting for the application to submit another query or batch. A runnable or running status indicates that the SPID is currently processing a query. The following table gives brief explanations of the various status values.
+    This column shows the status of a particular request. Typically, a sleeping status indicates that the session ID has completed execution and is waiting for the application to submit another query or batch. A runnable or running status indicates that the session ID is currently processing a query. The following table gives brief explanations of the various status values.
 
     | Status | Meaning |
     |:-|:-|
-    | Background | The SPID is running a background task, such as deadlock detection, log writer, or checkpoint. |
-    | Sleeping | The SPID isn't currently executing. This usually indicates that the SPID is awaiting a command from the application. |
-    | Running | The SPID is currently running on a scheduler. |
-    | Runnable | The SPID is in the runnable queue of a scheduler and waiting to get scheduler time. |
-    | Suspended | The SPID is waiting for a resource, such as a lock or a latch. | 
+    | Background | The session ID is running a background task, such as deadlock detection, log writer, or checkpoint. |
+    | Sleeping | The session ID isn't currently executing. This usually indicates that the session ID is awaiting a command from the application. |
+    | Running | The session ID is currently running on a scheduler. |
+    | Runnable | The session ID is in the runnable queue of a scheduler and waiting to get scheduler time. |
+    | Suspended | The session ID is waiting for a resource, such as a lock or a latch. | 
                        
     -    `sys.dm_exec_sessions.open_transaction_count`  
-    This field tells you the number of open transactions in this session. If this value is greater than 0, the SPID is within an open transaction and might be holding locks acquired by any statement within the transaction.
+    This field tells you the number of open transactions in this session. If this value is greater than 0, the session ID is within an open transaction and might be holding locks acquired by any statement within the transaction.
 
     -    `sys.dm_exec_requests.open_transaction_count`  
-    Similarly, this field tells you the number of open transactions in this request. If this value is greater than 0, the SPID is within an open transaction and might be holding locks acquired by any statement within the transaction.
+    Similarly, this field tells you the number of open transactions in this request. If this value is greater than 0, the session ID is within an open transaction and might be holding locks acquired by any statement within the transaction.
 
     -   `sys.dm_exec_requests.wait_type`, `wait_time`, and `last_wait_type`  
     If the `sys.dm_exec_requests.wait_type` is NULL, the request isn't currently waiting for anything and the `last_wait_type` value indicates the last `wait_type` that the request encountered. For more information about `sys.dm_os_wait_stats` and a description of the most common wait types, see [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql). The `wait_time` value can be used to determine if the request is making progress. When a query against the `sys.dm_exec_requests` table returns a value in the `wait_time` column that is less than the `wait_time` value from a previous query of `sys.dm_exec_requests`, this indicates that the prior lock was acquired and released and is now waiting on a new lock (assuming nonzero `wait_time`). This can be verified by comparing the `wait_resource` between `sys.dm_exec_requests` output, which displays the resource for which the request is waiting.
@@ -346,7 +346,7 @@ By examining the previous information, you can determine the cause of most block
 
     -   Other columns
 
-        The remaining columns in [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql) and [sys.dm_exec_request](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) can provide insight into the root of a problem as well. Their usefulness varies depending on the circumstances of the problem. For example, you can determine if the problem happens only from certain clients (hostname), on certain network libraries (net_library), when the last batch submitted by a SPID was `last_request_start_time` in `sys.dm_exec_sessions`, how long a request had been running using `start_time` in `sys.dm_exec_requests`, and so on.
+        The remaining columns in [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql) and [sys.dm_exec_request](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) can provide insight into the root of a problem as well. Their usefulness varies depending on the circumstances of the problem. For example, you can determine if the problem happens only from certain clients (hostname), on certain network libraries (net_library), when the last batch submitted by a session ID was `last_request_start_time` in `sys.dm_exec_sessions`, how long a request had been running using `start_time` in `sys.dm_exec_requests`, and so on.
 
 
 ## Common blocking scenarios
@@ -358,10 +358,10 @@ The `Waittype`, `Open_Tran`, and `Status` columns refer to information returned 
 | Scenario | Waittype | Open_Tran | Status | Resolves? | Other Symptoms |  
 |:-|:-|:-|:-|:-|:-|
 | 1 | NOT NULL | >= 0 | runnable | Yes, when query finishes. | In `sys.dm_exec_sessions`, `reads`, `cpu_time`, and/or `memory_usage` columns increase over time. Duration for the query is high when completed. |
-| 2 | NULL | \>0 | sleeping | No, but SPID can be killed. | An attention signal might be seen in the Extended Event session for this SPID, indicating a query time-out or cancel has occurred. |
-| 3 | NULL | \>= 0 | runnable | No. Doesn't resolve until client fetches all rows or closes connection. SPID can be killed, but it can take up to 30 seconds. | If open_transaction_count = 0, and the SPID holds locks while the transaction isolation level is default (READ COMMITTED), this is a likely cause. |  
-| 4 | Varies | \>= 0 | runnable | No. Doesn't resolve until client cancels queries or closes connections. SPIDs can be killed, but might take up to 30 seconds. | The `hostname` column in `sys.dm_exec_sessions` for the SPID at the head of a blocking chain is the same as one of the SPID it's blocking. |  
-| 5 | NULL | \>0 | rollback | Yes. | An attention signal might be seen in the Extended Events session for this SPID, indicating a query time-out or cancel has occurred, or simply a rollback statement has been issued. |  
+| 2 | NULL | \>0 | sleeping | No, but session ID can be killed. | An attention signal might be seen in the Extended Event session for this session ID, indicating a query time-out or cancel has occurred. |
+| 3 | NULL | \>= 0 | runnable | No. Doesn't resolve until client fetches all rows or closes connection. session ID can be killed, but it can take up to 30 seconds. | If open_transaction_count = 0, and the session ID holds locks while the transaction isolation level is default (READ COMMITTED), this is a likely cause. |  
+| 4 | Varies | \>= 0 | runnable | No. Doesn't resolve until client cancels queries or closes connections. session IDs can be killed, but might take up to 30 seconds. | The `hostname` column in `sys.dm_exec_sessions` for the session ID at the head of a blocking chain is the same as one of the session ID it's blocking. |  
+| 5 | NULL | \>0 | rollback | Yes. | An attention signal might be seen in the Extended Events session for this session ID, indicating a query time-out or cancel has occurred, or simply a rollback statement has been issued. |  
 | 6 | NULL | \>0 | sleeping | Eventually. When Windows determines the session is no longer active, the Azure SQL Database connection is broken. | The `last_request_start_time` value in `sys.dm_exec_sessions` is much earlier than the current time. |
 
 ## Detailed blocking scenarios
@@ -376,10 +376,10 @@ The `Waittype`, `Open_Tran`, and `Status` columns refer to information returned 
 
     If you have a long-running query that is blocking other users and can't be optimized, consider moving it from an OLTP environment to a dedicated reporting system, a [synchronous read-only replica of the database](read-scale-out.md).
 
-1.  Blocking caused by a sleeping SPID that has an uncommitted transaction
+1.  Blocking caused by a sleeping session ID that has an uncommitted transaction
 
-    This type of blocking can often be identified by a SPID that is sleeping or awaiting a command, yet whose transaction nesting level (`@@TRANCOUNT`, `open_transaction_count` from `sys.dm_exec_requests`) is greater than zero. This can occur if the application experiences a query time-out, or issues a cancel without also issuing the required number of
-    ROLLBACK and/or COMMIT statements. When a SPID receives a query time-out or a cancel, it terminates the current query and batch, but doesn't automatically roll back or commit the transaction. The application is responsible for this, as Azure SQL Database can't assume that an entire transaction must be rolled back due to a single query being canceled. The query time-out or cancel appears as an ATTENTION signal event for the SPID in the Extended Event session.
+    This type of blocking can often be identified by a session ID that is sleeping or awaiting a command, yet whose transaction nesting level (`@@TRANCOUNT`, `open_transaction_count` from `sys.dm_exec_requests`) is greater than zero. This can occur if the application experiences a query time-out, or issues a cancel without also issuing the required number of
+    ROLLBACK and/or COMMIT statements. When a session ID receives a query time-out or a cancel, it terminates the current query and batch, but doesn't automatically roll back or commit the transaction. The application is responsible for this, as Azure SQL Database can't assume that an entire transaction must be rolled back due to a single query being canceled. The query time-out or cancel appears as an ATTENTION signal event for the session ID in the Extended Event session.
 
     To demonstrate an uncommitted explicit transaction, issue the following query:
 
@@ -417,7 +417,7 @@ The `Waittype`, `Open_Tran`, and `Status` columns refer to information returned 
     > [!CAUTION]
     > Following `SET XACT_ABORT ON`, T-SQL statements following a statement that causes an error aren't executed. This could affect the intended flow of existing code.
 
-1.  Blocking caused by a SPID whose corresponding client application didn't fetch all result rows to completion
+1.  Blocking caused by a session ID whose corresponding client application didn't fetch all result rows to completion
 
     After sending a query to the server, all applications must immediately fetch all result rows to completion. If an application doesn't fetch all result rows, locks can be left on the tables, blocking other users. If you're using an application that transparently submits SQL statements to the server, the application must fetch all result rows. If it doesn't (and if it can't be configured to do so), you might be unable to resolve the blocking problem. To avoid the problem, you can restrict poorly behaved applications to a reporting or a decision-support database, separate from the main OLTP database.
 
@@ -434,7 +434,7 @@ The `Waittype`, `Open_Tran`, and `Status` columns refer to information returned 
 
     Thanks to [Accelerated database recovery](/sql/relational-databases/accelerated-database-recovery-concepts) introduced in 2019, lengthy rollbacks should be rare.
     
-    **Resolution**: Wait for the SPID to finish rolling back the changes that were made. 
+    **Resolution**: Wait for the session ID to finish rolling back the changes that were made. 
 
     To avoid this situation, don't perform large batch write operations or index creation or maintenance operations during busy hours on OLTP systems. If possible, perform such operations during periods of low activity.
 
@@ -442,7 +442,7 @@ The `Waittype`, `Open_Tran`, and `Status` columns refer to information returned 
 
     If the client application traps errors or the client workstation is restarted, the network session to the server might not be immediately canceled under some conditions. From the Azure SQL Database perspective, the client still appears to be present, and any locks acquired might still be retained. For more information, see [How to troubleshoot orphaned connections in SQL Server](/sql/t-sql/language-elements/kill-transact-sql#remarks). 
 
-    **Resolution**: If the client application has disconnected without appropriately cleaning up its resources, you can terminate the SPID by using the `KILL` command. The `KILL` command takes the SPID value as input. For example, to kill SPID 99, issue the following command:
+    **Resolution**: If the client application has disconnected without appropriately cleaning up its resources, you can terminate the session ID by using the `KILL` command. The `KILL` command takes the session ID value as input. For example, to kill session ID 99, issue the following command:
 
     ```sql
     KILL 99

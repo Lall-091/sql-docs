@@ -25,7 +25,7 @@ This article teaches you how to prepare your environment for a [Managed Instance
 
 To create a link between SQL Server and Azure SQL Managed Instance, you need the following prerequisites:
 
-- An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/free/).
+- An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
 - [Supported version of SQL Server](managed-instance-link-feature-overview.md#prerequisites) with the required service update.
 - Azure SQL Managed Instance. [Get started](instance-create-quickstart.md) if you don't have it. 
 - Decide which server you intend to be the initial primary to determine where you should create the link from. 

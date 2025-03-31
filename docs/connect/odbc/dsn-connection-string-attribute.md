@@ -389,7 +389,7 @@ Allows long type data to be sent to servers as max type data.
 
 ### SQL_COPT_SS_SPID
 
-Retrieves the server process ID of the connection. This property is equivalent to the T-SQL [@@SPID](../../t-sql/functions/spid-transact-sql.md) variable, except that it doesn't incur an extra round trip to the server.
+Retrieves the session ID of the connection. This property is equivalent to the T-SQL [@@SPID](../../t-sql/functions/spid-transact-sql.md) variable, except that it doesn't incur an extra round trip to the server.
 
 | Attribute Value | Description |
 |-|-|

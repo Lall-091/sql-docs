@@ -1,8 +1,8 @@
 ---
 title: Automatic registration with SQL IaaS Agent extension
 description: Learn how to enable the automatic registration feature to automatically register all past and future SQL Server VMs with the SQL IaaS Agent extension using the Azure portal.
-author: bluefooted
-ms.author: pamela
+author: dplessMSFT
+ms.author: dpless
 ms.reviewer: mathoma, randolphwest
 ms.date: 07/31/2023
 ms.service: azure-vm-sql-server
@@ -41,7 +41,7 @@ Automatic registration offers limited functionality of the extension, such as li
 
 To enable automatic registration of your SQL Server VM with the extension, you'll need:
 
-- An [Azure subscription](https://azure.microsoft.com/free/).
+- An [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
 - The client credentials used to register the virtual machines to exist in any of the following Azure roles: **Virtual Machine contributor**, **Contributor**, or **Owner**.
 
 Once automatic registration is enabled, SQL Server VMs are registered according to these conditions:

@@ -51,7 +51,7 @@ For more information, see the [Azure SQL Database free offer FAQ](free-offer-faq
 To create a free Azure SQL Database, you need:
 
 - An Azure account.
-  - If you're evaluating Azure, consider the [Azure free account, with many services available free for 12 months](https://azure.microsoft.com/free/).
+  - If you're evaluating Azure, consider the [Azure free account, with many services available free for 12 months](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
   - While the [previous offer](free-sql-db-free-account-how-to-deploy.md) required an Azure Free subscription, this new offer is available regardless of your Azure subscription type.
 - An Azure subscription. There's a limit of 10 free offer databases per subscription.
 

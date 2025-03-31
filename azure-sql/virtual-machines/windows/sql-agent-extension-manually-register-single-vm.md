@@ -1,8 +1,8 @@
 ---
 title: Register with SQL IaaS Agent Extension (Windows)
 description: Learn how to register your SQL Server on Azure Windows VM with the SQL IaaS Agent extension to enable Azure features, for compliance, and improved manageability.
-author: adbadram
-ms.author: adbadram
+author: dplessMSFT
+ms.author: dpless
 ms.reviewer: mathoma, randolphwest
 ms.date: 07/31/2023
 ms.service: azure-vm-sql-server
@@ -37,7 +37,7 @@ To utilize the SQL IaaS Agent extension, you must first [register your subscript
 
 To register your SQL Server VM with the extension, you'll need the following:
 
-- An [Azure subscription](https://azure.microsoft.com/free/).
+- An [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
 - An Azure Resource Model [supported](/lifecycle/products/?terms=windows%20server) [Windows Server virtual machine](/azure/virtual-machines/windows/quick-create-portal) with a [supported](/lifecycle/products/?terms=sql%20server) [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads) version deployed to the public or Azure Government cloud.
 - Ensure the Azure VM is running.
 - The client credentials used to register the virtual machine exists in any of the following Azure roles: **Virtual Machine contributor**, **Contributor**, or **Owner**.

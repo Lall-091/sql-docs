@@ -30,7 +30,7 @@ dev_langs:
 |**queue_id**|**sysname**|The ID of the [!INCLUDE[msCoName](../../includes/msconame-md.md)] Message Queue at the Publisher. *queue_id* is set to **SQL** for SQL-based queued updating.|  
 |**update_mode**|**tinyint**|The type of updating:<br /><br /> **0** = Read-only.<br /><br /> **1** = Immediate update.<br /><br /> **2** = Queued update using Message Queuing.<br /><br /> **3** = Immediate update with queued update as failover using Message Queuing.<br /><br /> **4** = Queued update using SQL Server queue.<br /><br /> **5** = immediate update with queued update failover, using SQL Server queue.|  
 |**failover_mode**|**bit**|If a failover type of updating was select, this is the type of failover chosen:<br /><br /> **0** = Immediate update is being used. Failover is not enabled.<br /><br /> **1** = Queued update is being used. Failover is enabled. The queue being used for failover is specified in the *update_mode* value.|  
-|**spid**|**int**|The system process ID for the connection used by the Distribution Agent that is currently running or has just run.|  
+|**spid**|**int**|The session ID for the connection used by the Distribution Agent that is currently running or has just run.|  
 |**login_time**|**datetime**|The date and time of the Distribution Agent connection that is currently running or has just run.|  
 |**allow_subscription_copy**|**bit**|Specifies whether or not the ability to copy the subscription database is allowed.|  
 |**attach_state**|**int**|[!INCLUDE[ssInternalOnly](../../includes/ssinternalonly-md.md)]|  

@@ -1,10 +1,10 @@
 ---
 title: "Checklist: Best practices & guidelines"
 description: Provides a quick checklist to review your best practices and guidelines to optimize the performance of your SQL Server on Azure Virtual Machines (VM).
-author: bluefooted
-ms.author: pamela
+author: dplessMSFT
+ms.author: dpless
 ms.reviewer: mathoma, randolphwest
-ms.date: 03/11/2024
+ms.date: 03/20/2025
 ms.service: azure-vm-sql-server
 ms.subservice: performance
 ms.topic: best-practice
@@ -36,6 +36,19 @@ For videos about the latest features to optimize SQL Server VM performance and a
 While running SQL Server on Azure Virtual Machines, continue using the same database performance tuning options that are applicable to SQL Server in on-premises server environments. However, the performance of a relational database in a public cloud depends on many factors, such as the size of a virtual machine, and the configuration of the data disks.
 
 There's typically a trade-off between optimizing for costs and optimizing for performance. This performance best practices series is focused on getting the *best* performance for SQL Server on Azure Virtual Machines. If your workload is less demanding, you might not require every recommended optimization. Consider your performance needs, costs, and workload patterns as you evaluate these recommendations.
+
+## Manually install SQL Server to an Azure VM 
+
+If you plan to manually install SQL Server on an Azure VM, consider the following:
+
+- Make sure you have a product key ready for your installation. 
+- Avoid [unsupported](performance-guidelines-best-practices-vm-size.md#supportability) configurations such as: 
+   - More than 64 vCores per NUMA node. 
+   - Storage with 8-KB sector size. 
+   - Azure Virtual Machine Scale Sets.
+- If they don't already exist, create the folders for your SQL Server installation and data files prior to launching the installation media. 
+- Copy the installation media to a local drive instead of installing directly from the mounted ISO. 
+- After installation, register your SQL Server VM with the [SQL Server IaaS Agent Extension](sql-server-iaas-agent-extension-automate-management.md) to automate management tasks.
 
 ## VM size
 

@@ -4,12 +4,14 @@ description: Learn about logical servers used by Azure SQL Database and Azure Sy
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
-ms.date: 03/12/2019
+ms.date: 03/25/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: conceptual
 ---
+
 # What is a logical server in Azure SQL Database and Azure Synapse?
+
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 This article describes the logical server in Azure used by databases in Azure SQL Database and Azure Synapse Analytics. In the Azure portal, the logical server is named SQL server and is different to the SQL Server product. 
@@ -39,6 +41,7 @@ A logical server in SQL Database and Azure Synapse Analytics:
 - Is the versioning scope for capabilities enabled on contained resources
 - Server-level principal logins can manage all databases on a server.
 - The `master` database of a logical server contains logins similar to those in instances of SQL Server that are granted access to one or more databases on the server, and can be granted limited administrative rights. For more information, see [logins](logins-create-manage.md).
+- Creating, altering, or dropping user objects such as tables, views, or stored procedures in the `master` database on a logical server is not supported.
 - The default collation for all databases created on a server is `SQL_LATIN1_GENERAL_CP1_CI_AS`, where `LATIN1_GENERAL` is English (United States), `CP1` is code page 1252, `CI` is case-insensitive, and `AS` is accent-sensitive.
 
 [!INCLUDE [entra-id](../includes/entra-id.md)]

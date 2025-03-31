@@ -4,7 +4,7 @@ description: "Enables forcing a particular plan for a particular query in the Qu
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 03/07/2025
+ms.date: 03/19/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -59,7 +59,7 @@ Indicates whether optimized plan forcing should be disabled. *@disable_optimized
 
 #### [ @force_plan_scope = ] '*replica_group_id*'
 
-You can force plans on a secondary replica when [Query Store for secondary replicas](../performance/query-store-for-secondary-replicas.md) is enabled. Execute `sp_query_store_force_plan` and `sp_query_store_unforce_plan` on the secondary replica. The optional *@force_plan_scope* argument defaults only to the local replica (primary or secondary), but you can optionally specify a *replica_group_id* referencing [sys.query_store_replicas](../system-catalog-views/sys-query-store-replicas.md).
+You can force plans on a secondary replica when [Query Store for secondary replicas](../performance/query-store-for-secondary-replicas.md) is enabled. Execute `sp_query_store_force_plan` and `sp_query_store_unforce_plan` on the primary replica. Using the *@force_plan_scope* argument defaults to the local replica where the command is being executed, but you can specify a *replica_group_id* referencing the [sys.query_store_plan_forcing_locations](../system-catalog-views/sys-query-store-plan-forcing-locations-transact-sql.md) system catalog view.
 
 ## Return code values
 

@@ -41,7 +41,7 @@ monikerRange: ">=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-curren
 |**Priority**|**int**|The priority level of the conversation.|5|Yes|  
 |**RoleName**|**nvarchar**|The role of the instance that is acknowledging the message. This is either **initiator** or **target**.|38|No|  
 |**ServerName**|**nvarchar**|The name of the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] that is being traced.|26|No|  
-|**SPID**|**int**|The server process ID assigned by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to the process that is associated with the client.|12|Yes|  
+|**SPID**|**int**|The session ID assigned by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to the process that is associated with the client.|12|Yes|  
 |**StartTime**|**datetime**|The time at which the event started, when available.|14|Yes|  
 |**StarvationElevation**|**int**|The message was sent with a higher priority than the priority that was configured for the conversation: 0 = false, 1 = true.|33|Yes|  
 |**TransactionID**|**bigint**|The system-assigned ID of the transaction.|4|No|  

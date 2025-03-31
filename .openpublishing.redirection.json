@@ -49402,6 +49402,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "docs/sql-server/azure-arc/view-databases.md",
+      "redirect_url": "/sql/sql-server/azure-arc/view-inventory",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "docs/sql-server/azure-arc/connect-at-scale-policy.md",
       "redirect_url": "/sql/sql-server/azure-arc/automatically-connect",
       "redirect_document_id": false
@@ -53443,7 +53448,12 @@
     },
     {
       "source_path": "docs/connect/odbc/linux/connecting-with-sqlcmd.md",
-      "redirect_url": "/sql/connect/odbc/linux-mac/connecting-with-sqlcmd",
+      "redirect_url": "/sql/tools/sqlcmd/sqlcmd-utility",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/connect/odbc/linux-mac/connecting-with-sqlcmd.md",
+      "redirect_url": "/sql/tools/sqlcmd/sqlcmd-utility",
       "redirect_document_id": false
     },
     {
@@ -67189,6 +67199,11 @@
       "source_path": "docs/relational-databases/data-tier-applications/validate-a-dac-package.md",
       "redirect_url": "/sql/tools/sql-database-projects/concepts/data-tier-applications/unpack-dacpac-file",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/relational-databases/sql-server-configuration-manager.md",
+      "redirect_url": "/sql/tools/configuration-manager/sql-server-configuration-manager",
+      "redirect_document_id": true
     }
   ]
 }

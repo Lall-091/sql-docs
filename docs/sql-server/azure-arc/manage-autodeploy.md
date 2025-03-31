@@ -127,7 +127,7 @@ resources
 ## Next steps
 
 - [Configure SQL best practices assessment](assess.md)
-- [View SQL Server databases - Azure Arc](view-databases.md)
+- [View SQL Azure Arc inventory](view-inventory.md)
 - [Manage SQL Server license and billing options](manage-configuration.md)
 - [[!INCLUDE [ssazurearc](../../includes/ssazurearc.md)] and Databases activity logs](activity-logs.md)
 - [Data collected by Arc enabled SQL Server](data-collection.md)

@@ -4,7 +4,7 @@ description: An overview of the contained availability group feature of Always O
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: mathoma, randolphwest
-ms.date: 01/19/2024
+ms.date: 03/25/2025
 ms.service: sql
 ms.subservice: high-availability
 ms.topic: conceptual
@@ -138,11 +138,16 @@ If the backup location is on a network resource, all servers that host replicas 
 
 ### Resource governor
 
-Resource governor works at the instance level. Resource governor with a contained availability group isn't applicable.
+In [!INCLUDE[sssql22-md](../../../includes/sssql22-md.md)] before Cumulative Update 18, and in older versions of [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)], configuring or using resource governor on contained availability group connections is not supported.
 
-Resource governor configuration DDL commands have no effect when executed on a contained availability group connection.
+Starting with [!INCLUDE[sssql22-md](../../../includes/sssql22-md.md)] Cumulative Update 18, if you configure resource governor on an instance connection, resource consumption on either instance connections or contained availability group connections is governed as expected. If you attempt to configure resource governor on a contained availability group connection, you receive an error.
 
-If resource governor is enabled via an instance connection, it has no effect on the contained availability group connections.
+Resource governor works at the [!INCLUDE[ssde-md](../../../includes/ssde-md.md)] instance level. Resource governor configuration at the instance level doesn't propagate to availability replicas. You must configure resource governor on each instance hosting an availability replica.
+
+> [!TIP]
+> We recommend that you use the same resource governor configuration for all [!INCLUDE[ssde-md](../../../includes/ssde-md.md)] instances hosting availability replicas to ensure consistent behavior as availability group failovers occur.
+
+For more information, see [Resource governor](../../../relational-databases/resource-governor/resource-governor.md) and [Resource governor configuration examples and best practices](../../../relational-databases/resource-governor/resource-governor-walkthrough.md).
 
 ### Change data capture
 

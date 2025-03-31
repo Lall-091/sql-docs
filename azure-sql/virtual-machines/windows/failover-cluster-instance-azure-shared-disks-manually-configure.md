@@ -4,7 +4,7 @@ description: "Use Azure shared disks to create a failover cluster instance (FCI)
 author: AbdullahMSFT
 ms.author: amamun
 ms.reviewer: mathoma
-ms.date: 06/18/2024
+ms.date: 03/17/2025
 ms.service: azure-vm-sql-server
 ms.subservice: hadr
 ms.topic: how-to
@@ -29,7 +29,7 @@ To learn more, see an overview of [FCI with SQL Server on Azure VMs](failover-cl
 
 Before you complete the instructions in this article, you should already have:
 
-- An Azure subscription. Get started with a [free Azure account](https://azure.microsoft.com/free/).
+- An Azure subscription. Get started with a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
 - [Two or more prepared Azure Windows virtual machines](failover-cluster-instance-prepare-vm.md) in an availability set, or availability zones.
 - An account that has permissions to create objects on both Azure virtual machines and in Active Directory.
 - The latest version of [Azure PowerShell](/powershell/azure/install-az-ps).
@@ -38,7 +38,10 @@ Before you complete the instructions in this article, you should already have:
 
 ## Add Azure shared disk
 
-[Deploy a managed Premium SSD disk with the shared disk feature enabled](/azure/virtual-machines/disks-shared-enable#deploy-a-premium-ssd-as-a-shared-disk). Set `maxShares` to **align with the number of cluster nodes** to make the disk shareable across all FCI nodes.
+[Deploy a managed with the shared disk feature enabled](/azure/virtual-machines/disks-shared-enable#deploy-shared-disks). Set `maxShares` to **align with the number of cluster nodes** to make the disk shareable across all FCI nodes.
+Premium SSD, Premium SSDv2 and Ultra Disk are supported disk types to use with a SQL Server failover cluster instance. 
+
+Use zone-redundant storage (ZRS) whenever possible. 
 
 ## Attach shared disk to VMs
 

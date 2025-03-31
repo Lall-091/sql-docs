@@ -3,7 +3,7 @@ title: Release notes
 description: This article lists the releases of the Microsoft JDBC Driver for SQL Server. For each release version, the changes are named and described.
 author: David-Engel
 ms.author: davidengel
-ms.date: 12/11/2024
+ms.date: 03/17/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -11,6 +11,53 @@ ms.topic: conceptual
 # Release notes for the Microsoft JDBC Driver for SQL Server
 
 This article lists the releases of the _Microsoft JDBC Driver for SQL Server_. For each release version, the changes are named and described.
+
+## <a id="130"></a> 12.10
+
+Release number: 12.10.0  
+Released: March 07, 2025
+
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft JDBC Driver 12.10.0 for SQL Server (zip)](https://go.microsoft.com/fwlink/?linkid=2310306)**  
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft JDBC Driver 12.10.0 for SQL Server (tar.gz)](https://go.microsoft.com/fwlink/?linkid=2310307)**
+
+If you need to download the driver in a language other than the one detected for you, you can use these direct links.  
+For the driver in a zip file: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2310306&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2310306&clcid=0x404) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2310306&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2310306&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2310306&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2310306&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2310306&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2310306&clcid=0x412) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2310306&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2310306&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2310306&clcid=0x40a)  
+For the driver in a tar.gz file: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2310307&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2310307&clcid=0x404) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2310307&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2310307&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2310307&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2310307&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2310307&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2310307&clcid=0x412) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2310307&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2310307&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2310307&clcid=0x40a)
+
+### New features in 12.10
+
+| Feature | Details |
+| :---------- | :----------- |
+| Java 23 support | The driver is now compatible with Java Development Kit (JDK) version 23.0 in addition to JDK 21.0, 17.0, 11.0 and 1.8. |
+| Added a provision to set SQLServerBulkCopy options in PreparedStatement | In order to set SQLServerBulkCopyOptions in PreparedStatement when using `useBulkCopyForBatchInsert=true`, new connection string options and a `setBulkCopyOptions` API method were introduced. |
+| Added configurable retry logic feature, supporting both statement and connection retry | Added configurable retry logic for SQL statements, allowing rules to be defined either in the connection string or the `mssql-jdbc.properties` file. The rules specify the errors to retry, the number of retries, and the timing between retries. The retry logic ensures retries only occur when specified conditions are met, such as matching error codes and queries. |
+
+### Changes in 12.10
+
+| Change | Details |
+| :---------- | :----------- |
+| Check for null when getting DTV values | Added a check for a null value of a DTVImpl before calling DTVImpl::getValue. This check has shown performance gains in internal benchmarks. This fix changes the behavior of `getBinaryStream` and `getAsciiStream` in `ResultSet` to be compliant with JDBC API specifications. Returns: a Java input stream that delivers the database column value as a stream of one-byte ASCII characters; if the value is SQL NULL, the value returned is null. |
+| Added com.ibm.security.auth.module and com.sun.security.auth.module as option import | Set resolution=optional for these OSGi imports to prevent deployment failures caused by mandatory imports. |
+| Reverted "Execute Stored Procedures Directly" feature, as well as subsequent changes related to the feature | Reverted the feature due to issues and regressions introduced by these changes. |
+| Changed MSAL logging from FINEST to FINER | This change is made to reduce the verbosity of the logs while still providing sufficient detail for troubleshooting authentication issues. |
+| Updated dependencies | Updated dependency versions for `azure-identity`, `bouncycastle`, and `juint`. |
+
+### Fixes in 12.10
+
+| Fix | Details |
+| :---------- | :----------- |
+| Fixed a `NullPointerException` when a bulk copy operation is performed on a computed column | Fixed a `NullPointerException` when a bulk copy operation is performed on a computed column by iterating over the keyset in a map. [GitHub Issue #2606](https://github.com/microsoft/mssql-jdbc/issues/2606). |
+| Fixed the resolution of login module to optional | Fixed the issue where the JAR's manifest contained a non-optional import declaration on com.ibm.security.auth.module and com.sun.security.auth.module, which should be declared with resolution:=optional. [GitHub Issue #2608](https://github.com/microsoft/mssql-jdbc/issues/2608). |
+| Fixed the scope of `BULK_COPY_OPERATION_CACHE` | Fixed an issue where `BULK_COPY_OPERATION_CACHE` was defined at a global scope instead of the connection scope, which caused incorrect cache hits across connections and potential out of memory issues. [GitHub Issue #2585](https://github.com/microsoft/mssql-jdbc/issues/2585). |
+| Fixed issue with isIBM check method to use correct login module | Fixed the generateDefaultConfiguration method to dynamically check for the presence of com.sun.security.auth.module.Krb5LoginModule and use it if available, otherwise fall back to com.ibm.security.auth.module.Krb5LoginModule. [GitHub Issue #2576](https://github.com/microsoft/mssql-jdbc/issues/2576). |
+| Fixed issue with `SQLServerBulkCopy` from CSV with setEscapeColumnDelimerts set to true | Fixed a regression from 12.8.1 where the method readLineEscapeDelimiters in `SQLServerBulkCSVFileRecord` missed handling the case of a CSV file not having a newline character at the end of the last row. [GitHub Issue #2573](https://github.com/microsoft/mssql-jdbc/issues/2573). |
+| Fixed OffsetDateTime conversion for pre-Gregorian dates | Fixed conversion of DateTimeOffset to `OffsetDateTime` to use the `Calendar` class, to handle pre-Gregorian dates. [GitHub Issue #2565](https://github.com/microsoft/mssql-jdbc/issues/2565). |
+| Fixed getGeneratedKeys functionality for execute API | Fixed getGeneratedKeys functionality for the execute API to correctly report the update count and subsequent result sets. [GitHub Issue #2550](https://github.com/microsoft/mssql-jdbc/issues/2550). |
+| Fixed an issue where `SQLServerConnection` could enter an infinite loop | Fixed an infinite loop in `SQLServerConnection` by ensuring all statements in openStatements are closed and removed explicitly, and made bIsClosed and openStatements volatile. [GitHub Issue #2537](https://github.com/microsoft/mssql-jdbc/issues/2537). |
+| Fixed removal of question marks from columns labels (aliases) | Fix to enhance error handling in the `buildExecuteMetaData` method to better manage `SQLServerException`, ensuring that column labels (aliases) with question marks are correctly processed. [GitHub Issue #2535](https://github.com/microsoft/mssql-jdbc/issues/2535). |
+| Fixed the Kerberos authentication mechanism to provide compatibility with Java 17 and above | Fix addresses the deprecation of the `Subject.getSubject()` method by falling back to the replacement API when a deprecation exception is thrown. [GitHub Issue #2524](https://github.com/microsoft/mssql-jdbc/issues/2524). |
+
+## Previous releases
 
 ## <a id="128"></a> 12.8
 
@@ -110,8 +157,6 @@ For the driver in a tar.gz file: [Chinese (Simplified)](https://go.microsoft.com
 | Fix to properly turn off connection retries when `connectRetryCount` is set to `0` | This fixes the behavior where, even with `connectRetryCount` set to 0, the driver attempted to retry until `loginTimeout` was reached. [GitHub Issue #2232](https://github.com/microsoft/mssql-jdbc/issues/2232). [GitHub Issue #2188](https://github.com/microsoft/mssql-jdbc/issues/2188).|
 | Fix to address a `ClassLoader` leak of `ActivityCorrelator` `ThreadLocal` | Fixes an issue where, after previous driver changes to `ActivityId`, `ThreadLocal` in `ActivityCorrelator` is never being removed from the thread. |
 | Fix to execute stored procedures directly for RPC calls | RPC calls were using prior logic by being wrapped in `sp_executesql` calls; this change fixes that behavior. |
-
-## Previous releases
 
 ## <a id="126"></a> 12.6
 

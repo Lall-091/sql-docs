@@ -44,7 +44,7 @@ monikerRange: ">=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-curren
 |RoleName|**nvarchar**|The role of the conversation handle. One of:<br /><br /> -Initiator. This broker initiated the conversation.<br /><br /> -Target. This broker is the target of the conversation.|38|No|  
 |ServerName|**nvarchar**|The name of the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] being traced.|26|No|  
 |Severity|**int**|Severity number for the text in the event.|29|No|  
-|SPID|**int**|The server process ID assigned by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to the process associated with the client.|12|Yes|  
+|SPID|**int**|The session ID assigned by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to the process associated with the client.|12|Yes|  
 |StartTime|**datetime**|The time at which the event started, when available.|14|Yes|  
 |State|**int**|Indicates the location within the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] source code that produced the event. Each location that may produce this event has a different state code. A Microsoft support engineer can use this state code to find where the event was produced.|30|No|  
 |Success|**int**|The amount of time that the message has been alive. When this value is greater than or equal to the time to live, the message is dropped.|23|No|  

@@ -4,7 +4,7 @@ description: Latest release notes for SQL Server enabled by Azure Arc
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest
-ms.date: 02/28/2025
+ms.date: 03/12/2025
 ms.topic: conceptual
 ms.custom:
   - ignite-2023
@@ -22,6 +22,16 @@ This article lists:
 - Links to additional feature documentation
 
 Extension versions are cumulative. Higher extension versions include all of the updates from previous versions. A release might include internal features. If the version release notes don't describe features, then the updates were internal.
+
+## March 11, 2025
+
+**Extension version**: `1.1.2986.256`
+
+This release introduces:
+
+- SQL Server client connection summary to enable migration planning (preview).
+
+- New Arc SQL Server properties table and stored procedure in MSDB.
 
 ## February 28, 2025
 
@@ -43,7 +53,12 @@ This release introduces:
 
 **Extension version**: `1.1.2914.231`
 
-Minor bug fixes. This release does not enable or introduce new features.
+This release includes bug fixes in the high availability and disaster recovery (HADR) detection logic. Client connections to the following system databases are allowed on the free HADR replicas:
+
+- tempdb
+- msdb 
+- master
+- model
 
 ## November 12, 2024
 
@@ -251,7 +266,7 @@ For a complete list of regions, see [Supported Azure regions](overview.md#suppor
 
 For information about server monitoring capabilities, review [Automatically connect your SQL Server to Azure Arc](automatically-connect.md).
 
-For information about database status and inventory capabilities, review [View Azure Arc-enabled SQL Server databases](view-databases.md).
+For information about database status and inventory capabilities, review [View Azure Arc-enabled inventory](view-inventory.md).
 
 Creates a server role and a database role, maps logins, and grants permissions. For details, see [Roles created by Azure extension for SQL Server installation](permissions-granted-agent-extension.md).
 
@@ -404,7 +419,7 @@ With SQL Server enabled by Azure Arc, you can run the agent extension service wi
 ### Azure extension for SQL Server
 
 - [Configure best practices assessment for SQL Server enabled by Azure Arc](assess.md) (BPA) on Arc-enabled SQL Server requires Software Assurance or [Configure SQL Server enabled by Azure Arc](manage-configuration.md).
-- [View Azure Arc-enabled SQL Server databases](view-databases.md) on Arc-enabled SQL Server requires Software Assurance or [Configure SQL Server enabled by Azure Arc](manage-configuration.md).
+- [View Azure Arc-enabled inventory](view-inventory.md) on Arc-enabled SQL Server requires Software Assurance or [Configure SQL Server enabled by Azure Arc](manage-configuration.md).
 
 ## January 17, 2023
 
@@ -431,5 +446,5 @@ With SQL Server enabled by Azure Arc, you can run the agent extension service wi
 
 ### Azure extension for SQL Server
 
-- Support to view databases as a resource added for [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)], and [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)]. Review [View Azure Arc-enabled SQL Server databases](view-databases.md).
+- Support to view databases as a resource added for [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)], and [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)]. Review [View Azure Arc-enabled inventory](view-inventory.md).
 - Support for Web and Express editions.

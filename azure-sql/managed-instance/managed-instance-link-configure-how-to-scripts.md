@@ -41,7 +41,7 @@ Use the instructions in this article to manually set up the link between SQL Ser
 
 To replicate your databases, you need the following prerequisites: 
 
-- An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/free/).
+- An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
 - [Supported version of SQL Server](managed-instance-link-feature-overview.md#prerequisites) with the required service update installed.
 - Azure SQL Managed Instance. [Get started](instance-create-quickstart.md) if you don't have it. 
 - PowerShell module [Az.SQL 6.0.0 or higher](https://www.powershellgallery.com/packages/Az.Sql), or [Azure CLI 2.67.0 or higher](/cli/azure/install-azure-cli). Or preferably, use [Azure Cloud Shell](/azure/cloud-shell/overview) online from the web browser to run the commands, because it's always updated with the latest module versions.

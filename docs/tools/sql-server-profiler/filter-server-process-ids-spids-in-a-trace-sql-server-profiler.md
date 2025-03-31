@@ -1,7 +1,7 @@
 ---
-title: Filter Server Process IDs (SPIDs) in a Trace File
+title: Filter Session IDs in a Trace File
 titleSuffix: SQL Server Profiler
-description: Learn how to limit trace output in SQL Server Profiler by applying a filter on the Server Process ID (SPID).
+description: Learn how to limit trace output in SQL Server Profiler by applying a filter on the Session ID (SPID).
 author: markingmyname
 ms.author: maghan
 ms.date: 03/01/2017
@@ -10,9 +10,9 @@ ms.subservice: profiler
 ms.topic: how-to
 ---
 
-# Filter Server Process IDs (SPIDs) in a Trace (SQL Server Profiler)
+# Filter session IDs in a trace (SQL Server Profiler)
  [!INCLUDE [SQL Server Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdbmi.md)]
-  This topic describes how to filter server process identifiers (SPIDs) in a trace by using [!INCLUDE[ssSqlProfiler](../../includes/sssqlprofiler-md.md)].  
+  This topic describes how to filter session identifiers (SPIDs) in a trace by using [!INCLUDE[ssSqlProfiler](../../includes/sssqlprofiler-md.md)].  
   
 ### To filter system IDs in a trace  
   
@@ -31,7 +31,7 @@ ms.topic: how-to
   
 5.  On the **Events Selection** tab, click the **SPID** column heading to launch the **Edit Filter** dialog box. You can also right-click the column heading and choose **Edit Column Filter**. If the **SPID** column does not appear, check the **Show all columns** box.  
   
-6.  In the **Edit Filter** dialog box, expand the appropriate comparison operator, and enter a SPID as a value for the comparison.  
+6.  In the **Edit Filter** dialog box, expand the appropriate comparison operator, and enter a session ID as a value for the comparison.  
   
 ## See Also  
  [SQL Server Profiler](../../tools/sql-server-profiler/sql-server-profiler.md)  

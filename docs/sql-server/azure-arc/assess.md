@@ -219,4 +219,4 @@ See the [troubleshooting guide](troubleshoot-assessment.md).
 
 - [Assessment API: 500 rules](https://github.com/microsoft/sql-server-samples/blob/master/samples/manage/sql-assessment-api/DefaultRuleset.csv)
 - [Microsoft Unified](https://www.microsoft.com/en-us/microsoft-unified)
-- [View SQL Server databases](view-databases.md)
+- [View inventory](view-inventory.md)

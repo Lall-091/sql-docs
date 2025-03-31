@@ -31,7 +31,7 @@ In this quickstart, you'll use [.NET](https://dotnet.microsoft.com) and C# code 
 
 To complete this quickstart, you need:
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [.NET SDK for your operating system](https://dotnet.microsoft.com/download) installed.
 - A database where you can run your query.
 

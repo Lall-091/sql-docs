@@ -109,7 +109,7 @@ The following example shows how to manually register your [!INCLUDE [ssnoversion
    - [Create a Microsoft Customer Agreement subscription](/azure/cost-management-billing/manage/create-subscription)
    - [Create an Enterprise Agreement subscription](/azure/cost-management-billing/manage/create-enterprise-subscription)
    - [Create an Azure account with pay-as-you-go pricing](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/)
-   - [Create a free Azure account](https://azure.microsoft.com/free/)
+   - [Create a free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount)
 
 1. The user creating disconnected Arc-enabled [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] resources must have the following permissions:
 
