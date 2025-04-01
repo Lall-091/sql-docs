@@ -47,6 +47,24 @@ To configure the Data Sync Agent so you can sync data with one or more SQL Serve
 
 <a id="agent-faq"></a>
 
+## Support for SQL Server on-premises versions
+
+Only the following versions of SQL Server on-premises can be part of a sync group:
+
+- SQL Server 2008.
+
+- SQL Server 2008 R2.
+
+- SQL Server 2012.
+
+- SQL Server 2016.
+
+- SQL Server 2017 on Windows.
+
+- SQL Server 2019 on Windows.
+
+- SQL Server 2022 on Windows.
+
 ## Data Sync Agent FAQ
 
 ### Why do I need a client agent
