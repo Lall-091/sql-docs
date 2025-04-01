@@ -211,29 +211,30 @@ To learn more about Microsoft Entra ID, read [How Azure subscriptions are relate
 `3019` | `ErrorHttpReadData` | `Cannot read response data due to network error.`
 `3076` | `ErrorHttpResourceNotFound` | `The server responded 404, because the key name was not found. Make sure the key name exists in your vault.`
 `3077` | `ErrorHttpOperationForbidden` | `The server responded 403, because the user doesn't have proper permission to perform the action. Make sure you have the permission for the specified operation. At minimum, the connector requires 'get, list, wrapKey, unwrapKey' permissions to function properly.`
-`3100` | `ErrorHttpCreateHttpClientOutOfMemory              ` | `Cannot create a HttpClient for AKV operation due to out of memory.`
-`3101` | `ErrorHttpOpenSession                              ` | `Cannot open a Http session due to network error.`
-`3102` | `ErrorHttpConnectSession                           ` | `Cannot connect a Http session due to network error.`
-`3103` | `ErrorHttpAttemptConnect                           ` | `Cannot attempt a connect due to network error.`
-`3104` | `ErrorHttpOpenRequest                              ` | `Cannot open a request due to network error.`
-`3105` | `ErrorHttpAddRequestHeader                         ` | `Cannot add request header.`
-`3106` | `ErrorHttpSendRequest                              ` | `Cannot send a request due to network error.`
-`3107` | `ErrorHttpGetResponseCode                          ` | `Cannot get a response code due to network error.`
-`3108` | `ErrorHttpResponseCodeUnauthorized                 ` | `Server responded 401 for the request. Make sure the client Id and secret are correct, and the credential string is a concatenation of AAD client Id and secret without hyphens.`
-`3109` | `ErrorHttpResponseCodeThrottled                    ` | `Server has throttled the request.`
-`3110` | `ErrorHttpResponseCodeClientError                   ` | `The request is invalid. This usually means the key name is invalid or contains invalid characters.`
-`3111` | `ErrorHttpResponseCodeServerError                  ` | `Server responded a response code between 500 and 600.`
-`3112` | `ErrorHttpResourceNotFound                         ` | `The server responded 404, because the key name was not found. Please make sure the key name exists in your vault.`
-`3113` | `ErrorHttpOperationForbidden                        ` | `The server responded 403, because the user does not have proper permission to perform the action. Please make sure you have the permission for the specified operation. At minimum,'get, wrapKey, unwrapKey' permissions are required.`
-`3114` | `ErrorHttpQueryHeader                              ` | `Cannot query for response header.`
-`3115` | `ErrorHttpQueryHeaderOutOfMemoryCopyHeader         ` | `Cannot copy the response header due to out of memory.`
-`3116` | `ErrorHttpQueryHeaderOutOfMemoryReallocBuffer      ` | `Cannot query the response header due to out of memory when reallocating a buffer.`
-`3117` | `ErrorHttpQueryHeaderNotFound                      ` | `Cannot find the query header in the response.`
-`3118` | `ErrorHttpQueryHeaderUpdateBufferLength            ` | `Cannot update the buffer length when querying the response header.`
-`3119` | `ErrorHttpReadData                                 ` | `Cannot read response data due to network error.`
-`3120` | `ErrorHttpGetResponseOutOfMemoryCreateTempBuffer   ` | `Cannot get response body due to out of memory when creating a temp buffer.`
-`3121` | `ErrorHttpGetResponseOutOfMemoryGetResultString    ` | `Cannot get response body due to out of memory when get result string.`
-`3122` | `ErrorHttpGetResponseOutOfMemoryAppendResponse     ` | `Cannot get response body due to out of memory when appending response.`
+`3100` | `ErrorHttpCreateHttpClientOutOfMemory` | `Cannot create a HttpClient for AKV operation due to out of memory.`
+`3101` | `ErrorHttpOpenSession` | `Cannot open a Http session due to network error.`
+`3102` | `ErrorHttpConnectSession` | `Cannot connect a Http session due to network error.`
+`3103` | `ErrorHttpAttemptConnect` | `Cannot attempt a connect due to network error.`
+`3104` | `ErrorHttpOpenRequest` | `Cannot open a request due to network error.`
+`3105` | `ErrorHttpAddRequestHeader` | `Cannot add request header.`
+`3106` | `ErrorHttpSendRequest` | `Cannot send a request due to network error.`
+`3107` | `ErrorHttpGetResponseCode` | `Cannot get a response code due to network error.`
+`3108` | `ErrorHttpResponseCodeUnauthorized` | `Server responded 401 for the request. Make sure the client Id and secret are correct, and the credential string is a concatenation of AAD client Id and secret without hyphens.`
+`3109` | `ErrorHttpResponseCodeThrottled` | `Server has throttled the request.`
+`3110` | `ErrorHttpResponseCodeClientError` | `The request is invalid. This usually means the key name is invalid or contains invalid characters.`
+`3111` | `ErrorHttpResponseCodeServerError` | `Server responded a response code between 500 and 600.`
+`3112` | `ErrorHttpResourceNotFound` | `The server responded 404, because the key name was not found. Please make sure the key name exists in your vault.`
+`3113` | `ErrorHttpOperationForbidden` | `The server responded 403, because the user does not have proper permission to perform the action. Please make sure you have the permission for the specified operation. At minimum,'get, wrapKey, unwrapKey' permissions are required.`
+`3114` | `ErrorHttpQueryHeader` | `Cannot query for response header.`
+`3115` | `ErrorHttpQueryHeaderOutOfMemoryCopyHeader` | `Cannot copy the response header due to out of memory.`
+`3116` | `ErrorHttpQueryHeaderOutOfMemoryReallocBuffer` | `Cannot query the response header due to out of memory when reallocating a buffer.`
+`3117` | `ErrorHttpQueryHeaderNotFound` | `Cannot find the query header in the response.`
+`3118` | `ErrorHttpQueryHeaderUpdateBufferLength` | `Cannot update the buffer length when querying the response header.`
+`3119` | `ErrorHttpReadData` | `Cannot read response data due to network error.`
+`3120` | `ErrorHttpGetResponseOutOfMemoryCreateTempBuffer` | `Cannot get response body due to out of memory when creating a temp buffer.`
+`3121` | `ErrorHttpGetResponseOutOfMemoryGetResultString` | `Cannot get response body due to out of memory when get result string.`
+`3122` | `ErrorHttpGetResponseOutOfMemoryAppendResponse` | `Cannot get response body due to out of memory when appending response.`
+`3128` | `ErrorHttpBadRequest` | `The secret and client id are correct but in the wrong format.`
 `3200` | `ErrorGetAADValuesOutOfMemoryConcatPath` | `Cannot get Azure Active Directory challenge header values due to out of memory when concatenating the path.`
 `3201` | `ErrorGetAADDomainUrlStartPosition` | `Cannot find the starting position for Azure Active Directory domain Url in malformatted response challenge header.`
 `3202` | `ErrorGetAADDomainUrlStopPosition` | `Cannot find the ending position for Azure Active Directory domain Url in malformatted response challenge header.`
@@ -314,7 +315,7 @@ To learn more about Microsoft Entra ID, read [How Azure subscriptions are relate
 `3819` | `ErrorPEMCertAuthParamsCreateRequestBody` | `Error creating request body from PEM private key for authentication with AAD.`
 `3820` | `ErrorLegacyPrivateKeyAuthParamsSignAlg` | `Error getting RSA signing algorithm for Legacy private key authentication with AAD.`
 `3821` | `ErrorLegacyPrivateKeyAuthParamsImportForSign` | `Error importing Legacy private key for RSA signing for authentication with AAD.`
-`3822` | `ErrorLegacyPrivateKeyAuthParamsCreateRequestBody       ` | `Error creating request body from Legacy private key for authentication with AAD.`
+`3822` | `ErrorLegacyPrivateKeyAuthParamsCreateRequestBody` | `Error creating request body from Legacy private key for authentication with AAD.`
 `3900` | `ErrorAKVDoesNotExist` | `Error internet name not resolved. This typically indicates the Azure Key Vault is deleted.`
 `4000` | `ErrorCreateKeyVaultRetryManagerOutOfMemory` | `Cannot create a RetryManager for AKV operation due to out of memory.`
 

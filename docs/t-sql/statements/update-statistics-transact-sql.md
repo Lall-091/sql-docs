@@ -246,6 +246,7 @@ For more information about when to use `UPDATE STATISTICS`, see [When to update 
 ### Limitations
 
 - Updating statistics isn't supported on external tables. To update statistics on an external table, drop and re-create the statistics.
+- Updating the statistics created automatically on each columnstore index isn't supported. Attempting this results in error 35337: `UPDATE STATISTICS failed because statistics cannot be updated on a columnstore index. UPDATE STATISTICS is valid only when used with the STATS_STREAM option.`
 - The `MAXDOP` option isn't compatible with `STATS_STREAM`, `ROWCOUNT` and `PAGECOUNT` options.
 - The `MAXDOP` option is limited by the Resource Governor workload group `MAX_DOP` setting, if used.
 

@@ -4,8 +4,8 @@ titleSuffix: Azure SQL Database & Azure Synapse Analytics
 description: This article provides an overview of how to set up Auditing and storing those audits to an Azure storage account, Log Analytics workspace, or Event Hubs destination.
 author: sravanisaluru
 ms.author: srsaluru
-ms.reviewer: mathoma, vanto
-ms.date: 09/17/2024
+ms.reviewer: mathoma, vanto, randolphwest
+ms.date: 04/01/2025
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
@@ -53,8 +53,10 @@ To configure writing audit logs to a storage account, select **Storage** when yo
 
 :::image type="content" source="media/auditing-setup/auditing-select-storage.png" alt-text="Screenshot that shows storage account authentication types for Auditing." lightbox="media/auditing-setup/auditing-select-storage.png":::
 
-> [!NOTE]  
-> If you are deploying from the Azure portal, make sure that the storage account is in the same region as your database and server. If you are deploying through other methods, the storage account can be in any region.
+If you're deploying from the Azure portal, make sure that the storage account is in the same region as your database and server. If you're deploying through other methods, the storage account can be in any region.
+
+> [!WARNING]  
+> For storage authentication, use Managed Identity. Storage Access Keys pose a security risk because if they are compromised, unauthorized individuals can gain access to your storage account, potentially reading, writing, or deleting your data. To mitigate these risks, it's essential to rotate your keys regularly and use Azure Key Vault to manage and rotate your keys securely.
 
 - The default value for retention period is 0 (unlimited retention). You can change this value by moving the **Retention (Days)** slider in **Advanced properties** when configuring the storage account for auditing.
   - If you change retention period from 0 (unlimited retention) to any other value, the retention will only apply to logs written after the retention value was changed. Logs written during the period when retention days were set to unlimited retention are preserved, even after retention is enabled.
@@ -72,15 +74,11 @@ To configure writing audit logs to an event hub, select **Event Hub**. Select th
 :::image type="content" source="media/auditing-setup/auditing-select-event-hub.png" alt-text="Screenshot showing the Event hub." lightbox="media/auditing-setup/auditing-select-event-hub.png":::
 
 > [!NOTE]  
-> If you are using multiple targets like storage account, log analytics, or event hub, make sure you have permissions for all the targets else saving audit configuration would fail as it will try to save the settings for all targets.
-
-## Next steps
-
-> [!div class="nextstepaction"]
-> [Use Auditing to analyze audit logs and reports](auditing-analyze-audit-logs.md)
+> If you're using multiple targets like storage account, log analytics, or event hub, make sure you have permissions for all the targets else saving audit configuration would fail as it will try to save the settings for all targets.
 
 ## Related content
 
+- [Use Auditing to analyze audit logs and reports](auditing-analyze-audit-logs.md)
 - [Auditing for Azure SQL Database and Azure Synapse Analytics](auditing-overview.md)
 - [What's New in Azure SQL Auditing](/Shows/Data-Exposed/Whats-New-in-Azure-SQL-Auditing)
 - [Get started with Azure SQL Managed Instance auditing](../managed-instance/auditing-configure.md)

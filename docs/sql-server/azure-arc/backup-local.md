@@ -45,6 +45,9 @@ You can also run backups on a **default** schedule:
 - Differential backups: every 24 hours
 - Transaction log backups: every 5 minutes
 
+> [!WARNING]  
+> Dropping a database immediately deletes the automated backups for that database, irrespective of the retention period.
+
 ## Backup schedule level
 
 You can schedule backups at
