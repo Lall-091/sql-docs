@@ -30,7 +30,7 @@ REGEXP_LIKE
 ```
 
 > [!NOTE]
-> **REGEXP_LIKE** is available only under compatibility level 170 and above. If the database compatibility level is lower than 170, **REGEXP_LIKE** is not available. Other [regular expression scalar functions](regular-expressions-functions-transact-sql.md) are available at all compatibility levels.
+> **REGEXP_LIKE** is available only with compatibility level 170 and above. If the database compatibility level is lower than 170, **REGEXP_LIKE** is not available. Other [regular expression scalar functions](regular-expressions-functions-transact-sql.md) are available at all compatibility levels.
 >
 > You can check compatibility level in the `sys.databases` view or in database properties. You can change the compatibility level of a database with the following command:
 >
