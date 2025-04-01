@@ -74,8 +74,6 @@ Some example scenarios for using Copilot in Azure SQL Database include:
   ```copilot-prompt
   How can I tune that high CPU query?
   ```
-  
-  Copilot understands that this prompt refers to the query identified earlier, and provides a new index suggestion:
 
 ## Example prompts
 
