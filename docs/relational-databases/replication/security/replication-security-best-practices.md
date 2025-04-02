@@ -59,8 +59,34 @@ helpviewer_keywords:
   
     -   Ensure that a given agent (for example the Distribution Agent for a subscription) makes connections under the same account at each computer.  
   
-    -   In situations that require [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] Authentication, access to UNC snapshot shares is often not available (for example access might be blocked by a firewall). In this case, you can transfer the snapshot to Subscribers through file transfer protocol (FTP). For more information, see [Transfer Snapshots Through FTP](../../../relational-databases/replication//publish/deliver-a-snapshot-through-ftp.md).  
-  
+    -   In situations that require [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] Authentication, access to UNC snapshot shares is often not available (for example access might be blocked by a firewall). In this case, you can transfer the snapshot to Subscribers through file transfer protocol (FTP). For more information, see [Transfer Snapshots Through FTP](../../../relational-databases/replication//publish/deliver-a-snapshot-through-ftp.md).
+
+## Improve security posture with database master key
+
+When using SQL Server authentication for replication, secrets that you provide when you configure replication are stored within SQL Server — specifically, in the distribution database and, for pull subscriptions, also in the subscriber database. 
+
+To enhance the security posture for replication, **before you *start* to configure replication**: 
+
+- Create a [database master key (DMK)](../../../t-sql/statements/create-master-key-transact-sql.md) in the distribution database of the server that hosts the Distributor. 
+- For *pull subscriptions*, also create a DMK in the subscriber database. 
+
+If replication was created before the DMK, first create the DMK, and then update replication secrets by updating passwords for replication jobs. You can update the job with the same password, or you can use a new password. 
+
+To update replication secrets, use one of the following relevant stored procedures to update passwords for replication jobs:
+
+- [sp_changelogreader_agent](../../system-stored-procedures/sp-changelogreader-agent-transact-sql.md)
+- [sp_changesubscriber](../../system-stored-procedures/sp-changesubscriber-transact-sql.md)
+- [sp_changedistpublisher](../../system-stored-procedures/sp-changedistpublisher-transact-sql.md)
+- [sp_changepublication_snapshot](../../system-stored-procedures/sp-changepublication-snapshot-transact-sql.md)
+
+
+Configuring transactional replication without a DMK can result in SQL Server warning `14130` on: 
+
+- Azure SQL Managed Instance
+- SQL Server 2022 [CU18](/troubleshoot/sql/releases/sqlserver-2022/cumulativeupdate18) and later
+- SQL Server 2019 [CU31](/troubleshoot/sql/releases/sqlserver-2019/cumulativeupdate31) and later
+
+
 ## Related content
 
 - [Enable Encrypted Connections to the Database Engine &#40;SQL Server Configuration Manager&#41;](../../../database-engine/configure-windows/configure-sql-server-encryption.md)
