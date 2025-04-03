@@ -1,6 +1,6 @@
 ---
-title: Microsoft Copilot in Azure SQL Database Overview
-description: "Learn more about the possibilities of Microsoft Copilot in Azure SQL Databases for administrators and developers."
+title: Microsoft Copilot in Azure with Azure SQL Database overview
+description: "Learn more about the possibilities of Microsoft Copilot in Azure with Azure SQL Database for administrators and developers."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: wiassaf, kendalv
@@ -15,11 +15,11 @@ ms.custom:
 monikerRange: "=azuresql || =azuresql-db"
 ---
 
-# What is Microsoft Copilot in Azure SQL Database
+# Microsoft Copilot in Azure with Azure SQL Database
 
 [!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Copilot in Azure SQL Database is a [capability](/azure/copilot/capabilities#perform-tasks) of the [Microsoft Copilot in Azure](/azure/copilot/overview) experience, enhancing the management and operation of SQL-dependent applications. It provides a conversational interface for users to interact with their databases, allowing them to ask questions and receive relevant answers based on the context of their database. It improves productivity in the Azure portal by offering self-help for database administration. This makes it easier for developers and database administrators to manage their databases, troubleshoot issues, and optimize performance.
+Microsoft Copilot in Azure SQL Database is a [capability](/azure/copilot/capabilities#perform-tasks) of the [Microsoft Copilot in Azure](/azure/copilot/overview) experience, enhancing the management and operation of SQL-dependent applications. It provides a conversational interface for users to interact with their databases, allowing them to ask questions and receive relevant answers based on the context of their database. It improves productivity in the Azure portal by offering self-help for database administration. This makes it easier for developers and database administrators to manage their databases, troubleshoot issues, and optimize performance.
 
 ## How Copilot works in Azure SQL Database
 
