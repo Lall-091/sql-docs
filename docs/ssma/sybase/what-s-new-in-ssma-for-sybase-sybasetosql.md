@@ -1,10 +1,10 @@
 ---
-title: "What's new in SSMA for SAP ASE (SybaseToSQL)"
+title: "What's New in SSMA for SAP ASE (SybaseToSQL)"
 description: Find out about changes to SQL Server Migration Assistant (SSMA) for Sybase (SybaseToSQL) for each release.
 author: cpichuka
 ms.author: cpichuka
 ms.reviewer: randolphwest
-ms.date: 10/16/2024
+ms.date: 04/01/2025
 ms.service: sql
 ms.subservice: ssma
 ms.topic: whats-new
@@ -18,6 +18,10 @@ ms.custom:
 This article lists SQL Server Migration Assistant (SSMA) for SAP ASE (formerly SSMA for Sybase) changes in each release.
 
 [!INCLUDE [entra-id](../../includes/entra-id-hard-coded.md)]
+
+## SSMA v10.1
+
+The v10.1 release of SSMA for MySQL contains minor performance improvements and bug fixes.
 
 ## SSMA v10.0
 

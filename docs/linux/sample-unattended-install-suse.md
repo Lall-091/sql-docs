@@ -4,7 +4,7 @@ titleSuffix: SQL Server
 description: Use a sample bash script to install SQL Server on SUSE Linux Enterprise Server (SLES) without interactive input.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/18/2024
+ms.date: 03/28/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -31,7 +31,7 @@ This sample bash script installs [!INCLUDE [ssnoversion-md](../includes/ssnovers
 
 ## Sample script
 
-This example installs [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] on SLES v15 SP3. If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] or SLES, change the Microsoft repository paths accordingly.
+This example installs [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] on SLES v15 SP6. If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] or SLES, change the Microsoft repository paths accordingly.
 
 Save the sample script to a file and then to customize it. You must replace the variable values in the script. You can also set any of the scripting variables as environment variables, as long as you remove them from the script file.
 
@@ -74,7 +74,7 @@ sudo zypper addrepo -fc https://packages.microsoft.com/config/sles/15/mssql-serv
 sudo zypper addrepo -fc https://packages.microsoft.com/config/sles/15/prod.repo
 sudo zypper --gpg-auto-import-keys refresh
 
-#Add the SLES v15 SP3 SDK to obtain libsss_nss_idmap0
+#Add the SLES v15 SP6 SDK to obtain libsss_nss_idmap0
 sudo SUSEConnect -p sle-sdk/15.3/x86_64
 
 echo Installing SQL Server...

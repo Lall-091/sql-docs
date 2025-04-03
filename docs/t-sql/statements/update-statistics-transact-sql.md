@@ -160,7 +160,7 @@ When `ON`, the statistics will retain the set sampling percentage for subsequent
 
 If `AUTO_UPDATE_STATISTICS` is executed, it uses the persisted sampling percentage if available, or use default sampling percentage if not. `RESAMPLE` behavior isn't affected by this option.
 
-If the table is truncated, all statistics built on the truncated heap or B-tree (HoBT) will revert to using the default sampling percentage.
+If the table is truncated, all statistics built on the truncated heap or B-tree (HoBT) will revert to using the default sampling percentage. Similarly, if statistics are updated on an object with no rows, it reverts to using the default sampling percentage even if `PERSIST_SAMPLE_PERCENT` was previously configured.
 
 > [!NOTE]  
 > In [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], when rebuilding an index which previously had statistics updated with `PERSIST_SAMPLE_PERCENT`, the persisted sample percent is reset back to default. Starting with [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] SP2 CU17, [!INCLUDE [ssSQL17](../../includes/sssql17-md.md)] CU26, and [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] CU10, the persisted sample percent is kept even when rebuilding an index.
@@ -246,6 +246,7 @@ For more information about when to use `UPDATE STATISTICS`, see [When to update 
 ### Limitations
 
 - Updating statistics isn't supported on external tables. To update statistics on an external table, drop and re-create the statistics.
+- Updating the statistics created automatically on each columnstore index isn't supported. Attempting this results in error 35337: `UPDATE STATISTICS failed because statistics cannot be updated on a columnstore index. UPDATE STATISTICS is valid only when used with the STATS_STREAM option.`
 - The `MAXDOP` option isn't compatible with `STATS_STREAM`, `ROWCOUNT` and `PAGECOUNT` options.
 - The `MAXDOP` option is limited by the Resource Governor workload group `MAX_DOP` setting, if used.
 

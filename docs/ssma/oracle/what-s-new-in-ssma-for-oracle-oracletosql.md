@@ -1,10 +1,10 @@
 ---
-title: "What's new in SSMA for Oracle (OracleToSQL)"
+title: "What's New in SSMA for Oracle (OracleToSQL)"
 description: Find out about changes to SQL Server Migration Assistant (SSMA) for Oracle (OracleToSQL) for each release.
 author: cpichuka
 ms.author: cpichuka
 ms.reviewer: randolphwest
-ms.date: 10/16/2024
+ms.date: 04/01/2025
 ms.service: sql
 ms.subservice: ssma
 ms.topic: whats-new
@@ -18,6 +18,13 @@ ms.custom:
 This article lists SQL Server Migration Assistant (SSMA) for Oracle changes in each release.
 
 [!INCLUDE [entra-id](../../includes/entra-id-hard-coded.md)]
+
+## SSMA v10.1
+
+The v10.1 release of SSMA for Oracle contains the following changes:
+
+- Detection of CHAR length in Oracle VARCHAR2 datatype
+- Enhanced monitoring experience for migrations using Azure Data Migration Service (DMS)
 
 ## SSMA v10.0
 

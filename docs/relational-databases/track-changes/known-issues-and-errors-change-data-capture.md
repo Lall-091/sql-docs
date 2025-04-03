@@ -72,7 +72,7 @@ When enabling CDC, we recommend using the resumable index option. Resumable inde
 
 ## Online DDL statements are unsupported
 
-[Online DDL statements](../../t-sql/statements/alter-table-transact-sql.md#with--online--on--off-as-applies-to-altering-a-column) are unsupported when change change data capture is enabled on a database. 
+[ALTER TABLE online DDL statements](../../t-sql/statements/alter-table-transact-sql.md#with--online--on--off-as-applies-to-altering-a-column) are unsupported when change change data capture is enabled on a database. 
 
 ## Enabling CDC fails if schema or user named `cdc` already exists
 

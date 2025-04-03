@@ -4,7 +4,7 @@ titleSuffix: SQL Server Language Extensions
 description: Learn how to install SQL Server Java Language Extension on Red Hat, Ubuntu, and SUSE Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/18/2024
+ms.date: 03/28/2025
 ms.service: sql
 ms.subservice: language-extensions
 ms.topic: how-to
@@ -82,7 +82,7 @@ https://github.com/microsoft/sql-server-language-extensions/tree/main/language-e
 You can install Language Extensions for Java on Red Hat using the following command.
 
 > [!TIP]  
-> If possible, run `yum clean all` to refresh packages on the system prior to installation.
+> If possible, run `yum clean all` to refresh packages on the system before installation.
 
 ```bash
 # Install as root or sudo
@@ -96,7 +96,7 @@ sudo yum install mssql-server-extensibility-java
 You can install Language Extensions for Java on Ubuntu using the following command.
 
 > [!TIP]  
-> If possible, run `apt-get update` to refresh packages on the system prior to installation. Additionally, some docker images of Ubuntu might not have the https apt transport option. To install it, use `apt-get install apt-transport-https`.
+> If possible, run `apt-get update` to refresh packages on the system before installation. Additionally, some docker images of Ubuntu might not have the https apt transport option. To install it, use `apt-get install apt-transport-https`.
 
 ```bash
 # Install as root or sudo

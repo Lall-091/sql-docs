@@ -193,7 +193,7 @@ Optional. Only for delimited text data types.
 
 Only serverless SQL pools in Azure Synapse Analytics support `PARSER_VERSION`.
 
-Serverless SQL pools do not support the `DATE_FORMAT` option. 
+Serverless SQL pools don't support the `DATE_FORMAT` option. 
 
 ### DATA_COMPRESSION = *data_compression_method*
 
@@ -261,7 +261,10 @@ Examples:
 
 `STRING_DELIMITER = *string_delimiter*`
 
-Specifies the field terminator for data of type string in the text-delimited file. The string delimiter is one or more characters in length and is enclosed with single quotes. The default is the empty string "". For guaranteed support, we recommend using one or more ASCII characters.
+Specifies a character that encloses the textual values in the text-delimited file. The default is the empty string "". The value of `STRING_DELIMITER` is functionally equivalent to the [FIELDQUOTE](../functions/openrowset-transact-sql.md#fieldquote--field_quote) option in the `OPENROWSET` function.
+
+> [!NOTE] 
+> Hadoop tables in Synapse dedicated SQL pools enable you to specify one or more characters in STRING_DELIMITER. In serverless SQL pool, you can use only one character.
 
 Examples:
 
@@ -273,7 +276,7 @@ Examples:
 
 - `STRING_DELIMITER = ꞌ,ꞌ`
 
-- `STRING_DELIMITER = '0x7E0x7E'` (Two tildes, for example, `~~`)
+- `STRING_DELIMITER = '0x7E0x7E'` (Two tildes, for example, `~~`) - supported in dedicated SQL pool.
 
 #### FIRST_ROW = *first_row_int*
 
@@ -303,7 +306,7 @@ When DATE_FORMAT isn't specified or is the empty string, PolyBase uses the follo
 - **time**: `'HH:mm:ss'`
 
 > [!IMPORTANT]  
-> Specifying custom `DATE_FORMAT` will override all default type formats. This means that you will need to have the same date formats in all datetime, date, and time cells in your files. With the overridden `DATE_FORMAT` you cannot have date and time values in different format.
+> Specifying custom `DATE_FORMAT` overrides all default type formats. This means that you will need to have the same date formats in all datetime, date, and time cells in your files. With the overridden `DATE_FORMAT`, you cannot have date and time values in different format.
 
 **Example date formats** are in the following table:
 
@@ -317,16 +320,16 @@ Notes about the table:
 
 |Date Type|Example|Description|
 |---------------|-------------|-----------------|
-|**datetime**|DATE_FORMAT = `yyyy-MM-dd HH:mm:ss.fff`|In addition to year, month and day, this date format includes 00-24 hours, 00-59 minutes, 00-59 seconds, and 3 digits for milliseconds.|
-|**datetime**|DATE_FORMAT = `yyyy-MM-dd hh:mm:ss.ffftt`|In addition to year, month and day, this date format includes 00-12 hours, 00-59 minutes, 00-59 seconds, 3 digits for milliseconds, and AM, am, PM, or pm. |
+|**datetime**|DATE_FORMAT = `yyyy-MM-dd HH:mm:ss.fff`|In addition to year, month and day, this date format includes 00-24 hours, 00-59 minutes, 00-59 seconds, and three digits for milliseconds.|
+|**datetime**|DATE_FORMAT = `yyyy-MM-dd hh:mm:ss.ffftt`|In addition to year, month and day, this date format includes 00-12 hours, 00-59 minutes, 00-59 seconds, three digits for milliseconds, and `AM`, `am`, `PM`, or `pm`. |
 |**smalldatetime**|DATE_FORMAT =  `yyyy-MM-dd HH:mm`|In addition to year, month, and day, this date format includes 00-23 hours, 00-59 minutes.|
-|**smalldatetime**|DATE_FORMAT =  `yyyy-MM-dd hh:mmtt`|In addition to year, month, and day, this date format includes 00-11 hours, 00-59 minutes, no seconds, and AM, am, PM, or pm.|
+|**smalldatetime**|DATE_FORMAT =  `yyyy-MM-dd hh:mmtt`|In addition to year, month, and day, this date format includes 00-11 hours, 00-59 minutes, no seconds, and `AM`, `am`, `PM`, or `pm`.|
 |**date**|DATE_FORMAT =  `yyyy-MM-dd`|Year, month, and day. No time element is included.|
 |**date**|DATE_FORMAT = `yyyy-MMM-dd`|Year, month, and day. When month is specified with `MMM`, the input value is one or the strings, `Jan`, `Feb`, `Mar`, `Apr`, `May`, `Jun`, `Jul`, `Aug`, `Sep`, `Oct`, `Nov`, or `Dec`.|
-|**datetime2**|DATE_FORMAT = `yyyy-MM-dd HH:mm:ss.fffffff`|In addition to year, month, and day, this date format includes 00-23 hours, 00-59 minutes, 00-59 seconds, and 7 digits for milliseconds.|
-|**datetime2**|DATE_FORMAT = `yyyy-MM-dd hh:mm:ss.ffffffftt`|In addition to year, month, and day, this date format includes 00-11 hours, 00-59 minutes, 00-59 seconds, 7 digits for milliseconds, and AM, am, PM, or pm.|
+|**datetime2**|DATE_FORMAT = `yyyy-MM-dd HH:mm:ss.fffffff`|In addition to year, month, and day, this date format includes 00-23 hours, 00-59 minutes, 00-59 seconds, and seven digits for milliseconds.|
+|**datetime2**|DATE_FORMAT = `yyyy-MM-dd hh:mm:ss.ffffffftt`|In addition to year, month, and day, this date format includes 00-11 hours, 00-59 minutes, 00-59 seconds, seven digits for milliseconds, and `AM`, `am`, `PM`, or `pm`.|
 |**datetimeoffset**|DATE_FORMAT = `yyyy-MM-dd HH:mm:ss.fffffff zzz`|In addition to year, month, and day, this date format includes 00-23 hours, 00-59 minutes, 00-59 seconds, and 7 digits for milliseconds, and the timezone offset which you put in the input file as `{+&#124;-}HH:ss`. For example, since Los Angeles time without daylight savings is 8 hours behind UTC, a value of -08:00 in the input file specifies the timezone for Los Angeles.|
-|**datetimeoffset**|DATE_FORMAT = `yyyy-MM-dd hh:mm:ss.ffffffftt zzz`|In addition to year, month, and day, this date format includes 00-11 hours, 00-59 minutes, 00-59 seconds, 7 digits for milliseconds, (AM, am, PM, or pm), and the timezone offset. See the description in the previous row.|
+|**datetimeoffset**|DATE_FORMAT = `yyyy-MM-dd hh:mm:ss.ffffffftt zzz`|In addition to year, month, and day, this date format includes 00-11 hours, 00-59 minutes, 00-59 seconds, seven digits for milliseconds, (`AM`, `am`, `PM`, or `pm`), and the timezone offset. See the description in the previous row.|
 |**time**|DATE_FORMAT = `HH:mm:ss`|There is no date value, only 00-23 hours, 00-59 minutes, and 00-59 seconds.|
 
 #### Supported date and time formats

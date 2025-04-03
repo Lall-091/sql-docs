@@ -1,6 +1,6 @@
 ---
 title: SQL Server Connection Summary
-description: Learn how you can see a summary of client connections made to an instance of SQL Server enabled by Azure Arc in the Azure portal by using the SQL Server Connections view. 
+description: Learn how you can view client connections to an instance of SQL Server enabled by Azure Arc. 
 author: ajithkr-ms
 ms.author: ajithkr
 ms.reviewer: nhebbar, randolphwest
@@ -13,7 +13,7 @@ ms.custom:
 
 [!INCLUDE [sqlserver](../../includes/applies-to-version/sqlserver.md)]
 
-This article teaches you how to see a summary of client connections to [!INCLUDE [ssazurearc](../../includes/ssazurearc.md)] by using the SQL Server Connections view in the Azure portal. 
+This article teaches you how to view client connections to [!INCLUDE [ssazurearc](../../includes/ssazurearc.md)] in Azure portal. 
 
 > [!NOTE]
 > The SQL Server Connections view in the Azure portal is currently in preview. 
@@ -26,9 +26,20 @@ To view a summary of all client connections to the SQL Server instance, follow t
 1. Under **Monitoring**, select **SQL Server Connections**.
 1. (Optionally) Use the time range to view connections during a preferred window within the last 30 days.
 
-Review the summarized data in the view: 
-
 :::image type="content" source="media/sql-connection-summary/sql-connection-summary.png" alt-text="Screenshot of the SQL Client Connections view for SQL Server enabled by Azure Arc." lightbox="media/sql-connection-summary/sql-connection-summary.png":::
+
+### Review the summarized data in the view:
+
+| Column name | Description and version-specific information |
+| --- | --- |
+| **Program Name** | Name of client program that initiated the session.|
+| **Client Interface Name** | Name of library/driver being used by the client to communicate with the server. |
+| **Database Name** | Name of the current database for the session in the hourly snapshots. |
+| **Request End Time** | Last request end time from the hourly snapshots. Indicator of how recently the client program connected used the database. |
+| **Total Writes** | Aggregated number of writes from the client program to the database as seen in the hourly snapshots. |
+| **Total Reads** | Aggregated number of reads from the client program to the database as seen in the hourly snapshots. |
+| **Elapsed Time** | Aggregated connection duration (in milliseconds) from the client program as seen in the hourly snapshots. |
+| **Count** | Count of unique sessions as seen in the hourly snapshots. The distinct sessions are identified using the login time. |
 
 ## How is the data collected?
 
@@ -36,7 +47,7 @@ By default, the SQL Server Connections view is available to all SQL Server insta
 
 The connection data within the time range chosen on the portal dictates the client connection data summarized and presented as a table in the view.
 
-## Disable connections view
+## Disable the connections view
 
 Since the SQL Server connections view is enabled by default, you can choose to disable it and stop data collection. You can disable the SQL Server connections view by using the Azure portal, or the Azure CLI. 
 
@@ -60,9 +71,9 @@ az sql server-arc extension feature-flag set --name ClientConnections --enable f
 ---
 
 
-## Enable connections view
+## Enable the connections view
 
-If SQL Server Connections view and data collection has been disabled, you can enable it again by using the Azure portal, or the Azure CLI. 
+If SQL Server Connections view and data collection is disabled, you can enable it again by using the Azure portal, or the Azure CLI. 
 
 ### [Azure portal](#tab/azure-portal)
 

@@ -30,7 +30,7 @@ It's possible to fail over a primary node in the General Purpose (GP) and Busine
 
 The entire failover operation consists of bringing the SQL Server database engine process online, validating the database state, and then finally redirecting the client connections to the new SQL process. Client connections only fail for a short period of time, typically under a minute, during the final step of the failover operation.
 
-You might execute a manual failover to restart the engine process on a different node for the following reasons:
+You might execute a manual failover to restart the engine process for the following reasons:
 
 - Failed logins, or slowness due to performance issues.
 - Testing application for failover resiliency before deploying to production.

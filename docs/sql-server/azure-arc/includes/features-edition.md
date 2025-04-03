@@ -25,6 +25,7 @@ The following table identifies features available by [!INCLUDE [ssnoversion-md](
 | [Failover cluster instances](../support-for-fci.md) | Yes | Yes | Not applicable | Not applicable | Yes | Not applicable |
 | [Always On availability groups](../manage-availability-group.md) | Yes | Yes | Not applicable | Not applicable | Yes | Not applicable |
 | [Monitoring (preview)](../sql-monitoring.md) | Yes | Yes | No | No | No | No |
+| [Client connection summary (preview)](../sql-monitoring.md) | Yes | Yes | Yes | Yes | Yes | Yes |
 | [Operate with least privilege](../configure-least-privilege.md) | Yes | Yes | Yes | Yes | Yes | Yes |
 
 <sup>1</sup> [Express LocalDB isn't supported.](/azure/purview/register-scan-on-premises-sql-server#supported-capabilities)

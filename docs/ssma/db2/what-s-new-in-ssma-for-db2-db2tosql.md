@@ -1,10 +1,10 @@
 ---
-title: "What's new in SSMA for Db2 (Db2ToSQL)"
+title: "What's New in SSMA for Db2 (Db2ToSQL)"
 description: Find out about changes to SQL Server Migration Assistant (SSMA) for Db2 (Db2ToSQL) for each release.
 author: cpichuka
 ms.author: cpichuka
 ms.reviewer: randolphwest
-ms.date: 10/16/2024
+ms.date: 04/01/2025
 ms.service: sql
 ms.subservice: ssma
 ms.topic: whats-new
@@ -19,13 +19,22 @@ This article lists SQL Server Migration Assistant (SSMA) for Db2 changes in each
 
 [!INCLUDE [entra-id](../../includes/entra-id-hard-coded.md)]
 
+## SSMA v10.1
+
+The v10.1 release of SSMA for Db2 contains the following changes:
+
+- Conversion enhancements for identity column from Db2 z/OS to SQL Server 2019
+- Improve conversion of Db2 stored procedure WITH RETURN clause to Azure SQL Database
+- Improve database objects load for Db2
+- Appropriate error handling for conversion of identifier REPLACE(STRING, CHAR,CHAR) in Db2
+
 ## SSMA v10.0
 
-The v10.0 release of SSMA for DB2 contains the following changes:
+The v10.0 release of SSMA for Db2 contains the following changes:
 
 - Improve conversion of FETCH FIRST ROW ONLY syntax
 - Improve conversion support of LOCATE_IN_STRING behavior
-- Support of range-partitioned tables in DB2-ZOS
+- Support of range-partitioned tables in Db2 for z/OS
 - Improve handling of INCLUDE clause in indexes
 
 ## SSMA v9.5

@@ -51,8 +51,8 @@ You can use SQL Database auditing to:
   - One of the primary changes involves a folder structure change for audit logs stored in storage account containers. Previously, server audit logs were written to separate folders; one for each database, with the database name serving as the folder name. With the new update, all server audit logs will be consolidated into a single folder labeled `master`. This behavior is the same as Azure SQL Managed Instance and SQL Server.
 - Folder structure change for read-only replicas:
   - Read-only database replicas previously had their logs stored in a read-only folder. Those logs will now be written into the `master` folder. You can retrieve these logs by filtering on the new column `is_secondary_replica_true`.
-- Permissions required to view Audit logs :
-  - **Control Server** permission is required to view audit logs stored in the `master` folder
+- Permissions required to view Audit logs:
+  - `CONTROL DATABASE` permission on the `master` database is required to view audit logs stored in the `master` folder
 
 ## Auditing limitations
 

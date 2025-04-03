@@ -25,6 +25,7 @@ The following table identifies features available by SQL Server version:
 | [Failover cluster instances](../support-for-fci.md)| Yes | Yes | Yes | Yes | Yes | Yes |
 | [Always On availability groups (preview)](../manage-availability-group.md) | Yes | Yes | Yes | Yes | Yes | Yes |
 | [Monitoring (preview)](../sql-monitoring.md) | No | No | Yes <sup>2</sup> | Yes | Yes | Yes |
+| [Client connection summary (preview)](../sql-connection-summary.md) | No | No | Yes <sup>2</sup> | Yes | Yes | Yes |
 | [Operate with least privilege](../configure-least-privilege.md)| Yes | Yes | Yes | Yes | Yes | Yes |
 
 <sup>1</sup> Requires subscription to [Extended Security Updates (ESU) enabled by Azure Arc](../../end-of-support/sql-server-extended-security-updates.md#subscribe-instances-for-esus).

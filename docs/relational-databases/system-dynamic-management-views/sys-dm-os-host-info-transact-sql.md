@@ -3,7 +3,7 @@ title: "sys.dm_os_host_info (Transact-SQL)"
 description: The sys.dm_os_host_info DMV returns one row that displays operating system version information.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/20/2023
+ms.date: 03/31/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: conceptual

@@ -4,7 +4,7 @@ description: Concepts for SQL Server failover cluster instances on Linux include
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 07/15/2024
+ms.date: 03/28/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -28,7 +28,7 @@ To create a [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] FCI on Li
 
 - In SUSE Linux Enterprise Server (SLES), the clustering layer is based on SUSE Linux Enterprise [High Availability Extension (HAE)](https://www.suse.com/products/highavailability).
 
-  For more information on cluster configuration, resource agent options, management, best practices, and recommendations, see [SUSE Linux Enterprise High Availability Extension 15](https://documentation.suse.com/sle-ha/15-SP3/).
+  For more information on cluster configuration, resource agent options, management, best practices, and recommendations, see [SUSE Linux Enterprise High Availability Extension 15](https://documentation.suse.com/sle-ha/15-SP6/).
 
 Both the RHEL HA add-on and the SUSE HAE are built on [Pacemaker](https://clusterlabs.org/).
 
