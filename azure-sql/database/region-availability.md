@@ -4,7 +4,7 @@ description: Learn about feature availability by region for Azure SQL Database.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: rsetlem
-ms.date: 03/28/2025
+ms.date: 04/04/2025
 ms.service: azure-sql-database
 ms.topic: concept-article
 ms.custom:
@@ -23,7 +23,7 @@ This article is a centralized list of the availability of various Azure SQL Data
 > [!TIP]
 > For a visualization of Azure regions, see [Azure global infrastructure](https://datacenters.microsoft.com/globe/explore).
 
-<!-- Alphabetization guidance: sort by the region, then the directional. East Asia comes before Australia East. This results in regions kept together, for example, all the US regions. -->
+<!-- Alphabetization guidance for region names: sort by the region, then the directional. East Asia comes before Australia East. This results in regions kept together, for example, all the US regions. -->
 
 ## vCore purchasing model hardware availability
 
@@ -68,7 +68,7 @@ Standard-series (Gen5) hardware is available in [all public regions worldwide wh
 | US West 2 | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
 | US West 3 | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
 
-\* Includes support for [zone redundancy](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability).
+
 
 #### [Asia Pacific](#tab/asia)
 
@@ -83,8 +83,6 @@ Standard-series (Gen5) hardware is available in [all public regions worldwide wh
 | Japan East | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
 | Japan West | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |  |
 
-\* Includes support for [zone redundancy](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability).
-
 #### [Europe, the Middle East, and Africa](#tab/emea)
 
 | Azure region | Premium-series available | Premium-series memory optimized available | [Availability zone support](high-availability-sla-local-zone-redundancy.md#high-availability-through-zone-redundancy) | 
@@ -96,8 +94,6 @@ Standard-series (Gen5) hardware is available in [all public regions worldwide wh
 | Sweden Central | [!INCLUDE [yes](../includes/yes.md)]  |  | [!INCLUDE [yes](../includes/yes.md)]  |
 | Switzerland North | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | |
 | UK South | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  | [!INCLUDE [yes](../includes/yes.md)]  |
-
-\* Includes support for [zone redundancy](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability).
 
 ---
 
