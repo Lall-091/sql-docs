@@ -30,7 +30,7 @@ If the primary replica is configured for *asynchronous-commit mode*, it does not
  [!INCLUDE[ssHADR](../../../includes/sshadr-md.md)] supports three availability modes-asynchronous-commit mode, synchronous-commit mode, and configuration only mode as follows:  
   
 -   *Asynchronous-commit mode* is a disaster-recovery solution that works well when the availability replicas are distributed over considerable distances. If every secondary replica is running under asynchronous-commit mode, the primary replica does not wait for any of the secondary replicas to harden the log. Rather, immediately after writing the log record to the local log file, the primary replica sends the transaction confirmation to the client. The primary replica runs with minimum transaction latency in relation to a secondary replica that is configured for asynchronous-commit mode.
-If the current primary is configured for asynchronous commit availability mode, it will commit transactions asynchronously for all secondary replicas regardless of their individual availability mode settings.
+If the current primary is configured for asynchronous commit availability mode, it commits transactions asynchronously for all secondary replicas regardless of their individual availability mode settings.
 
   
      For more information, see [Asynchronous-Commit Availability Mode](#AsyncCommitAvMode), later in this topic.
@@ -70,8 +70,9 @@ If the current primary is configured for asynchronous commit availability mode, 
  The only form of failover supported by asynchronous-commit mode is forced failover (with possible data loss). Forcing failover is a last resort intended only for situations in which the current primary replica will remain unavailable for an extended period and immediate availability of primary databases is more critical than the risk of possible data loss. The failover target must be a replica whose role is in the SECONDARY or RESOLVING state. The failover target transitions to the primary role, and its copies of the databases become the primary database. Any remaining secondary databases, along with the former primary databases, once they become available, are suspended until you manually resume them individually. Under asynchronous-commit mode, any transaction logs that the original primary replica had not yet sent to the former secondary replica are lost. This means that some or all of the new primary databases might be lacking recently committed transactions. For more information on how forced failover works and on best practices for using it, see [Failover and Failover Modes &#40;Always On Availability Groups&#41;](../../../database-engine/availability-groups/windows/failover-and-failover-modes-always-on-availability-groups.md).
 
   
-##  <a name="SyncCommitAvMode"></a> Synchronous-Commit Availability Mode  
- Under synchronous-commit availability mode (*synchronous-commit mode*), after being joined to an availability group, a secondary database catches up to the corresponding primary database and enters the SYNCHRONIZED state. The secondary database remains SYNCHRONIZED as long as data synchronization continues. This guarantees that every transaction that is committed on a given primary database, has also been committed on the corresponding secondary database. When every secondary database on a given secondary replica is synchronized, the synchronization-health state of the secondary replica as a whole is HEALTHY.
+##  <a name="SyncCommitAvMode"></a> Synchronous-Commit Availability Mode
+
+Under synchronous-commit availability mode (*synchronous-commit mode*), after being joined to an availability group, a secondary database catches up to the corresponding primary database and enters the SYNCHRONIZED state. The secondary database remains SYNCHRONIZED as long as data synchronization continues. This guarantees that every transaction that is committed on a given primary database, has also been committed on the corresponding secondary database. When every secondary database on a given secondary replica is synchronized, the synchronization-health state of the secondary replica as a whole is HEALTHY.
 
   
  **In This Section:**  
@@ -87,7 +88,7 @@ If the current primary is configured for asynchronous commit availability mode, 
 ###  <a name="DisruptSync"></a> Factors That Disrupt Data Synchronization  
  Once all of its databases are synchronized, a secondary replica enters the HEALTHY state. The synchronized secondary replica will remain healthy unless one of the following occurs:  
   
--   A network or computer delay or glitch causes the session between the secondary replica and primary replica to time out.
+-   A network or computer delay or glitch causes the session between the secondary replica and primary replica to timeout.
 
   
     > [!NOTE]  
@@ -120,17 +121,23 @@ After the hardened log on the secondary database has caught up to the end of log
 
 The time required for synchronization depends on how far the secondary database was behind the primary database at the start of the session. This delta is measured by the number of log records initially received from the primary replica, the work load on the primary database, and the speed of the instance host of the secondary replica.
   
-Synchronous operation is maintained in the following manner:  
+#### The transaction process
+
+In synchronous commit mode, transactions are committed to both replicas in this order:
+
+1. The primary replica receives a transaction from a client.
   
-1. On receiving a transaction from a client, the primary replica writes the log for the transaction to the transaction log and concurrently sends the log record to the secondary replicas.
+1. The primary replica writes the record to the transaction log and concurrently sends the log record to the secondary replicas.
 
-2. Once a log record is written to the transaction log of the primary database, the transaction can be undone only if there is a failover at this point to a secondary that did not receive the log. The primary replica waits for confirmation from the synchronous-commit secondary replica.
+   Once a log record is written to the transaction log of the primary database, the transaction can be undone only if there is a failover to a secondary that did not receive the log.
 
-3. The secondary replica hardens the log and returns an acknowledgment to the primary replica.
+1. The primary replica waits for confirmation from the synchronous-commit secondary replica.
 
-4. On receiving the confirmation from the secondary replica, the primary replica finishes the commit processing and sends a confirmation message to the client.
+1. The secondary replica hardens the log and returns an acknowledgment to the primary replica.
 
-#### Synchronous-commit time out
+1. The primary replica finishes the commit processing and sends a confirmation message to the client.
+
+#### Synchronous-commit timeout
 
 If a synchronous-commit secondary replica times out without confirming that it has hardened the log, the following actions happen in the availability group:
 
