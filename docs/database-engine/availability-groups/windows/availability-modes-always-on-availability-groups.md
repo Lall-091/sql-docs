@@ -92,6 +92,7 @@ helpviewer_keywords:
 >  To view the synchronization health of an availability group, availability replica, or availability database, query the **synchronization_health** or **synchronization_health_desc** column of [sys.dm_hadr_availability_group_states](../../../relational-databases/system-dynamic-management-views/sys-dm-hadr-availability-group-states-transact-sql.md), [sys.dm_hadr_availability_replica_states](../../../relational-databases/system-dynamic-management-views/sys-dm-hadr-availability-replica-states-transact-sql.md), or [sys.dm_hadr_database_replica_states](../../../relational-databases/system-dynamic-management-views/sys-dm-hadr-database-replica-states-transact-sql.md), respectively.  
   
 ###  <a name="HowSyncWorks"></a> How Synchronization Works on a Secondary Replica  
+
  Under the synchronous-commit mode, after a secondary replica joins the availability group and establishes a session with the primary replica, the secondary replica writes incoming log records to disk (*hardens the log*) and sends a confirmation message to the primary replica. Once the hardened log on the secondary database has caught up the end of log on the primary database, the state of the secondary database is set to SYNCHRONIZED. The time required for synchronization depends essentially on how far the secondary database was behind the primary database at the start of the session (measured by the number of log records initially received from the primary replica), the work load on the primary database, and the speed of the computer of the server instance that hosts the secondary replica.  
   
  Synchronous operation is maintained in the following manner:  
@@ -103,11 +104,27 @@ helpviewer_keywords:
 3.  The secondary replica hardens the log and returns an acknowledgment to the primary replica.  
   
 4.  On receiving the confirmation from the secondary replica, the primary replica finishes the commit processing and sends a confirmation message to the client.  
+
+#### Synchronous-commit time out
+
+If a synchronous-commit secondary replica times out without confirming that it has hardened the log, the following actions happen in the availability group:
+
+1. The primary replica marks that secondary replica as failed. 
+1. The secondary replica state changes to DISCONNECTED
+1. The primary stops waiting for confirmation
+1. The availability group marks the synchronization state as NOT SYNCHRONIZING and the replica state as NOT_HEALTHY
+
+This behavior ensures that a failed synchronous-commit secondary replica does not prevent log hardening on the primary replica.
+
+When the secondary replica is back online:
+
+1. The secondary replica state changes to CONNECTED
+1. The secondary replica processes the primary replica's log send queue.
+1. The synchronization state transitions to SYNCHRONIZING, and the replica health to PARTIALLY_HEALTHY.
+
+After the log send queue is processed, the synchronization state becomes SYNCHRONIZED, and the replica health becomes HEALTHY.  
   
-    > [!NOTE]  
-    >  If a synchronous-commit secondary replica times out without confirming that it has hardened the log, the primary marks that secondary replica as failed. The secondary replica state changes to DISCONNECTED, and the primary stops waiting for confirmation, marking the synchronization state as NOT SYNCHRONIZING and the replica state as NOT_HEALTHY. This behaviour ensures that a failed synchronous-commit secondary replica does not prevent log hardening on the primary replica. When the secondary is back online, the secondary replica state changes to CONNECTED, and it processes the primary replica's log send queue. The synchronization state transitions to SYNCHRONIZING, and the replica health to PARTIALLY_HEALTHY. Once the log send queue is processed, the synchronization state becomes SYNCHRONIZED, and the replica health becomes HEALTHY.  
-  
- Synchronous-commit mode protects your data by requiring the data to be synchronized between two places, at the cost of somewhat increasing the latency of the transaction.  
+Synchronous-commit mode protects your data by requiring the data to be synchronized between two places, at the cost of somewhat increasing the latency of the transaction.  
   
 ### <a name="SyncCommitWithManual"></a> Synchronous-Commit Mode with Only Manual Failover  
  When these replicas are connected and the database is synchronized, manual failover is supported. If the secondary replica goes down, the primary replica is unaffected. The primary replica runs exposed if no SYNCHRONIZED replicas exist (that is, without sending data to any secondary replica). If the primary replica is lost, the secondary replicas enter the RESOLVING state, but the database owner can force a failover to the secondary replica (with possible data loss). For more information, see [Failover and Failover Modes &#40;Always On Availability Groups&#41;](../../../database-engine/availability-groups/windows/failover-and-failover-modes-always-on-availability-groups.md).  
