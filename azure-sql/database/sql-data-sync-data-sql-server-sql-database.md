@@ -4,7 +4,7 @@ description: This overview introduces SQL Data Sync for Azure, which allows you 
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma, hudequei
-ms.date: 02/27/2025
+ms.date: 04/04/2025
 ms.service: azure-sql-database
 ms.subservice: sql-data-sync
 ms.topic: concept-article
@@ -223,9 +223,9 @@ There's no charge for the SQL Data Sync service itself. However, you still colle
 
 SQL Data Sync is available in all regions.
 
-### Is a SQL Database account required?
+### Is an Azure SQL Database account required?
 
-Yes. You must have a SQL Database account to host the hub database.
+Yes. You must have an Azure SQL Database account to host the hub database.
 
 ### Can I use Data Sync to sync between SQL Server databases only?
 
@@ -240,7 +240,7 @@ Yes. You can configure sync between databases that belong to resource groups own
 
 ### Can I set up Data Sync to sync between databases in SQL Database that belong to different clouds (like Azure Public Cloud and Azure operated by 21Vianet)?
 
-Yes. You can set up sync between databases that belong to different clouds. You have to use PowerShell to add the sync members that belong to the different subscriptions.
+Data Sync does not support cross-cloud synchronization. 
 
 ### Can I use Data Sync to seed data from my production database to an empty database, and then sync them?
 
