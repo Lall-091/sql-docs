@@ -1,20 +1,21 @@
 ### YamlMime:FAQ
 metadata:
-  title: "Frequently asked questions about Microsoft Copilot skills (preview)"
-  description: "Frequently asked questions about Microsoft Copilot skills in Azure SQL Database, currently in preview."
+  title: "Frequently asked questions about Microsoft Copilot in Azure SQL Database"
+  description: "Frequently asked questions about Microsoft Copilot in Azure SQL Database."
   author: markingmyname
   ms.author: maghan
   ms.reviewer: wiassaf, kendalv
   ms.service: azure-sql-database
   ms.collection: ce-skilling-ai-copilot
   ms.custom:
-    - build-2024
+    - "AI Copilot"
+    - "FAQ"
   ms.topic: faq
-  ms.date: 03/18/2025
+  ms.date: 04/08/2025
   monikerRange: "= azuresql || = azuresql-db"
-title: "Frequently asked questions about Microsoft Copilot in Azure SQL Database (preview)"
+title: "Frequently asked questions about Microsoft Copilot in Azure SQL Database"
 summary: |
-  Frequently asked questions about Microsoft Copilot capabilities in Azure SQL, currently in preview. 
+  Frequently asked questions about Microsoft Copilot capabilities in Azure SQL. 
 
   Microsoft Copilot in Azure is now integrated with Azure SQL Database, enhancing the management and operation of SQL-dependent applications.
 sections:
@@ -23,11 +24,7 @@ sections:
       - question: |
           In Azure SQL Database, where can I find Microsoft Copilot in Azure?
         answer: |
-          The preview of Copilot capabilities in Azure SQL Database includes Copilot in the Azure portal experience: [Azure Copilot integration](copilot-azure-sql-overview.md)
-      - question: |
-          How do I enable Microsoft Copilot in Azure for my Azure tenant?
-        answer: |
-          Review the steps in [Enable Microsoft Copilot in Azure for your Azure tenant](copilot-azure-sql-overview.md#enable-copilot-in-your-azure-tenant). Microsoft Copilot skills in Azure SQL Database are currently in preview for a limited number of early adopters. To sign up for this program, visit [Request Access to Copilot in Azure SQL Database: Preview](https://aka.ms/sqlcopilot-signup).
+          The Copilot capabilities in Azure SQL Database include Copilot in the Azure portal experience: [Azure Copilot integration](copilot-azure-sql-overview.md)
       - question: |
           How does Copilot use data from my Azure SQL Database environment?
         answer: |
@@ -39,13 +36,13 @@ sections:
       - question: |
           What should I do if I see unexpected or offensive content?
         answer: |
-          The Azure team built Copilot guided by our AI principles and Responsible AI Standard. We have prioritized mitigating exposing customers to offensive content. However, you might still see unexpected results. We're constantly working to improve our technology in preventing harmful content. For more information, see [Responsible AI FAQ for Microsoft Copilot in Azure (preview)](/azure/copilot/responsible-ai-faq).
+          The Azure team built Copilot guided by our AI principles and Responsible AI Standard. We have prioritized mitigating exposing customers to offensive content. However, you might still see unexpected results. We're constantly working to improve our technology in preventing harmful content. For more information, see [Responsible AI FAQ for Microsoft Copilot in Azure](/azure/copilot/responsible-ai-faq).
 
           If you encounter harmful or inappropriate content in the system, you can provide feedback or report a concern by selecting the downvote button on the response. We're constantly working to improve our technology to proactively address issues in line with our [responsible AI principles](https://www.microsoft.com/ai/our-approach).
       - question: |
           How much does Copilot cost?
         answer: |
-          Copilot skills in Azure SQL Database are offered at no additional cost during the preview.
+          Copilot skills in Azure SQL Database are offered at no additional cost.
       - question: |
           How is the transmitted prompt and query data protected?
         answer: |
@@ -56,13 +53,10 @@ sections:
           Where can I learn more about privacy and data protection?
         answer: |
           For more information on how Copilot processes and uses personal data, see the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement).
-      - question: |
-          Where can I find the preview terms for using Azure OpenAI-powered previews like Copilot?
-        answer: |
-          For more information, see our [preview terms](https://azure.microsoft.com/support/legal/preview-supplemental-terms/#AzureOpenAI-PoweredPreviews).
+
 additionalContent: |
     ## Related content
 
-    - [Microsoft Copilot skills and Azure SQL Database (preview)](copilot-azure-sql-overview.md)
+    - [Microsoft Copilot skills and Azure SQL Database](copilot-azure-sql-overview.md)
     - [Microsoft Copilot in Azure overview](/azure/copilot/overview)
 
