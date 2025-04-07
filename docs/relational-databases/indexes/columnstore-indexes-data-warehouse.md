@@ -25,9 +25,8 @@ Columnstore indexes, in conjunction with partitioning, are essential for buildin
 - Always On availability groups support querying a columnstore index on a readable secondary replica.
 - Multiple Active Result Sets (MARS) supports columnstore indexes.
 - A new dynamic management view [sys.dm_db_column_store_row_group_physical_stats (Transact-SQL)](../system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql.md) provides performance troubleshooting information at the row group level.
-- Serial queries on columnstore indexes can run in batch mode. Previously, only parallel queries could run in batch mode.
-- The *sort* operator runs in batch mode.
-- Multiple *distinct* operations run in batch mode.
+- All queries on columnstore indexes can run in batch mode. Previously, only parallel queries could run in batch mode.
+- The **Sort**, **Distinct Sort**, and **Distinct** operators run in batch mode.
 - Window aggregates now runs in batch mode for database compatibility level 130 and higher.
 - Aggregate pushdown for efficient processing of aggregates. This is supported on all database compatibility levels.
 - String predicate pushdown for efficient processing of string predicates. This is supported on all database compatibility levels.
@@ -64,38 +63,25 @@ CREATE UNIQUE INDEX taccount_nc1 ON t_account (AccountKey);
 
 ### Example: Use a nonclustered index to enforce a primary key constraint on a columnstore table
 
-By design, a columnstore table doesn't allow a clustered primary key constraint. Now you can use a nonclustered index on a columnstore table to enforce uniqueness. A primary key is equivalent to a `UNIQUE` constraint on a non-NULL column, and [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] implements a `UNIQUE` constraint as a nonclustered index. Combining these facts, the following example defines a `UNIQUE` constraint on the non-NULL column `AccountKey`. The result is a nonclustered index that enforces uniquness on a non-NULL column.
+Because a table can have at most one clustered index, a table with a clustered columnstore index can't have a clustered primary key constraint. To create a primary key constraint on a columnstore table, you must declare it as nonclustered.
 
-Next, the table is converted to a clustered columnstore index. During the conversion, the nonclustered index persists. The result is a clustered columnstore index with a nonclustered index that enforces uniqueness. Since any update or insert on the columnstore table also affects the nonclustered index, all operations that violate the unique constraint and the non-`NULL` constraint cause the entire operation to fail.
-
-The result is a columnstore index with a nonclustered index that enforces uniqueness on both indexes.
+The following example creates a table with a nonclustered primary key constraint and then creates a clustered columnstore index on the table. Since any insert or update on the columnstore table also modifies the nonclustered index, all operations that violate the primary key constraint cause the entire operation to fail.
 
 ```sql
---EXAMPLE: Enforce a primary key constraint on a columnstore table.
+--Create a primary key constraint on a columnstore table.
 
---Create a rowstore table with a unique constraint.
---The unique constraint is implemented as a nonclustered index.
+--Create a rowstore table with a nonclustered primary key constraint.
 CREATE TABLE t_account (
     AccountKey int NOT NULL,
     AccountDescription nvarchar (50),
     AccountType nvarchar(50),
     UnitSold int,
-    CONSTRAINT uniq_account UNIQUE (AccountKey)
+    CONSTRAINT pk_account PRIMARY KEY NONCLUSTERED (AccountKey)
 );
 
---Store the table as a columnstore.
---The unique constraint is preserved as a nonclustered index on the columnstore table.
+--Convert the table to columnstore.
+--The primary key constraint is preserved as a nonclustered index on the columnstore table.
 CREATE CLUSTERED COLUMNSTORE INDEX t_account_cci ON t_account;
-
---By using the previous two steps, every row in the table meets the UNIQUE constraint
---on a non-NULL column.
---This has the same end-result as having a primary key constraint
---All updates and inserts must meet the unique constraint on the nonclustered index or they will fail.
-  
---If desired, add a foreign key constraint on AccountKey.
-  
-ALTER TABLE [dbo].[t_account]  
-WITH CHECK ADD FOREIGN KEY([AccountKey]) REFERENCES my_dimension (Accountkey);
 ```
 
 ### Improve performance by enabling row-level and rowgroup-level locking
