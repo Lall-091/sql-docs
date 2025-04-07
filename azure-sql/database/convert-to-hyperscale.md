@@ -4,7 +4,7 @@ description: How to convert an Azure SQL Database to the Hyperscale tier.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: dfurman, blakhani
-ms.date: 02/10/2025
+ms.date: 04/06/2025
 ms.service: azure-sql-database
 ms.topic: how-to
 ms.custom:
@@ -22,12 +22,9 @@ You can convert an existing database in Azure SQL Database to Hyperscale using t
 The conversion process is divided into two stages - the conversion of database, which occurs while the existing database is online, and then a cutover to the new Hyperscale database. 
 
 - The time required to move an existing database to Hyperscale consists of the time to copy data and the time to replay the changes made in the source database while copying data. The data copy time is proportional to data size. We recommend converting to Hyperscale during a lower write activity period so that the time to replay accumulated changes is shorter.
-- You'll only experience a short period of downtime, generally less than a minute, during the final cutover to Hyperscale. You have the ability to choose when the cutover occurs - as soon as the database is ready, or manually at a time of your choosing. By default, the process to convert to Hypersacle will cutover automatically. 
-
-> [!NOTE]
-> The ability to initiate a manual cutover for a conversion to Hyperscale is a preview feature.
-
-In the current preview, during a conversion to Hyperscale, you have three days to initiate the manual cutover after the point when the database ready for cutover. You can initiate a manual cutover via the Azure portal, Azure CLI, PowerShell, or T-SQL.
+- You have the ability to choose when the cutover occurs - as soon as the database is ready, or manually at a time of your choosing. By default, the process to convert to Hyperscale will cutover automatically.
+    - If you choose to manually cutover at a time of your choosing, you have 24 hours to initiate a manual cutover after the point when the database ready for cutover. You can initiate a manual cutover via the Azure portal, Azure CLI, PowerShell, or T-SQL.
+- During the final cutover to Hyperscale, your applications will only experience a short period of downtime, generally less than a minute.
 
 ## Prerequisites
 
@@ -72,7 +69,7 @@ The Azure portal enables you to convert to Hyperscale by modifying the service t
     1. Select the notification box to view details.
     1. The **Ongoing operations** pane opens. Review the details of the ongoing operations.
 
-If you selected **Manual cutover**, the Azure portal will present you a **Cutover** button when ready.
+If you selected **Manual cutover**, the Azure portal presents you a **Cutover** button when ready.
 
 :::image type="content" source="media/convert-to-hyperscale/cutover.png" alt-text="Screenshot from the Azure portal showing the Cutover button in a Hyperscale conversion.":::
 
@@ -180,7 +177,7 @@ Set-AzSqlDatabase -ResourceGroupName $resourceGroupName `
 
 # [Transact-SQL](#tab/t-sql)
 
-To convert an existing Azure SQL Database to Hyperscale with Transact-SQL, first connect to the `master` database on your [logical SQL server](logical-servers.md) using the [Azure portal Query editor for Azure SQL Database](query-editor.md), [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) or [the mssql extension for Visual Studio Code](/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code).
+To convert an existing Azure SQL Database to Hyperscale with Transact-SQL, first connect to the `master` database on your [logical SQL server](logical-servers.md) using the [Azure portal Query editor for Azure SQL Database](query-editor.md), [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms), or [the mssql extension for Visual Studio Code](/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code).
 
 You must specify both the edition and service objective in the [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) statement.
 
@@ -192,7 +189,7 @@ ALTER DATABASE [mySampleDatabase]
 GO
 ```
 
-By default, the database will perform a cutover to the Hyperscale database to finish the conversion as soon as the Hyperscale database is available. Optionally, use the `MANUAL_CUTOVER` argument to instead start a conversion that will end with a manually initiated cutover, at a time of your choice. This option is most useful to time the cutover for minimal business disruption. For example:
+By default, the database performs a cutover to the Hyperscale database to finish the conversion as soon as the Hyperscale database is available. Optionally, use the `MANUAL_CUTOVER` argument to instead start a conversion that will end with a manually initiated cutover, at a time of your choice. This option is most useful to time the cutover for minimal business disruption. For example:
 
 ```sql
 ALTER DATABASE [mySampleDatabase]
