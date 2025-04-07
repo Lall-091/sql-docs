@@ -745,10 +745,7 @@ For more examples that show using `INSERT...SELECT * FROM OPENROWSET(BULK...)`, 
 
 The T-SQL `OPENROWSET` function reads a content of a file in Azure Data Lake storage. You can read text/CSV or Parquet file formats.
 
-The `OPENROWSET` function reads data from a file and returns it as a rowset. The `OPENROWSET` function can be referenced in the `FROM` clause of a query as if it were a table name.
-
->[!NOTE]
-> The `OPENROWSET` function is currently in **preview** for Microsoft Fabric. 
+The `OPENROWSET` function reads data from a file and returns it as a rowset. The `OPENROWSET` function can be referenced in the `FROM` clause of a query as if it were a table name. 
 
 This article applies only to [!INCLUDE [fabric](../../includes/fabric.md)] [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)]. There are functional differences between the OPENROWSET function in Fabric Warehouse and SQL analytics endpoint items.
 
@@ -893,14 +890,14 @@ A number representing the physical index of the column that will be mapped to th
 
 ## Remarks
 
-The features supported in the current preview are summarized in the table:
+The supported features are summarized in the table:
 
 | Feature         | Supported | Not available |
 |-----------------|-----------|----------------------|
 | **File formats**| Parquet, CSV   | Delta, Azure Cosmos DB |
 | **Authentication**| EntraID passthrough, public storage | SAS/SAK, SPN, Managed access |
 | **Storage**     | Azure Blob Storage, Azure Data Lake Storage | OneLake |
-| **Options**     | Only full absolute URI in `OPENROWSET`  | `DATA_SOURCE` |
+| **Options**     | Only full/absolute URI in `OPENROWSET`  | Relative URI path in `OPENROWSET`, `DATA_SOURCE` |
 | **Partitioning**| You can use the `filepath()` function in a query. |  |
 
 ## Examples
@@ -913,7 +910,7 @@ In the following example you can see how to read 100 rows from a Parquet file:
 SELECT TOP 100 * 
 FROM OPENROWSET(
     BULK 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.parquet'
-) AS data;
+);
 ```
 
 ### Read a custom CSV file
@@ -926,8 +923,7 @@ FROM OPENROWSET(
 BULK 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.csv',
  HEADER_ROW = TRUE,
  ROW_TERMINATOR = '\n',
- FIELD_TERMINATOR = ',') 
-AS data;
+ FIELD_TERMINATOR = ',');
 ```
 
 ### Specify the file column schema while reading a file
@@ -944,7 +940,7 @@ WITH (
         ,deaths INT
         ,iso2 VARCHAR(8000)
         ,iso3 VARCHAR(8000)
-        ) AS covid_data;
+        );
 ```
 
 <a id="reading-partitioned-data-sets"></a>
