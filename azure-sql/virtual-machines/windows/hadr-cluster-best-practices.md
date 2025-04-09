@@ -238,7 +238,7 @@ Use the Failover Cluster Manager to modify the **Max failures in specified perio
 
 VM or disk limits could result in a resource bottleneck that impacts the health of the cluster, and impedes the health check. If you're experiencing issues with resource limits, consider the following:
 
-- Use [I/O Analysis (Preview)](storage-performance-analysis.md) in the Azure portal to identify disk performance issues that can cause a failover. 
+- Use [I/O Analysis](storage-performance-analysis.md) in the Azure portal to identify disk performance issues that can cause a failover. 
 - Ensure your OS, drivers, and SQL Server are at the latest builds.
 - Optimize SQL Server on Azure VM environment as described in the [performance guidelines](performance-guidelines-best-practices-checklist.md) for SQL Server on Azure Virtual Machines
 - Use 
@@ -301,7 +301,7 @@ Exhausting I/O or CPU capacity for the VM can cause your availability group to f
 
 ### Use I/O Analysis
 
-Use [I/O Analysis (Preview)](storage-performance-analysis.md) in the Azure portal to identify disk performance issues that can cause a failover. 
+Use [I/O Analysis](storage-performance-analysis.md) in the Azure portal to identify disk performance issues that can cause a failover. 
 
 ### Monitor with VM storage IO metrics 
 

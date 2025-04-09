@@ -1,20 +1,17 @@
 ---
-title: Analyze I/O performance (Preview)
+title: Analyze I/O performance
 description: "Identify I/O performance issues associated with VM and data disk throttling for your SQL Server on Azure VM workloads."
-author: ebruersan
-ms.author: ebrue
+author: dplessMSFT
+ms.author: dpless
 ms.reviewer: mathoma
-ms.date: 05/22/2024
+ms.date: 04/09/2025
 ms.service: azure-vm-sql-server
 ms.topic: how-to
 ---
-# I/O Performance Analysis (Preview) -  SQL Server on Azure VMs 
+# I/O Performance Analysis -  SQL Server on Azure VMs 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 This article teaches you to analyze I/O performance for SQL Server on Azure Virtual Machines (VMs) to find issues that result from exceeding virtual machines and data disks limits.  
-
-> [!NOTE]
-> I/O Analysis for SQL Server on Azure VMs in the Azure portal is currently in preview. 
 
 ## Overview  
 
@@ -41,7 +38,7 @@ The following table explains the Azure Metrics used to identify problematic thro
 
 | Azure Metric | Metric description | Problematic condition | I/O throttling conclusions |
 |--|--| ---| --- | 
-| [Disk latency (preview)](/en-us/azure/virtual-machines/disks-metrics) | The average time to complete IOs for the data disk during the monitored period. Values are in milliseconds. | > 500 milliseconds in a consecutive 5-minute period | **There is a latency problem** for the system to further investigate potential throttling. |
+| [Disk latency (preview)](/azure/virtual-machines/disks-metrics) | The average time to complete IOs for the data disk during the monitored period. Values are in milliseconds. | > 500 milliseconds in a consecutive 5-minute period | **There is a latency problem** for the system to further investigate potential throttling. |
 | [VM Cached IOPS Consumed Percentage](/azure/virtual-machines/disks-metrics) | The percentage calculated by the total IOPS completed over the max cached virtual machine IOPS limit. | >= 95% in a consecutive 5-minute period | **There is VM throttling.** The application running on the SQL virtual machine is fully utilizing the maximum cached IOPS capacity available to the virtual machine -  the storage demands of the application exceed the cached IOPS  provided by the virtual machine's underlying storage configuration. |
 | [VM Cached Bandwidth Consumed Percentage](/azure/virtual-machines/disks-metrics) | The percentage calculated by the total disk throughput completed over the max cached virtual machine throughput. | >= 95% in a consecutive 5-minute period | **There is VM throttling.** The application running on the SQL virtual machine is utilizing the maximum available cached disk bandwidth for data transfer - the data transfer demands of the application exceed the cached bandwidth resources provided by the virtual machine's underlying storage configuration.  | 
 | [VM Uncached IOPS Consumed Percentage](/azure/virtual-machines/disks-metrics) | The percentage calculated by the total IOPS on a virtual machine completed over the max uncached virtual machine IOPS limit. | >= 95% in a consecutive 5-minute period | **There is VM throttling.** The application running on the SQL virtual Machine is utilizing the maximum allowable uncached IOPS capacity available to the virtual machine- the storage demands of the application exceed the uncached IOPS resources provided by the virtual machine's underlying storage configuration. |
@@ -148,6 +145,32 @@ Consider the following steps to avoid exceeding the data disk bandwidth limit:
 
 > [!TIP]
 > Regularly monitoring performance metrics, tuning data transfer operations, and optimizing disk configurations ensures the performance of your data disk for your SQL virtual machine remains optimal without exceeding limits. 
+
+## Latency without throttling
+
+Latency without throttling refers to delays in data access or processing that occur even when the storage system is not hitting its maximum IOPS or throughput limits. Latency in Azure VMs can arise from various sources, including the operating system’s I/O stack, SQL Server processing, network overhead, or hypervisor scheduling. Identifying the cause of the latency is important to optimizing SQL Server performance on Azure VMs.
+
+You will see the following warning on the **I/O Analysis** tab of the **Storage** pane if latency is detected without throttling:
+`Warning: High disk latency detected without throttling`. 
+
+The following lists potential causes for latency without throttling: 
+
+- **High CPU utilization**: Heavy CPU load can slow down I/O operations because the CPU is busy with tasks like encryption, compression, or query execution. This is especially prevalent in VMs with fewer cores. When CPU cycles aren't available, I/O requests can wait longer to be processed, increasing latency even if storage limits are not reached. For example, a VM running a CPU-intensive process, such as data encryption, might delay SQL Server I/O operations, leading to slower query response times.
+- **Insufficient memory on the VM**: In SQL Server, memory is critical for caching data which reduces the need for disk I/O. If memory is constrained, SQL Server might need to read from disk more often, which increases latency. This is particularly relevant in VMs with less memory or when memory-intensive background processes compete for resources. This can indirectly increase storage latency, as more frequent disk operations are needed to handle the workload, even if IOPS limits aren't reached.
+- **Background processes**: Other processes on the VM - such as antivirus software, backups, or maintenance tasks (like Windows Update) - can consume CPU, memory, or disk I/O resources, which delay SQL Server operations. Inefficient filter drivers can worsen this effect. These processes compete with SQL Server for system resources, causing I/O delays that appear as storage latency. For instance, an antivirus scan that reads numerous files simultaneously can reduce disk bandwidth available to SQL Server, which increase latency for database transactions. Additionally, not having the right antivirus exclusions can introduce latency issues without throttling in SQL Server on Azure VMs, primarily through increased disk I/O, filter driver interference, and resource competition.
+- **Lower tiered storage usage**: Opting for lower-tier storage options, such as Standard HDDs, instead of Premium SSDs or Ultra Disks, introduces higher baseline latency due to the inherent design of these disks, even without hitting IOPS limits. While cost-effective, lower-tier storage is not optimized for performance-sensitive SQL Server workloads, which leads to slower data access. For example, a customer using Standard HDDs to save costs might experience slower query performance due to the disks' naturally higher latency.
+- **Inadequate storage configuration**: Failing to configure your storage to optimize for SQL Server workloads can lead to latency without throttling. For example, incorrect disk caching settings can degrade performance. Microsoft recommends enabling read-only caching for data disks and disabling caching for log disks when using Premium SSD v1 with SQL Server on Azure VMs. Misconfigured caching can slow down read or write operations. For example, disabling read caching on a data disk that hosts SQL Server data files reduces the efficiency of read-heavy workloads, increasing latency.
+- **SQL Server database contention**: Inefficient queries (for example, a full table scan instead of an indexed lookups) or lock contention within SQL Server can increase I/O demand or delay data access, which manifests as storage latency. Application-level issues can strain the storage subsystem without exceeding its limits, particularly with small, random I/O patterns common in transactional workloads. For example, a poorly optimized query that performs a full table scan on a large dataset will read excessive data from disk, boosting I/O load and latency compared to an indexed query.
+
+If you're experiencing latency without throttling, consider the following steps to address the latency: 
+
+- **Monitor and manage CPU usage**: Track CPU utilization with tools like Azure Monitor or Resource Monitor. If CPU load is high, optimize SQL queries or upgrade to a VM with more vCores.
+- **Monitor memory usage**: Ensure the VM size has adequate memory for the SQL Server workload, using [VM sizes](/azure/virtual-machines/sizes/overview) like E-series or M-series with higher memory-to-vCore ratios. Monitor memory usage with Performance Monitor or Azure Monitor to identify pressure points. Consider scaling memory up if necessary.
+- **Schedule background tasks carefully**: Run resource-heavy tasks (such as like backups or antivirus scans) during off-peak hours to avoid competing with SQL Server for resources.
+- **Select the right storage tier**: Assess whether lower-tier storage (e.g., Standard HDDs) meets your performance needs. For critical SQL Server workloads, opt for Premium SSDs or Ultra Disks to minimize latency.
+- **Configure caching correctly**: For Premium SSD (v1), set read-only caching for data disks and no caching for log disks. Verify settings after VM or storage changes, as Premium SSD v2 and Ultra Disks do not support caching.
+- **Optimize SQL Server performance**: Review and tune queries to reduce I/O demand. Implement indexes, avoid full table scans, and resolve lock contention to improve efficiency. Use the [Best Practices analysis](sql-assessment-for-sql-vm.md) feature to identify configuration options that can improve performance.
+- **Ensure antivirus exclusions are correct**: Implementing [proper exclusions](/troubleshoot/sql/database-engine/security/antivirus-and-sql-server), testing under load, and scheduling scans appropriately can mitigate latency issues, ensuring optimal performance with security balance.
 
 
 ## I/O related best practices  

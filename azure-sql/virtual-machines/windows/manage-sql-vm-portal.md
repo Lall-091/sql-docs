@@ -66,13 +66,13 @@ Changing the license and edition metadata in the Azure portal is only supported 
 
 ## Storage
 
-The **Storage** page of the **SQL virtual machines** resource allows you to analyze the I/O performance of your SQL Server workloads (currently in preview), identify missing best practices, and configure the storage settings for your SQL Server VM: 
+The **Storage** page of the **SQL virtual machines** resource allows you to analyze the I/O performance of your SQL Server workloads, identify missing best practices, and configure the storage settings for your SQL Server VM: 
 
 :::image type="content" source="./media/manage-sql-vm-portal/sql-vm-storage.png" alt-text="Screenshot of the Azure portal, SQL virtual machines resource, showing where to view storage information.":::
 
 The **Storage** page has the following tabs: 
 
-- The [I/O Analysis](storage-performance-analysis.md) tab (currently in preview) provides insights into the I/O performance of your SQL Server workloads. Use this tab to identify VM level or disk level I/O throttling, as well as suggestions for remediation. 
+- The [I/O Analysis](storage-performance-analysis.md) tab provides insights into the I/O performance of your SQL Server workloads. Use this tab to identify VM level or disk level I/O throttling, as well as suggestions for remediation. 
 - Run I/O related best practices assessments from the [I/O Related Best Practices](sql-assessment-for-sql-vm.md) tab to identify missing storage best practices configurations for your SQL Server VM.
 - Use the [Storage Configuration](storage-configuration.md) tab to configure your data, log, and `tempdb` drives, such as to extend them. For guidance, review [storage configuration](storage-configuration.md) and [Storage: Performance best practices for SQL Server on Azure VMs](performance-guidelines-best-practices-storage.md).
 
@@ -82,7 +82,7 @@ The **Storage** page has the following tabs:
 
 ## Updates
 
-You have two different options when automatically patching your SQL Server on Azure VMs - the new integrated [Azure Update Manager](../azure-update-manager-sql-vm.md) experience currently in preview, and the existing [Automated Patching](automated-patching.md) feature. 
+You have two different options when automatically patching your SQL Server on Azure VMs - the new integrated [Azure Update Manager](../azure-update-manager-sql-vm.md) experience, and the existing [Automated Patching](automated-patching.md) feature (which is scheduled to retire on September 17, 2027). 
 
 Update Manager allows you to choose which updates and patches to apply to multiple SQL Server VMs at scale, including _Cumulative Updates_. **Automated Patching** lets you manage patches for a single VM and only applies updates that are marked as Critical or Important (which doesn't include Cumulative Updates for SQL Server). 
 
