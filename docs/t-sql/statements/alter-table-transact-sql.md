@@ -438,7 +438,7 @@ ALTER TABLE { database_name.schema_name.table_name | schema_name.table_name | ta
 {
   ADD  { column_name <data_type> [COLLATE collation_name] [ <column_options> ] } [ ,...n ]
 | ADD { <column_constraint> FOR column_name} [ ,...n ]
-| DROP { [CONSTRAINT] constraint_name } [ ,...n ]
+| DROP { COLUMN column_name | [CONSTRAINT] constraint_name } [ ,...n ]
 }
 [ ; ]
 
