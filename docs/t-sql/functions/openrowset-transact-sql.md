@@ -784,7 +784,7 @@ FROM OPENROWSET(
 [
     WITH (  ( <column_name> <sql_datatype> [ '<column_path>' | <column_ordinal> ] )+ )
 ]
-AS <alias>
+[ AS <alias> ]
 ```
 
 ## Arguments
@@ -799,13 +799,13 @@ The URI can contain * character representing any sequence of characters and enab
 
 #### FORMAT = { 'CSV' | 'PARQUET' }
 
-Specifies the format of the referenced file. If the file extension in the path with .csv, .parquet, or .parq, the `FORMAT` option doesn't need to be specified. For example:
+Specifies the format of the referenced file. If the file extension in the path ends with .csv, .parquet, or .parq, the `FORMAT` option doesn't need to be specified. For example:
 
 ```sql
 SELECT *
 FROM OPENROWSET(
     BULK 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.parquet'
-    FORMAT = N'CSV') AS cars;
+);
 ```
 
 #### DATAFILETYPE = { 'char' | 'widechar' }
@@ -836,7 +836,7 @@ Specifies the row terminator to be used for **char** and **widechar** data files
 
 #### FIELDTERMINATOR = '*field_terminator*'
 
-Specifies the field terminator to be used for **char** and **widechar** data files. The default field terminator is `\t` (tab character). For more information, see [Specify Field and Row Terminators](../../relational-databases/import-export/specify-field-and-row-terminators-sql-server.md).
+Specifies the field terminator to be used for **char** and **widechar** data files. The default field terminator is `,` (comma). For more information, see [Specify Field and Row Terminators](../../relational-databases/import-export/specify-field-and-row-terminators-sql-server.md).
 
 #### FIELDQUOTE = '*field_quote*'
 
