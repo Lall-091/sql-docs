@@ -3,38 +3,38 @@ title: CREATE VIEW (Transact-SQL)
 description: CREATE VIEW (Transact-SQL)
 author: markingmyname
 ms.author: maghan
-ms.date: 10/23/2024
+ms.date: 04/06/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
+- ignite-2024
 f1_keywords:
-  - "CREATE VIEW"
-  - "VIEW_TSQL"
-  - "VIEW"
-  - "CREATE_VIEW_TSQL"
-  - "SCHEMABINDING_TSQL"
+- "CREATE VIEW"
+- "VIEW_TSQL"
+- "VIEW"
+- "CREATE_VIEW_TSQL"
+- "SCHEMABINDING_TSQL"
 helpviewer_keywords:
-  - "table creation [SQL Server], CREATE VIEW"
-  - "views [SQL Server], creating"
-  - "CREATE VIEW statement"
-  - "updatable partitioned views"
-  - "tables [SQL Server], virtual"
-  - "updatable views"
-  - "modifying partitioned views"
-  - "virtual tables [SQL Server]"
-  - "number of columns per view"
-  - "partitioned views [SQL Server], creating"
-  - "WITH ENCRYPTION clause"
-  - "WITH CHECK OPTION clause"
-  - "partitioned views [SQL Server], modifying"
-  - "partitioned views [SQL Server], replication"
-  - "distributed partitioned views [SQL Server]"
-  - "views [SQL Server], indexed views"
-  - "maximum number of columns per view"
+- "table creation [SQL Server], CREATE VIEW"
+- "views [SQL Server], creating"
+- "CREATE VIEW statement"
+- "updatable partitioned views"
+- "tables [SQL Server], virtual"
+- "updatable views"
+- "modifying partitioned views"
+- "virtual tables [SQL Server]"
+- "number of columns per view"
+- "partitioned views [SQL Server], creating"
+- "WITH ENCRYPTION clause"
+- "WITH CHECK OPTION clause"
+- "partitioned views [SQL Server], modifying"
+- "partitioned views [SQL Server], replication"
+- "distributed partitioned views [SQL Server]"
+- "views [SQL Server], indexed views"
+- "maximum number of columns per view"
 dev_langs:
-  - "TSQL"
+- "TSQL"
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
 
@@ -165,7 +165,7 @@ CREATE [ OR ALTER ] VIEW [ schema_name . ] view_name [  ( column_name [ ,...n ] 
  Views or tables that participate in a view created with the SCHEMABINDING clause cannot be dropped unless that view is dropped or changed so that it no longer has schema binding. Otherwise, the [!INCLUDE[ssDE](../../includes/ssde-md.md)] raises an error. Also, executing ALTER TABLE statements on tables that participate in views that have schema binding fail when these statements affect the view definition.  
 
 > [!NOTE] 
-> In Azure Synapse Analytics, views currently do not support schema binding. For more information, see [T-SQL views with dedicated SQL pool and serverless SQL pool in Azure Synapse Analytics](/azure/synapse-analytics/sql/develop-views#limitations).
+In Azure Synapse Analytics, views currently do not support schema binding. Therefore, if changes are made to the underlying objects, you should drop and recreate the view to refresh the underlying metadata. For more information, see [T-SQL views with dedicated SQL pool and serverless SQL pool in Azure Synapse Analytics](/azure/synapse-analytics/sql/develop-views#limitations). 
   
 #### VIEW_METADATA  
  Specifies that the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] will return to the DB-Library, ODBC, and OLE DB APIs the metadata information about the view, instead of the base table or tables, when browse-mode metadata is being requested for a query that references the view. Browse-mode metadata is additional metadata that the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] returns to these client-side APIs. This metadata enables the client-side APIs to implement updatable client-side cursors. Browse-mode metadata includes information about the base table that the columns in the result set belong to.  
