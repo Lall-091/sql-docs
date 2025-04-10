@@ -5,7 +5,7 @@ description: An overview of database watcher for Azure SQL, a managed monitoring
 author: lcwright
 ms.author: lancewright
 ms.reviewer: wiassaf, dfurman
-ms.date: 03/13/2025
+ms.date: 04/09/2025
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: conceptual
@@ -248,7 +248,6 @@ During preview, database watcher has the following known issues.
 | In Azure SQL Managed Instance, data is not collected if the `EXECUTE` permission on the `sys.xp_msver` system stored procedure is revoked or denied to the `public` role. | Grant the `EXECUTE` permission on `sys.xp_msver` to the database watcher login.</br></br>On every SQL managed instance added as a database watcher target, execute `USE master; CREATE USER [database-watcher-login-placeholder] FOR LOGIN [database-watcher-login-placeholder]; GRANT EXECUTE ON sys.xp_msver TO [database-watcher-login-placeholder];`, replacing `database-watcher-login-placeholder` with the name of the watcher login. |
 | If you create a managed private endpoint for a watcher to connect to a SQL managed instance that is stopped, the provisioning state of the private endpoint is reported as **Failed**, and the watcher cannot connect to the instance. | Delete the managed private endpoint with the **Failed** provisioning state and [start](./managed-instance/instance-stop-start-how-to.md) the SQL managed instance. Once the failed private endpoint is deleted and the instance is running, [re-create](database-watcher-manage.md#create-a-managed-private-endpoint) the managed private endpoint. |
 | Data is not collected if you use a database in Real-Time Analytics as the data store, and the **OneLake availability** option is enabled. | Disable the **OneLake availability** option and restart the watcher to resume data collection. |
-| Because of a known issue in Azure SQL Database, data in the **Backup history** dataset for Azure SQL databases is not collected if the database catalog collation is other than the default `SQL_Latin1_General_CP1_CI_AS`. | None at this time. |
 | Because of a known issue in Azure Monitor Alerts, if you edit an alert rule created from a database watcher template, the scope of any fired alert will be set to the Azure Data Explorer cluster used as the watcher data store instead of the SQL target that the alert applies to. | Edit the alert rule programmatically, for example using Bicep or an ARM template, and set the `resourceIdColumn` property to the value `resource_id`. For more information, see [Resource Manager template samples for log search alert rules in Azure Monitor](/azure/azure-monitor/alerts/resource-manager-alerts-log). |
 | A database watcher deployment via Bicep, an ARM template, Terraform, or REST API fails if the **subscription ID**, **resource group name**, or **watcher name** deployment parameters use inconsistent casing. For example, adding a SQL target for an existing watcher named `example-watcher` fails if the deployment parameter uses `Example-Watcher` as the parameter value. | Use consistent casing for string parameters. For example, standardize on the lower case. |
 
