@@ -1,10 +1,10 @@
 ---
-title: Install SQL Server Data Tools (SSDT)
+title: "Install SQL Server Data Tools (SSDT)"
 description: "Learn about SQL Server Data Tools (SSDT). See how to install this database development tool set with Visual Studio 2019 and 2022."
 author: dzsquared
 ms.author: drskwier
-ms.reviewer: maghan
-ms.date: 05/30/2024
+ms.reviewer: maghan, randolphwest
+ms.date: 04/08/2025
 ms.service: sql
 ms.subservice: ssdt
 ms.topic: install-set-up-deploy
@@ -29,7 +29,7 @@ The release notes for SSDT and its components are available for [Visual Studio 2
 
 SSDT is installed as a Visual Studio component, both for [online installation](#install-ssdt-with-visual-studio) and [offline installation](#offline-installation). Analysis Services, Integration Services, and Reporting Services projects are available as separate extensions for each version.
 
-> [!NOTE]
+> [!NOTE]  
 > SDK-style SQL projects in Visual Studio are available as part of the **SQL Server Data Tools, SDK-style (preview)** feature for Visual Studio 2022, separate from the original SSDT. The SDK-style project format is based on the new SDK-style projects introduced in .NET Core and is the format used by the SQL Database Projects extension for Azure Data Studio and VS Code. For more information, see [SQL Server Data Tools, SDK-style (preview)](sql-server-data-tools-sdk-style.md).
 
 ## Install SSDT with Visual Studio
@@ -40,57 +40,69 @@ To modify the installed Visual Studio workloads to include SSDT, use the Visual 
 
 1. Launch the Visual Studio Installer. In the Windows Start menu, you can search for "installer."
 
-2. In the installer, select for the edition of Visual Studio that you want to add SSDT to, and then choose **Modify**.
+1. In the installer, select **Modify** for the version of Visual Studio to which you want to add SSDT.
 
-3. Select **SQL Server Data Tools** under **Data storage and processing** in the list of workloads.
+1. Select **SQL Server Data Tools** under **Data storage and processing** in the list of workloads.
 
-   :::image type="content" source="../ssdt/media/download-sql-server-data-tools-ssdt/data-workload-2022.png" alt-text="Screenshot of Data storage and processing workload 2022." lightbox="../ssdt/media/download-sql-server-data-tools-ssdt/data-workload-2022.png":::
+   :::image type="content" source="media/download-sql-server-data-tools-ssdt/data-workload-2022.png" alt-text="Screenshot of Data storage and processing workload 2022." lightbox="media/download-sql-server-data-tools-ssdt/data-workload-2022.png":::
 
 ### Visual Studio for Arm64
 
-Visual Studio is available as a [native Arm64 application](/visualstudio/install/visual-studio-on-arm-devices) on Windows 11 Arm64. In Visual Studio 17.10 and later, SSDT is available for Arm64 with [some limitations](https://techcommunity.microsoft.com/t5/azure-sql-blog/announcing-sql-server-data-tools-ssdt-for-arm64-architecture-in/ba-p/4103928). To install or configure Visual Studio to include SSDT on an Arm64 device:
+Visual Studio is available as a [native Arm64 application](/visualstudio/install/visual-studio-on-arm-devices) on Windows 11 Arm64. In Visual Studio 17.10 and later, SSDT is available for Arm64 with [some limitations](https://techcommunity.microsoft.com/blog/azuresqlblog/announcing-sql-server-data-tools-ssdt-for-arm64-architecture-in-visual-studio-17/4103928). To install or configure Visual Studio to include SSDT on an Arm64 device:
 
 1. Install Visual Studio 17.10 or later on your Arm64 device.
 
-2. In the installer, select the **Individual components** tab and search for **SQL Server Data Tools**.
-   
-      :::image type="content" source="../ssdt/media/download-sql-server-data-tools-ssdt/ssdt-component-install.png" alt-text="Screenshot of SQL Server Data Tools for Arm64." lightbox="../ssdt/media/download-sql-server-data-tools-ssdt/ssdt-component-install.png":::
+1. In the installer, select the **Individual components** tab and search for **SQL Server Data Tools**.
 
-3. Select **SQL Server Data Tools** and then choose **Modify**.
+   :::image type="content" source="media/download-sql-server-data-tools-ssdt/ssdt-component-install.png" alt-text="Screenshot of SQL Server Data Tools for Arm64." lightbox="media/download-sql-server-data-tools-ssdt/ssdt-component-install.png":::
+
+1. Select **SQL Server Data Tools** and then choose **Modify**.
 
 ## Install extensions for Analysis Services, Integration Services, and Reporting Services
 
 For Analysis Services (SSAS), Integration Services (SSIS), or Reporting Services (SSRS) projects, you can install the appropriate [extensions](/visualstudio/ide/finding-and-using-visual-studio-extensions) from within Visual Studio with **Extensions** > **Manage Extensions** or from the [Marketplace](https://marketplace.visualstudio.com/search?term=services&target=VS&category=All%20categories&vsVersion=&sortBy=Relevance).
 
-### Extensions for Visual Studio 2022
+### [Visual Studio 2022 extensions](#tab/vs2022)
+
+Extensions for Visual Studio 2022:
 
 - [Analysis Services](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects2022)
 - [Integration Services](https://marketplace.visualstudio.com/items?itemName=SSIS.MicrosoftDataToolsIntegrationServices)
 - [Reporting Services](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftReportProjectsforVisualStudio2022)
 
-### Extensions for Visual Studio 2019
+### [Visual Studio 2019 extensions](#tab/vs2019)
+
+Extensions for Visual Studio 2019:
 
 - [Analysis Services](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects)
 - [Integration Services](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)
 - [Reporting Services](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftReportProjectsforVisualStudio)
 
+---
+
 ## Supported SQL versions
 
-### Supported SQL versions in Visual Studio 2022
+### [Supported SQL versions in Visual Studio 2022](#tab/vs2022)
 
-| Project Templates | SQL Platforms Supported |
+Supported SQL versions in Visual Studio 2022:
+
+| Project templates | SQL platforms supported |
 | --- | --- |
-| Relational databases | [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] - [!INCLUDE [sssql22-md](../includes/sssql22-md.md)]<br /><br />Azure SQL Database, Azure SQL Managed Instance<br /><br />Azure Synapse Analytics Dedicated Pools <br /> Azure Synapse Analytics Serverless Pools (requires VS2022 17.7 see [the release notes](/visualstudio/releases/2022/release-notes-v17.7#support-for-serverless-sql-pool-in-ssdt))<br /><br />Warehouse in Microsoft Fabric (requires VS2022 17.12)<br/>SQL database in Microsoft Fabric (requires VS2022 17.12) |
-| Analysis Services models<br /><br />Reporting Services reports | SQL Server 2016 - SQL Server 2022 |
+| Relational databases | [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] - [!INCLUDE [sssql22-md](../includes/sssql22-md.md)]<br /><br />Azure SQL Database, Azure SQL Managed Instance<br /><br />Azure Synapse Analytics Dedicated Pools<br />Azure Synapse Analytics Serverless Pools (requires VS2022 17.7 see [the release notes](/visualstudio/releases/2022/release-notes-v17.7#support-for-serverless-sql-pool-in-ssdt))<br /><br />Warehouse in Microsoft Fabric (requires VS2022 17.12)<br />SQL database in Microsoft Fabric (requires VS2022 17.12) |
+| Analysis Services models<br /><br />Reporting Services reports` | SQL Server 2016 - SQL Server 2022 |
 | Integration Services packages | SQL Server 2019 - SQL Server 2022 |
 
-### Supported SQL versions in Visual Studio 2019
+### [Supported SQL versions in Visual Studio 2019](#tab/vs2019)
 
-| Project Templates | SQL Platforms Supported |
+Supported SQL versions in Visual Studio 2019:
+
+| Project templates | SQL platforms supported |
 | --- | --- |
 | Relational databases | SQL Server 2012 - SQL Server 2019<br /><br />Azure SQL Database, Azure SQL Managed Instance<br /><br />Azure Synapse Analytics (dedicated pools only) |
 | Analysis Services models<br /><br />Reporting Services reports | SQL Server 2008 - SQL Server 2019 |
 | Integration Services packages | SQL Server 2012 - SQL Server 2022 |
+
+---
 
 ## Offline installation
 
@@ -109,26 +121,15 @@ To understand the license terms and use cases for Visual Studio, refer to [Visua
 
 To download and install SSDT for Visual Studio 2017, or an older version of SSDT, see [Previous releases of SQL Server Data Tools (SSDT and SSDT-BI)](previous-releases-of-sql-server-data-tools-ssdt-and-ssdt-bi.md).
 
-## See also
+## Related content
 
 - [SSDT Team Blog](/archive/blogs/ssdt/)
-
 - [DACFx API Reference](/dotnet/api/microsoft.sqlserver.dac)
-
 - [Download SQL Server Management Studio (SSMS)](../ssms/download-sql-server-management-studio-ssms.md)
-
-- [SQL projects in Azure Data Studio and VS Code](/azure-data-studio/extensions/sql-database-project-extension)
-
-## Next steps
-
-After installation of SSDT, work through these tutorials to learn how to create databases, packages, data models, and reports using SSDT.
-
+- [SQL Database Projects extension](/azure-data-studio/extensions/sql-database-project-extension)
 - [Project-Oriented Offline Database Development](project-oriented-offline-database-development.md)
-
-- [SSIS Tutorial: Create a Simple ETL Package](../integration-services/ssis-how-to-create-an-etl-package.md)
-
+- [SSIS How to Create an ETL Package](../integration-services/ssis-how-to-create-an-etl-package.md)
 - [Analysis Services tutorials](/analysis-services/analysis-services-tutorials-ssas)
+- [Create a basic table report (SSRS tutorial)](../reporting-services/create-a-basic-table-report-ssrs-tutorial.md)
 
-- [Create a Basic Table Report (SSRS Tutorial)](../reporting-services/create-a-basic-table-report-ssrs-tutorial.md)
-
-[!INCLUDE[get-help-options](../includes/paragraph-content/get-help-options.md)]
+[!INCLUDE [get-help-options](../includes/paragraph-content/get-help-options.md)]
