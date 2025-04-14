@@ -4,7 +4,7 @@ description: CREATE COLUMNSTORE INDEX converts a rowstore table to a clustered c
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 03/04/2025
+ms.date: 04/11/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -156,6 +156,13 @@ For more detail on feature availability, see [What's new in columnstore indexes]
 ### CREATE CLUSTERED COLUMNSTORE INDEX
 
 Create a clustered columnstore index in which all of the data is compressed and stored by column. The index includes all of the columns in the table, and stores the entire table. If the existing table is a heap or clustered index, then it is converted to a clustered columnstore index. If the table is already stored as a clustered columnstore index, then the existing index is dropped and rebuilt.
+
+> [!IMPORTANT]
+> In SQL database in Fabric, a clustered columnstore index must be created within the same batch or transaction as the table it belongs to. Adding a clustered columnstore index to a table after it has already been created can result in the following error:
+>
+> ```output
+> Msg 35354, Level 16, State 1, Line 63, The statement failed because a clustered columnstore index cannot be created on a table enabled for Change Feed. Consider disabling Change Feed and then creating the clustered columnstore index.
+> ```
 
 #### *index_name*
 
