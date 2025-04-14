@@ -409,7 +409,7 @@ Using this option prevents the function from being published as part of [!INCLUD
 
 Specifies that the function is bound to the database objects that it references. When `SCHEMABINDING` is specified, the base objects can't be modified in a way that would affect the function definition. The function definition itself must first be modified or dropped to remove dependencies on the object that is to be modified.
 
-The binding of the function to the objects it references is removed only when ne of the following actions occurs:
+The binding of the function to the objects it references is removed only when one of the following actions occurs:
 
 - The function is dropped.
 - The function is modified by using the `ALTER` statement with the `SCHEMABINDING` option not specified.
