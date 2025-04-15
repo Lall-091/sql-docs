@@ -228,7 +228,7 @@ SET QUERY_STORE = ON (
 
 - To disable PSP optimization at the database level, use the `ALTER DATABASE SCOPED CONFIGURATION SET PARAMETER_SENSITIVE_PLAN_OPTIMIZATION = OFF` database scoped configuration.
 
-- To disable PSP optimization at the query level, use the `DISABLE_PARAMETER_SENSITIVE_PLAN_OPTIMIZATION` query hint.
+- To disable PSP optimization at the query level, use the `DISABLE_PARAMETER_SENSITIVE_PLAN` query hint.
 
 - If parameter sniffing is disabled by Trace Flag 4136, `PARAMETER_SNIFFING` database scoped configuration, or the `USE HINT('DISABLE_PARAMETER_SNIFFING')` query hint, PSP optimization is disabled for the associated workloads and execution contexts. For more information, see [Hints (Transact-SQL) - Query](../../t-sql/queries/hints-transact-sql-query.md) and [ALTER DATABASE SCOPED CONFIGURATION (Transact-SQL)](../../t-sql/statements/alter-database-scoped-configuration-transact-sql.md).
 
@@ -327,7 +327,7 @@ Refer to the [Remarks](how-query-store-collects-data.md#remarks) section of the 
 **Workaround**: The query variants that are in the Query Store can be removed, or the PSP feature can be temporarily disabled at the query or database level until additional fixes become available if your system is still experiencing access violations in Query Store with PSP integration enabled after applying Cumulative Update 7 for [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)].
 
 - To disable PSP optimization at the database level, use the `ALTER DATABASE SCOPED CONFIGURATION SET PARAMETER_SENSITIVE_PLAN_OPTIMIZATION = OFF` database scoped configuration.
-- To disable PSP optimization at the query level, use the `DISABLE_PARAMETER_SENSITIVE_PLAN_OPTIMIZATION` query hint.
+- To disable PSP optimization at the query level, use the `DISABLE_PARAMETER_SENSITIVE_PLAN` query hint.
 
 To remove all of the query variants from the Query Store, not just the query variants that appear in the [sys.query_store_query_variant (Transact-SQL)](../system-catalog-views/sys-query-store-query-variant.md#sysquery_store_query_variant-transact-sql) catalog view, a query similar to the following one can be used. Replace `[<database>]` with the appropriate database that was experiencing issues:
 
