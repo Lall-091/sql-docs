@@ -3,7 +3,7 @@ title: "sys.dm_db_missing_index_group_stats_query (Transact-SQL)"
 description: The sys.dm_db_missing_index_group_stats_query dynamic management view returns information about queries that needed a missing index from groups of missing indexes.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: "02/24/2023"
+ms.date: "04/15/2025"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -52,9 +52,6 @@ monikerRange: "=azuresqldb-current||>=sql-server-ver15||>=sql-server-linux-ver15
  Information returned by `sys.dm_db_missing_index_group_stats_query` is updated by every query execution, not by every query compilation or recompilation. Usage statistics are not persisted and are kept only until the database engine is restarted. 
 
 Database administrators should periodically make backup copies of the missing index information if they want to keep the usage statistics after server recycling. Use the `sqlserver_start_time` column in [sys.dm_os_sys_info](sys-dm-os-sys-info-transact-sql.md) to find the last database engine startup time. You can also [persist missing indexes with Query Store](../indexes/tune-nonclustered-missing-index-suggestions.md#persist-missing-indexes-with-query-store).
- 
-  >[!NOTE]
-  >The result set for this DMV is limited to 600 rows. Each row contains one missing index. If you have more than 600 missing indexes, you should address the existing missing indexes so you can then view the newer ones.
 
 ## Permissions  
  To query this dynamic management view, users must be granted the VIEW SERVER STATE permission or any permission that implies the VIEW SERVER STATE permission.  
