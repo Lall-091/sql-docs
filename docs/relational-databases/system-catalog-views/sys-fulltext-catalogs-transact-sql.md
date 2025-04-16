@@ -36,7 +36,7 @@ dev_langs:
 |data_space_id|**int**|Filegroup where this catalog was created.|  
 |file_id|**int**|File ID of the full-text file associated with the catalog.|  
 |principal_id|**int**|ID of the database principal that owns the full-text catalog.|  
-|is_importing|**bit**|Indicates whether the full-text catalog is being imported:<br /><br /> 1 = The catalog is being imported.<br /><br /> 2 = The catalog is not being imported.|  
+|is_importing|**bit**|Indicates whether the full-text catalog is being imported:<br /><br /> 0 = The catalog is being imported.<br /><br /> 1 = The catalog is not being imported.|  
   
 ## Permissions  
  [!INCLUDE[ssCatViewPerm](../../includes/sscatviewperm-md.md)]  
