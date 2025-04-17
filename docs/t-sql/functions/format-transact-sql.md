@@ -9,14 +9,12 @@ ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 f1_keywords:
-  - "FORMAT_TSQL"
-  - "FORMAT"
+    "FORMAT_TSQL"
+    "FORMAT"
 helpviewer_keywords:
-  - "FORMAT function"
-dev_langs:
-  - "TSQL"
-ai-usage:
-  - "ai-assisted"
+    - "FORMAT function"
+dev_langs: "TSQL"
+ai-usage: "ai-assisted"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =fabric"
 ---
 
