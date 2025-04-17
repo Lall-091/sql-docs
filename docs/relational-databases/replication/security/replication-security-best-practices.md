@@ -63,12 +63,15 @@ helpviewer_keywords:
 
 ## Improve security posture with database master key
 
+> [!NOTE]
+> The instructions in this section are currently applicable to SQL Server 2022 CU18 and later, and SQL Server 2019 CU31 and later. These instructions are not applicable to Azure SQL Managed Instance. 
+
 When using SQL Server authentication for replication, secrets that you provide when you configure replication are stored within SQL Server — specifically, in the distribution database and, for pull subscriptions, also in the subscriber database. 
 
 To enhance the security posture for replication, **before you *start* to configure replication**: 
 
 - Create a [database master key (DMK)](../../../t-sql/statements/create-master-key-transact-sql.md) in the distribution database of the server that hosts the Distributor. 
-- For *pull subscriptions*, also create a DMK in the subscriber database. 
+- For *pull subscriptions*, also create a DMK in the subscriber database.
 
 If replication was created before the DMK, first create the DMK, and then update replication secrets by updating passwords for replication jobs. You can update the job with the same password, or you can use a new password. 
 
@@ -78,7 +81,6 @@ To update replication secrets, use one of the following relevant stored procedur
 - [sp_changesubscriber](../../system-stored-procedures/sp-changesubscriber-transact-sql.md)
 - [sp_changedistpublisher](../../system-stored-procedures/sp-changedistpublisher-transact-sql.md)
 - [sp_changepublication_snapshot](../../system-stored-procedures/sp-changepublication-snapshot-transact-sql.md)
-
 
 Configuring transactional replication without a DMK can result in SQL Server warning `14130` on: 
 
