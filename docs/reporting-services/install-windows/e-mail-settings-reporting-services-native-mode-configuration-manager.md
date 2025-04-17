@@ -17,6 +17,9 @@ helpviewer_keywords:
 ---
 # Email settings in Reporting Services native mode (Report Server Configuration Manager)
 
+> [!IMPORTANT]
+> Exchange Online [announced](https://https:/techcommunity.microsoft.com/blog/exchange/exchange-online-to-retire-basic-auth-for-client-submission-smtp-auth/4114750) the retirement of Basic Auth with Client Submission (SMTP AUTH) in September 2025. The Exchange Online team recommends three alternatives for customers who must continue to use Basic auth with Client Submission (SMTP AUTH): [High Volume Emails for Microsoft 365](/Exchange/mail-flow-best-practices/high-volume-mails-m365), [Azure Communication Services Email](/azure/communication-services/concepts/email/email-smtp-overview), or [Anonymous relay on Exchange servers](/exchange/mail-flow/connectors/allow-anonymous-relay?view=exchserver-2019). Customers currently using Exchange Online Basic Auth with Client Submission (SMTP AUTH) for email distribution through SSRS are advised to start switching to one of these alternatives based on their specific requirements.
+
 You can distribute reports through email by using the SQL Server Reporting Services (SSRS) email delivery extension. Depending on the email subscription configuration, distribution might include a notification, link, attachment, or embedded report. The email delivery extension works with your existing mail server technology that uses a Simple Mail Transfer Protocol (SMTP) server or forwarder. The report server connects to an SMTP server through Collaboration Data Objects (CDO) libraries (`cdosys.dll`) provided by the operating system.
 
 The report server email delivery extension isn't configured by default. You use the Report Server Configuration Manager to minimally configure the extension. To set advanced properties, edit the `RSReportServer.config` file. If you can't configure the report server to use this extension, you can deliver reports to a shared folder instead. For more information, see [File share delivery in Reporting Services](../../reporting-services/subscriptions/file-share-delivery-in-reporting-services.md).
@@ -42,7 +45,7 @@ Before you can use Report Server email delivery, you must set configuration valu
 > [!NOTE]
 > Report server email settings are based on CDO. For more information about specific settings, see the CDO production documentation.
 
-## <a name="rsconfigman"></a> Configure report server email by using the Report Server Configuration Manager
+## <a name="rsconfigman"></a>Configure report server email by using the Report Server Configuration Manager
 
 1. Start the Report Server Configuration Manager and connect to the report server instance.
 1. Go to **E-mail Settings**. 
