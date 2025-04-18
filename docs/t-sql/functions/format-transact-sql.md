@@ -4,16 +4,17 @@ description: The FORMAT function returns a value formatted with the specified fo
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 11/04/2024
+ms.date: 04/18/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 f1_keywords:
-    "FORMAT_TSQL"
-    "FORMAT"
+  - "FORMAT_TSQL"
+  - "FORMAT"
 helpviewer_keywords:
-    - "FORMAT function"
-dev_langs: "TSQL"
+  - "FORMAT function"
+dev_langs:
+  - TSQL
 ai-usage: "ai-assisted"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =fabric"
 ---
@@ -260,7 +261,7 @@ FORMAT ( value, format_string [, culture ] )
 - `culture`: (Optional) A string that specifies the culture to use for formatting.
 
 ```sql
-SELECT FORMAT(1234567.89, 'N0') AS FormattedNumber; 
+SELECT FORMAT(1234567.89, 'N0') AS FormattedNumber;
 ```
 
 ```output
