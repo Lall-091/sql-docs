@@ -1,10 +1,10 @@
 ---
-title: "View or change the compatibility level of a database"
+title: "View or Change the Compatibility Level of a Database"
 description: Learn how to view or change the compatibility level of a database in SQL Server or Azure SQL by using SQL Server Management Studio or Transact-SQL.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest
-ms.date: 07/25/2024
+ms.date: 04/22/2025
 ms.service: sql
 ms.subservice: supportability
 ms.topic: how-to
@@ -30,7 +30,9 @@ Before you change the compatibility level of a database, you should understand t
 
 Requires `ALTER` permission on the database.
 
-## <a id="SSMSProcedure"></a> Use SQL Server Management Studio
+<a id="SSMSProcedure"></a>
+
+## Use SQL Server Management Studio
 
 To view or change the compatibility level of a database using [SQL Server Management Studio (SSMS)](../../ssms/sql-server-management-studio-ssms.md)
 
@@ -53,9 +55,11 @@ To view or change the compatibility level of a database using [SQL Server Manage
 
    To change the compatibility level, select a different option from the list. The available options for different [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] versions are listed in the [ALTER DATABASE Compatibility Level (Transact-SQL)](../../t-sql/statements/alter-database-transact-sql-compatibility-level.md#supported-dbcompats) page.
 
-## <a id="TsqlProcedure"></a> Use Transact-SQL
+<a id="TsqlProcedure"></a>
 
-You can use Transact-SQL to view or change the compatibility level of a database using SSMS or [Azure Data Studio](/azure-data-studio/what-is-azure-data-studio).
+## Use Transact-SQL
+
+You can use Transact-SQL to view or change the compatibility level of a database using SSMS.
 
 ### View the compatibility level of a database
 
@@ -66,10 +70,9 @@ You can use Transact-SQL to view or change the compatibility level of a database
 1. Copy and paste the following example into the query window and select **Execute**. This example returns the compatibility level of the [!INCLUDE [sssampledbobject-md](../../includes/sssampledbobject-md.md)] [sample database](../../samples/adventureworks-install-configure.md).
 
    ```sql
-   USE AdventureWorks2022;
-   GO
    SELECT compatibility_level
-   FROM sys.databases WHERE name = 'AdventureWorks2022';
+   FROM sys.databases
+   WHERE [name] = 'AdventureWorks2022';
    GO
    ```
 
@@ -87,9 +90,9 @@ You can use Transact-SQL to view or change the compatibility level of a database
    GO
    ```
 
-> [!NOTE]
-> The compatibility level of a [Fabric SQL database](/fabric/database/sql/overview) cannot be changed, and always uses the latest version.
+> [!NOTE]  
+> The compatibility level of a [SQL database in Microsoft Fabric (Preview)](/fabric/database/sql/overview) cannot be changed, and always uses the latest version.
 
 ## Related content
 
-- [ALTER DATABASE (Transact-SQL) Compatibility Level](../../t-sql/statements/alter-database-transact-sql-compatibility-level.md)
+- [ALTER DATABASE (Transact-SQL) compatibility level](../../t-sql/statements/alter-database-transact-sql-compatibility-level.md)
