@@ -52,32 +52,32 @@ CAB files are listed in reverse chronological order. When you download the CAB f
 
 |Release | Component | Download link | Issues addressed |
 |------- | --------- | ------------- | ---------------- |
-|**[SQL Server 2019 CU16](https://support.microsoft.com/help/5011644) and later versions** |  |  |  |
+|**[SQL Server 2019 CU16](/troubleshoot/sql/releases/sqlserver-2019/cumulativeupdate16) and later versions** |  |  |  |
 | | Microsoft R Open      | [SRO_3.5.2.777_1033.cab](https://go.microsoft.com/fwlink/?linkid=2134897)  |  |
 | | R Server              | [SRS_9.4.7.2008_1033.cab](https://go.microsoft.com/fwlink/?linkid=2191223)  |  |
 | | Microsoft Python Open | [SPO_4.5.12.479_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2118341) |  |
 | | Python Server         | [SPS_9.4.7.2008_1033.cab](https://go.microsoft.com/fwlink/?linkid=2191314)  |  |
-|**[SQL Server 2019 CU8-CU15](https://support.microsoft.com/help/5008996)** |  |  |  |
+|**[SQL Server 2019 CU8](/troubleshoot/sql/releases/sqlserver-2019/cumulativeupdate8)-[CU15](/troubleshoot/sql/releases/sqlserver-2019/cumulativeupdate15)** |  |  |  |
 | | Microsoft R Open      | [SRO_3.5.2.777_1033.cab](https://go.microsoft.com/fwlink/?linkid=2134897)  |  |
 | | R Server              | [SRS_9.4.7.958_1033.cab](https://go.microsoft.com/fwlink/?linkid=2136942)  |  |
 | | Microsoft Python Open | [SPO_4.5.12.479_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2118341) |  |
 | | Python Server         | [SPS_9.4.7.958_1033.cab](https://go.microsoft.com/fwlink/?linkid=2136731)  |  |
-|**[SQL Server 2019 CU5](https://support.microsoft.com/help/4552255)** |  |  |  |
+|**[SQL Server 2019 CU5](/troubleshoot/sql/releases/sqlserver-2019/cumulativeupdate5)** |  |  |  |
 | | Microsoft R Open      | [SRO_3.5.2.293_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2118178)  |  |
 | | R Server              | [SRS_9.4.7.804_1033.cab](https://go.microsoft.com/fwlink/?linkid=2122004)  |  |
 | | Microsoft Python Open | [SPO_4.5.12.479_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2118341) |  |
 | | Python Server         | [SPS_9.4.7.804_1033.cab](https://go.microsoft.com/fwlink/?linkid=2121809)  |  |
-|**[SQL Server 2019 CU3](https://support.microsoft.com/help/4538853)** |  |  |  |
+|**[SQL Server 2019 CU3](/troubleshoot/sql/releases/sqlserver-2019/cumulativeupdate3)** |  |  |  |
 | | Microsoft R Open      | [SRO_3.5.2.293_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2118178)  |  |
 | | R Server              | [SRS_9.4.7.717_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2118177)  |  |
 | | Microsoft Python Open | [SPO_4.5.12.479_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2118341) |  |
 | | Python Server         | [SPS_9.4.7.717_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2118342)  |  |
-|**[SQL Server 2019 CU2](https://support.microsoft.com/help/4536075)** |  |  |  |
+|**[SQL Server 2019 CU2](/troubleshoot/sql/releases/sqlserver-2019/cumulativeupdate2)** |  |  |  |
 | | Microsoft R Open      | [SRO_3.5.2.125_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2085686)  |  |
 | | R Server              | [SRS_9.4.7.35_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2113250)   |  |
 | | Microsoft Python Open | [SPO_4.5.12.692_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2113303) |  |
 | | Python Server         | [SPS_9.4.7.35_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2113067)   |  |
-|**[SQL Server 2019 CU1](https://support.microsoft.com/help/4527376)** |  |  |  |
+|**[SQL Server 2019 CU1](/troubleshoot/sql/releases/sqlserver-2019/cumulativeupdate1)** |  |  |  |
 | | Microsoft R Open      | [SRO_3.5.2.125_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2085686)  |  |
 | | R Server              | [SRS_9.4.7.25_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2085792)   |  |
 | | Microsoft Python Open | [SPO_4.5.12.120_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2085793) |  |
@@ -108,67 +108,67 @@ CAB files are listed in reverse chronological order. When you download the CAB f
 
 |Release  |Component | Download link  | Issues addressed |
 |---------|----------|----------------|------------------|
-|**[SQL Server 2017 CU29](https://support.microsoft.com//help/5010786/)-[CU31](https://support.microsoft.com//help/5016884/)** |  |  |  |
+|**[SQL Server 2017 CU29](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate29)-[CU31](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate31)** |  |  |  |
 | | Microsoft R Open      | [SRO_3.5.2.777_1033.cab](https://go.microsoft.com/fwlink/?linkid=2134897)  |  |
 | | R Server              | [SRS_9.4.7.1162_1033.cab](https://go.microsoft.com/fwlink/?linkid=2174362)  |  |
 | | Microsoft Python Open | [SPO_4.5.12.479_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2118341) |  |
 | | Python Server         | [SPS_9.4.7.1226_1033.cab](https://go.microsoft.com/fwlink/?linkid=2189383)  |Fixes `sp_execute_external_script` execution failures for Python by removing breaking numpy package version mismatch.  |
-|**[SQL Server 2017 CU27](https://support.microsoft.com//help/5006944/)-[CU28](https://support.microsoft.com//help/5008084/)** |  |  |  |
+|**[SQL Server 2017 CU27](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate27)-[CU28](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate28)** |  |  |  |
 | | Microsoft R Open      | [SRO_3.5.2.777_1033.cab](https://go.microsoft.com/fwlink/?linkid=2134897)  |  |
 | | R Server              | [SRS_9.4.7.1162_1033.cab](https://go.microsoft.com/fwlink/?linkid=2174362)  |  |
 | | Microsoft Python Open | [SPO_4.5.12.479_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2118341) |  |
 | | Python Server         | [SPS_9.4.7.1162_1033.cab](https://go.microsoft.com/fwlink/?linkid=2174361)  |  |
-|**[SQL Server 2017 CU22](https://support.microsoft.com/help/4577467/)-[CU26](https://support.microsoft.com/help/5005226/)** |  |  |  |
+|**[SQL Server 2017 CU22](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate22)-[CU26](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate26)** |  |  |  |
 | | Microsoft R Open      | [SRO_3.5.2.777_1033.cab](https://go.microsoft.com/fwlink/?linkid=2134897)  |  |
 | | R Server              | [SRS_9.4.7.958_1033.cab](https://go.microsoft.com/fwlink/?linkid=2136942)  |  |
 | | Microsoft Python Open | [SPO_4.5.12.479_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2118341) |  |
 | | Python Server         | [SPS_9.4.7.958_1033.cab](https://go.microsoft.com/fwlink/?linkid=2136731)  |  |
-|**[SQL Server 2017 CU19](https://support.microsoft.com/help/4535007/)-[CU20](https://support.microsoft.com/help/4541283/)** |  |  |  |
+|**[SQL Server 2017 CU19](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate19)-[CU20](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate20)** |  |  |  |
 | | Microsoft R Open | [SRO_3.3.3.1900_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2106367&clcid=1033) | Fixes the bug where `sp_execute_external_script` executing an R script shows warning message |
 | | R Server| [SRS_9.2.0.1900_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2106460&clcid=1033) | No change from previous versions. |
 | | Microsoft Python Open | [SPO_9.2.0.1400_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2073897&clcid=1033) | No change from previous versions. |
 | | Python Server | [SPS_9.2.0.1900_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2106459&clcid=1033) | Fixes the bug where `sp_execute_external_script` executing a python script sometimes loses data when returning varbinary or binary data type back to SQL Server in the form of an OutputDataSet. |
-|**[SQL Server 2017 CU14](https://support.microsoft.com/help/4484710/)-[CU15](https://support.microsoft.com/help/4498951/)-[CU16](https://support.microsoft.com/help/4508218/)-[CU17](https://support.microsoft.com/help/4515579/)-[CU18](https://support.microsoft.com/help/4527377/)** |  |  |  |
+|**[SQL Server 2017 CU14](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate14)-[CU15](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate15)-[CU16](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate16)-[CU17](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate17)-[CU18](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate18)** |  |  |  |
 | | Microsoft R Open     | [SRO_3.3.3.1400_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2073898&clcid=1033)| Binaries within the package are now signed. |
 | | R Server      |[SRS_9.2.0.1400_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2069739&clcid=1033)| Binaries within the package are now signed. |
 | | Microsoft Python Open     | [SPO_9.2.0.1400_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2073897&clcid=1033)| Binaries within the package are now signed. |
 | | Python Server    |[SPS_9.2.0.1400_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2071421&clcid=1033)| Binaries within the package are now signed.  |
-|**[SQL Server 2017 CU13](https://support.microsoft.com/help/4466404)** |  |  |  |
+|**[SQL Server 2017 CU13](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate13)** |  |  |  |
 | | Microsoft R Open     | [SRO_3.3.3.1300_1033.cab](https://go.microsoft.com/fwlink/?LinkId=863894)| No change from previous versions. |
 | | R Server      |[SRS_9.2.0.1300_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2038263&clcid=1033)| Contains a fix for upgrading an [operationalized standalone R Server](/machine-learning-server/what-is-operationalization), as installed through SQL Server Setup. Use the CU13 CABs and follow [these instructions](sql-machine-learning-standalone-windows-install.md#apply-cu) to apply the update. |
 | | Microsoft Python Open     | [SPO_9.2.0.24_1033.cab](https://go.microsoft.com/fwlink/?LinkId=851502)| No change from previous versions. |
 | | Python Server    |[SPS_9.2.0.1300_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2038197&clcid=1033)| Contains a fix for upgrading an [operationalized standalone Python Server](/machine-learning-server/what-is-operationalization), as installed through SQL Server Setup. Use the CU13 CABs and follow [these instructions](sql-machine-learning-standalone-windows-install.md#apply-cu) to apply the update. |
-|**[SQL Server 2017 CU10](https://support.microsoft.com/help/4342123)-[CU11](https://support.microsoft.com/help/4462262)-[CU12](https://support.microsoft.com/help/4464082)** |  |  |  |
+|**[SQL Server 2017 CU10](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate10)-[CU11](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate11)-[CU12](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate12)** |  |  |  |
 | | Microsoft R Open     | [SRO_3.3.3.300_1033.cab](https://go.microsoft.com/fwlink/?LinkId=863894)| No change from previous versions. |
 | | R Server      |[SRS_9.2.0.1000_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2006287&clcid=1033)| Minor fixes.|
 | | Microsoft Python Open     | [SPO_9.2.0.24_1033.cab](https://go.microsoft.com/fwlink/?LinkId=851502)| No change from previous versions. |
 | | Python Server    |[SPS_9.2.0.1000_1033.cab](https://go.microsoft.com/fwlink/?LinkId=2006805&clcid=1033)| Python rx_data_step loses row order when duplicates are removed. <br/>SPEE fails datatype detection on clustered columnstore index. <br/>Returns an empty table when columns contain all null values. |
-|**[SQL Server 2017 CU8](https://support.microsoft.com/help/4338363)-[CU9](https://support.microsoft.com/help/4341265)** |  |  |  |
+|**[SQL Server 2017 CU8](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate8)-[CU9](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate9)** |  |  |  |
 | | Microsoft R Open     | [SRO_3.3.3.300_1033.cab](https://go.microsoft.com/fwlink/?LinkId=863894)| No change from previous versions. |
 | | R Server      |[SRS_9.2.0.800_1033.cab](https://go.microsoft.com/fwlink/?LinkId=874708&clcid=1033)|
 | | Microsoft Python Open     | [SPO_9.2.0.24_1033.cab](https://go.microsoft.com/fwlink/?LinkId=851502)| No change from previous versions. |
 | | Python Server    |[SPS_9.2.0.800_1033.cab](https://go.microsoft.com/fwlink/?LinkId=874707&clcid=1033)|
-|**[SQL Server 2017 CU6](https://support.microsoft.com/help/4101464)-[CU7](https://support.microsoft.com/help/4229789)** |  |  |  |
+|**[SQL Server 2017 CU6](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate6)-[CU7](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate7)** |  |  |  |
 | | Microsoft R Open     | [SRO_3.3.3.300_1033.cab](https://go.microsoft.com/fwlink/?LinkId=863894)| No change from previous versions. |
 | | R Server      |[SRS_9.2.0.600_1033.cab](https://go.microsoft.com/fwlink/?LinkId=871074&clcid=1033)|
 | | Microsoft Python Open     | [SPO_9.2.0.24_1033.cab](https://go.microsoft.com/fwlink/?LinkId=851502)| No change from previous versions. |
 | | Python Server    |[SPS_9.2.0.600_1033.cab](https://go.microsoft.com/fwlink/?LinkId=871073&clcid=1033)| DateTime data types in SPEES query.<br/>improved error messages in microsoftml when pre-trained models are missing.<br/> Fixes to revoscalepy transform functions and variables.|
-|**[SQL Server 2017 CU5](https://support.microsoft.com/help/4092643)** |  |  |  |
+|**[SQL Server 2017 CU5](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate5)** |  |  |  |
 | | Microsoft R Open     | [SRO_3.3.3.300_1033.cab](https://go.microsoft.com/fwlink/?LinkId=863894)| No change from previous versions. |
 | | R Server      |[SRS_9.2.0.500_1033.cab](https://go.microsoft.com/fwlink/?LinkId=869052&clcid=1033)| Long path-related errors in rxInstallPackages.<br/>Connections in a loopback for RxExec.
 | | Microsoft Python Open    | No change from previous versions. |
 | | Python Server    |[SPS_9.2.0.500_1033.cab](https://go.microsoft.com/fwlink/?LinkId=869053&clcid=1033)| <br/>Connections in a loopback for rx_exec.
-|**[SQL Server 2017 CU4](https://support.microsoft.com/help/4056498)** |  |   |  |
+|**[SQL Server 2017 CU4](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate4)** |  |   |  |
 | | Microsoft R Open     | [SRO_3.3.3.300_1033.cab](https://go.microsoft.com/fwlink/?LinkId=863894)| No change from previous versions. |
 | | R Server      |[SRS_9.2.0.400_1033.cab](https://go.microsoft.com/fwlink/?LinkId=866212&clcid=1033)|
 | | Microsoft Python Open     |[SPO_9.2.0.24_1033.cab](https://go.microsoft.com/fwlink/?LinkId=851502)| No change from previous versions. |
 | |  Python Server    |[SPS_9.2.0.400_1033.cab](https://go.microsoft.com/fwlink/?LinkId=866213&clcid=1033)|
-|**[SQL Server 2017 CU3](https://support.microsoft.com/help/4052987)** |  |  |  |
+|**[SQL Server 2017 CU3](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate3)** |  |  |  |
 | | Microsoft R Open     |[SRO_3.3.3.300_1033.cab](https://go.microsoft.com/fwlink/?LinkId=863894)|
 | | R Server      |[SRS_9.2.0.300_1033.cab](https://go.microsoft.com/fwlink/?LinkId=863893)|
 | | Microsoft Python Open     |[SPO_9.2.0.24_1033.cab](https://go.microsoft.com/fwlink/?LinkId=851502)| No change from previous versions. |
 | | Python Server    |[SPS_9.2.0.300_1033.cab](https://go.microsoft.com/fwlink/?LinkId=863892)| Python model serialization in revoscalepy, using the [rx_serialize_model function](/machine-learning-server/python-reference/revoscalepy/rx-serialize-model).<br/>[Native scoring](../predictions/native-scoring-predict-transact-sql.md) support, plus enhancements to [real-time scoring](../predictions/real-time-scoring.md).  
-|**[SQL Server 2017 CU1](https://support.microsoft.com/help/4038634)-[CU2](https://support.microsoft.com/help/4052574)** |  |  |  |
+|**[SQL Server 2017 CU1](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate1)-[CU2](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate2)** |  |  |  |
 | | Microsoft R Open     | [SRO_3.3.3.24_1033.cab](https://go.microsoft.com/fwlink/?LinkId=851496)| No change from previous versions. |
 | | R Server      |[SRS_9.2.0.100_1033.cab](https://go.microsoft.com/fwlink/?LinkId=851501)|
 | | Microsoft Python Open     | [SPO_9.2.0.24_1033.cab](https://go.microsoft.com/fwlink/?LinkId=851502)| No change from previous versions. |

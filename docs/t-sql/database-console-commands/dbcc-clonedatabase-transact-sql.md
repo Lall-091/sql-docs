@@ -1,8 +1,8 @@
 ---
 title: "DBCC CLONEDATABASE (Transact-SQL)"
 description: DBCC CLONEDATABASE generates a schema-only clone of a database by using DBCC CLONEDATABASE in order to investigate performance issues related to the query optimizer.
-author: bluefooted
-ms.author: pamela
+author: MikeRayMSFT
+ms.author: mikeray
 ms.reviewer: randolphwest
 ms.date: 12/05/2022
 ms.service: sql
@@ -298,4 +298,4 @@ GO
 ## See also
 
 - [DBCC (Transact-SQL)](../../t-sql/database-console-commands/dbcc-transact-sql.md)
-- [How to generate a script of the necessary database metadata to create a statistics-only database in SQL Server](https://support.microsoft.com/help/914288)
+- [How to generate a script of the necessary database metadata to create a statistics-only database in SQL Server](/troubleshoot/sql/database-engine/performance/stats-only-db-script)

@@ -368,7 +368,7 @@ The only way to enable DTC support on an AG for versions before [!INCLUDE [sssql
 
 ## <a id="ClusterDTC"></a> 8. Prepare cluster resources
 
-This script prepares the DTC dependent resources: Disk and IP. The shared storage is added to the Windows Cluster. Network resources are created, and then the DTC is created and made as a resource to the AG. Run the following PowerShell script on `SQLNODE1`. This script is based on the sample located at [How to Properly Configure DTC for Clustered Instances of SQL Server (Revised)](https://sqlha.com/how-to-properly-configure-dtc-for-clustered-instances-of-sql-server-with-windows-server-2008-r2/).
+This script prepares the DTC dependent resources: Disk and IP. The shared storage is added to the Windows Cluster. Network resources are created, and then the DTC is created and made as a resource to the AG. Run the following PowerShell script on `SQLNODE1`.
 
 ```powershell
 # Create a clustered Microsoft Distributed Transaction Coordinator properly in the resource group with SQL Server

@@ -54,7 +54,7 @@ The following table provides a nonexhaustive summary of object storage providers
 | [Nutanix](https://www.nutanix.com/products/objects) | Nutanix Object Storage |
 | [Pure Storage](https://www.purestorage.com/products/unstructured-data-storage/flashblade-s.html) | Pure FlashBlade |
 | [Red Hat](https://www.redhat.com/en/technologies/cloud-computing/openshift) | OpenShift Container Storage |
-| [Scality](https://www.scality.com/wp-content/uploads/2022/06/artesca.jpeg) | Scality Artesca |
+| [Scality](https://www.artesca.scality.com/) | Scality Artesca |
 | [Weka](https://www.weka.io) | Weka S3 |
 
 ## Prerequisites for the S3 endpoint

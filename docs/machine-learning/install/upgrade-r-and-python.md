@@ -112,7 +112,7 @@ Follow the steps to bind SQL Server to Microsoft Machine Learning Server using s
 
 1. In SSMS, run `SELECT @@version` to verify the server meets minimum build requirements.
 
-   For SQL Server 2016 R Services, the minimum is [Service Pack 1](https://www.microsoft.com/download/details.aspx?id=54276) and [CU3](https://support.microsoft.com/help/4019916/cumulative-update-3-for-sql-server-2016-sp1).
+   For SQL Server 2016 R Services, the minimum is [Service Pack 1 with CU3](/troubleshoot/sql/releases/sqlserver-2016/servicepack1-cumulativeupdate3).
 
 1. Check the version of R base and RevoScaleR packages to confirm the existing versions are lower than what you plan to replace them with. 
 

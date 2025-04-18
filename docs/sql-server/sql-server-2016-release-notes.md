@@ -248,7 +248,7 @@ The [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] SP1 installation might re
 
 - [Download Service Pack 1 for Microsoft SQL Server 2016](https://www.microsoft.com/download/details.aspx?id=54276)
 - [SQL Server 2016 Service Pack 1 (SP1) Released](/archive/blogs/sqlreleaseservices/sql-server-2016-service-pack-1-sp1-released)
-- [SQL Server 2016 Service Pack 1 release information](https://support.microsoft.com/kb/3182545)
+- [SQL Server 2016 Service Pack 1 release information](/troubleshoot/sql/releases/sqlserver-2016/servicepack1)
 - [SQL Server Update Center](/troubleshoot/sql/releases/download-and-install-latest-updates?bc=%2fsql%2fbreadcrumb%2ftoc.json&toc=%2fsql%2ftoc.json) for links and information for all supported versions, including service packs of [!INCLUDE [ssNoVersion_md](../includes/ssnoversion-md.md)]
 
 <a id="bkmk_2016_ga"></a>
