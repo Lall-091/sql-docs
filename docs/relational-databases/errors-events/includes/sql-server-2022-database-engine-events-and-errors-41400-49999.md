@@ -1,7 +1,8 @@
 ---
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/16/2025
+ms.reviewer: maghan, mikeray
+ms.date: 04/10/2025
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -575,14 +576,14 @@ ms.topic: include
 | 45333 | 16 | No | The service request timed out. %ls. |
 | 45334 | 16 | No | Server edition '%ls' is invalid. |
 | 45335 | 16 | No | Server type '%ls' is invalid. |
-| 45336 | 16 | No | The operation could not be completed because '%ls' is an invalid Server Key name. Please provide a key name in the format of 'vault_key_version'. For example, if the keyId is https://YourVaultName.vault.azure.net/keys/YourKeyName/YourKeyVersion, then the Server Key Name should be formatted as: YourVaultName_YourKeyName_YourKeyVersion. |
+| 45336 | 16 | No | The operation could not be completed because '%ls' is an invalid Server Key name. Please provide a key name in the format of 'vault_key_version'. For example, if the keyId is `https://YourVaultName.vault.azure.net/keys/YourKeyName/YourKeyVersion`, then the Server Key Name should be formatted as: YourVaultName_YourKeyName_YourKeyVersion. |
 | 45337 | 16 | No | The planned failover operation has rolled back because database '%ls' could not be synchronized with its remote partner. This may be due to a service outage, or to a high volume of write traffic. Consider using forced failover. |
 | 45338 | 16 | No | The planned failover operation has rolled back because the remote server '%ls' could not be reached. This may be due to a service outage. Consider using forced failover. |
 | 45339 | 16 | No | The max size update on the geo-secondary database '%ls' on server '%ls' failed with reason '%ls'. |
 | 45340 | 16 | No | The operation could not be completed because an Azure Active Directory error was encountered. The error message from Active Directory Authentication library (ADAL) is '%ls'. |
 | 45341 | 16 | No | The operation could not be completed because an error was encountered when attempting to retrieve Key Vault information for '%ls' from server '%ls'. The encountered error message is '%ls'. |
 | 45342 | 16 | No | The operation could not be completed because an Azure Active Directory error was encountered. Please ensure the server '%ls' and key vault '%ls' belong to the same tenant. The error message from Active Directory Authentication library is '%ls'. |
-| 45343 | 16 | No | The provided Key Vault uri '%ls' is not valid. Please ensure the uri contains the vault, key, and key version information. An example valid uri looks like 'https://YourVaultName.vault.azure.net/keys/YourKeyName/YourKeyVersion'. Please ensure the vault belongs to an endpoint from the list of supported endpoints available at '%ls'. |
+| 45343 | 16 | No | The provided Key Vault uri '%ls' is not valid. Please ensure the uri contains the vault, key, and key version information. An example valid uri looks like '`https://YourVaultName.vault.azure.net/keys/YourKeyName/YourKeyVersion`'. Please ensure the vault belongs to an endpoint from the list of supported endpoints available at '%ls'. |
 | 45344 | 16 | No | Catalog DB creation failed. |
 | 45345 | 16 | No | Cannot cancel database management operation '%ls' in the current state. |
 | 45346 | 16 | No | Subnet resource ID '%ls' is invalid. Please provide a correct resource Id for the target subnet. |

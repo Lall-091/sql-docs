@@ -68,7 +68,6 @@ As a result, named replicas offer several benefits over HA replicas, for what co
 
 - Users connected to a named replica aren't disconnected if the primary replica is scaled up or down.
 - Users connected to the primary replica aren't affected when any named replicas are scaled up or down.
-- Workloads running on any replica - primary or named - are unaffected by long-running queries running on other replicas.
 
 The main goal of named replicas is to enable a broad variety of [read scale-out](read-scale-out.md) scenarios, and to improve Hybrid Transactional and Analytical Processing (HTAP) workloads. Examples of how to create such solutions are available here:
 
