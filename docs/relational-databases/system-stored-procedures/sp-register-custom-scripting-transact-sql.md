@@ -4,7 +4,7 @@ description: sp_register_custom_scripting registers a stored procedure or Transa
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/22/2024
+ms.date: 04/21/2025
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -74,7 +74,7 @@ Name of the article for which the custom stored procedure or script is being reg
 
 `sp_register_custom_scripting` is used in snapshot and transactional replication.
 
-This stored procedure should be executed before making a schema change to a replicated table. For more information about using this stored procedure, see [Transactional Articles - Regenerate to Reflect Schema Changes](../replication/transactional/transactional-articles-regenerate-to-reflect-schema-changes.md).
+This stored procedure should be executed before making a schema change to a replicated table. For more information about using this stored procedure, see [Transactional articles - Regenerate custom procedures to reflect schema changes](../replication/transactional/transactional-articles-regenerate-to-reflect-schema-changes.md).
 
 ## Permissions
 
