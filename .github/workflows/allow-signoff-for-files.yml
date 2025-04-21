@@ -28,7 +28,11 @@ jobs:
                     "docs/database-engine/availability-groups/windows/distributed-availability-groups.md",
                     "docs/t-sql/statements/alter-availability-group-transact-sql.md",
                     "docs/database-engine/availability-groups/windows/contained-availability-groups-overview.md",
-                    "docs/t-sql/statements/create-availability-group-transact-sql.md"
+                    "docs/t-sql/statements/create-availability-group-transact-sql.md",
+                    "docs/database-engine/configure-windows/server-configuration-options-sql-server.md",
+                    "docs/toc.yml",
+                    "docs/database-engine/availability-groups/windows/availability-group-lease-healthcheck-timeout.md",
+                    "docs/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md"
                 ]'
   
             run: |
@@ -494,7 +498,14 @@ jobs:
                         Write-Host "GitHub event not a PR comment"
                     }
 
-                    if ($PROpenEvent)
+                    If (-not $TargetingMonitoredBranch)
+                    {
+                        $Status.state = "success"
+                        $Status.description = "Target branch not monitored."
+
+                        $ActionableComment = $True
+                    }
+                    ElseIf ($PROpenEvent)
                     {
                         # This runs when the PR is first opened
 
