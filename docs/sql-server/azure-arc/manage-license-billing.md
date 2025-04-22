@@ -215,7 +215,7 @@ For information, see:
 
 ### To qualify as passive instance for an availability group (AG)
 
-- All replicas present in the operating system environment (OSE) must be secondary or the forwarder of distributed availability group.
+- All replicas present in the operating system environment (OSE) must be a secondary replica of an Always On availability group or the forwarder of a distributed availability group.
 - No standalone database outside of an AG irrespective of [database state](../../relational-databases/databases/database-states.md#database-state-definitions).
 - No active connections to any database except master, msdb, tempdb, or model databases.
 
