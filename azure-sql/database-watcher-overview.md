@@ -5,7 +5,7 @@ description: An overview of database watcher for Azure SQL, a managed monitoring
 author: lcwright
 ms.author: lancewright
 ms.reviewer: wiassaf, dfurman
-ms.date: 04/09/2025
+ms.date: 04/21/2025
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: conceptual
@@ -211,6 +211,7 @@ This section describes recent database watcher fixes, changes, and improvements.
 
 | Time period | Changes |
 |:--|:--|
+| April 2025 | - Fix a bug where a database watcher deployment via Bicep, an ARM template, Terraform, or REST API would fail if the **subscription ID**, **resource group name**, or **watcher name** deployment parameters used inconsistent casing.</br> - Fix a bug where collection of certain datasets for a **SQL database** target would stop if the database was restored from backup.</br> - Change to limit data collection in the **Table metadata** datasets for databases with many tables and for SQL managed instances with many databases to avoid long-running collection queries.</br> - Improve collection query performance for the **Session statistics** dataset for **SQL managed instance** targets. |
 | February 2025 | - Add support for alerting. For more information, see [Database watcher alerts](database-watcher-alerts.md). |
 | January 2025 | - Fix to make database watcher deployments via Bicep or ARM templates idempotent.</br> - Fix a bug where SQL Agent job history details on the SQL Managed Instance detailed dashboard weren't displayed.</br> - Fix a bug when filtering data on the **Sessions** charts on the detailed dashboards would cause KQL query errors.</br> - Fix a bug where storage throughput values on the detailed dashboards were incorrect.</br> - Improve storage utilization charts on the detailed dashboards to include the maximum storage size.</br> - Improve to show the original and compressed size of collected data in the **Data store** section.</br> - Improve the message shown when a dashboard cannot connect to the data store to include suggestions for common problems.</br> - Add informational messages when there is no data shown on the **Top queries** dashboards for known reasons.</br> - Add Hyperscale log rate limit information in the **Replicas** dataset for Azure SQL databases.</br> - Add transaction start time and log bytes used to the **Active sessions** datasets. |
 | November 2024 | - Enable database watcher in the **Australia Central**, **Australia Southeast**, **Canada East**, **Central US**, **Germany West Central**, **Japan West**, **Korea Central**, and **North Central US** Azure regions.</br> - Increase the limit on the number of SQL targets per watcher from 50 to 100. |
@@ -249,7 +250,6 @@ During preview, database watcher has the following known issues.
 | If you create a managed private endpoint for a watcher to connect to a SQL managed instance that is stopped, the provisioning state of the private endpoint is reported as **Failed**, and the watcher cannot connect to the instance. | Delete the managed private endpoint with the **Failed** provisioning state and [start](./managed-instance/instance-stop-start-how-to.md) the SQL managed instance. Once the failed private endpoint is deleted and the instance is running, [re-create](database-watcher-manage.md#create-a-managed-private-endpoint) the managed private endpoint. |
 | Data is not collected if you use a database in Real-Time Analytics as the data store, and the **OneLake availability** option is enabled. | Disable the **OneLake availability** option and restart the watcher to resume data collection. |
 | Because of a known issue in Azure Monitor Alerts, if you edit an alert rule created from a database watcher template, the scope of any fired alert will be set to the Azure Data Explorer cluster used as the watcher data store instead of the SQL target that the alert applies to. | Edit the alert rule programmatically, for example using Bicep or an ARM template, and set the `resourceIdColumn` property to the value `resource_id`. For more information, see [Resource Manager template samples for log search alert rules in Azure Monitor](/azure/azure-monitor/alerts/resource-manager-alerts-log). |
-| A database watcher deployment via Bicep, an ARM template, Terraform, or REST API fails if the **subscription ID**, **resource group name**, or **watcher name** deployment parameters use inconsistent casing. For example, adding a SQL target for an existing watcher named `example-watcher` fails if the deployment parameter uses `Example-Watcher` as the parameter value. | Use consistent casing for string parameters. For example, standardize on the lower case. |
 
 ## Troubleshoot
 
