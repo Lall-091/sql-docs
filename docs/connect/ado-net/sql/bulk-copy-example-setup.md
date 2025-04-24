@@ -31,10 +31,7 @@ To create the tables necessary for the code samples to run correctly, you must r
 USE AdventureWorks2022;
 GO
   
-IF EXISTS (SELECT * FROM dbo.sysobjects   
- WHERE id = object_id(N'[dbo].[BulkCopyDemoMatchingColumns]')  
- AND OBJECTPROPERTY(id, N'IsUserTable') = 1)  
-    DROP TABLE [dbo].[BulkCopyDemoMatchingColumns]  
+DROP TABLE IF EXISTS [dbo].[BulkCopyDemoMatchingColumns]  
   
 CREATE TABLE [dbo].[BulkCopyDemoMatchingColumns]([ProductID] [int] IDENTITY(1,1) NOT NULL,  
     [Name] [nvarchar](50) NOT NULL,  
@@ -44,10 +41,7 @@ CREATE TABLE [dbo].[BulkCopyDemoMatchingColumns]([ProductID] [int] IDENTITY(1,1)
     [ProductID] ASC  
 ) ON [PRIMARY]) ON [PRIMARY]  
   
-IF EXISTS (SELECT * FROM dbo.sysobjects   
- WHERE id = object_id(N'[dbo].[BulkCopyDemoDifferentColumns]')  
- AND OBJECTPROPERTY(id, N'IsUserTable') = 1)  
-    DROP TABLE [dbo].[BulkCopyDemoDifferentColumns]  
+DROP TABLE IF EXISTS [dbo].[BulkCopyDemoDifferentColumns]  
   
 CREATE TABLE [dbo].[BulkCopyDemoDifferentColumns]([ProdID] [int] IDENTITY(1,1) NOT NULL,  
     [ProdNum] [nvarchar](25) NOT NULL,  
@@ -57,10 +51,7 @@ CREATE TABLE [dbo].[BulkCopyDemoDifferentColumns]([ProdID] [int] IDENTITY(1,1) N
     [ProdID] ASC  
 ) ON [PRIMARY]) ON [PRIMARY]  
   
-IF EXISTS (SELECT * FROM dbo.sysobjects   
- WHERE id = object_id(N'[dbo].[BulkCopyDemoOrderHeader]')  
- AND OBJECTPROPERTY(id, N'IsUserTable') = 1)  
-    DROP TABLE [dbo].[BulkCopyDemoOrderHeader]  
+DROP TABLE IF EXISTS [dbo].[BulkCopyDemoOrderHeader]  
   
 CREATE TABLE [dbo].[BulkCopyDemoOrderHeader]([SalesOrderID] [int] IDENTITY(1,1) NOT NULL,  
     [OrderDate] [datetime] NOT NULL,  
@@ -70,10 +61,7 @@ CREATE TABLE [dbo].[BulkCopyDemoOrderHeader]([SalesOrderID] [int] IDENTITY(1,1) 
     [SalesOrderID] ASC  
 ) ON [PRIMARY]) ON [PRIMARY]  
   
-IF EXISTS (SELECT * FROM dbo.sysobjects   
- WHERE id = object_id(N'[dbo].[BulkCopyDemoOrderDetail]')  
- AND OBJECTPROPERTY(id, N'IsUserTable') = 1)  
-    DROP TABLE [dbo].[BulkCopyDemoOrderDetail]  
+DROP TABLE IF EXISTS [dbo].[BulkCopyDemoOrderDetail]  
   
 CREATE TABLE [dbo].[BulkCopyDemoOrderDetail]([SalesOrderID] [int] NOT NULL,  
     [SalesOrderDetailID] [int] NOT NULL,  
