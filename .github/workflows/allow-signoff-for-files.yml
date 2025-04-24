@@ -30,7 +30,6 @@ jobs:
                     "docs/database-engine/availability-groups/windows/contained-availability-groups-overview.md",
                     "docs/t-sql/statements/create-availability-group-transact-sql.md",
                     "docs/database-engine/configure-windows/server-configuration-options-sql-server.md",
-                    "docs/toc.yml",
                     "docs/database-engine/availability-groups/windows/availability-group-lease-healthcheck-timeout.md",
                     "docs/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md"
                 ]'

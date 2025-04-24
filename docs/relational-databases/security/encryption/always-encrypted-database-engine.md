@@ -4,7 +4,7 @@ description: Overview of Always Encrypted that supports transparent client-side 
 author: Pietervanhove
 ms.author: pivanho
 ms.reviewer: vanto, randolphwest
-ms.date: 08/14/2024
+ms.date: 04/23/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
@@ -138,7 +138,7 @@ The following limitations apply to queries on encrypted columns:
   - Columns captured/tracked using [change data capture](../../track-changes/about-change-data-capture-sql-server.md).
   - Primary key columns on tables that have [change tracking](../../track-changes/about-change-tracking-sql-server.md).
   - Columns that are masked (using [Dynamic data masking](../dynamic-data-masking.md)).
-  - Columns that rely on [Natively Compiled Stored Procedures](../../in-memory-oltp/creating-natively-compiled-stored-procedures.md), encryption cannot be applied to any of the columns within that table.
+  - When a column in a [memory-optimized table](../../in-memory-oltp/introduction-to-memory-optimized-tables.md) is referenced in a [natively compiled module](../../in-memory-oltp/creating-natively-compiled-stored-procedures.md), encryption cannot be applied to any of the columns in that table.
   - Columns in [stretch database tables](/previous-versions/sql/sql-server/stretch-database/stretch-database). (Tables with columns encrypted with Always Encrypted can be enabled for Stretch.)
 
   > [!IMPORTANT]  
