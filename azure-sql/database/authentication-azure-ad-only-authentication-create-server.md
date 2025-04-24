@@ -44,7 +44,7 @@ The following section provides you with examples and scripts on how to create a 
 In our examples, we're enabling Microsoft Entra-only authentication during server or managed instance creation, with a system assigned server admin and password. This will prevent server admin access when Microsoft Entra-only authentication is enabled, and only allows the Microsoft Entra admin to access the resource. It's optional to add parameters to the APIs to include your own server admin and password during server creation. However, the password can't be reset until you disable Microsoft Entra-only authentication. An example of how to use these optional parameters to specify the server admin login name is presented in the [PowerShell](?tabs=azure-powershell#azure-sql-database) tab on this page.
 
 > [!NOTE]
-> To change the existing properties after server or managed instance creation, other existing APIs should be used. For more information, see [Managing Microsoft Entra-only authentication using APIs](authentication-azure-ad-only-authentication.md#managing-azure-ad-only-authentication-using-apis) and [Configure and manage Microsoft Entra authentication with Azure SQL](authentication-aad-configure.md).
+> To change the [Microsoft Entra-only authentication](authentication-azure-ad-only-authentication.md) property after server or managed instance creation, other existing APIs should be used. For more information, see [Managing Microsoft Entra-only authentication using APIs](authentication-azure-ad-only-authentication.md#managing-azure-ad-only-authentication-using-apis).
 > 
 > If Microsoft Entra-only authentication is set to false, which it is by default, a server admin and password will need to be included in all APIs during server or managed instance creation.
 

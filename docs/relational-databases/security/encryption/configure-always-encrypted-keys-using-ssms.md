@@ -51,6 +51,10 @@ The **New Column Master Key** dialog allows you to generate a column master key 
     > The **Allow enclave computations** checkbox does not appear if your SQL Server instance is not correctly configured with a secure enclave.
 
 1. Pick an existing key in your key store, or click the **Generate Key** or **Generate Certificate** button, to create a key in the key store. 
+
+    > [!NOTE]
+    >  We do not verify the validity of the keys or certificates used to generate the column master key. 
+    
 1. Click **OK** and the new key appears in the list.
 
 Once you complete the dialog, SQL Server Management Studio creates metadata for your column master key in the database. The dialog generates and issues a [CREATE COLUMN MASTER KEY (Transact-SQL)](../../../t-sql/statements/create-column-master-key-transact-sql.md) statement.

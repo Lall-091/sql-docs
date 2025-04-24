@@ -28,6 +28,10 @@ The below steps include links to detailed articles, depending on your rotation s
 1. Provision a new key (a column master key or a column encryption key).
     - To provision a new enclave-enclave enabled key, see [Provision enclave-enabled keys](always-encrypted-enclaves-provision-keys.md).
     - To provision a key that isn't enclave enabled, see [Provision Always Encrypted keys using SQL Server Management Studio](configure-always-encrypted-keys-using-ssms.md) and [Provision Always encrypted keys using PowerShell](configure-always-encrypted-keys-using-powershell.md).
+
+    > [!NOTE]
+    > When using Azure Key Vault as the key store, multitenant customer managed key rotation is not supported. Ensure that the new customer managed key is in the same tenant as the existing one.
+
 2. Replace an existing key with the new key.
     - If you're rotating a column encryption key and both the source key and the target key are enclave-enabled, you can run the rotation (which involves re-encrypting your data) in-place. For more information, see [Configure column encryption in-place using Always Encrypted with secure enclaves](always-encrypted-enclaves-configure-encryption.md).
     - For detailed steps for rotating keys, see [Rotate Always Encrypted keys using SQL Server Management Studio](rotate-always-encrypted-keys-using-ssms.md) and [Rotate Always Encrypted keys using PowerShell](rotate-always-encrypted-keys-using-powershell.md).

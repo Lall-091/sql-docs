@@ -49,7 +49,7 @@ In order to use the **Windows** authentication metadata mode, the user environme
 
 The **Windows** authentication metadata mode helps modernize authentication for application, and unblocks migration challenges to SQL Managed Instance. Here are some common scenarios where the **Windows** authentication metadata mode can be used to address customer challenges:
 
-- The complexities of setting up [Windows Authentication for Azure SQL Managed Instance using Microsoft Entra ID and Kerberos](winauth-azuread-setup.md).
+- The overhead of migrating Windows logins to Microsoft Entra ID for [Windows authentication with Azure SQL Managed Instance using Microsoft Entra ID and Kerberos](winauth-azuread-setup.md).
 - Read-only replica failovers in [Managed Instance link](managed-instance-link-feature-overview.md).
 - Synchronization of [Microsoft Entra authentication for SQL Server](/sql/relational-databases/security/authentication-access/azure-ad-authentication-sql-server-overview).
 
