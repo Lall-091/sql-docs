@@ -1,8 +1,8 @@
 ---
 title: "Configure column encryption using Always Encrypted Wizard"
 description: Learn how to set the Always Encrypted configuration for database columns by using the Always Encrypted Wizard in SQL Server.
-author: jaszymas
-ms.author: jaszymas
+author: Pietervanhove
+ms.author: pivanho
 ms.reviewer: vanto
 ms.date: "10/30/2019"
 ms.service: sql
@@ -90,6 +90,21 @@ For more information about creating and storing column master keys in Windows Ce
 If you have configured a secure enclave in your database and you're using enclave-enabled keys, this page allows you to specify the enclave attestation parameters, required for in-place encryption. If you don't want to use in-place encryption, unselect **Use in-place encryption for eligible columns** to proceed with client-side encryption. We recommend you to leave this checkbox enabled so that the wizard can use in-place encryption.
 
 For more information about enclave attestation, see [Configure attestation for Always Encrypted using Azure Attestation](/azure/azure-sql/database/always-encrypted-enclaves-configure-attestation) 
+
+## Post Encryption
+Clear the plan cache for all batches and stored procedures that access the table, to refresh parameters encryption information. 
+
+   ```sql
+   ALTER DATABASE SCOPED CONFIGURATION CLEAR PROCEDURE_CACHE;
+   ```
+
+   > [!NOTE]
+   > If you do not remove the plan for the impacted query from the cache, the first execution of the query after encryption may fail.
+   >
+   > Use `ALTER DATABASE SCOPED CONFIGURATION CLEAR PROCEDURE_CACHE` or `DBCC FREEPROCCACHE` to clear the plan cache carefully, as it may result in temporary query performance degradation. To minimize the negative impact of clearing the cache, you can selectively remove the plans for the impacted queries only.
+
+Call [sp_refresh_parameter_encryption](../../system-stored-procedures/sp-refresh-parameter-encryption-transact-sql.md) to update the metadata for the parameters of each module (stored procedure, function, view, trigger) that are persisted in [sys.parameters](../..//system-catalog-views/sys-parameters-transact-sql.md) and may have been invalidated by encrypting the columns.
+
 
 ## Next steps
 - [Query columns using Always Encrypted with SQL Server Management Studio](always-encrypted-query-columns-ssms.md)
