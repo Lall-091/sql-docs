@@ -1,8 +1,8 @@
 ---
 title: "Configure column encryption using Always Encrypted Wizard"
 description: Learn how to set the Always Encrypted configuration for database columns by using the Always Encrypted Wizard in SQL Server.
-author: jaszymas
-ms.author: jaszymas
+author: Pietervanhove
+ms.author: pivanho
 ms.reviewer: vanto
 ms.date: "10/30/2019"
 ms.service: sql
@@ -91,7 +91,24 @@ If you have configured a secure enclave in your database and you're using enclav
 
 For more information about enclave attestation, see [Configure attestation for Always Encrypted using Azure Attestation](/azure/azure-sql/database/always-encrypted-enclaves-configure-attestation) 
 
-## Next steps
+## Post encryption
+
+Clear the plan cache for all batches and stored procedures that access the table to refresh parameters encryption information. 
+
+   ```sql
+   ALTER DATABASE SCOPED CONFIGURATION CLEAR PROCEDURE_CACHE;
+   ```
+
+   > [!NOTE]
+   > If you do not remove the plan for the impacted query from the cache, the first execution of the query after encryption might fail.
+   >
+   > Use `ALTER DATABASE SCOPED CONFIGURATION CLEAR PROCEDURE_CACHE` or `DBCC FREEPROCCACHE` to clear the plan cache carefully, as it can result in temporary query performance degradation. To minimize the negative impact of clearing the cache, you can selectively remove the plans for only the impacted queries.
+
+Call [sp_refresh_parameter_encryption](../../system-stored-procedures/sp-refresh-parameter-encryption-transact-sql.md) to update the metadata for the parameters of each module (stored procedure, function, view, trigger) that are persisted in [sys.parameters](../..//system-catalog-views/sys-parameters-transact-sql.md) and might have been invalidated by encrypting the columns.
+
+
+## Related content
+
 - [Query columns using Always Encrypted with SQL Server Management Studio](always-encrypted-query-columns-ssms.md)
 - [Run Transact-SQL statements using secure enclaves](always-encrypted-enclaves-query-columns.md)
 - [Develop applications using Always Encrypted](always-encrypted-client-development.md)
