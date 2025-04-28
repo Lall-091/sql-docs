@@ -55,7 +55,7 @@ Other [!INCLUDE[ssnoversion](../../includes/ssnoversion-md.md)] components can b
 - [Latest updates and version history for SQL Server](/troubleshoot/sql/releases/download-and-install-latest-updates)
 - [SQL Server Reporting Services](https://www.microsoft.com/download/details.aspx?id=104502).
 - [SQL Server Management Studio](https://aka.ms/ssmsfullsetup)
-- [Azure Data Studio](https://go.microsoft.com/fwlink/?linkid=2109256)
+- [Azure Data Studio](/azure-data-studio/download-azure-data-studio#download-azure-data-studio)
 
 ## Considerations
 
