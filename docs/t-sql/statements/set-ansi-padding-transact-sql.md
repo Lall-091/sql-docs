@@ -3,8 +3,8 @@ title: "SET ANSI_PADDING (Transact-SQL)"
 description: SET ANSI_PADDING controls the way the column stores values shorter than the defined size of the column.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: randolphwest
-ms.date: 07/08/2024
+ms.reviewer: randolphwest, jovanpop
+ms.date: 04/28/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -28,6 +28,8 @@ monikerRange: ">=aps-pdw-2016 || =azure-sqldw-latest || >=sql-server-2016 || >=s
 [!INCLUDE [sql-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdbmi-asa-pdw-fabricse-fabricdw.md)]
 
 Controls the way the column stores values shorter than the defined size of the column, and the way the column stores values that have trailing blanks in **char**, **varchar**, **binary**, and **varbinary** data.
+- `SET ANSI_PADDING ON` - preserves the trailing blanks in the string values when they are inserted into a column. This is ANSI-compliant behavior.
+- `SET ANSI_PADDING OFF` - trims the trailing blanks in the string values when they are inserted into a column. This is not recommended behavior.
 
 > [!NOTE]  
 > `SET ANSI_PADDING OFF`, and the `ANSI_PADDING OFF` database option, are deprecated. In [!INCLUDE [_ss2017](../../includes/sssql17-md.md)] and later versions, and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], `ANSI_PADDING` is always set to `ON`. Deprecated features shouldn't be used in new applications. For more information, see [Deprecated Database Engine features in SQL Server 2017](../../database-engine/deprecated-database-engine-features-in-sql-server-2017.md#transact-sql-1).
