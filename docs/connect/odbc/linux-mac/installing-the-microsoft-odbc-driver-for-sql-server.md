@@ -3,7 +3,7 @@ title: Install the Microsoft ODBC driver for SQL Server (Linux)
 description: Learn how to install the Microsoft ODBC Driver for SQL Server on Linux clients to enable database connectivity.
 author: David-Engel
 ms.author: davidengel
-ms.date:  03/17/2025
+ms.date:  04/28/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -124,6 +124,8 @@ then
     exit;
 fi
 
+# Import the GPG key
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 # Download the package to configure the Microsoft repo
 curl -sSL -O https://packages.microsoft.com/config/sles/$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)/packages-microsoft-prod.rpm
 # Install the package
@@ -278,6 +280,8 @@ then
     exit;
 fi
 
+# Import the GPG key
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 # Download the package to configure the Microsoft repo
 curl -sSL -O https://packages.microsoft.com/config/sles/$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)/packages-microsoft-prod.rpm
 # Install the package
@@ -394,6 +398,8 @@ then
     exit;
 fi
 
+# Import the GPG key
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 # Download the package to configure the Microsoft repo
 curl -sSL -O https://packages.microsoft.com/config/sles/$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)/packages-microsoft-prod.rpm
 # Install the package
@@ -500,6 +506,8 @@ then
     exit;
 fi
 
+# Import the GPG key
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 # Download the package to configure the Microsoft repo
 curl -sSL -O https://packages.microsoft.com/config/sles/$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)/packages-microsoft-prod.rpm
 # Install the package
