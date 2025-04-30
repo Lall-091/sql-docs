@@ -608,7 +608,7 @@ You need to have permissions to list folder content and write to the LOCATION pa
 Supported authentication methods are managed identity or a Shared Access Signature (SAS) token.
 
 - If you are using managed identity for authentication, make sure that the service principal of your SQL managed instance has a role of **Storage Blob Data Contributor** on the destination container.
-- If you are using an SAS token, **Read**, **Write**, and **List** permissions are required.
+- If you are using a SAS token, **Read**, **Write**, and **List** permissions are required.
 - For Azure Blog Storage, the `Allowed Services`: `Blob` checkbox must be selected to generate the SAS token.
 - For Azure Data Lake Gen2, the `Allowed Services`: `Container` and `Object` checkboxes must be selected to generate the SAS token.
 
@@ -1029,7 +1029,7 @@ GO
 
 ### B. Use CETAS with a view to create an external table with SAS authentication
 
-This example provides code for writing CETAS with a view as source, using an SAS token as authentication.
+This example provides code for writing CETAS with a view as source, using a SAS token as authentication.
 
 ```sql
 CREATE DATABASE [<mydatabase>];
