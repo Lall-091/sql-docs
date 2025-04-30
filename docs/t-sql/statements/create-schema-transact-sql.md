@@ -98,8 +98,8 @@ CREATE SCHEMA schema_name [ AUTHORIZATION owner_name ] [;]
   
  The new schema is owned by one of the following database-level principals: database user, database role, or application role. Objects created within a schema are owned by the owner of the schema, and have a NULL **principal_id** in **sys.objects**. Ownership of schema-contained objects can be transferred to any database-level principal, but the schema owner always retains CONTROL permission on objects within the schema.  
   
-> [!CAUTION]  
->  [!INCLUDE[ssCautionUserSchema](../../includes/sscautionuserschema-md.md)]  
+> [!NOTE]  
+> [!INCLUDE[ssCautionUserSchema](../../includes/sscautionuserschema-md.md)]  
   
  **Implicit Schema and User Creation**  
 

@@ -53,9 +53,9 @@ CREATE ROLE role_name [ AUTHORIZATION owner_name ]
  Database roles are visible in the sys.database_role_members and sys.database_principals catalog views.  
   
  For information about designing a permissions system, see [Getting Started with Database Engine Permissions](../../relational-databases/security/authentication-access/getting-started-with-database-engine-permissions.md).  
-  
-> [!CAUTION]  
->  [!INCLUDE[ssCautionUserSchema](../../includes/sscautionuserschema-md.md)]  
+
+> [!NOTE]  
+> [!INCLUDE[ssCautionUserSchema](../../includes/sscautionuserschema-md.md)]  
   
 ## Permissions  
  Requires **CREATE ROLE** permission on the database or membership in the **db_securityadmin** fixed database role. When you use the **AUTHORIZATION** option, the following permissions are also required:  

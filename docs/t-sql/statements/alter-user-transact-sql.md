@@ -169,7 +169,7 @@ NAME = new_user_name
 
 The name of a user mapped to a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login, a certificate, or an asymmetric key can't contain the backslash character (`\`).
 
-> [!CAUTION]
+> [!NOTE]  
 > [!INCLUDE[ssCautionUserSchema](../../includes/sscautionuserschema-md.md)]
 
 ## Security
@@ -422,7 +422,7 @@ Setting the default schema to `NULL` removes a default schema from a user create
 
 The name of a user mapped to a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login, a certificate, or an asymmetric key can't contain the backslash character (`\`).
 
-> [!CAUTION]
+> [!NOTE]  
 > [!INCLUDE[ssCautionUserSchema](../../includes/sscautionuserschema-md.md)]
 
 ### Fabric SQL database
@@ -677,7 +677,7 @@ ALTER USER user_name
 
 The name of a user mapped to a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login, a certificate, or an asymmetric key can't contain the backslash character (`\`).
 
-> [!CAUTION]
+> [!NOTE]  
 > [!INCLUDE[ssCautionUserSchema](../../includes/sscautionuserschema-md.md)]
 
 ### Remarks for Windows users in SQL on-premises migrated to Azure SQL Managed Instance
@@ -915,7 +915,7 @@ ALTER USER user_name
 
 The name of a user mapped to a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login, a certificate, or an asymmetric key can't contain the backslash character (`\`).
 
-> [!CAUTION]
+> [!NOTE]  
 > [!INCLUDE[ssCautionUserSchema](../../includes/sscautionuserschema-md.md)]
 
 ## Security
@@ -1054,7 +1054,7 @@ ALTER USER user_name
 
 The name of a user mapped to a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login, a certificate, or an asymmetric key can't contain the backslash character (`\`).
 
-> [!CAUTION]
+> [!NOTE]  
 > [!INCLUDE[ssCautionUserSchema](../../includes/sscautionuserschema-md.md)]
 
 ## Security

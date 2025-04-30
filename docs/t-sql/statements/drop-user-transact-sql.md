@@ -57,8 +57,8 @@ DROP USER user_name
   
  The guest user cannot be dropped, but guest user can be disabled by revoking its CONNECT permission by executing REVOKE CONNECT FROM GUEST within any database other than master or tempdb.  
   
-> [!CAUTION]  
->  [!INCLUDE[ssCautionUserSchema](../../includes/sscautionuserschema-md.md)]  
+> [!NOTE]  
+> [!INCLUDE[ssCautionUserSchema](../../includes/sscautionuserschema-md.md)]  
   
 ## Permissions  
  Requires ALTER ANY USER permission on the database.  

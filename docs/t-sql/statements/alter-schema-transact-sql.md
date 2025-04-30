@@ -78,8 +78,8 @@ ALTER SCHEMA schema_name
  
  ALTER SCHEMA uses a schema level lock.
   
-> [!CAUTION]  
->  [!INCLUDE[ssCautionUserSchema](../../includes/sscautionuserschema-md.md)]  
+> [!NOTE]  
+> [!INCLUDE[ssCautionUserSchema](../../includes/sscautionuserschema-md.md)]  
   
 ## Permissions  
  To transfer a securable from another schema, the current user must have CONTROL permission on the securable (not schema) and ALTER permission on the target schema.  

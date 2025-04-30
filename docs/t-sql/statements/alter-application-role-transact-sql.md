@@ -21,7 +21,7 @@ dev_langs:
 
 # ALTER APPLICATION ROLE (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]	
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]    
 
   Changes the name, password, or default schema of an application role.  
   
@@ -62,10 +62,10 @@ If the new application role name already exists in the database, the statement w
 >  Password expiration policy is not applied to application role passwords. For this reason, take extra care in selecting strong passwords. Applications that invoke application roles must store their passwords.  
   
  Application roles are visible in the sys.database_principals catalog view.  
-  
-> [!CAUTION]  
->  In [!INCLUDE[ssVersion2005](../../includes/ssversion2005-md.md)]the behavior of schemas changed from the behavior in earlier versions of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. Code that assumes that schemas are equivalent to database users may not return correct results. Old catalog views, including sysobjects, should not be used in a database in which any of the following DDL statements has ever been used: CREATE SCHEMA, ALTER SCHEMA, DROP SCHEMA, CREATE USER, ALTER USER, DROP USER, CREATE ROLE, ALTER ROLE, DROP ROLE, CREATE APPROLE, ALTER APPROLE, DROP APPROLE, ALTER AUTHORIZATION. In a database in which any of these statements has ever been used, you must use the new catalog views. The new catalog views take into account the separation of principals and schemas that is introduced in [!INCLUDE[ssVersion2005](../../includes/ssversion2005-md.md)]. For more information about catalog views, see [Catalog Views &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/catalog-views-transact-sql.md).  
-  
+
+> [!NOTE]  
+> [!INCLUDE [sscautionuserschema-md](../../includes/sscautionuserschema-md.md)]
+
 ## Permissions  
  Requires ALTER ANY APPLICATION ROLE permission on the database. To change the default schema, the user also needs ALTER permission on the application role. An application role can alter its own default schema, but not its name or password.  
   

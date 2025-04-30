@@ -55,8 +55,8 @@ CREATE APPLICATION ROLE application_role_name
   
  For information about how to use application roles, see [Application Roles](../../relational-databases/security/authentication-access/application-roles.md).  
   
-> [!CAUTION]  
->  [!INCLUDE[ssCautionUserSchema](../../includes/sscautionuserschema-md.md)]  
+> [!NOTE]  
+> [!INCLUDE[ssCautionUserSchema](../../includes/sscautionuserschema-md.md)]  
   
 ## Permissions  
  Requires ALTER ANY APPLICATION ROLE permission on the database.  

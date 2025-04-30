@@ -55,8 +55,9 @@ DROP SCHEMA schema_name
  The schema that is being dropped must not contain any objects. If the schema contains objects, the DROP statement fails.  
   
  Information about schemas is visible in the [sys.schemas](../../relational-databases/system-catalog-views/schemas-catalog-views-sys-schemas.md) catalog view.  
-  
- **Caution** [!INCLUDE[ssCautionUserSchema](../../includes/sscautionuserschema-md.md)]  
+
+> [!NOTE]  
+> [!INCLUDE[ssCautionUserSchema](../../includes/sscautionuserschema-md.md)]  
   
 ## Permissions  
  Requires CONTROL permission on the schema or ALTER ANY SCHEMA permission on the database.  

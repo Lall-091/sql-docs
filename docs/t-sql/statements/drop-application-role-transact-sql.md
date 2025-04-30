@@ -39,8 +39,8 @@ DROP APPLICATION ROLE rolename
 ## Remarks  
  If the application role owns any securables it cannot be dropped. Before dropping an application role that owns securables, you must first transfer ownership of the securables, or drop them.  
   
-> [!CAUTION]  
->  [!INCLUDE[ssCautionUserSchema](../../includes/sscautionuserschema-md.md)]  
+> [!NOTE]  
+> [!INCLUDE[ssCautionUserSchema](../../includes/sscautionuserschema-md.md)]  
   
 ## Permissions  
  Requires ALTER ANY APPLICATION ROLE permission on the database.  

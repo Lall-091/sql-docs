@@ -171,8 +171,8 @@ The SCHEMA OWNER option is only valid when you are transferring ownership of a s
 
 If the target entity is not a database and the entity is being transferred to a new owner, all permissions on the target will be dropped.
 
-> [!CAUTION]
-> In [!INCLUDE[ssVersion2005](../../includes/ssversion2005-md.md)], the behavior of schemas changed from the behavior in earlier versions of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. Code that assumes that schemas are equivalent to database users may not return correct results. Old catalog views, including sysobjects, should not be used in a database in which any of the following DDL statements has ever been used: CREATE SCHEMA, ALTER SCHEMA, DROP SCHEMA, CREATE USER, ALTER USER, DROP USER, CREATE ROLE, ALTER ROLE, DROP ROLE, CREATE APPROLE, ALTER APPROLE, DROP APPROLE, ALTER AUTHORIZATION. In a database in which any of these statements has ever been used, you must use the new catalog views. The new catalog views take into account the separation of principals and schemas that was introduced in [!INCLUDE[ssVersion2005](../../includes/ssversion2005-md.md)]. For more information about catalog views, see [Catalog Views &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/catalog-views-transact-sql.md).
+> [!NOTE]  
+> [!INCLUDE [sscautionuserschema-md](../../includes/sscautionuserschema-md.md)]
 
  Also, note the following:
 
