@@ -95,7 +95,7 @@ Using `SELECT ... INTO` with the JSON type creates a table with the JSON type.
 
 ## Limitations
 
-- The behavior of `CAST ( ... AS JSON)` returns a **json** type, but the [sp_describe_first_result_set](../../relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql.md) system stored procedure doesn't correct return the **json** data type. Therefore, many data access clients and driver will see a **varchar** or **nvarchar** data type.
+- The behavior of `CAST ( ... AS JSON)` returns a **json** type, but the [sp_describe_first_result_set](../../relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql.md) system stored procedure doesn't correctly return the **json** data type. Therefore, many data access clients and driver will see a **varchar** or **nvarchar** data type.
   - Currently, TDS >= 7.4 (with UTF-8) sees **varchar(max)** with `Latin_General_100_bin2_utf8`.
   - Currently, TDS < 7.4 sees **nvarchar(max)** with database collation.
 
