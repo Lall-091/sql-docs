@@ -61,7 +61,7 @@ This section provides high-level steps to migrate from SQL Server to Azure SQL M
 To migrate with LRS, follow these steps:
 
 1. Create an [Azure storage account](/azure/storage/common/storage-account-create?tabs=azure-portal) with a [blob container](/azure/storage/blobs/storage-quickstart-blobs-portal).
-1. Authenticate to your Blob Storage storage account using an SAS token or a managed identity and validate access.
+1. Authenticate to your Blob Storage storage account using a SAS token or a managed identity and validate access.
 1. Be sure to [configure your folder structure correctly](/azure/azure-sql/managed-instance/log-replay-service-migrate#migrate-multiple-databases) if you plan to migrate multiple databases.
 1. Upload your backups to your storage account by either copying your backups, or taking backups directly by using the [BACKUP TO URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url).
 1. Determine if you want to run LRS in autocomplete or continuous mode.

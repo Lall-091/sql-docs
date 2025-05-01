@@ -102,14 +102,14 @@ WITH IDENTITY = 'Managed Identity'
 
 **Shared access signature (SAS)** provides delegated access to files in a storage account. SAS gives you granular control over the type of access you grant, including validity interval, granted permissions, and acceptable IP address range. Once the SAS token is created, it cannot be revoked or deleted and it allows access until its validity period expires.
 
-You can get an SAS token multiple ways:  
+You can get a SAS token multiple ways:  
     - Navigate to the **Azure portal -> <Your_Storage_Account> -> Shared access signature -> Configure permissions -> Generate SAS and connection string**. For more information, see [Generate a shared access signature](/azure/storage/blobs/blob-containers-portal#generate-a-shared-access-signature).
-    - [Create and configure an SAS with Azure Storage Explorer](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).
-    - You can create an SAS programmatically via PowerShell, Azure CLI, .NET, and REST API. For more information, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](/azure/storage/common/storage-sas-overview?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json).
+    - [Create and configure a SAS with Azure Storage Explorer](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).
+    - You can create a SAS token programmatically via PowerShell, Azure CLI, .NET, and REST API. For more information, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](/azure/storage/common/storage-sas-overview?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json).
 
 Grant **Read** and **List** permissions via the SAS to access external data. Currently, data virtualization with Azure SQL Managed Instance is read-only.
 
-When an SAS token is generated, it includes a question mark (`?`) at the beginning of the token. To use the token, you must remove the question mark (`?`) when creating a credential. For example:
+When a SAS token is generated, it includes a question mark (`?`) at the beginning of the token. To use the token, you must remove the question mark (`?`) when creating a credential. For example:
 
 ```sql
 -- Optional: Create MASTER KEY if it doesn't exist in the database:
