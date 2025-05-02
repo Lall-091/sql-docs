@@ -277,7 +277,7 @@ To use the ESU subscription option, you must have purchased the Year 1  and Yea
 
 After you sign up for the ESU subscription, your next monthly bill includes a one-time bill-back charge for each machine that hosted a [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] instance or instances with an active ESU subscription from the beginning of the current ESU year, based on the timestamp when ESU was enabled, or when p-core ESU license got activated. From this point, you're billed for each machine on an hourly basis.
 
-Both bill-back and regular hourly charges use the hourly rate from this formula: *(Core count) x (100% of Year 3 ESU license price) / 730*. So, the size of the bill-back charge depends on how much time passes from July 12, 2024, to the activation time.
+Both bill-back and regular hourly charges use the hourly rate from this formula: *(Core count) x (100% of Year 3 ESU license price) / 730*. So, the size of the bill-back charge depends on how much time passes from July 10, 2024, to the activation time.
 
 The following billing rules apply:
 

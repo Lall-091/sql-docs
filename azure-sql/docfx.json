@@ -2,8 +2,6 @@
   "build": {
     "content": [
       {
-        "group": "gr-azure-sql",
-        "src": "./",
         "files": [
           "**/*.md",
           "**/*.yml"
@@ -19,13 +17,13 @@
           "LICENSE",
           "LICENSE-CODE",
           "ThirdPartyNotices.md"
-        ]
+        ],
+        "src": "./",
+        "group": "gr-azure-sql"
       }
     ],
     "resource": [
       {
-        "group": "gr-azure-sql",
-        "src": "./",
         "files": [
           "**/*.gif",
           "**/*.jpeg",
@@ -39,7 +37,9 @@
           "_themes.pdf/**",
           "**/docfx.json",
           "_repo.en-us/**"
-        ]
+        ],
+        "src": "./",
+        "group": "gr-azure-sql"
       }
     ],
     "overwrite": [],
@@ -75,10 +75,10 @@
     },
     "fileMetadata": {
       "layout": {
-          "**/*.md": "Conceptual",
-          "**/*.yml": "Conceptual",
-          "**/toc.md": null,
-          "**/toc.yml": null
+        "**/*.md": "Conceptual",
+        "**/*.yml": "Conceptual",
+        "**/toc.md": null,
+        "**/toc.yml": null
       },
       "breadcrumb_path": {
         "**/*.md": "/azure/azure-sql/breadcrumb/toc.json"
@@ -108,21 +108,92 @@
         "migration-guides/virtual-machines/**/*.md": "= azuresql || = azuresql-vm",
         "migration-guides/virtual-machines/**/*.yml": "= azuresql || = azuresql-vm",
         "database/**/*.md": "= azuresql || = azuresql-db ",
-        "database/**/*.yml": "= azuresql || = azuresql-db ",        
+        "database/**/*.yml": "= azuresql || = azuresql-db ",
         "managed-instance/**/*.md": "= azuresql || = azuresql-mi ",
         "managed-instance/**/*.yml": "= azuresql || = azuresql-mi ",
         "virtual-machines/**/*.md": "= azuresql  || = azuresql-vm",
         "virtual-machines/**/*.yml": "= azuresql  || = azuresql-vm"
+      },
+      "exclude_monikers": {
+        "database/saas-dbpertenant-dr-geo-replication.md": [
+          "azuresql"
+        ],
+        "database/saas-dbpertenant-dr-geo-restore.md": [
+          "azuresql"
+        ],
+        "database/saas-dbpertenant-get-started-deploy.md": [
+          "azuresql"
+        ],
+        "database/saas-dbpertenant-performance-monitoring.md": [
+          "azuresql"
+        ],
+        "database/saas-dbpertenant-provision-and-catalog.md": [
+          "azuresql"
+        ],
+        "database/saas-dbpertenant-restore-single-tenant.md": [
+          "azuresql"
+        ],
+        "database/saas-dbpertenant-wingtip-app-overview.md": [
+          "azuresql"
+        ],
+        "database/saas-multitenantdb-adhoc-reporting.md": [
+          "azuresql"
+        ],
+        "database/saas-multitenantdb-get-started-deploy.md": [
+          "azuresql"
+        ],
+        "database/saas-multitenantdb-performance-monitoring.md": [
+          "azuresql"
+        ],
+        "database/saas-multitenantdb-provision-and-catalog.md": [
+          "azuresql"
+        ],
+        "database/saas-multitenantdb-schema-management.md": [
+          "azuresql"
+        ],
+        "database/saas-multitenantdb-tenant-analytics.md": [
+          "azuresql"
+        ],
+        "database/saas-standaloneapp-get-started-deploy.md": [
+          "azuresql"
+        ],
+        "database/saas-standaloneapp-provision-and-catalog.md": [
+          "azuresql"
+        ],
+        "database/saas-tenancy-cross-tenant-reporting.md": [
+          "azuresql"
+        ],
+        "database/saas-tenancy-elastic-tools-multi-tenant-row-level-security.md": [
+          "azuresql"
+        ],
+        "database/saas-tenancy-schema-management.md": [
+          "azuresql"
+        ],
+        "database/saas-tenancy-tenant-analytics-adf.md": [
+          "azuresql"
+        ],
+        "database/saas-tenancy-tenant-analytics.md": [
+          "azuresql"
+        ],
+        "database/saas-tenancy-video-index-wingtip-brk3120-20171011.md": [
+          "azuresql"
+        ],
+        "database/saas-tenancy-welcome-wingtip-tickets-app.md": [
+          "azuresql"
+        ],
+        "database/saas-tenancy-wingtip-app-guidance-tips.md": [
+          "azuresql"
+        ]
       }
     },
     "template": [],
-    "dest": "azure-sql",
     "groups": {
       "gr-azure-sql": {
-        "moniker_range": "= azuresql|| azuresql-db || azuresql-mi || azuresql-vm ",
-        "dest": "azure-sql"
+        "dest": "azure-sql",
+        "moniker_range": "= azuresql|| azuresql-db || azuresql-mi || azuresql-vm "
       }
     },
+    "dest": "azure-sql",
     "rules": {
       "sensitive-language-sl": {
         "exclude": [

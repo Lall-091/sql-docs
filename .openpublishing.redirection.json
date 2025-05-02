@@ -1,6 +1,190 @@
 {
   "redirections": [
     {
+      "source_path": "azure-sql/database/saas-dbpertenant-dr-geo-replication.md",
+      "redirect_url": "/previous-versions/sql/database/saas-dbpertenant-dr-geo-replication",
+      "redirect_document_id": false,
+      "monikers": [
+        "azuresql"
+      ]
+    },
+    {
+      "source_path": "azure-sql/database/saas-dbpertenant-dr-geo-restore.md",
+      "redirect_url": "/previous-versions/sql/database/saas-dbpertenant-dr-geo-restore",
+      "redirect_document_id": false,
+      "monikers": [
+        "azuresql"
+      ]
+    },
+    {
+      "source_path": "azure-sql/database/saas-dbpertenant-get-started-deploy.md",
+      "redirect_url": "/previous-versions/sql/database/saas-dbpertenant-get-started-deploy",
+      "redirect_document_id": false,
+      "monikers": [
+        "azuresql"
+      ]
+    },
+    {
+      "source_path": "azure-sql/database/saas-dbpertenant-performance-monitoring.md",
+      "redirect_url": "/previous-versions/sql/database/saas-dbpertenant-performance-monitoring",
+      "redirect_document_id": false,
+      "monikers": [
+        "azuresql"
+      ]
+    },
+    {
+      "source_path": "azure-sql/database/saas-dbpertenant-provision-and-catalog.md",
+      "redirect_url": "/previous-versions/sql/database/saas-dbpertenant-provision-and-catalog",
+      "redirect_document_id": false,
+      "monikers": [
+        "azuresql"
+      ]
+    },
+    {
+      "source_path": "azure-sql/database/saas-dbpertenant-restore-single-tenant.md",
+      "redirect_url": "/previous-versions/sql/database/saas-dbpertenant-restore-single-tenant",
+      "redirect_document_id": false,
+      "monikers": [
+        "azuresql"
+      ]
+    },
+    {
+      "source_path": "azure-sql/database/saas-dbpertenant-wingtip-app-overview.md",
+      "redirect_url": "/previous-versions/sql/database/saas-dbpertenant-wingtip-app-overview",
+      "redirect_document_id": false,
+      "monikers": [
+        "azuresql"
+      ]
+    },
+    {
+      "source_path": "azure-sql/database/saas-multitenantdb-adhoc-reporting.md",
+      "redirect_url": "/previous-versions/sql/database/saas-multitenantdb-adhoc-reporting",
+      "redirect_document_id": false,
+      "monikers": [
+        "azuresql"
+      ]
+    },
+    {
+      "source_path": "azure-sql/database/saas-multitenantdb-get-started-deploy.md",
+      "redirect_url": "/previous-versions/sql/database/saas-multitenantdb-get-started-deploy",
+      "redirect_document_id": false,
+      "monikers": [
+        "azuresql"
+      ]
+    },
+    {
+      "source_path": "azure-sql/database/saas-multitenantdb-performance-monitoring.md",
+      "redirect_url": "/previous-versions/sql/database/saas-multitenantdb-performance-monitoring",
+      "redirect_document_id": false,
+      "monikers": [
+        "azuresql"
+      ]
+    },
+    {
+      "source_path": "azure-sql/database/saas-multitenantdb-provision-and-catalog.md",
+      "redirect_url": "/previous-versions/sql/database/saas-multitenantdb-provision-and-catalog",
+      "redirect_document_id": false,
+      "monikers": [
+        "azuresql"
+      ]
+    },
+    {
+      "source_path": "azure-sql/database/saas-multitenantdb-schema-management.md",
+      "redirect_url": "/previous-versions/sql/database/saas-multitenantdb-schema-management",
+      "redirect_document_id": false,
+      "monikers": [
+        "azuresql"
+      ]
+    },
+    {
+      "source_path": "azure-sql/database/saas-multitenantdb-tenant-analytics.md",
+      "redirect_url": "/previous-versions/sql/database/saas-multitenantdb-tenant-analytics",
+      "redirect_document_id": false,
+      "monikers": [
+        "azuresql"
+      ]
+    },
+    {
+      "source_path": "azure-sql/database/saas-standaloneapp-get-started-deploy.md",
+      "redirect_url": "/previous-versions/sql/database/saas-standaloneapp-get-started-deploy",
+      "redirect_document_id": false,
+      "monikers": [
+        "azuresql"
+      ]
+    },
+    {
+      "source_path": "azure-sql/database/saas-standaloneapp-provision-and-catalog.md",
+      "redirect_url": "/previous-versions/sql/database/saas-standaloneapp-provision-and-catalog",
+      "redirect_document_id": false,
+      "monikers": [
+        "azuresql"
+      ]
+    },
+    {
+      "source_path": "azure-sql/database/saas-tenancy-cross-tenant-reporting.md",
+      "redirect_url": "/previous-versions/sql/database/saas-tenancy-cross-tenant-reporting",
+      "redirect_document_id": false,
+      "monikers": [
+        "azuresql"
+      ]
+    },
+    {
+      "source_path": "azure-sql/database/saas-tenancy-elastic-tools-multi-tenant-row-level-security.md",
+      "redirect_url": "/previous-versions/sql/database/saas-tenancy-elastic-tools-multi-tenant-row-level-security",
+      "redirect_document_id": false,
+      "monikers": [
+        "azuresql"
+      ]
+    },
+    {
+      "source_path": "azure-sql/database/saas-tenancy-schema-management.md",
+      "redirect_url": "/previous-versions/sql/database/saas-tenancy-schema-management",
+      "redirect_document_id": false,
+      "monikers": [
+        "azuresql"
+      ]
+    },
+    {
+      "source_path": "azure-sql/database/saas-tenancy-tenant-analytics-adf.md",
+      "redirect_url": "/previous-versions/sql/database/saas-tenancy-tenant-analytics-adf",
+      "redirect_document_id": false,
+      "monikers": [
+        "azuresql"
+      ]
+    },
+    {
+      "source_path": "azure-sql/database/saas-tenancy-tenant-analytics.md",
+      "redirect_url": "/previous-versions/sql/database/saas-tenancy-tenant-analytics",
+      "redirect_document_id": false,
+      "monikers": [
+        "azuresql"
+      ]
+    },
+    {
+      "source_path": "azure-sql/database/saas-tenancy-video-index-wingtip-brk3120-20171011.md",
+      "redirect_url": "/previous-versions/sql/database/saas-tenancy-video-index-wingtip-brk3120-20171011",
+      "redirect_document_id": false,
+      "monikers": [
+        "azuresql"
+      ]
+    },
+    {
+      "source_path": "azure-sql/database/saas-tenancy-welcome-wingtip-tickets-app.md",
+      "redirect_url": "/previous-versions/sql/database/saas-tenancy-welcome-wingtip-tickets-app",
+      "redirect_document_id": false,
+      "monikers": [
+        "azuresql"
+      ]
+    },
+    {
+      "source_path": "azure-sql/database/saas-tenancy-wingtip-app-guidance-tips.md",
+      "redirect_url": "/previous-versions/sql/database/saas-tenancy-wingtip-app-guidance-tips",
+      "redirect_document_id": false,
+      "monikers": [
+        "azuresql"
+      ]
+    },
+    {
       "source_path": "docs/dea/database-experimentation-assistant-capture-trace.md",
       "redirect_url": "/previous-versions/sql/dea/database-experimentation-assistant-capture-trace",
       "redirect_document_id": false,
