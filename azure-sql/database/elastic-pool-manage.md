@@ -115,4 +115,3 @@ To create and manage SQL Database elastic pools and pooled databases, use these 
 ## Related content
 
 - To learn more about design patterns for SaaS applications using elastic pools, see [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](saas-tenancy-app-design-patterns.md).
-- For a SaaS tutorial using elastic pools, see [Introduction to the Wingtip SaaS application](saas-dbpertenant-wingtip-app-overview.md).

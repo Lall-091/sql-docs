@@ -1,13 +1,12 @@
 ---
 title: Multitenant SaaS patterns
 description: Learn about the requirements and common data architecture patterns of multitenant software as a service (SaaS) database applications that run in the Azure cloud environment.
-author: scoriani
-ms.author: scoriani
-ms.reviewer: wiassaf, mathoma
+author: WilliamDAssafMSFT
+ms.author: wiassaf
 ms.service: azure-sql-database
 ms.subservice: scenario
 ms.topic: concept-article
-ms.date: 09/27/2024
+ms.date: 05/02/2025
 ms.custom: sqldbrb=1
 ---
 
@@ -189,18 +188,15 @@ The following table summarizes the differences between the main tenancy models.
 
 ## Related content
 
-- [Deploy and explore a multitenant Wingtip application that uses the database-per-tenant SaaS model - Azure SQL Database][docu-sql-db-saas-tutorial-deploy-wingtip-db-per-tenant-496y]
-
-- [Welcome to the Wingtip Tickets sample SaaS Azure SQL Database tenancy app][docu-saas-tenancy-welcome-wingtip-tickets-app-384w]
+- [Azure Architecture Center: Starter web app for SaaS development](/azure/architecture/example-scenario/apps/saas-starter-web-app)
 
 <!--  Article link references.  -->
 
 [docu-sql-svr-db-row-level-security-947w]: /sql/relational-databases/security/row-level-security
 
 [docu-elastic-db-client-library-536r]:elastic-database-client-library.md
-[docu-sql-db-saas-tutorial-deploy-wingtip-db-per-tenant-496y]: saas-dbpertenant-get-started-deploy.md
+
 [docu-sql-db-automatic-tuning-771a]:automatic-tuning-overview.md
-[docu-saas-tenancy-welcome-wingtip-tickets-app-384w]: saas-tenancy-welcome-wingtip-tickets-app.md
 
 <!--  Image references.  -->
 

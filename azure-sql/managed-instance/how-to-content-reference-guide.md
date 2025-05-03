@@ -124,9 +124,7 @@ To use the link:
 
 ## Design multitenant SaaS applications
 
-- [SaaS design patterns](../database/saas-tenancy-app-design-patterns.md)
-- [SaaS video indexer](../database/saas-tenancy-video-index-wingtip-brk3120-20171011.md)
-- [SaaS app security](../database/saas-tenancy-elastic-tools-multi-tenant-row-level-security.md)
+- [Multitenant SaaS database tenancy patterns](saas-tenancy-app-design-patterns.md)
 
 ## Next step
 

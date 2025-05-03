@@ -198,6 +198,5 @@ You can use the built-in [performance monitoring](performance-guidance.md) and [
 - To scale elastic pools, see [Scale elastic pools](elastic-pool-scale.md) and [Scale an elastic pool - sample code](scripts/monitor-and-scale-pool-powershell.md).
 - Learn how to [manage elastic pools in Azure SQL Database](elastic-pool-manage.md).
 - To learn more about design patterns for SaaS applications by using elastic pools, see [Design patterns for multitenant SaaS applications with SQL Database](saas-tenancy-app-design-patterns.md).
-- For a SaaS tutorial by using elastic pools, see [Introduction to the Wingtip SaaS application](saas-dbpertenant-wingtip-app-overview.md).
 - To learn about resource management in elastic pools with many databases, see [Resource management in dense elastic pools](elastic-pool-resource-management.md).
 - Learn more about [Hyperscale elastic pools](./hyperscale-elastic-pool-overview.md).
