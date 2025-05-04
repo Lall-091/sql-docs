@@ -5,7 +5,7 @@ description: Examples of analytical queries that use database watcher monitoring
 author: lcwright
 ms.author: lancewright
 ms.reviewer: dfurman
-ms.date: 02/07/2025
+ms.date: 05/04/2025
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: how-to
@@ -778,7 +778,7 @@ You can connect to your Azure Data Explorer or Real-Time Analytics database from
 >
 > The [SQL to Kusto Query Language cheat sheet](/azure/data-explorer/kusto/query/sql-cheat-sheet) can help you translate your T-SQL queries to KQL if you find that T-SQL support is insufficient for your needs, or if you want to convert your T-SQL queries to KQL to use its advanced analytical capabilities.
 
-The following examples show you how to query monitoring data in the database watcher data store using T-SQL.
+The following examples show you how to query monitoring data in the watcher data store using T-SQL.
 
 ### Use T-SQL to analyze resource consumption over time
 
@@ -1661,8 +1661,8 @@ ORDER BY wait_time_ms_per_sec DESC;
 ## Related content
 
 - [Monitor Azure SQL workloads with database watcher (preview)](database-watcher-overview.md)
-- [Quickstart: Create a database watcher to monitor Azure SQL (preview)](database-watcher-quickstart.md)
-- [Create and configure a database watcher (preview)](database-watcher-manage.md)
+- [Quickstart: Create a watcher to monitor Azure SQL (preview)](database-watcher-quickstart.md)
+- [Create and configure a watcher (preview)](database-watcher-manage.md)
 - [Database watcher alerts (preview)](database-watcher-alerts.md)
 - [Database watcher FAQ](database-watcher-faq.yml)
 - [Kusto Query Language learning resources](/azure/data-explorer/kql-learning-resources)

@@ -5,7 +5,7 @@ metadata:
   description: Frequently asked questions about database watcher for Azure SQL
   author: lcwright
   ms.author: lancewright
-  ms.date: 02/07/2025
+  ms.date: 05/04/2025
   ms.reviewer: wiassaf, dfurman
   ms.service: azure-sql
   ms.subservice: monitoring
@@ -70,7 +70,7 @@ sections:
     questions:
       - question: |
           Can I create and configure a watcher using Bicep, an ARM template, or Terraform?
-        answer: Yes. See [Create a database watcher](/samples/azure/azure-quickstart-templates/create-watcher/) for Bicep and ARM template examples you can customize to your needs. See [Azure resource reference](/azure/templates/microsoft.databasewatcher/watchers) documentation for Bicep, ARM template, and Terraform resource definitions.
+        answer: Yes. See [Create a watcher](/samples/azure/azure-quickstart-templates/create-watcher/) for Bicep and ARM template examples you can customize to your needs. See [Azure resource reference](/azure/templates/microsoft.databasewatcher/watchers) documentation for Bicep, ARM template, and Terraform resource definitions.
 
       - question: |
           Can I create and configure a watcher with PowerShell or Azure CLI?
@@ -95,7 +95,7 @@ sections:
         answer: You can use a database on an [Azure Data Explorer cluster](/azure/data-explorer/data-explorer-overview), on a [free Azure Data Explorer cluster](/azure/data-explorer/start-for-free), or in [Real-Time Analytics](/fabric/real-time-analytics/overview) in Microsoft Fabric. To compare between these options, see [What is the difference between Real-Time Analytics and Azure Data Explorer?](/fabric/real-time-analytics/realtime-analytics-compare)
 
       - question: |
-          I already have an Azure Data Explorer cluster. Can I use it for my database watcher data store?
+          I already have an Azure Data Explorer cluster. Can I use it as my watcher's data store?
         answer: Yes, if [streaming ingestion](database-watcher-manage.md#streaming-ingestion) is enabled on this cluster. Create a new database and grant the managed identity of a watcher [access](database-watcher-manage.md#grant-access-to-data-store) to this database. For smaller cluster SKUs, and depending on the query and ingestion workloads already running, you might need to [scale](database-watcher-manage.md#scale-azure-data-explorer-cluster) the cluster to support the additional load.
 
       - question: |
@@ -117,7 +117,7 @@ sections:
         answer: A remote data collection agent running on a Microsoft managed compute hosting platform connects to your Azure SQL resources, periodically executes T-SQL queries to collect monitoring data from SQL system views, and ingests this data into the data store.
 
       - question: |
-          Will database watcher impact my workload performance?
+          Will database watcher affect my workload performance?
         answer: This is unlikely. For details, see [Data collection](database-watcher-data.md#interaction-between-database-watcher-and-application-workloads).
 
       - question: |
@@ -134,7 +134,7 @@ sections:
 
       - question: |
           How does it connect to monitoring targets?
-        answer: Database watcher can use [Azure Private Link](/azure/private-link/private-link-overview) to connect to monitoring targets. When configuring a watcher, create managed private endpoints for your Azure SQL resources. The resource owner must approve each private endpoint for database watcher to use it. Public connectivity is supported as well. For more information, see [Network connectivity](database-watcher-overview.md#network-connectivity).
+        answer: Database watcher can use [Azure Private Link](/azure/private-link/private-link-overview) to connect to monitoring targets. When configuring a watcher, create managed private endpoints for your Azure SQL resources. The resource owner must approve each private endpoint for a watcher to use it. Public connectivity is supported as well. For more information, see [Network connectivity](database-watcher-overview.md#network-connectivity).
 
       - question: |
           How does it authenticate to monitoring targets?
@@ -168,8 +168,8 @@ additionalContent: |
   ## Related content
   
   - [Monitor Azure SQL workloads with database watcher](database-watcher-overview.md)
-  - [Quickstart: Create a database watcher to monitor Azure SQL](database-watcher-quickstart.md)
-  - [Create and configure a database watcher](database-watcher-manage.md)
+  - [Quickstart: Create a watcher to monitor Azure SQL](database-watcher-quickstart.md)
+  - [Create and configure a watcher](database-watcher-manage.md)
   - [Database watcher data collection and datasets](database-watcher-data.md)
   - [Analyze database watcher monitoring data](database-watcher-analyze.md)
   - [Database watcher alerts](database-watcher-alerts.md)

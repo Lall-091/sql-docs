@@ -5,7 +5,7 @@ description: A detailed description of SQL monitoring data collected by database
 author: lcwright
 ms.author: lancewright
 ms.reviewer: dfurman
-ms.date: 12/20/2024
+ms.date: 05/04/2025
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: conceptual
@@ -40,13 +40,13 @@ To further reduce the risk of impact to application workloads, all database watc
 
 # [SQL managed instance](#tab/sqlmi)
 
-If there is resource contention between your application workloads and database watcher monitoring queries in Azure SQL Managed Instance, you can enable [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) to limit resource consumption by the monitoring queries.
+If there is resource contention between your application workloads and database watcher monitoring queries in Azure SQL Managed Instance, you can enable [resource governor](/sql/relational-databases/resource-governor/resource-governor) to limit resource consumption by the monitoring queries.
 
-The following example configures Resource Governor on a SQL managed instance. It limits CPU consumption by database watcher queries to 30% when there is no CPU contention. When there is CPU contention, this configuration reserves 5% of CPU for the monitoring queries and limits their CPU usage to 10%. It also limits the memory grant size for each monitoring query to 10% of the available memory.
+The following example configures resource governor on a SQL managed instance. It limits CPU consumption by database watcher queries to 30% when there is no CPU contention. When there is CPU contention, this configuration reserves 5% of CPU for the monitoring queries and limits their CPU usage to 10%. It also limits the memory grant size for each monitoring query to 10% of the available memory.
 
 > [!NOTE]
 >
-> If you make Resource Governor configuration too restrictive, for example by using low `MAX_CPU_PERCENT` or `CAP_CPU_PERCENT` values, database watcher might not be able to collect data reliably or at all because of insufficient compute resources.
+> If you make resource governor configuration too restrictive, for example by using low `MAX_CPU_PERCENT` or `CAP_CPU_PERCENT` values, database watcher might not be able to collect data reliably or at all because of insufficient compute resources.
 
 ```sql
 USE master;
@@ -75,7 +75,7 @@ IF EXISTS (
           FROM sys.resource_governor_configuration
           WHERE classifier_function_id <> 0 OR is_enabled <> 0
           )
-    THROW 50001, 'Resource Governor is already configured. No changes were made.', 1;
+    THROW 50001, 'A resource governor configuration is already present. No changes were made.', 1;
 
 CREATE RESOURCE POOL database_watcher_resource_pool
 WITH (MIN_CPU_PERCENT = 5, MAX_CPU_PERCENT = 10, CAP_CPU_PERCENT = 30);
@@ -95,7 +95,7 @@ END CATCH;
 ```
 
 > [!TIP]
-> To make a new Resource Governor configuration effective on a high availability secondary replica of a SQL managed instance immediately, [connect](./database/read-scale-out.md#connect-to-a-read-only-replica) to the replica and execute `ALTER RESOURCE GOVERNOR RECONFIGURE;`.
+> To make a new resource governor configuration effective on a high availability secondary replica of a SQL managed instance immediately, [connect](./database/read-scale-out.md#connect-to-a-read-only-replica) to the `master` database on the replica and execute `ALTER RESOURCE GOVERNOR RECONFIGURE;`.
 
 ---
 
@@ -105,7 +105,7 @@ You might observe gaps in the collected data if the overall resource utilization
 
 ### Data collection in elastic pools
 
-To monitor an elastic pool, you must designate one database in the pool as the **anchor database**. Database watcher connects to the anchor database. Because the watcher [holds](database-watcher-overview.md#watcher-authorization) the `VIEW SERVER PERFORMANCE STATE` permission, system views in the anchor database provide monitoring data for the pool as a whole.
+To monitor an elastic pool, you must designate one database in the pool as the **anchor database**. A watcher connects to the anchor database. Because the watcher [holds](database-watcher-overview.md#watcher-authorization) the `VIEW SERVER PERFORMANCE STATE` permission, system views in the anchor database provide monitoring data for the pool as a whole.
 
 > [!TIP]
 > You can add an empty database to each elastic pool you want to monitor, and designate it as the anchor database. This way, you can move other databases in and out of the pool, or between pools, without interrupting elastic pool monitoring.
@@ -290,13 +290,13 @@ For each SQL target type, datasets have common columns, as described in the foll
 
 A dataset has both `sample_time_utc` and `collection_time_utc` columns if it contains samples observed before the row was collected by database watcher. Otherwise, the observation time and collection time are the same, and the dataset contains only the `sample_time_utc` column.
 
-For example, the `sqldb_database_resource_utilization` dataset is derived from the [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dynamic management view (DMV). The DMV contains the `end_time` column, which is the observation time for each row reporting aggregate resource statistics for a 15-second interval. This time is reported in the `sample_time_utc` column. When database watcher queries this DMV, the result set might contain multiple rows, each with a different `end_time`. All of these rows have the same `collection_time_utc` value.
+For example, the `sqldb_database_resource_utilization` dataset is derived from the [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dynamic management view (DMV). The DMV contains the `end_time` column, which is the observation time for each row reporting aggregate resource statistics for a 15-second interval. This time is reported in the `sample_time_utc` column. When a watcher queries this DMV, the result set might contain multiple rows, each with a different `end_time`. All of these rows have the same `collection_time_utc` value.
 
 ## Related content
 
 - [Monitor Azure SQL workloads with database watcher (preview)](database-watcher-overview.md)
-- [Quickstart: Create a database watcher to monitor Azure SQL (preview)](database-watcher-quickstart.md)
-- [Create and configure a database watcher (preview)](database-watcher-manage.md)
+- [Quickstart: Create a watcher to monitor Azure SQL (preview)](database-watcher-quickstart.md)
+- [Create and configure a watcher (preview)](database-watcher-manage.md)
 - [Analyze database watcher monitoring data (preview)](database-watcher-analyze.md)
 - [Database watcher alerts (preview)](database-watcher-alerts.md)
 - [Database watcher FAQ](database-watcher-faq.yml)

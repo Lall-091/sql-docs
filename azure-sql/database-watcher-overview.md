@@ -5,7 +5,7 @@ description: An overview of database watcher for Azure SQL, a managed monitoring
 author: lcwright
 ms.author: lancewright
 ms.reviewer: wiassaf, dfurman
-ms.date: 04/21/2025
+ms.date: 05/04/2025
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: conceptual
@@ -31,7 +31,7 @@ You can query data in an Azure Data Explorer or Real-Time Analytics database usi
 
 To start monitoring your Azure SQL resources, create a **watcher** resource in your Azure subscription. Configure the watcher by selecting a **data store** and a set of databases, elastic pools, or SQL managed instances to monitor, called **SQL targets**. Grant the watcher access to targets, and start the watcher.
 
-- For the steps to get started quickly, see [Quickstart: monitor Azure SQL with database watcher](database-watcher-quickstart.md). For setup and configuration details, see [Create and configure a database watcher](database-watcher-manage.md).
+- For the steps to get started quickly, see [Quickstart: monitor Azure SQL with database watcher](database-watcher-quickstart.md). For setup and configuration details, see [Create and configure a watcher](database-watcher-manage.md).
 - For answers to frequently asked questions about database watcher, see [Database watcher FAQ](database-watcher-faq.yml).
 - For a video overview of database watcher, watch a [Data Exposed](/shows/data-exposed/) episode:
 
@@ -56,7 +56,7 @@ Database watcher costs are incurred by its individual components, as follows:
 |:--|:--|:--|
 | Watchers | **Free** | |
 | Dashboards | **Free** | |
-| Azure Data Explorer cluster <sup>1</sup> | [Pricing details](https://azure.microsoft.com/pricing/details/data-explorer) | The optimal cluster SKU depends on the number of monitoring targets and the cluster query workload. For cluster sizing considerations, see [Manage Azure Data Explorer cluster](database-watcher-manage.md#manage-data-store). |
+| Azure Data Explorer cluster <sup>1</sup> | [Pricing details](https://azure.microsoft.com/pricing/details/data-explorer) | The optimal cluster SKU depends on the number of monitoring targets and the query workload running on the cluster. For cluster sizing considerations, see [Manage Azure Data Explorer cluster](database-watcher-manage.md#manage-data-store). |
 | Real-Time Analytics in Microsoft Fabric | Included in the Power BI Premium workspace consumption model. Billing per use. | Use either Azure Data Explorer or Real-Time Analytics. Only one of these offerings is required. |
 | A vault in Azure Key Vault | [Pricing details](https://azure.microsoft.com/pricing/details/key-vault/) | Required only if the optional SQL authentication is used instead of the default Microsoft Entra authentication. |
 | Azure network bandwidth | [Pricing details](https://azure.microsoft.com/pricing/details/bandwidth/) | Cost is not incurred if a watcher, its targets, and its data store are deployed in the same Azure region. |
@@ -68,7 +68,7 @@ There is no charge per monitored Azure SQL resource or per user, making database
 
 ## Regional availability
 
-At this time, you can create database watchers in the following Azure regions:
+At this time, you can create watchers in the following Azure regions:
 
 | Azure geography | Azure region |
 |:--|:--|
@@ -164,9 +164,9 @@ For more information about network connectivity in Azure SQL, see [Azure SQL Dat
 
 To provide private connectivity, database watcher uses [Azure Private Link](/azure/private-link/private-link-overview). When you configure a watcher, you can [create managed private endpoints](database-watcher-manage.md#create-a-managed-private-endpoint) to let the watcher connect to databases and elastic pools on [logical servers](./database/logical-servers.md), or to SQL managed instances. You can also create a private endpoint for the Azure Data Explorer cluster, and for the key vault storing SQL authentication credentials. At this time, private connectivity is not available for connections to Real-Time Analytics in Microsoft Fabric.
 
-A resource owner must approve a private endpoint before database watcher can use it. Conversely, resource owners can delete any database watcher private endpoint at any time to stop data collection.
+A resource owner must approve the managed private endpoint for a watcher before the watcher can use it. Conversely, resource owners can delete any private endpoint for a watcher at any time to stop data collection.
 
-Once a private endpoint for an Azure resource is created and approved, all network traffic between a watcher and the resource uses private connectivity, even if public connectivity for the resource remains enabled.
+Once you create an approve a managed private endpoint for a watcher that targets an Azure resource, all network traffic between the watcher and the resource uses private connectivity, even if public connectivity for the resource remains enabled.
 
 For more information about private endpoints in Azure SQL, see [Azure Private Link for Azure SQL Database](./database/private-endpoint-overview.md) and [Azure Private Link for Azure SQL Managed Instance](./managed-instance/private-endpoint-overview.md).
 
@@ -180,7 +180,7 @@ To enable a watcher to connect to an Azure Data Explorer cluster or a key vault 
 
 ## Data access
 
-Just like network connectivity, you fully control database watcher access to your databases. You grant access by creating dedicated database watcher logins on logical servers and SQL managed instances, and then granting specific, limited permissions to collect monitoring data from SQL system views.
+Just like network connectivity, you fully control database watcher access to your databases. You grant access by creating dedicated watcher logins on logical servers and SQL managed instances, and then granting specific, limited permissions to collect monitoring data from SQL system views.
 
 ### Watcher authentication
 
@@ -190,7 +190,7 @@ Database watcher also supports password-based SQL authentication. You might use 
 
 ### Watcher authorization
 
-To collect monitoring data, database watcher requires specific, limited access to each monitoring target, as described in the following table. These role memberships and permissions give the watcher the necessary access to the system monitoring data, but not to any other data in your databases.
+To collect monitoring data, a watcher requires specific, limited access to each monitoring target, as described in the following table. These role memberships and permissions give a watcher the necessary access to the system monitoring data, but not to any other data in your databases.
 
 | Azure SQL Database | Azure SQL Managed Instance |
 |:--|:--|
@@ -201,9 +201,9 @@ To collect monitoring data, database watcher requires specific, limited access t
 > 
 > When configuring watcher access to a SQL target, always [create a dedicated login using provided scripts](database-watcher-manage.md#grant-access-to-sql-targets-with-t-sql-scripts). Do not add the watcher login or user to any SQL roles or grant any SQL permissions other than the ones listed in the table.
 
-If you [deny](/sql/t-sql/statements/deny-transact-sql) the required permissions to the database watcher login or user, or to a role that has the database watcher login or user as a member (including the `public` database role), then database watcher might not collect monitoring data. Depending on which permissions are denied, this might affect some or all datasets.
+If you [deny](/sql/t-sql/statements/deny-transact-sql) the required permissions to the login or user for a watcher, or to a role that has a watcher login or user as a member (including the `public` database role), then the watcher might not collect monitoring data. Depending on which permissions are denied, this might affect some or all datasets.
 
-Conversely, if you [grant](/sql/t-sql/statements/grant-transact-sql) unnecessary permissions to the database watcher login or user, or to a role that has the database watcher login or user as a member, then database watcher might not collect monitoring data for some or all datasets. Similarly, data might not be collected if you add the database watcher login or user to a built-in server or database role.
+Conversely, if you [grant](/sql/t-sql/statements/grant-transact-sql) unnecessary permissions to the login or user for a watcher, or to a role that has the watcher login or user as a member, then the watcher might not collect monitoring data for some or all datasets. Similarly, data might not be collected if you add the watcher login or user to a built-in server or database role.
 
 ## What's new
 
@@ -243,10 +243,10 @@ During preview, database watcher has the following known issues.
 | Issue | Mitigation or workaround |
 |:--|:--|
 | If data collection cannot start or continue because of an error (for example, insufficient access to a SQL target or to the data store), the error is not exposed. | To troubleshoot, see [Data is not collected](#data-is-not-collected). |
-| If a [serverless](./database/serverless-tier-overview.md) database has auto-pause enabled, and is added as a database watcher target, it might not auto-pause as expected. For a [free offer](./database/free-offer.md) database, this might exhaust the free monthly credit sooner than expected. | If retaining the auto-pause functionality is required, do not use database watcher to monitor serverless databases at this time. |
+| If a [serverless](./database/serverless-tier-overview.md) database has auto-pause enabled, and is added as a SQL target to a watcher, it might not auto-pause as expected. For a [free offer](./database/free-offer.md) database, this might exhaust the free monthly credit sooner than expected. | If retaining the auto-pause functionality is required, do not use database watcher to monitor serverless databases at this time. |
 | Because of a known issue in Azure SQL Database and Azure SQL Managed Instance, expected data might not be collected from a high availability (HA) readable secondary replica if database replicas change roles, for example after a maintenance event. | Commonly, the issue resolves without any action within one or two days. To resume data collection sooner, restart the watcher. |
 | For Azure SQL Managed Instance, data might not be collected from the readable high availability replica or from a geo-replica if you are using SQL authentication. | There are two workarounds: </br>1. Use the Microsoft Entra ID authentication (preferred). </br>2. Disable the password policy check. Execute `ALTER LOGIN [database-watcher-login-placeholder] WITH CHECK_POLICY = OFF;`, replacing `database-watcher-login-placeholder` with the name of the SQL authentication login of the watcher. Execute this command on the primary replica, and on the geo-replica, if any. |
-| In Azure SQL Managed Instance, data is not collected if the `EXECUTE` permission on the `sys.xp_msver` system stored procedure is revoked or denied to the `public` role. | Grant the `EXECUTE` permission on `sys.xp_msver` to the database watcher login.</br></br>On every SQL managed instance added as a database watcher target, execute `USE master; CREATE USER [database-watcher-login-placeholder] FOR LOGIN [database-watcher-login-placeholder]; GRANT EXECUTE ON sys.xp_msver TO [database-watcher-login-placeholder];`, replacing `database-watcher-login-placeholder` with the name of the watcher login. |
+| In Azure SQL Managed Instance, data is not collected if the `EXECUTE` permission on the `sys.xp_msver` system stored procedure is revoked or denied to the `public` role. | Grant the `EXECUTE` permission on `sys.xp_msver` to the watcher login.</br></br>On every SQL managed instance added as a SQL target, execute `USE master; CREATE USER [database-watcher-login-placeholder] FOR LOGIN [database-watcher-login-placeholder]; GRANT EXECUTE ON sys.xp_msver TO [database-watcher-login-placeholder];`, replacing `database-watcher-login-placeholder` with the name of the watcher login. |
 | If you create a managed private endpoint for a watcher to connect to a SQL managed instance that is stopped, the provisioning state of the private endpoint is reported as **Failed**, and the watcher cannot connect to the instance. | Delete the managed private endpoint with the **Failed** provisioning state and [start](./managed-instance/instance-stop-start-how-to.md) the SQL managed instance. Once the failed private endpoint is deleted and the instance is running, [re-create](database-watcher-manage.md#create-a-managed-private-endpoint) the managed private endpoint. |
 | Data is not collected if you use a database in Real-Time Analytics as the data store, and the **OneLake availability** option is enabled. | Disable the **OneLake availability** option and restart the watcher to resume data collection. |
 | Because of a known issue in Azure Monitor Alerts, if you edit an alert rule created from a database watcher template, the scope of any fired alert is set to the Azure Data Explorer cluster used as the watcher data store instead of the SQL target that the alert applies to. | Edit the alert rule programmatically, for example using Bicep or an ARM template, and set the `resourceIdColumn` property to the value `resource_id`. For more information, see [Resource Manager template samples for log search alert rules in Azure Monitor](/azure/azure-monitor/alerts/resource-manager-alerts-log). |
@@ -315,8 +315,8 @@ For technical support or help solving a problem with database watcher, [open a s
 
 ## Related content
 
-- [Quickstart: Create a database watcher to monitor Azure SQL (preview)](database-watcher-quickstart.md)
-- [Create and configure a database watcher (preview)](database-watcher-manage.md)
+- [Quickstart: Create a watcher to monitor Azure SQL (preview)](database-watcher-quickstart.md)
+- [Create and configure a watcher (preview)](database-watcher-manage.md)
 - [Database watcher data collection and datasets (preview)](database-watcher-data.md)
 - [Analyze database watcher monitoring data (preview)](database-watcher-analyze.md)
 - [Database watcher alerts (preview)](database-watcher-alerts.md)

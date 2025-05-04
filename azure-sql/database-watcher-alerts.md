@@ -5,7 +5,7 @@ description: A detailed description of Azure Monitor Alerts in database watcher
 author: lcwright
 ms.author: lancewright
 ms.reviewer: dfurman
-ms.date: 02/12/2025
+ms.date: 05/04/2025
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: conceptual
@@ -20,7 +20,7 @@ monikerRange: "=azuresql||=azuresql-db||=azuresql-mi"
 
 After you [create and configure](database-watcher-manage.md) a watcher, you can set up [Azure Monitor Alerts](/azure/azure-monitor/alerts/alerts-overview) to receive notifications about high resource usage, notable workload patterns, and other conditions across your Azure SQL estate that might require attention. To do this, you create a [log search alert rule](/azure/azure-monitor/alerts/alerts-create-log-alert-rule) that queries the data store of a watcher on a schedule.
 
-To help you create alert rules, database watcher includes templates for common alert conditions. Once an alert rule is created from a database watcher template, you can manage it just like any other alert rule in Azure Monitor Alerts. You can use all capabilities of Azure alerting: email, SMS, and phone notifications, integration with ITSM products, webhooks, event hubs, and more. You can customize alert rules created from database watcher templates, or create your own alert rules.
+To help you create alert rules, database watcher includes templates for common alert conditions. Once an alert rule is created from a template, you can manage it just like any other alert rule in Azure Monitor Alerts. You can use all capabilities of Azure alerting: email, SMS, and phone notifications, integration with ITSM products, webhooks, event hubs, and more. You can customize alert rules created from database watcher templates, or create your own alert rules.
 
 To learn more about Azure Monitor Alerts, see:
 
@@ -201,8 +201,8 @@ You can see all alert instances and their state on the Azure Monitor **Alerts** 
 
 - [What are Azure Monitor alerts?](/azure/azure-monitor/alerts/alerts-overview)
 - [Monitor Azure SQL workloads with database watcher (preview)](database-watcher-overview.md)
-- [Quickstart: Create a database watcher to monitor Azure SQL (preview)](database-watcher-quickstart.md)
-- [Create and configure a database watcher (preview)](database-watcher-manage.md)
+- [Quickstart: Create a watcher to monitor Azure SQL (preview)](database-watcher-quickstart.md)
+- [Create and configure a watcher (preview)](database-watcher-manage.md)
 - [Database watcher data collection and datasets (preview)](database-watcher-data.md)
 - [Analyze database watcher monitoring data (preview)](database-watcher-analyze.md)
 - [Database watcher FAQ](database-watcher-faq.yml)
