@@ -3,7 +3,7 @@ title: Encryption and certificate validation
 description: Learn about encryption and certificate validation for SQL Server connections. The OLE DB Driver for SQL Server supports encryption and certificate validation.
 author: David-Engel
 ms.author: davidengel
-ms.date: 05/02/2025
+ms.date: 05/05/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: "reference"
@@ -40,7 +40,7 @@ Version 19 of the OLE DB Driver for SQL Server introduces breaking changes in th
 
 The following table describes the evaluation of the encryption settings:
 
-| Force Protocol Encryption client setting | Connection string/connection attribute Encrypt/Use Encryption for Data | **Resulting encryption** |
+| Force Protocol Encryption client registry setting | Connection string/connection attribute Encrypt/Use Encryption for Data | **Resulting encryption** |
 |--|--|--|
 | 0 (default) | No/Optional | Optional |
 | 0 (default) | Yes/Mandatory (default) | Mandatory |
@@ -55,10 +55,13 @@ The following table describes the resulting encryption and validation:
 | Encryption | Trust Server Certificate client registry setting | Connection string/connection attribute Trust Server Certificate | Result |
 |--|--|--|--|
 | Optional | N/A | N/A | Encryption only occurs for LOGIN packets. |
-| Mandatory | 0 (default) | Ignored | Encryption occurs only if there's a verifiable server certificate, otherwise the connection attempt fails. |
-| Mandatory | 1 | No (default) | Encryption occurs only if there's a verifiable server certificate, otherwise the connection attempt fails. |
-| Mandatory | 1 | Yes | Encryption always occurs, but may use a self-signed server certificate. |
+| Mandatory | 0 | Ignored | Encryption occurs only if there's a verifiable server certificate, otherwise the connection attempt fails. |
+| Mandatory | 1 (default) | No (default) | Encryption occurs only if there's a verifiable server certificate, otherwise the connection attempt fails. |
+| Mandatory | 1 (default) | Yes | Encryption always occurs, but may use a self-signed server certificate. |
 | Strict | N/A | N/A | Encryption occurs only if there's a verifiable server certificate, otherwise the connection attempt fails. |
+
+> [!NOTE]
+> In versions 19.0 through 19.3, during installation, the default Trust Server Certificate client registry setting is read from the version 18 registry setting, if it exists.
 
 > [!CAUTION]
 > The preceding table only provides a guide on the system behavior under different configurations. For secure connectivity, ensure that the client and server both require encryption (for server-side configuration, see [Configure encryption settings in SQL Server](../../../database-engine/configure-windows/configure-sql-server-encryption.md#step-2-configure-encryption-settings-in-sql-server)). Also ensure that the server has a verifiable certificate, and that the **`TrustServerCertificate`** setting on the client is set to FALSE.
