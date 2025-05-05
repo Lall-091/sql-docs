@@ -5,7 +5,7 @@ description: Learn how troubleshoot common issues with a link between SQL Server
 author: djordje-jeremic
 ms.author: djjeremi
 ms.reviewer: mathoma, danil
-ms.date: 12/06/2024
+ms.date: 04/27/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: data-movement
 ms.custom: 
@@ -21,11 +21,37 @@ You can check the state of the link with Transact-SQL (T-SQL), Azure PowerShell 
 
 Many issues with creating the link can be resolved by [checking the network](#test-network-connectivity) between the two instances, and validating the [environment has been properly prepared](managed-instance-link-preparation.md) for the link. 
 
+## Initial seeding
+
+When establishing a link between SQL Server and Azure SQL Managed Instance, there's an initial seeding phase before data replication starts. The initial seeding phase is the longest and most expensive part of the operation. Once initial seeding completes data is synchronized, and only subsequent data changes are replicated. The time it takes for the initial seeding to complete depends on the size of data, workload intensity on the primary databases, and the speed of the link between networks of the primary and secondary replicas. 
+
+If the speed of the link between the two instances is slower than what is necessary, the time to seed is likely to be noticeably affected. You can use the stated seeding speed, total size of data, and the link speed to estimate how long the initial seeding phase will take before data replication starts. For example, for a single 100-GB database, the initial seed phase would take about 1.2 hours if the link is capable of pushing 84 GB per hour, and if there are no other databases being seeded to a different link. If the link can only transfer 10 GB per hour, then seeding a 100-GB database can take about 10 hours. If there are multiple databases to replicate via multiple links, seeding will be executed in parallel, and, when combined with a slow link speed, the initial seeding phase might take considerably longer, especially if the parallel seeding of data from all databases exceeds the available link bandwidth.
+
+> [!IMPORTANT]
+> The initial seeding phase can take days with extremely low-speed or busy links. In this case, creating the link can time out. Creating the link is automatically canceled after 6 days. 
+
 ## Check link state
 
-If you run into issues with a link, you can use Transact-SQL (T-SQL), Azure PowerShell or the Azure CLI to get information about the current state of the link.
+If you run into issues with a link, you can use SQL Server Management Studio (SSMS), Transact-SQL (T-SQL), Azure PowerShell or the Azure CLI to get information about the current state of the link.
 
 Use T-SQL for a quick status details of the link state, and then use Azure PowerShell or the Azure CLI for a comprehensive information about the current state of the link. 
+
+### [SQL Server Management Studio (SSMS)](#tab/ssms)
+
+Link monitoring is available starting with SQL Server Management Studio (SSMS) 21.0 (preview).
+
+To check the link state in SSMS, follow these steps: 
+1. Connect to a replica that hosts the link. 
+1. In **Object Explorer**, expand **Always On High Availability**, and then expand **Availability Groups**.
+1. Right-click the name of the link, and then select **Properties** to open the **Link properties** window: 
+
+   :::image type="content" source="media/managed-instance-link-troubleshoot-how-to/access-link-properties.png" alt-text="Screenshot of the right-click menu on a link in SSMS, with properties highlighted. ":::
+
+1. The **Link properties** window displays useful information about the link, such as replica information, link state, and the endpoint certificate expiration date: 
+
+
+   :::image type="content" source="media/managed-instance-link-troubleshoot-how-to/link-properties.png" alt-text="Screenshot of the link properties window in SSMS. ":::
+
 
 ### [Transact-SQL (T-SQL)](#tab/tsql)
 
@@ -128,7 +154,7 @@ For a complete list of link state properties, review the [Distributed Availabili
 
 There are two distinct categories of errors you can encounter when using the link - errors when you try to initialize the link, and errors when you try to create the link. 
 
-### Errors initializing a link 
+### Errors initializing a link sql-server-2016-database-engine-events-and-errors-1000-1999
 
 The following error can occur when initializing a link (Link state: `LinkInitError`): 
 
@@ -141,9 +167,18 @@ The following error can occur when initializing a link (Link state: `LinkInitErr
 
 ### Errors creating a link
 
-The following error can occur when creating a link (Link state: `LinkCreationError`): 
+The following errors can occur when creating a link (Link state: `LinkCreationError`): 
 
 - [Error 41977](/sql/relational-databases/errors-events/mssqlserver-41977-database-engine-error): The target database isn't responsive. Check link parameters and try again.
+- **Premature log truncation**: If the transaction log is truncated before the initial seeding finishes, you are likely to see one of the following errors: 
+   - [Error 1408](/sql/relational-databases/errors-events/database-engine-events-and-errors-1000-to-1999): The remote copy of database "%.*ls" is not recovered far enough to enable database mirroring or to join it to the availability group. 
+   - [Error 1412](/sql/relational-databases/errors-events/database-engine-events-and-errors-1000-to-1999): The remote copy of database "%.*ls" has not been rolled forward to a point in time that is encompassed in the local copy of the database log.
+
+   To resolve this issue, you must [drop](managed-instance-link-configure-how-to-ssms.md#drop-a-link) and recreate the link.   
+   To avoid this issue, pause transaction log backups on SQL Server for database being replicated during the initial seeding phase.
+
+
+
 
 ## Inconsistent state after forced failover
 

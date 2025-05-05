@@ -4,7 +4,7 @@ description: Learn how to configure a failover group for Azure SQL Managed Insta
 author: Stralle
 ms.author: strrodic
 ms.reviewer: mathoma, randolphwest
-ms.date: 09/08/2024
+ms.date: 04/27/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: high-availability
 ms.topic: how-to
@@ -265,9 +265,6 @@ Use [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsql
 
 Test failover of your failover group by using the Azure portal or PowerShell.
 
-> [!NOTE]
-> If the instances are in different subscriptions, or resource groups, initiate the failover from the secondary instance.
-
 ### [Azure portal](#tab/azure-portal)
 
 Test failover of your failover group using the Azure portal.
@@ -315,6 +312,19 @@ Optionally, use the [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sq
 :::code language="powershell" source="~/../azure_powershell_scripts/azure-sql/managed-instance/failover-groups/add-managed-instance-to-failover-group-az-ps.ps1" id="FailBack":::
 
 ---
+
+## Track failover in the activity log
+
+You can use the **Activity log** in the Azure portal to track the status of the failover operation. To do this, follow these steps:
+
+1. Go to your [SQL managed instance](https://portal.azure.com/#browse/Microsoft.Sql%2FmanagedInstances) in the Azure portal.
+1. Select **Activity log** to open the **Activity log** pane.
+1. Clear any filters for **Resource**. 
+1. Search for operations with the name `Failover Azure SQL Database failover group`: 
+
+   :::image type="content" source="media/failover-group-configure-sql-mi/failover-in-activity-log.png" alt-text="Screenshot of the activity log for your SQL managed instance in the Azure portal, with a failover operation highlighted." lightbox="media/failover-group-configure-sql-mi/failover-in-activity-log.png":::
+
+   
 
 ## Modify existing failover group 
 

@@ -154,7 +154,6 @@ After you configure a link with Azure SQL Managed Instance, databases on the man
 
 You can reduce your on-premises management and operation costs while enjoying the reliability of Azure backups for your replicated databases. You can then perform a [point-in-time restore](point-in-time-restore.md) of your replicated database to any SQL Managed Instance deployment in the same region, as with any other [automated backup](automated-backups-overview.md). 
 
-
 ## License-free passive DR replica
 
 You can save on vCore licensing costs if you activate the [hybrid failover benefit](business-continuity-high-availability-disaster-recover-hadr-overview.md#license-free-dr-replicas) for secondary passive disaster recovery only SQL managed instances that don't have any workloads. 
@@ -198,7 +197,7 @@ Configuration limitations include:
 
   - If there are multiple SQL Server instances on a server, it's possible to configure a link with each instance, but each instance must be configured to use a separate database mirroring endpoint, with a dedicated port per instance. Only the default instance should use port 5022 for the database mirroring endpoint. 
   - Only one database can be placed into a single availability group for one Managed Instance link. However, it's possible to replicate multiple databases in a single SQL Server instance by establishing multiple links. 
-  - A single managed instance supports up to 100 links from multiple SQL Server instances. 
+  - A single General Purpose or Business Critical SQL Managed Instance supports up to 100 links, and a single Next-gen General Purpose SQL Managed Instance supports up to 500 links, from the same, or from multiple SQL Server sources.
   - A Managed Instance link can replicate a database of any size if it fits into the chosen storage size of the target SQL Managed Instance deployment.
   - Managed Instance link authentication between SQL Server and SQL Managed Instance is certificate-based and available only through an exchange of certificates. Using Windows authentication to establish the link between the SQL Server instance and the managed instance isn't supported.
   - Only [VNet-local endpoint](connectivity-architecture-overview.md#vnet-local-endpoint) is supported to establish a link with SQL Managed Instance. 
@@ -210,7 +209,9 @@ Feature limitations include:
 
 - [Failover groups](failover-group-sql-mi.md) aren't supported with instances that use the link feature. You can't establish a link on a managed instance that's part of a failover group, and conversely, you can't configure a failover group on an instance that has a link established.
 - If you're using Change Data Capture (CDC), log shipping, or a service broker with databases that are replicated on the SQL Server instance, when the database is migrated to a SQL Managed Instance deployment, during a failover to Azure, clients need to connect by using the instance name of the current global primary replica. These settings should be manually reconfigured. 
-- If you're using transactional replication with a database on a SQL Server instance in a migration scenario, during failover to Azure, transactional replication on the SQL Managed Instance deployment will fail and should be manually reconfigured. 
+- If you're using [transactional replication](/sql/relational-databases/replication/transactional/transactional-replication) on a database with an established link, consider the following: 
+   - The linked database on the secondary replica can't be a Publisher in a transactional replication topology.
+   - If you're migrating a database that is configured as a Publisher in a transactional replication topology by using the link, you must reconfigure the database as a Publisher on the target instance after the migration is complete.
 - If you're using distributed transactions with a database that's replicated from the SQL Server instance and, in a migration scenario, on the cutover to the cloud, Distributed Transaction Coordinator capabilities won't be transferred. It's not possible for the migrated database to get involved in distributed transactions with the SQL Server instance, because the SQL Managed Instance deployment doesn't support distributed transactions with SQL Server at this time. For reference, SQL Managed Instance today supports distributed transactions only between other managed instances. For more information, see [Distributed transactions across cloud databases](../database/elastic-transactions-overview.md#transactions-for-sql-managed-instance).
 - If you're using Transparent Data Encryption (TDE) to encrypt SQL Server databases, the database encryption key from SQL Server needs to be exported and uploaded to Azure Key Vault, and you need to also configure the BYOK TDE option on SQL Managed Instance before creating the link.
 - SQL Managed Instance databases that are encrypted with service-managed TDE keys can't be linked to SQL Server. You can link an encrypted database to SQL Server only if it was encrypted with a customer-managed key and the destination server has access to the same key that's used to encrypt the database. For more information, see [Set up SQL Server TDE with Azure Key Vault](/sql/relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault). 
@@ -220,7 +221,7 @@ Feature limitations include:
 
 Trying to add an unsupported functionality to a replicated database in: 
    - SQL Server 2017, 2019 and 2022 fails with an error. 
-   - SQL Server 2016 results in breaking the link, which will then need to be deleted and recreated. 
+   - SQL Server 2016 results in breaking the link, which you then need to delete and recreate.
 
 For the full list of differences between SQL Server and SQL Managed Instance, see [T-SQL differences between SQL Server and Azure SQL Managed Instance](./transact-sql-tsql-differences-sql-server.md).
 

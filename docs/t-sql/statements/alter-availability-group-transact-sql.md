@@ -466,20 +466,28 @@ For more information, see [Join a Secondary Replica to an Availability Group &#4
 #### FAILOVER
 Initiates a manual failover of the availability group without data loss to the secondary replica to which you're connected. The replica that will host the primary replica is the *failover target*.  The failover target will take over the primary role and recover its copy of each database and bring them online as the new primary databases. The former primary replica concurrently transitions to the secondary role, and its databases become secondary databases and are immediately suspended. Potentially, these roles can be switched back and forth by a series of failures.
   
-Supported only on a synchronous-commit secondary replica that is currently synchronized with the primary replica. Note that for a secondary replica to be synchronized the primary replica must also be running in synchronous-commit mode.
+Failover is only supported to a synchronous-commit secondary replica that is currently synchronized with the primary replica. For a secondary replica to be synchronized, the primary replica must also be running in synchronous-commit mode.
+
+For two SQL Server instances in an availability group, you can issue the failover command on either the primary or secondary replica. For instances replicated through the [Managed Instance link](/azure/azure-sql/managed-instance/managed-instance-link-feature-overview), the failover command must be issued on the primary replica. 
   
 > [!NOTE]  
->  A failover command returns as soon as the failover target has accepted the command. However, database recovery occurs asynchronously after the availability group has finished failing over.  
-  
+> - For an availability group, a failover command returns as soon as the failover target has accepted the command. However, database recovery occurs asynchronously after the availability group has finished failing over.  
+> - For a [Managed Instance link failover](/azure/azure-sql/managed-instance/managed-instance-link-failover-how-to), the failover command returns after a successful failover where the source and target have switched roles, or if the failover command fails after the failover precondition checks fail. 
+> - The failover command can't be used for a planned failover of a [distributed availability group](../../database-engine/availability-groups/windows/distributed-availability-groups.md) between two SQL Server instances. 
+
+
 For information about the limitations, prerequisites and recommendations for a performing a planned manual failover, see [Perform a Planned Manual Failover of an Availability Group &#40;SQL Server&#41;](../../database-engine/availability-groups/windows/perform-a-planned-manual-failover-of-an-availability-group-sql-server.md).
   
 #### FORCE_FAILOVER_ALLOW_DATA_LOSS
- > [!CAUTION]  
->  Forcing failover, which might involve some data loss, is strictly a disaster recovery method. Therefore, We strongly recommend that you force failover only if the primary replica is no longer running, you're willing to risk losing data, and you must restore service to the availability group immediately.  
+
+> [!CAUTION]  
+>  Forcing failover, which might involve some data loss, is strictly a disaster recovery method. Therefore, we strongly recommend that you force failover only if the primary replica is no longer running, you're willing to risk losing data, and you must restore service to the availability group immediately.  
   
 Supported only on a replica whose role is in the SECONDARY or RESOLVING state. --The replica on which you enter a failover command is known as the *failover target*.
   
 Forces failover of the availability group, with possible data loss, to the failover target. The failover target will take over the primary role and recover its copy of each database and bring them online as the new primary databases. On any remaining secondary replicas, every secondary database is suspended until manually resumed. When the former primary replica becomes available, it will switch to the secondary role, and its databases will become suspended secondary databases.
+
+For instances replicated through the [Managed Instance link](/azure/azure-sql/managed-instance/managed-instance-link-feature-overview), the `FORCE_FAILOVER_ALLOW_DATA_LOSS` command must be issued on the secondary replica (the failover target). 
   
 > [!NOTE]  
 >  A failover command returns as soon as the failover target has accepted the command. However, database recovery occurs asynchronously after the availability group has finished failing over.  

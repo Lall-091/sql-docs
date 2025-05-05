@@ -5,7 +5,7 @@ description: Learn about the currently known issues with Azure SQL Managed Insta
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest, mathoma
-ms.date: 04/03/2025
+ms.date: 04/27/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: troubleshooting-known-issue
@@ -24,6 +24,7 @@ This article lists the currently known issues with [Azure SQL Managed Instance](
 
 | Issue | Date discovered | Status | Date resolved |
 | --- | --- | --- | --- |
+| [Login to read-secondary failed due to long wait on "HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING"](#login-to-read-secondary-failed-due-to-long-wait-on-hadr_database_wait_for_transition_to_versioning) | April 2025 | Has workaround | |
 | [Interim guidance on 2024 time zone updates for Paraguay](#interim-guidance-on-2024-time-zone-updates-for-paraguay) | March 2025 | Has workaround| |
 | [Error 8992 when running DBCC CHECKDB on a SQL Server database that originated from SQL Managed Instance](#error-8992-when-running-dbcc-checkdb-on-a-sql-server-database-that-originated-from-sql-managed-instance) | March 2025 | Has workaround| |
 | [Differential backups aren't taken when an instance is linked to SQL Server](#differential-backups-arent-taken-when-an-instance-is-linked-to-sql-server) | Sept 2024 | By design | |
@@ -46,7 +47,6 @@ This article lists the currently known issues with [Azure SQL Managed Instance](
 | [Restoring manual backup without CHECKSUM might fail](#restoring-manual-backup-without-checksum-might-fail) | May 2020 | Resolved | June 2020 |
 | [Agent becomes unresponsive upon modifying, disabling, or enabling existing jobs](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs) | May 2020 | Resolved | June 2020 |
 | [Permissions on resource group not applied to SQL Managed Instance](#permissions-on-resource-group-not-applied-to-sql-managed-instance) | Feb 2020 | Resolved | Nov 2020 |
-| [Limitation of manual failover via portal for failover groups](#limitation-of-manual-failover-via-portal-for-failover-groups) | Jan 2020 | Has Workaround | |
 | [SQL Agent roles need explicit EXECUTE permissions for nonsysadmin logins](#sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins) | Dec 2019 | Resolved | Sep 2022 |
 | [SQL Agent jobs can be interrupted by Agent process restart](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart) | Dec 2019 | Resolved | Mar 2020 |
 | [Microsoft Entra logins and users aren't supported in SSDT](#azure-ad-logins-and-users-arent-supported-in-ssdt) | Nov 2019 | No Workaround | |
@@ -70,6 +70,14 @@ This article lists the currently known issues with [Azure SQL Managed Instance](
 | Contained databases not supported in SQL Managed Instance | | Resolved | Aug 2019 |
 
 ## Has workaround
+
+### Login to read-secondary failed due to long wait on "HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING"
+
+You might see this error as an exception for the **Microsoft OLE DB Driver 19 for SQL Server** driver when you try to connect to a read-only secondary replica of a [failover group](failover-group-sql-mi.md), or a database replicated through the [Managed Instance link](managed-instance-link-feature-overview.md). 
+
+This error occurs when the secondary replica is not available for logins because row versions are missing for transactions that were in-flight when a secondary replica was restarted, or recycled, either for maintenance, or due to a failover. When an instance is restarted, or fails over, the versioning data stored in `tempdb` gets cleared so secondary read queries are aborted if there are long-running active transactions that were started before the failover or restart. 
+
+To resolve this issue roll back, or commit, active transactions on the primary replica. To avoid this error, minimize long-running write transactions on the primary replica. 
 
 ### Interim guidance on 2024 time zone updates for Paraguay
 
@@ -190,12 +198,6 @@ A DNS record of `<name>.database.windows.com` is created when you create a [logi
 In some circumstances, there might exist an issue with Service Principal used to access Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)) and Azure Key Vault (AKV) services. As a result, this issue impacts usage of Microsoft Entra authentication and transparent data encryption (TDE) with SQL Managed Instance. This might be experienced as an intermittent connectivity issue, or not being able to run statements such are `CREATE LOGIN/USER FROM EXTERNAL PROVIDER` or `EXECUTE AS LOGIN/USER`. Setting up TDE with customer-managed key on a new Azure SQL Managed Instance might also not work in some circumstances.
 
 **Workaround**: To prevent this issue from occurring on your SQL Managed Instance, before executing any update commands, or in case you have already experienced this issue after update commands, go to the **Overview page** of your SQL managed instance in the Azure portal. Under **Settings**, select **Microsoft Entra ID** to access the SQL Managed Instance [Microsoft Entra ID admin page](../database/authentication-aad-configure.md#azure-sql-managed-instance). Verify if you can see the error message "Managed Instance needs a Service Principal to access Microsoft Entra ID. Click here to create a Service Principal". In case you've encountered this error message, select it, and follow the step-by-step instructions provided until this error has been resolved.
-
-### Limitation of manual failover via portal for failover groups
-
-If a failover group spans across instances in different Azure subscriptions or resource groups, manual failover can't be initiated from the primary instance in the failover group.
-
-**Workaround**: Initiate failover via the portal from the geo-secondary instance.
 
 ### SQL Agent roles need explicit EXECUTE permissions for non-sysadmin logins
 
