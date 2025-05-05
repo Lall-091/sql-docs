@@ -1,10 +1,10 @@
 ---
 title: "CREATE DATABASE (Transact-SQL)"
-description: Create database syntax for SQL Server, Azure SQL Database, Azure Synapse Analytics, and Analytics Platform System
+description: Create database syntax for SQL Server and all SQL Database Engine platforms.
 author: markingmyname
 ms.author: maghan
-ms.reviewer: wiassaf
-ms.date: 12/12/2024
+ms.reviewer: wiassaf, dnethi
+ms.date: 04/27/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -35,7 +35,7 @@ helpviewer_keywords:
   - "attaching databases [SQL Server], CREATE DATABASE...FOR ATTACH"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-current||=azuresqldb-mi-current||=azure-sqldw-latest||>=aps-pdw-2016"
+monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-current || =azuresqldb-mi-current || =azure-sqldw-latest || >=aps-pdw-2016"
 ---
 
 # CREATE DATABASE
@@ -171,7 +171,7 @@ CREATE DATABASE database_snapshot_name
 
 #### *database_name*
 
-This is the name of the new database. Database names must be unique within an instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] and comply with the rules for [identifiers](../../relational-databases/databases/database-identifiers.md).
+The name of the new database. Database names must be unique within an instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] and comply with the rules for [identifiers](../../relational-databases/databases/database-identifiers.md).
 
 *database_name* can be a maximum of 128 characters, unless a logical name is not specified for the log file. If a logical log file name is not specified, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] generates the *logical_file_name* and the *os_file_name* for the log by appending a suffix to *database_name*. This limits *database_name* to 123 characters so that the generated logical file name is no more than 128 characters.
 
@@ -179,33 +179,33 @@ If data file name is not specified, [!INCLUDE[ssNoVersion](../../includes/ssnove
 
 #### CONTAINMENT = { NONE | PARTIAL }
 
-**Applies to**: [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)] and later
+**Applies to**: [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)] and later versions
 
 Specifies the containment status of the database. NONE = non-contained database. PARTIAL = partially contained database.
 
 #### ON
 
-Specifies that the disk files used to store the data sections of the database, data files, are explicitly defined. ON is required when followed by a comma-separated list of \<filespec> items that define the data files for the primary filegroup. The list of files in the primary filegroup can be followed by an optional, comma-separated list of \<filegroup> items that define user filegroups and their files.
+Specifies that the disk files used to store the data sections of the database, data files, are explicitly defined. ON is required when followed by a comma-separated list of `<filespec>` items that define the data files for the primary filegroup. The list of files in the primary filegroup can be followed by an optional, comma-separated list of `<filegroup>` items that define user filegroups and their files.
 
 #### PRIMARY
 
-Specifies that the associated \<filespec> list defines the primary file. The first file specified in the \<filespec> entry in the primary filegroup becomes the primary file. A database can have only one primary file. For more information, see [Database Files and Filegroups](../../relational-databases/databases/database-files-and-filegroups.md).
+Specifies that the associated `<filespec>` list defines the primary file. The first file specified in the `<filespec>` entry in the primary filegroup becomes the primary file. A database can have only one primary file. For more information, see [Database Files and Filegroups](../../relational-databases/databases/database-files-and-filegroups.md).
 
-If PRIMARY is not specified, the first file listed in the CREATE DATABASE statement becomes the primary file.
+If `PRIMARY` is not specified, the first file listed in the `CREATE DATABASE` statement becomes the primary file.
 
 #### LOG ON
 
-Specifies that the disk files used to store the database log, log files, are explicitly defined. LOG ON is followed by a comma-separated list of \<filespec> items that define the log files. If LOG ON is not specified, one log file is automatically created, which has a size that is 25 percent of the sum of the sizes of all the data files for the database, or 512 KB, whichever is larger. This file is placed in the default log-file location. For information about this location, see [View or Change the Default Locations for Data and Log Files in SSMS](../../database-engine/configure-windows/view-or-change-the-default-locations-for-data-and-log-files.md).
+Specifies that the disk files used to store the database log, log files, are explicitly defined. `LOG ON` is followed by a comma-separated list of `<filespec>` items that define the log files. If `LOG ON` is not specified, one log file is automatically created, which has a size that is 25 percent of the sum of the sizes of all the data files for the database, or 512 KB, whichever is larger. This file is placed in the default log-file location. For information about this location, see [View or Change the Default Locations for Data and Log Files in SSMS](../../database-engine/configure-windows/view-or-change-the-default-locations-for-data-and-log-files.md).
 
-LOG ON cannot be specified on a database snapshot.
+`LOG ON` cannot be specified on a database snapshot.
 
 #### COLLATE *collation_name*
 
 Specifies the default collation for the database. Collation name can be either a Windows collation name or a SQL collation name. If not specified, the database is assigned the default collation of the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. A collation name cannot be specified on a database snapshot.
 
-A collation name cannot be specified with the FOR ATTACH or FOR ATTACH_REBUILD_LOG clauses. For information about how to change the collation of an attached database, visit this [Microsoft Web site](https://go.microsoft.com/fwlink/?linkid=16419&kbid=325335).
+A collation name cannot be specified with the `FOR ATTACH` or `FOR ATTACH_REBUILD_LOG` clauses. For information about how to change the collation of an attached database, see [Set or change the database collation](../../relational-databases/collations/set-or-change-the-database-collation.md).
 
-For more information about the Windows and SQL collation names, see [COLLATE](~/t-sql/statements/collations.md).
+For more information about the Windows and SQL collation names, see [COLLATE (Transact-SQL)](collations.md).
 
 > [!NOTE]
 > Contained databases are collated differently than non-contained databases. For more information, see [Contained Database Collations](../../relational-databases/databases/contained-database-collations.md).
@@ -216,7 +216,7 @@ For more information about the Windows and SQL collation names, see [COLLATE](~/
 
 NON_TRANSACTED_ACCESS = { OFF | READ_ONLY | FULL }
 
-**Applies to**: [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)] and later.
+**Applies to**: [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)] and later versions
 
 Specifies the level of non-transactional FILESTREAM access to the database.
 
@@ -228,35 +228,35 @@ Specifies the level of non-transactional FILESTREAM access to the database.
 
 DIRECTORY_NAME = <directory_name>
 
-**Applies to**: [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)] and later
+**Applies to**: [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)] and later versions
 
 A windows-compatible directory name. This name should be unique among all the Database_Directory names in the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance. Uniqueness comparison is case-insensitive, regardless of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] collation settings. This option should be set before you create a FileTable in this database.
 
 <BR><BR>
 
-The following options are allowable only when CONTAINMENT has been set to PARTIAL. If CONTAINMENT is set to NONE, errors will occur.
+The following options are allowable only when CONTAINMENT has been set to PARTIAL. If CONTAINMENT is set to NONE, errors occur.
 
 #### DEFAULT_FULLTEXT_LANGUAGE = \<lcid> | \<language name> | \<language alias>
 
-  **Applies to**: [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)] and later
+  **Applies to**: [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)] and later versions
 
   See [Configure the default full-text language Server Configuration Option](../../database-engine/configure-windows/configure-the-default-full-text-language-server-configuration-option.md) for a full description of this option.
 
 #### DEFAULT_LANGUAGE = \<lcid> | \<language name> | \<language alias>
 
-  **Applies to**: [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)] and later
+  **Applies to**: [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)] and later versions
 
   See [Configure the default language Server Configuration Option](../../database-engine/configure-windows/configure-the-default-language-server-configuration-option.md) for a full description of this option.
 
 #### NESTED_TRIGGERS = { OFF | ON }
 
-  **Applies to**: [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)] and later
+  **Applies to**: [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)] and later versions
 
   See [Configure the nested triggers Server Configuration Option](../../database-engine/configure-windows/configure-the-nested-triggers-server-configuration-option.md) for a full description of this option.
 
 #### TRANSFORM_NOISE_WORDS = { OFF | ON }
 
-  **Applies to**: [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)] and later
+  **Applies to**: [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)] and later versions
 
   See [transform noise words Server Configuration Option](../../database-engine/configure-windows/transform-noise-words-server-configuration-option.md) for a full description of this option.
 
@@ -271,7 +271,7 @@ The following options are allowable only when CONTAINMENT has been set to PARTIA
   When OFF, the database cannot participate in cross-database ownership chaining. The default is OFF.
 
   > [!IMPORTANT]
-  > The instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] will recognize this setting when the cross db ownership chaining server option is 0 (OFF). When cross db ownership chaining is 1 (ON), all user databases can participate in cross-database ownership chains, regardless of the value of this option. This option is set by using [sp_configure](../../relational-databases/system-stored-procedures/sp-configure-transact-sql.md).
+  > The instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] recognizes this setting when the cross database ownership chaining server option is 0 (OFF). When cross db ownership chaining is 1 (ON), all user databases can participate in cross-database ownership chains, regardless of the value of this option. This option is set by using [sp_configure](../../relational-databases/system-stored-procedures/sp-configure-transact-sql.md).
 
   To set this option, requires membership in the sysadmin fixed server role. The DB_CHAINING option cannot be set on these system databases: `master`, `model`, `tempdb`.
 
@@ -281,13 +281,13 @@ The following options are allowable only when CONTAINMENT has been set to PARTIA
 
   When OFF, database modules in an impersonation context cannot access resources outside the database. The default is OFF.
 
-  TRUSTWORTHY is set to OFF whenever the database is attached.
+  `TRUSTWORTHY` is set to OFF whenever the database is attached.
 
-  By default, all system databases except the `msdb` database have TRUSTWORTHY set to OFF. The value cannot be changed for the `model` and `tempdb` databases. We recommend that you never set the TRUSTWORTHY option to ON for the `master` database.
+  By default, all system databases except the `msdb` database have `TRUSTWORTHY` set to OFF. The value cannot be changed for the `model` and `tempdb` databases. We recommend that you never set the `TRUSTWORTHY` option to ON for the `master` database.
 
 #### PERSISTENT_LOG_BUFFER=ON ( DIRECTORY_NAME='' )
 
-**Applies to**: [!INCLUDE[ssSQL17](../../includes/sssql17-md.md)] and later.
+**Applies to**: [!INCLUDE[ssSQL17](../../includes/sssql17-md.md)] and later versions
 
 When this option is specified, the transaction log buffer is created on a volume that is located on a disk device backed by Storage Class Memory (NVDIMM-N nonvolatile storage), also known as a persistent log buffer. For more information, see [Transaction Commit latency acceleration using Storage Class Memory](/archive/blogs/sqlserverstorageengine/transaction-commit-latency-acceleration-using-storage-class-memory-in-windows-server-2016sql-server-2016-sp1) and [Add persistent log buffer to a database](../../relational-databases/databases/add-persisted-log-buffer.md).
 
@@ -297,9 +297,9 @@ When set to `ON`, it creates a ledger database, in which the integrity of all us
 
 #### CREATE DATABASE ... FOR ATTACH [ WITH \< attach_database_option > ]
 
-Specifies that the database is created by [attaching](../../relational-databases/databases/database-detach-and-attach-sql-server.md) an existing set of operating system files. There must be a \<filespec> entry that specifies the primary file. The only other \<filespec> entries required are those for any files that have a different path from when the database was first created or last attached. A \<filespec> entry must be specified for these files.
+Specifies that the database is created by [attaching](../../relational-databases/databases/database-detach-and-attach-sql-server.md) an existing set of operating system files. There must be a `<filespec>` entry that specifies the primary file. The only other `<filespec>` entries required are those for any files that have a different path from when the database was first created or last attached. A `<filespec>` entry must be specified for these files.
 
-FOR ATTACH requires the following:
+FOR ATTACH requires:
 
 - All data files (MDF and NDF) must be available.
 - If multiple log files exist, they must all be available.
@@ -309,9 +309,9 @@ If a read/write database has a single log file that is currently unavailable, an
 > [!NOTE]
 > A database created by a more recent version of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] cannot be attached in earlier versions.
 
-In [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], any full-text files that are part of the database that is being attached will be attached with the database. To specify a new path of the full-text catalog, specify the new location without the full-text operating system file name. For more information, see the Examples section.
+In [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], any full-text files that are part of the database that is being attached will be attached with the database. To specify a new path of the full-text catalog, specify the new location without the full-text operating system file name. For more information, see [Examples](#examples).
 
-Attaching a database that contains a FILESTREAM option of "Directory name", into a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance will prompt [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to verify that the Database_Directory name is unique. If it is not, the `ATTACH` operation fails with the error, `FILESTREAM Database_Directory name is not unique in this SQL Server instance`. To avoid this error, the optional parameter, *directory_name*, should be passed in to this operation.
+Attaching a database that contains a FILESTREAM option of "Directory name" prompts [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to verify that the `Database_Directory` name is unique. If it is not, the `ATTACH` operation fails with the error, `FILESTREAM Database_Directory name is not unique in this SQL Server instance`. To avoid this error, the optional parameter, *directory_name*, should be passed in to this operation.
 
 FOR ATTACH cannot be specified on a database snapshot.
 
@@ -319,9 +319,9 @@ FOR ATTACH can specify the RESTRICTED_USER option. RESTRICTED_USER allows for on
 
 #### \<service_broker_option>
 
-If the database uses [!INCLUDE[ssSB](../../includes/sssb-md.md)], use the WITH \<service_broker_option> in your FOR ATTACH clause:
+If the database uses [!INCLUDE[ssSB](../../includes/sssb-md.md)], use the `WITH <service_broker_option>` in your `FOR ATTACH` clause:
 
-Controls [!INCLUDE[ssSB](../../includes/sssb-md.md)] message delivery and the [!INCLUDE[ssSB](../../includes/sssb-md.md)] identifier for the database. [!INCLUDE[ssSB](../../includes/sssb-md.md)] options can only be specified when the FOR ATTACH clause is used.
+Controls [!INCLUDE[ssSB](../../includes/sssb-md.md)] message delivery and the [!INCLUDE[ssSB](../../includes/sssb-md.md)] identifier for the database. [!INCLUDE[ssSB](../../includes/sssb-md.md)] options can only be specified when the `FOR ATTACH` clause is used.
 
 #### ENABLE_BROKER
 
@@ -342,7 +342,7 @@ When you attach a replicated database that was copied instead of being detached,
 - If you attach the database to a different server instance, regardless of version, you must execute [sp_removedbreplication](../../relational-databases/system-stored-procedures/sp-removedbreplication-transact-sql.md) to remove replication after the attach operation is complete.
 
 > [!NOTE]
-> Attach works with the **vardecimal** storage format, but the [!INCLUDE[ssDEnoversion](../../includes/ssdenoversion-md.md)] must be upgraded to at least [!INCLUDE[ssVersion2005](../../includes/ssversion2005-md.md)] SP2. You cannot attach a database using vardecimal storage format to an earlier version of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. For more information about the **vardecimal** storage format, see [Data Compression](../../relational-databases/data-compression/data-compression.md).
+> Attach works with the **vardecimal** storage format, but the [!INCLUDE[ssDEnoversion](../../includes/ssdenoversion-md.md)] must be upgraded to at least [!INCLUDE[ssVersion2005](../../includes/ssversion2005-md.md)] SP2. You cannot attach a database using **vardecimal** storage format to an earlier version of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. For more information about the **vardecimal** storage format, see [Data Compression](../../relational-databases/data-compression/data-compression.md).
 
 When a database is first attached or restored to a new instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], a copy of the database master key (encrypted by the service master key) is not yet stored in the server. You must use the `OPEN MASTER KEY` statement to decrypt the database master key (DMK). Once the DMK has been decrypted, you have the option of enabling automatic decryption in the future by using the `ALTER MASTER KEY REGENERATE` statement to provision the server with a copy of the DMK, encrypted with the service master key (SMK). When a database has been upgraded from an earlier version, the DMK should be regenerated to use the newer AES algorithm. For more information about regenerating the DMK, see [ALTER MASTER KEY](../../t-sql/statements/alter-master-key-transact-sql.md). The time required to regenerate the DMK key to upgrade to AES depends upon the number of objects protected by the DMK. Regenerating the DMK key to upgrade to AES is only necessary once, and has no effect on future regenerations as part of a key rotation strategy. For information about how to upgrade a database by using attach, see [Upgrade a Database Using Detach and Attach](../../relational-databases/databases/upgrade-a-database-using-detach-and-attach-transact-sql.md).
 
@@ -354,7 +354,7 @@ When a database is first attached or restored to a new instance of [!INCLUDE[ssN
 
 #### FOR ATTACH_REBUILD_LOG
 
-Specifies that the database is created by attaching an existing set of operating system files. This option is limited to read/write databases. There must be a *\<filespec>* entry specifying the primary file. If one or more transaction log files are missing, the log file is rebuilt. The ATTACH_REBUILD_LOG automatically creates a new, 1-MB log file. This file is placed in the default log-file location. For information about this location, see [View or Change the Default Locations for Data and Log Files in SSMS](../../database-engine/configure-windows/view-or-change-the-default-locations-for-data-and-log-files.md).
+Specifies that the database is created by attaching an existing set of operating system files. This option is limited to read/write databases. There must be a `<filespec>` entry specifying the primary file. If one or more transaction log files are missing, the log file is rebuilt. The ATTACH_REBUILD_LOG automatically creates a new, 1-MB log file. This file is placed in the default log-file location. For information about this location, see [View or Change the Default Locations for Data and Log Files in SSMS](../../database-engine/configure-windows/view-or-change-the-default-locations-for-data-and-log-files.md).
 
 > [!NOTE]
 > If the log files are available, the [!INCLUDE[ssDE](../../includes/ssde-md.md)] uses those files instead of rebuilding the log files.
@@ -365,11 +365,11 @@ FOR ATTACH_REBUILD_LOG requires the following conditions:
 - All data files (MDF and NDF) must be available.
 
 > [!IMPORTANT]
-> This operation breaks the log backup chain. We recommend that a full database backup be performed after the operation is completed. For more information, see [BACKUP](../../t-sql/statements/backup-transact-sql.md).
+> This operation breaks the log backup chain. We recommend that you take a full database backup immediately after the operation is completed. For more information, see [BACKUP](../../t-sql/statements/backup-transact-sql.md).
 
-Typically, FOR ATTACH_REBUILD_LOG is used when you copy a read/write database with a large log to another server where the copy will be used mostly, or only, for read operations, and therefore requires less log space than the original database.
+Typically, `FOR ATTACH_REBUILD_LOG` is used when you copy a read/write database with a large log to another server where the copy will be used mostly, or only, for read operations, and therefore requires less log space than the original database.
 
-FOR ATTACH_REBUILD_LOG cannot be specified on a database snapshot.
+`FOR ATTACH_REBUILD_LOG` cannot be specified on a database snapshot.
 
 For more information about attaching and detaching databases, see [Database Detach and Attach](../../relational-databases/databases/database-detach-and-attach-sql-server.md).
 
@@ -379,7 +379,7 @@ Controls the file properties.
 
 #### NAME *logical_file_name*
 
-Specifies the logical name for the file. NAME is required when FILENAME is specified, except when specifying one of the FOR ATTACH clauses. A FILESTREAM filegroup cannot be named PRIMARY.
+Specifies the logical name for the file. `NAME` is required when `FILENAME` is specified, except when specifying one of the `FOR ATTACH` clauses. A `FILESTREAM` filegroup cannot be named `PRIMARY`.
 
 *logical_file_name*
 
@@ -393,7 +393,7 @@ Specifies the operating system (physical) file name.
 
 Is the path and file name used by the operating system when you create the file. The file must reside on one of the following devices: the local server on which [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is installed, a Storage Area Network [SAN], or an iSCSI-based network. The specified path must exist before executing the CREATE DATABASE statement. For more information, see [Database Files and Filegroups](#database-files-and-filegroups) later in this article.
 
-SIZE, MAXSIZE, and FILEGROWTH parameters can be set when a UNC path is specified for the file.
+`SIZE`, `MAXSIZE`, and `FILEGROWTH` parameters can be set when a UNC path is specified for the file.
 
 If the file is on a raw partition, *os_file_name* must specify only the drive letter of an existing raw partition. Only one data file can be created on each raw partition.
 
@@ -408,7 +408,7 @@ For a FILESTREAM filegroup, FILENAME refers to a path where FILESTREAM data will
 
 The filegroup and file (`<filespec>`) must be created in the same statement.
 
-The SIZE and FILEGROWTH properties do not apply to a FILESTREAM filegroup.
+The `SIZE` and `FILEGROWTH` properties do not apply to a FILESTREAM filegroup.
 
 #### SIZE *size*
 
@@ -469,7 +469,7 @@ Is the logical name of the filegroup.
 
 *filegroup_name*
 
-*filegroup_name* must be unique in the database and cannot be the system-provided names PRIMARY and PRIMARY_LOG. The name can be a character or Unicode constant, or a regular or delimited identifier. The name must comply with the rules for [identifiers](../../relational-databases/databases/database-identifiers.md).
+*filegroup_name* must be unique in the database and cannot be the system-provided names `PRIMARY` and `PRIMARY_LOG`. The name can be a character or Unicode constant, or a regular or delimited identifier. The name must comply with the rules for [identifiers](../../relational-databases/databases/database-identifiers.md).
 
 CONTAINS FILESTREAM
 
@@ -481,7 +481,7 @@ Specifies the named filegroup is the default filegroup in the database.
 
 CONTAINS MEMORY_OPTIMIZED_DATA
 
-**Applies to**: [!INCLUDE[ssSQL14](../../includes/sssql14-md.md)] and later
+**Applies to**: [!INCLUDE[ssSQL14](../../includes/sssql14-md.md)] and later versions
 
 Specifies that the filegroup stores memory_optimized data in the file system. For more information, see [In-Memory Optimization Overview and Usage Scenarios](../../relational-databases/in-memory-oltp/overview-and-usage-scenarios.md). Only one MEMORY_OPTIMIZED_DATA filegroup is allowed per database. For code samples that create a filegroup to store memory-optimized data, see [Creating a Memory-Optimized Table and a Natively Compiled Stored Procedure](../../relational-databases/in-memory-oltp/creating-a-memory-optimized-table-and-a-natively-compiled-stored-procedure.md).
 
@@ -491,12 +491,12 @@ Is the name of the new database snapshot. Database snapshot names must be unique
 
 #### ON ( NAME =_logical_file_name_, FILENAME ='_os_file_name_') [ ,... *n* ]
 
-For creating a database snapshot, specifies a list of files in the source database. For the snapshot to work, all the data files must be specified individually. However, log files are not allowed for database snapshots. FILESTREAM filegroups are not supported by database snapshots. If a FILESTREAM data file is included in a CREATE DATABASE ON clause, the statement will fail and an error will be raised.
+For creating a database snapshot, specifies a list of files in the source database. For the snapshot to work, all the data files must be specified individually. However, log files are not allowed for database snapshots. FILESTREAM filegroups are not supported by database snapshots. If a FILESTREAM data file is included in a `CREATE DATABASE` `ON` clause, the statement fails and an error will be raised.
 
-For descriptions of NAME and FILENAME and their values, see the descriptions of the equivalent \<filespec> values.
+For descriptions of NAME and FILENAME and their values, see the descriptions of the equivalent `<filespec>` values.
 
 > [!NOTE]
-> When you create a database snapshot, the other \<filespec> options and the keyword PRIMARY are disallowed.
+> When you create a database snapshot, the other `<filespec>` options and the keyword PRIMARY are disallowed.
 
 #### AS SNAPSHOT OF *source_database_name*
 
@@ -602,7 +602,7 @@ The permissions prevent the files from being accidentally tampered with if they 
 
 ### A. Create a database without specifying files
 
-The following example creates the database `mytest` and creates a corresponding primary and transaction log file. Because the statement has no \<filespec> items, the primary database file is the size of the `model` database primary file. The transaction log is set to the larger of these values: 512 KB or 25% the size of the primary data file. Because MAXSIZE is not specified, the files can grow to fill all available disk space. This example also demonstrates how to drop the database named `mytest` if it exists, before creating the `mytest` database.
+The following example creates the database `mytest` and creates a corresponding primary and transaction log file. Because the statement has no `<filespec>` items, the primary database file is the size of the `model` database primary file. The transaction log is set to the larger of these values: 512 KB or 25% the size of the primary data file. Because MAXSIZE is not specified, the files can grow to fill all available disk space. This example also demonstrates how to drop the database named `mytest` if it exists, before creating the `mytest` database.
 
 ```sql
 USE master;
@@ -739,7 +739,7 @@ GO
 
 ### E. Attach a database
 
-The following example detaches the database `Archive` created in example D, and then attaches it by using the `FOR ATTACH` clause. `Archive` was defined to have multiple data and log files. However, because the location of the files has not changed since they were created, only the primary file has to be specified in the `FOR ATTACH` clause. Beginning with [!INCLUDE[ssVersion2005](../../includes/ssversion2005-md.md)], any full-text files that are part of the database that is being attached will be attached with the database.
+The following example detaches the database `Archive` created in example D, and then attaches it by using the `FOR ATTACH` clause. `Archive` was defined to have multiple data and log files. However, because the location of the files has not changed since they were created, only the primary file has to be specified in the `FOR ATTACH` clause. Beginning with [!INCLUDE[ssVersion2005](../../includes/ssversion2005-md.md)], any full-text files that are part of the database that is being attached are attached with the database.
 
 ```sql
 USE master;
@@ -1027,7 +1027,7 @@ CREATE DATABASE database_name
       | 'HS_MOPRMS_n'
       | { ELASTIC_POOL(name = <elastic_pool_name>) } })
    ]
-   [ WITH ( BACKUP_STORAGE_REDUNDANCY = { 'LOCAL' | 'ZONE' | 'GEO' } ) ]
+   [ WITH ( BACKUP_STORAGE_REDUNDANCY = { 'LOCAL' | 'ZONE' | 'GEO' | 'GEOZONE' } ) ]
 [;]
 ```
 
@@ -1066,13 +1066,17 @@ By default, the metadata catalog for system object names is collated to *SQL_Lat
    WITH CATALOG_COLLATION = DATABASE_DEFAULT
    ```
 
-#### BACKUP_STORAGE_REDUNDANCY = {'LOCAL' | 'ZONE' | 'GEO'}
+<a id="#backup_storage_redundancy--local--zone--geo"></a>
+
+#### BACKUP_STORAGE_REDUNDANCY = {'LOCAL' | 'ZONE' | 'GEO' | 'GEOZONE'}
 
 Specifies how the point-in-time restore and long-term retention backups for a database are replicated. Geo restore or ability to recover from regional outage is only available when database is created with `GEO` backup storage redundancy. Unless explicitly specified, databases created with T-SQL use geo-redundant backup storage.
 
+Use `GEOZONE` for geo-zone redundant storage. Geo-zone redundant storage (GZRS) offers the highest level of protection against zonal outages as well as regional outages for any workload.
+
 To enforce data residency when you're creating a database by using T-SQL, use `LOCAL` or `ZONE` as input to the BACKUP_STORAGE_REDUNDANCY parameter.
 
-When creating a database as a copy of another database with `AS COPY OF`, specifying options is supported and should be wrapped in parentheses. For example, `WITH (BACKUP_STORAGE_REDUNDANCY = 'LOCAL');`.
+When you create a database as a copy of another database with `AS COPY OF`, specifying options is supported and should be wrapped in parentheses. For example, `WITH (BACKUP_STORAGE_REDUNDANCY = 'LOCAL');`.
 
 #### LEDGER = {ON | OFF }
 
@@ -1172,7 +1176,7 @@ The name of the database that is to be copied.
 
 Databases in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] have several default settings that are set when the database is created. For more information about these default settings, see the list of values in [DATABASEPROPERTYEX](../../t-sql/functions/databasepropertyex-transact-sql.md).
 
-`MAXSIZE` provides the ability to limit the size of the database. If the size of the database reaches its `MAXSIZE`, you receive error code 40544. When this occurs, you cannot insert or update data, or create new objects (such as tables, stored procedures, views, and functions). However, you can still read and delete data, truncate tables, drop tables and indexes, and rebuild indexes. You can then update `MAXSIZE` to a value larger than your current database size or delete some data to free storage space. There might be as much as a fifteen-minute delay before you can insert new data.
+`MAXSIZE` provides the ability to limit the size of the database. If the size of the database reaches its `MAXSIZE`, you receive error code 40544. When this occurs, you cannot insert or update data, or create new objects (such as tables, stored procedures, views, and functions). However, you can still read and delete data, truncate tables, drop tables and indexes, and rebuild indexes. You can then update `MAXSIZE` to a value larger than your current database size or delete some data to free storage space. There might be as much as a 15-minute delay before you can insert new data.
 
 To change the size, edition, or service objective values later, use [ALTER DATABASE (Azure SQL Database)](../../t-sql/statements/alter-database-transact-sql.md?view=azuresqldb-current&preserve-view=true).
 
@@ -1182,9 +1186,9 @@ To change the size, edition, or service objective values later, use [ALTER DATAB
 
 Copying a database using the `CREATE DATABASE` statement is an asynchronous operation. Therefore, a connection to the [!INCLUDE[ssSDS](../../includes/sssds-md.md)] server is not needed for the full duration of the copy process. The `CREATE DATABASE` statement returns control to the user after the entry in `sys.databases` is created but before the database copy operation is complete. In other words, the `CREATE DATABASE` statement returns successfully when the database copy is still in progress.
 
-- Monitoring the copy process on an [!INCLUDE[ssSDS_md](../../includes/sssds-md.md)] server: Query the `percentage_complete` or `replication_state_desc` columns in the [dm_database_copies](../../relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database.md) or the `state` column in the **sys.databases** view. The [sys.dm_operation_status](../../relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database.md) view can be used as well as it returns the status of database operations including database copy.
+- Monitoring the copy process on an [!INCLUDE[ssSDS_md](../../includes/sssds-md.md)] server: Query the `percentage_complete` or `replication_state_desc` columns in the [dm_database_copies](../../relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database.md) or the `state` column in the `sys.databases` view. The [sys.dm_operation_status](../../relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database.md) view can be used as well as it returns the status of database operations including database copy.
 
-At the time the copy process completes successfully, the destination database is transactionally consistent with the source database.
+When the copy process completes successfully, the destination database is transactionally consistent with the source database.
 
 The following syntax and semantic rules apply to your use of the `AS COPY OF` argument:
 
@@ -1404,7 +1408,7 @@ The following are `CREATE DATABASE` limitations:
 
 ## Permissions
 
-To create a database, a login must be one of the following:
+To create a database, a login must be one of the following types of security principals:
 
 - The server-level principal login
 - The Microsoft Entra administrator for the [logical server in Azure](/azure/azure-sql/database/logical-servers)
@@ -1489,6 +1493,7 @@ CREATE DATABASE database_name [ COLLATE collation_name ]
 ```
 
 ### [Serverless SQL pool](#tab/sqlod)
+
 ```syntaxsql
 CREATE DATABASE database_name [ COLLATE collation_name ]
 [;] 
@@ -1544,7 +1549,7 @@ Required permissions:
 
 ## Error handling
 
-If the size of the database reaches MAXSIZE you will receive error code 40544. When this occurs, you cannot insert and update data, or create new objects (such as tables, stored procedures, views, and functions). You can still read and delete data, truncate tables, drop tables and indexes, and rebuild indexes. You can then update MAXSIZE to a value larger than your current database size or delete some data to free storage space. There might be as much as a fifteen-minute delay before you can insert new data.
+If the size of the database reaches MAXSIZE, SQL Server raises error code 40544. When this occurs, you cannot insert and update data, or create new objects (such as tables, stored procedures, views, and functions). You can still read and delete data, truncate tables, drop tables and indexes, and rebuild indexes. You can then update MAXSIZE to a value larger than your current database size or delete some data to free storage space. There might be as much as a fifteen-minute delay before you can insert new data.
 
 ## Limitations
 
@@ -1639,9 +1644,9 @@ The name of the new database. For more information on permitted database names, 
 
 #### AUTOGROW = ON | OFF
 
-Specifies whether the *replicated_size*, *distributed_size*, and *log_size* parameters for this database will automatically grow as needed beyond their specified sizes. Default value is **OFF**.
+Specifies whether the *replicated_size*, *distributed_size*, and *log_size* parameters automatically grow as needed beyond their specified sizes. Default value is **OFF**.
 
-If AUTOGROW is ON, *replicated_size*, *distributed_size*, and *log_size* will grow as required (not in blocks of the initial specified size) with each data insert, update, or other action that requires more storage than has already been allocated.
+If AUTOGROW is ON, *replicated_size*, *distributed_size*, and *log_size* will grow as required with each data insert, update, or other action that requires more storage than has already been allocated.
 
 If AUTOGROW is OFF, the sizes will not grow automatically. [!INCLUDE[ssPDW](../../includes/sspdw-md.md)] will return an error when attempting an action that requires *replicated_size*, *distributed_size*, or *log_size* to grow beyond their specified value.
 
@@ -1690,7 +1695,9 @@ GO
 
 Databases are created with database compatibility level 120, which is the compatibility level for [!INCLUDE[ssSQL14](../../includes/sssql14-md.md)]. This ensures that the database will be able to use all of the [!INCLUDE[ssSQL14](../../includes/sssql14-md.md)] functionality that PDW uses.
 
-## Limitations and Restrictions
+<a id="limitations-and-restrictions"></a>
+
+## Limitations
 
 The CREATE DATABASE statement is not allowed in an explicit transaction. For more information, see [Statements](../../t-sql/statements/statements.md).
 
@@ -1714,7 +1721,7 @@ After this operation succeeds, an entry for this database will appear in the [sy
 
 ### A. Basic database creation examples
 
-The following example creates the database `mytest` with a storage allocation of 100 GB per Compute node for replicated tables, 500 GB per appliance for distributed tables, and 100 GB per appliance for the transaction log. In this example, AUTOGROW is off by default.
+The following example creates the database `mytest` with a storage allocation of 100 GB per Compute node for replicated tables, 500 GB per appliance for distributed tables, and 100 GB per appliance for the transaction log. In this example, `AUTOGROW` is off by default.
 
 ```sql
 CREATE DATABASE mytest
@@ -1724,7 +1731,7 @@ CREATE DATABASE mytest
     LOG_SIZE = 100 GB );
 ```
 
-The following example creates the database `mytest` with the same parameters as above, except that AUTOGROW is turned on. This allows the database to grow outside the specified size parameters.
+The following example creates the database `mytest` with the same parameters, except that `AUTOGROW` is turned on. This allows the database to grow outside the specified size parameters.
 
 ```sql
 CREATE DATABASE mytest
