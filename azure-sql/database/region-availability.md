@@ -4,7 +4,7 @@ description: Learn about feature availability by region for Azure SQL Database.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: rsetlem
-ms.date: 04/04/2025
+ms.date: 05/05/2025
 ms.service: azure-sql-database
 ms.topic: concept-article
 ms.custom:
@@ -349,7 +349,7 @@ Currently, all regions with serverless support 40 vCores and provide [availabili
 
 ## Database watcher availability
 
-[Database Watcher](../database-watcher-overview.md) is a feature that helps you monitor the health of your Azure SQL Managed Instance. It is available in the following regions: 
+[Database watcher](../database-watcher-overview.md) is a managed monitoring solution for Azure SQL Database and Azure SQL Managed Instance. It is available in the following regions:
 
 [!INCLUDE [database-watcher](../includes/regional-support/database-watcher.md)]
 

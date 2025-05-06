@@ -4,7 +4,7 @@ description: Learn about feature availability by region for Azure SQL Managed In
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: 
-ms.date: 05/02/2025
+ms.date: 05/05/2025
 ms.service: azure-sql-managed-instance
 ms.topic: concept-article
 ms.custom:
@@ -170,7 +170,7 @@ Choosing a [maintenance window](maintenance-window.md) for Azure SQL Managed Ins
 
 ## Database watcher
 
-[Database Watcher](../database-watcher-overview.md) is a feature that helps you monitor the health of your Azure SQL Managed Instance. It is available in the following regions: 
+[Database watcher](../database-watcher-overview.md) is a managed monitoring solution for Azure SQL Managed Instance and Azure SQL Database. It is available in the following regions:
 
 [!INCLUDE [database-watcher](../includes/regional-support/database-watcher.md)]
 

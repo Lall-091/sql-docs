@@ -1,8 +1,8 @@
 ---
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: randolphwest
-ms.date: 04/16/2025
+ms.reviewer: randolphwest, dfurman
+ms.date: 05/05/2025
 ms.service: azure-sql
 ms.topic: include
 ---
@@ -18,21 +18,20 @@ ms.topic: include
 
 #### [Asia Pacific](#tab/asia)
 
-- Southeast Asia
 - Australia Central
 - Australia East
 - Australia Southeast
 - Japan West
 - Korea Central
+- Southeast Asia
 
 
 #### [Europe, the Middle East, and Africa](#tab/emea)
 
+- Germany West Central
 - North Europe
 - West Europe
-- Germany West Central
 - Sweden Central
 - UK South
-
 
 ---

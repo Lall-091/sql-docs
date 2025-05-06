@@ -5,7 +5,7 @@ description: An overview of database watcher for Azure SQL, a managed monitoring
 author: lcwright
 ms.author: lancewright
 ms.reviewer: wiassaf, dfurman
-ms.date: 05/04/2025
+ms.date: 05/05/2025
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: conceptual
@@ -67,8 +67,9 @@ There is no charge per monitored Azure SQL resource or per user, making database
 
 ## Regional availability
 
-At this time, you can create watchers supported Azure regions for [Azure SQL Database](database/region-availability.md#database-watcher-availability) and [Azure SQL Managed Instance](managed-instance/region-availability.md#database-watcher). 
+At this time, you can create watchers in the following Azure regions:
 
+[!INCLUDE [database-watcher](./includes/regional-support/database-watcher.md)]
 
 > [!TIP]
 > A watcher in one Azure region can monitor targets in another region. Similarly, a watcher and its data store can be located in different regions.
