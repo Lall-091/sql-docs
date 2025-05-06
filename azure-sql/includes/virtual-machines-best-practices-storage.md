@@ -34,3 +34,4 @@ ms.topic: include
 - Enable the [SQL Best Practices Assessment](../virtual-machines/windows/sql-assessment-for-sql-vm.md) to identify possible performance issues and evaluate that your SQL Server VM is configured to follow best practices.
 - Review and monitor disk and VM limits using [Storage IO utilization metrics](/azure/virtual-machines/disks-metrics#storage-io-utilization-metrics).
 - [Exclude SQL Server files](/troubleshoot/sql/database-engine/security/antivirus-and-sql-server) from antivirus software scanning, including data files, log files, and backup files.
+- [Resize the storage pool appropriately](../virtual-machines/windows/performance-guidelines-best-practices-storage.md#resize-storage-pools-appropriately).

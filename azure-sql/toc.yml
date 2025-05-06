@@ -366,8 +366,6 @@
       href: database/serverless-tier-overview.md
     - name: T-SQL differences from SQL Server
       href: database/transact-sql-tsql-differences-sql-server.md
-    - name: Feature availability by region
-      href: database/region-availability.md
     - name: In-memory technologies in Azure SQL Database
       items:
       - name: In-memory technology overview
@@ -1066,38 +1064,78 @@
     items:
     - name: vCore purchasing model
       href: managed-instance/service-tiers-managed-instance-vcore.md
-    - name: Resource limits
-      href: managed-instance/resource-limits.md
-    - name: Virtual cluster architecture
-      href: managed-instance/virtual-cluster-architecture.md
-    - name: Connectivity architecture
-      href: managed-instance/connectivity-architecture-overview.md
     - name: T-SQL differences
       href: managed-instance/transact-sql-tsql-differences-sql-server.md
     - name: Managed Instance link
       href: managed-instance/managed-instance-link-feature-overview.md
-    - name: Instance pools
-      href: managed-instance/instance-pools-overview.md
     - name: Data virtualization
       href: managed-instance/data-virtualization-overview.md
-    - name: Feature availability by region
-      href: managed-instance/region-availability.md
+    - name: Architecture
+      items: 
+      - name: Instance pools
+        href: managed-instance/instance-pools-overview.md
+      - name: Resource limits
+        href: managed-instance/resource-limits.md
+      - name: Virtual cluster architecture
+        href: managed-instance/virtual-cluster-architecture.md
+      - name: Connectivity architecture
+        href: managed-instance/connectivity-architecture-overview.md
+
     - name: Log Replay Service (LRS)
+      items: 
+        - name: Overview
+          href: managed-instance/log-replay-service-overview.md
+        - name: Compare with MI link 
+          href: managed-instance/log-replay-service-compare-mi-link.md
+    - name: SQL Server Features
+      items: 
+      - name: Transactional replication
+        href: managed-instance/replication-transactional-overview.md
+      - name: Linked servers
+        href: /sql/relational-databases/linked-servers/linked-servers-database-engine
+      - name: Service Broker
+        href: /sql/database-engine/configure-windows/sql-server-service-broker
+      - name: Database mail
+        href: /sql/relational-databases/database-mail/database-mail
+
+    - name: Security
       items:
-      - name: Overview
-        href: managed-instance/log-replay-service-overview.md
-      - name: Compare with MI link
-        href: managed-instance/log-replay-service-compare-mi-link.md
-    - name: In-memory OLTP in Azure SQL Managed Instance
-      items:
-      - name: In-memory OLTP Overview
-        href: managed-instance/in-memory-oltp-overview.md
-      - name: Configure In-memory OLTP
-        href: managed-instance/in-memory-oltp-configure.md
-      - name: Monitor In-memory OLTP space
-        href: managed-instance/in-memory-oltp-monitor-space.md
-      - name: Try in-memory features
-        href: managed-instance/in-memory-oltp-sample.md
+      - name: Always Encrypted
+        href: database/always-encrypted-landing.yml
+      - name: Auditing
+        href: managed-instance/auditing-configure.md
+      - name: Native Windows principals
+        href: managed-instance/native-windows-principals.md
+      - name: Secure public endpoints
+        href: managed-instance/public-endpoint-overview.md
+      - name: Server trust groups
+        href: managed-instance/server-trust-group-overview.md
+      - name: Windows Auth for Microsoft Entra principals
+        items:
+        - name: Overview
+          displayName: Windows Authentication for Microsoft Entra Principals with Kerberos Overview
+          href: managed-instance/winauth-azuread-overview.md
+        - name: Implementation with Kerberos
+          displayName: Windows Authentication for Microsoft Entra Principals Implementation with Kerberos
+          href: managed-instance\winauth-implementation-aad-kerberos.md
+        - name: Setup summary
+          displayName: Windows Authentication for Microsoft Entra Principals with Kerberos Setup
+          href: managed-instance\winauth-azuread-setup.md
+        - name: Set up the modern interactive flow
+          displayName: Windows authentication for Microsoft Entra with the modern interactive flow
+          href: managed-instance\winauth-azuread-setup-modern-interactive-flow.md
+        - name: Set up the incoming trust-based flow
+          displayName: Windows authentication for Microsoft Entra with the incoming trust-based flow
+          href: managed-instance\winauth-azuread-setup-incoming-trust-based-flow.md
+        - name: Set up managed instances
+          displayName: Set up managed instances for Windows authentication for Microsoft Entra using Kerberos
+          href: managed-instance\winauth-azuread-kerberos-managed-instance.md
+        - name: Run a trace using Windows Auth
+          displayName: Run a trace using Windows authentication for Microsoft Entra with Kerberos
+          href: managed-instance\winauth-azuread-run-trace-managed-instance.md
+        - name: Troubleshoot
+          displayName: Troubleshoot Windows authentication for Microsoft Entra with Kerberos
+          href: managed-instance\winauth-azuread-troubleshoot.md
     - name: Business continuity
       items:
       - name: Overview
@@ -1110,6 +1148,26 @@
         href: managed-instance/backup-transparency.md
       - name: Failover groups
         href: managed-instance/failover-group-sql-mi.md
+    - name: Scheduled maintenance
+      items:
+      - name: Maintenance window
+        href: managed-instance/maintenance-window.md
+      - name: Configure maintenance window
+        href: managed-instance/maintenance-window-configure.md
+      - name: Maintenance window FAQ
+        href: managed-instance/maintenance-window-faq.yml
+      - name: Advance notifications
+        href: managed-instance/advance-notifications.md
+    - name: In-memory OLTP in Azure SQL Managed Instance
+      items:
+      - name: In-memory OLTP Overview
+        href: managed-instance/in-memory-oltp-overview.md
+      - name: Configure In-memory OLTP
+        href: managed-instance/in-memory-oltp-configure.md
+      - name: Monitor In-memory OLTP space
+        href: managed-instance/in-memory-oltp-monitor-space.md
+      - name: Try in-memory features
+        href: managed-instance/in-memory-oltp-sample.md
     - name: Management operations
       items:
       - name: Overview
@@ -1288,64 +1346,7 @@
           items:
           - name: Give users permission
             href: /sql/machine-learning/security/user-permission?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current
-    - name: Features
-      items:
-      - name: Transactional replication
-        href: managed-instance/replication-transactional-overview.md
-      - name: Linked servers
-        href: /sql/relational-databases/linked-servers/linked-servers-database-engine
-      - name: Service Broker
-        href: /sql/database-engine/configure-windows/sql-server-service-broker
-      - name: Database mail
-        href: /sql/relational-databases/database-mail/database-mail
-    - name: Security
-      items:
-      - name: Always Encrypted
-        href: database/always-encrypted-landing.yml
-      - name: Auditing
-        href: managed-instance/auditing-configure.md
-      - name: Native Windows principals
-        href: managed-instance/native-windows-principals.md
-      - name: Secure public endpoints
-        href: managed-instance/public-endpoint-overview.md
-      - name: Server trust groups
-        href: managed-instance/server-trust-group-overview.md
-      - name: Windows Auth for Microsoft Entra principals
-        items:
-        - name: Overview
-          displayName: Windows Authentication for Microsoft Entra Principals with Kerberos Overview
-          href: managed-instance/winauth-azuread-overview.md
-        - name: Implementation with Kerberos
-          displayName: Windows Authentication for Microsoft Entra Principals Implementation with Kerberos
-          href: managed-instance\winauth-implementation-aad-kerberos.md
-        - name: Setup summary
-          displayName: Windows Authentication for Microsoft Entra Principals with Kerberos Setup
-          href: managed-instance\winauth-azuread-setup.md
-        - name: Set up the modern interactive flow
-          displayName: Windows authentication for Microsoft Entra with the modern interactive flow
-          href: managed-instance\winauth-azuread-setup-modern-interactive-flow.md
-        - name: Set up the incoming trust-based flow
-          displayName: Windows authentication for Microsoft Entra with the incoming trust-based flow
-          href: managed-instance\winauth-azuread-setup-incoming-trust-based-flow.md
-        - name: Set up managed instances
-          displayName: Set up managed instances for Windows authentication for Microsoft Entra using Kerberos
-          href: managed-instance\winauth-azuread-kerberos-managed-instance.md
-        - name: Run a trace using Windows Auth
-          displayName: Run a trace using Windows authentication for Microsoft Entra with Kerberos
-          href: managed-instance\winauth-azuread-run-trace-managed-instance.md
-        - name: Troubleshoot
-          displayName: Troubleshoot Windows authentication for Microsoft Entra with Kerberos
-          href: managed-instance\winauth-azuread-troubleshoot.md
-    - name: Scheduled maintenance
-      items:
-      - name: Maintenance window
-        href: managed-instance/maintenance-window.md
-      - name: Configure maintenance window
-        href: managed-instance/maintenance-window-configure.md
-      - name: Maintenance window FAQ
-        href: managed-instance/maintenance-window-faq.yml
-      - name: Advance notifications
-        href: managed-instance/advance-notifications.md
+
   - name: How to
     items:
     - name: How-to documentation
@@ -1904,40 +1905,61 @@
   items:
   - name: Azure SQL glossary of terms
     href: glossary-terms.md
-  - name: T-SQL language reference
-    href: /sql/t-sql/language-reference
-  - name: Azure CLI
-    href: /cli/azure/azure-cli-reference-for-sql
-  - name: Azure PowerShell
-    href: /powershell/module/az.sql/
-  - name: .NET
-    href: /dotnet/api/microsoft.azure.management.sql.models
-  - name: Java
-    href: /java/api/com.microsoft.azure.management.sql
-  - name: REST
-    href: /rest/api/sql/
-  - name: Resource Manager templates for SQL
-    displayName: ARM
-    href: /azure/templates/microsoft.sql/allversions
-  - name: SQL tools
-    href: /sql/tools/overview-sql-tools
-  - name: SQL Server Management Studio (SSMS)
-    href: /sql/ssms/download-sql-server-management-studio-ssms
-  - name: SQL Server Data Tools (SSDT)
-    href: /sql/ssdt/download-sql-server-data-tools-ssdt
-  - name: BCP
-    href: /sql/tools/bcp-utility
-  - name: SQLCMD
-    href: /sql/tools/sqlcmd-utility
-  - name: SqlPackage
-    href: /sql/tools/sqlpackage/sqlpackage
-  - name: SQL Database Management Library package
-    href: https://www.nuget.org/packages/Microsoft.Azure.Management.Sql
-  - name: SQL connection  drivers
-    href: /sql/connect/sql-connection-libraries
+  - name: DTU benchmark
+    href: database/dtu-benchmark.md
+  - name: Azure Policy built-ins
+    displayName: samples, policies, definitions
+    href: ./database/policy-reference.md
+  - name: Feature availability by region
+    items: 
+    - name: Azure SQL Database
+      href: database/region-availability.md
+    - name: Azure SQL Managed Instance
+      href: managed-instance/region-availability.md
+  - name: Monitoring data reference 
+    items:  
+    - name: Azure SQL Database 
+      href: database/monitoring-sql-database-azure-monitor-reference.md
+    - name: Azure SQL Managed Instance
+      href: managed-instance/monitoring-sql-managed-instance-azure-monitor-reference.md
+  - name: Tools
+    items: 
+    - name: Overview
+      href: /sql/tools/overview-sql-tools
+    - name: SQL Server Management Studio (SSMS)
+      href: /sql/ssms/download-sql-server-management-studio-ssms
+    - name: SQL Server Data Tools (SSDT)
+      href: /sql/ssdt/download-sql-server-data-tools-ssdt
+    - name: BCP
+      href: /sql/tools/bcp-utility
+    - name: SQLCMD
+      href: /sql/tools/sqlcmd-utility
+    - name: SqlPackage
+      href: /sql/tools/sqlpackage/sqlpackage-utility
+
+  - name: Languages & code
+    items: 
+    - name: T-SQL language reference
+      href: /sql/t-sql/language-reference
+    - name: Azure.ResourceManager.Sql NuGet Gallery
+      href: https://www.nuget.org/packages/Azure.ResourceManager.Sql/
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-sql
+    - name: Azure PowerShell
+      href: /powershell/module/az.sql/
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.sql.models
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.sql
+    - name: REST
+      href: /rest/api/sql/
+    - name: Resource Manager templates for SQL
+      displayName: ARM
+      href: /azure/templates/microsoft.sql/allversions
   - name: SQL Server drivers
-    href: /sql/connect/sql-connection-libraries
     items:
+    - name: Connection drivers
+      href: /sql/connect/sql-connection-libraries
     - name: ADO.NET
       href: /sql/connect/ado-net/microsoft-ado-net-sql-server?view=sql-server-ver15&preserve-view=true
     - name: JDBC
@@ -1952,15 +1974,7 @@
       href: /sql/connect/python/python-driver-for-sql-server
     - name: Ruby
       href: /sql/connect/ruby/ruby-driver-for-sql-server
-  - name: Azure Policy built-ins
-    displayName: samples, policies, definitions
-    href: ./database/policy-reference.md
-  - name: DTU benchmark
-    href: database/dtu-benchmark.md
-  - name: SQL Database monitoring data reference
-    href: database/monitoring-sql-database-azure-monitor-reference.md
-  - name: SQL Managed Instance monitoring data reference
-    href: managed-instance/monitoring-sql-managed-instance-azure-monitor-reference.md
+
 - name: Resources
   items:
   - name: Build your skills with Microsoft Learn training

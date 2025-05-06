@@ -1,10 +1,10 @@
 ---
-title: "Configure column encryption using Always Encrypted Wizard in SSMS 21"
+title: "Configure Column Encryption Using Always Encrypted Wizard in SSMS 21"
 description: Learn how to configure Always Encrypted for database columns by using the Always Encrypted Wizard in SSMS 21.
 author: pietervanhove
 ms.author: pivanho
-ms.reviewer: vanto, maghan, randolphwest
-ms.date: 01/22/2025
+ms.reviewer: vanto, maghan, randolphwest, mathoma
+ms.date: 04/25/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: concept-article
@@ -99,7 +99,7 @@ When configuring a new column master key, you can either pick an existing key in
 
 To use in-place encryption, select **Allow enclave computations** for a new column master key. Selecting this checkbox is allowed only if your database is configured with a secure enclave.
 
-For more information about creating and storing column master keys in Windows Certificate Store, Azure Key Vault, or other key stores, see [Create and store column master keys for Always Encrypted](../../../relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted.md) or [Manage keys for Always Encrypted with secure enclaves](../../../relational-databases/security/encryption/always-encrypted-enclaves-manage-keys.md).
+For more information about creating and storing column master keys in Windows Certificate Store, Azure Key Vault, or other key stores, see [Create and store column master keys for Always Encrypted](create-and-store-column-master-keys-always-encrypted.md) or [Manage keys for Always Encrypted with secure enclaves](always-encrypted-enclaves-manage-keys.md).
 
 > [!TIP]  
 > The wizard allows you to browse and create keys only in the Windows Certificate Store and Azure Key Vault. It also autogenerates the names of the new keys and the database metadata objects describing them. Suppose you need more control over how your keys are provisioned (and more choices for a key store containing your column master key). In that case, you can use the **New Column Master Key** and **New Column Encryption Key** dialogs to create the keys first, and then run the wizard and pick the keys you have created. See [Provision Column Master Keys with the New Column Master Key Dialog](configure-always-encrypted-keys-using-ssms.md#provision-column-master-keys-with-the-new-column-master-key-dialog) or [Provision enclave-enabled keys](always-encrypted-enclaves-provision-keys.md) and [Provision Column Encryption Keys with the New Column Encryption Key Dialog](configure-always-encrypted-keys-using-ssms.md#provision-column-encryption-keys-with-the-new-column-encryption-key-dialog).
@@ -132,22 +132,21 @@ Use the online approach:
 
 ## Post encryption
 
-Clear the plan cache for all batches and stored procedures that access the table to refresh parameters encryption information. 
+Clear the plan cache for all batches and stored procedures that access the table to refresh parameters encryption information.
 
    ```sql
    ALTER DATABASE SCOPED CONFIGURATION CLEAR PROCEDURE_CACHE;
    ```
 
-   > [!NOTE]
-   > If you don't remove the plan for the impacted query from the cache, the first execution of the query after encryption might fail.
-   >
-   > Use `ALTER DATABASE SCOPED CONFIGURATION CLEAR PROCEDURE_CACHE` or `DBCC FREEPROCCACHE` to clear the plan cache carefully, as it can result in temporary query performance degradation. To minimize the negative impact of clearing the cache, you can selectively remove the plans for only the impacted queries.
+   > [!NOTE]  
+   > If you don't remove the plan for the affected query from the cache, the first execution of the query after encryption might fail.
+   >  
+   > Use `ALTER DATABASE SCOPED CONFIGURATION CLEAR PROCEDURE_CACHE` or `DBCC FREEPROCCACHE` to clear the plan cache carefully, as it can result in temporary query performance degradation. To minimize the negative impact of clearing the cache, you can selectively remove the plans for only the affected queries.
 
-Call [sp_refresh_parameter_encryption](../../system-stored-procedures/sp-refresh-parameter-encryption-transact-sql.md) to update the metadata for the parameters of each module (stored procedure, function, view, trigger) that are persisted in [sys.parameters](../..//system-catalog-views/sys-parameters-transact-sql.md) and may have been invalidated by encrypting the columns.
-
+Call [sp_refresh_parameter_encryption](../../system-stored-procedures/sp-refresh-parameter-encryption-transact-sql.md) to update the metadata for the parameters of each module (stored procedure, function, view, trigger) that are persisted in [sys.parameters](../..//system-catalog-views/sys-parameters-transact-sql.md) and might have been invalidated by encrypting the columns.
 
 ## Related content
 
-- [Always Encrypted](../../../relational-databases/security/encryption/always-encrypted-database-engine.md)
-- [Always Encrypted with secure enclaves](../../../relational-databases/security/encryption/always-encrypted-enclaves.md)
+- [Always Encrypted](always-encrypted-database-engine.md)
+- [Always Encrypted with secure enclaves](always-encrypted-enclaves.md)
 - [Overview of key management for Always Encrypted](overview-of-key-management-for-always-encrypted.md)

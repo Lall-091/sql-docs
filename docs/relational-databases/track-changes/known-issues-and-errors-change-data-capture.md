@@ -4,7 +4,7 @@ description: "Known issues and errors with change data capture (CDC) in SQL Serv
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: mathoma, randolphwest
-ms.date: 03/31/2025
+ms.date: 04/14/2025
 ms.service: sql
 ms.topic: troubleshooting
 helpviewer_keywords:
@@ -88,10 +88,21 @@ To resolve this issue:
 
 - Manually drop the empty `cdc` schema and `cdc` user. Then, CDC can be enabled successfully on the database.
 
-## CDC fails after ALTER COLUMN to varchar and varbinary
+## CDC fails after ALTER COLUMN
 
-When the data type of a column on a CDC-enabled table is changed from **text** to **nvarchar**, or **image** to **varbinary**, and an existing row is updated to an off-row value. After the update, the CDC scan will result in errors.
+When the data type of a column on a CDC-enabled table is changed to an unsupported conversion, and an existing row is updated to an off-row value, the CDC scan might result in errors after the update. 
 
+The following are examples of ALTER COLUMN data type changes that aren't supported when CDC is enabled on a table:
+- **text** to **nvarchar**
+- **image** to **varbinary**
+- **nvarchar** to **DATE** or **INT**
+- **bigint** to **int**
+
+Changing the data type of a column can result in the following errors: 
+- [Error 241](#error-241---conversion-failed-when-converting-date-andor-time-from-character-string) - Conversion failed when converting date and/or time from character string.
+- [Error 245](#error-245---conversion-failed-when-converting-the-value-from-string-to-int) - Conversion failed when converting the value.
+- [Error 8115](#error-8115---arithmetic-overflow-error-converting-data-type-from-bigint-to-int) - Arithmetic overflow error converting data type.
+ 
 ## DDL changes to source tables
 
 Changing the size of columns of a CDC-enabled table using DDL statements can cause issues with the subsequent CDC capture process, resulting in **error 2628** or **error 8115**. Remember that data in CDC change tables are retained based on user-configured settings. So, before making any changes to column size, you must assess whether the alteration is compatible with the existing data in CDC change tables.
@@ -191,7 +202,7 @@ These are the different troubleshooting categories included in this section:
 
 * **Recommendation**: To resolve this issue, disable and re-enable CDC for your table after altering the column. Alternatively, disable CDC before altering the column, and then reenable CDC after the ALTER COLUMN change. 
 
-#### Error 245 - Conversion failed when converting the value 
+#### Error 245 - Conversion failed when converting the value from string to int
 
 * **Cause**: This error occurs when the [ALTER COLUMN](../../t-sql/statements/alter-table-transact-sql.md#alter-column) command is issued to change the data type of a column when table has CDC enabled. For example, if a table has an **nvarchar** column and you change the data type to **INT** (ALTER TABLE table_name ALTER COLUMN [column_name] INT NULL), you might see this error in the [sys.dm_cdc_errors](../system-dynamic-management-views/change-data-capture-sys-dm-cdc-errors.md) table due to an unsupported data conversion, even though the ALTER command succeeds. 
 
@@ -210,7 +221,7 @@ These are the different troubleshooting categories included in this section:
 * **Recommendation**: Before making any changes to column size, you must assess whether the alteration is compatible with the existing data in CDC change tables. To address this problem, you need to disable and re-enable CDC for your database. For more information about enabling CDC for a database or a table, see [Enable CDC for a database](enable-and-disable-change-data-capture-sql-server.md#enable-for-a-database) and [Enable CDC for a table](enable-and-disable-change-data-capture-sql-server.md#enable-for-a-table).
 
 
-#### Error 8115 - Arithmetic overflow error converting data type
+#### Error 8115 - Arithmetic overflow error converting data type from bigint to int
 
 * **Cause**:  This error occurs when an [ALTER COLUMN](../../t-sql/statements/alter-table-transact-sql.md#alter-column) DDL is executed on a CDC-enabled table that results in a decrease in the precision of the column (such as changing the data type of the column from **bigint** to **int**). The decreased precision column is unable to hold the values present in the change table.
 

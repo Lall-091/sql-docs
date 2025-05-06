@@ -169,7 +169,7 @@ sections:
 
       - question: Can I change DNS zone prefix?
         answer: |
-          Yes, the SQL Managed Instance default DNS zone *.database.windows.net* can be changed with your own. However, the managed instance hostname part of its FQDN should remain the same.
+          Yes, the SQL Managed Instance default DNS zone `.database.windows.net` can be changed with your own. However, the managed instance hostname part of its FQDN, including the randomized subzone (ex: `sqlmiFQDN.randomized-subzone` before the `.database.windows.net`) should remain the same.
 
           To use another DNS zone instead of the default, for example, *.contoso.com*: 
           - Use SQL Server Client Network Utility (CliConfg) to define an alias. You can use either just the managed instance hostname, or the managed instance hostname followed by a custom domain name. The CliConfg tool just adds alias in the registry under "HKLM\SOFTWARE\Microsoft\MSSQLServer\Client\ConnectTo" or "HKLM\SOFTWARE\WOW6432Node\Microsoft\MSSQLServer\Client\ConnectTo" depending if you use the 64-bit version (C:\Windows\System32\cliconfg.exe) or the 32-bit version (C:\Windows\SysWOW64\cliconfg.exe), so it can be done using group policy or a script as well. Use both to ensure 32-bit and 64-bit programs can resolve the alias.

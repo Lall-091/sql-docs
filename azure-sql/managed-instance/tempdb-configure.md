@@ -171,8 +171,8 @@ The following screenshot shows an example output:
 `tempdb` max size is the limit after which your `tempdb` can't grow further. 
 
 `tempdb` max size in SQL Managed Instance has the following limitations: 
-- In the General Purpose service tier, the maximum size for `tempdb` is limited to 24 GB/vCore (96-1920 GB), and the log file is 120 GB. 
-- In the Business Critical service tier, `tempdb` competes with other databases for resources, so the reserved storage is shared between `tempdb` and other databases. The max size of the `tempdb` log file is 2 TB. 
+- In the General Purpose service tier, the maximum size for `tempdb` is limited to 24 GB/vCore (96-1920 GB). The max size of the `tempdb` log file is 120 GB. 
+- In the Business Critical service tier, `tempdb` competes with other databases for resources, so the reserved storage is shared between `tempdb` and other databases up to the max storage size allocated to the instance. The max size of the `tempdb` log file is 2 TB. 
 
 `tempdb` files grow until they reach either the maximum limit allowed by the service tier, or by the manually configured max `tempdb` file size. 
 
@@ -256,7 +256,8 @@ The following table defines limits for various `tempdb` configuration settings:
 |Initial size of `tempdb` log files     |    16 MB     |
 |Default growth increment of `tempdb` log files     |   64 MB      |
 |Initial max `tempdb`size    |   -1 (unlimited)       |
-|Max size of `tempdb` | Up to the storage size | 
+|Max size of `tempdb` data files | - In the General Purpose service tier: 24 GB/vCore up to 1920 GB total  <br /> In the Business Critical service tier: Up to the storage size | 
+|Max size of `tempdb` log files | - In the General Purpose service tier: 120 GB <br /> In the Business Critical service tier: 2 TB |
 
 
 ## Next steps

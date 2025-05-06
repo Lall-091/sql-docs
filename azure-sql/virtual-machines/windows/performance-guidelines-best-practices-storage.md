@@ -250,6 +250,24 @@ The biggest difference between Write Acceleration and Azure ultra disks is that 
 
 If possible, use Write Acceleration over ultra disks for the transaction log disk. For VMs that don't support Write Acceleration but require low latency to the transaction log, use Azure ultra disks.
 
+## Resize storage pools appropriately 
+
+In Azure, when you want to resize a storage pool, do so by changing the number of disks in the pool, instead of modifying the size of the disks already in the pool. Changing the sizes of the virtual or physical disks in a storage pool does not increase the available space of the volume when it's inside the storage pool, so the increased disk space is unused and wasted. 
+
+For SQL Server on Azure VMs that are deployed from the Azure Marketplace using Premium SSD (v1), disks are automatically added to the storage pool, and you can use the [Storage pane](storage-configuration.md#modify-existing-drives) of the SQL virtual machines resource in the Azure portal to resize the disks in the storage pool. 
+
+For SQL Server on Azure VM Marketplace images that use Premium SSD v2 disks, or Ultra Disks, or virtual machines with self-installed SQL Server instances, manually modify the number of disks in the storage pool to change volume size. 
+
+For example, follow these steps to expand a storage pool: 
+1. Add a new disk: 
+   1. [Attach a managed disk in the Azure portal](/azure/virtual-machines/windows/attach-managed-disk-portal#add-a-data-disk)
+   1. [Attach a managed disk with PowerShell](/azure/virtual-machines/windows/attach-disk-ps)
+   1. [Attach an unmanaged disk with PowerShell](/powershell/module/az.compute/add-azvmdatadisk#example-2--add-a-data-disk-to-an-existing-virtual-machine)
+1. Connect to the virtual machine. 
+1. Add the disks to the storage pool from [Server Manager](/windows-server/administration/server-manager/server-manager) > File and Storage Services > Volumes > Storage Pools. Use **Tasks** to select the **Add Physical Disk** option. 
+1. After the disk is added, right-click the target virtual disk and select **Extend virtual disk**. 
+1. Open [Disk Management](/windows-server/storage/disk-management/overview-of-disk-management), right-click the target volume, and select **Extend Volume**.
+
 ## Monitor storage performance
 
 To assess storage needs, and determine how well storage is performing, you need to understand what to measure, and what those indicators mean.

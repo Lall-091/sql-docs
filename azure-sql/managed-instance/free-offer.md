@@ -25,7 +25,7 @@ Try [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) free of 
 - 64 GB of storage
 
 > [!NOTE]  
-> The free Azure SQL Managed Instance offer is currently in preview.
+> The free Azure SQL Managed Instance offer is currently in [preview](doc-changes-updates-release-notes-whats-new.md#preview).
 
 ## Overview
 

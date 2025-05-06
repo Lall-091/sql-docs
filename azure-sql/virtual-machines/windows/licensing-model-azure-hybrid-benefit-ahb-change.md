@@ -34,7 +34,6 @@ According to the Microsoft [Product Terms](https://www.microsoft.com/licensing/t
 
 To indicate the use of Azure Hybrid Benefit for SQL Server on Azure VM and be compliant, you have three options:
 
-- Provision a virtual machine by using a bring-your-own-license SQL Server image from Azure Marketplace. This option is available only for customers who have an Enterprise Agreement.
 - Provision a virtual machine by using a pay-as-you-go SQL Server image from Azure Marketplace and activate the Azure Hybrid Benefit.
 - Self-install SQL Server on Azure VM, manually [register with the SQL IaaS Agent Extension](sql-agent-extension-manually-register-single-vm.md), and activate Azure Hybrid Benefit.
 
@@ -179,7 +178,7 @@ The SQL IaaS Agent extension is required to change the license. Make sure you [d
 
 #### How can I deploy a SQL Server BYOL (bring-your-own-license) image?
 
-BYOL images have been retired from Azure Marketplace. You can choose a SQL Server Standard or Enterprise edition marketplace image, and enable [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/faq/) during deployment, to create a SQL virtual machine using an existing license.
+BYOL images have been retired from Azure Marketplace. You can choose a SQL Server Standard or Enterprise edition marketplace image, and enable [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/faq/) (during deployment, or after), to create a SQL virtual machine using an existing license.
 
 #### SQL Server edition, version, or licensing on Azure portal doesn't reflect correctly after edition or version upgrade
 
