@@ -41,7 +41,7 @@ In this tutorial, you learn how to:
 > - Perform the migration cutover when you're ready
 
 > [!IMPORTANT]  
-> Prepare for migration and reduce the duration of the online migration process as much as possible, to minimize the risk of interruption caused by instance reconfiguration or planned maintenance. In case of such an event, migration process will start from the beginning. In case of planned maintenance, there's a grace period of 36 hours where the target Azure SQL Managed Instance configuration or maintenance will be held before migration process is restarted.
+> Prepare for migration and reduce the duration of the online migration process as much as possible, to minimize the risk of interruption caused by instance reconfiguration or planned maintenance. In such an event, migration process starts from the beginning. During planned maintenance, there's a grace period of 36 hours where the target Azure SQL Managed Instance configuration or maintenance is held before migration process is restarted.
 
 ## [Offline with Azure DMS](#tab/offline-with-extension)
 
@@ -73,6 +73,21 @@ To complete this tutorial, you need to:
   - *Contributor* for the target instance of Azure SQL Managed Instance and for the storage account where you upload your database backup files from a Server Message Block (SMB) network share, and *Reader* role for the Azure resource groups that contain the target instance of Azure SQL Managed Instance or your Azure storage account.
 
   - *Owner* or *Contributor* role for the Azure subscription (required if you create a new Database Migration Service instance).
+
+  - **Using Managed Identity**: Azure Database Migration Service supports the Managed identity for the Azure SQL Managed Instance migrations through the Azure portal only. Azure Database Migration Service uses this Managed identity to read the backups files from the storage blob container. To assign the permissions or role to the Managed identity, follow these steps:
+
+    1. Identify the target instance of Azure SQL Managed Instance's associated managed identity.
+
+       Once you start the migration to Azure SQL Managed instance using Azure Database Migration service, when you select the target instance of Azure SQL Managed Instance, its associated managed identity is shown. Otherwise, you can navigate to the Azure SQL Managed Instance pane, and select **Security** > **Identity**.
+
+       - If the user assigned managed identity is added, the associated managed identity used is the same as the primary identity you selected.
+
+       - If only the system assigned managed identity is enabled, the associated managed identity used is the same as Azure SQL Managed Instance.
+
+    1. In the Azure portal, go to **Storage account** (used for the migration for keeping backup files), and navigate to **IAM roles** > **Assign role**, and assign Storage Blob Data Reader to the associated managed identity.
+
+       > [!NOTE]  
+       > The Storage account should have the **Allow storage account key access** option enabled. For more information, see [DMS - Support for Managed Identity for Azure SQL Managed Instance migration](https://techcommunity.microsoft.com/blog/microsoftdatamigration/dms---support-for-managed-identity-for-azure-sql-managed-instance-migration/4411274).
 
   As an alternative to using one of these built-in roles, you can [assign custom roles](custom-roles.md).
 
@@ -422,6 +437,8 @@ Migrating to Azure SQL Managed Instance by using the Azure SQL extension for Azu
   1. Use the [Managed Instance link](/azure/azure-sql/managed-instance/managed-instance-link-migrate) for an online migration to a **Business Critical** instance without having to wait for databases to be available after the cutover.
   
 - If you received the following error: `Memory-optimized filegroup must be empty in order to be restored on General Purpose tier of SQL Database Managed Instance`, this issue is by design. In-Memory OLTP isn't supported on the General Purpose tier of Azure SQL Managed Instance. To continue migration, one way is to upgrade to Business Critical tier, which supports In-Memory OLTP. Another way is to make sure the source database isn't using it while the Azure SQL Managed Instance is General Purpose.
+
+- Azure Database Migration Service supports the managed identity associated with the target Azure SQL managed instance only. This managed identity can be user assigned or system assigned. Currently, this feature is supported through the Azure Portal only. Make sure that the storage account has the **Allow storage account key access** option enabled.
 
 ## Related content
 
