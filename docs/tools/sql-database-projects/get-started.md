@@ -131,7 +131,7 @@ Use the `-h` option to see all available options.
 
 ```bash
 # install Microsoft.Build.Sql.Templates
-dotnet new sqlproject -n MyDatabaseProject
+dotnet new sqlproj -n MyDatabaseProject
 ```
 
 ::: zone-end

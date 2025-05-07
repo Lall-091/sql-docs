@@ -36,13 +36,15 @@ Hardware generations have different characteristics, as described in the followi
 | **Number of vCores**<br />vCore=1 LP (hyper-thread) | 2<sup>1</sup> -80 vCores | 2<sup>1</sup> -128 vCores | 4-128 vCores |
 | **Max memory (memory/vCore ratio)** | 5.1 GB per vCore - 408 GB maximum<br />Add more vCores to get more memory. | 7 GB per vCore up to 80 vCores - 560 GB maximum | 13.6 GB per vCore up to 64 vCores - 870.4 GB maximum |
 | **Max In-Memory OLTP memory** | Instance limit: 0.8 - 1.65 GB per vCore | Instance limit: 1.1 - 2.3 GB per vCore | Instance limit: 2.2 - 4.5 GB per vCore |
-| **Max instance reserved storage** <sup>2</sup> | **General Purpose:** up to 16 TB<br />**Business Critical:** up to 4 TB | **General Purpose:** up to 16 TB<br />**Business Critical:** up to 16 TB<sup>3</sup> | **General Purpose:** up to 16 TB<br />**Business Critical:** up to 16 TB |
+| **Max instance reserved storage** <sup>2</sup> | **General Purpose:** up to 32 TB<sup>4</sup><br />**Business Critical:** up to 4 TB | **General Purpose:** up to 32 TB<sup>4</sup><br />**Business Critical:** up to 16 TB<sup>3</sup> | **General Purpose:** up to 32 TB<sup>4</sup><br />**Business Critical:** up to 16 TB |
 
 <sup>1</sup> Deploying a 2-vCore instance is only possible inside an [instance pool](instance-pools-overview.md).
 
 <sup>2</sup> Dependent on [the number of vCores](#service-tier-characteristics).
 
 <sup>3</sup> The [following regions](#regional-supports-for-memory-optimized-premium-series-hardware-and-for-premium-series-hardware-with-16-tb-storage) can provide 16 TB of storage, while other regions limit available storage to 5.5 TB.
+
+<sup>4</sup> 16 TB for classic General Purpose. 32 TB only for [Next-gen General Purpose service tier (preview)](service-tiers-next-gen-general-purpose-use.md)
 
 > [!NOTE]  
 > If your workload requires storage sizes greater than the available resource limits for Azure SQL Managed Instance, consider the Azure SQL Database [Hyperscale service tier](../database/service-tier-hyperscale.md).
@@ -107,7 +109,7 @@ SQL Managed Instance has two [service tiers](service-tiers-managed-instance-vcor
 
 | Hardware generation | General Purpose | Next-gen General Purpose | Business Critical |
 | --- | --- | --- | --- |
-| **Standard-series (Gen5)** | - 2 TB for 4 vCores<br />- 8 TB for 8 vCores<br />- 16 TB for other sizes | - 2 TB for 4 vCores<br />- 8 TB for 8 vCores<br />- 16 TB for other sizes | - 1 TB for 4, 8, 16 vCores<br />- 2 TB for 24 vCores<br />- 4 TB for 32, 40, 64, 80 vCores |
+| **Standard-series (Gen5)** | - 2 TB for 4 vCores<br />- 8 TB for 8 vCores<br />- 16 TB for other sizes | - 2 TB for 4 vCores<br />- 8 TB for 8 vCores<br />- 16 TB for 16, 24 vCores<br />- 32 TB for 32, 40, 64, 80 vCores | - 1 TB for 4, 8, 16 vCores<br />- 2 TB for 24 vCores<br />- 4 TB for 32, 40, 64, 80 vCores |
 | **Premium-series** | - 2 TB for 4 vCores<br />- 8 TB for 8 vCores<br />- 16 TB for other sizes | - 2 TB for 4, 6 vCores<br />- 8 TB for 8, 10, 12 vCores<br />- 16 TB for 16, 20, 24 vCores<br />- 32 TB for 32, 40, 48, 56, 64, 80, 96, 128 vCores | - 1 TB for 4, 6 vCores<br />- 2 TB for 8, 10, 12 vCores<br />- 4 TB for 16, 20 vCores<br />- 5.5 TB for 24, 32, 40, 48, 56 vCores<br />- 5.5 TB or 16 TB (depending on the region) for 64, 80, 96, 128 vCores<sup>1</sup> |
 | **Memory optimized premium-series** | - 2 TB for 4 vCores<br />- 8 TB for 8 vCores<br />- 16 TB for other sizes | - 2 TB for 4, 6 vCores<br />- 8 TB for 8, 10, 12 vCores<br />- 16 TB for 16, 20, 24 vCores<br />- 32 TB for 32, 40, 48, 56, 64, 80, 96, 128 vCores | - 1 TB for 4, 6 vCores<br />- 2 TB for 8, 10, 12 vCores<br />- 4 TB for 16, 20 vCores<br />- 5.5 TB for 24 vCores<br />- 5.5 TB or 8 TB (depending on the region) for 32, 40 vCores<sup>2</sup><br />- 12 TB for 48, 56 vCores<br />- 16 TB for 64, 80, 96, 128 vCores |
 

@@ -40,12 +40,12 @@ This article provides a list of the rules used to assess the feasibility of migr
 | `MIDatabaseSize` | Database | Issue | [Azure SQL Managed Instance doesn't support database size greater than 16 TB.](#MIDatabaseSize) |
 | `MIHeterogeneousMSDTCTransactSQL` | Database | Issue | [BEGIN DISTRIBUTED TRANSACTION with non-SQL Server remote server isn't supported in Azure SQL Managed Instance.](#MIHeterogeneousMSDTCTransactSQL) |
 | `MIHomogeneousMSDTCTransactSQL` | Database | Issue | [BEGIN DISTRIBUTED TRANSACTION is supported across multiple servers for Azure SQL Managed Instance.](#MIHomogeneousMSDTCTransactSQL) |
-| `MIInstanceSize` | Instance | Warning | [Maximum instance storage size in Azure SQL Managed Instance can't be greater than 8 TB.](#MIInstanceSize) |
+| `MIInstanceSize` | Instance | Warning | [Maximum instance storage size in Azure SQL Managed Instance can't be greater than 32 TB.](#MIInstanceSize) |
 | `MultipleLogFiles` | Database | Issue | [Azure SQL Managed Instance doesn't support databases with multiple log files.](#MultipleLogFiles<) |
 | `NextColumn` | Database | Issue | [Tables and Columns named NEXT lead to an error In Azure SQL Managed Instance.](#NextColumn) |
 | `NonANSILeftOuterJoinSyntax` | Database | Warning | [Non-ANSI style left outer join is no longer supported and has been removed.](#NonANSILeftOuterJoinSyntax) |
 | `NonANSIRightOuterJoinSyntax` | Database | Warning | [Non-ANSI style right outer join is no longer supported and has been removed.](#NonANSIRightOuterJoinSyntax) |
-| `NumDbExceeds100` | Instance | Warning | [Azure SQL Managed Instance supports a maximum of 100 databases per instance.](#NumDbExceeds100) |
+| `NumDbExceeds500` | Instance | Warning | [Azure SQL Managed Instance supports a maximum of 500 databases per instance.](#NumDbExceeds500) |
 | `OpenRowsetWithNonBlobDataSourceBulk` | Database | Issue | [OpenRowSet used in bulk operation with non-Azure blob storage data source isn't supported in Azure SQL Managed Instance.](#OpenRowsetWithNonBlobDataSourceBulk) |
 | `OpenRowsetWithNonSQLProvider` | Database | Issue | [OpenRowSet with non-SQL provider isn't supported in Azure SQL Managed Instance.](#OpenRowsetWithNonSQLProvider) |
 | `PowerShellJob` | Instance | Warning | [PowerShell job step isn't supported in Azure SQL Managed Instance.](#PowerShellJob) |
@@ -64,7 +64,7 @@ This article provides a list of the rules used to assess the feasibility of migr
 **Category**: Warning
 
 **Description**  
-It is a job step that runs an Analysis Services command. AnalysisCommand job step isn't supported in Azure SQL Managed Instance.
+It's a job step that runs an Analysis Services command. AnalysisCommand job step isn't supported in Azure SQL Managed Instance.
 
 **Recommendation**  
 Review affected objects section in Azure Migrate to see all jobs using Analysis Service Command job step and evaluate if the job step or the affected object can be removed. Alternatively, migrate to SQL Server on Azure VMs.
@@ -77,7 +77,7 @@ More information: [SQL Server Agent differences in Azure SQL Managed Instance](/
 **Category**: Warning
 
 **Description**  
-It is a job step that runs an Analysis Services query. AnalysisQuery job step isn't supported in Azure SQL Managed Instance.
+It's a job step that runs an Analysis Services query. AnalysisQuery job step isn't supported in Azure SQL Managed Instance.
 
 **Recommendation**  
 Review affected objects section in Azure Migrate to see all jobs using Analysis Service Query job step and evaluate if the job step or the affected object can be removed. Alternatively, migrate to SQL Server on Azure VMs.
@@ -230,7 +230,7 @@ More information: [Discontinued Database Engine Functionality in SQL Server](/pr
 The FILESTREAM feature, which allows you to store unstructured data such as text documents, images, and videos in NTFS file system, isn't supported in Azure SQL Managed Instance. **This database can't be migrated as the backup containing FILESTREAM filegroups can't be restored on Azure SQL Managed Instance.**
 
 **Recommendation**  
-Upload the unstructured files to Azure Blob storage and store metadata related to these files (name, type, URL location, storage key etc.) in Azure SQL Managed Instance. You might have to re-engineer your application to enable streaming blobs to and from Azure SQL Managed Instance. Alternatively, migrate to SQL Server on Azure VMs.
+Upload the unstructured files to Azure Blob storage and store metadata related to these files (name, type, URL location, storage key, etc.) in Azure SQL Managed Instance. You might have to re-engineer your application to enable streaming blobs to and from Azure SQL Managed Instance. Alternatively, migrate to SQL Server on Azure VMs.
 
 More information: [Streaming Blobs To and From SQL Azure blog](https://azure.microsoft.com/blog/streaming-blobs-to-and-from-sql-azure/)
 
@@ -269,11 +269,11 @@ Alternatively, migrate to SQL Server on Azure VMs.
 Linked servers enable the SQL Server Database Engine to execute commands against OLE DB data sources outside of the instance of SQL Server. Linked server with non-SQL Server Provider isn't supported in Azure SQL Managed Instance.
 
 **Recommendation**  
-Azure SQL Managed Instance doesn't support linked server functionality if the remote server provider is non-SQL Server like Oracle, Sybase etc.
+Azure SQL Managed Instance doesn't support linked server functionality if the remote server provider is non-SQL Server like Oracle, Sybase, etc.
 
 The following actions are recommended to eliminate the need for linked servers:
 
-- Identify the dependent databases from remote non-SQL servers and consider moving these into the database being migrated.
+- Identify the dependent databases from remote non-SQL servers and consider moving them into the database being migrated.
 - Migrate the dependent databases to supported targets like SQL Managed Instance, SQL Database, Azure Synapse, and SQL Server instances.
 - Consider creating linked server between Azure SQL Managed Instance and SQL Server on Azure Virtual Machines (SQL VM). Then from the SQL VM, create a linked server to Oracle, Sybase, etc. This approach does involve two hops but can be used as temporary workaround.
 - Alternatively, migrate to SQL Server on Azure VMs.
@@ -286,7 +286,7 @@ More information: [Linked Server differences in Azure SQL Managed Instance](/azu
 **Category**: Warning
 
 **Description**  
-It is a job step that activates the replication Merge Agent. The Replication Merge Agent is a utility executable that applies the initial snapshot held in the database tables to the Subscribers. It also merges incremental data changes that occurred at the Publisher after the initial snapshot was created, and reconciles conflicts either according to the rules you configure, or using a custom resolver you create. Merge job step isn't supported in Azure SQL Managed Instance.
+It's a job step that activates the replication Merge Agent. The Replication Merge Agent is a utility executable that applies the initial snapshot held in the database tables to the Subscribers. It also merges incremental data changes that occurred at the Publisher after the initial snapshot was created, and reconciles conflicts either according to the rules you configure, or using a custom resolver you create. Merge job step isn't supported in Azure SQL Managed Instance.
 
 **Recommendation**  
 Review affected objects section in Azure Migrate to see all jobs using Merge job step and evaluate if the job step or the affected object can be removed. Alternatively, migrate to SQL Server on Azure VMs.
@@ -295,7 +295,7 @@ More information: [SQL Server Agent differences in Azure SQL Managed Instance](/
 
 ## <a id="MIDatabaseSize"></a> SQL Managed Instance database size
 
-**Title: Azure SQL Managed Instance does not support database size greater than 16 TB.**  
+**Title: Azure SQL Managed Instance does not support database size greater than 32 TB.**  
 **Category**: Issue
 
 **Description**  
@@ -308,7 +308,7 @@ More information: [Hardware characteristics of Azure SQL Managed Instance](/azur
 
 ## <a id="MIInstanceSize"></a> SQL Managed Instance instance size
 
-**Title: Maximum instance storage size in Azure SQL Managed Instance cannot be greater than 8 TB.**  
+**Title: Maximum instance storage size in Azure SQL Managed Instance cannot be greater than 32 TB.**  
 **Category**: Warning
 
 **Description**  
@@ -373,13 +373,13 @@ More information: [Discontinued Database Engine Functionality in SQL Server](/pr
 **Recommendation**  
 Use ANSI join syntax.
 
-## <a id="NumDbExceeds100"></a> Databases exceed 100
+## <a id="NumDbExceeds500"></a> Databases exceed 500
 
-**Title: Azure SQL Managed Instance supports a maximum of 100 databases per instance.**  
+**Title: Azure SQL Managed Instance supports a maximum of 500 databases per instance.**  
 **Category**: Warning
 
 **Description**  
-Maximum number of databases supported in Azure SQL Managed Instance is 100, unless the instance storage size limit has been reached.
+Maximum number of databases supported in Azure SQL Managed Instance is 500, unless the instance storage size limit has been reached.
 
 **Recommendation**  
 Consider migrating the databases to different Azure SQL Managed Instances or to SQL Server on Azure Virtual Machines if all the databases must exist on the same instance.
@@ -410,7 +410,7 @@ This method is an alternative to accessing tables in a linked server and is a on
 **Recommendation**  
 OPENROWSET function can be used to execute queries only on SQL Server instances (either managed, on-premises, or in Virtual Machines). The providers `SQLNCLI`, `SQLNCLI11`, `SQLOLEDB`, and `MSOLEDBSQL` (recommended) are supported. The [Microsoft OLE DB Driver for SQL Server](/sql/connect/oledb/oledb-driver-for-sql-server) is recommended for new development.
 
-The recommendation action is to identify the dependent databases from remote non-SQL Servers, and consider moving these into the instance being migrated.
+The recommendation action is to identify the dependent databases from remote non-SQL Servers, and consider moving them into the instance being migrated.
 
 More information: [Bulk Insert and OPENROWSET differences in Azure SQL Managed Instance](/azure/azure-sql/managed-instance/transact-sql-tsql-differences-sql-server#bulk-insert--openrowset)
 
@@ -420,7 +420,7 @@ More information: [Bulk Insert and OPENROWSET differences in Azure SQL Managed I
 **Category**: Warning
 
 **Description**  
-It is a job step that runs a PowerShell script. PowerShell job step isn't supported in Azure SQL Managed Instance.
+It's a job step that runs a PowerShell script. PowerShell job step isn't supported in Azure SQL Managed Instance.
 
 **Recommendation**  
 Review affected objects section in Azure Migrate to see all jobs using PowerShell job step and evaluate if the job step or the affected object can be removed. Evaluate if Azure Automation can be used. Alternatively, migrate to SQL Server on Azure VMs.
@@ -433,7 +433,7 @@ More information: [SQL Server Agent differences in Azure SQL Managed Instance](/
 **Category**: Warning
 
 **Description**  
-It is a job step that activates the replication Queue Reader Agent. The Replication Queue Reader Agent is an executable that reads messages stored in a Microsoft SQL Server queue or a Microsoft Message Queue and then applies those messages to the Publisher. Queue Reader Agent is used with snapshot and transactional publications that allow queued updating. Queue Reader job step isn't supported in Azure SQL Managed Instance.
+It's a job step that activates the replication Queue Reader Agent. The Replication Queue Reader Agent is an executable that reads messages stored in a Microsoft SQL Server queue or a Microsoft Message Queue and then applies those messages to the Publisher. Queue Reader Agent is used with snapshot and transactional publications that allow queued updating. Queue Reader job step isn't supported in Azure SQL Managed Instance.
 
 **Recommendation**  
 Review affected objects section in Azure Migrate to see all jobs using Queue Reader job step and evaluate if the job step or the affected object can be removed. Alternatively, migrate to SQL Server on Azure VMs.
@@ -446,7 +446,7 @@ More information: [SQL Server Agent differences in Azure SQL Managed Instance](/
 **Category**: Warning
 
 **Description**  
-RAISERROR calls like the below example are termed as legacy-style because they don't include the commas and the parenthesis. `RAISERROR 50001 'this is a test'`. This method of calling RAISERROR is no longer supported and removed in Azure SQL Managed Instance.
+RAISERROR calls like this example are termed as legacy-style because they don't include the commas and the parenthesis. `RAISERROR 50001 'this is a test'`. This method of calling RAISERROR is no longer supported and removed in Azure SQL Managed Instance.
 
 **Recommendation**  
 Rewrite the statement using the current RAISERROR syntax, or evaluate if the modern approach of `BEGIN TRY { } END TRY BEGIN CATCH { THROW; } END CATCH` is feasible.
@@ -455,11 +455,11 @@ More information: [Discontinued Database Engine Functionality in SQL Server](/pr
 
 ## <a id="SqlMail"></a> SQL Mail
 
-**Title: SQL Mail has been no longer supported.**  
+**Title: SQL Mail is no longer supported.**  
 **Category**: Warning
 
 **Description**  
-SQL Mail has been no longer supported and removed in Azure SQL Managed Instance.
+SQL Mail is no longer supported and removed in Azure SQL Managed Instance.
 
 **Recommendation**  
 Use Database Mail.
@@ -485,7 +485,7 @@ More information: [Discontinued Database Engine Functionality in SQL Server](/pr
 **Category**: Warning
 
 **Description**  
-It is a job step that runs Transact-SQL scripts at scheduled time. TSQL job step includes unsupported commands, which aren't supported in Azure SQL Managed Instance.
+It's a job step that runs Transact-SQL scripts at scheduled time. TSQL job step includes unsupported commands, which aren't supported in Azure SQL Managed Instance.
 
 **Recommendation**  
 Review affected objects section in Azure Migrate to see all jobs that include unsupported commands in Azure SQL Managed Instance and evaluate if the job step or the affected object can be removed. Alternatively, migrate to SQL Server on Azure VMs.

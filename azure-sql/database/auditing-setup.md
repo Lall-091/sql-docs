@@ -5,7 +5,7 @@ description: This article provides an overview of how to set up Auditing and sto
 author: sravanisaluru
 ms.author: srsaluru
 ms.reviewer: mathoma, vanto, randolphwest
-ms.date: 04/01/2025
+ms.date: 05/07/2025
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
@@ -56,7 +56,7 @@ To configure writing audit logs to a storage account, select **Storage** when yo
 If you're deploying from the Azure portal, make sure that the storage account is in the same region as your database and server. If you're deploying through other methods, the storage account can be in any region.
 
 > [!WARNING]  
-> For storage authentication, use Managed Identity. Storage Access Keys pose a security risk because if they are compromised, unauthorized individuals can gain access to your storage account, potentially reading, writing, or deleting your data. To mitigate these risks, it's essential to rotate your keys regularly and use Azure Key Vault to manage and rotate your keys securely.
+> For storage authentication, use Managed Identity. Storage Access Keys pose a security risk because if they're compromised, unauthorized individuals can gain access to your storage account, potentially reading, writing, or deleting your data. To mitigate these risks, it's essential to rotate your keys regularly and use Azure Key Vault to manage and rotate your keys securely.
 
 - The default value for retention period is 0 (unlimited retention). You can change this value by moving the **Retention (Days)** slider in **Advanced properties** when configuring the storage account for auditing.
   - If you change retention period from 0 (unlimited retention) to any other value, the retention will only apply to logs written after the retention value was changed. Logs written during the period when retention days were set to unlimited retention are preserved, even after retention is enabled.
@@ -73,8 +73,12 @@ To configure writing audit logs to an event hub, select **Event Hub**. Select th
 
 :::image type="content" source="media/auditing-setup/auditing-select-event-hub.png" alt-text="Screenshot showing the Event hub." lightbox="media/auditing-setup/auditing-select-event-hub.png":::
 
+When auditing is configured with Azure external monitors (for example, Event Hubs or Log Analytics) as the target, an additional diagnostic settings resource named *SQLSecurityAuditEvents_XXXX-XXXX-XXX* is created, which is critical for the proper functioning of auditing.
+
+If the diagnostic settings are deleted, either intentionally or unintentionally, the auditing functionality will fail silently, and audit logs won't be sent to the target location. To prevent this, configure alerts for the deletion of diagnostic settings to notify users and take necessary actions. For more information on creating action groups and configuring alerts, see [Action groups](/azure/azure-monitor/alerts/action-groups) and [Create or edit an activity log, service health, or resource health alert rule](/azure/azure-monitor/alerts/alerts-create-activity-log-alert-rule).
+
 > [!NOTE]  
-> If you're using multiple targets like storage account, log analytics, or event hub, make sure you have permissions for all the targets else saving audit configuration would fail as it will try to save the settings for all targets.
+> If you're using multiple targets like storage account, Log Analytics, or Event Hubs, make sure you have permissions for all the targets, or else saving audit configuration would fail as it tries to save the settings for all targets.
 
 ## Related content
 

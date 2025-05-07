@@ -27,6 +27,7 @@ The following table identifies features available by [!INCLUDE [ssnoversion-md](
 | [Failover cluster instances](../support-for-fci.md) | Yes | Not applicable | Not applicable | Not applicable | Not applicable |
 | [Always On availability groups](../manage-availability-group.md) | Yes | Not applicable | Not applicable | Not applicable | Not applicable |
 | [Monitoring (preview)](../sql-monitoring.md)  | Yes | No | No | No | No |
+| [Client connection summary (preview)](../sql-monitoring.md)  | Yes | No | No | No | No |
 | [Operate with least privilege](../configure-least-privilege.md) | Yes | Yes | Yes | Yes | Yes |
 
 <sup>1</sup> [!INCLUDE [sssql22-md](../../../includes/sssql22-md.md)] only.
