@@ -4094,6 +4094,8 @@
               href: ../odbc/reference/syntax/sqlconfigdriver-function.md
             - name: SQLCreateDataSource Function
               href: ../odbc/reference/syntax/sqlcreatedatasource-function.md
+            - name: SQLCreateDataSourceExW Function
+              href: ../odbc/reference/syntax/sqlcreatedatasourceexw-function.md
             - name: SQLGetConfigMode Function
               href: ../odbc/reference/syntax/sqlgetconfigmode-function.md
             - name: SQLGetInstalledDrivers Function
@@ -4162,6 +4164,11 @@
               href: ../odbc/reference/syntax/sqlsetconnectinfo-function.md
             - name: SQLSetDriverConnectInfo Function
               href: ../odbc/reference/syntax/installation-and-configuration-wwi-oltp.md
+          - name: Tracing DLL API Reference
+            href: ../odbc/reference/syntax/tracing-dll-api-reference.md
+            items:
+            - name: TraceVSControl Function
+              href: ../odbc/reference/syntax/tracevscontrol-function.md
         - name: ODBC Appendixes
           href: ../odbc/reference/appendixes/odbc-appendixes.md
           items:

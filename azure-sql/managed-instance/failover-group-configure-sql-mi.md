@@ -382,7 +382,7 @@ You can create a failover group between SQL Managed Instances in two different s
 - Azure portal doesn't support creating failover groups across different subscriptions.
 
 > [!IMPORTANT]  
-> Azure portal does not support creation of failover groups across different subscriptions. For failover groups across different subscriptions and/or resource groups, failover can't be initiated manually via the Azure portal from the primary SQL managed instance. Initiate it from the geo-secondary instance instead.
+> Creating a failover group between two instances in different resource groups or subscriptions is only supported with Azure PowerShell, or the REST API, and not the Azure portal or the Azure CLI.
 
 ## <a name="preventing-the-loss-of-critical-data"></a> Prevent loss of critical data
 
@@ -493,7 +493,7 @@ When creating a new failover group, consider the following limitations:
 - Failover groups can't be created between two instances in the *same* Azure region.
 - An instance can participate only in one failover group at any moment.
 - A failover group can't be created between two instances that belong to different Azure tenants.
-- Creating a failover group between two instances in different resource groups or subscriptions is only supported with Azure PowerShell, or the REST API, and not the Azure portal or the Azure CLI. Once the failover group is created, it's visible in the Azure portal, and all operations are supported in the Azure portal or with the Azure CLI. Failover must be initiated from the secondary instance.
+- Creating a failover group between two instances in different resource groups or subscriptions is only supported with Azure PowerShell, or the REST API, and not the Azure portal or the Azure CLI. Once the failover group is created, it's visible in the Azure portal, and all operations are supported in the Azure portal or with the Azure CLI. 
 - If initial seeding of all databases doesn't complete within 7 days, creating the failover group fails and all successfully replicated databases are deleted from the secondary instance. 
 - Creating a failover group with an instance configured with a [managed instance link](managed-instance-link-feature-overview.md) is currently unsupported. 
 - Failover groups can't be created between instances if any of them are in an instance pool.
