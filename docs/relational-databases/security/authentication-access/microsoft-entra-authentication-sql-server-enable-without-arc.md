@@ -105,7 +105,7 @@ Upload the certificate you created in the section [Obtain a certificate](#obtain
 
 ## Add registry values to enable Microsoft Entra authentication for SQL Server
 
-Update the registry key `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL<version-number>.<instance-name>\MSSQLServer\FederatedAuthentication` with the following values to enable Microsoft Entra authentication for SQL Server.
+Update the registry key `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL<version-number>.<instance-name>\MSSQLServer\FederatedAuthentication` with the following values to enable Microsoft Entra authentication for SQL Server. An example of the registry key path for SQL Server 2022 is `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQLServer\FederatedAuthentication`.
 
 > [!WARNING]  
 > Serious problems might occur if you modify the registry incorrectly by using Registry Editor or by using another method. These problems might require that you reinstall the operating system. Microsoft can't guarantee that these problems can be solved. Modify the registry at your own risk.
