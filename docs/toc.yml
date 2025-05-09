@@ -8109,8 +8109,10 @@ items:
         href: relational-databases/security/tutorial-always-encrypted-enclaves-develop-net-framework-apps.md
     - name: Microsoft Entra authentication
       items:
-      - name: Set up Microsoft Entra authentication
+      - name: Set up Microsoft Entra authentication with Azure Arc
         href: relational-databases/security/authentication-access/azure-ad-authentication-sql-server-setup-tutorial.md
+      - name: Set up Microsoft Entra authentication without Azure Arc
+        href: relational-databases/security/authentication-access/microsoft-entra-authentication-sql-server-enable-without-arc.md
       - name: Set Microsoft Entra admin automation
         href: relational-databases/security/authentication-access/azure-ad-authentication-sql-server-automation-setup-tutorial.md
   - name: Reference
