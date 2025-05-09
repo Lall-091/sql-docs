@@ -4,7 +4,7 @@ description: Tutorial on how to set up Microsoft Entra authentication for SQL Se
 author: PratimDasgupta
 ms.author: prdasgu
 ms.reviewer: vanto
-ms.date: 05/07/2025
+ms.date: 05/09/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: tutorial
@@ -110,12 +110,15 @@ Update the registry key `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Ser
 > [!WARNING]  
 > Serious problems might occur if you modify the registry incorrectly by using Registry Editor or by using another method. These problems might require that you reinstall the operating system. Microsoft can't guarantee that these problems can be solved. Modify the registry at your own risk.
 
+- If the `FederatedAuthentication` key doesn't exist, create it with all of the following values.
 - The first five entries listed need to be updated with the values from the application you created in the previous section. The rest of the entries are default values.
 - The `<sql-server-certificate-name>` is the name of the certificate you created in the section [Obtain a certificate](#obtain-a-certificate) and uploaded to Azure.
 - The `<application-client-id>` is the **Application (client) ID** from the application you created in the section [Create and register a Microsoft Entra ID application](#create-and-register-a-microsoft-entra-id-application). For more information on finding the client ID, see [Client ID](/entra/identity-platform/msal-client-application-configuration#client-id).
 - The `<tenant-id>` is the tenant ID from your Azure tenant. You can find the tenant ID in the Azure portal under **Microsoft Entra ID** > **Overview**.
 
 ```plaintext
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL<version-number>.<instance-name>\MSSQLServer\FederatedAuthentication]
+
 "AADCertSubjectName"="<sql-server-certificate-name>"
 "AADTenantSpecificSQLServicePrincipalCertSubjectName"="<sql-server-certificate-name>"
 "ClientId"="<application-client-id>"
