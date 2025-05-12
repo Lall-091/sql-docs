@@ -4,7 +4,7 @@ description: Latest release notes for SQL Server enabled by Azure Arc
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest
-ms.date: 04/14/2025
+ms.date: 05/12/2025
 ms.topic: conceptual
 ms.custom:
   - ignite-2023
@@ -22,6 +22,15 @@ This article lists:
 - Links to additional feature documentation
 
 Extension versions are cumulative. Higher extension versions include all of the updates from previous versions. A release might include internal features. If the version release notes don't describe features, then the updates were internal.
+
+## April 30, 2025
+
+**Extension version**: `1.1.3035.278`
+
+This release:
+
+- Resolves binary signing issue.
+- Uses network name to connect to SQL Server failover cluster instances when shared memory is disabled.
 
 ## April 14, 2025
 
