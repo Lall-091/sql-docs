@@ -56,13 +56,13 @@ PaaS provides other advantages over IaaS, such as shorter development cycles, ex
 
 Moving to Azure brings savings in resource, maintenance, and real estate costs, in addition to the ability to optimize workloads so that they cost less to run. Azure SQL Managed Instance and SQL Database bring all the advantages of PaaS services, providing automated performance tuning, backups, software patching and high-availability, all of which entails enormous effort and cost when performing manually.
 
-For example, SQL Managed Instance and SQL Database (single database and elastic pool) come with built-in HA. Also, Business Critical (SQL Managed Instance) and Premium (SQL Database) tiers provide read-only replicas at no additional cost, while SQL Database Hyperscale tier allows HA and named [secondary replicas](../database/service-tier-hyperscale-replicas.md) for [read scale-out](../database/read-scale-out.md) at no license cost. Additionally, [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) customers can use their on-premises SQL Server license on Azure by applying [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) (AHB). Software Assurance also lets you implement [free passive HA and DR secondaries using SQL VM](../virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md#free-dr-replica-in-azure).
+For example, SQL Managed Instance and SQL Database (single database and elastic pool) come with built-in HA. Also, Business Critical (SQL Managed Instance) and Premium (SQL Database) tiers provide read-only replicas at no additional cost, while SQL Database Hyperscale tier allows HA and named [secondary replicas](../database/service-tier-hyperscale-replicas.md) for [read scale-out](../database/read-scale-out.md) at no license cost. Additionally, [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) customers can allocate their SQL Server license on Azure by applying the [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/). Software Assurance also lets you implement [free passive HA and DR secondaries using SQL VM](../virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md#free-dr-replica-in-azure).
 
 In addition, every Azure SQL service provides you the option to reserve instances in advance (for terms of either one year or three years) and obtain significant additional savings. [Dev/Test pricing plans](https://azure.microsoft.com/pricing/dev-test/#devtest) provide a way to further reduce development costs. Finally, check the following article on how you can [Optimize your Azure SQL Managed Instance cost with Microsoft Azure Well-Architected Framework](https://techcommunity.microsoft.com/t5/azure-sql-blog/optimize-your-azure-sql-managed-instance-cost-with-microsoft/ba-p/2235216).
 
 #### What is the best licensing path to save costs when moving existing SQL Server workloads to Azure?
 
-Unique to Azure, Azure Hybrid Benefit (AHB) is a licensing benefit that allows you bringing your existing Windows Server and SQL Server licenses with Software Assurance (SA) to Azure. Combined with reservations savings and extended security updates, AHB can bring you up to 85% savings compared to pay-as-you-go pricing in Azure SQL. In addition, make sure to check different [Dev/Test pricing plans](https://azure.microsoft.com/pricing/dev-test/#devtest).
+Unique to Azure, Azure Hybrid Benefit is a licensing benefit that allows you bringing your existing Windows Server and SQL Server licenses with Software Assurance (SA) to Azure. Combined with reservations savings and extended security updates, Azure Hybrid Benefit can bring you up to 85% savings compared to pay-as-you-go pricing in Azure SQL. In addition, make sure to check different [Dev/Test pricing plans](https://azure.microsoft.com/pricing/dev-test/#devtest).
 
 ### Applications and SQL modernization scenarios
 
@@ -134,7 +134,7 @@ Check [Supported subscription types](../managed-instance/resource-limits.md#supp
 
 #### Can I use my on-premises SQL Server license when moving to Azure SQL?
 
-If you own Software Assurance for core-based or qualifying subscription licenses for SQL Server Standard Edition or SQL Server Enterprise Edition, you can use your existing SQL Server license when moving to SQL Managed Instance, SQL Database, or Azure VM by applying Azure Hybrid Benefit (AHB). You can also simultaneously use these licenses both in on-premises and Azure environments (dual use rights) for up to 180 days.
+If you own Software Assurance for core-based or qualifying subscription licenses for SQL Server Standard Edition or SQL Server Enterprise Edition, you can use your existing SQL Server license when moving to SQL Managed Instance, SQL Database, or Azure VM by applying Azure Hybrid Benefit. You can also simultaneously use these licenses both in on-premises and Azure environments (dual use rights) for up to 180 days.
 
 #### How do I move from SQL VM to SQL Managed Instance?
 
@@ -142,25 +142,26 @@ You can follow the same [migration guide](managed-instance/sql-server-to-managed
 
 #### I'm using SQL Server subscription license. Can I use it to move to Azure SQL?
 
-Yes, qualifying subscription licenses can be used to pay Azure SQL services at a reduced (base) rate by applying Azure Hybrid Benefit (AHB).
+Yes, qualifying subscription licenses can be used to pay Azure SQL services at a reduced (base) rate by applying Azure Hybrid Benefit .
 
 #### I'm using SQL Server CAL licenses. How can I move to Azure SQL?
 
 SQL Server CAL licenses with appropriate [license mobility](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility) rights can be used on Azure SQL VMs, and on Azure SQL Dedicated Host.
 
-#### What is Azure Hybrid Benefit (AHB)?
+#### What is Azure Hybrid Benefit?
 
-Unique to Azure, Azure Hybrid Benefit (AHB) is a licensing benefit that allows you bringing your existing Windows Server and SQL Server licenses with Software Assurance (SA) to Azure. AHB can bring you up to 85% savings compared to pay-as-you-go pricing in Azure SQL, when combined with reservations savings and extended security updates. For more information, see [Microsoft Azure Services Product Terms](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzureServices/EAEAS).
+Azure Hybrid Benefit is a unique Azure discount that grants you the ability to allocate your SQL Server licenses to Azure SQL Database and Azure SQL Managed Instance. With Azure Hybrid Benefit, you get a discount on the allocation of SQL Server licenses to the SQL Server Database Engine. Azure Hybrid Benefit can bring you up to 85% savings compared to pay-as-you-go pricing in Azure SQL, when combined with reservations savings and extended security updates. For more information, see [Microsoft Azure Services Product Terms](https://www.microsoft.com/licensing/terms/welcome/welcomepage). You can use the [Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) to calculate the exact savings for your SQL Server estate.
+
 
 #### How do I translate my SQL Server on-premises license to vCore license in SQL Managed Instance, SQL Database, and SQL VM?
 
 For every one (1) core of SQL Server Enterprise Edition, you get four (4) vCores of SQL Managed Instance General Purpose tier or one (1) vCore of SQL Managed Instance Business Critical tier. Similarly, one (1) core of SQL Server Standard Edition translates to one (1) vCore of SQL Managed Instance General Purpose tier, while four (4) vCores of SQL Server Standard Edition translate to one (1) vCore of SQL Managed Instance Business Critical.
 
-The [Azure Hybrid Benefit August 2020 update](https://www.microsoft.com/licensing/news/expanded-ahb-rights-for-microsoft-sql-server) provides an overview of possible core-to-vCore conversions for SQL Managed Instance, SQL Database, and SQL VM. Applicable AHB rights are also described in the [Product Terms](https://www.microsoft.com/licensing/terms/welcome/welcomepage). You can also use the [Azure Hybrid Benefit Savings Calculator](https://azure.microsoft.com/pricing/hybrid-benefit/#calculator) to calculate the exact savings for your SQL Server estate.
+The [Azure Hybrid Benefit August 2020 update](https://www.microsoft.com/licensing/news/expanded-ahb-rights-for-microsoft-sql-server) provides an overview of possible core-to-vCore conversions for SQL Managed Instance, SQL Database, and SQL Server on Azure VMs. Applicable Azure Hybrid Benefit rights are also described in the [Product Terms](https://www.microsoft.com/licensing/terms/welcome/welcomepage). You can use the [Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) to calculate the exact savings for your SQL Server estate.
 
 #### Is Software Assurance (SA) required for using SQL Server license on Azure SQL?
 
-[Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-by-benefits) is a licensing program that can be applied to on-premises SQL Server licenses, allowing license mobility, AHB, and other benefits. SA is required if AHB is to be invoked for using existing SQL Server licenses (with SA) when moving to Azure SQL. Without SA + AHB, customers are charged with PAYG pricing.
+[Software Assurance (SA)](https://www.microsoft.com/licensing/licensing-programs/software-assurance-by-benefits) is a licensing program that can be applied to on-premises SQL Server licenses, allowing license mobility, Azure Hybrid Benefit, and other benefits. SA is required if the Azure Hybrid Benefit is to be invoked for using existing SQL Server licenses (with SA) when moving to Azure SQL. Without SA + Azure Hybrid Benefit, customers are charged with PAYG pricing.
 
 Alternatively, the outsourcing software management terms applicable to SQL Server licenses acquired before October 1, 2019, permit you to allocate your existing licenses to Azure Dedicated Host just as you would license a server in your own data center: see [Pricing - Dedicated Host Virtual Machines](https://azure.microsoft.com/pricing/details/virtual-machines/dedicated-host/).
 

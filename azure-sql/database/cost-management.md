@@ -23,7 +23,6 @@ Cost analysis supports most Azure account types, but not all of them. To view th
 
 For information about assigning access to Azure Cost Management data, see [Assign access to data](/azure/cost-management-billing/costs/assign-access-acm-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
-
 ## SQL Database initial cost considerations
 
 When working with Azure SQL Database, there are several cost-saving features to consider:
@@ -36,7 +35,11 @@ Azure SQL Database supports two purchasing models: vCore and DTU. The way you ge
 
 In the vCore purchasing model, Azure SQL Database also supports two types of compute tiers: provisioned throughput and serverless. The way you get charged for each compute tier varies so it's important to understand what works best for your workload when planning and considering costs. For details, see [vCore model overview - compute tiers](service-tiers-sql-database-vcore.md#compute).
 
-In the provisioned compute tier of the vCore-based purchasing model, you can exchange your existing licenses for discounted rates. For details, see [Azure Hybrid Benefit (AHB)](../azure-hybrid-benefit.md).
+### Discounts
+
+[Azure Reservations](reservations-discount-overview.md) are a billing discount for Azure SQL Database that you can use to save money by committing to use compute resources at a discounted rate for a period of time.
+
+In the provisioned compute tier of the vCore-based purchasing model, you can get a discount on the allocation of SQL Server licenses to SQL Server Database Engine. For details, see [Azure Hybrid Benefit (AHB)](../azure-hybrid-benefit.md) and the [Pricing calculator](https://azure.microsoft.com/pricing/calculator/) to determine cost savings.  
 
 ### Elastic pools
 
