@@ -3,7 +3,7 @@ title: Configure SQL Server Settings on Linux
 description: This article describes how to use the mssql-conf tool to configure SQL Server settings on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 04/09/2025
+ms.date: 05/02/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -14,10 +14,12 @@ ms.custom:
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
+**mssql-conf** is a configuration script that installs with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] for Red Hat Enterprise Linux, SUSE Linux Enterprise Server, and Ubuntu. It modifies the [mssql.conf file](#mssql-conf-format) where configuration values are stored.
+
+**mssql-conf** is a configuration script that installs with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. You can use this utility to set the following parameters:
+
 <!--SQL Server 2017 on Linux-->
 ::: moniker range="=sql-server-linux-2017 || =sql-server-2017"
-
-**mssql-conf** is a configuration script that installs with [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] for Red Hat Enterprise Linux, SUSE Linux Enterprise Server, and Ubuntu. It modifies the [mssql.conf file](#mssql-conf-format) where configuration values are stored. You can use **mssql-conf** utility to set the following parameters:
 
 | Parameter | Description |
 | --- | --- |
@@ -49,8 +51,6 @@ ms.custom:
 <!--SQL Server 2019 on Linux-->
 ::: moniker range="=sql-server-linux-ver15 || =sql-server-ver15"
 
-**mssql-conf** is a configuration script that installs with [!INCLUDE [SQL Server 2019](../includes/sssql19-md.md)] for Red Hat Enterprise Linux, SUSE Linux Enterprise Server, and Ubuntu. You can use this utility to set the following parameters:
-
 | Parameter | Description |
 | --- | --- |
 | [Agent](#agent) | Enable [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Agent |
@@ -81,9 +81,7 @@ ms.custom:
 
 ::: moniker-end
 <!--SQL Server 2022 on Linux-->
-::: moniker range=">= sql-server-linux-ver16 || >= sql-server-ver16"
-
-**mssql-conf** is a configuration script that installs with [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] for Red Hat Enterprise Linux, and Ubuntu. You can use this utility to set the following parameters:
+::: moniker range="=sql-server-linux-ver16 || =sql-server-ver16"
 
 | Parameter | Description |
 | --- | --- |
@@ -91,6 +89,42 @@ ms.custom:
 | [Authenticate with Microsoft Entra ID](#azure-ad) | Settings for authenticating with Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)). |
 | [Authenticate with Windows](#windows-active-directory) | Settings for Windows Server Active Directory authentication. |
 | [Collation](#collation) | Set a new collation for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. |
+| [Customer feedback](#customerfeedback) | Choose whether or not [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] sends feedback to Microsoft. |
+| [Database Mail Profile](#dbmail) | Set the default database mail profile for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. |
+| [Default data directory](#datadir) | Change the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database data files (.mdf). |
+| [Default log directory](#datadir) | Changes the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database log (.ldf) files. |
+| [Default master database file directory](#masterdatabasedir) | Changes the default directory for the `master` database files on existing SQL installation. |
+| [Default master database file name](#masterdatabasename) | Changes the name of `master` database files. |
+| [Default dump directory](#dumpdir) | Change the default directory for new memory dumps and other troubleshooting files. |
+| [Default error log directory](#errorlogdir) | Changes the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Error Log, Default Profiler Trace, System Health Session XE, and Hekaton Session XE files. |
+| [Default backup directory](#backupdir) | Change the default directory for new backup files. |
+| [Dump type](#coredump) | Choose the type of dump memory dump file to collect. |
+| [Edition](#edition) | Set the edition of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. |
+| [High availability](#hadr) | Enable Availability Groups. |
+| [Local Audit directory](#localaudit) | Set a directory to add Local Audit files. |
+| [Locale](#lcid) | Set the locale for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] to use. |
+| [Memory limit](#memorylimit) | Set the memory limit for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. |
+| [Microsoft Distributed Transaction Coordinator](#msdtc) | Configure and troubleshoot MSDTC on Linux. |
+| [Machine Learning Services EULAs](#mlservices-eula) | Accept R and Python EULAs for `mlservices` packages. Applies to [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] only. |
+| [Network settings](#network) | Additional network settings for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. |
+| [Outbound network access](#mlservices-outbound-access) | Enable outbound network access for [Machine Learning Services](sql-server-linux-setup-machine-learning.md) R, Python, and Java extensions. |
+| [SQL Server Connector](#sqlconnector) | Configure logging level for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Connector. |
+| [TCP port](#tcpport) | Change the port where [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] listens for connections. |
+| [TLS](#tls) | Configure Transport Level Security. |
+| [Trace flags](#traceflags) | Set the trace flags that the service is going to use. |
+
+::: moniker-end
+
+<!--SQL Server 2025 on Linux-->
+::: moniker range=">=sql-server-linux-ver17 || >=sql-server-ver17"
+
+| Parameter | Description |
+| --- | --- |
+| [Agent](#agent) | Enable [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Agent |
+| [Authenticate with Microsoft Entra ID](#azure-ad) | Settings for authenticating with Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)). |
+| [Authenticate with Windows](#windows-active-directory) | Settings for Windows Server Active Directory authentication. |
+| [Collation](#collation) | Set a new collation for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. |
+| [Custom password policy](#custom-password-policies) | Password policies enforce complexity, expiration, and password changes. |
 | [Customer feedback](#customerfeedback) | Choose whether or not [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] sends feedback to Microsoft. |
 | [Database Mail Profile](#dbmail) | Set the default database mail profile for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. |
 | [Default data directory](#datadir) | Change the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database data files (.mdf). |
@@ -296,6 +330,24 @@ The `set-collation` option changes the collation value to any of the supported c
 1. Restore your user database backups.
 
 For a list of supported collations, run the [sys.fn_helpcollations](../relational-databases/system-functions/sys-fn-helpcollations-transact-sql.md) function: `SELECT Name from sys.fn_helpcollations()`.
+
+<a id="custom-password-policy></a>
+
+## Custom password policies
+
+Beginning with [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] on Linux, you can set the following configuration parameters in the `mssql.conf` file to enforce a custom password policy.
+
+| Configuration option | Description |
+| --- | --- |
+| `passwordpolicy.passwordminimumlength` | Defines the minimum number of characters required for a password. The passwords can be up to 128 characters long. |
+| `passwordpolicy.passwordhistorylength` | Determines the number of previous passwords that must be remembered. |
+| `passwordpolicy.passwordminimumage` | Specifies the minimum duration a user must wait before changing their password again. |
+| `passwordpolicy.passwordmaximumage` | Sets the maximum duration a password can be used before it must be changed. |
+
+> [!NOTE]  
+> Currently, the `passwordminimumlength` can be set to fewer than eight characters. [!INCLUDE [password-complexity](includes/password-complexity.md)]
+
+For more information, see [Set custom password policy for SQL logins in SQL Server on Linux](sql-server-linux-custom-password-policy.md).
 
 <a id="customerfeedback"></a>
 

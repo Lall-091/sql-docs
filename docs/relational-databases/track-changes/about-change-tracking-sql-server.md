@@ -4,7 +4,7 @@ description: "Learn about the change tracking feature of SQL Server, which provi
 author: JetterMcTedder
 ms.author: bspendolini
 ms.reviewer: mathoma
-ms.date: 09/27/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.topic: concept-article
 helpviewer_keywords:
@@ -41,6 +41,23 @@ Different types of applications have different requirements for how much informa
 
 > [!NOTE]  
 > If an application requires information about all the changes that were made and the intermediate values of the changed data, using change data capture, instead of change tracking, might be appropriate. For more information, see [About Change Data Capture (SQL Server)](about-change-data-capture-sql-server.md).
+
+## SQL Server 2025 changes
+
+Change tracking has an automated cleanup process that expunges the stale change tracking metadata from system tables. In [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions, the *autocleanup* process uses a deep cleanup approach.
+
+In this approach, the autocleanup thread wakes up every 30 minutes, fetches all change tracked databases and tables, finds a safe cleanup point based on configured retention period, and loops over all tables to expunge data from the corresponding side tables.
+
+In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, change tracking autocleanup process introduces a new adaptive shallow cleanup approach for large side tables. This new approach expunges data below a safe cleanup point. This point is found based on configured cleanup depth and retention period. This approach runs in incremental steps until all eligible data is removed.
+
+In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], adaptive shallow cleanup is enabled by default.
+
+To disable adaptive shallow cleanup, enable [Trace Flag 8273](../../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md#tf8273) globally:
+
+```sql
+DBCC TRACEON (8273, -1);
+```
+
 
 ## One-Way and Two-Way Synchronization Applications
 

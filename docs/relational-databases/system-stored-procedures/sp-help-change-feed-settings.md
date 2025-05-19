@@ -3,8 +3,8 @@ title: "sys.sp_help_change_feed_settings (Transact-SQL)"
 description: "The sys.sp_help_change_feed_settings system stored procedure returns state information for Microsoft Fabric Mirroring."
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: imotiwala
-ms.date: 09/24/2024
+ms.reviewer: imotiwala, ajayj
+ms.date: 05/19/2025
 ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,19 +19,20 @@ helpviewer_keywords:
   - "sp_help_change_feed_settings"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-ver16 || =azuresqldb-current || =fabric || =azure-sqldw-latest"
+monikerRange: ">=sql-server-ver16 || =azuresqldb-current || =azuresqldb-mi-current || =fabric || =azure-sqldw-latest"
 ---
 # sys.sp_help_change_feed_settings (Transact-SQL)
 
-[!INCLUDE [sqlserver2022-asdb-asa-fabricmirroredsqldb-fabricsqldb](../../includes/applies-to-version/sqlserver2022-asdb-asa-fabricmirroredsqldb-fabricsqldb.md)]
+[!INCLUDE [sqlserver2022-asdb-asdbmi-asa-fabricmirroredsqldb-fabricsqldb](../../includes/applies-to-version/sqlserver2022-asdb-asdbmi-asa-fabricmirroredsqldb-fabricsqldb.md)]
 
 Provides the provision or deprovision status and information of the [Fabric Mirrored Database](/fabric/database/mirrored-database/overview) feature.
 
 This system stored procedure is used for:
 
-- The Azure Synapse Link feature for SQL Server instances and Azure SQL Database. For more information, see [Manage Azure Synapse Link for SQL Server and Azure SQL Database](../../sql-server/synapse-link/synapse-link-sql-server-change-feed-manage.md).
-- The Fabric Mirrored Database feature for Azure SQL Database. For more information, see [Microsoft Fabric mirrored databases](/fabric/database/mirrored-database/overview).
-- SQL database in Microsoft Fabric. For more information, see [SQL database in Microsoft Fabric](/fabric/database/sql/overview).
+- [SQL database in Microsoft Fabric](/fabric/database/sql/overview)
+- [Microsoft Fabric mirrored databases](/fabric/database/mirrored-database/overview)
+- [Azure Synapse Link](../../sql-server/synapse-link/synapse-link-sql-server-change-feed-manage.md)
+- [Change event streaming (preview)](../track-changes/change-event-streaming/overview.md) introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
 
 ## Syntax
 
@@ -54,6 +55,9 @@ None
 | `schema_version` | **int** | Tracks current schema version of database. Determines whether a schema needs to be updated or not on startup. |
 | `pollinterval` | **int** | The frequency that the log is scanned for any new changes in seconds. |
 | `reseed_state` | **tinyint** | **Applies to:** Fabric Mirrored Database only.<br /><br />`0` = Normal.<br />`1` = The database has started the process of reinitializing to Fabric. Transitionary state.<br />`2` = The database is being reinitialized to Fabric and remains in this state until complete. |
+| `destination_type` | **sysname** | Change event streaming destination type. `AzureEventHubsAmqp` <br />  `AzureEventHubsKafka` <br /><br /> Introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] |
+| `partition_scheme` | **tinyint** |Change event streaming partition scheme.  <br /><br />`0` = None<br />`1` = Table group. <br />`2` = Table <br />`3` = Column  <br /><br /> Introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]|
+| `encoding` | **tinyint** | Change event streaming message encoding. <br />`0` = JSON <br />`1` = Avro Binary <br /><br /> Introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]|
 
 ## Permissions
 

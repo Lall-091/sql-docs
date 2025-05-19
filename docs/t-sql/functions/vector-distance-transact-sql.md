@@ -4,10 +4,12 @@ description: "VECTOR_DISTANCE calculates the distance between two vectors using 
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: damauri, pookam
-ms.date: 02/18/2025
+ms.date: 05/01/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.collection:
+  - ce-skilling-ai-copilot
 f1_keywords:
   - "VECTOR_DISTANCE"
   - "VECTOR_DISTANCE_TSQL"
@@ -16,26 +18,26 @@ helpviewer_keywords:
   - "vector, distance calculation"
 dev_langs:
   - "TSQL"
-monikerRange: "= azuresqldb-current || = azuresqldb-mi-current"
-ms.collection: ce-skilling-ai-copilot
+monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
 ---
+
 # VECTOR_DISTANCE (Transact-SQL) (Preview)
 
-[!INCLUDE [Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
 > [!NOTE]
-> This data type is in preview and is subject to change. Make sure to read preview usage terms in the [Service Level Agreements (SLA) for Online Services](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services) document.
+> This data type is in preview and is subject to change. Make sure to read preview usage terms in [Service Level Agreements (SLA) for Online Services](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services).
 
-Calculates the distance between two vectors using a specified distance metric.
-  
+Calculates the distance between two vectors using a specified distance metric. Vector distance is always exact and doesn't use any vector index, even if available. In order to use a vector index and thus perform an approximate vector search, you must use the [VECTOR_SEARCH](vector-search-transact-sql.md) function. To learn more about how vector indexing and vector search works, and the differences between exact and approximate search, refer to [Vectors in the SQL Database Engine](../../relational-databases/vectors/vectors-sql-server.md).
+
 ## Syntax
-  
+
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)  
-  
-```syntaxsql  
+
+```syntaxsql
 VECTOR_DISTANCE ( distance_metric, vector1, vector2 )
 ```  
-  
+
 ## Arguments
 
 ### distance_metric
@@ -66,19 +68,21 @@ An expression that evaluates to **vector** data type.
 
 The function returns a scalar **float** value that represents the distance between the two vectors using the specified distance metric.
 
-An error is returned if *distance_metric* isn't a valid metric and if the provided vectors are not of the [vector data type](../../t-sql/data-types/vector-data-type.md).
+An error is returned if *distance_metric* isn't a valid metric and if the provided vectors are not of the [vector data type](../data-types/vector-data-type.md).
 
-## Examples  
+## Examples
 
-Review the [Azure SQL Database Vector Search Samples GitHub repo](https://github.com/Azure-Samples/azure-sql-db-vector-search) to get end-to-end working samples.
+Details of the database used in the sample can be found here: [Download and import the Wikipedia Article with Vector Embeddings](https://github.com/Azure-Samples/azure-sql-db-openai?tab=readme-ov-file#download-and-import-the-wikipedia-article-with-vector-embeddings).
 
 Examples assume the existence of a table named `wikipedia_articles` with a column `title_vector` of type `vector` that stores title's embeddings of Wikipedia articles. `title_vector` is assumed to be an embedding generated with an embedding model like *text-embedding-ada-002* or *text-embedding-3-small* , which returns vectors with 1,536 dimensions.
-  
+
+For more examples, including end-to-end solutions, go to the [Azure SQL Database Vector Search Samples GitHub repo](https://github.com/Azure-Samples/azure-sql-db-vector-search).
+
 ### Example 1
 
 The following example creates a vector with three dimensions from a string with a JSON array.
-  
-```sql  
+
+```sql
 DECLARE @v1 VECTOR(2) = '[1,1]';
 DECLARE @v2 VECTOR(2) = '[-1,-1]';
 
@@ -90,8 +94,8 @@ SELECT
 
 ### Example 2
 
-The following example returns the top 10 most similar articles to a given article, based on the cosine distance between their title vectors. Details of the database used in the sample can be found here: [Download and import the Wikipedia Article with Vector Embeddings](https://github.com/Azure-Samples/azure-sql-db-openai?tab=readme-ov-file#download-and-import-the-wikipedia-article-with-vector-embeddings)
-  
+The following example returns the top 10 most similar articles to a given article, based on the cosine distance between their title vectors. 
+
 ```sql
 DECLARE @v AS VECTOR(1536);
 SELECT @v = title_vector FROM [dbo].[wikipedia_articles] WHERE title = 'Alan Turing';
@@ -109,7 +113,7 @@ ORDER BY
 ### Example 3
 
 The following example returns all the similar articles to a given article, based on the cosine distance between their title vectors, selecting only those with a distance less than 0.3.
-  
+
 ```sql
 DECLARE @v AS VECTOR(1536);
 SELECT @v = title_vector FROM [dbo].[wikipedia_articles] WHERE title = 'Alan Turing';
@@ -128,6 +132,6 @@ ORDER BY
 
 ## Related content
 
-- [Overview of vectors in the SQL Database Engine](../../relational-databases/vectors/vectors-sql-server.md)  
+- [Overview of vectors in the SQL Database Engine](../../relational-databases/vectors/vectors-sql-server.md)
 - [Azure SQL Database Vector Search Samples](https://github.com/Azure-Samples/azure-sql-db-vector-search)
-- [Vector data type](../../t-sql/data-types/vector-data-type.md)
+- [Vector data type](../data-types/vector-data-type.md)

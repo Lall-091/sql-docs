@@ -1,5 +1,7 @@
 - name: Overview
   href: sql-server-migration-assistant-for-oracle-oracletosql.md
+- name: Copilot in SSMA for Oracle (Preview)
+  href: copilot-in-ssma-overview.md
 - name: What's new
   items:
   - name: What's new in SSMA  

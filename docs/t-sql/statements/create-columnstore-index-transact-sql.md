@@ -4,7 +4,7 @@ description: CREATE COLUMNSTORE INDEX converts a rowstore table to a clustered c
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 04/11/2025
+ms.date: 04/14/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -30,6 +30,7 @@ dev_langs:
   - "TSQL"
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
+
 # CREATE COLUMNSTORE INDEX (Transact-SQL)
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics PDW FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
@@ -102,6 +103,7 @@ CREATE CLUSTERED COLUMNSTORE INDEX index_name
 CREATE [ NONCLUSTERED ]  COLUMNSTORE INDEX index_name
     ON { database_name.schema_name.table_name | schema_name.table_name | table_name }
         ( column  [ , ...n ] )
+    [ ORDER (column [ , ...n ] ) ]
     [ WHERE <filter_expression> [ AND <filter_expression> ] ]
     [ WITH ( <with_option> [ , ...n ] ) ]
     [ ON <on_option> ]
@@ -145,7 +147,7 @@ Some of the options aren't available in all database engine versions. The follow
 | DATA_COMPRESSION | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] |
 | ONLINE | [!INCLUDE [ssSQLv15_md](../../includes/sssql19-md.md)] | [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] |
 | WHERE clause | N/A | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] |
-| ORDER clause | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] | N/A |
+| ORDER clause | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] | [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)] |
 
 All options are available in Azure SQL Database and [!INCLUDE [ssazure-sqlmi-autd](../../includes/ssazure-sqlmi-autd.md)].
 
@@ -492,8 +494,8 @@ Columns that use any of the following data types can't be included in a columnst
 - Can't include a sparse column.
 - Can't be changed by using the ALTER INDEX statement. To change the nonclustered index, you must drop and re-create the columnstore index instead. You can use ALTER INDEX to disable and rebuild a columnstore index.
 - Can't be created by using the INCLUDE keyword.
-- Can specify the `ASC` or `DESC` keywords in the list of index columns for a nonclustered columnstore index in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and [!INCLUDE [ssazure-sqlmi-autd](../../includes/ssazure-sqlmi-autd.md)]. For more information, see [Performance tuning with ordered columnstore indexes](../../relational-databases/indexes/ordered-columnstore-indexes.md).
-   - Can't include the `ASC` or `DESC` keywords in the list of index columns in other products. Columnstore indexes are ordered according to the compression algorithms. 
+- Can't specify the `ASC` or `DESC` keywords in the list of index columns. Columnstore indexes are ordered according to the compression algorithms.
+- In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], [!INCLUDE [ssazure-sqlmi-autd](../../includes/ssazure-sqlmi-autd.md)], and [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)] can be ordered by including the `ORDER` clause. For more information, see [Performance tuning with ordered columnstore indexes](../../relational-databases/indexes/ordered-columnstore-indexes.md).
 - Can't include LOB columns of type **nvarchar(max)**, **varchar(max)**, and **varbinary(max)** in nonclustered columnstore indexes. Only clustered columnstore indexes support LOB types, beginning in the [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] version, Azure SQL Database (configured at Premium tier, Standard tier (S3 and above), and all vCore offerings tiers). Prior versions don't support LOB types in clustered and nonclustered columnstore indexes.
 - Starting with [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)], you can create a nonclustered columnstore index on an indexed view.
 

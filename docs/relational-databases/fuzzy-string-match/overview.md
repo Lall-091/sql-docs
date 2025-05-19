@@ -4,21 +4,21 @@ description: "Look up data with fuzzy or approximate values."
 author: MikeRayMSFT
 ms.author: mikeray
 ms.service: sql
-ms.topic: overview #Don't change
-ms.date: 01/21/2025
+ms.topic: overview
+ms.date: 05/19/2025
 monikerRange: "=azuresqldb-current || =fabric"
-
-#customer intent: As a database engineer, I want design solutions that can search on approximate values.
-
 ---
 
 # What is fuzzy string matching?
 
-[!INCLUDE [asdb-fabricsqldb](../../includes/applies-to-version/asdb-fabricsqldb.md)]
-
-[!INCLUDE [preview](../../includes/preview.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-fabricsqldb.md)]
 
 Use fuzzy, or approximate, string matching to check if two strings are similar, and calculate the difference between two strings. Use this capability to identify strings that may be different because of character corruption. Corruption causes may include spelling errors, transposed characters, missing characters, or abbreviations. Fuzzy string matching uses algorithms to detect similar sounding strings.
+
+> [!NOTE]
+> - Fuzzy string matching is currently in preview. 
+> - SQL Server support for fuzzy string matching introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. 
+
 
 ## Fuzzy functions
 

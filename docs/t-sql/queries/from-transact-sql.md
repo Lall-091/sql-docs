@@ -4,7 +4,7 @@ description: FROM clause plus JOIN, APPLY, PIVOT (Transact-SQL)
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 03/07/2025
+ms.date: 05/08/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -274,16 +274,15 @@ Specifies that a specific version of data is returned from the specified tempora
 
 #### TABLESAMPLE clause
 
-**Applies to**: [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)], [!INCLUDE[sssds](../../includes/sssds-md.md)], and [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] dedicated SQL pools
+**Applies to**: [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], and [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] dedicated SQL pools
 
 Specifies that a sample of data from the table is returned. The sample may be approximate. This clause can be used on any primary or joined table in a SELECT or UPDATE statement. TABLESAMPLE can't be specified with views.
 
-> [!NOTE]  
-> When you use TABLESAMPLE against databases that are upgraded to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], the compatibility level of the database is set to 110 or higher, PIVOT is not allowed in a recursive common table expression (CTE) query. For more information, see [ALTER DATABASE Compatibility Level (Transact-SQL)](../statements/alter-database-transact-sql-compatibility-level.md).
-
 #### SYSTEM
 
-An implementation-dependent sampling method specified by ISO standards. In [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], this is the only sampling method available and is applied by default. SYSTEM applies a page-based sampling method in which a random set of pages from the table is chosen for the sample, and all the rows on those pages are returned as the sample subset.
+An implementation-dependent sampling method specified by ISO standards. In [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], this is the only sampling method available and is applied by default. SYSTEM applies a page-based sampling method in which a random set of pages from the table is chosen for the sample, and all the rows on those pages are returned as the sample subset.
+
+When using SYSTEM, rows might be read under the READ UNCOMMITTED [transaction isolation level](../statements/set-transaction-isolation-level-transact-sql.md#read-uncommitted).
 
 #### *sample_number*
 

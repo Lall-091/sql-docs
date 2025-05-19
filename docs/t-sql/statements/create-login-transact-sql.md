@@ -3,7 +3,7 @@ title: "CREATE LOGIN (Transact-SQL)"
 description: CREATE LOGIN (Transact-SQL)
 author: VanMSFT
 ms.author: vanto
-ms.date: 04/15/2024
+ms.date: 04/30/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -81,7 +81,7 @@ CREATE LOGIN login_name { WITH <option_list1> | FROM <sources> }
 
 <sources> ::=
     WINDOWS [ WITH <windows_options>[ ,... ] ]
-    | EXTERNAL PROVIDER
+    | EXTERNAL PROVIDER [WITH OBJECT_ID = 'objectid'] 
     | CERTIFICATE certname
     | ASYMMETRIC KEY asym_key_name
   
@@ -101,7 +101,9 @@ When you're creating logins that are mapped from a Windows domain account, you m
 When using the **FROM EXTERNAL PROVIDER** clause, the login name must match the display name of an existing Microsoft Entra principal in the same tenant that the SQL instance is Arc-enabled to. Microsoft Entra users, groups, and applications can be used to create logins.
 
 #### PASSWORD ='*password*'
-Applies to SQL Server logins only. Specifies the password for the login that is being created. Use a strong password. For more information, see [Strong Passwords](../../relational-databases/security/strong-passwords.md) and [Password Policy](../../relational-databases/security/password-policy.md). Beginning with SQL Server 2012 (11.x), stored password information is calculated using SHA-512 of the salted password.
+Applies to SQL Server logins only. Specifies the password for the login that is being created. Use a strong password. For more information, see [Strong Passwords](../../relational-databases/security/strong-passwords.md) and [Password Policy](../../relational-databases/security/password-policy.md). 
+
+[!INCLUDE [encryption-algorithm-history-md](../../includes/encryption-algorithm-history.md)]
 
 Passwords are case-sensitive. Passwords should always be at least eight characters long, and can't exceed 128 characters. Passwords can include a-z, A-Z, 0-9, and most nonalphanumeric characters. Passwords can't contain single quotes, or the *login_name*.
 
@@ -143,7 +145,12 @@ If the Windows policy requires strong passwords, passwords must contain at least
 Specifies that the login be mapped to a Windows login.
 
 #### FROM EXTERNAL PROVIDER
-Specifies that the login is mapped to a Microsoft Entra principal. This option is available for Arc-enabled SQL Server 2022 and later versions. For more information, see [Microsoft Entra authentication for SQL Server](/sql/relational-databases/security/authentication-access/azure-ad-authentication-sql-server-overview?view=sql-server-ver16&preserve-view=true)
+Specifies that the login is mapped to a Microsoft Entra principal. This option is available for Arc-enabled SQL Server 2022 and later versions. For more information, see [Microsoft Entra authentication for SQL Server](../../relational-databases/security/authentication-access/azure-ad-authentication-sql-server-overview.md)
+
+#### WITH OBJECT_ID = *'objectid'*
+ **Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later
+
+Specifies the Microsoft Entra Object ID. For more information on using the `WITH OBJECT_ID` option, see [Microsoft Entra logins and users with nonunique display names](/azure/azure-sql/database/authentication-microsoft-entra-create-users-with-nonunique-names).
 
 #### CERTIFICATE *certname*
 Specifies the name of a certificate to be associated with this login. This certificate must already occur in the `master` database.

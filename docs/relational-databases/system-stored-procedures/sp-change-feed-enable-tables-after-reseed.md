@@ -3,8 +3,8 @@ title: "sys.sp_change_feed_enable_tables_after_reseed (Transact-SQL)"
 description: "The internal sys.sp_change_feed_enable_tables_after_reseed system stored procedure enables tables after reseed within the current database context."
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: imotiwala
-ms.date: 09/24/2024
+ms.reviewer: imotiwala, ajayj
+ms.date: 05/01/2025
 ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,15 +19,15 @@ helpviewer_keywords:
   - "sp_change_feed_enable_tables_after_reseed"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =fabric"
+monikerRange: ">=sql-server-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
 ---
 # sys.sp_change_feed_enable_tables_after_reseed (Transact-SQL)
 
-[!INCLUDE [sqlserver2022-asdb-fabricmirroredsqldb-fabricsqldb](../../includes/applies-to-version/sqlserver2022-asdb-fabricmirroredsqldb-fabricsqldb.md)]
+[!INCLUDE [sqlserver2025-asdb-asdbmi-fabricmirroredsqldb-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asdbmi-fabricmirroredsqldb-fabricsqldb.md)]
 
 Internal procedure that enables tables after reseed within the current database context.
 
-> [!NOTE]  
+> [!CAUTION]  
 > This system stored procedure is used internally and isn't recommended for direct administrative use. Use the Fabric portal instead. Using this procedure could introduce inconsistency.
 
 This system stored procedure is used for [Microsoft Fabric mirrored databases](/fabric/database/mirrored-database/overview) and [SQL database in Microsoft Fabric](/fabric/database/sql/overview).

@@ -3,7 +3,7 @@ title: "Upgrade SQL Server"
 description: This article provides links to resources that contain upgrade information for instances of different versions of SQL Server.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/10/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: install
 ms.topic: quickstart
@@ -21,6 +21,7 @@ You can upgrade instances of [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)],
 
 Check out what's new in each version of the product:
 
+- [SQL Server 2025 release notes](../../sql-server/sql-server-2025-release-notes.md)
 - [SQL Server 2022 release notes](../../sql-server/sql-server-2022-release-notes.md)
 - [SQL Server 2019 release notes](../../sql-server/sql-server-2019-release-notes.md)
 - [SQL Server 2017 release notes](../../sql-server/sql-server-2017-release-notes.md)
@@ -32,22 +33,26 @@ If you're upgrading from an end-of-support version of SQL Server, see the [end o
 
 ## Upgrade documentation
 
+[!INCLUDE [upgrade-warning](includes/upgrade-warning.md)]
+
 [!INCLUDE [editions-supported-features-windows](../../includes/editions-supported-features-windows.md)]
 
 The following articles help you upgrade components of SQL Server:
 
 - [Upgrade Analysis Services](upgrade-analysis-services.md)
 - [Upgrade the Database Engine](upgrade-database-engine.md)
-- [Upgrade Data Quality Services](upgrade-data-quality-services.md)
+- [Upgrade Data Quality Services](upgrade-data-quality-services.md) <sup>1</sup>
 - [Upgrade Integration Services](../../integration-services/install-windows/upgrade-integration-services.md)
-- [Upgrade Master Data Services](upgrade-master-data-services.md)
+- [Upgrade Master Data Services](upgrade-master-data-services.md) <sup>1</sup>
 - [Upgrade Power Pivot for SharePoint](upgrade-power-pivot-for-sharepoint.md)
 - [Upgrade or patch replicated databases](upgrade-replicated-databases.md)
-- [Upgrade and migrate Reporting Services](../../reporting-services/install-windows/upgrade-and-migrate-reporting-services.md)
+- [Upgrade and migrate Reporting Services](../../reporting-services/install-windows/upgrade-and-migrate-reporting-services.md) <sup>1</sup>
 - [Upgrade SQL Server Management Tools](upgrade-sql-server-management-tools.md)
 - [Upgrade SQL Server Using the Installation Wizard (Setup)](upgrade-sql-server-using-the-installation-wizard-setup.md)
 - [Upgrade to a different edition of SQL Server (Setup)](upgrade-to-a-different-edition-of-sql-server-setup.md)
 - [SQL Server end of support options](../../sql-server/end-of-support/sql-server-end-of-support-overview.md)
+
+ <sup>1</sup> DQS, MDS, and Reporting Services upgrades aren't supported on [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
 
 ## Related content
 

@@ -4,7 +4,7 @@ description: The sp_invoke_external_rest_endpoint stored procedure invokes an HT
 author: jettermctedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 02/25/2025
+ms.date: 04/21/2025
 ms.service: sql
 ms.topic: "reference"
 ms.custom:
@@ -22,19 +22,17 @@ monikerRange: "=fabric"
 ---
 # sp_invoke_external_rest_endpoint (Transact-SQL)
 
-[!INCLUDE [asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/asdb-asmi-fabricsqldb.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
 The `sp_invoke_external_rest_endpoint` stored procedure invokes an HTTPS REST endpoint provided as an input argument to the procedure.
 
-> [!NOTE]
+> [!NOTE]  
 > The `sp_invoke_external_rest_endpoint` stored procedure is in [preview](/azure/azure-sql/managed-instance/doc-changes-updates-release-notes-whats-new#preview) for Azure SQL Managed Instance.
-
 
 ## Ways to mitigate risk of unauthorized access or transfer of data
 
 > [!CAUTION]  
 > Using the `sp_invoke_external_rest_endpoint` stored procedure allows for the transfer of data to an external entity.
-
 
 To mitigate the risk of unauthorized access or transfer of data, consider the following security best practices:
 
@@ -71,7 +69,7 @@ Unicode string in a JSON, XML, or TEXT format that contains the payload to send 
 
 #### [ @headers = ] N'*headers*'
 
-Headers that must be sent as part of the request to the HTTPS REST endpoint. Headers must be specified using a flat JSON (a JSON document without nested structures) format. Headers defined in the [Forbidden headers name](https://developer.mozilla.org/en-US/docs/Glossary/Forbidden_header_name) list will be ignored even if explicitly passed in the *@headers* parameter; their values will be discarded or replaced with system-supplied values when starting the HTTPS request.
+Headers that must be sent as part of the request to the HTTPS REST endpoint. Headers must be specified using a flat JSON (a JSON document without nested structures) format. Headers defined in the [Forbidden headers name](https://developer.mozilla.org/en-US/docs/Glossary/Forbidden_request_header) list are ignored even if explicitly passed in the *@headers* parameter; their values are discarded or replaced with system-supplied values when starting the HTTPS request.
 
 The *@headers* parameter is **nvarchar(4000)** with no default.
 
@@ -93,9 +91,11 @@ Allow the response received from the called endpoint to be passed into the speci
 
 ## Return value
 
-Execution will return `0` if the HTTPS call was done and the HTTP status code received is a 2xx status code (`Success`). If the HTTP status code received isn't in the 2xx range, the return value will be the HTTP status code received. If the HTTPS call can't be done at all, an exception will be thrown.
+Execution returns `0` if the HTTPS call was done and the HTTP status code received is a 2xx status code (`Success`). If the HTTP status code received isn't in the 2xx range, the return value is the HTTP status code received. If the HTTPS call can't be done at all, an exception is thrown.
 
 ## Permissions
+
+### Database permissions
 
 Requires EXECUTE ANY EXTERNAL ENDPOINT database permission.
 
@@ -104,6 +104,26 @@ For example:
 ```sql
 GRANT EXECUTE ANY EXTERNAL ENDPOINT TO [<PRINCIPAL>];
 ```
+
+### Enable in SQL Server 2025 and Azure SQL Managed Instance
+
+> [!NOTE]  
+> The `sp_invoke_external_rest_endpoint` stored procedure is in public preview for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and [Azure SQL Managed Instance](/azure/azure-sql/managed-instance/doc-changes-updates-release-notes-whats-new#preview).
+
+The `sp_invoke_external_rest_endpoint` stored procedure is available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and Azure SQL Managed Instance configured with the [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) and is disabled by default.
+
+To enable the `sp_invoke_external_rest_endpoint` stored procedure in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and Azure SQL Managed Instance, run the following T-SQL code:
+
+```sql
+EXECUTE sp_configure 'external rest endpoint enabled', 1;
+
+RECONFIGURE WITH OVERRIDE;
+```
+
+To execute `sp_configure` to change a configuration option or to run the [RECONFIGURE](../../t-sql/language-elements/reconfigure-transact-sql.md) statement, a user must be granted the ALTER SETTINGS server-level permission. The ALTER SETTINGS permission is implicitly held by the sysadmin and serveradmin fixed [server roles](../security/authentication-access/server-level-roles.md).
+
+> [!NOTE]  
+> `sp_invoke_external_rest_endpoint` is enabled by default in Azure SQL Database and SQL database in Fabric.
 
 ## Response format
 
@@ -152,7 +172,7 @@ Specifically:
 - *response*: an XML object that contains the HTTP result and other response metadata.
 - *result*: the XML payload returned by the HTTP call. Omitted if the received HTTP result is a 204 (`No Content`).
 
-In the `response` section, aside from the HTTP status code and description, the entire set of received response headers will be provided in the `headers` object. The following example shows a `response` section in JSON (also the structure for text responses):
+In the `response` section, aside from the HTTP status code and description, the entire set of received response headers are provided in the `headers` object. The following example shows a `response` section in JSON (also the structure for text responses):
 
 ```json
 "response": {
@@ -174,7 +194,7 @@ In the `response` section, aside from the HTTP status code and description, the 
 
 And the following example shows a `response` section in XML:
 
-```XML
+```xml
 <response>
     <status>
         <http code="200" description="OK" />
@@ -198,34 +218,34 @@ Only calls to endpoints in the following services are allowed:
 
 | Azure Service | Domain |
 | --- | --- |
-| Azure Functions | *.azurewebsites.net |
-| Azure Apps Service | *.azurewebsites.net |
-| Azure App Service Environment | *.appserviceenvironment.net |
-| Azure Static Web Apps | *.azurestaticapps.net |
-| Azure Logic Apps | *.logic.azure.com |
-| Azure Event Hubs | *.servicebus.windows.net |
-| Azure Event Grid | *.eventgrid.azure.net |
-| Azure AI Services | *.cognitiveservices.azure.com <br> *.api.cognitive.microsoft.com |
-| Azure OpenAI | *.openai.azure.com |
-| PowerApps / Dataverse | *.api.crm.dynamics.com |
-| Microsoft Dynamics | *.dynamics.com |
-| Azure Container Instances | *.azurecontainer.io |
-| Azure Container Apps | *.azurecontainerapps.io |
-| Power BI | api.powerbi.com |
-| Microsoft Graph | graph.microsoft.com |
-| Analysis Services | *.asazure.windows.net |
-| IoT Central | *.azureiotcentral.com |
-| API Management | *.azure-api.net |
-| Azure Blob Storage | *.blob.core.windows.net |
-| Azure Files | *.file.core.windows.net |
-| Azure Queue Storage | *.queue.core.windows.net |
-| Azure Table Storage | *.table.core.windows.net |
-| Azure Communication Services | *.communications.azure.com |
-| Bing Search | api.bing.microsoft.com |
-| Azure Key Vault | *.vault.azure.net |
-| Azure AI Search | *.search.windows.net |
-| Azure Maps | *.atlas.microsoft.com |
-| Azure AI Translator | api.cognitive.microsofttranslator.com |
+| Azure Functions | `*.azurewebsites.net` |
+| Azure Apps Service | `*.azurewebsites.net` |
+| Azure App Service Environment | `*.appserviceenvironment.net` |
+| Azure Static Web Apps | `*.azurestaticapps.net` |
+| Azure Logic Apps | `*.logic.azure.com` |
+| Azure Event Hubs | `*.servicebus.windows.net` |
+| Azure Event Grid | `*.eventgrid.azure.net` |
+| Azure AI Services | `*.cognitiveservices.azure.com`<br />`*.api.cognitive.microsoft.com` |
+| Azure OpenAI | `*.openai.azure.com` |
+| PowerApps / Dataverse | `*.api.crm.dynamics.com` |
+| Microsoft Dynamics | `*.dynamics.com` |
+| Azure Container Instances | `*.azurecontainer.io` |
+| Azure Container Apps | `*.azurecontainerapps.io` |
+| Power BI | `api.powerbi.com` |
+| Microsoft Graph | `graph.microsoft.com` |
+| Analysis Services | `*.asazure.windows.net` |
+| IoT Central | `*.azureiotcentral.com` |
+| API Management | `*.azure-api.net` |
+| Azure Blob Storage | `*.blob.core.windows.net` |
+| Azure Files | `*.file.core.windows.net` |
+| Azure Queue Storage | `*.queue.core.windows.net` |
+| Azure Table Storage | `*.table.core.windows.net` |
+| Azure Communication Services | `*.communications.azure.com` |
+| Bing Search | `api.bing.microsoft.com` |
+| Azure Key Vault | `*.vault.azure.net` |
+| Azure AI Search | `*.search.windows.net` |
+| Azure Maps | `*.atlas.microsoft.com` |
+| Azure AI Translator | `api.cognitive.microsofttranslator.com` |
 
 [Outbound firewall rules for Azure SQL Database and Azure Synapse Analytics](/azure/azure-sql/database/outbound-firewall-rule-overview) control mechanism can be used to further restrict outbound access to external endpoints.
 
@@ -253,19 +273,16 @@ The number of concurrent connections to external endpoints done via `sp_invoke_e
 To check how many concurrent connections a database can sustain, run the following query:
 
 ```sql
-SELECT
-  [database_name],
-  DATABASEPROPERTYEX(DB_NAME(), 'ServiceObjective') AS service_level_objective,
-  [slo_name] as service_level_objective_long,
-  [primary_group_max_outbound_connection_workers] AS max_database_outbound_connection,
-  [primary_pool_max_outbound_connection_workers] AS max_pool_outbound_connection
-FROM
-  sys.dm_user_db_resource_governance
-WHERE
-  database_id = DB_ID();
+SELECT [database_name],
+       DATABASEPROPERTYEX(DB_NAME(), 'ServiceObjective') AS service_level_objective,
+       [slo_name] AS service_level_objective_long,
+       [primary_group_max_outbound_connection_workers] AS max_database_outbound_connection,
+       [primary_pool_max_outbound_connection_workers] AS max_pool_outbound_connection
+FROM sys.dm_user_db_resource_governance
+WHERE database_id = DB_ID();
 ```
 
-If a new connection to an external endpoint using `sp_invoke_external_rest_endpoint` is tried when the maximum concurrent connections are already reached, error 10928 (or 10936 if you have reached elastic pools limits) will be raised. For example:
+If a new connection to an external endpoint using `sp_invoke_external_rest_endpoint` is tried when the maximum concurrent connections are already reached, error 10928 (or 10936 if you have reached elastic pools limits) is raised. For example:
 
 ```output
 Msg 10928, Level 16, State 4, Procedure sys.sp_invoke_external_rest_endpoint_internal, Line 1 [Batch Start Line 0]
@@ -277,24 +294,24 @@ See 'https://docs.microsoft.com/azure/azure-sql/database/resource-limits-logical
 
 Some REST endpoints require authentication in order to be properly invoked. Authentication can usually be done by passing some specific key-value pairs in the query string or in the HTTP headers set with the request.
 
-It's possible to use DATABASE SCOPED CREDENTIALS to securely store authentication data (like a Bearer token for example) to be used by `sp_invoke_external_rest_endpoint` to call a protected endpoint. When creating the DATABASE SCOPED CREDENTIAL, use the IDENTITY parameter to specify what authentication data will be passed to the invoked endpoint and how. IDENTITY supports four options:
+It's possible to use `DATABASE SCOPED CREDENTIAL` to securely store authentication data (like a Bearer token for example) to be used by `sp_invoke_external_rest_endpoint` to call a protected endpoint. When creating the `DATABASE SCOPED CREDENTIAL`, use the `IDENTITY` parameter to specify what authentication data is passed to the invoked endpoint and how. `IDENTITY` supports four options:
 
 - `HTTPEndpointHeaders`: send specified authentication data using the **Request Headers**
 - `HTTPEndpointQueryString`: send specified authentication data using the **Query String**
 - `Managed Identity`: send the System Assigned **Managed Identity** using the request headers
 - `Shared Access Signature`: provide limited delegated access to resources via a **signed URL** (Also referred to as SAS)
 
-the created DATABASE SCOPED CREDENTIAL can be used via the *@credential* parameter:
+The created `DATABASE SCOPED CREDENTIAL` can be used via the *@credential* parameter:
 
 ```sql
-EXEC sp_invoke_external_rest_endpoint
-  @url = N'https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?key1=value1',
-  @credential = [https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>]
+EXECUTE sp_invoke_external_rest_endpoint
+    @url = N'https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?key1=value1',
+    @credential = [https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>];
 ```
 
 ### [Request Headers](#tab/request-headers)
 
-With this IDENTITY value, the DATABASE SCOPED CREDENTIAL will be added to the request headers. The key-value pair containing the authentication information must be provided via the SECRET parameter using a flat JSON format. For example:
+With this `IDENTITY` value, the `DATABASE SCOPED CREDENTIAL` is added to the request headers. The key-value pair containing the authentication information must be provided via the `SECRET` parameter using a flat JSON format. For example:
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL [https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>]
@@ -303,7 +320,7 @@ WITH IDENTITY = 'HTTPEndpointHeaders', SECRET = '{"x-functions-key":"<your-funct
 
 ### [Query String](#tab/query-string)
 
-With this IDENTITY value, the DATABASE SCOPED CREDENTIAL will be added to the query string. The key-value pair containing the authentication information must be provided via the SECRET parameter using a flat JSON format. For example:
+With this `IDENTITY` value, the `DATABASE SCOPED CREDENTIAL` is added to the query string. The key-value pair containing the authentication information must be provided via the `SECRET` parameter using a flat JSON format. For example:
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL [https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>]
@@ -314,7 +331,7 @@ WITH IDENTITY = 'HTTPEndpointQueryString', SECRET = '{"code":"<your-function-key
 
 [!INCLUDE [entra-authentication-options](../../includes/entra-authentication-options.md)]
 
-With this IDENTITY value, the authentication information for the DATABASE SCOPED CREDENTIAL is taken from the system-assigned managed identity of the logical server in which the database resides, and is passed in the request headers. The SECRET must be set to the APP_ID (or CLIENT_ID) used to configure Microsoft Entra authentication of the called endpoint. (For example: [Configure your App Service or Azure Functions app to use Microsoft Entra sign-in](/azure/app-service/configure-authentication-provider-aad))
+With this `IDENTITY` value, the authentication information for the `DATABASE SCOPED CREDENTIAL` is taken from the system-assigned managed identity of the logical server in which the database resides, and is passed in the request headers. The `SECRET` must be set to the `APP_ID` (or `CLIENT_ID`) used to configure Microsoft Entra authentication of the called endpoint. For an example, see [Configure your App Service or Azure Functions app to use Microsoft Entra sign-in](/azure/app-service/configure-authentication-provider-aad).
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL [https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>]
@@ -325,7 +342,7 @@ Both system-assigned and user-assigned managed identities are supported:
 
 - If there's at least one user-assigned managed identity, the defined primary identity is used for authentication when using a managed identity-based database scoped credential.
 
-- If there's no user-assigned managed identity assigned then the system-assigned managed identity is used, if it's enabled, for authentication when using a managed identity-based database scoped credential.
+- If there's no user-assigned managed identity assigned, then the system-assigned managed identity is used, if it's enabled, for authentication when using a managed identity-based database scoped credential.
 
 - If both user-assigned and system-assigned managed identities are defined, the user-assigned managed identity is used.
 
@@ -335,7 +352,7 @@ Both system-assigned and user-assigned managed identities are supported:
 
 ### Credential name rules
 
-The created DATABASE SCOPED CREDENTIAL must adhere to specific rules in order to be used with `sp_invoke_external_rest_endpoint`. The rules are the following:
+The created DATABASE SCOPED CREDENTIAL must adhere to specific rules in order to be used with `sp_invoke_external_rest_endpoint`. The rules are as follows:
 
 - Must be a valid URL
 - The URL domain must be one of those domains included in the allowlist
@@ -346,9 +363,9 @@ The created DATABASE SCOPED CREDENTIAL must adhere to specific rules in order to
 
 #### Collation and credential name rules
 
-[RFC 3986 Section 6.2.2.1](https://www.rfc-editor.org/rfc/rfc3986#section-6.2.2.1) states that "When a URI uses components of the generic syntax, the component syntax equivalence rules always apply; namely, that the scheme and host are case-insensitive", and [RFC 7230 Section 2.7.3](https://www.rfc-editor.org/rfc/rfc7230#section-2.7.3) mentions that "all other are compared in a case-sensitive manner".
+[RFC 3986 Section 6.2.2.1](https://www.rfc-editor.org/rfc/rfc3986#section-6.2.2.1) states that "When a URI uses components of the generic syntax, the component syntax equivalence rules always apply; namely, that the scheme and host are case-insensitive," and [RFC 7230 Section 2.7.3](https://www.rfc-editor.org/rfc/rfc7230#section-2.7.3) mentions that "all other are compared in a case-sensitive manner."
 
-As there's a collation rule set at the database level, the following logic will be applied, to be coherent with the database collation rule and the RFC mentioned above. (The described rule could potentially be more restrictive than the RFC rules, for example if database is set to use a case-sensitive collation.):
+As there's a collation rule set at the database level, the following logic is applied, to be coherent with the database collation rule and the RFC mentioned above. (The described rule could potentially be more restrictive than the RFC rules, for example if database is set to use a case-sensitive collation.):
 
 1. Check if the URL and credential match using the RFC, which means:
    - Check the scheme and host using a case-insensitive collation (`Latin1_General_100_CI_AS_KS_WS_SC`)
@@ -369,7 +386,7 @@ GRANT REFERENCES ON DATABASE SCOPED CREDENTIAL::[<CREDENTIAL_NAME>] TO [<PRINCIP
 
 ### Wait type
 
-When `sp_invoke_external_rest_endpoint` is waiting for the call to the invoked service to complete, it will report an HTTP_EXTERNAL_CONNECTION wait type.
+When `sp_invoke_external_rest_endpoint` is waiting for the call to the invoked service to complete, it reports an `HTTP_EXTERNAL_CONNECTION` wait type.
 
 ### HTTPS and TLS
 
@@ -377,17 +394,17 @@ Only endpoints that are configured to use HTTPS with TLS encryption protocol are
 
 ### HTTP redirects
 
-`sp_invoke_external_rest_endpoint` won't automatically follow any HTTP redirect received as a response from the invoked endpoint.
+`sp_invoke_external_rest_endpoint` doesn't automatically follow any HTTP redirect received as a response from the invoked endpoint.
 
 ### HTTP headers
 
-`sp_invoke_external_rest_endpoint` will automatically inject the following headers in the HTTP request:
+`sp_invoke_external_rest_endpoint` automatically injects the following headers in the HTTP request:
 
 - *content-type*: set to `application/json; charset=utf-8`
 - *accept*: set to `application/json`
 - *user-agent*: set `<EDITION>/<PRODUCT VERSION>` for example: `SQL Azure/12.0.2000.8`
 
-While *user-agent* will always be overwritten by the stored procedure, the *content-type* and *accept* header values can be user defined via the *@headers* parameter. Only the media type directive is allowed to be specified in the content-type and specifying the charset or boundary directives isn't possible.
+While *user-agent* is always overwritten by the stored procedure, the *content-type* and *accept* header values can be user defined via the *@headers* parameter. Only the media type directive is allowed to be specified in the content-type and specifying the charset or boundary directives isn't possible.
 
 #### Request and response payload supported [media types](https://developer.mozilla.org/en-US/docs/Glossary/MIME_type)
 
@@ -407,27 +424,10 @@ For the *accept* header, the following are the accepted values.
 - application/xml
 - text/*
 
-For more information on text header types, refer to the [text type registry at IANA](https://www.iana.org/assignments/media-types/media-types.xhtml#text).
+For more information on text header types, see the [text type registry at IANA](https://www.iana.org/assignments/media-types/media-types.xhtml#text).
 
 > [!NOTE]  
 > If you're testing invocation of the REST endpoint with other tools, like [cURL](https://curl.se/) or any modern REST client like [Insomnia](https://insomnia.rest/), make sure to include the same headers that are automatically injected by `sp_invoke_external_rest_endpoint` to have the same behavior and results.
-
-## sp_invoke_external_rest_endpoint in Azure SQL Managed Instance
-
-> [!NOTE]
-> The `sp_invoke_external_rest_endpoint` stored procedure is in [preview](/azure/azure-sql/managed-instance/doc-changes-updates-release-notes-whats-new#preview) for Azure SQL Managed Instance.
-
-The `sp_invoke_external_rest_endpoint` stored procedure is available in Azure SQL Managed Instance configured with the [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy). To use this stored procedure with your SQL managed instance, first use [sp_configure](sp-configure-transact-sql.md) to enable the `external rest endpoint enabled` option, which is enabled by default in Azure SQL Database and SQL database in Fabric. 
-
-To use the `sp_invoke_external_rest_endpoint` stored procedure in Azure SQL Managed Instance, run the following T-SQL code: 
-
-``` SQL
-sp_configure 'external rest endpoint enabled', 1;
-RECONFIGURE WITH OVERRIDE;
-```
-
-To execute sp_configure to change a configuration option or to run the RECONFIGURE statement, a user must be granted the ALTER SETTINGS server-level permission. The ALTER SETTINGS permission is implicitly held by the sysadmin and serveradmin fixed server roles.
-
 
 ## Best practices
 
@@ -437,24 +437,26 @@ If you have to send a set of rows to a REST endpoint, for example to an Azure Fu
 
 ```sql
 -- create the payload
-DECLARE @payload AS NVARCHAR(MAX);
+DECLARE @payload AS NVARCHAR (MAX);
 
-SET @payload = (
-        SELECT [object_id], [name], [column_id]
-        FROM sys.columns
-        FOR JSON AUTO
-        );
+SET @payload = (SELECT [object_id],
+                       [name],
+                       [column_id]
+                FROM sys.columns
+                FOR JSON AUTO);
 
 -- invoke the REST endpoint
-DECLARE @retcode INT,
-    @response AS NVARCHAR(MAX);
+DECLARE @retcode AS INT, @response AS NVARCHAR (MAX);
 
-EXEC @retcode = sp_invoke_external_rest_endpoint @url = '<REST_endpoint>',
+EXECUTE
+    @retcode = sp_invoke_external_rest_endpoint
+    @url = '<REST_endpoint>',
     @payload = @payload,
     @response = @response OUTPUT;
 
 -- return the result
-SELECT @retcode, @response;
+SELECT @retcode,
+       @response;
 ```
 
 ## Examples
@@ -466,188 +468,206 @@ Here you can find some examples on how to use `sp_invoke_external_rest_endpoint`
 The following example calls an Azure Function using an HTTP trigger binding allowing anonymous access.
 
 ```sql
-DECLARE @ret INT, @response NVARCHAR(MAX);
+DECLARE @ret AS INT, @response AS NVARCHAR (MAX);
 
-EXEC @ret = sp_invoke_external_rest_endpoint
-  @url = N'https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?key1=value1',
-  @headers = N'{"header1":"value_a", "header2":"value2", "header1":"value_b"}',
-  @payload = N'{"some":{"data":"here"}}',
-  @response = @response OUTPUT;
+EXECUTE
+    @ret = sp_invoke_external_rest_endpoint
+    @url = N'https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?key1=value1',
+    @headers = N'{"header1":"value_a", "header2":"value2", "header1":"value_b"}',
+    @payload = N'{"some":{"data":"here"}}',
+    @response = @response OUTPUT;
 
-SELECT @ret AS ReturnCode, @response AS Response;
+SELECT @ret AS ReturnCode,
+       @response AS Response;
 ```
 
 ### B. Call an Azure Function using an HTTP trigger binding with an authorization key
 
-The following example calls an Azure Function using an HTTP trigger binding configured to require an authorization key. The authorization key will be passed in the `x-function-key` header as required by Azure Functions. For more information, see [Azure Functions - API key authorization](/azure/azure-functions/functions-bindings-http-webhook-trigger#api-key-authorization).
+The following example calls an Azure Function using an HTTP trigger binding configured to require an authorization key. The authorization key is passed in the `x-function-key` header as required by Azure Functions. For more information, see [Azure Functions - API key authorization](/azure/azure-functions/functions-bindings-http-webhook-trigger#api-key-authorization).
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL [https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>]
-WITH IDENTITY = 'HTTPEndpointHeaders', SECRET = '{"x-functions-key":"<your-function-key-here>"}';
+    WITH IDENTITY = 'HTTPEndpointHeaders', SECRET = '{"x-functions-key":"<your-function-key-here>"}';
 
-DECLARE @ret INT, @response NVARCHAR(MAX);
+DECLARE @ret AS INT, @response AS NVARCHAR (MAX);
 
-EXEC @ret = sp_invoke_external_rest_endpoint
-  @url = N'https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?key1=value1',
-  @headers = N'{"header1":"value_a", "header2":"value2", "header1":"value_b"}',
-  @credential = [https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>],
-  @payload = N'{"some":{"data":"here"}}',
-  @response = @response OUTPUT;
+EXECUTE
+    @ret = sp_invoke_external_rest_endpoint
+    @url = N'https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?key1=value1',
+    @headers = N'{"header1":"value_a", "header2":"value2", "header1":"value_b"}',
+    @credential = [https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>],
+    @payload = N'{"some":{"data":"here"}}',
+    @response = @response OUTPUT;
 
-SELECT @ret AS ReturnCode, @response AS Response;
+SELECT @ret AS ReturnCode,
+       @response AS Response;
 ```
 
 ### C. Read the contents of a file from Azure Blob Storage with a SAS token
 
-This example reads a file from Azure Blob Storage using a SAS token for authentication. The results will be returned in XML, so using the header `"Accept":"application/xml"` will be needed.
+This example reads a file from Azure Blob Storage using a SAS token for authentication. The results are returned in XML, so you must use the header `"Accept":"application/xml"`.
 
 ```sql
-DECLARE @ret INT, @response NVARCHAR(MAX);
+DECLARE @ret AS INT, @response AS NVARCHAR (MAX);
 
-EXEC @ret = sp_invoke_external_rest_endpoint
-  @url = N'https://blobby.blob.core.windows.net/datafiles/my_favorite_blobs.txt?sp=r&st=2023-07-28T19:56:07Z&se=2023-07-29T03:56:07Z&spr=https&sv=2022-11-02&sr=b&sig=XXXXXX1234XXXXXX6789XXXXX',
-  @headers = N'{"Accept":"application/xml"}',
-  @method = 'GET',
-  @response = @response OUTPUT;
+EXECUTE
+    @ret = sp_invoke_external_rest_endpoint
+    @url = N'https://blobby.blob.core.windows.net/datafiles/my_favorite_blobs.txt?sp=r&st=2023-07-28T19:56:07Z&se=2023-07-29T03:56:07Z&spr=https&sv=2022-11-02&sr=b&sig=XXXXXX1234XXXXXX6789XXXXX',
+    @headers = N'{"Accept":"application/xml"}',
+    @method = 'GET',
+    @response = @response OUTPUT;
 
-SELECT @ret AS ReturnCode, @response AS Response;
+SELECT @ret AS ReturnCode,
+       @response AS Response;
 ```
 
 ### D. Send a message to an event hub using the Azure SQL Database Managed Identity
 
 This sample shows how you can send messages to Event Hubs using the Azure SQL Managed Identity. Make sure you have configured the [System Managed Identity](/azure/active-directory/managed-identities-azure-resources/overview) for the Azure SQL Database logical server hosting your database, for example:
 
-```bash
+```azurecli
 az sql server update -g <resource-group> -n <azure-sql-server> --identity-type SystemAssigned
 ```
 
 After that, configure Event Hubs to allow Azure SQL Server's Managed Identity to be able to send messages ("Azure Event Hubs Data Sender" role) to the desired event hub. For more information, see [Use Event Hubs with managed identities](/azure/event-hubs/authenticate-managed-identity?tabs=latest#use-event-hubs-with-managed-identities).
 
-Once this is done, you can use the `Managed Identity` identity name when defining the database scoped credential that will be used by `sp_invoke_external_rest_endpoint`. As explained in [Authenticate an application with Microsoft Entra ID to access Event Hubs resources](/azure/event-hubs/authenticate-application), the resource name (or ID) to use when using Microsoft Entra authentication is `https://eventhubs.azure.net`:
+Once this is done, you can use the `Managed Identity` identity name when defining the database scoped credential that is used by `sp_invoke_external_rest_endpoint`. As explained in [Authenticate an application with Microsoft Entra ID to access Event Hubs resources](/azure/event-hubs/authenticate-application), the resource name (or ID) to use when using Microsoft Entra authentication is `https://eventhubs.azure.net`:
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL [https://<EVENT-HUBS-NAME>.servicebus.windows.net]
-    WITH IDENTITY = 'Managed Identity',
-        SECRET = '{"resourceid": "https://eventhubs.azure.net"}';
+WITH IDENTITY = 'Managed Identity', SECRET = '{"resourceid": "https://eventhubs.azure.net"}';
 GO
 
-DECLARE @Id UNIQUEIDENTIFIER = NEWID();
-DECLARE @payload NVARCHAR(MAX) = (
-        SELECT *
-        FROM (
-            VALUES (@Id, 'John', 'Doe')
-            ) AS UserTable(UserId, FirstName, LastName)
-        FOR JSON AUTO,
-            WITHOUT_ARRAY_WRAPPER
-        )
-DECLARE @url NVARCHAR(4000) = 'https://<EVENT-HUBS-NAME>.servicebus.windows.net/from-sql/messages';
-DECLARE @headers NVARCHAR(4000) = N'{"BrokerProperties": "' + STRING_ESCAPE('{"PartitionKey": "' + CAST(@Id AS NVARCHAR(36)) + '"}', 'json') + '"}'
-DECLARE @ret INT, @response NVARCHAR(MAX);
+DECLARE @Id AS UNIQUEIDENTIFIER = NEWID();
 
-EXEC @ret = sp_invoke_external_rest_endpoint @url = @url,
+DECLARE @payload AS NVARCHAR (MAX) = (SELECT *
+    FROM (VALUES (@Id, 'John', 'Doe')) AS UserTable(UserId, FirstName, LastName)
+    FOR JSON AUTO, WITHOUT_ARRAY_WRAPPER);
+
+DECLARE @url AS NVARCHAR (4000) = 'https://<EVENT-HUBS-NAME>.servicebus.windows.net/from-sql/messages';
+
+DECLARE @headers AS NVARCHAR (4000) = N'{"BrokerProperties": "'
+    + STRING_ESCAPE('{"PartitionKey": "'
+    + CAST (@Id AS NVARCHAR (36)) + '"}', 'json') + '"}';
+
+DECLARE @ret AS INT, @response AS NVARCHAR (MAX);
+
+EXECUTE
+    @ret = sp_invoke_external_rest_endpoint
+    @url = @url,
     @headers = @headers,
     @credential = [https://<EVENT-HUBS-NAME>.servicebus.windows.net],
     @payload = @payload,
     @response = @response OUTPUT;
 
-SELECT @ret AS ReturnCode, @response AS Response;
+SELECT @ret AS ReturnCode,
+       @response AS Response;
 ```
 
 ### E. Read and write a file to Azure File Storage with an Azure SQL Database scoped credentials
 
-This example writes a file to an Azure File Storage using an Azure SQL Database scoped credentials for authentication and then returns the contents. The results will be returned in XML, so using the header `"Accept":"application/xml"` will be needed.
+This example writes a file to an Azure File Storage using an Azure SQL Database scoped credentials for authentication and then returns the contents. The results are returned in XML, so you must use the header `"Accept":"application/xml"`.
 
-Start by creating a master key for the Azure SQL Database
+Start by creating a master key for the Azure SQL database. Replace `<password>` with a strong password.
 
 ```sql
-create master key encryption by password = '2112templesmlm2BTS21.qwqw!@0dvd'
-go
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>';
+GO
 ```
 
-Then, create the database scoped credentials using the SAS token provided by the Azure Blob Storage Account.
+Then, create the database scoped credentials using the SAS token provided by the Azure Blob Storage Account. Replace `<token>` with the provided SAS token.
 
 ```sql
-create database scoped credential [filestore]
-with identity='SHARED ACCESS SIGNATURE',
-secret='sv=2022-11-02&ss=bfqt&srt=sco&sp=seespotrun&se=2023-08-03T02:21:25Z&st=2023-08-02T18:21:25Z&spr=https&sig=WWwwWWwwWWYaKCheeseNXCCCCCCDDDDDSSSSSU%3D'
-go
+CREATE DATABASE SCOPED CREDENTIAL [filestore]
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = '<token>';
+GO
 ```
 
-Next, create the file and add text to it with the following two statements:
+Next, create the file and add text to it with the following two statements. Replace `<domain>` with the appropriate path.
 
 ```sql
-declare @payload nvarchar(max) = (select * from (values('Hello from Azure SQL!', sysdatetime())) payload([message], [timestamp])for json auto, without_array_wrapper)
-declare @response nvarchar(max), @url nvarchar(max), @headers nvarchar(1000);
-declare @len int = len(@payload)
+DECLARE @payload AS NVARCHAR (MAX) = (SELECT *
+    FROM (VALUES ('Hello from Azure SQL!', sysdatetime())) AS payload([message], [timestamp])
+    FOR JSON AUTO, WITHOUT_ARRAY_WRAPPER);
+
+DECLARE
+    @response AS NVARCHAR (MAX),
+    @url AS NVARCHAR (MAX),
+    @headers AS NVARCHAR (1000);
+
+DECLARE @len AS INT = len(@payload);
 
 -- Create the File
-set @url = 'https://myfiles.file.core.windows.net/myfiles/test-me-from-azure-sql.json'
-set @headers = json_object(
-        'x-ms-type': 'file',
-        'x-ms-content-length': cast(@len as varchar(9)),
-        'Accept': 'application/xml')
-exec sp_invoke_external_rest_endpoint
+SET @url = 'https://<domain>.file.core.windows.net/myfiles/test-me-from-azure-sql.json';
+SET @headers = JSON_OBJECT('x-ms-type':'file', 'x-ms-content-length':CAST (@len AS VARCHAR (9)), 'Accept':'application/xml');
+
+EXECUTE sp_invoke_external_rest_endpoint
     @url = @url,
     @method = 'PUT',
     @headers = @headers,
     @credential = [filestore],
-    @response = @response output
-select cast(@response as xml);
+    @response = @response OUTPUT;
 
--- Add text to the File
-set @headers = json_object(
-        'x-ms-range': 'bytes=0-' + cast(@len-1 as varchar(9)),
-        'x-ms-write': 'update',
-        'Accept': 'application/xml');
-set @url = 'https://myfiles.file.core.windows.net/myfiles/test-me-from-azure-sql.json'
-set @url += '?comp=range'
-exec sp_invoke_external_rest_endpoint
+SELECT CAST (@response AS XML);
+
+-- Add text to the file
+SET @headers = JSON_OBJECT('x-ms-range':'bytes=0-' + CAST (@len - 1 AS VARCHAR (9)), 'x-ms-write':'update', 'Accept':'application/xml');
+
+SET @url = 'https://<domain>.file.core.windows.net/myfiles/test-me-from-azure-sql.json';
+
+SET @url += '?comp=range';
+
+EXECUTE sp_invoke_external_rest_endpoint
     @url = @url,
     @method = 'PUT',
     @headers = @headers,
     @payload = @payload,
     @credential = [filestore],
-    @response = @response output
-select cast(@response as xml)
-go
+    @response = @response OUTPUT;
+
+SELECT CAST (@response AS XML);
+GO
 ```
 
-Finally, use the following statement to read the file
+Finally, use the following statement to read the file. Replace `<domain>` with the appropriate path.
 
 ```sql
-declare @response nvarchar(max);
-declare @url nvarchar(max) = 'https://myfiles.file.core.windows.net/myfiles/test-me-from-azure-sql.json'
-exec sp_invoke_external_rest_endpoint
+DECLARE @response AS NVARCHAR (MAX);
+
+DECLARE @url AS NVARCHAR (MAX) = 'https://<domain>.file.core.windows.net/myfiles/test-me-from-azure-sql.json';
+
+EXECUTE sp_invoke_external_rest_endpoint
     @url = @url,
     @headers = '{"Accept":"application/xml"}',
     @credential = [filestore],
     @method = 'GET',
-    @response = @response output
-select cast(@response as xml)
-go
+    @response = @response OUTPUT;
+
+SELECT CAST (@response AS XML);
+GO
 ```
 
 ### F. Call an Azure OpenAI using Managed Identity
 
-The following example calls an Azure OpenAI model using the [Managed Idendity assigned to Azure SQL server](/azure/azure-sql/database/authentication-azure-ad-user-assigned-managed-identity). Replace `<my-azure-openai-endpoint>` and `<model-deployment-name>` with your Azure OpenAI endpoint and model name respectively, and make sure you have given the Managed Identity the "[Cognitive Services OpenAI User](/dotnet/ai/azure-ai-services-authentication#assign-roles-to-your-identity)" role in Azure OpenAI service.
+The following example calls an Azure OpenAI model using [Managed identities in Microsoft Entra for Azure SQL](/azure/azure-sql/database/authentication-azure-ad-user-assigned-managed-identity). Replace `<my-azure-openai-endpoint>` and `<model-deployment-name>` with your Azure OpenAI endpoint and model name respectively, and make sure you have given the Managed Identity the [Cognitive Services OpenAI User](/dotnet/ai/azure-ai-services-authentication#assign-roles-to-your-identity) role in Azure OpenAI service.
 
 ```sql
-create database scoped credential [https://<my-azure-openai-endpoint>.openai.azure.com]
-with identity = 'Managed Identity', secret = '{"resourceid":"https://cognitiveservices.azure.com"}';
-go
+CREATE DATABASE SCOPED CREDENTIAL [https://<my-azure-openai-endpoint>.openai.azure.com]
+    WITH IDENTITY = 'Managed Identity', SECRET = '{"resourceid":"https://cognitiveservices.azure.com"}';
+GO
 
-declare @response nvarchar(max)
-declare @payload nvarchar(max) = json_object('input': 'hello world');
-exec sp_invoke_external_rest_endpoint
+DECLARE @response AS NVARCHAR (MAX);
+
+DECLARE @payload AS NVARCHAR (MAX) = JSON_OBJECT('input':'hello world');
+
+EXECUTE sp_invoke_external_rest_endpoint
     @url = 'https://<my-azure-openai-endpoint>.openai.azure.com/openai/deployments/<model-deployment-name>/embeddings?api-version=2024-08-01-preview',
     @method = 'POST',
     @credential = [https://<my-azure-openai-endpoint>.openai.azure.com],
     @payload = @payload,
-    @response = @response output;
+    @response = @response OUTPUT;
 
-select json_query(@response, '$.result.data[0].embedding'); -- Assuming the called model is an embedding model
-go
-
+SELECT json_query(@response, '$.result.data[0].embedding'); -- Assuming the called model is an embedding model
 ```
 
 ## Related content

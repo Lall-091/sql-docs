@@ -13,6 +13,8 @@ ms.topic: conceptual
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
 Once you have installed Master Data Services (MDS), you may find the trace logging feature useful for error diagnostics, support requests, and monitoring of application usage and performance. This article covers the steps to turn on and configure trace logging. Specifically, this article covers tracing to a text log file. This article also discusses the procedure to create a log file that can help troubleshoot failures that may occur when creating an MDS database.
 
 ## Background

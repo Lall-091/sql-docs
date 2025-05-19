@@ -5,7 +5,7 @@ description: Enable several database configuration settings at the individual da
 author: markingmyname
 ms.author: maghan
 ms.reviewer: derekw, jovanpop, wiassaf, mariyaali
-ms.date: 02/03/2025
+ms.date: 04/17/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -57,6 +57,7 @@ The following settings are supported in [!INCLUDE [ssazure-sqldb](../../includes
 - Specify the number of minutes a paused resumable index operation is paused before it is automatically aborted by the [!INCLUDE [ssDE-md](../../includes/ssde-md.md)].
 - Enable or disable waiting for locks at low priority for asynchronous statistics update.
 - Enable or disable uploading ledger digests to Azure Blob Storage.
+- Enable or disable optimized Halloween protection.
 
 This setting is only available in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)].
 
@@ -113,15 +114,9 @@ ALTER DATABASE SCOPED CONFIGURATION
     | PARAMETER_SENSITIVE_PLAN_OPTIMIZATION = { ON | OFF }
     | LEDGER_DIGEST_STORAGE_ENDPOINT = { <endpoint URL string> | OFF }
     | OPTIMIZED_SP_EXECUTESQL = { ON | OFF }
+    | OPTIMIZED_HALLOWEEN_PROTECTION = { ON | OFF }
 }
 ```
-
-> [!IMPORTANT]  
-> Starting with [!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)], in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi](../../includes/ssazuremi-md.md)], some option names changed:
->
-> - `DISABLE_INTERLEAVED_EXECUTION_TVF` changed to `INTERLEAVED_EXECUTION_TVF`
-> - `DISABLE_BATCH_MODE_MEMORY_GRANT_FEEDBACK` changed to `BATCH_MODE_MEMORY_GRANT_FEEDBACK`
-> - `DISABLE_BATCH_MODE_ADAPTIVE_JOINS` changed to `BATCH_MODE_ADAPTIVE_JOINS`
 
 ```syntaxsql
 -- Syntax for Azure Synapse Analytics
@@ -517,6 +512,15 @@ Enables or disables the compilation serialization behavior of `sp_executesql` wh
 
 When `OPTIMIZED_SP_EXECUTESQL` is `ON`, the first execution of sp_executesql compiles and inserts its compiled plan into the plan cache. Other sessions abort waiting on the compile lock and reuse the plan once it becomes available. This allows `sp_executesql` to behave like objects such as stored procedures and triggers from a compilation perspective.
 
+#### OPTIMIZED_HALLOWEEN_PROTECTION = { ON | OFF }
+
+**Applies to:** [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)]
+
+Enables or disables [optimized Halloween protection](../../relational-databases/performance/intelligent-query-processing-details.md#optimized-halloween-protection) for data modification language (DML) statements. The default is `ON`. When enabled, provides Halloween protection without using a spool operator in the query plan.
+
+> [!NOTE]  
+> For database compatibility level 160 or lower, this database scoped configuration has no effect.
+
 ## Permissions
 
 Requires `ALTER ANY DATABASE SCOPED CONFIGURATION` on the database. This permission can be granted by a user with `CONTROL` permission on a database.
@@ -538,8 +542,6 @@ Starting with [!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)], in [!I
 - `DISABLE_INTERLEAVED_EXECUTION_TVF` changed to `INTERLEAVED_EXECUTION_TVF`
 - `DISABLE_BATCH_MODE_MEMORY_GRANT_FEEDBACK` changed to `BATCH_MODE_MEMORY_GRANT_FEEDBACK`
 - `DISABLE_BATCH_MODE_ADAPTIVE_JOINS` changed to `BATCH_MODE_ADAPTIVE_JOINS`
-
-In [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], authentication is via Microsoft Entra ID passthrough, using `USER IDENTITY`.
 
 ### Check the status of a database scoped configuration option
 

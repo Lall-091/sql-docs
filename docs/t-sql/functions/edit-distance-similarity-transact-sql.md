@@ -4,22 +4,28 @@ description: EDIT_DISTANCE_SIMILARITY calculates a similarity value ranging from
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: abhtiwar, wiassaf, randolphwest
-ms.date: 01/15/2025
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =fabric"
+monikerRange: "=azuresqldb-current || =fabric || >=sql-server-2016"
 ---
 
 # EDIT_DISTANCE_SIMILARITY (Transact-SQL)
 
-[!INCLUDE [asdb-fabricsqldb](../../includes/applies-to-version/asdb-fabricsqldb.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-fabricsqldb.md)]
 
 [!INCLUDE [preview](../../includes/preview.md)]
 
-Calculates a similarity value ranging from 0 (indicating no match) to 100 (indicating full match).
+Calculates a similarity value ranging from 0 (indicating no match) to 100 (indicating full match). 
+
+> [!NOTE]
+> - EDIT_DISTANCE_SIMILARITY is currently in preview. 
+> - SQL Server support for EDIT_DISTANCE_SIMILARITY introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. 
+
+## Syntax
 
 ```syntaxsql
 EDIT_DISTANCE_SIMILARITY (

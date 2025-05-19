@@ -4,7 +4,7 @@ description: "Intelligent query processing features described in detail."
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: derekw, wiassaf
-ms.date: 01/08/2024
+ms.date: 04/30/2025
 ms.service: sql
 ms.subservice: performance
 ms.topic: conceptual
@@ -397,6 +397,87 @@ For information about CE feedback, visit [Cardinality estimation (CE) feedback](
 ## Optimized plan forcing with Query Store
 
 For information about optimized plan forcing with Query Store, visit [Optimized plan forcing with Query Store](optimized-plan-forcing-query-store.md).
+
+## Optimized Halloween protection
+
+**Applies to:** [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)])
+
+Optimized Halloween protection can reduce `tempdb` space consumption and improve query performance by redesigning the way the database engine solves the [Halloween problem](https://wikipedia.org/wiki/Halloween_Problem). This problem occurs when a data modification language (DML) statement changes data in such a way that the same statement unexpectedly processes a row more than once.
+
+Traditionally, the [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] protects DML statements from the Halloween problem by introducing a **Spool** [operator](../showplan-logical-and-physical-operators-reference.md) in the query plan, or by taking advantage of another blocking operator already present in the plan, such as a **Sort** or a **Hash Match**.
+
+If a **Spool** operator is used, it creates a temporary copy of the data to be modified before any modifications are made to the data in the table.
+
+While the protection spool avoids the Halloween problem, it has downsides:
+
+- The spool requires extra space in `tempdb`, extra disk I/O and CPU to write and read the data, and extra memory to cache the data.
+- Statement processing by the downstream query operators is blocked until the data is fully written into the spool.
+- The spool adds query plan complexity that can cause the query optimizer to generate a less optimal plan.
+
+Optimized Halloween protection removes these downsides by making the **Spool** operator unnecessary.
+
+### Use optimized Halloween protection
+
+To enable optimized Halloween protection for a database, the following prerequisites are required:
+
+- [Accelerated database recovery (ADR)](../accelerated-database-recovery-concepts.md) must be enabled for the database.
+- The database must use compatibility level 170.
+- The `OPTIMIZED_HALLOWEEN_PROTECTION` [database scoped configuration](../../t-sql/statements/alter-database-scoped-configuration-transact-sql.md#optimized_halloween_protection---on--off-) must be enabled.
+
+The `OPTIMIZED_HALLOWEEN_PROTECTION` database-scoped configuration is enabled by default. This means that when you enable ADR for a database using compatibility level 170, the database starts using optimized Halloween protection.
+
+To ensure that a database uses optimized Halloween protection, execute the following statements:
+
+```sql
+ALTER DATABASE [<database-name-placeholder>] SET ACCELERATED_DATABASE_RECOVERY = ON;
+ALTER DATABASE [<database-name-placeholder>] SET COMPATIBILITY_LEVEL = 170;
+ALTER DATABASE SCOPED CONFIGURATION SET OPTIMIZED_HALLOWEEN_PROTECTION = ON;
+```
+
+To enable ADR, an exclusive lock on the database is required. That means that the `ALTER DATABASE ... SET ACCELERATED_DATABASE_RECOVERY = ON` command is blocked while there are any other sessions in the database, and that any new sessions wait behind these `ALTER DATABASE` commands. To enable ADR without waiting, you can add the termination clause `WITH ROLLBACK IMMEDIATE` to the `ALTER DATABASE` command to abort any active sessions in the database.
+
+To disable optimized Halloween protection for a database, disable the `OPTIMIZED_HALLOWEEN_PROTECTION` database-scoped configuration:
+
+```sql
+ALTER DATABASE SCOPED CONFIGURATION SET OPTIMIZED_HALLOWEEN_PROTECTION = OFF;
+```
+
+#### Use optimized Halloween protection via query hints
+
+You can use the `ENABLE_OPTIMIZED_HALLOWEEN_PROTECTION` and `DISABLE_OPTIMIZED_HALLOWEEN_PROTECTION` query hints to enable and disable optimized Halloween protection for a given query. The hints must be specified via the `USE HINT` clause. For more information, see [Query hints (Transact-SQL)](../../t-sql/queries/hints-transact-sql-query.md#use_hint).
+
+The hints work under any compatibility level and override the `OPTIMIZED_HALLOWEEN_PROTECTION` database-scoped configuration.
+
+The `ENABLE_OPTIMIZED_HALLOWEEN_PROTECTION` and `DISABLE_OPTIMIZED_HALLOWEEN_PROTECTION` query hints can be specified directly in the query, or via [Query Store hints](query-store-hints.md).
+
+#### Optimized Halloween protection property in the query plan
+
+When optimized Halloween protection is used for an [operator](../showplan-logical-and-physical-operators-reference.md) in the query plan, the `OptimizedHalloweenProtectionUsed` property of the operator in the XML query plan is set to `True`.
+
+### How optimized Halloween protection works
+
+When ADR is enabled, each statement in a transaction obtains a unique statement identifier, known as *nest ID*. Each row modified by a DML statement is stamped with the *nest ID* of the statement. This is required to provide the [ACID transaction semantics](../sql-server-transaction-locking-and-row-versioning-guide.md#Basics) with ADR.
+
+During DML statement processing, when the [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] reads the data, it skips any row that has the same *nest ID* as the current DML statement. This means that the query processor doesn't see the rows already processed by the statement, avoiding the Halloween problem.
+
+### Limitations of optimized Halloween protection
+
+Optimized Halloween protection isn't currently used in the following cases:
+
+- In a DML statement that modifies
+    - A temporary table, a table variable, or a nontemporary table in the `tempdb` database.
+    - A table with either clustered or nonclustered columnstore index.
+    - A [graph](../graphs/sql-graph-overview.md) table or a [ledger](../security/ledger/ledger-overview.md) table.
+    - A view created with the [CHECK](../../t-sql/statements/create-view-transact-sql.md#check-option) option.
+    - A table when the table or a column on that table have a check constraint that uses a user-defined scalar function.
+    - A table that has a [row-level security](../security/row-level-security.md) policy with either a block or a filter predicate.
+    - A table that has a column with the `FILESTREAM` attribute.
+- In `DELETE` and `MERGE` statements that include the `OUTPUT` clause.
+- In `MERGE` and `UPDATE ... FROM` statements that can modify the same row more than once.
+
+In all these cases, the traditional Halloween protection using a **Spool** operator (or another blocking operator if already present) is used instead.
+
+If the same DML statement modifies multiple tables in different databases, optimized Halloween protection is used only for operators that modify tables in the databases where optimized Halloween protection is enabled. For example, both the optimized and the traditional Halloween protection can occur in a composable DML statement with an `OUTPUT` clause inserting data into a table in a different database.
 
 ## Related content
 

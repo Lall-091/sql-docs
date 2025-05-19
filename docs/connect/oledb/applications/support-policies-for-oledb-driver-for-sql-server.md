@@ -3,7 +3,7 @@ title: "Support policies for OLE DB Driver for SQL Server"
 description: "Learn about the support policies for OLE DB Driver for SQL Server and what operating systems and SQL database versions are supported with each driver version."
 author: David-Engel
 ms.author: davidengel
-ms.date: "07/09/2024"
+ms.date: "05/09/2025"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: "reference"
@@ -33,15 +33,15 @@ OLE DB Driver for SQL Server is tested with and supports connections to the foll
 
 The following table lists which operating systems are supported by OLE DB Driver for SQL Server.  
 
-| Operating system&nbsp;&#8594;<br />&#8595; Driver version | Windows Server 2022 | Windows Server 2019 | Windows Server 2016 | Windows Server 2012<sup>1</sup> | Windows Server 2012 R2<sup>2</sup> | Windows 11 | Windows 10 | Windows 8.1<sup>3</sup> |
-|----|---|---|---|---|---|---|---|---|
-|19.3.3+|Yes|Yes|Yes|   |   |Yes|Yes|   |
-|19.3+|Yes|Yes|Yes|Yes|Yes|Yes|Yes|   |
-|19.0+|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
-|18.7+|Yes|Yes|Yes|   |   |Yes|Yes|   |
-|18.6+|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
-|18.2+|   |Yes|Yes|Yes|Yes|   |Yes|Yes|
-|18.0+|   |   |Yes|Yes|Yes|   |Yes|Yes|
+| Operating system&nbsp;&#8594;<br />&#8595; Driver version | Windows Server 2025 | Windows Server 2022 | Windows Server 2019 | Windows Server 2016 | Windows Server 2012<sup>1</sup> | Windows Server 2012 R2<sup>2</sup> | Windows 11 | Windows 10 | Windows 8.1<sup>3</sup> |
+|----|---|---|---|---|---|---|---|---|---|
+|19.3.3+|Yes|Yes|Yes|Yes|   |   |Yes|Yes|   |
+|19.3+|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|   |
+|19.0+|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|18.7+|Yes|Yes|Yes|Yes|   |   |Yes|Yes|   |
+|18.6+|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|18.2+|   |   |Yes|Yes|Yes|Yes|   |Yes|Yes|
+|18.0+|   |   |   |Yes|Yes|Yes|   |Yes|Yes|
 
 <sup>1</sup> Supported on Windows Server 2012 with [KB2999226](https://go.microsoft.com/fwlink/?linkid=2074061).  
 <sup>2</sup> Supported on Windows Server 2012 R2 with [April 2014 update](https://go.microsoft.com/fwlink/?linkid=2073785) and [KB2999226](https://go.microsoft.com/fwlink/?linkid=2074061).  

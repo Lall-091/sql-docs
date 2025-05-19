@@ -4,7 +4,7 @@ description: "Use AI options such as OpenAI and vectors to build intelligent app
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: damauri, josephsack, randolphwest, mathoma
-ms.date: 04/18/2025
+ms.date: 05/06/2025
 ms.service: azure-sql-database
 ms.topic: conceptual
 ms.collection:
@@ -39,7 +39,7 @@ The following links provide sample code of various options to build intelligent 
 | AI Option | Description |
 | --- | --- |
 | **[Azure OpenAI](#azure-openai)** | Generate embeddings for RAG and integrate with any model supported by Azure OpenAI. |
-| **[Vectors](#vectors)** | Learn how to store and query vectors in the database. |
+| **[Vectors](#vectors)** | Learn how to store vectors and use vector functions in the database. |
 | **[Azure AI Search](#azure-ai-search)** | Use your database together with Azure AI Search to train LLM on your data. |
 | **[Intelligent applications](#intelligent-applications)** | Learn how to create an end-to-end solution using a common pattern that can be replicated in any scenario. |
 | **[Copilot skills in Azure SQL Database](#microsoft-copilot-skills-in-azure-sql-database)** | Learn about the set of AI-assisted experiences designed to streamline the design, operation, optimization, and health of Azure SQL Database-driven applications. |
@@ -86,7 +86,9 @@ In Azure OpenAI, input text provided to the API is turned into tokens (tokenized
 
 ### Vectors
 
-Vectors are ordered arrays of numbers (typically floats) that can represent information about some data. For example, an image can be represented as a vector of pixel values, or a string of text can be represented as a vector or ASCII values. The process to turn data into a vector is called *vectorization*. For more information, see [Vectors](#vectors-1).
+Vectors are ordered arrays of numbers (typically floats) that can represent information about some data. For example, an image can be represented as a vector of pixel values, or a string of text can be represented as a vector or ASCII values. The process to turn data into a vector is called *vectorization*. For more information, see [Vector examples](#vector-examples).
+
+Working with vector data is easier with the introduction of the [vector data type](/sql/t-sql/data-types/vector-data-type?view=azuresqldb-current&preserve-view=true) and [vector functions](/sql/t-sql/functions/vector-functions-transact-sql?view=azuresqldb-current&preserve-view=true). 
 
 ### Embeddings
 
@@ -104,7 +106,7 @@ Vectors in Azure SQL Database can be efficiently stored and queried, as describe
 
 ## Azure OpenAI
 
-Embedding is the process of representing the real world as data. Text, images, or sounds can be converted into embeddings. Azure OpenAI models are able to transform real-world information into embeddings. The models are available as REST endpoints and thus can be easily consumed from Azure SQL Database using the [`sp_invoke_external_rest_endpoint`](/sql/relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql) system stored procedure:
+Embedding is the process of representing the real world as data. Text, images, or sounds can be converted into embeddings. Azure OpenAI models are able to transform real-world information into embeddings. The models are available as REST endpoints and thus can be easily consumed from Azure SQL Database using the [`sp_invoke_external_rest_endpoint`](/sql/relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql?view=azuresqldb-current&preserve-view=true) system stored procedure:
 
 ```sql
 DECLARE @retval INT, @response NVARCHAR(MAX);
@@ -132,11 +134,9 @@ For additional examples on using SQL Database and OpenAI, see the following arti
 - [Generate images with Azure OpenAI Service (DALL-E) and Azure SQL Database](https://devblogs.microsoft.com/azure-sql/generate-images-with-openai-and-azure-sql/)
 - [Using OpenAI REST Endpoints with Azure SQL Database](https://devblogs.microsoft.com/azure-sql/using-openai-rest-endpoints-with-azure-sql-database/)
 
-## Vectors
+## Vector examples
 
-In November 2024, the new **vector** data type was introduced in Azure SQL Database.
-
-The dedicated **vector** type allows for efficient and optimized storing of vector data, and comes with a set of functions to help developers streamline vector and similarity search implementation. Calculating distance between two vectors can be done in one line of code using the new `VECTOR_DISTANCE` function. For more information on the [**vector** data type](/sql/t-sql/data-types/vector-data-type) and related functions, see [Overview of vectors in the SQL Database Engine](/sql/relational-databases/vectors/vectors-sql-server).
+The dedicated **vector** data type allows for efficient and optimized storing of vector data, and comes with a set of functions to help developers streamline vector and similarity search implementation. Calculating distance between two vectors can be done in one line of code using the new `VECTOR_DISTANCE` function. For more information and examples, see [Vector search and vector indexes in the SQL Database Engine](/sql/relational-databases/vectors/vectors-sql-server?view=azuresqldb-current&preserve-view=true).
 
 For example:
 
@@ -155,7 +155,6 @@ FROM
 ORDER BY
     VECTOR_DISTANCE('cosine', @my_reference_vector, embedding)
 ```
-
 
 ## Azure AI Search
 

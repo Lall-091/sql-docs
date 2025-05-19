@@ -4,7 +4,7 @@ description: The bulk copy program (bcp) utility bulk copies data between an ins
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: davidengel, markingmyname
-ms.date: 03/10/2025
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: how-to
@@ -37,7 +37,7 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 
 The bulk copy program utility (**bcp**) bulk copies data between an instance of [!INCLUDE [msCoName](../includes/msconame-md.md)] [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] and a data file in a user-specified format.
 
-For using **bcp** on Linux, see [Install the SQL Server command-line tools sqlcmd and bcp on Linux](../linux/sql-server-linux-setup-tools.md). For detailed information about using **bcp** with Azure Synapse Analytics, see [Load data with bcp](/azure/sql-data-warehouse/sql-data-warehouse-load-with-bcp).
+For using **bcp** on Linux, see [Install the sqlcmd and bcp SQL Server command-line tools on Linux](../linux/sql-server-linux-setup-tools.md). For detailed information about using **bcp** with Azure Synapse Analytics, see [Load data with bcp](/azure/sql-data-warehouse/sql-data-warehouse-load-with-bcp).
 
 The **bcp** utility can be used to import large numbers of new rows into [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] tables or to export data out of tables into data files. Except when used with the `queryout` option, the utility requires no knowledge of [!INCLUDE [tsql](../includes/tsql-md.md)]. To import data into a table, you must either use a format file created for that table, or understand the structure of the table and the types of data that are valid for its columns.
 
@@ -62,7 +62,7 @@ The command-line tools are General Availability (GA), however they're being rele
 
 ### [Linux and macOS](#tab/linux)
 
-For instructions on installing **sqlcmd** and **bcp** on Linux and macOS, see [Install the SQL Server command-line tools sqlcmd and bcp on Linux](../linux/sql-server-linux-setup-tools.md).
+For instructions on installing **sqlcmd** and **bcp** on Linux and macOS, see [Install the sqlcmd and bcp SQL Server command-line tools on Linux](../linux/sql-server-linux-setup-tools.md).
 
 ---
 
@@ -89,9 +89,13 @@ To check the **bcp** version, execute `bcp -v` command, and confirm that 15.0.42
 
 ### [Linux and macOS](#tab/linux)
 
-**sqlcmd** and **bcp** are available on Linux. For more information, see [Install the SQL Server command-line tools sqlcmd and bcp on Linux](../linux/sql-server-linux-setup-tools.md).
+**sqlcmd** and **bcp** are available on Linux. For more information, see [Install the sqlcmd and bcp SQL Server command-line tools on Linux](../linux/sql-server-linux-setup-tools.md).
 
 ---
+
+## TDS 8.0 support
+
+[!INCLUDE [sssql25-md](../includes/sssql25-md.md)] introduces TDS 8.0 support for the **bcp** utility.
 
 ## Syntax
 
@@ -130,7 +134,7 @@ bcp [database_name.] schema.{table_name | view_name | "query"}
     [-U login_id]
     [-u]
     [-v]
-    [-V (80 | 90 | 100 | 110 | 120 | 130 | 140 | 150 | 160)]
+    [-V (80 | 90 | 100 | 110 | 120 | 130 | 140 | 150 | 160 | 170)]
     [-w]
     [-x]
     [-Y[s|m|o]]
@@ -191,12 +195,14 @@ The following table lists the command-line options available in **bcp**, and whi
 | [**-t *field_term***](#-t-field_term) | Yes | Yes |
 | [**-T**](#-t) | Yes | Yes |
 | [**-U *login_id***](#-u-login_id) | Yes | Yes |
-| [**-u**](#-u) | No | Yes |
+| [**-u**](#-u) | Yes <sup>1</sup> | Yes |
 | [**-v**](#-v) | Yes | Yes |
-| [**-V (80 \| 90 \| 100 \| 110 \| 120 \| 130 \| 140 \| 150 \| 160 )**](#-v--80--90--100--110--120--130--140--150--160-) | Yes | No |
+| [**-V (80 \| 90 \| 100 \| 110 \| 120 \| 130 \| 140 \| 150 \| 160 \| 170 )**](#-v--80--90--100--110--120--130--140--150--160--170-) | Yes | No |
 | [**-w**](#-w) | Yes | Yes |
 | [**-x**](#-x) | Yes | No |
-| [**-Y\[s\|m\|o\]**](#-ysmo) | No | Yes |
+| [**-Y\[s\|m\|o\]**](#-ysmo) | Yes <sup>1</sup> | Yes |
+
+Yes<sup>1</sup> [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and later versions.
 
 #### *database_name*
 
@@ -242,7 +248,7 @@ Copies from a query and must be specified only when bulk copying data from a que
 
 #### format
 
-Creates a format file based on the option specified (`-n`, `-c`, `-w`, or `-N`) and the table or view delimiters. When bulk copying data, the **bcp** command can refer to a format file, which saves you from reentering format information interactively. The `format` option requires the `-f` option; creating an XML format file, also requires the `-x` option. For more information, see [Create a Format File (SQL Server)](../relational-databases/import-export/create-a-format-file-sql-server.md). You must specify `nul` as the value (`format nul`).
+Creates a format file based on the option specified (`-n`, `-c`, `-w`, or `-N`) and the table or view delimiters. When bulk copying data, the **bcp** command can refer to a format file, which saves you from reentering format information interactively. The `format` option requires the `-f` option; creating an XML format file, also requires the `-x` option. For more information, see [Create a format file with bcp (SQL Server)](../relational-databases/import-export/create-a-format-file-sql-server.md). You must specify `nul` as the value (`format nul`).
 
 #### -a *packet_size*
 
@@ -311,7 +317,7 @@ The `-E` option has a special permissions requirement. For more information, see
 
 Specifies the full path of a format file. The meaning of this option depends on the environment in which it's used, as follows:
 
-- If `-f` is used with the `format` option, the specified *format_file* is created for the specified table or view. To create an XML format file, also specify the `-x` option. For more information, see [Create a Format File (SQL Server)](../relational-databases/import-export/create-a-format-file-sql-server.md).
+- If `-f` is used with the `format` option, the specified *format_file* is created for the specified table or view. To create an XML format file, also specify the `-x` option. For more information, see [Create a format file with bcp (SQL Server)](../relational-databases/import-export/create-a-format-file-sql-server.md).
 
 - If used with the `in` or `out` option, `-f` requires an existing format file.
 
@@ -330,7 +336,7 @@ Specifies the number of the first row to export from a table or import from a da
 
 **Applies to:** Azure SQL Database, [!INCLUDE [fabric-sqldb](../includes/fabric-sqldb.md)], and Azure Synapse Analytics only.
 
-This switch is used by the client to specify that the user is authenticated with Microsoft Entra ID. The `-G` switch requires [version 14.0.3008.27](https://go.microsoft.com/fwlink/?LinkID=825643) or later versions. To determine your version, execute `bcp -v`. For more information, see [Use Microsoft Entra authentication with SQL Database or Azure Synapse Analytics](/azure/sql-database/sql-database-aad-authentication) or [Authentication to SQL database in Fabric](/fabric/database/sql/authentication).
+This switch is used by the client to specify that the user is authenticated with Microsoft Entra ID. The `-G` switch requires [version 14.0.3008.27](https://go.microsoft.com/fwlink/?LinkID=825643) or later versions. To determine your version, execute `bcp -v`. For more information, see [Use Microsoft Entra authentication with SQL Database or Azure Synapse Analytics](/azure/sql-database/sql-database-aad-authentication) or [Authentication in SQL database in Microsoft Fabric](/fabric/database/sql/authentication).
 
 > [!IMPORTANT]  
 > On Linux and macOS, Microsoft Entra interactive authentication isn't currently supported. Microsoft Entra integrated authentication requires [Microsoft ODBC Driver 17 for SQL Server](../connect/odbc/download-odbc-driver-for-sql-server.md) version 17.6.1 and later versions, and a properly [configured Kerberos environment](../connect/odbc/linux-mac/using-integrated-authentication.md#configure-kerberos).
@@ -434,7 +440,7 @@ To check if your version of **bcp** includes support for Microsoft Entra authent
 
 - **Microsoft Entra ID access token**
 
-  **Applies to:** Linux and macOS only. Windows is not supported.
+  **Applies to:** Linux and macOS only. Windows isn't supported.
 
   Users of **bcp** 17.8 and later versions, on Linux and macOS, can also authenticate with a token. The following examples use [PowerShell on Linux](/powershell/scripting/install/installing-powershell-on-linux) to retrieve an access token.
 
@@ -456,7 +462,7 @@ To check if your version of **bcp** includes support for Microsoft Entra authent
 
 - **Microsoft Entra interactive**
 
-  **Applies to:** Windows only. Linux and macOS are not supported.
+  **Applies to:** Windows only. Linux and macOS aren't supported.
 
   Microsoft Entra interactive authentication, available for all Azure SQL, and [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] and later versions, allows you to use an interactive dialog to authenticate, which also supports multifactor authentication.
 
@@ -503,7 +509,7 @@ Specifies the hint or hints to be used during a bulk import of data into a table
   Specifies that a bulk update table-level lock is acquired during the bulkload operation; otherwise, a row-level lock is acquired. This hint significantly improves performance because holding a lock during the bulk-copy operation reduces lock contention on the table. A table can be loaded concurrently from multiple clients if the table has no indexes and `TABLOCK` is specified. By default, locking behavior is determined by the table option `table lock on bulkload`. For more information, see [sp_tableoption](../relational-databases/system-stored-procedures/sp-tableoption-transact-sql.md).
 
   > [!NOTE]  
-  > If the target table is clustered columnstore index, `TABLOCK` hint isn't required for loading by multiple concurrent clients because each concurrent thread is assigned a separate rowgroup within the index and loads data into it. For more information, see [Columnstore indexes: Overview](../relational-databases/indexes/columnstore-indexes-overview.md).
+  > If the target table is clustered columnstore index, `TABLOCK` hint isn't required for loading by multiple concurrent clients because each concurrent thread is assigned a separate rowgroup within the index and loads data into it. For more information, see [Columnstore indexes: overview](../relational-databases/indexes/columnstore-indexes-overview.md).
 
 - **CHECK_CONSTRAINTS**
 
@@ -631,7 +637,7 @@ For more information, see the [Remarks](#remarks) section in this article.
 
 #### -r *row_term*
 
-Specifies the row terminator. The default is `\n` (newline character). Use this parameter to override the default row terminator. For more information, see [Specify Field and Row Terminators (SQL Server)](../relational-databases/import-export/specify-field-and-row-terminators-sql-server.md).
+Specifies the row terminator. The default is `\n` (newline character). Use this parameter to override the default row terminator. For more information, see [Specify field and row terminators (SQL Server)](../relational-databases/import-export/specify-field-and-row-terminators-sql-server.md).
 
 If you specify the row terminator in hexadecimal notation in a **bcp** command, the value is truncated at `0x00`. For example, if you specify `0x410041`, `0x41` is used.
 
@@ -649,7 +655,7 @@ If no server is specified, the **bcp** utility connects to the default instance 
 
 #### -t *field_term*
 
-Specifies the field terminator. The default is `\t` (tab character). Use this parameter to override the default field terminator. For more information, see [Specify Field and Row Terminators (SQL Server)](../relational-databases/import-export/specify-field-and-row-terminators-sql-server.md).
+Specifies the field terminator. The default is `\t` (tab character). Use this parameter to override the default field terminator. For more information, see [Specify field and row terminators (SQL Server)](../relational-databases/import-export/specify-field-and-row-terminators-sql-server.md).
 
 If you specify the field terminator in hexadecimal notation in a **bcp** command, the value is truncated at `0x00`. For example, if you specify `0x410041`, `0x41` is used.
 
@@ -668,15 +674,15 @@ Specifies the login ID used to connect to [!INCLUDE [ssNoVersion](../includes/ss
 
 #### -u
 
-**Applies to:** Linux and macOS only, for **bcp** version 18 and later versions. Not supported on Windows.
+**Applies to:** **bcp** version 18 and later versions.
 
-Trust server certificate.
+Trust server certificate. When used with the Encrypt option for the connection, enables encryption using a self-signed server certificate.
 
 #### -v
 
 Reports the **bcp** utility version number and copyright.
 
-#### -V { 80 | 90 | 100 | 110 | 120 | 130 | 140 | 150 | 160 }
+#### -V { 80 | 90 | 100 | 110 | 120 | 130 | 140 | 150 | 160 | 170 }
 
 **Applies to:** Windows only. Not supported on Linux and macOS.
 
@@ -691,6 +697,7 @@ Performs the bulk-copy operation using data types from an earlier version of [!I
 - `140` = [!INCLUDE [sssql17-md](../includes/sssql17-md.md)]
 - `150` = [!INCLUDE [sssql19-md](../includes/sssql19-md.md)]
 - `160` = [!INCLUDE [sssql22-md](../includes/sssql22-md.md)]
+- `170` = [!INCLUDE [sssql25-md](../includes/sssql25-md.md)]
 
 For example, to generate data for types not supported by [!INCLUDE [ssVersion2000](../includes/ssversion2000-md.md)], but were introduced in later versions of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)], use the `-V80` option.
 
@@ -710,9 +717,9 @@ This option is used with the `format` and `-f` *format_file* options, and genera
 
 #### -Y[s|m|o]
 
-**Applies to:** Linux and macOS only, for **bcp** version 18 and later versions. Not supported on Windows.
+**Applies to:** **bcp** version 18 and later versions.
 
-Specifies the connection encryption mode. The options are Strict, Mandatory, and Optional. Using `-Y` without any parameters uses the Mandatory encryption mode, and is equivalent to `-Ym`.
+Specifies whether connections use TLS encryption over the network. `-Y` can be `o` (for `optional`), `m` (for `mandatory`, the default), or `s` (for `strict`). If you don't include `-Y`, `-Ym` (for `mandatory`) is the default.
 
 ## Remarks
 
@@ -730,7 +737,7 @@ Specifies the connection encryption mode. The options are Strict, Mandatory, and
 
 - XML format files are only supported when [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] tools are installed together with [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Native Client.
 
-- For information about where to find or how to run the **bcp** utility and about the command prompt utilities syntax conventions, see [SQL Command Prompt Utilities (Database Engine)](command-prompt-utility-reference-database-engine.md).
+- For information about where to find or how to run the **bcp** utility and about the command prompt utilities syntax conventions, see [SQL command-line utilities (Database Engine)](command-prompt-utility-reference-database-engine.md).
 
 - For information on preparing data for bulk import or export operations, see [Prepare data for bulk export or import](../relational-databases/import-export/prepare-data-for-bulk-export-or-import-sql-server.md).
 
@@ -984,7 +991,7 @@ bcp WideWorldImporters.Warehouse.StockItemTransactions format nul -f D:\bcp\Stoc
 > [!NOTE]  
 > To use the `-x` switch, you must be using a **bcp** 9.0 client. For information about how to use the **bcp** 9.0 client, see the [Remarks](#remarks) section.
 
-For more information, see [Use Non-XML format files (SQL Server)](../relational-databases/import-export/non-xml-format-files-sql-server.md) and [XML Format Files (SQL Server)](../relational-databases/import-export/xml-format-files-sql-server.md).
+For more information, see [Use Non-XML format files (SQL Server)](../relational-databases/import-export/non-xml-format-files-sql-server.md) and [XML format files (SQL Server)](../relational-databases/import-export/xml-format-files-sql-server.md).
 
 ### I. Use a format file to bulk import with bcp
 
@@ -1081,9 +1088,9 @@ The following articles contain examples of using **bcp**:
 
 - Format files for importing or exporting data (SQL Server)
 
-  - [Create a format file (SQL Server)](../relational-databases/import-export/create-a-format-file-sql-server.md)
+  - [Create a format file with bcp (SQL Server)](../relational-databases/import-export/create-a-format-file-sql-server.md)
   - [Use a format file to bulk import data (SQL Server)](../relational-databases/import-export/use-a-format-file-to-bulk-import-data-sql-server.md)
-  - [Use a format file to skip a table column (SQL Server)](../relational-databases/import-export/use-a-format-file-to-skip-a-table-column-sql-server.md)
+  - [Use a Format File to Skip a Table Column (SQL Server)](../relational-databases/import-export/use-a-format-file-to-skip-a-table-column-sql-server.md)
   - [Use a format file to skip a data field (SQL Server)](../relational-databases/import-export/use-a-format-file-to-skip-a-data-field-sql-server.md)
   - [Use a format file to map table columns to data-file fields (SQL Server)](../relational-databases/import-export/use-a-format-file-to-map-table-columns-to-data-file-fields-sql-server.md)
 

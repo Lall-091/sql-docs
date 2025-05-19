@@ -80,7 +80,7 @@ After performance testing the new compatibility level and deploying Query Store 
 You can use the `ABORT_QUERY_EXECUTION` query hint to block future execution of known problematic queries, for example nonessential queries causing high resource consumption and impacting critical application workloads.
 
 > [!NOTE]
-> At this time, the [ABORT_QUERY_EXECUTION](/sql/t-sql/queries/hints-transact-sql-query?view=azuresqldb-current&preserve-view=true#use_hint_abort_query_execution) (preview) query hint is available only in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)].
+> At this time, the [ABORT_QUERY_EXECUTION](/sql/t-sql/queries/hints-transact-sql-query?view=azuresqldb-current&preserve-view=true#use_hint_abort_query_execution) (preview) query hint is available only in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)].
 
 For example, to block future execution of `query_id` 39, execute the following statement:
 

@@ -25,3 +25,5 @@ The following topics contain syntax and semantic information for all ODBC functi
 -   [Translation DLL Function Reference](../../../odbc/reference/syntax/translation-dll-api-reference.md)  
   
 -   [ODBC Service Provider Interface (SPI) Reference](../../../odbc/reference/syntax/odbc-service-provider-interface-spi-reference.md)
+
+-   [Tracing DLL API Reference](../../../odbc/reference/syntax/tracing-dll-api-reference.md)

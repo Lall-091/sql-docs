@@ -4,7 +4,7 @@ description: This article describes how to install SQL Server Integration Servic
 author: lrtoyou1223
 ms.author: lle
 ms.reviewer: maghan, randolphwest
-ms.date: 11/18/2024
+ms.date: 05/02/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -18,9 +18,10 @@ ms.custom:
 
 Follow the steps in this article to install SQL Server Integration Services (**mssql-server-is**) on Linux. For more information about the features that are supported in Integration Services for Linux, see:
 
-- [Release notes for SQL Server 2017 on Linux](sql-server-linux-release-notes-2017.md)
-- [Release notes for SQL Server 2019 on Linux](sql-server-linux-release-notes-2019.md)
+- [Release notes for SQL Server 2025 Preview on Linux](sql-server-linux-release-notes-2025.md)
 - [Release notes for SQL Server 2022 on Linux](sql-server-linux-release-notes-2022.md)
+- [Release notes for SQL Server 2019 on Linux](sql-server-linux-release-notes-2019.md)
+- [Release notes for SQL Server 2017 on Linux](sql-server-linux-release-notes-2017.md)
 
 You can install SQL Server Integration Services (SSIS) on Red Hat Enterprise Linux (RHEL) and Ubuntu. SUSE Linux Enterprise Server (SLES) isn't supported. Installing SSIS on containers is also not supported.
 
@@ -91,7 +92,7 @@ To install the **mssql-server-is** package on RHEL, follow these steps:
 ::: moniker-end
 
 <!--SQL Server 2022 on Linux-->
-::: moniker range=">= sql-server-linux-ver16 || >= sql-server-ver16"
+::: moniker range=">=sql-server-linux-ver16 || >=sql-server-ver16"
 
 1. Download the SQL Server Red Hat repository configuration file.
 
@@ -224,7 +225,7 @@ To install the **mssql-server-is** package on Ubuntu, follow these steps:
 ::: moniker-end
 
 <!--SQL Server 2022 on Linux-->
-::: moniker range=">= sql-server-linux-ver16 || >= sql-server-ver16"
+::: moniker range=">=sql-server-linux-ver16 || >=sql-server-ver16"
 
 1. Import the public repository GPG keys.
 

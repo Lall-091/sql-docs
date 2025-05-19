@@ -4,7 +4,7 @@ description: CREATE USER (Transact-SQL)
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: wiassaf, jaszymas
-ms.date: 04/08/2025
+ms.date: 04/30/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -220,7 +220,7 @@ CREATE USER user_name
  Specifies the Windows principal for which the database user is being created. The *windows_principal* can be a Windows user, or a Windows group. The user will be created even if the *windows_principal* doesn't have a login. When connecting to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], if the *windows_principal* doesn't have a login, the Windows principal must authenticate at the [!INCLUDE[ssDE](../../includes/ssde-md.md)] through membership in a Windows group that has a login, or the connection string must specify the contained database as the initial catalog. When creating a user from a Windows principal, use the format **[**_\<domainName\>_**\\**_\<loginName\>_**]**. For examples, see [Syntax Summary](#SyntaxSummary). Users based on Active Directory users, are limited to names of fewer than 21 characters.
   
  #### '*Microsoft_Entra_principal*'  
- **Applies to**: [!INCLUDE[sssds](../../includes/sssds-md.md)], SQL Managed Instance, [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)]
+ **Applies to**: [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later, [!INCLUDE[sssds](../../includes/sssds-md.md)], SQL Managed Instance, [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)]
   
  Specifies the Microsoft Entra principal for which the database user is being created. The *Microsoft_Entra_principal* can be a Microsoft Entra user, a Microsoft Entra group, or a Microsoft Entra application. (Microsoft Entra users can't have Windows Authentication logins in [!INCLUDE[ssSDS](../../includes/sssds-md.md)]; only database users.) The connection string must specify the contained database as the initial catalog.
 
@@ -231,19 +231,23 @@ CREATE USER user_name
   - `CREATE USER [bob@contoso.com] FROM EXTERNAL PROVIDER;`  
   - `CREATE USER [alice@fabrikam.onmicrosoft.com] FROM EXTERNAL PROVIDER;`
 
-- [Microsoft Entra server principals (logins)](/azure/azure-sql/database/authentication-azure-ad-logins) introduces creating users that are mapped to Microsoft Entra logins in the virtual `master` database. For example, `CREATE USER [bob@contoso.com] FROM LOGIN [bob@contoso.com];`
+- [Microsoft Entra server principals (logins)](/azure/azure-sql/database/authentication-azure-ad-logins) introduces creating users that are mapped to Microsoft Entra logins in the `master` database. For example, `CREATE USER [bob@contoso.com] FROM LOGIN [bob@contoso.com];`
 
 - Microsoft Entra users and service principals (applications) that are members of more than 2048 Microsoft Entra security groups aren't supported to log into databases in Azure SQL Database, Azure SQL Managed Instance, or Azure Synapse.
 - DisplayName of Microsoft Entra object for Microsoft Entra groups and Microsoft Entra Applications. If you had the *Nurses* security group, you would use:  
   
   - `CREATE USER [Nurses] FROM EXTERNAL PROVIDER;`  
   
- For more information, see [Connecting to SQL Database By Using Microsoft Entra authentication](/azure/azure-sql/database/authentication-aad-overview).  
+ For more information, see [Connecting to SQL Database By Using Microsoft Entra authentication](/azure/azure-sql/database/authentication-aad-overview).
+
+For more information about Microsoft Entra authentication in SQL Server, see [Tutorial: Set up Microsoft Entra authentication for SQL Server enabled by Azure Arc](../../sql-server/azure-arc/entra-authentication-setup-tutorial.md).
   
 #### WITH PASSWORD = '*password*'  
  **Applies to**: [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)] and later, [!INCLUDE[sssds](../../includes/sssds-md.md)].  
   
- Can only be used in a contained database. Specifies the password for the user that is being created. Beginning with [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)], stored password information is calculated using SHA-512 of the salted password.  
+ Can only be used in a contained database. Specifies the password for the user that is being created.
+
+[!INCLUDE [encryption-algorithm-history-md](../../includes/encryption-algorithm-history.md)]
   
 #### WITHOUT LOGIN  
  Specifies that the user shouldn't be mapped to an existing login.  
@@ -287,7 +291,7 @@ Specifies the type of a Microsoft Entra principal. `E` indicates the principal i
 >  Improper use of this option can lead to data corruption. For more information, see [Migrate Sensitive Data Protected by Always Encrypted](../../relational-databases/security/encryption/migrate-sensitive-data-protected-by-always-encrypted.md).  
 
 #### FROM EXTERNAL PROVIDER </br>
- **Applies to**: [!INCLUDE[sssds](../../includes/sssds-md.md)], Azure SQL Managed Instance, [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)]
+ **Applies to**: [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later, [!INCLUDE[sssds](../../includes/sssds-md.md)], Azure SQL Managed Instance, [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)]
 
 Specifies that the principal is for Microsoft Entra authentication. [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] automatically validates the provided principal name in Microsoft Entra. 
 
@@ -298,12 +302,14 @@ In [!INCLUDE[sssds](../../includes/sssds-md.md)] and Azure SQL Managed Instance,
 In [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], `FROM EXTERNAL PROVIDER` is not allowed if a principal issuing `CREATE USER` is a service principal in Microsoft Entra. Service principals must use `TYPE` and `SID` arguments to create users for Microsoft Entra principals.
 
 #### WITH OBJECT_ID = *'objectid'*
- **Applies to**: [!INCLUDE[sssds](../../includes/sssds-md.md)], Azure SQL Managed Instance, [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)]
+ **Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later, [!INCLUDE[sssds](../../includes/sssds-md.md)], Azure SQL Managed Instance, [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)]
 
 Specifies the Microsoft Entra Object ID. If the `OBJECT_ID` is specified, the user_name can be a user defined alias formed from the original principal display name with a suffix appended. The user_name must be a unique name in the `sys.database_principals` view and adhere to all other `sysname` limitations. For more information on using the `WITH OBJECT_ID` option, see [Microsoft Entra logins and users with nonunique display names](/azure/azure-sql/database/authentication-microsoft-entra-create-users-with-nonunique-names).
 
 > [!NOTE]
-> If the service principal display name is not a duplicate, the default `CREATE LOGIN` or `CREATE USER` statement should be used. The `WITH OBJECT_ID` extension is a troubleshooting repair item implemented for use with nonunique service principals. Using it with a unique service principal is not recommended. Using the `WITH OBJECT_ID` extension for a service principal without adding a suffix will run successfully, but it will not be obvious which service principal the login or user was created for. It's recommended to create an alias using a suffix to uniquely identify the service principal. The `WITH OBJECT_ID` extension is not supported for SQL Server.
+> Starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], the `WITH OBJECT_ID` option is supported for Microsoft Entra logins and users with unique display names.
+>
+> If the service principal display name is not a duplicate, the default `CREATE LOGIN` or `CREATE USER` statement should be used. The `WITH OBJECT_ID` extension is a troubleshooting repair item implemented for use with nonunique service principals. Using it with a unique service principal is not recommended. Using the `WITH OBJECT_ID` extension for a service principal without adding a suffix will run successfully, but it will not be obvious which service principal the login or user was created for. It's recommended to create an alias using a suffix to uniquely identify the service principal.
 
 ## Remarks  
  If `FOR LOGIN` is omitted, the new database user will be mapped to the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login with the same name.  

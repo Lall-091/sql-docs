@@ -15,6 +15,8 @@ helpviewer_keywords:
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   Entity permissions apply to:  
   
 -   All of the entity's attributes, including **Name** and **Code**, for both leaf and consolidated members.  

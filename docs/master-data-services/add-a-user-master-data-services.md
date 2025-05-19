@@ -15,6 +15,8 @@ helpviewer_keywords:
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   Add a user to the **Users** list in [!INCLUDE[ssMDSmdm](../includes/ssmdsmdm-md.md)] to begin the process of assigning permission to the Web application. Before a user in the list can access [!INCLUDE[ssMDSmdm](../includes/ssmdsmdm-md.md)], you must give the user permission to one or more functional areas and model objects.  
   
 ## Prerequisites  

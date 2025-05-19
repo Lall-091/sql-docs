@@ -1,31 +1,30 @@
 ---
 title: "Microsoft Fabric mirrored databases"
-description: Learn about the mirrored databases in Microsoft Fabric from Azure SQL Database and Azure SQL Managed Instance. 
+description: Learn about the mirrored databases in Microsoft Fabric from SQL Server, Azure SQL Database and Azure SQL Managed Instance. 
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: imotiwala
 ms.date: 02/20/2025
 ms.service: fabric
 ms.topic: conceptual
-monikerRange: "=azuresqldb-current||=azuresqldb-mi-current||=fabric"
+monikerRange: "=azuresqldb-current||=azuresqldb-mi-current||=fabric||>= sql-server-ver17"
 ---
 # Microsoft Fabric mirrored databases
-[!INCLUDE [asdb-asdbmi-fabric](../../includes/applies-to-version/asdb-asdbmi-fabric.md)]
+[!INCLUDE [asdb-asdbmi-fabric](../../includes/applies-to-version/sqlserver2025-asdb-asdbmi-fabric.md)]
 
-You can mirror databases from Azure SQL Database and Azure SQL Managed Instance to Microsoft Fabric. You can continuously replicate your existing data estate directly into Fabric's OneLake.
+You can mirror databases from SQL Server, Azure SQL Database, and Azure SQL Managed Instance to Microsoft Fabric. You can continuously replicate your existing data estate directly into Fabric's OneLake.
 
 For more information and tutorials, see:
 
  - [Mirroring Azure SQL Database](/fabric/database/mirrored-database/azure-sql-database)
  - [Mirroring Azure SQL Managed Instance (Preview)](/fabric/database/mirrored-database/azure-sql-managed-instance)
+ - [Mirroring SQL Server (Preview)](/fabric/database/mirrored-database/sql-server)
 
 For more information, see:
 
 - [Microsoft Fabric mirrored databases](/fabric/database/mirrored-database/overview)
 - [Microsoft Fabric mirrored databases monitoring](/fabric/database/mirrored-database/monitor)
 - [Explore data in your mirrored database using Microsoft Fabric](/fabric/database/mirrored-database/explore)
-
-This feature is not currently available for databases in SQL Server instances.
 
 ## What are Fabric mirrored databases?
 

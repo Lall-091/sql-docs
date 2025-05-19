@@ -4,7 +4,7 @@ description: "Learn about accelerated database recovery (ADR), which redesigned 
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: wiassaf, derekw, randolphwest, dfurman
-ms.date: 03/28/2025
+ms.date: 05/01/2025
 ms.service: sql
 ms.subservice: backup-restore
 ms.topic: conceptual
@@ -22,7 +22,7 @@ monikerRange: ">=sql-server-ver15 || >=sql-server-linux-ver15 || =azuresqldb-mi-
 
 Accelerated database recovery (ADR) improves database availability, especially in the presence of long-running transactions, by redesigning the database engine recovery process.
 
-ADR was introduced in [!INCLUDE[sssql19-md](../includes/sssql19-md.md)] and improved in [!INCLUDE[sssql22-md](../includes/sssql22-md.md)]. ADR is also available in [!INCLUDE [ssazure-sqldb](../includes/ssazure-sqldb.md)], [!INCLUDE[ssazuremi-md](../includes/ssazuremi-md.md)], [!INCLUDE[ssazuresynapse_sqlpool_only](../includes/ssazuresynapse_sqlpool_only.md)], and [!INCLUDE[fabric-sqldb](../includes/fabric-sqldb.md)].
+ADR was introduced in [!INCLUDE[sssql19-md](../includes/sssql19-md.md)] and improved in [!INCLUDE[sssql22-md](../includes/sssql22-md.md)] and [!INCLUDE[sssql25-md](../includes/sssql25-md.md)]. ADR is also available in [!INCLUDE [ssazure-sqldb](../includes/ssazure-sqldb.md)], [!INCLUDE[ssazuremi-md](../includes/ssazuremi-md.md)], [!INCLUDE[ssazuresynapse_sqlpool_only](../includes/ssazuresynapse_sqlpool_only.md)], and [!INCLUDE[fabric-sqldb](../includes/fabric-sqldb.md)].
 
 > [!NOTE]
 > ADR is always enabled in Azure SQL Database, Azure SQL Managed Instance, and SQL database in Fabric.
@@ -176,9 +176,23 @@ ADR isn't supported in databases using [database mirroring](../database-engine/d
 
 - For [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)], when tiered performance storage is available, consider placing the PVS filegroup on higher tier storage. For more information, see [Change the PVS filegroup](accelerated-database-recovery-management.md#change-the-pvs-filegroup).
 
-- For [!INCLUDE[sssql22-md](../includes/sssql22-md.md)] and later, consider enabling multi-threaded PVS cleanup if the single-threaded cleaner performance is insufficient. For more information, see [Server configuration: ADR Cleaner Thread Count](../database-engine/configure-windows/adr-cleaner-thread-count-configuration-option.md).
+- Starting with [!INCLUDE[sssql22-md](../includes/sssql22-md.md)], consider enabling multi-threaded PVS cleanup if the single-threaded cleaner performance is insufficient. For more information, see [Server configuration: ADR Cleaner Thread Count](../database-engine/configure-windows/adr-cleaner-thread-count-configuration-option.md).
+
+- Starting with [!INCLUDE[sssql25-md](../includes/sssql25-md.md)], if you enable ADR in `tempdb`, you might need to allocate additional space for PVS data in the `tempdb` data files. The size of PVS in `tempdb` can be [monitored](accelerated-database-recovery-troubleshoot.md#examine-the-size-of-the-pvs) in the same way as in a user database.
 
 - If you observe issues such as high database space usage by PVS or slow PVS cleanup, see [Monitor and troubleshoot accelerated database recovery](accelerated-database-recovery-troubleshoot.md).
+
+## ADR improvements in SQL Server 2025
+
+- <a id="adr_tempdb"></a> **ADR in tempdb**
+
+  Starting with [!INCLUDE[sssql25-md](../includes/sssql25-md.md)], ADR can be enabled in the [tempdb database](./databases/tempdb-database.md).
+
+  Without ADR, and even with minimal logging used in `tempdb`, transactions that involve objects such as [temporary tables](../t-sql/statements/create-table-transact-sql.md#temporary-tables), [table variables](../t-sql/data-types/table-transact-sql.md), or non-temporary tables created in `tempdb` can be affected by long rollback and high transaction log usage. Running out of `tempdb` transaction log space can cause significant disruptions and application downtime.
+
+  [!INCLUDE[sssql25-md](../includes/sssql25-md.md)] makes the **Instantaneous transaction rollback** and **Aggressive log truncation** benefits of ADR available for workloads using transactions in `tempdb`.
+
+    To enable ADR in `tempdb`, see [Enable ADR](accelerated-database-recovery-management.md#enable-adr).
 
 ## ADR improvements in SQL Server 2022
 

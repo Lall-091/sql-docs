@@ -4,7 +4,7 @@ description: Learn about the SQL Server resource governor feature that limits th
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: dfurman
-ms.date: 03/16/2025
+ms.date: 04/15/2025
 ms.service: sql
 ms.subservice: performance
 ms.topic: conceptual
@@ -18,7 +18,7 @@ monikerRange: ">= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-mi
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
-You can use resource governor to manage [!INCLUDE[ssde-md](../../includes/ssde-md.md)] resource consumption and enforce policies for user workloads. Resource governor lets you reserve or limit the amount of CPU, memory, and physical I/O that user query workloads can use. You can also modify resource consumption behavior of each query, such as the degree of parallelism or the size of a memory grant.
+You can use resource governor to manage [!INCLUDE[ssde-md](../../includes/ssde-md.md)] resource consumption and enforce policies for user workloads. Resource governor lets you reserve or limit the amount of CPU, memory, and physical I/O that user query workloads can use. You can also modify resource consumption behavior of each query, such as the degree of parallelism or the size of a memory grant. Starting with [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)], you can use resource governor to [enforce a limit](tempdb-space-resource-governance.md) on the total amount of `tempdb` space consumed by an application or user workload.
 
 For configuration and monitoring examples and to learn resource governor best practices, see [Tutorial: Resource governor configuration examples and best practices](resource-governor-walkthrough.md).
 
@@ -75,7 +75,7 @@ The following illustration shows resource governor components and their relation
 ## Resource governor tasks
   
 | Task description | Article |
-|:--|:--|
+| --- | --- |
 | View configuration examples | [Resource governor configuration examples and best practices](resource-governor-walkthrough.md) |
 | Enable resource governor | [Enable resource governor](enable-resource-governor.md) |
 | Disable resource governor | [Disable resource governor](disable-resource-governor.md) |
@@ -84,6 +84,7 @@ The following illustration shows resource governor components and their relation
 | Create and test a classifier user-defined function | [Resource governor classifier function](resource-governor-classifier-function.md) |
 | Configure resource governor using a template | [Configure resource governor using a template](configure-resource-governor-using-a-template.md) |
 | View resource governor properties | [View and modify resource governor properties](view-resource-governor-properties.md) |
+| Set a limit on `tempdb` space consumption | [Tempdb space resource governance](tempdb-space-resource-governance.md) |
 
 ## Related content
 

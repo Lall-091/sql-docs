@@ -4,7 +4,7 @@ description: Find out about changes to SQL Server Migration Assistant (SSMA) for
 author: cpichuka
 ms.author: cpichuka
 ms.reviewer: randolphwest
-ms.date: 04/01/2025
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: ssma
 ms.topic: whats-new
@@ -19,13 +19,17 @@ This article lists SQL Server Migration Assistant (SSMA) for SAP ASE (formerly S
 
 [!INCLUDE [entra-id](../../includes/entra-id-hard-coded.md)]
 
+## SSMA v10.2
+
+The v10.2 release of SSMA for SAP ASE contains minor performance improvements and bug fixes.
+
 ## SSMA v10.1
 
-The v10.1 release of SSMA for MySQL contains minor performance improvements and bug fixes.
+The v10.1 release of SSMA for SAP ASE contains minor performance improvements and bug fixes.
 
 ## SSMA v10.0
 
-The v10.0 release of SSMA for MySQL contains minor performance improvements, bug fixes, and online help viewer support.
+The v10.0 release of SSMA for SAP ASE contains minor performance improvements, bug fixes, and online help viewer support.
 
 ## SSMA v9.5
 

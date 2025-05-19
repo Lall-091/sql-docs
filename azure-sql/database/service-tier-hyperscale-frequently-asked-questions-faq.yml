@@ -10,7 +10,7 @@ metadata:
   ms.topic: faq
   author: WilliamDAssafMSFT
   ms.author: wiassaf
-  ms.reviewer: dfurman, mathoma, dinethi, blakhani
+  ms.reviewer: dfurman, mathoma, dinethi, blakhani, adbadram
   ms.date: 04/06/2025
 title: Azure SQL Database Hyperscale FAQ
 summary: |
@@ -125,7 +125,7 @@ sections:
           
           If you're running data analytics on a large scale with complex queries and sustained ingestion rates higher than 100 MiB/s or using Parallel Data Warehouse (PDW), Teradata, or other Massively Parallel Processing (MPP) data warehouses such as Azure Synapse Analytics, then Microsoft Fabric could be the best choice.
 
-          Ingestion or log generation rate of 150 MiB/s is available as an opt-in preview feature for premium-series and premium-series memory optimized. For more information and to opt in to 150 MiB/s, see [Blog: November 2024 Hyperscale enhancements](https://aka.ms/AAslnql).
+          Ingestion or log generation rate is 150 MiB/s per database for premium-series and premium-series memory optimized hardware of Azure SQL Database Hyperscale. For standard-series hardware, the maximum log rate is 100 MiB/s per database. For elastic pools, the maximum log rate is 150 MiB/s per pool for premium-series and premium-series memory optimized hardware, and 125 MiB/s per pool for other hardware.
 
   - name: Hyperscale compute questions
     questions:
@@ -167,9 +167,7 @@ sections:
       - question: |
           What is the size of the transaction log with Hyperscale?
         answer: |
-          In Hyperscale, the transaction log is practically infinite, with a restriction that the active portion of the log cannot exceed 1 TB. The active portion of the log can grow because of long-running transactions, or because of [Change Data Capture](change-data-capture-overview.md?view=azuresql-db&preserve-view=true) processing not keeping up with the rate of data change. Avoid unnecessarily long and large transactions to stay below this limit. Other than this restriction, you don't need to worry about running out of log space on a system that has high log throughput. However, log generation rate might be reduced for continuous aggressively writing workloads. The peak sustained log generation rate is 100 MiB/s.
-          
-          Log generation rate of 150 MiB/s is available as an opt-in preview feature for premium-series and premium-series memory optimized. For more information and to opt in to 150 MiB/s, see [Blog: November 2024 Hyperscale enhancements](https://aka.ms/AAslnql).
+          In Hyperscale, the transaction log is practically infinite, with a restriction that the active portion of the log cannot exceed 1 TB. The active portion of the log can grow because of long-running transactions, or because of [Change Data Capture](change-data-capture-overview.md?view=azuresql-db&preserve-view=true) processing not keeping up with the rate of data change. Avoid unnecessarily long and large transactions to stay below this limit. Other than this restriction, you don't need to worry about running out of log space on a system that has high log throughput. However, log generation rate might be reduced for continuous aggressively writing workloads. Log generation rate of 150 MiB/s for premium-series and premium-series memory optimized hardware, and 100 MiB/s for other hardware.
 
       - question: |
           Does my tempdb scale as my database grows?
@@ -260,7 +258,7 @@ sections:
       - question: |
           How much time would it take to bring in X amount of data to Hyperscale?
         answer: |
-          Hyperscale is capable of consuming 100 MiB/s of new/changed data, but the time needed to move data into databases in Azure SQL Database is also affected by available network throughput, source read speed, the type of load (bulk vs row-by-row), and the target database service level objective. Log generation rate of 150 MiB/s is available as an opt-in preview feature for premium-series and premium-series memory optimized. For more information and to opt in to 150 MiB/s, see [Blog: November 2024 Hyperscale enhancements](https://aka.ms/AAslnql).
+          Hyperscale is capable of consuming up to 150 MiB/s of new/changed data, but the time needed to move data into databases in Azure SQL Database is also affected by available network throughput, source read speed, the type of load (bulk vs row-by-row), and the target database service level objective. 
 
       - question: |
           Can I read data from blob storage and do a fast load (like Polybase in Azure Synapse Analytics)?
@@ -383,7 +381,7 @@ sections:
       - question: |
           How much write throughput can I push in a Hyperscale database?
         answer: |
-          Transaction log throughput limit is 100 MiB/s for any Hyperscale compute size. The ability to achieve this rate depends on multiple factors, including but not limited to workload type, client configuration and performance, and having sufficient compute capacity on the primary compute replica to produce log records at this rate. Log generation rate of 150 MiB/s is available as an opt-in preview feature for premium-series and premium-series memory optimized. For more information and to opt in to 150 MiB/s, see [Blog: November 2024 Hyperscale enhancements](https://aka.ms/AAslnql).
+          Transaction log throughput limit is 100 MiB/s for any Hyperscale compute size. The ability to achieve this rate depends on multiple factors, including but not limited to workload type, client configuration and performance, and having sufficient compute capacity on the primary compute replica to produce log records at this rate. Ingestion or log generation rate is 150 MiB/s per database for premium-series and premium-series memory optimized hardware of Azure SQL Database Hyperscale. For standard-series hardware, the maximum log rate is 100 MiB/s per database. For elastic pools, the maximum log rate is 150 MiB/s per pool for premium-series and premium-series memory optimized hardware, and 125 MiB/s per pool for other hardware.
 
       - question: |
           How many IOPS do I get on the largest compute?
@@ -414,6 +412,21 @@ sections:
           How does the maximum memory limit in serverless compare to provisioned compute?
         answer:  | 
           The maximum amount of memory that a serverless database can scale up is 3 GB/vCore times the maximum number of vCores configured as compared to more than 5 GB/vCore times the same number of vCores in provisioned compute. Review [serverless Hyperscale resource limits](resource-limits-vcore-single-databases.md#hyperscale---serverless-compute---standard-series-gen5) for details.
+
+      - question: |
+          How does continuous priming benefit customers?
+        answer: |
+          Continuous priming helps maintain higher RBPEX (Resilient Buffer Pool Extension) utilization, leading to better performance. It ensures the secondary database is always ready to take over without delay, improving failover times and overall system reliability.
+
+      - question: |
+          What compute tiers support continuous priming?
+        answer: |
+          Continuous priming is available on the provisioned Hyperscale compute tier premium-series hardware and memory-optimized premium series hardware. Continuous priming is not currently available for Hyperscale serverless compute tier.
+
+      - question: | 
+          Does continuous priming benefit named replicas?
+        answer: |
+          Named replicas do not benefit from continuous priming.
 
   - name: Scalability questions
     questions:

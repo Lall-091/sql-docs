@@ -44,7 +44,7 @@ helpviewer_keywords:
   - "disk space [SQL Server]"
   - "localized SQL Server versions"
 ---
-# SQL Server 2019: Hardware and software requirements
+# Hardware and software requirements for SQL Server 2019
 
 [!INCLUDE [SQL Server -Windows Only](../../includes/applies-to-version/sql-windows-only.md)]
 
@@ -193,7 +193,7 @@ Actual hard disk space requirements depend on your system configuration and the 
 The supported storage types for data files are:
 
 - Local Disk
-    - [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] currently supports disk drives that have standard native sector sizes of 512 bytes and 4 KB. Hard disks with sector sizes larger than 4 KB might cause errors when attempting to store [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] data files on them. See [Hard disk drive sector-size support boundaries in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]](https://support.microsoft.com/kb/926930) for more information on hard disk sector-size support in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. Currently, the `ForcedPhysicalSectorSizeInBytes` registry key is required to successfully install SQL Server on some newer storage devices with system disk sector size greater than 4 KB.
+    - [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] currently supports disk drives that have standard native sector sizes of 512 bytes and 4 KB. Hard disks with sector sizes larger than 4 KB might cause errors when attempting to store [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] data files on them. See [Hard disk drive sector-size support boundaries in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]](/troubleshoot/sql/database-engine/database-file-operations/troubleshoot-os-4kb-disk-sector-size) for more information on hard disk sector-size support in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. Currently, the `ForcedPhysicalSectorSizeInBytes` registry key is required to successfully install SQL Server on some newer storage devices with system disk sector size greater than 4 KB.
     - [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] failover cluster installation supports Local Disk only for installing the `tempdb` files. Ensure that the path specified for the tempdb data and log files is valid on all the cluster nodes. During failover, if the tempdb directories are not available on the failover target node, the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] resource will fail to come online.
 - Shared Storage
 - [Storage Spaces Direct \(S2D\)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)

@@ -1,13 +1,15 @@
 ---
-title: "Vector data type (preview)"
+title: "Vector Data Type (Preview)"
 description: The vector data type stores vector data optimized for machine learning applications and similarity search operations.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: damauri, pookam
-ms.date: 04/18/2025
+ms.date: 05/01/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: quickstart
+ms.collection:
+  - ce-skilling-ai-copilot
 f1_keywords:
   - "VECTOR"
   - "VECTOR_TSQL"
@@ -16,17 +18,17 @@ helpviewer_keywords:
   - "vector, data type"
 dev_langs:
   - "TSQL"
-ms.collection: ce-skilling-ai-copilot
-monikerRange: "=azuresqldb-current||=fabric||=azuresqldb-mi-current"
+monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =fabric || =azuresqldb-mi-current"
 ---
+
 # Vector data type (preview)
 
-[!INCLUDE [Azure SQL Database, SQL MI, FabricSQLDB](../../includes/applies-to-version/asdb-asmi-fabricsqldb.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
 The **vector** data type is designed to store vector data optimized for operations such as similarity search and machine learning applications. Vectors are stored in an optimized binary format but are exposed as JSON arrays for convenience. Each element of the vector is stored as a single-precision (4-byte) floating-point value.
 
 > [!NOTE]
-> - This data type is in preview and is subject to change. Make sure to read preview usage terms in the [Service Level Agreements (SLA) for Online Services](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services) document. For limitations of the current preview, see [Limitations](#limitations) and [Known issues](#known-issues).
+> - This data type is in preview and is subject to change. Make sure to read preview usage terms in [Service Level Agreements (SLA) for Online Services](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services). For limitations of the current preview, see [Limitations](#limitations) and [Known issues](#known-issues).
 > - Vector features are available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) policy. 
 
 For more information on working with vector data, see:
@@ -100,7 +102,7 @@ The new **vector** type is available under all database compatibility levels.
 
 ## Compatibility
 
-To allow all clients to be able to operate on vector data, vectors are exposed as **varchar(max)** types. Client applications can work with vector data as if it was a JSON Array. The engine will automatically convert vectors to and from a JSON array, making the new type transparent for the client. Thanks to this approach all drivers and all languages are automatically compatible with the new type.
+To allow all clients to be able to operate on vector data, vectors are exposed as **varchar(max)** types. Client applications can work with vector data as if it was a JSON Array. The SQL Database Engine automatically converts vectors to and from a JSON array, making the new type transparent for the client. All drivers and all languages are automatically compatible with the new type.
 
 You can start to use the new vector type right away. Here's some examples:
 
@@ -165,57 +167,45 @@ For more information on the `get_conn` function, see [Migrate a Python applicati
 > [!WARNING]
 > Make sure to add `LongAsMax=yes` in the connection string used with Python to send data using the **nvarchar(max)** type instead of the obsolete **ntext** to avoid any conversion error message, for example: "DataError: ('22018', '[22018] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Operand type clash: ntext is incompatible with vector (206) (SQLExecDirectW)')". For more information, see [PyODBC - LongAsMax](https://github.com/mkleehammer/pyodbc/wiki/Connecting-to-SQL-Server-from-Windows#longasmax).
 
-
 ---
+
+## Tools
+
+The following tools support the **vector** data type:
+
+- [SQL Server Management Studio](https://aka.ms/ssms) version 21 and later
+- [DacFX and SqlPackage](../../tools/sqlpackage/release-notes-sqlpackage.md) version 162.5 (November 2024) and later
+- [Microsoft.Build.Sql](../../tools/sql-database-projects/sql-database-projects.md) version 1.0.0 (March 2025) and later
+- [SQL Server Data Tools (Visual Studio 2022)](https://visualstudio.microsoft.com/downloads/) version 17.13 and later
+<!-- - The [mssql extension for Visual Studio Code](/sql/tools/visual-studio-code/mssql-extensions)   -->
 
 ## Limitations
 
-The ongoing preview has the following limitations:
+The **vector** type has the following limitations:
 
 ### Tables
 
-- Column-level constraints are not supported, except for `NULL`/`NOT NULL` constraints.
-  - `DEFAULT` and `CHECK` constraints are not supported for **vector** columns.
-  - Key constraints, such as `PRIMARY KEY` or `FOREIGN KEY`, are not supported for **vector** columns. Equality, uniqueness, joins using vector columns as keys, and sort orders do not apply to **vector** data types.
-  - There is no notion of uniqueness for vectors, so unique constraints are not applicable.
+- Column-level constraints aren't supported, except for `NULL`/`NOT NULL` constraints.
+  - `DEFAULT` and `CHECK` constraints aren't supported for **vector** columns.
+  - Key constraints, such as `PRIMARY KEY` or `FOREIGN KEY`, aren't supported for **vector** columns. Equality, uniqueness, joins using vector columns as keys, and sort orders don't apply to **vector** data types.
+  - There's no notion of uniqueness for vectors, so unique constraints aren't applicable.
   - Checking the range of values within a vector is also not applicable.
-- Vectors do not support comparison, addition, subtraction, multiplication, division, concatenation, or any other mathematical, logical, and compound assignment operators.
-- **vector** columns cannot be used in memory-optimized tables.
-- Altering **vector** columns using `ALTER TABLE ... ALTER COLUMN` to other data types is not permitted.
+- Vectors don't support comparison, addition, subtraction, multiplication, division, concatenation, or any other mathematical, logical, and compound assignment operators.
+- **vector** columns can't be used in memory-optimized tables.
+- Altering **vector** columns using `ALTER TABLE ... ALTER COLUMN` to other data types isn't permitted.
 
 ### Table schema metadata
 
 - [sp_describe_first_result_set](../../relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql.md) system stored procedure doesn't correctly return the **vector** data type. Therefore, many data access clients and driver see a **varchar** or **nvarchar** data type.
-- `INFORMATION_SCHEMA.COLUMNS` reports columns using **vector** type as **varbinary**. A workaround to get the correct data type is to use `sys.columns` system view.
-- `sys.columns` returns length of vector in bytes. To get the number of dimensions, use the following formula:
-
-  ```sql
-  dimensions = (length - 8) / 4
-  ```
-
-  where `length` is the value returned by `max_length`. For example, if you see a `max_length` of 20 bytes, the number of dimensions is (20 - 8) / 4 = 3.
 
 ### Conversions
 
-- Implicit and explicit conversion using `CAST` or `CONVERT` from the **vector** type can be done to **varchar**, and **nvarchar** types Similarly, only  **varchar**, and **nvarchar** can be implicitly or explicitly converted to the **vector** type.
+- Implicit and explicit conversion using `CAST` or `CONVERT` from the **vector** type can be done to **varchar**, **nvarchar** and **json** types. Similarly, only **varchar**, **nvarchar** and **json** can be implicitly or explicitly converted to the **vector** type.
 - The **vector** type can't be used with the **sql_variant** type or assigned to a **sql_variant** variable or column. This restriction similar to **varchar(max)**, **varbinary(max)**, **nvarchar(max)**, **xml**, **json**, and CLR-based data types.
-- Casting to and from JSON data type is not supported yet. The workaround is to first convert from/to **nvarchar(max)** and then to/from JSON. For example, to convert a vector to a JSON type:
 
-    ```sql
-    DECLARE @v VECTOR(3) = '[1.0, -0.2, 30]';
-    SELECT CAST(CAST(@v AS NVARCHAR(MAX)) AS JSON) AS j;
-    ```
-    
-    and to convert from a JSON type to vector:
-    
-    ```sql
-    DECLARE @j JSON = JSON_ARRAY(1.0, -0.2, 30)
-    SELECT CAST(CAST(@j AS NVARCHAR(MAX)) AS VECTOR(3)) AS v;
-    ```
-    
 ### Indexes
 
-- B-tree indexes or columnstore indexes are not allowed on **vector** columns. However, a **vector** column can be specified as an included column in an index definition.
+- B-tree indexes or columnstore indexes aren't allowed on **vector** columns. However, a **vector** column can be specified as an included column in an index definition.
 
 ### User-defined types
 
@@ -223,7 +213,11 @@ The ongoing preview has the following limitations:
 
 ### Ledger tables
 
-- Stored procedure `sp_verify_database_ledger` will generate an error if the database contains a table with a **vector** column.
+- Stored procedure `sp_verify_database_ledger` generates an error if the database contains a table with a **vector** column.
+
+### Always Encrypted
+
+- **vector** type isn't supported with Always Encrypted feature.
 
 ## Known issues
 
@@ -231,18 +225,13 @@ In the ongoing preview there are the following known issues:
 
 - Tools like SQL Server Management Studio, Azure Data Studio, or the mssql extension for VS Code currently might not be able to generate the script of a table that has a column using the **vector** data type.
 - Tools like SQL Server Management Studio, Azure Data Studio, or the mssql extension for VS Code currently might report a data type of **varbinary** instead of **vector** for a column using the **vector** type.
-- BCP and `BULK INSERT` don't currently work if tables contain the **vector** type.
-- Import and Export via DacFx currently doesn't work if there is a table using **vector** type.
+- Import and Export via DacFx currently doesn't work if there's a table using **vector** type.
 - Column encryption doesn't currently support the **vector** type.
-- Always Encrypted doesn't currently support the **vector** type.
 - Data Masking currently shows **vector** data as **varbinary** data type in the portal.
-- When passing a **vector** type to `LEN` and `DATALENGTH` error 8116 (Argument data type vector is invalid for argument 1 of datalength function) is returned.
-- In some cases when you pass a vector to a stored procedure or a function you, may get error 42211 (Truncation of vector is not allowed during the conversion). A workaround is to use **nvarchar(max)** instead **vector** type.
-
-These issues will be fixed in future updates and documentation will be updated accordingly.
+- When passing a **vector** type to `LEN` and `DATALENGTH` error 8116 (Argument data type vector is invalid for argument 1 of function) is returned.
 
 ## Related content
 
 - [Overview of vectors in the SQL Database Engine](../../relational-databases/vectors/vectors-sql-server.md)
 - [Intelligent applications](/azure/azure-sql/database/ai-artificial-intelligence-intelligent-applications?view=azuresql&preserve-view=true#vector-search)
-- [Vector functions](../functions/vector-functions-transact-sql.md)
+- [Vector Functions](../functions/vector-functions-transact-sql.md)

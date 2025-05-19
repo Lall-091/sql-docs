@@ -13,6 +13,8 @@ items:
     href: sql-server/connect-to-database-engine.md
   - name: What's new?
     items:
+    - name: SQL Server 2025 Preview
+      href: sql-server/what-s-new-in-sql-server-2025.md?view=sql-server-ver17&preserve-view=true
     - name: SQL Server 2022
       href: sql-server/what-s-new-in-sql-server-2022.md?view=sql-server-ver16&preserve-view=true
     - name: SQL Server 2019
@@ -23,6 +25,8 @@ items:
       href: sql-server/what-s-new-in-sql-server-2016.md?view=sql-server-2016&preserve-view=true
   - name: Editions and features
     items:
+    - name: SQL Server 2025 Preview
+      href: sql-server/editions-and-components-of-sql-server-2025.md?view=sql-server-ver16&preserve-view=true
     - name: SQL Server 2022
       href: sql-server/editions-and-components-of-sql-server-2022.md?view=sql-server-ver16&preserve-view=true
     - name: SQL Server 2019
@@ -33,6 +37,8 @@ items:
       href: sql-server/editions-and-components-of-sql-server-2016.md?view=sql-server-2016&preserve-view=true
   - name: Release notes
     items:
+    - name: SQL Server 2025 Preview
+      href: sql-server/sql-server-2025-release-notes.md?view=sql-server-ver16&preserve-view=true
     - name: SQL Server 2022
       href: sql-server/sql-server-2022-release-notes.md?view=sql-server-ver16&preserve-view=true
     - name: SQL Server 2019
@@ -1878,7 +1884,7 @@ items:
         href: relational-databases/tables/table-properties-ssms.md
       - name: Column Properties
         href: relational-databases/tables/column-properties-general-page.md
-  - name: Track changes
+  - name: Compare change tracking with CDC
     href: relational-databases/track-changes/track-data-changes-sql-server.md
     items:
     - name: Change data capture (CDC)
@@ -1905,6 +1911,16 @@ items:
         href: relational-databases/track-changes/work-with-change-tracking-sql-server.md
       - name: Cleanup and troubleshooting
         href: relational-databases/track-changes/cleanup-and-troubleshoot-change-tracking-sql-server.md
+    - name: Change event streaming
+      items: 
+      - name: Overview
+        href: relational-databases/track-changes/change-event-streaming/overview.md
+      - name: Configure
+        href: relational-databases/track-changes/change-event-streaming/configure.md
+      - name: JSON message format
+        href: relational-databases/track-changes/change-event-streaming/message-format.md
+      - name: Frequently asked questions
+        href: relational-databases/track-changes/change-event-streaming/frequently-asked-questions-faq.yml
   - name: Triggers
     items:
     - name: Logon Triggers
@@ -4266,6 +4282,8 @@ items:
     href: relational-databases/query-processing-architecture-guide.md
   - name: SQL Server I/O fundamentals
     href: relational-databases/sql-server-storage-guide.md
+  - name: Security cache
+    href: relational-databases/security-cache.md
   - name: Thread & task architecture
     href: relational-databases/thread-and-task-architecture-guide.md
   - name: Transaction log architecture & management guide
@@ -4298,6 +4316,8 @@ items:
     items:
     - name: Discontinued functionality in SQL Server
       href: database-engine/discontinued-database-engine-functionality-in-sql-server.md
+    - name: Deprecated in SQL Server 2025 Preview
+      href: database-engine/deprecated-database-engine-features-in-sql-server-2025.md
     - name: Deprecated in SQL Server 2022
       href: database-engine/deprecated-database-engine-features-in-sql-server-2022.md
     - name: Deprecated in SQL Server 2019
@@ -4321,6 +4341,8 @@ items:
       href: sql-server/compute-capacity-limits-by-edition-of-sql-server.md
     - name: Hardware & software requirements
       items:
+      - name: SQL Server 2025 Preview
+        href: sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2025.md
       - name: SQL Server 2022
         href: sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2022.md
       - name: SQL Server 2019
@@ -4526,6 +4548,8 @@ items:
         href: database-engine/configure-windows/allow-polybase-export.md
       - name: allow updates
         href: database-engine/configure-windows/allow-updates-server-configuration-option.md
+      - name: availability group commit time
+        href: database-engine/configure-windows/availability-group-commit-time-server-configuration-options.md     
       - name: backup checksum default
         href: database-engine/configure-windows/backup-checksum-default.md
       - name: backup compression algorithm
@@ -4594,6 +4618,8 @@ items:
         href: database-engine/configure-windows/configure-the-max-text-repl-size-server-configuration-option.md
       - name: Configure the max worker threads
         href: database-engine/configure-windows/configure-the-max-worker-threads-server-configuration-option.md
+      - name: Configure ucs flow control
+        href: database-engine/configure-windows/ucs-flow-control-sp-configure.md   
       - name: Configure the media retention
         href: database-engine/configure-windows/configure-the-media-retention-server-configuration-option.md
       - name: Configure the min memory per query
@@ -6538,6 +6564,8 @@ items:
         href: relational-databases/performance/using-the-query-store-with-in-memory-oltp.md
       - name: Optimized plan forcing
         href: relational-databases/performance/optimized-plan-forcing-query-store.md
+      - name: Persisted Statistics for readable secondaries
+        href: relational-databases/performance/persisted-stats-secondary-replicas.md
     - name: Server Performance & Activity Monitoring
       href: relational-databases/performance/server-performance-and-activity-monitoring.md
       items:
@@ -6714,6 +6742,10 @@ items:
       - name: Cardinality estimation (CE) feedback
         displayName: CE feedback
         href: relational-databases/performance/intelligent-query-processing-cardinality-estimation-feedback.md
+      - name: Cardinality estimation (CE) feedback for expressions
+        href: relational-databases/performance/intelligent-query-processing-ce-feedback-for-expressions.md
+      - name: Optional parameter plan optimization
+        href: relational-databases/performance/optional-parameter-optimization.md
       - name: Parameter Sensitive Plan optimization
         href: relational-databases/performance/parameter-sensitive-plan-optimization.md
       - name: Performance Center
@@ -6821,8 +6853,11 @@ items:
           - name: Interpreted access of In-Memory tables
             href: relational-databases/in-memory-oltp/accessing-memory-optimized-tables-using-interpreted-transact-sql.md
         - name: Administration of In-Memory
-          href: relational-databases/in-memory-oltp/the-memory-optimized-filegroup.md
           items:
+          - name: The memory-optimized filegroup
+            href: relational-databases/in-memory-oltp/the-memory-optimized-filegroup.md
+          - name: Memory-optimized container and filegroup removal
+            href: relational-databases/in-memory-oltp/memory-optimized-container-filegroup-removal.md
           - name: Restore and recover
             href: relational-databases/in-memory-oltp/restore-and-recovery-of-memory-optimized-tables.md
           - name: Backup
@@ -7017,6 +7052,8 @@ items:
           href: relational-databases/resource-governor/delete-a-workload-group.md
       - name: Classifier function
         href: relational-databases/resource-governor/resource-governor-classifier-function.md
+      - name: Tempdb space resource governance
+        href: relational-databases/resource-governor/tempdb-space-resource-governance.md
     - name: Statistics
       href: relational-databases/statistics/statistics.md
       items:
@@ -8109,8 +8146,10 @@ items:
         href: relational-databases/security/tutorial-always-encrypted-enclaves-develop-net-framework-apps.md
     - name: Microsoft Entra authentication
       items:
-      - name: Set up Microsoft Entra authentication
+      - name: Set up Microsoft Entra authentication with Azure Arc
         href: relational-databases/security/authentication-access/azure-ad-authentication-sql-server-setup-tutorial.md
+      - name: Set up Microsoft Entra authentication without Azure Arc
+        href: relational-databases/security/authentication-access/microsoft-entra-authentication-sql-server-enable-without-arc.md
       - name: Set Microsoft Entra admin automation
         href: relational-databases/security/authentication-access/azure-ad-authentication-sql-server-automation-setup-tutorial.md
   - name: Reference
@@ -8880,10 +8919,40 @@ items:
       items:
       - name: Overview
         href: tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md
-      - name: Connect and Query
+      - name: Connect and query
         href: tools/visual-studio-code-extensions/mssql/connect-database-visual-studio-code.md
-      - name: Schema Compare (Preview)
-        href: tools/visual-studio-code-extensions/mssql/mssql-schema-compare.md
+      - name: Features
+        items:
+        - name: GitHub Copilot for the MSSQL extension
+          items:
+          - name: Overview
+            href: tools/visual-studio-code-extensions/github-copilot/overview.md
+          - name: Limitations and known issues
+            href: tools/visual-studio-code-extensions/github-copilot/limitations-and-known-issues.md
+          - name: Quickstarts
+            items:
+            - name: Generate data for testing and mocking
+              href: tools/visual-studio-code-extensions/github-copilot/test-and-mocking-data-generator.md
+            - name: Use the business logic explainer
+              href: tools/visual-studio-code-extensions/github-copilot/business-logic-explainer.md
+            - name: Generate code
+              href: tools/visual-studio-code-extensions/github-copilot/code-generation.md
+            - name: Use GitHub Copilot inline and chat suggestions
+              href: tools/visual-studio-code-extensions/github-copilot/inline-copilot-suggestions.md
+            - name: Use the localization format helper
+              href: tools/visual-studio-code-extensions/github-copilot/localization-formatting-helper.md
+            - name: Use the query optimizer assistant
+              href: tools/visual-studio-code-extensions/github-copilot/query-optimizer-assistant.md
+            - name: Use the schema explorer and designer
+              href: tools/visual-studio-code-extensions/github-copilot/schema-explorer-designer.md
+            - name: Use the security analyzer
+              href: tools/visual-studio-code-extensions/github-copilot/security-analyzer.md
+            - name: Use smart query builder
+              href: tools/visual-studio-code-extensions/github-copilot/smart-query-builder.md
+        - name: Schema compare
+          items:
+          - name: Overview
+            href: tools/visual-studio-code-extensions/mssql/mssql-schema-compare.md
     - name: SQL bindings for Azure Functions
       items:
       - name: Overview
@@ -8929,12 +8998,18 @@ items:
     items:
     - name: What's new?
       items:
+      - name: SQL Server 2025 Preview
+        href: linux/sql-server-linux-whats-new-2025.md
+      - name: SQL Server 2022
+        href: linux/sql-server-linux-whats-new-2022.md
       - name: SQL Server 2019
         href: linux/sql-server-linux-whats-new-2019.md
       - name: SQL Server 2017
         href: linux/sql-server-linux-whats-new.md
     - name: Release notes
       items:
+      - name: SQL Server 2025 Preview
+        href: linux/sql-server-linux-release-notes-2025.md
       - name: SQL Server 2022
         href: linux/sql-server-linux-release-notes-2022.md
       - name: SQL Server 2019
@@ -8943,6 +9018,8 @@ items:
         href: linux/sql-server-linux-release-notes-2017.md
     - name: Release history
       items:
+      - name: SQL Server 2025 Preview >
+        href: /troubleshoot/sql/linux/release-history-2025?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
       - name: SQL Server 2022 >
         href: /troubleshoot/sql/linux/release-history-2022?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
       - name: SQL Server 2019 >
@@ -8951,6 +9028,8 @@ items:
         href: /troubleshoot/sql/linux/release-history-2017?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
     - name: Editions and features
       items:
+      - name: SQL Server 2025 Preview
+        href: linux/sql-server-linux-editions-and-components-2025.md
       - name: SQL Server 2022
         href: linux/sql-server-linux-editions-and-components-2022.md
       - name: SQL Server 2019
@@ -9049,9 +9128,11 @@ items:
         href: linux/sql-server-linux-configure-environment-variables.md
       - name: Configure MSDTC
         href: linux/sql-server-linux-configure-msdtc.md
-      - name: Configure persistent memory PMEM
+      - name: Configure persistent memory (PMEM)
         href: linux/sql-server-linux-configure-pmem.md
-      - name: Configure time zone on SQL Server 2022
+      - name: Configure tempdb on tmpfs for SQL Server 2025 Preview
+        href: linux/sql-server-linux-tmpfs-tempdb.md
+      - name: Configure time zone on SQL Server 2022 and later
         href: linux/sql-server-linux-configure-time-zone.md
       - name: Configure time zone on SQL Server 2019
         href: linux/sql-server-linux-configure-time-zone-2019.md
@@ -9107,6 +9188,8 @@ items:
         href: linux/sql-server-linux-use-log-shipping.md
       - name: Database Mail and email alerts
         href: linux/sql-server-linux-db-mail-sql-agent.md
+      - name: Data virtualization (PolyBase)
+        href: linux/sql-server-linux-polybase.md
     - name: Migrate
       items:
       - name: Overview
@@ -9216,6 +9299,8 @@ items:
         href: linux/sql-server-linux-ad-auth-troubleshooting.md
       - name: Rotate SQL Server on Linux keytabs
         href: linux/sql-server-linux-ad-auth-rotate-keytabs.md
+      - name: Set password policy
+        href: linux/sql-server-linux-custom-password-policy.md
     - name: Performance
       items:
       - name: Best practices
@@ -9330,6 +9415,8 @@ items:
       items:
       - name: Automatic backups (preview)
         href: sql-server/azure-arc/backup-local.md
+      - name: Back up to URL with managed identity (preview)
+        href: sql-server/azure-arc/backup-to-url.md
       - name: Point-in-time restore (preview)
         href: sql-server/azure-arc/point-in-time-restore.md
       - name: View Always On failover cluster
@@ -9348,8 +9435,12 @@ items:
         href: sql-server/azure-arc/rotate-certificates.md
       - name: Enable Defender
         href: /azure/defender-for-cloud/defender-for-sql-usage?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
+      - name: Managed identity for Extensible Key Management
+        href: sql-server/azure-arc/managed-identity-extensible-key-management.md
       - name: Set up Microsoft Entra authentication | Azure Arc
         href: sql-server/azure-arc/entra-authentication-setup-tutorial.md
+      - name: Configure managed identity (preview)
+        href: sql-server/azure-arc/managed-identity.md
       - name: Register Purview
         href: /purview/register-scan-azure-arc-enabled-sql-server?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
       - name: Roles, permissions, & files
@@ -11354,6 +11445,8 @@ items:
         href: relational-databases/system-catalog-views/sys-external-data-sources-transact-sql.md
       - name: sys.external_file_formats
         href: relational-databases/system-catalog-views/sys-external-file-formats-transact-sql.md
+      - name: sys.external_models
+        href: relational-databases/system-catalog-views/sys-external-models-transact-sql.md
     - name: FILESTREAM & FileTable
       href: relational-databases/system-catalog-views/filestream-and-filetable-catalog-views-transact-sql.md
       items:
@@ -12001,6 +12094,20 @@ items:
       items:
       - name: sys.dm_tran_commit_table
         href: relational-databases/system-dynamic-management-views/change-tracking-sys-dm-tran-commit-table.md
+    - name: Change event streaming
+      items:
+      - name: sys.sp_enable_event_stream
+        href: relational-databases/system-stored-procedures/sys-sp-enable-event-stream-transact-sql.md
+      - name: sys.sp_disable_event_stream
+        href: relational-databases/system-stored-procedures/sys-sp-disable-event-stream-transact-sql.md
+      - name: sys.sp_create_event_stream_group
+        href: relational-databases/system-stored-procedures/sys-sp-create-event-stream-group-transact-sql.md
+      - name: sys.sp_drop_event_stream_group
+        href: relational-databases/system-stored-procedures/sys-sp-drop-event-stream-group-transact-sql.md
+      - name: sys.sp_add_object_to_event_stream_group
+        href: relational-databases/system-stored-procedures/sys-sp-add-object-to-event-stream-group-transact-sql.md
+      - name: sys.sp_remove_object_from_event_stream_group
+        href: relational-databases/system-stored-procedures/sys-sp-remove-object-from-event-stream-group-transact-sql.md                      
     - name: Common Language Runtime
       href: relational-databases/system-dynamic-management-views/common-language-runtime-related-dynamic-management-views-transact-sql.md
       items:
@@ -12300,7 +12407,7 @@ items:
         href: relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql.md
       - name: sys.dm_io_cluster_valid_path_names
         href: relational-databases/system-dynamic-management-views/sys-dm-io-cluster-valid-path-names-transact-sql.md
-    - name: Memory-Optimized Table
+    - name: In-Memory OLTP
       href: relational-databases/system-dynamic-management-views/memory-optimized-table-dynamic-management-views-transact-sql.md
       items:
       - name: sys.dm_db_xtp_checkpoint_stats
@@ -12333,6 +12440,8 @@ items:
         href: relational-databases/system-dynamic-management-views/sys-dm-xtp-system-memory-consumers-transact-sql.md
       - name: sys.dm_xtp_transaction_stats
         href: relational-databases/system-dynamic-management-views/sys-dm-xtp-transaction-stats-transact-sql.md
+      - name: sys.dm_db_xtp_undeploy_status
+        href: relational-databases/system-dynamic-management-views/sys-dm-db-xtp-undeploy-status.md
     - name: Object
       href: relational-databases/system-dynamic-management-views/object-related-dynamic-management-views-and-functions-transact-sql.md
       items:
@@ -12543,6 +12652,8 @@ items:
         href: relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql.md
       - name: sys.dm_os_process_memory
         href: relational-databases/system-dynamic-management-views/sys-dm-os-process-memory-transact-sql.md
+      - name: sys.dm_os_ring_buffers
+        href: relational-databases/system-dynamic-management-views/sys-dm-os-ring-buffers-transact-sql.md
       - name: sys.dm_os_schedulers
         href: relational-databases/system-dynamic-management-views/sys-dm-os-schedulers-transact-sql.md
       - name: sys.dm_os_server_diagnostics_log_configurations
@@ -14930,7 +15041,7 @@ items:
         href: t-sql/data-types/ntext-text-and-image-transact-sql.md
     - name: Vectors
       items:
-      - name: vector
+      - name: Vector data type
         href: t-sql/data-types/vector-data-type.md
     - name: Spatial geography & instances (geography Data Type)
       href: t-sql/spatial-geography/spatial-types-geography.md
@@ -15486,6 +15597,8 @@ items:
           href: t-sql/functions/max-transact-sql.md
         - name: MIN
           href: t-sql/functions/min-transact-sql.md
+        - name: PRODUCT
+          href: t-sql/functions/product-aggregate-transact-sql.md
         - name: STDEV
           href: t-sql/functions/stdev-transact-sql.md
         - name: STDEVP
@@ -15496,6 +15609,19 @@ items:
           href: t-sql/functions/var-transact-sql.md
         - name: VARP
           href: t-sql/functions/varp-transact-sql.md
+      - name: AI
+        href: t-sql/functions/ai-functions-transact-sql.md
+        items:
+        - name: AI_GENERATE_EMBEDDINGS
+          href: t-sql/functions/ai-generate-embeddings-transact-sql.md
+        - name: AI_GENERATE_CHUNKS
+          href: t-sql/functions/ai-generate-chunks-transact-sql.md
+        - name: CREATE EXTERNAL MODEL
+          href: t-sql/statements/create-external-model-transact-sql.md
+        - name: ALTER EXTERNAL MODEL
+          href: t-sql/statements/alter-external-model-transact-sql.md
+        - name: DROP EXTERNAL MODEL
+          href: t-sql/statements/drop-external-model-transact-sql.md
       - name: Analytic
         href: t-sql/functions/analytic-functions-transact-sql.md
         items:
@@ -15753,6 +15879,8 @@ items:
           href: t-sql/functions/json-array-transact-sql.md
         - name: JSON_ARRAYAGG
           href: t-sql/functions/json-arrayagg-transact-sql.md
+        - name: JSON_CONTAINS
+          href: t-sql/functions/json-contains-transact-sql.md
         - name: JSON_MODIFY
           href: t-sql/functions/json-modify-transact-sql.md
         - name: JSON_OBJECT
@@ -15778,6 +15906,10 @@ items:
           href: t-sql/functions/regexp-instr-transact-sql.md
         - name: REGEXP_COUNT
           href: t-sql/functions/regexp-count-transact-sql.md
+        - name: REGEXP_MATCHES
+          href: t-sql/functions/regexp-matches-transact-sql.md
+        - name: REGEXP_SPLIT_TO_TABLE
+          href: t-sql/functions/regexp-split-to-table-transact-sql.md
       - name: Mathematical
         href: t-sql/functions/mathematical-functions-transact-sql.md
         items:
@@ -16179,6 +16311,10 @@ items:
           href: t-sql/functions/vector-norm-transact-sql.md
         - name: VECTOR_NORMALIZE
           href: t-sql/functions/vector-normalize-transact-sql.md
+        - name: VECTORPROPERTY
+          href: t-sql/functions/vectorproperty-transact-sql.md
+        - name: VECTOR_SEARCH
+          href: t-sql/functions/vector-search-transact-sql.md
     - name: Language elements
       href: t-sql/language-elements/language-elements-transact-sql.md
       items:
@@ -16908,6 +17044,9 @@ items:
         - name: INDEX
           displayName: CREATE INDEX
           href: t-sql/statements/create-index-transact-sql.md
+        - name: JSON INDEX
+          displayName: CREATE JSON INDEX
+          href: t-sql/statements/create-json-index-transact-sql.md
         - name: LOGIN
           displayName: CREATE LOGIN
           href: t-sql/statements/create-login-transact-sql.md
@@ -17016,6 +17155,9 @@ items:
         - name: USER
           displayName: CREATE USER
           href: t-sql/statements/create-user-transact-sql.md
+        - name: VECTOR INDEX
+          displayName: CREATE VECTOR INDEX
+          href: t-sql/statements/create-vector-index-transact-sql.md
         - name: VIEW
           displayName: CREATE VIEW
           href: t-sql/statements/create-view-transact-sql.md

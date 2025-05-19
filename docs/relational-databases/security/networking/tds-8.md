@@ -4,7 +4,7 @@ description: This article discusses TDS 8.0, the application layer protocol used
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 11/20/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
@@ -43,6 +43,13 @@ With the introduction of TDS 8.0, the SQL Server connections are as follows:
 
 TCP handshake :arrow_right: TLS handshake :arrow_right: TDS prelogin (encrypted) and response (encrypted) :arrow_right: authentication (encrypted) :arrow_right: data exchange (encrypted)
 
+## SQL Server 2025 support
+
+[!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)] introduces TDS 8.0 support for the following command-line tools:
+
+- [sqlcmd utility](../../../tools/sqlcmd/sqlcmd-utility.md#tds-80-support)
+- [bcp utility](../../../tools/bcp-utility.md#tds-80-support)
+
 ## Strict connection encryption
 
 To use TDS 8.0, [!INCLUDE [sssql22-md](../../../includes/sssql22-md.md)] added `strict` as an additional connection encryption type to SQL Server drivers (`Encrypt=strict`). To use the `strict` connection encryption type, download the latest version of the .NET, ODBC, OLE DB, JDBC, PHP, and Python drivers.
@@ -66,8 +73,6 @@ The following features or tools still use previous version of drivers that don't
 - Always On failover cluster instance (FCI)
 - SQL Server Replication
 - Log Shipping
-- **sqlcmd** utility
-- **bcp** utility
 - SQL Server CEIP service
 - SQL Server Agent
 - Database Mail

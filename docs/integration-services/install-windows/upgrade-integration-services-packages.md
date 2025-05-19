@@ -3,7 +3,8 @@ title: "Upgrade Integration Services Packages"
 description: "Upgrade Integration Services Packages"
 author: "MikeRayMSFT"
 ms.author: "mikeray"
-ms.date: "03/14/2017"
+ms.reviewer: randolphwest
+ms.date: 05/07/2025
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: upgrade-and-migration-article
@@ -18,6 +19,9 @@ helpviewer_keywords:
 
   When you upgrade an instance of [!INCLUDE[sql2008-md](../../includes/sql2008-md.md)] to the current release of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], your existing [!INCLUDE[ssISversion10](../../includes/ssisversion10-md.md)] packages are not automatically upgraded to the package format that the current release [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] uses. You will have to select an upgrade method and manually upgrade your packages.  
   
+> [!IMPORTANT]  
+> When you upgrade [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)] to [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)] or later versions, make sure that the original [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)] instance is removed after the upgrade. If you are subscribed to [Extended Security Updates for SQL Server](../../sql-server/end-of-support/sql-server-extended-security-updates.md), you are billed for both instances.
+
  For information on upgrading packages when you convert a project to the project deployment model, see [Deploy Integration Services (SSIS) Projects and Packages](../../integration-services/packages/deploy-integration-services-ssis-projects-and-packages.md)
   
 ## Selecting an Upgrade Method  

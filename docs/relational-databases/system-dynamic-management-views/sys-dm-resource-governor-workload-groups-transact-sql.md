@@ -4,7 +4,7 @@ description: sys.dm_resource_governor_workload_groups (Transact-SQL)
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: dfurman
-ms.date: 02/10/2024
+ms.date: 04/15/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -30,7 +30,7 @@ Returns workload group statistics and the current in-memory configuration of the
 >  To call this from [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] or [!INCLUDE[ssPDW](../../includes/sspdw-md.md)], use the name **sys.dm_pdw_nodes_resource_governor_workload_groups**. [!INCLUDE[synapse-analytics-od-unsupported-syntax](../../includes/synapse-analytics-od-unsupported-syntax.md)]
 
 | Column name | Data type | Description |
-|:--|:-|:--|
+| --- | --- | --- |
 | `group_id` | **int** | ID of the workload group. Not nullable. |
 | `name` | **sysname** | Name of the workload group. Not nullable. |
 | `pool_id` | **int** | ID of the resource pool. Not nullable. |
@@ -60,13 +60,16 @@ Returns workload group statistics and the current in-memory configuration of the
 | `effective_max_dop` | **int** | **Applies to**: Starting with [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)].<br /><br />Effective maximum degree of parallelism for the workload group. Not nullable. |
 | `total_cpu_usage_preemptive_ms` | **bigint** | **Applies to**: Starting with [!INCLUDE[sssql16-md](../../includes/sssql16-md.md)].<br /><br />Total CPU time used while in preemptive mode scheduling for the workload group, measured in milliseconds. Not nullable.<br /><br />To execute code that is outside the [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] (for example, extended stored procedures and distributed queries), a thread has to execute outside the control of the non-preemptive scheduler. To do this, a worker switches to preemptive mode. |
 | `request_max_memory_grant_percent_numeric` | **float** |**Applies to**: [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)] and starting with [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)].<br /><br />Current setting for the maximum memory grant, as a percentage, for a single request. The value is similar to `request_max_memory_grant_percent`. However, unlike `request_max_memory_grant_percent` which returns an `integer` value, `request_max_memory_grant_percent_numeric` returns a `float` value. Starting with [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)], the parameter `REQUEST_MAX_MEMORY_GRANT_PERCENT` accepts values with a possible range of 0-100 and stores them as the `float` data type. Prior to [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)], `REQUEST_MAX_MEMORY_GRANT_PERCENT` is an `integer` with possible range of 1-100. For more information, see [CREATE WORKLOAD GROUP](../../t-sql/statements/create-workload-group-transact-sql.md).<br /><br />Not nullable. |
+| `tempdb_data_space_kb` | **bigint** | **Applies to**: Starting with [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)]<br /><br />The current data space consumed in the `tempdb` data files by all sessions in the workload group, in kilobytes. Nullable. |
+| `peak_tempdb_data_space_kb` | **bigint** | **Applies to**: Starting with [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)]<br /><br />The peak data space consumed in the `tempdb` data files by all sessions in the workload group since the server startup, or since resource governor statistics were reset, in kilobytes. Nullable.|
+| `total_tempdb_data_limit_violation_count` | **bigint** | **Applies to**: Starting with [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)]<br /><br />The number of times a request was aborted with error 1138 because it would exceed the limit on tempdb data space consumption for the workload group. Nullable. |
 | `pdw_node_id` | **int** | **Applies to**: [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], [!INCLUDE[ssPDW](../../includes/sspdw-md.md)]<br /><br /> The identifier for the node that this distribution is on. |
 
 ## Remarks
 
 This dynamic management view shows the in-memory configuration. To see the stored configuration metadata, use the [sys.resource_governor_workload_groups](../../relational-databases/system-catalog-views/sys-resource-governor-workload-groups-transact-sql.md) catalog view.
 
-When `ALTER RESOURCE GOVERNOR RESET STATISTICS` is successfully executed, the following counters are reset: `statistics_start_time`, `total_request_count`, `total_queued_request_count`, `total_cpu_limit_violation_count`, `total_cpu_usage_ms`, `max_request_cpu_time_ms`, `total_lock_wait_count`, `total_lock_wait_time_ms`, `total_query_optimization_count`, `total_suboptimal_plan_generation_count`, `total_reduced_memgrant_count`, and `max_request_grant_memory_kb`. The counter `statistics_start_time` is set to the current system date and time, and the other counters are set to zero (0).
+When `ALTER RESOURCE GOVERNOR RESET STATISTICS` is successfully executed, the following counters are reset: `statistics_start_time`, `total_request_count`, `total_queued_request_count`, `total_cpu_limit_violation_count`, `total_cpu_usage_ms`, `max_request_cpu_time_ms`, `total_lock_wait_count`, `total_lock_wait_time_ms`, `total_query_optimization_count`, `total_suboptimal_plan_generation_count`, `total_reduced_memgrant_count`, `max_request_grant_memory_kb`, `peak_tempdb_data_space_kb`, and `total_tempdb_data_limit_violation_count`. The counter `statistics_start_time` is set to the current system date and time, and the other counters are set to zero (0).
 
 ## Permissions
 

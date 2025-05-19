@@ -4,7 +4,7 @@ metadata:
    description: This article provides answers to frequently asked questions (FAQ) about SQL Server running on Linux.
    author: rwestMSFT
    ms.author: randolphwest
-   ms.date: 01/03/2024
+   ms.date: 05/02/2025
    ms.topic: conceptual
    ms.service: sql
    ms.subservice: linux
@@ -85,7 +85,7 @@ sections:
 
              1. **Which Linux file systems can SQL Server use for data files?**
 
-                Currently SQL Server on Linux supports ext4 and XFS. Support for other file systems will be added as needed in the future.
+                Currently SQL Server on Linux supports **ext4** and **XFS**. Support for other file systems will be added as needed in the future.
 
              1. **Can I download the installation packages to install SQL Server offline?**
 

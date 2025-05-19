@@ -2,14 +2,14 @@
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 10/16/2023
+ms.date: 05/19/2025
 ms.topic: include
 ms.custom: ignite-2023
 ---
 
 The following table identifies features available by SQL Server version:
 
-| Feature | 2012 | 2014 | 2016 | 2017 | 2019 | 2022 |
+| Feature | 2012 | 2014 | 2016 | 2017 | 2019 | 2022/2025 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | [Azure pay-as-you-go billing](../manage-configuration.md) | Yes | Yes | Yes | Yes | Yes | Yes |
 | [Best practices assessment](../assess.md) | Yes | Yes | Yes | Yes | Yes | Yes |

@@ -3,7 +3,7 @@ title: "CREATE AVAILABILITY GROUP (Transact-SQL)"
 description: CREATE AVAILABILITY GROUP (Transact-SQL)
 author: "MikeRayMSFT"
 ms.author: "mikeray"
-ms.date: "10/16/2017"
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -52,7 +52,7 @@ CREATE AVAILABILITY GROUP group_name
   | HEALTH_CHECK_TIMEOUT = milliseconds  
   | DB_FAILOVER  = { ON | OFF }   
   | DTC_SUPPORT  = { PER_DB | NONE }  
-  | [ BASIC | DISTRIBUTED | CONTAINED [ REUSE_SYSTEM_DATABASES ] ]
+  | [ BASIC | DISTRIBUTED | CONTAINED [ REUSE_SYSTEM_DATABASES | AUTOSEEDING_SYSTEM_DATABASES ] ]
   | REQUIRED_SYNCHRONIZED_SECONDARIES_TO_COMMIT = { integer }
   | CLUSTER_TYPE = { WSFC | EXTERNAL | NONE }
  
@@ -195,12 +195,16 @@ Used to create a basic availability group. Basic availability groups are limited
 
 Used to create a distributed availability group. This option is used with the AVAILABILITY GROUP ON parameter to connect two availability groups in separate Windows Server Failover Clusters. For more information, see [Distributed availability groups &#40;Always On availability groups&#41;](../../database-engine/availability-groups/windows/distributed-availability-groups.md). Distributed availability groups are supported beginning in [!INCLUDE[sssql16-md](../../includes/sssql16-md.md)]. 
 
-#### CONTAINED [REUSE_SYSTEM_DATABASES]
+#### CONTAINED [REUSE_SYSTEM_DATABASES | AUTOSEEDING_SYSTEM_DATABASES]
 
 Introduced in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)].
 
-Create a contained availability group. This option is used to create an availability group with its own `master` and `msdb` databases, which are kept in sync across the set of replicas in the availability group.  
-The REUSE_SYSTEM_DATABASES option causes the contained `master` and `msdb` databases from a prior version of the availability group to be used in the creation of this new availability group. For more information on contained availability groups, see [Contained availability group Overview &#40;Always On availability groups&#41;](../../database-engine/availability-groups/windows/contained-availability-groups-overview.md).
+Create a contained availability group.  This option is used to create an availability group with its own `master` and `msdb` databases, which are kept in sync across the set of replicas in the availability group.  
+
+The `REUSE_SYSTEM_DATABASES` option causes the contained `master` and `msdb` databases from a prior version of the availability group to be used in the creation of this new availability group. For more information on contained availability groups, see [Contained availability group Overview &#40;Always On availability groups&#41;](../../database-engine/availability-groups/windows/contained-availability-groups-overview.md).
+
+[!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] introduces support for a [distributed contained availability group](../../database-engine/availability-groups/windows/contained-availability-groups-overview.md#distributed-availability-groups). If you intend to use a contained AG as the forwarder in a distributed availability group, you must create the contained AG by using the `AUTOSEEDING_SYSTEM_DATABASES` clause for the `WITH | CONTAINED` option of the` CREATE AVAILABILITY GROUP` statement. 
+
 
 #### REQUIRED_SYNCHRONIZED_SECONDARIES_TO_COMMIT
 

@@ -3,7 +3,7 @@ title: Installation Guidance for SQL Server on Linux
 description: Install, update, and uninstall SQL Server on Linux. This article covers online, offline, and unattended scenarios.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/21/2025
+ms.date: 05/02/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -15,7 +15,7 @@ ms.custom:
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
-This article provides guidance for installing, updating, and uninstalling [!INCLUDE [sssql17-md](../includes/sssql17-md.md)], [!INCLUDE [sssql19-md](../includes/sssql19-md.md)], and [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] on Linux.
+This article provides guidance for installing, updating, and uninstalling [!INCLUDE [sssql17-md](../includes/sssql17-md.md)], [!INCLUDE [sssql19-md](../includes/sssql19-md.md)], [!INCLUDE [sssql22-md](../includes/sssql22-md.md)], and [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] on Linux.
 
 For other deployment scenarios, see:
 
@@ -55,9 +55,16 @@ For answers to frequently asked questions, see the [SQL Server on Linux FAQ](sql
 ::: moniker-end
 
 <!--SQL Server 2022 on Linux-->
-::: moniker range=">= sql-server-linux-ver16 || >= sql-server-ver16"
+::: moniker range="=sql-server-linux-ver16 || =sql-server-ver16"
 
 [!INCLUDE [linux-supported-platforms-2022](includes/linux-supported-platforms-2022.md)]
+
+::: moniker-end
+
+<!--SQL Server 2025 on Linux-->
+::: moniker range=">=sql-server-linux-ver17 || >=sql-server-ver17"
+
+[!INCLUDE [linux-supported-platforms-2025](includes/linux-supported-platforms-2025.md)]
 
 ::: moniker-end
 
@@ -75,7 +82,7 @@ Microsoft also supports deploying and managing [!INCLUDE [ssnoversion-md](../inc
 | | Requirement |
 | --- | --- |
 | **Memory** | 2 GB <sup>1</sup> |
-| **File System** | **XFS** or **EXT4** (other file systems, such as **BTRFS**, aren't supported) |
+| **File System** | **XFS** or **ext4** (other file systems, such as **BTRFS**, aren't supported) |
 | **Disk space** | 6 GB |
 | **Processor speed** | 2 GHz |
 | **Processor cores** | 2 cores |
@@ -102,10 +109,10 @@ You can install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Li
 
 | Platform | Installation quickstarts |
 | --- | --- |
-| Red Hat Enterprise Linux (RHEL) | [2017](quickstart-install-connect-red-hat.md?view=sql-server-2017&preserve-view=true) \| [2019](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver15&preserve-view=true) \| [2022](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver16&preserve-view=true) |
-| SUSE Linux Enterprise Server (SLES) | [2017](quickstart-install-connect-suse.md?view=sql-server-2017&preserve-view=true) \| [2019](quickstart-install-connect-suse.md?view=sql-server-linux-ver15&preserve-view=true) \| [2022](quickstart-install-connect-suse.md?view=sql-server-linux-ver16&preserve-view=true) |
-| Ubuntu | [2017](quickstart-install-connect-ubuntu.md?view=sql-server-2017&preserve-view=true) \| [2019](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver15&preserve-view=true) \| [2022](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver16&preserve-view=true) |
-| Docker | [2017](quickstart-install-connect-docker.md?view=sql-server-2017&preserve-view=true) \| [2019](quickstart-install-connect-docker.md?view=sql-server-linux-ver15&preserve-view=true) \| [2022](quickstart-install-connect-docker.md?view=sql-server-linux-ver16&preserve-view=true) |
+| Red Hat Enterprise Linux (RHEL) | [2017](quickstart-install-connect-red-hat.md?view=sql-server-2017&preserve-view=true) \| [2019](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver15&preserve-view=true) \| [2022](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver16&preserve-view=true) \| [2025](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver17&preserve-view=true) |
+| SUSE Linux Enterprise Server (SLES) | [2017](quickstart-install-connect-suse.md?view=sql-server-2017&preserve-view=true) \| [2019](quickstart-install-connect-suse.md?view=sql-server-linux-ver15&preserve-view=true) \| [2022](quickstart-install-connect-suse.md?view=sql-server-linux-ver16&preserve-view=true) \| [2025](quickstart-install-connect-suse.md?view=sql-server-linux-ver17&preserve-view=true) |
+| Ubuntu | [2017](quickstart-install-connect-ubuntu.md?view=sql-server-2017&preserve-view=true) \| [2019](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver15&preserve-view=true) \| [2022](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver16&preserve-view=true) \| [2025](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver17&preserve-view=true) |
+| Docker | [2017](quickstart-install-connect-docker.md?view=sql-server-2017&preserve-view=true) \| [2019](quickstart-install-connect-docker.md?view=sql-server-linux-ver15&preserve-view=true) \| [2022](quickstart-install-connect-docker.md?view=sql-server-linux-ver16&preserve-view=true) \| [2025](quickstart-install-connect-docker.md?view=sql-server-linux-ver17&preserve-view=true) |
 
 You can also run [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux in an Azure virtual machine. For more information, see [Provision a SQL VM in Azure](/azure/azure-sql/virtual-machines/linux/sql-vm-create-portal-quickstart?toc=/sql/toc/toc.json).
 

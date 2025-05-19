@@ -5,7 +5,7 @@ description: Learn how to mitigate naming conflicts for Microsoft Entra logins a
 author: tameikal-msft
 ms.author: talawren
 ms.reviewer: vanto, mathoma, jaszymas
-ms.date: 11/20/2024
+ms.date: 04/30/2025
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: conceptual
@@ -46,7 +46,7 @@ The *duplicate display name* error occurs because Microsoft Entra ID allows dupl
 > [!NOTE]
 > Most nonunique display names in Microsoft Entra ID are related to service principals, though occasionally group names can also be nonunique. Microsoft Entra user principal names are unique, as two users can't have the same user principal. However, an app registration (service principal) can be created with a display name that is the same as a user principal name.
 >
-> If the service principal display name isn't a duplicate, the default `CREATE LOGIN` or `CREATE USER` statement should be used. The `WITH OBJECT_ID` extension is a troubleshooting repair item implemented for use with nonunique service principals. Using it with a unique service principal isn't recommended. Using the `WITH OBJECT_ID` extension for a service principal without adding a suffix will run successfully, but it will not be obvious which service principal the login or user was created for. It's recommended to create an alias using a suffix to uniquely identify the service principal. The `WITH OBJECT_ID` extension isn't supported for SQL Server.
+> If the service principal display name isn't a duplicate, the default `CREATE LOGIN` or `CREATE USER` statement should be used. The `WITH OBJECT_ID` extension is a troubleshooting repair item implemented for use with nonunique service principals. Using it with a unique service principal isn't recommended. Using the `WITH OBJECT_ID` extension for a service principal without adding a suffix will run successfully, but it will not be obvious which service principal the login or user was created for. It's recommended to create an alias using a suffix to uniquely identify the service principal. The `WITH OBJECT_ID` extension is supported for SQL Server 2025 and later versions.
 
 ## T-SQL create login/user syntax for nonunique display names
 

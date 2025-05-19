@@ -193,6 +193,8 @@ Cannot alter the login '*Domain\Group*', because it doesn't exist or you don't h
 
 This is by design.
 
+[!INCLUDE [encryption-algorithm-history-md](../../includes/encryption-algorithm-history.md)]
+
 In [!INCLUDE [ssSDS](../../includes/sssds-md.md)], login data required to authenticate a connection and server-level firewall rules are temporarily cached in each database. This cache is periodically refreshed. To force a refresh of the authentication cache and make sure that a database has the latest version of the logins table, execute [DBCC FLUSHAUTHCACHE](../../t-sql/database-console-commands/dbcc-flushauthcache-transact-sql.md).
 
 ## Permissions

@@ -21,7 +21,7 @@ To complete this task, make sure that:
 
 - The *Machine - Azure Arc* resource and all SQL Server instances are in the same resource group.
 
-- The new subscription or resource group needs to meet all [prerequisites](/sql/sql-server/azure-arc/prerequisites).
+- The new subscription or resource group needs to meet all [prerequisites](prerequisites.md).
 
 In addition:
 

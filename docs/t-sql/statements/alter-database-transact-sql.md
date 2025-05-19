@@ -4,7 +4,7 @@ description: ALTER DATABASE (Transact-SQL) syntax for SQL Server, Azure SQL Data
 author: markingmyname
 ms.author: maghan
 ms.reviewer: wiassaf, blakhani
-ms.date: 03/10/2025
+ms.date: 04/29/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -192,7 +192,7 @@ The plan cache for the instance of [!INCLUDE[ssNoVersion](../../includes/ssnover
 - READ_ONLY
 - READ_WRITE
 
-Clearing the plan cache causes a recompilation of all subsequent execution plans and can cause a sudden, temporary decrease in query performance. For each cleared cachestore in the plan cache, the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] error log contains the following informational message: `SQL Server has encountered %d occurrence(s) of cachestore flush for the '%s' cachestore (part of plan cache) due to some database maintenance or reconfigure operations`. This message is logged every five minutes as long as the cache is flushed within that time interval.
+Clearing the plan cache causes a recompilation of all subsequent execution plans and can cause a sudden, temporary decrease in query performance. For each cleared cache store in the plan cache, the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] error log contains the following informational message: `SQL Server has encountered %d occurrence(s) of cachestore flush for the '%s' cachestore (part of plan cache) due to some database maintenance or reconfigure operations`. This message is logged every five minutes as long as the cache is flushed within that time interval.
 
 The plan cache is also flushed in the following scenarios:
 
@@ -207,7 +207,7 @@ The plan cache is also flushed in the following scenarios:
 
 Before you apply a different collation to a database, make sure that the following conditions are in place:
 
-- You are the only one currently using the database.
+- You're the only one currently using the database.
 - No schema-bound object depends on the collation of the database.
 
 If the following objects, which depend on the database collation, exist in the database, the `ALTER DATABASE database_name COLLATE` statement fails. [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] returns an error message for each object blocking the `ALTER` action:
@@ -219,7 +219,7 @@ If the following objects, which depend on the database collation, exist in the d
 
 Dependency information for non-schema-bound entities is automatically updated when the database collation is changed.
 
-Changing the database collation does not create duplicates among any system names for the database objects. If duplicate names result from the changed collation, the following namespaces can cause the failure of a database collation change:
+Changing the database collation doesn't create duplicates among any system names for the database objects. If duplicate names result from the changed collation, the following namespaces can cause the failure of a database collation change:
 
 - Object names such as a procedure, table, trigger, or view
 - Schema names
@@ -454,7 +454,7 @@ To enforce data residency when you're creating a database by using T-SQL, use `L
 Specifies the maximum size of the database. The maximum size must comply with the valid set of values for the EDITION property of the database. Changing the maximum size of the database can cause the database EDITION to be changed.
 
 > [!NOTE]
-> The **MAXSIZE** argument does not apply to single databases in the Hyperscale service tier. Single Hyperscale service tier databases grow as needed, up to 128 TB. The SQL Database service adds storage automatically - you do not need to set a maximum size.
+> The **MAXSIZE** argument doesn't apply to single databases in the Hyperscale service tier. Single Hyperscale service tier databases grow as needed, up to 128 TB. The SQL Database service adds storage automatically - you don't need to set a maximum size.
 
 **DTU model**
 
@@ -482,13 +482,13 @@ Specifies the maximum size of the database. The maximum size must comply with th
 |1,024 GB|N/A| Yes | Yes | Yes | Yes (D)|
 |From 1,024 GB up to 4,096 GB in increments of 256 GB <sup>1</sup>|N/A|N/A|N/A|N/A| Yes |
 
-<sup>1</sup> P11 and P15 allow MAXSIZE up to 4 TB with 1,024 GB being the default size. P11 and P15 can use up to 4 TB of included storage at no additional charge. In the Premium tier, MAXSIZE greater than 1 TB is currently available in the following regions: US East2, West US, US Gov Virginia, West Europe, Germany Central, South East Asia, Japan East, Australia East, Canada Central, and Canada East. For more details regarding resource limitations for the DTU model, see [DTU resource limits](/azure/sql-database/sql-database-dtu-resource-limits).
+<sup>1</sup> P11 and P15 allow MAXSIZE up to 4 TB with 1,024 GB being the default size. P11 and P15 can use up to 4 TB of included storage at no additional charge. In the Premium tier, MAXSIZE greater than 1 TB is currently available in the following regions: US East2, West US, US Gov Virginia, West Europe, Germany Central, South East Asia, Japan East, Australia East, Canada Central, and Canada East. For more information regarding resource limitations for the DTU model, see [DTU resource limits](/azure/sql-database/sql-database-dtu-resource-limits).
 
 The MAXSIZE value for the DTU model, if specified, has to be a valid value shown in the previous table for the service tier specified.
 
 For limits such as maximum data size and `tempdb` size in the vCore purchasing model, refer to the articles for [resource limits for single databases](/azure/azure-sql/database/resource-limits-vcore-single-databases) or [resource limits for elastic pools](/azure/azure-sql/database/resource-limits-vcore-elastic-pools).
 
-If no `MAXSIZE`value is set when using the vCore model, the default is 32 GB. For more details regarding resource limitations for vCore model, see [vCore resource limits](/azure/sql-database/sql-database-dtu-resource-limits).
+If no `MAXSIZE`value is set when using the vCore model, the default is 32 GB. For more information regarding resource limitations for vCore model, see [vCore resource limits](/azure/sql-database/sql-database-dtu-resource-limits).
 
 The following rules apply to MAXSIZE and EDITION arguments:
 
@@ -553,7 +553,7 @@ Creates a geo-replication secondary database with the same name on a partner ser
 
 #### WITH ALLOW_CONNECTIONS { ALL | NO }
 
-When ALLOW_CONNECTIONS isn't specified, it is set to ALL by default. If it is set ALL, it is a read-only database that allows all logins with the appropriate permissions to connect.
+When ALLOW_CONNECTIONS isn't specified, it's set to ALL by default. If it's set ALL, it's a read-only database that allows all logins with the appropriate permissions to connect.
 
 #### ELASTIC_POOL (name = <elastic_pool_name>)
 
@@ -577,21 +577,21 @@ Promotes the secondary database in geo-replication partnership on which the comm
 1. All outstanding transactions are flushed to the secondary.
 1. The secondary becomes the primary and begins asynchronous geo-replication with the old primary / the new secondary.
 
-This sequence ensures that no data loss occurs. The period during which both databases are unavailable is on the order of 0-25 seconds while the roles are switched. The total operation should take no longer than about one minute. If the primary database is unavailable when this command is issued, the command fails with an error message indicating that the primary database isn't available. If the failover process does not complete and appears stuck, you can use the force failover command and accept data loss - and then, if you need to recover the lost data, call devops (CSS) to recover the lost data.
+This sequence ensures that no data loss occurs. The period during which both databases are unavailable is on the order of 0-25 seconds while the roles are switched. The total operation should take no longer than about one minute. If the primary database is unavailable when this command is issued, the command fails with an error message indicating that the primary database isn't available. If the failover process doesn't complete and appears stuck, you can use the force failover command and accept data loss - and then, if you need to recover the lost data, call devops (CSS) to recover the lost data.
 
 > [!IMPORTANT]
 > The user executing the FAILOVER command must be DBManager on both the primary server and the secondary server.
 
 #### FORCE_FAILOVER_ALLOW_DATA_LOSS
 
-Promotes the secondary database in geo-replication partnership on which the command is executed to become the primary and demotes the current primary to become the new secondary. Use this command only when the current primary is no longer available. It is designed for disaster recovery only, when restoring availability is critical, and some data loss is acceptable.
+Promotes the secondary database in geo-replication partnership on which the command is executed to become the primary and demotes the current primary to become the new secondary. Use this command only when the current primary is no longer available. It's designed for disaster recovery only, when restoring availability is critical, and some data loss is acceptable.
 
 During a forced failover:
 
 1. The specified secondary database immediately becomes the primary database and begins accepting new transactions.
 1. When the original primary can reconnect with the new primary, an incremental backup is taken on the original primary, and the original primary becomes a new secondary.
 1. To recover data from this incremental backup on the old primary, the user engages devops/CSS.
-1. If there are additional secondaries, they are automatically reconfigured to become secondaries of the new primary. This process is asynchronous and there might be a delay until this process completes. Until the reconfiguration has completed, the secondaries continue to be secondaries of the old primary.
+1. If there are additional secondaries, they're automatically reconfigured to become secondaries of the new primary. This process is asynchronous and there might be a delay until this process completes. Until the reconfiguration has completed, the secondaries continue to be secondaries of the old primary.
 
 > [!IMPORTANT]
 > The user executing the `FORCE_FAILOVER_ALLOW_DATA_LOSS` command must be a member of the `dbmanager` role on both the primary server and the secondary server.
@@ -615,7 +615,7 @@ To decrease the size of a database, use [DBCC SHRINKDATABASE](../database-consol
 
 The `ALTER DATABASE` statement must run in auto-commit mode (the default transaction management mode) and isn't allowed in an explicit or implicit transaction.
 
-Clearing the plan cache causes a recompilation of all subsequent execution plans and can cause a sudden, temporary decrease in query performance. For each cleared cachestore in the plan cache, the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] error log contains the following informational message: `SQL Server has encountered %d occurrence(s) of cachestore flush for the '%s' cachestore (part of plan cache) due to some database maintenance or reconfigure operations`. This message is logged every five minutes as long as the cache is flushed within that time interval.
+Clearing the plan cache causes a recompilation of all subsequent execution plans and can cause a sudden, temporary decrease in query performance. For each cleared cache store in the plan cache, the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] error log contains the following informational message: `SQL Server has encountered %d occurrence(s) of cachestore flush for the '%s' cachestore (part of plan cache) due to some database maintenance or reconfigure operations`. This message is logged every five minutes as long as the cache is flushed within that time interval.
 
 The procedure cache is also flushed in the following scenario: You run several queries against a database that has default options. Then, the database is dropped.
 
@@ -865,7 +865,7 @@ Designates that the current database in use should be altered.
   - MODIFY FILEGROUP READ_WRITE
   - MODIFY NAME
 
-    Clearing the plan cache causes a recompilation of all subsequent execution plans and can cause a sudden, temporary decrease in query performance. For each cleared cachestore in the plan cache, the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] error log contains the following informational message: `SQL Server has encountered %d occurrence(s) of cachestore flush for the '%s' cachestore (part of plan cache) due to some database maintenance or reconfigure operations`. This message is logged every five minutes as long as the cache is flushed within that time interval.
+    Clearing the plan cache causes a recompilation of all subsequent execution plans and can cause a sudden, temporary decrease in query performance. For each cleared cache store in the plan cache, the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] error log contains the following informational message: `SQL Server has encountered %d occurrence(s) of cachestore flush for the '%s' cachestore (part of plan cache) due to some database maintenance or reconfigure operations`. This message is logged every five minutes as long as the cache is flushed within that time interval.
 The plan cache is also flushed when several queries are executed against a database that has default options. Then, the database is dropped.
 
 - Some `ALTER DATABASE` statements require exclusive lock on a database to be executed. This is why they might fail when another active process is holding a lock on the database. Error that is reported in a case like this is `Msg 5061, Level 16, State 1, Line 38` with message `ALTER DATABASE failed because a lock could not be placed on database '<database name>'. Try again later`. This is typically a transient failure and to resolve it, once all locks on the database are released, retry the `ALTER DATABASE` statement that failed. System view `sys.dm_tran_locks` holds information on active locks. To check if there are shared or exclusive locks on a database use following query.
@@ -888,7 +888,7 @@ You can use catalog views, system functions, and system stored procedures to ret
 Only the server-level principal login (created by the provisioning process) or members of the `dbcreator` database role can alter a database.
 
 > [!IMPORTANT]
-> The owner of the database can't alter the database unless they are a member of the `dbcreator` role.
+> The owner of the database can't alter the database unless they're a member of the `dbcreator` role.
 
 ## Examples
 
@@ -1058,7 +1058,7 @@ The owner of the database can't alter the database unless the owner is a member 
 
 ## Remarks
 
-The current database must be a different database than the one you are altering, therefore ALTER must be run while connected to the `master` database.
+The current database must be a different database than the one you're altering, therefore ALTER must be run while connected to the `master` database.
 
 COMPATIBILITY_LEVEL in SQL Analytics is set to 130 by default and can't be changed. For more information, see [ALTER DATABASE compatibility level](alter-database-transact-sql-compatibility-level.md).
 
@@ -1077,7 +1077,7 @@ You can't change the database collation.
 
 ## Examples
 
-Before you run these examples, make sure the database you are altering isn't the current database. The current database must be a different database than the one you are altering, therefore ALTER must be run while connected to the `master` database.
+Before you run these examples, make sure the database you're altering isn't the current database. The current database must be a different database than the one you're altering, therefore ALTER must be run while connected to the `master` database.
 
 ### A. Change the name of the database
 
@@ -1174,7 +1174,7 @@ Updates the AUTOGROW option. When AUTOGROW is ON, [!INCLUDE[ssPDW](../../include
 
 #### REPLICATED_SIZE = *size* [GB]
 
-Specifies the new maximum gigabytes per Compute node for storing all of the replicated tables in the database being altered. If you are planning for appliance storage space, you need to multiply REPLICATED_SIZE by the number of Compute nodes in the appliance.
+Specifies the new maximum gigabytes per Compute node for storing all of the replicated tables in the database being altered. If you're planning for appliance storage space, you need to multiply REPLICATED_SIZE by the number of Compute nodes in the appliance.
 
 #### DISTRIBUTED_SIZE = *size* [GB]
 
@@ -1190,7 +1190,7 @@ Sets the database to be encrypted (ON) or not encrypted (OFF). Encryption can on
 
 #### SET AUTO_CREATE_STATISTICS { ON | OFF }
 
-When the automatic create statistics option, AUTO_CREATE_STATISTICS, is ON, the Query Optimizer creates statistics on individual columns in the query predicate, as necessary, to improve cardinality estimates for the query plan. These single-column statistics are created on columns that do not already have a histogram in an existing statistics object.
+When the automatic create statistics option, AUTO_CREATE_STATISTICS, is ON, the Query Optimizer creates statistics on individual columns in the query predicate, as necessary, to improve cardinality estimates for the query plan. These single-column statistics are created on columns that don't already have a histogram in an existing statistics object.
 
 Default is ON for new databases created after upgrading to AU7. The default is OFF for databases created prior to the upgrade.
 
@@ -1198,7 +1198,7 @@ For more information about statistics, see [Statistics](../../relational-databas
 
 #### SET AUTO_UPDATE_STATISTICS { ON | OFF }
 
-When the automatic update statistics option, AUTO_UPDATE_STATISTICS, is ON, the query optimizer determines when statistics might be out-of-date and then updates them when they are used by a query. Statistics become out-of-date after operations insert, update, delete, or merge change the data distribution in the table or indexed view. The query optimizer determines when statistics might be out-of-date by counting the number of data modifications since the last statistics update and comparing the number of modifications to a threshold. The threshold is based on the number of rows in the table or indexed view.
+When the automatic update statistics option, AUTO_UPDATE_STATISTICS, is ON, the query optimizer determines when statistics might be out-of-date and then updates them when they're used by a query. Statistics become out-of-date after operations insert, update, delete, or merge change the data distribution in the table or indexed view. The query optimizer determines when statistics might be out-of-date by counting the number of data modifications since the last statistics update and comparing the number of modifications to a threshold. The threshold is based on the number of rows in the table or indexed view.
 
 Default is ON for new databases created after upgrading to AU7. The default is OFF for databases created prior to the upgrade.
 
@@ -1228,9 +1228,9 @@ The values for `REPLICATED_SIZE`, `DISTRIBUTED_SIZE`, and `LOG_SIZE` can be grea
 
 Grow and shrink operations are approximate. The resulting actual sizes can vary from the size parameters.
 
-[!INCLUDE[ssPDW](../../includes/sspdw-md.md)] does not perform the `ALTER DATABASE` statement as an atomic operation. If the statement is aborted during execution, changes that have already occurred will remain.
+[!INCLUDE[ssPDW](../../includes/sspdw-md.md)] doesn't perform the `ALTER DATABASE` statement as an atomic operation. If the statement is aborted during execution, changes that have already occurred will remain.
 
-The statistics settings only work if the administrator has enable auto-stats. If you are an administrator, use the feature switch [AutoStatsEnabled](../../analytics-platform-system/appliance-feature-switch.md) to enable or disable auto-stats.
+The statistics settings only work if the administrator has enable auto-stats. If you're an administrator, use the feature switch [AutoStatsEnabled](../../analytics-platform-system/appliance-feature-switch.md) to enable or disable auto-stats.
 
 ## Locking behavior
 

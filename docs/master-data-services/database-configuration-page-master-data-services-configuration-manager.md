@@ -14,6 +14,8 @@ f1_keywords:
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   Use the **Database Configuration** page to edit system settings of a [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] database. System settings affect all web applications and web services associated with the selected [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] database. You must select or create a [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] database before system settings are enabled and available for configuration.  
   
 ## Current Database  

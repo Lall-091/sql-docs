@@ -4,7 +4,7 @@ description: Learn how to set database options such as Automatic tuning, encrypt
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 05/07/2025
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -90,6 +90,7 @@ SET
   | <change_tracking_option>
   | <containment_option>
   | <cursor_option>
+  | <data_retention_policy>
   | <database_mirroring_option>
   | <date_correlation_optimization_option>
   | <db_encryption_option>
@@ -101,6 +102,7 @@ SET
   | FILESTREAM ( <FILESTREAM_option> )
   | <HADR_options>
   | <mixed_page_allocation_option>
+  | <optimized_locking>
   | <parameterization_option>
   | <query_store_options>
   | <recovery_option>
@@ -113,14 +115,13 @@ SET
   | <target_recovery_time_option>
   | <termination>
   | <temporal_history_retention>
-  | <data_retention_policy>
 }
 ;
 
 <accelerated_database_recovery> ::=
 {
     ACCELERATED_DATABASE_RECOVERY = { ON | OFF }
-     [ ( PERSISTENT_VERSION_STORE_FILEGROUP = { filegroup name } ) ];
+     [ ( PERSISTENT_VERSION_STORE_FILEGROUP = { filegroup name } ) ]
 }
 
 <auto_option> ::=
@@ -320,6 +321,11 @@ SET
 
 <data_retention_policy> ::=
     DATA_RETENTION { ON | OFF }
+
+<optimized_locking> ::=
+{
+    OPTIMIZED_LOCKING = { ON | OFF }
+}
 ```
 
 ## Arguments
@@ -339,6 +345,8 @@ Runs the action in the current database. `CURRENT` isn't supported for all optio
 **Applies to**: [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)])
 
 Enables [accelerated database recovery (ADR)](../../relational-databases/accelerated-database-recovery-management.md). ADR is set to OFF by default in [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)] and later. By using this syntax, you can designate a specific filegroup for the Persistent Version Store (PVS) data. If no filegroup is specified, PVS uses the `PRIMARY` filegroup. For more information, see [Manage accelerated database recovery](../../relational-databases/accelerated-database-recovery-management.md).
+
+To set ACCELERATED_DATABASE_RECOVERY ON or OFF, there must be no active connections to the database except for the connection running the ALTER DATABASE command. However, the database doesn't have to be in single-user mode. You can't change the state of this option unless the database is ONLINE.
 
 #### \<auto_option> ::=
 
@@ -1480,6 +1488,14 @@ Specifies the frequency of indirect checkpoints on a per-database basis. Startin
 
 For more information about indirect checkpoints, see [Database checkpoints](../../relational-databases/logs/database-checkpoints-sql-server.md).
 
+#### OPTIMIZED_LOCKING { ON | OFF }
+
+**Applies to**: [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)])
+
+Enables [optimized locking](../../relational-databases//performance/optimized-locking.md). Optimized locking is set to OFF by default.
+
+To set OPTIMIZED_LOCKING ON or OFF, there must be no active connections to the database except for the connection running the ALTER DATABASE command. However, the database doesn't have to be in single-user mode. You can't change the state of this option unless the database is ONLINE.
+
 #### WITH \<termination> ::=
 
 Specifies when to roll back incomplete transactions when the database is transitioned from one state to another. If the termination clause is omitted, the ALTER DATABASE statement waits indefinitely if there's any lock on the database. Only one termination clause can be specified, and it follows the SET clauses.
@@ -1526,7 +1542,8 @@ Not all database options use the WITH \<termination> clause or can be specified 
  | \<parameterization_option> | Yes | Yes |
  | \<change_tracking_option> | Yes | Yes |
  | \<db_encryption_option> | Yes | No |
- | \<accelerated_database_recovery> | Yes | Yes |
+ | \<accelerated_database_recovery> | No | Yes |
+ | \<optimized_locking> | No | Yes |
 
 The plan cache for the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is cleared by setting one of the following options:
 

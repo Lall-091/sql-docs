@@ -1,10 +1,10 @@
 ---
-title: Get started with SQL Server (on Linux) in the Cloud
+title: "Get Started with SQL Server (On Linux) in the Cloud"
 titleSuffix: SQL Server
 description: Learn how to install SQL Server on Red Hat Enterprise Linux (RHEL), SUSE Linux Enterprise Server (SLES), or Ubuntu in the cloud of your choice.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/15/2024
+ms.date: 05/02/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: get-started
@@ -16,7 +16,7 @@ ms.custom:
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
-In this quickstart, you install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Red Hat Enterprise Linux (RHEL), SUSE Linux Enterprise Server (SLES), or Ubuntu in the cloud of your choice. To run [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux in Azure, see [Provision a Linux SQL Server virtual machine in the Azure portal](/azure/azure-sql/virtual-machines/linux/sql-vm-create-portal-quickstart).
+In this quickstart, you install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Red Hat Enterprise Linux (RHEL), SUSE Linux Enterprise Server (SLES), or Ubuntu in the cloud of your choice. To run [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux in Azure, see [Provision a Linux virtual machine running SQL Server in the Azure portal](/azure/azure-sql/virtual-machines/linux/sql-vm-create-portal-quickstart).
 
 > [!NOTE]  
 > If you choose to run a paid edition of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], then you need to bring your own license (BYOL).
@@ -32,7 +32,7 @@ In this quickstart, you install [!INCLUDE [ssnoversion-md](../includes/ssnoversi
    - [Quickstart: Install SQL Server and create a database on Red Hat](quickstart-install-connect-red-hat.md)
    - [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](quickstart-install-connect-suse.md)
    - [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md)
-   - [Quickstart: Install SQL Server and create a database on WSL2](quickstart-install-connect-wsl-2.md)
+   - [Quickstart: Install SQL Server and create a database on Windows Subsystem for Linux (WSL 2)](quickstart-install-connect-wsl-2.md)
 1. Configure for remote connections:
    - Open the [Amazon EC2 console]( https://console.aws.amazon.com/ec2/)
    - In the navigation pane, choose **Security Groups**.

@@ -223,6 +223,14 @@ The fundamental plan-affecting changes added only to the default compatibility l
 
 Other differences between specific compatibility levels are available in the next sections of this article.
 
+## Differences between compatibility level 160 and level 170
+
+This section describes new behaviors introduced with compatibility level 170.
+
+| Compatibility level setting of 160 or lower | Compatibility level setting of 170 |
+| :--- | :--- |
+| To protect the key material of the symmetric key, database master key and service master key, SQL Server and Azure SQL stores the key material in encrypted form. The encryption uses PKCS#1 v1.5 padding mode. | To protect the key material of the symmetric key, database master key and service master key, SQL Server and Azure SQL stores the key material in encrypted form. The encryption uses OAEP-256 padding mode. In the dm_database_encryption_keys, the encryptor_type will be displayed as `CERTIFICATE_OAEP_256` instead of `CERTIFICATE`. |
+
 ## Differences between compatibility level 150 and level 160
 
 This section describes new behaviors introduced with compatibility level 160.

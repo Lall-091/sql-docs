@@ -4,7 +4,7 @@ description: "Best practices for managing and configuring accelerated database r
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: wiassaf, derekw, dfurman, randolphwest
-ms.date: 03/28/2025
+ms.date: 05/01/2025
 ms.service: sql
 ms.subservice: backup-restore
 ms.topic: how-to
@@ -47,6 +47,8 @@ ALTER DATABASE [<db_name>] SET ACCELERATED_DATABASE_RECOVERY = ON;
 
 An exclusive database lock is necessary to enable or disable ADR. That means the `ALTER DATABASE` command is blocked until all active sessions are gone, and that any new sessions wait behind the `ALTER DATABASE` command. If it's important to complete the operation and remove the lock, you can use the termination clause, `WITH ROLLBACK [IMMEDIATE | AFTER {number} SECONDS | NO_WAIT]` to abort any active sessions in the database. For more information, see [ALTER DATABASE SET options](../t-sql/statements/alter-database-transact-sql-set-options.md).
 
+If enabling or disabling ADR in `tempdb`, an exclusive database lock is not required and the termination clause shouldn't be specified. However, a restart of the [!INCLUDE [ssDE](../includes/ssde-md.md)] must occur for the change to take effect.
+
 ## Disable ADR
 
 Use the following T-SQL command to disable ADR:
@@ -56,7 +58,7 @@ ALTER DATABASE [<db_name>] SET ACCELERATED_DATABASE_RECOVERY = OFF;
 GO
 ```
 
-Even after ADR is disabled, there might be versions stored in PVS that the system still needs for logical revert until all active transactions complete.
+Even after ADR is disabled, there might be versions stored in PVS that the system still needs for logical revert until all active transactions complete. If disabling ADR in `tempdb`, a restart of the [!INCLUDE [ssDE](../includes/ssde-md.md)] is required for the change to take effect.
 
 ## Change the PVS filegroup
 
@@ -113,6 +115,9 @@ To change the location of the PVS to a different filegroup, follow these steps:
    ALTER DATABASE [<db_name>] SET ACCELERATED_DATABASE_RECOVERY = ON
    (PERSISTENT_VERSION_STORE_FILEGROUP = [VersionStoreFG]);
    ```
+
+> [!NOTE]
+> Moving PVS to a different filegroup is not supported in `tempdb` because you [cannot add filegroups](./databases/tempdb-database.md#restrictions) in `tempdb`.
 
 ## Monitor the size of the PVS
 

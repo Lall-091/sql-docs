@@ -4,7 +4,7 @@ description: "Learn more about how ordered columnstore indexes can benefit your 
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: nibruno; xiaoyul, randolphwest, dfurman
-ms.date: 02/27/2025
+ms.date: 04/14/2025
 ms.service: sql
 ms.subservice: performance
 ms.topic: conceptual
@@ -42,7 +42,7 @@ Full sort might also be provided for ordered clustered and nonclustered columnst
 In all other cases, the sort in ordered columnstore indexes is partial.
 
 > [!NOTE]
-> Currently, ordered columnstore indexes can be created or rebuilt online only in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and in [!INCLUDE [ssazure-sqlmi-autd](../../includes/ssazure-sqlmi-autd.md)].
+> Currently, ordered columnstore indexes can be created or rebuilt online only in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], in [!INCLUDE [ssazure-sqlmi-autd](../../includes/ssazure-sqlmi-autd.md)], and in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
 
 To check the segment ranges for a column and determine if there is any segment overlap, use the following query, substituting placeholders with your schema, table, and column names:
 

@@ -4,7 +4,7 @@ description: "An overview on columnstore indexes. Columnstore indexes are the st
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: dfurman
-ms.date: 04/04/2025
+ms.date: 04/14/2025
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: concept-article
@@ -166,7 +166,7 @@ By enabling efficient segment elimination, ordered columnstore indexes provide f
 
 ### Ordered columnstore index availability
 
-First introduced with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], ordered columnstore indexes are available in the following platforms:
+Ordered columnstore indexes are available in the following platforms:
 
 |Platform|Ordered *clustered* columnstore indexes|Ordered *nonclustered* columnstore indexes|
 |:--|:--|:--|
@@ -174,6 +174,7 @@ First introduced with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], ord
 |[!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]<sup>AUTD</sup>|Yes|Yes|
 |[!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]<sup>2022</sup>|Yes|No|
 |[!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)] | Yes<sup>1</sup> | Yes |
+|[!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]|Yes|Yes|
 |[!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]|Yes|No|
 |[!INCLUDE [sss-dedicated-pool-md](../../includes/sss-dedicated-pool-md.md)] in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)]|[Yes](/azure/synapse-analytics/sql-data-warehouse/performance-tuning-ordered-cci)|No|
 

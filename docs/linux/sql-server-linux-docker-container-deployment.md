@@ -4,7 +4,7 @@ description: Explore how SQL Server can be deployed on Linux containers and lear
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: vanto, randolphwest
-ms.date: 02/28/2025
+ms.date: 05/02/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -40,9 +40,10 @@ This 6-minute video provides an introduction into running SQL Server on containe
 
 To pull and run the Docker container images for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], follow the prerequisites and steps in the following quickstart:
 
-- [Run the SQL Server 2017 container image with Docker](quickstart-install-connect-docker.md?view=sql-server-2017&preserve-view=true)
-- [Run the SQL Server 2019 container image with Docker](quickstart-install-connect-docker.md?view=sql-server-ver15&preserve-view=true)
-- [Run the SQL Server 2022 container image with Docker](quickstart-install-connect-docker.md?view=sql-server-ver16&preserve-view=true)
+- [[!INCLUDE [sssql25-md](../includes/sssql25-md.md)]](quickstart-install-connect-docker.md?view=sql-server-ver17&preserve-view=true)
+- [[!INCLUDE [sssql22-md](../includes/sssql22-md.md)]](quickstart-install-connect-docker.md?view=sql-server-ver16&preserve-view=true)
+- [[!INCLUDE [sssql19-md](../includes/sssql19-md.md)]](quickstart-install-connect-docker.md?view=sql-server-ver15&preserve-view=true)
+- [[!INCLUDE [sssql17-md](../includes/sssql17-md.md)]](quickstart-install-connect-docker.md?view=sql-server-2017&preserve-view=true)
 
 This configuration article provides additional usage scenarios in the following sections.
 
@@ -458,7 +459,7 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" -p 1402:1433 -d 
 
 ::: moniker-end
 <!--SQL Server 2022 on Linux-->
-::: moniker range=">= sql-server-linux-ver16 || >= sql-server-ver16"
+::: moniker range="=sql-server-linux-ver16 || =sql-server-ver16"
 
 The following example creates two [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] containers and maps them to ports `1401` and `1402` on the host machine.
 
@@ -485,6 +486,39 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" -p 1402:1433 -d 
 ```cmd
 docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" -p 1401:1433 -d mcr.microsoft.com/mssql/server:2022-latest
 docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" -p 1402:1433 -d mcr.microsoft.com/mssql/server:2022-latest
+```
+
+::: zone-end
+
+::: moniker-end
+<!--SQL Server 2025 on Linux-->
+::: moniker range=">=sql-server-linux-ver17 || >=sql-server-ver17"
+
+The following example creates two [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] containers and maps them to ports `1401` and `1402` on the host machine.
+
+::: zone pivot="cs1-bash"
+
+```bash
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<password>' -p 1401:1433 -d mcr.microsoft.com/mssql/server:2025-latest
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<password>' -p 1402:1433 -d mcr.microsoft.com/mssql/server:2025-latest
+```
+
+::: zone-end
+
+::: zone pivot="cs1-powershell"
+
+```powershell
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" -p 1401:1433 -d mcr.microsoft.com/mssql/server:2025-latest
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" -p 1402:1433 -d mcr.microsoft.com/mssql/server:2025-latest
+```
+
+::: zone-end
+
+::: zone pivot="cs1-cmd"
+
+```cmd
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" -p 1401:1433 -d mcr.microsoft.com/mssql/server:2025-latest
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" -p 1402:1433 -d mcr.microsoft.com/mssql/server:2025-latest
 ```
 
 ::: zone-end
@@ -568,7 +602,14 @@ This updates the SQL Server image for any new containers you create, but it does
 ::: moniker-end
 
 <!--SQL Server 2022 on Linux-->
-::: moniker range=">= sql-server-linux-ver16 || >= sql-server-ver16"
+::: moniker range="=sql-server-linux-ver16 || =sql-server-ver16"
+
+- Get started with [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] container images on Docker by going through the [quickstart](quickstart-install-connect-docker.md)
+
+::: moniker-end
+
+<!--SQL Server 2025 on Linux-->
+::: moniker range=">=sql-server-linux-ver17 || >=sql-server-ver17"
 
 - Get started with [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] container images on Docker by going through the [quickstart](quickstart-install-connect-docker.md)
 

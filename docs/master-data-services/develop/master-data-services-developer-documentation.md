@@ -12,6 +12,8 @@ ms.topic: "reference"
 
 [!INCLUDE [SQL Server Windows Only - ASDBMI](../../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](../includes/support-notice.md)]
+
   Find information about how to write code to customize the way you and your users interact with [!INCLUDE[ssMDSshort](../../includes/ssmdsshort-md.md)]. Learn how to:  
   
 -   Write a program that accesses the [!INCLUDE[ssMDSmdm](../../includes/ssmdsmdm-md.md)] web service. The [!INCLUDE[ssMDSmdm](../../includes/ssmdsmdm-md.md)] web service is a Windows Communication Foundation (WCF) service that developers use to control [!INCLUDE[ssMDSshort](../../includes/ssmdsshort-md.md)] features through code.  

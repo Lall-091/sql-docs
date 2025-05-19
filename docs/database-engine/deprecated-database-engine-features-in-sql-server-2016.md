@@ -5,7 +5,7 @@ description: Find out about deprecated Database Engine features that are still a
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 07/09/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: conceptual
@@ -17,6 +17,20 @@ helpviewer_keywords:
 # Deprecated Database Engine features in SQL Server 2016 (13.x)
 
 [!INCLUDE [SQL Server 2016](../includes/applies-to-version/sqlserver2016.md)]
+
+[!INCLUDE [sssql16-md](../includes/sssql16-md.md)] deprecates:
+
+- Data Quality Services (DQS)
+- Master Data Services (MDS)
+
+For information about deprecated features in other versions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see:
+
+- [Deprecated Database Engine features in SQL Server 2025 (17.x) Preview](deprecated-database-engine-features-in-sql-server-2025.md)
+- [Deprecated Database Engine features in SQL Server 2022 (16.x)](deprecated-database-engine-features-in-sql-server-2022.md)
+- [Deprecated Database Engine features in SQL Server 2019 (15.x)](deprecated-database-engine-features-in-sql-server-2019.md)
+- [Deprecated Database Engine features in SQL Server 2017 (14.x)](deprecated-database-engine-features-in-sql-server-2017.md)
+
+## Deprecation guidelines
 
 This article describes the deprecated [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] features that are still available in [!INCLUDE [sssql15-md](../includes/sssql16-md.md)]. Deprecated features shouldn't be used in new applications.
 

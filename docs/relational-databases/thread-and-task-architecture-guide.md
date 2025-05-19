@@ -4,7 +4,7 @@ description: Learn about thread and task architecture in SQL Server, including t
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: jopilov
-ms.date: 04/06/2023
+ms.date: 04/24/2025
 ms.service: sql
 ms.subservice: supportability
 ms.topic: concept-article
@@ -218,7 +218,7 @@ If you are running multiple instances of [!INCLUDE[ssNoVersion](../includes/ssno
 
 ## Hot add CPU
 
-Hot add CPU is the ability to dynamically add CPUs to a running system. Adding CPUs can occur physically by adding new hardware, logically by online hardware partitioning, or virtually through a virtualization layer. [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] supports hot add CPU.
+Hot add CPU is the ability to dynamically add CPUs to a running system. Adding CPUs can occur physically by adding new hardware, logically by online hardware partitioning, or virtually through a virtualization layer.
 
 Requirements for hot add CPU:
 
@@ -227,10 +227,9 @@ Requirements for hot add CPU:
 - Requires [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] Enterprise edition.
 - [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] can't be configured to use soft NUMA. For more information about soft NUMA, see [Soft-NUMA (SQL Server)](../database-engine/configure-windows/soft-numa-sql-server.md).
 
-[!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] doesn't automatically use CPUs after they are added. This prevents [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] from using CPUs that might be added for some other purpose. After adding CPUs, execute the [RECONFIGURE](../t-sql/language-elements/reconfigure-transact-sql.md) statement, so that [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] will recognize the new CPUs as available resources.
+[!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] doesn't automatically use CPUs after they are added. This prevents [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] from using CPUs that might be added for some other purpose. After adding CPUs, execute the [RECONFIGURE](../t-sql/language-elements/reconfigure-transact-sql.md) statement, so that [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] recognizes the new CPUs as available resources.
 
-> [!NOTE]  
-> If the [affinity64 mask](../database-engine/configure-windows/affinity64-mask-server-configuration-option.md) is configured, the affinity64 mask must be modified to use the new CPUs.
+If the [affinity64 mask](../database-engine/configure-windows/affinity64-mask-server-configuration-option.md) is configured, the affinity64 mask must be modified to use the new CPUs.
 
 ## Best practices for running SQL Server on computers that have more than 64 CPUs
 

@@ -1,10 +1,10 @@
 ---
-title: Release notes for SQL Server 2019 on Linux
+title: Release Notes for SQL Server 2019 on Linux
 description: This article contains the release notes and supported features for SQL Server 2019 running on Linux. Release notes include the most recent release and several previous releases.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh, vanto
-ms.date: 02/27/2025
+ms.date: 05/02/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: release-notes
@@ -21,6 +21,7 @@ These release notes are specifically for [!INCLUDE [ssSQL19](../includes/sssql19
 
 - [Release notes for SQL Server 2017 on Linux](sql-server-linux-release-notes-2017.md?view=sql-server-ver14&preserve-view=true)
 - [Release notes for SQL Server 2022 on Linux](sql-server-linux-release-notes-2022.md?view=sql-server-ver16&preserve-view=true)
+- [Release notes for SQL Server 2025 Preview on Linux](sql-server-linux-release-notes-2025.md?view=sql-server-ver17&preserve-view=true)
 
 [!INCLUDE [support-policy](includes/support-policy.md)]
 

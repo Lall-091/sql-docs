@@ -4,7 +4,7 @@ description: Understand the different ways to secure SQL Server Linux containers
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: vanto, randolphwest
-ms.date: 01/21/2025
+ms.date: 05/02/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -79,7 +79,7 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" --cap-add SYS_PT
 ```
 
 > [!WARNING]  
-> Make sure that the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] container has a named user such as `mssql` or `root`, otherwise **sqlcmd** will not be able to run within the container. You can check if the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] container is running as a named user by running `whoami` within the container.
+> Make sure that the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] container has a named user such as `mssql` or `root`, otherwise **sqlcmd** can't run within the container. You can check if the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] container is running as a named user by running `whoami` within the container.
 
 #### Run the non-root container as the root user
 
@@ -109,7 +109,7 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" --cap-add SYS_PT
 
 ## Configure persistent storage permissions for non-root containers
 
-To allow the non-root user to access database files that are on mounted volumes, make sure that the user or group you run the container under, can read from and write to the persistent file storage.
+To allow the non-root user to access database files that are on mounted volumes, make sure that the user or group you run the container under, can read from, and write to, the persistent file storage.
 
 You can get the current ownership of the database files with this command.
 
@@ -130,7 +130,7 @@ chmod -R g=u <database file dir>
 
 #### Set the non-root user as the owner of the files
 
-This can be the default non-root user, or any other non-root user you'd like to specify. In this example, we set UID 10001 as the non-root user.
+The owner can be the default non-root user, or any other non-root user you'd like to specify. In this example, you set UID 10001 as the non-root user.
 
 ```bash
 chown -R 10001:0 <database file dir>
@@ -139,11 +139,11 @@ chown -R 10001:0 <database file dir>
 ## Encrypt connections to SQL Server Linux containers
 
 > [!IMPORTANT]  
-> When configuring Active Directory authentication or encryption options such as Transparent Data Encryption (TDE) and SSL for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux or containers, there are several files, such as the keytab, certificates, and machine key, that are created by default under the folder `/var/opt/mssql/secrets`, and access to which is restricted by default to `mssql` and `root` users. When configuring persistent storage for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] containers, use the same access strategy, ensuring that the path on the host or shared volume that is mapped to the `/var/opt/mssql/secrets` folder inside the container is protected and accessible only to the `mssql` and `root` users on the host as well. If the access to this path/folder is compromised, a malicious user can gain access to these critical files, compromising the encryption hierarchy and/or Active Directory configurations.
+> When you configure Active Directory authentication or encryption options such as Transparent Data Encryption (TDE) and SSL/TLS for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux or containers, there are several files, such as the keytab, certificates, and machine key, that are created by default under the folder `/var/opt/mssql/secrets`, and access to which is restricted by default to `mssql` and `root` users. When you configure persistent storage for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] containers, use the same access strategy, ensuring that the path on the host or shared volume that is mapped to the `/var/opt/mssql/secrets` folder inside the container is protected and accessible only to the `mssql` and `root` users on the host as well. If the access to this path/folder is compromised, a malicious user can gain access to these critical files, compromising the encryption hierarchy and/or Active Directory configurations.
 
 To encrypt connections to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Linux containers, you need a certificate with the following [requirements](sql-server-linux-encrypted-connections.md).
 
-Following is an example of how the connection can be encrypted to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Linux containers. Here we use a self-signed certificate, which shouldn't be used for production scenarios. For such environments, you should use CA certificates instead.
+Following is an example of how the connection can be encrypted to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Linux containers. Here you use a self-signed certificate, which shouldn't be used for production scenarios. For such environments, you should use CA certificates instead.
 
 1. Create a self-signed certificate, which is suited for test and non-production environments only.
 
@@ -151,7 +151,7 @@ Following is an example of how the connection can be encrypted to [!INCLUDE [ssn
    openssl req -x509 -nodes -newkey rsa:2048 -subj '/CN=sql1.contoso.com' -keyout /container/sql1/mssql.key -out /container/sql1/mssql.pem -days 365
    ```
 
-   In the previous code sample, `sql1` is the hostname of the SQL container, so when connecting to this container the name used in the connection string is going to be `sql1.contoso.com,port`. You must also ensure that the folder path `/container/sql1/` already exists before running the above command.
+   In the previous code sample, `sql1` is the hostname of the SQL container, so when connecting to this container the name used in the connection string is going to be `sql1.contoso.com,port`. You must also ensure that the folder path `/container/sql1/` already exists before running the previous command.
 
 1. Ensure you set the right permissions on the `mssql.key` and `mssql.pem` files, so you avoid errors when you mount the files to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] container:
 
@@ -160,7 +160,7 @@ Following is an example of how the connection can be encrypted to [!INCLUDE [ssn
    chmod 440 /container/sql1/mssql.key
    ```
 
-1. Now create a `mssql.conf` file with the below content to enable the Server Initiated encryption. For Client initiated encryption, change the last line to `forceencryption = 0`.
+1. Now create a `mssql.conf` file with the following content to enable the Server Initiated encryption. For Client initiated encryption, change the last line to `forceencryption = 0`.
 
    ```ini
    [network]
@@ -171,7 +171,7 @@ Following is an example of how the connection can be encrypted to [!INCLUDE [ssn
     ```
 
    > [!NOTE]  
-   > For some Linux distributions the path for storing the certificate and key could also be : /etc/pki/tls/certs/ and /etc/pki/tls/private/ respectively. Verify the path before updating the `mssql.conf` for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] containers. The location you set in the `mssql.conf` will be the location where [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] in the container is going to search for the certificate and its key. In this case, that location is `/etc/ssl/certs/` and `/etc/ssl/private/`.
+   > For some Linux distributions, the path for storing the certificate and key could also be `/etc/pki/tls/certs/` and `/etc/pki/tls/private/` respectively. Verify the path before updating the `mssql.conf` for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] containers. The location you set in the `mssql.conf` is the location where [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] in the container is going to search for the certificate and its key. In this case, that location is `/etc/ssl/certs/` and `/etc/ssl/private/`.
 
    The `mssql.conf` file is also created under the same folder location `/container/sql1/`. After running the above steps, you should have three files: `mssql.conf`, `mssql.key`, and `mssql.pem` in the `sql1` folder.
 
@@ -181,10 +181,10 @@ Following is an example of how the connection can be encrypted to [!INCLUDE [ssn
    docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" -p 5434:1433 --name sql1 -h sql1 -v /container/sql1/mssql.conf:/var/opt/mssql/mssql.conf -v   /container/sql1/mssql.pem:/etc/ssl/certs/mssql.pem -v /container/sql1/mssql.key:/etc/ssl/private/mssql.key -d mcr.microsoft.com/mssql/server:2019-latest
    ```
 
-   In the previous command, we have mounted the `mssql.conf`, `mssql.pem`, and `mssql.key` files to the container and mapped the 1433 ([!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] default port) port in the container to port 5434 on the host.
+   In the previous command, you mounted the `mssql.conf`, `mssql.pem`, and `mssql.key` files to the container and mapped the 1433 ([!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] default port) port in the container to port 5434 on the host.
 
    > [!NOTE]  
-   > If you use RHEL 8 and later versions, you can also use `podman run` command instead of `docker run`.
+   > If you use Red Hat Enterprise Linux 8 and later versions, you can also use `podman run` command instead of `docker run`.
 
 Follow the "Register the certificate on your client machine" and "Example connection strings" sections documented in [Client Initiated Encryption](sql-server-linux-encrypted-connections.md?tabs=client#overview) to start encrypting connections to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux containers.
 
@@ -200,14 +200,21 @@ Follow the "Register the certificate on your client machine" and "Example connec
 <!--SQL Server 2019 on Linux-->
 ::: moniker range="=sql-server-linux-ver15 || =sql-server-ver15"
 
-- Get started with [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] container images on Docker by going through the [quickstart](quickstart-install-connect-docker.md)
+- Get started with [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] container images on Docker by going through the [quickstart](quickstart-install-connect-docker.md?view=sql-server-ver15&preserve-view=true)
 
 ::: moniker-end
 
 <!--SQL Server 2022 on Linux-->
-::: moniker range=">= sql-server-linux-ver16 || >= sql-server-ver16"
+::: moniker range="=sql-server-linux-ver16 || =sql-server-ver16"
 
-- Get started with [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] container images on Docker by going through the [quickstart](quickstart-install-connect-docker.md)
+- Get started with [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] container images on Docker by going through the [quickstart](quickstart-install-connect-docker.md?view=sql-server-ver16&preserve-view=true)
+
+::: moniker-end
+
+<!--SQL Server 2025 on Linux-->
+::: moniker range=">=sql-server-linux-ver17 || >=sql-server-ver17"
+
+- Get started with [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] container images on Docker by going through the [quickstart](quickstart-install-connect-docker.md?view=sql-server-ver17&preserve-view=true)
 
 ::: moniker-end
 

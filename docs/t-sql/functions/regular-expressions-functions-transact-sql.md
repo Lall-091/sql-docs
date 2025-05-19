@@ -13,12 +13,12 @@ helpviewer_keywords:
   - regex
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =fabric"
+monikerRange:  "= sql-server-ver17 || = sql-server-linux-ver17 || =azuresqldb-current || =fabric"
 ---
 
 # Regular expressions functions (Transact-SQL)
 
-[!INCLUDE [asdb-fabricsqldb](../../includes/applies-to-version/asdb-fabricsqldb.md)]
+[!INCLUDE [sqlserver2025-asdb-fabric](../../includes/applies-to-version/sqlserver2025-asdb-fabric.md)]
 
 [!INCLUDE [preview](../../includes/preview.md)]
 

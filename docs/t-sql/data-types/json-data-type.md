@@ -13,11 +13,11 @@ helpviewer_keywords:
   - "JSON data type"
 monikerRange: "=azuresqldb-current||=azuresqldb-mi-current"
 ---
-# JSON data type (preview)
+# JSON data type
 
-[!INCLUDE [asdb](../../includes/applies-to-version/asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
-The new native **json** data type that stores JSON documents in a native binary format.
+The native **json** data type that stores JSON documents in a native binary format.
 
 The **json** type provides a high-fidelity storage of JSON documents optimized for easy querying and manipulation, and provides the following benefits over storing JSON data in **varchar** or **nvarchar**:
 
@@ -58,8 +58,36 @@ JSON function support was first introduced in [!INCLUDE [sssql16-md](../../inclu
 
 **json** is available under all database compatibility levels.
 
-> [!NOTE]  
-> The [JSON data type](../../t-sql/data-types/json-data-type.md) is currently in preview for Azure SQL Database and Azure SQL Managed Instance configured with the [**Always-up-to-date** update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy). It's not available in Azure SQL Managed Instance configured with the [**SQL Server 2022** update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy).
+> [!NOTE]
+> The [JSON data type](../../t-sql/data-types/json-data-type.md): 
+> - is generally available for Azure SQL Database and Azure SQL Managed Instance configured with the **[Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy)**.  
+> - is in preview for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. 
+
+
+## modify method
+
+> [!NOTE]
+> `modify` method is currently in preview and only available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. 
+
+The native **json** type supports the `modify` method. Use `modify` to modify JSON documents stored in a column. The `modify` method has optimizations to perform in-place modifications to the data where possible, and is the preferred way to modify a JSON document in a **json** type column.
+
+For JSON strings, if the new value is less than or equal to the existing value, then in-place modification is possible.
+
+For JSON numbers, if the new value is of the same type, or within the range of the existing value, then in-place modification is possible.
+
+
+```sql
+DROP TABLE IF EXISTS JsonTable;
+CREATE TABLE JsonTable ( id int PRIMARY KEY, d JSON );
+INSERT INTO JsonTable (id, d) VALUES(1, '{"a":1, "b":"abc", "c":true}');
+UPDATE JsonTable
+SET d.modify('$.a', 14859)
+WHERE id = 1;
+UPDATE JsonTable
+SET d.modify('$.b', 'def')
+WHERE id = 1;
+```
+
 
 ## Function support
 

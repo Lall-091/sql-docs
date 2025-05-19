@@ -4,7 +4,7 @@ description: Find out about changes to SQL Server Migration Assistant (SSMA) for
 author: cpichuka
 ms.author: cpichuka
 ms.reviewer: randolphwest
-ms.date: 04/01/2025
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: ssma
 ms.topic: whats-new
@@ -18,6 +18,10 @@ ms.custom:
 This article lists SQL Server Migration Assistant (SSMA) for Access changes in each release.
 
 [!INCLUDE [entra-id](../../includes/entra-id-hard-coded.md)]
+
+## SSMA v10.2
+
+The v10.1 release of SSMA for Access contains minor performance improvements and bug fixes.
 
 ## SSMA v10.1
 

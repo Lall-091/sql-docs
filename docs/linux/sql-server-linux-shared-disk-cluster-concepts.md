@@ -4,7 +4,7 @@ description: Concepts for SQL Server failover cluster instances on Linux include
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 03/28/2025
+ms.date: 05/02/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -65,7 +65,7 @@ Under Windows Server, there are slightly different options. One option not curre
 In a configuration that spans multiple locations, what is stored at one data center must be synchronized with the other. In the event of a failover, the FCI is able to come online and the storage is seen to be the same. Achieving this requires some external method for storage replication, whether it's done via the underlying storage hardware or some software-based utility.
 
 > [!NOTE]  
-> For [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], Linux-based deployments using disks presented directly to a server such must be formatted with XFS or EXT4. Other file systems are currently not supported. Any changes will be reflected here.
+> For [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], Linux-based deployments using disks presented directly to a server such must be formatted with **XFS** or **ext4**. Other file systems are currently not supported. Any changes will be reflected here.
 
 The process for presenting shared storage is the same for the different supported methods:
 

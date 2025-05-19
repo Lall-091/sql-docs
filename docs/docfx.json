@@ -55,11 +55,7 @@
         }
       },
       "toc_preview": true,
-      "feedback_system": "Standard",
-      "feedback_github_repo": "MicrosoftDocs/sql-docs",
-      "feedback_product_url": "https://feedback.azure.com/d365community/forum/04fe6ee0-3b25-ec11-b6e6-000d3a4f0da0",
-      "feedback_help_link_url": "https://learn.microsoft.com/answers/tags/191/sql-server",
-      "feedback_help_link_type": "get-help-at-qna",
+      "feedback_system": "none",
       "titleSuffix": "SQL Server",
       "recommendations": true
     },
@@ -132,7 +128,7 @@
         "big-data-cluster/**/*.yml": "= sql-server-ver15 || = sql-server-linux-ver15",
         "connect/**/*.md": ">= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-current || = azuresqldb-mi-current || = azure-sqldw-latest || >= aps-pdw-2016 || = fabric",
         "database-engine/**/*.md": ">= sql-server-2016 || >= sql-server-linux-2017",
-        "data-quality-services/**/*.md": ">= sql-server-2016",
+        "data-quality-services/**/*.md": "= sql-server-2016 || = sql-server-2017 || = sql-server-linux-2017 || = sql-server-ver15 || = sql-server-linux-ver15 || = sql-server-ver16 || = sql-server-linux-ver16",
         "dea/**/*.md": ">= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-current || = azuresqldb-mi-current || = azure-sqldw-latest || >= aps-pdw-2016",
         "dma/**/*.md": ">= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-current || = azuresqldb-mi-current || = azure-sqldw-latest || >= aps-pdw-2016",
         "dmx/**/*.md": ">= sql-server-2016",
@@ -140,7 +136,7 @@
         "language-extensions/**/*.md": ">= sql-server-ver15 || >= sql-server-linux-ver15",
         "linux/**/*.md": ">= sql-server-2017 || >= sql-server-linux-2017",
         "machine-learning/**/*.md": ">= sql-server-2017",
-        "master-data-services/**/*.md": ">= sql-server-2016",
+        "master-data-services/**/*.md": "= sql-server-2016 || = sql-server-2017 || = sql-server-linux-2017 || = sql-server-ver15 || = sql-server-linux-ver15 || = sql-server-ver16 || = sql-server-linux-ver16",
         "mdx/**/*.md": ">= sql-server-2016",
         "odbc/**/*.md": ">= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-current || = azuresqldb-mi-current || = azure-sqldw-latest || >= aps-pdw-2016 || = fabric",
         "powershell/**/*.md": ">= aps-pdw-2016 || = azure-sqldw-latest || = azuresqldb-current || = azuresqldb-mi-current || >= sql-server-2016 || >= sql-server-linux-2017 || = fabric",
@@ -188,7 +184,8 @@
         "t-sql/**/*.md": "= azuresqldb-current || = azuresqldb-mi-current || >= sql-server-2016 || >= sql-server-linux-2017 || = azuresqledge-current",
         "t-sql/spatial-geography/*.md": "= azuresqldb-current || >= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-mi-current || =fabric",
         "t-sql/spatial-geometry/*.md": "= azuresqldb-current || >= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-mi-current || =fabric",
-        "xquery/**/*.md": ">= sql-server-2016 || >= sql-server-linux-2017"
+        "xquery/**/*.md": ">= sql-server-2016 || >= sql-server-linux-2017",
+        "preview/**/*.md": ">= sql-server-ver17 || >= sql-server-linux-ver17"
       },
       "zone_pivot_group_filename": {
         "machine-learning/**/*.md": "machine-learning/machine-learning-zone-pivot-groups.json"

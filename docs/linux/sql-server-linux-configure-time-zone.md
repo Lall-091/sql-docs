@@ -1,27 +1,27 @@
 ---
-title: Configure the Time Zone for SQL Server 2022 on Linux
-description: In this article, learn how to configure the time zone on for SQL Server 2022 on Linux.
+title: Configure the Time Zone for SQL Server 2022 and Later Versions on Linux
+description: In this article, learn how to configure the time zone on for SQL Server 2022 and later versions on Linux.
 author: ericjulien
 ms.author: ericjulien
 ms.reviewer: randolphwest
-ms.date: 01/21/2025
+ms.date: 05/02/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
 ms.custom:
   - linux-related-content
 ---
-# Configure the time zone for SQL Server 2022 on Linux
+# Configure the time zone for SQL Server 2022 and later versions on Linux
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
-This article describes how to configure the time zone for [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] on Linux. You can also configure the time zone on Linux for [SQL Server 2017](sql-server-linux-configure-time-zone-2017.md) and [SQL Server 2019](sql-server-linux-configure-time-zone-2019.md).
+This article describes how to configure the time zone for [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] and later versions on Linux. You can also configure the time zone on Linux for [SQL Server 2017](sql-server-linux-configure-time-zone-2017.md) and [SQL Server 2019](sql-server-linux-configure-time-zone-2019.md).
 
 ## Overview
 
-[!INCLUDE [sssql22-md](../includes/sssql22-md.md)] on Linux uses Windows time zones internally. All Transact-SQL (T-SQL) commands use Windows time zones, for example the [CURRENT_TIMEZONE_ID](../t-sql/functions/current-timezone-transact-sql.md) function and [AT TIME ZONE](../t-sql/queries/at-time-zone-transact-sql.md) query operator.
+[!INCLUDE [sssql22-md](../includes/sssql22-md.md)] and later versions on Linux uses Windows time zones internally. All Transact-SQL (T-SQL) commands use Windows time zones, for example the [CURRENT_TIMEZONE_ID](../t-sql/functions/current-timezone-transact-sql.md) function and [AT TIME ZONE](../t-sql/queries/at-time-zone-transact-sql.md) query operator.
 
-1. [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] on Linux first determines which time zone to use, using the first valid result from the following sequence:
+1. [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux first determines which time zone to use, using the first valid result from the following sequence:
 
    - the `TZ` environment variable, if set;
    - the `/etc/localtime` symbolic link, if it exists;

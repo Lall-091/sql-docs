@@ -3,7 +3,7 @@ title: "Configure read-only routing for an availability group"
 description: "Automatically route all read-only traffic to a secondary replica using read-only routing for your Always On availability group - using Transact-SQL (T-SQL), or PowerShell."
 author: MashaMSFT
 ms.author: mathoma
-ms.date: "02/25/2019"
+ms.date: "03/15/2025"
 ms.service: sql
 ms.subservice: availability-groups
 ms.topic: how-to
@@ -157,7 +157,7 @@ GO
   
     -   To configure read-only routing for the secondary role, specify the **ReadonlyRoutingConnectionUrl"**_url_**"** parameter.  
   
-         where, *url* is the connectivity fully-qualified domain name (FQDN) and port to use when routing to the replica for read-only connections. For example:  `-ReadonlyRoutingConnectionUrl "TCP://DBSERVER8.manufacturing.Adventure-Works.com:7024"`  
+         where, *url* is the connectivity fully qualified domain name (FQDN) and port to use when routing to the replica for read-only connections. For example:  `-ReadonlyRoutingConnectionUrl "TCP://DBSERVER8.manufacturing.Adventure-Works.com:7024"`  
   
          For more information, see [Calculating read_only_routing_url for Always On](/archive/blogs/mattn/calculating-read_only_routing_url-for-alwayson).  
   
@@ -218,6 +218,12 @@ Server=tcp:MyAgListener,1433;Database=Db1;IntegratedSecurity=SSPI;ApplicationInt
 ### If Read-Only Routing is Not Working Correctly  
  For information about troubleshooting a read-only routing configuration, see [Read-Only Routing is Not Working Correctly](../../../database-engine/availability-groups/windows/troubleshoot-always-on-availability-groups-configuration-sql-server.md#ROR).  
   
+
+## Revert to default routing behavior
+
+Starting with [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)], you can specify `NONE` as the `READ_WRITE_ROUTING_URL` or the `READ_ONLY_ROUTING_URL ` destination to revert specified routing for the availability replica, and route traffic based on the default behavior. To learn more, review [ALTER AVAILABILITY GROUP](../../../t-sql/statements/alter-availability-group-transact-sql.md) Transact-SQL command.
+
+
 ##  <a name="RelatedTasks"></a> Next Steps 
 **To view read-only routing configurations**  
   

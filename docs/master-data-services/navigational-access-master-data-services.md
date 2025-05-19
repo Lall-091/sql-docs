@@ -15,6 +15,8 @@ helpviewer_keywords:
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   Navigational access applies to model object security, which is assigned on the **Models** tab.  
   
  Navigational access is the access you get to levels higher than where you've assigned security.  

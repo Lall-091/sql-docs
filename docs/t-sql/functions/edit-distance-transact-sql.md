@@ -4,22 +4,28 @@ description: EDIT_DISTANCE calculates the number of insertions, deletions, subst
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: abhtiwar, wiassaf, randolphwest
-ms.date: 01/21/2025
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =fabric"
+monikerRange: "=azuresqldb-current || =fabric || >=sql-server-2016"
 ---
 
 # EDIT_DISTANCE (Transact-SQL)
 
-[!INCLUDE [asdb-fabricsqldb](../../includes/applies-to-version/asdb-fabricsqldb.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-fabricsqldb.md)]
 
 [!INCLUDE [preview](../../includes/preview.md)]
 
 Calculates the number of insertions, deletions, substitutions, and transpositions needed to transform one string to another.
+
+> [!NOTE]
+> - EDIT_DISTANCE is currently in preview. 
+> - SQL Server support for EDIT_DISTANCE introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. 
+
+## Syntax
 
 ```syntaxsql
 EDIT_DISTANCE (
@@ -44,7 +50,7 @@ The maximum distance that should be computed. Integer. If greater than or equal 
 
 ## Remarks
 
-This function implements the Damerau-Levenshtein algorithm. If any of the inputs is NULL then the function returns a NULL value. Otherwise, the function will return an integer value from 0 to the number of transformations or *maximum_distance* value.
+This function implements the Damerau-Levenshtein algorithm. If any of the inputs is `NULL` then the function returns a `NULL` value. Otherwise, the function returns an integer value from 0 to the number of transformations or *maximum_distance* value.
 
 ## Example
 

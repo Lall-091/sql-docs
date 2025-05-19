@@ -1,0 +1,9 @@
+---
+author: MikeRayMSFT
+ms.author: mikeray
+ms.date: 02/03/2025
+ms.service: sql
+ms.topic: include
+---
+
+[!INCLUDE [Applies to](../../includes/applies-md.md)] [!INCLUDE [SQL Server 2025](_ss2025.md)]

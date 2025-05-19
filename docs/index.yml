@@ -89,6 +89,9 @@ conceptualContent:
 
     - title: What's new
       links:
+        - text: SQL Server 2025 Preview
+          url: ./sql-server/what-s-new-in-sql-server-2022.md
+          itemType: whats-new
         - text: SQL Server 2022
           url: ./sql-server/what-s-new-in-sql-server-2022.md
           itemType: whats-new
@@ -175,8 +178,6 @@ additionalContent:
               url: /power-bi/report-server/get-started
             - text: Power BI Service
               url: /power-bi/service-get-started
-            - text: SQL Server Reporting Services (SSRS)
-              url: reporting-services/create-deploy-and-manage-mobile-and-paginated-reports.md
             - text: SQL Server Analysis Services (SSAS)
               url: /analysis-services/analysis-services-overview
             - text: Azure Analysis Services

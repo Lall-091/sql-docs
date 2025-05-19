@@ -4,7 +4,7 @@ description: You can configure a database in Azure SQL Database as the push subs
 author: ferno-ms
 ms.author: ferno
 ms.reviewer: wiassaf, mathoma
-ms.date: 03/03/2024
+ms.date: 05/08/2025
 ms.service: azure-sql-database
 ms.subservice: replication
 ms.topic: conceptual
@@ -25,7 +25,8 @@ You can configure Azure SQL Database or Fabric SQL database as the push subscrib
 
 ## Supported configurations
   
-- Azure SQL Database or Fabric SQL database can only be the push subscriber of a SQL Server publisher and distributor.  
+- Azure SQL Database or SQL database in Fabric can only be the push subscriber of a SQL Server publisher and distributor.
+- Replication to SQL database in Fabric doesn't work when Private Link is enabled. 
 - The SQL Server instance acting as publisher and/or distributor can be an instance of [SQL Server running on-premises](https://www.microsoft.com/sql-server/sql-server-downloads), an [Azure SQL Managed Instance](../managed-instance/instance-create-quickstart.md), or an instance of [SQL Server running on an Azure virtual machine in the cloud](../virtual-machines/windows/sql-vm-create-portal-quickstart.md). 
 - The distribution database and the replication agents can't be placed on a database in Azure SQL Database.  
 - [Snapshot](/sql/relational-databases/replication/snapshot-replication) and [one-way transactional](/sql/relational-databases/replication/transactional/transactional-replication) replication are supported. Peer-to-peer transactional replication and merge replication aren't supported.
@@ -69,8 +70,8 @@ There are different [types of replication](/sql/relational-databases/replication
 - Replication can be configured by using [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) or by executing Transact-SQL statements on the publisher. You can't configure replication by using the Azure portal.  
 - To authenticate:
     - [Azure-Arc enabled SQL Servers](/sql/sql-server/azure-arc/overview) allow replication to use [Microsoft Entra ID authentication](/sql/relational-databases/replication/configure-replication-with-azure-ad-authentication).
-    - Replication can use Microsoft Entra ID authentication with a [service principal](/entra/identity-platform/app-objects-and-service-principals) to connect to Fabric SQL database.
-    - Replication can only use SQL Server authentication logins to connect to Azure SQL Database.
+    - Replication can use Microsoft Entra ID authentication with a [service principal](/entra/identity-platform/app-objects-and-service-principals).
+    - Replication can use SQL Server authentication logins to connect to Azure SQL Database only.
 - Replicated tables must have a primary key.  
 - You must have an existing Azure subscription.  
 - The Azure SQL Database subscriber can be in any region.  

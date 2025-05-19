@@ -33,6 +33,8 @@ This article describes how to create a login in [!INCLUDE [ssnoversion](../../..
 
 A login is a security principal, or an entity that can be authenticated by a secure system. Users need a login to connect to [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)]. You can create a login based on a Windows principal (such as a domain user or a Windows domain group) or you can create a login that isn't based on a Windows principal (such as an [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] login).
 
+[!INCLUDE [encryption-algorithm-history-md](../../../includes/encryption-algorithm-history.md)]
+
 > [!NOTE]  
 > To use [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] Authentication, the [!INCLUDE [ssDE](../../../includes/ssde-md.md)] must use mixed mode authentication. For more information, see [Choose an Authentication Mode](../../../relational-databases/security/choose-an-authentication-mode.md).
 >  

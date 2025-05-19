@@ -1,7 +1,8 @@
 ---
 author: MikeRayMSFT
 ms.author: mikeray
-ms.date: 12/23/2024
+ms.reviewer: randolphwest
+ms.date: 05/05/2025
 ms.service: sql
 ms.topic: include
 ---
@@ -21,8 +22,8 @@ Invalid flag provided. '<invalid character>' are not valid flags. Only {c,i,s,m}
 ##### Supported flag values
 
 | Flag | Description |
-|------|-------------|
-| i    | Case-insensitive (default false) |
-| m    | Multi-line mode: `^` and `$` match begin/end line in addition to begin/end text (default false) |
-| s    | Let `.` match `\n` (default false) |
-| c    | Case-sensitive (default true) |
+| --- | --- |
+| `i` | Case-insensitive (default `false`) |
+| `m` | Multi-line mode: `^` and `$` match begin/end line in addition to begin/end text (default `false`) |
+| `s` | Let `.` match `\n` (default `false`) |
+| `c` | Case-sensitive (default `true`) |

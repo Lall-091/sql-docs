@@ -4,7 +4,7 @@ description: This page describes some common vCore resource limits for elastic p
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: wiassaf, mathoma
-ms.date: 03/20/2025
+ms.date: 04/28/2025
 ms.service: azure-sql-database
 ms.subservice: elastic-pools
 ms.topic: reference
@@ -699,7 +699,7 @@ The following table covers these SLOs: `HS_PRMS_4`, `HS_PRMS_6`, `HS_PRMS_8`, `H
 | Max data size per pool (TB) | 100 | 100 | 100 | 100 | 100 | 100 |
 | `tempdb` max data size (GB) | 128 | 192 | 256 | 320 | 384 | 448 |
 | Max local SSD IOPS per pool <sup>2</sup> | 18,000 | 27,000 | 36,000 | 45,000 | 54,000 | 63,000 |
-| Max log rate per pool (MiB/s) <sup>7</sup> | 125 | 125 | 125 | 125 | 125 | 125 |
+| Max log rate per pool (MiB/s) | 150 | 150 | 150 | 150 | 150 | 150 |
 | Local read IO latency <sup>3</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms |
 | Remote read IO latency <sup>3</sup> | 1-5 ms | 1-5 ms | 1-5 ms | 1-5 ms | 1-5 ms | 1-5 ms |
 | Write IO latency <sup>3</sup> | 3-5 ms | 3-5 ms | 3-5 ms | 3-5 ms | 3-5 ms | 3-5 ms |
@@ -724,8 +724,6 @@ The following table covers these SLOs: `HS_PRMS_4`, `HS_PRMS_6`, `HS_PRMS_8`, `H
 
 <sup>6</sup> For more information on what counts as an external connection, see [External Connections](resource-limits-logical-server.md#external-connections).
 
-<sup>7</sup> Log generation rate of 150 MiB/s is available as an opt-in preview feature for premium-series and premium-series memory optimized. For more information and to opt in to 150 MiB/s, see [Blog: November 2024 Hyperscale enhancements](https://aka.ms/AAslnql).
-
 ### Hyperscale - premium-series (part 2 of 3)
 
 Compute sizes (service level objectives, or SLOs) for Hyperscale premium-series elastic pools follow the naming convention `HS_PRMS_` followed by the number of max vCores.
@@ -742,7 +740,7 @@ The following table covers these SLOs: `HS_PRMS_16`, `HS_PRMS_18`, `HS_PRMS_20`,
 | Max data size per pool (TB) | 100 | 100 | 100 | 100 | 100 | 100 | 
 | `tempdb` max data size (GB) | 512 | 576 | 640 | 768 | 1024 | 1280 | 
 | Max local SSD IOPS per pool <sup>2</sup> | 72,000 | 81,000 | 90,000 | 108,000 | 144,000 | 180,000 | 
-| Max log rate per pool (MiB/s) <sup>7</sup> | 125 | 125 | 125 | 125 | 125 | 125 | 
+| Max log rate per pool (MiB/s) | 150 | 150 | 150 | 150 | 150 | 150 | 
 | Local read IO latency <sup>3</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 
 | Remote read IO latency <sup>3</sup> | 1-5 ms | 1-5 ms | 1-5 ms | 1-5 ms | 1-5 ms | 1-5 ms | 
 | Write IO latency <sup>3</sup> | 3-5 ms | 3-5 ms | 3-5 ms | 3-5 ms | 3-5 ms | 3-5 ms | 
@@ -767,8 +765,6 @@ The following table covers these SLOs: `HS_PRMS_16`, `HS_PRMS_18`, `HS_PRMS_20`,
 
 <sup>6</sup> For more information on what counts as an external connection, see [External Connections](resource-limits-logical-server.md#external-connections).
 
-<sup>7</sup> Log generation rate of 150 MiB/s is available as an opt-in preview feature for premium-series and premium-series memory optimized. For more information and to opt in to 150 MiB/s, see [Blog: November 2024 Hyperscale enhancements](https://aka.ms/AAslnql).
-
 ### Hyperscale - premium-series (part 3 of 3)
 
 Compute sizes (service level objectives, or SLOs) for Hyperscale premium-series elastic pools follow the naming convention `HS_PRMS_` followed by the number of max vCores.
@@ -785,7 +781,7 @@ The following table covers these SLOs: `HS_PRMS_64`, `HS_PRMS_80`, `HS_PRMS_128`
 | Max data size per pool (TB) | 100 | 100 | 100 | 
 | `tempdb` max data size (GB) | 2,048 | 2,560 | 4,096 |
 | Max local SSD IOPS per pool <sup>2</sup> | 288,000 | 360,000 | 409,600 |
-| Max log rate per pool (MiB/s) <sup>7</sup> | 125 | 125 | 125 | 
+| Max log rate per pool (MiB/s) | 150 | 150 | 150 | 
 | Local read IO latency <sup>3</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 
 | Remote read IO latency <sup>3</sup> | 1-5 ms | 1-5 ms | 1-5 ms |
 | Write IO latency <sup>3</sup> | 3-5 ms | 3-5 ms | 3-5 ms | 
@@ -810,8 +806,6 @@ The following table covers these SLOs: `HS_PRMS_64`, `HS_PRMS_80`, `HS_PRMS_128`
 
 <sup>6</sup> For more information on what counts as an external connection, see [External Connections](resource-limits-logical-server.md#external-connections).
 
-<sup>7</sup> Log generation rate of 150 MiB/s is available as an opt-in preview feature for premium-series and premium-series memory optimized. For more information and to opt in to 150 MiB/s, see [Blog: November 2024 Hyperscale enhancements](https://aka.ms/AAslnql).
-
 ## Hyperscale - premium-series memory optimized
 
 ### Hyperscale - premium-series memory optimized (part 1 of 3)
@@ -830,7 +824,7 @@ The following table covers these SLOs: `HS_MOPRMS_4`, `HS_MOPRMS_6`, `HS_MOPRMS_
 | Max data size per pool (TB) | 100 | 100 | 100 | 100 | 100 | 100 |
 | `tempdb` max data size (GB) | 128 | 192 | 256 | 320 | 384 | 448 |
 | Max local SSD IOPS per pool <sup>2</sup> | 23,040 | 34,560 | 46,080 | 57,600 | 69,120 | 80,640 |
-| Max log rate per pool (MiB/s) <sup>7</sup> | 125 | 125 | 125 | 125 | 125 | 125 |
+| Max log rate per pool (MiB/s) | 150 | 150 | 150 | 150 | 150 | 150 |
 | Local read IO latency <sup>3</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms |
 | Remote read IO latency <sup>3</sup> | 1-5 ms | 1-5 ms | 1-5 ms | 1-5 ms | 1-5 ms | 1-5 ms |
 | Write IO latency <sup>3</sup> | 3-5 ms | 3-5 ms | 3-5 ms | 3-5 ms | 3-5 ms | 3-5 ms |
@@ -855,8 +849,6 @@ The following table covers these SLOs: `HS_MOPRMS_4`, `HS_MOPRMS_6`, `HS_MOPRMS_
 
 <sup>6</sup> For more information on what counts as an external connection, see [External Connections](resource-limits-logical-server.md#external-connections).
 
-<sup>7</sup> Log generation rate of 150 MiB/s is available as an opt-in preview feature for premium-series and premium-series memory optimized. For more information and to opt in to 150 MiB/s, see [Blog: November 2024 Hyperscale enhancements](https://aka.ms/AAslnql).
-
 ### Hyperscale - premium-series memory-optimized (part 2 of 3)
 
 Compute sizes (service level objectives, or SLOs) for Hyperscale premium-series memory optimized elastic pools follow the naming convention `HS_MOPRMS_` followed by the number of max vCores.
@@ -873,7 +865,7 @@ The following table covers these SLOs: `HS_MOPRMS_16`, `HS_MOPRMS_18`, `HS_MOPRM
 | Max data size per pool (TB) | 100 | 100 | 100 | 100 | 100 | 100 | 
 | `tempdb` max data size (GB) | 512 | 576 | 640 | 768 | 1024 | 1280 | 
 | Max local SSD IOPS per pool <sup>2</sup> | 92,160 | 103,680 | 115,200 | 138,240 | 184,320 | 230,400 | 
-| Max log rate per pool (MiB/s) <sup>7</sup> | 125 | 125 | 125 | 125 | 125 | 125 | 
+| Max log rate per pool (MiB/s) | 150 | 150 | 150 | 150 | 150 | 150 |
 | Local read IO latency <sup>3</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 
 | Remote read IO latency <sup>3</sup> | 1-5 ms | 1-5 ms | 1-5 ms | 1-5 ms | 1-5 ms | 1-5 ms | 
 | Write IO latency <sup>3</sup> | 3-5 ms | 3-5 ms | 3-5 ms | 3-5 ms | 3-5 ms | 3-5 ms | 
@@ -898,8 +890,6 @@ The following table covers these SLOs: `HS_MOPRMS_16`, `HS_MOPRMS_18`, `HS_MOPRM
 
 <sup>6</sup> For more information on what counts as an external connection, see [External Connections](resource-limits-logical-server.md#external-connections).
 
-<sup>7</sup> Log generation rate of 150 MiB/s is available as an opt-in preview feature for premium-series and premium-series memory optimized. For more information and to opt in to 150 MiB/s, see [Blog: November 2024 Hyperscale enhancements](https://aka.ms/AAslnql).
-
 ### Hyperscale - premium-series memory-optimized (part 3 of 3)
 
 Compute sizes (service level objectives, or SLOs) for Hyperscale premium-series memory optimized elastic pools follow the naming convention `HS_MOPRMS_` followed by the number of max vCores.
@@ -916,7 +906,7 @@ The following table covers these SLOs: `HS_MOPRMS_64` and `HS_MOPRMS_80`:
 | Max data size per pool (TB) | 100 | 100 |
 | `tempdb` max data size (GB) | 2,048 | 2,560 | 
 | Max local SSD IOPS per pool <sup>2</sup> | 368,640 | 409,600 |
-| Max log rate per pool (MiB/s) <sup>7</sup> | 125 | 125 | 
+| Max log rate per pool (MiB/s) | 150 | 150 |
 | Local read IO latency <sup>3</sup> | 1-2 ms | 1-2 ms | 
 | Remote read IO latency <sup>3</sup> | 1-5 ms | 1-5 ms | 
 | Write IO latency <sup>3</sup> | 3-5 ms | 3-5 ms | 
@@ -940,8 +930,6 @@ The following table covers these SLOs: `HS_MOPRMS_64` and `HS_MOPRMS_80`:
 <sup>5</sup> For the max concurrent workers for any individual database, see [Single database resource limits](resource-limits-vcore-single-databases.md). For example, if the elastic pool is using standard-series (Gen5) and the max vCore per database is set at 2, then the max concurrent workers value is 200. If max vCore per database is set to 0.5, then the max concurrent workers value is 50 since on standard-series (Gen5) there are a max of 100 concurrent workers per vCore. For other max vCore settings per database that are less 1 vCore or less, the number of max concurrent workers is similarly rescaled.
 
 <sup>6</sup> For more information on what counts as an external connection, see [External Connections](resource-limits-logical-server.md#external-connections).
-
-<sup>7</sup> Log generation rate of 150 MiB/s is available as an opt-in preview feature for premium-series and premium-series memory optimized. For more information and to opt in to 150 MiB/s, see [Blog: November 2024 Hyperscale enhancements](https://aka.ms/AAslnql).
 
 ## Database properties for pooled databases
 

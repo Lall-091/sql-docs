@@ -47,9 +47,9 @@ Once the ghost cleanup process is disabled, some action needs to be taken to rem
  > Disabling the ghost cleanup process is not generally recommended. Doing so should be tested thoroughly in a controlled environment before being implemented permanently in a production environment.
 
 
-## Next steps  
-[Disabling the ghost clean up process](https://support.microsoft.com/help/920093/tuning-options-for-sql-server-when-running-in-high-performance-workloa)
-<br>[Remove ghost records from a single database file](system-stored-procedures/sp-clean-db-file-free-space-transact-sql.md)
-<br>[Remove ghost records from all database data files](system-stored-procedures/sp-clean-db-free-space-transact-sql.md)
+## Related content 
+
+- [Remove ghost records from a single database file](system-stored-procedures/sp-clean-db-file-free-space-transact-sql.md)
+- [Remove ghost records from all database data files](system-stored-procedures/sp-clean-db-free-space-transact-sql.md)
 
 

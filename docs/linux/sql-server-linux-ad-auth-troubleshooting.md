@@ -4,7 +4,7 @@ description: Troubleshoot Active Directory authentication issues with SQL Server
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: randolphwest
-ms.date: 11/18/2024
+ms.date: 05/02/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: troubleshooting-general
@@ -299,7 +299,7 @@ The error message "Could not look up short domain name due to error" suggests th
 <a id="error-rdns-lookup"></a>
 <a id="error-fqdn-not-returned"></a>
 
-### Error messages: "Could not perform rDNS lookup for host \<hostname\> due to error" or "FQDN not returned by rDNS lookup"
+### Error messages: "Could not perform rDNS lookup for host \<hostname\> due to error" or "FQDN not returned by rDNS lookup"
 
 #### Possible cause
 

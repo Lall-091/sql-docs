@@ -4,7 +4,7 @@ description: Explore the different troubleshooting techniques that you can use t
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: vanto, randolphwest
-ms.date: 11/18/2024
+ms.date: 05/02/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: troubleshooting
@@ -106,7 +106,7 @@ If the SQL Server container fails to run, try the following tests:
   ::: moniker-end
 
   <!--SQL Server 2022 on Linux-->
-  ::: moniker range=">= sql-server-linux-ver16 || >= sql-server-ver16"
+  ::: moniker range="=sql-server-linux-ver16 || =sql-server-ver16"
 
   ::: zone pivot="cs1-bash"
 
@@ -128,6 +128,35 @@ If the SQL Server container fails to run, try the following tests:
 
   ```cmd
   docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" -p 1400:1433 -d mcr.microsoft.com/mssql/server:2022-latest`.
+  ```
+
+  ::: zone-end
+
+  ::: moniker-end
+
+  <!--SQL Server 2025 on Linux-->
+  ::: moniker range=">=sql-server-linux-ver17 || >=sql-server-ver17"
+
+  ::: zone pivot="cs1-bash"
+
+  ```bash
+  docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<password>' -p 1400:1433 -d mcr.microsoft.com/mssql/server:2025-latest`.
+  ```
+
+  ::: zone-end
+
+  ::: zone pivot="cs1-powershell"
+
+  ```powershell
+  docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" -p 1400:1433 -d mcr.microsoft.com/mssql/server:2025-latest`.
+  ```
+
+  ::: zone-end
+
+  ::: zone pivot="cs1-cmd"
+
+  ```cmd
+  docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" -p 1400:1433 -d mcr.microsoft.com/mssql/server:2025-latest`.
   ```
 
   ::: zone-end
@@ -219,7 +248,7 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" -e "MSSQL_PID=De
 ::: moniker-end
 
 <!--SQL Server 2022 on Linux-->
-::: moniker range=">= sql-server-linux-ver16 || >= sql-server-ver16"
+::: moniker range="=sql-server-linux-ver16 || =sql-server-ver16"
 
 ::: zone pivot="cs1-bash"
 
@@ -241,6 +270,35 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" -e "MSSQL_PID=De
 
 ```cmd
 docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" -e "MSSQL_PID=Developer" --cap-add SYS_PTRACE -p 1401:1433 -d mcr.microsoft.com/mssql/server:2022-latest
+```
+
+::: zone-end
+
+::: moniker-end
+
+<!--SQL Server 2025 on Linux-->
+::: moniker range=">=sql-server-linux-ver17 || >=sql-server-ver17"
+
+::: zone pivot="cs1-bash"
+
+```bash
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<password>' -e 'MSSQL_PID=Developer' --cap-add SYS_PTRACE -p 1401:1433 -d mcr.microsoft.com/mssql/server:2025-latest
+```
+
+::: zone-end
+
+::: zone pivot="cs1-powershell"
+
+```powershell
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" -e "MSSQL_PID=Developer" --cap-add SYS_PTRACE -p 1401:1433 -d mcr.microsoft.com/mssql/server:2025-latest
+```
+
+::: zone-end
+
+::: zone pivot="cs1-cmd"
+
+```cmd
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" -e "MSSQL_PID=Developer" --cap-add SYS_PTRACE -p 1401:1433 -d mcr.microsoft.com/mssql/server:2025-latest
 ```
 
 ::: zone-end
@@ -339,21 +397,28 @@ Now you can run commands as though you're running them at the terminal inside th
 <!--SQL Server 2017 on Linux -->
 ::: moniker range="=sql-server-linux-2017 || =sql-server-2017"
 
-- Get started with SQL Server 2017 container images on Docker by going through the [quickstart](quickstart-install-connect-docker.md?view=sql-server-2017&preserve-view=true).
+- [Quickstart: Run SQL Server Linux container images with Docker](quickstart-install-connect-docker.md?view=sql-server-2017&preserve-view=true)
 
 ::: moniker-end
 
 <!--SQL Server 2019 on Linux-->
 ::: moniker range="=sql-server-linux-ver15 || =sql-server-ver15"
 
-- Get started with SQL Server 2019 container images on Docker by going through the [quickstart](quickstart-install-connect-docker.md).
+- [Quickstart: Run SQL Server Linux container images with Docker](quickstart-install-connect-docker.md?view=sql-server-ver15&preserve-view=true)
 
 ::: moniker-end
 
 <!--SQL Server 2022 on Linux-->
-::: moniker range=">= sql-server-linux-ver16 || >= sql-server-ver16"
+::: moniker range="=sql-server-linux-ver16 || =sql-server-ver16"
 
-- Get started with SQL Server 2022 container images on Docker by going through the [quickstart](quickstart-install-connect-docker.md).
+- [Quickstart: Run SQL Server Linux container images with Docker](quickstart-install-connect-docker.md?view=sql-server-ver16&preserve-view=true)
+
+::: moniker-end
+
+<!--SQL Server 2025 on Linux-->
+::: moniker range=">=sql-server-linux-ver17 || >=sql-server-ver17"
+
+- [Quickstart: Run SQL Server Linux container images with Docker](quickstart-install-connect-docker.md?view=sql-server-ver17&preserve-view=true)
 
 ::: moniker-end
 

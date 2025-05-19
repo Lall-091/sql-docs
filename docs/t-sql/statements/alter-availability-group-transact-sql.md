@@ -3,7 +3,7 @@ title: "ALTER AVAILABILITY GROUP (Transact-SQL)"
 description: ALTER AVAILABILITY GROUP (Transact-SQL)
 author: "MikeRayMSFT"
 ms.author: "mikeray"
-ms.date: "01/02/2018"
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -99,13 +99,13 @@ ALTER AVAILABILITY GROUP group_name
      | SEEDING_MODE = { AUTOMATIC | MANUAL }   
      | BACKUP_PRIORITY = n  
      | SECONDARY_ROLE ( {   
-          ALLOW_CONNECTIONS = { NO | READ_ONLY | ALL }   
-        | READ_ONLY_ROUTING_URL = 'TCP://system-address:port'   
+          [ALLOW_CONNECTIONS = { NO | READ_ONLY | ALL }  ] 
+        | [READ_ONLY_ROUTING_URL = {'TCP://system-address:port' | NONE} ]  
           } )  
      | PRIMARY_ROLE ( {   
-          ALLOW_CONNECTIONS = { READ_WRITE | ALL }   
-        | READ_ONLY_ROUTING_LIST = { ( '<server_instance>' [ ,...n ] ) | NONE }  
-        | READ_WRITE_ROUTING_URL = 'TCP://system-address:port' 
+          [ALLOW_CONNECTIONS = { READ_WRITE | ALL }   ]
+        | [READ_ONLY_ROUTING_LIST = { ( '<server_instance>' [ ,...n ] ) | NONE } ] 
+        | [READ_WRITE_ROUTING_URL = { 'TCP://system-address:port' | NONE }  ]
           } )  
      | SESSION_TIMEOUT = seconds  
     )   
@@ -146,6 +146,7 @@ ALTER AVAILABILITY GROUP group_name
     {  
        ADD IP ( <ip_address_option> )   
      | PORT = listener_port  
+     | REMOVE IP ( 'ipv4_address' | 'ipv6_address')
     }  
   
 ```  
@@ -383,8 +384,10 @@ All connections are allowed to the databases in the secondary replica for read-o
   
 For more information, see [Active Secondaries: Readable Secondary Replicas &#40;Always On Availability Groups&#41;](../../database-engine/availability-groups/windows/active-secondaries-readable-secondary-replicas-always-on-availability-groups.md).
   
-#### READ_ONLY_ROUTING_URL = '*TCP://_system-address_:_port_*'
+#### READ_ONLY_ROUTING_URL ='TCP://*system-address*:*port*' | NONE
 Specifies the URL to be used for routing read-intent connection requests to this availability replica. This is the URL on which the SQL Server Database Engine listens. Typically, the default instance of the SQL Server Database Engine listens on TCP port 1433.
+
+Starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], you can specify `NONE` as the `READ_ONLY_ROUTING_URL` destination to revert the specified read-only routing for the availability replica, and route traffic based on the default behavior.
   
 For a named instance, you can obtain the port number by querying the **port** and **type_desc** columns of the [sys.dm_tcp_listener_states](../../relational-databases/system-dynamic-management-views/sys-dm-tcp-listener-states-transact-sql.md) dynamic management view. The server instance uses the Transact-SQL listener (**type_desc='TSQL'**).
   
@@ -426,12 +429,14 @@ Beginning with [!INCLUDE[sssql16-md](../../includes/sssql16-md.md)], you can loa
 #### NONE
 Specifies that when this availability replica is the primary replica, read-only routing won't be supported. This is the default behavior. When used with MODIFY REPLICA ON, this value disables an existing list, if any.
 
-#### READ_WRITE_ROUTING_URL = '*TCP://_system-address_:_port_*'
-Applies to: SQL Server (Starting with SQL Server 2019 (15.x))
+#### READ_WRITE_ROUTING_URL = 'TCP://*system-address*:*port*' | NONE
+**Applies to:** [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and later versions
 
  Specifies server instances that host availability replicas for this availability group that meet the following requirements when running under the primary role:
 -   The replica spec PRIMARY_ROLE includes READ_WRITE_ROUTING_URL.
 -   The connection string is ReadWrite either by defining ApplicationIntent as ReadWrite or by not setting ApplicationIntent and letting the default (ReadWrite) take effect.
+
+Starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], you can specify `NONE` as the `READ_WRITE_ROUTING_URL` destination to revert the specified read-write routing for the availability replica, and route traffic based on the default behavior.
 
 For more information, see [Secondary to primary replica read/write connection redirection (Always On Availability Groups)](../../database-engine/availability-groups/windows/secondary-replica-connection-redirection-always-on-availability-groups.md).
 
@@ -622,6 +627,11 @@ Adds the specified IP address to the availability group listener specified by *d
   
 #### PORT = *listener_port*
 See the description of this argument earlier in this section.
+
+#### REMOVE IP { ('*four_part_ipv4_address*') | ('*ipv6_address*') }
+**Applies to:** [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions
+
+Removes the specified IP address from the specified availability group listener.
   
 #### RESTART LISTENER '*_dns_name_*'
 Restarts the listener that is associated with the specified DNS name. Supported only on the primary replica.

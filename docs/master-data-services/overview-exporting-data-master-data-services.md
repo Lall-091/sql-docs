@@ -16,6 +16,8 @@ helpviewer_keywords:
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   This article introduces the types of subscription view formats and how to determine when views need to be edited due to changes to model objects.  
   
  You create a subscription view to export [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] data to a subscribing system such as [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)]. You  use the subscribing system to view the data in the [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] database.  For information on how to create the subscription view, see [Create a Subscription View to Export Data &#40;Master Data Services&#41;](../master-data-services/create-a-subscription-view-to-export-data-master-data-services.md)  

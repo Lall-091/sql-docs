@@ -4,7 +4,7 @@ description: "Learn about the optimized locking enhancement to the database engi
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest, peskount, praspu, dfurman
-ms.date: 01/28/2025
+ms.date: 04/14/2025
 ms.service: sql
 ms.subservice: performance
 ms.topic: conceptual
@@ -14,12 +14,12 @@ helpviewer_keywords:
   - "optimized locking"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =fabric"
+monikerRange: "=azuresqldb-current || =fabric || >=sql-server-ver17 || >=sql-server-linux-ver17"
 ---
 
 # Optimized locking
 
-[!INCLUDE [asdb-fabricsqldb](../../includes/applies-to-version/asdb-fabricsqldb.md)]
+[!INCLUDE [sqlserver2025-asdb-fabric.md](../../includes/applies-to-version/sqlserver2025-asdb-fabric.md)]
 
 This article introduces optimized locking, a database engine capability that offers an improved transaction locking mechanism to reduce lock memory consumption and blocking for concurrent transactions.
 
@@ -42,9 +42,43 @@ For example:
 
 ### Availability
 
-Optimized locking is available in [!INCLUDE [Azure SQL Database](../../includes/ssazure-sqldb.md)] and [SQL database in Microsoft Fabric](/fabric/database/sql/overview) only, in all service tiers and compute sizes.
+The following table summarizes the availability and enabled state of optimized locking across SQL platforms.
 
-Optimized locking isn't currently available in [!INCLUDE [Azure SQL Managed Instance](../../includes/ssazuremi-md.md)] or in [!INCLUDE [SQL Server](../../includes/ssnoversion-md.md)].
+| Platform | Available | Enabled by default |
+| --- | --- | --- |
+|[!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] | Yes | Yes (always enabled) |
+|[!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)] | Yes | Yes (always enabled) |
+|[!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]<sup>AUTD</sup>| No | N/A |
+|[!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]<sup>2022</sup>| No | N/A |
+|[!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] | Yes | No (can be enabled per database) |
+|[!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and older versions | No | N/A |
+
+<sup>AUTD</sup> Applies to Azure SQL Managed Instance configured with the [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy).
+
+<sup>2022</sup> Applies to Azure SQL Managed Instance configured with the [SQL Server 2022 update policy](/azure/azure-sql/managed-instance/update-policy#sql-server-2022-update-policy).
+
+### Enable and disable
+
+To enable or disable optimized locking for a [!INCLUDE [SQL Server](../../includes/ssnoversion-md.md)] database, use the `ALTER DATABASE ... SET OPTIMIZED_LOCKING = ON | OFF` command. For more information, see [ALTER DATABASE SET options](../../t-sql/statements/alter-database-transact-sql-set-options.md?view=sql-server-ver17&preserve-view=true#optimized_locking--on--off-).
+
+Optimized locking builds on other database features:
+
+- You must enable [accelerated database recovery (ADR)](/azure/azure-sql/accelerated-database-recovery) on a database before you can enable optimized locking. Conversely, to disable ADR, you must disable optimized locking first if it's enabled.
+- For the most benefit from optimized locking, [read committed snapshot isolation (RCSI)](../../t-sql/statements/alter-database-transact-sql-set-options.md?view=azuresqldb-current&preserve-view=true#read_committed_snapshot--on--off--1) should be enabled for the database. The [LAQ](#lock-after-qualification-laq) component of optimized locking is in effect only if RCSI is enabled.
+
+In [!INCLUDE [asdb](../../includes/ssazure-sqldb.md)], ADR is always enabled and RCSI is enabled by default.
+
+To verify that these options are enabled for your current database, connect to the database and run the following T-SQL query:
+
+```sql
+SELECT database_id,
+       name,
+       is_accelerated_database_recovery_on,
+       is_read_committed_snapshot_on,
+       is_optimized_locking_on
+FROM sys.databases
+WHERE name = DB_NAME();
+```
 
 #### Is optimized locking enabled?
 
@@ -60,19 +94,13 @@ SELECT IsOptimizedLockingOn = DATABASEPROPERTYEX(DB_NAME(), 'IsOptimizedLockingO
 | `1` | Optimized locking is enabled. |
 | `NULL` | Optimized locking isn't available. |
 
-Optimized locking builds on other database features:
-
-- Optimized locking requires [accelerated database recovery (ADR)](/azure/azure-sql/accelerated-database-recovery) to be enabled on the database.
-- For the most benefit from optimized locking, [read committed snapshot isolation (RCSI)](../../t-sql/statements/alter-database-transact-sql-set-options.md?view=azuresqldb-current&preserve-view=true#read_committed_snapshot--on--off--1) should be enabled for the database. The [LAQ](#lock-after-qualification-laq) component of optimized locking is in effect only if RCSI is enabled.
-
-Both ADR and RCSI are enabled by default in [!INCLUDE [asdb](../../includes/ssazure-sqldb.md)]. To verify that these options are enabled for your current database, connect to the database and run the following T-SQL query:
+You can also use the [sys.databases](../system-catalog-views/sys-databases-transact-sql.md) catalog view. For example, to see if optimized locking is enabled for all databases, execute the following query:
 
 ```sql
-SELECT name,
-       is_read_committed_snapshot_on,
-       is_accelerated_database_recovery_on
-FROM sys.databases
-WHERE name = DB_NAME();
+SELECT database_id,
+       name,
+       is_optimized_locking_on
+FROM sys.databases;
 ```
 
 ### Locking overview
@@ -135,7 +163,7 @@ The [sys.dm_tran_locks](../system-dynamic-management-views/sys-dm-tran-locks-tra
 
 ### Lock after qualification (LAQ)
 
-Building on the TID infrastructure, optimized locking changes how DML statements such as `INSERT`, `UPDATE`, and `DELETE` acquire locks.
+Building on the TID infrastructure, the LAQ component of optimized locking changes how DML statements such as `INSERT`, `UPDATE`, and `DELETE` acquire locks.
 
 Without optimized locking, query predicates are checked row by row in a scan by first taking an update (`U`) row lock. If the predicate is satisfied, an exclusive (`X`) row lock is taken before updating the row and held until the end of transaction.
 
@@ -275,6 +303,7 @@ The following improvements help you monitor and troubleshoot blocking and deadlo
     - Under each resource in the deadlock report `<resource-list>`, each `<xactlock>` element reports the underlying resources and specific information for locks of each member of a deadlock. For more information and an example, see [Optimized locking and deadlocks](../sql-server-deadlocks-guide.md#optimized-locking-and-deadlocks).
 - Extended events
     - The `lock_after_qual_stmt_abort` event fires when a statement is internally aborted and restarted because of a conflict with another transaction. For more information, see [Lock after qualification (LAQ)](#lock-after-qualification-laq).
+    - In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], the `locking_stats` event fires for every database every several minutes and provides aggregate locking statistics for the time interval, such as the number of lock escalations, whether TID locking and LAQ components of optimized locking are enabled, and the the number of queries that were ineligible for LAQ for various reasons. This event fires even if optimized locking is disabled.
 
 ## Best practices with optimized locking
 
@@ -283,7 +312,7 @@ The following improvements help you monitor and troubleshoot blocking and deadlo
 To maximize the benefits of optimized locking, it is recommended to enable [read committed snapshot isolation (RCSI)](../../t-sql/statements/alter-database-transact-sql-set-options.md?view=azuresqldb-current&preserve-view=true#read_committed_snapshot--on--off--1) on the database and use `READ COMMITTED` isolation as the default isolation level. If not already enabled, enable RCSI by connecting to the `master` database and executing the following statement:
 
 ```sql
-ALTER DATABASE [your-database-name] SET READ_COMMITTED_SNAPSHOT ON;
+ALTER DATABASE [database-name-placeholder] SET READ_COMMITTED_SNAPSHOT ON;
 ```
 
 In [!INCLUDE [asdb](../../includes/ssazure-sqldb.md)], RCSI is enabled by default and `READ COMMITTED` is the default isolation level. With RCSI enabled and when using `READ COMMITTED` isolation level, readers read a version of the row from the snapshot taken at the start of the statement. With LAQ, writers qualify rows per the predicate based on the latest committed version of the row and without acquiring `U` locks. With LAQ, a query waits only if the row qualifies and there's an active write transaction on that row. Qualifying based on the latest committed version and locking only the qualified rows reduces blocking and increases concurrency.
@@ -338,19 +367,15 @@ In the previous query example, only table `t5` uses the `REPEATABLE READ` isolat
 
 ### Is optimized locking on by default in both new and existing databases?
 
-In [!INCLUDE [Azure SQL Database](../../includes/ssazure-sqldb.md)], yes.
+In [!INCLUDE [Azure SQL Database](../../includes/ssazure-sqldb.md)] and [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], yes. In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] optimized locking is disabled by default but can be enabled on any user database that has accelerated database recovery enabled.
 
 ### How can I detect if optimized locking is enabled?
 
-See [Is optimized locking enabled?](#is-optimized-locking-enabled).
-
-### What happens when accelerated database recovery (ADR) isn't enabled on my database?
-
-If ADR is disabled, optimized locking is automatically disabled as well.
+See [Is optimized locking enabled?](#is-optimized-locking-enabled)
 
 ### What if I want to force queries to block despite optimized locking?
 
-For customers using RCSI, to force blocking between two queries when optimized locking is enabled, use the `READCOMMITTEDLOCK` query hint.
+If RCSI is enabled, use the `READCOMMITTEDLOCK` table hint to force blocking between two queries when optimized locking is enabled.
 
 ### Is optimized locking used on read-only secondary replicas?
 

@@ -42,6 +42,7 @@ This section documents dynamic management views (DMVs) that are associated with 
 - [sys.dm_os_nodes](sys-dm-os-nodes-transact-sql.md)
 - [sys.dm_os_performance_counters](sys-dm-os-performance-counters-transact-sql.md)
 - [sys.dm_os_process_memory](sys-dm-os-process-memory-transact-sql.md)
+- [sys.dm_os_ring_buffers](sys-dm-os-ring-buffers-transact-sql.md)
 - [sys.dm_os_schedulers](sys-dm-os-schedulers-transact-sql.md)
 - [sys.dm_os_server_diagnostics_log_configurations](sys-dm-os-server-diagnostics-log-configurations.md)
 - [sys.dm_os_spinlock_stats](sys-dm-os-spinlock-stats-transact-sql.md)
@@ -61,7 +62,6 @@ The following [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] operati
 
 - `sys.dm_os_function_symbolic_name`
 - `sys.dm_os_memory_allocations`
-- `sys.dm_os_ring_buffers`
 - `sys.dm_os_sublatches`
 - `sys.dm_os_worker_local_storage`
 

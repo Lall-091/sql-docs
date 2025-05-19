@@ -23,7 +23,8 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
  **In This Topic**  
   
 -   **Before you begin:**  
-  
+     [Background](#Background) 
+
      [Security](#Security)  
   
 -   **To create an application role, using:**  
@@ -33,7 +34,11 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
      [Transact-SQL](#TsqlProcedure)  
   
 ##  <a name="BeforeYouBegin"></a> Before You Begin  
-  
+
+### <a name="Background"></a> Background
+
+[!INCLUDE [encryption-algorithm-history-md](../../../includes/encryption-algorithm-history.md)]
+
 ###  <a name="Security"></a> Security  
   
 ####  <a name="Permissions"></a> Permissions  

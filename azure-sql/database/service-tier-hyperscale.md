@@ -3,7 +3,7 @@ title: What is the Hyperscale service tier?
 description: This article describes the Hyperscale service tier in the vCore-based purchasing model in Azure SQL Database and explains how it's different from the General Purpose and Business Critical service tiers.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: dfurman, mathoma, oslake, randolphwest, blakhani
+ms.reviewer: dfurman, mathoma, oslake, randolphwest, blakhani, adbadram
 ms.date: 02/10/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
@@ -94,20 +94,23 @@ You can [choose a maintenance window](maintenance-window.md?view=azuresql-db&pre
 
 For Hyperscale SLA, see [SLA for Azure SQL Database](https://azure.microsoft.com/support/legal/sla/azure-sql-database).
 
-### Buffer pool, resilient buffer pool extension, and continuous priming
+<a id="buffer-pool-resilient-buffer-pool-extension-and-continuous-priming"></a>
+
+### Buffer pool, resilient buffer pool extension
 
 In Azure Database Hyperscale, there is a distinct separation between compute and storage. Storage contains all the database pages in one database, and can be allocated over multiple machines as the database grows. The compute node, however, only caches what is being used recently. The hottest pages in compute are maintained in memory in a structure called buffer pool (BP). It is also stored in the local SSD, the resilient buffer pool extension (RBPEX), so data can be retrieved faster in case the compute process restarts.
 
 In a cloud system, compute can move to different machines as needed. The compute layer can have multiple replicas. One is primary, and receives all updates, while others are secondary replicas. In the event of a primary failure, one of the high availability secondary replicas can quickly be promoted to primary in a process called failover. The secondary replica might not have a cache in its BP and RBPEX that is optimized for the primary workload.
 
+### Continuous priming
+
 Continuous priming is a process that collects information about which pages are the hottest in all compute replicas. That information is aggregated, and high availability secondary replicas use the list of hottest pages which correspond to the typical customer workload. This fills both the BP and RBPEX with the hottest pages, continuously, to keep up with changes in the customer workload.
 
-Without continuous priming, both BP and RBPEX are not inherited by new high availability  replicas, and only be reconstructed during the user workload. Continuous priming saves time and prevents inconsistent performance, as there is no wait before the caches are fully hydrated again. With continuous priming, new high availability secondary replicas will immediately start priming their BP and RBPEX. This will help maintain performance more consistently as failovers happen.
+Without continuous priming, both BP and RBPEX are not inherited by new high availability replicas, and only be reconstructed during the user workload. Continuous priming saves time and prevents inconsistent performance, as there is no wait before the caches are fully hydrated again. With continuous priming, new high availability secondary replicas will immediately start priming their BP and RBPEX. This will help maintain performance more consistently as failovers happen.
 
 Continuous priming works both ways: high availability secondary replicas will cache pages being used in the primary replica, and the primary will cache pages with the workload from the secondary replicas.
 
-> [!NOTE]
-> Continuous priming is currently in a gated preview and is not available for serverless databases. For more information and to opt-in to continuous priming, see [Blog: November 2024 Hyperscale enhancements](https://aka.ms/AAslnql).
+Continuous priming is currently available on the Hyperscale provisioned compute tier.
 
 ### Back up and restore
 

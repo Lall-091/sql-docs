@@ -1,10 +1,10 @@
 ---
 title: Performance diagnostics in Hyperscale
 description: This article describes how to troubleshoot Hyperscale performance problems in Azure SQL Database.
-author: denzilribeiro
-ms.author: denzilr
-ms.reviewer: wiassaf, mathoma, dfurman
-ms.date: 12/27/2024
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: denzilr, mathoma, dfurman, adbadram
+ms.date: 04/28/2025
 ms.service: azure-sql-database
 ms.subservice: performance
 ms.topic: troubleshooting
@@ -21,10 +21,7 @@ To troubleshoot performance problems in a Hyperscale database, the [general SQL 
 
 Every database and elastic pool in Azure SQL Database manages log generation rate via [log rate governance](resource-limits-logical-server.md#transaction-log-rate-governance). In Hyperscale, the log rate governance limit is set to 105 MB/s, regardless of the compute size. This value is exposed in the `primary_max_log_rate` column in [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database/).
 
-At times, log generation rate on the primary compute replica must be reduced to maintain recoverability SLAs. For example, this can happen when a [page server or another compute replica](service-tier-hyperscale.md#distributed-functions-architecture) is significantly behind applying new log records from the log service. If no Hyperscale components are behind, the log rate governance mechanism allows log generation rate to reach 100 MiB/s. This is the effective maximum log generation rate in all Hyperscale compute sizes.
-
-> [!NOTE]
-> Log generation rate of 150 MiB/s is available as an opt-in preview feature for premium-series and premium-series memory optimized. For more information and to opt in to 150 MiB/s, see [Blog: November 2024 Hyperscale enhancements](https://aka.ms/AAslnql).
+At times, log generation rate on the primary compute replica must be reduced to maintain recoverability SLAs. For example, this can happen when a [page server or another compute replica](service-tier-hyperscale.md#distributed-functions-architecture) is significantly behind applying new log records from the log service. If no Hyperscale components are behind, the log rate governance mechanism allows log generation rate to reach 150 MiB/s per database for premium-series and premium-series memory optimized hardware. For standard-series hardware, the maximum log rate is 100 MiB/s per database. For elastic pools, the maximum log rate is 150 MiB/s per pool for premium-series and premium-series memory optimized hardware, and 125 MiB/s per pool for other hardware.
 
 The following wait types appear in [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/) when the log rate is reduced:
 

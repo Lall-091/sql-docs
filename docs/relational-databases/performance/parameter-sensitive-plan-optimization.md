@@ -1,10 +1,10 @@
 ---
-title: Parameter Sensitive Plan optimization
+title: Parameter Sensitive Plan Optimization
 description: Learn about Parameter Sensitive Plan Optimization in the Query Store.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: derekw, maghan, randolphwest
-ms.date: 01/08/2024
+ms.date: 05/05/2025
 ms.service: sql
 ms.subservice: performance
 ms.topic: conceptual
@@ -139,6 +139,12 @@ And, within the ShowPlan XML of a query variant (inside of the Dispatcher elemen
 
 ## Remarks
 
+- Starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], PSP optimization includes the following enhancements:
+
+  - Support for data manipulation language (DML) queries.
+  - Expanded support for `tempdb`.
+  - Additional consideration given in scenarios where multiple eligible predicates exist on the same table.
+
 - The PSP optimization feature currently only works with equality predicates.
 
 - Dispatcher plans are automatically rebuilt if there are significant data distribution changes. Query variant plans recompile independently as needed, as with any other query plan type, subject to default recompilation events. For more information about recompilation, see [Recompiling Execution Plans](../query-processing-architecture-guide.md#recompiling-execution-plans).
@@ -213,7 +219,7 @@ And, within the ShowPlan XML of a query variant (inside of the Dispatcher elemen
 
 - To enable PSP optimization, enable database compatibility level 160 for the database you're connected to when executing the query.
 
-- For additional insights into the PSP optimization feature, we recommend that Query Store integration is enabled, by turning on the Query Store. The following example turns on the Query Store for a pre-existing database called `MyNewDatabase`:
+- For additional insights into the PSP optimization feature, we recommend that Query Store integration is enabled, by turning on the Query Store. The following example turns on the Query Store for a preexisting database called `MyNewDatabase`:
 
 ```sql
 ALTER DATABASE [MyNewDatabase]
@@ -230,7 +236,7 @@ SET QUERY_STORE = ON (
 
 - To disable PSP optimization at the query level, use the `DISABLE_PARAMETER_SENSITIVE_PLAN` query hint.
 
-- If parameter sniffing is disabled by Trace Flag 4136, `PARAMETER_SNIFFING` database scoped configuration, or the `USE HINT('DISABLE_PARAMETER_SNIFFING')` query hint, PSP optimization is disabled for the associated workloads and execution contexts. For more information, see [Hints (Transact-SQL) - Query](../../t-sql/queries/hints-transact-sql-query.md) and [ALTER DATABASE SCOPED CONFIGURATION (Transact-SQL)](../../t-sql/statements/alter-database-scoped-configuration-transact-sql.md).
+- If parameter sniffing is disabled by Trace Flag 4136, `PARAMETER_SNIFFING` database scoped configuration, or the `USE HINT('DISABLE_PARAMETER_SNIFFING')` query hint, PSP optimization is disabled for the associated workloads and execution contexts. For more information, see [Query hints](../../t-sql/queries/hints-transact-sql-query.md) and [ALTER DATABASE SCOPED CONFIGURATION](../../t-sql/statements/alter-database-scoped-configuration-transact-sql.md).
 
 - The number of unique plan variants per dispatcher stored in the plan cache is limited to avoid cache bloating. The internal threshold isn't documented. Since each SQL batch has the potential of creating multiple plans, and each query variant plan has an independent entry in the plan cache, it is possible to reach the default maximum number of allowed plan entries. If the plan cache eviction rate is observably high, or the sizes of the `CACHESTORE_OBJCP` and `CACHESTORE_SQLCP` [cache stores](/previous-versions/tn-archive/cc293624(v=technet.10)) are excessive, you should consider applying [Trace Flag 174](https://support.microsoft.com/help/3026083).
 
@@ -285,7 +291,10 @@ PSP with query hints and plan forcing behavior can be summarized in the followin
   The following query shows all of the possible reasons why PSP was skipped:
 
   ```sql
-  SELECT map_value FROM sys.dm_xe_map_values WHERE [name] ='psp_skipped_reason_enum' ORDER BY map_key;
+  SELECT map_value
+  FROM sys.dm_xe_map_values
+  WHERE [name] = 'psp_skipped_reason_enum'
+  ORDER BY map_key;
   ```
 
 - `parameter_sensitive_plan_optimization`: Occurs when a query uses PSP optimization feature. Debug channel only. Some fields of interest might be:
@@ -311,7 +320,7 @@ PSP optimization provides audit data for the dispatcher plan statement, and any 
 
 | Issue | Date discovered | Status | Date resolved |
 | --- | --- | --- | --- |
-| Access Violation exception occurs in Query Store in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] under certain conditions. You may encounter Access violation exceptions when PSP optimization Query Store integration is enabled. For more information, see the update in [Parameter Sensitive Plan Optimization, Why?](https://techcommunity.microsoft.com/t5/sql-server-blog/parameter-sensitive-plan-optimization-why/ba-p/3836281). | March 2023 | Resolved | August 2023 (CU 7) |
+| Access Violation exception occurs in Query Store in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] under certain conditions. You might encounter Access violation exceptions when PSP optimization Query Store integration is enabled. For more information, see the update in [Parameter Sensitive Plan Optimization, Why?](https://techcommunity.microsoft.com/blog/sqlserver/parameter-sensitive-plan-optimization-why/3836281) | March 2023 | Resolved | August 2023 (CU 7) |
 
 ### Resolved
 
@@ -382,7 +391,7 @@ If your Query Store is large, or if your system has a substantial workload and/o
 - [Parameters and Execution Plan Reuse](../query-processing-architecture-guide.md#parameters-and-execution-plan-reuse)
 - [Simple Parameterization](../query-processing-architecture-guide.md#simple-parameterization)
 - [Forced Parameterization](../query-processing-architecture-guide.md#forced-parameterization)
-- [Hints (Transact-SQL) - Query](../../t-sql/queries/hints-transact-sql-query.md)
+- [Query hints (Transact-SQL)](../../t-sql/queries/hints-transact-sql-query.md)
 - [Intelligent query processing in SQL databases](intelligent-query-processing.md)
 - [Parameter Sensitivity](../query-processing-architecture-guide.md#parameter-sensitivity)
 - [ALTER DATABASE SCOPED CONFIGURATION (Transact-SQL)](../../t-sql/statements/alter-database-scoped-configuration-transact-sql.md)

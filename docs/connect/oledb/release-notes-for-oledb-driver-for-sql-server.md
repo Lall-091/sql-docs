@@ -3,7 +3,7 @@ title: Release notes for OLE DB Driver
 description: This release notes article describes the changes in each release of the Microsoft OLE DB Driver for SQL Server.
 author: David-Engel
 ms.author: davidengel
-ms.date: 09/24/2024
+ms.date: 05/09/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -23,6 +23,36 @@ See section "## 18.2.1" for a live example in this article.
 Thank you. For questions, contact GeneMi. (2019/03/16)
 -->
 
+## 19.4.1
+
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download x64/Arm64 installer](https://go.microsoft.com/fwlink/?linkid=2318101)**  
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download x86 installer](https://go.microsoft.com/fwlink/?linkid=2318001)**  
+
+Released: May 09, 2025
+
+If you need to download the installer in a language other than the one detected for you, you can use these direct links.  
+    For the x64/Arm64 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2318101&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2318101&clcid=0x404) | [Czech](https://go.microsoft.com/fwlink/?linkid=2318101&clcid=0x405) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2318101&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2318101&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2318101&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2318101&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2318101&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2318101&clcid=0x412) | [Polish](https://go.microsoft.com/fwlink/?linkid=2318101&clcid=0x415) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2318101&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2318101&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2318101&clcid=0x40a) | [Turkish](https://go.microsoft.com/fwlink/?linkid=2318101&clcid=0x41f)  
+    For the x86 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2318001&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2318001&clcid=0x404) | [Czech](https://go.microsoft.com/fwlink/?linkid=2318001&clcid=0x405) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2318001&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2318001&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2318001&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2318001&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2318001&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2318001&clcid=0x412) | [Polish](https://go.microsoft.com/fwlink/?linkid=2318001&clcid=0x415) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2318001&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2318001&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2318001&clcid=0x40a) | [Turkish](https://go.microsoft.com/fwlink/?linkid=2318001&clcid=0x41f)
+
+### Features added
+
+| Feature added | Details |
+| :------------ | :------ |
+| ADAL dependency removal | Microsoft SQL Driver Authentication library (mssql-auth.dll) replaces ADAL. mssql-auth.dll is installed as part of installation process. |
+| Added three new languages | Added support for three new languages Czech, Polish, and Turkish. |
+| Arm64 and x64 installers consolidation | A single 64-bit MSI package is provided which is capable of installing the appropriate binary (x64 or Arm64) based on the OS platform. |
+| Installer improvement | Modified the installer to install both features (Core and SDK) by default. |
+
+### Bugs fixed
+
+| Bug fixed | Details |
+| :-------- | :------ |
+| Fixed a prepared statement issue. | Fixed a bug in prepared statements when connection recovery is performed. |
+| Fixed an installer bug. | Bug fixed to prevent the installer from asking for a reboot when unnecessary. |
+| Don't migrate TrustServerCertificiate registry flag. | Modified the installer to not copy the TrustServerCertificiate registry flag value from a previously installed major version; and instead use the installer default value for the flag. For more information, see [Registry settings](features/registry-settings.md). |
+
+## Previous releases
+
 ## 19.3.5
 
 :::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download x64 installer](https://go.microsoft.com/fwlink/?linkid=2278038)**  
@@ -41,8 +71,6 @@ If you need to download the installer in a language other than the one detected 
 | Bug fixed | Details |
 | :-------- | :------ |
 | Security updates | [KB5040712](https://support.microsoft.com/kb/5040712) |
-
-## Previous releases
 
 ## 19.3.3
 
@@ -199,6 +227,31 @@ If you need to download the installer in a language other than the one detected 
 | TDS 8.0 support | The encryption connection string keyword/property now includes the option for strict encryption, which encrypts the whole connection (including PRELOGIN packets). |
 | Secure by default | **BREAKING CHANGE**<br />The driver now defaults to secure-by-default options. Encrypted connections are enabled by default. The server certificate is now validated when client-side encryption is off but the server requires encryption.<br /><br />To restore previous version behavior, you need to opt in to non-encrypted connections (`Encrypt` or `Use Encryption for Data` option) and trust the server certificate (`Trust Server Certificate` option), if the server uses a self-signed certificate. For more information, see [Encryption and certificate validation](features/encryption-and-certificate-validation.md). |
 | Support for the `Host Name In Certificate` connection string keyword, and the `SSPROP_INIT_HOST_NAME_CERTIFICATE` initialization property. | The user can now specify the host name to be used when validating the SQL Server TLS/SSL certificate. |
+
+## 18.7.5
+
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download x64 installer](https://go.microsoft.com/fwlink/?linkid=2318002)**  
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download x86 installer](https://go.microsoft.com/fwlink/?linkid=2318102)**  
+
+Released: May 09, 2025
+
+If you need to download the installer in a language other than the one detected for you, you can use these direct links.  
+    For the x64 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2318002&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2318002&clcid=0x404) | [Czech](https://go.microsoft.com/fwlink/?linkid=2318002&clcid=0x405) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2318002&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2318002&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2318002&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2318002&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2318002&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2318002&clcid=0x412) | [Polish](https://go.microsoft.com/fwlink/?linkid=2318002&clcid=0x415) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2318002&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2318002&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2318002&clcid=0x40a) | [Turkish](https://go.microsoft.com/fwlink/?linkid=2318002&clcid=0x41f)  
+    For the x86 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2318102&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2318102&clcid=0x404) | [Czech](https://go.microsoft.com/fwlink/?linkid=2318102&clcid=0x405) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2318102&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2318102&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2318102&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2318102&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2318102&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2318102&clcid=0x412) | [Polish](https://go.microsoft.com/fwlink/?linkid=2318102&clcid=0x415) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2318102&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2318102&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2318102&clcid=0x40a) | [Turkish](https://go.microsoft.com/fwlink/?linkid=2318102&clcid=0x41f)
+
+### Features added
+
+| Feature added | Details |
+| :------------ | :------ |
+| Added three new languages | Added support for three new languages Czech, Polish, and Turkish. |
+| Installer improvement | Modified the installer to install both features (Core and SDK) by default. |
+
+### Bugs fixed
+
+| Bug fixed | Details |
+| :-------- | :------ |
+| Fixed a prepared statement issue. | Fixed a bug in prepared statements when connection recovery is performed. |
+| Fixed an installer bug. | Bug fixed to prevent the installer from asking for a reboot when unnecessary. |
 
 ## 18.7.4
 

@@ -4,7 +4,7 @@ description: Learn about the new features for and improvements to SQL Server on 
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest, mathoma, dpless
-ms.date: 04/09/2025
+ms.date: 05/19/2025
 ms.service: azure-vm-sql-server
 ms.topic: whats-new
 ms.custom:
@@ -57,6 +57,12 @@ Learn about significant changes to the SQL Server on Azure VMs documentation. Fo
 
 > [!CAUTION]
 > SQL Server isn't supported on VM sizes that deploy with an uninitialized ephemeral disk. To learn more, review [VM deployment and SQL Server failures](/troubleshoot/sql/azure-sql/sql-deployment-fails-drive-not-ready). 
+
+### May 2025
+
+| Changes | Details |
+| --- | --- |
+| **SQL Server 2025 Preview** | SQL Server 2025 Preview is now [available to deploy as an image](sql-server-on-azure-vm-iaas-what-is-overview.md#licensing) for SQL Server on Azure VMs. Review [SQL Server 2025 preview](/sql/sql-server/what-s-new-in-sql-server-2025) to learn more.  |
 
 ### April 2025
 

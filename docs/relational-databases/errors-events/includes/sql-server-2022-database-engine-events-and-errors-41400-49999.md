@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan, mikeray
-ms.date: 04/10/2025
+ms.date: 05/15/2025
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -879,6 +879,7 @@ ms.topic: include
 | 45768 | 16 | No | Requested restore details are not available, or have expired. |
 | 45769 | 16 | No | %ls |
 | 45770 | 16 | No | Failed to move the database into elastic pool due to internal resource constraints. This may be a transient condition, please retry. |
+| 45939 | 16 | No | One or more databases on SQL Managed Instance '{0}' cannot be made accessible because the corresponding inaccessibility root causes have not been mitigated. Please mitigate the inaccessibility root causes for all currently inaccessible databases and retry the operation. |
 | 46501 | 15 | No | External table references '%S_MSG' that does not exist. |
 | 46502 | 15 | No | Type with name '%.\*ls' already exists. |
 | 46503 | 15 | No | Invalid format for option '%S_MSG'. |
