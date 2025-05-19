@@ -140,7 +140,7 @@ Functionally equivalent to Developer edition in previous versions.
 | New feature or update | Details |
 | :--- | :--- |
 | [Optimized locking](../relational-databases/performance/optimized-locking.md) | Reduces blocking and lock memory consumption, and avoids lock escalation. |
-| [Space resource governance for tempdb](../relational-databases/resource-governor/tempdb-space-resource-governance.md) | Improves reliability and avoids outages by preventing runaway workloads from consuming a large amount of space in `tempdb`. |
+| [Tempdb space resource governance](../relational-databases/resource-governor/tempdb-space-resource-governance.md) | Improves reliability and avoids outages by preventing runaway workloads from consuming a large amount of space in `tempdb`. |
 | [Accelerated database recovery in tempdb](../relational-databases/accelerated-database-recovery-concepts.md#adr-improvements-in-sql-server-2025) | Provides the benefits of accelerated database recovery for transactions in the `tempdb` database, such as transactions that use temporary tables. |
 | [Persisted statistics for readable secondaries](../relational-databases/performance/persisted-stats-secondary-replicas.md) | Creates persisted statistics on readable secondaries so that workloads that run against secondary replicas are optimized. |
 | [Change tracking improvements](../relational-databases/track-changes/about-change-tracking-sql-server.md#sql-server-2025-changes) | Adaptive shallow cleanup improves change tracking auto cleanup performance. |
