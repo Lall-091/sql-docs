@@ -4,7 +4,7 @@ description: Learn how to set database options such as Automatic tuning, encrypt
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 04/11/2025
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -4009,7 +4009,7 @@ Use `ALTER DATABASE ... SET` to manage a [!INCLUDE [fabric](../../includes/fabri
 ## Syntax
 
 ```syntaxsql
--- Microsoft Fabric
+-- Microsoft Fabric Data Warehouse
 
 ALTER DATABASE { warehouse_name | CURRENT }
 SET
@@ -4021,6 +4021,7 @@ SET
 {
     <data_lake_log_publishing>
   | <vorder>
+  | <timestamp>
 }
 ;
 
@@ -4034,11 +4035,26 @@ SET
     VORDER = OFF
 }
 
+<timestamp> ::=
+{
+    TIMESTAMP = {CURRENT_TIMESTAMP | 'YYYY-MM-DDTHH:MM:SS.SS' } ; 
+}
+
 ```
 
-## Remarks
+## Arguments
 
-Currently, [pausing Delta Lake log publishing](/fabric/data-warehouse/query-delta-lake-logs#pausing-delta-lake-log-publishing) and [disabling V-Order behavior](/fabric/data-warehouse/disable-v-order) in a warehouse are the only uses for `ALTER DATABASE ... SET` in [!INCLUDE [fabric](../../includes/fabric.md)].
+#### DATA_LAKE_LOG_PUBLISHING
+
+Pauses or resumes Delta Lake log publishing. For more information, see [Delta Lake log publishing](/fabric/data-warehouse/query-delta-lake-logs#pausing-delta-lake-log-publishing).
+
+#### VORDER
+
+Can disable V-Order behavior. For more information, see [disabling V-Order behavior](/fabric/data-warehouse/disable-v-order) in a warehouse.
+
+#### TIMESTAMP
+
+Updates the timestamp for an existing warehouse snapshot in Fabric Data Warehouse. The timestamp must be provided in UTC time zone. For more information, see [Warehouse snapshots](/fabric/data-warehouse/warehouse-snapshot). For examples, see [Create and manage warehouse snapshots](/fabric/data-warehouse/create-warehouse-snapshot).
 
 ## Permissions
 
