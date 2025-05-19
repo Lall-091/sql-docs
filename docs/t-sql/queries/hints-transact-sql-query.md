@@ -1,10 +1,10 @@
 ---
-title: "Query hints (Transact-SQL)"
+title: "Query Hints (Transact-SQL)"
 description: "Query hints specify that the indicated hints are used in the scope of a query. They affect all operators in the statement."
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: wiassaf
-ms.date: 04/18/2025
+ms.date: 05/22/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -143,8 +143,8 @@ Query hints specify that the indicated hints are used in the scope of a query. T
 
 Specifies that aggregations that the query's `GROUP BY` or `DISTINCT` clause describes should use hashing or ordering.
 
-- Generally, a hash-based algorithm can improve the performance of queries that involve large or complex grouping sets. 
-- Generally, a sort-based algorithm can improve the performance of queries that involve small or simple grouping sets. 
+- Generally, a hash-based algorithm can improve the performance of queries that involve large or complex grouping sets.
+- Generally, a sort-based algorithm can improve the performance of queries that involve small or simple grouping sets.
 
 #### { MERGE | HASH | CONCAT } UNION
 
@@ -241,7 +241,7 @@ The min_grant_percent memory grant option overrides the `sp_configure` option (m
 
 **Applies to**: [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] (starting with [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)]) and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)].
 
-Overrides the **max degree of parallelism** configuration option of `sp_configure`. Also overrides the Resource Governor for the query specifying this option. The `MAXDOP` query hint can exceed the value configured with `sp_configure`. If `MAXDOP` exceeds the value configured with Resource Governor, the [!INCLUDE [ssDE](../../includes/ssde-md.md)] uses the Resource Governor `MAXDOP` value, described in [ALTER WORKLOAD GROUP](../statements/alter-workload-group-transact-sql.md). All semantic rules used with the **max degree of parallelism** configuration option are applicable when you use the `MAXDOP` query hint. For more information, see [Configure the max degree of parallelism Server Configuration Option](../../database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md).
+Overrides the **max degree of parallelism** configuration option of `sp_configure`. Also overrides the Resource Governor for the query specifying this option. The `MAXDOP` query hint can exceed the value configured with `sp_configure`. If `MAXDOP` exceeds the value configured with Resource Governor, the [!INCLUDE [ssDE](../../includes/ssde-md.md)] uses the Resource Governor `MAXDOP` value, described in [ALTER WORKLOAD GROUP](../statements/alter-workload-group-transact-sql.md). All semantic rules used with the **max degree of parallelism** configuration option are applicable when you use the `MAXDOP` query hint. For more information, see [Server configuration: max degree of parallelism](../../database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md).
 
 > [!WARNING]  
 > If `MAXDOP` is set to zero, then the server chooses the max degree of parallelism.
@@ -367,7 +367,7 @@ The list of all supported `USE HINT` names can be queried using the dynamic mana
 
 #### <a id="use-plan"></a> USE PLAN N'*xml_plan*'
 
-Forces the Query Optimizer to use an existing query plan for a query specified by *xml_plan*. `USE PLAN` can't be specified with `INSERT`, `UPDATE`, `MERGE`, or `DELETE` statements.
+Forces the Query Optimizer to use an existing query plan for a query specified by *xml_plan*.
 
 The resulting execution plan forced by this feature is the same or similar to the plan being forced. Because the resulting plan might not be identical to the plan specified by `USE PLAN`, the performance of the plans can vary. In rare cases, the performance difference can be significant and negative; in that case, the administrator must remove the forced plan.
 
