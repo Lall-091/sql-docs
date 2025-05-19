@@ -145,7 +145,7 @@ VALUES (10);
 
 SELECT col1 FROM #temptable;
 
-IF OBJECT_ID(N'tempdb..#temptable', N'U') isn't NULL
+IF OBJECT_ID(N'tempdb..#temptable', N'U') IS NOT NULL
   DROP TABLE #temptable;
 
 SELECT col1 FROM #temptable;
