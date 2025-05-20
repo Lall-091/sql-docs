@@ -35,7 +35,7 @@ Most existing client tools that target [!INCLUDE [ssNoVersion](../includes/ssnov
 
 ## Latest versions for all packages
 
-This section lists the latest versions of each package per distribution, for [!INCLUDE [ssSQL19](../includes/sssql19-md.md)]. The following table shows the most recent release, which is **CU 32**. For full release history, see [Release history for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] 2019](/troubleshoot/sql/linux/release-history-2019).
+This section lists the latest versions of each package per distribution, for [!INCLUDE [ssSQL19](../includes/sssql19-md.md)]. The following table shows the most recent release, which is **CU 32**. For full release history, see [Release history for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] 2019](/troubleshoot/sql/releases/linux/release-history-2019).
 
 | Version | Release | Date | Build | KB article |
 | --- | --- | --- | --- | --- |
@@ -94,49 +94,49 @@ The following table lists the release history for [!INCLUDE [ssSQL19](../include
 
 | Release                                                                  | Version       | Release date |
 | ------------------------------------------------------------------------ | ------------- | ------------ |
-| [CU 32](/troubleshoot/sql/linux/release-history-2019#CU32)               | 15.0.4430.1   | 2025-02-27   |
-| [CU 31](/troubleshoot/sql/linux/release-history-2019#CU31)               | 15.0.4420.2   | 2025-02-13   |
-| [CU 30](/troubleshoot/sql/linux/release-history-2019#CU30)               | 15.0.4415.2   | 2024-12-12   |
-| [CU 29 GDR](/troubleshoot/sql/linux/release-history-2019#CU29-GDR)       | 15.0.4410.1   | 2024-11-12   |
-| [CU 29](/troubleshoot/sql/linux/release-history-2019#CU29)               | 15.0.4405.4   | 2024-10-31   |
-| [CU 28 GDR 2](/troubleshoot/sql/linux/release-history-2019#CU28-GDR2)    | 15.0.4395.2   | 2024-10-08   |
-| [CU 28 GDR 1](/troubleshoot/sql/linux/release-history-2019#CU28-GDR1)    | 15.0.4390.2   | 2024-09-10   |
-| [CU 28](/troubleshoot/sql/linux/release-history-2019#CU28)               | 15.0.4385.2   | 2024-08-01   |
-| [CU 27](/troubleshoot/sql/linux/release-history-2019#CU27)               | 15.0.4375.4   | 2024-06-13   |
-| [CU 26](/troubleshoot/sql/linux/release-history-2019#CU26)               | 15.0.4365.2   | 2024-04-11   |
-| [CU 25 GDR](/troubleshoot/sql/linux/release-history-2019#CU25-GDR)       | 15.0.4360.2   | 2024-04-09   |
-| [CU 25](/troubleshoot/sql/linux/release-history-2019#CU25)               | 15.0.4355.3   | 2024-02-15   |
-| [CU 24](/troubleshoot/sql/linux/release-history-2019#CU24)               | 15.0.4345.5   | 2023-12-14   |
-| [CU 23](/troubleshoot/sql/linux/release-history-2019#CU23)               | 15.0.4335.1   | 2023-10-12   |
-| [CU 22 GDR](/troubleshoot/sql/linux/release-history-2019#CU22-GDR)       | 15.0.4326.1   | 2023-10-10   |
-| [CU 22](/troubleshoot/sql/linux/release-history-2019#CU22)               | 15.0.4322.2   | 2023-08-14   |
-| [CU 21](/troubleshoot/sql/linux/release-history-2019#CU21)               | 15.0.4316.3   | 2023-06-15   |
-| [CU 20](/troubleshoot/sql/linux/release-history-2019#CU20)               | 15.0.4312.2   | 2023-04-13   |
-| [CU 19](/troubleshoot/sql/linux/release-history-2019#CU19)               | 15.0.4298.1   | 2023-02-16   |
-| [CU 18 GDR](/troubleshoot/sql/linux/release-history-2019#CU18-GDR)       | 15.0.4280.7   | 2023-02-14   |
-| [CU 18](/troubleshoot/sql/linux/release-history-2019#CU18)               | 15.0.4261.1   | 2022-09-28   |
-| [CU 17](/troubleshoot/sql/linux/release-history-2019#CU17)               | 15.0.4249.2   | 2022-08-11   |
-| [CU 16 GDR](/troubleshoot/sql/linux/release-history-2019#CU16-GDR)       | 15.0.4236.7   | 2022-06-14   |
-| [CU 16](/troubleshoot/sql/linux/release-history-2019#CU16)               | 15.0.4223.1   | 2022-04-18   |
-| [CU 15](/troubleshoot/sql/linux/release-history-2019#CU15)               | 15.0.4198.2   | 2022-01-27   |
-| [CU 14](/troubleshoot/sql/linux/release-history-2019#CU14)               | 15.0.4188.2   | 2021-11-22   |
-| [CU 13](/troubleshoot/sql/linux/release-history-2019#CU13)               | 15.0.4178.1   | 2021-10-05   |
-| [CU 12](/troubleshoot/sql/linux/release-history-2019#CU12)               | 15.0.4153.1   | 2021-08-04   |
-| [CU 11](/troubleshoot/sql/linux/release-history-2019#CU11)               | 15.0.4138.2   | 2021-06-10   |
-| [CU 10](/troubleshoot/sql/linux/release-history-2019#CU10)               | 15.0.4123.1   | 2021-04-06   |
-| [CU 9](/troubleshoot/sql/linux/release-history-2019#CU9)                 | 15.0.4102.2   | 2021-02-10   |
-| [CU 8 GDR](/troubleshoot/sql/linux/release-history-2019#CU8-GDR)         | 15.0.4083.2   | 2021-01-12   |
-| [GDR 2](/troubleshoot/sql/linux/release-history-2019#GDR2)               | 15.0.2080.9   | 2021-01-12   |
-| [CU 8](/troubleshoot/sql/linux/release-history-2019#CU8)                 | 15.0.4073.23  | 2020-10-07   |
+| [CU 32](/troubleshoot/sql/releases/linux/release-history-2019#CU32)               | 15.0.4430.1   | 2025-02-27   |
+| [CU 31](/troubleshoot/sql/releases/linux/release-history-2019#CU31)               | 15.0.4420.2   | 2025-02-13   |
+| [CU 30](/troubleshoot/sql/releases/linux/release-history-2019#CU30)               | 15.0.4415.2   | 2024-12-12   |
+| [CU 29 GDR](/troubleshoot/sql/releases/linux/release-history-2019#CU29-GDR)       | 15.0.4410.1   | 2024-11-12   |
+| [CU 29](/troubleshoot/sql/releases/linux/release-history-2019#CU29)               | 15.0.4405.4   | 2024-10-31   |
+| [CU 28 GDR 2](/troubleshoot/sql/releases/linux/release-history-2019#CU28-GDR2)    | 15.0.4395.2   | 2024-10-08   |
+| [CU 28 GDR 1](/troubleshoot/sql/releases/linux/release-history-2019#CU28-GDR1)    | 15.0.4390.2   | 2024-09-10   |
+| [CU 28](/troubleshoot/sql/releases/linux/release-history-2019#CU28)               | 15.0.4385.2   | 2024-08-01   |
+| [CU 27](/troubleshoot/sql/releases/linux/release-history-2019#CU27)               | 15.0.4375.4   | 2024-06-13   |
+| [CU 26](/troubleshoot/sql/releases/linux/release-history-2019#CU26)               | 15.0.4365.2   | 2024-04-11   |
+| [CU 25 GDR](/troubleshoot/sql/releases/linux/release-history-2019#CU25-GDR)       | 15.0.4360.2   | 2024-04-09   |
+| [CU 25](/troubleshoot/sql/releases/linux/release-history-2019#CU25)               | 15.0.4355.3   | 2024-02-15   |
+| [CU 24](/troubleshoot/sql/releases/linux/release-history-2019#CU24)               | 15.0.4345.5   | 2023-12-14   |
+| [CU 23](/troubleshoot/sql/releases/linux/release-history-2019#CU23)               | 15.0.4335.1   | 2023-10-12   |
+| [CU 22 GDR](/troubleshoot/sql/releases/linux/release-history-2019#CU22-GDR)       | 15.0.4326.1   | 2023-10-10   |
+| [CU 22](/troubleshoot/sql/releases/linux/release-history-2019#CU22)               | 15.0.4322.2   | 2023-08-14   |
+| [CU 21](/troubleshoot/sql/releases/linux/release-history-2019#CU21)               | 15.0.4316.3   | 2023-06-15   |
+| [CU 20](/troubleshoot/sql/releases/linux/release-history-2019#CU20)               | 15.0.4312.2   | 2023-04-13   |
+| [CU 19](/troubleshoot/sql/releases/linux/release-history-2019#CU19)               | 15.0.4298.1   | 2023-02-16   |
+| [CU 18 GDR](/troubleshoot/sql/releases/linux/release-history-2019#CU18-GDR)       | 15.0.4280.7   | 2023-02-14   |
+| [CU 18](/troubleshoot/sql/releases/linux/release-history-2019#CU18)               | 15.0.4261.1   | 2022-09-28   |
+| [CU 17](/troubleshoot/sql/releases/linux/release-history-2019#CU17)               | 15.0.4249.2   | 2022-08-11   |
+| [CU 16 GDR](/troubleshoot/sql/releases/linux/release-history-2019#CU16-GDR)       | 15.0.4236.7   | 2022-06-14   |
+| [CU 16](/troubleshoot/sql/releases/linux/release-history-2019#CU16)               | 15.0.4223.1   | 2022-04-18   |
+| [CU 15](/troubleshoot/sql/releases/linux/release-history-2019#CU15)               | 15.0.4198.2   | 2022-01-27   |
+| [CU 14](/troubleshoot/sql/releases/linux/release-history-2019#CU14)               | 15.0.4188.2   | 2021-11-22   |
+| [CU 13](/troubleshoot/sql/releases/linux/release-history-2019#CU13)               | 15.0.4178.1   | 2021-10-05   |
+| [CU 12](/troubleshoot/sql/releases/linux/release-history-2019#CU12)               | 15.0.4153.1   | 2021-08-04   |
+| [CU 11](/troubleshoot/sql/releases/linux/release-history-2019#CU11)               | 15.0.4138.2   | 2021-06-10   |
+| [CU 10](/troubleshoot/sql/releases/linux/release-history-2019#CU10)               | 15.0.4123.1   | 2021-04-06   |
+| [CU 9](/troubleshoot/sql/releases/linux/release-history-2019#CU9)                 | 15.0.4102.2   | 2021-02-10   |
+| [CU 8 GDR](/troubleshoot/sql/releases/linux/release-history-2019#CU8-GDR)         | 15.0.4083.2   | 2021-01-12   |
+| [GDR 2](/troubleshoot/sql/releases/linux/release-history-2019#GDR2)               | 15.0.2080.9   | 2021-01-12   |
+| [CU 8](/troubleshoot/sql/releases/linux/release-history-2019#CU8)                 | 15.0.4073.23  | 2020-10-07   |
 | [CU 7 (Removed)](/troubleshoot/sql/releases/sqlserver-2019/cumulativeupdate7) | 15.0.4063.15  | 2020-09-02   |
-| [CU 6](/troubleshoot/sql/linux/release-history-2019#CU6)                 | 15.0.4053.23  | 2020-08-04   |
-| [CU 5](/troubleshoot/sql/linux/release-history-2019#CU5)                 | 15.0.4043.16  | 2020-06-22   |
-| [CU 4](/troubleshoot/sql/linux/release-history-2019#CU4)                 | 15.0.4033.1   | 2020-03-31   |
-| [CU 3](/troubleshoot/sql/linux/release-history-2019#CU3)                 | 15.0.4023.6   | 2020-03-12   |
-| [CU 2](/troubleshoot/sql/linux/release-history-2019#CU2)                 | 15.0.4013.40  | 2020-02-13   |
-| [CU 1](/troubleshoot/sql/linux/release-history-2019#CU1)                 | 15.0.4003.23  | 2020-01-07   |
-| [GA](/troubleshoot/sql/linux/release-history-2019#GA)                    | 15.0.2000.5   | 2019-11-04   |
-| [GDR 1](/troubleshoot/sql/linux/release-history-2019#GDR1)               | 15.0.2070.41  | 2019-11-04   |
+| [CU 6](/troubleshoot/sql/releases/linux/release-history-2019#CU6)                 | 15.0.4053.23  | 2020-08-04   |
+| [CU 5](/troubleshoot/sql/releases/linux/release-history-2019#CU5)                 | 15.0.4043.16  | 2020-06-22   |
+| [CU 4](/troubleshoot/sql/releases/linux/release-history-2019#CU4)                 | 15.0.4033.1   | 2020-03-31   |
+| [CU 3](/troubleshoot/sql/releases/linux/release-history-2019#CU3)                 | 15.0.4023.6   | 2020-03-12   |
+| [CU 2](/troubleshoot/sql/releases/linux/release-history-2019#CU2)                 | 15.0.4013.40  | 2020-02-13   |
+| [CU 1](/troubleshoot/sql/releases/linux/release-history-2019#CU1)                 | 15.0.4003.23  | 2020-01-07   |
+| [GA](/troubleshoot/sql/releases/linux/release-history-2019#GA)                    | 15.0.2000.5   | 2019-11-04   |
+| [GDR 1](/troubleshoot/sql/releases/linux/release-history-2019#GDR1)               | 15.0.2070.41  | 2019-11-04   |
 
 ## Known issues
 

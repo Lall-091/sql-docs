@@ -9019,13 +9019,13 @@ items:
     - name: Release history
       items:
       - name: SQL Server 2025 Preview >
-        href: /troubleshoot/sql/linux/release-history-2025?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
+        href: /troubleshoot/sql/releases/linux/release-history-2025?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
       - name: SQL Server 2022 >
-        href: /troubleshoot/sql/linux/release-history-2022?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
+        href: /troubleshoot/sql/releases/linux/release-history-2022?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
       - name: SQL Server 2019 >
-        href: /troubleshoot/sql/linux/release-history-2019?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
+        href: /troubleshoot/sql/releases/linux/release-history-2019?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
       - name: SQL Server 2017 >
-        href: /troubleshoot/sql/linux/release-history-2017?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
+        href: /troubleshoot/sql/releases/linux/release-history-2017?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
     - name: Editions and features
       items:
       - name: SQL Server 2025 Preview

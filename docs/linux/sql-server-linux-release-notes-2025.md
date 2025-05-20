@@ -35,7 +35,7 @@ Most existing client tools that target [!INCLUDE [ssNoVersion](../includes/ssnov
 
 ## Latest versions for all packages
 
-This section lists the latest versions of each package per distribution, for [!INCLUDE [ssSQL25](../includes/sssql25-md.md)]. The following table shows the most recent release, which is **CTP 2.0**. For full release history, see [Release history for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] 2025 Preview](/troubleshoot/sql/linux/release-history-2025).
+This section lists the latest versions of each package per distribution, for [!INCLUDE [ssSQL25](../includes/sssql25-md.md)]. The following table shows the most recent release, which is **CTP 2.0**. For full release history, see [Release history for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] 2025 Preview](/troubleshoot/sql/releases/linux/release-history-2025).
 
 | Version | Release | Date | Build | KB article |
 | --- | --- | --- | --- | --- |
@@ -89,7 +89,7 @@ The following table lists the release history for [!INCLUDE [ssSQL25](../include
 
 | Release                                                                  | Version       | Release date |
 | ------------------------------------------------------------------------ | ------------- | ------------ |
-| [CTP 2.0](/troubleshoot/sql/linux/release-history-2025#CTP2.0)           | 17.0.700.9    | 2025-05-19   |
+| [CTP 2.0](/troubleshoot/sql/releases/linux/release-history-2025#CTP2.0)  | 17.0.700.9    | 2025-05-19   |
 
 ## Known issues
 
