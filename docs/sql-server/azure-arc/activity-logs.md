@@ -4,7 +4,7 @@ description: Learn how to view or download activity logs for Azure Arc-enabled S
 author: guptasnigdha12
 ms.author: guptasnigdha
 ms.reviewer: mikeray, rajpo, randolphwest
-ms.date: 09/09/2024
+ms.date: 05/19/2025
 ms.topic: conceptual
 ---
 
@@ -35,6 +35,30 @@ To download the events in the current view, select **Download as CSV**.
 For some events, you can view the history of changes that happened during the event time. Select an event from the activity log to gather more information. Then select **Change history** to view any changes associated with that event.
 
 :::image type="content" source="media/monitoring/view-change-history.png" alt-text="Screenshot of the change history for an event." lightbox="media/monitoring/view-change-history.png":::
+
+## Related log entries
+
+The activity log includes usage upload activity events for each Arc - Machine resource with Azure Extension for SQL Server.
+
+### Successful usage upload
+
+The activity log entry for successful usage upload includes:
+
+- **Operation name**: `SQL Server Usage Upload Azure.Health`
+- **Event initiated by**: `<empty>`
+- **Description**: Indicates if SQL Server usage data has been received in the past 24 hours. 
+- **Status**: `Succeeded`
+- **Level**: `Informational`
+
+### Missing usage upload
+
+The activity log entry for missing usage upload includes:
+
+- **Operation name**: `SQL Server Usage Upload Azure.Health`
+- **Event initiated by**: `<empty>`
+- **Description**: Indicates if SQL Server usage data has been received in the past 24 hours. 
+- **Status**: `Failed`
+- **Level**: `Error`
 
 ## Related content
 
