@@ -1,10 +1,10 @@
 ---
-title: "Apache Spark connector for SQL Server"
+title: "Apache Spark Connector for SQL Server"
 description: "Learn how to use the Apache Spark connector for SQL Server."
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: hudequei
-ms.date: 01/18/2022
+ms.date: 05/21/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -13,6 +13,9 @@ ms.topic: conceptual
 # Apache Spark connector: SQL Server & Azure SQL
 
 The Apache Spark connector for SQL Server and Azure SQL is a high-performance connector that enables you to use transactional data in big data analytics and persist results for ad hoc queries or reporting. The connector allows you to use any SQL database, on-premises or in the cloud, as an input data source or output data sink for Spark jobs.
+
+> [!NOTE]
+> This connector is not actively maintained. This article is only retained for archival purposes.
 
 This library contains the source code for the Apache Spark Connector for SQL Server and Azure SQL.
 
@@ -30,11 +33,11 @@ You can also build the connector from source or download the jar from the Releas
 
 ## Supported Features
 
-* Support for all Spark bindings (Scala, Python, R)
-* Basic authentication and Active Directory (AD) Key Tab support
-* Reordered `dataframe` write support
-* Support for write to SQL Server Single instance and Data Pool in SQL Server Big Data Clusters
-* Reliable connector support for Sql Server Single Instance
+- Support for all Spark bindings (Scala, Python, R)
+- Basic authentication and Active Directory (AD) Key Tab support
+- Reordered `dataframe` write support
+- Support for write to SQL Server Single instance and Data Pool in SQL Server Big Data Clusters
+- Reliable connector support for Sql Server Single Instance
 
 | Component                            | Versions Supported              |
 |--------------------------------------|---------------------------------|
@@ -45,7 +48,8 @@ You can also build the connector from source or download the jar from the Releas
 | Azure SQL Databases                  | Supported                       |
 
 
-### Supported Options
+### Supported options
+
 The Apache Spark Connector for SQL Server and Azure SQL supports the options defined here: [SQL DataSource JDBC](https://spark.apache.org/docs/latest/sql-data-sources-jdbc.html)
 
 In addition following options are supported
@@ -54,7 +58,7 @@ In addition following options are supported
 | --------- | ------------------ | ------------------------------------------ |
 | `reliabilityLevel` | `BEST_EFFORT` | `BEST_EFFORT` or `NO_DUPLICATES`. `NO_DUPLICATES` implements an reliable insert in executor restart scenarios |
 | `dataPoolDataSource` | `none` | `none` implies the value is not set and the connector should write to SQL Server single instance. Set this value to data source name to write a data pool table in Big Data Clusters|
-| `isolationLevel` | `READ_COMMITTED` | Specify the isolation level |
+| `isolationLevel` | `READ_COMMITTED` | Specify the [isolation level](../../t-sql/statements/set-transaction-isolation-level-transact-sql.md) |
 | `tableLock` | `false` | Implements an insert with `TABLOCK` option to improve write performance |
 | `schemaCheckEnabled` | `true` | Disables strict data frame and sql table schema check when set to false |
 
@@ -62,7 +66,7 @@ Other [bulk copy options](../jdbc/using-bulk-copy-with-the-jdbc-driver.md#sqlser
 
 ## Performance comparison
 
-Apache Spark Connector for SQL Server and Azure SQL is up to 15x faster than generic JDBC connector for writing to SQL Server. Performance characteristics vary on type, volume of data, options used, and may show run to run variations. The following performance results are the time taken to overwrite a SQL table with 143.9M rows in a spark `dataframe`. The spark `dataframe` is constructed by reading `store_sales` HDFS table generated using [spark TPCDS Benchmark](https://github.com/databricks/spark-sql-perf). Time to read `store_sales` to `dataframe` is excluded. The results are averaged over three runs.
+Apache Spark Connector for SQL Server and Azure SQL is up to 15x faster than generic JDBC connector for writing to SQL Server. Performance characteristics vary on type, volume of data, options used, and might show run to run variations. The following performance results are the time taken to overwrite a SQL table with 143.9M rows in a spark `dataframe`. The spark `dataframe` is constructed by reading `store_sales` HDFS table generated using [spark TPCDS Benchmark](https://github.com/databricks/spark-sql-perf). Time to read `store_sales` to `dataframe` is excluded. The results are averaged over three runs.
 
 | Connector Type | Options | Description |  Time to write |
 | --------- | ------------------ | -------------------------------------| ---------- |
@@ -94,7 +98,7 @@ Steps to fix the issue:
 
 1. If you are using a generic Hadoop environment, check and remove the mssql jar: `rm $HADOOP_HOME/share/hadoop/yarn/lib/mssql-jdbc-6.2.1.jre7.jar`. 
 If you are using Databricks, add a global or cluster init script to remove old versions of the mssql driver from the `/databricks/jars` folder, or add this line to an existing script: `rm /databricks/jars/*mssql*`
-2. Add the `adal4j` and `mssql` packages. For example, you can use Maven but any way should work. 
+1. Add the `adal4j` and `mssql` packages. For example, you can use Maven but any way should work. 
 
    > [!CAUTION]
    > Do not install the SQL spark connector this way.
@@ -179,7 +183,7 @@ jdbcDF = spark.read \
         .option("password", password).load()
 ```
 
-<a name='azure-active-directory-authentication'></a>
+<a id="azure-active-directory-authentication"></a>
 
 ## Microsoft Entra authentication
 
@@ -221,7 +225,7 @@ The format of `user` when using ActiveDirectoryPassword should be the UPN format
 
 For **Scala,** the `_com.microsoft.aad.adal4j_` artifact will need to be installed.
 
-For **Python,** the `_adal_` library will need to be installed.  This is available via pip.
+For **Python,** the `_adal_` library will need to be installed. This is available via pip.
 
 Check the [sample notebooks](https://github.com/microsoft/sql-spark-connector/tree/master/samples) for examples.
 
@@ -229,8 +233,6 @@ Check the [sample notebooks](https://github.com/microsoft/sql-spark-connector/tr
 
 The Apache Spark Connector for Azure SQL and SQL Server is an open-source project. This connector does not come with any Microsoft support. For issues with or questions about the connector, create an Issue in this project repository. The connector community is active and monitoring submissions.
 
-## Next steps
+## Related content
 
 Visit the [SQL Spark connector GitHub repository](https://github.com/microsoft/sql-spark-connector).
-
-For information about isolation levels, see [SET TRANSACTION ISOLATION LEVEL (Transact-SQL)](../../t-sql/statements/set-transaction-isolation-level-transact-sql.md).

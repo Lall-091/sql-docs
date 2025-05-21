@@ -220,8 +220,6 @@ You can install SQL Server on Windows or Linux, and scale up the hardware archit
 
 Installing and configuring a scale-out platform such as Apache Hadoop or Apache Spark allows for querying non-relational data at scale. Using a central set of Object-Storage systems that support the S3-API allows both [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] and Spark to access the same set of data across all systems.
 
-The Microsoft Apache Spark connector for SQL Server and Azure SQL also has that allow you to query data directly from SQL Server using Spark Jobs. For more information on the Apache Spark connector for SQL Server and Azure SQL, see [Apache Spark connector: SQL Server & Azure SQL](../connect/spark/connector.md).
-
 You can also use the Kubernetes container orchestration system for your deployment. This allows a declarative-architecture that can run on-premises or in any Cloud that supports Kubernetes or the Red Hat OpenShift platform. To learn more about deploying SQL Server into a Kubernetes environment, see [Deploy a SQL Server container cluster on Azure](../linux/quickstart-sql-server-containers-azure.md) or watch [Deploying SQL Server 2019 in Kubernetes](/shows/data-exposed/deploying-sql-server-2019-in-kubernetes).
 
 Use SQL Server and Hadoop/Spark on-premises as a replacement for [!INCLUDE [ssbigdataclusters-ver15](../includes/ssbigdataclusters-ver15.md)] when you need to:
