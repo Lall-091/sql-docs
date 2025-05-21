@@ -8953,6 +8953,10 @@ items:
           items:
           - name: Overview
             href: tools/visual-studio-code-extensions/mssql/mssql-schema-compare.md
+        - name: Schema designer
+          items:
+          - name: Overview
+            href: tools/visual-studio-code-extensions/mssql/mssql-schema-designer.md
     - name: SQL bindings for Azure Functions
       items:
       - name: Overview

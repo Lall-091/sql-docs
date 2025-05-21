@@ -4,7 +4,7 @@ description: The AI_GENERATE_EMBEDDINGS function creates vector arrays for data.
 author: jettermctedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 04/22/2025
+ms.date: 05/21/2025
 ms.service: sql
 ms.topic: "reference"
 ms.custom:
@@ -79,7 +79,15 @@ The format of the returned JSON is as follows:
 
 ## Remarks
 
-`AI_GENERATE_EMBEDDINGS` requires an [EXTERNAL MODEL](../statements/create-external-model-transact-sql.md) of the `EMBEDDINGS` type that is accessible via the correct grants, roles, and/or permissions.
+### Prerequisites
+
+There are two prerequisites you must meet to use `AI_GENERATE_EMBEDDINGS`:
+
+- `sp_invoke_external_endpoint` must be enabled in the database using [sp_configure](../../relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql.md?tabs=request-headers#permissions).
+
+- an [EXTERNAL MODEL](../statements/create-external-model-transact-sql.md) of the `EMBEDDINGS` type, accessible via the correct grants, roles, and/or permissions.
+
+### Optional parameters
 
 The parameter `optional_json_request_body_parameters` in `AI_GENERATE_EMBEDDINGS` is used when an endpoint parameter needs to be added to the body of the embeddings request message. Adding an optional parameter overrides the value at runtime if that parameter is defined in the model definition.
 

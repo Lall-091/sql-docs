@@ -37,9 +37,6 @@ The following table lists the features of Azure SQL Managed Instance that are cu
 | ---| --- |
 |[Database watcher for Azure SQL](../database-watcher-overview.md)|Database watcher is a managed monitoring solution for database services in the Azure SQL family. Database watcher collects in-depth workload monitoring data to give you a detailed view of database performance, configuration, and health. Learn more about [database watcher](https://aka.ms/dbwatcher-preview-announcement).|
 |[Endpoint policies](./service-endpoint-policies-configure.md) | Configure which Azure Storage accounts can be accessed from a SQL Managed Instance subnet. Grants an extra layer of protection against inadvertent or malicious data exfiltration.|
-|[Free SQL Managed Instance](free-offer.md) | Try Azure SQL Managed Instance for free, for the first 12 months after you create your instance. |
-|[JSON native data type](/sql/t-sql/data-types/json-data-type) | The new **JSON** native data type is currently in preview. For more information, see [JSON Type and aggregates preview](https://aka.ms/json-type-aggregates-public-preview). Your SQL managed instance must be configured with the [Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy).|
-|[JSON aggregate functions](/sql/relational-databases/json/json-data-sql-server#json-data-from-aggregates) | Two new **JSON** aggregate functions `JSON_OBJECTAGG` and `JSON_ARRAYAGG` enable construction of JSON objects or arrays based on an aggregate from SQL data. Your SQL managed instance must be configured with the [Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy). For more information, see [JSON Type and aggregates preview](https://aka.ms/json-type-aggregates-public-preview). |
 |[Microsoft Entra nonunique name support](../database/authentication-microsoft-entra-create-users-with-nonunique-names.md) |  The [CREATE USER](/sql/t-sql/statements/create-user-transact-sql) Transact-SQL (T-SQL) syntax has been extended to include `WITH OBJECT_ID` to support creating Microsoft Entra logins and users in Azure SQL Managed Instance that have nonunique names. |
 |[Modernization Advisor](../virtual-machines/modernization-advisor.md) | Use the Modernization Advisor in the Azure portal to help you determine if migrating to Azure SQL Managed Instance from a SQL Server VM saves you money or optimizes performance. |
 |[Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) | An architectural upgrade of the General Purpose service tier that uses managed disks for greater resource flexibility, and improved performance while maintaining the same baseline cost as the General Purpose service tier.  |
@@ -56,6 +53,7 @@ The following table lists features of Azure SQL Managed Instance that have been 
 
 | Feature | GA Month | Details |
 | ---| --- |--- |
+| [Free SQL Managed Instance](free-offer.md) | May 2025 | Try Azure SQL Managed Instance for free for the first 12 months after an instance is created.  |
 | [JSON native data type](/sql/t-sql/data-types/json-data-type?view=azuresqlmi-current&preserve-view=true) | May 2025 | The **json** data type provides new capabilities for handling semistructured data in Azure SQL Database. |
 | [JSON aggregate functions](/sql/relational-databases/json/json-data-sql-server?view=azuresqlmi-current&preserve-view=true#json-data-from-aggregates) | May 2025 | Two **json** aggregate functions (`JSON_OBJECTAGG` and `JSON_ARRAYAGG`) enable construction of JSON objects or arrays based on an aggregate from SQL data. |
 |[MI link from SQL Server 2017](managed-instance-link-feature-overview.md#prerequisites) | March 2025 | Configure a link from SQL Server 2017 to Azure SQL Managed Instance. |
@@ -80,6 +78,7 @@ Learn about significant changes to the Azure SQL Managed Instance documentation.
 | --- | --- |
 | **JSON native data type GA** |  The  [**json** data type](/sql/t-sql/data-types/json-data-type?view=azuresqlmi-current&preserve-view=true) provides new capabilities for handling semistructured data in Azure SQL Managed Instance. This data type is now generally available. |
 | **JSON aggregate functions GA** | Two [**json** aggregate functions `JSON_OBJECTAGG` and `JSON_ARRAYAGG`](/sql/relational-databases/json/json-data-sql-server?view=azuresqlmi-current&preserve-view=true#json-data-from-aggregates) enable construction of JSON objects or arrays based on an aggregate from SQL data. These JSON functions are now generally available. |
+| **Free instance GA** | The free Azure SQL Managed Instance offer is now generally available (GA), allowing you to try SQL managed instance for free, for the first 12 months after you create your instance. Review [Free SQL Managed Instance](free-offer.md) to learn more. |
 
 ### April 2025
 
