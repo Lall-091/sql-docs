@@ -2946,6 +2946,8 @@
     href: ../connect/odbc/microsoft-odbc-driver-for-sql-server.md
   - name: Download
     href: ../connect/odbc/download-odbc-driver-for-sql-server.md
+  - name: Support lifecycle
+    href: ../connect/odbc/support-lifecycle.md
   - name: Linux and macOS
     items:
     - name: System requirements
@@ -5210,6 +5212,8 @@
     href: ../connect/oledb/major-version-differences.md
   - name: System requirements
     href: ../connect/oledb/system-requirements-for-oledb-driver-for-sql-server.md
+  - name: Support lifecycle
+    href: ../connect/oledb/support-lifecycle.md
   - name: When to use OLE DB Driver
     href: ../connect/oledb/when-to-use-oledb-driver-for-sql-server.md
   - name: Finding more information
