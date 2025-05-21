@@ -3,7 +3,7 @@ title: "sys.dm_os_memory_health_history"
 description: sys.dm_os_memory_health_history provides a recent history of memory usage by the database engine.
 author: dimitri-furman
 ms.author: dfurman
-ms.date: 11/14/2024
+ms.date: 05/21/2025
 ms.service: azure-sql-database
 ms.topic: "reference"
 f1_keywords:
@@ -21,7 +21,7 @@ monikerRange: "=azuresqldb-current||=azuresqldb-mi-current"
 
 # sys.dm_os_memory_health_history
 
-[!INCLUDE [Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
 > [!NOTE]
 > The `sys.dm_os_memory_health_history` dynamic management view is in preview. Schema and provided data are subject to change.
@@ -34,17 +34,17 @@ In Azure SQL Managed Instance, this view is available only on instances with the
 
 | Column Name | Data Type | Description |
 |:--|:--|:--|
-| `snapshot_time` | datetime2, null | Snapshot time |
-| `allocation_potential_memory_mb` | int, not null | Memory available to the database engine instance for new allocations, in megabytes. |
-| `external_cache_mb` | int, not null | Memory used by reclaimable caches such as the buffer pool and the columnstore object pool, in megabytes. Under memory pressure, the database engine might shrink these caches to use the memory elsewhere. |
-| `top_clerks` | nvarchar(4000), null | Top memory clerks by memory consumption, including memory usage statistics for each clerk. This information is provided as a JSON value. |
-| `severity_level` | tinyint, not null | A value describing the severity of a memory health issue, one of:<br>1. LOW - No memory health issue is identified.<br>2. MEDIUM - There is medium confidence that a memory health issue might be present. Some attempts to allocate memory might fail. Data cache might be shrinking, and disk I/O can increase as the result.<br>3. HIGH - High confidence that a memory health issue is present. Available memory is likely insufficient, new memory allocation attempts can fail, and disk I/O can increase substantially because the size of the remaining data cache is too small. |
+| `snapshot_time` | **datetime2**, null | Snapshot time |
+| `allocation_potential_memory_mb` | **int**, not null | Memory available to the database engine instance for new allocations, in megabytes. |
+| `external_cache_mb` | **int**, not null | Memory used by reclaimable caches such as the buffer pool and the columnstore object pool, in megabytes. Under memory pressure, the database engine might shrink these caches to use the memory elsewhere. |
+| `top_clerks` | **nvarchar(4000)**, null | Top memory clerks by memory consumption, including memory usage statistics for each clerk. This information is provided as a JSON value. |
+| `severity_level` | **tinyint**, not null | A value describing the severity of a memory health issue, one of:</br></br>1 - **Low**</br>No memory health issue is identified.</br></br>2 - **Medium**</br>There is medium confidence that a memory health issue might be present. Some attempts to allocate memory might fail. Data cache might be shrinking, and disk I/O can increase as the result.</br></br>3 - **High**</br>High confidence that a memory health issue is present. Available memory is likely insufficient, new memory allocation attempts can fail, and disk I/O can increase substantially because the size of the remaining data cache is too small. |
 
 ## Permissions
 
-On [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], requires `VIEW SERVER PERFORMANCE STATE` permission.
+In [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] and [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], requires the `VIEW SERVER PERFORMANCE STATE` permission.
 
-On SQL Database **Basic**, **S0**, and **S1** service objectives, and for databases in **elastic pools**, the [server admin](/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database) account, the [Microsoft Entra admin](/azure/azure-sql/database/authentication-aad-overview#administrator-structure) account, or membership in the `##MS_ServerPerformanceStateReader##` [server role](/azure/azure-sql/database/security-server-roles) is required. On all other SQL Database service objectives, either the `VIEW DATABASE PERFORMANCE STATE` permission on the database, or membership in the `##MS_ServerPerformanceStateReader##` server role is required.
+In SQL Database **Basic**, **S0**, and **S1** service objectives, and for databases in **elastic pools**, the [server admin](/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database) account, the [Microsoft Entra admin](/azure/azure-sql/database/authentication-aad-overview#administrator-structure) account, or membership in the `##MS_ServerPerformanceStateReader##` [server role](/azure/azure-sql/database/security-server-roles) is required. In all other SQL Database service objectives, either the `VIEW DATABASE PERFORMANCE STATE` permission on the database, or membership in the `##MS_ServerPerformanceStateReader##` server role is required.
 
 ## Remarks
 
