@@ -336,7 +336,7 @@ Provides the syntax and related information for the SET options of ALTER DATABAS
 ALTER DATABASE { database_name | CURRENT }
 {
     MODIFY NAME = new_database_name
-  | MODIFY ( <edition_options> [, ... n] )
+  | MODIFY ( <edition_options> [, ... n] ) [WITH MANUAL_CUTOVER]
   | MODIFY BACKUP_STORAGE_REDUNDANCY = { 'LOCAL' | 'ZONE' | 'GEO' }
   | SET { <option_spec> [ ,... n ] WITH <termination>}
   | ADD SECONDARY ON SERVER <partner_server_name>
@@ -346,7 +346,6 @@ ALTER DATABASE { database_name | CURRENT }
   | FAILOVER
   | FORCE_FAILOVER_ALLOW_DATA_LOSS
 }
-[WITH MANUAL_CUTOVER]
 [;]
 
 <edition_options> ::=
