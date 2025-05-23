@@ -1,10 +1,10 @@
 ---
 title: Managed Identity
-description: Describes the features and implementation to use managed identity with SQL Server
+description: Learn how to use a managed identity with SQL Server 2025. 
 author: PratimDasgupta
 ms.author: prdasgu
 ms.reviewer: mikeray, randolphwest, mathoma, vanto
-ms.date: 05/19/2025
+ms.date: 05/23/2025
 ms.service: sql
 ms.topic: how-to
 # CustomerIntent: As a database engineer I need to understand how to implement managed identity with SQL Server 2025.
@@ -32,7 +32,7 @@ When using managed identity with SQL Server enabled by Azure Arc, consider the f
 - Only system-assigned managed identities are supported. 
 - SQL Server uses this Azure Arc server level managed identity as the **primary managed identity**.
 - SQL Server can use this primary managed identity in either `inbound` and/or `outbound` connections.
-   - `Inbound connections` are Logins and Users connecting to SQL Server. Inbound connections can also be achieved by using [App Registration available from SQL Server 2022](../../sql-server/azure-arc/entra-authentication-setup-tutorial.md).
+   - `Inbound connections` are logins and users connecting to SQL Server. Inbound connections can also be achieved by using [App Registration available from SQL Server 2022](../../sql-server/azure-arc/entra-authentication-setup-tutorial.md).
    - `Outbound connections` are SQL Server connections to Azure resources, like backup to URL, or connecting to Azure Key Vault. 
 - App Registration **can't** enable a SQL Server to make outbound connections. Outbound connections need a primary managed identity assigned to the SQL Server.
 
@@ -153,6 +153,46 @@ If you need to restore to previous registry settings, follow these steps.
 
 For details, review [How to add, modify, or delete registry subkeys and values by using a .reg file](https://support.microsoft.com/topic/how-to-add-modify-or-delete-registry-subkeys-and-values-by-using-a-reg-file-9c7f37cf-a5e9-e1cd-c4fa-2a26218a1a23).
 
+## Grant application permissions to the identity 
+
+The system-assigned managed identity, which uses the Arc-enabled machine name, must have the following Microsoft Graph application permissions (app roles): `User.Read.All`, `GroupMember.Read.All`, and `Application.Read.All`.
+
+You can use PowerShell to grant required permissions to the managed identity.  Alternatively, you can [create a role-assignable group](/entra/identity/role-based-access-control/groups-create-eligible). After the group is created, assign the **Directory readers** role to the group, and add all system-assigned managed identities for your Arc-enabled machines to the group.
+
+The following PowerShell script grants the required permissions to the managed identity:
+
+```powershell
+Install-Module AzureAD
+Connect-AzureAD -TenantId <ENTER-YOUR-TENANT-ID>
+$api = Get-AzureADServicePrincipal -Filter "appId eq '00000003-0000-0000-c000-000000000000'" # Microsoft Graph API
+ 
+$AAD_AppRole = $api.AppRoles | Where-Object { $_.Value -eq “User.Read.All" }
+$managedIdentity = Get-AzureADServicePrincipal -SearchString "<Arc-Machine-Name>"
+New-AzureADServiceAppRoleAssignment -ObjectId $managedIdentity[0].ObjectId -PrincipalId $managedIdentity[0].ObjectId -ResourceId $api.ObjectId -Id $AAD_AppRole.Id
+
+$AAD_AppRole = $api.AppRoles | Where-Object { $_.Value -eq “Groupmember.Read.All" }
+$managedIdentity = Get-AzureADServicePrincipal -SearchString "<Arc-Machine-Name>"
+New-AzureADServiceAppRoleAssignment -ObjectId $managedIdentity[0].ObjectId -PrincipalId $managedIdentity[0].ObjectId -ResourceId $api.ObjectId -Id $AAD_AppRole.Id
+
+$AAD_AppRole = $api.AppRoles | Where-Object { $_.Value -eq “Application.Read.All" }
+$managedIdentity = Get-AzureADServicePrincipal -SearchString "<Arc-Machine-Name>"
+New-AzureADServiceAppRoleAssignment -ObjectId $managedIdentity[0].ObjectId -PrincipalId $managedIdentity[0].ObjectId -ResourceId $api.ObjectId -Id $AAD_AppRole.Id 
+
+```
+
+## Create logins and users
+
+Follow the steps in the [Microsoft Entra tutorial](../../sql-server/azure-arc/entra-authentication-setup-tutorial.md#create-logins-and-users) to create logins and users for the managed identity.
+
+## Limitations
+
+Consider the following limitations when using a managed identity with SQL Server 2025:
+
+- Microsoft Entra authentication is only supported with Arc enabled SQL Server 2025 running on Windows Server.
+- Using Microsoft Entra authentication with failover cluster instances is not supported.
+- The identity you choose to authenticate to SQL Server has to have either the **Directory Readers** role in Microsoft Entra ID or the following three Microsoft Graph application permissions (app roles): `User.Read.All`, `GroupMember.Read.All`, and `Application.Read.All`.
+- Once Microsoft Entra authentication is enabled, disabling isn't advisable. Disabling Microsoft Entra authentication forcefully by deleting registry entries can result in unpredictable behavior with SQL Server 2025.
+- Authenticating to SQL Server on Arc machines through Microsoft Entra authentication using the [FIDO2 method](/azure/active-directory/authentication/howto-authentication-passwordless-faqs) isn't currently supported.
 
 ## Related content
 

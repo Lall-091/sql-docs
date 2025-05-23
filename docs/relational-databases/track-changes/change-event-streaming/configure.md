@@ -37,7 +37,7 @@ To configure change event streaming, you need the following:
 - Azure Event Hubs namespace
 - Azure Event Hubs instance
 - Azure Event Hubs host name
-- Policy with **Manage**, **Send**, and **Listen** access level.
+- Policy with **Send** access level
 - A login in the [db_owner](../../security/authentication-access/database-level-roles.md#fixed-database-roles) role or that has [CONTROL DATABASE](../../security/permissions-database-engine.md#permissions-database-engine) permission for the database where you intend to enable CES.
 
 ## Configure Azure Event Hubs
@@ -48,17 +48,15 @@ To configure streaming to Azure Event Hubs with AMQP protocol (default, native A
 
 ### Install required modules
 
-To manage Azure Event Hubs and SQL resources with PowerShell scripts, you need to install these modules:
+To manage Azure Event Hubs resources with PowerShell scripts, you need to have the following modules:
 
 - Az PowerShell module
-- Az.Sql PowerShell module
 - Az.EventHub PowerShell module
 
 The following script installs the required modules: 
 
 ```powershell
 Install-Module -Name Az -AllowClobber -Scope CurrentUser -Repository PSGallery -Force
-Install-Module -Name Az.Sql -Scope CurrentUser -Force
 Install-Module -Name Az.EventHub -Scope CurrentUser -Force
 ```
 
@@ -66,7 +64,6 @@ If you already have these modules, and you want to update them to the latest ver
 
 ```powershell
 Update-Module -Name Az -Force
-Update-Module -Name Az.Sql -Force
 Update-Module -Name Az.EventHub -Force
 ```
 
@@ -93,54 +90,52 @@ The following script will create a new policy, or get an existing one, and then 
 ```powershell
 function Generate-SasToken {
 # Provide values for following resources.
+#
 $subscriptionId = "00000000-0000-0000-0000-000000000000"    # Replace with Azure Subscription Id
-$resourceGroupName = "sql-ces-rg1"                            # Replace with your Resource Group name
+$resourceGroupName = "myResourceGroup"                      # Replace with your Resource Group name
 $namespaceName = "myAzureEventHubsNamespace"                # Replace with your Event Hub Namespace name
-$eventHubName = "myEventHubsInstance"                        # Replace with your Event Hubs instance name
-$policyName = "policy1"                                        # Replace with the policy name
+$eventHubName = "myEventHubsInstance"                       # Replace with your Event Hubs instance name
+$policyName = "myPolicy"                                    # Replace with the policy name
 
-# Do not modify rest of the script.
+# No need to modify rest of the script.
 
 # Login to Azure and set Azure Subscription.
 Connect-AzAccount
-Set-AzContext -SubscriptionId $subscriptionId
 
-# Try to get the authorization policy (it should have Manage, Send, Listen rights)
-$rights = @("Manage", "Send", "Listen")
-$policy = Get-AzEventHubAuthorizationRule -ResourceGroupName $resourceGroupName `
-                                          -NamespaceName $namespaceName `
-                                          -EventHubName $eventHubName `
-                                          -AuthorizationRuleName $policyName `
-                                          -ErrorAction SilentlyContinue
+# Get current context and check subscription
+$currentContext = Get-AzContext
+if ($currentContext.Subscription.Id -ne $subscriptionId) {
+    Write-Host "Current subscription is $($currentContext.Subscription.Id), switching to $subscriptionId..."
+    Set-AzContext -SubscriptionId $subscriptionId | Out-Null
+} else {
+    Write-Host "Already using subscription $subscriptionId."
+}
+
+# Try to get the authorization policy (it should have Send rights)
+$rights = @("Send")
+$policy = Get-AzEventHubAuthorizationRule -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -EventHubName $eventHubName -AuthorizationRuleName $policyName -ErrorAction SilentlyContinue
 
 # If the policy does not exist, create it
 if (-not $policy) {
     Write-Output "Policy '$policyName' does not exist. Creating it now..."
 
     # Create a new policy with the Manage, Send and Listen rights
-    $policy = New-AzEventHubAuthorizationRule -ResourceGroupName $resourceGroupName `
-                                              -NamespaceName $namespaceName `
-                                              -EventHubName $eventHubName `
-                                              -AuthorizationRuleName $policyName `
-                                              -Rights $rights
-
+    $policy = New-AzEventHubAuthorizationRule -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -EventHubName $eventHubName -AuthorizationRuleName $policyName -Rights $rights
+    if (-not $policy) {
+        throw "Error. Policy was not created."
+    }
     Write-Output "Policy '$policyName' created successfully."
 } else {
     Write-Output "Policy '$policyName' already exists."
 }
 
-$hasAllRights = $expectedRights | ForEach-Object { $_ -in $policy.Rights } | Where-Object { $_ -eq $false } | Measure-Object | Select-Object -ExpandProperty Count
-
-if ($hasAllRights -eq 0) {
-    Write-Host "Authorization rule has all required rights: Manage, Send, and Listen."
+if ("Send" -in $policy.Rights) {
+    Write-Host "Authorization rule has required right: Send."
 } else {
-    throw "Authorization rule is missing some required rights."
+    throw "Authorization rule is missing Send right."
 }
 
-$keys = Get-AzEventHubKey -ResourceGroupName $resourceGroupName `
-                          -NamespaceName $namespaceName `
-                          -EventHubName $eventHubName `
-                          -AuthorizationRuleName $policyName
+$keys = Get-AzEventHubKey -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -EventHubName $eventHubName -AuthorizationRuleName $policyName
 
 if (-not $keys) {
     throw "Could not obtain Azure Event Hub Key. Script failed and will end now."
@@ -161,14 +156,13 @@ function Create-SasToken {
         [string]$resourceUri, [string]$keyName, [string]$key
     )
 
-    $sinceEpoch = [datetime]::UtcNow - [datetime]"1970-01-01"
-    $expiry = [int]$sinceEpoch.TotalSeconds + (60 * 60 * 24 * 7 * 52 * 10)  # 10 years
+$sinceEpoch = [datetime]::UtcNow - [datetime]"1970-01-01"
+    $expiry = [int]$sinceEpoch.TotalSeconds + (60 * 60 * 24 * 31 * 6)  # 6 months
     $stringToSign = [System.Web.HttpUtility]::UrlEncode($resourceUri) + "`n" + $expiry
     $hmac = New-Object System.Security.Cryptography.HMACSHA256
     $hmac.Key = [Text.Encoding]::UTF8.GetBytes($key)
     $signature = [Convert]::ToBase64String($hmac.ComputeHash([Text.Encoding]::UTF8.GetBytes($stringToSign)))
     $sasToken = "SharedAccessSignature sr=$([System.Web.HttpUtility]::UrlEncode($resourceUri))&sig=$([System.Web.HttpUtility]::UrlEncode($signature))&se=$expiry&skn=$keyName"
-    
     return $sasToken
 }
 
@@ -218,16 +212,16 @@ CREATE DATABASE SCOPED CREDENTIAL <CredentialName>
 EXEC sys.sp_enable_event_stream
 
 EXEC sys.sp_create_event_stream_group
-    @stream_group_name =      N'<EventStreamGroupName>',
+    @stream_group_name =      N'<EventStreamGroupName>',  -- myStreamGroup
     @destination_type =       N'AzureEventHubsAmqp',
-    @destination_location =   N'<AzureEventHubsNamespace>/<EventHubsInstance>',
+    @destination_location =   N'<AzureEventHubsHostName>/<EventHubsInstance>', -- myEventHubsNamespace.servicebus.windows.net/myEventHubsInstance
     @destination_credential = <CredentialName>,
-    @max_message_size_bytes = <MaxMessageSize>,       -- 268435456
+    @max_message_size_bytes = <MaxMessageSize>,       -- 1048576
     @partition_key_scheme =   N'<PatitionKeyScheme>'  -- N'None'
 
 EXEC sys.sp_add_object_to_event_stream_group
     N'<EventStreamGroupName>',
-    N'<SchemaName>.<TableName>'
+    N'<SchemaName>.<TableName>' -- dbo.myTable
 ```
 
 ### Example: Stream to Azure Event Hubs via Apache Kafka protocol
@@ -247,16 +241,16 @@ SECRET = '<Event Hubs Namespace – Primary connection string>'
 EXEC sys.sp_enable_event_stream
 
 EXEC sys.sp_create_event_stream_group
-    @stream_group_name =      N'<EventStreamGroupName>',
+    @stream_group_name =      N'<EventStreamGroupName>',  -- myStreamGroup
     @destination_type =       N'AzureEventHubsApacheKafka',
-    @destination_location =   N'<AzureEventHubsHostName>:<port>/<EventHubsInstance>',
+    @destination_location =   N'<AzureEventHubsHostName>:<port>/<EventHubsInstance>', -- myEventHubsNamespace.servicebus.windows.net:9093/myEventHubsInstance
     @destination_credential = <CredentialName>,
-    @max_message_size_bytes = <MaxMessageSize>,
-    @partition_key_scheme =   N'<PatitionKeyScheme>'
+    @max_message_size_bytes = <MaxMessageSize>,       -- 1048576
+    @partition_key_scheme =   N'<PatitionKeyScheme>'  -- N'None'
 
 EXEC sys.sp_add_object_to_event_stream_group
     N'<EventStreamGroupName>',
-    N'<SchemaName>.<TableName>'
+    N'<SchemaName>.<TableName>' -- dbo.myTable
 ```
 
 ## View CES configuration and function
