@@ -2036,7 +2036,7 @@
     - name: Periodic maintenance events
       href: database/planned-maintenance.md
   - name: Videos
-    href: https://learn.microsoft.com/shows/browse?terms=sql-database
+    href: /shows/browse?terms=sql-database
   - name: Service updates
     href: https://azure.microsoft.com/updates/?product=sql-database
   - name: Architecture center
