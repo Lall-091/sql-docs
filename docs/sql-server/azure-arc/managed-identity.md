@@ -162,22 +162,63 @@ You can use PowerShell to grant required permissions to the managed identity.  A
 The following PowerShell script grants the required permissions to the managed identity:
 
 ```powershell
-Install-Module AzureAD
-Connect-AzureAD -TenantId <ENTER-YOUR-TENANT-ID>
-$api = Get-AzureADServicePrincipal -Filter "appId eq '00000003-0000-0000-c000-000000000000'" # Microsoft Graph API
- 
-$AAD_AppRole = $api.AppRoles | Where-Object { $_.Value -eq “User.Read.All" }
-$managedIdentity = Get-AzureADServicePrincipal -SearchString "<Arc-Machine-Name>"
-New-AzureADServiceAppRoleAssignment -ObjectId $managedIdentity[0].ObjectId -PrincipalId $managedIdentity[0].ObjectId -ResourceId $api.ObjectId -Id $AAD_AppRole.Id
 
-$AAD_AppRole = $api.AppRoles | Where-Object { $_.Value -eq “Groupmember.Read.All" }
-$managedIdentity = Get-AzureADServicePrincipal -SearchString "<Arc-Machine-Name>"
-New-AzureADServiceAppRoleAssignment -ObjectId $managedIdentity[0].ObjectId -PrincipalId $managedIdentity[0].ObjectId -ResourceId $api.ObjectId -Id $AAD_AppRole.Id
+# Update these variables to match your Azure & Arc machine setup
+$tenantID = '<Enter-Your-Azure-Tenant-Id>'
+$managedIdentityName = '<Enter-Your-Arc-HostMachine-Name>'
 
-$AAD_AppRole = $api.AppRoles | Where-Object { $_.Value -eq “Application.Read.All" }
-$managedIdentity = Get-AzureADServicePrincipal -SearchString "<Arc-Machine-Name>"
-New-AzureADServiceAppRoleAssignment -ObjectId $managedIdentity[0].ObjectId -PrincipalId $managedIdentity[0].ObjectId -ResourceId $api.ObjectId -Id $AAD_AppRole.Id 
+# Install and connect to AzureAD
+try {
+    Install-Module -Name AzureAD -Force -Scope CurrentUser -ErrorAction Stop
+    Import-Module AzureAD
+    Connect-AzureAD -TenantId $tenantID
+    Write-Output "Connected to AzureAD successfully."
+} catch {
+    Write-Error "Failed to install or connect to AzureAD: $_"
+    return
+}
 
+# Get Microsoft Graph API service principal
+$graphAppId = '00000003-0000-0000-c000-000000000000'
+$graphSP = Get-AzureADServicePrincipal -Filter "appId eq '$graphAppId'"
+if (-not $graphSP) {
+    Write-Error "Microsoft Graph service principal not found."
+    return
+}
+
+# Get the managed identity
+$managedIdentity = Get-AzureADServicePrincipal -SearchString $managedIdentityName | Where-Object { $_.DisplayName -eq $managedIdentityName }
+
+if (-not $managedIdentity) {
+    Write-Error "Managed identity '$managedIdentityName' not found."
+    return
+}
+
+# Define roles to assign
+$requiredRoles = @(
+    "User.Read.All",
+    "GroupMember.Read.All",
+    "Application.Read.All"
+)
+
+# Assign roles
+foreach ($roleValue in $requiredRoles) {
+    $appRole = $graphSP.AppRoles | Where-Object { $_.Value -eq $roleValue -and $_.AllowedMemberTypes -contains "Application" }
+    if ($appRole) {
+        try {
+            New-AzureADServiceAppRoleAssignment `
+                -ObjectId $managedIdentity.ObjectId `
+                -PrincipalId $managedIdentity.ObjectId `
+                -ResourceId $graphSP.ObjectId `
+                -Id $appRole.Id
+            Write-Output "Successfully assigned role '$roleValue' to '$managedIdentityName'."
+        } catch {
+            Write-Warning "Failed to assign role '$roleValue': $_"
+        }
+    } else {
+        Write-Warning "Role '$roleValue' not found in Microsoft Graph AppRoles."
+    }
+}
 ```
 
 ## Create logins and users
