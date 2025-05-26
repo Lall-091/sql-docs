@@ -3,7 +3,8 @@ title: Database Engine events and errors
 description: Consult this MSSQL error code list to find explanations for error messages for SQL Server database engine events.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/16/2025
+ms.reviewer: maghan, mikeray
+ms.date: 05/15/2025
 ms.service: sql
 ms.subservice: supportability
 ms.topic: error-reference
@@ -32,6 +33,7 @@ ORDER BY message_id;
 ::: moniker range="=sql-server-2016"
 This article shows events and errors for [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)]. If you want to view events and errors for other versions of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)], see:
 
+- [SQL Server 2025 Preview](?view=sql-server-ver17&preserve-view=true)
 - [SQL Server 2022](?view=sql-server-ver16&preserve-view=true)
 - [SQL Server 2019](?view=sql-server-ver15&preserve-view=true)
 - [SQL Server 2017](?view=sql-server-2017&preserve-view=true)
@@ -40,6 +42,7 @@ This article shows events and errors for [!INCLUDE [sssql16-md](../../includes/s
 ::: moniker range="=sql-server-2017 || =sql-server-linux-2017"
 This article shows events and errors for [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)]. If you want to view events and errors for other versions of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)], see:
 
+- [SQL Server 2025 Preview](?view=sql-server-ver17&preserve-view=true)
 - [SQL Server 2022](?view=sql-server-ver16&preserve-view=true)
 - [SQL Server 2019](?view=sql-server-ver15&preserve-view=true)
 - [SQL Server 2016](?view=sql-server-2016&preserve-view=true)
@@ -48,14 +51,25 @@ This article shows events and errors for [!INCLUDE [sssql17-md](../../includes/s
 ::: moniker range="=sql-server-ver15 || =sql-server-linux-ver15"
 This article shows events and errors for [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)]. If you want to view events and errors for other versions of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)], see:
 
+- [SQL Server 2025 Preview](?view=sql-server-ver17&preserve-view=true)
 - [SQL Server 2022](?view=sql-server-ver16&preserve-view=true)
 - [SQL Server 2017](?view=sql-server-2017&preserve-view=true)
 - [SQL Server 2016](?view=sql-server-2016&preserve-view=true)
 :::moniker-end
 
-::: moniker range=">=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresql || =azuresql-db || =azuresql-mi || >=aps-pdw-2016-au7"
+::: moniker range="=sql-server-ver16 || =sql-server-linux-ver16 || =azuresql || =azuresql-db || =azuresql-mi || >=aps-pdw-2016-au7"
 This article shows events and errors for [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]. If you want to view events and errors for other versions of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)], see:
 
+- [SQL Server 2025 Preview](?view=sql-server-ver17&preserve-view=true)
+- [SQL Server 2019](?view=sql-server-ver15&preserve-view=true)
+- [SQL Server 2017](?view=sql-server-2017&preserve-view=true)
+- [SQL Server 2016](?view=sql-server-2016&preserve-view=true)
+:::moniker-end
+
+::: moniker range=">=sql-server-ver17 || >=sql-server-linux-ver17"
+This article shows events and errors for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. If you want to view events and errors for other versions of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)], see:
+
+- [SQL Server 2022](?view=sql-server-ver16&preserve-view=true)
 - [SQL Server 2019](?view=sql-server-ver15&preserve-view=true)
 - [SQL Server 2017](?view=sql-server-2017&preserve-view=true)
 - [SQL Server 2016](?view=sql-server-2016&preserve-view=true)
