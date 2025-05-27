@@ -1,8 +1,8 @@
 ---
 title: "Project Settings (Type Mapping) (Db2ToSQL)"
 description: Customize how SSMA converts Db2 data types into SQL Server data types.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

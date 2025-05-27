@@ -1,8 +1,8 @@
 ---
 title: "What's New in SSMA for Db2 (Db2ToSQL)"
 description: Find out about changes to SQL Server Migration Assistant (SSMA) for Db2 (Db2ToSQL) for each release.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 05/19/2025
 ms.service: sql

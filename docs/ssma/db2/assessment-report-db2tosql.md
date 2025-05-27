@@ -1,8 +1,8 @@
 ---
 title: "Assessment Report (Db2ToSQL)"
 description: Learn how to view the results of the conversion of database objects to Transact-SQL syntax (Db2ToSQL).
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

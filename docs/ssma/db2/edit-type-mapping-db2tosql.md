@@ -1,8 +1,8 @@
 ---
 title: "Edit Type Mapping (Db2ToSQL)"
 description: Use the Edit Type Mapping dialog to specify how types are mapped between the source and destination database objects, in SSMA for Db2.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

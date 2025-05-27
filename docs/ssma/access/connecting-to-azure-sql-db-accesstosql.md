@@ -1,8 +1,8 @@
 ---
 title: "Connecting to Azure SQL Database (AccessToSQL)"
 description: Learn how to connect to a target instance of Azure SQL Database to migrate Access databases. SSMA obtains metadata about databases in Azure SQL Database.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 11/19/2024
 ms.service: sql

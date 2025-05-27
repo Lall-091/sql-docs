@@ -1,8 +1,8 @@
 ---
 title: "Connecting to SQL Server (SybaseToSQL)"
 description: "Connecting to SQL Server (SybaseToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "11/16/2020"
 ms.service: sql
 ms.subservice: ssma

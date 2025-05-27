@@ -1,8 +1,8 @@
 ---
 title: "Converting Sybase ASE Database Objects (SybaseToSQL)"
 description: "Converting Sybase ASE Database Objects (SybaseToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "12/01/2017"
 ms.service: sql
 ms.subservice: ssma

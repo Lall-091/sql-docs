@@ -1,8 +1,8 @@
 ---
 title: "Installing SSMA for MySQL (MySQLToSQL)"
 description: Use these articles to install, upgrade, and uninstall SQL Server Migration Assistant (SSMA) for MySQL, which includes a client application and extension pack.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 07/10/2023
 ms.service: sql

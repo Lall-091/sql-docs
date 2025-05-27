@@ -1,8 +1,8 @@
 ---
 title: "Managing Passwords (AccessToSQL)"
 description: "Managing Passwords (AccessToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: 07/01/2020
 ms.service: sql
 ms.subservice: ssma

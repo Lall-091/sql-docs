@@ -1,8 +1,8 @@
 ---
 title: "Creating Script Files (AccessToSQL)"
 description: "Creating Script Files (AccessToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "08/17/2017"
 ms.service: sql
 ms.subservice: ssma

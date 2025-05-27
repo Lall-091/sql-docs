@@ -1,9 +1,8 @@
 ---
-
 title: "Map Db2 and SQL Server data types (Db2ToSQL)"
 description: Learn how to map between Db2 and SQL Server data types in SSMA for Db2.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

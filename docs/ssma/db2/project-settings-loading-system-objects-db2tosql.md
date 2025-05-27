@@ -1,8 +1,8 @@
 ---
 title: Project Settings (Loading System Objects) (Db2ToSQL)
 description: Project Settings specify which Db2 system objects SSMA converts and loads into SQL Server.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

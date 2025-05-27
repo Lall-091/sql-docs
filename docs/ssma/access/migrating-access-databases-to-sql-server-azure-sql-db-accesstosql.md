@@ -1,8 +1,8 @@
 ---
 title: "Migrate Access Databases to SQL Server - Azure SQL Database"
 description: Use this recommended process to migrate Access databases to SQL Server or Azure SQL Database using SQL Server Migration Assistant (SSMA).
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "08/15/2017"
 ms.service: sql
 ms.subservice: ssma

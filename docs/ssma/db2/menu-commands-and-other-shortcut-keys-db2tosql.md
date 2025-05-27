@@ -1,8 +1,8 @@
 ---
 title: "Menu commands and other shortcut keys (Db2ToSQL)"
 description: Learn about the keyboard shortcuts to access menu commands and other shortcut keys used in various dialog boxes of SSMA for Db2.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

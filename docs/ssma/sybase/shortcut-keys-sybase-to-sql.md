@@ -1,8 +1,8 @@
 ---
 title: "Shortcut Keys(Sybase To SQL)"
 description: "Shortcut Keys(Sybase To SQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: ssma

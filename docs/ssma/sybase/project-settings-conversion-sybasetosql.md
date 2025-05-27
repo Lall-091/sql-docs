@@ -1,8 +1,8 @@
 ---
 title: "Project Settings (Conversion) (SybaseToSQL)"
 description: "Project Settings (Conversion) (SybaseToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "10/19/2020"
 ms.service: sql
 ms.subservice: ssma

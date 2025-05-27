@@ -1,8 +1,8 @@
 ---
 title: "Mapping MySQL Databases to SQL Server Schemas (MySQLToSQL)"
 description: Learn to customize SSMA for MySQL mappings between MySQL schemas and SQL Server or Azure SQL Database or accept the default.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: ssma

@@ -1,8 +1,8 @@
 ---
 title: "Migrating Oracle Data into SQL Server (OracleToSQL)"
 description: Learn how to migrate data from an Oracle database to SQL Server, after you synchronize the converted objects, by using the SSMA for Oracle application.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 04/01/2025
 ms.service: sql

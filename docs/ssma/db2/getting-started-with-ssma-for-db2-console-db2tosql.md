@@ -1,8 +1,8 @@
 ---
 title: "Get started with SSMA for Db2 console (Db2ToSQL)"
 description: Learn how to launch and get started with the SSMA for Db2 console application.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

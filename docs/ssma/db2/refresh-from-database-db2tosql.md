@@ -1,8 +1,8 @@
 ---
 title: "Refresh from Database (Db2ToSQL)"
 description: Select which objects to refresh from the Db2 database in SSMA for Db2.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

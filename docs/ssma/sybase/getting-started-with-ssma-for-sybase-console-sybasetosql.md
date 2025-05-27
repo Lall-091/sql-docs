@@ -1,8 +1,8 @@
 ---
 title: "Getting Started with the SSMA for Sybase Console (SybaseToSQL)"
 description: "Getting Started with the SSMA for Sybase Console (SybaseToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "09/30/2017"
 ms.service: sql
 ms.subservice: ssma

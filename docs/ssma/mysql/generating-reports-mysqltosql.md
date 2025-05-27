@@ -1,8 +1,8 @@
 ---
 title: "Generating Reports (MySQLToSQL)"
 description: "Generating Reports (MySQLToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: ssma

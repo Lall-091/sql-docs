@@ -1,8 +1,8 @@
 ---
 title: "New Project (Db2ToSQL)"
 description: Use the New Project dialog box to create a new SSMA project.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

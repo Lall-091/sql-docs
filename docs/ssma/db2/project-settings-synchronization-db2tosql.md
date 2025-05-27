@@ -1,8 +1,8 @@
 ---
 title: "Project Settings (Synchronization) (Db2ToSQL)"
 description: The Synchronization page of the Project Settings dialog box contains settings that customize how SSMA for Db2 loads and refreshes database objects.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

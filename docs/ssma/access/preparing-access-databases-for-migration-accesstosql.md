@@ -1,8 +1,8 @@
 ---
 title: "Preparing Access Databases for Migration (AccessToSQL)"
 description: Learn how to determine which Access databases to migrate to SQL Server or Azure SQL Database and ensure that those databases are ready for migration.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "08/15/2017"
 ms.service: sql
 ms.subservice: ssma

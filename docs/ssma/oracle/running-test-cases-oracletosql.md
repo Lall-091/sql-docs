@@ -1,8 +1,8 @@
 ---
 title: "Running Test Cases (OracleToSQL)"
 description: "Running Test Cases (OracleToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "04/29/2021"
 ms.service: sql
 ms.subservice: ssma

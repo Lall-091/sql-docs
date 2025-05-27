@@ -1,8 +1,8 @@
 ---
 title: "Connecting to SQL Server (AccessToSQL)"
 description: Learn how to connect to a target instance of SQL Database to migrate Access databases. SSMA obtains metadata about databases in SQL Database.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "11/16/2020"
 ms.service: sql
 ms.subservice: ssma

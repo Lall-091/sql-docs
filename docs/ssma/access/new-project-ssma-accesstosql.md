@@ -1,8 +1,8 @@
 ---
 title: "New Project (SSMA) (AccessToSQL)"
 description: "New Project (SSMA) (AccessToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: ssma

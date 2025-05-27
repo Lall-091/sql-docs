@@ -1,8 +1,8 @@
 ---
 title: "Create variable value files (Db2ToSQL)"
 description: A variable value file is an XML file comprising the parameter values of commands.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

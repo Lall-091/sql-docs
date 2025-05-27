@@ -1,8 +1,8 @@
 ---
 title: "Connect to SQL Server Dialog (Db2ToSQL)"
 description: Use the Connect to SQL Server dialog box to connect to the instance of SQL Server that you want to migrate to, for SSMA for Db2.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

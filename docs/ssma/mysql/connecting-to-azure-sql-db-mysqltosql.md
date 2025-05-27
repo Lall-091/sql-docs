@@ -1,8 +1,8 @@
 ---
 title: "Connecting to Azure SQL Database (MySQLToSQL)"
 description: "Connecting to Azure SQL Database (MySQLToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "11/16/2020"
 ms.service: sql
 ms.subservice: ssma

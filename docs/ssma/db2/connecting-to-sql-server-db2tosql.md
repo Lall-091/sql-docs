@@ -1,8 +1,8 @@
 ---
 title: "Connect to SQL Server (Db2ToSQL)"
 description: To migrate Db2 databases to SQL Server, you must connect to the target SQL Server instance.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

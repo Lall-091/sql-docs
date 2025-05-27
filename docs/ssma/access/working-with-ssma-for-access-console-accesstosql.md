@@ -1,8 +1,8 @@
 ---
 title: "Working with SSMA for Access Console (AccessToSQL)"
 description: "Working with SSMA for Access Console (AccessToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "08/17/2017"
 ms.service: sql
 ms.subservice: ssma

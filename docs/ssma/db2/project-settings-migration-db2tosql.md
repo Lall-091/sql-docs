@@ -1,8 +1,8 @@
 ---
 title: "Project Settings (Migration) (Db2ToSQL)"
 description: Use the Migration page to customize how SSMA migrates data from Db2 to SQL Server.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

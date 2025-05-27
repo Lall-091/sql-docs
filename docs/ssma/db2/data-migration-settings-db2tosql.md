@@ -1,8 +1,8 @@
 ---
 title: "Data Migration Settings (Db2ToSQL)"
 description: Data Migration Settings allow you to write custom queries for data migration, in SSMA for Db2.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

@@ -1,8 +1,8 @@
 ---
 title: "Appendix - 1 (AccessToSQL)"
 description: "Appendix - 1 (AccessToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: ssma

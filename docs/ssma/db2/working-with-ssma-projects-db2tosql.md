@@ -1,8 +1,8 @@
 ---
 title: "Work with SSMA Projects (Db2ToSQL)"
 description: Learn how to work with projects in SSMA for Db2.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

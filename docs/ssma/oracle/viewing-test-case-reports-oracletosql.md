@@ -1,8 +1,8 @@
 ---
 title: "Viewing Test Case Reports (OracleToSQL)"
 description: "Viewing Test Case Reports (OracleToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: ssma
