@@ -55,8 +55,8 @@ In [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)], many administrati
 | [Security stored procedures](security-stored-procedures-transact-sql.md) | Used to manage security. |
 | [Snapshot Backup stored procedures](snapshot-backup-sp-delete-backup.md) | Used to delete the FILE_SNAPSHOT backup along with all of its snapshots or to delete an individual backup file snapshot. |
 | [Spatial Index stored procedures](spatial-index-stored-procedures-arguments-and-properties.md) | Used to analyze and improve the indexing performance of spatial indexes. |
-| [SQL Server Agent stored procedures](sql-server-agent-stored-procedures-transact-sql.md) | Used by [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)] to monitor performance and activity. |
-| [SQL Server Profiler stored procedures](sql-server-profiler-stored-procedures-transact-sql.md) | Used by [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent to manage scheduled and event-driven activities. |
+| [SQL Server Agent stored procedures](sql-server-agent-stored-procedures-transact-sql.md) | Used by [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent to manage scheduled and event-driven activities. |
+| [SQL Server Profiler stored procedures](sql-server-profiler-stored-procedures-transact-sql.md) | Used by [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)] to monitor performance and activity. |
 | [Spatial index stored procedures - arguments and properties](spatial-index-stored-procedures-arguments-and-properties.md) | Use for spacial indexes. |
 | [XML stored procedures](xml-stored-procedures-transact-sql.md) | Used for XML text management. |
 
