@@ -19081,6 +19081,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "docs/database-engine/configure-windows/replication-xps-server-configuration-option.md",
+      "redirect_url": "/sql/database-engine/configure-windows/server-configuration-options-sql-server",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "docs/2014/database-engine/configure-windows/run-sql-server-with-or-without-a-network.md",
       "redirect_url": "/previous-versions/sql/2014/database-engine/configure-windows/run-sql-server-with-or-without-a-network",
       "redirect_document_id": false

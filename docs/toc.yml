@@ -4656,8 +4656,6 @@ items:
         href: database-engine/configure-windows/configure-the-remote-proc-trans-server-configuration-option.md
       - name: Configure the remote query timeout
         href: database-engine/configure-windows/configure-the-remote-query-timeout-server-configuration-option.md
-      - name: Replication XPs
-        href: database-engine/configure-windows/replication-xps-server-configuration-option.md
       - name: Configure the scan for startup procs
         href: database-engine/configure-windows/configure-the-scan-for-startup-procs-server-configuration-option.md
       - name: Server Memory

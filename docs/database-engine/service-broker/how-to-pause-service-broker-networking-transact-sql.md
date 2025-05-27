@@ -1,37 +1,37 @@
 ---
-title: "How to: Pause Service Broker Networking (Transact-SQL)"
+title: "How To: Pause Service Broker Networking (Transact-SQL)"
 description: "Service Broker sends and receives messages over the network while any endpoint for Service Broker is in the STARTED state."
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray, maghan
-ms.date: "03/30/2022"
+ms.date: 05/27/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: how-to
 ---
 
-# How to: Pause Service Broker Networking (Transact-SQL)
+# How to: Pause Service Broker networking (Transact-SQL)
 
 [!INCLUDE [sql-asdbmi](../../includes/applies-to-version/sql-asdbmi.md)]
 
-Service Broker sends and receives messages over the network while any endpoint for Service Broker is in the **STARTED** state. To pause Service Broker networking, alter all Service Broker endpoints to set the state to **STOPPED**. Notice that this prevents Service Broker from transmitting messages out of the instance or receiving messages from outside of the instance, but does not affect message delivery within the instance. To prevent message delivery to a specific database, use **ALTER DATABASE** to deactivate Service Broker in that database.
+Service Broker sends and receives messages over the network while any endpoint for Service Broker is in the `STARTED` state. To pause Service Broker networking, alter all Service Broker endpoints to set the state to `STOPPED`. This state prevents Service Broker from transmitting messages out of the instance, or receiving messages from outside of the instance, but doesn't affect message delivery within the instance. To prevent message delivery to a specific database, use `ALTER DATABASE` to deactivate Service Broker in that database.
 
-## To pause Service Broker networking
+## Pause Service Broker networking
 
-- Alter all Service Broker endpoints to set the state to **STOPPED**.
+- Alter all Service Broker endpoints to set the state to `STOPPED`.
 
-## Example
+## Examples
 
 ```sql
-    USE master ;
-    GO
+USE master;
+GO
 
-    ALTER ENDPOINT BrokerEndpoint
-        STATE = STOPPED ;
-    GO
+ALTER ENDPOINT BrokerEndpoint
+    STATE = STOPPED;
+GO
 ```
 
-## See also
+## Related content
 
 - [How to: Deactivate Service Broker Networking (Transact-SQL)](how-to-deactivate-service-broker-networking-transact-sql.md)
 - [How to: Resume Service Broker Networking (Transact-SQL)](how-to-resume-service-broker-networking-transact-sql.md)

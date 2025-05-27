@@ -174,7 +174,7 @@ The following table lists all available configuration options, the range of poss
 | [remote login timeout (s)](configure-the-remote-login-timeout-server-configuration-option.md) | **Minimum**: `0`<br />**Maximum**: `2147483647`<br />**Default**: `10` | Yes | Yes |
 | [remote proc trans](configure-the-remote-proc-trans-server-configuration-option.md) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | Yes | Yes |
 | [remote query timeout (s)](configure-the-remote-query-timeout-server-configuration-option.md) | **Minimum**: `0`<br />**Maximum**: `2147483647`<br />**Default**: `600` | Yes | Yes |
-| [Replication XPs](replication-xps-server-configuration-option.md) (A) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | Yes | Yes |
+| Replication XPs (A) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | Yes | Yes |
 | [scan for startup procs](configure-the-scan-for-startup-procs-server-configuration-option.md) (A, RR) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | Yes | No |
 | [server trigger recursion](server-trigger-recursion-server-configuration-option.md) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `1` | Yes | Yes |
 | [set working set size](set-working-set-size-server-configuration-option.md) (A, RR)<br /><br />**Warning:** Obsolete. Don't use. | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | Yes | No |
