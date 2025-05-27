@@ -63,7 +63,7 @@ Before spending too much time troubleshooting, it is important to use the latest
 **Version 1.1.0.102** contains these fixes: 
  
 - Properties added in the Advanced options of the Attunity CDC instance are removed when a table is added or removed from CDC. Attunity CDC stops working after applying SQL fix that adds __$command_id column
-- CDC for Oracle instance hangs when you start it, and does not capture changes. Oracle server memory may increase until it runs out of memory or crash.
+- CDC for Oracle instance stops responding when you start it, and does not capture changes. Oracle server memory may increase until it runs out of memory or crash.
 - [2672759](https://support.microsoft.com/kb/2672759): Error message when you use the Microsoft Change Data Capture Service for Oracle by Attunity: "ORA-00600: internal error code". Add the SOURCE level tracing and confirm if you get the same ORA-00600 error. Fixed by an Oracle patch download.
 - Multiple Partitions
     - When you use more than 10 partitions on an Oracle table, the CDC instance cannot capture all the changes for the table. When the Oracle table is defined with more than 10 partitions, the changes are only captured from the last 10 partitions. Fixed in the _Service Pack 1 release for SQL Server 2012_. See [SP1 Feature Pack download page](https://www.microsoft.com/download/details.aspx?id=35575). 
