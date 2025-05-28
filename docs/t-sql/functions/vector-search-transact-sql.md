@@ -36,6 +36,8 @@ This feature is in preview. In order to use this feature, you must enable the fo
 DBCC TRACEON(466, 474, 13981, -1)
 ```
 
+Make sure to check out the [current limitations](#limitations) before using it.
+
 ## Syntax
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)  
