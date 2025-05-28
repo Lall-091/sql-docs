@@ -125,7 +125,7 @@ For full-text catalogs that have been imported from [!INCLUDE [ssVersion2005](..
 
 Database files and full-text catalogs from a previous version of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] can be upgraded to an existing instance by using attach, restore, or the Copy Database Wizard. [!INCLUDE [ssVersion2005](../../includes/ssversion2005-md.md)] full-text indexes, if any, are either imported, reset, or rebuilt. The **upgrade_option** server property controls which full-text upgrade option the server instance uses during these database upgrades.
 
-After you attach, restore, or copy any [!INCLUDE [ssVersion2005](../../includes/ssversion2005-md.md)] database a newer instance, the database becomes available immediately and is then automatically upgraded. Depending the amount of data being indexed, importing can take several hours, and rebuilding can take up to ten times longer. Note also that when the upgrade option is set to import, if a full-text catalog isn't available, the associated full-text indexes are rebuilt.
+After you attach, restore, or copy any [!INCLUDE [ssVersion2005](../../includes/ssversion2005-md.md)] database a newer instance, the database becomes available immediately and is then automatically upgraded. Depending on the amount of data being indexed, importing can take several hours, and rebuilding can take up to ten times longer. Note also that when the upgrade option is set to import, if a full-text catalog isn't available, the associated full-text indexes are rebuilt.
 
 **To change full-text upgrade behavior on a server instance**
 
