@@ -5,7 +5,7 @@ description: Find out how to manage and optimize SQL Server and Azure SQL Manage
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray, dfurman
-ms.date: 05/19/2025
+ms.date: 05/27/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -28,6 +28,7 @@ helpviewer_keywords:
   - "administering SQL Server, configuration options"
 keywords: server configuration (SQL Server)
 ---
+
 # Server configuration options
 
 [!INCLUDE [sql-asdbmi](../../includes/applies-to-version/sql-asdbmi.md)]
@@ -147,7 +148,7 @@ The following table lists all available configuration options, the range of poss
 | [locks](configure-the-locks-server-configuration-option.md) (A, RR, SC) | **Minimum**: `5000`<br />**Maximum**: `2147483647`<br />**Default**: `0` | Yes | No |
 | [max degree of parallelism](configure-the-max-degree-of-parallelism-server-configuration-option.md) (A) | **Minimum**: `0`<br />**Maximum**: `32767`<br />**Default**: `0` | Yes | Yes |
 | [max full-text crawl range](max-full-text-crawl-range-server-configuration-option.md) (A) | **Minimum**: `0`<br />**Maximum**: `256`<br />**Default**: `4` | Yes | Yes |
-| max RPC request params (KB) (A) | **Minimum**: `0`<br />**Maximum**: `2147483647`<br />**Default**: `0` | [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] CU 26 and later versions, and [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] CU 13 and later versions | No |
+| [max RPC request params (KB)](max-rpc-request-params-configuration-option.md) (A) | **Minimum**: `0`<br />**Maximum**: `2147483647`<br />**Default**: `0` | [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] CU 26 and later versions, and [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] CU 13 and later versions | No |
 | [max server memory (MB)](server-memory-server-configuration-options.md) (A, SC) | **Minimum**: `16`<br />**Maximum**: `2147483647`<br />**Default**: `2147483647` | Yes | Yes |
 | [max text repl size (B)](configure-the-max-text-repl-size-server-configuration-option.md) | **Minimum**: `0`<br />**Maximum**: `2147483647`<br />**Default**: `65536` | Yes | Yes |
 | [max worker threads](configure-the-max-worker-threads-server-configuration-option.md) (A) <sup>2</sup> | **Minimum**: `128`<br />**Maximum**: `32767`<br />**Default**: `0`<br /><br />`2048` is the [recommended maximum](configure-the-max-worker-threads-server-configuration-option.md#recommendations) for 64-bit SQL Server (`1024` for 32-bit) | Yes | Yes |
