@@ -90,12 +90,6 @@ Or,
 
 1. Select **Grant admin consent**
 
-| Scenario |Minimum permission |
-| --- | --- |
-|`CREATE USER` or `CREATE LOGIN` for a Microsoft Entra service principal or managed identity | **Application.Read.All** |
-|`CREATE USER` or `CREATE LOGIN` for a Microsoft Entra user | **User.Read.All** |
-|`CREATE USER` or `CREATE LOGIN` for a Microsoft Entra group | **Group.Read.All** |
-
 :::image type="content" source="media/entra-id-tutorial/grant-consent.png" alt-text="Screenshot showing how to grant consent in the Azure portal.":::
 
 > [!NOTE]
