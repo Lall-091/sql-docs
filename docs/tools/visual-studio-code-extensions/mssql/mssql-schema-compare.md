@@ -14,7 +14,7 @@ ms.collection:
 
 # Schema Compare (Preview)
 
-This article provides an overview of the Schema Compare feature for the MSSQL extension in Visual Studio Code. Schema Compare compares two database definitions, and applies the differences from the source to the target, including active database connections, `.dacpac` files, and SQL projects.
+This article provides an overview of the Schema Compare feature for the MSSQL extension in Visual Studio Code. Schema Compare compares two database definitions, and applies the differences from the source to the target, including active database connections, `.dacpac` files, and SQL projects.
 
 Schema Compare simplifies the process of comparing databases, and gives you full control when synchronizing them, even across different database versions. You can selectively filter specific differences, and categories of differences, before applying any changes.
 
@@ -42,27 +42,27 @@ To user the Schema Compare features, install the MSSQL extension for Visual Stud
 
    :::image type="content" source="media/mssql-schema-compare/schema-compare-install.png" alt-text="Screenshot of installing the MSSQL extension in Visual Studio Code.":::
 
-1. Search for the **SQL Server (mssql)** extension and select it to view its details. Select **Install** to add the extension.
+1. Search for the **SQL Server (mssql)** extension and select it to view its details. Select **Install** to add the extension.
 
-1. Once installed, **Reload** to enable the extension in Visual Studio Code (only required when installing an extension for the first time).
+1. Once installed, **Reload** to enable the extension in Visual Studio Code (only required when installing an extension for the first time).
 
 ## Compare schemas
 
 To compare schemas, open the Schema Compare dialog box. To do so, follow these steps:
 
-1. To open the Schema Compare dialog box, right-click a database in **Object Explorer** and select **Schema Compare**. The database you select is set as the **Source** database in the comparison.
+1. To open the Schema Compare dialog box, right-click a database in **Object Explorer** and select **Schema Compare**. The database you select is set as the **Source** database in the comparison.
 
    :::image type="content" source="media/mssql-schema-compare/schema-compare-enter.png" alt-text="Screenshot of Opening Schema Compare by right-clicking a database in Object Explorer.":::
 
-1. Select one of the ellipses (**...**) to change the **Source** and **Target** of your Schema Compare and select **OK**.
+1. Select one of the ellipses (**...**) to change the **Source** and **Target** of your Schema Compare and select **OK**.
 
    :::image type="content" source="media/mssql-schema-compare/schema-compare-menu.png" alt-text="Screenshot of Changing the source and target in the Schema Compare menu." lightbox="media/mssql-schema-compare/schema-compare-menu.png":::
 
-1. To customize your comparison, select the **Options** button in the toolbar.
+1. To customize your comparison, select the **Options** button in the toolbar.
 
    :::image type="content" source="media/mssql-schema-compare/schema-compare-options.png" alt-text="Screenshot of Opening the options menu in the Schema Compare." lightbox="media/mssql-schema-compare/schema-compare-options.png":::
 
-1. Select **Compare** to view the results of the comparison.
+1. Select **Compare** to view the results of the comparison.
 
    :::image type="content" source="media/mssql-schema-compare/schema-compare-button.png" alt-text="Screenshot of Selecting the Compare button to view schema differences." lightbox="media/mssql-schema-compare/schema-compare-button.png":::
 
@@ -79,5 +79,6 @@ To compare schemas, open the Schema Compare dialog box. To do so, follow these s
 ## Related content
 
 - [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md)
+- [Schema Designer (Preview)](mssql-schema-designer.md)
 - [Learn more about Visual Studio Code](https://code.visualstudio.com/docs)
 - [Learn more about contributing to the MSSQL extension](https://github.com/Microsoft/vscode-mssql/wiki)

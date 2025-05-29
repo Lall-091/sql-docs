@@ -3,9 +3,9 @@ title: "sys.sp_change_feed_disable_table (Transact-SQL)"
 description: "The internal sys.sp_change_feed_disable_table system stored procedure disables a table in the change feed."
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: randolphwest
-ms.date: 09/24/2024
-ms.service: azure-synapse-analytics
+ms.reviewer: randolphwest, ajayj, imotiwala
+ms.date: 05/01/2025
+ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
 ms.custom:
@@ -19,16 +19,22 @@ helpviewer_keywords:
   - "sp_change_feed_disable_table"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-ver16 || =azuresqldb-current || =azure-sqldw-latest || =fabric"
+monikerRange: ">=sql-server-ver16 || =azuresqldb-current || =azuresqldb-mi-current || =fabric || =azure-sqldw-latest"
 ---
 # sys.sp_change_feed_disable_table (Transact-SQL)
 
-[!INCLUDE [sqlserver2022-asdb-asa-fabric](../../includes/applies-to-version/sqlserver2022-asdb-asa-fabric.md)]
+[!INCLUDE [sqlserver2022-asdb-asdbmi-asa-fabricmirroredsqldb-fabricsqldb](../../includes/applies-to-version/sqlserver2022-asdb-asdbmi-asa-fabricmirroredsqldb-fabricsqldb.md)]
 
-Removes a table from the change feed for [Azure Synapse Link for SQL](/azure/synapse-analytics/synapse-link/sql-synapse-link-overview) or [Microsoft Fabric mirrored databases](/fabric/database/mirrored-database/overview). 
+Removes a table from the change feed.
 
-> [!NOTE]  
+> [!CAUTION]  
 > This system stored procedure is used internally and isn't recommended for direct administrative use. Use Synapse Studio or the Fabric portal instead. Using this procedure could introduce inconsistency.
+
+This system stored procedure is used for:
+
+- [SQL database in Microsoft Fabric](/fabric/database/sql/overview)
+- [Microsoft Fabric mirrored databases](/fabric/database/mirrored-database/overview)
+- [Azure Synapse Link](../../sql-server/synapse-link/synapse-link-sql-server-change-feed-manage.md)
 
 ## Syntax
 

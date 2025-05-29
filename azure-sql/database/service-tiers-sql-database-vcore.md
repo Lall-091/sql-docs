@@ -34,7 +34,7 @@ The vCore purchasing model used by Azure SQL Database provides several benefits 
 
 - Higher compute, memory, I/O, and storage limits.
 - Choice of hardware configuration to better match compute and memory requirements of the workload.
-- Pricing discounts for [Azure Hybrid Benefit (AHB)](../azure-hybrid-benefit.md).
+- Pricing discounts with the [Azure Hybrid Benefit (AHB)](../azure-hybrid-benefit.md).
 - Greater transparency in the hardware details that power the compute, that facilitates planning for migrations from on-premises deployments.
 - [Reserved instance pricing](reservations-discount-overview.md) is only available for vCore purchasing model. 
 - Higher scaling granularity with multiple compute sizes available.

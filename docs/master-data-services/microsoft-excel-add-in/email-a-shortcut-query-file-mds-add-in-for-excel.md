@@ -13,6 +13,8 @@ ms.custom: microsoft-excel-add-in
 
 [!INCLUDE [SQL Server Windows Only - ASDBMI](../../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](../includes/support-notice.md)]
+
   In the [!INCLUDE[ssMDSshort](../../includes/ssmdsshort-md.md)] [!INCLUDE[ssMDSXLS](../../includes/ssmdsxls-md.md)], email a shortcut query file to someone when you want to ensure they're working with the same data that you are. You should share queries rather than saving the worksheet and emailing it.  
   
 ## Prerequisites  

@@ -3,7 +3,7 @@ title: "Integration Services (SSIS) in a Cluster"
 description: "Integration Services (SSIS) in a Cluster"
 author: chugugrace
 ms.author: chugu
-ms.date: "03/14/2017"
+ms.date: "05/25/2025"
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: conceptual
@@ -13,9 +13,14 @@ ms.topic: conceptual
 [!INCLUDE[sqlserver-ssis](../../includes/applies-to-version/sqlserver-ssis.md)]
 
 
-  Clustering [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] is not recommended because the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service is not a clustered or cluster-aware service, and does not support failover from one cluster node to another. Therefore, in a clustered environment, [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] should be installed and started as a stand-alone service on each node in the cluster.  
+  Clustering [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] isn't recommended because the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service isn't a clustered or cluster-aware service, and doesn't support failover from one cluster node to another. However, in a clustered environment, [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] can be installed and started as a stand-alone service on each node in the cluster.  
+
+> [!NOTE]
+> Per SQL Server licensing terms, the software components of a single SQL Server license can't be separated. Any operating system environment (OSE) running any of the licensed components, including SQL Server Integration Services (SSIS), requires a license. Hence running SSIS on passive nodes require separate SQL license.  
+>
+> Further information regarding SQL Server licensing can be found in the [SQL Server licensing guide (download link)](https://go.microsoft.com/fwlink/p/?linkid=2215573).
   
- Although the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service is not a clustered service, you can manually configure the service to operate as a cluster resource after you install [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] separately on each node of the cluster.  
+ Although the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service isn't a clustered service, you can manually configure the service to operate as a cluster resource after you install [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] separately on each node of the cluster.  
   
  However, if high availability is your goal in establishing a clustered hardware environment, you can achieve this goal without configuring the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service as a cluster resource.  To manage your packages on any node in the cluster from any other node in the cluster, modify the configuration file for the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service on each node in the cluster. You modify each of these configuration files to point to all available instances of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] on which packages are stored. This solution provides the high availability that most customers need, without the potential problems encountered when the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service is configured as a cluster resource. For more information about how to change the configuration file, see [Integration Services Service &#40;SSIS Service&#41;](../../integration-services/service/integration-services-service-ssis-service.md).  
   
@@ -28,12 +33,12 @@ ms.topic: conceptual
     
     You can recover from package failures by restarting packages from checkpoints. You can restart from checkpoints without configuring the service as a cluster resource. For more information, see [Restart Packages by Using Checkpoints](../../integration-services/packages/restart-packages-by-using-checkpoints.md).  
   
--   When you configure the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service in a different resource group from [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], you cannot use [!INCLUDE[ssManStudio](../../includes/ssmanstudio-md.md)] from client computers to manage packages that are stored in the msdb database. The [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service cannot delegate credentials in this double-hop scenario.  
+-   When you configure the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service in a different resource group from [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], you can't use [!INCLUDE[ssManStudio](../../includes/ssmanstudio-md.md)] from client computers to manage packages that are stored in the msdb database. The [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service can't delegate credentials in this double-hop scenario.  
   
 -   When you have multiple [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] resource groups that include the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service in a cluster, a failover could lead to unexpected results. Consider the following scenario. Group1, which includes the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] service and the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service, is running on Node A. Group2, which also includes the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] service and the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service, is running on Node B. Group 2 fails over to Node A. The attempt to start another instance of the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service on Node A fails because the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service is a single-instance service. Whether the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] service that is trying to fail over to Node A also fails depends on the configuration of the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service in Group 2. If the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service was configured to affect the other services in the resource group, the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] service that is failing over will fail because the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service failed. If the service was configured not to affect the other services in the resource group, the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] service will be able to fail over to Node A.Unless the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service in Group 2 was configured not to affect the other services in the resource group, the failure of the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service that is failing over could cause the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] service that is failing over to fail also.  
 
 ## Configure the Service as a Cluster Resource
-For those customers who conclude that the advantages of configuring the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service as a cluster resource outweigh the disadvantages, this section contains the necessary configuration instructions. However, [!INCLUDE[msCoName](../../includes/msconame-md.md)] does not recommend that the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service be configured as a cluster resource.  
+For those customers who conclude that the advantages of configuring the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service as a cluster resource outweigh the disadvantages, this section contains the necessary configuration instructions. However, [!INCLUDE[msCoName](../../includes/msconame-md.md)] doesn't recommend that the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service be configured as a cluster resource.  
   
  To configure the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service as a cluster resource, you need to complete the following tasks.  
   
@@ -47,29 +52,29 @@ For those customers who conclude that the advantages of configuring the [!INCLUD
   
     |When Integration Services and SQL Server are in the same resource group|When Integration Services and SQL Server are in different resource groups|  
     |-----------------------------------------------------------------------------|-------------------------------------------------------------------------------|  
-    |Client computers can use [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] to manage packages stored in the msdb database because both the [!INCLUDE[ssDEnoversion](../../includes/ssdenoversion-md.md)] and [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service are running on the same virtual server. This configuration avoids the delegation issues of the double-hop scenario.|Client computers cannot use [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] to manage packages stored in the msdb database. The client can connect to the virtual server on which the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service is running. However, that computer cannot delegate the user's credentials to the virtual server on which [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is running. This is known as a double-hop scenario.|  
-    |The [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service competes with other [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] services for CPU and other computer resources.|The [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service does not compete with other [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] services for CPU and other computer resources because the different resource groups are configured on different nodes.|  
+    |Client computers can use [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] to manage packages stored in the msdb database because both the [!INCLUDE[ssDEnoversion](../../includes/ssdenoversion-md.md)] and [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service are running on the same virtual server. This configuration avoids the delegation issues of the double-hop scenario.|Client computers can't use [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] to manage packages stored in the msdb database. The client can connect to the virtual server on which the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service is running. However, that computer can't delegate the user's credentials to the virtual server on which [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is running. This is known as a double-hop scenario.|  
+    |The [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service competes with other [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] services for CPU and other computer resources.|The [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service doesn't compete with other [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] services for CPU and other computer resources because the different resource groups are configured on different nodes.|  
     |The loading and saving of packages to the msdb database is faster and generates less network traffic because both services are running on the same computer.|The loading and saving of packages to the msdb database might be slower and generate more network traffic.|  
     |Both services are online or offline at the same time.|The [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service might be online while the [!INCLUDE[ssDEnoversion](../../includes/ssdenoversion-md.md)] is offline. Thus, the packages stored in the msdb database of the [!INCLUDE[ssDEnoversion](../../includes/ssdenoversion-md.md)] are unavailable.|  
-    |The [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service cannot be moved quickly to another node if it is required.|The [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service can be moved more quickly to another node if it is required.|  
+    |The [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service can't be moved quickly to another node if it's required.|The [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service can be moved more quickly to another node if it's required.|  
   
-     After you have decided to which resource group you will add [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)], you have to configure [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] as a cluster resource in that group.  
+     After you have decided to which resource group you'll add [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)], you have to configure [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] as a cluster resource in that group.  
   
 -   Configure the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service and package store.  
   
-     Having configured [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] as a cluster resource, you must modify the location and the content of the configuration file for the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service on each node in the cluster. These modifications make both the configuration file and the package store available to all nodes if there is a failover. After you modify the location and content of the configuration file, you have to bring the service online.  
+     Having configured [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] as a cluster resource, you must modify the location and the content of the configuration file for the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service on each node in the cluster. These modifications make both the configuration file and the package store available to all nodes if there's a failover. After you modify the location and content of the configuration file, you have to bring the service online.  
   
 -   Bring the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service online as a cluster resource.  
   
  After configuring the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service on a cluster, or on any server, you might have to configure DCOM permissions before you can connect to the service from a client computer. For more information, see [Integration Services Service &#40;SSIS Service&#41;](../../integration-services/service/integration-services-service-ssis-service.md).  
   
- The [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service cannot delegate credentials. Therefore, you cannot use [!INCLUDE[ssManStudio](../../includes/ssmanstudio-md.md)] to manage packages stored in the msdb database when the following conditions are true:  
+ The [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service can't delegate credentials. Therefore, you can't use [!INCLUDE[ssManStudio](../../includes/ssmanstudio-md.md)] to manage packages stored in the msdb database when the following conditions are true:  
   
 -   The [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service and [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] are running on separate servers or virtual servers.  
   
 -   The client that is running [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] is a third computer.  
   
- The client can connect to the virtual server on which the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service is running. However, that computer cannot delegate the user's credentials to the virtual server on which [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is running. This is known as a double-hop scenario.  
+ The client can connect to the virtual server on which the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service is running. However, that computer can't delegate the user's credentials to the virtual server on which [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is running. This is known as a double-hop scenario.  
   
 ### To Install Integration Services on a Cluster  
   
@@ -93,7 +98,7 @@ For those customers who conclude that the advantages of configuring the [!INCLUD
   
 4.  On the **File** menu, point to **New**, and then click **Resource**.  
   
-5.  On the **New Resource** page of the Resource Wizard, type a name and select **"Generic Service"** as the **Service Type**. Do not change the value of **Group**. Click **Next**.  
+5.  On the **New Resource** page of the Resource Wizard, type a name and select **"Generic Service"** as the **Service Type**. Don't change the value of **Group**. Click **Next**.  
   
 6.  On the **Possible Owners** page, add or remove the nodes of the cluster as the possible owners of the resource. Click **Next**.  
   

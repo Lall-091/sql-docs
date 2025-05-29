@@ -13,9 +13,9 @@ apiname: "ClientSettingsGeneralFlag Class"
 ---
 # ClientSettingsGeneralFlag Class
 [!INCLUDE [SQL Server](../../../includes/applies-to-version/sqlserver.md)]
-  The [ClientSettingsGeneralFlag Class](../../../relational-databases/wmi-provider-configuration-classes/clientsettingsgeneralflag-class/clientsettingsgeneralflag-class.md) represents the general flag settings on an instance of [!INCLUDE[msCoName](../../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] client.  
+  The [ClientSettingsGeneralFlag Class](#clientsettingsgeneralflag-class) represents the general flag settings on an instance of [!INCLUDE[msCoName](../../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] client.  
   
- The [ClientSettingsGeneralFlag Class](../../../relational-databases/wmi-provider-configuration-classes/clientsettingsgeneralflag-class/clientsettingsgeneralflag-class.md) can be used to do the following:  
+ The [ClientSettingsGeneralFlag Class](#clientsettingsgeneralflag-class) can be used to do the following:  
   
 -   View the flag name.  
   

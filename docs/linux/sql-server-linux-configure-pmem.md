@@ -4,7 +4,7 @@ description: Learn how to configure persistent memory (PMEM) for SQL Server on L
 author: briancarrig
 ms.author: brcarrig
 ms.reviewer: randolphwest
-ms.date: 01/21/2025
+ms.date: 05/02/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -60,7 +60,7 @@ Sample output follows:
 
 ### Create and mount PMEM device
 
-For example, with XFS
+For example, with **XFS**:
 
 ```bash
 mkfs.xfs -f /dev/pmem0
@@ -68,7 +68,7 @@ mount -o dax,noatime /dev/pmem0 /mnt/dax
 xfs_io -c "extsize 2m" /mnt/dax
 ```
 
-For example, with EXT4
+For example, with **ext4**:
 
 ```bash
 mkfs.ext4 -b 4096 -E stride=512 -F /dev/pmem0
@@ -77,7 +77,7 @@ mount -o dax,noatime /dev/pmem0 /mnt/dax
 
 ## Technical considerations
 
-- Block allocation of 2 MB for either XFS/EXT4, as described previously
+- Block allocation of 2 MB for either XFS or ext4, as described previously
 - Misalignment between block allocation and `mmap` results in silent fallback to 4 KB
 - File sizes should be a multiple of 2 MB (modulo 2 MB)
 - Don't disable transparent huge pages (THP) (enabled by default on most distributions)

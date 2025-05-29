@@ -3,7 +3,7 @@ title: "Configure read-only routing for an availability group"
 description: "Automatically route all read-only traffic to a secondary replica using read-only routing for your Always On availability group - using Transact-SQL (T-SQL), or PowerShell."
 author: MashaMSFT
 ms.author: mathoma
-ms.date: "02/25/2019"
+ms.date: "03/15/2025"
 ms.service: sql
 ms.subservice: availability-groups
 ms.topic: how-to
@@ -43,8 +43,8 @@ Read-only routing is available in [!INCLUDE[sssql16-md](../../../includes/sssql1
   
 -   For each availability replica that you want to support read-only routing when it is the primary replica, you need to specify a *read-only routing list*. A given read-only routing list takes effect only when the local replica is running under the primary role. This list must be specified on a replica-by-replica basis, as needed. Typically, each read-only routing list would contain every read-only routing URL, with the URL of the local replica at the end of the list.  
   
-    > [!NOTE]  
-    >  Read-intent connection requests are routed to the first available entry on the read-only routing list of the current primary replica. However, load-balancing across read-only replicas is supported. For more information, see [Configure load-balancing across read-only replicas](../../../database-engine/availability-groups/windows/configure-read-only-routing-for-an-availability-group-sql-server.md#loadbalancing).  
+    >[!NOTE]  
+    >Read-intent connection requests are routed to the first available entry on the read-only routing list of the current primary replica. However, load-balancing across read-only replicas is supported. For more information, see [Configure load-balancing across read-only replicas](#configure-load-balancing-across-read-only-replicas).  
   
 > [!NOTE]  
 >  For information about availability group listeners and more information about read-only routing, see [Availability Group Listeners, Client Connectivity, and Application Failover &#40;SQL Server&#41;](../../../database-engine/availability-groups/windows/listeners-client-connectivity-application-failover.md).  
@@ -94,7 +94,8 @@ Read-only routing is available in [!INCLUDE[sssql16-md](../../../includes/sssql1
         > [!NOTE]  
         >  You must set the read-only routing URL before configuring the read-only routing list.  
   
-###  <a name="loadbalancing"></a> Configure load-balancing across read-only replicas  
+### Configure load-balancing across read-only replicas
+
  Beginning with [!INCLUDE[sssql16-md](../../../includes/sssql16-md.md)], you can configure load-balancing across a set of read-only replicas. Previously, read-only routing always directed traffic to the first available replica in the routing list. To take advantage of this feature, use one level of nested parentheses around the **READ_ONLY_ROUTING_LIST** server instances in the **CREATE AVAILABILITY GROUP** or **ALTER AVAILABILITY GROUP** commands.  
   
  For example, the following routing list load balances read-intent connection request across two read-only replicas, `Server1` and `Server2`. The nested parentheses that surround these servers identify the load-balanced set. If neither replica is available in that set, it will proceed to attempt to sequentially connect to the other replicas, `Server3` and `Server4`, in the read-only routing list.  
@@ -157,7 +158,7 @@ GO
   
     -   To configure read-only routing for the secondary role, specify the **ReadonlyRoutingConnectionUrl"**_url_**"** parameter.  
   
-         where, *url* is the connectivity fully-qualified domain name (FQDN) and port to use when routing to the replica for read-only connections. For example:  `-ReadonlyRoutingConnectionUrl "TCP://DBSERVER8.manufacturing.Adventure-Works.com:7024"`  
+         where, *url* is the connectivity fully qualified domain name (FQDN) and port to use when routing to the replica for read-only connections. For example:  `-ReadonlyRoutingConnectionUrl "TCP://DBSERVER8.manufacturing.Adventure-Works.com:7024"`  
   
          For more information, see [Calculating read_only_routing_url for Always On](/archive/blogs/mattn/calculating-read_only_routing_url-for-alwayson).  
   
@@ -218,6 +219,12 @@ Server=tcp:MyAgListener,1433;Database=Db1;IntegratedSecurity=SSPI;ApplicationInt
 ### If Read-Only Routing is Not Working Correctly  
  For information about troubleshooting a read-only routing configuration, see [Read-Only Routing is Not Working Correctly](../../../database-engine/availability-groups/windows/troubleshoot-always-on-availability-groups-configuration-sql-server.md#ROR).  
   
+
+## Revert to default routing behavior
+
+Starting with [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)], you can specify `NONE` as the `READ_WRITE_ROUTING_URL` or the `READ_ONLY_ROUTING_URL ` destination to revert specified routing for the availability replica, and route traffic based on the default behavior. To learn more, review [ALTER AVAILABILITY GROUP](../../../t-sql/statements/alter-availability-group-transact-sql.md) Transact-SQL command.
+
+
 ##  <a name="RelatedTasks"></a> Next Steps 
 **To view read-only routing configurations**  
   

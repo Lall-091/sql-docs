@@ -31,7 +31,7 @@ public void setFailoverPartner(java.lang.String serverName)
 ## Remarks  
  The value set by this method is used in the case of an initial connection failure to the principal server; after the initial connection is made, this value is ignored. The [setDatabaseName](../../../connect/jdbc/reference/setdatabasename-method-sqlserverdatasource.md) method should also be used in conjunction with this method or an exception will be thrown.  
   
- The driver does not support specifying the port number of the failover server when the failover server name is set. However, calling the [setServerName](../../../connect/jdbc/reference/setservername-method-sqlserverdatasource.md) method and the [setInstanceName](../../../connect/jdbc/reference/setinstancename-method-sqlserverdatasource.md) method with the [setFailoverPartner](../../../connect/jdbc/reference/setfailoverpartner-method-sqlserverdatasource.md) method is supported.  
+ The driver does not support specifying the port number of the failover server when the failover server name is set. However, calling the [setServerName](../../../connect/jdbc/reference/setservername-method-sqlserverdatasource.md) method and the [setInstanceName](../../../connect/jdbc/reference/setinstancename-method-sqlserverdatasource.md) method with the [setFailoverPartner](#setfailoverpartner-method-sqlserverdatasource) method is supported.  
   
 ## See Also  
  [SQLServerDataSource Members](../../../connect/jdbc/reference/sqlserverdatasource-members.md)   

@@ -3,7 +3,7 @@ title: "Server configuration: remote access"
 description: Learn about alternatives to the deprecated remote access option. View other sources for troubleshooting issues with SQL Server connections.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/22/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -53,7 +53,9 @@ Execute permissions on `sp_configure` with no parameters or with only the first 
 
 To execute `sp_configure` with both parameters to change a configuration option, or to run the `RECONFIGURE` statement, a user must be granted the `ALTER SETTINGS` server-level permission. The `ALTER SETTINGS` permission is implicitly held by the **sysadmin** and **serveradmin** fixed server roles.
 
-## <a id="SSMSProcedure"></a> Use SQL Server Management Studio
+<a id="SSMSProcedure"></a>
+
+## Use SQL Server Management Studio
 
 1. In Object Explorer, right-click a server and select **Properties**.
 
@@ -61,7 +63,9 @@ To execute `sp_configure` with both parameters to change a configuration option,
 
 1. Under **Remote server connections**, select or clear the **Allow remote connections to this server** check box.
 
-## <a id="TsqlProcedure"></a> Use Transact-SQL
+<a id="TsqlProcedure"></a>
+
+## Use Transact-SQL
 
 1. Connect to the [!INCLUDE [ssDE](../../includes/ssde-md.md)].
 
@@ -70,7 +74,7 @@ To execute `sp_configure` with both parameters to change a configuration option,
 1. Copy and paste the following example into the query window and select **Execute**. This example shows how to use [sp_configure](../../relational-databases/system-stored-procedures/sp-configure-transact-sql.md) to set the value of the `remote access` option to `0`.
 
 ```sql
-EXEC sp_configure 'remote access', 0;
+EXECUTE sp_configure 'remote access', 0;
 GO
 RECONFIGURE;
 GO

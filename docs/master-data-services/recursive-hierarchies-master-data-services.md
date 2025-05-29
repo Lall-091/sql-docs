@@ -15,6 +15,8 @@ helpviewer_keywords:
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   In [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)], a recursive hierarchy is a derived hierarchy that includes a recursive relationship. A recursive relationship exists when an entity has a domain-based attribute based on the entity itself.  
   
 ## Recursive Hierarchy Example  

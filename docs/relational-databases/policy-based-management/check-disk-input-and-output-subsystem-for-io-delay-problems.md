@@ -29,6 +29,5 @@ helpviewer_keywords:
   
 ## Related content
 
- [Microsoft Knowledge Base article 897284](https://go.microsoft.com/fwlink/?linkid=117743)  
-  
- [SQL Server I/O Basics, Chapter 2](/previous-versions/sql/sql-server-2005/administrator/cc917726(v=technet.10))
+- [Troubleshoot slow SQL Server performance caused by I/O issues](/troubleshoot/sql/database-engine/performance/troubleshoot-sql-io-performance)
+- [SQL Server I/O Basics, Chapter 2](/previous-versions/sql/sql-server-2005/administrator/cc917726(v=technet.10))

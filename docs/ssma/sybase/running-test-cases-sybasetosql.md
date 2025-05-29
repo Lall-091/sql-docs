@@ -1,8 +1,8 @@
 ---
 title: "Running Test Cases (SybaseToSQL)"
 description: "Running Test Cases (SybaseToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "04/29/2021"
 ms.service: sql
 ms.subservice: ssma

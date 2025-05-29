@@ -45,7 +45,7 @@ An expression that can be resolved to a **smalldatetime**, **datetime**, **datet
 
 Name of the destination time zone. [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] relies on time zones that are stored in the Windows Registry. Time zones installed on the computer are stored in the following registry hive: `KEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones`. A list of installed time zones is also exposed through the [sys.time_zone_info](../../relational-databases/system-catalog-views/sys-time-zone-info-transact-sql.md) view.
 
-For more information about time zones for SQL Server on Linux, see [Configure the time zone for SQL Server 2022 on Linux](../../linux/sql-server-linux-configure-time-zone.md).
+For more information about time zones for SQL Server on Linux, see [Configure the time zone for SQL Server 2022 and later versions on Linux](../../linux/sql-server-linux-configure-time-zone.md).
 
 ## Return types
 

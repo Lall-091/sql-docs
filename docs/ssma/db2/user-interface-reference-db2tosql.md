@@ -1,8 +1,8 @@
 ---
 title: "User interface reference (Db2ToSQL)"
 description: Overview of the SSMA for Db2 user interface reference.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

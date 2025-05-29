@@ -56,7 +56,7 @@ helpviewer_keywords:
   
 -   The Windows Event Viewer.  
   
- For descriptions of the events logged by the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service, see [Events Logged by the Integration Services Service](../../integration-services/service/events-logged-by-the-integration-services-service.md).  
+ For descriptions of the events logged by the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] service, see [Events Logged by the Integration Services Service](#events-logged-by-the-integration-services-service).  
   
 ### To view service events for Integration Services in SQL Server Management Studio  
   

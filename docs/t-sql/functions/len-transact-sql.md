@@ -44,7 +44,7 @@ LEN ( string_expression )
  If you are using SC collations, the returned integer value counts UTF-16 surrogate pairs as a single character. For more information, see [Collation and Unicode Support](../../relational-databases/collations/collation-and-unicode-support.md).  
   
 ## Remarks  
-LEN excludes trailing spaces. If that is a problem, consider using the [DATALENGTH &#40;Transact-SQL&#41;](../../t-sql/functions/datalength-transact-sql.md) function which does not trim the string. If processing a unicode string, DATALENGTH will return a number that may not be equal to the number of characters. The following example demonstrates LEN and DATALENGTH with a trailing space.  
+LEN excludes trailing spaces. If that is a problem, consider using the [DATALENGTH &#40;Transact-SQL&#41;](../../t-sql/functions/datalength-transact-sql.md) function which does not trim the string. If processing a Unicode string, DATALENGTH will return a number that may not be equal to the number of characters. The following example demonstrates LEN and DATALENGTH with a trailing space.  
   
 ```sql  
   DECLARE @v1 VARCHAR(40),  

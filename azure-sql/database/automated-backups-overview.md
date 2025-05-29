@@ -347,9 +347,15 @@ Any issues found during an integrity check result in an alert to the engineering
 
 All database backups are taken with the CHECKSUM option to provide additional backup integrity.
 
-## Compliance
+## Backup protection 
 
-When you migrate your database from a DTU-based service tier to a vCore-based service tier, the PITR retention is preserved to ensure that your application's data recovery policy isn't compromised. If the default retention doesn't meet your compliance requirements, you can change the PITR retention period. For more information, see [Change the PITR backup retention period](automated-backups-change-settings.md#change-short-term-retention-policy).
+Azure SQL Database backups are managed entirely within Microsoft-owned Azure subscriptions using secure, internal Azure Storage accounts. These backups are not accessible externally, ensuring strong data isolation and protection. Within Microsoft, only backend services such as the Backup-Restore service has access to create, copy or restore these backups. Microsoft engineers, including developers, do not have standing access. To minimize exposure and maximize security, Microsoft can only obtain Just-In-Time (JIT) access under strict audit controls when absolutely necessary to troubleshoot specific customer issues.
+
+## Compliance through backup retention 
+
+If the default retention doesn't meet your compliance requirements, you can change the PITR retention period. For more information, see [Change the PITR backup retention period](automated-backups-change-settings.md#change-short-term-retention-policy).
+
+When you migrate your database from a DTU-based service tier to a vCore-based service tier, the PITR retention is preserved to ensure that your application's data recovery policy isn't compromised. 
 
 > [!NOTE]
 > The [Change automated backup settings](automated-backups-change-settings.md) article provides steps about how to delete personal data from the device or service and can be used to support your obligations under the GDPR. For general information about GDPR, see the [GDPR section of the Microsoft Trust Center](https://www.microsoft.com/trust-center/privacy/gdpr-overview) and the [GDPR section of the Service Trust portal](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).

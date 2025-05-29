@@ -4,7 +4,7 @@ description: "A distributed availability group is a special type of availability
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 01/29/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: availability-groups
 ms.topic: conceptual
@@ -39,10 +39,25 @@ You can configure the data movement in distributed availability groups as synchr
 The only way to make AG 2's primary replica accept inserts, updates, and deletions, is to manually fail over the distributed availability group from AG 1. In the preceding figure, because AG 1 contains the writeable copy of the database, issuing a failover makes AG 2 the availability group that can handle inserts, updates, and deletions. For information about how to fail over one distributed availability group to another, see [Failover to a secondary availability group](configure-distributed-availability-groups.md#failover).
 
 > [!NOTE]  
-> Distributed availability groups in SQL Server 2016 support failover only from one availability group to another by using the option FORCE_FAILOVER_ALLOW_DATA_LOSS.
+> - Distributed availability groups in SQL Server 2016 support failover only from one availability group to another by using the option `FORCE_FAILOVER_ALLOW_DATA_LOSS`.
+> - When using transactional replication with distributed availability groups the forwarder replica can't be configured as a publisher.
 
-> [!NOTE]  
-> When using transactional replication with distributed availability groups the forwarder replica can't be configured as a publisher.
+## SQL Server 2025 changes
+
+[!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)] introduces the following changes: 
+
+
+### Improvement to distributed AG synchronization
+
+[!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)] introduces a change to the internal synchronization mechanism for distributed availability groups to improve synchronization performance by reducing network saturation when the forwarder replica is in asynchronous commit mode. This change is enabled by default and doesn't require any configuration.
+
+> [!NOTE]
+> Configuring your distributed availability group with a mismatch between the availability modes of the two underlying availability groups is not recommended, and can introduce synchronization latency. Both availability groups should be configured with the same availability mode (either synchronous or asynchronous) to ensure optimal performance and synchronization.
+
+### Contained availability group support
+
+[!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)] introduces support for a [distributed contained availability group](contained-availability-groups-overview.md#distributed-availability-groups). If you intend to use a contained AG as the forwarder in a distributed availability group, you must create the contained AG by using the `AUTOSEEDING_SYSTEM_DATABASES` clause for the `WITH | CONTAINED` option of the [CREATE AVAILABILITY GROUP](../../../t-sql/statements/create-availability-group-transact-sql.md#contained-reuse_system_databases--autoseeding_system_databases) command. 
+
 
 ## Version and edition requirements
 
@@ -173,6 +188,10 @@ When you add the second availability group's primary replica to the distributed 
 - The output shown in `sys.dm_hadr_automatic_seeding` on the primary replica of the first availability group will show a current_state of COMPLETED.
 
 - Automatic seeding also has different behavior with distributed availability groups. For automatic seeding to begin on the second replica, you must issue the command `ALTER AVAILABILITY GROUP [AGName] GRANT CREATE ANY DATABASE` command on the replica. Although this condition is still true of any secondary replica that participates in the underlying availability group, the primary replica of the second availability group already has the right permissions to allow automatic seeding to begin after it is added to the distributed availability group.
+
+> [!NOTE]  
+> - The secondary availability group must use the same database mirroring endpoint. Otherwise, replication stops after a local failover.
+> - The underlying availability groups should be in the same availability mode - either both availability groups should be in synchronous commit mode or both should be in asynchronous commit mode. If you're not sure which to use, then set both to asynchronous commit mode until you're ready to fail over. 
 
 ## Monitor health
 
@@ -389,6 +408,7 @@ GO
 ```
 
 :::image type="content" source="./media/distributed-availability-group/dmv-seeding.png" alt-text="Screenshot showing the current state of seeding.":::
+
 
 ## Related content
 

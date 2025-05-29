@@ -242,4 +242,4 @@ The Data SQL Engineering team developed these resources. This team's core charte
 - [Post-migration Validation and Optimization Guide](../../../relational-databases/post-migration-validation-and-optimization-guide.md)
 - [Services and tools for data migration](/azure/dms/dms-tools-matrix)
 - [Azure Database Migration Guide](/data-migration/)
-- [Overview of the migration journey](https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/)
+- [Overview of the migration journey](/shows/azure-videos/simplify-your-cloud-migration-journey-with-the-azure-migration-and-modernization-program)

@@ -3,7 +3,7 @@ title: "sys.databases (Transact-SQL)"
 description: sys.databases (Transact-SQL)
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 02/03/2025
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -119,7 +119,9 @@ If a database isn't `ONLINE`, or `AUTO_CLOSE` is set to `ON` and the database is
 | `is_data_retention_on` | **bit** | Indicates whether [data retention](/azure/azure-sql-edge/data-retention-overview) is [enabled for an Azure Edge database](/azure/azure-sql-edge/data-retention-enable-disable#check-if-data-retention-is-enabled-for-a-database).<br /><br />**Applies to**: [!INCLUDE [ssazure-sqldb](../../includes/ssazurede-md.md)] |
 | `is_ledger_on` | **bit** | Indicates a [ledger database](/azure/azure-sql/database/ledger-overview#ledger-database), which is a database in which all user tables are ledger tables (all customer database is tamper-evident).<br /><br />**Applies to**: [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] |
 | `is_change_feed_enabled` | **bit** | Indicates whether the current database is enabled for [Azure Synapse Link for SQL](/azure/synapse-analytics/synapse-link/sql-synapse-link-overview) or [Fabric Mirrored Database](/fabric/database/mirrored-database/overview).<br /><br />**Applies to**: [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] |
+| `is_event_stream_enabled` | **bit** | Indicates whether the current database has [Change event streaming (preview)](../track-changes/change-event-streaming/overview.md) enabled. <br /><br />**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions |
 | `is_vorder_enabled` | **bit** | Indicates whether [V-Order](/fabric/data-warehouse/v-order) is enabled for each [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)].<br /><br />**Applies to**: [!INCLUDE [fabric](../../includes/fabric.md)] only.|
+| `is_optimized_locking_on` | **bit** | Indicates whether optimized locking is enabled.<br />`1` = Optimized locking is enabled<br />`0` = Optimized locking is disabled<br /><br />**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] |
 
 ## Permissions
 

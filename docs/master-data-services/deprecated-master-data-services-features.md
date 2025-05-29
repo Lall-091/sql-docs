@@ -13,6 +13,8 @@ monikerRange: ">=sql-server-ver16"
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   This topic describes the deprecated [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] features. Future release will remove these features. Deprecated features shouldn't be used in new applications.
   
 ## Explicit Hierarchies, Collections, and Related Components  

@@ -67,7 +67,7 @@ f1_keywords:
   
 ## In This Section  
   
--   [CDC Control Task Custom Properties](../../integration-services/control-flow/cdc-control-task-custom-properties.md)  
+-   [CDC Control Task Custom Properties](#cdc-control-task)  
   
 ## Related Tasks  
  [Define a State Variable](../../integration-services/data-flow/define-a-state-variable.md)  
@@ -83,7 +83,7 @@ f1_keywords:
 ## CDC Control Task Editor
   Use the **CDC Control Task Editor** dialog box to configure the CDC Control task. The CDC Control task configuration includes defining a connection to the CDC database, the CDC task operation and the state management information.  
   
- To learn more about the CDC Control task, see [CDC Control Task](../../integration-services/control-flow/cdc-control-task.md).  
+ To learn more about the CDC Control task, see [CDC Control Task](#cdc-control-task).  
   
  **To open the CDC Control Task Editor**  
   
@@ -130,7 +130,7 @@ f1_keywords:
  **SQL Server LSN to start the CDC/Snapshot name:**  
  Type the current source database LSN or the name of the snapshot database from which the initial load is performed to determine where the CDC starts. This is available only if the **CDC Control Operation** is set to **Mark CDC Start**.  
   
- For more information about these operations, see [CDC Control Task](../../integration-services/control-flow/cdc-control-task.md)  
+ For more information about these operations, see [CDC Control Task](#cdc-control-task)  
   
  **Automatically store state in a database table**  
  Select this check box for the CDC Control task to automatically handle loading and storing the CDC state in a state table contained in the specified database. When not selected, the developer must load the CDC State when the package starts and save it whenever the CDC State changes.  

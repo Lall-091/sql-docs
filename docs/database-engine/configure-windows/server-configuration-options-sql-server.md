@@ -5,7 +5,7 @@ description: Find out how to manage and optimize SQL Server and Azure SQL Manage
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray, dfurman
-ms.date: 02/13/2025
+ms.date: 05/27/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -28,6 +28,7 @@ helpviewer_keywords:
   - "administering SQL Server, configuration options"
 keywords: server configuration (SQL Server)
 ---
+
 # Server configuration options
 
 [!INCLUDE [sql-asdbmi](../../includes/applies-to-version/sql-asdbmi.md)]
@@ -105,9 +106,10 @@ The following table lists all available configuration options, the range of poss
 | [allow polybase export](allow-polybase-export.md) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] and later versions | No |
 | [allow updates](allow-updates-server-configuration-option.md)<br /><br />**Warning:** Obsolete. Don't use. Causes an error during reconfigure. | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | Yes | No |
 | [automatic soft-NUMA disabled](soft-numa-sql-server.md) (A, RR) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | Yes | Yes |
+| [availability group commit time (ms)](availability-group-commit-time-server-configuration-options.md) | **Minimum**: `0`<br />**Maximum**: `10`<br />**Default**: `0` | [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions | No |
 | [backup checksum default](backup-checksum-default.md) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | Yes | Yes |
-| [backup compression algorithm](view-or-configure-the-backup-compression-algorithm-server-configuration-option.md) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions | Yes |
-| [backup compression default](view-or-configure-the-backup-compression-default-server-configuration-option.md) | **Minimum**: `0`<br />**Maximum**: `1` (prior to [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]), or `2` ([!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions)<br />**Default**: `0` | Yes | Yes |
+| [backup compression default](view-or-configure-the-backup-compression-default-server-configuration-option.md) | **Minimum**: `0`<br />**Maximum**: `1` <br />**Default**: `0` | Yes | Yes |
+| [backup compression algorithm](view-or-configure-the-backup-compression-algorithm-server-configuration-option.md) | **Minimum**: `0`<br />**Maximum**: <br /> - `2` ([!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]), <br /> - `3` ([!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]) <br />**Default**: `0` | [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions | Yes |
 | [blocked process threshold (s)](blocked-process-threshold-server-configuration-option.md) (A) | **Minimum**: `5`<br />**Maximum**: `86400`<br />**Default**: `0` | Yes | Yes |
 | [c2 audit mode](c2-audit-mode-server-configuration-option.md) (A, RR) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | Yes | No |
 | [clr enabled](clr-enabled-server-configuration-option.md) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | Yes | Yes |
@@ -146,10 +148,11 @@ The following table lists all available configuration options, the range of poss
 | [locks](configure-the-locks-server-configuration-option.md) (A, RR, SC) | **Minimum**: `5000`<br />**Maximum**: `2147483647`<br />**Default**: `0` | Yes | No |
 | [max degree of parallelism](configure-the-max-degree-of-parallelism-server-configuration-option.md) (A) | **Minimum**: `0`<br />**Maximum**: `32767`<br />**Default**: `0` | Yes | Yes |
 | [max full-text crawl range](max-full-text-crawl-range-server-configuration-option.md) (A) | **Minimum**: `0`<br />**Maximum**: `256`<br />**Default**: `4` | Yes | Yes |
-| max RPC request params (KB) (A) | **Minimum**: `0`<br />**Maximum**: `2147483647`<br />**Default**: `0` | [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] CU 26 and later versions, and [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] CU 13 and later versions | No |
+| [max RPC request params (KB)](max-rpc-request-params-configuration-option.md) (A) | **Minimum**: `0`<br />**Maximum**: `2147483647`<br />**Default**: `0` | [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] CU 26 and later versions, and [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] CU 13 and later versions | No |
 | [max server memory (MB)](server-memory-server-configuration-options.md) (A, SC) | **Minimum**: `16`<br />**Maximum**: `2147483647`<br />**Default**: `2147483647` | Yes | Yes |
 | [max text repl size (B)](configure-the-max-text-repl-size-server-configuration-option.md) | **Minimum**: `0`<br />**Maximum**: `2147483647`<br />**Default**: `65536` | Yes | Yes |
 | [max worker threads](configure-the-max-worker-threads-server-configuration-option.md) (A) <sup>2</sup> | **Minimum**: `128`<br />**Maximum**: `32767`<br />**Default**: `0`<br /><br />`2048` is the [recommended maximum](configure-the-max-worker-threads-server-configuration-option.md#recommendations) for 64-bit SQL Server (`1024` for 32-bit) | Yes | Yes |
+| [max ucs send boxcars](ucs-flow-control-sp-configure.md) | **Minimum**: `0`<br />**Maximum**: `2048`<br />**Default**: `256` | [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions | No |
 | [media retention](configure-the-media-retention-server-configuration-option.md) (A) | **Minimum**: `0`<br />**Maximum**: `365`<br />**Default**: `0` | Yes | No |
 | [min memory per query (KB)](configure-the-min-memory-per-query-server-configuration-option.md) (A) | **Minimum**: `512`<br />**Maximum**: `2147483647`<br />**Default**: `1024` | Yes | No |
 | [min server memory (MB)](server-memory-server-configuration-options.md) (A, SC) | **Minimum**: `0`<br />**Maximum**: `2147483647`<br />**Default**: `0` | Yes | No |
@@ -172,7 +175,7 @@ The following table lists all available configuration options, the range of poss
 | [remote login timeout (s)](configure-the-remote-login-timeout-server-configuration-option.md) | **Minimum**: `0`<br />**Maximum**: `2147483647`<br />**Default**: `10` | Yes | Yes |
 | [remote proc trans](configure-the-remote-proc-trans-server-configuration-option.md) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | Yes | Yes |
 | [remote query timeout (s)](configure-the-remote-query-timeout-server-configuration-option.md) | **Minimum**: `0`<br />**Maximum**: `2147483647`<br />**Default**: `600` | Yes | Yes |
-| [Replication XPs](replication-xps-server-configuration-option.md) (A) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | Yes | Yes |
+| Replication XPs (A) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | Yes | Yes |
 | [scan for startup procs](configure-the-scan-for-startup-procs-server-configuration-option.md) (A, RR) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | Yes | No |
 | [server trigger recursion](server-trigger-recursion-server-configuration-option.md) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `1` | Yes | Yes |
 | [set working set size](set-working-set-size-server-configuration-option.md) (A, RR)<br /><br />**Warning:** Obsolete. Don't use. | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | Yes | No |

@@ -20,6 +20,8 @@ helpviewer_keywords:
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sqlserver.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   This topic describes how to configure severity levels for various activities and modules in [!INCLUDE[ssDQSnoversion](../includes/ssdqsnoversion-md.md)] (DQS) by using [!INCLUDE[ssDQSClient](../includes/ssdqsclient-md.md)]. Severity levels define the intensity of events that occur in DQS. DQS events have the following severity levels, in the decreasing order of severity:  
   
 -   **Fatal**: Critical runtime errors that might cause severe/unexpected results.  

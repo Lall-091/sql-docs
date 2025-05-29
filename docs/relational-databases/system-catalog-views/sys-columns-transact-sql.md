@@ -3,7 +3,7 @@ title: "sys.columns (Transact-SQL)"
 description: sys.columns (Transact-SQL)
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/23/2024
+ms.date: 05/01/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -14,7 +14,7 @@ helpviewer_keywords:
   - "sys.columns catalog view"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||=fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
 
 # sys.columns (Transact-SQL)
@@ -58,7 +58,7 @@ Returns a row for each column of an object that has columns, such as views or ta
 | `rule_object_id` | **int** | ID of the stand-alone rule bound to the column by using `sys.sp_bindrule.`<br /><br />`0` = No stand-alone rule. For column-level `CHECK` constraints, see [sys.check_constraints](sys-check-constraints-transact-sql.md). |
 | `is_sparse` | **bit** | `1` = Column is a sparse column. For more information, see [Use sparse columns](../tables/use-sparse-columns.md). |
 | `is_column_set` | **bit** | `1` = Column is a column set. For more information, see [Use sparse columns](../tables/use-sparse-columns.md). |
-| `generated_always_type` | **tinyint** | Identifies when the column value is generated (is always `0` for columns in system tables).<br /><br />**Applies to**: [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] and later versions, and [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)].<br /><br />`0` = `NOT_APPLICABLE`<br />`1` = `AS_ROW_START`<br />`2` = `AS_ROW_END`<br /><br />**Applies to**: [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, and [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)].<br /><br />`5` = `AS_TRANSACTION_ID_START`<br />`6` = `AS_TRANSACTION_ID_END`<br />`7` = `AS_SEQUENCE_NUMBER_START`<br />`8` = `AS_SEQUENCE_NUMBER_END`<br /><br />For more information, see [Temporal Tables (Relational databases)](../tables/temporal-tables.md). |
+| `generated_always_type` | **tinyint** | Identifies when the column value is generated (is always `0` for columns in system tables).<br /><br />**Applies to**: [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] and later versions, and [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)].<br /><br />`0` = `NOT_APPLICABLE`<br />`1` = `AS_ROW_START`<br />`2` = `AS_ROW_END`<br /><br />**Applies to**: [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, and [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)].<br /><br />`5` = `AS_TRANSACTION_ID_START`<br />`6` = `AS_TRANSACTION_ID_END`<br />`7` = `AS_SEQUENCE_NUMBER_START`<br />`8` = `AS_SEQUENCE_NUMBER_END`<br /><br />For more information, see [Temporal tables](../tables/temporal-tables.md). |
 | `generated_always_type_desc` | **nvarchar(60)** | Textual description of the `generated_always_type` value (always `NOT_APPLICABLE` for columns in system tables)<br /><br />**Applies to**: [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] and later versions, and [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)].<br /><br />`NOT_APPLICABLE`<br />`AS_ROW_START`<br />`AS_ROW_END`<br /><br />**Applies to**: [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, and [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)].<br /><br />`AS_TRANSACTION_ID_START`<br />`AS_TRANSACTION_ID_END`<br />`AS_SEQUENCE_NUMBER_START`<br />`AS_SEQUENCE_NUMBER_END` |
 | `encryption_type` | **int** | Encryption type:<br /><br />`1` = Deterministic encryption<br />`2` = Randomized encryption<br /><br />**Applies to**: [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] and later versions, and [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)] |
 | `encryption_type_desc` | **nvarchar(64)** | Encryption type description:<br /><br />`RANDOMIZED`<br />`DETERMINISTIC`<br /><br />**Applies to**: [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] and later versions, and [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)] |
@@ -73,6 +73,9 @@ Returns a row for each column of an object that has columns, such as views or ta
 | `ledger_view_column_type` | **int** | If not `NULL`, indicates the type of a column in a ledger view:<br /><br />`1` = `TRANSACTION_ID`<br />`2` = `SEQUENCE_NUMBER`<br />`3` = `OPERATION_TYPE`<br />`4` = `OPERATION_TYPE_DESC`<br /><br />For more information, see [Ledger overview](/azure/azure-sql/database/ledger-overview).<br /><br />**Applies to**: [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, and [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)] |
 | `ledger_view_column_type_desc` | **nvarchar(60)** | If not `NULL`, contains a textual description of the the type of a column in a ledger view:<br /><br />`TRANSACTION_ID`<br />`SEQUENCE_NUMBER`<br />`OPERATION_TYPE`<br />`OPERATION_TYPE_DESC`<br /><br />**Applies to**: [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, and [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)] |
 | `is_dropped_ledger_column` | **bit** | Indicates a ledger table column that was dropped.<br /><br />**Applies to**: [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, and [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)] |
+| `vector_dimensions` | **int** | Indicates how many dimensions the vector has<br /><br />**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, and [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)] |
+| `vector_base_type` | **int** | Indicates the data type used to store vector dimensions values.<br />`0` = 32-bits (single-precision) float <br />`1` = 16-bit ([half-precision](https://en.wikipedia.org/wiki/Half-precision_floating-point_format)) float<br /><br />**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, and [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)] |
+| `vector_base_type_desc` | **int** | Contains the textual description of the data type used to store vector dimensions values.<br /><br />**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, and [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)] |
 
 ## Permissions
 

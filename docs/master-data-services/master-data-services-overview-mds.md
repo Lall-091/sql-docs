@@ -21,6 +21,8 @@ keywords: what is master data
 
 [!INCLUDE [SQL Server - Windows only](../includes/applies-to-version/sql-windows-only.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
 This topic describes the key data organization and management features of [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)]. 
   
  [!INCLUDE[ssMDSshort_md](../includes/ssmdsshort-md.md)] enables you to manage a master set of your organization's data. You can organize the data into models, create rules for updating the data, and control who updates the data. With Excel, you can share the master data set with other people in your organization. 

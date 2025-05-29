@@ -4,7 +4,7 @@ description: "Use || to concatenate two or more character or binary strings, col
 author: abhimantiwari
 ms.author: abhtiwar
 ms.reviewer: randolphwest, wiassaf, umajay
-ms.date: 01/03/2025
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -19,12 +19,14 @@ helpviewer_keywords:
   - "|| (string concatenation)"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =fabric"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric"
 ---
 
-# || (String concatenation) (Transact-SQL)
+# || (String concatenation) (Transact-SQL) preview
 
 [!INCLUDE [asdb-asmi-fabricsqldb](../../includes/applies-to-version/asdb-asmi-fabricsqldb.md)]
+
+[!INCLUDE [preview](../../includes/preview.md)]
 
 The `||` pipes operator in a string expression concatenates two or more character or binary strings, columns, or a combination of strings and column names into one expression (a string operator). For example, `SELECT 'SQL ' || 'Server';` returns `SQL Server`. The `||` operator follows the ANSI SQL standard for concatenating strings. In SQL Server you can also do string concatenation using `+` operator and the `CONCAT()` function.
 

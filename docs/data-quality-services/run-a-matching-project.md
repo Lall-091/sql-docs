@@ -16,6 +16,8 @@ f1_keywords:
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sqlserver.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   This topic describes how to perform data matching in [!INCLUDE[ssDQSnoversion](../includes/ssdqsnoversion-md.md)] (DQS). The matching process identifies clusters of matching records based upon matching rules in the matching policy, designates one record from each cluster as the survivor based upon a survivorship rule, and exports the results. DQS performs the matching process, also called de-duplication, in a computer-assisted process, but you create matching rules interactively, and you select the survivorship rule from several choices, so you control the matching process.  
   
  Matching is performed in three stages: a mapping process in which you identify the data source and map domains to the data source, a matching process in which you run the matching analysis, and a survivorship and export process in which you designate the survivorship rule and export the matching results. Each of these processes is performed on a separate page of the Matching activity wizard, enabling you to move back and forth to different pages, to re-run the process, and to close out of a specific matching process and then return to the same stage of the process. DQS provides you with statistics about the source data, the matching rules, and the matching results that enable you to make informed decisions about matching, and refine the matching process.  

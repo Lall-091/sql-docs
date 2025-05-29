@@ -172,6 +172,8 @@ The name of a user mapped to a [!INCLUDE[ssNoVersion](../../includes/ssnoversion
 > [!NOTE]  
 > [!INCLUDE[ssCautionUserSchema](../../includes/sscautionuserschema-md.md)]
 
+[!INCLUDE [encryption-algorithm-history-md](../../includes/encryption-algorithm-history.md)]
+
 ## Security
 
 > [!NOTE]

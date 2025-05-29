@@ -4,7 +4,7 @@ description: "Monitor and troubleshoot accelerated database recovery and persist
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: derekw, dfurman, randolphwest
-ms.date: 03/10/2025
+ms.date: 04/18/2025
 ms.service: sql
 ms.subservice: backup-restore
 ms.topic: troubleshooting-general
@@ -291,6 +291,10 @@ An active transaction might prevent the PVS cleanup process from starting. If th
 ## Capture cleanup failures
 
 Beginning with [!INCLUDE [sql-server-2022](../includes/sssql22-md.md)], notable PVS cleanup messages are recorded in the error log. Cleanup statistics are also reported by the `tx_mtvc2_sweep_stats` [extended event](extended-events/extended-events.md).
+
+## Known issues
+
+- In [!INCLUDE [sql-server-2025](../includes/sssql25-md.md)], when ADR in `tempdb` is enabled and temporary tables are created and dropped (or truncated) at a high rate, workload throughput might be substantially reduced because of latch contention on the `sys.sysseobjvalues` system table. This issue is under investigation. A fix is planned for a later release.
 
 ## Related content
 

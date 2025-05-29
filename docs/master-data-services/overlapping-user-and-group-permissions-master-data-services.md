@@ -16,6 +16,8 @@ helpviewer_keywords:
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   A user's permissions are based on:  
   
 -   Permissions from group memberships.  

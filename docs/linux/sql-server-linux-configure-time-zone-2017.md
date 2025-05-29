@@ -4,7 +4,7 @@ description: In this article, learn how to configure the time zone on for SQL Se
 author: ericjulien
 ms.author: ericjulien
 ms.reviewer: randolphwest
-ms.date: 01/21/2025
+ms.date: 05/02/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -15,7 +15,7 @@ ms.custom:
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
-This article describes how to configure the time zone for [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] on Linux. You can also configure the time zone on Linux for [SQL Server 2019](sql-server-linux-configure-time-zone-2019.md) and [SQL Server 2022](sql-server-linux-configure-time-zone.md).
+This article describes how to configure the time zone for [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] on Linux. You can also configure the time zone on Linux for [SQL Server 2019](sql-server-linux-configure-time-zone-2019.md), and [SQL Server 2022 and later versions](sql-server-linux-configure-time-zone.md).
 
 ## Overview
 

@@ -4,7 +4,7 @@ description: An overview of the contained availability group feature of Always O
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: mathoma, randolphwest
-ms.date: 03/25/2025
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: high-availability
 ms.topic: conceptual
@@ -37,6 +37,10 @@ Contained AGs extend the concept of the group of databases being replicated to i
 This is different from contained databases, which use a different mechanism for the user accounts, storing the user information within the database itself. Contained databases only replicate logins and users, and the scope of the replicated login or user is limited to that single database (and its replicas).
 
 In contrast, in a contained AG, you can create users, logins, permissions, and so on, at the AG level, and they are *automatically* consistent across replicas in the AG, as well as consistent across databases within that contained AG. This saves the admin from having to manually make these changes themselves.
+
+## SQL Server 2025 changes 
+
+[!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)] introduces [distributed availability group](#distributed-availability-groups) support for contained availability groups. 
 
 ## Differences
 
@@ -136,6 +140,15 @@ If the backup location is local, the backup files are placed on the server that 
 
 If the backup location is on a network resource, all servers that host replicas need access to that resource.
 
+### Distributed availability groups
+
+A [distributed availability group](distributed-availability-groups.md) is a special type of availability group that spans two underlying availability groups. When you configure a distributed availability group, changes made on the global primary (which is the primary replica of your first AG) are then replicated to the primary replica of your second AG, known as the forwarder. 
+
+Starting with [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)], you can configure a distributed availability group between two contained AGs. Since a contained AG relies on contained `master` and `msdb` system databases, to create a distributed availability group, the second AG (forwarder) must have the same contained AG system database as the global primary. 
+
+If you intend to use a contained AG as the forwarder in a distributed availability group, you must create the contained AG by using the `AUTOSEEDING_SYSTEM_DATABASES` clause for the `WITH | CONTAINED` option of the [CREATE AVAILABILITY GROUP](../../../t-sql/statements/create-availability-group-transact-sql.md#contained-reuse_system_databases--autoseeding_system_databases) statement. The `AUTOSEEDING_SYSTEM_DATABASES` clause tells SQL Server to skip creating its own contained AG system databases, and instead seeds the contained AG system databases from the global primary.
+
+
 ### Resource governor
 
 In [!INCLUDE[sssql22-md](../../../includes/sssql22-md.md)] before Cumulative Update 18, and in older versions of [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)], configuring or using resource governor on contained availability group connections is not supported.
@@ -180,22 +193,21 @@ To transfer the DMK from the `master` database of the instance, to the contained
 
 Using SSIS packages, including maintenance plans, is not supported with contained availability groups.
 
+
 ## Not supported
 
 Currently, the following [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] features aren't supported with a contained AG:
 
 - [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] Replication of any type (transactional, merge, snapshot, and so on).
-- Distributed availability groups.
 - Log shipping where the target database is in the contained AG. Log shipping with the source database in the contained AG is supported.
 
 ## DDL changes
 
-The only DDL changes are in the `CREATE AVAILABILITY GROUP` workflow. There are two new `WITH` clauses:
+The only DDL changes are in the [CREATE AVAILABILITY GROUP](../../../t-sql/statements/create-availability-group-transact-sql.md) workflow. There is a `WITH` clause with two options:
 
 ```syntaxsql
 <with_option_spec> ::=
-CONTAINED |
-REUSE_SYSTEM_DATABASES
+CONTAINED [REUSE_SYSTEM_DATABASES | AUTOSEEDING_SYSTEM_DATABASES ]
 ```
 
 #### CONTAINED
@@ -204,7 +216,12 @@ This specifies that the AG being created should be a contained AG.
 
 #### REUSE_SYSTEM_DATABASES
 
-This option is only valid for contained AGs, and specifies that the newly created AG should reuse existing contained system databases for a previous contained AG of the same name. For example, if you had a contained AG with the name `MyContainedAG`, and wanted to drop and recreate it, you could use this option to reuse the contents of the original contained system databases.
+The `REUSE_SYSTEM_DATABASES` option is only valid for contained AGs, and specifies that the newly created AG should reuse existing contained system databases for a previous contained AG of the same name. For example, if you had a contained AG with the name `MyContainedAG`, and wanted to drop and recreate it, you could use this option to reuse the contents of the original contained system databases.
+
+#### AUTOSEEDING_SYSTEM_DATABASES
+Applies to: [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)] and later
+
+If you intend to use your contained AG as the forwarder in a [distributed availability group](distributed-availability-groups.md), you must use the `AUTOSEEDING_SYSTEM_DATABASES` option when you _create_ the contained AG. This option tells SQL Server to skip creating its own contained AG system databases, and instead seeds the contained AG system databases from the global primary.
 
 ## DMV changes
 

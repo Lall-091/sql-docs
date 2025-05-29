@@ -13,6 +13,8 @@ monikerRange: ">=sql-server-ver16"
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   This topic summarizes the changes and updates in the latest release of [!INCLUDE[ssnoversion](../includes/ssnoversion-md.md)] [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)]. 
   
  For an overview of how you organize data in [!INCLUDE[ssMDSshort_md](../includes/ssmdsshort-md.md)], see [Master Data Services Overview](../master-data-services/master-data-services-overview-mds.md). 

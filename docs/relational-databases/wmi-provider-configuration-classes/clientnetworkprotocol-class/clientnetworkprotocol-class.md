@@ -13,9 +13,9 @@ apiname: "ClientNetworkProtocol Class"
 ---
 # ClientNetworkProtocol Class
 [!INCLUDE [SQL Server](../../../includes/applies-to-version/sqlserver.md)]
-  The [ClientNetworkProtocol Class](../../../relational-databases/wmi-provider-configuration-classes/clientnetworkprotocol-class/clientnetworkprotocol-class.md) represents network protocols installed on a client instance that allows communication with an instance of [!INCLUDE[msCoName](../../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] over a network.  
+  The [ClientNetworkProtocol Class](#clientnetworkprotocol-class) represents network protocols installed on a client instance that allows communication with an instance of [!INCLUDE[msCoName](../../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] over a network.  
   
- With the [ClientNetworkProtocol Class](../../../relational-databases/wmi-provider-configuration-classes/clientnetworkprotocol-class/clientnetworkprotocol-class.md), you can perform the following tasks:  
+ With the [ClientNetworkProtocol Class](#clientnetworkprotocol-class), you can perform the following tasks:  
   
 -   Set an index value to select a client network protocol from the list of protocols.  
   

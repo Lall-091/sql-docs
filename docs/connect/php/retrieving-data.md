@@ -76,5 +76,5 @@ You can see how many rows are in a result set if you specify a scrollable cursor
 ## See Also  
 [Programming Guide for the Microsoft Drivers for PHP for SQL Server](../../connect/php/programming-guide-for-php-sql-driver.md)
 
-[Retrieving Data](../../connect/php/retrieving-data.md)  
+[Retrieving Data](#retrieving-data)  
   

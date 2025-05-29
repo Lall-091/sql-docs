@@ -1,9 +1,9 @@
 ---
-title: Upgrade to a different edition of SQL Server
+title: Upgrade to a Different Edition of SQL Server
 description: SQL Server Setup supports edition upgrade among various editions of SQL Server. Before you begin an edition upgrade, review the resources in this article.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/22/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: install
 ms.topic: install-set-up-deploy
@@ -20,7 +20,7 @@ monikerRange: ">=sql-server-2016"
 Before you initiate the edition upgrade of an instance of [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)], review the following articles:
 
 - [Compute capacity limits by edition of SQL Server](../../sql-server/compute-capacity-limits-by-edition-of-sql-server.md)
-- [SQL Server 2022: Hardware and software requirements](../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2022.md)
+- [Hardware and software requirements for SQL Server 2022](../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2022.md)
 
 ## Remarks
 

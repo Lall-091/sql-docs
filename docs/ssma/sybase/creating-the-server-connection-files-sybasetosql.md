@@ -1,8 +1,8 @@
 ---
 title: "Creating the Server Connection Files (SybaseToSQL)"
 description: "Creating the Server Connection Files (SybaseToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: ssma
@@ -96,7 +96,7 @@ Server information can be specified either in the servers section of the script 
 ```  
   
 ## Server Connection File Validation  
-The user can easily validate his/her server connection file against the schema definition file **S2SSConsoleScriptServersSchema.xsd** available in the 'Schemas' folder.  
+The user can easily validate their server connection file against the schema definition file **S2SSConsoleScriptServersSchema.xsd** available in the 'Schemas' folder.  
   
 ## Next Step  
 The next step in operating the console is [Executing the SSMA Console &#40;SybaseToSQL&#41;](../../ssma/sybase/executing-the-ssma-console-sybasetosql.md)  

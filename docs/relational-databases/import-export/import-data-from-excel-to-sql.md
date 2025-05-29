@@ -1,9 +1,9 @@
 ---
-title: Import data from Excel to SQL Server or Azure SQL Database
+title: Import Data from Excel to SQL Server or Azure SQL Database
 description: This article describes methods to import data from Excel to SQL Server or Azure SQL Database. Some use a single step, others require an intermediate text file.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/18/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: data-movement
 ms.topic: concept-article
@@ -86,10 +86,11 @@ Import data directly into [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-
 Before you can run a distributed query, you have to enable the `Ad Hoc Distributed Queries` server configuration option, as shown in the following example. For more info, see [Server configuration: Ad Hoc Distributed Queries](../../database-engine/configure-windows/ad-hoc-distributed-queries-server-configuration-option.md).
 
 ```sql
-sp_configure 'show advanced options', 1;
+EXECUTE sp_configure 'show advanced options', 1;
 RECONFIGURE;
 GO
-sp_configure 'Ad Hoc Distributed Queries', 1;
+
+EXECUTE sp_configure 'Ad Hoc Distributed Queries', 1;
 RECONFIGURE;
 GO
 ```
@@ -126,7 +127,7 @@ For more info about distributed queries, see the following articles:
 - [OPENROWSET (Transact-SQL)](../../t-sql/functions/openrowset-transact-sql.md)
 - [OPENDATASOURCE (Transact-SQL)](../../t-sql/functions/opendatasource-transact-sql.md)
 
- <sup>1</sup> Distributed queries are still supported in [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)], but the documentation for this feature isn't updated.
+<sup>1</sup> Distributed queries are still supported in [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)], but the documentation for this feature isn't updated.
 
 ### Linked servers
 

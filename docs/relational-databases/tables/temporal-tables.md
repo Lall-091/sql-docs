@@ -1,13 +1,13 @@
 ---
-title: Temporal tables
+title: Temporal Tables
 description: System-versioned temporal tables bring built-in support for providing information about data stored in the table at any point in time.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/29/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: conceptual
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current||=fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
 # Temporal tables
 
@@ -50,16 +50,17 @@ The current table contains the *current value* for each row. The history table c
 The following script illustrates a scenario with employee information:
 
 ```sql
-CREATE TABLE dbo.Employee (
+CREATE TABLE dbo.Employee
+(
     [EmployeeID] INT NOT NULL PRIMARY KEY CLUSTERED,
-    [Name] NVARCHAR(100) NOT NULL,
-    [Position] VARCHAR(100) NOT NULL,
-    [Department] VARCHAR(100) NOT NULL,
-    [Address] NVARCHAR(1024) NOT NULL,
-    [AnnualSalary] DECIMAL(10, 2) NOT NULL,
+    [Name] NVARCHAR (100) NOT NULL,
+    [Position] VARCHAR (100) NOT NULL,
+    [Department] VARCHAR (100) NOT NULL,
+    [Address] NVARCHAR (1024) NOT NULL,
+    [AnnualSalary] DECIMAL (10, 2) NOT NULL,
     [ValidFrom] DATETIME2 GENERATED ALWAYS AS ROW START,
     [ValidTo] DATETIME2 GENERATED ALWAYS AS ROW END,
-    PERIOD FOR SYSTEM_TIME(ValidFrom, ValidTo)
+    PERIOD FOR SYSTEM_TIME (ValidFrom, ValidTo)
 )
 WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = dbo.EmployeeHistory));
 ```
@@ -140,4 +141,4 @@ For details on using the `HIDDEN` clause, see [CREATE TABLE](../../t-sql/stateme
 - [Query data in a system-versioned temporal table](querying-data-in-a-system-versioned-temporal-table.md)
 - [Get started with system-versioned temporal tables](getting-started-with-system-versioned-temporal-tables.md)
 - [System-versioned temporal tables with memory-optimized tables](system-versioned-temporal-tables-with-memory-optimized-tables.md)
-- [Getting started with temporal tables in Azure SQL Database and Azure SQL Managed Instance](/azure/azure-sql/temporal-tables)
+- [Getting started with temporal tables in Azure SQL](/azure/azure-sql/temporal-tables)

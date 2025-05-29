@@ -14,9 +14,9 @@ apitype: "MOFDef"
 ---
 # ServerNetworkProtocol Class
 [!INCLUDE [SQL Server](../../../includes/applies-to-version/sqlserver.md)]
-  The [ServerNetworkProtocol Class](../../../relational-databases/wmi-provider-configuration-classes/servernetworkprotocol-class/servernetworkprotocol-class.md) represents network protocols installed on an instance of [!INCLUDE[msCoName](../../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] that enables communication with clients over a network.  
+  The [ServerNetworkProtocol Class](#servernetworkprotocol-class) represents network protocols installed on an instance of [!INCLUDE[msCoName](../../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] that enables communication with clients over a network.  
   
- With the [ServerNetworkProtocol Class](../../../relational-databases/wmi-provider-configuration-classes/servernetworkprotocol-class/servernetworkprotocol-class.md), you can:  
+ With the [ServerNetworkProtocol Class](#servernetworkprotocol-class), you can:  
   
 -   Check the name, version, .dll file, number of properties, and display name of the referenced server network protocol.  
   

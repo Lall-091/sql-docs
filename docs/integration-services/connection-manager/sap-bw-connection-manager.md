@@ -50,7 +50,7 @@ f1_keywords:
 ## SAP BW Connection Manager Editor
   Use the **SAP BW Connection Manager Editor** to specify the properties to use to connect to an SAP Netweaver BW version 7 system.  
   
- The SAP BW connection manager provides connectivity to an SAP Netweaver BW 7 system for use by the SAP BW source or destination. To learn more about the SAP BW connection manager of the [!INCLUDE[msCoName](../../includes/msconame-md.md)] Connector 1.1 for SAP BW, see [SAP BW Connection Manager](../../integration-services/connection-manager/sap-bw-connection-manager.md).  
+ The SAP BW connection manager provides connectivity to an SAP Netweaver BW 7 system for use by the SAP BW source or destination. To learn more about the SAP BW connection manager of the [!INCLUDE[msCoName](../../includes/msconame-md.md)] Connector 1.1 for SAP BW, see [SAP BW Connection Manager](#sap-bw-connection-manager).  
   
 > [!IMPORTANT]  
 >  The documentation for the Microsoft Connector 1.1 for SAP BW assumes familiarity with the SAP Netweaver BW environment. For more information about SAP Netweaver BW, or for information about how to configure SAP Netweaver BW objects and processes, see your SAP documentation.  

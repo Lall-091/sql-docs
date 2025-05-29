@@ -4,11 +4,10 @@ description: Combine NoSQL and relational concepts in the same database with JSO
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest, jovanpop
-ms.date: 08/20/2024
+ms.date: 05/19/2025
 ms.service: sql
-ms.topic: quickstart
+ms.topic: overview
 ms.custom:
-  - intro-quickstart
   - build-2024
   - ignite-2024
 helpviewer_keywords:
@@ -20,14 +19,19 @@ monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 |
 
 [!INCLUDE [sqlserver2016-asdb-asdbmi-asa-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-fabricsqldb.md)]
 
+This article provides an overview of the textual data format JSON in SQL Server, Azure SQL Database, Azure SQL Managed Instance, Azure Synapse Analytics, and SQL database in Microsoft Fabric. 
+
+> [!NOTE]  
+> - JSON support requires [database compatibility level](../databases/view-or-change-the-compatibility-level-of-a-database.md) 130 or higher.
+
+## Overview
+
 JSON is a popular textual data format that's used for exchanging data in modern web and mobile applications. JSON is also used for storing unstructured data in log files or NoSQL databases such as Microsoft Azure Cosmos DB. Many REST web services return results that are formatted as JSON text or accept data that's formatted as JSON. For example, most Azure services, such as Azure Search, Azure Storage, and Azure Cosmos DB, have REST endpoints that return or consume JSON. JSON is also the main format for exchanging data between webpages and web servers by using AJAX calls.
 
 JSON functions, first introduced in [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)], enable you to combine NoSQL and relational concepts in the same database. You can combine classic relational columns with columns that contain documents formatted as JSON text in the same table, parse and import JSON documents in relational structures, or format relational data to JSON text.
 
-> [!NOTE]  
-> JSON support requires [database compatibility level](../databases/view-or-change-the-compatibility-level-of-a-database.md) 130 or higher.
 
-Here's an example of JSON text:
+The following is an example of JSON text:
 
 ```json
 [
@@ -51,7 +55,18 @@ By using [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] built-in 
 
 :::image type="content" source="media/json-data-sql-server/json-slides-overview.png" alt-text="Diagram showing the overview of built-in JSON support.":::
 
-## Key JSON capabilities of SQL Server and SQL Database
+## SQL Server 2025 changes 
+
+[!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] introduces the following JSON enhancements, all currently in preview: 
+
+- [Modify method for the `json` type](../../t-sql/data-types/json-data-type.md#modify-method)
+- [CREATE JSON INDEX](../../t-sql/statements/create-json-index-transact-sql.md)
+- [JSON_CONTAINS function](../../t-sql/functions/json-contains-transact-sql.md)
+- [ANSI SQL path expression array wildcard support](json-path-expressions-sql-server.md#array-wildcard-and-range-support)
+- [ANSI SQL WITH ARRAY WRAPPER clause in JSON_QUERY function](../../t-sql/functions/json-query-transact-sql.md#with-array-wrapper)
+
+
+## Key JSON capabilities
 
 The next sections discuss the key capabilities that [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] provides with its built-in JSON support.
 
@@ -65,7 +80,9 @@ The new **json** data type that stores JSON documents in a native binary format 
 - No change in compatibility with existing code
 
 > [!NOTE]
-> The [JSON data type](../../t-sql/data-types/json-data-type.md) is currently in preview for Azure SQL Database and Azure SQL Managed Instance (configured with the [**Always-up-to-date** update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy)). 
+> The [JSON data type](../../t-sql/data-types/json-data-type.md): 
+> - is generally available for Azure SQL Database and Azure SQL Managed Instance configured with the **[Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy)**.  
+> - is in preview for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. 
 
 Using the JSON same functions described in this article remain the most efficient way to query the **json** data type. For more information on the native **json** data type, see [JSON data type](../../t-sql/data-types/json-data-type.md).
 
@@ -423,6 +440,8 @@ Here's what you can do with the scripts that are included in the file:
 - Run query examples. Run some queries that call the stored procedures and views that you created in steps 2 and 4.
 
 - Clean up scripts. Don't run this part if you want to keep the stored procedures and views that you created in steps 2 and 4.
+
+
 
 ## Related content
 

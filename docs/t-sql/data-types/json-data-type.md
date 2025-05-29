@@ -3,8 +3,8 @@ title: JSON data type (preview)
 description: The native JSON data type provides advantages for storing JSON data over varchar or nvarchar. Learn more about the JSON data type.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: randolphwest, jovanpop
-ms.date: 02/07/2025
+ms.reviewer: randolphwest, jovanpop, umajay
+ms.date: 05/21/2025
 ms.service: sql
 ms.topic: reference
 ms.custom:
@@ -13,11 +13,11 @@ helpviewer_keywords:
   - "JSON data type"
 monikerRange: "=azuresqldb-current||=azuresqldb-mi-current"
 ---
-# JSON data type (preview)
+# JSON data type
 
-[!INCLUDE [asdb](../../includes/applies-to-version/asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
-The new native **json** data type that stores JSON documents in a native binary format.
+The native **json** data type that stores JSON documents in a native binary format.
 
 The **json** type provides a high-fidelity storage of JSON documents optimized for easy querying and manipulation, and provides the following benefits over storing JSON data in **varchar** or **nvarchar**:
 
@@ -58,12 +58,41 @@ JSON function support was first introduced in [!INCLUDE [sssql16-md](../../inclu
 
 **json** is available under all database compatibility levels.
 
-> [!NOTE]  
-> The [JSON data type](../../t-sql/data-types/json-data-type.md) is currently in preview for Azure SQL Database and Azure SQL Managed Instance configured with the [**Always-up-to-date** update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy). It's not available in Azure SQL Managed Instance configured with the [**SQL Server 2022** update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy).
+> [!NOTE]
+> The [JSON data type](../../t-sql/data-types/json-data-type.md): 
+> - is generally available for Azure SQL Database and Azure SQL Managed Instance configured with the **[Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy)**.  
+> - is in preview for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. 
+
+
+## modify method
+
+> [!NOTE]
+> `modify` method is currently in preview and only available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. 
+
+The native **json** type supports the `modify` method. Use `modify` to modify JSON documents stored in a column. The `modify` method has optimizations to perform in-place modifications to the data where possible, and is the preferred way to modify a JSON document in a **json** type column.
+
+For JSON strings, if the new value is less than or equal to the existing value, then in-place modification is possible.
+
+For JSON numbers, if the new value is of the same type, or within the range of the existing value, then in-place modification is possible.
+
+
+```sql
+DROP TABLE IF EXISTS JsonTable;
+CREATE TABLE JsonTable ( id int PRIMARY KEY, d JSON );
+INSERT INTO JsonTable (id, d) VALUES(1, '{"a":1, "b":"abc", "c":true}');
+UPDATE JsonTable
+SET d.modify('$.a', 14859)
+WHERE id = 1;
+UPDATE JsonTable
+SET d.modify('$.b', 'def')
+WHERE id = 1;
+```
+
 
 ## Function support
 
-All JSON functions support the **json** type with no code changes or usage difference necessary.
+All JSON functions support the **json** type with no code changes or usage difference necessary. 
+ - `OPENJSON` currently does not support the **json** data type on some platforms. For more information, see [Limitations](#limitations).
 
 For a complete list of JSON functions, see [JSON functions](../functions/json-functions-transact-sql.md).
 
@@ -98,8 +127,8 @@ Using `SELECT ... INTO` with the JSON type creates a table with the JSON type.
 - The behavior of `CAST ( ... AS JSON)` returns a **json** type, but the [sp_describe_first_result_set](../../relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql.md) system stored procedure doesn't correctly return the **json** data type. Therefore, many data access clients and driver will see a **varchar** or **nvarchar** data type.
   - Currently, TDS >= 7.4 (with UTF-8) sees **varchar(max)** with `Latin_General_100_bin2_utf8`.
   - Currently, TDS < 7.4 sees **nvarchar(max)** with database collation.
-
-- Currently, the `OPENJSON()` function doesn't accept the **json** type, currently that is an implicit conversion. Explicitly convert to **nvarchar(max)** first.
+- Currently, the `OPENJSON()` function doesn't accept the **json** type in some platforms. Currently, it is an implicit conversion. Explicitly convert to **nvarchar(max)** first.
+  - In SQL Server 2025 (Preview), the `OPENJSON()` function does supports the **json** type. For more information, see [Key JSON capabilities in SQL Server 2025](../../relational-databases/json/json-data-sql-server.md#key-json-capabilities).
 
 ## Related content
 

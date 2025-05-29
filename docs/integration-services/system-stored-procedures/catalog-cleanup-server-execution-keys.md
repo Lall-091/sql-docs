@@ -74,7 +74,7 @@ catalog.cleanup_server_execution_keys [ @cleanup_flag = ] cleanup_flag ,
   
 4.  Now, change the value for the SERVER_OPERATION_ENCRYPTION_LEVEL property in the [catalog.catalog_properties &#40;SSISDB Database&#41;](../../integration-services/system-views/catalog-catalog-properties-ssisdb-database.md) table.  
   
-5.  Run the stored procedure [catalog.cleanup_server_execution_keys](../../integration-services/system-stored-procedures/catalog-cleanup-server-execution-keys.md) to clean up certificates keys from the SSISDB database. Dropping certificates and keys from the SSISDB database may take a long time, so it should be run periodically during off-peak times.  
+5.  Run the stored procedure [catalog.cleanup_server_execution_keys](#catalogcleanup_server_execution_keys) to clean up certificates keys from the SSISDB database. Dropping certificates and keys from the SSISDB database may take a long time, so it should be run periodically during off-peak times.  
   
      You can specify the scope or level (execution vs. project) and number of keys to be deleted. The default batch size for deletion is 1000. When you set the level to 2, the keys and certificates are deleted only if the associated projects have been deleted.  
   

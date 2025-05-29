@@ -71,7 +71,7 @@ Resolve Merge Replication Conflicts
   
 -   If a conflict occurs between two Subscribers using server subscriptions (the default type for push subscriptions), the change from the Subscriber with the highest priority value is kept, and the change from the second Subscriber is discarded. If the priority values are equal, the change from the first Subscriber to synchronize with the Publisher is kept.  
   
- For more information about conflict detection and resolution for merge replication, see [Advanced Merge Replication Conflict Detection and Resolution](../../../relational-databases/replication/merge/advanced-merge-replication-conflict-detection-and-resolution.md).  
+ For more information about conflict detection and resolution for merge replication, see [Advanced Merge Replication Conflict Detection and Resolution](#advanced-merge-replication---conflict-detection-and-resolution).  
   
 ### Resolver Types  
  In merge replication, conflict resolution takes place at the article level. For publications composed of several articles, you can have different conflict resolvers serving different articles, or the same conflict resolver serving one article, several articles, or all the articles comprising a publication.  

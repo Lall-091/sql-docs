@@ -58,6 +58,7 @@ Consider the following when working with ledger.
 - SqlVariant
 - User-defined data type
 - FILESTREAM
+- Vector
 
 ### Temporal table limitations
 

@@ -29,7 +29,7 @@ The computer(s) running [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion
 These requirements include:
 
 - [!INCLUDE [sssql19-md](../../../includes/sssql19-md.md)] or later
-- Windows 10 or later or Windows Server 2019 or later.
+- Windows 11 (24H2 and later versions) or Windows Server 2019 and later.
 - CPU support for virtualization technologies:
 
   - Intel VT-x with Extended Page Tables.

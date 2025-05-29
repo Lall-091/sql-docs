@@ -32,7 +32,7 @@ public boolean isWrapperFor(Class iface)
  [SQLServerException](../../../connect/jdbc/reference/sqlserverexception-class.md)  
   
 ## Remarks  
- The [isWrapperFor](../../../connect/jdbc/reference/iswrapperfor-method-sqlservercallablestatement.md) method and the [unwrap](../../../connect/jdbc/reference/unwrap-method-sqlservercallablestatement.md) method are defined by the java.sql.Wrapper interface, which is introduced in JDBC 4.0.  
+ The [isWrapperFor](#iswrapperfor-method-sqlservercallablestatement) method and the [unwrap](../../../connect/jdbc/reference/unwrap-method-sqlservercallablestatement.md) method are defined by the java.sql.Wrapper interface, which is introduced in JDBC 4.0.  
   
  If this method returns **true**, calling [unwrap](../../../connect/jdbc/reference/unwrap-method-sqlservercallablestatement.md) with the same argument will succeed.  
   

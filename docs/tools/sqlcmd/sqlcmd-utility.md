@@ -4,7 +4,7 @@ description: The sqlcmd utility lets you enter Transact-SQL statements, system p
 author: dlevy-msft
 ms.author: dlevy
 ms.reviewer: randolphwest, maghan
-ms.date: 03/10/2025
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: conceptual
@@ -148,6 +148,10 @@ To run SQLCMD statements in [SQL Server Management Studio](../../ssms/download-s
 
 SSMS uses the Microsoft [!INCLUDE [dnprdnshort_md](../../includes/dnprdnshort-md.md)] `SqlClient` for execution in regular and SQLCMD mode in **Query Editor**. When **sqlcmd** is run from the command-line, **sqlcmd** uses the ODBC driver. Because different default options could apply, you might see different behavior when you execute the same query in SSMS in SQLCMD Mode and in the **sqlcmd** utility.
 
+## TDS 8.0 support
+
+[!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] introduces TDS 8.0 support for the the **sqlcmd** utility.
+
 ## Syntax
 
 ### [sqlcmd (Go)](#tab/go)
@@ -205,11 +209,14 @@ Several switches and behaviors are altered in the **sqlcmd** (Go) utility. For t
 
 - `-I` switch is removed. To disable quoted identifier behavior, add `SET QUOTED IDENTIFIER OFF` in your scripts.
 
-- `-N` now takes a string value that can be one of `true`, `false`, or `disable` to specify the encryption choice. (`default` is the same as omitting the parameter)
+- `-N` takes a string value that can be one of `true`, `false`, or `disable` to specify the encryption choice. (`default` is the same as omitting the parameter)
   - If `-N` and `-C` aren't provided, **sqlcmd** negotiates authentication with the server without validating the server certificate.
   - If `-N` is provided but `-C` isn't, **sqlcmd** requires validation of the server certificate. A `false` value for encryption could still lead to the encryption of the login packet.
   - If both `-N` and `-C` are provided, **sqlcmd** uses their values for encryption negotiation.
   - More information about client/server encryption negotiation can be found at [MS-TDS PRELOGIN](/openspecs/windows_protocols/ms-tds/60f56408-0188-4cd5-8b90-25c6f2423868).
+
+  > [!IMPORTANT]  
+  > In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], `-N` can be `o` (for `optional`), `m` (for `mandatory`, the default), or `s` (for `strict`). If you don't include `-N`, `-Nm` (for `mandatory`) is the default. This is a breaking change from [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions.
 
 - `-u` The generated Unicode output file has the UTF-16 Little-Endian Byte-order mark (BOM) written to it.
 
@@ -221,11 +228,14 @@ Connections from the **sqlcmd** (Go) utility are limited to TCP connections. Nam
 
 #### Enhancements
 
-- `:Connect` now has an optional `-G` parameter to select one of the authentication methods for Azure SQL Database - `SqlAuthentication`, `ActiveDirectoryDefault`, `ActiveDirectoryIntegrated`, `ActiveDirectoryServicePrincipal`, `ActiveDirectoryManagedIdentity`, `ActiveDirectoryPassword`. For more information, see [Microsoft Entra authentication](sqlcmd-authentication.md). If `-G` isn't provided, Integrated security or SQL Server authentication is used, depending on the presence of a `-U` user name parameter.
+- `:Connect` has an optional `-G` parameter to select one of the authentication methods for Azure SQL Database - `SqlAuthentication`, `ActiveDirectoryDefault`, `ActiveDirectoryIntegrated`, `ActiveDirectoryServicePrincipal`, `ActiveDirectoryManagedIdentity`, `ActiveDirectoryPassword`. For more information, see [Authenticate with Microsoft Entra ID in sqlcmd](sqlcmd-authentication.md). If `-G` isn't provided, Integrated security or SQL Server authentication is used, depending on the presence of a `-U` user name parameter.
 
-- The new `--driver-logging-level` command line parameter allows you to see traces from the `go-mssqldb` driver. Use `64` to see all traces.
+- The `--driver-logging-level` command line parameter allows you to see traces from the `go-mssqldb` driver. Use `64` to see all traces.
 
-- **sqlcmd** can now print results using a vertical format. Use the new `-F vertical` command line switch to set it. The `SQLCMDFORMAT` scripting variable also controls it.
+- **sqlcmd** (Go) can print results using a vertical format. Use the `-F vertical` command line switch to set it. The `SQLCMDFORMAT` scripting variable also controls it.
+
+  > [!NOTE]  
+  > This is different to the `-F` switch for **sqlcmd** (ODBC), which is used with `-N` to specify the host name in the certificate.
 
 ### [sqlcmd (ODBC)](#tab/odbc)
 
@@ -350,7 +360,7 @@ The following table lists the command-line options available in **sqlcmd**, and 
 
 **Applies to:** Windows only. Linux and macOS are not supported.
 
-Signs in to [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] with a dedicated administrator connection (DAC). This kind of connection is used to troubleshoot a server. This connection works only with server computers that support DAC. If DAC isn't available, **sqlcmd** generates an error message, and then exits. For more information about DAC, see [Diagnostic Connection for Database Administrators](../../database-engine/configure-windows/diagnostic-connection-for-database-administrators.md). The `-A` option isn't supported with the `-G` option. When connecting to Azure SQL Database using `-A`, you must be an administrator on the logical SQL server. DAC isn't available for a Microsoft Entra administrator.
+Signs in to [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] with a dedicated administrator connection (DAC). This kind of connection is used to troubleshoot a server. This connection works only with server computers that support DAC. If DAC isn't available, **sqlcmd** generates an error message, and then exits. For more information about DAC, see [Diagnostic connection for database administrators](../../database-engine/configure-windows/diagnostic-connection-for-database-administrators.md). The `-A` option isn't supported with the `-G` option. When connecting to Azure SQL Database using `-A`, you must be an administrator on the logical SQL server. DAC isn't available for a Microsoft Entra administrator.
 
 > [!NOTE]  
 > For information on how to make a dedicated administrator connection (DAC) on macOS or Linux, see [Programming Guidelines](../../connect/odbc/linux-mac/programming-guidelines.md).
@@ -401,13 +411,13 @@ Sets the Column Encryption setting to `Enabled`. For more information, see [Alwa
 
 #### -G
 
-This option is used by the client when connecting to Azure SQL Database or Azure Synapse Analytics, to specify that the user is authenticated with Microsoft Entra authentication. This option sets the **sqlcmd** scripting variable `SQLCMDUSEAAD = true`. The `-G` option requires at least **sqlcmd** version [13.1](https://go.microsoft.com/fwlink/?LinkID=825643). To determine your version, execute `sqlcmd -?`. For more information, see [Connecting to SQL Database or Azure Synapse Analytics By Using Microsoft Entra authentication](/azure/azure-sql/database/authentication-aad-overview). The `-A` option isn't supported with the `-G` option.
+This option is used by the client when connecting to Azure SQL Database or Azure Synapse Analytics, to specify that the user is authenticated with Microsoft Entra authentication. This option sets the **sqlcmd** scripting variable `SQLCMDUSEAAD = true`. The `-G` option requires at least **sqlcmd** version [13.1](https://go.microsoft.com/fwlink/?LinkID=825643). To determine your version, execute `sqlcmd -?`. For more information, see [Microsoft Entra authentication for Azure SQL](/azure/azure-sql/database/authentication-aad-overview). The `-A` option isn't supported with the `-G` option.
 
 The `-G` option only applies to Azure SQL Database and Azure Synapse Analytics.
 
-Microsoft Entra interactive authentication isn't currently supported on Linux or macOS. Microsoft Entra integrated authentication requires [Microsoft ODBC Driver 17 for SQL Server](../../connect/odbc/download-odbc-driver-for-sql-server.md) version 17.6.1 or higher and a [properly configured Kerberos environment](../../connect/odbc/linux-mac/using-integrated-authentication.md).
+Microsoft Entra interactive authentication isn't currently supported on Linux or macOS. Microsoft Entra integrated authentication requires [Download ODBC Driver for SQL Server](../../connect/odbc/download-odbc-driver-for-sql-server.md) version 17.6.1 or higher and a [properly configured Kerberos environment](../../connect/odbc/linux-mac/using-integrated-authentication.md).
 
-For more information about Microsoft Entra authentication, see [Microsoft Entra authentication in sqlcmd](sqlcmd-authentication.md).
+For more information about Microsoft Entra authentication, see [Authenticate with Microsoft Entra ID in sqlcmd](sqlcmd-authentication.md).
 
 #### -H *workstation_name*
 
@@ -419,7 +429,7 @@ Prints raw error messages to the screen.
 
 #### -K *application_intent*
 
-Declares the application workload type when connecting to a server. The only currently supported value is `ReadOnly`. If `-K` isn't specified, **sqlcmd** doesn't support connectivity to a secondary replica in an availability group. For more information, see [Active Secondaries: Readable Secondary Replica (Always On Availability Groups)](../../database-engine/availability-groups/windows/active-secondaries-readable-secondary-replicas-always-on-availability-groups.md).
+Declares the application workload type when connecting to a server. The only currently supported value is `ReadOnly`. If `-K` isn't specified, **sqlcmd** doesn't support connectivity to a secondary replica in an availability group. For more information, see [Offload read-only workload to secondary replica of an Always On availability group](../../database-engine/availability-groups/windows/active-secondaries-readable-secondary-replicas-always-on-availability-groups.md).
 
 > [!NOTE]  
 > `-K` isn't supported in SUSE Linux Enterprise Server (SLES). You can, however, specify the `ApplicationIntent=ReadOnly` keyword in a DSN file passed to **sqlcmd**. For more information, see [DSN Support in sqlcmd and bcp](#dsn-support-in-sqlcmd-and-bcp) later in this article.
@@ -428,7 +438,14 @@ For more information, see [High availability and disaster recovery on Linux and 
 
 #### -M *multisubnet_failover*
 
-Always specify `-M` when connecting to the availability group listener of a [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] availability group or a [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Failover Cluster Instance. `-M` provides for faster detection of and connection to the (currently) active server. If `-M` isn't specified, `-M` is off. For more information about [Listeners, Client Connectivity, Application Failover](../../database-engine/availability-groups/windows/listeners-client-connectivity-application-failover.md), [Creation and Configuration of Availability Groups (SQL Server)](../../database-engine/availability-groups/windows/creation-and-configuration-of-availability-groups-sql-server.md), [Failover Clustering and Always On Availability Groups (SQL Server)](../../database-engine/availability-groups/windows/failover-clustering-and-always-on-availability-groups-sql-server.md), and [Active Secondaries: Readable Secondary Replicas(Always On Availability Groups)](../../database-engine/availability-groups/windows/active-secondaries-readable-secondary-replicas-always-on-availability-groups.md).
+Always specify `-M` when connecting to the availability group listener of a [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] availability group or a [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Failover Cluster Instance. `-M` provides for faster detection of and connection to the (currently) active server. If `-M` isn't specified, `-M` is off.
+
+For more information, see:
+
+- [Connect to an Always On availability group listener](../../database-engine/availability-groups/windows/listeners-client-connectivity-application-failover.md)
+- [Reference for the creation and configuration of Always On availability groups](../../database-engine/availability-groups/windows/creation-and-configuration-of-availability-groups-sql-server.md)
+- [Failover Clustering and Always On Availability Groups (SQL Server)](../../database-engine/availability-groups/windows/failover-clustering-and-always-on-availability-groups-sql-server.md)
+- [Offload read-only workload to secondary replica of an Always On availability group](../../database-engine/availability-groups/windows/active-secondaries-readable-secondary-replicas-always-on-availability-groups.md)
 
 > [!NOTE]  
 > `-M` isn't supported in SUSE Linux Enterprise Server (SLES). You can, however, specify the `MultiSubnetFailover=Yes` keyword in a DSN file passed to **sqlcmd**. For more information, see [DSN Support in sqlcmd and bcp](#dsn-support-in-sqlcmd-and-bcp) later in this article.
@@ -439,14 +456,25 @@ For more information, see [High availability and disaster recovery on Linux and 
 
 This option is used by the client to request an encrypted connection.
 
-For the **sqlcmd** (Go) utility, `-N` now takes a string value that can be one of `true`, `false`, or `disable` to specify the encryption choice. (`default` is the same as omitting the parameter):
-
-- If `-N` and `-C` aren't provided, **sqlcmd** negotiates authentication with the server without validating the server certificate.
-- If `-N` is provided but `-C` isn't, **sqlcmd** requires validation of the server certificate. A `false` value for encryption could still lead to the encryption of the login packet.
-- If both `-N` and `-C` are provided, **sqlcmd** uses their values for encryption negotiation.
+For the **sqlcmd** (Go) utility, `-N` takes a string value that can be one of `true`, `false`, or `disable` to specify the encryption choice. (`default` is the same as omitting the parameter):
 
 > [!NOTE]  
-> On Linux and macOS, `[s|m|o]` were added in **sqlcmd** 18.0.
+> On Linux and macOS, `[s|m|o]` were added in **sqlcmd** 18.0. `-N` can be `o` (for `optional`), `m` (for `mandatory`, the default), or `s` (for `strict`). In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], if you don't include `-N`, `-Nm` (for `mandatory`) is the default. This is a breaking change from [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions, where `-No` is the default.
+
+- If `-N` and `-C` aren't provided, **sqlcmd** negotiates authentication with the server without validating the server certificate.
+
+- If `-N` is provided but `-C` isn't, **sqlcmd** requires validation of the server certificate. A `false` value for encryption could still lead to the encryption of the login packet.
+
+- If both `-N` and `-C` are provided, **sqlcmd** uses their values for encryption negotiation.
+
+- In **sqlcmd** (ODBC), use `-F` to specify the host name in the certificate. For example:
+
+  ```console
+  sqlcmd -S server01 -Q "SELECT TOP 100 * FROM WideWorldImporters.Sales.Orders" -A -Ns -F server01.adventure-works.com
+  ```
+
+  > [!NOTE]  
+  > This is different to the `-F` switch for **sqlcmd** (Go), which is used to print results using a vertical format.
 
 #### -P *password*
 
@@ -710,7 +738,7 @@ Writes input scripts to the standard output device (`stdout`).
 
 **Applies to:** ODBC **sqlcmd** only.
 
-Sets the `SET QUOTED_IDENTIFIER` connection option to `ON`. The default setting is `OFF`. For more information, see [SET QUOTED_IDENTIFIER (Transact-SQL)](../../t-sql/statements/set-quoted-identifier-transact-sql.md).
+Sets the `SET QUOTED_IDENTIFIER` connection option to `ON`. The default setting is `OFF`. For more information, see [SET QUOTED_IDENTIFIER](../../t-sql/statements/set-quoted-identifier-transact-sql.md).
 
 > [!NOTE]  
 > To disable quoted identifier behavior in the **sqlcmd** (Go) utility, add `SET QUOTED IDENTIFIER OFF` in your scripts.
@@ -1019,7 +1047,7 @@ Options don't have to be used in the order shown in the syntax section.
 
 When multiple results are returned, **sqlcmd** prints a blank line between each result set in a batch. In addition, the `<x> rows affected` message doesn't appear when it doesn't apply to the statement executed.
 
-To use **sqlcmd** interactively, type `sqlcmd` at the command prompt with any one or more of the options described earlier in this article. For more information, see [Use the sqlcmd Utility](sqlcmd-use-utility.md)
+To use **sqlcmd** interactively, type `sqlcmd` at the command prompt with any one or more of the options described earlier in this article. For more information, see [Use sqlcmd](sqlcmd-use-utility.md).
 
 > [!NOTE]  
 > The options `-l`, `-Q`, `-Z` or `-i` cause **sqlcmd** to exit after execution.
@@ -1351,7 +1379,10 @@ Start **sqlcmd**. At the **sqlcmd** command prompt, type the query:
 
 ```sql
 USE AdventureWorks2022;
-SELECT TOP (2) BusinessEntityID, FirstName, LastName
+
+SELECT TOP (2) BusinessEntityID,
+               FirstName,
+               LastName
 FROM Person.Person;
 GO
 ```
@@ -1366,7 +1397,7 @@ BusinessEntityID FirstName    LastName
 (2 row(s) affected)
 ```
 
-Although the `BusinessEntityID` column is only four characters wide, it is expanded to accommodate the longer column name. By default, output is terminated at 80 characters. This width can be changed by using the `-w` option, or by setting the `SQLCMDCOLWIDTH` scripting variable.
+Although the `BusinessEntityID` column is only four characters wide, it expands to accommodate the longer column name. By default, output is terminated at 80 characters. This width can be changed by using the `-w` option, or by setting the `SQLCMDCOLWIDTH` scripting variable.
 
 <a id="OutputXML"></a>
 
@@ -1467,13 +1498,13 @@ Use the following practices to help maximize correctness:
 
 - Use `-V 16` to log any [severity 16 level messages](../../relational-databases/errors-events/database-engine-error-severities.md#levels-of-severity). Severity 16 messages indicate general errors that can be corrected by the user.
 
-- Check the exit code and `DOS ERRORLEVEL` variable after the process exits. **sqlcmd** returns `0` normally, otherwise it sets the `ERRORLEVEL` as configured by `-V`. In other words, `ERRORLEVEL` shouldn't be expected to be the same value as the error number reported from [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)]. The error number is a [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)]-specific value corresponding to the system function [**@@ERROR**](../../t-sql/functions/error-transact-sql.md). `ERRORLEVEL` is a **sqlcmd**-specific value to indicate why **sqlcmd** terminated, and its value is influenced by specifying `-b` command line argument.
+- Check the exit code and `DOS ERRORLEVEL` variable after the process exits. **sqlcmd** returns `0` normally, otherwise it sets the `ERRORLEVEL` as configured by `-V`. In other words, `ERRORLEVEL` shouldn't be expected to be the same value as the error number reported from [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)]. The error number is a [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)]-specific value corresponding to the system function [@@ERROR](../../t-sql/functions/error-transact-sql.md). `ERRORLEVEL` is a **sqlcmd**-specific value to indicate why **sqlcmd** terminated, and its value is influenced by specifying `-b` command line argument.
 
 Using `-V 16` in combination with checking the exit code and `DOS ERRORLEVEL` can help catch errors in automated environments, particularly quality gates before a production release.
 
 ## Related content
 
-- [Learn more about the new go-sqlcmd utility on GitHub](https://github.com/microsoft/go-sqlcmd)
+- [Learn more about sqlcmd (Go) utility on GitHub](https://github.com/microsoft/go-sqlcmd)
 - [Quickstart: Run SQL Server Linux container images with Docker](../../linux/quickstart-install-connect-docker.md)
 - [sqlcmd - Start the utility](sqlcmd-start-utility.md)
 - [sqlcmd - Run Transact-SQL script files](sqlcmd-run-transact-sql-script-files.md)

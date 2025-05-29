@@ -1,10 +1,10 @@
 ---
-title: "Editions and supported features of SQL Server 2017 - Linux"
+title: "Editions and Supported Features of SQL Server 2017 - Linux"
 description: This article describes editions, features, and components supported by the various editions of SQL Server 2017 on Linux.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh, vanto
-ms.date: 01/08/2024
+ms.date: 05/02/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -231,8 +231,8 @@ The following features and services aren't available for [!INCLUDE [sssql17](../
 | | SQL Server R services | SQL Server R is supported within [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], but [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] R services as a separate package isn't supported.<br /><br />You can install Machine Learning Services on Linux for [SQL Server 2019](sql-server-linux-setup-machine-learning.md) and [SQL Server 2022](sql-server-linux-setup-machine-learning-sql-2022.md). |
 | | Analysis Services | |
 | | Reporting Services | On [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] and later versions, [configure Power BI Report Server catalog databases for SQL Server on Linux](sql-server-linux-configure-power-bi-report-server-catalog.md). Run [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Reporting Services (SSRS) on Windows, and host the catalog databases for SSRS on [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux deployments. |
-| | Data Quality Services | |
-| | Master Data Services | |
+| | Data Quality Services | Deprecated feature. |
+| | Master Data Services | Deprecated feature. |
 
 [!INCLUDE [editions-supported-features-windows](../includes/editions-supported-features-windows.md)]
 

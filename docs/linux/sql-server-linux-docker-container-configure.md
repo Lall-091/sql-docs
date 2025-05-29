@@ -4,7 +4,7 @@ description: Understand the different ways to customize SQL Server Docker Contai
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: vanto, randolphwest
-ms.date: 11/18/2024
+ms.date: 05/02/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: troubleshooting
@@ -269,7 +269,7 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" ^
 
 ::: moniker-end
 <!--SQL Server 2022 on Linux-->
-::: moniker range=">=sql-server-linux-ver16 || >= sql-server-ver16"
+::: moniker range=">=sql-server-linux-ver16 || >=sql-server-ver16"
 
 ::: zone pivot="cs1-bash"
 
@@ -429,7 +429,7 @@ docker cp C:\Temp\mydb.mdf d6b75213ef80:/var/opt/mssql/data
 
 ## Configure the time zone
 
-To run [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] in a Linux container with a specific time zone, configure the `TZ` environment variable (see [Configure the time zone for SQL Server 2022 on Linux](sql-server-linux-configure-time-zone.md) for more information). To find the right time zone value, run the `tzselect` command from a Linux bash prompt:
+To run [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] in a Linux container with a specific time zone, configure the `TZ` environment variable (see [Configure the time zone for SQL Server 2022 and later versions on Linux](sql-server-linux-configure-time-zone.md) for more information). To find the right time zone value, run the `tzselect` command from a Linux bash prompt:
 
 ```bash
 tzselect
@@ -523,7 +523,7 @@ sudo docker run -e 'ACCEPT_EULA=Y' -e "MSSQL_SA_PASSWORD=<password>" `
 
 ::: moniker-end
 <!--SQL Server 2022 on Linux-->
-::: moniker range=">=sql-server-linux-ver16 || >=sql-server-ver16"
+::: moniker range="=sql-server-linux-ver16 || =sql-server-ver16"
 
 ::: zone pivot="cs1-bash"
 
@@ -554,6 +554,43 @@ sudo docker run -e 'ACCEPT_EULA=Y' -e "MSSQL_SA_PASSWORD=<password>" ^
 -p 1433:1433 --name sql1 ^
 -e "TZ=America/Los_Angeles" ^
 -d mcr.microsoft.com/mssql/server:2022-latest
+```
+
+::: zone-end
+
+::: moniker-end
+<!--SQL Server 2025 on Linux-->
+::: moniker range=">=sql-server-linux-ver17 || >=sql-server-ver17"
+
+::: zone pivot="cs1-bash"
+
+```bash
+sudo docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<password>' \
+-p 1433:1433 --name sql1 \
+-e 'TZ=America/Los_Angeles' \
+-d mcr.microsoft.com/mssql/server:2025-latest
+```
+
+::: zone-end
+
+::: zone pivot="cs1-powershell"
+
+```powershell
+sudo docker run -e 'ACCEPT_EULA=Y' -e "MSSQL_SA_PASSWORD=<password>" `
+-p 1433:1433 --name sql1 `
+-e "TZ=America/Los_Angeles" `
+-d mcr.microsoft.com/mssql/server:2025-latest
+```
+
+::: zone-end
+
+::: zone pivot="cs1-cmd"
+
+```cmd
+sudo docker run -e 'ACCEPT_EULA=Y' -e "MSSQL_SA_PASSWORD=<password>" ^
+-p 1433:1433 --name sql1 ^
+-e "TZ=America/Los_Angeles" ^
+-d mcr.microsoft.com/mssql/server:2025-latest
 ```
 
 ::: zone-end
@@ -743,7 +780,7 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" ^
 ::: moniker-end
 
 <!--SQL Server 2022 on Linux-->
-::: moniker range=">= sql-server-linux-ver16 || >= sql-server-ver16"
+::: moniker range="=sql-server-linux-ver16 || =sql-server-ver16"
 
 ::: zone pivot="cs1-bash"
 
@@ -777,6 +814,47 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" ^
 -v /my/host/path:/my/file/path ^
 -p 1433:1433 ^
 -d mcr.microsoft.com/mssql/server:2022-latest
+```
+
+::: zone-end
+
+::: moniker-end
+
+<!--SQL Server 2025 on Linux-->
+::: moniker range=">=sql-server-linux-ver17 || >=sql-server-ver17"
+
+::: zone pivot="cs1-bash"
+
+```bash
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<password>' \
+-e 'MSSQL_DATA_DIR=/my/file/path' \
+-v /my/host/path:/my/file/path \
+-p 1433:1433 \
+-d mcr.microsoft.com/mssql/server:2025-latest
+```
+
+::: zone-end
+
+::: zone pivot="cs1-powershell"
+
+```powershell
+docker run -e 'ACCEPT_EULA=Y' -e "MSSQL_SA_PASSWORD=<password>" `
+-e "MSSQL_DATA_DIR=/my/file/path" `
+-v /my/host/path:/my/file/path `
+-p 1433:1433 `
+-d mcr.microsoft.com/mssql/server:2025-latest
+```
+
+::: zone-end
+
+::: zone pivot="cs1-cmd"
+
+```cmd
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" ^
+-e "MSSQL_DATA_DIR=/my/file/path" ^
+-v /my/host/path:/my/file/path ^
+-p 1433:1433 ^
+-d mcr.microsoft.com/mssql/server:2025-latest
 ```
 
 ::: zone-end
@@ -824,14 +902,21 @@ For information on how to build and run Docker containers using Dockerfiles, see
 <!--SQL Server 2019 on Linux-->
 ::: moniker range="=sql-server-linux-ver15 || =sql-server-ver15"
 
-- Get started with [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] container images on Docker by going through the [quickstart](quickstart-install-connect-docker.md)
+- Get started with [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] container images on Docker by going through the [quickstart](quickstart-install-connect-docker.md?view=sql-server-ver15&preserve-view=true)
 
 ::: moniker-end
 
 <!--SQL Server 2022 on Linux-->
-::: moniker range=">= sql-server-linux-ver16 || >= sql-server-ver16"
+::: moniker range="=sql-server-linux-ver16 || =sql-server-ver16"
 
-- Get started with [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] container images on Docker by going through the [quickstart](quickstart-install-connect-docker.md)
+- Get started with [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] container images on Docker by going through the [quickstart](quickstart-install-connect-docker.md?view=sql-server-ver16&preserve-view=true)
+
+::: moniker-end
+
+<!--SQL Server 2025 on Linux-->
+::: moniker range=">=sql-server-linux-ver17 || >=sql-server-ver17"
+
+- Get started with [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] container images on Docker by going through the [quickstart](quickstart-install-connect-docker.md?view=sql-server-ver17&preserve-view=true)
 
 ::: moniker-end
 

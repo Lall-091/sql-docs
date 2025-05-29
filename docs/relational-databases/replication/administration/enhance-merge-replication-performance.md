@@ -69,7 +69,7 @@ helpviewer_keywords:
   
     -   Avoid filtering tables that are primarily lookup tables, smaller tables, and tables that are not subject to change. Make those tables part of the publication in their entirety. We recommend that you use join filters only between tables that must be partitioned among Subscribers. For more information, see [Join Filters](../../../relational-databases/replication/merge/join-filters.md).  
   
-    -   Consider denormalizing the database design or using a mapping table if there are a large number of tables in a join. For example, if a sales person needs only the data for her customers, but it requires six joins to associate a customer with a sales person, consider adding a column to the customer table that identifies the sales person. The sales person data is redundant, but the costs of denormalizing the tables somewhat might be outweighed by the performance benefits for replication partitioning.  
+    -   Consider denormalizing the database design or using a mapping table if there are a large number of tables in a join. For example, if a sales person needs only the data for their customers, but it requires six joins to associate a customer with a sales person, consider adding a column to the customer table that identifies the sales person. The sales person data is redundant, but the costs of denormalizing the tables somewhat might be outweighed by the performance benefits for replication partitioning.  
   
     -   To improve the performance of precomputed partitions when batches contain lots of data changes, design your application with care. Make sure that changes to data in the parent table in a join filter are made before corresponding changes in the child tables.  
   

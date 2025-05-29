@@ -607,7 +607,7 @@ Therefore, the total compute bill for all three replicas of the database is arou
 
 ## Azure Hybrid Benefit and reservations
 
-Azure Hybrid Benefit (AHB) and Azure Reservations discounts do not apply to the serverless compute tier.
+[Azure Hybrid Benefit (AHB)](../azure-hybrid-benefit.md) and [Azure Reservations discounts](reservations-discount-overview.md) do not apply to the serverless compute tier.
 
 ## Available regions
 

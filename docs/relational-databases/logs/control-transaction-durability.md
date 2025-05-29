@@ -32,7 +32,7 @@ This article details delayed durable transactions.
  Fully durable transactions write the transaction log to disk before returning control to the client. You should use fully durable transactions whenever:
 
 - Your system cannot tolerate any data loss.
-    See the section [When can I lose data?](../../relational-databases/logs/control-transaction-durability.md#bkmk_DataLoss) for information on when you can lose some of your data.
+    See the section [When can I lose data](#when-can-i-lose-data) for information on when you can lose some of your data.
 
 - The bottleneck is not due to transaction log write latency.
 
@@ -85,7 +85,7 @@ This article details delayed durable transactions.
 
 ## How to control transaction durability
 
-### <a id="bkmk_DbControl"></a> Database level control
+### Database level control
 
  You, the DBA, can control whether users can use delayed transaction durability on a database with the following statement. You must set the delayed durability setting with ALTER DATABASE.
 
@@ -97,12 +97,12 @@ ALTER DATABASE ... SET DELAYED_DURABILITY = { DISABLED | ALLOWED | FORCED }
  [default] With this setting, all transactions that commit on the database are fully durable, regardless of the commit level setting (DELAYED_DURABILITY=[ON | OFF]). There is no need for stored procedure change and recompilation. This allows you to ensure that no data is ever put at risk by delayed durability.
 
  **ALLOWED**  
- With this setting, each transaction's durability is determined at the transaction level - DELAYED_DURABILITY = { *OFF* | ON }. See [Atomic block level control - Natively Compiled Stored Procedures](../../relational-databases/logs/control-transaction-durability.md#CompiledProcControl) and [COMMIT level control](../../relational-databases/logs/control-transaction-durability.md#bkmk_T-SQLControl) for more information.
+ With this setting, each transaction's durability is determined at the transaction level - DELAYED_DURABILITY = { *OFF* | ON }. See [Atomic block level control - Natively Compiled Stored Procedures](#atomic-block-level-control---natively-compiled-stored-procedures) and [COMMIT level control](#commit-level-control--) for more information.
 
  **FORCED**  
  With this setting, every transaction that commits on the database is delayed durable. Whether the transaction specifies fully durable (DELAYED_DURABILITY = OFF) or makes no specification, the transaction is delayed durable. This setting is useful when delayed transaction durability is useful for a database and you do not want to change any application code.
 
-### <a id="CompiledProcControl"></a> Atomic block level control - Natively Compiled Stored Procedures
+### Atomic block level control - Natively Compiled Stored Procedures
 
  The following code goes inside the atomic block.
 
@@ -111,10 +111,10 @@ DELAYED_DURABILITY = { OFF | ON }
 ```
 
  **OFF**  
- [default] The transaction is fully durable, unless the database option DELAYED_DURABILITY = FORCED is in effect, in which case the commit is asynchronous and thus delayed durable. For more information, see [Database level control](../../relational-databases/logs/control-transaction-durability.md#bkmk_DbControl).
+ [default] The transaction is fully durable, unless the database option DELAYED_DURABILITY = FORCED is in effect, in which case the commit is asynchronous and thus delayed durable. For more information, see [Database level control](#database-level-control).
 
  **ON**  
- The transaction is delayed durable, unless the database option DELAYED_DURABILITY = DISABLED is in effect, in which case the commit is synchronous and thus fully durable. For more information, see [Database level control](../../relational-databases/logs/control-transaction-durability.md#bkmk_DbControl).
+ The transaction is delayed durable, unless the database option DELAYED_DURABILITY = DISABLED is in effect, in which case the commit is synchronous and thus fully durable. For more information, see [Database level control](#database-level-control).
 
  **Example Code:**
 
@@ -138,7 +138,7 @@ END
 | **DELAYED_DURABILITY = OFF** | Atomic block starts a new fully durable transaction. | Atomic block creates a save point in the existing transaction, then begins the new transaction. |
 | **DELAYED_DURABILITY = ON** | Atomic block starts a new delayed durable transaction. | Atomic block creates a save point in the existing transaction, then begins the new transaction. |
 
-### <a id="bkmk_T-SQLControl"></a> COMMIT level control -[!INCLUDE[tsql](../../includes/tsql-md.md)]
+### COMMIT level control -[!INCLUDE[tsql](../../includes/tsql-md.md)]
 
  The COMMIT syntax is extended so you can force delayed transaction durability. If DELAYED_DURABILITY is DISABLED or FORCED at the database level (see above) this COMMIT option is ignored.
 
@@ -147,10 +147,10 @@ COMMIT [ { TRAN | TRANSACTION } ] [ transaction_name | @tran_name_variable ] ] [
 ```
 
  **OFF**  
- [default] The transaction COMMIT is fully durable, unless the database option DELAYED_DURABILITY = FORCED is in effect, in which case the COMMIT is asynchronous and thus delayed durable. For more information, see [Database level control](../../relational-databases/logs/control-transaction-durability.md#bkmk_DbControl).
+ [default] The transaction COMMIT is fully durable, unless the database option DELAYED_DURABILITY = FORCED is in effect, in which case the COMMIT is asynchronous and thus delayed durable. For more information, see [Database level control](#database-level-control).
 
  **ON**  
- The transaction COMMIT is delayed durable, unless the database option DELAYED_DURABILITY = DISABLED is in effect, in which case the COMMIT is synchronous and thus fully durable. For more information, see [Database level control](../../relational-databases/logs/control-transaction-durability.md#bkmk_DbControl).
+ The transaction COMMIT is delayed durable, unless the database option DELAYED_DURABILITY = DISABLED is in effect, in which case the COMMIT is synchronous and thus fully durable. For more information, see [Database level control](#database-level-control).
 
 ### Summary of options and their interactions
 
@@ -206,7 +206,7 @@ Starting with SQL Server 2022 CU 2 and SQL Server 2019 CU 20, you may see:
  **Transaction Log Backup**  
  Only transactions that have been made durable are included in the backup.
 
-## <a id="bkmk_DataLoss"></a> When can I lose data?
+## When can I lose data
 
  If you implement delayed durability on any of your tables, you should understand that certain circumstances can lead to data loss. If you cannot tolerate any data loss, you should not use delayed durability on your tables.
 

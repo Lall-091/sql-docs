@@ -4,18 +4,18 @@ description: REGEXP_LIKE Returns a Boolean value that indicates whether the text
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: abhtiwar, wiassaf, randolphwest
-ms.date: 12/31/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =fabric"
+monikerRange:  "= sql-server-ver17 || = sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
 ---
 
-# REGEXP_LIKE (Transact-SQL)
+# REGEXP_LIKE (Transact-SQL) preview
 
-[!INCLUDE [asdb-fabricsqldb](../../includes/applies-to-version/asdb-fabricsqldb.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabric](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
 [!INCLUDE [preview](../../includes/preview.md)]
 
@@ -29,7 +29,7 @@ REGEXP_LIKE
      )
 ```
 
-**REGEXP_LIKE** requires database compatibility level 170 and above. If the database compatibility level is lower than 170, **REGEXP_LIKE** is not available. Other [regular expression scalar functions](regular-expressions-functions-transact-sql.md) are available at all compatibility levels.
+`REGEXP_LIKE` requires database compatibility level 170 and above. If the database compatibility level is lower than 170, `REGEXP_LIKE` is not available. Other [regular expression scalar functions](regular-expressions-functions-transact-sql.md) are available at all compatibility levels.
 
 You can check compatibility level in the `sys.databases` view or in database properties. You can change the compatibility level of a database with the following command:
 
@@ -54,6 +54,10 @@ ALTER DATABASE [DatabaseName] SET COMPATIBILITY_LEVEL = 170;
 ## Return value
 
 Boolean value. `true` or `false`.
+
+## Remarks
+
+To enhance the accuracy of [cardinality estimation](../../relational-databases/performance/cardinality-estimation-sql-server.md) for the `REGEXP_LIKE` function, you can use the `ASSUME_FIXED_MIN_SELECTIVITY_FOR_REGEXP` and `ASSUME_FIXED_MAX_SELECTIVITY_FOR_REGEXP` query hints to adjust the default selectivity values. For more information, see [Query hints](../queries/hints-transact-sql-query.md#use_hint).
 
 ## Examples
 

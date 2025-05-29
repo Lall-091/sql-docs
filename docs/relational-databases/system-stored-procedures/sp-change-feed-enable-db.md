@@ -1,10 +1,10 @@
 ---
 title: "sys.sp_change_feed_enable_db (Transact-SQL)"
-description: "The sys.sp_change_feed_enable_db system stored procedure enables the current database for Azure Synapse Link or Fabric Mirrored Database publishing."
+description: "The sys.sp_change_feed_enable_db system stored procedure enables the current database."
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: imotiwala, randolphwest
-ms.date: 09/24/2024
+ms.reviewer: imotiwala, randolphwest, ajayj
+ms.date: 05/01/2025
 ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,15 +19,19 @@ helpviewer_keywords:
   - "sp_change_feed_enable_db"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-ver16 || =azuresqldb-current || =fabric || =azure-sqldw-latest"
+monikerRange: ">=sql-server-ver16 || =azuresqldb-current || =azuresqldb-mi-current || =fabric || =azure-sqldw-latest"
 ---
 # sys.sp_change_feed_enable_db (Transact-SQL)
 
-[!INCLUDE [sqlserver2022-asdb-asa-fabricmirroredsqldb-fabricsqldb](../../includes/applies-to-version/sqlserver2022-asdb-asa-fabricmirroredsqldb-fabricsqldb.md)]
+[!INCLUDE [sqlserver2022-asdb-asdbmi-asa-fabricmirroredsqldb-fabricsqldb](../../includes/applies-to-version/sqlserver2022-asdb-asdbmi-asa-fabricmirroredsqldb-fabricsqldb.md)]
 
-Enables current database for [Azure Synapse Link for SQL](/azure/synapse-analytics/synapse-link/sql-synapse-link-overview), [Microsoft Fabric mirrored databases](/fabric/database/mirrored-database/overview), and [SQL database in Microsoft Fabric](/fabric/database/sql/overview).
+Enables current database for:
 
-> [!NOTE]  
+- [SQL database in Microsoft Fabric](/fabric/database/sql/overview)
+- [Microsoft Fabric mirrored databases](/fabric/database/mirrored-database/overview)
+- [Azure Synapse Link](../../sql-server/synapse-link/synapse-link-sql-server-change-feed-manage.md)
+
+> [!CAUTION]  
 > This system stored procedure is used internally and isn't recommended for direct administrative use. Use Synapse Studio or the Fabric portal instead. Using this procedure could introduce inconsistency.
 
 ## Syntax

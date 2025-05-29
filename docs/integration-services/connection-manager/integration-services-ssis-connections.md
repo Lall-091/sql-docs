@@ -112,7 +112,7 @@ A connection manager can be created at the package level or at the project level
  You can also write custom connection managers. For more information, see [Developing a Custom Connection Manager](../../integration-services/extending-packages-custom-objects/connection-manager/developing-a-custom-connection-manager.md).  
   
 ## Create connection managers
-  [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] includes a variety of connection managers to suit the needs of tasks that connect to different types of servers and data sources. Connection managers are used by the data flow components that extract and load data in different types of data stores, and by the log providers that write logs to a server, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] table, or file. For example, a package with a Send Mail task uses an SMTP connection manager type to connect to a Simple Mail Transfer Protocol (SMTP) server. A package with an Execute SQL task can use an OLE DB connection manager to connect to a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] database. For more information, see [Integration Services &#40;SSIS&#41; Connections](../../integration-services/connection-manager/integration-services-ssis-connections.md).  
+  [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] includes a variety of connection managers to suit the needs of tasks that connect to different types of servers and data sources. Connection managers are used by the data flow components that extract and load data in different types of data stores, and by the log providers that write logs to a server, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] table, or file. For example, a package with a Send Mail task uses an SMTP connection manager type to connect to a Simple Mail Transfer Protocol (SMTP) server. A package with an Execute SQL task can use an OLE DB connection manager to connect to a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] database. For more information, see [Integration Services &#40;SSIS&#41; Connections](#integration-services-ssis-connections).  
   
  To automatically create and configure connection managers when you create a new package, you can use the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Import and Export Wizard. The wizard also helps you create and configure the sources and destinations that use the connection managers. For more information, see [Create Packages in SQL Server Data Tools](../../integration-services/create-packages-in-sql-server-data-tools.md).  
   
@@ -225,7 +225,7 @@ A connection manager can be created at the package level or at the project level
 ### Add SSIS Connection Manager dialog box
 Use the **Add SSIS Connection Manager** dialog box to select the type of connection to add to a package.  
   
- To learn more about connection managers, see [Integration Services &#40;SSIS&#41; Connections](../../integration-services/connection-manager/integration-services-ssis-connections.md).  
+ To learn more about connection managers, see [Integration Services &#40;SSIS&#41; Connections](#integration-services-ssis-connections).  
   
 #### Options  
  **Connection manager type**  

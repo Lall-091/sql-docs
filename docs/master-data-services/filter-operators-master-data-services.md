@@ -12,6 +12,8 @@ ms.topic: conceptual
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   When filtering a list of members, the following operators are available.  
   
 > [!NOTE]  

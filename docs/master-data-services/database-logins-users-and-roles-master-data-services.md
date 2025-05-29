@@ -19,6 +19,8 @@ helpviewer_keywords:
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] includes logins, users, and roles that are automatically installed on the [!INCLUDE[ssDEnoversion](../includes/ssdenoversion-md.md)] instance that hosts the [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] database. These logins, users, and roles should not be modified.  
   
 ## Logins  

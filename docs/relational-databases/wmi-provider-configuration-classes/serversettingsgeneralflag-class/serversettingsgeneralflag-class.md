@@ -14,7 +14,7 @@ apitype: "MOFDef"
 ---
 # ServerSettingsGeneralFlag Class
 [!INCLUDE [SQL Server](../../../includes/applies-to-version/sqlserver.md)]
-  The [ServerSettingsGeneralFlag Class](../../../relational-databases/wmi-provider-configuration-classes/serversettingsgeneralflag-class/serversettingsgeneralflag-class.md) represents the general flag settings on an instance of [!INCLUDE[msCoName](../../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)].  
+  The [ServerSettingsGeneralFlag Class](#serversettingsgeneralflag-class) represents the general flag settings on an instance of [!INCLUDE[msCoName](../../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)].  
   
  This class can be used to do the following:  
   

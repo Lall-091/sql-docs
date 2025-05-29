@@ -18,6 +18,8 @@ helpviewer_keywords:
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   Leaf permissions apply to the attribute values for all leaf members of an entity.  
   
  For entities without explicit hierarchies enabled, assigning permission to **Leaf** is the same as assigning permission to the entity.  

@@ -12,6 +12,8 @@ ms.topic: conceptual
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sqlserver.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   The [!INCLUDE[ssDQSnoversion](../includes/ssdqsnoversion-md.md)] (DQS) security infrastructure is based upon the SQL Server security infrastructure. A database administrator grants a user a set of permissions by associating the user with a DQS role. Doing so determines the DQS resources that the user has access to and the functional activities that the user is allowed to perform.  
   
 ## DQS Roles  

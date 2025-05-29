@@ -52,8 +52,8 @@ You can use SQL Database auditing to:
 - Folder structure change for read-only replicas:
   - Read-only database replicas previously had their logs stored in a read-only folder. Those logs will now be written into the `master` folder. You can retrieve these logs by filtering on the new column `is_secondary_replica_true`.
 - Permissions required to view Audit logs:
-  - `CONTROL DATABASE` permission on the `master` database is required to view audit logs stored in the `master` folder
-
+  - Only **Server admin** principals can view audit logs stored in the `master` folder.
+    
 ## Auditing limitations
 
 - Enabling auditing on a paused **Azure Synapse SQL pool** isn't supported. To enable auditing, resume the **Synapse SQL pool**.
@@ -83,4 +83,5 @@ You can use SQL Database auditing to:
 - [What's New in Azure SQL Auditing](/shows/data-exposed/server-audit-redesign-for-azure-sql-database-data-exposed)
 - [Get started with Azure SQL Managed Instance auditing](../managed-instance/auditing-configure.md)
 - [Auditing for SQL Server](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
+
 - [Set up Auditing for Azure SQL Database and Azure Synapse Analytics](auditing-setup.md)

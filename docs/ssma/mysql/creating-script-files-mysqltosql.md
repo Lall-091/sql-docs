@@ -1,8 +1,8 @@
 ---
 title: "Creating Script Files (MySQLToSQL)"
 description: "Creating Script Files (MySQLToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: ssma
@@ -388,7 +388,7 @@ You can execute the templates (files) after changing the parameters displayed th
 Complete list of script-commands can be found in [Executing the SSMA Console &#40;MySQLToSQL&#41;](../../ssma/mysql/executing-the-ssma-console-mysqltosql.md)  
   
 ## Script File Validation  
-The user can easily validate his/her script file against the schema definition file **'M2SSConsoleScriptSchema.xsd'** available in the 'Schemas' folder.  
+The user can easily validate their script file against the schema definition file **'M2SSConsoleScriptSchema.xsd'** available in the 'Schemas' folder.  
   
 ## Next Step  
 The next step in operating the console is [Creating Variable Value Files &#40;MySQLToSQL&#41;](../../ssma/mysql/creating-variable-value-files-mysqltosql.md).  

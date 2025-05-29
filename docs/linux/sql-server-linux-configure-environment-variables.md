@@ -3,7 +3,7 @@ title: Configure Environment Variables for SQL Server on Linux
 description: This article describes how to use environment variables to configure specific SQL Server settings on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/18/2024
+ms.date: 05/02/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -14,24 +14,7 @@ ms.custom:
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
-<!--SQL Server 2017 on Linux-->
-::: moniker range="=sql-server-linux-2017 || =sql-server-2017"
-
-You can use several different environment variables to configure [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] on Linux. These variables are used in two scenarios:
-
-::: moniker-end
-<!--SQL Server 2019 on Linux-->
-::: moniker range="=sql-server-linux-ver15 || =sql-server-ver15"
-
-You can use several different environment variables to configure [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] on Linux. These variables are used in two scenarios:
-
-::: moniker-end
-<!--SQL Server 2022 on Linux-->
-::: moniker range=">= sql-server-linux-ver16 || >= sql-server-ver16"
-
-You can use several different environment variables to configure [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] on Linux. These variables are used in two scenarios:
-
-::: moniker-end
+You can use several different environment variables to configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. These variables are used in two scenarios:
 
 - To configure initial setup with the `mssql-conf setup` command.
 - To configure a new [SQL Server Linux container image](quickstart-install-connect-docker.md).
@@ -128,7 +111,7 @@ docker run -e ACCEPT_EULA=Y -e MSSQL_PID="Developer" -e MSSQL_SA_PASSWORD="<pass
 ::: moniker-end
 
 <!--SQL Server 2022 on Linux-->
-::: moniker range=">= sql-server-linux-ver16 || >= sql-server-ver16"
+::: moniker range="=sql-server-linux-ver16 || =sql-server-ver16"
 
 If you're running Docker on Linux, use the following syntax with single quotes:
 
@@ -140,6 +123,23 @@ If you're running Docker on Windows, use the following syntax with double quotes
 
 ```bash
 docker run -e ACCEPT_EULA=Y -e MSSQL_PID="Developer" -e MSSQL_SA_PASSWORD="<password>" -e MSSQL_TCP_PORT=1234 -p 1234:1234 -d mcr.microsoft.com/mssql/server:2022-latest
+```
+
+::: moniker-end
+
+<!--SQL Server 2025 on Linux-->
+::: moniker range=">=sql-server-linux-ver17 || >=sql-server-ver17"
+
+If you're running Docker on Linux, use the following syntax with single quotes:
+
+```bash
+docker run -e ACCEPT_EULA=Y -e MSSQL_PID='Developer' -e MSSQL_SA_PASSWORD='<password>' -e MSSQL_TCP_PORT=1234 -p 1234:1234 -d mcr.microsoft.com/mssql/server:2025-latest
+```
+
+If you're running Docker on Windows, use the following syntax with double quotes:
+
+```bash
+docker run -e ACCEPT_EULA=Y -e MSSQL_PID="Developer" -e MSSQL_SA_PASSWORD="<password>" -e MSSQL_TCP_PORT=1234 -p 1234:1234 -d mcr.microsoft.com/mssql/server:2025-latest
 ```
 
 ::: moniker-end

@@ -1,9 +1,9 @@
 ---
-title: Register a Service Principal Name for Kerberos connections
+title: Register a Service Principal Name for Kerberos Connections
 description: "Find out how to register a Service Principal Name (SPN) with Active Directory. This registration is required for using Kerberos authentication with SQL Server."
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/22/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: how-to
@@ -38,7 +38,9 @@ WHERE session_id = @@SPID;
 > [!TIP]  
 > **Microsoft Kerberos Configuration Manager for SQL Server** is a diagnostic tool that helps troubleshoot Kerberos related connectivity issues with [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)]. For more information, see [Microsoft Kerberos Configuration Manager for SQL Server](https://www.microsoft.com/download/details.aspx?id=39046).
 
-## <a id="Role"></a> The role of the SPN in authentication
+<a id="Role"></a>
+
+## The role of the SPN in authentication
 
 When an application opens a connection and uses Windows Authentication, [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Native Client passes the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] computer name, instance name and, optionally, an SPN. If the connection passes an SPN, it's used without any changes.
 
@@ -59,7 +61,9 @@ When the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] service starts, it atte
 
 To register the SPN, the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] must be running under a built-in account, such as `Local System` (not recommended), or `NETWORK SERVICE`, or an account that has permission to register an SPN. You can register an SPN using a domain administrator account, but this isn't recommended in a production environment. You can run [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] using a virtual account or a managed service account (MSA). Both virtual accounts and MSAs can register an SPN. If [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] isn't running under one of these accounts, the SPN isn't registered at startup, and the domain administrator must register the SPN manually.
 
-## <a id="Formats"></a> SPN formats
+<a id="Formats"></a>
+
+## SPN formats
 
 The SPN format supports Kerberos authentication on TCP/IP, named pipes, and shared memory. The supported SPN formats for named and default instances are as follows.
 
@@ -90,7 +94,9 @@ The SPN format supports Kerberos authentication on TCP/IP, named pipes, and shar
 
 For a TCP/IP connection, where the TCP port is included in the SPN, [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] must *enable the TCP protocol* for a user to connect by using Kerberos authentication.
 
-## <a id="Auto"></a> Automatic SPN registration
+<a id="Auto"></a>
+
+## Automatic SPN registration
 
 When an instance of the [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)] starts, [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] tries to register the SPN for the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] service. When the instance is stopped, [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] tries to unregister the SPN. For a TCP/IP connection, the SPN is registered in the format `MSSQLSvc/<FQDN>:<tcpport>`. Both named instances and the default instance are registered as `MSSQLSvc`, relying on the `<tcpport>` value to differentiate the instances.
 
@@ -123,7 +129,9 @@ To give permissions to the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion
 
 Manual intervention might be required to register or unregister the SPN if the service account lacks the permissions that are required for these actions.
 
-## <a id="Manual"></a> Manual SPN registration
+<a id="Manual"></a>
+
+## Manual SPN registration
 
 To register the SPN manually, you can use the **setspn** tool that is built into Windows. `setspn.exe` is a command-line tool that enables you to read, modify, and delete the Service Principal Names (SPN) directory property. This tool also enables you to view the current SPNs, reset the account's default SPNs, and add or delete supplemental SPNs.
 
@@ -150,7 +158,9 @@ setspn -S MSSQLSvc/myhost.redmond.microsoft.com:instancename redmond\accountname
 
 For more information about Always On availability group configurations, see [Listeners and Kerberos (SPNs)](../availability-groups/windows/listeners-client-connectivity-application-failover.md#SPNs).
 
-## <a id="Client"></a> Client connections
+<a id="Client"></a>
+
+## Client connections
 
 User-specified SPNs are supported in client drivers. However, if an SPN isn't provided, it's generated automatically based on the type of a client connection. For a TCP connection, an SPN in the format `MSSQLSvc/FQDN:[<port>]` is used for both the named and default instances.
 
@@ -172,7 +182,9 @@ FROM sys.dm_exec_connections
 WHERE session_id = @@SPID;
 ```
 
-## <a id="Defaults"></a> Authentication defaults
+<a id="Defaults"></a>
+
+## Authentication defaults
 
 The following table describes the authentication defaults that are used, based on SPN registration scenarios.
 

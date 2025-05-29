@@ -12,6 +12,8 @@ ms.topic: conceptual
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   Derived Hierarchies (DH) display one-to-many relationships, and can now also show many-to-many relationships.  
   
 ## Many-to-Many (M2M) Relationships  

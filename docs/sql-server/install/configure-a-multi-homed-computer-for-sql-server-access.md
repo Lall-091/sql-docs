@@ -16,7 +16,7 @@ helpviewer_keywords:
 
 [!INCLUDE [sql-windows-only](../../includes/applies-to-version/sql-windows-only.md)]
 
-When a server must provide a connection to two or more networks or network subnets, a typical scenario uses a multi-homed computer. Frequently this computer is located in a perimeter network (also known as DMZ, demilitarized zone, or screened subnet). This article describes how to configure [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] and Windows Firewall with Advanced Security to provide for network connections to an instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] in a multi-homed environment.
+When a server must provide a connection to two or more networks or network subnets, a typical scenario uses a multi-homed computer. Frequently this computer is located in a perimeter network (also known as a screened subnet). This article describes how to configure [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] and Windows Firewall with Advanced Security to provide for network connections to an instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] in a multi-homed environment.
 
 > [!NOTE]  
 > A multi-homed computer has multiple network adapters or has been configured to use multiple IP addresses for a single network adapter. A dual-homed computer has two network adapters or has been configured to use two IP addresses for a single network adapter.

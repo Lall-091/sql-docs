@@ -21,7 +21,7 @@ ms.topic: how-to
   
 2. Select the CDC service you want to work with. 
   
-     You can also right-click the CDC service you want to work with and select the desired action. See [What can you do with a CDC Service](../../integration-services/change-data-capture/manage-an-oracle-cdc-service.md#BKMK_WhatcandowithCDCService). 
+     You can also right-click the CDC service you want to work with and select the desired action. See [What can you do with a CDC Service](#what-can-you-do-with-a-cdc-service). 
   
  **OR**  
   
@@ -29,9 +29,10 @@ ms.topic: how-to
   
 2. From the middle section of the CDC Service Configuration Console, select the service you want to work with. 
   
-     You can also right-click the CDC service you want to work with and select the desired action. See [What can you do with a CDC Service](../../integration-services/change-data-capture/manage-an-oracle-cdc-service.md#BKMK_WhatcandowithCDCService). 
+     You can also right-click the CDC service you want to work with and select the desired action. See [What can you do with a CDC Service](#what-can-you-do-with-a-cdc-service). 
   
-##  <a name="BKMK_WhatcandowithCDCService"></a> What can you do with a CDC Service  
+## What can you do with a CDC Service
+
  You can carry out the following actions when working with a CDC service. 
   
 ### Delete the service  

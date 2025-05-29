@@ -1,9 +1,9 @@
 ---
-title: Change server authentication mode
+title: Change Server Authentication Mode
 description: Learn how to change the server authentication mode in SQL Server. You can use either SQL Server Management Studio or Transact-SQL for this task.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/22/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: how-to
@@ -42,13 +42,16 @@ The following example enables the `sa` login and sets a new password. Replace `<
 ```sql
 ALTER LOGIN sa ENABLE;
 GO
+
 ALTER LOGIN sa WITH PASSWORD = '<enterStrongPasswordHere>';
 GO
 ```
 
 ---
 
-## <a id="use-ssms"></a> Change authentication mode with SQL Server Management Studio
+<a id="use-ssms"></a>
+
+## Change authentication mode with SQL Server Management Studio
 
 1. In [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] (SSMS) Object Explorer, right-click the server, and then select **Properties**.
 
@@ -70,18 +73,19 @@ The permissions required to change the authentication mode are [sysadmin](../../
 1. Change server authentication to Windows only:
 
    ```sql
-   USE [master]
+   USE [master];
    GO
-   EXEC xp_instance_regwrite N'HKEY_LOCAL_MACHINE',
-        N'Software\Microsoft\MSSQLServer\MSSQLServer',
-        N'LoginMode', REG_DWORD, 1;
+
+   EXECUTE xp_instance_regwrite N'HKEY_LOCAL_MACHINE',
+       N'Software\Microsoft\MSSQLServer\MSSQLServer',
+       N'LoginMode', REG_DWORD, 1;
    GO
    ```
 
 1. Disable the `sa` account:
 
    ```sql
-   USE [master]
+   USE [master];
    GO
 
    ALTER LOGIN sa DISABLE;
@@ -93,7 +97,7 @@ The permissions required to change the authentication mode are [sysadmin](../../
 1. Enable the `sa` account and set a strong password:
 
    ```sql
-   USE [master]
+   USE [master];
    GO
 
    ALTER LOGIN sa ENABLE;
@@ -106,7 +110,7 @@ The permissions required to change the authentication mode are [sysadmin](../../
 1. Change server authentication to mixed mode:
 
    ```sql
-   EXEC xp_instance_regwrite N'HKEY_LOCAL_MACHINE',
+   EXECUTE xp_instance_regwrite N'HKEY_LOCAL_MACHINE',
        N'Software\Microsoft\MSSQLServer\MSSQLServer',
        N'LoginMode', REG_DWORD, 2;
    GO

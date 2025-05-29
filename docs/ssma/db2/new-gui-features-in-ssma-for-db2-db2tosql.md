@@ -1,8 +1,8 @@
 ---
 title: "New GUI features in SSMA for Db2 (Db2ToSQL)"
 description: Discover new features of the SQL Server Migration Assistant (SSMA) user interface.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

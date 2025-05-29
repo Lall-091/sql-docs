@@ -5,7 +5,7 @@ description: Use the update policy setting in Azure SQL Managed Instance to cont
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: mathoma
-ms.date: 04/18/2025
+ms.date: 05/20/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
 ms.topic: how-to
@@ -39,7 +39,7 @@ When using the SQL Server 2022 update policy, consider the following:
 - You can [restore your database](restore-database-to-sql-server.md) to SQL Server 2022 from Azure SQL Managed Instance. 
 - You can configure a [link](managed-instance-link-disaster-recovery.md) for real-time data replication, bidirectional failover, and disaster recovery between SQL Server 2022 and Azure SQL Managed Instance. 
 - You might not have access to some of the latest SQL engine features and benefits available to Azure SQL Managed Instance with the **Always-up-to-date** update policy. 
-- The **SQL Server 2022** update policy is available until the [end of mainstream support of SQL Server 2022](/lifecycle/products/sql-server-2022), at which point, the update policy for instances using the **SQL Server 2022** update policy are automatically updated to the update policy that corresponds to the latest SQL Server major release available at that time. 
+- The **SQL Server 2022** update policy is available until the [end of mainstream support of SQL Server 2022](/lifecycle/products/sql-server-2022), at which point, the update policy for instances using the **SQL Server 2022** update policy are automatically updated to the update policy that corresponds to the latest major SQL Server release available at that time. 
 
 ## Always-up-to-date update policy 
 
@@ -48,16 +48,16 @@ The **Always-up-to-date** update policy configures your instance to receive all 
 When using the **Always-up-to-date** update policy, consider the following:
 
 - You're able to use all the new features and benefits available to Azure SQL Managed Instance. 
-- Once the **Always-up-to-date** policy is enabled, you can't go back to the **SQL Server 2022** update policy.
+- Once the **Always-up-to-date** policy is enabled, you can't go back to the **SQL Server 2022** update policy for that instance.
 - You lose some of the benefits provided by database format alignment with SQL Server 2022, such as the ability to restore your database to SQL Server 2022, and bidirectional failover between your instance and SQL Server 2022 with the [link](managed-instance-link-disaster-recovery.md) feature. 
 
 ## Feature comparison
 
 The following table lists all the features that are only available to instances with the designated update policy:
 
-|SQL Server 2022 update policy  |Always-up-to-date update policy  |
+|*Always-up-to-date* update policy  |*SQL Server 2022* update policy  |
 |---------|---------|
-|- [Restore database to SQL Server 2022](restore-database-to-sql-server.md)  <br /> - [Link with bidirectional failover and disaster recovery](managed-instance-link-disaster-recovery.md)   | - [JSON data type](/sql/t-sql/data-types/json-data-type) <br /> - [Invoke an HTTPS REST endpoint SP](/sql/relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql) <br /> - [Azure SQL Managed Instance Mirroring in Fabric](/fabric/database/mirrored-database/azure-sql-managed-instance) <br /> - [Vector functions](/sql/t-sql/functions/vector-functions-transact-sql?view=azuresqlmi-current&preserve-view=true) <br /> - [Vector data type](/sql/t-sql/data-types/vector-data-type?view=azuresqlmi-current&preserve-view=true) |
+|- [JSON data type](/sql/t-sql/data-types/json-data-type) <br /> - [Invoke an HTTPS REST endpoint SP](/sql/relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql) <br /> - [Azure SQL Managed Instance Mirroring in Fabric](/fabric/database/mirrored-database/azure-sql-managed-instance) <br /> - [Vector functions](/sql/t-sql/functions/vector-functions-transact-sql?view=azuresqlmi-current&preserve-view=true) <br /> - [Vector data type](/sql/t-sql/data-types/vector-data-type?view=azuresqlmi-current&preserve-view=true) <br /> - [Fuzzy string matching?](/sql/relational-databases/fuzzy-string-match/overview)  <br /> - [DATEADD (Transact-SQL)](/sql/t-sql/functions/dateadd-transact-sql).  <br /> - [UNISTR (Transact-SQL)](/sql/t-sql/functions/unistr-transact-sql) <br /> - [Regular expression functions](/sql/relational-databases/regular-expressions/overview) <br /> - [\|\| (String concatenation)](/sql/t-sql/language-elements/string-concatenation-pipes-transact-sql) <br /> - [\|\|= (Compound assignment)](/sql/t-sql/language-elements/compound-assignment-pipes-transact-sql)  | - [Restore database to SQL Server 2022](restore-database-to-sql-server.md)  <br /> - [Link with bidirectional failover and disaster recovery](managed-instance-link-disaster-recovery.md)   |
 
 The following features are impacted by the configured update policy: 
 
@@ -65,6 +65,8 @@ The following features are impacted by the configured update policy:
 - [Managed Instance link](managed-instance-link-feature-overview.md#limitations): Establishing a link from SQL Managed Instance to SQL Server 2022, or failing back from SQL Server 2022 to SQL Managed Instance is only available to instances with the **SQL Server 2022** update policy. 
 - [Database copy and move](database-copy-move-how-to.md#limitations): A database from an instance configured with the **Always-up-to-date** update policy can't be copied or moved to an instance configured with the **SQL Server 2022** update policy. 
 - [Failover groups](failover-group-configure-sql-mi.md#change-update-policy): Instances in a failover group must have matching update policies. 
+
+
 
 ## Which update policy to choose?
 

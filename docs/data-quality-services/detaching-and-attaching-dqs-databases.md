@@ -12,6 +12,8 @@ ms.topic: conceptual
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sqlserver.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   This topic describes how to detach and attach the DQS databases.  
   
 ##  <a name="BeforeYouBegin"></a> Before You Begin  

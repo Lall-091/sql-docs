@@ -1,8 +1,8 @@
 ---
 title: "Execute the SSMA console (Db2ToSQL)"
 description: Learn about running commands in the SSMA console for Db2.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

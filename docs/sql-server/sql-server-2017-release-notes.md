@@ -18,7 +18,7 @@ This article describes limitations and issues with SQL Server 2017. For related 
 
 - [What's new in SQL Server 2017](what-s-new-in-sql-server-2017.md)
 - [Release notes for SQL Server 2017 on Linux](../linux/sql-server-linux-release-notes-2017.md)
-- [SQL Server 2017 Cumulative updates](https://aka.ms/sql2017cu) for information about the latest cumulative update (CU) release
+- [SQL Server 2017 build versions](/troubleshoot/sql/releases/sqlserver-2017/build-versions) for information about the latest cumulative update (CU) release
 
 ## Try SQL Server
 

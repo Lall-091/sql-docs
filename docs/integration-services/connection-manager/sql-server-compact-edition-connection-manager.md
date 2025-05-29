@@ -48,7 +48,7 @@ SQL Server Compact Edition Connection Manager is not supported from VS2022.  Det
 ## SQL Server Compact Edition Connection Manager Editor (Connection Page)
   Use the **SQL Server Compact Edition Connection Manager** dialog box to specify properties for connecting to a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Compact database.  
   
- To learn more about the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Compact Edition connection manager, see [SQL Server Compact Edition Connection Manager](../../integration-services/connection-manager/sql-server-compact-edition-connection-manager.md).  
+ To learn more about the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Compact Edition connection manager, see [SQL Server Compact Edition Connection Manager](#sql-server-compact-edition-connection-manager).  
   
 ### Options  
  **Enter the database file name and path**  
@@ -63,7 +63,7 @@ SQL Server Compact Edition Connection Manager is not supported from VS2022.  Det
 ## SQL Server Compact Edition Connection Manager Editor (All Page)
   Use the **SQL Server Compact Edition Connection Manager** dialog box to specify properties for connecting to a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Compact database.  
   
- To learn more about the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Compact Edition connection manager, see [SQL Server Compact Edition Connection Manager](../../integration-services/connection-manager/sql-server-compact-edition-connection-manager.md).  
+ To learn more about the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Compact Edition connection manager, see [SQL Server Compact Edition Connection Manager](#sql-server-compact-edition-connection-manager).  
   
 ### Options  
  **AutoShrink Threshold**  

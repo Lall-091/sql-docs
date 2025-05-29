@@ -306,6 +306,11 @@ The following example enables Microsoft Entra authentication for specific unregi
 Set-AzVMExtension -ExtensionName "SqlIaasExtension" -ResourceGroupName $resourceGroupName -VMName $sqlVMName -Publisher "Microsoft.SqlServer.Management" -ExtensionType "SqlIaaSAgent" -TypeHandlerVersion 2.0 -Location $region -SettingString '{"ServerConfigurationsManagementSettings": {"AADAuthenticationSettings": {"ClientId":$clientId, "EnableForGivenInstances":["MSSQLSERVER","MSSQLSERVER01"], "CheckPermissions":true}},"DeploymentTokenSettings":{"DeploymentToken":12345678}}'
 ```
 
+## Create logins and users
+
+Follow the steps in the [Microsoft Entra tutorial](/sql/sql-server/azure-arc/entra-authentication-setup-tutorial#create-logins-and-users) to create logins and Users for the managed identity.
+
+
 ## Limitations
 
 Consider the following limitations:

@@ -4,7 +4,7 @@ description: Learn which database engine functionality and features were discont
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 07/09/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: conceptual
@@ -39,6 +39,14 @@ monikerRange: ">=sql-server-linux-2017 || >=sql-server-2016"
 [!INCLUDE [sqlserver](../includes/applies-to-version/sqlserver.md)]
 
 This article describes the [!INCLUDE [ssDE](../includes/ssde-md.md)] features that are no longer available in [!INCLUDE [ssnoversion](../includes/ssnoversion-md.md)].
+
+## Discontinued features in SQL Server 2025 (17.x) Preview
+
+- Data Quality Services (DQS) is [removed](/lifecycle/definitions#removal) in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)]. We continue to support DQS in [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] and earlier versions.
+
+- Master Data Services (MDS) is [removed](/lifecycle/definitions#removal) in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)]. We continue to support MDS in [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] and earlier versions.
+
+- Synapse Link is discontinued in this version of SQL Server. Use [Mirroring in Fabric](/fabric/database/mirrored-database/overview) instead. For more information, see [Mirroring in Fabric – What's new](https://aka.ms/IntroMirroringSQL).
 
 ## Discontinued features in SQL Server 2022 (16.x)
 

@@ -28,25 +28,28 @@ helpviewer_keywords:
 ##  <a name="Concepts"></a> Failover Policy Overview  
  The failover process can be broken down into the following steps:  
   
-1.  [Monitor the Health Status](../../../sql-server/failover-clusters/windows/failover-policy-for-failover-cluster-instances.md#monitor)  
+1.  [Monitor the Health Status](#monitor-the-health-status)  
   
-2.  [Determining Failures](../../../sql-server/failover-clusters/windows/failover-policy-for-failover-cluster-instances.md#determine)  
+2.  [Determining Failures](#determining-failures)  
   
-3.  [Responding to Failures](../../../sql-server/failover-clusters/windows/failover-policy-for-failover-cluster-instances.md#respond)  
+3.  [Responding to Failures](#responding-to-failures)  
   
-###  <a name="monitor"></a> Monitor the Health Status  
+### Monitor the Health Status
+
  There are three types of health statuses that are monitored for the FCI:  
   
--   [State of the SQL Server service](../../../sql-server/failover-clusters/windows/failover-policy-for-failover-cluster-instances.md#service)  
+-   [State of the SQL Server service](#state-of-the-sql-server-service)  
   
--   [Responsiveness of the SQL Server instance](../../../sql-server/failover-clusters/windows/failover-policy-for-failover-cluster-instances.md#instance)  
+-   [Responsiveness of the SQL Server instance](#responsiveness-of-the-sql-server-instance)  
   
--   [SQL Server component diagnostics](../../../sql-server/failover-clusters/windows/failover-policy-for-failover-cluster-instances.md#component)  
+-   [SQL Server component diagnostics](#sql-server-component-diagnostics)  
   
-####  <a name="service"></a> State of the SQL Server service  
+#### State of the SQL Server service
+
  The WSFC service monitors the start state of the SQL Server service on the active FCI node to detect when the SQL Server service is stopped.  
   
-####  <a name="instance"></a> Responsiveness of the SQL Server instance  
+#### Responsiveness of the SQL Server instance
+
  During SQL Server startup, the WSFC service uses the SQL Server Database Engine resource DLL to create a new connection to on a separate thread that is used exclusively for monitoring the health status. This ensures that there the SQL instance has the required resources to report its health status while under load. Using this dedicated connection, SQL Server runs the [sp_server_diagnostics &#40;Transact-SQL&#41;](../../../relational-databases/system-stored-procedures/sp-server-diagnostics-transact-sql.md) system stored procedure in repeat mode to periodically report the health status of the SQL Server components to the resource DLL.  
   
  The resource DLL determines the responsiveness of the SQL instance using a health check timeout. The HealthCheckTimeout property defines how long the resource DLL should wait for the sp_server_diagnostics stored procedure before it reports the SQL instance as unresponsive to the WSFC service. This property is configurable using T-SQL as well as in the Failover Cluster Manager snap-in. For more information, see [Configure HealthCheckTimeout Property Settings](../../../sql-server/failover-clusters/windows/configure-healthchecktimeout-property-settings.md). The following items describe how this property affects timeout and repeat interval settings:  
@@ -57,7 +60,8 @@ helpviewer_keywords:
   
 -   If the dedicated connection is lost, the resource DLL will retry the connection to the SQL instance for the interval specified by HealthCheckTimeout before it reports to the WSFC service that the SQL instance is unresponsive.  
   
-####  <a name="component"></a> SQL Server component diagnostics  
+#### SQL Server component diagnostics
+
  The system stored procedure sp_server_diagnostics periodically collects component diagnostics on the SQL instance. The diagnostic information that is collected is surfaced as a row for each of the following components and passed to the calling thread.  
   
 1.  system  
@@ -77,7 +81,8 @@ helpviewer_keywords:
 > [!TIP]  
 >  While the sp_server_diagnostic stored procedure is used by SQL Server Always On technology, it is available for use in any SQL Server instance to help detect and troubleshoot problems.  
   
-####  <a name="determine"></a> Determining Failures  
+#### Determining Failures
+
  The SQL Server Database Engine resource DLL determines whether the detected health status is a condition for failure using the FailureConditionLevel property. The FailureConditionLevel property defines which detected health statuses cause restarts or failovers. Multiple levels of options are available, ranging from no automatic restart or failover to all possible failure conditions resulting in an automatic restart or failover. For more information about how to configure this property, see [Configure FailureConditionLevel Property Settings](../../../sql-server/failover-clusters/windows/configure-failureconditionlevel-property-settings.md).  
   
  The failure conditions are set on an increasing scale. For levels 1-5, each level includes all the conditions from the previous levels in addition to its own conditions. This means that with each level, there is an increased probability of a failover or restart. The failure condition levels are described in the following table.  
@@ -95,7 +100,8 @@ helpviewer_keywords:
   
  *Default Value  
   
-####  <a name="respond"></a> Responding to Failures  
+#### Responding to Failures
+
  After one or more failure conditions are detected, how the WSFC service responds to the failures depends on the WSFC quorum state and the restart and failover settings of the FCI resource group. If the FCI has lost its WSFC quorum, then the entire FCI is brought offline and the FCI has lost its high availability. If the FCI still retains its WSFC quorum, then the WSFC service may respond by first attempting to restart the failed node and then failover if the restart attempts are unsuccessful. The restart and failover settings are configured in the Failover Cluster Manager snap-in. For more information these settings, see [\<Resource> Properties: Policies Tab](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc725685(v=ws.11)).  
   
  For more information on maintaining quorum health, see [WSFC Quorum Modes and Voting Configuration &#40;SQL Server&#41;](../../../sql-server/failover-clusters/windows/wsfc-quorum-modes-and-voting-configuration-sql-server.md).  

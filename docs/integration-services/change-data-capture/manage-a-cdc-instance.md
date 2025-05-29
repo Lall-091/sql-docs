@@ -88,7 +88,7 @@ f1_keywords:
   
     -   **Active transactions**: The current number of source Oracle transactions that are being processed by the Oracle CDC Instance and are not yet decided (commit/rollback).  
   
-    -   **Staged transactions**: The current number source Oracle transactions that are staged to the [cdc.xdbcdc_staged_transactions](../../integration-services/change-data-capture/the-oracle-cdc-databases.md#BKMK_cdcxdbcdc_staged_transactions) table.  
+    -   **Staged transactions**: The current number source Oracle transactions that are staged to the [cdc.xdbcdc_staged_transactions](../../integration-services/change-data-capture/the-oracle-cdc-databases.md#cdcxdbcdc_staged_transactions) table.  
   
 -   **Counters**: You monitor the following information in this section.  
   

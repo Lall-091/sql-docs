@@ -12,21 +12,22 @@ ms.topic: conceptual
 
 [!INCLUDE [oracle-cdc-retirement](../includes/attunity-oracle-cdc-retirement.md)]
 
-  This section describes some important concepts of the Oracle CDC Service. The concepts included in this section are:  
+This section describes some important concepts of the Oracle CDC Service. The concepts included in this section are:  
   
--   [The MSXDBCDC Database](../../integration-services/change-data-capture/working-with-the-oracle-cdc-service.md#BKMK_MSXDBCDC)  
+- [The MSXDBCDC Database](#the-msxdbcdc-database)  
   
-     This section describes the tables that are included in this database and how it is important to CDC.  
+    This section describes the tables that are included in this database and how it is important to CDC.  
   
--   [The CDC Databases](../../integration-services/change-data-capture/working-with-the-oracle-cdc-service.md#BKMK_CDCdatabase)  
+- [The CDC Databases](#the-cdc-databases)  
   
-     This section provides a brief description of the CDC databases. These databases are created using the Oracle CDC Designer Console. See the documentation included with your installation of the CDC Designer Console for more information about the CDC databases.  
+    This section provides a brief description of the CDC databases. These databases are created using the Oracle CDC Designer Console. See the documentation included with your installation of the CDC Designer Console for more information about the CDC databases.  
   
--   [Using the Command Line to Configure the CDC Service](../../integration-services/change-data-capture/working-with-the-oracle-cdc-service.md#BKMK_CommandConfigCDC)  
+- [Using the Command Line to Configure the CDC Service](#using-the-command-line-to-configure-the-cdc-service)  
   
-     This section describes the command-line commands that can be used to configure the Oracle CDC Service.  
+    This section describes the command-line commands that can be used to configure the Oracle CDC Service.  
   
-##  <a name="BKMK_MSXDBCDC"></a> The MSXDBCDC Database  
+## The MSXDBCDC Database
+
  The MSXDBCDC (Microsoft External-Database CDC) database is a special database that is required when using the CDC Service for Oracle with a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance.  
   
  The name of this database cannot be changed. If a database called MSXDBCDC exists on the host [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance and contains tables other than those defined by the CDC Service for Oracle, the host [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance cannot be used.  
@@ -51,13 +52,14 @@ ms.topic: conceptual
 ### The MSXDBCDC Database Tables  
  This section describes the following tables in the MSXDBCDC database.  
   
--   [dbo.xdbcdc_trace](../../integration-services/change-data-capture/working-with-the-oracle-cdc-service.md#BKMK_dboxdbcdc_trace)  
+- [dbo.xdbcdc_trace](#dboxdbcdc_trace)
   
--   [dbo.xdbcdc_databases](../../integration-services/change-data-capture/working-with-the-oracle-cdc-service.md#BKMK_dboxdbcdc_databases)  
+- [dbo.xdbcdc_databases](#dboxdbcdc_databases)
   
--   [dbo.xdbcdc_services](../../integration-services/change-data-capture/working-with-the-oracle-cdc-service.md#BKMK_dboxdbcdc_services)  
+- [dbo.xdbcdc_services](#dboxdbcdc_services)
   
-###  <a name="BKMK_dboxdbcdc_trace"></a> dbo.xdbcdc_trace  
+### dbo.xdbcdc_trace
+
  This table stores tracing information for the Oracle CDC Service. The information stored in this table includes notable status changes and trace records.  
   
  The Oracle CDC Service writes error records and some of the information records to both the Windows event log and the trace table. In some cases the trace table may not be accessible, in which case the error information is accessible from the event log.  
@@ -78,7 +80,8 @@ ms.topic: conceptual
   
  The Oracle CDC instance will delete old trace table rows according to the change tables retention policy.  
   
-###  <a name="BKMK_dboxdbcdc_databases"></a> dbo.xdbcdc_databases  
+### dbo.xdbcdc_databases
+
  This table contains the names of CDC Service for Oracle CDC databases in the current [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance. Each database corresponds to an Oracle CDC instance. The Oracle CDC Service uses this table to determine which instances to start or stop and which instances to reconfigure.  
   
  The following table describes the items that are included in the **dbo.xdbcdc_databases** table.  
@@ -90,7 +93,8 @@ ms.topic: conceptual
 |cdc_service_name|This item determines which Oracle CDC Service handles the selected Oracle database.|  
 |enabled|Indicates whether the Oracle CDC instance is active (1) or disabled (0). When the Oracle CDC Service starts only the instances marked enable (1) are started.<br /><br /> **Note**: An Oracle CDC instance can become disabled due to an error that is not retryable. In this case, the instance must be restarted manually after the error is resolved.|  
   
-###  <a name="BKMK_dboxdbcdc_services"></a> dbo.xdbcdc_services  
+### dbo.xdbcdc_services
+
  This table lists the CDC services associated with the host [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance. This table is used by the CDC Designer Console to determine the list of CDC services that are configured for the local [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance. It is also used by the CDC service to ensure that only one running Windows service handles a given Oracle CDC Service name.  
   
  The following describes the capture state items that are included in the **dbo.xdbcdc_databases** table.  
@@ -107,17 +111,18 @@ ms.topic: conceptual
 ### The MSXDBCDC Database Stored Procedures  
  This section describes the following stored procedures in the MSXDBCDC database.  
   
--   [dbo.xcbcdc_reset_db(Database Name)](../../integration-services/change-data-capture/working-with-the-oracle-cdc-service.md#BKMK_dboxcbcdc_reset_db)  
+- [dbo.xcbcdc_reset_db(Database Name)](#dboxcbcdc_reset_dbdatabase-name)
   
--   [dbo.xdbcdc_disable_db(dbname)](../../integration-services/change-data-capture/working-with-the-oracle-cdc-service.md#BKMK_dboxdbcdc_disable_db)  
+- [dbo.xdbcdc_disable_db(dbname)](#dboxdbcdc_disable_dbdbname)
   
--   [dbo.xcbcdc_add_service(svcname,sqlusr)](../../integration-services/change-data-capture/working-with-the-oracle-cdc-service.md#BKMK_dboxcbcdc_add_service)  
+- [dbo.xcbcdc_add_service(svcname,sqlusr)](#dboxcbcdc_add_servicesvcnamesqlusr)
   
--   [dbo.xdbcdc_start(dbname)](../../integration-services/change-data-capture/working-with-the-oracle-cdc-service.md#BKMK_dboxdbcdc_start)  
+- [dbo.xdbcdc_start(dbname)](#dboxdbcdc_startdbname)
   
--   [dbo.xdbcdc_stop(dbname)](../../integration-services/change-data-capture/working-with-the-oracle-cdc-service.md#BKMK_dboxdbcdc_stop)  
+- [dbo.xdbcdc_stop(dbname)](#dboxdbcdc_stopdbname)
   
-###  <a name="BKMK_dboxcbcdc_reset_db"></a> dbo.xcbcdc_reset_db(Database Name)  
+### dbo.xcbcdc_reset_db(Database Name)
+
  This procedure clears the data of an Oracle CDC instance. It is used:  
   
 -   To restart data capturing while disregarding previous data, for example following source database recovery or following inactivity where some of the Oracle transaction logs are not available.  
@@ -138,7 +143,8 @@ ms.topic: conceptual
   
  For more information about the CDC tables, see *The CDC Databases* in the help system in the CDC Designer Console.  
   
-###  <a name="BKMK_dboxdbcdc_disable_db"></a> dbo.xdbcdc_disable_db(dbname)  
+### dbo.xdbcdc_disable_db(dbname)
+
  The **dbo.xcbcdc_disable_db** procedure performs the following task:  
   
 -   Removes the entry for the selected CDC database in the MSXDBCDC.xdbcdc_databases table.  
@@ -147,29 +153,34 @@ ms.topic: conceptual
   
  For more information about the CDC tables, see The CDC Databases in the help system in the CDC Designer Console.  
   
-###  <a name="BKMK_dboxcbcdc_add_service"></a> dbo.xcbcdc_add_service(svcname,sqlusr)  
+### dbo.xcbcdc_add_service(svcname,sqlusr)
+
  The **dbo.xcbcdc_add_service** procedure adds an entry to the **MSXDBCDC.xdbcdc_services** table and adds an increment of one to the ref_count column for the service name in the **MSXDBCDC.xdbcdc_services** table. When the **ref_count** is 0, it deletes the row.  
   
  To use the **dbo.xcbcdc_add_service\<service name, username>** procedure, the user must be a member of the **db_owner** database role for the CDC instance database being named or a member of the **sysadmin** or **serveradmin** fixed server role.  
   
-###  <a name="BKMK_dboxdbcdc_start"></a> dbo.xdbcdc_start(dbname)  
+### dbo.xdbcdc_start(dbname)
+
  The **dbo.xdbcdc_start** procedure sends a start request to the CDC service that handles the selected CDC instance to start the change processing.  
   
  To use the **dbo.xcdcdc_start** procedure, the user must be a member of the **db_owner** database role for the CDC database or be a member of either the **sysadmin** or **serveradmin** roles for the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance.  
   
-###  <a name="BKMK_dboxdbcdc_stop"></a> dbo.xdbcdc_stop(dbname)  
+### dbo.xdbcdc_stop(dbname)
+
  The **dbo.xdbcdc_stop** procedure sends a stop request to the CDC service that handles the selected CDC instance to stop the change processing.  
   
  To use the **dbo.xcdcdc_stop** procedure, the user must be a member of the **db_owner** database role for the CDC database or be a member of either the **sysadmin** or **serveradmin** roles for the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance.  
   
-##  <a name="BKMK_CDCdatabase"></a> The CDC Databases  
+## The CDC Databases
+
  Each Oracle CDC instance used in a CDC service is associated with a specific [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] database called the CDC Database. This [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] database is hosted in the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance associated with the Oracle CDC Service.  
   
  The CDC Database contains a special cdc schema. The Oracle CDC Service uses this schema with table names with the prefix **xdbcdc_**. This schema is used for security and consistency purposes.  
   
  Both the Oracle CDC instance and the CDC databases are created using the Oracle CDC Designer Console. For more information about the CDC databases, see the documentation included with your installation of the Oracle CDC Designer Console.  
   
-##  <a name="BKMK_CommandConfigCDC"></a> Using the Command Line to Configure the CDC Service  
+## Using the Command Line to Configure the CDC Service
+
  You can operate the Oracle CDC Service program (xdbcdcsvc.exe) from the command line. The CDC service program is a native 32-bit/64-bit Windows executable file.  
   
  **See also**  
@@ -179,13 +190,14 @@ ms.topic: conceptual
 ### Service Program Commands  
  The section describes the following commands that are used to configure the CDC service.  
   
--   [Config](../../integration-services/change-data-capture/working-with-the-oracle-cdc-service.md#BKMK_config)  
+- [Config](#config)
   
--   [Create](../../integration-services/change-data-capture/working-with-the-oracle-cdc-service.md#BKMK_create)  
+- [Create](#create)
   
--   [Delete](../../integration-services/change-data-capture/working-with-the-oracle-cdc-service.md#BKMK_delete)  
+- [Delete](#delete)
   
-###  <a name="BKMK_config"></a> Config  
+### Config
+
  Use `Config` to update an Oracle CDC Service configuration from a script. The command can be used to update only specific parts of the CDC service configuration (for example, only the connection string without knowing the asymmetric key password). The command must be run by a computer administrator. The following is an example of the `Config` command.  
   
 ```  
@@ -212,7 +224,8 @@ ms.topic: conceptual
   
  **Note**: Any parameter that contains spaces or double quotes must be wrapped with double quotes ("). Embedded double quotation marks must be doubled (for example to use **"A#B" D** as a password enter **""A#B"" D"**).  
   
-###  <a name="BKMK_create"></a> Create  
+### Create
+
  Use `Create` to create an Oracle CDC Service from a script. The command must be run by a computer administrator. The following is an example of the `Create` command:  
   
 ```  
@@ -238,7 +251,8 @@ ms.topic: conceptual
   
  **Note**: Any parameter that contains spaces or double quotes must be wrapped with double quotes ("). Embedded double quotation marks must be doubled (for example to use **"A#B" D** as a password enter **""A#B"" D"**.  
   
-###  <a name="BKMK_delete"></a> Delete  
+### Delete
+
  Use `Delete` to cleanly delete the Oracle CDC Service from a script. This command must be run by a computer administrator. The following is an example of the `Delete` command.  
   
 ```  

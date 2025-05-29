@@ -12,7 +12,7 @@ ms.topic: conceptual
 
 [!INCLUDE [oracle-cdc-retirement](../includes/attunity-oracle-cdc-retirement.md)]
 
-  The Oracle CDC Instance is a process created by the Oracle CDC Service to process changes captured from a single Oracle source database. The Oracle CDC Instance retrieves its configuration from the **cdc.xdbcdc_config** table and maintains its state in the **cdc.xdbcdc_state** table. These tables are part of the CDC database, which defines the Oracle CDC Instance. For more information about the xdbcdc database and tables see [The CDC Databases](../../integration-services/change-data-capture/working-with-the-oracle-cdc-service.md#BKMK_CDCdatabase).  
+  The Oracle CDC Instance is a process created by the Oracle CDC Service to process changes captured from a single Oracle source database. The Oracle CDC Instance retrieves its configuration from the **cdc.xdbcdc_config** table and maintains its state in the **cdc.xdbcdc_state** table. These tables are part of the CDC database, which defines the Oracle CDC Instance. For more information about the xdbcdc database and tables see [The CDC Databases](../../integration-services/change-data-capture/working-with-the-oracle-cdc-service.md).
   
  The following describes the tasks carried out by the Oracle CDC instance:  
   

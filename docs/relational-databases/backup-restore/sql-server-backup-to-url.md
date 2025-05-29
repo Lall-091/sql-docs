@@ -4,7 +4,7 @@ description: Learn about the concepts, requirements, and components necessary fo
 author: dplessMSFT
 ms.author: dpless
 ms.reviewer: mathoma, wiassaf, hudequei 
-ms.date: 03/01/2023
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: backup-restore
 ms.custom: devx-track-azurepowershell
@@ -15,11 +15,14 @@ monikerRange: ">=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-curren
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
-This article introduces the concepts, requirements and components necessary to use Microsoft Azure Blob Storage as a backup destination. The backup and restore functionality are same or similar to when using DISK or TAPE, with a few differences. These differences and a few code examples are included in this article.  
+This article introduces the concepts, requirements, and components necessary to use Microsoft Azure Blob Storage as a backup destination. The backup and restore functionality are same or similar to when using DISK or TAPE, with a few differences. These differences and a few code examples are included in this article.
+
+> [!TIP]
+> [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] introduces backup to URL with managed identity. Review [Back up to URL with managed identity | SQL Server enabled by Azure Arc](../../sql-server/azure-arc/backup-to-url.md).
 
 ## Overview
 
-It is important to understand the components and the interaction between them to perform a backup to or restore from Microsoft Azure Blob Storage.  
+It's important to understand the components and the interaction between them to perform a backup to or restore from Microsoft Azure Blob Storage.  
 
  Creating an Azure Storage account within your Azure subscription is the first step in this process. This storage account is an administrative account that has full administrative permissions on all containers and objects created with the storage account. [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] can either use the Azure storage account name and its access key value to authenticate and write and read blobs to Microsoft Azure Blob Storage or use a Shared Access Signature token generated on specific containers granting it read and write rights. For more information on Azure Storage Accounts, see [About Azure Storage Accounts](/azure/storage/common/storage-account-create) and for more information about Shared Access Signatures, see [Shared Access Signatures, Part 1: Understanding the SAS Model](/azure/storage/common/storage-sas-overview). The [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Credential stores this authentication information and is used during the backup or restore operations.  
 
@@ -33,16 +36,16 @@ This article contains information on using Backup to URL for Azure Blob Storage.
 
 There are two types of blobs that can be stored in Microsoft Azure Blob Storage: block and page blobs. For SQL Server 2016 and later, block blob is preferred.
 
-If the storage key is used in the credential, page blob will be used; if the Shared Access Signature is used, block blob will be used.
+If the storage key is used in the credential, page blob is used; if the Shared Access Signature is used, block blob is used.
 
-Backup to block blob is only available in SQL Server 2016 or later version for backup to Azure Blob Storage. Backup to block blob instead of page blob if you are running SQL Server 2016 or later.
+Backup to block blob is only available in SQL Server 2016 or later version for backup to Azure Blob Storage. Backup to block blob instead of page blob if you're running SQL Server 2016 or later.
 
 The main reasons are:
 
 - Shared Access Signature is a safer way to authorize blob access compared to storage key.
 - You can back up to multiple block blobs to get better backup and restore performance, and support larger database backup.
 - [Block blob](https://azure.microsoft.com/pricing/details/storage/blobs/) is cheaper than [page blob](https://azure.microsoft.com/pricing/details/storage/page-blobs/).
-- Customers that need to back up to page blobs via a proxy server will need to use `backuptourl.exe`.
+- Customers that need to back up to page blobs via a proxy server need to use `backuptourl.exe`.
 
 Taking a backup of a large database to Azure Blob Storage is subject to the limitations listed in [Azure SQL Managed Instance T-SQL differences, limitations, and known issues](/azure/sql-database/sql-database-managed-instance-transact-sql-information#backup).
 
@@ -77,9 +80,9 @@ The only supported backup to URL for Azure Blob Storage is to block blobs, using
 
 ### <a id="sqlserver"></a> [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Components
 
-**URL:** A URL specifies a Uniform Resource Identifier (URI) to a unique backup file. The URL is used to provide the location and name of the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] backup file. The URL must point to an actual blob, not just a container. If the blob does not exist, it is created. If an existing blob is specified, BACKUP fails, unless the "WITH FORMAT" option is specified to overwrite the existing backup file in the blob.  
+**URL:** A URL specifies a Uniform Resource Identifier (URI) to a unique backup file. The URL is used to provide the location and name of the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] backup file. The URL must point to an actual blob, not just a container. If the blob doesn't exist, it is created. If an existing blob is specified, BACKUP fails, unless the "WITH FORMAT" option is specified to overwrite the existing backup file in the blob.  
 
- Here is a sample URL value: `https://ACCOUNTNAME.blob.core.windows.net/<CONTAINER>/FILENAME.bak`. 
+ Here's a sample URL value: `https://ACCOUNTNAME.blob.core.windows.net/<CONTAINER>/FILENAME.bak`. 
 
  >[!Note]
 >> Backup to URL using HTTP is NOT supported.
@@ -102,7 +105,7 @@ The following are security considerations and requirements when backing up to or
     >  [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] requires that either an Azure account name and access key authentication or a Shared Access Signature and access token be stored in a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Credential. This information is used to authenticate to the Azure account when performing backup or restore operations.  
 
     > [!WARNING]
-    > Azure Storage supports [disabling](/azure/storage/common/shared-key-authorization-prevent) Shared Key authorization for a storage account. If Shared Key authorization is disabled, SQL Server Backup To URL will not work.
+    > Azure Storage supports [disabling](/azure/storage/common/shared-key-authorization-prevent) Shared Key authorization for a storage account. If Shared Key authorization is disabled, SQL Server Backup To URL won't work.
 
 - The user account that is used to issue BACKUP or RESTORE commands should be in the **db_backup operator** database role with **Alter any credential** permissions.   
 
@@ -115,29 +118,29 @@ The following are security considerations and requirements when backing up to or
 
 - You can issue backup or restore statements by using Transact-SQL, SMO, PowerShell cmdlets, SQL Server Management Studio Backup or Restore wizard.
   
-- Backup to Azure Storage account only supports authentication with Shared Access Signature (SAS) tokens or storage account keys. All other authentication methods, including authentication with Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)), are not supported.
+- Backup to Azure Storage account only supports authentication with Shared Access Signature (SAS) tokens or storage account keys. All other authentication methods, including authentication with Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)), aren't supported.
 
-- Creating a logical device name is not supported. So adding URL as a backup device using sp_dumpdevice or through SQL Server Management Studio is not supported.  
+- Creating a logical device name isn't supported. So adding URL as a backup device using sp_dumpdevice or through SQL Server Management Studio isn't supported.  
 
-- Appending to existing backup blobs is not supported. Backups to an existing blob can only be overwritten by using the **WITH FORMAT** option. However, when using file-snapshot backups (using the **WITH FILE_SNAPSHOT** argument), the **WITH FORMAT** argument is not permitted to avoid leaving orphaned file-snapshots that were created with the original file-snapshot backup.  
+- Appending to existing backup blobs isn't supported. Backups to an existing blob can only be overwritten by using the **WITH FORMAT** option. However, when using file-snapshot backups (using the **WITH FILE_SNAPSHOT** argument), the **WITH FORMAT** argument isn't permitted to avoid leaving orphaned file-snapshots that were created with the original file-snapshot backup.  
 
 - Backup to multiple blobs in a single backup operation is only supported using block blobs and using a Shared Access Signature (SAS) token rather than the storage account key for the SQL Credential.  
 
-- Specifying **BLOCKSIZE** is not supported for page blobs. 
+- Specifying **BLOCKSIZE** isn't supported for page blobs. 
 
-- Specifying **MAXTRANSFERSIZE** is not supported page blobs. 
+- Specifying **MAXTRANSFERSIZE** isn't supported page blobs. 
 
-- Specifying backupset options - **RETAINDAYS** and **EXPIREDATE** are not supported.  
+- Specifying backupset options - **RETAINDAYS** and **EXPIREDATE** aren't supported.  
 
 - [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] has a maximum limit of 259 characters for a backup device name. The BACKUP TO URL consumes 36 characters for the required elements used to specify the URL - 'https://.blob.core.windows.net//.bak', leaving 223 characters for account, container, and blob names put together.  
 
-- SQL Server versions prior to 2022 have a limit of 256 characters for Shared Access signature (SAS) tokens, which will limit the type of tokens that can be used (for example, User Delegation Key tokens are not supported).
+- SQL Server versions prior to 2022 have a limit of 256 characters for Shared Access signature (SAS) tokens, which will limit the type of tokens that can be used (for example, User Delegation Key tokens aren't supported).
 
 - If your server accesses Azure via a proxy server, you must use trace flag 1819 and then set the WinHTTP proxy configuration via one of the following methods:
    - The [proxycfg.exe](/windows/win32/winhttp/proxycfg-exe--a-proxy-configuration-tool) utility on Windows XP or Windows Server 2003 and earlier. 
    - The [netsh.exe](/windows/win32/winsock/netsh-exe) utility on Windows Vista and Windows Server 2008 or later. 
 
-- [Immutable storage for Azure Blob Storage](/azure/storage/blobs/storage-blob-immutable-storage) is not supported. Set the **Immutable Storage** policy to false. 
+- [Immutable storage for Azure Blob Storage](/azure/storage/blobs/storage-blob-immutable-storage) isn't supported. Set the **Immutable Storage** policy to false. 
 
 ## Supported arguments & statements in Azure Blob Storage
 
@@ -145,7 +148,7 @@ The following are security considerations and requirements when backing up to or
 
 |Backup/Restore Statement|Supported|Exceptions|Comments|
 |-|-|-|-|
-|BACKUP|Y|BLOCKSIZE and MAXTRANSFERSIZE are supported for block blobs. They are not supported for page blobs. | BACKUP to a block blob requires a Shared Access Signature saved in a SQL Server credential. BACKUP to page blob requires the storage account key saved in a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] credential, and requires the WITH CREDENTIAL argument to be specified.|  
+|BACKUP|Y|BLOCKSIZE and MAXTRANSFERSIZE are supported for block blobs. They aren't supported for page blobs. | BACKUP to a block blob requires a Shared Access Signature saved in a SQL Server credential. BACKUP to page blob requires the storage account key saved in a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] credential, and requires the WITH CREDENTIAL argument to be specified.|  
 |RESTORE|Y||Requires a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] credential to be defined, and requires the WITH CREDENTIAL argument to be specified if the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] credential is defined using the storage account key as the secret|  
 |RESTORE FILELISTONLY|Y||Requires a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] credential to be defined, and requires the WITH CREDENTIAL argument to be specified if the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] credential is defined using the storage account key as the secret|  
 |RESTORE HEADERONLY|Y||Requires a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] credential to be defined, and requires the WITH CREDENTIAL argument to be specified if the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] credential is defined using the storage account key as the secret|  
@@ -164,21 +167,21 @@ The following are security considerations and requirements when backing up to or
 |DATABASE|Y|||  
 |LOG|Y|||  
 ||  
-|TO (URL)|Y|Unlike DISK and TAPE, URL does not support specifying or creating a logical name.|This argument is used to specify the URL path for the backup file.|  
+|TO (URL)|Y|Unlike DISK and TAPE, URL doesn't support specifying or creating a logical name.|This argument is used to specify the URL path for the backup file.|  
 |MIRROR TO|Y|||  
 |**WITH OPTIONS:**||||  
 |CREDENTIAL|Y||WITH CREDENTIAL is only supported when using BACKUP TO URL option to back up to Azure Blob Storage and only if the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] credential is defined using the storage account key as the secret|  
 |FILE_SNAPSHOT|Y|||  
-|ENCRYPTION|Y||When the **WITH ENCRYPTION** argument is specified, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] File-Snapshot Backup ensures that the entire database was TDE-encrypted before taking the backup and, if so, encrypts the file-snapshot backup file itself using the algorithm specified for TDE on the database. If all data in the database in the entire database is not encrypted, the backup will fail (for example, the encryption process is not yet complete).|  
+|ENCRYPTION|Y||When the **WITH ENCRYPTION** argument is specified, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] File-Snapshot Backup ensures that the entire database was TDE-encrypted before taking the backup and, if so, encrypts the file-snapshot backup file itself using the algorithm specified for TDE on the database. If all data in the database in the entire database isn't encrypted, the backup will fail (for example, the encryption process isn't yet complete).|  
 |DIFFERENTIAL|Y|||  
 |COPY_ONLY|Y|||  
 |COMPRESSION&#124;NO_COMPRESSION|Y|Not supported for file-snapshot backup||  
 |DESCRIPTION|Y|||  
 |NAME|Y|||  
 |EXPIREDATE &#124; RETAINDAYS|-|||  
-|NOINIT &#124; INIT|-||Appending to blobs is not possible. To overwrite a backup, use the **WITH FORMAT** argument. However, when using file-snapshot backups (using the **WITH FILE_SNAPSHOT** argument), the **WITH FORMAT** argument is not permitted to avoid leaving orphaned file-snapshots that were created with the original backup.|  
+|NOINIT &#124; INIT|-||Appending to blobs isn't possible. To overwrite a backup, use the **WITH FORMAT** argument. However, when using file-snapshot backups (using the **WITH FILE_SNAPSHOT** argument), the **WITH FORMAT** argument isn't permitted to avoid leaving orphaned file-snapshots that were created with the original backup.|  
 |NOSKIP &#124; SKIP|-|||  
-|NOFORMAT &#124; FORMAT|Y||A backup taken to an existing blob fails unless **WITH FORMAT** is specified. The existing blob is overwritten when **WITH FORMAT** is specified. However, when using file-snapshot backups (using the **WITH FILE_SNAPSHOT** argument), the FORMAT argument is not permitted to avoid leaving orphaned file-snapshots that were created with the original file-snapshot backup. However, when using file-snapshot backups (using the **WITH FILE_SNAPSHOT** argument), the **WITH FORMAT** argument is not permitted to avoid leaving orphaned file-snapshots that were created with the original backup.|  
+|NOFORMAT &#124; FORMAT|Y||A backup taken to an existing blob fails unless **WITH FORMAT** is specified. The existing blob is overwritten when **WITH FORMAT** is specified. However, when using file-snapshot backups (using the **WITH FILE_SNAPSHOT** argument), the FORMAT argument isn't permitted to avoid leaving orphaned file-snapshots that were created with the original file-snapshot backup. However, when using file-snapshot backups (using the **WITH FILE_SNAPSHOT** argument), the **WITH FORMAT** argument isn't permitted to avoid leaving orphaned file-snapshots that were created with the original backup.|  
 |MEDIADESCRIPTION|Y|||  
 |MEDIANAME|Y|||  
 |BLOCKSIZE|Y|Not supported for page blob. Supported for block blob.| Recommend BLOCKSIZE=65536 to optimize use of the 50,000 blocks allowed in a block blob. |  
@@ -235,7 +238,7 @@ The following are security considerations and requirements when backing up to or
 You can back up a database to URL through the Back Up task in SQL Server Management Studio using a SQL Server Credential.  
 
 > [!NOTE]  
->  To create a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] file-snapshot backup, or overwrite an existing media set, you must use Transact-SQL, Powershell or C# rather than the Back Up task in SQL Server Management Studio.  
+>  To create a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] file-snapshot backup, or overwrite an existing media set, you must use Transact-SQL, PowerShell, or C# rather than the Back Up task in SQL Server Management Studio.  
 
  The following steps describe the changes made to the Back Up Database task in SQL Server Management Studio to allow for backing up to Azure storage:  
 
@@ -246,11 +249,11 @@ You can back up a database to URL through the Back Up task in SQL Server Managem
 1. On the **General** page in the **Destination** section the **URL** option is available in the **Back up to:** drop-down list.  The **URL** option is used to create a backup to Microsoft Azure storage. Select **Add** and the **Select Backup Destination** dialog box will open:
     1. **Azure storage container:** The name of the Microsoft Azure storage container to store the backup files.  Select an existing container from the drop-down list or manually enter the container. 
 
-    1. **Shared Access Policy:** Enter the shared access signature for a manually entered container.  This field is not available if an existing container was chosen. 
+    1. **Shared Access Policy:** Enter the shared access signature for a manually entered container.  This field isn't available if an existing container was chosen. 
 
     1. **Backup File:** Name of the backup file.
 
-    1. **New Container:** Used to register an existing container that you do not have a shared access signature for.  See [Connect to a Microsoft Azure Subscription](../../relational-databases/backup-restore/connect-to-a-microsoft-azure-subscription.md).
+    1. **New Container:** Used to register an existing container that you don't have a shared access signature for.  See [Connect to a Microsoft Azure Subscription](../../relational-databases/backup-restore/connect-to-a-microsoft-azure-subscription.md).
 
 > [!NOTE] 
 >  **Add** supports multiple backup files and storage containers for a single media set.
@@ -270,7 +273,7 @@ When you select **URL** as the destination, certain options in the **Media Optio
  Similar to the backup task described previously, the Maintenance Plan Wizard in SQL Server Management Studio includes **URL** as one of the destination options, and other supporting objects required to back up to Azure storage like the SQL Credential. It has the same For more information, see the **Define Backup Tasks** section in [Using Maintenance Plan Wizard](../../relational-databases/maintenance-plans/use-the-maintenance-plan-wizard.md#SSMSProcedure).  
 
 > [!NOTE]  
->  To create a striped backup set, a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] file-snapshot backup, or a SQL credential using Shared Access token, you must use Transact-SQL, Powershell or C# rather than the Backup task in Maintenance Plan Wizard.  
+>  To create a striped backup set, a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] file-snapshot backup, or a SQL credential using Shared Access token, you must use Transact-SQL, PowerShell, or C# rather than the Backup task in Maintenance Plan Wizard.  
 
 ## <a id="RestoreSSMS"></a> Restore with SSMS
 
@@ -288,9 +291,9 @@ The Restore Database task includes **URL** as a device to restore from.  The fol
 
     1. **Shared Access Signature:**  Used to enter the shared access signature for the designated container.
 
-    1. **Add:**  Used to register an existing container that you do not have a shared access signature for.  See [Connect to a Microsoft Azure Subscription](../../relational-databases/backup-restore/connect-to-a-microsoft-azure-subscription.md).
+    1. **Add:**  Used to register an existing container that you don't have a shared access signature for.  See [Connect to a Microsoft Azure Subscription](../../relational-databases/backup-restore/connect-to-a-microsoft-azure-subscription.md).
 
-    1. **OK:**    SQL Server connects to Microsoft Azure storage using the SQL Credential information you provided and opens the **Locate Backup File in Microsoft Azure** dialog. The backup files residing in the storage container are displayed on this page. Select the file you want to use to restore and select **OK**. This takes you back to the **Select Backup Devices** dialog, and selecting **OK** on this dialog takes you back to the main **Restore** dialog where you will be able complete the restore. 
+    1. **OK:**    SQL Server connects to Microsoft Azure storage using the SQL Credential information you provided and opens the **Locate Backup File in Microsoft Azure** dialog. The backup files residing in the storage container are displayed on this page. Select the file you want to use to restore and select **OK**. This takes you back to the **Select Backup Devices** dialog, and selecting **OK** on this dialog takes you back to the main **Restore** dialog where you'll be able complete the restore. 
 
      [Restore Database (General Page)](../../relational-databases/backup-restore/restore-database-general-page.md)  
 
@@ -316,7 +319,7 @@ This section contains the following examples.
 The following example creates Shared Access Signatures that can be used to create a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Credential on a newly created container. The script  creates a Shared Access Signature that is associated with a Stored Access Policy. For more information, see [Shared Access Signatures, Part 1: Understanding the SAS Model](/azure/storage/common/storage-sas-overview). The script also writes the T-SQL command required to create the credential on SQL Server. 
 
 > [!NOTE]
-> The example requires Microsoft Azure Powershell. For information about installing and using Azure Powershell, see [How to install and configure Azure PowerShell](/powershell/azure/).  
+> The example requires Microsoft Azure PowerShell. For information about installing and using Azure PowerShell, see [How to install and configure Azure PowerShell](/powershell/azure/).  
 > These scripts were verified using Azure PowerShell 5.1.15063. 
 
 **Shared Access Signature that is associated with a Stored Access Policy**

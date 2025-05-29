@@ -67,4 +67,4 @@ Reporting Services available Web service development options
   
 ## Related content
 
-- [Report Server Web Service](../../reporting-services/report-server-web-service/report-server-web-service.md)
+- [Report Server Web Service](#report-server-web-service)

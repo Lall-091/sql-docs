@@ -132,7 +132,7 @@ Causes `DBCC CHECKTABLE` to check the table for column values that aren't valid 
 
 Column-value integrity checks are enabled by default and don't require the `DATA_PURITY` option. For databases upgraded from earlier versions of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], you can use `DBCC CHECKTABLE WITH DATA_PURITY` to find and correct errors on a specific table; however, column-value checks on the table aren't enabled by default until `DBCC CHECKDB WITH DATA_PURITY` has been run error free on the database. After this, `DBCC CHECKDB` and `DBCC CHECKTABLE` check column-value integrity by default.
 
-Validation errors reported by this option can't be fixed by using DBCC repair options. For information about manually correcting these errors, see Knowledge Base article 923247: [Troubleshooting DBCC error 2570 in SQL Server 2005 and later versions](https://support.microsoft.com/help/923247).  
+Validation errors reported by this option can't be fixed by using DBCC repair options. For information about manually correcting these errors, see [Troubleshoot database consistency errors reported by DBCC CHECKDB](/troubleshoot/sql/database-engine/database-file-operations/troubleshoot-dbcc-checkdb-errors).
 
 If `PHYSICAL_ONLY` is specified, column-integrity checks aren't performed.
 

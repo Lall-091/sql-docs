@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 03/28/2025
+ms.date: 05/02/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: include
@@ -13,9 +13,9 @@ You should run production workloads on supported platforms like [Red Hat Enterpr
 
 | Platform | File system | Installation guide | Get |
 | --- | --- | --- | --- |
-| Red Hat Enterprise Linux 7.7 - 7.9 Server <sup>1</sup>, or 8.x Server | XFS or EXT4 | [Installation guide](../quickstart-install-connect-red-hat.md) | [Get RHEL 8](https://access.redhat.com/products/red-hat-enterprise-linux/evaluation) |
-| SUSE Linux Enterprise Server v12 (SP3 - SP5) <sup>2</sup>, or v15 | XFS or EXT4 | [Installation guide](../quickstart-install-connect-suse.md) | [Get SLES v15](https://www.suse.com/products/server) |
-| Ubuntu 18.04 <sup>3</sup> or 20.04 | XFS or EXT4 | [Installation guide](../quickstart-install-connect-ubuntu.md) | [Get Ubuntu 20.04](https://releases.ubuntu.com/20.04/) |
+| Red Hat Enterprise Linux 7.7 - 7.9 Server <sup>1</sup>, or 8.x Server | **XFS** or **ext4** | [Installation guide](../quickstart-install-connect-red-hat.md) | [Get RHEL 8](https://access.redhat.com/products/red-hat-enterprise-linux/evaluation) |
+| SUSE Linux Enterprise Server v12 (SP3 - SP5) <sup>2</sup>, or v15 | **XFS** or **ext4** | [Installation guide](../quickstart-install-connect-suse.md) | [Get SLES v15](https://www.suse.com/products/server) |
+| Ubuntu 18.04 <sup>3</sup> or 20.04 | **XFS** or **ext4** | [Installation guide](../quickstart-install-connect-ubuntu.md) | [Get Ubuntu 20.04](https://releases.ubuntu.com/20.04/) |
 | Docker Engine 1.8+ on Windows, Mac, or Linux | N/A | [Installation guide](../quickstart-install-connect-docker.md) | [Get Docker](https://www.docker.com/get-started) |
 
 <sup>1</sup> At the end of June 2024, RHEL 7.x transitioned from mainstream maintenance to extended lifecycle support (ELS). For more information, see [Red Hat Enterprise Linux Life Cycle](https://access.redhat.com/support/policy/updates/errata/).

@@ -93,7 +93,7 @@ helpviewer_keywords:
 |Foreach Data Lake Storage Gen2 File|Specify the Azure Data Lake Storage Gen2 directory that contains the files to be enumerated, along with other options.|
 
 ## Add enumeration to a control flow with a Foreach Loop container
- [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] includes the Foreach Loop container, a control flow element that makes it simple to include a looping construct that enumerates files and objects in the control flow of a package. For more information, see [Foreach Loop Container](../../integration-services/control-flow/foreach-loop-container.md).  
+ [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] includes the Foreach Loop container, a control flow element that makes it simple to include a looping construct that enumerates files and objects in the control flow of a package. For more information, see [Foreach Loop Container](#foreach-loop-container).  
   
  The Foreach Loop container provides no functionality; it provides only the structure in which you build the repeatable control flow, specify an enumerator type, and configure the enumerator. To provide container functionality, you must include at least one task in the Foreach Loop container. For more information, see [Integration Services Tasks](../../integration-services/control-flow/integration-services-tasks.md).  
   
@@ -175,7 +175,7 @@ This procedure describes how to configure a Foreach Loop container, including pr
 ## General Page - Foreach Loop Editor
 Use the **General** page of the **Foreach Loop Editor** dialog box to name and describe a Foreach Loop container that uses a specified enumerator to repeat a workflow for each member in a collection.  
   
- To learn about the Foreach Loop container and how to configure it, see [Foreach Loop Container](../../integration-services/control-flow/foreach-loop-container.md) and [Configure a Foreach Loop Container]().  
+ To learn about the Foreach Loop container and how to configure it, see [Foreach Loop Container](#foreach-loop-container) and [Configure a Foreach Loop Container]().  
   
 ### Options  
  **Name**  
@@ -190,7 +190,7 @@ Use the **General** page of the **Foreach Loop Editor** dialog box to name and d
 ## Collection Page - Foreach Loop Editor
  Use the **Collection** page of the **Foreach Loop Editor** dialog box to specify the enumerator type and configure the enumerator.  
   
- To learn about the Foreach Loop container and how to configure it, see [Foreach Loop Container](../../integration-services/control-flow/foreach-loop-container.md) and [Configure a Foreach Loop Container]().  
+ To learn about the Foreach Loop container and how to configure it, see [Foreach Loop Container](#foreach-loop-container) and [Configure a Foreach Loop Container]().  
   
 ### Static Options  
  **Enumerator**  
@@ -515,7 +515,7 @@ See [this](/azure/storage/blobs/data-lake-storage-access-control) article for de
 ## Variable Mappings Page - Foreach Loop Editor
  Use the **Variables Mappings** page of the **Foreach Loop Editor** dialog box to map variables to the collection value. The value of the variable is updated with the collection values on each iteration of the loop.  
   
- To learn about how to use the Foreach Loop container in an Integration Services package,  see [Foreach Loop Container](../../integration-services/control-flow/foreach-loop-container.md). To learn about how to configure it, see [Configure a Foreach Loop Container]().  
+ To learn about how to use the Foreach Loop container in an Integration Services package,  see [Foreach Loop Container](#foreach-loop-container). To learn about how to configure it, see [Configure a Foreach Loop Container]().  
   
  The [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] tutorial, Creating a Simple ETL Package Tutorial, includes a lesson that teaches you to add and configure a Foreach Loop.  
   

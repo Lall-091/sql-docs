@@ -4,7 +4,7 @@ description: The UNISTR function provides support for Unicode string literals an
 author: abhimantiwari
 ms.author: abhtiwar
 ms.reviewer: randolphwest, wiassaf, umajay
-ms.date: 12/23/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -17,11 +17,13 @@ helpviewer_keywords:
   - "unistr [SQL Server], UNISTR function"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric"
 ---
-# UNISTR (Transact-SQL)
+# UNISTR (Transact-SQL) preview
 
-[!INCLUDE [asdb](../../includes/applies-to-version/asdb.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabric](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
+
+[!INCLUDE [preview](../../includes/preview.md)]
 
 `UNISTR` provides support for Unicode string literals by letting you specify the Unicode encoding value of characters in the string. `UNISTR` returns the Unicode characters corresponding to the input expression, as defined by the Unicode standard.
 
@@ -83,7 +85,7 @@ A string value whose length and type depend on the input types.
 
 ### A. Use UNISTR vs the NCHAR function
 
-The following examples all use the `UNISTR` functions to perform the necessary conversion of the Unicode values into string character set, to display the unicode character Smiling Face With Open Mouth. The database collation must be a [UTF-8 collation](../../relational-databases/collations/collation-and-unicode-support.md) if the input is of **char** or **varchar** data types.
+The following examples all use the `UNISTR` functions to perform the necessary conversion of the Unicode values into string character set, to display the Unicode character Smiling Face With Open Mouth. The database collation must be a [UTF-8 collation](../../relational-databases/collations/collation-and-unicode-support.md) if the input is of **char** or **varchar** data types.
 
 Using `UNISTR` and `NCHAR`:
 

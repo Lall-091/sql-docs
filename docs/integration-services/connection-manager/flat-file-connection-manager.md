@@ -74,7 +74,7 @@ helpviewer_keywords:
 ## Flat File Connection Manager Editor (General Page)
   Use the **General** page of the **Flat File Connection Manager Editor** dialog box to select a file and data format. A flat file connection enables a package to connect to a text file.  
   
- To learn more about the Flat File connection manager, see [Flat File Connection Manager](../../integration-services/connection-manager/flat-file-connection-manager.md).  
+ To learn more about the Flat File connection manager, see [Flat File Connection Manager](#flat-file-connection-manager).  
   
 ### Options  
  **Connection manager name**  
@@ -135,7 +135,7 @@ helpviewer_keywords:
 ## Flat File Connection Manager Editor (Columns Page)
   Use the **Columns** page of the **Flat File Connection Manager Editor** dialog box to specify the row and column information, and to preview the file.  
   
- To learn more about the Flat File connection manager, see [Flat File Connection Manager](../../integration-services/connection-manager/flat-file-connection-manager.md).  
+ To learn more about the Flat File connection manager, see [Flat File Connection Manager](#flat-file-connection-manager).  
   
 ### Static Options  
  **Connection manager name**  
@@ -229,7 +229,7 @@ helpviewer_keywords:
   
  By default, the length of string columns is 50 characters. You can resize the length of these columns to prevent truncation of data or excess column width. You can also update other metadata to enable compatibility with destination columns. For example, you might change the data type of a column that contains only integer data to a numeric data type, such as DT_I2. You can make these modifications manually, or you can click the **Select Types** button to use the **Suggest Column Types** dialog box to evaluate sample data and make some of these changes for you automatically.  
   
- To learn more about the Flat File connection manager, see [Flat File Connection Manager](../../integration-services/connection-manager/flat-file-connection-manager.md).  
+ To learn more about the Flat File connection manager, see [Flat File Connection Manager](#flat-file-connection-manager).  
   
 ### Options  
  **Connection manager name**  
@@ -270,7 +270,7 @@ helpviewer_keywords:
 ## Flat File Connection Manager Editor (Preview Page)
   Use the **Preview** node of the **Flat File Connection Manager Editor** dialog box to view the contents of the source file in a tabular format.  
   
- To learn more about the Flat File connection manager, see [Flat File Connection Manager](../../integration-services/connection-manager/flat-file-connection-manager.md).  
+ To learn more about the Flat File connection manager, see [Flat File Connection Manager](#flat-file-connection-manager).  
   
 ### Options  
  **Connection manager name**  

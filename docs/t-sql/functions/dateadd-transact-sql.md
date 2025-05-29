@@ -4,7 +4,7 @@ description: DATEADD returns a date modified by the specified date part.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 02/25/2025
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -48,7 +48,7 @@ DATEADD (datepart , number , date )
 The part of *date* to which `DATEADD` adds an **int** *number*.
 
 > [!NOTE]  
-> In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [fabric](../../includes/fabric-sqldb.md)], *number* can be expressed as a **bigint**. This feature is in preview.
+> In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] and [!INCLUDE [fabric](../../includes/fabric-sqldb.md)], *number* can be expressed as a **bigint**. This feature is in preview.
 
 This table lists all valid *datepart* arguments. `DATEADD` doesn't accept user-defined variable equivalents for the *datepart* arguments.
 

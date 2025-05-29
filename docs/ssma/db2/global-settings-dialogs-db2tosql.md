@@ -1,8 +1,8 @@
 ---
 title: "Global Settings (Dialogs) (Db2ToSQL)"
 description: Use the Dialogs page of the Global Settings dialog box to specify the default user action and warning settings for SSMA for Db2.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

@@ -4,7 +4,7 @@ description: This article provides an overview of resource management in Azure S
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: wiassaf, mathoma, randolphwest
-ms.date: 12/04/2024
+ms.date: 04/28/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: reference
@@ -247,7 +247,9 @@ Log rate governor traffic shaping is surfaced via the following wait types (expo
 
 When encountering a log rate limit that is hampering desired scalability, consider the following options:
 
-- Scale up to a higher service level in order to get the maximum log rate of a service tier, or switch to a different service tier. The [Hyperscale](service-tier-hyperscale.md) service tier provides 100 MiB/s log rate per database and 125 MiB/s per elastic pool, regardless of chosen service level. Log generation rate of 150 MiB/s is available as an opt-in preview feature. For more information and to opt in to 150 MiB/s, see [Blog: November 2024 Hyperscale enhancements](https://aka.ms/AAslnql).
+- Scale up to a higher service level in order to get the maximum log rate of a service tier, or switch to a different service tier. 
+    - For premium-series and premium-series memory optimized hardware, the [Hyperscale](service-tier-hyperscale.md) provisioned service tier provides 150 MiB/s log rate per database and 150 MiB/s per elastic pool.
+    - For other hardware series, the [Hyperscale](service-tier-hyperscale.md) service tier provides 100 MiB/s log rate per database and 125 MiB/s per elastic pool.
 - If data being loaded is transient, such as staging data in an ETL process, it can be loaded into `tempdb` (which is minimally logged).
 - For analytic scenarios, load into a clustered [columnstore](/sql/relational-databases/indexes/columnstore-indexes-overview) table, or a table with indexes that use [data compression](/sql/relational-databases/data-compression/data-compression). This reduces the required log rate. This technique does increase CPU utilization and is only applicable to data sets that benefit from clustered columnstore indexes or data compression.
 

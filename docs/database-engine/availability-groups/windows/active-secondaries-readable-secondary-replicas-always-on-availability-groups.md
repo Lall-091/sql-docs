@@ -71,8 +71,8 @@ helpviewer_keywords:
   
     -   Each availability replica that is to support read-only routing when it is the primary replica requires a read-only routing list. A given read-only routing list takes effect only when the local replica is running under the primary role. This list must be specified on a replica-by-replica basis, as needed. Typically, each read-only routing list would contain every read-only routing URL, with the URL of the local replica at the end of the list.  
   
-        > [!NOTE]  
-        >  Read-intent connection requests can be load-balanced across replicas. For more information, see [Configure load-balancing across read-only replicas](../../../database-engine/availability-groups/windows/configure-read-only-routing-for-an-availability-group-sql-server.md#loadbalancing).  
+        >[!NOTE]  
+        >Read-intent connection requests can be load-balanced across replicas. For more information, see [Configure load-balancing across read-only replicas](../../../database-engine/availability-groups/windows/configure-read-only-routing-for-an-availability-group-sql-server.md#configure-load-balancing-across-read-only-replicas).  
   
      For more information, see [Configure Read-Only Routing for an Availability Group &#40;SQL Server&#41;](../../../database-engine/availability-groups/windows/configure-read-only-routing-for-an-availability-group-sql-server.md).  
   

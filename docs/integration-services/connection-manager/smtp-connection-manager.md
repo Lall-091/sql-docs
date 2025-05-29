@@ -49,7 +49,7 @@ helpviewer_keywords:
 ## SMTP Connection Manager Editor
   Use the **SMTP Connection Manager Editor** dialog box to specify a Simple Mail Transfer Protocol (SMTP) server.  
   
- To learn more about the SMTP connection manager, see [SMTP Connection Manager](../../integration-services/connection-manager/smtp-connection-manager.md).  
+ To learn more about the SMTP connection manager, see [SMTP Connection Manager](#smtp-connection-manager).  
   
 ### Options  
  **Name**  

@@ -41,7 +41,7 @@ helpviewer_keywords:
 ## WMI Connection Manager Editor
   Use the **WMI Connection Manager** dialog box to specify a Microsoft Windows Management Instrumentation (WMI) connection to a server.  
   
- To learn more about the WMI connection manager, see [WMI Connection Manager](../../integration-services/connection-manager/wmi-connection-manager.md).  
+ To learn more about the WMI connection manager, see [WMI Connection Manager](#wmi-connection-manager).  
   
 ### Options  
  **Name**  

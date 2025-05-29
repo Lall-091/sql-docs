@@ -1,10 +1,10 @@
 ---
-title: Configure iSCSI FCI storage  - SQL Server on Linux
+title: Configure iSCSI FCI Storage - SQL Server on Linux
 description: Learn to configure a failover cluster instance (FCI) using iSCSI for SQL Server on Linux.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 09/23/2024
+ms.date: 05/02/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -150,7 +150,7 @@ For more information on iSCSI initiator for the supported distributions, see the
 
 1. Execute `sudo lvs` to see the LVM that was created.
 
-1. Format the logical volume with a supported filesystem. For EXT4, use the following example:
+1. Format the logical volume with a supported filesystem. For ext4, use the following example:
 
     ```bash
     sudo mkfs.ext4 /dev/<VolumeGroupName>/<LogicalVolumeName>

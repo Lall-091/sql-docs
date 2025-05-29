@@ -39,7 +39,7 @@ helpviewer_keywords:
 ## SMO Connection Manager Editor
   Use the **SMO Connection Manager Editor** to configure a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] connection for use by the various tasks that transfer [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] objects.  
   
- To learn more about the SMO connection manager, see [SMO Connection Manager](../../integration-services/connection-manager/smo-connection-manager.md).  
+ To learn more about the SMO connection manager, see [SMO Connection Manager](#smo-connection-manager).  
   
 ### Options  
  **Server name**  

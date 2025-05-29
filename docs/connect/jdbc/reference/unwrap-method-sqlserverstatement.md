@@ -32,7 +32,7 @@ public <T> T unwrap(Class<T> iface)
  [SQLServerException](../../../connect/jdbc/reference/sqlserverexception-class.md)  
   
 ## Remarks  
- The [unwrap](../../../connect/jdbc/reference/unwrap-method-sqlserverstatement.md) method is defined by the java.sql.Wrapper interface, which is introduced in the JDBC 4.0 Spec.  
+ The [unwrap](#unwrap-method-sqlserverstatement) method is defined by the java.sql.Wrapper interface, which is introduced in the JDBC 4.0 Spec.  
   
  Applications might need to access extensions to the JDBC API that are specific to the [!INCLUDE[jdbcNoVersion](../../../includes/jdbcnoversion_md.md)]. The unwrap method supports unwrapping to public classes that this object extends, if the classes expose vendor extensions.  
   

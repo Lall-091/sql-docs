@@ -1,8 +1,8 @@
 ---
 title: "Appendix - 1 (Db2ToSQL)"
 description: View the command line options for SQL Server Migration Assistant Console for Db2.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

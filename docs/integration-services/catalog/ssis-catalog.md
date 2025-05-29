@@ -61,23 +61,17 @@ f1_keywords:
   
 ## Features and capabilities  
   
--   [Catalog Object Identifiers](../../integration-services/catalog/ssis-catalog.md#CatalogObjectIdentifiers)  
-  
--   [Catalog Configuration](../../integration-services/catalog/ssis-catalog.md#Configuration)  
-  
--   [Permissions](../../integration-services/catalog/ssis-catalog.md#Permissions)  
-  
--   [Folders](../../integration-services/catalog/ssis-catalog.md#Folders)  
-  
--   [Projects and Packages](../../integration-services/catalog/ssis-catalog.md#ProjectsAndPackages)  
-  
--   [Parameters](../../integration-services/catalog/ssis-catalog.md#Parameters)  
-  
--   [Server Environments, Server Variables, and Server Environment References](../../integration-services/catalog/ssis-catalog.md#ServerEnvironments)  
-  
--   [Executions and Validations](../../integration-services/catalog/ssis-catalog.md#Executions)  
+- [Catalog Object Identifiers](#catalog-object-identifiers)
+- [Catalog Configuration](#catalog-configuration)
+- [Permissions](#permissions)
+- [Folders](#folders)
+- [Projects and Packages](#projects-and-packages)
+- [Parameters](#parameters)
+- [Server Environments, Server Variables, and Server Environment References](#server-environments-server-variables-and-server-environment-references)
+- [Executions and Validations](#executions-and-validations)
 
-##  <a name="CatalogObjectIdentifiers"></a> Catalog Object Identifiers  
+## Catalog Object Identifiers
+
  When you create a new object in the catalog, assign a name to the object. The object name is an identifier. [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] defines rules for which characters can be used in an identifier. Names for the following objects must follow identifier rules.  
   
 -   Folder  
@@ -123,7 +117,8 @@ f1_keywords:
   
 -   Subsequent characters can be letters or numbers as defined in the Unicode Standard 2.0, or an underscore (_).  
   
-##  <a name="Configuration"></a> Catalog Configuration  
+## Catalog Configuration
+
  You fine-tune how the catalog behaves by adjusting the catalog properties. Catalog properties define how sensitive data is encrypted, and how operations and project versioning data is retained. To set catalog properties, use the **Catalog Properties** dialog box or call the [catalog.configure_catalog &#40;SSISDB Database&#41;](../../integration-services/system-stored-procedures/catalog-configure-catalog-ssisdb-database.md) stored procedure. To view the properties, use the dialog box or query [catalog.catalog_properties &#40;SSISDB Database&#41;](../../integration-services/system-views/catalog-catalog-properties-ssisdb-database.md). You access the dialog box by right-clicking **SSISDB** in Object Explorer.  
   
 ###  <a name="Cleanup"></a> Operations and Project Version Cleanup  
@@ -187,7 +182,8 @@ To run the **SSIS Server Maintenance Job**, SSIS creates the SQL Server login **
 |Maximum Number of Versions per Project|MAX_PROJECT_VERSIONS|  
 |Server-wide Default Logging Level|SERVER_LOGGING_LEVEL|  
   
-##  <a name="Permissions"></a> Permissions  
+## Permissions
+
  Projects, environments, and packages are contained in folders that are securable objects. You can grant permissions to a folder, including the MANAGE_OBJECT_PERMISSIONS permission. MANAGE_OBJECT_PERMISSIONS enables you to delegate the administration of folder contents to a user without having to grant the user membership to the ssis_admin role. You can also grant permissions to projects, environments, and operations. Operations include initializing [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)], deploying projects, creating and starting executions, validating projects and packages, and configuring the **SSISDB** catalog.  
   
  For more information about database roles, see [Database-Level Roles](../../relational-databases/security/authentication-access/database-level-roles.md).  
@@ -209,7 +205,8 @@ To run the **SSIS Server Maintenance Job**, SSIS creates the SQL Server login **
 
  To manage permissions using Transact-SQL, call [catalog.grant_permission &#40;SSISDB Database&#41;](../../integration-services/system-stored-procedures/catalog-grant-permission-ssisdb-database.md), [catalog.deny_permission &#40;SSISDB Database&#41;](../../integration-services/system-stored-procedures/catalog-deny-permission-ssisdb-database.md), and [catalog.revoke_permission &#40;SSISDB Database&#41;](../../integration-services/system-stored-procedures/catalog-revoke-permission-ssisdb-database.md). To view effective permissions for the current principal for all objects, query [catalog.effective_object_permissions &#40;SSISDB Database&#41;](../../integration-services/system-views/catalog-effective-object-permissions-ssisdb-database.md). This topic provides descriptions of the different types of permissions. To view permissions that have been explicitly assigned to the user, query [catalog.explicit_object_permissions &#40;SSISDB Database&#41;](../../integration-services/system-views/catalog-explicit-object-permissions-ssisdb-database.md).  
   
-##  <a name="Folders"></a> Folders  
+## Folders
+
  A folder contains one or more projects and environments in the **SSISDB** catalog. You can use the [catalog.folders &#40;SSISDB Database&#41;](../../integration-services/system-views/catalog-folders-ssisdb-database.md) view to access information about folders in the catalog. You can use the following stored procedures to manage folders:  
   
 -   [catalog.create_folder &#40;SSISDB Database&#41;](../../integration-services/system-stored-procedures/catalog-create-folder-ssisdb-database.md)  
@@ -220,7 +217,8 @@ To run the **SSIS Server Maintenance Job**, SSIS creates the SQL Server login **
   
 -   [catalog.set_folder_description &#40;SSISDB Database&#41;](../../integration-services/system-stored-procedures/catalog-set-folder-description-ssisdb-database.md)  
   
-##  <a name="ProjectsAndPackages"></a> Projects and Packages  
+## Projects and Packages
+
  Each project can contain multiple packages. Both projects and packages can contain parameters and references to environments. You can access the parameters and environment references by using the [Configure Dialog Box](../../integration-services/catalog/configure-dialog-box.md).  
   
  You can carry out other project tasks by calling the following stored procedures: 
@@ -243,7 +241,8 @@ To run the **SSIS Server Maintenance Job**, SSIS creates the SQL Server login **
   
 -   [catalog.object_versions &#40;SSISDB Database&#41;](../../integration-services/system-views/catalog-object-versions-ssisdb-database.md)  
   
-##  <a name="Parameters"></a> Parameters  
+## Parameters
+
  You use parameters to assign values to package properties at the time of package execution. To set the value of a package or project parameter and to clear the value, call [catalog.set_object_parameter_value &#40;SSISDB Database&#41;](../../integration-services/system-stored-procedures/catalog-set-object-parameter-value-ssisdb-database.md) and [catalog.clear_object_parameter_value &#40;SSISDB Database&#41;](../../integration-services/system-stored-procedures/catalog-clear-object-parameter-value-ssisdb-database.md). To set the value of a parameter for an instance of execution, call [catalog.set_execution_parameter_value &#40;SSISDB Database&#41;](../../integration-services/system-stored-procedures/catalog-set-execution-parameter-value-ssisdb-database.md). You can retrieve default parameter values by calling [catalog.get_parameter_values &#40;SSISDB Database&#41;](../../integration-services/system-stored-procedures/catalog-get-parameter-values-ssisdb-database.md).  
   
  These views show the parameters for all packages and projects, and parameter values that are used for an instance of execution.  
@@ -252,7 +251,8 @@ To run the **SSIS Server Maintenance Job**, SSIS creates the SQL Server login **
   
 -   [catalog.execution_parameter_values &#40;SSISDB Database&#41;](../../integration-services/system-views/catalog-execution-parameter-values-ssisdb-database.md)  
   
-##  <a name="ServerEnvironments"></a> Server Environments, Server Variables, and Server Environment References  
+## Server Environments, Server Variables, and Server Environment References
+
  Server environments contain server variables. The variable values can be used when a package is executed or validated on the [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] server.  
   
  The following stored procedures enable you to perform many other management tasks for environments and variables.  
@@ -293,7 +293,8 @@ To run the **SSIS Server Maintenance Job**, SSIS creates the SQL Server login **
   
 -   [catalog.environment_references &#40;SSISDB Database&#41;](../../integration-services/system-views/catalog-environment-references-ssisdb-database.md)  
   
-##  <a name="Executions"></a> Executions and Validations  
+## Executions and Validations
+
  An execution is an instance of a package execution. Call [catalog.create_execution &#40;SSISDB Database&#41;](../../integration-services/system-stored-procedures/catalog-create-execution-ssisdb-database.md) and [catalog.start_execution &#40;SSISDB Database&#41;](../../integration-services/system-stored-procedures/catalog-start-execution-ssisdb-database.md) to create and start an execution. To stop an execution or a package/project validation, call [catalog.stop_operation &#40;SSISDB Database&#41;](../../integration-services/system-stored-procedures/catalog-stop-operation-ssisdb-database.md).  
   
  To cause a running package to pause and create a dump file, call the catalog.create_execution_dump stored procedure. A dump file provides information about the execution of a package that can help you troubleshoot execution issues. For more information about generating and configuring dump files, see [Generating Dump Files for Package Execution](../../integration-services/troubleshooting/generating-dump-files-for-package-execution.md).  

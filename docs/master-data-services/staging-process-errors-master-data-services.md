@@ -14,6 +14,8 @@ helpviewer_keywords:
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   When the staging process is complete, all processed records in the staging tables have a value in the ErrorCode column. These values are listed in the following table.  
   
 |Code|Error|Occurs When/Details|Applies to Table|  

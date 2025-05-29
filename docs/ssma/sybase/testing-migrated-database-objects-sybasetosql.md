@@ -1,8 +1,8 @@
 ---
 title: "Testing Migrated Database Objects (SybaseToSQL)"
 description: "Testing Migrated Database Objects (SybaseToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "04/29/2021"
 ms.service: sql
 ms.subservice: ssma

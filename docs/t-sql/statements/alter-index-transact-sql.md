@@ -4,7 +4,7 @@ description: Modifies an existing table or view index (rowstore, columnstore, or
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: wiassaf, randolphwest, dfurman
-ms.date: 02/28/2025
+ms.date: 04/14/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -187,8 +187,8 @@ Specifies all indexes associated with the table or view regardless of the index 
 | `REBUILD PARTITION = <partition_number>` | Nonpartitioned index, XML index, spatial index, or disabled index |
 | `REORGANIZE` | Indexes with `ALLOW_PAGE_LOCKS` set to `OFF` |
 | `REORGANIZE PARTITION = <partition_number>` | Nonpartitioned index, XML index, spatial index, or disabled index |
-| `IGNORE_DUP_KEY = ON` | XML index<br /><br />Spatial index<br /><br />Columnstore index <sup>1</sup> |
-| `ONLINE = ON` | XML index<br /><br />Spatial index<br />Columnstore index <sup>1</sup> |
+| `IGNORE_DUP_KEY = ON` | XML index<br /><br />Spatial index<br /><br />Columnstore index |
+| `ONLINE = ON` | XML index<br /><br />Spatial index<br /><br />Columnstore index |
 | `RESUMABLE = ON` | Resumable indexes not supported with the `ALL` keyword |
 
 If `ALL` is specified with `PARTITION = <partition_number>`, all indexes must be aligned. This means that they're partitioned based on equivalent partition functions. Using `ALL` with `PARTITION` causes all index partitions with the same `<partition_number>` to be rebuilt or reorganized. For more information about partitioned indexes, see [Partitioned tables and indexes](../../relational-databases/partitions/partitioned-tables-and-indexes.md).
@@ -663,7 +663,7 @@ When `ALL` is specified, relational indexes, both clustered and nonclustered, an
 For more information, see [Optimize index maintenance to improve query performance and reduce resource consumption](../../relational-databases/indexes/reorganize-and-rebuild-indexes.md).
 
 > [!NOTE]  
-> For a table with an ordered columnstore index, `ALTER INDEX REORGANIZE` doesn't re-sort the data. To resort the data use `ALTER INDEX REBUILD`.
+> For a table with an ordered columnstore index, `ALTER INDEX REORGANIZE` doesn't re-sort the data. To resort the data use `CREATE [CLUSTERED] COLUMNSTORE INDEX ... ORDER (...) ... WITH (DROP_EXISTING = ON)`.
 
 ## <a id="disabling-indexes"></a> Disable indexes
 

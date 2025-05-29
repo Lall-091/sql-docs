@@ -55,13 +55,13 @@ catalog.cleanup_server_log
   
 -   **PER_PROJECT (2)** - The certificate and symmetric key used for protecting sensitive parameters are created for each project. PER_PROJECT (2) is the default value. This setting gives you a better performance than the PER_EXECUTION level because the key and certificate are generated once for a project rather than for each execution.  
   
- You have to run the [catalog.cleanup_server_log](../../integration-services/system-stored-procedures/catalog-cleanup-server-log.md) stored procedure before you can change the SERVER_OPERATION_ENCRYPTION_LEVEL from 2 to 1 or from 1 to 2. Before running this stored procedure, do the following things:  
+ You have to run the [catalog.cleanup_server_log](#catalogcleanup_server_log) stored procedure before you can change the SERVER_OPERATION_ENCRYPTION_LEVEL from 2 to 1 or from 1 to 2. Before running this stored procedure, do the following things:  
   
 1.  Ensure that the value of the property OPERATION_CLEANUP_ENABLED is set to TRUE in the [catalog.catalog_properties &#40;SSISDB Database&#41;](../../integration-services/system-views/catalog-catalog-properties-ssisdb-database.md) table.  
   
 2.  Set the Integration Services database (SSISDB) to single-user mode. In SQL Server Management Studio, launch Database Properties dialog box for SSISDB, switch to the Options tab, and set the Restrict Access property to single-user mode (SINGLE_USER). After you run the cleanup_server_log stored procedure, set the property value back to the original value.  
   
-3.  Run the stored procedure [catalog.cleanup_server_log](../../integration-services/system-stored-procedures/catalog-cleanup-server-log.md).  
+3.  Run the stored procedure [catalog.cleanup_server_log](#catalogcleanup_server_log).  
   
 4.  Now, change the value for the SERVER_OPERATION_ENCRYPTION_LEVEL property in the [catalog.catalog_properties &#40;SSISDB Database&#41;](../../integration-services/system-views/catalog-catalog-properties-ssisdb-database.md) table.  
   

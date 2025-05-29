@@ -1,8 +1,8 @@
 ---
 title: "Connect to Db2 (Db2ToSQL)"
 description: Use the Connect to Db2 dialog box to connect to the database that you want to migrate.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

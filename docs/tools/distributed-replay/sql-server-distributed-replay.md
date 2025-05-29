@@ -93,7 +93,7 @@ To successfully replay trace data, it must meet the requirements for version and
 Distributed Replay supports input trace data that is collected on the following versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]:
 
 - [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)]
-- [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] (Cumulative Update 1 and later versions - see [SQL Server 2017 Cumulative updates](https://aka.ms/sql2017cu))
+- [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] (Cumulative Update 1 and later versions - see [SQL Server 2017 build versions](/troubleshoot/sql/releases/sqlserver-2017/build-versions))
 - [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)]
 - [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)]
 - [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)]

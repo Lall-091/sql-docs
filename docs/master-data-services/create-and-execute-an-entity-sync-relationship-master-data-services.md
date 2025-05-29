@@ -12,6 +12,8 @@ ms.topic: how-to
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   Entity sync is a one-way and repeatable synchronization between entity versions. It provides a way to share entity data between different models.  
   
 ## Prerequisites  

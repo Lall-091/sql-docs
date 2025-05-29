@@ -1,10 +1,10 @@
 ---
-title: "Editions and supported features of SQL Server 2022"
+title: "Editions and Supported Features of SQL Server 2022"
 description: Learn details of the features supported by the various editions of SQL Server 2022.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray
-ms.date: 07/18/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: conceptual
@@ -31,7 +31,7 @@ helpviewer_keywords:
   - "installing SQL Server, editions"
   - "editions [SQL Server], about edition options"
   - "Setup [SQL Server]"
-monikerRange: ">= sql-server-2016"
+monikerRange: ">=sql-server-2016"
 ---
 # Editions and supported features of SQL Server 2022
 
@@ -106,7 +106,9 @@ The Developer edition continues to support only 1 client for [SQL Server Distrib
 
 <sup>3</sup> MOLAP
 
-## <a id="ACS"></a> Azure connected services
+<a id="ACS"></a>
+
+## Azure connected services
 
 SQL Server 2022 includes features for connecting to [Azure Synapse Analytics](/azure/synapse-analytics/), [Azure SQL Managed Instance](/azure/azure-sql/managed-instance/), and [Microsoft Purview](/purview/).
 
@@ -170,7 +172,9 @@ SQL Server 2022 includes features for connecting to [Azure Synapse Analytics](/a
 
 <sup>7</sup> Database mirroring is a deprecated feature.
 
-## <a id="RDBMSSP"></a> RDBMS scalability and performance
+<a id="RDBMSSP"></a>
+
+## RDBMS scalability and performance
 
 | Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
 | :--- | :---: | :---: | :---: | :---: | :---: |
@@ -225,7 +229,9 @@ SQL Server 2022 includes features for connecting to [Azure Synapse Analytics](/a
 
 <sup>4</sup> Stretch Database is a deprecated feature.
 
-## <a id="RDBMSS"></a> RDBMS security
+<a id="RDBMSS"></a>
+
+## RDBMS security
 
 | Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
 | :--- | :---: | :---: | :---: | :---: | :---: |
@@ -246,7 +252,9 @@ SQL Server 2022 includes features for connecting to [Azure Synapse Analytics](/a
 
 <sup>1</sup> Requires [SQL Server enabled by Azure Arc](azure-arc/overview.md).
 
-## <a id="Replication"></a> Replication
+<a id="Replication"></a>
+
+## Replication
 
 | Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
 | :--- | :---: | :---: | :---: | :---: | :---: |
@@ -263,7 +271,9 @@ SQL Server 2022 includes features for connecting to [Azure Synapse Analytics](/a
 
 <sup>1</sup> Subscriber only
 
-## <a id="SSMS"></a> Management tools
+<a id="SSMS"></a>
+
+## Management tools
 
 | Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
 | :--- | :---: | :---: | :---: | :---: | :---: |

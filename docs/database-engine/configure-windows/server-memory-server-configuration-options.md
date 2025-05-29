@@ -1,10 +1,10 @@
 ---
-title: "Server memory configuration options"
+title: "Server Memory Configuration Options"
 description: Learn how to configure the amount of memory the SQL Server Memory Manager allocates to SQL Server processes. View memory management approaches and examples.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: wiassaf
-ms.date: 06/12/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -27,7 +27,7 @@ helpviewer_keywords:
 Memory utilization for the [!INCLUDE [ssdenoversion-md](../../includes/ssdenoversion-md.md)] is bounded by a pair of configuration settings, **min server memory (MB)** and **max server memory (MB)**. Over time and under normal circumstances, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] will attempt claim memory up to the limit set by **max server memory (MB)**.
 
 > [!NOTE]  
-> [Columnstore indexes: Overview](../../relational-databases/indexes/columnstore-indexes-overview.md) and [In-Memory OLTP overview and usage scenarios](../../relational-databases/in-memory-oltp/overview-and-usage-scenarios.md) objects have their own memory clerks, which makes it easier to monitor their buffer pool usage. For more information, see [sys.dm_os_memory_clerks](../../relational-databases/system-dynamic-management-views/sys-dm-os-memory-clerks-transact-sql.md#types).
+> [Columnstore indexes: overview](../../relational-databases/indexes/columnstore-indexes-overview.md) and [In-Memory OLTP overview and usage scenarios](../../relational-databases/in-memory-oltp/overview-and-usage-scenarios.md) objects have their own memory clerks, which makes it easier to monitor their buffer pool usage. For more information, see [sys.dm_os_memory_clerks](../../relational-databases/system-dynamic-management-views/sys-dm-os-memory-clerks-transact-sql.md#types).
 
 In older versions of SQL Server, memory utilization was virtually uncapped, indicating to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] that all system memory was available for use. It's recommended in all versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to configure an upper limit for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] memory utilization by configuring the **max server memory (MB)**.
 
@@ -81,9 +81,11 @@ Use **max server memory (MB)** to guarantee the OS and other applications don't 
 
 <sup>1</sup> Refer to the [Memory Management Architecture guide](../../relational-databases/memory-management-architecture-guide.md#stacksizes) for information on thread stack sizes per architecture.
 
-<sup>2</sup> Refer to the documentation page on how to [Configure the max worker threads (server configuration option)](configure-the-max-worker-threads-server-configuration-option.md), for information on the calculated default worker threads for a given number of affinitized CPUs in the current host.
+<sup>2</sup> For more information on the calculated default worker threads for a given number of affinitized CPUs in the current host, see [Server configuration: max worker threads](configure-the-max-worker-threads-server-configuration-option.md).
 
-## <a id="manually"></a> Set options manually
+<a id="manually"></a>
+
+## Set options manually
 
 The server options **min server memory (MB)** and **max server memory (MB)** can be set to span a range of memory values. This method is useful for system or database administrators to configure an instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] with the memory requirements of other applications, or other instances of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] that run on the same host.
 
@@ -94,11 +96,12 @@ The **min server memory (MB)** and **max server memory (MB)** options are advanc
 The following example sets the **max server memory (MB)** option to 12,288 MB or 12 GB. Although `sp_configure` specifies the name of the option as `max server memory (MB)`, you can omit the `(MB)`.
 
 ```sql
-sp_configure 'show advanced options', 1;
+EXECUTE sp_configure 'show advanced options', 1;
 GO
 RECONFIGURE;
 GO
-sp_configure 'max server memory', 12288;
+
+EXECUTE sp_configure 'max server memory', 12288;
 GO
 RECONFIGURE;
 GO
@@ -107,9 +110,12 @@ GO
 The following query returns information about the currently configured values, and the value currently in use. This query returns results regardless of whether the `sp_configure` option 'show advanced options' is enabled.
 
 ```sql
-SELECT [name], [value], [value_in_use]
+SELECT [name],
+       [value],
+       [value_in_use]
 FROM sys.configurations
-WHERE [name] = 'max server memory (MB)' OR [name] = 'min server memory (MB)';
+WHERE [name] = 'max server memory (MB)'
+      OR [name] = 'min server memory (MB)';
 ```
 
 ### Use [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)]
@@ -170,9 +176,13 @@ Use the following methods to determine whether the SQL Server instance is using 
 - The output of the following Transact-SQL query indicates nonzero values for `locked_page_allocations_kb`:
 
     ```sql
-    SELECT osn.node_id, osn.memory_node_id, osn.node_state_desc, omn.locked_page_allocations_kb
-    FROM sys.dm_os_memory_nodes omn
-    INNER JOIN sys.dm_os_nodes osn ON (omn.memory_node_id = osn.memory_node_id)
+    SELECT osn.node_id,
+           osn.memory_node_id,
+           osn.node_state_desc,
+           omn.locked_page_allocations_kb
+    FROM sys.dm_os_memory_nodes AS omn
+         INNER JOIN sys.dm_os_nodes AS osn
+             ON (omn.memory_node_id = osn.memory_node_id)
     WHERE osn.node_state_desc <> 'ONLINE DAC';
     ```
 
@@ -201,11 +211,12 @@ You can change these settings without restarting the instances, so you can easil
 The following example sets the **max server memory (MB)** option to 4096 MB or 4 GB. Although `sp_configure` specifies the name of the option as `max server memory (MB)`, you can omit the `(MB)`.
 
 ```sql
-sp_configure 'show advanced options', 1;
+EXECUTE sp_configure 'show advanced options', 1;
 GO
 RECONFIGURE;
 GO
-sp_configure 'max server memory', 4096;
+
+EXECUTE sp_configure 'max server memory', 4096;
 GO
 RECONFIGURE;
 GO
@@ -218,17 +229,16 @@ This will output a statement similar to `Configuration option 'max server memory
 The following query returns information about currently allocated memory.
 
 ```sql
-SELECT
-  physical_memory_in_use_kb/1024 AS sql_physical_memory_in_use_MB,
-   large_page_allocations_kb/1024 AS sql_large_page_allocations_MB,
-   locked_page_allocations_kb/1024 AS sql_locked_page_allocations_MB,
-   virtual_address_space_reserved_kb/1024 AS sql_VAS_reserved_MB,
-   virtual_address_space_committed_kb/1024 AS sql_VAS_committed_MB,
-   virtual_address_space_available_kb/1024 AS sql_VAS_available_MB,
-   page_fault_count AS sql_page_fault_count,
-   memory_utilization_percentage AS sql_memory_utilization_percentage,
-   process_physical_memory_low AS sql_process_physical_memory_low,
-   process_virtual_memory_low AS sql_process_virtual_memory_low
+SELECT physical_memory_in_use_kb / 1024 AS sql_physical_memory_in_use_MB,
+       large_page_allocations_kb / 1024 AS sql_large_page_allocations_MB,
+       locked_page_allocations_kb / 1024 AS sql_locked_page_allocations_MB,
+       virtual_address_space_reserved_kb / 1024 AS sql_VAS_reserved_MB,
+       virtual_address_space_committed_kb / 1024 AS sql_VAS_committed_MB,
+       virtual_address_space_available_kb / 1024 AS sql_VAS_available_MB,
+       page_fault_count AS sql_page_fault_count,
+       memory_utilization_percentage AS sql_memory_utilization_percentage,
+       process_physical_memory_low AS sql_process_physical_memory_low,
+       process_virtual_memory_low AS sql_process_virtual_memory_low
 FROM sys.dm_os_process_memory;
 ```
 
@@ -238,7 +248,8 @@ The following query returns information about the currently configured value and
 
 ```sql
 SELECT [value], [value_in_use]
-FROM sys.configurations WHERE [name] = 'max server memory (MB)';
+FROM sys.configurations
+WHERE [name] = 'max server memory (MB)';
 ```
 
 ## Related content
@@ -246,7 +257,7 @@ FROM sys.configurations WHERE [name] = 'max server memory (MB)';
 - [Memory management architecture guide](../../relational-databases/memory-management-architecture-guide.md)
 - [Monitor and Tune for Performance](../../relational-databases/performance/monitor-and-tune-for-performance.md)
 - [RECONFIGURE (Transact-SQL)](../../t-sql/language-elements/reconfigure-transact-sql.md)
-- [Server configuration options (SQL Server)](server-configuration-options-sql-server.md)
+- [Server configuration options](server-configuration-options-sql-server.md)
 - [sp_configure (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-configure-transact-sql.md)
 - [Database Engine Service startup options](database-engine-service-startup-options.md)
 - [Memory Limits for Windows and Windows Server Releases](/windows/desktop/Memory/memory-limits-for-windows-releases)

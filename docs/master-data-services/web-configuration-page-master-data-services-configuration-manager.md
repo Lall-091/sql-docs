@@ -14,6 +14,8 @@ f1_keywords:
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   Use the **Web Configuration** page to configure a website and web application. You can also enable Data Quality Services.  
   
 ## Configure the Web Application  

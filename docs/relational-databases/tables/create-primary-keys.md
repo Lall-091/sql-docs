@@ -1,16 +1,16 @@
 ---
-title: "Create primary keys in SQL Server"
+title: "Create Primary Keys in SQL Server"
 description: Define a primary key in the SQL Server Database Engine by using SQL Server Management Studio or Transact-SQL.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest
-ms.date: 04/18/2024
+ms.date: 05/15/2025
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: how-to
 helpviewer_keywords:
   - "primary keys [SQL Server], creating"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current ||=fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
 # Create primary keys
 
@@ -32,7 +32,9 @@ Creating a new table with a primary key requires `CREATE TABLE` permission in th
 
 Creating a primary key in an existing table requires `ALTER` permission on the table.
 
-## <a id="SSMSProcedure"></a> Use SQL Server Management Studio
+<a id="SSMSProcedure"></a>
+
+## Use SQL Server Management Studio
 
 1. In Object Explorer, right-click the table to which you want to add a unique constraint, and select **Design**.
 1. In **Table Designer**, select the row selector for the database column you want to define as the primary key. If you want to select multiple columns, hold down the CTRL key while you select the row selectors for the other columns.
@@ -47,7 +49,9 @@ If a primary key consists of more than one column, duplicate values are allowed 
 
 If you define a compound key, the order of columns in the primary key matches the order of columns as shown in the table. However, you can change the order of columns after the primary key is created. For more information, see [Modify Primary Keys](modify-primary-keys.md).
 
-## <a id="TsqlProcedure"></a> Use Transact-SQL
+<a id="TsqlProcedure"></a>
+
+## Use Transact-SQL
 
 ### Create a primary key in an existing table
 

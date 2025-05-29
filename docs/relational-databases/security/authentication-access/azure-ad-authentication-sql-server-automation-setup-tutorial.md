@@ -1340,7 +1340,7 @@ Once the Microsoft Entra admin has been set up, using the Microsoft Entra admin 
 
 1. Select **Grant admin consent**.
 
-   :::image type="content" source="media/configured-app-permissions.png" alt-text="Screenshot of application permissions in the Azure portal.":::
+   :::image type="content" source="media/azure-ad-authentication-sql-server-automation-setup-tutorial/grant-consent.png" alt-text="Screenshot showing how to grant consent in the Azure portal.":::
 
 Without granting admin consent to the application, creating a Microsoft Entra login or user in SQL Server will result in the following error:
 

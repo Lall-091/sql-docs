@@ -3,7 +3,8 @@ title: "Offload Backups to Secondary Availability Group Replica"
 description: "Learn about the different supported backup types when offloading backups to a secondary replica of an Always On availability group."
 author: MashaMSFT
 ms.author: mathoma
-ms.date: 04/02/2025
+ms.reviewer: dinethi
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: availability-groups
 ms.topic: how-to
@@ -45,6 +46,25 @@ Consider the following when performing backups on secondary replicas:
 - **BACKUP LOG** supports only regular log backups (the COPY_ONLY option isn't supported for log backups on secondary replicas). A consistent log chain is ensured across log backups taken on any of the replicas (primary or secondary), irrespective of their availability mode (synchronous-commit or asynchronous-commit).
 
 In a [distributed availability group](distributed-availability-groups.md), backups can be performed on secondary replicas in the same availability group as the active primary replica, or on the primary replica of any secondary availability groups. Backups can't be performed on a secondary replica in a secondary availability group because secondary replicas only communicate with the primary replica in their own availability group. Only replicas that communicate directly with the global primary replica can perform backup operations.
+
+## New for SQL Server 2025
+
+Starting with [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)], in addition to copy-only backups, you can also perform full, and differential backups on any secondary replica. 
+
+Use the following trace flags to enable backups on secondary replicas:
+- [Trace flag 3261](../../../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md#tf3261): Enables differential backups on secondary replicas. 
+- [Trace flag 3262](../../../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md#tf3262): Enables full backups on secondary replicas. 
+
+Enable the relevant trace flag on every replica in the availability group (including the primary) so backups on secondary replicas continue after failover. 
+
+For example, to enable differential backups on secondary replicas, run the following command:
+
+```sql
+DBCC TRACEON (3261, -1);
+```
+
+> [!NOTE]
+> Taking full and differential backups is in preview and currently only available in [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)].
 
 <a id="WhereBuJobsRun"></a>
 

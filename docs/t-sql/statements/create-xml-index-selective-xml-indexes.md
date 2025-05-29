@@ -78,7 +78,7 @@ xmlnamespace_uri AS xmlnamespace_prefix
  Is the name of the indexed path on which to create the secondary selective XML index. The path to index is the assigned name from the CREATE SELECTIVE XML INDEX statement. For more information, see [CREATE SELECTIVE XML INDEX &#40;Transact-SQL&#41;](../../t-sql/statements/create-selective-xml-index-transact-sql.md).  
   
  WITH \<index_options> 
- For information about the index options, see [CREATE XML INDEX](../../t-sql/statements/create-xml-index-selective-xml-indexes.md).  
+ For information about the index options, see [CREATE XML INDEX](#create-xml-index-selective-xml-indexes).  
   
 ## Remarks
  There can be multiple secondary selective XML indexes on every XML column in the base table.  

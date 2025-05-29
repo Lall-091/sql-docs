@@ -1,8 +1,8 @@
 ---
 title: "Testing Migrated Database Objects (OracleToSQL)"
 description: "Testing Migrated Database Objects (OracleToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "04/29/2021"
 ms.service: sql
 ms.subservice: ssma

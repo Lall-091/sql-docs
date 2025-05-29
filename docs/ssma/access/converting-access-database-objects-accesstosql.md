@@ -1,8 +1,8 @@
 ---
 title: "Converting Access Database Objects (AccessToSQL)"
 description: Learn how to select Access database objects after you connect to SQL Server/Azure SQL Database, and then convert the schemas to SQL Server/SQL Database schemas.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: ssma

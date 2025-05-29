@@ -1,8 +1,8 @@
 ---
 title: "Creating Variable Value Files (MySQLToSQL)"
 description: "Creating Variable Value Files (MySQLToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: ssma
@@ -81,7 +81,7 @@ Variable Value File is an XML file comprising the parameter values of commands l
 ```  
   
 ## Variable Value File Validation  
-The user can easily validate his/her variable value file against the schema definition file **'ConsoleScriptVariablesSchema.xsd'** available in the 'Schemas' folder.  
+The user can easily validate their variable value file against the schema definition file **'ConsoleScriptVariablesSchema.xsd'** available in the 'Schemas' folder.  
   
 ## Next Step  
 The next step in operating the console is [Creating the Server Connection Files &#40;MySQLToSQL&#41;](../../ssma/mysql/creating-the-server-connection-files-mysqltosql.md)  

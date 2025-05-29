@@ -4,7 +4,7 @@ description: Learn details about the changes in SQL Server Reporting Services (S
 author: casualoak
 ms.author: petebro
 ms.reviewer: kfollis
-ms.date: 09/25/2024
+ms.date: 05/28/2024
 ms.service: reporting-services
 ms.subservice: reporting-services
 ms.topic: release-notes
@@ -21,35 +21,12 @@ This article describes changes in [!INCLUDE[ssnoversion](../includes/ssnoversion
 
 For the release notes for Report Viewer controls, see [Release notes for the Report Viewer controls for WebForms and WinForms of SSRS](application-integration/release-notes-ssrs-application-integration.md).
 
-<!--
-We are "standardizing" all our 'Release Notes' style articles:
-
-  - File names:   'release-notes-[TechArea-Name].md'
-
-
-  - Content format:   2-column tables.  No longer using bullet lists.
-
-    - Ideally, the 'Details' column should contain a link to another SSRS documentation article wherein the particular issue fix is discussed in any way.  Or if there is more to say beyond one sentence, the other sentences of elaboration would go into the 'Details' column.
-
-
-  - H2 header names are kept short, for better display.
-
-
-  - Try to keep all Release Notes in one .md file.  Avoid having multiple R.N. files whose names differ only by version or date.
-
-    - Seriously consider erasing info about ancient releases that are so old that nobody cares about them anymore.  If you really want to retain ancient info, consider doing so in an HTML comment at the end of the .md file, just in case a Microsoft employee needs to re-examine ancient info.  In any case, this file cannot get ever longer, and some deletion or hiding of oldest info must eventually occur.
-
-
-  - Do use '::: moniker range=' zones when version 2017 is no longer the only version represented inside this .md file.
-
-    - Use the '=' operator on the moniker, not the '>=' operator.
-    - In contrast, in our 'Whats New' articles we do use the '>=', rather than '='.
-
-GeneMi, DevOps = 1467988 (MsEng > TechnicalContent) , 2019/03/19
--->
-
-::: moniker range="=sql-server-ver16"
 ## SQL Server 2022 Reporting Services
+
+## 16.0.9276.19198, 2025/05/27
+*(Product Version: 16.0.1117.43)*
+- Add new advanced server property EnableCommentsOnReports and set default value to false to control comments on reports. This will disable comments on upgrade and must be enabled if you wish to have the ability to comment on reports in the future. This feature is now considered deprecated and will be removed in 2026.
+- Updated underlying version of jQuery to 3.7.1
 
 ## 16.0.9218.4306, 2025/03/31
 *(Product Version: 16.0.1117.32)*
@@ -136,7 +113,7 @@ Initial release.
     - Report Parts support 
 - [Discontinued features](./discontinued-functionality-to-sql-server-reporting-services-in-sql-server.md): 
     - Pin to Power BI functionality
-    - Mobile Reports functionality (.rsmobile) and Mobile Report Publisher
+    - Mobile Reports functionality (`.rsmobile`) and Mobile Report Publisher
 
 ## 15.0.8264.8408, 2022/08/19
 *(Product Version: 15.0.1111.106)*
@@ -149,9 +126,12 @@ Release Candidate 0 (RC0)
 - Bug fixes.
 - Discontinuation of several features: Pin to Power BI, Mobile Reports, and Mobile Report Publisher.
 
-::: moniker-end
 
 ## SQL Server 2019 Reporting Services
+
+## 15.0.9276.19365, 2025/05/27
+*(Product Version: 15.0.1104.39)*
+- Add new advanced server property EnableCommentsOnReports and set default value to false to control comments on reports. This will disable comments on upgrade and must be enabled if you wish to have the ability to comment on reports in the future. This feature is now considered deprecated and will be removed in 2026.
 
 ## 15.0.9218.715, 2025/03/31
 *(Product Version: 15.0.1104.29)*
@@ -168,7 +148,7 @@ Release Candidate 0 (RC0)
 
 - Added Mobile Report support back to SSRS 2019
 - Updated SSRS to use Microsoft.Data.SqlClient in place of (now deprecated) System.Data.SqlClient
-- Changed default SupportedHyperlinkSchemes advanced server property value to disallow javascript
+- Changed default SupportedHyperlinkSchemes advanced server property value to disallow JavaScript
 - Changed default TrustedFileFormat advanced server property value to disallow pdf content viewing
 - Fixed performance issue with email subscriptions
 - Fixed issue with image attachments when posting comments
@@ -197,7 +177,7 @@ Release Candidate 0 (RC0)
 
 ## 15.0.8738.29460, 2023/12/04
 *(Product Version: 15.0.1102.1129)*
-- New default Portal experience (this can be reverted via setting UsePortalV2 to false in the config table of catalog database) 
+- New default Portal experience (can be reverted via setting UsePortalV2 to false in the config table of catalog database) 
   - Enhanced accessibility
   - Supports smaller viewport
 - New config setting for tiles sections order
@@ -422,7 +402,7 @@ The following issue has been fixed:
 | Fixed issue | Details |
 | :---------- | :------ |
 | Data Driven Subscription page doesn't show the Delivery Option once it's created. | &nbsp; |
-| Upgrading SSRS 2012 to SSRS 2017 results in RSManagement throwing an exception every few seconds. | &nbsp; |
+| Upgrading SSRS 2012 to SSRS 2017, results in RSManagement throwing an exception every few seconds. | &nbsp; |
 | Can't change defaults values for multi-value parameters in IE11. | &nbsp; |
 | Schedules are empty whenever shared schedule is executed. | &nbsp; |
 

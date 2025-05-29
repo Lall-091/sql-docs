@@ -1,9 +1,9 @@
 ---
-title: "Supported version and edition upgrades (SQL Server 2022)"
+title: "Supported Version and Edition Upgrades (SQL Server 2022)"
 description: The supported version and edition upgrades for SQL Server 2022.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/22/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: install
 ms.topic: upgrade-and-migration-article
@@ -34,7 +34,7 @@ For older versions of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.m
 
 - Before you upgrade from one edition of [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] to another, verify that the functionality you're currently using is supported in the edition to which you're moving. For more information, see [Editions and supported features of SQL Server 2022](../../sql-server/editions-and-components-of-sql-server-2022.md).
 
-- Verify supported hardware and software, including the supported operating system. For more information, see [SQL Server 2022: Hardware and software requirements](../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2022.md).
+- Verify supported hardware and software, including the supported operating system. For more information, see [Hardware and software requirements for SQL Server 2022](../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2022.md).
 
 - Before upgrading [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], enable Windows Authentication for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent and verify the default configuration, that the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent service account is a member of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] sysadmin group.
 
@@ -159,7 +159,7 @@ Additionally you can also perform an edition upgrade between [!INCLUDE [sssql22-
 ## Related content
 
 - [Editions and supported features of SQL Server 2022](../../sql-server/editions-and-components-of-sql-server-2022.md)
-- [SQL Server 2022: Hardware and software requirements](../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2022.md)
+- [Hardware and software requirements for SQL Server 2022](../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2022.md)
 - [Upgrade SQL Server](upgrade-sql-server.md)
 - [Upgrade the Database Engine](upgrade-database-engine.md)
 - [Upgrade to a different edition of SQL Server (Setup)](upgrade-to-a-different-edition-of-sql-server-setup.md)

@@ -571,5 +571,4 @@ monikerRange: "=azuresqldb-mi-current||>=sql-server-2016"
 - [Identity and access control for replication](../../../relational-databases/replication/security/identity-and-access-control-replication.md)
 - [Replication Agent Security Model](../../../relational-databases/replication/security/replication-agent-security-model.md)
 - [Replication Security Best Practices](../../../relational-databases/replication/security/replication-security-best-practices.md)
-- [View and modify replication security settings](../../../relational-databases/replication/security/view-and-modify-replication-security-settings.md)
 - [Replication System Stored Procedures Concepts](../../../relational-databases/replication/concepts/replication-system-stored-procedures-concepts.md)

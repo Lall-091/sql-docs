@@ -121,7 +121,7 @@ use <cdc-enabled-database-name>
 ## CDC Source Editor (Connection Manager Page)
   Use the **Connection Manager** page of the **CDC Source Editor** dialog box to select the ADO.NET connection manager for the [!INCLUDE[ssnoversion](../../includes/ssnoversion-md.md)] database that the CDC source reads change rows from (the CDC database). Once the CDC database is selected you need to select a captured table in the database.  
   
- For more information about the CDC source, see [CDC Source](../../integration-services/data-flow/cdc-source.md).  
+ For more information about the CDC source, see [CDC Source](#cdc-source).  
   
 ### Task List  
  **To open the CDC Source Editor Connection Manager Page**  
@@ -239,4 +239,4 @@ use <cdc-enabled-database-name>
  The error or the truncation is ignored and the data row is directed to the CDC source output.  
   
  **Redirect Flow**  
- The error or the truncation data row is directed to the error output of the CDC source. In this case the CDC source error handling is used. For more information, see [CDC Source](../../integration-services/data-flow/cdc-source.md).  
+ The error or the truncation data row is directed to the error output of the CDC source. In this case the CDC source error handling is used. For more information, see [CDC Source](#cdc-source).  

@@ -1,8 +1,8 @@
 ---
 title: "Creating Variable Value Files (AccessToSQL)"
 description: "Creating Variable Value Files (AccessToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "08/17/2017"
 ms.service: sql
 ms.subservice: ssma
@@ -82,7 +82,7 @@ A Variable Value File is an XML file comprising the parameter values of commands
 ```  
   
 ## Variable value file validation  
-The user can easily validate his/her variable value file against the schema definition file **ConsoleScriptVariablesSchema.xsd** available in the 'Schemas' folder.  
+The user can easily validate their variable value file against the schema definition file **ConsoleScriptVariablesSchema.xsd** available in the 'Schemas' folder.  
   
 ## Next step  
 The next step in operating the console is [Creating the Server Connection Files &#40;AccessToSQL&#41;](../../ssma/access/creating-the-server-connection-files-accesstosql.md)  

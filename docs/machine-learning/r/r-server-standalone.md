@@ -85,7 +85,7 @@ Standalone servers can use the [operationalization](/machine-learning-server/wha
 
 SQL Server releases cumulative updates on a regular basis. Applying the cumulative updates adds security and functional enhancements to an existing installation.
 
-Descriptions of new or changed functionality can be found in the [CAB Downloads](../install/sql-ml-cab-downloads.md) article and on the web pages for [SQL Server 2016 cumulative updates](https://support.microsoft.com/help/3177312/sql-server-2016-build-versions) and [SQL Server 2017 cumulative updates](/troubleshoot/sql/releases/sqlserver-2017/build-versions).
+Descriptions of new or changed functionality can be found in the [CAB Downloads](../install/sql-ml-cab-downloads.md) article and on the build version articles for [SQL Server 2016](/troubleshoot/sql/releases/sqlserver-2016/build-versions), [SQL Server 2017](/troubleshoot/sql/releases/sqlserver-2017/build-versions), and [SQL Server 2019](/troubleshoot/sql/releases/sqlserver-2019/build-versions).
 
 For more information on how to apply updates to an existing instance, see [Apply updates](../install/sql-machine-learning-standalone-windows-install.md#apply-cu) in the installation instructions.
 

@@ -13,7 +13,7 @@ apiname: "ClientSettings Class"
 ---
 # ClientSettings Class
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
-  The [ClientSettings Class](../../relational-databases/wmi-provider-configuration-classes/clientsettings-class.md) represents the [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] settings on the client.  
+  The [ClientSettings Class](#clientsettings-class) represents the [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] settings on the client.  
   
  This class enables programmatic management of the client.  
   

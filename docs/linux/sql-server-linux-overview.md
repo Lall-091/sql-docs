@@ -3,7 +3,7 @@ title: Overview of SQL Server on Linux
 description: This article describes how SQL Server runs on Linux and provides information on how to learn more.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/18/2024
+ms.date: 05/02/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: concept-article
@@ -14,24 +14,7 @@ ms.custom:
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
-::: moniker range="=sql-server-2017 || =sql-server-linux-2017"
-Starting with [!INCLUDE [sssql17-md](../includes/sssql17-md.md)], [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] runs on Linux. It's the same [!INCLUDE [ssdenoversion-md](../includes/ssdenoversion-md.md)], with many similar features and services regardless of your operating system.
-
-> [!TIP]  
-> [SQL Server 2019](sql-server-linux-overview.md?view=sql-server-ver15&preserve-view=true) is available! To find out what's new for Linux in the latest release, see [What's new in SQL Server 2019 for Linux](sql-server-linux-whats-new-2019.md?view=sql-server-ver15&preserve-view=true).
-::: moniker-end
-
-::: moniker range="=sql-server-ver15|| =sql-server-linux-ver15"
-[!INCLUDE [sssql19-md](../includes/sssql19-md.md)] runs on Linux. It's the same [!INCLUDE [ssdenoversion-md](../includes/ssdenoversion-md.md)], with many similar features and services regardless of your operating system. To find out more about this release, see [What's new for SQL Server 2019 on Linux](sql-server-linux-whats-new-2019.md).
-
-> [!TIP]  
-> [SQL Server 2022](sql-server-linux-overview.md?view=sql-server-ver16&preserve-view=true) is available! To find out what's new for Linux in the latest release, see [What's new in SQL Server 2022](../sql-server/what-s-new-in-sql-server-2022.md).
-::: moniker-end
-
-::: moniker range=">= sql-server-ver16 || >= sql-server-linux-ver16"
-[!INCLUDE [sssql22-md](../includes/sssql22-md.md)] runs on Linux. It's the same [!INCLUDE [ssdenoversion-md](../includes/ssdenoversion-md.md)], with many similar features and services regardless of your operating system. To find out more about this release, see [What's new in SQL Server 2022](../sql-server/what-s-new-in-sql-server-2022.md).
-
-::: moniker-end
+[!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] runs on Linux, starting with [!INCLUDE [sssql17-md](../includes/sssql17-md.md)]. It's the same [!INCLUDE [ssdenoversion-md](../includes/ssdenoversion-md.md)], with many similar features and services regardless of your operating system.
 
 ## Install
 
@@ -69,15 +52,24 @@ Starting with [!INCLUDE [sssql17-md](../includes/sssql17-md.md)], [!INCLUDE [ssn
 
 If you're already familiar with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux, review the release notes for general guidelines and known issues for this release:
 
-- [Release notes for SQL Server 2017 on Linux](sql-server-linux-release-notes-2017.md)
-- [Release notes for SQL Server 2019 on Linux](sql-server-linux-release-notes-2019.md)
+- [Release notes for SQL Server 2025 Preview on Linux](sql-server-linux-release-notes-2025.md)
 - [Release notes for SQL Server 2022 on Linux](sql-server-linux-release-notes-2022.md)
+- [Release notes for SQL Server 2019 on Linux](sql-server-linux-release-notes-2019.md)
+- [Release notes for SQL Server 2017 on Linux](sql-server-linux-release-notes-2017.md)
 
-Then look at what's new:
+To find out more about each release, see:
 
+- [What's new for SQL Server 2025 Preview on Linux](sql-server-linux-whats-new-2025.md)
+- [What's new for SQL Server 2022 on Linux](sql-server-linux-whats-new-2022.md)
+- [What's new for SQL Server 2019 on Linux](sql-server-linux-whats-new-2019.md)
 - [What's new for SQL Server 2017 on Linux](sql-server-linux-whats-new.md)
-- [What's new for SQL Server 2019 on Linux](../sql-server/what-s-new-in-sql-server-2019.md#sql-server-on-linux)
-- [What's new in SQL Server 2022](../sql-server/what-s-new-in-sql-server-2022.md)
+
+To see what's new in each version for Windows, see:
+
+- [What's new in SQL Server 2025 Preview on Windows](../sql-server/what-s-new-in-sql-server-2025.md)
+- [What's new in SQL Server 2022 on Windows](../sql-server/what-s-new-in-sql-server-2022.md)
+- [What's new in SQL Server 2019 on Windows](../sql-server/what-s-new-in-sql-server-2019.md)
+- [What's new in SQL Server 2017 on Windows](../sql-server/what-s-new-in-sql-server-2017.md)
 
 > [!TIP]  
 > For answers to frequently asked questions, see the [SQL Server on Linux FAQ](sql-server-linux-faq.yml).

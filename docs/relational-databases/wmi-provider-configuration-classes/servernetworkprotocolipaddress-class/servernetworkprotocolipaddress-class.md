@@ -14,9 +14,9 @@ apitype: "MOFDef"
 ---
 # ServerNetworkProtocolIPAddress Class
 [!INCLUDE [SQL Server](../../../includes/applies-to-version/sqlserver.md)]
-  The [ServerNetworkProtocolIPAddress Class](../../../relational-databases/wmi-provider-configuration-classes/servernetworkprotocolipaddress-class/servernetworkprotocolipaddress-class.md) represents an IP address supported by the server network protocol.  
+  The [ServerNetworkProtocolIPAddress Class](#servernetworkprotocolipaddress-class) represents an IP address supported by the server network protocol.  
   
- With the [ServerNetworkProtocolIPAddress Class](../../../relational-databases/wmi-provider-configuration-classes/servernetworkprotocolipaddress-class/servernetworkprotocolipaddress-class.md) you can perform the following tasks:  
+ With the [ServerNetworkProtocolIPAddress Class](#servernetworkprotocolipaddress-class) you can perform the following tasks:  
   
 -   Check the name of the instance of [!INCLUDE[msCoName](../../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)].  
   

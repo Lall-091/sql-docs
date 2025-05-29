@@ -313,5 +313,4 @@ sections:
 additionalContent: |
 
   ## See Also
-  [Replication Administration FAQ](../../../relational-databases/replication/administration/frequently-asked-questions-for-replication-administrators.yml)   
   [Best Practices for Replication Administration](../../../relational-databases/replication/administration/best-practices-for-replication-administration.md)  

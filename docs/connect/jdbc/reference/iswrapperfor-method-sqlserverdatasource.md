@@ -32,7 +32,7 @@ public boolean isWrapperFor(Class iface)
  [SQLServerException](../../../connect/jdbc/reference/sqlserverexception-class.md)  
   
 ## Remarks  
- The [isWrapperFor](../../../connect/jdbc/reference/iswrapperfor-method-sqlserverdatasource.md) method and the [unwrap](../../../connect/jdbc/reference/unwrap-method-sqlserverdatasource.md) method are defined by the java.sql.Wrapper interface, which is introduced in the JDBC 4.0 Spec.  
+ The [isWrapperFor](#iswrapperfor-method-sqlserverdatasource) method and the [unwrap](../../../connect/jdbc/reference/unwrap-method-sqlserverdatasource.md) method are defined by the java.sql.Wrapper interface, which is introduced in the JDBC 4.0 Spec.  
   
  If this method returns true, calling [unwrap](../../../connect/jdbc/reference/unwrap-method-sqlserverdatasource.md) with the same argument will succeed.  
   

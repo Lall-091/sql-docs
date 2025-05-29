@@ -168,7 +168,7 @@ sqlsrv_close( $conn);
   
 The **sqlsrv_fetch_array** function always returns data according to the [Default PHP Data Types](../../connect/php/default-php-data-types.md). For information about how to specify the PHP data type, see [How to: Specify PHP Data Types](../../connect/php/how-to-specify-php-data-types.md).  
   
-If a field with no name is retrieved, the associative key for the array element will be an empty string (""). For more information, see [sqlsrv_fetch_array](../../connect/php/sqlsrv-fetch-array.md).  
+If a field with no name is retrieved, the associative key for the array element will be an empty string (""). For more information, see [sqlsrv_fetch_array](#sqlsrv_fetch_array).  
   
 ## See Also  
 [SQLSRV Driver API Reference](../../connect/php/sqlsrv-driver-api-reference.md)

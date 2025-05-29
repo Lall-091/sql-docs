@@ -1,15 +1,18 @@
 ---
 title: "The Memory Optimized Filegroup"
-description: Learn how to create a memory-optimized file group, which has containers for data files and delta files, before you create memory-optimized tables in SQL Server.
+description: Learn how to create a memory-optimized file group, which has containers for data files and delta files, before you create memory-optimized tables.
 author: MikeRayMSFT
 ms.author: mikeray
-ms.date: "03/01/2017"
+ms.date: 04/16/2025
 ms.service: sql
 ms.subservice: in-memory-oltp
 ms.topic: conceptual
 ---
-# The Memory Optimized Filegroup
+
+# The memory-optimized filegroup
+
  [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
+
   To create memory-optimized tables, you must first create a memory-optimized filegroup. The memory-optimized filegroup holds one or more containers. Each container contains data files or delta files or both.  
   
  Even though data rows from `SCHEMA_ONLY` tables are not persisted and the metadata for memory-optimized tables and natively compiled stored procedures is stored in the traditional catalogs, the [!INCLUDE[inmemory](../../includes/inmemory-md.md)] engine still requires a memory-optimized filegroup for `SCHEMA_ONLY` memory-optimized tables to provide a uniform experience for databases with memory-optimized tables.  
@@ -33,10 +36,12 @@ ms.topic: conceptual
 -   You can add new containers to a memory-optimized filegroup. You may need a new container to expand the storage needed for durable memory-optimized table and also to distribute IO across multiple containers.  
   
 -   Data movement with a memory-optimized filegroup is optimized in an Always On Availability Group configuration. Unlike filestream files that are sent to secondary replicas, the checkpoint files (both data and delta) within the memory-optimized filegroup are not sent to secondary replicas. The data and delta files are constructed using the transaction log on the secondary replica.  
-  
-> [!Note]
-> Once you use a memory-optimized filegroup, **you can only remove it by dropping the database**. In a production environment, it is unlikely that you need to remove the memory-optimized filegroup. You can't drop a non-empty container or move data and delta file pairs to another container in the memory-optimized filegroup.    
- 
+
+> [!NOTE]
+> In [!INCLUDE [sql-server-2022](../../includes/sssql22-md.md)] and older versions, once you use a memory-optimized filegroup, **you can only remove it by dropping the database**. You can't drop a non-empty container, or drop the last remaining container even if it's empty. You also can't move data and delta file pairs to another container in the memory-optimized filegroup.
+> 
+> Starting from [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)], you can remove the last remaining container and remove the memory-optimized filegroup. For more information, see [Memory-optimized container and filegroup removal](memory-optimized-container-filegroup-removal.md).
+
 ## Configuring a Memory-Optimized Filegroup  
 Consider creating multiple containers in the memory-optimized filegroup and distribute them on different drives to achieve more bandwidth to stream the data into memory. 
  

@@ -49,7 +49,7 @@ helpviewer_keywords:
 ## MSMQ Connection Manager Editor
   Use the **MSMQ Connection Manager** dialog box to specify the path to a Message Queuing (also known as MSMQ) message queue.  
   
- To learn more about the MSMQ connection manager, see [MSMQ Connection Manager](../../integration-services/connection-manager/msmq-connection-manager.md).  
+ To learn more about the MSMQ connection manager, see [MSMQ Connection Manager](#msmq-connection-manager).  
   
 > [!NOTE]  
 >  The MSMQ connection manager supports local public and private queues and remote public queues. It does not support remote private queues. For a workaround that uses the Script Task, see [Sending to a Remote Private Message Queue with the Script Task](../../integration-services/extending-packages-scripting-task-examples/sending-to-a-remote-private-message-queue-with-the-script-task.md).  

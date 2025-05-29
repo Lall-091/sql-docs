@@ -51,7 +51,7 @@ helpviewer_keywords:
 ## Configure Error Output dialog box
 Use the **Configure Error Output** dialog box to configure error handling options for data flow transformations that support an error output.  
   
- To learn more about working with error outputs, see [Error Handling in Data](../../integration-services/data-flow/error-handling-in-data.md).  
+ To learn more about working with error outputs, see [Error Handling in Data](#error-handling-in-data).  
   
 ### Options  
  **Input or Output**  
@@ -63,12 +63,12 @@ Use the **Configure Error Output** dialog box to configure error handling option
  **Error**  
  If applicable, specify what should happen when an error occurs: ignore the failure, redirect the row, or fail the component.  
   
- **Related Topics:** [Error Handling in Data](../../integration-services/data-flow/error-handling-in-data.md)  
+ **Related Topics:** [Error Handling in Data](#error-handling-in-data)  
   
  **Truncation**  
  If applicable, specify what should happen when a truncation occurs: ignore the failure, redirect the row, or fail the component.  
   
- **Related Topics:** [Error Handling in Data](../../integration-services/data-flow/error-handling-in-data.md)  
+ **Related Topics:** [Error Handling in Data](#error-handling-in-data)  
   
  **Description**  
  View the description of the operation.  

@@ -1,8 +1,8 @@
 ---
 title: "Executing the SSMA Console (AccessToSQL)"
 description: "Executing the SSMA Console (AccessToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 07/22/2024
 ms.service: sql

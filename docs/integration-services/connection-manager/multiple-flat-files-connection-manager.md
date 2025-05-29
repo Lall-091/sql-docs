@@ -65,7 +65,7 @@ helpviewer_keywords:
 ## Multiple Flat Files Connection Manager Editor (General Page)
   Use the **General** page of the **Multiple Flat Files Connection Manager Editor** dialog box to select a group of files that have the same data format, and to specify their data format. A multiple flat files connection enables a package to connect to a group of text files that have the same format.  
   
- To learn more about the Multiple Flat Files connection manager, see [Multiple Flat Files Connection Manager](../../integration-services/connection-manager/multiple-flat-files-connection-manager.md).  
+ To learn more about the Multiple Flat Files connection manager, see [Multiple Flat Files Connection Manager](#multiple-flat-files-connection-manager).  
   
 ### Options  
  **Connection manager name**  
@@ -124,7 +124,7 @@ helpviewer_keywords:
 ## Multiple Flat Files Connection Manager Editor (Columns Page)
   Use the **Columns** node of the **Multiple Flat Files Connection Manager Editor** dialog box to specify the row and column information, and to preview the first selected file.  
   
- To learn more about the Multiple Flat Files connection manager, see [Multiple Flat Files Connection Manager](../../integration-services/connection-manager/multiple-flat-files-connection-manager.md).  
+ To learn more about the Multiple Flat Files connection manager, see [Multiple Flat Files Connection Manager](#multiple-flat-files-connection-manager).  
   
 ### Static Options  
  **Connection manager name**  
@@ -213,7 +213,7 @@ helpviewer_keywords:
   
  By default, the length of string columns is 50 characters. You can evaluate sample data and automatically resize the length of these columns to prevent truncation of data or excess column width. You can also update other metadata to enable compatibility with destination columns. For example, you might change the data type of a column that contains only integer data to a numeric data type, such as DT_I2.  
   
- To learn more about the Multiple Flat Files connection manager, see [Multiple Flat Files Connection Manager](../../integration-services/connection-manager/multiple-flat-files-connection-manager.md).  
+ To learn more about the Multiple Flat Files connection manager, see [Multiple Flat Files Connection Manager](#multiple-flat-files-connection-manager).  
   
 ### Options  
  **Connection manager name**  
@@ -255,7 +255,7 @@ helpviewer_keywords:
 ## Multiple Flat Files Connection Manager Editor (Preview Page)
   Use the **Preview** page of the **Multiple Flat Files ConnectionManager Editor** dialog box to view the contents of the first selected source file divided into columns as you have defined them.  
   
- To learn more about the Multiple Flat Files connection manager, see [Multiple Flat Files Connection Manager](../../integration-services/connection-manager/multiple-flat-files-connection-manager.md).  
+ To learn more about the Multiple Flat Files connection manager, see [Multiple Flat Files Connection Manager](#multiple-flat-files-connection-manager).  
   
 ### Options  
  **Connection manager name**  

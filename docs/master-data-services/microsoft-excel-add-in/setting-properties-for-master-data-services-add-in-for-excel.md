@@ -13,6 +13,8 @@ ms.custom: microsoft-excel-add-in
 
 [!INCLUDE [SQL Server Windows Only - ASDBMI](../../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](../includes/support-notice.md)]
+
   Master Data Services Add-in for Excel settings determine how data is loaded from MDS into the Excel Add-in and how data is published from the Excel Add-in into MDS.  
   
  To make settings for the Excel Add-in, open **Excel**, click the **Master Data** menu, and then click **Settings**. Anyone with access to Excel can change these settings. The settings apply to the computer that Excel is open on.  

@@ -1,10 +1,10 @@
 ---
-title: Try for free (preview)
+title: Try for free
 description: Learn how to deploy a free Azure SQL Managed Instance.
-author: vladai78
-ms.author: vladiv
-ms.reviewer: mathoma, randolphwest
-ms.date: 11/19/2024
+author: Stralle
+ms.author: strrodic
+ms.reviewer: mathoma, randolphwest, vladiv
+ms.date: 05/20/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: how-to
@@ -12,7 +12,7 @@ ms.custom:
   - ignite-2024
 monikerRange: "=azuresql || =azuresql-mi"
 ---
-# Try Azure SQL Managed Instance for free (preview)
+# Try Azure SQL Managed Instance for free
 
 > [!div class="op_single_selector"]
 > - [Azure SQL Database](../database/free-offer.md?view=azuresql&preserve-view=true)
@@ -20,18 +20,18 @@ monikerRange: "=azuresql || =azuresql-mi"
 
 Try [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) free of charge for the first 12 months to get:
 
-- a General Purpose instance with up to 100 databases
+- a General Purpose or [Next-gen General Purpose (preview)](service-tiers-next-gen-general-purpose-use.md) instance
 - 720 vCore hours of compute every month
 - 64 GB of storage
 
-> [!NOTE]  
-> The free Azure SQL Managed Instance offer is currently in [preview](doc-changes-updates-release-notes-whats-new.md#preview).
-
 ## Overview
 
-The free SQL Managed Instance offer is designed for new Azure customers looking to get started with Azure SQL Managed Instance, as well as existing customers that might need a development database, such as for a proof of concept.
+The free SQL Managed Instance offer is designed for:
+- New customers looking to get started with Azure SQL Managed Instance.
+- Existing customers that need a development database to build proof of concept applications.
+- Testing existing SQL Server workloads in Azure.
 
-To get started, select **Apply free offer** from the banner when you try to create a new Azure SQL Managed Instance:
+To get started, [create a new Azure SQL Managed Instance](https://portal.azure.com/#browse/Microsoft.Sql%2FmanagedInstances) from the Azure portal. To use the free offer, select **Apply free offer** from the banner at the top of the **Create Azure SQL Managed Instance** page:
 
 :::image type="content" source="media/free-offer/free-sql-managed-instance-banner.png" alt-text="Screenshot from the Azure portal of the Free Offer banner.":::
 
@@ -56,6 +56,7 @@ The following table describes the limits of the free SQL Managed Instance:
 |Category  |Limit  |
 |---------|---------|
 |Compute | 4 or 8 vCore instances only | 
+|Databases    | 100 (General Purpose) / 500 (Next-gen General Purpose)         |
 |vCore hours    | 720 vCore hours monthly         |
 |Storage     |  64 GB of data<sup>1</sup>       |
 |IOPS | Depends on file size / 300 for Next-gen General Purpose<sup>2</sup>
@@ -67,27 +68,34 @@ The following table describes the limits of the free SQL Managed Instance:
 |Guaranteed SLA| None| 
 
 <sup>1</sup> Since system files can take up to 32 GB of storage, the available storage for user data could be less than 64 GB.   
-<sup>2</sup> Free instances using the [Next-gen General Purpose (preview)](service-tiers-next-gen-general-purpose-use.md) service tier upgrade are limited to 300 IOPS, and can't use the IOPS slider. 
+<sup>2</sup> Free instances using the [Next-gen General Purpose (preview)](service-tiers-next-gen-general-purpose-use.md) service tier upgrade are limited to 300 IOPS, and the IOPS slider is unavailable. 
 
 Additionally, the following limitations apply: 
 
-- The following capabilities aren't supported: [Zone redundancy](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability), [failover groups](failover-group-sql-mi.md), [long-term backup retention](../database/long-term-retention-overview.md) 
-- Scaling up and down is possible only within 
+- The offer is valid for 12 months from the day the offer is initially activated, and can be applied to only one instance at a time, per subscription.
+- After 12 months, the free SQL managed instance is stopped. If the instance isn't upgraded to a paid version within 30 days, the instance and all databases are deleted, and no longer recoverable.
+- The following capabilities aren't supported: [Zone redundancy](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability), [failover groups](failover-group-sql-mi.md), [long-term backup retention](../database/long-term-retention-overview.md).
+- Scaling up and down is only possible within the free offer limits. 
 - The free offer is currently available in the [following regions](region-availability.md#free-offer). 
-- If you delete a free SQL managed instance, all its databases are deleted and can't be restored. 
-
+- If you delete a free SQL managed instance, all its databases are deleted and can't be restored.
 
 ### Monthly vCore limits 
 
 The monthly free limits include 720 vCore hours of compute. Your free month of credits starts when you create your instance and is renewed on the same day of the following month.
 
-Once you reach the monthly free vCore limit, the instance is stopped with a status of `Stopped - Insufficient credit` and a banner on the **Overview** page of your instance in the Azure portal gives you the option to create a new paid instance. You can [restore your database](point-in-time-restore.md?#restore-an-existing-database) to the new instance to continue your business without the limits imposed by the free offer.
+Once you reach the monthly free vCore limit, the instance is stopped with a status of `Stopped - Insufficient credit` and a banner on the **Overview** page of your instance in the Azure portal gives you the option to create a new paid instance. You can [restore your database](point-in-time-restore.md#restore-an-existing-database) to the new instance to continue your business without the limits imposed by the free offer.
 
-Once you have credits available again at the beginning of the next month, the instance is started automatically at the next scheduled start. You can also stop the instance manually at any time to avoid using up your free monthly vCore hours.
+The free vCore hours renew on the same date each month, starting the day the offer is applied. If your instance is stopped due to insufficient credits, then after you have credits available again, the instance is started automatically at the next scheduled start. You can also stop the instance manually at any time to avoid using up your free monthly vCore hours.
 
-You can view how many vCore limits remain on the **Overview** page for your free instance in the Azure portal, such as the following screenshot: 
+On the **Overview** pane of your free instance in the Azure portal, you can identify: 
+- **Pricing tier**: the free offer is applied to your instance.
+- **Free vCore hours renew in**: the number of days until your free vCore hours recycle. 
+- **Free vCore hours**: the remaining free vCore hours for the current 30-day cycle. 
 
-:::image type="content" source="media/free-offer/remaining-credits.png" alt-text="Screenshot showing the remaining vCore hours for a free instance in the Azure portal.":::
+:::image type="content" source="media/free-offer/remaining-credits.png" alt-text="Screenshot showing the remaining vCore hours for a free instance in the Azure portal." lightbox="media/free-offer/remaining-credits.png":::
+
+> [!NOTE]
+> If you delete your original free SQL Managed Instance and create a new one, your free credits are not reset. The remaining vCore hours for the current month carry over to the new instance and your full 720 vCore hours are available again on your original monthly renewal date.
 
 ## Prerequisites
 
@@ -111,12 +119,11 @@ To try Azure SQL Managed Instance for free, you need to have a supported subscri
     :::column-end:::
 :::row-end:::
 
-
 ## Create a free instance
 
 Use the Azure portal to create the new free Azure SQL Managed Instance.
 
-To create your free instance, follow these steps:
+To create your free SQL managed instance, follow these steps:
 
 1. Go to the [provisioning page for Azure SQL Managed Instance](https://portal.azure.com/#create/Microsoft.SQLManagedInstance) in the Azure portal.
 1. On the **Basics** tab, look for the **Want to try Azure SQL Managed Instance for free?** banner and select the **Apply offer** button. Check the **Estimated costs per month** to validate the free offer has been applied to your instance.
@@ -161,17 +168,21 @@ To upgrade your instance, follow these steps:
 1. Go to your [SQL managed instance](https://portal.azure.com/#browse/Microsoft.Sql%2FmanagedInstances) in the Azure portal. 
 1. Select the free instance you want to upgrade to navigate to the **Overview** page for the SQL Managed Instance. 
 1. Under **Settings**, select **Compute + storage** to open the **Compute + storage** page. Alternatively, you can select **Upgrade to a paid offer** from the banner on the **Overview** page.
-1. On the **Compute + storage** page, select **Paid offer** to upgrade your instance to the paid version: 
+1. On the **Compute + storage** page:  
+   1. Choose the **Paid offer** under **Offer type** to upgrade your instance to the paid version. 
+   1. Observe the **Estimated costs per month**. 
+   1. Select **Apply** to confirm the upgrade.
 
-   :::image type="content" source="media/free-offer/upgrade-to-paid-offer.png" alt-text="Screenshot of the paid offer selected on the compute + storage page for your instance in the Azure portal.":::
+   :::image type="content" source="media/free-offer/upgrade-to-paid-offer.png" alt-text="Screenshot of the paid offer selected on the compute + storage page for your instance in the Azure portal." lightbox="media/free-offer/upgrade-to-paid-offer.png":::
 
-1. Select **Apply** to confirm the upgrade.
+> [!NOTE]
+> Once a free SQL managed instance is changed to a paid offer, the free offer is no longer available for that instance. To continue using the free offer, you must create a new instance and apply the offer again. 
 
 ## Clean up resources
 
-When you're finished using these resources, or if you want to start over again with a new free instance (limit one per subscription), you can delete the resource group you created, which also deletes the instance and any databases within it.
+When you're finished using these resources, or if you want to start over again with a new free instance (limited to one per subscription), you can delete the resource group you created, which also deletes the instance and any databases within it.
 
-To delete `myFreeMIResourceGroup` and all its resources using the Azure portal:
+To delete your resource group and all its resources using the Azure portal, follow these steps: 
 
 1. In the Azure portal, search for and select **Resource groups**, and then select your resource group, such as `myFreeMIResourceGroup`, from the list.
 1. On the **Resource group** page, select **Delete resource group**.

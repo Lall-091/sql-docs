@@ -1,8 +1,8 @@
 ---
 title: "Creating the Server Connection Files (MySQLToSQL)"
 description: "Creating the Server Connection Files (MySQLToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: ssma
@@ -79,7 +79,7 @@ Server information can be specified either in the servers section of the script 
 ```  
   
 ## Server Connection File Validation  
-The user can easily validate his/her server connection file against the schema definition file **'M2SSConsoleScriptServersSchema.xsd'** available in the 'Schemas' folder.  
+The user can easily validate their server connection file against the schema definition file **'M2SSConsoleScriptServersSchema.xsd'** available in the 'Schemas' folder.  
   
 ## Next Step  
 The next step in operating the console is [Executing the SSMA Console &#40;MySQLToSQL&#41;](../../ssma/mysql/executing-the-ssma-console-mysqltosql.md)  

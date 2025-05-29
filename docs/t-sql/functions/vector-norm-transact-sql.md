@@ -26,7 +26,7 @@ ms.collection: ce-skilling-ai-copilot
 > [!NOTE]
 > This data type is in preview and is subject to change. Make sure to read preview usage terms in the [Service Level Agreements (SLA) for Online Services](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services) document.
 
-The function `VECTOR_NORM` takes a vector as an input and returns the norm of the vector (which is a measure of its length or magnitude) in a given [norm type](https://mathworld.wolfram.com/VectorNorm.html)
+Takes a vector as an input and returns the norm of the vector (which is a measure of its length or magnitude) in a given [norm type](https://mathworld.wolfram.com/VectorNorm.html).
 
 For example, if you want to calculate the Euclidean norm (which is the most common norm type), you can use:
 

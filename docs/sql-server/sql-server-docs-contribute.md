@@ -4,7 +4,7 @@ description: "How to contribute to SQL Server Documentation"
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 01/04/2024
+ms.date: 05/26/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: how-to
@@ -26,7 +26,9 @@ There are two main workflows you can use to contribute:
 
 The Data Docs content team validates all public contributions for technical accuracy and consistency.
 
-## <a id="githubui"></a> Edit in your browser
+<a id="githubui"></a>
+
+## Edit in your browser
 
 You can make simple edits to SQL Server content in your browser and then submit them to Microsoft. For more information, see the [contributor guide overview](/contribute/#quick-edits-to-existing-documents).
 
@@ -45,9 +47,11 @@ The following steps summarize the process:
 
 The following GIF demonstrates the end-to-end process for submitting changes in your browser:
 
-:::image type="content" source="media/sql-server-docs-navigation-guide/edit-sql-docs.gif" alt-text="Screenshot of Edit SQL Docs.":::
+:::image type="content" source="media/sql-server-docs-navigation-guide/edit-sql-docs.gif" alt-text="Screenshot of Edit SQL Docs." lightbox="media/sql-server-docs-navigation-guide/edit-sql-docs.gif":::
 
-## <a id="tools"></a> Edit locally with tools
+<a id="tools"></a>
+
+## Edit locally with tools
 
 Another editing option is to fork the `sql-docs` or `azure-docs` repositories and clone them locally to your machine. You can then use a Markdown editor and a git client to submit the changes. This workflow is good for edits that are more complex or involve multiple files. It's also good for frequent contributors to Microsoft technical documentation.
 
@@ -64,9 +68,13 @@ If you submit a pull request with significant changes to documentation, you get 
 
 If your changes are accepted, you're recognized as a contributor at the top of the article.
 
-:::image type="content" source="media/sql-server-docs-contribute/contribution-recognition.png" alt-text="Screenshot of Content contribution recognition.":::
+:::image type="content" source="media/sql-server-docs-contribute/contribution-recognition-step-1.png" alt-text="Screenshot of Content contribution recognition under article heading." lightbox="media/sql-server-docs-contribute/contribution-recognition-step-1.png":::
 
-## SQL-docs overview
+Select the contributors link, and you can see the list of contributors in more detail.
+
+:::image type="content" source="media/sql-server-docs-contribute/contribution-recognition-step-2.png" alt-text="Screenshot of Content contribution recognition dialog.":::
+
+## Overview: sql-docs repository
 
 This section provides more guidance on working in the `sql-docs` repository.
 
@@ -79,22 +87,22 @@ The [sql-docs](https://github.com/MicrosoftDocs/sql-docs) repository uses severa
 | --- | --- |
 | [docs](https://github.com/MicrosoftDocs/sql-docs/tree/live/docs) | Contains all published SQL Server content. Subfolders logically organize different areas of the content. |
 | [docs/includes](https://github.com/MicrosoftDocs/sql-docs/tree/live/docs/includes) | Contains include files. These files are blocks of content that can be included in one or more other articles. |
-| `./media` | Each folder can have one `media` subfolder for article images. The `media` folder in turn has subfolders with the same name as the articles that the image appears in. Images should be .png files with all lower-case letters and no spaces. |
-| `TOC.MD` | A table-of-contents file. Each subfolder has the option of using one TOC.MD file. |
+| `./media` | Each folder can have one `media` subfolder for article images. The `media` folder in turn has subfolders with the same name as the articles that the image appears in. Images should be `.png` files with all lower case letters and no spaces. |
+| `TOC.yml` | A table-of-contents file. Each subfolder has the option of using one `TOC.yml` file. |
 
 #### Applies-to includes
 
 Each SQL Server article contains an `applies-to` include file after the title. This indicates what areas or versions of SQL Server the article applies to.
 
-Consider the following Markdown example that pulls in the `applies-to-version/sql-asdb-asa-pdw.md` include file.
+Consider the following Markdown example that pulls in the `applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md` include file.
 
-```Markdown
-[!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW](../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+```md
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics Analytics Platform System (PDW) SQL database in Microsoft Fabric](../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 ```
 
-This adds the following text at the top of the article:
+This adds the following text to the top of the article:
 
-:::image type="content" source="media/sql-server-docs-contribute/applies-to.png" alt-text="Screenshot of Applies to text.":::
+:::image type="content" source="media/sql-server-docs-contribute/applies-to.png" alt-text="Screenshot of Applies to text." lightbox="media/sql-server-docs-contribute/applies-to.png":::
 
 To find the correct applies-to include file for your article, use the following tips:
 
@@ -108,7 +116,7 @@ To find the correct applies-to include file for your article, use the following 
 
 - [Contributor guide](/contribute/)
 - [Microsoft Style Guide](/teamblog/style-guide)
-- [Markdown basics](https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github/)
+- [Markdown basics](https://docs.github.com/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github)
 
 > [!TIP]  
 > If you have product feedback rather than documentation feedback, [provide feedback on the SQL Server product here](https://feedback.azure.com/forums/908035-sql-server).

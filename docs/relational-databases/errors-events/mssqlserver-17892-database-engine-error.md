@@ -101,4 +101,4 @@ User didn't maintain case when copying this script from the internet on this par
  SELECT EVENTDATA().value ( '(/event_instance/clienthost)[1]' , 'NVARCHAR(15)');
 ```
 
-As a consequence, `EVENTDATA` always returned **NULL**, and all his SA equivalent logins were denied access. In this case, the DAC connection was not enabled, so we had no choice but to restart the server with the startup parameters listed above to drop the trigger.
+As a consequence, `EVENTDATA` always returned **NULL**, and all their SA equivalent logins were denied access. In this case, the DAC connection was not enabled, so we had no choice but to restart the server with the startup parameters listed above to drop the trigger.

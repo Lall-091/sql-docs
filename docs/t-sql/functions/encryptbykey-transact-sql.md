@@ -78,7 +78,7 @@ EncryptByKey ( key_GUID , { 'cleartext' | @cleartext }
 |697|Chief Financial Officer|M0x8900f56543|  
 |694|Data Entry Supervisor|Cvc97824%^34f|  
   
- Without breaking the encryption, a malicious user can infer significant information from the context in which the ciphertext is stored. Because a Chief Financial Officer is paid more than a Copy Room Assistant, it follows that the value encrypted as M0x8900f56543 must be greater than the value encrypted as Fskj%7^edhn00. If so, any user with ALTER permission on the table can give the Copy Room Assistant a raise by replacing the data in his Base_Pay field with a copy of the data stored in the Base_Pay field of the Chief Financial Officer. This whole-value substitution attack bypasses encryption altogether.  
+ Without breaking the encryption, a malicious user can infer significant information from the context in which the ciphertext is stored. Because a Chief Financial Officer is paid more than a Copy Room Assistant, it follows that the value encrypted as M0x8900f56543 must be greater than the value encrypted as Fskj%7^edhn00. If so, any user with ALTER permission on the table can give the Copy Room Assistant a raise by replacing the data in their Base_Pay field with a copy of the data stored in the Base_Pay field of the Chief Financial Officer. This whole-value substitution attack bypasses encryption altogether.  
   
  Whole-value substitution attacks can be thwarted by adding contextual information to the plaintext before encrypting it. This contextual information is used to verify that the plaintext data has not been moved.  
   

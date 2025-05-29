@@ -14,9 +14,9 @@ apitype: "MOFDef"
 ---
 # ServerNetworkProtocolProperty Class
 [!INCLUDE [SQL Server](../../../includes/applies-to-version/sqlserver.md)]
-  The [ServerNetworkProtocolProperty Class](../../../relational-databases/wmi-provider-configuration-classes/servernetworkprotocolproperty-class/servernetworkprotocolproperty-class.md) represents the properties of a server network protocol.  
+  The [ServerNetworkProtocolProperty Class](#servernetworkprotocolproperty-class) represents the properties of a server network protocol.  
   
- With the [ServerNetworkProtocolProperty Class](../../../relational-databases/wmi-provider-configuration-classes/servernetworkprotocolproperty-class/servernetworkprotocolproperty-class.md), you can perform the following tasks:  
+ With the [ServerNetworkProtocolProperty Class](#servernetworkprotocolproperty-class), you can perform the following tasks:  
   
 -   Check the protocol that the current property belongs to.  
   

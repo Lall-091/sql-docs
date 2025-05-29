@@ -13,9 +13,9 @@ apiname: "ClientNetworkProtocolProperty Class"
 ---
 # ClientNetworkProtocolProperty Class
 [!INCLUDE [SQL Server](../../../includes/applies-to-version/sqlserver.md)]
-  The [ClientNetworkProtocolProperty Class](../../../relational-databases/wmi-provider-configuration-classes/clientnetworkprotocolproperty-class/clientnetworkprotocolproperty-class.md) represents properties of a client network protocol.  
+  The [ClientNetworkProtocolProperty Class](#clientnetworkprotocolproperty-class) represents properties of a client network protocol.  
   
- With the [ClientNetworkProtocolProperty Class](../../../relational-databases/wmi-provider-configuration-classes/clientnetworkprotocolproperty-class/clientnetworkprotocolproperty-class.md), you can perform the following tasks:  
+ With the [ClientNetworkProtocolProperty Class](#clientnetworkprotocolproperty-class), you can perform the following tasks:  
   
 -   Set an index value to select a client network protocol property from the list of properties.  
   

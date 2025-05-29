@@ -3,7 +3,7 @@ title: "Redirect read/write connections to primary replica"
 description: Learn how to redirect read/write connections to the primary replica of an Always On availability group regardless of the server specified in the connection string.
 author: "MikeRayMSFT"
 ms.author: "mikeray"
-ms.date: 01/09/2019
+ms.date: "03/15/2025"
 ms.service: sql
 ms.subservice: availability-groups
 ms.topic: how-to
@@ -18,11 +18,11 @@ monikerRange: ">=sql-server-ver15||>=sql-server-linux-ver15"
 ---
 # Secondary to primary replica read/write connection redirection (Always On Availability Groups)
 
-[!INCLUDE[appliesto](../../../includes/applies-to-version/sqlserver2019.md)]
+[!INCLUDE[appliesto](../../../includes/applies-to-version/sqlserver2019.md)] and later
 
-[!INCLUDE[sssql19-md](../../../includes/sssql19-md.md)] CTP 2.0 introduces *secondary to primary replica read/write connection redirection* for Always On Availability Groups. Read/write connection redirection is available on any operating system platform. It allows client application connections to be directed to the primary replica regardless of the target server specified in the connections string. 
+[!INCLUDE[sssql19-md](../../../includes/sssql19-md.md)] introduces *secondary to primary replica read/write connection redirection* for Always On availability groups. Read/write connection redirection is available on any operating system platform. It allows client application connections to be directed to the primary replica regardless of the target server specified in the connections string. 
 
-For  example, the connection string can target a secondary replica. Depending on the configuration of the availability group (AG) replica and the settings in the connection string, the connection can be automatically redirected to the primary replica. 
+For example, the connection string can target a secondary replica. Depending on the configuration of the availability group (AG) replica and the settings in the connection string, the connection can be automatically redirected to the primary replica. 
 
 ## Use cases
 
@@ -70,6 +70,10 @@ After you set read/write connection redirection, the way the replica handles con
 |`ApplicationIntent=ReadOnly`|Connections fail|Connections succeed|Connections succeed
 
 The preceding table shows that when the primary replica has `READ_WRITE_ROUTING_URL` set, the secondary replica will redirect connections to the primary replica when `SECONDARY_ROLE (ALLOW CONNECTIONS = ALL)`, and the connection specifies `ReadWrite`.
+
+## Revert to default routing behavior
+
+Starting with [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)], you can specify `NONE` as the `READ_WRITE_ROUTING_URL` or the `READ_ONLY_ROUTING_URL ` destination to revert specified routing for the availability replica, and route traffic based on the default behavior. To learn more, review [ALTER AVAILABILITY GROUP](../../../t-sql/statements/alter-availability-group-transact-sql.md) Transact-SQL command.
 
 ## Example 
 

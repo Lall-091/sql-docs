@@ -118,7 +118,7 @@ The following limitations apply to queries on encrypted columns:
 
 - Always Encrypted isn't supported for the columns with the below characteristics:
 
-  - Columns using one of the following data types: **xml**, **timestamp**, **rowversion**, **image**, **ntext**, **text**, **sql_variant**, **hierarchyid**, **geography**, **geometry**, alias, user-defined types.
+  - Columns using one of the following data types: **xml**, **timestamp**, **rowversion**, **image**, **ntext**, **text**, **sql_variant**, **hierarchyid**, **geography**, **geometry**, **vector**, alias, user-defined types.
   - [FILESTREAM](../../../t-sql/statements/create-table-transact-sql.md#filestream) columns
   - Columns with the [IDENTITY](../../../t-sql/statements/create-table-transact-sql.md#identity) property.
   - Columns with [ROWGUIDCOL](../../../t-sql/statements/create-table-transact-sql.md#rowguidcol) property.

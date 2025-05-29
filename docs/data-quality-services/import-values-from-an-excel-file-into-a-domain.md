@@ -16,6 +16,8 @@ f1_keywords:
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sqlserver.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   This topic describes how to import values from an Excel file into a domain in [!INCLUDE[ssDQSnoversion](../includes/ssdqsnoversion-md.md)] (DQS). Using an Excel file to import domain values into the [!INCLUDE[ssDQSClient](../includes/ssdqsclient-md.md)] application simplifies the knowledge generation process, saving time and effort. It enables people who have a list of valid data values in an Excel file or a text file to import those values into a domain. From an Excel file you can import domain values into a domain or domains into a knowledge base. (See [Import Domains from an Excel File in Knowledge Discovery](../data-quality-services/import-domains-from-an-excel-file-in-knowledge-discovery.md) for more information about importing domains into a knowledge base.) Exporting to an Excel file is not supported.  
   
  You can import data values in two ways:  
@@ -105,7 +107,7 @@ f1_keywords:
   
     -   The expected format is that the first column will be leading values and the second column and above will be synonyms.  
   
-    -   You can import multiple synonyms in the same row or in different rows. For example, if you want to import "NYC" and "New York City" as synonyms for "New York", you can import a single row with "New York" in column 1, "NYC" in column 2, and "New York City" in column 3; or you can import one row with "New York" in column 1 and "NYC" in column 2, and another row with "New York" in column 1 and "New York City" in column 2. Note that if the value "New York" already exists in the domain, only the synonyms will be added, and the user will not receive an error during the import process telling him that the value already exist. If the first value does not already exist, it will be added to the domain.  
+    -   You can import multiple synonyms in the same row or in different rows. For example, if you want to import "NYC" and "New York City" as synonyms for "New York", you can import a single row with "New York" in column 1, "NYC" in column 2, and "New York City" in column 3; or you can import one row with "New York" in column 1 and "NYC" in column 2, and another row with "New York" in column 1 and "New York City" in column 2. Note that if the value "New York" already exists in the domain, only the synonyms will be added, and the user will not receive an error during the import process telling them that the value already exist. If the first value does not already exist, it will be added to the domain.  
   
  The following rules apply to the Excel file being used for the import:  
   

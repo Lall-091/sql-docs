@@ -19,12 +19,12 @@ Most services and their properties can be configured by using SQL Server Configu
 
 | SQL Server version | Path |
 |--------------------|------|
+| [!INCLUDE [sssql25-md](../../includes/sssql22-md.md)] | `C:\Windows\SysWOW64\SQLServerManager17.msc` |
 | [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] | `C:\Windows\SysWOW64\SQLServerManager16.msc` |
 | [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] | `C:\Windows\SysWOW64\SQLServerManager15.msc` |
 | [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] | `C:\Windows\SysWOW64\SQLServerManager14.msc` |
 | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] | `C:\Windows\SysWOW64\SQLServerManager13.msc` |
 | [SQL Server 2014](/previous-versions/sql/2014/) | `C:\Windows\SysWOW64\SQLServerManager12.msc` |
-| [SQL Server 2012](/previous-versions/sql/sql-server-2012/hh231622(v=sql.110)) | `C:\Windows\SysWOW64\SQLServerManager11.msc` |
 
 ## SQL Server enabled by Azure Arc
 

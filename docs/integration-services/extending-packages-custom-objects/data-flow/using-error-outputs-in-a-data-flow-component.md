@@ -427,6 +427,6 @@ End Sub
   
 ## See Also  
  [Error Handling in Data](../../../integration-services/data-flow/error-handling-in-data.md)   
- [Using Error Outputs](../../../integration-services/extending-packages-custom-objects/data-flow/using-error-outputs-in-a-data-flow-component.md)  
+ [Using Error Outputs](#using-error-outputs-in-a-data-flow-component)  
   
   

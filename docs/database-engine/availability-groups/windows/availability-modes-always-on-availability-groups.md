@@ -184,9 +184,8 @@ The primary replica sends log records of changes on primary database to the seco
 
 This means that there's some latency, usually only a matter of seconds, between the primary and secondary replicas. In unusual cases, however, for example if network issues reduce throughput, latency can become significant. Latency increases when I/O bottlenecks occur and when data movement is suspended. To monitor suspended data movement, you can use the [Always On Dashboard](../../../database-engine/availability-groups/windows/use-the-always-on-dashboard-sql-server-management-studio.md) or the [sys.dm_hadr_database_replica_states dynamic management view](../../../relational-databases/system-dynamic-management-views/sys-dm-hadr-database-replica-states-transact-sql.md).
 
-For more information on investigating redo latency on the secondary replica, please see [Troubleshoot primary changes not reflected on secondary replica](../../../database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary.md).
+> Starting with [!INCLUDE [_ss2025](../../../includes/sssql25-md.md)], to reduce latency, you can reduce the time, in milliseconds, that the primary replica takes to commit transactions to the secondary replica. Review [availability group commit time (ms)](../../configure-windows/availability-group-commit-time-server-configuration-options.md) to learn more. 
   
-##  <a name="RelatedTasks"></a> Related tasks  
  **To change the availability mode and failover mode**  
   
 -   [Change the Availability Mode of an Availability Replica &#40;SQL Server&#41;](../../../database-engine/availability-groups/windows/change-the-availability-mode-of-an-availability-replica-sql-server.md)  

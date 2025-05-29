@@ -93,7 +93,6 @@ In this article you can find a content reference of various guides, scripts, and
 ## Develop applications
 
 - [Connectivity](connect-query-content-reference-guide.md#libraries)
-- [Use Spark Connector](spark-connector.md)
 - [Authenticate app](application-authentication-get-client-id-keys.md)
 - [Use batching for better performance](../performance-improve-use-batching.md)
 - [Connectivity guidance](troubleshoot-common-connectivity-issues.md)

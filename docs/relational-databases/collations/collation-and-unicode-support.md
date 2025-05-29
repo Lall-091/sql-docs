@@ -720,7 +720,7 @@ To change the database collation, allowing new objects to inherit the database c
 ## Related content
 
 - [SQL Server Best Practices Collation Change](https://go.microsoft.com/fwlink/?LinkId=113891)
-- [Use unicode character format to import or export data (SQL Server)](../import-export/use-unicode-character-format-to-import-or-export-data-sql-server.md)
+- [Use Unicode character format to import or export data (SQL Server)](../import-export/use-unicode-character-format-to-import-or-export-data-sql-server.md)
 - [Write International Transact-SQL Statements](write-international-transact-sql-statements.md)
 - [SQL Server Best Practices Migration to Unicode](https://go.microsoft.com/fwlink/?LinkId=113890)
 - [Unicode Consortium](https://go.microsoft.com/fwlink/?LinkId=48619)

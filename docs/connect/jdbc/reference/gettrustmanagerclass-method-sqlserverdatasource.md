@@ -27,7 +27,7 @@ public java.lang.String getTrustManagerClass()
  A **String** that contains the value of the TrustManagerClass connection property, or null if no value is set.  
   
 ## Remarks  
- If the TrustManagerClass property is not set, the [getTrustManagerClass](../../../connect/jdbc/reference/gettrustmanagerclass-method-sqlserverdatasource.md) method returns null.  
+ If the TrustManagerClass property is not set, the [getTrustManagerClass](#gettrustmanagerclass-method-sqlserverdatasource) method returns null.  
   
 ## See Also  
  [SQLServerDataSource Members](../../../connect/jdbc/reference/sqlserverdatasource-members.md)   

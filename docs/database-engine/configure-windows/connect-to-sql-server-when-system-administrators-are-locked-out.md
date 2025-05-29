@@ -1,9 +1,9 @@
 ---
-title: "Connect to SQL Server when system administrators are locked out"
+title: "Connect to SQL Server When System Administrators Are Locked Out"
 description: Learn how to regain access to SQL Server as a system administrator if you're mistakenly locked out.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/25/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: how-to
@@ -51,14 +51,14 @@ The following table summarizes the different ways to start your instance in sing
 
 ## Step-by-step instructions
 
-For step-by-step instructions about how to start [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] in single-user mode, see [Start SQL Server in Single-User Mode](start-sql-server-in-single-user-mode.md).
+For step-by-step instructions about how to start [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] in single-user mode, see [Single-user mode for SQL Server](start-sql-server-in-single-user-mode.md).
 
 ### Use PowerShell
 
 #### Option 1: Run the steps directly in an executable notebook using Azure Data Studio
 
 > [!NOTE]  
-> Before attempting to open this notebook, check that Azure Data Studio is installed on your local machine. To install Azure Data Studio, see [Learn how to install Azure Data Studio](/azure-data-studio/download-azure-data-studio).
+> Before attempting to open this notebook, check that Azure Data Studio is installed on your local machine. To install Azure Data Studio, see [Download and install Azure Data Studio](/azure-data-studio/download-azure-data-studio).
 
 > [!div class="nextstepaction"]
 > [Open Notebook in Azure Data Studio](azuredatastudio://microsoft.notebook/open?url=https://raw.githubusercontent.com/microsoft/mssql-support/master/sample-scripts/DOCs-to-Notebooks/T-shooting-SQL-SystemAdmins-Locked-out.ipynb)
@@ -208,5 +208,5 @@ Now you should be able to connect normally with one of the accounts that is now 
 
 ## Related content
 
-- [Configure server startup options](scm-services-configure-server-startup-options.md)
-- [Database Engine Service Startup Options](database-engine-service-startup-options.md)
+- [SQL Server Configuration Manager: Configure server startup options](scm-services-configure-server-startup-options.md)
+- [Database Engine Service startup options](database-engine-service-startup-options.md)

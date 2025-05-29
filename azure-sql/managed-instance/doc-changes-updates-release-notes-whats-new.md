@@ -5,7 +5,7 @@ description: Learn about the new features and documentation improvements for Azu
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: wiassaf, mathoma
-ms.date: 04/18/2025
+ms.date: 05/22/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: whats-new
@@ -35,20 +35,22 @@ The following table lists the features of Azure SQL Managed Instance that are cu
 
 | Feature | Details |
 | ---| --- |
-|[Database watcher for Azure SQL](../database-watcher-overview.md)|Database watcher is a managed monitoring solution for database services in the Azure SQL family. Database watcher collects in-depth workload monitoring data to give you a detailed view of database performance, configuration, and health. Learn more about [database watcher](https://aka.ms/dbwatcher-preview-announcement).|
+| [Approximate or fuzzy string matching](/sql/relational-databases/fuzzy-string-match/overview)| Check if two strings are similar, and calculate the difference between two strings. Use this capability to identify strings that might be different because of character corruption.|
+|[Database watcher for Azure SQL](../database-watcher-overview.md) | Database watcher is a managed monitoring solution for database services in the Azure SQL family. Database watcher collects in-depth workload monitoring data to give you a detailed view of database performance, configuration, and health. Learn more about [database watcher](https://aka.ms/dbwatcher-preview-announcement).|
+|[DATEADD number allows bigint](/sql/t-sql/functions/dateadd-transact-sql) | For `DATEADD (datepart , number , date )`, number can be expressed as a **bigint**.|
 |[Endpoint policies](./service-endpoint-policies-configure.md) | Configure which Azure Storage accounts can be accessed from a SQL Managed Instance subnet. Grants an extra layer of protection against inadvertent or malicious data exfiltration.|
-|[Free SQL Managed Instance](free-offer.md) | Try Azure SQL Managed Instance for free, for the first 12 months after you create your instance. |
-|[JSON native data type](/sql/t-sql/data-types/json-data-type) | The new **JSON** native data type is currently in preview. For more information, see [JSON Type and aggregates preview](https://aka.ms/json-type-aggregates-public-preview). Your SQL managed instance must be configured with the [Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy).|
-|[JSON aggregate functions](/sql/relational-databases/json/json-data-sql-server#json-data-from-aggregates) | Two new **JSON** aggregate functions `JSON_OBJECTAGG` and `JSON_ARRAYAGG` enable construction of JSON objects or arrays based on an aggregate from SQL data. Your SQL managed instance must be configured with the [Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy). For more information, see [JSON Type and aggregates preview](https://aka.ms/json-type-aggregates-public-preview). |
+|[Invoke an HTTPS REST endpoint SP](/sql/relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql) | Use the `sp_invoke_external_rest_endpoint` stored procedure to invoke an HTTPS REST endpoint provided as an input argument to the procedure. | 
 |[Microsoft Entra nonunique name support](../database/authentication-microsoft-entra-create-users-with-nonunique-names.md) |  The [CREATE USER](/sql/t-sql/statements/create-user-transact-sql) Transact-SQL (T-SQL) syntax has been extended to include `WITH OBJECT_ID` to support creating Microsoft Entra logins and users in Azure SQL Managed Instance that have nonunique names. |
 |[Modernization Advisor](../virtual-machines/modernization-advisor.md) | Use the Modernization Advisor in the Azure portal to help you determine if migrating to Azure SQL Managed Instance from a SQL Server VM saves you money or optimizes performance. |
 |[Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) | An architectural upgrade of the General Purpose service tier that uses managed disks for greater resource flexibility, and improved performance while maintaining the same baseline cost as the General Purpose service tier.  |
+ |[Regular expression functions](/sql/relational-databases/regular-expressions/overview) | Regular expression (REGEX) functions return text based on values in a search pattern. |
 |[SDK-style SQL project](/sql/azure-data-studio/extensions/sql-database-project-extension-sdk-style-projects) | Use [Microsoft.Build.Sql](https://www.nuget.org/packages/Microsoft.Build.Sql) for SDK-style SQL projects in the SQL Database Projects extension in Azure Data Studio or Visual Studio Code. SDK-style SQL projects are especially advantageous for applications shipped through pipelines or built in cross-platform environments.|
 |[Service Broker](/sql/database-engine/configure-windows/sql-server-service-broker) | Support for cross-instance message exchange using Service Broker between instances of Azure SQL Managed Instance, and between SQL Server and Azure SQL Managed Instance. |
-|[Invoke an HTTPS REST endpoint SP](/sql/relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql) | Use the `sp_invoke_external_rest_endpoint` stored procedure to invoke an HTTPS REST endpoint provided as an input argument to the procedure. | 
 |[Threat detection](threat-detection-configure.md) | Threat detection notifies you of security threats detected to your database. |
-|[Vector data type](/sql/t-sql/data-types/vector-data-type?view=azuresqldb-current&preserve-view=true) | Working with vector data is now easier in Azure SQL Managed Instance with the [Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy) with the introduction of a new [vector data type](/sql/t-sql/data-types/vector-data-type?view=azuresqlmi-current&preserve-view=true) and [functions](/sql/t-sql/functions/vector-functions-transact-sql?view=azuresqlmi-current&preserve-view=true). For more information, see [Intelligent applications with Azure SQL Managed Instance](ai-artificial-intelligence-intelligent-applications.md#vectors). |
+|[UNISTR (Transact-SQL)](/sql/t-sql/functions/unistr-transact-sql)| Azure SQL Managed Instance now supports the `UNISTR` T-SQL syntax for Unicode string literals.|
+|[Vector data type and functions](/sql/t-sql/data-types/vector-data-type?view=azuresqldb-current&preserve-view=true) | Working with vector data is now easier in Azure SQL Managed Instance with the [Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy) with the introduction of a new [vector data type](/sql/t-sql/data-types/vector-data-type?view=azuresqlmi-current&preserve-view=true) and [vector functions](/sql/t-sql/functions/vector-functions-transact-sql?view=azuresqlmi-current&preserve-view=true). For more information, see [Intelligent applications with Azure SQL Managed Instance](ai-artificial-intelligence-intelligent-applications.md#vectors). |
 |[Zone redundancy for General Purpose](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability) |  Deploy your General Purpose SQL Managed Instance to multiple availability zones to improve the availability of your instance in the event of a disaster. | 
+|[\|\| (String concatenation)](/sql/t-sql/language-elements/string-concatenation-pipes-transact-sql?view=azuresqldb-current&preserve-view=true) and [\|\|= (Compound assignment)](/sql/t-sql/language-elements/compound-assignment-pipes-transact-sql?view=azuresqldb-current&preserve-view=true) syntax support** | Azure SQL Managed Instance now supports [\|\| (String concatenation)](/sql/t-sql/language-elements/string-concatenation-pipes-transact-sql?view=azuresqldb-current&preserve-view=true) and [\|\|= (Compound assignment)](/sql/t-sql/language-elements/compound-assignment-pipes-transact-sql?view=azuresqldb-current&preserve-view=true) Transact-SQL syntax.|
 
 ## General availability (GA)
 
@@ -56,6 +58,9 @@ The following table lists features of Azure SQL Managed Instance that have been 
 
 | Feature | GA Month | Details |
 | ---| --- |--- |
+| [Free SQL Managed Instance](free-offer.md) | May 2025 | Try Azure SQL Managed Instance for free for the first 12 months after an instance is created.  |
+| [JSON native data type](/sql/t-sql/data-types/json-data-type?view=azuresqlmi-current&preserve-view=true) | May 2025 | The **json** data type provides new capabilities for handling semistructured data in Azure SQL Managed Instance. |
+| [JSON aggregate functions](/sql/relational-databases/json/json-data-sql-server?view=azuresqlmi-current&preserve-view=true#json-data-from-aggregates) | May 2025 | Two **json** aggregate functions (`JSON_OBJECTAGG` and `JSON_ARRAYAGG`) enable construction of JSON objects or arrays based on an aggregate from SQL data. |
 |[MI link from SQL Server 2017](managed-instance-link-feature-overview.md#prerequisites) | March 2025 | Configure a link from SQL Server 2017 to Azure SQL Managed Instance. |
 |[Native Windows principals](native-windows-principals.md) | February 2025 | Use the new **Windows** authentication metadata mode to allow Windows authentication or Microsoft Entra authentication (using a Windows principal metadata) with Azure SQL Managed Instance. |
 |[Instance pools](instance-pools-overview.md) | November 2024 | Save on costs and share resources between multiple instances in a pool within a single virtual machine. A convenient and cost-efficient way to migrate smaller SQL Server instances to the cloud, and the only way to deploy a 2-vCore managed instance. |
@@ -66,17 +71,29 @@ The following table lists features of Azure SQL Managed Instance that have been 
 |[CURRENT_DATE Transact-SQL](/sql/t-sql/functions/current-date-transact-sql) | August 2024 |  A Transact-SQL (T-SQL) function that returns the current database system date as a date value, without the database time and time zone offset. |
 |[Maintenance window advance notifications](advance-notifications.md)| June 2024 | Advance notifications for SQL managed instance [maintenance window](maintenance-window.md) are now generally available.  |
 |[Update policy](update-policy.md) | May 2024 | Use the update policy to control your internal database format alignment and access to the latest SQL Database Engine features. You can choose to either limit the feature set to features that are available in SQL Server 2022, or ensure your instance takes advantage of all the latest features of Azure SQL Managed Instance.| 
-|[Azure SQL triggers for Azure Functions](/azure/azure-functions/functions-bindings-azure-sql) | March 2024 | Azure Functions supports function triggers for Azure SQL Managed Instance. | 
 
 ## Documentation changes
 
 Learn about significant changes to the Azure SQL Managed Instance documentation. For previous years, see the [What's new archive](doc-changes-updates-release-notes-whats-new-archive.md).
 
+### May 2025
+
+| Changes | Details |
+| --- | --- |
+| **Approximate or fuzzy string matching preview**| Check if two strings are similar, and calculate the difference between two strings. Use this capability to identify strings that might be different because of character corruption. This capability is currently in preview for Azure SQL Managed Instance. [What is fuzzy string matching?](/sql/relational-databases/fuzzy-string-match/overview)|
+| **DATEADD number allows bigint preview** | For `DATEADD (datepart , number , date )`, number can be expressed as a **bigint**. This capability is currently in preview for Azure SQL Managed Instance. For more information, see [DATEADD (Transact-SQL)](/sql/t-sql/functions/dateadd-transact-sql).|
+| **Free instance GA** | The free Azure SQL Managed Instance offer is now generally available (GA), allowing you to try SQL managed instance for free, for the first 12 months after you create your instance. Review [Free SQL Managed Instance](free-offer.md) to learn more. |
+| **JSON native data type GA** |  The  [**json** data type](/sql/t-sql/data-types/json-data-type?view=azuresqlmi-current&preserve-view=true) provides new capabilities for handling semistructured data in Azure SQL Managed Instance. This data type is now generally available. |
+| **JSON aggregate functions GA** | Two [**json** aggregate functions `JSON_OBJECTAGG` and `JSON_ARRAYAGG`](/sql/relational-databases/json/json-data-sql-server?view=azuresqlmi-current&preserve-view=true#json-data-from-aggregates) enable construction of JSON objects or arrays based on an aggregate from SQL data. These JSON functions are now generally available. |
+| **Regular expression functions preview** | Regular expression (REGEX) functions return text based on values in a search pattern. This capability is currently in preview for Azure SQL Managed Instance. For more information, see [Regular expressions](/sql/relational-databases/regular-expressions/overview). |
+| **UNISTR (Transact-SQL) preview** | Azure SQL Managed Instance now supports the `UNISTR` T-SQL syntax for Unicode string literals. This capability is currently in preview. For more information, see [UNISTR (Transact-SQL)](/sql/t-sql/functions/unistr-transact-sql).|
+| **\|\| (String concatenation) and \|\|= (Compound assignment) syntax support preview** | Azure SQL Managed Instance now supports [\|\| (String concatenation)](/sql/t-sql/language-elements/string-concatenation-pipes-transact-sql) and [\|\|= (Compound assignment)](/sql/t-sql/language-elements/compound-assignment-pipes-transact-sql) Transact-SQL syntax. This capability is currently in preview.|
+
 ### April 2025
 
 | Changes | Details |
 | --- | --- |
-| **Vector data type preview** | Working with vector data is now easier in Azure SQL Managed Instance with the [Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy) with the introduction of a new [vector data type](/sql/t-sql/data-types/vector-data-type) and [functions](/sql/t-sql/functions/vector-functions-transact-sql). This feature is now in preview. For more information, see [Intelligent applications with Azure SQL Managed Instance](ai-artificial-intelligence-intelligent-applications.md#vectors). |
+| **Vector data type and functions preview** | Working with vector data is now easier in Azure SQL Managed Instance with the [Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy) with the introduction of a new [vector data type](/sql/t-sql/data-types/vector-data-type) and [vector functions](/sql/t-sql/functions/vector-functions-transact-sql). This feature is now in preview. For more information, see [Intelligent applications with Azure SQL Managed Instance](ai-artificial-intelligence-intelligent-applications.md#vectors). |
 
 ### March 2025
 
@@ -99,7 +116,6 @@ Learn about significant changes to the Azure SQL Managed Instance documentation.
 | --- | --- |
 | **SQL Insights retired** | SQL Insights has been retired and is no longer available. Use [database watcher](../database-watcher-overview.md) or another monitoring solution to monitor Azure SQL Managed Instance. |
 | **Modernization Advisor preview** | Use the **Modernization Advisor** in the Azure portal for your SQL Server on Azure VM to determine if you can save on cost or optimize your performance by migrating your workload to Azure SQL Managed Instance. This feature is currently in preview. Review [Modernization Advisor](../virtual-machines/modernization-advisor.md) to learn more. |
-
 
 
 ### November 2024

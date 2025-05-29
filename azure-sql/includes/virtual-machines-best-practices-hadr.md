@@ -22,7 +22,7 @@ For your Windows cluster, consider these best practices:
    - Ensure your OS, drivers, and SQL Server are at the latest builds. 
    - Optimize performance for SQL Server on Azure VMs. Review the other sections in this article to learn more. 
    - Reduce or spread out workload to avoid resource limits. 
-   - Move to a VM or disk that his higher limits to avoid constraints. 
+   - Move to a VM or disk that has higher limits to avoid constraints. 
 
 For your SQL Server availability group or failover cluster instance, consider these best practices: 
 

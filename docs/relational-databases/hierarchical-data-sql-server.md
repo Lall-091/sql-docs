@@ -1,9 +1,9 @@
 ---
-title: "Hierarchical data (SQL Server)"
+title: "Hierarchical Data (SQL Server)"
 description: The built-in hierarchyid data type makes it easier to store and query hierarchical data. It's optimized for representing trees, which are the most common type of hierarchical data.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/26/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.topic: conceptual
 helpviewer_keywords:
@@ -13,7 +13,7 @@ helpviewer_keywords:
   - "SqlHierarchyId"
   - "hierarchyid [Database Engine]"
   - "hierarchical queries [SQL Server], using hierarchyid data type"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current ||=fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
 # Hierarchical data (SQL Server)
 
@@ -76,7 +76,7 @@ GO
 
 CREATE TABLE ParentChildOrg (
     BusinessEntityID INT PRIMARY KEY,
-    ManagerId INT REFERENCES ParentChildOrg(BusinessEntityID),
+    ManagerId INT FOREIGN KEY REFERENCES ParentChildOrg(BusinessEntityID),
     EmployeeName NVARCHAR(50)
 );
 GO
@@ -366,10 +366,10 @@ INSERT Org_T2 (EmployeeId, EmployeeName)
 VALUES (HIERARCHYID::GetRoot(), 'David');
 GO
 
-AddEmp 0x, 'Sariya'
+EXECUTE AddEmp 0x, 'Sariya';
 GO
 
-AddEmp 0x58, 'Mary'
+EXECUTE AddEmp 0x58, 'Mary';
 GO
 
 SELECT * FROM Org_T2
@@ -392,7 +392,7 @@ The previous examples illustrate how an application can ensure that a tree is ma
 ```sql
 CREATE TABLE Org_T3 (
     EmployeeId HIERARCHYID PRIMARY KEY,
-    ParentId AS EmployeeId.GetAncestor(1) PERSISTED REFERENCES Org_T3(EmployeeId),
+    ParentId AS EmployeeId.GetAncestor(1) PERSISTED FOREIGN KEY REFERENCES Org_T3(EmployeeId),
     LastChild HIERARCHYID,
     EmployeeName NVARCHAR(50)
 );
@@ -474,7 +474,7 @@ GO
 Example of usage:
 
 ```sql
-DECLARE @h HIERARCHYID
+DECLARE @h AS HIERARCHYID;
 
 SELECT @h = OrgNode
 FROM HumanResources.EmployeeDemo
@@ -506,7 +506,7 @@ GO
 Example of usage:
 
 ```sql
-DECLARE @h1 HIERARCHYID, @h2 HIERARCHYID;
+DECLARE @h1 AS HIERARCHYID, @h2 AS HIERARCHYID;
 
 SELECT @h1 = OrgNode
 FROM HumanResources.EmployeeDemo

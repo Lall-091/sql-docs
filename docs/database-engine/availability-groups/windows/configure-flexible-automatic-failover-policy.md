@@ -51,7 +51,8 @@ monikerRange: ">=sql-server-2016"
 > [!IMPORTANT]  
 >  **sp_server_diagnostics** does not perform health checks at the database level.  
   
-##  <a name="FClevel"></a> Failure-Condition Level  
+## Failure-Condition Level
+
  Whether the diagnostic data and health information returned by **sp_server_diagnostics** warrants an automatic failover depends on the failure-condition level of the availability group. The *failure-condition level* specifies what failure conditions trigger an automatic failover. There are five failure-condition levels, which range from the least restrictive (level one) to the most restrictive (level five). A given level encompasses the less restrictive levels. Thus, the strictest level, five, includes the four less restrictive conditions, and so forth.  
   
 > [!IMPORTANT]  
@@ -96,7 +97,7 @@ monikerRange: ">=sql-server-2016"
         |4|Four|On moderate server error. Any condition of lower value is satisfied or a moderate Server error occurs.|  
         |5|Five|On any qualified failure conditions. Any condition of lower value is satisfied or a qualifying failure condition occurs.|  
     
-         For more information about the failover condition levels, see [Flexible Failover Policy for Automatic Failover of an Availability Group &#40;SQL Server&#41;](../../../database-engine/availability-groups/windows/configure-flexible-automatic-failover-policy.md#FClevel).  
+         For more information about the failover condition levels, see [Flexible Failover Policy for Automatic Failover of an Availability Group &#40;SQL Server&#41;](#failure-condition-level).  
   
   
     -   To configure the health check timeout threshold, use the HEALTH_CHECK_TIMEOUT = *n* option, where, *n* is an integer from 15000 milliseconds (15 seconds) to 4294967295 milliseconds. The default value is 30000 milliseconds (30 seconds)  
@@ -125,7 +126,7 @@ monikerRange: ">=sql-server-2016"
         |**OnModerateServerError**|Four|On moderate server error. Any condition of lower value is satisfied or a moderate Server error occurs.|  
         |**OnAnyQualifiedFailureConditions**|Five|On any qualified failure conditions. Any condition of lower value is satisfied or a qualifying failure condition occurs.|  
          
-         For more information about the failover condition levels, see [Flexible Failover Policy for Automatic Failover of an Availability Group &#40;SQL Server&#41;](../../../database-engine/availability-groups/windows/configure-flexible-automatic-failover-policy.md#FClevel).   
+         For more information about the failover condition levels, see [Flexible Failover Policy for Automatic Failover of an Availability Group &#40;SQL Server&#41;](#failure-condition-level).   
   
          For example, the following command changes the failure-condition level of an existing availability group, `AG1`, to level one.  
   
@@ -161,7 +162,7 @@ monikerRange: ">=sql-server-2016"
   
 -   [Change the Failover Mode of an Availability Replica &#40;SQL Server&#41;](../../../database-engine/availability-groups/windows/change-the-failover-mode-of-an-availability-replica-sql-server.md)  
   
--   [Configure the Flexible Failover Policy to Control Conditions for Automatic Failover &#40;Always On Availability Groups&#41;](../../../database-engine/availability-groups/windows/configure-flexible-automatic-failover-policy.md)  
+-   [Configure the Flexible Failover Policy to Control Conditions for Automatic Failover &#40;Always On Availability Groups&#41;](#configure-a-flexible-automatic-failover-policy-for-an-always-on-availability-group)  
   
 ##  <a name="RelatedContent"></a> Related Content  
   

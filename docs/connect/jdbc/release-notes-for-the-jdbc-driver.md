@@ -696,7 +696,7 @@ For the driver in a tar.gz file: [Chinese (Simplified)](https://go.microsoft.com
 
 | Fix | Details |
 | :---------- | :----------- |
-| TDSParser stuck on TDS_COLMETADATA | Fixed: TDSParser stuck on TDS_COLMETADATA, which could result in a hang for certain queries. [GitHub Issue #1661](https://github.com/microsoft/mssql-jdbc/issues/1661) |
+| TDSParser stuck on TDS_COLMETADATA | Fixed: TDSParser stuck on TDS_COLMETADATA, which could result in certain queries not responding. [GitHub Issue #1661](https://github.com/microsoft/mssql-jdbc/issues/1661) |
 
 ## <a id="94"></a> 9.4
 
@@ -725,7 +725,7 @@ Released: December 07, 2021
 
 Fixed issues in 9.4.1:
 
-- Fixed a potential hang when the driver encounters unsupported TDS_COLMETADATA
+- Fixed a potential issue where the driver stops responding when it encounters unsupported TDS_COLMETADATA
 - Fixed conversion of LocalDateTime and LocalTime to String in Bulk Copy
 
 Version number: 9.4.0  

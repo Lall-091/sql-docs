@@ -1,9 +1,9 @@
 ---
-title: "Configure Windows Firewall for Database Engine access"
+title: "Configure Windows Firewall for Database Engine Access"
 description: Find out how to configure Windows Firewall so that client computers can access an instance of the SQL Server Database Engine through the firewall.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/25/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: install-set-up-deploy
@@ -18,15 +18,15 @@ helpviewer_keywords:
 
 This article describes how to configure Windows Firewall for [!INCLUDE [ssde-md](../../includes/ssde-md.md)] access in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] by using SQL Server Configuration Manager. Firewall systems help prevent unauthorized access to computer resources. To access an instance of the [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)] through a firewall, you must configure the firewall on the computer running [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to allow access.
 
-For more information about the default Windows Firewall settings, and a description of the TCP ports that affect the [!INCLUDE [ssDE](../../includes/ssde-md.md)], Analysis Services, Reporting Services, and Integration Services, see [Configure the Windows Firewall to Allow SQL Server Access](../../sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access.md). There are many firewall systems available. For information specific to your system, see the firewall documentation.
+For more information about the default Windows Firewall settings, and a description of the TCP ports that affect the [!INCLUDE [ssDE](../../includes/ssde-md.md)], Analysis Services, Reporting Services, and Integration Services, see [Configure the Windows Firewall to allow SQL Server access](../../sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access.md). There are many firewall systems available. For information specific to your system, see the firewall documentation.
 
 The principal steps to allow access are:
 
-1. Configure the [!INCLUDE [ssDE](../../includes/ssde-md.md)] to use a specific TCP/IP port. The default instance of the [!INCLUDE [ssDE](../../includes/ssde-md.md)] uses port 1433, but that can be changed. The port used by the [!INCLUDE [ssDE](../../includes/ssde-md.md)] is listed in the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] error log. Instances of [!INCLUDE [ssExpress](../../includes/ssexpress-md.md)], [!INCLUDE [ssEW](../../includes/ssew-md.md)], and named instances of the [!INCLUDE [ssDE](../../includes/ssde-md.md)] use dynamic ports. To configure these instances to use a specific port, see [Configure a Server to Listen on a Specific TCP Port (SQL Server Configuration Manager)](configure-a-server-to-listen-on-a-specific-tcp-port.md).
+1. Configure the [!INCLUDE [ssDE](../../includes/ssde-md.md)] to use a specific TCP/IP port. The default instance of the [!INCLUDE [ssDE](../../includes/ssde-md.md)] uses port 1433, but that can be changed. The port used by the [!INCLUDE [ssDE](../../includes/ssde-md.md)] is listed in the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] error log. Instances of [!INCLUDE [ssExpress](../../includes/ssexpress-md.md)], [!INCLUDE [ssEW](../../includes/ssew-md.md)], and named instances of the [!INCLUDE [ssDE](../../includes/ssde-md.md)] use dynamic ports. To configure these instances to use a specific port, see [Configure SQL Server to listen on a specific TCP port](configure-a-server-to-listen-on-a-specific-tcp-port.md).
 
 1. Configure the firewall to allow access to that port for authorized users or computers.
 
-The [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Browser service lets users connect to instances of the [!INCLUDE [ssDE](../../includes/ssde-md.md)] that aren't listening on port 1433 without knowing the port number. To use [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Browser, you must open UDP port 1434. To promote the most secure environment, leave the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Browser service stopped, and configure clients to connect using the port number.  
+The [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Browser service lets users connect to instances of the [!INCLUDE [ssDE](../../includes/ssde-md.md)] that aren't listening on port 1433 without knowing the port number. To use [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Browser, you must open UDP port 1434. To promote the most secure environment, leave the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Browser service stopped, and configure clients to connect using the port number.
 
 By default, [!INCLUDE [msCoName](../../includes/msconame-md.md)] Windows enables the Windows Firewall, which closes port 1433 to prevent Internet computers from connecting to a default instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on your computer. Connections to the default instance using TCP/IP aren't possible unless you open port 1433. The basic steps to configure the Windows Firewall are provided in the following procedures. For more information, see the Windows documentation.
 
@@ -36,9 +36,11 @@ As an alternative to configuring [!INCLUDE [ssNoVersion](../../includes/ssnovers
 
 Opening ports in your firewall can leave your server exposed to malicious attacks. Make sure that you understand firewall systems before you open ports. For more information, see [Security Considerations for a SQL Server Installation](../../sql-server/install/security-considerations-for-a-sql-server-installation.md).
 
-## <a id="SSMSProcedure"></a> Use Windows Firewall with Advanced Security
+<a id="SSMSProcedure"></a>
 
-The following procedures configure the Windows Firewall by using the Windows Firewall with Advanced Security Microsoft Management Console (MMC) snap-in. The Windows Firewall with Advanced Security only configures the current profile. For more information about the Windows Firewall with Advanced Security, see [Configure the Windows Firewall to Allow SQL Server Access](../../sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access.md).
+## Use Windows Firewall with Advanced Security
+
+The following procedures configure the Windows Firewall by using the Windows Firewall with Advanced Security Microsoft Management Console (MMC) snap-in. The Windows Firewall with Advanced Security only configures the current profile. For more information about the Windows Firewall with Advanced Security, see [Configure the Windows Firewall to allow SQL Server access](../../sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access.md).
 
 ### Open a port in the Windows Firewall for TCP access
 
@@ -74,4 +76,4 @@ The following procedures configure the Windows Firewall by using the Windows Fir
 
 ## Related content
 
-- [How to: Configure Firewall Settings (Azure SQL Database)](/azure/azure-sql/database/firewall-configure)
+- [Azure SQL Database and Azure Synapse IP firewall rules](/azure/azure-sql/database/firewall-configure)

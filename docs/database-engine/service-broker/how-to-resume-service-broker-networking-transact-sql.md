@@ -1,40 +1,40 @@
 ---
-title: "How to: Resume Service Broker Networking (Transact-SQL)"
+title: "How To: Resume Service Broker Networking (Transact-SQL)"
 description: "Service Broker sends and receives messages over the network while any endpoint for Service Broker is in the STARTED state"
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray, maghan
-ms.date: "03/30/2022"
+ms.date: 05/27/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: how-to
 ---
 
-# How to: Resume Service Broker Networking (Transact-SQL)
+# How to: Resume Service Broker networking (Transact-SQL)
 
 [!INCLUDE [sql-asdbmi](../../includes/applies-to-version/sql-asdbmi.md)]
 
-Service Broker sends and receives messages over the network while any endpoint for Service Broker is in the **STARTED** state. To resume Service Broker networking, alter the endpoints to set the state to **STARTED**.
+Service Broker sends and receives messages over the network while any endpoint for Service Broker is in the `STARTED` state. To resume Service Broker networking, alter the endpoints to set the state to `STARTED`.
 
-> [!NOTE]
-> Activating Service Broker networking allows Service Broker to send and receive messages over the network. The authentication level set on the endpoint controls which network connections are accepted by the endpoint. For more information on Service Broker networking and security, see [Security Overview (Service Broker)](security-overview.md).
+> [!NOTE]  
+> Activating Service Broker networking allows Service Broker to send and receive messages over the network. The authentication level set on the endpoint controls which network connections the endpoint accepts. For more information on Service Broker networking and security, see [Security Overview (Service Broker)](security-overview.md).
 
-## To resume Service Broker networking
+## Resume Service Broker networking
 
-- Alter an endpoint to set the state to **STARTED**.
+- Alter an endpoint to set the state to `STARTED`.
 
-## Example
+## Examples
 
 ```sql
-    USE master ;
-    GO
+USE master;
+GO
 
-    ALTER ENDPOINT BrokerEndpoint
-        STATE = STARTED ;
-    GO
+ALTER ENDPOINT BrokerEndpoint
+    STATE = STARTED;
+GO
 ```
 
-## See also
+## Related content
 
 - [How to: Activate Service Broker Networking (Transact-SQL)](how-to-activate-service-broker-networking-transact-sql.md)
 - [How to: Deactivate Service Broker Networking (Transact-SQL)](how-to-deactivate-service-broker-networking-transact-sql.md)

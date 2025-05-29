@@ -15,6 +15,8 @@ f1_keywords:
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sqlserver.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   Run [!INCLUDE[ssDQSClient](../includes/ssdqsclient-md.md)], and log on to a [!INCLUDE[ssDQSServer](../includes/ssdqsserver-md.md)].  
   
 ##  <a name="BeforeYouBegin"></a> Before You Begin  

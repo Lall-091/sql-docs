@@ -43,7 +43,7 @@ helpviewer_keywords:
  You can set a transaction property on the For Loop container to define a transaction for a subset of the package control flow. In this way, you can manage transactions at a more granular level. For example, if a For Loop container repeats a control flow that updates data in a table multiple times, you can configure the For Loop and its control flow to use a transaction to ensure that if not all data is updated successfully, no data is updated. For more information, see [Integration Services Transactions](../../integration-services/integration-services-transactions.md).  
   
 ## Add iteration to a control flow with the For Loop container
-  [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] includes the For Loop container, a control flow element that makes it simple to include looping that conditionally repeats a control flow in a package. For more information, see [For Loop Container](../../integration-services/control-flow/for-loop-container.md).  
+  [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] includes the For Loop container, a control flow element that makes it simple to include looping that conditionally repeats a control flow in a package. For more information, see [For Loop Container](#for-loop-container).  
   
  The For Loop container evaluates a condition on each iteration of the loop, and stops when the condition evaluates to false. The For Loop container includes expressions for initializing the loop, specifying the evaluation condition that stops execution of the repeating control flow, and assigning a value to an expression that updates the value against which the evaluation condition is compared. You must provide an evaluation condition, but initialization and assignment expressions are optional.  
   
@@ -84,7 +84,7 @@ This procedure describes how to configure a For Loop container by using the **Fo
 ## For Loop Editor dialog box
 Use the **For Loop** page of the **For Loop Editor** dialog box to configure a loop that repeats a workflow until a specified condition evaluates to false.  
   
- To learn about the For Loop container and how to use it in packages, see [For Loop Container](../../integration-services/control-flow/for-loop-container.md).  
+ To learn about the For Loop container and how to use it in packages, see [For Loop Container](#for-loop-container).  
   
 ### Options  
  **InitExpression**  

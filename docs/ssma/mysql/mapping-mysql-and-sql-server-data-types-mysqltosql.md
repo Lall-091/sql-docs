@@ -1,8 +1,8 @@
 ---
 title: "Mapping MySQL and SQL Server Data Types (MySQLToSQL)"
 description: "Mapping MySQL and SQL Server Data Types (MySQLToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: ssma

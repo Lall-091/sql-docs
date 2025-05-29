@@ -1,8 +1,8 @@
 ---
 title: "Working with SSMA for MySQL Console (MySQLToSQL)"
 description: "Working with SSMA for MySQL Console (MySQLToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "08/15/2017"
 ms.service: sql
 ms.subservice: ssma

@@ -15,7 +15,7 @@ ms.topic: reference
   
  **Package:** com.microsoft.sqlserver.jdbc  
   
- **Implements:** [ISQLServerCallableStatement](../../../connect/jdbc/reference/sqlservercallablestatement-class.md)  
+ **Implements:** [ISQLServerCallableStatement](#sqlservercallablestatement-class)  
   
  **Extends:** [SQLServerPreparedStatement](../../../connect/jdbc/reference/sqlserverpreparedstatement-class.md)  
   

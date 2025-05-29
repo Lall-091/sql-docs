@@ -32,7 +32,7 @@ You should routinely maintain the same set of user logins and [!INCLUDE [ssNoVer
 
   If you're using contained databases, you can configure contained users in the databases, and for these users, you don't need to create logins on the server instances that host a secondary replica. For a non-contained availability database, you need to create users for the logins on the server instances that host the availability replicas. For more information, see [CREATE USER](../../../t-sql/statements/create-user-transact-sql.md).
 
-  If any of your applications use [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] Authentication or a local Windows login, see [Logins Of Applications That Use SQL Server Authentication or a Local Windows Login](../../../database-engine/availability-groups/windows/logins-and-jobs-for-availability-group-databases.md#SSauthentication), later in this article.
+  If any of your applications use [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] Authentication or a local Windows login, see [Logins Of Applications That Use SQL Server Authentication or a Local Windows Login](#sql-server-authentication-or-a-local-windows-login), later in this article.
 
   > [!NOTE]  
   > A database user for which the SQL Server login is undefined or is incorrectly defined on a server instance can't log in to the instance. Such a user is said to be an *orphaned user* of the database on that server instance. If a user is orphaned on a given server instance, you can set up the user logins at any time. For more information, see [Troubleshoot orphaned users (SQL Server)](../../../sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server.md).
@@ -41,7 +41,7 @@ You should routinely maintain the same set of user logins and [!INCLUDE [ssNoVer
 
   Logins and jobs aren't the only information that need to be recreated on each of the server instances that hosts a secondary replica for a given AG. For example, you might need to recreate server configuration settings, credentials, encrypted data, permissions, replication settings, service broker applications, triggers (at server level), and so on. For more information, see [Manage Metadata When Making a Database Available on Another Server](../../../relational-databases/databases/manage-metadata-when-making-a-database-available-on-another-server.md).
 
-## <a id="SSauthentication"></a> SQL Server authentication or a local Windows login
+## SQL Server authentication or a local Windows login
 
 If an application uses SQL Server Authentication or a local Windows login, mismatched security identifiers (SIDs) can prevent the application's login from resolving on a remote instance of [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)]. The mismatched SIDs cause the login to become an orphaned user on the remote server instance. This issue can occur when an application connects to a mirrored or log shipping database after a failover or to a replication subscriber database that was initialized from a backup.
 

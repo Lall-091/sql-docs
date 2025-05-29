@@ -15,6 +15,8 @@ keywords:
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   Sample model packages with data are included when you install [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)]. The default location for these package files is \<drive>\Program Files\Microsoft SQL Server\130\Master Data Services\Samples\Packages.  
   
  For instructions on how to deploy the sample model packages, see [Deploying Sample Models and Data](../master-data-services/master-data-services-installation-and-configuration.md#deploySample). You deploy the sample model packages by using the [MDSModelDeploy tool](../master-data-services/deploy-a-model-deployment-package-by-using-mdsmodeldeploy.md).  

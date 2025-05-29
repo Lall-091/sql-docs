@@ -13,6 +13,8 @@ monikerRange: ">=sql-server-ver16"
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   This topic describes [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] features that are no longer available in [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)].  
   
 ## [!INCLUDE[ssnoversion](../includes/ssnoversion-md.md)] Discontinued Features  

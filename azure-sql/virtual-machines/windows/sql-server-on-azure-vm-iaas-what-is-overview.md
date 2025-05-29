@@ -4,7 +4,7 @@ description: Learn how to run full editions of SQL Server on Azure Virtual Machi
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 09/27/2024
+ms.date: 05/19/2025
 ms.service: azure-vm-sql-server
 ms.subservice: service-overview
 ms.topic: overview
@@ -85,6 +85,7 @@ The following table provides a matrix of pay-as-you-go SQL Server images.
 
 | Version | Operating System |
 | --- | --- |
+| **SQL Server 2025 Preview** | [Windows Server 2025](https://portal.azure.com/#create/microsoftsqlserver.sql2025-ws2025entdev-gen2) |
 | **SQL Server 2022** | [Windows Server 2022](https://portal.azure.com/#create/microsoftsqlserver.sql2022-ws2022enterprise-gen2) |
 | **SQL Server 2019** | [Windows Server 2022](https://portal.azure.com/#create/microsoftsqlserver.sql2019-ws2022enterprise-gen2), [Windows Server 2019](https://portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019enterprise-ARM) |
 | **SQL Server 2017** | [Windows Server 2019](https://portal.azure.com/#create/microsoftsqlserver.sql2017-ws2019enterprise-ARM), [Windows Server 2016](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseWindowsServer2016-ARM) |

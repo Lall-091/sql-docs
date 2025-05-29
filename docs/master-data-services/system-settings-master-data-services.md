@@ -15,6 +15,8 @@ helpviewer_keywords:
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   For all web applications and web services associated with a [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] database, you can configure system settings.  
   
  Many of these settings can be configured in [!INCLUDE[ssMDScfgmgr](../includes/ssmdscfgmgr-md.md)] on the **Database** page. Others can be configured in the System Settings table (mdm.tblSystemSetting) in the [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] database.  

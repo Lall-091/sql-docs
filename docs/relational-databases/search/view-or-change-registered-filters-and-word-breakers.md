@@ -99,4 +99,4 @@ After any word breakers or filters are installed or uninstalled on a system, the
 
 - [Set the Service Account for the Full-text Filter Daemon Launcher](set-the-service-account-for-the-full-text-filter-daemon-launcher.md)
 - [Configure and Manage Filters for Search](configure-and-manage-filters-for-search.md)
-- [Configure & manage word breakers & stemmers for search (SQL Server)](configure-and-manage-word-breakers-and-stemmers-for-search.md)
+- [Configure and manage word breakers and stemmers for search (SQL Server)](configure-and-manage-word-breakers-and-stemmers-for-search.md)

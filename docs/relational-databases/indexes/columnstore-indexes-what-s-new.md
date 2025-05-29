@@ -4,7 +4,7 @@ description: "This article explains features by version and the latest new featu
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: wiassaf, dfurman
-ms.date: 04/04/2025
+ms.date: 04/30/2025
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: whats-new
@@ -24,46 +24,63 @@ Learn about which columnstore features available for each version of [!INCLUDE [
 
 This table summarizes key features for columnstore indexes and the products in which they are available.
 
-|Columnstore Index Feature|[!INCLUDE [ssSQL11](../../includes/sssql11-md.md)]|[!INCLUDE [ssSQL14](../../includes/sssql14-md.md)]|[!INCLUDE [sssql16-md](../../includes/sssql16-md.md)]<sup>1</sup>|[!INCLUDE [ssSQL17](../../includes/sssql17-md.md)]|[!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)]|[!INCLUDE [sql-server-2022](../../includes/sssql22-md.md)]|[!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]<sup>2</sup> and [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]<sup>[AUTD](#updatepolicy)</sup>|[!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] dedicated SQL pool|
-|*----|---|---|---|---|---|---|---|---|
-|Batch mode execution for multi-threaded queries<sup>3</sup>|yes|yes|yes|yes|yes|yes|yes|yes|
-|Batch mode execution for single-threaded queries|||yes|yes|yes|yes|yes|yes|
-|Archival compression option||yes|yes|yes|yes|yes|yes|yes|
-|Snapshot isolation and read-committed snapshot isolation|||yes|yes|yes|yes|yes|yes|
-|Specify columnstore index when creating a table|||yes|yes|yes|yes|yes|yes|
-|Always On supports columnstore indexes|yes|yes|yes|yes|yes|yes|yes|yes|
-|Always On readable secondary supports read-only nonclustered columnstore index|yes|yes|yes|yes|yes|yes|yes|yes|
-|Always On readable secondary supports updateable columnstore indexes|||yes|yes|yes|yes|||
-|Read-only nonclustered columnstore index on heap or B-tree|yes|yes|yes <sup>4</sup>|yes <sup>4</sup>|yes <sup>4</sup>|yes <sup>4</sup>|yes <sup>4</sup>|yes <sup>4</sup>|
-|Updateable nonclustered columnstore index on heap or B-tree|||yes|yes|yes|yes|yes|yes|
-|Additional B-tree indexes allowed on a heap or B-tree that has a nonclustered columnstore index|yes|yes|yes|yes|yes|yes|yes|yes|
-|Updateable clustered columnstore index||yes|yes|yes|yes|yes|yes|yes|
-|B-tree index on a clustered columnstore index|||yes|yes|yes|yes|yes|yes|
-|Columnstore index on a memory-optimized table|||yes|yes|yes|yes|yes|yes|
-|Nonclustered columnstore index definition supports using a filtered condition|||yes|yes|yes|yes|yes|yes|
-|Compression delay option for columnstore indexes in `CREATE TABLE` and `ALTER TABLE`|||yes|yes|yes|yes|yes|yes|
-|Support for nvarchar(max) type||||yes|yes|yes|yes|no <sup>5</sup>|
-|Columnstore index can have a non-persisted computed column||||yes|yes|yes|||
-|Tuple mover background merge support|||||yes|yes|yes|yes|
-|Ordered clustered columnstore indexes||||||yes|yes|yes|
-|Ordered non-clustered columnstore indexes|||||||yes||
-|Online columnstore index create and rebuild||||||yes|yes||
-|Online ordered columnstore index create and rebuild|||||||yes||
+| Columnstore Index Feature | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)]<sup>1</sup> | [!INCLUDE [ssSQL17](../../includes/sssql17-md.md)] | [!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)] | [!INCLUDE [sql-server-2022](../../includes/sssql22-md.md)] | [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)] | [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]<sup>2</sup> and [!INCLUDE [ssazure-sqlmi-autd](../../includes/ssazure-sqlmi-autd.md)] | [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] dedicated SQL pool |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+|Batch mode execution for multi-threaded queries<sup>3</sup>|yes|yes|yes|yes|yes|yes|yes|
+|Batch mode execution for single-threaded queries|yes|yes|yes|yes|yes|yes|yes|
+|Archival compression option|yes|yes|yes|yes|yes|yes|yes|
+|Snapshot isolation and read-committed snapshot isolation|yes|yes|yes|yes|yes|yes|yes|
+|Specify columnstore index when creating a table|yes|yes|yes|yes|yes|yes|yes|
+|Always On supports columnstore indexes|yes|yes|yes|yes|yes|yes|yes|
+|Always On readable secondary supports read-only nonclustered columnstore index|yes|yes|yes|yes|yes|yes|yes|
+|Always On readable secondary supports updateable columnstore indexes|yes|yes|yes|yes|yes|||
+|Read-only nonclustered columnstore index on heap or B-tree|yes <sup>4</sup>|yes <sup>4</sup>|yes <sup>4</sup>|yes <sup>4</sup>|yes <sup>4</sup>|yes <sup>4</sup>|yes <sup>4</sup>|
+|Updateable nonclustered columnstore index on heap or B-tree|yes|yes|yes|yes|yes|yes|yes|
+|Additional B-tree indexes allowed on a heap or B-tree that has a nonclustered columnstore index|yes|yes|yes|yes|yes|yes|yes|
+|Updateable clustered columnstore index|yes|yes|yes|yes|yes|yes|yes|
+|B-tree index on a clustered columnstore index|yes|yes|yes|yes|yes|yes|yes|
+|Columnstore index on a memory-optimized table|yes|yes|yes|yes|yes|yes|yes|
+|Nonclustered columnstore index definition supports using a filtered condition|yes|yes|yes|yes|yes|yes|yes|
+|Compression delay option for columnstore indexes in `CREATE TABLE` and `ALTER TABLE`|yes|yes|yes|yes|yes|yes|yes|
+|Support for nvarchar(max) type||yes|yes|yes|yes|yes|no <sup>5</sup>|
+|Columnstore index can have a non-persisted computed column||yes|yes|yes|yes|||
+|Tuple mover background merge support|||yes|yes|yes|yes|yes|
+|Ordered clustered columnstore indexes||||yes|yes|yes|yes|
+|Ordered non-clustered columnstore indexes|||||yes|yes||
+|Online columnstore index create and rebuild||||yes|yes|yes||
+|Online ordered columnstore index create and rebuild|||||yes|yes||
 
-<a id="updatepolicy"></a>
-
-<sup>1</sup> For [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] SP1 and later versions, columnstore indexes are available in all editions. For [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] (before SP1) and earlier versions, columnstore indexes are only available in the Enterprise Edition.
-
-<sup>2</sup> For [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], columnstore indexes are available in the DTU Premium tiers, DTU Standard tiers - S3 and above, and all vCore tiers.
-
-<sup>3</sup> The degree of parallelism (DOP) for [batch mode](../../relational-databases/query-processing-architecture-guide.md#batch-mode-execution) operations is limited to 2 for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Standard Edition and 1 for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Web and Express Editions. This limitation refers to columnstore indexes created over disk-based tables and memory-optimized tables.
-
-<sup>4</sup> To create a read-only nonclustered columnstore index, store the index on a read-only filegroup.
-
+<sup>1</sup> For [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] SP1 and later versions, columnstore indexes are available in all editions. For [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] (before SP1) and earlier versions, columnstore indexes are only available in the Enterprise Edition.   
+<sup>2</sup> For [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], columnstore indexes are available in the DTU Premium tiers, DTU Standard tiers - S3 and above, and all vCore tiers.   
+<sup>3</sup> The degree of parallelism (DOP) for [batch mode](../../relational-databases/query-processing-architecture-guide.md#batch-mode-execution) operations is limited to 2 for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Standard Edition and 1 for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Web and Express Editions. This limitation refers to columnstore indexes created over disk-based tables and memory-optimized tables.   
+<sup>4</sup> To create a read-only nonclustered columnstore index, store the index on a read-only filegroup.   
 <sup>5</sup> Not supported in dedicated SQL pools but is supported in serverless SQL pool.
 
-<sup>AUTD</sup> Applies to Azure SQL Managed Instance configured with the [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy).
+## SQL Server 2025 (17.x)
 
+[!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)] added these features:
+
+- Ordered nonclustered columnstore improve query performance in real-time operational analytics.
+
+    For more information, see [Performance tuning with ordered columnstore indexes](ordered-columnstore-indexes.md).
+
+- An ordered columnstore index (either clustered or nonclustered) can now be created or rebuilt online.
+
+    You can specify `ONLINE = ON` in the [CREATE INDEX](../../t-sql/statements/create-index-transact-sql.md) statement when the `ORDER` clause is present. For more information about online index operations, see [Perform index operations online](../indexes/perform-index-operations-online.md).
+
+- Improved sort quality for ordered clustered columnstore indexes.
+
+    In [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)], when an ordered clustered columnstore index is built online, the sort algorithm uses `tempdb` instead of sorting the data in memory. If `MAXDOP` for the index build is 1, the build produces a fully ordered clustered columnstore index that doesn't have overlapping segments.
+
+    This can improve performance of queries using the index. However, index build might take longer because of the additional I/O required for spills to `tempdb`.
+
+    If a clustered columnstore index already exists, queries can continue using it while the fully ordered online index rebuild is in progress.
+
+- Improved database and file shrink operations.
+
+    In previous versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], when a clustered columnstore index includes any columns with LOB data types such as **varchar(max)**, **nvarchar(max)**, **varbinary(max)**, the data pages used by these columns can't be moved by the shrink operations. As the result, shrink might be less effective in reclaiming space in the data files.
+
+    In [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)], both `DBCC SHRINKDATABASE` and `DBCC SHRINKFILE` commands can move data pages used by the LOB columns in columnstore indexes.
 
 ## SQL Server 2022 (16.x)
 
@@ -211,9 +228,9 @@ These in-memory OLTP-based DMVs contain updates for columnstore:
 
 ### Known issues
 
-**Applies to:** [!INCLUDE [sql-server](../../includes/ssnoversion-md.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]
+**Applies to:** [!INCLUDE [sql-server-2022](../../includes/sssql22-md.md)] and older versions, [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]<sup>2022</sup>
 
-- Currently, LOB columns (varbinary(max), varchar(max), and nvarchar(max)) in compressed columnstore segments are not affected by `DBCC SHRINKDATABASE` and `DBCC SHRINKFILE`.
+- Data pages used by LOB columns (**varbinary(max)**, **varchar(max)**, and **nvarchar(max)**) in compressed columnstore segments can't be moved by `DBCC SHRINKDATABASE` and `DBCC SHRINKFILE`. This issue is resolved in [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)].
 
 ## SQL Server 2014 (12.x)
 

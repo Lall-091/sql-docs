@@ -1,8 +1,8 @@
 ---
 title: "Selecting and Configuring Affected Objects (SybaseToSQL)"
 description: "Selecting and Configuring Affected Objects (SybaseToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: ssma

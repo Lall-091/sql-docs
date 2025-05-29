@@ -52,7 +52,7 @@ helpviewer_keywords:
 > [!IMPORTANT]  
 >  The HTTP connection manager supports only anonymous authentication and basic authentication. It does not support Windows Authentication.  
   
- To learn more about the HTTP connection manager, see [HTTP Connection Manager](../../integration-services/connection-manager/http-connection-manager.md). To learn more about a common usage scenario for the HTTP Connection Manager, see [Web Service Task](../../integration-services/control-flow/web-service-task.md).  
+ To learn more about the HTTP connection manager, see [HTTP Connection Manager](#http-connection-manager). To learn more about a common usage scenario for the HTTP Connection Manager, see [Web Service Task](../../integration-services/control-flow/web-service-task.md).  
   
 ### Options  
  **Server URL**  
@@ -90,7 +90,7 @@ helpviewer_keywords:
 ## HTTP Connection Manager Editor (Proxy Page)
   Use the **Proxy** tab of the **HTTP Connection Manager Editor** dialog box to configure the HTTP Connection Manager to use a proxy server. An HTTP connection enables a package to access a Web server by using HTTP to send or receive files.  
   
- To learn more about the HTTP connection manager, see [HTTP Connection Manager](../../integration-services/connection-manager/http-connection-manager.md). To learn more about a common usage scenario for the HTTP Connection Manager, see [Web Service Task](../../integration-services/control-flow/web-service-task.md).  
+ To learn more about the HTTP connection manager, see [HTTP Connection Manager](#http-connection-manager). To learn more about a common usage scenario for the HTTP Connection Manager, see [Web Service Task](../../integration-services/control-flow/web-service-task.md).  
   
 ### Options  
  **Use proxy**  

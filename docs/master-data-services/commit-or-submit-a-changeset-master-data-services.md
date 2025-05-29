@@ -12,6 +12,8 @@ ms.topic: how-to
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   A changeset is a collection of the pending changes on the master data. If entity changes don't require administrator approval, you can commit the changeset. If the entity changes require administrator approval, you can submit the changeset for approval.  
   
 ## Prerequisites  

@@ -18,7 +18,7 @@ This article describes how to change the license model for SQL Server on Azure V
 
 ## Overview
 
-There are three license models for an Azure VM that's hosting SQL Server: pay-as-you-go, Azure Hybrid Benefit (AHB), and High Availability/Disaster Recovery (HA/DR). You can modify the license model of your SQL Server VM by using the Azure portal, the Azure CLI, or PowerShell.
+There are three license models for an Azure VM that's hosting SQL Server: pay-as-you-go, Azure Hybrid Benefit, and High Availability/Disaster Recovery (HA/DR). You can modify the license model of your SQL Server VM by using the Azure portal, the Azure CLI, or PowerShell.
 
 - The **pay-as-you-go** model means that the per-second cost of running the Azure VM includes the cost of the SQL Server license.
 - [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) allows you to use your own SQL Server license with a VM that's running SQL Server.
@@ -26,13 +26,13 @@ There are three license models for an Azure VM that's hosting SQL Server: pay-as
 
 ## Azure Hybrid Benefit
 
-Azure Hybrid Benefit allows the use of SQL Server licenses with Software Assurance ("Qualified License") on Azure virtual machines. With Azure Hybrid Benefit, customers aren't charged for the use of a SQL Server license on a VM. But they must still pay for the cost of the underlying cloud compute (that is, the base rate), storage, and backups. They must also pay for I/O associated with their use of the services (as applicable).
+Azure Hybrid Benefit grants you the ability to allocate your SQL Server license to your SQL Server on Azure VM. With Azure Hybrid Benefit, you get a discount on the allocation of SQL Server licenses to the SQL Server instance but must still pay for the cost of the underlying cloud compute (that is, the base rate), storage, and backups. You must also pay for I/O associated with their use of the services (as applicable).
 
-To estimate your cost savings with the Azure Hybrid benefit, use the [Azure Hybrid Benefit Savings Calculator](https://azure.microsoft.com/pricing/hybrid-benefit/#calculator). To estimate the cost of Pay as you Go licensing, review the [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/).
+To estimate the cost of Pay-as-you-go licensing and see cost savings with the Azure Hybrid benefit use the [Pricing calculator](https://azure.microsoft.com/pricing/calculator/).  
 
 According to the Microsoft [Product Terms](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzureServices/EAEAS): "Customers must indicate that they are using Azure SQL Database (SQL Managed Instance, Elastic Pool, and Single Database), Azure Data Factory, SQL Server Integration Services, or SQL Server Virtual Machines under Azure Hybrid Benefit for SQL Server when configuring workloads on Azure."
 
-To indicate the use of Azure Hybrid Benefit for SQL Server on Azure VM and be compliant, you have three options:
+To indicate the use of Azure Hybrid Benefit for SQL Server on Azure VM and be compliant, you have two options:
 
 - Provision a virtual machine by using a pay-as-you-go SQL Server image from Azure Marketplace and activate the Azure Hybrid Benefit.
 - Self-install SQL Server on Azure VM, manually [register with the SQL IaaS Agent Extension](sql-agent-extension-manually-register-single-vm.md), and activate Azure Hybrid Benefit.

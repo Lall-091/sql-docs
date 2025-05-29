@@ -1,10 +1,10 @@
 ---
-title: Parameter Sensitive Plan optimization
+title: Parameter Sensitive Plan Optimization
 description: Learn about Parameter Sensitive Plan Optimization in the Query Store.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: derekw, maghan, randolphwest
-ms.date: 01/08/2024
+ms.date: 05/05/2025
 ms.service: sql
 ms.subservice: performance
 ms.topic: conceptual
@@ -139,6 +139,12 @@ And, within the ShowPlan XML of a query variant (inside of the Dispatcher elemen
 
 ## Remarks
 
+- Starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], PSP optimization includes the following enhancements:
+
+  - Support for data manipulation language (DML) queries.
+  - Expanded support for `tempdb`.
+  - Additional consideration given in scenarios where multiple eligible predicates exist on the same table.
+
 - The PSP optimization feature currently only works with equality predicates.
 
 - Dispatcher plans are automatically rebuilt if there are significant data distribution changes. Query variant plans recompile independently as needed, as with any other query plan type, subject to default recompilation events. For more information about recompilation, see [Recompiling Execution Plans](../query-processing-architecture-guide.md#recompiling-execution-plans).
@@ -213,7 +219,7 @@ And, within the ShowPlan XML of a query variant (inside of the Dispatcher elemen
 
 - To enable PSP optimization, enable database compatibility level 160 for the database you're connected to when executing the query.
 
-- For additional insights into the PSP optimization feature, we recommend that Query Store integration is enabled, by turning on the Query Store. The following example turns on the Query Store for a pre-existing database called `MyNewDatabase`:
+- For additional insights into the PSP optimization feature, we recommend that Query Store integration is enabled, by turning on the Query Store. The following example turns on the Query Store for a preexisting database called `MyNewDatabase`:
 
 ```sql
 ALTER DATABASE [MyNewDatabase]
@@ -230,7 +236,7 @@ SET QUERY_STORE = ON (
 
 - To disable PSP optimization at the query level, use the `DISABLE_PARAMETER_SENSITIVE_PLAN` query hint.
 
-- If parameter sniffing is disabled by Trace Flag 4136, `PARAMETER_SNIFFING` database scoped configuration, or the `USE HINT('DISABLE_PARAMETER_SNIFFING')` query hint, PSP optimization is disabled for the associated workloads and execution contexts. For more information, see [Hints (Transact-SQL) - Query](../../t-sql/queries/hints-transact-sql-query.md) and [ALTER DATABASE SCOPED CONFIGURATION (Transact-SQL)](../../t-sql/statements/alter-database-scoped-configuration-transact-sql.md).
+- If parameter sniffing is disabled by Trace Flag 4136, `PARAMETER_SNIFFING` database scoped configuration, or the `USE HINT('DISABLE_PARAMETER_SNIFFING')` query hint, PSP optimization is disabled for the associated workloads and execution contexts. For more information, see [Query hints](../../t-sql/queries/hints-transact-sql-query.md) and [ALTER DATABASE SCOPED CONFIGURATION](../../t-sql/statements/alter-database-scoped-configuration-transact-sql.md).
 
 - The number of unique plan variants per dispatcher stored in the plan cache is limited to avoid cache bloating. The internal threshold isn't documented. Since each SQL batch has the potential of creating multiple plans, and each query variant plan has an independent entry in the plan cache, it is possible to reach the default maximum number of allowed plan entries. If the plan cache eviction rate is observably high, or the sizes of the `CACHESTORE_OBJCP` and `CACHESTORE_SQLCP` [cache stores](/previous-versions/tn-archive/cc293624(v=technet.10)) are excessive, you should consider applying [Trace Flag 174](https://support.microsoft.com/help/3026083).
 
@@ -285,7 +291,10 @@ PSP with query hints and plan forcing behavior can be summarized in the followin
   The following query shows all of the possible reasons why PSP was skipped:
 
   ```sql
-  SELECT map_value FROM sys.dm_xe_map_values WHERE [name] ='psp_skipped_reason_enum' ORDER BY map_key;
+  SELECT map_value
+  FROM sys.dm_xe_map_values
+  WHERE [name] = 'psp_skipped_reason_enum'
+  ORDER BY map_key;
   ```
 
 - `parameter_sensitive_plan_optimization`: Occurs when a query uses PSP optimization feature. Debug channel only. Some fields of interest might be:
@@ -311,70 +320,18 @@ PSP optimization provides audit data for the dispatcher plan statement, and any 
 
 | Issue | Date discovered | Status | Date resolved |
 | --- | --- | --- | --- |
-| Access Violation exception occurs in Query Store in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] under certain conditions. You may encounter Access violation exceptions when PSP optimization Query Store integration is enabled. For more information, see the update in [Parameter Sensitive Plan Optimization, Why?](https://techcommunity.microsoft.com/t5/sql-server-blog/parameter-sensitive-plan-optimization-why/ba-p/3836281). | March 2023 | Resolved | August 2023 (CU 7) |
+| Access Violation exception occurs in Query Store in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] under certain conditions. You might encounter Access violation exceptions when PSP optimization Query Store integration is enabled. For more information, see the update in [Parameter Sensitive Plan Optimization, Why?](https://techcommunity.microsoft.com/blog/sqlserver/parameter-sensitive-plan-optimization-why/3836281) | March 2023 | Resolved | August 2023 (CU 7) |
 
 ### Resolved
 
 #### Access violation exception occurs in Query Store in SQL Server 2022 under certain conditions
 
 > [!NOTE]  
-> Starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] Cumulative Update 7, several fixes for a race condition which can lead to an access violation have been released. If access violations related to PSP optimization with Query Store integration occur after applying Cumulative Update 7 for [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], consider the following workaround section.
+> [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] [Cumulative Update 7](/troubleshoot/sql/releases/sqlserver-2022/cumulativeupdate7) released several fixes for a race condition that can lead to an access violation.
 
-This issue occurs because of a race condition that can be caused when the runtime statistics for an executed query are being persisted from the in memory representation of the Query Store (found in the `MEMORYCLERK_QUERYDISKSTORE_HASHMAP` memory clerk) to the on disk version of the Query Store. The runtime statistics, shown as Runtime Stats, are kept in memory for a period of time, defined by the `DATA_FLUSH_INTERVAL_SECONDS` option of the `SET QUERY_STORE` statement (the default value is 15 minutes). You can use the Management Studio Query Store dialog box to enter a value for Data Flush Interval (Minutes), which is internally converted to seconds. If the system is under memory pressure, runtime statistics can be flushed to disk earlier than defined with the `DATA_FLUSH_INTERVAL_SECONDS` option. When additional Query Store background threads related to Query Store query plan cleanup (that is, `STALE_QUERY_THRESHOLD_DAYS` and/or `MAX_STORAGE_SIZE_MB` Query Store options), queries from the Query Store, there is a scenario in which a query variant and/or its associated dispatcher statement can become dereferenced prematurely. This can result in an access violation during insert or delete operations of query variants into the Query Store.
+This issue occured because of a race condition that can be caused when the runtime statistics for an executed query are being persisted from the in memory representation of the Query Store (found in the `MEMORYCLERK_QUERYDISKSTORE_HASHMAP` memory clerk) to the on disk version of the Query Store. The runtime statistics, shown as Runtime Stats, are kept in memory for a period of time, defined by the `DATA_FLUSH_INTERVAL_SECONDS` option of the `SET QUERY_STORE` statement (the default value is 15 minutes). You can use the Management Studio Query Store dialog box to enter a value for Data Flush Interval (Minutes), which is internally converted to seconds. If the system is under memory pressure, runtime statistics can be flushed to disk earlier than defined with the `DATA_FLUSH_INTERVAL_SECONDS` option. When additional Query Store background threads related to Query Store query plan cleanup (that is, `STALE_QUERY_THRESHOLD_DAYS` and/or `MAX_STORAGE_SIZE_MB` Query Store options), queries from the Query Store, there is a scenario in which a query variant and/or its associated dispatcher statement can become dereferenced prematurely. This can result in an access violation during insert or delete operations of query variants into the Query Store.
 
 Refer to the [Remarks](how-query-store-collects-data.md#remarks) section of the How Query Store Collects Data article for more information around Query Store operations.
-
-**Workaround**: The query variants that are in the Query Store can be removed, or the PSP feature can be temporarily disabled at the query or database level until additional fixes become available if your system is still experiencing access violations in Query Store with PSP integration enabled after applying Cumulative Update 7 for [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)].
-
-- To disable PSP optimization at the database level, use the `ALTER DATABASE SCOPED CONFIGURATION SET PARAMETER_SENSITIVE_PLAN_OPTIMIZATION = OFF` database scoped configuration.
-- To disable PSP optimization at the query level, use the `DISABLE_PARAMETER_SENSITIVE_PLAN` query hint.
-
-To remove all of the query variants from the Query Store, not just the query variants that appear in the [sys.query_store_query_variant (Transact-SQL)](../system-catalog-views/sys-query-store-query-variant.md#sysquery_store_query_variant-transact-sql) catalog view, a query similar to the following one can be used. Replace `[<database>]` with the appropriate database that was experiencing issues:
-
-```sql
-USE master;
-GO
-
---Temporarily turn Query Store off in order to remove query variant plans as well as to
---clear the Query Store in-memory representation of Query Store (HashMap) for a particular database
-ALTER DATABASE [<database>] SET QUERY_STORE = OFF;
-GO
-
-USE [<database>];
-GO
-
-DECLARE @QueryIDsCursor CURSOR;
-DECLARE @QueryID BIGINT;
-BEGIN
- -- Getting the cursor for query IDs for query variant plans
-    SET @QueryIDsCursor = CURSOR FAST_FORWARD FOR
-    SELECT query_id
-        FROM sys.query_store_plan
-    WHERE plan_type = 2 --query variant plans
-    ORDER BY query_id;
- 
- -- Using a non-set based method for this example query
-    OPEN @QueryIDsCursor
-        FETCH NEXT FROM @QueryIDsCursor
-        INTO @QueryID
-        WHILE @@FETCH_STATUS = 0
-    BEGIN
-
- -- Deleting query variant(s) from the Query Store
-        EXEC sp_query_store_remove_query @query_id = @QueryID;
-        FETCH NEXT FROM @QueryIDsCursor
-        INTO @QueryID
-    END;
-    CLOSE @QueryIDsCursor ;
-    DEALLOCATE @QueryIDsCursor;
-END;
-
---Turn Query Store back on
-ALTER DATABASE [<database>] SET QUERY_STORE = ON;
-GO
-```
-
-If your Query Store is large, or if your system has a substantial workload and/or high number of ad hoc non-parameterized queries that qualify for capturing by Query Store, turning off the Query Store might take some time. To forcibly turn off the Query Store in these scenarios, use the `ALTER DATABASE [<database>] SET QUERY_STORE = OFF (FORCED)` command instead, in the previous sample T-SQL. To find non-parameterized queries, see [Find non-parameterized queries in Query Store](best-practice-with-the-query-store.md#find-non-parameterized-queries-in-query-store).
 
 ## Related content
 
@@ -382,7 +339,7 @@ If your Query Store is large, or if your system has a substantial workload and/o
 - [Parameters and Execution Plan Reuse](../query-processing-architecture-guide.md#parameters-and-execution-plan-reuse)
 - [Simple Parameterization](../query-processing-architecture-guide.md#simple-parameterization)
 - [Forced Parameterization](../query-processing-architecture-guide.md#forced-parameterization)
-- [Hints (Transact-SQL) - Query](../../t-sql/queries/hints-transact-sql-query.md)
+- [Query hints (Transact-SQL)](../../t-sql/queries/hints-transact-sql-query.md)
 - [Intelligent query processing in SQL databases](intelligent-query-processing.md)
 - [Parameter Sensitivity](../query-processing-architecture-guide.md#parameter-sensitivity)
 - [ALTER DATABASE SCOPED CONFIGURATION (Transact-SQL)](../../t-sql/statements/alter-database-scoped-configuration-transact-sql.md)

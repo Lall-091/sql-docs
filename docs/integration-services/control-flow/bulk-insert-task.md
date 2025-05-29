@@ -112,7 +112,7 @@ helpviewer_keywords:
 ## Bulk Insert Task Editor (Connection Page)
   Use the **Connection** page of the **Bulk Insert Task Editor** dialog box to specify the source and destination of the bulk insert operation and the format to use.  
   
- To learn about working with bulk inserts, see [Bulk Insert Task](../../integration-services/control-flow/bulk-insert-task.md) and [Format Files for Importing or Exporting Data &#40;SQL Server&#41;](../../relational-databases/import-export/format-files-for-importing-or-exporting-data-sql-server.md).  
+ To learn about working with bulk inserts, see [Bulk Insert Task](#bulk-insert-task) and [Format Files for Importing or Exporting Data &#40;SQL Server&#41;](../../relational-databases/import-export/format-files-for-importing-or-exporting-data-sql-server.md).  
   
 ### Options  
  **Connection**  
@@ -172,7 +172,7 @@ helpviewer_keywords:
 ## Bulk Insert Task Editor (Options Page)
   Use the **Options** page of the **Bulk Insert Task Editor** dialog box to set properties for the bulk insert operation. The Bulk Insert task copies large amounts of data into a [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] table or view.  
   
- To learn about working with bulk inserts, see [Bulk Insert Task](../../integration-services/control-flow/bulk-insert-task.md) and [BULK INSERT &#40;Transact-SQL&#41;](../../t-sql/statements/bulk-insert-transact-sql.md).  
+ To learn about working with bulk inserts, see [Bulk Insert Task](#bulk-insert-task) and [BULK INSERT &#40;Transact-SQL&#41;](../../t-sql/statements/bulk-insert-transact-sql.md).  
   
 ### Options  
  **CodePage**  

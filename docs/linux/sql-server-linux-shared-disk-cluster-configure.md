@@ -4,7 +4,7 @@ description: Learn to configure a failover cluster instance (FCI) on Red Hat Ent
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 11/18/2024
+ms.date: 05/02/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -186,7 +186,7 @@ This example creates an FCI in the group NewLinFCIGrp. The name of the resource 
    - `<VolumeGroupName>` is the name of the volume group
    - `<LogicalVolumeName>` is the name of the logical volume that was created
    - `<FolderToMountiSCSIDIsk>` is the folder to mount the disk (for system databases and the default location, it would be `/var/opt/mssql/data`)
-   - `<FileSystemType>` would be EXT4 or XFS, depending on how things were formatted and what the distribution supports.
+   - `<FileSystemType>` would be ext4 or XFS, depending on how things were formatted and what the distribution supports.
 
    #### [NFS](#tab/nfs)
 

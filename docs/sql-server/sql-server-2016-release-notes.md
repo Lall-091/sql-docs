@@ -148,7 +148,7 @@ For more information, see [KB5007039](https://support.microsoft.com/topic/kb5007
 
 - :::image type="icon" source="../includes/media/download.svg" border="false"::: **[Download SQL Server 2016 Service Pack 2 (SP2)](https://www.microsoft.com/download/details.aspx?id=56836)**
 
-- For a complete list of updates, see [SQL Server 2016 Service Pack 2 release information](https://support.microsoft.com/help/4052908/sql-server-2016-service-pack-2-release-information)
+- For a complete list of updates, see [SQL Server 2016 Service Pack 2 release information](/troubleshoot/sql/releases/sqlserver-2016/servicepack2).
 
 The [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] SP2 installation might require restart after installation. As a best practice, you should perform a restart following the installation of [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] SP2.
 

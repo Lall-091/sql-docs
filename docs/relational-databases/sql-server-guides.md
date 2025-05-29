@@ -30,6 +30,7 @@ The following guides are available. They discuss general concepts and apply to a
 - [Post-migration validation and optimization guide](post-migration-validation-and-optimization-guide.md)
 - [Query processing architecture guide](query-processing-architecture-guide.md)
 - [SQL Server I/O fundamentals](sql-server-storage-guide.md)
+- [Security cache concepts](security-cache.md)
 - [Thread and task architecture guide](thread-and-task-architecture-guide.md)
 - [Trace the network authentication process to the Database Engine](database-engine-connection-open-network-trace.md)
 - [Transaction locking and row versioning guide](sql-server-transaction-locking-and-row-versioning-guide.md)

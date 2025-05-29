@@ -1,8 +1,8 @@
 ---
 title: "Installing SSMA for SAP ASE client (SybaseToSQL)"
 description: Learn about installation prerequisites for SQL Server Migration Assistant (SSMA) for SAP Adaptive Server Enterprise (ASE) and how to install.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "07/14/2020"
 ms.service: sql
 ms.subservice: ssma

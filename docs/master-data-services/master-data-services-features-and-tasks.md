@@ -12,6 +12,8 @@ ms.topic: conceptual
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   Learn how to use [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] to manage your organization's master data. Learn how to create and manipulate model objects, which are containers for data. Learn how to organize and maintain the master data itself. Learn how to import and export master data, as well as share models between test and production environments. Finally, learn how to develop custom applications that access the [!INCLUDE[ssMDSshort](../includes/ssmdsshort-md.md)] web service.  
   
 ## Create Structures to Contain Data  

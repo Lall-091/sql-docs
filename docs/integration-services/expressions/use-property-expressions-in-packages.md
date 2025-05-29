@@ -163,7 +163,7 @@ helpviewer_keywords:
 ## External Resources  
   
   
--   Technical article, [SSIS Expression Examples](../../integration-services/expressions/use-property-expressions-in-packages.md)
+-   Technical article, [SSIS Expression Examples](#use-property-expressions-in-packages)
   
 ## See Also  
  [Use Variables in Packages](../integration-services-ssis-variables.md)  

@@ -15,7 +15,9 @@ helpviewer_keywords:
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
-This article describes how to view or configure the `backup compression default` server configuration option in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] by using [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or [!INCLUDE [tsql](../../includes/tsql-md.md)]. The `backup compression default` option determines whether the server instance creates compressed backups by default. When [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] is installed, the `backup compression default` option is off.
+This article describes how to view or configure the `backup compression default` server configuration option in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] by using [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or [!INCLUDE [tsql](../../includes/tsql-md.md)]. 
+
+The `backup compression default` option determines whether the server instance creates compressed backups.
 
 ## Limitations
 
@@ -28,6 +30,12 @@ By default, compression significantly increases CPU usage, and the additional CP
 When you're creating an individual backup, configuring a log shipping configuration, or creating a maintenance plan, you can override the server-level default.
 
 Backup compression is supported for both disk backup devices and tape backup devices.
+
+The `backup compression default` option accepts the following values:
+- `0` (off) - The server instance takes uncompressed backups. (Default)
+- `1` (on) - The server instance takes compressed backups. 
+
+If you enable backup compression default, you can then use [backup compression algorithm](view-or-configure-the-backup-compression-algorithm-server-configuration-option.md) to specify the compression algorithm used for backups. 
 
 ## Permissions
 

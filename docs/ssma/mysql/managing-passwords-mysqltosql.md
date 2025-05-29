@@ -1,8 +1,8 @@
 ---
 title: "Managing Passwords (MySQLToSQL)"
 description: "Managing Passwords (MySQLToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: 07/06/2020
 ms.service: sql
 ms.subservice: ssma

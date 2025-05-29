@@ -3,8 +3,8 @@ title: "sys.sp_change_feed_disable_db (Transact-SQL)"
 description: "The sys.sp_change_feed_disable_db system stored procedure disables the SQL change feed at the database level."
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: imotiwala
-ms.date: 09/24/2024
+ms.reviewer: imotiwala, ajayj
+ms.date: 05/01/2025
 ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,16 +19,22 @@ helpviewer_keywords:
   - "sp_change_feed_disable_db"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-ver16 || =azuresqldb-current || =azure-sqldw-latest || =fabric"
+monikerRange: ">=sql-server-ver16 || =azuresqldb-current || =azuresqldb-mi-current || =fabric || =azure-sqldw-latest"
 ---
 # sys.sp_change_feed_disable_db (Transact-SQL)
 
-[!INCLUDE [sqlserver2022-asdb-asa-fabricmirroredsqldb-fabricsqldb](../../includes/applies-to-version/sqlserver2022-asdb-asa-fabricmirroredsqldb-fabricsqldb.md)]
+[!INCLUDE [sqlserver2022-asdb-asdbmi-asa-fabricmirroredsqldb-fabricsqldb](../../includes/applies-to-version/sqlserver2022-asdb-asdbmi-asa-fabricmirroredsqldb-fabricsqldb.md)]
 
-Disable the change feed at the database level, and then the metadata for all the associated tables for [Azure Synapse Link for SQL](/azure/synapse-analytics/synapse-link/sql-synapse-link-overview), [Microsoft Fabric mirrored databases](/fabric/database/mirrored-database/overview), and [SQL database in Microsoft Fabric](/fabric/database/sql/overview).
+Disable the change feed at the database level, and then the metadata for all the associated tables.
 
-> [!NOTE]  
+> [!CAUTION]  
 > This system stored procedure is used internally and is not recommended for direct administrative use. Use Synapse Studio or the Fabric portal instead. Using this procedure could introduce inconsistency.
+
+This system stored procedure is used for:
+
+- [SQL database in Microsoft Fabric](/fabric/database/sql/overview)
+- [Microsoft Fabric mirrored databases](/fabric/database/mirrored-database/overview)
+- [Azure Synapse Link](../../sql-server/synapse-link/synapse-link-sql-server-change-feed-manage.md)
 
 ## Syntax
 

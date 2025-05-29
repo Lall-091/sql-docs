@@ -5,7 +5,7 @@ description: Learn about the currently known issues with Azure SQL Managed Insta
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest, mathoma
-ms.date: 04/27/2025
+ms.date: 05/27/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: troubleshooting-known-issue
@@ -29,7 +29,7 @@ This article lists the currently known issues with [Azure SQL Managed Instance](
 | [Differential backups aren't taken when an instance is linked to SQL Server](#differential-backups-arent-taken-when-an-instance-is-linked-to-sql-server) | Sept 2024 | By design | |
 | [List of long-term backups in Azure portal shows backup files for active and deleted databases with the same name](#list-of-long-term-backups-in-azure-portal-shows-backup-files-for-active-and-deleted-databases-with-the-same-name) | Mar 2024 | Has Workaround | |
 | [Temporary instance inaccessibility using the failover group listener during scaling operation](#temporary-instance-inaccessibility-using-the-failover-group-listener-during-scaling-operation) | Jan 2024 | No resolution | |
-| [The event_file target of the system_health event session is not accessible](#the-event_file-target-of-the-system_health-event-session-is-not-accessible) | Dec 2023 | Has Workaround | |
+| [The event_file target of the system_health event session is not accessible](#the-event_file-target-of-the-system_health-event-session-is-not-accessible) | Dec 2023 | Resolved | May 2025 |
 | [Procedure sp_send_dbmail might fail when @query parameter is used on Nov22FW enabled managed instances](#procedure-sp_send_dbmail-may-fail-when-query-parameter-is-used-on-nov22fw-enabled-managed-instances) | Dec 2023 | Has Workaround | |
 | [Increased number of system logins used for transactional replication](#increased-number-of-system-logins-used-for-transactional-replication) | Dec 2022 | No resolution | |
 | [msdb table for manual backups doesn't preserve the username](#msdb-table-for-manual-backups-doesnt-preserve-the-username) | Nov 2022 | Resolved | Aug 2023 |
@@ -100,12 +100,6 @@ To work around the issue, first drop the index, or the table with the index, fro
 Long-term backups can be listed and managed on Azure portal page for an Azure SQL Managed Instance on _Backups_ tab. The page lists active or deleted databases, basic information about their long-term backups, and link for managing backups. When you select the _Manage_ link, a new side pane opens with list of backups. Due to an issue with the filtering logic, the list shows backups for both active database and deleted databases with the same name. This requires a special attention when selecting backups for deletion, to avoid deleting backups for a wrong database.
 
 **Workaround**: Use displayed _Backup time (UTC)_ information in the list to differentiate backups belonging to databases with the same name that existed on the instance at different periods. Alternatively, use PowerShell commands [Get-AzSqlInstanceDatabaseLongTermRetentionBackup](/powershell/module/az.sql/get-azsqlinstancedatabaselongtermretentionbackup) and [Remove-AzSqlInstanceDatabaseLongTermRetentionBackup](/powershell/module/az.sql/remove-azsqlinstancedatabaselongtermretentionbackup), or CLI commands [az sql midb ltr-backup list](/cli/azure/sql/midb/ltr-backup?view=azure-cli-latest&preserve-view=true#az-sql-midb-ltr-backup-list) and [az sql midb ltr-backup delete](/cli/azure/sql/midb/ltr-backup?view=azure-cli-latest&preserve-view=true#az-sql-midb-ltr-backup-delete) to manage long-term backups using _DatabaseState_ parameter and _DatabaseDeletionTime_ return value to filter backups for a database.
-
-### The event_file target of the system_health event session is not accessible
-
-When you attempt to read the contents of the `event_file` target of the `system_health` event session, you get error 40538, "A valid URL beginning with 'https://' is required as value for any filepath specified." This occurs in SQL Server Management Studio, or when reading the session data using the [sys.fn_xe_file_target_read_file](/sql/relational-databases/system-functions/sys-fn-xe-file-target-read-file-transact-sql) function.
-
-This change in behavior is an unintended consequence of a recent required security fix. We are investigating the feasibility of an additional change that would allow customers to continue using the `system_health` session on Azure SQL Managed Instance securely. In the meantime, customers can work around this issue by creating their own equivalent of the `system_health` session with an `event_file` target in Azure blob storage. For more information, including a T-SQL script to create the `system_health` session that can be modified to create your own equivalent of `system_health`, see [Use the system_health session](/sql/relational-databases/extended-events/use-the-system-health-session).
 
 ### <a id="procedure-sp_send_dbmail-may-fail-when-query-parameter-is-used-on-nov22fw-enabled-managed-instances"></a> Procedure sp_send_dbmail might fail when @query parameter
 
@@ -416,6 +410,12 @@ You can neglect this error message if Service Principal for the managed instance
 To check whether Service Principal exists, navigate to the **Enterprise applications** page on the Azure portal, choose **Managed Identities** from the **Application type** dropdown list, select **Apply**, and type the name of the managed instance in the search box. If the instance name shows up in the result list, Service Principal already exists and no further actions are needed.
 
 If you already followed the instructions from the error message and selected the link from the error message, Service Principal of the managed instance has been recreated. In that case, assign Microsoft Entra ID read permissions to the newly created Service Principal in order for Microsoft Entra authentication to work properly. This can be done via Azure PowerShell by following [instructions](../database/authentication-aad-configure.md?tabs=azure-powershell#assign-microsoft-graph-permissions).
+
+### The event_file target of the system_health event session is not accessible
+
+**(Resolved in May 2025)** When you attempt to read the contents of the `event_file` target of the `system_health` event session, you get error 40538, "A valid URL beginning with 'https://' is required as value for any filepath specified." This occurs in SQL Server Management Studio, or when reading the session data using the [sys.fn_xe_file_target_read_file](/sql/relational-databases/system-functions/sys-fn-xe-file-target-read-file-transact-sql) function.
+
+This change in behavior is an unintended consequence of a recent required security fix. We are investigating the feasibility of an additional change that would allow customers to continue using the `system_health` session on Azure SQL Managed Instance securely. In the meantime, customers can work around this issue by creating their own equivalent of the `system_health` session with an `event_file` target in Azure blob storage. For more information, including a T-SQL script to create the `system_health` session that can be modified to create your own equivalent of `system_health`, see [Use the system_health session](/sql/relational-databases/extended-events/use-the-system-health-session).
 
 ## Contribute to content
 

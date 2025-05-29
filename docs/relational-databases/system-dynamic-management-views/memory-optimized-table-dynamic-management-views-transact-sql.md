@@ -1,74 +1,54 @@
 ---
-title: "Memory-optimized table Dynamic Management Views (Transact-SQL)"
-description: Learn about the SQL Server dynamic management views and object catalog views used with In-Memory OLTP in SQL Server.
+title: "In-Memory OLTP System Views (Transact-SQL)"
+description: Learn about dynamic management views and object catalog views used with In-Memory OLTP.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: "02/01/2017"
+ms.date: 04/29/2025
 ms.service: sql
 ms.subservice: in-memory-oltp
 ms.topic: "reference"
 dev_langs:
   - "TSQL"
-monikerRange: "=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
-# Memory-Optimized Table Dynamic Management Views (Transact-SQL)
-[!INCLUDE[sql-asdb-asdbmi](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
 
-  The following [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] dynamic management views (DMVs) are used with In-Memory OLTP:  
-  
- For more information, see [In-Memory OLTP &#40;In-Memory Optimization&#41;](../in-memory-oltp/overview-and-usage-scenarios.md).  
+# In-Memory OLTP System Views (Transact-SQL)
 
-:::row:::
-    :::column:::
-        [sys.dm_db_xtp_checkpoint_stats &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-db-xtp-checkpoint-stats-transact-sql.md)
+[!INCLUDE [sql-asdb-asdbmi](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
 
-        [sys.dm_db_xtp_gc_cycle_stats &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-db-xtp-gc-cycle-stats-transact-sql.md)
+For more information, see [In-Memory OLTP overview and usage scenarios](../in-memory-oltp/overview-and-usage-scenarios.md).
 
-        [sys.dm_db_xtp_index_stats &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-db-xtp-index-stats-transact-sql.md)
+### Dynamic management views
 
-        [sys.dm_db_xtp_merge_requests (Transact-SQL)](../../relational-databases/system-dynamic-management-views/sys-dm-db-xtp-merge-requests-transact-sql.md)
+The following dynamic management views (DMVs) are used with In-Memory OLTP:
 
-        [sys.dm_db_xtp_nonclustered_index_stats &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-db-xtp-nonclustered-index-stats-transact-sql.md)
+- [sys.dm_xtp_gc_queue_stats](sys-dm-xtp-gc-queue-stats-transact-sql.md)
+- [sys.dm_xtp_gc_stats](sys-dm-xtp-gc-stats-transact-sql.md)
+- [sys.dm_xtp_system_memory_consumers](sys-dm-xtp-system-memory-consumers-transact-sql.md)
+- [sys.dm_xtp_transaction_stats](sys-dm-xtp-transaction-stats-transact-sql.md)
+- [sys.dm_db_xtp_checkpoint_files](sys-dm-db-xtp-checkpoint-files-transact-sql.md)
+- [sys.dm_db_xtp_checkpoint_stats](sys-dm-db-xtp-checkpoint-stats-transact-sql.md)
+- [sys.dm_db_xtp_gc_cycle_stats](sys-dm-db-xtp-gc-cycle-stats-transact-sql.md)
+- [sys.dm_db_xtp_hash_index_stats](sys-dm-db-xtp-hash-index-stats-transact-sql.md)
+- [sys.dm_db_xtp_index_stats](sys-dm-db-xtp-index-stats-transact-sql.md)
+- [sys.dm_db_xtp_memory_consumers](sys-dm-db-xtp-memory-consumers-transact-sql.md)
+- [sys.dm_db_xtp_merge_requests](sys-dm-db-xtp-merge-requests-transact-sql.md)
+- [sys.dm_db_xtp_nonclustered_index_stats](sys-dm-db-xtp-nonclustered-index-stats-transact-sql.md)
+- [sys.dm_db_xtp_object_stats](sys-dm-db-xtp-object-stats-transact-sql.md)
+- [sys.dm_db_xtp_table_memory_stats](sys-dm-db-xtp-table-memory-stats-transact-sql.md)
+- [sys.dm_db_xtp_transactions](sys-dm-db-xtp-transactions-transact-sql.md)
+- [sys.dm_db_xtp_undeploy_status](sys-dm-db-xtp-undeploy-status.md)
 
-        [sys.dm_db_xtp_transactions &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-db-xtp-transactions-transact-sql.md)
+### Object catalog views
 
-        [sys.dm_xtp_gc_stats &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-xtp-gc-stats-transact-sql.md)
+The following object catalog views are used with In-Memory OLTP.
 
-        [sys.dm_xtp_transaction_stats &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-xtp-transaction-stats-transact-sql.md)
-    :::column-end:::
-    :::column:::
-        [sys.dm_db_xtp_checkpoint_files &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-db-xtp-checkpoint-files-transact-sql.md)
-
-        [sys.dm_db_xtp_hash_index_stats &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-db-xtp-hash-index-stats-transact-sql.md)
-
-        [sys.dm_db_xtp_memory_consumers &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-db-xtp-memory-consumers-transact-sql.md)
-
-        [sys.dm_db_xtp_object_stats &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-db-xtp-object-stats-transact-sql.md)
-
-        [sys.dm_db_xtp_table_memory_stats &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-db-xtp-table-memory-stats-transact-sql.md)
-
-        [sys.dm_xtp_gc_queue_stats &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-xtp-gc-queue-stats-transact-sql.md)
-
-        [sys.dm_xtp_system_memory_consumers &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-xtp-system-memory-consumers-transact-sql.md)
-    :::column-end:::
-:::row-end:::
-
-### Object Catalog Views
-
-The following object catalog views are used specifically with In-Memory OLTP.
-
-:::row:::
-    :::column:::
-        [sys.hash_indexes &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-hash-indexes-transact-sql.md)
-    :::column-end:::
-    :::column:::
-        [sys.memory_optimized_tables_internal_attributes &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-memory-optimized-tables-internal-attributes-transact-sql.md)
-    :::column-end:::
-:::row-end:::
+- [sys.hash_indexes](../system-catalog-views/sys-hash-indexes-transact-sql.md)
+- [sys.memory_optimized_tables_internal_attributes](../system-catalog-views/sys-memory-optimized-tables-internal-attributes-transact-sql.md)
 
 ### Internal DMVs
 
 There are additional DMVs that are intended for internal use only, and for which we provide no direct documentation. In the area of memory-optimized tables, undocumented DMVs include the following:
 
-- sys.dm_xtp_threads
-- sys.dm_xtp_transaction_recent_rows
+- `sys.dm_xtp_threads`
+- `sys.dm_xtp_transaction_recent_rows`

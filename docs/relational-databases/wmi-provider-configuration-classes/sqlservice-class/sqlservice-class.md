@@ -14,9 +14,9 @@ apitype: "MOFDef"
 ---
 # SqlService Class
 [!INCLUDE [SQL Server](../../../includes/applies-to-version/sqlserver.md)]
-  The [SqlService Class](../../../relational-databases/wmi-provider-configuration-classes/sqlservice-class/sqlservice-class.md) represents an instance of a [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] service.  
+  The [SqlService Class](#sqlservice-class) represents an instance of a [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] service.  
   
- The [SqlService Class](../../../relational-databases/wmi-provider-configuration-classes/sqlservice-class/sqlservice-class.md) is used to programmatically manage the [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] service. With the [SqlService Class](../../../relational-databases/wmi-provider-configuration-classes/sqlservice-class/sqlservice-class.md) object, you can perform the following tasks:  
+ The [SqlService Class](#sqlservice-class) is used to programmatically manage the [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] service. With the [SqlService Class](#sqlservice-class) object, you can perform the following tasks:  
   
 -   Connect to the service.  
   

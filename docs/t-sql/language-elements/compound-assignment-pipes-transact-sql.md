@@ -4,7 +4,7 @@ description: "Use ||= to concatenate an expression with the value of a character
 author: abhimantiwari
 ms.author: abhtiwar
 ms.reviewer: randolphwest, wiassaf, umajay
-ms.date: 06/04/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -18,12 +18,14 @@ helpviewer_keywords:
   - "||= (string concatenation with compound assignment)"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =fabric"
+monikerRange: "=azuresqldb-current || =fabric || =azuresqldb-mi-current"
 ---
 
-# ||= (Compound assignment) (Transact-SQL)
+# ||= (Compound assignment) (Transact-SQL) preview
 
-[!INCLUDE [asdb-fabricsqldb](../../includes/applies-to-version/asdb-fabricsqldb.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabric](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
+
+[!INCLUDE [preview](../../includes/preview.md)]
 
 The `||=` concatenation with compound assignment operator can be used to [concatenate an expression](string-concatenation-pipes-transact-sql.md) with the value of a character or binary string variable, and then assign the resulting expression to the variable.
 

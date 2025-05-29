@@ -39,7 +39,7 @@ This article lists and describes what's new in the versioned releases of the [!I
 | New item | Details |
 | :------- | :------ |
 | Sqlcmd Bugfix | Fixed issue where -M option required an argument. |
-| Sqlcmd Bugfix | Fixed issue where nohup and SIGHUP can cause it to hang in certain situations. |
+| Sqlcmd Bugfix | Fixed issue where nohup and SIGHUP can cause it to stop responding in certain situations. |
 | Sqlcmd Bugfix | Fixed specifying input codepage with -f option. |
 | Sqlcmd Bugfix | Fixed detection of current character encoding. |
 | Sqlcmd Bugfix | Fixed input file codepage option. |
@@ -49,7 +49,7 @@ This article lists and describes what's new in the versioned releases of the [!I
 | New item | Details |
 | :------- | :------ |
 | Sqlcmd Bugfix | Fixed issue where -M option required an argument. |
-| Sqlcmd Bugfix | Fixed issue where nohup and SIGHUP can cause it to hang in certain situations. |
+| Sqlcmd Bugfix | Fixed issue where nohup and SIGHUP can cause it to stop responding in certain situations. |
 
 ## 18.0.1.1, February 2022
 

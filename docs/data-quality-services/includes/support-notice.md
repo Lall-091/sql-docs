@@ -1,0 +1,10 @@
+---
+author: rwestMSFT
+ms.author: randolphwest
+ms.date: 04/21/2025
+ms.service: sql
+ms.subservice: data-quality-services
+ms.topic: include
+---
+> [!IMPORTANT]  
+> Data Quality Services (DQS) is [removed](/lifecycle/definitions#removal) in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. We continue to support DQS in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions.

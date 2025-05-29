@@ -208,7 +208,7 @@ To avoid this problem, be sure to install any new features at the same patch lev
 
 > [!NOTE] 
 > On older systems, Launchpad can fail to start if there is an 8dot3 notation requirement. This requirement has been removed in later releases. SQL Server 2016 R Services customers should install one of the following:
-> * SQL Server 2016 SP1 and CU1: [Cumulative Update 1 for SQL Server](https://support.microsoft.com/help/3208177/cumulative-update-1-for-sql-server-2016-sp1).
+> * SQL Server 2016 SP1 and CU1: [Cumulative Update 1 for SQL Server 2016 SP1](/troubleshoot/sql/releases/sqlserver-2016/servicepack1-cumulativeupdate1).
 > * SQL Server 2016 RTM, Cumulative Update 3, and this [hotfix](https://support.microsoft.com/help/3210110/on-demand-hotfix-update-package-for-sql-server-2016-cu3), which is available on demand.
 
 For compatibility with R, SQL Server 2016 R Services (In-Database) required the drive where the feature is installed to support the creation of short file names by using *8dot3 notation*. An 8.3 file name is also called a *short file name*, and it's used for compatibility with earlier versions of Microsoft Windows or as an alternative to long file names.

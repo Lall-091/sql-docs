@@ -88,7 +88,7 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
 SQL Server 2016 uses the SHA1 hashing algorithm for its encryption work. Starting in SQL Server 2017, SHA2 is used instead. This means extra steps might be necessary to have your SQL Server 2017 installation decrypt items that were encrypted by SQL Server 2016. Here are the extra steps:
 
 - Ensure your SQL Server 2017 is updated to at least Cumulative Update 2 (CU2).
-  - See [Cumulative Update 2 (CU2) for SQL Server 2017](https://support.microsoft.com/help/4052574) for important details.
+  - See [Cumulative Update 2 for SQL Server 2017](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate2) for important details.
 - After you install CU2, turn on trace flag 4631 in SQL Server 2017: `DBCC TRACEON(4631, -1);`
   - Trace flag 4631 is new in SQL Server 2017. Trace flag 4631 needs to be `ON` globally before you create the master key, certificate, or symmetrical key in SQL Server 2017. This enables these created items to interoperate with SQL Server 2016 and earlier versions. This trace flag should only be turned on temporarily to do the re-encryption of data with SHA2-derived keys.
 

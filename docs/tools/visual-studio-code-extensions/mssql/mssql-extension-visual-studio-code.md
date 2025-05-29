@@ -3,8 +3,8 @@ title: Overview of the MSSQL Extension for Visual Studio Code
 description: Enhancing your developer experience with the MSSQL extension for Visual Studio Code
 author: croblesm
 ms.author: roblescarlos
-ms.reviewer: maghan, randolphwest
-ms.date: 11/20/2024
+ms.reviewer: randolphwest
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -18,48 +18,34 @@ The [MSSQL extension for Visual Studio Code](https://marketplace.visualstudio.co
 
 The latest enhancements to this extension are aimed at boosting productivity. Whether you're working with databases running locally or in the cloud, the extension equips you with advanced IntelliSense, efficient Transact-SQL script execution, and customizable options. As a result, you can enjoy a modern and streamlined SQL development workflow.
 
-## How to install the extension
+## Install the MSSQL Extension in Visual Studio Code
 
-Follow these steps to install the MSSQL extension for Visual Studio Code.
+To get started with SQL development in Visual Studio Code, install the **MSSQL extension**:
 
-1. Bring up the Extensions view by selecting on the Extensions icon in the Activity Bar on the side of Visual Studio Code or the View: Extensions command.
+1. Open **Visual Studio Code**.
+1. Select the **Extensions** icon in the Activity Bar (press `Cmd+Shift+X` on macOS or `Ctrl+Shift+X` on Windows/Linux).
+1. In the **search bar**, type `mssql`.
+1. Find **SQL Server (mssql)** in the results and select it.
+1. Select the **Install** button.
 
-1. Type `mssql` in the search bar.
+:::image type="content" source="media/mssql-extension-visual-studio-code/mssql-extension-vscode.png" alt-text="Screenshot of the MSSQL extension in Visual Studio Code." lightbox="media/mssql-extension-visual-studio-code/mssql-extension-vscode.png":::
 
-1. Select the **SQL Server (mssql)** extension and view its details.
+> [!TIP]  
+> You'll know the extension is installed correctly when the **MSSQL** icon appears in the Activity Bar and the **Connections** view becomes available.
 
-1. Select **Install**.
+## Modern UI
 
-:::image type="content" source="media/mssql-extension-visual-studio-code/mssql-extension-vscode.png" alt-text="Screenshot of the MSSQL extension in Visual Studio Code.":::
+The MSSQL extension for Visual Studio Code introduces the **General Availability** of its enhanced UI—designed to elevate the SQL development experience across SQL Server, Azure SQL, and SQL Database on Fabric.
 
-## Enable the new UI features
+This release delivers key improvements to:
 
-The latest version of the MSSQL extension for Visual Studio Code introduces rich new UI features that enhance the development experience. These features make connecting to databases, managing database objects, and analyzing query performance more intuitive and efficient.
+- **Connection Dialog**
+- **Object Explorer**
+- **Table Designer**
+- **Query Results Pane**
+- **Query Plan Visualizer**
 
-### Use the UI prompt
-
-After installing the latest version of the MSSQL extension for Visual Studio Code, you can enable the new UI features via a prompt.
-
-To enable the new features, select the **Enable Experiences and Reload** button in the prompt that appears when the extension is loaded for the first time.
-
-:::image type="content" source="media/mssql-extension-visual-studio-code/mssql-enable-new-features-prompt.png" alt-text="Screenshot of UI prompt to enable new features.":::
-
-### Use the Visual Studio Code user settings file
-
-As an alternative, you can enable the new UI features by modifying the `user settings (JSON)` file via the Visual Studio Code command palette:
-
-Add the `mssql.enableRichExperiences` setting to your settings.json file, and set this option to `true`.
-
-Close the `settings.json` file, save the changes, and proceed to restart Visual Studio Code.
-
-:::image type="content" source="media/mssql-extension-visual-studio-code/mssql-enable-new-features-json.png" alt-text="Screenshot to enable new features using the user settings json file." lightbox="media/mssql-extension-visual-studio-code/mssql-enable-new-features-json.png":::
-
-## New features (Preview)
-
-The latest version of the MSSQL extension for Visual Studio Code introduces a comprehensive set of new UI features that enhance the development experience. These new UI features make connecting to databases, managing database objects, and analyzing query performance more intuitive and efficient.
-
-> [!IMPORTANT]  
-> All the new UI features described below are currently in preview.
+These features are now seamlessly integrated and enabled by default—no setup required.
 
 ### Connection dialog
 
@@ -128,7 +114,7 @@ Key features of the Query Results pane include:
 
 - **Save Query Results**: Includes the ability to save query results to multiple formats such as JSON, Excel, and CSV, allowing you to work with the data outside of Visual Studio Code.
 
-- **Inline Sorting**: You can sort the data by clicking on the column headers directly in the query results view. Sorting can be done in ascending or descending order to make it easier to analyze specific subsets of the data.
+- **Inline Sorting**: You can sort the data by selecting the column headers directly in the query results view. Sorting can be done in ascending or descending order to make it easier to analyze specific subsets of the data.
 
 - **Estimated Plan**: The Estimated Plan button is located in the query toolbar, next to the Run Query button. It appears as a flowchart icon and allows you to generate an estimated execution plan without executing the query itself. This feature provides valuable insight into query performance, helping identify potential bottlenecks and inefficiencies before running the actual query.
 
@@ -138,18 +124,8 @@ This updated query results experience is designed to offer flexibility and impro
 
 :::image type="content" source="media/mssql-extension-visual-studio-code/query-results-vscode.png" alt-text="Screenshot of the query results feature." lightbox="media/mssql-extension-visual-studio-code/query-results-vscode.png":::
 
-### Customization settings for the Query Results pane
-
-You can customize your query results experience using specific settings. The table below explains these settings and the resulting behaviors:
-
-| Setting | Behavior |
-| --- | --- |
-| **Nothing set** | The default experience, referred to as the old user experience (UX). |
-| `mssql.enableRichExperiences`: `true` | Activates the new user experience, which includes a refreshed query results pane. |
-| `mssql.enableRichExperiences`: `true` and `mssql.openQueryResultsInTabByDefault`: `true` | Opens query results in a new tab by default, rather than displaying them in the bottom query pane. This can help declutter your workspace and provide a more organized view. |
-| `mssql.enableRichExperiences`: `true` and `mssql.enableNewQueryResultsFeature`: `false` | Retains the new user experience but with the query results pane appearing in the old style. This setting is useful if you prefer the traditional look for the results pane while benefiting from other new user experience features. |
-
-These settings give you flexibility in how you view and interact with query results, making it easier to adapt the experience to your workflow. To modify these settings, navigate to the settings in Visual Studio Code and update the configurations as needed.
+> [!TIP]  
+> You can customize the query results behavior using the `mssql.openQueryResultsInTabByDefault` setting. When set to `true`, query results open in a new tab by default, helping declutter your workspace.
 
 ### Query Plan Visualizer
 

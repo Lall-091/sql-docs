@@ -3,7 +3,7 @@ title: "Configure Database Mail"
 description: "Configure Database Mail using the Database Mail Configuration Wizard or T-SQL commands."
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.date: 12/15/2023
+ms.date: 05/16/2025
 ms.service: sql
 ms.topic: how-to
 f1_keywords:
@@ -35,25 +35,31 @@ f1_keywords:
   - "sql13.swb.dbmail.newsqlimailaccount.f1"
   - "sql13.swb.dbmail.manageexistingprofile.f1"
   - "sql13.swb.dbmail.manageprofilesecurity.principalview.f1"
+monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
-# Configure Database Mail
+# Configure database mail
 
- [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
+ [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
+
   This article describes how to enable and configure [Database Mail](database-mail.md) using the Database Mail Configuration Wizard, and create a Database Mail Configuration script using templates.
 
-## <a id="BeforeYouBegin"></a> Before You Begin
+ Use the **DatabaseMail XPs** server configuration option to enable Database Mail on this server. For more information, see [Database Mail XPs (server configuration option)](../../database-engine/configure-windows/database-mail-xps-server-configuration-option.md).  
 
- Use the **DatabaseMail XPs** option to enable Database Mail on this server. For more information, see [Database Mail XPs Server Configuration Option](../../database-engine/configure-windows/database-mail-xps-server-configuration-option.md) reference article.  
+<a id="Restrictions"></a>
 
-### <a id="Restrictions"></a> Limitations and Restrictions
+<a id="limitations-and-restrictions"></a>
+
+### Limitations
 
  Enabling [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Service Broker in any database requires a database lock. If Service Broker was deactivated in `msdb`, to enable Database Mail, first stop [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent so Service Broker can obtain the necessary lock.  
 
-### <a id="Security"></a> Security
+### Security
 
  To configure Database Mail, you must be a member of the **sysadmin** fixed server role. To send an email with Database Mail, you must be a member of the **DatabaseMailUserRole** database role in the `msdb` database.  
 
-## <a id="troubleshooting"></a> Troubleshoot
+<a id="troubleshooting"></a>
+
+## Troubleshoot
 
 For troubleshooting Database Mail, visit:
 
@@ -62,9 +68,9 @@ For troubleshooting Database Mail, visit:
 - [Database mail: Mail queued, not delivered](database-mail-mail-queued-not-delivered.md)
 - [Common errors with database mail](database-mail-common-errors.md)
 
-## <a id="DBWizard"></a> Use the Database Mail Configuration Wizard
+<a id="DBWizard"></a>
 
- **To configure Database Mail using a wizard**  
+## Use the Database Mail Configuration Wizard to configure Database Mail
 
 The following steps use SQL Server Management Studio (SSMS). Download the latest version of SSMS at [aka.ms/ssms](https://aka.ms/ssms).
 
@@ -76,21 +82,23 @@ The following steps use SQL Server Management Studio (SSMS). Download the latest
 
 1. Complete the wizard dialogs.
 
-    -   [Welcome Page](#Welcome)  
-    -   [Select Configuration Task Page](#ConfigTask)  
-    -   [New Account Page](#NewAccount)  
-    -   [Manage Existing Account Page](#ExistingAccount)  
-    -   [New Profile Page](#NewProfile)  
-    -   [Manage Existing Profile Page](#ExistingProfile)  
-    -   [Add account to Profile Page](#AddAccount)  
-    -   [Manage Accounts and Profiles Page](#AccountsProfiles)  
-    -   [Manage Profile Security, Public Tab](#ProfileSecurityPublic)  
-    -   [Manage Profile Security, Private Tab](#ProfileSecurityPrivate)  
-    -   [Configure System Parameters Page](#SystemParameters)  
-    -   [Complete the Wizard Page](#CompleteWizard)  
-    -   [Send Test E-mail Page](#TestEmail)  
+    -   [Welcome page](#Welcome)  
+    -   [Select Configuration Task page](#ConfigTask)  
+    -   [New Account page](#NewAccount)  
+    -   [Manage Existing Account page](#ExistingAccount)  
+    -   [New Profile page](#NewProfile)  
+    -   [Manage Existing Profile page](#ExistingProfile)  
+    -   [Add account to Profile page](#AddAccount)  
+    -   [Manage Accounts and Profiles page](#AccountsProfiles)  
+    -   [Manage Profile Security, Public tab](#ProfileSecurityPublic)  
+    -   [Manage Profile Security, Private tab](#ProfileSecurityPrivate)  
+    -   [Configure System Parameters page](#SystemParameters)  
+    -   [Complete the Wizard page](#CompleteWizard)  
+    -   [Send Test E-mail page](#TestEmail)  
 
-### <a id="Welcome"></a> Welcome Page
+<a id="Welcome"></a>
+
+### Welcome page
 
  This page describes the steps to configuring Database Mail.  
 
@@ -100,13 +108,14 @@ The following steps use SQL Server Management Studio (SSMS). Download the latest
 
  **Cancel** - Terminates the wizard without configuring Database Mail.
 
+<a id="ConfigTask"></a>
 
-### <a id="ConfigTask"></a> Select Configuration Task
+### Select Configuration Task
 
  Use the **Select Configuration Task** page, to indicate which task you complete each time you use the wizard. If you change your mind before you complete the wizard, use the **Back** button to return to this page and select a different task.  
 
 > [!NOTE]  
->  If Database Mail has not been enabled, you will receive the message: **The Database Mail feature is not available. Would you like to enable this feature?** Responding **Yes**, is equivalent to enabling Database Mail by using the [Database Mail XPs option](../../database-engine/configure-windows/database-mail-xps-server-configuration-option.md) of the `sp_configure` system stored procedure.  
+>  If Database Mail has not been enabled, you will receive the message: **The Database Mail feature is not available. Would you like to enable this feature?** Responding **Yes**, is equivalent to enabling Database Mail by using the [Database Mail XPs (server configuration option)](../../database-engine/configure-windows/database-mail-xps-server-configuration-option.md) of the `sp_configure` system stored procedure.  
 
  **Set up Database Mail by performing the following tasks**  
  Perform all of the tasks required to set up Database Mail for the first time. This option includes all of the other three options.  
@@ -120,7 +129,9 @@ The following steps use SQL Server Management Studio (SSMS). Download the latest
  **View or change system parameters**  
  Configure Database Mail system parameters such as the maximum file size for attachments.  
 
-### <a id="NewAccount"></a> New Account Page
+<a id="NewAccount"></a>
+
+### New Account page
 
  Use this page to create a new Database Mail account. A Database Mail account contains information for sending e-mail to an SMTP server.  
 
@@ -170,7 +181,9 @@ The following steps use SQL Server Management Studio (SSMS). Download the latest
  **Anonymous authentication**  
  Mail is sent to the SMTP server without login credentials. Use this option when the SMTP server doesn't require authentication.  
 
-### <a id="ExistingAccount"></a> Manage Existing Account Page
+<a id="ExistingAccount"></a>
+
+### Manage Existing Account page
 
  Use this page to manage an existing Database Mail account.  
 
@@ -190,7 +203,7 @@ The following steps use SQL Server Management Studio (SSMS). Download the latest
  View or update the name to show on e-mail messages sent from this account. The display name is optional. This is the name displayed on messages sent from this account. For example, an account for SQL Server Agent can display the name **SQL Server Agent Automated Mailer** on e-mail messages.  
 
  **Reply e-mail**  
- View or update the e-mail address that will be used for replies to e-mail messages sent from this account. The reply e-mail is optional. For example, replies to an account for SQL Server Agent can go to the database administrator, **danw\@Adventure-Works.com**.  
+ View or update the e-mail address that will be used for replies to e-mail messages sent from this account. The reply e-mail is optional. For example, replies to an account for SQL Server Agent can go to the database administrator, `danw@Adventure-Works.com`.  
 
  **Server name**  
  View or update the name of the SMTP server the account uses to send e-mail. Typically this is in a format similar to `smtp.<your_company>.com`. For help with this, consult your mail administrator.  
@@ -219,9 +232,11 @@ The following steps use SQL Server Management Studio (SSMS). Download the latest
  **Anonymous authentication**  
  Mail is sent to the SMTP server without login credentials. Use this option when the SMTP server doesn't require authentication.  
 
-### <a id="NewProfile"></a> New Profile page
+<a id="NewProfile"></a>
 
- Use this page to create a Database Mail profile. A Database Mail profile is a collection of Database Mail accounts. Profiles improve reliability in cases where an e-mail server becomes unreachable, by providing alternative Database Mail accounts. At least one Database Mail account is required. For more information about setting the priority of Database Mail accounts in the profile, see [Create a Database Mail Profile](../../relational-databases/database-mail/create-a-database-mail-profile.md).  
+### New Profile page
+
+ Use this page to create a Database Mail profile. A Database Mail profile is a collection of Database Mail accounts. Profiles improve reliability in cases where an e-mail server becomes unreachable, by providing alternative Database Mail accounts. At least one Database Mail account is required. For more information about setting the priority of Database Mail accounts in the profile, see [Create a Database Mail Profile](create-a-database-mail-profile.md).  
 
  Use the **Move Up** and **Move Down** buttons to change the order in which Database Mail accounts are used. This order is determined by a value called the sequence number. **Move Up** lowers the sequence number and **Move Down** increases the sequence number. The sequence number determines the order in which Database Mail uses accounts in the profile. For a new e-mail message, Database Mail starts with the account that has the lowest sequence number. Should that account fail, Database Mail uses the account with the next highest sequence number, and so on, until either Database Mail sends the message successfully, or the account with the highest sequence number fails. If the account with the highest sequence number fails, the Database Mail pauses attempts to send the mail for the amount of time configured in the Database Mail **AccountRetryDelay** parameter, then starts the process of attempting to send the mail again, starting with the lowest sequence number. Use the Database Mail **AccountRetryAttempts** parameter, to configure the number of times that the external mail process attempts to send the e-mail message using each account in the specified profile. You can configure the **AccountRetryDelay** and **AccountRetryAttempts** parameters on the **Configure System Parameters** page of the Database Mail Configuration Wizard.  
 
@@ -249,9 +264,11 @@ The following steps use SQL Server Management Studio (SSMS). Download the latest
  **Move Down**  
  Decrease the priority of the selected account.  
 
-### <a id="ExistingProfile"></a> Manage Existing Profile page
+<a id="ExistingProfile"></a>
 
- Use this page to manage an existing Database Mail profile. A Database Mail profile is a collection of Database Mail accounts. Profiles improve reliability in cases where an e-mail server becomes unreachable, by providing alternative Database Mail accounts. At least one Database Mail account is required. For more information about setting the priority of Database Mail accounts in the profile, see [Create a Database Mail Profile](../../relational-databases/database-mail/create-a-database-mail-profile.md).  
+### Manage Existing Profile page
+
+ Use this page to manage an existing Database Mail profile. A Database Mail profile is a collection of Database Mail accounts. Profiles improve reliability in cases where an e-mail server becomes unreachable, by providing alternative Database Mail accounts. At least one Database Mail account is required. For more information about setting the priority of Database Mail accounts in the profile, see [Create a Database Mail Profile](create-a-database-mail-profile.md).  
 
  Use the **Move Up** and **Move Down** buttons to change the order in which Database Mail accounts are used. This order is determined by a value called the sequence number. **Move Up** lowers the sequence number and **Move Down** increases the sequence number. The sequence number determines the order in which Database Mail uses accounts in the profile. For a new e-mail message, Database Mail starts with the account that has the lowest sequence number. Should that account fail, Database Mail uses the account with the next highest sequence number, and so on, until either Database Mail sends the message successfully, or the account with the highest sequence number fails. If the account with the highest sequence number fails, the Database Mail pauses attempts to send the mail for the amount of time configured in the Database Mail **AccountRetryDelay** parameter, then starts the process of attempting to send the mail again, starting with the lowest sequence number. Use the Database Mail **AccountRetryAttempts** parameter, to configure the number of times that the external mail process attempts to send the e-mail message using each account in the specified profile. You can configure the **AccountRetryDelay** and **AccountRetryAttempts** parameters on the **Configure System Parameters** page of the Database Mail Configuration Wizard.  
 
@@ -288,7 +305,9 @@ The following steps use SQL Server Management Studio (SSMS). Download the latest
  **E-mail Address**  
  View the e-mail address of the account.  
 
-### <a id="AddAccount"></a> Add Account to Profile Page
+<a id="AddAccount"></a>
+
+### Add Account to Profile page
 
  Use this page to choose the account to add to the profile. Either choose an existing account from the **Account name** box, or select **New Account**.  
 
@@ -304,7 +323,9 @@ The following steps use SQL Server Management Studio (SSMS). Download the latest
  **New Account**  
  Create a new account.  
 
-### <a id="AccountsProfiles"></a> Manage Accounts and Profiles Page
+<a id="AccountsProfiles"></a>
+
+### Manage Accounts and Profiles page
 
  Use this page to choose a task for managing a profile or account.  
 
@@ -320,7 +341,9 @@ The following steps use SQL Server Management Studio (SSMS). Download the latest
  **View, change or delete an existing profile. You can also manage accounts associated with the profile.**  
  Update or delete an existing profile. This option also allows you to manage accounts associated with the profile.  
 
-### <a id="ProfileSecurityPublic"></a> Manage profile security, public tab
+<a id="ProfileSecurityPublic"></a>
+
+### Manage profile security, public tab
 
  Use this page to configure a public profile.  
 
@@ -343,7 +366,9 @@ The following steps use SQL Server Management Studio (SSMS). Download the latest
  **Show only existing public profiles**  
  Select this option to show only public profiles in the specified database.  
 
-### <a id="ProfileSecurityPrivate"></a> Manage profile security, private tab
+<a id="ProfileSecurityPrivate"></a>
+
+### Manage profile security, private tab
 
  Use this page to configure a private profile.  
 
@@ -366,7 +391,9 @@ The following steps use SQL Server Management Studio (SSMS). Download the latest
  **Show only existing private profiles for this user**  
  Select this option to display only profiles that the specified user or role already has access to.  
 
-### <a id="SystemParameters"></a> Configure System Parameters
+<a id="SystemParameters"></a>
+
+### Configure System Parameters
 
  Use this page to specify Database Mail system parameters. View the system parameters and the current value of each parameter. Select a parameter to view a short description in the information pane.  
 
@@ -399,11 +426,15 @@ The following steps use SQL Server Management Studio (SSMS). Download the latest
  **Reset All**  
  Select this option to reset the values on the page to the default values.  
 
-### <a id="CompleteWizard"></a> Complete the Wizard Page
+<a id="CompleteWizard"></a>
+
+### Complete the Wizard page
 
  Use this page to review the actions that **Database Mail Configuration Wizard** performs. No changes are made until you finish the wizard.  
 
-### <a id="TestEmail"></a> Send Test E-Mail Page
+<a id="TestEmail"></a>
+
+### Send Test E-Mail page
 
  For a quick tutorial to sending a test email, see [Send a test email with database mail](database-mail-sending-test-email.md).
 
@@ -429,9 +460,11 @@ The following steps use SQL Server Management Studio (SSMS). Download the latest
 
  **Troubleshoot**
 
- Selecting this button brings you to this document, [Configure Database Mail](configure-database-mail.md).
+ Selecting this button brings you to this document, [Configure database mail](configure-database-mail.md).
 
-## <a id="Template"></a> Use SQL Server Management Studio templates to generate T-SQL
+<a id="Template"></a>
+
+## Use SQL Server Management Studio templates to generate T-SQL
 
  **To create a Database Mail configuration T-SQL script**  
 
@@ -447,7 +480,7 @@ The following steps use SQL Server Management Studio (SSMS). Download the latest
 
 1. Execute the script to create the configuration.  
 
-1. The script doesn't grant any database users access to the profile. Therefore, by default, the profile can only be used by members of the **sysadmin** fixed security role. For more information about granting access to profiles, see [sysmail_add_principalprofile_sp (Transact-SQL)](../../relational-databases/system-stored-procedures/sysmail-add-principalprofile-sp-transact-sql.md)  
+1. The script doesn't grant any database users access to the profile. Therefore, by default, the profile can only be used by members of the **sysadmin** fixed security role. For more information about granting access to profiles, see [sysmail_add_principalprofile_sp (Transact-SQL)](../system-stored-procedures/sysmail-add-principalprofile-sp-transact-sql.md)  
 
 ## Related content
 

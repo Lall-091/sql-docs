@@ -1,8 +1,8 @@
 ---
 title: "Assess Db2 schemas for conversion (Db2ToSQL)"
 description: Determine how complex a migration is going to be, and how much time the migration will take (Db2ToSQL).
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

@@ -126,7 +126,7 @@ For a date or time data type *expression*, *style* can have one of the values sh
 
 <sup>6</sup> For a milliseconds (`mmm`) value of 0, the millisecond decimal fraction value won't display. For example, the value `2022-11-07T18:26:20.000` displays as `2022-11-07T18:26:20`.
 
-<sup>7</sup> In this style, `mon` represents a multi-token Hijri unicode representation of the full month name. This value doesn't render correctly on a default US installation of SSMS.
+<sup>7</sup> In this style, `mon` represents a multi-token Hijri Unicode representation of the full month name. This value doesn't render correctly on a default US installation of SSMS.
 
 <sup>8</sup> Only supported when casting from character data to **datetime** or **smalldatetime**. When casting character data representing only date or only time components to the **datetime** or **smalldatetime** data types, the unspecified time component is set to `00:00:00.000`, and the unspecified date component is set to `1900-01-01`.
 

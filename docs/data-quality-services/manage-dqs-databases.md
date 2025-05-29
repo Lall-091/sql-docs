@@ -12,6 +12,8 @@ ms.topic: conceptual
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sqlserver.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   This section provides information about database management activities that can be performed on the DQS databases such as backup/restore or detach/attach.  
   
 ##  <a name="BackupRestore"></a> Backup and Restore the DQS Databases  

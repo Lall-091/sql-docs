@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: dfurman
-ms.date: 02/17/2025
+ms.date: 04/15/2025
 ms.service: sql
 ms.topic: include
 ---
@@ -26,7 +26,8 @@ CREATE WORKLOAD GROUP group_name
       [ [ , ] REQUEST_MAX_CPU_TIME_SEC = value ]
       [ [ , ] REQUEST_MEMORY_GRANT_TIMEOUT_SEC = value ]
       [ [ , ] MAX_DOP = value ]
-      [ [ , ] GROUP_MAX_REQUESTS = value ] )
+      [ [ , ] GROUP_MAX_REQUESTS = value ]
+      [ [ , ] GROUP_MAX_TEMPDB_DATA_MB = value ] )
 ]
 [ USING {
     [ pool_name | [default] ]
@@ -95,6 +96,14 @@ For more information, see [MAXDOP](#maxdop).
 #### GROUP_MAX_REQUESTS = *value*
 
 Specifies the maximum number of simultaneous requests that are allowed to execute in the workload group. *value* must be 0 or a positive integer. The default setting for *value* is 0, and allows unlimited requests. When the maximum concurrent requests are reached, a session in that group can be created, but is placed in a wait state until the number of concurrent requests drops below the value specified.
+
+#### GROUP_MAX_TEMPDB_DATA_MB = *value*
+
+Specifies the maximum amount of space that a workload group can consume in the `tempdb` data files, in megabytes. *value* must be 0 or a positive number. Fractional values are allowed. When the value is 0, `tempdb` space allocations by sessions in the workload group are not allowed. When a value isn't set, resource governor doesn't limit `tempdb` space consumption by the workload group.
+
+The limit is for the total space consumed in `tempdb` by all sessions in a workload group.
+
+When a request running in a workload group attempts to increase `tempdb` data space consumption by the workload group above the limit set by `GROUP_MAX_TEMPDB_DATA_MB`, resource governor aborts the request with error 1138. For more information, see [Tempdb space resource governance](../../relational-databases/resource-governor/tempdb-space-resource-governance.md).
 
 #### USING { *pool_name* | [default] }
 

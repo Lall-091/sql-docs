@@ -25,7 +25,7 @@ Extension versions are cumulative. Higher extension versions include all of the 
 
 ## April 30, 2025
 
-**Extension version**: `1.1.3035.278`
+**Extension version**: `1.1.3042.282`
 
 This release:
 

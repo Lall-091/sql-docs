@@ -1,9 +1,9 @@
 ---
-title: User-defined functions
+title: User-Defined Functions
 description: User-defined functions are routines that accept parameters, perform an action, and return the result as a single scalar value or a result set.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/29/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.topic: conceptual
 helpviewer_keywords:
@@ -119,7 +119,9 @@ The following nondeterministic built-in functions **cannot** be used in [!INCLUD
 
 For a list of deterministic and nondeterministic built-in system functions, see [Deterministic and nondeterministic functions](deterministic-and-nondeterministic-functions.md).
 
-## <a id="SchemaBound"></a> Schema-bound functions
+<a id="SchemaBound"></a>
+
+## Schema-bound functions
 
 `CREATE FUNCTION` supports a `SCHEMABINDING` clause that binds the function to the schema of any objects it references, such as tables, views, and other user-defined functions. An attempt to alter or drop any object referenced by a schema-bound function fails.
 
@@ -133,7 +135,9 @@ These conditions must be met before you can specify `SCHEMABINDING` in [CREATE F
 
 You can use `ALTER FUNCTION` to remove the schema binding. The `ALTER FUNCTION` statement should redefine the function without specifying `WITH SCHEMABINDING`.
 
-## <a id="Parameters"></a> Specify parameters
+<a id="Parameters"></a>
+
+## Specify parameters
 
 A user-defined function takes zero or more input parameters and returns either a scalar value or a table. A function can have a maximum of 1,024 input parameters. When a parameter of the function has a default value, the keyword `DEFAULT` must be specified when calling the function to get the default value. This behavior is different from parameters with default values in user-defined stored procedures in which omitting the parameter also implies the default value. User-defined functions don't support output parameters.
 

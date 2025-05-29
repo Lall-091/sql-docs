@@ -4,7 +4,7 @@ description: "Known issues and errors with change data capture (CDC) in SQL Serv
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: mathoma, randolphwest
-ms.date: 04/14/2025
+ms.date: 05/20/2025
 ms.service: sql
 ms.topic: troubleshooting
 helpviewer_keywords:
@@ -100,14 +100,11 @@ The following are examples of ALTER COLUMN data type changes that aren't support
 
 Changing the data type of a column can result in the following errors: 
 - [Error 241](#error-241---conversion-failed-when-converting-date-andor-time-from-character-string) - Conversion failed when converting date and/or time from character string.
-- [Error 245](#error-245---conversion-failed-when-converting-the-value-from-string-to-int) - Conversion failed when converting the value.
-- [Error 8115](#error-8115---arithmetic-overflow-error-converting-data-type-from-bigint-to-int) - Arithmetic overflow error converting data type.
- 
-## DDL changes to source tables
+- [Error 245](#error-245---conversion-failed-when-converting-the-value-from-string-to-int) - Conversion failed when converting the value. 
 
-Changing the size of columns of a CDC-enabled table using DDL statements can cause issues with the subsequent CDC capture process, resulting in **error 2628** or **error 8115**. Remember that data in CDC change tables are retained based on user-configured settings. So, before making any changes to column size, you must assess whether the alteration is compatible with the existing data in CDC change tables.
+Changing the size of columns of a CDC-enabled table using DDL statements can cause issues with the subsequent CDC capture process, resulting in [Error 2628](#error-2628---string-or-binary-data-would-be-truncated-in-table) or [Error 8115](#error-8115---arithmetic-overflow-error-converting-data-type-from-bigint-to-int) . Remember that data in CDC change tables are retained based on user-configured settings. So, before making any changes to column size, you must assess whether the alteration is compatible with the existing data in CDC change tables.
 
-If the `sys.dm_cdc_errors` indicate that scans are failing due to the **error 2628** or **error 8115** for change tables, you should first consume the change data in the affected change tables. After that, you need to [disable and then reenable CDC](enable-and-disable-change-data-capture-sql-server.md) on the table to resolve the problem effectively.
+If the `sys.dm_cdc_errors` indicate that scans are failing due to the [Error 2628](#error-2628---string-or-binary-data-would-be-truncated-in-table) or [Error 8115](#error-8115---arithmetic-overflow-error-converting-data-type-from-bigint-to-int)  for change tables, you should first consume the change data in the affected change tables. After that, you need to [disable and then reenable CDC](enable-and-disable-change-data-capture-sql-server.md) on the table to resolve the problem effectively.
 
 ## Enabling CDC fails when 'CREATE OBJECT' triggers exist
 
@@ -198,13 +195,13 @@ These are the different troubleshooting categories included in this section:
 
 #### Error 241 - Conversion failed when converting date and/or time from character string
 
-* **Cause**: This error occurs when the [ALTER COLUMN](../../t-sql/statements/alter-table-transact-sql.md#alter-column) is performed on a **DATE** data type and the table has CDC enabled. For example, if a table has an **nvarchar** column and you change the data type to **DATE** (ALTER TABLE table_name ALTER COLUMN [column_name] DATE NULL), you might see this error in the [sys.dm_cdc_errors](../system-dynamic-management-views/change-data-capture-sys-dm-cdc-errors.md) table due to an unsupported data conversion, even though the ALTER command succeeds. 
+* **Cause**: This error occurs when the [ALTER COLUMN](../../t-sql/statements/alter-table-transact-sql.md#alter-column) is performed on a **DATE** data type and the table has CDC enabled. For example, if a table has an **nvarchar** column and you change the data type to **DATE** (ALTER TABLE table_name ALTER COLUMN [column_name] DATE NULL), you might see this error in the [sys.dm_cdc_errors](../system-dynamic-management-views/change-data-capture-sys-dm-cdc-errors.md) table due to an unsupported data conversion in the change table, even though the ALTER command on the source table succeeds. 
 
 * **Recommendation**: To resolve this issue, disable and re-enable CDC for your table after altering the column. Alternatively, disable CDC before altering the column, and then reenable CDC after the ALTER COLUMN change. 
 
 #### Error 245 - Conversion failed when converting the value from string to int
 
-* **Cause**: This error occurs when the [ALTER COLUMN](../../t-sql/statements/alter-table-transact-sql.md#alter-column) command is issued to change the data type of a column when table has CDC enabled. For example, if a table has an **nvarchar** column and you change the data type to **INT** (ALTER TABLE table_name ALTER COLUMN [column_name] INT NULL), you might see this error in the [sys.dm_cdc_errors](../system-dynamic-management-views/change-data-capture-sys-dm-cdc-errors.md) table due to an unsupported data conversion, even though the ALTER command succeeds. 
+* **Cause**: This error occurs when the [ALTER COLUMN](../../t-sql/statements/alter-table-transact-sql.md#alter-column) command is issued to change the data type of a column when table has CDC enabled. For example, if a table has an **nvarchar** column and you change the data type to **INT** (ALTER TABLE table_name ALTER COLUMN [column_name] INT NULL), you might see this error in the [sys.dm_cdc_errors](../system-dynamic-management-views/change-data-capture-sys-dm-cdc-errors.md) table due to an unsupported data conversion in the change table, even though the ALTER command on the source table succeeds.
 
 * **Recommendation**: To resolve this issue, disable and re-enable CDC for your table after altering the column. Alternatively, disable CDC before altering the column, and then reenable CDC after the ALTER COLUMN change. 
 

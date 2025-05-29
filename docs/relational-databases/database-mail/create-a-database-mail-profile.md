@@ -3,82 +3,97 @@ title: "Create a Database Mail Profile"
 description: "Create a Database Mail Profile"
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.date: 02/23/2023
+ms.date: 05/16/2025
 ms.service: sql
 ms.topic: how-to
 helpviewer_keywords:
   - "Database Mail [SQL Server], public profiles"
   - "profiles [SQL Server], Database Mail"
   - "public profiles [Database Mail]"
+monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017"
 ---
 # Create a Database Mail Profile
 
-[!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
-  Use either the **Database Mail Configuration Wizard** or [!INCLUDE[tsql](../../includes/tsql-md.md)] to create Database Mail public and private profiles. For more information about mail profiles, see [Database Mail Profile](database-mail-configuration-objects.md).
+[!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
-## <a id="BeforeYouBegin"></a> Before You Begin
+  Use either the **Database Mail Configuration Wizard** or [!INCLUDE[tsql](../../includes/tsql-md.md)] to create Database Mail public and private profiles. For more information about mail profiles, see [Database Mail Configuration Objects](database-mail-configuration-objects.md).
 
-### <a id="Prerequisites"></a> Prerequisites
+> [!TIP]
+> Creating a database mail profile is not necessary in [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)], which is already configured to look for a profile called `AzureManagedInstance_dbmail_profile`. For more information and a sample script, see [Azure SQL Managed Instance SQL Agent job notifications](/azure/azure-sql/managed-instance/job-automation-managed-instance#sql-agent-job-notifications).
 
- Create one or more Database Mail accounts for the profile. For more information about creating Database Mail accounts, see [Create a Database Mail Account](../../relational-databases/database-mail/create-a-database-mail-account.md).  
+<a id="Prerequisites"></a>
 
-### <a id="Security"></a> Security
+## Prerequisites
+
+ Create one or more Database Mail accounts for the profile. For more information about creating Database Mail accounts, see [Create a Database Mail Account](create-a-database-mail-account.md).  
+
+<a id="Security"></a>
+
+## Security
 
  A public profile allows any user with access to the `msdb` database to send e-mail using that profile. A private profile can be used by a user or by a role. Granting roles access to profiles creates a more easily maintained architecture. To send mail you must be a member of the **DatabaseMailUserRole** in the `msdb` database, and have access to at least one Database Mail profile.  
 
-#### <a id="Permissions"></a> Permissions
+<a id="Permissions"></a>
+
+### Permissions
 
  The user creating the profiles accounts and executing stored procedures should be a member of the sysadmin fixed server role.  
 
-## <a id="SSMSProcedure"></a> Use Database Mail Configuration Wizard
+<a id="SSMSProcedure"></a>
 
- **To Create a Database Mail profile**  
+## Use Database Mail Configuration Wizard to create a Database Mail profile
 
--   In Object Explorer, connect to the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance you want to configure Database Mail on, and expand the server tree.  
+The following steps use SQL Server Management Studio (SSMS). Download the latest version of SSMS at [aka.ms/ssms](https://aka.ms/ssms).
 
--   Expand the **Management** node  
+1. In **Object Explorer**, connect to the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance where you want to configure Database Mail, and expand the server tree.
 
--   Double-click Database Mail to open the Database Mail Configuration Wizard.  
+1. Expand the **Management** node  
 
--   On the **Select Configuration Task** page, select **Manage Database Mail accounts and profiles** option and select **Next**.  
+1. Double-click **Database Mail** to open the Database Mail Configuration Wizard.  
 
--   On the **Manage Profiles and Accounts** page, select **Create a new profile** option, and select **Next**.  
+1. On the **Select Configuration Task** page, select **Manage Database Mail accounts and profiles** option and select **Next**.  
 
--   On the **New Profile** page, specify the Profile name, Description and add accounts to be included in the profile, and select **Next**.  
+1. On the **Manage Profiles and Accounts** page, select **Create a new profile** option, and select **Next**.  
 
--   On the **Complete the Wizard** page, review the actions to be performed and select **Finish** to complete creating the new profile.  
+1. On the **New Profile** page, specify the Profile name, Description and add accounts to be included in the profile, and select **Next**.  
 
--   **To configure a Database Mail private profile:**  
+1. On the **Complete the Wizard** page, review the actions to be performed and select **Finish** to complete creating the new profile.
 
-    -   Open the Database Mail Configuration Wizard.  
+### To configure a Database Mail private profile
 
-    -   On the **Select Configuration Task** page, select **Manage Database Mail accounts and profiles** option, and select **Next**.  
+1. Open the Database Mail Configuration Wizard.  
 
-    -   On the **Manage Profiles and Accounts** page, select **Manage profile security** option and select **Next**.  
+1. On the **Select Configuration Task** page, select **Manage Database Mail accounts and profiles** option, and select **Next**.  
 
-    -   In the **Private Profiles** tab, select the check box for the profile you would like to configure and select **Next**.  
+1. On the **Manage Profiles and Accounts** page, select **Manage profile security** option and select **Next**.  
 
-    -   On the **Complete the Wizard** page, review the actions to be performed and select **Finish** to complete configuring the profile.  
+1. In the **Private Profiles** tab, select the check box for the profile you would like to configure and select **Next**.  
 
--   **To configure a Database Mail public profile:**  
+1. On the **Complete the Wizard** page, review the actions to be performed and select **Finish** to complete configuring the profile.  
 
-    -   Open the Database Mail Configuration Wizard.  
+### To configure a Database Mail public profile
 
-    -   On the **Select Configuration Task** page, select **Manage Database Mail accounts and profiles** option, and select **Next**.  
+1. Open the Database Mail Configuration Wizard.  
 
-    -   On the **Manage Profiles and Accounts** page, select **Manage profile security** option and select **Next**.  
+1. On the **Select Configuration Task** page, select **Manage Database Mail accounts and profiles** option, and select **Next**.  
 
-    -   In the **Public Profiles** tab, select the check box for the profile you would like to configure and select **Next**.  
+1. On the **Manage Profiles and Accounts** page, select **Manage profile security** option and select **Next**.  
 
-    -   On the **Complete the Wizard** page, review the actions to be performed and select **Finish** to complete configuring the profile.  
+1. In the **Public Profiles** tab, select the check box for the profile you would like to configure and select **Next**.  
 
-## Use Transact-SQL
+1. On the **Complete the Wizard** page, review the actions to be performed and select **Finish** to complete configuring the profile.  
 
-### <a id="PrivateProfile"></a> Create a database mail private profile
+<a id="PrivateProfile"></a> <a id="use-transact-sql"></a>
 
--   Connect to the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance with SQL Server Management Studio (SSMS) or Azure Data Studio. Open a new query window.
+## Use Transact-SQL to create a database mail profile
 
--   To create a new profile, run the system stored procedure [sysmail_add_profile_sp (Transact-SQL)](../../relational-databases/system-stored-procedures/sysmail-add-profile-sp-transact-sql.md) as follows:  
+To run T-SQL commands on your SQL Server instance, use [SQL Server Management Studio (SSMS)](https://aka.ms/ssms), the [MSSQL extension for Visual Studio Code](../../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md), [sqlcmd](../../tools/sqlcmd/sqlcmd-utility.md), or your favorite T-SQL querying tool.
+
+### Create a private database mail profile with T-SQL
+
+1. Connect to the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance. Open a new query window.
+
+1. To create a new profile, run the system stored procedure [sysmail_add_profile_sp](../system-stored-procedures/sysmail-add-profile-sp-transact-sql.md):
 
     ```sql
     EXECUTE msdb.dbo.sysmail_add_profile_sp
@@ -86,9 +101,9 @@ helpviewer_keywords:
     , @description = 'Description';
     ```
 
-    In the previous script, *@profile_name* is the name of the profile, and *@description* is the description of the profile. This parameter is optional.  
+    In the previous script, `@profile_name` is the name of the profile, and `@description` is an optional friendly description of the profile. 
 
--   For each account, run the stored procedure [sysmail_add_profileaccount_sp (Transact-SQL)](../../relational-databases/system-stored-procedures/sysmail-add-profileaccount-sp-transact-sql.md) as follows:  
+1. For each account, run the system stored procedure [sysmail_add_profileaccount_sp](../system-stored-procedures/sysmail-add-profileaccount-sp-transact-sql.md):  
 
     ```sql
     EXECUTE msdb.dbo.sysmail_add_profileaccount_sp
@@ -96,19 +111,19 @@ helpviewer_keywords:
     , @account_name = 'Name of the account'  
     , @sequence_number = 'sequence number of the account within the profile.';
     ```
-    
-    In the previous sample script, *@profile_name* is the name of the profile, and *@account_name* is the name of the account to add to the profile, *@sequence_number* determines the order in which the accounts are used in the profile.  
 
--   For each database role or user that will send mail using this profile, grant access to the profile. To do this, run the stored procedure [sysmail_add_principalprofile_sp (Transact-SQL)](../../relational-databases/system-stored-procedures/sysmail-add-principalprofile-sp-transact-sql.md) as follows:  
+    In the previous sample script, `@profile_name` is the name of the profile, and `@account_name` is the name of the account to add to the profile, `@sequence_number` determines the order in which the accounts are used in the profile.  
+
+1. For each database role or user that will send mail using this profile, grant access to the profile. To do this, run the system stored procedure [sysmail_add_principalprofile_sp](../system-stored-procedures/sysmail-add-principalprofile-sp-transact-sql.md):  
 
     ```sql
-    EXECUTE msdb.sysmail_add_principalprofile_sp
+    EXECUTE msdb.dbo.sysmail_add_principalprofile_sp
      @profile_name = 'Name of the profile'
     , @principal_name = 'Name of the database user or role'  
     , @is_default = 'Default profile enabled';
     ```  
 
-    In the previous sample script,  *@profile_name* is the name of the profile, *@principal_name* is the name of the database user or role, and *@is_default* determines whether this profile is the default for the database user or role.  
+    In the previous sample script, `@profile_name` is the name of the profile, `@principal_name` is the name of the database user or role, and `@is_default` determines whether this profile is the default for the database user or role.  
 
  The following example creates a Database Mail account, creates a Database Mail private profile, then adds the account to the profile and grants access to the profile to the **DBMailUsers** database role in the `msdb` database.  
 
@@ -121,18 +136,18 @@ EXECUTE msdb.dbo.sysmail_add_account_sp
     @replyto_address = 'danw@Adventure-Works.com',  
     @display_name = 'AdventureWorks Automated Mailer',  
     @mailserver_name = 'smtp.Adventure-Works.com' ;  
-  
+
 -- Create a Database Mail profile  
 EXECUTE msdb.dbo.sysmail_add_profile_sp  
     @profile_name = 'AdventureWorks Administrator Profile',  
     @description = 'Profile used for administrative mail.' ;  
-  
+
 -- Add the account to the profile  
 EXECUTE msdb.dbo.sysmail_add_profileaccount_sp  
     @profile_name = 'AdventureWorks Administrator Profile',  
     @account_name = 'AdventureWorks Administrator',  
     @sequence_number =1 ;  
-  
+
 -- Grant access to the profile to the DBMailUsers role  
 EXECUTE msdb.dbo.sysmail_add_principalprofile_sp  
     @profile_name = 'AdventureWorks Administrator Profile',  
@@ -140,11 +155,13 @@ EXECUTE msdb.dbo.sysmail_add_principalprofile_sp
     @is_default = 1 ;  
 ```  
 
-### <a id="PublicProfile"></a> Create a database mail public profile
+<a id="PublicProfile"></a>
 
--   Connect to the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance.  
+### Create a database mail public profile with T-SQL
 
--   To create a new profile, run the system stored procedure [sysmail_add_profile_sp (Transact-SQL)](../../relational-databases/system-stored-procedures/sysmail-add-profile-sp-transact-sql.md) as follows:  
+1. Connect to the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance. Open a new query window. 
+
+1. To create a new profile, run the system stored procedure [sysmail_add_profile_sp (Transact-SQL)](../system-stored-procedures/sysmail-add-profile-sp-transact-sql.md):
 
     ```sql
     EXECUTE msdb.dbo.sysmail_add_profile_sp
@@ -152,9 +169,9 @@ EXECUTE msdb.dbo.sysmail_add_principalprofile_sp
     , @description = 'Description';
     ```
 
-    In the previous script, *@profile_name* is the name of the profile, and *@description* is the description of the profile. This parameter is optional.  
+    In the previous script, `@profile_name` is the name of the profile, and `@description` is an optional description of the profile.
 
--   For each account, run the stored procedure [sysmail_add_profileaccount_sp (Transact-SQL)](../../relational-databases/system-stored-procedures/sysmail-add-profileaccount-sp-transact-sql.md) as follows:  
+1. For each account, run the stored procedure [sysmail_add_profileaccount_sp (Transact-SQL)](../system-stored-procedures/sysmail-add-profileaccount-sp-transact-sql.md):
 
     ```sql
     EXECUTE msdb.dbo.sysmail_add_profileaccount_sp
@@ -163,20 +180,20 @@ EXECUTE msdb.dbo.sysmail_add_principalprofile_sp
     , @sequence_number* = 'sequence number of the account within the profile.'  
     ```
 
-    In the previous sample script, *@profile_name* is the name of the profile, and *@account_name* is the name of the account to add to the profile, *@sequence_number* determines the order in which the accounts are used in the profile.  
+    In the previous sample script, `@profile_name` is the name of the profile, and `@account_name` is the name of the account to add to the profile, `@sequence_number` determines the order in which the accounts are used in the profile.  
 
--   To grant public access, run the stored procedure [sysmail_add_principalprofile_sp (Transact-SQL)](../../relational-databases/system-stored-procedures/sysmail-add-principalprofile-sp-transact-sql.md) as follows:  
+1. To grant public access, run the stored procedure [sysmail_add_principalprofile_sp (Transact-SQL)](../system-stored-procedures/sysmail-add-principalprofile-sp-transact-sql.md):
 
-    ```sql 
-    EXECUTE msdb.sysmail_add_principalprofile_sp
+    ```sql
+    EXECUTE msdb.dbo.sysmail_add_principalprofile_sp
       @profile_name = 'Name of the profile' 
     , @principal_name = 'public or 0'  
     , @is_default = 'Default Profile enabled';
     ```
 
-    In the previous sample script, *@profile_name* is the name of the profile, and *@principal_name* to indicate this is a public profile, *@is_default* determines whether this profile is the default for the database user or role.  
+    In the previous sample script, `@profile_name` is the name of the profile, and `@principal_name` to indicate this is a public profile, `@is_default` determines whether this profile is the default for the database user or role.  
 
-The following example creates a Database Mail account, creates a Database Mail private profile, then adds the account to the profile and grants public access to the profile.  
+The following example creates a Database Mail account, creates a Database Mail private profile, then adds the account to the profile and grants public access to the profile.
 
 ```sql
 -- Create a Database Mail account  
@@ -187,7 +204,7 @@ EXECUTE msdb.dbo.sysmail_add_account_sp
     @replyto_address = 'danw@Adventure-Works.com',  
     @display_name = 'AdventureWorks Automated Mailer',  
     @mailserver_name = 'smtp.Adventure-Works.com' ;  
-  
+
 -- Create a Database Mail profile  
   EXECUTE msdb.dbo.sysmail_add_profile_sp  
     @profile_name = 'AdventureWorks Public Profile',  
@@ -198,15 +215,15 @@ EXECUTE msdb.dbo.sysmail_add_profileaccount_sp
     @profile_name = 'AdventureWorks Public Profile',  
     @account_name = 'AdventureWorks Public Account',  
     @sequence_number =1 ;  
-  
+
 -- Grant access to the profile to all users in the msdb database  
 EXECUTE msdb.dbo.sysmail_add_principalprofile_sp  
     @profile_name = 'AdventureWorks Public Profile',  
     @principal_name = 'public',  
     @is_default = 1 ;  
-```  
+```
 
-## Next steps
+## Related content
 
 - [Configure SQL Server Agent](../../ssms/agent/configure-sql-server-agent.md)
 - [Configure SQL Server Agent mail to use Database Mail](configure-sql-server-agent-mail-to-use-database-mail.md)

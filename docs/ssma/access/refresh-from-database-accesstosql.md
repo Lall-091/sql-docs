@@ -1,8 +1,8 @@
 ---
 title: "Refresh from Database (AccessToSQL)"
 description: "Refresh from Database (AccessToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: ssma

@@ -1,8 +1,8 @@
 ---
 title: "Converting Oracle Schemas (OracleToSQL)"
 description: Learn how to convert Oracle database objects to SQL Server database objects with SSMA for Oracle, after you set options and connect to Oracle and SQL Server.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: ssma

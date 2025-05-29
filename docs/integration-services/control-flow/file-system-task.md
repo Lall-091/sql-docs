@@ -82,7 +82,7 @@ helpviewer_keywords:
 >  To override the variables you selected for the **SourceConnection** and **DestinationConnection** properties, enter an expression for the **Source** and **Destination** properties. You enter expressions on the **Expressions** page of the **File System Task Editor**. For example, to set the path of the files that the task uses as a destination, you may want to use variable A under certain conditions and use variable B under other conditions.  
   
 > [!NOTE]  
->  The File System task operates on a single file or directory. Therefore, this task does not support the use of wildcard characters to perform the same operation on multiple files or directories. To have the File System task repeat an operation on multiple files or directories, put the File System task in a Foreach Loop container. For more information, see [File System Task](../../integration-services/control-flow/file-system-task.md).  
+>  The File System task operates on a single file or directory. Therefore, this task does not support the use of wildcard characters to perform the same operation on multiple files or directories. To have the File System task repeat an operation on multiple files or directories, put the File System task in a Foreach Loop container. For more information, see [File System Task](#file-system-task).  
   
  You can use expressions to use different variables for the  
   

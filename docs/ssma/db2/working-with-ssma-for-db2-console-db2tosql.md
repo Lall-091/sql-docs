@@ -1,8 +1,8 @@
 ---
 title: "Work with SSMA for Db2 console (Db2ToSQL)"
 description: Learn about working with SSMA for Db2 Console (Db2ToSQL)
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

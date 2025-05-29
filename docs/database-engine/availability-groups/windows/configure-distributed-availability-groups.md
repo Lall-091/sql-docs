@@ -141,7 +141,8 @@ GO
 ```
 
 > [!NOTE]  
-> The secondary availability group must use the same database mirroring endpoint (in this example port 5022). Otherwise, replication will stop after a local failover.
+> - The secondary availability group must use the same database mirroring endpoint (in this example port 5022). Otherwise, replication will stop after a local failover.
+> - The underlying availability groups should be in the same availability mode - either both availability groups should be in synchronous commit mode or both should be in asynchronous commit mode. If you're not sure which to use, then set both to asynchronous commit mode until you're ready to fail over. 
 
 ### Join the secondary replicas to the secondary availability group
 

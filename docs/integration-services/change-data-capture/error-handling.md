@@ -14,7 +14,7 @@ ms.topic: conceptual
 
   An Oracle CDC Instance mines changes from a single Oracle source database (an Oracle RAC cluster is considered a single database) and writes the committed changes to change tables in a CDC database in the target [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance.  
   
- A CDC Instance maintains its state in a system table called **cdc.xdbcdc_state**. This table can be queried any time to find the state of the CDC Instance. For more information about the cdc.xdbcdc_state table, see [cdc.xdbcdc_state](../../integration-services/change-data-capture/the-oracle-cdc-databases.md#BKMK_cdcxdbcdc_state).  
+ A CDC Instance maintains its state in a system table called **cdc.xdbcdc_state**. This table can be queried any time to find the state of the CDC Instance. For more information about the cdc.xdbcdc_state table, see [cdc.xdbcdc_state](../../integration-services/change-data-capture/the-oracle-cdc-databases.md#cdcxdbcdc_state).  
   
  The table below describes the CDC Instance states in the xdbcdc_state table.  
   

@@ -12,6 +12,8 @@ ms.topic: conceptual
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sqlserver.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   Find information that anyone-data steward, Data Quality Services administrator, or SQL Server administrator-requires to prepare and execute a data quality project.  
   
  ![Small File Folder Icon](/analysis-services/analysis-services/media/filefolder-small.png "Small File Folder Icon") **Designing and Implementing a Data Quality Solution**  

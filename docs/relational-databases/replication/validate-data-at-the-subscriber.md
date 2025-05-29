@@ -139,7 +139,7 @@ Transactional and merge replication allow you to validate that data at the Subsc
 5.  At the Publisher on the publication database, commit the transaction using [COMMIT TRANSACTION &#40;Transact-SQL&#41;](../../t-sql/language-elements/commit-transaction-transact-sql.md).    
 6.  (Optional) Repeat steps 1 through 5 for each article being validated.   
 7.  (Optional) Start the Distribution Agent if it is not already running. For more information, see [Synchronize a Pull Subscription](../../relational-databases/replication/synchronize-a-pull-subscription.md) and [Synchronize a Push Subscription](../../relational-databases/replication/synchronize-a-push-subscription.md).    
-8.  Check the agent output for the result of the validation. For more information, see [Validate Data at the Subscriber](../../relational-databases/replication/validate-data-at-the-subscriber.md).  
+8.  Check the agent output for the result of the validation. For more information, see [Validate Data at the Subscriber](#validate-replicated-data).  
 
 ## All push subscriptions to a transactional publication 
 
@@ -241,7 +241,7 @@ Transactional and merge replication allow you to validate that data at the Subsc
      This marks all subscriptions for validation.   
 2.  Start the merge agent for each subscription. For more information, see [Synchronize a Pull Subscription](../../relational-databases/replication/synchronize-a-pull-subscription.md) and [Synchronize a Push Subscription](../../relational-databases/replication/synchronize-a-push-subscription.md).  
   
-3.  Check the agent output for the result of the validation. For more information, see [Validate Data at the Subscriber](../../relational-databases/replication/validate-data-at-the-subscriber.md).  
+3.  Check the agent output for the result of the validation. For more information, see [Validate Data at the Subscriber](#validate-replicated-data).  
 
   
 ## Validate data using Merge Agent parameters  

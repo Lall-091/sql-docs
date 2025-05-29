@@ -5,7 +5,7 @@ description: Learn about point-in-time restore, which enables you to roll back a
 author: dnethi
 ms.author: dinethi
 ms.reviewer: wiassaf, mathoma, danil
-ms.date: 04/04/2025
+ms.date: 05/14/2025
 ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: how-to
@@ -139,7 +139,7 @@ To recover a database from a PITR backup by using the REST API:
 | API | Description |
 | --- | --- |
 | [Databases - Create Or Update](/rest/api/sql/databases/create-or-update#createmode) | Use `createMode=PointInTimeRestore` to restore a database. |
-| [Get Create or Update Database Status](/rest/api/sql/operations) | Returns the status during a restore operation. |
+| [Database Operations - List By Database](/rest/api/sql/database-operations/list-by-database) | Gets a list of operations performed on the database. |
 
 ---
 

@@ -304,7 +304,7 @@ Use the **Add Variable** dialog box to specify the properties of a new variable.
   
 7.  In the **Properties** window, update the read/write variable properties. Some properties are read/read only for user-defined variables.  
   
-     For more information about the properties, see [Integration Services &#40;SSIS&#41; Variables](../integration-services/integration-services-ssis-variables.md).  
+     For more information about the properties, see [Integration Services &#40;SSIS&#41; Variables](#integration-services-ssis-variables).  
   
 8.  To save the updated package, on the **File** menu, click **Save Selected Items**.  
 

@@ -1,9 +1,9 @@
 ---
-title: Configure the Windows Firewall to allow SQL Server access
+title: Configure the Windows Firewall to Allow SQL Server Access
 description: Learn how to configure the Windows Firewall to allow access to an instance of the SQL Server through the firewall.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 08/02/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: install
 ms.topic: how-to

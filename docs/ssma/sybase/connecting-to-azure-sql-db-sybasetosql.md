@@ -1,8 +1,8 @@
 ---
 title: "Connecting to Azure SQL Database (SybaseToSQL)"
 description: "Connecting to Azure SQL Database (SybaseToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "11/16/2020"
 ms.service: sql
 ms.subservice: ssma

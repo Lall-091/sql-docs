@@ -46,7 +46,7 @@ helpviewer_keywords:
  
 ### Using Transact-SQL 
 > [!NOTE]  
->  For a sample configuration procedure containing code examples of each these [!INCLUDE[tsql](../../../includes/tsql-md.md)] statements, see [Example: Configuring an Availability Group that Uses Windows Authentication](#ExampleConfigAGWinAuth).  
+>  For a sample configuration procedure containing code examples of each these [!INCLUDE[tsql](../../../includes/tsql-md.md)] statements, see [Example: Configuring an Availability Group that Uses Windows Authentication](#example-configuring-an-availability-group-that-uses-windows-authentication).  
   
 1.  Connect to the server instance that is to host the primary replica.  
   
@@ -54,11 +54,12 @@ helpviewer_keywords:
   
 3.  Join the new secondary replica to the availability group. For more information, see [Join a Secondary Replica to an Availability Group &#40;SQL Server&#41;](../../../database-engine/availability-groups/windows/join-a-secondary-replica-to-an-availability-group-sql-server.md).  
   
-4.  For each database in the availability group, create a secondary database by restoring recent backups of the primary database, using RESTORE WITH NORECOVERY. For more information, see [Example: Setting Up an Availability Group Using Windows Authentication (Transact-SQL)](../../../database-engine/availability-groups/windows/create-an-availability-group-transact-sql.md), starting with the step that restores the database backup.  
+4.  For each database in the availability group, create a secondary database by restoring recent backups of the primary database, using RESTORE WITH NORECOVERY. For more information, see [Example: Setting Up an Availability Group Using Windows Authentication (Transact-SQL)](#example-configuring-an-availability-group-that-uses-windows-authentication), starting with the step that restores the database backup.  
   
 5.  Join every new secondary database to the availability group. For more information, see [Join a Secondary Replica to an Availability Group &#40;SQL Server&#41;](../../../database-engine/availability-groups/windows/join-a-secondary-replica-to-an-availability-group-sql-server.md).  
   
-##  <a name="ExampleConfigAGWinAuth"></a> Example: Configuring an Availability Group that Uses Windows Authentication  
+## Example: Configuring an Availability Group that Uses Windows Authentication
+
  This example creates a sample [!INCLUDE[ssHADR](../../../includes/sshadr-md.md)] configuration procedure that uses [!INCLUDE[tsql](../../../includes/tsql-md.md)] to set up database mirroring endpoints that use Windows Authentication and to create and configure an availability group and its secondary databases.  
   
  This example contains the following sections:  
@@ -106,7 +107,7 @@ helpviewer_keywords:
         GO  
         ```  
   
- [&#91;TopOfExample&#93;](#ExampleConfigAGWinAuth)  
+ [&#91;TopOfExample&#93;](#example-configuring-an-availability-group-that-uses-windows-authentication)  
   
 ###  <a name="SampleProcedure"></a> Sample Configuration Procedure  
  In this sample configuration, the availability replica will be created on two stand-alone server instances whose service accounts run under different, but trusted, domains (`DOMAIN1` and `DOMAIN2`).  

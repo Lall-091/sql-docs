@@ -3,8 +3,8 @@ title: "sys.sp_MSchange_feed_ddl_event (Transact-SQL)"
 description: "The sys.sp_MSchange_feed_ddl_event internal system stored procedure handles data definition language events."
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: imotiwala
-ms.date: 09/24/2024
+ms.reviewer: imotiwala, ajayj
+ms.date: 05/01/2025
 ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,11 +19,11 @@ helpviewer_keywords:
   - "sp_MSchange_feed_ddl_event"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-ver16 || =azuresqldb-current || =fabric || =azure-sqldw-latest"
+monikerRange: ">=sql-server-ver16 || =azuresqldb-current || =azuresqldb-mi-current || =fabric || =azure-sqldw-latest"
 ---
 # sys.sp_MSchange_feed_ddl_event (Transact-SQL)
 
-[!INCLUDE [sqlserver2022-asdb-asa-fabricmirroredsqldb-fabricsqldb](../../includes/applies-to-version/sqlserver2022-asdb-asa-fabricmirroredsqldb-fabricsqldb.md)]
+[!INCLUDE [sqlserver2022-asdb-asdbmi-asa-fabricmirroredsqldb-fabricsqldb](../../includes/applies-to-version/sqlserver2022-asdb-asdbmi-asa-fabricmirroredsqldb-fabricsqldb.md)]
 
 Internal procedure that handles data definition language events.
 
@@ -32,9 +32,9 @@ Internal procedure that handles data definition language events.
 
 This system stored procedure is used for:
 
-- The Azure Synapse Link feature for SQL Server instances and Azure SQL Database. For more information, see [Manage Azure Synapse Link for SQL Server and Azure SQL Database](../../sql-server/synapse-link/synapse-link-sql-server-change-feed-manage.md).
-- The Fabric Mirrored Database feature for Azure SQL Database. For more information, see [Microsoft Fabric mirrored databases](/fabric/database/mirrored-database/overview).
-- SQL database in Microsoft Fabric. For more information, see [SQL database in Microsoft Fabric](/fabric/database/sql/overview).
+- [SQL database in Microsoft Fabric](/fabric/database/sql/overview)
+- [Microsoft Fabric mirrored databases](/fabric/database/mirrored-database/overview)
+- [Azure Synapse Link](../../sql-server/synapse-link/synapse-link-sql-server-change-feed-manage.md)
 
 ## Syntax
 

@@ -101,7 +101,6 @@ To fail over, you first have to switch the replication modes SQL Server instance
 
 Then, you can fail over and switch roles by using PowerShell. 
 
-
 ### Switch replication mode (Failover to SQL MI)
 
 Replication between SQL Server and SQL Managed Instance is asynchronous by default. If you're failing over _from SQL Server to Azure SQL Managed Instance_, before you fail over your database, switch the link to synchronous mode on SQL Server by using Transact-SQL (T-SQL). 
@@ -263,6 +262,9 @@ GO
 ```
 
 ---
+
+> [!IMPORTANT]
+> After executing a planned failover, the replication mode is set to asynchronous.
 
 ## View database after failover
 

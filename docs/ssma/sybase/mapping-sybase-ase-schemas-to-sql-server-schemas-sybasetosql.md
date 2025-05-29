@@ -1,8 +1,8 @@
 ---
 title: "Mapping Sybase ASE Schemas to SQL Server Schemas (SybaseToSQL)"
 description: "Mapping Sybase ASE Schemas to SQL Server Schemas (SybaseToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: ssma

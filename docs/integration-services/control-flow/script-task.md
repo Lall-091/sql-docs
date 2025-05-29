@@ -87,7 +87,7 @@ helpviewer_keywords:
 ## Script Task Editor (General Page)
   Use the **General** page of the **Script Task Editor** dialog box to name and describe the Script task.  
   
- To learn more about the Script task, see [Script Task](../../integration-services/control-flow/script-task.md) and [Configuring the Script Task in the Script Task Editor](../../integration-services/extending-packages-scripting/task/configuring-the-script-task-in-the-script-task-editor.md). To learn about programming the Script task, see [Extending the Package with the Script Task](../../integration-services/extending-packages-scripting/task/extending-the-package-with-the-script-task.md).  
+ To learn more about the Script task, see [Script Task](#script-task) and [Configuring the Script Task in the Script Task Editor](../../integration-services/extending-packages-scripting/task/configuring-the-script-task-in-the-script-task-editor.md). To learn about programming the Script task, see [Extending the Package with the Script Task](../../integration-services/extending-packages-scripting/task/extending-the-package-with-the-script-task.md).  
   
 ### Options  
  **Name**  
@@ -105,7 +105,7 @@ helpviewer_keywords:
 > [!NOTE]  
 >  In [!INCLUDE[ssISversion10](../../includes/ssisversion10-md.md)] and later versions, all scripts are precompiled. In earlier versions, you set a **PrecompileScriptIntoBinaryCode** property to specify that the script was precompiled.  
   
- To learn more about the Script task, see [Script Task](../../integration-services/control-flow/script-task.md) and [Configuring the Script Task in the Script Task Editor](../../integration-services/extending-packages-scripting/task/configuring-the-script-task-in-the-script-task-editor.md). To learn about programming the Script task, see [Extending the Package with the Script Task](../../integration-services/extending-packages-scripting/task/extending-the-package-with-the-script-task.md).  
+ To learn more about the Script task, see [Script Task](#script-task) and [Configuring the Script Task in the Script Task Editor](../../integration-services/extending-packages-scripting/task/configuring-the-script-task-in-the-script-task-editor.md). To learn about programming the Script task, see [Extending the Package with the Script Task](../../integration-services/extending-packages-scripting/task/extending-the-package-with-the-script-task.md).  
   
 ### Options  
  **ScriptLanguage**  

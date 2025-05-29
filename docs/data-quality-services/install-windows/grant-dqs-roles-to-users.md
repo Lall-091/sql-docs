@@ -12,6 +12,8 @@ ms.topic: how-to
 
 [!INCLUDE [SQL Server - Windows only](../../includes/applies-to-version/sql-windows-only.md)]
 
+[!INCLUDE [support-notice](../includes/support-notice.md)]
+
   This topic describes how to create SQL logins based on a Windows principal, and grant [!INCLUDE[ssDQSnoversion](../../includes/ssdqsnoversion-md.md)] (DQS) roles on the DQS_MAIN database.  
   
 ## Prerequisites  

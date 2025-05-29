@@ -170,7 +170,7 @@ sqlsrv_close( $conn );
 When executing a stored procedure that has output parameters, it is recommended that all other results are consumed before accessing the values of output parameters. For more information see [How to: Specify Parameter Direction Using the SQLSRV Driver](../../connect/php/how-to-specify-parameter-direction-using-the-sqlsrv-driver.md).  
   
 ## Example 2  
-The following example executes a batch query that retrieves product review information for a specified product ID, inserts a review for the product, then again retrieves the product review information for the specified product ID. The newly inserted product review will be included in the final result set of the batch query. The example uses [sqlsrv_next_result](../../connect/php/sqlsrv-next-result.md) to move from one result of the batch query to the next.  
+The following example executes a batch query that retrieves product review information for a specified product ID, inserts a review for the product, then again retrieves the product review information for the specified product ID. The newly inserted product review will be included in the final result set of the batch query. The example uses [sqlsrv_next_result](#sqlsrv_next_result) to move from one result of the batch query to the next.  
   
 > [!NOTE]  
 > The first (or only) result returned by a batch query or stored procedure is active without a call to **sqlsrv_next_result**.  

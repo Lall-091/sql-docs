@@ -64,7 +64,7 @@ helpviewer_keywords:
 ## Data Mining Query Task Editor (Mining Model Tab)
   Use the **Mining Model** tab of the **Data Mining Query Task** dialog box to specify the mining structure and mining model to use.  
   
- To learn about implementing data mining in packages, see [Data Mining Query Task](../../integration-services/control-flow/data-mining-query-task.md) and [Data Mining Solutions](/analysis-services/data-mining/data-mining-solutions).  
+ To learn about implementing data mining in packages, see [Data Mining Query Task](#data-mining-query-task) and [Data Mining Solutions](/analysis-services/data-mining/data-mining-solutions).  
   
 ### General Options  
  **Name**  
@@ -96,7 +96,7 @@ helpviewer_keywords:
 ## Data Mining Query Task Editor (Query Tab)
   Use the **Query** tab of the **Data Mining Query Task** dialog box to create prediction queries based on a mining model. In this dialog box you can also bind parameters and result sets to variables.  
   
- To learn about implementing data mining in packages, see [Data Mining Query Task](../../integration-services/control-flow/data-mining-query-task.md) and [Data Mining Solutions](/analysis-services/data-mining/data-mining-solutions).  
+ To learn about implementing data mining in packages, see [Data Mining Query Task](#data-mining-query-task) and [Data Mining Solutions](/analysis-services/data-mining/data-mining-solutions).  
   
 ### General Options  
  **Name**  
@@ -152,7 +152,7 @@ helpviewer_keywords:
 ## Data Mining Query Task Editor (Output Tab)
   Use the **Output** tab of the **Data Mining Query Task Editor** dialog box to specify the destination of the prediction query.  
   
- To learn about implementing data mining in packages, see [Data Mining Query Task](../../integration-services/control-flow/data-mining-query-task.md) and [Data Mining Solutions](/analysis-services/data-mining/data-mining-solutions).  
+ To learn about implementing data mining in packages, see [Data Mining Query Task](#data-mining-query-task) and [Data Mining Solutions](/analysis-services/data-mining/data-mining-solutions).  
   
 ### General Options  
  **Name**  

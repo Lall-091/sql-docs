@@ -12,6 +12,8 @@ ms.topic: conceptual
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
 This article shows examples of business rules for [!INCLUDE[ssMDSshort_md](../includes/ssmdsshort-md.md)]. You'll find these examples in the sample models that are included with your installation of [!INCLUDE[ssMDSshort_md](../includes/ssmdsshort-md.md)].   
   
 For instructions on how to deploy the sample models, see [Master Data Services Installation and Configuration](../master-data-services/master-data-services-installation-and-configuration.md).  

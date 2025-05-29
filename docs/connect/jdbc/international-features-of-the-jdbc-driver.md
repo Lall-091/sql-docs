@@ -37,7 +37,7 @@ Character data going from the driver to the server can be ASCII or Unicode. For 
 
 On the other hand, the non-national character API methods, such as setString, setCharacterStream, and setClob methods of [SQLServerPreparedStatement](reference/sqlserverpreparedstatement-class.md) and [SQLServerCallableStatement](reference/sqlservercallablestatement-class.md) classes send their values to the server in Unicode only when the **sendStringParametersAsUnicode** property is set to "true", which is the default value.
 
-## Non-unicode parameters
+## Non-Unicode parameters
 
 For optimal performance with **CHAR**, **VARCHAR** or **LONGVARCHAR** type of non-Unicode parameters, set the **sendStringParametersAsUnicode** connection string property to "false" and use the non-national character methods.
 

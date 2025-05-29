@@ -4,7 +4,7 @@ description: Generates a symmetric key and specifies its properties in SQL Serve
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 08/30/2023
+ms.date: 04/30/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -117,7 +117,7 @@ Specifies the name of the certificate that is used to encrypt the symmetric key.
 
 #### '*password*'
 
-Specifies a password from which to derive a TRIPLE_DES key with which to secure the symmetric key. *password* must meet the Windows password policy requirements of the computer that is running the instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. Always use strong passwords.
+Specifies a password from which to derive a TRIPLE_DES key with which to secure the symmetric key. `password` must meet the Windows password policy requirements of the computer that is running the instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. Always use strong passwords.
 
 #### *symmetric_key_name*
 
@@ -145,6 +145,8 @@ When a symmetric key is created, the symmetric key must be encrypted by using at
 - PROVIDER
 
 The key can have more than one encryption of each type. In other words, a single symmetric key can be encrypted by using multiple certificates, passwords, symmetric keys, and asymmetric keys at the same time.
+
+To protect the key material of the symmetric key, SQL Server and Azure SQL store the key material in encrypted form. Historically, this encryption utilized PKCS#1 v1.5 padding mode; starting with database compatibility level 170, the encryption uses OAEP-256 padding mode for encryption by certificate or asymmetric key. In `dm_database_encryption_keys`, the `encryptor_type` will be displayed as `CERTIFICATE_OAEP_256` instead of `CERTIFICATE`.
 
 > [!CAUTION]  
 > When a symmetric key is encrypted with a password instead of a certificate (or another key), the TRIPLE DES encryption algorithm is used to encrypt the password. Because of this, keys that are created with a strong encryption algorithm, such as AES, are themselves secured by a weaker algorithm.
@@ -222,12 +224,12 @@ CREATION_DISPOSITION=OPEN_EXISTING;
 GO
 ```
 
-## See also
+## Related content
 
-- [Choose an Encryption Algorithm](../../relational-databases/security/encryption/choose-an-encryption-algorithm.md)
-- [ALTER SYMMETRIC KEY (Transact-SQL)](../../t-sql/statements/alter-symmetric-key-transact-sql.md)
-- [DROP SYMMETRIC KEY (Transact-SQL)](../../t-sql/statements/drop-symmetric-key-transact-sql.md)
-- [Encryption Hierarchy](../../relational-databases/security/encryption/encryption-hierarchy.md)
+- [Choose an encryption algorithm](../../relational-databases/security/encryption/choose-an-encryption-algorithm.md)
+- [ALTER SYMMETRIC KEY (Transact-SQL)](alter-symmetric-key-transact-sql.md)
+- [DROP SYMMETRIC KEY (Transact-SQL)](drop-symmetric-key-transact-sql.md)
+- [Encryption hierarchy](../../relational-databases/security/encryption/encryption-hierarchy.md)
 - [sys.symmetric_keys (Transact-SQL)](../../relational-databases/system-catalog-views/sys-symmetric-keys-transact-sql.md)
 - [Extensible Key Management (EKM)](../../relational-databases/security/encryption/extensible-key-management-ekm.md)
 - [Extensible Key Management Using Azure Key Vault (SQL Server)](../../relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server.md)

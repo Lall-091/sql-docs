@@ -15,6 +15,8 @@ ms.topic: how-to
 
 This article teaches you to back up to and restore [SQL Server on Azure Virtual Machines (VM)](sql-server-on-azure-vm-iaas-what-is-overview.md) databases from a URL by using Microsoft Entra managed identities.
 
+<!-- Content matches docs\sql-server\azure-arc\backup-to-url, and should be maintained in both places -->
+
 ## Overview
 
 Starting with SQL Server 2022 Cumulative Update 17 (CU17), you can use managed identities with [SQL Server credentials](/sql/t-sql/statements/create-credential-transact-sql) to back up to and restore SQL Server on Azure VM databases from Azure Blob storage. [Managed identities](/entra/identity/managed-identities-azure-resources/overview) provide an identity for applications to use when connecting to resources that support Microsoft Entra authentication.
@@ -33,7 +35,7 @@ Using managed identities in the credentials for the `BACKUP TO URL` and `RESTORE
 
 ## Create a server credential using managed identities
 
-In order to use the T-SQL commands `BACKUP DATABASE <database name> TO URL` and `RESTORE <database name> FROM URL` with managed identities, you need to create a server credential that uses the managed identity. The credential name represents the Azure storage URL and indicates where the database backup will be stored.
+In order to use the T-SQL commands `BACKUP DATABASE <database name> TO URL` and `RESTORE <database name> FROM URL` with managed identities, you need to create a server credential that uses the managed identity. The credential name represents the Azure storage URL and indicates where the database backup is stored.
 
 The following example shows how to create a credential for a managed identity:
 
@@ -46,7 +48,7 @@ The `WITH IDENTITY = 'Managed Identity'` clause requires a primary managed ident
 
 For more information on error messages that can occur if the primary managed identity isn't assigned or given proper permissions, see the [Error messages](#error-messages) section.
 
-## `BACKUP` to URL with a managed identity
+## BACKUP to URL with a managed identity
 
 After you create the credential, you can use it to back up and restore databases to Azure Blob storage. Make sure that the primary managed identity for the SQL Server on Azure VM has the `Storage Blob Data Contributor` role assigned to the storage account.
 
@@ -57,7 +59,7 @@ BACKUP DATABASE [AdventureWorks]
     TO URL = 'https://<storage-account-name>.blob.core.windows.net/<container-name>/AdventureWorks.bak' 
 ```
 
-## `RESTORE` from URL with a managed identity
+## RESTORE from URL with a managed identity
 
 The following example shows how to restore a database from Azure Blob storage using the managed identity credential:
 

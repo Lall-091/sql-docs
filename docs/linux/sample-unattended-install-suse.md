@@ -4,7 +4,7 @@ titleSuffix: SQL Server
 description: Use a sample bash script to install SQL Server on SUSE Linux Enterprise Server (SLES) without interactive input.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 03/28/2025
+ms.date: 05/02/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -23,7 +23,7 @@ This sample bash script installs [!INCLUDE [ssnoversion-md](../includes/ssnovers
 ## Prerequisites
 
 - You need at least 2 GB of memory to run SQL Server on Linux.
-- The file system must be **XFS** or **EXT4**. Other file systems, such as **BTRFS**, are unsupported.
+- The file system must be **XFS** or **ext4**. Other file systems, such as **BTRFS**, are unsupported.
 - For other system requirements, see [System requirements for SQL Server on Linux](sql-server-linux-setup.md#system).
 
 > [!IMPORTANT]  

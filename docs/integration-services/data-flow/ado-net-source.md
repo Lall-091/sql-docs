@@ -86,7 +86,7 @@ helpviewer_keywords:
 ## ADO NET Source Editor (Connection Manager Page)
   Use the **Connection Manager** page of the **ADO NET Source Editor** dialog box to select the [!INCLUDE[vstecado](../../includes/vstecado-md.md)] connection manager for the source. This page also lets you select a table or view from the database.  
   
- To learn more about the ADO NET source, see [ADO NET Source](../../integration-services/data-flow/ado-net-source.md).  
+ To learn more about the ADO NET source, see [ADO NET Source](#ado-net-source).  
   
  **To open the Connection Manager page**  
   
@@ -136,7 +136,7 @@ helpviewer_keywords:
 ## ADO NET Source Editor (Columns Page)
   Use the **Columns** page of the **ADO NET Source Editor** dialog box to map an output column to each external (source) column.  
   
- To learn more about the ADO NET source, see [ADO NET Source](../../integration-services/data-flow/ado-net-source.md).  
+ To learn more about the ADO NET source, see [ADO NET Source](#ado-net-source).  
   
  **To open the Columns page**  
   
@@ -159,7 +159,7 @@ helpviewer_keywords:
 ## ADO NET Source Editor (Error Output Page)
   Use the **Error Output** page of the **ADO NET Source Editor** dialog box to select error handling options and to set properties on error output columns.  
   
- To learn more about the ADO NET source, see [ADO NET Source](../../integration-services/data-flow/ado-net-source.md).  
+ To learn more about the ADO NET source, see [ADO NET Source](#ado-net-source).  
   
  **To open the Error Output page**  
   

@@ -63,6 +63,8 @@ Select **SQL user with password** or a **SQL user with login** based on a **SQL 
 
 A user is a database level security principal. Logins must be mapped to a database user to connect to a database. A login can be mapped to different databases as different users but can only be mapped as one user in each database. In a partially contained database, a user can be created that doesn't have a login. For more information about contained database users, see [CREATE USER](../../../t-sql/statements/create-user-transact-sql.md). If the guest user in a database is enabled, a login that isn't mapped to a database user can enter the database as the guest user.
 
+[!INCLUDE [encryption-algorithm-history-md](../../../includes/encryption-algorithm-history.md)]
+
 > [!IMPORTANT]  
 > The guest user is ordinarily disabled. Don't enable the guest user unless it's necessary.
 

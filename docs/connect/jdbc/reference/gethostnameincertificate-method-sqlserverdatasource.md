@@ -29,7 +29,7 @@ public java.lang.String getHostNameInCertificate()
 ## Remarks  
  The host name is used to validate the SQL Server TLS/SSL certificate value when the communication layer is encrypted using TLS/SSL.  
   
- If the host name is not set, the [getHostNameInCertificate](../../../connect/jdbc/reference/gethostnameincertificate-method-sqlserverdatasource.md) method returns null.  
+ If the host name is not set, the [getHostNameInCertificate](#gethostnameincertificate-method-sqlserverdatasource) method returns null.  
   
 ## See Also  
  [SQLServerDataSource Members](../../../connect/jdbc/reference/sqlserverdatasource-members.md)   

@@ -1,8 +1,8 @@
 ---
 title: "Managing Passwords (SybaseToSQL)"
 description: "Managing Passwords (SybaseToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: 07/07/2020
 ms.service: sql
 ms.subservice: ssma

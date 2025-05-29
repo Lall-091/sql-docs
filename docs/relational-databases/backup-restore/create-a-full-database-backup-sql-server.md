@@ -399,7 +399,6 @@ Backup-SqlDatabase -ServerInstance $server -Database $database -BackupFile $back
 
 ## <a name="RelatedTasks"></a> Related tasks
 
-- [Back Up a Database (SQL Server)](../../relational-databases/backup-restore/create-a-full-database-backup-sql-server.md)
 - [Create a Differential Database Backup &#40;SQL Server&#41;](../../relational-databases/backup-restore/create-a-differential-database-backup-sql-server.md)
 - [Restore a Database Backup Using SSMS](../../relational-databases/backup-restore/restore-a-database-backup-using-ssms.md)
 - [Restore a Database Backup Under the Simple Recovery Model &#40;Transact-SQL&#41;](../../relational-databases/backup-restore/restore-a-database-backup-under-the-simple-recovery-model-transact-sql.md)

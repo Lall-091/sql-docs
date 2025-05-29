@@ -14,6 +14,8 @@ f1_keywords:
 
 [!INCLUDE [SQL Server - Windows only ASDBMI](../includes/applies-to-version/sql-windows-only-asdbmi.md)]
 
+[!INCLUDE [support-notice](includes/support-notice.md)]
+
   Use the **Server Configuration** page to view configuration information for the local server computer.  
   
 ## Server Configuration  

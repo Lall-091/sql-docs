@@ -121,7 +121,7 @@ This sample uses the PDO_SQLSRV driver to demonstrate how to connect with SQL Se
 ```  
   
 ## See Also  
-[How to: Connect Using SQL Server Authentication](../../connect/php/how-to-connect-using-sql-server-authentication.md)
+[How to: Connect Using SQL Server Authentication](#how-to-connect-using-sql-server-authentication)
 
 [Programming Guide for the Microsoft Drivers for PHP for SQL Server](../../connect/php/programming-guide-for-php-sql-driver.md)
 

@@ -1,8 +1,8 @@
 ---
 title: "Global Settings (Output Window) (AccessToSQL)"
 description: "Global Settings (Output Window) (AccessToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: ssma

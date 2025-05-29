@@ -538,8 +538,7 @@ When the algorithm is determining whether to allow access to a securable, the pr
 1. For that **security context**, collect all the permissions that are granted or denied for the **permission space**. The permission can be explicitly stated as a GRANT, GRANT WITH GRANT, or DENY; or the permissions can be an implied or covering permission GRANT or DENY. For example, CONTROL permission on a schema implies CONTROL on a table. And CONTROL on a table implies SELECT. Therefore, if CONTROL on the schema was granted, SELECT on the table is granted. If CONTROL was denied on the table, SELECT on the table is denied.
 
    > [!NOTE]  
-   > A GRANT of a column-level permission overrides a DENY at the object level.
-   > You can read more about his here: [DENY Object Permissions (Transact-SQL)](../../t-sql/statements/deny-object-permissions-transact-sql.md).
+   > A GRANT of a column-level permission overrides a DENY at the object level. For more information, see [DENY Object Permissions](../../t-sql/statements/deny-object-permissions-transact-sql.md).
 
 1. Identify the **required permission**.
 

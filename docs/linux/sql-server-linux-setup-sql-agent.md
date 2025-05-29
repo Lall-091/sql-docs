@@ -3,7 +3,7 @@ title: Configure the SQL Server Agent on Linux
 description: Learn how to enable or install the SQL Server Agent on Linux. Starting with SQL Server 2017 CU4, SQL Server Agent is included with the mssql-server package.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/15/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -38,7 +38,9 @@ Before using the SQL Server Agent on Linux, use the following steps to enable or
    | [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] CU 4 and later versions | [Enable the SQL Server Agent](#EnableAgentAfterCU4) |
    | [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] CU 3 and earlier versions | [Install the SQL Server Agent](#InstallAgentBelowCU4) |
 
-## <a id="EnableAgentAfterCU4"></a> Enable the SQL Server Agent
+<a id="EnableAgentAfterCU4"></a>
+
+## Enable the SQL Server Agent
 
 For [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] CU 4 and later versions, you only need to enable the SQL Server Agent. You don't need to install a separate package.
 
@@ -52,9 +54,11 @@ sudo systemctl restart mssql-server
 If you upgrade from [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] CU 3 or an earlier version with Agent installed, SQL Server Agent is enabled automatically, and previous Agent packages are uninstalled.
 
 > [!NOTE]  
-> SQL Server Management Studio Object Explorer doesn't display the contents of the SQL Server Agent node unless the [Agent XPs (server configuration option)](../database-engine/configure-windows/agent-xps-server-configuration-option.md) is enabled, regardless of the SQL Server Agent service state.
+> SQL Server Management Studio Object Explorer doesn't display the contents of the SQL Server Agent node unless the [Agent XPs](../database-engine/configure-windows/agent-xps-server-configuration-option.md) server configuration option is enabled, regardless of the SQL Server Agent service state.
 
-## <a id="InstallAgentBelowCU4"></a> Install the SQL Server Agent
+<a id="InstallAgentBelowCU4"></a>
+
+## Install the SQL Server Agent
 
 For [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] CU 3 and earlier versions, you must install the SQL Server Agent package.
 

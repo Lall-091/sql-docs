@@ -46,7 +46,7 @@ COLUMNS_UPDATED ( )
 
 To test for updates or inserts to specific columns, follow the syntax with a bitwise operator and an integer bitmask of the tested columns. For example, say that table `t1` contains columns `C1`, `C2`, `C3`, `C4`, and `C5`. To verify that columns `C2`, `C3`, and `C4` all successfully updated (with table `t1` having an `UPDATE` trigger), follow the syntax with `& 14`. To test whether only column `C2` is updated, specify `& 2`. See [Example A](#a-use-columns_updated-to-test-the-first-eight-columns-of-a-table) and [Example B](#b-use-columns_updated-to-test-more-than-eight-columns) for actual examples.
 
-Use `COLUMNS_UPDATED` anywhere inside a [!INCLUDE [tsql](../../includes/tsql-md.md)] `INSERT` or `UPDATE` trigger.
+Use `COLUMNS_UPDATED` anywhere inside a [!INCLUDE [tsql](../../includes/tsql-md.md)] `INSERT` or `UPDATE` trigger. If this is run outside of a trigger, a NULL is returned.
 
 The `ORDINAL_POSITION` column of the `INFORMATION_SCHEMA.COLUMNS` view isn't compatible with the bit pattern of columns returned by `COLUMNS_UPDATED`. To obtain a bit pattern compatible with `COLUMNS_UPDATED`, reference the `ColumnID` property of the `COLUMNPROPERTY` system function when querying the `INFORMATION_SCHEMA.COLUMNS` view, as shown in the following example.
 

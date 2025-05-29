@@ -1,8 +1,8 @@
 ---
 title: "Project Settings (GUI) (Db2ToSQL)"
 description: Learn how to use the Project Settings dialog (Db2ToSQL).
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

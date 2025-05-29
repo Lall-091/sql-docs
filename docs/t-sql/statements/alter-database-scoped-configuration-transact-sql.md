@@ -5,7 +5,7 @@ description: Enable several database configuration settings at the individual da
 author: markingmyname
 ms.author: maghan
 ms.reviewer: derekw, jovanpop, wiassaf, mariyaali
-ms.date: 02/03/2025
+ms.date: 05/28/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -57,6 +57,7 @@ The following settings are supported in [!INCLUDE [ssazure-sqldb](../../includes
 - Specify the number of minutes a paused resumable index operation is paused before it is automatically aborted by the [!INCLUDE [ssDE-md](../../includes/ssde-md.md)].
 - Enable or disable waiting for locks at low priority for asynchronous statistics update.
 - Enable or disable uploading ledger digests to Azure Blob Storage.
+- Enable or disable optimized Halloween protection.
 
 This setting is only available in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)].
 
@@ -113,15 +114,10 @@ ALTER DATABASE SCOPED CONFIGURATION
     | PARAMETER_SENSITIVE_PLAN_OPTIMIZATION = { ON | OFF }
     | LEDGER_DIGEST_STORAGE_ENDPOINT = { <endpoint URL string> | OFF }
     | OPTIMIZED_SP_EXECUTESQL = { ON | OFF }
+    | OPTIMIZED_HALLOWEEN_PROTECTION = { ON | OFF }
+    | OPTIONAL_PARAMETER_PLAN_OPTIMIZATION = { ON | OFF }
 }
 ```
-
-> [!IMPORTANT]  
-> Starting with [!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)], in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi](../../includes/ssazuremi-md.md)], some option names changed:
->
-> - `DISABLE_INTERLEAVED_EXECUTION_TVF` changed to `INTERLEAVED_EXECUTION_TVF`
-> - `DISABLE_BATCH_MODE_MEMORY_GRANT_FEEDBACK` changed to `BATCH_MODE_MEMORY_GRANT_FEEDBACK`
-> - `DISABLE_BATCH_MODE_ADAPTIVE_JOINS` changed to `BATCH_MODE_ADAPTIVE_JOINS`
 
 ```syntaxsql
 -- Syntax for Azure Synapse Analytics
@@ -511,11 +507,35 @@ Causes SQL Server to generate a Showplan XML fragment with the ParameterRuntimeV
 
 #### OPTIMIZED_SP_EXECUTESQL = { ON | OFF }
 
-**Applies to:** [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]
+**Applies to:** [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)]
 
 Enables or disables the compilation serialization behavior of `sp_executesql` when a batch is compiled. The default is `OFF`. Allowing batches which use `sp_executesql` to serialize the compilation process reduces the impact of compilation storms.  A compilation storms refers to a situation where a large number of queries are being compiled simultaneously, leading to performance issues and resource contention.
 
 When `OPTIMIZED_SP_EXECUTESQL` is `ON`, the first execution of sp_executesql compiles and inserts its compiled plan into the plan cache. Other sessions abort waiting on the compile lock and reuse the plan once it becomes available. This allows `sp_executesql` to behave like objects such as stored procedures and triggers from a compilation perspective.
+
+#### OPTIMIZED_HALLOWEEN_PROTECTION = { ON | OFF }
+
+**Applies to:** [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)]
+
+Enables or disables [optimized Halloween protection](../../relational-databases/performance/intelligent-query-processing-details.md#optimized-halloween-protection) for data modification language (DML) statements. The default is `ON`. When enabled, provides Halloween protection without using a spool operator in the query plan.
+
+> [!NOTE]  
+> For database compatibility level 160 or lower, this database scoped configuration has no effect.
+
+#### OPTIONAL_PARAMETER_PLAN_OPTIMIZATION = { ON | OFF }
+
+**Applies to:** [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)]
+
+Enables or disables the [Optional parameter plan optimization](../../relational-databases/performance/optional-parameter-optimization.md) feature. The default is `ON`.
+
+When enabled, the adaptive plan optimization generates multiple execution plans for queries that include optional parameters. These plans are typically expressed using predicates in the form of:
+
+- `@p IS NULL AND @p1 IS NOT NULL`
+- `@p IS NULL OR @p1 IS NOT NULL`
+
+The feature can choose a more optimal plan at runtime based on whether the parameter is `NULL`, which improves performance for queries that could otherwise default to suboptimal performance for such query patterns.
+
+The default is `ON` starting in database compatibility level 170.
 
 ## Permissions
 
@@ -538,8 +558,6 @@ Starting with [!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)], in [!I
 - `DISABLE_INTERLEAVED_EXECUTION_TVF` changed to `INTERLEAVED_EXECUTION_TVF`
 - `DISABLE_BATCH_MODE_MEMORY_GRANT_FEEDBACK` changed to `BATCH_MODE_MEMORY_GRANT_FEEDBACK`
 - `DISABLE_BATCH_MODE_ADAPTIVE_JOINS` changed to `BATCH_MODE_ADAPTIVE_JOINS`
-
-In [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], authentication is via Microsoft Entra ID passthrough, using `USER IDENTITY`.
 
 ### Check the status of a database scoped configuration option
 

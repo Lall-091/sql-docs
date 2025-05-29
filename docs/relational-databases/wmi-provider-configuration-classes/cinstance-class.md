@@ -13,7 +13,7 @@ apiname: "CInstance Class"
 ---
 # CInstance Class
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
-  The [CInstance Class](../../relational-databases/wmi-provider-configuration-classes/cinstance-class.md) represents an instance of a [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] client.  
+  The [CInstance Class](#cinstance-class) represents an instance of a [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] client.  
   
  This class can be used to manage protocols and network libraries associated with the instance of a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] client.  
   

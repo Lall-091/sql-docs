@@ -38,9 +38,9 @@ public final void setResponseBuffering(java.lang.String value)
   
  adaptive is the default value in JDBC Driver version 2.0 and 3.0. full was the default prior to JDBC Driver version 2.0.  
   
- The [setResponseBuffering](../../../connect/jdbc/reference/setresponsebuffering-method-sqlserverstatement.md) method allows you to override the **responseBuffering** connection **String** property for the current [SQLServerStatement](../../../connect/jdbc/reference/sqlserverstatement-class.md) object. For more information about using the response buffering mode, see [Using Adaptive Buffering](../../../connect/jdbc/using-adaptive-buffering.md).  
+ The [setResponseBuffering](#setresponsebuffering-method-sqlserverstatement) method allows you to override the **responseBuffering** connection **String** property for the current [SQLServerStatement](../../../connect/jdbc/reference/sqlserverstatement-class.md) object. For more information about using the response buffering mode, see [Using Adaptive Buffering](../../../connect/jdbc/using-adaptive-buffering.md).  
   
- If the application specifies an invalid parameter value to the [setResponseBuffering](../../../connect/jdbc/reference/setresponsebuffering-method-sqlserverstatement.md) method, a [SQLServerException](../../../connect/jdbc/reference/sqlserverexception-class.md) is thrown.  
+ If the application specifies an invalid parameter value to the [setResponseBuffering](#setresponsebuffering-method-sqlserverstatement) method, a [SQLServerException](../../../connect/jdbc/reference/sqlserverexception-class.md) is thrown.  
   
 ## See Also  
  [SQLServerStatement Members](../../../connect/jdbc/reference/sqlserverstatement-members.md)   

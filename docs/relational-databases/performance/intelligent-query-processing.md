@@ -4,7 +4,7 @@ description: "Intelligent query processing features to improve query performance
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: derekw
-ms.date: 01/19/2024
+ms.date: 04/18/2025
 ms.service: sql
 ms.subservice: performance
 ms.topic: conceptual
@@ -34,6 +34,12 @@ ALTER DATABASE [WideWorldImportersDW] SET COMPATIBILITY_LEVEL = 160;
 ```
 
 The following table details all intelligent query processing features, along with any requirement they have for database compatibility level. For complete details on all IQP features, including release notes and more in-depth descriptions, see [Intelligent query processing (IQP) feature details](intelligent-query-processing-details.md).
+
+## <a id="sql2025"></a> IQP features for [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]
+
+| IQP Feature | Supported in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] | Supported in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] | Description |
+| ---------------- | ------- | ------- | ---------------- |
+| [Optimized Halloween protection](intelligent-query-processing-details.md#optimized-halloween-protection) | No | Yes, starting with [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)] with compatibility level 170 | Reduces `tempdb` space consumption and improves query performance by not using a spool for Halloween protection. |
 
 ## <a id="sql2022"></a> IQP features for [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]
 

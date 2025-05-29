@@ -36,7 +36,7 @@ To generate sample data up to the current date:
     To increase or decrease the amount of data generated for orders per day, change the value for the parameter `@AverageNumberOfCustomerOrdersPerDay`. Use the parameters `@SaturdayPercentageOfNormalWorkDay` and `@SundayPercentageOfNormalWorkDay` to determine the order volume for weekend days.
 
 > [!TIP]
-> Forcing [delayed durability](../relational-databases/logs/control-transaction-durability.md) on the database may improve data generation speed, particularly when the database transaction log is on a high latency storage subsystem. Be aware of potential [data loss](../relational-databases/logs/control-transaction-durability.md#bkmk_DataLoss) implications when using delayed durability, and consider only enabling delayed durability for the duration of data generation.
+> Forcing [delayed durability](../relational-databases/logs/control-transaction-durability.md) on the database may improve data generation speed, particularly when the database transaction log is on a high latency storage subsystem. Be aware of potential [data loss](../relational-databases/logs/control-transaction-durability.md#when-can-i-lose-data) implications when using delayed durability, and consider only enabling delayed durability for the duration of data generation.
 
 ## Import generated data in WideWorldImportersDW
 

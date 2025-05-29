@@ -64,7 +64,7 @@ helpviewer_keywords:
 ## Data Profile Viewer F1 Help
   Use the Data Profile Viewer to view the output of the Data Profiling task.  
   
- For more information about how to use the Data Profile Viewer, see [Data Profile Viewer](../../integration-services/control-flow/data-profile-viewer.md). For more information about how to use the Data Profiling task, which creates the profile output that you analyze in the Data Profile Viewer, see [Setup of the Data Profiling Task](../../integration-services/control-flow/setup-of-the-data-profiling-task.md).  
+ For more information about how to use the Data Profile Viewer, see [Data Profile Viewer](#data-profile-viewer). For more information about how to use the Data Profiling task, which creates the profile output that you analyze in the Data Profile Viewer, see [Setup of the Data Profiling Task](../../integration-services/control-flow/setup-of-the-data-profiling-task.md).  
   
 ### Static Options  
  **Open**  

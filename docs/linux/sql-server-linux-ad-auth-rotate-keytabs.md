@@ -4,7 +4,7 @@ description: Recommendations on rotating keytabs for SQL Server on Linux using a
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: vanto, randolphwest
-ms.date: 01/21/2025
+ms.date: 05/02/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -29,7 +29,7 @@ Let's consider an example. Active Directory authentication is already enabled fo
 
 1. [Install adutil](sql-server-linux-ad-auth-adutil-introduction.md#install-adutil) on the domain joined machine.
 
-1. Obtain or renew the Kerberos TGT (ticket-granting ticket) using the `kinit` command. Use a privileged account for the `kinit` command. The account needs to have permission to connect to the domain and should be able to create accounts and SPNs in the domain. In this case, we're using the account `privilegeduser@CONTOSO.COM` that has permissions to create accounts and SPNs in our domain called `CONTOSO.COM`.
+1. Obtain or renew the Kerberos TGT (ticket-granting ticket) using the `kinit` command. Use a privileged account for the `kinit` command. The account needs to have permission to connect to the domain and should be able to create accounts and SPNs in the domain. In this case, we're using the account `privilegeduser@CONTOSO.COM` that has permissions to create accounts and SPNs in our domain called `CONTOSO.COM`.
 
    ```bash
    kinit privilegeduser@CONTOSO.COM
@@ -53,7 +53,7 @@ You can install **adutil** and integrate it with **mssql-conf**, which means you
    su mssql
    ```
 
-1. Obtain or renew the Kerberos TGT (ticket-granting ticket) using the `kinit` command. Use a privileged account for the `kinit` command. The account needs to have permission to connect to the domain and should be able to create accounts and SPNs in the domain. In this case, we're using the account `privilegeduser@CONTOSO.COM` that has permissions to create accounts and SPNs in our domain called `CONTOSO.COM`.
+1. Obtain or renew the Kerberos TGT (ticket-granting ticket) using the `kinit` command. Use a privileged account for the `kinit` command. The account needs to have permission to connect to the domain and should be able to create accounts and SPNs in the domain. In this case, we're using the account `privilegeduser@CONTOSO.COM` that has permissions to create accounts and SPNs in our domain called `CONTOSO.COM`.
 
    ```bash
    kinit privilegeduser@CONTOSO.COM

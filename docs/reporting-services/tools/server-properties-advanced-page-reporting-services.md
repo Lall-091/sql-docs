@@ -1,9 +1,9 @@
 ---
 title: "Server properties Advanced page"
 description: Use the Advanced Server Properties page to set system properties on the report server. This tool provides a graphical user interface so that you can set properties without writing code.
-author: kfollis
-ms.author: kfollis
-ms.date: 09/25/2024
+author: petebro
+ms.author: petebro
+ms.date: 05/19/2025
 ms.service: reporting-services
 ms.subservice: tools
 ms.topic: conceptual
@@ -159,6 +159,12 @@ When enabled, Power BI reports load the latest certified custom visuals from a c
 
 ###  EnableClientPrinting  
 Determines whether the RSClientPrint ActiveX control is available for download from the report server. The valid values are **true** and **false**. The default value is **true**. For more information about other settings that are required for this control, see [Enable and disable client-side printing for Reporting Services](../../reporting-services/report-server/enable-and-disable-client-side-printing-for-reporting-services.md).  
+
+### EnableCommentOnReports 
+
+*Power BI Report Server, Reporting Services 2019 and later only* 
+
+Determines whether users viewing reports can access and interact with the comments pane. If the value is **false** then this pane is hidden to all users regardless of the permissions set on roles. The valid values are **true** and **false**. The default value is **false**.
 
 ### EnableCustomVisuals 
 

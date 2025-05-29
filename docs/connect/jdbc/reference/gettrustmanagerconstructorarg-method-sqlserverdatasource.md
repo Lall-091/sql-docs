@@ -27,7 +27,7 @@ public java.lang.String getTrustManagerConstructorArg()
  A **String** that contains the value of the TrustManagerConstructorArg connection property, or null if no value is set.  
   
 ## Remarks  
- If the TrustManagerClass property is not set, the [getTrustManagerConstructorArg](../../../connect/jdbc/reference/gettrustmanagerconstructorarg-method-sqlserverdatasource.md) method returns null.  
+ If the TrustManagerClass property is not set, the [getTrustManagerConstructorArg](#gettrustmanagerconstructorarg-method-sqlserverdatasource) method returns null.  
   
 ## See Also  
  [SQLServerDataSource Members](../../../connect/jdbc/reference/sqlserverdatasource-members.md)   

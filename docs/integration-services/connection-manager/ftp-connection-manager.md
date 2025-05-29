@@ -62,7 +62,7 @@ helpviewer_keywords:
 > [!IMPORTANT]  
 >  The FTP connection manager supports only anonymous authentication and basic authentication. It does not support Windows Authentication.  
   
- To learn more about the FTP connection manager, see [FTP Connection Manager](../../integration-services/connection-manager/ftp-connection-manager.md).  
+ To learn more about the FTP connection manager, see [FTP Connection Manager](#ftp-connection-manager).  
   
 ### Options  
  **Server name**  

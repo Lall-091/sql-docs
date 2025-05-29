@@ -63,7 +63,7 @@ Use the **Configure OLEDB Connection Manager** dialog box to add a connection to
 >   
 >  If the data source is [!INCLUDE[msCoName](../../includes/msconame-md.md)] Office Access 2007, the data source requires a different OLEDB provider than earlier versions of Access. For more information, see [Connect to an Access Database](./integration-services-ssis-connections.md).  
   
- To learn more about the OLEDB connection manager, see [OLEDB Connection Manager](../../integration-services/connection-manager/ole-db-connection-manager.md).  
+ To learn more about the OLEDB connection manager, see [OLEDB Connection Manager](#oledb-connection-manager).  
   
 #### Options  
  **Data connections**  

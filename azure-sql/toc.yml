@@ -1768,7 +1768,7 @@
       - name: SQL Server Tools
         href: /sql/tools/overview-sql-tools
       - name: Azure Roadmap
-        href: https://azure.microsoft.com/roadmap/?category=compute
+        href: https://techcommunity.microsoft.com/discussions/microsoft-entra/introducing-the-azure-roadmap/113500
       - name: MSDN forum
         href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server
       - name: Stack Overflow
@@ -1814,7 +1814,7 @@
       - name: SQL Server Tools
         href: /sql/tools/overview-sql-tools
       - name: Azure Roadmap
-        href: https://azure.microsoft.com/roadmap/?category=compute
+        href: https://techcommunity.microsoft.com/discussions/microsoft-entra/introducing-the-azure-roadmap/113500
       - name: Stack Overflow
         href: https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server
   - name: Migration guides
@@ -1984,7 +1984,7 @@
   - name: Microsoft Azure Blog
     href: https://azure.microsoft.com/blog/
   - name: Azure Roadmap
-    href: https://azure.microsoft.com/roadmap/
+    href: https://techcommunity.microsoft.com/discussions/microsoft-entra/introducing-the-azure-roadmap/113500
   - name: Public data sets
     href: public-data-sets.md
   - name: Pricing
@@ -2036,7 +2036,7 @@
     - name: Periodic maintenance events
       href: database/planned-maintenance.md
   - name: Videos
-    href: https://azure.microsoft.com/documentation/videos/index/?services=sql-database
+    href: /shows/browse?terms=sql-database
   - name: Service updates
     href: https://azure.microsoft.com/updates/?product=sql-database
   - name: Architecture center

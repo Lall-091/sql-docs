@@ -1,10 +1,10 @@
 ---
-title: Install SQL Server command-line tools on Linux
+title: Install SQL Server Command-Line Tools on Linux
 titleSuffix: SQL Server
 description: Learn how to install the SQL Server command-line tools, Microsoft ODBC drivers, and their dependencies on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/22/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -52,7 +52,9 @@ These instructions are for installing the [!INCLUDE [msconame-md](../includes/ms
 
 ---
 
-## <a id="macos"></a> Install tools on macOS
+<a id="macos"></a>
+
+## Install tools on macOS
 
 Install [Homebrew](https://brew.sh) if you don't have it already:
 
@@ -69,7 +71,9 @@ brew update
 brew install mssql-tools18
 ```
 
-## <a id="docker"></a> Install tools on Docker
+<a id="docker"></a>
+
+## Install tools on Docker
 
 If you [run SQL Server in a Docker container](quickstart-install-connect-docker.md), the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] command-line tools are already included in the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Linux container image. If you attach to a running container with an interactive bash shell, you can run the tools locally.
 

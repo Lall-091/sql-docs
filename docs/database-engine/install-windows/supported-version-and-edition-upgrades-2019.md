@@ -1,9 +1,9 @@
 ---
-title: "Supported version and edition upgrades (SQL Server 2019)"
+title: "Supported Version and Edition Upgrades (SQL Server 2019)"
 description: The supported version and edition upgrades for SQL Server 2019.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/25/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: install
 ms.topic: upgrade-and-migration-article
@@ -28,7 +28,7 @@ You can upgrade from [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)], [!INCLU
 
 - Before upgrading [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], enable Windows Authentication for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent and verify the default configuration, that the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent service account is a member of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] sysadmin group.
 
-- To upgrade to [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], you must be running a supported operating system. For more information, see [Hardware and Software Requirements for Installing SQL Server](../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2019.md).
+- To upgrade to [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], you must be running a supported operating system. For more information, see [Hardware and software requirements for SQL Server 2019](../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2019.md).
 
 - Upgrade is blocked if there's a pending restart.
 
@@ -92,7 +92,7 @@ The following table lists the supported upgrade scenarios from earlier versions 
 
 You can migrate databases from older versions of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] to [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], as long as the source database compatibility level is `90` or higher. Databases with a compatibility level of `90` (for example, on [!INCLUDE [ssversion2005-md](../../includes/ssversion2005-md.md)]), are automatically upgraded to a compatibility level of `100` when migrated to [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)]. If the compatibility level on the source database is `100` or higher, it is unchanged on [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)].
 
-For information, see [Azure Database Migration Guide](../../sql-server/migrate/guides/sql-server-to-sql-server-upgrade-guide.md).
+For information, see [Upgrade SQL Server to the latest version](../../sql-server/migrate/guides/sql-server-to-sql-server-upgrade-guide.md).
 
 The following tips and tools can help you plan and implement your migration.
 
@@ -107,7 +107,7 @@ The following tips and tools can help you plan and implement your migration.
 
 The following table lists the supported edition upgrade scenarios in [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)].
 
-For step-by-step instructions on how to perform an edition upgrade, see [Upgrade to a Different Edition of SQL Server (Setup)](upgrade-to-a-different-edition-of-sql-server-setup.md).
+For step-by-step instructions on how to perform an edition upgrade, see [Upgrade to a different edition of SQL Server (Setup)](upgrade-to-a-different-edition-of-sql-server-setup.md).
 
 | Upgrade from | Upgrade to |
 | --- | --- |
@@ -116,7 +116,7 @@ For step-by-step instructions on how to perform an edition upgrade, see [Upgrade
 | [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Standard <sup>3</sup> | [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Enterprise (Server+CAL or Core License) |
 | [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Developer <sup>3</sup> | [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Enterprise (Server+CAL or Core License)<br /><br />[!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Web<br />[!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Standard |
 | [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Web | [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Enterprise (Server+CAL or Core License)<br /><br />[!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Standard |
-| [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Express  <sup>1</sup> | [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Enterprise (Server+CAL or Core License)<br /><br />[!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Developer<br />[!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Standard<br />[!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Web |
+| [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Express <sup>1</sup> | [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Enterprise (Server+CAL or Core License)<br /><br />[!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Developer<br />[!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Standard<br />[!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Web |
 
 Additionally you can also perform an edition upgrade between [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Enterprise (Server+CAL license) and [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Enterprise (Core License):
 
@@ -139,7 +139,7 @@ Additionally you can also perform an edition upgrade between [!INCLUDE [sssql19-
 ## Related content
 
 - [Editions and supported features of [!INCLUDE[sssql19-md](../../includes/sssql19-md.md)]](../../sql-server/editions-and-components-of-sql-server-version-15.md)
-- [Hardware and software requirements for installing SQL Server](../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2019.md)
+- [Hardware and software requirements for SQL Server 2019](../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2019.md)
 - [Upgrade SQL Server](upgrade-sql-server.md)
-- [Upgrade Database Engine](upgrade-database-engine.md)
-- [Upgrade to a Different Edition of SQL Server (Setup)](upgrade-to-a-different-edition-of-sql-server-setup.md)
+- [Upgrade the Database Engine](upgrade-database-engine.md)
+- [Upgrade to a different edition of SQL Server (Setup)](upgrade-to-a-different-edition-of-sql-server-setup.md)

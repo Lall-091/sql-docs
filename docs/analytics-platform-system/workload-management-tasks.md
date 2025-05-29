@@ -106,14 +106,14 @@ For resource class descriptions, see [Workload Management](workload-management.m
   
 When a login is not a member of any resource class server role, requests submitted by the login will receive the default amount of system resources.  
   
-Suppose the login Matt is currently a member of all resource class server roles and wants to revert back to having requests receive only the default resources.  The following example assigns the default resources to Matt's requests by dropping his membership from all three resource class server roles.  
+Suppose the login Quinn is currently a member of all resource class server roles and wants to revert back to having requests receive only the default resources.  The following example assigns the default resources to Quinn's requests by dropping their membership from all three resource class server roles.  
   
 ```sql  
---Give the requests submitted by Matt the default system resources   
---by dropping Matt from all resource class server roles.  
-ALTER SERVER ROLE XLargeRC DROP MEMBER Matt;  
-ALTER SERVER ROLE LargeRC DROP MEMBER Matt;  
-ALTER SERVER ROLE MediumRC DROP MEMBER Matt;  
+--Give the requests submitted by Quinn the default system resources   
+--by dropping Quinn from all resource class server roles.  
+ALTER SERVER ROLE XLargeRC DROP MEMBER Quinn;  
+ALTER SERVER ROLE LargeRC DROP MEMBER Quinn;  
+ALTER SERVER ROLE MediumRC DROP MEMBER Quinn;  
 ```  
   
 ## Display the Number of Concurrency Slots Needed for a Waiting Request

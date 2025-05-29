@@ -1,9 +1,9 @@
 ---
-title: "SQL Server and Azure SQL index architecture and design guide"
+title: "SQL Server and Azure SQL Index Architecture and Design Guide"
 description: Learn about designing efficient indexes in SQL Server and Azure SQL to achieve good database and application performance. Read about index architecture and best practices.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/26/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: supportability
 ms.topic: conceptual
@@ -77,7 +77,7 @@ The following tasks make up our recommended strategy for designing indexes:
 1. Understand the characteristics of the database itself.
 
    - For example, is it an online transaction processing (OLTP) database with frequent data modifications that must sustain a high throughput? Memory-optimized tables and indexes are especially appropriate for this scenario, by providing a latch-free design. For more information, see [Indexes on Memory-Optimized Tables](in-memory-oltp/indexes-for-memory-optimized-tables.md), or [Memory-Optimized nonclustered index design guidelines](#memory-optimized-nonclustered-index-design-guidelines) and [Hash index design guidelines](#hash-index-design-guidelines) in this guide.
-   - Or is it an example of a Decision Support System (DSS) or data warehousing (OLAP) database that must process very large data sets quickly? Columnstore indexes are especially appropriate for typical data warehousing data sets. Columnstore indexes can transform the data warehousing experience for users by enabling faster performance for common data warehousing queries such as filtering, aggregating, grouping, and star-join queries. For more information, see [Columnstore indexes: Overview](indexes/columnstore-indexes-overview.md), or [Columnstore index design guidelines](#design-guidance) in this guide.
+   - Or is it an example of a Decision Support System (DSS) or data warehousing (OLAP) database that must process very large data sets quickly? Columnstore indexes are especially appropriate for typical data warehousing data sets. Columnstore indexes can transform the data warehousing experience for users by enabling faster performance for common data warehousing queries such as filtering, aggregating, grouping, and star-join queries. For more information, see [Columnstore indexes: overview](indexes/columnstore-indexes-overview.md), or [Columnstore index design guidelines](#design-guidance) in this guide.
 
 1. Understand the characteristics of the most frequently used queries. For example, knowing that a frequently used query joins two or more tables helps you determine the best type of indexes to use.
 
@@ -212,8 +212,10 @@ Specifying the order in which key values are stored in an index is useful when q
 As shown in the following query against the [AdventureWorks sample database](../samples/adventureworks-install-configure.md), retrieving the data to meet this criteria requires the `RejectedQty` column in the `Purchasing.PurchaseOrderDetail` table to be sorted in descending order (large to small) and the `ProductID` column to be sorted in ascending order (small to large).
 
 ```sql
-SELECT RejectedQty, ((RejectedQty/OrderQty)*100) AS RejectionRate,
-    ProductID, DueDate
+SELECT RejectedQty,
+       ((RejectedQty / OrderQty) * 100) AS RejectionRate,
+       ProductID,
+       DueDate
 FROM Purchasing.PurchaseOrderDetail
 ORDER BY RejectedQty DESC, ProductID ASC;
 GO
@@ -488,8 +490,8 @@ Because the **nchar** and **nvarchar** data types require 2 bytes for each chara
 
 ```sql
 CREATE INDEX IX_Document_Title
-ON Production.Document (Title, Revision)
-INCLUDE (FileName);
+ON Production.Document(Title, Revision)
+    INCLUDE(FileName);
 GO
 ```
 
@@ -549,7 +551,11 @@ Redesign nonclustered indexes with a large index key size so that only columns u
 For example, assume that you want to design an index to cover the following query.
 
 ```sql
-SELECT AddressLine1, AddressLine2, City, StateProvinceID, PostalCode
+SELECT AddressLine1,
+       AddressLine2,
+       City,
+       StateProvinceID,
+       PostalCode
 FROM Person.Address
 WHERE PostalCode BETWEEN N'98000' AND N'99999';
 GO
@@ -561,8 +567,8 @@ The following statement creates an index with included columns to cover the quer
 
 ```sql
 CREATE INDEX IX_Address_PostalCode
-ON Person.Address (PostalCode)
-INCLUDE (AddressLine1, AddressLine2, City, StateProvinceID);
+ON Person.Address(PostalCode)
+    INCLUDE(AddressLine1, AddressLine2, City, StateProvinceID);
 ```
 
 To validate that the index covers the query, create the index, then [display the estimated execution plan](performance/display-the-estimated-execution-plan.md).
@@ -660,7 +666,7 @@ For example, the [AdventureWorks sample database](../samples/adventureworks-inst
 
 ```sql
 CREATE NONCLUSTERED INDEX FIBillOfMaterialsWithEndDate
-    ON Production.BillOfMaterials (ComponentID, StartDate)
+ON Production.BillOfMaterials(ComponentID, StartDate)
     WHERE EndDate IS NOT NULL;
 GO
 ```
@@ -668,11 +674,13 @@ GO
 The filtered index `FIBillOfMaterialsWithEndDate` is valid for the following query. [Display the Estimated Execution Plan](performance/display-the-estimated-execution-plan.md) to determine if the query optimizer used the filtered index.
 
 ```sql
-SELECT ProductAssemblyID, ComponentID, StartDate
+SELECT ProductAssemblyID,
+       ComponentID,
+       StartDate
 FROM Production.BillOfMaterials
 WHERE EndDate IS NOT NULL
-    AND ComponentID = 5
-    AND StartDate > '20080101';
+      AND ComponentID = 5
+      AND StartDate > '20080101';
 GO
 ```
 
@@ -686,18 +694,21 @@ For example, the products listed in the `Production.Product` table are each assi
 
 ```sql
 CREATE NONCLUSTERED INDEX FIProductAccessories
-    ON Production.Product (ProductSubcategoryID, ListPrice)
-        Include (Name)
-WHERE ProductSubcategoryID >= 27 AND ProductSubcategoryID <= 36;
+ON Production.Product(ProductSubcategoryID, ListPrice)
+INCLUDE(Name)
+    WHERE ProductSubcategoryID >= 27 AND ProductSubcategoryID <= 36;
 GO
 ```
 
 The filtered index `FIProductAccessories` covers the following query because the query results are contained in the index and the query plan doesn't include a base table lookup. For example, the query predicate expression `ProductSubcategoryID = 33` is a subset of the filtered index predicate `ProductSubcategoryID >= 27` and `ProductSubcategoryID <= 36`, the `ProductSubcategoryID` and `ListPrice` columns in the query predicate are both key columns in the index, and name is stored in the leaf level of the index as an included column.
 
 ```sql
-SELECT Name, ProductSubcategoryID, ListPrice
+SELECT Name,
+       ProductSubcategoryID,
+       ListPrice
 FROM Production.Product
-WHERE ProductSubcategoryID = 33 AND ListPrice > 25.00;
+WHERE ProductSubcategoryID = 33
+      AND ListPrice > 25.00;
 GO
 ```
 
@@ -710,21 +721,28 @@ In some cases, a filtered index covers the query without including the columns i
 A column in the filtered index expression doesn't need to be a key or included column in the filtered index definition if the filtered index expression is equivalent to the query predicate and the query doesn't return the column in the filtered index expression with the query results. For example, `FIBillOfMaterialsWithEndDate` covers the following query because the query predicate is equivalent to the filter expression, and `EndDate` isn't returned with the query results. `FIBillOfMaterialsWithEndDate` doesn't need `EndDate` as a key or included column in the filtered index definition.
 
 ```sql
-SELECT ComponentID, StartDate FROM Production.BillOfMaterials
+SELECT ComponentID,
+       StartDate
+FROM Production.BillOfMaterials
 WHERE EndDate IS NOT NULL;
 ```
 
 A column in the filtered index expression should be a key or included column in the filtered index definition if the query predicate uses the column in a comparison that isn't equivalent to the filtered index expression. For example, `FIBillOfMaterialsWithEndDate` is valid for the following query because it selects a subset of rows from the filtered index. However, it doesn't cover the following query because `EndDate` is used in the comparison `EndDate > '20040101'`, which isn't equivalent to the filtered index expression. The query processor can't execute this query without looking up the values of `EndDate`. Therefore, `EndDate` should be a key or included column in the filtered index definition.
 
 ```sql
-SELECT ComponentID, StartDate FROM Production.BillOfMaterials
+SELECT ComponentID,
+       StartDate
+FROM Production.BillOfMaterials
 WHERE EndDate > '20040101';
 ```
 
 A column in the filtered index expression should be a key or included column in the filtered index definition if the column is in the query result set. For example, `FIBillOfMaterialsWithEndDate` doesn't cover the following query because it returns the `EndDate` column in the query results. Therefore, `EndDate` should be a key or included column in the filtered index definition.
 
 ```sql
-SELECT ComponentID, StartDate, EndDate FROM Production.BillOfMaterials
+SELECT ComponentID,
+       StartDate,
+       EndDate
+FROM Production.BillOfMaterials
 WHERE EndDate IS NOT NULL;
 ```
 
@@ -734,10 +752,11 @@ To drop the `FIBillOfMaterialsWithEndDate` and `FIProductAccessories` indexes, r
 
 ```sql
 DROP INDEX FIBillOfMaterialsWithEndDate
-    ON Production.BillOfMaterials;
+ON Production.BillOfMaterials;
 GO
+
 DROP INDEX FIProductAccessories
-    ON Production.Product;
+ON Production.Product;
 GO
 ```
 
@@ -748,9 +767,10 @@ If the comparison operator specified in the filtered index expression of the fil
 The following example creates a table with various data types.
 
 ```sql
-CREATE TABLE dbo.TestTable (
+CREATE TABLE dbo.TestTable
+(
     a INT,
-    b VARBINARY(4)
+    b VARBINARY (4)
 );
 GO
 ```
@@ -758,16 +778,18 @@ GO
 In the following filtered index definition, column `b` is implicitly converted to an integer data type for the purpose of comparing it to the constant 1. This generates error message 10611 because the conversion occurs on the left-hand side of the operator in the filtered predicate.
 
 ```sql
-CREATE NONCLUSTERED INDEX TestTabIndex ON dbo.TestTable (a, b)
-WHERE b = 1;
+CREATE NONCLUSTERED INDEX TestTabIndex
+ON dbo.TestTable(a, b)
+    WHERE b = 1;
 GO
 ```
 
 The solution is to convert the constant on the right-hand side to be of the same type as column `b`, as seen in the following example:
 
 ```sql
-CREATE INDEX TestTabIndex ON dbo.TestTable (a, b)
-WHERE b = CONVERT(VARBINARY(4), 1);
+CREATE INDEX TestTabIndex
+ON dbo.TestTable(a, b)
+    WHERE b = CONVERT (VARBINARY (4), 1);
 GO
 ```
 
@@ -784,7 +806,7 @@ GO
 
 ## Columnstore index architecture
 
-A *columnstore index* is a technology for storing, retrieving, and managing data by using a columnar data format, called a columnstore. For more information, see [Columnstore indexes: Overview](indexes/columnstore-indexes-overview.md).
+A *columnstore index* is a technology for storing, retrieving, and managing data by using a columnar data format, called a columnstore. For more information, see [Columnstore indexes: overview](indexes/columnstore-indexes-overview.md).
 
 For version information and to find out what's new, visit [What's new in columnstore indexes](indexes/columnstore-indexes-what-s-new.md).
 
@@ -806,7 +828,7 @@ When discussing columnstore indexes, we use the terms *rowstore* and *columnstor
 
 - The **deltastore** is a holding place for rows that are too few in number to be compressed into the columnstore. The deltastore stores the rows in rowstore format.
 
-For more information about columnstore terms and concepts, see [Columnstore indexes: Overview](indexes/columnstore-indexes-overview.md).
+For more information about columnstore terms and concepts, see [Columnstore indexes: overview](indexes/columnstore-indexes-overview.md).
 
 #### Operations are performed on rowgroups and column segments
 
@@ -834,7 +856,7 @@ Each column has some of its values in each rowgroup. These values are called **c
 
 When the columnstore index compresses a rowgroup, it compresses each column segment separately. To uncompress an entire column, the columnstore index only needs to uncompress one column segment from each rowgroup.
 
-For more information about columnstore terms and concepts, see [Columnstore indexes: Overview](indexes/columnstore-indexes-overview.md).
+For more information about columnstore terms and concepts, see [Columnstore indexes: overview](indexes/columnstore-indexes-overview.md).
 
 #### Small loads and inserts go to the deltastore
 
@@ -848,7 +870,7 @@ Rows go to the deltastore when they are:
 
 The deltastore also stores a list of IDs for deleted rows that have been marked as deleted but not yet physically deleted from the columnstore.
 
-For more information about columnstore terms and concepts, see [Columnstore indexes: Overview](indexes/columnstore-indexes-overview.md).
+For more information about columnstore terms and concepts, see [Columnstore indexes: overview](indexes/columnstore-indexes-overview.md).
 
 #### When delta rowgroups are full, they get compressed into the columnstore
 
@@ -860,7 +882,7 @@ For more information about rowgroup statuses, see [sys.dm_db_column_store_row_gr
 
 You can force delta rowgroups into the columnstore by using [ALTER INDEX](../t-sql/statements/alter-index-transact-sql.md) to rebuild or reorganize the index. If there's memory pressure during compression, the columnstore index might reduce the number of rows in the compressed rowgroup.
 
-For more information about columnstore terms and concepts, see [Columnstore indexes: Overview](indexes/columnstore-indexes-overview.md).
+For more information about columnstore terms and concepts, see [Columnstore indexes: overview](indexes/columnstore-indexes-overview.md).
 
 #### Each table partition has its own rowgroups and delta rowgroups
 
@@ -889,13 +911,13 @@ You can have *one or more nonclustered rowstore indexes on a columnstore index*.
 
 - An in-memory table can have one columnstore index. You can create it when the table is created or add it later with [ALTER TABLE (Transact-SQL)](../t-sql/statements/alter-table-transact-sql.md). Before [!INCLUDE [sssql15-md](../includes/sssql16-md.md)], only a disk-based table could have a columnstore index.
 
-For more information, see [Columnstore indexes - Query performance](indexes/columnstore-indexes-query-performance.md).
+For more information, see [Columnstore indexes - query performance](indexes/columnstore-indexes-query-performance.md).
 
 ### Design guidance
 
 - A rowstore table can have one updateable nonclustered columnstore index. Before [!INCLUDE [ssSQL14](../includes/sssql14-md.md)], the nonclustered columnstore index was read-only.
 
-For more information, see [Columnstore indexes - Design guidance](indexes/columnstore-indexes-design-guidance.md).
+For more information, see [Columnstore indexes - design guidance](indexes/columnstore-indexes-design-guidance.md).
 
 <a id="hash_index"></a>
 
@@ -987,9 +1009,8 @@ A hash index can be declared as:
 The following example syntax creates a hash index, outside of the `CREATE TABLE` statement:
 
 ```sql
-ALTER TABLE MyTable_memop
-ADD INDEX ix_hash_Column2 UNIQUE
-HASH (Column2) WITH (BUCKET_COUNT = 64);
+ALTER TABLE MyTable_memop ADD INDEX ix_hash_Column2
+    UNIQUE NONCLUSTERED HASH (Column2) WITH (BUCKET_COUNT = 64);
 ```
 
 ### Row versions and garbage collection
@@ -1079,6 +1100,6 @@ When a key column in a nonclustered index has many duplicate values, performance
 - [Optimize index maintenance to improve query performance and reduce resource consumption](indexes/reorganize-and-rebuild-indexes.md)
 - [Partitioned tables and indexes](partitions/partitioned-tables-and-indexes.md)
 - [Indexes on Memory-Optimized Tables](in-memory-oltp/indexes-for-memory-optimized-tables.md)
-- [Columnstore indexes: Overview](indexes/columnstore-indexes-overview.md)
+- [Columnstore indexes: overview](indexes/columnstore-indexes-overview.md)
 - [Indexes on computed columns](indexes/indexes-on-computed-columns.md)
 - [Tune nonclustered indexes with missing index suggestions](indexes/tune-nonclustered-missing-index-suggestions.md)

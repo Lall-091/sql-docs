@@ -38,6 +38,7 @@ If you plan to connect to the [!INCLUDE [ssDE](../includes/ssde-md.md)] from ano
 
    | Version | Path |
    | --- | --- |
+   | [!INCLUDE [ssSQL25](../includes/sssql25-md.md)] | `C:\Windows\SysWOW64\SQLServerManager17.msc` |
    | [!INCLUDE [ssSQL22](../includes/sssql22-md.md)] | `C:\Windows\SysWOW64\SQLServerManager16.msc` |
    | [!INCLUDE [ssSQL19](../includes/sssql19-md.md)] | `C:\Windows\SysWOW64\SQLServerManager15.msc` |
    | [!INCLUDE [ssSQL17](../includes/sssql17-md.md)] | `C:\Windows\SysWOW64\SQLServerManager14.msc` |

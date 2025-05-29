@@ -1,8 +1,8 @@
 ---
 title: "Work with Sample Console Script FilesExecuting the SSMA Console"
 description: "Working with the Sample Console Script FilesExecuting the SSMA Console (AccessToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: ssma

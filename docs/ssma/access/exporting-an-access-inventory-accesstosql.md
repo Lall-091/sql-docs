@@ -1,8 +1,8 @@
 ---
 title: "Exporting an Access inventory (AccessToSQL)"
 description: "Exporting an Access inventory (AccessToSQL)"
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 07/10/2023
 ms.service: sql

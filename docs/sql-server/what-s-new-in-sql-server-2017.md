@@ -17,7 +17,7 @@ SQL Server 2017 represents a major step towards making SQL Server a platform tha
 :::image type="icon" source="../includes/media/download.svg"::: **[Download SQL Server 2017 Release - October 2017](https://go.microsoft.com/fwlink/?LinkID=829477)**
 
 > [!NOTE]
-> In addition to the changes below, cumulative updates are released at regular intervals after the GA release. These cumulative updates provide many improvements and fixes. For information about the latest CU release, see [SQL Server 2017 Cumulative updates](https://aka.ms/sql2017cu).
+> In addition to the changes below, cumulative updates are released at regular intervals after the GA release. These cumulative updates provide many improvements and fixes. For information about the latest CU release, see [SQL Server 2017 build versions](/troubleshoot/sql/releases/sqlserver-2017/build-versions).
 
 ## SQL Server 2017 Database Engine
 

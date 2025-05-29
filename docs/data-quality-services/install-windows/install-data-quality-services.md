@@ -14,6 +14,8 @@ ms.custom: intro-installation
 
 [!INCLUDE [SQL Server - Windows only](../../includes/applies-to-version/sql-windows-only.md)]
 
+[!INCLUDE [support-notice](../includes/support-notice.md)]
+
 [!INCLUDE[ssDQSnoversionLong](../../includes/ssdqsnoversionlong-md.md)] (DQS) contains the following two components: **[!INCLUDE[ssDQSServer](../../includes/ssdqsserver-md.md)]** and **[!INCLUDE[ssDQSClient](../../includes/ssdqsclient-md.md)]**.  
   
 |DQS Component|Description|  

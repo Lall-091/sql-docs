@@ -1,8 +1,8 @@
 ---
 title: "Save Metadata (Db2ToSQL)"
 description: Save Metadata lets you load metadata into your SSMA for Db2 project before saving it.
-author: cpichuka
-ms.author: cpichuka
+author: nilabjaball
+ms.author: niball
 ms.reviewer: randolphwest
 ms.date: 09/24/2024
 ms.service: sql

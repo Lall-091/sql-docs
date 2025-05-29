@@ -287,7 +287,7 @@ _SSDT for Visual Studio 2017._
 | Integration Services (SSIS) | Fixed an issue that **Preview** button doesn't work on the OLE DB source when connecting to a SQL Server Analysis Services (SSAS) data source. |
 | Integration Services (SSIS) | Fixed an issue that removing an input or output of a data flow component before removing the associated path might cause a COMException error. |
 | Integration Services (SSIS) | Fixed an issue that the SSAS Processing task can't connect to a Power BI workspace and refresh its models. |
-| Integration Services (SSIS) | Fixed an issue that Visual Studio hangs on debugging script task/component when using x64 runtime and targeting SQL Server 2017. |
+| Integration Services (SSIS) | Fixed an issue that Visual Studio stops responding on debugging script task/component when using x64 runtime and targeting SQL Server 2017. |
 | Integration Services (SSIS) | Fixed an issue that the Import/Export wizard crashes when selecting a MySQL driver in some environments. |
 | Integration Services (SSIS) | Fixed some issues related to accessibility and high DPI. |
 | Integration Services (SSIS) | Allow users to skip validation when opening packages, which improves performance. For more information, see [Accelerate opening SSIS packages in SSDT](https://techcommunity.microsoft.com/t5/sql-server-integration-services/accelerate-the-opening-of-ssis-package-in-ssdt/ba-p/1607099). |
@@ -336,7 +336,7 @@ _SSDT for Visual Studio 2017._
 | Power Query Source might not support OData v4 when SSIS and SSAS are installed on the same Visual Studio instance. | &nbsp; |
 | Power Query Source might not support using ODBC to connect to Oracle when SSIS and SSAS are installed on the same Visual Studio instance. | &nbsp; |
 | Power Query Source isn't localized | &nbsp; |
-| When targeting SQL Server 2017 and SxS with SQL Server 2017 patched with CU19 or later CU, debugging packages containing Script Task/Component with breakpoints hangs if Run64BitRuntime is set to true. | &nbsp; |
+| When targeting SQL Server 2017 and SxS with SQL Server 2017 patched with CU19 or later CU, debugging packages containing Script Task/Component with breakpoints stops responding if Run64BitRuntime is set to true. | &nbsp; |
 
 #### 15.9.4,&nbsp; SSDT for VS 2017
 
