@@ -120,7 +120,7 @@ ORDER BY
 The following example finds the 10 most similar articles to the `Pink Floyd music style` in the `wikipedia_articles_embeddings` table.
 
 ```sql
-DECLARE @qv VECTOR(1536) = AI_GENERATE_EMBEDDING(N'Pink Floyd music style' model Ada2Embeddings);
+DECLARE @qv VECTOR(1536) = AI_GENERATE_EMBEDDING(N'Pink Floyd music style' USE MODEL Ada2Embeddings);
 SELECT 
     t.id, s.distance, t.title
 FROM
@@ -147,7 +147,7 @@ CREATE TABLE #t (
 INSERT INTO 
   #t
 SELECT 
-    id, q, ai_generate_embeddings(q model Ada2Embeddings)
+    id, q, ai_generate_embeddings(q USE MODEL Ada2Embeddings)
 FROM
     (VALUES 
         (1, N'four legged furry animal'),
