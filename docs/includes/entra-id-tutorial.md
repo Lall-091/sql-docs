@@ -52,7 +52,7 @@ In this tutorial, you learn how to:
 > netsh winhttp set proxy proxy-server="<http://proxyserver:port>"
 > ```
 >
-> Microsoft Entra ID authentication does not utililze the Arc agent proxy setting. The Arc Agent proxy can be set using the following commands (replace `<http://proxyserver:port>` with the appropriate value):
+> Microsoft Entra ID authentication does not utilize the Arc agent proxy setting. The Arc Agent proxy can be set using the following commands (replace `<http://proxyserver:port>` with the appropriate value):
 >
 > ```console
 > azcmagent config set proxy.url "<http://proxyserver:port>"
