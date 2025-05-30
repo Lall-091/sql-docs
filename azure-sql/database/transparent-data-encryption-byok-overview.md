@@ -175,17 +175,21 @@ To avoid issues while establishing or during geo-replication, when automatic rot
 
 ## Inaccessible TDE protector
 
-When TDE is configured to use a customer-managed key, continuous access to the TDE protector is required for the database to stay online. If the server loses access to the customer-managed TDE protector in AKV, in up to 10 minutes a database starts denying all connections with the corresponding error message and change its state to *Inaccessible*. The only action allowed on a database in the Inaccessible state is deleting it.
+When TDE is configured to use a customer-managed key, continuous access to the TDE protector is required for the database to stay online. If the server loses access to the customer-managed TDE protector in Azure Key Vault, in up to 10 minutes a database starts denying all connections with the corresponding error message and change its state to *Inaccessible*. The only action allowed on a database in the Inaccessible state is deleting it.
 
-> [!NOTE]  
-> If the database is inaccessible due to an intermittent networking outage, there's no action required and the databases will come back online automatically. To mitigate the impact of network errors or outages while trying to access the TDE protector in Azure Key Vault, a 24 hour buffer has been introduced before the service attempts to move the database to an inaccessible state. If a failover occurs before reaching the inaccessible state, the database becomes unavailable due to the loss of the encryption cache.
+### Inaccessible state
 
-After access to the key is restored, taking database back online requires extra time and steps, which might vary based on the time elapsed without access to the key and the size of the data in the database:
+If the database is inaccessible due to an intermittent networking outage (such as a 5XX error), no action is required, as the databases will come back online automatically. To reduce the impact of network errors or outages when accessing the TDE protector in Azure Key Vault, a 24-hour buffer has been introduced before the service attempts to move the database to an inaccessible state. If a failover occurs before reaching the inaccessible state, the database becomes unavailable due to the loss of the encryption cache.
 
-> [!NOTE]
-> - If key access is restored within 30 minutes, the database will autoheal within the next hour.
-> - If key access is restored after more than 30 minutes, autoheal of the database isn't possible. Bringing back the database requires extra steps on the Azure portal and can take a significant amount of time depending on the size of the database.
-> - Once the database is back online, previously configured server-level settings that might include [failover group](failover-group-sql-db.md) configuration, tags, and database-level settings such as elastic pools configuration, read scale, auto pause, point-in-time-restore history, long term retention policy, and others will be lost. Therefore, it's recommended that customers implement a notification system that identifies loss of encryption key access within 30 minutes. Once the 30-minutes window has expired, we recommend validating all server and database level settings on the recovered database.
+If the server loses access to the customer-managed TDE protector in Azure Key Vault due to any [Azure Key Vault error](#accidental-tde-protector-access-revocation) (such as a 4XX error), the database will be moved to an inaccessible state after 30 minutes.
+
+### Restore database access after an Azure Key Vault error
+
+After access to the key is restored, bringing the database back online requires additional time and steps, which may vary based on the duration of key unavailability and the size of the data within the database.
+
+If key access is restored within 30 minutes, the database will automatically heal within the subsequent hour. However, if key access is restored after more than 30 minutes, automatic healing of the database is not possible. In such cases, restoring the database involves extra procedures through the Azure portal and can be time-consuming, depending on the database's size.
+
+Once the database is back online, previously configured server-level settings, including failover group configurations, tags, and database-level settings such as elastic pool configurations, read scale, auto pause, point-in-time restore history, long-term retention policy, and others will be lost. Hence, it's recommended that customers implement a notification system to detect the loss of encryption key access within 30 minutes. After the 30-minute window has expired, we advise validating all server and database level settings on the recovered database.
 
 Below is a view of the extra steps required on the portal to bring an inaccessible database back online.
 
@@ -316,6 +320,8 @@ For more information, see [Azure Key Vault availability and redundancy](/azure/k
 - Use the zone-redundant option of Azure SQL MI and Azure SQL DB to increase resilience. For more information, see [What are Azure availability zones?](/azure/reliability/availability-zones-overview).
 
 - Use failover groups for Azure SQL MI and Azure SQL DB for disaster recovery to a secondary region. For more information, see [Failover groups overview & best practices](failover-group-sql-db.md).
+
+- When a database is part of active geo-replication or failover groups and becomes [inaccessible](#inaccessible-tde-protector), the SQL control plane breaks the link and converts the database into a standalone database. After fixing the key permissions, the primary database can typically be brought back online. The secondary database cannot be brought back online because Azure SQL does not take full backups for secondary databases by design. The recommendation is to drop the secondary databases and re-establish the link.
 
 - The configuration might require a more complex DNS zone if private endpoints are used in Azure SQL (for example, it can't create two private endpoints to the same resource in the same DNS zone).
 
