@@ -26,7 +26,7 @@ In this tutorial, you'll learn how to:
 > - Configure availability group (AG) resources in the Pacemaker cluster
 > - Test a failover and the fencing agent
 
-[!INCLUDE [bias-sensitive-term-t](../../../docs/includes/bias-sensitive-term-t.md)]
+[!INCLUDE [bias-sensitive-term-t](../../includes/bias-sensitive-term-t.md)]
 
 This tutorial uses the Azure CLI to deploy resources in Azure.
 

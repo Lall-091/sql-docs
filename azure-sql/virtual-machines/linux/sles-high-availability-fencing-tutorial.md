@@ -1111,7 +1111,7 @@ If the `synchronization_state_desc` lists SYNCHRONIZED for `db1`, this means the
 
 ## Create availability group resources in the Pacemaker cluster
 
-[!INCLUDE [bias-sensitive-term-t](../../../docs/includes/bias-sensitive-term-t.md)]
+[!INCLUDE [bias-sensitive-term-t](../../includes/bias-sensitive-term-t.md)]
 
 This article references the guide to [create the availability group resources in a Pacemaker cluster](/sql/linux/sql-server-linux-create-availability-group#create-the-availability-group-resources-in-the-pacemaker-cluster-external-only).
 

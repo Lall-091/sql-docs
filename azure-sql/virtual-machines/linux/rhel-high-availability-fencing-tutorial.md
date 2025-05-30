@@ -938,7 +938,7 @@ If the `synchronization_state_desc` lists SYNCHRONIZED for `db1`, this means the
 
 We follow the guide to [create the availability group resources in the Pacemaker cluster](/sql/linux/sql-server-linux-create-availability-group#create-the-availability-group-resources-in-the-pacemaker-cluster-external-only).
 
-[!INCLUDE [bias-sensitive-term-t](../../../docs/includes/bias-sensitive-term-t.md)]
+[!INCLUDE [bias-sensitive-term-t](../../includes/bias-sensitive-term-t.md)]
 
 ### Create the AG cluster resource
 

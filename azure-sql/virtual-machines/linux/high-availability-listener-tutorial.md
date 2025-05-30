@@ -28,7 +28,7 @@ You'll learn how to:
 > - Test connecting to the listener
 > - Testing a failover
 
-[!INCLUDE [bias-sensitive-term-t](../../../docs/includes/bias-sensitive-term-t.md)]
+[!INCLUDE [bias-sensitive-term-t](../../includes/bias-sensitive-term-t.md)]
 
 ## Prerequisite
 
