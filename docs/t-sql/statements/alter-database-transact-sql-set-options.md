@@ -4054,7 +4054,7 @@ Can disable V-Order behavior. For more information, see [disabling V-Order behav
 
 #### TIMESTAMP
 
-Updates the timestamp for an existing warehouse snapshot in Fabric Data Warehouse. The timestamp must be provided in UTC time zone. For more information, see [Warehouse snapshots](/fabric/data-warehouse/warehouse-snapshot). For examples, see [Create and manage warehouse snapshots](/fabric/data-warehouse/create-warehouse-snapshot).
+Updates the timestamp for an existing warehouse snapshot in Fabric Data Warehouse. The timestamp must be provided in UTC time zone. For more information, see [Warehouse snapshots](/fabric/data-warehouse/warehouse-snapshot).
 
 ## Permissions
 
