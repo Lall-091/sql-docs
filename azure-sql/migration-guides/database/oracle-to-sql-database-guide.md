@@ -288,4 +288,4 @@ The Data SQL Engineering team developed these resources. This team's core charte
 - [Cloud Adoption Framework for Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
 - [Best practices for costing and sizing workloads for migration to Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs)
 - [Cloud Migration Resources](https://azure.microsoft.com/migration/resources)
-- 
+

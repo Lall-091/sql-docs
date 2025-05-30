@@ -479,7 +479,7 @@ To add failover clustering features, complete the following steps on both SQL Se
 1. Select **Install**.
 
 > [!NOTE]
-> You can now automate this task, along with actually joining the SQL Server VMs to the failover cluster, by using the [Azure CLI](./availability-group-az-commandline-configure.md) and [Azure quickstart templates](availability-group-quickstart-template-configure.md).
+> You can now automate this task, along with actually joining the SQL Server VMs to the failover cluster, by using the [Azure CLI](./availability-group-az-commandline-configure.md) and [Azure Quickstart Templates](availability-group-quickstart-template-configure.md).
 
 ### Tune network thresholds for a failover cluster
 

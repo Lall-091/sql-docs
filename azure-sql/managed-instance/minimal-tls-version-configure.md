@@ -58,7 +58,7 @@ Set-AzSqlInstance -Name sql-instance-name -ResourceGroupName resource-group -Min
 ## Set Minimal TLS Version via Azure CLI
 
 > [!IMPORTANT]
-> All scripts in this section requires [Azure CLI](/cli/azure/install-azure-cli).
+> All scripts in this section require [Azure CLI](/cli/azure/install-azure-cli).
 
 ### Azure CLI in a bash shell
 

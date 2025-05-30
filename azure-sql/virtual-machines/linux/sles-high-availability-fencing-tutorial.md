@@ -163,7 +163,7 @@ You should get the following results once the command completes:
    This tutorial uses `SUSE:sles-15-sp3-byos:gen1:2022.11.10`.
 
    > [!IMPORTANT]  
-   > Machine names must be less than 15 characters in length to set up an availability group. Usernames can't contain upper case characters, and passwords must have between 12 and 72 characters.
+   > Machine names must be fewer than 15 characters in length to set up an availability group. Usernames can't contain upper case characters, and passwords must have between 12 and 72 characters.
 
 1. Create three VMs in the availability set. Replace these values in the following command:
 

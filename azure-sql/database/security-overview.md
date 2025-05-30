@@ -39,7 +39,7 @@ IP firewall rules grant access to databases based on the originating IP address 
 [Virtual network rules](vnet-service-endpoint-rule-overview.md) enable Azure SQL Database to only accept communications that are sent from selected subnets inside a virtual network.
 
 > [!NOTE]  
-> Controlling access with firewall rules doesn't* apply to **SQL Managed Instance**. For more information about the networking configuration needed, see [Connecting to a managed instance](../managed-instance/connect-application-instance.md)
+> Controlling access with firewall rules doesn't apply to **SQL Managed Instance**. For more information about the networking configuration needed, see [Connecting to a managed instance](../managed-instance/connect-application-instance.md)
 
 ## Access management
 
@@ -69,7 +69,7 @@ Authentication is the process of proving the user is who they claim to be. SQL D
     To enable Windows authentication for Microsoft Entra principals, you'll turn your Microsoft Entra tenant into an independent Kerberos realm and create an incoming trust in the customer domain. Learn [how Windows authentication for Azure SQL Managed Instance is implemented with Microsoft Entra ID and Kerberos](../managed-instance/winauth-implementation-aad-kerberos.md).
 
 > [!IMPORTANT]  
-> Managing databases and servers within Azure is controlled by your portal user account's role assignments. For more information on this article, see [Azure role-based access control in Azure portal](/azure/role-based-access-control/overview). Controlling access with firewall rules doesn't* apply to **SQL Managed Instance**. Visit the following article on [connecting to a managed instance](../managed-instance/connect-application-instance.md) for more information about the networking configuration needed.
+> Managing databases and servers within Azure is controlled by your portal user account's role assignments. For more information on this article, see [Azure role-based access control in Azure portal](/azure/role-based-access-control/overview). Controlling access with firewall rules doesn't apply to **SQL Managed Instance**. Visit the following article on [connecting to a managed instance](../managed-instance/connect-application-instance.md) for more information about the networking configuration needed.
 
 ## Authorization
 

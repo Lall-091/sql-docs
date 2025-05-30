@@ -425,7 +425,7 @@ To add failover clustering features, complete the following steps on both SQL Se
 1. Select **Install**.
 
 > [!NOTE]
-> You can now automate this task, along with actually joining the SQL Server VMs to the failover cluster, by using the [Azure CLI](./availability-group-az-commandline-configure.md) and [Azure quickstart templates](availability-group-quickstart-template-configure.md).
+> You can now automate this task, along with actually joining the SQL Server VMs to the failover cluster, by using the [Azure CLI](./availability-group-az-commandline-configure.md) and [Azure Quickstart Templates](availability-group-quickstart-template-configure.md).
 
 ### Tune network thresholds for a failover cluster
 
@@ -447,7 +447,7 @@ To open these ports on a Windows Firewall, follow these steps:
 1. For **Rule Type**, choose **Port**.
 1. For the port, specify **TCP** and type the appropriate port numbers. See the following example:
 
-   :::image type="content" source="./media/availability-group-manually-configure-prerequisites-tutorial-multi-subnet/17-firewall-tcp-ports.png" alt-text="Screenshot of configuring a new rule for the Windows firewall.":::
+   :::image type="content" source="./media/availability-group-manually-configure-prerequisites-tutorial-multi-subnet/17-firewall-tcp-ports.png" alt-text="Screenshot of configuring a new rule for the Windows Firewall.":::
 
 1. Select **Next**.
 1. On the **Action** page, select **Allow the connection** , and then select **Next**.

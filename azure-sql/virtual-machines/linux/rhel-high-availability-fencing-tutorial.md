@@ -85,9 +85,9 @@ You should get the following results once the command completes:
 ## Create RHEL VMs inside the availability set
 
 > [!WARNING]  
-> If you choose a Pay-As-You-Go (PAYG) RHEL image, and configure high availability (HA), you might be required to register your subscription. This can cause you to pay twice for the subscription, as you'll be charged for the Microsoft Azure RHEL subscription for the VM, and a subscription to Red Hat. For more information, see https://access.redhat.com/solutions/2458541.
+> If you choose a pay-as-you-go RHEL image, and configure high availability (HA), you might be required to register your subscription. This can cause you to pay twice for the subscription, as you'll be charged for the Microsoft Azure RHEL subscription for the VM, and a subscription to Red Hat. For more information, see https://access.redhat.com/solutions/2458541.
 >  
-> To avoid being "double billed", use a RHEL HA image when creating the Azure VM. Images offered as RHEL-HA images are also PAYG images with HA repo pre-enabled.
+> To avoid being "double billed", use a RHEL HA image when creating the Azure VM. Images offered as RHEL-HA images are also pay-as-you-go images with HA repo pre-enabled.
 
 1. Get a list of virtual machine images that offer RHEL with HA:
 
@@ -211,7 +211,7 @@ You should get the following results once the command completes:
     If you do use one of the above images to create the virtual machines, it has [!INCLUDE [sssql19-md](../../../docs/includes/sssql19-md.md)] preinstalled. Skip the [Install SQL Server and mssql-tools](#install-sql-server-and-mssql-tools) section as described in this article.
 
     > [!IMPORTANT]  
-    > Machine names must be less than 15 characters to set up availability group. Username can't contain upper case characters, and passwords must have more than 12 characters.
+    > Machine names must be fewer than 15 characters to set up availability group. Username can't contain upper case characters, and passwords must have more than 12 characters.
 
 1. We want to create 3 VMs in the availability set. Replace these values in the following command:
 
@@ -595,7 +595,7 @@ sudo firewall-cmd --reload
 ## Install SQL Server and mssql-tools
 
 > [!NOTE]  
-> If you have created the VMs with [!INCLUDE [sssql19-md](../../../docs/includes/sssql19-md.md)] pre-installed on RHEL8-HA then you can skip the below steps to install SQL Server and mssql-tools and start the **Configure an Availability Group** section after you setup the sa password on all the VMs by running the command `sudo /opt/mssql/bin/mssql-conf set-sa-password` on all VMs.
+> If you have created the VMs with [!INCLUDE [sssql19-md](../../../docs/includes/sssql19-md.md)] pre-installed on RHEL8-HA then you can skip the below steps to install SQL Server and mssql-tools and start the **Configure an Availability Group** section after you set up the sa password on all the VMs by running the command `sudo /opt/mssql/bin/mssql-conf set-sa-password` on all VMs.
 
 Use the below section to install SQL Server and mssql-tools on the VMs. You can choose one of the below samples to install [!INCLUDE [sssql17-md](../../../docs/includes/sssql17-md.md)] on RHEL 7 or [!INCLUDE [sssql19-md](../../../docs/includes/sssql19-md.md)] on RHEL 8. Perform each of these actions on all nodes. For more information, see [Install SQL Server on a Red Hat VM](/sql/linux/quickstart-install-connect-red-hat).
 
