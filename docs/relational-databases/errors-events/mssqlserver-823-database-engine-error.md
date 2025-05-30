@@ -44,7 +44,7 @@ Error: 823, Severity: 24, State: 2.
 You may or may not see errors from the DBCC CHECKDB statement on the database that is associated with the file in the error message. You can run the DBCC CHECKDB statement when you see an 823 error. If the DBCC CHECKDB statement does not report any errors, you probably have an intermittent system problem or a disk problem.
 
 Additional diagnostic information for 823 errors may be written to the SQL Server error log file when you use trace flag 818.
-For more information, see [KB 826433: Additional SQL Server diagnostics added to detect unreported I/O problems](https://support.microsoft.com/help/826433/sql-server-diagnostics-added-to-detect-unreported-i-o-problems-due-to)
+For more information, see [SQL Server diagnostics detects unreported I/O problems due to stale reads or lost writes](/troubleshoot/sql/database-engine/database-file-operations/diagnostics-for-unreported-io-problems).
 
 
 ## Cause

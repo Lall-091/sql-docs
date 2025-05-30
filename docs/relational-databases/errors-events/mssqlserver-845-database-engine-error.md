@@ -55,8 +55,6 @@ Try the following to prevent this error from occurring:
    - The [lightweight pooling (fiber mode) option](../../database-engine/configure-windows/lightweight-pooling-server-configuration-option.md)
    - The [set working set size option](../../database-engine/configure-windows/set-working-set-size-server-configuration-option.md)
 
-    For more information see [HOW TO: Determine Proper SQL Server Configuration Settings](https://support.microsoft.com/EN-US/help/319942)
-
 - Tune queries to reduce resources used on the system. Performance tuning will help reduce the stress on a system and improve response time for individual queries
 - Set the AutoShrink property to OFF to reduce the overhead of changes to your database size
 - Make sure you set the AutoGrow property to increments that are large enough to be infrequent. Schedule a job to check the available space in your databases, and then increase the database size during non-peak hours.

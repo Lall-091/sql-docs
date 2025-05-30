@@ -202,7 +202,7 @@ Microsoft Defender for SQL is a unified package for advanced SQL security capabi
 
 ### Data encryption
 
-SQL Database helps secure your data by providing encryption. For data in motion, it uses [transport layer security](https://support.microsoft.com/kb/3135244). For data at rest, it uses [transparent data encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql). For data in use, it uses [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine).
+SQL Database helps secure your data by providing encryption. For data in motion, it uses [transport layer security](/troubleshoot/sql/database-engine/connect/tls-1-2-support-microsoft-sql-server). For data at rest, it uses [transparent data encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql). For data in use, it uses [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine).
 
 ### Data discovery and classification
 
@@ -265,5 +265,5 @@ Azure SQL Database backups are managed automatically. No one has direct access t
   - [Azure CLI samples for SQL Database](az-cli-script-samples-content-guide.md)
   - [Azure PowerShell samples for SQL Database](powershell-script-content-guide.md)
 
-- For information about new capabilities as they're announced, see [Azure Roadmap for SQL Database](https://azure.microsoft.com/roadmap/?category=databases).
+- For information about new capabilities as they're announced, see [Azure Updates](https://azure.microsoft.com/updates/).
 - See the [Azure SQL Database blog](https://azure.microsoft.com/blog/topics/database), where SQL Server product team members blog about SQL Database news and features.

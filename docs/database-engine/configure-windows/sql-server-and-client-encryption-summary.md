@@ -51,7 +51,7 @@ Alternatively, you can check the encryption status of [!INCLUDE [ssnoversion-md]
 
 ## See also
 
-- [TLS 1.2 support for Microsoft SQL Server](https://support.microsoft.com/help/3135244)
+- [TLS 1.2 support for Microsoft SQL Server](/troubleshoot/sql/database-engine/connect/tls-1-2-support-microsoft-sql-server)
 - [Securing SQL Server](../../relational-databases/security/securing-sql-server.md)
 
 ## Next steps

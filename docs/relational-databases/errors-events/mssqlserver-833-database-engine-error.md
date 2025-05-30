@@ -255,7 +255,7 @@ PAGEIOLATCH_* and writelog waits in sys.dm_os_wait_stats dynamic management view
 **References**
 
 - [Use DISKSPD to test workload storage performance](/azure-stack/hci/manage/diskspd-overview)
-- [826433 SQL Server diagnostics added to detect unreported I/O problems due to stale reads or lost writes](https://support.microsoft.com/help/826433)
+- [SQL Server diagnostics detects unreported I/O problems due to stale reads or lost writes](/troubleshoot/sql/database-engine/database-file-operations/diagnostics-for-unreported-io-problems)
 - [Logging and data storage algorithms](/troubleshoot/sql/admin/logging-data-storage-algorithms)
 
 SQL Server requires that systems support "guaranteed delivery to stable media" as outlined under the [SQL Server I/O Reliability Program Requirements](https://download.microsoft.com/download/f/1/e/f1ecc20c-85ee-4d73-baba-f87200e8dbc2/sql_server_io_reliability_program_review_requirements.pdf). For more information about the input and output requirements for the SQL Server database engine, visit [Database Engine Input/Output requirements](/troubleshoot/sql/admin/database-engine-input-output-requirements).

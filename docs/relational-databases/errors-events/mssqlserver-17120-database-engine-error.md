@@ -87,7 +87,7 @@ Diagnose other errors and on the system and retry the operation.
    SQL Server could not spawn FRunCommunicationsManager thread. Check the SQL Server error log and the Windows event logs for information about possible related problems.
    ```
 
-   Ensure you configure TLS correctly for SQL Server. For information on updates needed, see [TLS 1.2 support for Microsoft SQL Server](https://support.microsoft.com/en-us/topic/kb3135244-tls-1-2-support-for-microsoft-sql-server-e4472ef8-90a9-13c1-e4d8-44aad198cdbe)
+   Ensure you configure TLS correctly for SQL Server. For information on updates needed, see [TLS 1.2 support for Microsoft SQL Server](/troubleshoot/sql/database-engine/connect/tls-1-2-support-microsoft-sql-server).
 
 1. **Resolve encryption certificates issues** Another common issue is the misconfiguration of TLS/SSL certificates leading to SQL Server not being able to start and start a thread.
 
