@@ -1935,7 +1935,7 @@
     - name: SQLCMD
       href: /sql/tools/sqlcmd-utility
     - name: SqlPackage
-      href: /sql/tools/sqlpackage/sqlpackage-utility
+      href: /sql/tools/sqlpackage/
 
   - name: Languages & code
     items: 
