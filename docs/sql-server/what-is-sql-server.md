@@ -7,6 +7,8 @@ ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: overview
+ms.custom:
+  - build-2025
 ---
 
 # What is SQL Server?

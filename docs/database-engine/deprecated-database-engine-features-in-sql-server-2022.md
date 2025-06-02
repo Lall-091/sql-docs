@@ -12,6 +12,8 @@ ms.topic: conceptual
 helpviewer_keywords:
   - "deprecated changes 2022 [SQL Server]"
 monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16"
+ms.custom:
+  - build-2025
 ---
 # Deprecated Database Engine features in SQL Server 2022 (16.x)
 

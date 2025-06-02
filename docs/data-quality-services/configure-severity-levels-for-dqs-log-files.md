@@ -15,6 +15,8 @@ helpviewer_keywords:
   - "dqs log files,severity levels"
   - "logging,severity levels"
   - "configure severity levels"
+ms.custom:
+  - build-2025
 ---
 # Configure Severity Levels for DQS Log Files
 

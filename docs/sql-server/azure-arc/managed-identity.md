@@ -9,6 +9,8 @@ ms.service: sql
 ms.topic: how-to
 # CustomerIntent: As a database engineer I need to understand how to implement managed identity with SQL Server 2025.
 monikerRange: ">=sql-server-ver17"
+ms.custom:
+  - build-2025
 ---
 # Managed identity (preview) | SQL Server enabled by Azure Arc
 

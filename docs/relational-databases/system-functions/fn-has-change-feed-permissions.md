@@ -10,6 +10,7 @@ ms.subservice: system-objects
 ms.topic: "reference"
 ms.custom:
   - ignite-2024
+  - build-2025
 f1_keywords:
   - "sys.fn_has_change_feed_permissions_TSQL"
   - "sys.fn_has_change_feed_permissions"

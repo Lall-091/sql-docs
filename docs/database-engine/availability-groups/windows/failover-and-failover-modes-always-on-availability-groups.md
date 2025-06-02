@@ -13,6 +13,8 @@ helpviewer_keywords:
   - "Availability Groups [SQL Server], failover modes"
   - "failover [SQL Server], AlwaysOn Availability Groups"
   - "failover [SQL Server], Always On Availability Groups"
+ms.custom:
+  - build-2025
 ---
 # Failover and Failover Modes (Always On Availability Groups)
 [!INCLUDE [SQL Server](../../../includes/applies-to-version/sqlserver.md)]

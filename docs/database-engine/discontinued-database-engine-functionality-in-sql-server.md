@@ -33,6 +33,8 @@ helpviewer_keywords:
   - "FASTFIRSTROW hint"
   - "SET DISABLE_DEF_CNST_CHK"
 monikerRange: ">=sql-server-linux-2017 || >=sql-server-2016"
+ms.custom:
+  - build-2025
 ---
 # Discontinued Database Engine functionality in SQL Server
 

@@ -11,6 +11,8 @@ helpviewer_keywords:
   - "JSON, path expressions"
   - "path expressions (JSON)"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+ms.custom:
+  - build-2025
 ---
 # JSON Path Expressions (SQL Server)
 

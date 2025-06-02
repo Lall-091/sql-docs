@@ -11,6 +11,8 @@ ms.topic: concept-article
 helpviewer_keywords:
   - "Query Store secondary replicas"
 monikerRange: ">=sql-server-ver16"
+ms.custom:
+  - build-2025
 ---
 # Query Store for readable secondaries
 

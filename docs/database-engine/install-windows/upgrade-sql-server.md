@@ -9,6 +9,7 @@ ms.subservice: install
 ms.topic: quickstart
 ms.custom:
   - intro-quickstart
+  - build-2025
 helpviewer_keywords:
   - "upgrading SQL Server"
 monikerRange: ">=sql-server-2016"

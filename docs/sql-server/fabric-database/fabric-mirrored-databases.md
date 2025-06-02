@@ -8,6 +8,8 @@ ms.date: 02/20/2025
 ms.service: fabric
 ms.topic: conceptual
 monikerRange: "=azuresqldb-current||=azuresqldb-mi-current||=fabric||>= sql-server-ver17"
+ms.custom:
+  - build-2025
 ---
 # Microsoft Fabric mirrored databases
 [!INCLUDE [asdb-asdbmi-fabric](../../includes/applies-to-version/sqlserver2025-asdb-asdbmi-fabric.md)]

@@ -43,6 +43,8 @@ helpviewer_keywords:
   - "cross-language support"
   - "disk space [SQL Server]"
   - "localized SQL Server versions"
+ms.custom:
+  - build-2025
 ---
 # Hardware and software requirements for SQL Server 2019
 

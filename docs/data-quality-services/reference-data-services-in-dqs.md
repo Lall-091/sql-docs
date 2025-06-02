@@ -7,6 +7,8 @@ ms.date: "10/01/2012"
 ms.service: sql
 ms.subservice: data-quality-services
 ms.topic: concept-article
+ms.custom:
+  - build-2025
 ---
 # Reference Data Services in DQS
 

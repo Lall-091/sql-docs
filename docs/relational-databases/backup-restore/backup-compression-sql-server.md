@@ -14,6 +14,8 @@ helpviewer_keywords:
   - "backups [SQL Server], compression"
   - "backing up [SQL Server], backup compression"
   - "backup compression [SQL Server]"
+ms.custom:
+  - build-2025
 ---
 # Backup compression (SQL Server)
 

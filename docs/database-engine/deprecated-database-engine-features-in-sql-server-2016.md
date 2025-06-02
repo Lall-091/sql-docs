@@ -13,6 +13,8 @@ helpviewer_keywords:
   - "deprecated features [SQL Server]"
   - "Database Engine [SQL Server], backward compatibility"
   - "deprecation [SQL Server], feature list"
+ms.custom:
+  - build-2025
 ---
 # Deprecated Database Engine features in SQL Server 2016 (13.x)
 

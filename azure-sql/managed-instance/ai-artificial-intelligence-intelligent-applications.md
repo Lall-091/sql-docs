@@ -9,8 +9,9 @@ ms.service: azure-sql-managed-instance
 ms.topic: conceptual
 ms.collection:
   - ce-skilling-ai-copilot
-ms.custom:
 monikerRange: "=azuresql || =azuresql-db || =fabricsql"
+ms.custom:
+  - build-2025
 ---
 # Intelligent applications with Azure SQL Managed Instance
 

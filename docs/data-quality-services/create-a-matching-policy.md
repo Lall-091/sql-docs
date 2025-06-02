@@ -11,6 +11,8 @@ f1_keywords:
   - "sql13.dqs.kb.kbmatchingmap.f1"
   - "sql13.dqs.kb.kbmatchingpolicy.f1"
   - "sql13.dqs.kb.kbmatchingresults.f1"
+ms.custom:
+  - build-2025
 ---
 # Create a Matching Policy
 

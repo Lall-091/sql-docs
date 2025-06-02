@@ -14,6 +14,8 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 monikerRange:  "= sql-server-ver17 || = sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
+ms.custom:
+  - build-2025
 ---
 
 # Regular expressions functions (Transact-SQL) preview

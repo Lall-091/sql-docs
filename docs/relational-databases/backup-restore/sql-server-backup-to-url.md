@@ -7,7 +7,9 @@ ms.reviewer: mathoma, wiassaf, hudequei
 ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: backup-restore
-ms.custom: devx-track-azurepowershell
+ms.custom:
+  - devx-track-azurepowershell
+  - build-2025
 ms.topic: conceptual
 monikerRange: ">=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
 ---

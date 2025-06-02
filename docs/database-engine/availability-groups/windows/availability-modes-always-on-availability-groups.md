@@ -14,6 +14,8 @@ helpviewer_keywords:
   - "Availability Groups [SQL Server], synchronous commit"
   - "asynchronous-commit availability mode"
   - "Availability Groups [SQL Server], availability modes"
+ms.custom:
+  - build-2025
 ---
 # Differences between availability modes for an Always On availability group
 [!INCLUDE [SQL Server](../../../includes/applies-to-version/sqlserver.md)]

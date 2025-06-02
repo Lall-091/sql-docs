@@ -10,6 +10,7 @@ ms.subservice: polybase
 ms.topic: "overview"
 ms.custom:
   - intro-overview
+  - build-2025
 f1_keywords:
   - "PolyBase"
   - "PolyBase, guide"

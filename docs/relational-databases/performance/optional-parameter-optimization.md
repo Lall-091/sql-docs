@@ -9,6 +9,8 @@ ms.service: sql
 ms.topic: concept-article
 # CustomerIntent: As a database engineer, I want to understand the capabilities of the Optional parameter plan optimization feature in SQL Server 2025 so that I can effectively implement and support this technology.
 monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17"
+ms.custom:
+  - build-2025
 ---
 
 # Optional parameter plan optimization (OPPO)

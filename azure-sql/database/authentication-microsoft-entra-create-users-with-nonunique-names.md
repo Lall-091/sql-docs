@@ -11,6 +11,7 @@ ms.subservice: security
 ms.topic: conceptual
 ms.custom:
   - ignite-2024
+  - build-2025
 monikerRange: "=azuresql || =azuresql-db || =azuresql-mi || =fabricsql"
 ---
 

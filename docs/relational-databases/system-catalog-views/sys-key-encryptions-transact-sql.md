@@ -18,6 +18,8 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+ms.custom:
+  - build-2025
 ---
 # sys.key_encryptions (Transact-SQL)
 

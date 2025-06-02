@@ -11,6 +11,8 @@ ms.topic: "reference"
 dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-ver17 || >=sql-server-linux-ver17"
+ms.custom:
+  - build-2025
 ---
 # sys.external_models (Transact-SQL)
 

@@ -11,6 +11,8 @@ ms.topic: reference
 dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric || >=sql-server-2016"
+ms.custom:
+  - build-2025
 ---
 
 # JARO_WINKLER_DISTANCE (Transact-SQL) preview

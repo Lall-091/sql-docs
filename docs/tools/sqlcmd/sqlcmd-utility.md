@@ -13,6 +13,7 @@ ms.collection:
 ms.custom:
   - linux-related-content
   - ignite-2024
+  - build-2025
 helpviewer_keywords:
   - "statements [SQL Server], command prompt"
   - "go-sqlcmd"

@@ -10,6 +10,8 @@ ms.subservice: vs-code-sql-extensions
 ms.topic: overview
 ms.collection:
   - data-tools
+ms.custom:
+  - build-2025
 ---
 
 # What is the MSSQL extension for Visual Studio Code?

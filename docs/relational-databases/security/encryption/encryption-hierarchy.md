@@ -10,6 +10,7 @@ ms.subservice: security
 ms.topic: conceptual
 ms.custom:
   - ignite-2024
+  - build-2025
 helpviewer_keywords:
   - "encryption [SQL Server], hierarchies"
   - "cryptography [SQL Server], hierarchies"

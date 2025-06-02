@@ -6,8 +6,9 @@ ms.author: prdasgu
 ms.reviewer: mikeray, randolphwest, mathoma, vanto
 ms.date: 05/19/2025
 ms.topic: how-to
-ms.custom: 
 monikerRange: ">= sql-server-ver17 || >= sql-server-linux-ver17"
+ms.custom:
+  - build-2025
 ---
 # Back up to URL with managed identity (preview) - SQL Server enabled by Azure Arc
 

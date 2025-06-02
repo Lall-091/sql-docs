@@ -18,6 +18,8 @@ dev_langs:
   - "TSQL"
 monikerRange: "= azuresqldb-current"
 ms.collection: ce-skilling-ai-copilot
+ms.custom:
+  - build-2025
 ---
 # VECTOR_NORM (Transact-SQL) (Preview)
 

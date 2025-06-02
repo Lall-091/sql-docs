@@ -10,6 +10,8 @@ ms.subservice: vs-code-sql-extensions
 ms.topic: include
 ms.collection:
   - data-tools
+ms.custom:
+  - build-2025
 ---
 
 To help us refine and improve GitHub Copilot for the MSSQL extension, use the following GitHub issue template to submit your feedback: [GitHub Copilot Feedback](https://aka.ms/vscode-mssql-copilot-feedback)

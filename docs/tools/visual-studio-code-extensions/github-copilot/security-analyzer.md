@@ -12,6 +12,8 @@ ms.collection:
   - data-tools
   - ce-skilling-ai-copilot
 ai-usage: ai-assisted
+ms.custom:
+  - build-2025
 ---
 
 # Quickstart: Security Analyzer (Preview)

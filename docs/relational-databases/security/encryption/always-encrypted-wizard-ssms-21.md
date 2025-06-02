@@ -13,6 +13,8 @@ f1_keywords:
 helpviewer_keywords:
   - "Wizard, Always Encrypted"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+ms.custom:
+  - build-2025
 ---
 
 # Configure column encryption using Always Encrypted Wizard in SSMS 21

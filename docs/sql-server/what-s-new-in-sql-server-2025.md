@@ -10,6 +10,7 @@ ms.subservice: release-landing
 ms.topic: whats-new
 ms.custom:
   - intro-whats-new
+  - build-2025
 monikerRange: ">=sql-server-2016"
 ---
 

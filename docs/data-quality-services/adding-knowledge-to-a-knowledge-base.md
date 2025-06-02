@@ -7,6 +7,8 @@ ms.date: "06/04/2013"
 ms.service: sql
 ms.subservice: data-quality-services
 ms.topic: conceptual
+ms.custom:
+  - build-2025
 ---
 # Adding Knowledge to a Knowledge Base
 

@@ -9,6 +9,8 @@ ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
 monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-current || =azuresqldb-mi-current"
+ms.custom:
+  - build-2025
 ---
 
 # TDS 8.0

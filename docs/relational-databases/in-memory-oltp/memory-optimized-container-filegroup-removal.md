@@ -9,6 +9,8 @@ ms.service: sql
 ms.subservice: in-memory-oltp
 ms.topic: concept-article
 monikerRange: ">=sql-server-ver17 || >=sql-server-linux-ver17"
+ms.custom:
+  - build-2025
 ---
 
 # Memory-optimized container and filegroup removal

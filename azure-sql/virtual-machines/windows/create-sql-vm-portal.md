@@ -9,6 +9,8 @@ ms.service: azure-vm-sql-server
 ms.subservice: deployment
 ms.topic: how-to
 tags: azure-resource-manager
+ms.custom:
+  - build-2025
 ---
 # Provision SQL Server on Azure VM (Azure portal)
 

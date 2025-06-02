@@ -32,6 +32,8 @@ helpviewer_keywords:
   - "editions [SQL Server], about edition options"
   - "Setup [SQL Server]"
 monikerRange: ">= sql-server-2016"
+ms.custom:
+  - build-2025
 ---
 # Editions and supported features of SQL Server 2025 Preview
 

@@ -7,6 +7,8 @@ ms.service: sql
 ms.topic: concept-article
 ms.date: 05/30/2025
 monikerRange: " >= sql-server-ver17 || >= sql-server-linux-ver17 "
+ms.custom:
+  - build-2025
 ---
 
 # Tempdb space resource governance

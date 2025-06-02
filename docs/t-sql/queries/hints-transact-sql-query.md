@@ -11,6 +11,7 @@ ms.topic: reference
 ms.custom:
   - build-2024
   - ignite-2024
+  - build-2025
 f1_keywords:
   - "Query_Hint_TSQL"
   - "Query_TSQL"

@@ -9,6 +9,8 @@ ms.date: 03/18/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: whats-new
+ms.custom:
+  - build-2025
 ---
 
 # What's new in Azure SQL Database? (Archive)

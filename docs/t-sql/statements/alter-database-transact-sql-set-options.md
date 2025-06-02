@@ -28,6 +28,8 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =azuresqldb-mi-current || =fabric"
+ms.custom:
+  - build-2025
 ---
 # ALTER DATABASE SET options (Transact-SQL)
 

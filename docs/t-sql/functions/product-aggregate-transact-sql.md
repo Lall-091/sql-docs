@@ -23,6 +23,8 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 monikerRange: "=fabric || =sql-server-ver17 || =sql-server-linux-ver17"
+ms.custom:
+  - build-2025
 ---
 
 # PRODUCT (Transact-SQL)

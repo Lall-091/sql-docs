@@ -7,6 +7,8 @@ ms.service: sql
 ms.topic: overview
 ms.date: 05/19/2025
 monikerRange: "=azuresqldb-current || =fabric"
+ms.custom:
+  - build-2025
 ---
 
 # What is fuzzy string matching?

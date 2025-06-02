@@ -8,6 +8,8 @@ ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
+ms.custom:
+  - build-2025
 ---
 # Server configuration: availability group commit time (ms)
 

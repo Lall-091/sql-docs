@@ -14,6 +14,8 @@ helpviewer_keywords:
   - "change tracking [SQL Server]"
   - "data [SQL Server], changing"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+ms.custom:
+  - build-2025
 ---
 # About Change Tracking (SQL Server)
 

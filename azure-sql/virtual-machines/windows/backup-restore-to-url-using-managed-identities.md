@@ -8,6 +8,8 @@ ms.date: 02/16/2025
 ms.service: azure-vm-sql-server
 ms.subservice: security
 ms.topic: how-to
+ms.custom:
+  - build-2025
 ---
 # Backup and restore to URL using managed identities
 

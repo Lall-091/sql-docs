@@ -10,6 +10,7 @@ ms.topic: conceptual
 ms.custom:
   - P360
   - ignite-2024
+  - build-2025
 helpviewer_keywords:
   - "temporary tables [SQL Server], tempdb database"
   - "tempdb database [SQL Server], about tempdb"

@@ -7,6 +7,8 @@ ms.date: 04/16/2025
 ms.service: sql
 ms.subservice: in-memory-oltp
 ms.topic: conceptual
+ms.custom:
+  - build-2025
 ---
 
 # The memory-optimized filegroup

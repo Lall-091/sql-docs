@@ -9,6 +9,8 @@ ms.subservice: data-quality-services
 ms.topic: conceptual
 f1_keywords:
   - "sql13.dqs.dm.domainlist.f1"
+ms.custom:
+  - build-2025
 ---
 # Domain Management: Domain List
 

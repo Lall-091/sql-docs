@@ -10,6 +10,8 @@ ms.topic: how-to
 f1_keywords:
   - "sql13.dqs.dm.testdomainrule.f1"
   - "sql13.dqs.dm.rules.f1"
+ms.custom:
+  - build-2025
 ---
 # Create a Domain Rule
 

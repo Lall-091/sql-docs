@@ -8,6 +8,8 @@ ms.date: 01/21/2025
 ms.service: sql
 ms.subservice: availability-groups
 ms.topic: how-to
+ms.custom:
+  - build-2025
 ---
 # Configure a distributed Always On availability group
 

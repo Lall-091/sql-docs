@@ -8,6 +8,8 @@ ms.date: 04/28/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: reference
+ms.custom:
+  - build-2025
 ---
 # Resource management in Azure SQL Database
 

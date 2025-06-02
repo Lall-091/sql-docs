@@ -9,6 +9,7 @@ ms.service: sql
 ms.topic: "reference"
 ms.custom:
   - ignite-2024
+  - build-2025
 f1_keywords:
   - "sp_invoke_external_rest_endpoint_TSQL"
   - "sys.sp_invoke_external_rest_endpoint"

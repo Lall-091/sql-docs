@@ -8,6 +8,8 @@ ms.service: sql
 ms.topic: "reference"
 ms.date: 05/19/2025
 monikerRange: " = sql-server-ver17 || = sql-server-linux-ver17 "
+ms.custom:
+  - build-2025
 ---
 
 # JSON message format - change event streaming

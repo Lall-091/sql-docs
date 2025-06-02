@@ -10,6 +10,8 @@ ms.subservice: configuration
 ms.topic: conceptual
 helpviewer_keywords:
   - "backup compression algorithm [SQL Server], backup compression algorithm Option"
+ms.custom:
+  - build-2025
 ---
 
 # Server configuration: backup compression algorithm

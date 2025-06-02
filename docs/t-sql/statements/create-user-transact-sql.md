@@ -10,6 +10,7 @@ ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
   - ignite-2024
+  - build-2025
 f1_keywords:
   - "WITHOUT_LOGIN_TSQL"
   - "CREATE_USER_TSQL"

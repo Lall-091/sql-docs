@@ -11,6 +11,8 @@ f1_keywords:
   - "sql13.dqs.matchingproject.map.f1"
   - "sql13.dqs.matchingproject.matching.f1"
   - "sql13.dqs.matchingproject.export.f1"
+ms.custom:
+  - build-2025
 ---
 # Run a Matching Project
 

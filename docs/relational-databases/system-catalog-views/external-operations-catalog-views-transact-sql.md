@@ -10,6 +10,8 @@ ms.subservice: system-objects
 ms.topic: "reference"
 dev_langs:
   - "TSQL"
+ms.custom:
+  - build-2025
 ---
 # External operations catalog views (Transact-SQL)
 

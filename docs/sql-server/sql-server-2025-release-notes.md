@@ -9,6 +9,8 @@ ms.service: sql
 ms.subservice: release-landing
 ms.topic: release-notes
 monikerRange: ">= sql-server-2016"
+ms.custom:
+  - build-2025
 ---
 
 # SQL Server 2025 Preview release notes

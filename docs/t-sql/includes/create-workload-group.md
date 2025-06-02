@@ -5,6 +5,8 @@ ms.reviewer: dfurman
 ms.date: 04/15/2025
 ms.service: sql
 ms.topic: include
+ms.custom:
+  - build-2025
 ---
 
 Creates a resource governor workload group and associates the workload group with a resource governor resource pool.

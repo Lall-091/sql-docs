@@ -12,6 +12,8 @@ f1_keywords:
   - "sql13.dqs.kb.viewselectcd.f1"
   - "sql13.dqs.kb.kbanalyze.f1"
   - "sql13.dqs.kb.kbmap.f1"
+ms.custom:
+  - build-2025
 ---
 # Perform Knowledge Discovery
 

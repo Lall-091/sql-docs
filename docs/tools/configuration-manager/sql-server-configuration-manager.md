@@ -23,6 +23,8 @@ helpviewer_keywords:
   - "configuration manager [SQL Server]"
 ai-usage: ai-assisted
 monikerRange: ">=sql-server-2016"
+ms.custom:
+  - build-2025
 ---
 
 # SQL Server Configuration Manager

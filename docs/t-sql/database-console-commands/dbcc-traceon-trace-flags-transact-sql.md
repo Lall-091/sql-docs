@@ -18,6 +18,8 @@ helpviewer_keywords:
   - "debugging [SQL Server], trace flags"
 dev_langs:
   - "TSQL"
+ms.custom:
+  - build-2025
 ---
 # DBCC TRACEON - Trace Flags (Transact-SQL)
 

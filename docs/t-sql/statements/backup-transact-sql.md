@@ -44,6 +44,8 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 monikerRange: ">=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||>=aps-pdw-2016"
+ms.custom:
+  - build-2025
 ---
 # BACKUP (Transact-SQL)
 

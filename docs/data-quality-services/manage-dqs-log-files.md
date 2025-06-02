@@ -11,6 +11,8 @@ helpviewer_keywords:
   - "logging"
   - "log files"
   - "dqs log files"
+ms.custom:
+  - build-2025
 ---
 # Manage DQS Log Files
 

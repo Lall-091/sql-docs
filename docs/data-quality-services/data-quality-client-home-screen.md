@@ -9,6 +9,8 @@ ms.subservice: data-quality-services
 ms.topic: conceptual
 f1_keywords:
   - "sql13.dqs.clienthome.f1"
+ms.custom:
+  - build-2025
 ---
 # Data Quality Client Home Screen
 

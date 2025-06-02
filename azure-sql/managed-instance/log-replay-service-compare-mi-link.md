@@ -9,8 +9,9 @@ ms.date: 04/14/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: migration
 ms.topic: conceptual
-ms.custom: 
 monikerRange: "= azuresql || = azuresql-mi"
+ms.custom:
+  - build-2025
 ---
 # Compare LRS with Managed Instance link
 [!INCLUDE [appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

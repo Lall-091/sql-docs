@@ -14,6 +14,8 @@ helpviewer_keywords:
   - "data quality project,rename"
   - "data quality project,unlock"
   - "data quality project,open"
+ms.custom:
+  - build-2025
 ---
 # Open, unlock, rename, and delete a Data Quality Project - Data Quality Services (DQS)
 

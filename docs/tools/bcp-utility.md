@@ -12,6 +12,7 @@ ms.collection:
   - data-tools
 ms.custom:
   - ignite-2024
+  - build-2025
 helpviewer_keywords:
   - "bcp utility [SQL Server]"
   - "exporting data"

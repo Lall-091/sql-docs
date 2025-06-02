@@ -11,6 +11,8 @@ helpviewer_keywords:
   - "enable notifications"
   - "notifications,enable"
   - "notifications,disable"
+ms.custom:
+  - build-2025
 ---
 # Enable or Disable Profiling Notifications in DQS
 

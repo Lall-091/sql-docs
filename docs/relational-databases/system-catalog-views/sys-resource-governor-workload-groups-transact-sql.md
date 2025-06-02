@@ -17,6 +17,8 @@ helpviewer_keywords:
   - "sys.resource_governor_workload_groups catalog view"
 dev_langs:
   - "TSQL"
+ms.custom:
+  - build-2025
 ---
 
 # sys.resource_governor_workload_groups (Transact-SQL)

@@ -9,6 +9,8 @@ ms.subservice: data-quality-services
 ms.topic: how-to
 f1_keywords:
   - "sql13.dqs.dm.domainproperties.f1"
+ms.custom:
+  - build-2025
 ---
 # Set Domain Properties
 

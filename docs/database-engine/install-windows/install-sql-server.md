@@ -12,6 +12,8 @@ helpviewer_keywords:
   - "installing SQL Server, preparing to install"
   - "installation [SQL Server]"
 monikerRange: ">=sql-server-2016"
+ms.custom:
+  - build-2025
 ---
 # SQL Server installation guide
 

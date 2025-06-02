@@ -10,6 +10,8 @@ ms.topic: how-to
 f1_keywords:
   - "sql13.dqs.dm.testcdrule.f1"
   - "sql13.dqs.dm.cdrules.f1"
+ms.custom:
+  - build-2025
 ---
 # Create a Cross-Domain Rule
 

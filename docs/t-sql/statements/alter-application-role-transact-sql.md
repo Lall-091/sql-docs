@@ -17,6 +17,8 @@ helpviewer_keywords:
   - "application roles [SQL Server], modifying"
 dev_langs:
   - "TSQL"
+ms.custom:
+  - build-2025
 ---
 
 # ALTER APPLICATION ROLE (Transact-SQL)

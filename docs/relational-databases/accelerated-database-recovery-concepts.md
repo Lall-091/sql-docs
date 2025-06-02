@@ -10,6 +10,7 @@ ms.subservice: backup-restore
 ms.topic: conceptual
 ms.custom:
   - ignite-2024
+  - build-2025
 helpviewer_keywords:
   - "accelerated database recovery [SQL Server], recovery-only"
   - "database recovery [SQL Server]"

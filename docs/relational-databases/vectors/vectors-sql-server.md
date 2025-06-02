@@ -11,6 +11,7 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.custom:
   - intro-quickstart
+  - build-2025
 helpviewer_keywords:
   - "Vectors"
   - "Vectors, built-in support"

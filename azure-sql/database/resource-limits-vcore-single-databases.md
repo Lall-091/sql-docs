@@ -10,6 +10,7 @@ ms.subservice: service-overview
 ms.topic: reference
 ms.custom:
   - sqldbrb=1
+  - build-2025
 ---
 # Resource limits for single databases using the vCore purchasing model
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

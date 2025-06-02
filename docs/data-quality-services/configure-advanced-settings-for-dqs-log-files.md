@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "log files,advanced settings"
   - "dqs log files,advanced settings"
+ms.custom:
+  - build-2025
 ---
 # Configure Advanced Settings for DQS Log Files
 

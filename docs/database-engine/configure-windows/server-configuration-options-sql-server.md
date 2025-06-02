@@ -27,6 +27,8 @@ helpviewer_keywords:
   - "server configuration [SQL Server]"
   - "administering SQL Server, configuration options"
 keywords: server configuration (SQL Server)
+ms.custom:
+  - build-2025
 ---
 
 # Server configuration options

@@ -16,6 +16,8 @@ helpviewer_keywords:
   - "active secondary replicas [SQL Server], backup on"
   - "automated backup preference"
   - "Availability Groups [SQL Server], active secondary replicas"
+ms.custom:
+  - build-2025
 ---
 # Offload supported backups to secondary replicas of an availability group
 

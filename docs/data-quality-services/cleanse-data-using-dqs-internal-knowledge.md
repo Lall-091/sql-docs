@@ -12,6 +12,8 @@ f1_keywords:
   - "sql13.dqs.dqproject.map.f1"
   - "sql13.dqs.dqproject.correction.f1"
   - "sql13.dqs.dqproject.export.f1"
+ms.custom:
+  - build-2025
 ---
 # Cleanse Data Using DQS (Internal) Knowledge
 
