@@ -3,7 +3,7 @@ title: "Upgrade: Installation Wizard (Setup)"
 description: The SQL Server Installation Wizard provides a single feature tree for an in-place upgrade of SQL Server components to the latest version of SQL Server.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 04/17/2025
+ms.date: 06/03/2025
 ms.service: sql
 ms.subservice: install
 ms.topic: install-set-up-deploy
@@ -46,7 +46,7 @@ If you're upgrading the [!INCLUDE [ssDE](../../includes/ssde-md.md)], review [Pl
 
 - Run the appropriate Database Console Commands (DBCC) on databases to be upgraded to ensure that they are in a consistent state.
 
-- Estimate the disk space that is required to upgrade SQL Server components, in addition to user databases. For disk space that is required by SQL Server components, see [SQL Server 2016 and 2017: Hardware and software requirements](../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server.md).
+- Estimate the disk space that is required to upgrade SQL Server components, in addition to user databases. For disk space that is required by SQL Server components, see [Hardware and software requirements for SQL Server 2016 and SQL Server 2017](../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server.md).
 
 - Ensure that existing SQL Server system databases - master, model, `msdb`, and `tempdb` - are configured to autogrow, and ensure that they have sufficient hard disk space.
 
@@ -125,7 +125,7 @@ If you're upgrading the [!INCLUDE [ssDE](../../includes/ssde-md.md)], review [Pl
 
 1. After installation, the Complete page provides a link to the summary log file for the installation and other important notes. To complete the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] installation process, select **Close**.
 
-1. If you're instructed to restart the computer, do so now. You must read the message from the Installation Wizard when you finish with Setup. For more information about Setup log files, see [View and Read SQL Server Setup Log Files](view-and-read-sql-server-setup-log-files.md).
+1. If you're instructed to restart the computer, do so now. You must read the message from the Installation Wizard when you finish with Setup. For more information about Setup log files, see [View and read SQL Server Setup log files](view-and-read-sql-server-setup-log-files.md).
 
 ## Related content
 

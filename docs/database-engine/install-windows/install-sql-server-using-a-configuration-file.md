@@ -1,39 +1,40 @@
 ---
-title: Install SQL Server using a configuration file
+title: Install SQL Server Using a Configuration File
 description: You can use SQL Server Setup to generate a configuration file to deploy SQL Server across your organization using a uniform configuration.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/21/2022
+ms.date: 06/03/2025
 ms.service: sql
 ms.subservice: install
 ms.topic: install-set-up-deploy
-ms.custom: intro-installation
+ms.custom:
+  - intro-installation
 monikerRange: ">=sql-server-2016"
 ---
 # Install SQL Server using a configuration file
 
 [!INCLUDE [SQL Server -Windows Only](../../includes/applies-to-version/sql-windows-only.md)]
 
-[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Setup can generate a configuration file based upon the system default and run-time inputs. You can use the configuration file to deploy [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] throughout the enterprise with the same configuration. You can also standardize manual installations throughout the enterprise, by creating a batch file that launches Setup.exe.
+[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Setup can generate a configuration file based upon the system default and run-time inputs. You can use the configuration file to deploy [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] throughout the enterprise with the same configuration. You can also standardize manual installations throughout the enterprise, by creating a batch file that launches Setup.exe.
 
 This article is maintained for SQL Server versions 2016 and later. For older versions of SQL Server, see [Install SQL Server 2014 Using a Configuration File](/previous-versions/sql/2014/database-engine/install-windows/install-sql-server-using-a-configuration-file?view=sql-server-2014&preserve-view=true).
 
-Setup supports the use of the configuration file only through the [command prompt](install-sql-server-from-the-command-prompt.md). The processing order of the parameters while using the configuration file is outlined below:
+Setup supports the use of the configuration file only through the [command prompt](install-sql-server-from-the-command-prompt.md). The processing order of the parameters while using the configuration file is outlined as follows:
 
 - The configuration file overwrites the defaults in a package
 
 - Command-line values overwrite the values in the configuration file
 
- The configuration file can be used to track the parameters and values for each installation. This makes the configuration file useful for verifying and auditing the installations.
+The configuration file can be used to track the parameters and values for each installation. This makes the configuration file useful for verifying and auditing the installations.
 
-> [!TIP]
-> Since configuration options may change from version to version, it's best to generate a new `ConfigurationFile.ini` for each new version of SQL Server. 
+> [!TIP]  
+> Since configuration options might change from version to version, it's best to generate a new `ConfigurationFile.ini` for each new version of SQL Server.
 
 ## Configuration file structure
 
- The `ConfigurationFile.ini` file is a text file with parameters (name/value pair) and descriptive comments.
+The `ConfigurationFile.ini` file is a text file with parameters (name/value pair) and descriptive comments.
 
- The following is an example of a `ConfigurationFile.ini` file:
+The following is an example of a `ConfigurationFile.ini` file:
 
 ::: moniker range="<=sql-server-ver15"
 
@@ -71,52 +72,52 @@ FEATURES=SQL
 
 #### How to generate a configuration file
 
-1. Insert the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] installation media. From the root folder, double-click Setup.exe. To install from a network share, locate the root folder on the share, and then double-click Setup.exe.
+1. Insert the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] installation media. From the root folder, double-click Setup.exe. To install from a network share, locate the root folder on the share, and then double-click Setup.exe.
 
    > [!NOTE]  
-   > [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Express Edition setup does not create a configuration file automatically. The following command will start  setup and create a configuration file.  
+   > [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Express Edition setup doesn't create a configuration file automatically. The following command starts setup and creates a configuration file.  
    >
    > `SETUP.exe /UIMODE=Normal /ACTION=INSTALL`
 
-1. Follow the wizard through to the **Ready to Install** page. The path to the configuration file is specified in the **Ready to Install** page in the configuration file path section. For more information about how to install [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], see [Install SQL Server from the Installation Wizard (Setup)](../../database-engine/install-windows/install-sql-server-from-the-installation-wizard-setup.md).
+1. Follow the wizard through to the **Ready to Install** page. The path to the configuration file is specified in the **Ready to Install** page in the configuration file path section. For more information about how to install [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], see [Install SQL Server from the Installation Wizard (Setup)](install-sql-server-from-the-installation-wizard-setup.md).
 
 1. Cancel the setup without actually completing the installation, to generate the INI file.
 
    > [!NOTE]  
-   > The setup infrastructure writes out all the appropriate parameters for the actions that were run, with the exception of sensitive information such as passwords. The `/IAcceptSQLServerLicenseTerms` parameter is also not written out to the configuration file and requires either a modification of the configuration file or a value to be supplied at the command prompt. For more information, see [Install SQL Server from the Command Prompt](./install-sql-server-from-the-command-prompt.md). In addition, a value is included for Boolean parameters where a value is usually not supplied through the command prompt.
+   > The setup infrastructure writes out all the appropriate parameters for the actions that were run, except for sensitive information such as passwords. The `/IAcceptSQLServerLicenseTerms` parameter is also not written out to the configuration file and requires either a modification of the configuration file or a value to be supplied at the command prompt. For more information, see [Install and configure SQL Server on Windows from the command prompt](install-sql-server-from-the-command-prompt.md). In addition, a value is included for Boolean parameters where a value is usually not supplied through the command prompt.
 
 [!INCLUDE [sql-eula-link](../../includes/sql-eula-link.md)]
 
-## Use the configuration file to install [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+## Use the configuration file to install SQL Server
 
 You can only use the configuration file on command-line installations.
 
 > [!NOTE]  
 > If you need to make changes to the configuration file, we recommend that you make a copy and work with the copy.
 
-### How to use a configuration file to install a stand-alone [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance
+### How to use a configuration file to install a stand-alone SQL Server instance
 
 - Run the installation through the command prompt and supply the `ConfigurationFile.ini` using the `ConfigurationFile` parameter.
 
-### How to use a configuration file to prepare and complete an image of a stand-alone [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance (SysPrep)
+### How to use a configuration file to prepare and complete an image of a stand-alone SQL Server instance (SysPrep)
 
-1. To prepare one or more instances of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] and configure them on the same machine.
+1. To prepare one or more instances of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] and configure them on the same machine.
 
-   - Run **Image preparation of a stand-alone instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]** from the **Advanced** page of the Installation Center and capture the prepare image configuration file.
+   - Run **Image preparation of a stand-alone instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]** from the **Advanced** page of the Installation Center and capture the prepare image configuration file.
 
-   - Use the same prepare image configuration file as a template to prepare more instances of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+   - Use the same prepare image configuration file as a template to prepare more instances of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 
-   - Run **Image completion of a prepared stand-alone instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]** from the **Advanced** page of the Installation Center to configure a prepared instance on the machine.
+   - Run **Image completion of a prepared stand-alone instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]** from the **Advanced** page of the Installation Center to configure a prepared instance on the machine.
 
-1. To prepare an image of the operating system including an unconfigured prepared instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], using Windows SysPrep tool.
+1. To prepare an image of the operating system including an unconfigured prepared instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], using Windows SysPrep tool.
 
-   - Run the **Image preparation of a stand-alone instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]** from the Advanced page of the Installation Center and capture the prepare image configuration file.
+   - Run the **Image preparation of a stand-alone instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]** from the Advanced page of the Installation Center and capture the prepare image configuration file.
 
-   - Run the **Image completion of a prepared stand-alone instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]** from the **Advanced** page of the Installation Center, but cancel it on the **Ready to Complete** page after capturing the complete configuration file.
+   - Run the **Image completion of a prepared stand-alone instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]** from the **Advanced** page of the Installation Center, but cancel it on the **Ready to Complete** page after capturing the complete configuration file.
 
    - The complete image configuration file can be stored with the Windows image for automating the configuration of the prepared instances.
 
-### How to install a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] failover cluster using the configuration file
+### How to install a SQL Server failover cluster using the configuration file
 
 1. Integrated Install option (create a single node failover cluster on a node and for additional nodes, run `AddNode` on them):
 
@@ -138,11 +139,11 @@ You can only use the configuration file on command-line installations.
 
    - You can then supply this `ConfigurationFile.ini` file to complete the failover cluster.
 
-### How to add or remove a node to a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] failover cluster using the configuration file
+### How to add or remove a node to a SQL Server failover cluster using the configuration file
 
 - If you have a configuration file that was previously used to add a node to or remove a node from a failover cluster, you can reuse that same file to add or remove additional nodes.
 
-### How to upgrade a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] failover cluster using the configuration file
+### How to upgrade a SQL Server failover cluster using the configuration file
 
 1. Run upgrade on the passive node and capture the `ConfigurationFile.ini` file. You can do this either by performing the actual upgrade, or exiting at the end without doing the actual upgrade.
 
@@ -176,8 +177,8 @@ Setup.exe /SQLSVCPASSWORD="************" /AGTSVCPASSWORD="************" /ASSVCPA
 
 ::: moniker-end
 
-## See also
+## Related content
 
-- [Install SQL Server from the Command Prompt](./install-sql-server-from-the-command-prompt.md)
+- [Install and configure SQL Server on Windows from the command prompt](install-sql-server-from-the-command-prompt.md)
 - [SQL Server Failover Cluster Installation](../../sql-server/failover-clusters/install/sql-server-failover-cluster-installation.md)
-- [Upgrade a SQL Server Failover Cluster Instance](../../sql-server/failover-clusters/windows/upgrade-a-sql-server-failover-cluster-instance.md)
+- [Upgrade a failover cluster instance](../../sql-server/failover-clusters/windows/upgrade-a-sql-server-failover-cluster-instance.md)

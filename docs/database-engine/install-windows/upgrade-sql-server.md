@@ -21,7 +21,7 @@ You can upgrade instances of [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)],
 
 Check out what's new in each version of the product:
 
-- [SQL Server 2025 release notes](../../sql-server/sql-server-2025-release-notes.md)
+- [SQL Server 2025 Preview release notes](../../sql-server/sql-server-2025-release-notes.md)
 - [SQL Server 2022 release notes](../../sql-server/sql-server-2022-release-notes.md)
 - [SQL Server 2019 release notes](../../sql-server/sql-server-2019-release-notes.md)
 - [SQL Server 2017 release notes](../../sql-server/sql-server-2017-release-notes.md)
@@ -52,7 +52,7 @@ The following articles help you upgrade components of SQL Server:
 - [Upgrade to a different edition of SQL Server (Setup)](upgrade-to-a-different-edition-of-sql-server-setup.md)
 - [SQL Server end of support options](../../sql-server/end-of-support/sql-server-end-of-support-overview.md)
 
- <sup>1</sup> DQS, MDS, and Reporting Services upgrades aren't supported on [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
+<sup>1</sup> DQS, MDS, and Reporting Services upgrades aren't supported on [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
 
 ## Related content
 

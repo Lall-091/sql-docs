@@ -61,7 +61,7 @@ When you have a distribution database in a failover cluster instance, make sure 
 
 [!INCLUDE [replication-compat-matrix-transactional](../../includes/replication-compat-matrix-transactional.md)]
 
-### Merge replication compatibility matrix   
+### Merge replication compatibility matrix
 
 [!INCLUDE [replication-compat-matrix-merge](../../includes/replication-compat-matrix-merge.md)]
 
