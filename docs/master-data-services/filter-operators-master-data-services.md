@@ -7,6 +7,8 @@ ms.date: "03/06/2017"
 ms.service: sql
 ms.subservice: master-data-services
 ms.topic: conceptual
+ms.custom:
+  - build-2025
 ---
 # Filter Operators (Master Data Services)
 

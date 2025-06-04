@@ -10,6 +10,8 @@ ms.topic: how-to
 f1_keywords:
   - "sql13.dqs.kb.selectkb.f1"
   - "sql13.dqs.kb.newkb.f1"
+ms.custom:
+  - build-2025
 ---
 # Create a Knowledge Base
 

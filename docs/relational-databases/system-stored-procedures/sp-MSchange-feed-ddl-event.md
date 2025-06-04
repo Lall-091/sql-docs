@@ -10,6 +10,7 @@ ms.subservice: system-objects
 ms.topic: "reference"
 ms.custom:
   - ignite-2024
+  - build-2025
 f1_keywords:
   - "sys.sp_MSchange_feed_ddl_event_TSQL"
   - "sys.sp_MSchange_feed_ddl_event"

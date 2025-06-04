@@ -10,6 +10,8 @@ ms.topic: conceptual
 helpviewer_keywords:
   - "annotations [Master Data Services]"
   - "annotations [Master Data Services], about annotations"
+ms.custom:
+  - build-2025
 ---
 # Annotations (Master Data Services)
 

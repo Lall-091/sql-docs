@@ -13,6 +13,8 @@ helpviewer_keywords:
   - "permissions [Master Data Services], leaf members"
   - "leaf members [Master Data Services], attribute permissions"
   - "attributes [Master Data Services], leaf member attribute permissions"
+ms.custom:
+  - build-2025
 ---
 # Leaf Permissions (Master Data Services)
 

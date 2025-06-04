@@ -7,6 +7,8 @@ ms.date: "01/05/2017"
 ms.service: sql
 ms.subservice: master-data-services
 ms.topic: conceptual
+ms.custom:
+  - build-2025
 ---
 # Business Rule Examples (Master Data Services)
 

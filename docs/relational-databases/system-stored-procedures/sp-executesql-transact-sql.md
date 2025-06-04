@@ -4,7 +4,7 @@ description: sp_executesql executes a Transact-SQL statement or batch that can b
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 03/07/2025
+ms.date: 06/04/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -163,7 +163,7 @@ Being able to substitute parameters in `sp_executesql` offers the following adva
 
 ### OPTIMIZED_SP_EXECUTESQL
 
-**Applies to:** [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]
+**Applies to:** [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)]
 
 When the OPTIMIZED_SP_EXECUTESQL [database scoped configuration](../../t-sql/statements/alter-database-scoped-configuration-transact-sql.md#optimized_sp_executesql---on--off-) is enabled, the compilation behavior of batches submitted using `sp_executesql` becomes identical to the serialized compilation behavior that objects such as stored procedures and triggers currently employ.
 

@@ -8,6 +8,8 @@ ms.service: sql
 ms.subservice: master-data-services
 ms.topic: whats-new
 monikerRange: ">=sql-server-ver16"
+ms.custom:
+  - build-2025
 ---
 # What's New in Master Data Services (MDS)
 

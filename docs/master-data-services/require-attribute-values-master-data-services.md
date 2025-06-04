@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "business rules [Master Data Services], requiring attribute values"
   - "attributes [Master Data Services], requiring values"
+ms.custom:
+  - build-2025
 ---
 # Require Attribute Values (Master Data Services)
 

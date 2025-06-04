@@ -12,6 +12,8 @@ helpviewer_keywords:
   - "groups [Master Data Services]"
   - "users [Master Data Services], about users"
   - "groups [Master Data Services], about groups"
+ms.custom:
+  - build-2025
 ---
 # Users and Groups (Master Data Services)
 

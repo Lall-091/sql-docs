@@ -11,6 +11,7 @@ ms.topic: how-to
 ms.custom:
   - engagement-fy23
   - linux-related-content
+  - build-2025
 monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017"
 ---
 

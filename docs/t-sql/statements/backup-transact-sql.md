@@ -44,6 +44,8 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 monikerRange: ">=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||>=aps-pdw-2016"
+ms.custom:
+  - build-2025
 ---
 # BACKUP (Transact-SQL)
 
@@ -351,7 +353,7 @@ Is a placeholder that indicates that a single BACKUP statement can contain up to
 Specifies options to be used with a backup operation.
 
 #### CREDENTIAL
-**Applies to**: [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] (starting with[!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] SP1 CU2).
+**Applies to**: [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] (starting with [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] SP1 CU2).
 
 Used only when creating a backup to Azure Blob Storage.
 

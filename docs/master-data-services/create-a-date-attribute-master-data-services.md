@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "creating date attributes [Master Data Services]"
   - "attributes [Master Data Services], creating date attributes"
+ms.custom:
+  - build-2025
 ---
 # Create a Date Attribute (Master Data Services)
 

@@ -4,6 +4,8 @@ ms.author: randolphwest
 ms.date: 05/02/2025
 ms.service: sql
 ms.topic: include
+ms.custom:
+  - build-2025
 ---
 The following table describes the editions of [!INCLUDE [ssnoversion-md](../ssnoversion-md.md)].
 

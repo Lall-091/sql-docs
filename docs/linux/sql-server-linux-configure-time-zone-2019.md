@@ -10,6 +10,7 @@ ms.subservice: linux
 ms.topic: install-set-up-deploy
 ms.custom:
   - linux-related-content
+  - build-2025
 ---
 # Configure the time zone for SQL Server 2019 on Linux
 

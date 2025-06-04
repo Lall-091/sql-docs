@@ -12,6 +12,8 @@ helpviewer_keywords:
   - "groups [Master Data Services], deleting"
   - "users [Master Data Services], deleting"
   - "deleting users [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Delete Users or Groups (Master Data Services)
 

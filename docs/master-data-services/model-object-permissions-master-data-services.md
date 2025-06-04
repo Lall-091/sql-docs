@@ -10,6 +10,8 @@ ms.topic: conceptual
 helpviewer_keywords:
   - "permissions [Master Data Services], model objects"
   - "models [Master Data Services], object permissions"
+ms.custom:
+  - build-2025
 ---
 # Model Object Permissions (Master Data Services)
 

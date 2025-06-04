@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "creating explicit hierarchies [Master Data Services]"
   - "explicit hierarchies, creating"
+ms.custom:
+  - build-2025
 ---
 # Create an Explicit Hierarchy (Master Data Services)
 

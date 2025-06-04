@@ -7,7 +7,9 @@ ms.date: "03/24/2017"
 ms.service: sql
 ms.subservice: master-data-services
 ms.topic: conceptual
-ms.custom: intro-installation
+ms.custom:
+  - intro-installation
+  - build-2025
 ---
 # Installation Tasks for Master Data Services
 

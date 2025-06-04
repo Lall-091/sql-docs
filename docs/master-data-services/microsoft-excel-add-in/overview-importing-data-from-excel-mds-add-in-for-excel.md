@@ -7,7 +7,9 @@ ms.date: "03/01/2017"
 ms.service: sql
 ms.subservice: master-data-services
 ms.topic: concept-article
-ms.custom: microsoft-excel-add-in
+ms.custom:
+  - microsoft-excel-add-in
+  - build-2025
 ---
 # Overview: Importing Data from Excel (MDS Add-in for Excel)
 

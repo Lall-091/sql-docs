@@ -7,7 +7,9 @@ ms.date: "02/14/2017"
 ms.service: sql
 ms.subservice: master-data-services
 ms.topic: quickstart
-ms.custom: intro-quickstart
+ms.custom:
+  - intro-quickstart
+  - build-2025
 keywords: learn sql
 ---
 # Learn SQL Server Master Data Services

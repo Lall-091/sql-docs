@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "permissions [Master Data Services], assigning functional area permissions"
   - "functional area permissions [Master Data Services], assigning"
+ms.custom:
+  - build-2025
 ---
 # Assign Functional Area Permissions (Master Data Services)
 

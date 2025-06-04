@@ -7,6 +7,8 @@ ms.date: "07/31/2012"
 ms.service: sql
 ms.subservice: data-quality-services
 ms.topic: conceptual
+ms.custom:
+  - build-2025
 ---
 # Using the DQS Default Knowledge Base
 

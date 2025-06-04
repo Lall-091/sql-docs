@@ -4,6 +4,8 @@ ms.author: mikeray
 ms.date: 12/23/2024
 ms.service: sql
 ms.topic: include
+ms.custom:
+  - build-2025
 ---
 
 An expression of a character string.

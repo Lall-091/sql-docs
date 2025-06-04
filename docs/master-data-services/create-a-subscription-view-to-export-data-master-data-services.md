@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "subscription views [Master Data Services], creating"
   - "creating subscription views [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Create a Subscription View to Export Data (Master Data Services)
 

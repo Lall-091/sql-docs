@@ -10,6 +10,7 @@ ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
   - build-2024
+  - build-2025
 helpviewer_keywords:
   - "JSON data type"
 monikerRange: "=azuresqldb-current||=azuresqldb-mi-current"

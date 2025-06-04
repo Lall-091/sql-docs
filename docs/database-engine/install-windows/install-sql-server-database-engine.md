@@ -3,7 +3,7 @@ title: "Install SQL Server Database Engine"
 description: Learn about features that can be installed when you select SQL Server Database Engine from Components to Install of the SQL Server Installation Wizard.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/25/2024
+ms.date: 06/03/2025
 ms.service: sql
 ms.subservice: install
 ms.topic: install-set-up-deploy
@@ -56,7 +56,7 @@ The following features are installed when you select **SQL Server Database Engin
     > [!NOTE]  
     > In this release, selecting the **Data Quality Services** check box in setup doesn't install the Data Quality Services (DQS) server. You'll have to perform additional steps post installation to install DQS server. For more information, see [Install Data Quality Services](../../data-quality-services/install-windows/install-data-quality-services.md).
 
-- [PolyBase Query Service for External Data](../../relational-databases/polybase/polybase-guide.md) - is an optional component. In [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], a Java connector for HDFS data sources is also available.
+- [Data virtualization with PolyBase in SQL Server](../../relational-databases/polybase/polybase-guide.md) is an optional component. In [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], a Java connector for HDFS data sources is also available.
 
 The following additional features are options for many typical user scenarios:
 
@@ -69,11 +69,11 @@ The following additional features are options for many typical user scenarios:
 - Documentation components
 
 > [!NOTE]  
-> By default, sample databases and sample code aren't installed as part of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Setup. To install sample databases and sample code, see [Microsoft SQL Server Samples](../../samples/sql-samples-where-are.md). See older samples on [CodePlex](https://go.microsoft.com/fwlink/?LinkId=87843).
+> By default, sample databases and sample code aren't installed as part of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Setup. To install sample databases and sample code, see [SQL samples](../../samples/sql-samples-where-are.md). See older samples on [CodePlex](https://go.microsoft.com/fwlink/?LinkId=87843).
 
 ## Related content
 
 - [Editions and supported features of SQL Server 2022](../../sql-server/editions-and-components-of-sql-server-2022.md)
-- [Planning a SQL Server Installation](../../sql-server/install/planning-a-sql-server-installation.md)
+- [Plan a SQL Server installation](../../sql-server/install/planning-a-sql-server-installation.md)
 - [Business continuity and database recovery - SQL Server](../sql-server-business-continuity-dr.md)
 - [Upgrade SQL Server Using the Installation Wizard (Setup)](upgrade-sql-server-using-the-installation-wizard-setup.md)

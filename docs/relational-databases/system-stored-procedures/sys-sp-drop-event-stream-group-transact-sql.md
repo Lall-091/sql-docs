@@ -16,7 +16,8 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 monikerRange: " = sql-server-ver17 || = sql-server-linux-ver17 "
-
+ms.custom:
+  - build-2025
 ---
 # sys.sp_drop_event_stream_group (Transact-SQL)
 

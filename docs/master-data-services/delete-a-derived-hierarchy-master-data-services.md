@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "deleting derived hierarchies [Master Data Services]"
   - "derived hierarchies, deleting"
+ms.custom:
+  - build-2025
 ---
 # Delete a Derived Hierarchy (Master Data Services)
 

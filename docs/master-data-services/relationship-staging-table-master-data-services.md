@@ -10,6 +10,8 @@ ms.topic: conceptual
 helpviewer_keywords:
   - "relationships staging table [Master Data Services]"
   - "database [Master Data Services], relationships table"
+ms.custom:
+  - build-2025
 ---
 # Relationship Staging Table (Master Data Services)
 

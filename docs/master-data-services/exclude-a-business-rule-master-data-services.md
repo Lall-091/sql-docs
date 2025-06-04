@@ -9,6 +9,8 @@ ms.subservice: master-data-services
 ms.topic: how-to
 helpviewer_keywords:
   - "business rules [Master Data Services], excluding"
+ms.custom:
+  - build-2025
 ---
 # Exclude a Business Rule (Master Data Services)
 

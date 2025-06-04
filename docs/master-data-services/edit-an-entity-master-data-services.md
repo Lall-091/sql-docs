@@ -9,6 +9,8 @@ ms.subservice: master-data-services
 ms.topic: how-to
 helpviewer_keywords:
   - "entities [Master Data Services], changing name"
+ms.custom:
+  - build-2025
 ---
 # Edit an Entity (Master Data Services)
 

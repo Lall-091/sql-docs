@@ -8,6 +8,8 @@ ms.date: 04/28/2025
 ms.service: azure-sql-database
 ms.subservice: elastic-pools
 ms.topic: reference
+ms.custom:
+  - build-2025
 ---
 # Resource limits for elastic pools using the vCore purchasing model
 [!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]

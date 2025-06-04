@@ -4,10 +4,12 @@ description: "Learn how to configure a distributed availability group by using a
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: mathoma
-ms.date: 01/21/2025
+ms.date: 05/27/2025
 ms.service: sql
 ms.subservice: availability-groups
 ms.topic: how-to
+ms.custom:
+  - build-2025
 ---
 # Configure a distributed Always On availability group
 
@@ -17,6 +19,7 @@ To create a distributed availability group, you must create two availability gro
 
 For a technical overview of distributed availability groups, see [Distributed availability groups](distributed-availability-groups.md).
 
+
 ## Prerequisites
 
 To configure a distributed availability group, you must have the following:
@@ -25,6 +28,10 @@ To configure a distributed availability group, you must have the following:
 
 > [!NOTE]  
 > If you configured the listener for your availability group on your SQL Server on Azure VM by using a distributed network name (DNN), then configuring a distributed availability group on top of your availability group isn't supported. To learn more, see [SQL Server on Azure VM feature interoperability with AG and DNN listener](/azure/azure-sql/virtual-machines/windows/availability-group-dnn-interoperability).
+
+## Permissions
+
+Requires **CREATE AVAILABILITY GROUP** permission on the server to create an availability group and `sysadmin` to fail over a distributed availability group. 
 
 ## Set the endpoint listeners to listen to all IP addresses
 

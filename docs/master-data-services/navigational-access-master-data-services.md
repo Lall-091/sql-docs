@@ -10,6 +10,8 @@ ms.topic: conceptual
 helpviewer_keywords:
   - "navigational access [Master Data Services]"
   - "security [Master Data Services], navigational access"
+ms.custom:
+  - build-2025
 ---
 # Navigational Access (Master Data Services)
 

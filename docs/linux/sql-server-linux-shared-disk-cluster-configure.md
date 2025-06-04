@@ -10,6 +10,7 @@ ms.subservice: linux
 ms.topic: install-set-up-deploy
 ms.custom:
   - linux-related-content
+  - build-2025
 ---
 # Configure failover cluster instance - SQL Server on Linux (RHEL)
 

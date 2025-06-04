@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "permissions [Master Data Services], assigning member permissions"
   - "members [Master Data Services], assigning permissions"
+ms.custom:
+  - build-2025
 ---
 # Assign Hierarchy Member Permissions (Master Data Services)
 

@@ -1,9 +1,9 @@
 ---
-title: "Rename a computer that hosts a stand-alone instance of SQL Server"
+title: "Rename a Computer That Hosts a Stand-Alone Instance of SQL Server"
 description: When you rename a computer that hosts an instance of SQL Server, update the system metadata stored in sys.servers.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/25/2024
+ms.date: 06/03/2025
 ms.service: sql
 ms.subservice: install
 ms.topic: how-to
@@ -34,7 +34,7 @@ Before you begin the renaming process, review the following information:
 
 - [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] doesn't support renaming computers that are involved in replication, except when you use log shipping with replication. The secondary computer in log shipping can be renamed if the primary computer is permanently lost. For more information, see [Log Shipping and Replication (SQL Server)](../log-shipping/log-shipping-and-replication-sql-server.md).
 
-- When you rename a computer that is configured to use [!INCLUDE [ssRSnoversion](../../includes/ssrsnoversion-md.md)], [!INCLUDE [ssRSnoversion](../../includes/ssrsnoversion-md.md)] might not be available after the computer name change. For more information, see [Rename a Report Server Computer](../../reporting-services/report-server/rename-a-report-server-computer.md).
+- When you rename a computer that is configured to use [!INCLUDE [ssRSnoversion](../../includes/ssrsnoversion-md.md)], [!INCLUDE [ssRSnoversion](../../includes/ssrsnoversion-md.md)] might not be available after the computer name change. For more information, see [Rename a report server computer](../../reporting-services/report-server/rename-a-report-server-computer.md).
 
 - When you rename a computer that is configured to use database mirroring, you must turn off database mirroring before the renaming operation. Then, re-establish database mirroring with the new computer name. Metadata for database mirroring isn't updated automatically to reflect the new computer name. Use the following steps to update system metadata.
 
@@ -42,14 +42,15 @@ Before you begin the renaming process, review the following information:
 
 You can connect to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] by using the new computer name after you restart [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. To ensure that `@@SERVERNAME` returns the updated name of the local server instance, you should manually run the following procedure that applies to your scenario. The procedure you use depends on whether you're updating a computer that hosts a default or named instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 
-## Rename a computer that hosts a stand-alone instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]
+## Rename a computer that hosts a stand-alone instance of SQL Server
 
 - For a renamed computer that hosts a default instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], run the following procedures:
 
   ```sql
-  EXEC sp_dropserver '<old_name>';
+  EXECUTE sp_dropserver '<old_name>';
   GO
-  EXEC sp_addserver '<new_name>', local;
+
+  EXECUTE sp_addserver '<new_name>', local;
   GO
   ```
 
@@ -58,9 +59,10 @@ You can connect to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] by
 - For a renamed computer that hosts a named instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], run the following procedures:
 
   ```sql
-  EXEC sp_dropserver '<old_name\instancename>';
+  EXECUTE sp_dropserver '<old_name\instancename>';
   GO
-  EXEC sp_addserver '<new_name\instancename>', local;
+
+  EXECUTE sp_addserver '<new_name\instancename>', local;
   GO
   ```
 
@@ -93,7 +95,7 @@ To resolve the error, you must drop remote logins for this server.
 - For a default instance, run the following procedure:
 
   ```sql
-  EXEC sp_dropremotelogin old_name;
+  EXECUTE sp_dropremotelogin old_name;
   GO
   ```
 
@@ -114,4 +116,4 @@ The computer renaming operation affects client aliases that use named pipes. For
 
 ## Related content
 
-- [Install SQL Server](install-sql-server.md)
+- [SQL Server installation guide](install-sql-server.md)

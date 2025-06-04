@@ -11,6 +11,7 @@ ms.topic: get-started
 ms.custom:
   - intro-get-started
   - linux-related-content
+  - build-2025
 ---
 # Quickstart: Run SQL Server in the cloud
 

@@ -9,6 +9,8 @@ ms.service: azure-vm-sql-server
 ms.subservice: management
 ms.topic: conceptual
 tags: azure-service-management
+ms.custom:
+  - build-2025
 ---
 # Pricing guidance for SQL Server on Azure VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "attributes [Master Data Services], deleting"
   - "deleting attributes [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Delete an Attribute (Master Data Services)
 

@@ -10,6 +10,7 @@ ms.subservice: performance
 ms.topic: conceptual
 ms.custom:
   - ignite-2024
+  - build-2025
 helpviewer_keywords:
   - "optimized locking"
 dev_langs:

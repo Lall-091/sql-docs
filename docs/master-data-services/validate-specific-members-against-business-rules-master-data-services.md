@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "applying business rules [Master Data Services]"
   - "business rules [Master Data Services], applying to select members"
+ms.custom:
+  - build-2025
 ---
 # Validate Specific Members against Business Rules (Master Data Services)
 

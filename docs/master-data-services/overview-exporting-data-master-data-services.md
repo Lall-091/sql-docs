@@ -11,6 +11,8 @@ helpviewer_keywords:
   - "exporting data [Master Data Services]"
   - "subscription views [Master Data Services]"
   - "subscription views [Master Data Services], about subscription views"
+ms.custom:
+  - build-2025
 ---
 # Overview: Exporting Data (Master Data Services)
 

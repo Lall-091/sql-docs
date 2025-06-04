@@ -13,6 +13,8 @@ helpviewer_keywords:
   - "connection managers [Integration Services], ADO.NET"
   - "ADO.NET connection manager [Integration Services]"
   - "connections [Integration Services], ADO.NET"
+ms.custom:
+  - build-2025
 ---
 # ADO.NET connection manager
 

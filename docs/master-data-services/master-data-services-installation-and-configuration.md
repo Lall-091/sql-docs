@@ -7,7 +7,9 @@ ms.date: 03/24/2021
 ms.service: sql
 ms.subservice: master-data-services
 ms.topic: quickstart
-ms.custom: intro-quickstart
+ms.custom:
+  - intro-quickstart
+  - build-2025
 ---
 # Master Data Services Installation and Configuration
 

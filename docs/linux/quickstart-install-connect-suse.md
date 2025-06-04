@@ -10,6 +10,7 @@ ms.topic: quickstart
 ms.custom:
   - intro-installation
   - linux-related-content
+  - build-2025
 ---
 # Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server
 

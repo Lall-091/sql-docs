@@ -9,6 +9,7 @@ ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
 ms.custom:
+  - build-2025
   - linux-related-content
 # customer intent: As a database professional, connect to ODBC datasources from SQL Server deployments on Linux.
 monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17"

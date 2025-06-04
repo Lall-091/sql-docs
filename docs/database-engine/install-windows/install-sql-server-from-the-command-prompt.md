@@ -9,6 +9,7 @@ ms.subservice: install
 ms.topic: install-set-up-deploy
 ms.custom:
   - intro-installation
+  - build-2025
 helpviewer_keywords:
   - "installing SQL Server, command prompt"
   - "installing SQL Server, command line"

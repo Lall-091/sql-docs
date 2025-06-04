@@ -15,6 +15,8 @@ helpviewer_keywords:
   - "readable secondary replicas"
   - "Availability Groups [SQL Server], active secondary replicas"
 monikerRange: ">=sql-server-ver15||>=sql-server-linux-ver15"
+ms.custom:
+  - build-2025
 ---
 # Secondary to primary replica read/write connection redirection (Always On Availability Groups)
 

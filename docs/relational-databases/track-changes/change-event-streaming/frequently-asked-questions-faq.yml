@@ -2,7 +2,6 @@
 metadata:
   title: "Frequently Asked Questions (FAQ) for Change Event Streaming"
   description: "Find answers to common questions about the change event streaming feature for [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)]."
-  ms.custom: ""
   ms.date: 05/19/2025
   ms.service: sql
   ms.topic: conceptual
@@ -10,6 +9,7 @@ metadata:
   ms.author: sasapopo
   ms.reviewer: mathoma, mikeray
   monikerRange: " = sql-server-ver17 || = sql-server-linux-ver17 "    
+  ms.custom: build-2025
 title: Frequently Asked Questions (FAQ) for Change Event Streaming (CES)
 summary: |
   [!INCLUDE [_ss2025](../../../includes/applies-to-version/_ss2025.md)]

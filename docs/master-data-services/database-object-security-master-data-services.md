@@ -10,6 +10,8 @@ ms.topic: conceptual
 helpviewer_keywords:
   - "database [Master Data Services], object security"
   - "security [Master Data Services], database objects"
+ms.custom:
+  - build-2025
 ---
 # Database Object Security (Master Data Services)
 

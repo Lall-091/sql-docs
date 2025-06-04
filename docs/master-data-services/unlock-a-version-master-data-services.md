@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "unlocking versions [Master Data Services]"
   - "versions [Master Data Services], unlocking"
+ms.custom:
+  - build-2025
 ---
 # Unlock a Version (Master Data Services)
 

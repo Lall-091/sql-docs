@@ -7,6 +7,8 @@ ms.date: "12/20/2016"
 ms.service: sql
 ms.subservice: master-data-services
 ms.topic: conceptual
+ms.custom:
+  - build-2025
 ---
 # Master Data Manager Web Application
 

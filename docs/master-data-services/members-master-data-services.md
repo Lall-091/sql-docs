@@ -14,6 +14,8 @@ helpviewer_keywords:
   - "members [Master Data Services], about members"
   - "leaf members [Master Data Services], about leaf members"
   - "members [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Members (Master Data Services)
 

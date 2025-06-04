@@ -10,6 +10,7 @@ ms.topic: conceptual
 ms.custom:
   - intro-installation
   - linux-related-content
+  - build-2025
 ---
 # Installation guidance for SQL Server on Linux
 

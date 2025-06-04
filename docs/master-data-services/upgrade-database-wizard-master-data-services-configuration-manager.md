@@ -7,6 +7,8 @@ ms.date: "03/20/2017"
 ms.service: sql
 ms.subservice: master-data-services
 ms.topic: upgrade-and-migration-article
+ms.custom:
+  - build-2025
 ---
 # Upgrade Database Wizard (Master Data Services Configuration Manager)
 

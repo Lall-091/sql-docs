@@ -9,6 +9,7 @@ ms.subservice: install
 ms.topic: quickstart
 ms.custom:
   - intro-quickstart
+  - build-2025
 helpviewer_keywords:
   - "installing SQL Server, planning"
 ---

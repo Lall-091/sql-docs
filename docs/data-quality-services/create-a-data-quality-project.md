@@ -12,6 +12,8 @@ f1_keywords:
 helpviewer_keywords:
   - "create,data quality project"
   - "data quality project,create"
+ms.custom:
+  - build-2025
 ---
 # Create a Data Quality Project
 

@@ -10,6 +10,7 @@ ms.subservice: linux
 ms.topic: how-to
 ms.custom:
   - linux-related-content
+  - build-2025
 monikerRange: ">=sql-server-linux-ver15 || >=sql-server-ver15"
 ---
 

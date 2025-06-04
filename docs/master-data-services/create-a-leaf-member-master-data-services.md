@@ -11,6 +11,8 @@ helpviewer_keywords:
   - "leaf members [Master Data Services], creating"
   - "creating leaf members [Master Data Services]"
   - "members [Master Data Services], creating leaf members"
+ms.custom:
+  - build-2025
 ---
 # Create a Leaf Member (Master Data Services)
 

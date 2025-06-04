@@ -4,6 +4,8 @@ ms.author: randolphwest
 ms.date: 05/02/2025
 ms.service: sql
 ms.topic: include
+ms.custom:
+  - build-2025
 ---
 For a list of features supported by the editions of [!INCLUDE [ssnoversion-md](ssnoversion-md.md)] on Windows, see:
 

@@ -10,6 +10,8 @@ ms.topic: conceptual
 helpviewer_keywords:
   - "attribute groups [Master Data Services]"
   - "attribute groups [Master Data Services], about attribute groups"
+ms.custom:
+  - build-2025
 ---
 # Attribute Groups (Master Data Services)
 

@@ -10,6 +10,8 @@ ms.topic: conceptual
 helpviewer_keywords:
   - "transactions [Master Data Services], about transactions"
   - "transactions [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Transactions (Master Data Services)
 

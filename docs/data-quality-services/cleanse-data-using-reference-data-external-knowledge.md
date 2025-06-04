@@ -7,6 +7,8 @@ ms.date: "03/01/2017"
 ms.service: sql
 ms.subservice: data-quality-services
 ms.topic: how-to
+ms.custom:
+  - build-2025
 ---
 # Cleanse data using (external) knowledge reference data - Data Quality Services (DQS)
 

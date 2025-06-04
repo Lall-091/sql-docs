@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "models [Master Data Services], creating models"
   - "creating models [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Create a Model (Master Data Services)
 

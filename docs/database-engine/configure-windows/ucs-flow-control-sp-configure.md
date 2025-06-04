@@ -9,6 +9,8 @@ ms.service: sql
 ms.topic: concept-article
 helpviewer_keywords:
   - "max ucs send boxcars"
+ms.custom:
+  - build-2025
 ---
 
 # Server configuration: max ucs send boxcars

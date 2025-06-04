@@ -14,6 +14,8 @@ helpviewer_keywords:
   - "database [Master Data Services], roles"
   - "database [Master Data Services], logins"
   - "security [Master Data Services], database logins"
+ms.custom:
+  - build-2025
 ---
 # Database Logins, Users, and Roles (Master Data Services)
 

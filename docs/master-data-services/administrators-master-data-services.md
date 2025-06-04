@@ -11,6 +11,8 @@ helpviewer_keywords:
   - "administrators [Master Data Services], about administrators"
   - "administrators [Master Data Services]"
   - "models [Master Data Services], administrators"
+ms.custom:
+  - build-2025
 ---
 # Administrators (Master Data Services)
 

@@ -8,7 +8,9 @@ ms.date: 04/28/2025
 ms.service: azure-sql-database
 ms.subservice: performance
 ms.topic: troubleshooting
-ms.custom: sqldbrb=1
+ms.custom:
+  - sqldbrb=1
+  - build-2025
 ---
 
 # SQL Hyperscale performance troubleshooting diagnostics

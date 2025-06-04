@@ -7,7 +7,9 @@ ms.reviewer: mathoma
 ms.date: 11/28/2023
 ms.service: sql
 ms.subservice: security
-ms.custom: ignite-2023
+ms.custom:
+  - ignite-2023
+  - build-2025
 ms.topic: conceptual
 monikerRange: "= azuresqldb-current||>= sql-server-ver16||>= sql-server-linux-ver16||=azuresqldb-mi-current"
 ---

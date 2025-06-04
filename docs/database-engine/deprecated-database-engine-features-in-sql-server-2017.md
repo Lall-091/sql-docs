@@ -14,6 +14,8 @@ helpviewer_keywords:
   - "Database Engine [SQL Server], backward compatibility"
   - "deprecation [SQL Server], feature list"
 monikerRange: ">=sql-server-2017 || >=sql-server-linux-2017"
+ms.custom:
+  - build-2025
 ---
 # Deprecated Database Engine features in SQL Server 2017 (14.x)
 

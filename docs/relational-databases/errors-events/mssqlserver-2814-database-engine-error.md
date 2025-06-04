@@ -41,7 +41,16 @@ The following table lists the reasons for recompilation.
 |8|Query notification environment changed|  
 |9|Partition view changed|  
 |10|Cursor options changed|  
-|11|Option (recompile) requested|  
+|11|Option (recompile) requested|
+|12|Parameterized plan flushed|
+|13|Test plan linearization|
+|14|Plan affecting database version changed|
+|15|Query Store plan forcing policy changed|
+|16|Query Store plan forcing failed|
+|17|Query Store missing the plan|
+|18|Interleaved execution required recompilation|
+|19|Not a recompile|
+|20|Query Store hints changed|
   
 ## User Action  
   

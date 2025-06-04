@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "groups [Master Data Services], adding"
   - "adding groups [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Add a Group (Master Data Services)
 

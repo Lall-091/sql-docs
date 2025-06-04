@@ -11,6 +11,7 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.custom:
   - ignite-2024
+  - build-2025
 monikerRange: "=azuresql || =azuresql-db || =fabricsql"
 ---
 # Intelligent applications

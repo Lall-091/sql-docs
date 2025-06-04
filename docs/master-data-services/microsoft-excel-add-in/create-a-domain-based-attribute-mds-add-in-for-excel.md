@@ -7,7 +7,9 @@ ms.date: "07/25/2017"
 ms.service: sql
 ms.subservice: master-data-services
 ms.topic: how-to
-ms.custom: microsoft-excel-add-in
+ms.custom:
+  - microsoft-excel-add-in
+  - build-2025
 ---
 # Create a Domain-based Attribute (MDS Add-in for Excel)
 

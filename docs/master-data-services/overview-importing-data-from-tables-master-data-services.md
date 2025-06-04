@@ -11,6 +11,8 @@ helpviewer_keywords:
   - "staging process [Master Data Services], about staging process"
   - "importing data [Master Data Services]"
   - "staging process [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Overview: Importing Data from Tables (Master Data Services)
 

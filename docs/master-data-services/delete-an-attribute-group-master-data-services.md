@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "deleting attribute groups [Master Data Services]"
   - "attribute groups [Master Data Services], deleting"
+ms.custom:
+  - build-2025
 ---
 # Delete an Attribute Group (Master Data Services)
 

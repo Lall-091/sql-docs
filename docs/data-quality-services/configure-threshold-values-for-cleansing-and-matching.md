@@ -13,6 +13,8 @@ helpviewer_keywords:
   - "cleansing,threshold value"
   - "cleansing threshold values"
   - "matching,threshold value"
+ms.custom:
+  - build-2025
 ---
 # Configure threshold values for cleansing and matching - Data Quality Services (DQS)
 

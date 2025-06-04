@@ -7,6 +7,8 @@ ms.reviewer: randolphwest
 ms.date: 05/05/2025
 ms.service: sql
 ms.topic: concept-article #Don't change.
+ms.custom:
+  - build-2025
 # customer intent: As a data engineer, I want statistics that are created on readable secondaries to be persisted so that my workloads that are running against secondary replicas are optimized.
 ---
 

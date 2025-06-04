@@ -10,6 +10,7 @@ ms.subservice: system-objects
 ms.topic: "reference"
 ms.custom:
   - ignite-2024
+  - build-2025
 f1_keywords:
   - "sys.sp_change_feed_is_slo_allowed_TSQL"
   - "sys.sp_change_feed_is_slo_allowed"

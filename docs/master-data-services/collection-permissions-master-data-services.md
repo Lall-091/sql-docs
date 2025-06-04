@@ -10,6 +10,8 @@ ms.topic: conceptual
 helpviewer_keywords:
   - "collections [Master Data Services], permissions"
   - "permissions [Master Data Services], collections"
+ms.custom:
+  - build-2025
 ---
 # Collection Permissions (Master Data Services)
 

@@ -12,6 +12,8 @@ helpviewer_keywords:
   - "validating versions [Master Data Services], about validating versions"
   - "versions [Master Data Services], validating"
   - "business rules [Master Data Services], applying to all members"
+ms.custom:
+  - build-2025
 ---
 # Validate a Version against Business Rules (Master Data Services)
 

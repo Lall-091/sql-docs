@@ -9,6 +9,8 @@ ms.subservice: master-data-services
 ms.topic: how-to
 helpviewer_keywords:
   - "staging process [Master Data Services], viewing errors"
+ms.custom:
+  - build-2025
 ---
 # View Errors that Occur During Staging (Master Data Services)
 

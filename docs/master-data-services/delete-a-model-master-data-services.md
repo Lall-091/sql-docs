@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "deleting models [Master Data Services]"
   - "models [Master Data Services], deleting models"
+ms.custom:
+  - build-2025
 ---
 # Delete a Model (Master Data Services)
 

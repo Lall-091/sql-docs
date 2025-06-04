@@ -11,6 +11,8 @@ helpviewer_keywords:
   - "users [Master Data Services], resolving permissions"
   - "permissions [Master Data Services], user and group overlaps"
   - "groups [Master Data Services], resolving permissions"
+ms.custom:
+  - build-2025
 ---
 # Overlapping User and Group Permissions (Master Data Services)
 

@@ -3,11 +3,13 @@ title: "Install: PowerShell Desired State Configuration"
 description: "Install SQL Server by using PowerShell DSC and learn about the initial setup of a standalone instance of SQL Server 2017 on Windows Server 2016."
 author: randomnote1
 ms.author: dareist
-ms.date: "09/17/2021"
+ms.reviewer: randolphwest
+ms.date: 06/03/2025
 ms.service: sql
 ms.subservice: install
 ms.topic: install-set-up-deploy
-ms.custom: intro-installation
+ms.custom:
+  - intro-installation
 ms.devlang: powershell
 monikerRange: ">=sql-server-2016"
 ---
@@ -15,10 +17,10 @@ monikerRange: ">=sql-server-2016"
 # Install SQL Server with PowerShell Desired State Configuration
 
 Have you ever gone through the SQL Server installation interface just by selecting the same buttons, entering the same information, and not giving it a second thought? The installation finished, but you forgot to specify the DBA group in the **sysadmin** role. Then you had to do these things:
-* Drop into single-user mode.
-* Add the appropriate users or groups.
-* Bring SQL Server back up in multiuser mode.
-* Test. 
+- Drop into single-user mode.
+- Add the appropriate users or groups.
+- Bring SQL Server back up in multiuser mode.
+- Test.
 
 What's worse is now the confidence of the entire installation is shaken. "What else did I forget?" you might ask yourself.
 
@@ -26,7 +28,7 @@ Read about [PowerShell Desired State Configuration (DSC)](/powershell/dsc/overvi
 
 This article explores the initial setup of a standalone instance of SQL Server 2017 on Windows Server 2016 by using the **SqlServerDsc** DSC resource. Some prior knowledge of DSC is helpful as we won't explore how DSC works.
 
-> [!NOTE]
+> [!NOTE]  
 > This article refers to PowerShell 5.1, which is the default version of PowerShell installed with Windows Server 2016, 2019, and 2022.
 
 The following items are required for this walkthrough:
@@ -41,21 +43,22 @@ In most cases, DSC is used to handle the prerequisite requirements. But for the 
 
 ## Install the SqlServerDsc DSC resource
 
-Download the [SqlServerDsc](https://www.powershellgallery.com/packages/SqlServerDsc) DSC resource from the [PowerShell Gallery](https://www.powershellgallery.com/) by using the [Install-Module](/powershell/module/powershellget/Install-Module) cmdlet. 
+Download the [SqlServerDsc](https://www.powershellgallery.com/packages/SqlServerDsc) DSC resource from the [PowerShell Gallery](https://www.powershellgallery.com/) by using the [Install-Module](/powershell/module/powershellget/Install-Module) cmdlet.
 
-> [!NOTE]
+> [!NOTE]  
 > Make sure PowerShell is running **As Administrator** to install the module.
 
-```PowerShell
+```powershell
 Install-Module -Name SqlServerDsc
 ```
 
 ### Get the SQL Server 2017 installation media
+
 Download the SQL Server 2017 installation media to the server. We downloaded SQL Server 2017 Enterprise from a Visual Studio subscription and copied the ISO to `C:\en_sql_server_2017_enterprise_x64_dvd_11293666.iso`.
 
 Now the ISO must be extracted to a directory:
 
-```PowerShell
+```powershell
 New-Item -Path C:\SQL2017 -ItemType Directory
 $mountResult = Mount-DiskImage -ImagePath 'C:\en_sql_server_2017_enterprise_x64_dvd_11293666.iso' -PassThru
 $volumeInfo = $mountResult | Get-Volume
@@ -70,7 +73,7 @@ Dismount-DiskImage -ImagePath 'C:\en_sql_server_2017_enterprise_x64_dvd_11293666
 
 Create the configuration function that will be called to generate the [Managed Object Format (MOF)](/windows/desktop/WmiSdk/managed-object-format--mof-) documents:
 
-```PowerShell
+```powershell
 Configuration SQLInstall
 {...}
 ```
@@ -79,7 +82,7 @@ Configuration SQLInstall
 
 Import the modules into the current session. These modules tell the configuration document how to build the MOF documents. They also tell the DSC engine how to apply the MOF documents to the server:
 
-```PowerShell
+```powershell
 Import-DscResource -ModuleName SqlServerDsc
 ```
 
@@ -89,7 +92,7 @@ Import-DscResource -ModuleName SqlServerDsc
 
 SQL Server relies on the .NET Framework. So we need to make sure it's installed before we install SQL Server. The **WindowsFeature** resource is used to install the **Net-Framework-45-Core** Windows feature:
 
-```PowerShell
+```powershell
 WindowsFeature 'NetFramework45'
 {
      Name = 'Net-Framework-45-Core'
@@ -104,9 +107,9 @@ The **SqlSetup** resource is used to tell DSC how to install SQL Server. The par
 - **InstanceName**. The name of the instance. Use **MSSQLSERVER** for a default instance.
 - **Features**. The features to install. In this example, we install only the **SQLEngine** feature.
 - **SourcePath**. The path to the SQL installation media. In this example, we stored the SQL installation media in `C:\SQL2017`. A network share can minimize the space used on the server.
-- **SQLSysAdminAccounts**. The users or groups who are to be a member of the **sysadmin** role. In this example, we grant the local Administrators group **sysadmin** access. 
+- **SQLSysAdminAccounts**. The users or groups who are to be a member of the **sysadmin** role. In this example, we grant the local Administrators group **sysadmin** access.
 
-> [!NOTE]
+> [!NOTE]  
 > We don't recommend this configuration in a high-security environment.
 
 A full list and description of the parameters available on **SqlSetup** are available on the [SqlServerDsc GitHub repository](https://github.com/PowerShell/SqlServerDsc/tree/master#sqlsetup).
@@ -115,7 +118,7 @@ The **SqlSetup** resource installs only SQL Server and **doesn't** maintain the 
 
 #### Finish configuration
 
-```PowerShell
+```powershell
 Configuration SQLInstall
 {
      Import-DscResource -ModuleName SqlServerDsc
@@ -146,13 +149,13 @@ Configuration SQLInstall
 
 Dot source the configuration script:
 
-```PowerShell
+```powershell
 . .\SQLInstallConfiguration.ps1
 ```
 
 Run the configuration function:
 
-```PowerShell
+```powershell
 SQLInstall
 ```
 
@@ -167,7 +170,7 @@ To start the DSC deployment of SQL Server, call the **Start-DscConfiguration** c
 - **Force**. Override any existing DSC configurations.
 - **Verbose**. Show the verbose output. It's useful when you push a configuration for the first time to aid in troubleshooting.
 
-```PowerShell
+```powershell
 Start-DscConfiguration -Path C:\SQLInstall -Wait -Force -Verbose
 ```
 
@@ -179,7 +182,7 @@ As the configuration applies, the verbose output shows you what's happening. As 
 
 The [Test-DscConfiguration](/powershell/module/psdesiredstateconfiguration/test-dscconfiguration) cmdlets can determine if the current state of the server meets the desired state. In this case, it's the SQL Server installation. The result of **Test-DscConfiguration** should be **True**:
 
-```PowerShell
+```powershell
 PS C:\> Test-DscConfiguration
 True
 ```
@@ -188,7 +191,7 @@ True
 
 The services list now returns SQL Server services:
 
-```PowerShell
+```powershell
 PS C:\> Get-Service -Name *SQL*
 Status  Name           DisplayName
 ------  ----           -----------
@@ -201,17 +204,15 @@ Running SQLWriter      SQL Server VSS Writer
 
 ### SQL Server
 
-```PowerShell
+```powershell
 PS C:\> & sqlcmd -S $env:COMPUTERNAME
 1> SELECT @@SERVERNAME
 2> GO
 1> quit
 ```
 
-## See also
+## Related content
 
-[Windows PowerShell Desired State Configuration Overview](/powershell/dsc/overview)
-
-[Install SQL Server from the command prompt](../../database-engine/install-windows/install-sql-server-from-the-command-prompt.md)
-
-[Install SQL Server by using a configuration file](../../database-engine/install-windows/install-sql-server-using-a-configuration-file.md)
+- [Windows PowerShell Desired State Configuration Overview](/powershell/dsc/overview)
+- [Install and configure SQL Server on Windows from the command prompt](install-sql-server-from-the-command-prompt.md)
+- [Install SQL Server using a configuration file](install-sql-server-using-a-configuration-file.md)

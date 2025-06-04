@@ -12,6 +12,8 @@ helpviewer_keywords:
   - "availability groups [SQL Server], contained availability groups"
   - "availability groups [SQL Server], configuring"
 monikerRange: ">=sql-server-ver16"
+ms.custom:
+  - build-2025
 ---
 
 # What is a contained availability group?

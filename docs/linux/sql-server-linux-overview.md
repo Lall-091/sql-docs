@@ -9,6 +9,7 @@ ms.subservice: linux
 ms.topic: concept-article
 ms.custom:
   - linux-related-content
+  - build-2025
 ---
 # What is SQL Server on Linux?
 

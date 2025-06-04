@@ -8,6 +8,7 @@ ms.service: sql
 ms.topic: conceptual
 ms.custom:
   - ignite-2024
+  - build-2025
 helpviewer_keywords:
   - "guide"
   - "guide, list"

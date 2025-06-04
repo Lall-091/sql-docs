@@ -313,6 +313,8 @@ For a full list of built-in policy definitions for SQL Managed Instance, review 
 
 Azure SQL Managed Instance backups are managed entirely within Microsoft-owned Azure subscriptions using secure, internal Azure Storage accounts. These backups aren't accessible externally, ensuring strong data isolation and protection. Within Microsoft, only backend services such as the Backup-Restore service has access to create, copy or restore these backups. Microsoft engineers, including developers, don't have standing access. To minimize exposure and maximize security, Microsoft can only obtain Just-In-Time (JIT) access under strict audit controls when absolutely necessary to troubleshoot specific customer issues.
 
+Backups are automatically deleted after the retention expires.
+
 ## Compliance through backup retention
 
 If the default retention doesn't meet your compliance requirements, you can change the PITR retention period. For more information, see [Change the PITR backup retention period](automated-backups-change-settings.md#change-short-term-retention-policy).

@@ -21,6 +21,8 @@ helpviewer_keywords:
   - "Availability Groups [SQL Server], Transact-SQL statements"
 dev_langs:
   - "TSQL"
+ms.custom:
+  - build-2025
 ---
 
 # CREATE AVAILABILITY GROUP (Transact-SQL)

@@ -8,6 +8,8 @@ ms.service: sql
 ms.subservice: master-data-services
 ms.topic: conceptual
 keywords: master data services
+ms.custom:
+  - build-2025
 ---
 # Web Application Requirements (Master Data Services)
 

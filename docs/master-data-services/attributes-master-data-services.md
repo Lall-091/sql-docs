@@ -14,6 +14,8 @@ helpviewer_keywords:
   - "file attributes [Master Data Services]"
   - "attributes [Master Data Services], free-form attributes"
   - "attributes [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Attributes (Master Data Services)
 

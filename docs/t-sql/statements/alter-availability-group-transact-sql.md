@@ -19,6 +19,8 @@ helpviewer_keywords:
   - "Availability Groups [SQL Server], Transact-SQL statements"
 dev_langs:
   - "TSQL"
+ms.custom:
+  - build-2025
 ---
 
 # ALTER AVAILABILITY GROUP (Transact-SQL)

@@ -9,6 +9,8 @@ ms.subservice: master-data-services
 ms.topic: how-to
 helpviewer_keywords:
   - "version flags [Master Data Services], changing name"
+ms.custom:
+  - build-2025
 ---
 # Change a Version Flag Name (Master Data Services)
 

@@ -20,6 +20,8 @@ helpviewer_keywords:
   - "application roles [SQL Server], creating"
 dev_langs:
   - "TSQL"
+ms.custom:
+  - build-2025
 ---
 # CREATE APPLICATION ROLE (Transact-SQL)
 

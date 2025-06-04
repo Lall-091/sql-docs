@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "derived hierarchies, creating"
   - "creating derived hierarchies [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Create a Derived Hierarchy (Master Data Services)
 

@@ -6,6 +6,7 @@ ms.service: sql
 ms.topic: include
 ms.custom:
   - linux-related-content
+  - build-2025
 ---
 For a list of features supported by the editions of [!INCLUDE [ssnoversion-md](ssnoversion-md.md)] on Linux, see:
 

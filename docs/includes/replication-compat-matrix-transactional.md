@@ -2,16 +2,16 @@
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 01/30/2025
+ms.date: 05/19/2025
 ms.service: sql
 ms.topic: include
 ---
 
 | **Publisher** | **Distributor** | **Subscriber** |
 | :--- | :--- | :--- |
-| [!INCLUDE [ssazuremi-md](ssazuremi-md.md)]<sup>[AUTD](#updatepolicy)</sup> | [!INCLUDE [ssazuremi-md](ssazuremi-md.md)]<sup>[AUTD](#updatepolicy)</sup> | [!INCLUDE [ssazure-sqldb](ssazure-sqldb.md)]<br /> [!INCLUDE [ssazuremi-md](ssazuremi-md.md)]<sup>[AUTD](#updatepolicy)</sup><br />[!INCLUDE [ssazuremi-md](ssazuremi-md.md)]<sup>[2022](#updatepolicy)</sup><br />[!INCLUDE [sssql22-md](sssql22-md.md)]<br />[!INCLUDE [sssql19-md](sssql19-md.md)] |
-| [!INCLUDE [ssazuremi-md](ssazuremi-md.md)]<sup>[2022](#updatepolicy)</sup> | [!INCLUDE [ssazuremi-md](ssazuremi-md.md)]<sup>[AUTD](#updatepolicy)</sup><br />[!INCLUDE [ssazuremi-md](ssazuremi-md.md)]<sup>[2022](#updatepolicy)</sup> | [!INCLUDE [ssazure-sqldb](ssazure-sqldb.md)]<br /> [!INCLUDE [ssazuremi-md](ssazuremi-md.md)]<sup>[AUTD](#updatepolicy)</sup><br />[!INCLUDE [ssazuremi-md](ssazuremi-md.md)]<sup>[2022](#updatepolicy)</sup><br />[!INCLUDE [sssql22-md](sssql22-md.md)]<br />[!INCLUDE [sssql19-md](sssql19-md.md)]<br />[!INCLUDE [sssql17-md](sssql17-md.md)] |
-| [!INCLUDE [sssql22-md](sssql22-md.md)] | [!INCLUDE [sssql22-md](sssql22-md.md)] | [!INCLUDE [ssazure-sqldb](ssazure-sqldb.md)]<br /> [!INCLUDE [ssazuremi-md](ssazuremi-md.md)]<sup>[AUTD](#updatepolicy)</sup><br />[!INCLUDE [ssazuremi-md](ssazuremi-md.md)]<sup>[2022](#updatepolicy)</sup><br />[!INCLUDE [sssql22-md](sssql22-md.md)]<br />[!INCLUDE [sssql19-md](sssql19-md.md)]<br />[!INCLUDE [sssql17-md](sssql17-md.md)] |
+| [!INCLUDE [ssazuremi-md](ssazuremi-md.md)]<sup>[AUTD](#updatepolicy)</sup> | [!INCLUDE [ssazuremi-md](ssazuremi-md.md)]<sup>[AUTD](#updatepolicy)</sup> | [!INCLUDE [ssazure-sqldb](ssazure-sqldb.md)] <br /> [!INCLUDE [ssazuremi-md](ssazuremi-md.md)]<sup>[AUTD](#updatepolicy)</sup><br />[!INCLUDE [ssazuremi-md](ssazuremi-md.md)]<sup>[2022](#updatepolicy)</sup><br />[!INCLUDE [sssql22-md](sssql22-md.md)]<br />[!INCLUDE [sssql19-md](sssql19-md.md)] |
+| [!INCLUDE [ssazuremi-md](ssazuremi-md.md)]<sup>[2022](#updatepolicy)</sup> | [!INCLUDE [ssazuremi-md](ssazuremi-md.md)]<sup>[AUTD](#updatepolicy)</sup><br />[!INCLUDE [ssazuremi-md](ssazuremi-md.md)]<sup>[2022](#updatepolicy)</sup> | [!INCLUDE [ssazure-sqldb](ssazure-sqldb.md)] <br /> [!INCLUDE [ssazuremi-md](ssazuremi-md.md)]<sup>[AUTD](#updatepolicy)</sup><br />[!INCLUDE [ssazuremi-md](ssazuremi-md.md)]<sup>[2022](#updatepolicy)</sup><br />[!INCLUDE [sssql22-md](sssql22-md.md)]<br />[!INCLUDE [sssql19-md](sssql19-md.md)]<br />[!INCLUDE [sssql17-md](sssql17-md.md)] |
+| [!INCLUDE [sssql22-md](sssql22-md.md)] | [!INCLUDE [sssql22-md](sssql22-md.md)] | [!INCLUDE [ssazure-sqldb](ssazure-sqldb.md)] <br />[!INCLUDE [fabric-sqldb-md](fabric-sqldb.md)]<sup>[1](#updatepolicy)</sup> <br /> [!INCLUDE [ssazuremi-md](ssazuremi-md.md)]<sup>[AUTD](#updatepolicy)</sup><br />[!INCLUDE [ssazuremi-md](ssazuremi-md.md)]<sup>[2022](#updatepolicy)</sup><br />[!INCLUDE [sssql22-md](sssql22-md.md)]<br />[!INCLUDE [sssql19-md](sssql19-md.md)]<br />[!INCLUDE [sssql17-md](sssql17-md.md)] |
 | [!INCLUDE [sssql19-md](sssql19-md.md)] | [!INCLUDE [sssql22-md](sssql22-md.md)]<br />[!INCLUDE [sssql19-md](sssql19-md.md)] |[!INCLUDE [ssazure-sqldb](ssazure-sqldb.md)]<br />  [!INCLUDE [ssazuremi-md](ssazuremi-md.md)]<sup>[AUTD](#updatepolicy)</sup><br />[!INCLUDE [ssazuremi-md](ssazuremi-md.md)]<sup>[2022](#updatepolicy)</sup><br />[!INCLUDE [sssql22-md](sssql22-md.md)]<br />[!INCLUDE [sssql19-md](sssql19-md.md)]<br />[!INCLUDE [sssql17-md](sssql17-md.md)]<br />[!INCLUDE [sssql16-md](sssql16-md.md)] |
 | [!INCLUDE [sssql17-md](sssql17-md.md)] | [!INCLUDE [sssql22-md](sssql22-md.md)]<br />[!INCLUDE [sssql19-md](sssql19-md.md)]<br />[!INCLUDE [sssql17-md](sssql17-md.md)] | [!INCLUDE [ssazuremi-md](ssazuremi-md.md)]<sup>[2022](#updatepolicy)</sup><br />[!INCLUDE [sssql22-md](sssql22-md.md)]<br />[!INCLUDE [sssql19-md](sssql19-md.md)]<br />[!INCLUDE [sssql17-md](sssql17-md.md)]<br />[!INCLUDE [sssql16-md](sssql16-md.md)]<br />[!INCLUDE [sssql14-md](sssql14-md.md)] |
 | [!INCLUDE [sssql16-md](sssql16-md.md)] | [!INCLUDE [sssql22-md](sssql22-md.md)]<br />[!INCLUDE [sssql19-md](sssql19-md.md)]<br />[!INCLUDE [sssql17-md](sssql17-md.md)]<br />[!INCLUDE [sssql16-md](sssql16-md.md)] | [!INCLUDE [sssql19-md](sssql19-md.md)]<br />[!INCLUDE [sssql17-md](sssql17-md.md)]<br />[!INCLUDE [sssql16-md](sssql16-md.md)]<br />[!INCLUDE [sssql14-md](sssql14-md.md)]<br />[!INCLUDE [sssql11-md](sssql11-md.md)] |
@@ -21,6 +21,6 @@ ms.topic: include
 
 <a id="updatepolicy"></a>
 
-<sup>2022</sup> Applies to Azure SQL Managed Instance configured with the [SQL Server 2022 update policy](/azure/azure-sql/managed-instance/update-policy#sql-server-2022-update-policy).   
-<sup>AUTD</sup> Applies to Azure SQL Managed Instance configured with the [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy).
-
+<sup>2022</sup> Applies to Azure SQL Managed Instance configured with the [SQL Server 2022 update policy](/azure/azure-sql/managed-instance/update-policy#sql-server-2022-update-policy).  
+<sup>AUTD</sup> Applies to Azure SQL Managed Instance configured with the [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy).  
+<sup>1</sup> Applies based on the requirements of the supported configurations for [SQL database in Microsoft Fabric](/azure/azure-sql/database/replication-to-sql-database).

@@ -14,6 +14,8 @@ helpviewer_keywords:
   - "members [Master Data Services], reactivating"
   - "reactivating collections [Master Data Services]"
   - "leaf members [Master Data Services], reactivating"
+ms.custom:
+  - build-2025
 ---
 # Reactivate a Member or Collection (Master Data Services)
 

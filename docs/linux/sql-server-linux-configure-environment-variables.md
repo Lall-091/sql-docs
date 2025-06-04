@@ -9,6 +9,7 @@ ms.subservice: linux
 ms.topic: how-to
 ms.custom:
   - linux-related-content
+  - build-2025
 ---
 # Configure SQL Server settings with environment variables on Linux
 

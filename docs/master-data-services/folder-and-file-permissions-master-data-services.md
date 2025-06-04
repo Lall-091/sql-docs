@@ -11,6 +11,8 @@ helpviewer_keywords:
   - "security [Master Data Services], file and folder"
   - "folders [Master Data Services]"
   - "files [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Folder and File Permissions (Master Data Services)
 

@@ -10,6 +10,8 @@ ms.topic: conceptual
 helpviewer_keywords:
   - "members staging table [Master Data Services]"
   - "database [Master Data Services], members staging table"
+ms.custom:
+  - build-2025
 ---
 # Leaf Member Staging Table (Master Data Services)
 

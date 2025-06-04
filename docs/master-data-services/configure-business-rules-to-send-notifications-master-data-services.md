@@ -11,6 +11,8 @@ helpviewer_keywords:
   - "business rules [Master Data Services], configuring notifications"
   - "e-mail [Master Data Services], configuring business rules"
   - "notifications [Master Data Services], configuring business rules"
+ms.custom:
+  - build-2025
 ---
 # Configure Business Rules to Send Notifications (Master Data Services)
 

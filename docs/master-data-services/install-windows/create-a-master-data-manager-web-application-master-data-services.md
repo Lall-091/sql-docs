@@ -7,6 +7,8 @@ ms.date: "12/13/2019"
 ms.service: sql
 ms.subservice: master-data-services
 ms.topic: how-to
+ms.custom:
+  - build-2025
 ---
 # Create a master data manager web application (Master Data Services)
 

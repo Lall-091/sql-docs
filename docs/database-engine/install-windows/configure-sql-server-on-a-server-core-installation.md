@@ -3,7 +3,7 @@ title: Configure Server Core Installation
 description: This article covers details about configuring SQL Server on a Server Core installation, including troubleshooting tools.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 04/07/2025
+ms.date: 06/03/2025
 ms.service: sql
 ms.subservice: install
 ms.topic: install-set-up-deploy
@@ -101,7 +101,7 @@ You can also use Net services to start and stop the [!INCLUDE [ssNoVersion](../.
 
 ## Enable Always On availability groups
 
-Being enabled for Always On Availability Groups is a prerequisite for a server instance to use availability groups as a high availability and disaster recovery solution. For more information about managing the Always On availability groups, see [Enable and Disable Always On Availability Groups (SQL Server)](../../database-engine/availability-groups/windows/enable-and-disable-always-on-availability-groups-sql-server.md).
+Being enabled for Always On Availability Groups is a prerequisite for a server instance to use availability groups as a high availability and disaster recovery solution. For more information about managing the Always On availability groups, see [Enable or disable Always On availability group feature](../availability-groups/windows/enable-and-disable-always-on-availability-groups-sql-server.md).
 
 ### Use SQL Server Configuration Manager remotely
 
@@ -188,7 +188,7 @@ After the service is enabled, run the following command from the command prompt 
 
 ### Create exceptions in Windows Firewall
 
-To create exceptions for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] access in Windows Firewall, follow the steps specified in [Configure the Windows Firewall to Allow SQL Server Access](../../sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access.md).
+To create exceptions for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] access in Windows Firewall, follow the steps specified in [Configure the Windows Firewall to allow SQL Server access](../../sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access.md).
 
 ### Enable TCP/IP on the SQL Server instance
 
@@ -217,9 +217,9 @@ $Tcp
 
 ## SQL Server Profiler
 
-On a remote machine, start [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)] and select **New Trace** from the **File** menu. The application displays a **Connect to Server** dialog box, where you can specify the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance residing on the Server Core machine, to which you want to connect. For more information, see [Start SQL Server Profiler](../../tools/sql-server-profiler/start-sql-server-profiler.md).
+On a remote machine, start [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)] and select **New Trace** from the **File** menu. The application displays a **Connect to Server** dialog box, where you can specify the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance residing on the Server Core machine, to which you want to connect. For more information, see [Run SQL Server Profiler](../../tools/sql-server-profiler/start-sql-server-profiler.md).
 
-For more information on the permissions required to run [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)], see [Permissions Required to Run SQL Server Profiler](../../tools/sql-server-profiler/permissions-required-to-run-sql-server-profiler.md).
+For more information on the permissions required to run [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)], see [Permissions required to run SQL Server Profiler](../../tools/sql-server-profiler/permissions-required-to-run-sql-server-profiler.md).
 
 For more information about [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)], see [SQL Server Profiler](../../tools/sql-server-profiler/sql-server-profiler.md).
 
@@ -254,7 +254,7 @@ You can use the following command prompt utilities that enable you to script [!I
 
 You can use [SQLdiag](../../tools/sqldiag-utility.md) to collect logs and data files from [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] and other types of servers. Use this information to monitor your servers over time or troubleshoot specific problems with your servers. SQLdiag is intended to expedite and simplify diagnostic information gathering for Microsoft Customer Support Services.
 
-You can launch the utility on the administrator command prompt on the Server Core, using the syntax specified in the article: [SQLdiag](../../tools/sqldiag-utility.md).
+You can launch the utility on the administrator command prompt on the Server Core, using the syntax specified in [SQLdiag utility](../../tools/sqldiag-utility.md).
 
 ## Related content
 

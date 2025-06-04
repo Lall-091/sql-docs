@@ -11,6 +11,8 @@ helpviewer_keywords:
   - "creating consolidated members [Master Data Services]"
   - "members [Master Data Services], creating consolidated members"
   - "consolidated members [Master Data Services], creating"
+ms.custom:
+  - build-2025
 ---
 # Create a Consolidated Member (Master Data Services)
 

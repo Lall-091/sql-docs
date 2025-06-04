@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "attributes [Master Data Services], creating link attributes"
   - "creating link attributes [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Create a Link Attribute (Master Data Services)
 

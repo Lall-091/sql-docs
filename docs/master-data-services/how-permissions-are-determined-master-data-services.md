@@ -9,6 +9,8 @@ ms.subservice: master-data-services
 ms.topic: conceptual
 helpviewer_keywords:
   - "permissions [Master Data Services], determining permissions"
+ms.custom:
+  - build-2025
 ---
 # How Permissions Are Determined (Master Data Services)
 

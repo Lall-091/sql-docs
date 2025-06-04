@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "business rules [Master Data Services], tracking attribute changes"
   - "change tracking groups [Master Data Services], initiating actions"
+ms.custom:
+  - build-2025
 ---
 # Initiate Actions Based on Attribute Value Changes (Master Data Services)
 

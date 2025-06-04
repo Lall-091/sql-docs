@@ -12,6 +12,8 @@ helpviewer_keywords:
   - "notifications [Master Data Services], about notifications"
   - "e-mail [Master Data Services]"
   - "e-mail [Master Data Services], about e-mail notifications"
+ms.custom:
+  - build-2025
 ---
 # Notifications (Master Data Services)
 

@@ -10,6 +10,8 @@ ms.topic: conceptual
 helpviewer_keywords:
   - "members [Master Data Services], applying permissions immediately"
   - "permissions [Master Data Services], applying member permissions immediately"
+ms.custom:
+  - build-2025
 ---
 # Immediately apply member permissions (Master Data Services)
 

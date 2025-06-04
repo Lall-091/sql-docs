@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "deleting subscription views [Master Data Services]"
   - "subscription views [Master Data Services], deleting"
+ms.custom:
+  - build-2025
 ---
 # Delete a Subscription View (Master Data Services)
 

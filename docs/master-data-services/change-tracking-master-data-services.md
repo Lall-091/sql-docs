@@ -9,6 +9,8 @@ ms.subservice: master-data-services
 ms.topic: conceptual
 helpviewer_keywords:
   - "change tracking [SQL Server]"
+ms.custom:
+  - build-2025
 ---
 # Change Tracking (Master Data Services)
 

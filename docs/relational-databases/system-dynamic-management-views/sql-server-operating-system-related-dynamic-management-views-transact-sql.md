@@ -14,6 +14,8 @@ helpviewer_keywords:
   - "dynamic management objects [SQL Server], SQL OS"
 dev_langs:
   - "TSQL"
+ms.custom:
+  - build-2025
 ---
 # SQL Server Operating System related dynamic management views (Transact-SQL)
 

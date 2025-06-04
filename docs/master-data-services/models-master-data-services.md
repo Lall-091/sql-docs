@@ -10,6 +10,8 @@ ms.topic: conceptual
 helpviewer_keywords:
   - "models [Master Data Services], about models"
   - "models [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Models (Master Data Services)
 

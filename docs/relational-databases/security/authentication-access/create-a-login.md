@@ -20,6 +20,8 @@ helpviewer_keywords:
   - "Create login [SQL Server]"
   - "SQL Server logins"
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+ms.custom:
+  - build-2025
 ---
 # Create a login
 

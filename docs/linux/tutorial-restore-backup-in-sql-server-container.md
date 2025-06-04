@@ -10,6 +10,7 @@ ms.topic: how-to
 ms.custom:
   - intro-migration
   - linux-related-content
+  - build-2025
 monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017"
 ---
 # Restore a SQL Server database in a Linux container

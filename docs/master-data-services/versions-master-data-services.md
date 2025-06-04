@@ -12,6 +12,8 @@ helpviewer_keywords:
   - "versions [Master Data Services]"
   - "version flags [Master Data Services]"
   - "versions [Master Data Services], version flags"
+ms.custom:
+  - build-2025
 ---
 # Versions (Master Data Services)
 

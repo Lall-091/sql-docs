@@ -9,6 +9,8 @@ ms.subservice: master-data-services
 ms.topic: conceptual
 helpviewer_keywords:
   - "staging process [Master Data Services], error messages"
+ms.custom:
+  - build-2025
 ---
 # Staging Process Errors (Master Data Services)
 

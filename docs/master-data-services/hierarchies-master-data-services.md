@@ -10,6 +10,8 @@ ms.topic: conceptual
 helpviewer_keywords:
   - "hierarchies [Master Data Services]"
   - "hierarchies [Master Data Services], about hierarchies"
+ms.custom:
+  - build-2025
 ---
 # Hierarchies (Master Data Services)
 

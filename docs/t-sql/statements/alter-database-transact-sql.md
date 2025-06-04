@@ -10,6 +10,7 @@ ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
   - references_regions
+  - build-2025
 f1_keywords:
   - "ALTER_DATABASE_TSQL"
   - "ALTER DATABASE"

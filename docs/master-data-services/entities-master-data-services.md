@@ -10,6 +10,8 @@ ms.topic: conceptual
 helpviewer_keywords:
   - "entities [Master Data Services], about entities"
   - "entities [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Entities (Master Data Services)
 

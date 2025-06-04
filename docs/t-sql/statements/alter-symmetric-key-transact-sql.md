@@ -9,6 +9,7 @@ ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
   - ignite-2024
+  - build-2025
 f1_keywords:
   - "ALTER SYMMETRIC KEY"
   - "ALTER_SYMMETRIC_KEY_TSQL"

@@ -10,6 +10,8 @@ ms.topic: "reference"
 dev_langs:
   - "TSQL"
 monikerRange: "=azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+ms.custom:
+  - build-2025
 ---
 
 # In-Memory OLTP System Views (Transact-SQL)

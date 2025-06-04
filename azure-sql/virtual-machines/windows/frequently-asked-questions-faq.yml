@@ -39,7 +39,7 @@ sections:
           
       - question: |
           Are existing SQL Server virtual machine gallery images updated?
-        answer:    SQL Server images in the virtual machine gallery are updated with the latest OS and SQL Server updates regularly, typically once a month.  After deployment, keeping the OS and SQL Server up to date can be done manually or automated through [Azure Update Manager](../azure-update-manager-sql-vm.md).
+        answer:    Only the latest market versions (SQL Server 2022 and SQL Server 2025 Preview) are updated with the latest OS and SQL Server updates regularly, typically every few months.  After deployment, keeping the OS and SQL Server up to date can be done manually or automated through [Azure Update Manager](../azure-update-manager-sql-vm.md).
 
       - question: |
           Can SQL Server virtual machine images get removed from the gallery?

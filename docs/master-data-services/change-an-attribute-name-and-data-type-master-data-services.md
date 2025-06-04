@@ -9,6 +9,8 @@ ms.subservice: master-data-services
 ms.topic: how-to
 helpviewer_keywords:
   - "attributes [Master Data Services], changing name"
+ms.custom:
+  - build-2025
 ---
 # Change an Attribute Name and Data Type (Master Data Services)
 

@@ -7,7 +7,9 @@ ms.date: "03/01/2017"
 ms.service: sql
 ms.subservice: master-data-services
 ms.topic: install-set-up-deploy
-ms.custom: intro-deployment
+ms.custom:
+  - intro-deployment
+  - build-2025
 helpviewer_keywords:
   - "deployment packages [Master Data Services], about deployment packages"
   - "deployment packages [Master Data Services]"

@@ -11,6 +11,8 @@ helpviewer_keywords:
   - "domain-based attributes [Master Data Services], creating"
   - "creating domain-based attributes [Master Data Services]"
   - "attributes [Master Data Services], creating domain-based attributes"
+ms.custom:
+  - build-2025
 ---
 # Create a Domain-Based Attribute (Master Data Services)
 

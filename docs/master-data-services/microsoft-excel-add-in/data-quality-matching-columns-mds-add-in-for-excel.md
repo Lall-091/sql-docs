@@ -7,7 +7,9 @@ ms.date: "03/01/2017"
 ms.service: sql
 ms.subservice: master-data-services
 ms.topic: conceptual
-ms.custom: microsoft-excel-add-in
+ms.custom:
+  - microsoft-excel-add-in
+  - build-2025
 ---
 # Data Quality Matching Columns (MDS Add-in for Excel)
 

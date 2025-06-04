@@ -8,6 +8,8 @@ ms.service: sql
 ms.subservice: master-data-services
 ms.topic: conceptual
 monikerRange: ">=sql-server-ver16"
+ms.custom:
+  - build-2025
 ---
 # Backward Compatibility (Master Data Services)
 

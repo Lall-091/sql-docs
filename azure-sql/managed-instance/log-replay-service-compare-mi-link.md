@@ -9,8 +9,9 @@ ms.date: 04/14/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: migration
 ms.topic: conceptual
-ms.custom: 
 monikerRange: "= azuresql || = azuresql-mi"
+ms.custom:
+  - build-2025
 ---
 # Compare LRS with Managed Instance link
 [!INCLUDE [appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -42,7 +43,8 @@ The following table compares both LRS and MI link in greater detail:
 |---|---|---|---|
 | **Underlying technology** | Distributed availability groups (AG) | Log shipping | MI link uses a distributed availability group for replication, which is newer and more advanced when compared to the log shipping technology used by LRS. |
 | **Replication performance** | Near real-time. | Restores every few minutes. | Replicating data through the MI link is considerably more performant than applying transaction log backups with LRS. |
-| **Minimal supported source database** | SQL Server 2016 and above | SQL Server 2008 and above | LRS can support much older SQL Server versions than MI link. |
+| **Minimum supported source version** | SQL Server 2016 and above | SQL Server 2008 and above | LRS can support much older SQL Server versions than MI link. |
+| **Minimum supported Windows Server version** | Windows Server 2012 R2 | Windows Server 2008 | LRS can support much older Windows Server versions than MI link. |
 | **Read-only secondary** | Supported. | Not supported. | While replication is in progress, SQL Managed Instance databases replicated through the link can be used for read-only workloads, which lets you test your migration before the cut over, or use your databases before migrating to Azure. Likewise, when you perform a reverse migration back to SQL Server 2022 and later, the database is accessible for read-only workloads on SQL Server while the migration is in progress. This capability isn't available with LRS.  |
 | **Replication of TDE encrypted databases** | Yes, requires importing security keys to SQL Managed Instance. | Yes, requires importing security keys to SQL Managed Instance. | The requirement and procedure to migrate the corresponding encryption certificate from SQL Server to SQL managed instance before starting the migration is the same for both migration options. |
 | **Network connectivity type** | - Private endpoint  <br /> - VPN configured with both inbound and outbound ports | Public endpoint |While MI link provides additional layers of security, and offers a VPN as an option, networking is more difficult to configure compared to LRS. <br /><br /> By default, LRS provides a simplified experience so you can use it immediately without any network or VPN configuration. LRS uses a public endpoint by default, which is less secure than the VPN used with MI link, and it might not satisfy some of the most demanding security requirements since it uses a publicly exposed Azure Blob storage account as an intermediary to save data before it's restored to SQL Managed Instance. While it's possible to use a private endpoint with LRS to make the transmission of data more secure, it increases initial configuration complexity. |

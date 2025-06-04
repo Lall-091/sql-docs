@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "explicit hierarchies, deleting"
   - "deleting explicit hierarchies [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Delete an Explicit Hierarchy (Master Data Services)
 

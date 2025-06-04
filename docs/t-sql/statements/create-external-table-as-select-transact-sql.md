@@ -676,7 +676,7 @@ The database doesn't verify the connection to the external data source when rest
 
 The database doesn't guarantee data consistency between the database and the external data. You, the customer, are solely responsible to maintain consistency between the external data and the database.
 
-Data manipulation language (DML) operations aren't supported on external tables. For example, you can't use the [!INCLUDE [tsql](../../includes/tsql-md.md)] update, insert, or delete [!INCLUDE [tsql](../../includes/tsql-md.md)]statements to modify the external data.
+Data manipulation language (DML) operations aren't supported on external tables. For example, you can't use the [!INCLUDE [tsql](../../includes/tsql-md.md)] update, insert, or delete [!INCLUDE [tsql](../../includes/tsql-md.md)] statements to modify the external data.
 
 CREATE TABLE, DROP TABLE, CREATE STATISTICS, DROP STATISTICS, CREATE VIEW, and DROP VIEW are the only data definition language (DDL) operations allowed on external tables.
 

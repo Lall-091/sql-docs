@@ -10,6 +10,7 @@ ms.subservice: linux
 ms.topic: conceptual
 ms.custom:
   - linux-related-content
+  - build-2025
 ---
 # Failover Cluster Instances - SQL Server on Linux
 

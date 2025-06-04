@@ -10,6 +10,7 @@ ms.subservice: linux
 ms.topic: release-notes
 ms.custom:
   - linux-related-content
+  - build-2025
 ---
 # Release notes for SQL Server 2025 Preview on Linux
 

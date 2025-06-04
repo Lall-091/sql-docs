@@ -12,6 +12,8 @@ helpviewer_keywords:
   - "installing SQL Server, preparing to install"
   - "installation [SQL Server]"
 monikerRange: ">=sql-server-2016"
+ms.custom:
+  - build-2025
 ---
 # SQL Server installation guide
 
@@ -92,8 +94,8 @@ Other [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] components can 
 | [SQL Server Failover Cluster Installation](../../sql-server/failover-clusters/install/sql-server-failover-cluster-installation.md) | Install a SQL Server failover cluster instance. |
 | [Repair a failed SQL Server installation](repair-a-failed-sql-server-installation.md) | Repair a corrupt [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] installation. |
 | [Rename a computer that hosts a stand-alone instance of SQL Server](rename-a-computer-that-hosts-a-stand-alone-instance-of-sql-server.md) | Update system metadata that is stored in `sys.servers` after the hostname of a computer hosting a stand-alone instance of SQL Server has been renamed. |
-| [Install SQL Server Servicing Updates](install-sql-server-servicing-updates.md) | Install updates for [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)]. |
-| [View and Read SQL Server Setup Log Files](view-and-read-sql-server-setup-log-files.md) | View and read the errors in the SQL Server setup log files. |
+| [Install SQL Server servicing updates](install-sql-server-servicing-updates.md) | Install updates for [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)]. |
+| [View and read SQL Server Setup log files](view-and-read-sql-server-setup-log-files.md) | View and read the errors in the SQL Server setup log files. |
 | [Validate a SQL Server Installation](validate-a-sql-server-installation.md) | Review the use of the SQL Discovery report to verify the version of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] and the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] features installed on the computer. |
 
 ## Individual component installation

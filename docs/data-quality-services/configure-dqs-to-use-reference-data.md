@@ -11,6 +11,8 @@ f1_keywords:
   - "sql13.dqs.administration.rdsconfiguration.f1"
   - "sql13.dqs.administration.configuration.createDirectRDS.f1"
   - "sql13.dqs.admin.config.rds.f1"
+ms.custom:
+  - build-2025
 ---
 # Configure DQS to Use Reference Data
 

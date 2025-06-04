@@ -3,7 +3,7 @@ title: "Check Parameters System Configuration Checker"
 description: During SQL Server Setup, the System Configuration Checker for conditions that prevent a successful SQL Server installation.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: "12/13/2019"
+ms.date: 06/03/2025
 ms.service: sql
 ms.subservice: install
 ms.topic: conceptual
@@ -25,14 +25,16 @@ monikerRange: ">=sql-server-2016"
 
 [!INCLUDE [SQL Server -Windows Only](../../includes/applies-to-version/sql-windows-only.md)]
 
-During [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Setup, the System Configuration Checker (SCC) scans the computer where [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] will be installed. The SCC checks for conditions that prevent a successful [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] installation. Before Setup starts the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Installation Wizard, the SCC retrieves the status of each item. It then compares the result with required conditions and provides guidance for removal of blocking issues.  
-  
-The system configuration checker generates a report which contains a short description for each executed rule, and the execution status. The system configuration check report is located at %programfiles%\Microsoft SQL Server\140\Setup Bootstrap\Log\\\<YYYYMMDD_HHMM>\\\.    
-  
-See the following links for more information:
+During [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Setup, the System Configuration Checker (SCC) scans the computer where [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] will be installed.
 
-- [Hardware and Software Requirements for Installing SQL Server](../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server.md)   
-- [Security Considerations for a SQL Server Installation](../../sql-server/install/security-considerations-for-a-sql-server-installation.md)   
-- [Supported Version and Edition Upgrades](../../database-engine/install-windows/supported-version-and-edition-upgrades.md)  
-  
-  
+## Remarks
+
+The SCC checks for conditions that prevent a successful [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] installation. Before Setup starts the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Installation Wizard, the SCC retrieves the status of each item. It then compares the result with required conditions and provides guidance for removal of blocking issues.
+
+The system configuration checker generates a report which contains a short description for each executed rule, and the execution status. The system configuration check report is located at `%programfiles%\Microsoft SQL Server\140\Setup Bootstrap\Log\<yyyyMMdd_HHmm>`.
+
+## Related content
+
+- [Hardware and software requirements for SQL Server 2022](../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2022.md)
+- [Security considerations for a SQL Server installation](../../sql-server/install/security-considerations-for-a-sql-server-installation.md)
+- [Supported version and edition upgrades (SQL Server 2022)](supported-version-and-edition-upgrades-2022.md)

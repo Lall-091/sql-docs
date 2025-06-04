@@ -10,6 +10,7 @@ ms.subservice: service-overview
 ms.topic: concept-article
 ms.custom:
   - sqldbrb=1
+  - build-2025
 ---
 
 # Hyperscale service tier

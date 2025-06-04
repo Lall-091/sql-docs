@@ -9,6 +9,8 @@ ms.subservice: master-data-services
 ms.topic: conceptual
 f1_keywords:
   - "sql13.mds.configmanager.dbpg.f1"
+ms.custom:
+  - build-2025
 ---
 # Database Configuration Page (Master Data Services Configuration Manager)
 

@@ -20,7 +20,7 @@ Use the `Agent XPs` option to enable the [!INCLUDE [ssNoVersion](../../includes/
 When you use the [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] tool to start the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent service, these extended stored procedures are enabled automatically. For more information, see [Surface area configuration](../../relational-databases/security/surface-area-configuration.md).
 
 > [!NOTE]  
-> [!INCLUDE [ssManStudio](../../includes/ssmanstudio-md.md)] Object Explorer doesn't display the contents of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]Agent node unless these extended stored procedures are enabled regardless of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent service state.
+> [!INCLUDE [ssManStudio](../../includes/ssmanstudio-md.md)] Object Explorer doesn't display the contents of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent node unless these extended stored procedures are enabled regardless of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent service state.
 
 The possible values are:
 

@@ -11,6 +11,8 @@ helpviewer_keywords:
   - "models [Master Data Services], effective permissions"
   - "permissions [Master Data Services], model and member overlaps"
   - "members [Master Data Services], effective permissions"
+ms.custom:
+  - build-2025
 ---
 # Overlapping Model and Member Permissions (Master Data Services)
 

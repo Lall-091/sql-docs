@@ -7,6 +7,8 @@ ms.reviewer: maghan, randolphwest
 ms.date: 01/08/2024
 ms.service: sql
 ms.topic: conceptual
+ms.custom:
+  - build-2025
 ---
 
 # Lesson 2: Connect from another computer

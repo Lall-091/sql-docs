@@ -54,7 +54,7 @@ The following object is created in the schema of verified table at [!INCLUDE[ssN
 |-|-|-|
 |`USER_TABLE$Trg`|trigger|Trigger auditing the changes in the verified table.|
 
-And the following objects are created at [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]in the `ssma_tester_changes` schema.
+And the following objects are created at [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] in the `ssma_tester_changes` schema.
 
 |Name|Type|Description|
 |-|-|-|

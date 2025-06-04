@@ -10,6 +10,8 @@ ms.subservice: vs-code-sql-extensions
 ms.topic: include
 ms.collection:
   - data-tools
+ms.custom:
+  - build-2025
 ---
 
 Ensure that you're connected to a database and have an active editor window open with the MSSQL extension. This connection allows the `@mssql` chat participant to understand the context of your database environment, enabling accurate and context-aware suggestions. Without a database connection, the chat participant won't have the schema or data context to provide meaningful responses.

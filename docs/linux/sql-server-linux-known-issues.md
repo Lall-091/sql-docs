@@ -10,6 +10,7 @@ ms.subservice: linux
 ms.topic: troubleshooting-known-issue
 ms.custom:
   - linux-related-content
+  - build-2025
 ---
 # SQL Server on Linux: Known issues
 

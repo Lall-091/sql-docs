@@ -10,6 +10,7 @@ ms.subservice: backup-restore
 ms.topic: conceptual
 ms.custom:
   - devx-track-azurepowershell
+  - build-2025
 monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
 # SQL Server backup to URL for Microsoft Azure Blob Storage

@@ -11,6 +11,7 @@ ms.subservice: service-overview
 ms.topic: reference
 ms.custom:
   - sqldbrb=4
+  - build-2025
 ---
 # Azure SQL glossary of terms
 

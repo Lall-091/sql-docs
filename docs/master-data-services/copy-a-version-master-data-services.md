@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "versions [Master Data Services], copying"
   - "copying versions [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Copy a Version (Master Data Services)
 

@@ -10,6 +10,7 @@ ms.topic: whats-new
 ms.custom:
   - intro-whats-new
   - linux-related-content
+  - build-2025
 ---
 
 # What's new for SQL Server 2022 on Linux

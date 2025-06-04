@@ -12,6 +12,7 @@ ms.topic: whats-new
 ms.custom:
   - build-2024
   - ignite-2024
+  - build-2025
 monikerRange: "=azuresql || =azuresql-db"
 ---
 # What's new in Azure SQL Database?

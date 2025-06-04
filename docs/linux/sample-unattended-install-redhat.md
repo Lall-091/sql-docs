@@ -11,6 +11,7 @@ ms.subservice: linux
 ms.topic: install-set-up-deploy
 ms.custom:
   - linux-related-content
+  - build-2025
 ---
 # Sample: Unattended SQL Server installation script for Red Hat Enterprise Linux
 

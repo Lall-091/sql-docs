@@ -4,6 +4,8 @@ ms.author: mikeray
 ms.date: 01/29/2024
 ms.service: sql
 ms.topic: include
+ms.custom:
+  - build-2025
 ---
 
 Beginning with [!INCLUDE [sssql11-md](sssql11-md.md)], SQL Server and Azure SQL DB used a SHA-512 hash combined with a 32-bit random and unique salt. This method made it statistically infeasible for attackers to deduce passwords.

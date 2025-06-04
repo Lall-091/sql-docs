@@ -9,6 +9,8 @@ ms.subservice: master-data-services
 ms.topic: how-to
 helpviewer_keywords:
   - "web configuration file [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Web Configuration Reference (Master Data Services)
 

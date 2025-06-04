@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "entities [Master Data Services], deleting"
   - "deleting entities [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Delete an Entity (Master Data Services)
 

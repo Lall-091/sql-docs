@@ -5,6 +5,8 @@ ms.reviewer: dfurman
 ms.date: 04/15/2025
 ms.service: sql
 ms.topic: include
+ms.custom:
+  - build-2025
 ---
 
 Changes an existing resource governor workload group configuration, and optionally assigns it to a different resource governor resource pool.

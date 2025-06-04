@@ -7,6 +7,8 @@ ms.date: "11/08/2011"
 ms.service: sql
 ms.subservice: data-quality-services
 ms.topic: how-to
+ms.custom:
+  - build-2025
 ---
 # Use the DQS Speller
 

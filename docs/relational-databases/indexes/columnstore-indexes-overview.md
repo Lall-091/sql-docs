@@ -10,6 +10,7 @@ ms.subservice: table-view-index
 ms.topic: concept-article
 ms.custom:
   - ignite-2024
+  - build-2025
 helpviewer_keywords:
   - "indexes creation, columnstore"
   - "indexes [SQL Server], columnstore"

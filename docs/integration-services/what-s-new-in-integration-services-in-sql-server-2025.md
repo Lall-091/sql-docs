@@ -10,6 +10,7 @@ ms.subservice: integration-services
 ms.topic: conceptual
 ms.custom:
   - intro-whats-new
+  - build-2025
 ---
 
 # What's New in SQL Server 2025 Integration Services Preview

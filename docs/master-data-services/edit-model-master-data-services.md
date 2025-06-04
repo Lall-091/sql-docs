@@ -9,6 +9,8 @@ ms.subservice: master-data-services
 ms.topic: how-to
 helpviewer_keywords:
   - "models [Master Data Services], changing name"
+ms.custom:
+  - build-2025
 ---
 # Edit Model (Master Data Services)
 

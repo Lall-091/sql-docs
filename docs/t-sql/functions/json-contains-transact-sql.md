@@ -9,6 +9,8 @@ ms.service: sql
 ms.subservice: t-sql
 ms.topic: language-reference
 monikerRange: " >=sql-server-2016"
+ms.custom:
+  - build-2025
 ---
 # JSON_CONTAINS (Transact-SQL)
 

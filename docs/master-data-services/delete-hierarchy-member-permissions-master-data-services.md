@@ -11,6 +11,8 @@ helpviewer_keywords:
   - "deleting member permissions [Master Data Services]"
   - "members [Master Data Services], deleting permissions"
   - "permissions [Master Data Services], deleting member permissions"
+ms.custom:
+  - build-2025
 ---
 # Delete Hierarchy Member Permissions (Master Data Services)
 

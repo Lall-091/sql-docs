@@ -8,6 +8,8 @@ ms.date: 05/19/2025
 ms.service: sql
 ms.topic: how-to
 monikerRange: " = sql-server-ver17 || = sql-server-linux-ver17 "
+ms.custom:
+  - build-2025
 ---
 
 # Configure change event streaming

@@ -10,6 +10,8 @@ ms.topic: how-to
 f1_keywords:
   - "sql13.dqs.browseforservers.f1"
   - "sql13.dqs.connecttoserver.f1"
+ms.custom:
+  - build-2025
 ---
 # Run the Data Quality Client Application
 

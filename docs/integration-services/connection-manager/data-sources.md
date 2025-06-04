@@ -35,7 +35,7 @@ helpviewer_keywords:
   
  You use a data source object in a package by adding a connection manager that references the data source object to the package. You can add it to the package before you build the package control flow and data flows, or as a step in constructing the control flow or data flow.  
   
- A data source object represents a simple connection to a data source and provides access to the objects in the data store that it references. For example, a data source object that connects to the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]AdventureWorks Sample Database includes all 60 tables from the database.  
+ A data source object represents a simple connection to a data source and provides access to the objects in the data store that it references. For example, a data source object that connects to the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] AdventureWorks Sample Database includes all 60 tables from the database.  
   
  There is no dependency between a data source and the connection managers that reference it. If a data source is no longer part of the project, the packages continue to be valid, because information about the data source, such as its connection type and connection string, is included in the package definition.  
   

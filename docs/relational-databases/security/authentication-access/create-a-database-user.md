@@ -10,6 +10,7 @@ ms.subservice: security
 ms.topic: how-to
 ms.custom:
   - ignite-2024
+  - build-2025
 f1_keywords:
   - "sql13.swb.user.securables.f1"
   - "SQL13.SWB.DATABASEUSER.GENERAL.F1"

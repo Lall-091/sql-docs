@@ -10,6 +10,7 @@ ms.subservice: t-sql
 ms.topic: "reference"
 ms.custom:
   - sql-ai
+  - build-2025
 f1_keywords:
   - "CREATE_EXTERNAL_MODEL"
   - "EXTERNAL MODEL"

@@ -10,6 +10,8 @@ ms.topic: how-to
 f1_keywords:
   - "sql13.dqs.dm.refdata.f1"
   - "sql13.dqs.dm.refcatalog.f1"
+ms.custom:
+  - build-2025
 ---
 # Attach domain or composite domain to reference data - Data Quality Services (DQS)
 

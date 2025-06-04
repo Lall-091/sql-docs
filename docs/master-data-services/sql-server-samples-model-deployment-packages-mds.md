@@ -10,6 +10,8 @@ ms.topic: conceptual
 keywords:
   - "master data services"
   - "sample"
+ms.custom:
+  - build-2025
 ---
 # SQL Server Examples: Model Deployment Packages (MDS)
 

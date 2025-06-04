@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "version flags [Master Data Services], assigning flags"
   - "versions [Master Data Services], assigning flags"
+ms.custom:
+  - build-2025
 ---
 # Assign a Flag to a Version (Master Data Services)
 

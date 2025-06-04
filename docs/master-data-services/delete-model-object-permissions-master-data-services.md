@@ -11,6 +11,8 @@ helpviewer_keywords:
   - "deleting model object permissions [Master Data Services]"
   - "permissions [Master Data Services], deleting model object permissions"
   - "models [Master Data Services], deleting object permissions"
+ms.custom:
+  - build-2025
 ---
 # Delete Model Object Permissions (Master Data Services)
 

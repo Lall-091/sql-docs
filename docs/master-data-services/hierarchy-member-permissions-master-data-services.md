@@ -10,6 +10,8 @@ ms.topic: conceptual
 helpviewer_keywords:
   - "members [Master Data Services], permissions"
   - "permissions [Master Data Services], members"
+ms.custom:
+  - build-2025
 ---
 # Hierarchy Member Permissions (Master Data Services)
 

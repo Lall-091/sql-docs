@@ -20,6 +20,8 @@ helpviewer_keywords:
   - "threads, SQL Server"
   - "quantum, SQL Server"
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+ms.custom:
+  - build-2025
 ---
 # Thread and task architecture guide
 

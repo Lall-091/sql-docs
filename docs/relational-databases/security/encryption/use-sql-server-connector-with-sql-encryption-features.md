@@ -170,7 +170,7 @@ The [!INCLUDE[ssDE](../../../includes/ssde-md.md)] uses the Microsoft Entra appl
   
 2.  **Create a [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] login for the [!INCLUDE[ssDE](../../../includes/ssde-md.md)] for Backup Encryption**  
   
-     Create a [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] login to be used by the [!INCLUDE[ssDE](../../../includes/ssde-md.md)]e for encryption backups, and add the credential from Step 1 to it. This [!INCLUDE[tsql](../../../includes/tsql-md.md)] example uses the same key that was imported earlier.  
+     Create a [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] login to be used by the [!INCLUDE[ssDE](../../../includes/ssde-md.md)] for encryption backups, and add the credential from Step 1 to it. This [!INCLUDE[tsql](../../../includes/tsql-md.md)] example uses the same key that was imported earlier.  
   
     > [!IMPORTANT]  
     > You cannot use the same asymmetric key for backup encryption if you've already used that key for TDE (the above example), or column level encryption (the following example).

@@ -14,6 +14,8 @@ helpviewer_keywords:
   - "readable secondary replicas"
   - "Availability Groups [SQL Server], client connectivity"
   - "Availability Groups [SQL Server], active secondary replicas"
+ms.custom:
+  - build-2025
 ---
 # Configure read-only routing for an Always On availability group
 [!INCLUDE [SQL Server](../../../includes/applies-to-version/sqlserver.md)]

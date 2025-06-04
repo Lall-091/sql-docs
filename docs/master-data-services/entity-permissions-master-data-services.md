@@ -10,6 +10,8 @@ ms.topic: conceptual
 helpviewer_keywords:
   - "entities [Master Data Services], permissions"
   - "permissions [Master Data Services], entities"
+ms.custom:
+  - build-2025
 ---
 # Entity Permissions (Master Data Services)
 

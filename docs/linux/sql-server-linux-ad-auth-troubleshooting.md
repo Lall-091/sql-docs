@@ -10,6 +10,7 @@ ms.subservice: linux
 ms.topic: troubleshooting-general
 ms.custom:
   - linux-related-content
+  - build-2025
 monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017 || =sqlallproducts-allversions"
 ---
 

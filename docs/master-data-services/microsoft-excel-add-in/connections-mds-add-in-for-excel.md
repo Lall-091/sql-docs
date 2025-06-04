@@ -7,7 +7,9 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: master-data-services
 ms.topic: conceptual
-ms.custom: microsoft-excel-add-in
+ms.custom:
+  - microsoft-excel-add-in
+  - build-2025
 ---
 # Connections (MDS Add-in for Excel)
 

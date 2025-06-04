@@ -11,6 +11,7 @@ ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
   - ignite-2024
+  - build-2025
 f1_keywords:
   - "ALTER_DATABASE_SCOPED_CONFIGURATION"
   - "ALTER_DATABASE_SCOPED_CONFIGURATION_TSQL"

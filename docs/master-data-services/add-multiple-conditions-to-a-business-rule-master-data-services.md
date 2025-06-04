@@ -9,6 +9,8 @@ ms.subservice: master-data-services
 ms.topic: how-to
 helpviewer_keywords:
   - "business rules [Master Data Services], multiple conditions"
+ms.custom:
+  - build-2025
 ---
 # Add Multiple Conditions to a Business Rule (Master Data Services)
 

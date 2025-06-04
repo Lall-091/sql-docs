@@ -4,11 +4,12 @@ description: The sp_invoke_external_rest_endpoint stored procedure invokes an HT
 author: jettermctedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 05/28/2025
+ms.date: 06/04/2025
 ms.service: sql
 ms.topic: "reference"
 ms.custom:
   - ignite-2024
+  - build-2025
 f1_keywords:
   - "sp_invoke_external_rest_endpoint_TSQL"
   - "sys.sp_invoke_external_rest_endpoint"
@@ -27,7 +28,7 @@ monikerRange: "=fabric"
 The `sp_invoke_external_rest_endpoint` stored procedure invokes an HTTPS REST endpoint provided as an input argument to the procedure.
 
 > [!NOTE]  
-> The `sp_invoke_external_rest_endpoint` stored procedure is in [preview](/azure/azure-sql/managed-instance/doc-changes-updates-release-notes-whats-new#preview) for Azure SQL Managed Instance.
+> The `sp_invoke_external_rest_endpoint` stored procedure is in preview for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
 
 ## Ways to mitigate risk of unauthorized access or transfer of data
 
@@ -108,7 +109,7 @@ GRANT EXECUTE ANY EXTERNAL ENDPOINT TO [<PRINCIPAL>];
 ### Enable in SQL Server 2025 and Azure SQL Managed Instance
 
 > [!NOTE]  
-> The `sp_invoke_external_rest_endpoint` stored procedure is in public preview for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and [Azure SQL Managed Instance](/azure/azure-sql/managed-instance/doc-changes-updates-release-notes-whats-new#preview).
+> The `sp_invoke_external_rest_endpoint` stored procedure is in preview for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
 
 The `sp_invoke_external_rest_endpoint` stored procedure is available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and Azure SQL Managed Instance configured with the [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) and is disabled by default.
 

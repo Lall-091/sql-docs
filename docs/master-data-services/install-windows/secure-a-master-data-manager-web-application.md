@@ -7,6 +7,8 @@ ms.date: "03/01/2017"
 ms.service: sql
 ms.subservice: master-data-services
 ms.topic: how-to
+ms.custom:
+  - build-2025
 ---
 # Secure a Master Data Manager Web Application
 

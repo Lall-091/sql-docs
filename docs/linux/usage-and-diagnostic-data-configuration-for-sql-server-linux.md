@@ -9,6 +9,7 @@ ms.subservice: linux
 ms.topic: how-to
 ms.custom:
   - linux-related-content
+  - build-2025
 ---
 # Configure usage and diagnostic data collection for SQL Server on Linux
 

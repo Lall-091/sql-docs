@@ -11,6 +11,7 @@ ms.topic: install-set-up-deploy
 ms.custom:
   - intro-installation
   - linux-related-content
+  - build-2025
 ---
 # Install SQL Server Integration Services (SSIS) on Linux
 

@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "attributes [Master Data Services], creating text attributes"
   - "creating text attributes [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Create a Text Attribute (Master Data Services)
 

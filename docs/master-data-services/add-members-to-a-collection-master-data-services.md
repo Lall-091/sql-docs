@@ -9,6 +9,8 @@ ms.subservice: master-data-services
 ms.topic: how-to
 helpviewer_keywords:
   - "collections [Master Data Services], adding members"
+ms.custom:
+  - build-2025
 ---
 # Add Members to a Collection (Master Data Services)
 

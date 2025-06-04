@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "models [Master Data Services], assigning object permissions"
   - "permissions [Master Data Services], assigning model object permissions"
+ms.custom:
+  - build-2025
 ---
 # Assign Model Object Permissions (Master Data Services)
 

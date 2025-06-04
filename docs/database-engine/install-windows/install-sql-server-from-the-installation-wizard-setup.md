@@ -1184,6 +1184,6 @@ If you're instructed to restart the computer, do so now.
 - [Surface area configuration](../../relational-databases/security/surface-area-configuration.md)
 - [Validate a SQL Server Installation](validate-a-sql-server-installation.md)
 - [Repair a failed SQL Server installation](repair-a-failed-sql-server-installation.md)
-- [View and Read SQL Server Setup Log Files](view-and-read-sql-server-setup-log-files.md)
+- [View and read SQL Server Setup log files](view-and-read-sql-server-setup-log-files.md)
 - [Upgrade SQL Server Using the Installation Wizard (Setup)](upgrade-sql-server-using-the-installation-wizard-setup.md)
 - [Install and configure SQL Server on Windows from the command prompt](install-sql-server-from-the-command-prompt.md)

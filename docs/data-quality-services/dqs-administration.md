@@ -11,6 +11,8 @@ helpviewer_keywords:
   - "dqs administration"
   - "administration"
   - "dqs,administration"
+ms.custom:
+  - build-2025
 ---
 # DQS Administration
 

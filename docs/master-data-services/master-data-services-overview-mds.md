@@ -16,6 +16,8 @@ helpviewer_keywords:
   - "Master Data Services, overview"
   - "Master Data Services"
 keywords: what is master data
+ms.custom:
+  - build-2025
 ---
 # Master Data Services Overview (MDS)
 

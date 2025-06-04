@@ -10,6 +10,8 @@ ms.topic: conceptual
 helpviewer_keywords:
   - "recursive hierarchies [Master Data Services]"
   - "hierarchies [Master Data Services], recursive hierarchies"
+ms.custom:
+  - build-2025
 ---
 # Recursive Hierarchies (Master Data Services)
 

@@ -9,6 +9,8 @@ ms.subservice: master-data-services
 ms.topic: how-to
 helpviewer_keywords:
   - "derived hierarchies, changing name"
+ms.custom:
+  - build-2025
 ---
 # Change a Derived Hierarchy Name (Master Data Services)
 

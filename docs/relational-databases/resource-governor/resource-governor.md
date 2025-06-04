@@ -12,6 +12,8 @@ helpviewer_keywords:
   - "Resource Governor, overview"
   - "Resource Governor"
 monikerRange: ">= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-mi-current"
+ms.custom:
+  - build-2025
 ---
 
 # Resource governor

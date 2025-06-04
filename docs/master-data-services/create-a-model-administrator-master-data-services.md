@@ -9,6 +9,8 @@ ms.subservice: master-data-services
 ms.topic: how-to
 helpviewer_keywords:
   - "administrators [Master Data Services], creating"
+ms.custom:
+  - build-2025
 ---
 # Create a Model Administrator (Master Data Services)
 

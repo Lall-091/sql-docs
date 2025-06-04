@@ -11,6 +11,8 @@ helpviewer_keywords:
   - "hierarchies [Master Data Services], derived hierarchies with explicit caps"
   - "explicit hierarchies, derived hierarchies with explicit caps"
   - "derived hierarchies, derived hierarchies with explicit caps"
+ms.custom:
+  - build-2025
 ---
 # Derived Hierarchies with Explicit Caps (Master Data Services)
 

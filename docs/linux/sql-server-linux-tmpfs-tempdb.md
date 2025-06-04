@@ -9,6 +9,7 @@ ms.subservice: linux
 ms.topic: how-to
 ms.custom:
   - linux-related-content
+  - build-2025
 ---
 # Enable and run tempdb on tmpfs for SQL Server 2025 Preview on Linux
 

@@ -239,7 +239,7 @@ Use PowerShell to modify the `RegisterAllProvidersIp` and `HostRecordTTL` settin
 
 ```powershell
 Get-ClusterResource yourListenerName | Set-ClusterParameter RegisterAllProvidersIP 0  
-Get-ClusterResource yourListenerName|Set-ClusterParameter HostRecordTTL 300 
+Get-ClusterResource yourListenerName | Set-ClusterParameter HostRecordTTL 300 
 ```
 
 To learn more, see the [documentation about listener connection timeout in SQL Server](/troubleshoot/sql/availability-groups/listener-connection-times-out). 

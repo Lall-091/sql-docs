@@ -11,6 +11,8 @@ helpviewer_keywords:
   - "change tracking groups [Master Data Services]"
   - "attributes [Master Data Services], change tracking groups"
   - "change tracking groups [Master Data Services], adding attributes"
+ms.custom:
+  - build-2025
 ---
 # Add Attributes to a Change Tracking Group (Master Data Services)
 

@@ -13,6 +13,8 @@ helpviewer_keywords:
   - "deleting members [Master Data Services]"
   - "members [Master Data Services], deleting"
   - "consolidated members [Master Data Services], deleting"
+ms.custom:
+  - build-2025
 ---
 # Delete a Member or Collection (Master Data Services)
 

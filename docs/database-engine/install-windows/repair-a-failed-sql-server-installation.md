@@ -1,9 +1,9 @@
 ---
-title: Repair a failed SQL Server installation
+title: Repair a Failed SQL Server Installation
 description: Follow these steps to repair an installation of SQL Server Standard, Developer, and Enterprise edition.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/03/2024
+ms.date: 06/03/2025
 ms.service: sql
 ms.subservice: install
 ms.topic: install-set-up-deploy
@@ -73,5 +73,5 @@ setup.exe /q /ACTION=Repair /INSTANCENAME=<instancename>
 
 ## Related content
 
-- [View and Read SQL Server Setup Log Files](view-and-read-sql-server-setup-log-files.md)
+- [View and read SQL Server Setup log files](view-and-read-sql-server-setup-log-files.md)
 - [Installation How-to articles](/previous-versions/sql/)

@@ -10,6 +10,7 @@ ms.subservice: t-sql
 ms.topic: "reference"
 ms.custom:
   - sql-ai
+  - build-2025
 f1_keywords:
   - "ai_generate_embeddings_TSQL"
   - "ai_generate_embeddings"

@@ -32,7 +32,7 @@ You can install Distributed Replay in one of three ways:
 
 ## <a name="bkmk_wizard"></a> Install Distributed Replay from the Installation Wizard
 
-Install the Microsoft[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Distributed Replay features with the [!INCLUDE[ssnoversion](../../includes/ssnoversion-md.md)] Installation Wizard. When planning where to install the features, consider the following:
+Install the Microsoft [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Distributed Replay features with the [!INCLUDE[ssnoversion](../../includes/ssnoversion-md.md)] Installation Wizard. When planning where to install the features, consider the following:
 
 - You can install the administration tool on the same computer as the Distributed Replay controller, or on different computers.
 
@@ -72,7 +72,7 @@ Assuming you use the default file locations and a standard installation, the bas
 
 - On a 64-bit system:
 
-     C:\Program Files\Microsoft[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (x86)\130\Tools
+     C:\Program Files\Microsoft [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (x86)\130\Tools
 
      \- OR -
 
@@ -117,9 +117,9 @@ Assuming you use the default file locations and a standard installation, the bas
 
 8. Optionally, select the ellipsis (...) button to change the shared feature directory path.
 
-    1. On 32-bit computers, the default installation path is **C:\Program Files\Microsoft[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]\\**
+    1. On 32-bit computers, the default installation path is **C:\Program Files\Microsoft [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]\\**
 
-    2. On 64-bit computers, the default installation path is **C:\Program Files (x86)\Microsoft[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]\\**
+    2. On 64-bit computers, the default installation path is **C:\Program Files (x86)\Microsoft [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]\\**
 
 9. When you're finished, select **Next**.
 

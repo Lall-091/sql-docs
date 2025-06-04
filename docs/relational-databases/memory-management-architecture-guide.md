@@ -108,7 +108,7 @@ This behavior is typically observed during the following operations:
 - Tracing operations that have to store large input parameters
 - Large memory grant requests
 
-If you observe this behavior frequently, consider using [Trace Flag 8121](../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md#tf8121) in s[!INCLUDE [sssql19-md](../includes/sssql19-md.md)] to allow the Resource Monitor to clean up more quickly. Starting with [!INCLUDE [sssql22-md](../includes/sssql22-md.md)], this functionality is enabled by default, and the trace flag has no effect.
+If you observe this behavior frequently, consider using [Trace Flag 8121](../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md#tf8121) in [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] to allow the Resource Monitor to clean up more quickly. Starting with [!INCLUDE [sssql22-md](../includes/sssql22-md.md)], this functionality is enabled by default, and the trace flag has no effect.
 
 <a id="changes-to-memory-management-starting-with-"></a>
 

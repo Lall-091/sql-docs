@@ -10,6 +10,7 @@ ms.subservice: linux
 ms.topic: conceptual
 ms.custom:
   - linux-related-content
+  - build-2025
 helpviewer_keywords:
   - "Enterprise Edition [SQL Server]"
   - "Developer Edition [SQL Server]"

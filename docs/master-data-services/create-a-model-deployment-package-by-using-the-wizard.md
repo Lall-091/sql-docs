@@ -11,6 +11,8 @@ helpviewer_keywords:
   - "deployment packages [Master Data Services], creating"
   - "models [Master Data Services], creating a deployment package"
   - "creating packages [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Create a Model Deployment Package by Using the Wizard
 

@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "deleting business rules [Master Data Services]"
   - "business rules [Master Data Services], deleting"
+ms.custom:
+  - build-2025
 ---
 # Delete a Business Rule (Master Data Services)
 

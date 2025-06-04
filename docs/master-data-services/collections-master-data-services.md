@@ -10,6 +10,8 @@ ms.topic: conceptual
 helpviewer_keywords:
   - "collections [Master Data Services]"
   - "collections [Master Data Services], about collections"
+ms.custom:
+  - build-2025
 ---
 # Collections (Master Data Services)
 

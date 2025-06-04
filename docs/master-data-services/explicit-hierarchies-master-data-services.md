@@ -11,6 +11,8 @@ helpviewer_keywords:
   - "explicit hierarchies, about explicit hierarchies"
   - "hierarchies [Master Data Services], explicit hierarchies"
   - "explicit hierarchies"
+ms.custom:
+  - build-2025
 ---
 # Explicit Hierarchies (Master Data Services)
 

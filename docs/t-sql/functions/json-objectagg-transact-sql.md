@@ -10,6 +10,7 @@ ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
   - build-2024
+  - build-2025
 f1_keywords:
   - "JSON_OBJECTAGG"
   - "JSON_OBJECTAGG_TSQL"

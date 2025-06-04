@@ -7,6 +7,8 @@ ms.date: "03/17/2017"
 ms.service: sql
 ms.subservice: master-data-services
 ms.topic: "reference"
+ms.custom:
+  - build-2025
 ---
 # Create Master Data Manager Web Service Proxy Classes
 

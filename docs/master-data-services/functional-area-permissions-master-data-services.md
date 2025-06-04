@@ -11,6 +11,8 @@ helpviewer_keywords:
   - "functional area permissions [Master Data Services], about functional area permissions"
   - "functional area permissions [Master Data Services]"
   - "permissions [Master Data Services], functional areas"
+ms.custom:
+  - build-2025
 ---
 # Functional Area Permissions (Master Data Services)
 

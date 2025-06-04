@@ -19,6 +19,8 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =fabric || =azuresqldb-mi-current"
+ms.custom:
+  - build-2025
 ---
 
 # Vector data type (preview)

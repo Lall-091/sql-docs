@@ -10,6 +10,8 @@ ms.topic: conceptual
 helpviewer_keywords:
   - "database [Master Data Services], attributes staging table"
   - "attributes staging table [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Consolidated Member Staging Table (Master Data Services)
 

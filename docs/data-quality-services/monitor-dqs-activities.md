@@ -12,6 +12,8 @@ f1_keywords:
 helpviewer_keywords:
   - "monitoring activity"
   - "activity monitoring"
+ms.custom:
+  - build-2025
 ---
 # Monitor DQS Activities
 

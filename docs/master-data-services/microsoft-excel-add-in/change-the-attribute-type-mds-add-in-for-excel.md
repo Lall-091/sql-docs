@@ -7,7 +7,9 @@ ms.date: "03/15/2017"
 ms.service: sql
 ms.subservice: master-data-services
 ms.topic: how-to
-ms.custom: microsoft-excel-add-in
+ms.custom:
+  - microsoft-excel-add-in
+  - build-2025
 ---
 # Change the Attribute Type (MDS Add-in for Excel)
 

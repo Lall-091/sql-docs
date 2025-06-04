@@ -3,7 +3,7 @@ title: Upgrade to a Different Edition of SQL Server
 description: SQL Server Setup supports edition upgrade among various editions of SQL Server. Before you begin an edition upgrade, review the resources in this article.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/19/2025
+ms.date: 06/03/2025
 ms.service: sql
 ms.subservice: install
 ms.topic: install-set-up-deploy
@@ -57,7 +57,7 @@ For local installations, you must run Setup as an administrator. If you install 
 
 1. The **Complete** page provides a link to the summary log file for the installation and other important notes.
 
-1. If you're instructed to restart the computer, do so now. It's important to read the message from the Installation Wizard when you finish Setup. For information about Setup log files, see [View and Read SQL Server Setup Log Files](view-and-read-sql-server-setup-log-files.md).
+1. If you're instructed to restart the computer, do so now. It's important to read the message from the Installation Wizard when you finish Setup. For information about Setup log files, see [View and read SQL Server Setup log files](view-and-read-sql-server-setup-log-files.md).
 
 1. If you upgraded from [!INCLUDE [ssExpress](../../includes/ssexpress-md.md)], you must perform extra steps before you can use your upgraded instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]:
 

@@ -8,6 +8,8 @@ ms.service: sql
 ms.subservice: master-data-services
 ms.topic: how-to
 monikerRange: ">=sql-server-ver15"
+ms.custom:
+  - build-2025
 ---
 # Host an MDS database on a managed instance
 

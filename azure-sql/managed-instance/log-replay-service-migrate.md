@@ -52,6 +52,7 @@ Make sure that you meet the following requirements for SQL Server:
 - For SQL Server versions 2008 to 2016, take a backup locally and [manually upload](#copy-existing-backups-to-your-blob-storage-account) it to your Azure Blob Storage account. 
 - For SQL Server 2016 and later, you can [take your backup directly](#take-backups-directly-to-your-blob-storage-account) to your Azure Blob Storage account. 
 - Although having `CHECKSUM` enabled for backups isn't required, it's highly recommended to prevent unintentionally migrating a corrupt database, and for faster restore operations. 
+- Any version of Windows Server is supported based on the SQL Server version supportability.  
 
 ### Azure 
 
@@ -626,7 +627,8 @@ Consider the following limitations when migrating with LRS:
 - You must start LRS separately for each database that points to the full URI path that contains an individual database folder. 
 - The backup URI path, container name, or folder names can't contain `backup` or `Backup` as these are reserved keywords.
 - When starting multiple Log Replay restores in parallel, targeting the same storage container, ensure that the same valid SAS token is provided for every restore operation.
-- LRS can support up to 100 simultaneous restore processes per single managed instance.
+- LRS supports migrating a total number of databases to a single instance up to the [resource limits](resource-limits.md#service-tier-characteristics) of the service tier. For example, you can restore up to 100 total databases in the **General Purpose** service tier, and up to 500 total databases in the **Next-Gen General Purpose** service tier.
+- LRS supports 100 simultaneous database restores to a single instance, and 200 simultaneous database restores for all instances in a single subscription. For example, you can restore 100 databases in parallel to two instances in the same subscription at the same time, or 50 databases in four simultaneous batches in parallel to four separate instances within the same subscription. 
 - A single LRS job can run for a maximum of 30 days, after which it will be automatically canceled.
 - While it's possible to use an Azure Storage account behind a firewall, extra configuration is necessary, and the storage account and managed instance must either be in the same region, or two paired regions. Review [Configure firewall](log-replay-service-migrate.md#configure-azure-storage-behind-a-firewall) to learn more. 
 - The maximum number of databases you can restore in parallel is 200 per single subscription. In some cases, it's possible to increase this limit by opening a support ticket. 

@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "attributes [Master Data Services], creating number attributes"
   - "creating number attributes [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Create a Numeric Attribute (Master Data Services)
 

@@ -9,6 +9,8 @@ ms.subservice: master-data-services
 ms.topic: how-to
 helpviewer_keywords:
   - "transactions [Master Data Services], reversing"
+ms.custom:
+  - build-2025
 ---
 # Reverse a Transaction (Master Data Services)
 

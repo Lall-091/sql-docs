@@ -11,6 +11,8 @@ f1_keywords:
   - "sql13.dqs.kb.importfailing.f1"
   - "sql13.dqs.kb.importselect.f1"
   - "sql13.dqs.kb.failingvalues.f1"
+ms.custom:
+  - build-2025
 ---
 # Import Values from an Excel File into a Domain
 

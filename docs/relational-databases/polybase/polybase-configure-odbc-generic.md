@@ -9,6 +9,8 @@ ms.service: sql
 ms.subservice: polybase
 ms.topic: how-to
 monikerRange: ">=sql-server-linux-ver15 || >=sql-server-ver15"
+ms.custom:
+  - build-2025
 ---
 # Configure PolyBase to access external data with ODBC generic types
 

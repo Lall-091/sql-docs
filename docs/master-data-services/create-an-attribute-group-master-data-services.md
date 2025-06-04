@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "attribute groups [Master Data Services], creating"
   - "creating attribute groups [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Create an Attribute Group (Master Data Services)
 

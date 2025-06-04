@@ -122,7 +122,7 @@ To change the cluster IP address, follow these steps:
 
 Since the SQL Server VMs are in different subnets the cluster will have an OR dependency on the two dedicated windows cluster IP addresses. When the cluster name resource comes online, it updates the domain controller (DC) server with a new Active Directory (AD) computer account. If the cluster core resources move nodes, one IP address goes offline, while the other comes online, updating the DC server with the new IP address association.  
 
->[!TIP]
+> [!TIP]
 > When running the cluster on Azure VMs in a production environment, change the cluster settings to a more relaxed monitoring state to improve cluster stability and reliability in a cloud environment. To learn more, see [SQL Server VM - HADR configuration best practices](hadr-cluster-best-practices.md#checklist).
 
 ## Configure quorum
@@ -359,6 +359,32 @@ At this point, you have an availability group with replicas on two instances of 
 
 > [!WARNING]
 > Do not try to fail over the availability group by using the Failover Cluster Manager. All failover operations should be performed from within **SQL Server Management Studio**, such as by using the **Always On Dashboard** or Transact-SQL (T-SQL). For more information, see [Restrictions for using the Failover Cluster Manager with availability groups](/sql/database-engine/availability-groups/windows/failover-clustering-and-always-on-availability-groups-sql-server).
+
+### Set RegisterAllProvidersIP
+
+When you connect to an availability group with replicas in multiple subnets, set the `MultiSubnetFailover=Yes` option in the connection string so that the client attempts to connect to all IP addresses of the listener at the same time. To reduce reconnection time after a failover for clients with connection strings that specify `MultiSubnetFailover=True`, set the [`RegisterAllProvidersIP` property to `1`](/sql/database-engine/availability-groups/windows/create-or-configure-an-availability-group-listener-sql-server#RegisterAllProvidersIP) to register all IP addresses of the cluster network name of the listener resource with DNS. 
+
+The [RegisterAllProvidersIP](/previous-versions/windows/desktop/mscs/registerallprovidersip) setting is a cluster property that determines how the cluster registers the IP address of the cluster network name resource with DNS. The default value is `0`, which means that the cluster registers only the IP address of the node that owns the cluster network name resource. 
+
+By default, when you use SQL Server Management Studio (SSMS), Transact-SQL, or PowerShell to create an availability group, the WSFC Client Access Point is created with the `RegisterAllProvidersIP` property set to `1`.
+
+Use the following PowerShell command to check the `RegisterAllProvidersIP` setting for your listener:
+
+```powershell
+Get-ClusterResource | where-object {$_.ResourceType.name -eq "Network Name"} | Get-ClusterParameter | where-object {$_.name -eq "RegisterAllProvidersIP"}
+```
+
+If your client doesn't support the `MultiSubnetFailover` parameter, you can modify the `RegisterAllProvidersIP` and `HostRecordTTL` settings to prevent connectivity delays after failover. 
+
+Use PowerShell to modify the `RegisterAllProvidersIp` and `HostRecordTTL` settings: 
+
+```powershell
+Get-ClusterResource yourListenerName | Set-ClusterParameter RegisterAllProvidersIP 0  
+Get-ClusterResource yourListenerName|Set-ClusterParameter HostRecordTTL 300 
+```
+
+> [!NOTE]
+> Lowering the `HostRecordTTL` value can increase DNS traffic. 
 
 ## Test listener connection
 

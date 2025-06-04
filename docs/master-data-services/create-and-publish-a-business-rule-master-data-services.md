@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "business rules [Master Data Services], creating"
   - "creating business rules [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Create and Publish a Business Rule (Master Data Services)
 

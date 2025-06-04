@@ -11,6 +11,8 @@ helpviewer_keywords:
   - "creating version flags [Master Data Services]"
   - "version flags [Master Data Services], creating"
   - "versions [Master Data Services], creating flags"
+ms.custom:
+  - build-2025
 ---
 # Create a Version Flag (Master Data Services)
 

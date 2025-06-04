@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "creating collections [Master Data Services]"
   - "collections [Master Data Services], creating"
+ms.custom:
+  - build-2025
 ---
 # Create a Collection (Master Data Services)
 

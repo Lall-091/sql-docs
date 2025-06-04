@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "e-mail [Master Data Services], configuring"
   - "notifications [Master Data Services], configuring notifications"
+ms.custom:
+  - build-2025
 ---
 # Configure Email Notifications (Master Data Services)
 

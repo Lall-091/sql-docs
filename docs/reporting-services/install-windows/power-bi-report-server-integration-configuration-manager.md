@@ -19,7 +19,7 @@ The  **Power BI Integration** page  in [!INCLUDE[ssRSnoversion](../../includes/s
 
 ## <a name="bkmk_requirements"></a> Requirements for Power BI Integration
 
-In addition to an active internet connection so you can browse to the [!INCLUDE[sspowerbi](../../includes/sspowerbi-md.md)] service, the following are requirements to complete [!INCLUDE[sspowerbi](../../includes/sspowerbi-md.md)]integration.
+In addition to an active internet connection so you can browse to the [!INCLUDE[sspowerbi](../../includes/sspowerbi-md.md)] service, the following are requirements to complete [!INCLUDE[sspowerbi](../../includes/sspowerbi-md.md)] integration.
 
 - **Microsoft Entra ID:** Your organization must use Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)), which provides directory and identity management for Azure services and web applications. For more information, see [What is Microsoft Entra ID?](/azure/active-directory/fundamentals/active-directory-whatis)
 
@@ -137,7 +137,7 @@ The second time a user pins an item, the steps 1-4 are skipped and instead the A
 
 2. The user token is retrieved from the ReportServer database.
 
-3. The report item state and data is sent with the token to the [!INCLUDE[sspowerbi](../../includes/sspowerbi-md.md)]service.
+3. The report item state and data is sent with the token to the [!INCLUDE[sspowerbi](../../includes/sspowerbi-md.md)] service.
 
 4. The token is sent to Microsoft Entra ID for validation. If the token is valid, the report item data is sent to the dashboard tile and the date property of the tile is updated.
 

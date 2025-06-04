@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "derived hierarchies, hiding levels"
   - "derived hierarchies, deleting levels"
+ms.custom:
+  - build-2025
 ---
 # Hide or Delete Levels in a Derived Hierarchy (Master Data Services)
 

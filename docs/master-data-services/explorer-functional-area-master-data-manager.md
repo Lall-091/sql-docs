@@ -7,6 +7,8 @@ ms.date: "03/15/2017"
 ms.service: sql
 ms.subservice: master-data-services
 ms.topic: conceptual
+ms.custom:
+  - build-2025
 ---
 # Explorer Functional Area (Master Data Manager)
 

@@ -7,6 +7,8 @@ ms.date: "04/01/2016"
 ms.service: sql
 ms.subservice: master-data-services
 ms.topic: conceptual
+ms.custom:
+  - build-2025
 ---
 # Integration Management Functional Area (Master Data Manager)
 

@@ -9,6 +9,7 @@ ms.subservice: linux
 ms.topic: upgrade-and-migration-article
 ms.custom:
   - linux-related-content
+  - build-2025
 zone_pivot_groups: ld2-linux-distribution
 ---
 # Configure repositories for installing and upgrading SQL Server on Linux

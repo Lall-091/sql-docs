@@ -3,11 +3,12 @@ title: "Install SQL Server on Server Core"
 description: You can install SQL Server on a Server Core installation. The Server Core installation option provides a minimal environment for running specific server roles.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 09/11/2023
+ms.date: 06/03/2025
 ms.service: sql
 ms.subservice: install
 ms.topic: install-set-up-deploy
-ms.custom: intro-installation
+ms.custom:
+  - intro-installation
 monikerRange: ">=sql-server-2016"
 ---
 # Install SQL Server on Server Core
@@ -18,7 +19,7 @@ You can install [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on a 
 
 The Server Core installation option provides a minimal environment for running specific server roles. This helps to reduce maintenance and management requirements and the attack surface for those server roles.
 
-For a list of currently supported operating systems, see [Hardware and Software Requirements for Installing SQL Server](../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server.md).
+For a list of currently supported operating systems, see [Hardware and software requirements for SQL Server 2022](../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2022.md).
 
 ## Prerequisites
 
@@ -27,9 +28,11 @@ For a list of currently supported operating systems, see [Hardware and Software 
 | [!INCLUDE [dnprdnshort](../../includes/dnprdnshort-md.md)] 4.6.1 | For all editions of [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] except [!INCLUDE [ssExpress](../../includes/ssexpress-md.md)], Setup requires the [!INCLUDE [dnprdnshort](../../includes/dnprdnshort-md.md)] 4.6.1 Server Core Profile. SQL Server Setup will automatically install this if it's not already installed. Installation requires a restart. You can install [!INCLUDE [dnprdnshort](../../includes/dnprdnshort-md.md)] before you run setup to avoid a restart. |
 | Windows Installer 4.5 | Shipped with Server Core installation. |
 | Windows PowerShell | Shipped with Server Core installation. |
-| Java Runtime | In order to use PolyBase, you need to install the appropriate Java Runtime. For more information, see [PolyBase installation](../../relational-databases/polybase/polybase-installation.md). |
+| Java Runtime | In order to use PolyBase, you need to install the appropriate Java Runtime. For more information, see [Install PolyBase on Windows](../../relational-databases/polybase/polybase-installation.md). |
 
-## <a id="BK_SupportedFeatures"></a> Supported features
+<a id="BK_SupportedFeatures"></a>
+
+## Supported features
 
 Use the following table to find which features are supported in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] on a Server Core installation.
 
@@ -61,11 +64,11 @@ Use the following table to find which features are supported in [!INCLUDE [ssnov
 The following table shows the supported scenario matrix for installing [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] on a Server Core.
 
 | Installation | Valid target |
-| - | - |
+| --- | --- |
 | [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] editions | All [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] 64-bit editions |
 | [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] language | All languages |
 | [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] language on OS language/locale (combination) | ENG [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on JPN (Japanese) Windows<br /><br />ENG [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on GER (German) Windows<br /><br />ENG [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on CHS (Chinese-China) Windows<br /><br />ENG [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on ARA (Arabic (SA)) Windows<br /><br />ENG [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on THA (Thai) Windows<br /><br />ENG [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on TRK (Turkish) Windows<br /><br />ENG [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on pt-PT (Portuguese Portugal) Windows<br /><br />ENG [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on ENG (English) Windows |
-|Windows edition|Windows Server 2022 Datacenter <br/><br/> Windows Server 2022 Datacenter: Azure edition <br/><br/>Windows Server 2022 Standard <br /><br />Windows Server 2019 Datacenter <br/><br/> Windows Server 2019 Standard <br /><br />  [!INCLUDE [winserver2016_datacenter_md](../../includes/winserver2016-datacenter-md.md)]<br/><br/>[!INCLUDE [winserver2016_standard_md](../../includes/winserver2016-standard-md.md)]
+| Windows edition | Windows Server 2022 Datacenter<br /><br />Windows Server 2022 Datacenter: Azure edition<br /><br />Windows Server 2022 Standard<br /><br />Windows Server 2019 Datacenter<br /><br />Windows Server 2019 Standard<br /><br />[!INCLUDE [winserver2016_datacenter_md](../../includes/winserver2016-datacenter-md.md)]<br /><br />[!INCLUDE [winserver2016_standard_md](../../includes/winserver2016-standard-md.md)] |
 
 ## Upgrade
 
@@ -73,7 +76,7 @@ On Server Core installations, upgrading from [!INCLUDE [ssSQL14](../../includes/
 
 ## Install
 
-[!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] doesn't support setup by using the installation wizard on the Server Core operating system. When installing on Server Core, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Setup supports full quiet mode by using the `/Q` parameter, or Quiet Simple mode by using the `/QS` parameter. For more information, see [Install SQL Server from the Command Prompt](./install-sql-server-from-the-command-prompt.md).
+[!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] doesn't support setup by using the installation wizard on the Server Core operating system. When installing on Server Core, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Setup supports full quiet mode by using the `/Q` parameter, or Quiet Simple mode by using the `/QS` parameter. For more information, see [Install and configure SQL Server on Windows from the command prompt](install-sql-server-from-the-command-prompt.md).
 
 Regardless of the installation method, you're required to confirm acceptance of the software license terms as an individual or on behalf of an entity, unless your use of the software is governed by a separate agreement such as a [!INCLUDE [msCoName](../../includes/msconame-md.md)] volume licensing agreement or a third-party agreement with an ISV or OEM.
 
@@ -82,7 +85,7 @@ The license terms are displayed for review and acceptance in the Setup user inte
 [!INCLUDE [sql-eula-link](../../includes/sql-eula-link.md)]
 
 > [!NOTE]  
-> Depending on how you received the software (for example, through [!INCLUDE [msCoName](../../includes/msconame-md.md)] volume licensing), your use of the software may be subject to additional terms and conditions.
+> Depending on how you received the software (for example, through [!INCLUDE [msCoName](../../includes/msconame-md.md)] volume licensing), your use of the software might be subject to additional terms and conditions.
 
 To install specific features, use the `/FEATURES` parameter and specify the parent feature or feature values. For more information about feature parameters and their use, see the following sections.
 
@@ -184,32 +187,32 @@ The Setup supports the following installation options while installing [!INCLUDE
 
      ; Specifies features to install, uninstall, or upgrade. The lists of features include SQLEngine, FullText, Replication, AS, IS, and Conn.
      FEATURES=SQLENGINE,FullText,Replication,AS,IS,Conn
-     
+
      ; Specify a default or named instance. MSSQLSERVER is the default instance for non-Express editions and SQLExpress for Express editions. This parameter is  required when installing the ssNoVersion Database Engine (SQL), or Analysis Services (AS).
      INSTANCENAME="MSSQLSERVER"
-     
+
      ; Specify the Instance ID for the ssNoVersion features you have specified. ssNoVersion directory structure, registry structure, and service names will  incorporate the instance ID of the ssNoVersion instance.
      INSTANCEID="MSSQLSERVER"
-     
+
      ; Account for ssNoVersion service: Domain\User or system account.
      SQLSVCACCOUNT="NT Service\MSSQLSERVER"
-     
+
      ; Windows account(s) to provision as ssNoVersion system administrators.
      SQLSYSADMINACCOUNTS="\<DomainName\UserName>"
-     
+
      ; The name of the account that the Analysis Services service runs under.
      ASSVCACCOUNT= "NT Service\MSSQLServerOLAPService"
-     
+
      ; Specifies the list of administrator accounts that need to be provisioned.
      ASSYSADMINACCOUNTS="\<DomainName\UserName>"
-     
+
      ; Specifies the server mode of the Analysis Services instance. Valid values are MULTIDIMENSIONAL, POWERPIVOT or TABULAR. ASSERVERMODE is case-sensitive.  All values must be expressed in upper case.
      ASSERVERMODE="MULTIDIMENSIONAL"
-     
+
      ; Optional value, which specifies the state of the TCP protocol for the ssNoVersion service. Supported values are: 0 to disable the TCP protocol, and 1 to  enable the TCP protocol.
      TCPENABLED=1
-     
-     ;Specifies acceptance of License Terms
+
+     ; Specifies acceptance of License Terms
      IAcceptSQLServerLicenseTerms="True"
      ```
 
@@ -244,7 +247,7 @@ Perform the actions described below to configure remote access of a [!INCLUDE [s
 To enable remote connections, use SQLCMD.exe locally and execute the following statements against the Server Core instance:
 
 ```sql
-EXEC sys.sp_configure N'remote access', N'1';
+EXECUTE sys.sp_configure N'remote access', N'1';
 GO
 RECONFIGURE WITH OVERRIDE;
 GO
@@ -266,9 +269,9 @@ Start-Service sqlbrowser
 
 ### Create exceptions in Windows Firewall
 
-To create exceptions for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] access in Windows Firewall, follow the steps specified in [Configure the Windows Firewall to Allow SQL Server Access](../../sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access.md).
+To create exceptions for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] access in Windows Firewall, follow the steps specified in [Configure the Windows Firewall to allow SQL Server access](../../sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access.md).
 
-### Enable TCP/IP on the instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]
+### Enable TCP/IP on the instance of SQL Server
 
 The TCP/IP protocol can be enabled through Windows PowerShell for an instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on Server Core. Follow these steps:
 
@@ -289,7 +292,7 @@ The TCP/IP protocol can be enabled through Windows PowerShell for an instance of
 
 ## Uninstall
 
-After you sign into a computer that is running Server Core, you have a limited desktop environment with an Administrator command prompt. You can use this command prompt to launch the uninstall an of [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)]. To uninstall an instance of [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)], launch the uninstallation from the command prompt in full quiet mode by using the `/Q` parameter, or *quiet simple* mode by using the `/QS` parameter. The `/QS` parameter shows progress through the UI, but doesn't accept any input. `/Q` runs in a quiet mode without any user interface.
+After you sign into a computer that is running Server Core, you have a limited desktop environment with an Administrator command prompt. You can use this command prompt to launch the uninstall of [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)]. To uninstall an instance of [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)], launch the uninstallation from the command prompt in full quiet mode by using the `/Q` parameter, or *quiet simple* mode by using the `/QS` parameter. The `/QS` parameter shows progress through the UI, but doesn't accept any input. `/Q` runs in a quiet mode without any user interface.
 
 To uninstall an existing instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]:
 
@@ -307,10 +310,10 @@ If you accidentally close the command prompt, you can start a new command prompt
 1. On the **Applications** tab, select **New Task**.
 1. In the **Create New Task** dialog box, type **cmd** in the **Open** field and then select **OK**.
 
-## See also
+## Related content
 
-- [Install SQL Server Using a Configuration File](./install-sql-server-using-a-configuration-file.md)
-- [Install SQL Server from the Command Prompt](./install-sql-server-from-the-command-prompt.md)
+- [Install SQL Server using a configuration file](install-sql-server-using-a-configuration-file.md)
+- [Install and configure SQL Server on Windows from the command prompt](install-sql-server-from-the-command-prompt.md)
 - [Install Server Core](/windows-server/get-started/getting-started-with-server-core)
 - [Configure a Server Core installation of Windows Server 2016 with Sconfig.cmd](/windows-server/get-started/sconfig-on-ws2016)
 - [Failover Cluster Cmdlets in Windows PowerShell](/powershell/module/failoverclusters/)

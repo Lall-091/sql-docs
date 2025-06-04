@@ -9,6 +9,8 @@ ms.subservice: data-quality-services
 ms.topic: conceptual
 helpviewer_keywords:
   - "Domains"
+ms.custom:
+  - build-2025
 ---
 # Introduction to Data Quality Services
 

@@ -42,7 +42,7 @@ You can upgrade from [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)], [!INCLU
 
 - You can't add new features during the upgrade of your existing instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. After you upgrade an instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], you can add features by using the [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] Setup. For more information, see [Add Features to an Instance of SQL Server (Setup)](add-features-to-an-instance-of-sql-server-setup.md).
 
-## Upgrades from earlier versions to [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)]
+## Upgrades from earlier versions to SQL Server 2019
 
 [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] supports upgrade from the following versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]:
 
@@ -88,9 +88,9 @@ The following table lists the supported upgrade scenarios from earlier versions 
 
 <sup>1</sup> Microsoft support to upgrade from release candidate software is specifically for customers who participated in the Early Adopter Program.
 
-## Migrate to [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)]
+## Migrate to SQL Server 2019
 
-You can migrate databases from older versions of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] to [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], as long as the source database compatibility level is `90` or higher. Databases with a compatibility level of `90` (for example, on [!INCLUDE [ssversion2005-md](../../includes/ssversion2005-md.md)]), are automatically upgraded to a compatibility level of `100` when migrated to [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)]. If the compatibility level on the source database is `100` or higher, it is unchanged on [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)].
+You can migrate databases from older versions of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] to [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], as long as the source database compatibility level is `90` or higher. Databases with a compatibility level of `90` (for example, on [!INCLUDE [ssversion2005-md](../../includes/ssversion2005-md.md)]), are automatically upgraded to a compatibility level of `100` when migrated to [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)]. If the compatibility level on the source database is `100` or higher, it's unchanged on [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)].
 
 For information, see [Upgrade SQL Server to the latest version](../../sql-server/migrate/guides/sql-server-to-sql-server-upgrade-guide.md).
 
@@ -103,7 +103,7 @@ The following tips and tools can help you plan and implement your migration.
 | **Log shipping** | Log shipping is supported if the primary is running [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)] SP3 or later, or [!INCLUDE [sql2008r2-md](../../includes/sql2008r2-md.md)] SP2 or later, and the secondary is running [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)].<br /><br />**Warning:** If an automatic or manual failover happens and the [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] instance becomes primary, [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)] or [!INCLUDE [sql2008r2-md](../../includes/sql2008r2-md.md)] instance becomes secondary, and can't receive changes from primary. |
 | **Bulk load** | Tables can be bulk copied from [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)] or [!INCLUDE [sql2008r2-md](../../includes/sql2008r2-md.md)] to [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)]. |
 
-## [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] edition upgrade
+## SQL Server 2019 edition upgrade
 
 The following table lists the supported edition upgrade scenarios in [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)].
 

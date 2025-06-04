@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "committing versions [Master Data Services]"
   - "versions [Master Data Services], committing"
+ms.custom:
+  - build-2025
 ---
 # Commit a Version (Master Data Services)
 

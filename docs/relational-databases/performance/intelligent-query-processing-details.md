@@ -10,6 +10,7 @@ ms.subservice: performance
 ms.topic: conceptual
 ms.custom:
   - ignite-2024
+  - build-2025
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
 

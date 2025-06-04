@@ -11,6 +11,8 @@ helpviewer_keywords:
   - "domain-based attributes [Master Data Services], about domain-based attributes"
   - "domain-based attributes [Master Data Services]"
   - "attributes [Master Data Services], domain-based attributes"
+ms.custom:
+  - build-2025
 ---
 # Domain-Based Attributes (Master Data Services)
 

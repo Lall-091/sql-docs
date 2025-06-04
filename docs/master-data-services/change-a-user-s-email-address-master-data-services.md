@@ -9,6 +9,8 @@ ms.subservice: master-data-services
 ms.topic: how-to
 helpviewer_keywords:
   - "users [Master Data Services], changing e-mail address"
+ms.custom:
+  - build-2025
 ---
 # Change a User's Email Address (Master Data Services)
 

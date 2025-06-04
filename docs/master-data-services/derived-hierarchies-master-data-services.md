@@ -11,6 +11,8 @@ helpviewer_keywords:
   - "derived hierarchies"
   - "hierarchies [Master Data Services], derived hierarchies"
   - "derived hierarchies, about derived hierarchies"
+ms.custom:
+  - build-2025
 ---
 # Derived Hierarchies (Master Data Services)
 

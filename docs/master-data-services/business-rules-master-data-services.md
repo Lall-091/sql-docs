@@ -10,6 +10,8 @@ ms.topic: conceptual
 helpviewer_keywords:
   - "business rules [Master Data Services], about business rules"
   - "business rules [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Business Rules (Master Data Services)
 

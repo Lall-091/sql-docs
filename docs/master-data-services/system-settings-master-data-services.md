@@ -10,6 +10,8 @@ ms.topic: conceptual
 helpviewer_keywords:
   - "Master Data Services, system settings"
   - "system settings [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # System Settings (Master Data Services)
 

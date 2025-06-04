@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "users [Master Data Services], adding"
   - "adding users [Master Data Services]"
+ms.custom:
+  - build-2025
 ---
 # Add a User (Master Data Services)
 

@@ -9,6 +9,8 @@ ms.subservice: master-data-services
 ms.topic: how-to
 helpviewer_keywords:
   - "annotations [Master Data Services], for transactions"
+ms.custom:
+  - build-2025
 ---
 # Annotate a Transaction (Master Data Services)
 

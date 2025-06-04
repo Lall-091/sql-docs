@@ -10,6 +10,8 @@ ms.topic: how-to
 helpviewer_keywords:
   - "creating file attributes [Master Data Services]"
   - "attributes [Master Data Services], creating file attributes"
+ms.custom:
+  - build-2025
 ---
 # Create a File Attribute (Master Data Services)
 

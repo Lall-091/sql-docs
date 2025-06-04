@@ -10,6 +10,8 @@ ms.topic: conceptual
 helpviewer_keywords:
   - "reserved words [Master Data Services]"
   - "Master Data Services, reserved words"
+ms.custom:
+  - build-2025
 ---
 # Reserved Words (Master Data Services)
 
