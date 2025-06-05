@@ -58,7 +58,7 @@ For the latest release notes and what's new information, see the following:
 
 ## SQL Server editions
 
-[!INCLUDE [sql-server-editions](../includes/paragraph-content/sql-server-editions.md)]
+[!INCLUDE [sql-server-editions](../includes/paragraph-content/sql-server-editions-1.md)]
 
 ## Use SQL Server with client/server applications
 

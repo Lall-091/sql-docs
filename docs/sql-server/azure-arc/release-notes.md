@@ -32,11 +32,8 @@ This release enables the following features:
 - SQL Server 2025 Preview.
   - Standard Developer Edition.
   - Enterprise Developer Edition.
-  - Inbound Entra Authentication using Managed Identity, review [Managed identity (preview)](managed-identity.md).
+  - Inbound Microsoft Entra Authentication using Managed Identity, review [Managed identity (preview)](managed-identity.md).
   For details about features in SQL Server 2025 Preview, review [What's new in SQL Server 2025 Preview](../what-s-new-in-sql-server-2025.md).
-- Support for migration integrated with Managed Instance link (preview).
-  - [Monitor migration](/azure/azure-sql/managed-instance/managed-instance-link-migrate).
-  - [Additional details](/azure/azure-sql/managed-instance/managed-instance-link-feature-overview).
 
 ## April 30, 2025
 
@@ -92,7 +89,7 @@ This release includes bug fixes in the high availability and disaster recovery (
 
 **Extension version**: `1.1.2859.223`
 
-Minor bug fixes. This release does not enable or introduce new features. 
+Minor bug fixes. This release doesn't enable or introduce new features. 
 
 ## October 8, 2024
 
@@ -110,7 +107,7 @@ Inventory additional service resources in portal (preview):
 
 ### ESU update to bill-back calculation
 
-ESU sets the bill-back date to the beginning of the current ESU year based on the timestamp when ESU was enabled, or p-core ESU license got activated. For details, review [SQL Server Extended Security Updates enabled by Azure Arc](extended-security-updates.md).
+ESU sets the bill-back date to the beginning of the current ESU year based on the timestamp when ESU was enabled, or p-core ESU license was activated. For details, review [SQL Server Extended Security Updates enabled by Azure Arc](extended-security-updates.md).
 
 ## September 9, 2024
 
