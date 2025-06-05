@@ -11,7 +11,7 @@ helpviewer_keywords:
   - "validating installations [SQL Server]"
 monikerRange: ">=sql-server-2016"
 ---
-# Validate a SQL Server Installation
+# Validate a SQL Server installation
 
 [!INCLUDE [SQL Server -Windows Only](../../includes/applies-to-version/sql-windows-only.md)]
 
@@ -19,7 +19,7 @@ The [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] discovery report 
 
 ## Run SQL Server features discovery report
 
-Launch the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Installation center, using the **Start** menu, point to **All Programs**, point to **Microsoft SQL Server \<Version Name>**, point to **Configuration Tools**, and select **SQL Server Installation Center**. To run the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] features discovery report, select **Tools** in the left-hand navigation area of **SQL Server Installation Center**, and then select **Installed SQL Server features discovery report**.
+Launch the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Installation center, using the **Start** menu, point to **All Programs**, point to **Microsoft SQL Server \<Version Name>**, and select **SQL Server Installation Center**. To run the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] features discovery report, select **Tools** in the left-hand navigation area of **SQL Server Installation Center**, and then select **Installed SQL Server features discovery report**.
 
 The [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] discovery report is saved to `%ProgramFiles%\Microsoft SQL Server\<nnn>\Setup Bootstrap\Log\<last Setup Session>`.
 

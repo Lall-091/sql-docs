@@ -28,7 +28,7 @@ monikerRange: "=azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-20
 | --- | --- | --- |
 | `name` | **sysname** | Name of the time zone in Windows standard format. For example, `Cen. Australia Standard Time` or `Central European Standard Time`. |
 | `current_utc_offset` | **nvarchar(12)** | Current offset to UTC. For example, `+01:00` or `-07:00`. |
-| `is_currently_dst` | **bit** | True if currently observing daylight savings time. |
+| `is_currently_dst` | **bit** | True if currently observing daylight saving time. |
 
 ## Remarks
 

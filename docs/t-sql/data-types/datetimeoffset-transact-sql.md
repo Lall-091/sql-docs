@@ -160,9 +160,9 @@ First, verify the time zone name from the [sys.time_zone_info](../../relational-
 SELECT * FROM sys.time_zone_info WHERE name = 'Pacific Standard Time';
 ```
 
-The following example uses the [AT TIME ZONE](../queries/at-time-zone-transact-sql.md) syntax twice. The sample code creates a table `dbo.Audit`, adds data that spans multiple daylight savings time changes, and adds a new **datetimeoffset** column. We assume that the `AuditCreated` column is a ***datetime2** data type without offsets, and was written using the UTC time zone.
+The following example uses the [AT TIME ZONE](../queries/at-time-zone-transact-sql.md) syntax twice. The sample code creates a table `dbo.Audit`, adds data that spans multiple daylight saving time changes, and adds a new **datetimeoffset** column. We assume that the `AuditCreated` column is a ***datetime2** data type without offsets, and was written using the UTC time zone.
 
-In the `UPDATE` statement, the `AT TIME ZONE` syntax first adds UTC time zone offset to the existing `AuditCreated` column data, then converts the data from UTC to `Pacific Standard Time`, correctly adjusting the historical data for each past daylight savings time range in the United States.
+In the `UPDATE` statement, the `AT TIME ZONE` syntax first adds UTC time zone offset to the existing `AuditCreated` column data, then converts the data from UTC to `Pacific Standard Time`, correctly adjusting the historical data for each past daylight saving time range in the United States.
 
 ```sql
 CREATE TABLE dbo.Audit (AuditCreated DATETIME2(0) NOT NULL);
