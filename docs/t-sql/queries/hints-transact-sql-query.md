@@ -356,6 +356,7 @@ The following hint names are supported:
 | `'FORCE_LEGACY_CARDINALITY_ESTIMATION'` <a id="use_hint_ce70"></a> | Forces the Query Optimizer to use [Cardinality Estimation](../../relational-databases/performance/cardinality-estimation-sql-server.md) model of [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] and earlier versions. This hint name is equivalent to [Trace Flag](../database-console-commands/dbcc-traceon-trace-flags-transact-sql.md) 9481 or [database scoped configuration](../statements/alter-database-scoped-configuration-transact-sql.md) setting `LEGACY_CARDINALITY_ESTIMATION = ON`. |
 | `'QUERY_OPTIMIZER_COMPATIBILITY_LEVEL_n'` <sup>1</sup> | Forces the Query Optimizer behavior at a query level. This behavior happens as if the query was compiled with database compatibility level *n*, where *n* is a supported database compatibility level. For a list of currently supported values for *n*, see [sys.dm_exec_valid_use_hints](../../relational-databases/system-dynamic-management-views/sys-dm-exec-valid-use-hints-transact-sql.md).<br /><br />**Applies to**: [!INCLUDE [ssSQL17](../../includes/sssql17-md.md)] CU 10 and later versions, and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] |
 | `'QUERY_PLAN_PROFILE'` <sup>2</sup> | Enables lightweight profiling for the query. When a query that contains this new hint finishes, a new extended event, `query_plan_profile`, is fired. This extended event exposes execution statistics and actual execution plan XML similar to the `query_post_execution_showplan` extended event but only for queries that contains the new hint.<br /><br />**Applies to**: [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] SP 2 CU 3, [!INCLUDE [ssSQL17](../../includes/sssql17-md.md)] CU 11, and later versions |
+| `'DISABLE_RESULT_SET_CACHE'` | Disables result set cache (preview) application for a specific run of a query, if result set cache (preview) is enabled for the currently-connected artifact. This means it will neither generate new result set cache nor leverage existing result set cache (if any). This could be useful in debugging or A/B testing scenarios.<br /><br />**Applies to**: [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)] |
 
 <sup>1</sup> The `QUERY_OPTIMIZER_COMPATIBILITY_LEVEL_n` hint doesn't override default or legacy cardinality estimation setting, if you force it through database scoped configuration, trace flag, or another query hint such as `QUERYTRACEON`. This hint only affects the behavior of the Query Optimizer. It doesn't affect other features of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] that might depend on the [database compatibility level](../statements/alter-database-transact-sql-compatibility-level.md), such as the availability of certain database features. For more information, see [Developer's Choice: Hinting Query Execution model](/archive/blogs/sql_server_team/developers-choice-hinting-query-execution-model).
 
@@ -456,7 +457,7 @@ You can enforce hints on queries identified through Query Store without making c
 
 These query hints are exclusive to [!INCLUDE [fabric](../../includes/fabric.md)] Data Warehouse:
 
-- `FORCE SINGLE NODE PLAN`, `FORCE DISTRIBUTED PLAN`
+- `FORCE SINGLE NODE PLAN`, `FORCE DISTRIBUTED PLAN`, `DISABLE_RESULT_SET_CACHE`
 
 ## Examples
 
@@ -762,7 +763,7 @@ ORDER BY OrderDateKey
 OPTION (FOR TIMESTAMP AS OF '2024-03-13T19:39:35.28');--March 13, 2024 at 7:39:35.28 PM UTC
 ```
 
-### P. Query force a single node or distributed query 
+### P. Query force a single node or distributed query
 
 **Applies to**: [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]
 
@@ -780,6 +781,20 @@ To force a query in Fabric Data Warehouse to use a distributed query:
 SELECT OrderDateKey, SalesAmount
 FROM FactInternetSales
 OPTION (FORCE DISTRIBUTED PLAN);
+```
+
+### Q. Disable a query from creating or applying result set cache (preview)
+
+**Applies to**: [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]
+
+Use `'DISABLE_RESULT_SET_CACHE'` as a `hint_name` to block result set cache (preview) for a particular run of a query.
+
+```sql
+SELECT OrderDateKey, SUM(SalesAmount) AS TotalSales
+FROM FactInternetSales
+GROUP BY OrderDateKey
+ORDER BY OrderDateKey
+OPTION (USE HINT ('DISABLE_RESULT_SET_CACHE'));
 ```
 
 ## Related content

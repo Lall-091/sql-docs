@@ -4024,6 +4024,7 @@ SET
     <data_lake_log_publishing>
   | <vorder>
   | <timestamp>
+  | <result_set_caching>
 }
 ;
 
@@ -4039,9 +4040,14 @@ SET
 
 <timestamp> ::=
 {
-    TIMESTAMP = {CURRENT_TIMESTAMP | 'YYYY-MM-DDTHH:MM:SS.SS' } ; 
+    TIMESTAMP = {CURRENT_TIMESTAMP | 'YYYY-MM-DDTHH:MM:SS.SS' }  
 }
 
+
+<result_set_caching> ::=
+{    
+    RESULT_SET_CACHING { ON | OFF } 
+}
 ```
 
 ## Arguments
@@ -4057,6 +4063,10 @@ Can disable V-Order behavior. For more information, see [disabling V-Order behav
 #### TIMESTAMP
 
 Updates the timestamp for an existing warehouse snapshot in Fabric Data Warehouse. The timestamp must be provided in UTC time zone. For more information, see [Warehouse snapshots](/fabric/data-warehouse/warehouse-snapshot).
+
+#### RESULT_SET_CACHING
+
+Enables or disables result set caching (preview) for the target artifact.
 
 ## Permissions
 
@@ -4076,6 +4086,20 @@ To check the current status of Delta Lake Log publishing on all warehouses, of y
 
 ```sql
 SELECT [name], [DATA_LAKE_LOG_PUBLISHING_DESC] FROM sys.databases;
+```
+
+### B. Set and check result set caching (preview)
+
+The following T-SQL command will enable the artifact `MyDataWarehouse` to begin creating and applying result set cache (preview) to applicable SELECT queries.
+
+```sql
+ALTER DATABASE [MyDataWarehouse] SET RESULT_SET_CACHING ON;
+```
+
+The column `is_result_set_caching_on` from [sys.databases](../../relational-databases/system-catalog-views/sys-databases-transact-sql.md?view=fabric&preserve-view=true) can then be checked to confirm that result set caching (preview) has been enabled.
+
+```sql
+SELECT [name], [is_result_set_caching_on] FROM sys.databases;
 ```
 
 ## Related content
