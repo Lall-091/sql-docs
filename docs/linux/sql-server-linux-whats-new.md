@@ -1,9 +1,9 @@
 ---
-title: What's New for SQL Server 2017 on Linux
+title: "What's New for SQL Server 2017 on Linux"
 description: In this article, learn about the major features and services available for SQL Server 2017 running on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/15/2024
+ms.date: 06/06/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: whats-new
@@ -18,22 +18,22 @@ ms.custom:
 
 This article describes the major features and services available for [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] running on Linux.
 
-In addition to these capabilities in this article, cumulative updates (CUs) are released at regular intervals. These cumulative updates provide many improvements and fixes. For detailed information about the latest CU release, see [SQL Server 2017 build versions](/troubleshoot/sql/releases/sqlserver-2017/build-versions). For package downloads and known issues, see [Release notes for SQL Server 2017 on Linux](sql-server-linux-release-notes-2017.md).
-
-## Ubuntu 18.04 support
-
-Ubuntu 18.04 is now supported in [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] CU 20 and later versions. For more information, see [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md).
+In addition to these capabilities in this article, cumulative updates (CUs) are released at regular intervals. These cumulative updates provide many improvements and fixes. For detailed information about the latest CU release, see [SQL Server 2017 build versions](/troubleshoot/sql/releases/sqlserver-2017/build-versions). For package downloads and known issues, see the [Release notes](sql-server-linux-release-notes-2017.md).
 
 ## Red Hat Enterprise Linux 8 support
 
-Red Hat Enterprise Linux (RHEL) 8 is now supported in [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] CU 20 and later versions. For more information, see [Quickstart: Install SQL Server and create a database on Red Hat](quickstart-install-connect-red-hat.md).
+Red Hat Enterprise Linux (RHEL) 8 is supported in [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] CU 20 and later versions. For more information, see [Quickstart: Install SQL Server and create a database on Red Hat](quickstart-install-connect-red-hat.md?view=sql-server-linux-2017&preserve-view=true).
+
+## Ubuntu 18.04 support
+
+Ubuntu 18.04 is supported in [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] CU 20 and later versions. For more information, see [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md?view=sql-server-linux-2017&preserve-view=true).
 
 ## SQL Server Database Engine
 
 - Enabled the core [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Database Engine capabilities.
 - Support for native Linux paths.
-- IPV6 support.
-- Support for database files on NFS.
+- IPv6 support.
+- Support for database files on Network File System (NFS).
 - Enabled [Transport Layer Security](sql-server-linux-encrypted-connections.md) (TLS) encryption.
 - Enabled [Active Directory Authentication](sql-server-linux-active-directory-authentication.md).
 - [Availability Groups functionality](sql-server-linux-availability-group-overview.md) for high availability.
@@ -60,10 +60,10 @@ Red Hat Enterprise Linux (RHEL) 8 is now supported in [!INCLUDE [sssql17-md](../
 
 ## Related content
 
-- [Quickstart: Install SQL Server and create a database on Red Hat](quickstart-install-connect-red-hat.md)
-- [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](quickstart-install-connect-suse.md)
-- [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md)
-- [Quickstart: Run SQL Server Linux container images with Docker](quickstart-install-connect-docker.md)
+- [Quickstart: Install SQL Server and create a database on Red Hat](quickstart-install-connect-red-hat.md?view=sql-server-linux-2017&preserve-view=true)
+- [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](quickstart-install-connect-suse.md?view=sql-server-linux-2017&preserve-view=true)
+- [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md?view=sql-server-linux-2017&preserve-view=true)
+- [Quickstart: Run SQL Server Linux container images with Docker](quickstart-install-connect-docker.md?view=sql-server-linux-2017&preserve-view=true)
 - [Provision a Linux virtual machine running SQL Server in the Azure portal](/azure/azure-sql/virtual-machines/linux/sql-vm-create-portal-quickstart?toc=/sql/toc/toc.json)
 - [SQL Server on Linux FAQ](sql-server-linux-faq.yml)
 - [What's new in SQL Server 2017](../sql-server/what-s-new-in-sql-server-2017.md)

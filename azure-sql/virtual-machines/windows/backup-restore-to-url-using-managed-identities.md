@@ -1,10 +1,10 @@
 ---
-title: Backup and restore to URL using managed identities
+title: Backup and Restore to URL Using Managed Identities
 description: Learn how to back up and restore SQL Server databases to Azure Blob storage using managed identities for SQL Server on Azure VMs.
 author: PratimDasgupta
 ms.author: prdasgu
-ms.reviewer: vanto, mathoma
-ms.date: 02/16/2025
+ms.reviewer: vanto, mathoma, randolphwest
+ms.date: 06/06/2025
 ms.service: azure-vm-sql-server
 ms.subservice: security
 ms.topic: how-to
@@ -78,25 +78,45 @@ RESTORE DATABASE [AdventureWorks]
 
 If a primary managed identity isn't assigned to the SQL Server on Azure VM, the backup and restore operations will fail with an error message indicating that the managed identity isn't selected.
 
-```sql
+```output
 Msg 37563, Level 16, State 2, Line 14
 The primary managed identity is not selected for this server. Enable the primary managed identity for Microsoft Entra authentication for this server. For more information see (https://aka.ms/sql-server-managed-identity-doc).`
 ```
 
 ### No `Storage Blob Data Contributor` role assigned
 
-If the primary managed identity for the SQL Server on Azure VM isn't given the `Storage Blob Data Contributor` role to the storage account, the **BACKUP** operation will fail with an error message indicating that access is denied.
+If the primary managed identity for the SQL Server on Azure VM isn't given the `Storage Blob Data Contributor` role to the storage account, the `BACKUP` operation will fail with an error message indicating that access is denied.
 
-```sql
+```output
+Msg 3201, Level 16, State 1, Line 31
+Cannot open backup device 'https://<storage-account-name>.blob.core.windows.net/<container-name>/AdventureWorks.bak'. Operating system error 5(Access is denied.).
+Msg 3013, Level 16, State 1, Line 31
+BACKUP DATABASE is terminating abnormally.
+```
+
+If the managed identity for the SQL Server on Azure VM isn't given the `Storage Blob Data Contributor` role to the storage account, the `RESTORE` operation will fail with an error message indicating that access is denied.
+
+```output
+Msg 3201, Level 16, State 1, Line 31
+Cannot open backup device 'https://<storage-account-name>.blob.core.windows.net/<container-name>/AdventureWorks.bak'. Operating system error 5(Access is denied.).
+Msg 3013, Level 16, State 1, Line 31
+RESTORE DATABASE is terminating abnormally.
+```
+
+### Network or firewall issues
+
+If you haven't configured valid network access to the Azure Blob storage, and Windows Firewall permissions on the host, to allow the outbound connection, and valid storage account service endpoints aren't configured, the `BACKUP` operation fails with an error message indicating that access is denied.
+
+```output
 Msg 3201, Level 16, State 1, Line 31
 Cannot open backup device 'https://<storage-account-name>.blob.core.windows.net/<container-name>/AdventureWorks.bak'. Operating system error 5(Access is denied.).
 Msg 3013, Level 16, State 1, Line 31
 BACKUP DATABASE is terminating abnormally. 
 ```
 
-If the managed identity for the SQL Server on Azure VM isn't given the `Storage Blob Data Contributor` role to the storage account, the **RESTORE** operation will fail with an error message indicating that access is denied.
+If you haven't configured valid network access to the Azure Blob storage, and Windows Firewall permissions on the host, to allow the outbound connection, and valid storage account service endpoints aren't configured, the `RESTORE` operation fails with an error message indicating that access is denied.
 
-```sql
+```output
 Msg 3201, Level 16, State 1, Line 31
 Cannot open backup device 'https://<storage-account-name>.blob.core.windows.net/<container-name>/AdventureWorks.bak'. Operating system error 5(Access is denied.).
 Msg 3013, Level 16, State 1, Line 31
@@ -107,7 +127,7 @@ RESTORE DATABASE is terminating abnormally.
 
 When the original database with the same name exists in the storage, the backup of a new database to the same storage path will fail with the following error:
 
-```sql
+```output
 Msg 1834, Level 16, State 1, Line 35
 RESTORE DATABASE AdventureWorks 
 from URL = 'https://<storage-account-name>.blob.core.windows.net/<container-name>/AdventureWorks.bak' 

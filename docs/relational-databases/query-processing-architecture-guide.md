@@ -4,7 +4,7 @@ description: "How SQL Server processes queries and optimizes query reuse through
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: maghan, randolphwest, derekw
-ms.date: 01/14/2025
+ms.date: 06/06/2025
 ms.service: sql
 ms.topic: concept-article
 helpviewer_keywords:
@@ -12,7 +12,8 @@ helpviewer_keywords:
   - "query processing architecture guide"
   - "row mode execution"
   - "batch mode execution"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+ai-usage: ai-assisted
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
 
 # Query processing architecture guide
@@ -147,7 +148,17 @@ The basic steps that [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] use
 
 ### Constant folding and expression evaluation
 
-[!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] evaluates some constant expressions early to improve query performance. This is referred to as constant folding. A constant is a [!INCLUDE [tsql](../includes/tsql-md.md)] literal, such as `3`, `'ABC'`, `'2005-12-31'`, `1.0e3`, or `0x12345678`.
+[!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] evaluates some constant expressions early to improve query performance. This optimization technique used by the query optimizer aims to simplify expressions at compile time rather than at runtime. It involves evaluating constant expressions during query compilation so that the resulting execution plan is more efficient. This is referred to as constant folding. A constant is a [!INCLUDE [tsql](../includes/tsql-md.md)] literal, such as `3`, `'ABC'`, `'2005-12-31'`, `1.0e3`, or `0x12345678`. For example, take this query:
+
+```sql
+SELECT * FROM Orders WHERE OrderDate < DATEADD(day, 30 * 12, '2020-01-01');
+```
+
+Here, 30 * 12 is a constant expression. SQL Server can evaluate this during compilation and rewrite the query internally as:
+
+```sql
+SELECT * FROM Orders WHERE OrderDate < DATEADD(day, 360, '2020-01-01');
+```
 
 #### Foldable expressions
 
@@ -1062,15 +1073,25 @@ Parameter values are sniffed during compilation or recompilation for the followi
 - Queries submitted via `sp_executesql`
 - Prepared queries
 
-For more information on troubleshooting bad parameter sniffing issues, see:
+For more information on troubleshooting parameter sniffing issues, see:
 - [Investigate and resolve parameter-sensitive issues](/troubleshoot/sql/performance/troubleshoot-high-cpu-usage-issues#step-5-investigate-and-resolve-parameter-sensitive-issues)
 - [Parameters and Execution Plan Reuse](#parameters-and-execution-plan-reuse)
 - [Parameter Sensitive Plan optimization](./performance/parameter-sensitive-plan-optimization.md)
 - [Troubleshoot queries with parameter sensitive query execution plan issues in Azure SQL Database](/azure/azure-sql/database/identify-query-performance-issues#parameter-sensitivity)
 - [Troubleshoot queries with parameter sensitive query execution plan issues in Azure SQL Managed Instance](/azure/azure-sql/managed-instance/identify-query-performance-issues#parameter-sensitivity)
 
-> [!NOTE]  
-> For queries using the `RECOMPILE` hint, both parameter values and current values of local variables are sniffed. The values sniffed (of parameters and local variables) are those that exist at the place in the batch just before the statement with the `RECOMPILE` hint. In particular, for parameters, the values that came along with the batch invocation call aren't sniffed.
+When a query in SQL Server uses the `OPTION (RECOMPILE)` hint, the query optimizer turns parameter and local variables into compile-time constants that can be constant folded and reduced to literals. This means that during compilation, the optimizer knows and can use the current runtime values of parameters and local variables as they exist immediately prior to that statement. The OPTION (RECOMPILE) allows the optimizer to generate a more optimal query plan tailored to the specific values and to take advantage of the best underlying indexes at run time. For parameters, this process refers not to the values originally passed to the batch or stored procedure, but to their values at the time of recompilation. These values might have been modified within the procedure before reaching the statement that includes `RECOMPILE`. This behavior can improve performance for queries with highly variable or skewed input data.
+
+### Local variables
+
+When a query uses local variables, SQL Server can't sniff their values at compile time, so it estimates cardinality using available statistics or heuristics. If statistics exist, it typically uses the **All Density** value (also known as **average density**) from the statistical histogram to estimate how many rows match the predicate. However, if no statistics are available for the column, SQL Server falls back on heuristic estimates, such as assuming 10% selectivity for equality predicates, and 30% for inequalities and ranges, which might lead to less accurate execution plans. Here's an example of a query that uses a local variable.
+
+```sql
+DECLARE @ProductId INT = 100;
+SELECT * FROM Products WHERE ProductId = @ProductId;
+```
+
+In this case, SQL Server doesn't use the value 100 to optimize the query. It uses a general estimate.
 
 ## Parallel query processing
 

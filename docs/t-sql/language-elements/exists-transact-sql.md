@@ -1,9 +1,9 @@
 ---
 title: "EXISTS (Transact-SQL)"
-description: "EXISTS (Transact-SQL)"
+description: EXISTS specifies a subquery to test for the existence of rows.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: "03/15/2017"
+ms.date: 06/05/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -26,172 +26,170 @@ dev_langs:
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
 # EXISTS (Transact-SQL)
+
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
-  Specifies a subquery to test for the existence of rows.  
-  
- :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)  
-  
-## Syntax  
-  
-```syntaxsql  
-EXISTS ( subquery )  
-```  
-  
+Specifies a subquery to test for the existence of rows.
+
+:::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
+
+## Syntax
+
+```syntaxsql
+EXISTS ( subquery )
+```
+
 ## Arguments
- *subquery*  
- Is a restricted SELECT statement. The INTO keyword is not allowed. For more information, see the information about subqueries in [SELECT &#40;Transact-SQL&#41;](../../t-sql/queries/select-transact-sql.md).  
-  
-## Result Types  
- **Boolean**  
-  
-## Result Values  
- Returns TRUE if a subquery contains any rows.  
-  
-## Examples  
-  
-### A. Using NULL in a subquery to still return a result set  
- The following example returns a result set with `NULL` specified in the subquery and still evaluates to TRUE by using `EXISTS`.  
-  
-```sql  
--- Uses AdventureWorks  
-  
-SELECT DepartmentID, Name   
-FROM HumanResources.Department   
-WHERE EXISTS (SELECT NULL)  
-ORDER BY Name ASC ;  
-```  
-  
-### B. Comparing queries by using EXISTS and IN  
- The following example compares two queries that are semantically equivalent. The first query uses `EXISTS` and the second query uses `IN`.  
-  
-```sql  
--- Uses AdventureWorks  
-  
-SELECT a.FirstName, a.LastName  
-FROM Person.Person AS a  
-WHERE EXISTS  
-(SELECT *   
-    FROM HumanResources.Employee AS b  
-    WHERE a.BusinessEntityID = b.BusinessEntityID  
-    AND a.LastName = 'Johnson') ;  
-GO  
-```  
-  
- The following query uses `IN`.  
-  
-```sql  
--- Uses AdventureWorks  
-  
-SELECT a.FirstName, a.LastName  
-FROM Person.Person AS a  
-WHERE a.LastName IN  
-(SELECT a.LastName  
-    FROM HumanResources.Employee AS b  
-    WHERE a.BusinessEntityID = b.BusinessEntityID  
-    AND a.LastName = 'Johnson') ;  
-GO  
-```  
-  
- Here is the result set for either query.  
-  
- ```
+
+#### *subquery*
+
+A restricted `SELECT` statement. The `INTO` keyword isn't allowed. For more information, see the information about subqueries in [SELECT](../queries/select-transact-sql.md).
+
+## Return types
+
+**Boolean**
+
+## Result values
+
+Returns `TRUE` if a subquery contains any rows.
+
+## Examples
+
+[!INCLUDE [article-uses-adventureworks](../../includes/article-uses-adventureworks.md)]
+
+### A. Use `NULL` in a subquery to still return a result set
+
+The following example returns a result set with `NULL` specified in the subquery and still evaluates to `TRUE` by using `EXISTS`.
+
+```sql
+SELECT DepartmentID, Name
+FROM HumanResources.Department
+WHERE EXISTS (SELECT NULL)
+ORDER BY Name ASC;
+```
+
+### B. Compare queries by using EXISTS and IN
+
+The following example compares two queries that are semantically equivalent. The first query uses `EXISTS` and the second query uses `IN`.
+
+```sql
+SELECT a.FirstName,
+       a.LastName
+FROM Person.Person AS a
+WHERE EXISTS (SELECT *
+      FROM HumanResources.Employee AS b
+      WHERE a.BusinessEntityID = b.BusinessEntityID
+            AND a.LastName = 'Johnson');
+GO
+```
+
+The following query uses `IN`.
+
+```sql
+SELECT a.FirstName,
+       a.LastName
+FROM Person.Person AS a
+WHERE a.LastName IN (SELECT a.LastName
+      FROM HumanResources.Employee AS b
+      WHERE a.BusinessEntityID = b.BusinessEntityID
+            AND a.LastName = 'Johnson');
+GO
+```
+
+Here's the result set for either query.
+
+```output
 FirstName                                          LastName
 -------------------------------------------------- ----------
 Barry                                              Johnson
 David                                              Johnson
 Willis                                             Johnson
-  
-(3 row(s) affected)
- ```  
-  
-### C. Comparing queries by using EXISTS and = ANY  
- The following example shows two queries to find stores whose name is the same name as a vendor. The first query uses `EXISTS` and the second uses `= ANY`.  
-  
-```sql  
--- Uses AdventureWorks  
-  
-SELECT DISTINCT s.Name  
-FROM Sales.Store AS s   
-WHERE EXISTS  
-(SELECT *  
-    FROM Purchasing.Vendor AS v  
-    WHERE s.Name = v.Name) ;  
-GO  
-```  
-  
- The following query uses `= ANY`.  
-  
-```sql  
--- Uses AdventureWorks  
-  
-SELECT DISTINCT s.Name  
-FROM Sales.Store AS s   
-WHERE s.Name = ANY  
-(SELECT v.Name  
-    FROM Purchasing.Vendor AS v ) ;  
-GO  
-```  
-  
-### D. Comparing queries by using EXISTS and IN  
- The following example shows queries to find employees of departments that start with `P`.  
-  
-```sql  
--- Uses AdventureWorks  
-  
-SELECT p.FirstName, p.LastName, e.JobTitle  
-FROM Person.Person AS p   
-JOIN HumanResources.Employee AS e  
-   ON e.BusinessEntityID = p.BusinessEntityID   
-WHERE EXISTS  
-(SELECT *  
-    FROM HumanResources.Department AS d  
-    JOIN HumanResources.EmployeeDepartmentHistory AS edh  
-       ON d.DepartmentID = edh.DepartmentID  
-    WHERE e.BusinessEntityID = edh.BusinessEntityID  
-    AND d.Name LIKE 'P%') ;  
-GO  
-```  
-  
- The following query uses `IN`.  
-  
-```sql  
--- Uses AdventureWorks  
-  
-SELECT p.FirstName, p.LastName, e.JobTitle  
-FROM Person.Person AS p JOIN HumanResources.Employee AS e  
-   ON e.BusinessEntityID = p.BusinessEntityID   
-JOIN HumanResources.EmployeeDepartmentHistory AS edh  
-   ON e.BusinessEntityID = edh.BusinessEntityID   
-WHERE edh.DepartmentID IN  
-(SELECT DepartmentID  
-   FROM HumanResources.Department  
-   WHERE Name LIKE 'P%') ;  
-GO  
-```  
-  
-### E. Using NOT EXISTS  
- NOT EXISTS works the opposite of EXISTS. The WHERE clause in NOT EXISTS is satisfied if no rows are returned by the subquery. The following example finds employees who are not in departments which have names that start with `P`.  
-  
-```sql  
-SELECT p.FirstName, p.LastName, e.JobTitle  
-FROM Person.Person AS p   
-JOIN HumanResources.Employee AS e  
-   ON e.BusinessEntityID = p.BusinessEntityID   
-WHERE NOT EXISTS  
-(SELECT *  
-   FROM HumanResources.Department AS d  
-   JOIN HumanResources.EmployeeDepartmentHistory AS edh  
-      ON d.DepartmentID = edh.DepartmentID  
-   WHERE e.BusinessEntityID = edh.BusinessEntityID  
-   AND d.Name LIKE 'P%')  
-ORDER BY LastName, FirstName  
-GO  
-```  
-  
- [!INCLUDE[ssResult](../../includes/ssresult-md.md)]  
-  
  ```
+
+### C. Compare queries by using EXISTS and = ANY
+
+The following example shows two queries to find stores whose name is the same name as a vendor. The first query uses `EXISTS` and the second uses `= ANY`.
+
+```sql
+SELECT DISTINCT s.Name
+FROM Sales.Store AS s
+WHERE EXISTS (SELECT *
+      FROM Purchasing.Vendor AS v
+      WHERE s.Name = v.Name);
+GO
+```
+
+The following query uses `= ANY`.
+
+```sql
+SELECT DISTINCT s.Name
+FROM Sales.Store AS s
+WHERE s.Name = ANY (SELECT v.Name
+      FROM Purchasing.Vendor AS v);
+GO
+```
+
+### D. Compare queries by using EXISTS and IN
+
+The following example shows queries to find employees of departments that start with `P`.
+
+```sql
+SELECT p.FirstName,
+       p.LastName,
+       e.JobTitle
+FROM Person.Person AS p
+     INNER JOIN HumanResources.Employee AS e
+         ON e.BusinessEntityID = p.BusinessEntityID
+WHERE EXISTS (SELECT *
+      FROM HumanResources.Department AS d
+            INNER JOIN HumanResources.EmployeeDepartmentHistory AS edh
+               ON d.DepartmentID = edh.DepartmentID
+      WHERE e.BusinessEntityID = edh.BusinessEntityID
+            AND d.Name LIKE 'P%');
+GO
+```
+
+The following query uses `IN`.
+
+```sql
+SELECT p.FirstName,
+       p.LastName,
+       e.JobTitle
+FROM Person.Person AS p
+     INNER JOIN HumanResources.Employee AS e
+         ON e.BusinessEntityID = p.BusinessEntityID
+     INNER JOIN HumanResources.EmployeeDepartmentHistory AS edh
+         ON e.BusinessEntityID = edh.BusinessEntityID
+WHERE edh.DepartmentID IN (SELECT DepartmentID
+      FROM HumanResources.Department
+      WHERE Name LIKE 'P%');
+GO
+```
+
+### E. Use NOT EXISTS
+
+`NOT EXISTS` works the opposite of `EXISTS`. The `WHERE` clause in `NOT EXISTS` is satisfied if no rows are returned by the subquery. The following example finds employees who aren't in departments which have names that start with `P`.
+
+```sql
+SELECT p.FirstName,
+       p.LastName,
+       e.JobTitle
+FROM Person.Person AS p
+     INNER JOIN HumanResources.Employee AS e
+         ON e.BusinessEntityID = p.BusinessEntityID
+WHERE NOT EXISTS (SELECT *
+      FROM HumanResources.Department AS d
+            INNER JOIN HumanResources.EmployeeDepartmentHistory AS edh
+               ON d.DepartmentID = edh.DepartmentID
+      WHERE e.BusinessEntityID = edh.BusinessEntityID
+            AND d.Name LIKE 'P%')
+ORDER BY LastName, FirstName;
+GO
+```
+
+[!INCLUDE [ssResult](../../includes/ssresult-md.md)]
+
+```output
 FirstName                      LastName                       Title
 ------------------------------ ------------------------------ ------------
 Syed                           Abbas                          Pacific Sales Manager
@@ -285,43 +283,39 @@ Jill                           Williams                       Marketing Speciali
 Dan                            Wilson                         Database Administrator
 John                           Wood                           Marketing Specialist
 Peng                           Wu                             Quality Assurance Supervisor
-  
-(91 row(s) affected)
- ```  
-  
-## Examples: [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE[ssPDW](../../includes/sspdw-md.md)]  
-  
-### F. Using EXISTS  
- The following example identifies whether any rows in the `ProspectiveBuyer` table could be matches to rows in the `DimCustomer` table. The query will return rows only when both the `LastName` and `BirthDate` values in the two tables match.  
-  
+```
+
+## Examples: Azure Synapse Analytics and Analytics Platform System (PDW)
+
+### F. Use EXISTS
+
+The following example identifies whether any rows in the `ProspectiveBuyer` table could be matches to rows in the `DimCustomer` table. The query returns rows only when both the `LastName` and `BirthDate` values in the two tables match.
+
 ```sql
--- Uses AdventureWorks  
-  
-SELECT a.LastName, a.BirthDate  
-FROM DimCustomer AS a  
-WHERE EXISTS  
-(SELECT *   
-    FROM dbo.ProspectiveBuyer AS b  
-    WHERE (a.LastName = b.LastName) AND (a.BirthDate = b.BirthDate)) ;  
-```  
-  
-### G. Using NOT EXISTS  
- NOT EXISTS works as the opposite as EXISTS. The WHERE clause in NOT EXISTS is satisfied if no rows are returned by the subquery. The following example finds rows in the `DimCustomer` table where the `LastName` and `BirthDate` do not match any entries in the `ProspectiveBuyers` table.  
-  
-```sql  
--- Uses AdventureWorks  
-  
-SELECT a.LastName, a.BirthDate  
-FROM DimCustomer AS a  
-WHERE NOT EXISTS  
-(SELECT *   
-    FROM dbo.ProspectiveBuyer AS b  
-    WHERE (a.LastName = b.LastName) AND (a.BirthDate = b.BirthDate)) ;  
-```  
-  
-## See Also  
- [Expressions &#40;Transact-SQL&#41;](../../t-sql/language-elements/expressions-transact-sql.md)   
- [Built-in Functions &#40;Transact-SQL&#41;](~/t-sql/functions/functions.md)   
- [WHERE &#40;Transact-SQL&#41;](../../t-sql/queries/where-transact-sql.md)  
-  
-  
+SELECT a.LastName, a.BirthDate
+FROM DimCustomer AS a
+WHERE EXISTS (SELECT *
+      FROM dbo.ProspectiveBuyer AS b
+      WHERE (a.LastName = b.LastName)
+            AND (a.BirthDate = b.BirthDate));
+```
+
+### G. Use NOT EXISTS
+
+`NOT EXISTS` works as the opposite as `EXISTS`. The `WHERE` clause in `NOT EXISTS` is satisfied if no rows are returned by the subquery. The following example finds rows in the `DimCustomer` table where the `LastName` and `BirthDate` don't match any entries in the `ProspectiveBuyers` table.
+
+```sql
+SELECT a.LastName,
+       a.BirthDate
+FROM DimCustomer AS a
+WHERE NOT EXISTS (SELECT *
+      FROM dbo.ProspectiveBuyer AS b
+      WHERE (a.LastName = b.LastName)
+            AND (a.BirthDate = b.BirthDate));
+```
+
+## Related content
+
+- [Expressions (Transact-SQL)](expressions-transact-sql.md)
+- [What are the SQL database functions?](../functions/functions.md)
+- [WHERE (Transact-SQL)](../queries/where-transact-sql.md)

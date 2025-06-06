@@ -1,9 +1,9 @@
 ---
 title: "What's New for SQL Server 2025 Preview on Linux"
-description: This article highlights what's new for SQL Server 2025 Preview on Linux.
+description: In this article, learn about the major features and services available for SQL Server 2025 Preview running on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/02/2025
+ms.date: 06/06/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: whats-new
@@ -21,7 +21,7 @@ This article describes the major features and services available for [!INCLUDE [
 
 ## Updates
 
-The updates have been made in [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] on Linux:
+The following updates are available in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] on Linux:
 
 | New feature or update | Details |
 | --- | --- |
@@ -31,14 +31,12 @@ The updates have been made in [!INCLUDE [sssql19-md](../includes/sssql19-md.md)]
 
 ## Related content
 
-To install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux, use one of the following tutorials:
+- [Quickstart: Install SQL Server and create a database on Red Hat](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver17&preserve-view=true)
+- [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](quickstart-install-connect-suse.md?view=sql-server-linux-ver17&preserve-view=true)
+- [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver17&preserve-view=true)
+- [Quickstart: Run SQL Server Linux container images with Docker](quickstart-install-connect-docker.md?view=sql-server-linux-ver17&preserve-view=true)
+- [Provision a Linux virtual machine running SQL Server in the Azure portal](/azure/azure-sql/virtual-machines/linux/sql-vm-create-portal-quickstart?toc=/sql/toc/toc.json)
+- [SQL Server on Linux FAQ](sql-server-linux-faq.yml)
+- [What's new in SQL Server 2025 Preview](../sql-server/what-s-new-in-sql-server-2025.md)
 
-- [Install on Red Hat Enterprise Linux](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver17&preserve-view=true)
-- [Install on SUSE Linux Enterprise Server](quickstart-install-connect-suse.md?view=sql-server-linux-ver17&preserve-view=true)
-- [Install on Ubuntu](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver17&preserve-view=true)
-- [Run on a Linux container](quickstart-install-connect-docker.md?view=sql-server-linux-ver17&preserve-view=true)
-- [Provision a SQL VM in Azure](/azure/azure-sql/virtual-machines/linux/sql-vm-create-portal-quickstart?toc=/sql/toc/toc.json)
-
-For answers to frequently asked questions, see the [SQL Server on Linux FAQ](sql-server-linux-faq.yml). To see other improvements introduced in [!INCLUDE [sssql25-md](../includes/sssql19-md.md)], see [What's new in SQL Server 2025 Preview](../sql-server/what-s-new-in-sql-server-2025.md).
-
-[!INCLUDE[get-help-options](../includes/paragraph-content/get-help-options.md)]
+[!INCLUDE [get-help-options](../includes/paragraph-content/get-help-options.md)]

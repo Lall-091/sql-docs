@@ -1,9 +1,9 @@
 ---
 title: "What's New for SQL Server 2022 on Linux"
-description: This article highlights what's new for SQL Server 2022 on Linux.
+description: In this article, learn about the major features and services available for SQL Server 2022 running on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/02/2025
+ms.date: 06/06/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: whats-new
@@ -17,23 +17,25 @@ ms.custom:
 
 [!INCLUDE [sqlserver2022-linux](../includes/applies-to-version/sqlserver2022-linux.md)]
 
-This article describes the major features and services available for [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] running on Linux. For package downloads and known issues, see the [Release notes](sql-server-linux-release-notes-2022.md).
+This article describes the major features and services available for [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] running on Linux.
 
-## Red Hat Enterprise Linux 9 supported
+In addition to these capabilities in this article, cumulative updates (CUs) are released at regular intervals. These cumulative updates provide many improvements and fixes. For detailed information about the latest CU release, see [SQL Server 2022 build versions](/troubleshoot/sql/releases/sqlserver-2022/build-versions). For package downloads and known issues, see the [Release notes](sql-server-linux-release-notes-2022.md).
 
-Starting with [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] CU 10, Red Hat Enterprise Linux (RHEL) 9 is now supported. Check out our Quickstart on [Install SQL Server and create a database on Red Hat](quickstart-install-connect-red-hat.md).
+## Red Hat Enterprise Linux 9 support
 
-## Ubuntu 22.04 supported
+Red Hat Enterprise Linux (RHEL) 9 is supported in [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] CU 10 and later versions. For more information, see [Quickstart: Install SQL Server and create a database on Red Hat](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver16&preserve-view=true).
 
-Starting with [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] CU 10, Ubuntu 22.04 is now supported. Check out our Quickstart on [Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md).
+## SUSE Linux Enterprise Server 15 SP4 support
 
-## SUSE Linux Enterprise Server 15 SP4 supported
+SUSE Linux Enterprise Server (SLES) 15 is supported in [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] CU 4 and later versions. For more information, see [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](quickstart-install-connect-suse.md?view=sql-server-linux-ver16&preserve-view=true).
 
-Starting with [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] CU 4, SUSE Linux Enterprise Server (SLES) 15 SP4 is now supported. Check out our Quickstart on [Installing SQL Server and creating a database on SUSE Linux Enterprise Server](quickstart-install-connect-suse.md).
+## Ubuntu 22.04 support
+
+Ubuntu 22.04 is supported in [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] CU 10 and later versions. For more information, see [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver16&preserve-view=true).
 
 ## Updates
 
-The updates have been made in [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] on Linux:
+The following updates are available in [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] on Linux:
 
 | New feature or update | Details |
 | --- | --- |
@@ -41,14 +43,12 @@ The updates have been made in [!INCLUDE [sssql19-md](../includes/sssql19-md.md)]
 
 ## Related content
 
-To install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux, use one of the following tutorials:
+- [Quickstart: Install SQL Server and create a database on Red Hat](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver16&preserve-view=true)
+- [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](quickstart-install-connect-suse.md?view=sql-server-linux-ver16&preserve-view=true)
+- [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver16&preserve-view=true)
+- [Quickstart: Run SQL Server Linux container images with Docker](quickstart-install-connect-docker.md?view=sql-server-linux-ver16&preserve-view=true)
+- [Provision a Linux virtual machine running SQL Server in the Azure portal](/azure/azure-sql/virtual-machines/linux/sql-vm-create-portal-quickstart?toc=/sql/toc/toc.json)
+- [SQL Server on Linux FAQ](sql-server-linux-faq.yml)
+- [What's new in SQL Server 2022](../sql-server/what-s-new-in-sql-server-2022.md)
 
-- [Install on Red Hat Enterprise Linux](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver16&preserve-view=true)
-- [Install on SUSE Linux Enterprise Server](quickstart-install-connect-suse.md?view=sql-server-linux-ver16&preserve-view=true)
-- [Install on Ubuntu](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver16&preserve-view=true)
-- [Run on a Linux container](quickstart-install-connect-docker.md?view=sql-server-linux-ver16&preserve-view=true)
-- [Provision a SQL VM in Azure](/azure/azure-sql/virtual-machines/linux/sql-vm-create-portal-quickstart?toc=/sql/toc/toc.json)
-
-For answers to frequently asked questions, see the [SQL Server on Linux FAQ](sql-server-linux-faq.yml). To see other improvements introduced in [!INCLUDE [sssql22-md](../includes/sssql22-md.md)], see [What's new in SQL Server 2022](../sql-server/what-s-new-in-sql-server-2022.md).
-
-[!INCLUDE[get-help-options](../includes/paragraph-content/get-help-options.md)]
+[!INCLUDE [get-help-options](../includes/paragraph-content/get-help-options.md)]
