@@ -130,7 +130,7 @@ When the original database with the same name exists in the storage, the backup 
 ```output
 Msg 1834, Level 16, State 1, Line 35
 RESTORE DATABASE AdventureWorks 
-from URL = 'https://<storage-account-name>.blob.core.windows.net/<container-name>/AdventureWorks.bak' 
+FROM URL = 'https://<storage-account-name>.blob.core.windows.net/<container-name>/AdventureWorks.bak';
 Msg 1834, Level 16, State 1, Line 35 
 The file 'C:\Server\sqlservr\data\AdventureWorks.mdf' cannot be overwritten.  It is being used by the database 'AdventureWorks'. 
 Msg 3156, Level 16, State 4, Line 35 
