@@ -40,8 +40,8 @@ SSMA contains several settings for converting and loading database objects, migr
 1. Repeat Steps 1 - 3 for the Migration, Synchronization, Loading System Objects, GUI, and Type Mapping pages.
 
    - For information about migration settings, see [Project Settings (Migration) (Db2ToSQL)](project-settings-migration-db2tosql.md).
-   - For information about system object settings, see [Project Settings(Loading System objects) (Db2ToSQL)](project-settings-loading-system-objects-db2tosql.md).
-   - For information about settings for synchronization to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], see [Project Settings(Synchronization) (Db2ToSQL)](project-settings-synchronization-db2tosql.md).
+   - For information about system object settings, see [Project Settings (Loading System objects) (Db2ToSQL)](project-settings-loading-system-objects-db2tosql.md).
+   - For information about settings for synchronization to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], see [Project Settings (Synchronization) (Db2ToSQL)](project-settings-synchronization-db2tosql.md).
    - For information about GUI settings, see [Project Settings (GUI) (Db2ToSQL)](project-settings-gui-db2tosql.md).
    - For information about data type mapping settings, see [Project Settings (Type Mapping) (Db2ToSQL)](project-settings-type-mapping-db2tosql.md).
 

@@ -1,9 +1,9 @@
 ---
-title: "Server configuration: remote access"
+title: "Server Configuration: remote access"
 description: Learn about alternatives to the deprecated remote access option. View other sources for troubleshooting issues with SQL Server connections.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/19/2025
+ms.date: 06/05/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -16,6 +16,8 @@ helpviewer_keywords:
 
 This article is about the `remote access` configuration option, which is a deprecated [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] communication feature.
 
+For information about linked servers, see [Linked Servers (Database Engine)](../../relational-databases/linked-servers/linked-servers-database-engine.md).
+
 This option affects servers that are added by using [sp_addserver](../../relational-databases/system-stored-procedures/sp-addserver-transact-sql.md) and [sp_addlinkedserver](../../relational-databases/system-stored-procedures/sp-addlinkedserver-transact-sql.md). You should leave `remote access` enabled (the default) if you use [linked servers](../../relational-databases/linked-servers/linked-servers-database-engine.md).
 
 > [!IMPORTANT]  
@@ -23,8 +25,8 @@ This option affects servers that are added by using [sp_addserver](../../relatio
 
 If you reached this page because you're having trouble connecting to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], see one of the following articles instead:
 
-- [Tutorial: Getting started with the Database Engine](../../relational-databases/tutorial-getting-started-with-the-database-engine.md)
-- [Logging in to SQL Server](logging-in-to-sql-server.md)
+- [Tutorial: Get started with the Database Engine](../../relational-databases/tutorial-getting-started-with-the-database-engine.md)
+- [Sign in to SQL Server](logging-in-to-sql-server.md)
 - [Connect to SQL Server when system administrators are locked out](connect-to-sql-server-when-system-administrators-are-locked-out.md)
 - [Connect to a registered server (SQL Server Management Studio)](../../ssms/register-servers/connect-to-a-registered-server-sql-server-management-studio.md)
 - [Connect to any SQL Server component from SQL Server Management Studio](../../ssms/f1-help/connect-to-any-sql-server-component-from-sql-server-management-studio.md)
@@ -84,6 +86,7 @@ For more information, see [Server configuration options](server-configuration-op
 
 ## Related content
 
+- [Linked Servers (Database Engine)](../../relational-databases/linked-servers/linked-servers-database-engine.md)
 - [RECONFIGURE (Transact-SQL)](../../t-sql/language-elements/reconfigure-transact-sql.md)
 - [Server configuration options](server-configuration-options-sql-server.md)
 - [sp_configure (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-configure-transact-sql.md)

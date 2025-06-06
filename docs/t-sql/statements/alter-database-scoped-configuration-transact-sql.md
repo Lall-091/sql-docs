@@ -5,7 +5,7 @@ description: Enable several database configuration settings at the individual da
 author: markingmyname
 ms.author: maghan
 ms.reviewer: derekw, jovanpop, wiassaf, mariyaali
-ms.date: 05/28/2025
+ms.date: 06/05/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -157,13 +157,11 @@ Specifies the default **max degree of parallelism (MAXDOP)** setting that should
 
 You can use the MAXDOP option to limit the number of processors to use in parallel plan execution. [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] considers parallel execution plans for queries, index data definition language (DDL) operations, parallel insert, online alter column, parallel stats collection, and static and keyset-driven cursor population.
 
-> [!NOTE]  
-> The **max degree of parallelism (MAXDOP)** limit is set per [task](../../relational-databases/system-dynamic-management-views/sys-dm-os-tasks-transact-sql.md). It isn't a per [request](../../relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql.md) or per query limit. This means that during a parallel query execution, a single request can spawn multiple tasks which are assigned to a [scheduler](../../relational-databases/system-dynamic-management-views/sys-dm-os-tasks-transact-sql.md). For more information, see the [Thread and Task Architecture Guide](../../relational-databases/thread-and-task-architecture-guide.md).
+The **max degree of parallelism (MAXDOP)** limit is set per [task](../../relational-databases/system-dynamic-management-views/sys-dm-os-tasks-transact-sql.md). It isn't a per [request](../../relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql.md) or per query limit. This means that during a parallel query execution, a single request can spawn multiple tasks which are assigned to a [scheduler](../../relational-databases/system-dynamic-management-views/sys-dm-os-tasks-transact-sql.md). For more information, see the [Thread and Task Architecture Guide](../../relational-databases/thread-and-task-architecture-guide.md).
 
 To set this option at the instance level, see [Configure the max degree of parallelism Server Configuration Option](../../database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md).
 
-> [!NOTE]  
-> In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], the MAXDOP database-scoped configuration for new single and elastic pool databases is set to 8 by default. MAXDOP can be configured for each database as described in the current article. For recommendations on configuring MAXDOP optimally, see [Additional Resources](#additional-resources) section.
+In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], the MAXDOP database-scoped configuration for new single and elastic pool databases is set to 8 by default. For more information and recommendations on configuring MAXDOP optimally in Azure SQL Database, see [Configure MAXDOP on Azure SQL Database](/azure/azure-sql/database/configure-max-degree-of-parallelism?view=azuresql-db&preserve-view=true).
 
 > [!TIP]  
 > To accomplish this at the query level, use the **MAXDOP** [query hint](../../t-sql/queries/hints-transact-sql-query.md).  

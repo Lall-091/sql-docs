@@ -44,7 +44,7 @@ SSMA contains several settings for converting and loading database objects, migr
 
    - For information about migration settings, see [Project Settings (Migration) (OracleToSQL)](project-settings-migration-oracletosql.md).
 
-   - For information about system object settings, see [Project Settings(Loading System objects) (OracleToSQL)](project-settings-loading-system-objects-oracletosql.md).
+   - For information about system object settings, see [Project Settings (Loading System objects) (OracleToSQL)](project-settings-loading-system-objects-oracletosql.md).
 
    - For information about settings for synchronization to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], see [Project Settings (Synchronization) (OracleToSQL)](project-settings-synchronization-oracletosql.md).
 

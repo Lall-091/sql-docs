@@ -4,7 +4,7 @@ titleSuffix: SQL Server Profiler
 description: Find out which permissions you need to run SQL Server Profiler and replay traces, and learn which checks are performed during replays.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/13/2025
+ms.date: 06/05/2025
 ms.service: sql
 ms.subservice: profiler
 ms.topic: conceptual
@@ -36,7 +36,7 @@ By default, running [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md
 - When you try to connect to an Azure SQL Database from [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)], it incorrectly throws a misleading error message:
 
   ```output
-  In order to run a trace against SQL Server, you must be a member of sysadmin fixed server role or have the ALTER TRACE permission.
+  In order to run a trace against SQL Server, you must be a member of **sysadmin** fixed server role or have the ALTER TRACE permission.
   ```
 
   The message should state that Azure SQL Database isn't supported by [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)].
@@ -82,5 +82,5 @@ The following diagram shows this process of checking permission when replaying t
 - [SQL Server Profiler stored procedures (Transact-SQL)](../../relational-databases/system-stored-procedures/sql-server-profiler-stored-procedures-transact-sql.md)
 - [Replay Traces](replay-traces.md)
 - [Create a trace (SQL Server Profiler)](create-a-trace-sql-server-profiler.md)
-- [Replay a Trace Table (SQL Server Profiler)](replay-a-trace-table-sql-server-profiler.md)
-- [Replay a Trace File (SQL Server Profiler)](replay-a-trace-file-sql-server-profiler.md)
+- [Replay a trace table (SQL Server Profiler)](replay-a-trace-table-sql-server-profiler.md)
+- [Replay a trace file (SQL Server Profiler)](replay-a-trace-file-sql-server-profiler.md)

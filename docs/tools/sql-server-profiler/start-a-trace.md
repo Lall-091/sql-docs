@@ -4,7 +4,7 @@ titleSuffix: SQL Server Profiler
 description: Learn how to start a trace and locate its data after you have defined a new trace or created a template in SQL Server Profiler.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 03/14/2017
+ms.date: 06/05/2025
 ms.service: sql
 ms.subservice: profiler
 ms.topic: conceptual
@@ -12,32 +12,26 @@ ms.collection:
   - data-tools
 ---
 
-# Start a Trace
+# Start a trace (SQL Server Profiler)
 
- [!INCLUDE [SQL Server Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdbmi.md)]
 
-After you have defined a new trace or created a template by using [!INCLUDE[ssSqlProfiler](../../includes/sssqlprofiler-md.md)], you can start, pause, or stop capturing data by using the new trace definition or template.  
-  
-## Starting a Trace
+After you have defined a new trace or created a template by using [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)], you can start, pause, or stop capturing data by using the new trace definition or template.
 
-When you start a trace and the defined source is an instance of the [!INCLUDE[ssDEnoversion](../../includes/ssdenoversion-md.md)] or [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)],
-[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] creates a queue that provides a temporary holding place for captured server events.  
-  
-When you use [!INCLUDE[ssSqlProfiler](../../includes/sssqlprofiler-md.md)] to access SQL Trace, a new trace window opens (if one is not already open) when a trace is started, and data is immediately captured.  
-  
-When you use [!INCLUDE[tsql](../../includes/tsql-md.md)] system stored procedures to access SQL Trace, you must start a trace every time an instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] starts for data to be captured. When a trace has been started, you can modify only the name of the trace.  
-  
-> [!NOTE]  
->  When working with existing traces, you can view the properties, but you cannot modify the properties. To modify the properties, stop or pause the trace.  
-  
-## See Also
+## Start a Profiler trace
 
-[Start a Trace Automatically after Connecting to a Server &#40;SQL Server Profiler&#41;](../../tools/sql-server-profiler/start-a-trace-automatically-after-connecting-to-a-server-sql-server-profiler.md)   
+When you start a trace and the defined source is an instance of the [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)] or [!INCLUDE [ssASnoversion](../../includes/ssasnoversion-md.md)], [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] creates a queue that provides a temporary holding place for captured server events.
 
-[Pause a Trace &#40;SQL Server Profiler&#41;](../../tools/sql-server-profiler/pause-a-trace-sql-server-profiler.md)   
+When you use [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)] to access SQL Trace, a new trace window opens (if one isn't already open) when a trace is started, and data is immediately captured.
 
-[Stop a Trace &#40;SQL Server Profiler&#41;](../../tools/sql-server-profiler/stop-a-trace-sql-server-profiler.md)   
+When you use [!INCLUDE [tsql](../../includes/tsql-md.md)] system stored procedures to access SQL Trace, you must start a trace every time an instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] starts for data to be captured. When a trace has been started, you can modify only the name of the trace.
 
-[Clear a Trace Window &#40;SQL Server Profiler&#41;](../../tools/sql-server-profiler/clear-a-trace-window-sql-server-profiler.md)   
+When working with existing traces, you can view the properties, but you can't modify the properties. To modify the properties, stop or pause the trace.
 
-[Run a Trace After It Has Been Paused or Stopped &#40;SQL Server Profiler&#41;](../../tools/sql-server-profiler/run-a-trace-after-it-has-been-paused-or-stopped-sql-server-profiler.md)
+## Related content
+
+- [Start a trace automatically after connecting to a server (SQL Server Profiler)](start-a-trace-automatically-after-connecting-to-a-server-sql-server-profiler.md)
+- [Pause a trace (SQL Server Profiler)](pause-a-trace-sql-server-profiler.md)
+- [Stop a trace (SQL Server Profiler)](stop-a-trace-sql-server-profiler.md)
+- [Clear a trace window (SQL Server Profiler)](clear-a-trace-window-sql-server-profiler.md)
+- [Run a trace after it has been paused or stopped (SQL Server Profiler)](run-a-trace-after-it-has-been-paused-or-stopped-sql-server-profiler.md)

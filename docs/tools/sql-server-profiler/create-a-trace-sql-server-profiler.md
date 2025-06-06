@@ -4,7 +4,7 @@ titleSuffix: SQL Server Profiler
 description: Learn how to capture event data in SQL Server Profiler by creating a trace. Read about the various options you can specify for traces.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/19/2025
+ms.date: 06/05/2025
 ms.service: sql
 ms.subservice: profiler
 ms.topic: how-to
@@ -47,13 +47,13 @@ This article describes how to use [!INCLUDE [ssSqlProfiler](../../includes/sssql
 
 1. Optionally, select the **Enable trace stop time** check box, and specify a stop date and time.
 
-1. To add or remove events, data columns, or filters, select the **Events Selection** tab. For more information, see: [Specify Events and Data Columns for a Trace File (SQL Server Profiler)](specify-events-and-data-columns-for-a-trace-file-sql-server-profiler.md)
+1. To add or remove events, data columns, or filters, select the **Events Selection** tab. For more information, see: [Specify events and data columns for a trace file (SQL Server Profiler)](specify-events-and-data-columns-for-a-trace-file-sql-server-profiler.md)
 
 1. Select **Run** to start the trace.
 
 ## Related content
 
-- [Permissions Required to Run SQL Server Profiler](permissions-required-to-run-sql-server-profiler.md)
-- [SQL Server Profiler Templates and Permissions](sql-server-profiler-templates-and-permissions.md)
+- [Permissions required to run SQL Server Profiler](permissions-required-to-run-sql-server-profiler.md)
+- [SQL Server Profiler templates and permissions](sql-server-profiler-templates-and-permissions.md)
 - [SQL Server Profiler](sql-server-profiler.md)
-- [Correlate a trace with Windows Performance Log data](correlate-a-trace-with-windows-performance-log-data.md)
+- [Correlate a trace with Windows performance log data](correlate-a-trace-with-windows-performance-log-data.md)

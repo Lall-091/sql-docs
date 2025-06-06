@@ -23,7 +23,7 @@ The **Refresh from Database** dialog box lets you select which objects to refres
 
 - If the object is new in the Db2 database, the row is pink.
 
-You can specify default object refresh settings in the **Project Settings** dialog box. For more information, see [Project Settings(Synchronization)](project-settings-synchronization-db2tosql.md).
+You can specify default object refresh settings in the **Project Settings** dialog box. For more information, see [Project Settings (Synchronization)](project-settings-synchronization-db2tosql.md).
 
 To access the **Refresh from Database** dialog box, right-click an object in Db2 Metadata Explorer and select **Refresh from Database**.
 

@@ -40,7 +40,7 @@ For more information about the settings and how the settings are applied in each
 
 - [Project Settings (Conversion)](project-settings-conversion-db2tosql.md)
 - [Project Settings (Migration)](project-settings-migration-db2tosql.md)
-- [Project Settings(Synchronization)](project-settings-synchronization-db2tosql.md)
+- [Project Settings (Synchronization)](project-settings-synchronization-db2tosql.md)
 - [Project Settings (GUI)](project-settings-gui-db2tosql.md)
 - [Project Settings (Type Mapping)](project-settings-type-mapping-db2tosql.md)
 

@@ -3,7 +3,7 @@ title: Connect to the SQL Server Database Engine
 description: Learn how to connect to the Database Engine used by SQL Server and Azure SQL services
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 02/07/2025
+ms.date: 06/05/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -62,7 +62,7 @@ If you connect to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] ove
 
 Connections to Azure SQL services, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux, and [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] in containers, all use TCP/IP.
 
-For both [!INCLUDE [ssazure-sqldb](../includes/ssazure-sqldb.md)] and [!INCLUDE [ssazuremi-md](../includes/ssazuremi-md.md)], see [Connect and query articles](/azure/azure-sql/database/connect-query-content-reference-guide).
+For both [!INCLUDE [ssazure-sqldb](../includes/ssazure-sqldb.md)] and [!INCLUDE [ssazuremi-md](../includes/ssazuremi-md.md)], see [Azure SQL Database and Azure SQL Managed Instance connect and query articles](/azure/azure-sql/database/connect-query-content-reference-guide).
 
 ## Connect to Azure SQL
 
@@ -83,7 +83,7 @@ Examples for application connections are available:
 
 ### [Azure SQL Managed Instance](#tab/sqlmi)
 
-Connect to an [!INCLUDE [ssazuremi-md](../includes/ssazuremi-md.md)] in the same ways you connect to a SQL Server instance, see [Connect your application to Azure SQL Managed Instance](/azure/azure-sql/managed-instance/connect-application-instance?view=azuresql-mi&preserve-view=true).
+Connect to an [!INCLUDE [ssazuremi-md](../includes/ssazuremi-md.md)] in the same ways you connect to a SQL Server instance. For more information, see [Connect your application to Azure SQL Managed Instance](/azure/azure-sql/managed-instance/connect-application-instance?view=azuresql-mi&preserve-view=true).
 
 You can also [configure a point-to-site connection to Azure SQL Managed Instance from on-premises](/azure/azure-sql/managed-instance/point-to-site-p2s-configure?view=azuresql-mi&preserve-view=true) or [connect to Azure SQL Managed Instance from an Azure VM](/azure/azure-sql/managed-instance/connect-vm-instance-configure?view=azuresql-mi&preserve-view=true).
 
@@ -176,10 +176,10 @@ Once you connect successfully to the [!INCLUDE [ssde-md](../includes/ssde-md.md)
 For more information about running T-SQL queries in client tools, see:
 
 - [SQL Server Management Studio (SSMS)](../ssms/quickstarts/ssms-connect-query-sql-server.md)
-- [MSSQL extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/connect-database-visual-studio-code.md)
+- [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/connect-database-visual-studio-code.md)
 - [sqlcmd utility](../tools/sqlcmd/sqlcmd-run-transact-sql-script-files.md)
-- [Azure portal query editor (Azure SQL Database)](/azure/azure-sql/database/query-editor)
-- [SQL query editor (SQL database in Microsoft Fabric)](/fabric/database/sql/query-editor)
+- [Azure portal query editor for Azure SQL Database](/azure/azure-sql/database/query-editor)
+- [Query with the SQL query editor](/fabric/database/sql/query-editor)
 
 > [!NOTE]  
 > Some tools require a *batch separator* to know that a query is ready to be executed. For example, you might need to put the `GO` separator at the end of a T-SQL query in **sqlcmd** to make sure that the T-SQL query runs.
@@ -193,6 +193,7 @@ For more information about running T-SQL queries in client tools, see:
 
 ## Related content
 
+- [Sign in to SQL Server](../database-engine/configure-windows/logging-in-to-sql-server.md)
 - [What is SQL Server Management Studio (SSMS)?](../ssms/sql-server-management-studio-ssms.md)
 - [What is the MSSQL extension for Visual Studio Code?](../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md)
 - [Configure Database Engine Instances (SQL Server)](../database-engine/configure-windows/configure-database-engine-instances-sql-server.md)

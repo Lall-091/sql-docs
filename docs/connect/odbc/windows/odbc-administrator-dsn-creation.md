@@ -1,9 +1,10 @@
 ---
-title: ODBC Data Source Administrator DSN options
+title: ODBC Data Source Administrator DSN Options
 description: This article describes the options available when creating a new DSN connection to SQL Server using the ODBC Data Source Administrator application.
 author: David-Engel
 ms.author: davidengel
-ms.date: "03/29/2024"
+ms.reviewer: randolphwest
+ms.date: 06/05/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -14,11 +15,11 @@ This article describes the options available when creating a new DSN connection 
 
 When you create a DSN, the wizard displays a series of screens that allow you to specify the information needed to connect to SQL Server.
 
-## Create New Data Source
+## Create new data source
 
 This article only pertains to creating a DSN using the ODBC driver for SQL Server. The ODBC Data Source Administrator dialog box is displayed when you select **Add** in the **User DSN**, **System DSN**, or **File DSN** tab of the ODBC Data Source Administrator dialog box. Choose the driver and select **Finish** to display the first screen of the wizard.
 
-## Create a New Data Source to SQL Server - Screen 1
+## Create a new data source to SQL Server - Screen 1
 
 ### Name
 
@@ -34,15 +35,15 @@ The name of an instance of SQL Server on your network. You'll need to specify a 
 
 In most cases, the ODBC driver can connect by using the default protocol order and the server name supplied in this box. Use SQL Server Configuration Manager if you want to create an alias for the server or configure client network libraries.
 
-You can enter "(local)" in the server box when you're using the same computer as SQL Server. The user can then connect to the local instance of SQL Server, even when running a non-networked version of SQL Server. Multiple instances of SQL Server can run on the same computer. To specify a named instance of SQL Server, the server name is specified as _ServerName_\\_InstanceName_.
+You can enter "(local)" in the server box when you're using the same computer as SQL Server. The user can then connect to the local instance of SQL Server, even when running a non-networked version of SQL Server. Multiple instances of SQL Server can run on the same computer. To specify a named instance of SQL Server, the server name is specified as `<ServerName>\<InstanceName>`.
 
-For more information about server names for different types of networks, see [Logging In to SQL Server](../../../database-engine/configure-windows/logging-in-to-sql-server.md#format-for-specifying-the-name-of-sql-server).
+For more information about server names for different types of networks, see [Sign in to SQL Server](../../../database-engine/configure-windows/logging-in-to-sql-server.md#format-for-specifying-the-instance-name).
 
 ### Finish (optional)
 
 If the information specified on this screen is all that is needed to connect to SQL Server, you can select **Finish**. Defaults are used for all attributes specified on other screens of the wizard.
 
-## Create a New Data Source to SQL Server - Screen 2
+## Create a new data source to SQL Server - Screen 2
 
 Specify the method of authentication, and set up Microsoft SQL Server advanced-client entries and the login and password the ODBC driver for SQL Server will use to connect to SQL Server while configuring the data source.
 
@@ -88,7 +89,7 @@ Specifies the password the driver uses when connecting to SQL Server if **With S
 
 Both the **Login ID** and **Password** boxes are disabled if **With Integrated Windows authentication** or **With Active Directory Integrated authentication** is selected.
 
-## Create a New Data Source to SQL Server - Screen 3
+## Create a new data source to SQL Server - Screen 3
 
 Specify the default database, various ANSI options to be used by the driver, and the name of a mirror server.
 
@@ -115,20 +116,20 @@ Specifies that `QUOTED_IDENTIFIER` is set to on when the ODBC driver for SQL Ser
 ```sql
 SELECT "LastName"
 FROM "Person.Contact"
-WHERE "LastName" = 'O''Brien'
+WHERE "LastName" = 'O''Brien';
 ```
 
 When this check box is cleared, applications that use quoted identifiers, such as the Microsoft Query utility that comes with Microsoft Excel, encounter errors when they generate SQL statements with quoted identifiers.
 
 ### Use ANSI nulls, paddings, and warnings
 
-Specifies that the ANSI_NULLS, ANSI_WARNINGS, and ANSI_PADDINGS options be set on when the ODBC Driver for SQL Server connects.
+Specifies that the `ANSI_NULLS`, `ANSI_WARNINGS`, and `ANSI_PADDINGS` options be set on when the ODBC Driver for SQL Server connects.
 
-With ANSI_NULLS set on, the server enforces ANSI rules regarding comparing columns for NULL. The ANSI syntax "IS NULL" or "IS NOT NULL" must be used for all NULL comparisons. The Transact-SQL syntax "= NULL" isn't supported.
+With `ANSI_NULLS` set on, the server enforces ANSI rules regarding comparing columns for `NULL`. The ANSI syntax `IS NULL` or `IS NOT NULL` must be used for all `NULL` comparisons. The Transact-SQL syntax `= NULL` isn't supported.
 
-With ANSI_WARNINGS set on, SQL Server issues warning messages for conditions that violate ANSI rules but don't violate the rules of Transact-SQL. Examples of such errors are data truncation on execution of an INSERT or UPDATE statement, or encountering a null value during an aggregate function.
+With `ANSI_WARNINGS` set on, SQL Server issues warning messages for conditions that violate ANSI rules but don't violate the rules of Transact-SQL. Examples of such errors are data truncation on execution of an `INSERT` or `UPDATE` statement, or encountering a null value during an aggregate function.
 
-With ANSI_PADDING set on, trailing blanks on **varchar** values and trailing zeroes on **varbinary** values aren't automatically trimmed.
+With `ANSI_PADDING` set on, trailing blanks on **varchar** values and trailing zeroes on **varbinary** values aren't automatically trimmed.
 
 ### Application intent
 
@@ -136,13 +137,13 @@ Declares the application workload type when connecting to a server. Possible val
 
 ### Multi-subnet failover
 
-If your application is connecting to a high-availability, disaster recovery (Always On Availability Groups) availability group (AG) on different subnets, enabling **Multi-subnet failover** configures ODBC Driver for SQL Server to provide faster detection of and connection to the (currently) active server.
+If your application is connecting to an availability group (AG) on different subnets, enabling **Multi-subnet failover** configures ODBC Driver for SQL Server to provide faster detection of and connection to the (currently) active server.
 
-### Transparent Network IP Resolution
+### Transparent network IP resolution
 
-Alters the behavior of **Multi-subnet failover** to allow for faster reconnection during failover. For more information, see [Using Transparent Network IP Resolution](../using-transparent-network-ip-resolution.md).
+Alters the behavior of **Multi-subnet failover** to allow for faster reconnection during failover. For more information, see [Using Transparent Network IP Resolution with the ODBC Driver](../using-transparent-network-ip-resolution.md).
 
-### Column Encryption
+### Column encryption
 
 Enables automatic decryption and encryption of data transfers to and from columns encrypted with the [Always Encrypted](../using-always-encrypted-with-the-odbc-driver.md) feature available in SQL Server 2016 and later.
 
@@ -150,7 +151,7 @@ Enables automatic decryption and encryption of data transfers to and from column
 
 Use the legacy SET FMTONLY metadata discovery method when connecting to SQL Server 2012 or newer. Enable this option only when using queries not supported by [sp_describe_first_result_set](../../../relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql.md), such as those containing temporary tables.
 
-## Create a New Data Source to SQL Server - Screen 4
+## Create a new data source to SQL Server - Screen 4
 
 Specify the language to be used for SQL Server messages, the character set translation, and whether the ODBC driver for SQL Server should use regional settings. You can also control the logging of long-running queries and driver statistics settings.
 
@@ -208,7 +209,7 @@ Specifies the number of times to retry an unsuccessful connection attempt.
 
 ### Connect retry interval (seconds)
 
-Specifies the number of seconds between each connection retry attempt. For more information on the operation of this option and the **Connect retry count** options, see [Connection Resiliency](../connection-resiliency.md).
+Specifies the number of seconds between each connection retry attempt. For more information on the operation of this option and the **Connect retry count** options, see [Connection resiliency in the ODBC driver](../connection-resiliency.md).
 
 ### Finish
 
@@ -216,4 +217,4 @@ If the information specified on this screen is complete, you can select **Finish
 
 ## Related content
 
-[Microsoft ODBC Driver for SQL Server on Windows](../../../connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows.md)
+- [Microsoft ODBC Driver for SQL Server on Windows](microsoft-odbc-driver-for-sql-server-on-windows.md)

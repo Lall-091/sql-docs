@@ -4,7 +4,7 @@ titleSuffix: SQL Server Profiler
 description: Explore the features of SQL Server Profiler. Get help troubleshooting problems by using this tool to create traces and analyze and replay trace results.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 09/19/2024
+ms.date: 06/05/2025
 ms.service: sql
 ms.subservice: profiler
 ms.topic: concept-article
@@ -20,25 +20,26 @@ ms.collection:
 
 [!INCLUDE [xevents-sql-server-profiler](../Includes/sql-server-profiler/xevents-sql-server-profiler.md)]
 
-> [!NOTE]  
-> When you try to connect to an Azure SQL Database from the SQL Server Profiler, it incorrectly throws a misleading error message as follows:
->
-> - To run a trace against SQL Server, you must be a sysadmin fixed server role member or have the ALTER TRACE permission.
->  
-> The message should have explained that Azure SQL Database is not supported by SQL Server profiler.
+When you try to connect to an Azure SQL Database from the SQL Server Profiler, it incorrectly throws a misleading error message as follows:
 
-## Where is the Profiler?
+```output
+To run a trace against SQL Server, you must be a sysadmin fixed server role member or have the ALTER TRACE permission.
+```
 
-You can start the Profiler within [SQL Server Management Studio](start-sql-server-profiler.md) or with the [Azure Data Studio using the SQL Server Profiler extension](/azure-data-studio/extensions/sql-server-profiler-extension).
+The message should have explained that Azure SQL Database isn't supported by SQL Server profiler.
+
+## Where's the Profiler?
+
+You can start the Profiler within [Run SQL Server Profiler](start-sql-server-profiler.md) or with the [SQL Server Profiler extension (Preview)](/azure-data-studio/extensions/sql-server-profiler-extension).
 
 ## Capture and replay trace data
 
 The following table shows the features we recommend using in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] to capture and replay your trace data.
 
 | **Feature\Target Workload** | **Relational Engine** | **Analysis Services** |
-| - | - | - |
-| **Trace Capture** | [Extended Events](../../relational-databases/extended-events/extended-events.md) graphical user interface in SQL Server Management Studio | [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)] |
-| **Trace Replay** | [Distributed Replay](../distributed-replay/sql-server-distributed-replay.md) | [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)] |
+| --- | --- | --- |
+| **Trace Capture** | [Extended Events overview](../../relational-databases/extended-events/extended-events.md) graphical user interface in SQL Server Management Studio | [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)] |
+| **Trace Replay** | [SQL Server Distributed Replay overview](../distributed-replay/sql-server-distributed-replay.md) | [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)] |
 
 ## Use SQL Server Profiler
 
@@ -60,8 +61,7 @@ Microsoft [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)] is a gr
 
 To use [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)], you need to understand the terms that describe the way the tool functions.
 
-> [!NOTE]  
-> Understanding SQL Trace helps when working with [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)]. For more information, see [SQL Trace](../../relational-databases/sql-trace/sql-trace.md).
+Understanding SQL Trace helps when working with [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)]. For more information, see [SQL Trace](../../relational-databases/sql-trace/sql-trace.md).
 
 ### Event
 
@@ -118,83 +118,83 @@ If a filter isn't set, the trace output returns all events of the selected event
 
 | Task description | Article |
 | --- | --- |
-| Lists the predefined templates that SQL Server provides for monitoring certain events and the permissions required to use replay traces. | [SQL Server Profiler Templates and Permissions](../../tools/sql-server-profiler/sql-server-profiler-templates-and-permissions.md) |
-| Describes how to run [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Profiler. | [Permissions Required to Run SQL Server Profiler](../../tools/sql-server-profiler/permissions-required-to-run-sql-server-profiler.md) |
-| Describes how to create a trace. | [Create a Trace (SQL Server Profiler)](../../tools/sql-server-profiler/create-a-trace-sql-server-profiler.md) |
-| Describes how to specify events and data columns for a trace file. | [Specify Events and Data Columns for a Trace File (SQL Server Profiler)](../../tools/sql-server-profiler/specify-events-and-data-columns-for-a-trace-file-sql-server-profiler.md) |
-| Describes how to save trace results to a file. | [Save Trace Results to a File (SQL Server Profiler)](../../tools/sql-server-profiler/save-trace-results-to-a-file-sql-server-profiler.md) |
-| Describes how to save trace results to a table. | [Save Trace Results to a Table (SQL Server Profiler)](../../tools/sql-server-profiler/save-trace-results-to-a-table-sql-server-profiler.md) |
-| Describes how to filter events in a trace. | [Filter Events in a Trace (SQL Server Profiler)](../../tools/sql-server-profiler/filter-events-in-a-trace-sql-server-profiler.md) |
-| Describes how to view filter information. | [View Filter Information (SQL Server Profiler)](../../tools/sql-server-profiler/view-filter-information-sql-server-profiler.md) |
-| Describes how to Modify a Filter. | [Modify a Filter (SQL Server Profiler)](../../tools/sql-server-profiler/modify-a-filter-sql-server-profiler.md) |
-| Describes how to Set a Maximum File Size for a Trace File ([!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)]). | [Set a Maximum File Size for a Trace File (SQL and others)](../../tools/sql-server-profiler/set-a-maximum-file-size-for-a-trace-file-sql-server-profiler.md). |
-| Describes how to set a maximum table size for a trace table. | [Set a Maximum Table Size for a Trace Table (SQL Server Profiler)](../../tools/sql-server-profiler/set-a-maximum-table-size-for-a-trace-table-sql-server-profiler.md) |
-| Describes how to start a trace. | [Start a Trace](../../tools/sql-server-profiler/start-a-trace.md) |
-| Describes how to start a trace automatically after connecting to a server. | [Start a Trace Automatically after Connecting to a Server (SQL Server Profiler)](../../tools/sql-server-profiler/start-a-trace-automatically-after-connecting-to-a-server-sql-server-profiler.md) |
-| Describes how to filter events based on the event start time. | [Filter Events Based on the Event Start Time (SQL Server Profiler)](../../tools/sql-server-profiler/filter-events-based-on-the-event-start-time-sql-server-profiler.md) |
-| Describes how to filter events based on the event end time. | [Filter Events Based on the Event End Time (SQL Server Profiler)](../../tools/sql-server-profiler/filter-events-based-on-the-event-end-time-sql-server-profiler.md) |
-| Describes how to filter session IDs in a trace. | [Filter Server Process IDs (SPIDs) in a Trace (SQL and others )](../../tools/sql-server-profiler/filter-server-process-ids-spids-in-a-trace-sql-server-profiler.md) |
-| Describes how to pause a trace. | [Pause a Trace (SQL Server Profiler)](../../tools/sql-server-profiler/pause-a-trace-sql-server-profiler.md) |
-| Describes how to stop a trace. | [Stop a Trace (SQL Server Profiler)](../../tools/sql-server-profiler/stop-a-trace-sql-server-profiler.md) |
-| Describes how to run a trace after it has been paused or stopped. | [Run a Trace After It Has Been Paused or Stopped (SQL Server Profiler)](../../tools/sql-server-profiler/run-a-trace-after-it-has-been-paused-or-stopped-sql-server-profiler.md) |
-| Describes how to clear a trace window. | [Clear a Trace Window (SQL Server Profiler)](../../tools/sql-server-profiler/clear-a-trace-window-sql-server-profiler.md) |
-| Describes how to close a trace window. | [Close a Trace Window (SQL Server Profiler)](../../tools/sql-server-profiler/close-a-trace-window-sql-server-profiler.md) |
-| Describes how to set trace definition defaults. | [Set Trace Definition Defaults (SQL Server Profiler)](../../tools/sql-server-profiler/set-trace-definition-defaults-sql-server-profiler.md) |
-| Describes how to set trace display defaults. | [Set Trace Display Defaults (SQL Server Profiler)](../../tools/sql-server-profiler/set-trace-display-defaults-sql-server-profiler.md) |
-| Describes how to open a trace file. | [Open a Trace File (SQL Server Profiler)](../../tools/sql-server-profiler/open-a-trace-file-sql-server-profiler.md) |
-| Describes how to open a trace table. | [Open a Trace Table (SQL Server Profiler)](../../tools/sql-server-profiler/open-a-trace-table-sql-server-profiler.md) |
-| Describes how to replay a trace table. | [Replay a Trace Table (SQL Server Profiler)](../../tools/sql-server-profiler/replay-a-trace-table-sql-server-profiler.md) |
-| Describes how to replay a trace file. | [Replay a Trace File (SQL Server Profiler)](../../tools/sql-server-profiler/replay-a-trace-file-sql-server-profiler.md) |
-| Describes how to replay a single event at a time. | [Replay a Single Event at a Time (SQL Server Profiler)](../../tools/sql-server-profiler/replay-a-single-event-at-a-time-sql-server-profiler.md) |
-| Describes how to replay to a breakpoint. | [Replay to a Breakpoint (SQL Server Profiler)](../../tools/sql-server-profiler/replay-to-a-breakpoint-sql-server-profiler.md) |
-| Describes how to replay to a cursor. | [Replay to a Cursor (SQL Server Profiler)](../../tools/sql-server-profiler/replay-to-a-cursor-sql-server-profiler.md) |
-| Describes how to replay a [!INCLUDE [tsql](../../includes/tsql-md.md)] script. | [Replay a Transact-SQL Script (SQL Server Profiler)](../../tools/sql-server-profiler/replay-a-transact-sql-script-sql-server-profiler.md) |
-| Describes how to create a trace template. | [Create a Trace Template (SQL Server Profiler)](../../tools/sql-server-profiler/create-a-trace-template-sql-server-profiler.md) |
-| Describes how to modify a trace template. | [Modify a Trace Template (SQL Server Profiler)](./modify-trace-templates.md) |
-| Describes how to set global trace options. | [Set Global Trace Options (SQL Server Profiler)](../../tools/sql-server-profiler/set-global-trace-options-sql-server-profiler.md) |
-| Describes how to find a value or data column while tracing. | [Find a Value or Data Column While Tracing (SQL Server Profiler)](../../tools/sql-server-profiler/find-a-value-or-data-column-while-tracing-sql-server-profiler.md) |
-| Describes how to derive a template from a running trace. | [Derive a Template from a Running Trace (SQL Server Profiler)](../../tools/sql-server-profiler/derive-a-template-from-a-running-trace-sql-server-profiler.md) |
-| Describes how to derive a template from a trace file or trace table. | [Derive a Template from a Trace File or Trace Table (SQL Server Profiler)](../../tools/sql-server-profiler/derive-a-template-from-a-trace-file-or-trace-table-sql-server-profiler.md) |
-| Describes how to create a [!INCLUDE [tsql](../../includes/tsql-md.md)] script for running a trace. | [Create a Transact-SQL Script for Running a Trace (SQL Server Profiler)](../../tools/sql-server-profiler/create-a-transact-sql-script-for-running-a-trace-sql-server-profiler.md) |
-| Describes how to export a trace template. | [Export a Trace Template (SQL Server Profiler)](../../tools/sql-server-profiler/export-a-trace-template-sql-server-profiler.md) |
-| Describes how to import a trace template. | [Import a Trace Template (SQL Server Profiler)](../../tools/sql-server-profiler/import-a-trace-template-sql-server-profiler.md) |
-| Describes how to extract a script from a trace. | [Extract a Script from a Trace (SQL Server Profiler)](../../tools/sql-server-profiler/extract-a-script-from-a-trace-sql-server-profiler.md) |
-| Describes how to correlate a trace with Windows performance log data. | [Correlate a Trace with Windows Performance Log Data (SQL Server Profiler)](./correlate-a-trace-with-windows-performance-log-data.md) |
-| Describes how to organize columns displayed in a trace. | [Organize Columns Displayed in a Trace (SQL Server Profiler)](../../tools/sql-server-profiler/organize-columns-displayed-in-a-trace-sql-server-profiler.md) |
-| Describes how to start [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)]. | [Start SQL Server Profiler](../../tools/sql-server-profiler/start-sql-server-profiler.md) |
-| Describes how to save traces and trace templates. | [Save Traces and Trace Templates](../../tools/sql-server-profiler/save-traces-and-trace-templates.md) |
-| Describes how to modify trace templates. | [Modify Trace Templates](../../tools/sql-server-profiler/modify-trace-templates.md) |
-| Describes how to correlate a trace with Windows performance log data. | [Correlate a Trace with Windows Performance Log Data](../../tools/sql-server-profiler/correlate-a-trace-with-windows-performance-log-data.md) |
-| Describes how to view and analyze traces with [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)]. | [View and Analyze Traces with SQL Server Profiler](../../tools/sql-server-profiler/view-and-analyze-traces-with-sql-server-profiler.md) |
-| Describes how to analyze deadlocks with [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)]. | [Analyze Deadlocks with SQL Server Profiler](../../tools/sql-server-profiler/analyze-deadlocks-with-sql-server-profiler.md) |
-| Describes how to analyze queries with SHOWPLAN results in SQL Server Profiler. | [Analyze Queries with SHOWPLAN Results in SQL Server Profiler](../../tools/sql-server-profiler/analyze-queries-with-showplan-results-in-sql-server-profiler.md) |
-| Describes how to filter traces with [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)]. | [Filter Traces with SQL Server Profiler](../../tools/sql-server-profiler/filter-traces-with-sql-server-profiler.md) |
-| Describes how to use the replay features of [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)]. | [Replay Traces](../../tools/sql-server-profiler/replay-traces.md) |
+| Lists the predefined templates that SQL Server provides for monitoring certain events and the permissions required to use replay traces. | [SQL Server Profiler templates and permissions](sql-server-profiler-templates-and-permissions.md) |
+| Describes how to run [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Profiler. | [Permissions required to run SQL Server Profiler](permissions-required-to-run-sql-server-profiler.md) |
+| Describes how to create a trace. | [Create a trace (SQL Server Profiler)](create-a-trace-sql-server-profiler.md) |
+| Describes how to specify events and data columns for a trace file. | [Specify events and data columns for a trace file (SQL Server Profiler)](specify-events-and-data-columns-for-a-trace-file-sql-server-profiler.md) |
+| Describes how to save trace results to a file. | [Save trace results to a file (SQL Server Profiler)](save-trace-results-to-a-file-sql-server-profiler.md) |
+| Describes how to save trace results to a table. | [Save trace results to a table (SQL Server Profiler)](save-trace-results-to-a-table-sql-server-profiler.md) |
+| Describes how to filter events in a trace. | [Filter events in a trace (SQL Server Profiler)](filter-events-in-a-trace-sql-server-profiler.md) |
+| Describes how to view filter information. | [View filter information (SQL Server Profiler)](view-filter-information-sql-server-profiler.md) |
+| Describes how to Modify a Filter. | [Modify a filter (SQL Server Profiler)](modify-a-filter-sql-server-profiler.md) |
+| Describes how to Set a Maximum File Size for a Trace File ([!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)]). | [Set a maximum file size for a trace file (SQL Server Profiler)](set-a-maximum-file-size-for-a-trace-file-sql-server-profiler.md). |
+| Describes how to set a maximum table size for a trace table. | [Set a maximum table size for a trace table (SQL Server Profiler)](set-a-maximum-table-size-for-a-trace-table-sql-server-profiler.md) |
+| Describes how to start a trace. | [Start a trace (SQL Server Profiler)](start-a-trace.md) |
+| Describes how to start a trace automatically after connecting to a server. | [Start a trace automatically after connecting to a server (SQL Server Profiler)](start-a-trace-automatically-after-connecting-to-a-server-sql-server-profiler.md) |
+| Describes how to filter events based on the event start time. | [Filter events based on the event start time (SQL Server Profiler)](filter-events-based-on-the-event-start-time-sql-server-profiler.md) |
+| Describes how to filter events based on the event end time. | [Filter events based on the event end Time (SQL Server Profiler)](filter-events-based-on-the-event-end-time-sql-server-profiler.md) |
+| Describes how to filter session IDs in a trace. | [Filter session IDs in a trace (SQL Server Profiler)](filter-server-process-ids-spids-in-a-trace-sql-server-profiler.md) |
+| Describes how to pause a trace. | [Pause a trace (SQL Server Profiler)](pause-a-trace-sql-server-profiler.md) |
+| Describes how to stop a trace. | [Stop a trace (SQL Server Profiler)](stop-a-trace-sql-server-profiler.md) |
+| Describes how to run a trace after it has been paused or stopped. | [Run a trace after it has been paused or stopped (SQL Server Profiler)](run-a-trace-after-it-has-been-paused-or-stopped-sql-server-profiler.md) |
+| Describes how to clear a trace window. | [Clear a trace window (SQL Server Profiler)](clear-a-trace-window-sql-server-profiler.md) |
+| Describes how to close a trace window. | [Close a trace window (SQL Server Profiler)](close-a-trace-window-sql-server-profiler.md) |
+| Describes how to set trace definition defaults. | [Set trace definition defaults (SQL Server Profiler)](set-trace-definition-defaults-sql-server-profiler.md) |
+| Describes how to set trace display defaults. | [Set trace display defaults (SQL Server Profiler)](set-trace-display-defaults-sql-server-profiler.md) |
+| Describes how to open a trace file. | [Open a trace file (SQL Server Profiler)](open-a-trace-file-sql-server-profiler.md) |
+| Describes how to open a trace table. | [Open a trace table (SQL Server Profiler)](open-a-trace-table-sql-server-profiler.md) |
+| Describes how to replay a trace table. | [Replay a trace table (SQL Server Profiler)](replay-a-trace-table-sql-server-profiler.md) |
+| Describes how to replay a trace file. | [Replay a trace file (SQL Server Profiler)](replay-a-trace-file-sql-server-profiler.md) |
+| Describes how to replay a single event at a time. | [Replay a single event at a time (SQL Server Profiler)](replay-a-single-event-at-a-time-sql-server-profiler.md) |
+| Describes how to replay to a breakpoint. | [Replay to a breakpoint (SQL Server Profiler)](replay-to-a-breakpoint-sql-server-profiler.md) |
+| Describes how to replay to a cursor. | [Replay to a cursor (SQL Server Profiler)](replay-to-a-cursor-sql-server-profiler.md) |
+| Describes how to replay a [!INCLUDE [tsql](../../includes/tsql-md.md)] script. | [Replay a Transact-SQL script (SQL Server Profiler)](replay-a-transact-sql-script-sql-server-profiler.md) |
+| Describes how to create a trace template. | [Create a trace template (SQL Server Profiler)](create-a-trace-template-sql-server-profiler.md) |
+| Describes how to modify a trace template. | [Modify trace templates](modify-trace-templates.md) |
+| Describes how to set global trace options. | [Set global trace options (SQL Server Profiler)](set-global-trace-options-sql-server-profiler.md) |
+| Describes how to find a value or data column while tracing. | [Find a value or data column while tracing (SQL Server Profiler)](find-a-value-or-data-column-while-tracing-sql-server-profiler.md) |
+| Describes how to derive a template from a running trace. | [Derive a template from a running trace (SQL Server Profiler)](derive-a-template-from-a-running-trace-sql-server-profiler.md) |
+| Describes how to derive a template from a trace file or trace table. | [Derive a template from a trace file or trace table (SQL Server Profiler)](derive-a-template-from-a-trace-file-or-trace-table-sql-server-profiler.md) |
+| Describes how to create a [!INCLUDE [tsql](../../includes/tsql-md.md)] script for running a trace. | [Create a Transact-SQL script for running a trace (SQL Server Profiler)](create-a-transact-sql-script-for-running-a-trace-sql-server-profiler.md) |
+| Describes how to export a trace template. | [Export a trace template (SQL Server Profiler)](export-a-trace-template-sql-server-profiler.md) |
+| Describes how to import a trace template. | [Import a trace template (SQL Server Profiler)](import-a-trace-template-sql-server-profiler.md) |
+| Describes how to extract a script from a trace. | [Extract a script from a trace (SQL Server Profiler)](extract-a-script-from-a-trace-sql-server-profiler.md) |
+| Describes how to correlate a trace with Windows performance log data. | [Correlate a trace with Windows performance log data](correlate-a-trace-with-windows-performance-log-data.md) |
+| Describes how to organize columns displayed in a trace. | [Organize columns displayed in a trace (SQL Server Profiler)](organize-columns-displayed-in-a-trace-sql-server-profiler.md) |
+| Describes how to start [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)]. | [Run SQL Server Profiler](start-sql-server-profiler.md) |
+| Describes how to save traces and trace templates. | [Save traces and trace templates](save-traces-and-trace-templates.md) |
+| Describes how to modify trace templates. | [Modify trace templates](modify-trace-templates.md) |
+| Describes how to correlate a trace with Windows performance log data. | [Correlate a trace with Windows performance log data](correlate-a-trace-with-windows-performance-log-data.md) |
+| Describes how to view and analyze traces with [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)]. | [View and analyze traces with SQL Server Profiler](view-and-analyze-traces-with-sql-server-profiler.md) |
+| Describes how to analyze deadlocks with [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)]. | [Analyze deadlocks with SQL Server Profiler](analyze-deadlocks-with-sql-server-profiler.md) |
+| Describes how to analyze queries with SHOWPLAN results in SQL Server Profiler. | [Analyze queries with SHOWPLAN results in SQL Server Profiler](analyze-queries-with-showplan-results-in-sql-server-profiler.md) |
+| Describes how to filter traces with [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)]. | [Filter traces with SQL Server Profiler](filter-traces-with-sql-server-profiler.md) |
+| Describes how to use the replay features of [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)]. | [Replay Traces](replay-traces.md) |
 | Lists the context-sensitive help articles for [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)]. | [SQL Server Profiler F1 Help](../../tools/sql-server-profiler/sql-server-profiler-f1-help.md) |
-| Lists the system stored procedures that are used by [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)] to monitor performance and activity. | [SQL Server Profiler Stored Procedures (Transact-SQL)](../../relational-databases/system-stored-procedures/sql-server-profiler-stored-procedures-transact-sql.md) |
+| Lists the system stored procedures that are used by [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)] to monitor performance and activity. | [SQL Server Profiler stored procedures](../../relational-databases/system-stored-procedures/sql-server-profiler-stored-procedures-transact-sql.md) |
 
 ## Extended Events vs. SQL Server Profiler
 
-[Extended Events](../../relational-databases/extended-events/extended-events.md) and SQL Server Profiler are tools for monitoring and troubleshooting SQL Server performance. **SQL Server Profiler is deprecated and should only be used with Analysis Services.** Extended Events is the replacement for SQL Server Profiler and provides advanced troubleshooting capabilities not available elsewhere. The key differences are noted here to help with the migration from SQL Server Profiler to Extended Events.
+[Extended Events overview](../../relational-databases/extended-events/extended-events.md) and SQL Server Profiler are tools for monitoring and troubleshooting SQL Server performance. **SQL Server Profiler is deprecated and should only be used with Analysis Services**. Extended Events is the replacement for SQL Server Profiler and provides advanced troubleshooting capabilities not available elsewhere. The key differences are noted here to help with the migration from SQL Server Profiler to Extended Events.
 
 ## Extended Events tool
 
-[Extended Events](../../relational-databases/extended-events/extended-events.md) is a lightweight, highly scalable, and flexible event-handling system built into SQL Server.
+[Extended Events overview](../../relational-databases/extended-events/extended-events.md) is a lightweight, highly scalable, and flexible event-handling system built into SQL Server.
 
 Extended Events sessions typically consume fewer resources than SQL Trace and SQL Server Profiler, making them more suitable for production environments. Extended Events supports capturing events that are available in modern versions of SQL.
 
 In contrast, the events available in SQL Trace/SQL Server Profiler are limited to features available in SQL Server 2008R2 and earlier.
 Extended Events provides superior filtering capabilities, a smaller default payload, and features not offered in Profiler, such as in-memory and aggregate targets and multi-target support.
 
-For more information about Extended Events, see [Extended Events](../../relational-databases/extended-events/extended-events.md).
+For more information about Extended Events, see [Extended Events overview](../../relational-databases/extended-events/extended-events.md).
 
 ## SQL Server Profiler tool
 
 SQL Server Profiler is a graphical user interface that uses SQL Trace to capture activity for an instance of SQL Server or Analysis Services.
 
-SQL Server Profiler can be resource-intensive if improperly configured, impacting server performance, especially when used on production servers. It has built-in templates to support quick tracing.
+SQL Server Profiler can be resource-intensive if improperly configured, affecting server performance, especially when used on production servers. It has built-in templates to support quick tracing.
 
-In summary, though SQL Server Profiler is an older tool that may be familiar to many users, Extended Events is a modern alternative that offers better performance, more detailed event information, and capabilities for troubleshooting and monitoring SQL Server instances not available elsewhere. Due to its advantages over Profiler, Extended Events is recommended for new tracing and monitoring work.
+In summary, though SQL Server Profiler is an older tool that might be familiar to many users, Extended Events is a modern alternative that offers better performance, more detailed event information, and capabilities for troubleshooting and monitoring SQL Server instances not available elsewhere. Due to its advantages over Profiler, Extended Events is recommended for new tracing and monitoring work.
 
 ## Related content
 

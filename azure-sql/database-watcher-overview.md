@@ -5,7 +5,7 @@ description: An overview of database watcher for Azure SQL, a managed monitoring
 author: lcwright
 ms.author: lancewright
 ms.reviewer: wiassaf, dfurman
-ms.date: 05/05/2025
+ms.date: 06/04/2025
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: conceptual
@@ -289,7 +289,7 @@ To validate that you have access and can connect to the data store, and that the
 The database watcher team at Microsoft is looking forward to your comments and suggestions. You can send product feedback in one of the following ways:
 
 - Post a new idea in the [SQL feedback forum](https://aka.ms/sqlfeedback). On the **Post a new idea** page, use **SQL** as the forum, select the **Azure SQL** group, and include *database watcher* in the title. The feedback you submit in the feedback forum is public. Other community members can upvote and comment on your ideas and suggestions. Community votes and comments help the database watcher team plan and prioritize product improvements.
-- Use the feedback button on one of database watcher pages in the Azure portal. For example, you can find the feedback button on the watcher **Overview** page, or on dashboards next to the refresh button. The feedback you send this way is not public. When you submit feedback, you can optionally allow Microsoft to email you regarding this feedback for follow-ups and clarifications.
+- Use the feedback button on one of database watcher pages in the Azure portal. For example, you can find the feedback button on the watcher **Overview** page, or on dashboards next to the refresh button. The feedback you send this way is not public. While Microsoft will see your feedback, depending on your preference and the privacy rules in effect, Microsoft might not be able to respond to you regarding this feedback.
 
 For technical support or help solving a problem with database watcher, [open a support case](https://azure.microsoft.com/support/create-ticket/).
 

@@ -4,8 +4,7 @@ titleSuffix: SQL Server Profiler
 description: Find out how to set a filter to limit the events that SQL Server Profiler captures during a trace. Read about the formats required for certain filters.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: randolphwest
-ms.date: 07/17/2024
+ms.date: 06/05/2025
 ms.service: sql
 ms.subservice: profiler
 ms.topic: how-to
@@ -27,7 +26,7 @@ You add filters to trace definitions by using the **Events Selection** tab of th
 
    The **Events Selection** tab contains a grid control. The grid control is a table that contains each of the traceable event classes. The table contains one row for each event class. The event classes might differ slightly, depending on the type and version of server to which you connect. The event classes are identified in the **Events** column of the grid and are grouped by event category. The remaining columns list the data columns that can be returned for each event class.
 
-1. Select **Column Filters.**
+1. Select **Column Filters**.
 
    The **Edit Filter** dialog box appears. The **Edit Filter** dialog box contains a list of comparison operators that you can use to filter events in a trace.
 
@@ -35,7 +34,7 @@ You add filters to trace definitions by using the **Events Selection** tab of th
 
 1. Select **OK**.
 
-### Considerations
+## Considerations
 
 If you set filter conditions on the **StartTime** and **EndTime** data columns of the Events Selection tab, then make sure that:
 
