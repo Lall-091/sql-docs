@@ -4,7 +4,7 @@ description: Describes how to use supported Microsoft Entra authentication modes
 author: David-Engel
 ms.author: davidengel
 ms.reviewer: davidengel
-ms.date: 05/01/2025
+ms.date: 06/09/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -262,6 +262,9 @@ Available starting in version 3.0, this authentication mode widens the possibili
 
 With this authentication mode, the driver acquires a token by passing "[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential)" from the Azure Identity library to acquire an access token. This mode attempts to use a set of credential types to acquire an access token in order. Depending on the version of the Azure Identity library used, the credential set varies. Version specific differences are noted in the list. For Azure Identity version specific behavior, see the [Azure.Identity API docs](/dotnet/api/azure.identity.defaultazurecredential).
 
+> [!IMPORTANT]
+> **Active Directory Default** is a convenient option to simplify connection string differences between different environments. However, it can come with performance impacts because it has to look in multiple places for authentication information. If you see slow connection speeds using **Active Directory Default**, use a different authentication option that specifically targets the authentication method you're using in your environment. "Active Directory Default" isn't recommended for environments that have strict service level response times.
+
 - **EnvironmentCredential**
   - Enables authentication with Microsoft Entra ID using client and secret, or username and password, details configured in the following environment variables: AZURE_TENANT_ID, AZURE_CLIENT_ID, AZURE_CLIENT_SECRET, AZURE_CLIENT_CERTIFICATE_PATH, AZURE_USERNAME, AZURE_PASSWORD ([More details](/dotnet/api/azure.identity.environmentcredential))
 - **WorkloadIdentityCredential**
@@ -282,7 +285,7 @@ With this authentication mode, the driver acquires a token by passing "[DefaultA
   - Enables authentication to Microsoft Entra ID using Azure Developer CLI to obtain an access token. Available starting in Azure Identity version 1.10 and Microsoft.Data.SqlClient 5.1.4.
 
 > [!NOTE]
-> _InteractiveBrowserCredential_ is disabled in the driver implementation of "Active Directory Default", and "Active Directory Interactive" is the only option available to acquire a token using MFA/Interactive authentication.
+> _InteractiveBrowserCredential_ is disabled in the driver implementation of **Active Directory Default**, and **Active Directory Interactive** is the only option available to acquire a token using MFA/Interactive authentication.
 >
 > Further customization options are not available at the moment.
 
