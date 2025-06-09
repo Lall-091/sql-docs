@@ -104,12 +104,12 @@ For DPS:
 ```powershell
 Invoke-WebRequest dataprocessingservice.<region>.arcdataservices.com
 ```
-> [!NOTE]
-> For US Government Virginia, replace `arcdataservices.com` with `arcdataservices.azure.us`. This example would be:
->
-> ```PowerShell
-> Invoke-WebRequest dataprocessingservice.<region>.arcdataservices.azure.us
->  `
+
+For US Government Virginia, replace `arcdataservices.com` with `arcdataservices.azure.us`. This example would be:
+
+```PowerShell
+Invoke-WebRequest dataprocessingservice.<region>.arcdataservices.azure.us
+```
 
 A possible response status code is:
 
@@ -122,9 +122,7 @@ StatusDescription : OK
 200 is expected as there is an unauthenticated route.
 
 ## Probe connectivity to all regions
-> [!NOTE]
-> For US Government Virginia, replace `arcdataservices.com` with `arcdataservices.azure.us`.
-> 
+
 You can probe connectivity to all regions with the [test-connectivity.ps1](https://github.com/microsoft/sql-server-samples/blob/master/samples/features/azure-arc/troubleshooting/test-connectivity.ps1) PowerShell script.
 
 > [!NOTE]
@@ -135,7 +133,6 @@ You can probe connectivity to all regions with the [test-connectivity.ps1](https
 ## Check TLS version compatibility
 
 The data processing service endpoint supports the following TLS versions: TLS 1.2 and 1.3. Windows Server 2012 and older versions aren't supported.
-
 
 For telemetry endpoints, Windows Server 2012 R2 and older are not supported.
 
