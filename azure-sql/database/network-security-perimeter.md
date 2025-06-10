@@ -13,7 +13,7 @@ ms.topic: how-to
 
 # Network Security Perimeter for Azure SQL Database and Azure Synapse Analytics
 
-[!INCLUDE [appliesto-sqldb-asa](../includes/appliesto-sqldb-asa-formerly-sqldw.md)]
+[!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Network Security Perimeter (preview) secures both inbound and outbound network traffic between Azure SQL Database and other Platform as a Service (PaaS) resources (for example, Azure Storage and Azure Key Vault). Any attempts made to communicate with Azure resources that aren't inside the perimeter is blocked.
 
