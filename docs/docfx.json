@@ -55,7 +55,7 @@
         }
       },
       "toc_preview": true,
-      "feedback_system": "none",
+      "feedback_system": "Standard",
       "titleSuffix": "SQL Server",
       "recommendations": true
     },
