@@ -380,7 +380,7 @@ On [!INCLUDE [sssql22-md](../../../includes/sssql22-md.md)] and later you can co
 
 To ensure there's no data loss, you must first configure the distributed availability group to support no data loss by following these steps:
 
-1. To prepare for failover, verify the global primary *and* global forwarder are in `SYNCHRONOUS_COMMIT` mode. If not, set them to `SYNCHRONOUS_COMMIT` through [ALTER AVAILABILITY GROUP](../../../t-sql/statements/alter-availability-group-transact-sql.md).
+1. To prepare for failover, verify the global primary *and* forwarder are in `SYNCHRONOUS_COMMIT` mode. If not, set them to `SYNCHRONOUS_COMMIT` through [ALTER AVAILABILITY GROUP](../../../t-sql/statements/alter-availability-group-transact-sql.md).
 1. Set the distributed availability group to synchronous commit on *both* the global primary and the forwarder.
 1. Wait until the distributed availability group is synchronized.
 1. On the global primary, set the distributed availability group `REQUIRED_SYNCHRONIZED_SECONDARIES_TO_COMMIT` setting to 1 by using [ALTER AVAILABILITY GROUP](../../../t-sql/statements/alter-availability-group-transact-sql.md).
@@ -392,9 +392,9 @@ To ensure there's no data loss, you must first configure the distributed availab
 
 #### T-SQL example
 
-This section provides the steps in a detailed example to fail over the distributed availability group named `distributedAG` by using Transact-SQL. The example environment has a total of 4 nodes for the distributed availability group. The global primary **N1** and **N2** host availability group `ag1` while the global forwarder **N3** and **N4** host availability group `ag2`. The distributed availability group `distributedAG` pushes changes from `ag1` to `ag2`.
+This section provides the steps in a detailed example to fail over the distributed availability group named `distributedAG` by using Transact-SQL. The example environment has a total of 4 nodes for the distributed availability group. The global primary **N1** and **N2** host availability group `ag1` while the forwarder **N3** and **N4** host availability group `ag2`. The distributed availability group `distributedAG` pushes changes from `ag1` to `ag2`.
 
-1. Query to verify `SYNCHRONOUS_COMMIT` on the primaries of the local availability groups that form the distributed availability group. Run the following T-SQL directly on the global forwarder *and* global primary:
+1. Query to verify `SYNCHRONOUS_COMMIT` on the primaries of the local availability groups that form the distributed availability group. Run the following T-SQL directly on the forwarder *and* global primary:
 
    ```sql
    SELECT DISTINCT ag.name AS [Availability Group],
@@ -489,7 +489,7 @@ This section provides the steps in a detailed example to fail over the distribut
 
    After this step:
    - The global primary transitions from `N1` to `N3`.
-   - The global forwarder transitions from `N3` to `N1`.
+   - The forwarder transitions from `N3` to `N1`.
    - The distributed availability group is available.
 
 1. On the new forwarder (previous global primary, `N1`), clear the distributed availability group property `REQUIRED_SYNCHRONIZED_SECONDARIES_TO_COMMIT` by setting it to 0:
@@ -516,7 +516,7 @@ The instructions in this section apply if `REQUIRED_SYNCHRONIZED_SECONDARIES_TO_
 To ensure there's no data loss, follow these steps:
 
 1. Stop all transactions running on the global primary availability group database(s).
-1. Verify the global primary and global forwarder are in `SYNCHRONOUS_COMMIT` mode. If not, set them to `SYNCHRONOUS_COMMIT` through [ALTER AVAILABILITY GROUP](../../../t-sql/statements/alter-availability-group-transact-sql.md).
+1. Verify the global primary and forwarder are in `SYNCHRONOUS_COMMIT` mode. If not, set them to `SYNCHRONOUS_COMMIT` through [ALTER AVAILABILITY GROUP](../../../t-sql/statements/alter-availability-group-transact-sql.md).
 1. Set the distributed availability group to synchronous commit on the global primary and the forwarder.
 1. Wait until the distributed availability group is synchronized and has the same **last_hardened_lsn** per database. Wait until the **last_hardened_lsn** per database matches between replicas.
 1. On the global primary replica, set the distributed availability group role to `SECONDARY`, which makes the distributed availability group unavailable.
@@ -526,11 +526,11 @@ To ensure there's no data loss, follow these steps:
 
 #### T-SQL example
 
-This section provides the steps in a detailed example to fail over the distributed availability group named `distributedAG` by using Transact-SQL. The example environment has a total of 4 nodes for the distributed availability group. The global primary **N1** and **N2** host availability group `ag1` while the global forwarder **N3** and **N4** host availability group `ag2`. The distributed availability group `distributedAG` pushes changes from `ag1` to `ag2`.
+This section provides the steps in a detailed example to fail over the distributed availability group named `distributedAG` by using Transact-SQL. The example environment has a total of 4 nodes for the distributed availability group. The global primary **N1** and **N2** host availability group `ag1` while the forwarder **N3** and **N4** host availability group `ag2`. The distributed availability group `distributedAG` pushes changes from `ag1` to `ag2`.
 
 1. To ensure that no data is lost, stop all transactions on the global primary databases (that is, databases of the primary availability group).
 
-1. Query to verify `SYNCHRONOUS_COMMIT` on the primaries of the local availability groups that compose the distributed availability group. Run directly on the global forwarder and global primary:
+1. Query to verify `SYNCHRONOUS_COMMIT` on the primaries of the local availability groups that compose the distributed availability group. Run directly on the forwarder and global primary:
 
    ```sql
    SELECT ag.name AS [Availability Group],
@@ -619,7 +619,7 @@ This section provides the steps in a detailed example to fail over the distribut
 
    - If the **last_hardened_lsns** match from the **SELECT** query, fail over from the primary availability group to the secondary availability group. Run the **ALTER AVAILABILITY GROUP** command on the forwarder, the SQL Server that hosts the primary replica of the secondary availability group.
 
-   - If the **last_hardened_lsns** **do not** match from the **SELECT** query after some time, fail the distributed AG back over to the original global forwarder (N1) by running the failover command against the global primary. Then start the process again from the first step.
+   - If the **last_hardened_lsns** **do not** match from the **SELECT** query after some time, fail the distributed AG back over to the original forwarder (N1) by running the failover command against the global primary. Then start the process again from the first step.
 
    ```sql
    -- If the last_hardened_lsns match, you can run the failover query below against the forwarder
