@@ -1,51 +1,75 @@
 ---
 title: Managed Identity
-description: Learn how to use a managed identity with SQL Server 2025. 
+description: Learn how to use a managed identity with SQL Server 2025.
 author: PratimDasgupta
 ms.author: prdasgu
 ms.reviewer: mikeray, randolphwest, mathoma, vanto
-ms.date: 05/23/2025
+ms.date: 06/09/2025
 ms.service: sql
 ms.topic: how-to
-# CustomerIntent: As a database engineer I need to understand how to implement managed identity with SQL Server 2025.
-monikerRange: ">=sql-server-ver17"
 ms.custom:
   - build-2025
+# CustomerIntent: As a database engineer I need to understand how to implement managed identity with SQL Server 2025.
+monikerRange: ">=sql-server-ver17"
 ---
-# Managed identity (preview) | SQL Server enabled by Azure Arc
+# Managed identity (preview) for SQL Server enabled by Azure Arc
 
 [!INCLUDE [sqlserver2025](../../includes/applies-to-version/sqlserver2025.md)]
 
-This article describes how to configure a managed identity for SQL Server enabled by Azure Arc. 
+This article describes how to configure a managed identity for SQL Server enabled by Azure Arc.
 
 [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] includes managed identity support for SQL Server on Windows. Use a managed identity to interact with resources in Azure by using Microsoft Entra authentication.
 
-> [!NOTE]
+> [!NOTE]  
 > Using a managed identity with SQL Server 2025 is currently in **preview**.
 
-## Overview 
+## Overview
 
 [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] introduces support for [Microsoft Entra managed identities](/entra/identity/managed-identities-azure-resources/overview). Use managed identities to authenticate to Azure services without needing to manage credentials. Managed identities are automatically managed by Azure and can be used to authenticate to any service that supports Microsoft Entra authentication. With [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], you can use managed identities both to authenticate inbound connections, and also to authenticate outbound connections to Azure services.
 
 When you connect your SQL Server instance to Azure Arc, a system-assigned managed identity is automatically created for the SQL Server hostname. After the managed identity is created, you must associate the identity with the SQL Server instance and the Microsoft Entra tenant ID by updating the registry.
 
 When using managed identity with SQL Server enabled by Azure Arc, consider the following:
+
 - The managed identity is assigned at the Azure Arc server level.
-- Only system-assigned managed identities are supported. 
+- Only system-assigned managed identities are supported.
 - SQL Server uses this Azure Arc server level managed identity as the **primary managed identity**.
 - SQL Server can use this primary managed identity in either `inbound` and/or `outbound` connections.
-   - `Inbound connections` are logins and users connecting to SQL Server. Inbound connections can also be achieved by using [App Registration available from SQL Server 2022](../../sql-server/azure-arc/entra-authentication-setup-tutorial.md).
-   - `Outbound connections` are SQL Server connections to Azure resources, like backup to URL, or connecting to Azure Key Vault. 
+  - `Inbound connections` are logins and users connecting to SQL Server. Inbound connections can also be achieved by using [App Registration available from SQL Server 2022](entra-authentication-setup-tutorial.md).
+  - `Outbound connections` are SQL Server connections to Azure resources, like backup to URL, or connecting to Azure Key Vault.
 - App Registration **can't** enable a SQL Server to make outbound connections. Outbound connections need a primary managed identity assigned to the SQL Server.
 
 ## Prerequisites
 
-To use a managed identity with SQL Server 2025, you need to [connect the SQL Server instance to Azure Arc](connect.md).
+Before you can use a managed identity with SQL Server enabled by Azure Arc, ensure that you meet the following prerequisites:
 
-> [!CAUTION]  
-> Microsoft Entra authentication (**Inbound**) in SQL Server 2025 doesn't currently support users who are members of more than 200 Microsoft Entra groups. Such an authentication attempt can result in unpredictable behavior and affect the functionality of your instance.
+- [Connect the SQL Server instance to Azure Arc](connect.md).
+- The latest version of the [Azure Extension for SQL Server](release-notes.md).
 
-## Grant permission to the Tokens folder
+## Enable the primary managed identity
+
+If you've installed the Azure Extension for SQL Server to your server, you can enable the primary managed identity for your SQL Server instance directly from the Azure portal. It's also possible to enable the primary managed identity manually by updating the registry, but should be done with extreme caution.
+
+### [Azure portal](#tab/portal)
+
+To enable the primary managed identity in the Azure portal, follow these steps: 
+
+1. Go to your [SQL Server enabled by Azure Arc](https://portal.azure.com/#view/Microsoft_Azure_ArcCenterUX/ArcCenterMenuBlade/~/sqlServerInstances) resource in the Azure portal.
+1. Under **Settings**, select **Microsoft Entra ID and Purview** to open the **Microsoft Entra ID and Purview** page.
+
+   > [!NOTE]  
+   > If you don't see the **Enable Microsoft Entra ID authentication** option, ensure that your SQL Server instance is connected to Azure Arc and that you have the latest SQL extension installed. 
+
+1. On the **Microsoft Entra ID and Purview** page, check the box next to **Use a primary managed identity** and then use **Save** to apply your configuration:
+
+   :::image type="content" source="media/managed-identity/entra-portal.png" alt-text="Screenshot of the Microsoft Entra option in the Azure portal." lightbox="media/managed-identity/entra-portal.png":::
+
+
+### [Manually](#tab/manual)
+
+It's possible to manually enable the primary managed identity for your SQL Server instance by updating the registry, but should be done with extreme caution.
+
+### Grant permission to the Tokens folder
 
 Grant **Read & execute** operating system permissions on the folder `C:\ProgramData\AzureConnectedMachineAgent\Tokens\` to the SQL Server 2025 instance service account. By default, the service account is `NT Service\MSSQLSERVER`, or for named instances, `NT Service\MSSQL$<instancename>`.
 
@@ -55,7 +79,7 @@ You might need to grant admin permissions for the SQL Server service account on 
 
 :::image type="content" source="media/managed-identity/azure-connected-machine-agent-folder-permissions.png" alt-text="Screenshot of AzureConnectedMachineAgent folder Security properties tab.":::
 
-## Add SQL Server service account to the Hybrid agent extension applications group
+### Add SQL Server service account to the Hybrid agent extension applications group
 
 Add the SQL Server service account (default: `NT Service\MSSQLSERVER` or for named instances, `NT Service\MSSQL$instancename`) to the **Hybrid agent extension applications** group.
 
@@ -67,7 +91,7 @@ Add the SQL Server service account (default: `NT Service\MSSQLSERVER` or for nam
 
 :::image type="content" source="media/managed-identity/hybrid-agent-extension-applications-group-properties.png" alt-text="Screenshot of the hybrid agent extension application group properties.":::
 
-## Update the registry
+### Update the registry
 
 > [!WARNING]  
 > Incorrectly editing the registry can severely damage your system. Before making changes to the registry, we recommend you back up any valued data on the computer.
@@ -84,39 +108,39 @@ Create the following entries:
 | `ArcServerSystemAssignedManagedIdentityTenantId` | `Arc-AAD-Tenant-ID` |
 | `ArcServerSystemAssignedManagedIdentityClientId` | `Arc-Machine-Client-Id` |
 | `PrimaryAADTenant` | `Arc-AAD-Tenant-ID` |
-| `AADChannelMaxBufferedMessageSize`|`200000` |
-| `AADGraphEndPoint`|`graph.windows.net` |
-| `AADGroupLookupMaxRetryAttempts`|`10` |
-| `AADGroupLookupMaxRetryDuration`|`30000` |
-| `AADGroupLookupRetryInitialBackoff`|`100` |
-| `AADServerAdminSid`|`00000000-0000-0000-0000-000000000000` |
-| `AuthenticationEndpoint`|`login.microsoftonline.com` |
-| `CacheMaxSize`|`300` |
-| `ClientCertBlackList`|Empty (no value) |
-| `FederationMetadataEndpoint`|`login.windows.net` |
-| `GraphAPIEndpoint`|`graph.windows.net` |
-| `IssuerURL`|`https://sts.windows.net/` |
-| `OnBehalfOfAuthority`|`https://login.windows.net/` |
-| `STSURL`|`https://login.windows.net/` |
-| `MsGraphEndPoint`|`graph.microsoft.com` |
-| `SendX5c`|`false` |
-| `ServicePrincipalName`|`https://database.windows.net/` |
-| `ServicePrincipalNameForArcadia`|`https://sql.azuresynapse.net` |
-| `ServicePrincipalNameForArcadiaDogfood`|`https://sql.azuresynapse-dogfood.net` |
-| `ServicePrincipalNameNoSlash`|`https://database.windows.net` |
-| `AADBecWSConnectionPoolMaxSize`|`500` |
+| `AADChannelMaxBufferedMessageSize` | `200000` |
+| `AADGraphEndPoint` | `graph.windows.net` |
+| `AADGroupLookupMaxRetryAttempts` | `10` |
+| `AADGroupLookupMaxRetryDuration` | `30000` |
+| `AADGroupLookupRetryInitialBackoff` | `100` |
+| `AADServerAdminSid` | `00000000-0000-0000-0000-000000000000` |
+| `AuthenticationEndpoint` | `login.microsoftonline.com` |
+| `CacheMaxSize` | `300` |
+| `ClientCertBlackList` | Empty (no value) |
+| `FederationMetadataEndpoint` | `login.windows.net` |
+| `GraphAPIEndpoint` | `graph.windows.net` |
+| `IssuerURL` | `https://sts.windows.net/` |
+| `OnBehalfOfAuthority` | `https://login.windows.net/` |
+| `STSURL` | `https://login.windows.net/` |
+| `MsGraphEndPoint` | `graph.microsoft.com` |
+| `SendX5c` | `false` |
+| `ServicePrincipalName` | `https://database.windows.net/` |
+| `ServicePrincipalNameForArcadia` | `https://sql.azuresynapse.net` |
+| `ServicePrincipalNameForArcadiaDogfood` | `https://sql.azuresynapse-dogfood.net` |
+| `ServicePrincipalNameNoSlash` | `https://database.windows.net` |
+| `AADBecWSConnectionPoolMaxSize` | `500` |
 
-## Back up and edit the registry
+### Back up and edit the registry
 
 The following sections describe how to back up and edit the registry with Registry Editor.
 
-### Open the Registry Editor
+#### Open the Registry Editor
 
 1. Press **Windows key + R** to open the Run dialog box.
 1. Type `regedit` and press **Enter**.
 1. If prompted by User Account Control, select **Yes**.
 
-### Back up the registry key
+#### Back up the registry key
 
 This step backs up the registry before you make any changes. You can import this file back into the registry later if your changes cause a problem.
 
@@ -127,7 +151,7 @@ This step backs up the registry before you make any changes. You can import this
 1. Ensure **All** is selected in the Export range.
 1. Select **Save**.
 
-### Add entries
+#### Add entries
 
 In this step, you'll add entries to the registry with Registry Editor.
 
@@ -143,7 +167,7 @@ In this step, you'll add entries to the registry with Registry Editor.
 
    :::image type="content" source="media/managed-identity/federated-authentication-registry-key.png" alt-text="Screenshot of the registry set with correct entries." lightbox="media/managed-identity/federated-authentication-registry-key.png":::
 
-### Restore the registry key (if needed)
+#### Restore the registry key (if needed)
 
 If you need to restore to previous registry settings, follow these steps.
 
@@ -155,16 +179,17 @@ If you need to restore to previous registry settings, follow these steps.
 
 For details, review [How to add, modify, or delete registry subkeys and values by using a .reg file](https://support.microsoft.com/topic/how-to-add-modify-or-delete-registry-subkeys-and-values-by-using-a-reg-file-9c7f37cf-a5e9-e1cd-c4fa-2a26218a1a23).
 
-## Grant application permissions to the identity 
+---
+
+## Grant application permissions to the identity
 
 The system-assigned managed identity, which uses the Arc-enabled machine name, must have the following Microsoft Graph application permissions (app roles): `User.Read.All`, `GroupMember.Read.All`, and `Application.Read.All`.
 
-You can use PowerShell to grant required permissions to the managed identity.  Alternatively, you can [create a role-assignable group](/entra/identity/role-based-access-control/groups-create-eligible). After the group is created, assign the **Directory readers** role to the group, and add all system-assigned managed identities for your Arc-enabled machines to the group.
+You can use PowerShell to grant required permissions to the managed identity. Alternatively, you can [create a role-assignable group](/entra/identity/role-based-access-control/groups-create-eligible). After the group is created, assign the **Directory readers** role to the group, and add all system-assigned managed identities for your Arc-enabled machines to the group.
 
 The following PowerShell script grants the required permissions to the managed identity:
 
 ```powershell
-
 # Update these variables to match your Azure & Arc machine setup
 $tenantID = '<Enter-Your-Azure-Tenant-Id>'
 $managedIdentityName = '<Enter-Your-Arc-HostMachine-Name>'
@@ -232,7 +257,7 @@ Follow the steps in the [Microsoft Entra tutorial](../../sql-server/azure-arc/en
 Consider the following limitations when using a managed identity with SQL Server 2025:
 
 - Microsoft Entra authentication is only supported with Arc enabled SQL Server 2025 running on Windows Server.
-- Using Microsoft Entra authentication with failover cluster instances is not supported.
+- Using Microsoft Entra authentication with failover cluster instances isn't supported.
 - The identity you choose to authenticate to SQL Server has to have either the **Directory Readers** role in Microsoft Entra ID or the following three Microsoft Graph application permissions (app roles): `User.Read.All`, `GroupMember.Read.All`, and `Application.Read.All`.
 - Once Microsoft Entra authentication is enabled, disabling isn't advisable. Disabling Microsoft Entra authentication forcefully by deleting registry entries can result in unpredictable behavior with SQL Server 2025.
 - Authenticating to SQL Server on Arc machines through Microsoft Entra authentication using the [FIDO2 method](/azure/active-directory/authentication/howto-authentication-passwordless-faqs) isn't currently supported.
@@ -241,4 +266,4 @@ Consider the following limitations when using a managed identity with SQL Server
 
 - [Microsoft Entra authentication for SQL Server](../../relational-databases/security/authentication-access/azure-ad-authentication-sql-server-overview.md)
 - [What are managed identities for Azure resources?](/entra/identity/managed-identities-azure-resources/overview)
-- [Enable Microsoft Entra authentication - SQL Server on Azure VMs](/azure/azure-sql/virtual-machines/windows/configure-azure-ad-authentication-for-sql-vm)
+- [Enable Microsoft Entra authentication for SQL Server on Azure VMs](/azure/azure-sql/virtual-machines/windows/configure-azure-ad-authentication-for-sql-vm)

@@ -55,7 +55,7 @@
         }
       },
       "toc_preview": true,
-      "feedback_system": "none",
+      "feedback_system": "Standard",
       "titleSuffix": "SQL Server",
       "recommendations": true
     },
@@ -116,8 +116,7 @@
         "**/*.md": "Conceptual",
         "**/*.yml": "Conceptual",
         "**/toc.md": null,
-        "**/toc.yml": null,
-        "**/index.yml": "LandingPage"
+        "**/toc.yml": null
       },
       "monikerRange": {
         "ado/**/*.md": ">= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-current || = azuresqldb-mi-current || = azure-sqldw-latest || >= aps-pdw-2016",

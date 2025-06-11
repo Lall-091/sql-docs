@@ -43,7 +43,7 @@ Azure portal displays the health and status of the Always on Availability Group 
 - Failover mode
 - Synchronization state
 
-When the availability group (AG) dashboard loads, fetching the dashboard details is done via a roundtrip down to the [!INCLUDE [ssazurearc](../../includes/ssazurearc.md)] instance. The Arc SQL extension agent connects to the SQL Server, queries the AG related DMV (Dynamic Management Views) metadata, and sends the information back to the Azure portal where it is displayed.
+When the availability group (AG) dashboard loads, fetching the dashboard details is done via a roundtrip down to the [!INCLUDE [ssazurearc](../../includes/ssazurearc.md)] instance. The Azure Extension for SQL Server connects to the SQL Server instance, queries the AG related DMV (Dynamic Management Views) metadata, and sends the information back to the Azure portal where it is displayed.
 
 ## Failover
 

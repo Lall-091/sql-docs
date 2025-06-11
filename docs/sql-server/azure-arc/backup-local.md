@@ -100,7 +100,7 @@ If you use Azure extension for SQL Server [version 1.1.2504.99](release-notes.md
 
 Automated backups are disabled by default.
 
-After you assigned permissions, you can schedule automated backups. After the automated backups are configured, the Arc SQL extension initiates a backup to the default backup location.
+After you assigned permissions, you can schedule automated backups. After the automated backups are configured, the Azure Extension for SQL Server initiates a backup to the default backup location.
 
 The backups are native SQL Server backups, so all backup history is available in the backup related tables in the msdb database.
 

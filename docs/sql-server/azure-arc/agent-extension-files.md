@@ -12,7 +12,7 @@ ms.topic: reference
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
-This article lists system objects - files, registry keys, and tables deployed and managed by the Azure extension for SQL Server.
+This article lists system objects - files, registry keys, Windows services and tables deployed and managed by the Azure extension for SQL Server.
 
 ## Windows server files
 
@@ -36,6 +36,22 @@ This article lists system objects - files, registry keys, and tables deployed an
 
 > [!NOTE]
 > [!INCLUDE [least-privilege-default](includes/least-privilege-default.md)]
+
+## Windows Services
+
+| Service name | Display name | Process name | Description |
+| :----- | :----- | :----- | :----- |
+| SqlServerExtension |Microsoft Sql Server Extension Service | SqlServerExtension.exe | Connects your SQL Server instance to Azure.  | 
+| himds | Azure Hybrid Instance Metadata Service | `himds.exe` | Synchronizes metadata with Azure and hosts a local REST API for extensions and applications to access the metadata and request Microsoft Entra managed identity tokens |
+| GCArcService | Machine configuration Arc Service | `gc_arc_service.exe` (gc_service.exe earlier than version 1.36) | Audits and enforces Azure machine configuration policies on the machine. |
+| ExtensionService | Machine configuration Extension Service | `gc_extension_service.exe` (gc_service.exe earlier than version 1.36) | Installs, updates, and manages extensions on the machine. |
+
+## Virtual service accounts
+
+| Virtual Account  | Description |
+|------------------|-------------|
+| `NT SERVICE\himds` | Unprivileged account used to run the Hybrid Instance Metadata Service. |
+| `NT Service\SQLServerExtension` | Unprivileged account used to run the SQL Server Extension Service in least privilege mode. |
 
 ## Registry keys
 

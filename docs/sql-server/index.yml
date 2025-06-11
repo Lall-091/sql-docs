@@ -3,7 +3,7 @@ title: SQL Server technical documentation
 summary: Technical documentation to help you get started, administer, develop, and work with SQL Server and associated products.
 metadata:
   title: SQL Server technical documentation
-  description: Choose the area of SQL Server you are interested in.
+  description: Choose the area of SQL Server you are interested in. 
   ms.service: sql
   ms.topic: landing-page
   author: MashaMSFT
