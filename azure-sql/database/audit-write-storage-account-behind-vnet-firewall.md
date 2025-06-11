@@ -1,19 +1,23 @@
 ---
-title: Audit to storage account behind VNet and firewall
+title: Audit to Storage Account Behind VNet and Firewall
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
 description: Configure auditing to write database events on a storage account behind virtual network and firewall
 author: sravanisaluru
 ms.author: srsaluru
 ms.reviewer: wiassaf, vanto, mathoma
-ms.date: "03/23/2022"
+ms.date: 06/10/2025
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
-ms.custom: azure-synapse, subject-rbac-steps, devx-track-arm-template, devx-track-azurepowershell
+ms.custom:
+  - azure-synapse
+  - subject-rbac-steps
+  - devx-track-arm-template
+  - devx-track-azurepowershell
 ---
 # Write audit to a storage account behind VNet and firewall
-[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
+[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 Auditing for [Azure SQL Database](sql-database-paas-overview.md) and [Azure Synapse Analytics](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is) supports writing database events to an [Azure Storage account](/azure/storage/common/storage-account-overview) behind a virtual network and firewall.
 
@@ -40,19 +44,18 @@ For audit to write to a storage account behind a VNet or firewall, the following
 > * You must have `Microsoft.Authorization/roleAssignments/write` permission on the selected storage account. For more information, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles).
 
 > [!NOTE]
-> When Auditing to storage account is already enabled on a server / db, and if the target storage account is moved behind a firewall, we lose write access to 
-the storage account and audit logs stop getting written to it.To make auditing work we have to resave the audit settings from portal. 
-   
+> When Auditing to storage account is already enabled on a server or database, and if the target storage account is moved behind a firewall, Audit logs lose write access to 
+the storage account. You must resave the audit settings from Azure portal to resume auditing. 
 
 ## Configure in Azure portal
 
 Connect to [Azure portal](https://portal.azure.com) with your subscription. Navigate to the resource group and server.
 
-1. Click on **Auditing** under the Security heading. Select **On**.
+1. Select **Auditing** under the Security heading. Select **On**.
 
-2. Select **Storage**. Select the storage account where logs will be saved. The storage account must comply with the requirements listed in [Prerequisites](#prerequisites).
+1. Select **Storage**. Select the storage account where logs will be saved. The storage account must comply with the requirements listed in [Prerequisites](#prerequisites).
 
-3. Open **Storage details**
+1. Open **Storage details**
 
   > [!NOTE]
   > If the selected Storage account is behind VNet, you will see the following message:
@@ -61,9 +64,9 @@ Connect to [Azure portal](https://portal.azure.com) with your subscription. Navi
   >
   >If you do not see this message, then storage account is not behind a VNet.
 
-4. Select the number of days for the retention period. Then click **OK**. Logs older than the retention period are deleted.
+1. Select the number of days for the retention period. Then select **OK**. Logs older than the retention period are deleted.
 
-5. Select **Save** on your auditing settings.
+1. Select **Save** on your auditing settings.
 
 You have successfully configured audit to write to a storage account behind a VNet or firewall.
 
@@ -75,11 +78,11 @@ The sample scripts in this section require you to update the script before you r
 
 |Sample value|Sample description|
 |:-----|:-----|
-|`<subscriptionId>`| Azure subscription ID|
-|`<resource group>`| Resource group|
-|`<logical SQL Server>`| Server name|
-|`<administrator login>`| Administrator account |
-|`<complex password>`| Complex password for the administrator account|
+| `<subscriptionId>` | Azure subscription ID|
+| `<resource group>` | Resource group|
+| `<logical SQL Server>` | Server name|
+| `<administrator login>` | Administrator account |
+| `<complex password>` | Complex password for the administrator account|
 
 To configure SQL Audit to write events to a storage account behind a VNet or Firewall:
 
@@ -144,12 +147,16 @@ To configure SQL Audit to write events to a storage account behind a VNet or Fir
    }
    ```
 
-## Using Azure PowerShell
+<a id="using-azure-powershell"></a>
+
+## Use Azure PowerShell
 
 - [Create or Update Database Auditing Policy (Set-AzSqlDatabaseAudit)](/powershell/module/az.sql/set-azsqldatabaseaudit)
 - [Create or Update Server Auditing Policy (Set-AzSqlServerAudit)](/powershell/module/az.sql/set-azsqlserveraudit)
 
-## Using Azure Resource Manager template
+<a id="using-azure-resource-manager-template"></a>
+
+## Use Azure Resource Manager template
 
 You can configure auditing to write database events on a storage account behind virtual network and firewall using [Azure Resource Manager](/azure/azure-resource-manager/management/overview) template, as shown in the following example:
 
@@ -161,8 +168,8 @@ You can configure auditing to write database events on a storage account behind 
 > [!NOTE]
 > The linked sample is on an external public repository and is provided 'as is', without warranty, and are not supported under any Microsoft support program/service.
 
-## Next steps
+## Related content
 
-* [Use PowerShell to create a virtual network service endpoint, and then a virtual network rule for Azure SQL Database.](scripts/vnet-service-endpoint-rule-powershell-create.md)
-* [Virtual Network Rules: Operations with REST APIs](/rest/api/sql/virtual-network-rules)
-* [Use virtual network service endpoints and rules for servers](vnet-service-endpoint-rule-overview.md)
+- [PowerShell: Create a Virtual Service endpoint and VNet rule for Azure SQL Database](scripts/vnet-service-endpoint-rule-powershell-create.md)
+- [Virtual Network Rules: Operations with REST APIs](/rest/api/sql/virtual-network-rules)
+- [Use virtual network service endpoints and rules for servers in Azure SQL Database](vnet-service-endpoint-rule-overview.md)

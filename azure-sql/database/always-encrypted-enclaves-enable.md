@@ -1,20 +1,23 @@
 ---
-title: "Enable Always Encrypted with secure enclaves"
+title: "Enable Always Encrypted with Secure Enclaves"
 description: Learn how to enable secure enclaves in Azure SQL Database and elastic pools by selecting Intel SGX-enabled hardware or virtualization-based security (VBS)
 author: Pietervanhove
 ms.author: pivanho
 ms.reviewer: vanto, mathoma
-ms.date: 09/26/2023
+ms.date: 06/10/2025
 ms.service: azure-sql-database
 ms.subservice: security
-ms.custom: devx-track-azurecli, devx-track-azurepowershell, ignite-2023
 ms.topic: how-to
+ms.custom:
+  - devx-track-azurecli
+  - devx-track-azurepowershell
+  - ignite-2023
 ---
 # Enable Always Encrypted with secure enclaves in Azure SQL Database
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-In Azure SQL Database, [Always Encrypted with secure enclaves](/sql/relational-databases/security/encryption/always-encrypted-enclaves) can use either [Intel Software Guard Extensions (Intel SGX) enclaves](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) or [Virtualization-based Security (VBS) enclaves](https://www.microsoft.com/security/blog/2018/06/05/virtualization-based-security-vbs-memory-enclaves-data-protection-through-isolation/). For more information, see [Plan for secure enclaves in Azure SQL Database](always-encrypted-enclaves-plan.md).
+In Azure SQL Database, [Always Encrypted with secure enclaves](/sql/relational-databases/security/encryption/always-encrypted-enclaves) can use either [Intel Software Guard Extensions (Intel SGX) enclaves](https://www.intel.com/content/www/us/en/products/docs/accelerator-engines/software-guard-extensions.html) or [Virtualization-based Security (VBS) enclaves](https://www.microsoft.com/security/blog/2018/06/05/virtualization-based-security-vbs-memory-enclaves-data-protection-through-isolation). For more information, see [Plan for secure enclaves in Azure SQL Database](always-encrypted-enclaves-plan.md).
 
 ## [Intel SGX enclaves](#tab/IntelSGXenclaves)
 
@@ -23,14 +26,14 @@ For Intel SGX to be available, the database must use the [vCore model](service-t
 Configuring the DC-series hardware to enable Intel SGX enclaves is the responsibility of the Azure SQL Database administrator. For more information, see [Roles and responsibilities when configuring Intel SGX enclaves and attestation](always-encrypted-enclaves-plan.md#roles-and-responsibilities-when-configuring-intel-sgx-enclaves-and-attestation).
 
 > [!NOTE]
-> Intel SGX is not available in hardware configurations other than DC-series. For example, Intel SGX is not available for standard-series (Gen5) hardware, and it is not available for databases using the [DTU model](service-tiers-dtu.md).
+> Intel SGX is not available in hardware configurations other than DC-series. For example, Intel SGX is not available for standard-series (Gen5) hardware, and it is not available for databases using the [DTU purchasing model](service-tiers-dtu.md).
 
 > [!IMPORTANT]
 > Before you configure the DC-series hardware for your database, check the regional availability of DC-series and make sure you understand its performance limitations. For more information, see [DC-series](service-tiers-sql-database-vcore.md#dc-series).
 
 For detailed instructions on how to configure a new or existing database to use a specific hardware configuration, see [Hardware configuration](service-tiers-sql-database-vcore.md#hardware-configuration).
 
-For more information, review [Configure Azure Attestation for your Azure SQL database server](always-encrypted-enclaves-configure-attestation.md). 
+For more information, review [Configure attestation for Always Encrypted using Azure Attestation](always-encrypted-enclaves-configure-attestation.md). 
 
 ## [VBS enclaves](#tab/VBSenclaves)
 
@@ -38,52 +41,61 @@ By default, a new database is created without VBS enclaves. To enable a VBS encl
 
 You can set the **preferredEnclaveType** property using the Azure portal, SQL Server Management Studio, Azure PowerShell, or the Azure CLI.
 
-## Enabling VBS enclaves using Azure portal
+<a id="enabling-vbs-enclaves-using-azure-portal"></a>
+
+## Enable VBS enclaves using Azure portal
 
 ### Create a new database or elastic pool with a VBS enclave
 
 1. Open the [Azure portal](https://portal.azure.com/) and locate the logical SQL Server for which you want to create a database or elastic pool with a VBS enclave.
-2. Select **Create database** or the **New elastic pool** button.
-3. In the **Security** tab, locate the **Always Encrypted** section.
-4. Set **Enable secure enclaves** to **ON**. This will create a database with a VBS enclave enabled.
+1. Select **Create database** or the **New elastic pool** button.
+1. In the **Security** tab, locate the **Always Encrypted** section.
+1. Set **Enable secure enclaves** to **ON**. This will create a database with a VBS enclave enabled.
 
-    :::image type="content" source="./media/always-encrypted-enclaves/portal-enable-secure-enclaves.png" alt-text="Screenshot of creating a new database or elastic pool with a VBS enclave.":::
+    :::image type="content" source="media/always-encrypted-enclaves-enable/portal-enable-secure-enclaves.png" alt-text="Screenshot of creating a new database or elastic pool with a VBS enclave." lightbox="media/always-encrypted-enclaves-enable/portal-enable-secure-enclaves.png":::
 
 ### Enable a VBS enclave for an existing database or elastic pool
 
 1. Open the [Azure portal](https://portal.azure.com/) and locate the database or elastic pool for which you want to enable secure enclaves.
-2. For an existing database:
+1. For an existing database:
     1. In **Security** settings, select **Data Encryption**.
-    2. In the **Data Encryption** menu, select the **Always Encrypted** tab.
-    3. Set **Enable secure enclaves** to **ON**.
+    1. In the **Data Encryption** menu, select the **Always Encrypted** tab.
+    1. Set **Enable secure enclaves** to **ON**.
 
-        :::image type="content" source="./media/always-encrypted-enclaves/portal-enable-secure-enclaves-existing-database.png" alt-text="Screenshot of enabling a VBS enclave for an existing database.":::
-    4. Select **Save** to save your Always Encrypted configuration.
+        
+    1. Select **Save** to save your Always Encrypted configuration.
 
-3. For an existing elastic pool:
+1. For an existing elastic pool:
     1. In **Settings**, select **Configuration**.
-    2. In the **Configuration** menu, select the **Always Encrypted** tab.
-    3. Set **Enable secure enclaves** to **ON**.
+    1. In the **Configuration** menu, select the **Always Encrypted** tab.
+    1. Set **Enable secure enclaves** to **ON**.
 
-        :::image type="content" source="./media/always-encrypted-enclaves/portal-enable-secure-enclaves-existing-elastic-pool.png" alt-text="Screenshot of enabling a VBS enclave for an elastic pool.":::
-    4. Select **Save** to save your Always Encrypted configuration.
+        :::image type="content" source="media/always-encrypted-enclaves-enable/portal-enable-secure-enclaves-existing-elastic-pool.png" alt-text="Screenshot of enabling a VBS enclave for an elastic pool." lightbox="media/always-encrypted-enclaves-enable/portal-enable-secure-enclaves-existing-elastic-pool.png":::
+    1. Select **Save** to save your Always Encrypted configuration.
 
-## Enabling VBS enclaves using SQL Server Management Studio
+<a id="enabling-vbs-enclaves-using-sql-server-management-studio"></a>
+
+## Enable VBS enclaves using SQL Server Management Studio
+
 Download the latest version of [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
 
 ### Create a new database with a VBS enclave
 
 1. Open SSMS and connect to the logical server where you want to create your database.
-2. Right-click on the **Databases** folder and select **New Database...** 
-3. In the **Configure SLO** page, set the option **Enable Secure Enclaves** to **ON**. This will create a database with a VBS enclave enabled.
+1. Right-click on the **Databases** folder and select **New Database...** 
+1. In the **Configure SLO** page, set the option **Enable Secure Enclaves** to **ON**. This will create a database with a VBS enclave enabled.
 
 ### Enable a VBS enclave for an existing database
-1. Open SSMS and connect to the logical server where you want to modify your database.
-2. Right-click on the database and select **Properties**. 
-3. In the **Configure SLO** page, set the option **Enable Secure Enclaves** to **ON**.
-4. Select **OK** to save your database properties.
 
-## Enabling VBS enclaves using Azure PowerShell
+1. Open SSMS and connect to the logical server where you want to modify your database.
+1. Right-click on the database and select **Properties**. 
+1. In the **Configure SLO** page, set the option **Enable Secure Enclaves** to **ON**.
+1. Select **OK** to save your database properties.
+
+<a id="enabling-vbs-enclaves-using-azure-powershell"></a>
+
+## Enable VBS enclaves using Azure PowerShell
+
 ### Create a new database or elastic pool with a VBS enclave
 
 Create a new database with a VBS enclave with the [New-AzSqlDatabase](/powershell/module/az.sql/New-AzSqlDatabase) cmdlet. The following example creates a serverless database with a VBS enclave.
@@ -114,6 +126,7 @@ New-AzSqlElasticPool `
 ```
 
 ### Enable a VBS enclave for an existing database or elastic pool
+
 To enable a VBS enclave for an existing database, use the [Set-AzSqlDatabase](/powershell/module/az.sql/Set-AzSqlDatabase) cmdlet. Here's an example:
 
 ```azurepowershell-interactive
@@ -133,7 +146,10 @@ Set-AzSqlElasticPool `
     -PreferredEnclaveType 'VBS' 
 ```
 
-## Enabling VBS enclaves using Azure CLI
+<a id="enabling-vbs-enclaves-using-azure-cli"></a>
+
+## Enable VBS enclaves using Azure CLI
+
 ### Create a new database or elastic pool with a VBS enclave
 
 Create a new database with a VBS enclave with the [az sql db create](/cli/azure/sql/db) cmdlet. The following example creates a serverless database with a VBS enclave.
@@ -163,6 +179,7 @@ az sql elastic-pool create -g ResourceGroup01 `
 ```
 
 ### Enable a VBS enclave for an existing database or elastic pool
+
 To enable a VBS enclave for an existing database, use the [az sql db update](/cli/azure/sql/db) cmdlet. Here's an example:
 
 ```azurecli-interactive
@@ -182,6 +199,6 @@ az sql elastic-pool update -g ResourceGroup01 `
 
 ---
 
-## See also
+## Related content
 
 - [Getting started using Always Encrypted with secure enclaves](always-encrypted-enclaves-getting-started.md)

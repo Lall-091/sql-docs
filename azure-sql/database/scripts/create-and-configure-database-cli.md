@@ -1,10 +1,10 @@
 ---
-title: "Azure CLI example: Create a single database"
+title: "Azure CLI Example: Create a Single Database"
 description: Use this Azure CLI example script to create a single database.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: wiassaf, mathoma
-ms.date: 01/26/2022
+ms.date: 06/10/2025
 ms.service: azure-sql-database
 ms.subservice: deployment-configuration
 ms.topic: sample
@@ -50,8 +50,7 @@ This script uses the following commands. Each command in the table links to comm
 | [az sql server firewall](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | Server firewall commands. |
 | [az sql db](/cli/azure/sql/db#az-sql-db-create) | Database commands. |
 
-## Next steps
+## Related content
 
-For more information on Azure CLI, see [Azure CLI documentation](/cli/azure).
-
-Additional SQL Database CLI script samples can be found in the [Azure SQL Database documentation](../az-cli-script-samples-content-guide.md).
+- [Azure CLI documentation](/cli/azure)
+- [Azure CLI samples for Azure SQL Database](../az-cli-script-samples-content-guide.md)

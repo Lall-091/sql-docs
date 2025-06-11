@@ -1,23 +1,25 @@
 ---
-title: Enable Microsoft Entra-only authentication
+title: Enable Microsoft Entra-Only Authentication
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: This article guides you through enabling the Microsoft Entra-only authentication feature with Azure SQL Database and Azure SQL Managed Instance
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: wiassaf, vanto, mathoma
-ms.date: 09/27/2023
+ms.date: 06/10/2025
 ms.service: azure-sql
 ms.subservice: security
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
 ms.topic: tutorial
-monikerRange: "= azuresql || = azuresql-db || = azuresql-mi"
+ms.custom:
+  - devx-track-azurepowershell
+  - devx-track-azurecli
+monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
 ---
 
 # Tutorial: Enable Microsoft Entra-only authentication with Azure SQL
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-This article guides you through enabling the [Microsoft Entra-only authentication](authentication-azure-ad-only-authentication.md) feature within Azure SQL Database and Azure SQL Managed Instance. If you are looking to provision a SQL Database or SQL Managed Instance with Microsoft Entra-only authentication enabled, see [Create server with Microsoft Entra-only authentication enabled in Azure SQL](authentication-azure-ad-only-authentication-create-server.md).
+This article guides you through enabling the [Microsoft Entra-only authentication with Azure SQL](authentication-azure-ad-only-authentication.md) feature within Azure SQL Database and Azure SQL Managed Instance. If you are looking to provision a SQL Database or SQL Managed Instance with Microsoft Entra-only authentication enabled, see [Create server with Microsoft Entra-only authentication enabled in Azure SQL](authentication-azure-ad-only-authentication-create-server.md).
 
 [!INCLUDE [entra-id](../includes/entra-id.md)]
 
@@ -30,13 +32,12 @@ In this tutorial, you learn how to:
 > - Test connecting to Azure SQL
 > - Disable Microsoft Entra-only authentication using the Azure portal, Azure CLI, or PowerShell
 
-
 ## Prerequisites
 
 - A Microsoft Entra tenant. For more information, see [Configure and manage Microsoft Entra authentication with Azure SQL](authentication-aad-configure.md).
-- A SQL Database or SQL Managed Instance with a database, and logins or users. See [Quickstart: Create an Azure SQL Database single database](single-database-create-quickstart.md) if you haven't already created an Azure SQL Database, or [Quickstart: Create an Azure SQL Managed Instance](../managed-instance/instance-create-quickstart.md).
+- A SQL Database or SQL Managed Instance with a database, and logins or users. See [Quickstart: Create a single database - Azure SQL Database](single-database-create-quickstart.md) if you haven't already created an Azure SQL Database, or [Quickstart: Create Azure SQL Managed Instance](../managed-instance/instance-create-quickstart.md).
 
-<a name='assign-role-to-enable-azure-ad-only-authentication'></a>
+<a id="assign-role-to-enable-azure-ad-only-authentication"></a>
 
 ## Assign role to enable Microsoft Entra-only authentication
 
@@ -47,17 +48,17 @@ For more information on how to assign a role to a Microsoft Entra account, see [
 For more information on the required permission to enable or disable Microsoft Entra-only authentication, see the [Permissions section of Microsoft Entra-only authentication](authentication-azure-ad-only-authentication.md#permissions) article.
 
 1. In our example, we'll assign the **SQL Security Manager** role to the user `UserSqlSecurityManager@contoso.onmicrosoft.com`. Using privileged user that can assign Microsoft Entra roles, sign into the [Azure portal](https://portal.azure.com/).
-1. Go to your SQL server resource, and select **Access control (IAM)** in the menu. Select the **Add** button and then **Add role assignment** in the drop-down menu.
+1. Go to your SQL server resource, and select **Access control (IAM)** in the menu. Select the **Add** button and then **Add role assignment** in the dropdown list.
 
-   :::image type="content" source="media/authentication-azure-ad-only-authentication/azure-ad-only-authentication-access-control.png" alt-text="Screenshot shows the Access control page where you can add a role assignment.":::
+   :::image type="content" source="media/authentication-azure-ad-only-authentication-tutorial/azure-ad-only-authentication-access-control.png" alt-text="Screenshot shows the Access control page where you can add a role assignment.":::
 
 1. In the **Add role assignment** pane, select the Role **SQL Security Manager**, and select the user that you want to have the ability to enable or disable Microsoft Entra-only authentication.
 
-   :::image type="content" source="media/authentication-azure-ad-only-authentication/azure-ad-only-authentication-access-control-add-role.png" alt-text="Add role assignment pane in the Azure portal":::
+   :::image type="content" source="media/authentication-azure-ad-only-authentication-tutorial/azure-ad-only-authentication-access-control-add-role.png" alt-text="Screenshot from the Azure portal of the Add role assignment panel.":::
 
-1. Click **Save**.
+1. Select **Save**.
 
-<a name='enable-azure-ad-only-authentication'></a>
+<a id="enable-azure-ad-only-authentication"></a>
 
 ## Enable Microsoft Entra-only authentication
 
@@ -70,7 +71,7 @@ To enable Microsoft Entra-only authentication in the Azure portal, follow these 
 1. Using the user with the [SQL Security Manager](/azure/role-based-access-control/built-in-roles#sql-security-manager) role, go to the [Azure portal](https://portal.azure.com/).
 1. Go to your SQL server resource, and select **Microsoft Entra ID** under the **Settings** menu.
 
-   :::image type="content" source="media/authentication-azure-ad-only-authentication/azure-ad-only-authentication-portal.png" alt-text="Screenshot shows the option to support only Microsoft Entra authentication for the server.":::
+   :::image type="content" source="media/authentication-azure-ad-only-authentication-tutorial/azure-ad-only-authentication-portal.png" alt-text="Screenshot shows the option to support only Microsoft Entra authentication for the server." lightbox="media/authentication-azure-ad-only-authentication-tutorial/azure-ad-only-authentication-portal.png":::
 
 1. If you haven't added an **Microsoft Entra admin**, you'll need to set this before you can enable Microsoft Entra-only authentication.
 1. Check the box for **Support only Microsoft Entra authentication for this server**.
@@ -167,7 +168,6 @@ To enable Microsoft Entra-only authentication in Azure SQL Managed Instance usin
 
 For more information on managing Microsoft Entra-only authentication using APIs, see [Managing Microsoft Entra-only authentication using APIs](authentication-azure-ad-only-authentication.md#managing-azure-ad-only-authentication-using-apis).
 
-
 1. [Sign into Azure](/powershell/azure/authenticate-azureps) using the account with the [SQL Security Manager](/azure/role-based-access-control/built-in-roles#sql-security-manager) role.
 
    ```powershell
@@ -182,7 +182,7 @@ For more information on managing Microsoft Entra-only authentication using APIs,
 
 ---
 
-<a name='check-the-azure-ad-only-authentication-status'></a>
+<a id="check-the-azure-ad-only-authentication-status"></a>
 
 ## Check the Microsoft Entra-only authentication status
 
@@ -303,7 +303,7 @@ Additional information:
   Please contact your system administrator. (Microsoft SQL Server, Error: 18456)
 ```
 
-<a name='disable-azure-ad-only-authentication'></a>
+<a id="disable-azure-ad-only-authentication"></a>
 
 ## Disable Microsoft Entra-only authentication
 
@@ -421,7 +421,7 @@ To disable Microsoft Entra-only authentication in Azure SQL Managed Instance usi
 
 After disabling Microsoft Entra-only authentication, test connecting using a SQL authentication login. You should now be able to connect to your server or instance.
 
-## Next steps
+## Related content
 
 - [Microsoft Entra-only authentication with Azure SQL](authentication-azure-ad-only-authentication.md)
 - [Create server with Microsoft Entra-only authentication enabled in Azure SQL](authentication-azure-ad-only-authentication-create-server.md)

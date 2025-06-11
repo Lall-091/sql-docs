@@ -1,11 +1,11 @@
 ---
-title: Auditing using managed identity
+title: Auditing Using Managed Identity
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
 description: How to use managed identity with storage accounts for auditing
 author: sravanisaluru
 ms.author: srsaluru
 ms.reviewer: randolphwest, mathoma
-ms.date: 05/31/2023
+ms.date: 06/10/2025
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: conceptual
@@ -21,13 +21,13 @@ Auditing for Azure SQL Database can be configured to use a **Storage account** w
 
 **Managed Identity** can be a system-assigned managed identity (SMI) or user-assigned managed identity (UMI).
 
-To configure writing audit logs to a storage account, go to the [Azure portal](https://portal.azure.com), and select your logical server resource for Azure SQL Database. Select **Storage** in the **Auditing** menu. Select the Azure storage account where logs will be saved.
+To configure writing audit logs to a storage account, go to the [Azure portal](https://portal.azure.com), and select your logical server resource for Azure SQL Database. Select **Storage** in the **Auditing** menu. Select the Azure storage account where logs will be saved.
 
 By default, the identity used is the primary user identity assigned to the server. If there's no user identity, the server creates a system-assigned managed identity and uses it for authentication.
 
-:::image type="content" source="media/auditing-overview/auditing-selecting-managed-identity.png" alt-text="Screenshot of the Auditing menu in the Azure portal and selecting Managed Identity as the Storage Authentication Type.":::
+:::image type="content" source="media/auditing-managed-identity/auditing-selecting-managed-identity.png" alt-text="Screenshot of the Auditing menu in the Azure portal and selecting Managed Identity as the Storage Authentication Type." lightbox="media/auditing-managed-identity/auditing-selecting-managed-identity.png":::
 
-Select the retention period by opening the **Advanced properties**. Then select **Save**. Logs older than the retention period are deleted.
+Select the retention period by opening the **Advanced properties**. Then select **Save**. Logs older than the retention period are deleted.
 
 > [!NOTE]  
 > To set up managed identity-based auditing on Azure Synapse Analytics, see the [Configure system-assigned managed identity for Azure Synapse Analytics auditing](#configure-system-assigned-managed-identity-for-azure-synapse-analytics-auditing) section later in this article.
@@ -36,11 +36,11 @@ Select the retention period by opening the **Advanced properties**. Then selec
 
 UMI gives users flexibility to create and maintain their own UMI for a given tenant. UMI can be used as server identities for Azure SQL. UMI is managed by the user, compared to a system-assigned managed identity, which identity is uniquely defined per server, and assigned by the system.
 
-For more information about UMI, see [Managed identities in Microsoft Entra ID for Azure SQL](authentication-azure-ad-user-assigned-managed-identity.md).
+For more information about UMI, see [Managed identities in Microsoft Entra for Azure SQL](authentication-azure-ad-user-assigned-managed-identity.md).
 
 ## Configure user-assigned managed identity for Azure SQL Database auditing
 
-Before auditing can be set up to send logs to your storage account, the managed identity assigned to the server needs to have the [Storage Blob Data Contributor](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) role assignment. This assignment is required if you're configuring auditing using PowerShell, the Azure CLI, REST API, or ARM templates. Role assignment is done automatically when using the Azure portal to configure Auditing, so the below steps are unnecessary if you're configuring Auditing through the Azure portal.
+Before auditing can be set up to send logs to your storage account, the managed identity assigned to the server needs to have the [Storage Blob Data Contributor](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) role assignment. This assignment is required if you're configuring auditing using PowerShell, the Azure CLI, REST API, or ARM templates. Role assignment is done automatically when using the Azure portal to configure Auditing, so the following steps are unnecessary if you're configuring Auditing through the Azure portal.
 
 1. Go to the [Azure portal](https://portal.azure.com).
 1. Create a user-assigned managed identity if you haven't already done so. For more information, see [creating user assigned managed identity](authentication-azure-ad-user-assigned-managed-identity.md#creating-a-user-assigned-managed-identity).
@@ -51,7 +51,7 @@ Before auditing can be set up to send logs to your storage account, the managed 
 1. In the **Members** tab, select **Managed identity** in the **Assign access to** section, and then **Select members**. You can select the **Managed identity** that was created for your server.
 1. Select **Review + assign**.
 
-   :::image type="content" source="media/auditing-overview/auditing-role-assignment-for-identity.png" alt-text="Screenshot of assigning the Storage Blob Data Contributor to the Managed Identity in the Azure portal.":::
+   :::image type="content" source="media/auditing-managed-identity/auditing-role-assignment-for-identity.png" alt-text="Screenshot of assigning the Storage Blob Data Contributor to the Managed Identity in the Azure portal." lightbox="media/auditing-managed-identity/auditing-role-assignment-for-identity.png":::
 
 For more information, see [Assign Azure roles using portal](/azure/role-based-access-control/role-assignments-portal).
 
@@ -62,7 +62,7 @@ Use the following to configure auditing using user-assigned managed identity:
 1. Go to the **Identity** menu for your server. Under the **User assigned managed identity** section, **Add** the managed identity.
 1. You can then select the added managed identity as the **Primary identity** for your server.
 
-   :::image type="content" source="media/auditing-overview/auditing-select-primary-identity.png" alt-text="Screenshot of the Identity menu in the Azure portal and selecting the primary identity.":::
+   :::image type="content" source="media/auditing-managed-identity/auditing-select-primary-identity.png" alt-text="Screenshot of the Identity menu in the Azure portal and selecting the primary identity." lightbox="media/auditing-managed-identity/auditing-select-primary-identity.png":::
 
 1. Go to the **Auditing** menu for the server. Select **Managed Identity** as the **Storage Authentication Type** when configuring the **Storage** for your server.
 
@@ -131,9 +131,9 @@ To force the use of SMI authentication, regardless of whether the storage accoun
   - [Set-AzSqlServerAudit (Az.Sql)](/powershell/module/az.sql/set-azsqlserveraudit)
   - [Set-AzSqlDatabaseAudit (Az.Sql)](/powershell/module/az.sql/set-azsqldatabaseaudit)
 
-## Next steps
+## Related content
 
-- [Auditing overview](auditing-overview.md)
-- Data Exposed episode: [What's New in Azure SQL Auditing](/Shows/Data-Exposed/Whats-New-in-Azure-SQL-Auditing)
-- [Auditing for SQL Managed Instance](../managed-instance/auditing-configure.md)
+- [Auditing for Azure SQL Database and Azure Synapse Analytics](auditing-overview.md)
+- [What's New in Azure SQL Auditing](/Shows/Data-Exposed/Whats-New-in-Azure-SQL-Auditing)
+- [Get started with Azure SQL Managed Instance auditing](../managed-instance/auditing-configure.md)
 - [Auditing for SQL Server](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)

@@ -1,10 +1,10 @@
 ---
-title: "PowerShell: Configure active geo-replication"
+title: "PowerShell: Configure Active Geo-Replication"
 description: Use an Azure PowerShell example script to set up active geo-replication for Azure SQL Database and fail it over.
 author: AbdullahMSFT
 ms.author: amamun
 ms.reviewer: wiassaf, mathoma
-ms.date: 03/12/2019
+ms.date: 06/10/2025
 ms.service: azure-sql-database
 ms.subservice: high-availability
 ms.topic: sample
@@ -56,9 +56,7 @@ This script uses the following commands. Each command in the table links to comm
 | [Remove-AzSqlDatabaseSecondary](/powershell/module/az.sql/remove-azsqldatabasesecondary) | Terminates data replication between a database and the specified secondary database. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Deletes a resource group including all nested resources. |
 
+## Related content
 
-## Next steps
-
-For more information on Azure PowerShell, see [Azure PowerShell documentation](/powershell/azure/).
-
-Additional SQL Database PowerShell script samples can be found in the [Azure SQL Database PowerShell scripts](../powershell-script-content-guide.md).
+- [Azure PowerShell documentation](/powershell/azure/)
+- [Azure PowerShell samples for Azure SQL Database](../powershell-script-content-guide.md)

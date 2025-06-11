@@ -1,10 +1,10 @@
 ---
-title: Get values for app authentication
+title: Get Values for App Authentication
 description: Create a service principal for accessing Azure SQL Database from code.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: wiassaf, mathoma
-ms.date: 09/27/2023
+ms.date: 06/10/2025
 ms.service: azure-sql-database
 ms.subservice: development
 ms.topic: how-to
@@ -16,10 +16,10 @@ ms.custom:
 monikerRange: "=azuresql || =azuresql-db || =fabricsql"
 ---
 # Get the required values for authenticating an application to access Azure SQL Database from code
+
 [!INCLUDE [appliesto-sqldb-fabricsqldb](../includes/appliesto-sqldb-fabricsqldb.md)]
 
 To create and manage an Azure SQL Database from code, you must register your app with Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)). The app must be registered in the same Microsoft Entra tenant as your Azure SQL Database resource.
-
 
 ## Create a service principal to access resources from an application
 
@@ -96,9 +96,9 @@ Write-Output "_applicationId:" $azureAdApplication.ApplicationId.Guid
 Write-Output "_applicationSecret:" $secret
 ```
 
-* * *
+---
 
-## See also
+## Related content
 
-[Create a database in Azure SQL Database with C#](design-first-database-csharp-tutorial.md)  
-[Connect to Azure SQL Database by using Microsoft Entra authentication](authentication-aad-overview.md)
+- [Tutorial: Design a relational database in Azure SQL Database C&#x23; and ADO.NET](design-first-database-csharp-tutorial.md)
+- [Microsoft Entra authentication for Azure SQL](authentication-aad-overview.md)

@@ -1,15 +1,16 @@
 ---
-title: "Azure CLI example: Active geo-replication-single Azure SQL Database"
+title: "Azure CLI Example: Active Geo-Replication-Single Azure SQL Database"
 description: Use this Azure CLI example script to set up active geo-replication for a single database in Azure SQL Database and fail it over.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
-ms.date: 01/26/2022
+ms.date: 06/10/2025
 ms.service: azure-sql-database
 ms.subservice: high-availability
 ms.topic: sample
+ms.custom:
+  - devx-track-azurecli
 ms.devlang: azurecli
-ms.custom: devx-track-azurecli
 ---
 
 # Configure active geo-replication for a single database in Azure SQL Database using the Azure CLI
@@ -46,8 +47,7 @@ This script uses the following commands. Each command in the table links to comm
 |---|---|
 | [az sql db replica](/cli/azure/sql/db/replica) | Database replica commands. |
 
-## Next steps
+## Related content
 
-For more information on Azure CLI, see [Azure CLI documentation](/cli/azure).
-
-Additional SQL Database CLI script samples can be found in the [Azure SQL Database documentation](../az-cli-script-samples-content-guide.md).
+- [Azure CLI documentation](/cli/azure)
+- [Azure CLI samples for Azure SQL Database](../az-cli-script-samples-content-guide.md)

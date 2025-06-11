@@ -1,14 +1,15 @@
 ---
-title: "PowerShell: Restore an automatic backup of a database"
+title: "PowerShell: Restore an Automatic Backup of a Database"
 description: Use an Azure PowerShell example script to restore a database in SQL Database to an earlier point in time from automatic backups.
 author: SudhirRaparla
 ms.author: nvraparl
 ms.reviewer: wiassaf, mathoma
-ms.date: 03/27/2019
+ms.date: 06/10/2025
 ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: sample
-ms.custom: devx-track-azurepowershell
+ms.custom:
+  - devx-track-azurepowershell
 ms.devlang: powershell
 ---
 
@@ -51,8 +52,7 @@ This script uses the following commands. Each command in the table links to comm
 | [Get-AzSqlDeletedDatabaseBackup](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) | Gets a deleted database that you can restore. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Deletes a resource group including all nested resources. |
 
-## Next steps
+## Related content
 
-For more information on Azure PowerShell, see [Azure PowerShell documentation](/powershell/azure/).
-
-Additional SQL Database PowerShell script samples can be found in the [Azure SQL Database PowerShell scripts](../powershell-script-content-guide.md).
+- [Azure PowerShell documentation](/powershell/azure/)
+- [Azure PowerShell samples for Azure SQL Database](../powershell-script-content-guide.md)

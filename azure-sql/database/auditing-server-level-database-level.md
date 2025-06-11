@@ -1,11 +1,11 @@
 ---
-title: Auditing policy at the server and database level
+title: Auditing Policy at the Server and Database Level
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
 description: This article explains the differences for Auditing policies of Azure SQL Database and Azure Synapse Analytics at the server and database level.
 author: sravanisaluru
 ms.author: srsaluru
 ms.reviewer: mathoma
-ms.date: 04/26/2023
+ms.date: 06/10/2025
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: conceptual
@@ -40,9 +40,9 @@ An auditing policy can be defined for a specific database or as a default [serve
   >
   > Otherwise, we recommended that you enable only server-level auditing and leave the database-level auditing disabled for all databases.
 
-## See also
+## Related content
 
-- [Auditing overview](auditing-overview.md)
-- Data Exposed episode [What's New in Azure SQL Auditing](/Shows/Data-Exposed/Whats-New-in-Azure-SQL-Auditing)
-- [Auditing for SQL Managed Instance](../managed-instance/auditing-configure.md)
+- [Auditing for Azure SQL Database and Azure Synapse Analytics](auditing-overview.md)
+- [What's New in Azure SQL Auditing](/Shows/Data-Exposed/Whats-New-in-Azure-SQL-Auditing)
+- [Get started with Azure SQL Managed Instance auditing](../managed-instance/auditing-configure.md)
 - [Auditing for SQL Server](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)

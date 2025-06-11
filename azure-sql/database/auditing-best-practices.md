@@ -1,11 +1,11 @@
 ---
-title: Auditing best practices for production environments
+title: Auditing Best Practices for Production Environments
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
 description: This article goes over best practices when using Auditing in production environments for Azure SQL Database and Azure Synapse Analytics.
 author: sravanisaluru
 ms.author: srsaluru
 ms.reviewer: mathoma
-ms.date: 04/26/2023
+ms.date: 06/10/2025
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: best-practice
@@ -34,22 +34,22 @@ In production, you're likely to refresh your storage keys periodically. When wri
 
 1. Open **Advanced properties** under **Storage**. In the **Storage Access Key** section, select **Secondary**. Then select **Save** at the top of the auditing configuration page.
 
-   :::image type="content" source="./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png" alt-text="Screenshot that shows the process for selecting a secondary storage access key.":::
+   :::image type="content" source="media/auditing-best-practices/5-auditing-get-started-storage-key-regeneration.png" alt-text="Screenshot that shows the process for selecting a secondary storage access key." lightbox="media/auditing-best-practices/5-auditing-get-started-storage-key-regeneration.png":::
 
-1. Go to the Azure **Storage account** that holds the key, and navigate to **Access keys**. Regenerate the primary access key.
+1. Go to the Azure **Storage account** that holds the key, and navigate to **Access keys**. Select the refresh icon button to regenerate the primary access key.
 
-   :::image type="content" source="./media/auditing-overview/6_auditing_get_started_regenerate_key.png" alt-text="Screenshot of the Access keys menu of the Azure Storage account.":::
+   :::image type="content" source="media/auditing-best-practices/6-auditing-get-started-regenerate-key.png" alt-text="Screenshot of the Access keys menu of the Azure Storage account." lightbox="media/auditing-best-practices/6-auditing-get-started-regenerate-key.png":::
 
 1. Go back to the auditing configuration page, switch the storage access key from secondary to primary, and then select **OK**. Then select **Save** at the top of the auditing configuration page.
 1. Go back to the storage configuration page and regenerate the secondary access key (in preparation for the next key's refresh cycle).
 
-## Storage account encrypted with Azure Key Vault 
+## Storage account encrypted with Azure Key Vault
 
 When you configure auditing with a storage account as the target, which is encrypted using a key vault behind a firewall, you must set up an **access policy** for the key vault. Navigate to the Azure Key Vault access policy, add a new policy with the necessary key permissions, enable the **unwrap key** option, and select the appropriate principal (such as the storage account) to grant access.
 
 ## Related content
 
-- [Auditing overview](auditing-overview.md)
-- Data Exposed episode [What's New in Azure SQL Auditing](/Shows/Data-Exposed/Whats-New-in-Azure-SQL-Auditing)
-- [Auditing for SQL Managed Instance](../managed-instance/auditing-configure.md)
+- [Auditing for Azure SQL Database and Azure Synapse Analytics](auditing-overview.md)
+- [What's New in Azure SQL Auditing](/Shows/Data-Exposed/Whats-New-in-Azure-SQL-Auditing)
+- [Get started with Azure SQL Managed Instance auditing](../managed-instance/auditing-configure.md)
 - [Auditing for SQL Server](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)

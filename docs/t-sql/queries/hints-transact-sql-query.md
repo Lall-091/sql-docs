@@ -4,7 +4,7 @@ description: "Query hints specify that the indicated hints are used in the scope
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: wiassaf
-ms.date: 05/22/2025
+ms.date: 06/11/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -397,7 +397,7 @@ Table hints other than `INDEX`, `FORCESCAN`, and `FORCESEEK` are disallowed as q
 
 #### <a id="for-timestamp"></a> FOR TIMESTAMP AS OF '*point_in_time*'
 
-**Applies to**: [!INCLUDE [fabric](../../includes/fabric.md)] Data Warehouse
+**Applies to**: [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]
 
 Use the `TIMESTAMP` syntax in the `OPTION` clause to query data as it existed in the past, part of the time travel feature in Synapse Data Warehouse in Microsoft Fabric.
 
@@ -407,7 +407,7 @@ The `TIMESTAMP AS OF` hint can be specified only once using the `OPTION` clause.
 
 #### FORCE [ SINGLE NODE | DISTRIBUTED ] PLAN
 
-**Applies to**: [!INCLUDE [fabric](../../includes/fabric.md)] Data Warehouse
+**Applies to**: [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]
 
 Allows user to choose whether to force a single node plan or a distributed plan for query's execution.
 
@@ -760,6 +760,26 @@ FROM FactInternetSales
 GROUP BY OrderDateKey
 ORDER BY OrderDateKey
 OPTION (FOR TIMESTAMP AS OF '2024-03-13T19:39:35.28');--March 13, 2024 at 7:39:35.28 PM UTC
+```
+
+### P. Query force a single node or distributed query 
+
+**Applies to**: [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]
+
+To force a query in Fabric Data Warehouse to use a single node, use the [FORCE [ SINGLE NODE | DISTRIBUTED ] PLAN](#force--single-node--distributed--plan) hint.
+
+```sql
+SELECT OrderDateKey, SalesAmount
+FROM FactInternetSales
+OPTION (FORCE SINGLE NODE PLAN);
+```
+
+To force a query in Fabric Data Warehouse to use a distributed query:
+
+```sql
+SELECT OrderDateKey, SalesAmount
+FROM FactInternetSales
+OPTION (FORCE DISTRIBUTED PLAN);
 ```
 
 ## Related content

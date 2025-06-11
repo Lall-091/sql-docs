@@ -1,20 +1,21 @@
 ---
-title: "Tutorial: Getting started using Always Encrypted with VBS enclaves"
+title: "Tutorial: Getting Started Using Always Encrypted with VBS Enclaves"
 description: Tutorial on how to create a basic environment for Always Encrypted with VBS enclaves in Azure SQL Database, how to encrypt data in-place, and issue rich confidential queries against encrypted columns using SQL Server Management Studio (SSMS).
 author: Pietervanhove
 ms.author: pivanho
 ms.reviewer: vanto, mathoma
-ms.date: 11/14/2023
+ms.date: 06/10/2025
 ms.service: azure-sql-database
 ms.subservice: security
-ms.custom: ignite-2023
 ms.topic: tutorial
+ms.custom:
+  - ignite-2023
 ---
 # Tutorial: Getting started using Always Encrypted with VBS enclaves in Azure SQL Database
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-This tutorial teaches you how to get started with [Always Encrypted with secure enclaves](/sql/relational-databases/security/encryption/always-encrypted-enclaves) in Azure SQL Database using [virtualization-based security (VBS) enclaves](https://www.microsoft.com/security/blog/2018/06/05/virtualization-based-security-vbs-memory-enclaves-data-protection-through-isolation/). It will show you:
+This tutorial teaches you how to get started with [Always Encrypted with secure enclaves](/sql/relational-databases/security/encryption/always-encrypted-enclaves) in Azure SQL Database using [virtualization-based security (VBS) enclaves](https://www.microsoft.com/security/blog/2018/06/05/virtualization-based-security-vbs-memory-enclaves-data-protection-through-isolation). It will show you:
 
 > [!div class="checklist"]
 >
@@ -68,20 +69,22 @@ Go to [Quickstart: Create a single database - Azure SQL Database](single-databas
 In this step, you'll enable a VBS enclave in the database, which is required for Always Encrypted with secure enclaves. To enable VBS enclaves in your database, you need to set the **preferredEnclaveType** [database property](/azure/templates/microsoft.sql/2022-05-01-preview/servers/databases?pivots=deployment-language-bicep#databaseproperties) to **VBS**.
 
 # [Portal](#tab/azure-portal)
+
 1. Open the [Azure portal](https://portal.azure.com/) and locate the database for which you want to enable secure enclaves.
 1. In the **Security** settings, select **Data Encryption**.
 1. In the **Data Encryption** menu, select the **Always Encrypted** tab.
 1. Set **Enable secure enclaves** to **ON**. If it is already set to **ON** proceed with the next step.
 
-    :::image type="content" source="./media/always-encrypted-enclaves/portal-enable-secure-enclaves-existing-database.png" alt-text="Screenshot of enabling secure enclaves on an existing database in the Azure portal.":::
-    
+    :::image type="content" source="./media/always-encrypted-enclaves-getting-started-vbs/portal-enable-secure-enclaves-existing-database.png" alt-text="Screenshot of enabling secure enclaves on an existing database in the Azure portal.":::
+
 1. Select **Save** to save your Always Encrypted configuration.
 
 # [SSMS](#tab/SSMS)
+
 1. Open SSMS and connect logical server where you want to modify your database.
-2. Right-click on your database and select **Properties**. 
-3. In the **Configure SLO** page, set the option **Enable Secure Enclaves** to **ON**. If it is already set to **ON**, proceed with the next step.
-4. Select **OK** to save your database properties.
+1. Right-click on your database and select **Properties**. 
+1. In the **Configure SLO** page, set the option **Enable Secure Enclaves** to **ON**. If it is already set to **ON**, proceed with the next step.
+1. Select **OK** to save your database properties.
 
 # [PowerShell](#tab/azure-powershell)
 
@@ -105,7 +108,7 @@ In this step, you'll enable a VBS enclave in the database, which is required for
    $resourceGroupName = "<your resource group name>"
    $serverName = "<your server name>"
    $databaseName = "ContosoHR"
-    
+
    Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName -PreferredEnclaveType VBS
    ```
 
@@ -140,15 +143,15 @@ In this step, you'll create a table and populate it with some data that you'll l
 
 1. Open SSMS and connect to the **ContosoHR** database in the Azure SQL logical server you created **without** Always Encrypted enabled in the database connection.
     1. In the **Connect to Server** dialog, specify the fully qualified name of your server (for example, *myserver135.database.windows.net*), and enter the administrator user name and the password you specified when you created the server.
-    2. Select **Options >>** and select the **Connection Properties** tab. Make sure to select the **ContosoHR** database (not the default, `master` database).
-    3. Select the **Always Encrypted** tab.
-    4. Make sure the **Enable Always Encrypted (column encryption)** checkbox is **not** selected.
+    1. Select **Options >>** and select the **Connection Properties** tab. Make sure to select the **ContosoHR** database (not the default, `master` database).
+    1. Select the **Always Encrypted** tab.
+    1. Make sure the **Enable Always Encrypted (column encryption)** checkbox is **not** selected.
 
-       :::image type="content" source="./media/always-encrypted-enclaves/ssms-connect-disabled.png" alt-text="Screenshot of Connect to Server using SSMS without Always Encrypted enabled.":::
+       :::image type="content" source="./media/always-encrypted-enclaves-getting-started-vbs/ssms-connect-disabled.png" alt-text="Screenshot of Connect to Server using SSMS without Always Encrypted enabled.":::
 
     5. Select **Connect**.
 
-2. Create a new table, named **Employees**.
+1. Create a new table, named `Employees`.
 
     ```sql
     CREATE SCHEMA [HR];
@@ -165,7 +168,7 @@ In this step, you'll create a table and populate it with some data that you'll l
     GO
     ```
 
-3. Add a few employee records to the **Employees** table.
+1. Add a few employee records to the `Employees` table.
 
     ```sql
     INSERT INTO [HR].[Employees]
@@ -198,40 +201,40 @@ In this step, you'll create a column master key and a column encryption key that
 1. Using the SSMS instance from the previous step, in **Object Explorer**, expand your database and navigate to **Security** > **Always Encrypted Keys**.
 1. Provision a new enclave-enabled column master key:
     1. Right-click **Always Encrypted Keys** and select **New Column Master Key...**.
-    2. Enter a name for the new column master key: **CMK1**.
-    3. Verify **Allow enclave computations** is selected. (It's selected by default if a secure enclave is enabled for the database - it should be enabled since your database uses the DC-series hardware configuration.)
-    4. Select either **Azure Key Vault** (recommended) or **Windows Certificate Store** (**Current User** or **Local Machine**).
+    1. Enter a name for the new column master key: `CMK1`.
+    1. Verify **Allow enclave computations** is selected. (It's selected by default if a secure enclave is enabled for the database - it should be enabled since your database uses the DC-series hardware configuration.)
+    1. Select either **Azure Key Vault** (recommended) or **Windows Certificate Store** (**Current User** or **Local Machine**).
        - If you select Azure Key Vault, sign into Azure, select an Azure subscription containing a key vault you want to use, and select your key vault. Select **Generate Key** to create a new key.
        - If you select Windows Certificate Store, select the **Generate Certificate** button to create a new certificate.
-       :::image type="content" source="./media/always-encrypted-enclaves/ssms-new-cmk-enclave-key-vault.png" alt-text="Screenshot of the allow enclave computations selection in SSMS when creating a new column master key.":::
-    5. Select **OK**.
+       
+    1. Select **OK**.
 
 1. Create a new enclave-enabled column encryption key:
 
     1. Right-click **Always Encrypted Keys** and select **New Column Encryption Key**.
-    2. Enter a name for the new column encryption key: **CEK1**.
-    3. In the **Column master key** dropdown, select the column master key you created in the previous steps.
-    4. Select **OK**.
+    1. Enter a name for the new column encryption key: `CEK1`.
+    1. In the **Column master key** dropdown list, select the column master key you created in the previous steps.
+    1. Select **OK**.
 
 ## Step 5: Encrypt some columns in place
 
-In this step, you'll encrypt the data stored in the **SSN** and **Salary** columns inside the server-side enclave, and then test a SELECT query on the data.
+In this step, you'll encrypt the data stored in the `SSN` and `Salary` columns inside the server-side enclave, and then test a SELECT query on the data.
 
 1. Open a new SSMS instance and connect to your database **with** Always Encrypted enabled for the database connection.
     1. Start a new instance of SSMS.
-    2. In the **Connect to Server** dialog, specify the fully qualified name of your server (for example, *myserver135.database.windows.net*), and enter the administrator user name and the password you specified when you created the server.
-    3. Select **Options >>** and select the **Connection Properties** tab. Make sure to select the **ContosoHR** database (not the default, `master` database). 
-    4. Select the **Always Encrypted** tab.
-    5. Select the **Enable Always Encrypted (column encryption)** checkbox.
-    6. Select **Enable secure enclaves**.
-    7. Set **Protocol** to **None**. See the below screenshot.
+    1. In the **Connect to Server** dialog, specify the fully qualified name of your server (for example, *myserver135.database.windows.net*), and enter the administrator user name and the password you specified when you created the server.
+    1. Select **Options >>** and select the **Connection Properties** tab. Make sure to select the **ContosoHR** database (not the default, `master` database). 
+    1. Select the **Always Encrypted** tab.
+    1. Select the **Enable Always Encrypted (column encryption)** checkbox.
+    1. Select **Enable secure enclaves**.
+    1. Set **Protocol** to **None**. 
 
-       :::image type="content" source="./media/always-encrypted-enclaves/ssms-connect-vbs-protocol-none.png" alt-text="Screenshot of the SSMS Connect to Server dialog Always Encrypted tab, with attestation protocol set to None.":::
+       :::image type="content" source="media/always-encrypted-enclaves-getting-started-vbs/ssms-connect-vbs-protocol-none.png" alt-text="Screenshot of the SSMS Connect to Server dialog Always Encrypted tab, with attestation protocol set to None.":::
 
-    8. Select **Connect**.
-    9. If you're prompted to enable Parameterization for Always Encrypted queries, select **Enable**.
+    1. Select **Connect**.
+    1. If you're prompted to enable Parameterization for Always Encrypted queries, select **Enable**.
 
-1. Using the same SSMS instance (with Always Encrypted enabled), open a new query window and encrypt the **SSN** and **Salary** columns by running the below statements.
+1. Using the same SSMS instance (with Always Encrypted enabled), open a new query window and encrypt the `SSN` and `Salary` columns by running the following statements.
 
     ```sql
     ALTER TABLE [HR].[Employees]
@@ -250,9 +253,9 @@ In this step, you'll encrypt the data stored in the **SSN** and **Salary** colum
     ```
 
     > [!NOTE]
-    > The ALTER DATABASE SCOPED CONFIGURATION CLEAR PROCEDURE_CACHE statement clears the query plan cache for the database in the above script. After you have altered the table, you need to clear the plans for all batches and stored procedures that access the table to refresh parameters encryption information.
+    > The `ALTER DATABASE SCOPED CONFIGURATION CLEAR PROCEDURE_CACHE` statement clears the query plan cache for the database in the above script. After you have altered the table, you need to clear the plans for all batches and stored procedures that access the table to refresh parameters encryption information.
 
-1. To verify the **SSN** and **Salary** columns are now encrypted, open a new query window in the SSMS instance **without** Always Encrypted enabled for the database connection and execute the below statement. The query window should return encrypted values in the **SSN** and **Salary** columns. If you execute the same query using the SSMS instance with Always Encrypted enabled, you should see the data decrypted.
+1. To verify the `SSN` and `Salary` columns are now encrypted, open a new query window in the SSMS instance **without** Always Encrypted enabled for the database connection and execute the following statement. The query window should return encrypted values in the `SSN` and `Salary` columns. If you execute the same query using the SSMS instance with Always Encrypted enabled, you should see the data decrypted.
 
    ```sql
    SELECT * FROM [HR].[Employees];
@@ -264,11 +267,11 @@ You can run rich queries against the encrypted columns. Some query processing wi
 
 1. In the SSMS instance **with** Always Encrypted enabled, make sure Parameterization for Always Encrypted is also enabled.
     1. Select **Tools** from the main menu of SSMS.
-    2. Select **Options...**.
-    3. Navigate to **Query Execution** > **SQL Server** > **Advanced**.
-    4. Ensure that **Enable Parameterization for Always Encrypted** is checked.
-    5. Select **OK**.
-2. Open a new query window, paste in the below query, and execute. The query should return plaintext values and rows meeting the specified search criteria.
+    1. Select **Options...**.
+    1. Navigate to **Query Execution** > **SQL Server** > **Advanced**.
+    1. Ensure that **Enable Parameterization for Always Encrypted** is checked.
+    1. Select **OK**.
+1. Open a new query window, paste in the following query, and execute. The query should return plaintext values and rows meeting the specified search criteria.
 
    ```sql
    DECLARE @SSNPattern [char](11) = '%6818';
@@ -277,9 +280,11 @@ You can run rich queries against the encrypted columns. Some query processing wi
    WHERE SSN LIKE @SSNPattern AND [Salary] >= @MinSalary;
    ```
 
-3. Try the same query again in the SSMS instance that doesn't have Always Encrypted enabled. A failure should occur.
+1. Try the same query again in the SSMS instance that doesn't have Always Encrypted enabled. A failure should occur.
 
-## Next steps
+<a id="next-steps"></a>
+
+## Tutorials
 
 After completing this tutorial, you can go to one of the following tutorials:
 
@@ -287,6 +292,6 @@ After completing this tutorial, you can go to one of the following tutorials:
 - [Tutorial: Develop a .NET Framework application using Always Encrypted with secure enclaves](/sql/relational-databases/security/tutorial-always-encrypted-enclaves-develop-net-framework-apps)
 - [Tutorial: Creating and using indexes on enclave-enabled columns using randomized encryption](/sql/relational-databases/security/tutorial-creating-using-indexes-on-enclave-enabled-columns-using-randomized-encryption)
 
-## See also
+## Related content
 
 - [Configure and use Always Encrypted with secure enclaves](/sql/relational-databases/security/encryption/configure-always-encrypted-enclaves)

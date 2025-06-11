@@ -1,10 +1,10 @@
 ---
-title: "PowerShell: Copy a database to new logical server"
+title: "PowerShell: Copy a Database to New Logical Server"
 description: Azure PowerShell example script to copy a database to a new logical server
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: wiassaf, mathoma
-ms.date: 03/12/2019
+ms.date: 06/10/2025
 ms.service: azure-sql-database
 ms.subservice: data-movement
 ms.topic: sample
@@ -14,6 +14,7 @@ ms.custom:
 ms.devlang: powershell
 ---
 # Use PowerShell to copy a database to a new logical server
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
 This Azure PowerShell script example creates a copy of an existing database in Azure SQL Database in a new logical server.
@@ -51,6 +52,5 @@ This script uses the following commands. Each command in the table links to comm
 
 ## Related content
 
-For more information on Azure PowerShell, see [Azure PowerShell documentation](/powershell/azure/).
-
-Additional SQL Database PowerShell script samples can be found in the [Azure SQL Database PowerShell scripts](../powershell-script-content-guide.md).
+- [Azure PowerShell documentation](/powershell/azure/)
+- [Azure PowerShell samples for Azure SQL Database](../powershell-script-content-guide.md)

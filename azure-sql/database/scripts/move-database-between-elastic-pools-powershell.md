@@ -1,10 +1,10 @@
 ---
-title: "PowerShell: Move a database between elastic pools"
+title: "PowerShell: Move a Database Between Elastic Pools"
 description: Use an Azure PowerShell example script to move a database in SQL Database between two elastic pools.
 author: arvindshmicrosoft
 ms.author: arvindsh
 ms.reviewer: wiassaf, mathoma
-ms.date: 03/12/2019
+ms.date: 06/10/2025
 ms.service: azure-sql-database
 ms.subservice: elastic-pools
 ms.topic: sample
@@ -51,9 +51,7 @@ This script uses the following commands. Each command in the table links to comm
 | [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) | Updates database properties or moves a database into, out of, or between elastic pools. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Deletes a resource group including all nested resources. |
 
+## Related content
 
-## Next steps
-
-For more information on Azure PowerShell, see [Azure PowerShell documentation](/powershell/azure/).
-
-Additional SQL Database PowerShell script samples can be found in the [Azure SQL Database PowerShell scripts](../powershell-script-content-guide.md).
+- [Azure PowerShell documentation](/powershell/azure/)
+- [Azure PowerShell samples for Azure SQL Database](../powershell-script-content-guide.md)

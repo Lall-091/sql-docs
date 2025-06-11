@@ -1,11 +1,11 @@
 ---
-title: Change automated backup settings
+title: Change Automated Backup Settings
 titleSuffix: Azure SQL Database
 description: Change point-in-time restore and backup redundancy options for automatic backups in Azure SQL Database by using the Azure portal, the Azure CLI, Azure PowerShell, and the REST API.
 author: SudhirRaparla
 ms.author: nvraparl
 ms.reviewer: wiassaf, mathoma, danil
-ms.date: 07/20/2022
+ms.date: 06/10/2025
 ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: how-to
@@ -13,20 +13,19 @@ ms.custom:
   - devx-track-azurepowershell
   - devx-track-azurecli
   - azure-sql-split
-monikerRange: "= azuresql || = azuresql-db"
+monikerRange: "=azuresql || =azuresql-db"
 ---
 # Change automated backup settings for Azure SQL Database
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 <!---
 Some of the content in this article is duplicated in /azure-sql/managed-instance/automated-backups-change-settings.md. Any relevant changes made to this article should be made in the other article as well. 
 --->
 
-
 > [!div class="op_single_selector"]
 > * [Azure SQL Database](automated-backups-change-settings.md?view=azuresql-db&preserve-view=true)
 > * [Azure SQL Managed Instance](../managed-instance/automated-backups-change-settings.md?view=azuresql-mi&preserve-view=true)
-
 
 This article provides examples to modify [automated backup](automated-backups-overview.md) settings for Azure SQL Database, such as the short-term retention policy and the backup storage redundancy option that's used for backups. For Azure SQL Managed Instance, see [Change automated backup settings for Azure SQL Managed Instance](../managed-instance/automated-backups-change-settings.md).
 
@@ -54,9 +53,9 @@ To change the PITR backup retention period or the differential backup frequency 
 1. Select the databases for which you want to change the PITR backup retention. 
 1. Select **Configure policies** from the action bar.
 1. To change the retention period for point-in-time restore backups, use the slider under **Point-in-time restore**.
-1. To change differential backup frequency, select **12 Hours** or **24 hours** from the drop-down menu under **Differential backup frequency** .
+1. To change differential backup frequency, select **12 Hours** or **24 hours** from the dropdown list under **Differential backup frequency** .
 
-:::image type="content" source="./media/automated-backups-overview/configure-backup-retention-sqldb.png" alt-text="Screenshot of the Azure portal, where you can change the PITR retention settings at the server level. ":::
+:::image type="content" source="media/automated-backups-change-settings/configure-backup-retention-sqldb.png" alt-text="Screenshot of the Azure portal, where you can change the PITR retention settings at the server level." lightbox="media/automated-backups-change-settings/configure-backup-retention-sqldb.png":::
 
 ### [Azure CLI](#tab/azure-cli)
 
@@ -94,7 +93,6 @@ Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup
 Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28 -DiffBackupIntervalInHours 24
 ```
 
-
 ### [REST API](#tab/rest-api)
 
 #### Sample request
@@ -114,7 +112,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 }
 ```
 
-#### Sample response 
+#### Sample response
 
 ```json
 { 
@@ -140,19 +138,17 @@ Backup storage redundancy changes made to existing databases apply to future bac
 
 Storage redundancy for Hyperscale databases is unique. To learn more, review [Hyperscale backup storage redundancy](hyperscale-automated-backups-overview.md#data-and-backup-storage-redundancy). 
 
-
 ### [Azure portal](#tab/azure-portal)
 
 In the Azure portal, you can choose a backup storage redundancy option when you create your database. You can later update the backup storage redundancy from the **Compute & storage** page of your database settings. 
 
 When you're creating your database, choose the backup storage redundancy option on the **Basics** tab. 
 
-:::image type="content" source="./media/automated-backups-overview/sql-database-backup-storage-redundancy.png" alt-text="Screenshot of the Azure portal, where you can change backup storage redundancy from the Basics tab when you create your database.":::
+:::image type="content" source="media/automated-backups-change-settings/sql-database-backup-storage-redundancy.png" alt-text="Screenshot of the Azure portal, where you can change backup storage redundancy from the Basics tab when you create your database.":::
 
 For existing databases, go to your database in the [Azure portal](https://portal.azure.com). Select **Compute & storage** under **Settings**, and then choose your desired option for backup storage redundancy. 
 
-:::image type="content" source="./media/automated-backups-overview/change-redundancy-for-existing-databases.png" alt-text="Screenshot of the Azure portal that shows where to change the backup storage redundancy for existing databases.":::
-
+:::image type="content" source="media/automated-backups-change-settings/change-redundancy-for-existing-databases.png" alt-text="Screenshot of the Azure portal that shows where to change the backup storage redundancy for existing databases." lightbox="media/automated-backups-change-settings/change-redundancy-for-existing-databases.png":::
 
 ### [Azure CLI](#tab/azure-cli)
 
@@ -187,7 +183,7 @@ az sql db update \
 
 Carefully consider the configuration option for `--backup-storage-redundancy` when you're creating a Hyperscale database. The storage redundancy can be specified only during the database creation process for Hyperscale databases. You can't update it later. The selected storage redundancy option will be used for the lifetime of the database for both data storage redundancy and backup storage redundancy. Learn more in [Hyperscale backup storage redundancy](hyperscale-automated-backups-overview.md#data-and-backup-storage-redundancy). 
 
-Existing [Hyperscale](service-tier-hyperscale.md) databases can migrate to different storage redundancy through [active geo-replication](active-geo-replication-overview.md), which causes minimal downtime. Alternatively, you can migrate to a different storage redundancy by using [database copy](database-copy.md) or point-in-time restore. This example creates a database in the Hyperscale service tier with zone redundancy:
+Existing [Hyperscale service tier](service-tier-hyperscale.md) databases can migrate to different storage redundancy through [active geo-replication](active-geo-replication-overview.md), which causes minimal downtime. Alternatively, you can migrate to a different storage redundancy by using [database copy](database-copy.md) or point-in-time restore. This example creates a database in the Hyperscale service tier with zone redundancy:
 
 ```azurecli
 az sql db create \
@@ -272,11 +268,10 @@ It's not currently possible to change backup storage redundancy by using the RES
 
 ---
 
-## Next steps
+## Related content
 
 - Database backups are an essential part of any business continuity and disaster recovery strategy because they help protect your data from accidental corruption or deletion. To learn about the other business continuity solutions for SQL Database, see [Business continuity overview](business-continuity-high-availability-disaster-recover-hadr-overview.md).
 - For information about how to configure, manage, and restore from long-term retention of automated backups in Azure Blob Storage by using the Azure portal, see [Manage long-term backup retention by using the Azure portal](long-term-backup-retention-configure.md).
 - For information about how to configure, manage, and restore from long-term retention of automated backups in Azure Blob Storage by using PowerShell, see [Manage long-term backup retention by using PowerShell](long-term-backup-retention-configure.md). 
 - Get more information about how to [restore a database to a point in time by using the Azure portal](recovery-using-backups.md).
 - Get more information about how to [restore a database to a point in time by using PowerShell](scripts/restore-database-powershell.md).
-

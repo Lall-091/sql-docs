@@ -1,18 +1,18 @@
 ### YamlMime:Landing
 
 title: Microsoft Entra authentication with SQL documentation
-summary: "Find documentation about Microsoft Entra authentication for SQL Server 2022 and Azure SQL"
+summary: "Find documentation about Microsoft Entra authentication for SQL Server 2022, Azure SQL Database, and Azure SQL Managed Instance."
 
 metadata:
   title: Microsoft Entra authentication with SQL documentation
-  description: "Find documentation about Microsoft Entra authentication for SQL Server 2022 and Azure SQL"
+  description: "Find documentation about Microsoft Entra authentication for SQL Server 2022 and Azure SQL Database, and Azure SQL Managed Instance."
   ms.service: azure-sql-database
   ms.subservice: security
   ms.topic: landing-page
   author: VanMSFT
   ms.author: vanto
   ms.reviewer: mathoma
-  ms.date: 09/27/2023
+  ms.date: 06/10/2025
   monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
 
@@ -113,14 +113,3 @@ landingContent:
             url: /sql/relational-databases/security/authentication-access/azure-ad-authentication-sql-server-linked-server
           - text: Enable Microsoft Entra authentication for SQL Server on Azure VMs
             url: ../virtual-machines/windows/configure-azure-ad-authentication-for-sql-vm.md
-
-
-  # Card 
-  - title: Microsoft Entra authentication video references
-    linkLists:
-      - linkListType: video
-        links:
-          - text: Understanding access and authentication
-            url: https://techcommunity.microsoft.com/t5/video-hub/azure-sql-security-series-understanding-access-and/ba-p/2280726
-          - text: Microsoft Entra authentication and Microsoft Purview access policies
-            url: https://www.youtube.com/watch?v=4WPtdTv785Q

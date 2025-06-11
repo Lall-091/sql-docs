@@ -1,10 +1,10 @@
 ---
-title: "PowerShell: Add a database to a failover group"
+title: "PowerShell: Add a Database to a Failover Group"
 description: Use an Azure PowerShell example script to create a database in Azure SQL Database, add it to a failover group, and test failover.
 author: rajeshsetlem
 ms.author: rsetlem
 ms.reviewer: wiassaf, mathoma
-ms.date: 12/15/2023
+ms.date: 06/10/2025
 ms.service: azure-sql-database
 ms.subservice: high-availability
 ms.topic: sample
@@ -34,7 +34,6 @@ If you choose to install and use PowerShell locally, this tutorial requires Az P
 
 :::code language="powershell" source="~/../azure_powershell_scripts/azure-sql/database/failover-groups/add-single-db-to-failover-group-az-ps.ps1" id="FullScript":::
 
-
 ## Clean up deployment
 
 Use the following command to remove  the resource group and all resources associated with it.
@@ -60,8 +59,8 @@ This script uses the following commands. Each command in the table links to comm
 | [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Executes a failover of a failover group. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Removes a resource group |
 
-## Next steps
+## Related content
 
-For more information on Azure PowerShell, see [Azure PowerShell documentation](/powershell/azure/).
+- [Azure PowerShell documentation](/powershell/azure/)
 
-Additional SQL Database PowerShell script samples can be found in the [Azure SQL Database PowerShell scripts](../powershell-script-content-guide.md).
+- [Azure SQL Database PowerShell scripts](../powershell-script-content-guide.md)

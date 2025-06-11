@@ -1,10 +1,10 @@
 ---
-title: "PowerShell: Create a single database"
+title: "PowerShell: Create a Single Database"
 description: Use an Azure PowerShell example script to create a single database in Azure SQL Database.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: wiassaf, mathoma
-ms.date: 09/29/2022
+ms.date: 06/10/2025
 ms.service: azure-sql-database
 ms.subservice: deployment-configuration
 ms.topic: sample
@@ -31,7 +31,7 @@ If you choose to install and use PowerShell locally, this tutorial requires Az P
 
 ## Clean up deployment
 
-Use the following command to remove  the resource group and all resources associated with it.
+Use the following command to remove the resource group and all resources associated with it.
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
@@ -51,12 +51,11 @@ This script uses the following commands. Each command in the table links to comm
 
 ## Configure managed identities
 
-For more information on the benefits of using a user-assigned managed identity for the server identity in Azure SQL Database, see [User-assigned managed identity in Microsoft Entra ID for Azure SQL](../authentication-azure-ad-user-assigned-managed-identity.md).
+For more information on the benefits of using a user-assigned managed identity for the server identity in Azure SQL Database, see [Managed identities in Microsoft Entra for Azure SQL](../authentication-azure-ad-user-assigned-managed-identity.md).
 
 To configure the system-assigned managed identity (SMI) or user-assigned managed identity or identities (UMI) of an Azure SQL Database, see [Get or set a managed identity for a logical server or managed instance](../authentication-azure-ad-user-assigned-managed-identity.md#get-or-set-a-managed-identity-for-a-logical-server-or-managed-instance).
 
-## Next steps
+## Related content
 
-For more information on Azure PowerShell, see [Azure PowerShell documentation](/powershell/azure/).
-
-Additional SQL Database PowerShell script samples can be found in the [Azure SQL Database PowerShell scripts](../powershell-script-content-guide.md).
+- [Azure PowerShell documentation](/powershell/azure/)
+- [Azure PowerShell samples for Azure SQL Database](../powershell-script-content-guide.md)

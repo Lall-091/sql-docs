@@ -1,18 +1,19 @@
 ---
-title: "Azure CLI example: Backup a database in Azure SQL Database"
-description: Use this Azure CLI example script to backup an Azure SQL single database to an Azure storage container
+title: "Azure CLI Example: Back up a Database in Azure SQL Database"
+description: Use this Azure CLI example script to back up an Azure SQL single database to an Azure storage container
 author: SudhirRaparla
 ms.author: nvraparl
 ms.reviewer: mathoma
-ms.date: 01/26/2022
+ms.date: 06/11/2025
 ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: sample
-ms.custom: devx-track-azurecli
+ms.custom:
+  - devx-track-azurecli
 ms.devlang: azurecli
 ---
 
-# Backup an Azure SQL single database to an Azure storage container using the Azure CLI
+# Back up an Azure SQL single database to an Azure storage container using the Azure CLI
 
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
@@ -47,8 +48,7 @@ This script uses the following commands. Each command in the table links to comm
 | [az sql server](/cli/azure/sql/server) | Server commands. |
 | [az sql db](/cli/azure/sql/db) | Database commands. |
 
-## Next steps
+## Related content
 
-For more information on Azure CLI, see [Azure CLI documentation](/cli/azure).
-
-Additional SQL Database CLI script samples can be found in the [Azure SQL Database documentation](../az-cli-script-samples-content-guide.md).
+- [Azure CLI documentation](/cli/azure)
+- [Azure CLI samples for Azure SQL Database](../az-cli-script-samples-content-guide.md)

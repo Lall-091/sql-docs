@@ -1,14 +1,15 @@
 ---
-title: "Azure CLI example: Restore a backup"
+title: "Azure CLI Example: Restore a Backup"
 description: Use this Azure CLI example script to restore a database in Azure SQL Database to an earlier point in time from automatic backups.
 author: SudhirRaparla
 ms.author: nvraparl
 ms.reviewer: wiassaf, mathoma
-ms.date: 02/11/2022
+ms.date: 06/10/2025
 ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: sample
-ms.custom: devx-track-azurecli
+ms.custom:
+  - devx-track-azurecli
 ms.devlang: azurecli
 ---
 
@@ -46,8 +47,7 @@ This script uses the following commands. Each command in the table links to comm
 |---|---|
 | [az sql db restore](/cli/azure/sql/db#az-sql-db-restore) | Restore database command. |
 
-## Next steps
+## Related content
 
-For more information on Azure CLI, see [Azure CLI documentation](/cli/azure).
-
-Additional SQL Database CLI script samples can be found in the [Azure SQL Database documentation](../az-cli-script-samples-content-guide.md).
+- [Azure CLI documentation](/cli/azure)
+- [Azure CLI samples for Azure SQL Database](../az-cli-script-samples-content-guide.md)

@@ -5,7 +5,7 @@ description: Learn about available connectivity libraries and best practices for
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: wiassaf, mathoma
-ms.date: 03/18/2025
+ms.date: 06/11/2025
 ms.service: azure-sql
 ms.subservice: development
 ms.topic: concept-article
@@ -58,7 +58,16 @@ It's possible to configure Microsoft Entra authentication to your Azure SQL reso
 
 ## Resiliency
 
-Azure SQL Database is a cloud service where you might expect transient errors that happen in the underlying infrastructure or in the communication between cloud entities. Although Azure SQL Database is resilient on the transitive infrastructure failures, these failures might affect your connectivity. When a transient error occurs while connecting to SQL Database, your code should [retry the call](troubleshoot-common-connectivity-issues.md). We recommend that retry logic use backoff logic, so that it doesn't overwhelm the service with multiple clients retrying simultaneously. Retry logic depends on the [error messages for SQL Database client programs](troubleshoot-common-errors-issues.md).
+Azure SQL Database is a cloud service where you might expect transient errors that happen in the underlying infrastructure or in the communication between cloud entities. Although Azure SQL Database is resilient on the transitive infrastructure failures, any network infrastructure failures could briefly affect your connectivity. When a transient error occurs while connecting to SQL Database, your code should [retry the call](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors). 
+
+We recommend that retry logic always retry after delay, using backoff logic, so that it doesn't overwhelm the service with multiple clients retrying simultaneously. Retry logic depends on the [error messages for SQL Database client programs](troubleshoot-common-errors-issues.md#list-of-transient-fault-error-codes).
+
+For more information on retry logic after delay:
+
+- [Azure Architecture Center: Retry pattern](/azure/architecture/patterns/retry)
+- [Troubleshoot transient connection errors](troubleshoot-common-connectivity-issues.md?view=azuresql-db&preserve-view=true#retry-logic-for-transient-errors)
+- [Configurable retry logic in Microsoft.Data.SqlClient](/sql/connect/ado-net/configurable-retry-logic-sqlclient-introduction?view=azuresqldb-current&preserve-view=true)
+- [DevBlog: Introducing Configurable Retry Logic in Microsoft.Data.SqlClient](https://devblogs.microsoft.com/azure-sql/configurable-retry-logic-for-microsoft-data-sqlclient/)
 
 For more information about how to prepare for planned maintenance events on your Azure SQL Database, see [planning for Azure maintenance events in Azure SQL Database](planned-maintenance.md).
 

@@ -1,11 +1,11 @@
 ---
-title: Create a logical server using a user-assigned managed identity
+title: Create a Logical Server Using a User-Assigned Managed Identity
 titleSuffix: Azure SQL Database
 description: This article guides you through creating an Azure SQL logical server using a user-assigned managed identity.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: vanto, mathoma
-ms.date: 10/24/2023
+ms.date: 06/10/2025
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
@@ -19,7 +19,7 @@ ms.topic: how-to
 > - [Azure SQL Database](authentication-azure-ad-user-assigned-managed-identity-create-server.md?view=azuresql-db&preserve-view=true)
 > - [Azure SQL Managed Instance](../managed-instance/authentication-azure-ad-user-assigned-managed-identity-create-managed-instance.md?view=azuresql-mi&preserve-view=true)
 
-This how-to guide outlines the steps to create a [logical server](logical-servers.md) for Azure SQL Database with a [user-assigned managed identity](/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types). For more information on the benefits of using a user-assigned managed identity for the server identity in Azure SQL Database, see [User-assigned managed identity in Microsoft Entra ID for Azure SQL](authentication-azure-ad-user-assigned-managed-identity.md).
+This how-to guide outlines the steps to create a [logical server](logical-servers.md) for Azure SQL Database with a [user-assigned managed identity](/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types). For more information on the benefits of using a user-assigned managed identity for the server identity in Azure SQL Database, see [Managed identities in Microsoft Entra for Azure SQL](authentication-azure-ad-user-assigned-managed-identity.md).
 
 To retrieve the system-assigned managed identity (SMI) or user-assigned managed identity or identities (UMI) of an Azure SQL Database, see [Get or set a managed identity for a logical server or managed instance](authentication-azure-ad-user-assigned-managed-identity.md#get-or-set-a-managed-identity-for-a-logical-server-or-managed-instance).
 
@@ -72,17 +72,17 @@ The following steps outline the process of creating a new Azure SQL Database log
 
 1. On the Security tab, under **Identity**, select **Configure Identities**.
 
-    :::image type="content" source="media/authentication-azure-ad-user-assigned-managed-identity/create-server-configure-identities.png" alt-text="Screenshot of Azure portal security settings of the create database process.":::
+    :::image type="content" source="media/authentication-azure-ad-user-assigned-managed-identity-create-server/create-server-configure-identities.png" alt-text="Screenshot of Azure portal security settings of the create database process." lightbox="media/authentication-azure-ad-user-assigned-managed-identity-create-server/create-server-configure-identities.png":::
 
 1. On the **Identity** pane, under **User assigned managed identity**, select **Add**. Select the desired **Subscription** and then under **User assigned managed identities** select the desired user assigned managed identity from the selected subscription. Then select the **Select** button. 
 
-    :::image type="content" source="media/authentication-azure-ad-user-assigned-managed-identity/user-assigned-managed-identity-configuration.png" alt-text="Azure portal screenshot of adding user assigned managed identity when configuring server identity.":::
-
-    :::image type="content" source="media/authentication-azure-ad-user-assigned-managed-identity/select-a-user-assigned-managed-identity.png" alt-text="Azure portal screenshot of user assigned managed identity when configuring server identity":::
+    :::image type="content" source="media/authentication-azure-ad-user-assigned-managed-identity-create-server/user-assigned-managed-identity-configuration.png" alt-text="Screenshot from the Azure portal of adding user assigned managed identity when configuring server identity." lightbox="media/authentication-azure-ad-user-assigned-managed-identity-create-server/user-assigned-managed-identity-configuration.png":::
+    
+    :::image type="content" source="media/authentication-azure-ad-user-assigned-managed-identity-create-server/select-a-user-assigned-managed-identity.png" alt-text="Screenshot from the Azure portal of user assigned managed identity when configuring server identity.":::
 
 1. Under **Primary identity**, select the same user-assigned managed identity selected in the previous step.
 
-    :::image type="content" source="media/authentication-azure-ad-user-assigned-managed-identity/select-a-primary-identity.png" alt-text="Azure portal screenshot of selecting primary identity for server":::
+    :::image type="content" source="media/authentication-azure-ad-user-assigned-managed-identity-create-server/select-a-primary-identity.png" alt-text="Screenshot from the Azure portal of selecting primary identity for server.":::
 
     > [!NOTE]
     > If the system-assigned managed identity is the primary identity, the **Primary identity** field must be empty.
@@ -276,7 +276,7 @@ $response.content
 
 Here's an example of an ARM template that creates an Azure SQL Database logical server with a user-assigned managed identity. The template also adds a Microsoft Entra admin set for the server and enables [Microsoft Entra-only authentication](authentication-azure-ad-only-authentication.md), but this can be removed from the template example.
 
-For more information and ARM templates, see [Azure Resource Manager templates for Azure SQL Database & SQL Managed Instance](arm-templates-content-guide.md).
+For more information and ARM templates, see [Azure Resource Manager templates for Azure SQL Database](arm-templates-content-guide.md).
 
 Use a [Custom deployment in the Azure portal](https://portal.azure.com/#create/Microsoft.Template), and **Build your own template in the editor**. Next, **Save** the configuration once you pasted in the example.
 
@@ -375,12 +375,11 @@ To get your user-assigned managed identity **Resource ID**, search for **Managed
         }
     ]
 }
-
 ```
 
 ---
 
 ## Related content
 
-- [User-assigned managed identity in Microsoft Entra for Azure SQL](authentication-azure-ad-user-assigned-managed-identity.md)
+- [Managed identities in Microsoft Entra for Azure SQL](authentication-azure-ad-user-assigned-managed-identity.md)
 - [Create an Azure SQL Managed Instance with a user-assigned managed identity](../managed-instance/authentication-azure-ad-user-assigned-managed-identity-create-managed-instance.md)

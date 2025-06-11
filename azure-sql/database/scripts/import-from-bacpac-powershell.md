@@ -1,10 +1,10 @@
 ---
-title: "PowerShell: Import a BACPAC file to a new database"
+title: "PowerShell: Import a BACPAC File to a New Database"
 description: Azure PowerShell example script to import a BACPAC file into a database in SQL Database
 author: SudhirRaparla
 ms.author: nvraparl
 ms.reviewer: wiassaf, mathoma
-ms.date: 05/24/2019
+ms.date: 06/10/2025
 ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: sample
@@ -15,6 +15,7 @@ ms.custom:
 ms.devlang: powershell
 ---
 # Use PowerShell to import a BACPAC file into a database in SQL Database
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
 This Azure PowerShell script example imports a database from a BACPAC file into a new database in SQL Database.  
@@ -49,8 +50,7 @@ This script uses the following commands. Each command in the table links to comm
 | [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport) | Imports a BACPAC file and create a new database on the server. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Deletes a resource group including all nested resources. |
 
-## Next steps
+## Related content
 
-For more information on Azure PowerShell, see [Azure PowerShell documentation](/powershell/azure/).
-
-Additional SQL Database PowerShell script samples can be found in the [Azure SQL Database PowerShell scripts](../powershell-script-content-guide.md).
+- [Azure PowerShell documentation](/powershell/azure/)
+- [Azure PowerShell samples for Azure SQL Database](../powershell-script-content-guide.md)

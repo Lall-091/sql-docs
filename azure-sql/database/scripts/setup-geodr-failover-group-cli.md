@@ -1,15 +1,16 @@
 ---
-title: "Azure CLI example: Configure a failover group for a group of databases in Azure SQL Database"
+title: "Azure CLI Example: Configure a Failover Group for a Group of Databases in Azure SQL Database"
 description: Use this Azure CLI example script to set up a failover group for a set of databases in Azure SQL Database and fail it over.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
-ms.date: 01/26/2022
+ms.date: 06/10/2025
 ms.service: azure-sql-database
 ms.subservice: high-availability
 ms.topic: sample
+ms.custom:
+  - devx-track-azurecli
 ms.devlang: azurecli
-ms.custom: devx-track-azurecli
 ---
 
 # Configure a failover group for a group of databases in Azure SQL Database using the Azure CLI
@@ -48,8 +49,7 @@ This script uses the following commands. Each command in the table links to comm
 | [az sql failover-group show](/cli/azure/sql/failover-group) | Gets a failover group |
 | [az sql failover-group delete](/cli/azure/sql/failover-group) | Deletes a failover group |
 
-## Next steps
+## Related content
 
-For more information on Azure CLI, see [Azure CLI documentation](/cli/azure).
-
-Additional SQL Database CLI script samples can be found in the [Azure SQL Database documentation](../az-cli-script-samples-content-guide.md).
+- [Azure CLI documentation](/cli/azure)
+- [Azure CLI samples for Azure SQL Database](../az-cli-script-samples-content-guide.md)
