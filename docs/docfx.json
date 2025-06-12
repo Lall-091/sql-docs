@@ -56,6 +56,10 @@
       },
       "toc_preview": true,
       "feedback_system": "Standard",
+      "feedback_github_repo": "MicrosoftDocs/sql-docs",
+      "feedback_product_url": "https://feedback.azure.com/d365community/forum/04fe6ee0-3b25-ec11-b6e6-000d3a4f0da0",
+      "feedback_help_link_url": "https://learn.microsoft.com/answers/tags/191/sql-server",
+      "feedback_help_link_type": "get-help-at-qna",
       "titleSuffix": "SQL Server",
       "recommendations": true
     },
