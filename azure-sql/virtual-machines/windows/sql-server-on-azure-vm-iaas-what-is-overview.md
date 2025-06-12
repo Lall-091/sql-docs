@@ -90,12 +90,10 @@ The following table provides a matrix of pay-as-you-go SQL Server images.
 | **SQL Server 2019** | [Windows Server 2022](https://portal.azure.com/#create/microsoftsqlserver.sql2019-ws2022enterprise-gen2), [Windows Server 2019](https://portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019enterprise-ARM) |
 | **SQL Server 2017** | [Windows Server 2019](https://portal.azure.com/#create/microsoftsqlserver.sql2017-ws2019enterprise-ARM), [Windows Server 2016](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseWindowsServer2016-ARM) |
 | **SQL Server 2016** | [Windows Server 2019](https://portal.azure.com/#create/microsoftsqlserver.sql2016sp3-ws2019enterprise), [Windows Server 2016](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2EnterpriseWindowsServer2016-ARM) |
-| **SQL Server 2014** | [Windows Server 2012 R2](https://portal.azure.com/#create/microsoftsqlserver.sql2014sp3-ws2012r2enterprise-ARM) |
-| **SQL Server 2012** | [Windows Server 2012 R2](https://portal.azure.com/#create/Microsoft.SQLServer2012SP4EnterpriseWindowsServer2012R2-ARM) |
 
 <sup>1</sup> The SQL Server 2025 image is currently only available to deploy through [Azure marketplace directly](https://portal.azure.com/#create/microsoftsqlserver.sql2025-ws2025entdev-gen2), and not yet available to choose from the Azure SQL deployment page or as a VM image on the **Create Azure VM** page in the Azure portal. 
 
-[!INCLUDE [appliesto-sqlvm](../../includes/virtual-machines-2008-end-of-support.md)]
+[!INCLUDE [appliesto-sqlvm](../../includes/virtual-machines-2014-end-of-support.md)]
 
 To see the available SQL Server on Linux virtual machine images, see [Overview of SQL Server on Azure Virtual Machines (Linux)](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md).
 

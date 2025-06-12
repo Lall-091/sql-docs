@@ -72,9 +72,6 @@ If you want to manually manage backup and restore operations on your SQL VMs, th
 
 - [Backup and restore for SQL Server 2016 and later](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases)
 - [Backup and restore for SQL Server 2014](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases?viewFallbackFrom=sql-server-2014)
-- [Backup and restore for SQL Server 2012](/previous-versions/sql/sql-server-2012/ms187048(v=sql.110))
-
-[!INCLUDE [appliesto-sqlvm](../../includes/virtual-machines-2008-end-of-support.md)]
 
 The following sections describe several manual backup and restore options in more detail.
 

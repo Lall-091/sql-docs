@@ -94,7 +94,7 @@ Use the following variables to define the SQL Server image to use for the virtua
    Get-AzVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
    ```
 
-   [!INCLUDE[appliesto-sqlvm](../../includes/virtual-machines-2008-end-of-support.md)]
+   [!INCLUDE[appliesto-sqlvm](../../includes/virtual-machines-2014-end-of-support.md)]
 
 1. List the available editions for your offer with the [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku).
 

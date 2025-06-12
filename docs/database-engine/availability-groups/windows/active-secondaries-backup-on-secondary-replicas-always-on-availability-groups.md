@@ -51,7 +51,7 @@ In a [distributed availability group](distributed-availability-groups.md), backu
 
 ## New for SQL Server 2025
 
-Starting with [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)], in addition to copy-only backups, you can also perform full, and differential backups on any secondary replica. 
+Starting with [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)], in addition to existing copy-only and transaction log backups, you can also perform full, and differential backups on any secondary replica. 
 
 Use the following trace flags to enable backups on secondary replicas:
 - [Trace flag 3261](../../../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md#tf3261): Enables differential backups on secondary replicas. 

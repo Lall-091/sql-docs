@@ -44,7 +44,7 @@ To choose an image, follow these steps:
 
 1. Select **Create**.
 
-[!INCLUDE [appliesto-sqlvm](../../includes/virtual-machines-2008-end-of-support.md)]
+[!INCLUDE [appliesto-sqlvm](../../includes/virtual-machines-2014-end-of-support.md)]
 
 ## Basic settings
 

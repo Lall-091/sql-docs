@@ -6,4 +6,4 @@ ms.service: azure-vm-sql-server
 ms.topic: include
 ---
 > [!NOTE]
-> SQL Server 2008 and SQL Server 2008 R2 are out of extended support and no longer available from the Azure Marketplace.
+> SQL Server 2012 and SQL Server 2014 are out of mainstream support and no longer available from the Azure Marketplace.

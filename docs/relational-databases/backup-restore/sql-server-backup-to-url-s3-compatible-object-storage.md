@@ -1,5 +1,5 @@
 ---
-title: "SQL Server backup to URL for S3-compatible object storage"
+title: "SQL Server back up to URL for S3-compatible object storage"
 description: Learn about the concepts, requirements, and components necessary for SQL Server to use the S3-compatible object storage as a backup destination.
 author: MikeRayMSFT
 ms.author: mikeray
@@ -10,7 +10,7 @@ ms.subservice: backup-restore
 ms.topic: conceptual
 monikerRange: ">=sql-server-ver16||>=sql-server-linux-ver16"
 ---
-# SQL Server backup to URL for S3-compatible object storage
+# SQL Server back up to URL for S3-compatible object storage
 
 [!INCLUDE [SQL Server 2022](../../includes/applies-to-version/sqlserver2022.md)]
 
@@ -28,9 +28,9 @@ URLs pointing to S3-compatible resources are prefixed with `s3://` to denote tha
 
 To store data, the S3-compatible object storage provider must split files in multiple blocks called parts, similar to [block blobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) in Azure Blob Storage.
 
-Each file can be split up to 10,000 parts, each part size ranges from 5 MB to 20 MB, this range is controlled by the T-SQL BACKUP command through the parameter [MAXTRANSFERSIZE](../../t-sql/statements/backup-transact-sql.md#with-options). The default value of `MAXTRANSFERSIZE` is 10 MB, therefore the default size of each part is 10 MB.
+Each file can be split up to 10,000 parts, each part size ranges from 5 MB to 20 MB, this range is controlled by the T-SQL BACKUP command through the parameter [MAXTRANSFERSIZE](../../t-sql/statements/backup-transact-sql.md#with-options). The default value of `MAXTRANSFERSIZE` is 10 MB, therefore the default size of each part is 10 MB. While this value specifies the _max_ transfer size, it doesn't guarantee that each sent part is 10 MB. The size of the part is influenced by the adjacency of data. For example, if there's 4 MB of data adjacent to 2 MB of data, then 6 MB is sent after reaching the minimum size part of 5 MB. Alternatively, if there's 12 MB of adjacent dat, data up to the max size (10 MB) is sent, and the remaining 2 MB is sent in the next part. The S3 connector always tries to send the maximum size of data possible, but it never exceeds the `MAXTRANSFERSIZE` value.
 
-The maximum supported size of a single file is the result of *10,000 parts \* `MAXTRANSFERSIZE`*, if it is required to backup a bigger file it must split/striped up to 64 URLs. The final maximum supported size of a file is *10,000 parts \* `MAXTRANSFERSIZE` \* URLs*.
+The maximum supported size of a single file is the result of *10,000 parts \* `MAXTRANSFERSIZE`*, if it's required to backup a bigger file it must split/striped up to 64 URLs. The final maximum supported size of a file is *10,000 parts \* `MAXTRANSFERSIZE` \* URLs*.
 
 > [!NOTE]  
 > The use of COMPRESSION is required in order to change `MAXTRANSFERSIZE` values.
@@ -41,7 +41,7 @@ The S3 endpoint must be configured as follows:
 
 - TLS must be configured. It is assumed that all connections will be securely transmitted over HTTPS not HTTP. The endpoint is validated by a certificate installed on the SQL Server OS Host.
 - Credentials created on the S3-compatible object storage with proper permissions to perform the operation. The user and password created on the storage layer are named the `Access Key ID` and `Secret Key ID`. You need both to authenticate against the S3 endpoint.
-- At least one bucket has been configured. Buckets cannot be created or configured from [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)].
+- At least one bucket has been configured. Buckets can't be created or configured from [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)].
 
 ## Security
 
@@ -58,9 +58,9 @@ On the storage layer:
 
 ### Restore permissions
 
-If the database being restored does not exist, the user must have `CREATE DATABASE` permissions to be able to execute RESTORE. If the database exists, RESTORE permissions default to members of the `sysadmin` and `dbcreator` fixed server roles and the owner (`dbo`) of the database.
+If the database being restored doesn't exist, the user must have `CREATE DATABASE` permissions to be able to execute RESTORE. If the database exists, RESTORE permissions default to members of the `sysadmin` and `dbcreator` fixed server roles and the owner (`dbo`) of the database.
 
-RESTORE permissions are given to roles in which membership information is always readily available to the server. Because fixed database role membership can be checked only when the database is accessible and undamaged, which is not always the case when RESTORE is executed, members of the `db_owner` fixed database role do not have RESTORE permissions.
+RESTORE permissions are given to roles in which membership information is always readily available to the server. Because fixed database role membership can be checked only when the database is accessible and undamaged, which isn't always the case when RESTORE is executed, members of the `db_owner` fixed database role don't have RESTORE permissions.
 
 On the storage layer:
 
@@ -73,11 +73,11 @@ High-level overview of the supported features for `BACKUP` and `RESTORE`:
 
 1. A single backup file can be up to 200,000 MiB per URL (with `MAXTRANSFERSIZE` set to 20 MB).
 1. Backups can be striped across a maximum of 64 URLs.
-1. Mirroring is supported, but only across URLs. Mirroring using both URL and DISK is not supported.
+1. Mirroring is supported, but only across URLs. Mirroring using both URL and DISK isn't supported.
 1. Compression is supported and recommended.
 1. Encryption is supported.
 1. Restore from URL with S3-compatible object storage has no size limitation.
-1. When you are restoring a database, the `MAXTRANSFERSIZE` is determined by value assigned during the backup phase.
+1. When you're restoring a database, the `MAXTRANSFERSIZE` is determined by value assigned during the backup phase.
 1. URLs can be specified either in virtual host or path style format.
 1. `WITH CREDENTIAL` is supported.
 1. `REGION` is supported and the default value is `us-east-1`.
@@ -99,10 +99,10 @@ High-level overview of the supported features for `BACKUP` and `RESTORE`:
 | `MAXTRANSFERSIZE` | Y | From 5 MB (5,242,880 Bytes) to 20 MB (20,971,520 Bytes), default value is 10 MB (10,485,760 Bytes).|
 | `MEDIADESCRIPTION` | Y |  |
 | `MEDIANAME` | Y |  |
-| `MIRROR TO` | Y | Only works with another URL, `MIRROR` with `URL` and `DISK` is not supported. |
+| `MIRROR TO` | Y | Only works with another URL, `MIRROR` with `URL` and `DISK` isn't supported. |
 | `NAME` | Y |  |
 | `NOFORMAT` / `FORMAT` |  Y |  |
-| `NOINIT` / `INIT` | N | Appending is not supported. To overwrite a backup, use `WITH FORMAT`. |
+| `NOINIT` / `INIT` | N | Appending isn't supported. To overwrite a backup, use `WITH FORMAT`. |
 | `NO_CHECKSUM` / `CHECKSUM` | Y |  |
 | `NO_TRUNCATE` | Y |  |
 | `REGION` | Y | Default value is `us-east-1`. Must be used with `BACKUP_OPTIONS`.|
@@ -206,8 +206,8 @@ Only super user should be able to write in the folder, while the `mssql` user mu
 
 ## Unsupported features
 
-- Backup to S3-compatible object storage with a nonsecure `http` URL is not supported. Customers are responsible for setting up their S3 host with an `https` URL and this endpoint is validated by a certificate installed on the SQL Server OS host.
-- Backup to S3-compatible object storage is not supported in SQL Server Express and SQL Server Express with Advanced Services editions.
+- Back up to S3-compatible object storage with a nonsecure `http` URL isn't supported. Customers are responsible for setting up their S3 host with an `https` URL and this endpoint is validated by a certificate installed on the SQL Server OS host.
+- Back up to S3-compatible object storage isn't supported in SQL Server Express and SQL Server Express with Advanced Services editions.
 
 <!-- ## Notebooks
 
@@ -219,14 +219,14 @@ Only super user should be able to write in the folder, while the `mssql` user mu
 
 The following are the current limitations of backup and restore with S3-compatible object storage:
 
-- Due to the current limitation of S3 Standard REST API, the temporary uncommitted data files that are created in the customer's S3-compatible object store (due to an ongoing multipart upload operation) while the BACKUP T-SQL command is running, are not removed in case of failures. These uncommitted data blocks continue to persist in S3-compatible object storage in the case the BACKUP T-SQL command fails or is canceled. If the backup succeeds, these temporary files are automatically removed by the object store to form the final backup file. Some S3-compatible storage providers handle temporary files through their garbage collector system.
+- Due to the current limitation of S3 Standard REST API, the temporary uncommitted data files that are created in the customer's S3-compatible object store (due to an ongoing multipart upload operation) while the BACKUP T-SQL command is running, aren't removed if there are backup failures. These uncommitted data blocks continue to persist in S3-compatible object storage in the case the BACKUP T-SQL command fails or is canceled. If the backup succeeds, these temporary files are automatically removed by the object store to form the final backup file. Some S3-compatible storage providers handle temporary files through their garbage collector system.
 - The total URL length is limited to 259 characters. The full string is counted in this limitation, including the `s3://` connector name. So, the usable limit is 254 characters. However, we recommend sticking to a limit of 200 characters to allow for possible introduction of query parameters.
 - The SQL credential name is limited by 128 characters in UTF-16 format.
 - Secret key ID must not have `:` character.
 
 ### Path style and virtual host style
 
-Backup to S3 supports the URL to be written in both path style or virtual host style.
+Back up to S3 supports the URL to be written in both path style or virtual host style.
 
 Path style example: `s3://<endpoint>:<port>/<bucket>/<backup_file_name>`
 
@@ -300,7 +300,7 @@ WITH COMPRESSION, FORMAT, MAXTRANSFERSIZE = 20971520;
 GO
 ```
 
-### Backup to URL
+### Back up to URL
 
 The following example performs a full database backup to the object storage endpoint, striped across multiple files:
 

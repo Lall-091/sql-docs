@@ -38,8 +38,6 @@ Return to [What's new in SQL Server on Azure VMs?](doc-changes-updates-release-n
 
 ## 2023
 
-[!INCLUDE[appliesto-sqlvm](../../includes/virtual-machines-2008-end-of-support.md)]
-
 | Changes | Month | Details |
 | --- | --- |--- |
 | **Azure Elastic SAN preview** | October | You can now place your SQL Server workloads on an Azure Elastic SAN for improved performance, throughput, and cost. The Azure Elastic SAN is currently in preview. Review [Azure Elastic SAN](performance-guidelines-best-practices-storage.md#azure-elastic-san) to learn more. |  
