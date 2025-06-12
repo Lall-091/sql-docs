@@ -1,11 +1,11 @@
 ---
-title: Native Windows principals
+title: Native Windows Principals
 titleSuffix: Azure SQL Managed Instance
 description: Learn about the new authentication metadata modes that allow you to use native Windows principals with Azure SQL Managed Instance.
 author: sravanisaluru
 ms.author: srsaluru
 ms.reviewer: mathoma, vanto, wiassaf
-ms.date: 02/26/2024
+ms.date: 06/12/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: security
 ms.topic: conceptual
@@ -13,7 +13,7 @@ ms.topic: conceptual
 
 # Native Windows principals
 
-[!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
+[!INCLUDE [appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 The **Windows** authentication metadata mode allows users to use Windows authentication or Microsoft Entra authentication (using a Windows principal metadata) with Azure SQL Managed Instance. This mode is available for SQL Managed Instance only. The **Windows** authentication metadata mode isn't available for Azure SQL Database.
 
@@ -28,13 +28,16 @@ For a video explaining native Windows principals, you can also refer to this Dat
 
 The following **Authentication metadata** modes are available for SQL Managed Instance, and the different modes determine which authentication metadata is used for authentication, along with how the login is created:
 
-- **Microsoft Entra** (Default): This mode allows authenticating Microsoft Entra users using Microsoft Entra user metadata. In order to use Windows authentication in this mode, see [Windows Authentication for Microsoft Entra principals on Azure SQL Managed Instance](winauth-azuread-overview.md).
+- **Microsoft Entra** (Default): This mode allows authenticating Microsoft Entra users using Microsoft Entra user metadata. In order to use Windows authentication in this mode, see [What is Windows Authentication for Microsoft Entra principals on Azure SQL Managed Instance?](winauth-azuread-overview.md)
 - **Paired** (SQL Server default): The default mode for SQL Server authentication.
 - **Windows** (New Mode): This mode allows authenticating Microsoft Entra users using the Windows user metadata within SQL Managed Instance.
 
 The syntax `CREATE LOGIN FROM WINDOWS` and `CREATE USER FROM WINDOWS` can be used to create a login or user in SQL Managed Instance, respectively for a Windows principal in the **Windows** authentication metadata mode. The Windows principal can be a Windows user or a Windows group.
 
 In order to use the **Windows** authentication metadata mode, the user environment must [Synchronize Active Directory (AD) with Microsoft Entra ID](winauth-azuread-setup.md#synchronize-ad-with-microsoft-entra-id).
+
+> [!NOTE]
+> In order to connect using **Windows Authentication**, SQL Managed Instance needs to be configured to use Windows authentication. For more information, see [What is Windows Authentication for Microsoft Entra principals on Azure SQL Managed Instance?](winauth-azuread-overview.md).
 
 ## Configure authentication metadata modes
 
@@ -43,14 +46,14 @@ In order to use the **Windows** authentication metadata mode, the user environme
 1. Choose your preferred **Authentication metadata** mode from the dropdown list.
 1. Select **Save authentication metadata configuration**.
 
-:::image type="content" source="media/native-windows-principals/authentication-metadata-mode-configure.png" alt-text="Screenshot of the Azure portal showing the configuration of the authentication metadata mode.":::
+:::image type="content" source="media/native-windows-principals/authentication-metadata-mode-configure.png" alt-text="Screenshot of the Azure portal showing the configuration of the authentication metadata mode." lightbox="media/native-windows-principals/authentication-metadata-mode-configure.png":::
 
 ## Addressing migration challenges using Windows authentication metadata mode
 
 The **Windows** authentication metadata mode helps modernize authentication for application, and unblocks migration challenges to SQL Managed Instance. Here are some common scenarios where the **Windows** authentication metadata mode can be used to address customer challenges:
 
-- The overhead of migrating Windows logins to Microsoft Entra ID for [Windows authentication with Azure SQL Managed Instance using Microsoft Entra ID and Kerberos](winauth-azuread-setup.md).
-- Read-only replica failovers in [Managed Instance link](managed-instance-link-feature-overview.md).
+- The overhead of migrating Windows logins to Microsoft Entra ID for [Windows Authentication for Azure SQL Managed Instance using Microsoft Entra ID and Kerberos](winauth-azuread-setup.md).
+- Read-only replica failovers in [Overview of the Managed Instance link](managed-instance-link-feature-overview.md).
 - Synchronization of [Microsoft Entra authentication for SQL Server](/sql/relational-databases/security/authentication-access/azure-ad-authentication-sql-server-overview).
 
 ### Windows authentication for Microsoft Entra principals
@@ -73,30 +76,30 @@ SQL Server doesn't understand the synchronization between Active Directory and M
 
 Here's the flow chart that explains how the authentication metadata mode works with SQL Managed Instance:
 
-:::image type="content" source="media/native-windows-principals/authentication-metadata-mode-flowchart.png" alt-text="Diagram of the authentication metadata mode flowchart.":::
+:::image type="content" source="media/native-windows-principals/authentication-metadata-mode-flowchart.png" alt-text="Diagram of the authentication metadata mode flowchart." lightbox="media/native-windows-principals/authentication-metadata-mode-flowchart.png":::
 
 Previously, customers who synchronize users between AD and Microsoft Entra ID wouldn't be able to authenticate with a login created from a Windows principal, whether they used Windows authentication or Microsoft Entra authentication that was synced from AD. With the **Windows** authentication metadata mode, customers can now authenticate with a login created from a Windows principal using Windows authentication or the synchronized Microsoft Entra principal.
 
 For synchronized users, the authentication succeeds or fails based on the following configurations and login type:
 
-|Authentication metadata mode| FROM WINDOWS | FROM EXTERNAL PROVIDER |
-|----------|----------|----------|
-| **Windows mode** |||
-| Microsoft Entra authentication    | Succeeds     | Fails     |
-| Windows authentication    | Succeeds     | Fails     |
-| **Microsoft Entra ID mode** |||
-| Microsoft Entra authentication    | Fails     | Succeeds     |
-| Windows authentication    | Fails     | Succeeds     |
-| **Paired mode** |||
-| Microsoft Entra authentication    | Fails     | Succeeds     |
-| Windows authentication    | Succeeds     | Fails     |
+| Authentication metadata mode | FROM WINDOWS | FROM EXTERNAL PROVIDER |
+| --- | --- | --- |
+| **Windows mode** | | |
+| Microsoft Entra authentication | Succeeds | Fails |
+| Windows authentication | Succeeds | Fails |
+| **Microsoft Entra ID mode** | | |
+| Microsoft Entra authentication | Fails | Succeeds |
+| Windows authentication | Fails | Succeeds |
+| **Paired mode** | | |
+| Microsoft Entra authentication | Fails | Succeeds |
+| Windows authentication | Succeeds | Fails |
 
 ## Related content
 
 Learn more about implementing Windows Authentication for Microsoft Entra principals on SQL Managed Instance:
 
 - [What is Windows Authentication for Microsoft Entra principals on Azure SQL Managed Instance?](winauth-azuread-overview.md)
-- [How Windows Authentication for Azure SQL Managed Instance is implemented with Microsoft Entra ID and Kerberos.](winauth-implementation-aad-kerberos.md)
-- [How to set up Windows Authentication for Microsoft Entra ID with the modern interactive flow.](winauth-azuread-setup-modern-interactive-flow.md)
-- [How to set up Windows Authentication for Microsoft Entra ID with the incoming trust-based flow.](winauth-azuread-setup-incoming-trust-based-flow.md)
-- [Configure Azure SQL Managed Instance for Windows Authentication for Microsoft Entra ID.](winauth-azuread-kerberos-managed-instance.md)
+- [How Windows Authentication for Azure SQL Managed Instance is implemented with Microsoft Entra ID and Kerberos](winauth-implementation-aad-kerberos.md)
+- [How to set up Windows Authentication for Microsoft Entra ID with the modern interactive flow](winauth-azuread-setup-modern-interactive-flow.md)
+- [How to set up Windows Authentication for Microsoft Entra ID with the incoming trust-based flow](winauth-azuread-setup-incoming-trust-based-flow.md)
+- [Configure Azure SQL Managed Instance for Windows Authentication for Microsoft Entra ID](winauth-azuread-kerberos-managed-instance.md)

@@ -1,9 +1,9 @@
 ---
-title: Shrink the tempdb database
+title: Shrink the tempdb Database
 description: Learn how to shrink the tempdb database by using Transact-SQL.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/25/2024
+ms.date: 06/12/2025
 ms.service: sql
 ms.subservice: supportability
 ms.topic: how-to
@@ -38,7 +38,7 @@ By default, the `tempdb` database is configured to autogrow as needed. Therefore
 
 When [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] starts, `tempdb` is re-created by using a copy of the `model` database, and `tempdb` is reset to its last configured size. The configured size is the last explicit size that was set by using a file size changing operation such as `ALTER DATABASE` that uses the `MODIFY FILE` option or the `DBCC SHRINKFILE` or `DBCC SHRINKDATABASE` statements. Therefore, unless you have to use different values or obtain immediate resolution to a large `tempdb` database, you can wait for the next restart of the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] service for the size to decrease.
 
-You can shrink `tempdb` while `tempdb` activity is ongoing. However, you might encounter other errors such as blocking, deadlocks, and so on, that can prevent shrink from completing. Therefore, in order to make sure that a shrink of `tempdb` succeeds, we recommend that you do this while the server is in single-user mode or when you stop all `tempdb` activity.
+You can shrink `tempdb` while `tempdb` activity is ongoing. However, you might encounter other errors such as blocking, deadlocks, and so on, that can prevent shrink from completing. Therefore, in order to make sure that a shrink of `tempdb` succeeds, we recommend that you do this while the server is in single-user mode, or when you stop all `tempdb` activity.
 
 [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] records only enough information in the `tempdb` transaction log to roll back a transaction, but not to redo transactions during database recovery. This feature increases the performance of `INSERT` statements in `tempdb`. Additionally, you don't have to log information to redo any transactions because `tempdb` is re-created every time that you restart [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)]. Therefore, it has no transactions to roll forward or to roll back.
 
@@ -47,7 +47,7 @@ For more information about managing and monitoring `tempdb`, see [Capacity plann
 ## Use the ALTER DATABASE command
 
 > [!NOTE]  
-> This command operates only on the default `tempdb` logical files `tempdev` and `templog`. If more files are added to `tempdb`, you can shrink them after you restart [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] as a service. All `tempdb` files are re-created during startup. However, they are empty and can be removed. To remove additional files in `tempdb`, use the `ALTER DATABASE` command with the `REMOVE FILE` option.
+> This command operates only on the default `tempdb` logical files `tempdev` and `templog`. If more files are added to `tempdb`, you can shrink them after you restart [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] as a service. All `tempdb` files are re-created during startup. However, these files are empty and can be removed. To remove additional files in `tempdb`, use the `ALTER DATABASE` command with the `REMOVE FILE` option.
 
 This method requires you to restart [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)].
 
@@ -86,7 +86,7 @@ This method requires you to restart [!INCLUDE [ssnoversion-md](../../includes/ss
    (NAME = 'templog', SIZE = <target_size_in_MB>);
    ```
 
-1. Stop [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)]. To do this, press `Ctrl+C` at the Command Prompt window, restart [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] as a service, and then verify the size of the `tempdb.mdf` and `templog.ldf` files.
+1. Stop [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)]. To do this, press `Ctrl+C` at the command prompt window, restart [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] as a service, and then verify the size of the `tempdb.mdf` and `templog.ldf` files.
 
 ## Use the DBCC SHRINKDATABASE command
 
@@ -95,7 +95,7 @@ This method requires you to restart [!INCLUDE [ssnoversion-md](../../includes/ss
 1. Determine the space that is currently used in `tempdb` by using the `sp_spaceused` stored procedure. Then, calculate the percentage of free space that is left for use as a parameter to `DBCC SHRINKDATABASE`. This calculation is based on the desired database size.
 
    > [!NOTE]  
-   > In some cases, you might have to execute `sp_spaceused @updateusage = true` to recalculate the space that is used and to obtain an updated report. For more information, see [sp_spaceused](../system-stored-procedures/sp-spaceused-transact-sql.md).
+   > In some cases, you might have to execute `sp_spaceused @updateusage = true` to recalculate the space that is used, and to obtain an updated report. For more information, see [sp_spaceused](../system-stored-procedures/sp-spaceused-transact-sql.md).
 
    Consider the following example:
 
@@ -140,14 +140,14 @@ If `tempdb` is being used, and if you try to shrink it by using the `DBCC SHRINK
 Server: Msg 8909, Level 16, State 1, Line 1 Table error: Object ID 0, index ID -1, partition ID 0, alloc unit ID 0 (type Unknown), page ID (6:8040) contains an incorrect page ID in its page header. The PageId in the page header = (0:0).
 ```
 
-This error doesn't indicate any real corruption in `tempdb`. However, there might be other reasons for physical data corruption errors like error 8909, and that those reasons include I/O subsystem problems. Therefore, if the error happens outside shrink operations, you should do more investigation.
+This error doesn't indicate any real corruption in `tempdb`. However, there might be other reasons for physical data corruption errors like error 8909, and that those reasons include I/O subsystem problems. Therefore, if the error happens outside shrink operations, you should investigate further.
 
 Although an 8909 message is returned to the application or to the user who is executing the shrink operation, the shrink operations don't fail.
 
 ## Related content
 
 - [Considerations for the autogrow and autoshrink settings in SQL Server](/troubleshoot/sql/admin/considerations-autogrow-autoshrink)
-- [Database Files and Filegroups](database-files-and-filegroups.md)
+- [Database files and filegroups](database-files-and-filegroups.md)
 - [sys.databases (Transact-SQL)](../system-catalog-views/sys-databases-transact-sql.md)
 - [sys.database_files (Transact-SQL)](../system-catalog-views/sys-database-files-transact-sql.md)
 - [Shrink a database](shrink-a-database.md)

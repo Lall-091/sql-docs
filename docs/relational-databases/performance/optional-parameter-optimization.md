@@ -115,11 +115,19 @@ ALTER DATABASE [<database-name-placeholder>] SET COMPATIBILITY_LEVEL = 170;
 ALTER DATABASE SCOPED CONFIGURATION SET OPTIONAL_PARAMETER_OPTIMIZATION = ON;
 ```
 
-To disable CE feedback for expressions for a database, disable the `OPTIONAL_PARAMETER_OPTIMIZATION` database-scoped configuration:
+To disable optional parameter plan optimization for a database, disable the `OPTIONAL_PARAMETER_OPTIMIZATION` database-scoped configuration:
 
 ```sql
 ALTER DATABASE SCOPED CONFIGURATION SET OPTIONAL_PARAMETER_OPTIMIZATION = OFF;
 ```
+
+#### Use optional parameter plan optimization via query hints
+
+You can use the `DISABLE_OPTIONAL_PARAMETER_OPTIMIZATION` query hint to disable optional parameter plan optimization for a given query. The hints must be specified via the `USE HINT` clause. For more information, see [Query hints](../../t-sql/queries/hints-transact-sql-query.md#use_hint).
+
+The hints work under any compatibility level, and override the `OPTIONAL_PARAMETER_OPTIMIZATION` database-scoped configuration.
+
+The `DISABLE_OPTIONAL_PARAMETER_OPTIMIZATION` query hint can be specified directly in the query, or via [Query Store hints](query-store-hints.md).
 
 ### Extended Events
 
