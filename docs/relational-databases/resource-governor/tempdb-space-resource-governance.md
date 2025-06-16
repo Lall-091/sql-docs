@@ -5,7 +5,7 @@ author: dimitri-furman
 ms.author: dfurman
 ms.service: sql
 ms.topic: concept-article
-ms.date: 06/10/2025
+ms.date: 06/16/2025
 monikerRange: " >= sql-server-ver17 || >= sql-server-linux-ver17 "
 ms.custom:
   - build-2025
@@ -56,7 +56,7 @@ The percent limits are in effect only when the `tempdb` data file configuration 
 | --- | --- | --- | --- |
 | - `GROUP_MAX_TEMPDB_DATA_MB` is not set<br />- For all data files, `MAXSIZE` is not `UNLIMITED`<br />- For all data files, `FILEGROWTH` is not zero | `tempdb` data files can autogrow up to their maximum size | The sum of `MAXSIZE` values for all data files | Yes |
 | - `GROUP_MAX_TEMPDB_DATA_MB` is not set<br />- For all data files, `MAXSIZE` is `UNLIMITED`<br />- For all data files, `FILEGROWTH` is zero | `tempdb` data files are pregrown to their intended sizes and cannot grow further | The sum of `SIZE` values for all data files | Yes |
-| All other configurations | | No |
+| All other configurations | | | No |
 
 The following query lets you see the current `tempdb` data file configuration:
 
