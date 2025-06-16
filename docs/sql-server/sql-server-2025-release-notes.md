@@ -65,7 +65,8 @@ Large object (LOB) data types in the Database Engine can store data that exceeds
 
 | Build | Version number | Date |
 | --- | --- | --- |
-| Preview | 17.0.700.9 | May 19, 2025 |
+| Preview (CTP 2.1) | 17.0.800.3 | June 21, 2025 |
+| Preview (CTP 2.0) | 17.0.700.9 | May 19, 2025 |
 
 ## Related content
 
