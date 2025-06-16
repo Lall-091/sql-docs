@@ -31,8 +31,8 @@ In this example, SQL Server always chooses a plan that scans table `Table1`, eve
 
 The Optional Parameter Plan optimization (OPPO) feature uses the adaptive plan optimization (Multiplan) infrastructure that was introduced with the Parameter Sensitive Plan optimization improvement, which generates multiple plans from a single statement. This allows the feature to make different assumptions depending on the parameter values used in the query. During query execution time, OPPO selects the appropriate plan:
 
-- where the parameter value isn't NULL, it uses a seek plan or something more optimal than a full scan plan.
-- where the parameter value is NULL, it uses a scan plan.
+- where the parameter value `IS NOT NULL`, it uses a seek plan or something more optimal than a full scan plan.
+- where the parameter value is `NULL`, it uses a scan plan.
 
 As part of the adaptive plan optimization feature family which includes [Parameter Sensitive Plan optimization](parameter-sensitive-plan-optimization.md), OPPO provides a solution to the second component of the Multiplan feature set, which covers dynamic search capabilities.
 
@@ -95,7 +95,7 @@ OPPO can generate two query variants that might have the following attributes ad
 
   SELECT * FROM Properties PLAN PER VALUE(ObjectID = 1234, QueryVariantID = *1*, *optional_predicate*(@bedrooms is NULL))
 
-- `@bedrooms` isn't `NULL`
+- `@bedrooms IS NOT NULL`
 
   SELECT * FROM Properties WHERE bedrooms = @bedrooms PLAN PER VALUE(ObjectID = 1234, QueryVariantID = *2*, *optional_predicate*(@bedrooms is NULL))
 
