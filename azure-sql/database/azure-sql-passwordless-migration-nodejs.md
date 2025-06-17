@@ -1,19 +1,23 @@
 ---
-title: Migrate a Node.js application to use passwordless connections
+title: "Migrate a Node.js Application to Use Passwordless Connections"
 description: Learn how to migrate a Node.js application to use passwordless connections with Azure SQL Database.
 author: diberry
 ms.author: rotabor
 ms.reviewer: mathoma
-ms.date: 06/05/2023
+ms.date: 06/13/2025
 ms.service: azure-sql-database
 ms.subservice: security
-monikerRange: "= azuresql || = azuresql-db"
 ms.topic: how-to
-ms.custom: passwordless-js, devx-track-azurecli, devx-track-javascript
+ms.custom:
+  - passwordless-js
+  - devx-track-azurecli
+  - devx-track-javascript
 ms.devlang: nodejs
+monikerRange: "=azuresql || =azuresql-db"
 ---
 
 # Migrate a Node.js application to use passwordless connections with Azure SQL Database
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Application requests to Azure SQL Database must be authenticated. Although there are multiple options for authenticating to Azure SQL Database, you should prioritize passwordless connections in your applications when possible. Traditional authentication methods that use passwords or secret keys create security risks and complications. Visit the [passwordless connections for Azure services](/azure/developer/intro/passwordless-overview) hub to learn more about the advantages of moving to passwordless connections.
@@ -48,7 +52,7 @@ Create a user in Azure SQL Database. The user should correspond to the Azure acc
     AZURE_SQL_PORT=1433
     ```
 
-2. Existing application code that connects to Azure SQL Database using the [Node.js SQL Driver - tedious](/sql/connect/node-js/node-js-driver-for-sql-server) continues to work with passwordless connections with minor changes. To use a **user-assigned** managed identity, pass the `authentication.type` and `options.clientId` properties. 
+1. Existing application code that connects to Azure SQL Database using the [Node.js SQL Driver - tedious](/sql/connect/node-js/node-js-driver-for-sql-server) continues to work with passwordless connections with minor changes. To use a **user-assigned** managed identity, pass the `authentication.type` and `options.clientId` properties. 
 
     ```nodejs
     import sql from 'mssql';
@@ -77,12 +81,12 @@ Create a user in Azure SQL Database. The user should correspond to the Azure acc
         config = {};
         poolconnection = null;
         connected = false;
-        
+
         constructor(config) {
             this.config = config;
             console.log(`Database: config: ${JSON.stringify(config)}`);
         }
-        
+
         async connect() {
             try {
                 console.log(`Database connecting...${this.connected}`);
@@ -97,7 +101,7 @@ Create a user in Azure SQL Database. The user should correspond to the Azure acc
                 console.error(`Error connecting to database: ${JSON.stringify(error)}`);
             }
         }
-        
+
         async disconnect() {
             try {
                 this.poolconnection.close();
@@ -106,16 +110,16 @@ Create a user in Azure SQL Database. The user should correspond to the Azure acc
                 console.error(`Error closing database connection: ${error}`);
             }
         }
-        
+
         async executeQuery(query) {
             await this.connect();
             const request = this.poolconnection.request();
             const result = await request.query(query);
-        
+
             return result.rowsAffected[0];
         }
     }
-    
+
     const databaseClient = new Database(config);
     const result = await databaseClient.executeQuery(`select * from mytable where id = 10`);
     ```
@@ -124,7 +128,7 @@ Create a user in Azure SQL Database. The user should correspond to the Azure acc
 
 ### Test the app
 
-Run your app locally and verify that the connections to Azure SQL Database are working as expected. Keep in mind that it may take several minutes for changes to Azure users and roles to propagate through your Azure environment. Your application is now configured to run locally without developers having to manage secrets in the application itself.
+Run your app locally and verify that the connections to Azure SQL Database are working as expected. Keep in mind that it can take several minutes for changes to Azure users and roles to propagate through your Azure environment. Your application is now configured to run locally without developers having to manage secrets in the application itself.
 
 ## Configure the Azure hosting environment
 
@@ -146,25 +150,25 @@ Configure your web app to use the user-assigned managed identity you created.
 
 Complete the following steps in the Azure portal to associate the user-assigned managed identity with your app. These same steps apply to the following Azure services:
 
-* Azure Spring Apps
-* Azure Container Apps
-* Azure virtual machines
-* Azure Kubernetes Service
-* Navigate to the overview page of your web app.
+- Azure Spring Apps
+- Azure Container Apps
+- Azure virtual machines
+- Azure Kubernetes Service
+- Navigate to the overview page of your web app.
 
-1) Select **Identity** from the left navigation.
+1. Select **Identity** from the left navigation.
 
-1) On the **Identity** page, switch to the **User assigned** tab.
+1. On the **Identity** page, switch to the **User assigned** tab.
 
-1) Select **+ Add** to open the **Add user assigned managed identity** flyout.
+1. Select **+ Add** to open the **Add user assigned managed identity** flyout.
 
-1) Select the subscription you used previously to create the identity.
+1. Select the subscription you used previously to create the identity.
 
-1) Search for the **MigrationIdentity** by name and select it from the search results.
+1. Search for the **MigrationIdentity** by name and select it from the search results.
 
-1) Select **Add** to associate the identity with your app.
+1. Select **Add** to associate the identity with your app.
 
-    :::image type="content" source="media/passwordless-connections/assign-managed-identity-small.png" lightbox="media/passwordless-connections/assign-managed-identity.png" alt-text="A screenshot showing how to assign a managed identity.":::
+    :::image type="content" source="media/azure-sql-passwordless-migration-nodejs/assign-managed-identity-small.png" lightbox="media/azure-sql-passwordless-migration-nodejs/assign-managed-identity.png" alt-text="Screenshot showing how to assign a managed identity.":::
 
 # [Azure CLI](#tab/azure-cli-assign)
 
@@ -183,7 +187,7 @@ To use the **user-assigned** managed identity, create an `AZURE_CLIENT_ID` envir
 Save your changes and restart the application if it doesn't do so automatically.
 
 If you need to use a **system-assigned** managed identity, omit the `options.clientId` property. You still need to pass the `authentication.type` property.
- 
+
 ```nodejs
 const config = {
   server,
@@ -200,13 +204,9 @@ const config = {
 
 ### Test the application
 
-Test your app to make sure everything is still working. It may take a few minutes for all of the changes to propagate through your Azure environment.
+Test your app to make sure everything is still working. It can take a few minutes for all of the changes to propagate through your Azure environment.
 
-## Next steps
-
-In this tutorial, you learned how to migrate an application to passwordless connections.
-
-You can read the following resources to explore the concepts discussed in this article in more depth:
+## Related content
 
 - [Passwordless overview](/azure/developer/intro/passwordless-overview)
 - [Managed identity best practices](/azure/active-directory/managed-identities-azure-resources/managed-identity-best-practice-recommendations)

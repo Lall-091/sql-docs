@@ -1,19 +1,20 @@
 ---
-title: Block T-SQL commands to create or modify Azure SQL resources
+title: Block T-SQL Commands to Create or Modify Azure SQL Resources
 description: This article details a feature allowing Azure administrators to block T-SQL commands to create or modify Azure SQL resources
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: wiassaf, mathoma
-ms.date: 06/21/2023
+ms.date: 06/13/2025
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
 ROBOTS: NOINDEX
+monikerRange: "=azuresql || =azuresql-db "
 ---
 
 # What is Block T-SQL CRUD feature?
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 This feature allows Azure administrators to block the creation or modification of Azure SQL Database resources through T-SQL. This is enforced at the subscription level to block T-SQL commands from affecting Azure SQL Database resources.
 
@@ -49,33 +50,35 @@ The following section describes how you can register or unregister a preview fea
 ### Register Block T-SQL CRUD
 
 1. Go to your subscription on Azure portal.
-2. Select the **Preview Features** tab. 
-3. Select **Block T-SQL CRUD**.
-4. After you select **Block T-SQL CRUD**, a new window will open, select **Register**, to register this block with Microsoft.Sql resource provider.
+1. Select the **Preview Features** tab. 
+1. Select **Block T-SQL CRUD**.
+1. After you select **Block T-SQL CRUD**, a new window will open, select **Register**, to register this block with Microsoft.Sql resource provider.
 
-![Select "Block T-SQL CRUD" in the list of Preview Features](./media/block-tsql-crud/block-tsql-crud.png)
+:::image type="content" source="media/block-crud-tsql/block-tsql-crud.png" alt-text="Screenshot of the Azure portal showing how to select 'Block T-SQL CRUD' in the list of Preview Features." lightbox="media/block-crud-tsql/block-tsql-crud.png":::
 
-![With "Block T-SQL CRUD" checked, select Register](./media/block-tsql-crud/block-tsql-crud-register.png)
+:::image type="content" source="media/block-crud-tsql/block-tsql-crud-register.png" alt-text="With 'Block T-SQL CRUD' checked, select Register." lightbox="media/block-crud-tsql/block-tsql-crud-register.png":::
 
-  
-### Re-register Microsoft.Sql resource provider 
+### Re-register Microsoft.Sql resource provider
+
 After you register the block of T-SQL CRUD with Microsoft.Sql resource provider, you must re-register the Microsoft.Sql resource provider for the changes to take effect. To re-register the Microsoft.Sql resource provider:
 
 1. Go to your subscription on Azure portal.
-2. Select the **Resource Providers** tab.
-3. Search and select **Microsoft.Sql** resource provider.
-4. Select **Re-register**. 
+1. Select the **Resource Providers** tab.
+1. Search and select **Microsoft.Sql** resource provider.
+1. Select **Re-register**. 
 
 > [!NOTE]
 > The re-registration step is mandatory for the T-SQL block to be applied to your subscription. 
 
-![Re-register the Microsoft.Sql resource provider](./media/block-tsql-crud/block-tsql-crud-re-register.png)
+:::image type="content" source="media/block-crud-tsql/block-tsql-crud-re-register.png" alt-text="Screenshot of the Azure portal showing how to re-register the Microsoft.Sql resource provider." lightbox="media/block-crud-tsql/block-tsql-crud-re-register.png":::
 
-### Removing Block T-SQL CRUD
+<a id="removing-block-t-sql-crud"></a>
+
+### Remove Block T-SQL CRUD
+
 To remove the block on T-SQL create or modify operations from your subscription, first unregister the previously registered T-SQL block. Then, re-register the Microsoft.Sql resource provider as shown above for the removal of T-SQL block to take effect. 
 
+## Related content
 
-## Next steps
-
-- [An overview of Azure SQL Database security capabilities](security-overview.md)
-- [Azure SQL Database security best practices](security-best-practice.md)
+- [An overview of Azure SQL Database and SQL Managed Instance security capabilities](security-overview.md)
+- [Playbook for addressing common security requirements with Azure SQL Database and Azure SQL Managed Instance](security-best-practice.md)

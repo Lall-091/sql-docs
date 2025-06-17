@@ -1,16 +1,19 @@
 ---
-title: Migrate a .NET application to use passwordless connections
+title: "Migrate a .NET Application to Use Passwordless Connections"
 description: Learn how to migrate a .NET application to use passwordless connections with Azure SQL Database.
 author: alexwolfmsft
 ms.author: alexwolf
 ms.reviewer: mathoma
-ms.date: 02/10/2023
+ms.date: 06/13/2025
 ms.service: azure-sql-database
 ms.subservice: security
-monikerRange: "= azuresql || = azuresql-db"
 ms.topic: how-to
-ms.custom: devx-track-csharp, passwordless-dotnet, devx-track-azurecli
+ms.custom:
+  - devx-track-csharp
+  - passwordless-dotnet
+  - devx-track-azurecli
 ms.devlang: csharp
+monikerRange: "=azuresql || =azuresql-db"
 ---
 
 # Migrate a .NET application to use passwordless connections with Azure SQL Database
@@ -58,7 +61,7 @@ To update the referenced connection string (`AZURE_SQL_CONNECTIONSTRING`) to use
     * The `launchsettings.json` configuration file for Visual Studio projects.
     * Local system or container environment variables.
 
-2. Replace the connection string value with the following passwordless format. Update the `<database-server-name>` and `<database-name>` placeholders with your own values:
+1. Replace the connection string value with the following passwordless format. Update the `<database-server-name>` and `<database-name>` placeholders with your own values:
 
     ```json
     Server=tcp:<database-server-name>.database.windows.net,1433;Initial Catalog=<database-name>;
@@ -67,7 +70,7 @@ To update the referenced connection string (`AZURE_SQL_CONNECTIONSTRING`) to use
 
 ### Test the app
 
-Run your app locally and verify that the connections to Azure SQL Database are working as expected. Keep in mind that it may take several minutes for changes to Azure users and roles to propagate through your Azure environment. Your application is now configured to run locally without developers having to manage secrets in the application itself.
+Run your app locally and verify that the connections to Azure SQL Database are working as expected. Keep in mind that it can take several minutes for changes to Azure users and roles to propagate through your Azure environment. Your application is now configured to run locally without developers having to manage secrets in the application itself.
 
 ## Configure the Azure hosting environment
 
@@ -88,11 +91,11 @@ Configure your web app to use the user-assigned managed identity you created.
 
 Complete the following steps in the Azure portal to associate the user-assigned managed identity with your app. These same steps apply to the following Azure services:
 
-* Azure Spring Apps
-* Azure Container Apps
-* Azure virtual machines
-* Azure Kubernetes Service
-* Navigate to the overview page of your web app.
+- Azure Spring Apps
+- Azure Container Apps
+- Azure virtual machines
+- Azure Kubernetes Service
+- Navigate to the overview page of your web app.
 
 1) Select **Identity** from the left navigation.
 
@@ -106,7 +109,7 @@ Complete the following steps in the Azure portal to associate the user-assigned 
 
 1) Select **Add** to associate the identity with your app.
 
-    :::image type="content" source="media/passwordless-connections/assign-managed-identity-small.png" lightbox="media/passwordless-connections/assign-managed-identity.png" alt-text="A screenshot showing how to assign a managed identity.":::
+    :::image type="content" source="media/azure-sql-passwordless-migration/assign-managed-identity-small.png" lightbox="media/azure-sql-passwordless-migration/assign-managed-identity.png" alt-text="Screenshot showing how to assign a managed identity.":::
 
 # [Azure CLI](#tab/azure-cli-assign)
 
@@ -139,13 +142,9 @@ Update your Azure app configuration to use the passwordless connection string fo
 
 ### Test the application
 
-Test your app to make sure everything is still working. It may take a few minutes for all of the changes to propagate through your Azure environment.
+Test your app to make sure everything is still working. It might take a few minutes for all of the changes to propagate through your Azure environment.
 
-## Next steps
-
-In this tutorial, you learned how to migrate an application to passwordless connections.
-
-You can read the following resources to explore the concepts discussed in this article in more depth:
+## Related content
 
 - [Passwordless overview](/azure/developer/intro/passwordless-overview)
 - [Managed identity best practices](/azure/active-directory/managed-identities-azure-resources/managed-identity-best-practice-recommendations)

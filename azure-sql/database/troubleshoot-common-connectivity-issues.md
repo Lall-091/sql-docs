@@ -4,7 +4,7 @@ description: Learn how to troubleshoot, diagnose, and prevent a SQL connection e
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sureshka, mathoma, vanto
-ms.date: 02/10/2025
+ms.date: 06/16/2025
 ms.service: azure-sql-database
 ms.subservice: development
 ms.topic: troubleshooting
@@ -16,6 +16,7 @@ keywords:
   - "connectivity issues"
   - "transient error"
   - "connection error"
+monikerRange: "=azuresql || =azuresql-db || =azuresql-mi || =fabricsql"
 ---
 
 # Troubleshoot transient connection errors
@@ -507,7 +508,7 @@ public bool IsTransient(Exception ex)
 
 - [Connection libraries for SQL Database and SQL Server](connect-query-content-reference-guide.md#libraries)
 - [Connection pooling (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling)
-- [*Retrying* is an Apache 2.0 licensed general-purpose retrying library, written in Python,](https://pypi.python.org/pypi/retrying)
-- [Troubleshooting connectivity issues and other errors with Azure SQL Database and Azure SQL Managed Instance](troubleshoot-common-errors-issues.md)
+- [*Retrying* is an Apache 2.0 licensed general-purpose retrying library, written in Python,](https://pypi.org/project/retrying)
+- [Troubleshoot connectivity issues and other errors](troubleshoot-common-errors-issues.md)
 - [Troubleshooting transaction log errors with Azure SQL Database](troubleshoot-transaction-log-errors-issues.md?view=azuresql-db&preserve-view=true)
 - [Troubleshooting transaction log errors with Azure SQL Managed Instance](../managed-instance/troubleshoot-transaction-log-errors-issues.md?view=azuresql-mi&preserve-view=true)

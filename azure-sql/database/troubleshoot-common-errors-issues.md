@@ -1,24 +1,25 @@
 ---
-title: Troubleshoot common connection issues
+title: Troubleshoot Common Connection Issues
 titleSuffix: Azure SQL & SQL database in Fabric
 description: Provides steps to troubleshoot connection issues and resolve other connectivity issues in Azure SQL Database, Fabric SQL database, or Azure SQL Managed Instance.
-author: suresh-kandoth
-ms.author: sureshka
-ms.reviewer: wiassaf, mathoma, vanto
-ms.date: 09/05/2024
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sureshka, mathoma, vanto
+ms.date: 06/16/2025
 ms.service: azure-sql
 ms.subservice: connect
 ms.topic: troubleshooting
 ms.custom:
   - sqldbrb=1
   - ignite-2024
-monikerRange: "=azuresql || =azuresql-db || =azuresql-mi || =fabric"
+monikerRange: "=azuresql || =azuresql-db || =azuresql-mi || =fabricsql"
 ---
 
 # Troubleshoot connectivity issues and other errors
+
 [!INCLUDE [appliesto-sqldb-sqlmi-fabricsqldb](../includes/appliesto-sqldb-sqlmi-fabricsqldb.md)]
 
-You receive error messages when the connection to Azure SQL Database, Fabric SQL database, or Azure SQL Managed Instance fails.
+You receive error messages when the connection to Azure SQL Database, SQL database in Microsoft Fabric, or Azure SQL Managed Instance fails.
 
 As always, apply best practices and design guidelines during the [application design](develop-overview.md) process.
 
@@ -39,7 +40,9 @@ As always, apply best practices and design guidelines during the [application de
 
 If these steps don't resolve your problem, try to collect more data and then contact support. If your application is a cloud service, enable logging. This step returns a UTC time stamp of the failure. For more information about how to enable logging, see [Enable diagnostics logging for apps in Azure App Service](/azure/app-service/troubleshoot-diagnostic-logs). Additionally, SQL Database returns the tracing ID. [Microsoft Customer Support Services](https://azure.microsoft.com/support/options/) can use this information.
 
-## <a id="implementing-retry-logic"></a> Implement retry logic
+<a id="implementing-retry-logic"></a>
+
+## Implement retry logic
 
 It's strongly recommended that your client applications use retry logic so that it could reestablish a connection after giving the transient fault time to correct itself. We recommend that you delay for 5 seconds before your first retry. Retrying after a delay shorter than 5-seconds risks overwhelming the cloud service. For each subsequent retry, the delay should grow exponentially, up to a maximum of 60 seconds.
 
@@ -48,13 +51,13 @@ For code examples of retry logic, see:
 - [Connect resiliently to SQL with ADO.NET](/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net)
 - [Connect resiliently to SQL with PHP](/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)
 
-For more information on handling transient errors in your application, review [Troubleshoot transient connection errors in SQL Database and SQL Managed Instance](troubleshoot-common-connectivity-issues.md)
+For more information on handling transient errors in your application, review [Troubleshoot transient connection errors](troubleshoot-common-connectivity-issues.md).
 
 A discussion of the *blocking period* for clients that use ADO.NET is available in [Connection Pooling (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling).
 
 ## Transient fault error messages (40197, 40613 and others)
 
-The Azure infrastructure has the ability to dynamically reconfigure servers when heavy workloads arise in the SQL Database service.  This dynamic behavior might cause your client program to lose its connection to the database or instance. This kind of error condition is called a *transient fault*. Database reconfiguration events occur because of a planned event (for example, a software upgrade) or an unplanned event (for example, a process crash, or load balancing). Most reconfiguration events are short-lived and should be completed in less than 60 seconds at most. However, these events can occasionally take longer to finish, such as when a large transaction causes a long-running recovery. The following table lists various transient errors that applications can receive when connecting to Azure SQL Database.
+The Azure infrastructure has the ability to dynamically reconfigure servers when heavy workloads arise in the SQL Database service. This dynamic behavior might cause your client program to lose its connection to the database or instance. This kind of error condition is called a *transient fault*. Database reconfiguration events occur because of a planned event (for example, a software upgrade) or an unplanned event (for example, a process crash, or load balancing). Most reconfiguration events are short-lived and should be completed in less than 60 seconds at most. However, these events can occasionally take longer to finish, such as when a large transaction causes a long-running recovery. The following table lists various transient errors that applications can receive when connecting to Azure SQL Database.
 
 ### List of transient fault error codes
 
@@ -214,7 +217,7 @@ The most common resource governance errors are listed first with details, follow
 
 If the database level limit is reached, the detailed error message in this case reads: `Resource ID : 1. The request limit for the database is %d and has been reached. See 'http://go.microsoft.com/fwlink/?LinkId=267637' for assistance.`
 
-If the elastic pool limit is reached, the detailed error message in this case reads: `Resource ID : 1. The request limit for the elastic pool is %d and has been reached. See 'http://go.microsoft.com/fwlink/?LinkId=267637' for assistance.` Elastic pool limits are higher than database limits, for more information, see [Resource limits](resource-limits-logical-server.md). Limits might be encountered when multiple databases in the pool use a resource (such as workers) concurrently.
+If the elastic pool limit is reached, the detailed error message in this case reads: `Resource ID : 1. The request limit for the elastic pool is %d and has been reached. See 'http://go.microsoft.com/fwlink/?LinkId=267637' for assistance.` Elastic pool limits are higher than database limits, for more information, see [Resource management in Azure SQL Database](resource-limits-logical-server.md). Limits might be encountered when multiple databases in the pool use a resource (such as workers) concurrently.
 
 This error message indicates that the worker limit for the database or elastic pool has been reached. The maximum concurrent workers value for the service objective of the database or elastic pool will be present instead of the placeholder *%d*.
 
@@ -266,7 +269,7 @@ Blocking chains can cause a sudden surge in the number of workers in a database.
 Triage an incident with insufficient workers by following these steps:
 
 1. Investigate if blocking is occurring or if you can identify a large volume of concurrent workers. Run the following query to examine current requests and check for blocking when your database is returning Error 10928. You might need to [connect with the Dedicated Admin Connection (DAC)](#connect-with-the-dedicated-admin-connection-dac-if-needed) to execute the query.
-    
+
     ```sql
     SELECT
         r.session_id, r.request_id, r.blocking_session_id, r.start_time, 
@@ -287,8 +290,8 @@ Triage an incident with insufficient workers by following these steps:
     1. Look for rows with a `blocking_session_id` to identify blocked sessions. Find each `blocking_session_id` in the list to determine if that session is also blocked. Following the `blocking_session_id` and `session_id` values will eventually lead you to the head blocker: a session that is not blocked but is blocking. Tune the head blocker query.
 
        > [!TIP]
-       > For more thorough information on troubleshooting long running or blocking queries, see [Understand and resolve Azure SQL Database blocking problems](understand-resolve-blocking.md).
-    
+       > For more thorough information on troubleshooting long running or blocking queries, see [Understand and resolve blocking problems](understand-resolve-blocking.md).
+
     1. To identify a large volume of concurrent workers, review the number of requests overall and the `worker_count` column for each request. `Worker_count` is the number of workers at the time sampled and can change over time as the request is executed. Tune queries to reduce resource utilization if the cause of increased workers is concurrent queries that are running at their optimal degree of parallelism. For more information, see [Query Tuning/Hinting](performance-guidance.md#query-tuning-and-hinting).
 
 1. Evaluate the [maximum degree of parallelism (MAXDOP)](configure-max-degree-of-parallelism.md) setting for the database.
@@ -377,7 +380,7 @@ If you repeatedly encounter this error, try to resolve the issue by following th
 1. Review the `blocking_session_id` column to see if blocking is contributing to long-running transactions.
 
     > [!NOTE]
-    > For more information on troubleshooting blocking in Azure SQL Database, see [Understand and resolve Azure SQL Database blocking problems](understand-resolve-blocking.md).
+    > For more information on troubleshooting blocking in Azure SQL Database, see [Understand and resolve blocking problems](understand-resolve-blocking.md).
 
 1. Consider batching your queries. For information on batching, see [How to use batching to improve Azure SQL Database and Azure SQL Managed Instance application performance](../performance-improve-use-batching.md).
 
@@ -544,18 +547,18 @@ When the exception is triggered by query issues, you'll notice a call stack that
   ClientConnectionId:<Client ID>
 ```
 
-For more information on fine-tuning performance, see the following resources:
+For more information on fine-tuning performance, see:
 
-- [How to maintain Azure SQL indexes and statistics](https://techcommunity.microsoft.com/t5/Azure-Database-Support-Blog/How-to-maintain-Azure-SQL-Indexes-and-Statistics/ba-p/368787)
+- [How to maintain Azure SQL indexes and statistics](https://techcommunity.microsoft.com/blog/azuredbsupport/how-to-maintain-azure-sql-indexes-and-statistics/368787)
 - [Tune applications and databases for performance in Azure SQL Database](performance-guidance.md)
-- [Monitor Azure SQL Database performance using dynamic management views](monitoring-with-dmvs.md)
+- [Monitor performance using dynamic management views](monitoring-with-dmvs.md)
 - [Operating the Query Store in Azure SQL Database](/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 
 ## Related content
 
-- [Azure SQL Database and Azure Synapse Analytics connectivity architecture](connectivity-architecture.md)
+- [Connectivity architecture](connectivity-architecture.md)
 - [Azure SQL Database and Azure Synapse Analytics network access controls](network-access-controls-overview.md)
 - [Troubleshooting a full transaction log in Azure SQL Database](troubleshoot-transaction-log-errors-issues.md?view=azuresql-db&preserve-view=true)
 - [Troubleshooting a full transaction log in Azure SQL Managed Instance](../managed-instance/troubleshoot-transaction-log-errors-issues.md?view=azuresql-mi&preserve-view=true)
-- [Troubleshoot transient connection errors in SQL Database and SQL Managed Instance](troubleshoot-common-connectivity-issues.md)
-- [Analyze and prevent deadlocks in Azure SQL Database](analyze-prevent-deadlocks.md)
+- [Troubleshoot transient connection errors](troubleshoot-common-connectivity-issues.md)
+- [Analyze and prevent deadlocks in Azure SQL Database and Fabric SQL database](analyze-prevent-deadlocks.md)

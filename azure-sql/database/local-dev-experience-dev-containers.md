@@ -11,7 +11,7 @@ ms.topic: overview
 monikerRange: "=azuresql || =azuresql-db"
 ---
 
-# What are the Dev Container Templates for Azure SQL Database?
+# What are Dev Container Templates for Azure SQL Database?
 
 [!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]
 

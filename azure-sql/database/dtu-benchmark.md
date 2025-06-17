@@ -1,15 +1,17 @@
 ---
-title: DTU benchmark
+title: DTU Benchmark
 description: Learn about the benchmark for the DTU-based purchasing model for Azure SQL Database.
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: wiassaf, mathoma
-ms.date: 03/29/2022
+ms.date: 06/13/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: conceptual
+monikerRange: "=azuresql || =azuresql-db "
 ---
-# DTU benchmark 
+# DTU benchmark
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 A database transaction unit (DTU) is a unit of measure representing a blended measure of CPU, memory, reads, and writes. Physical characteristics (CPU, memory, IO) associated with each DTU measure are calibrated using a benchmark that simulates real-world database workload. This article summarizes the DTU benchmark and shares information about the schema, transaction types used, workload mix, users and pacing, scaling rules, and metrics associated with the benchmark.
@@ -20,11 +22,13 @@ For general information about the DTU-based purchasing model, see the [DTU-based
 
 The DTU benchmark measures the performance of a mix of basic database operations that occur most frequently in online transaction processing (OLTP) workloads. Although the benchmark is designed with cloud computing in mind, the database schema, data population, and transactions have been designed to be broadly representative of the basic elements most commonly used in OLTP workloads.
 
-## Correlating benchmark results to real world database performance
+<a id="correlating-benchmark-results-to-real-world-database-performance"></a>
+
+## Correlate benchmark results to real world database performance
 
 It's important to understand that all benchmarks are representative and indicative only. The transaction rates achieved with the benchmark application will not be the same as those that might be achieved with other applications. The benchmark comprises a collection of different transaction types run against a schema containing a range of tables and data types. While the benchmark exercises the same basic operations that are common to all OLTP workloads, it doesn't represent any specific class of database or application. The goal of the benchmark is to provide a reasonable guide to the relative performance of a database that might be expected when scaling up or down between compute sizes. 
 
-In reality, databases are of different sizes and complexity, encounter different mixes of workloads, and will respond in different ways. For example, an IO-intensive application may hit IO thresholds sooner, or a CPU-intensive application may hit CPU limits sooner. There is no guarantee that any particular database will scale in the same way as the benchmark under increasing load.
+In reality, databases are of different sizes and complexity, encounter different mixes of workloads, and will respond in different ways. For example, an IO-intensive application could hit IO thresholds sooner, or a CPU-intensive application could hit CPU limits sooner. There is no guarantee that any particular database will scale in the same way as the benchmark under increasing load.
 
 The benchmark and its methodology are described in more detail in this article.
 
@@ -75,12 +79,12 @@ Transactions are selected at random from a weighted distribution with the follow
 The benchmark workload is driven from a tool that submits transactions across a set of connections to simulate the behavior of a number of concurrent users. Although all of the connections and transactions are machine generated, for simplicity we refer to these connections as *users*. Although each user operates independently of all other users, all users perform the same cycle of steps shown below:
 
 1. Establish a database connection.
-2. Repeat until signaled to exit:
+1. Repeat until signaled to exit:
    - Select a transaction at random (from a weighted distribution).
    - Perform the selected transaction and measure the response time.
    - Wait for a pacing delay.
-3. Close the database connection.
-4. Exit.
+1. Close the database connection.
+1. Exit.
 
 The pacing delay (in step 2c) is selected at random, but with a distribution that has an average of 1.0 second. Thus each user can, on average, generate at most one transaction per second.
 
@@ -110,13 +114,11 @@ The key metrics in the benchmark are throughput and response time.
 > [!NOTE]
 > Response time metrics are specific to the [DTU Benchmark](#dtu-benchmark). Response times for other workloads are workload-dependent and will differ.
 
-## Next steps
-
-Learn more about purchasing models and related concepts in the following articles:
+## Related content
 
 - [DTU-based purchasing model overview](service-tiers-dtu.md)
 - [vCore purchasing model - Azure SQL Database](service-tiers-sql-database-vcore.md)
 - [Compare vCore and DTU-based purchasing models of Azure SQL Database](purchasing-models.md)
 - [Migrate Azure SQL Database from the DTU-based model to the vCore-based model](migrate-dtu-to-vcore.md)
 - [Resource limits for single databases using the DTU purchasing model - Azure SQL Database](resource-limits-dtu-single-databases.md)
-- [Resources limits for elastic pools using the DTU purchasing model](resource-limits-dtu-elastic-pools.md)
+- [Resource limits for elastic pools using the DTU purchasing model](resource-limits-dtu-elastic-pools.md)

@@ -1,17 +1,21 @@
 ---
-title: Plan and manage costs
+title: Plan and Manage Costs
 description: Learn how to plan for and manage costs for Azure SQL Database by using cost analysis in the Azure portal.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
-ms.date: 06/30/2021
+ms.date: 06/13/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: how-to
-ms.custom: subject-cost-optimization
+ms.custom:
+  - subject-cost-optimization
+monikerRange: "=azuresql || =azuresql-db"
 ---
 
 # Plan and manage costs for Azure SQL Database
+
+[!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 This article describes how you plan for and manage costs for Azure SQL Database. 
 
@@ -21,15 +25,15 @@ First, you use the Azure pricing calculator to add Azure resources, and review t
 
 Cost analysis supports most Azure account types, but not all of them. To view the full list of supported account types, see [Understand Cost Management data](/azure/cost-management-billing/costs/understand-cost-mgt-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). To view cost data, you need at least read access for an Azure account. 
 
-For information about assigning access to Azure Cost Management data, see [Assign access to data](/azure/cost-management-billing/costs/assign-access-acm-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+For information about assigning access to Microsoft Cost Management data, see [Assign access to data](/azure/cost-management-billing/costs/assign-access-acm-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
 ## SQL Database initial cost considerations
 
 When working with Azure SQL Database, there are several cost-saving features to consider:
 
-### vCore or DTU purchasing models 
+### vCore or DTU purchasing models
 
-Azure SQL Database supports two purchasing models: vCore and DTU. The way you get charged varies between the purchasing models so it's important to understand the model that works best for your workload when planning and considering costs. For information about vCore and DTU purchasing models, see [Choose between the vCore and DTU purchasing models](purchasing-models.md).
+Azure SQL Database supports two purchasing models: vCore and DTU. The way you get charged varies between the purchasing models so it's important to understand the model that works best for your workload when planning and considering costs. For information about vCore and DTU purchasing models, see [Compare vCore and DTU-based purchasing models of Azure SQL Database](purchasing-models.md).
 
 ### Provisioned or serverless
 
@@ -39,7 +43,7 @@ In the vCore purchasing model, Azure SQL Database also supports two types of com
 
 [Azure Reservations](reservations-discount-overview.md) are a billing discount for Azure SQL Database that you can use to save money by committing to use compute resources at a discounted rate for a period of time.
 
-In the provisioned compute tier of the vCore-based purchasing model, you can get a discount on the allocation of SQL Server licenses to SQL Server Database Engine. For details, see [Azure Hybrid Benefit (AHB)](../azure-hybrid-benefit.md) and the [Pricing calculator](https://azure.microsoft.com/pricing/calculator/) to determine cost savings.  
+In the provisioned compute tier of the vCore-based purchasing model, you can get a discount on the allocation of SQL Server licenses to SQL Server Database Engine. For details, see [Azure Hybrid Benefit](../azure-hybrid-benefit.md) and the [Pricing calculator](https://azure.microsoft.com/pricing/calculator/) to determine cost savings.  
 
 ### Elastic pools
 
@@ -51,12 +55,11 @@ Use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculato
 
 The information and pricing in the following image are for example purposes only: 
 
-:::image type="content" source="media/cost-management/pricing-calc.png" alt-text="Azure SQL Database pricing calculator example":::
+:::image type="content" source="media/cost-management/pricing-calculator.png" alt-text="Screenshot from the Azure pricing calculator." lightbox="media/cost-management/pricing-calculator.png":::
 
 You can also estimate how different Retention Policy options affect cost. The information and pricing in the following image are for example purposes only:
 
-:::image type="content" source="media/cost-management/backup-storage.png" alt-text="Azure SQL Database pricing calculator example for storage":::
-
+:::image type="content" source="media/cost-management/backup-storage.png" alt-text="Screenshot of an Azure SQL Database pricing calculator example for storage." lightbox="media/cost-management/backup-storage.png":::
 
 ## Understand the full billing model for Azure SQL Database
 
@@ -75,7 +78,6 @@ Billing depends on the SKU of your product, the generation hardware of your SKU,
 - It's also possible to have a deprecated SKU from deprecated resource offerings
 
 For more information, see [vCore-based purchasing model](service-tiers-vcore.md), [DTU-based purchasing model](service-tiers-dtu.md), or [compare purchasing models](purchasing-models.md). 
-
 
 The following table shows the most common billing meters and their possible SKUs for **single databases**: 
 
@@ -104,9 +106,11 @@ The following table shows the most common billing meters and their possible SKUs
 
 \* In the DTU purchasing model, an initial set of storage for data and backups is provided at no additional cost. The size of the storage depends on the service tier selected. Extra data storage can be purchased in the standard and premium tiers. For more information, see [Azure SQL Database pricing](https://azure.microsoft.com/pricing/details/azure-sql-database/). 
 
-### Using Monetary Credit with Azure SQL Database
+<a id="using-monetary-credit-with-azure-sql-database"></a>
 
-You can pay for Azure SQL Database charges with your Azure Prepayment (previously called monetary commitment) credit. However, you can't use Azure Prepayment credit to pay for charges for third-party products and services including those from the Azure Marketplace.
+### Use Monetary Credit with Azure SQL Database
+
+You can pay for Azure SQL Database charges with your Azure Prepayment (previously called monetary commitment) credit. However, you can't use Azure Prepayment credit to pay for charges for third-party products and services including those from Azure Marketplace.
 
 ## Review estimated costs in the Azure portal
 
@@ -114,7 +118,7 @@ As you go through the process of creating an Azure SQL Database, you can see the
 
 To access this screen, select **Configure database** on the **Basics** tab of the **Create SQL Database** page. The information and pricing in the following image are for example purposes only:
 
-  :::image type="content" source="media/cost-management/cost-estimate.png" alt-text="Example showing cost estimate in the Azure portal":::
+  :::image type="content" source="media/cost-management/cost-estimate.png" alt-text="Screenshot of an example showing cost estimate in the Azure portal." lightbox="media/cost-management/cost-estimate.png":::
 
 If your Azure subscription has a spending limit, Azure prevents you from spending over your credit amount. As you create and use Azure resources, your credits are used. When you reach your credit limit, the resources that you deployed are disabled for the rest of that billing period. You can't change your credit limit, but you can remove it. For more information about spending limits, see [Azure spending limit](/azure/cost-management-billing/manage/spending-limit).
 
@@ -126,7 +130,7 @@ As you start using Azure SQL Database, you can see the estimated costs in the po
 1. In the menu, select **Cost analysis**.
 1. View **Accumulated costs** and set the chart at the bottom to **Service name**. This chart shows an estimate of your current SQL Database costs. To narrow costs for the entire page to Azure SQL Database, select **Add filter** and then, select **Azure SQL Database**. The information and pricing in the following image are for example purposes only:
 
-   :::image type="content" source="media/cost-management/cost-analysis.png" alt-text="Example showing accumulated costs in the Azure portal":::
+   :::image type="content" source="media/cost-management/cost-analysis.png" alt-text="Screenshot of an example showing accumulated costs in the Azure portal.":::
 
 From here, you can explore costs on your own. For more and information about the different cost analysis settings, see [Start analyzing costs](/azure/cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
@@ -144,11 +148,9 @@ You can also [export your cost data](/azure/cost-management-billing/costs/tutori
 
 Azure SQL Database also enables you to scale resources up or down to control costs based on your application needs. For details, see [Dynamically scale database resources](scale-resources.md).
 
-Save money by committing to a reservation for compute resources for one to three years. For details, see [Save costs for resources with Azure Reservations](reservations-discount-overview.md).
+## Related content
 
-## Next steps
-
-- Learn [how to optimize your cloud investment with Azure Cost Management](/azure/cost-management-billing/costs/cost-mgt-best-practices?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+- Learn [how to optimize your cloud investment with Cost Management](/azure/cost-management-billing/costs/cost-mgt-best-practices?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 - Learn more about managing costs with [cost analysis](/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 - Learn about how to [prevent unexpected costs](/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 - Take the [Cost Management](/training/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) guided learning course.

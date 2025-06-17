@@ -1,11 +1,11 @@
 ---
-title: Diagnose and troubleshoot high CPU
+title: Diagnose and Troubleshoot High CPU
 titleSuffix: Azure SQL Database
 description: Learn to diagnose and troubleshoot high CPU problems in Azure SQL Database and SQL database in Microsoft Fabric.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
-ms.date: 01/16/2024
+ms.date: 06/16/2025
 ms.service: azure-sql-database
 ms.subservice: performance
 ms.topic: how-to
@@ -26,9 +26,9 @@ It's helpful to understand the number of virtual cores (vCores) available to you
 
 ### Identify vCore count in the Azure portal
 
-You can quickly identify the vCore count for a database in the Azure portal if you're using a [vCore-based service tier](service-tiers-vcore.md) with the provisioned compute tier. In this case, the **pricing tier** listed for the database on its **Overview** page will contain the vCore count. For example, a database's pricing tier might be 'General Purpose: Standard-series (Gen5), 16 vCores'. 
+You can quickly identify the vCore count for a database in the Azure portal if you're using a [vCore-based service tier](service-tiers-vcore.md) with the provisioned compute tier. In this case, the **pricing tier** listed for the database on its **Overview** page contains the vCore count. For example, a database's pricing tier might be 'General Purpose: Standard-series (Gen5), 16 vCores'. 
 
-For databases in the [serverless](serverless-tier-overview.md) compute tier, vCore count will always be equivalent to the max vCore setting for the database. VCore count will show in the **pricing tier** listed for the database on its **Overview** page. For example, a database's pricing tier might be 'General Purpose: Serverless, standard-series (Gen5), 16 vCores'.
+For databases in the [serverless](serverless-tier-overview.md) compute tier, vCore count will always be equivalent to the maximum vCore setting for the database. VCore count shows in the **pricing tier** listed for the database on its **Overview** page. For example, a database's pricing tier might be 'General Purpose: Serverless, standard-series (Gen5), 16 vCores'.
 
 If you're using a database under the [DTU-based purchasing model](service-tiers-dtu.md), you will need to use Transact-SQL to query the database's vCore count.
 
@@ -90,7 +90,7 @@ The default view of Query Performance Insight shows 24 hours of data. CPU usage 
 
 The top five queries running in that period are displayed in vertical bars above the CPU usage graph. Select a band of time on the chart or use the **Customize** menu to explore specific time periods. You might also increase the number of queries shown.
 
-:::image type="content" source="media/high-cpu-troubleshoot/azure-portal-query-performance-insight-cpu-queries.png" alt-text="Screenshot shows Query Performance Insight in the Azure portal." lightbox="media/high-cpu-troubleshoot/azure-portal-query-performance-insight.png":::
+:::image type="content" source="media/high-cpu-diagnose-troubleshoot/azure-portal-query-performance-insight-cpu-queries.png" alt-text="Screenshot shows Query Performance Insight in the Azure portal." lightbox="media/high-cpu-diagnose-troubleshoot/azure-portal-query-performance-insight.png":::
 
 Select each query ID exhibiting high CPU to open details for the query. Details include query text along with performance history for the query. Examine if CPU has increased for the query recently.
 
@@ -108,7 +108,7 @@ Follow these steps to use a query ID in SSMS's interactive Query Store tools to 
 1. Enter the query ID in the **Tracking query** box at the top left of the screen and press enter.
 1. If necessary, select **Configure** to adjust the time interval to match the time when high CPU utilization was occurring.
 
-The page will show the execution plan(s) and related metrics for the query over the most recent 24 hours.
+The page shows the execution plans and related metrics for the query over the most recent 24 hours.
 
 ### Identify currently running queries with Transact-SQL
 
@@ -283,10 +283,10 @@ If you prefer to use graphic tools, follow these steps to use the interactive Qu
 1. Expand the database node in Object Explorer
 1. Expand the **Query Store** folder.
 1. Open the **Overall Resource Consumption** pane.
- 
+
 Total CPU time for your database over the last month in milliseconds is shown in the bottom-left portion of the pane. In the default view, CPU time is aggregated by day.
 
-:::image type="content" source="media/high-cpu-troubleshoot/ssms-query-store-resources-consumption.png" alt-text="Screenshot shows the Overall Resource Consumption view of Query Store in SSMS." lightbox="media/high-cpu-troubleshoot/ssms-query-store-resources-consumption.png":::
+:::image type="content" source="media/high-cpu-diagnose-troubleshoot/ssms-query-store-resources-consumption.png" alt-text="Screenshot shows the Overall Resource Consumption view of Query Store in SSMS." lightbox="media/high-cpu-diagnose-troubleshoot/ssms-query-store-resources-consumption.png":::
 
 Select **Configure** in the top right of the pane to select a different time period. You can also change the unit of aggregation. For example, you can choose to see data for a specific date range and aggregate the data by hour.
 
@@ -294,16 +294,17 @@ Select **Configure** in the top right of the pane to select a different time per
 
 Select a bar in the chart to drill in and see queries running in a specific time period. The **Top Resource Consuming Queries** pane will open. Alternately, you can open **Top Resource Consuming Queries** from the Query Store node under your database in Object Explorer directly.
 
-:::image type="content" source="media/high-cpu-troubleshoot/ssms-query-store-top-resource-consuming-queries.png" alt-text="Screenshot shows the Top Resource Consuming Queries pane for Query Store in S S M S." lightbox="media/high-cpu-troubleshoot/ssms-query-store-top-resource-consuming-queries.png":::
+:::image type="content" source="media/high-cpu-diagnose-troubleshoot/ssms-query-store-top-resource-consuming-queries.png" alt-text="Screenshot shows the Top Resource Consuming Queries pane for Query Store in S S M S." lightbox="media/high-cpu-diagnose-troubleshoot/ssms-query-store-top-resource-consuming-queries.png":::
 
-In the default view, the **Top Resource Consuming Queries** pane shows queries by **Duration (ms)**. Duration might sometimes be lower than CPU time: queries using parallelism might use much more CPU time than their overall duration. Duration might also be higher than CPU time if wait times are significant. To see queries by CPU time, select the **Metric** drop-down at the top left of the pane and select **CPU Time(ms)**.
+In the default view, the **Top Resource Consuming Queries** pane shows queries by **Duration (ms)**. Duration might sometimes be lower than CPU time: queries using parallelism might use much more CPU time than their overall duration. Duration might also be higher than CPU time if wait times are significant. To see queries by CPU time, select the **Metric** dropdown list at the top left of the pane and select **CPU Time(ms)**.
 
 Each bar in the top-left quadrant represents a query. Select a bar to see details for that query. The top-right quadrant of the screen shows how many execution plans are in Query Store for that query and maps them according to when they were executed and how much of your selected metric was used. Select each **Plan ID** to control which query execution plan is displayed in the bottom half of the screen.
 
 > [!NOTE]
-> For a guide to interpreting Query Store views and the shapes which appear in the Top Resource Consumers view, see [Best practices with Query Store](/sql/relational-databases/performance/best-practice-with-the-query-store?view=azuresqldb-current&preserve-view=true#start-with-query-performance-troubleshooting)
+> For a guide to interpreting Query Store views and the shapes that appear in the Top Resource Consumers view, see [Best practices with Query Store](/sql/relational-databases/performance/best-practice-with-the-query-store?view=azuresqldb-current&preserve-view=true#start-with-query-performance-troubleshooting)
 
 ## Reduce CPU usage
+
 Part of your troubleshooting should include learning more about the queries identified in the previous section. You can reduce CPU usage by tuning indexes, modifying your application patterns, tuning queries, and adjusting CPU-related settings for your database.
 
 - If you found new queries using significant CPU appearing in the workload, validate that indexes have been optimized for those queries. You can [tune indexes manually](#tune-indexes-manually) or [reduce CPU usage with automatic index tuning](#reduce-cpu-usage-with-automatic-index-tuning). Evaluate if your [max degree of parallelism](#reduce-cpu-usage-by-tuning-the-max-degree-of-parallelism) setting is correct for your increased workload.
@@ -324,13 +325,13 @@ Azure SQL Database offers [automatic index management](automatic-tuning-overview
 
 ### Reduce CPU usage with automatic plan correction (force plan)
 
-Another common cause of high CPU incidents is [execution plan choice regression](/sql/relational-databases/automatic-tuning/automatic-tuning?view=azuresqldb-current&preserve-view=true#what-is-execution-plan-choice-regression). Azure SQL Database offers the [force plan](automatic-tuning-overview.md?view=azuresql-db&preserve-view=true#automatic-tuning-options) automatic tuning option to identify regressions in query execution plans in workloads on primary replicas. With this automatic tuning feature enabled, Azure SQL Database will test if forcing a query execution plan results in reliable improved performance for queries with execution plan regression.
+Another common cause of high CPU incidents is [execution plan choice regression](/sql/relational-databases/automatic-tuning/automatic-tuning?view=azuresqldb-current&preserve-view=true#what-is-execution-plan-choice-regression). Azure SQL Database offers the [force plan](automatic-tuning-overview.md?view=azuresql-db&preserve-view=true#automatic-tuning-options) automatic tuning option to identify regressions in query execution plans in workloads on primary replicas. With this automatic tuning feature enabled, Azure SQL Database tests if forcing a query execution plan results in reliable improved performance for queries with execution plan regression.
 
 If your database was created after March 2020, the **force plan** automatic tuning option was automatically enabled. If your database was created prior to this time, you might wish to [enable the force plan automatic tuning option](automatic-tuning-enable.md?view=azuresql-db&preserve-view=true).
 
 ### Tune indexes manually
 
-Use the methods described in [Identify the causes of high CPU](#identify-the-causes-of-high-cpu) to identify query plans for your top CPU consuming queries. These execution plans will aid you in [identifying and adding nonclustered indexes](performance-guidance.md?view=azuresql-db&preserve-view=true#identifying-and-adding-missing-indexes) to speed up your queries.
+Use the methods described in [Identify the causes of high CPU](#identify-the-causes-of-high-cpu) to identify query plans for your top CPU consuming queries. These execution plans aid you in [identifying and adding nonclustered indexes](performance-guidance.md?view=azuresql-db&preserve-view=true#identifying-and-adding-missing-indexes) to speed up your queries.
 
 Each disk based [nonclustered index](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=azuresqldb-current&preserve-view=true) in your database requires storage space and must be maintained by the SQL engine. Modify existing indexes instead of adding new indexes when possible and ensure that new indexes successfully reduce CPU usage. For an overview of nonclustered indexes, see [Nonclustered Index Design Guidelines](/sql/relational-databases/sql-server-index-design-guide?view=azuresqldb-current&preserve-view=true#Nonclustered).
 
@@ -350,7 +351,7 @@ If you identify queries with high compilation rates, identify what causes the fr
 
 ### Reduce CPU usage by tuning the max degree of parallelism
 
-The [max degree of parallelism (MAXDOP)](configure-max-degree-of-parallelism.md#overview) setting controls intra-query parallelism in the database engine. Higher MAXDOP values generally result in more parallel threads per query, and faster query execution.
+The [max degree of parallelism (MAXDOP)](configure-max-degree-of-parallelism.md) setting controls intra-query parallelism in the database engine. Higher MAXDOP values generally result in more parallel threads per query, and faster query execution.
 
 In some cases, a large number of parallel queries running concurrently can slow down a workload and cause high CPU usage. Excessive parallelism is most likely to occur in databases with a large number of vCores where MAXDOP is set to a high number or to zero. When MAXDOP is set to zero, the database engine sets the number of [schedulers](/sql/relational-databases/thread-and-task-architecture-guide?view=azuresqldb-current&preserve-view=true#sql-server-task-scheduling) to be used by parallel threads to the total number of logical cores or 64, whichever is smaller.
 
@@ -375,11 +376,9 @@ You might find that your workload's queries and indexes are properly tuned, or t
 
 You can add more CPU resources to your Azure SQL Database by configuring the vCore count or the [hardware configuration](service-tiers-sql-database-vcore.md#hardware-configuration) for databases using the [vCore purchasing model](service-tiers-sql-database-vcore.md).
 
-Under the [DTU-based purchasing model](service-tiers-dtu.md), you can raise your service tier and increase the number of database transaction units (DTUs). A DTU represents a blended measure of CPU, memory, reads, and writes.  One benefit of the vCore purchasing model is that it allows more granular control over the hardware in use and the number of vCores. You can [migrate Azure SQL Database from the DTU-based model to the vCore-based model](migrate-dtu-to-vcore.md) to transition between purchasing models.
+Under the [DTU-based purchasing model overview](service-tiers-dtu.md), you can raise your service tier and increase the number of database transaction units (DTUs). A DTU represents a blended measure of CPU, memory, reads, and writes. One benefit of the vCore purchasing model is that it allows more granular control over the hardware in use and the number of vCores. You can [migrate Azure SQL Database from the DTU-based model to the vCore-based model](migrate-dtu-to-vcore.md) to transition between purchasing models.
 
 ## Related content
-
-Learn more about monitoring and performance tuning Azure SQL Database in the following articles:
 
 - [Monitoring Azure SQL Database and Azure SQL Managed Instance performance using dynamic management views](monitoring-with-dmvs.md?view=azuresql-db&preserve-view=true)
 - [SQL Server index architecture and design guide](/sql/relational-databases/sql-server-index-design-guide?view=azuresqldb-current&preserve-view=true)
