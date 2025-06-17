@@ -1,19 +1,23 @@
 ---
-title: Migrate a Python application to use passwordless connections
+title: Migrate a Python Application to Use Passwordless Connections
 description: Learn how to migrate a Python application to use passwordless connections with Azure SQL Database.
 author: bobtabor-msft
 ms.author: rotabor
 ms.reviewer: mathoma
-ms.date: 10/11/2023
+ms.date: 06/13/2025
 ms.service: azure-sql-database
 ms.subservice: security
-monikerRange: "= azuresql || = azuresql-db"
 ms.topic: how-to
-ms.custom: devx-track-csharp, passwordless-python, devx-track-azurecli
+ms.custom:
+  - devx-track-csharp
+  - passwordless-python
+  - devx-track-azurecli
 ms.devlang: python
+monikerRange: "=azuresql || =azuresql-db"
 ---
 
 # Migrate a Python application to use passwordless connections with Azure SQL Database
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Application requests to Azure SQL Database must be authenticated. Although there are multiple options for authenticating to Azure SQL Database, you should prioritize passwordless connections in your applications when possible. Traditional authentication methods that use passwords or secret keys create security risks and complications. Visit the [passwordless connections for Azure services](/azure/developer/intro/passwordless-overview) hub to learn more about the advantages of moving to passwordless connections. The following tutorial explains how to migrate an existing Python application to connect to Azure SQL Database to use passwordless connections instead of a username and password solution.
@@ -74,7 +78,7 @@ Driver={ODBC Driver 18 for SQL Server};Server=tcp:<database-server-name>.databas
 
 ### Test the app
 
-Run your app locally and verify that the connections to Azure SQL Database are working as expected. Keep in mind that it may take several minutes for changes to Azure users and roles to propagate through your Azure environment. Your application is now configured to run locally without developers having to manage secrets in the application itself.
+Run your app locally and verify that the connections to Azure SQL Database are working as expected. Keep in mind that it can take several minutes for changes to Azure users and roles to propagate through your Azure environment. Your application is now configured to run locally without developers having to manage secrets in the application itself.
 
 ## Configure the Azure hosting environment
 
@@ -95,25 +99,25 @@ Configure your web app to use the user-assigned managed identity you created.
 
 Complete the following steps in the Azure portal to associate the user-assigned managed identity with your app. These same steps apply to the following Azure services:
 
-* Azure Spring Apps
-* Azure Container Apps
-* Azure virtual machines
-* Azure Kubernetes Service
-* Navigate to the overview page of your web app.
+- Azure Spring Apps
+- Azure Container Apps
+- Azure virtual machines
+- Azure Kubernetes Service
+- Navigate to the overview page of your web app.
 
-1) Select **Identity** from the left navigation.
+1. Select **Identity** from the left navigation.
 
-1) On the **Identity** page, switch to the **User assigned** tab.
+1. On the **Identity** page, switch to the **User assigned** tab.
 
-1) Select **+ Add** to open the **Add user assigned managed identity** flyout.
+1. Select **+ Add** to open the **Add user assigned managed identity** flyout.
 
-1) Select the subscription you used previously to create the identity.
+1. Select the subscription you used previously to create the identity.
 
-1) Search for the **MigrationIdentity** by name and select it from the search results.
+1. Search for the **MigrationIdentity** by name and select it from the search results.
 
-1) Select **Add** to associate the identity with your app.
+1. Select **Add** to associate the identity with your app.
 
-    :::image type="content" source="media/passwordless-connections/assign-managed-identity-small.png" lightbox="media/passwordless-connections/assign-managed-identity.png" alt-text="A screenshot showing how to assign a managed identity.":::
+    :::image type="content" source="media/azure-sql-passwordless-migration-python/assign-managed-identity-small.png" lightbox="media/azure-sql-passwordless-migration-python/assign-managed-identity.png" alt-text="Screenshot showing how to assign a managed identity.":::
 
 # [Azure CLI](#tab/azure-cli-assign)
 
@@ -131,7 +135,7 @@ Update your Azure app configuration to use the passwordless connection string fo
 
 Connection strings can be stored as environment variables in your app hosting environment. The following instructions focus on App Service, but other Azure hosting services provide similar configurations.
 
-```
+```connectionstring
 Driver={ODBC Driver 18 for SQL Server};Server=tcp:<database-server-name>.database.windows.net,1433;Database=<database-name>;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30
 ```
 
@@ -139,7 +143,7 @@ Driver={ODBC Driver 18 for SQL Server};Server=tcp:<database-server-name>.databas
 
 ### Create an app setting for the managed identity client ID
 
-To use the user-assigned managed identity, create an AZURE_CLIENT_ID environment variable and set it equal to the client ID of the managed identity.  You can set this variable in the **Configuration** section of your app in the Azure portal. You can find the client ID in the **Overview** section of the managed identity resource in the Azure portal.
+To use the user-assigned managed identity, create an `AZURE_CLIENT_ID` environment variable and set it equal to the client ID of the managed identity. You can set this variable in the **Configuration** section of your app in the Azure portal. You can find the client ID in the **Overview** section of the managed identity resource in the Azure portal.
 
 Save your changes and restart the application if it doesn't do so automatically.
 
@@ -150,13 +154,9 @@ Save your changes and restart the application if it doesn't do so automatically.
 
 ### Test the application
 
-Test your app to make sure everything is still working. It may take a few minutes for all of the changes to propagate through your Azure environment.
+Test your app to make sure everything is still working. It can take a few minutes for all of the changes to propagate through your Azure environment.
 
-## Next steps
-
-In this tutorial, you learned how to migrate an application to passwordless connections.
-
-You can read the following resources to explore the concepts discussed in this article in more depth:
+## Related content
 
 - [Passwordless overview](/azure/developer/intro/passwordless-overview)
 - [Managed identity best practices](/azure/active-directory/managed-identities-azure-resources/managed-identity-best-practice-recommendations)

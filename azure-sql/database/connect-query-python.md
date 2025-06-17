@@ -1,15 +1,19 @@
 ---
-title: Use Python to query a database
+title: Use Python to Query a Database
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: This article shows you how to use Python to create a program that connects to a database in Azure SQL Database and query it using Transact-SQL statements.
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: wiassaf, mathoma, randolphwest
-ms.date: 09/15/2023
+ms.date: 06/13/2025
 ms.service: azure-sql
 ms.subservice: connect
 ms.topic: quickstart
-ms.custom: sqldbrb=2, devx-track-python, mode-api, py-fresh-zinc
+ms.custom:
+  - sqldbrb=2
+  - devx-track-python
+  - mode-api
+  - py-fresh-zinc
 ms.devlang: python
 monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
 ---
@@ -29,7 +33,7 @@ To complete this quickstart, you need:
 
   [!INCLUDE [create-configure-database](../includes/create-configure-database.md)]
 
-- [Python](https://python.org/downloads) 3 and related software
+- [Python](https://www.python.org/downloads) 3 and related software
 
     | **Action** | **macOS** | **Linux** | **Windows** |
     | --- | --- | --- | --- |
@@ -74,11 +78,11 @@ To further explore Python and the database in Azure SQL Database, see [Azure SQL
 
     If you receive an error:
     - Verify that the server name, database name, username, and password you're using are correct.
-    - Verify that the ODBC driver you installed is the same version as the `driver` variable in the code above. For example, the code shows 17, but you may have installed a different version.
+    - Verify that the ODBC driver you installed is the same version as the `driver` variable in the code above. For example, the code shows 17, but you might have installed a different version.
     - If you're running the code from a local environment, verify that the firewall of the Azure resource you're trying to access is configured to allow access from your environment's IP address.
 
-## Next steps
+## Related content
 
-- [Design your first database in Azure SQL Database](design-first-database-tutorial.md)
+- [Tutorial: Design a relational database in Azure SQL Database](design-first-database-tutorial.md)
 - [Microsoft Python drivers for SQL Server](/sql/connect/python/python-driver-for-sql-server/)
 - [Python developer center](https://azure.microsoft.com/develop/python/?v=17.23h)

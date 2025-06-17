@@ -1,10 +1,10 @@
 ---
-title: Block geo-replication of Azure SQL Database backups 
+title: Block Geo-Replication of Azure SQL Database Backups
 description: This article details a feature that allows Azure administrators to block geo-replication of Azure SQL Databases.
 author: SudhirRaparla
 ms.author: nvraparl
 ms.reviewer: nvraparl, wiassaf, mathoma
-ms.date: 09/30/2022
+ms.date: 06/13/2025
 ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: how-to
@@ -12,6 +12,7 @@ ROBOTS: NOINDEX
 ---
 
 # What is Block Geo-replication of Azure SQL Database Backups feature?
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 This feature allows Azure administrators to prevent Azure SQL Databases using geo-redundant storage options (RA-GRS, RA-GZRS) as preferred backup storage redundancy via T-SQL, Azure portal, PowerShell, Azure CLI and API. This is enforced at the subscription level to block geo-replication of Azure SQL database backups.
@@ -33,19 +34,21 @@ The following section describes how you can register or unregister a preview fea
 ### Register Block Geo-replication of Azure SQL Database Backups
 
 1. Go to your subscription on Azure portal.
-2. Select the **Preview Features** tab. 
-3. Select **Azure SQL Database Block Geo-Redundant Backup Storage**.
-4. After you select **Azure SQL Database Block Geo-Redundant Backup Storage**, a new window will open, select **Register**, to register this block with Microsoft.Sql resource provider.
+1. Select the **Preview Features** tab. 
+1. Select **Azure SQL Database Block Geo-Redundant Backup Storage**.
+1. After you select **Azure SQL Database Block Geo-Redundant Backup Storage**, a new window will open, select **Register**, to register this block with Microsoft.Sql resource provider.
 
-:::image type="content" source="./media/block-backup-geo-replication/block-backup-geo-replication.png" alt-text="Screenshot of Block Geo-replication of Azure SQL Database Backups in the list of Preview features.":::
+    :::image type="content" source="media/block-geo-redundant-backup-storage/block-backup-geo-replication.png" alt-text="Screenshot of Block Geo-replication of Azure SQL Database Backups in the list of Preview features." lightbox="media/block-geo-redundant-backup-storage/block-backup-geo-replication.png":::
+    
+    :::image type="content" source="media/block-geo-redundant-backup-storage/block-backup-geo-replication-register.png" alt-text="Screenshot of Register Block Geo-replication of Azure SQL Database Backups feature." lightbox="media/block-geo-redundant-backup-storage/block-backup-geo-replication-register.png":::
 
-:::image type="content" source="./media/block-backup-geo-replication/block-backup-geo-replication-register.png" alt-text="Screenshot of Register Block Geo-replication of Azure SQL Database Backups feature.":::
+<a id="removing-block-geo-replication-of-azure-sql-database-backups"></a>
 
+### Remove Block Geo-replication of Azure SQL Database Backups
 
-### Removing Block Geo-replication of Azure SQL Database Backups
 To remove the block on geo-redundant backup storage from your subscription, unregister the previously registered Azure SQL Database Block Geo-Redundant Backup Storage feature.
 
+## Next step
 
-## Next steps
-
-- [An overview of Azure SQL Database Backup storage redundancy](automated-backups-overview.md#backup-storage-redundancy)
+> [!div class="nextstepaction"]
+> [An overview of Azure SQL Database Backup storage redundancy](automated-backups-overview.md#backup-storage-redundancy)

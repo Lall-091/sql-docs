@@ -1,11 +1,11 @@
 ---
-title: Use Go to query
+title: Use Go to Query
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: "Quickstart: Use Go to create a program that connects to a database in Azure SQL Database or Azure SQL Managed Instance, and runs queries."
 author: dlevy-msft
 ms.author: dlevy
 ms.reviewer: wiassaf, mathoma, randolphwest
-ms.date: 12/01/2023
+ms.date: 06/13/2025
 ms.service: azure-sql
 ms.subservice: connect
 ms.topic: quickstart
@@ -78,20 +78,20 @@ Get the connection information you need to connect to the database. You'll need 
    ```sql
    CREATE SCHEMA TestSchema;
    GO
-   
+
    CREATE TABLE TestSchema.Employees (
        Id INT IDENTITY(1, 1) NOT NULL PRIMARY KEY,
        Name NVARCHAR(50),
        Location NVARCHAR(50)
    );
    GO
-   
+
    INSERT INTO TestSchema.Employees (Name, Location)
    VALUES (N'Jared', N'Australia'),
        (N'Nikita', N'India'),
        (N'Astrid', N'Germany');
    GO
-   
+
    SELECT * FROM TestSchema.Employees;
    GO
    ```
@@ -107,7 +107,7 @@ Get the connection information you need to connect to the database. You'll need 
 
 1. Create a file named `sample.go` in the `SqlServerSample` folder.
 
-1. In the file, paste this code. Add the values for your server and database. This example uses the Golang [context methods](https://go.dev/pkg/context/) to make sure there's an active connection.
+1. In the file, paste this code. Add the values for your server and database. This example uses the Golang [context methods](https://pkg.go.dev/context) to make sure there's an active connection.
 
    ```go
    package main
@@ -333,6 +333,6 @@ Get the connection information you need to connect to the database. You'll need 
 
 ## Related content
 
-- [Tutorial: Design a relational database in Azure SQL Database using SSMS](design-first-database-tutorial.md)
+- [Tutorial: Design a relational database in Azure SQL Database](design-first-database-tutorial.md)
 - [Golang driver for SQL Server](https://github.com/microsoft/go-mssqldb)
 - [Report issues or ask questions](https://github.com/microsoft/go-mssqldb/issues)

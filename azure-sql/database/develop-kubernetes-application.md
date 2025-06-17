@@ -1,15 +1,18 @@
 ---
-title: Develop a Kubernetes application
+title: Develop a Kubernetes Application
 titleSuffix: Azure SQL Database
 description: Learn how to develop a modern application using Python, Docker Containers, Kubernetes, and Azure SQL Database.
 author: BuckWoody
 ms.author: bwoody
 ms.reviewer: wiassaf, damauri, mathoma
-ms.date: 12/22/2023
+ms.date: 06/13/2025
 ms.service: azure-sql-database
 ms.subservice: development
 ms.topic: tutorial
-ms.custom: references-regions, devx-track-azurecli
+ms.custom:
+  - references-regions
+  - devx-track-azurecli
+monikerRange: "=azuresql || =azuresql-db "
 ---
 # Develop a Kubernetes application for Azure SQL Database
 
@@ -21,13 +24,13 @@ In this tutorial, learn how to develop a modern application using Python, Docker
 
 Modern application development has several challenges. From selecting a "stack" of front-end through data storage and processing from several competing standards, through ensuring the highest levels of security and performance, developers are required to ensure the application scales and performs well and is supportable on multiple platforms. For that last requirement, bundling up the application into Container technologies such as Docker and deploying multiple Containers onto the Kubernetes platform is now de rigueur in application development.  
 
-In this example, we explore using Python, Docker Containers, and Kubernetes - all running on the Microsoft Azure platform. Using Kubernetes means that you also have the flexibility of using local environments or even other clouds for a seamless and consistent deployment of your application, and allows for multicloud deployments for even higher resiliency. We'll also use Microsoft Azure SQL Database for a service-based, scalable, highly resilient and secure environment for the data storage and processing. In fact, in many cases, other applications are often using Microsoft Azure SQL Database already, and this sample application can be used to further use and enrich that data.  
+In this example, we explore using Python, Docker Containers, and Kubernetes - all running on the Microsoft Azure platform. Using Kubernetes means that you also have the flexibility of using local environments or even other clouds for a seamless and consistent deployment of your application, and allows for multicloud deployments for even higher resiliency. We'll also use Microsoft Azure SQL Database for a service-based, scalable, highly resilient, and secure environment for the data storage and processing. In fact, in many cases, other applications are often using Microsoft Azure SQL Database already, and this sample application can be used to further use and enrich that data.  
 
 This example is fairly comprehensive in scope, but uses the simplest application, database and deployment to illustrate the process. You can adapt this sample to be far more robust, even including using the latest technologies for the returned data. It's a useful learning tool to create a pattern for other applications.
 
 ## Use Python, Docker Containers, Kubernetes, and the AdventureWorksLT sample database in a practical example
 
-The AdventureWorks (fictitious) company uses a database that stores data about Sales and Marketing, Products, Customers and Manufacturing. It also contains views and stored procedures that join information about the products, such as the product name, category, price, and a brief description. 
+The AdventureWorks (fictitious) company uses a database that stores data about Sales and Marketing, Products, Customers, and Manufacturing. It also contains views and stored procedures that join information about the products, such as the product name, category, price, and a brief description. 
 
 The AdventureWorks Development team wants to create a proof-of-concept (PoC) that returns data from a view in the `AdventureWorksLT` database, and make them available as a REST API. Using this PoC, the Development team will create a more scalable and multicloud ready application for the Sales team. They have selected the Microsoft Azure platform for all aspects of deployment. The PoC is using the following elements:
 
@@ -72,7 +75,7 @@ For the PoC, the team requires the following prerequisites:
 1. The team is using the `ConfigParser` package for controlling and setting configuration variables. 
     - You can [install the configparser package with *pip* commands](https://pypi.org/project/configparser/).
 1. The team is using the *Flask package* for a web interface for the application. 
-    - You can [install the Python version of the Flask library](https://flask.palletsprojects.com/en/2.3.x/installation/).
+    - You can [install the Python version of the Flask library](https://flask.palletsprojects.com/en/stable/installation).
 1. Next, the team installed the Azure CLI tool, easily identified with `az` syntax. This cross-platform tool allows a command-line and scripted approach to the PoC, so that they can repeat the steps as they make changes and improvements. 
     - You can [download and install Azure CLI tool](/cli/azure/install-azure-cli).
 1. With Azure CLI set up, the team signs in to their Azure subscription, and sets the subscription name they used for the PoC. They then ensured the Azure SQL Database server and database is accessible to the subscription:
@@ -98,7 +101,7 @@ For the PoC, the team requires the following prerequisites:
 
 1. The Development team creates an Azure SQL Database with the `AdventureWorksLT` sample database installed, using a SQL authenticated login.
 
-   AdventureWorks has standardized on the [Microsoft SQL Server Relational Database Management System platform](https://www.microsoft.com/sql-server/), and the Development team wants to use a managed service for the database rather than installing locally. Using Azure SQL Database allows this managed service to be completely code-compatible wherever they run the SQL Server engine: on-premises, in a Container, in Linux or Windows, or even in an Internet of Things (IoT) environment.
+   AdventureWorks has standardized on the [Microsoft SQL Server Relational Database Management System platform](https://www.microsoft.com/sql-server), and the Development team wants to use a managed service for the database rather than installing locally. Using Azure SQL Database allows this managed service to be completely code-compatible wherever they run the SQL Server engine: on-premises, in a Container, in Linux or Windows, or even in an Internet of Things (IoT) environment.
 
    1. During creation, they used the [Azure Management Portal to set the Firewall for the application](firewall-create-server-level-portal-quickstart.md?view=azuresqldb-current&preserve-view=true) to the local development machine, and changed the default you see here to enable **Allow all Azure Services**, and also [retrieved the connection credentials](azure-sql-python-quickstart.md?view=azuresqldb-current&preserve-view=true&tabs=windows%2Csql-auth#configure-the-local-connection-string).
 
@@ -150,7 +153,7 @@ Next, the Development team created a simple Python application that opens a conn
    1. Create connection to Azure SQL Database using the `config.ini` file values.
    1. Connect to Azure SQL Database using the `pyodbc` package.
    1. Create the SQL query to run against the database.
-   1. Create the class that will be used to return the data from the API.
+   1. Create the class used to return the data from the API.
    1. Set the API endpoint to the `Products` class.
    1. Finally, start the app on default Flask port 5000.
 
@@ -160,31 +163,31 @@ Next, the Development team created a simple Python application that opens a conn
    from flask import Flask
    from flask_restful import Resource, Api
    import pyodbc
-   
+
    # Load the variables from the .env file
    load_dotenv()
-   
+
    # Create the Flask-RESTful Application
    app = Flask(__name__)
    api = Api(app)
-   
+
    # Get to Azure SQL Database connection information using the config.ini file values
    server_name = os.getenv('SQL_SERVER_ENDPOINT')
    database_name = os.getenv('SQL_SERVER_DATABASE')
    user_name = os.getenv('SQL_SERVER_USERNAME')
    password = os.getenv('SQL_SERVER_PASSWORD')
-   
+
    # Create connection to Azure SQL Database using the config.ini file values
    ServerName = config.get('Connection', 'SQL_SERVER_ENDPOINT')
    DatabaseName = config.get('Connection', 'SQL_SERVER_DATABASE')
    UserName = config.get('Connection', 'SQL_SERVER_USERNAME')
    PasswordValue = config.get('Connection', 'SQL_SERVER_PASSWORD')
-   
+
    # Connect to Azure SQL Database using the pyodbc package
    # Note: You may need to install the ODBC driver if it is not already there. You can find that at:
    # https://learn.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server
    connection = pyodbc.connect(f'Driver=ODBC Driver 17 for SQL Server;Server={ServerName};Database={DatabaseName};uid={UserName};pwd={PasswordValue}')
-   
+
    # Create the SQL query to run against the database
    def query_db():
        cursor = connection.cursor()
@@ -192,17 +195,17 @@ Next, the Development team created a simple Python application that opens a conn
        result = cursor.fetchone()
        cursor.close()
        return result
-   
+
    # Create the class that will be used to return the data from the API
    class Products(Resource):
        def get(self):
            result = query_db()
            json_result = {} if (result == None) else json.loads(result[0])     
            return json_result, 200
-   
+
    # Set the API endpoint to the Products class
    api.add_resource(Products, '/products')
-   
+
    # Start App on default Flask port 5000
    if __name__ == "__main__":
        app.run(debug=True)
@@ -219,10 +222,9 @@ Next, the Development team created a simple Python application that opens a conn
    >
    > For more information, review [a complete example on how to create API with Python and Azure SQL Database](https://github.com/Azure-Samples/azure-sql-db-python-rest-api/).
 
-
 ## Deploy the application to a Docker container
 
-A Container is a reserved, protected space in a computing system that provides isolation and encapsulation. To create a container, use a Manifest file, which is simply a text file describing the binaries and code you wish to contain. Using a Container Runtime (such as Docker), you can then create a binary image that has all of the files you want to run and reference. From there, you can "run" the binary image, and that is called a Container, which you can reference as if it were a full computing system. It's a smaller, simpler way to abstract your application runtimes and environment than using a full virtual machine. For more information, see [Containers and Docker](/dotnet/architecture/microservices/container-docker-introduction/docker-defined).
+A Container is a reserved, protected space in a computing system that provides isolation and encapsulation. To create a container, use a Manifest file, which is simply a text file describing the binaries and code you wish to contain. Using a Container Runtime (such as Docker), you can then create a binary image that has all of the files you want to run and reference. From there, you can "run" the binary image, the Container, which you can reference as if it were a full computing system. It's a smaller, simpler way to abstract your application runtimes and environment than using a full virtual machine. For more information, see [Containers and Docker](/dotnet/architecture/microservices/container-docker-introduction/docker-defined).
 
 The team started with a DockerFile (the Manifest) that layers the elements of what the team wants to use. They start with a base Python image that already has the `pyodbc`
 libraries installed, and then they run all commands necessary to contain the program and config file in the previous step.
@@ -237,19 +239,19 @@ The following Dockerfile has the following steps:
 
    ```dockerfile
    # syntax=docker/dockerfile:1
-   
+
    # Start with a Container binary that already has Python and pyodbc installed
    FROM laudio/pyodbc
-   
+
    # Create a Working directory for the application
    WORKDIR /flask2sql
-   
+
    # Copy all of the code from the current directory into the WORKDIR
    COPY . .
-   
+
    # Install the libraries that are required
    RUN pip install -r ./requirements.txt
-   
+
    # Once the container starts, run the application, and open all TCP/IP ports 
    CMD ["python3", "-m" , "flask", "run", "--host=0.0.0.0"]
    ```
@@ -416,7 +418,7 @@ Using the IP Address (Endpoint) they obtained in the last step, the team checks 
 
 ## Clean up
 
-With the application created, edited, documented and tested, the team can now "tear down" the application. By keeping everything in a single resource group in Microsoft Azure, it's a simple matter of deleting the PoC resource group using the `az CLI` utility:
+With the application created, edited, documented, and tested, the team can now "tear down" the application. By keeping everything in a single resource group in Microsoft Azure, it's a simple matter of deleting the PoC resource group using the `az CLI` utility:
 
 ```azurecli
 az group delete -n ReplaceWith_PoCResourceGroupName -y
@@ -436,5 +438,5 @@ del c:\users\ReplaceWith_YourUserName\.kube\config
 
 - [Application development overview - SQL Database & SQL Managed Instance](develop-overview.md?view=azuresqldb-current&preserve-view=true)
 - [Connect to and query Azure SQL Database using Python and the pyodbc driver](azure-sql-python-quickstart.md?view=azuresqldb-current&preserve-view=true&tabs=windows%2Csql-inter)
-- [Azure SQL Database dev container template](local-dev-experience-dev-containers.md)
+- [What are Dev Container Templates for Azure SQL Database?](local-dev-experience-dev-containers.md)
 - [Browse code samples for Azure SQL Database](/samples/browse/?products=azure-sql-database%2Cazure-sql-managed-instance%2Cazure-sqlserver-vm&expanded=azure)

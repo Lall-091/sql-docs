@@ -4,7 +4,7 @@ description: Learn how to use Java and JDBC with an Azure SQL Database.
 author: jdubois
 ms.author: judubois
 ms.reviewer: mathoma
-ms.date: 12/07/2023
+ms.date: 06/13/2025
 ms.service: azure-sql-database
 ms.subservice: development
 ms.topic: quickstart
@@ -13,13 +13,14 @@ ms.custom:
   - devx-track-azurecli
   - mode-api
 ms.devlang: java
-monikerRange: "= azuresql || = azuresql-db"
+monikerRange: "=azuresql || =azuresql-db"
 ---
 
 # Use Java and JDBC with Azure SQL Database
+
 [!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-This topic demonstrates creating a sample application that uses Java and [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) to store and retrieve information in [Azure SQL Database](/azure/sql-database/).
+This article demonstrates creating a sample application that uses Java and [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) to store and retrieve information in [Azure SQL Database](/azure/sql-database/).
 
 JDBC is the standard Java API to connect to traditional relational databases.
 
@@ -62,13 +63,13 @@ az group create \
 ```
 
 > [!NOTE]
-> We use the `jq` utility to display JSON data and make it more readable. This utility is installed by default on [Azure Cloud Shell](https://shell.azure.com/). If you don't like that utility, you can safely remove the `| jq` part of all the commands we'll use.
+> We use the `jq` utility to display JSON data and make it more readable. This utility is installed by default on [Azure Cloud Shell](https://portal.azure.com/#cloudshell). If you don't like that utility, you can safely remove the `| jq` part of all the commands we'll use.
 
 ## Create a database
 
-The first thing we'll create is a managed [logical server](logical-servers.md) for Azure SQL Database.
+The first thing we'll create is a [logical server](logical-servers.md) for Azure SQL Database.
 
-In [Azure Cloud Shell](https://shell.azure.com/), run the following command:
+In [Azure Cloud Shell](https://portal.azure.com/#cloudshell), run the following command:
 
 ```azurecli
 az sql server create \
@@ -234,7 +235,7 @@ You can now execute this main class with your favorite tool:
 
 The application should connect to the Azure SQL Database, create a database schema, and then close the connection, as you should see in the console logs:
 
-```
+```console
 [INFO   ] Loading application properties 
 [INFO   ] Connecting to the database 
 [INFO   ] Database connection test: demo 
@@ -312,7 +313,7 @@ public class Todo {
 
 This class is a domain model mapped on the `todo` table that you created when executing the *schema.sql* script.
 
-## Insert data 
+## Insert data
 
 In the *src/main/java/DemoApplication.java* file, after the main method, add the following method to insert data into the database:
 
@@ -339,7 +340,7 @@ insertData(todo, connection);
 
 Executing the main class should now produce the following output:
 
-```
+```console
 [INFO   ] Loading application properties 
 [INFO   ] Connecting to the database 
 [INFO   ] Database connection test: demo 
@@ -381,7 +382,7 @@ todo = readData(connection);
 
 Executing the main class should now produce the following output:
 
-```
+```console
 [INFO   ] Loading application properties 
 [INFO   ] Connecting to the database 
 [INFO   ] Database connection test: demo 
@@ -422,7 +423,7 @@ updateData(todo, connection);
 
 Executing the main class should now produce the following output:
 
-```
+```console
 [INFO   ] Loading application properties 
 [INFO   ] Connecting to the database 
 [INFO   ] Database connection test: demo 
@@ -460,7 +461,7 @@ deleteData(todo, connection);
 
 Executing the main class should now produce the following output:
 
-```
+```console
 [INFO   ] Loading application properties 
 [INFO   ] Connecting to the database 
 [INFO   ] Database connection test: demo 
@@ -489,8 +490,8 @@ az group delete \
     --yes
 ```
 
-## Next steps
+## Related content
 
-- [Design your first database in Azure SQL Database](design-first-database-tutorial.md)  
-- [Microsoft JDBC Driver for SQL Server](https://github.com/microsoft/mssql-jdbc)  
+- [Tutorial: Design a relational database in Azure SQL Database](design-first-database-tutorial.md)
+- [Microsoft JDBC Driver for SQL Server](https://github.com/microsoft/mssql-jdbc)
 - [Report issues/ask questions](https://github.com/microsoft/mssql-jdbc/issues)

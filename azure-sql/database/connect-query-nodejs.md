@@ -1,19 +1,23 @@
 ---
-title: Use Node.js to query a database
+title: "Use Node.js to Query a Database"
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: How to use Node.js to create a program that connects to a database in Azure SQL Database or Azure SQL Managed Instance, and query it using T-SQL statements.
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: wiassaf, mathoma, v-masebo
-ms.date: 12/19/2022
+ms.date: 06/13/2025
 ms.service: azure-sql
 ms.subservice: connect
 ms.topic: quickstart
-ms.custom: sqldbrb=2, devx-track-js, mode-api
+ms.custom:
+  - sqldbrb=2
+  - devx-track-js
+  - mode-api
 ms.devlang: javascript
-monikerRange: "= azuresql || = azuresql-db || = azuresql-mi"
+monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
 ---
 # Quickstart: Use Node.js to query a database in Azure SQL Database or Azure SQL Managed Instance
+
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 In this quickstart, you use Node.js to connect to a database and query data.
@@ -61,9 +65,9 @@ Get the connection information you need to connect to the database. You'll need 
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
 
-2. Go to the **SQL Databases**  or **SQL Managed Instances** page.
+1. Go to the **SQL Databases**  or **SQL Managed Instances** page.
 
-3. On the **Overview** page, review the fully qualified server name next to **Server name** for a database in Azure SQL Database or the fully qualified server name (or IP address) next to **Host** for an Azure SQL Managed Instance or SQL Server on Azure VM. To copy the server name or host name, hover over it and select the **Copy** icon.
+1. On the **Overview** page, review the fully qualified server name next to **Server name** for a database in Azure SQL Database or the fully qualified server name (or IP address) next to **Host** for an Azure SQL Managed Instance or SQL Server on Azure VM. To copy the server name or host name, hover over it and select the **Copy** icon.
 
 > [!NOTE]
 > For connection information for SQL Server on Azure VM, see [Connect to SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server).
@@ -134,7 +138,7 @@ Open a command prompt and create a folder named *sqltest*. Open the folder you c
     async function connectAndQuery() {
         try {
             var poolConnection = await sql.connect(config);
-            
+
             console.log("Reading rows from the Table...");
             var resultSet = await poolConnection.request().query(`SELECT TOP 20 pc.Name as CategoryName,
                 p.name as ProductName 
@@ -166,7 +170,6 @@ Open a command prompt and create a folder named *sqltest*. Open the folder you c
 > [!NOTE]
 > For more information about using managed identity for authentication, complete the tutorial to [access data via managed identity](/azure/app-service/tutorial-connect-msi-sql-database). Details about the Tedious configuration options for Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)) are available in the [Tedious documentation](http://tediousjs.github.io/tedious/api-connection.html).
 
-
 ## Run the code
 
 1. At the command prompt, run the program.
@@ -177,15 +180,10 @@ Open a command prompt and create a folder named *sqltest*. Open the folder you c
 
 1. Verify the top 20 rows are returned and close the application window.
 
-## Next steps
+## Related content
 
 - [Create a Node.js web app in Azure](/azure/app-service/quickstart-nodejs)
-
 - [Configure Node.js apps](/azure/app-service/configure-language-nodejs)
-
 - [Quickstart: Create a JavaScript function in Azure using Visual Studio Code](/azure/azure-functions/create-first-function-vs-code-node)
-
 - [Use SQL bindings in JavaScript Azure Functions](/azure/azure-functions/functions-bindings-azure-sql?pivots=programming-language-javascript)
-
-
 - [Connect using Node.js `tedious` module for SQL Server](/sql/connect/node-js/node-js-driver-for-sql-server)
