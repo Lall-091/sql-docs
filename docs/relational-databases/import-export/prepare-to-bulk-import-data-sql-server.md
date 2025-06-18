@@ -31,7 +31,7 @@ helpviewer_keywords:
   
 -   Obtain required permissions for your user account.  
   
-     The user account in which you use the **bcp** utility, the BULK INSERT statement, or the INSERT ... SELECT * FROM OPENROWSET(BULK...) statement must have the required permissions on the table, which are assigned by the table owner. For more information about permissions that are required by each method, see [bcp Utility](../../tools/bcp-utility.md), [OPENROWSET &#40;Transact-SQL&#41;](../../t-sql/functions/openrowset-transact-sql.md), and [BULK INSERT &#40;Transact-SQL&#41;](../../t-sql/statements/bulk-insert-transact-sql.md).  
+     The user account in which you use the **bcp** utility, the BULK INSERT statement, or the `INSERT ... SELECT * FROM OPENROWSET(BULK...)` statement must have the required permissions on the table, which are assigned by the table owner. For more information about permissions that are required by each method, see [bcp Utility](../../tools/bcp-utility.md), [OPENROWSET (BULK)](../../t-sql/functions/openrowset-bulk-transact-sql.md), and [BULK INSERT &#40;Transact-SQL&#41;](../../t-sql/statements/bulk-insert-transact-sql.md).  
   
 -   Use the bulk-logged recovery model.  
   

@@ -1,10 +1,10 @@
 ---
 title: "CREATE EXTERNAL DATA SOURCE (Transact-SQL) CONNECTION_OPTIONS Argument"
-description: The CREATE EXTERNAL DATA SOURCE CONNECTION_OPTIONS argument can vary depending on the external data provider. This article provides additional detail for connection options depending on the provider.
+description: The CONNECTION_OPTIONS argument provides connection options for CREATE EXTERNAL DATA SOURCE, depending on the provider.
 author: MikeRayMSFT
 ms.author: mikeray
-ms.reviewer: randolphwest, hudequei
-ms.date: 06/11/2025
+ms.reviewer: randolphwest, hudequei, wiassaf
+ms.date: 06/17/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -18,9 +18,11 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 
 # CREATE EXTERNAL DATA SOURCE (Transact-SQL) CONNECTION_OPTIONS
 
+[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-pdw.md)]
+
 This article provides additional detail for `CONNECTION_OPTIONS` depending on the provider. The [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md) `CONNECTION_OPTIONS` argument can vary depending on the external data provider.
 
-The `CONNECTION_OPTIONS` argument for [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md) was first introduced in [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)]. This document applies to [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] for Windows and Linux, and [!INCLUDE [ssbigdataclusters-ss-nover](../../includes/ssbigdataclusters-ver15.md)].
+The `CONNECTION_OPTIONS` argument for [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md) was first introduced in [!INCLUDE[sssql19-md](../../includes/sssql19-md.md)]. This document applies to [!INCLUDE[sssql19-md](../../includes/sssql19-md.md)] for Windows and Linux, as well as [!INCLUDE[ssbigdataclusters-ss-nover](../../includes/ssbigdataclusters-ver15.md)].
 
 - The `key_value_pair` is the keyword and the value for a specific connection option.
 - To use multiple connection options, separate them by a semi-colon.
@@ -44,7 +46,6 @@ Connection string keywords and options for Microsoft OLE DB providers:
 Connection string keywords and options for Microsoft ODBC DB providers:
 
 - Microsoft ODBC Driver for SQL Server: [DSN and Connection String Keywords and Attributes](../../connect/odbc/dsn-connection-string-attribute.md)
-
 - SQL Native Client (deprecated) [ODBC Driver connection string keywords](../../relational-databases/native-client/applications/using-connection-string-keywords-with-sql-server-native-client.md#odbc-driver-connection-string-keywords)
 
 ## Oracle
@@ -166,7 +167,7 @@ You can only specify the key-value pairs that have an entry in the connector con
 You can only specify the key-value pairs that have an entry in the following driver configuration options.
 
 | Key name | Default | Required | Description |
-| --- | --- | --- | --- |
+|:--|:--|:--|:--|
 | `DefaultStringColumnLength` | 255 | No | The maximum number of characters that can be contained in `STRING` columns. The maximum value that you can set for this option is 2147483647. |
 | `noCursorTimeout` | False | No | This option specifies whether the driver allows active cursors on the data source server to expire. When `FALSE`, the data source server will time out idle cursors after the threshold inactivity period set on the server. When set to `TRUE`, the driver prevents the data source server from timing out idle cursors, and there's a risk that if the driver should quit or lose the connection to the server unexpectedly, the cursor remains open on the server indefinitely. You can adjust the threshold for idle cursor timeouts on the MongoDB server, see [MongoDB Server Parameters for a Self-Managed Deployment](https://docs.mongodb.com/v3.0/reference/parameters/) for details. |
 | `SamplingLimit` | 100 | No | The maximum number of records that the driver can sample to generate a temporary schema definition. When this option is set to 0, the driver samples every document in the database.<br /><br />Make sure to configure the driver to sample all the necessary data. Documents that aren't sampled don't get included in the schema definition, and thus don't become available in ODBC applications.<br /><br />Typically, sampling a large number of documents results in a schema definition that is more accurate and better able to represent all the data in the database. However, the sampling process might take longer than expected when many documents are sampled, especially if the database contains complex, nested data structures. |

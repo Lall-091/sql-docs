@@ -1,10 +1,10 @@
 ---
 title: "CREATE EXTERNAL FILE FORMAT (Transact-SQL)"
-description: "CREATE EXTERNAL FILE FORMAT (Transact-SQL) Creates an external file format object defining external data stored in Hadoop, Azure Blob Storage, Azure Data Lake Store or for the input and output streams associated with external streams."
+description: "CREATE EXTERNAL FILE FORMAT creates an external file format object defining external data stored in Hadoop, Azure Blob Storage, Azure Data Lake Store or for the input and output streams associated with external streams."
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest, hudequei
-ms.date: 11/06/2023
+ms.date: 05/13/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -17,13 +17,13 @@ helpviewer_keywords:
   - "PolyBase, external file format"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
 # CREATE EXTERNAL FILE FORMAT (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdbmi-asa-pdw](../../includes/applies-to-version/sqlserver2016-asdbmi-asa-pdw.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-pdw.md)]
 
-Creates an external file format object defining external data stored in Hadoop, Azure Blob Storage, Azure Data Lake Store or for the input and output streams associated with external streams. Creating an external file format is a prerequisite for creating an External Table. By creating an External File Format, you specify the actual layout of the data referenced by an external table. To create an External Table, see [CREATE EXTERNAL TABLE (Transact-SQL)](../../t-sql/statements/create-external-table-transact-sql.md).
+Creates an external file format object defining external data stored in Hadoop, Azure Blob Storage, Azure Data Lake Store or for the input and output streams associated with external streams. Creating an external file format is a prerequisite for creating an External Table. By creating an External File Format, you specify the actual layout of the data referenced by an external table. To create an External Table, see [CREATE EXTERNAL TABLE (Transact-SQL)](create-external-table-transact-sql.md).
 
 The following file formats are supported:
 
@@ -31,25 +31,25 @@ The following file formats are supported:
 
 - **Hive RCFile**
 
-  Doesn't apply to [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)], or [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)] .
-  
+  Doesn't apply to [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], or [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)].
+
 - **Hive ORC**
 
-  Doesn't apply to [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)], or [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)] .
+  Doesn't apply to [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], or [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)].
 
 - **Parquet**
 
 - **JSON**
 
-  Applies to Azure SQL Edge only. For information on using OPENROWSET to import JSON data in other platforms, see [Import JSON documents into SQL Server](../../relational-databases/json/import-json-documents-into-sql-server.md) or [Query JSON files using serverless SQL pool in Azure Synapse Analytics](/azure/synapse-analytics/sql/query-json-files).
+  Applies to Azure SQL Edge *only*. For information on using `OPENROWSET` to import JSON data in other platforms, see [Import JSON documents into SQL Server](../../relational-databases/json/import-json-documents-into-sql-server.md) or [Query JSON files using serverless SQL pool in Azure Synapse Analytics](/azure/synapse-analytics/sql/query-json-files).
 
 - **Delta**
 
-  Applies only to [serverless SQL pools in Azure Synapse Analytics](/azure/synapse-analytics/sql/query-delta-lake-format) and [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)].
-
-## Syntax
+  Applies only to [serverless SQL pools in Azure Synapse Analytics](/azure/synapse-analytics/sql/query-delta-lake-format), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)] and later versions. You can query [Delta Lake version 1.0](https://github.com/delta-io/delta/releases/tag/v1.0.1). Changes introduced since, in [Delta Lake 1.2](https://github.com/delta-io/delta/releases/tag/v1.2.0), like renaming columns are not supported. If you are using the higher versions of Delta with delete vectors, v2 checkpoints, and other features, consider using other query engines like [Microsoft Fabric SQL analytics endpoint for Lakehouses](/fabric/data-engineering/lakehouse-sql-analytics-endpoint).
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
+
+## Syntax
 
 ### [Delimited text](#tab/delimited)
 
@@ -77,6 +77,7 @@ WITH (
 }
 ```
 <!---'org.apache.hadoop.io.compress.DefaultCodec' removed from delimited text -->
+
 ### [RC](#tab/rc)
 
 ```syntaxsql
@@ -140,7 +141,7 @@ WITH (
 ### [Delta table](#tab/delta)
 
 ```syntaxsql
--- Create an external file format for delta table files (serverless SQL pools in Synapse analytics and SQL Server 2022).
+-- Create an external file format for delta table files
 CREATE EXTERNAL FILE FORMAT file_format_name
 WITH (
          FORMAT_TYPE = DELTA
@@ -155,7 +156,7 @@ WITH (
 
 Specifies a name for the external file format.
 
-### FORMAT_TYPE 
+### FORMAT_TYPE
 
 Specifies the format of the external data.
 
@@ -197,44 +198,40 @@ Serverless SQL pools don't support the `DATE_FORMAT` option.
 
 ### DATA_COMPRESSION = *data_compression_method*
 
-Specifies the data compression method for the external data. When DATA_COMPRESSION isn't specified, the default is uncompressed data.
+Specifies the data compression method for the external data. When `DATA_COMPRESSION` isn't specified, the default is uncompressed data.
 
-To work properly, Gzip compressed files must have the ".gz" file extension.
+To work properly, Gzip compressed files must have the `.gz` file extension.
 
 #### [Delimited text](#tab/delimited)
 
-The DELIMITEDTEXT format type supports this compression method:
-
-- DATA_COMPRESSION = `org.apache.hadoop.io.compress.GzipCodec`
+The `DELIMITEDTEXT` format type supports this compression method: `DATA_COMPRESSION = org.apache.hadoop.io.compress.GzipCodec`
 <!--- - DATA COMPRESSION ='org.apache.hadoop.io.compress.DefaultCodec' removed from delimited text -->
 
 #### [RC](#tab/rc)
 
-The RCFILE format type supports this compression method:
-
-- DATA_COMPRESSION = `org.apache.hadoop.io.compress.DefaultCodec`
+The RCFILE format type supports this compression method: `DATA_COMPRESSION = org.apache.hadoop.io.compress.DefaultCodec`
 
 #### [ORC](#tab/orc)
 
 The ORC file format type supports these compression methods:
 
-- DATA_COMPRESSION = `org.apache.hadoop.io.compress.DefaultCodec`
-- DATA_COMPRESSION = `org.apache.hadoop.io.compress.SnappyCodec`
+- `DATA_COMPRESSION = org.apache.hadoop.io.compress.DefaultCodec`
+- `DATA_COMPRESSION = org.apache.hadoop.io.compress.SnappyCodec`
 
 #### [Parquet](#tab/parquet)
 
 The PARQUET file format type supports the following compression methods:
 
-- DATA_COMPRESSION = `org.apache.hadoop.io.compress.GzipCodec`
-- DATA_COMPRESSION = `org.apache.hadoop.io.compress.SnappyCodec`
+- `DATA_COMPRESSION = org.apache.hadoop.io.compress.GzipCodec`
+- `DATA_COMPRESSION = org.apache.hadoop.io.compress.SnappyCodec`
 
 #### [JSON](#tab/json)
 
 The JSON file format type supports the following compression methods:
 
-- DATA_COMPRESSION = `org.apache.hadoop.io.compress.GzipCodec`
-- DATA_COMPRESSION = `org.apache.hadoop.io.compress.SnappyCodec`
-- DATA_COMPRESSION = `org.apache.hadoop.io.compress.DefaultCodec`
+- `DATA_COMPRESSION = org.apache.hadoop.io.compress.GzipCodec`
+- `DATA_COMPRESSION = org.apache.hadoop.io.compress.SnappyCodec`
+- `DATA_COMPRESSION = org.apache.hadoop.io.compress.DefaultCodec`
 
 ### [Delta table](#tab/delta)
 
@@ -261,7 +258,7 @@ Examples:
 
 `STRING_DELIMITER = *string_delimiter*`
 
-Specifies a character that encloses the textual values in the text-delimited file. The default is the empty string "". The value of `STRING_DELIMITER` is functionally equivalent to the [FIELDQUOTE](../functions/openrowset-transact-sql.md#fieldquote--field_quote) option in the `OPENROWSET` function.
+Specifies a character that encloses the textual values in the text-delimited file. The default is the empty string "". The value of `STRING_DELIMITER` is functionally equivalent to the [FIELDQUOTE](../functions/openrowset-bulk-transact-sql.md#fieldquote--field_quote) option in the `OPENROWSET BULK` function.
 
 > [!NOTE] 
 > Hadoop tables in Synapse dedicated SQL pools enable you to specify one or more characters in STRING_DELIMITER. In serverless SQL pool, you can use only one character.
@@ -336,20 +333,20 @@ Notes about the table:
 
 External file format can describe a large number of date and time formats:
 
-|datetime|smalldatetime|date|datetime2|datetimeoffset|
+|**datetime**|**smalldatetime**|**date**|**datetime2**|**datetimeoffset**|
 |--------------|-------------------|----------|---------------|--------------------|
-|[M[M]]M-[d]d-[yy]yy HH:mm:ss[.fff]|[M[M]]M-[d]d-[yy]yy HH:mm[:00]|[M[M]]M-[d]d-[yy]yy|[M[M]]M-[d]d-[yy]yy HH:mm:ss[.fffffff]|[M[M]]M-[d]d-[yy]yy HH:mm:ss[.fffffff] zzz|
-|[M[M]]M-[d]d-[yy]yy hh:mm:ss[.fff][tt]|[M[M]]M-[d]d-[yy]yy hh:mm[:00][tt]||[M[M]]M-[d]d-[yy]yy hh:mm:ss[.fffffff][tt]|[M[M]]M-[d]d-[yy]yy hh:mm:ss[.fffffff][tt] zzz|
-|[M[M]]M-[yy]yy-[d]d HH:mm:ss[.fff]|[M[M]]M-[yy]yy-[d]d HH:mm[:00]|[M[M]]M-[yy]yy-[d]d|[M[M]]M-[yy]yy-[d]d HH:mm:ss[.fffffff]|[M[M]]M-[yy]yy-[d]d HH:mm:ss[.fffffff] zzz|
-|[M[M]]M-[yy]yy-[d]d hh:mm:ss[.fff][tt]|[M[M]]M-[yy]yy-[d]d hh:mm[:00][tt]||[M[M]]M-[yy]yy-[d]d hh:mm:ss[.fffffff][tt]|[M[M]]M-[yy]yy-[d]d hh:mm:ss[.fffffff][tt] zzz|
-|[yy]yy-[M[M]]M-[d]d HH:mm:ss[.fff]|[yy]yy-[M[M]]M-[d]d HH:mm[:00]|[yy]yy-[M[M]]M-[d]d|[yy]yy-[M[M]]M-[d]d HH:mm:ss[.fffffff]|[yy]yy-[M[M]]M-[d]d HH:mm:ss[.fffffff]  zzz|
-|[yy]yy-[M[M]]M-[d]d hh:mm:ss[.fff][tt]|[yy]yy-[M[M]]M-[d]d hh:mm[:00][tt]||[yy]yy-[M[M]]M-[d]d hh:mm:ss[.fffffff][tt]|[yy]yy-[M[M]]M-[d]d hh:mm:ss[.fffffff][tt] zzz|
-|[yy]yy-[d]d-[M[M]]M HH:mm:ss[.fff]|[yy]yy-[d]d-[M[M]]M HH:mm[:00]|[yy]yy-[d]d-[M[M]]M|[yy]yy-[d]d-[M[M]]M HH:mm:ss[.fffffff]|[yy]yy-[d]d-[M[M]]M HH:mm:ss[.fffffff]  zzz|
-|[yy]yy-[d]d-[M[M]]M hh:mm:ss[.fff][tt]|[yy]yy-[d]d-[M[M]]M hh:mm[:00][tt]||[yy]yy-[d]d-[M[M]]M hh:mm:ss[.fffffff][tt]|[yy]yy-[d]d-[M[M]]M hh:mm:ss[.fffffff][tt] zzz|
-|[d]d-[M[M]]M-[yy]yy HH:mm:ss[.fff]|[d]d-[M[M]]M-[yy]yy HH:mm[:00]|[d]d-[M[M]]M-[yy]yy|[d]d-[M[M]]M-[yy]yy HH:mm:ss[.fffffff]|[d]d-[M[M]]M-[yy]yy HH:mm:ss[.fffffff] zzz|
-|[d]d-[M[M]]M-[yy]yy hh:mm:ss[.fff][tt]|[d]d-[M[M]]M-[yy]yy hh:mm[:00][tt]||[d]d-[M[M]]M-[yy]yy hh:mm:ss[.fffffff][tt]|[d]d-[M[M]]M-[yy]yy hh:mm:ss[.fffffff][tt] zzz|
-|[d]d-[yy]yy-[M[M]]M HH:mm:ss[.fff]|[d]d-[yy]yy-[M[M]]M HH:mm[:00]|[d]d-[yy]yy-[M[M]]M|[d]d-[yy]yy-[M[M]]M HH:mm:ss[.fffffff]|[d]d-[yy]yy-[M[M]]M HH:mm:ss[.fffffff]  zzz|
-|[d]d-[yy]yy-[M[M]]M hh:mm:ss[.fff][tt]|[d]d-[yy]yy-[M[M]]M hh:mm[:00][tt]||[d]d-[yy]yy-[M[M]]M hh:mm:ss[.fffffff][tt]|[d]d-[yy]yy-[M[M]]M hh:mm:ss[.fffffff][tt] zzz|
+|`[M[M]]M-[d]d-[yy]yy HH:mm:ss[.fff]`|`[M[M]]M-[d]d-[yy]yy HH:mm[:00]`|`[M[M]]M-[d]d-[yy]yy`|`[M[M]]M-[d]d-[yy]yy HH:mm:ss[.fffffff]`|`[M[M]]M-[d]d-[yy]yy HH:mm:ss[.fffffff] zzz`|
+|`[M[M]]M-[d]d-[yy]yy hh:mm:ss[.fff][tt]`|`[M[M]]M-[d]d-[yy]yy hh:mm[:00][tt]`||`[M[M]]M-[d]d-[yy]yy hh:mm:ss[.fffffff][tt]`|`[M[M]]M-[d]d-[yy]yy hh:mm:ss[.fffffff][tt] zzz`|
+|`[M[M]]M-[yy]yy-[d]d HH:mm:ss[.fff]`|`[M[M]]M-[yy]yy-[d]d HH:mm[:00]`|`[M[M]]M-[yy]yy-[d]d`|`[M[M]]M-[yy]yy-[d]d HH:mm:ss[.fffffff]`|`[M[M]]M-[yy]yy-[d]d HH:mm:ss[.fffffff] zzz`|
+|`[M[M]]M-[yy]yy-[d]d hh:mm:ss[.fff][tt]`|`[M[M]]M-[yy]yy-[d]d hh:mm[:00][tt]`||`[M[M]]M-[yy]yy-[d]d hh:mm:ss[.fffffff][tt]`|`[M[M]]M-[yy]yy-[d]d hh:mm:ss[.fffffff][tt] zzz`|
+|`[yy]yy-[M[M]]M-[d]d HH:mm:ss[.fff]`|`[yy]yy-[M[M]]M-[d]d HH:mm[:00]`|`[yy]yy-[M[M]]M-[d]d`|`[yy]yy-[M[M]]M-[d]d HH:mm:ss[.fffffff]`|`[yy]yy-[M[M]]M-[d]d HH:mm:ss[.fffffff]  zzz`|
+|`[yy]yy-[M[M]]M-[d]d hh:mm:ss[.fff][tt]`|`[yy]yy-[M[M]]M-[d]d hh:mm[:00][tt]`||`[yy]yy-[M[M]]M-[d]d hh:mm:ss[.fffffff][tt]`|`[yy]yy-[M[M]]M-[d]d hh:mm:ss[.fffffff][tt] zzz`|
+|`[yy]yy-[d]d-[M[M]]M HH:mm:ss[.fff]`|`[yy]yy-[d]d-[M[M]]M HH:mm[:00]`|`[yy]yy-[d]d-[M[M]]M`|`[yy]yy-[d]d-[M[M]]M HH:mm:ss[.fffffff]`|`[yy]yy-[d]d-[M[M]]M HH:mm:ss[.fffffff]  zzz`|
+|`[yy]yy-[d]d-[M[M]]M hh:mm:ss[.fff][tt]`|`[yy]yy-[d]d-[M[M]]M hh:mm[:00][tt]`||`[yy]yy-[d]d-[M[M]]M hh:mm:ss[.fffffff][tt]`|`[yy]yy-[d]d-[M[M]]M hh:mm:ss[.fffffff][tt] zzz`|
+|`[d]d-[M[M]]M-[yy]yy HH:mm:ss[.fff]`|`[d]d-[M[M]]M-[yy]yy HH:mm[:00]`|`[d]d-[M[M]]M-[yy]yy`|`[d]d-[M[M]]M-[yy]yy HH:mm:ss[.fffffff]`|`[d]d-[M[M]]M-[yy]yy HH:mm:ss[.fffffff] zzz`|
+|`[d]d-[M[M]]M-[yy]yy hh:mm:ss[.fff][tt]`|`[d]d-[M[M]]M-[yy]yy hh:mm[:00][tt]`||`[d]d-[M[M]]M-[yy]yy hh:mm:ss[.fffffff][tt]`|`[d]d-[M[M]]M-[yy]yy hh:mm:ss[.fffffff][tt] zzz`|
+|`[d]d-[yy]yy-[M[M]]M HH:mm:ss[.fff]`|`[d]d-[yy]yy-[M[M]]M HH:mm[:00]`|`[d]d-[yy]yy-[M[M]]M`|`[d]d-[yy]yy-[M[M]]M HH:mm:ss[.fffffff]`|`[d]d-[yy]yy-[M[M]]M HH:mm:ss[.fffffff]  zzz`|
+|`[d]d-[yy]yy-[M[M]]M hh:mm:ss[.fff][tt]`|`[d]d-[yy]yy-[M[M]]M hh:mm[:00][tt]`||`[d]d-[yy]yy-[M[M]]M hh:mm:ss[.fffffff][tt]`|`[d]d-[yy]yy-[M[M]]M hh:mm:ss[.fffffff][tt] zzz`|
 
 Details:
 
@@ -361,9 +358,9 @@ Details:
 
 - Letters enclosed in square brackets are optional.
 
-- The letters `tt` designate [AM|PM|am|pm]. AM is the default. When `tt` is specified, the hour value (hh) must be in the range of 0 to 12.
+- The letters `tt` designate [`AM`|`PM`|`am`|`pm`]. `AM` is the default. When `tt` is specified, the hour value (`hh`) must be in the range of 0 to 12.
 
-- The letters `zzz` designate the time zone offset for the system's current time zone in the format {+|-}HH:ss].
+- The letters `zzz` designate the time zone offset for the system's current time zone in the format `{+|-}HH:ss]`.
 
 #### USE_TYPE_DEFAULT = { TRUE | FALSE }
 
@@ -377,13 +374,13 @@ Details:
 
   - Empty string "" if the column is a string column.
 
-  - 1900-01-01 if the column is a date column.
+  - `1900-01-01` if the column is a date column.
 
   - In [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], `USE_TYPE_DEFAULT=true` is not supported for `FORMAT_TYPE = DELIMITEDTEXT, PARSER_VERSION = '2.0'`.
 
 - FALSE
 
-  Store all missing values as NULL. Any NULL values that are stored by using the word NULL in the delimited text file are imported as the string `NULL`.
+  Store all missing values as `NULL`. Any `NULL` values that are stored by using the word `NULL` in the delimited text file are imported as the string `NULL`.
 
 #### ENCODING = {'UTF8' | 'UTF16'}
 
@@ -423,13 +420,15 @@ Takes a shared lock on the EXTERNAL FILE FORMAT object.
 
 Using compressed files always comes with the tradeoff between transferring less data between the external data source and SQL Server while increasing the CPU usage to compress and decompress the data.
 
-Gzip compressed text files aren't splittable. To improve performance for Gzip compressed text files, we recommend generating multiple files that are all stored in the same directory within the external data source. This file structure allows PolyBase to read and decompress the data faster by using multiple reader and decompression processes. The ideal number of compressed files is the maximum number of data reader processes per compute node. In [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] and [!INCLUDE[ssPDW](../../includes/sspdw-md.md)], the maximum number of data reader processes is 8 per node except [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] Gen2, which is 20 readers per node. In [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], the maximum number of data reader processes per node varies by SLO. See [[!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] loading patterns and strategies](https://blogs.msdn.microsoft.com/sqlcat/2017/05/17/azure-sql-data-warehouse-loading-patterns-and-strategies/) for details.
+Gzip compressed text files aren't splittable. To improve performance for Gzip compressed text files, we recommend generating multiple files that are all stored in the same directory within the external data source. This file structure allows PolyBase to read and decompress the data faster by using multiple reader and decompression processes. The ideal number of compressed files is the maximum number of data reader processes per compute node. In [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] 
+
+In [!INCLUDE[ssPDW](../../includes/sspdw-md.md)], the maximum number of data reader processes is 8 per node. In [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], the maximum number of data reader processes is 20 readers per node. 
 
 ## Examples
 
 ### A. Create a DELIMITEDTEXT external file format
 
-This example creates an external file format named *textdelimited1* for a text-delimited file. The options listed for FORMAT_OPTIONS specify that the fields in the file should be separated using a pipe character `|`. The text file is also compressed with the Gzip codec. If DATA_COMPRESSION isn't specified, the text file is uncompressed.
+This example creates an external file format named *textdelimited1* for a text-delimited file. The options listed for FORMAT_OPTIONS specify that the fields in the file should be separated using a pipe character `|`. The text file is also compressed with the Gzip codec. If `DATA_COMPRESSION` isn't specified, the text file is uncompressed.
 
 For a delimited text file, the data compression method can either be the default Codec, `org.apache.hadoop.io.compress.DefaultCodec`, or the Gzip Codec, `org.apache.hadoop.io.compress.GzipCodec`.
 
@@ -446,7 +445,7 @@ WITH (
 
 ### B. Create an RCFile external file format
 
-This example creates an external file format for a RCFile that uses the `serialization/deserialization` method `org.apache.hadoop.hive.serde2.columnar.LazyBinaryColumnarSerDe`. It also specifies to use the Default Codec for the data compression method. If DATA_COMPRESSION isn't specified, the default is no compression.
+This example creates an external file format for a RCFile that uses the `serialization/deserialization` method `org.apache.hadoop.hive.serde2.columnar.LazyBinaryColumnarSerDe`. It also specifies to use the Default Codec for the data compression method. If `DATA_COMPRESSION` isn't specified, the default is no compression.
 
 ```sql
 CREATE EXTERNAL FILE FORMAT rcfile1
@@ -459,7 +458,7 @@ WITH (
 
 ### C. Create an ORC external file format
 
-This example creates an external file format for an ORC file that compresses the data with the `org.apache.io.compress.SnappyCodec` data compression method. If DATA_COMPRESSION isn't specified, the default is no compression.
+This example creates an external file format for an ORC file that compresses the data with the `org.apache.io.compress.SnappyCodec` data compression method. If `DATA_COMPRESSION` isn't specified, the default is no compression.
 
 ```sql
 CREATE EXTERNAL FILE FORMAT orcfile1
@@ -471,7 +470,7 @@ WITH (
 
 ### D. Create a PARQUET external file format
 
-This example creates an external file format for a Parquet file that compresses the data with the `org.apache.io.compress.SnappyCodec` data compression method. If DATA_COMPRESSION isn't specified, the default is no compression.
+This example creates an external file format for a Parquet file that compresses the data with the `org.apache.io.compress.SnappyCodec` data compression method. If `DATA_COMPRESSION` isn't specified, the default is no compression.
 
 ```sql
 CREATE EXTERNAL FILE FORMAT parquetfile1
@@ -502,7 +501,7 @@ WITH (FORMAT_TYPE = DELIMITEDTEXT,
 
 **Applies to:** Azure SQL Edge.
 
-This example creates an external file format for a JSON file that compresses the data with the `org.apache.io.compress.SnappyCodec` data compression method. If DATA_COMPRESSION isn't specified, the default is no compression. This example applies to Azure SQL Edge and is currently not supported for other SQL products.
+This example creates an external file format for a JSON file that compresses the data with the `org.apache.io.compress.SnappyCodec` data compression method. If `DATA_COMPRESSION` isn't specified, the default is no compression. This example applies to Azure SQL Edge and is currently not supported for other SQL products.
 
 ```sql
 CREATE EXTERNAL FILE FORMAT jsonFileFormat
@@ -514,7 +513,7 @@ WITH (
 
 ### G. Create a Delta table external file format
 
-This example creates an external file format for Delta table type file format. This example applies to [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)]. For more information, see [Virtualize delta table file with PolyBase](../../relational-databases/polybase/virtualize-delta.md).
+This example creates an external file format for Delta table type file format. This example applies to [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)]. For more information, see [Virtualize delta table with PolyBase](../../relational-databases/polybase/virtualize-delta.md).
 
 ```sql
 CREATE EXTERNAL FILE FORMAT DeltaFileFormat
@@ -525,8 +524,8 @@ WITH (
 
 ## Related content
 
-- [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](../../t-sql/statements/create-external-data-source-transact-sql.md)
-- [CREATE EXTERNAL TABLE (Transact-SQL)](../../t-sql/statements/create-external-table-transact-sql.md)
-- [CREATE EXTERNAL TABLE AS SELECT (Transact-SQL)](../../t-sql/statements/create-external-table-as-select-transact-sql.md)
-- [CREATE TABLE AS SELECT &#40;Azure Synapse Analytics&#41;](../../t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md)
+- [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](create-external-data-source-transact-sql.md)
+- [CREATE EXTERNAL TABLE (Transact-SQL)](create-external-table-transact-sql.md)
+- [CREATE EXTERNAL TABLE AS SELECT (CETAS) (Transact-SQL)](create-external-table-as-select-transact-sql.md)
+- [CREATE TABLE AS SELECT](create-table-as-select-azure-sql-data-warehouse.md)
 - [sys.external_file_formats (Transact-SQL)](../../relational-databases/system-catalog-views/sys-external-file-formats-transact-sql.md)

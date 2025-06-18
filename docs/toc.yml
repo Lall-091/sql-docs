@@ -8935,6 +8935,8 @@ items:
             href: tools/visual-studio-code-extensions/github-copilot/limitations-and-known-issues.md
           - name: Quickstarts
             items:
+            - name: Use Agent mode tools
+              href: tools/visual-studio-code-extensions/github-copilot/agent-mode.md
             - name: Generate data for testing and mocking
               href: tools/visual-studio-code-extensions/github-copilot/test-and-mocking-data-generator.md
             - name: Use the business logic explainer
@@ -8953,6 +8955,10 @@ items:
               href: tools/visual-studio-code-extensions/github-copilot/security-analyzer.md
             - name: Use smart query builder
               href: tools/visual-studio-code-extensions/github-copilot/smart-query-builder.md
+        - name: Local SQL Server container
+          items:
+          - name: Overview
+            href: tools/visual-studio-code-extensions/mssql/mssql-local-container.md
         - name: Schema compare
           items:
           - name: Overview
@@ -16537,6 +16543,8 @@ items:
             href: t-sql/functions/openquery-transact-sql.md
           - name: OPENROWSET
             href: t-sql/functions/openrowset-transact-sql.md
+          - name: OPENROWSET(BULK)
+            href: t-sql/functions/openrowset-bulk-transact-sql.md
           - name: OPENXML
             href: t-sql/functions/openxml-transact-sql.md
           - name: PREDICT

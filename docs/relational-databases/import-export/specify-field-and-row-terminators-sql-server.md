@@ -146,7 +146,7 @@ When you bulk import **char** or **nchar** data, the bulk-import command must re
 
   For the `OPENROWSET` bulk rowset provider, terminators can be specified only in the format file (which is required except for large-object data types). If a character data file uses a non-default terminator, it must be defined in the format file. For more information, see [Create a Format File (SQL Server)](../../relational-databases/import-export/create-a-format-file-sql-server.md) and [Use a Format File to Bulk Import Data (SQL Server)](../../relational-databases/import-export/use-a-format-file-to-bulk-import-data-sql-server.md).
 
-  For more information about the `OPENROWSET BULK` clause, see [OPENROWSET](../../t-sql/functions/openrowset-transact-sql.md).
+  For more information about the `OPENROWSET BULK` clause, see [OPENROWSET (BULK)](../../t-sql/functions/openrowset-bulk-transact-sql.md).
 
 ### Specify `\n` as a row terminator for bulk import
 

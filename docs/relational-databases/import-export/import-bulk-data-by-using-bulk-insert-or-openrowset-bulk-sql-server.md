@@ -1,9 +1,9 @@
 ---
-title: "Use BULK INSERT or OPENROWSET(BULK...) to import data to SQL Server"
+title: "Use BULK INSERT or OPENROWSET (BULK...) to Import Data to SQL Server"
 description: Find out how to use Transact-SQL statements to bulk import data from a file to a SQL Server or Azure SQL Database table, including security considerations.
 author: markingmyname
 ms.author: maghan
-ms.date: 09/19/2024
+ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: data-movement
 ms.topic: concept-article
@@ -18,63 +18,74 @@ helpviewer_keywords:
   - "remote data access [SQL Server], bulk importing"
   - "bulk importing [SQL Server], BULK INSERT statement"
   - "Transact-SQL bulk export/import operations"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
 
 # Use BULK INSERT or OPENROWSET(BULK...) to import data to SQL Server
 
 [!INCLUDE [SQL Server Azure SQL Database Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
 
-This article provides an overview of how to use the [!INCLUDE [tsql](../../includes/tsql-md.md)] BULK INSERT statement and the INSERT...SELECT * FROM OPENROWSET(BULK...) statement to bulk import data from a data file into a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or Azure SQL Database table. This article also describes security considerations for using BULK INSERT and OPENROWSET(BULK...), and using these methods to bulk import from a remote data source.
+This article provides an overview of how to use the [!INCLUDE [tsql](../../includes/tsql-md.md)] `BULK INSERT` statement and the `INSERT...SELECT * FROM OPENROWSET(BULK...)` statement to bulk import data from a data file into a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or Azure SQL Database table. 
 
-> [!NOTE]  
-> When you use BULK INSERT or OPENROWSET(BULK...), it is important to understand how [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] version handles impersonation. For more information, see "Security Considerations," later in this topic.
+This article also describes security considerations for using `BULK INSERT` and `OPENROWSET(BULK...)`, and using these methods to bulk import from a remote data source.
+
 
 ## BULK INSERT statement
 
-BULK INSERT loads data from a data file into a table. This functionality is similar to that provided by the **in** option of the **bcp** command; however, the data file is read by the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] process. For a description of the BULK INSERT syntax, see [BULK INSERT (Transact-SQL)](../../t-sql/statements/bulk-insert-transact-sql.md).
+`BULK INSERT` loads data from a data file into a table. This functionality is similar to that provided by the `in` option of the `bcp` command. However, the data file is read by the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] process. For a description of the `BULK INSERT` syntax, see [BULK INSERT (Transact-SQL)](../../t-sql/statements/bulk-insert-transact-sql.md).
 
 ## BULK INSERT examples
 
-- [BULK INSERT](../../t-sql/statements/bulk-insert-transact-sql.md)
-- [Examples of Bulk Import and Export of XML Documents](../../relational-databases/import-export/examples-of-bulk-import-and-export-of-xml-documents-sql-server.md)
-- [Keep Identity Values When Bulk Importing Data](../../relational-databases/import-export/keep-identity-values-when-bulk-importing-data-sql-server.md)
-- [Keep Nulls or Use Default Values During Bulk Import](../../relational-databases/import-export/keep-nulls-or-use-default-values-during-bulk-import-sql-server.md)
-- [Specify Field and Row Terminators](../../relational-databases/import-export/specify-field-and-row-terminators-sql-server.md)
-- [Use a Format File to Bulk Import Data](../../relational-databases/import-export/use-a-format-file-to-bulk-import-data-sql-server.md)
-- [Use Character Format to Import or Export Data](../../relational-databases/import-export/use-character-format-to-import-or-export-data-sql-server.md)
-- [Use Native Format to Import or Export Data](../../relational-databases/import-export/use-native-format-to-import-or-export-data-sql-server.md)
-- [Use Unicode Character Format to Import or Export Data](../../relational-databases/import-export/use-unicode-character-format-to-import-or-export-data-sql-server.md)
-- [Use Unicode Native Format to Import or Export Data](../../relational-databases/import-export/use-unicode-native-format-to-import-or-export-data-sql-server.md)
-- [Use a Format File to Skip a Table Column](../../relational-databases/import-export/use-a-format-file-to-skip-a-table-column-sql-server.md)
-- [Use a Format File to Map Table Columns to Data-File Fields](../../relational-databases/import-export/use-a-format-file-to-map-table-columns-to-data-file-fields-sql-server.md)
+- [BULK INSERT (Transact-SQL)](../../t-sql/statements/bulk-insert-transact-sql.md)
+- [Examples of bulk import and export of XML documents (SQL Server)](examples-of-bulk-import-and-export-of-xml-documents-sql-server.md)
+- [Keep identity values when bulk importing data (SQL Server)](keep-identity-values-when-bulk-importing-data-sql-server.md)
+- [Keep nulls or default values during bulk import (SQL Server)](keep-nulls-or-use-default-values-during-bulk-import-sql-server.md)
+- [Specify field and row terminators (SQL Server)](specify-field-and-row-terminators-sql-server.md)
+- [Use a format file to bulk import data (SQL Server)](use-a-format-file-to-bulk-import-data-sql-server.md)
+- [Use character format to import or export data (SQL Server)](use-character-format-to-import-or-export-data-sql-server.md)
+- [Use native format to import or export data (SQL Server)](use-native-format-to-import-or-export-data-sql-server.md)
+- [Use unicode character format to import or export data (SQL Server)](use-unicode-character-format-to-import-or-export-data-sql-server.md)
+- [Use Unicode Native Format to Import or Export Data (SQL Server)](use-unicode-native-format-to-import-or-export-data-sql-server.md)
+- [Use a Format File to Skip a Table Column (SQL Server)](use-a-format-file-to-skip-a-table-column-sql-server.md)
+- [Use a format file to map table columns to data-file fields (SQL Server)](use-a-format-file-to-map-table-columns-to-data-file-fields-sql-server.md)
 
 ## OPENROWSET(BULK...) Function
 
-The OPENROWSET bulk rowset provider is accessed by calling the OPENROWSET function and specifying the BULK option. The OPENROWSET(BULK...) function allows you to access remote data by connecting to a remote data source, such as a data file, through an OLE DB provider.
+The `OPENROWSET` bulk rowset provider is accessed by calling the `OPENROWSET` function and specifying the `BULK` option. The `OPENROWSET(BULK...)` function allows you to access remote data by connecting to a remote data source, such as a data file, through a data provider.
 
-To bulk import data, call OPENROWSET(BULK...) from a SELECT...FROM clause within an INSERT statement. The basic syntax for bulk importing data is:
+To bulk import data, call `OPENROWSET(BULK...)` from a `SELECT...FROM` clause within an `INSERT` statement. 
 
+The basic syntax for bulk importing data is:
+
+```sql
 INSERT ... SELECT * FROM OPENROWSET(BULK...)
+```
 
-When used in an INSERT statement, OPENROWSET(BULK...) supports table hints. In addition to the regular table hints, such as TABLOCK, the BULK clause can accept the following specialized table hints: IGNORE_CONSTRAINTS (ignores only the CHECK constraints), IGNORE_TRIGGERS, KEEPDEFAULTS, and KEEPIDENTITY. For more information, see [Table Hints (Transact-SQL)](../../t-sql/queries/hints-transact-sql-table.md).
+When used in an `INSERT` statement, `OPENROWSET(BULK...)` supports table hints. In addition to the regular table hints, such as `TABLOCK`, the `BULK` clause can accept the following specialized table hints: 
 
-For information about additional uses of the BULK option, see [OPENROWSET (Transact-SQL)](../../t-sql/functions/openrowset-transact-sql.md).
+- `IGNORE_CONSTRAINTS` (ignores only the CHECK constraints)
+- `IGNORE_TRIGGERS`
+- `KEEPDEFAULTS`
+- `KEEPIDENTITY`
+
+For more information, see [Table hints (Transact-SQL)](../../t-sql/queries/hints-transact-sql-table.md).
+
+For information about additional uses of the BULK option, see [OPENROWSET BULK (Transact-SQL)](../../t-sql/functions/openrowset-bulk-transact-sql.md).
 
 ## INSERT...SELECT * FROM OPENROWSET(BULK...) statements - examples
 
-- [Examples of Bulk Import and Export of XML Documents](../../relational-databases/import-export/examples-of-bulk-import-and-export-of-xml-documents-sql-server.md)
-- [Keep Identity Values When Bulk Importing Data](../../relational-databases/import-export/keep-identity-values-when-bulk-importing-data-sql-server.md)
-- [Keep Nulls or Use Default Values During Bulk Import](../../relational-databases/import-export/keep-nulls-or-use-default-values-during-bulk-import-sql-server.md)
-- [Use a Format File to Bulk Import Data](../../relational-databases/import-export/use-a-format-file-to-bulk-import-data-sql-server.md)
-- [Use Character Format to Import or Export Data](../../relational-databases/import-export/use-character-format-to-import-or-export-data-sql-server.md)
-- [Use a Format File to Skip a Table Column](../../relational-databases/import-export/use-a-format-file-to-skip-a-table-column-sql-server.md)
-- [Use a Format File to Skip a Data Field](../../relational-databases/import-export/use-a-format-file-to-skip-a-data-field-sql-server.md)
-- [Use a Format File to Map Table Columns to Data-File Fields](../../relational-databases/import-export/use-a-format-file-to-map-table-columns-to-data-file-fields-sql-server.md)
+- [Examples of bulk import and export of XML documents (SQL Server)](examples-of-bulk-import-and-export-of-xml-documents-sql-server.md)
+- [Keep identity values when bulk importing data (SQL Server)](keep-identity-values-when-bulk-importing-data-sql-server.md)
+- [Keep nulls or default values during bulk import (SQL Server)](keep-nulls-or-use-default-values-during-bulk-import-sql-server.md)
+- [Use a format file to bulk import data (SQL Server)](use-a-format-file-to-bulk-import-data-sql-server.md)
+- [Use character format to import or export data (SQL Server)](use-character-format-to-import-or-export-data-sql-server.md)
+- [Use a Format File to Skip a Table Column (SQL Server)](use-a-format-file-to-skip-a-table-column-sql-server.md)
+- [Use a format file to skip a data field (SQL Server)](use-a-format-file-to-skip-a-data-field-sql-server.md)
+- [Use a format file to map table columns to data-file fields (SQL Server)](use-a-format-file-to-map-table-columns-to-data-file-fields-sql-server.md)
 
 ## Security considerations
 
-If a user uses a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login, the security profile of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] process account is used. A login using SQL Server authentication can't be authenticated outside of the Database Engine. Therefore, when a BULK INSERT command is initiated by a login using SQL Server authentication, the connection to the data is made using the security context of the SQL Server process account (the account used by the SQL Server Database Engine service).
+If a user uses a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login, the security profile of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] process account is used. A login using SQL Server authentication can't be authenticated outside of the Database Engine. Therefore, when a `BULK INSERT` command is initiated by a login using SQL Server authentication, the connection to the data is made using the security context of the SQL Server process account (the account used by the SQL Server Database Engine service).
 
 To successfully read the source data, you must grant the account used by the SQL Server Database Engine, access to the source data. In contrast, if a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] user logs on by using Windows Authentication, the user can read only those files that can be accessed by the user account, regardless of the security profile of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] process.
 
@@ -84,7 +95,9 @@ For example, consider a user who logged in to an instance of [!INCLUDE [ssNoVers
 
 ## Bulk importing to SQL Server from a remote data file
 
-To use BULK INSERT or INSERT...SELECT \* FROM OPENROWSET(BULK...) to bulk import data from another computer, the data file must be shared between the two computers. To specify a shared data file, use its universal naming convention (UNC) name, which takes the general form, **\\\\**_Servername_**\\**_Sharename_**\\**_Path_**\\**_Filename_. Additionally, the account used to access the data file must have the permissions that are required for reading the file on the remote disk.
+To use `BULK INSERT` or `INSERT...SELECT * FROM OPENROWSET(BULK...)` to bulk import data from another computer, the data file must be shared between the two computers. To specify a shared data file, use its universal naming convention (UNC) name, which takes the general form, `\\Servername\Sharename\Path\Filename`. 
+
+Additionally, the account used to access the data file must have the permissions that are required for reading the file on the remote disk.
 
 For example, the following `BULK INSERT` statement bulk imports data into the `SalesOrderDetail` table of the `AdventureWorks` database from a data file that is named `newdata.txt`. This data file resides in a shared folder named `\dailyorders` on a network share directory named `salesforce` on a system named `computer2`.
 
@@ -94,23 +107,25 @@ BULK INSERT AdventureWorks2022.Sales.SalesOrderDetail
 ```
 
 > [!NOTE]  
-> This restriction does not apply to the **bcp** utility because the client reads the file independently of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
+> This restriction does not apply to the `bcp` utility because the client reads the file independently of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 
 ## Bulk importing from Azure Blob storage
 
-When importing from Azure Blob storage and the data isn't public (anonymous access), create a [DATABASE SCOPED CREDENTIAL](../../t-sql/statements/create-database-scoped-credential-transact-sql.md) based on a SAS key that is encrypted with a [MASTER KEY](../../t-sql/statements/create-master-key-transact-sql.md), and then create an [external database source](../../t-sql/statements/create-external-data-source-transact-sql.md) for use in your BULK INSERT command.
+When importing from Azure Blob storage and the data isn't public (anonymous access), create a [CREATE DATABASE SCOPED CREDENTIAL](../../t-sql/statements/create-database-scoped-credential-transact-sql.md) based on a SAS key that is encrypted with a [CREATE MASTER KEY](../../t-sql/statements/create-master-key-transact-sql.md), and then create an [external database source](../../t-sql/statements/create-external-data-source-transact-sql.md) for use in your `BULK INSERT` command.
 
-Alternatively, create a [DATABASE SCOPED CREDENTIAL](../../t-sql/statements/create-database-scoped-credential-transact-sql.md) based on `MANAGED IDENTITY` to authorize requests for data access in nonpublic storage accounts. When using `MANAGED IDENTITY`, Azure storage must grant permissions to the managed identity of the instance by adding the **Storage Blob Data Contributor** built-in Azure role-based access control (RBAC) role that provides read/write access to the managed identity for the necessary Azure Blob Storage containers. Azure SQL Managed Instance have a system assigned managed identity, and can also have one or more user-assigned managed identities. You can use either system-assigned managed identities or user-assigned managed identities to authorize the requests. For authorization, the `default` identity of the managed instance would be used (that is primary user-assigned managed identity, or system-assigned managed identity if user-assigned managed identity isn't specified).
+Alternatively, create a [CREATE DATABASE SCOPED CREDENTIAL](../../t-sql/statements/create-database-scoped-credential-transact-sql.md) based on `MANAGED IDENTITY` to authorize requests for data access in nonpublic storage accounts. When using `MANAGED IDENTITY`, Azure storage must grant permissions to the managed identity of the instance by adding the **Storage Blob Data Contributor** built-in Azure role-based access control (RBAC) role that provides read/write access to the managed identity for the necessary Azure Blob Storage containers. Azure SQL Managed Instance have a system assigned managed identity, and can also have one or more user-assigned managed identities. You can use either system-assigned managed identities or user-assigned managed identities to authorize the requests. For authorization, the `default` identity of the managed instance would be used (that is primary user-assigned managed identity, or system-assigned managed identity if user-assigned managed identity isn't specified).
 
 > [!IMPORTANT]  
-> Managed Identity is applicable only to Azure SQL. SQL Server does not support Managed Identity.
+> Managed Identity is not supported on SQL Server versions before SQL Server 2025.
 
 > [!NOTE]  
 > Do not use explicit transaction, or you receive a 4861 error.
 
-### Using BULK INSERT
+<a id="using-bulk-insert"></a>
 
-The following example shows how to use the BULK INSERT command to load data from a csv file in an Azure Blob storage location on which you have created a SAS key. The Azure Blob storage location is configured as an external data source. This requires a database scoped credential using a shared access signature that is encrypted using a master key in the user database.
+### Use BULK INSERT
+
+The following example shows how to use the `BULK INSERT` command to load data from a csv file in an Azure Blob storage location on which you have created a SAS key. The Azure Blob storage location is configured as an external data source. This requires a database scoped credential using a shared access signature that is encrypted using a master key in the user database.
 
 ```sql
 --> Optional - a MASTER KEY is not required if a DATABASE SCOPED CREDENTIAL is not required because the blob is configured for public (anonymous) access!
@@ -136,7 +151,7 @@ FROM 'inv-2017-12-08.csv'
 WITH (DATA_SOURCE = 'MyAzureBlobStorage');
 ```
 
-The following example shows how to use the BULK INSERT command to load data from a csv file in an Azure Blob storage location using Managed Identity. The Azure Blob storage location is configured as an external data source.
+The following example shows how to use the `BULK INSERT` command to load data from a csv file in an Azure Blob storage location using Managed Identity. The Azure Blob storage location is configured as an external data source.
 
 ```sql
 --> Optional - a MASTER KEY is not required if a DATABASE SCOPED CREDENTIAL is not required because the blob is configured for public (anonymous) access!
@@ -161,13 +176,13 @@ WITH (DATA_SOURCE = 'MyAzureBlobStorage');
 ```
 
 > [!IMPORTANT]  
-> Managed Identity is applicable only to Azure SQL. SQL Server does not support Managed Identity.
->
 > Azure SQL Database does not support reading from Windows files.
 
-### Using OPENROWSET
+<a id="using-openrowset"></a>
 
-The following example shows how to use the OPENROWSET command to load data from a csv file in an Azure Blob storage location on which you have created a SAS key. The Azure Blob storage location is configured as an external data source. This requires a database scoped credential using a shared access signature that is encrypted using a master key in the user database.
+### Use OPENROWSET
+
+The following example shows how to use the `OPENROWSET` command to load data from a csv file in an Azure Blob storage location on which you have created a SAS key. The Azure Blob storage location is configured as an external data source. This requires a database scoped credential using a shared access signature that is encrypted using a master key in the user database.
 
 ```sql
 --> Optional - a MASTER KEY is not required if a DATABASE SCOPED CREDENTIAL is not required because the blob is configured for public (anonymous) access!
@@ -205,9 +220,9 @@ SELECT * FROM OPENROWSET(
 
 - [INSERT (Transact-SQL)](../../t-sql/statements/insert-transact-sql.md)
 - [SELECT Clause (Transact-SQL)](../../t-sql/queries/select-clause-transact-sql.md)
-- [Bulk Import and Export of Data](../../relational-databases/import-export/bulk-import-and-export-of-data-sql-server.md)
+- [Bulk Import and Export of Data (SQL Server)](bulk-import-and-export-of-data-sql-server.md)
 - [OPENROWSET (Transact-SQL)](../../t-sql/functions/openrowset-transact-sql.md)
 - [SELECT (Transact-SQL)](../../t-sql/queries/select-transact-sql.md)
-- [FROM (Transact-SQL)](../../t-sql/queries/from-transact-sql.md)
+- [FROM clause plus JOIN, APPLY, PIVOT (Transact-SQL)](../../t-sql/queries/from-transact-sql.md)
 - [bcp Utility](../../tools/bcp-utility.md)
 - [BULK INSERT (Transact-SQL)](../../t-sql/statements/bulk-insert-transact-sql.md)

@@ -4,7 +4,7 @@ description: Learn how to use the schema designer in Visual Studio Code with MSS
 author: yoleichen
 ms.author: yoleichen
 ms.reviewer: randolphwest
-ms.date: 05/21/2025
+ms.date: 06/18/2025
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -72,7 +72,7 @@ This action opens the Table tab in the Table Editor in a side panel, where you c
 - Mark one or more columns as primary keys
 - Delete or update existing columns as needed
 
-Once you've made your changes, select **Save** to apply them. The diagram updates to reflect your changes. For more advanced table editing capabilities, such as creating indexes or setting up constraint rules, use the [Table Designer in the MSSQL extension for Visual Studio Code](mssql-extension-visual-studio-code.md).
+Once you've made your changes, select **Save** to apply them. The diagram updates to reflect your changes. For more advanced table editing capabilities, such as creating indexes or setting up constraint rules, use the [Table designer in the MSSQL extension for Visual Studio Code](mssql-extension-visual-studio-code.md#table-designer).
 
 ## Add or edit foreign key relationships
 
@@ -111,6 +111,7 @@ Review the report carefully, and check the confirmation box to acknowledge and a
 ## Related content
 
 - [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md)
+- [GitHub Copilot for MSSQL extension for Visual Studio Code](../github-copilot/overview.md)
 - [Schema Compare (Preview)](mssql-schema-compare.md)
 - [Learn more about Visual Studio Code](https://code.visualstudio.com/docs)
 - [Learn more about contributing to the MSSQL extension](https://github.com/Microsoft/vscode-mssql/wiki)

@@ -4,7 +4,7 @@ description: Learn how to connect to a database using the MSSQL extension for Vi
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: maghan, randolphwest
-ms.date: 11/20/2024
+ms.date: 06/18/2025
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: quickstart
@@ -54,6 +54,7 @@ To complete this quickstart, you must have:
    | Connection property | Value | Description |
    | --- | --- | --- |
    | **Profile Name** (optional) | Leave this field blank. | Type a name for the connection profile. such as *localhost profile*. |
+   | **Connection Group** (optional) | Leave this field blank or select an existing group. | Organize this connection under a group folder for easier management. |
    | **Server name** | Enter the server name here. Ex: localhost | Specify the SQL Server instance name. Use *localhost* to connect to a SQL Server instance on your local machine. To connect to a remote SQL Server, enter the name of the target SQL Server, or its IP address. To connect to a SQL Server container, specify the IP address of the container's host machine. If you need to specify a port, use a comma to separate it from the name. For example, for a server listening on port 1401, enter `<servername or IP>,1401`.<br /><br />By default, the connection string uses port 1433. A default instance of SQL Server uses 1433 unless modified. If your instance is listening on 1433, you don't need to specify the port.<br />As an alternative, you can enter the ADO connection string for your database here. |
    | **Trust Server Certificate** | Check this field. | Select this option to trust the server certificate. |
    | **Input type** | Parameter. | Choose from **Parameter**, **Connection String**, or **Browse Azure**. |

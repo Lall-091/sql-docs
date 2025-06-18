@@ -4,7 +4,7 @@ description: "Get an introduction to SQL Database: technical details and capabil
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
-ms.date: 04/04/2025
+ms.date: 06/17/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: overview
@@ -265,5 +265,5 @@ Azure SQL Database backups are managed automatically. No one has direct access t
   - [Azure CLI samples for SQL Database](az-cli-script-samples-content-guide.md)
   - [Azure PowerShell samples for SQL Database](powershell-script-content-guide.md)
 
-- For information about new capabilities as they're announced, see [Azure Updates](https://azure.microsoft.com/updates/).
+- For information about new capabilities as they're announced, see [What's new in Azure SQL Database?](doc-changes-updates-release-notes-whats-new.md)
 - See the [Azure SQL Database blog](https://azure.microsoft.com/blog/topics/database), where SQL Server product team members blog about SQL Database news and features.

@@ -4,7 +4,7 @@ description: Enhancing your developer experience with the MSSQL extension for Vi
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: randolphwest
-ms.date: 05/19/2025
+ms.date: 06/18/2025
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -37,12 +37,12 @@ To get started with SQL development in Visual Studio Code, install the **MSSQL e
 
 ## Modern UI
 
-The MSSQL extension for Visual Studio Code introduces the **General Availability** of its enhanced UI—designed to elevate the SQL development experience across SQL Server, Azure SQL, and SQL Database on Fabric.
+The MSSQL extension for Visual Studio Code introduces the **General Availability** of its enhanced UI—designed to elevate the SQL development experience across SQL Server, Azure SQL, and SQL database on Fabric.
 
 This release delivers key improvements to:
 
 - **Connection Dialog**
-- **Object Explorer**
+- **Object Explorer (filtering)**
 - **Table Designer**
 - **Query Results Pane**
 - **Query Plan Visualizer**
@@ -58,6 +58,8 @@ The Connection dialog allows you to quickly connect to databases hosted in Azure
 - **Connection String**: Directly input a complete connection string for more advanced configurations.
 
 - **Browse Azure**: Browse available database instances and databases in your Azure account, with options to filter by subscription, resource group, and location.
+
+- **Connection Groups**: Organize environments by grouping connections into folders and assigning colors for quick visual identification. Easily assign or change a group when creating or editing a connection.
 
 In addition to creating new connections, the dialog now includes a **Saved Connections** and **Recent Connections** panel, making it easier to reconnect to previously used servers. You can efficiently edit and save your connections with an improved layout that offers better navigation and usability. The enhanced UI makes modifying connection details or switching databases smoother than ever.
 
@@ -169,7 +171,7 @@ The extension can download and install a required SqlToolsService package during
 
 ## Feedback and support
 
-If you have any feedback or comments, create a GitHub issue at [https://github.com/microsoft/vscode-mssql/issues](https://github.com/microsoft/vscode-mssql/issues).
+If you have ideas, feedback, or want to engage with the community, join the discussion at [aka.ms/vscode-mssql-discussions](https://aka.ms/vscode-mssql-discussions). To report a bug, visit [aka.ms/vscode-mssql-bug](https://aka.ms/vscode-mssql-bug); to request a new feature, go to [aka.ms/vscode-mssql-feature-request](https://aka.ms/vscode-mssql-feature-request).
 
 ## Related content
 

@@ -30,14 +30,14 @@ Grants permissions on a database scoped credential.
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)  
   
 ## Syntax  
-  
+
 ```syntaxsql
 GRANT permission  [ ,...n ]    
     ON DATABASE SCOPED CREDENTIAL :: credential_name   
     TO principal [ ,...n ] [ WITH GRANT OPTION ]   
     [ AS granting_principal ]   
 ```  
-  
+
 ## Arguments
 
 #### *permission*  

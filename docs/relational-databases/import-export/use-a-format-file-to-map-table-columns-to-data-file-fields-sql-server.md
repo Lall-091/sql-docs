@@ -18,7 +18,7 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || >=sql-server-2016 || >=s
 
 A data file can contain fields arranged in a different order from the corresponding columns in the table. This article presents both non-XML and XML format files that are modified to accommodate a data file whose fields are arranged in a different order from the table columns. The modified format file maps the data fields to their corresponding table columns. Review [Create a format file with bcp (SQL Server)](create-a-format-file-sql-server.md) for additional information.
 
-Either a non-XML or XML format file can be used to bulk import a data file into the table, using a [bcp utility](../../tools/bcp-utility.md) command, [BULK INSERT](../../t-sql/statements/bulk-insert-transact-sql.md) statement, or INSERT ... SELECT * FROM [OPENROWSET](../../t-sql/functions/openrowset-transact-sql.md) statement. For more information, see [Use a format file to bulk import data (SQL Server)](use-a-format-file-to-bulk-import-data-sql-server.md).
+Either a non-XML or XML format file can be used to bulk import a data file into the table, using a [bcp utility](../../tools/bcp-utility.md) command, [BULK INSERT](../../t-sql/statements/bulk-insert-transact-sql.md) statement, or [OPENROWSET (BULK)](../../t-sql/functions/openrowset-bulk-transact-sql.md) statement. For more information, see [Use a format file to bulk import data (SQL Server)](use-a-format-file-to-bulk-import-data-sql-server.md).
 
 > [!NOTE]  
 > This syntax, including bulk insert, isn't supported in Azure Synapse Analytics. [!INCLUDE [Use ADF or PolyBase instead of Synapse Bulk Insert](includes/bulk-insert-synapse.md)]

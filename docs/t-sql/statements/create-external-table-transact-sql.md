@@ -3,8 +3,8 @@ title: "CREATE EXTERNAL TABLE (Transact-SQL)"
 description: CREATE EXTERNAL TABLE (Transact-SQL) creates an external table.
 author: MikeRayMSFT
 ms.author: mikeray
-ms.reviewer: hudequei, randolphwest
-ms.date: 05/19/2025
+ms.reviewer: hudequei, wiassaf, randolphwest
+ms.date: 06/17/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -24,11 +24,11 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 ---
 # CREATE EXTERNAL TABLE (Transact-SQL)
 
+[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-pdw-fabricdw](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-pdw-fabricdw.md)]
+
 Creates an external table.
 
 This article provides the syntax, arguments, remarks, permissions, and examples for whichever SQL product you choose.
-
-For more information about the syntax conventions, see [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md).
 
 [!INCLUDE [select-product](../includes/select-product.md)]
 
@@ -43,6 +43,9 @@ For more information about the syntax conventions, see [Transact-SQL syntax conv
     :::column-end:::
     :::column:::
         [Azure SQL Managed Instance](create-external-table-transact-sql.md?view=azuresqldb-mi-current&preserve-view=true)
+    :::column-end:::
+    :::column:::
+        [Microsoft Fabric](create-external-table-transact-sql.md?view=fabric&preserve-view=true)
     :::column-end:::
     :::column:::
         [Azure Synapse<br />Analytics](create-external-table-transact-sql.md?view=azure-sqldw-latest&preserve-view=true)
@@ -62,10 +65,12 @@ This command creates an external table for PolyBase to access data stored in a H
 
 Use an external table with an external data source for PolyBase queries. External data sources are used to establish connectivity and support these primary use cases:
 
-- Data virtualization and data load using [PolyBase](../../relational-databases/polybase/polybase-guide.md)
+- Data virtualization and data load using [Data virtualization with PolyBase in SQL Server](../../relational-databases/polybase/polybase-guide.md)
 - Bulk load operations using SQL Server or SQL Database using `BULK INSERT` or `OPENROWSET`
 
-See also [CREATE EXTERNAL DATA SOURCE](../../t-sql/statements/create-external-data-source-transact-sql.md) and [DROP EXTERNAL TABLE](../../t-sql/statements/drop-external-table-transact-sql.md).
+An external table is based on an [external data source](create-external-data-source-transact-sql.md).
+
+:::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ## Syntax
 
@@ -99,7 +104,9 @@ column_name <data_type>
 
 #### *{ database_name.schema_name.table_name | schema_name.table_name | table_name }*
 
-The one to three-part name of the table to create. For an external table, SQL stores only the table metadata along with basic statistics about the file or folder that is referenced in Hadoop or Azure Blob Storage. No actual data is moved or stored in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+The one to three-part name of the table to create. 
+
+For an external table, SQL stores only the table metadata along with basic statistics about the file or folder that is referenced in Hadoop or Azure Blob Storage. No actual data is moved or stored in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
 
 > [!IMPORTANT]  
 > For best performance, if the external data source driver supports a three-part name, it is strongly recommended to provide the three-part name.
@@ -114,23 +121,23 @@ The column definitions, including the data types and number of columns, must mat
 
 Specifies the folder or the file path and file name for the actual data in Hadoop or Azure Blob Storage. Additionally, S3-compatible object storage is supported starting in [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)]). The location starts from the root folder. The root folder is the data location specified in the external data source.
 
-In SQL Server, the `CREATE EXTERNAL TABLE` statement creates the path and folder if it doesn't already exist. You can then use INSERT INTO to export data from a local SQL Server table to the external data source. For more information, see [PolyBase Queries](../../relational-databases/polybase/polybase-queries.md).
+In SQL Server, the `CREATE EXTERNAL TABLE` statement creates the path and folder if it doesn't already exist. You can then use INSERT INTO to export data from a local SQL Server table to the external data source. For more information, see [PolyBase query scenarios](../../relational-databases/polybase/polybase-queries.md).
 
 If you specify LOCATION to be a folder, a PolyBase query that selects from the external table will retrieve files from the folder and all of its subfolders. Just like Hadoop, PolyBase doesn't return hidden folders. It also doesn't return files for which the file name begins with an underline (_) or a period (.).
 
 In the following image example, if `LOCATION='/webdata/'`, a PolyBase query will return rows from `mydata.txt` and `mydata2.txt`. It won't return `mydata3.txt` because it's a file in a hidden subfolder. And it won't return `_hidden.txt` because it's a hidden file.
 
-:::image type="content" source="media/create-external-table-transact-sql/aps-polybase-folder-traversal.png" alt-text="A diagram of folders and file data for external tables.":::
+:::image type="content" source="media/create-external-table-transact-sql/aps-polybase-folder-traversal.png" alt-text="Diagram of folders and file data for external tables.":::
 
 To change the default and only read from the root folder, set the attribute `<polybase.recursive.traversal>` to 'false' in the core-site.xml configuration file. This file is located under `<SqlBinRoot>\PolyBase\Hadoop\Conf` under the `bin` root of SQL Server. For example, `C:\Program Files\Microsoft SQL Server\MSSQL13.XD14\MSSQL\Binn`.
 
 #### DATA_SOURCE = *external_data_source_name*
 
-Specifies the name of the external data source that contains the location of the external data. This location is a Hadoop File System (HDFS), an Azure Blob Storage container, or Azure Data Lake Store. To create an external data source, use [CREATE EXTERNAL DATA SOURCE](../../t-sql/statements/create-external-data-source-transact-sql.md).
+Specifies the name of the external data source that contains the location of the external data. This location is a Hadoop File System (HDFS), an Azure Blob Storage container, or Azure Data Lake Store. To create an external data source, use [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](create-external-data-source-transact-sql.md).
 
 #### FILE_FORMAT = *external_file_format_name*
 
-Specifies the name of the external file format object that stores the file type and compression method for the external data. To create an external file format, use [CREATE EXTERNAL FILE FORMAT](../../t-sql/statements/create-external-file-format-transact-sql.md).
+Specifies the name of the external file format object that stores the file type and compression method for the external data. To create an external file format, use [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](create-external-file-format-transact-sql.md).
 
 External file formats can be reused by multiple similar external files.
 
@@ -183,7 +190,7 @@ This example shows how the three REJECT options interact with each other. For ex
 - Percent of failed rows is calculated as 25%, which is less than the reject value of 30%. As a result, PolyBase continues retrieving data from the external data source.
 - PolyBase attempts to load the next 100 rows; this time 25 rows succeed and 75 rows fail.
 - Percent of failed rows is recalculated as 50%. The percentage of failed rows has exceeded the 30% reject value.
-- The PolyBase query fails with 50% rejected rows after attempting to return the first 200 rows. Notice that matching rows have been returned before the PolyBase query detects the reject threshold has been exceeded.
+- The PolyBase query fails with 50% rejected rows after attempting to return the first 200 rows. Matching rows have been returned before the PolyBase query detects the reject threshold has been exceeded.
 
 #### REJECTED_ROW_LOCATION = *Directory Location*
 
@@ -191,7 +198,7 @@ This example shows how the three REJECT options interact with each other. For ex
 
 Specifies the directory within the External Data Source that the rejected rows and the corresponding error file should be written.
 
-If the specified path doesn't exist, PolyBase creates one on your behalf. A child directory is created with the name `_rejectedrows`. The `_` character ensures that the directory is escaped for other data processing unless explicitly named in the location parameter. Within this directory, there's a folder created based on the time of load submission in the format `YearMonthDay -HourMinuteSecond` (Ex. `20230330-173205`). In this folder, two types of files are written, the _reason file and the data file. This option can be used only with external data sources where `TYPE = HADOOP` and for external tables using `DELIMITEDTEXT` `FORMAT_TYPE`. For more information, see [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md#type---hadoop--blob_storage--1) and [CREATE EXTERNAL FILE FORMAT](create-external-file-format-transact-sql.md).
+If the specified path doesn't exist, PolyBase creates one on your behalf. A child directory is created with the name `_rejectedrows`. The `_` character ensures that the directory is escaped for other data processing unless explicitly named in the location parameter. Within this directory, there's a folder created based on the time of load submission in the format `YearMonthDay -HourMinuteSecond` (for example, `20230330-173205`). In this folder, two types of files are written, the _reason file and the data file. This option can be used only with external data sources where `TYPE = HADOOP` and for external tables using `DELIMITEDTEXT` `FORMAT_TYPE`. For more information, see [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md) and [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](create-external-file-format-transact-sql.md).
 
 The reason files and the data files both have the `queryID` associated with the CTAS statement. Because the data and the reason are in separate files, corresponding files have a matching suffix.
 
@@ -205,7 +212,7 @@ Requires these user permissions:
 - **ALTER ANY EXTERNAL FILE FORMAT** (only applies to Hadoop and Azure Storage external data sources)
 - **CONTROL DATABASE** (only applies to Hadoop and Azure Storage external data sources)
 
-Note, the remote login specified in the DATABASE SCOPED CREDENTIAL used in the `CREATE EXTERNAL TABLE` command must have **Read** permission for the path/table/collection on the external data source specified in the LOCATION parameter. If you're planning to use this EXTERNAL TABLE to export data to a Hadoop or Azure Storage external data source, then the login specified must have write permission on the path specified in LOCATION. Note that Hadoop is not supported in [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)].
+Note, the remote login specified in the DATABASE SCOPED CREDENTIAL used in the `CREATE EXTERNAL TABLE` command must have **Read** permission for the path/table/collection on the external data source specified in the LOCATION parameter. If you're planning to use this EXTERNAL TABLE to export data to a Hadoop or Azure Storage external data source, then the login specified must have write permission on the path specified in LOCATION. Hadoop is not supported in [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)].
 
 For Azure Blob Storage, when configuring the access keys and shared access signature (SAS) in the Azure portal, the Azure Blob Storage or ADLS Gen2 storage accounts, configure the **Allowed permissions** to grant at least **Read** and **Write** permissions. **List** permission might also be required when searching across folders. You must also select both **Container** and **Object** as the allowed resource types.
 
@@ -218,32 +225,31 @@ While executing the `CREATE EXTERNAL TABLE` statement, PolyBase attempts to conn
 
 ## Remarks
 
-In ad hoc query scenarios, such as SELECT FROM EXTERNAL TABLE, PolyBase stores the rows that are retrieved from the external data source in a temporary table. After the query completes, PolyBase removes and deletes the temporary table. No permanent data is stored in SQL tables.
+In ad hoc query scenarios, such as `SELECT FROM EXTERNAL TABLE`, PolyBase stores the rows that are retrieved from the external data source in a temporary table. After the query completes, PolyBase removes and deletes the temporary table. No permanent data is stored in SQL tables.
 
 In contrast, in the import scenario, such as SELECT INTO FROM EXTERNAL TABLE, PolyBase stores the rows that are retrieved from the external data source as permanent data in the SQL table. The new table is created during query execution when PolyBase retrieves the external data.
 
-PolyBase can push some of the query computation to Hadoop to improve query performance. This action is called predicate pushdown. To enable it, specify the Hadoop resource manager location option in [CREATE EXTERNAL DATA SOURCE](../../t-sql/statements/create-external-data-source-transact-sql.md).
+PolyBase can push some of the query computation to Hadoop to improve query performance. This action is called predicate pushdown. To enable it, specify the Hadoop resource manager location option in [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](create-external-data-source-transact-sql.md).
 
 You can create many external tables that reference the same or different external data sources.
 
-## Limitations and restrictions
+## Limitations
 
 Since the data for an external table is not under the direct management control of SQL Server, it can be changed or removed at any time by an external process. As a result, query results against an external table aren't guaranteed to be deterministic. The same query can return different results each time it runs against an external table. Similarly, a query might fail if the external data is moved or removed.
 
-You can create multiple external tables that each reference different external data sources. If you simultaneously run queries against different Hadoop data sources, then each Hadoop source must use the same 'hadoop connectivity' server configuration setting. For example, you can't simultaneously run a query against a Cloudera Hadoop cluster and a Hortonworks Hadoop cluster since these use different configuration settings. For the configuration settings and supported combinations, see [PolyBase Connectivity Configuration](../../database-engine/configure-windows/polybase-connectivity-configuration-transact-sql.md).
+You can create multiple external tables that each reference different external data sources. If you simultaneously run queries against different Hadoop data sources, then each Hadoop source must use the same 'hadoop connectivity' server configuration setting. For example, you can't simultaneously run a query against a Cloudera Hadoop cluster and a Hortonworks Hadoop cluster since these use different configuration settings. For the configuration settings and supported combinations, see [PolyBase connectivity configuration (Transact-SQL)](../../database-engine/configure-windows/polybase-connectivity-configuration-transact-sql.md).
 
 When the external table is using `DELIMITEDTEXT`, `CSV`, `PARQUET`, or `DELTA` as data types, external tables only support statistics for one column per `CREATE STATISTICS` command.
 
-
 Only these Data Definition Language (DDL) statements are allowed on external tables:
 
-- CREATE TABLE and DROP TABLE
-- CREATE STATISTICS and DROP STATISTICS
-- CREATE VIEW and DROP VIEW
+- `CREATE TABLE` and `DROP TABLE`
+- `CREATE STATISTICS` and `DROP STATISTICS`
+- `CREATE VIEW` and `DROP VIEW`
 
 Constructs and operations not supported:
 
-- The DEFAULT constraint on external table columns
+- A `DEFAULT` constraint on external table columns
 - Data Manipulation Language (DML) operations of delete, insert, and update
 
 ### Query limitations
@@ -289,7 +295,7 @@ The data files for an external table are stored in Hadoop or Azure Blob Storage.
 
 ### A. Create an external table with data in text-delimited format
 
-This example shows all the steps required to create an external table that has data formatted in text-delimited files. It defines an external data source `mydatasource` and an external file format `myfileformat`. These database-level objects are then referenced in the `CREATE EXTERNAL TABLE` statement. For more information, see [CREATE EXTERNAL DATA SOURCE](../../t-sql/statements/create-external-data-source-transact-sql.md) and [CREATE EXTERNAL FILE FORMAT](../../t-sql/statements/create-external-file-format-transact-sql.md).
+This example shows all the steps required to create an external table that has data formatted in text-delimited files. It defines an external data source `mydatasource` and an external file format `myfileformat`. These database-level objects are then referenced in the `CREATE EXTERNAL TABLE` statement. For more information, see [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](create-external-data-source-transact-sql.md) and [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](create-external-file-format-transact-sql.md).
 
 ```sql
 CREATE EXTERNAL DATA SOURCE mydatasource
@@ -319,7 +325,7 @@ WITH (
 
 ### B. Create an external table with data in RCFile format
 
-This example shows all the steps required to create an external table that has data formatted as RCFiles. It defines an external data source `mydatasource_rc` and an external file format `myfileformat_rc`. These database-level objects are then referenced in the `CREATE EXTERNAL TABLE` statement. For more information, see [CREATE EXTERNAL DATA SOURCE](../../t-sql/statements/create-external-data-source-transact-sql.md) and [CREATE EXTERNAL FILE FORMAT](../../t-sql/statements/create-external-file-format-transact-sql.md).
+This example shows all the steps required to create an external table that has data formatted as RCFiles. It defines an external data source `mydatasource_rc` and an external file format `myfileformat_rc`. These database-level objects are then referenced in the `CREATE EXTERNAL TABLE` statement. For more information, see [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](create-external-data-source-transact-sql.md) and [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](create-external-file-format-transact-sql.md).
 
 ```sql
 CREATE EXTERNAL DATA SOURCE mydatasource_rc
@@ -350,7 +356,7 @@ WITH (
 
 ### C. Create an external table with data in ORC format
 
-This example shows all the steps required to create an external table that has data formatted as ORC files. It defines an external data source *mydatasource_orc* and an external file format *myfileformat_orc*. These database-level objects are then referenced in the `CREATE EXTERNAL TABLE` statement. For more information, see [CREATE EXTERNAL DATA SOURCE](../../t-sql/statements/create-external-data-source-transact-sql.md) and [CREATE EXTERNAL FILE FORMAT](../../t-sql/statements/create-external-file-format-transact-sql.md).
+This example shows all the steps required to create an external table that has data formatted as ORC files. It defines an external data source *mydatasource_orc* and an external file format *myfileformat_orc*. These database-level objects are then referenced in the `CREATE EXTERNAL TABLE` statement. For more information, see [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](create-external-data-source-transact-sql.md) and [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](create-external-file-format-transact-sql.md).
 
 ```sql
 CREATE EXTERNAL DATA SOURCE mydatasource_orc
@@ -413,7 +419,7 @@ ON user.user_ip = ms.user_ip;
 
 ### G. Create an external table for SQL Server
 
-Before you create a database scoped credential, the user database must have a master key to protect the credential. For more information, see [CREATE MASTER KEY](../../t-sql/statements/create-master-key-transact-sql.md) and [CREATE DATABASE SCOPED CREDENTIAL](../../t-sql/statements/create-database-scoped-credential-transact-sql.md).
+Before you create a database scoped credential, the user database must have a master key to protect the credential. For more information, see [CREATE MASTER KEY (Transact-SQL)](create-master-key-transact-sql.md) and [CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)](create-database-scoped-credential-transact-sql.md).
 
 ```sql
      -- Create a Master Key
@@ -537,7 +543,6 @@ Create a new external data source named `SQLServerInstance`, and external table 
     CREDENTIAL =credential_name
     );
 
-
      /* LOCATION: Teradata table/view in '<database_name>.<object_name>' format
       * DATA_SOURCE: the external data source, created above.
       */
@@ -632,12 +637,10 @@ FILE_FORMAT = ParquetFileFormat);
 GO
 ```
 
-## Next steps
+## Related content
 
-Learn more about related concepts in the following articles:
-
-- [CREATE EXTERNAL DATA SOURCE](../../t-sql/statements/create-external-data-source-transact-sql.md)
-- [CREATE EXTERNAL FILE FORMAT](../../t-sql/statements/create-external-file-format-transact-sql.md)
+- [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](create-external-data-source-transact-sql.md)
+- [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](create-external-file-format-transact-sql.md)
 - [sp_data_source_objects (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-data-source-objects.md)
 - [Data Virtualization extension for Azure Data Studio](/azure-data-studio/extensions/data-virtualization-extension)
 
@@ -655,6 +658,9 @@ Learn more about related concepts in the following articles:
         [Azure SQL Managed Instance](create-external-table-transact-sql.md?view=azuresqldb-mi-current&preserve-view=true)
     :::column-end:::
     :::column:::
+        [Microsoft Fabric](create-external-table-transact-sql.md?view=fabric&preserve-view=true)
+    :::column-end:::
+    :::column:::
         [Azure Synapse<br />Analytics](create-external-table-transact-sql.md?view=azure-sqldw-latest&preserve-view=true)
     :::column-end:::
     :::column:::
@@ -666,11 +672,34 @@ Learn more about related concepts in the following articles:
 
 ## Overview: Azure SQL Database
 
-In Azure SQL Database, creates an external table for [elastic queries (in preview)](/azure/sql-database/sql-database-elastic-query-overview/).
+Creates an external table, used for: 
 
-See also [CREATE EXTERNAL DATA SOURCE](../../t-sql/statements/create-external-data-source-transact-sql.md).
+- [Data virtualization (preview)](/azure/azure-sql/database/data-virtualization-overview?view=azuresqldb-current&preserve-view=true)
+- [Elastic queries (preview)](/azure/azure-sql/database/elastic-query-overview?view=azuresqldb-current&preserve-view=true)
+
+See also [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](create-external-data-source-transact-sql.md?view=azuresqldb-current&preserve-view=true).
 
 ## Syntax
+
+For use with [Data virtualization (preview)](/azure/azure-sql/database/data-virtualization-overview?view=azuresqldb-current&preserve-view=true)
+
+```syntaxsql
+CREATE EXTERNAL TABLE { database_name.schema_name.table_name | schema_name.table_name | table_name }
+    ( <column_definition> [ ,...n ] )
+    WITH (
+        LOCATION = 'filepath',
+        DATA_SOURCE = external_data_source_name,
+        FILE_FORMAT = external_file_format_name
+    )
+[;]
+
+<column_definition> ::=
+column_name <data_type>
+    [ COLLATE collation_name ]
+    [ NULL | NOT NULL ]
+```
+
+For use with [Elastic queries (preview)](/azure/azure-sql/database/elastic-query-overview?view=azuresqldb-current&preserve-view=true):
 
 ```syntaxsql
 -- Create a table for use with elastic query
@@ -683,7 +712,7 @@ CREATE EXTERNAL TABLE { database_name.schema_name.table_name | schema_name.table
 column_name <data_type>
     [ COLLATE collation_name ]
     [ NULL | NOT NULL ]
-  
+
 <sharded_external_table_options> ::=
         DATA_SOURCE = external_data_source_name,
         SCHEMA_NAME = N'nonescaped_schema_name',
@@ -697,72 +726,135 @@ column_name <data_type>
 
 #### *{ database_name.schema_name.table_name | schema_name.table_name | table_name }*
 
-The one to three-part name of the table to create. For an external table, SQL stores only the table metadata along with basic statistics about the file or folder that is referenced in Azure SQL Database. No actual data is moved or stored in Azure SQL Database.
+The one to three-part name of the table to create. 
+
+For an external table, SQL stores only the table metadata along with basic statistics about the file or folder that is referenced in Azure SQL Database. No actual data is moved or stored in Azure SQL Database when external tables are created.
 
 > [!IMPORTANT]  
 > For best performance, if the external data source driver supports a three-part name, it is strongly recommended to provide the three-part name.
 
 #### \<column_definition> [ ,...*n* ]
 
-CREATE EXTERNAL TABLE supports the ability to configure column name, data type, nullability, and collation. You can't use the DEFAULT CONSTRAINT on external tables.
+`CREATE EXTERNAL TABLE` supports the ability to configure column name, data type, nullability, and collation. You can't use the `DEFAULT CONSTRAINT` on external tables. These data types are not supported for columns in external tables for Azure SQL Database:
 
-> [!NOTE]  
-> The **text**, **ntext**, **xml**, and **json** data types are not supported for columns in external tables for Azure SQL Database.
+- **geography**
+- **geometry**
+- **hierarchyid**
+- **image**
+- **text**
+- **ntext**
+- **xml**
+- **json**
 
-The column definitions, including the data types and number of columns, must match the data in the external files. If there's a mismatch, the file rows will be rejected when querying the actual data.
+The column definitions, including the data types and number of columns, must match the data in the external files. If there's a mismatch, the file rows are rejected when querying the actual data.
 
 #### Sharded external table options
 
 Specifies the external data source (a non-SQL Server data source) and a distribution method for the [Elastic query](/azure/azure-sql/database/elastic-query-overview).
 
+#### LOCATION = '*folder_or_filepath*'
+
+Specifies the folder or the file path and file name for the actual data in Azure Data Lake Gen2 or Azure Blob Storage. The location starts from the root folder. The root folder is the data location specified in the external data source. `CREATE EXTERNAL TABLE` doesn't create the path and folder.
+
+If you specify `LOCATION` to be a folder, a query that selects from the external table will retrieve files from the folder but not all of its subfolders. 
+
+[!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)] cannot find files in subfolders or hidden folders. It also doesn't return files for which the file name begins with an underline (_) or a period (.).
+
+In the following image example, if `LOCATION='/webdata/'`, a query will return rows from `mydata.txt`. It won't return `mydata2.txt` because it is in a subfolder, it won't return `mydata3.txt` because it's in a hidden folder, and it won't return `_hidden.txt` because it's a hidden file.
+
+:::image type="content" source="media/create-external-table-transact-sql/aps-polybase-folder-traversal.png" alt-text="Diagram of folders and file data for external tables.":::
+
 #### DATA_SOURCE
 
-The DATA_SOURCE clause defines the external data source (a shard map) that is used for the external table. For an example, see [Create external tables](/azure/sql-database/sql-database-elastic-query-horizontal-partitioning#13-create-external-tables).
+DATA_SOURCE specifies the name of the external data source that contains the location of the external data. To create an external data source, use [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](create-external-data-source-transact-sql.md). For an example in elastic query, `DATA_SOURCE` is the shard map, see [Create external tables](/azure/sql-database/sql-database-elastic-query-horizontal-partitioning#13-create-external-tables).
 
-> [!IMPORTANT]  
-> Azure SQL Database supports creating external tables to EXTERNAL DATA SOURCE types RDMS and SHARD_MAP_MANAGER. Azure SQL Database does not support creating external tables to Azure Blob Storage.
+#### FILE_FORMAT = *external_file_format_name*
+
+Specifies the name of the external file format object that stores the file type and compression method for the external data. To create an external file format, use [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](create-external-file-format-transact-sql.md).
 
 #### SCHEMA_NAME and OBJECT_NAME
 
-The SCHEMA_NAME and OBJECT_NAME clauses map the external table definition to a table in a different schema. If omitted, the schema of the remote object is assumed to be "dbo" and its name is assumed to be identical to the external table name being defined. This is useful if the name of your remote table is already taken in the database where you want to create the external table. For example, you want to define an external table to get an aggregate view of catalog views or DMVs on your scaled out data tier. Since catalog views and DMVs already exist locally, you cannot use their names for the external table definition. Instead, use a different name and use the catalog view's or the DMV's name in the SCHEMA_NAME and/or OBJECT_NAME clauses. For an example, see [Create external tables](/azure/sql-database/sql-database-elastic-query-horizontal-partitioning#13-create-external-tables).
+*For use with elastic query only.*
+
+The SCHEMA_NAME and OBJECT_NAME clauses map the external table definition to a table in a different schema. If omitted, the schema of the remote object is assumed to be `dbo` and its name is assumed to be identical to the external table name being defined. This is useful if the name of your remote table is already taken in the database where you want to create the external table. For example, you want to define an external table to get an aggregate view of catalog views or DMVs on your scaled out data tier. Since catalog views and DMVs already exist locally, you cannot use their names for the external table definition. Instead, use a different name and use the catalog view's or the DMV's name in the SCHEMA_NAME and/or OBJECT_NAME clauses. For an example, see [Create external tables](/azure/sql-database/sql-database-elastic-query-horizontal-partitioning#13-create-external-tables).
 
 #### DISTRIBUTION
 
-Optional. This argument is only required for databases of type SHARD_MAP_MANAGER. This argument controls whether a table is treated as a sharded table or a replicated table. With **SHARDED** (*column name*) tables, the data from different tables don't overlap. **REPLICATED** specifies that tables have the same data on every shard. **ROUND_ROBIN** indicates that an application-specific method is used to distribute the data.
+*For use with elastic query only.*
 
-The DISTRIBUTION clause specifies the data distribution used for this table. The query processor utilizes the information provided in the DISTRIBUTION clause to build the most efficient query plans.
+Optional. This argument is only required for databases of type `SHARD_MAP_MANAGER`. This argument controls whether a table is treated as a sharded table or a replicated table. With `SHARDED (<column name>)` tables, the data from different tables don't overlap. `REPLICATED` specifies that tables have the same data on every shard. `ROUND_ROBIN` indicates that an application-specific method is used to distribute the data.
 
-- SHARDED means data is horizontally partitioned across the databases. The partitioning key for the data distribution is the `sharding_column_name` parameter.
-- REPLICATED means that identical copies of the table are present on each database. It is your responsibility to ensure that the replicas are identical across the databases.
-- ROUND_ROBIN means that the table is horizontally partitioned using an application-dependent distribution method.
+The `DISTRIBUTION` clause specifies the data distribution used for this table. The query processor utilizes the information provided in the DISTRIBUTION clause to build the most efficient query plans.
+
+- `SHARDED` means data is horizontally partitioned across the databases. The partitioning key for the data distribution is the `sharding_column_name` parameter.
+- `REPLICATED` means that identical copies of the table are present on each database. It is your responsibility to ensure that the replicas are identical across the databases.
+- `ROUND_ROBIN` means that the table is horizontally partitioned using an application-dependent distribution method.
 
 ## Permissions
 
 Users with access to the external table automatically gain access to the underlying remote tables under the credential given in the external data source definition. Avoid undesired elevation of privileges through the credential of the external data source. Use GRANT or REVOKE for an external table just as though it were a regular table. Once you have defined your external data source and your external tables, you can now use full T-SQL over your external tables.
 
-## Error handling
+`CREATE EXTERNAL TABLE` requires these user permissions:
 
-While executing the `CREATE EXTERNAL TABLE` statement, if the attempt to connect fails, the statement will fail and the external table won't be created. It can take a minute or more for the command to fail since SQL Database retries the connection before eventually failing the query.
+- **CREATE TABLE**
+- **ALTER ANY SCHEMA**
+- **ALTER ANY EXTERNAL DATA SOURCE**
+- **ALTER ANY EXTERNAL FILE FORMAT**
+- **CONTROL DATABASE** permissions are required to create only the master key, database scoped credential, and external data source.
+
+Note, the login that creates the external data source must have permission to read and write to the external data source, located in Hadoop or Azure Blob Storage.
+
+> [!IMPORTANT]  
+> The ALTER ANY EXTERNAL DATA SOURCE permission grants any principal the ability to create and modify any external data source object, and therefore, it also grants the ability to access all database scoped credentials on the database. This permission must be considered as highly privileged, and therefore must be granted only to trusted principals in the system.
+
+## Locking
+
+Shared lock on the SCHEMARESOLUTION object.
 
 ## Remarks
 
-In ad hoc query scenarios, such as SELECT FROM EXTERNAL TABLE, SQL Database stores the rows that are retrieved from the external data source in a temporary table. After the query completes, SQL Database removes and deletes the temporary table. No permanent data is stored in SQL tables.
+In ad hoc query scenarios, such as `SELECT FROM EXTERNAL TABLE`, the rows that are retrieved from the external data source are stored in a temporary table. After the query completes, the rows are removed and the temporary table is deleted. No permanent data is stored in SQL tables.
 
-In contrast, in the import scenario, such as SELECT INTO FROM EXTERNAL TABLE, SQL Database stores the rows that are retrieved from the external data source as permanent data in the SQL table. The new table is created during query execution when SQL Database retrieves the external data.
+In contrast, in the import scenario, such as SELECT INTO FROM EXTERNAL TABLE, the rows that are retrieved from the external data source are stored as permanent data in the SQL table. The new table is created during query execution when the external data is retrieved.
+
+Currently, data virtualization with Azure SQL Database is read-only.
 
 You can create many external tables that reference the same or different external data sources.
 
-You can create multiple external tables that each reference different external data sources.
+### Table width limitations
+
+The row width limit of 1 MB is based on the maximum size of a single valid row by table definition. If the sum of the column schema is greater than 1 MB, data virtualization queries will fail.
+
+### Error handling
+
+While executing the `CREATE EXTERNAL TABLE` statement, if the attempt to connect fails, the statement will fail and the external table won't be created. It can take a minute or more for the command to fail since SQL Database retries the connection before eventually failing the query.
 
 ## Limitations
+
+Since the data for an external table is not under the direct management control of the Database Engine or Azure SQL Database, it can be changed or removed at any time by an external process. As a result, query results against an external table aren't guaranteed to be deterministic. The same query can return different results each time it runs against an external table. Similarly, a query might fail if the external data is moved or removed.
+
+You can create multiple external tables that each reference different external data sources.
+
+Only these Data Definition Language (DDL) statements are allowed on external tables:
+
+- `CREATE TABLE` and `DROP TABLE`
+- `CREATE STATISTICS` and `DROP STATISTICS`
+- `CREATE VIEW` and `DROP VIEW`
+
+Constructs and operations not supported:
+
+- The `DEFAULT` constraint on external table columns.
+- Data Manipulation Language (DML) operations of delete, insert, and update.
+
+### Limitations with elastic query
 
 - **Isolation semantics**: Access to data via an external table doesn't adhere to the isolation semantics within SQL Server. This means that querying an external table doesn't impose any locking or snapshot isolation. Therefore data return can change if the data in the external data source is changing. The same query can return different results each time it runs against an external table. Similarly, a query might fail if the external data is moved or removed.
 
 - **Constructs and operations not supported**:
 
-  - The DEFAULT constraint on external table columns.
+  - The `DEFAULT` constraint on external table columns.
   - Data Manipulation Language (DML) operations of delete, insert, and update.
-  - [Dynamic Data Masking](../../relational-databases/security/dynamic-data-masking.md) on external table columns.
+  - [Dynamic data masking](../../relational-databases/security/dynamic-data-masking.md) on external table columns.
   - Cursors are not supported for external tables in Azure SQL Database.
 
 - **Only literal predicates**: Only literal predicates defined in a query can be pushed down to the external data source. This is unlike linked servers and accessing where predicates determined during query execution can be used, that is, when used with a nested loop in a query plan. This will often lead to the whole external table being copied locally and then joined.
@@ -787,7 +879,7 @@ You can create multiple external tables that each reference different external d
 
 ### Data type limitations
 
-The following data types cannot be used in PolyBase external tables:
+The following data types cannot be used in external tables:
 
 - **geography**
 - **geometry**
@@ -798,13 +890,11 @@ The following data types cannot be used in PolyBase external tables:
 - **xml**
 - Any user-defined type
 
-## Locking
-
-Shared lock on the SCHEMARESOLUTION object.
-
 ## Examples
 
-### A. Create external table for Azure SQL Database
+For more examples, see [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](create-external-data-source-transact-sql.md?view=azuresqldb-current&preserve-view=true) or see [Data virtualization with Azure SQL Database](/azure/azure-sql/database/data-virtualization-overview?view=azuresql-db&preserve-view=true).
+
+### A. Create external table for Elastic Query
 
 ```sql
 CREATE EXTERNAL TABLE [dbo].[CustomerInformation]
@@ -838,13 +928,89 @@ WITH
 );
 ```
 
-## Next steps
+### C. Query external data from Azure SQL Database with an external table
 
-Learn more about external tables in Azure SQL Database in the following articles:
+1. To create a database scoped credential in Azure SQL Database, you must first create the [database master key](/sql/t-sql/statements/create-master-key-transact-sql?view=azuresqldb-current&preserve-view=true), if one does not already exist. A database master key is required when the credential requires `SECRET`.
 
-- [Azure SQL Database elastic query overview](/azure/sql-database/sql-database-elastic-query-overview)
-- [Reporting across scaled-out cloud databases](/azure/sql-database/sql-database-elastic-query-horizontal-partitioning)
-- [Get started with cross-database queries (vertical partitioning)](/azure/sql-database/sql-database-elastic-query-getting-started-vertical)
+    ```sql
+    -- Create MASTER KEY if it doesn't exist in the database:
+    CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Some Very Strong Password Here>'
+    GO
+    ```
+
+1. Create the database scoped credential using a SAS token. You can also use a managed identity.
+
+    ```sql
+    CREATE DATABASE SCOPED CREDENTIAL MyCredential
+    WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+    SECRET = '<KEY>' ; --Removing leading '?'
+    GO
+    ```
+
+1. Create the external data source using the credential.
+
+    ```sql
+    --Create external data source pointing to the file path, and referencing database-scoped credential:
+    CREATE EXTERNAL DATA SOURCE MyPrivateExternalDataSource
+    WITH (
+        LOCATION = 'abs://public@pandemicdatalake.blob.core.windows.net/curated/covid-19/bing_covid-19_data/latest'
+            CREDENTIAL = [MyCredential]
+    )
+    GO
+    ```
+
+1. Create an EXTERNAL FILE FORMAT and an EXTERNAL TABLE, to query the data as if it were a local table.
+
+    ```sql
+    -- Or, create an EXTERNAL FILE FORMAT and an EXTERNAL TABLE
+
+    --Create external file format
+    CREATE EXTERNAL FILE FORMAT DemoFileFormat
+    WITH (
+     FORMAT_TYPE=PARQUET
+    )
+    GO
+
+    --Create external table:
+    CREATE EXTERNAL TABLE tbl_TaxiRides(
+     vendorID VARCHAR(100) COLLATE Latin1_General_BIN2,
+     tpepPickupDateTime DATETIME2,
+     tpepDropoffDateTime DATETIME2,
+     passengerCount INT,
+     tripDistance FLOAT,
+     puLocationId VARCHAR(8000),
+     doLocationId VARCHAR(8000),
+     startLon FLOAT,
+     startLat FLOAT,
+     endLon FLOAT,
+     endLat FLOAT,
+     rateCodeId SMALLINT,
+     storeAndFwdFlag VARCHAR(8000),
+     paymentType VARCHAR(8000),
+     fareAmount FLOAT,
+     extra FLOAT,
+     mtaTax FLOAT,
+     improvementSurcharge VARCHAR(8000),
+     tipAmount FLOAT,
+     tollsAmount FLOAT,
+     totalAmount FLOAT
+    )
+    WITH (
+     LOCATION = 'yellow/puYear=*/puMonth=*/*.parquet',
+     DATA_SOURCE = NYCTaxiExternalDataSource,
+     FILE_FORMAT = MyFileFormat
+    );
+    GO
+
+    --Then, query the data via an external table with T-SQL:
+    SELECT TOP 10 *
+    FROM tbl_TaxiRides;
+    GO
+    ```
+
+## Related content
+
+- [Data virtualization with Azure SQL Database (Preview)](/azure/azure-sql/database/data-virtualization-overview)
 
 ::: moniker-end
 ::: moniker range="=azure-sqldw-latest"
@@ -858,6 +1024,9 @@ Learn more about external tables in Azure SQL Database in the following articles
     :::column-end:::
     :::column:::
         [Azure SQL Managed Instance](create-external-table-transact-sql.md?view=azuresqldb-mi-current&preserve-view=true)
+    :::column-end:::
+    :::column:::
+        [Microsoft Fabric](create-external-table-transact-sql.md?view=fabric&preserve-view=true)
     :::column-end:::
     :::column:::
         **_\* Azure Synapse<br />Analytics \*_** &nbsp;
@@ -876,13 +1045,14 @@ Use an external table to:
 - Dedicated SQL pools can query, import, and store data from Hadoop, Azure Blob Storage, and Azure Data Lake Storage Gen1 and Gen2.
 - Serverless SQL pools can query, import, and store data from Azure Blob Storage, Azure Data Lake Storage Gen1 and Gen2. Serverless does not support `TYPE=Hadoop`.
 
-See also [CREATE EXTERNAL DATA SOURCE](../../t-sql/statements/create-external-data-source-transact-sql.md) and [DROP EXTERNAL TABLE](../../t-sql/statements/drop-external-table-transact-sql.md).
+See also [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](create-external-data-source-transact-sql.md) and [DROP EXTERNAL TABLE (Transact-SQL)](drop-external-table-transact-sql.md).
 
 For more guidance and examples on using external tables with Azure Synapse, see [Use external tables with Synapse SQL](/azure/synapse-analytics/sql/develop-tables-external-tables).
 
 ## Syntax
 
 ### [[!INCLUDE[sss-dedicated-pool-md.md](../../includes/sss-dedicated-pool-md.md)]](#tab/dedicated)
+
 ```syntaxsql
 CREATE EXTERNAL TABLE { database_name.schema_name.table_name | schema_name.table_name | table_name }
     ( <column_definition> [ ,...n ] )
@@ -898,7 +1068,7 @@ CREATE EXTERNAL TABLE { database_name.schema_name.table_name | schema_name.table
 column_name <data_type>
     [ COLLATE collation_name ]
     [ NULL | NOT NULL ]
-  
+
 <reject_options> ::=
 {
     | REJECT_TYPE = value | percentage, 
@@ -907,7 +1077,9 @@ column_name <data_type>
     | REJECTED_ROW_LOCATION = '/REJECT_Directory'
 }
 ```
+
 ### [[!INCLUDE[sssod-md.md](../../includes/sssod-md.md)]](#tab/serverless)
+
 ```syntaxsql
 CREATE EXTERNAL TABLE { database_name.schema_name.table_name | schema_name.table_name | table_name }
     ( <column_definition> [ ,...n ] )
@@ -938,7 +1110,9 @@ column_name <data_type>
 
 #### *{ database_name.schema_name.table_name | schema_name.table_name | table_name }*
 
-The one to three-part name of the table to create. For an external table, only the table metadata along with basic statistics about the file or folder that is referenced in Azure Data Lake, Hadoop, or Azure Blob Storage. No actual data is moved or stored when external tables are created.
+The one to three-part name of the table to create. 
+
+For an external table, only the table metadata along with basic statistics about the file or folder that is referenced in Azure Data Lake, Hadoop, or Azure Blob Storage. No actual data is moved or stored when external tables are created.
 
 > [!IMPORTANT]  
 > For best performance, if the external data source driver supports a three-part name, it is strongly recommended to provide the three-part name.
@@ -955,13 +1129,13 @@ CREATE EXTERNAL TABLE supports the ability to configure column name, data type, 
 
 #### LOCATION = '*folder_or_filepath*'
 
-Specifies the folder or the file path and file name for the actual data in Azure Data Lake, Hadoop, or Azure Blob Storage. The location starts from the root folder. The root folder is the data location specified in the external data source. The [CREATE EXTERNAL TABLE AS SELECT](create-external-table-as-select-transact-sql.md) statement creates the path and folder if it doesn't exist. `CREATE EXTERNAL TABLE` doesn't create the path and folder.
+Specifies the folder or the file path and file name for the actual data in Azure Data Lake, Hadoop, or Azure Blob Storage. The location starts from the root folder. The root folder is the data location specified in the external data source. The [CREATE EXTERNAL TABLE AS SELECT (CETAS) (Transact-SQL)](create-external-table-as-select-transact-sql.md) statement creates the path and folder if it doesn't exist. `CREATE EXTERNAL TABLE` doesn't create the path and folder.
 
 If you specify LOCATION to be a folder, a PolyBase query that selects from the external table will retrieve files from the folder and all of its subfolders. Just like Hadoop, PolyBase doesn't return hidden folders. It also doesn't return files for which the file name begins with an underline (_) or a period (.).
 
 In the following image example, if `LOCATION='/webdata/'`, a PolyBase query will return rows from `mydata.txt` and `mydata2.txt`. It won't return `mydata3.txt` because it's in a subfolder of a hidden folder. And it won't return `_hidden.txt` because it's a hidden file.
 
-:::image type="content" source="media/create-external-table-transact-sql/aps-polybase-folder-traversal.png" alt-text="A diagram of folders and file data for external tables.":::
+:::image type="content" source="media/create-external-table-transact-sql/aps-polybase-folder-traversal.png" alt-text="Diagram of folders and file data for external tables.":::
 
 Unlike Hadoop external tables, native external tables don't return subfolders unless you specify `/**` at the end of path. In this example, if `LOCATION='/webdata/'`, a serverless SQL pool query, will return rows from mydata.txt. It won't return mydata2.txt and mydata3.txt because they're located in a subfolder. Hadoop tables will return all files within any subfolder.
 
@@ -969,11 +1143,11 @@ Both Hadoop and native external tables will skip the files with the names that b
 
 #### DATA_SOURCE = *external_data_source_name*
 
-Specifies the name of the external data source that contains the location of the external data. This location is in Azure Data Lake. To create an external data source, use [CREATE EXTERNAL DATA SOURCE](../../t-sql/statements/create-external-data-source-transact-sql.md).
+Specifies the name of the external data source that contains the location of the external data. This location is in Azure Data Lake. To create an external data source, use [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](create-external-data-source-transact-sql.md).
 
 #### FILE_FORMAT = *external_file_format_name*
 
-Specifies the name of the external file format object that stores the file type and compression method for the external data. To create an external file format, use [CREATE EXTERNAL FILE FORMAT](../../t-sql/statements/create-external-file-format-transact-sql.md).
+Specifies the name of the external file format object that stores the file type and compression method for the external data. To create an external file format, use [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](create-external-file-format-transact-sql.md).
 
 #### TABLE_OPTIONS
 
@@ -993,48 +1167,42 @@ The PARSER_VERSION format option is only supported in serverless SQL pools.
 
 #### REJECT_TYPE = value | percentage
 
-Clarifies whether the REJECT_VALUE option is specified as a literal value or a percentage.
+Clarifies whether the `REJECT_VALUE` option is specified as a literal value or a percentage.
 
 *value*
 
-REJECT_VALUE is a literal value, not a percentage. The PolyBase query will fail when the number of rejected rows exceeds *reject_value*.
+`REJECT_VALUE` is a literal value, not a percentage. The PolyBase query will fail when the number of rejected rows exceeds *reject_value*.
 
-For example, if REJECT_VALUE = 5 and REJECT_TYPE = value, the PolyBase SELECT query will fail after five rows have been rejected.
+The query will fail when the number of rejected rows exceeds *reject_value*. For example, if `REJECT_VALUE = 5` and `REJECT_TYPE = value`, the PolyBase `SELECT` query will fail after five rows have been rejected.
 
 *percentage*
 
-REJECT_VALUE is a percentage, not a literal value. A PolyBase query will fail when the *percentage* of failed rows exceeds *reject_value*. The percentage of failed rows is calculated at intervals.
+`REJECT_VALUE` is a percentage, not a literal value. A PolyBase query will fail when the *percentage* of failed rows exceeds *reject_value*. The percentage of failed rows is calculated at intervals.
 
-#### REJECT_VALUE = *reject_value*
+- For `REJECT_TYPE = value`, *reject_value* must be an integer between 0 and 2,147,483,647.
+- For `REJECT_TYPE = percentage`, *reject_value* must be a float between 0 and 100. Percentage is only valid for dedicated SQL pools where `TYPE = HADOOP`.
 
-Specifies the value or the percentage of rows that can be rejected before the query fails.
-
-- For REJECT_TYPE = value, *reject_value* must be an integer between 0 and 2,147,483,647.
-- For REJECT_TYPE = percentage, *reject_value* must be a float between 0 and 100. Percentage is only valid for dedicated SQL pools where `TYPE=HADOOP`.
-
-The query will fail when the number of rejected rows exceeds *reject_value*.
-For example, if REJECT_VALUE = 5 and REJECT_TYPE = value, the SELECT query will fail after five rows have been rejected.
 
 #### REJECT_SAMPLE_VALUE = *reject_sample_value*
 
-This attribute is required when you specify REJECT_TYPE = percentage. It determines the number of rows to attempt to retrieve before the PolyBase recalculates the percentage of rejected rows.
+This attribute is required when you specify `REJECT_TYPE = percentage`. It determines the number of rows to attempt to retrieve before the PolyBase recalculates the percentage of rejected rows.
 
 The *reject_sample_value* parameter must be an integer between 0 and 2,147,483,647.
 
-For example, if REJECT_SAMPLE_VALUE = 1000, PolyBase will calculate the percentage of failed rows after it has attempted to import 1000 rows from the external data file. If the percentage of failed rows is less than *reject_value*, PolyBase attempts to retrieve another 1,000 rows. It continues to recalculate the percentage of failed rows after it attempts to import each additional 1,000 rows.
+For example, if `REJECT_SAMPLE_VALUE = 1000`, PolyBase will calculate the percentage of failed rows after it has attempted to import 1000 rows from the external data file. If the percentage of failed rows is less than *reject_value*, PolyBase attempts to retrieve another 1,000 rows. It continues to recalculate the percentage of failed rows after it attempts to import each additional 1,000 rows.
 
 > [!NOTE]  
 > Since PolyBase computes the percentage of failed rows at intervals, the actual percentage of failed rows can exceed *reject_value*.
 
 Example:
 
-This example shows how the three REJECT options interact with each other. For example, if REJECT_TYPE = percentage, REJECT_VALUE = 30, and REJECT_SAMPLE_VALUE = 100, the following scenario could occur:
+This example shows how the three REJECT options interact with each other. For example, if `REJECT_TYPE = percentage`, `REJECT_VALUE = 30`, and `REJECT_SAMPLE_VALUE = 100`, the following scenario could occur:
 
 - PolyBase attempts to retrieve the first 100 rows; 25 fail and 75 succeed.
 - Percent of failed rows is calculated as 25%, which is less than the reject value of 30%. As a result, PolyBase continues retrieving data from the external data source.
 - PolyBase attempts to load the next 100 rows; this time 25 rows succeed and 75 rows fail.
 - Percent of failed rows is recalculated as 50%. The percentage of failed rows has exceeded the 30% reject value.
-- The PolyBase query fails with 50% rejected rows after attempting to return the first 200 rows. Notice that matching rows have been returned before the PolyBase query detects the reject threshold has been exceeded.
+- The PolyBase query fails with 50% rejected rows after attempting to return the first 200 rows. Matching rows have been returned before the PolyBase query detects the reject threshold has been exceeded.
 
 #### REJECTED_ROW_LOCATION = *Directory Location*
 
@@ -1043,11 +1211,11 @@ Specifies the directory within the External Data Source that the rejected rows a
 If the specified path doesn't exist, it will be created. A child directory is created with the name `_rejectedrows`. The `_` character ensures that the directory is escaped for other data processing unless explicitly named in the location parameter. 
 
 - In serverless SQL pools, the path is `YearMonthDay_HourMinuteSecond_StatementID`. You can use `statementID` to correlate folder with query that generated it.
-- In dedicated SQL pools, the path created is based on the time of load submission in the format `YearMonthDay -HourMinuteSecond`, for example `20180330-173205`. 
+- In dedicated SQL pools, the path created is based on the time of load submission in the format `YearMonthDay -HourMinuteSecond`, for example `20180330-173205`.
 
 In this folder, two types of files are written, the `_reason` file and the data file. 
 
-For more information, see [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md#type---hadoop--blob_storage-).
+For more information, see [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md).
 
 The reason files and the data files both have the queryID associated with the CTAS statement. Because the data and the reason are in separate files, corresponding files have a matching suffix.
 
@@ -1055,11 +1223,11 @@ In serverless SQL pools, the `error.json` file contains a JSON array with encoun
 
 | Attribute | Description                                                  |
 | --------- | ------------------------------------------------------------ |
-| Error     | Reason why row is rejected.                                  |
-| Row       | Rejected row ordinal number in file.                         |
-| Column    | Rejected column ordinal number.                              |
-| Value     | Rejected column value. If the value is larger than 100 characters, only the first 100 characters are displayed. |
-| File      | Path to file that row belongs to.                            |
+| `Error` | Reason why row is rejected.                                  |
+| `Row` | Rejected row ordinal number in file.                         |
+| `Column` | Rejected column ordinal number.                              |
+| `Value` | Rejected column value. If the value is larger than 100 characters, only the first 100 characters are displayed. |
+| `File` | Path to file that row belongs to.                            |
 
 ## Permissions
 
@@ -1069,9 +1237,7 @@ Requires these user permissions:
 - **ALTER ANY SCHEMA**
 - **ALTER ANY EXTERNAL DATA SOURCE**
 - **ALTER ANY EXTERNAL FILE FORMAT**
-
-> [!NOTE]  
-> CONTROL DATABASE permissions are required to create only the MASTER KEY, DATABASE SCOPED CREDENTIAL, and EXTERNAL DATA SOURCE
+- **CONTROL DATABASE** permissions are required to create only the master key, database scoped credential, and external data source.
 
 Note, the login that creates the external data source must have permission to read and write to the external data source, located in Hadoop or Azure Blob Storage.
 
@@ -1084,7 +1250,7 @@ While executing the `CREATE EXTERNAL TABLE` statement, PolyBase attempts to conn
 
 ## Remarks
 
-In ad hoc query scenarios, such as SELECT FROM EXTERNAL TABLE, PolyBase stores the rows that are retrieved from the external data source in a temporary table. After the query completes, PolyBase removes and deletes the temporary table. No permanent data is stored in SQL tables.
+In ad hoc query scenarios, such as `SELECT FROM EXTERNAL TABLE`, PolyBase stores the rows that are retrieved from the external data source in a temporary table. After the query completes, PolyBase removes and deletes the temporary table. No permanent data is stored in SQL tables.
 
 In contrast, in the import scenario, such as SELECT INTO FROM EXTERNAL TABLE, PolyBase stores the rows that are retrieved from the external data source as permanent data in the SQL table. The new table is created during query execution when PolyBase retrieves the external data.
 
@@ -1094,7 +1260,7 @@ You can create many external tables that reference the same or different externa
 
 Serverless and dedicated SQL pools in Azure Synapse Analytics use different code bases for data virtualization. Serverless SQL pools support a native data virtualization technology. Dedicated SQL pools support both native and PolyBase data virtualization. PolyBase data virtualization is used when the EXTERNAL DATA SOURCE is created with `TYPE=HADOOP`.
 
-## Limitations and restrictions
+## Limitations
 
 Since the data for an external table is not under the direct management control of Azure Synapse, it can be changed or removed at any time by an external process. As a result, query results against an external table aren't guaranteed to be deterministic. The same query can return different results each time it runs against an external table. Similarly, a query might fail if the external data is moved or removed.
 
@@ -1111,15 +1277,15 @@ You can create multiple external tables that each reference different external d
 
 Only these Data Definition Language (DDL) statements are allowed on external tables:
 
-- CREATE TABLE and DROP TABLE
-- CREATE STATISTICS and DROP STATISTICS
-- CREATE VIEW and DROP VIEW
+- `CREATE TABLE` and `DROP TABLE`
+- `CREATE STATISTICS` and `DROP STATISTICS`
+- `CREATE VIEW` and `DROP VIEW`
 
 Constructs and operations not supported:
 
-- The DEFAULT constraint on external table columns
+- A `DEFAULT` constraint on external table columns
 - Data Manipulation Language (DML) operations of delete, insert, and update
-- [Dynamic Data Masking](../../relational-databases/security/dynamic-data-masking.md) on external table columns
+- [Dynamic data masking](../../relational-databases/security/dynamic-data-masking.md) on external table columns
 
 ### Query limitations
 
@@ -1218,14 +1384,12 @@ GO
 SELECT TOP 1 * FROM census_external_table;
 ```
 
-## Next steps
-
-Learn more about external tables and related concepts in the following articles:
+## Related content
 
 - [CREATE EXTERNAL DATA SOURCE](../../t-sql/statements/create-external-data-source-transact-sql.md?view=azure-sqldw-latest&preserve-view=true)
-- [CREATE EXTERNAL FILE FORMAT](../../t-sql/statements/create-external-file-format-transact-sql.md)
+- [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](create-external-file-format-transact-sql.md)
 - [CREATE EXTERNAL TABLE AS SELECT](../../t-sql/statements/create-external-table-as-select-transact-sql.md?view=azure-sqldw-latest&preserve-view=true)
-- [CREATE TABLE AS SELECT &#40;Azure Synapse Analytics&#41;](../../t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md)
+- [CREATE TABLE AS SELECT](create-table-as-select-azure-sql-data-warehouse.md)
 
 ::: moniker-end
 ::: moniker range=">=aps-pdw-2016"
@@ -1240,6 +1404,9 @@ Learn more about external tables and related concepts in the following articles:
     :::column:::
         [Azure SQL Managed Instance](create-external-table-transact-sql.md?view=azuresqldb-mi-current&preserve-view=true)
     :::column-end:::
+    :::column:::
+        [Microsoft Fabric](create-external-table-transact-sql.md?view=fabric&preserve-view=true)
+    :::column-end:::    
     :::column:::
         [Azure Synapse<br />Analytics](create-external-table-transact-sql.md?view=azure-sqldw-latest&preserve-view=true)
     :::column-end:::
@@ -1257,7 +1424,7 @@ Use an external table to:
 - Query Hadoop or Azure Blob Storage data with [!INCLUDE[tsql](../../includes/tsql-md.md)] statements.
 - Import and store data from Hadoop or Azure Blob Storage into Analytics Platform System.
 
-See also [CREATE EXTERNAL DATA SOURCE](../../t-sql/statements/create-external-data-source-transact-sql.md) and [DROP EXTERNAL TABLE](../../t-sql/statements/drop-external-table-transact-sql.md).
+See also [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](create-external-data-source-transact-sql.md) and [DROP EXTERNAL TABLE (Transact-SQL)](drop-external-table-transact-sql.md).
 
 ## Syntax
 
@@ -1282,7 +1449,7 @@ column_name <data_type>
     | REJECT_TYPE = value | percentage,
     | REJECT_VALUE = reject_value,
     | REJECT_SAMPLE_VALUE = reject_sample_value,
-  
+
 }
 ```
 
@@ -1290,7 +1457,9 @@ column_name <data_type>
 
 #### *{ database_name.schema_name.table_name | schema_name.table_name | table_name }*
 
-The one to three-part name of the table to create. For an external table, Analytics Platform System stores only the table metadata along with basic statistics about the file or folder that is referenced in Hadoop or Azure Blob Storage. No actual data is moved or stored in Analytics Platform System.
+The one to three-part name of the table to create. 
+
+For an external table, Analytics Platform System stores only the table metadata along with basic statistics about the file or folder that is referenced in Hadoop or Azure Blob Storage. No actual data is moved or stored in Analytics Platform System.
 
 > [!IMPORTANT]  
 > For best performance, if the external data source driver supports a three-part name, it is strongly recommended to provide the three-part name.
@@ -1305,23 +1474,23 @@ The column definitions, including the data types and number of columns, must mat
 
 Specifies the folder or the file path and file name for the actual data in Hadoop or Azure Blob Storage. The location starts from the root folder. The root folder is the data location specified in the external data source.
 
-In Analytics Platform System, the [CREATE EXTERNAL TABLE AS SELECT](create-external-table-as-select-transact-sql.md) statement creates the path and folder if it doesn't exist. `CREATE EXTERNAL TABLE` doesn't create the path and folder.
+In Analytics Platform System, the [CREATE EXTERNAL TABLE AS SELECT (CETAS) (Transact-SQL)](create-external-table-as-select-transact-sql.md) statement creates the path and folder if it doesn't exist. `CREATE EXTERNAL TABLE` doesn't create the path and folder.
 
 If you specify LOCATION to be a folder, a PolyBase query that selects from the external table will retrieve files from the folder and all of its subfolders. Just like Hadoop, PolyBase doesn't return hidden folders. It also doesn't return files for which the file name begins with an underline (_) or a period (.).
 
 In the following image example, if `LOCATION='/webdata/'`, a PolyBase query will return rows from `mydata.txt` and `mydata2.txt`. It won't return `mydata3.txt` because it's in a subfolder of a hidden folder. And it won't return `_hidden.txt` because it's a hidden file.
 
-:::image type="content" source="media/create-external-table-transact-sql/aps-polybase-folder-traversal.png" alt-text="A diagram of folders and file data for external tables.":::
+:::image type="content" source="media/create-external-table-transact-sql/aps-polybase-folder-traversal.png" alt-text="Diagram of folders and file data for external tables.":::
 
 To change the default and only read from the root folder, set the attribute `<polybase.recursive.traversal>` to 'false' in the `core-site.xml` configuration file. This file is located under `<SqlBinRoot>\PolyBase\Hadoop\Conf\` under the `bin` root of SQL Server. For example, `C:\Program Files\Microsoft SQL Server\MSSQL13.XD14\MSSQL\Binn\`.
 
 #### DATA_SOURCE = *external_data_source_name*
 
-Specifies the name of the external data source that contains the location of the external data. This location is either a Hadoop or Azure Blob Storage. To create an external data source, use [CREATE EXTERNAL DATA SOURCE](../../t-sql/statements/create-external-data-source-transact-sql.md).
+Specifies the name of the external data source that contains the location of the external data. This location is either a Hadoop or Azure Blob Storage. To create an external data source, use [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](create-external-data-source-transact-sql.md).
 
 #### FILE_FORMAT = *external_file_format_name*
 
-Specifies the name of the external file format object that stores the file type and compression method for the external data. To create an external file format, use [CREATE EXTERNAL FILE FORMAT](../../t-sql/statements/create-external-file-format-transact-sql.md).
+Specifies the name of the external file format object that stores the file type and compression method for the external data. To create an external file format, use [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](create-external-file-format-transact-sql.md).
 
 #### Reject Options
 
@@ -1372,7 +1541,7 @@ This example shows how the three REJECT options interact with each other. For ex
 - Percent of failed rows is calculated as 25%, which is less than the reject value of 30%. As a result, PolyBase will continue retrieving data from the external data source.
 - PolyBase attempts to load the next 100 rows; this time 25 rows succeed and 75 rows fail.
 - Percent of failed rows is recalculated as 50%. The percentage of failed rows has exceeded the 30% reject value.
-- The PolyBase query fails with 50% rejected rows after attempting to return the first 200 rows. Notice that matching rows have been returned before the PolyBase query detects the reject threshold has been exceeded.
+- The PolyBase query fails with 50% rejected rows after attempting to return the first 200 rows. Matching rows have been returned before the PolyBase query detects the reject threshold has been exceeded.
 
 ## Permissions
 
@@ -1395,31 +1564,31 @@ While executing the `CREATE EXTERNAL TABLE` statement, PolyBase attempts to conn
 
 ## Remarks
 
-In ad hoc query scenarios, such as SELECT FROM EXTERNAL TABLE, PolyBase stores the rows that are retrieved from the external data source in a temporary table. After the query completes, PolyBase removes and deletes the temporary table. No permanent data is stored in SQL tables.
+In ad hoc query scenarios, such as `SELECT FROM EXTERNAL TABLE`, PolyBase stores the rows that are retrieved from the external data source in a temporary table. After the query completes, PolyBase removes and deletes the temporary table. No permanent data is stored in SQL tables.
 
 In contrast, in the import scenario, such as SELECT INTO FROM EXTERNAL TABLE, PolyBase stores the rows that are retrieved from the external data source as permanent data in the SQL table. The new table is created during query execution when PolyBase retrieves the external data.
 
-PolyBase can push some of the query computation to Hadoop to improve query performance. This action is called predicate pushdown. To enable it, specify the Hadoop resource manager location option in [CREATE EXTERNAL DATA SOURCE](../../t-sql/statements/create-external-data-source-transact-sql.md).
+PolyBase can push some of the query computation to Hadoop to improve query performance. This action is called predicate pushdown. To enable it, specify the Hadoop resource manager location option in [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](create-external-data-source-transact-sql.md).
 
 You can create many external tables that reference the same or different external data sources.
 
-## Limitations and restrictions
+## Limitations
 
 Since the data for an external table is not under the direct management control of the appliance, it can be changed or removed at any time by an external process. As a result, query results against an external table aren't guaranteed to be deterministic. The same query can return different results each time it runs against an external table. Similarly, a query might fail if the external data is moved or removed.
 
-You can create multiple external tables that each reference different external data sources. If you simultaneously run queries against different Hadoop data sources, then each Hadoop source must use the same 'hadoop connectivity' server configuration setting. For example, you can't simultaneously run a query against a Cloudera Hadoop cluster and a Hortonworks Hadoop cluster since these use different configuration settings. For the configuration settings and supported combinations, see [PolyBase Connectivity Configuration](../../database-engine/configure-windows/polybase-connectivity-configuration-transact-sql.md).
+You can create multiple external tables that each reference different external data sources. If you simultaneously run queries against different Hadoop data sources, then each Hadoop source must use the same 'hadoop connectivity' server configuration setting. For example, you can't simultaneously run a query against a Cloudera Hadoop cluster and a Hortonworks Hadoop cluster since these use different configuration settings. For the configuration settings and supported combinations, see [PolyBase connectivity configuration (Transact-SQL)](../../database-engine/configure-windows/polybase-connectivity-configuration-transact-sql.md).
 
 Only these Data Definition Language (DDL) statements are allowed on external tables:
 
-- CREATE TABLE and DROP TABLE
-- CREATE STATISTICS and DROP STATISTICS
-- CREATE VIEW and DROP VIEW
+- `CREATE TABLE` and `DROP TABLE`
+- `CREATE STATISTICS` and `DROP STATISTICS`
+- `CREATE VIEW` and `DROP VIEW`
 
 Constructs and operations not supported:
 
-- The DEFAULT constraint on external table columns
+- A `DEFAULT` constraint on external table columns
 - Data Manipulation Language (DML) operations of delete, insert, and update
-- [Dynamic Data Masking](../../relational-databases/security/dynamic-data-masking.md) on external table columns
+- [Dynamic data masking](../../relational-databases/security/dynamic-data-masking.md) on external table columns
 
 ### Query limitations
 
@@ -1479,14 +1648,12 @@ AS SELECT url, event_date, user_ip
 FROM ClickStream;
 ```
 
-## Next steps
+## Related content
 
-Learn more about external tables in Analytics Platform System in the following articles:
-
-- [CREATE EXTERNAL DATA SOURCE](../../t-sql/statements/create-external-data-source-transact-sql.md)
-- [CREATE EXTERNAL FILE FORMAT](../../t-sql/statements/create-external-file-format-transact-sql.md)
-- [CREATE EXTERNAL TABLE AS SELECT](../../t-sql/statements/create-external-table-as-select-transact-sql.md)
-- [CREATE TABLE AS SELECT &#40;Azure Synapse Analytics&#41;](../../t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md)
+- [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](create-external-data-source-transact-sql.md)
+- [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](create-external-file-format-transact-sql.md)
+- [CREATE EXTERNAL TABLE AS SELECT (CETAS) (Transact-SQL)](create-external-table-as-select-transact-sql.md)
+- [CREATE TABLE AS SELECT](create-table-as-select-azure-sql-data-warehouse.md)
 
 ::: moniker-end
 ::: moniker range="=azuresqldb-mi-current"
@@ -1500,6 +1667,9 @@ Learn more about external tables in Analytics Platform System in the following a
     :::column-end:::
     :::column:::
         **_\* Azure SQL Managed Instance \*_** &nbsp;  
+    :::column-end:::
+    :::column:::
+        [Microsoft Fabric](create-external-table-transact-sql.md?view=fabric&preserve-view=true)
     :::column-end:::
     :::column:::
         [Azure Synapse<br />Analytics](create-external-table-transact-sql.md?view=azure-sqldw-latest&preserve-view=true)
@@ -1518,7 +1688,7 @@ Creates an external data table in [!INCLUDE[ssazuremi-md](../../includes/ssazure
 
 Data virtualization in [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)] provides access to external data in a variety of file formats in Azure Data Lake Storage Gen2 or Azure Blob Storage, and to query them with T-SQL statements, even combine data with locally stored relational data using joins.
 
-See also [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md) and [DROP EXTERNAL TABLE](drop-external-table-transact-sql.md).
+See also [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](create-external-data-source-transact-sql.md) and [DROP EXTERNAL TABLE (Transact-SQL)](drop-external-table-transact-sql.md).
 
 ## Syntax
 
@@ -1536,14 +1706,15 @@ CREATE EXTERNAL TABLE { database_name.schema_name.table_name | schema_name.table
 column_name <data_type>
     [ COLLATE collation_name ]
     [ NULL | NOT NULL ]
-  
 ```
 
 ## Arguments
 
 #### *{ database_name.schema_name.table_name | schema_name.table_name | table_name }*
 
-The one to three-part name of the table to create. For an external table, only the table metadata along with basic statistics about the file or folder that is referenced in Azure Data Lake or Azure Blob Storage. No actual data is moved or stored when external tables are created.
+The one to three-part name of the table to create. 
+
+For an external table, only the table metadata along with basic statistics about the file or folder that is referenced in Azure Data Lake or Azure Blob Storage. No actual data is moved or stored when external tables are created.
 
 > [!IMPORTANT]  
 > For best performance, if the external data source driver supports a three-part name, it is strongly recommended to provide the three-part name.
@@ -1564,15 +1735,15 @@ If you specify LOCATION to be a folder, the query from [!INCLUDE[ssazuremi-md](.
 
 In the following image example, if `LOCATION='/webdata/'`, a query will return rows from `mydata.txt`. It won't return `mydata2.txt` because it is in a subfolder, it won't return `mydata3.txt` because it's in a hidden folder, and it won't return `_hidden.txt` because it's a hidden file.
 
-:::image type="content" source="media/create-external-table-transact-sql/aps-polybase-folder-traversal.png" alt-text="A diagram of folders and file data for external tables.":::
+:::image type="content" source="media/create-external-table-transact-sql/aps-polybase-folder-traversal.png" alt-text="Diagram of folders and file data for external tables.":::
 
 #### DATA_SOURCE = *external_data_source_name*
 
-Specifies the name of the external data source that contains the location of the external data. This location is in Azure Data Lake. To create an external data source, use [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md).
+Specifies the name of the external data source that contains the location of the external data. This location is in Azure Data Lake. To create an external data source, use [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](create-external-data-source-transact-sql.md).
 
 #### FILE_FORMAT = *external_file_format_name*
 
-Specifies the name of the external file format object that stores the file type and compression method for the external data. To create an external file format, use [CREATE EXTERNAL FILE FORMAT](create-external-file-format-transact-sql.md).
+Specifies the name of the external file format object that stores the file type and compression method for the external data. To create an external file format, use [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](create-external-file-format-transact-sql.md).
 
 ## Permissions
 
@@ -1582,9 +1753,7 @@ Requires these user permissions:
 - **ALTER ANY SCHEMA**
 - **ALTER ANY EXTERNAL DATA SOURCE**
 - **ALTER ANY EXTERNAL FILE FORMAT**
-
-> [!NOTE]  
-> CONTROL DATABASE permissions are required to create only the MASTER KEY, DATABASE SCOPED CREDENTIAL, and EXTERNAL DATA SOURCE
+- **CONTROL DATABASE** permissions are required to create only the master key, database scoped credential, and external data source.
 
 Note, the login that creates the external data source must have permission to read and write to the external data source, located in Hadoop or Azure Blob Storage.
 
@@ -1593,15 +1762,15 @@ Note, the login that creates the external data source must have permission to re
 
 ## Remarks
 
-In ad hoc query scenarios, such as SELECT FROM EXTERNAL TABLE, the rows that are retrieved from the external data source are stored in a temporary table. After the query completes, the rows are removed and the temporary table is deleted. No permanent data is stored in SQL tables.
+In ad hoc query scenarios, such as `SELECT FROM EXTERNAL TABLE`, the rows that are retrieved from the external data source are stored in a temporary table. After the query completes, the rows are removed and the temporary table is deleted. No permanent data is stored in SQL tables.
 
-In contrast, in the import scenario, such as SELECT INTO FROM EXTERNAL TABLE, the rows that are retrieved from the external data source are stored as permanent data in the SQL table. The new table is created during query execution when the external data is retrieved.
+In contrast, in the import scenario, such as `SELECT INTO FROM EXTERNAL TABLE`, the rows that are retrieved from the external data source are stored as permanent data in the SQL table. The new table is created during query execution when the external data is retrieved.
 
 Currently, data virtualization with Azure SQL Managed Instance is read-only.
 
 You can create many external tables that reference the same or different external data sources.
 
-## Limitations and restrictions
+## Limitations
 
 Since the data for an external table is not under the direct management control of [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)], it can be changed or removed at any time by an external process. As a result, query results against an external table aren't guaranteed to be deterministic. The same query can return different results each time it runs against an external table. Similarly, a query might fail if the external data is moved or removed.
 
@@ -1609,13 +1778,13 @@ You can create multiple external tables that each reference different external d
 
 Only these Data Definition Language (DDL) statements are allowed on external tables:
 
-- CREATE TABLE and DROP TABLE
-- CREATE STATISTICS and DROP STATISTICS
-- CREATE VIEW and DROP VIEW
+- `CREATE TABLE` and `DROP TABLE`
+- `CREATE STATISTICS` and `DROP STATISTICS`
+- `CREATE VIEW` and `DROP VIEW`
 
 Constructs and operations not supported:
 
-- The DEFAULT constraint on external table columns
+- The `DEFAULT` constraint on external table columns
 - Data Manipulation Language (DML) operations of delete, insert, and update
 
 ### Table width limitations
@@ -1644,7 +1813,7 @@ Shared lock on the SCHEMARESOLUTION object.
 
 ### A. Query external data from Azure SQL Managed Instance with an external table
 
-For more examples, see [Create external data source](create-external-data-source-transact-sql.md) or see [Data virtualization with Azure SQL Managed Instance](/azure/azure-sql/managed-instance/data-virtualization-overview).
+For more examples, see [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](create-external-data-source-transact-sql.md) or see [Data virtualization with Azure SQL Managed Instance](/azure/azure-sql/managed-instance/data-virtualization-overview).
 
 1. Create the database master key, if it doesn't exist.
 
@@ -1656,7 +1825,7 @@ For more examples, see [Create external data source](create-external-data-source
 
 1. Create the database scoped credential using a SAS token. You can also use a managed identity.
 
-    ```sql    
+    ```sql
     CREATE DATABASE SCOPED CREDENTIAL MyCredential
     WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
     SECRET = '<KEY>' ; --Removing leading '?'
@@ -1665,7 +1834,7 @@ For more examples, see [Create external data source](create-external-data-source
 
 1. Create the external data source using the credential.
 
-    ```sql    
+    ```sql
     --Create external data source pointing to the file path, and referencing database-scoped credential:
     CREATE EXTERNAL DATA SOURCE MyPrivateExternalDataSource
     WITH (
@@ -1679,14 +1848,14 @@ For more examples, see [Create external data source](create-external-data-source
 
     ```sql
     -- Or, create an EXTERNAL FILE FORMAT and an EXTERNAL TABLE
-    
+
     --Create external file format
     CREATE EXTERNAL FILE FORMAT DemoFileFormat
     WITH (
      FORMAT_TYPE=PARQUET
     )
     GO
-    
+
     --Create external table:
     CREATE EXTERNAL TABLE tbl_TaxiRides(
      vendorID VARCHAR(100) COLLATE Latin1_General_BIN2,
@@ -1717,20 +1886,36 @@ For more examples, see [Create external data source](create-external-data-source
      FILE_FORMAT = MyFileFormat
     );
     GO
-    
+
     --Then, query the data via an external table with T-SQL:
     SELECT TOP 10 *
     FROM tbl_TaxiRides;
     GO
     ```
 
-## Next steps
+## Related content
 
 Learn more about external tables and related concepts in the following articles:
 
 - [Data virtualization with Azure SQL Managed Instance](/azure/azure-sql/managed-instance/data-virtualization-overview)
-- [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md)
-- [CREATE EXTERNAL FILE FORMAT](create-external-file-format-transact-sql.md)
-- [CREATE EXTERNAL TABLE AS SELECT](create-external-table-as-select-transact-sql.md)
+- [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](create-external-data-source-transact-sql.md)
+- [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](create-external-file-format-transact-sql.md)
+- [CREATE EXTERNAL TABLE AS SELECT (CETAS) (Transact-SQL)](create-external-table-as-select-transact-sql.md)
+
+::: moniker-end
+
+::: moniker range="=fabric"
+
+&nbsp;
+
+## Overview: Microsoft Fabric
+
+**Applies to:** Microsoft Fabric Data Warehouse
+
+For more information and examples for `OPENROWSET` in Fabric Data Warehouse, see:
+
+- [Browse File Content Before Ingestion with the OPENROWSET function](/fabric/data-warehouse/browse-file-content-with-openrowset)
+- [Ingest Data into Your Warehouse Using Transact-SQL](/fabric/data-warehouse/ingest-data-tsql)
+- [Tutorial: Load data with T-SQL into a Warehouse](/fabric/data-warehouse/tutorial-load-data)
 
 ::: moniker-end

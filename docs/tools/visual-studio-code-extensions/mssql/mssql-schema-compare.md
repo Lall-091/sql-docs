@@ -4,7 +4,7 @@ description: Learn how the Schema Compare feature simplifies comparing databases
 author: tauseefsiddique10
 ms.author: tsiddique
 ms.reviewer: roblescarlos, randolphwest
-ms.date: 04/30/2025
+ms.date: 06/18/2025
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -79,6 +79,7 @@ To compare schemas, open the Schema Compare dialog box. To do so, follow these s
 ## Related content
 
 - [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](connect-database-visual-studio-code.md)
-- [Schema Designer (Preview)](mssql-schema-designer.md)
+- [GitHub Copilot for MSSQL extension for Visual Studio Code](../github-copilot/overview.md)
+- [Schema designer (Preview)](mssql-schema-designer.md)
 - [Learn more about Visual Studio Code](https://code.visualstudio.com/docs)
 - [Learn more about contributing to the MSSQL extension](https://github.com/Microsoft/vscode-mssql/wiki)

@@ -5,7 +5,7 @@ description: Learn about the new features and documentation improvements for Azu
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma, randolphwest
-ms.date: 05/19/2025
+ms.date: 06/17/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: whats-new
@@ -45,6 +45,7 @@ The following table lists the features of Azure SQL Database that are currently 
 | **Availability metric**| Availability is now a metric in the Azure Monitor metrics. Driven by a variety of user connection failures, you can [monitor and configure alerts on Azure SQL Database Availability](monitoring-metrics-alerts.md#availability-metric). |
 | **DATEADD number allows bigint** | For `DATEADD (datepart , number , date )`, number can be expressed as a **bigint**. For more information, see [DATEADD (Transact-SQL)](/sql/t-sql/functions/dateadd-transact-sql).|
 | **Database watcher for Azure SQL** |[Database watcher](../database-watcher-overview.md) is a managed monitoring solution for database services in the Azure SQL family. Database watcher collects in-depth workload monitoring data to give you a detailed view of database performance, configuration, and health. Learn more about [database watcher](https://aka.ms/dbwatcher-preview-announcement). |
+| **Data Virtualization for Azure SQL Database** |Data virtualization, now in preview in Azure SQL Database, enables you to leverage all the power of Transact-SQL (T-SQL) and seamlessly query external data from Azure Data Lake Storage Gen2 or Azure Blob Storage. For more information, see [Data virtualization with Azure SQL Database (Preview)](data-virtualization-overview.md).|
 | **Degrees of Parallelism (DOP) feedback** | [DOP Feedback](/sql/relational-databases/performance/intelligent-query-processing-degree-parallelism-feedback?view=azuresqldb-current&preserve-view=true) is currently available as a limited preview. For more information and how to apply for the preview, see [Announcing Degree of Parallelism Feedback Limited Preview](https://techcommunity.microsoft.com/t5/azure-sql-blog/announcing-degree-of-parallelism-feedback-limited-preview/ba-p/3806924). |
 | **Elastic queries** | The [elastic queries](elastic-query-overview.md) feature allows for cross-database queries in Azure SQL Database. |
 | **Elastic transactions** | [Elastic transactions](elastic-transactions-overview.md) allow you to execute transactions distributed among cloud databases in Azure SQL Database. |
@@ -94,6 +95,12 @@ The following table lists features of Azure SQL Database that have been made gen
 ## Documentation changes
 
 Learn about significant changes to the Azure SQL Database documentation. For previous years, see the [What's new archive](doc-changes-updates-release-notes-whats-new-archive.md).
+
+### June 2025
+
+| Changes | Details |
+| --- | --- |
+| **Data Virtualization for Azure SQL Database (preview)** |Data virtualization, now in preview in Azure SQL Database, enables you to leverage all the power of Transact-SQL (T-SQL) and seamlessly query external data from Azure Data Lake Storage Gen2 or Azure Blob Storage. For more information, see [Data virtualization with Azure SQL Database (Preview)](data-virtualization-overview.md).|
 
 ### May 2025
 

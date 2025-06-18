@@ -155,7 +155,7 @@ The maximum number of indexes in the table hint is 250 nonclustered indexes.
 
 #### KEEPIDENTITY
 
-Applicable only in an `INSERT` statement when the `BULK` option is used with [OPENROWSET](../functions/openrowset-transact-sql.md).
+Applicable only in an `INSERT` statement when the `BULK` option is used with [OPENROWSET(BULK)](../functions/openrowset-bulk-transact-sql.md).
 
 Specifies that identity value or values in the imported data file are to be used for the identity column. If `KEEPIDENTITY` isn't specified, the identity values for this column are verified but not imported, and the query optimizer automatically assigns unique values based on the seed and increment values specified during table creation.
 
@@ -168,7 +168,7 @@ For information about checking the identity value for a table, see [DBCC CHECKID
 
 #### KEEPDEFAULTS
 
-Applicable only in an `INSERT` statement when the `BULK` option is used with [OPENROWSET](../functions/openrowset-transact-sql.md).
+Applicable only in an `INSERT` statement when the `BULK` option is used with [OPENROWSET (BULK)](../functions/openrowset-bulk-transact-sql.md).
 
 Specifies insertion of a table column's default value, if any, instead of `NULL` when the data record lacks a value for the column.
 
@@ -246,7 +246,7 @@ Equivalent to `SERIALIZABLE`. For more information, see [SERIALIZABLE](#serializ
 
 #### IGNORE_CONSTRAINTS
 
-Applicable only in an `INSERT` statement when the `BULK` option is used with [OPENROWSET](../functions/openrowset-transact-sql.md).
+Applicable only in an `INSERT` statement when the `BULK` option is used with [OPENROWSET (BULK)](../functions/openrowset-bulk-transact-sql.md).
 
 Specifies that the bulk-import operation ignores any constraints on the table. By default, `INSERT` checks [Unique constraints and check constraints](../../relational-databases/tables/unique-constraints-and-check-constraints.md) and [Primary and foreign key constraints](../../relational-databases/tables/primary-and-foreign-key-constraints.md). When `IGNORE_CONSTRAINTS` is specified for a bulk-import operation, `INSERT` must ignore these constraints on a target table. You can't disable `UNIQUE`, `PRIMARY KEY`, or `NOT NULL` constraints.
 
@@ -256,7 +256,7 @@ However, when `CHECK` and `FOREIGN KEY` constraints are ignored, each ignored co
 
 #### IGNORE_TRIGGERS
 
-Applicable only in an `INSERT` statement when the `BULK` option is used with [OPENROWSET](../functions/openrowset-transact-sql.md).
+Applicable only in an `INSERT` statement when the `BULK` option is used with [OPENROWSET (BULK)](../functions/openrowset-bulk-transact-sql.md).
 
 Specifies that any triggers defined on the table are ignored by the bulk-import operation. By default, `INSERT` applies triggers.
 
