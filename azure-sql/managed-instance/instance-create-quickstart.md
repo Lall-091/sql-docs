@@ -4,7 +4,7 @@ description: Create Azure SQL Managed Instance by using the Azure portal, PowerS
 author: vladai78
 ms.author: vladiv
 ms.reviewer: mathoma
-ms.date: 08/16/2024
+ms.date: 06/18/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
 ms.topic: quickstart
@@ -18,6 +18,8 @@ This quickstart teaches you to create a deployment of [Azure SQL Managed Instanc
 [!INCLUDE [azure-sql-managed-instance-free-offer-note](../includes/azure-sql-managed-instance-free-offer-note.md)]
 
 ## Prerequisites
+
+To create a SQL managed instance, you need the following prerequisites:
 
 - An Azure subscription. If you don't have an Azure subscription, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount)
 - In the general case, your user needs to have the role [SQL Managed Instance Contributor](/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) assigned at subscription scope.
@@ -34,11 +36,10 @@ Consider the following:
 
 - You can [cancel the provisioning process](management-operations-cancel.md) through Azure portal, or via PowerShell or the Azure CLI or other tooling using the REST API.
 - Instance deployment delayed if it's [impacted by other operations](management-operations-overview.md#management-operations-cross-impact) in the same subnet, such as a long-running restore or scaling an instance. 
-- **Read** permissions for the resource group are required to see the managed instance in your resource group. 
+- **Read** permissions for the resource group are required to see the SQL managed instance in your resource group. 
 
 > [!IMPORTANT]
-> Deploying a managed instance is a [long-running operation](management-operations-overview.md#duration). Deploying the first instance to a subnet typically takes much longer than deploying to a subnet with existing instances. 
-
+> For duration of the create operation, see [management operation durations](management-operations-duration.md#management-operation-duration). 
 
 
 ### [Portal](#tab/azure-portal)
@@ -68,9 +69,9 @@ The following table provides details for the required information on the **Basic
    | **Subscription** | Your subscription. | A subscription that gives you permission to create new resources. |
    | **Resource group** | A new or existing resource group.|For valid resource group names, see [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming).|
    | **Managed Instance name** | Any valid name.|For valid names, see [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming).|
-   | **Region** |The region in which you want to create the managed instance.|For information about regions, see [Azure regions](https://azure.microsoft.com/regions/).|
+   | **Region** |The region in which you want to create the SQL managed instance.|For information about regions, see [Azure regions](https://azure.microsoft.com/regions/).|
    | **Belongs to an instance pool?** | Select **Yes** if you want this instance to be created inside an [instance pool](instance-pools-configure.md). | 
-   | **Authentication method** | Use SQL authentication | For the purpose of this quickstart, use SQL authentication. But you can also choose to use both SQL and [Microsoft Entra](../database/authentication-aad-overview.md) authentication. | 
+   | **Authentication method** | Use SQL authentication | For this quickstart, use SQL authentication. But for improved security, use [Microsoft Entra](../database/authentication-aad-overview.md) authentication. | 
    | **Managed instance admin login** | Any valid username. | For valid names, see [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming). Don't use `serveradmin` because that's a reserved server-level role.|
    | **Password** | Any valid password.| The password must be at least 16 characters long and meet the [defined complexity requirements](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm-).|
 
@@ -93,24 +94,24 @@ Once you've designated your **Compute + Storage** configuration, use **Apply** t
 
 ### Networking tab
 
-Fill out optional information on the **Networking** tab. If you omit this information, the portal will apply default settings.
+Fill out optional information on the **Networking** tab. If you omit this information, the portal applies default settings.
 
 The following table provides details for information on the **Networking** tab: 
 
    | Setting| Suggested value | Description |
    | ------ | --------------- | ----------- |
-   | **Virtual network / subnet** | Create new, or use an existing virtual network |  If a network or subnet is unavailable, it must be [modified to satisfy the network requirements](vnet-existing-add-subnet.md) before you select it as a target for the new managed instance.  |
+   | **Virtual network / subnet** | Create new, or use an existing virtual network |  If a network or subnet is unavailable, it must be [modified to satisfy the network requirements](vnet-existing-add-subnet.md) before you select it as a target for the new SQL managed instance.  |
    | **Connection type** | Choose a suitable connection type.|For more information, see [connection types](../database/connectivity-architecture.md#connection-policy).|
-   | **Public endpoint**  | Select **Disable**. | For a managed instance to be accessible through the public data endpoint, you need to enable this option. | 
-   | **Allow access from** (if **Public endpoint** is enabled) | Select **No Access**  |The portal configures the security group with a public endpoint. </br> </br> Based on your scenario, select one of the following options: </br> <ul> <li>**Azure services**: We recommend this option when you're connecting from Power BI or another multitenant service. </li> <li> **Internet**: Use for test purposes when you want to quickly spin up a managed instance. Not recommended for production environments. </li> <li> **No access**: This option creates a **Deny** security rule. Modify this rule to make a managed instance accessible through a public endpoint. </li> </ul> </br> For more information on public endpoint security, see [Using Azure SQL Managed Instance securely with a public endpoint](public-endpoint-overview.md).|
+   | **Public endpoint**  | Select **Disable**. | For a SQL managed instance to be accessible through the public data endpoint, you need to enable this option. | 
+   | **Allow access from** (if **Public endpoint** is enabled) | Select **No Access**  |The portal configures the security group with a public endpoint. </br> </br> Based on your scenario, select one of the following options: </br> <ul> <li>**Azure services**: We recommend this option when you're connecting from Power BI or another multitenant service. </li> <li> **Internet**: Use for test purposes when you want to quickly spin up a SQL managed instance. Not recommended for production environments. </li> <li> **No access**: This option creates a **Deny** security rule. Modify this rule to make a SQL managed instance accessible through a public endpoint. </li> </ul> </br> For more information on public endpoint security, see [Using Azure SQL Managed Instance securely with a public endpoint](public-endpoint-overview.md).|
 
-Select **Review + create** to review your choices before you create a managed instance. Or, configure security settings by selecting **Next: Security settings**.
+Select **Review + create** to review your choices before you create a SQL managed instance. Or, configure security settings by selecting **Next: Security settings**.
 
 ### Security tab
 
-For the purpose of this quickstart, leave the settings on the **Security** tab at their default values. 
+For this quickstart, leave the settings on the **Security** tab at their default values. 
 
-Select **Review + create** to review your choices before you create a managed instance.  Or, configure more custom settings by selecting **Next: Additional settings**.
+Select **Review + create** to review your choices before you create a SQL managed instance.  Or, configure more custom settings by selecting **Next: Additional settings**.
 
 ### Additional settings
 
@@ -120,22 +121,22 @@ The following table provides details for information on the **Additional setting
 
    | Setting| Suggested value | Description |
    | ------ | --------------- | ----------- |
-   | **Collation** | Choose the collation that you want to use for your managed instance. If you migrate databases from SQL Server, check the source collation by using `SELECT SERVERPROPERTY(N'Collation')` and use that value.| For information about collations, see [Set or change the server collation](/sql/relational-databases/collations/set-or-change-the-server-collation).|   
-   | **Time zone** | Select the time zone that managed instance will observe.|For more information, see [Time zones](timezones-overview.md).|
-   | **Geo-Replication** | Select **No**. | Only enable this option if you plan to use the managed instance as a failover group secondary.|
-   | **Maintenance window** | Choose a suitable maintenance window. | Designate a[schedule for when your instance is [maintained](../database/maintenance-window.md) by the service. | 
+   | **Collation** | Choose the collation that you want to use for your SQL managed instance. If you migrate databases from SQL Server, check the source collation by using `SELECT SERVERPROPERTY(N'Collation')` and use that value.| For information about collations, see [Set or change the server collation](/sql/relational-databases/collations/set-or-change-the-server-collation).|   
+   | **Time zone** | Select the time zone that SQL managed instance observes.|For more information, see [Time zones](timezones-overview.md).|
+   | **Geo-Replication** | Select **No**. | Only enable this option if you plan to use the SQL managed instance as a failover group secondary.|
+   | **Maintenance window** | Choose a suitable maintenance window. | Designate a schedule for when your instance is [maintained](../database/maintenance-window.md) by the service. | 
 
-Select **Review + create** to review your choices before you create a managed instance. Or, configure Azure Tags by selecting **Next: Tags** (recommended).
+Select **Review + create** to review your choices before you create a SQL managed instance. Or, configure Azure Tags by selecting **Next: Tags** (recommended).
 
 ### Tags
 
-Add tags to resources in your Azure Resource Manager template (ARM template). [Tags](/azure/azure-resource-manager/management/tag-resources) help you logically organize your resources. The tag values show up in cost reports and allow for other management activities by tag.  Consider at least tagging your new SQL Managed Instance with the Owner tag to identify who created, and the Environment tag to identify whether this system is Production, Development, etc. For more information, see [Develop your naming and tagging strategy for Azure resources](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
+Add tags to resources in your Azure Resource Manager template (ARM template). [Tags](/azure/azure-resource-manager/management/tag-resources) help you logically organize your resources. The tag values show up in cost reports and allow for other management activities by tag.  Consider at least tagging your new SQL managed instance with the Owner tag to identify who created, and the Environment tag to identify whether this system is Production, Development, etc. For more information, see [Develop your naming and tagging strategy for Azure resources](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
  
 Select **Review + create** to proceed.
 
 ### Review + create
 
-On the **Review + create** tab, review your choices, and then select **Create** to deploy your managed instance. 
+On the **Review + create** tab, review your choices, and then select **Create** to deploy your SQL managed instance. 
 
 ### Monitor deployment progress
 
@@ -145,12 +146,12 @@ On the **Review + create** tab, review your choices, and then select **Create** 
 
 1. Select **Deployment in progress** in the notification to open the SQL Managed Instance window and further monitor the deployment progress. 
 
-Once deployment completes, navigate to your resource group to view your managed instance: 
+Once deployment completes, navigate to your resource group to view your SQL managed instance: 
 
    :::image type="content" source="./media/instance-create-quickstart/azure-sql-managed-instance-resources.png" alt-text="Screenshot of the SQL Managed Instance resources in the Azure portal.":::
 
 > [!TIP]
-> If you closed your web browser or moved away from the deployment progress screen, you can [monitor the provisioning operation](management-operations-monitor.md#monitor-operations) via the managed instance's **Overview** page in the Azure portal, PowerShell or the Azure CLI. 
+> If you closed your web browser or moved away from the deployment progress screen, you can [monitor the provisioning operation](management-operations-monitor.md#monitor-operations) via the **Overview** page for your SQL managed instance in the Azure portal, PowerShell, or the Azure CLI. 
 
 ### [PowerShell](#tab/powershell)
 
@@ -246,7 +247,7 @@ To connect to SQL Managed Instance, follow these steps to retrieve the host name
 
 1. Return to the resource group and select the SQL managed instance object that was created.
 
-2. On the **Overview** tab, locate the **Host** property. Copy the host name to your clipboard for the managed instance for use in the next quickstart by clicking the **Copy to clipboard** button.
+2. On the **Overview** tab, locate the **Host** property. Copy the host name to your clipboard for the SQL managed instance for use in the next quickstart by clicking the **Copy to clipboard** button.
 
    :::image type="content" source="./media/instance-create-quickstart/azure-sql-managed-instance-host-name.png" alt-text="Screenshot of the Overview page for the instance in the Azure portal with the hostname selected.":::
 

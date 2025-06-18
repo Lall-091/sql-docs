@@ -1,10 +1,10 @@
 ---
 title: What is Azure SQL Managed Instance?
-description: Learn about how Azure SQL Managed Instance provides near 100% compatibility with the latest SQL Server (Enterprise Edition) database engine
+description: Learn about how Azure SQL Managed Instance provides near 100% compatibility with the latest SQL Server (Enterprise Edition) database engine.
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: vanto, nneugebauer
-ms.date: 09/27/2024
+ms.reviewer: vanto
+ms.date: 06/19/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: overview
@@ -180,6 +180,7 @@ SQL Managed Instance offers several ways to save on costs:
 - **Instance pools**: If you have multiple managed instances, you can save on costs by using [instance pools](instance-pools-overview.md), which also support [reservations](instance-pools-overview.md#reservations-pricing).
 - **Instance stop and start**: You can [stop and start](instance-stop-start-how-to.md) your managed instance to save on costs. When you stop your instance, you only pay for storage, and you can restart it at any time.
 - **Free DR replica**: You can save on licensing costs by designating a secondary replica for [disaster recovery (DR) only](business-continuity-high-availability-disaster-recover-hadr-overview.md#license-free-dr-replicas). 
+- **Flexible memory**: With [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) instances, you can save on costs by using the [flexible memory (preview)](resource-limits.md#flexible-memory-preview) feature, which allows you to choose the amount of memory you want to allocate to your instance. 
 
 ## vCore-based purchasing model
 
@@ -190,6 +191,8 @@ In the vCore model, you can choose hardware configurations as follows:
 - **Standard Series (Gen5)** logical CPUs are based on Intel&reg; E5-2673 v4 (Broadwell) 2.3 GHz, Intel&reg; SP-8160 (Skylake), and Intel&reg; 8272CL (Cascade Lake) 2.5-GHz processors, with **5.1 GB of RAM per CPU vCore**, fast NVMe SSD, hyper-threaded logical core, and compute sizes between 4 and 80 cores.
 - **Premium Series** logical CPUs are based on Intel&reg; 8370C (Ice Lake) 2.8-GHz processors, with **7 GB of RAM per CPU vCore** (up to 128 vCores), fast NVMe SSD, hyper-threaded logical core, and compute sizes between 4 and 128 cores.
 - **Premium Series Memory-Optimized** logical CPUs are based on Intel&reg; 8370C (Ice Lake) 2.8-GHz processors, with **13.6 GB of RAM per CPU vCore** (up to 64 vCores), fast NVMe SSD, hyper-threaded logical core, and compute sizes between 4 and 64 cores.
+
+Additionally, with the [Next-gen General Purpose service tier (preview)](service-tiers-next-gen-general-purpose-use.md), you can choose the amount of memory to allocate to your instance when you use the [flexible memory (preview)](resource-limits.md#flexible-memory-preview) feature. 
 
 Find more information about the difference between hardware configurations in [SQL Managed Instance resource limits](resource-limits.md#hardware-configuration-characteristics).
 
@@ -205,10 +208,6 @@ SQL Managed Instance is available in two service tiers:
 ## High availability
 
 [!INCLUDE [high-availability-through-zone-redundancy](../includes/sql-managed-instance/high-availability-through-zone-redundancy.md)]
-
-## Management operations
-
-Azure SQL Managed Instance provides management operations that you can use to automatically deploy new managed instances, update instance properties, and delete instances when no longer needed. Detailed explanation of management operations can be found in [management operations](management-operations-overview.md).
 
 ## Managed Instance link
 
@@ -307,6 +306,10 @@ The link feature facilitates migrating from SQL Server to SQL Managed Instance, 
 - True online migration to SQL Managed Instance in any service tier.
 
 Because the link feature enables minimal downtime migration, you can migrate to your managed instance as you maintain your primary workload online. Although it's currently possible to achieve online migrations to the General Purpose service tier with other solutions, the link feature is the only solution that allows true online migrations to the Business Critical tier.
+
+## Management operations
+
+Azure SQL Managed Instance provides management operations that you can use to automatically deploy new managed instances, update instance properties, and delete instances when no longer needed. Detailed explanation of management operations can be found in [management operations](management-operations-overview.md).
 
 ## Programmatically identify a managed instance
 

@@ -47,7 +47,7 @@ More template samples can be found in [Azure Quickstart Templates](https://azure
 Select **Try it** from the following PowerShell code block to open Azure Cloud Shell.
 
 > [!IMPORTANT]
-> Deploying a managed instance is a long-running operation. Deployment of the first instance in the subnet typically takes much longer than deploying into a subnet with existing managed instances. For average provisioning times, see [SQL Managed Instance management operations](management-operations-overview.md#duration).
+> Deploying a managed instance is a long-running operation. Deployment of the first instance in the subnet typically takes much longer than deploying into a subnet with existing managed instances. For average provisioning times, see [SQL Managed Instance management operations](management-operations-duration.md).
 
 # [PowerShell](#tab/azure-powershell)
 

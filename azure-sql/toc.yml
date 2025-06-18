@@ -1170,8 +1170,10 @@
         href: managed-instance/in-memory-oltp-sample.md
     - name: Management operations
       items:
-      - name: Overview
+      - name: Management operations overview
         href: managed-instance/management-operations-overview.md
+      - name: Management operations duration
+        href: managed-instance/management-operations-duration.md
       - name: Monitor operations
         href: managed-instance/management-operations-monitor.md
       - name: Cancel operations

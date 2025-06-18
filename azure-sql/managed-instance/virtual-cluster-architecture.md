@@ -22,7 +22,7 @@ This article describes the architecture and operation management of the virtual 
 
 ## Overview
 
-Azure SQL Managed Instance is a single-tenant, platform-as-a-service (PaaS) made up of service components that are hosted on a _dedicated set of isolated virtual machines_ and joined to a virtual cluster. These dedicated sets of virtual machines are placed into virtual machine groups based on similar instance configuration attributes, such as hardware generation and maintenance windows. One or more instances can be in a virtual machine group, and one or more virtual machine groups form a virtual cluster. A virtual cluster automatically expands or contracts as needed to accommodate new and removed instances. 
+Azure SQL Managed Instance is a single-tenant, platform-as-a-service (PaaS) made up of service components that are hosted on a _dedicated set of isolated virtual machines_ and joined to a virtual cluster. These dedicated sets of virtual machines are placed into virtual machine (VM) groups based on similar instance configuration attributes, such as hardware generation and maintenance windows. One or more instances can be in a VM group, and one or more VM groups form a virtual cluster. A virtual cluster automatically expands or contracts as needed to accommodate new and removed instances. 
 
 Each virtual cluster is associated with one subnet and _automatically deployed_ when the first SQL managed instance in a subnet is created. Likewise, a virtual cluster is _automatically removed_ when the last instance in a subnet is deleted, leaving the subnet empty and ready to be removed. The virtual cluster connects the subnet to the managed instances deployed inside that subnet. A [service association link (SAL)](/rest/api/virtualnetwork/service-association-links) is used to establish the association between a subnet and the cluster. 
 
@@ -32,30 +32,30 @@ The following diagram shows the conceptual layout of the virtual cluster:
 
 ## Role in management operations
 
-The role of the virtual cluster in [management operations](management-operations-overview.md) is to find appropriate compute resources for the operation, as well as manage the resources within the cluster, such as the virtual machines that create the instance, and the virtual machine groups.  Management operations include creating new instances, as well as deleting, or modifying the configuration of, existing instances. The virtual cluster expands, shrinks, or deletes existing virtual machine groups, or creates new virtual machine groups, depending on the operation.
+The role of the virtual cluster in [management operations](management-operations-overview.md) is to find appropriate compute resources for the operation, as well as manage the resources within the cluster, such as the virtual machines that create the instance, and the VM groups.  Management operations include creating new instances, as well as deleting, or modifying the configuration of, existing instances. The virtual cluster expands, shrinks, or deletes existing VM groups, or creates new VM groups, depending on the operation.
 
-Since virtual machine groups are defined by similar instance configuration attributes (such as hardware generation and maintenance windows), making changes to any of these attributes for an instance triggers the virtual cluster to perform an action to the virtual machine groups that form it. Actions triggered by management operations include creating new or deleting existing virtual machines, and virtual machine groups, as well as expanding existing groups and moving instances between groups. If all virtual machines are removed out of a group, the virtual cluster also deletes the virtual machine group. 
+Since VM groups are defined by similar instance configuration attributes (such as hardware generation and maintenance windows), making changes to any of these attributes for an instance triggers the virtual cluster to perform an action to the VM groups that form it. Actions triggered by management operations include creating new or deleting existing virtual machines, and VM groups, as well as expanding existing groups and moving instances between groups. If all virtual machines are removed out of a group, the virtual cluster also deletes the VM group. 
 
-For example, if you change the hardware generation of an instance, the virtual cluster creates a new virtual machine group for the hardware generation if one doesn't already exist, and moves the instance to that group. 
+For example, if you change the hardware generation of an instance, the virtual cluster creates a new VM group for the hardware generation if one doesn't already exist, and moves the instance to that group. 
 
-The duration of virtual group change operations depends on the operation type. For more information, see [SQL Managed Instance management operations](management-operations-overview.md#duration).
+The duration of virtual group change operations depends on the operation type. For more information, see [SQL Managed Instance management operations](management-operations-duration.md).
 
 > [!NOTE]
-> Instance pools are placed into different virtual machine groups than single instances. 
+> Instance pools are placed into different VM groups than single instances. 
 
-## Number of virtual machine groups
+## Number of VM groups
 
-The number of virtual machine groups in a virtual cluster depends on the following:
+The number of VM groups in a virtual cluster depends on the following:
 - The number of different [hardware generation configurations](service-tiers-managed-instance-vcore.md#hardware-configurations)
 - The number of different [maintenance window configurations](maintenance-window.md)
-- Limits of the virtual machine group size (which are defined at the compute layer and are subject to change)
+- Limits of the VM group size (which are defined at the compute layer and are subject to change)
 
-You can determine the number of virtual machine groups in a virtual cluster by multiplying the number of different hardware generation configurations by the number of different maintenance window configurations in your subnet. For example, if you have two hardware generation configurations (such as one Standard-series and one Premium-series instance) and two different maintenance window configurations, the virtual cluster has four virtual machine groups. 
+You can determine the number of VM groups in a virtual cluster by multiplying the number of different hardware generation configurations by the number of different maintenance window configurations in your subnet. For example, if you have two hardware generation configurations (such as one Standard-series and one Premium-series instance) and two different maintenance window configurations, the virtual cluster has four VM groups. 
 
-SQL Managed Instance supports three different [hardware generation configurations](service-tiers-managed-instance-vcore.md#hardware-configurations) and three different [maintenance window configurations](maintenance-window.md). Therefore, the minimum number of virtual machine groups in a virtual cluster is 1 (one hardware generation configuration, one maintenance window configuration), and the maximum is 9 (three different hardware generation configurations, three different maintenance window configurations).
+SQL Managed Instance supports three different [hardware generation configurations](service-tiers-managed-instance-vcore.md#hardware-configurations) and three different [maintenance window configurations](maintenance-window.md). Therefore, the minimum number of VM groups in a virtual cluster is 1 (one hardware generation configuration, one maintenance window configuration), and the maximum is 9 (three different hardware generation configurations, three different maintenance window configurations).
 
 > [!IMPORTANT]
-> Since there is a limit to the number of virtual machines that can join a group, a lack of space in an existing group can result in creating a virtual machine group with identical specifications. It's possible for a subnet with a large number of instances to have multiple machine groups with the same configuration, and exceed 9 virtual machine groups.
+> Since there is a limit to the number of virtual machines that can join a group, a lack of space in an existing group can result in creating a VM group with identical specifications. It's possible for a subnet with a large number of instances to have multiple machine groups with the same configuration, and exceed 9 VM groups.
 
 ## Role in IP address usage
 
@@ -65,7 +65,7 @@ Since the virtual cluster is responsible for assigning IP addresses to the virtu
 
 When determining an appropriate size for the subnet where you'll deploy your managed instances, take into account: 
 - The number of instances that you expect to deploy into the subnet
-- The number of different virtual machine groups that you expect in the subnet
+- The number of different VM groups that you expect in the subnet
 
 To learn more, see [determine required subnet size and range for Azure SQL Managed Instance](vnet-subnet-determine-size.md).
 

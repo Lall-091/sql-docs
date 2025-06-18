@@ -4,7 +4,7 @@ description: Learn how to use the Next-gen General Purpose service tier (preview
 author: urosmil
 ms.author: urmilano
 ms.reviewer: wiassaf, mathoma
-ms.date: 05/27/2024
+ms.date: 05/19/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: how-to

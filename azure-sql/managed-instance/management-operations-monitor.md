@@ -18,19 +18,19 @@ Azure SQL Managed Instance provides monitoring of [management operations](manage
 
 ## Overview
 
-All management operations can be categorized as follows:
+All instance management operations can be categorized as follows:
 
-- Instance deployment (new instance creation).
-- Instance update (changing instance properties, such as vCores or reserved storage).
-- Instance deletion.
+- Create
+- Update (changing instance properties, such as vCores or reserved storage).
+- Delete
 
-Most management operations are [long running operations](management-operations-overview.md#duration). Therefore there is a need to monitor the status or follow the progress of operation steps. 
+For a detailed description of the steps and estimated duration of each management operation, review [Management operations duration](management-operations-duration.md). Operations that require [seeding](management-operations-overview.md#seeding) data can extend the duration of an operation. 
 
 There are several ways to monitor managed instance management operations:
 
 - [Resource group deployments](/azure/azure-resource-manager/templates/deployment-history)
 - [Activity log](/azure/azure-monitor/essentials/activity-log)
-- [Managed instance operations API](#managed-instance-operations-api)
+- [Managed instance operations API](#sql-managed-instance-operations-api)
 
 
 The following table compares management operation monitoring options: 
@@ -44,43 +44,40 @@ The following table compares management operation monitoring options:
 
 <sup>1</sup> The deployment history for a resource group is limited to 800 deployments.
 
-<sup>2</sup> Resource group deployments support cancel operation. However, due to cancel logic, only an operation scheduled for deployment after the cancel action is performed will be canceled. Ongoing deployment is not canceled when the resource group deployment is canceled. Since managed instance deployment consists of one long running step (from the Azure Resource Manger perspective), canceling resource group deployment will not cancel managed instance deployment and the operation will complete. 
+<sup>2</sup> Resource group deployments support cancel operations. However, due to cancel logic, only an operation scheduled for deployment after the initiated cancel action is canceled. Ongoing deployment isn't canceled when the resource group deployment is canceled. Since SQL managed instance deployment consists of one long running step (from the perspective  of Azure Resource Manger), canceling resource group deployment doesn't cancel SQL managed instance deployment and the operation still completes. 
 
-## Managed instance operations API
+## SQL Managed Instance operations API
 
-Management operations APIs are specially designed to monitor operations. Monitoring managed instance operations can provide insights on operation parameters and operation steps, as well as [cancel specific operations](management-operations-cancel.md). Besides operation details and cancel command, this API can be used in automation scripts with multi-resource deployments - based on the progress step, you can kick off some dependent resource deployment.
+Management operations APIs are specially designed to monitor operations. Monitoring SQL managed instance operations can provide insights on operation parameters and operation steps, and [cancel specific operations](management-operations-cancel.md). Besides operation details and cancel command, this API can be used in automation scripts with multi-resource deployments - based on the progress step, you can kick off some dependent resource deployment.
 
 These are the APIs: 
 
 | Command | Description |
 | --- | --- |
-|[Managed Instance Operations - Get](/rest/api/sql/managed-instance-operations/get)|Gets a management operation on a managed instance.|
-|[Managed Instance Operations - Cancel](/rest/api/sql/managed-instance-operations/cancel)|Cancels the asynchronous operation on the managed instance.|
-|[Managed Instance Operations - List By Managed Instance](/rest/api/sql/managed-instance-operations/list-by-managed-instance)|Gets a list of operations performed on the managed instance.|
-
-> [!NOTE]
-> Use API version 2020-02-02 to see the managed instance create operation in the list of operations. This is the default version used in the Azure portal and the latest PowerShell and Azure CLI packages.
+|[Managed Instance Operations - Get](/rest/api/sql/managed-instance-operations/get)|Gets a management operation on a SQL managed instance.|
+|[Managed Instance Operations - Cancel](/rest/api/sql/managed-instance-operations/cancel)|Cancels the asynchronous operation on the SQL managed instance.|
+|[Managed Instance Operations - List By Managed Instance](/rest/api/sql/managed-instance-operations/list-by-managed-instance)|Gets a list of operations performed on the SQL managed instance.|
 
 ## Monitor operations
 
 # [Portal](#tab/azure-portal)
 
-In the Azure portal, use the managed instance **Overview** page to monitor managed instance operations. 
+In the Azure portal, use the SQL managed instance **Overview** page to monitor SQL managed instance operations. 
 
 For example, the **Create operation** is visible at the start of the creation process on the **Overview** page: 
 
-![Managed instance create progress](./media/management-operations-monitor/monitoring-create-operation.png)
+![Screenshot showing SQL managed instance create progress.](./media/management-operations-monitor/monitoring-create-operation.png)
 
 Select **Ongoing operation** to open the **Ongoing operation** page and view **Create** or **Update** operations. You can also [Cancel](management-operations-cancel.md) operations from this page as well.  
 
-![Managed instance operation details](./media/management-operations-monitor/monitoring-operation-details.png)
+![Screenshot showing SQL managed instance operation details.](./media/management-operations-monitor/monitoring-operation-details.png)
 
 > [!NOTE]
-> Create operations submitted through Azure portal, PowerShell, Azure CLI or other tooling using REST API version 2020-02-02 [can be canceled](management-operations-cancel.md). REST API versions older than 2020-02-02 used to submit a create operation will start the instance deployment, but the deployment won't be listed in the Operations API and can't be cancelled.
+> Create operations submitted through Azure portal, PowerShell, Azure CLI, or other tooling using REST API version 2020-02-02 [can be canceled](management-operations-cancel.md). REST API versions older than 2020-02-02 used to submit a create operation will start the instance deployment, but the deployment won't be listed in the Operations API and can't be canceled.
 
 # [PowerShell](#tab/azure-powershell)
 
-The Get-AzSqlInstanceOperation cmdlet gets information about the operations on a managed instance. You can view all operations on a managed instance or view a specific operation by providing the operation name.
+The Get-AzSqlInstanceOperation cmdlet gets information about the operations on a SQL managed instance. You can view all operations on a SQL managed instance or view a specific operation by providing the operation name.
 
 ```powershell-interactive
 $managedInstance = "yourInstanceName"
@@ -94,7 +91,7 @@ For detailed commands explanation, see [Get-AzSqlInstanceOperation](/powershell/
 
 # [Azure CLI](#tab/azure-cli)
 
-The az sql mi op list gets a list of operations performed on the managed instance. If you don't already have the Azure CLI installed, see [Install the Azure CLI](/cli/azure/install-azure-cli).
+The az sql mi op list gets a list of operations performed on the SQL managed instance. If you don't already have the Azure CLI installed, see [Install the Azure CLI](/cli/azure/install-azure-cli).
 
 ```azurecli-interactive
 az sql mi op list -g yourResourceGroupName --mi yourInstanceName 
@@ -104,10 +101,10 @@ For detailed commands explanation, see [az sql mi op](/cli/azure/sql/mi/op).
 
 ---
 
-## Next steps
+## Related content
 
-- To learn how to create your first managed instance, see [Quickstart guide](instance-create-quickstart.md).
-- For a features and comparison list, see [common SQL features](../database/features-comparison.md).
-- For more information about VNet configuration, see [SQL Managed Instance VNet configuration](connectivity-architecture-overview.md).
-- For a quickstart that creates a managed instance and restores a database from a backup file, see [Create a managed instance](instance-create-quickstart.md).
-- For a tutorial about using Azure Database Migration Service for migration, see [SQL Managed Instance migration using Database Migration Service](/azure/dms/tutorial-sql-server-to-managed-instance).
+- [Quickstart guide](instance-create-quickstart.md)
+- [Common SQL features](../database/features-comparison.md).
+- [SQL Managed Instance virtual network configuration](connectivity-architecture-overview.md).
+- [Create a managed instance](instance-create-quickstart.md).
+- [SQL Managed Instance migration using Database Migration Service](/azure/dms/tutorial-sql-server-to-managed-instance).

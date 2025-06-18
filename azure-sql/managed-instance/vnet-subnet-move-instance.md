@@ -100,7 +100,7 @@ The following table details the operation steps that occur during the instance m
 |Old SQL instance cleanup |Removes the old SQL process from the source virtual cluster.  |
 |Virtual cluster deletion |If it's the last instance within the source subnet, the final step deletes the virtual cluster synchronously. Otherwise, the virtual cluster is asynchronously defragmented.  |
 
-A detailed explanation of the operation steps can be found in the [overview of Azure SQL Managed Instance management operations](management-operations-overview.md#management-operations-steps)
+A detailed explanation of the operation steps can be found in the [overview of Azure SQL Managed Instance management operations](management-operations-duration.md)
 
 ## Move the instance
 

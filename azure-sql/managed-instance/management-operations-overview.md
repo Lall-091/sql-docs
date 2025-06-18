@@ -1,179 +1,121 @@
 ---
 title: Management Operations Overview
 titleSuffix: Azure SQL Managed Instance
-description: Learn about Azure SQL Managed Instance management operations duration and best practices.
+description: Learn about Azure SQL Managed Instance management operations.
 author: urosmil
 ms.author: urmilano
 ms.reviewer: mathoma, randolphwest
-ms.date: 12/04/2024
+ms.date: 06/18/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
 ms.topic: overview
 ms.custom:
-  - ignite-2023
 ---
 
-# Overview of Azure SQL Managed Instance management operations
-[!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
+# Overview of management operations in Azure SQL Managed Instance
+[!INCLUDE [appliesto-sqldb-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Azure SQL Managed Instance provides management operations that you can use to automatically deploy new managed instances, update instance properties, and delete instances when no longer needed.
+This article provides an overview of the different operations that occur when managing [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md). Management operations are operations that are performed on the backend when you create, update, or delete an instance.
+
+For a detailed description of the steps and estimated duration of each management operation, review [Management operations duration](management-operations-duration.md).
 
 ## What are management operations?
 
-All management operations can be categorized as follows:
+Managing Azure SQL Managed Instance involves the following operations: 
 
-- Instance deployment (new instance creation)
-- Instance update (changing instance properties, such as vCores or reserved storage)
-- Instance deletion
+- **Create**: The operations that occur when you first create a new SQL managed instance. This includes creating the underlying virtual machine (VM) group, and deploying the SQL Database Engine process.
+- **Update**: Operations that occur when you change the properties of an existing SQL managed instance, such as scaling compute or storage, changing the service tier, or updating the instance configuration. Making updates often involves resizing the VM group, as well as seeding data, and then failing over, to a new SQL Database Engine process.
+- **Delete**: Operations that occur when you delete an existing SQL managed instance, including the cleanup of resources such as the VM group associated with the instance.
 
-To support [deployments within Azure virtual networks](/azure/virtual-network/virtual-network-for-azure-services) and provide isolation and security for customers, SQL Managed Instance relies on [virtual clusters](virtual-cluster-architecture.md). The virtual cluster represents a dedicated set of isolated virtual machines deployed inside the customer's virtual network subnet and organized in virtual machine groups. Essentially, every managed instance deployed to an empty subnet results in a new virtual cluster buildout which builds the very first virtual machine group.
+For a detailed description of the steps and estimated duration of each management operation, review [Management operations duration](management-operations-duration.md).
 
-Subsequent management operations on managed instances can affect the underlying [virtual machine groups](virtual-cluster-architecture.md#role-in-management-operations). Changes that affect the underlying virtual machine groups might affect the duration of management operations, as deploying more virtual machines to the virtual cluster comes with an overhead that you need to consider when you plan new deployments or updates to existing managed instances.
+SQL Managed Instance management operations are accomplished through the following underlying processes:
 
-## Fast provisioning
+- [Virtual machine (VM) group operations](#vm-group-operations): Operations that involve creating and managing the underlying VM group that host the SQL managed instance. This includes resizing the VM group, creating new VM groups, and managing the virtual machines within those groups.
+- [Seeding](#seeding): The initialization and synchronization of data across SQL Database Engine processes, usually to prepare for a failover. 
+- [Failover](#failover): Operations involved in failing traffic over to another SQL Database Engine process, either in the same, or in a new VM group. 
 
-Instances with certain configurations can benefit from fast SQL Managed Instance provisioning, which reduces the time it takes to create your first instance in a subnet to 30 minutes (down from an average of 45-60 minutes). To learn more about operation duration times, review [management operations](management-operations-overview.md).
+## VM group operations
 
-Fast provisioning only applies: 
+To support [deployments within Azure virtual networks](/azure/virtual-network/virtual-network-for-azure-services) and provide isolation and security for customers, SQL Managed Instance relies on [virtual clusters](virtual-cluster-architecture.md). The virtual cluster represents a dedicated set of isolated virtual machines (VMs) deployed inside your virtual network subnet and organized within *VM groups*. Essentially, every SQL managed instance deployed to an empty subnet results in a new virtual cluster which builds the very first VM group. 
 
-- to the first instance provisioned in the subnet. 
-- to instances with 4-8 vCores. 
-- to instances that use the default maintenance window. 
-- to instances that aren't zone redundant.
+Subsequent management operations on SQL managed instances can affect the underlying [VM groups](virtual-cluster-architecture.md#role-in-management-operations). Changes that affect the underlying VM groups might affect the duration of management operations, as deploying more virtual machines to the virtual cluster comes with an overhead that you need to consider when you plan new deployments or updates to existing instances.
 
-## Duration
+For detailed information about the virtual cluster architecture, see [Virtual cluster architecture](virtual-cluster-architecture.md).
 
-The duration of operations on the virtual cluster can vary, but typically have the longest duration. 
+## Seeding
 
-The following table lists the long running steps that can be triggered as part of the create, update, or delete operation. Table also lists the durations that you can typically expect, based on existing service telemetry data:
+Seeding plays a critical role in the operation of Azure SQL Managed Instance, particularly during the setup and replication of databases. Seeding is the process that initializes and synchronizes data across SQL Database Engine processes, which is a crucial part of instance management. While often the most time-consuming step in lengthy but successful operations, seeding serves as a cornerstone to establishing a healthy and functional SQL managed instance environment. 
 
-|Step|Description|Estimated duration|
-|---------|---------|---------|
-|**Virtual cluster creation (fast provisioning)**<sup>1</sup>|Fast provisioning is a synchronous step in instance management operations during which the very first virtual machine group is instantly available.|**90% of operations finish in 30 minutes**|
-|**Virtual cluster creation**|Creation is a synchronous step in instance management operations during which the very first virtual machine group is created.|**90% of operations finish in less than 4 hours**|
-|**Virtual cluster resizing (expansion or shrinking)**|Adding new machines to the existing virtual machine group, removing unused virtual machines, adding or removing the entire virtual machine group. Expansion is a synchronous step, while shrinking is performed asynchronously (without affecting the duration of instance management operations).|**90% of cluster expansions with creation of new virtual machine group finish in less than 4 hours** <br /><br /> **90% of cluster expansions with expansion of existing virtual machine group finish in 60 minutes**|
-|**Virtual cluster deletion**|Virtual cluster deletion is triggered when the very last instance is deleted from the subnet.|**90% of cluster deletions finish in 1.5 hours**|
-|**Seeding database files**<sup>2</sup>|A synchronous step, triggered during compute (vCores), or storage scaling in the Business Critical service tier as well as in changing the service tier from General Purpose to Business Critical (or vice versa). Duration of this operation is proportional to the total database size and current database activity (number of active transactions). Database activity when updating an instance can introduce significant variance to the total duration.|**90% of these operations execute at 220 GB/hour or higher**|
+For an estimated duration of seeding operations, see [Management operations duration](management-operations-duration.md#seeding-duration).
 
-<sup>1</sup> Fast provisioning is currently supported only for the first instance in the subnet, with 4 or 8 vCores, and with default maintenance window configuration.   
-<sup>2</sup> When scaling compute (vCores) or storage in Business Critical service tier, or switching service tier from General Purpose to Business Critical, seeding also includes Always On availability group seeding.
+The seeding process typically involves the following stages, regardless of the service tier: 
+- **Initialization**: The system identifies the source and destination database and starts a number of tasks that prepare the SQL Database Engine processes for data transfer.  
+- **Data Transfer**: Actual data packages are transferred from the source to the target SQL Database Engine process, which includes a full or partial copy of the database, depending on the scenario. 
+- **Synchronization**: Once initial data transfer completes, the system synchronizes any subsequent updates or changes through the replication of transaction log blocks to ensure data integrity. 
+- **Validation and finalization**: The process is finalized, and the target SQL Database Engine process is validated to confirm successful replication and seeding. Failover occurs so that traffic is routed to the new SQL Database Engine process. 
 
+There is no data seeding in the **General Purpose** service tier except when you change the service tier to the **Business Critical** service tier. Management operations in the **General Purpose** service tier involve detaching remote storage from the old SQL Database Engine process and attaching it to the new SQL Database Engine process.
 
-> [!IMPORTANT]
-> Scaling storage up or down in the General Purpose service tier consists of updating metadata and propagating response for submitted request. It's a fast operation that completes in up to 5 minutes, without a downtime and failover.
+Conversely, the **Business Critical** service tier, designed for high-performance workloads, requires local storage and the codependency of compute and storage layers. Consequently, almost every operation and scenario in this service tier necessitates seeding to ensure data availability and consistency.
 
-### Management operations long running segments
+Whether or not seeding is triggered depends on the particular scenario and service tier, such as: 
 
-The following tables summarize operations and typical overall durations, based on the category of the operation:
+- **General Purpose and Next-gen General Purpose** service tiers:  
+   - *Changing to the Business Critical service tier* – data must be transferred from the remote storage to the local storage used in the General Purpose service tier.
+   - *Enabling or disabling [zone redundancy](high-availability-sla-local-zone-redundancy.md#high-availability-through-zone-redundancy)* – data must be copied to or from the zone redundant regions.
+- **Business Critical** service tier: 
+   - *Scaling storage*: Since storage is physically attached to the local machine, every storage change requires creating a new VM group, so data must be transferred from the old machine to the new machine (on all 4 replicas). 
+   - *Scaling vCores*: Every compute scaling operation requires creating a new VM group, so data must be copied from the old machine to the new machine (on all 4 replicas).
+   - *Changing hardware or maintenance window*: If a VM group already exists within the subnet with a matching configuration, that VM group is resized. If this is a new configuration, then a new VM group is created. Data must be copied from the old VM group to the new VM group (on all 4 replicas).
+   - *Changing service tier*: Data must be copied from local storage to the remote storage used in the General Purpose service tier.
+   - *Enabling or disabling [zone redundancy](high-availability-sla-local-zone-redundancy.md#high-availability-through-zone-redundancy)* – data must be copied to or from the zone redundant regions.
 
-**Category: Deployment**
+### Seeding speeds
 
-|Operation  |Long-running segment  |Estimated duration  |
-|---------|---------|---------|
-|First instance in an empty subnet<sup>1</sup>|Virtual cluster creation (fast provisioning)|90% of operations finish in 30 minutes.|
-|First instance in an empty subnet|Virtual cluster creation|90% of operations finish in less than 4 hours.|
-|First instance with a different hardware generation or maintenance window in a non-empty subnet (for example, the first Premium-series instance in a subnet with Standard-series instances)|Adding new [virtual machine group](virtual-cluster-architecture.md#role-in-management-operations) to the virtual cluster<sup>2</sup>|90% of operations finish in less than 4 hours.|
-|Subsequent instance creation within the non-empty subnet (2nd, 3rd, etc. instance)|Virtual cluster resizing|90% of operations finish in 60 minutes.|
+The following factors affect the duration of the seeding process: 
 
-<sup>1</sup> Fast provisioning is currently supported only for the first instance in the subnet, with 4 or 8 vCores, and with default maintenance window configuration.
-<sup>2</sup> A separate [virtual machine group](virtual-cluster-architecture.md#role-in-management-operations) is created for each hardware generation and maintenance window configuration.
+- **Database size**: Larger databases require more time to transfer data and synchronize across SQL Database Engine processes.
+- **Network dependencies**: Network bandwidth and latency can significantly influence seeding speeds. 
+- **Backup and restore operations**: Ongoing backup operations on the source SQL Database Engine process can influence preparing data to send to another SQL Database Engine process.
+- **Instance workload**: Instance workload during seeding can cause throttling and severely prolong the process. 
 
-**Category: Update**
+While most of these factors are beyond your control, you can manage instance traffic to significantly optimize seeding speeds. Seeding uses the same instance computing resources that manage instance traffic. Heavy traffic during seeding can reduce vCore availability, leading to insufficient capacity for the seeding process, causing throttling.
 
-|Operation  |Long-running segment  |Estimated duration  |
-|---------|---------|---------|
-|Instance property change  <br /> (admin password, Microsoft Entra login, Azure Hybrid Benefit flag)|N/A|Up to 1 minute.|
-|Instance storage scaling up/down <br /> (General Purpose)|No long-running segment|99% of operations finish in 5 minutes.|
-|Instance storage scaling up/down <br /> (Business Critical)|- Virtual cluster resizing<br />- Always On availability group seeding|90% of operations finish in 60 minutes + time to seed all databases (220 GB/hour).|
-|Instance storage scaling up/down <br /> (Next-gen General Purpose)|- Virtual cluster creation / virtual machine group resizing <br /> - Always On availability group seeding| 90% of operations finish in less than 4 hours (virtual machine group creation) or 60 minutes (virtual machine group resizing) + time to seed all databases (220 GB/hour) + failover + cleaning up old instance |
-|Instance compute (vCores) scaling up and down  <br />(General Purpose)|- Virtual cluster resizing|90% of operations finish in 60 minutes.|
-|Instance compute (vCores) scaling up and down  <br />(Business Critical)|- Virtual cluster resizing<br />- Always On availability group seeding|90% of operations finish in 60 minutes + time to seed all databases (220 GB/hour).|
-|Instance compute (vCores) scaling up and down  <br />(Next-gen General Purpose)| Virtual cluster creation / virtual machine group resizing <br />- Always On availability group seeding| 90% of operations finish in less than 4 hours (virtual machine group creation) or 60 minutes (virtual machine group resizing) + time to seed all databases (220 GB/hour) + failover + cleaning up old instance|
-|Instance service tier change  <br />(General Purpose to Business Critical and vice versa)|- Virtual cluster resizing<br />- Always On availability group seeding|90% of operations finish in 60 minutes + time to seed all databases (220 GB/hour).|
-|Instance service tier change  <br />(General Purpose or Business Critical to Next-gen General Purpose and vice versa)| Virtual cluster creation / virtual machine group resizing <br />- Always On availability group seeding| 90% of operations finish in less than 4 hours (virtual machine group creation) or 60 minutes (virtual machine group resizing) + time to seed all databases (220 GB/hour) + failover + cleaning up old instance| 
-|Instance hardware or maintenance window change  <br />(General Purpose)|- Virtual cluster resizing<sup>1</sup>|90% of operations finish in less than 4 hours (virtual machine group creation) or 60 minutes (virtual machine group resizing).|
-|Instance hardware or maintenance window change  <br />(Business Critical)|- Virtual cluster resizing<sup>1</sup><br />- Always On availability group seeding|90% of operations finish in less than 4 hours (virtual machine group creation) or 60 minutes (virtual machine group resizing) + time to seed all databases (220 GB/hour).|
-|Instance hardware or maintenance window change <br /> (Next-gen General Purpose)|- Virtual cluster creation / virtual machine group resizing <br />- Always On availability group seeding|90% of operations finish in less than 4 hours (virtual machine group creation) or 60 minutes (virtual machine group resizing) + time to seed all databases (220 GB/hour) + failover + cleaning up old instance |
+High traffic during seeding can impact synchronization since seeding is designed to package and transfer all currently stored data in a single operation. Subsequent data changes to the old SQL Database Engine process that arrive after seeding is initiated must be synchronized to the new SQL Database Engine process incrementally through transaction log block replication before failover can occur. If the instance is under heavy load, seeding might struggle keeping up with incoming data, leading to delays and potential failures in the synchronization phase. Continuous high traffic on the old SQL Database Engine process after seeding starts can lead to a situation where the synchronization phase never completes, as new data keeps arriving and must be transferred. This can result in a perpetual cycle of data transfer that prevents failover to the new SQL Database Engine process.
 
-<sup>1</sup> Managed instance must be placed in a virtual machine group with the same corresponding hardware and maintenance window. If there is no such group in the virtual cluster, a new one must be created first to accommodate the instance configuration.
+For an estimated duration of seeding operations, see [Management operations duration](management-operations-duration.md#seeding-duration).
 
-**Category: Delete**
+### Azure infrastructure and notices 
 
-|Operation  |Long-running segment  |Estimated duration  |
-|---------|---------|---------|
-|Non-last instance deletion|Log tail backup for all databases|90% of operations finish in up to 1 minute.<sup>1</sup>|
-|Last instance deletion |- Log tail backup for all databases <br /> - Virtual cluster deletion|90% of operations finish in up to 1.5 hours.<sup>2</sup>|
+Seeding is a process that can't be precisely quantified or strictly predicted, as it relies on the *shared Azure services*. The data transfer and seeding operations depend on various internal Azure services and infrastructure, which are shared across the entire Azure ecosystem. These services are utilized by numerous other unrelated services within Azure. All services within the Azure ecosystem compete for available resources, which leads to fluctuations in momentary availability influenced by multiple factors. While Microsoft can provide a range in which the infrastructure capacity operates, making precise predictions is challenging. 
 
+## Failover
 
-<sup>1</sup> If there are multiple virtual machine groups in the cluster, deleting the last instance in the group immediately triggers deleting the virtual machine group **asynchronously**.   
-<sup>2</sup> Deleting the last instance in the subnet immediately triggers deleting the virtual cluster **synchronously**.
+Instance failover is the moment when traffic is routed from an old SQL Database Engine process to a new SQL Database Engine process within the group of nodes in a VM group that encompass the SQL managed instance. Failover is a crucial part of most management operations, especially when updating an instance. The short moment of broken connections while traffic is redirected to the new SQL Database Engine process is referred to as *failover*. 
 
-> [!IMPORTANT]
-> As soon as delete operation is triggered, billing for SQL Managed Instance is disabled. Duration of the delete operation doesn't affect the billing.
+Your instance is *only unavailable during failover*, when traffic is rerouted to the new SQL Database Engine process. In the **Business Critical** service tier, your instance is unavailable for up to 20 seconds, while in the **General Purpose** service tier, your instance can be unavailable for up to 2 minutes. Any backend operations that occur to prepare for failover due to a management operation, such as reseeding databases in the **Business Critical** service tier, happen in the background and don't affect the availability of your instance.
 
-## Instance availability
-
-SQL Managed Instance **is available during update operations**, except a short downtime caused by the failover that happens at the end of the update. It typically lasts up to 10 seconds even in case of interrupted long-running transactions, thanks to [accelerated database recovery](/sql/relational-databases/accelerated-database-recovery-concepts).
-
-> [!NOTE]
-> Scaling General Purpose managed instance storage don't cause a failover at the end of update.
-
-SQL Managed Instance isn't available to client applications during deployment and deletion operations.
-
-> [!IMPORTANT]
-> It's not recommended to scale compute or storage of Azure SQL Managed Instance or to change the service tier at the same time as long-running transactions (data import, data processing jobs, index rebuild, etc.). The failover of the database at the end of the operation cancels all ongoing transactions. 
-
-## Management operations steps
-
-Management operations consist of multiple steps. With [monitoring APIs](management-operations-monitor.md), these steps are exposed for subset of operations (deployment and update). Deployment operation consists of three steps while update operation is performed in six steps. For details on operations duration, see the [management operations duration](#duration) section. Steps are listed in order of execution.
-
-### Managed instance deployment steps
-
-|Step name  |Step description  |
-|----|---------|
-|Request validation |Submitted parameters are validated. If there's a misconfiguration, operation fails with an error. |
-|Virtual cluster resizing / creation |Depending on the state of the virtual cluster, the cluster goes into _creating_ or _resizing_ state. |
-|New SQL instance startup |SQL process is started on the deployed virtual machines. |
-
-### Managed instance update steps
-
-|Step name  |Step description  |
-|----|---------|
-|Request validation |Submitted parameters are validated. If there's a misconfiguration, operation fails with an error. |
-|Virtual cluster resizing / creation |Depending on the state of the virtual cluster, the cluster goes into _creating_ or _resizing_ state. |
-|New SQL instance startup |SQL process is started on the deployed virtual machines. |
-|Seeding database files / attaching database files |Depending on the type of the update operation, either database seeding or attaching database files is performed. |
-|Preparing failover and failover |After data is seeded or database files reattached, system is being prepared for the failover. When everything is set, failover is performed **with a short downtime**. |
-|Old SQL instance cleanup |Removing old SQL process from the virtual machines. |
-
-### Managed instance delete steps
-|Step name  |Step description  |
-|----|---------|
-|Request validation |Submitted parameters are validated. If there's a misconfiguration, operation fails with an error. |
-|SQL instance cleanup |Removing SQL process from the virtual machines. |
-|Virtual cluster deletion |Depending if the instance being deleted is last in the subnet, virtual cluster is synchronously deleted as last step. |
-
-> [!NOTE]
-> As a result of scaling instances, the underlying virtual cluster goes through the process of releasing unused capacity and possible capacity defragmentation, which could impact instances that did not participate in creation / scaling operations.
+Architectural differences between service tiers are explained in depth in [availability](high-availability-sla-local-zone-redundancy.md#locally-redundant-availability). 
 
 ## Management operations cross-impact
 
-Management operations on a managed instance can affect the management operations of other instances placed inside the same subnet:
+Management operations on a SQL managed instance can affect the management operations of other instances placed inside the same subnet:
 
-- **Long-running restore operations** in a virtual cluster put other operations in the same virtual machine group on hold, such as creation or scaling operations.
+- **Long-running restore operations** in a virtual cluster put other operations in the same virtual cluster on hold, such as create or scale operations.
 
-  **Example:** If there's a long-running restore operation, and also a scale request that requires shrinking the virtual machine group, the shrink request takes longer to complete as it waits for the restore operation to finish before it can continue.
+  **Example:** If there's a long-running restore operation, and also a scale request that shrinks the VM group, the shrink request takes longer to complete as it waits for the restore operation to finish before it can continue.
 
-- **A subsequent instance creation or scaling** operation is put on hold by a previously initiated instance creation or instance scale that initiated a resize of the virtual machine group.
+- **A subsequent instance creation or scaling** operation is put on hold by a previously initiated instance creation or instance scale that initiated a resize of the VM group.
 
-  **Example:** If there are multiple create and/or scale requests in the same subnet under the same virtual machine group, and one of them initiates a virtual machine group resize, all requests that were submitted 5+ minutes after the initial operation request last longer than expected, as these requests must wait for the resize to complete before resuming.
+  **Example:** If there are multiple create and/or scale requests in the same subnet under the same VM group, and one of them initiates a VM group resize, all requests that were submitted 5+ minutes after the initial operation request last longer than expected, as these requests must wait for the resize to complete before resuming.
 
-- **Create/scale operations submitted in a 5-minute window** are batched and executed in parallel.
+- **Create/scale operations submitted in a 1-minute window** are batched and executed in parallel.
 
-  **Example:** Only one virtual cluster resize is performed for all operations submitted in a 5-minute window (measuring from the moment of executing the first operation request). If another request is submitted more than 5 minutes after the first one is submitted, it waits for the virtual cluster resize to complete before execution starts.
+  **Example:** Only one virtual cluster resize is performed for all operations submitted in a 1-minute window (measured from the moment when the first operation request is submitted). If another request is submitted more than 1 minute after the first one is submitted, it waits for the virtual cluster resize to complete before execution starts.
 
 > [!IMPORTANT]
-> Management operations that are put on hold because of another operation that is in progress, are automatically resumed once conditions to proceed are met. No user action is necessary to resume the temporarily paused management operations.
+> Management operations that are put on hold because of another operation that is in progress are automatically resumed once conditions to proceed are met. No user action is necessary to resume the temporarily paused management operations.
 
 ## Monitor management operations
 

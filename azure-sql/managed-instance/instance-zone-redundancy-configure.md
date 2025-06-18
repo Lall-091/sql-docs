@@ -17,15 +17,12 @@ This article teaches you to configure [zone redundancy](high-availability-sla-lo
 
 By using a zone-redundant configuration, you can make your Business Critical or General Purpose instances highly available and resilient to a much larger set of failures, including catastrophic datacenter outages, without any changes to the application logic. You can convert any existing Business Critical or General Purpose instances to the zone-redundant configuration.
 
-> [!NOTE]  
-> Zone-redundancy is currently in public preview for the General Purpose service tier.
-
 ## Considerations
 
 Consider the following when using zone redundancy for SQL Managed Instance:
 
 - Zone redundancy is available in [select regions](#supported-regions).
-- Zone redundancy is currently in public preview for the General Purpose service tier and not currently available for the Next-gen General Purpose service tier.
+- Zone redundancy is not currently available for the Next-gen General Purpose service tier.
 - Zone redundancy can be enabled, and disabled. The operation to enable or disable zone redundancy is a fully online [scaling operation](../database/scale-resources.md) executed in the background.
 - To enable zone redundancy, your SQL managed instance **Backup storage redundancy** must use _Zone-redundant_ or _Geo-zone-redundant_ storage.
 

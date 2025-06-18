@@ -5,7 +5,7 @@ description: Learn how to buy Azure SQL Database and SQL Managed Instance reserv
 author: rajeshsetlem
 ms.author: rsetlem
 ms.reviewer: wiassaf, mathoma
-ms.date: 02/20/2025
+ms.date: 06/19/2025
 ms.service: azure-sql
 ms.subservice: service-overview
 ms.topic: how-to
@@ -63,6 +63,10 @@ When you enable zone-redundancy, resources are made available in multiple availa
 Compute costs for the following zone-redundant resources include an extra charge for the zone-redundancy add-on, which is billed separately from standard compute: 
 - [Azure SQL Database](high-availability-sla-local-zone-redundancy.md#general-purpose-service-tier): Databases and elastic pools in the General Purpose service tier. 
 - [Azure SQL Managed Instance](../managed-instance/high-availability-sla-local-zone-redundancy.md#business-critical-service-tier-1): Instances in the Business Critical service tier. 
+
+> [!NOTE]
+> June 2025 introduces a discount for the zone redundancy add-on for Azure SQL Managed Instance. 
+
 
 Reservations can cover compute costs for both standard compute and the zone-redundancy add-on, but they need to be purchased as two separate reservation types:
 

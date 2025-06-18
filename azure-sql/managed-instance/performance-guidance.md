@@ -270,6 +270,10 @@ Some applications are write-intensive. Sometimes you can reduce the total IO loa
 
 Some database applications have read-heavy workloads. Caching layers might reduce the load on the database and might potentially reduce the compute size required to support a database by using Azure SQL Managed Instance. With [Azure Cache for Redis](https://azure.microsoft.com/services/cache/), if you have a read-heavy workload, you can read the data once (or perhaps once per application-tier machine, depending on how it's configured), and then store that data outside of your database. This is a way to reduce database load (CPU and read IO), but there's an effect on transactional consistency because the data being read from the cache might be out of sync with the data in the database. Although in many applications some level of inconsistency is acceptable, that's not true for all workloads. You should fully understand any application requirements before you implement an application-tier caching strategy.
 
+## Increase memory for your instance
+
+To improve performance of your [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) instance, you can use the [flexible memory (preview)](resource-limits.md#flexible-memory-preview) feature to choose the amount of memory you want to allocate to your instance based on your workload.
+
 ## Related content
 
 - [vCore purchasing model - Azure SQL Managed Instance](service-tiers-managed-instance-vcore.md)

@@ -5,7 +5,7 @@ description: Learn about the architecture of Azure SQL Managed Instance that ach
 author: Stralle
 ms.author: strrodic
 ms.reviewer: mathoma, randolphwest
-ms.date: 06/25/2024
+ms.date: 06/19/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: high-availability
 ms.topic: conceptual
@@ -21,9 +21,6 @@ monikerRange: "= azuresql || = azuresql-mi"
 > * [Azure SQL Managed Instance](high-availability-sla-local-zone-redundancy.md?view=azuresql-mi&preserve-view=true)
 
 This article describes the architecture of Azure SQL Managed Instance that achieves availability through local redundancy, and high availability through zone redundancy. 
-
-> [!IMPORTANT]
-> Zone-redundant configuration is in public preview for the General Purpose service tier and generally available for the Business Critical service tier.
 
 ## Overview
 
@@ -55,7 +52,9 @@ There are two different availability architectural models based on the service t
 
 For more information regarding specific SLAs for different service tiers, review [SLA for Azure SQL Managed Instance](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance/). 
 
-## <a id="locally-redundant-availability"></a>Availability through local redundancy 
+<a id="locally-redundant-availability"></a>
+
+## Availability through local redundancy 
 
 Locally redundant availability is based on storing your compute nodes and data on within a single datacenter in the primary region and protects your data in the event of local failure, such as a small-scale network or power failure. If a large-scale disaster such as fire or flooding occurs within a region, all replicas of a storage account or data on the compute nodes might be lost or unrecoverable. As such, to further protect your data when using the locally redundant availability option, consider using a more resilient storage option for your [database backups](automated-backups-overview.md#backup-storage-redundancy).
 
@@ -81,16 +80,17 @@ Next-gen General Purpose is an architectural upgrade to the existing General Pur
 
 ### Business Critical service tier 
 
-The Business Critical service tier uses the local storage availability model, which integrates compute resources (database engine process) and storage (locally attached SSD) on a single node. High availability is achieved by replicating both compute and storage to additional nodes. 
+The Business Critical service tier uses the local storage availability model, which integrates compute resources (database engine process) and storage (locally attached SSD) on a single node. Availability is achieved by replicating both compute and storage to additional nodes. 
 
 :::image type="content" source="media/high-availability-sla-local-zone-redundancy/business-critical-service-tier.png" alt-text="Diagram of a cluster of database engine nodes.":::
 
-The underlying database files (.mdf/.ldf) are placed on attached SSD storage to provide very low latency IO for your workload. High availability is implemented using a technology similar to SQL Server [Always On availability groups](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). The cluster includes a single primary replica that is accessible for read-write customer workloads, and up to three secondary replicas (compute and storage) that contain copies of data. The primary replica constantly pushes changes to the secondary replicas sequentially to ensure that data is persisted on a sufficient number of secondary replicas before committing each transaction. This process guarantees that, if the primary replica or a readable secondary replica become unavailable for any reason, a fully synchronized replica is always available to fail over to. Failover is initiated by [Azure Service Fabric](/azure/service-fabric/service-fabric-azure-clusters-overview). Once a secondary replica becomes the new primary replica, another secondary replica is created to ensure the cluster has a sufficient number of replicas to maintain quorum. Once failover completes, Azure SQL connections are automatically redirected to the new primary replica (or readable secondary replica based on the connection string).
+The underlying database files (.mdf/.ldf) are placed on attached SSD storage to provide very low latency IO for your workload. Availability is implemented using a technology similar to SQL Server [Always On availability groups](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). The cluster includes a single primary replica that is accessible for read-write customer workloads, and up to three secondary replicas (compute and storage) that contain copies of data. The primary replica constantly pushes changes to the secondary replicas sequentially to ensure that data is persisted on a sufficient number of secondary replicas before committing each transaction. This process guarantees that, if the primary replica or a readable secondary replica become unavailable for any reason, a fully synchronized replica is always available to fail over to. Failover is initiated by [Azure Service Fabric](/azure/service-fabric/service-fabric-azure-clusters-overview). Once a secondary replica becomes the new primary replica, another secondary replica is created to ensure the cluster has a sufficient number of replicas to maintain quorum. Once failover completes, Azure SQL connections are automatically redirected to the new primary replica (or readable secondary replica based on the connection string).
 
 As an extra benefit, the local storage availability model includes the ability to redirect read-only Azure SQL connections to one of the secondary replicas. This feature is called [Read Scale-Out](../database/read-scale-out.md). It provides 100% additional compute capacity at no extra charge to off-load read-only operations, such as analytical workloads, from the primary replica.
 
+<a id="zone-redundant-availability"></a>
 
-## <a id="zone-redundant-availability"></a>High availability through zone-redundancy
+## High availability through zone-redundancy
 
 Zone-redundant availability is based on placing replicas across three Azure availability zones in the primary region. Each availability zone is a separate physical location with independent power, cooling, and networking.
 
@@ -110,9 +110,6 @@ The following diagram demonstrates the zone redundancy architecture for the Gene
 
 :::image type="content" source="media/high-availability-sla-local-zone-redundancy/zone-redundant-general-purpose-service-tier.png" alt-text="Diagram of the zone redundancy architecture in the General Purpose service tier.":::
 
-> [!NOTE]
-> Zone redundancy is currently in preview for the General Purpose service tier. 
-
 ### Business Critical service tier 
 
 In the Business Critical service tier, zone redundancy is achieved by placing compute and storage replicas in different availability zones and then using underlying Always On availability group technology to replicate data changes from the primary instance to standby replicas in other availability zones. In the event of an outage, there's an automatic failover that seamlessly transitions one of the standby replicas to be primary. 
@@ -121,7 +118,9 @@ The following diagram demonstrates the zone redundancy architecture for the Busi
 
 :::image type="content" source="media/high-availability-sla-local-zone-redundancy/zone-redundant-business-critical-service-tier.png" alt-text="Diagram of the zone redundancy architecture in the Business Critical service tier.":::
 
-## <a id="testing-application-fault-resiliency"></a> Test application fault resiliency
+<a id="testing-application-fault-resiliency"></a>
+
+## Test application fault resiliency
 
 Availability is a fundamental part of the SQL Managed Instance platform that works transparently for your database application. However, we recognize that you might want to test how the automatic failover operations initiated during planned or unplanned events would impact an application before you deploy it to production. You can manually trigger a failover by calling a special API to [restart a managed instance](user-initiated-failover.md). Because the restart operation is intrusive and a large number of them could stress the platform, only one failover call is allowed every 15 minutes for each managed instance.
 

@@ -99,7 +99,7 @@ Azure SQL Managed Instance consists of service components hosted on a dedicated 
 
 All instances hosted in the same virtual machine group share the same maintenance window. By default, all managed instances are hosted in a group with a default maintenance window. If you specify another maintenance window, either while you're creating the instance, or after it's already created, the instance is placed into a separate machine group with a corresponding maintenance window. If no such group exists in the cluster, a new one is created to accommodate the new configuration of the instance. If you configure additional instances in the virtual cluster to use the same maintenance window, those instances are also added to the group, which means the group might need to be resized. Adding instances to a new machine group, and resizing existing machine groups, might increase the duration of the operation to configure a maintenance window.  
 
-Expected duration to configure a maintenance window for a managed instance can be calculated using the [estimated duration of instance management operations](management-operations-overview.md#duration).
+Expected duration to configure a maintenance window for a managed instance can be calculated using the [estimated duration of instance management operations](management-operations-duration.md#update-operation).
 
 > [!Important]
 > When you configure a maintenance window, the final step of the operation requires a reconfiguration of the instance that typically lasts up to 8 seconds, even if it interrupts long-running transactions. To minimize impact, configure a maintenance window outside of peak business hours. 

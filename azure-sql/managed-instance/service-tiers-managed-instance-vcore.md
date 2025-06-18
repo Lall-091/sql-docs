@@ -4,7 +4,7 @@ description: The vCore purchasing model lets you independently scale compute and
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sashan, moslake, vladiv, mathoma
-ms.date: 08/01/2024
+ms.date: 05/19/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: performance
 ms.topic: conceptual

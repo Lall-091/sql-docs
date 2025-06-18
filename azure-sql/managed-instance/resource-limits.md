@@ -5,7 +5,7 @@ description: This article provides an overview of the resource limits for Azure 
 author: vladai78
 ms.author: vladiv
 ms.reviewer: mathoma, vladiv, sachinp, wiassaf, randolphwest
-ms.date: 12/17/2024
+ms.date: 06/18/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: reference
@@ -38,12 +38,9 @@ Hardware generations have different characteristics, as described in the followi
 | **Max In-Memory OLTP memory** | Instance limit: 0.8 - 1.65 GB per vCore | Instance limit: 1.1 - 2.3 GB per vCore | Instance limit: 2.2 - 4.5 GB per vCore |
 | **Max instance reserved storage** <sup>2</sup> | **General Purpose:** up to 32 TB<sup>4</sup><br />**Business Critical:** up to 4 TB | **General Purpose:** up to 32 TB<sup>4</sup><br />**Business Critical:** up to 16 TB<sup>3</sup> | **General Purpose:** up to 32 TB<sup>4</sup><br />**Business Critical:** up to 16 TB |
 
-<sup>1</sup> Deploying a 2-vCore instance is only possible inside an [instance pool](instance-pools-overview.md).
-
-<sup>2</sup> Dependent on [the number of vCores](#service-tier-characteristics).
-
-<sup>3</sup> The [following regions](#regional-supports-for-memory-optimized-premium-series-hardware-and-for-premium-series-hardware-with-16-tb-storage) can provide 16 TB of storage, while other regions limit available storage to 5.5 TB.
-
+<sup>1</sup> Deploying a 2-vCore instance is only possible inside an [instance pool](instance-pools-overview.md).   
+<sup>2</sup> Dependent on [the number of vCores](#service-tier-characteristics).   
+<sup>3</sup> The [following regions](#regional-supports-for-memory-optimized-premium-series-hardware-and-for-premium-series-hardware-with-16-tb-storage) can provide 16 TB of storage, while other regions limit available storage to 5.5 TB.   
 <sup>4</sup> 16 TB for classic General Purpose. 32 TB only for [Next-gen General Purpose service tier (preview)](service-tiers-next-gen-general-purpose-use.md)
 
 > [!NOTE]  
@@ -224,6 +221,54 @@ Storage for database backups is allocated to support the [point-in-time restore 
 - **PITR**: In General Purpose and Business Critical tiers, individual database backups are copied to [read-access geo-redundant (RA-GRS) storage](/azure/storage/common/geo-redundant-design) automatically. The storage size increases dynamically as new backups are created. The storage is used by full, differential, and transaction log backups. The storage consumption depends on the rate of change of the database and the retention period configured for backups. You can configure a separate retention period for each database between 1 to 35 days for SQL Managed Instance. A backup storage amount equal to the configured maximum data size is provided at no extra charge.
 
 - **LTR**: You also have the option to configure long-term retention of full backups for up to 10 years. If you set up an LTR policy, these backups are stored in RA-GRS storage automatically, but you can control how often the backups are copied. To meet different compliance requirements, you can select different retention periods for weekly, monthly, and/or yearly backups. The configuration you choose determines how much storage is used for LTR backups. For more information, see [Long-term retention - Azure SQL Database and Azure SQL Managed Instance](../database/long-term-retention-overview.md).
+
+## Flexible memory (preview)
+
+> [!NOTE]
+> The flexible memory feature is currently in [preview](doc-changes-updates-release-notes-whats-new.md#preview). 
+
+By default, the amount of memory allocated to Azure SQL Managed Instance is a static value determined by the selected number of vCores. The flexible memory feature for the [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) service tier allows you to change the amount of memory allocated to your managed instance without changing the number of vCores. This feature is useful for workloads that require more memory than the default allocation for a given number of vCores. 
+
+The flexible memory feature is currently only available to [locally redundant](high-availability-sla-local-zone-redundancy.md#locally-redundant-availability) instances in the **Next-gen General Purpose** service tier on [Premium-series](#hardware-configuration-characteristics) hardware.
+
+You can change the amount of memory allocated to your managed instance at any time for new and existing instances by using the Azure portal, or the REST API. The memory allocation change is applied to all databases in the instance and performs a failover of the instance as the final operation step. Check [management operations duration](management-operations-duration.md#management-operation-duration) to determine the estimated time for the operation to complete. 
+
+Use the **Compute + storage** blade in the Azure portal to change the memory allocation, or the `properties.memorySizeInGB` value of the [Managed Instance - Create or Update](/rest/api/sql/managed-instances/create-or-update) REST API call starting with the **2024-08-01-preview** version. The memory allocation is specified in gigabytes (GB).
+
+When allocating memory, you can choose between a minimum and maximum value, and also determine the ratio of memory to vCores. The minimum and maximum values are determined by the number of vCores selected for the instance. The memory-to-vCore ratio is a percentage of the total memory allocated to the instance.
+
+The following table shows the minimum and maximum memory values for the flexible memory feature:
+
+| vCores | Min RAM (GB) | Max RAM (GB) | Supported API RAM values | Min ratio | Max ratio | Supported ratios |
+|--|--|--|--|--|--|
+| 4 | 28 | 48 | 28, 32, 40, 48 | 7 | 12 | 7, 8, 10, 12 |
+| 6 | 42 | 72 | 42, 48, 60, 72 | 7 | 12 | 7, 8, 10, 12 |
+| 8 | 56 | 96 | 56, 64, 80, 96 | 7 | 12 | 7, 8, 10, 12 |
+| 10 | 70 | 120 | 70, 80, 100, 120 | 7 | 12 | 7, 8, 10, 12 |
+| 12 | 84 | 144 | 84, 96, 120, 144 | 7 | 12 | 7, 8, 10, 12 |
+| 16 | 112 | 192 | 112, 128, 160, 192 | 7 | 12 | 7, 8, 10, 12 |
+| 20 | 140 | 240 | 140, 160, 200, 240 | 7 | 12 | 7, 8, 10, 12 |
+| 24 | 168 | 288 | 168, 192, 240, 288 | 7 | 12 | 7, 8, 10, 12 |
+| 32 | 224 | 384 | 224, 256, 320, 384 | 7 | 12 | 7, 8, 10, 12 |
+| 40 | 280 | 480 | 280, 320, 400, 480 | 7 | 12 | 7, 8, 10, 12 |
+| 48 | 336 | 480 | 336, 384, 480 | 7 | 10 | 7, 8, 10 |
+| 56 | 392 | 448 | 392, 448 | 7 | 8 | 7, 8 |
+| 64 | 448 | 448 | 448 | 7 | 7 | 8 |
+| 80 | 560 | 560 | 560 | 7 | 7 | 8 |
+| 96 | 560 | 560 | 560 | 5.83 | 5.83 | 5.83 |
+| 128 | 560 | 560 | 560 | 4.38 | 4.38 | 4.38 |  
+
+### Pricing
+
+When using the flexible memory feature, consider the following:
+- Additional memory is charged per GB/hour
+- Billable memory is calculated by the following formula: `Billable memory = Total memory - default memory`.
+
+For example, if you have a pay-as-you-go 4 vCore instance with 40 GB of memory, you are charged for: 
+  - 4 vCores
+  - SQL license for 4 vCores 
+  - 12 GB of billable memory (40 GB - (4*7) = 12 GB).
+
 
 ## Supported regions
 

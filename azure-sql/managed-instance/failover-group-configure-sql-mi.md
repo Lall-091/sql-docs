@@ -466,9 +466,15 @@ Instances in a failover group remain separate Azure resources, and no changes ma
 This section is duplicated in /managed-instance/failover-group-sql-mi.md.. Please ensure changes are made to both documents.  
 -->
 
-You can scale the primary and secondary instance up or down to a different compute size within the same service tier or to a different service tier. When scaling up within the same service tier, first scale up the geo-secondary first, and then scale up the primary. When scaling down within the same service tier, reverse the order: scale down the primary first, and then scale down the secondary. Follow the same sequence when you scale an instance to a different service tier.
+The configuration of your primary and secondary instance should be the same. This includes the compute size, storage size, and service tier. If you need to change the configuration of your failover group, you can do so by scaling each instance to the same configuration accordingly. 
 
-This sequence is recommended to avoid problems from the geo-secondary, at a lower SKU, getting overloaded and having to reseed during an upgrade or downgrade process.
+You can scale the primary and secondary instance up or down to a different compute size within the same service tier or to a different service tier. Consider the following:
+- When scaling up within the same service tier, scale up the geo-secondary first, and then scale up the primary.
+- When scaling down within the same service tier, reverse the order: scale down the primary first, and then scale down the secondary. 
+ 
+Follow the same sequence when you scale an instance to a different service tier, or when you [change the memory allocation](resource-limits.md#flexible-memory-preview) of your [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) instance.
+
+This sequence is recommended to avoid problems from the lower SKU geo-secondary, getting overloaded and having to reseed during an upgrade or downgrade process.
 
 ## Permissions
 

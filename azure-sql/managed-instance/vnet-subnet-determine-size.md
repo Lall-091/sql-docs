@@ -1,7 +1,7 @@
 ---
 title: Determine required subnet size & range
 titleSuffix: Azure SQL Managed Instance
-description: Learn how to calculate the size of the subnet where Azure SQL Managed Instance will be deployed.
+description: Learn how to calculate the size of the subnet where you intend to deploy Azure SQL Managed Instance.
 author: zoran-rilak-msft
 ms.author: zoranrilak
 ms.reviewer: mathoma, bonova, srbozovi, wiassaf
@@ -44,8 +44,8 @@ The following is a list of considerations when determining the size of your subn
 Use the following parameters to help form a calculation:
 
 - Azure uses five IP addresses in the subnet for its own needs.
-- Each [virtual machine group](virtual-cluster-architecture.md#number-of-virtual-machine-groups) allocates an additional six addresses. 
-- Each SQL managed instance uses a number of addresses that depends on the service tier.
+- Each [virtual machine group](virtual-cluster-architecture.md#number-of-vm-groups) allocates an additional six addresses. 
+- Each SQL managed instance uses a number of addresses that depend on the service tier.
   - General Purpose SQL managed instance uses three addresses
   - Business Critical SQL managed instance uses five addresses
 - Each scaling request temporarily doubles the number of addresses allocated for the instance being scaled 
@@ -91,7 +91,7 @@ The following list explains the numbers used in the formula:
 - 6 addresses per virtual machine group
 
 > [!IMPORTANT]
-> Since there is a limit to the number of virtual machines that can join a group, a lack of space in an existing group can result in creating a virtual machine group with identical specifications. It's possible for a subnet with a large number of instances to have multiple machine groups with the same configuration, and exceed 9 virtual machine groups.
+> Since there's a limit to the number of virtual machines that can join a group, a lack of space in an existing group can result in creating a virtual machine group with identical specifications. It's possible for a subnet with a large number of instances to have multiple machine groups with the same configuration, and exceed 9 virtual machine groups.
 
 
 #### Example 1  
@@ -105,7 +105,7 @@ Since IP ranges are defined in powers of 2, to support 49 IP addresses, your sub
 
 #### Example 2
 
-You plan to deploy a total of seven instances to the same subnet, four General Purpose and three Business Critical instances. Three are dev/test instances running on Standard-series hardware with a default maintenance window (virtual machine group 1), while the remaining four are in production, running on Premium-series hardware with a weekend maintenance window (virtual machine group 2).
+You plan to deploy a total of seven instances to the same subnet, four General Purpose, and three Business Critical instances. Three are dev/test instances running on Standard-series hardware with a default maintenance window (virtual machine group 1), while the remaining four are in production, running on Premium-series hardware with a weekend maintenance window (virtual machine group 2).
 
 To plug these values into the formula: 
 `5 + (4 * 6) + (3 * 10) + (2 * 6) = 71`
@@ -141,5 +141,5 @@ Operations that result in creating a new virtual machine group, such as changing
 - For an overview, see [What is Azure SQL Managed Instance?](sql-managed-instance-paas-overview.md).
 - Learn more about [connectivity architecture for SQL Managed Instance](connectivity-architecture-overview.md).
 - Explore the [virtual cluster architecture hosting Azure SQL Managed Instance](virtual-cluster-architecture.md)
-- See how to [create a virtual network where you'll deploy SQL Managed Instance](virtual-network-subnet-create-arm-template.md).
+- See how to [create a virtual network for SQL Managed Instance deployment](virtual-network-subnet-create-arm-template.md).
 - For DNS issues, see [Resolving private DNS names in Azure SQL Managed Instance](resolve-private-domain-names.md).
