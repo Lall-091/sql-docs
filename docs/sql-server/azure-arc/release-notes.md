@@ -17,11 +17,13 @@ ms.custom:
 This article lists:
 
 - Release dates
-- Extension version numbers
+- Azure extension for SQL Server version numbers
 - High level feature descriptions
 - Links to additional feature documentation
 
 Extension versions are cumulative. Higher extension versions include all of the updates from previous versions. A release might include internal features. If the version release notes don't describe features, then the updates were internal.
+
+Only Azure extension for SQL Server agent versions released within the last year are supported.
 
 ## June 9, 2025
 
@@ -33,22 +35,13 @@ This release announces the preview region availability. It does not update exten
 
 **Extension version**: `1.1.3049.285`
 
-This release enables the following features:
-
-- SQL Server 2025 Preview.
-  - Standard Developer Edition.
-  - Enterprise Developer Edition.
-  - Inbound Microsoft Entra Authentication using Managed Identity, review [Managed identity (preview)](managed-identity.md).
-  For details about features in SQL Server 2025 Preview, review [What's new in SQL Server 2025 Preview](../what-s-new-in-sql-server-2025.md).
+This version is no longer available.
 
 ## April 30, 2025
 
 **Extension version**: `1.1.3042.282`
 
-This release:
-
-- Resolves binary signing issue.
-- Uses network name to connect to SQL Server failover cluster instances when shared memory is disabled.
+This version is no longer available.
 
 ## April 14, 2025
 
