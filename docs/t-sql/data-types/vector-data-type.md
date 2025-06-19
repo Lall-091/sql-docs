@@ -1,5 +1,5 @@
 ---
-title: "Vector Data Type (Preview)"
+title: "Vector Data Type"
 description: The vector data type stores vector data optimized for machine learning applications and similarity search operations.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
@@ -23,7 +23,7 @@ ms.custom:
   - build-2025
 ---
 
-# Vector data type (preview)
+# Vector data type
 
 [!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
@@ -32,8 +32,10 @@ The **vector** data type is designed to store vector data optimized for operatio
 To provide a familiar experience for developers, the **vector** data type is created and displayed as a JSON array. For example, a vector with three dimensions can be represented as `'[0.1, 2, 30]'`. Implicit and explicit conversion from and to the **vector** type can be done using **varchar**, **nvarchar** and **json** types. 
 
 > [!NOTE]
-> - This data type is in preview and is subject to change. Make sure to read preview usage terms in [Service Level Agreements (SLA) for Online Services](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services). For limitations of the current preview, see [Limitations](#limitations) and [Known issues](#known-issues).
-> - Vector features are available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) policy. 
+>
+> For limitations, review [Limitations](#limitations) and [Known issues](#known-issues).
+>
+> Vector features are available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) policy.
 
 For more information on working with vector data, see:
 
@@ -121,9 +123,9 @@ SQL Server stores vectors in an optimized binary format but exposes them as JSON
 
 Applications using **TDS version 7.4 or higher** and updated drivers can natively read, write, stream, and bulk copy vector data.
 
-These capabilities require preview versions of the drivers. The following driver versions enable native vector support:
+These capabilities require versions of the drivers listed below. Ensure you're using the correct version to enable native vector support.
 
-- **Microsoft.Data.SqlClient**: Version **6.1 Preview 2** introduces the `SqlVector` type, extending `System.Data.SqlDbTypes`.
+- **Microsoft.Data.SqlClient**: Version **6.1.0** introduces the `SqlVector` type, extending `System.Data.SqlDbTypes`.
 - **Microsoft JDBC Driver for SQL Server**: Version **13.1.0 Preview** introduces the `microsoft.sql.Types.VECTOR` type and `microsoft.sql.Vector` class.
 
 > [!NOTE]
@@ -134,7 +136,7 @@ You can start using the new **vector** type right away. The following examples s
 ### [.NET](#tab/csharp)
 
 > [!IMPORTANT]
-> Requires **Microsoft.Data.SqlClient 6.1 Preview 2** or later for native vector support.
+> Requires **Microsoft.Data.SqlClient 6.1.0** or later for native vector support.
 
 ```csharp
 static void InsertNonNullVal(SqlConnection conn)
@@ -352,8 +354,6 @@ The **vector** type has the following limitations:
 - **vector** type isn't supported with Always Encrypted feature.
 
 ## Known issues
-
-In the ongoing preview there are the following known issues:
 
 - Data Masking currently shows **vector** data as **varbinary** data type in the Azure portal.
 
