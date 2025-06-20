@@ -37,41 +37,41 @@ monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-curre
 
 [!INCLUDE [SQL Server Azure SQL Database PDW FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-pdw-fabricsqldb.md)]
 
-This article helps you decide when and how to perform index maintenance. It covers concepts such as index fragmentation and page density, and their impact on query performance and resource consumption. It describes index maintenance methods, [reorganizing an index](#reorganize-an-index) and [rebuilding an index](#rebuild-an-index), and suggests an index maintenance [strategy](#index-maintenance-strategy) that balances potential performance improvements against resource consumption required for maintenance.
+This article helps you decide when and how to perform index maintenance. It covers concepts such as index fragmentation and page density, and their impact on query performance and resource consumption. It describes two index maintenance methods: [reorganizing an index](#reorganize-an-index) and [rebuilding an index](#rebuild-an-index). The article also suggests an index maintenance [strategy](#index-maintenance-strategy) that balances potential performance improvements against resource consumption required for maintenance.
 
 > [!NOTE]  
-> This article does not apply to a dedicated SQL pool in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)]. For information on index maintenance for a dedicated SQL pool in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], see [Indexing dedicated SQL pool tables in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)]](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-index).
+> This article doesn't apply to a dedicated SQL pool in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)]. For information on index maintenance for a dedicated SQL pool in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], see [Indexing dedicated SQL pool tables in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)]](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-index).
 
 ## Concepts: index fragmentation and page density
 
 What is **index fragmentation** and how it impacts performance:
 
-- In B-tree (rowstore) indexes, fragmentation exists when indexes have pages in which the logical ordering within the index, based on the key values of the index, does not match the physical ordering of index pages.
+- In B-tree (rowstore) indexes, fragmentation exists when indexes have pages in which the logical ordering within the index, based on the key values of the index, doesn't match the physical ordering of index pages.
 
    [!INCLUDE [sql-b-tree](../../includes/sql-b-tree.md)]
 
 - The [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] automatically modifies indexes whenever insert, update, or delete operations are made to the underlying data. For example, the addition of rows in a table can cause existing pages in [rowstore indexes](clustered-and-nonclustered-indexes-described.md) to split, making room for the insertion of new rows. Over time these modifications can cause the data in the index to become scattered in the database (fragmented).
-- For queries that read many pages using full or range index scans, heavily fragmented indexes can degrade query performance when additional I/O is required to read the data. Instead of a small number of large I/O requests, the query would require a larger number of small I/O requests to read the same amount of data.
+- For queries that read many pages using full or range index scans, heavily fragmented indexes can degrade query performance when additional I/O is required to read the data. Instead of a few large I/O requests, the query would require many small I/O requests to read the same amount of data.
 - When the storage subsystem provides better sequential I/O performance than random I/O performance, index fragmentation can degrade performance because more random I/O is required to read fragmented indexes.
 
 What is **page density** (also known as page fullness) and how it impacts performance:
 
 - Each [page](../pages-and-extents-architecture-guide.md#pages) in the database can contain a variable number of rows. If rows take all space on a page, page density is 100%. If a page is empty, page density is 0%. If a page with 100% density is split in two pages to accommodate a new row, the density of the two new pages is approximately 50%.
 - When page density is low, more pages are required to store the same amount of data. This means that more I/O is necessary to read and write this data, and more memory is necessary to cache this data. When memory is limited, fewer pages required by a query are cached, causing even more disk I/O. Consequently, low page density negatively impacts performance.
-- When [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] adds rows to a page during index creation, rebuild, or reorganization, it will not fill the page fully if the [fill factor](specify-fill-factor-for-an-index.md) for the index is set to a value other than 100 (or 0, which is equivalent in this context). This causes lower page density, and similarly adds I/O overhead and negatively impacts performance.
+- When [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] adds rows to a page during index creation, rebuild, or reorganization, it doesn't fill the page fully if the [fill factor](specify-fill-factor-for-an-index.md) for the index is set to a value other than 100 (or 0, which is equivalent in this context). This causes lower page density, and similarly adds I/O overhead and negatively impacts performance.
 - Low page density can increase the number of intermediate B-tree levels. This moderately increases CPU and I/O cost of finding leaf level pages in index scans and seeks.
 - When the Query Optimizer compiles a query plan, it considers the cost of I/O needed to read the data required by the query. With low page density, there are more pages to read, therefore the cost of I/O is higher. This can impact query plan choice. For example, as page density decreases over time due to page splits, the optimizer can compile a different plan for the same query, with a different performance and resource consumption profile.
 
 > [!TIP]  
 > In many workloads, increasing page density results in a greater positive performance impact than reducing fragmentation.
 >  
-> To avoid lowering page density unnecessarily, Microsoft does not recommend setting fill factor to values other than 100 or 0, except in certain cases for indexes experiencing a high number of [page splits](specify-fill-factor-for-an-index.md#page-splits), for example frequently modified indexes with leading columns containing non-sequential GUID values.
+> To avoid lowering page density unnecessarily, Microsoft doesn't recommend setting fill factor to values other than 100 or 0, except in certain cases for indexes experiencing a high number of [page splits](specify-fill-factor-for-an-index.md#page-splits). For example, this can occur in frequently modified indexes with the leading column that contains nonsequential GUID values.
 
 ### Measure index fragmentation and page density
 
 Both fragmentation and page density are among the factors to consider when deciding whether to perform index maintenance, and which maintenance method to use.
 
-Fragmentation is defined differently for [rowstore](clustered-and-nonclustered-indexes-described.md) and [columnstore](columnstore-indexes-overview.md) indexes. For rowstore indexes, [sys.dm_db_index_physical_stats()](../../relational-databases/system-dynamic-management-views/sys-dm-db-index-physical-stats-transact-sql.md) lets you determine fragmentation and page density in a specific index, all indexes on a table or indexed view, all indexes in a database, or all indexes in all databases. For partitioned indexes, `sys.dm_db_index_physical_stats()` provides this information for each partition.
+Fragmentation is defined differently for [rowstore](clustered-and-nonclustered-indexes-described.md) and [columnstore](columnstore-indexes-overview.md) indexes. For rowstore indexes, [sys.dm_db_index_physical_stats()](../../relational-databases/system-dynamic-management-views/sys-dm-db-index-physical-stats-transact-sql.md) lets you determine fragmentation and page density in a specific index or in multiple indexes. For partitioned indexes, `sys.dm_db_index_physical_stats()` provides this information for each partition.
 
 The result set returned by `sys.dm_db_index_physical_stats` includes the following columns:
 
@@ -98,7 +98,7 @@ Compressed row group fragmentation in a columnstore index can be computed using 
 ```
 
 > [!TIP]  
-> For both rowstore and columnstore indexes, review index or heap fragmentation and page density after a large number of rows has been deleted or updated. For heaps, if there are frequent updates, review fragmentation periodically to avoid proliferation of forwarding records. For more information about heaps, see [Heaps (Tables without Clustered Indexes)](../../relational-databases/indexes/heaps-tables-without-clustered-indexes.md#heap-structures).
+> For both rowstore and columnstore indexes, review index or heap fragmentation and page density after a large number of rows is deleted or updated. For heaps, if there are frequent updates, review fragmentation periodically to avoid proliferation of forwarding records. For more information about heaps, see [Heaps (Tables without Clustered Indexes)](../../relational-databases/indexes/heaps-tables-without-clustered-indexes.md#heap-structures).
 
 See [Examples](#examples) for sample queries to determine fragmentation and page density.
 
@@ -114,10 +114,10 @@ You can reduce index fragmentation and increase page density by using one of the
 
 ### Reorganize an index
 
-Reorganizing an index is less resource intensive than rebuilding an index. For that reason it should be your preferred index maintenance method, unless there is a specific reason to use index rebuild. Reorganize is always an online operation. This means long-term object-level locks are not held and queries or updates to the underlying table can continue during the `ALTER INDEX ... REORGANIZE` operation.
+Reorganizing an index is less resource intensive than rebuilding an index. For that reason it should be your preferred index maintenance method, unless there is a specific reason to use index rebuild. Reorganize is always an online operation. This means long-term object-level locks aren't held and queries or updates to the underlying table can continue during the `ALTER INDEX ... REORGANIZE` operation.
 
-- For [rowstore indexes](clustered-and-nonclustered-indexes-described.md), the [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] defragments only the leaf level of clustered and nonclustered indexes on tables and views by physically reordering the leaf-level pages to match the logical order of the leaf nodes (left to right). Reorganizing also compacts index pages to make page density equal to the [fill factor](../../relational-databases/indexes/specify-fill-factor-for-an-index.md) of the index. To view the fill factor setting, use [sys.indexes](../../relational-databases/system-catalog-views/sys-indexes-transact-sql.md). For syntax examples, see [Examples - Rowstore reorganize](../../t-sql/statements/alter-index-transact-sql.md#examples-rowstore-indexes).
-- When using [columnstore indexes](columnstore-indexes-overview.md), the delta store can end up with multiple small row groups after inserting, updating, and deleting data over time. Reorganizing a columnstore index forces delta store row groups into compressed row groups in columnstore, and combines smaller compressed row groups into larger row groups. The reorganize operation also physically removes rows that have been marked as deleted in the columnstore. Reorganizing a columnstore index can require additional CPU resources to compress data. While the operation is running, performance can slow. However, once data is compressed, query performance improves. For syntax examples, see [Examples - Columnstore reorganize](../../t-sql/statements/alter-index-transact-sql.md#examples-columnstore-indexes).
+- For [rowstore indexes](clustered-and-nonclustered-indexes-described.md), the [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] defragments only the leaf level of clustered and nonclustered indexes on tables and views. It physically reorders the leaf-level pages to match the logical order of the leaf nodes, left to right. Reorganizing also compacts index pages to make page density equal to the [fill factor](../../relational-databases/indexes/specify-fill-factor-for-an-index.md) of the index. To view the fill factor setting, use [sys.indexes](../../relational-databases/system-catalog-views/sys-indexes-transact-sql.md). For syntax examples, see [Examples - Rowstore reorganize](../../t-sql/statements/alter-index-transact-sql.md#examples-rowstore-indexes).
+- When using [columnstore indexes](columnstore-indexes-overview.md), the delta store can end up with multiple small row groups after inserting, updating, and deleting data over time. Reorganizing a columnstore index forces delta store row groups into compressed row groups in columnstore, and combines smaller compressed row groups into larger row groups. The reorganize operation also physically removes rows that are marked as deleted in the columnstore. Reorganizing a columnstore index can require additional CPU resources to compress data. While the operation is running, performance can slow. However, once data is compressed, query performance improves. For syntax examples, see [Examples - Columnstore reorganize](../../t-sql/statements/alter-index-transact-sql.md#examples-columnstore-indexes).
 
 > [!NOTE]  
 > <a name="bckmergetsk"></a> Starting with [!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi](../../includes/ssazuremi-md.md)], the tuple-mover is helped by a background merge task that automatically compresses smaller open delta rowgroups that have existed for some time as determined by an internal threshold, or merges compressed rowgroups from where a large number of rows has been deleted. This improves the columnstore index quality over time. For most cases this dismisses the need for issuing `ALTER INDEX ... REORGANIZE` commands.
@@ -129,20 +129,20 @@ Reorganizing an index is less resource intensive than rebuilding an index. For t
 
 Rebuilding an index drops and re-creates the index. Depending on the type of index and the [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] version, a rebuild operation can be done offline or online. An offline index rebuild usually takes less time than an online rebuild, but it holds object-level locks for the duration of the rebuild operation, blocking queries from accessing the table or view.
 
-An online index rebuild does not require object-level locks until the end of the operation, when a lock must be held for a short duration to complete the rebuild. Depending on the version of the [!INCLUDE [ssDE](../../includes/ssde-md.md)], an online index rebuild can be started as a resumable operation. A resumable index rebuild can be paused, keeping the progress made to that point. A resumable rebuild operation can be resumed after having been paused or interrupted, or aborted if completing the rebuild becomes unnecessary.
+An online index rebuild doesn't require object-level locks until the end of the operation, when a lock must be held for a short duration to complete the rebuild. Depending on the version of the [!INCLUDE [ssDE](../../includes/ssde-md.md)], an online index rebuild can be started as a resumable operation. A resumable index rebuild can be paused, keeping the progress made to that point. A resumable rebuild operation can be resumed after it was paused or interrupted, or aborted if completing the rebuild becomes unnecessary.
 
 For [!INCLUDE [tsql](../../includes/tsql-md.md)] syntax, see [ALTER INDEX REBUILD](../../t-sql/statements/alter-index-transact-sql.md). For more information about online index rebuilds, see [Perform Index Operations Online](../../relational-databases/indexes/perform-index-operations-online.md).
 
 > [!NOTE]  
 > While an index is being rebuilt online, every modification of data in indexed columns must update an additional copy of the index. This can result in a minor performance degradation of data modification statements during online rebuild.
 >  
-> If an online resumable index operation is paused, this performance impact persists until the resumable operation either completes or is aborted. If you do not intend to complete a resumable index operation, abort it instead of pausing it.
+> If an online resumable index operation is paused, this performance impact persists until the resumable operation either completes or is aborted. If you don' intend to complete a resumable index operation, abort it instead of pausing it.
 
 > [!TIP]  
 > Depending on available resources and workload patterns, specifying a higher than the default `MAXDOP` value in the [ALTER INDEX REBUILD](../../t-sql/statements/alter-index-transact-sql.md) statement can shorten the duration of rebuild at the expense of higher CPU utilization.
 
 - For [rowstore indexes](clustered-and-nonclustered-indexes-described.md), rebuilding removes fragmentation in all levels of the index, and compacts pages based on the specified or current fill factor. When `ALL` is specified, all indexes on the table are dropped and rebuilt in a single operation. When indexes with 128 or more extents are rebuilt, the [!INCLUDE [ssDE](../../includes/ssde-md.md)] defers page deallocations and acquiring the associated locks until after the rebuild completes. For syntax examples, see [Examples - Rowstore rebuild](../../t-sql/statements/alter-index-transact-sql.md#examples-rowstore-indexes).
-- For [columnstore indexes](columnstore-indexes-overview.md), rebuilding removes fragmentation, moves any delta store rows into columnstore, and physically deletes rows that have been marked for deletion. For syntax examples, see [Examples - Columnstore rebuild](../../t-sql/statements/alter-index-transact-sql.md#examples-columnstore-indexes).
+- For [columnstore indexes](columnstore-indexes-overview.md), rebuilding removes fragmentation, moves any delta store rows into columnstore, and physically deletes rows that are marked for deletion. For syntax examples, see [Examples - Columnstore rebuild](../../t-sql/statements/alter-index-transact-sql.md#examples-columnstore-indexes).
 
   > [!TIP]  
   > Starting with [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)], rebuilding the columnstore index is usually not needed since `REORGANIZE` performs the essentials of a rebuild as an online operation.
@@ -151,7 +151,7 @@ For [!INCLUDE [tsql](../../includes/tsql-md.md)] syntax, see [ALTER INDEX REBUIL
 
 Prior to [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)], you could sometimes rebuild a rowstore nonclustered index to correct inconsistencies due to data corruption in the index.
 
-You can still repair such inconsistencies in the nonclustered index by rebuilding a nonclustered index offline. However, you cannot repair nonclustered index inconsistencies by rebuilding the index online, because the online rebuild mechanism uses the existing nonclustered index as the basis for the rebuild and thus carries over the inconsistency. Rebuilding the index offline can sometimes force a scan of the clustered index (or heap) and so replace the inconsistent data in the nonclustered index with the data from the clustered index or heap.
+You can still repair such inconsistencies in the nonclustered index by rebuilding a nonclustered index offline. However, you can't repair nonclustered index inconsistencies by rebuilding the index online, because the online rebuild mechanism uses the existing nonclustered index as the basis for the rebuild and thus carries over the inconsistency. Rebuilding the index offline can sometimes force a scan of the clustered index (or heap) and so replace the inconsistent data in the nonclustered index with the data from the clustered index or heap.
 
 To ensure that the clustered index or heap is used as the source of data, drop and recreate the nonclustered index instead of rebuilding it. As with earlier versions, you can recover from inconsistencies by restoring the affected data from a backup. However, you might be able to repair nonclustered index inconsistencies by rebuilding it offline or recreating it. For more information, see [DBCC CHECKDB (Transact-SQL)](../../t-sql/database-console-commands/dbcc-checkdb-transact-sql.md).
 
@@ -166,23 +166,23 @@ The following scenarios cause all rowstore nonclustered indexes on a table to be
 - Creating a clustered index on a table, including recreating the clustered index with a different key using `CREATE CLUSTERED INDEX ... WITH (DROP_EXISTING = ON)`
 - Dropping a clustered index, which causes the table to be stored as a heap
 
-The following scenarios do not automatically rebuild all rowstore nonclustered indexes on the same table:
+The following scenarios don't automatically rebuild all rowstore nonclustered indexes on the same table:
 
 - Rebuilding a clustered index
 - Changing the clustered index storage, such as applying a partitioning scheme or moving the clustered index to a different filegroup
 
 > [!IMPORTANT]  
-> An index cannot be reorganized or rebuilt if the filegroup on which it is located is offline or read-only. When the keyword ALL is specified and one or more indexes are on an offline or read-only filegroup, the statement fails.
+> An index can't be reorganized or rebuilt if the filegroup on which it is located is offline or read-only. When the keyword ALL is specified and one or more indexes are on an offline or read-only filegroup, the statement fails.
 >  
 > While an index rebuild occurs, the physical media must have enough space to store two copies of the index. When the rebuild is finished, the [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] deletes the original index.
 
 When `ALL` is specified with the `ALTER INDEX ... REORGANIZE` statement, clustered, nonclustered, and XML indexes on the table are reorganized.
 
-Rebuilding or reorganizing small rowstore indexes usually does not reduce fragmentation. Up to, and including, [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)], the [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)] allocates space using mixed extents. Therefore, pages of small indexes are sometimes stored on mixed extents, which implicitly makes such indexes fragmented. Mixed extents are shared by up to eight objects, so the fragmentation in a small index might not be reduced after reorganizing or rebuilding it.
+Rebuilding or reorganizing small rowstore indexes usually doesn't reduce fragmentation. Up to, and including, [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)], the [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)] allocates space using mixed extents. Therefore, pages of small indexes are sometimes stored on mixed extents, which implicitly makes such indexes fragmented. Mixed extents are shared by up to eight objects, so the fragmentation in a small index might not be reduced after reorganizing or rebuilding it.
 
 ### Considerations specific to rebuilding a columnstore index
 
-When rebuilding a columnstore index, the [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] reads all data from the original columnstore index, including the delta store. It combines data into new row groups, and compresses all row groups into columnstore. The [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] defragments the columnstore by physically deleting rows that have been marked as deleted.
+When rebuilding a columnstore index, the [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] reads all data from the original columnstore index, including the delta store. It combines data into new row groups, and compresses all row groups into columnstore. The [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] defragments the columnstore by physically deleting rows that are marked as deleted.
 
 > [!NOTE]  
 > Starting with [!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)], the tuple mover is helped by a background merge task that automatically compresses smaller open delta store row groups that have existed for some time as determined by an internal threshold, or merges compressed row groups where a large number of rows has been deleted. This improves columnstore index quality over time.
@@ -190,9 +190,9 @@ When rebuilding a columnstore index, the [!INCLUDE [ssDE-md](../../includes/ssde
 
 #### Rebuild a partition instead of the entire table
 
-Rebuilding the entire table takes a long time if the index is large, and requires enough disk space to store an additional copy of the entire index during the rebuild.
+Rebuilding the entire table takes a long time if the index is large, and requires enough disk space to store a copy of the entire index during the rebuild.
 
-For partitioned tables, you do not need to rebuild the entire columnstore index if fragmentation is present only in some partitions, for example in partitions where `UPDATE`, `DELETE`, or `MERGE` statements have affected a large number of rows.
+For partitioned tables, you don't need to rebuild the entire columnstore index if fragmentation is present only in some partitions, for example in partitions where `UPDATE`, `DELETE`, or `MERGE` statements modified a large number of rows.
 
 Rebuilding a partition after loading or modifying data ensures all data is stored in compressed row groups in columnstore. When the data load process inserts data into a partition using batches smaller than 102,400 rows, the partition can end up with multiple open row groups in delta store. Rebuilding moves all delta store rows into compressed row groups in columnstore.
 
@@ -200,14 +200,14 @@ Rebuilding a partition after loading or modifying data ensures all data is store
 
 When reorganizing a columnstore index, the [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] compresses each closed row group in delta store into columnstore as a compressed row group. Starting with [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] and in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], the `REORGANIZE` command performs the following additional defragmentation optimizations online:
 
-- Physically removes rows from a row group when 10% or more of the rows have been logically deleted. For example, if a compressed row group of 1 million rows has 100,000 rows deleted, the [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] removes the deleted rows and recompress the row group with 900,000 rows, reducing storage footprint.
-- Combines one or more compressed row groups to increase rows per rowgroup, up to the maximum of 1,048,576 rows. For example, if you bulk insert five batches of 102,400 rows each, you will get five compressed row groups. If you run REORGANIZE, these row groups will be merged into one compressed rowgroup with 512,000 rows. This assumes there were no dictionary size or memory limitations.
-- The [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] attempts to combine row groups in which 10% or more of the rows have been marked as deleted with other row groups. For example, row group 1 is compressed and has 500,000 rows, while rowgroup 21 is compressed and has 1,048,576 rows. Rowgroup 21 has 60% of its rows marked as deleted, which leaves 409,830 rows. The [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] favors combining these two row groups to compress a new row group that has 909,830 rows.
+- Physically removes rows from a row group when 10% or more of the rows are logically deleted. For example, if a compressed row group of 1 million rows has 100,000 rows deleted, the [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] removes the deleted rows and recompress the row group with 900,000 rows, reducing storage footprint.
+- Combines one or more compressed row groups to increase rows per rowgroup, up to the maximum of 1,048,576 rows. For example, if you bulk insert five batches of 102,400 rows each, you get five compressed row groups. If you run REORGANIZE, these row groups are merged into one compressed rowgroup with 512,000 rows. This assumes there were no dictionary size or memory limitations.
+- The [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] attempts to combine row groups in which 10% or more of the rows are marked as deleted with other row groups. For example, row group 1 is compressed and has 500,000 rows, while rowgroup 21 is compressed and has 1,048,576 rows. Rowgroup 21 has 60% of its rows marked as deleted, which leaves 409,830 rows. The [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] favors combining these two row groups to compress a new row group that has 909,830 rows.
 
-After performing data loads, you can have multiple small row groups in the delta store. You can use `ALTER INDEX REORGANIZE` to force these row groups into columnstore, and then combine smaller compressed row groups into larger compressed row groups. The reorganize operation will also remove rows that have been marked as deleted from the columnstore.
+After performing data loads, you can have multiple small row groups in the delta store. You can use `ALTER INDEX REORGANIZE` to force these row groups into columnstore, and then combine smaller compressed row groups into larger compressed row groups. The reorganize operation also removes rows that are marked as deleted in the columnstore.
 
 > [!NOTE]  
-> Reorganizing a columnstore index using [!INCLUDE [ssManStudio](../../includes/ssManStudio-md.md)] combines compressed row groups together, but does not force all row groups to be compressed into the columnstore. Closed row groups will be compressed, but open row groups will not be compressed into columnstore.
+> Reorganizing a columnstore index using [!INCLUDE [ssManStudio](../../includes/ssManStudio-md.md)] combines compressed row groups together, but doesn't force all row groups to be compressed into the columnstore. Closed row groups are compressed, but open row groups aren't compressed into columnstore.
 > To forcibly compress all row groups, use the [!INCLUDE [tsql](../../includes/tsql-md.md)] [example](#TsqlProcedureReorg) that includes `COMPRESS_ALL_ROW_GROUPS = ON`.
 
 ## What to consider before performing index maintenance
@@ -216,7 +216,7 @@ Index maintenance, performed by either reorganizing or rebuilding an index, is r
 
 To avoid unnecessary resource utilization that, avoid performing index maintenance indiscriminately. Instead, performance benefits from index maintenance should be determined empirically for each workload using the recommended [strategy](#index-maintenance-strategy), and weighed against resource costs and workload impact needed to achieve these benefits.
 
-The likelihood of seeing performance benefits from reorganizing or rebuilding an index is higher when the index is heavily fragmented, or when its page density is low. However, these are not the only things to consider. Factors such as query patterns (transaction processing vs. analytics and reporting), storage subsystem behavior, available memory, and database engine improvements over time all play a role.
+The likelihood of seeing performance benefits from reorganizing or rebuilding an index is higher when the index is heavily fragmented, or when its page density is low. However, these aren't the only things to consider. Factors such as query patterns (transaction processing vs. analytics and reporting), storage subsystem behavior, available memory, and database engine improvements over time all play a role.
 
 > [!IMPORTANT]  
 > Index maintenance decisions should be made after considering multiple factors in the specific context of each workload, including the resource cost of maintenance. They should not be based on fixed fragmentation or page density thresholds alone.
@@ -225,9 +225,9 @@ The likelihood of seeing performance benefits from reorganizing or rebuilding an
 
 Customers often observe performance improvements after rebuilding indexes. However, in many cases these improvements are unrelated to reducing fragmentation or increasing page density.
 
-An index rebuild has an important benefit: it updates [statistics](../statistics/statistics.md) on key columns of the index by scanning all rows in the index. This is the equivalent of executing `UPDATE STATISTICS ... WITH FULLSCAN`, which makes statistics current and sometimes improves their quality compared to the default sampled statistics update. When statistics are updated, query plans that reference them are recompiled. If the previous plan for a query was not optimal because of stale statistics, insufficient statistics sampling ratio, or for other reasons, the recompiled plan will often perform better.
+An index rebuild has an important benefit: it updates [statistics](../statistics/statistics.md) on key columns of the index by scanning all rows in the index. This is the equivalent of executing `UPDATE STATISTICS ... WITH FULLSCAN`, which makes statistics current and sometimes improves their quality compared to the default sampled statistics update. When statistics are updated, query plans that reference them are recompiled. If the previous plan for a query wasn't optimal because of stale statistics, insufficient statistics sampling ratio, or for other reasons, the recompiled plan often performs better.
 
-Customers often incorrectly attribute this improvement to the index rebuild itself, taking it to be result of reduced fragmentation and increased page density. In reality, the same benefit can often be achieved at much cheaper resource cost by [updating statistics](../statistics/update-statistics.md) instead of rebuilding indexes.
+Customers often incorrectly attribute this improvement to the index rebuild itself, taking it to be result of reduced fragmentation and increased page density. In reality, the same benefit can often be achieved at a much lower resource cost by [updating statistics](../statistics/update-statistics.md) instead of rebuilding indexes.
 
 > [!TIP]  
 > Resource cost of updating statistics is minor compared to index rebuild, and the operation often completes in minutes. Index rebuilds can take hours.
@@ -236,12 +236,12 @@ Customers often incorrectly attribute this improvement to the index rebuild itse
 
 Microsoft recommends that customers consider and adopt the following index maintenance strategy:
 
-- Do not assume that index maintenance will always noticeably improve your workload.
+- Don't assume that index maintenance always noticeably improves your workload.
 - Measure the specific impact of reorganizing or rebuilding indexes on query performance in your workload. Query Store is a good way to measure the "before maintenance" and "after maintenance" performance using the [A/B testing](../performance/query-store-usage-scenarios.md#ab-testing) technique.
 - If you observe that rebuilding indexes improves performance, try replacing it with updating statistics. This can result in a similar improvement. In that case, you might not need to rebuild indexes as frequently, or at all, and instead can perform periodic statistics updates. For some statistics, you might need to increase the sampling ratio using the `WITH SAMPLE ... PERCENT` or `WITH FULLSCAN` clauses (this is not common).
 - Monitor index fragmentation and page density over time to see if there is a correlation between these values trending up or down, and query performance. If higher fragmentation or lower page density degrade performance unacceptably, reorganize or rebuild indexes. It is often sufficient to only reorganize or rebuild specific indexes used by queries with degraded performance. This avoids a higher resource cost of maintaining every index in the database.
-- Establishing a correlation between fragmentation/page density and performance also lets you determine the frequency of index maintenance. Do not assume that maintenance must be performed on a fixed schedule. A better strategy is to monitor fragmentation and page density, and run index maintenance as needed before performance degrades unacceptably.
-- If you have determined that index maintenance is needed and its resource cost is acceptable, perform maintenance during low resource usage times, if possible.
+- Establishing a correlation between fragmentation/page density and performance also lets you determine the frequency of index maintenance. don't assume that maintenance must be performed on a fixed schedule. A better strategy is to monitor fragmentation and page density, and run index maintenance as needed before performance degrades unacceptably.
+- If you determined that index maintenance is needed and its resource cost is acceptable, perform maintenance during low resource usage times, if possible.
 - Test periodically, as resource usage patterns can change over time.
 
 ### Index maintenance in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [ssazuremi](../../includes/ssazuremi-md.md)]
@@ -258,25 +258,25 @@ In addition to the above considerations and strategy, in [!INCLUDE [ssazure-sqld
 There are specific but uncommon scenarios when one-time or periodic index maintenance may be needed in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [ssazuremi](../../includes/ssazuremi-md.md)]:
 
 - To increase page density and reduce used space in the database, and thus stay within the size limit of the pricing tier. This avoids having to scale up to a higher pricing tier with a higher size limit.
-- If it becomes necessary to shrink files, rebuilding or reorganizing indexes before shrinking files will increase page density. This makes the shrink operation faster, because it will need to move fewer pages. For more information, visit:
+- If it becomes necessary to shrink files, consider rebuilding or reorganizing indexes before shrinking to increase page density. This makes the shrink operation faster because it needs to move fewer pages. For more information, visit:
     - [Manage file space for databases in Azure SQL Database](/azure/azure-sql/database/file-space-manage)
     - [Manage file space for databases in Azure SQL Managed Instance](/azure/azure-sql/managed-instance/file-space-manage)
 
 > [!TIP]  
-> If you have determined that index maintenance is necessary for your [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [ssazuremi](../../includes/ssazuremi-md.md)] workloads, you should either reorganize indexes, or use online index rebuild. This lets query workloads access tables while indexes are being rebuilt.
+> If you determine that index maintenance is necessary for your [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [ssazuremi](../../includes/ssazuremi-md.md)] workloads, you should either reorganize indexes, or use online index rebuild. This lets query workloads access tables while indexes are being rebuilt.
 >  
 > Additionally, making the operation resumable lets you avoid restarting it from the beginning if it gets interrupted by a planned or unplanned database failover. Using resumable index operations is particularly important when indexes are large.
 
 > [!TIP]  
-> Offline index operations typically complete faster than online operations. They should be used when tables will not be accessed by queries during the operation, for example after loading data into staging tables as part of a sequential ETL process.
+> Offline index operations typically complete faster than online operations. They should be used when tables aren't accessed by queries during the operation, for example after loading data into staging tables as part of a sequential ETL process.
 
 ## <a id="Restrictions"></a> Limitations and restrictions
 
-Rowstore indexes with more than 128 extents are rebuilt in two separate phases: logical and physical. In the logical phase, the existing allocation units used by the index are marked for deallocation, the data rows are copied and sorted, then moved to new allocation units created to store the rebuilt index. In the physical phase, the allocation units previously marked for deallocation are physically dropped in short transactions that happen in the background, and do not require many locks. For more information about allocation units, see [Pages and Extents Architecture Guide](../../relational-databases/pages-and-extents-architecture-guide.md).
+Rowstore indexes with more than 128 extents are rebuilt in two separate phases: logical and physical. In the logical phase, the existing allocation units used by the index are marked for deallocation, the data rows are copied and sorted, then moved to new allocation units created to store the rebuilt index. In the physical phase, the allocation units previously marked for deallocation are physically dropped in short transactions that happen in the background, and don't require many locks. For more information about allocation units, see [Pages and Extents Architecture Guide](../../relational-databases/pages-and-extents-architecture-guide.md).
 
 The `ALTER INDEX REORGANIZE` statement requires the data file containing the index to have space available, because the operation can only allocate temporary work pages in the same file, not in another file within the same filegroup. Even though the filegroup has free space available, the user can still encounter error 1105: `Could not allocate space for object '###' in database '###' because the '###' filegroup is full. Create disk space by deleting unneeded files, dropping objects in the filegroup, adding additional files to the filegroup, or setting autogrowth on for existing files in the filegroup` during the reorganize operation if a data file is out of space.
 
-An index cannot be reorganized when `ALLOW_PAGE_LOCKS` is set to OFF.
+An index can't be reorganized when `ALLOW_PAGE_LOCKS` is set to OFF.
 
 Up to [!INCLUDE [ssSQL17](../../includes/sssql17-md.md)], rebuilding a clustered columnstore index is an offline operation. The [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] has to acquire an exclusive lock on the table or partition while the rebuild occurs. The data is offline and unavailable during the rebuild even when using `NOLOCK`, read-committed snapshot isolation (RCSI), or snapshot isolation. Starting with [!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)], a clustered columnstore index can be rebuilt using the `ONLINE = ON` option.
 
@@ -286,14 +286,14 @@ Up to [!INCLUDE [ssSQL17](../../includes/sssql17-md.md)], rebuilding a clustered
 <!--
 For an [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] table with an ordered clustered columnstore index, `ALTER INDEX REBUILD` will re-sort the data using `tempdb`. Monitor `tempdb` during rebuild operations. If you need more `tempdb` space, scale up the data warehouse. Scale back down once the index rebuild is complete.
 
-For an [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] table with an ordered clustered columnstore index, `ALTER INDEX REORGANIZE` does not re-sort the data. To resort data, use `ALTER INDEX REBUILD`.
+For an [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] table with an ordered clustered columnstore index, `ALTER INDEX REORGANIZE` doesn't re-sort the data. To resort data, use `ALTER INDEX REBUILD`.
 -->
 
 ### Statistics limitations
 
-- When an index is **created** or **rebuilt**, statistics are created or updated by scanning all the rows in the table, which is equivalent to using the `FULLSCAN` clause in `CREATE STATISTICS` or `UPDATE STATISTICS`. However, starting with [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)], when a partitioned index is created or rebuilt, statistics are not created or updated by scanning all rows in the table. Instead, the default sampling ratio is used. To create or update statistics on partitioned indexes by scanning all rows in the table, use [CREATE STATISTICS](../../t-sql/statements/create-statistics-transact-sql.md) or [UPDATE STATISTICS](../../t-sql/statements/update-statistics-transact-sql.md) with the `FULLSCAN` clause.
+- When an index is **created** or **rebuilt**, statistics are created or updated by scanning all the rows in the table, which is equivalent to using the `FULLSCAN` clause in `CREATE STATISTICS` or `UPDATE STATISTICS`. However, starting with [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)], when a partitioned index is created or rebuilt, statistics aren't created or updated by scanning all rows in the table. Instead, the default sampling ratio is used. To create or update statistics on partitioned indexes by scanning all rows in the table, use [CREATE STATISTICS](../../t-sql/statements/create-statistics-transact-sql.md) or [UPDATE STATISTICS](../../t-sql/statements/update-statistics-transact-sql.md) with the `FULLSCAN` clause.
 - Similarly, when the index creation or rebuild operation is resumable, statistics are created or updated with the default sampling ratio. If statistics were created or last updated with the `PERSIST_SAMPLE_PERCENT` clause set to `ON`, resumable index operations use the persisted sampling ratio to create or update statistics.
-- When an index is **reorganized**, statistics are not updated.
+- When an index is **reorganized**, statistics aren't updated.
 
 ## Examples
 
