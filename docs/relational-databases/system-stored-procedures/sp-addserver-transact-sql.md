@@ -4,7 +4,7 @@ description: sp_addserver defines the name of the local instance of SQL Server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -82,7 +82,7 @@ Requires membership in the **setupadmin** fixed server role.
 The following example changes the [!INCLUDE [ssDE](../../includes/ssde-md.md)] entry for the name of the computer hosting [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to `ACCOUNTS`.
 
 ```sql
-EXEC sp_addserver 'ACCOUNTS', 'local';
+EXECUTE sp_addserver 'ACCOUNTS', 'local';
 ```
 
 ## Related content

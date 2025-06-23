@@ -4,7 +4,7 @@ description: Creates a new SQL Server login that allows a user to connect to a S
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 08/22/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -113,36 +113,36 @@ Requires ALTER ANY LOGIN permission.
 
 ### A. Create a SQL Server login
 
-The following example creates a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login for the user `Victoria`, with a password of `B1r12-36`, without specifying a default database.
+The following example creates a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login for the user `Victoria`, without specifying a default database. Replace `<password>` with a strong password.
 
 ```sql
-EXEC sp_addlogin 'Victoria', 'B1r12-36';
+EXECUTE sp_addlogin 'Victoria', '<password>';
 GO
 ```
 
 ### B. Create a SQL Server login that has a default database
 
-The following example creates a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login for the user `Albert`, with a password of `B5432-3M6` and a default database of `corporate`.
+The following example creates a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login for the user `Albert`, and a default database of `corporate`. Replace `<password>` with a strong password.
 
 ```sql
-EXEC sp_addlogin 'Albert', 'B5432-3M6', 'corporate';
+EXECUTE sp_addlogin 'Albert', '<password>', 'corporate';
 GO
 ```
 
 ### C. Create a SQL Server login that has a different default language
 
-The following example creates a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login for the user `TzTodorov`, with a password of `709hLKH7chjfwv`, a default database of [!INCLUDE [sssampledbobject-md](../../includes/sssampledbobject-md.md)], and a default language of `Bulgarian`.
+The following example creates a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login for the user `TzTodorov`, a default database of [!INCLUDE [sssampledbobject-md](../../includes/sssampledbobject-md.md)], and a default language of `Bulgarian`. Replace `<password>` with a strong password.
 
 ```sql
-EXEC sp_addlogin 'TzTodorov', '709hLKH7chjfwv', 'AdventureWorks2022', N'български'
+EXECUTE sp_addlogin 'TzTodorov', '<password>', 'AdventureWorks2022', N'български';
 ```
 
 ### D. Create a SQL Server login that has a specific SID
 
-The following example creates a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login for the user `Michael`, with a password of `B548bmM%f6`, a default database of [!INCLUDE [sssampledbobject-md](../../includes/sssampledbobject-md.md)], a default language of `us_english`, and a SID of `0x0123456789ABCDEF0123456789ABCDEF`.
+The following example creates a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login for the user `Michael`, a default database of [!INCLUDE [sssampledbobject-md](../../includes/sssampledbobject-md.md)], a default language of `us_english`, and a SID of `0x0123456789ABCDEF0123456789ABCDEF`. Replace `<password>` with a strong password.
 
 ```sql
-EXEC sp_addlogin 'Michael', 'B548bmM%f6', 'AdventureWorks2022', 'us_english', 0x0123456789ABCDEF0123456789ABCDEF
+EXECUTE sp_addlogin 'Michael', '<password>', 'AdventureWorks2022', 'us_english', 0x0123456789ABCDEF0123456789ABCDEF;
 ```
 
 ## Related content

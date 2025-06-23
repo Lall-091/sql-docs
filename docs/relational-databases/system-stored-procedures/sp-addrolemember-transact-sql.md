@@ -4,7 +4,7 @@ description: Adds a database user, database role, Windows login, or Windows grou
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 08/22/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -87,6 +87,7 @@ Because `Contoso\Mary5` is known as the database user `Mary5` in the [!INCLUDE [
 ```sql
 USE AdventureWorks2022;
 GO
+
 CREATE USER Mary5 FOR LOGIN [Contoso\Mary5];
 GO
 ```
@@ -96,10 +97,10 @@ GO
 The following example adds the database user `Mary5` to the `Production` database role in the current database.
 
 ```sql
-EXEC sp_addrolemember 'Production', 'Mary5';
+EXECUTE sp_addrolemember 'Production', 'Mary5';
 ```
 
-## Examples: [!INCLUDE [ssPDW](../../includes/sspdw-md.md)]
+## Examples: Analytics Platform System (PDW)
 
 ### C. Add a Windows login
 
@@ -112,7 +113,8 @@ The following example adds the login `LoginMary` to the [!INCLUDE [sssampledbobj
 -- Uses AdventureWorks2022
 CREATE USER UserMary FOR LOGIN LoginMary;
 GO
-EXEC sp_addrolemember 'Production', 'UserMary'
+
+EXECUTE sp_addrolemember 'Production', 'UserMary';
 ```
 
 ### D. Add a database user
@@ -120,7 +122,7 @@ EXEC sp_addrolemember 'Production', 'UserMary'
 The following example adds the database user `UserMary` to the `Production` database role in the current database.
 
 ```sql
-EXEC sp_addrolemember 'Production', 'UserMary'
+EXECUTE sp_addrolemember 'Production', 'UserMary';
 ```
 
 ## Related content

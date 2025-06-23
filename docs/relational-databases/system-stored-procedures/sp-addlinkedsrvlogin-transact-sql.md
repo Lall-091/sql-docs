@@ -4,7 +4,7 @@ description: Creates or updates a mapping between a login on the local instance 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/22/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -102,13 +102,13 @@ Requires ALTER ANY LOGIN permission on the server.
 The following example creates a mapping to make sure that all logins to the local server connect through to the linked server `Accounts` by using their own user credentials.
 
 ```sql
-EXEC sp_addlinkedsrvlogin 'Accounts';
+EXECUTE sp_addlinkedsrvlogin 'Accounts';
 ```
 
 Or
 
 ```sql
-EXEC sp_addlinkedsrvlogin 'Accounts', 'true';
+EXECUTE sp_addlinkedsrvlogin 'Accounts', 'true';
 ```
 
 > [!NOTE]  
@@ -116,10 +116,10 @@ EXEC sp_addlinkedsrvlogin 'Accounts', 'true';
 
 ### B. Connect a specific login to the linked server by using different user credentials
 
-The following example creates a mapping to make sure that the Windows user `Domain\Mary` connects through to the linked server `Accounts` by using the login `MaryP` and password `d89q3w4u`.
+The following example creates a mapping to make sure that the Windows user `Domain\Mary` connects through to the linked server `Accounts` by using the login `MaryP`. Replace `<password>` with a strong password.
 
 ```sql
-EXEC sp_addlinkedsrvlogin 'Accounts', 'false', 'Domain\Mary', 'MaryP', 'd89q3w4u';
+EXECUTE sp_addlinkedsrvlogin 'Accounts', 'false', 'Domain\Mary', 'MaryP', '<password>';
 ```
 
 > [!CAUTION]  
@@ -129,39 +129,39 @@ EXEC sp_addlinkedsrvlogin 'Accounts', 'false', 'Domain\Mary', 'MaryP', 'd89q3w4u
 
 In some cases, such as with [Azure SQL Managed Instance](/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview), to run a SQL Agent job that executes a Transact-SQL (T-SQL) query on a remote server through a linked server, you need to create a mapping between a login on the local server to a login on the remote server that has permission to execute the T-SQL query. When the SQL Agent job connects to the remote server through the linked server, it executes the T-SQL query in the context of the remote login, which must have the necessary permissions to execute the T-SQL query.
 
-If you're mapping logins for a SQL Agent job in **Azure SQL Managed Instance**, the local login that you map to the remote login *must* be the owner of the SQL Agent job, unless the SQL Agent job is **sysadmin**, in which case you should map [all the local logins](#d-map-all-local-logins-to-a-remote-server-login).  For more information, review [SQL Agent jobs with Azure SQL Managed Instance](../../ssms/agent/implement-sql-server-agent-security.md#linked-servers).
+If you're mapping logins for a SQL Agent job in **Azure SQL Managed Instance**, the local login that you map to the remote login *must* be the owner of the SQL Agent job, unless the SQL Agent job is **sysadmin**, in which case you should map [all the local logins](#d-map-all-local-logins-to-a-remote-server-login). For more information, review [SQL Agent jobs with Azure SQL Managed Instance](../../ssms/agent/implement-sql-server-agent-security.md#linked-servers).
 
-Run the following sample command on the local server to map the local login `local_login_name` to the remote server login `login_name` when connecting to the linked server `remote_server`: 
+Run the following sample command on the local server to map the local login `local_login_name` to the remote server login `login_name` when connecting to the linked server `remote_server`:
 
 ```sql
-EXEC master.dbo.sp_addlinkedsrvlogin
-@rmtsrvname = N'<remote_server>',
-@useself = N'False',
-@locallogin = N’<local_login_name>’,
-@rmtuser = N'<login_name>',
-@rmtpassword = '<login_password>'
+EXECUTE master.dbo.sp_addlinkedsrvlogin
+    @rmtsrvname = N'<remote_server>',
+    @useself = N'False',
+    @locallogin = N'<local_login_name>',
+    @rmtuser = N'<login_name>',
+    @rmtpassword = '<login_password>';
 ```
 
 ### D. Map all local logins to a remote server login
 
-By setting `locallogin` to `NULL`, you can map *all* local logins to a login on the remote server.  
+By setting `locallogin` to `NULL`, you can map *all* local logins to a login on the remote server.
 
-Mapping all local logins to a remote server login is required when executing an Azure SQL Managed Instance SQL Agent job owned by **sysadmin** that queries a remote server through a linked server. For more information, review [SQL Agent jobs with Azure SQL Managed Instance](../../ssms/agent/implement-sql-server-agent-security.md#linked-servers).  When the SQL Agent job connects to the remote server through the linked server, it executes the T-SQL query in the context of the remote login, which must have the necessary permissions to execute the T-SQL query.
+Mapping all local logins to a remote server login is required when executing an Azure SQL Managed Instance SQL Agent job owned by **sysadmin** that queries a remote server through a linked server. For more information, review [SQL Agent jobs with Azure SQL Managed Instance](../../ssms/agent/implement-sql-server-agent-security.md#linked-servers). When the SQL Agent job connects to the remote server through the linked server, it executes the T-SQL query in the context of the remote login, which must have the necessary permissions to execute the T-SQL query.
 
-Run the following sample command on the local server to map all local logins to the remote server login `login_name` when connecting to the linked server `remote_server`: 
+Run the following sample command on the local server to map all local logins to the remote server login `login_name` when connecting to the linked server `remote_server`:
 
 ```sql
-EXEC master.dbo.sp_addlinkedsrvlogin
-@rmtsrvname = N'<remote_server>',
-@useself = N'False',
-@locallogin = NULL,
-@rmtuser = N'<login_name>',
-@rmtpassword = '<login_password>'
+EXECUTE master.dbo.sp_addlinkedsrvlogin
+    @rmtsrvname = N'<remote_server>',
+    @useself = N'False',
+    @locallogin = NULL,
+    @rmtuser = N'<login_name>',
+    @rmtpassword = '<login_password>';
 ```
 
-### E. Check linked logins 
+### E. Check linked logins
 
-The following example shows all logins that have been mapped for a linked server: 
+The following example shows all logins that have been mapped for a linked server:
 
 ```sql
 SELECT s.name AS server_name, ll.remote_name, sp.name AS principal_name

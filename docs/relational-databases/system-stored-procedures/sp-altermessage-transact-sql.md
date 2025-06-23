@@ -4,7 +4,7 @@ description: Alters the state of user-defined or system messages in an instance 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -46,7 +46,7 @@ Used with *@parameter_value* to indicate that the message is to be written to th
 
 *@parameter* must be set to `WITH_LOG` or `NULL`. If *@parameter* is set to `WITH_LOG` or `NULL`, and the value for *@parameter_value* is `true`, the message is written to the Windows application log. If *@parameter* is set to `WITH_LOG` or `NULL` and the value for *@parameter_value* is `false`, the message isn't always written to the Windows application log, but might be written depending upon how the error was raised.
 
-If a message is written to the Windows application log, it is also written to the [!INCLUDE [ssDE](../../includes/ssde-md.md)] error log file.
+If a message is written to the Windows application log, it's also written to the [!INCLUDE [ssDE](../../includes/ssde-md.md)] error log file.
 
 If *@parameter* is specified, *@parameter_value* must also be specified.
 
@@ -69,7 +69,7 @@ None.
 
 ## Remarks
 
-The effect of `sp_altermessage` with the `WITH_LOG` option is similar to that of the `RAISERROR WITH LOG` parameter, except that `sp_altermessage` changes the logging behavior of an existing message. If a message is altered to be `WITH_LOG`, it is always written to the Windows application log, regardless of how a user invokes the error. Even if `RAISERROR` is executed without the `WITH_LOG` option, the error is written to the Windows application log.
+The effect of `sp_altermessage` with the `WITH_LOG` option is similar to that of the `RAISERROR WITH LOG` parameter, except that `sp_altermessage` changes the logging behavior of an existing message. If a message is altered to be `WITH_LOG`, it's always written to the Windows application log, regardless of how a user invokes the error. Even if `RAISERROR` is executed without the `WITH_LOG` option, the error is written to the Windows application log.
 
 System messages can be modified by using `sp_altermessage`.
 
@@ -82,7 +82,7 @@ Requires membership in the **serveradmin** fixed server role.
 The following example writes the existing message `55001` to the Windows application log.
 
 ```sql
-EXEC sp_altermessage 55001, 'WITH_LOG', 'true';
+EXECUTE sp_altermessage 55001, 'WITH_LOG', 'true';
 GO
 ```
 

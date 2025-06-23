@@ -4,7 +4,7 @@ description: Verifies that a database is correctly configured for distribution o
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -83,7 +83,7 @@ Execute permissions are restricted to members of the **sysadmin** fixed server r
 The following example certifies that the `inventory` database is ready to be removed.
 
 ```sql
-EXEC sp_certify_removable inventory, AUTO;
+EXECUTE sp_certify_removable inventory, AUTO;
 ```
 
 ## Related content

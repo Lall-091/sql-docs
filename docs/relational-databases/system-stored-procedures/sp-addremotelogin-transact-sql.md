@@ -4,7 +4,7 @@ description: sp_addremotelogin adds a new remote login ID on the local server.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 01/23/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -72,7 +72,7 @@ Only members of the **sysadmin** and **securityadmin** fixed server roles can ex
 The following example maps remote names to local names when the remote server `ACCOUNTS` and local server have the same user logins.
 
 ```sql
-EXEC sp_addremotelogin 'ACCOUNTS';
+EXECUTE sp_addremotelogin 'ACCOUNTS';
 ```
 
 ### B. Map many to one
@@ -80,7 +80,7 @@ EXEC sp_addremotelogin 'ACCOUNTS';
 The following example creates an entry that maps all users from the remote server `ACCOUNTS` to the local login ID `Albert`.
 
 ```sql
-EXEC sp_addremotelogin 'ACCOUNTS', 'Albert';
+EXECUTE sp_addremotelogin 'ACCOUNTS', 'Albert';
 ```
 
 ### C. Use explicit one-to-one mapping
@@ -88,7 +88,7 @@ EXEC sp_addremotelogin 'ACCOUNTS', 'Albert';
 The following example maps a remote login from the remote user `Chris` on the remote server `ACCOUNTS` to the local user `salesmgr`.
 
 ```sql
-EXEC sp_addremotelogin 'ACCOUNTS', 'salesmgr', 'Chris';
+EXECUTE sp_addremotelogin 'ACCOUNTS', 'salesmgr', 'Chris';
 ```
 
 ## Related content

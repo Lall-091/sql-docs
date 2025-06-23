@@ -4,7 +4,7 @@ description: sp_catalogs returns the list of catalogs in the specified linked se
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/05/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -58,7 +58,8 @@ The following example returns catalog information for the linked server named `O
 ```sql
 USE master;
 GO
-EXEC sp_catalogs 'OLE DB ODBC Linked Server #3';
+
+EXECUTE sp_catalogs 'OLE DB ODBC Linked Server #3';
 ```
 
 ## Related content

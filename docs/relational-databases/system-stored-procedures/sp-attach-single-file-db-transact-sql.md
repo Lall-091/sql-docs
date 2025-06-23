@@ -4,7 +4,7 @@ description: sp_attach_single_file_db attaches a database that's only one data f
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -83,10 +83,12 @@ The following example detaches [!INCLUDE [ssSampleDBobject](../../includes/sssam
 ```sql
 USE master;
 GO
-EXEC sp_detach_db @dbname = 'AdventureWorks2022';
-EXEC sp_attach_single_file_db @dbname = 'AdventureWorks2022',
-    @physname =
-N'C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\Data\AdventureWorks2022_Data.mdf';
+
+EXECUTE sp_detach_db @dbname = 'AdventureWorks2022';
+
+EXECUTE sp_attach_single_file_db
+    @dbname = 'AdventureWorks2022',
+    @physname = N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Data\AdventureWorks2022_Data.mdf';
 ```
 
 ## Related content

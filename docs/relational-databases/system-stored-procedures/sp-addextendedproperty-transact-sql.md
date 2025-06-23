@@ -4,7 +4,7 @@ description: Adds a new extended property to a database object.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 12/27/2023
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -165,7 +165,8 @@ USE AdventureWorks2022;
 GO
 
 --Add a caption to the AdventureWorks2022 Database object itself.
-EXEC sp_addextendedproperty @name = N'Caption',
+EXECUTE sp_addextendedproperty
+    @name = N'Caption',
     @value = 'AdventureWorks2022 Sample OLTP Database';
 ```
 
@@ -177,8 +178,8 @@ The following example adds a caption property to column `PostalCode` in table `A
 USE AdventureWorks2022;
 GO
 
-EXEC sp_addextendedproperty @name = N'Caption',
-    @value = 'Postal code is a required column.',
+EXECUTE sp_addextendedproperty
+    @name = N'Caption', @value = 'Postal code is a required column.',
     @level0type = 'SCHEMA', @level0name = N'Person',
     @level1type = 'TABLE', @level1name = N'Address',
     @level2type = 'COLUMN', @level2name = N'PostalCode';
@@ -193,8 +194,8 @@ The following example adds an input mask property `99999 or 99999-9999 or #### #
 USE AdventureWorks2022;
 GO
 
-EXEC sp_addextendedproperty @name = N'Input Mask ',
-    @value = '99999 or 99999-9999 or #### ###',
+EXECUTE sp_addextendedproperty
+    @name = N'Input Mask ', @value = '99999 or 99999-9999 or #### ###',
     @level0type = 'SCHEMA', @level0name = N'Person',
     @level1type = 'TABLE', @level1name = N'Address',
     @level2type = 'COLUMN', @level2name = N'PostalCode';
@@ -209,8 +210,8 @@ The following example adds an extended property to the `PRIMARY` filegroup.
 USE AdventureWorks2022;
 GO
 
-EXEC sys.sp_addextendedproperty @name = N'MS_DescriptionExample',
-    @value = N'Primary filegroup for the AdventureWorks2022 sample database.',
+EXECUTE sys.sp_addextendedproperty
+    @name = N'MS_DescriptionExample', @value = N'Primary filegroup for the AdventureWorks2022 sample database.',
     @level0type = 'FILEGROUP', @level0name = N'PRIMARY';
 GO
 ```
@@ -223,8 +224,8 @@ The following example adds an extended property to the `HumanResources` schema.
 USE AdventureWorks2022;
 GO
 
-EXEC sys.sp_addextendedproperty @name = N'MS_DescriptionExample',
-    @value = N'Contains objects related to employees and departments.',
+EXECUTE sys.sp_addextendedproperty
+    @name = N'MS_DescriptionExample', @value = N'Contains objects related to employees and departments.',
     @level0type = 'SCHEMA', @level0name = N'HumanResources';
 ```
 
@@ -236,8 +237,8 @@ The following example adds an extended property to the `Address` table in the `P
 USE AdventureWorks2022;
 GO
 
-EXEC sys.sp_addextendedproperty @name = N'MS_DescriptionExample',
-    @value = N'Street address information for customers, employees, and vendors.',
+EXECUTE sys.sp_addextendedproperty
+    @name = N'MS_DescriptionExample', @value = N'Street address information for customers, employees, and vendors.',
     @level0type = 'SCHEMA', @level0name = N'Person',
     @level1type = 'TABLE', @level1name = N'Address';
 GO
@@ -245,18 +246,18 @@ GO
 
 ### G. Add an extended property to a role
 
-The following example creates an application role and adds an extended property to the role.
+The following example creates an application role and adds an extended property to the role. Replace `<password>` with a strong password.
 
 ```sql
 USE AdventureWorks2022;
 GO
 
 CREATE APPLICATION ROLE Buyers
-    WITH Password = '987G^bv876sPY)Y5m23';
+    WITH PASSWORD = '<password>';
 GO
 
-EXEC sys.sp_addextendedproperty @name = N'MS_Description',
-    @value = N'Application Role for the Purchasing Department.',
+EXECUTE sys.sp_addextendedproperty
+    @name = N'MS_Description', @value = N'Application Role for the Purchasing Department.',
     @level0type = 'USER', @level0name = N'Buyers';
 ```
 
@@ -268,8 +269,8 @@ The following example adds an extended property to a type.
 USE AdventureWorks2022;
 GO
 
-EXEC sys.sp_addextendedproperty @name = N'MS_Description',
-    @value = N'Data type (alias) to use for any column that represents an order number. For example a sales order number or purchase order number.',
+EXECUTE sys.sp_addextendedproperty
+    @name = N'MS_Description', @value = N'Data type (alias) to use for any column that represents an order number. For example a sales order number or purchase order number.',
     @level0type = 'SCHEMA', @level0name = N'dbo',
     @level1type = 'TYPE', @level1name = N'OrderNumber';
 ```
@@ -285,8 +286,8 @@ GO
 CREATE USER CustomApp WITHOUT LOGIN;
 GO
 
-EXEC sys.sp_addextendedproperty @name = N'MS_Description',
-    @value = N'User for an application.',
+EXECUTE sys.sp_addextendedproperty
+    @name = N'MS_Description', @value = N'User for an application.',
     @level0type = 'USER', @level0name = N'CustomApp';
 ```
 

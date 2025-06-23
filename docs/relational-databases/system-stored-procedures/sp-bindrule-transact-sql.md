@@ -4,7 +4,7 @@ description: sp_bindrule binds a rule to a column or to an alias data type.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 03/04/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -88,7 +88,7 @@ Assuming that a rule named `today` is created in the current database by using t
 USE master;
 GO
 
-EXEC sp_bindrule 'today', 'HumanResources.Employee.HireDate';
+EXECUTE sp_bindrule 'today', 'HumanResources.Employee.HireDate';
 ```
 
 ### B. Bind a rule to an alias data type
@@ -99,7 +99,7 @@ Assuming the existence of a rule named `rule_ssn` and an alias data type named `
 USE master;
 GO
 
-EXEC sp_bindrule 'rule_ssn', 'ssn';
+EXECUTE sp_bindrule 'rule_ssn', 'ssn';
 ```
 
 ### C. Use the `futureonly` option
@@ -110,7 +110,7 @@ The following example binds the `rule_ssn` rule to the alias data type `ssn`. Be
 USE master;
 GO
 
-EXEC sp_bindrule rule_ssn, 'ssn', 'futureonly';
+EXECUTE sp_bindrule rule_ssn, 'ssn', 'futureonly';
 ```
 
 ### D. Use delimited identifiers
@@ -121,9 +121,11 @@ The following example shows the use of delimited identifiers in *@objname* param
 USE master;
 GO
 
-CREATE TABLE [t.2] (c1 int) ;
+CREATE TABLE [t.2] (c1 INT);
+
 -- Notice the period as part of the table name.
-EXEC sp_bindrule rule1, '[t.2].c1' ;
+EXECUTE sp_bindrule rule1, '[t.2].c1';
+
 -- The object contains two periods;
 -- the first is part of the table name
 -- and the second distinguishes the table name from the column name.

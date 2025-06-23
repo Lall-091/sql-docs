@@ -4,7 +4,7 @@ description: sp_bindefault binds a default to a column or to an alias data type.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 03/04/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -82,7 +82,7 @@ A default named `today` is defined in the current database by using `CREATE DEFA
 USE master;
 GO
 
-EXEC sp_bindefault 'today', 'HumanResources.Employee.HireDate';
+EXECUTE sp_bindefault 'today', 'HumanResources.Employee.HireDate';
 ```
 
 ### B. Bind a default to an alias data type
@@ -93,7 +93,7 @@ A default named `def_ssn` and an alias data type named `ssn` already exists. The
 USE master;
 GO
 
-EXEC sp_bindefault 'def_ssn', 'ssn';
+EXECUTE sp_bindefault 'def_ssn', 'ssn';
 ```
 
 ### C. Use the `futureonly` option
@@ -104,7 +104,7 @@ The following example binds the default `def_ssn` to the alias data type `ssn`. 
 USE master;
 GO
 
-EXEC sp_bindefault 'def_ssn', 'ssn', 'futureonly';
+EXECUTE sp_bindefault 'def_ssn', 'ssn', 'futureonly';
 ```
 
 ### D. Use delimited identifiers
@@ -115,9 +115,11 @@ The following example shows using delimited identifiers, `[t.1]`, in *@objname*.
 USE master;
 GO
 
-CREATE TABLE [t.1] (c1 int);
+CREATE TABLE [t.1] (c1 INT);
+
 -- Notice the period as part of the table name.
-EXEC sp_bindefault 'default1', '[t.1].c1';
+EXECUTE sp_bindefault 'default1', '[t.1].c1';
+
 -- The object contains two periods;
 -- the first is part of the table name,
 -- and the second distinguishes the table name from the column name.

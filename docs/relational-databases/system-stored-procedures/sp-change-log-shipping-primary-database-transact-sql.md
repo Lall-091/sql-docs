@@ -4,7 +4,7 @@ description: "Changes the primary database settings."
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -107,7 +107,7 @@ Specifies whether a log shipping configuration uses [backup compression](../back
 
 - `1`: Enabled. Always compress log backups
 
-- `2` (default): Use the setting of the [View or Configure the backup compression default (server configuration option)](../../database-engine/configure-windows/view-or-configure-the-backup-compression-default-server-configuration-option.md)
+- `2` (default): Use the [backup compression default](../../database-engine/configure-windows/view-or-configure-the-backup-compression-default-server-configuration-option.md) server configuration option.
 
 ## Return code values
 
@@ -136,7 +136,7 @@ Only members of the **sysadmin** fixed server role can run this procedure.
 This example illustrates the use of `sp_change_log_shipping_primary_database` to update the settings associated with the primary database [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)].
 
 ```sql
-EXEC master.dbo.sp_change_log_shipping_primary_database
+EXECUTE master.dbo.sp_change_log_shipping_primary_database
     @database = N'AdventureWorks',
     @backup_directory = N'c:\LogShipping',
     @backup_share = N'\\tribeca\LogShipping',

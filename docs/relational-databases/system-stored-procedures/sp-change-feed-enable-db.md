@@ -4,7 +4,7 @@ description: "The sys.sp_change_feed_enable_db system stored procedure enables t
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: imotiwala, randolphwest, ajayj
-ms.date: 05/01/2025
+ms.date: 06/23/2025
 ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -84,9 +84,8 @@ EXECUTE sys.sp_change_feed_enable_db;
 Verify the database is enabled.
 
 ```sql
-SELECT
-    [name]
-  , is_data_lake_replication_enabled
+SELECT [name],
+       is_data_lake_replication_enabled
 FROM sys.databases;
 ```
 

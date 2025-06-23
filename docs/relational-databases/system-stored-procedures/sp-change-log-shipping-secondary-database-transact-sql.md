@@ -4,7 +4,7 @@ description: sp_change_log_shipping_secondary_database changes secondary databas
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 07/05/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -131,7 +131,7 @@ Only members of the **sysadmin** fixed server role can run this procedure.
 This example illustrates using `sp_change_log_shipping_secondary_database` to update secondary database parameters for the database `LogShipAdventureWorks`.
 
 ```sql
-EXEC master.dbo.sp_change_log_shipping_secondary_database
+EXECUTE master.dbo.sp_change_log_shipping_secondary_database
     @secondary_database = 'LogShipAdventureWorks',
     @restore_delay = 0,
     @restore_all = 1,

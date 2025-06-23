@@ -4,7 +4,7 @@ description: Verifies whether a transaction log backup can be applied to a SQL S
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/05/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -72,10 +72,10 @@ The following example declares a local variable, `@MyBitVar`, to store the resul
 USE master;
 GO
 
-DECLARE @MyBitVar BIT;
+DECLARE @MyBitVar AS BIT;
 
-EXEC sp_can_tlog_be_applied
-    @backup_file_name = N'C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\Backup\AdventureWorks2022.bak',
+EXECUTE sp_can_tlog_be_applied
+    @backup_file_name = N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Backup\AdventureWorks2022.bak',
     @database_name = N'AdventureWorks2022',
     @result = @MyBitVar OUTPUT;
 GO

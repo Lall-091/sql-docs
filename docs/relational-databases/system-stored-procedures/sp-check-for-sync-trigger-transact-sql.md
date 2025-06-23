@@ -1,10 +1,10 @@
 ---
-title: sp_check_for_sync_trigger (Transact-SQL)
+title: "sp_check_for_sync_trigger (Transact-SQL)"
 description: sp_check_for_sync_trigger Determines the calling context of a user-defined trigger or stored procedure.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/05/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -80,7 +80,8 @@ DECLARE @retcode INT,
 
 SELECT @table_id = object_id('tablename');
 
-EXEC @retcode = sp_check_for_sync_trigger
+EXECUTE
+    @retcode = sp_check_for_sync_trigger
     @table_id,
     @trigger_op OUTPUT;
 
@@ -102,7 +103,8 @@ SELECT @table_id = object_id('tablename');
 
 SELECT @fonpublisher = 1;
 
-EXEC @retcode = sp_check_for_sync_trigger
+EXECUTE
+    @retcode = sp_check_for_sync_trigger
     @table_id,
     @trigger_op OUTPUT,
     @fonpublisher;

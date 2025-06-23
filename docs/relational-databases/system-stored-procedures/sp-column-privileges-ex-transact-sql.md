@@ -4,7 +4,7 @@ description: sp_column_privileges_ex returns column privileges for the specified
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/05/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -82,7 +82,7 @@ Requires `SELECT` permission on the schema.
 The following example returns column privilege information for the `HumanResources.Department` table in the [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)] database on the `Seattle1` linked server.
 
 ```sql
-EXEC sp_column_privileges_ex
+EXECUTE sp_column_privileges_ex
     @table_server = 'Seattle1',
     @table_name = 'Department',
     @table_schema = 'HumanResources',

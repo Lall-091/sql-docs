@@ -4,7 +4,7 @@ description: sp_attach_schedule sets a schedule for a job.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 03/04/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -101,21 +101,21 @@ The following example creates a schedule named `NightlyJobs`. Jobs that use this
 USE msdb;
 GO
 
-EXEC sp_add_schedule
-    @schedule_name = N'NightlyJobs' ,
+EXECUTE sp_add_schedule
+    @schedule_name = N'NightlyJobs',
     @freq_type = 4,
     @freq_interval = 1,
-    @active_start_time = 010000 ;
+    @active_start_time = 010000;
 GO
 
-EXEC sp_attach_schedule
-   @job_name = N'BackupDatabase',
-   @schedule_name = N'NightlyJobs' ;
+EXECUTE sp_attach_schedule
+    @job_name = N'BackupDatabase',
+    @schedule_name = N'NightlyJobs';
 GO
 
-EXEC sp_attach_schedule
-   @job_name = N'RunReports',
-   @schedule_name = N'NightlyJobs' ;
+EXECUTE sp_attach_schedule
+    @job_name = N'RunReports',
+    @schedule_name = N'NightlyJobs';
 GO
 ```
 
