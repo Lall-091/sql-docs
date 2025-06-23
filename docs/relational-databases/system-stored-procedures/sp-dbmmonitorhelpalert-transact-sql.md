@@ -4,7 +4,7 @@ description: Returns information about warning thresholds on one or all of sever
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/04/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -87,13 +87,13 @@ Requires membership in the **sysadmin** fixed server role, or execute permission
 The following example returns a row that indicates whether a warning is enabled for the oldest unsent transaction performance metric on the [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)] database.
 
 ```sql
-EXEC sp_dbmmonitorhelpalert AdventureWorks2022, 1;
+EXECUTE sp_dbmmonitorhelpalert AdventureWorks2022, 1;
 ```
 
 The following example returns a row for each performance metric that indicates whether it's enabled on the [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)] database.
 
 ```sql
-EXEC sp_dbmmonitorhelpalert AdventureWorks2022;
+EXECUTE sp_dbmmonitorhelpalert AdventureWorks2022;
 ```
 
 ## Related content

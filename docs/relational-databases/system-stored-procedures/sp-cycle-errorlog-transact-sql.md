@@ -4,7 +4,7 @@ description: sp_cycle_errorlog closes the current error log file and cycles the 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/05/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -56,7 +56,7 @@ Execute permissions for `sp_cycle_errorlog` are restricted to members of the **s
 The following example cycles the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] error log.
 
 ```sql
-EXEC sp_cycle_errorlog;
+EXECUTE sp_cycle_errorlog;
 GO
 ```
 

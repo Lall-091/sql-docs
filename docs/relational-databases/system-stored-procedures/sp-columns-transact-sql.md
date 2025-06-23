@@ -4,7 +4,7 @@ description: sp_columns returns column information for the specified objects tha
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/05/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -115,12 +115,12 @@ The following example returns column information for a specified table.
 USE AdventureWorks2022;
 GO
 
-EXEC sp_columns
+EXECUTE sp_columns
     @table_name = N'Department',
     @table_owner = N'HumanResources';
 ```
 
-## Examples: [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE [ssPDW](../../includes/sspdw-md.md)]
+## Examples: Azure Synapse Analytics and Analytics Platform System (PDW)
 
 The following example returns column information for a specified table.
 
@@ -128,7 +128,7 @@ The following example returns column information for a specified table.
 USE AdventureWorksDW2022;
 GO
 
-EXEC sp_columns
+EXECUTE sp_columns
     @table_name = N'DimEmployee',
     @table_owner = N'dbo';
 ```

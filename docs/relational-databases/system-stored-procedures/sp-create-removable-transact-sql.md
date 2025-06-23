@@ -4,7 +4,7 @@ description: sp_create_removable creates a removable media database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/22/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -128,15 +128,16 @@ Whenever certain operations are performed on a database, corresponding permissio
 The following example creates the database `inventory` as a removable database.
 
 ```sql
-EXEC sp_create_removable 'inventory',
+EXECUTE sp_create_removable
+    'inventory',
     'invsys',
-    'C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\Data\invsys.mdf',
+    'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Data\invsys.mdf',
     2,
     'invlog',
-    'C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\Data\invlog.ldf',
+    'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Data\invlog.ldf',
     4,
     'invdata',
-    'C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\Data\invdata.ndf',
+    'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Data\invdata.ndf',
     10;
 ```
 

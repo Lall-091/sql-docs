@@ -4,7 +4,7 @@ description: sp_dbfixedrolepermission displays the permissions of a fixed databa
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/04/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -80,7 +80,7 @@ Requires membership in the **public** role.
 The following query returns the permissions for all fixed database roles because it doesn't specify a fixed database role.
 
 ```sql
-EXEC sp_dbfixedrolepermission;
+EXECUTE sp_dbfixedrolepermission;
 GO
 ```
 

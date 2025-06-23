@@ -4,7 +4,7 @@ description: sp_dbremove removes a database and all files associated with that d
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/04/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -63,7 +63,7 @@ Requires membership in the **sysadmin** fixed server role, or execute permission
 The following example removes a database named `sales` and all files associated with it.
 
 ```sql
-EXEC sp_dbremove sales;
+EXECUTE sp_dbremove sales;
 ```
 
 ## Related content

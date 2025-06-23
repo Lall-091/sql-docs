@@ -4,7 +4,7 @@ description: Removes the specified category of jobs, alerts, or operators from t
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 01/23/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -75,7 +75,7 @@ The following example deletes the job category named `AdminJobs`.
 USE msdb;
 GO
 
-EXEC dbo.sp_delete_category
+EXECUTE dbo.sp_delete_category
     @name = N'AdminJobs',
     @class = N'JOB';
 GO

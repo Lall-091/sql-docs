@@ -4,7 +4,7 @@ description: Returns status rows for a monitored database from the status table 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/04/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -109,7 +109,8 @@ The following example returns the rows recorded during the preceding two hours w
 
 ```sql
 USE msdb;
-EXEC sp_dbmmonitorresults AdventureWorks2022, 2, 0;
+
+EXECUTE sp_dbmmonitorresults AdventureWorks2022, 2, 0;
 ```
 
 ## Related content

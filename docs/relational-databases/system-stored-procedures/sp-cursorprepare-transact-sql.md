@@ -4,7 +4,7 @@ description: sp_cursorprepare compiles the cursor statement or batch into an exe
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 03/07/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -116,34 +116,35 @@ The RPC status parameter is one of the following values:
 The following code is an example of using `sp_cursorprepare` and `sp_cursorexecute`:
 
 ```sql
-DECLARE @handle INT, @p5 INT, @p6 INT;
+DECLARE @handle AS INT, @p5 AS INT, @p6 AS INT;
 
-EXEC sp_cursorprepare @handle OUTPUT,
+EXECUTE sp_cursorprepare
+    @handle OUTPUT,
     N'@dbid int',
     N'select * from sys.databases where database_id < @dbid',
     1,
     @p5 OUTPUT,
     @p6 OUTPUT;
 
-DECLARE @p1 INT
+DECLARE @p1 AS INT;
 SET @P1 = @handle;
 
-DECLARE @p2 INT;
-DECLARE @p3 INT;
-DECLARE @p4 INT;
-
+DECLARE @p2 AS INT;
+DECLARE @p3 AS INT;
+DECLARE @p4 AS INT;
 SET @P6 = 4;
 
-EXEC sp_cursorexecute @p1,
+EXECUTE sp_cursorexecute
+    @p1,
     @p2 OUTPUT,
     @p3 OUTPUT,
     @p4 OUTPUT,
     @p5 OUTPUT,
     @p6;
 
-EXEC sp_cursorfetch @P2;
-EXEC sp_cursorunprepare @handle;
-EXEC sp_cursorclose @p2;
+EXECUTE sp_cursorfetch @P2;
+EXECUTE sp_cursorunprepare @handle;
+EXECUTE sp_cursorclose @p2;
 ```
 
 When *stmt* is parameterized and the *scrollopt* `PARAMETERIZED_STMT` value is `ON`, the format of the string is in the following form:

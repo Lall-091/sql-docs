@@ -4,7 +4,7 @@ description: sp_control_dbmasterkey_password adds or drops a credential containi
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 03/07/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -91,7 +91,7 @@ Requires membership in the **sysadmin** fixed server role, or execute permission
 The following example creates a credential for the [!INCLUDE [sssampledbobject-md](../../includes/sssampledbobject-md.md)] DMK, and saves the master key password as the secret in the credential. Because all parameters that are passed to `sp_control_dbmasterkey_password` must be of data type **nvarchar**, the text strings are converted with the casting operator `N`.
 
 ```sql
-EXEC sp_control_dbmasterkey_password
+EXECUTE sp_control_dbmasterkey_password
     @db_name = N'AdventureWorks2022',
     @password = N'sdfjlkj#mM00sdfdsf98093258jJlfdk4',
     @action = N'add';
@@ -103,7 +103,7 @@ GO
 The following example removes the credential created in example A. All parameters are required, including the password.
 
 ```sql
-EXEC sp_control_dbmasterkey_password
+EXECUTE sp_control_dbmasterkey_password
     @db_name = N'AdventureWorks2022',
     @password = N'sdfjlkj#mM00sdfdsf98093258jJlfdk4',
     @action = N'drop';

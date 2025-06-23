@@ -4,7 +4,7 @@ description: sp_columns_ex returns the column information, one row per column, f
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/05/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -110,7 +110,7 @@ Requires `SELECT` permission on the schema.
 The following example returns the data type of the `JobTitle` column of the `HumanResources.Employee` table in the [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)] database on the linked server `Seattle1`.
 
 ```sql
-EXEC sp_columns_ex 'Seattle1',
+EXECUTE sp_columns_ex 'Seattle1',
     'Employee',
     'HumanResources',
     'AdventureWorks2022',

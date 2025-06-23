@@ -4,7 +4,7 @@ description: Reduces the size of the backup and restore history tables by deleti
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 01/23/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -74,7 +74,8 @@ The following example deletes all entries that are older than January 14, 2023, 
 ```sql
 USE msdb;
 GO
-EXEC sp_delete_backuphistory @oldest_date = '2023-01-14';
+
+EXECUTE sp_delete_backuphistory @oldest_date = '2023-01-14';
 GO
 ```
 

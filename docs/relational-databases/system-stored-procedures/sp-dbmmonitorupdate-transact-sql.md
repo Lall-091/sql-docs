@@ -4,7 +4,7 @@ description: Updates the database mirroring monitor status table by inserting a 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/04/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -69,7 +69,8 @@ The following example updates the mirroring status for just the [!INCLUDE [ssSam
 
 ```sql
 USE msdb;
-EXEC sp_dbmmonitorupdate AdventureWorks2022;
+
+EXECUTE sp_dbmmonitorupdate AdventureWorks2022;
 ```
 
 ## Related content

@@ -4,7 +4,7 @@ description: sp_dbmmonitorhelpmonitoring returns the current update period.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/04/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -53,7 +53,7 @@ Requires membership in the **sysadmin** fixed server role, or execute permission
 The following example returns the current update period.
 
 ```sql
-EXEC sp_dbmmonitorhelpmonitoring;
+EXECUTE sp_dbmmonitorhelpmonitoring;
 ```
 
 ## Related content

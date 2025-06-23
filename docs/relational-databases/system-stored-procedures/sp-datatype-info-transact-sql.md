@@ -4,7 +4,7 @@ description: sp_datatype_info returns information about the data types supported
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -87,7 +87,8 @@ The following example retrieves information for the **sysname** and **nvarchar**
 ```sql
 USE master;
 GO
-EXEC sp_datatype_info -9;
+
+EXECUTE sp_datatype_info -9;
 GO
 ```
 

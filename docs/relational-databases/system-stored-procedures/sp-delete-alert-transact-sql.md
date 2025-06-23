@@ -4,7 +4,7 @@ description: sp_delete_alert removes an alert.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 01/23/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -61,8 +61,7 @@ The following example removes an alert named `Test Alert`.
 USE msdb;
 GO
 
-EXEC dbo.sp_delete_alert
-    @name = N'Test Alert';
+EXECUTE dbo.sp_delete_alert @name = N'Test Alert';
 GO
 ```
 

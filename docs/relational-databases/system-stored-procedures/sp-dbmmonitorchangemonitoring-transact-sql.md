@@ -4,7 +4,7 @@ description: sp_dbmmonitorchangemonitoring changes the value of a database mirro
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/04/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -69,7 +69,7 @@ Requires membership in the **sysadmin** fixed server role, or execute permission
 The following example changes the update period to 5 minutes.
 
 ```sql
-EXEC sp_dbmmonitorchangemonitoring 1, 5;
+EXECUTE sp_dbmmonitorchangemonitoring 1, 5;
 ```
 
 ## Related content

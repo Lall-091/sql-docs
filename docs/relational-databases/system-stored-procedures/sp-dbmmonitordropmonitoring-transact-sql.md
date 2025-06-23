@@ -4,7 +4,7 @@ description: sp_dbmmonitordropmonitoring stops and deletes the mirroring monitor
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 11/28/2023
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -53,7 +53,7 @@ Requires membership in the **sysadmin** fixed server role, or execute permission
 The following example drops database mirroring monitoring on all of the mirrored databases on the server instance.
 
 ```sql
-EXEC sp_dbmmonitordropmonitoring;
+EXECUTE sp_dbmmonitordropmonitoring;
 ```
 
 ## Related content

@@ -4,7 +4,7 @@ description: Closes the current SQL Server Agent error log file, and cycles the 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/05/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -61,7 +61,7 @@ The following example cycles the [!INCLUDE [ssNoVersion](../../includes/ssnovers
 USE msdb;
 GO
 
-EXEC dbo.sp_cycle_agent_errorlog;
+EXECUTE dbo.sp_cycle_agent_errorlog;
 GO
 ```
 

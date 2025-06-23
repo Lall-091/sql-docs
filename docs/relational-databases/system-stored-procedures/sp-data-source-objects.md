@@ -4,7 +4,7 @@ description: "sp_data_source_objects returns list of table objects that are avai
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: wiassaf
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: conceptual
@@ -126,11 +126,12 @@ To create external tables to MongoDB collections that contain arrays, you should
 The following example returns all databases, schemata, and tables/views
 
 ```sql
-DECLARE @data_source SYSNAME = N'ExternalDataSourceName';
-DECLARE @object_root_name NVARCHAR(MAX) = NULL;
-DECLARE @max_search_depth INT = 3;
+DECLARE @data_source AS SYSNAME = N'ExternalDataSourceName';
+DECLARE @object_root_name AS NVARCHAR (MAX) = NULL;
+DECLARE @max_search_depth AS INT = 3;
 
-EXEC sp_data_source_objects @data_source,
+EXECUTE sp_data_source_objects
+    @data_source,
     @object_root_name,
     @max_search_depth;
 ```
@@ -146,10 +147,12 @@ EXEC sp_data_source_objects @data_source,
 The following example returns all databases
 
 ```sql
-DECLARE @data_source SYSNAME = N'ExternalDataSourceName';
-DECLARE @object_root_name NVARCHAR(MAX) = NULL;
+DECLARE @data_source AS SYSNAME = N'ExternalDataSourceName';
+DECLARE @object_root_name AS NVARCHAR (MAX) = NULL;
 
-EXEC sp_data_source_objects @data_source, @object_root_name;
+EXECUTE sp_data_source_objects
+    @data_source,
+    @object_root_name;
 ```
 
 | OBJECT_TYPE | OBJECT_NAME | OBJECT_LEAF_NAME | TABLE_LOCATION |
@@ -163,10 +166,12 @@ EXEC sp_data_source_objects @data_source, @object_root_name;
 The following example returns all schemata in a database
 
 ```sql
-DECLARE @data_source SYSNAME = N'ExternalDataSourceName';
-DECLARE @object_root_name NVARCHAR(MAX) = N'[database]';
+DECLARE @data_source AS SYSNAME = N'ExternalDataSourceName';
+DECLARE @object_root_name AS NVARCHAR (MAX) = N'[database]';
 
-EXEC sp_data_source_objects @data_source, @object_root_name;
+EXECUTE sp_data_source_objects
+    @data_source,
+    @object_root_name;
 ```
 
 | OBJECT_TYPE | OBJECT_NAME | OBJECT_LEAF_NAME | TABLE_LOCATION |
@@ -178,10 +183,12 @@ EXEC sp_data_source_objects @data_source, @object_root_name;
 The following example returns all tables in schema
 
 ```sql
-DECLARE @data_source SYSNAME = N'ExternalDataSourceName';
-DECLARE @object_root_name NVARCHAR(MAX) = N'[database].[dbo]';
+DECLARE @data_source AS SYSNAME = N'ExternalDataSourceName';
+DECLARE @object_root_name AS NVARCHAR (MAX) = N'[database].[dbo]';
 
-EXEC sp_data_source_objects @data_source, @object_root_name;
+EXECUTE sp_data_source_objects
+    @data_source,
+    @object_root_name;
 ```
 
 | OBJECT_TYPE | OBJECT_NAME | OBJECT_LEAF_NAME | TABLE_LOCATION |
@@ -197,11 +204,14 @@ EXEC sp_data_source_objects @data_source, @object_root_name;
 The following example returns the complete schemata and tables, functions, views, and etc.
 
 ```sql
-DECLARE @data_source SYSNAME = N'ExternalDataSourceName';
-DECLARE @object_root_name NVARCHAR(MAX) = N'[OracleObjectRoot]';
-DECLARE @max_search_depth INT = 2;
+DECLARE @data_source AS SYSNAME = N'ExternalDataSourceName';
+DECLARE @object_root_name AS NVARCHAR (MAX) = N'[OracleObjectRoot]';
+DECLARE @max_search_depth AS INT = 2;
 
-EXEC sp_data_source_objects @data_source, @object_root_name, @max_search_depth;
+EXECUTE sp_data_source_objects
+    @data_source,
+    @object_root_name,
+    @max_search_depth;
 ```
 
 | OBJECT_TYPE | OBJECT_NAME | OBJECT_LEAF_NAME | TABLE_LOCATION |
@@ -217,11 +227,14 @@ EXEC sp_data_source_objects @data_source, @object_root_name, @max_search_depth;
 The following example returns all databases and tables, functions, views, and etc.
 
 ```sql
-DECLARE @data_source SYSNAME = N'ExternalDataSourceName';
-DECLARE @object_root_name NVARCHAR(MAX) = NULL;
-DECLARE @max_search_depth INT = 2;
+DECLARE @data_source AS SYSNAME = N'ExternalDataSourceName';
+DECLARE @object_root_name AS NVARCHAR (MAX) = NULL;
+DECLARE @max_search_depth AS INT = 2;
 
-EXEC sp_data_source_objects @data_source, @object_root_name, @max_search_depth;
+EXECUTE sp_data_source_objects
+    @data_source,
+    @object_root_name,
+    @max_search_depth;
 ```
 
 | OBJECT_TYPE | OBJECT_NAME | OBJECT_LEAF_NAME | TABLE_LOCATION |
@@ -237,11 +250,14 @@ EXEC sp_data_source_objects @data_source, @object_root_name, @max_search_depth;
 The following example returns all databases and tables.
 
 ```sql
-DECLARE @data_source SYSNAME = N'ExternalDataSourceName';
-DECLARE @object_root_name NVARCHAR(MAX) = NULL;
-DECLARE @max_search_depth INT = 2;
+DECLARE @data_source AS SYSNAME = N'ExternalDataSourceName';
+DECLARE @object_root_name AS NVARCHAR (MAX) = NULL;
+DECLARE @max_search_depth AS INT = 2;
 
-EXEC sp_data_source_objects @data_source, @object_root_name, @max_search_depth;
+EXECUTE sp_data_source_objects
+    @data_source,
+    @object_root_name,
+    @max_search_depth;
 ```
 
 | OBJECT_TYPE | OBJECT_NAME | OBJECT_LEAF_NAME | TABLE_LOCATION |

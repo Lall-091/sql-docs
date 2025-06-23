@@ -4,7 +4,7 @@ description: sp_dbmmonitorchangealert adds or changes warning threshold for a sp
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/04/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -93,11 +93,11 @@ The following example sets thresholds for each of the performance metrics and th
 | `5` | Retention period | Eight hours | Yes |
 
 ```sql
-EXEC sp_dbmmonitorchangealert AdventureWorks2022, 1, 30, 1;
-EXEC sp_dbmmonitorchangealert AdventureWorks2022, 2, 10000, 1;
-EXEC sp_dbmmonitorchangealert AdventureWorks2022, 3, 10000, 1;
-EXEC sp_dbmmonitorchangealert AdventureWorks2022, 4, 1000, 0;
-EXEC sp_dbmmonitorchangealert AdventureWorks2022, 5, 8, 1;
+EXECUTE sp_dbmmonitorchangealert AdventureWorks2022, 1, 30, 1;
+EXECUTE sp_dbmmonitorchangealert AdventureWorks2022, 2, 10000, 1;
+EXECUTE sp_dbmmonitorchangealert AdventureWorks2022, 3, 10000, 1;
+EXECUTE sp_dbmmonitorchangealert AdventureWorks2022, 4, 1000, 0;
+EXECUTE sp_dbmmonitorchangealert AdventureWorks2022, 5, 8, 1;
 ```
 
 ## Related content

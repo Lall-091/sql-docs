@@ -4,7 +4,7 @@ description: sp_defaultdb changes the default database for a SQL Server login.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/04/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -65,7 +65,7 @@ Requires `ALTER ANY LOGIN` permission.
 The following example sets [!INCLUDE [sssampledbobject-md](../../includes/sssampledbobject-md.md)] as the default database for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login `Victoria`.
 
 ```sql
-EXEC sp_defaultdb 'Victoria', 'AdventureWorks2022';
+EXECUTE sp_defaultdb 'Victoria', 'AdventureWorks2022';
 ```
 
 ## Related content

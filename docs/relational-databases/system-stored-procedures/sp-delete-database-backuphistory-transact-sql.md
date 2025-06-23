@@ -4,7 +4,7 @@ description: Deletes information about the specified database from the backup an
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 01/23/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -71,8 +71,8 @@ The following example deletes all entries for the [!INCLUDE [ssSampleDBobject](.
 ```sql
 USE msdb;
 GO
-EXEC sp_delete_database_backuphistory
-    @database_name = 'AdventureWorks2022';
+
+EXECUTE sp_delete_database_backuphistory @database_name = 'AdventureWorks2022';
 ```
 
 ## Related content

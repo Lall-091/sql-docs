@@ -4,7 +4,7 @@ description: sp_configure displays or changes global configuration settings for 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/22/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -84,7 +84,7 @@ Use `sp_configure` to display or change server-level settings. To change databas
 
 Some server configuration options are only available through [ALTER SERVER CONFIGURATION](../../t-sql/statements/alter-server-configuration-transact-sql.md).
 
-### [!INCLUDE [ssbigdataclusters-ss-nover](../../includes/ssbigdataclusters-ss-nover.md)]
+### SQL Server Big Data Clusters
 
 [!INCLUDE [big-data-clusters-master-instance-ha-endpoint-requirement](../../includes/big-data-clusters-master-instance-ha-endpoint-requirement.md)]
 
@@ -129,7 +129,8 @@ The following example shows how to set and list all configuration options. You c
 ```sql
 USE master;
 GO
-EXEC sp_configure 'show advanced options', '1';
+
+EXECUTE sp_configure 'show advanced options', '1';
 ```
 
 [!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
@@ -142,7 +143,8 @@ Run `RECONFIGURE` and show all configuration options:
 
 ```sql
 RECONFIGURE;
-EXEC sp_configure;
+
+EXECUTE sp_configure;
 ```
 
 ### B. Change a configuration option
@@ -152,18 +154,20 @@ The following example sets the system `recovery interval` configuration option t
 ```sql
 USE master;
 GO
-EXEC sp_configure 'recovery interval', '3';
+
+EXECUTE sp_configure 'recovery interval', '3';
+
 RECONFIGURE WITH OVERRIDE;
 ```
 
-## Examples: [!INCLUDE [ssPDW](../../includes/sspdw-md.md)]
+## Examples: Analytics Platform System (PDW)
 
 ### C. List all available configuration settings
 
 The following example shows how to list all configuration options.
 
 ```sql
-EXEC sp_configure;
+EXECUTE sp_configure;
 ```
 
 The result returns the option name followed by the minimum and maximum values for the option. The `config_value` is the value that [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] uses when reconfiguration is complete. The `run_value` is the value that is currently being used. The `config_value` and `run_value` are usually the same unless the value is in the process of being changed.
@@ -171,7 +175,7 @@ The result returns the option name followed by the minimum and maximum values fo
 ### D. List the configuration settings for one configuration name
 
 ```sql
-EXEC sp_configure @configname = 'hadoop connectivity';
+EXECUTE sp_configure @configname = 'hadoop connectivity';
 ```
 
 ### E. Set Hadoop connectivity

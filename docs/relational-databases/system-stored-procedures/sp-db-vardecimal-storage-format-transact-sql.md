@@ -4,7 +4,7 @@ description: sp_db_vardecimal_storage_format returns the current vardecimal stor
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/04/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -80,8 +80,8 @@ USE AdventureWorks2022;
 GO
 
 SELECT name,
-    object_id,
-    type_desc
+       object_id,
+       type_desc
 FROM sys.objects
 WHERE OBJECTPROPERTY(object_id, N'TableHasVarDecimalStorageFormat') = 1;
 GO
@@ -95,20 +95,18 @@ The following code enables compression in the [!INCLUDE [sssampledbobject-md](..
 USE master;
 GO
 
-EXEC sp_db_vardecimal_storage_format 'AdventureWorks2022', 'ON';
+EXECUTE sp_db_vardecimal_storage_format 'AdventureWorks2022', 'ON';
 GO
 
 -- Check the vardecimal storage format state for
 -- all databases in the instance.
-EXEC sp_db_vardecimal_storage_format;
+EXECUTE sp_db_vardecimal_storage_format;
 GO
 
 USE AdventureWorks2022;
 GO
 
-EXEC sp_tableoption 'Sales.SalesOrderDetail',
-    'vardecimal storage format',
-    1;
+EXECUTE sp_tableoption 'Sales.SalesOrderDetail', 'vardecimal storage format', 1;
 GO
 ```
 

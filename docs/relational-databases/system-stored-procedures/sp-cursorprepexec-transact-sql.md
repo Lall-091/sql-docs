@@ -4,7 +4,7 @@ description: Compiles a plan for the submitted cursor statement or batch, then c
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 03/07/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -139,7 +139,7 @@ DECLARE @prep_handle INT,
     @ccopt INT = 8193,
     @rowcnt INT;
 
-EXEC sp_cursorprepexec
+EXECUTE sp_cursorprepexec
     @prep_handle OUTPUT,
     @cursor OUTPUT,
     N'@fName nvarchar(100)',
@@ -149,7 +149,7 @@ EXEC sp_cursorprepexec
     @rowcnt OUTPUT,
     'Katherine';
 
-EXEC sp_cursorfetch @cursor;
+EXECUTE sp_cursorfetch @cursor;
 ```
 
 ## Related content

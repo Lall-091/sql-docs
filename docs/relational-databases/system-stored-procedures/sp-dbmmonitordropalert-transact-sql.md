@@ -4,7 +4,7 @@ description: sp_dbmmonitordropalert drops the warning for a specified performanc
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 11/28/2023
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -74,13 +74,13 @@ Requires membership in the **sysadmin** fixed server role, or execute permission
 The following example drops the retention period setting of the [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)] database.
 
 ```sql
-EXEC sp_dbmmonitordropalert AdventureWorks2022, 5;
+EXECUTE sp_dbmmonitordropalert AdventureWorks2022, 5;
 ```
 
 The following example drops all of the warning thresholds and the retention period of the [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)] database.
 
 ```sql
-EXEC sp_dbmmonitordropalert AdventureWorks2022;
+EXECUTE sp_dbmmonitordropalert AdventureWorks2022;
 ```
 
 ## Related content

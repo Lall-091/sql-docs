@@ -4,7 +4,7 @@ description: sp_datatype_info_90 returns information about the data types suppor
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest
-ms.date: 07/04/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.topic: "reference"
 dev_langs:
@@ -78,14 +78,15 @@ None.
 
 Requires membership in the **public** role.
 
-## Examples: [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE [ssPDW](../../includes/sspdw-md.md)]
+## Examples: Azure Synapse Analytics and Analytics Platform System (PDW)
 
 The following example retrieves information for the **sysname** and **nvarchar** data types by specifying the *@data_type* value of `-9`.
 
 ```sql
 USE master;
 GO
-EXEC sp_datatype_info_90 -9;
+
+EXECUTE sp_datatype_info_90 -9;
 GO
 ```
 

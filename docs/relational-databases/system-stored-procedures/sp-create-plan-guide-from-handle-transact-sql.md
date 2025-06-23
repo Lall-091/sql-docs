@@ -4,7 +4,7 @@ description: sp_create_plan_guide_from_handle creates one or more plan guides fr
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/05/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -69,12 +69,12 @@ Requires `VIEW SERVER STATE` permission. In addition, individual permissions are
 
 ```sql
 SELECT cp.plan_handle,
-    sql_handle,
-    st.text,
-    objtype
+       sql_handle,
+       st.text,
+       objtype
 FROM sys.dm_exec_cached_plans AS cp
-INNER JOIN sys.dm_exec_query_stats AS qs
-    ON cp.plan_handle = qs.plan_handle
+     INNER JOIN sys.dm_exec_query_stats AS qs
+         ON cp.plan_handle = qs.plan_handle
 CROSS APPLY sys.dm_exec_sql_text(sql_handle) AS st;
 ```
 
@@ -91,12 +91,12 @@ USE AdventureWorks2022;
 GO
 
 SELECT WorkOrderID,
-    p.Name,
-    OrderQty,
-    DueDate
+       p.Name,
+       OrderQty,
+       DueDate
 FROM Production.WorkOrder AS w
-INNER JOIN Production.Product AS p
-    ON w.ProductID = p.ProductID
+     INNER JOIN Production.Product AS p
+         ON w.ProductID = p.ProductID
 WHERE p.ProductSubcategoryID > 4
 ORDER BY p.Name, DueDate;
 GO
@@ -117,7 +117,7 @@ DECLARE @plan_handle VARBINARY(64);
 DECLARE @offset INT;
 
 SELECT @plan_handle = plan_handle,
-    @offset = qs.statement_start_offset
+       @offset = qs.statement_start_offset
 FROM sys.dm_exec_query_stats AS qs
 CROSS APPLY sys.dm_exec_sql_text(sql_handle) AS st
 CROSS APPLY sys.dm_exec_text_query_plan(
@@ -126,7 +126,8 @@ CROSS APPLY sys.dm_exec_text_query_plan(
 ) AS qp
 WHERE text LIKE N'SELECT WorkOrderID, p.Name, OrderQty, DueDate%';
 
-EXECUTE sp_create_plan_guide_from_handle @name = N'Guide1',
+EXECUTE sp_create_plan_guide_from_handle
+    @name = N'Guide1',
     @plan_handle = @plan_handle,
     @statement_start_offset = @offset;
 GO

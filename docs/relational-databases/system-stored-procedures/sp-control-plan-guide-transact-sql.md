@@ -4,7 +4,7 @@ description: The sp_control_plan_guide system stored procedure drops, enables, o
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/05/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -105,7 +105,7 @@ END
 GO
 
 --Create the plan guide.
-EXEC sp_create_plan_guide N'Guide3',
+EXECUTE sp_create_plan_guide N'Guide3',
     N'SELECT *
     FROM Sales.SalesOrderHeader AS h
     INNER JOIN Sales.Customer AS c
@@ -120,17 +120,17 @@ EXEC sp_create_plan_guide N'Guide3',
 GO
 
 --Disable the plan guide.
-EXEC sp_control_plan_guide N'DISABLE',
+EXECUTE sp_control_plan_guide N'DISABLE',
     N'Guide3';
 GO
 
 --Enable the plan guide.
-EXEC sp_control_plan_guide N'ENABLE',
+EXECUTE sp_control_plan_guide N'ENABLE',
     N'Guide3';
 GO
 
 --Drop the plan guide.
-EXEC sp_control_plan_guide N'DROP',
+EXECUTE sp_control_plan_guide N'DROP',
     N'Guide3';
 GO
 ```
@@ -142,7 +142,8 @@ The following example disables all plan guides in the [!INCLUDE [ssSampleDBobjec
 ```sql
 USE AdventureWorks2022;
 GO
-EXEC sp_control_plan_guide N'DISABLE ALL';
+
+EXECUTE sp_control_plan_guide N'DISABLE ALL';
 ```
 
 ## Related content

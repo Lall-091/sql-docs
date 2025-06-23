@@ -4,7 +4,7 @@ description: Calls the CREATE STATISTICS Transact-SQL statement to create single
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/22/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -83,7 +83,7 @@ Requires membership in the **db_owner** fixed database role.
 The following example creates single-column statistics on all eligible columns in the current database.
 
 ```sql
-EXEC sp_createstats;
+EXECUTE sp_createstats;
 GO
 ```
 
@@ -92,7 +92,7 @@ GO
 The following example creates single-column statistics on all eligible columns that are already in an index and aren't the first column in the index.
 
 ```sql
-EXEC sp_createstats 'indexonly';
+EXECUTE sp_createstats 'indexonly';
 GO
 ```
 

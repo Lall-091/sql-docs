@@ -3,7 +3,7 @@ title: sp_data_source_table_columns
 description: sp_data_source_table_columns returns list of columns in external data source table.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 08/22/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: conceptual
@@ -94,10 +94,10 @@ Oracle synonyms aren't supported for usage with PolyBase.
 The following example returns the table columns for an external table in a SQL Server named `server`, belonging to a schema named `schema`.
 
 ```sql
-DECLARE @data_source SYSNAME = N'ExternalDataSourceName';
-DECLARE @table_location NVARCHAR(400) = N'[database].[schema].[table]';
+DECLARE @data_source AS SYSNAME = N'ExternalDataSourceName';
+DECLARE @table_location AS NVARCHAR (400) = N'[database].[schema].[table]';
 
-EXEC sp_data_source_table_columns
+EXECUTE sp_data_source_table_columns
     @data_source,
     @table_location;
 ```

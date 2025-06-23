@@ -4,7 +4,7 @@ description: sp_create_plan_guide creates a plan guide for associating query hin
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/05/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -32,7 +32,7 @@ sp_create_plan_guide
     [ , [ @stmt = ] N'stmt' ]
     , [ @type = ] { N'OBJECT' | N'SQL' | N'TEMPLATE' }
     [ , [ @module_or_batch = ] { N' [ schema_name. ] object_name' | N'batch_text' } ]
-    [ , [ @params = ] N'@parameter_name data_type [ ,... n ]' ]
+    [ , [ @params = ] N'@parameter_name data_type [ , ... n ]' ]
     [ , [ @hints = ] { N'OPTION ( query_hint [ , ...n ] )' | N'XML_showplan' } ]
 [ ; ]
 ```
@@ -59,7 +59,7 @@ The type of entity in which *@stmt* appears. This specifies the context for matc
 
 - `SQL`
 
-  Indicates *@stmt* appears in the context of a stand-alone statement or batch that can be submitted to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] through any mechanism. [!INCLUDE [tsql](../../includes/tsql-md.md)] statements submitted by common language runtime (CLR) objects or extended stored procedures, or by using `EXEC N'<sql_string>'`, are processed as batches on the server and, therefore, should be identified as *@type* of `SQL`. If `SQL` is specified, the query hint `PARAMETERIZATION { FORCED | SIMPLE }` can't be specified in the *@hints* parameter.
+  Indicates *@stmt* appears in the context of a stand-alone statement or batch that can be submitted to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] through any mechanism. [!INCLUDE [tsql](../../includes/tsql-md.md)] statements submitted by common language runtime (CLR) objects or extended stored procedures, or by using `EXECUTE N'<sql_string>'`, are processed as batches on the server and, therefore, should be identified as *@type* of `SQL`. If `SQL` is specified, the query hint `PARAMETERIZATION { FORCED | SIMPLE }` can't be specified in the *@hints* parameter.
 
 - `TEMPLATE`
 
@@ -122,7 +122,7 @@ When *@type* is `SQL` and *@module_or_batch* is set to `NULL`, the value of *@mo
 When [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] matches the value of *@stmt* to *@module_or_batch* and *@params [, ...n ]*, or if *@type* is `OBJECT`, to the text of the corresponding query inside `<object_name>`, the following string elements aren't considered:
 
 - White space characters (tabs, spaces, carriage returns, or line feeds) inside the string
-- Comments (`--` or `/*  */`)
+- Comments (`--` or `/* */`)
 - Trailing semicolons
 
 For example, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] can match the *@stmt* string `N'SELECT * FROM T WHERE a = 10'` to the following *@module_or_batch*:
@@ -169,10 +169,10 @@ AS
 BEGIN
     SELECT *
     FROM Sales.SalesOrderHeader AS h
-    INNER JOIN Sales.Customer AS c
-        ON h.CustomerID = c.CustomerID
-    INNER JOIN Sales.SalesTerritory AS t
-        ON c.TerritoryID = t.TerritoryID
+         INNER JOIN Sales.Customer AS c
+             ON h.CustomerID = c.CustomerID
+         INNER JOIN Sales.SalesTerritory AS t
+             ON c.TerritoryID = t.TerritoryID
     WHERE t.CountryRegionCode = @Country_region;
 END
 GO
@@ -181,12 +181,12 @@ GO
 Here's the plan guide created on the query in the stored procedure:
 
 ```sql
-EXEC sp_create_plan_guide
+EXECUTE sp_create_plan_guide
     @name = N'Guide1',
     @stmt = N'SELECT *
               FROM Sales.SalesOrderHeader AS h
               INNER JOIN Sales.Customer AS c
-                 ON h.CustomerID = c.CustomerID
+                         ON h.CustomerID = c.CustomerID
               INNER JOIN Sales.SalesTerritory AS t
                  ON c.TerritoryID = t.TerritoryID
               WHERE t.CountryRegionCode = @Country_region',
@@ -211,7 +211,7 @@ ORDER BY OrderDate DESC;
 To prevent a parallel execution plan from being generated on this query, create the following plan guide:
 
 ```sql
-EXEC sp_create_plan_guide
+EXECUTE sp_create_plan_guide
     @name = N'Guide1',
     @stmt = N'SELECT TOP 1 *
               FROM Sales.SalesOrderHeader
@@ -229,21 +229,21 @@ The following example creates a plan guide that matches any query that parameter
 ```sql
 SELECT *
 FROM AdventureWorks2022.Sales.SalesOrderHeader AS h
-INNER JOIN AdventureWorks2022.Sales.SalesOrderDetail AS d
-    ON h.SalesOrderID = d.SalesOrderID
+     INNER JOIN AdventureWorks2022.Sales.SalesOrderDetail AS d
+         ON h.SalesOrderID = d.SalesOrderID
 WHERE h.SalesOrderID = 45639;
 
 SELECT *
 FROM AdventureWorks2022.Sales.SalesOrderHeader AS h
-INNER JOIN AdventureWorks2022.Sales.SalesOrderDetail AS d
-    ON h.SalesOrderID = d.SalesOrderID
+     INNER JOIN AdventureWorks2022.Sales.SalesOrderDetail AS d
+         ON h.SalesOrderID = d.SalesOrderID
 WHERE h.SalesOrderID = 45640;
 ```
 
 Here's the plan guide on the parameterized form of the query:
 
 ```sql
-EXEC sp_create_plan_guide
+EXECUTE sp_create_plan_guide
     @name = N'TemplateGuide1',
     @stmt = N'SELECT * FROM AdventureWorks2022.Sales.SalesOrderHeader AS h
               INNER JOIN AdventureWorks2022.Sales.SalesOrderDetail AS d
@@ -258,22 +258,17 @@ EXEC sp_create_plan_guide
 In the previous example, the value for the `@stmt` parameter is the parameterized form of the query. The only reliable way to obtain this value for use in `sp_create_plan_guide` is to use the [sp_get_query_template](sp-get-query-template-transact-sql.md) system stored procedure. The following script obtains the parameterized query and then creates a plan guide on it.
 
 ```sql
-DECLARE @stmt NVARCHAR(MAX);
-DECLARE @params NVARCHAR(MAX);
+DECLARE @stmt AS NVARCHAR (MAX);
+DECLARE @params AS NVARCHAR (MAX);
 
-EXEC sp_get_query_template N'SELECT * FROM AdventureWorks2022.Sales.SalesOrderHeader AS h
+EXECUTE sp_get_query_template N'SELECT * FROM AdventureWorks2022.Sales.SalesOrderHeader AS h
       INNER JOIN AdventureWorks2022.Sales.SalesOrderDetail AS d
-          ON h.SalesOrderID = d.SalesOrderID
-      WHERE h.SalesOrderID = 45639;',
-    @stmt OUTPUT,
-    @params OUTPUT
+                  ON h.SalesOrderID = d.SalesOrderID
+      WHERE h.SalesOrderID = 45639;', @stmt OUTPUT, @params OUTPUT;
 
-EXEC sp_create_plan_guide N'TemplateGuide1',
-    @stmt,
-    N'TEMPLATE',
-    NULL,
-    @params,
-    N'OPTION(PARAMETERIZATION FORCED)';
+EXECUTE sp_create_plan_guide N'TemplateGuide1',
+    @stmt, N'TEMPLATE', NULL,
+    @params, N'OPTION(PARAMETERIZATION FORCED)';
 ```
 
 > [!IMPORTANT]  
@@ -286,38 +281,38 @@ Plan guides can match queries that are submitted from API server cursor routines
 Suppose the following data appears in an `RPC:Starting` profiler trace event for a query you want to tune with a plan guide:
 
 ```sql
-DECLARE @p1 INT;
-SET @p1 = - 1;
+DECLARE @p1 AS INT;
+SET @p1 = -1;
 
-DECLARE @p2 INT;
+DECLARE @p2 AS INT;
 SET @p2 = 0;
 
-DECLARE @p5 INT;
+DECLARE @p5 AS INT;
 SET @p5 = 4104;
 
-DECLARE @p6 INT;
+DECLARE @p6 AS INT;
 SET @p6 = 8193;
 
-DECLARE @p7 INT;
+DECLARE @p7 AS INT;
 SET @p7 = 0;
 
-EXEC sp_cursorprepexec @p1 OUTPUT,
-    @p2 OUTPUT,
-    N'@P1 varchar(255),@P2 varchar(255)',
-    N'SELECT * FROM Sales.SalesOrderHeader AS h INNER JOIN Sales.SalesOrderDetail AS d ON h.SalesOrderID = d.SalesOrderID WHERE h.OrderDate BETWEEN @P1 AND @P2',
-    @p5 OUTPUT,
-    @p6 OUTPUT,
-    @p7 OUTPUT,
-    '20040101',
-    '20050101'
+EXECUTE sp_cursorprepexec
+    @p1 OUTPUT,
+    @p2 OUTPUT, N'@P1 varchar(255),@P2 varchar(255)', N'SELECT * FROM Sales.SalesOrderHeader AS h INNER JOIN Sales.SalesOrderDetail AS d ON h.SalesOrderID = d.SalesOrderID WHERE h.OrderDate BETWEEN
+    @P1 AND
+    @P2', @p5 OUTPUT, @p6 OUTPUT, @p7 OUTPUT, '20040101', '20050101';
 
-SELECT @p1, @p2, @p5, @p6, @p7;
+SELECT @p1,
+       @p2,
+       @p5,
+       @p6,
+       @p7;
 ```
 
 You notice that the plan for the `SELECT` query in the call to `sp_cursorprepexec` is using a merge join, but you want to use a hash join. The query submitted by using `sp_cursorprepexec` is parameterized, including both a query string and a parameter string. You can create the following plan guide to change the choice of plan by using the query and parameter strings exactly as they appear, character for character, in the call to `sp_cursorprepexec`.
 
 ```sql
-EXEC sp_create_plan_guide
+EXECUTE sp_create_plan_guide
     @name = N'APICursorGuide',
     @stmt = N'SELECT * FROM Sales.SalesOrderHeader AS h
               INNER JOIN Sales.SalesOrderDetail AS d
@@ -340,13 +335,13 @@ USE AdventureWorks2022;
 GO
 
 SELECT City,
-    StateProvinceID,
-    PostalCode
+       StateProvinceID,
+       PostalCode
 FROM Person.Address
 ORDER BY PostalCode DESC;
 GO
 
-DECLARE @xml_showplan NVARCHAR(MAX);
+DECLARE @xml_showplan AS NVARCHAR (MAX);
 
 SET @xml_showplan = (
     SELECT query_plan
@@ -356,7 +351,8 @@ SET @xml_showplan = (
     WHERE st.TEXT LIKE N'SELECT City, StateProvinceID, PostalCode FROM Person.Address ORDER BY PostalCode DESC;%'
 );
 
-EXEC sp_create_plan_guide @name = N'Guide1_from_XML_showplan',
+EXECUTE sp_create_plan_guide
+    @name = N'Guide1_from_XML_showplan',
     @stmt = N'SELECT City, StateProvinceID, PostalCode FROM Person.Address ORDER BY PostalCode DESC;',
     @type = N'SQL',
     @module_or_batch = NULL,

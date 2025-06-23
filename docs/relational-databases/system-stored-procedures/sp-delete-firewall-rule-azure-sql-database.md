@@ -5,7 +5,7 @@ description: Removes server-level firewall settings from your Azure SQL Database
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: azure-sql-database
 ms.topic: "reference"
 f1_keywords:
@@ -53,7 +53,7 @@ Only the server-level principal login created by the provisioning process can de
 The following example removes the server-level firewall setting named `Example setting 1`. Execute the statement in the virtual `master` database.
 
 ```sql
-EXEC sp_delete_firewall_rule N'Example setting 1';
+EXECUTE sp_delete_firewall_rule N'Example setting 1';
 ```
 
 ## Related content

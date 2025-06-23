@@ -4,7 +4,7 @@ description: sp_databases lists databases that either reside in an instance of S
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/04/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -62,7 +62,8 @@ The following example shows executing `sp_databases`.
 ```sql
 USE master;
 GO
-EXEC sp_databases;
+
+EXECUTE sp_databases;
 ```
 
 ## Related content

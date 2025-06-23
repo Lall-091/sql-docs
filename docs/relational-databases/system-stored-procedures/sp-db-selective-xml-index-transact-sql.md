@@ -4,7 +4,7 @@ description: sp_db_selective_xml_index enables and disables selective XML index 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/04/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -59,9 +59,9 @@ Determines whether to enable or disable the index. *@selective_xml_index* is **v
 The following example enables SXI on the current database.
 
 ```sql
-EXEC sys.sp_db_selective_xml_index
-    @dbname = NULL
-  , @selective_xml_index = N'on';
+EXECUTE sys.sp_db_selective_xml_index
+    @dbname = NULL,
+    @selective_xml_index = N'on';
 GO
 ```
 
@@ -69,8 +69,8 @@ The following example enables SXI on the [!INCLUDE [sssampledbobject-md](../../i
 
 ```sql
 EXECUTE sys.sp_db_selective_xml_index
-    @dbname = N'AdventureWorks2022'
-  , @selective_xml_index = N'true';
+    @dbname = N'AdventureWorks2022',
+    @selective_xml_index = N'true';
 GO
 ```
 
@@ -80,8 +80,8 @@ The following example disables SXI on the current database.
 
 ```sql
 EXECUTE sys.sp_db_selective_xml_index
-    @dbname = NULL
-  , @selective_xml_index = N'off';
+    @dbname = NULL,
+    @selective_xml_index = N'off';
 GO
 ```
 
@@ -89,8 +89,8 @@ The following example disables SXI on the [!INCLUDE [sssampledbobject-md](../../
 
 ```sql
 EXECUTE sys.sp_db_selective_xml_index
-    @dbname = N'AdventureWorks2022'
-  , @selective_xml_index = N'false';
+    @dbname = N'AdventureWorks2022',
+    @selective_xml_index = N'false';
 GO
 ```
 
