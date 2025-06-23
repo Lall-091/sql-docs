@@ -4,7 +4,7 @@ description: sp_audit_write adds a user-defined audit event to USER_DEFINED_AUDI
 author: sravanisaluru
 ms.author: srsaluru
 ms.reviewer: randolphwest
-ms.date: 03/07/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -70,7 +70,8 @@ Requires membership in the **public** database role.
 The following example creates an audit event with a `@user_defined_event_id` value of `27`, the `@succeeded` value of `0`, and includes optional informational text.
 
 ```sql
-EXEC sp_audit_write @user_defined_event_id = 27,
+EXECUTE sp_audit_write
+    @user_defined_event_id = 27,
     @succeeded = 0,
     @user_defined_information = N'Access to a monitored object.';
 ```
@@ -80,7 +81,7 @@ EXEC sp_audit_write @user_defined_event_id = 27,
 The following example creates an audit event with a `@user_defined_event_id` value of `27`, the `@succeeded` value of `0`, and doesn't include optional informational text or the optional parameter names.
 
 ```sql
-EXEC sp_audit_write 27, 0;
+EXECUTE sp_audit_write 27, 0;
 ```
 
 ## Related content

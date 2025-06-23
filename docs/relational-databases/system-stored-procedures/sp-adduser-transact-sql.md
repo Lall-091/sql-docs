@@ -4,7 +4,7 @@ description: sp_adduser adds a new user to the current database.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 01/23/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -87,7 +87,7 @@ Requires ownership of the database.
 The following example adds the database user `Vidur` to the existing `Recruiting` role in the current database, using the existing [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login `Vidur`.
 
 ```sql
-EXEC sp_adduser 'Vidur', 'Vidur', 'Recruiting';
+EXECUTE sp_adduser 'Vidur', 'Vidur', 'Recruiting';
 ```
 
 ### B. Add a database user with the same login ID
@@ -95,7 +95,7 @@ EXEC sp_adduser 'Vidur', 'Vidur', 'Recruiting';
 The following example adds user `Arvind` to the current database for the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login `Arvind`. This user belongs to the default **public** role.
 
 ```sql
-EXEC sp_adduser 'Arvind';
+EXECUTE sp_adduser 'Arvind';
 ```
 
 ### C. Add a database user with a different name than its server-level login
@@ -103,7 +103,7 @@ EXEC sp_adduser 'Arvind';
 The following example adds [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login `BjornR` to the current database that's a user name of `Bjorn`, and adds database user `Bjorn` to the `Production` database role.
 
 ```sql
-EXEC sp_adduser 'BjornR', 'Bjorn', 'Production';
+EXECUTE sp_adduser 'BjornR', 'Bjorn', 'Production';
 ```
 
 ## Related content

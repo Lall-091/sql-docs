@@ -4,7 +4,7 @@ description: sp_addsrvrolemember adds a security principal as a member of a fixe
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 01/23/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -78,7 +78,7 @@ Requires membership in the role to which the new member is being added.
 The following example adds the Windows account `Corporate\HelenS` to the **sysadmin** fixed server role.
 
 ```sql
-EXEC sp_addsrvrolemember 'Corporate\HelenS', 'sysadmin';
+EXECUTE sp_addsrvrolemember 'Corporate\HelenS', 'sysadmin';
 GO
 ```
 

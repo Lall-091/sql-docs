@@ -4,7 +4,7 @@ description: Adds a backup device to an instance of SQL Server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 01/23/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -108,7 +108,8 @@ The following example adds a disk backup device named `mydiskdump`, with the phy
 ```sql
 USE master;
 GO
-EXEC sp_addumpdevice 'disk', 'mydiskdump', 'C:\dump\dump1.bak';
+
+EXECUTE sp_addumpdevice 'disk', 'mydiskdump', 'C:\dump\dump1.bak';
 ```
 
 ### B. Add a network disk backup device
@@ -118,7 +119,10 @@ The following example shows adding a remote disk backup device called `networkde
 ```sql
 USE master;
 GO
-EXEC sp_addumpdevice 'disk', 'networkdevice',
+
+EXECUTE sp_addumpdevice
+    'disk',
+    'networkdevice',
     '\\<servername>\<sharename>\<path>\<filename>.bak';
 ```
 
@@ -129,7 +133,8 @@ The following example adds the `tapedump1` device with the physical name `\\.\ta
 ```sql
 USE master;
 GO
-EXEC sp_addumpdevice 'tape', 'tapedump1', '\\.\tape0';
+
+EXECUTE sp_addumpdevice 'tape', 'tapedump1', '\\.\tape0';
 ```
 
 ### D. Back up to a logical backup device
@@ -139,13 +144,15 @@ The following example creates a logical backup device, `AdvWorksData`, for a bac
 ```sql
 USE master;
 GO
-EXEC sp_addumpdevice
+
+EXECUTE sp_addumpdevice
     'disk',
     'AdvWorksData',
-    'C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\BACKUP\AdvWorksData.bak';
+    'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\BACKUP\AdvWorksData.bak';
 GO
+
 BACKUP DATABASE AdventureWorks2022
- TO AdvWorksData WITH FORMAT;
+TO AdvWorksData WITH FORMAT;
 GO
 ```
 

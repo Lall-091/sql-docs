@@ -4,7 +4,7 @@ description: sp_change_users_login Maps an existing database user to a SQL Serve
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 07/05/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -99,32 +99,35 @@ Requires membership in the **db_owner** fixed database role. Only members of the
 The following example produces a report of the users in the current database and their security identifiers (SIDs).
 
 ```sql
-EXEC sp_change_users_login 'Report';
+EXECUTE sp_change_users_login 'Report';
 ```
 
 ### B. Map a database user to a new SQL Server login
 
-In the following example, a database user is associated with a new [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login. Database user `MB-Sales`, which at first is mapped to another login, is remapped to login `MaryB`.
+In the following example, a database user is associated with a new [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login. Database user `MB-Sales`, which at first is mapped to another login, is remapped to login `MaryB`. Replace `<password>` with a strong password.
 
 ```sql
 --Create the new login.
-CREATE LOGIN MaryB WITH PASSWORD = '982734snfdHHkjj3';
+CREATE LOGIN MaryB WITH PASSWORD = '<password>';
 GO
+
 --Map database user MB-Sales to login MaryB.
 USE AdventureWorks2022;
 GO
-EXEC sp_change_users_login 'Update_One', 'MB-Sales', 'MaryB';
+
+EXECUTE sp_change_users_login 'Update_One', 'MB-Sales', 'MaryB';
 GO
 ```
 
 ### C. Automatically map a user to a login, and create a new login if necessary
 
-The following example shows how to use `Auto_Fix` to map an existing user to a login of the same name, or to create the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login `Mary` that's the password `B3r12-3x$098f6` if the login `Mary` doesn't exist.
+The following example shows how to use `Auto_Fix` to map an existing user to a login of the same name, or to create the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login `Mary` with a password if the login `Mary` doesn't exist. Replace `<password>` with a strong password.
 
 ```sql
 USE AdventureWorks2022;
 GO
-EXEC sp_change_users_login 'Auto_Fix', 'Mary', NULL, 'B3r12-3x$098f6';
+
+EXECUTE sp_change_users_login 'Auto_Fix', 'Mary', NULL, '<password>';
 GO
 ```
 

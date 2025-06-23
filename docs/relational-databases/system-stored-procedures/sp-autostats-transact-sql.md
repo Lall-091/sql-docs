@@ -4,7 +4,7 @@ description: Displays or changes AUTO_UPDATE_STATISTICS for an index, statistics
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -96,7 +96,8 @@ The following displays the status of all statistics on the `Production.Product` 
 ```sql
 USE AdventureWorks2022;
 GO
-EXEC sp_autostats 'Production.Product';
+
+EXECUTE sp_autostats 'Production.Product';
 GO
 ```
 
@@ -107,7 +108,8 @@ The following example enables the `AUTO_UPDATE_STATISTICS` option for all statis
 ```sql
 USE AdventureWorks2022;
 GO
-EXEC sp_autostats 'Production.Product', 'ON';
+
+EXECUTE sp_autostats 'Production.Product', 'ON';
 GO
 ```
 
@@ -118,7 +120,8 @@ The following example disables the `AUTO_UPDATE_STATISTICS` option for the `AK_P
 ```sql
 USE AdventureWorks2022;
 GO
-EXEC sp_autostats 'Production.Product', 'OFF', AK_Product_Name;
+
+EXECUTE sp_autostats 'Production.Product', 'OFF', AK_Product_Name;
 GO
 ```
 

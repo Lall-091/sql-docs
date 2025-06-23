@@ -4,7 +4,7 @@ description: sp_addrole creates a new database role in the current database.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 08/22/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -70,7 +70,7 @@ Requires `CREATE ROLE` permission on the database. If creating a schema, require
 The following example adds a new role called `Managers` to the current database.
 
 ```sql
-EXEC sp_addrole 'Managers';
+EXECUTE sp_addrole 'Managers';
 ```
 
 ## Related content

@@ -4,7 +4,7 @@ description: sp_addtype creates an alias data type.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -124,7 +124,8 @@ The following example creates an alias data type named `ssn` (social security nu
 ```sql
 USE master;
 GO
-EXEC sp_addtype ssn, 'varchar(11)', 'NOT NULL';
+
+EXECUTE sp_addtype ssn, 'varchar(11)', 'NOT NULL';
 GO
 ```
 
@@ -135,7 +136,8 @@ The following example creates an alias data type (based on `datetime`) named `bi
 ```sql
 USE master;
 GO
-EXEC sp_addtype birthday, datetime, 'NULL';
+
+EXECUTE sp_addtype birthday, datetime, 'NULL';
 ```
 
 ### C. Create additional alias data types
@@ -145,9 +147,11 @@ The following example creates two more alias data types, `telephone` and `fax`, 
 ```sql
 USE master;
 GO
-EXEC sp_addtype telephone, 'varchar(24)', 'NOT NULL';
+
+EXECUTE sp_addtype telephone, 'varchar(24)', 'NOT NULL';
 GO
-EXEC sp_addtype fax, 'varchar(24)', 'NULL';
+
+EXECUTE sp_addtype fax, 'varchar(24)', 'NULL';
 GO
 ```
 

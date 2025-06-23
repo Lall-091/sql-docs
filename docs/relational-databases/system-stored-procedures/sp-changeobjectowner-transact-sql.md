@@ -4,7 +4,7 @@ description: sp_changeobjectowner changes the owner of an object in the current 
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 08/22/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -67,7 +67,7 @@ Requires membership in the **db_owner** fixed database role, or membership in bo
 The following example changes the owner of the `authors` table to `Corporate\GeorgeW`.
 
 ```sql
-EXEC sp_changeobjectowner 'authors', 'Corporate\GeorgeW';
+EXECUTE sp_changeobjectowner 'authors', 'Corporate\GeorgeW';
 GO
 ```
 

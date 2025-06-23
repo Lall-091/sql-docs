@@ -4,7 +4,7 @@ description: sp_bindsession binds or unbinds a session to other sessions in the 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 03/07/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -71,7 +71,7 @@ The following example binds the specified bind token to the current session.
 ```sql
 USE master;
 GO
-EXEC sp_bindsession 'BP9---5---->KB?-V'<>1E:H-7U-]ANZ';
+EXECUTE sp_bindsession 'BP9---5---->KB?-V'<>1E:H-7U-]ANZ';
 GO
 ```
 

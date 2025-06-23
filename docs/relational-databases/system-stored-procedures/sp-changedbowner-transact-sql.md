@@ -4,7 +4,7 @@ description: sp_changedbowner changes the owner of the current database.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 07/05/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -71,7 +71,7 @@ Requires `TAKE OWNERSHIP` permission on the database. If the new owner has a cor
 The following example makes the login `Albert` the owner of the current database.
 
 ```sql
-EXEC sp_changedbowner 'Albert';
+EXECUTE sp_changedbowner 'Albert';
 ```
 
 ## Related content

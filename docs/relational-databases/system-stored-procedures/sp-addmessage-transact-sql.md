@@ -4,7 +4,7 @@ description: Stores a new user-defined error message in an instance of the SQL S
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -103,9 +103,11 @@ The following example adds a custom message to `sys.messages`.
 ```sql
 USE master;
 GO
-EXEC sp_addmessage 50001, 16,
-    N'Percentage expects a value between 20 and 100.
-    Re-run with a more appropriate value.';
+
+EXECUTE sp_addmessage
+    50001,
+    16,
+    N'Percentage expects a value between 20 and 100. Re-run with a more appropriate value.';
 GO
 ```
 
@@ -116,13 +118,18 @@ The following example first adds a message in U.S. English and then adds the sam
 ```sql
 USE master;
 GO
-EXEC sp_addmessage @msgnum = 60000, @severity = 16,
-   @msgtext = N'The item named %s already exists in %s.',
-   @lang = 'us_english';
 
-EXEC sp_addmessage @msgnum = 60000, @severity = 16,
-   @msgtext = N'L''élément nommé %1! existe déjà dans %2!',
-   @lang = 'French';
+EXECUTE sp_addmessage
+    @msgnum = 60000,
+    @severity = 16,
+    @msgtext = N'The item named %s already exists in %s.',
+    @lang = 'us_english';
+
+EXECUTE sp_addmessage
+    @msgnum = 60000,
+    @severity = 16,
+    @msgtext = N'L''élément nommé %1! existe déjà dans %2!',
+    @lang = 'French';
 GO
 ```
 
@@ -134,18 +141,16 @@ The following example first adds a message in U.S. English, and then adds a loca
 USE master;
 GO
 
-EXEC sp_addmessage
+EXECUTE sp_addmessage
     @msgnum = 60000,
     @severity = 16,
-    @msgtext =
-        N'This is a test message with one numeric parameter (%d), one string parameter (%s), and another string parameter (%s).',
+    @msgtext = N'This is a test message with one numeric parameter (%d), one string parameter (%s), and another string parameter (%s).',
     @lang = 'us_english';
 
-EXEC sp_addmessage
+EXECUTE sp_addmessage
     @msgnum = 60000,
     @severity = 16,
-    @msgtext =
-        N'Dies ist eine Testmeldung mit einem Zeichenfolgenparameter (%3!), einem weiteren Zeichenfolgenparameter (%2!), und einem numerischen Parameter (%1!).',
+    @msgtext = N'Dies ist eine Testmeldung mit einem Zeichenfolgenparameter (%3!), einem weiteren Zeichenfolgenparameter (%2!), und einem numerischen Parameter (%1!).',
     @lang = 'German';
 GO
 
@@ -154,7 +159,7 @@ GO
 SET LANGUAGE us_english;
 GO
 
-RAISERROR(60000, 1, 1, 15, 'param1', 'param2')
+RAISERROR (60000, 1, 1, 15, 'param1', 'param2');
 GO
 
 -- Changing the session language to use the German
@@ -162,7 +167,7 @@ GO
 SET LANGUAGE German;
 GO
 
-RAISERROR(60000, 1, 1, 15, 'param1', 'param2');
+RAISERROR (60000, 1, 1, 15, 'param1', 'param2');
 GO
 ```
 

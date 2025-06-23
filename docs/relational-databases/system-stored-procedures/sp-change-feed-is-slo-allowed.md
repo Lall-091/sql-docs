@@ -3,8 +3,8 @@ title: "sys.sp_change_feed_is_slo_allowed (Transact-SQL)"
 description: "The sys.sp_change_feed_is_slo_allowed system internal stored procedure checks for a supported service level objective."
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: imotiwala, ajayj
-ms.date: 05/01/2025
+ms.reviewer: imotiwala, ajayj, randolphwest
+ms.date: 06/23/2025
 ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -28,7 +28,7 @@ monikerRange: ">=sql-server-ver16 || =azuresqldb-current || =azuresqldb-mi-curre
 
 Checks for a supported service level objective.
 
-> [!NOTE]
+> [!NOTE]  
 > This system stored procedure is used internally and isn't recommended for direct administrative use. Use Synapse Studio or the Fabric portal instead.
 
 This system stored procedure is used for:

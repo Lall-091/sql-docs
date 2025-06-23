@@ -4,7 +4,7 @@ description: Creates a new distribution database and installs the Distributor sc
 author: mashamsft
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 08/30/2023
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -173,13 +173,13 @@ SET @publicationDB = N'AdventureWorks2022';
 -- including autogenerating the distributor password.
 USE master
 
-EXEC sp_adddistributor @distributor = @distributor;
+EXECUTE sp_adddistributor @distributor = @distributor;
 
 -- Create a new distribution database using the defaults, including
 -- using Windows Authentication.
 USE master
 
-EXEC sp_adddistributiondb @database = @distributionDB,
+EXECUTE sp_adddistributiondb @database = @distributionDB,
     @security_mode = 1;
 GO
 
@@ -196,7 +196,7 @@ SET @publisher = $( DistPubServer );
 
 USE [distribution]
 
-EXEC sp_adddistpublisher @publisher = @publisher,
+EXECUTE sp_adddistpublisher @publisher = @publisher,
     @distribution_db = @distributionDB,
     @security_mode = 1;
 GO

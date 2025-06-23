@@ -4,7 +4,7 @@ description: sp_approlepassword changes the password of an application role in t
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 03/04/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -66,7 +66,7 @@ Requires `ALTER ANY APPLICATION ROLE` permission on the database.
 The following example sets the password for the `PayrollAppRole` application role to `B3r12-36`.
 
 ```sql
-EXEC sp_approlepassword 'PayrollAppRole', 'B3r12-36';
+EXECUTE sp_approlepassword 'PayrollAppRole', 'B3r12-36';
 ```
 
 ## Related content

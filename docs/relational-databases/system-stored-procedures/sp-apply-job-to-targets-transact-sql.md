@@ -4,7 +4,7 @@ description: Applies a job to one or more target servers or to the target server
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 03/04/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -82,10 +82,10 @@ The following example applies the previously created `Backup Customer Informatio
 USE msdb;
 GO
 
-EXEC dbo.sp_apply_job_to_targets
+EXECUTE dbo.sp_apply_job_to_targets
     @job_name = N'Backup Customer Information',
     @target_server_groups = N'Servers Maintaining Customer Information',
-    @operation = N'APPLY' ;
+    @operation = N'APPLY';
 GO
 ```
 

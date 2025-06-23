@@ -4,7 +4,7 @@ description: Registers the name of a new extended stored procedure to SQL Server
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -76,7 +76,8 @@ The following example adds the `xp_hello` extended stored procedure.
 ```sql
 USE master;
 GO
-EXEC sp_addextendedproc xp_hello, 'c:\xp_hello.dll';
+
+EXECUTE sp_addextendedproc xp_hello, 'c:\xp_hello.dll';
 ```
 
 ## Related content

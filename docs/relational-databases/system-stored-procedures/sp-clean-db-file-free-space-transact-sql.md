@@ -4,7 +4,7 @@ description: Removes residual information left on database pages in a database f
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/05/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -75,7 +75,7 @@ The following example cleans all residual information from the primary data file
 USE master;
 GO
 
-EXEC sp_clean_db_file_free_space
+EXECUTE sp_clean_db_file_free_space
     @dbname = N'AdventureWorks2022',
     @fileid = 1;
 ```

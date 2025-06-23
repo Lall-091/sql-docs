@@ -4,7 +4,7 @@ description: sp_attach_db attaches a database to a server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -89,11 +89,10 @@ For information about how permissions are handled when a database is attached, s
 The following example attaches files from [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)] to the current server.
 
 ```sql
-EXEC sp_attach_db @dbname = N'AdventureWorks2022',
-    @filename1 =
-N'C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\Data\AdventureWorks2022_Data.mdf',
-    @filename2 =
-N'C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\Data\AdventureWorks2022_log.ldf';
+EXECUTE sp_attach_db
+    @dbname = N'AdventureWorks2022',
+    @filename1 = N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Data\AdventureWorks2022_Data.mdf',
+    @filename2 = N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Data\AdventureWorks2022_log.ldf';
 ```
 
 ## Related content

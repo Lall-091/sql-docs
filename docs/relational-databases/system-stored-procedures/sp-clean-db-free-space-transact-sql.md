@@ -4,7 +4,7 @@ description: Removes residual information left on database pages because of data
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/05/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -70,7 +70,7 @@ The following example cleans all residual information from the [!INCLUDE [sssamp
 USE master;
 GO
 
-EXEC sp_clean_db_free_space @dbname = N'AdventureWorks2022';
+EXECUTE sp_clean_db_free_space @dbname = N'AdventureWorks2022';
 ```
 
 ## Related content
