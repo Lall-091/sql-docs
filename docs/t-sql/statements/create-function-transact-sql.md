@@ -4,7 +4,7 @@ description: CREATE FUNCTION (Transact-SQL)
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 04/26/2024
+ms.date: 05/29/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -38,12 +38,15 @@ helpviewer_keywords:
   - "functions [SQL Server], invoking"
 dev_langs:
   - "TSQL"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
 # CREATE FUNCTION (Transact-SQL)
 
-[!INCLUDE [SQL Server SQL Database SQL Managed_Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server SQL Database SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
-Creates a user-defined function (UDF), which is a [!INCLUDE [tsql](../../includes/tsql-md.md)] or common language runtime (CLR) routine. A user-defined function accepts parameters, performs an action such as a complex calculation, and returns the result of that action as a value. The return value can either be a scalar (single) value or a table. Use this statement to create a reusable routine that can be used in these ways:
+Creates a user-defined function (UDF), which is a [!INCLUDE [tsql](../../includes/tsql-md.md)] or common language runtime (CLR) routine. A user-defined function accepts parameters, performs an action such as a complex calculation, and returns the result of that action as a value. The return value can either be a scalar (single) value or a table. 
+
+Use `CREATE FUNCTION` to create a reusable T-SQL routine that can be used in these ways:
 
 - In [!INCLUDE [tsql](../../includes/tsql-md.md)] statements such as `SELECT`
 - In applications that call the function
@@ -56,7 +59,11 @@ Creates a user-defined function (UDF), which is a [!INCLUDE [tsql](../../include
 
 The integration of .NET Framework CLR into [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] is discussed in this article. CLR integration doesn't apply to [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)].
 
-For [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] or [!INCLUDE [fabric](../../includes/fabric.md)], see [CREATE FUNCTION (Azure Synapse Analytics and Microsoft Fabric)](create-function-sql-data-warehouse.md).
+> [!NOTE]
+> For [!INCLUDE [fabric](../../includes/fabric.md)] Data Warehouse or [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], see [CREATE FUNCTION (Azure Synapse Analytics and Microsoft Fabric)](create-function-sql-data-warehouse.md?view=fabric&preserve-view=true).
+
+> [!TIP]
+> You can specify `CREATE OR ALTER FUNCTION` to create a new function if one does not exist by that name, or alter an existing function, in a single statement.
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
@@ -289,11 +296,11 @@ Specify a parameter name by using an at sign (@) as the first character. The par
 
 The parameter data type, and optionally the schema to which it belongs. For [!INCLUDE [tsql](../../includes/tsql-md.md)] functions, all data types, including CLR user-defined types and user-defined table types, are allowed except the **timestamp** data type. For CLR functions, all data types, including CLR user-defined types, are allowed except **text**, **ntext**, **image**, user-defined table types, and **timestamp** data types. The nonscalar types, **cursor** and **table**, can't be specified as a parameter data type in either [!INCLUDE [tsql](../../includes/tsql-md.md)] or CLR functions.
 
-If *type_schema_name* isn't specified, the [!INCLUDE [ssDE](../../includes/ssde-md.md)] looks for the *scalar_parameter_data_type* in the following order:
+If *type_schema_name* isn't specified, the [!INCLUDE [ssDE](../../includes/ssde-md.md)] looks for the `scalar_parameter_data_type` in the following order:
 
 - The schema that contains the names of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] system data types.
 - The default schema of the current user in the current database.
-- The **dbo** schema in the current database.
+- The `dbo` schema in the current database.
 
 #### [ = *default* ]
 
@@ -331,7 +338,7 @@ In inline TVFs, the `TABLE` return value is defined through a single `SELECT` st
 
 <a name="mstvf"></a>
 
-In MSTVFs, *@return_variable* is a `TABLE` variable, used to store and accumulate the rows that should be returned as the value of the function. \@*return_variable* can be specified only for [!INCLUDE [tsql](../../includes/tsql-md.md)] functions and not for CLR functions.
+In multi-statement table-valued functions (MSTVFs), *@return_variable* is a `TABLE` variable, used to store and accumulate the rows that should be returned as the value of the function. \@*return_variable* can be specified only for [!INCLUDE [tsql](../../includes/tsql-md.md)] functions and not for CLR functions.
 
 #### *select_stmt*
 

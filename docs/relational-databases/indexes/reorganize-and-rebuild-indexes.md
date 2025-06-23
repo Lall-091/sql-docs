@@ -1,10 +1,10 @@
 ---
-title: "Maintaining indexes optimally to improve performance and reduce resource utilization"
+title: "Maintaining Indexes Optimally to Improve Performance and Reduce Resource Utilization"
 description: This article describes index maintenance concepts, and a recommended strategy to maintain indexes.
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mikeray
-ms.date: 06/20/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: how-to
@@ -95,7 +95,7 @@ Compressed row group fragmentation in a columnstore index can be computed using 
 100.0 * (ISNULL(total_stored_deleted_rows, 0)) / NULLIF(total_rows, 0)
 ```
 
-To determine the total number of physically stored deleted rows for a nonclustered columnstore index, add the value in the `deleted_rows` column in `sys.dm_db_column_store_row_group_physical_stats` to the value in the `rows` column in [sys.internal_partitions](../system-catalog-views/sys-internal-partitions-transact-sql.md) for the internal object type `COLUMN_STORE_DELETE_BUFFER` and the same object, index, and partition. For an example, see [Check the fragmentation of a columnstore index](#check-the-fragmentation-of-a-columnstore-index).
+To determine the total number of physically stored deleted rows for a nonclustered columnstore index, add the values in the `deleted_rows` column in `sys.dm_db_column_store_row_group_physical_stats` to the value in the `rows` column in [sys.internal_partitions](../system-catalog-views/sys-internal-partitions-transact-sql.md) for the internal object type `COLUMN_STORE_DELETE_BUFFER` and the same object, index, and partition. For an example, see [Check the fragmentation of a columnstore index](#check-the-fragmentation-of-a-columnstore-index).
 
 > [!TIP]  
 > For both rowstore and columnstore indexes, review index or heap fragmentation and page density after a large number of rows is deleted or updated. For heaps, if there are frequent updates, review fragmentation periodically to avoid proliferation of forwarding records. For more information about heaps, see [Heaps (Tables without Clustered Indexes)](../../relational-databases/indexes/heaps-tables-without-clustered-indexes.md#heap-structures).
@@ -119,8 +119,9 @@ Reorganizing an index is less resource intensive than rebuilding an index. For t
 - For [rowstore indexes](clustered-and-nonclustered-indexes-described.md), the [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] defragments only the leaf level of clustered and nonclustered indexes on tables and views. It physically reorders the leaf-level pages to match the logical order of the leaf nodes, left to right. Reorganizing also compacts index pages to make page density equal to the [fill factor](../../relational-databases/indexes/specify-fill-factor-for-an-index.md) of the index. To view the fill factor setting, use [sys.indexes](../../relational-databases/system-catalog-views/sys-indexes-transact-sql.md). For syntax examples, see [Examples - Rowstore reorganize](../../t-sql/statements/alter-index-transact-sql.md#examples-rowstore-indexes).
 - When using [columnstore indexes](columnstore-indexes-overview.md), the delta store can end up with multiple small row groups after inserting, updating, and deleting data over time. Reorganizing a columnstore index forces delta store row groups into compressed row groups in columnstore, and combines smaller compressed row groups into larger row groups. The reorganize operation also physically removes rows that are marked as deleted in the columnstore. Reorganizing a columnstore index can require additional CPU resources to compress data. While the operation is running, performance can slow. However, once data is compressed, query performance improves. For syntax examples, see [Examples - Columnstore reorganize](../../t-sql/statements/alter-index-transact-sql.md#examples-columnstore-indexes).
 
-> [!NOTE]  
-> <a name="bckmergetsk"></a> Starting with [!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi](../../includes/ssazuremi-md.md)], the tuple-mover is helped by a background merge task that automatically compresses smaller open delta rowgroups that have existed for some time as determined by an internal threshold, or merges compressed rowgroups from where a large number of rows has been deleted. This improves the columnstore index quality over time. For most cases this dismisses the need for issuing `ALTER INDEX ... REORGANIZE` commands.
+<a id="bckmergetsk"></a>
+
+Starting with [!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi](../../includes/ssazuremi-md.md)], the tuple-mover is helped by a background merge task that automatically compresses smaller open delta rowgroups that have existed for some time as determined by an internal threshold, or merges compressed rowgroups from where a large number of rows has been deleted. This improves the columnstore index quality over time. For most cases this dismisses the need for issuing `ALTER INDEX ... REORGANIZE` commands.
 
 > [!TIP]  
 > If you cancel a reorganize operation, or if it is otherwise interrupted, the progress it made to that point is persisted in the database. To reorganize large indexes, the operation can be started and stopped multiple times until it completes.
@@ -338,33 +339,44 @@ For more information, see [sys.dm_db_index_physical_stats](../../relational-data
 The following example determines the average fragmentation for all columnstore indexes with compressed row groups in the current database.
 
 ```sql
+WITH columnstore_row_group_partition
+AS (SELECT object_id,
+           index_id,
+           partition_number,
+           SUM(deleted_rows) AS partition_deleted_rows,
+           SUM(total_rows) AS partition_total_rows
+    FROM sys.dm_db_column_store_row_group_physical_stats
+    WHERE state_desc = 'COMPRESSED'
+    GROUP BY object_id, index_id, partition_number),
+/* For nonclustered columnstore, include rows in the delete buffer */
+ columnstore_internal_partition
+AS (SELECT object_id,
+           index_id,
+           partition_number,
+           SUM(rows) AS delete_buffer_rows
+    FROM sys.internal_partitions
+    WHERE internal_object_type_desc = 'COLUMN_STORE_DELETE_BUFFER'
+    GROUP BY object_id, index_id, partition_number)
 SELECT OBJECT_SCHEMA_NAME(i.object_id) AS schema_name,
        OBJECT_NAME(i.object_id) AS object_name,
        i.name AS index_name,
        i.type_desc AS index_type,
-       100.0 * (ISNULL(SUM(rgs.deleted_rows + ISNULL(ip.rows, 0)), 0)) / NULLIF(SUM(rgs.total_rows), 0) AS avg_fragmentation_in_percent
+       crgp.partition_number,
+       100.0 * (ISNULL(crgp.partition_deleted_rows + ISNULL(cip.delete_buffer_rows, 0), 0)) / NULLIF (crgp.partition_total_rows, 0) AS avg_fragmentation_in_percent
 FROM sys.indexes AS i
-INNER JOIN sys.dm_db_column_store_row_group_physical_stats AS rgs
-ON i.object_id = rgs.object_id
-   AND
-   i.index_id = rgs.index_id
-/* For nonclustered columnstore, include rows in the delete buffer */
-LEFT JOIN sys.internal_partitions AS ip
-ON i.object_id = ip.object_id
-   AND
-   i.index_id = ip.index_id
-   AND
-   rgs.partition_number = ip.partition_number
-   AND
-   ip.internal_object_type_desc = 'COLUMN_STORE_DELETE_BUFFER'
-WHERE rgs.state_desc = 'COMPRESSED'
-GROUP BY i.object_id, i.index_id, i.name, i.type_desc
-ORDER BY schema_name, object_name, index_name, index_type;
+     INNER JOIN columnstore_row_group_partition AS crgp
+         ON i.object_id = crgp.object_id
+        AND i.index_id = crgp.index_id
+     LEFT OUTER JOIN columnstore_internal_partition AS cip
+         ON i.object_id = cip.object_id
+        AND i.index_id = cip.index_id
+        AND crgp.partition_number = cip.partition_number
+ORDER BY schema_name, object_name, index_name, partition_number, index_type;
 ```
 
-The previous statement returns a result set similar to the following:
+The previous statement returns a result set similar to the following output:
 
-```
+```output
 schema_name  object_name            index_name                           index_type                avg_fragmentation_in_percent
 ------------ ---------------------- ------------------------------------ ------------------------- ----------------------------
 Sales        InvoiceLines           NCCX_Sales_InvoiceLines              NONCLUSTERED COLUMNSTORE  0.000000000000000
@@ -450,7 +462,7 @@ For more information, see [ALTER INDEX](../../t-sql/statements/alter-index-trans
 - [Adaptive Index Defrag](https://github.com/Microsoft/tigertoolbox/tree/master/AdaptiveIndexDefrag)
 - [CREATE STATISTICS (Transact-SQL)](../../t-sql/statements/create-statistics-transact-sql.md)
 - [UPDATE STATISTICS (Transact-SQL)](../../t-sql/statements/update-statistics-transact-sql.md)
-- [Columnstore indexes - Query performance](columnstore-indexes-query-performance.md)
-- [Get started with Columnstore for real-time operational analytics](get-started-with-columnstore-for-real-time-operational-analytics.md)
-- [Columnstore indexes - Data Warehouse](columnstore-indexes-data-warehouse.md)
+- [Columnstore indexes - query performance](columnstore-indexes-query-performance.md)
+- [Get started with columnstore indexes for real-time operational analytics](get-started-with-columnstore-for-real-time-operational-analytics.md)
+- [Columnstore indexes in data warehousing](columnstore-indexes-data-warehouse.md)
 - [Columnstore indexes and the merge policy for row groups](/archive/blogs/sqlserverstorageengine/columnstore-index-merge-policy-for-reorganize)

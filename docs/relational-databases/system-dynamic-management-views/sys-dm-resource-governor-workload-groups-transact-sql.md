@@ -26,7 +26,7 @@ ms.custom:
 
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
 
-Returns workload group statistics and the current in-memory configuration of the workload group. This view can be joined with [sys.dm_resource_governor_resource_pools](sys-dm-resource-governor-resource-pools-transact-sql.md) to get the resource pool name.
+Returns workload group statistics and the current in-memory configuration of the workload group.
 
 > [!NOTE]
 >  To call this from [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] or [!INCLUDE[ssPDW](../../includes/sspdw-md.md)], use the name **sys.dm_pdw_nodes_resource_governor_workload_groups**. [!INCLUDE[synapse-analytics-od-unsupported-syntax](../../includes/synapse-analytics-od-unsupported-syntax.md)]
@@ -71,7 +71,9 @@ Returns workload group statistics and the current in-memory configuration of the
 
 This dynamic management view shows the in-memory configuration. To see the stored configuration metadata, use the [sys.resource_governor_workload_groups](../../relational-databases/system-catalog-views/sys-resource-governor-workload-groups-transact-sql.md) catalog view.
 
-When `ALTER RESOURCE GOVERNOR RESET STATISTICS` is successfully executed, the following counters are reset: `statistics_start_time`, `total_request_count`, `total_queued_request_count`, `total_cpu_limit_violation_count`, `total_cpu_usage_ms`, `max_request_cpu_time_ms`, `total_lock_wait_count`, `total_lock_wait_time_ms`, `total_query_optimization_count`, `total_suboptimal_plan_generation_count`, `total_reduced_memgrant_count`, `max_request_grant_memory_kb`, `peak_tempdb_data_space_kb`, and `total_tempdb_data_limit_violation_count`. The counter `statistics_start_time` is set to the current system date and time, and the other counters are set to zero (0).
+This view can be joined with [sys.dm_resource_governor_resource_pools](sys-dm-resource-governor-resource-pools-transact-sql.md) to get the resource pool name.
+
+Statistics are tracked since the last start of the [!INCLUDE [ssDE-md](../../includes/ssde-md.md)]. When `ALTER RESOURCE GOVERNOR RESET STATISTICS` is executed, the following counters are reset: `statistics_start_time`, `total_request_count`, `total_queued_request_count`, `total_cpu_limit_violation_count`, `total_cpu_usage_ms`, `max_request_cpu_time_ms`, `total_lock_wait_count`, `total_lock_wait_time_ms`, `total_query_optimization_count`, `total_suboptimal_plan_generation_count`, `total_reduced_memgrant_count`, `max_request_grant_memory_kb`, `peak_tempdb_data_space_kb`, and `total_tempdb_data_limit_violation_count`. The counter `statistics_start_time` is set to the current system date and time, and the other counters are set to zero (`0`).
 
 ## Permissions
 

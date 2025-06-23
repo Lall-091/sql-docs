@@ -86,6 +86,8 @@ Returns information about the current resource pool state, the current configura
 
 Resource governor workload groups and resource pools have a many-to-one mapping. As a result, many of the resource pool statistics are derived from the workload group statistics.
 
+Statistics are tracked since the last start of the [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] and can be reset by executing `ALTER RESOURCE GOVERNOR RESET STATISTICS`.
+
 This dynamic management view shows the in-memory configuration. To see the stored configuration metadata, use the `sys.resource_governor_resource_pools` catalog view.
 
 ## Permissions

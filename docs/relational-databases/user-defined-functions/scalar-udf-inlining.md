@@ -1,17 +1,17 @@
 ---
 title: Scalar UDF Inlining
 description: The scalar UDF inlining feature improves performance of queries that invoke scalar UDFs in SQL Server 2019 and later versions.
-author: s-r-k
-ms.author: karam
-ms.reviewer: randolphwest
-ms.date: 01/30/2025
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: karam, wiassaf, srdjanmatin
+ms.date: 05/27/2025
 ms.service: sql
 ms.topic: conceptual
-monikerRange: "=azuresqldb-current || >=sql-server-ver15 || >=sql-server-linux-ver15"
+monikerRange: "=azuresqldb-current || >=sql-server-ver15 || >=sql-server-linux-ver15 || =fabric"
 ---
 # Scalar UDF inlining
 
-[!INCLUDE [SQL Server 2019 SQL Database SQL Managed Instance](../../includes/applies-to-version/sqlserver2019-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server 2019 SQL Database SQL Managed Instance FabricSE Fabric DW](../../includes/applies-to-version/sqlserver2019-asdb-asdbmi-fabricse-fabricdw.md)]
 
 This article introduces scalar UDF inlining, a feature under the [Intelligent query processing in SQL databases](../performance/intelligent-query-processing.md) suite of features. This feature improves the performance of queries that invoke scalar UDFs in [!INCLUDE [sssql19](../../includes/sssql19-md.md)] and later versions.
 
@@ -36,6 +36,10 @@ Scalar UDFs typically end up performing poorly due to the following reasons:
 The goal of the scalar UDF inlining feature is to improve performance of queries that invoke T-SQL scalar UDFs, where UDF execution is the main bottleneck.
 
 With this new feature, scalar UDFs are automatically transformed into scalar expressions or scalar subqueries that are substituted in the calling query in place of the UDF operator. These expressions and subqueries are then optimized. As a result, the query plan no longer has a user-defined function operator, but its effects are observed in the plan, like views or inline table-valued functions (TVFs).
+
+### Automatic inlining of scalar UDFs in Microsoft Fabric Data Warehouse
+
+In Microsoft Fabric Data Warehouse, scalar UDFs (currently in preview) are automatically inlined at compile time when the function body and the calling query meet requirements for inlining. For more information, see [CREATE FUNCTION](../../t-sql/statements/create-function-sql-data-warehouse.md?view=fabric&preserve-view=true) and [Scalar UDF inlining](../../relational-databases/user-defined-functions/scalar-udf-inlining.md?view=fabric&preserve-view=true).
 
 ## Examples
 
@@ -88,7 +92,7 @@ The query with the UDF performs poorly, due to the reasons outlined previously. 
 
 | Query: | Query without UDF | Query with UDF (without inlining) | Query with scalar UDF inlining |
 | --- | --- | --- | --- |
-| Execution time: | 1.6 seconds | 29 minutes 11 seconds | 1.6 seconds |
+| `Execution time:` | 1.6 seconds | 29 minutes 11 seconds | 1.6 seconds |
 
 These numbers are based on a 10-GB CCI database (using the TPC-H schema), running on a machine with dual processor (12 core), 96-GB RAM, backed by SSD. The numbers include compilation and execution time with a cold procedure cache and buffer pool. The default configuration was used, and no other indexes were created.
 
@@ -343,7 +347,7 @@ As described in this article, scalar UDF inlining transforms a query with scalar
 
 - If a UDF references built-in functions such as `SCOPE_IDENTITY()`, `@@ROWCOUNT`, or `@@ERROR`, the value returned by the built-in function changes with inlining. This change in behavior is because inlining changes the scope of statements inside the UDF. Starting with [!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)] CU2, inlining is blocked if the UDF references certain intrinsic functions (for example `@@ROWCOUNT`).
 
-- If a variable is assigned with the result of an inlined UDF and it also used as `index_column_name` in `FORCESEEK` [Query hints](../../t-sql/queries/hints-transact-sql-query.md), it results in error 8622, indicating that the query processor couldn't produce a query plan because of the hints defined in the query.
+- If a variable is assigned with the result of an inlined UDF and it also used as `index_column_name` in `FORCESEEK` [Query hints (Transact-SQL)](../../t-sql/queries/hints-transact-sql-query.md), it results in error 8622, indicating that the query processor couldn't produce a query plan because of the hints defined in the query.
 
 ## Related content
 

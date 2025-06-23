@@ -56,7 +56,7 @@ Returns a tabular result as follows:
 | `match_id` | **bigint** | The sequence of matching words. |
 | `start_position` | **int** | Starting index position. |
 | `end_position` | **int** | Ending index position. |
-| `string_expression` | Same type as `string_expression` or **varchar** | Matching expression. |
+| `match_value` | Same type as `string_expression` or **varchar** | Matching expression. |
 | `substring_matches` | **json** | JSON document describing match. |
 
 ## Examples
