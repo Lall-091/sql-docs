@@ -4,7 +4,7 @@ description: "Permanently deletes e-mail messages from the Database Mail interna
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -47,7 +47,7 @@ Deletes e-mails of the type specified by *@sent_status*. *@sent_status* is **var
 - `retrying`
 - `failed`.
 
-NULL indicates all statuses.
+`NULL` indicates all statuses.
 
 ## Return code values
 
@@ -70,11 +70,12 @@ By default, this stored procedure is granted for execution to members off the **
 The following example deletes all e-mails in the Database Mail system.
 
 ```sql
-DECLARE @GETDATE DATETIME;
+DECLARE @GETDATE AS DATETIME;
 
 SET @GETDATE = GETDATE();
 
-EXECUTE msdb.dbo.sysmail_delete_mailitems_sp @sent_before = @GETDATE;
+EXECUTE msdb.dbo.sysmail_delete_mailitems_sp
+    @sent_before = @GETDATE;
 GO
 ```
 
@@ -83,8 +84,7 @@ GO
 The following example deletes e-mails in the Database Mail log that are older than October 9, 2022.
 
 ```sql
-EXEC msdb.dbo.sysmail_delete_mailitems_sp
-    @sent_before = 'October 9, 2022';
+EXECUTE msdb.dbo.sysmail_delete_mailitems_sp @sent_before = 'October 9, 2022';
 GO
 ```
 
@@ -93,8 +93,7 @@ GO
 The following example deletes all failed e-mails in the Database Mail log.
 
 ```sql
-EXEC msdb.dbo.sysmail_delete_mailitems_sp
-    @sent_status = 'failed';
+EXECUTE msdb.dbo.sysmail_delete_mailitems_sp @sent_status = 'failed';
 GO
 ```
 

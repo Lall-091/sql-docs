@@ -4,7 +4,7 @@ description: "Returns change data capture metadata information for the captured 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -83,8 +83,7 @@ The following example returns information about the captured columns in the `Hum
 USE AdventureWorks2022;
 GO
 
-EXECUTE sys.sp_cdc_get_captured_columns
-    @capture_instance = N'HumanResources_Employee';
+EXECUTE sys.sp_cdc_get_captured_columns @capture_instance = N'HumanResources_Employee';
 GO
 ```
 

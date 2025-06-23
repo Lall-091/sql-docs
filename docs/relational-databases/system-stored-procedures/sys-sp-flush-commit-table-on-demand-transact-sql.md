@@ -4,7 +4,7 @@ description: Deletes rows from syscommittab in batches.
 author: JetterMcTedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -63,18 +63,18 @@ Specifies the number of rows you want to delete from syscommittab. *@numrows* is
 ## Examples
 
 ```sql
-DECLARE @deleted_rows BIGINT;
-DECLARE @date_cleanedup DATETIME;
-DECLARE @cleanup_ts BIGINT;
+DECLARE @deleted_rows AS BIGINT;
+DECLARE @date_cleanedup AS DATETIME;
+DECLARE @cleanup_ts AS BIGINT;
 
-EXEC sys.sp_flush_commit_table_on_demand 3000,
+EXECUTE sys.sp_flush_commit_table_on_demand 3000,
     @deleted_rows = @deleted_rows OUTPUT,
     @date_cleanedup = @date_cleanedup OUTPUT,
     @cleanup_ts = @cleanup_ts OUTPUT;
 
-PRINT CONCAT ('Number of rows deleted: ', @deleted_rows);
-PRINT CONCAT ('Cleanup date: ', @date_cleanedup);
-PRINT CONCAT ('Change tracking version: ', @cleanup_ts);
+PRINT CONCAT('Number of rows deleted: ', @deleted_rows);
+PRINT CONCAT('Cleanup date: ', @date_cleanedup);
+PRINT CONCAT('Change tracking version: ', @cleanup_ts);
 GO
 ```
 
@@ -101,8 +101,8 @@ Only a member of the **sysadmin** server role or **db_owner** database role can 
 
 ## Related content
 
-- [About change tracking (Transact-SQL)](../track-changes/about-change-tracking-sql-server.md)
-- [Change tracking cleanup and Troubleshooting (Transact-SQL)](../track-changes/cleanup-and-troubleshoot-change-tracking-sql-server.md)
-- [Change tracking functions (Transact-SQL)](../system-functions/change-tracking-functions-transact-sql.md)
-- [Change tracking system tables (Transact-SQL)](../system-tables/change-tracking-tables-transact-sql.md)
-- [Change tracking stored procedures (Transact-SQL)](change-tracking-stored-procedures-transact-sql.md)
+- [About Change Tracking (SQL Server)](../track-changes/about-change-tracking-sql-server.md)
+- [Troubleshoot change tracking auto cleanup issues](../track-changes/cleanup-and-troubleshoot-change-tracking-sql-server.md)
+- [Change Tracking Functions (Transact-SQL)](../system-functions/change-tracking-functions-transact-sql.md)
+- [Change Tracking tables (Transact-SQL)](../system-tables/change-tracking-tables-transact-sql.md)
+- [Change Tracking stored procedures (Transact-SQL)](change-tracking-stored-procedures-transact-sql.md)

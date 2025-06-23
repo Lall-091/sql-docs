@@ -4,7 +4,7 @@ description: "Creates a new Database Mail account holding information about an S
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -120,7 +120,7 @@ The stored procedure `sysmail_add_account_sp` is in the `msdb` database and is o
 The following example creates an account named `AdventureWorks Administrator`. The account uses the e-mail address `dba@adventure-works.com` and sends mail to the SMTP mail server `smtp.adventure-works.com`. E-mail messages sent from this account show `AdventureWorks Automated Mailer` on the `From:` line of the message. Replies to the messages are directed to `danw@adventure-works.com`.
 
 ```sql
-EXEC msdb.dbo.sysmail_add_account_sp
+EXECUTE msdb.dbo.sysmail_add_account_sp
     @account_name = 'AdventureWorks Administrator',
     @description = 'Mail account for administrative e-mail.',
     @email_address = 'dba@adventure-works.com',
@@ -131,5 +131,5 @@ EXEC msdb.dbo.sysmail_add_account_sp
 ## Related content
 
 - [Database Mail](../database-mail/database-mail.md)
-- [Create a Database Mail Account](../database-mail/create-a-database-mail-account.md)
+- [Create a Database Mail account](../database-mail/create-a-database-mail-account.md)
 - [Database Mail stored procedures (Transact-SQL)](database-mail-stored-procedures-transact-sql.md)

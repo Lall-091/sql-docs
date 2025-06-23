@@ -4,7 +4,7 @@ description: "Returns the data definition language (DDL) change history associat
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -81,8 +81,7 @@ GO
 WAITFOR DELAY '00:00:10';
 GO
 
-EXECUTE sys.sp_cdc_get_ddl_history
-    @capture_instance = 'HumanResources_Employee';
+EXECUTE sys.sp_cdc_get_ddl_history @capture_instance = 'HumanResources_Employee';
 GO
 ```
 

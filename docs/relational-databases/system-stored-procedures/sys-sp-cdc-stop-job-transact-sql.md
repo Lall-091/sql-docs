@@ -4,7 +4,7 @@ description: "Stops a change data capture cleanup or capture job for the current
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/13/2023
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -64,8 +64,7 @@ The following example stops the capture job for the [!INCLUDE [sssampledbobject-
 USE AdventureWorks2022;
 GO
 
-EXEC sys.sp_cdc_stop_job
-    @job_type = N'capture';
+EXECUTE sys.sp_cdc_stop_job @job_type = N'capture';
 GO
 ```
 

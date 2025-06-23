@@ -4,7 +4,7 @@ description: "Manually starts persistent version store (PVS) cleanup process, a 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: dfurman
-ms.date: 03/10/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -98,13 +98,13 @@ If ADR is disabled, run `sys.sp_persistent_version_cleanup` to clean up previous
 To activate the PVS cleanup process manually between workloads or during maintenance windows, use the following sample script:
 
 ```sql
-EXEC sys.sp_persistent_version_cleanup [database_name];
+EXECUTE sys.sp_persistent_version_cleanup [database_name];
 ```
 
 For example:
 
 ```sql
-EXEC sys.sp_persistent_version_cleanup [WideWorldImporters];
+EXECUTE sys.sp_persistent_version_cleanup [WideWorldImporters];
 ```
 
 Or, to assume the current database context:
@@ -112,7 +112,8 @@ Or, to assume the current database context:
 ```sql
 USE [WideWorldImporters];
 GO
-EXEC sys.sp_persistent_version_cleanup;
+
+EXECUTE sys.sp_persistent_version_cleanup;
 ```
 
 ## Related content

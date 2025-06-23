@@ -4,7 +4,7 @@ description: "Binds the specified In-Memory OLTP database to the specified resou
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/14/2023
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -122,7 +122,7 @@ When successful, the function returns the following success message, which is lo
 A. The following code example binds the database `Hekaton_DB` to the resource pool `Pool_Hekaton`.
 
 ```sql
-sys.sp_xtp_bind_db_resource_pool N'Hekaton_DB', N'Pool_Hekaton';
+EXECUTE sys.sp_xtp_bind_db_resource_pool N'Hekaton_DB', N'Pool_Hekaton';
 ```
 
 The binding takes effect the next time the database is brought online.
@@ -130,33 +130,30 @@ The binding takes effect the next time the database is brought online.
 B. This expanded version of the previous example includes some extra checks. Execute the following [!INCLUDE [tsql](../../includes/tsql-md.md)] in [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)]:
 
 ```sql
-DECLARE @resourcePool SYSNAME = N'Pool_Hekaton';
-DECLARE @database SYSNAME = N'Hekaton_DB';
+DECLARE @resourcePool AS SYSNAME = N'Pool_Hekaton';
+DECLARE @database AS SYSNAME = N'Hekaton_DB';
 
 -- Check whether resource pool exists
-IF NOT EXISTS (
-        SELECT *
-        FROM sys.resource_governor_resource_pools
-        WHERE name = @resourcePool
-        )
+IF NOT EXISTS (SELECT *
+               FROM sys.resource_governor_resource_pools
+               WHERE name = @resourcePool)
 BEGIN
     SELECT N'Resource pool "' + @resourcePool + N'" does not exist or resource governor has not been reconfigured.';
 END
 -- Check whether database is already bound to a resource pool
-ELSE IF EXISTS (
-        SELECT p.name
-        FROM sys.databases d
-        INNER JOIN sys.resource_governor_resource_pools p
+ELSE IF EXISTS (SELECT p.name
+    FROM sys.databases AS d
+        INNER JOIN sys.resource_governor_resource_pools AS p
             ON d.resource_pool_id = p.pool_id
-        WHERE d.name = @database
-        )
+    WHERE d.name = @database)
 BEGIN
     SELECT N'Database "' + @database + N'" is currently bound to resource pool "' + @resourcePool + N'". A database must be unbound before creating a new binding.';
 END
 -- Bind resource pool to database.
 ELSE
 BEGIN
-    EXEC sp_xtp_bind_db_resource_pool @database,
+    EXECUTE sp_xtp_bind_db_resource_pool
+        @database,
         @resourcePool;
 END
 ```

@@ -4,7 +4,7 @@ description: "Manually clean the side table (change_tracking_objectid) for a tab
 author: JetterMcTedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 07/06/2023
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -53,9 +53,9 @@ The change tracking-enabled table to be manually cleaned up. The backlogs are le
 ## Examples
 
 ```sql
-DECLARE @DeletedRowCount BIGINT;
+DECLARE @DeletedRowCount AS BIGINT;
 
-EXEC sys.sp_flush_CT_internal_table_on_demand '[Sales].[Orders]',
+EXECUTE sys.sp_flush_CT_internal_table_on_demand '[Sales].[Orders]',
     @DeletedRowCount = @DeletedRowCount OUTPUT;
 
 PRINT CONCAT('Number of rows deleted: ', @DeletedRowCount);
@@ -94,8 +94,8 @@ Only a member of the **sysadmin** server role or **db_owner** database role can 
 
 ## Related content
 
-- [About change tracking (Transact-SQL)](../track-changes/about-change-tracking-sql-server.md)
-- [Change tracking cleanup and troubleshooting (Transact-SQL)](../track-changes/cleanup-and-troubleshoot-change-tracking-sql-server.md)
-- [Change tracking functions (Transact-SQL)](../system-functions/change-tracking-functions-transact-sql.md)
-- [Change tracking system tables (Transact-SQL)](../system-tables/change-tracking-tables-transact-sql.md)
-- [Change tracking stored procedures (Transact-SQL)](change-tracking-stored-procedures-transact-sql.md)
+- [About Change Tracking (SQL Server)](../track-changes/about-change-tracking-sql-server.md)
+- [Troubleshoot change tracking auto cleanup issues](../track-changes/cleanup-and-troubleshoot-change-tracking-sql-server.md)
+- [Change Tracking Functions (Transact-SQL)](../system-functions/change-tracking-functions-transact-sql.md)
+- [Change Tracking tables (Transact-SQL)](../system-tables/change-tracking-tables-transact-sql.md)
+- [Change Tracking stored procedures (Transact-SQL)](change-tracking-stored-procedures-transact-sql.md)

@@ -4,7 +4,7 @@ description: "Enables per query statistics collection for all or specific native
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -68,19 +68,22 @@ Requires membership in the fixed **sysadmin** role.
 The following code sample shows how to enable statistics collection for all natively compiled stored procedures for the instance, and then for a specific natively compiled stored procedure.
 
 ```sql
-DECLARE @c BIT;
+DECLARE @c AS BIT;
 
-EXEC sys.sp_xtp_control_query_exec_stats @new_collection_value = 1;
+EXECUTE sys.sp_xtp_control_query_exec_stats @new_collection_value = 1;
 
-EXEC sys.sp_xtp_control_query_exec_stats @old_collection_value = @c OUTPUT;
+EXECUTE sys.sp_xtp_control_query_exec_stats
+    @old_collection_value = @c OUTPUT;
 
 SELECT @c AS 'collection status';
 
-EXEC sys.sp_xtp_control_query_exec_stats @new_collection_value = 1,
+EXECUTE sys.sp_xtp_control_query_exec_stats
+    @new_collection_value = 1,
     @database_id = 5,
     @xtp_object_id = 41576255;
 
-EXEC sys.sp_xtp_control_query_exec_stats @database_id = 5,
+EXECUTE sys.sp_xtp_control_query_exec_stats
+    @database_id = 5,
     @xtp_object_id = 41576255,
     @old_collection_value = @c OUTPUT;
 

@@ -4,7 +4,7 @@ description: "Removes a change data capture cleanup or capture job for the curre
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -63,7 +63,7 @@ The following example removes the cleanup job for the [!INCLUDE [sssampledbobjec
 USE AdventureWorks2022;
 GO
 
-EXEC sys.sp_cdc_drop_job @job_type = N'cleanup';
+EXECUTE sys.sp_cdc_drop_job @job_type = N'cleanup';
 ```
 
 ## Related content

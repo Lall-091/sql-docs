@@ -4,7 +4,7 @@ description: Flushes to disk the transaction log of the current database, harden
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 07/06/2023
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -52,7 +52,7 @@ None.
 ## Sample code
 
 ```sql
-EXEC sys.sp_flush_log;
+EXECUTE sys.sp_flush_log;
 ```
 
 ## Related content

@@ -3,7 +3,7 @@ title: "sys.sp_query_store_set_hints (Transact-SQL)"
 description: "Creates or updates Query Store hints for a given query, allowing you to influence queries without changing application code or database objects."
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 03/07/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: reference
@@ -51,7 +51,7 @@ A character string of query options beginning with `OPTION`. *@query_hints* is *
 
 #### [ @query_hint_scope = ] '*replica_group_id*'
 
-By default, the scope of a new Query Store hint is the local replica only. *@query_hint_scope* is **tinyint**. This optional parameter determines the scope at which the hint will be applied on a secondary replica when [Query Store for secondary replicas](../performance/query-store-for-secondary-replicas.md) is enabled. The optional *query_hint_scope* argument defaults only to the local replica (primary or secondary), but you can optionally specify a *replica_group_id* referencing [sys.query_store_replicas](../system-catalog-views/sys-query-store-replicas.md).
+By default, the scope of a new Query Store hint is the local replica only. *@query_hint_scope* is **tinyint**. This optional parameter determines the scope at which the hint will be applied on a secondary replica when [Query Store for readable secondaries](../performance/query-store-for-secondary-replicas.md) is enabled. The optional *query_hint_scope* argument defaults only to the local replica (primary or secondary), but you can optionally specify a *replica_group_id* referencing [sys.query_store_replicas](../system-catalog-views/sys-query-store-replicas.md).
 
 ## Return value
 
@@ -101,7 +101,7 @@ The following query hints are currently unsupported:
 - `USE PLAN` (instead, consider Query Store's original plan forcing capability, [sp_query_store_force_plan](sp-query-store-force-plan-transact-sql.md)).
 - `DISABLE_DEFERRED_COMPILATION_TV`
 - `DISABLE_TSQL_SCALAR_UDF_INLINING`
-- [Table hints (for example, FORCESEEK, READUNCOMMITTED, INDEX)](../../t-sql/queries/hints-transact-sql-table.md)
+- [Table hints](../../t-sql/queries/hints-transact-sql-table.md) (for example, `FORCESEEK`, `READUNCOMMITTED`, `INDEX`)
 
 ## Permissions
 
@@ -116,10 +116,12 @@ The following example queries [sys.query_store_query_text](../system-catalog-vie
 In this example, the query we're attempting to tune is in the `SalesLT` sample database:
 
 ```sql
-SELECT * FROM SalesLT.Address as A
-INNER JOIN SalesLT.CustomerAddress as CA
-on A.AddressID = CA.AddressID
-WHERE PostalCode = '98052' ORDER BY A.ModifiedDate DESC;
+SELECT *
+FROM SalesLT.Address AS A
+     INNER JOIN SalesLT.CustomerAddress AS CA
+         ON A.AddressID = CA.AddressID
+WHERE PostalCode = '98052'
+ORDER BY A.ModifiedDate DESC;
 ```
 
 Query Store doesn't immediately reflect query data to its system views.
@@ -127,12 +129,13 @@ Query Store doesn't immediately reflect query data to its system views.
 Identify the query in the Query Store system catalog views:
 
 ```sql
-SELECT q.query_id, qt.query_sql_text
-FROM sys.query_store_query_text qt
-INNER JOIN sys.query_store_query q ON
-    qt.query_text_id = q.query_text_id
-WHERE query_sql_text like N'%PostalCode =%'
-  AND query_sql_text not like N'%query_store%';
+SELECT q.query_id,
+       qt.query_sql_text
+FROM sys.query_store_query_text AS qt
+     INNER JOIN sys.query_store_query AS q
+         ON qt.query_text_id = q.query_text_id
+WHERE query_sql_text LIKE N'%PostalCode =%'
+      AND query_sql_text NOT LIKE N'%query_store%';
 GO
 ```
 
@@ -143,13 +146,17 @@ In the following samples, the previous query example in the `SalesLT` database w
 The following example applies the RECOMPILE hint to *query_id* 39, as identified in Query Store:
 
 ```sql
-EXEC sys.sp_query_store_set_hints @query_id= 39, @query_hints = N'OPTION(RECOMPILE)';
+EXECUTE sys.sp_query_store_set_hints
+    @query_id = 39,
+    @query_hints = N'OPTION(RECOMPILE)';
 ```
 
 The following example applies the hint to force the [legacy cardinality estimator](../performance/cardinality-estimation-sql-server.md) to *query_id* 39, identified in Query Store:
 
 ```sql
-EXEC sys.sp_query_store_set_hints @query_id= 39, @query_hints = N'OPTION(USE HINT(''FORCE_LEGACY_CARDINALITY_ESTIMATION''))';
+EXECUTE sys.sp_query_store_set_hints
+    @query_id = 39,
+    @query_hints = N'OPTION(USE HINT(''FORCE_LEGACY_CARDINALITY_ESTIMATION''))';
 ```
 
 ### Apply multiple hints
@@ -157,7 +164,9 @@ EXEC sys.sp_query_store_set_hints @query_id= 39, @query_hints = N'OPTION(USE HIN
 The following example applies multiple query hints to *query_id* 39, including RECOMPILE, MAXDOP 1, and the SQL 2012 query optimizer behavior:
 
 ```sql
-EXEC sys.sp_query_store_set_hints @query_id= 39, @query_hints = N'OPTION(RECOMPILE, MAXDOP 1, USE HINT(''QUERY_OPTIMIZER_COMPATIBILITY_LEVEL_110''))';
+EXECUTE sys.sp_query_store_set_hints
+    @query_id = 39,
+    @query_hints = N'OPTION(RECOMPILE, MAXDOP 1, USE HINT(''QUERY_OPTIMIZER_COMPATIBILITY_LEVEL_110''))';
 ```
 
 ### View Query Store hints
@@ -165,7 +174,14 @@ EXEC sys.sp_query_store_set_hints @query_id= 39, @query_hints = N'OPTION(RECOMPI
 The following example returns existing Query Store hints:
 
 ```sql
-SELECT query_hint_id, query_id, query_hint_text, last_query_hint_failure_reason, last_query_hint_failure_reason_desc, query_hint_failure_count, source, source_desc
+SELECT query_hint_id,
+       query_id,
+       query_hint_text,
+       last_query_hint_failure_reason,
+       last_query_hint_failure_reason_desc,
+       query_hint_failure_count,
+       source,
+       source_desc
 FROM sys.query_store_query_hints
 WHERE query_id = 39;
 ```
@@ -175,7 +191,7 @@ WHERE query_id = 39;
 Use the following example to remove the hint from *query_id* 39, using the [sp_query_store_clear_hints](sys-sp-query-store-clear-hints-transact-sql.md) system stored procedure.
 
 ```sql
-EXEC sys.sp_query_store_clear_hints @query_id = 39;
+EXECUTE sys.sp_query_store_clear_hints @query_id = 39;
 ```
 
 ## Related content

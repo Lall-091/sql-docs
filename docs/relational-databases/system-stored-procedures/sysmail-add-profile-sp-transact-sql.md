@@ -4,7 +4,7 @@ description: "Created a new Database Mail profile in an instance of SQL Server o
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -74,9 +74,9 @@ The stored procedure `sysmail_add_profile_sp` is in the `msdb` database and is o
 The following example creates a new Database Mail profile named `AdventureWorks Administrator`.
 
 ```sql
-EXEC msdb.dbo.sysmail_add_profile_sp
-       @profile_name = 'AdventureWorks Administrator',
-       @description = 'Profile used for administrative mail.';
+EXECUTE msdb.dbo.sysmail_add_profile_sp
+    @profile_name = 'AdventureWorks Administrator',
+    @description = 'Profile used for administrative mail.';
 ```
 
 ### B. Create a new profile, saving the profile ID in a variable
@@ -84,12 +84,12 @@ EXEC msdb.dbo.sysmail_add_profile_sp
 The following example creates a new Database Mail profile named `AdventureWorks Administrator`. The example stores the profile ID number in the variable `@profileId` and returns a result set containing the profile ID number for the new profile.
 
 ```sql
-DECLARE @profileId INT;
+DECLARE @profileId AS INT;
 
 EXECUTE msdb.dbo.sysmail_add_profile_sp
-       @profile_name = 'AdventureWorks Administrator',
-       @description = 'Profile used for administrative mail.',
-       @profile_id = @profileId OUTPUT;
+    @profile_name = 'AdventureWorks Administrator',
+    @description = 'Profile used for administrative mail.',
+    @profile_id = @profileId OUTPUT;
 
 SELECT @profileId;
 ```
@@ -99,7 +99,7 @@ SELECT @profileId;
 - [Database Mail](../database-mail/database-mail.md)
 - [Database Mail Configuration Objects](../database-mail/database-mail-configuration-objects.md)
 - [Database Mail stored procedures (Transact-SQL)](database-mail-stored-procedures-transact-sql.md)
-- [Configure Database Mail](../database-mail/configure-database-mail.md)
-- [Create a Database Mail Account](../database-mail/create-a-database-mail-account.md)
+- [Configure database mail](../database-mail/configure-database-mail.md)
+- [Create a Database Mail account](../database-mail/create-a-database-mail-account.md)
 - [Configure SQL Server Agent mail to use Database Mail](../database-mail/configure-sql-server-agent-mail-to-use-database-mail.md)
 - [Automate management tasks using SQL Agent jobs in Azure SQL Managed Instance](/azure/azure-sql/managed-instance/job-automation-managed-instance)

@@ -4,7 +4,7 @@ description: "Deletes events from the Database Mail log."
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -47,7 +47,7 @@ Deletes log entries of the type specified as the *@event_type*. *@event_type* is
 - `error`
 - `informational`
 
-NULL indicates all event types.
+`NULL` indicates all event types.
 
 ## Return code values
 
@@ -70,7 +70,7 @@ Deleting entries in the Database Mail log doesn't delete the e-mails entries fro
 The following example deletes all events in the Database Mail log.
 
 ```sql
-EXEC msdb.dbo.sysmail_delete_log_sp;
+EXECUTE msdb.dbo.sysmail_delete_log_sp;
 GO
 ```
 
@@ -79,8 +79,7 @@ GO
 The following example deletes events in the Database Mail log that are older than October 9, 2022.
 
 ```sql
-EXEC msdb.dbo.sysmail_delete_log_sp
-    @logged_before = 'October 9, 2022';
+EXECUTE msdb.dbo.sysmail_delete_log_sp @logged_before = 'October 9, 2022';
 GO
 ```
 
@@ -89,8 +88,7 @@ GO
 The following example deletes success messages in the Database Mail log.
 
 ```sql
-EXEC msdb.dbo.sysmail_delete_log_sp
-    @event_type = 'success' ;
+EXECUTE msdb.dbo.sysmail_delete_log_sp @event_type = 'success';
 GO
 ```
 

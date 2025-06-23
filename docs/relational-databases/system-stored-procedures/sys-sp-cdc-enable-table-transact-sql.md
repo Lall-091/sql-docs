@@ -4,7 +4,7 @@ description: "Enables change data capture for the specified source table in the 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -163,7 +163,7 @@ The following example enables change data capture for the `HumanResources.Depart
 USE AdventureWorks2022;
 GO
 
-EXEC sys.sp_cdc_enable_table
+EXECUTE sys.sp_cdc_enable_table
     @source_schema = N'HumanResources',
     @source_name = N'Department',
     @role_name = N'cdc_admin',

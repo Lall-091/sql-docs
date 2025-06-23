@@ -3,7 +3,7 @@ title: "sp_query_store_clear_hints (Transact-SQL)"
 description: "Removes all Query Store hints for a given query."
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 03/07/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: reference
@@ -62,7 +62,7 @@ Requires the ALTER permission on the database.
 The following example removes the Query Store hint text for *query_id* 39:
 
 ```sql
-EXEC sys.sp_query_store_clear_hints @query_id = 39;
+EXECUTE sys.sp_query_store_clear_hints @query_id = 39;
 ```
 
 ### View Query Store hints
@@ -71,13 +71,13 @@ The following example returns existing Query Store hints for *query_id* 39:
 
 ```sql
 SELECT query_hint_id,
-    query_id,
-    query_hint_text,
-    last_query_hint_failure_reason,
-    last_query_hint_failure_reason_desc,
-    query_hint_failure_count,
-    source,
-    source_desc
+       query_id,
+       query_hint_text,
+       last_query_hint_failure_reason,
+       last_query_hint_failure_reason_desc,
+       query_hint_failure_count,
+       source,
+       source_desc
 FROM sys.query_store_query_hints
 WHERE query_id = 39;
 ```

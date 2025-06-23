@@ -4,7 +4,7 @@ description: "Enables statistics collection for natively compiled stored procedu
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -58,11 +58,12 @@ Requires membership in the fixed **sysadmin** role.
 To set *@new_collection_value* and query for the value of *@new_collection_value*:
 
 ```sql
-EXEC sys.sp_xtp_control_proc_exec_stats @new_collection_value = 1;
+EXECUTE sys.sp_xtp_control_proc_exec_stats @new_collection_value = 1;
 
-DECLARE @c BIT;
+DECLARE @c AS BIT;
 
-EXEC sys.sp_xtp_control_proc_exec_stats @old_collection_value = @c OUTPUT;
+EXECUTE sys.sp_xtp_control_proc_exec_stats
+    @old_collection_value = @c OUTPUT;
 
 SELECT @c AS 'collection status';
 ```

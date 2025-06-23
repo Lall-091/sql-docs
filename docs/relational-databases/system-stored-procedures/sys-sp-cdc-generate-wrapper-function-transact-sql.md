@@ -4,7 +4,7 @@ description: "Generates scripts to create wrapper functions for the change data 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: wiassaf, randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -80,31 +80,26 @@ The following example show how you can use `sys.sp_cdc_generate_wrapper_function
 ```sql
 DECLARE @wrapper_functions TABLE (
     function_name SYSNAME,
-    create_script NVARCHAR(MAX)
-);
+    create_script NVARCHAR (MAX));
 
 INSERT INTO @wrapper_functions
-EXEC sys.sp_cdc_generate_wrapper_function;
+EXECUTE sys.sp_cdc_generate_wrapper_function;
 
-DECLARE @create_script NVARCHAR(MAX);
+DECLARE @create_script AS NVARCHAR (MAX);
 
 DECLARE #hfunctions CURSOR LOCAL FAST_FORWARD
-FOR
-SELECT create_script
-FROM @wrapper_functions;
+    FOR SELECT create_script
+        FROM @wrapper_functions;
 
 OPEN #hfunctions;
 
-FETCH #hfunctions
-INTO @create_script;
+FETCH #hfunctions INTO @create_script;
 
 WHILE (@@fetch_status <> -1)
-BEGIN
-    EXEC sp_executesql @create_script
-
-    FETCH #hfunctions
-    INTO @create_script
-END;
+    BEGIN
+        EXECUTE sp_executesql @create_script;
+        FETCH #hfunctions INTO @create_script;
+    END
 
 CLOSE #hfunctions;
 

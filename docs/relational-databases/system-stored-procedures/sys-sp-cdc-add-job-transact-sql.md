@@ -4,7 +4,7 @@ description: "Creates a change data capture cleanup or capture job in the curren
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -119,7 +119,8 @@ The following example creates a capture job. This example assumes that the exist
 ```sql
 USE AdventureWorks2022;
 GO
-EXEC sys.sp_cdc_add_job @job_type = N'capture';
+
+EXECUTE sys.sp_cdc_add_job @job_type = N'capture';
 GO
 ```
 
@@ -131,7 +132,7 @@ The following example creates a cleanup job in the [!INCLUDE [ssSampleDBnormal](
 USE AdventureWorks2022;
 GO
 
-EXEC sys.sp_cdc_add_job
+EXECUTE sys.sp_cdc_add_job
     @job_type = N'cleanup',
     @start_job = 0,
     @retention = 5760;

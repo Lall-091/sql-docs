@@ -4,7 +4,7 @@ description: "Reports information about all change data capture cleanup or captu
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/22/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -63,7 +63,7 @@ The following example returns information about the defined capture and cleanup 
 USE AdventureWorks2022;
 GO
 
-EXEC sys.sp_cdc_help_jobs;
+EXECUTE sys.sp_cdc_help_jobs;
 GO
 ```
 

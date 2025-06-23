@@ -4,7 +4,7 @@ description: Removes rows from the change table in the current database based on
 author: briancarrig
 ms.author: brcarrig
 ms.reviewer: randolphwest
-ms.date: 07/25/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -79,14 +79,15 @@ None, unless the optional *@fCleanupFailed* OUTPUT parameter is used.
 SELECT @cleanup_failed_bit = 0;
 
 -- Execute cleanup and obtain output bit
-EXEC @retcode = sys.sp_cdc_cleanup_change_table
+EXECUTE
+    @retcode = sys.sp_cdc_cleanup_change_table
     @capture_instance = '<CaptureInstance>',
     @low_water_mark = @LSN, --== LSN to be used for new low watermark for capture instance
     @threshold = 1,
     @fCleanupFailed = @cleanup_failed_bit OUTPUT;
 
 -- Leverage @cleanup_failed_bit output to check the status.
-SELECT IIF(@cleanup_failed_bit > 0, 'CLEANUP FAILURE', 'CLEANUP SUCCESS');
+SELECT IIF (@cleanup_failed_bit > 0, 'CLEANUP FAILURE', 'CLEANUP SUCCESS');
 ```
 
 ```output

@@ -4,7 +4,7 @@ description: "Marks source files used in the merge operation with the log sequen
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -69,7 +69,7 @@ Requires membership in the **db_owner** fixed database role.
 To mark unneeded source files for garbage collection in the `tempdb` database, use the following sample script:
 
 ```sql
-EXEC sys.sp_xtp_checkpoint_force_garbage_collection N'tempdb';
+EXECUTE sys.sp_xtp_checkpoint_force_garbage_collection N'tempdb';
 ```
 
 ## Related content

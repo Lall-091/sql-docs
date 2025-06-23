@@ -4,7 +4,7 @@ description: "Manually release memory related to deleted rows of in-memory data 
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -73,26 +73,26 @@ Prior to [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], execute this sto
 To execute garbage cleanup on system-level memory structures and memory-optimized TempDB metadata in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]:
 
 ```sql
-EXEC sys.sp_xtp_force_gc N'tempdb';
+EXECUTE sys.sp_xtp_force_gc N'tempdb';
 GO
 
-EXEC sys.sp_xtp_force_gc;
+EXECUTE sys.sp_xtp_force_gc;
 GO
 ```
 
 To execute garbage cleanup on system-level memory structures and memory-optimized TempDB metadata prior to [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]:
 
 ```sql
-EXEC sys.sp_xtp_force_gc N'tempdb';
+EXECUTE sys.sp_xtp_force_gc N'tempdb';
 GO
 
-EXEC sys.sp_xtp_force_gc N'tempdb';
+EXECUTE sys.sp_xtp_force_gc N'tempdb';
 GO
 
-EXEC sys.sp_xtp_force_gc;
+EXECUTE sys.sp_xtp_force_gc;
 GO
 
-EXEC sys.sp_xtp_force_gc;
+EXECUTE sys.sp_xtp_force_gc;
 GO
 ```
 

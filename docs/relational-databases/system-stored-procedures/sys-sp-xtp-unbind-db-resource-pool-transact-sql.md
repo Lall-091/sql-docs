@@ -4,7 +4,7 @@ description: "Removes an existing binding between a database and a resource pool
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -57,7 +57,7 @@ Database 'Hekaton_DB' does not have a binding to a resource pool.
 The following code unbinds the database `Hekaton_DB` from the [!INCLUDE [inmemory](../../includes/inmemory-md.md)] resource pool it's bound to. If `Hekaton_DB` isn't currently bound to a [!INCLUDE [inmemory](../../includes/inmemory-md.md)] resource pool, a message is given. The database must be restarted for the unbinding to take effect.
 
 ```sql
-sys.sp_xtp_unbind_db_resource_pool N'Hekaton_DB';
+EXECUTE sys.sp_xtp_unbind_db_resource_pool N'Hekaton_DB';
 ```
 
 ## Requirements

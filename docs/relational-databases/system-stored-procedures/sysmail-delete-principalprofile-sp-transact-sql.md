@@ -4,7 +4,7 @@ description: "Removes permission for a database user or role to use a public or 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/22/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -71,7 +71,7 @@ The stored procedure `sysmail_delete_principalprofile_sp` is in the `msdb` datab
 The following example shows deleting the association between the profile `AdventureWorks Administrator` and the login `ApplicationUser` in the `msdb` database.
 
 ```sql
-EXEC msdb.dbo.sysmail_delete_principalprofile_sp
+EXECUTE msdb.dbo.sysmail_delete_principalprofile_sp
     @principal_name = 'ApplicationUser',
     @profile_name = 'AdventureWorks Administrator';
 ```

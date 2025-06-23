@@ -4,7 +4,7 @@ description: "Grants permission for an msdb database principal to use a Database
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 11/02/2023
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -83,7 +83,7 @@ The stored procedure `sysmail_add_principalprofile_sp` is in the `msdb` database
 The following example creates an association between the profile named `AdventureWorks Administrator Profile` and the `msdb` database user `ApplicationUser`. The profile is the default profile for the user.
 
 ```sql
-EXEC msdb.dbo.sysmail_add_principalprofile_sp
+EXECUTE msdb.dbo.sysmail_add_principalprofile_sp
     @principal_name = 'ApplicationUser',
     @profile_name = 'AdventureWorks Administrator Profile',
     @is_default = 1;
@@ -94,7 +94,7 @@ EXEC msdb.dbo.sysmail_add_principalprofile_sp
 The following example makes the profile `AdventureWorks Public Profile` the default public profile for users in the `msdb` database.
 
 ```sql
-EXEC msdb.dbo.sysmail_add_principalprofile_sp
+EXECUTE msdb.dbo.sysmail_add_principalprofile_sp
     @principal_name = 'public',
     @profile_name = 'AdventureWorks Public Profile',
     @is_default = 1;

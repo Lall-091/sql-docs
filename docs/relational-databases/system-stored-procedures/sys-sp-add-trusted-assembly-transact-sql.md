@@ -4,7 +4,7 @@ description: Adds an assembly to the list of trusted assemblies for the server.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 03/07/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -61,9 +61,7 @@ Requires membership in the **sysadmin** fixed server role or CONTROL SERVER perm
 The following example adds an assembly named `pointudt` to the list of trusted assemblies for the server. These values are available from [sys.assemblies](../system-catalog-views/sys-assemblies-transact-sql.md).
 
 ```sql
-EXEC sp_add_trusted_assembly
-    0x8893AD6D78D14EE43DF482E2EAD44123E3A0B684A8873C3F7BF3B5E8D8F09503F3E62370CE742BBC96FE3394477214B84C7C1B0F7A04DCC788FA99C2C09DFCCC,
-    N'pointudt, version=0.0.0.0, culture=neutral, publickeytoken=null, processorarchitecture=msil';
+EXECUTE sp_add_trusted_assembly 0x8893AD6D78D14EE43DF482E2EAD44123E3A0B684A8873C3F7BF3B5E8D8F09503F3E62370CE742BBC96FE3394477214B84C7C1B0F7A04DCC788FA99C2C09DFCCC, N'pointudt, version=0.0.0.0, culture=neutral, publickeytoken=null, processorarchitecture=msil';
 ```
 
 ## Related content

@@ -4,7 +4,7 @@ description: sp_manage_distributed_transaction commits, aborts, or forgets a spe
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 03/07/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -54,9 +54,9 @@ Requires **sysadmin** fixed server role, or have CONTROL SERVER permissions.
 ## Examples
 
 ```sql
-EXEC sys.sp_manage_distributed_transaction
+EXECUTE sys.sp_manage_distributed_transaction
     @transaction_uow = '1101AD68-43A7-4DC5-B06C-2B4BEF230643',
-    @operation = N'commit'
+    @operation = N'commit';
 ```
 
 ## Related content
