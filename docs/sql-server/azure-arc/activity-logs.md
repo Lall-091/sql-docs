@@ -58,8 +58,15 @@ The activity log entry for missing usage upload includes:
 - **Event initiated by**: `<empty>`
 - **Description**: Indicates if SQL Server usage data has been received in the past 24 hours. 
 - **Status**: `Failed`
-- **Level**: `Error`
+- **Level**: `Warning`
+
+## Configure usage upload alerts
+
+The Usage Upload alert is a custom activity log event. Because it is custom, it doesn't show up when you configure alerts from the Alert Rule wizard in Azure Monitor. But, you can set up an alert rule by selecting an existing log entry as follows.
+
+:::image type="content" source="media/monitoring/select-log-entry.png" alt-text="Screenshot from Azure portal. Select log entry.":::
 
 ## Related content
 
 - [Send Azure Monitor activity log data](/azure/azure-monitor/essentials/activity-log)
+- [Create or edit an activity log alert rule](/azure/azure-monitor/alerts/alerts-create-activity-log-alert-rule)
