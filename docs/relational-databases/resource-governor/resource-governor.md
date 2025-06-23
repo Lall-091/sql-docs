@@ -4,7 +4,7 @@ description: Learn about the SQL Server resource governor feature that limits th
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: dfurman
-ms.date: 06/10/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: performance
 ms.topic: conceptual
@@ -44,16 +44,17 @@ Some of the usage scenarios supported by resource governor are:
 - Isolate and limit runaway queries, or limit I/O resources for I/O intensive operations that can saturate the I/O subsystem and negatively impact other workloads.
 - Add fine-grained resource tracking for resource usage chargebacks and provide predictable billing to the consumers of server resources.
 
-## Resource governor limitations
+## Interoperability and limitations
 
-Resource governor has the following limitations:
-
+- Resource governor can be used with Always On [availability groups](../../database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server.md) and [failover cluster instances](../../sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server.md). The following considerations apply:
+  - When used in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], resource governor must be configured on each [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance that hosts an availability group. Resource governor configuration doesn't propagate from the primary availability group replica to secondary replicas. We recommend that you use the same resource governor configuration for all [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)] instances hosting availability replicas. This ensures consistent behavior as availability group failovers occur.
+  - When used in [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)], resource governor configuration propagates from the primary replica to all secondary replicas because the `master` database of the primary replica is replicated to all secondary replicas. This includes high availability and geo-replication secondaries. For more information, see [Resource governor](/azure/azure-sql/managed-instance/transact-sql-tsql-differences-sql-server#resource-governor).
+  - If you use contained availability groups, see [Interactions with other features](../../database-engine/availability-groups/windows/contained-availability-groups-overview.md#resource-governor) for more information.
 - Resource management is limited to the [!INCLUDE[ssDEnoversion](../../includes/ssdenoversion-md.md)]. Resource governor can't be used for [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)], [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)], and [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)].
 - Resource governor does not provide workload monitoring or workload management across multiple [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instances.
 - Very short queries, such as queries in some OLTP workloads, might not use CPU long enough to apply CPU bandwidth controls. This might skew CPU usage statistics and limit the effectiveness of CPU resource governance.
 - The ability to govern physical I/O applies only to user operations and not system tasks. System tasks perform transaction log, checkpoint, and lazy writer I/O. Resource governor governs user physical reads I/O but not write I/O performed by system tasks.
 - You can't modify resource governance controls for the `internal` resource pool and workload group.
-- If you use contained availability groups, see [Interactions with other features](../../database-engine/availability-groups/windows/contained-availability-groups-overview.md#resource-governor) for more information.
 
 ## Resource concepts
 

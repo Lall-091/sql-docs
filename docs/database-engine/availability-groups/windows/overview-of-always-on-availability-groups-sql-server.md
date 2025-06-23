@@ -4,7 +4,7 @@ description: "An introduction to the concepts that are central for configuring a
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest, vanto
-ms.date: 09/25/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: availability-groups
 ms.topic: concept-article
@@ -261,6 +261,7 @@ For more information, see [Automatic Page Repair (Availability Groups: Database 
 - [Service Broker](../../configure-windows/sql-server-service-broker.md)
 - [SQL Server Agent](../../../ssms/agent/sql-server-agent.md)
 - [Reporting Services with Always On Availability Groups (SQL Server)](reporting-services-with-always-on-availability-groups-sql-server.md)
+- [Resource governor](../../../relational-databases/resource-governor/resource-governor.md)
 
 ## Related tasks
 
