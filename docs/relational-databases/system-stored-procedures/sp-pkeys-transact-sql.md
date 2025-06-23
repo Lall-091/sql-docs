@@ -4,7 +4,7 @@ description: sp_pkeys returns primary key information for a single table in the 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -88,18 +88,18 @@ The following example retrieves the primary key for the `HumanResources.Departme
 USE AdventureWorks2022;
 GO
 
-EXEC sp_pkeys @table_name = N'Department',
+EXECUTE sp_pkeys
+    @table_name = N'Department',
     @table_owner = N'HumanResources';
 ```
 
-## Examples: [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE [ssPDW](../../includes/sspdw-md.md)]
+## Examples: Azure Synapse Analytics and Analytics Platform System (PDW)
 
 The following example retrieves the primary key for the `DimAccount` table in the `AdventureWorksPDW2012` database. It returns zero rows indicating that the table doesn't have a primary key.
 
 ```sql
 -- Uses AdventureWorksPDW
-
-EXEC sp_pkeys @table_name = N'DimAccount';
+EXECUTE sp_pkeys @table_name = N'DimAccount';
 ```
 
 ## Related content

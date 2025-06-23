@@ -4,7 +4,7 @@ description: sp_pdw_log_user_data_masking configures user data masking in Azure 
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.topic: "reference"
 dev_langs:
@@ -75,7 +75,7 @@ Requires membership in the **sysadmin** fixed database role, or `CONTROL SERVER`
 The following example enables TDE log user data masking on the appliance.
 
 ```sql
-EXEC sp_pdw_log_user_data_masking 1;
+EXECUTE sp_pdw_log_user_data_masking 1;
 ```
 
 ## Related content

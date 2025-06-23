@@ -4,7 +4,7 @@ description: sp_primarykeys returns the primary key columns, one row per key col
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -83,7 +83,8 @@ Requires `SELECT` permission on the schema.
 The following example returns primary key columns from the `LONDON1` server for the `HumanResources.JobCandidate` table in the [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)] database.
 
 ```sql
-EXEC sp_primarykeys @table_server = N'LONDON1',
+EXECUTE sp_primarykeys
+    @table_server = N'LONDON1',
     @table_name = N'JobCandidate',
     @table_catalog = N'AdventureWorks2022',
     @table_schema = N'HumanResources';

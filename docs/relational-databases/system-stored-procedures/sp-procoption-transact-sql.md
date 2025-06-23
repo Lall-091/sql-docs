@@ -4,7 +4,7 @@ description: "sp_procoption sets or clears a stored procedure for automatic exec
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 10/26/2023
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -65,7 +65,8 @@ Requires membership in the **sysadmin** fixed server role.
 The following example sets a procedure for automatic execution.
 
 ```sql
-EXEC sp_procoption @ProcName = N'<procedure name>',
+EXECUTE sp_procoption
+    @ProcName = N'<procedure name>',
     @OptionName = 'startup',
     @OptionValue = 'on';
 ```
@@ -73,7 +74,8 @@ EXEC sp_procoption @ProcName = N'<procedure name>',
 The following example stops a procedure from executing automatically.
 
 ```sql
-EXEC sp_procoption @ProcName = N'<procedure name>',
+EXECUTE sp_procoption
+    @ProcName = N'<procedure name>',
     @OptionName = 'startup',
     @OptionValue = 'off';
 ```

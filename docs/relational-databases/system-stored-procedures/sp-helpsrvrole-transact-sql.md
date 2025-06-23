@@ -4,7 +4,7 @@ description: sp_helpsrvrole Returns a list of the SQL Server fixed server roles.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 05/15/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -80,7 +80,7 @@ Requires membership in the **public** role.
 The following query returns the list of fixed server roles.
 
 ```sql
-EXEC sp_helpsrvrole;
+EXECUTE sp_helpsrvrole;
 ```
 
 ### B. List fixed and user-defined server roles
@@ -88,7 +88,9 @@ EXEC sp_helpsrvrole;
 The following query returns a list of both fixed and user-defined server roles.
 
 ```sql
-SELECT * FROM sys.server_principals WHERE type = 'R';
+SELECT *
+FROM sys.server_principals
+WHERE type = 'R';
 ```
 
 ### C. Return a description of a fixed server role
@@ -96,7 +98,7 @@ SELECT * FROM sys.server_principals WHERE type = 'R';
 The following query returns the name and description of the **diskadmin** fixed server roles.
 
 ```sql
-EXEC sp_helpsrvrole 'diskadmin';
+EXECUTE sp_helpsrvrole 'diskadmin';
 ```
 
 ## Related content

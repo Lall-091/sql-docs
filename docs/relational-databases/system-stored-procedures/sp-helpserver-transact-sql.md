@@ -4,7 +4,7 @@ description: sp_helpserver reports information about a particular remote or repl
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 05/15/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -95,7 +95,8 @@ The following example displays information about all servers by using `sp_helpse
 ```sql
 USE master;
 GO
-EXEC sp_helpserver;
+
+EXECUTE sp_helpserver;
 ```
 
 ### B. Display information about a specific server
@@ -105,7 +106,8 @@ The following example displays all information about the `SEATTLE2` server.
 ```sql
 USE master;
 GO
-EXEC sp_helpserver 'SEATTLE2';
+
+EXECUTE sp_helpserver 'SEATTLE2';
 ```
 
 ## Related content

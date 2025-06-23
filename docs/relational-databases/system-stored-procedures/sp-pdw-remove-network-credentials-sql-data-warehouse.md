@@ -5,7 +5,7 @@ description: sp_pdw_remove_network_credentials removes network credentials store
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.topic: "reference"
 dev_langs:
@@ -59,14 +59,14 @@ To list all credentials and to verify the credentials have been removed, use [sy
 
 To add credentials, use [sp_pdw_add_network_credentials (Azure Synapse Analytics)](sp-pdw-add-network-credentials-sql-data-warehouse.md).
 
-## Examples: [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE [ssPDW](../../includes/sspdw-md.md)]
+## Examples: Azure Synapse Analytics and Analytics Platform System (PDW)
 
 ### A. Remove credentials for performing a database backup
 
 The following example removes user name and password credentials for accessing the target server, which has an IP address of `10.192.147.63`.
 
 ```sql
-EXEC sp_pdw_remove_network_credentials '10.192.147.63';
+EXECUTE sp_pdw_remove_network_credentials '10.192.147.63';
 ```
 
 ## Related content

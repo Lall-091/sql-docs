@@ -4,7 +4,7 @@ description: sp_OADestroy destroys a created OLE object.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 03/07/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -58,14 +58,15 @@ Requires membership in the **sysadmin** fixed server role or execute permission 
 The following example destroys the previously created `SQLServer` object.
 
 ```sql
-EXEC @hr = sp_OADestroy @object;
+EXECUTE
+    @hr = sp_OADestroy
+    @object;
 
 IF @hr <> 0
 BEGIN
-    EXEC sp_OAGetErrorInfo @object;
-
-    RETURN
-END;
+    EXECUTE sp_OAGetErrorInfo @object;
+    RETURN;
+END
 ```
 
 ## Related content

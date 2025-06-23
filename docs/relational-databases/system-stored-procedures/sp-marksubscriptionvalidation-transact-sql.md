@@ -4,7 +4,7 @@ description: sp_marksubscriptionvalidation marks the current open transaction to
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -80,15 +80,18 @@ The following query can be applied to the publishing database to post subscripti
 ```sql
 BEGIN TRANSACTION;
 
-EXEC sp_marksubscriptionvalidation @publication = 'pub1',
+EXECUTE sp_marksubscriptionvalidation
+    @publication = 'pub1',
     @subscriber = 'Sub',
     @destination_db = 'SubDB';
 
-EXEC sp_marksubscriptionvalidation @publication = 'pub1',
+EXECUTE sp_marksubscriptionvalidation
+    @publication = 'pub1',
     @subscriber = 'Sub2',
     @destination_db = 'SubDB';
 
-EXEC sp_article_validation @publication = 'pub1',
+EXECUTE sp_article_validation
+    @publication = 'pub1',
     @article = 'art1',
     @rowcount_only = 0,
     @full_or_fast = 0,
@@ -99,15 +102,18 @@ COMMIT TRANSACTION;
 
 BEGIN TRANSACTION;
 
-EXEC sp_marksubscriptionvalidation @publication = 'pub1',
+EXECUTE sp_marksubscriptionvalidation
+    @publication = 'pub1',
     @subscriber = 'Sub',
     @destination_db = 'SubDB';
 
-EXEC sp_marksubscriptionvalidation @publication = 'pub1',
+EXECUTE sp_marksubscriptionvalidation
+    @publication = 'pub1',
     @subscriber = 'Sub2',
     @destination_db = 'SubDB';
 
-EXEC sp_article_validation @publication = 'pub1',
+EXECUTE sp_article_validation
+    @publication = 'pub1',
     @article = 'art2',
     @rowcount_only = 0,
     @full_or_fast = 0,

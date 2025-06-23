@@ -4,7 +4,7 @@ description: sp_indexes returns index information for the specified remote table
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/22/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -96,7 +96,8 @@ Requires `SELECT` permission on the schema.
 The following example returns all index information from the `Employees` table of the [!INCLUDE [sssampledbobject-md](../../includes/sssampledbobject-md.md)] database on the `Seattle1` linked server.
 
 ```sql
-EXEC sp_indexes @table_server = 'Seattle1',
+EXECUTE sp_indexes
+    @table_server = 'Seattle1',
     @table_name = 'Employee',
     @table_schema = 'HumanResources',
     @table_catalog = 'AdventureWorks2022';

@@ -4,7 +4,7 @@ description: sp_monitor displays statistics about SQL Server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -75,7 +75,7 @@ The following example reports information about how busy [!INCLUDE [ssNoVersion]
 USE master;
 GO
 
-EXEC sp_monitor;
+EXECUTE sp_monitor;
 ```
 
 [!INCLUDE [ssResult](../../includes/ssresult-md.md)]

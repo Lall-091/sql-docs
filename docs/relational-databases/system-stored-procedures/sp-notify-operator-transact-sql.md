@@ -4,7 +4,7 @@ description: sp_notify_operator sends an e-mail message to an operator using Dat
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -104,7 +104,7 @@ The following example sends a notification e-mail to the operator `François Aje
 USE msdb;
 GO
 
-EXEC dbo.sp_notify_operator
+EXECUTE dbo.sp_notify_operator
     @profile_name = N'AdventureWorks Administrator',
     @name = N'François Ajenstat',
     @subject = N'Test Notification',

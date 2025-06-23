@@ -4,7 +4,7 @@ description: sp_pdw_database_encryption enables transparent data encryption for 
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest
-ms.date: 08/22/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.topic: "reference"
 dev_langs:
@@ -57,7 +57,7 @@ Requires membership in the **sysadmin** fixed database role, or `CONTROL SERVER`
 The following example enables TDE on the appliance.
 
 ```sql
-EXEC sys.sp_pdw_database_encryption 1;
+EXECUTE sys.sp_pdw_database_encryption 1;
 ```
 
 ## Related content

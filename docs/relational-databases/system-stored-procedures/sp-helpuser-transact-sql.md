@@ -4,7 +4,7 @@ description: sp_helpuser reports information about database-level principals in 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 05/15/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -91,7 +91,7 @@ Information returned is subject to restrictions on access to metadata. Entities 
 The following example lists all users in the current database.
 
 ```sql
-EXEC sp_helpuser;
+EXECUTE sp_helpuser;
 ```
 
 ### B. List information for a single user
@@ -99,7 +99,7 @@ EXEC sp_helpuser;
 The following example lists information about the user database owner (`dbo`).
 
 ```sql
-EXEC sp_helpuser 'dbo';
+EXECUTE sp_helpuser 'dbo';
 ```
 
 ### C. List information for a database role
@@ -107,7 +107,7 @@ EXEC sp_helpuser 'dbo';
 The following example lists information about the **db_securityadmin** fixed database role.
 
 ```sql
-EXEC sp_helpuser 'db_securityadmin';
+EXECUTE sp_helpuser 'db_securityadmin';
 ```
 
 ## Related content

@@ -1,10 +1,10 @@
 ---
-title: sp_prepare (Transact SQL)
+title: "sp_prepare (Transact SQL)"
 description: Prepares a parameterized Transact-SQL statement and returns a statement handle for execution.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/30/2023
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -65,17 +65,19 @@ An optional parameter that returns a description of the cursor result set column
 The following example prepares and executes a basic Transact-SQL statement.
 
 ```sql
-DECLARE @handle INT;
+DECLARE @handle AS INT;
 
-EXEC sp_prepare @handle OUTPUT,
-    N'@P1 NVARCHAR(128), @P2 NVARCHAR(100)',
-    N'SELECT database_id, name FROM sys.databases WHERE name=@P1 AND state_desc = @P2';
+EXECUTE sp_prepare
+    @handle OUTPUT, N'
+        @P1 NVARCHAR(128),
+        @P2 NVARCHAR(100)',
+        N'SELECT database_id, name FROM sys.databases WHERE name=@P1 AND state_desc = @P2';
 
-EXEC sp_execute @handle,
-    N'tempdb',
-    N'ONLINE';
+EXECUTE sp_execute
+    @handle,
+    N'tempdb', N'ONLINE';
 
-EXEC sp_unprepare @handle;
+EXECUTE sp_unprepare @handle;
 ```
 
 ### B. Prepare and execute a statement using the handle
@@ -84,11 +86,10 @@ The following example prepares a statement in the [!INCLUDE [sssampledbobject-md
 
 ```sql
 -- Prepare query
-DECLARE @handle INT;
+DECLARE @handle AS INT;
 
-EXEC sp_prepare @handle OUTPUT,
-    N'@Param INT',
-    N'SELECT *
+EXECUTE sp_prepare
+    @handle OUTPUT, N'@Param INT', N'SELECT *
 FROM Sales.SalesOrderDetail AS sod
 INNER JOIN Production.Product AS p ON sod.ProductID = p.ProductID
 WHERE SalesOrderID = @Param
@@ -108,13 +109,13 @@ GO
 Execute the query twice using the handle value `1`, before discarding the prepared plan.
 
 ```sql
-EXEC sp_execute 1, 49879;
+EXECUTE sp_execute 1, 49879;
 GO
 
-EXEC sp_execute 1, 48766;
+EXECUTE sp_execute 1, 48766;
 GO
 
-EXEC sp_unprepare 1;
+EXECUTE sp_unprepare 1;
 GO
 ```
 

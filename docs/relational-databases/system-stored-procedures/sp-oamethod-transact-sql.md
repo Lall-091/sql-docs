@@ -4,7 +4,7 @@ description: sp_OAMethod calls a method of an OLE object.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 03/07/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -118,22 +118,23 @@ Requires membership in the **sysadmin** fixed server role or execute permission 
 
 ### A. Call a method
 
-The following example calls the `Connect` method of the previously created **SQLServer** object.
+The following example calls the `Connect` method of the previously created **SQLServer** object. Replace `<password>` with a strong password.
 
 ```sql
-EXEC @hr = sp_OAMethod @object,
+EXECUTE
+    @hr = sp_OAMethod
+    @object,
     'Connect',
     NULL,
     'my_server',
     'my_login',
-    'my_password';
+    '<password>';
 
 IF @hr <> 0
 BEGIN
-    EXEC sp_OAGetErrorInfo @object
-
-    RETURN
-END;
+    EXECUTE sp_OAGetErrorInfo @object;
+    RETURN;
+END
 ```
 
 ### B. Get a property
@@ -141,18 +142,18 @@ END;
 The following example gets the `HostName` property (of the previously created `SQLServer` object) and stores it in a local variable.
 
 ```sql
-DECLARE @property VARCHAR(255);
+DECLARE @property AS VARCHAR (255);
 
-EXEC @hr = sp_OAMethod @object,
-    'HostName',
+EXECUTE
+    @hr = sp_OAMethod
+    @object, 'HostName',
     @property OUTPUT;
 
 IF @hr <> 0
 BEGIN
-    EXEC sp_OAGetErrorInfo @object
-
-    RETURN
-END;
+    EXECUTE sp_OAGetErrorInfo @object;
+    RETURN;
+END
 
 PRINT @property;
 ```

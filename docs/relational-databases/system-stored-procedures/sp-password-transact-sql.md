@@ -4,7 +4,7 @@ description: sp_password adds or changes a password for a SQL Server login.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -74,22 +74,21 @@ A principal can change its own password.
 
 ### A. Change the password of a login without knowing the old password
 
-The following example shows how to use `ALTER LOGIN` to change the password for the login `Victoria` to `B3r1000d#2-36`. This method is preferred. The user that is executing this command must have `CONTROL SERVER` permission.
+The following example shows how to use `ALTER LOGIN` to change the password for the login `Victoria` to `<password>`. This method is preferred. The user that is executing this command must have `CONTROL SERVER` permission.
 
 ```sql
-ALTER LOGIN Victoria
-    WITH PASSWORD = 'B3r1000d#2-36';
+ALTER LOGIN Victoria WITH PASSWORD = '<password>';
 GO
 ```
 
 ### B. Change a password
 
-The following example shows how to use `ALTER LOGIN` to change the password for the login `Victoria` from `B3r1000d#2-36` to `V1cteAmanti55imE`. This method is preferred. User `Victoria` can execute this command without extra permissions. Other users require `ALTER ANY LOGIN` permission.
+The following example shows how to use `ALTER LOGIN` to change the password for the login `Victoria` from `<password>` to `<new-password>`. This method is preferred. User `Victoria` can execute this command without extra permissions. Other users require `ALTER ANY LOGIN` permission.
+
+Replace `<new-password>` and `<password>` with strong passwords.
 
 ```sql
-ALTER LOGIN Victoria
-    WITH PASSWORD = 'V1cteAmanti55imE'
-    OLD_PASSWORD = 'B3r1000d#2-36';
+ALTER LOGIN Victoria WITH PASSWORD = '<new-password>' OLD_PASSWORD = '<password>';
 GO
 ```
 

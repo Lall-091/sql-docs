@@ -4,7 +4,7 @@ description: "Only for use in replication topologies with servers running versio
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/22/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
@@ -101,7 +101,10 @@ If you're running continuous mode merges, you must either:
 - Deactivate the publication with `sp_changemergepublication` to ensure that any continuous-mode merges that are polling for the publication status fail.
 
   ```sql
-  EXEC central..sp_changemergepublication @publication = 'dynpart_pubn', @property = 'status', @value = 'inactive';
+  EXECUTE central..sp_changemergepublication
+      @publication = 'dynpart_pubn',
+      @property = 'status',
+      @value = 'inactive';
   ```
 
 When you have completed step 3 of running `sp_mergecleanupmetadata`, resume continuous mode merges based on how you stopped them. Either:
@@ -111,7 +114,10 @@ When you have completed step 3 of running `sp_mergecleanupmetadata`, resume cont
 - Reactivate the publication with `sp_changemergepublication`.
 
   ```sql
-  EXEC central..sp_changemergepublication @publication = 'dynpart_pubn', @property = 'status', @value = 'active'
+  EXECUTE central..sp_changemergepublication
+      @publication = 'dynpart_pubn',
+      @property = 'status',
+      @value = 'active';
   ```
 
 ## Permissions

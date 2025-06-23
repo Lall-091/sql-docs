@@ -4,7 +4,7 @@ description: sp_prepexec prepares and executes a parameterized Transact-SQL stat
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 03/07/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -57,14 +57,17 @@ Signifies the optional use of extra parameters. *bound_param* calls for an input
 The following example prepares and executes a simple statement:
 
 ```sql
-Declare @Out int;
-EXEC sp_prepexec @Out output,
-    N'@P1 nvarchar(128), @P2 nvarchar(100)',
+DECLARE @Out AS INT;
+
+EXECUTE sp_prepexec
+    @Out OUTPUT, N'@P1 nvarchar(128), @P2 nvarchar(100)',
     N'SELECT database_id, name
       FROM sys.databases
       WHERE name=@P1 AND state_desc = @P2',
-          @P1 = 'tempdb', @P2 = 'ONLINE';
-EXEC sp_unprepare @Out;
+    @P1 = 'tempdb',
+    @P2 = 'ONLINE';
+
+EXECUTE sp_unprepare @Out;
 ```
 
 ## Related content

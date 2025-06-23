@@ -4,7 +4,7 @@ description: sp_helpsort Displays the sort order and character set for the insta
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 05/15/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -57,7 +57,7 @@ Requires membership in the **public** role.
 The following example displays the name of the default sort order of the server, its character set, and a table of its primary sort values.
 
 ```sql
-EXEC sp_helpsort;
+EXECUTE sp_helpsort;
 ```
 
 [!INCLUDE [ssResult](../../includes/ssresult-md.md)]

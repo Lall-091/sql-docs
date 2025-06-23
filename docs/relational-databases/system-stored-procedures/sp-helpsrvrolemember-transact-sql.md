@@ -4,7 +4,7 @@ description: sp_helpsrvrolemember returns information about the members of a SQL
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 05/15/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -81,7 +81,7 @@ Requires membership in the **public** role.
 The following example lists the members of the **sysadmin** fixed server role.
 
 ```sql
-EXEC sp_helpsrvrolemember 'sysadmin';
+EXECUTE sp_helpsrvrolemember 'sysadmin';
 ```
 
 ## Related content

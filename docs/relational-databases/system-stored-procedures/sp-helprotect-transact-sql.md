@@ -4,7 +4,7 @@ description: sp_helprotect returns a report that's information about user permis
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 05/15/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -83,13 +83,13 @@ All the parameters in the following procedure are optional. If executed with no 
 If some but not all the parameters are specified, use named parameters to identify the particular parameter, or `NULL` as a placeholder. For example, to report all permissions for the grantor database owner (`dbo`), execute the following script:
 
 ```sql
-EXEC sp_helprotect NULL, NULL, dbo;
+EXECUTE sp_helprotect NULL, NULL, dbo;
 ```
 
 Or
 
 ```sql
-EXEC sp_helprotect @grantorname = 'dbo';
+EXECUTE sp_helprotect @grantorname = 'dbo';
 ```
 
 The output report is sorted by permission category, owner, object, grantee, grantor, protection type category, protection type, action, and column sequential ID.
@@ -107,7 +107,7 @@ Information returned is subject to restrictions on access to metadata. Entities 
 The following example lists the permissions for the `titles` table.
 
 ```sql
-EXEC sp_helprotect 'titles';
+EXECUTE sp_helprotect 'titles';
 ```
 
 ### B. List the permissions for a user
@@ -115,7 +115,7 @@ EXEC sp_helprotect 'titles';
 The following example lists all permissions that user `Judy` has in the current database.
 
 ```sql
-EXEC sp_helprotect NULL, 'Judy';
+EXECUTE sp_helprotect NULL, 'Judy';
 ```
 
 ### C. List the permissions granted by a specific user
@@ -123,7 +123,7 @@ EXEC sp_helprotect NULL, 'Judy';
 The following example lists all permissions granted by user `Judy` in the current database, and uses `NULL` as a placeholder for the missing parameters.
 
 ```sql
-EXEC sp_helprotect NULL, NULL, 'Judy';
+EXECUTE sp_helprotect NULL, NULL, 'Judy';
 ```
 
 ### D. List the statement permissions only
@@ -131,7 +131,7 @@ EXEC sp_helprotect NULL, NULL, 'Judy';
 The following example lists all the statement permissions in the current database, and uses `NULL` as a placeholder for the missing parameters.
 
 ```sql
-EXEC sp_helprotect NULL, NULL, NULL, 's';
+EXECUTE sp_helprotect NULL, NULL, NULL, 's';
 ```
 
 ### e. Listing the permissions for a CREATE statement
@@ -139,7 +139,7 @@ EXEC sp_helprotect NULL, NULL, NULL, 's';
 The following example list all users who are granted the `CREATE TABLE` permission.
 
 ```sql
-EXEC sp_helprotect @name = 'CREATE TABLE';
+EXECUTE sp_helprotect @name = 'CREATE TABLE';
 ```
 
 ## Related content

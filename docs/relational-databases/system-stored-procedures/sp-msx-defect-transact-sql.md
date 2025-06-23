@@ -4,7 +4,7 @@ description: sp_msx_defect removes the current server from multiserver operation
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -43,7 +43,7 @@ Specifies whether to force the defection to occur if the Master SQLServerAgent h
 After you force a defection by executing `sp_msx_defect`, a member of the **sysadmin** fixed server role at the Master SQLServerAgent must run the following command to complete the defection:
 
 ```sql
-EXEC msdb.dbo.sp_delete_targetserver
+EXECUTE msdb.dbo.sp_delete_targetserver
     @server_name = 'tsx-server',
     @post_defection = 0;
 ```

@@ -4,7 +4,7 @@ description: sp_migrate_user_to_contained converts a database user that is mappe
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 03/07/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -85,7 +85,8 @@ Requires the `CONTROL SERVER` permission.
 The following example migrates a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login named `Barry`, to a contained database user with password. The example doesn't change the user name, and retains the login as enabled.
 
 ```sql
-EXEC sp_migrate_user_to_contained @username = N'Barry',
+EXECUTE sp_migrate_user_to_contained
+    @username = N'Barry',
     @rename = N'keep_name',
     @disablelogin = N'do_not_disable_login';
 ```
@@ -95,33 +96,28 @@ EXEC sp_migrate_user_to_contained @username = N'Barry',
 The following example migrates all users that are based on [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins to contained database users with passwords. The example excludes logins that aren't enabled. The example must be executed in the contained database.
 
 ```sql
-DECLARE @username SYSNAME;
+DECLARE @username AS SYSNAME;
 
 DECLARE user_cursor CURSOR
-FOR
-SELECT dp.name
-FROM sys.database_principals AS dp
-INNER JOIN sys.server_principals AS sp
-    ON dp.sid = sp.sid
-WHERE dp.authentication_type = 1
-    AND sp.is_disabled = 0;
+    FOR SELECT dp.name
+        FROM sys.database_principals AS dp
+             INNER JOIN sys.server_principals AS sp
+                 ON dp.sid = sp.sid
+        WHERE dp.authentication_type = 1
+              AND sp.is_disabled = 0;
 
-OPEN user_cursor
+OPEN user_cursor;
 
-FETCH NEXT
-FROM user_cursor
-INTO @username
+FETCH NEXT FROM user_cursor INTO @username;
 
 WHILE @@FETCH_STATUS = 0
-BEGIN
-    EXECUTE sp_migrate_user_to_contained @username = @username,
-        @rename = N'keep_name',
-        @disablelogin = N'disable_login';
-
-    FETCH NEXT
-    FROM user_cursor
-    INTO @username
-END
+    BEGIN
+        EXECUTE sp_migrate_user_to_contained
+            @username = @username,
+            @rename = N'keep_name',
+            @disablelogin = N'disable_login';
+        FETCH NEXT FROM user_cursor INTO @username;
+    END
 
 CLOSE user_cursor;
 

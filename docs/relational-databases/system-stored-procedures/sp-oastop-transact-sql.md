@@ -4,7 +4,7 @@ description: sp_OAStop stops the server-wide OLE Automation stored procedure exe
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 03/07/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -54,7 +54,7 @@ Requires membership in the **sysadmin** fixed server role or execute permission 
 The following example stops the shared OLE Automation execution environment.
 
 ```sql
-EXEC sp_OAStop;
+EXECUTE sp_OAStop;
 GO
 ```
 

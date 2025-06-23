@@ -4,7 +4,7 @@ description: sp_lock reports information about locks.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/16/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -88,7 +88,8 @@ The following example displays information about all locks currently held in an 
 ```sql
 USE master;
 GO
-EXEC sp_lock;
+
+EXECUTE sp_lock;
 GO
 ```
 
@@ -99,7 +100,8 @@ The following example displays information, including locks, about session ID `5
 ```sql
 USE master;
 GO
-EXEC sp_lock 53;
+
+EXECUTE sp_lock 53;
 GO
 ```
 

@@ -4,7 +4,7 @@ description: sp_OACreate creates an instance of an OLE object.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 03/07/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -95,24 +95,24 @@ Requires membership in the **sysadmin** fixed server role or execute permission 
 The following example creates a SQL-DMO `SQLServer` object by using its ProgID.
 
 ```sql
-DECLARE @object INT;
-DECLARE @hr INT;
-DECLARE @src VARCHAR(255),
-    @desc VARCHAR(255);
+DECLARE @object AS INT;
+DECLARE @hr AS INT;
+DECLARE @src AS VARCHAR (255);
+DECLARE @desc AS VARCHAR (255);
 
-EXEC @hr = sp_OACreate 'SQLDMO.SQLServer',
+EXECUTE
+    @hr = sp_OACreate 'SQLDMO.SQLServer',
     @object OUTPUT;
 
 IF @hr <> 0
 BEGIN
-    EXEC sp_OAGetErrorInfo @object,
+    EXECUTE sp_OAGetErrorInfo
+        @object,
         @src OUTPUT,
-        @desc OUTPUT
-
+        @desc OUTPUT;
     RAISERROR ('Error Creating COM Component 0x%x, %s, %s', 16, 1, @hr, @src, @desc);
-
-    RETURN
-END;
+    RETURN;
+END
 GO
 ```
 
@@ -121,24 +121,24 @@ GO
 The following example creates a SQL-DMO `SQLServer` object by using its CLSID.
 
 ```sql
-DECLARE @object INT;
-DECLARE @hr INT;
-DECLARE @src VARCHAR(255),
-    @desc VARCHAR(255);
+DECLARE @object AS INT;
+DECLARE @hr AS INT;
+DECLARE @src AS VARCHAR (255);
+DECLARE @desc AS VARCHAR (255);
 
-EXEC @hr = sp_OACreate '{00026BA1-0000-0000-C000-000000000046}',
+EXECUTE
+    @hr = sp_OACreate '{00026BA1-0000-0000-C000-000000000046}',
     @object OUTPUT;
 
 IF @hr <> 0
 BEGIN
-    EXEC sp_OAGetErrorInfo @object,
+    EXECUTE sp_OAGetErrorInfo
+        @object,
         @src OUTPUT,
-        @desc OUTPUT
-
+        @desc OUTPUT;
     RAISERROR ('Error Creating COM Component 0x%x, %s, %s', 16, 1, @hr, @src, @desc);
-
-    RETURN
-END;
+    RETURN;
+END
 GO
 ```
 

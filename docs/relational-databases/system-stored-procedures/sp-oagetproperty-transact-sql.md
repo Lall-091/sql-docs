@@ -4,7 +4,7 @@ description: sp_OAGetProperty gets a property value of an OLE object.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 03/07/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -111,17 +111,18 @@ Requires membership in the **sysadmin** fixed server role or execute permission 
 The following example gets the `HostName` property (of the previously created `SQLServer` object) and stores it in a local variable.
 
 ```sql
-DECLARE @property VARCHAR(255);
+DECLARE @property AS VARCHAR (255);
 
-EXEC @hr = sp_OAGetProperty @object,
+EXECUTE
+    @hr = sp_OAGetProperty
+    @object,
     'HostName',
     @property OUTPUT;
 
 IF @hr <> 0
 BEGIN
-    EXEC sp_OAGetErrorInfo @object
-
-    RETURN
+    EXECUTE sp_OAGetErrorInfo @object;
+    RETURN;
 END
 
 PRINT @property;
@@ -132,15 +133,16 @@ PRINT @property;
 The following example gets the `HostName` property (of the previously created `SQLServer` object) and returns it to the client as a result set.
 
 ```sql
-EXEC @hr = sp_OAGetProperty @object,
+EXECUTE
+    @hr = sp_OAGetProperty
+    @object,
     'HostName';
 
 IF @hr <> 0
 BEGIN
-    EXEC sp_OAGetErrorInfo @object
-
-    RETURN
-END;
+    EXECUTE sp_OAGetErrorInfo @object;
+    RETURN;
+END
 ```
 
 ## Related content

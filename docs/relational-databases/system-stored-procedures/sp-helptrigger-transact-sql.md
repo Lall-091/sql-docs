@@ -4,7 +4,7 @@ description: sp_helptrigger returns the type or types of DML triggers defined on
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 05/15/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -80,7 +80,8 @@ The following example executes `sp_helptrigger` to produce information about the
 ```sql
 USE AdventureWorks2022;
 GO
-EXEC sp_helptrigger 'Person.Person';
+
+EXECUTE sp_helptrigger 'Person.Person';
 ```
 
 ## Related content

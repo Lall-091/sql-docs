@@ -4,7 +4,7 @@ description: sp_OAGetErrorInfo obtains OLE Automation error information.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 03/07/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -107,14 +107,16 @@ Requires membership in the **sysadmin** fixed server role or execute permission 
 The following example displays OLE Automation error information.
 
 ```sql
-DECLARE @output VARCHAR(255);
-DECLARE @hr INT;
-DECLARE @source VARCHAR(255);
-DECLARE @description VARCHAR(255);
+DECLARE @output AS VARCHAR (255);
+DECLARE @hr AS INT;
+DECLARE @source AS VARCHAR (255);
+DECLARE @description AS VARCHAR (255);
 
 PRINT 'OLE Automation Error Information';
 
-EXEC @hr = sp_OAGetErrorInfo @object,
+EXECUTE
+    @hr = sp_OAGetErrorInfo
+    @object,
     @source OUTPUT,
     @description OUTPUT;
 
@@ -127,10 +129,9 @@ BEGIN
 END
 ELSE
 BEGIN
-    PRINT '  sp_OAGetErrorInfo failed.'
-
-    RETURN
-END;
+    PRINT '  sp_OAGetErrorInfo failed.';
+    RETURN;
+END
 ```
 
 ## Related content

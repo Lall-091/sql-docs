@@ -4,7 +4,7 @@ description: sp_helprolemember returns information about the direct members of a
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 05/15/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -51,7 +51,7 @@ The name of a role in the current database. *@rolename* is **sysname**, with a d
 
 ## Remarks
 
-If the database contains nested roles, `MemberName` might be the name of a role. `sp_helprolemember` doesn't show membership obtained through nested roles. For example if `User1` is a member of `Role1`, and `Role1` is a member of `Role2`, `EXEC sp_helprolemember 'Role2';` returns `Role1`, but not the members of `Role1` (`User1` in this example). To return nested memberships, you must execute `sp_helprolemember` repeatedly for each nested role.
+If the database contains nested roles, `MemberName` might be the name of a role. `sp_helprolemember` doesn't show membership obtained through nested roles. For example if `User1` is a member of `Role1`, and `Role1` is a member of `Role2`, `EXECUTE sp_helprolemember 'Role2';` returns `Role1`, but not the members of `Role1` (`User1` in this example). To return nested memberships, you must execute `sp_helprolemember` repeatedly for each nested role.
 
 Use `sp_helpsrvrolemember` to display the members of a fixed server role.
 
@@ -66,7 +66,7 @@ Requires membership in the **public** role.
 The following example displays the members of the `Sales` role in the [!INCLUDE [sssampledbobject-md](../../includes/sssampledbobject-md.md)] database.
 
 ```sql
-EXEC sp_helprolemember 'Sales';
+EXECUTE sp_helprolemember 'Sales';
 ```
 
 ## Related content

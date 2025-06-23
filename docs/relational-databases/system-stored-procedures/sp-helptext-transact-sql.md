@@ -4,7 +4,7 @@ description: Displays the definition of a user-defined rule, default, unencrypte
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 05/15/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -74,7 +74,8 @@ The following example displays the definition of the trigger `dEmployee` in the 
 ```sql
 USE AdventureWorks2022;
 GO
-EXEC sp_helptext 'HumanResources.dEmployee';
+
+EXECUTE sp_helptext 'HumanResources.dEmployee';
 GO
 ```
 
@@ -85,7 +86,8 @@ The following example displays the definition of the computed column `TotalDue` 
 ```sql
 USE AdventureWorks2022;
 GO
-sp_helptext
+
+EXECUTE sp_helptext
     @objname = N'AdventureWorks2022.Sales.SalesOrderHeader',
     @columnname = TotalDue;
 GO

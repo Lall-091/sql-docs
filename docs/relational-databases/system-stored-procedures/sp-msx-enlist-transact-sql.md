@@ -4,7 +4,7 @@ description: sp_msx_enlist adds the current server to the list of available serv
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -66,8 +66,7 @@ The following example enlists the current server into the `AdventureWorks1` mast
 USE msdb;
 GO
 
-EXEC dbo.sp_msx_enlist N'AdventureWorks1',
-    N'Building 21, Room 309, Rack 5';
+EXECUTE dbo.sp_msx_enlist N'AdventureWorks1', N'Building 21, Room 309, Rack 5';
 GO
 ```
 

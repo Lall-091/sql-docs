@@ -4,7 +4,7 @@ description: sp_OASetProperty sets a property of an OLE object to a new value.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 03/07/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -74,16 +74,17 @@ Requires membership in the **sysadmin** fixed server role or execute permission 
 The following example sets the `HostName` property (of the previously created `SQLServer` object) to a new value.
 
 ```sql
-EXEC @hr = sp_OASetProperty @object,
+EXECUTE
+    @hr = sp_OASetProperty
+    @object,
     'HostName',
     'Gizmo';
 
 IF @hr <> 0
 BEGIN
-    EXEC sp_OAGetErrorInfo @object
-
-    RETURN
-END;
+    EXECUTE sp_OAGetErrorInfo @object;
+    RETURN;
+END
 ```
 
 ## Related content

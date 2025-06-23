@@ -4,7 +4,7 @@ description: sp_indexoption sets locking option values for user-defined clustere
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/16/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -96,9 +96,7 @@ The following example disallows page locks on the `IX_Customer_TerritoryID` inde
 USE AdventureWorks2022;
 GO
 
-EXEC sp_indexoption N'Sales.Customer.IX_Customer_TerritoryID',
-    N'disallowpagelocks',
-    TRUE;
+EXECUTE sp_indexoption N'Sales.Customer.IX_Customer_TerritoryID', N'disallowpagelocks', TRUE;
 ```
 
 ### B. Set an option on all indexes on a table
@@ -111,24 +109,22 @@ GO
 
 --Display the current row and page lock options for all indexes on the table.
 SELECT name,
-    type_desc,
-    allow_row_locks,
-    allow_page_locks
+       type_desc,
+       allow_row_locks,
+       allow_page_locks
 FROM sys.indexes
 WHERE object_id = OBJECT_ID(N'Production.Product');
 GO
 
 -- Set the disallowrowlocks option on the Product table.
-EXEC sp_indexoption N'Production.Product',
-    N'disallowrowlocks',
-    TRUE;
+EXECUTE sp_indexoption N'Production.Product', N'disallowrowlocks', TRUE;
 GO
 
 --Verify the row and page lock options for all indexes on the table.
 SELECT name,
-    type_desc,
-    allow_row_locks,
-    allow_page_locks
+       type_desc,
+       allow_row_locks,
+       allow_page_locks
 FROM sys.indexes
 WHERE object_id = OBJECT_ID(N'Production.Product');
 GO
@@ -144,23 +140,21 @@ GO
 
 --Display the current row and page lock options of the table.
 SELECT OBJECT_NAME(object_id) AS [Table],
-    type_desc,
-    allow_row_locks,
-    allow_page_locks
+       type_desc,
+       allow_row_locks,
+       allow_page_locks
 FROM sys.indexes
 WHERE OBJECT_NAME(object_id) = N'DatabaseLog';
 GO
 
 -- Set the disallowpagelocks option on the table.
-EXEC sp_indexoption DatabaseLog,
-    N'disallowpagelocks',
-    TRUE;
+EXECUTE sp_indexoption DatabaseLog, N'disallowpagelocks', TRUE;
 GO
 
 --Verify the row and page lock settings of the table.
 SELECT OBJECT_NAME(object_id) AS [Table],
-    allow_row_locks,
-    allow_page_locks
+       allow_row_locks,
+       allow_page_locks
 FROM sys.indexes
 WHERE OBJECT_NAME(object_id) = N'DatabaseLog';
 GO

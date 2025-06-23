@@ -4,7 +4,7 @@ description: The sp_invoke_external_rest_endpoint stored procedure invokes an HT
 author: jettermctedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 06/04/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.topic: "reference"
 ms.custom:
@@ -48,7 +48,7 @@ To mitigate the risk of unauthorized access or transfer of data, consider the fo
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ```syntaxsql
-EXEC @returnValue = sp_invoke_external_rest_endpoint
+EXECUTE @returnValue = sp_invoke_external_rest_endpoint
   [ @url = ] N'url'
   [ , [ @payload = ] N'request_payload' ]
   [ , [ @headers = ] N'http_headers_as_json_array' ]
@@ -594,14 +594,13 @@ DECLARE @payload AS NVARCHAR (MAX) = (SELECT *
     FROM (VALUES ('Hello from Azure SQL!', sysdatetime())) AS payload([message], [timestamp])
     FOR JSON AUTO, WITHOUT_ARRAY_WRAPPER);
 
-DECLARE
-    @response AS NVARCHAR (MAX),
-    @url AS NVARCHAR (MAX),
-    @headers AS NVARCHAR (1000);
+DECLARE @response AS NVARCHAR (MAX);
+DECLARE @url AS NVARCHAR (MAX);
+DECLARE @headers AS NVARCHAR (1000);
 
 DECLARE @len AS INT = len(@payload);
 
--- Create the File
+-- Create the file
 SET @url = 'https://<domain>.file.core.windows.net/myfiles/test-me-from-azure-sql.json';
 SET @headers = JSON_OBJECT('x-ms-type':'file', 'x-ms-content-length':CAST (@len AS VARCHAR (9)), 'Accept':'application/xml');
 
@@ -616,9 +615,7 @@ SELECT CAST (@response AS XML);
 
 -- Add text to the file
 SET @headers = JSON_OBJECT('x-ms-range':'bytes=0-' + CAST (@len - 1 AS VARCHAR (9)), 'x-ms-write':'update', 'Accept':'application/xml');
-
 SET @url = 'https://<domain>.file.core.windows.net/myfiles/test-me-from-azure-sql.json';
-
 SET @url += '?comp=range';
 
 EXECUTE sp_invoke_external_rest_endpoint

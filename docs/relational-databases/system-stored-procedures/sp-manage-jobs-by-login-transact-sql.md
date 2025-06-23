@@ -4,7 +4,7 @@ description: sp_manage_jobs_by_login deletes or reassigns jobs that belong to th
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -68,7 +68,7 @@ The following example reassigns all jobs from `danw` to `françoisa`.
 USE msdb;
 GO
 
-EXEC dbo.sp_manage_jobs_by_login
+EXECUTE dbo.sp_manage_jobs_by_login
     @action = N'REASSIGN',
     @current_owner_login_name = N'danw',
     @new_owner_login_name = N'françoisa';
