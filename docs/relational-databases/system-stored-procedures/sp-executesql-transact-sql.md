@@ -4,7 +4,7 @@ description: sp_executesql executes a Transact-SQL statement or batch that can b
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/04/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -129,11 +129,8 @@ Output parameters can also be used with `sp_executesql`. The following example r
 
 ```sql
 DECLARE @IntVariable AS INT;
-
 DECLARE @SQLString AS NVARCHAR (500);
-
 DECLARE @ParmDefinition AS NVARCHAR (500);
-
 DECLARE @max_title AS VARCHAR (30);
 
 SET @IntVariable = 197;
@@ -177,8 +174,7 @@ Without the `OPTIMIZED_SP_EXECUTESQL` option, multiple invocations of identical 
 `OPTIMIZED_SP_EXECUTESQL` is off by default. To enable `OPTIMIZED_SP_EXECUTESQL` at the database level, use the following Transact-SQL statement:
 
 ```sql
-ALTER DATABASE SCOPED CONFIGURATION
-SET OPTIMIZED_SP_EXECUTESQL = ON;
+ALTER DATABASE SCOPED CONFIGURATION SET OPTIMIZED_SP_EXECUTESQL = ON;
 ```
 
 ## Permissions
@@ -192,11 +188,8 @@ Requires membership in the **public** role.
 The following example creates and executes a `SELECT` statement that contains an embedded parameter named `@level`.
 
 ```sql
-EXECUTE sp_executesql
-    N'SELECT * FROM AdventureWorks2022.HumanResources.Employee
-    WHERE BusinessEntityID = @level',
-    N'@level TINYINT',
-    @level = 109;
+EXECUTE sp_executesql N'SELECT * FROM AdventureWorks2022.HumanResources.Employee
+    WHERE BusinessEntityID = @level', N'@level TINYINT', @level = 109;
 ```
 
 ### B. Execute a dynamically built string
@@ -221,30 +214,30 @@ This sample stored procedure dynamically builds and executes an `INSERT` stateme
 > This is a basic example for `sp_executesql`. The example doesn't contain error checking, and doesn't include checks for business rules, such as guaranteeing that order numbers aren't duplicated between tables.
 
 ```sql
-CREATE PROCEDURE InsertSales @PrmOrderID INT,
+CREATE PROCEDURE InsertSales (
+    @PrmOrderID INT,
     @PrmCustomerID INT,
     @PrmOrderDate DATETIME,
     @PrmDeliveryDate DATETIME
+)
 AS
 DECLARE @InsertString AS NVARCHAR (500);
 DECLARE @OrderMonth AS INT;
 -- Build the INSERT statement.
 SET @InsertString = 'INSERT INTO ' +
     /* Build the name of the table. */
-    SUBSTRING(DATENAME(mm, @PrmOrderDate), 1, 3) +
-    CAST(DATEPART(yy, @PrmOrderDate) AS CHAR(4)) + 'Sales' +
+    SUBSTRING(DATENAME(mm, @PrmOrderDate), 1, 3)
+    + CAST (DATEPART(yy, @PrmOrderDate) AS CHAR (4)) + 'Sales' +
     /* Build a VALUES clause. */
-    ' VALUES (@InsOrderID, @InsCustID, @InsOrdDate,' +
-    ' @InsOrdMonth, @InsDelDate)';
+    ' VALUES (@InsOrderID, @InsCustID, @InsOrdDate,'
+    + ' @InsOrdMonth, @InsDelDate)';
 
 /* Set the value to use for the order month because
    functions are not allowed in the sp_executesql parameter
    list. */
 SET @OrderMonth = DATEPART(mm, @PrmOrderDate);
-
-EXEC sp_executesql @InsertString,
-    N'@InsOrderID INT, @InsCustID INT, @InsOrdDate DATETIME,
-       @InsOrdMonth INT, @InsDelDate DATETIME',
+EXECUTE sp_executesql
+    @InsertString, N'@InsOrderID INT, @InsCustID INT, @InsOrdDate DATETIME, @InsOrdMonth INT, @InsDelDate DATETIME',
     @PrmOrderID,
     @PrmCustomerID,
     @PrmOrderDate,
@@ -294,7 +287,7 @@ FROM Sales.SalesOrderHeader
 WHERE SalesOrderNumber = @SalesOrderNumber;
 ```
 
-## Examples: [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE [ssPDW](../../includes/sspdw-md.md)]
+## Examples: Azure Synapse Analytics and Analytics Platform System (PDW)
 
 ### D. Execute a SELECT statement
 
@@ -302,9 +295,8 @@ The following example creates and executes a `SELECT` statement that contains an
 
 ```sql
 EXECUTE sp_executesql
-    N'SELECT * FROM AdventureWorksPDW2012.dbo.DimEmployee
-    WHERE EmployeeKey = @level',
-    N'@level TINYINT',
+    N'SELECT * FROM AdventureWorksPDW2012.dbo.DimEmployee WHERE EmployeeKey = @level',
+    N'@level TINYINT;',
     @level = 109;
 ```
 

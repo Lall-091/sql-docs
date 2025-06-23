@@ -4,7 +4,7 @@ description: The sp_estimate_data_compression_savings system stored procedure re
 author: markingmyname
 ms.author: maghan
 ms.reviewer: dimitri-furman, wiassaf, randolphwest
-ms.date: 08/22/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -183,8 +183,7 @@ Similarly, when the *@data_compression* parameter is set to `NONE`, `ROW`, or `P
 The following example estimates the size of the `Production.WorkOrderRouting` table if it's compressed by using `ROW` compression.
 
 ```sql
-EXEC sys.sp_estimate_data_compression_savings
-     'Production', 'WorkOrderRouting', NULL, NULL, 'ROW';
+EXECUTE sys.sp_estimate_data_compression_savings 'Production', 'WorkOrderRouting', NULL, NULL, 'ROW';
 GO
 ```
 
@@ -195,8 +194,7 @@ GO
 The following example estimates the size of the `Production.ProductModel` table if it's compressed by using `PAGE` compression, and the *@xml_compression* value is enabled.
 
 ```sql
-EXEC sys.sp_estimate_data_compression_savings
-     'Production', 'ProductModel', NULL, NULL, 'PAGE', 1;
+EXECUTE sys.sp_estimate_data_compression_savings 'Production', 'ProductModel', NULL, NULL, 'PAGE', 1;
 GO
 ```
 

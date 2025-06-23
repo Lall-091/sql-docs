@@ -4,7 +4,7 @@ description: Uses a cursor to return the columns designated for full-text indexi
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 05/14/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -83,14 +83,20 @@ The following example returns information about the columns that are designated 
 ```sql
 USE AdventureWorks2022;
 GO
-DECLARE @mycursor CURSOR;
-EXEC sp_help_fulltext_columns_cursor @mycursor OUTPUT
+
+DECLARE @mycursor AS CURSOR;
+
+EXECUTE sp_help_fulltext_columns_cursor @mycursor OUTPUT;
+
 FETCH NEXT FROM @mycursor;
+
 WHILE (@@FETCH_STATUS <> -1)
-   BEGIN
-      FETCH NEXT FROM @mycursor;
-   END;
+    BEGIN
+        FETCH NEXT FROM @mycursor;
+    END
+
 CLOSE @mycursor;
+
 DEALLOCATE @mycursor;
 GO
 ```

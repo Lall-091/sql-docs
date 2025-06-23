@@ -4,7 +4,7 @@ description: Returns mappings between document identifiers (DocIds) and full-tex
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 03/07/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -98,8 +98,10 @@ The following example uses a [DECLARE @local_variable](../../t-sql/language-elem
 ```sql
 USE AdventureWorks2022;
 GO
-DECLARE @table_id int = OBJECT_ID(N'Production.ProductReview');
-EXEC sp_fulltext_keymappings @table_id;
+
+DECLARE @table_id AS INT = OBJECT_ID(N'Production.ProductReview');
+
+EXECUTE sp_fulltext_keymappings @table_id;
 GO
 ```
 
@@ -123,9 +125,9 @@ The following example uses a DECLARE statement to create a local variable, `@tab
 USE AdventureWorks2022;
 GO
 
-DECLARE @table_id int = OBJECT_ID(N'Production.ProductReview');
+DECLARE @table_id AS INT = OBJECT_ID(N'Production.ProductReview');
 
-EXEC sp_fulltext_keymappings @table_id, NULL, 4;
+EXECUTE sp_fulltext_keymappings @table_id, NULL, 4;
 GO
 ```
 

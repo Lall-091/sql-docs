@@ -4,7 +4,7 @@ description: Lists all rows in the sysdownloadlist system table for the supplied
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/21/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -125,7 +125,7 @@ The following example lists rows in the `sysdownloadlist` for the `NightlyBackup
 USE msdb;
 GO
 
-EXEC dbo.sp_help_downloadlist
+EXECUTE dbo.sp_help_downloadlist
     @job_name = N'NightlyBackups',
     @operation = N'UPDATE',
     @object_type = N'JOB',

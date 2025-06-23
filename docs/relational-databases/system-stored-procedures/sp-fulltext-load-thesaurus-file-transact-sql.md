@@ -4,7 +4,7 @@ description: Causes the server instance to parse and load the data from the thes
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/22/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -77,7 +77,7 @@ Only system administrators can update, modify, or delete thesaurus files.
 The following example parses and loads the English thesaurus file.
 
 ```sql
-EXEC sys.sp_fulltext_load_thesaurus_file 1033;
+EXECUTE sys.sp_fulltext_load_thesaurus_file 1033;
 ```
 
 ### B. Load a thesaurus file only if it isn't yet loaded
@@ -85,7 +85,7 @@ EXEC sys.sp_fulltext_load_thesaurus_file 1033;
 The following example parses and loads the Arabic thesaurus file, unless it's already loaded.
 
 ```sql
-EXEC sys.sp_fulltext_load_thesaurus_file 1025, @loadOnlyIfNotLoaded = 1;
+EXECUTE sys.sp_fulltext_load_thesaurus_file 1025, @loadOnlyIfNotLoaded = 1;
 ```
 
 ## Related content

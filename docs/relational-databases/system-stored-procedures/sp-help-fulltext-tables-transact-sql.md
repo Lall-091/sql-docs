@@ -4,7 +4,7 @@ description: sp_help_fulltext_tables returns a list of tables that are registere
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/22/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -78,7 +78,8 @@ The following example returns the names of the full-text indexed tables associat
 ```sql
 USE AdventureWorks2022;
 GO
-EXEC sp_help_fulltext_tables 'Cat_Desc';
+
+EXECUTE sp_help_fulltext_tables 'Cat_Desc';
 GO
 ```
 

@@ -4,7 +4,7 @@ description: sp_getbindtoken returns a unique identifier for the transaction.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 03/07/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -57,7 +57,7 @@ None.
 ```sql
 -- Declare a variable to hold the bind token.
 -- No active transaction.
-DECLARE @bind_token varchar(255);
+DECLARE @bind_token AS VARCHAR (255);
 
 -- Trying to get the bind token returns an error 3921.
 EXECUTE sp_getbindtoken @bind_token OUTPUT;
@@ -77,10 +77,11 @@ When `sp_getbindtoken` is used to enlist a distributed transaction connection in
 USE AdventureWorks2022;
 GO
 
-DECLARE @bind_token VARCHAR(255);
+DECLARE @bind_token AS VARCHAR (255);
 BEGIN TRANSACTION;
 EXECUTE sp_getbindtoken @bind_token OUTPUT;
 SELECT @bind_token AS Token1;
+
 BEGIN DISTRIBUTED TRANSACTION;
 EXECUTE sp_getbindtoken @bind_token OUTPUT;
 SELECT @bind_token AS Token2;
@@ -116,7 +117,7 @@ Requires membership in the **public** role.
 The following example obtains a bind token and displays the bind token name.
 
 ```sql
-DECLARE @bind_token VARCHAR(255);
+DECLARE @bind_token AS VARCHAR (255);
 BEGIN TRANSACTION;
 EXECUTE sp_getbindtoken @bind_token OUTPUT;
 SELECT @bind_token AS Token;

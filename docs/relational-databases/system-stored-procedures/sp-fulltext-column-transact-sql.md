@@ -4,7 +4,7 @@ description: Specifies whether or not a particular column of a table participate
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/22/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -97,14 +97,15 @@ The following example adds the `DocumentSummary` column from the `Document` tabl
 ```sql
 USE AdventureWorks2022;
 GO
-EXEC sp_fulltext_column 'Production.Document', DocumentSummary, 'add';
+
+EXECUTE sp_fulltext_column 'Production.Document', DocumentSummary, 'add';
 GO
 ```
 
 The following example assumes you created a full-text index on a table named `spanishTbl`. To add the `spanishCol` column to the full-text index, execute the following stored procedure:
 
 ```sql
-EXEC sp_fulltext_column 'spanishTbl', 'spanishCol', 'add', 0xC0A;
+EXECUTE sp_fulltext_column 'spanishTbl', 'spanishCol', 'add', 0xC0A;
 GO
 ```
 
@@ -113,7 +114,7 @@ When you run this query:
 ```sql
 SELECT *
 FROM spanishTbl
-WHERE CONTAINS (spanishCol, 'formsof(inflectional, trabajar)');
+WHERE CONTAINS ((spanishCol), 'formsof(inflectional, trabajar)');
 ```
 
 The result set would include rows with different forms of `trabajar` (to work), such as `trabajo`, `trabajamos`, and `trabajan`.

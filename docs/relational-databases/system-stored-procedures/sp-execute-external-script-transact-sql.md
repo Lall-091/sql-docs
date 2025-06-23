@@ -3,7 +3,7 @@ title: "sp_execute_external_script (Transact-SQL)"
 description: Executes a script provided as an input argument to the procedure, and is used with Machine Learning Services and Language Extensions.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 03/07/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: machine-learning-services
 ms.topic: "reference"
@@ -82,7 +82,7 @@ sp_execute_external_script
 ## Syntax for SQL Server 2017 and previous versions
 
 ```syntaxsql
-EXEC sp_execute_external_script
+EXECUTE sp_execute_external_script
     @language = N'language'
     , @script = N'script'
     [ , [ @input_data_1 = ] N'input_data_1' ]
@@ -181,7 +181,7 @@ By default, result sets returned by this stored procedure are output with unname
 In addition to returning a result set, you can return scalar values to using OUTPUT parameters.
 
 ::: moniker range=">=sql-server-2016||>=sql-server-linux-ver15"
-You can control the resources used by external scripts by configuring an external resource pool. For more information, see [CREATE EXTERNAL RESOURCE POOL](../../t-sql/statements/create-external-resource-pool-transact-sql.md). Information about the workload can be obtained from the resource governor catalog views, DMVs, and counters. For more information, see [Resource Governor Catalog Views](../system-catalog-views/resource-governor-catalog-views-transact-sql.md), [Resource Governor Related Dynamic Management Views](../system-dynamic-management-views/resource-governor-related-dynamic-management-views-transact-sql.md), and [SQL Server, External Scripts object](../performance-monitor/sql-server-external-scripts-object.md).  
+You can control the resources used by external scripts by configuring an external resource pool. For more information, see [CREATE EXTERNAL RESOURCE POOL](../../t-sql/statements/create-external-resource-pool-transact-sql.md). Information about the workload can be obtained from the resource governor catalog views, DMVs, and counters. For more information, see [Resource governor catalog views](../system-catalog-views/resource-governor-catalog-views-transact-sql.md), [Resource governor related dynamic management views](../system-dynamic-management-views/resource-governor-related-dynamic-management-views-transact-sql.md), and [SQL Server, External Scripts object](../performance-monitor/sql-server-external-scripts-object.md).  
 ::: moniker-end
 
 ### Monitor script execution
@@ -251,21 +251,24 @@ The following example creates a stored procedure that uses `sp_execute_external_
 ```sql
 DROP PROCEDURE IF EXISTS get_iris_dataset;
 GO
+
 CREATE PROCEDURE get_iris_dataset
 AS
 BEGIN
-    EXEC sp_execute_external_script @language = N'R',
+    EXECUTE sp_execute_external_script
+        @language = N'R',
         @script = N'iris_data <- iris;',
         @input_data_1 = N'',
         @output_data_1_name = N'iris_data'
-    WITH RESULT SETS((
+    WITH RESULT SETS
+    ((
         "Sepal.Length" FLOAT NOT NULL,
         "Sepal.Width" FLOAT NOT NULL,
         "Petal.Length" FLOAT NOT NULL,
         "Petal.Width" FLOAT NOT NULL,
-        "Species" VARCHAR(100)
+        "Species" VARCHAR (100)
     ));
-END;
+END
 GO
 ```
 
@@ -278,9 +281,9 @@ CREATE PROCEDURE [dbo].[py_generate_customer_scores]
 AS
 BEGIN
     -- Input query to generate the customer data
-    DECLARE @input_query NVARCHAR(MAX) = N'SELECT customer, orders, items, cost FROM dbo.Sales.Orders'
-
-    EXEC sp_execute_external_script @language = N'Python',
+    DECLARE @input_query AS NVARCHAR (MAX) = N'SELECT customer, orders, items, cost FROM dbo.Sales.Orders';
+    EXECUTE sp_execute_external_script
+        @language = N'Python',
         @script = N'
 import pandas as pd
 from sklearn.cluster import KMeans
@@ -298,14 +301,15 @@ OutputDataSet = customer_data
 ',
         @input_data_1 = @input_query,
         @input_data_1_name = N'my_input_data'
-    WITH RESULT SETS((
+    WITH RESULT SETS
+    ((
         "CustomerID" INT,
         "Orders" FLOAT,
         "Items" FLOAT,
         "Cost" FLOAT,
         "ClusterResult" FLOAT
     ));
-END;
+END
 GO
 ```
 
@@ -323,10 +327,12 @@ The following example creates a stored procedure that uses `sp_execute_external_
 ```sql
 DROP PROCEDURE IF EXISTS generate_iris_model;
 GO
+
 CREATE PROCEDURE generate_iris_model
 AS
 BEGIN
-    EXEC sp_execute_external_script @language = N'R',
+    EXECUTE sp_execute_external_script
+        @language = N'R',
         @script = N'
       library(e1071);
       irismodel <-naiveBayes(iris_data[,1:4], iris_data[,5]);
@@ -335,8 +341,8 @@ BEGIN
         @input_data_1 = N'select "Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width", "Species" from iris_data',
         @input_data_1_name = N'iris_data',
         @output_data_1_name = N'trained_model'
-    WITH RESULT SETS((model VARBINARY(MAX)));
-END;
+    WITH RESULT SETS ((model VARBINARY (MAX)));
+END
 GO
 ```
 

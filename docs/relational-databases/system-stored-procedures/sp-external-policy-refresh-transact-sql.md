@@ -4,7 +4,7 @@ description: Reference documentation to explain sp_external_policy_refresh (Tran
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: randolphwest
-ms.date: 03/07/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -55,7 +55,7 @@ Requires `ALTER SERVER STATE` (covered by `CONTROL SERVER`) permission.
 The following example downloads complete set of policies.
 
 ```sql
-EXEC sp_external_policy_refresh @type = 'reload'
+EXECUTE sp_external_policy_refresh @type = 'reload';
 ```
 
 ### B. Incremental policy refresh
@@ -63,7 +63,7 @@ EXEC sp_external_policy_refresh @type = 'reload'
 The following example downloads policies incrementally by using the default type 'update'.
 
 ```sql
-EXEC sp_external_policy_refresh;
+EXECUTE sp_external_policy_refresh;
 ```
 
 ## Related content

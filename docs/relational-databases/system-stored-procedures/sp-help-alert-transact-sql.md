@@ -4,7 +4,7 @@ description: Reports information about the alerts defined for the server.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 05/14/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -122,7 +122,7 @@ The following example reports information about the `Demo: Sev. 25 Errors` alert
 USE msdb;
 GO
 
-EXEC sp_help_alert @alert_name = 'Demo: Sev. 25 Errors';
+EXECUTE sp_help_alert @alert_name = 'Demo: Sev. 25 Errors';
 GO
 ```
 

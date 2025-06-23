@@ -4,7 +4,7 @@ description: sp_help_fulltext_system_components returns information for the regi
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 05/14/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -99,7 +99,7 @@ This method is of particular importance when preparing for an upgrade. Execute t
 The following example lists all of the full-text system components that are registered on the server instance.
 
 ```sql
-EXEC sp_help_fulltext_system_components 'all';
+EXECUTE sp_help_fulltext_system_components 'all';
 GO
 ```
 
@@ -108,7 +108,7 @@ GO
 The following example lists all the word breakers registered on the service instance.
 
 ```sql
-EXEC sp_help_fulltext_system_components 'wordbreaker';
+EXECUTE sp_help_fulltext_system_components 'wordbreaker';
 GO
 ```
 
@@ -117,7 +117,9 @@ GO
 The following example lists the word breaker for the Turkish language (LCID = 1055) if it was installed on the system and registered on the service instance. This example specifies the parameter names, *@component_type*, and *@param*.
 
 ```sql
-EXEC sp_help_fulltext_system_components @component_type = 'wordbreaker', @param = 1055;
+EXECUTE sp_help_fulltext_system_components
+    @component_type = 'wordbreaker',
+    @param = 1055;
 GO
 ```
 
@@ -128,7 +130,7 @@ By default, this word breaker isn't installed, so the result set is empty.
 The following example lists the filter for the `.xdoc` component if it was manually installed on the system and registered on the server instance.
 
 ```sql
-EXEC sp_help_fulltext_system_components 'filter', '.xdoc';
+EXECUTE sp_help_fulltext_system_components 'filter', '.xdoc';
 GO
 ```
 
@@ -139,8 +141,9 @@ By default, this filter isn't installed, so the result set is empty.
 The following example lists a specific .ddl file, `nlhtml.dll`, which is installed by default.
 
 ```sql
-EXEC sp_help_fulltext_system_components 'fullpath',
-   'C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\Binn\nlhtml.dll';
+EXECUTE sp_help_fulltext_system_components
+    'fullpath',
+    'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Binn\nlhtml.dll';
 GO
 ```
 

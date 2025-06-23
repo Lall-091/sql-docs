@@ -4,7 +4,7 @@ description: Returns information about jobs that are used by SQL Server Agent to
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 05/14/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -259,7 +259,7 @@ The following example executes the `sp_help_job` procedure with no parameters to
 USE msdb;
 GO
 
-EXEC dbo.sp_help_job;
+EXECUTE dbo.sp_help_job;
 GO
 ```
 
@@ -271,11 +271,11 @@ The following example lists job information for the multiserver jobs owned by `f
 USE msdb;
 GO
 
-EXEC dbo.sp_help_job
-   @job_type = N'MULTI-SERVER',
-   @owner_login_name = N'françoisa',
-   @enabled = 1,
-   @execution_status = 1;
+EXECUTE dbo.sp_help_job
+    @job_type = N'MULTI-SERVER',
+    @owner_login_name = N'françoisa',
+    @enabled = 1,
+    @execution_status = 1;
 GO
 ```
 
@@ -287,7 +287,7 @@ The following example lists all aspects of the information for the job `NightlyB
 USE msdb;
 GO
 
-EXEC dbo.sp_help_job
+EXECUTE dbo.sp_help_job
     @job_name = N'NightlyBackups',
     @job_aspect = N'ALL';
 GO

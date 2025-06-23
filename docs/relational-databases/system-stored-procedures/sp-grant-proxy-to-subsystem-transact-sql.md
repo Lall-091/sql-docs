@@ -4,7 +4,7 @@ description: sp_grant_proxy_to_subsystem grants a proxy access to a subsystem.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 07/16/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -113,7 +113,7 @@ The following example grants the proxy `Catalog application proxy` access to the
 USE msdb;
 GO
 
-EXEC dbo.sp_grant_proxy_to_subsystem
+EXECUTE dbo.sp_grant_proxy_to_subsystem
     @proxy_name = 'Catalog application proxy',
     @subsystem_id = 2;
 GO
@@ -127,9 +127,9 @@ The following example grants the proxy `Catalog application proxy` access to the
 USE msdb;
 GO
 
-EXEC dbo.sp_grant_proxy_to_subsystem
+EXECUTE dbo.sp_grant_proxy_to_subsystem
     @proxy_name = N'Catalog application proxy',
-    @subsystem_name = N'Dts' ;
+    @subsystem_name = N'Dts';
 GO
 ```
 

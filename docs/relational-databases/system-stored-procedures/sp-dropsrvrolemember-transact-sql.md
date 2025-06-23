@@ -4,7 +4,7 @@ description: sp_dropsrvrolemember removes a SQL Server login, Windows user, or W
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 11/28/2023
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -76,7 +76,7 @@ Requires membership in the **sysadmin** fixed server role, or both `ALTER ANY LO
 The following example removes the login `JackO` from the **sysadmin** fixed server role.
 
 ```sql
-EXEC sp_dropsrvrolemember 'JackO', 'sysadmin';
+EXECUTE sp_dropsrvrolemember 'JackO', 'sysadmin';
 ```
 
 ## Related content

@@ -4,7 +4,7 @@ description: sp_execute_remote executes a Transact-SQL statement on a single rem
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/16/2024
+ms.date: 06/23/2025
 ms.service: azure-sql-database
 ms.topic: conceptual
 f1_keywords:
@@ -15,7 +15,7 @@ helpviewer_keywords:
   - "queries, remote execution"
 dev_langs:
   - "TSQL"
-monikerRange: "= azuresqldb-current"
+monikerRange: "=azuresqldb-current"
 ---
 # sp_execute_remote (Azure SQL Database)
 
@@ -98,9 +98,7 @@ Requires `ALTER ANY EXTERNAL DATA SOURCE` permission.
 The following example creates and executes a basic `SELECT` statement on a remote database.
 
 ```sql
-EXEC sp_execute_remote
-    N'MyExtSrc',
-    N'SELECT COUNT(w_id) AS Count_id FROM warehouse';
+EXECUTE sp_execute_remote N'MyExtSrc', N'SELECT COUNT(w_id) AS Count_id FROM warehouse';
 ```
 
 ### B. Example with multiple parameters
@@ -114,7 +112,8 @@ This example performs the following actions:
 1. Executes the `sp_set_firewall_rule` procedure in the `master` database. The `sp_set_firewall_rule` procedure requires three parameters, and requires the `@name` parameter to be Unicode.
 
 ```sql
-EXEC sp_execute_remote @data_source_name = N'PointToMaster',
+EXECUTE sp_execute_remote
+    @data_source_name = N'PointToMaster',
     @stmt = N'sp_set_firewall_rule @name, @start_ip_address, @end_ip_address',
     @params = N'@name nvarchar(128), @start_ip_address varchar(50), @end_ip_address varchar(50)',
     @name = N'TempFWRule',

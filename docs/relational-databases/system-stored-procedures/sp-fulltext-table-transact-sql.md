@@ -4,7 +4,7 @@ description: Marks or unmarks a table for full-text indexing.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/22/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -108,19 +108,13 @@ The following example creates full-text index metadata for the `Document` table 
 USE AdventureWorks2022;
 GO
 
-EXEC sp_fulltext_table 'Production.Document',
-    'create',
-    'Cat_Desc',
-    'PK_Document_DocumentID';
+EXECUTE sp_fulltext_table 'Production.Document', 'create', 'Cat_Desc', 'PK_Document_DocumentID';
 
 --Add some columns
-EXEC sp_fulltext_column 'Production.Document',
-    'DocumentSummary',
-    'add';
+EXECUTE sp_fulltext_column 'Production.Document', 'DocumentSummary', 'add';
 
 -- Activate the full-text index
-EXEC sp_fulltext_table 'Production.Document',
-    'activate';
+EXECUTE sp_fulltext_table 'Production.Document', 'activate';
 GO
 ```
 
@@ -131,8 +125,9 @@ The following example activates and starts propagating tracked changes to the fu
 ```sql
 USE AdventureWorks2022;
 GO
-EXEC sp_fulltext_table 'Production.Document', 'Start_change_tracking';
-EXEC sp_fulltext_table 'Production.Document', 'Start_background_updateindex';
+
+EXECUTE sp_fulltext_table 'Production.Document', 'Start_change_tracking';
+EXECUTE sp_fulltext_table 'Production.Document', 'Start_background_updateindex';
 GO
 ```
 
@@ -143,7 +138,8 @@ This example removes the full-text index metadata for the `Document` table of th
 ```sql
 USE AdventureWorks2022;
 GO
-EXEC sp_fulltext_table 'Production.Document', 'drop';
+
+EXECUTE sp_fulltext_table 'Production.Document', 'drop';
 GO
 ```
 

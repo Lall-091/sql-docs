@@ -4,7 +4,7 @@ description: sp_getapplock places a lock on an application resource.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/16/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -112,17 +112,21 @@ GO
 
 BEGIN TRANSACTION;
 
-DECLARE @result INT;
+DECLARE @result AS INT;
 
-EXEC @result = sp_getapplock
+EXECUTE
+    @result = sp_getapplock
     @Resource = 'Form1',
     @LockMode = 'Shared';
 
-EXEC @result = sp_getapplock
+EXECUTE
+    @result = sp_getapplock
     @Resource = 'Form1',
     @LockMode = 'Exclusive';
 
-EXEC @result = sp_releaseapplock @Resource = 'Form1';
+EXECUTE
+    @result = sp_releaseapplock
+    @Resource = 'Form1';
 
 COMMIT TRANSACTION;
 GO
@@ -138,22 +142,24 @@ GO
 
 BEGIN TRANSACTION;
 
-DECLARE @result INT;
+DECLARE @result AS INT;
 
-EXEC @result = sp_getapplock
+EXECUTE
+    @result = sp_getapplock
     @Resource = 'Form1',
     @LockMode = 'Exclusive';
 
 IF @result = -3
 BEGIN
-    ROLLBACK TRANSACTION;
+    ROLLBACK;
 END
 ELSE
 BEGIN
-    EXEC @result = sp_releaseapplock @Resource = 'Form1';
-
+    EXECUTE
+        @result = sp_releaseapplock
+        @Resource = 'Form1';
     COMMIT TRANSACTION;
-END;
+END
 GO
 ```
 
@@ -175,9 +181,10 @@ GO
 
 BEGIN TRANSACTION;
 
-DECLARE @result INT;
+DECLARE @result AS INT;
 
-EXEC @result = sp_getapplock
+EXECUTE
+    @result = sp_getapplock
     @Resource = 'Form1',
     @LockMode = 'Shared';
 
@@ -190,7 +197,7 @@ The following example specifies `dbo` as the database principal.
 ```sql
 BEGIN TRANSACTION;
 
-EXEC sp_getapplock
+EXECUTE sp_getapplock
     @DbPrincipal = 'dbo',
     @Resource = 'AdventureWorks2022',
     @LockMode = 'Shared';

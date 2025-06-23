@@ -4,7 +4,7 @@ description: "The sys.sp_help_change_feed system stored procedure monitors the c
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: imotiwala, randolphwest, anagha-todalbagi, ajayj
-ms.date: 05/19/2025
+ms.date: 06/23/2025
 ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -57,15 +57,15 @@ EXECUTE sys.sp_help_change_feed;
 | `table_name` | **sysname** | The name of the change feed table. |
 | `table_id` | **uniqueidentifier** | The unique identifier for the change feed table. Generated during change feed setup workflow. |
 | `table_object_id` | **int** | The object ID of the change feed table. |
-| `state` | **tinyint** | The state of the change feed table. Valid state values: `1` - Enabled. `2` - Exporting. `3` - Exported. `4` - Active. `5` - Disabled. `6` - Pending Disablement. |
+| `state` | **tinyint** | The state of the change feed table. Valid state values:<br /><br />`1` - Enabled.<br />`2` - Exporting.<br />`3` - Exported.<br />`4` - Active.<br />`5` - Disabled.<br />`6` - Pending Disablement. |
 | `version` | **binary(10)** | The version of the change feed table. |
-| `snapshot_phase` | **tinyint** | Phase of the current snapshot which progresses from one to six. <br/>`1` - ABORT_PRIOR_SNAPSHOT_IF_ANY<br/>`2` - SET_TABLEVERSIONLSN<br/>`3` - EXPORT_SCHEMA_FILE<br/>`4` - EMIT_SNAPSHOT_BEGINENTRY<br/>`5` - EXPORT_DATA_FILE<br/>`6` - EMIT_SNAPSHOT_ENDENTRY|
+| `snapshot_phase` | **tinyint** | Phase of the current snapshot which progresses from one to six.<br /><br />`1` - ABORT_PRIOR_SNAPSHOT_IF_ANY<br />`2` - SET_TABLEVERSIONLSN<br />`3` - EXPORT_SCHEMA_FILE<br />`4` - EMIT_SNAPSHOT_BEGINENTRY<br />`5` - EXPORT_DATA_FILE<br />`6` - EMIT_SNAPSHOT_ENDENTRY |
 | `snapshot_current_phase_time` | **datetime** | Time when the current snapshot phase started. |
 | `snapshot_retry_count` | **int** | Number of times snapshot has attempted to retry. |
 | `snapshot_start_time` | **datetime** | Start time of snapshot phase |
 | `snapshot_end_time` | **datetime** | End time of snapshot phase |
 | `snapshot_row_count` | **int** | The number of rows of data being exported during the snapshot operation of the change feed table |
-| `destination_type` | **int** | `0` = Azure Synapse Link. `2` = Fabric mirroring. |
+| `destination_type` | **int** | `0` = Azure Synapse Link.<br />`2` = Fabric mirroring. |
 
 ## Permissions
 
@@ -76,7 +76,7 @@ Currently, only a member of the **sysadmin** server role or **db_owner** role, o
 To check the status of tables and metadata:
 
 ```sql
-EXEC sp_help_change_feed;
+EXECUTE sp_help_change_feed;
 ```
 
 ## Related content

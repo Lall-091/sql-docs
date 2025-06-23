@@ -4,7 +4,7 @@ description: sp_droptype deletes an alias data type from systypes.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 11/28/2023
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -63,7 +63,8 @@ The following example drops the alias data type `birthday`. This alias data type
 ```sql
 USE master;
 GO
-EXEC sp_droptype 'birthday';
+
+EXECUTE sp_droptype 'birthday';
 GO
 ```
 

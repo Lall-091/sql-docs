@@ -4,7 +4,7 @@ description: sp_help_fulltext_columns returns the columns designated for full-te
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 05/14/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -78,7 +78,8 @@ The following example returns information about the columns that have been desig
 ```sql
 USE AdventureWorks2022;
 GO
-EXEC sp_help_fulltext_columns 'Production.Document';
+
+EXECUTE sp_help_fulltext_columns 'Production.Document';
 GO
 ```
 

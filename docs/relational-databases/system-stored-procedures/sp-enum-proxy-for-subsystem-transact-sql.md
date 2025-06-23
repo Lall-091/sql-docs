@@ -4,7 +4,7 @@ description: sp_enum_proxy_for_subsystem lists permissions for SQL Server Agent 
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 07/16/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -98,7 +98,7 @@ The following example lists all permissions established between proxies and subs
 USE msdb;
 GO
 
-EXEC dbo.sp_enum_proxy_for_subsystem;
+EXECUTE dbo.sp_enum_proxy_for_subsystem;
 GO
 ```
 
@@ -110,7 +110,7 @@ The following example returns a row if the proxy `Catalog application proxy` has
 USE msdb;
 GO
 
-EXEC dbo.sp_enum_proxy_for_subsystem
+EXECUTE dbo.sp_enum_proxy_for_subsystem
     @subsystem_name = 'ActiveScripting',
     @proxy_name = 'Catalog application proxy';
 GO

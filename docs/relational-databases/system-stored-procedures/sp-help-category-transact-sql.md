@@ -4,7 +4,7 @@ description: Provides information about the specified classes of jobs, alerts, o
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 05/14/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -118,7 +118,7 @@ The following example returns information about jobs that are administered local
 USE msdb;
 GO
 
-EXEC dbo.sp_help_category @type = N'LOCAL';
+EXECUTE dbo.sp_help_category @type = N'LOCAL';
 GO
 ```
 
@@ -130,7 +130,7 @@ The following example returns information about the Replication alert category.
 USE msdb;
 GO
 
-EXEC dbo.sp_help_category
+EXECUTE dbo.sp_help_category
     @class = N'ALERT',
     @name = N'Replication';
 GO

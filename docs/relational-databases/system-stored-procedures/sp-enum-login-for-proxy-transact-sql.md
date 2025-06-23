@@ -4,7 +4,7 @@ description: sp_enum_login_for_proxy lists associations between security princip
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 07/16/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -91,7 +91,7 @@ The following example lists all permissions established between logins and proxi
 USE msdb;
 GO
 
-EXEC dbo.sp_enum_login_for_proxy;
+EXECUTE dbo.sp_enum_login_for_proxy;
 GO
 ```
 
@@ -103,7 +103,7 @@ The following example lists the proxies that the login `terrid` has access to.
 USE msdb;
 GO
 
-EXEC dbo.sp_enum_login_for_proxy @name = 'terrid';
+EXECUTE dbo.sp_enum_login_for_proxy @name = 'terrid';
 GO
 ```
 

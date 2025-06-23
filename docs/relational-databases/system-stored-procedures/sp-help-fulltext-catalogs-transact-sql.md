@@ -4,7 +4,7 @@ description: Returns the ID, name, root directory, status, and number of full-te
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 05/14/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -67,7 +67,8 @@ The following example returns information about the `Cat_Desc` full-text catalog
 ```sql
 USE AdventureWorks2022;
 GO
-EXEC sp_help_fulltext_catalogs 'Cat_Desc';
+
+EXECUTE sp_help_fulltext_catalogs 'Cat_Desc';
 GO
 ```
 

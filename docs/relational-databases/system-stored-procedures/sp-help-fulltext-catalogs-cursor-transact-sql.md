@@ -4,7 +4,7 @@ description: Uses a cursor to return the ID, name, root directory, status, and n
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 05/14/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -72,14 +72,20 @@ The following example returns information about the `Cat_Desc` full-text catalog
 ```sql
 USE AdventureWorks2022;
 GO
-DECLARE @mycursor CURSOR;
-EXEC sp_help_fulltext_catalogs_cursor @mycursor OUTPUT, 'Cat_Desc';
+
+DECLARE @mycursor AS CURSOR;
+
+EXECUTE sp_help_fulltext_catalogs_cursor @mycursor OUTPUT, 'Cat_Desc';
+
 FETCH NEXT FROM @mycursor;
+
 WHILE (@@FETCH_STATUS <> -1)
-   BEGIN
-      FETCH NEXT FROM @mycursor;
-   END
+    BEGIN
+        FETCH NEXT FROM @mycursor;
+    END
+
 CLOSE @mycursor;
+
 DEALLOCATE @mycursor;
 GO
 ```

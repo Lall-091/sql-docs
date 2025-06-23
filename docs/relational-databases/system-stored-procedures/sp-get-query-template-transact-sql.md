@@ -4,7 +4,7 @@ description: sp_get_query_template returns the parameterized form of a query.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 03/07/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -38,7 +38,7 @@ sp_get_query_template
 
 [!INCLUDE [extended-stored-procedures](includes/extended-stored-procedures.md)]
 
-#### [ @querytext = ] N'querytext'
+#### [ @querytext = ] N'*querytext*'
 
 The query for which the parameterized version is to be generated. *@querytext* is **nvarchar(max)**, and must be enclosed in single quotation marks and be preceded by the `N` Unicode specifier.
 
@@ -71,13 +71,13 @@ The following example returns the parameterized form of a query that contains tw
 USE AdventureWorks2022;
 GO
 
-DECLARE @my_templatetext NVARCHAR(MAX);
-DECLARE @my_parameters NVARCHAR(MAX);
+DECLARE @my_templatetext AS NVARCHAR (MAX);
+DECLARE @my_parameters AS NVARCHAR (MAX);
 
-EXEC sp_get_query_template N'SELECT pi.ProductID, SUM(pi.Quantity) AS Total
+EXECUTE sp_get_query_template N'SELECT pi.ProductID, SUM(pi.Quantity) AS Total
         FROM Production.ProductModel pm
         INNER JOIN Production.ProductInventory pi
-        ON pm.ProductModelID = pi.ProductID
+            ON pm.ProductModelID = pi.ProductID
         WHERE pi.ProductID = 2
         GROUP BY pi.ProductID, pi.Quantity
         HAVING SUM(pi.Quantity) > 400',

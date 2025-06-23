@@ -4,7 +4,7 @@ description: Creates and drops a full-text catalog, and starts and stops the ind
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/22/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -97,7 +97,8 @@ This example creates an empty full-text catalog, `Cat_Desc`, in the [!INCLUDE [s
 ```sql
 USE AdventureWorks2022;
 GO
-EXEC sp_fulltext_catalog 'Cat_Desc', 'create';
+
+EXECUTE sp_fulltext_catalog 'Cat_Desc', 'create';
 GO
 ```
 
@@ -108,7 +109,8 @@ This example rebuilds an existing full-text catalog, `Cat_Desc`, in the [!INCLUD
 ```sql
 USE AdventureWorks2022;
 GO
-EXEC sp_fulltext_catalog 'Cat_Desc', 'rebuild';
+
+EXECUTE sp_fulltext_catalog 'Cat_Desc', 'rebuild';
 GO
 ```
 
@@ -119,7 +121,8 @@ This example begins a full population of the `Cat_Desc` catalog.
 ```sql
 USE AdventureWorks2022;
 GO
-EXEC sp_fulltext_catalog 'Cat_Desc', 'start_full';
+
+EXECUTE sp_fulltext_catalog 'Cat_Desc', 'start_full';
 GO
 ```
 
@@ -130,7 +133,8 @@ This example stops the population of the `Cat_Desc` catalog.
 ```sql
 USE AdventureWorks2022;
 GO
-EXEC sp_fulltext_catalog 'Cat_Desc', 'stop';
+
+EXECUTE sp_fulltext_catalog 'Cat_Desc', 'stop';
 GO
 ```
 
@@ -141,7 +145,8 @@ This example removes the `Cat_Desc` catalog.
 ```sql
 USE AdventureWorks2022;
 GO
-EXEC sp_fulltext_catalog 'Cat_Desc', 'drop';
+
+EXECUTE sp_fulltext_catalog 'Cat_Desc', 'drop';
 GO
 ```
 

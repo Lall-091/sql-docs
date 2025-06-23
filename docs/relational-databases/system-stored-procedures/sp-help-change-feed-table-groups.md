@@ -3,8 +3,8 @@ title: "sys.sp_help_change_feed_table_groups (Transact-SQL)"
 description: "The sys.sp_help_change_feed_table_groups_groups system stored procedure returns the table group information for Fabric Mirrored Databases."
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: imotiwala, ajayj
-ms.date: 05/19/2025
+ms.reviewer: imotiwala, ajayj, randolphwest
+ms.date: 06/23/2025
 ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -45,7 +45,7 @@ EXECUTE sys.sp_help_change_feed_table_groups;
 
 ## Arguments
 
-None
+None.
 
 ## Result set
 

@@ -3,8 +3,8 @@ title: "sys.sp_help_change_feed_settings (Transact-SQL)"
 description: "The sys.sp_help_change_feed_settings system stored procedure returns state information for Microsoft Fabric Mirroring."
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: imotiwala, ajayj
-ms.date: 05/19/2025
+ms.reviewer: imotiwala, ajayj, randolphwest
+ms.date: 06/23/2025
 ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -45,7 +45,7 @@ EXECUTE sys.sp_help_change_feed_settings;
 
 ## Arguments
 
-None
+None.
 
 ## Result set
 
@@ -55,10 +55,10 @@ None
 | `seqno` | **binary(10)** | Log Sequence Number (LSN) marker to track the last published LSN (log record). |
 | `schema_version` | **int** | Tracks current schema version of database. Determines whether a schema needs to be updated or not on startup. |
 | `pollinterval` | **int** | The frequency that the log is scanned for any new changes in seconds. |
-| `reseed_state` | **tinyint** | **Applies to:** Fabric Mirrored Database only.<br /><br />`0` = Normal.<br />`1` = The database has started the process of reinitializing to Fabric. Transitionary state.<br />`2` = The database is being reinitialized to Fabric and remains in this state until complete. |
-| `destination_type` | **sysname** | Change event streaming destination type. `AzureEventHubsAmqp` <br />  `AzureEventHubsKafka` <br /><br /> Introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] |
-| `partition_scheme` | **tinyint** |Change event streaming partition scheme.  <br /><br />`0` = None<br />`1` = Table group. <br />`2` = Table <br />`3` = Column  <br /><br /> Introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]|
-| `encoding` | **tinyint** | Change event streaming message encoding. <br />`0` = JSON <br />`1` = Avro Binary <br /><br /> Introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]|
+| `reseed_state` | **tinyint** | **Applies to:** Fabric Mirrored Database only.<br /><br />`0` = Normal.<br /><br />`1` = The database has started the process of reinitializing to Fabric. Transitionary state.<br /><br />`2` = The database is being reinitialized to Fabric and remains in this state until complete. |
+| `destination_type` | **sysname** | Change event streaming destination type.<br /><br />`AzureEventHubsAmqp`<br />`AzureEventHubsKafka`<br /><br />Introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] |
+| `partition_scheme` | **tinyint** | Change event streaming partition scheme.<br /><br />`0` = None<br />`1` = Table group.<br />`2` = Table<br />`3` = Column<br /><br />Introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] |
+| `encoding` | **tinyint** | Change event streaming message encoding.<br /><br />`0` = JSON<br />`1` = Avro Binary<br /><br />Introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] |
 
 ## Permissions
 

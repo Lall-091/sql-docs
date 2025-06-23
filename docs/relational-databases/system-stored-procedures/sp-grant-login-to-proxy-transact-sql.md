@@ -4,7 +4,7 @@ description: sp_grant_login_to_proxy grants a security principal access to a pro
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 07/16/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -88,7 +88,7 @@ The following example allows the login `adventure-works\terrid` to use the proxy
 USE msdb;
 GO
 
-EXEC dbo.sp_grant_login_to_proxy
+EXECUTE dbo.sp_grant_login_to_proxy
     @login_name = N'adventure-works\terrid',
     @proxy_name = N'Catalog application proxy';
 GO

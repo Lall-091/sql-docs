@@ -4,7 +4,7 @@ description: sp_foreignkeys returns the foreign keys that reference primary keys
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/16/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -108,9 +108,10 @@ Requires `SELECT` permission on the schema.
 The following example returns foreign key information about the `Department` table in the [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)] database on the linked server, `Seattle1`.
 
 ```sql
-EXEC sp_foreignkeys @table_server = N'Seattle1',
-   @pktab_name = N'Department',
-   @pktab_catalog = N'AdventureWorks2022';
+EXECUTE sp_foreignkeys
+    @table_server = N'Seattle1',
+    @pktab_name = N'Department',
+    @pktab_catalog = N'AdventureWorks2022';
 ```
 
 ## Related content

@@ -4,7 +4,7 @@ description: Registers a pre-populated Semantic Language Statistics database in 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/22/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -82,8 +82,7 @@ Requires CONTROL SERVER permissions.
 The following example shows how to register the Semantic Language Statistics database by calling `sp_fulltext_semantic_register_language_statistics_db`.
 
 ```sql
-EXEC sp_fulltext_semantic_register_language_statistics_db
-    @dbname = 'semanticsDb';
+EXECUTE sp_fulltext_semantic_register_language_statistics_db @dbname = 'semanticsDb';
 GO
 ```
 

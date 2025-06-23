@@ -4,7 +4,7 @@ description: sp_fkeys returns logical foreign key information for the current en
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/16/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -116,17 +116,17 @@ The following example retrieves a list of foreign keys for the `HumanResources.D
 USE AdventureWorks2022;
 GO
 
-EXEC sp_fkeys
+EXECUTE sp_fkeys
     @pktable_name = N'Department',
     @pktable_owner = N'HumanResources';
 ```
 
-## Examples: [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE [ssPDW](../../includes/sspdw-md.md)]
+## Examples: Azure Synapse Analytics and Analytics Platform System (PDW)
 
 The following example retrieves a list of foreign keys for the `DimDate` table in the `AdventureWorksPDW2012` database. No rows are returned because [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] doesn't support foreign keys.
 
 ```sql
-EXEC sp_fkeys @pktable_name = N'DimDate';
+EXECUTE sp_fkeys @pktable_name = N'DimDate';
 ```
 
 ## Related content

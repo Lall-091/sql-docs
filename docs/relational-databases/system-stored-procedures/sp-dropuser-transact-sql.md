@@ -4,7 +4,7 @@ description: sp_dropuser removes a database user from the current database.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/22/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -52,7 +52,7 @@ Use `sp_helpuser` to display a list of the user names that can be removed from t
 
 When a database user is removed, any aliases to that user are also removed. If the user owns an empty schema with the same name as the user, the schema is dropped. If the user owns any other securables in the database, the user isn't dropped. Ownership of the objects must first be transferred to another principal. For more information, see [ALTER AUTHORIZATION](../../t-sql/statements/alter-authorization-transact-sql.md). Removing a database user automatically removes the permissions associated with that user and removes the user from any database roles of which it's a member.
 
-`sp_dropuser` can't be used to remove the database owner (**dbo**) `INFORMATION_SCHEMA` users, or the **guest** user from the `master` or `tempdb` databases. In nonsystem databases, `EXEC sp_dropuser 'guest'` revokes `CONNECT` permission from user **guest**, but the user itself isn't dropped.
+`sp_dropuser` can't be used to remove the database owner (**dbo**) `INFORMATION_SCHEMA` users, or the **guest** user from the `master` or `tempdb` databases. In nonsystem databases, `EXECUTE sp_dropuser 'guest'` revokes `CONNECT` permission from user **guest**, but the user itself isn't dropped.
 
 `sp_dropuser` can't be executed within a user-defined transaction.
 
@@ -65,7 +65,7 @@ Requires `ALTER ANY USER` permission on the database.
 The following example removes the user `Albert` from the current database.
 
 ```sql
-EXEC sp_dropuser 'Albert';
+EXECUTE sp_dropuser 'Albert';
 GO
 ```
 

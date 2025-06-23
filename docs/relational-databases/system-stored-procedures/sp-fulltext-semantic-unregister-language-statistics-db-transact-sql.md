@@ -4,7 +4,7 @@ description: Unregisters an existing Semantic Language Statistics database from 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/07/2023
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -70,7 +70,7 @@ Requires CONTROL SERVER permissions.
 The following example shows how to unregister the Semantic Language Statistics database by calling `sp_fulltext_semantic_unregister_language_statistics_db`.
 
 ```sql
-EXEC sp_fulltext_semantic_unregister_language_statistics_db;
+EXECUTE sp_fulltext_semantic_unregister_language_statistics_db;
 GO
 ```
 

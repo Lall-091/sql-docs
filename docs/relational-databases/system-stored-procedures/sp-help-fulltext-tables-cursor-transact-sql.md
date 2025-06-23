@@ -4,7 +4,7 @@ description: sp_help_fulltext_tables_cursor uses a cursor to return a list of ta
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/22/2024
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -84,14 +84,20 @@ The following example returns the names of the full-text indexed tables associat
 ```sql
 USE AdventureWorks2022;
 GO
-DECLARE @mycursor CURSOR;
-EXEC sp_help_fulltext_tables_cursor @mycursor OUTPUT, 'Cat_Desc';
+
+DECLARE @mycursor AS CURSOR;
+
+EXECUTE sp_help_fulltext_tables_cursor @mycursor OUTPUT, 'Cat_Desc';
+
 FETCH NEXT FROM @mycursor;
+
 WHILE (@@FETCH_STATUS <> -1)
-   BEGIN
-      FETCH NEXT FROM @mycursor;
-   END;
+    BEGIN
+        FETCH NEXT FROM @mycursor;
+    END
+
 CLOSE @mycursor;
+
 DEALLOCATE @mycursor;
 GO
 ```
