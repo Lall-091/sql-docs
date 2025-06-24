@@ -188,7 +188,7 @@ We recommend that customers use the private link with the **Redirect connection 
 
 - Allow **outbound** communication from the VNET hosting the client to port range 1433 to 65535.
 
-- Use the **latest version of drivers that have redirect support built in.** Redirect support is included in ODBC, OLEDB, NET SqlClient Data Provider, Core .NET SqlClient Data Provider, and JDBC (version 9.4 or above) drivers. Connections originating from all other drivers are proxied.
+- Use the **latest version of drivers that have redirect support built in.** Redirect support is included in ODBC, OLE DB, .NET SqlClient Data Provider, Core .NET SqlClient Data Provider, and JDBC (version 9.4 or above) drivers. Connections originating from all other drivers are proxied.
 
 After meeting the prerequisite, clients need to explicitly [choose **Redirect** connection policy](connectivity-architecture.md#connection-policy). If the connection policy has been set to **Redirect** before the private endpoint was set up, you might have to toggle the connection policy after setting up the private endpoint.
 
@@ -197,7 +197,7 @@ If it isn't feasible to modify the firewall settings to allow outbound access on
 Existing private endpoints using **Default** connection policy will be using the Proxy connection policy with port 1433. The reason for doing this is to avoid any disruption to client traffic from reaching SQL Database due to requisite port ranges for redirection not being open.
 
 > [!NOTE]
-> For dedicated SQL pools, the connection policy when using private endpoints is always **Proxy**. Changing the setting will not affect to dedicated SQL pools when using private endpoints.
+> For dedicated SQL pools, the connection policy when using private endpoints is always **Proxy**. Changing the setting won't affect dedicated SQL pools when using private endpoints.
 
 ## On-premises connectivity over private peering
 
