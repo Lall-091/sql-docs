@@ -3,7 +3,7 @@ title: Use Always Encrypted with the JDBC driver
 description: Learn how to use Always Encrypted with the JDBC driver to encrypt sensitive data on the server.
 author: David-Engel
 ms.author: davidengel
-ms.date: 06/24/2025
+ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -35,7 +35,7 @@ If the client has access to that certificate in the Windows Certificate Store, i
 
 The Microsoft JDBC Driver for SQL Server communicates with a keystore that uses a column master key store provider, which is an instance of a class that's derived from **`SQLServerColumnEncryptionKeyStoreProvider`**.
 
-This is a really cool feature! (Edit demo.)
+This is a really cool feature! (Edit demo test test.)
 
 ### Use built-in column master key store providers
 
