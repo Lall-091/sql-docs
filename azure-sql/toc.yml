@@ -383,7 +383,7 @@
         href: database/service-tier-hyperscale.md
       - name: Hyperscale architecture
         href: database/hyperscale-architecture.md
-      - name: Elastic pools
+      - name: Hyperscale elastic pools
         href: database/hyperscale-elastic-pool-overview.md
       - name: Hyperscale backups
         href: database/hyperscale-automated-backups-overview.md

@@ -1,10 +1,10 @@
 ---
-title: DTU resource limits elastic pools
+title: DTU Resource Limits Elastic Pools
 description: This page describes some common DTU resource limits for elastic pools in Azure SQL Database.
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: wiassaf, mathoma
-ms.date: 05/19/2023
+ms.date: 06/24/2025
 ms.service: azure-sql-database
 ms.subservice: elastic-pools
 ms.topic: reference
@@ -13,19 +13,60 @@ ms.custom:
   - references_regions
 ---
 # Resource limits for elastic pools using the DTU purchasing model
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 This article provides the detailed resource limits for databases in Azure SQL Database that are within an elastic pool using the DTU purchasing model.
 
-* For DTU purchasing model limits for single databases on a server, see [Overview of resource limits on a server](resource-limits-logical-server.md).
-* For DTU purchasing model resource limits for Azure SQL Database, see [DTU resource limits single databases](resource-limits-dtu-single-databases.md) and [DTU resource limits elastic pools](resource-limits-dtu-elastic-pools.md).
-* For vCore resource limits, see [vCore resource limits - Azure SQL Database](resource-limits-vcore-single-databases.md) and [vCore resource limits - elastic pools](resource-limits-vcore-elastic-pools.md).
-* For more information regarding the different purchasing models, see [Purchasing models and service tiers](purchasing-models.md).
+- For DTU purchasing model limits for single databases on a server, see [Resource management in Azure SQL Database](resource-limits-logical-server.md).
+- For DTU purchasing model resource limits for Azure SQL Database, see [Resource limits for single databases using the DTU purchasing model - Azure SQL Database](resource-limits-dtu-single-databases.md).
+- For more information regarding the different purchasing models, see [Compare vCore and DTU-based purchasing models of Azure SQL Database](purchasing-models.md).
+
+### Database properties for pooled databases
+
+For each elastic pool, you can optionally specify per database minimum and maximum DTUs to modify resource consumption patterns within the pool. You can also set maximum storage per database, for example to prevent a single database from consuming all pool storage. 
+
+- Specified min and max DTU values apply to all databases in the pool. Customizing min and max DTUs for individual databases in the pool isn't supported. 
+- Maximum storage per database can be configured independently for each database.
+
+The following table describes per database properties for pooled databases. 
+
+| Property | Configuration level | Description |
+|:--- |:--- |
+| Max DTUs per database | Configured for all databases in the pool | The maximum number of DTUs that any database in the pool might use, if available based on utilization by other databases in the pool. Max DTUs per database is not a resource guarantee for a database. If the workload in each database does not need all available pool resources to perform adequately, consider setting max DTUs per database to prevent a single database from monopolizing pool resources. Some degree of over-committing is expected since the pool generally assumes hot and cold usage patterns for databases, where all databases are not simultaneously peaking. |
+| Min DTUs per database | Configured for all databases in the pool | The minimum number of DTUs reserved for any database in the pool. Consider setting a min DTUs per database when you want to guarantee resource availability for each database regardless of resource consumption by other databases in the pool. The min DTUs per database might be set to 0, and is also the default value. This property is set to anywhere between 0 and the average DTUs utilization per database.|
+| Max storage per database | Configured per database | The maximum database size set by the user for a database in a pool. Pooled databases share allocated pool storage, so the size a database can reach is limited to the smaller of remaining pool storage and maximum database size. Maximum database size refers to the maximum size of the data files and does not include the space used by the log file. |
+
+> [!IMPORTANT]
+> Because resources in an elastic pool are finite, setting min DTUs per database to a value greater than 0 implicitly limits resource utilization by each database. If, at a point in time, most databases in a pool are idle, resources reserved to satisfy the min DTUs guarantee are not available to databases active at that point in time.
+>
+> Additionally, setting min DTUs per database to a value greater than 0 implicitly limits the number of databases that can be added to the pool. For example, if you set the min DTUs to 100 in a 400 DTU pool, it means that you will not be able to add more than 4 databases to the pool, because 100 DTUs are reserved for each database.
+> 
+
+If all DTUs of an elastic pool are used, then each database in the pool receives an equal amount of resources to process queries. The Azure SQL Database service provides resource sharing fairness between databases by ensuring equal slices of compute time. Elastic pool resource sharing fairness is in addition to any amount of resource otherwise guaranteed to each database when the DTU min per database is set to a non-zero value.
+
+While the per database properties are expressed in DTUs, they also govern consumption of other resource types, such as data IO, log IO, buffer pool memory, and worker threads. As you adjust min and max per database DTUs values, reservations and limits for all resource types are adjusted proportionally.
+
+Min and max per database DTU values apply to resource consumption by user workloads, but not to resource consumption by internal processes. For example, for a database with a per database max DTU set to half of the pool eDTU, user workload cannot consume more than one half of the buffer pool memory. However, this database can still take advantage of pages in the buffer pool that were loaded by internal processes. For more information, see [Resource consumption by user workloads and internal processes](resource-limits-logical-server.md#resource-consumption-by-user-workloads-and-internal-processes).
 
 Each read-only replica has its own resources such as DTUs, workers, and sessions. Each read-only replica is subject to the resource limits detailed later in this article.
 
-> [!NOTE]
-> The Gen5 hardware in the vCore purchasing model has been renamed to **standard-series (Gen5)**.
+## Tempdb sizes
+
+The following table lists `tempdb` sizes for single databases in Azure SQL Database: 
+
+|Service-level objective|Maximum `tempdb` data file size (GB)|Number of `tempdb` data files|Maximum `tempdb` data size (GB)|
+|---|---:|---:|---:|
+|Basic Elastic Pools (all DTU configurations)|13.9|12|166.7|
+|Standard Elastic Pools (50 eDTU)|13.9|12|166.7|
+|Standard Elastic Pools (100 eDTU)|32|1|32|
+|Standard Elastic Pools (200 eDTU)|32|2|64|
+|Standard Elastic Pools (300 eDTU)|32|3|96|
+|Standard Elastic Pools (400 eDTU)|32|3|96|
+|Standard Elastic Pools (800 eDTU)|32|6|192|
+|Standard Elastic Pools (1200 eDTU)|32|10|320|
+|Standard Elastic Pools (1600-3000 eDTU)|32|12|384|
+|Premium Elastic Pools (all DTU configurations)|13.9|12|166.7|
 
 ## Elastic pool: Storage sizes and compute sizes
 
@@ -39,11 +80,11 @@ For Azure SQL Database elastic pools, the following tables show the resources av
 
 
 > [!IMPORTANT]
-> For scaling guidance and considerations, see [Scale an elastic pool](elastic-pool-scale.md)
+> For scaling guidance and considerations, see [Scale elastic pool resources in Azure SQL Database](elastic-pool-scale.md)
 
 The resource limits of individual databases in elastic pools are generally the same as for single databases outside of pools based on DTUs and the service tier. For example, the max concurrent workers for an S2 database is 120 workers. So, the max concurrent workers for a database in a Standard pool is also 120 workers if the max DTU per database in the pool is 50 DTUs (which is equivalent to S2).
- 
-For the same number of DTUs, resources provided to an elastic pool may exceed the resources provided to a single database outside of an elastic pool. This means it is possible for the eDTU utilization of an elastic pool to be less than the summation of DTU utilization across databases within the pool, depending on workload patterns. For example, in an extreme case with only one database in an elastic pool where database DTU utilization is 100%, it is possible for pool eDTU utilization to be 50% for certain workload patterns. This can happen even if max DTU per database remains at the maximum supported value for the given pool size.
+
+For the same number of DTUs, resources provided to an elastic pool can exceed the resources provided to a single database outside of an elastic pool. This means it is possible for the eDTU utilization of an elastic pool to be less than the summation of DTU utilization across databases within the pool, depending on workload patterns. For example, in an extreme case with only one database in an elastic pool where database DTU utilization is 100%, it is possible for pool eDTU utilization to be 50% for certain workload patterns. This can happen even if max DTU per database remains at the maximum supported value for the given pool size.
 
 > [!NOTE]
 > The storage per pool resource limit in each of the following tables do not include `tempdb` and log storage.
@@ -66,7 +107,7 @@ For the same number of DTUs, resources provided to an elastic pool may exceed th
 
 <sup>1</sup> See [Resource management in dense elastic pools](elastic-pool-resource-management.md) for additional considerations.
 
-<sup>2</sup> For the max concurrent workers for any individual database, see [Single database resource limits](resource-limits-vcore-single-databases.md). For example, if the elastic pool is using standard-series (Gen5) and the max vCore per database is set at 2, then the max concurrent workers value is 200.  If max vCore per database is set to 0.5, then the max concurrent workers value is 50 since on standard-series (Gen5) there are a max of 100 concurrent workers per vCore. For other max vCore settings per database that are less 1 vCore or less, the number of max concurrent workers is similarly rescaled.
+<sup>2</sup> For the max concurrent workers for any individual database, see [Resource limits for single databases using the DTU purchasing model](resource-limits-dtu-single-databases.md). 
 
 <sup>3</sup> See [External Connections](resource-limits-logical-server.md#external-connections) for additional details on what counts as an external connection.
 
@@ -90,7 +131,7 @@ For the same number of DTUs, resources provided to an elastic pool may exceed th
 
 <sup>2</sup> See [Resource management in dense elastic pools](elastic-pool-resource-management.md) for additional considerations.
 
-<sup>3</sup> For the max concurrent workers for any individual database, see [Single database resource limits](resource-limits-vcore-single-databases.md). For example, if the elastic pool is using standard-series (Gen5) and the max vCore per database is set at 2, then the max concurrent workers value is 200.  If max vCore per database is set to 0.5, then the max concurrent workers value is 50 since on standard-series (Gen5) there are a max of 100 concurrent workers per vCore. For other max vCore settings per database that are less 1 vCore or less, the number of max concurrent workers is similarly rescaled.
+<sup>3</sup> For the max concurrent workers for any individual database, see [Resource limits for single databases using the DTU purchasing model](resource-limits-dtu-single-databases.md). 
 
 <sup>4</sup> See [External Connections](resource-limits-logical-server.md#external-connections) for additional details on what counts as an external connection.
 
@@ -114,11 +155,14 @@ For the same number of DTUs, resources provided to an elastic pool may exceed th
 
 <sup>2</sup> See [Resource management in dense elastic pools](elastic-pool-resource-management.md) for additional considerations.
 
-<sup>3</sup> For the max concurrent workers for any individual database, see [Single database resource limits](resource-limits-vcore-single-databases.md). For example, if the elastic pool is using standard-series (Gen5) and the max vCore per database is set at 2, then the max concurrent workers value is 200.  If max vCore per database is set to 0.5, then the max concurrent workers value is 50 since on standard-series (Gen5) there are a max of 100 concurrent workers per vCore. For other max vCore settings per database that are less 1 vCore or less, the number of max concurrent workers is similarly rescaled.
+<sup>3</sup> For the max concurrent workers for any individual database, see [Resource limits for single databases using the DTU purchasing model](resource-limits-dtu-single-databases.md). 
 
 <sup>4</sup> See [External Connections](resource-limits-logical-server.md#external-connections) for additional details on what counts as an external connection.
 
 ### Premium elastic pool limits
+
+> [!NOTE]
+> For additional information on storage limits in the Premium service tier, see [Storage space governance](resource-limits-logical-server.md#storage-space-governance).
 
 | eDTUs per pool | **125** | **250** | **500** | **1000** | **1500**|
 |:---|---:|---:|---:| ---: | ---: |
@@ -138,7 +182,7 @@ For the same number of DTUs, resources provided to an elastic pool may exceed th
 
 <sup>2</sup> See [Resource management in dense elastic pools](elastic-pool-resource-management.md) for additional considerations.
 
-<sup>3</sup> For the max concurrent workers for any individual database, see [Single database resource limits](resource-limits-vcore-single-databases.md). For example, if the elastic pool is using standard-series (Gen5) and the max vCore per database is set at 2, then the max concurrent workers value is 200.  If max vCore per database is set to 0.5, then the max concurrent workers value is 50 since on standard-series (Gen5) there are a max of 100 concurrent workers per vCore. For other max vCore settings per database that are less 1 vCore or less, the number of max concurrent workers is similarly rescaled.
+<sup>3</sup> For the max concurrent workers for any individual database, see [Resource limits for single databases using the DTU purchasing model](resource-limits-dtu-single-databases.md).
 
 <sup>4</sup> See [External Connections](resource-limits-logical-server.md#external-connections) for additional details on what counts as an external connection.
 
@@ -162,66 +206,15 @@ For the same number of DTUs, resources provided to an elastic pool may exceed th
 
 <sup>2</sup> See [Resource management in dense elastic pools](elastic-pool-resource-management.md) for additional considerations.
 
-<sup>3</sup> For the max concurrent workers for any individual database, see [Single database resource limits](resource-limits-vcore-single-databases.md). For example, if the elastic pool is using standard-series (Gen5) and the max vCore per database is set at 2, then the max concurrent workers value is 200.  If max vCore per database is set to 0.5, then the max concurrent workers value is 50 since on standard-series (Gen5) there are a max of 100 concurrent workers per vCore. For other max vCore settings per database that are less 1 vCore or less, the number of max concurrent workers is similarly rescaled.
+<sup>3</sup> For the max concurrent workers for any individual database, see [Resource limits for single databases using the DTU purchasing model](resource-limits-dtu-single-databases.md). 
 
 <sup>4</sup> See [External Connections](resource-limits-logical-server.md#external-connections) for additional details on what counts as an external connection.
 
 > [!IMPORTANT]
-> More than 1 TB of storage in the Premium tier is currently available in all regions except: China East, China North, Germany Central, and Germany Northeast. In these regions, the storage max in the Premium tier is limited to 1 TB.  For more information, see [P11-P15 current limitations](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).
+> More than 1 TB of storage in the Premium tier is currently available in all regions except: China East, China North, Germany Central, and Germany Northeast. In these regions, the storage max in the Premium tier is limited to 1 TB. For more information, see [P11-P15 current limitations](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).
 
-If all DTUs of an elastic pool are used, then each database in the pool receives an equal amount of resources to process queries. The SQL Database service provides resource sharing fairness between databases by ensuring equal slices of compute time. Elastic pool resource sharing fairness is in addition to any amount of resource otherwise guaranteed to each database when the DTU min per database is set to a non-zero value.
+## Related content
 
-> [!NOTE]
-> For additional information on storage limits in the Premium service tier, see [Storage space governance](resource-limits-logical-server.md#storage-space-governance).
-
-### Database properties for pooled databases
-
-For each elastic pool, you can optionally specify per database minimum and maximum DTUs to modify resource consumption patterns within the pool. Specified min and max values apply to all databases in the pool. Customizing min and max DTUs for individual databases in the pool is not supported. 
-
-You can also set maximum storage per database, for example to prevent a database from consuming all pool storage. This setting can be configured independently for each database.
-
-The following table describes per database properties for pooled databases. 
-
-| Property | Description |
-|:--- |:--- |
-| Max DTUs per database |The maximum number of DTUs that any database in the pool may use, if available based on utilization by other databases in the pool. Max DTUs per database is not a resource guarantee for a database. If the workload in each database does not need all available pool resources to perform adequately, consider setting max DTUs per database to prevent a single database from monopolizing pool resources. Some degree of over-committing is expected since the pool generally assumes hot and cold usage patterns for databases, where all databases are not simultaneously peaking. |
-| Min DTUs per database |The minimum number of DTUs reserved for any database in the pool. Consider setting a min DTUs per database when you want to guarantee resource availability for each database regardless of resource consumption by other databases in the pool. The min DTUs per database may be set to 0, and is also the default value. This property is set to anywhere between 0 and the average DTUs utilization per database.|
-| Max storage per database |The maximum database size set by the user for a database in a pool. Pooled databases share allocated pool storage, so the size a database can reach is limited to the smaller of remaining pool storage and maximum database size. Maximum database size refers to the maximum size of the data files and does not include the space used by the log file. |
-
-
-> [!IMPORTANT]
-> Because resources in an elastic pool are finite, setting min DTUs per database to a value greater than 0 implicitly limits resource utilization by each database. If, at a point in time, most databases in a pool are idle, resources reserved to satisfy the min DTUs guarantee are not available to databases active at that point in time.
->
-> Additionally, setting min DTUs per database to a value greater than 0 implicitly limits the number of databases that can be added to the pool. For example, if you set the min DTUs to 100 in a 400 DTU pool, it means that you will not be able to add more than 4 databases to the pool, because 100 DTUs are reserved for each database.
-> 
-
-While the per database properties are expressed in DTUs, they also govern consumption of other resource types, such as data IO, log IO, buffer pool memory, and worker threads. As you adjust min and max per database DTUs values, reservations and limits for all resource types are adjusted proportionally.
-
-Min and max per database DTU values apply to resource consumption by user workloads, but not to resource consumption by internal processes. For example, for a database with a per database max DTU set to half of the pool eDTU, user workload cannot consume more than one half of the buffer pool memory. However, this database can still take advantage of pages in the buffer pool that were loaded by internal processes. For more information, see [Resource consumption by user workloads and internal processes](resource-limits-logical-server.md#resource-consumption-by-user-workloads-and-internal-processes).
-
-## Tempdb sizes
-
-The following table lists `tempdb` sizes for single databases in Azure SQL Database: 
-
-|Service-level objective|Maximum `tempdb` data file size (GB)|Number of `tempdb` data files|Maximum `tempdb` data size (GB)|
-|---|---:|---:|---:|
-|Basic Elastic Pools (all DTU configurations)|13.9|12|166.7|
-|Standard Elastic Pools (50 eDTU)|13.9|12|166.7|
-|Standard Elastic Pools (100 eDTU)|32|1|32|
-|Standard Elastic Pools (200 eDTU)|32|2|64|
-|Standard Elastic Pools (300 eDTU)|32|3|96|
-|Standard Elastic Pools (400 eDTU)|32|3|96|
-|Standard Elastic Pools (800 eDTU)|32|6|192|
-|Standard Elastic Pools (1200 eDTU)|32|10|320|
-|Standard Elastic Pools (1600-3000 eDTU)|32|12|384|
-|Premium Elastic Pools (all DTU configurations)|13.9|12|166.7|
-
-
-## Next steps
-
-* For vCore resource limits for a single database, see [resource limits for single databases using the vCore purchasing model](resource-limits-vcore-single-databases.md)
-* For DTU resource limits for a single database, see [resource limits for single databases using the DTU purchasing model](resource-limits-dtu-single-databases.md)
-* For vCore resource limits for elastic pools, see [resource limits for elastic pools using the vCore purchasing model](resource-limits-vcore-elastic-pools.md)
-* For resource limits for managed instances in Azure SQL Managed Instance, see [SQL Managed Instance resource limits](../managed-instance/resource-limits.md).
-* For information about general Azure limits, see [Azure subscription and service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits).
-* For information about resource limits on a logical SQL server, see [overview of resource limits on a logical SQL server](resource-limits-logical-server.md) for information about limits at the server and subscription levels.
+- [Resource limits for single databases using the DTU purchasing model](resource-limits-dtu-single-databases.md)
+- [Azure subscription and service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits)
+- [Resource limits on a logical SQL server](resource-limits-logical-server.md)
