@@ -5,7 +5,7 @@ description: Understand how the Azure SQL Managed Instance maintenance window ca
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma, urosmil, scottkim
-ms.date: 06/19/2024
+ms.date: 06/25/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: conceptual
@@ -26,7 +26,7 @@ The maintenance window feature allows you to configure maintenance schedule for 
 > [!NOTE]
 > The maintenance window feature only protects from planned impact from upgrades or scheduled maintenance. It does not protect from all failover causes; exceptions that might cause short connection interruptions outside of a maintenance window include hardware failures, and other reconfigurations.
 
-Advance notifications enable customers to configure notifications to be sent up to 24 hours in advance of any planned event.
+Advance notifications enable customers to configure notifications to be sent 24 hours in advance of any planned event.
 
 ## Overview
 
