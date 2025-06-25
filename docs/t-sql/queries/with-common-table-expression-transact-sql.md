@@ -4,7 +4,7 @@ description: "Transact-SQL reference for how to use common table expressions (CT
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 06/24/2025
+ms.date: 06/25/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -32,7 +32,7 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
-Specifies a temporary named result set, known as a common table expression (CTE). This is derived from a simple query and defined within the execution scope of a single SELECT, INSERT, UPDATE, DELETE, or MERGE statement. This clause can also be used in a CREATE VIEW statement as part of its defining SELECT statement. A common table expression can include references to itself. This is referred to as a recursive common table expression.
+Specifies a temporary named result set, known as a common table expression (CTE). This is derived from a simple query and defined within the execution scope of a single `SELECT`, `INSERT`, `UPDATE`, `MERGE`, or `DELETE` statement. This clause can also be used in a `CREATE VIEW` statement as part of its defining `SELECT` statement. A common table expression can include references to itself. This is referred to as a recursive common table expression.
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
@@ -59,85 +59,87 @@ Specifies a column name in the common table expression. Duplicate names within a
 
 #### *CTE_query_definition*
 
-Specifies a SELECT statement whose result set populates the common table expression. The SELECT statement for *CTE_query_definition* must meet the same requirements as for creating a view, except a CTE can't define another CTE. For more information, see the Remarks section and [CREATE VIEW](../statements/create-view-transact-sql.md).
+Specifies a `SELECT` statement whose result set populates the common table expression. The `SELECT` statement for *CTE_query_definition* must meet the same requirements as for creating a view, except a CTE can't define another CTE. For more information, see the Remarks section and [CREATE VIEW](../statements/create-view-transact-sql.md).
 
-If more than one *CTE_query_definition* is defined, the query definitions must be joined by one of these set operators: UNION ALL, UNION, EXCEPT, or INTERSECT.
+If more than one *CTE_query_definition* is defined, the query definitions must be joined by one of these set operators: `UNION ALL`, `UNION`, `EXCEPT`, or `INTERSECT`.
 
-## Guidelines for creating and using common table expressions
+## Usage guidelines
 
-The following guidelines apply to nonrecursive common table expressions. For guidelines that apply to recursive common table expressions, see [Guidelines for Defining and Using Recursive Common Table Expressions](#guidelines-for-defining-and-using-recursive-common-table-expressions) that follows.
+- [Guidelines for common table expressions](#guidelines-for-nonrecursive-common-table-expressions)
+- [Guidelines for recursive common table expressions](#guidelines-for-recursive-common-table-expressions)
 
-- A CTE must be followed by a single `SELECT`, `INSERT`, `UPDATE`, or `DELETE` statement that references some or all the CTE columns. A CTE can also be specified in a `CREATE VIEW` statement as part of the defining `SELECT` statement of the view.
+### Guidelines for nonrecursive common table expressions
 
-- Multiple CTE query definitions can be defined in a nonrecursive CTE. The definitions must be combined by one of these set operators: `UNION ALL`, `UNION`, `INTERSECT`, or `EXCEPT`.
+> [!NOTE]  
+> The following guidelines apply to nonrecursive common table expressions. For guidelines that apply to recursive common table expressions, see [Guidelines for recursive common table expressions](#guidelines-for-recursive-common-table-expressions).
 
-- A CTE can reference itself and previously defined CTEs in the same `WITH` clause. Forward referencing isn't allowed.
+A CTE must be followed by a single `SELECT`, `INSERT`, `UPDATE`, `MERGE`, or `DELETE` statement that references some or all the CTE columns. A CTE can also be specified in a `CREATE VIEW` statement as part of the defining `SELECT` statement of the view.
 
-- Specifying more than one WITH clause in a CTE isn't allowed. For example, if a *CTE_query_definition* contains a subquery, that subquery can't contain a nested WITH clause that defines another CTE.
+Multiple CTE query definitions can be defined in a nonrecursive CTE. The definitions must be combined by one of these set operators: `UNION ALL`, `UNION`, `INTERSECT`, or `EXCEPT`.
 
-- For more information on nested CTEs in Microsoft Fabric, see [Nested Common Table Expression (CTE) in Fabric data warehousing (Transact-SQL)](nested-common-table-expression.md?view=fabric&preserve-view=true).
+A CTE can reference itself and previously defined CTEs in the same `WITH` clause. Forward referencing isn't allowed.
 
-- Query results from common table expressions aren't materialized. Each outer reference to the named result set requires the defined query to be re-executed. For queries that require multiple references to the named result set, consider using a [temporary object](../statements/create-table-transact-sql.md#temporary-tables) instead.
+Specifying more than one `WITH` clause in a CTE isn't allowed. For example, if a *CTE_query_definition* contains a subquery, that subquery can't contain a nested `WITH` clause that defines another CTE.
 
-- You can't execute a stored procedure in a common table expression.
+For more information on nested CTEs in Microsoft Fabric, see [Nested Common Table Expression (CTE) in Fabric data warehousing (Transact-SQL)](nested-common-table-expression.md?view=fabric&preserve-view=true).
 
-- The following clauses can't be used in the *CTE_query_definition*:
+Query results from common table expressions aren't materialized. Each outer reference to the named result set requires the defined query to be re-executed. For queries that require multiple references to the named result set, consider using a [temporary object](../statements/create-table-transact-sql.md#temporary-tables) instead.
 
-  - `ORDER BY` (except when a `TOP` or `OFFSET/FETCH` clause is specified)
+You can't execute a stored procedure in a common table expression.
 
-  - `INTO`
+The following clauses can't be used in the *CTE_query_definition*:
 
-  - `OPTION` clause with query hints
+- `ORDER BY` (except when a `TOP` or `OFFSET/FETCH` clause is specified)
+- `INTO`
+- `OPTION` clause with query hints <sup>1</sup>
+- `FOR BROWSE`
 
-  - `FOR BROWSE`
+<sup>1</sup> The `OPTION` clause can't be used inside a CTE definition. It can only be used in the outermost `SELECT` statement.
 
-- When a CTE is used in a statement that is part of a batch, the statement before it must be followed by a semicolon.
+When a CTE is used in a statement that is part of a batch, the statement before it must be followed by a semicolon.
 
-- A query referencing a CTE can be used to define a cursor.
+A query referencing a CTE can be used to define a cursor.
 
-- Tables on remote servers can be referenced in the CTE.
+Tables on remote servers can be referenced in the CTE.
 
-- When executing a CTE, any hints that reference a CTE can conflict with other hints that are discovered when the CTE accesses its underlying tables, in the same manner as hints that reference views in queries. When this occurs, the query returns an error.
+When executing a CTE, any hints that reference a CTE can conflict with other hints that are discovered when the CTE accesses its underlying tables, in the same manner as hints that reference views in queries. When this occurs, the query returns an error.
 
-## Guidelines for defining and using recursive common table expressions
+<a id="guidelines-for-defining-and-using-recursive-common-table-expressions"></a>
 
-The following guidelines apply to defining a recursive common table expression:
+### Guidelines for recursive common table expressions
 
-- The recursive CTE definition must contain at least two CTE query definitions, an anchor member and a recursive member. Multiple anchor members and recursive members can be defined; however, all anchor member query definitions must be put before the first recursive member definition. All CTE query definitions are anchor members unless they reference the CTE itself.
+> [!NOTE]  
+> The following guidelines apply to defining a recursive common table expression. For guidelines that apply to nonrecursive CTEs, see [Guidelines for nonrecursive common table expressions](#guidelines-for-nonrecursive-common-table-expressions).
 
-- Anchor members must be combined by one of these set operators: UNION ALL, UNION, INTERSECT, or EXCEPT. UNION ALL is the only set operator allowed between the last anchor member and first recursive member, and when combining multiple recursive members.
+The recursive CTE definition must contain at least two CTE query definitions, an anchor member and a recursive member. Multiple anchor members and recursive members can be defined; however, all anchor member query definitions must be put before the first recursive member definition. All CTE query definitions are anchor members unless they reference the CTE itself.
 
-- The number of columns in the anchor and recursive members must be the same.
+Anchor members must be combined by one of these set operators: `UNION ALL`, `UNION`, `INTERSECT`, or `EXCEPT`. `UNION ALL` is the only set operator allowed between the last anchor member and first recursive member, and when combining multiple recursive members.
 
-- The data type of a column in the recursive member must be the same as the data type of the corresponding column in the anchor member.
+The number of columns in the anchor and recursive members must be the same.
 
-- The FROM clause of a recursive member must refer only one time to the CTE *expression_name*.
+The data type of a column in the recursive member must be the same as the data type of the corresponding column in the anchor member.
 
-- The following items aren't allowed in the *CTE_query_definition* of a recursive member:
+The FROM clause of a recursive member must refer only one time to the CTE *expression_name*.
 
-  - `SELECT DISTINCT`
+The following items aren't allowed in the *CTE_query_definition* of a recursive member:
 
-  - `GROUP BY`
+- `SELECT DISTINCT`
+- `GROUP BY`
+- `PIVOT` <sup>1</sup>
+- `HAVING`
+- Scalar aggregation
+- `TOP`
+- `LEFT`, `RIGHT`, `OUTER JOIN` (`INNER JOIN` is allowed)
+- Subqueries
+- A hint applied to a recursive reference to a CTE inside a *CTE_query_definition*.
 
-  - `PIVOT` (When the database compatibility level is 110 or higher. See [Breaking changes to Database Engine features in SQL Server 2016](../../database-engine/breaking-changes-to-database-engine-features-in-sql-server-2016.md).)
-
-  - `HAVING`
-
-  - Scalar aggregation
-
-  - `TOP`
-
-  - `LEFT`, `RIGHT`, `OUTER JOIN` (`INNER JOIN` is allowed)
-
-  - Subqueries
-
-  - A hint applied to a recursive reference to a CTE inside a *CTE_query_definition*.
+<sup>1</sup> When the database compatibility level is 110 or higher. See [Breaking changes to Database Engine features in SQL Server 2016](../../database-engine/breaking-changes-to-database-engine-features-in-sql-server-2016.md).
 
 The following guidelines apply to using a recursive common table expression:
 
 - All columns returned by the recursive CTE are nullable regardless of the nullability of the columns returned by the participating `SELECT` statements.
 
-- An incorrectly composed recursive CTE can cause an infinite loop. For example, if the recursive member query definition returns the same values for both the parent and child columns, an infinite loop is created. To prevent an infinite loop, you can limit the number of recursion levels allowed for a particular statement by using the `MAXRECURSION` hint and a value between 0 and 32,767 in the OPTION clause of the `INSERT`, `UPDATE`, `DELETE`, or `SELECT` statement. This lets you control the execution of the statement until you resolve the code problem that is creating the loop. The server-wide default is 100. When 0 is specified, no limit is applied. Only one `MAXRECURSION` value can be specified per statement. For more information, see [Query hints](hints-transact-sql-query.md).
+- An incorrectly composed recursive CTE can cause an infinite loop. For example, if the recursive member query definition returns the same values for both the parent and child columns, an infinite loop is created. To prevent an infinite loop, you can limit the number of recursion levels allowed for a particular statement by using the `MAXRECURSION` hint and a value between `0` and `32767` in the `OPTION` clause of the `INSERT`, `UPDATE`, `DELETE`, or `SELECT` statement. This lets you control the execution of the statement until you resolve the code problem that is creating the loop. The server-wide default is 100. When 0 is specified, no limit is applied. Only one `MAXRECURSION` value can be specified per statement. For more information, see [Query hints](hints-transact-sql-query.md).
 
 - A view that contains a recursive common table expression can't be used to update data.
 
@@ -173,7 +175,7 @@ The current implementation of CTEs in [!INCLUDE [ssazuresynapse-md](../../includ
 
 - Specifying more than one `WITH` clause in a CTE isn't allowed. For example, if a CTE query definition contains a subquery, that subquery can't contain a nested `WITH` clause that defines another CTE.
 
-- An `ORDER BY` clause can't be used in the CTE_query_definition, except when a `TOP` clause is specified.
+- An `ORDER BY` clause can't be used in the *CTE_query_definition*, except when a `TOP` clause is specified.
 
 - When a CTE is used in a statement that is part of a batch, the statement before it must be followed by a semicolon.
 
@@ -223,7 +225,7 @@ FROM Sales_CTE;
 
 ### C. Use multiple CTE definitions in a single query
 
-The following example shows how to define more than one CTE in a single query. A comma is used to separate the CTE query definitions. The FORMAT function, used to display the monetary amounts in a currency format, is available in SQL Server 2012 and later versions.
+The following example shows how to define more than one CTE in a single query. A comma is used to separate the CTE query definitions. The `FORMAT` function, used to display the monetary amounts in a currency format, was introduced in [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)].
 
 ```sql
 WITH Sales_CTE (SalesPersonID, TotalSales, SalesYear)
@@ -394,7 +396,7 @@ FROM cte
 OPTION (MAXRECURSION 2);
 ```
 
-After the coding error is corrected, MAXRECURSION is no longer required. The following example shows the corrected code.
+After the coding error is corrected, `MAXRECURSION` is no longer required. The following example shows the corrected code.
 
 ```sql
 WITH cte (EmployeeID, ManagerID, Title) AS
@@ -455,7 +457,7 @@ ORDER BY ComponentLevel, AssemblyID, ComponentID;
 
 ### F. Use a recursive CTE in an UPDATE statement
 
-The following example updates the `PerAssemblyQty` value for all parts that are used to build the product 'Road-550-W Yellow, 44' `(ProductAssemblyID``800`). The common table expression returns a hierarchical list of parts that are used to build `ProductAssemblyID 800` and the components that are used to create those parts, and so on. Only the rows returned by the common table expression are modified.
+The following example updates the `PerAssemblyQty` value for all parts that are used to build the product `'Road-550-W Yellow, 44' (ProductAssemblyID 800)`. The common table expression returns a hierarchical list of parts that are used to build `ProductAssemblyID 800` and the components that are used to create those parts, and so on. Only the rows returned by the common table expression are modified.
 
 ```sql
 USE AdventureWorks2022;
