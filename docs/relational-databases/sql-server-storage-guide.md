@@ -161,7 +161,7 @@ SCSI, SAS, and NVMe storage devices:
 <a id="iscsi"></a>
 
 > [!NOTE]  
-> [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is supported on Internet Small Computer System Interface (iSCSI) technology components that meet the requirements of the [Windows Hardware Compatibility Program](/windows-hardware/design/compatibility/whcp-certification-process). Although [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] doesn't interact directly with iSCSI, it operates seamlessly because Windows presents iSCSI storage as standard drives. This allows [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] to read from and write to remote block-level storage across IP networks. Since iSCSI depends on networks, you can experience delays or bottlenecks, so you should optimize the server's caching performance and minimize latency.
+> [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is supported on Internet Small Computer System Interface (iSCSI) technology components that meet the requirements of the [Windows Hardware Compatibility Program](/windows-hardware/design/compatibility/whcp-certification-process). Although [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] doesn't interact directly with iSCSI, it operates seamlessly because Windows presents iSCSI storage as standard drives. This allows [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] to read from and write to remote block-level storage across IP networks. Since iSCSI depends on networks, you can experience delays or bottlenecks, so you should optimize the server's caching performance and minimize latency. For more information, see [iSCSI Target Server Scalability Limits](/windows-server/storage/iscsi/iscsi-target-server-limits).
 
 #### Non-SCSI
 
