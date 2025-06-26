@@ -4,7 +4,7 @@ description: Find information about SQL Server 2025 (17.x) limitations, known is
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 06/19/2025
+ms.date: 06/26/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: release-notes
@@ -27,13 +27,13 @@ For hardware and software requirements, see [Hardware and software requirements 
 
 ## Known issues
 
-### SQL Server on Windows fails to start after installation
+### SQL Server on Windows fails to start on machines with more than 64 logical cores per NUMA node
 
 **Issue**: SQL Server instances on Windows might fail to start after the installation if the machine has more than 64 logical cores per NUMA node.
 
 For more information, see [Limit number of logical cores per NUMA node to 64](compute-capacity-limits-by-edition-of-sql-server.md#limit-number-of-logical-cores-per-numa-node-to-64).
 
-### SQL Server on Linux fails to start after installation
+### SQL Server on Linux fails to start on machines with hybrid CPU architecture
 
 **Issue**: SQL Server instances on Linux might fail to start if the machine uses an Intel 12th Gen or later hybrid architecture CPU, and the host operating system is Linux.
 
@@ -44,6 +44,14 @@ Reason: 0x00000004 Message: ASSERT: Expression=(result * DrtlGetProcessorCoreCou
 ```
 
 If you want to use a Linux host operating system, you can work around the issue by disabling efficiency cores (E-cores) in your BIOS. If you use containers, or a hypervisor like Hyper-V on Windows (including WSL), you aren't affected.
+
+### SQL Server fails to start if AVX2 CPU instructions aren't available
+
+**Issue**: In CTP 2.1 (version 2025.170.800.3), SQL Server doesn't start if AVX2 CPU instructions aren't available on the machine.
+
+In the Windows application event log, you see an **Error** event referencing exception code `0xc000001d` and a faulting module path that includes `sqllang.dll`.
+
+To work around this issue, enable AVX2 CPU instructions on the machine. AVX instructions might be disabled in the machine BIOS or UEFI, or disabled in the hypervisor configuration. If SQL Server setup failed because of this issue, uninstall and reinstall SQL Server once AVX2 instructions are enabled.
 
 ### Upgrade in place
 
