@@ -137,7 +137,9 @@ The same status report can be obtained by repeating the same `KILL` statement wi
 
 **[!INCLUDE [ssSDS](../../includes/sssds-md.md)]:** Requires the `KILL DATABASE CONNECTION` permission. The server-level principal login has the `KILL DATABASE CONNECTION` permission.
 
-**[!INCLUDE [fabric](../../includes/fabric.md)]:** Requires Admin permissions.
+**[!INCLUDE [fabric](../../includes/fabric.md)] Data Warehouse:** Requires Write item permission.
+
+**SQL database in [!INCLUDE [fabric](../../includes/fabric.md)]:** Requires Write item permission.
 
 **Azure Synapse Analytics:** Requires Admin permissions.
 
