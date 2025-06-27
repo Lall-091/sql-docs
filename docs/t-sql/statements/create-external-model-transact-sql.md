@@ -4,7 +4,7 @@ description: CREATE EXTERNAL MODEL (Transact-SQL) for creating an external model
 author: jettermctedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 06/03/2025
+ms.date: 06/27/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: "reference"
@@ -89,10 +89,10 @@ Indicate which `DATABASE SCOPED CREDENTIAL` object is used with the AI model inf
 
 ### PARAMETERS
 
-A valid JSON string that contains parameters to be appended to the AI model inference endpoint request message. For example:
+A valid JSON string that contains runtime parameters to be appended to the AI model inference endpoint request message. For example:
 
-```json
-'{"Dimensions" : 1536}'
+```text
+'{ "Dimensions": 1536 }'
 ```
 
 ## Permissions
@@ -126,24 +126,24 @@ GO
 
 ## Retry count
 
-If the embeddings call encounters HTTP status codes indicating temporary issues, you can configure the request to automatically retry. To specify the number of retries, add the following JSON to the `PARAMETERS` on the `EXTERNAL MODEL`. The **NUMBER_OF_RETRIES** should be a whole number between zero (0) and ten (10), inclusive, and can't be NULL or negative
+If the embeddings call encounters HTTP status codes indicating temporary issues, you can configure the request to automatically retry. To specify the number of retries, add the following JSON to the `PARAMETERS` on the `EXTERNAL MODEL`. The `<number_of_retries>` should be a whole number between zero (`0`) and ten (`10`), inclusive, and can't be `NULL` or negative.
 
-```JSON
-{"sql_rest_options":{"retry_count":NUMBER_OF_RETRIES}}
+```text
+{ "sql_rest_options": { "retry_count": <number_of_retries> } }
 ```
 
-For example, to set the `retry count` to 3, you would write the following JSON string:
+For example, to set the `retry_count` to 3, you would write the following JSON string:
 
-```JSON
-{"sql_rest_options":{"retry_count":3}}
+```json
+{ "sql_rest_options": { "retry_count": 3 } }
 ```
 
 ### Retry count with other parameters
 
 Retry count can also be combined with other parameters as long as it's a valid JSON string.
 
-```JSON
-{"Dimensions":725,"sql_rest_options":{"retry_count":5}}
+```json
+{ "Dimensions": 725, "sql_rest_options": { "retry_count": 5 } }
 ```
 
 ## Remarks
@@ -179,10 +179,15 @@ For more information on creating embedding endpoints, use these links for the ap
 The created `DATABASE SCOPED CREDENTIAL` used by an `EXTERNAL MODEL` must adhere to specific following rules:
 
 - Must be a valid URL
+
 - The URL domain must be one of those domains included in the allowlist
+
 - The URL must not contain a query string
+
 - Protocol + Fully Qualified Domain Name (FQDN) of the called URL must match Protocol + FQDN of the credential name
+
 - Each part of the called URL path must match completely with the respective part of URL path in the credential name
+
 - The credential must point to a path that is more generic than the request URL. For example, a credential created for path `https://northwind.azurewebsite.net/customers` can't be used for the URL `https://northwind.azurewebsite.net`
 
 #### Collation and credential name rules
@@ -194,6 +199,7 @@ As there's a collation rule set at the database level, the following logic is ap
 1. Check if the URL and credential match using the RFC, which means:
    - Check the scheme and host using a case-insensitive collation (`Latin1_General_100_CI_AS_KS_WS_SC`)
    - Check all other segments of the URL are compared in a case-sensitive collation (`Latin1_General_100_BIN2`)
+
 1. Check that the URL and credential match using the database collation rules (and without doing any URL encoding).
 
 ### Managed Identity
@@ -202,13 +208,12 @@ To use [Managed Identity](/entra/identity/managed-identities-azure-resources/ove
 
 ```sql
 EXECUTE sp_configure 'allow server scoped db credentials', 1;
-
 RECONFIGURE WITH OVERRIDE;
 ```
 
 ### SCHEMABINDING
 
-Dropping views created with `SCHEMABINDING` and referencing an `EXTERNAL MODEL` (such as a SELECT statement using `AI_GENERATE_EMBEDDINGS`) is prevented with the Database Engine raising an error. The view definition itself must first be modified or dropped to remove dependencies referencing an `EXTERNAL MODEL`.
+Dropping views created with `SCHEMABINDING` and referencing an `EXTERNAL MODEL` (such as a `SELECT` statement using `AI_GENERATE_EMBEDDINGS`) is prevented with the Database Engine raising an error. The view definition itself must first be modified or dropped to remove dependencies referencing an `EXTERNAL MODEL`.
 
 ## Catalog View
 
@@ -222,10 +227,10 @@ SELECT * FROM sys.external_models;
 
 ### Create an EXTERNAL MODEL with Azure OpenAI using Managed Identity
 
-This example creates an EXTERNAL MODEL of the EMBEDDINGS type using Azure OpenAI and uses [Managed Identity](/entra/identity/managed-identities-azure-resources/overview) for authentication.
+This example creates an `EXTERNAL MODEL` of the `EMBEDDINGS` type using Azure OpenAI and uses [Managed Identity](/entra/identity/managed-identities-azure-resources/overview) for authentication.
 
-> [!IMPORTANT]
-> If using Managed Identity with Azure OpenAI and SQL Server 2025, the [**`Cognitive Services OpenAI Contributor`**](/azure/role-based-access-control/built-in-roles#ai--machine-learning) role must be granted to [SQL Server's system-assigned managed identity by ARC](../../sql-server/azure-arc/managed-identity.md). For more information, see [Role-based access control for Azure OpenAI in Azure AI Foundry Models](/azure/ai-services/openai/how-to/role-based-access-control).
+> [!IMPORTANT]  
+> If using Managed Identity with Azure OpenAI and SQL Server 2025, the [Cognitive Services OpenAI Contributor](/azure/role-based-access-control/built-in-roles#ai--machine-learning) role must be granted to [SQL Server's system-assigned managed identity enabled by Azure Arc](../../sql-server/azure-arc/managed-identity.md). For more information, see [Role-based access control for Azure OpenAI in Azure AI Foundry Models](/azure/ai-services/openai/how-to/role-based-access-control).
 
 ```sql
 -- Create access credentials to Azure OpenAI using a managed identity:
@@ -247,7 +252,7 @@ WITH (
 
 ### Create an EXTERNAL MODEL with Azure OpenAI using API keys and parameters
 
-This example creates an EXTERNAL MODEL of the EMBEDDINGS type using Azure OpenAI and uses API Keys for authentication. The example also uses `PARAMETERS` to set the Dimensions parameter at the endpoint to 725.
+This example creates an `EXTERNAL MODEL` of the `EMBEDDINGS` type using Azure OpenAI and uses API Keys for authentication. The example also uses `PARAMETERS` to set the Dimensions parameter at the endpoint to 725.
 
 ```sql
 -- Create access credentials to Azure OpenAI using a key:
@@ -310,8 +315,8 @@ WITH (
 - [ALTER EXTERNAL MODEL (Transact-SQL)](alter-external-model-transact-sql.md)
 - [DROP EXTERNAL MODEL (Transact-SQL)](drop-external-model-transact-sql.md)
 - [AI_GENERATE_EMBEDDINGS (Transact-SQL)](../functions/ai-generate-embeddings-transact-sql.md)
-- [AI_GENERATE_CHUNKS (Transact-SQL)](../functions/ai-generate-chunks-transact-sql.md)
+- [AI_GENERATE_CHUNKS (Transact-SQL) (Preview)](../functions/ai-generate-chunks-transact-sql.md)
 - [sys.external_models](../../relational-databases/system-catalog-views/sys-external-models-transact-sql.md)
-- [Create and deploy an Azure OpenAI Service resource](/azure/ai-services/openai/how-to/create-resource)
+- [Create and deploy an Azure OpenAI in Azure AI Foundry Models resource](/azure/ai-services/openai/how-to/create-resource)
 - [Server configuration options](../../database-engine/configure-windows/server-configuration-options-sql-server.md)
 - [Role-based access control for Azure OpenAI in Azure AI Foundry Models](/azure/ai-services/openai/how-to/role-based-access-control)

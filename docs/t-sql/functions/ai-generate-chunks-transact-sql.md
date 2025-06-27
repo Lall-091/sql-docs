@@ -4,7 +4,7 @@ description: The ai_generate_chunks table-valued function creates text chunks.
 author: jettermctedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 06/09/2025
+ms.date: 06/27/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: "reference"
@@ -42,9 +42,9 @@ To change the compatibility level of a database, refer to [View or change the co
 ```syntaxsql
 AI_GENERATE_CHUNKS (source = text_expression
                     , chunk_type = FIXED
-                   [ [ , ] chunk_size = numeric_expression ]
-                   [ [ , ] overlap = numeric_expression ]
-                   [ [ , ] enable_chunk_set_id = numeric_expression]
+                   [ , chunk_size = numeric_expression ]
+                   [ , overlap = numeric_expression ]
+                   [ , enable_chunk_set_id = numeric_expression ]
 )
 ```
 
@@ -64,15 +64,15 @@ Accepted values for this release:
 
 #### *chunk_size*
 
-When `chunk_type` is `FIXED`, this parameter sets the character/word count size of each chunk specified as a variable, a literal, or a scalar expression of type **tinyint**, **smallint**, **int**, or **bigint**. *chunk_size* can't be `NULL`, negative, or zero (`0`).
+When `chunk_type` is `FIXED`, this parameter sets the character count size of each chunk specified as a variable, a literal, or a scalar expression of type **tinyint**, **smallint**, **int**, or **bigint**. *chunk_size* can't be `NULL`, negative, or zero (`0`). This parameter is also **required** when using a `chunk_type` of `FIXED`.
 
 #### *overlap*
 
-The *overlap* parameter determines the percentage of the preceding text that should be included in the current chunk. This percentage is applied to the `chunk_size` parameter to calculate the size in characters. The *overlap* value can be specified as a variable, a literal, or a scalar expression of type tinyint, smallint, int, or bigint. It must be a whole number between zero (`0`) and 50, inclusive, and cannot be NULL or negative. The default value is zero (`0`).
+The *overlap* parameter determines the percentage of the preceding text that should be included in the current chunk. This percentage is applied to the `chunk_size` parameter to calculate the size in characters. The *overlap* value can be specified as a variable, a literal, or a scalar expression of type tinyint, smallint, int, or bigint. It must be a whole number between zero (`0`) and 50, inclusive, and can't be `NULL` or negative. The default value is zero (`0`).
 
 #### *enable_chunk_set_id*
 
-An **int** or **bit** expression that serves as a flag to enable or disable the `chunk_set_id` output column; a column that returns a number to help group returned chunks belonging to the same source. A value of 1 enables the column. If *enable_chunk_set_id* is omitted, NULL, or has a value of 0, the `chunk_set_id` column is disabled and not returned.
+An **int** or **bit** expression that serves as a flag to enable or disable the `chunk_set_id` output column; a column that returns a number to help group returned chunks belonging to the same source. A value of `1` enables the column. If *enable_chunk_set_id* is omitted, `NULL`, or has a value of `0`, the `chunk_set_id` column is disabled and not returned.
 
 ## Return types
 
@@ -81,10 +81,10 @@ An **int** or **bit** expression that serves as a flag to enable or disable the 
 | Column name | Data type | Description |
 | --- | --- | --- |
 | `chunk` | Same as source expression data type | Returned text that was chunked from the source expression. |
-| `chunk_order` | **int** | A sequence of ordered numbers that relates to the order each chunk was processed starting with `1` and increasing by `1`. |
-| `chunk_offset` | **int** | Position of the chunk of the source data/document in relation to the start of the chunking process. |
+| `chunk_order` | **bigint** | A sequence of ordered numbers that relates to the order each chunk was processed starting with `1` and increasing by `1`. |
+| `chunk_offset` | **bigint** | Position of the chunk of the source data/document in relation to the start of the chunking process. |
 | `chunk_length` | **int** | Character length of the returned text chunk. |
-| `chunk_set_id` | **int** | An *optional column* that contains an ID that groups all the chunks of a source expression, document, or row. If multiple documents or rows are chunked in a single transaction, they're each given a different `chunk_set_id`. Visibility is controlled by the `enable_chunk_set_id` parameter. |
+| `chunk_set_id` | **bigint** | An *optional column* that contains an ID that groups all the chunks of a source expression, document, or row. If multiple documents or rows are chunked in a single transaction, they're each given a different `chunk_set_id`. Visibility is controlled by the `enable_chunk_set_id` parameter. |
 
 ### Return example
 

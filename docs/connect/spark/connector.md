@@ -1,8 +1,8 @@
 ---
 title: "Apache Spark Connector for SQL Server and Azure SQL"
 description: "Learn how to use the Apache Spark connector for SQL Server and Azure SQL."
-author: WilliamDAssafMSFT
-ms.author: wiassaf
+author: MikeRayMSFT
+ms.author: mikeray
 ms.reviewer: hudequei
 ms.date: 05/21/2025
 ms.service: sql
@@ -228,10 +228,6 @@ For **Scala,** the `_com.microsoft.aad.adal4j_` artifact will need to be install
 For **Python,** the `_adal_` library will need to be installed. This is available via pip.
 
 Check the [sample notebooks](https://github.com/microsoft/sql-spark-connector/tree/master/samples) for examples.
-
-## Support
-
-The Apache Spark Connector for Azure SQL and SQL Server is an open-source project. This connector does not come with any Microsoft support. For issues with or questions about the connector, create an Issue in this project repository. The connector community is active and monitoring submissions.
 
 ## Related content
 

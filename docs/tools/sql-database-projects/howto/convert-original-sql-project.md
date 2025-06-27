@@ -4,7 +4,7 @@ description: "Create an SDK-style SQL project from an existing project."
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: maghan, randolphwest
-ms.date: 03/11/2025
+ms.date: 06/27/2025
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: how-to
@@ -310,6 +310,30 @@ When schema comparison is run, no results should be displayed. The lack of diffe
 
 > [!NOTE]  
 > The comparison of `.dacpac` files through schema comparison doesn't validate pre/post-deployment scripts, refactorlog, or other project settings. It only validates the database model. Using the DacpacVerify command-line utility is the recommended way to validate that the two `.dacpac` files are equivalent.
+
+## Step 6: Solution files
+
+Your project file might be referenced in a solution file (`.sln`). If you have a solution file, you should update it to reference the new SDK-style project file.
+
+### Optional: Create a new solution file
+
+For a solution file that only contains the SQL project, it is more straightforward to remove the solution file and create a new solution file with the SDK-style project.
+
+```bash
+dotnet new sln --name MySolution
+dotnet sln MySolution.sln add MyDatabaseProject\MyDatabaseProject.sqlproj
+```
+
+### Optional: Edit the solution file
+
+When a solution file contains multiple projects, you should update the solution file to reference the new SDK-style project file. You can edit the solution file in a text editor and change the project reference to the new SDK-style project file. The project reference in the solution file should look like this:
+
+```xml
+Project("{PROJECT_TYPE_GUID}") = "MyDatabaseProject", "MyDatabaseProject\MyDatabaseProject.sqlproj", "{PROJECT_GUID}"
+EndProject
+```
+
+The `PROJECT_TYPE_GUID` value for a Microsoft.Build.Sql project is `42EA0DBD-9CF1-443E-919E-BE9C484E4577`, and the `PROJECT_GUID` is a unique identifier for the project found in the project file `<ProjectGuid>` element. The `PROJECT_GUID` value is not required to be changed and can remain the same as in the original project file. The `PROJECT_TYPE_GUID` value is required to be changed to the Microsoft.Build.Sql project type GUID.
 
 ## Related content
 

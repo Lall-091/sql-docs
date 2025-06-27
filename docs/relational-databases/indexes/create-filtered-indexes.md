@@ -1,10 +1,10 @@
 ---
-title: "Create filtered indexes"
+title: "Create Filtered Indexes"
 description: A filtered index is an optimized disk-based rowstore nonclustered index especially suited to cover queries that select from a well-defined subset of data.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 10/14/2022
+ms.date: 06/27/2025
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: how-to
@@ -22,34 +22,37 @@ monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-20
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
-
-This article describes how to create a filtered index using [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] (SSMS) or [!INCLUDE[tsql](../../includes/tsql-md.md)]. A filtered index is an optimized disk-based rowstore nonclustered index especially suited to cover queries that select from a well-defined subset of data. It uses a filter predicate to index a portion of rows in the table. A well-designed filtered index can improve query performance and reduce index maintenance and storage costs compared with full-table indexes.
+This article describes how to create a filtered index using [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] (SSMS) or [!INCLUDE [tsql](../../includes/tsql-md.md)]. A filtered index is an optimized disk-based rowstore nonclustered index especially suited to cover queries that select from a well-defined subset of data. It uses a filter predicate to index a portion of rows in the table. A well-designed filtered index can improve query performance and reduce index maintenance and storage costs compared with full-table indexes.
 
 Filtered indexes can provide the following advantages over full-table indexes:
 
 1. Improved query performance and plan quality.
 
-   A well-designed filtered index improves query performance and execution plan quality because it is smaller than a full-table nonclustered index and has filtered statistics. The filtered statistics are more accurate than full-table statistics because they cover only the rows in the filtered index.
+   A well-designed filtered index improves query performance and execution plan quality because it's smaller than a full-table nonclustered index and has filtered statistics. The filtered statistics are more accurate than full-table statistics because they cover only the rows in the filtered index.
 
 1. Reduced index maintenance costs.
 
-   An index is maintained only when data manipulation language (DML) statements affect the data in the index. A filtered index reduces index maintenance costs compared with a full-table nonclustered index because it is smaller and is only maintained when the data in the index is changed. It is possible to have a large number of filtered indexes, especially when they contain data that is changed infrequently. Similarly, if a filtered index contains only the frequently modified data, the smaller size of the index reduces the cost of updating the statistics.
+   An index is maintained only when data manipulation language (DML) statements affect the data in the index. A filtered index reduces index maintenance costs compared with a full-table nonclustered index because it's smaller and is only maintained when the data in the index is changed. It's possible to have a large number of filtered indexes, especially when they contain data that is changed infrequently. Similarly, if a filtered index contains only the frequently modified data, the smaller size of the index reduces the cost of updating the statistics.
 
 1. Reduced index storage costs.
 
    Creating a filtered index can reduce disk storage for nonclustered indexes when a full-table index isn't necessary. You can replace a full-table nonclustered index with multiple filtered indexes without significantly increasing the storage requirements.
 
-## <a id="Design"></a> Design considerations
+<a id="Design"></a>
 
-When a column only has a few relevant values for queries, you can create a filtered index on the subset of values.  The resulting index will be smaller and cost less to maintain than a full-table nonclustered index defined on the same key columns.
+## Design considerations
+
+When a column only has a few relevant values for queries, you can create a filtered index on the subset of values. The resulting index will be smaller and cost less to maintain than a full-table nonclustered index defined on the same key columns.
 
 For example, consider a filtered index in the following data scenarios. In each case, the `WHERE` clause of the query should be a subset of the `WHERE` clause of the filtered index, to benefit from the filtered index.
 
-- When the values in a column are mostly NULL and the query selects only from the non-NULL values. You can create a filtered index for the non-NULL data rows.
+- When the values in a column are mostly `NULL` and the query selects only from the non-NULL values. You can create a filtered index for the non-NULL data rows.
 - When rows in a table are marked as processed by a recurring workflow or queue process. Over time, most rows in the table will be marked as processed. A filtered index on rows that aren't yet processed would benefit the recurring query that looks for rows that aren't yet processed.
 - When a table has heterogeneous data rows. You can create a filtered index for one or more categories of data. This can improve the performance of queries on these data rows by narrowing the focus of a query to a specific area of the table. Again, the resulting index will be smaller and cost less to maintain than a full-table nonclustered index.
 
-## <a id="Restrictions"></a> Limitations and restrictions
+<a id="Restrictions"></a>
+
+## Limitations
 
 - You can't create a filtered index on a view. However, the query optimizer can benefit from a filtered index defined on a table that is referenced in a view. The query optimizer considers a filtered index for a query that selects from a view if the query results will be correct.
 
@@ -87,7 +90,9 @@ For example, consider a filtered index in the following data scenarios. In each 
 
 Requires ALTER permission on the table or view. The user must be a member of the **sysadmin** fixed server role or the **db_ddladmin** and **db_owner** fixed database roles. To modify the filtered index expression, use `CREATE INDEX WITH DROP_EXISTING`.
 
-## <a id="SSMSProcedure"></a> Create a filtered index with SSMS
+<a id="SSMSProcedure"></a>
+
+## Create a filtered index with SSMS
 
 1. In Object Explorer, select the plus sign to expand the database that contains the table on which you want to create a filtered index.
 
@@ -109,11 +114,13 @@ Requires ALTER permission on the table or view. The user must be a member of the
 
 1. Select **OK**.
 
-## <a id="TsqlProcedure"></a> Create a filtered index with Transact-SQL
+<a id="TsqlProcedure"></a>
+
+## Create a filtered index with Transact-SQL
 
 [!INCLUDE [article-uses-adventureworks](../../includes/article-uses-adventureworks.md)]
 
-1. In **Object Explorer**, connect to an instance of [!INCLUDE[ssDE](../../includes/ssde-md.md)].
+1. In **Object Explorer**, connect to an instance of [!INCLUDE [ssDE](../../includes/ssde-md.md)].
 
 1. On the Standard bar, select **New Query**.
 
@@ -133,7 +140,7 @@ CREATE NONCLUSTERED INDEX FIBillOfMaterialsWithEndDate
 GO
 ```
 
-The filtered index `FIBillOfMaterialsWithEndDate` is valid for the following query. [You can display the query execution plan](../performance/display-an-actual-execution-plan.md) to determine if the query optimizer used the filtered index.
+The filtered index `FIBillOfMaterialsWithEndDate` is valid for the following query. [Display an actual execution plan](../performance/display-an-actual-execution-plan.md) to determine if the query optimizer used the filtered index.
 
 ```sql
 USE AdventureWorks2022;
@@ -147,11 +154,9 @@ WHERE EndDate IS NOT NULL
 GO
 ```
 
-## Next steps
-
-To learn more about creating indexes and related concepts, see the following articles:
+## Related content
 
 - [CREATE INDEX (Transact-SQL)](../../t-sql/statements/create-index-transact-sql.md)
 - [SQL Server and Azure SQL index architecture and design guide](../sql-server-index-design-guide.md)
 - [Display an actual execution plan](../performance/display-an-actual-execution-plan.md)
-- [Index types](indexes.md)
+- [Indexes](indexes.md)

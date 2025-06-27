@@ -53,11 +53,11 @@ PBIRS is a superset of SSRS, offering all SSRS capabilities plus support for int
 
 ### What editions of SQL Server 2025 include PBIRS?
 
-PBIRS will be available for all paid editions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. You can expect more information about specific editions when SQL Server 2025 is in General Availability (GA). In the meantime, you can explore PBIRS by installing one of the [free Developer or Evaluation](/power-bi/report-server/install-report-server) editions.
+PBIRS will be available for all paid editions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], including licenses with no Software Assurance (SA). You can expect more information about specific [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] editions when SQL Server 2025 is in General Availability (GA). In the meantime, you can explore PBIRS by installing one of the [free Developer or Evaluation](/power-bi/report-server/install-report-server) editions.
 
 ### Why isn't there an SSRS equivalent for non-SA customers?
 
-PBIRS will be available for all paid editions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
+PBIRS will be available for all paid editions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], including licenses with no Software Assurance (SA).
 
 ### How long can customers use their existing SSRS installations?
 

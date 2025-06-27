@@ -65,8 +65,16 @@ If more than one *CTE_query_definition* is defined, the query definitions must b
 
 ## Usage guidelines
 
-- [Guidelines for common table expressions](#guidelines-for-nonrecursive-common-table-expressions)
+Query results from common table expressions aren't materialized. Each outer reference to the named result set requires the defined query to be re-executed. For queries that require multiple references to the named result set, consider using a [temporary object](../statements/create-table-transact-sql.md#temporary-tables) instead.
+
+You can't execute a stored procedure in a common table expression.
+
+For usage guidelines about recursive and nonrecursive CTEs, see the following sections.
+
+- [Guidelines for nonrecursive common table expressions](#guidelines-for-nonrecursive-common-table-expressions)
 - [Guidelines for recursive common table expressions](#guidelines-for-recursive-common-table-expressions)
+
+<a id="guidelines-for-creating-and-using-common-table-expressions"></a>
 
 ### Guidelines for nonrecursive common table expressions
 
@@ -82,10 +90,6 @@ A CTE can reference itself and previously defined CTEs in the same `WITH` clause
 Specifying more than one `WITH` clause in a CTE isn't allowed. For example, if a *CTE_query_definition* contains a subquery, that subquery can't contain a nested `WITH` clause that defines another CTE.
 
 For more information on nested CTEs in Microsoft Fabric, see [Nested Common Table Expression (CTE) in Fabric data warehousing (Transact-SQL)](nested-common-table-expression.md?view=fabric&preserve-view=true).
-
-Query results from common table expressions aren't materialized. Each outer reference to the named result set requires the defined query to be re-executed. For queries that require multiple references to the named result set, consider using a [temporary object](../statements/create-table-transact-sql.md#temporary-tables) instead.
-
-You can't execute a stored procedure in a common table expression.
 
 The following clauses can't be used in the *CTE_query_definition*:
 
