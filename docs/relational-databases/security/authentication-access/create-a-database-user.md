@@ -1,10 +1,10 @@
 ---
-title: "Create a database user"
+title: "Create a Database User"
 description: Learn how to create the most common types of database users by using SQL Server Management Studio or Transact-SQL.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 07/18/2024
+ms.date: 06/30/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: how-to
@@ -38,7 +38,7 @@ You can create a database user by using [!INCLUDE [ssManStudioFull](../../../inc
 
 [!INCLUDE [ssManStudio](../../../includes/ssmanstudio-md.md)] presents six options when creating a database user. The following diagram shows the six options in the green box, and indicates what they represent.
 
-:::image type="content" source="media/typesofusers.png" alt-text="Diagram that explains the different types of users.":::
+:::image type="content" source="media/create-a-database-user/types-of-users.png" alt-text="Diagram that explains the different types of users.":::
 
 ### Select the type of user
 
@@ -46,7 +46,7 @@ If you're new to [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)], 
 
 #### Create a user with a login
 
-Logins in the `master` database are common for the people who manage the [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] and for people who need to access many or all of the database on the instance of [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)]. For this situation, create a **SQL user with login**. The database user is the identity of the login when it connects to a database. The database user can use the same name as the login, but that isn't required. This article assumes that a login already exists in [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)]. For information about how to create a login, see [Create a Login](create-a-login.md).
+Logins in the `master` database are common for the people who manage the [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] and for people who need to access many or all of the database on the instance of [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)]. For this situation, create a **SQL user with login**. The database user is the identity of the login when it connects to a database. The database user can use the same name as the login, but that isn't required. This article assumes that a login already exists in [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)]. For information about how to create a login, see [Create a login](create-a-login.md).
 
 #### Create user without a login
 
@@ -75,7 +75,9 @@ As a security principal, permissions can be granted to users. The scope of a use
 
 Requires `ALTER ANY USER` permission on the database.
 
-## <a id="SSMSProcedure"></a> Create a user with SSMS
+<a id="SSMSProcedure"></a>
+
+## Create a user with SSMS
 
 1. In Object Explorer, expand the **Databases** folder.
 
@@ -158,7 +160,9 @@ The **Database User - New** dialog box also offers options on four other pages: 
 
     Removes the selected extended property.
 
-## <a id="TsqlProcedure"></a> Create a user using T-SQL
+<a id="TsqlProcedure"></a>
+
+## Create a user using T-SQL
 
 1. In **Object Explorer**, connect to an instance of [!INCLUDE [ssDE](../../../includes/ssde-md.md)].
 
@@ -183,5 +187,5 @@ For more information, see [CREATE USER](../../../t-sql/statements/create-user-tr
 ## Related content
 
 - [Principals (Database Engine)](principals-database-engine.md)
-- [Create a Login](create-a-login.md)
+- [Create a login](create-a-login.md)
 - [CREATE LOGIN (Transact-SQL)](../../../t-sql/statements/create-login-transact-sql.md)

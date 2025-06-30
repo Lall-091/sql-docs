@@ -1,12 +1,14 @@
 ---
-title: "Create a login"
+title: "Create a Login"
 description: Learn how to create a login in SQL Server or Azure SQL by using SQL Server Management Studio or Transact-SQL.
 author: VanMSFT
 ms.author: vanto
-ms.date: 09/11/2024
+ms.date: 06/30/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: how-to
+ms.custom:
+  - build-2025
 f1_keywords:
   - "sql13.swb.login.status.f1"
   - "sql13.swb.login.effectivepermissions.f1"
@@ -20,8 +22,6 @@ helpviewer_keywords:
   - "Create login [SQL Server]"
   - "SQL Server logins"
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
-ms.custom:
-  - build-2025
 ---
 # Create a login
 
@@ -31,14 +31,16 @@ This article describes how to create a login in [!INCLUDE [ssnoversion](../../..
 
 [!INCLUDE [entra-id](../../../includes/entra-id.md)]
 
-## <a name="Background"></a> Background
+<a id="Background"></a>
+
+## Background
 
 A login is a security principal, or an entity that can be authenticated by a secure system. Users need a login to connect to [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)]. You can create a login based on a Windows principal (such as a domain user or a Windows domain group) or you can create a login that isn't based on a Windows principal (such as an [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] login).
 
 [!INCLUDE [encryption-algorithm-history-md](../../../includes/encryption-algorithm-history.md)]
 
 > [!NOTE]  
-> To use [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] Authentication, the [!INCLUDE [ssDE](../../../includes/ssde-md.md)] must use mixed mode authentication. For more information, see [Choose an Authentication Mode](../../../relational-databases/security/choose-an-authentication-mode.md).
+> To use [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] Authentication, the [!INCLUDE [ssDE](../../../includes/ssde-md.md)] must use mixed mode authentication. For more information, see [Choose an authentication mode](../choose-an-authentication-mode.md).
 >  
 > Azure SQL has introduced [Microsoft Entra server principals (logins)](/azure/azure-sql/database/authentication-azure-ad-logins) to be used to authenticate to Azure SQL Database, Azure SQL Managed Instance, and Azure Synapse Analytics (dedicated SQL pools only).
 >  
@@ -47,15 +49,19 @@ A login is a security principal, or an entity that can be authenticated by a sec
 As a security principal, permissions can be granted to logins. The scope of a login is the whole [!INCLUDE [ssDE](../../../includes/ssde-md.md)]. To connect to a specific database on the instance of [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)], a login must be mapped to a database user. Permissions inside the database are granted and denied to the database user, not the login. Permissions that have the scope of the whole instance of [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] (for example, the **CREATE ENDPOINT** permission) can be granted to a login.
 
 > [!NOTE]  
-> When a login connects to [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)], the identity is validated at the `master` database. Use contained database users to authenticate [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] and [!INCLUDE [ssSDS](../../../includes/sssds-md.md)] connections at the database level. When using contained database users, a login is not necessary. A contained database is a database that is isolated from other databases and from the instance of [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] or [!INCLUDE [ssSDS](../../../includes/sssds-md.md)] (and the `master` database) that hosts the database. [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] supports contained database users for both Windows and [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] authentication. When using [!INCLUDE [ssSDS](../../../includes/sssds-md.md)], combine contained database users with database level firewall rules. For more information, see [Contained Database Users - Making Your Database Portable](../../../relational-databases/security/contained-database-users-making-your-database-portable.md).
+> When a login connects to [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)], the identity is validated at the `master` database. Use contained database users to authenticate [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] and [!INCLUDE [ssSDS](../../../includes/sssds-md.md)] connections at the database level. When using contained database users, a login is not necessary. A contained database is a database that is isolated from other databases and from the instance of [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] or [!INCLUDE [ssSDS](../../../includes/sssds-md.md)] (and the `master` database) that hosts the database. [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] supports contained database users for both Windows and [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] authentication. When using [!INCLUDE [ssSDS](../../../includes/sssds-md.md)], combine contained database users with database level firewall rules. For more information, see [Make your database portable by using contained databases](../contained-database-users-making-your-database-portable.md).
 
-## <a name="Permissions"></a> Permissions
+<a id="Permissions"></a>
+
+## Permissions
 
 [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] requires **ALTER ANY LOGIN** or **ALTER LOGIN** permission on the server, or the **##MS_LoginManager##** fixed server role (SQL Server 2022 and later).
 
 [!INCLUDE [ssSDS](../../../includes/sssds-md.md)] requires membership in the **loginmanager** role or the fixed server role, **##MS_LoginManager##**.
 
-## <a name="SSMSProcedure"></a> Create a login using SSMS for SQL Server
+<a id="SSMSProcedure"></a>
+
+## Create a login using SSMS for SQL Server
 
 1. In Object Explorer, expand the folder of the server instance in which you want to create the new login.
 
@@ -86,7 +92,7 @@ As a security principal, permissions can be granted to logins. The scope of a lo
 
    1. When changing an existing password, select **Specify old password**, and then type the old password in the **Old password** box.
 
-   1. To enforce password policy options for complexity and enforcement, select **Enforce password policy**. For more information, see [Password Policy](../../../relational-databases/security/password-policy.md). This is a default option when **SQL Server authentication** is selected.
+   1. To enforce password policy options for complexity and enforcement, select **Enforce password policy**. For more information, see [Password Policy](../password-policy.md). This is a default option when **SQL Server authentication** is selected.
 
    1. To enforce password policy options for expiration, select **Enforce password expiration**. **Enforce password policy** must be selected to enable this checkbox. This is a default option when **SQL Server authentication** is selected.
 
@@ -96,7 +102,7 @@ As a security principal, permissions can be granted to logins. The scope of a lo
 
 1. To associate the login with a stand-alone asymmetric key, select **Mapped to asymmetric key** to, and then select the name of an existing key from the list.
 
-1. To associate the login with a security credential, select the **Mapped to Credential** check box, and then either select an existing credential from the list or select **Add** to create a new credential. To remove a mapping to a security credential from the login, select the credential from **Mapped Credentials** and select **Remove**. For more information about credentials in general, see [Credentials (Database Engine)](../../../relational-databases/security/authentication-access/credentials-database-engine.md).
+1. To associate the login with a security credential, select the **Mapped to Credential** check box, and then either select an existing credential from the list or select **Add** to create a new credential. To remove a mapping to a security credential from the login, select the credential from **Mapped Credentials** and select **Remove**. For more information about credentials in general, see [Credentials (Database Engine)](credentials-database-engine.md).
 
 1. From the **Default database** list, select a default database for the login. `master` is the default for this option.
 
@@ -165,7 +171,7 @@ Specifies the default schema of the user. When a user is first created, its defa
 Read-only attribute indicating whether the Guest account is enabled on the selected database. Use the **Status** page of the **Login Properties** dialog box of the Guest account to enable or disable the Guest account.
 
 **Database role membership for:** _database_name_  
-Select the roles for the user in the specified database. All users are members of the **public** role in every database and can't be removed. For more information about database roles, see [Database-Level Roles](../../../relational-databases/security/authentication-access/database-level-roles.md).
+Select the roles for the user in the specified database. All users are members of the **public** role in every database and can't be removed. For more information about database roles, see [Database-level roles](database-level-roles.md).
 
 ### Securables
 
@@ -242,7 +248,9 @@ Select this option to enable or disable this login. This option uses the `ALTER 
 **SQL Server authentication**  
 The check box **Login is locked out** is only available if the selected login connects using [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] authentication and the login has been locked out. This setting is read-only. To unlock a login that is locked out, execute `ALTER LOGIN` with the UNLOCK option.
 
-## <a name="TsqlProcedure"></a> Create a login using Windows authentication with T-SQL
+<a id="TsqlProcedure"></a>
+
+## Create a login using Windows authentication with T-SQL
 
 1. In **Object Explorer**, connect to an instance of [!INCLUDE [ssDE](../../../includes/ssde-md.md)].
 
@@ -275,17 +283,19 @@ The check box **Login is locked out** is only available if the selected login co
    GO
    ```
 
-For more information, see [CREATE LOGIN (Transact-SQL)](../../../t-sql/statements/create-login-transact-sql.md).
+For more information, see [CREATE LOGIN](../../../t-sql/statements/create-login-transact-sql.md).
 
-## <a name="FollowUp"></a> Follow up: Steps to take after you create a login
+<a id="FollowUp"></a>
+
+## Follow up: Steps to take after you create a login
 
 The login can connect to [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] after creating a login, but doesn't necessarily have sufficient permission to perform any useful work. The following list provides links to common login actions.
 
-- To have the login join a role, see [Join a Role](../../../relational-databases/security/authentication-access/join-a-role.md).
+- To have the login join a role, see [Join a Role](join-a-role.md).
 
-- To authorize a login to use a database, see [Create a Database User](../../../relational-databases/security/authentication-access/create-a-database-user.md).
+- To authorize a login to use a database, see [Create a database user](create-a-database-user.md).
 
-- To grant a permission to a login, see [Grant a Permission to a Principal](../../../relational-databases/security/authentication-access/grant-a-permission-to-a-principal.md).
+- To grant a permission to a login, see [Grant a Permission to a Principal](grant-a-permission-to-a-principal.md).
 
 ## Related content
 
