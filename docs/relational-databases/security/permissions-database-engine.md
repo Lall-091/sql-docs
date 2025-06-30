@@ -4,7 +4,7 @@ description: Consult this complete list of SQL Server permissions to find out wh
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 05/17/2024
+ms.date: 06/30/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
@@ -24,12 +24,12 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
-Every [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] securable has associated permissions that can be granted to a principal. Permissions in the [!INCLUDE [ssDE](../../includes/ssde-md.md)] are managed at the server level assigned to logins and server roles, and at the database level assigned to database users and database roles. The model for [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] has the same system for the database permissions, but the server level permissions aren't available. This article contains the complete list of permissions. For a typical implementation of the permissions, see [Getting Started with Database Engine Permissions](../../relational-databases/security/authentication-access/getting-started-with-database-engine-permissions.md).
+Every [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] securable has associated permissions that can be granted to a principal. Permissions in the [!INCLUDE [ssDE](../../includes/ssde-md.md)] are managed at the server level assigned to logins and server roles, and at the database level assigned to database users and database roles. The model for [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] has the same system for the database permissions, but the server level permissions aren't available. This article contains the complete list of permissions. For a typical implementation of the permissions, see [Get started with Database Engine permissions](authentication-access/getting-started-with-database-engine-permissions.md).
 
 The total number of permissions for [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] is 292. [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] exposes 292 permissions. Most permissions apply to all platforms, but some don't. For example, most [server level permissions](authentication-access/server-level-roles.md) can't be granted on [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and a few permissions only make sense on [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)].
-New permissions are being introduced gradually with new releases. [!INCLUDE [ssSQLv15_md](../../includes/sssql19-md.md)] exposes 248 permissions.[!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] exposed 238 permissions. [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] exposed 230 permissions. [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] exposed 219 permissions. [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] exposed 214 permissions. [!INCLUDE [sql2008r2](../../includes/sql2008r2-md.md)] exposed 195 permissions. The [sys.fn_builtin_permissions](../../relational-databases/system-functions/sys-fn-builtin-permissions-transact-sql.md) article specifies which permissions are new in recent versions.
+New permissions are being introduced gradually with new releases. [!INCLUDE [ssSQLv15_md](../../includes/sssql19-md.md)] exposes 248 permissions.[!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] exposed 238 permissions. [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] exposed 230 permissions. [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] exposed 219 permissions. [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] exposed 214 permissions. [!INCLUDE [sql2008r2](../../includes/sql2008r2-md.md)] exposed 195 permissions. The [sys.fn_builtin_permissions](../system-functions/sys-fn-builtin-permissions-transact-sql.md) article specifies which permissions are new in recent versions.
 
-In [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], only database-level users and roles are supported. Server-level logins, roles, and the sa account are not available. In [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], Microsoft Entra ID for database users is the only supported authentication method. For more information, see [Authorization in SQL database in Microsoft Fabric](/fabric/database/sql/authorization).
+In [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], only database-level users and roles are supported. Server-level logins, roles, and the `sa` account aren't available. In [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], Microsoft Entra ID for database users is the only supported authentication method. For more information, see [Authorization in SQL database in Microsoft Fabric](/fabric/database/sql/authorization).
 
 Once you understand the permissions required, you can apply server level permissions to logins or server roles, and database level permissions to users or database roles, by using the [GRANT](../../t-sql/statements/grant-transact-sql.md), [REVOKE](../../t-sql/statements/revoke-transact-sql.md), and [DENY](../../t-sql/statements/deny-transact-sql.md) statements. For example:
 
@@ -38,7 +38,7 @@ GRANT SELECT ON SCHEMA::HumanResources TO role_HumanResourcesDept;
 REVOKE SELECT ON SCHEMA::HumanResources TO role_HumanResourcesDept;
 ```
 
-For tips on planning a permissions system, see [Getting Started with Database Engine Permissions](../../relational-databases/security/authentication-access/getting-started-with-database-engine-permissions.md).
+For tips on planning a permissions system, see [Get started with Database Engine permissions](authentication-access/getting-started-with-database-engine-permissions.md).
 
 ## Permissions naming conventions
 
@@ -62,7 +62,7 @@ The following describes the general conventions that are followed for naming per
 
 - TAKE OWNERSHIP
 
-  Enables the grantee to take ownership of the securable on which it is granted.
+  Enables the grantee to take ownership of the securable on which it's granted.
 
 - IMPERSONATE \<*Login*>
 
@@ -415,7 +415,7 @@ The following permissions are added to SQL Server 2022:
 - 4 permissions have been added for Ledger.
 - 3 additional database permissions.
 
-For more information, see [New granular permissions for SQL Server 2022 and Azure SQL to improve adherence with PoLP](https://techcommunity.microsoft.com/t5/sql-server-blog/new-granular-permissions-for-sql-server-2022-and-azure-sql-to/ba-p/3607507).
+For more information, see [New granular permissions for SQL Server 2022 and Azure SQL to improve adherence with PoLP](https://techcommunity.microsoft.com/blog/sqlserver/new-granular-permissions-for-sql-server-2022-and-azure-sql-to-improve-adherence-/3607507).
 
 #### Access to system metadata permissions
 
@@ -495,7 +495,7 @@ All these permissions are under the same parent-permission: **ALTER ANY DATABASE
 Checking permissions can be complex. The permission check algorithm includes overlapping group memberships and ownership chaining, both explicit and implicit permission, and can be affected by the permissions on securable classes that contain the securable entity. The general process of the algorithm is to collect all the relevant permissions. If no blocking DENY is found, the algorithm searches for a GRANT that provides sufficient access. The algorithm contains three essential elements, the **security context**, the **permission space**, and the **required permission**.
 
 > [!NOTE]  
-> You cannot grant, deny, or revoke permissions to sa, dbo, the entity owner, information_schema, sys, or yourself.
+> You can't grant, deny, or revoke permissions to `sa`, `dbo`, the entity owner, `information_schema`, `sys`, or yourself.
 
 - **Security context**
 
@@ -513,7 +513,7 @@ Checking permissions can be complex. The permission check algorithm includes ove
 
 - **Permission space**
 
-  This is the securable entity and any securable classes that contain the securable. For example, a table (a securable entity) is contained by the schema securable class and by the database securable class. Access can be affected by table-, schema-, database-, and server-level permissions. For more information, see [Permissions Hierarchy (Database Engine)](../../relational-databases/security/permissions-hierarchy-database-engine.md).
+  This is the securable entity and any securable classes that contain the securable. For example, a table (a securable entity) is contained by the schema securable class and by the database securable class. Access can be affected by table-, schema-, database-, and server-level permissions. For more information, see [Permissions Hierarchy (Database Engine)](permissions-hierarchy-database-engine.md).
 
 - **Required permission**
 
@@ -562,7 +562,7 @@ The examples in this section show how to retrieve permissions information.
 
 ### A. Return the complete list of grantable permissions
 
-The following statement returns all [!INCLUDE [ssDE](../../includes/ssde-md.md)] permission by using the `fn_builtin_permissions` function. For more information, see [sys.fn_builtin_permissions (Transact-SQL)](../../relational-databases/system-functions/sys-fn-builtin-permissions-transact-sql.md).
+The following statement returns all [!INCLUDE [ssDE](../../includes/ssde-md.md)] permission by using the `fn_builtin_permissions` function. For more information, see [sys.fn_builtin_permissions](../system-functions/sys-fn-builtin-permissions-transact-sql.md).
 
 ```sql
 SELECT * FROM fn_builtin_permissions(default);
@@ -580,7 +580,7 @@ GO
 
 ### C. Return the permissions granted to the executing principal on an object
 
-The following example uses `fn_my_permissions` to return a list of the effective permissions that are held by the calling principal on a specified securable. The example returns permissions on an object named `Orders55`. For more information, see [sys.fn_my_permissions (Transact-SQL)](../../relational-databases/system-functions/sys-fn-my-permissions-transact-sql.md).
+The following example uses `fn_my_permissions` to return a list of the effective permissions that are held by the calling principal on a specified securable. The example returns permissions on an object named `Orders55`. For more information, see [sys.fn_my_permissions](../system-functions/sys-fn-my-permissions-transact-sql.md).
 
 ```sql
 SELECT * FROM fn_my_permissions('Orders55', 'object');
@@ -599,5 +599,5 @@ GO
 
 ## Related content
 
-- [Permissions Hierarchy (Database Engine)](../../relational-databases/security/permissions-hierarchy-database-engine.md)
-- [sys.database_permissions (Transact-SQL)](../../relational-databases/system-catalog-views/sys-database-permissions-transact-sql.md)
+- [Permissions Hierarchy (Database Engine)](permissions-hierarchy-database-engine.md)
+- [sys.database_permissions (Transact-SQL)](../system-catalog-views/sys-database-permissions-transact-sql.md)
