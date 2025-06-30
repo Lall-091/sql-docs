@@ -3,18 +3,16 @@ title: Migration Dashboard
 description: Track the SQL Server estate migration journey in Azure Arc center.
 author: ajithkr-ms
 ms.author: ajithkr
-ms.reviewer: 
-ms.date: 03/31/2025
+ms.reviewer: mikeray
+ms.date: 06/30/2025
 ms.topic: how-to
 ---
 
-# Track migration journey of SQL Server instances at scale using migration dashboard - SQL Server enabled by Azure Arc (preview)
+# Track migration journey using migration dashboard - SQL Server enabled by Azure Arc
 
 [!INCLUDE [sqlserver](../../includes/applies-to-version/sqlserver.md)]
 
 The migration dashboard is a convenient view that shows all instances of [!INCLUDE [ssazurearc](../../includes/ssazurearc.md)] and their migration readiness. [!INCLUDE [ssazurearc](../../includes/ssazurearc.md)] automatically produces an assessment for migration to Azure. This assessment plays a vital role in the success of your cloud migration and modernization journey. With this dashboard, you can track the migration journey at scale. The readiness is projected as properties into the Azure management plane, allowing the use of organizational, tagging, and querying capabilities native to Azure.
-
-[!INCLUDE [azure-arc-sql-preview](includes/azure-arc-sql-preview.md)]
 
 The dashboard provides:
 
@@ -23,13 +21,13 @@ The dashboard provides:
 - A migration readiness summary for each Azure SQL offering.
 - Rich filtering capabilities that enable you to tailor the view to your needs.
 
-## Review migration assessment 
+## Review migration assessment
 
 The migration dashboard can be accessed as follows:
 
 - In the Azure portal, search for *Azure Arc* and navigate to the Arc Center.
-- In the left ribbon, expand *Data services* and navigate through into *SQL Server instances* 
-- Now, navigate to the  *Migration dashboard* tab
+- In the left ribbon, expand *Data services* and navigate through into *SQL Server instances*
+- Now, navigate to the *Migration dashboard* tab
 
 :::image type="content" source="media/migration-assessment/migration-dashboard.png" alt-text="Screenshot of the migration dashboard for SQL Server enabled by Azure Arc." lightbox="media/migration-assessment/migration-dashboard.png":::
 
@@ -45,25 +43,26 @@ This section of the dashboard provides you with an overview of the migration ass
 :::image type="content" source="media/migration-assessment/dashboard-assessment-overview.png" alt-text="Screenshot of the second section of migration dashboard for SQL Server enabled by Azure Arc. It shows the overview of migration assessments and migration readiness of instances and databases for each of the Azure SQL offerings." lightbox="media/migration-assessment/dashboard-assessment-overview.png":::
 
 ## Azure Resource Graph Query
+
 Azure Resource Graph provides efficient and performant means to query the readiness properties of the SQL Server instances enabled by Azure Arc. Here are some sample queries.
 
 ```kusto
-resources 
- | where type == 'microsoft.azurearcdata/sqlserverinstances' 
+resources
+ | where type == 'microsoft.azurearcdata/sqlserverinstances'
  | where properties.migration.assessment.assessmentUploadTime > ago(14d) and properties.migration.assessment.enabled == true and isnotnull(parse_json(properties.migration.assessment.skuRecommendationResults))
  | extend azureSqlDatabaseRecommendationStatus = tostring(properties.migration.assessment.skuRecommendationResults.azureSqlDatabase.recommendationStatus)
  | extend azureSqlManagedInstanceRecommendationStatus = tostring(properties.migration.assessment.skuRecommendationResults.azureSqlManagedInstance.recommendationStatus)
  | extend azureSqlVirtualMachineRecommendationStatus = tostring(properties.migration.assessment.skuRecommendationResults.azureSqlVirtualMachine.recommendationStatus)
  | extend serverAssessments = tostring(properties.migration.assessment.serverAssessments)
  | extend subscriptionId = extract(@"/subscriptions/([^/]+)", 1, id)
- | extend resourceGroup = extract(@"/resource[g/G]roups/([^/]+)", 1, id) 
- | mv-expand platformStatus = pack_array( 
+ | extend resourceGroup = extract(@"/resource[g/G]roups/([^/]+)", 1, id)
+ | mv-expand platformStatus = pack_array(
      pack("platform", "Azure SQL Database", "status", azureSqlDatabaseRecommendationStatus),
      pack("platform", "Azure SQL Managed Instance", "status", azureSqlManagedInstanceRecommendationStatus),
      pack("platform", "Azure SQL Virtual Machine", "status", azureSqlVirtualMachineRecommendationStatus)
    )
  | extend platformIncludedString = strcat('"AppliesToMigrationTargetPlatform":', strcat('"', replace(" ", "", tolower(tostring(platformStatus["platform"]))), '"'))
- | extend platformHasIssues = tolower(serverAssessments) has tolower(platformIncludedString)                                                    
+ | extend platformHasIssues = tolower(serverAssessments) has tolower(platformIncludedString)
  | project Platform = tostring(platformStatus["platform"]), status = tostring(platformStatus["status"]), tostring(serverAssessments), id, platformHasIssues
  | extend finalStatus = case(
      status == "Ready" and platformHasIssues, "Ready with Conditions",
@@ -71,7 +70,7 @@ resources
      status == "NotReady", "NotReady",
      isnull(status) or status !in ("Ready", "NotReady", "Ready with Conditions"), "Unknown",
      "Unknown")
- | summarize TotalAssessed = count(), Ready = countif(finalStatus == "Ready"), NotReady = countif(finalStatus == "NotReady"), 
+ | summarize TotalAssessed = count(), Ready = countif(finalStatus == "Ready"), NotReady = countif(finalStatus == "NotReady"),
      ReadyWithConditions = countif(finalStatus == "Ready with Conditions"), Unknown = countif(finalStatus == "Unknown")
      by Platform
 ```
@@ -85,7 +84,25 @@ az graph query -q "resources | where type =~ 'microsoft.hybridcompute/machines' 
 # [Azure PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "resources | where type =~ 'microsoft.hybridcompute/machines' | extend machineId = tolower(tostring(id)), datacenter = iif(isnull(tags.Datacenter), '', tags.Datacenter), status = tostring(properties.status) | extend mssqlinstalled = coalesce(tobool(properties.detectedProperties.mssqldiscovered),false) | extend pgsqlinstalled = coalesce(tobool(properties.detectedProperties.pgsqldiscovered),false) | extend mysqlinstalled = coalesce(tobool(properties.detectedProperties.mysqldiscovered),false) | extend osSku = properties.osSku, osName = properties.osName, osVersion = properties.osVersion | extend coreCount = tostring(properties.detectedProperties.logicalCoreCount), totalPhysicalMemoryinGB = tostring(properties.detectedProperties.totalPhysicalMemoryInGigabytes)  | extend operatingSystem = iif(isnotnull(osSku), osSku, osName) | where mssqlinstalled or mysqlinstalled or pgsqlinstalled | project id ,name, type, resourceGroup, subscriptionId, location, kind, osVersion, status, osSku,coreCount,totalPhysicalMemoryinGB,tags, mssqlinstalled, mysqlinstalled, pgsqlinstalled | sort by (tolower(tostring(name))) asc"
+Search-AzGraph -Query @"
+resources
+| where type =~ 'microsoft.hybridcompute/machines'
+| extend machineId = tolower(tostring(id))
+| extend datacenter = iif(isnull(tags.Datacenter), '', tags.Datacenter)
+| extend status = tostring(properties.status)
+| extend mssqlinstalled = coalesce(tobool(properties.detectedProperties.mssqldiscovered), false)
+| extend pgsqlinstalled = coalesce(tobool(properties.detectedProperties.pgsqldiscovered), false)
+| extend mysqlinstalled = coalesce(tobool(properties.detectedProperties.mysqldiscovered), false)
+| extend osSku = properties.osSku
+| extend osName = properties.osName
+| extend osVersion = properties.osVersion
+| extend coreCount = tostring(properties.detectedProperties.logicalCoreCount)
+| extend totalPhysicalMemoryinGB = tostring(properties.detectedProperties.totalPhysicalMemoryInGigabytes)
+| extend operatingSystem = iif(isnotnull(osSku), osSku, osName)
+| where mssqlinstalled or mysqlinstalled or pgsqlinstalled
+| project id, name, type, resourceGroup, subscriptionId, location, kind, osVersion, status, osSku, coreCount, totalPhysicalMemoryinGB, tags, mssqlinstalled, mysqlinstalled, pgsqlinstalled
+| sort by (tolower(tostring(name))) asc
+"@
 ```
 
 # [Portal](#tab/azure-portal)
@@ -95,9 +112,10 @@ Search-AzGraph -Query "resources | where type =~ 'microsoft.hybridcompute/machin
 - Azure operated by 21Vianet portal: [portal.azure.cn](https://portal.azure.cn/#blade/HubsExtension/ArgQueryBlade/query/resources%20%0A%20%7C%20where%20type%20%3D%3D%20%27microsoft.azurearcdata%2Fsqlserverinstances%27%20%0A%20%7C%20where%20properties.migration.assessment.assessmentUploadTime%20%3E%20ago%2814d%29%20and%20properties.migration.assessment.enabled%20%3D%3D%20true%20and%20isnotnull%28parse_json%28properties.migration.assessment.skuRecommendationResults%29%29%0A%20%7C%20extend%20azureSqlDatabaseRecommendationStatus%20%3D%20tostring%28properties.migration.assessment.skuRecommendationResults.azureSqlDatabase.recommendationStatus%29%0A%20%7C%20extend%20azureSqlManagedInstanceRecommendationStatus%20%3D%20tostring%28properties.migration.assessment.skuRecommendationResults.azureSqlManagedInstance.recommendationStatus%29%0A%20%7C%20extend%20azureSqlVirtualMachineRecommendationStatus%20%3D%20tostring%28properties.migration.assessment.skuRecommendationResults.azureSqlVirtualMachine.recommendationStatus%29%0A%20%7C%20extend%20serverAssessments%20%3D%20tostring%28properties.migration.assessment.serverAssessments%29%0A%20%7C%20extend%20subscriptionId%20%3D%20extract%28%40%22%2Fsubscriptions%2F%28%5B%5E%2F%5D%2B%29%22%2C%201%2C%20id%29%0A%20%7C%20extend%20resourceGroup%20%3D%20extract%28%40%22%2Fresource%5Bg%2FG%5Droups%2F%28%5B%5E%2F%5D%2B%29%22%2C%201%2C%20id%29%20%0A%20%7C%20mv-expand%20platformStatus%20%3D%20pack_array%28%20%0A%20%20%20%20%20pack%28%22platform%22%2C%20%22Azure%20SQL%20Database%22%2C%20%22status%22%2C%20azureSqlDatabaseRecommendationStatus%29%2C%0A%20%20%20%20%20pack%28%22platform%22%2C%20%22Azure%20SQL%20Managed%20Instance%22%2C%20%22status%22%2C%20azureSqlManagedInstanceRecommendationStatus%29%2C%0A%20%20%20%20%20pack%28%22platform%22%2C%20%22Azure%20SQL%20Virtual%20Machine%22%2C%20%22status%22%2C%20azureSqlVirtualMachineRecommendationStatus%29%0A%20%20%20%29%0A%20%7C%20extend%20platformIncludedString%20%3D%20strcat%28%27%22AppliesToMigrationTargetPlatform%22%3A%27%2C%20strcat%28%27%22%27%2C%20replace%28%22%20%22%2C%20%22%22%2C%20tolower%28tostring%28platformStatus%5B%22platform%22%5D%29%29%29%2C%20%27%22%27%29%29%0A%20%7C%20extend%20platformHasIssues%20%3D%20tolower%28serverAssessments%29%20has%20tolower%28platformIncludedString%29%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%7C%20project%20Platform%20%3D%20tostring%28platformStatus%5B%22platform%22%5D%29%2C%20status%20%3D%20tostring%28platformStatus%5B%22status%22%5D%29%2C%20tostring%28serverAssessments%29%2C%20id%2C%20platformHasIssues%0A%20%7C%20extend%20finalStatus%20%3D%20case%28%0A%20%20%20%20%20status%20%3D%3D%20%22Ready%22%20and%20platformHasIssues%2C%20%22Ready%20with%20Conditions%22%2C%0A%20%20%20%20%20status%20%3D%3D%20%22Ready%22%2C%20%22Ready%22%2C%0A%20%20%20%20%20status%20%3D%3D%20%22NotReady%22%2C%20%22NotReady%22%2C%0A%20%20%20%20%20isnull%28status%29%20or%20status%20%21in%20%28%22Ready%22%2C%20%22NotReady%22%2C%20%22Ready%20with%20Conditions%22%29%2C%20%22Unknown%22%2C%0A%20%20%20%20%20%22Unknown%22%29%0A%20%7C%20summarize%20TotalAssessed%20%3D%20count%28%29%2C%20Ready%20%3D%20countif%28finalStatus%20%3D%3D%20%22Ready%22%29%2C%20NotReady%20%3D%20countif%28finalStatus%20%3D%3D%20%22NotReady%22%29%2C%20%0A%20%20%20%20%20ReadyWithConditions%20%3D%20countif%28finalStatus%20%3D%3D%20%22Ready%20with%20Conditions%22%29%2C%20Unknown%20%3D%20countif%28finalStatus%20%3D%3D%20%22Unknown%22%29%0A%20%20%20%20%20by%20Platform)
 
 ---
+
 ## Related content
 
-- [Assess migration readiness (preview) - SQL Server enabled by Azure Arc](migration-assessment.md)
+- [Assess migration readiness - SQL Server enabled by Azure Arc](migration-assessment.md)
 - [Assessment rules for SQL Server to Azure SQL Managed Instance migration](/azure/azure-sql/migration-guides/managed-instance/sql-server-to-sql-managed-instance-assessment-rules)
 - [Assessment rules for SQL Server to Azure SQL Database migration](/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-assessment-rules)
 - [Migrate SQL Server to Azure SQL](/azure/dms/dms-overview)

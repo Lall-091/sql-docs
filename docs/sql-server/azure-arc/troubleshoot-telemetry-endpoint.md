@@ -1,10 +1,10 @@
 ---
-title: "Troubleshoot connectivity to data processing service and telemetry endpoints"
+title: "Troubleshoot Connectivity to Data Processing Service and Telemetry Endpoints"
 description: "Describes how to troubleshoot connectivity to the data processing service (DPS) and telemetry endpoints."
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 06/09/2025
+ms.date: 06/30/2025
 ms.topic: troubleshooting
 ---
 
@@ -41,14 +41,14 @@ You can view the current state of the Azure extension for SQL Server in the port
     Healthy state:
 
     :::image type="content" source="media/troubleshoot-telemetry-endpoint/healthy-state.png" alt-text="Screenshot of portal for Azure extension for SQL Server in a healthy state.":::
-        
+
     :::column-end:::
     :::column:::
 
     Unhealthy state:
 
-    :::image type="content" source="media/troubleshoot-telemetry-endpoint/unhealthy-state.png" alt-text="Screenshot of portal for Azure extension for SQL Server in an unhealthy state.":::
-        
+    :::image type="content" source="media/troubleshoot-telemetry-endpoint/unhealthy-state.png" alt-text="Screenshot of portal for Azure extension for SQL Server in an unhealthy state." lightbox="media/troubleshoot-telemetry-endpoint/unhealthy-state.png":::
+
     :::column-end:::
 :::row-end:::
 
@@ -63,7 +63,7 @@ If it's connected to Azure in general, the Azure Extension for SQL Server report
 - Navigate to the **Machines - Azure Arc** view in the Azure portal and locate the machine by name and select it.
 - Select **Extensions**.
 - Select **WindowsAgent.SqlServer** or **LinuxAgent.SqlServer** to bring up the details.
-- Look at the **Status message** and the `uploadStatus` value. If it's anything other than **OK**, there's a problem with connecting to the DPS. If it's **0**, it's likely that there's a firewall blocking the communication to the DPS endpoint. There could be more details in the status message or the `uploadStatus` error code that can provide insights into the connectivity problem.
+- Look at the **Status message** and the `uploadStatus` value. If it's anything other than **OK**, there's a problem with connecting to the DPS. If it's `0`, it's likely that there's a firewall blocking the communication to the DPS endpoint. There could be more details in the status message or the `uploadStatus` error code that can provide insights into the connectivity problem.
 
 ### Check the Azure Extension for SQL Server logs
 
@@ -97,7 +97,7 @@ A possible response status code is:
 Invoke-WebRequest: Response status code does not indicate success: 401 (Unauthorized).
 ```
 
-401 is expected because there is no unauthenticated route on the telemetry endpoint. 
+401 is expected because there's no unauthenticated route on the telemetry endpoint.
 
 For DPS:
 
@@ -119,13 +119,13 @@ StatusCode        : 200
 StatusDescription : OK
 ```
 
-200 is expected as there is an unauthenticated route.
+200 is expected as there's an unauthenticated route.
 
 ## Probe connectivity to all regions
 
 You can probe connectivity to all regions with the [test-connectivity.ps1](https://github.com/microsoft/sql-server-samples/blob/master/samples/features/azure-arc/troubleshooting/test-connectivity.ps1) PowerShell script.
 
-> [!NOTE]
+> [!NOTE]  
 > For the US Government Virginia region, replace `arcdataservices.com` with `arcdataservices.azure.us`.
 
 :::code language="powershell" source="~/../sql-server-samples/samples/features/azure-arc/troubleshooting/test-connectivity.ps1":::
@@ -134,9 +134,9 @@ You can probe connectivity to all regions with the [test-connectivity.ps1](https
 
 The data processing service endpoint supports the following TLS versions: TLS 1.2 and 1.3. Windows Server 2012 and older versions aren't supported.
 
-For telemetry endpoints, Windows Server 2012 R2 and older are not supported.
+For telemetry endpoints, Windows Server 2012 R2 and older aren't supported.
 
-If an unsupported TLS version is being used, you may see an error in the log
+If an unsupported TLS version is being used, you might see an error in the log
 
 ```output
 <date time>|ERROR|SqlServerExtension.Service|Request failed with exception 'System.Net.Http.HttpRequestException: The SSL connection could not be established, see inner exception.
@@ -152,7 +152,7 @@ To connect to Azure, the endpoints use `*.arcdataservices.com`.
 
 ### Additional background
 
-Beginning with [March, 12 2024](release-notes.md#march-12-2024), the Azure Extension for SQL Server uses the following endpoints:
+Azure Extension for SQL Server uses the following endpoints:
 
 - DPS: `dataprocessingservice.<region>.arcdataservices.com`, or for the US Government Virginia region, `*.<region>.arcdataservices.azure.us`.
 - Telemetry `telemetry.<region>.arcdataservices.com`
@@ -163,9 +163,9 @@ For example, if your Arc machine resource is located in *East US 2* the short na
 
 `telemetry.eastus2.arcdataservices.com`
 
-If your extension is older than March 11, 2024, it may use older endpoints. Update your extension to use the current endpoint.
+If your extension is older than March 11, 2024, it might use older endpoints. Update your extension to use the current endpoint.
 
-> [!NOTE]
+> [!NOTE]  
 > The endpoint values before `*.arcdataservices.com` are subject to change.
 
 ## Use an HTTPS proxy server for outbound connectivity
@@ -187,9 +187,9 @@ resources
     | order by uploadStatus desc
 ```
 
-## Find SQL extensions that have not connected to DPS in a long time
+## Find SQL extensions that haven't connected to DPS in a long time
 
-Query [Azure Resource Graph](/azure/governance/resource-graph/overview) to find extensions that have not connected to DPS recently.
+Query [Azure Resource Graph](/azure/governance/resource-graph/overview) to find extensions that haven't connected to DPS recently.
 
 :::code language="powershell" source="~/../sql-server-samples/samples/features/azure-arc/troubleshooting/hybrid-compute-extension-last-connect.kql":::
 
@@ -199,21 +199,21 @@ The following table shows some of the common DPS upload status values and what y
 
 | DPS upload status value | HTTP error code | Troubleshooting suggestions |
 | --- | --- | --- |
-| `0` | | Likely cause: a firewall is blocking the transmission of the data to the DPS. Open the firewall to the DNS endpoint for the DPS (TCP, port: 443).|
+| `0` | | Likely cause: a firewall is blocking the transmission of the data to the DPS. Open the firewall to the DNS endpoint for the DPS (TCP, port: 443). |
 | `OK` | 200 | The connection is working as expected. |
-|`Bad request`|400|Possible cause: The resource name (SQL Server instance or database name) doesn't conform to Azure resource naming conventions. For example, if the database name is a [reserved word](/azure/azure-resource-manager/troubleshooting/error-reserved-resource-name).|
-| `Unauthorized` | 401 | Likely cause: the extension is configured to send data through an HTTP proxy that requires authentication. Using an HTTP proxy that requires authentication is not currently supported. Use an unauthenticated HTTP proxy or no proxy.|
-| `Forbidden` | 403 | Check to make sure the `Microsoft.AzureArcData` resource provider is registered on the subscription. If the Azure Connected Machine agent is otherwise working as expected and this error doesn't resolve itself after a reboot, create a support case with Microsoft Support through the Azure portal.|
-| `NotFound` | 404 | The endpoint that the extension is trying to connect to doesn't exist. <br/><br/> To check which endpoint it is trying to connect to, search the logs for `dataprocessingservice`. This condition can happen if the Azure Connected Machine agent was deployed and connected to an Azure region in which the `Microsoft.AzureArcData` resource provider is not yet available. [Redeploy the Azure Connected Machine agent](/azure/azure-arc/servers/manage-agent?tabs=windows#uninstall-the-agent) in a region that the `Microsoft.AzureArcData` resource provider for aSQL Server enabled by Azure Arc is available. See also [Region availability](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=azure-arc).<br/><br/> It is possible that the DNS resolver cache is not refreshed for your machine. To refresh: <br/> - On Windows run: `ipconfig /flushdns`</br> - On Linux (if `systemd` is being used) run: `sudo resolvectl flush-caches` |
-| `Conflict` | 409 | Likely cause: temporary error happening inside of the DPS. If this does not resolve itself, create a support case with Microsoft Support through the Azure portal.|
+| `Bad request` | 400 | Possible cause: The resource name (SQL Server instance or database name) doesn't conform to Azure resource naming conventions. For example, if the database name is a [reserved word](/azure/azure-resource-manager/troubleshooting/error-reserved-resource-name). |
+| `Unauthorized` | 401 | Likely cause: the extension is configured to send data through an HTTP proxy that requires authentication. Using an HTTP proxy that requires authentication isn't currently supported. Use an unauthenticated HTTP proxy or no proxy. |
+| `Forbidden` | 403 | Check to make sure the `Microsoft.AzureArcData` resource provider is registered on the subscription. If the Azure Connected Machine agent is otherwise working as expected and this error doesn't resolve itself after a reboot, create a support case with Microsoft Support through the Azure portal. |
+| `NotFound` | 404 | The endpoint that the extension is trying to connect to doesn't exist.<br /><br />To check which endpoint it's trying to connect to, search the logs for `dataprocessingservice`. This condition can happen if the Azure Connected Machine agent was deployed and connected to an Azure region in which the `Microsoft.AzureArcData` resource provider isn't yet available. [Redeploy the Azure Connected Machine agent](/azure/azure-arc/servers/manage-agent?tabs=windows#uninstall-the-agent) in a region that the `Microsoft.AzureArcData` resource provider for aSQL Server enabled by Azure Arc is available. See also [Region availability](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=azure-arc).<br />It's possible that the DNS resolver cache isn't refreshed for your machine. To refresh:<br />- On Windows run: `ipconfig /flushdns`<br />- On Linux (if `systemd` is being used) run: `sudo resolvectl flush-caches` |
+| `Conflict` | 409 | Likely cause: temporary error happening inside of the DPS. If this doesn't resolve itself, create a support case with Microsoft Support through the Azure portal. |
 | `InternalServerError` | 500 | This is an error that is happening inside of the DPS. Create a support case with Microsoft Support through the Azure portal. |
 
 ## Related content
 
-- [Troubleshoot Azure extension for SQL Server](troubleshoot-deployment.md)
+- [Troubleshoot Azure extension for SQL Server deployment](troubleshoot-deployment.md)
 - [Troubleshoot best practices assessment on SQL Server](troubleshoot-assessment.md)
-- [Configure SQL best practices assessment](assess.md)
-- [View SQL Azure Arc inventory](view-inventory.md)
-- [Manage SQL Server license and billing options](manage-configuration.md)
-- [[!INCLUDE [ssazurearc](../../includes/ssazurearc.md)] and Databases activity logs](activity-logs.md)
-- [Data collected by Arc enabled SQL Server](data-collection.md)
+- [Configure best practices assessment for SQL Server enabled by Azure Arc](assess.md)
+- [Manage inventory of SQL Server resources with Azure Arc](view-inventory.md)
+- [Configure SQL Server enabled by Azure Arc](manage-configuration.md)
+- [Use activity logs with SQL Server enabled by Azure Arc](activity-logs.md)
+- [Data collection and reporting for SQL Server enabled by Azure Arc](data-collection.md)

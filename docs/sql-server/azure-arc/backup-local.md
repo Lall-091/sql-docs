@@ -1,19 +1,21 @@
 ---
-title: Manage automated backups 
+title: Manage Automated Backups
 description: Describes how to configure automated backups to local storage for SQL Server enabled by Azure Arc
 author: AbdullahMSFT
-ms.author: amamun 
+ms.author: amamun
 ms.reviewer: mikeray, randolphwest
-ms.date: 07/30/2024
+ms.date: 06/30/2025
 ms.topic: how-to
-ms.custom: ignite-2023, devx-track-azurecli
+ms.custom:
+  - ignite-2023
+  - devx-track-azurecli
 ---
 
 # Manage automated backups (preview) | SQL Server enabled by Azure Arc
 
 [!INCLUDE [sqlserver](../../includes/applies-to-version/sqlserver.md)]
 
-The Azure extension for [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] can perform backups automatically to local storage or network shares. Backups are written to the [default backup location](../../relational-databases/backup-restore/backup-devices-sql-server.md#BackupFileDiskPath) for the  [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] enabled by Azure Arc instance.
+The Azure extension for [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] can perform backups automatically to local storage or network shares. Backups are written to the [default backup location](../../relational-databases/backup-restore/backup-devices-sql-server.md#BackupFileDiskPath) for the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] enabled by Azure Arc instance.
 
 This article explains how you can:
 
@@ -52,9 +54,9 @@ You can also run backups on a **default** schedule:
 
 The following lists the levels of support for backup schedules:
 
-- Instance level backups with a default schedule (available starting with [extension version 1.1.2284.7](release-notes.md#april-10-2023))
-- Instance level backups with support for custom schedule (available starting with [extension version 1.1.2504.99](release-notes.md#november-14-2023))
-- Database level backups with support for custom schedule (available starting with [extension version 1.1.2594.118](release-notes.md#march-12-2024))
+- Instance level backups with a default schedule
+- Instance level backups with support for custom schedule
+- Database level backups with support for custom schedule
 
 If both database and instance level backup schedule is set, database level schedule takes precedence over the instance level backup schedule. If you delete the database level backup schedule, the instance level backup schedule applies.
 
@@ -62,10 +64,10 @@ If both database and instance level backup schedule is set, database level sched
 
 The backup service within the Azure extension for Arc-enabled SQL Server uses [NT AUTHORITY\SYSTEM] account to perform the backups. If you're [operating SQL Server enabled by Arc with least privilege](configure-least-privilege.md), A local Windows account - [NT Service\SQLServerExtension] - performs the backup.
 
-> [!NOTE]
+> [!NOTE]  
 > [!INCLUDE [least-privilege-default](includes/least-privilege-default.md)]
 
-If you use Azure extension for SQL Server [version 1.1.2504.99](release-notes.md#november-14-2023) or later, the necessary permissions are granted to [NT AUTHORITY\SYSTEM] automatically. You don't need to assign permissions manually.
+If you use Azure extension for SQL Server version 1.1.2504.99 or later, the necessary permissions are granted to [NT AUTHORITY\SYSTEM] automatically. You don't need to assign permissions manually.
 
 **For earlier extensions only**, follow the below steps to assign permission to [NT AUTHORITY\SYSTEM] account.
 
@@ -102,7 +104,7 @@ Automated backups are disabled by default.
 
 After you assigned permissions, you can schedule automated backups. After the automated backups are configured, the Azure Extension for SQL Server initiates a backup to the default backup location.
 
-The backups are native SQL Server backups, so all backup history is available in the backup related tables in the msdb database.
+The backups are native SQL Server backups, so all backup history is available in the backup related tables in the `msdb` database.
 
 ### Instance level
 
@@ -137,10 +139,10 @@ To enable automated backups using `az` CLI:
     **Default schedule**
 
     ```azurecli
-    az sql server-arc backups-policy set --name <arc-server-name> --resource-group <resourcegroup> --default-policy 
+    az sql server-arc backups-policy set --name <arc-server-name> --resource-group <resourcegroup> --default-policy
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Examples in this article use `<arc-server-name>` to identify the server name, as follows:
     >
     > - Default instance, replace: `<arc-server-name>` with the server name.
@@ -164,7 +166,7 @@ To enable automated backups using `az` CLI:
     az sql server-arc backups-policy set --name MyArcServer_SQLServerPROD --resource-group MyResourceGroup --retention-days 24 --full-backup-days 7 --diff-backup-hours 24 --tlog-backup-mins 30
     ```
 
-> [!NOTE]
+> [!NOTE]  
 > If the backup retention day is set to 0, automated backup is disabled and no backups are taken.
 
 ---
@@ -192,30 +194,30 @@ Set retention period and frequency to meet business requirements. The retention 
 To enable automated backups on a database level using az CLI:
 
 1. Disable any existing backup routines.
-2. If necessary, add the arcdata extension: 
+1. If necessary, add the arcdata extension:
 
    ```azurecli
-   az extension add --name arcdata 
+   az extension add --name arcdata
    ```
 
-1. Configure either the default schedule or a custom schedule: 
+1. Configure either the default schedule or a custom schedule:
 
     **Default schedule**
 
     ```azurecli
-    az sql db-arc backups-policy set --name <sql-database-name> --server <arc-server-name> --resource-group <resourcegroup> --default-policy 
+    az sql db-arc backups-policy set --name <sql-database-name> --server <arc-server-name> --resource-group <resourcegroup> --default-policy
     ```
 
     Example:
 
      ```azurecli
-     az sql db-arc backups-policy set --name MyDatabaseName--server MyArcServer_SQLServerPROD --resource-group MyResourceGroup --default-policy 
+     az sql db-arc backups-policy set --name MyDatabaseName--server MyArcServer_SQLServerPROD --resource-group MyResourceGroup --default-policy
      ```
 
      **Custom schedule**
 
      ```azurecli
-     az sql db-arc backups-policy set --name <sql-database-name> --server <arc-server-name> --resource-group <resourcegroup> --retention-days <number of days> --full-backup-days <num of days> --diff-backup-hours <12 or 24 hours> --tlog-backup-mins <number of minutes> 
+     az sql db-arc backups-policy set --name <sql-database-name> --server <arc-server-name> --resource-group <resourcegroup> --retention-days <number of days> --full-backup-days <num of days> --diff-backup-hours <12 or 24 hours> --tlog-backup-mins <number of minutes>
      ```
 
      Example:
@@ -226,40 +228,40 @@ To enable automated backups on a database level using az CLI:
 
 ---
 
-## Disable automated backup  
+## Disable automated backup
 
-If the backup retention day is set to 0, automated backup is disabled and no backups are taken, even though backup policy is retained. Setting the backup retention to a nonzero value enables the policy again.  
+If the backup retention day is set to 0, automated backup is disabled and no backups are taken, even though backup policy is retained. Setting the backup retention to a nonzero value enables the policy again.
 
-This setting applies to both database and instance level backup. If database level backup schedule is disabled, no backups are taken for the database even if instance level backup is scheduled.  
+This setting applies to both database and instance level backup. If database level backup schedule is disabled, no backups are taken for the database even if instance level backup is scheduled.
 
-## Delete automated backup  
+## Delete automated backup
 
 From the portal for individual database level backup scheduling page, select **Revert backup policy to instance level** to delete the database level backup policy.
 
-To delete instance level backup schedule, you can do it through CLI. Once deleted, no backup is taken either in instance level or database level. You must configure a new backup schedule to take the backup again.  
+To delete instance level backup schedule, you can do it through CLI. Once deleted, no backup is taken either in instance level or database level. You must configure a new backup schedule to take the backup again.
 
 ### Delete Instance Level Policy
 
 ```azurecli
-az sql server-arc backups-policy delete --name <arc-server-name> --resource-group <resourcegroup> 
+az sql server-arc backups-policy delete --name <arc-server-name> --resource-group <resourcegroup>
 ```
 
 Example:
 
 ```azurecli
-az sql server-arc backups-policy delete --name MyArcServer_SQLServerPROD --resource-group MyResourceGroup  
+az sql server-arc backups-policy delete --name MyArcServer_SQLServerPROD --resource-group MyResourceGroup
 ```
 
 ### Delete Database Level Policy
 
 ```azurecli
-az sql db-arc backups-policy delete --name <sql-database-name> --server <arc-server-name> --resource-group <resourcegroup> 
+az sql db-arc backups-policy delete --name <sql-database-name> --server <arc-server-name> --resource-group <resourcegroup>
 ```
 
 Example:
 
 ```azurecli
-az sql db-arc backups-policy delete --name MyDatabaseName --server MyArcServer_SQLServerPROD --resource-group MyResourceGroup 
+az sql db-arc backups-policy delete --name MyDatabaseName --server MyArcServer_SQLServerPROD --resource-group MyResourceGroup
 ```
 
 ## View current backup policy
@@ -316,7 +318,7 @@ When the built-in automated backups are enabled on an instance of [!INCLUDE [ssn
 
 ## Limitations
 
-- Automatic backup to URL is not currently available.
+- Automatic backup to URL isn't currently available.
 - The user databases need to be in full recovery model for the backups to be performed. Databases that aren't in full recovery model aren't automatically backed up.
 - Automated backups are currently not supported for Always On failover cluster instances (FCI).
 - Automated backups aren't supported on any instance that hosts an availability group (AG) replica.
@@ -325,5 +327,5 @@ When the built-in automated backups are enabled on an instance of [!INCLUDE [ssn
 ## Related tasks
 
 - [Restore to a point-in-time](point-in-time-restore.md)
-- [View SQL Azure Arc inventory](view-inventory.md)
-- [Recovery Models (SQL Server)](../../relational-databases/backup-restore/recovery-models-sql-server.md)
+- [Manage inventory of SQL Server resources with Azure Arc](view-inventory.md)
+- [Recovery models (SQL Server)](../../relational-databases/backup-restore/recovery-models-sql-server.md)
