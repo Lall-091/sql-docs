@@ -183,7 +183,7 @@ CREATE CREDENTIAL ServiceIdentity WITH IDENTITY = 'Managed Identity';
 GO
 ```
 
-For an example of creating a credential with a managed identity for SQL Server on Azure VM, see [Example G](#g-create-a-credential-to-access-azure-blob-storage-using-a-managed-identity) and [Example H](#h-create-a-managed-identity-credential-for-extensible-key-management-with-azure-key-vault). Server-level managed identity isn't supported for Linux.
+For an example of creating a credential with a managed identity for SQL Server on Azure VM, see [Example G](#g-create-and-use-a-managed-identity-credential-to-access-azure-blob-storage) and [Example H](#h-create-a-managed-identity-credential-for-extensible-key-management-with-azure-key-vault). Server-level managed identity isn't supported for Linux.
 
 ### F. Create a credential for backup/restore to S3-compatible storage
 
