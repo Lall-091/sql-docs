@@ -53,8 +53,9 @@ PolyBase provides these same functionalities for the following SQL products from
 
 | New to [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] | Details |
 | --- | --- |
-| Native support for CSV, Parquet, & Delta <sup>1</sup> | You don't have to install PolyBase Query Service for External Data to use OPENROWSET, CREATE EXTERNAL TABLE, or CREATE EXTERNAL TABLE AS SELECT with the following types of external data: Parquet, Delta, Azure Blob Storage (ABS), Azure Data Lake Storage (ADLS), or S3-Compatible Object storage. |
+| Native support for CSV, Parquet, & Delta <sup>1</sup> | PolyBase Query Service for External Data installation is no longer required to use OPENROWSET, CREATE EXTERNAL TABLE, or CREATE EXTERNAL TABLE AS SELECT with the following types of external data: Parquet, Delta, Azure Blob Storage (ABS), Azure Data Lake Storage (ADLS), or S3-Compatible Object storage. |
 | Use generic ODBC data sources on Linux | For more information, see [Configure PolyBase to access external data with ODBC generic types](polybase-configure-odbc-generic.md). |
+|TDS 8.0 Support|When using [Microsoft ODBC Driver 18 for SQL Server driver](/sql/connect/odbc/windows/features-of-the-microsoft-odbc-driver-for-sql-server-on-windows).<br /><br /> TDS 8.0 is not supported for sqlserver as [external data source](/sql/t-sql/statements/create-external-data-source-transact-sql).|
 
 <sup>1</sup> On [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], PolyBase Query Service for External Data is still required to connect with other databases. For example: SQL Server, Oracle, DB2, Teradata, MongoDB, or ODBC.
 
@@ -157,7 +158,7 @@ Azure Storage connectors must be changed based on the following reference table:
 
 | External data source | From | To |
 | --- | --- | --- |
-| `Azure Blob Storage | wasb[s] | abs |
+| Azure Blob Storage | wasb[s] | abs |
 | ADLS Gen 2 | abfs[s] | adls |
 
 ## Get started
