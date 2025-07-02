@@ -4,7 +4,7 @@ description: Migrate a database in Azure SQL Database from the DTU model to the 
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: wiassaf, mathoma, moslake, randolphwest
-ms.date: 07/22/2024
+ms.date: 06/30/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: upgrade-and-migration-article
@@ -17,7 +17,7 @@ This article describes how to migrate your database in Azure SQL Database from t
 
 ## Migrate a database
 
-Migrating a database from the DTU-based purchasing model to the vCore-based purchasing model is similar to scaling between service objectives in the Basic, Standard, and Premium service tiers, with similar [duration](single-database-scale.md#latency) and a [minimal downtime](scale-resources.md) at the end of the migration process. A database migrated to the vCore-based purchasing model can be migrated back to the DTU-based purchasing model at any time using the same steps, except for databases migrated to the [Hyperscale](service-tier-hyperscale.md) service tier.
+Migrating a database from the DTU-based purchasing model to the vCore-based purchasing model is similar to scaling between service objectives in the Basic, Standard, and Premium service tiers, with similar [duration](single-database-scale.md#latency) and a [minimal downtime](scale-resources.md) at the end of the migration process. A database migrated to the vCore-based purchasing model can be migrated back to the DTU-based purchasing model at any time using the same steps, except for databases migrated to the [Hyperscale service tier](service-tier-hyperscale.md).
 
 You can migrate your database to a different purchasing model by using the Azure portal, PowerShell, the Azure CLI, and Transact-SQL.
 
@@ -67,7 +67,7 @@ ALTER DATABASE <database name> MODIFY (EDITION = '<service tier, such as Hypersc
 
 ## Choose the vCore service tier and service objective
 
-For most DTU to vCore migration scenarios, databases and elastic pools in the Basic and Standard service tiers map to the [General Purpose](service-tiers-sql-database-vcore.md#general-purpose) service tier. Databases and elastic pools in the Premium service tier map to the [Business Critical](service-tiers-sql-database-vcore.md#business-critical) service tier. Depending on application scenario and requirements, the [Hyperscale](service-tier-hyperscale.md) service tier can often be used as the migration target for databases and elastic pools in all DTU service tiers.
+For most DTU to vCore migration scenarios, databases and elastic pools in the Basic and Standard service tiers map to the [General Purpose](service-tiers-sql-database-vcore.md#general-purpose) service tier. Databases and elastic pools in the Premium service tier map to the [Business Critical](service-tiers-sql-database-vcore.md#business-critical) service tier. Depending on application scenario and requirements, the [Hyperscale service tier](service-tier-hyperscale.md) can often be used as the migration target for databases and elastic pools in all DTU service tiers.
 
 To choose the service objective, or compute size, for the migrated database in the vCore model, you can use a basic but approximate rule of thumb: every 100 DTUs in the Basic or Standard tiers require *at least* 1 vCore, and every 125 DTUs in the Premium tier require *at least* 1 vCore.
 
@@ -188,7 +188,7 @@ The mapping query returns the following result (some columns not shown for brevi
 | --- | --- | --- | --- | --- | --- | --- |
 | 0.25 | 1.3 | 0.500 | 5.05 |
 
-We see that the DTU database has the equivalent of 0.25 logical CPUs (vCores), with 1.3 GB of memory per vCore. The smallest vCore service objectives in the standard-series (Gen5) hardware configuration, **GP_Gen5_2**, provides more compute resources than the Standard S0 database, so a direct match isn't possible. The **GP_Gen5_2** option is preferred. Additionally, if the workload is well-suited for the [Serverless](serverless-tier-overview.md) compute tier, then **GP_S_Gen5_1** would be a closer match.
+We see that the DTU database has the equivalent of 0.25 logical CPUs (vCores), with 1.3 GB of memory per vCore. The smallest vCore service objectives in the standard-series (Gen5) hardware configuration, **GP_Gen5_2**, provides more compute resources than the Standard S0 database, so a direct match isn't possible. The **GP_Gen5_2** option is preferred. Additionally, if the workload is well-suited for the [Serverless compute tier](serverless-tier-overview.md), then **GP_S_Gen5_1** would be a closer match.
 
 **Migrating a Premium P15 database**
 
@@ -217,7 +217,7 @@ Migrating from the DTU-based model to the vCore-based purchasing model is simila
 - When upgrading, you must upgrade the secondary database first, and then upgrade the primary.
 - When downgrading, reverse the order: you must downgrade the primary database first, and then downgrade the secondary.
 
-To convert a database to the Hyperscale service tier, geo-replication should be temporarily removed. For more information, see [Convert an existing database to Hyperscale](convert-to-hyperscale.md).
+To convert a database to the Hyperscale service tier, geo-replication should be temporarily removed. The ability to convert a geo-replicated database non-Hyperscale database to Hyperscale using T-SQL, REST API, PowerShell, or Azure CLI is currently a preview feature. For more information, see [Convert an existing database to Hyperscale](convert-to-hyperscale.md).
 
 When you use geo-replication between two elastic pools, we recommend that you designate one pool as the primary and the other as the secondary. In that case, when you migrate elastic pools you should use the same sequencing guidance. However, if you have elastic pools that contain both primary and secondary databases, treat the pool with the higher utilization as the primary and follow the sequencing rules accordingly.
 
