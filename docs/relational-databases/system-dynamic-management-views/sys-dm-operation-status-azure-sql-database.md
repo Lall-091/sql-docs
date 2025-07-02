@@ -4,7 +4,7 @@ description: The sys.dm_operation_status dynamic management view displays inform
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest
-ms.date: 02/10/2025
+ms.date: 06/30/2025
 ms.service: azure-sql-database
 ms.topic: "reference"
 f1_keywords:
@@ -23,7 +23,7 @@ monikerRange: "=azuresqldb-current || =azure-sqldw-latest || =azuresqldb-mi-curr
 
 [!INCLUDE [asdb-asdbmi-asa](../../includes/applies-to-version/asdb-asdbmi-asa.md)]
 
-Returns information about operations performed on databases in a [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] logical server.
+Returns information about operations.
 
 | Column name | Data type | Description |
 | --- | --- | --- |
@@ -43,8 +43,8 @@ Returns information about operations performed on databases in a [!INCLUDE [ssaz
 | `start_time` | **datetime** | Timestamp when the operation started. |
 | `last_modify_time` | **datetime** | Timestamp when the record was last modified for a long running operation. When the operation has completed successfully, this field displays the timestamp when the operation completed. |
 | `phase_code` | **int** | Only applicable when the service tier is converting to Hyperscale, else `NULL`. Phases 5 and 6 are applicable only for `MANUAL_CUTOVER` option.</br></br>`1` – LogTransitionInProgress</br>`2` – Copying</br>`3` – BuildingHyperscaleComponents</br>`4` – Catchup</br>`5` – WaitingForCutover</br>`6` – CutoverInProgress</br>|
-| `phase_desc` | **nvarchar(60)** | Description of the phase that is in progress. Only applicable when the service tier is converting to Hyperscale, else `NULL`. Phases WaitingForCutover and CutoverInProgress are applicable only for MANUAL_CUTOVER option.|
-| `phase_info` | **nvarchar(2048)** | This column provides more information about the specific phase which is in progress.</br></br>When tier conversion to Hyperscale is performed on primary replica, information would be shown for both primary and secondary, one at a time. Only applicable when the service tier is converting to Hyperscale, else `NULL`.|
+| `phase_desc` | **nvarchar(60)** | Description of the phase that is in progress. Only applicable when the service tier is converting to Hyperscale, else `NULL`. Phases WaitingForCutover and CutoverInProgress are applicable only for `MANUAL_CUTOVER` option. For more information, see [conversion to Hyperscale](/azure/azure-sql/database/convert-to-hyperscale?view=azuresql-db&preserve-view=true). |
+| `phase_info` | **nvarchar(2048)** | This column provides more information about the specific phase in progress, in JSON format. Might not be populated for all operations.</br></br>When tier [conversion to Hyperscale](/azure/azure-sql/database/convert-to-hyperscale?view=azuresql-db&preserve-view=true) is performed on primary replica, information would be shown for both primary and secondary, one at a time. </br></br>|
 
 ## Permissions
 
@@ -87,7 +87,7 @@ ORDER BY start_time DESC;
 
 ## Related content
 
-- [Geo-Replication Dynamic Management Views and Functions (Azure SQL Database)](../../relational-databases/system-dynamic-management-views/geo-replication-dynamic-management-views-and-functions-azure-sql-database.md)
-- [sys.dm_geo_replication_link_status (Azure SQL Database)](../../relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database.md)
-- [sys.geo_replication_links (Azure SQL Database)](../../relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database.md)
-- [ALTER DATABASE (Azure SQL Database)](../../t-sql/statements/alter-database-transact-sql.md)
+- [Geo-Replication Dynamic Management Views and Functions (Azure SQL Database)](geo-replication-dynamic-management-views-and-functions-azure-sql-database.md)
+- [sys.dm_geo_replication_link_status (Azure SQL Database)](sys-dm-geo-replication-link-status-azure-sql-database.md)
+- [sys.geo_replication_links (Azure SQL Database)](sys-geo-replication-links-azure-sql-database.md)
+- [ALTER DATABASE (Transact-SQL)](../../t-sql/statements/alter-database-transact-sql.md)

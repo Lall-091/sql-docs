@@ -4,7 +4,7 @@ description: How to convert an Azure SQL Database to the Hyperscale tier.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: dfurman, blakhani
-ms.date: 04/06/2025
+ms.date: 07/02/2025
 ms.service: azure-sql-database
 ms.topic: how-to
 ms.custom:
@@ -15,7 +15,26 @@ monikerRange: "=azuresql || =azuresql-db"
 
 # Convert an existing database to Hyperscale
 
+[!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]
+
 You can convert an existing database in Azure SQL Database to Hyperscale using the Azure portal, the Azure CLI, PowerShell, or Transact-SQL.
+
+## Prerequisites
+
+ - To convert a database that is a part of a [geo-replication](active-geo-replication-overview.md) relationship, either as the primary or as a secondary, to Hyperscale, you must first terminate geo-replication between the primary and secondary replica. Databases in a [failover group](failover-group-sql-db.md) must be removed from the group first. Once a database is converted to Hyperscale, you can create a new Hyperscale geo-replica for that database or add the database to a failover group.
+     - The ability to [convert a geo-replicated non-Hyperscale database to Hyperscale](#convert-database-with-geo-replicas-preview) using T-SQL, REST API, PowerShell, or Azure CLI is currently a [preview feature](#convert-database-with-geo-replicas-preview).
+- Direct conversion from the Basic service tier to Hyperscale is not supported. To perform this conversion, first change the database to any service tier other than Basic (for example, General Purpose), and then proceed with the conversion to Hyperscale.  
+- You can monitor the progress of the conversion with T-SQL. To run T-SQL commands on your Azure SQL Database, use [SQL Server Management Studio (SSMS)](https://aka.ms/ssms), the [MSSQL extension for Visual Studio Code](/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code), [sqlcmd](/sql/tools/sqlcmd/sqlcmd-utility), or your favorite T-SQL querying tool.
+
+### Convert database with geo-replicas (preview)
+
+The ability to convert a [geo-replicated](active-geo-replication-overview.md) non-Hyperscale database to Hyperscale using T-SQL, REST API, PowerShell, or Azure CLI is currently a preview feature. For more information, see [Blog: Hyperscale conversion support for geo-replicas](https://aka.ms/hs-conversion-geodr-preview).
+
+- Conversion to Hyperscale must be initiated from the primary geo-replica. 
+- The number of geo-secondary replicas should be reduced to one because Hyperscale doesn't support more than one geo-secondary.
+- Creating geo-replica of a geo-replica (also known as "geo-replica chaining") isn't supported in Hyperscale. If a chained geo-replication configuration exists, it must be removed before starting the conversion to Hyperscale.
+- A planned failover isn't possible while the conversion of the geo-primary database to Hyperscale is in progress. A forced failover to a geo-secondary replica is possible. However, depending on the state of the conversion when the forced failover occurs, the new geo-primary after failover might use either the Hyperscale service tier, or its original service tier.
+If a geo-primary database is in an elastic pool, it can be moved to an existing Hyperscale elastic pool as part of the conversion or can be made a standalone Hyperscale database. However, if a geo-secondary database is in an elastic pool, conversion to Hyperscale always moves it out of the pool. You can move the geo-secondary database to a Hyperscale elastic pool in a separate step once conversion completes.
 
 ## Cutover
 
@@ -24,15 +43,7 @@ The conversion process is divided into two stages - the conversion of database, 
 - The time required to move an existing database to Hyperscale consists of the time to copy data and the time to replay the changes made in the source database while copying data. The data copy time is proportional to data size. We recommend converting to Hyperscale during a lower write activity period so that the time to replay accumulated changes is shorter.
 - You have the ability to choose when the cutover occurs - as soon as the database is ready, or manually at a time of your choosing. By default, the process to convert to Hyperscale will cutover automatically.
     - If you choose to manually cutover at a time of your choosing, you have 24 hours to initiate a manual cutover after the point when the database ready for cutover. You can initiate a manual cutover via the Azure portal, Azure CLI, PowerShell, or T-SQL.
-- During the final cutover to Hyperscale, your applications will only experience a short period of downtime, generally less than a minute.
-
-## Prerequisites
-
-To convert a database that is a part of a [geo-replication](active-geo-replication-overview.md) relationship, either as the primary or as a secondary, to Hyperscale, you need to first terminate geo-replication between the primary and secondary replica. Databases in a [failover group](failover-group-sql-db.md) must be removed from the group first.
-
-Once a database has been moved to Hyperscale, you can create a new Hyperscale geo-replica for that database or add the database to a failover group.
-
-Direct conversion from the Basic service tier to Hyperscale is not supported. To perform this conversion, first change the database to any service tier other than Basic (for example, General Purpose), and then proceed with the conversion to Hyperscale.  
+- During the final cutover to Hyperscale, your applications only experience a short period of downtime, usually less than a minute.
 
 ## Convert a database to Hyperscale
 
@@ -108,7 +119,7 @@ databaseName="mySampleDatabase"
 az sql db op list -g $resourceGroupName -s $serverName -n $databaseName
 ```
 
-Use `--perform-cutover` to initiate the cutover (within 3 days) once the Hyperscale database is ready:
+Use `--perform-cutover` to initiate the cutover (within 24 hours) once the Hyperscale database is ready:
 
 ```azurecli-interactive
 az sql db update -g $resourceGroupName -s $serverName -n $databaseName --perform-cutover
@@ -177,7 +188,7 @@ Set-AzSqlDatabase -ResourceGroupName $resourceGroupName `
 
 # [Transact-SQL](#tab/t-sql)
 
-To convert an existing Azure SQL Database to Hyperscale with Transact-SQL, first connect to the `master` database on your [logical SQL server](logical-servers.md) using the [Azure portal Query editor for Azure SQL Database](query-editor.md), [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms), or [the mssql extension for Visual Studio Code](/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code).
+To convert an existing Azure SQL Database to Hyperscale with Transact-SQL, first connect to the `master` database on your [logical SQL server](logical-servers.md) using [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) or [the mssql extension for Visual Studio Code](/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code).
 
 You must specify both the edition and service objective in the [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) statement.
 
@@ -197,14 +208,15 @@ ALTER DATABASE [mySampleDatabase]
    WITH MANUAL_CUTOVER;
 ```
 
-To monitor operations for a Hyperscale database, connect to the `master` database of your [logical server](logical-servers.md) and query [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?view=azuresqldb-current&preserve-view=true). The `sys.dm_operation_status` makes reports the progress of database operations including the conversion to Hyperscale. If you chose `MANUAL_CUTOVER`, the `sys.dm_operation_status` view includes additional information.
+To monitor all operations for a Hyperscale database, including the conversion to Hyperscale, connect to the `master` database of your geo-primary [logical server](logical-servers.md) and execute T-SQL queries on the [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?view=azuresqldb-current&preserve-view=true) dynamic management view. The `sys.dm_operation_status` makes reports the progress of database operations including the conversion to Hyperscale. If you chose `MANUAL_CUTOVER`, the `sys.dm_operation_status` view includes additional information.
+
+For example,
 
 ```sql
 SELECT *
 FROM sys.dm_operation_status
 WHERE major_resource_id = 'mySampleDatabase'
 ORDER BY start_time DESC;
-GO
 ```
 
 When ready for manual cutover, the `phase_desc` will be `WaitingForCutover`. Use the `PERFORM_CUTOVER` argument to initiate the cutover:
@@ -218,4 +230,4 @@ ALTER DATABASE [mySampleDatabase] PERFORM_CUTOVER;
 ## Related content
 
 - [How to manage a Hyperscale database](manage-hyperscale-database.md)
-- [How to reverse migrate a database from Hyperscale](reverse-migrate-from-hyperscale.md)
+- [Reverse migrate a database from Hyperscale](reverse-migrate-from-hyperscale.md)

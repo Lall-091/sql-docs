@@ -11,7 +11,7 @@ metadata:
   author: WilliamDAssafMSFT
   ms.author: wiassaf
   ms.reviewer: dfurman, mathoma, dinethi, blakhani, adbadram
-  ms.date: 04/06/2025
+  ms.date: 06/30/2025
 title: Azure SQL Database Hyperscale FAQ
 summary: |
   [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -227,7 +227,7 @@ sections:
 
           The time required to move an existing database to Hyperscale consists of the time to copy data, and the time to replay the changes made in the source database while copying data. The data copy time is proportional to data size. The time to replay changes is shorter if the move is done during a period of low write activity.
 
-          You can convert an existing Azure SQL Database to Hyperscale in the Azure portal, Azure CLI, PowerShell, and Transact-SQL. For more information, see [Convert an existing database to Hyperscale](convert-to-hyperscale.md).
+          You can convert an existing Azure SQL Database to Hyperscale in the Azure portal, Azure CLI, PowerShell, and Transact-SQL. For more information, see [Convert an existing database to Hyperscale](convert-to-hyperscale.md). The ability to convert a geo-replicated database non-Hyperscale database to Hyperscale using T-SQL, REST API, PowerShell, or Azure CLI is currently a preview feature.
 
           [Reverse migration](reverse-migrate-from-hyperscale.md) to the General Purpose service tier allows customers who have recently migrated an existing database in Azure SQL Database to the Hyperscale service tier to move back, should Hyperscale not meet their needs. While reverse migration is initiated by a service tier change, it's essentially a size-of-data operation between different architectures. Similarly to migration to Hyperscale, reverse migration is faster if done during a period of low write activity. For more information, see [Reverse migrate from Hyperscale](reverse-migrate-from-hyperscale.md).
 
