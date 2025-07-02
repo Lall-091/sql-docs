@@ -2,10 +2,10 @@
 title: Enable SQL TDE with Azure Key Vault
 titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 description: Learn how to configure an Azure SQL Database and Azure Synapse Analytics to start using Transparent Data Encryption (TDE) for encryption-at-rest using PowerShell or Azure CLI.
-author: WilliamDAssafMSFT
-ms.author: wiassaf
+author: Pietervanhove
+ms.author: pivanho
 ms.reviewer: vanto, mathoma
-ms.date: 02/03/2025
+ms.date: 06/25/2025
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: how-to
@@ -25,7 +25,7 @@ This article walks through how to use a key from Azure Key Vault for transparent
 This article applies to Azure SQL Database, Azure SQL Managed Instance, and Azure Synapse Analytics dedicated SQL pools. For documentation on Transparent Data Encryption for dedicated SQL pools inside Synapse workspaces, see [Azure Synapse Analytics encryption](/azure/synapse-analytics/security/workspaces-encryption).
 
 > [!NOTE] 
-> Azure SQL now supports using an RSA key stored in a Managed HSM as TDE Protector. Azure Key Vault Managed HSM is a fully managed, highly available, single-tenant, standards-compliant cloud service that enables you to safeguard cryptographic keys for your cloud applications, using FIPS 140-2 Level 3 validated HSMs. Learn more about [Managed HSMs](/azure/key-vault/managed-hsm/index).
+> Azure SQL also supports using an RSA key stored in a Managed HSM as TDE Protector. Azure Managed HSM is a fully managed, highly available, single-tenant, standards-compliant cloud service that enables you to safeguard cryptographic keys for your cloud applications, using FIPS 140-2 Level 3 validated HSMs. Learn more about [Managed HSMs](/azure/key-vault/managed-hsm/index).
 
 [!INCLUDE [entra-id](../includes/entra-id.md)]
 
@@ -35,7 +35,7 @@ This article applies to Azure SQL Database, Azure SQL Managed Instance, and Azur
 - [Recommended but Optional] Have a hardware security module (HSM) or local key store for creating a local copy of the TDE Protector key material.
 - You must have Azure PowerShell installed and running.
 - Create an Azure Key Vault and Key to use for TDE.
-  - [Instructions for using a hardware security module (HSM) and Key Vault](/azure/key-vault/keys/hsm-protected-keys)
+  - [Instructions for using a hardware security module (HSM) and Azure Key Vault](/azure/key-vault/keys/hsm-protected-keys)
     - The key vault must have the following property to be used for TDE:
   - [soft-delete](/azure/key-vault/general/soft-delete-overview) and purge protection
 - The key must have the following attributes to be used for TDE:
@@ -49,7 +49,7 @@ This article applies to Azure SQL Database, Azure SQL Managed Instance, and Azur
 
 For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
-For specifics on Key Vault, see [PowerShell instructions from Key Vault](/azure/key-vault/secrets/quick-create-powershell) and [How to use Key Vault soft-delete with PowerShell](/azure/key-vault/general/key-vault-recovery).
+For specifics on Azure Key Vault, see [PowerShell instructions from Azure Key Vault](/azure/key-vault/secrets/quick-create-powershell) and [How to use Azure Key Vault soft-delete with PowerShell](/azure/key-vault/general/key-vault-recovery).
 
 <a name='assign-an-azure-active-directory-azure-ad-identity-to-your-server'></a>
 
@@ -68,7 +68,7 @@ If you are creating a server, use the [New-AzSqlServer](/powershell/module/az.sq
        -ServerName <LogicalServerName> -ServerVersion "12.0" -SqlAdministratorCredentials <PSCredential> -AssignIdentity
    ```
 
-## Grant Key Vault permissions to your server
+## Grant Azure Key Vault permissions to your server
 
 Use the [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet to grant your server access to the key vault before using a key from it for TDE.
 
@@ -79,26 +79,26 @@ Use the [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvau
 
 For adding permissions to your server on a Managed HSM, add the 'Managed HSM Crypto Service Encryption User' local RBAC role to the server. This enables the server to perform get, wrap key, unwrap key operations on the keys in the Managed HSM. For more information, see [Managed HSM role management](/azure/key-vault/managed-hsm/role-management)
 
-## Add the Key Vault key to the server and set the TDE Protector
+## Add the Azure Key Vault key to the server and set the TDE Protector
 
-- Use the [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) cmdlet to retrieve the key ID from key vault
-- Use the [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) cmdlet to add the key from the Key Vault to the server.
+- Use the [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) cmdlet to retrieve the key ID from key vault.
+- Use the [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) cmdlet to add the key from the Azure Key Vault to the server.
 - Use the [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) cmdlet to set the key as the TDE protector for all server resources.
 - Use the [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) cmdlet to confirm that the TDE protector was configured as intended.
 
 > [!NOTE]
-> For Managed HSM keys, use Az.Sql 2.11.1 version of PowerShell.
+> For Managed HSM keys, use Az.Sql 2.11.1 version of PowerShell or higher.
 
 > [!NOTE]
 > The combined length for the key vault name and key name cannot exceed 94 characters.
 
 > [!TIP]
-> An example KeyId from Key Vault: `https://contosokeyvault.vault.azure.net/keys/Key1/<key-id>`
+> An example KeyId from Azure Key Vault: `https://contosokeyvault.vault.azure.net/keys/Key1/<key-id>`
 >
 > An example KeyId from Managed HSM:<br/>https://contosoMHSM.managedhsm.azure.net/keys/myrsakey
 
 ```powershell
-# add the key from Key Vault to the server
+# add the key from Azure Key Vault to the server
 Add-AzSqlServerKeyVaultKey -ResourceGroupName <SQLDatabaseResourceGroupName> -ServerName <LogicalServerName> -KeyId <KeyVaultKeyId>
 
 # set the key as the TDE protector for all resources under the server
@@ -118,7 +118,7 @@ Set-AzSqlDatabaseTransparentDataEncryption -ResourceGroupName <SQLDatabaseResour
    -ServerName <LogicalServerName> -DatabaseName <DatabaseName> -State "Enabled"
 ```
 
-Now the database or data warehouse has TDE enabled with an encryption key in Key Vault.
+Now the database or data warehouse has TDE enabled with an encryption key in Azure Key Vault.
 
 ## Check the encryption state and encryption activity
 
@@ -134,7 +134,7 @@ Get-AzSqlDatabaseTransparentDataEncryption -ResourceGroupName <SQLDatabaseResour
 
 To install the required version of Azure CLI (version 2.0 or later) and connect to your Azure subscription, see [Install and Configure the Azure Cross-Platform Command-Line Interface 2.0](/cli/azure/install-azure-cli).
 
-For specifics on Key Vault, see [Manage Key Vault using Azure CLI 2.0](/azure/key-vault/general/manage-with-cli2) and [How to use Key Vault soft-delete with the CLI](/azure/key-vault/general/key-vault-recovery).
+For specifics on Azure Key Vault, see [Manage Azure Key Vault using Azure CLI 2.0](/azure/key-vault/general/manage-with-cli2) and [How to use Azure Key Vault soft-delete with the CLI](/azure/key-vault/general/key-vault-recovery).
 
 <a name='assign-an-azure-ad-identity-to-your-server'></a>
 
@@ -147,12 +147,12 @@ az sql db create --name <dbname> --server <servername> --resource-group <rgname>
 ```
 
 > [!TIP]
-> Keep the "principalID" from creating the server, it is the object ID used to assign key vault permissions in the next step
+> Keep the "principalID" from creating the server, it is the object ID used to assign Azure Key Vault permissions in the next step.
 
-## Grant Key Vault permissions to your server
+## Grant Azure Key Vault permissions to your server
 
 ```azurecli
-# create key vault, key and grant permission
+# create Azure Key Vault, key and grant permission
 az keyvault create --name <kvname> --resource-group <rgname> --location <location> --enable-soft-delete true
 az keyvault key create --name <keyname> --vault-name <kvname> --protection software
 az keyvault set-policy --name <kvname>  --object-id <objectid> --resource-group <rgname> --key-permissions wrapKey unwrapKey get
@@ -161,7 +161,7 @@ az keyvault set-policy --name <kvname>  --object-id <objectid> --resource-group 
 > [!TIP]
 > Keep the key URI or keyID of the new key for the next step, for example: `https://contosokeyvault.vault.azure.net/keys/Key1/<key-id>`
 
-## Add the Key Vault key to the server and set the TDE Protector
+## Add the Azure Key Vault key to the server and set the TDE Protector
 
 ```azurecli
 # add server key and update encryption protector
@@ -201,14 +201,14 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
       -DatabaseName <DatabaseName> -State "Disabled"
    ```
 
-- Use the [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) cmdlet to return the list of Key Vault keys added to the server.
+- Use the [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) cmdlet to return the list of Azure Key Vault keys added to the server.
 
    ```powershell
    # KeyId is an optional parameter, to return a specific key version
    Get-AzSqlServerKeyVaultKey -ServerName <LogicalServerName> -ResourceGroupName <SQLDatabaseResourceGroupName>
    ```
 
-- Use the [Remove-AzSqlServerKeyVaultKey](/powershell/module/az.sql/remove-azsqlserverkeyvaultkey) to remove a Key Vault key from the server.
+- Use the [Remove-AzSqlServerKeyVaultKey](/powershell/module/az.sql/remove-azsqlserverkeyvaultkey) to remove an Azure Key Vault key from the server.
 
    ```powershell
    # the key set as the TDE Protector cannot be removed

@@ -27,7 +27,7 @@ Only Azure extension for SQL Server agent versions released within the last year
 
 ## June 18, 2025
 
-**Extension version**: `1.1.03089.297`
+**Extension version**: `1.1.3089.297`
 
 This release enables the following features:
 

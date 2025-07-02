@@ -26,9 +26,10 @@ If you chose to write audit logs to Log Analytics:
 
 1. Use the [Azure portal](https://portal.azure.com).
 1. Go to the relevant database resource.
-1. At the top of the database's **Auditing** page, select **View audit logs**.
+1. At the top of the database's **Auditing** page, select **View audit logs** to display a sample of audit logs with a limited set of fields that cover activity from up to 2 hours prior to the selected **End Time** (which defaults to 'now'):
 
    :::image type="content" source="media/auditing-analyze-audit-logs/view-audit-logs.png" alt-text="Screenshot of the Auditing menu in the Azure portal where you can select the View audit logs option." lightbox="media/auditing-analyze-audit-logs/view-audit-logs.png":::
+   
 
 You have two ways to view the logs:
 

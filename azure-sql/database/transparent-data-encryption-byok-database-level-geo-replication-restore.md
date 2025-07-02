@@ -2,8 +2,8 @@
 title: "Configure Geo Replication and Backup Restore for Transparent Data Encryption (TDE) with Database Level Customer-Managed Keys"
 titleSuffix: Azure SQL Database
 description: A how-to guide for configuring geo replication for transparent data encryption (TDE) with database level customer-managed keys for Azure SQL Database.
-author: strehan1993
-ms.author: strehan
+author: Pietervanhove
+ms.author: pivanho
 ms.reviewer: vanto, mathoma
 ms.date: 06/13/2025
 ms.service: azure-sql-database
@@ -34,7 +34,7 @@ In this guide, we go through the steps to configure geo replication and backup r
 > The same guide can be applied to configure database level customer-managed keys in a different tenant by including the federated client ID parameter. For more information, see [Identity and key management for TDE with database level customer-managed keys](transparent-data-encryption-byok-database-level-basic-actions.md).
 
 > [!IMPORTANT]
-> After the database is created or restore, the **Transparent Data Encryption** menu in the **Azure portal** will show the new database with the same settings as the source database, but might have keys missing. In all cases where a new database is created from a source database, the number of keys displayed for a target database in the Azure portal **Additional Database Keys** list could be less than the number of keys displayed for a source database. This is because the number of displayed keys depends on individual feature requirements used to create a target database. To list all keys available for a newly create database, use the available APIs in [View the database level customer-managed key settings on an Azure SQL Database](transparent-data-encryption-byok-database-level-basic-actions.md#view-the-database-level-customer-managed-key-settings-on-an-azure-sql-database).
+> After the database is created or restored, the **Transparent Data Encryption** menu in the **Azure portal** will show the new database with the same settings as the source database, but might have keys missing. In all cases where a new database is created from a source database, the number of keys displayed for a target database in the Azure portal **Additional Database Keys** list could be less than the number of keys displayed for a source database. This is because the number of displayed keys depends on individual feature requirements used to create a target database. To list all keys available for a newly create database, use the available APIs in [View the database level customer-managed key settings on an Azure SQL Database](transparent-data-encryption-byok-database-level-basic-actions.md#view-the-database-level-customer-managed-key-settings-on-an-azure-sql-database).
 
 ## Create an Azure SQL Database with database level customer-managed keys as a secondary or copy
 
@@ -455,7 +455,7 @@ The following section describes how to restore a geo-replicated backup of databa
 
 1. Go to the **Security** tab. In the **Transparent Data Encryption Key Management** section, select **Configure transparent data encryption**.
 
-1. When the **Transparent Data Encryption** menu appears, select **Database level Customer-Managed Key (CMK)**. The **User-Assigned Managed Identity**, **Customer-Managed Key**, and **Additional Database Keys** must match the source database that you want to restore. Make sure the user-assigned managed identity has access to the key vault that contains the customer-managed key that was used in the backup.
+1. When the **Transparent Data Encryption** menu appears, select **Database level Customer-Managed Key (CMK)**. The **User-Assigned Managed Identity**, **Customer-Managed Key**, and **Additional Database Keys** must match the source database that you want to restore. Make sure the user-assigned managed identity has access to the Azure Key Vault that contains the customer-managed key that was used in the backup.
 
 1. Select **Apply** to continue and then select **Review + create**, and **Create** to create the backup database.
 

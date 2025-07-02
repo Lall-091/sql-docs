@@ -4,7 +4,7 @@ description: This article describes the Hyperscale service tier in the vCore-bas
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: dfurman, mathoma, oslake, randolphwest, blakhani, adbadram
-ms.date: 02/10/2025
+ms.date: 06/30/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: concept-article
@@ -169,7 +169,7 @@ You can create and manage Hyperscale databases using the Azure portal, Transact-
 | **Operation** | **Details** | **Learn more** |
 | :--- | :--- | :--- |
 | **Create a Hyperscale database** | Hyperscale databases are available only using the [vCore-based purchasing model](service-tiers-vcore.md). | Find examples to create a Hyperscale database in [Quickstart: Create a Hyperscale database in Azure SQL Database](hyperscale-database-create-quickstart.md). |
-| **Upgrade an existing database to Hyperscale** | Migrating an existing database in Azure SQL Database to the Hyperscale tier is a size of data operation. | Learn [how to migrate an existing database to Hyperscale](convert-to-hyperscale.md). |
+| **Convert an existing database to Hyperscale** | You can convert an existing database to the Azure SQL Database Hyperscale tier. The conversion duration depends on the size of data. | For more information, see [Convert an existing database to Hyperscale](convert-to-hyperscale.md). |
 | **Reverse migrate a Hyperscale database to the General Purpose service tier** | If you previously migrated an existing Azure SQL Database to Hyperscale, you can reverse migrate the database to the General Purpose service tier within 45 days of the original migration to Hyperscale.<br /><br />If you wish to migrate the database to another service tier, such as Business Critical, first reverse migrate to the General Purpose service tier, then change the service tier. | Learn [how to reverse migrate from Hyperscale](reverse-migrate-from-hyperscale.md), including the [limitations for reverse migration](reverse-migrate-from-hyperscale.md#limitations-for-reverse-migration). |
 
 <a id="known-limitations"></a>

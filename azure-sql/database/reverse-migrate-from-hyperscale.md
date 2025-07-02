@@ -15,6 +15,8 @@ monikerRange: "=azuresql || =azuresql-db"
 
 # Reverse migrate a database from Hyperscale
 
+[!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]
+
 You can migrate an existing Hyperscale database in Azure SQL Database to the General Purpose service tier using the Azure portal, the Azure CLI, PowerShell, or Transact-SQL.
 
 Reverse migration to the General Purpose service tier allows customers who have recently converted an existing database in Azure SQL Database to Hyperscale to move back in an emergency, should Hyperscale not meet their needs. While reverse migration is initiated by a service tier change, it's essentially a size-of-data move between different architectures.

@@ -2,10 +2,10 @@
 title: Transparent data encryption (TDE) with database level customer-managed keys
 titleSuffix: Azure SQL Database
 description: Overview of customer managed keys (CMK) support for transparent data encryption (TDE) with Azure Key Vault for Azure SQL Database at a database level granularity.
-author: strehan1993
-ms.author: strehan
+author: Pietervanhove
+ms.author: pivanho
 ms.reviewer: vanto, mathoma
-ms.date: 01/12/2024
+ms.date: 06/25/2025
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: conceptual
@@ -25,15 +25,15 @@ This article describes transparent data encryption (TDE) with customer-managed k
 
 ## Overview
 
-Azure SQL offers encryption at rest capability to customers through [transparent data encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption). Extending TDE with [customer-managed key (CMK)](transparent-data-encryption-byok-overview.md) enables data protection at rest where the TDE protector (the encryption key) is stored in an Azure Key Vault that encrypts the database encryption keys. Currently, TDE with CMK is set at the server level, and is inherited by all encrypted databases associated with that server. This new feature allows setting the TDE protector as a customer-managed key individually for each database within the server. Any `Microsoft.Sql/servers/databases` resource with a valid, nonempty `encryptionProtector` property is configured with database level customer-managed keys.
+Azure SQL offers encryption at rest capability to customers through [transparent data encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption). Extending TDE with [customer-managed key (CMK)](transparent-data-encryption-byok-overview.md) enables data protection at rest where the TDE protector (the encryption key) is stored in an Azure Key Vault or Azure Managed HSM that encrypts the database encryption keys. TDE with CMK can be set at the server level, and is inherited by all encrypted databases associated with that server. You can also set the TDE protector as a customer-managed key individually for each database within the server. Any `Microsoft.Sql/servers/databases` resource with a valid, nonempty `encryptionProtector` property is configured with database level customer-managed keys.
 
-In this scenario, an asymmetric key that is stored in a customer-owned and customer-managed [Azure Key Vault (AKV)](/azure/key-vault/general/security-features) can be used individually for each database within a server to encrypt the database encryption key (DEK), called TDE protector. There's an option to add keys, remove keys, and change the user-assigned managed identity (UMI) for each database. For more information on identities, see [Managed identity types](/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types) in Azure.
+In this scenario, an asymmetric key that is stored in a customer-owned and customer-managed [Azure Key Vault](/azure/key-vault/general/security-features) or [Azure Managed HSM](/azure/key-vault/managed-hsm/overview) can be used individually for each database within a server to encrypt the database encryption key (DEK), called TDE protector. There's an option to add keys, remove keys, and change the user-assigned managed identity (UMI) for each database. For more information on identities, see [Managed identity types](/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types) in Azure.
 
 The following functionality is available:
 
-- User-assigned managed identity: You can assign a single user-assigned managed identity to the database. This identity can be used to access the Azure Key Vault and manage encryption keys.
-- Encryption key management: You can enable one or more encryption keys to be added at the database level, and set one of the added keys as the TDE protector. The encryption keys being added use the user-assigned managed identity already assigned to the database to access Azure Key Vault.
-- [Federated client identity](/graph/api/resources/federatedidentitycredentials-overview): You can also enable a customer-managed key (CMK) from Azure Key Vault in a different Microsoft Entra tenant to be set as TDE protector at the database-level, by utilizing federated client identity set on the Azure SQL Database. This allows you to manage TDE with keys stored in a different tenant's Azure Key Vault.
+- User-assigned managed identity: You can assign a single user-assigned managed identity to the database. This identity can be used to access the Azure Key Vault or Azure Managed HSM and manage encryption keys.
+- Encryption key management: You can enable one or more encryption keys to be added at the database level, and set one of the added keys as the TDE protector. The encryption keys being added use the user-assigned managed identity already assigned to the database to access Azure Key Vault or Azure Managed HSM.
+- [Federated client identity](/graph/api/resources/federatedidentitycredentials-overview): You can also enable a customer-managed key (CMK) from Azure Key Vault or Azure Managed HSM in a different Microsoft Entra tenant to be set as TDE protector at the database-level, by utilizing federated client identity set on the Azure SQL Database. This allows you to manage TDE with keys stored in a different tenant's Azure Key Vault or Azure Managed HSM.
 
 > [!NOTE]
 > System-assigned managed identity is not supported at the database level.
@@ -45,7 +45,7 @@ As more service providers, also known as independent software vendors (ISVs), us
 
 However, there's one significant limitation to this approach. When multiple databases are hosted on the same Azure SQL logical server, they share the server-level TDE protector. ISVs are unable to offer true customer-managed keys (CMK) capabilities to their customers. Without the ability to manage their own encryption keys, customers may be hesitant to entrust sensitive data to the ISV's service, particularly if compliance regulations require them to maintain full control over their encryption keys.
 
-With database level TDE CMK, ISVs can offer CMK capability to their customers and achieve security isolation, as each database's TDE protector can potentially be owned by the respective ISV customer in a key vault that they own. The security isolation achieved for ISV's customers is both in terms of the *key* and the *identity* used to access the key.
+With database level TDE CMK, ISVs can offer CMK capability to their customers and achieve security isolation, as each database's TDE protector can potentially be owned by the respective ISV customer in key vault or managed HSM that they own. The security isolation achieved for ISV's customers is both in terms of the *key* and the *identity* used to access the key.
 
 The diagram below summarizes the new functionality indicated above. It presents two separate Microsoft Entra tenants. The `Best Services` tenant that contains the Azure SQL logical server with two databases, `DB 1` and `DB 2`, and the `Azure Key Vault 1` with a `Key 1` accessing the database `DB 1` using `UMI 1`. Both `UMI 1` and `Key 1` represent the server level setting. By default, all databases created initially on this server inherit this setting for TDE with CMK. The `Contoso` tenant represents a client tenant that contains `Azure Key Vault 2` with a `Key 2` assessing the database `DB 2` across the tenant as part of the database level CMK cross-tenant support using `Key 2` and `UMI 2` setup for this database.  
 
@@ -94,11 +94,11 @@ Logical server is configured with serviced-managed key (SMK) for TDE. A differen
 > [!NOTE]
 > If the logical server is configured with CMK for TDE, the database configured with database level CMK can't be reverted back to server level encryption.
 >
-> Although, the revert operation is only supported if the logical server is configured with service-managed key when using TDE, a database configured with database level CMK can be restored to a server configured with CMK, provided the server has access to all the keys being used by the source database with a valid identity.
+> Although the revert operation is only supported if the logical server is configured with service-managed key when using TDE, a database configured with database level CMK can be restored to a server configured with CMK, provided the server has access to all the keys being used by the source database with a valid identity.
 
-## Key vault and managed identity requirements
+## Azure Key vault and Azure Managed HSM - managed identity requirements
 
-The same requirements for configuring Azure Key Vault (AKV) keys and managed identities, including key settings and permissions granted to the identity that apply to the server-level customer-managed key (CMK) feature also apply to the database-level CMK. For more information, see [Transparent Data Encryption (TDE) with CMK](transparent-data-encryption-byok-overview.md) and [Managed Identities with CMK](transparent-data-encryption-byok-identity.md).
+The same requirements for configuring Azure Key Vault or Azure Managed HSM keys and managed identities, including key settings and permissions granted to the identity that apply to the server-level customer-managed key (CMK) feature also apply to the database-level CMK. For more information, see [Transparent Data Encryption (TDE) with CMK](transparent-data-encryption-byok-overview.md) and [Managed Identities with CMK](transparent-data-encryption-byok-identity.md).
 
 ## Key management
 
@@ -108,15 +108,18 @@ New keys can be added and existing keys can be removed from the database using s
 
 ### Automatic key rotation
 
-Automatic key rotation is available at the database level and can be used with Azure Key Vault keys. The rotation is triggered when a new version of the key is detected, and will automatically be rotated within **24 hours**. For information on how to configure automatic key rotation using the Azure portal, PowerShell, or the Azure CLI, see [Automatic key rotation at the database level](transparent-data-encryption-byok-key-rotation.md#automatic-key-rotation-at-the-database-level).
+Automatic key rotation is available at the database level and can be used with Azure Key Vault or Azure Managed HSM keys. The rotation is triggered when a new version of the key is detected, and will automatically be rotated within **24 hours**. For information on how to configure automatic key rotation using the Azure portal, PowerShell, or the Azure CLI, see [Automatic key rotation at the database level](transparent-data-encryption-byok-key-rotation.md#automatic-key-rotation-at-the-database-level).
 
 ### Permission for key management
+Select the type of key vault you want to use.
+
+#### [Azure Key Vault](#tab/azurekeyvault)
 
 Depending on the permission model of the key vault (access policy or Azure RBAC), key vault access can be granted either by creating an access policy on the key vault, or by creating a new Azure RBAC role assignment.
 
 #### Access policy permission model
 
-In order for the database to use TDE protector stored in AKV for encryption of the DEK, the key vault administrator needs to give the following access rights to the database user-assigned managed identity using its unique Microsoft Entra identity:
+In order for the database to use TDE protector stored in Azure Key Vault for encryption of the DEK, the Azure Key Vault administrator needs to give the following access rights to the database user-assigned managed identity using its unique Microsoft Entra identity:
 
 - **get** - for retrieving the public part and properties of the key in the Azure Key Vault.
 - **wrapKey** - to be able to protect (encrypt) DEK.
@@ -124,14 +127,22 @@ In order for the database to use TDE protector stored in AKV for encryption of t
 
 #### Azure RBAC permissions model
 
-In order for the database to use the TDE protector stored in AKV for encryption of the DEK, a new Azure RBAC role assignment with the role [Key Vault Crypto Service Encryption User](/azure/key-vault/general/rbac-guide#azure-built-in-roles-for-key-vault-data-plane-operations) must be added for the database user-assigned managed identity using its unique Microsoft Entra identity.
+In order for the database to use the TDE protector stored in Azure Key Vault for encryption of the DEK, a new Azure RBAC role assignment with the role [Key Vault Crypto Service Encryption User](/azure/key-vault/general/rbac-guide#azure-built-in-roles-for-key-vault-data-plane-operations) must be added for the database user-assigned managed identity using its unique Microsoft Entra identity.
+
+#### [Azure Managed HSM](#tab/azuremanagedhsm)
+
+In order for the database to use the TDE protector stored in Azure Managed HSM for encryption of the DEK, the **Managed HSM Crypto User** needs to give access rights to the database user-assigned managed identity using its unique Microsoft Entra identity. The Managed HSM Administrator role doesn't give permissions to create a key. The server identity needs the Managed HSM Crypto User or Managed HSM Crypto Service Encryption User role to perform **wrap** and **unwrap** operations. 
+
+For more information on the Local RBAC built-in roles and permitted operations for Azure Managed HSM, see [Local RBAC built-in roles for Managed HSM](/azure/key-vault/managed-hsm/built-in-roles).
+
+* * *
 
 ### Cross-tenant customer-managed keys
 
 [Cross-tenant customer-managed keys with transparent data encryption](transparent-data-encryption-byok-cross-tenant.md) describes how to set up a federated client ID for server level CMK. Similar setup needs to be done for database level CMK and the federated client ID must be added as part of the [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) or [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) API requests.
 
 > [!NOTE]
-> If the multi-tenant application hasn't been added to the key vault access policy with the required permissions (*Get, Wrap Key, Unwrap Key*), using an application for identity federation in the Azure portal will show an error. Make sure that the permissions are configured correctly before configuring the federated client identity.
+> If the multitenant application hasn't been added to the key vault or managed HSM with the required permissions (*Get, Wrap Key, Unwrap Key*), using an application for identity federation in the Azure portal will show an error. Make sure that the permissions are configured correctly before configuring the federated client identity.
 
 A database configured with database level CMK can be reverted to server level encryption if the logical server is configured with a service-managed key using
 [Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevert](/powershell/module/az.sql/invoke-azsqldatabasetransparentdataencryptionprotectorrevert).
@@ -139,7 +150,7 @@ A database configured with database level CMK can be reverted to server level en
 In case of an inaccessible TDE protector as described in [Transparent data encryption (TDE) with CMK](transparent-data-encryption-byok-overview.md), once the key access has been corrected, [Invoke-AzSqlDatabaseTransparentDataEncryptionProtectorRevalidation](/powershell/module/az.sql/invoke-azsqldatabasetransparentdataencryptionprotectorrevalidation) can be used to make the database accessible.
 
 > [!NOTE]
-> [Identity and key management for TDE with database level customer-managed keys](transparent-data-encryption-byok-database-level-basic-actions.md) describes the identity and key management operations for database level CMK in detail, along with Powershell, the Azure CLI, and REST API examples.
+> [Identity and key management for TDE with database level customer-managed keys](transparent-data-encryption-byok-database-level-basic-actions.md) describes the identity and key management operations for database level CMK in detail, along with PowerShell, the Azure CLI, and REST API examples.
 
 ### Additional considerations
 
@@ -181,7 +192,7 @@ New databases can be configured with database level CMK during creation and exis
 
 ## Geo-replication and high availability
 
-In both [active geo-replication](active-geo-replication-overview.md) and [failover groups](failover-group-sql-db.md) scenarios, the primary and secondary databases involved can be linked either to the same key vault (in any region), or to separate key vaults. If separate key vaults are linked to the primary and secondary servers, the customer is responsible for keeping the key material across the key vaults consistent, so that geo-secondary is in sync and can take over using the same key from its linked key vault if the primary becomes inaccessible due to an outage in the region and a failover is triggered. Up to four secondaries can be configured, and chaining (secondaries of secondaries) isn't supported.
+In both [active geo-replication](active-geo-replication-overview.md) and [failover groups](failover-group-sql-db.md) scenarios, the primary and secondary databases involved can be linked either to the same key vault or managed HSM (in any region), or to separate key vaults or managed HSMs. If separate key vaults or managed HSMs are linked to the primary and secondary servers, the customer is responsible for keeping the key material across the key vaults or managed HSMs consistent, so that geo-secondary is in sync and can take over using the same key from its linked key vault or managed HSM if the primary becomes inaccessible due to an outage in the region and a failover is triggered. Up to four secondaries can be configured, and chaining (secondaries of secondaries) isn't supported.
 
 To establish active geo-replication for a database that has been configured with database level CMK, a secondary replica must be created with a valid user-assigned managed identity and a list of current keys being used by the primary database. The list of current keys can be retrieved from the primary database using necessary filters and query parameters, or using PowerShell and the Azure CLI. The steps needed to set up a geo-replica of such a database are:
 
@@ -197,14 +208,14 @@ To establish active geo-replication for a database that has been configured with
 >
 > Databases configured with database level CMK do not support automated secondary creation when added to a failover group.
 
-For more information, [Configure geo replication and backup restore for transparent data encryption with database level customer-managed keys](transparent-data-encryption-byok-database-level-geo-replication-restore.md) describes how to setup geo replication and failover groups using REST APIs, PowerShell, and the Azure CLI.
+For more information, [Configure geo replication and backup restore for transparent data encryption with database level customer-managed keys](transparent-data-encryption-byok-database-level-geo-replication-restore.md) describes how to set up geo replication and failover groups using REST APIs, PowerShell, and the Azure CLI.
 
 > [!NOTE]
 > All the best practices regarding geo replication and high availability highlighted in [**transparent data encryption (TDE) with CMK**](transparent-data-encryption-byok-overview.md) for server level CMK apply to database level CMK.
 
 ## Backup and restore for databases using TDE with customer-managed key at the database level
 
-Once a database is encrypted with TDE using a key from Azure Key Vault, any newly generated backups are also encrypted with the same TDE protector. When the TDE protector is changed, old backups of the database *aren't updated* to use the latest TDE protector. To restore a backup encrypted with a TDE protector from Azure Key Vault configured at the database level, make sure that the key material is provided to the target database. We recommend that you keep all old versions of the TDE protector in a key vault, so that database backups can be restored.
+Once a database is encrypted with TDE using a key from Azure Key Vault or Azure Managed HSM, any newly generated backups are also encrypted with the same TDE protector. When the TDE protector is changed, old backups of the database *aren't updated* to use the latest TDE protector. To restore a backup encrypted with a TDE protector from Azure Key Vault or Azure Managed HSM configured at the database level, make sure that the key material is provided to the target database. We recommend that you keep all old versions of the TDE protector in key vault or managed HSM, so that database backups can be restored.
 
 > [!IMPORTANT]
 > Only one TDE protector can be set for a database. However, multiple additional keys can be passed to a database during restore without marking them a TDE protector. These keys aren't used for protecting DEK, but can be used during restore from a backup, if backup file is encrypted with the key with the corresponding thumbprint.
@@ -240,9 +251,9 @@ The following steps are needed for a geo restore of a database configured with d
 > It's recommended that all the keys used by the database are preserved to restore the database. It's also recommended to pass all these keys to the restore target.
 
 > [!NOTE]
-> long-term backup retention (LTR) backups don't provide the list of keys used by the backup. To restore an LTR backup, all the keys used by the source database must be passed to the LTR restore target.
+> Long-term backup retention (LTR) backups don't provide the list of keys used by the backup. To restore an LTR backup, all the keys used by the source database must be passed to the LTR restore target.
 >
-> To learn more about backup recovery for SQL Database with database level CMK with examples using Powershell, the Azure CLI, and REST APIs, see [Configure geo replication and backup restore for transparent data encryption with database level customer-managed keys](transparent-data-encryption-byok-database-level-geo-replication-restore.md).
+> To learn more about backup recovery for SQL Database with database level CMK with examples using PowerShell, the Azure CLI, and REST APIs, see [Configure geo replication and backup restore for transparent data encryption with database level customer-managed keys](transparent-data-encryption-byok-database-level-geo-replication-restore.md).
 
 ## Limitations
 

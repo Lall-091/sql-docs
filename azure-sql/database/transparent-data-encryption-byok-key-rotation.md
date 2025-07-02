@@ -5,7 +5,7 @@ description: Learn how to rotate the Transparent data encryption (TDE) protector
 author: Pietervanhove
 ms.author: pivanho
 ms.reviewer: wiassaf, vanto, mathoma
-ms.date: 07/03/2024
+ms.date: 06/25/2025
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: how-to
@@ -25,18 +25,15 @@ This article discusses both automated and manual methods to rotate the TDE prote
 
 ## Important considerations when rotating the TDE protector
 
-- When the TDE protector is changed/rotated, old backups of the database, including backed-up log files, aren't updated to use the latest TDE protector. To restore a backup encrypted with a TDE protector from Key Vault, make sure that the key material is available to the target server. Therefore, we recommend that you keep all the old versions of the TDE protector in Azure Key Vault (AKV), so database backups can be restored.
-- Even when switching from customer managed key (CMK) to service-managed key, keep all previously used keys in AKV. This ensures database backups, including backed-up log files, can be restored with the TDE protectors stored in AKV.
+- When the TDE protector is changed/rotated, old backups of the database, including backed-up log files, aren't updated to use the latest TDE protector. To restore a backup encrypted with a TDE protector from Azure Key Vault or Azure Managed HSM, make sure that the key material is available to the target server. Therefore, we recommend that you keep all the old versions of the TDE protector in Azure Key Vault or Azure Managed HSM, so database backups can be restored.
+- Even when switching from customer managed key (CMK) to service-managed key, keep all previously used keys in Azure Key Vault or Azure Managed HSM. This ensures database backups, including backed-up log files, can be restored with the TDE protectors stored in Azure Key Vault or Azure Managed HSM.
 - Apart from old backups, transaction log files might also require access to the older TDE protector. To determine if there are any remaining logs that still require the older key, after performing key rotation, use the [sys.dm_db_log_info](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-log-info-transact-sql) dynamic management view (DMV). This DMV returns information on the virtual log file (VLF) of the transaction log along with its encryption key thumbprint of the VLF.
-- Older keys need to be kept in AKV and available to the server based on the backup retention period configured as back of backup retention policies on the database. This helps ensure any Long Term Retention (LTR) backups on the server can still be restored using the older keys.
+- Older keys need to be kept in Azure Key Vault or Azure Managed HSM and available to the server based on the backup retention period configured as back of backup retention policies on the database. This helps ensure any Long Term Retention (LTR) backups on the server can still be restored using the older keys.
 
 > [!NOTE]
 > A paused dedicated SQL pool in Azure Synapse Analytics must be resumed before key rotations.
 >
 > This article applies to Azure SQL Database, Azure SQL Managed Instance, and Azure Synapse Analytics dedicated SQL pools (formerly SQL DW). For documentation on transparent data encryption (TDE) for dedicated SQL pools inside Synapse workspaces, see [Azure Synapse Analytics encryption](/azure/synapse-analytics/security/workspaces-encryption).
-
-> [!IMPORTANT]
-> Do not delete previous versions of the key after a rollover. When keys are rolled over, some data is still encrypted with the previous keys, such as older database backups, backed-up log files and transaction log files.
 
 ## Prerequisites
 
@@ -44,7 +41,7 @@ This article discusses both automated and manual methods to rotate the TDE prote
 - You must have Azure PowerShell installed and running.
 
 > [!TIP]
-> Recommended but optional - create the key material for the TDE protector in a hardware security module (HSM) or local key store first, and import the key material to Azure Key Vault. Follow the [instructions for using a hardware security module (HSM) and Key Vault](/azure/key-vault/general/overview) to learn more.
+> Recommended but optional - create the key material for the TDE protector in a hardware security module (HSM) or local key store first, and import the key material to Azure Key Vault. Follow the [instructions for using a hardware security module (HSM) and Azure Key Vault](/azure/key-vault/general/overview) to learn more.
 
 # [Portal](#tab/azure-portal)
 
@@ -84,7 +81,7 @@ Using the [Azure portal](https://portal.azure.com):
 
 For Az PowerShell module installation instructions, see [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
-To enable automatic rotation for the TDE protector using PowerShell, see the following script. The `<keyVaultKeyId>` can be [retrieved from Key Vault](/azure/key-vault/keys/quick-create-portal#retrieve-a-key-from-key-vault).
+To enable automatic rotation for the TDE protector using PowerShell, see the following script. The `<keyVaultKeyId>` can be [retrieved from Azure Key Vault](/azure/key-vault/keys/quick-create-portal#retrieve-a-key-from-key-vault).
 
 **Azure SQL Database**
 
@@ -193,19 +190,19 @@ When the key is rotated on the primary server, it's automatically transferred to
 
 # [PowerShell](#tab/azure-powershell-geo)
 
-The `<keyVaultKeyId>` can be [retrieved from Key Vault](/azure/key-vault/keys/quick-create-portal#retrieve-a-key-from-key-vault).
+The `<keyVaultKeyId>` can be [retrieved from Azure Key Vault](/azure/key-vault/keys/quick-create-portal#retrieve-a-key-from-key-vault).
 
 1. Use the [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) command to add a new key to the **secondary** server.
 
    ```powershell
-   # add the key from Key Vault to the secondary server
+   # add the key from Azure Key Vault to the secondary server
    Add-AzSqlServerKeyVaultKey -KeyId <keyVaultKeyId> -ServerName <logicalServerName> -ResourceGroup <SQLDatabaseResourceGroupName>
    ```
 
 1. Add the same key in the first step to the **primary** server.
 
    ```powershell
-   # add the key from Key Vault to the primary server
+   # add the key from Azure Key Vault to the primary server
    Add-AzSqlServerKeyVaultKey -KeyId <keyVaultKeyId> -ServerName <logicalServerName> -ResourceGroup <SQLDatabaseResourceGroupName>
    ```
 
@@ -217,7 +214,7 @@ The `<keyVaultKeyId>` can be [retrieved from Key Vault](/azure/key-vault/keys/qu
     -AutoRotationEnabled $true
    ```
 
-1. Rotate the key vault key in the Key Vault using the command [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) and [Set-AzKeyVaultKeyRotationPolicy](/powershell/module/az.keyvault/set-azkeyvaultkeyrotationpolicy).
+1. Rotate the Azure Key Vault key in the Azure Key Vault using the command [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) and [Set-AzKeyVaultKeyRotationPolicy](/powershell/module/az.keyvault/set-azkeyvaultkeyrotationpolicy).
 
    ```powershell
    Get-AzKeyVaultKey -VaultName <keyVaultName> -Name <keyVaultKeyName> | Set-AzKeyVaultKeyRotationPolicy -KeyRotationLifetimeAction @{Action = "Rotate"; TimeBeforeExpiry = "P18M"} 
@@ -294,7 +291,7 @@ Using the Azure portal:
 Use the [Add-AzKeyVaultKey](/powershell/module/az.keyvault/Add-AzKeyVaultKey) command to add a new key to the key vault.
 
 ```powershell
-# add a new key to Key Vault
+# add a new key to Azure Key Vault
 Add-AzKeyVaultKey -VaultName <keyVaultName> -Name <keyVaultKeyName> -Destination <hardwareOrSoftware>
 ```
 
@@ -305,7 +302,7 @@ For **Azure SQL Database**, use:
 
 ```powershell
 
-# add the new key from Key Vault to the server
+# add the new key from Azure Key Vault to the server
 Add-AzSqlServerKeyVaultKey -KeyId <keyVaultKeyId> -ServerName <logicalServerName> -ResourceGroup <SQLDatabaseResourceGroupName>
   
 # set the key as the TDE protector for all resources under the server
@@ -319,7 +316,7 @@ For **Azure SQL Managed Instance**, use:
 - [Set-AzSqlInstanceTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector)
 
 ```powershell
-# add the new key from Key Vault to the managed instance
+# add the new key from Azure Key Vault to the managed instance
 Add-AzSqlInstanceKeyVaultKey -KeyId <keyVaultKeyId> -InstanceName <ManagedInstanceName> -ResourceGroup <ManagedInstanceResourceGroupName>
   
 # set the key as the TDE protector for all resources under the managed instance
@@ -332,7 +329,7 @@ Set-AzSqlInstanceTransparentDataEncryptionProtector -Type AzureKeyVault -KeyId <
 Use the [az keyvault key create](/cli/azure/keyvault/key#az-keyvault-key-create) command to add a new key to the key vault.
 
 ```azurecli
-# add a new key to Key Vault
+# add a new key to Azure Key Vault
 az keyvault key create --name <keyVaultKeyName> --vault-name <keyVaultName> --protection <hsmOrSoftware>
 ```
 
@@ -342,7 +339,7 @@ For **Azure SQL Database**, use:
 - [az sql server tde-key set](/cli/azure/sql/server/tde-key#az-sql-server-tde-key-set)
 
 ```azurecli
-# add the new key from Key Vault to the server
+# add the new key from Azure Key Vault to the server
 az sql server key create --kid <keyVaultKeyId> --resource-group <SQLDatabaseResourceGroupName> --server <logicalServerName>
 
 # set the key as the TDE protector for all resources under the server
@@ -355,7 +352,7 @@ For **Azure SQL Managed Instance**, use:
 - [az sql mi tde-key set](/cli/azure/sql/mi/tde-key#az-sql-mi-tde-key-set)
 
 ```azurecli
-# add the new key from Key Vault to the managed instance
+# add the new key from Azure Key Vault to the managed instance
 az sql mi key create --kid <keyVaultKeyId> --resource-group <Managed InstanceResourceGroupName> --managed-instance <ManagedInstanceName>
 
 # set the key as the TDE protector for all resources under the managed instance
@@ -449,4 +446,4 @@ The following examples use [az sql mi tde-key set](/cli/azure/sql/mi/tde-key#az-
 
 - If there's a security risk, learn how to remove a potentially compromised TDE protector: [Remove a potentially compromised key](transparent-data-encryption-byok-remove-tde-protector.md).
 
-- Get started with Azure Key Vault integration and Bring Your Own Key support for TDE: [Turn on TDE using your own key from Key Vault using PowerShell](transparent-data-encryption-byok-configure.md).
+- Get started with Azure Key Vault integration and Bring Your Own Key support for TDE: [Turn on TDE using your own key from Azure Key Vault using PowerShell](transparent-data-encryption-byok-configure.md).
