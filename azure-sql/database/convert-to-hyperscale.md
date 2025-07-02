@@ -4,7 +4,7 @@ description: How to convert an Azure SQL Database to the Hyperscale tier.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: dfurman, blakhani
-ms.date: 07/01/2025
+ms.date: 07/02/2025
 ms.service: azure-sql-database
 ms.topic: how-to
 ms.custom:
