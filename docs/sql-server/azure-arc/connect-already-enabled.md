@@ -1,10 +1,10 @@
 ---
-title: Connect SQL Server on a server already enabled by Azure Arc
+title: Connect SQL Server on a Server Already Enabled by Azure Arc
 description: Connect an instance of SQL Server to Azure Arc on a server that is already enabled by Azure Arc. Allows you to manage SQL Server centrally, as an Arc-enabled resource.
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, maghan
-ms.date: 03/08/2024
+ms.date: 06/30/2025
 ms.topic: how-to
 ---
 
@@ -12,15 +12,19 @@ ms.topic: how-to
 
 [!INCLUDE [sqlserver](../../includes/applies-to-version/sqlserver.md)]
 
+This article explains how to connect your SQL Server instance to Azure Arc on an Arc-enabled server. For example, you need to use this method to connect a SQL Server instance to Azure Arc at this time in US Government Virginia region, because automatic connection isn't currently available in that region. For this case, follow the steps under [Connect](#connect).
+
+If the physical or virtual server isn't connected to Azure yet, follow the steps in [Connect your SQL Server to Azure Arc](connect.md).
+
 [!INCLUDE [automatic](includes/if-manual.md)]
 
-Before you proceed, complete the [Prerequisites](prerequisites.md).
+## Prerequisites
 
-This article explains how to connect your SQL Server instance to Azure Arc on an Arc-enabled server. If the physical or virtual server isn't connected to Azure yet, follow the steps in [Connect your SQL Server to Azure Arc](connect.md).
+Verify that `Microsoft.AzureArcData` is registered in each subscription. Review instructions at [Register resource providers](prerequisites.md#register-resource-providers).
 
-If the machine with SQL Server is already connected to Azure Arc, to connect the SQL Server instances, install *Azure extension for SQL Server*. The extension is in the extension tab of "Server -Azure Arc" resource as **Azure Extension for SQL Server**.
+Review all of the prerequisites at [Prerequisites - SQL Server enabled by Azure Arc](prerequisites.md).
 
-For example, you need to use this method to connect a SQL Server instance to Azure Arc at this time in US Government Virginia region, because automatic connection is not currently available in that region. For this case, follow the steps under [Connect](#connect).
+If the machine with SQL Server is already connected to Azure Arc, to connect the SQL Server instances, install *Azure extension for SQL Server*. The extension is in the extension tab of "Server - Azure Arc" resource as **Azure Extension for SQL Server**.
 
 > [!IMPORTANT]  
 > The Azure resource with type `SQL Server - Azure Arc` representing the SQL Server instance installed on the machine uses the same region and resource group as the Azure resources for Arc-enabled servers.
@@ -35,9 +39,9 @@ To install the Azure extension for SQL Server, use the following steps:
 1. Search for the connected server with the SQL Server instance that you want to connect to Azure.
 1. Under **Extensions**, select **+ Add**.
 1. Select `Azure extension for SQL Server` and select **Next**.
-1. Specify the SQL Server edition and license type you are using on this machine. Some Arc-enabled SQL Server features are only available for SQL Server instances with Software Assurance (Paid) or with Azure pay-as-you-go. For more information, review [Manage SQL Server license type](manage-configuration.md).
+1. Specify the SQL Server edition and license type you're using on this machine. Some Arc-enabled SQL Server features are only available for SQL Server instances with Software Assurance (Paid) or with Azure pay-as-you-go. For more information, review [Configure SQL Server enabled by Azure Arc](manage-configuration.md).
 1. Specify the SQL Server instance(s) you want to exclude from registering (if you have multiple instances to skip, separate them by spaces) and select **Review + Create**.
-   :::image type="content" source="media/join/license-type-in-extension.png" alt-text="Screenshot for license type and exclude instances.":::
+   :::image type="content" source="media/join/license-type-in-extension.png" alt-text="Screenshot for license type and exclude instances." lightbox="media/join/license-type-in-extension.png":::
 1. Select **Create**.
 
 ### [PowerShell](#tab/powershell)
@@ -83,10 +87,10 @@ The extension runs continuously to detect changes in the SQL Server configuratio
 
 Go to **Azure Arc > SQL Server** and open the newly registered Arc-enabled SQL Server resource to validate.
 
-:::image type="content" source="media/join/validate-sql-server-azure-arc.png" alt-text="Screenshot of validating a connected SQL Server.":::
+:::image type="content" source="media/join/validate-sql-server-azure-arc.png" alt-text="Screenshot of validating a connected SQL Server." lightbox="media/join/validate-sql-server-azure-arc.png":::
 
-## Next steps
+## Related content
 
-- [Configure advanced data security for your SQL Server instance](configure-advanced-data-security.md)
-- [Configure best practices assessment on a [!INCLUDE [ssazurearc](../../includes/ssazurearc.md)] instance](assess.md)
+- [Protect SQL Server with Microsoft Defender for Cloud](configure-advanced-data-security.md)
+- [Configure best practices assessment for SQL Server enabled by Azure Arc](assess.md)
 - [Known issues: SQL Server enabled by Azure Arc](known-issues.md)
