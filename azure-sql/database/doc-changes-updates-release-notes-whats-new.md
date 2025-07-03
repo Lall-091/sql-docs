@@ -66,6 +66,7 @@ The following table lists features of Azure SQL Database that have been made gen
 
 | Feature | GA Month | Details |
 | --- | --- | --- |
+| **Audit re-architecture** | July 2025 | Increased availability and reliability of server audits through a re-architecture of auditing in Azure SQL Database that is closely aligned with SQL Server and Azure SQL Managed Instance. For more information, see [Auditing](auditing-overview.md#enhancements-to-performance-availability-and-reliability-in-server-auditing-for-azure-sql-database-july-2025-ga).|
 | **Hyperscale increased log generation rate** | May 2025 | The transaction log generation rate in Azure SQL Database Hyperscale single databases has been increased from 100 MiB/s to 150 MiB/s for premium-series and premium-series memory optimized hardware. For more information, read [Blog: Enhancements to Azure SQL Database Hyperscale](https://aka.ms/HSenhancements).|
 | **Hyperscale continuous priming** | May 2025 | [Continuous priming](service-tier-hyperscale.md#continuous-priming) optimizes Hyperscale performance during failovers by priming high availability secondary compute replicas. Continuous priming is now generally available. For more information, read [Blog: Enhancements to Azure SQL Database Hyperscale](https://aka.ms/HSenhancements). |
 | **JSON native data type** | May 2025 | The [**json** data type and JSON aggregate functions](/sql/t-sql/data-types/json-data-type?view=azuresqldb-current&preserve-view=true) provide new capabilities for handling semistructured data in Azure SQL Database. |
@@ -102,6 +103,7 @@ Learn about significant changes to the Azure SQL Database documentation. For pre
 | Changes | Details |
 | --- | --- |
 | **Convert to Hyperscale with geo-replicas (preview)** |The ability to [convert a geo-replicated database non-Hyperscale database to Hyperscale](convert-to-hyperscale.md) using T-SQL, REST API, PowerShell, or Azure CLI is currently a preview feature. For more information, see [Blog: Hyperscale conversion support for geo-replicas](https://aka.ms/hs-conversion-geodr-preview). |
+| **Audit re-architecture GA** | Enhancements to performance, availability, and reliability in server auditing for Azure SQL Database. For more information, see [Auditing](auditing-overview.md#enhancements-to-performance-availability-and-reliability-in-server-auditing-for-azure-sql-database-july-2025-ga). |
 
 ### June 2025
 

@@ -5,7 +5,7 @@ description: SQL Auditing for Azure SQL Database and Azure Synapse Analytics tra
 author: sravanisaluru
 ms.author: srsaluru
 ms.reviewer: wiassaf, vanto, mathoma
-ms.date: 03/12/2025
+ms.date: 07/02/2025
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: conceptual
@@ -39,13 +39,13 @@ You can use SQL Database auditing to:
 > [!IMPORTANT]  
 > Auditing for Azure SQL Database, Azure Synapse Analytics SQL pools, and Azure SQL Managed Instance is optimized for availability and performance of the database or instance being audited. During periods of very high activity or high network load, the auditing feature might allow transactions to proceed without recording all of the events marked for auditing.
 
-## Enhancements to performance, availability, and reliability in server auditing for Azure SQL Database (March 2025)
+## Enhancements to performance, availability, and reliability in server auditing for Azure SQL Database (July 2025 GA)
 
-- Re-architected major portions of SQL Auditing resulting in increased availability and reliability of server audits. As an added benefit, there's closer feature alignment with SQL Server and Azure SQL Managed Instance. Database auditing remains unchanged. 
+- Re-architected major portions of SQL Auditing resulting in increased availability and reliability of server audits. As an added benefit, there's closer feature alignment with SQL Server and Azure SQL Managed Instance. Database auditing remains unchanged.
 - The previous design of auditing triggers a database level audit and executes one audit session for each database in the server. The new architecture of auditing creates one extended event session at the server level that captures audit events for all databases.
 - The new auditing design optimizes memory and CPU, and is consistent with how auditing works in SQL Server and Azure SQL Managed Instance.
 
-### Changes from the re-architecture of server auditing 
+### Changes from the re-architecture of server auditing
 
 - Folder structure change for storage account:
   - One of the primary changes involves a folder structure change for audit logs stored in storage account containers. Previously, server audit logs were written to separate folders; one for each database, with the database name serving as the folder name. With the new update, all server audit logs will be consolidated into a single folder labeled `master`. This behavior is the same as Azure SQL Managed Instance and SQL Server.
@@ -53,7 +53,7 @@ You can use SQL Database auditing to:
   - Read-only database replicas previously had their logs stored in a read-only folder. Those logs will now be written into the `master` folder. You can retrieve these logs by filtering on the new column `is_secondary_replica_true`.
 - Permissions required to view Audit logs:
   - Only **Server admin** principals can view audit logs stored in the `master` folder.
-    
+
 ## Auditing limitations
 
 - Enabling auditing on a paused **Azure Synapse SQL pool** isn't supported. To enable auditing, resume the **Synapse SQL pool**.
@@ -84,5 +84,4 @@ You can use SQL Database auditing to:
 - [What's New in Azure SQL Auditing](/shows/data-exposed/server-audit-redesign-for-azure-sql-database-data-exposed)
 - [Get started with Azure SQL Managed Instance auditing](../managed-instance/auditing-configure.md)
 - [Auditing for SQL Server](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
-
 - [Set up Auditing for Azure SQL Database and Azure Synapse Analytics](auditing-setup.md)
