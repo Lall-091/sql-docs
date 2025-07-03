@@ -5,7 +5,7 @@ description: This article provides guidance joining a SQL Server Linux host mach
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: vanto, randolphwest
-ms.date: 01/21/2025
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -56,7 +56,7 @@ To ensure proper domain name resolution, it's crucial to update the `/etc/resolv
 | **RHEL 8** | [Manually configuring the /etc/resolv.conf](https://docs.redhat.com/documentation/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/manually-configuring-the-etc-resolv-conf-file_configuring-and-managing-networking#manually-configuring-the-etc-resolv-conf-file_configuring-and-managing-networking) |
 | **RHEL 9** | [Manually configuring the /etc/resolv.conf](https://docs.redhat.com/documentation/red_hat_enterprise_linux/9/html/configuring_and_managing_networking/manually-configuring-the-etc-resolv-conf-file_configuring-and-managing-networking#manually-configuring-the-etc-resolv-conf-file_configuring-and-managing-networking) |
 | **SLES 15** | [NETCONFIG_DNS_STATIC_SEARCHLIST and NETCONFIG_DNS_STATIC_SERVERS settings](https://documentation.suse.com/sles/15-SP4/html/SLES-all/cha-network.html#sec-network-manconf-files-resolv) |
-| **Ubuntu** | [Name Resolution section](https://ubuntu.com/server/docs/configuring-networks) |
+| **Ubuntu** | [Name Resolution section](https://documentation.ubuntu.com/server/configuring-networks) |
 
 The objective is to configure `/etc/resolv.conf` correctly for your distribution to facilitate domain name resolution. For instance, if your domain is contoso.com and the Active Directory IP address is 10.0.0.4, the `/etc/resolv.conf` should be set up accordingly to ensure successful name resolution from the host.
 
@@ -268,7 +268,7 @@ For the most current instructions, refer to the official documentation provided 
 | **RHEL 8** | [Discovering and joining an AD Domain using SSSD](https://docs.redhat.com/documentation/red_hat_enterprise_linux/8/html-single/integrating_rhel_systems_directly_with_windows_active_directory/index#connecting-rhel-systems-directly-to-ad-using-sssd_integrating-rhel-systems-directly-with-active-directory) |
 | **RHEL 9** | [Discovering and joining an AD Domain using SSSD](https://docs.redhat.com/documentation/red_hat_enterprise_linux/9/html-single/integrating_rhel_systems_directly_with_windows_active_directory/index#overview-of-direct-integration-using-sssd_connecting-rhel-systems-directly-to-ad-using-sssd) |
 | **SLES** | [Joining Active Directory using Windows domain membership](https://documentation.suse.com/sles/15-SP6/html/SLES-all/cha-security-ad.html#sec-security-ad-winbind) |
-| **Ubuntu** | [How to set up SSSD with Active Directory](https://ubuntu.com/server/docs/how-to-set-up-sssd-with-active-directory) |
+| **Ubuntu** | [How to set up SSSD with Active Directory](https://documentation.ubuntu.com/server/how-to-set-up-sssd-with-active-directory) |
 
 Use the following steps to join a [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] host to an Active Directory domain:
 

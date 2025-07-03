@@ -3,7 +3,7 @@ title: Configure Power BI Report Server Catalog Databases for SQL Server on Linu
 description: Learn how to configure SQL Server on Linux to host the Power BI Report Server catalog database.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/21/2025
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -58,17 +58,17 @@ Here are the minimum required SPNs for this scenario:
 
 - Using an Administrative command prompt, create the SPN for the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux service account. This instance is using the default port of 1433:
 
-   ```console
-   setspn -S MSSQLSvc/rhel8test:1433 CORPNET\linuxservice
-   setspn -S MSSQLSvc/rhel8test.CORPNET.CONTOSO.COM:1433 CORPNET\linuxservice
-   ```
+  ```console
+  setspn -S MSSQLSvc/rhel8test:1433 CORPNET\linuxservice
+  setspn -S MSSQLSvc/rhel8test.CORPNET.CONTOSO.COM:1433 CORPNET\linuxservice
+  ```
 
 - The next two SPNs are for the Power BI Report Server service account.
 
-   ```console
-   setspn -S HTTP/WIN22.CORPNET.CONTOSO.COM CORPNET\pbirsservice
-   setspn -S HTTP/WIN22 CORPNET\pbirsservice
-   ```
+  ```console
+  setspn -S HTTP/WIN22.CORPNET.CONTOSO.COM CORPNET\pbirsservice
+  setspn -S HTTP/WIN22 CORPNET\pbirsservice
+  ```
 
 To handle the Kerberos requirements for forwarding Kerberos tickets, when operating within a constrained delegation implementation, we configure delegation using Microsoft's extension to the MIT Kerberos standard, as specified in [RFC 4120](https://www.rfc-editor.org/rfc/rfc4120.txt), and use the [Service for User to Proxy](/openspecs/windows_protocols/ms-sfu/bde93b0e-f3c9-4ddf-9f44-e1453be7af5a) (S4U2proxy). This mechanism allows the PBIRS service and [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] service to obtain service tickets to other specified services on behalf of a user.
 

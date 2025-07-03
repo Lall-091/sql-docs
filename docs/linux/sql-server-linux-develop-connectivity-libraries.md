@@ -3,7 +3,7 @@ title: Connectivity Libraries and Frameworks
 description: Get the connectivity drivers for client apps to connect to Azure SQL, Microsoft SQL Server, running on-premises, in the cloud, on Linux or Windows, or in containers.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/21/2025
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -14,7 +14,7 @@ ms.custom:
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
-Check out the [Getting Started guides](../connect/sql-data-developer.md) to quickly get started with programming languages such as C#, Java, Node.js, PHP, and Python and build an app using [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux, Windows, or Docker on macOS.
+Check out [SQL Data Developer](../connect/sql-data-developer.md) to quickly get started with programming languages such as C#, Java, Node.js, PHP, and Python and build an app using [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux, Windows, or Docker on macOS.
 
 The following table lists connectivity libraries or *drivers* that client applications can use from various languages to connect to and use Microsoft [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] running on-premises or in the cloud, on Linux, Windows, or Docker, and also to Azure SQL Database and Azure Synapse Analytics.
 
@@ -35,7 +35,7 @@ The following table lists a few examples of Object Relational Mapping (ORM) fram
 | C# | Windows, Linux, macOS | [Entity Framework](/ef)<br />[Entity Framework Core](/ef/core/index) |
 | Java | Windows, Linux, macOS | [Hibernate ORM](https://hibernate.org/orm) |
 | PHP | Windows, Linux | [Laravel (Eloquent)](https://laravel.com/docs/5.0/eloquent) |
-| Node.js | Windows, Linux, macOS | [Sequelize ORM](http://sequelize.org/) |
+| Node.js | Windows, Linux, macOS | [Sequelize ORM](https://sequelize.org) |
 | Python | Windows, Linux, macOS | [Django](https://www.djangoproject.com/) |
 | Ruby | Windows, Linux, macOS | [Ruby on Rails](https://rubyonrails.org/) |
 

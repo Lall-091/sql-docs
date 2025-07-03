@@ -5,7 +5,7 @@ description: Learn how to configure SQL Server replication on Linux. Configure t
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 11/18/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -35,30 +35,30 @@ Before configuring publishers, distributors, and subscribers, you need to comple
 
 1. Enable SQL Server Agent to use replication agents. On all Linux servers, run the following commands in the terminal.
 
-  ```bash
-  sudo /opt/mssql/bin/mssql-conf set sqlagent.enabled true
-  sudo systemctl restart mssql-server
-  ```
+   ```bash
+   sudo /opt/mssql/bin/mssql-conf set sqlagent.enabled true
+   sudo systemctl restart mssql-server
+   ```
 
 1. Configure the SQL Server instance for replication. To configure the SQL Server instance for replication, run `sys.sp_MSrepl_createdatatypemappings` on all instances participating in replication.
 
-  ```sql
-  USE msdb;
-  GO
+   ```sql
+   USE msdb;
+   GO
 
-  EXECUTE sys.sp_MSrepl_createdatatypemappings;
-  GO
-  ```
+   EXECUTE sys.sp_MSrepl_createdatatypemappings;
+   GO
+   ```
 
 1. Create a snapshot folder. The SQL Server agents require a snapshot folder to read/write to. Create the snapshot folder on the distributor.
 
-  To create the snapshot folder, and grant access to `mssql` user, run the following command:
+   To create the snapshot folder, and grant access to `mssql` user, run the following command:
 
-  ```bash
-  sudo mkdir /var/opt/mssql/data/ReplData/
-  sudo chown mssql /var/opt/mssql/data/ReplData/
-  sudo chgrp mssql /var/opt/mssql/data/ReplData/
-  ```
+   ```bash
+   sudo mkdir /var/opt/mssql/data/ReplData/
+   sudo chown mssql /var/opt/mssql/data/ReplData/
+   sudo chgrp mssql /var/opt/mssql/data/ReplData/
+   ```
 
 ## Configure and monitor replication with SQL Server Management Studio (SSMS)
 

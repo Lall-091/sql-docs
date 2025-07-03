@@ -4,7 +4,7 @@ description: Learn how to deploy SQL Server on Linux to several managed nodes us
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh
-ms.date: 01/21/2025
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: quickstart
@@ -25,9 +25,9 @@ This quickstart takes you through the steps to automate a SQL Server on Linux de
 
 - An Azure subscription. If you don't have an Azure subscription, you can create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount?WT.mc_id=A261C142F).
 
-- Create a new [resource group](/cli/azure/manage-azure-groups-azure-cli#create-a-resource-group) using Azure CLI, which contains three Azure Virtual Machines (VMs):
+- Create a new [resource group](/cli/azure/manage-azure-groups-azure-cli#create-a-resource-group) using Azure CLI, which contains three Azure Virtual Machines:
 
-  - [Create an Azure VM](/azure/virtual-machines/linux/create-cli-complete), running Red Hat Enterprise Linux (RHEL) 8.5 or higher. This VM becomes the *controller node*.
+  - [Create an Azure VM](/azure/virtual-machines/linux/create-cli-complete), running Red Hat Enterprise Linux (RHEL) 8.5 or higher. This virtual machine (VM) becomes the *controller node*.
 
   - [Create an Azure VM](/azure/virtual-machines/linux/create-cli-complete), running RHEL, to serve as the first *managed node*.
 
@@ -35,13 +35,13 @@ This quickstart takes you through the steps to automate a SQL Server on Linux de
 
 ## Overview
 
-The first VM, where you configure Ansible Core, is the controller node. On this node, you'll install the SQL Server *system role*.
+The first VM, where you configure Ansible Core, is the controller node. On this node, you install the SQL Server *system role*.
 
 The remaining VMs are the target machines, also known as *managed nodes*, for deploying and configuring SQL Server using the system role.
 
 ## Install Ansible Core
 
-Starting with RHEL 8.x on Azure VMs, the `ansible-core` package can be installed from the pre-configured AppStream repository. You can install Ansible Core on the controller node using the following command:
+Starting with RHEL 8.x on Azure VMs, the `ansible-core` package can be installed from the preconfigured AppStream repository. You can install Ansible Core on the controller node using the following command:
 
 ```bash
 sudo yum install ansible-core
@@ -53,7 +53,7 @@ You can check that the installation was successful with the following command:
 ansible --version
 ```
 
-You'll see output similar to the following example:
+You see output similar to the following example:
 
 ```output
 ansible [core 2.12.2]
@@ -69,7 +69,7 @@ ansible [core 2.12.2]
 
 ## Edit `hosts` file on controller node
 
-Ansible will create a `hosts` file is in the `/etc/ansible` directory. Edit this file using your favorite editor to add the managed node details, either as a group entry, or as ungrouped entries. For information on how to create your own inventory, see [How to build your inventory](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html).
+Ansible creates a `hosts` file is in the `/etc/ansible` directory. Edit this file using your favorite editor to add the managed node details, either as a group entry, or as ungrouped entries. For information on how to create your own inventory, see [How to build your inventory](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html).
 
 In this example using the `hosts` file, the IP address for the first managed node is 10.0.0.12, and the IP address for the second managed node is 10.0.0.14.
 
@@ -90,13 +90,13 @@ In this example using the `hosts` file, the IP address for the first managed nod
 
 ## Configure passwordless SSH access between nodes
 
-You'll need to configure a Secure Shell (SSH) connection between the controller node and all managed nodes where SQL Server is to be installed.
+You need to configure a Secure Shell (SSH) connection between the controller node and all managed nodes where SQL Server is to be installed.
 
 ### Configure SSH on the controller node
 
-If SSH has already been configured, you can skip this step.
+If SSH is already configured, you can skip this step.
 
-Use the `ssh-keygen` command to generate SSH keys. When you run the command, you're prompted to accept the default values. When complete, you'll have a private and public key pair.
+Use the `ssh-keygen` command to generate SSH keys. When you run the command, you're prompted to accept the default values. When complete, you have a private and public key pair.
 
 ### Copy the public key to the managed nodes
 
@@ -104,17 +104,17 @@ Use the `ssh-keygen` command to generate SSH keys. When you run the command, you
 
 1. In the following command, the `user` account can be the same account you configured for each managed node when creating the VM. You can also use the `root` account, but this isn't recommended in a production environment.
 
-    ```bash
-    sudo ssh-copy-id user@10.0.0.12
-    sudo ssh-copy-id user@10.0.0.14
-    ```
+   ```bash
+   sudo ssh-copy-id user@10.0.0.12
+   sudo ssh-copy-id user@10.0.0.14
+   ```
 
 1. To confirm that the SSH public key was copied to each node, use the `ssh` command from the controller node. If you copied the keys correctly, you aren't prompted for a password, and the connection is successful.
 
-    ```bash
-    ssh user@10.0.0.12
-    ssh user@10.0.0.14
-    ```
+   ```bash
+   ssh user@10.0.0.12
+   ssh user@10.0.0.14
+   ```
 
 ## Install the SQL Server system role
 
@@ -124,7 +124,7 @@ The Ansible system role is called `ansible-collection-microsoft-sql`. On the con
 sudo yum install ansible-collection-microsoft-sql
 ```
 
-This command installs the SQL Server role to `/usr/share/ansible/collections`, with the files shown below:
+This command installs the SQL Server role to `/usr/share/ansible/collections`, with the following files:
 
 ```output
 -rw-r--r--. 1 user user 7592 Jul  2 20:22 FILES.json
@@ -139,7 +139,7 @@ drwxr-xr-x. 1 user user   20 Jul  2 20:22 tests
 
 After installing the system role, you'll create the SQL Server playbook YAML file. To understand the various role variables, refer to the [documentation](https://github.com/linux-system-roles/mssql/blob/master/README.md) or the README.md included with the SQL Server system role.
 
-The following example shows a playbook file, with role variables defined to configure SQL Server and enable additional functionality. Replace `<password>` with a valid password.
+The following example shows a playbook file, with role variables defined to configure SQL Server and enable extra functionality. Replace `<password>` with a valid password.
 
 ```yaml
 - hosts: all
@@ -165,7 +165,7 @@ To deploy SQL Server on managed nodes using the Ansible playbook, run the follow
 sudo ansible-playbook -u user playbook.yaml
 ```
 
-This process begins the deployment, and at the end, you should see a summary of the play that looks similar to this:
+This process begins the deployment, and at the end, you should see a summary of the play that looks similar to this output:
 
 ```output
 PLAY RECAP *******

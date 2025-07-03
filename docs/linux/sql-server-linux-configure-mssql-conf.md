@@ -3,7 +3,7 @@ title: Configure SQL Server Settings on Linux
 description: This article describes how to use the mssql-conf tool to configure SQL Server settings on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/02/2025
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -332,7 +332,7 @@ The `set-collation` option changes the collation value to any of the supported c
 
 For a list of supported collations, run the [sys.fn_helpcollations](../relational-databases/system-functions/sys-fn-helpcollations-transact-sql.md) function: `SELECT Name from sys.fn_helpcollations()`.
 
-<a id="custom-password-policy></a>
+<a id="custom-password-policy"></a>
 
 ## Custom password policies
 
@@ -621,28 +621,28 @@ The first phase capture is controlled by the `coredump.coredumptype` setting, wh
 
 1. Decide whether to capture both mini and full dumps with the `coredump.captureminiandfull` setting.
 
-    ```bash
-    sudo /opt/mssql/bin/mssql-conf set coredump.captureminiandfull <true or false>
-    ```
+   ```bash
+   sudo /opt/mssql/bin/mssql-conf set coredump.captureminiandfull <true or false>
+   ```
 
-    Default: `false`
+   Default: `false`
 
 1. Specify the type of dump file with the `coredump.coredumptype` setting.
 
-    ```bash
-    sudo /opt/mssql/bin/mssql-conf set coredump.coredumptype <dump_type>
-    ```
+   ```bash
+   sudo /opt/mssql/bin/mssql-conf set coredump.coredumptype <dump_type>
+   ```
 
-    Default: `miniplus`
+   Default: `miniplus`
 
-    The following table lists the possible `coredump.coredumptype` values.
+   The following table lists the possible `coredump.coredumptype` values.
 
-    | Type | Description |
-    | --- | --- |
-    | `mini` | Mini is the smallest dump file type. It uses the Linux system information to determine threads and modules in the process. The dump contains only the host environment thread stacks and modules. It doesn't contain indirect memory references or globals. |
-    | `miniplus` | MiniPlus is similar to mini, but it includes additional memory. It understands the internals of SQLPAL and the host environment, adding the following memory regions to the dump:<br /><br />- Various globals<br />- All memory above 64 TB<br />- All named regions found in `/proc/$pid/maps`<br />- Indirect memory from threads and stacks<br />- Thread information, including associated thread environment blocks (TEBs) and process environment blocks (PEBs)<br />- Module information<br />- VMM and VAD tree |
-    | `filtered` | Filtered uses a subtraction-based design where all memory in the process is included unless specifically excluded. The design understands the internals of SQLPAL and the host environment, excluding certain regions from the dump. |
-    | `full` | Full is a complete process dump that includes all regions located in `/proc/$pid/maps`. This isn't controlled by the `coredump.captureminiandfull` setting. |
+   | Type | Description |
+   | --- | --- |
+   | `mini` | Mini is the smallest dump file type. It uses the Linux system information to determine threads and modules in the process. The dump contains only the host environment thread stacks and modules. It doesn't contain indirect memory references or globals. |
+   | `miniplus` | MiniPlus is similar to mini, but it includes additional memory. It understands the internals of SQLPAL and the host environment, adding the following memory regions to the dump:<br /><br />- Various globals<br />- All memory above 64 TB<br />- All named regions found in `/proc/$pid/maps`<br />- Indirect memory from threads and stacks<br />- Thread information, including associated thread environment blocks (TEBs) and process environment blocks (PEBs)<br />- Module information<br />- VMM and VAD tree |
+   | `filtered` | Filtered uses a subtraction-based design where all memory in the process is included unless specifically excluded. The design understands the internals of SQLPAL and the host environment, excluding certain regions from the dump. |
+   | `full` | Full is a complete process dump that includes all regions located in `/proc/$pid/maps`. This isn't controlled by the `coredump.captureminiandfull` setting. |
 
 ## Edition
 

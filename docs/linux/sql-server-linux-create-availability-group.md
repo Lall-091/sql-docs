@@ -4,7 +4,7 @@ description: This tutorial shows how to create and configure availability groups
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 11/18/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -56,7 +56,7 @@ You can also modify the `mssql.conf` file, located under the `/var/opt/mssql` fo
 hadr.hadrenabled = 1
 ```
 
-### Restart [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]
+### Restart SQL Server
 
 After enabling availability groups, as on Windows, you must restart [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], using the following command:
 
@@ -315,7 +315,7 @@ This example creates certificates for a three-node configuration. The instance n
 
 This section covers how to use [!INCLUDE [ssmanstudiofull-md](../includes/ssmanstudiofull-md.md)] (SSMS) or Transact-SQL to create the availability group for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 
-### Use [!INCLUDE [ssmanstudiofull-md](../includes/ssmanstudiofull-md.md)]
+### Use SQL Server Management Studio
 
 This section shows how to create an AG with a cluster type of External using SSMS with the New Availability Group Wizard.
 
@@ -499,42 +499,42 @@ This example shows the creation of a two-replica configuration using a cluster t
 
 1. Execute on the node that will be the primary replica containing the fully read/write copy of the databases. This example uses automatic seeding.
 
-```sql
-CREATE AVAILABILITY
-GROUP [<AGName>]
-WITH (CLUSTER_TYPE = NONE)
-FOR DATABASE <DBName> REPLICA ON
-    N'LinAGN1' WITH (
-        ENDPOINT_URL = N'TCP://LinAGN1.FullyQualified.Name: <PortOfEndpoint>',
-        FAILOVER_MODE = MANUAL,
-        AVAILABILITY_MODE = ASYNCHRONOUS_COMMIT,
-        PRIMARY_ROLE(
-            ALLOW_CONNECTIONS = READ_WRITE,
-            READ_ONLY_ROUTING_LIST = (('LinAGN1.FullyQualified.Name'.'LinAGN2.FullyQualified.Name'))
-        ),
-        SECONDARY_ROLE(
-            ALLOW_CONNECTIONS = ALL,
-            READ_ONLY_ROUTING_URL = N'TCP://LinAGN1.FullyQualified.Name:<PortOfInstance>'
-        )
-    ),
-    N'LinAGN2' WITH (
-        ENDPOINT_URL = N'TCP://LinAGN2.FullyQualified.Name:<PortOfEndpoint>',
-        FAILOVER_MODE = MANUAL,
-        SEEDING_MODE = AUTOMATIC,
-        AVAILABILITY_MODE = ASYNCHRONOUS_COMMIT,
-        PRIMARY_ROLE(ALLOW_CONNECTIONS = READ_WRITE, READ_ONLY_ROUTING_LIST = (
-                 ('LinAGN1.FullyQualified.Name',
-                    'LinAGN2.FullyQualified.Name')
-                 )),
-        SECONDARY_ROLE(ALLOW_CONNECTIONS = ALL, READ_ONLY_ROUTING_URL = N'TCP://LinAGN2.FullyQualified.Name:<PortOfInstance>')
-    ),
-    LISTENER '<ListenerName>' (WITH IP = (
-             '<PrimaryReplicaIPAddress>',
-             '<SubnetMask>'),
-            Port = <PortOfListener>
-    );
-GO
-```
+   ```sql
+   CREATE AVAILABILITY
+   GROUP [<AGName>]
+   WITH (CLUSTER_TYPE = NONE)
+   FOR DATABASE <DBName> REPLICA ON
+       N'LinAGN1' WITH (
+           ENDPOINT_URL = N'TCP://LinAGN1.FullyQualified.Name: <PortOfEndpoint>',
+           FAILOVER_MODE = MANUAL,
+           AVAILABILITY_MODE = ASYNCHRONOUS_COMMIT,
+           PRIMARY_ROLE(
+               ALLOW_CONNECTIONS = READ_WRITE,
+               READ_ONLY_ROUTING_LIST = (('LinAGN1.FullyQualified.Name'.'LinAGN2.FullyQualified.Name'))
+           ),
+           SECONDARY_ROLE(
+               ALLOW_CONNECTIONS = ALL,
+               READ_ONLY_ROUTING_URL = N'TCP://LinAGN1.FullyQualified.Name:<PortOfInstance>'
+           )
+       ),
+       N'LinAGN2' WITH (
+           ENDPOINT_URL = N'TCP://LinAGN2.FullyQualified.Name:<PortOfEndpoint>',
+           FAILOVER_MODE = MANUAL,
+           SEEDING_MODE = AUTOMATIC,
+           AVAILABILITY_MODE = ASYNCHRONOUS_COMMIT,
+           PRIMARY_ROLE(ALLOW_CONNECTIONS = READ_WRITE, READ_ONLY_ROUTING_LIST = (
+                    ('LinAGN1.FullyQualified.Name',
+                       'LinAGN2.FullyQualified.Name')
+                    )),
+           SECONDARY_ROLE(ALLOW_CONNECTIONS = ALL, READ_ONLY_ROUTING_URL = N'TCP://LinAGN2.FullyQualified.Name:<PortOfInstance>')
+       ),
+       LISTENER '<ListenerName>' (WITH IP = (
+                '<PrimaryReplicaIPAddress>',
+                '<SubnetMask>'),
+               Port = <PortOfListener>
+       );
+   GO
+   ```
 
    Where:
 
@@ -556,7 +556,7 @@ GO
    GO
    ```
 
-## Create the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] login and permissions for Pacemaker
+## Create the SQL Server login and permissions for Pacemaker
 
 A Pacemaker high availability cluster underlying [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux needs access to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance, and permissions on the availability group itself. These steps create the login and the associated permissions, along with a file that tells Pacemaker how to log into [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 

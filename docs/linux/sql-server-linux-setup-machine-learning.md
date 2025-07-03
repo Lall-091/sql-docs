@@ -5,7 +5,7 @@ description: "Learn how to install SQL Server 2019 Machine Learning Services on 
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 11/18/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: machine-learning-services
 ms.topic: how-to
@@ -395,21 +395,21 @@ Download packages from [https://packages.microsoft.com/](https://packages.micros
 ### RHEL/8 paths
 
 | Package | Download location |
-| -- | --- |
+| --- | --- |
 | mssql/mlservices packages | [https://packages.microsoft.com/rhel/8/mssql-server-2019/](https://packages.microsoft.com/rhel/8/mssql-server-2019/) |
 | microsoft-r-open packages | [https://packages.microsoft.com/rhel/8/prod/](https://packages.microsoft.com/rhel/8/prod/) |
 
 ### Ubuntu/20.04 paths
 
 | Package | Download location |
-| -- | --- |
+| --- | --- |
 | mssql/mlservices packages | [https://packages.microsoft.com/ubuntu/20.04/mssql-server-2019/pool/main/m/](https://packages.microsoft.com/ubuntu/20.04/mssql-server-2019/pool/main/m/) |
 | microsoft-r-open packages | [https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/](https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/) |
 
 ### SLES/12 paths
 
 | Package | Download location |
-| -- | --- |
+| --- | --- |
 | mssql/mlservices packages | [https://packages.microsoft.com/sles/12/mssql-server-2019/](https://packages.microsoft.com/sles/12/mssql-server-2019/) |
 | microsoft-r-open packages | [https://packages.microsoft.com/sles/12/prod/](https://packages.microsoft.com/sles/12/prod/) |
 

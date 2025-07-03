@@ -4,7 +4,7 @@ description: Overview of adutil, a utility for configuring and managing Active D
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: vanto, randolphwest
-ms.date: 01/23/2025
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -235,8 +235,8 @@ Each command is documented so you can get started right away. Here are some of t
   adutil keytab createauto -k /var/opt/mssql/secrets/mssql.keytab -p 1433 -H mymachine.contoso.com --password '<password>' -s MSSQLSvc
   ```
 
-   > [!CAUTION]  
-   > [!INCLUDE [password-complexity](includes/password-complexity.md)]
+  > [!CAUTION]  
+  > [!INCLUDE [password-complexity](includes/password-complexity.md)]
 
 You can refer to the reference manual page of **adutil** using the command `man adutil`.
 

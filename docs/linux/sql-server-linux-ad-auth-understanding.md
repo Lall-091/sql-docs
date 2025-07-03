@@ -4,7 +4,7 @@ description: Understand Active Directory authentication with SQL Server on Linux
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: randolphwest
-ms.date: 01/21/2025
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: concept-article
@@ -58,7 +58,7 @@ This file is necessary for Active Directory authentication to work. `krb5.conf` 
 
 For more information on the `krb5.conf` file, refer to the [MIT Kerberos Consortium documentation](http://web.mit.edu/kerberos/krb5-1.16/doc/admin/conf_files/krb5_conf.html).
 
-## Configure Kerberos for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on Linux
+## Configure Kerberos for SQL Server on Linux
 
 These are the values you need on the host server running [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on Linux. If you have other (non-[!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]) services running on the same host, your `krb5.conf` file might need several more entries.
 

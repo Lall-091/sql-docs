@@ -3,7 +3,7 @@ title: Restore a SQL Server Database in a Linux Container
 description: This tutorial shows how to restore a SQL Server database backup in a new Linux container.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/02/2025
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -484,11 +484,11 @@ In addition to taking database backups for protecting your data, you can also us
 
 1. Create a new container, `sql2`, and reuse the `sql1data` data volume container.
 
-    ```bash
-    sudo docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<password>' \
-       --name 'sql2' -e 'MSSQL_PID=Developer' -p 1401:1433 \
-       -v sql1data:/var/opt/mssql -d mcr.microsoft.com/mssql/server:2019-latest
-    ```
+   ```bash
+   sudo docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<password>' \
+      --name 'sql2' -e 'MSSQL_PID=Developer' -p 1401:1433 \
+      -v sql1data:/var/opt/mssql -d mcr.microsoft.com/mssql/server:2019-latest
+   ```
 
 1. The Wide World Importers database is now in the new container. Run a query to verify the previous change you made.
 
@@ -518,11 +518,11 @@ In addition to taking database backups for protecting your data, you can also us
 
 1. Create a new container, `sql2`, and reuse the `sql1data` data volume container.
 
-    ```bash
-    sudo docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<password>' \
-       --name 'sql2' -e 'MSSQL_PID=Developer' -p 1401:1433 \
-       -v sql1data:/var/opt/mssql -d mcr.microsoft.com/mssql/server:2022-latest
-    ```
+   ```bash
+   sudo docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<password>' \
+      --name 'sql2' -e 'MSSQL_PID=Developer' -p 1401:1433 \
+      -v sql1data:/var/opt/mssql -d mcr.microsoft.com/mssql/server:2022-latest
+   ```
 
 1. The Wide World Importers database is now in the new container. Run a query to verify the previous change you made.
 
@@ -552,11 +552,11 @@ In addition to taking database backups for protecting your data, you can also us
 
 1. Create a new container, `sql2`, and reuse the `sql1data` data volume container.
 
-    ```bash
-    sudo docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<password>' \
-       --name 'sql2' -e 'MSSQL_PID=Developer' -p 1401:1433 \
-       -v sql1data:/var/opt/mssql -d mcr.microsoft.com/mssql/server:2025-latest
-    ```
+   ```bash
+   sudo docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<password>' \
+      --name 'sql2' -e 'MSSQL_PID=Developer' -p 1401:1433 \
+      -v sql1data:/var/opt/mssql -d mcr.microsoft.com/mssql/server:2025-latest
+   ```
 
 1. The Wide World Importers database is now in the new container. Run a query to verify the previous change you made.
 

@@ -4,7 +4,7 @@ description: This quickstart shows how to use Docker to run the SQL Server Linux
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: vanto, randolphwest
-ms.date: 06/06/2025
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: quickstart
@@ -110,28 +110,28 @@ The examples in this article use the `docker` command. However, most of these co
 <!--SQL Server 2017 on Linux-->
 ::: moniker range="=sql-server-linux-2017 || =sql-server-2017"
 
-- For more information on hardware requirements and processor support, see [SQL Server 2016 and 2017: Hardware and software requirements](../sql-server/install/hardware-and-software-requirements-for-installing-sql-server.md)
+- For more information on hardware requirements and processor support, see [Hardware and software requirements for SQL Server 2016 and SQL Server 2017](../sql-server/install/hardware-and-software-requirements-for-installing-sql-server.md)
 
 ::: moniker-end
 
 <!--SQL Server 2019 on Linux-->
 ::: moniker range="=sql-server-linux-ver15 || =sql-server-ver15"
 
-- For more information on hardware requirements and processor support, see [SQL Server 2019: Hardware and software requirements](../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2019.md)
+- For more information on hardware requirements and processor support, see [Hardware and software requirements for SQL Server 2019](../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2019.md)
 
 ::: moniker-end
 
 <!--SQL Server 2022 on Linux-->
 ::: moniker range="=sql-server-linux-ver16 || =sql-server-ver16"
 
-- For more information on hardware requirements and processor support, see [SQL Server 2022: Hardware and software requirements](../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2022.md)
+- For more information on hardware requirements and processor support, see [Hardware and software requirements for SQL Server 2022](../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2022.md)
 
 ::: moniker-end
 
 <!--SQL Server 2025 on Linux-->
 ::: moniker range=">=sql-server-linux-ver17 || >=sql-server-ver17"
 
-- For more information on hardware requirements and processor support, see [SQL Server 2025 Preview: Hardware and software requirements](../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2025.md)
+- For more information on hardware requirements and processor support, see [Hardware and software requirements for SQL Server 2025 Preview](../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2025.md)
 
 ::: moniker-end
 
@@ -1305,7 +1305,7 @@ The following steps use the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-m
 <!--SQL Server 2017 on Linux-->
 ::: moniker range="=sql-server-linux-2017 || =sql-server-2017"
 
-1. Once inside the container, connect locally with **sqlcmd**, using its full path.
+2. Once inside the container, connect locally with **sqlcmd**, using its full path.
 
    ```bash
    /opt/mssql-tools/bin/sqlcmd -S localhost -U <userid> -P "<password>"
@@ -1324,7 +1324,7 @@ The following steps use the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-m
 <!--SQL Server 2019 on Linux and later versions-->
 ::: moniker range=">=sql-server-linux-ver15 || >=sql-server-ver15"
 
-1. Once inside the container, connect locally with **sqlcmd**, using its full path.
+2. Once inside the container, connect locally with **sqlcmd**, using its full path.
 
    ```bash
    /opt/mssql-tools18/bin/sqlcmd -S localhost -U <userid> -P "<password>"
@@ -1340,7 +1340,7 @@ The following steps use the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-m
 
 ::: moniker-end
 
-1. If successful, you should get to a **sqlcmd** command prompt: `1>`.
+3. If successful, you should get to a **sqlcmd** command prompt: `1>`.
 
 ## Create and query data
 
@@ -1523,7 +1523,7 @@ Other common tools to connect to [!INCLUDE [ssnoversion-md](../includes/ssnovers
 - [Use SQL Server Management Studio on Windows to manage SQL Server on Linux](sql-server-linux-manage-ssms.md)
 - [What is Azure Data Studio?](/azure-data-studio/what-is-azure-data-studio)
 - [mssql-cli (Preview)](https://github.com/dbcli/mssql-cli/blob/master/doc/usage_guide.md)
-- [Manage SQL Server on Linux with PowerShell Core](sql-server-linux-manage-powershell-core.md)
+- [Use PowerShell on Linux to manage SQL Server on Linux](sql-server-linux-manage-powershell-core.md)
 
 ## Remove your container
 

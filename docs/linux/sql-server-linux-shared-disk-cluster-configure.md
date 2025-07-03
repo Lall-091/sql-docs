@@ -4,7 +4,7 @@ description: Learn to configure a failover cluster instance (FCI) on Red Hat Ent
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 05/02/2025
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -201,50 +201,50 @@ This example creates an FCI in the group NewLinFCIGrp. The name of the resource 
    - `<FolderOnNFSServer>` is the name of the NFS share
    - `<FolderToMountNFSShare>` is the folder to mount the disk (for system databases and the default location, it would be /var/opt/mssql/data)
 
-    An example is shown here:
+   An example is shown here:
 
-    ```bash
-    mount -t nfs4 200.201.202.63:/var/nfs/fci1 /var/opt/mssql/data -o nfsvers=4.2,timeo=14,intr
-    ```
+   ```bash
+   mount -t nfs4 200.201.202.63:/var/nfs/fci1 /var/opt/mssql/data -o nfsvers=4.2,timeo=14,intr
+   ```
 
    #### [SMB](#tab/smb)
 
-    ```bash
-    sudo pcs resource create SMBDiskResourceName Filesystem device="//<ServerName>/<ShareName>" directory="<FolderName>" fstype=cifs options="vers=3.0,username=<UserName>,password=<Password>,domain=<ADDomain>,uid=<mssqlUID>,gid=<mssqlGID>,file_mode=0777,dir_mode=0777" --group <RGName>
-    ```
+   ```bash
+   sudo pcs resource create SMBDiskResourceName Filesystem device="//<ServerName>/<ShareName>" directory="<FolderName>" fstype=cifs options="vers=3.0,username=<UserName>,password=<Password>,domain=<ADDomain>,uid=<mssqlUID>,gid=<mssqlGID>,file_mode=0777,dir_mode=0777" --group <RGName>
+   ```
 
-    - `<ServerName>` is the name of the server with the SMB share
-    - `<ShareName>` is the name of the share
-    - `<FolderName>` is the name of the folder created in the last step
-    - `<UserName>` is the name of the user to access the share
-    - `<Password>` is the password for the user
-    - `<ADDomain>` is the Active Directory DS domain (if applicable when using a Windows Server-based SMB share)
-    - `<mssqlUID>` is the UID of the `mssql` user
-    - `<mssqlGID>` is the GID of the `mssql` user
-    - `<RGName>` is the name of the resource group
+   - `<ServerName>` is the name of the server with the SMB share
+   - `<ShareName>` is the name of the share
+   - `<FolderName>` is the name of the folder created in the last step
+   - `<UserName>` is the name of the user to access the share
+   - `<Password>` is the password for the user
+   - `<ADDomain>` is the Active Directory DS domain (if applicable when using a Windows Server-based SMB share)
+   - `<mssqlUID>` is the UID of the `mssql` user
+   - `<mssqlGID>` is the GID of the `mssql` user
+   - `<RGName>` is the name of the resource group
 
    ---
 
 1. Create the IP address that will be used by the FCI. You get no response back if there isn't a problem.
 
-    ```bash
-    sudo pcs resource create <IPResourceName> ocf:heartbeat:IPaddr2 ip=<IPAddress> nic=<NetworkCard> cidr_netmask=<NetMask> --group <RGName>
-    ```
+   ```bash
+   sudo pcs resource create <IPResourceName> ocf:heartbeat:IPaddr2 ip=<IPAddress> nic=<NetworkCard> cidr_netmask=<NetMask> --group <RGName>
+   ```
 
-    - `<IPResourceName>` is the name of the resource associated with the IP address
-    - `<IPAddress>` is the IP address for the FCI
-    - `<NetworkCard>` is the network card associated with the subnet (that is, eth0)
-    - `<NetMask>` is the netmask of the subnet (that is, 24)
-    - `<RGName>` is the name of the resource group
+   - `<IPResourceName>` is the name of the resource associated with the IP address
+   - `<IPAddress>` is the IP address for the FCI
+   - `<NetworkCard>` is the network card associated with the subnet (that is, eth0)
+   - `<NetMask>` is the netmask of the subnet (that is, 24)
+   - `<RGName>` is the name of the resource group
 
 1. Create the FCI resource. You get no response back if there isn't a problem.
 
-    ```bash
-    sudo pcs resource create FCIResourceName ocf:mssql:fci op defaults timeout=60s --group RGName
-    ```
+   ```bash
+   sudo pcs resource create FCIResourceName ocf:mssql:fci op defaults timeout=60s --group RGName
+   ```
 
-    - `<FCIResourceName>` isn't only the name of the resource, but the friendly name that is associated with the FCI. This is what users and applications use to connect.
-    - `<RGName>` is the name of the resource group.
+   - `<FCIResourceName>` isn't only the name of the resource, but the friendly name that is associated with the FCI. This is what users and applications use to connect.
+   - `<RGName>` is the name of the resource group.
 
 1. Run the command `sudo pcs resource`. The FCI should be online.
 

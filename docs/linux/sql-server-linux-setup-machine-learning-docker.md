@@ -4,8 +4,7 @@ titleSuffix: SQL Server Machine Learning Services
 description: "Learn how to install SQL Server Machine Learning Services (Python and R) on Docker."
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: randolphwest
-ms.date: 01/21/2025
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: machine-learning-services
 ms.topic: how-to
@@ -24,7 +23,7 @@ This article explains how to install [SQL Server Machine Learning Services](../m
 
 - Git command-line interface.
 
-- Docker Engine 1.8+ on any supported Linux distribution. For more information, see [Get Docker](https://docs.docker.com/get-docker/). SQL Server in containers aren't supported on Windows or macOS for production use.
+- Docker Engine 1.8+ on any supported Linux distribution. For more information, see [Get Docker](https://docs.docker.com/get-started/get-docker). SQL Server in containers aren't supported on Windows or macOS for production use.
 
 - See also the [system requirements for SQL Server on Linux](sql-server-linux-setup.md#system).
 
@@ -38,9 +37,9 @@ The following command clones the `mssql-docker` git repository to a local direct
 
 1. Run the git clone command to clone the mssql-docker repository:
 
-    ```bash
-    git clone https://github.com/microsoft/mssql-docker mssql-docker
-    ```
+   ```bash
+   git clone https://github.com/microsoft/mssql-docker mssql-docker
+   ```
 
 ## Build a SQL Server Linux container image
 
@@ -48,15 +47,15 @@ Complete the following steps to build the docker image:
 
 1. Change the directory to the mssql-mlservices directory:
 
-    ```bash
-    /mssql-docker/linux/preview/examples/mssql-mlservices
-    ```
+   ```bash
+   /mssql-docker/linux/preview/examples/mssql-mlservices
+   ```
 
 1. In the same directory, run the following command:
 
-    ```bash
-    docker build -t mssql-server-mlservices .
-    ```
+   ```bash
+   docker build -t mssql-server-mlservices .
+   ```
 
 1. Run the command:
 
@@ -72,9 +71,9 @@ Complete the following steps to build the docker image:
 
 1. Confirm by running the following command:
 
-    ```bash
-    docker ps -a
-    ```
+   ```bash
+   docker ps -a
+   ```
 
    > [!NOTE]  
    > To build the Docker image, you must install packages that are several GBs in size. The script might take some time to finish running, depending on network bandwidth.
@@ -91,7 +90,7 @@ Complete the following steps to build the docker image:
    ```
 
    > [!NOTE]  
-   > The process for running production SQL Server editions in containers is slightly different. For more information, see [Configure SQL Server container images on Docker](./sql-server-linux-docker-container-deployment.md). If you use the same container names and ports, the rest of this walkthrough still works with production containers.
+   > The process for running production SQL Server editions in containers is slightly different. For more information, see [Deploy and connect to SQL Server Linux containers](sql-server-linux-docker-container-deployment.md). If you use the same container names and ports, the rest of this walkthrough still works with production containers.
 
 1. To view your containers, run the `docker ps` command:
 
@@ -99,14 +98,14 @@ Complete the following steps to build the docker image:
    sudo docker ps -a
    ```
 
-1. If the **STATUS** column shows a status of **Up**, SQL Server is running in the container and listening on the port specified in the **PORTS** column. If the **STATUS** column for your SQL Server container shows **Exited**, see the [Troubleshooting section of the configuration guide](./sql-server-linux-docker-container-troubleshooting.md).
+1. If the **STATUS** column shows a status of **Up**, SQL Server is running in the container and listening on the port specified in the **PORTS** column. If the **STATUS** column for your SQL Server container shows **Exited**, see the [Troubleshoot SQL Server Docker containers](sql-server-linux-docker-container-troubleshooting.md).
 
-    Output:
+   Output:
 
-    ```output
-    CONTAINER ID        IMAGE                          COMMAND                  CREATED             STATUS              PORTS                    NAMES
-    941e1bdf8e1d        mcr.microsoft.com/mssql/server/mssql-server-linux   "/bin/sh -c /opt/m..."   About an hour ago   Up About an hour     0.0.0.0:1401->1433/tcp   sql1
-    ```
+   ```output
+   CONTAINER ID        IMAGE                          COMMAND                  CREATED             STATUS              PORTS                    NAMES
+   941e1bdf8e1d        mcr.microsoft.com/mssql/server/mssql-server-linux   "/bin/sh -c /opt/m..."   About an hour ago   Up About an hour     0.0.0.0:1401->1433/tcp   sql1
+   ```
 
 ## Enable Machine Learning Services
 

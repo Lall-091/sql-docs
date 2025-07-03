@@ -1,9 +1,9 @@
 ---
-title: Database Mail and Email Alerts With SQL Server Agent on Linux
+title: Database Mail and Email Alerts with SQL Server Agent on Linux
 description: Learn how to use Database Mail and how to set up Email Alerts with SQL Server Agent (mssql-server-agent) on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/18/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -24,13 +24,11 @@ GO
 
 EXECUTE sp_configure 'show advanced options', 1;
 GO
-
 RECONFIGURE WITH OVERRIDE;
 GO
 
 EXECUTE sp_configure 'Database Mail XPs', 1;
 GO
-
 RECONFIGURE;
 GO
 ```

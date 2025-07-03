@@ -5,7 +5,7 @@ description: "Learn how to install SQL Server 2022 Machine Learning Services on 
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: arunguru-msft, randolphwest
-ms.date: 11/18/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: machine-learning-services
 ms.topic: how-to
@@ -56,29 +56,29 @@ Available installation packages for [!INCLUDE [sssql22-md](../includes/sssql22-m
 
 1. [Configure repositories for installing and upgrading SQL Server on Linux](sql-server-linux-change-repo.md) corresponding to the Linux distribution. Install the SQL Server extensibility feature with the package `mssql-server-extensibility` and associated dependency `libssl-dev`.
 
-    **Ubuntu**
+   **Ubuntu**
 
-    ```bash
-    sudo apt-get install mssql-server-extensibility libssl-dev
-    ```
+   ```bash
+   sudo apt-get install mssql-server-extensibility libssl-dev
+   ```
 
-    **RHEL**
+   **RHEL**
 
-    ```bash
-    yum install mssql-server-extensibility
-    ```
+   ```bash
+   yum install mssql-server-extensibility
+   ```
 
 1. Review and accept the End User License Agreement (EULA) for SQL Server ML Services.
 
-    ```bash
-    sudo /opt/mssql/bin/mssql-conf set EULA accepteulaml Y
-    ```
+   ```bash
+   sudo /opt/mssql/bin/mssql-conf set EULA accepteulaml Y
+   ```
 
-    To complete acceptance of the EULA, the SQL Server instance must be restarted.
+   To complete acceptance of the EULA, the SQL Server instance must be restarted.
 
-    ```bash
-    sudo systemctl restart mssql-server
-    ```
+   ```bash
+   sudo systemctl restart mssql-server
+   ```
 
 ## Install runtimes and packages
 
@@ -90,66 +90,66 @@ Available installation packages for [!INCLUDE [sssql22-md](../includes/sssql22-m
 
 1. Open an admin R terminal:
 
-    ```bash
-    sudo R
-    ```
+   ```bash
+   sudo R
+   ```
 
 1. Install dependencies for `CompatibilityAPI` and `RevoScaleR` by running the following:
 
-    ```r
-    # R Terminal
-    install.packages("iterators", lib="/usr/lib/R/library")
-    install.packages("foreach", lib="/usr/lib/R/library")
-    install.packages("R6", lib="/usr/lib/R/library")
-    install.packages("jsonlite", lib="/usr/lib/R/library")
-    ```
+   ```r
+   # R Terminal
+   install.packages("iterators", lib="/usr/lib/R/library")
+   install.packages("foreach", lib="/usr/lib/R/library")
+   install.packages("R6", lib="/usr/lib/R/library")
+   install.packages("jsonlite", lib="/usr/lib/R/library")
+   ```
 
 1. Download and install `CompatibilityAPI` and `RevoScaleR` for Linux.
 
-    ```r
-    install.packages("https://aka.ms/sqlml/r4.2/linux/CompatibilityAPI_1.1.0_R_x86_64-pc-linux-gnu.tar.gz", repos=NULL, lib="/usr/lib/R/library")
-    install.packages("https://aka.ms/sqlml/r4.2/linux/RevoScaleR_10.0.1_R_x86_64-pc-linux-gnu.tar.gz", repos=NULL, lib="/usr/lib/R/library")
-    ```
+   ```r
+   install.packages("https://aka.ms/sqlml/r4.2/linux/CompatibilityAPI_1.1.0_R_x86_64-pc-linux-gnu.tar.gz", repos=NULL, lib="/usr/lib/R/library")
+   install.packages("https://aka.ms/sqlml/r4.2/linux/RevoScaleR_10.0.1_R_x86_64-pc-linux-gnu.tar.gz", repos=NULL, lib="/usr/lib/R/library")
+   ```
 
 1. Verify `RevoScaleR` installation from the R terminal.
 
-    ```r
-    library("RevoScaleR")
-    ```
+   ```r
+   library("RevoScaleR")
+   ```
 
 ### Configure R runtime with SQL Server
 
 1. Configure the installed R runtime with SQL Server for Linux, where `path/to/` is the file path to the R binary, and `RFolderVersion` is the version-specific folder name for your installation of R runtime, for example, `R4.2`.
 
-    ```bash
-    sudo /opt/mssql/bin/mssql-conf set extensibility rbinpath /usr/lib/R/bin/R
-    sudo /opt/mssql/bin/mssql-conf set extensibility datadirectories /usr/lib/R
-    ```
+   ```bash
+   sudo /opt/mssql/bin/mssql-conf set extensibility rbinpath /usr/lib/R/bin/R
+   sudo /opt/mssql/bin/mssql-conf set extensibility datadirectories /usr/lib/R
+   ```
 
 1. Restart the `Launchpadd` service.
 
-    ```bash
-    systemctl restart mssql-launchpadd.service
-    ```
+   ```bash
+   systemctl restart mssql-launchpadd.service
+   ```
 
 1. Configure SQL Server for Linux to allow external scripts using the `sp_configure` system stored procedure.
 
-    ```sql
-    EXECUTE sp_configure 'external scripts enabled', 1;
-    GO
+   ```sql
+   EXECUTE sp_configure 'external scripts enabled', 1;
+   GO
 
-    RECONFIGURE;
-    GO
-    ```
+   RECONFIGURE;
+   GO
+   ```
 
 1. Verify the installation by executing a simple T-SQL command to return the version of R:
 
-    ```sql
-    EXECUTE sp_execute_external_script
-        @script = N'print(R.version)',
-        @language = N'R';
-    GO
-    ```
+   ```sql
+   EXECUTE sp_execute_external_script
+       @script = N'print(R.version)',
+       @language = N'R';
+   GO
+   ```
 
 ## Setup Python support
 
@@ -159,50 +159,50 @@ Available installation packages for [!INCLUDE [sssql22-md](../includes/sssql22-m
 
 1. Download and install `revoscalepy` for the root user.
 
-    ```bash
-    sudo pip install dill numpy==1.22.0 pandas patsy python-dateutil
-    sudo pip install https://aka.ms/sqlml/python3.10/linux/revoscalepy-10.0.1-py3-none-any.whl --target=/usr/lib/python3.10/dist-packages
-    ```
+   ```bash
+   sudo pip install dill numpy==1.22.0 pandas patsy python-dateutil
+   sudo pip install https://aka.ms/sqlml/python3.10/linux/revoscalepy-10.0.1-py3-none-any.whl --target=/usr/lib/python3.10/dist-packages
+   ```
 
 1. Verify the `revoscalepy` installation from the Python terminal. Verify the library can be imported.
 
-    ```python
-    import revoscalepy
-    ```
+   ```python
+   import revoscalepy
+   ```
 
 ### Configure Python runtime with SQL Server
 
 1. Configure the installed Python runtime with SQL Server, where `pythonbinpath` is set to the path of the installed python binary, and `datadirectories` includes the path where the packages are installed for the desired version of python, for example, `/usr/lib/python3.10/dist-packages`. Use the following script with your actual installation path:
 
-    ```bash
-    sudo /opt/mssql/bin/mssql-conf set extensibility pythonbinpath /usr/bin/python3.10
-    sudo /opt/mssql/bin/mssql-conf set extensibility datadirectories /usr/lib:/usr/lib/python3.10/dist-packages
-    ```
+   ```bash
+   sudo /opt/mssql/bin/mssql-conf set extensibility pythonbinpath /usr/bin/python3.10
+   sudo /opt/mssql/bin/mssql-conf set extensibility datadirectories /usr/lib:/usr/lib/python3.10/dist-packages
+   ```
 
 1. Restart the `Launchpadd` service.
 
-    ```bash
-    systemctl restart mssql-launchpadd.service
-    ```
+   ```bash
+   systemctl restart mssql-launchpadd.service
+   ```
 
 1. Configure SQL Server for Linux to allow external scripts using the `sp_configure` system stored procedure.
 
-    ```sql
-    EXECUTE sp_configure 'external scripts enabled', 1;
-    GO
+   ```sql
+   EXECUTE sp_configure 'external scripts enabled', 1;
+   GO
 
-    RECONFIGURE;
-    GO
-    ```
+   RECONFIGURE;
+   GO
+   ```
 
 1. Verify the installation by executing a simple T-SQL command to return the version of python:
 
-    ```sql
-    EXECUTE sp_execute_external_script
-        @script = N'import sys;print(sys.version)',
-        @language = N'Python';
-    GO
-    ```
+   ```sql
+   EXECUTE sp_execute_external_script
+       @script = N'import sys;print(sys.version)',
+       @language = N'Python';
+   GO
+   ```
 
 ## Install Java
 

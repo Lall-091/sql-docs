@@ -3,7 +3,7 @@ title: "Quickstart: Deploy a SQL Server Container Cluster on Azure Kubernetes Se
 description: This tutorial shows how to deploy a SQL Server high availability solution with Azure Kubernetes Service or Azure Red Hat OpenShift.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/18/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: quickstart
@@ -407,9 +407,9 @@ You create a manifest to describe the container, based on the SQL Server [mssql-
 
    You can see the username as `mssql` if you run `whoami`. `mssql` is a non-root user.
 
-    ```console
-    whoami
-    ```
+   ```console
+   whoami
+   ```
 
 ### [OpenShift](#tab/oc)
 
@@ -418,7 +418,7 @@ The container hosting the SQL Server instance is described as an OpenShift *depl
 You create a manifest to describe the container, based on the SQL Server [mssql-server-linux](https://mcr.microsoft.com/product/mssql/server/about) Docker image.
 
 - The manifest references the `mssql-server` persistent volume claim, and the `mssql` secret that you already applied to the OpenShift cluster.
-- The manifest also describes a [service](https://docs.openshift.com/container-platform/4.12/networking/understanding-networking.html). This service is a load balancer. The load balancer guarantees that the IP address persists after SQL Server instance is recovered.
+- The manifest also describes a [service](https://docs.redhat.com/en/documentation/openshift_container_platform/4.12/html/networking/understanding-networking). This service is a load balancer. The load balancer guarantees that the IP address persists after SQL Server instance is recovered.
 - The manifest describes resource *requests* and *limits*. These are based on the minimum [system requirements](sql-server-linux-setup.md#system).
 
 1. Create a manifest (a YAML file) to describe the deployment. The following example describes a deployment, including a container based on the SQL Server container image.
@@ -561,9 +561,9 @@ You create a manifest to describe the container, based on the SQL Server [mssql-
 
    You're able to see the username as `mssql` if you run `whoami`. `mssql` is a non-root user.
 
-    ```console
-    whoami
-    ```
+   ```console
+   whoami
+   ```
 
 ---
 

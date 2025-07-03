@@ -4,7 +4,7 @@ description: Learn how to create a SQL Server Always On Availability Group (AG) 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 11/18/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -196,9 +196,9 @@ For the scripts in this article, angle brackets `<` and `>` identify values that
 
    Before you run the script, update the values for your AGs.
 
-      - Replace `<WinSQLInstance>` with the server name of the primary replica SQL Server instance.
+   - Replace `<WinSQLInstance>` with the server name of the primary replica SQL Server instance.
 
-      - Replace `<LinuxSQLInstance>` with the server name of the secondary replica SQL Server instance.
+   - Replace `<LinuxSQLInstance>` with the server name of the secondary replica SQL Server instance.
 
    To create the AG, update the values and run the script on the primary replica.
 

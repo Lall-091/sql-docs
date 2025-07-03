@@ -4,7 +4,7 @@ description: Understand the different ways to secure SQL Server Linux containers
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: vanto, randolphwest
-ms.date: 05/02/2025
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -36,34 +36,34 @@ Follow these steps to build a [!INCLUDE [sssql17-md](../includes/sssql17-md.md)]
 
 1. Run the following command in the context of the dockerfile directory to build the non-root [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] container:
 
-    ```bash
-    cd <path to dockerfile>
-    docker build -t 2017-latest-non-root .
-    ```
+   ```bash
+   cd <path to dockerfile>
+   docker build -t 2017-latest-non-root .
+   ```
 
 1. Start the container.
 
    > [!IMPORTANT]  
    > The `SA_PASSWORD` environment variable is deprecated. Use `MSSQL_SA_PASSWORD` instead.
 
-    ```bash
-    docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" --cap-add SYS_PTRACE --name sql1 -p 1433:1433 -d 2017-latest-non-root
-    ```
+   ```bash
+   docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" --cap-add SYS_PTRACE --name sql1 -p 1433:1433 -d 2017-latest-non-root
+   ```
 
-    > [!NOTE]  
-    > The `--cap-add SYS_PTRACE` flag is required for non-root [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] containers to generate dumps for troubleshooting purposes.
+   > [!NOTE]  
+   > The `--cap-add SYS_PTRACE` flag is required for non-root [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] containers to generate dumps for troubleshooting purposes.
 
 1. Check that the container is running as non-root user:
 
-    ```bash
-    docker exec -it sql1 bash
-    ```
+   ```bash
+   docker exec -it sql1 bash
+   ```
 
-    Run `whoami`, which returns the user running within the container.
+   Run `whoami`, which returns the user running within the container.
 
-    ```bash
-    whoami
-    ```
+   ```bash
+   whoami
+   ```
 
 <a id="nonrootuser"></a>
 

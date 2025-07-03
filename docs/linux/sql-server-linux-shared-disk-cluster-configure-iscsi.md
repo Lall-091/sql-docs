@@ -4,7 +4,7 @@ description: Learn to configure a failover cluster instance (FCI) using iSCSI fo
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 05/02/2025
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -40,7 +40,7 @@ For more information on iSCSI initiator for the supported distributions, see the
 
 - [Red Hat](https://docs.redhat.com/documentation/red_hat_enterprise_linux/8/html/managing_storage_devices/configuring-an-iscsi-initiator_managing-storage-devices)
 - [SUSE](https://documentation.suse.com/sles/15-SP2/html/SLES-all/cha-iscsi.html)
-- [Ubuntu](https://ubuntu.com/server/docs/iscsi-initiator-or-client)
+- [Ubuntu](https://documentation.ubuntu.com/server/iscsi-initiator-or-client)
 
 1. Choose one of the servers that will participate in the FCI configuration. It doesn't matter which one. iSCSI should be on a dedicated network, so configure iSCSI to recognize and use that network. Run `sudo iscsiadm -m iface -I <iSCSIIfaceName> -o new` where `<iSCSIIfaceName>` is the unique or friendly name for the network. The following example uses `iSCSINIC`:
 
@@ -153,11 +153,11 @@ For more information on iSCSI initiator for the supported distributions, see the
 
 1. Format the logical volume with a supported filesystem. For ext4, use the following example:
 
-    ```bash
-    sudo mkfs.ext4 /dev/<VolumeGroupName>/<LogicalVolumeName>
-    ```
+   ```bash
+   sudo mkfs.ext4 /dev/<VolumeGroupName>/<LogicalVolumeName>
+   ```
 
-    `<VolumeGroupName>` is the name of the volume group from the previous step. `<LogicalVolumeName>` is the name of the logical volume from the previous step.
+   `<VolumeGroupName>` is the name of the volume group from the previous step. `<LogicalVolumeName>` is the name of the logical volume from the previous step.
 
 1. For system databases or anything stored in the default data location, follow these steps. Otherwise, skip to Step 13.
 

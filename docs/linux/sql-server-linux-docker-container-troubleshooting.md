@@ -4,7 +4,7 @@ description: Explore the different troubleshooting techniques that you can use t
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: vanto, randolphwest
-ms.date: 05/02/2025
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: troubleshooting
@@ -169,15 +169,15 @@ If the SQL Server container fails to run, try the following tests:
 
 - If you get an error such as `Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.30tdout=1&tail=all: dial unix /var/run/docker.sock: connect: permission denied` when trying to start a container, then add your user to the docker group in Ubuntu. Then logout and login again as this change will affect new sessions.
 
-   ```bash
-    usermod -aG docker $USER
-   ```
+  ```bash
+   usermod -aG docker $USER
+  ```
 
 - Check to see if there are any error messages from container.
 
-   ```bash
-   docker logs e69e056c702d
-   ```
+  ```bash
+  docker logs e69e056c702d
+  ```
 
 - Make sure that you meet the minimum memory and disk requirements specified in the [prerequisites](quickstart-install-connect-docker.md#requirements) section of the quickstart article.
 
@@ -317,29 +317,29 @@ If you can't connect to the SQL Server instance running in your container, try t
 
 - If you mapped to a non-default host port (not 1433), make sure you're specifying the port in your connection string. You can see your port mapping in the **PORTS** column of the `docker ps -a` output. For example, the following command connects sqlcmd to a container listening on port 1401:
 
-    ::: zone pivot="cs1-bash"
+  ::: zone pivot="cs1-bash"
 
-    ```bash
-    sqlcmd -S 10.3.2.4,1401 -U sa -P '<YourPassword>'
-    ```
+  ```bash
+  sqlcmd -S 10.3.2.4,1401 -U sa -P '<YourPassword>'
+  ```
 
-    ::: zone-end
+  ::: zone-end
 
-    ::: zone pivot="cs1-powershell"
+  ::: zone pivot="cs1-powershell"
 
-    ```powershell
-    sqlcmd -S 10.3.2.4,1401 -U sa -P "<YourPassword>"
-    ```
+  ```powershell
+  sqlcmd -S 10.3.2.4,1401 -U sa -P "<YourPassword>"
+  ```
 
-    ::: zone-end
+  ::: zone-end
 
-    ::: zone pivot="cs1-cmd"
+  ::: zone pivot="cs1-cmd"
 
-    ```cmd
-    sqlcmd -S 10.3.2.4,1401 -U sa -P "<YourPassword>"
-    ```
+  ```cmd
+  sqlcmd -S 10.3.2.4,1401 -U sa -P "<YourPassword>"
+  ```
 
-    ::: zone-end
+  ::: zone-end
 
 - If you used `docker run` with an existing mapped data volume or data volume container, SQL Server ignores the value of `MSSQL_SA_PASSWORD`. Instead, the pre-configured `sa` account password is used from the SQL Server data in the data volume or data volume container. Verify that you're using the `sa` password associated with the data you're attaching to.
 

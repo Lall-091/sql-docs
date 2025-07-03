@@ -1,10 +1,10 @@
 ---
-title: Configure NFS storage FCI - SQL Server on Linux
+title: Configure NFS Storage FCI - SQL Server on Linux
 description: Learn to configure a failover cluster instance (FCI) using NFS storage for SQL Server on Linux.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 09/23/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -23,7 +23,7 @@ NFS, or network file system, is a common method for sharing disks in the Linux w
 
 The source hosting NFS (either a Linux server or something else) must be using/compliant with version 4.2 or later. Earlier versions don't work with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux.
 
-When configuring the folder(s) to be shared on the NFS server, make sure they follow these guidelines general options:
+When configuring the folders to be shared on the NFS server, make sure they follow these guidelines general options:
 
 - `rw` to ensure that the folder can be read from and written to
 - `sync` to ensure guaranteed writes to the folder
@@ -43,7 +43,7 @@ Ensure that your security standards are enforced for accessing. When configuring
 
 1. Choose one of the servers that will participate in the FCI configuration. It doesn't matter which one.
 
-1. Check to see that the server can see the mount(s) on the NFS server.
+1. Check to see that the server can see the mounts on the NFS server.
 
    ```bash
    sudo showmount -e <IPAddressOfNFSServer>
@@ -168,18 +168,18 @@ Ensure that your security standards are enforced for accessing. When configuring
      sudo systemctl status mssql-server
      ```
 
-   - Create a database to test that security is set up properly. The following example shows that being done via Transact-SQL; it can be done via SSMS.
+   - Create a database to test that security is set up properly. The following example shows that being done via Transact-SQL. It can also be done via SQL Server Management Studio (SSMS).
 
      :::image type="content" source="media/sql-server-linux-shared-disk-cluster-configure-nfs/20-createtestdatabase.png" alt-text="Screenshot showing how to create the test database.":::
 
-   - Stop [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] and verify it's shut down.
+   - Stop [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] and verify that it has shut down.
 
      ```bash
      sudo systemctl stop mssql-server
      sudo systemctl status mssql-server
      ```
 
-   - If you aren't creating any other NFS mounts, unmount the share. If you are, don't unmount.
+   - If you aren't creating any other NFS mounts, unmount the share. If you're creating other mounts, don't unmount.
 
      ```bash
      sudo umount <IPAddressOfNFSServer>:<FolderOnNFSServer> <FolderToMountIn>
@@ -245,7 +245,7 @@ Ensure that your security standards are enforced for accessing. When configuring
      - `<FolderOnNFSServer>` is the name of the NFS share
      - `<FolderMountedIn>` is the folder created in the previous step.
 
-1. Repeat the steps on the other node(s).
+1. Repeat the steps on the other nodes.
 
 ## Related content
 

@@ -1,10 +1,10 @@
 ---
-title: Migrate SQL Server Database From Windows to Linux
+title: Migrate SQL Server Database from Windows to Linux
 description: This tutorial shows how to take a SQL Server database backup on Windows and restore it to a Linux machine running SQL Server.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 11/18/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: upgrade-and-migration-article
@@ -53,7 +53,7 @@ There are several ways to create a backup file of a database on Windows. The fol
 
    :::image type="content" source="media/sql-server-linux-migrate-restore-database/ssms-create-backup.png" alt-text="Screenshot of using SSMS to create a backup file.":::
 
-1. In the **Backup Up Database** dialog, verify that **Backup type** is **Full** and **Back up to** is **Disk**. Note name and location of the file. For example, a database named `YourDB` on [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] has a default backup path of `C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\Backup\YourDB.bak`.
+1. In the **Backup Up Database** dialog, verify that **Backup type** option is **Full**, and the **Back up to** option is **Disk**. Note name and location of the file. For example, a database named `YourDB` on [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] has a default backup path of `C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\Backup\YourDB.bak`.
 
 1. Select **OK** to back up your database.
 
@@ -105,11 +105,11 @@ To restore the database, you must first transfer the backup file from the Window
    ```
 
 > [!TIP]  
-> There are alternatives to using **scp** for file transfer. One is to use [Samba](https://help.ubuntu.com/community/Samba) to configure an SMB network share between Windows and Linux. For a walkthrough on Ubuntu, see [Samba as a file server](https://ubuntu.com/server/docs/samba-as-a-file-server). Once established, you can access it as a network file share from Windows, such as `\\machinenameorip\share`.
+> There are alternatives to using **scp** for file transfer. One is to use [Samba](https://help.ubuntu.com/community/Samba) to configure an SMB network share between Windows and Linux. For a walkthrough on Ubuntu, see [Samba as a file server](https://documentation.ubuntu.com/server/samba-as-a-file-server). Once established, you can access it as a network file share from Windows, such as `\\machinenameorip\share`.
 
 ## Move the backup file before restoring
 
-At this point, the backup file is on your Linux server in your user's home directory. Before restoring the database to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], you must place the backup in a subdirectory of `/var/opt/mssql`, as this is owned by the user `mssql` and group `mssql`. If you're looking to change the default backup location, see the [Configure with mssql-conf](sql-server-linux-configure-mssql-conf.md#backupdir) article.
+At this point, the backup file is on your Linux server in your user's home directory. Before restoring the database to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], you must place the backup in a subdirectory of `/var/opt/mssql`, as this directory is owned by the user `mssql` and group `mssql`. If you're looking to change the default backup location, see the [Configure with mssql-conf](sql-server-linux-configure-mssql-conf.md#backupdir) article.
 
 1. In the same Windows bash session, connect remotely to your target Linux machine with **ssh**. The following example connects to the Linux machine `192.168.2.9` as user `user1`.
 
@@ -244,4 +244,4 @@ In this tutorial, you learned how to back up a database on Windows and move it t
 Next, explore other migration scenarios for SQL Server on Linux.
 
 > [!div class="nextstepaction"]
-> [Migrate databases to SQL Server on Linux](sql-server-linux-migrate-overview.md)
+> [Migrate databases and structured data to SQL Server on Linux](sql-server-linux-migrate-overview.md)

@@ -3,7 +3,7 @@ title: Create and Run Jobs for SQL Server on Linux
 description: Learn how to create a SQL Server Agent job on Linux using both Transact-SQL and SQL Server Management Studio (SSMS).
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/18/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -22,7 +22,7 @@ SQL Server jobs are used to regularly perform the same sequence of commands in y
 > - Schedule and run the job
 > - Perform the same steps in SSMS (optional)
 
-For known issues with SQL Server Agent on Linux, see the [Release notes for SQL Server 2017 on Linux](sql-server-linux-release-notes-2017.md).
+For known issues with SQL Server Agent on Linux, see [SQL Server on Linux: Known issues](sql-server-linux-known-issues.md).
 
 ## Prerequisites
 
@@ -43,7 +43,7 @@ The following prerequisites are optional:
 
 To use SQL Server Agent on Linux, you must first enable SQL Server Agent on a machine that already has SQL Server installed.
 
-1. To enable SQL Server Agent, follow the step below.
+1. To enable SQL Server Agent, run the following command.
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf set sqlagent.enabled true
@@ -56,7 +56,7 @@ To use SQL Server Agent on Linux, you must first enable SQL Server Agent on a ma
    ```
 
 > [!NOTE]  
-> Starting with [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] CU 4, SQL Server Agent is included with the `mssql-server` package and is disabled by default. For Agent set up prior to CU 4, see [Install SQL Server Agent on Linux](sql-server-linux-setup-sql-agent.md).
+> Starting with [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] CU 4, SQL Server Agent is included with the `mssql-server` package and is disabled by default. For Agent set up before CU 4, see [Install SQL Server Agent on Linux](sql-server-linux-setup-sql-agent.md).
 
 ## Create a sample database
 
@@ -156,7 +156,7 @@ You can also create and manage jobs remotely using SQL Server Management Studio 
 
 1. Verify that you have created a sample database named `SampleDB`.
 
-   <img src="./media/sql-server-linux-run-sql-server-agent-job/ssms-agent-0.png" alt="Create a SampleDB database"/>
+   :::image type="content" source="media/sql-server-linux-run-sql-server-agent-job/ssms-agent-0.png" alt-text="Screenshot of creating a SampleDB database." lightbox="media/sql-server-linux-run-sql-server-agent-job/ssms-agent-0.png":::
 
 1. Verify that SQL Agent was [Install SQL Server Agent on Linux](sql-server-linux-setup-sql-agent.md) and configured correctly. Look for the plus sign next to SQL Server Agent in the Object Explorer. If SQL Server Agent isn't enabled, try restarting the **mssql-server** service on Linux.
 

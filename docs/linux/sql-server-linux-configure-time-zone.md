@@ -4,7 +4,7 @@ description: In this article, learn how to configure the time zone on for SQL Se
 author: ericjulien
 ms.author: ericjulien
 ms.reviewer: randolphwest
-ms.date: 05/02/2025
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -20,7 +20,7 @@ This article describes how to configure the time zone for [!INCLUDE [sssql22-md]
 
 ## Overview
 
-[!INCLUDE [sssql22-md](../includes/sssql22-md.md)] and later versions on Linux uses Windows time zones internally. All Transact-SQL (T-SQL) commands use Windows time zones, for example the [CURRENT_TIMEZONE_ID](../t-sql/functions/current-timezone-transact-sql.md) function and [AT TIME ZONE](../t-sql/queries/at-time-zone-transact-sql.md) query operator.
+[!INCLUDE [sssql22-md](../includes/sssql22-md.md)] and later versions on Linux uses Windows time zones internally. All Transact-SQL (T-SQL) commands use Windows time zones, for example the [CURRENT_TIMEZONE_ID](../t-sql/functions/current-timezone-id-transact-sql.md) function and [AT TIME ZONE](../t-sql/queries/at-time-zone-transact-sql.md) query operator.
 
 1. [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux first determines which time zone to use, using the first valid result from the following sequence:
 

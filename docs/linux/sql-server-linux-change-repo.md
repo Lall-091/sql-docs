@@ -3,7 +3,7 @@ title: Configure Repositories for Installing and Upgrading SQL Server on Linux
 description: Check and configure source repositories for SQL Server on Linux. The source repository affects the version of SQL Server that is applied during installation and upgrade.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/02/2025
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: upgrade-and-migration-article
@@ -227,7 +227,7 @@ Configure the new repository to use for SQL Server installations and upgrades.
 
 ::: zone-end
 
-## Related content
+## Next step
 
 After you have configured the correct repository, you can proceed to [install](sql-server-linux-setup.md#platforms) or [update](sql-server-linux-setup.md#upgrade) SQL Server and any related packages from the new repository.
 

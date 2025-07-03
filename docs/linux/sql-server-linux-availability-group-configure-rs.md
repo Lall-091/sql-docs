@@ -4,7 +4,7 @@ description: Learn about configuring a SQL Server Always On Availability Group (
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 11/18/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -17,7 +17,7 @@ ms.custom:
 
 This article explains how to create a SQL Server Always On Availability Group (AG) on Linux *without* a cluster manager. This architecture provides read-scale only. It *doesn't* provide high availability.
 
-There are two types of architectures for AGs. An architecture for *high availability* uses a *cluster manager* to provide improved business continuity. To create the high-availability architecture, see [Configure SQL Server Always On Availability Group for high availability on Linux](sql-server-linux-availability-group-configure-ha.md).
+There are two types of architectures for availability groups. An architecture for *high availability* uses a *cluster manager* to provide improved business continuity. To create the high-availability architecture, see [Configure SQL Server Always On Availability Group for high availability on Linux](sql-server-linux-availability-group-configure-ha.md).
 
 An availability group with `CLUSTER_TYPE = NONE` can include replicas hosted on different operating system platforms. It can't support high availability.
 
@@ -27,7 +27,7 @@ An availability group with `CLUSTER_TYPE = NONE` can include replicas hosted on 
 
 Create the AG. Set `CLUSTER_TYPE = NONE`. In addition, set each replica with `FAILOVER_MODE = MANUAL`. Client applications running analytics or reporting workloads can directly connect to the secondary databases. You also can create a read-only routing list. Connections to the primary replica forward read connection requests to each of the secondary replicas from the routing list in a round-robin fashion.
 
-The following Transact-SQL script creates an AG named `ag1`. The script configures the AG replicas with `SEEDING_MODE = AUTOMATIC`. This setting causes SQL Server to automatically create the database on each secondary server after it's added to the AG. Update the following script for your environment. Replace the `<node1>` and `<node2>` values with the names of the SQL Server instances that host the replicas. Replace the `<5022>` value with the port you set for the endpoint. Run the following Transact-SQL script on the primary SQL Server replica:
+The following Transact-SQL script creates an AG named `ag1`. The script configures the AG replicas with `SEEDING_MODE = AUTOMATIC`. This setting causes SQL Server to automatically create the database on each secondary server after it is added to the AG. Update the following script for your environment. Replace the `<node1>` and `<node2>` values with the names of the SQL Server instances that host the replicas. Replace the `<5022>` value with the port you set for the endpoint. Run the following Transact-SQL script on the primary SQL Server replica:
 
 ```sql
 CREATE AVAILABILITY GROUP [ag1]

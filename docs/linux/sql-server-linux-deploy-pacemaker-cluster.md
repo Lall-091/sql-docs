@@ -1,10 +1,10 @@
 ---
-title: Deploy a Pacemaker cluster for SQL Server on Linux
+title: Deploy a Pacemaker Cluster for SQL Server on Linux
 description: Learn to deploy a Linux Pacemaker cluster for a SQL Server Always On availability group (AG) or failover cluster instance (FCI).
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 07/15/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -38,35 +38,35 @@ Use the following syntax to install the packages that make up the high availabil
 
 1. Register the server using the following syntax. You're prompted for a valid username and password.
 
-    ```bash
-    sudo subscription-manager register
-    ```
+   ```bash
+   sudo subscription-manager register
+   ```
 
 1. List the available pools for registration.
 
-    ```bash
-    sudo subscription-manager list --available
-    ```
+   ```bash
+   sudo subscription-manager list --available
+   ```
 
 1. Run the following command to associate RHEL high availability with the subscription
 
-    ```bash
-    sudo subscription-manager attach --pool=<PoolID>
-    ```
+   ```bash
+   sudo subscription-manager attach --pool=<PoolID>
+   ```
 
-    where *PoolId* is the pool ID for the high availability subscription from the previous step.
+   where *PoolId* is the pool ID for the high availability subscription from the previous step.
 
 1. Enable the repository to be able to use the high availability add-on.
 
-    ```bash
-    sudo subscription-manager repos --enable=rhel-ha-for-rhel-7-server-rpms
-    ```
+   ```bash
+   sudo subscription-manager repos --enable=rhel-ha-for-rhel-7-server-rpms
+   ```
 
 1. Install Pacemaker.
 
-    ```bash
-    sudo yum install pacemaker pcs fence-agents-all resource-agents
-    ```
+   ```bash
+   sudo yum install pacemaker pcs fence-agents-all resource-agents
+   ```
 
 ### [SUSE Linux Enterprise Server (SLES)](#tab/sles)
 
@@ -122,7 +122,9 @@ Pacemaker itself uses a user created on the distribution named *hacluster*. The 
 
 1. Next, create and start the Pacemaker cluster. There's one difference between RHEL and Ubuntu at this step. While on both distributions, installing `pcs` configures a default configuration file for the Pacemaker cluster, on RHEL, executing this command destroys any existing configuration and creates a new cluster.
 
-## <a id="create"></a> Create the Pacemaker cluster
+<a id="create"></a>
+
+## Create the Pacemaker cluster
 
 This section documents how to create and configure the cluster for each distribution of Linux.
 
@@ -176,7 +178,7 @@ The process for creating a Pacemaker cluster is different on SLES than it's on R
 
 1. If you configured an IP address for administration, you can test it in a browser, which also tests the password change for *hacluster*.
 
-   :::image type="content" source="media/sql-server-linux-deploy-pacemaker-cluster/image2.png" alt-text="Screenshot of hacluster." lightbox="media/sql-server-linux-deploy-pacemaker-cluster/image2.png":::
+   :::image type="content" source="media/sql-server-linux-deploy-pacemaker-cluster/image2.png" alt-text="Screenshot of hacluster.":::
 
 1. On another SLES server that will be a node of the cluster, run
 

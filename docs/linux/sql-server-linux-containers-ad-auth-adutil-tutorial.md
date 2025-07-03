@@ -1,10 +1,10 @@
 ---
-title: Configure Active Directory Authentication With SQL Server on Linux-Based Containers Using adutil
+title: Configure Active Directory Authentication with SQL Server on Linux-Based Containers Using adutil
 description: Step by step on how to configure Active Directory authentication with SQL Server on Linux containers using adutil
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: randolphwest
-ms.date: 11/18/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: tutorial

@@ -4,7 +4,7 @@ description: This article provides performance best practices and guidelines for
 author: tejasaks
 ms.author: tejasaks
 ms.reviewer: vanto, randolphwest
-ms.date: 11/18/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: best-practice
@@ -219,7 +219,8 @@ The following table provides recommendations for disk settings:
 #### Description
 
 - `vm.swappiness`: This parameter controls relative weight given to swapping out runtime process memory as compared to filesystem cache. The default value for this parameter is 60, which indicates swapping runtime process memory pages as compared to removing filesystem cache pages at ratio of 60:140. Setting the value 1 indicates strong preference for keeping runtime process memory in physical memory at expense of filesystem cache. Since [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] uses buffer pool as a data page cache and strongly prefers to write through to physical hardware bypassing filesystem cache for reliable recovery, aggressive swappiness configuration can be beneficial for high performing and dedicated [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
-You can find additional information at [Documentation for /proc/sys/vm/ - #swappiness](https://www.kernel.org/doc/html/latest/admin-guide/sysctl/vm.html#swappiness)
+
+  You can find additional information at [Documentation for /proc/sys/vm/ - #swappiness](https://www.kernel.org/doc/html/latest/admin-guide/sysctl/vm.html#swappiness)
 
 - `vm.dirty_*`: [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] file write accesses are uncached, satisfying its data integrity requirements. These parameters allow efficient asynchronous write performance and lower the storage I/O effect of Linux caching writes by allowing large enough caching while throttling flushing.
 

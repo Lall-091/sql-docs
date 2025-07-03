@@ -3,7 +3,7 @@ title: Install SQL Server Full-Text Search on Linux
 description: Learn how to install SQL Server Full-Text Search on Linux. Full-Text Search enables you to run full-text queries against character-based data in SQL Server tables.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/18/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -262,7 +262,7 @@ To use Semantic Search, you must first restore the Semantic Language Statistics 
    FROM DISK = N'/opt/mssql/misc/semanticsdb.bak'
    WITH FILE = 1,
        MOVE N'semanticsdb' TO N'/var/opt/mssql/data/semanticsDB.mdf',
-       MOVE N'semanticsdb_log' TO N'/var/opt/mssql/data/semanticsdb_log.ldf', 
+       MOVE N'semanticsdb_log' TO N'/var/opt/mssql/data/semanticsdb_log.ldf',
        NOUNLOAD, STATS = 5;
    GO
    ```
@@ -272,10 +272,10 @@ To use Semantic Search, you must first restore the Semantic Language Statistics 
 
 1. Run the following Transact-SQL command to register the semantic language statistics database.
 
-    ```sql
-    EXECUTE sp_fulltext_semantic_register_language_statistics_db @dbname = N'semanticsdb';
-    GO
-    ```
+   ```sql
+   EXECUTE sp_fulltext_semantic_register_language_statistics_db @dbname = N'semanticsdb';
+   GO
+   ```
 
 ## Related content
 

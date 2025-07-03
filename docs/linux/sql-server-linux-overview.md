@@ -3,7 +3,7 @@ title: Overview of SQL Server on Linux
 description: This article describes how SQL Server runs on Linux and provides information on how to learn more.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/02/2025
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: concept-article
@@ -67,10 +67,10 @@ To find out more about each release, see:
 
 To see what's new in each version for Windows, see:
 
-- [What's new in SQL Server 2025 Preview on Windows](../sql-server/what-s-new-in-sql-server-2025.md)
-- [What's new in SQL Server 2022 on Windows](../sql-server/what-s-new-in-sql-server-2022.md)
-- [What's new in SQL Server 2019 on Windows](../sql-server/what-s-new-in-sql-server-2019.md)
-- [What's new in SQL Server 2017 on Windows](../sql-server/what-s-new-in-sql-server-2017.md)
+- [What's new in SQL Server 2025 Preview](../sql-server/what-s-new-in-sql-server-2025.md)
+- [What's new in SQL Server 2022](../sql-server/what-s-new-in-sql-server-2022.md)
+- [What's new in SQL Server 2019](../sql-server/what-s-new-in-sql-server-2019.md)
+- [What's new in SQL Server 2017](../sql-server/what-s-new-in-sql-server-2017.md)
 
 > [!TIP]  
 > For answers to frequently asked questions, see the [SQL Server on Linux FAQ](sql-server-linux-faq.yml).

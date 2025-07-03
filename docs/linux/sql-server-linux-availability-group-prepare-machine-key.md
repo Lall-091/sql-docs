@@ -1,9 +1,9 @@
 ---
-title: Prepare machine key for contained availability groups on Linux and containers
+title: Prepare Machine Key for Contained Availability Groups on Linux and Containers
 description: Learn how to prepare a machine key in a contained availability group, for SQL Server on Linux and containers.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 09/05/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to

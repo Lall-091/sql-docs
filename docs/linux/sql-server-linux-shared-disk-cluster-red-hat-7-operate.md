@@ -4,7 +4,7 @@ description: Learn how to operate a Red Hat Enterprise Linux (RHEL) shared disk 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 11/18/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -173,17 +173,17 @@ View the resource agent logs at `/var/log/cluster/corosync.log`
 
 1. On an existing node from the cluster, authenticate the new node and add it to the cluster:
 
-    ```bash
-    sudo pcs cluster auth <nodeName3> -u hacluster
-    sudo pcs cluster node add <nodeName3>
-    ```
+   ```bash
+   sudo pcs cluster auth <nodeName3> -u hacluster
+   sudo pcs cluster node add <nodeName3>
+   ```
 
-    The following example adds a node named **vm3** to the cluster.
+   The following example adds a node named **vm3** to the cluster.
 
-    ```bash
-    sudo pcs cluster auth
-    sudo pcs cluster start
-    ```
+   ```bash
+   sudo pcs cluster auth
+   sudo pcs cluster start
+   ```
 
 ## Remove nodes from a cluster
 

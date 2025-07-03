@@ -3,7 +3,7 @@ title: Migrate Databases to SQL Server on Linux
 description: This article describes the different options for migrating databases and data to SQL Server on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/21/2025
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: upgrade-and-migration-article
@@ -30,15 +30,15 @@ If you want to migrate [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)
 
 For a tutorial on migrating a database with backup and restore, see the following article:
 
-- [Restore a SQL Server database from Windows to Linux](sql-server-linux-migrate-restore-database.md).
+- [Migrate a SQL Server database from Windows to Linux using backup and restore](sql-server-linux-migrate-restore-database.md).
 
 It's also possible to export your database to a BACPAC file (a compressed file that contains your database schema and data). If you have a BACPAC file, you can transfer this file to your Linux machine, and then import it to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. For more information, see the following articles:
 
-- [Export and import a database with SSMS or SqlPackage.exe](sql-server-linux-migrate-ssms.md)
+- [Export and import a database on Linux with SSMS or SqlPackage.exe on Windows](sql-server-linux-migrate-ssms.md)
 
 ## Migrate from other database servers
 
-You can migrate databases on other database systems to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. This includes Microsoft Access, DB2, MySQL, Oracle, and Sybase databases. In this scenario, use the SQL Server Management Assistant (SSMA) to automate the migration to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. For more information, see [Use SSMA to migrate databases to SQL Server on Linux](sql-server-linux-migrate-ssma.md).
+You can migrate databases on other database systems to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. This includes Microsoft Access, DB2, MySQL, Oracle, and Sybase databases. In this scenario, use the SQL Server Management Assistant (SSMA) to automate the migration to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. For more information, see [Automate database migration to Linux with the SQL Server Migration Assistant (SSMA)](sql-server-linux-migrate-ssma.md).
 
 ## Migrate structured data
 

@@ -1,9 +1,9 @@
 ---
-title: Start, stop, and restart SQL Server services on Linux
+title: Start, Stop, and Restart SQL Server Services on Linux
 description: Find out how to start, stop, or restart various SQL Server services on Linux. See how to use Transact-SQL and command-line tools for these actions.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 09/19/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -57,7 +57,9 @@ By default, only members of the local administrator group can start, stop, or re
 
 Stopping the [!INCLUDE [ssDE](../includes/ssde-md.md)] by using the Transact-SQL `SHUTDOWN` command requires membership in the **sysadmin** or **serveradmin** fixed server roles, and isn't transferable.
 
-## <a id="CommandLine"></a> Use command-line tools
+<a id="CommandLine"></a>
+
+## Use command-line tools
 
 The following steps show how to start, stop, restart, and check the status of the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] service on Linux. To manage a SQL Server container, see [Troubleshoot SQL Server on Linux](sql-server-linux-troubleshooting-guide.md).
 
@@ -77,7 +79,9 @@ You can stop, start, or restart the [!INCLUDE [ssDE](../includes/ssde-md.md)] se
 
 To set up and manage the SQL Server Agent, see [Install SQL Server Agent on Linux](sql-server-linux-setup-sql-agent.md). To restart the SQL Server Agent service, you must restart the [!INCLUDE [ssDE](../includes/ssde-md.md)] service.
 
-## <a id="TsqlProcedure"></a> Transact-SQL
+<a id="TsqlProcedure"></a>
+
+## Transact-SQL
 
 The [!INCLUDE [ssDE](../includes/ssde-md.md)] can be stopped by using the `SHUTDOWN` statement.
 
@@ -85,15 +89,15 @@ The [!INCLUDE [ssDE](../includes/ssde-md.md)] can be stopped by using the `SHUTD
 
 - To wait for currently running Transact-SQL statements and stored procedures to finish, and then stop the [!INCLUDE [ssDE](../includes/ssde-md.md)], execute the following statement.
 
-    ```sql
-    SHUTDOWN;
-    ```
+  ```sql
+  SHUTDOWN;
+  ```
 
 - To stop the [!INCLUDE [ssDE](../includes/ssde-md.md)] immediately, execute the following statement.
 
-    ```sql
-    SHUTDOWN WITH NOWAIT;
-    ```
+  ```sql
+  SHUTDOWN WITH NOWAIT;
+  ```
 
 For more information, see [SHUTDOWN](../t-sql/language-elements/shutdown-transact-sql.md).
 

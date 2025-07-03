@@ -1,10 +1,10 @@
 ---
-title: Limitations and known issues for SSIS on Linux
+title: Limitations and Known Issues for SSIS on Linux
 description: This article describes limitations and known issues for SQL Server Integration Services (SSIS) on Linux computers.
 author: lrtoyou1223
 ms.author: lle
 ms.reviewer: maghan, randolphwest
-ms.date: 01/03/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: troubleshooting-known-issue
@@ -33,7 +33,9 @@ The following features aren't supported in this release of SSIS on Linux:
 
 For other limitations and known issues with SSIS on Linux, see [SQL Server on Linux: Known issues](sql-server-linux-known-issues.md#sql-server-integration-services-ssis).
 
-## <a id="components"></a> Supported and unsupported components
+<a id="components"></a>
+
+## Supported and unsupported components
 
 The following built-in Integration Services components are supported on Linux. Some of them have limitations on the Linux platform. Built-in components that aren't listed here aren't supported on Linux.
 
@@ -142,7 +144,7 @@ The SQL Server log provider supports only SQL Authentication; it doesn't support
 The SSIS log providers for Text files, for XML files, and for SQL Server Profiler write their output to a file that you specify. The following considerations apply to the file path:
 
 - If you don't provide a path, the log provider writes to the current directory of the host. If the current user doesn't have permission to write to the current directory of the host, the log provider raises an error.
-- You can't use an environment variable in a file path. If you specify an environment variable, the literal text that you specify appears in the file path. For example, if you specify `%TMP%/log.txt`, the log  provider appends the literal text `/%TMP%/log.txt` to the current host directory.
+- You can't use an environment variable in a file path. If you specify an environment variable, the literal text that you specify appears in the file path. For example, if you specify `%TMP%/log.txt`, the log provider appends the literal text `/%TMP%/log.txt` to the current host directory.
 
 ## Related content
 

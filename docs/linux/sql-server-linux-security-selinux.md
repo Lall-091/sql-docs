@@ -1,9 +1,9 @@
 ---
-title: Get Started With SQL Server on SELinux
+title: Get Started with SQL Server on SELinux
 description: Learn about installing and configuring SQL Server on SELinux, using a Red Hat Enterprise Linux distribution.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 12/17/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to

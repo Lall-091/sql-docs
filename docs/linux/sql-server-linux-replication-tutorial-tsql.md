@@ -5,7 +5,7 @@ description: Configure SQL Server snapshot replication on Linux with two instanc
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 11/18/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: tutorial
@@ -129,14 +129,9 @@ To complete this tutorial, you need:
    USE [distribution];
    GO
 
-   IF (NOT EXISTS (SELECT *
-                   FROM sysobjects
-                   WHERE name = 'UIProperties'
-                         AND type = 'U'))
-       CREATE TABLE UIProperties
-       (
-           id INT
-       );
+   IF (NOT EXISTS (SELECT * FROM sysobjects
+       WHERE name = 'UIProperties' AND type = 'U'))
+   CREATE TABLE UIProperties(id INT);
 
    IF (EXISTS (SELECT *
                FROM ::fn_listextendedproperty ('SnapshotFolder', 'user', 'dbo', 'table', 'UIProperties', NULL, NULL)))
@@ -309,7 +304,7 @@ To complete this tutorial, you need:
    GO
    ```
 
-   Run the snapshot replication job to generate the snapshot:
+   Run the snapshot replication job to start the job:
 
    ```sql
    USE msdb;

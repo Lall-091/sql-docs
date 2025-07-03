@@ -4,7 +4,7 @@ description: Learn to configure a Red Hat Enterprise Linux (RHEL) shared disk fa
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 11/18/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -85,7 +85,7 @@ The first step is to configure the operating system on the cluster nodes. For th
 
 1. Configure the hosts file for each cluster node. The host file must include the IP address and name of every cluster node.
 
-    Check the IP address for each node. The following script shows the IP address of your current node.
+   Check the IP address for each node. The following script shows the IP address of your current node.
 
    ```bash
    sudo ip addr show

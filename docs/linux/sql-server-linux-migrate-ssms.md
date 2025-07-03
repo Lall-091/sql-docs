@@ -1,9 +1,9 @@
 ---
-title: Export and import a database on Linux
+title: Export and Import a Database on Linux
 description: This article shows how to use SQL Server Management Studio and SqlPackage.exe to export and import a database on SQL Server on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/15/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -56,7 +56,9 @@ The `.bacpac` file is successfully created at the location you chose, and you're
 
 The `.bacpac` file is imported to create a new database in the target server you specified.
 
-## <a id="sqlpackage"></a> SqlPackage command-line option
+<a id="sqlpackage"></a>
+
+## SqlPackage command-line option
 
 It's also possible to use the SQL Server Data Tools (SSDT) command-line tool, [SqlPackage](../tools/sqlpackage/sqlpackage.md), to export and import BACPAC files.
 

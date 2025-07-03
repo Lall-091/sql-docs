@@ -3,7 +3,7 @@ title: Troubleshoot SQL Server on Linux
 description: Troubleshoot SQL Server running on Linux or in a Linux container. Learn where to find information about supported features and known limitations.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/18/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: troubleshooting
@@ -116,9 +116,9 @@ For SQL dumps, use this script:
    sudo ls /var/opt/mssql/log | grep .mdmp
    ```
 
-## Start [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] in minimal configuration or in single user mode
+## Start SQL Server in minimal configuration or in single user mode
 
-### Start [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] in minimal configuration mode
+### Start SQL Server in minimal configuration mode
 
 This mode is useful if the setting of a configuration value (for example, over-committing memory) prevents the server from starting.
 
@@ -126,7 +126,7 @@ This mode is useful if the setting of a configuration value (for example, over-c
    sudo -u mssql /opt/mssql/bin/sqlservr -f
    ```
 
-### Start [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] in single user mode
+### Start SQL Server in single user mode
 
 Sometimes you might have to start an instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] in single-user mode by using the startup option `-m`. For more information, see [startup parameters](../database-engine/configure-windows/database-engine-service-startup-options.md#other-startup-options). For example, you might want to change server configuration options or recover a damaged `master` database or other system database.
 

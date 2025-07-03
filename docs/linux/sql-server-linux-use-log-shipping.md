@@ -3,7 +3,7 @@ title: Configure Log Shipping for SQL Server on Linux
 description: This tutorial shows a basic example of how to replicate a SQL Server instance on Linux to a secondary instance using log shipping.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/18/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -32,7 +32,7 @@ As described in the previous diagram, a log shipping session involves the follow
 ## Set up a network share for log shipping using CIFS
 
 > [!NOTE]  
-> This tutorial uses CIFS + Samba to setup the network share.
+> This tutorial uses Common Internet File System (CIFS) and Samba to set up the network share.
 
 ### Configure primary server
 
@@ -327,7 +327,7 @@ As described in the previous diagram, a log shipping session involves the follow
 1. Verify that log shipping failover works by executing the following command:
 
    > [!WARNING]  
-   > This command will bring the secondary database online and break the log shipping configuration. You need to reconfigure log shipping after running this command.
+   > This command brings the secondary database online, and breaks the log shipping configuration. You need to reconfigure log shipping after running this command.
 
    ```sql
    RESTORE DATABASE SampleDB

@@ -1,9 +1,9 @@
 ---
-title: SQL Server high availability for Linux deployments
+title: SQL Server High Availability for Linux Deployments
 description: Learn about the high availability options for SQL Server on Linux, such as availability groups, failover cluster instances (FCI), and log shipping.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 06/28/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -16,7 +16,7 @@ ms.custom:
 
 Starting with [!INCLUDE [sssql17-md](../includes/sssql17-md.md)], [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is supported on both Linux and Windows. Like Windows-based [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] deployments, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] databases and instances need to be highly available under Linux. This article covers the technical aspects of planning and deploying highly available Linux-based [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] databases and instances, as well as some of the differences from Windows-based installations. Because [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] might be new for Linux professionals, and Linux might be new for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] professionals, the article at times introduces concepts that might be familiar to some and unfamiliar to others.
 
-## [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] availability options for Linux deployments
+## SQL Server availability options for Linux deployments
 
 Besides backup and restore, the same three availability features are available on Linux as for Windows-based deployments:
 
@@ -151,8 +151,8 @@ To provide high availability and disaster recovery for your [!INCLUDE [ssnoversi
 | Partner | Description |
 | --- | --- |
 | **[DH2i](https://dh2i.com)** | DxEnterprise is Smart Availability software for Windows, Linux & Docker that helps you achieve the nearest-to-zero planned and unplanned downtime, unlocks huge cost savings, drastically simplifies management, and gets you both physical and logical consolidation.<br /><br />- [Deploy availability groups with DH2i DxEnterprise on Kubernetes](tutorial-sql-server-containers-kubernetes-dh2i.md)<br />- [Tutorial: Set up a three node Always On availability group with DH2i DxEnterprise](/azure/azure-sql/virtual-machines/linux/dh2i-high-availability-tutorial) |
-| **[HPE Serviceguard](https://www.hpe.com/us/en/product-catalog/detail/pip.376220.html)** | HPE SGLX offers context-sensitive monitoring and recovery options for Failover Cluster Instance and Always On Availability Groups. Maximize uptime with HPE SGLX without compromising data integrity and performance.<br /><br />- [Tutorial: Set up a three node Always On availability group with HPE Serviceguard for Linux](sql-server-availability-group-ha-hpe.md). |
-| **[Pacemaker](https://www.clusterlabs.org/pacemaker/)** | Pacemaker is an open source high-availability cluster resource manager. With Corosync, an open source group communication system, Pacemaker can detect component failures and orchestrate necessary failover procedures to minimize interruptions to applications.<br /><br />- [Pacemaker for availability groups and failover cluster instances on Linux](sql-server-linux-pacemaker-basics.md)<br />- [Deploy a Pacemaker cluster for SQL Server on Linux](sql-server-linux-deploy-pacemaker-cluster.md) |
+| **[HPE Serviceguard](https://buy.hpe.com/us/en/software/high-availability-disaster-recovery-software/serviceguard-software/serviceguard-for-linux/hpe-serviceguard-for-linux/p/376220)** | HPE SGLX offers context-sensitive monitoring and recovery options for Failover Cluster Instance and Always On Availability Groups. Maximize uptime with HPE SGLX without compromising data integrity and performance.<br /><br />- [Tutorial: Set up a three node Always On availability group with HPE Serviceguard for Linux](sql-server-availability-group-ha-hpe.md). |
+| **[Pacemaker](https://www.clusterlabs.org/projects/pacemaker)** | Pacemaker is an open source high-availability cluster resource manager. With Corosync, an open source group communication system, Pacemaker can detect component failures and orchestrate necessary failover procedures to minimize interruptions to applications.<br /><br />- [Pacemaker for availability groups and failover cluster instances on Linux](sql-server-linux-pacemaker-basics.md)<br />- [Deploy a Pacemaker cluster for SQL Server on Linux](sql-server-linux-deploy-pacemaker-cluster.md) |
 
 ## Related content
 

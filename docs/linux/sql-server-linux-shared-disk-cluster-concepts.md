@@ -4,7 +4,7 @@ description: Concepts for SQL Server failover cluster instances on Linux include
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 05/02/2025
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -61,6 +61,7 @@ All FCIs, whether they are on Linux or Windows Server, require some form of shar
 - iSCSI
 - Network File System (NFS)
 - Server Message Block (SMB)
+
 Under Windows Server, there are slightly different options. One option not currently supported for Linux-based FCIs is the ability to use a disk that is local to the node for `tempdb`, which is [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]'s temporary workspace.
 
 In a configuration that spans multiple locations, what is stored at one data center must be synchronized with the other. In the event of a failover, the FCI is able to come online and the storage is seen to be the same. Achieving this requires some external method for storage replication, whether it's done via the underlying storage hardware or some software-based utility.

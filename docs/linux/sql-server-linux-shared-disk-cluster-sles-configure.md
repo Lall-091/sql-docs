@@ -4,7 +4,7 @@ description: Implement high availability by configuring SUSE Linux Enterprise Se
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 11/18/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -83,11 +83,11 @@ The first step is to configure the operating system on the cluster nodes. For th
 
    All cluster nodes must be able to access each other via SSH. Tools like `hb_report` or `crm_report` (for troubleshooting) and Hawk's History Explorer require passwordless SSH access between the nodes, otherwise they can only collect data from the current node. In case you use a non-standard SSH port, use the `-X` option (see [Other Requirements and Recommendations](https://documentation.suse.com/sle-ha/12-SP5/single-html/SLE-HA-guide/index.html#sec-ha-requirements-other)). For example, if your SSH port is 3479, invoke `crm_report` with:
 
-    ```bash
-    crm_report -X "-p 3479" [...]
-    ```
+   ```bash
+   crm_report -X "-p 3479" [...]
+   ```
 
-    For more information, see [the Administration Guide](https://documentation.suse.com/sle-ha/12-SP5/single-html/SLE-HA-guide/index.html#app-ha-troubleshooting).
+   For more information, see [the Administration Guide](https://documentation.suse.com/sle-ha/12-SP5/single-html/SLE-HA-guide/index.html#app-ha-troubleshooting).
 
 In the next section you'll configure shared storage and move your database files to that storage.
 
@@ -130,11 +130,11 @@ Before configuring the client NFS to mount the [!INCLUDE [ssnoversion-md](../inc
 
 1. Validate that [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] starts successfully with the new file path. Do this on each node. At this point only one node should run [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] at a time. They can't both run at the same time because they will both try to access the data files simultaneously (to avoid accidentally starting [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on both nodes, use a File System cluster resource, to make sure the share isn't mounted twice by the different nodes). The following commands start [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], check the status, and then stop [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 
-    ```bash
-    sudo systemctl start mssql-server
-    sudo systemctl status mssql-server
-    sudo systemctl stop mssql-server
-    ```
+   ```bash
+   sudo systemctl start mssql-server
+   sudo systemctl status mssql-server
+   sudo systemctl stop mssql-server
+   ```
 
 At this point, both instances of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] are configured to run with the database files on the shared storage. The next step is to configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] for Pacemaker.
 
@@ -142,61 +142,61 @@ At this point, both instances of [!INCLUDE [ssnoversion-md](../includes/ssnovers
 
 1. **On both cluster nodes, create a file to store the SQL Server username and password for the Pacemaker login**. The following command creates and populates this file:
 
-    ```bash
-    sudo touch /var/opt/mssql/secrets/passwd
-    sudo echo '<loginName>' >> /var/opt/mssql/secrets/passwd
-    sudo echo '<password>' >> /var/opt/mssql/secrets/passwd
-    sudo chown root:root /var/opt/mssql/secrets/passwd
-    sudo chmod 600 /var/opt/mssql/secrets/passwd
-    ```
+   ```bash
+   sudo touch /var/opt/mssql/secrets/passwd
+   sudo echo '<loginName>' >> /var/opt/mssql/secrets/passwd
+   sudo echo '<password>' >> /var/opt/mssql/secrets/passwd
+   sudo chown root:root /var/opt/mssql/secrets/passwd
+   sudo chmod 600 /var/opt/mssql/secrets/passwd
+   ```
 
    > [!CAUTION]  
    > [!INCLUDE [password-complexity](includes/password-complexity.md)]
 
 1. **All cluster nodes must be able to access each other via SSH**. Tools like hb_report or crm_report (for troubleshooting) and Hawk's History Explorer require passwordless SSH access between the nodes, otherwise they can only collect data from the current node. In case you use a non-standard SSH port, use the -X option (see man page). For example, if your SSH port is 3479, invoke an hb_report with:
 
-    ```bash
-    crm_report -X "-p 3479" [...]
-    ```
+   ```bash
+   crm_report -X "-p 3479" [...]
+   ```
 
-    For more information, see [System Requirements and Recommendations in the SUSE documentation](https://documentation.suse.com/sle-ha/12-SP5/html/SLE-HA-all/cha-ha-requirements.html).
+   For more information, see [System Requirements and Recommendations in the SUSE documentation](https://documentation.suse.com/sle-ha/12-SP5/html/SLE-HA-all/cha-ha-requirements.html).
 
 1. **Install the High Availability extension**. To install the extension, follow the steps in the following SUSE article:
 
-    [Installation and Setup Quick Start](https://documentation.suse.com/sle-ha/12-SP5/html/SLE-HA-all/art-ha-install-quick.html)
+   [Installation and Setup Quick Start](https://documentation.suse.com/sle-ha/12-SP5/html/SLE-HA-all/art-ha-install-quick.html)
 
 1. **Install the FCI resource agent for SQL Server**. Run the following commands on both nodes:
 
-    ```bash
-    sudo zypper addrepo -fc https://packages.microsoft.com/config/sles/12/mssql-server-2017.repo
-    sudo zypper --gpg-auto-import-keys refresh
-    sudo zypper install mssql-server-ha
-    ```
+   ```bash
+   sudo zypper addrepo -fc https://packages.microsoft.com/config/sles/12/mssql-server-2017.repo
+   sudo zypper --gpg-auto-import-keys refresh
+   sudo zypper install mssql-server-ha
+   ```
 
 1. **Automatically set up the first node**. The next step is to set up a running one-node cluster by configuring the first node, SLES1. Follow the instructions in the SUSE article, [Setting Up the First Node](https://documentation.suse.com/sle-ha/12-SP5/html/SLE-HA-all/art-ha-install-quick.html#sec-ha-inst-quick-setup-1st-node).
 
-    When finished, check the cluster status with `crm status`:
+   When finished, check the cluster status with `crm status`:
 
-    ```bash
-    crm status
-    ```
+   ```bash
+   crm status
+   ```
 
-    It should show that one node, SLES1, is configured.
+   It should show that one node, SLES1, is configured.
 
 1. **Add nodes to an existing cluster**. Next join the SLES2 node to the cluster. Follow the instructions in the SUSE article, [Adding the Second Node](https://documentation.suse.com/sle-ha/12-SP5/html/SLE-HA-all/art-ha-install-quick.html#sec-ha-inst-quick-setup-2nd-node).
 
-    When finished, check the cluster status with **crm status**. If you have successfully added a second node, the output is similar to the following:
+   When finished, check the cluster status with **crm status**. If you have successfully added a second node, the output is similar to the following:
 
-    ```output
-    2 nodes configured
-    1 resource configured
-    Online: [ SLES1 SLES2 ]
-    Full list of resources:
-    admin_addr     (ocf::heartbeat:IPaddr2):       Started SLES1
-    ```
+   ```output
+   2 nodes configured
+   1 resource configured
+   Online: [ SLES1 SLES2 ]
+   Full list of resources:
+   admin_addr     (ocf::heartbeat:IPaddr2):       Started SLES1
+   ```
 
-    > [!NOTE]  
-    > **admin_addr** is the virtual IP cluster resource which is configured during initial one-node cluster setup.
+   > [!NOTE]  
+   > **admin_addr** is the virtual IP cluster resource which is configured during initial one-node cluster setup.
 
 1. **Removal procedures**. If you need to remove a node from the cluster, use the **ha-cluster-remove** bootstrap script. For more information, see [Overview of the Bootstrap Scripts](https://documentation.suse.com/sle-ha/12-SP5/html/SLE-HA-all/art-ha-install-quick.html#sec-ha-inst-quick-bootstrap).
 

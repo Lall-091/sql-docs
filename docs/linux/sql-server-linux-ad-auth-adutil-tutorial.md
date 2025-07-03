@@ -1,10 +1,10 @@
 ---
-title: Configure Active Directory Authentication With SQL Server on Linux Using adutil
+title: Configure Active Directory Authentication with SQL Server on Linux Using adutil
 description: Step by step on how to configure Active Directory authentication with SQL Server on Linux using adutil
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: vanto, randolphwest
-ms.date: 11/18/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: tutorial
@@ -43,7 +43,7 @@ Make sure there's a forwarding host (A) entry added in Active Directory for the 
 
 :::image type="content" source="media/sql-server-linux-ad-auth-adutil-tutorial/host-a-record.png" alt-text="Screenshot of add host record.":::
 
-For this tutorial, we're using an environment in Azure with three virtual machines (VMs). One VM is a Windows Server computer named `adVM.contoso.com`, running as a Domain Controller (DC) with the domain name `contoso.com`. The second VM is a client machine running Windows 10 named `winbox`, which has SQL Server Management Studio (SSMS) installed. The third machine is an Ubuntu 18.04 LTS machine named `sql1`, which hosts SQL Server.
+For this tutorial, you use an environment in Azure with three virtual machines. One virtual machine (VM) is a Windows Server computer named `adVM.contoso.com`, running as a Domain Controller (DC) with the domain name `contoso.com`. The second VM is a client machine running Windows 10 named `winbox`, which has SQL Server Management Studio (SSMS) installed. The third machine is an Ubuntu 18.04 LTS machine named `sql1`, which hosts SQL Server.
 
 ## Join the Linux host machine to your Active Directory domain
 
@@ -65,7 +65,7 @@ To install **adutil**, follow the steps explained in the article [Introduction t
    kinit privilegeduser@CONTOSO.COM
    ```
 
-1. Using **adutil**, create the new user that will be the privileged Active Directory account by SQL Server.
+1. Using **adutil**, create the new user to use as the privileged Active Directory account by SQL Server.
 
    Passwords can be specified in three different ways. If you use more than one of these methods, they take precedence in the following order:
 
@@ -98,7 +98,7 @@ To install **adutil**, follow the steps explained in the article [Introduction t
    - `-n`: The name of the account to assign the SPNs.
    - `-s`: The service name to use for generating SPNs. In this case it's for the SQL Server service, which is why the service name is `MSSQLSvc`.
    - `-H`: The hostname to use for generating SPNs. If not specified, the local host's FQDN is used. In this case, the host name is `sql1` and the FQDN is `sql1.contoso.com`.
-   - `-p`: The port to use for generating SPNs. If not specified, SPNs are generated without a port. SQL connections only work in this case when the SQL Server is listening to the default port, 1433.
+   - `-p`: The port to use for generating SPNs. If not specified, SPNs are generated without a port. SQL connections only work in this case when the SQL Server instance is listening to the default port, 1433.
 
 ## Create the SQL Server service keytab file using mssql-conf
 
@@ -106,7 +106,7 @@ You can install **adutil** and integrate it with **mssql-conf**, to create and c
 
 ### Prerequisites
 
-1. Make sure that the `/var/opt/mssql/mssql.conf` file is owned by `mssql` and not `root`. If this isn't the case, you must run the **mssql-conf** commands using `sudo`.
+1. Make sure that the `mssql` user owns the `/var/opt/mssql/mssql.conf` file, and not `root`. Otherwise, you must run the **mssql-conf** commands using `sudo`.
 
 1. On a domain controller, in the Active Directory settings for the `network.privilegedadaccount` account (in these examples, `sqluser@CONTOSO.COM`), enable the following options under the **Account** tab, in the **Account options** section:
 
@@ -230,7 +230,7 @@ If you installed **adutil** and integrated it with **mssql-conf**, you can skip 
 
    The `adutil keytab [ create | autocreate ]` doesn't overwrite the previous files; it just appends to the file if already present.
 
-1. Make sure the created keytab is owned by the `mssql` user, and that only the `mssql` user has read/write access to the file. You can run the `chown` and `chmod` commands as follows:
+1. Make sure that the `mssql` user owns the created keytab, and that only the `mssql` user has read/write access to the file. You can run the `chown` and `chmod` commands as follows:
 
    ```bash
    chown mssql /var/opt/mssql/secrets/mssql.keytab
@@ -256,7 +256,7 @@ sudo systemctl restart mssql-server
 
 ## Create Active Directory-based SQL Server logins in Transact-SQL
 
-Connect to the SQL Server and run the following commands to create the login, and confirm that it exists.
+Connect to the SQL Server instance and run the following commands to create the login, and confirm that it exists.
 
 ```sql
 CREATE LOGIN [contoso\privilegeduser]
@@ -268,9 +268,9 @@ FROM sys.server_principals;
 
 ## Connect to SQL Server using Active Directory authentication
 
-To connect using [SSMS](../ssms/download-sql-server-management-studio-ssms.md) or [Azure Data Studio](/azure-data-studio/download-azure-data-studio), log into the SQL Server with your Windows credentials.
+To connect using [SSMS](../ssms/download-sql-server-management-studio-ssms.md), log into the SQL Server instance with your Windows credentials.
 
-You can also use a tool like [**sqlcmd**](../tools/sqlcmd/sqlcmd-utility.md) to connect to the SQL Server using Windows Authentication.
+You can also use a tool like the [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) to connect to the SQL Server instance using Windows Authentication.
 
 ```bash
 sqlcmd -E -S 'sql1.contoso.com'

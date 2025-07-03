@@ -343,7 +343,7 @@ On Linux servers, configure the availability group and then configure the cluste
 
 ### Set up the first node
 
-   Refer to [SLES installation instructions](https://documentation.suse.com/sle-ha/12-SP5/).
+Refer to [SLES installation instructions](https://documentation.suse.com/sle-ha/12-SP5/).
 
 1. Sign in as `root` to the physical or virtual machine you want to use as cluster node.
 1. Start the bootstrap script by executing:

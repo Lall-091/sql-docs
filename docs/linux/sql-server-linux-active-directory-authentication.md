@@ -5,7 +5,7 @@ description: This tutorial provides the configuration steps for Active Directory
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: vanto, randolphwest
-ms.date: 01/21/2025
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: tutorial
@@ -63,12 +63,10 @@ Join your [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Linux host 
    New-ADUser sqlsvc -AccountPassword (Read-Host -AsSecureString "Enter Password") -PasswordNeverExpires $true -Enabled $true
    ```
 
-   > [!NOTE]  
-   > It's a security best practice to have a dedicated Active Directory account for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], so that the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance credentials aren't shared with other services using the same account. However, you can optionally reuse an existing Active Directory account if you know the account's password (which is required to generate a keytab file in the next step). Additionally, the account should be enabled to support 128-bit and 256-bit Kerberos AES encryption (`msDS-SupportedEncryptionTypes` attribute) on the user account. To validate the account is enabled for AES encryption, locate the account in **Active Directory Users and Computers** utility, and select **Properties**. Locate the **Accounts** tab in **Properties**, and validate the two following checkboxes are selected.  
-   >  
-   > 1. **This account supports Kerberos AES 128 bit encryption**
-   >  
-   > 2. **This account supports Kerberos AES 256 bit encryption**
+   It's a security best practice to have a dedicated Active Directory account for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], so that the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance credentials aren't shared with other services using the same account. However, you can optionally reuse an existing Active Directory account if you know the account's password (which is required to generate a keytab file in the next step). Additionally, the account should be enabled to support 128-bit and 256-bit Kerberos AES encryption (`msDS-SupportedEncryptionTypes` attribute) on the user account. To validate the account is enabled for AES encryption, locate the account in **Active Directory Users and Computers** utility, and select **Properties**. Locate the **Accounts** tab in **Properties**, and validate the two following checkboxes are selected.
+
+   1. **This account supports Kerberos AES 128 bit encryption**
+   1. **This account supports Kerberos AES 256 bit encryption**
 
 1. Set the ServicePrincipalName (SPN) for this account using the **setspn.exe** tool. The SPN must be formatted exactly as specified in the following example. You can find the fully qualified domain name of the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] host machine by running `hostname --all-fqdns` on the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] host. The TCP port should be 1433 unless you have configured [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] to use a different port number.
 
@@ -99,7 +97,7 @@ Configuring Active Directory authentication for [!INCLUDE [ssnoversion-md](../in
 
 1. Check the Key Version Number (KVNO) for the Active Directory account created in the previous step. Usually it's 2, but it could be another integer if you changed the account's password multiple times. On the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] host machine, run the following commands:
 
-    - The below examples assume the `user` is in the `@CONTOSO.COM` domain. Modify the user and domain name to your user and domain name.
+   - The below examples assume the `user` is in the `@CONTOSO.COM` domain. Modify the user and domain name to your user and domain name.
 
    ```bash
    kinit user@CONTOSO.COM
@@ -112,10 +110,10 @@ Configuring Active Directory authentication for [!INCLUDE [ssnoversion-md](../in
 
 1. Using **[ktpass](/windows-server/administration/windows-commands/ktpass)**, add keytab entries for each SPN using the following commands on a Windows machine Command Prompt:
 
-    - `<DomainName>\<UserName>` - Active Directory user account
-    - `@CONTOSO.COM` - Use your domain name
-    - `/kvno <#>` - Replace `<#>` with the KVNO obtained in an earlier step
-    - `<password>` - [!INCLUDE [password-complexity](includes/password-complexity.md)]
+   - `<DomainName>\<UserName>` - Active Directory user account
+   - `@CONTOSO.COM` - Use your domain name
+   - `/kvno <#>` - Replace `<#>` with the KVNO obtained in an earlier step
+   - `<password>` - [!INCLUDE [password-complexity](includes/password-complexity.md)]
 
    ```cmd
    ktpass /princ MSSQLSvc/<fully qualified domain name of host machine>:<tcp port>@CONTOSO.COM /ptype KRB5_NT_PRINCIPAL /crypto aes256-sha1 /mapuser <DomainName>\<UserName> /out mssql.keytab -setpass -setupn /kvno <#> /pass <password>

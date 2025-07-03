@@ -1,10 +1,10 @@
 ---
-title: Pacemaker for availability groups and failover cluster instances on Linux
+title: Pacemaker for Availability Groups and Failover Cluster Instances on Linux
 description: Learn about using Pacemaker for high availability options for SQL Server on Linux.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto, amitkh-msft
-ms.date: 06/28/2024
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -103,11 +103,11 @@ Log locations for Pacemaker clusters differ depending on the distribution.
 
 To change the default logging location, modify `corosync.conf`.
 
-## Plan Pacemaker clusters for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]
+## Plan Pacemaker clusters for SQL Server
 
 This section discusses the important planning points for a Pacemaker cluster.
 
-### Virtualize Linux-based Pacemaker clusters for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]
+### Virtualize Linux-based Pacemaker clusters for SQL Server
 
 Using virtual machines to deploy Linux-based [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] deployments for AGs and FCIs is covered by the same rules as for their Windows-based counterparts. There's a base set of rules for supportability of virtualized [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] deployments provided by Microsoft in [Support policy for Microsoft SQL Server products that are running in a hardware virtualization environment](/troubleshoot/sql/general/support-policy-hardware-virtualization-product). Different hypervisors such as Microsoft's Hyper-V and VMware's ESXi might have different variances on top of that, due to differences in the platforms themselves.
 

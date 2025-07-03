@@ -4,7 +4,7 @@ description: This article provides best practices and guidance for running SQL S
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: randolphwest
-ms.date: 01/21/2025
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -510,6 +510,6 @@ Tolerations:               node.kubernetes.io/memory-pressure:NoSchedule op=Exis
 
 ## Related content
 
-- [Quickstart: Deploy a SQL Server container cluster on Azure](quickstart-sql-server-containers-azure.md)
+- [Quickstart: Deploy a SQL Server container cluster on Azure or Red Hat OpenShift](quickstart-sql-server-containers-azure.md)
 - [Quickstart: Deploy a SQL Server Linux container to Kubernetes using Helm charts](sql-server-linux-containers-deploy-helm-charts-kubernetes.md)
 - [Deploy availability groups with DH2i DxEnterprise on Kubernetes](tutorial-sql-server-containers-kubernetes-dh2i.md)

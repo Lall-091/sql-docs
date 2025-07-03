@@ -4,7 +4,7 @@ description: Learn how to run SQL Server Integration Services (SSIS) packages on
 author: lrtoyou1223
 ms.author: lle
 ms.reviewer: maghan, randolphwest
-ms.date: 01/21/2025
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -34,9 +34,9 @@ To run an SSIS package on a Linux computer, do the following things:
 1. Copy the SSIS package to the Linux computer.
 1. Run the following command:
 
-    ```bash
-    dtexec /F \<package name \> /DE <protection password>
-    ```
+   ```bash
+   dtexec /F \<package name \> /DE <protection password>
+   ```
 
 ## Run an encrypted (password-protected) package
 
@@ -44,32 +44,32 @@ There are three ways to run an SSIS package that's encrypted with a password:
 
 1. Set the value of the environment variable `SSIS_PACKAGE_DECRYPT`, as shown in the following example:
 
-    ```bash
-    SSIS_PACKAGE_DECRYPT=test /opt/ssis/bin/dtexec /f package.dtsx
-    ```
+   ```bash
+   SSIS_PACKAGE_DECRYPT=test /opt/ssis/bin/dtexec /f package.dtsx
+   ```
 
 1. Specify the `/de[crypt]` option to enter the password interactively, as shown in the following example:
 
-    ```bash
-    /opt/ssis/bin/dtexec /f package.dtsx /de
+   ```bash
+   /opt/ssis/bin/dtexec /f package.dtsx /de
 
-    Enter decryption password:
-    ```
+   Enter decryption password:
+   ```
 
 1. Specify the `/de` option to provide the password on the command line, as shown in the following example. This method isn't recommended because it stores the decryption password with the command in the command history.
 
-    ```bash
-    opt/ssis/bin/dtexec /f package.dtsx /de test
+   ```bash
+   opt/ssis/bin/dtexec /f package.dtsx /de test
 
-    Warning: Using /De[crypt] <password> may store decryption password in command history.
+   Warning: Using /De[crypt] <password> may store decryption password in command history.
 
-    You can use /De[crypt] instead to enter interactive mode,
-    or use environment variable SSIS_PACKAGE_DECRYPT to set decryption password.
-    ```
+   You can use /De[crypt] instead to enter interactive mode,
+   or use environment variable SSIS_PACKAGE_DECRYPT to set decryption password.
+   ```
 
 ## Design packages
 
-**Connect to ODBC data sources**. With SSIS on Linux CTP 2.1 Refresh and later, SSIS packages can use ODBC connections on Linux. This functionality has been tested with the SQL Server and the MySQL ODBC drivers, but is also expected to work with any Unicode ODBC driver that observes the ODBC specification. At design time, you can provide either a DSN or a connection string to connect to the ODBC data; you can also use Windows authentication. For more info, see the [blog post announcing ODBC support on Linux](https://techcommunity.microsoft.com/t5/sql-server-integration-services/odbc-is-supported-in-ssis-on-linux-sql-server-2017-ctp-2-1/ba-p/388346).
+**Connect to ODBC data sources**. With SSIS on Linux CTP 2.1 Refresh and later, SSIS packages can use ODBC connections on Linux. This functionality has been tested with the SQL Server and the MySQL ODBC drivers, but is also expected to work with any Unicode ODBC driver that observes the ODBC specification. At design time, you can provide either a DSN or a connection string to connect to the ODBC data; you can also use Windows authentication. For more info, see the [blog post announcing ODBC support on Linux](https://techcommunity.microsoft.com/blog/ssis/odbc-is-supported-in-ssis-on-linux-sql-server-2017-ctp-2-1-refresh/388346).
 
 **Paths**. Provide Windows-style paths in your SSIS packages. SSIS on Linux doesn't support Linux-style paths, but maps Windows-style paths to Linux-style paths at run time. Then, for example, SSIS on Linux maps the Windows-style path `C:\test` to the Linux-style path `/test`.
 
@@ -89,8 +89,8 @@ For detailed info about the limitations and known issues of SSIS on Linux, see [
 
 For more info about SSIS on Linux, see the following blog posts:
 
-- [SSIS on Linux is available in SQL Server 2017 CTP 2.1](https://blogs.msdn.microsoft.com/ssis/2017/05/17/ssis-helsinki-is-available-in-sql-server-vnext-ctp2-1/)
-- [ODBC is supported in SSIS on Linux (SQL Server 2017 CTP 2.1 refresh)](https://blogs.msdn.microsoft.com/ssis/2017/06/16/odbc-is-supported-in-ssis-on-linux-ssis-helsinki-ctp2-1-refresh/)
+- [SSIS on Linux is available in SQL Server 2017 CTP 2.1](https://techcommunity.microsoft.com/category/sql-server/blog/ssis)
+- [ODBC is supported in SSIS on Linux (SQL Server 2017 CTP 2.1 refresh)](https://techcommunity.microsoft.com/category/sql-server/blog/ssis)
 
 ## More info about SSIS
 

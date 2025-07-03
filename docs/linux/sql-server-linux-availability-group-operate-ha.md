@@ -4,7 +4,7 @@ description: This article describes how to perform a rolling upgrade with SQL Se
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 01/21/2025
+ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -73,13 +73,13 @@ Before you begin, back up each database.
 
    If the availability group cluster type is `NONE`, manually fail over. Complete the following steps in order:
 
-      a. The following command sets the primary replica to secondary. Replace `AG1` with the name of your availability group. Run the Transact-SQL command on the instance of SQL Server that hosts the primary replica.
+   1. The following command sets the primary replica to secondary. Replace `AG1` with the name of your availability group. Run the Transact-SQL command on the instance of SQL Server that hosts the primary replica.
 
       ```transact-sql
       ALTER AVAILABILITY GROUP [ag1] SET (ROLE = SECONDARY);
       ```
 
-      b. The following command sets a synchronous secondary replica to primary. Run the following Transact-SQL command on the target instance of SQL Server - the instance that hosts the synchronous secondary replica.
+   1. The following command sets a synchronous secondary replica to primary. Run the following Transact-SQL command on the target instance of SQL Server - the instance that hosts the synchronous secondary replica.
 
       ```transact-sql
       ALTER AVAILABILITY GROUP [ag1] FAILOVER;
