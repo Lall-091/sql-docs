@@ -4,7 +4,7 @@ description: SESSION_CONTEXT returns the value of the specified key in the curre
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: derekw, randolphwest
-ms.date: 05/27/2025
+ms.date: 07/07/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -69,7 +69,7 @@ SELECT SESSION_CONTEXT(N'user_id');
 
 | Issue | Date discovered | Status | Date resolved |
 | --- | --- | --- | --- |
-| An Access Violation (AV) exception might occur with the `SESSION_CONTEXT` function under certain conditions. You might encounter AV exceptions or wrong results when the `SESSION_CONTEXT` function runs within a parallel execution plan when the session is reset for reuse.<br /><br />A fix, which was introduced in [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] CU 14 to address a wrong results issue with `SESSION_CONTEXT` within parallel plans, was later found to cause AV exceptions under certain conditions.<br /><br />To mitigate this issue, you can enable Trace Flag 11024 as a startup, global, or session trace flag. This trace flag forces `SESSION_CONTEXT` to execute serially, preventing it from participating in parallel query plans.<br /><br />**Applies to:** [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] CU 14 and later versions. | January 2022 | Has workaround | |
+| An Access Violation (AV) exception might occur with the `SESSION_CONTEXT` function under certain conditions. You might encounter AV exceptions or wrong results when the `SESSION_CONTEXT` function runs within a parallel execution plan when the session is reset for reuse.<br /><br />A fix, which was introduced in [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] CU 14 to address a wrong results issue with `SESSION_CONTEXT` within parallel plans, was later found to cause AV exceptions under certain conditions.<br /><br />To mitigate this issue, you can enable Trace Flag 11042 as a startup, global, or session trace flag. This trace flag forces `SESSION_CONTEXT` to execute serially, preventing it from participating in parallel query plans.<br /><br />**Applies to:** [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] CU 14 and later versions. | January 2022 | Has workaround | |
 
 ## Related content
 
