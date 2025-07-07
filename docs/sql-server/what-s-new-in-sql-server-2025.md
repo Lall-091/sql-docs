@@ -70,7 +70,7 @@ In addition to features announced previously, CTP 2.1 adds the following changes
   - Setup and feature integration available beginning with this release. Review [Feature availability by version](azure-arc/overview.md#feature-availability-by-version) for details.
   - [Manage automatic connection for SQL Server enabled by Azure Arc](azure-arc/manage-autodeploy.md).
   - [Connect your SQL Server to Azure Arc](azure-arc/connect.md).
-
+  - Added new database server configuration option `allow server scoped db credentials` to allow SQL Server enabled by Azure Arc to use server level Managed Identities.
 - Reporting Services:
 
   - [!INCLUDE [ssrs-power-bi-consolidation](../reporting-services/includes/ssrs-power-bi-consolidation.md)]

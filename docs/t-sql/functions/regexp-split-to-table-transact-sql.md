@@ -33,6 +33,10 @@ REGEXP_SPLIT_TO_TABLE
 
 Requires database compatibility level 170. To set database compatibility level, review [ALTER DATABASE (Transact-SQL) compatibility level](../../t-sql/statements/alter-database-transact-sql-compatibility-level.md).
 
+> [!NOTE]
+> Regular expressions are available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) update policy.
+
+
 ## Arguments
 
 #### *string_expression*

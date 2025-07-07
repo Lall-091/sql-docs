@@ -20,6 +20,7 @@ Use fuzzy, or approximate, string matching to check if two strings are similar, 
 > [!NOTE]
 > - Fuzzy string matching is currently in preview. 
 > - SQL Server support for fuzzy string matching introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. 
+> - Fuzzy string matching is available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) update policy. 
 
 
 ## Fuzzy functions

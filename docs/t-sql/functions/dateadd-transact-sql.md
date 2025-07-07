@@ -33,6 +33,10 @@ This function adds a *number* (a signed integer) to a *datepart* of an input *da
 
 See [Date and time data types and functions](date-and-time-data-types-and-functions-transact-sql.md) for an overview of all [!INCLUDE [tsql](../../includes/tsql-md.md)] date and time data types and functions.
 
+> [!NOTE]
+> `DATEADD` is available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) update policy. 
+
+
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ## Syntax

@@ -26,6 +26,9 @@ ms.custom:
 
 Use the functions described in this article to match complex patterns and manipulate data in SQL Server with regular expressions.
 
+> [!NOTE]
+> Regular expressions are available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) update policy.
+
 [!INCLUDE [regexp-function-descriptions](../../includes/regexp-function-descriptions.md)]
 
 ## Related content

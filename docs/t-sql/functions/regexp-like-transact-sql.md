@@ -39,6 +39,9 @@ You can check compatibility level in the `sys.databases` view or in database pro
 ALTER DATABASE [DatabaseName] SET COMPATIBILITY_LEVEL = 170;
 ```
 
+> [!NOTE]
+> Regular expressions are available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) update policy.
+
 ## Arguments
 
 #### *string_expression*

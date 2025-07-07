@@ -106,6 +106,7 @@ The following table lists all available configuration options, the range of poss
 | [affinity64 mask](affinity64-mask-server-configuration-option.md) (A) | **Minimum**: `-2147483648`<br />**Maximum**: `2147483647`<br />**Default**: `0` | Yes (64-bit only) | No |
 | [Agent XPs](agent-xps-server-configuration-option.md) (A) <sup>1</sup> | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | Yes | No |
 | [allow polybase export](allow-polybase-export.md) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] and later versions | No |
+| allow server scoped db credentials | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions | No |
 | [allow updates](allow-updates-server-configuration-option.md)<br /><br />**Warning:** Obsolete. Don't use. Causes an error during reconfigure. | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | Yes | No |
 | [automatic soft-NUMA disabled](soft-numa-sql-server.md) (A, RR) | **Minimum**: `0`<br />**Maximum**: `1`<br />**Default**: `0` | Yes | Yes |
 | [availability group commit time (ms)](availability-group-commit-time-server-configuration-options.md) | **Minimum**: `0`<br />**Maximum**: `10`<br />**Default**: `0` | [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions | No |
