@@ -36,7 +36,7 @@ Images deployed through Azure Marketplace come with the SQL IaaS Agent extension
 
 Pay-as-you-go SQL Server 2012 deployments can convert to [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
-To convert a Software Assurance (SA)-based license to pay-as-you-go, customers should register with the [SQL IaaS Agent extension](sql-agent-extension-manually-register-single-vm.md). After that registration, the SQL license type will be interchangeable between Azure Hybrid Benefit and pay-as-you-go.
+To convert a Software Assurance (SA)-based license to pay-as-you-go, customers should register with the [SQL IaaS Agent extension](sql-agent-extension-manually-register-single-vm.md). After registration, the SQL license type is interchangeable between Azure Hybrid Benefit and pay-as-you-go.
 
 Self-installed SQL Server 2012 instances on an Azure VM can register with the SQL IaaS Agent extension and convert their license type to pay-as-you-go.
 

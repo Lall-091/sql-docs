@@ -103,7 +103,7 @@ Azure SQL Managed Instance is an instance-scoped deployment option in Azure SQL 
 
 #### Can I use the Azure Hybrid Benefit for SQL Server 2012 or SQL Server 2014?
 
-Yes, customers with active Software Assurance or equivalent Server Subscriptions can use the Azure Hybrid Benefit using existing on-premises license investments for discounted pricing on [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] running on Azure SQL and Azure VMs.
+Yes, customers with active Software Assurance or equivalent Server Subscriptions can use the Azure Hybrid Benefit to allocate on-premises license investments for discounted pricing on [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] running on Azure SQL and Azure VMs.
 
 #### Can I get free Extended Security Updates on Azure Government regions?
 

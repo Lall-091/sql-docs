@@ -80,12 +80,11 @@ To create an Azure VM running SQL Server 2022 with one of these pay-as-you-go im
 >
 >It does not include additional SQL Server licensing costs for Web, Standard, and Enterprise editions. To get the most accurate pricing estimate, select your operating system and SQL Server edition on the pricing page for [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) or [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
-> [!NOTE]
-> It is now possible to change the licensing model from pay-as-you-go to Azure Hybrid Benefit and back. For more information, see [How to change the licensing model for a SQL Server VM](licensing-model-azure-hybrid-benefit-ahb-change.md). 
+<a id="byol"></a>
 
-## <a id="byol"></a> Azure Hybrid Benefit (AHB)
+## Azure Hybrid Benefit
 
-[**Azure Hybrid Benefit**](https://azure.microsoft.com/pricing/hybrid-benefit/#overview), also referred to as **AHB**, is a program that allows customers to use existing SQL Server core licenses with Software Assurance in an Azure VM. A SQL Server VM using AHB only charges for the cost of running the VM, not for SQL Server licensing, given that you have already acquired licenses and Software Assurance through a Volume Licensing program or through a Cloud Solution Partner (CSP).
+[**Azure Hybrid Benefit (AHB)**](https://azure.microsoft.com/pricing/hybrid-benefit/#overview), grants you the ability to allocate your SQL Server licenses to a SQL Server on Azure VM. With Azure Hybrid Benefit, you get a discount on the allocation of SQL Server licenses to the SQL Server instance but must still pay for the cost of the underlying cloud compute (that is, the base rate), storage, and backups. You must also pay for I/O associated with their use of the services (as applicable).
 
 Bringing your own SQL Server licensing through Azure Hybrid Benefit is recommended for:
 
@@ -97,7 +96,7 @@ To use AHB with a SQL Server VM, you must have a license for SQL Server Standard
 
 | AHB benefit | Description |
 |-----|-----|
-| **Cost savings** | The [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) offers up to 55% savings. For more information, see [Switch licensing model](licensing-model-azure-hybrid-benefit-ahb-change.md) |
+| **Cost savings** | The [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) you get a discount on the allocation of SQL Server licenses to SQL Server Database Engine. For more information, see [Switch licensing model](licensing-model-azure-hybrid-benefit-ahb-change.md) |
 | **Free passive secondary replica** | Another benefit of bringing your own license is the [free licensing for one passive secondary replica](https://azure.microsoft.com/pricing/licensing-faq/) for high availability and one passive secondary for disaster recovery per SQL Server. This cuts the licensing cost of a highly available SQL Server deployment (for example, using Always On availability groups) by more than half. |
 
 > [!NOTE]

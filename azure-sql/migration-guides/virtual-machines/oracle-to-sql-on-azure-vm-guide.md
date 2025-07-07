@@ -344,7 +344,7 @@ The Data SQL Engineering team developed these resources. This team's core charte
   - [Best practices to cost and size workloads migrated to Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs)
 
 - For information about licensing, see:
-  - [Bring your own license with the Azure Hybrid Benefit](../../virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md)
+  - [Allocate your own license with the Azure Hybrid Benefit](../../virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md)
   - [Get free extended support for SQL Server](../../virtual-machines/windows/sql-server-extend-end-of-support.md)
 
 - To assess the application access layer, use [Data Access Migration Toolkit Preview](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit).

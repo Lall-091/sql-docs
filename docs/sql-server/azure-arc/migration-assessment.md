@@ -73,8 +73,8 @@ Estimate retail cost based on the size recommendation and the following paramete
     - One year savings plan
     - None
 
-- **Azure Hybrid Benefit for SQL Server**: Use existing Software Assurance-enabled SQL Server licenses on Azure and reduce your costs for [Azure SQL Databases, Azure SQL Managed Instance](/azure/azure-sql/azure-hybrid-benefit), and [SQL Server on Azure Virtual Machines](/azure/azure-sql/virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change#azure-hybrid-benefit).
-- **Azure Hybrid Benefit for Windows**: Use existing Software Assurance-enabled Windows Server licenses on Azure and reduce your costs for [SQL Server on Azure Virtual Machines](/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
+- **Azure Hybrid Benefit for SQL Server**: Allocate Software Assurance-enabled SQL Server licenses to Azure and reduce your costs for [Azure SQL Databases, Azure SQL Managed Instance](/azure/azure-sql/azure-hybrid-benefit), and [SQL Server on Azure Virtual Machines](/azure/azure-sql/virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change#azure-hybrid-benefit).
+- **Azure Hybrid Benefit for Windows**: Allocate Software Assurance-enabled Windows Server licenses to Azure and reduce your costs for [SQL Server on Azure Virtual Machines](/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
 - **Dev/Test Pricing**: Reduced prices for dev/test workloads available to [active Visual Studio subscribers](https://azure.microsoft.com/pricing/offers/dev-test/). Azure Hybrid Benefits for SQL Server and Windows aren't applicable under Dev/Test Pricing.
 
 ### Migration target type recommendation
