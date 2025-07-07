@@ -205,7 +205,7 @@ The examples in this section demonstrate how to enable CES for the AMQP protocol
 The following are sample parameter values for the examples in this section:
 
 - `@stream_group_name = N'myStreamGroup'`
-- `@destination_location = 'N'myEventHubsNamespace.servicebus.windows.net/myEventHubsInstance'`
+- `@destination_location = N'myEventHubsNamespace.servicebus.windows.net/myEventHubsInstance'`
 - `@partition_key_scheme =   N'None'`
 - Primary or secondary key value: `Secret = 'BVFnT3baC/K6I8xNZzio4AeoFt6nHeK0i+ZErNGsxiw='`
 - `EXEC sys.sp_add_object_to_event_stream_group N'myStreamGroup', N'dbo.myTable'`

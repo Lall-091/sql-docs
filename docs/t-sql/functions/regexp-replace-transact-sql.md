@@ -31,6 +31,9 @@ REGEXP_REPLACE
      )
 ```
 
+> [!NOTE]
+> Regular expressions are available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) update policy.
+
 ## Arguments
 
 #### *string_expression*

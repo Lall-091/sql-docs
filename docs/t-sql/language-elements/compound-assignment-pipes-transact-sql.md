@@ -31,6 +31,9 @@ The `||=` concatenation with compound assignment operator can be used to [concat
 
 The `||=` operator supports the same behavior as the [+= operator](string-concatenation-equal-transact-sql.md) for character and binary strings.
 
+> [!NOTE]
+> The `||=` pipes operator is available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) update policy.
+
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ## Syntax

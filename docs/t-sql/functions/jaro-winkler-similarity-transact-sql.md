@@ -24,8 +24,9 @@ ms.custom:
 Calculates a similarity value ranging from 0 (indicating no match) to 1 (indicating full match). 
 
 > [!NOTE]
-> - JARO_WINKLER_SIMILARITY is currently in preview. 
-> - SQL Server support for JARO_WINKLER_SIMILARITY introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. 
+> - `JARO_WINKLER_SIMILARITY` is currently in preview. 
+> - SQL Server support for `JARO_WINKLER_SIMILARITY` introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. 
+> - `JARO_WINKLER_SIMILARITY` is available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) update policy.
 
 ## Syntax
 

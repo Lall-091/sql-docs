@@ -22,7 +22,7 @@ ms.collection: ce-skilling-ai-copilot
 ---
 # VECTOR_NORMALIZE (Transact-SQL) (Preview)
 
-[!INCLUDE [Azure SQL Database](../../includes/applies-to-version/asdb.md)]
+[!INCLUDE [Azure SQL Database](../../includes/applies-to-version/asdb-asdbmi.md)]
 
 > [!NOTE]
 > This data type is in preview and is subject to change. Make sure to read preview usage terms in the [Service Level Agreements (SLA) for Online Services](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services) document.
@@ -43,6 +43,10 @@ For example, if you want a normalized vector using the Euclidean norm (which is 
 SELECT VECTOR_NORMALIZE ( vector, 'norm2' )
 FROM ...
 ```
+
+> [!NOTE]  
+> - This function is in preview and is subject to change. Make sure to read preview usage terms in [Service Level Agreements (SLA) for Online Services](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services).
+> - `VECTOR_NORMALIZE` is available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) update policy.
 
 ## Syntax
 
