@@ -4,7 +4,7 @@ description: "CREATE VECTOR INDEX creates an index on vector data to allow appro
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: damauri
-ms.date: 05/28/2025
+ms.date: 07/08/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
