@@ -142,7 +142,7 @@ USE TARGET_DB;
 DECLARE @UNCIPHEREDTEXT_Target nvarchar(100);  
 SET @UNCIPHEREDTEXT_Target = DECRYPTBYCERT(CERT_ID('TARGET_CERT'), @CIPHERTEXT);  
 -- Encryption and decryption result in TARGET_DB  
-SELECT @CLEARTEXT AS ClearTextInTarget, @CIPHERTEXT AS CipherTextInTarget, @UNCIPHEREDTEXT_Target AS DecriptedTextInTarget;   
+SELECT @CLEARTEXT AS ClearTextInTarget, @CIPHERTEXT AS CipherTextInTarget, @UNCIPHEREDTEXT_Target AS DecryptedTextInTarget;   
 GO  
 ```  
   
