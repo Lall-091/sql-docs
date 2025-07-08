@@ -103,7 +103,7 @@ Or,
 
    1. For the **Method of certificate creation**, use **Generate**.
 
-   1. Add a certificate name and subject.
+   1. Add a certificate name and subject. The certificate name must be unique. A certificate name that matches an existing certificate causes an error when the login is created.
 
    1. The recommended validity period is at most 12 months. The rest of the values can be left as default.
 
