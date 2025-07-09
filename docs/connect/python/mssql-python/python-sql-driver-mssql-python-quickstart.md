@@ -4,7 +4,7 @@ description: This quickstart describes installing Python, and mssql-python then 
 author: dlevy-msft-sql
 ms.author: dlevy
 ms.reviewer: vanto, randolphwest
-ms.date: 06/26/2025
+ms.date: 07/09/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: quickstart-sdk
@@ -14,7 +14,7 @@ ms.custom:
 
 # Quickstart: Connect with the mssql-python driver for Python
 
-In this quickstart, you connect a Python script to a database that you have created and loaded with sample data. You use the `mssql-python` driver for Python to connect to your database and perform basic operations, like reading and writing data.
+In this quickstart, you connect a Python script to a database that you created and loaded with sample data. You use the `mssql-python` driver for Python to connect to your database and perform basic operations, like reading and writing data.
 
 [mssql-python documentation](https://github.com/microsoft/mssql-python/wiki) | [mssql-python source code](https://github.com/microsoft/mssql-python/wiki) | [Package (PyPi)](https://pypi.org/project/mssql-python/)
 
@@ -37,7 +37,7 @@ In this quickstart, you connect a Python script to a database that you have crea
 Follow these steps to configure your development environment to develop an application using the `mssql-python` Python driver.
 
 > [!NOTE]  
-> This driver uses the [TDS](/openspecs/windows_protocols/ms-tds/b46a581a-39de-4745-b076-ec4dbb7d13ec) protocol, which is enabled by default in SQL Server, SQL database in Fabric and Azure SQL Database. No extra configuration is required.
+> This driver uses the [Tabular Data Stream (TDS)](/openspecs/windows_protocols/ms-tds/b46a581a-39de-4745-b076-ec4dbb7d13ec) protocol, which is enabled by default in SQL Server, SQL database in Fabric and Azure SQL Database. No extra configuration is required.
 
 ### Install the mssql-python package
 
@@ -47,9 +47,36 @@ Get the [`mssql-python` package](https://pypi.org/project/mssql-python/) from Py
 
 1. Install the `mssql-python` package.
 
-    ```bash
-    pip install mssql-python
-    ```
+   ### [Windows](#tab/windows)
+
+   ```bash
+   pip install mssql-python
+   ```
+
+   ### [Linux](#tab/linux)
+
+   ```bash
+   pip install mssql-python
+   ```
+
+   ### [macOS](#tab/mac)
+
+   ```bash
+   brew install openssl
+   pip install mssql-python
+   ```
+
+   ---
+
+### Install python-dotenv package
+
+Get the [`python-dotenv`](https://pypi.org/project/python-dotenv/) from PyPI.
+
+1. In the same directory, install the `python-dotenv` package.
+
+   ```bash
+   pip install python-dotenv
+   ```
 
 ### Check installed packages
 
@@ -57,9 +84,9 @@ You can use the PyPI command-line tool to verify that your intended packages are
 
 1. Check the list of installed packages with `pip list`.
 
-    ```bash
-    pip list
-    ```
+   ```bash
+   pip list
+   ```
 
 ### Create a SQL database
 
@@ -121,7 +148,7 @@ This quickstart requires the *[!INCLUDE [sssampledbnormal-md](../../../includes/
    ```
 
    > [!TIP]  
-   > The connection string used here largely depends on the type of SQL database you're connecting to. For more information on connection strings and their syntax, see [connection string syntax reference](../../ado-net/connection-string-syntax.md).
+   > The connection string used here largely depends on the type of SQL database you're connecting to. If you're connecting to an *Azure SQL Database* or a *SQL database in Fabric*, use the *ODBC* connection string from the connection strings tab. You might need to adjust the authentication type depending on your scenario. For more information on connection strings and their syntax, see [connection string syntax reference](../../odbc/dsn-connection-string-attribute.md).
 
 ### Execute a query
 
@@ -161,7 +188,7 @@ Use a SQL query string to execute a query and parse the results.
    ```python
    records = cursor.fetchall()
    for r in records:
-       print(f"{r.CustomerID}\t{r.OrderCount}\t{r.CompanyName}")
+     print(f"{r.CustomerID}\t{r.OrderCount}\t{r.CompanyName}")
    ```
 
 1. **Save** the `app.py` file.
@@ -220,13 +247,13 @@ Execute an [INSERT](../../../t-sql/statements/insert-transact-sql.md) statement 
 
    ```python
    cursor.execute(
-       SQL_STATEMENT,
-       (
-           f'Example Product {productNumber}',
-           f'EXAMPLE-{productNumber}',
-           100,
-           200
-       )
+      SQL_STATEMENT,
+      (
+         f'Example Product {productNumber}',
+         f'EXAMPLE-{productNumber}',
+         100,
+         200
+      )
    )
    ```
 

@@ -94,11 +94,9 @@ The following XEs are available for degree of parallelism (DOP) feedback:
 - `dop_feedback_stabilized`: Occurs when DOP feedback is stabilized for a query.  
 - `dop_feedback_reverted`: Occurs when a DOP feedback is reverted.  The event fires when feedback validation fails on the first feedback provided.  The system will revert back to no feedback state.
 - `dop_feedback_analysis_stopped` : Occurs when the DOP feedback analysis is stopped for a query.
+- `dop_feedback_reassessment_failed` : Occurs when the DOP feedback reassesses a previously persisted feedback choice, but found the persisted value to no longer be valid. This state restarts the feedback loop.
 
-## Persistence for degree of parallelism (DOP) feedback
-
-**Applies to:** [!INCLUDE [sqlserver2022-and-later](../../includes/applies-to-version/sqlserver2022-and-later.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]
-<!---[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)])  -->
+### Persistence for degree of parallelism (DOP) feedback
 
 If the DOP feedback mechanism finds that the new degree of parallelism is good, this optimization is persisted inside the Query Store and will be applied appropriately to a query for future executions.
 
@@ -106,12 +104,11 @@ This feature was introduced in [!INCLUDE [ssSQL22](../../includes/sssql22-md.md)
 
 ## Related content
 
+- Blog: [Smarter Parallelism: Degree of parallelism feedback in SQL Server 2025](https://techcommunity.microsoft.com/blog/sqlserver/smarter-parallelism-degree-of-parallelism-feedback-in-sql-server-2025/4431318)
 - Blog: [Intelligent Query Processing: degree of parallelism feedback](https://cloudblogs.microsoft.com/sqlserver/2022/10/20/intelligent-query-processing-degree-of-parallelism-feedback/)
 - [Intelligent query processing in SQL databases](intelligent-query-processing.md)
-- [Intelligent query processing features in detail](intelligent-query-processing-details.md)
 - [Configure the max degree of parallelism (server configuration option)](../../database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md)
 - [Cardinality Estimation (SQL Server)](cardinality-estimation-sql-server.md)
 - [RECONFIGURE (Transact-SQL)](../../t-sql/language-elements/reconfigure-transact-sql.md)
-- [Monitor and Tune for Performance](monitor-and-tune-for-performance.md)
 - [Configure Parallel Index Operations](../indexes/configure-parallel-index-operations.md)
 - [ALTER DATABASE SCOPED CONFIGURATION (Transact-SQL)](../../t-sql/statements/alter-database-scoped-configuration-transact-sql.md)

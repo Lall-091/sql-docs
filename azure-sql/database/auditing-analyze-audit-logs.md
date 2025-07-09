@@ -4,15 +4,15 @@ titleSuffix: Azure SQL Database & Azure Synapse Analytics
 description: Use Auditing to analyze logs in Log Analytics, Event Hubs, or through an Azure storage account.
 author: sravanisaluru
 ms.author: srsaluru
-ms.reviewer: mathoma
-ms.date: 06/10/2025
+ms.reviewer: mathoma, vanto
+ms.date: 07/09/2025
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
 ---
 # Use Auditing to analyze audit logs and reports
 
-[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
+[!INCLUDE [appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 This article provides an overview of analyzing audit logs using Auditing for [Azure SQL Database](sql-database-paas-overview.md) and [Azure Synapse Analytics](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is). You can use Auditing to analyze audit logs stored in:
 
@@ -29,7 +29,6 @@ If you chose to write audit logs to Log Analytics:
 1. At the top of the database's **Auditing** page, select **View audit logs** to display a sample of audit logs with a limited set of fields that cover activity from up to 2 hours prior to the selected **End Time** (which defaults to 'now'):
 
    :::image type="content" source="media/auditing-analyze-audit-logs/view-audit-logs.png" alt-text="Screenshot of the Auditing menu in the Azure portal where you can select the View audit logs option." lightbox="media/auditing-analyze-audit-logs/view-audit-logs.png":::
-   
 
 You have two ways to view the logs:
 
@@ -70,7 +69,7 @@ If you chose to write audit logs to an Azure storage account, there are several 
 
   1. The merged file opens in SSMS, where you can view and analyze it, as well as export it to an XEL or CSV file, or to a table.
 
-- Use Power BI. You can view and analyze audit log data in Power BI. For more information and to access a downloadable template, see [Blog: Analyze audit log data in Power BI](https://techcommunity.microsoft.com/blog/azuredbsupport/sql-azure-blob-auditing-basic-power-bi-dashboard/368895).
+- Use Power BI. You can view and analyze audit log data in Power BI. For more information, see [Using Azure Log Analytics in Power BI](/power-bi/transform-model/log-analytics/desktop-log-analytics-overview).
 - Download log files from your Azure Storage blob container via the portal or by using a tool such as [Azure Storage Explorer](https://azure.microsoft.com/products/storage/storage-explorer).
   - After you have downloaded a log file locally, double-click the file to open, view, and analyze the logs in SSMS.
   - You can also download multiple files simultaneously in Azure Storage Explorer. To do so, right-click a specific subfolder and select **Save as** to save in a local folder.

@@ -4,7 +4,7 @@ description: This quickstart describes installing Python, and pyodbc then shows 
 author: dlevy-msft-sql
 ms.author: dlevy
 ms.reviewer: vanto, randolphwest
-ms.date: 06/18/2025
+ms.date: 07/09/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: quickstart-sdk
@@ -14,7 +14,7 @@ ms.custom:
 
 # Quickstart: Connect with the pyodbc driver for Python
 
-In this quickstart, you connect a Python script to a database that you have created and loaded with sample data. You use the `pyodbc` driver for Python to connect to your database and perform basic operations, like reading and writing data.
+In this quickstart, you connect a Python script to a database that you created and loaded with sample data. You use the `pyodbc` driver for Python to connect to your database and perform basic operations, like reading and writing data.
 
 [pyodbc documentation](https://github.com/mkleehammer/pyodbc/wiki) | [pyodbc source code](https://github.com/mkleehammer/pyodbc) | [Package (PyPi)](https://pypi.org/project/pyodbc/)
 
@@ -37,7 +37,7 @@ In this quickstart, you connect a Python script to a database that you have crea
 Follow these steps to configure your development environment to develop an application using the `pyodbc` Python driver.
 
 > [!NOTE]  
-> This driver uses the [TDS](/openspecs/windows_protocols/ms-tds/b46a581a-39de-4745-b076-ec4dbb7d13ec) protocol, which is enabled by default in SQL Server, SQL database in Fabric and Azure SQL Database. No extra configuration is required.
+> This driver uses the [Tabular Data Stream (TDS)](/openspecs/windows_protocols/ms-tds/b46a581a-39de-4745-b076-ec4dbb7d13ec) protocol, which is enabled by default in SQL Server, SQL database in Fabric and Azure SQL Database. No extra configuration is required.
 
 ### Install the pyodbc package
 
@@ -47,9 +47,19 @@ Get the [`pyodbc` package](https://pypi.org/project/pyodbc/) from PyPI.
 
 1. Install the `pyodbc` package.
 
-    ```bash
-    pip install pyodbc
-    ```
+   ```bash
+   pip install pyodbc
+   ```
+
+### Install python-dotenv package
+
+Get the [`python-dotenv`](https://pypi.org/project/python-dotenv/) from PyPI.
+
+1. In the same directory, install the `python-dotenv` package.
+
+   ```bash
+   pip install python-dotenv
+   ```
 
 ### Check installed packages
 
@@ -57,9 +67,9 @@ You can use the PyPI command-line tool to verify that your intended packages are
 
 1. Check the list of installed packages with `pip list`.
 
-    ```bash
-    pip list
-    ```
+   ```bash
+   pip list
+   ```
 
 ### Create a SQL database
 
@@ -69,9 +79,13 @@ This quickstart requires the *[!INCLUDE [sssampledbnormal-md](../../../includes/
 
 [Create a SQL database in minutes using the Azure portal](/azure/azure-sql/database/single-database-create-quickstart)
 
+Copy the `ODBC` connection string from the *Connection strings* tab.
+
 ### [SQL database in Fabric](#tab/fabric-sql)
 
 [Load AdventureWorks sample data in your SQL database in Microsoft Fabric](/fabric/database/sql/load-AdventureWorks-sample-data)
+
+Copy the `ODBC` connection string from the *Settings* tab.
 
 ### [Microsoft SQL Server](#tab/sql-server)
 
@@ -121,7 +135,7 @@ This quickstart requires the *[!INCLUDE [sssampledbnormal-md](../../../includes/
    ```
 
    > [!TIP]  
-   > The connection string used here largely depends on the type of SQL database you're connecting to. For more information on connection strings and their syntax, see [connection string syntax reference](../../ado-net/connection-string-syntax.md).
+   > The connection string used here largely depends on the type of SQL database you're connecting to. If you're connecting to an *Azure SQL Database* or a *SQL database in Fabric*, use the *ODBC* connection string from the connection strings tab. You might need to adjust the authentication type depending on your scenario. For more information on connection strings and their syntax, see [connection string syntax reference](../../odbc/dsn-connection-string-attribute.md).
 
 ### Execute a query
 
@@ -239,7 +253,7 @@ Execute an [INSERT](../../../t-sql/statements/insert-transact-sql.md) statement 
    ```
 
    > [!TIP]  
-   > Optionally, you can use [`connection.rollback`](https://github.com/mkleehammer/pyodbc/wiki/Connection#rollback) to rollback the transaction.
+   > Optionally, you can use [`connection.rollback`](https://github.com/mkleehammer/pyodbc/wiki/Connection#rollback) to roll back the transaction.
 
 1. Close the cursor and connection using [`cursor.close`](https://github.com/mkleehammer/pyodbc/wiki/Cursor#close) and [`connection.close`](https://github.com/mkleehammer/pyodbc/wiki/Connection#close).
 
