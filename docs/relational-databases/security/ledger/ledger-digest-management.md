@@ -63,7 +63,7 @@ SECRET = '<your SAS key>'
 ```
  
 > [!NOTE]
-> Starting with SQL Server 2022 Cumulative Update 17 (CU17) and continuing in SQL Server 2025, you can use [managed identities with SQL Server credentials](../../../t-sql/statements/create-credential-transact-sql#g-create-and-use-a-managed-identity-credential-to-access-azure-blob-storage). Managed identities provide an identity for applications to use when connecting to resources that support Microsoft Entra authentication.
+> Starting with SQL Server 2022 Cumulative Update 17 (CU17) and continuing in SQL Server 2025, you can use [managed identities with SQL Server credentials](../../../t-sql/statements/create-credential-transact-sql.md#g-create-and-use-a-managed-identity-credential-to-access-azure-blob-storage). Managed identities provide an identity for applications to use when connecting to resources that support Microsoft Entra authentication.
 >
 > This feature is supported only in:
 > - SQL Server on Azure VMs
