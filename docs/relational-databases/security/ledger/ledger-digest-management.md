@@ -4,7 +4,7 @@ description: This article provides information on digest management for a ledger
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: mathoma
-ms.date: 02/07/2024
+ms.date: 07/09/2025
 ms.service: sql
 ms.subservice: security
 ms.custom: ignite-2023
@@ -60,7 +60,16 @@ In the following code snippet, replace `<your SAS key>` with the SAS key. The SA
 CREATE CREDENTIAL [https://ledgerstorage.blob.core.windows.net/sqldbledgerdigests]  
 WITH IDENTITY='SHARED ACCESS SIGNATURE',  
 SECRET = '<your SAS key>'   
-```  
+```
+ 
+> [!NOTE]
+> Starting with SQL Server 2022 Cumulative Update 17 (CU17) and continuing in SQL Server 2025, you can use [managed identities with SQL Server credentials](../../../t-sql/statements/create-credential-transact-sql.md#g-create-and-use-a-managed-identity-credential-to-access-azure-blob-storage). Managed identities provide an identity for applications to use when connecting to resources that support Microsoft Entra authentication.
+>
+> This feature is supported only in:
+> - SQL Server on Azure Virtual Machines
+> - Azure Arc-enabled SQL Server 2025
+>
+> Managed identities aren't supported for SQL Server on-premises deployments.
 
 #### Azure Confidential Ledger Permission
 
@@ -104,7 +113,7 @@ Generating database digests requires the `GENERATE LEDGER DIGEST` permission. Fo
 Restoring the database back to an earlier point in time, also known as [Point in Time Restore](/azure/azure-sql/database/recovery-using-backups#point-in-time-restore), is an operation frequently used when a mistake occurs and users need to quickly revert the state of the database back to an earlier point in time. When uploading the generated digests to Azure Storage or Azure Confidential Ledger, the *create time* of the database is captured that these digests map to. Every time the database is restored, it's tagged with a new *create time* and this technique allows us to store the digests across different "incarnations" of the database. For SQL Server, the *create time* is the current UTC time when the digest upload is enabled for the first time. Ledger preserves the information regarding when a restore operation occurred, allowing the verification process to use all the relevant digests across the various incarnations of the database. Additionally, users can inspect all digests for different create times to identify when the database was restored and how far back it was restored to. Since this data is written in immutable storage, this information is protected as well.
 
 > [!NOTE]
-> If you perform a native restore of a database backup in Azure SQL Managed Instance, you need to change the digest path manually using the Azure Portal, PowerShell or the Azure CLI.
+> If you perform a native restore of a database backup in Azure SQL Managed Instance, you need to change the digest path manually using the Azure portal, PowerShell, or the Azure CLI.
 
 ### Active geo-replication and Always On availability groups
 

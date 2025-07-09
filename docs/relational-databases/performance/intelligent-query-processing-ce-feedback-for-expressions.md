@@ -8,7 +8,7 @@ ms.date: 05/05/2025
 ms.service: sql
 ms.topic: concept-article
 # CustomerIntent: As a database engineer, I want to understand the capabilities of the CE feedback for expressions feature in SQL Server 2025 so that I can effectively implement and support this technology.
-monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17"
+monikerRange: "=azuresqldb-current || =sql-server-ver17 || =sql-server-linux-ver17 || = fabric"
 ms.custom:
   - build-2025
 ---

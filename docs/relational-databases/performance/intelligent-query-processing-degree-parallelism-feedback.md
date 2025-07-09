@@ -4,7 +4,7 @@ description: Learn about Degree of parallelism (DOP) feedback, part of the Intel
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: derekw, wiassaf
-ms.date: 01/19/2024
+ms.date: 07/09/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -18,15 +18,20 @@ helpviewer_keywords:
   - "processors [SQL Server], parallel queries"
   - "number of processors for parallel queries"
   - "degree of parallelism feedback"
+monikerRange: "=azuresqldb-current || >=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current || =fabric"
 ---
 
 # Degree of parallelism (DOP) feedback
 
-**Applies to:** [!INCLUDE [sqlserver2022-and-later](../../includes/applies-to-version/sqlserver2022-and-later.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]
+[!INCLUDE [SQL Server 2022 Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricsqldb.md)]
 
-[!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] introduced a new feature called degree of parallelism (DOP) feedback to improve query performance by identifying parallelism inefficiencies for repeating queries, based on elapsed time and waits. DOP feedback is part of the [intelligent query processing](../../relational-databases/performance/intelligent-query-processing.md) family of features, and addresses suboptimal usage of parallelism for repeating queries. This scenario helps with optimizing resource usage and improving scalability of workloads, when excessive parallelism can cause performance issues. 
+Degree of parallelism (DOP) feedback improves query performance by identifying parallelism inefficiencies for repeating queries, based on elapsed time and waits. 
+
+DOP feedback is part of the [intelligent query processing](../../relational-databases/performance/intelligent-query-processing.md) family of features, and addresses suboptimal usage of parallelism for repeating queries. This scenario helps with optimizing resource usage and improving scalability of workloads, when excessive parallelism can cause performance issues. 
 
 Instead of incurring in the pains of an all-encompassing default or manual adjustments to each query, DOP feedback self-adjusts DOP to avoid these issues.
+
+DOP feedback is available for queries that operate in the database compatibility level 160 (introduced with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]) or higher versions, in Azure SQL Database, Azure SQL Managed Instance with the Always-up-to-date update policy, and SQL database in Fabric.
 
 For other query feedback features, see [Memory grant feedback](intelligent-query-processing-memory-grant-feedback.md) and [Cardinality estimation (CE) feedback](intelligent-query-processing-cardinality-estimation-feedback.md).
 
@@ -51,8 +56,6 @@ Parallelism is often beneficial for reporting and analytical queries, or queries
 - To disable DOP feedback at the query level, use the `DISABLE_DOP_FEEDBACK` query hint.
 
 The Query Store must be enabled for every database where DOP feedback is used, and in the "Read write" state. Feedback will be persisted in the [sys.query_store_plan_feedback](../system-catalog-views/sys-query-store-plan-feedback.md) catalog view when we reach a stable degree of parallelism feedback value.
-
-DOP feedback is available for queries that operate in the database compatibility level 160 (introduced with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]) or higher.
 
 Only verified feedback is persisted. If the adjusted DOP results in a performance regression, DOP feedback will go back to the last known good DOP. In this context, a user canceled query is also perceived as a regression. The DOP feedback doesn't recompile plans.
 

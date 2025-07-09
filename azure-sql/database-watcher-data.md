@@ -5,7 +5,7 @@ description: A detailed description of SQL monitoring data collected by database
 author: lcwright
 ms.author: lancewright
 ms.reviewer: dfurman
-ms.date: 05/04/2025
+ms.date: 07/08/2025
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: conceptual
@@ -101,7 +101,10 @@ END CATCH;
 
 To avoid concurrency conflicts such as blocking and deadlocks between data collection and database workloads running on your Azure SQL resources, the monitoring queries use short [lock timeouts](/sql/relational-databases/sql-server-transaction-locking-and-row-versioning-guide#customizing-the-lock-time-out) and low [deadlock priority](/sql/t-sql/statements/set-deadlock-priority-transact-sql). If there is a concurrency conflict, priority is given to the application workload queries.
 
-You might observe gaps in the collected data if the overall resource utilization is high, or if concurrency conflicts occur. In these cases, monitoring queries might be deprioritized in favor of application workloads.
+You might observe gaps in the collected data in the following scenarios:
+
+- If the overall resource utilization is high, or if concurrency conflicts between monitoring queries and application workloads occur. In these cases, monitoring queries are deprioritized in favor of application workloads.
+- If you have automation that terminates long-running sessions. To avoid gaps in collected data, exclude any session where the `program_name` column in the [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql) system view is `SQLExternalMonitoring` or `x_ms_reserved_sql_external_monitoring`.
 
 ### Data collection in elastic pools
 

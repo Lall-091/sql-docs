@@ -5,7 +5,7 @@ description: Learn about the new features and documentation improvements for Azu
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: wiassaf, mathoma
-ms.date: 06/18/2025
+ms.date: 07/09/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: whats-new
@@ -58,6 +58,7 @@ The following table lists features of Azure SQL Managed Instance that have been 
 
 | Feature | GA Month | Details |
 | ---| --- |--- |
+| [Degrees of Parallelism (DOP) Feedback](/sql/relational-databases/performance/intelligent-query-processing-degree-parallelism-feedback?view=azuresqldb-current&preserve-view=true) | DOP Feedback is now generally available for Azure SQL Database. For more information, see [Smarter Parallelism: Degree of parallelism feedback in SQL Server 2025](https://techcommunity.microsoft.com/blog/sqlserver/smarter-parallelism-degree-of-parallelism-feedback-in-sql-server-2025/4431318). |
 |[Zone redundancy for General Purpose](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability) | June 2025|  Deploy your General Purpose SQL Managed Instance to multiple availability zones to improve the availability of your instance in the event of a disaster. | 
 |[Invoke an HTTPS REST endpoint SP](/sql/relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql) | June 2025 | Use the `sp_invoke_external_rest_endpoint` stored procedure to invoke an HTTPS REST endpoint provided as an input argument to the procedure. | 
 | [TLS 1.3 support for replication](replication-transactional-overview.md#tls-13-support) | May 2025 | Configure Azure SQL Managed Instance replication agents to use TLS 1.3. |
@@ -78,6 +79,12 @@ The following table lists features of Azure SQL Managed Instance that have been 
 ## Documentation changes
 
 Learn about significant changes to the Azure SQL Managed Instance documentation. For previous years, see the [What's new archive](doc-changes-updates-release-notes-whats-new-archive.md).
+
+### July 2025
+
+| Changes | Details |
+| --- | --- |
+| [Degrees of Parallelism (DOP) Feedback](/sql/relational-databases/performance/intelligent-query-processing-degree-parallelism-feedback?view=azuresqldb-current&preserve-view=true) | DOP Feedback is now generally available for Azure SQL Managed Instance in the Always-up-to-date update policy. For more information, see [Smarter Parallelism: Degree of parallelism feedback in SQL Server 2025](https://techcommunity.microsoft.com/blog/sqlserver/smarter-parallelism-degree-of-parallelism-feedback-in-sql-server-2025/4431318). |
 
 ### June 2025
 

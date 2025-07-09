@@ -5,7 +5,7 @@ description: Learn about the new features and documentation improvements for Azu
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma, randolphwest
-ms.date: 07/02/2025
+ms.date: 07/09/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: whats-new
@@ -47,7 +47,6 @@ The following table lists the features of Azure SQL Database that are currently 
 | **DATEADD number allows bigint** | For `DATEADD (datepart , number , date )`, number can be expressed as a **bigint**. For more information, see [DATEADD (Transact-SQL)](/sql/t-sql/functions/dateadd-transact-sql).|
 | **Database watcher for Azure SQL** |[Database watcher](../database-watcher-overview.md) is a managed monitoring solution for database services in the Azure SQL family. Database watcher collects in-depth workload monitoring data to give you a detailed view of database performance, configuration, and health. Learn more about [database watcher](https://aka.ms/dbwatcher-preview-announcement). |
 | **Data Virtualization for Azure SQL Database** |Data virtualization, now in preview in Azure SQL Database, enables you to leverage all the power of Transact-SQL (T-SQL) and seamlessly query external data from Azure Data Lake Storage Gen2 or Azure Blob Storage. For more information, see [Data virtualization with Azure SQL Database (Preview)](data-virtualization-overview.md).|
-| **Degrees of Parallelism (DOP) feedback** | [DOP Feedback](/sql/relational-databases/performance/intelligent-query-processing-degree-parallelism-feedback?view=azuresqldb-current&preserve-view=true) is currently available as a limited preview. For more information and how to apply for the preview, see [Announcing Degree of Parallelism Feedback Limited Preview](https://techcommunity.microsoft.com/t5/azure-sql-blog/announcing-degree-of-parallelism-feedback-limited-preview/ba-p/3806924). |
 | **Elastic queries** | The [elastic queries](elastic-query-overview.md) feature allows for cross-database queries in Azure SQL Database. |
 | **Elastic transactions** | [Elastic transactions](elastic-transactions-overview.md) allow you to execute transactions distributed among cloud databases in Azure SQL Database. |
 | **Fixed server roles** | To simplify permission management, Azure SQL Database provides a set of [fixed server-level roles](security-server-roles.md) to help you manage the permissions on a logical server. | 
@@ -66,6 +65,7 @@ The following table lists features of Azure SQL Database that have been made gen
 
 | Feature | GA Month | Details |
 | --- | --- | --- |
+| **Degrees of Parallelism (DOP) feedback** | July 2025 | [DOP Feedback](/sql/relational-databases/performance/intelligent-query-processing-degree-parallelism-feedback?view=azuresqldb-current&preserve-view=true) is now generally available for Azure SQL Database. For more information, see [Smarter Parallelism: Degree of parallelism feedback in SQL Server 2025](https://techcommunity.microsoft.com/blog/sqlserver/smarter-parallelism-degree-of-parallelism-feedback-in-sql-server-2025/4431318). |
 | **Audit re-architecture** | July 2025 | Increased availability and reliability of server audits through a re-architecture of auditing in Azure SQL Database that is closely aligned with SQL Server and Azure SQL Managed Instance. For more information, see [Auditing](auditing-overview.md#enhancements-to-performance-availability-and-reliability-in-server-auditing-for-azure-sql-database-july-2025-ga).|
 | **Hyperscale increased log generation rate** | May 2025 | The transaction log generation rate in Azure SQL Database Hyperscale single databases has been increased from 100 MiB/s to 150 MiB/s for premium-series and premium-series memory optimized hardware. For more information, read [Blog: Enhancements to Azure SQL Database Hyperscale](https://aka.ms/HSenhancements).|
 | **Hyperscale continuous priming** | May 2025 | [Continuous priming](service-tier-hyperscale.md#continuous-priming) optimizes Hyperscale performance during failovers by priming high availability secondary compute replicas. Continuous priming is now generally available. For more information, read [Blog: Enhancements to Azure SQL Database Hyperscale](https://aka.ms/HSenhancements). |
@@ -102,6 +102,7 @@ Learn about significant changes to the Azure SQL Database documentation. For pre
 
 | Changes | Details |
 | --- | --- |
+| **Degrees of Parallelism (DOP) feedback** | [DOP Feedback](/sql/relational-databases/performance/intelligent-query-processing-degree-parallelism-feedback?view=azuresqldb-current&preserve-view=true) is now generally available for Azure SQL Database. For more information, see [Smarter Parallelism: Degree of parallelism feedback in SQL Server 2025](https://techcommunity.microsoft.com/blog/sqlserver/smarter-parallelism-degree-of-parallelism-feedback-in-sql-server-2025/4431318). |
 | **Convert to Hyperscale with geo-replicas (preview)** |The ability to [convert a geo-replicated database non-Hyperscale database to Hyperscale](convert-to-hyperscale.md) using T-SQL, REST API, PowerShell, or Azure CLI is currently a preview feature. For more information, see [Blog: Hyperscale conversion support for geo-replicas](https://aka.ms/hs-conversion-geodr-preview). |
 | **Audit re-architecture GA** | Enhancements to performance, availability, and reliability in server auditing for Azure SQL Database. For more information, see [Auditing](auditing-overview.md#enhancements-to-performance-availability-and-reliability-in-server-auditing-for-azure-sql-database-july-2025-ga). |
 

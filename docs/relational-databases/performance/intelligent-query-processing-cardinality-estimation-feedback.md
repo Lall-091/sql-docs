@@ -12,13 +12,11 @@ f1_keywords:
   - "cardinality estimation feedback"
 helpviewer_keywords:
   - "cardinality estimation feedback"
+monikerRange: "=azuresqldb-current || >=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current "
 ---
 # Cardinality estimation (CE) feedback
 
 **Applies to:** [!INCLUDE [sqlserver2022-and-later](../../includes/applies-to-version/sqlserver2022-and-later.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)].
-<!---
-Currently in preview for [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [ssazuremi](../../includes/ssazuremi-md.md)].
--->
 
 Starting with [!INCLUDE [sql-server-2022](../../includes/sssql22-md.md)], the Cardinality Estimation (CE) feedback is part of the [intelligent query processing family of features](intelligent-query-processing.md) and addresses suboptimal query execution plans for repeating queries when these issues result from incorrect CE model assumptions. This scenario helps with reducing regression risks related to the default CE when upgrading from older versions of the Database Engine.
 

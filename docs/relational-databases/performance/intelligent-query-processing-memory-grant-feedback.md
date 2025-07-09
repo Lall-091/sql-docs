@@ -12,10 +12,11 @@ f1_keywords:
   - "memory grant feedback"
 helpviewer_keywords:
   - "memory grant feedback"
+monikerRange: "=azuresqldb-current || >=sql-server-2017 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
 # Memory grant feedback
 
-**Applies to:** [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and later, [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] 
+**Applies to:** [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and later versions, [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] 
 
 Sometimes a query executes with a memory grant that is too large or too small. If the memory grant is too large, we inhibit parallelism on the server. If it's too small, we might spill to disk, which is a costly operation. Memory grant feedback attempts to remember the memory needs of a prior execution (with percentile feedback, multiple past executions). Based on this historical query information, memory grant feedback adjusts the grant given to the query accordingly for subsequent executions.
 
@@ -125,7 +126,7 @@ WHERE City = 'SEATTLE' AND PostalCode = 98104
 OPTION (USE HINT ('DISABLE_BATCH_MODE_MEMORY_GRANT_FEEDBACK'));
 ```
 
-A USE HINT query hint takes precedence over a [database scoped configuration](../../t-sql/statements/alter-database-scoped-configuration-transact-sql.md) or trace flag setting.
+A `USE HINT` query hint takes precedence over a [database scoped configuration](../../t-sql/statements/alter-database-scoped-configuration-transact-sql.md) or trace flag setting.
 
 ## Row mode memory grant feedback
 
