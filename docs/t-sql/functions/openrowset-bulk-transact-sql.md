@@ -63,6 +63,16 @@ OPENROWSET( BULK 'data_file' ,
    [ , ROWS_PER_BATCH = rows_per_batch ]
    [ , ORDER ( { column [ ASC | DESC ] } [ , ...n ] ) [ UNIQUE ] ]
 ```
+## Permissions
+To use the `OPENROWSET` function with external data sources, the following permissions are required:
+
+`ADMINISTER DATABASE BULK OPERATIONS` must be granted to the executing principal:
+
+  ```sql
+  GRANT ADMINISTER DATABASE BULK OPERATIONS TO [<principal_name>];
+```
+
+If the target storage account is private, the principal must also have the **Storage Blob Data Reader** role (or higher) assigned at the container or storage account level.
 
 ## Arguments
 
