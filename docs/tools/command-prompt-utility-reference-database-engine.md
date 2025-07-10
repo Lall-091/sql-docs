@@ -4,7 +4,7 @@ description: Command prompt utilities enable you to script SQL Server operations
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan
-ms.date: 04/07/2025
+ms.date: 07/10/2025
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: conceptual
@@ -34,26 +34,26 @@ For information on the *main* SQL graphical and command-line tools, see [SQL too
 
 | Utility | Description | Installed in |
 | --- | --- | --- |
-| [bcp](bcp-utility.md) | Used to copy data between an instance of [!INCLUDE [msCoName](../includes/msconame-md.md)] [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] and a data file in a user-specified format. | \<*drive*:>\Program Files\\[!INCLUDE [msCoName](../includes/msconame-md.md)] [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]\Client SDK\ODBC\110\Tools\Binn |
-| [dta](dta/dta-utility.md) | Used to analyze a workload and recommend physical design structures to optimize server performance for that workload. | [!INCLUDE [ssinstallpath-md](../includes/ssinstallpath-md.md)]Tools\Binn |
-| [dtexec](../integration-services/packages/dtexec-utility.md) | Used to configure and execute an [!INCLUDE [ssISnoversion](../includes/ssisnoversion-md.md)] package. A user interface version of this command-line utility is called **DTExecUI**, which brings up the Execute Package Utility. | [!INCLUDE [ssinstallpath-md](../includes/ssinstallpath-md.md)]DTS\Binn |
-| [dtutil](../integration-services/dtutil-utility.md) | Used to manage SQL Server Integration Services (SSIS) packages. | [!INCLUDE [ssinstallpath-md](../includes/ssinstallpath-md.md)]DTS\Binn |
-| [Deploy Model Solutions with the Deployment](/analysis-services/multidimensional-models/deploy-model-solutions-with-the-deployment-utility) | Used to deploy [!INCLUDE [ssASnoversion](../includes/ssasnoversion-md.md)] projects to instances of [!INCLUDE [ssASnoversion](../includes/ssasnoversion-md.md)]. | [!INCLUDE [ssinstallpath-md](../includes/ssinstallpath-md.md)]Tools\Binn\VShell\Common7\IDE |
-| [osql](osql-utility.md) | Allows you to enter [!INCLUDE [tsql](../includes/tsql-md.md)] statements, system procedures, and script files at the command prompt. | [!INCLUDE [ssinstallpath-md](../includes/ssinstallpath-md.md)]Tools\Binn |
-| [Profiler](profiler-utility.md) | Used to start [!INCLUDE [ssSqlProfiler](../includes/sssqlprofiler-md.md)] from a command prompt. | [!INCLUDE [ssinstallpath-md](../includes/ssinstallpath-md.md)]Tools\Binn |
-| [RS.exe (SSRS)](../reporting-services/tools/rs-exe-utility-ssrs.md) | Used to run scripts designed for managing [!INCLUDE [ssRSnoversion](../includes/ssrsnoversion-md.md)] report servers. | [!INCLUDE [ssinstallpath-md](../includes/ssinstallpath-md.md)]Tools\Binn |
-| [rsconfig (SSRS)](../reporting-services/tools/rsconfig-utility-ssrs.md) | Used to configure a report server connection. | [!INCLUDE [ssinstallpath-md](../includes/ssinstallpath-md.md)]Tools\Binn |
-| [rskeymgmt (SSRS)](../reporting-services/tools/rskeymgmt-utility-ssrs.md) | Used to manage encryption keys on a report server. | [!INCLUDE [ssinstallpath-md](../includes/ssinstallpath-md.md)]Tools\Binn |
-| [sqlagent90 application](sqlagent90-application.md) | Used to start [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Agent from a command prompt. | \<*drive*>:\Program Files\Microsoft SQL Server\\<*instance_name*>\MSSQL\Binn |
-| [sqlcmd](sqlcmd/sqlcmd-utility.md) | Allows you to enter [!INCLUDE [tsql](../includes/tsql-md.md)] statements, system procedures, and script files at the command prompt. | \<*drive*:>\Program Files\\[!INCLUDE [msCoName](../includes/msconame-md.md)] [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]\Client SDK\ODBC\110\Tools\Binn |
-| [SQLdiag](sqldiag-utility.md) | Used to collect diagnostic information for [!INCLUDE [msCoName](../includes/msconame-md.md)] Customer Service and Support. | [!INCLUDE [ssinstallpath-md](../includes/ssinstallpath-md.md)]Tools\Binn |
-| [sqllogship](sqllogship-application.md) | Used by applications to perform backup, copy, and restore operations and associated clean-up tasks for a log shipping configuration without running the backup, copy, and restore jobs. | [!INCLUDE [ssinstallpath-md](../includes/ssinstallpath-md.md)]Tools\Binn |
-| [SqlLocalDB](sqllocaldb-utility.md) | An execution mode of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] targeted to program developers. | [!INCLUDE [ssinstallpath-md](../includes/ssinstallpath-md.md)]Tools\Binn |
-| [sqlmaint](sqlmaint-utility.md) | Used to execute database maintenance plans created in previous versions of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]. | [!INCLUDE [ssinstallpath-md](../includes/ssinstallpath-md.md)]\MSSQL\Binn |
-| [sqlps](sqlps-utility.md) | Used to run PowerShell commands and scripts. Loads and registers the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] PowerShell provider and cmdlets. | [!INCLUDE [ssinstallpath-md](../includes/ssinstallpath-md.md)]Tools\Binn |
-| [sqlservr](sqlservr-application.md) | Used to start and stop an instance of [!INCLUDE [ssDE](../includes/ssde-md.md)] from the command prompt for troubleshooting. | \<*drive*>:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Binn |
-| [ssms](../ssms/ssms-utility.md) | Used to start [!INCLUDE [ssManStudioFull](../includes/ssmanstudiofull-md.md)] from a command prompt. | [!INCLUDE [ssinstallpath-md](../includes/ssinstallpath-md.md)]Tools\Binn\VSShell\Common7\IDE |
-| [tablediff](tablediff-utility.md) | Used to compare the data in two tables for nonconvergence, which is useful when troubleshooting a replication topology. | [!INCLUDE [ssinstallpath-md](../includes/ssinstallpath-md.md)]COM |
+| [bcp](bcp-utility.md) | Used to copy data between an instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] and a data file in a user-specified format. | `<drive>:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn` |
+| [dta](dta/dta-utility.md) | Used to analyze a workload and recommend physical design structures to optimize server performance for that workload. | `<drive>:\Program Files\Microsoft SQL Server\<nnn>\Tools\Binn` |
+| [dtexec](../integration-services/packages/dtexec-utility.md) | Used to configure and execute an [!INCLUDE [ssISnoversion](../includes/ssisnoversion-md.md)] package. A user interface version of this command-line utility is called **DTExecUI**, which brings up the Execute Package Utility. | `<drive>:\Program Files\Microsoft SQL Server\<nnn>\DTS\Binn` |
+| [dtutil](../integration-services/dtutil-utility.md) | Used to manage SQL Server Integration Services (SSIS) packages. | `<drive>:\Program Files\Microsoft SQL Server\<nnn>\DTS\Binn` |
+| [Deploy Model Solutions with the Deployment](/analysis-services/multidimensional-models/deploy-model-solutions-with-the-deployment-utility) | Used to deploy [!INCLUDE [ssASnoversion](../includes/ssasnoversion-md.md)] projects to instances of [!INCLUDE [ssASnoversion](../includes/ssasnoversion-md.md)]. | `<drive>:\Program Files\Microsoft SQL Server\<nnn>\Tools\Binn\VShell\Common7\IDE` |
+| [osql](osql-utility.md) | Allows you to enter [!INCLUDE [tsql](../includes/tsql-md.md)] statements, system procedures, and script files at the command prompt. | `<drive>:\Program Files\Microsoft SQL Server\<nnn>\Tools\Binn` |
+| [Profiler](profiler-utility.md) | Used to start [!INCLUDE [ssSqlProfiler](../includes/sssqlprofiler-md.md)] from a command prompt. | `<drive>:\Program Files\Microsoft SQL Server\<nnn>\Tools\Binn` |
+| [RS.exe (SSRS)](../reporting-services/tools/rs-exe-utility-ssrs.md) | Used to run scripts designed for managing [!INCLUDE [ssRSnoversion](../includes/ssrsnoversion-md.md)] report servers. | `<drive>:\Program Files\Microsoft SQL Server\<nnn>\Tools\Binn` |
+| [rsconfig (SSRS)](../reporting-services/tools/rsconfig-utility-ssrs.md) | Used to configure a report server connection. | `<drive>:\Program Files\Microsoft SQL Server\<nnn>\Tools\Binn` |
+| [rskeymgmt (SSRS)](../reporting-services/tools/rskeymgmt-utility-ssrs.md) | Used to manage encryption keys on a report server. | `<drive>:\Program Files\Microsoft SQL Server\<nnn>\Tools\Binn` |
+| [sqlagent application](sqlagent-application.md) | Used to start [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Agent from a command prompt. | `<drive>:\Program Files\Microsoft SQL Server\<instance_name>\MSSQL\Binn` |
+| [sqlcmd](sqlcmd/sqlcmd-utility.md) | Allows you to enter [!INCLUDE [tsql](../includes/tsql-md.md)] statements, system procedures, and script files at the command prompt. | `<drive>:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn` |
+| [SQLdiag](sqldiag-utility.md) | Used to collect diagnostic information for Customer Service and Support. | `<drive>:\Program Files\Microsoft SQL Server\<nnn>\Tools\Binn` |
+| [sqllogship](sqllogship-application.md) | Used by applications to perform backup, copy, and restore operations and associated clean-up tasks for a log shipping configuration, without running the backup, copy, and restore jobs. | `<drive>:\Program Files\Microsoft SQL Server\<nnn>\Tools\Binn` |
+| [SqlLocalDB](sqllocaldb-utility.md) | An execution mode of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] targeted to program developers. | `<drive>:\Program Files\Microsoft SQL Server\<nnn>\Tools\Binn` |
+| [sqlmaint](sqlmaint-utility.md) | Used to execute database maintenance plans created in previous versions of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]. | `<drive>:\Program Files\Microsoft SQL Server\<nnn>\MSSQL\Binn` |
+| [sqlps](sqlps-utility.md) | Used to run PowerShell commands and scripts. Loads and registers the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] PowerShell provider and cmdlets. | `<drive>:\Program Files\Microsoft SQL Server\<nnn>\Tools\Binn` |
+| [sqlservr](sqlservr-application.md) | Used to start and stop an instance of [!INCLUDE [ssDE](../includes/ssde-md.md)] from the command prompt for troubleshooting. | `<drive>:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Binn` |
+| [ssms](../ssms/ssms-utility.md) | Used to start [!INCLUDE [ssManStudioFull](../includes/ssmanstudiofull-md.md)] from a command prompt. | `<drive>:\Program Files\Microsoft SQL Server\<nnn>\Tools\Binn\VSShell\Common7\IDE` |
+| [tablediff](tablediff-utility.md) | Used to compare the data in two tables for nonconvergence, which is useful when troubleshooting a replication topology. | `<drive>:\Program Files\Microsoft SQL Server\<nnn>\COM` |
 
 ## Command-line utilities syntax conventions
 

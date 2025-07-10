@@ -47631,6 +47631,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "docs/tools/sqlagent90-application.md",
+      "redirect_url": "/sql/tools/sqlagent-application",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "docs/2014/tools/sqlcmd-utility.md",
       "redirect_url": "/previous-versions/sql/2014/tools/sqlcmd-utility",
       "redirect_document_id": false

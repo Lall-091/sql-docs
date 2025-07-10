@@ -3,7 +3,7 @@ title: "WSL 2: Install SQL Server on Windows Subsystem for Linux"
 description: This quickstart shows how to install SQL Server on Windows Subsystem for Linux (WSL 2) and then create and query a database with sqlcmd.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/02/2025
+ms.date: 07/10/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: quickstart
@@ -34,11 +34,7 @@ There are two ways to get started with SQL Server on WSL 2:
 
 ## Prerequisites
 
-Install WSL 2. Ensure you're running Windows 10 version 2004 or a later version (Build 19041 and higher), or Windows 11. To install WSL, open a PowerShell or Windows command prompt in administrator mode, and run the following command:
-
-```console
-wsl --install
-```
+Install WSL 2. Ensure you're running Windows 10 version 2004 or a later version (Build 19041 and higher), or Windows 11. To install WSL, open a PowerShell or Windows command prompt in administrator mode, and follow the instructions in the next section.
 
 For detailed instructions, see [How to install Linux on Windows with WSL](/windows/wsl/install). For information on setting up the WSL environment for development, see [Set up a WSL development environment](/windows/wsl/setup/environment).
 

@@ -8179,19 +8179,19 @@ items:
       href: tools/mssql-cli.md
     - name: osql
       href: tools/osql-utility.md
-    - name: Profiler Utility
+    - name: Profiler utility
       href: tools/profiler-utility.md
-    - name: sqlagent90 Application
-      href: tools/sqlagent90-application.md
+    - name: sqlagent application
+      href: tools/sqlagent-application.md
     - name: SQLdiag
       href: tools/sqldiag-utility.md
     - name: SqlLocalDB
       href: tools/sqllocaldb-utility.md
-    - name: sqllogship Application
+    - name: sqllogship application
       href: tools/sqllogship-application.md
     - name: sqlmaint
       href: tools/sqlmaint-utility.md
-    - name: sqlservr Application
+    - name: sqlservr application
       href: tools/sqlservr-application.md
     - name: tablediff
       href: tools/tablediff-utility.md

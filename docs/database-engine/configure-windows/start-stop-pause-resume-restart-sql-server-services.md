@@ -3,7 +3,7 @@ title: Start, Stop, Pause, Resume, and Restart SQL Server Services
 description: Find out how to start, stop, pause, resume, or restart various SQL Server services. See how to use Transact-SQL, PowerShell, and other tools for these actions.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/19/2025
+ms.date: 07/10/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -129,7 +129,7 @@ Use [!INCLUDE [ssmanstudiofull-md](../../includes/ssmanstudiofull-md.md)] to man
 
 1. In Object Explorer, connect to the instance of the [!INCLUDE [ssDE](../../includes/ssde-md.md)], right-click the instance of the [!INCLUDE [ssDE](../../includes/ssde-md.md)] you want to start, and then select **Start**, **Stop**, **Pause**, **Resume**, or **Restart**.
 
-    Or, in Registered Servers, right-click the instance of the [!INCLUDE [ssDE](../../includes/ssde-md.md)] you want to start, point to **Service Control**, and then select **Start**, **Stop**, **Pause**, **Resume**, or **Restart**.
+   Or, in Registered Servers, right-click the instance of the [!INCLUDE [ssDE](../../includes/ssde-md.md)] you want to start, point to **Service Control**, and then select **Start**, **Stop**, **Pause**, **Resume**, or **Restart**.
 
 1. If the **User Account Control** dialog box appears, select **Yes**.
 
@@ -232,7 +232,7 @@ net start "SQL Server Agent (instancename)"
 net start SQLAgent$instancename
 ```
 
-For information about how to run SQL Server Agent in verbose mode for troubleshooting, see [sqlagent90 Application](../../tools/sqlagent90-application.md).
+For information about how to run SQL Server Agent in verbose mode for troubleshooting, see [sqlagent application](../../tools/sqlagent-application.md).
 
 <a id="Browser"></a>
 
@@ -381,6 +381,6 @@ When you attempt to start [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.
 ## Related content
 
 - [SQL Server installation guide](../install-windows/install-sql-server.md)
-- [View and Read SQL Server Setup Log Files](../install-windows/view-and-read-sql-server-setup-log-files.md)
+- [View and read SQL Server Setup log files](../install-windows/view-and-read-sql-server-setup-log-files.md)
 - [SQL Server Configuration Manager](../../relational-databases/sql-server-configuration-manager.md)
-- [Start SQL Server with Minimal Configuration](start-sql-server-with-minimal-configuration.md)
+- [Start SQL Server with minimal configuration](start-sql-server-with-minimal-configuration.md)

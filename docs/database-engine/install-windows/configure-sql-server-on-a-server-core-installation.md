@@ -3,7 +3,7 @@ title: Configure Server Core Installation
 description: This article covers details about configuring SQL Server on a Server Core installation, including troubleshooting tools.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 06/03/2025
+ms.date: 07/10/2025
 ms.service: sql
 ms.subservice: install
 ms.topic: install-set-up-deploy
@@ -166,15 +166,15 @@ Perform the following actions to configure remote access of a [!INCLUDE [ssNoVer
 
 ### Enable remote connections on the SQL Server instance
 
-To enable remote connections, use SQLCMD.exe locally and execute the following statements against the Server Core instance:
+To enable remote connections, use **sqlcmd** locally and execute the following statements against the Server Core instance:
 
-- `EXEC sys.sp_configure N'remote access', N'1'`
+```sql
+EXEC sys.sp_configure N'remote access', N'1';
+GO
 
-     `GO`
-
-- `RECONFIGURE WITH OVERRIDE`
-
-     `GO`
+RECONFIGURE WITH OVERRIDE
+GO
+```
 
 ### Enable and start the SQL Server Browser service
 
@@ -241,7 +241,7 @@ You can use the following command prompt utilities that enable you to script [!I
 | [dtexec](../../integration-services/packages/dtexec-utility.md) | Used to configure and execute an [!INCLUDE [ssISnoversion](../../includes/ssisnoversion-md.md)] package. | [!INCLUDE [ssinstallpath-md](../../includes/ssinstallpath-md.md)]DTS\Binn |
 | [dtutil](../../integration-services/dtutil-utility.md) | Used to manage SSIS packages. | [!INCLUDE [ssinstallpath-md](../../includes/ssinstallpath-md.md)]DTS\Binn |
 | [osql](../../tools/osql-utility.md) | Allows you to enter [!INCLUDE [tsql](../../includes/tsql-md.md)] statements, system procedures, and script files at the command prompt. | [!INCLUDE [ssinstallpath-md](../../includes/ssinstallpath-md.md)]Tools\Binn |
-| [sqlagent90](../../tools/sqlagent90-application.md) | Used to start [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent from a command prompt. | \<drive>:\Program Files\\[!INCLUDE [msCoName](../../includes/msconame-md.md)] [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]\\<*instance_name*>\MSSQL\Binn |
+| [sqlagent](../../tools/sqlagent-application.md) | Used to start [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent from a command prompt. | \<drive>:\Program Files\\[!INCLUDE [msCoName](../../includes/msconame-md.md)] [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]\\<*instance_name*>\MSSQL\Binn |
 | [sqlcmd](../../tools/sqlcmd/sqlcmd-utility.md) | Allows you to enter [!INCLUDE [tsql](../../includes/tsql-md.md)] statements, system procedures, and script files at the command prompt. | [!INCLUDE [ssinstallpath-md](../../includes/ssinstallpath-md.md)]Tools\Binn |
 | [SQLdiag](../../tools/sqldiag-utility.md) | Used to collect diagnostic information for [!INCLUDE [msCoName](../../includes/msconame-md.md)] Customer Service and Support. | [!INCLUDE [ssinstallpath-md](../../includes/ssinstallpath-md.md)]Tools\Binn |
 | [sqlmaint](../../tools/sqlmaint-utility.md) | Used to execute database maintenance plans created in previous versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. | \<drive>:\Program Files\\[!INCLUDE [msCoName](../../includes/msconame-md.md)] [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]\MSSQL14.MSSQLSERVER\MSSQL\Binn |
