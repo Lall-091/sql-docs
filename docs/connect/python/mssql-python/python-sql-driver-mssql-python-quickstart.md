@@ -4,7 +4,7 @@ description: This quickstart describes installing Python, and mssql-python then 
 author: dlevy-msft-sql
 ms.author: dlevy
 ms.reviewer: vanto, randolphwest
-ms.date: 07/09/2025
+ms.date: 07/10/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: quickstart-sdk
@@ -56,6 +56,7 @@ Get the [`mssql-python` package](https://pypi.org/project/mssql-python/) from Py
    ### [Linux](#tab/linux)
 
    ```bash
+   sudo apt-get -y install libltdl7
    pip install mssql-python
    ```
 
@@ -139,9 +140,9 @@ This quickstart requires the *[!INCLUDE [sssampledbnormal-md](../../../includes/
    conn = connect(getenv("SQL_CONNECTION_STRING"))
    ```
 
-1. In the current directory, create a new file named `*.env`.
+1. In the current directory, create a new file named `.env`.
 
-1. Within the `*.env` file, add an entry for your connection string named `SQL_CONNECTION_STRING`. Replace the example here with your actual connection string value.
+1. Within the `.env` file, add an entry for your connection string named `SQL_CONNECTION_STRING`. Replace the example here with your actual connection string value.
 
    ```text
    SQL_CONNECTION_STRING="Server=<server_name>;Database={<database_name>};Encrypt=yes;TrustServerCertificate=no;Authentication=ActiveDirectoryInteractive"

@@ -4,7 +4,7 @@ description: This quickstart describes installing Python, and pymssql then shows
 author: dlevy-msft-sql
 ms.author: dlevy
 ms.reviewer: vanto, randolphwest
-ms.date: 06/18/2025
+ms.date: 07/10/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: quickstart-sdk
@@ -14,7 +14,7 @@ ms.custom:
 
 # Quickstart: Connect with the pymssql driver for Python
 
-In this quickstart, you connect a Python script to a database that you have created and loaded with sample data. You use the `pymssql` driver for Python to connect to your database and perform basic operations, like reading and writing data.
+In this quickstart, you connect a Python script to a database that you created and loaded with sample data. You use the `pymssql` driver for Python to connect to your database and perform basic operations, like reading and writing data.
 
 [pymssql documentation](https://pymssql.readthedocs.io/en/stable/) | [pymssql source code](https://github.com/pymssql/pymssql) | [Package (PyPi)](https://pypi.org/project/pymssql/)
 
@@ -37,7 +37,7 @@ In this quickstart, you connect a Python script to a database that you have crea
 Follow these steps to configure your development environment to develop an application using the `pymssql` Python driver.
 
 > [!NOTE]  
-> This driver uses the [TDS](/openspecs/windows_protocols/ms-tds/b46a581a-39de-4745-b076-ec4dbb7d13ec) protocol, which is enabled by default in SQL Server, SQL database in Fabric and Azure SQL Database. No extra configuration is required.
+> This driver uses the [Tabular Data Stream (TDS)](/openspecs/windows_protocols/ms-tds/b46a581a-39de-4745-b076-ec4dbb7d13ec) protocol, which is enabled by default in SQL Server, SQL database in Fabric and Azure SQL Database. No extra configuration is required.
 
 ### Install the pymssql package
 
@@ -50,6 +50,16 @@ Get the [`pymssql` package](https://pypi.org/project/pymssql/) from PyPI.
     ```bash
     pip install pymssql
     ```
+
+### Install python-dotenv package
+
+Get the [`python-dotenv`](https://pypi.org/project/python-dotenv/) from PyPI.
+
+1. In the same directory, install the `python-dotenv` package.
+
+   ```bash
+   pip install python-dotenv
+   ```
 
 ### Check installed packages
 
@@ -112,9 +122,9 @@ This quickstart requires the *[!INCLUDE [sssampledbnormal-md](../../../includes/
    conn = connect(getenv("SQL_SERVER"),getenv("SQL_USER"),getenv("SQL_PASSWORD"),getenv("SQL_DATABASE"))
    ```
 
-1. In the current directory, create a new file named `*.env`.
+1. In the current directory, create a new file named `.env`.
 
-1. Within the `*.env` file, add entries for your connection string values named `SQL_SERVER`, `SQL_USER`, `SQL_PASSWORD`, `SQL_DATABASE`. Replace the placeholders here with your actual connection string values.
+1. Within the `.env` file, add entries for your connection string values named `SQL_SERVER`, `SQL_USER`, `SQL_PASSWORD`, `SQL_DATABASE`. Replace the placeholders here with your actual connection string values.
 
    ```text
    SQL_SERVER="<server_name>"
@@ -124,7 +134,7 @@ This quickstart requires the *[!INCLUDE [sssampledbnormal-md](../../../includes/
    ```
 
    > [!TIP]  
-   > The connection string used here largely depends on the type of SQL database you're connecting to. For more information on connection strings and their syntax, see [connection string syntax reference](../../ado-net/connection-string-syntax.md).
+   > The connection string used here largely depends on the type of SQL database you're connecting to. For more information on connection strings and their syntax, see [FreeTDS connection attributes](https://www.freetds.org/userguide/OdbcConnAttr.html).
 
 ### Execute a query
 
@@ -241,7 +251,7 @@ Execute an [INSERT](../../../t-sql/statements/insert-transact-sql.md) statement 
    ```
 
    > [!TIP]  
-   > Optionally, you can use [`connection.rollback`](https://pymssql.readthedocs.io/en/latest/ref/pymssql.html#pymssql.Connection.rollback) to rollback the transaction.
+   > Optionally, you can use [`connection.rollback`](https://pymssql.readthedocs.io/en/latest/ref/pymssql.html#pymssql.Connection.rollback) to roll back the transaction.
 
 1. Close the cursor and connection using [`cursor.close`](https://pymssql.readthedocs.io/en/latest/ref/pymssql.html#pymssql.Cursor.close) and [`connection.close`](https://pymssql.readthedocs.io/en/latest/ref/pymssql.html#pymssql.Connection.close).
 
