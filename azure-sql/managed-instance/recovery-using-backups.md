@@ -2,10 +2,10 @@
 title: Restore a database from a backup
 titleSuffix: Azure SQL Managed Instance
 description: Learn about point-in-time restore, which enables you to roll back a database in Azure SQL Managed Instance up to 35 days.
-author: Stralle
-ms.author: strrodic
-ms.reviewer: wiassaf, mathoma, danil
-ms.date: 03/18/2025
+author: dinethi
+ms.author: dinethi
+ms.reviewer: wiassaf, mathoma, strrodic, mlandzic
+ms.date: 07/10/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: backup-restore
 ms.topic: how-to
@@ -151,7 +151,7 @@ For a sample PowerShell script that shows how to restore a deleted instance data
 
 ---
 
-### Restoring a database from deleted SQL managed instance
+## Restoring a database from deleted SQL managed instance
 
 If you need to restore an unintentionally deleted SQL managed instance, contact Microsoft support team within 5 days of the delete operation. Consider the following:
 - You need an existing instance with a matching service tier, and equal or higher SLO, as the deleted instance. Be ready to provide support with target instance details.
