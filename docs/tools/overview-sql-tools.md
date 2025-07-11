@@ -3,8 +3,8 @@ title: SQL Tools Overview
 description: SQL query and management tools for SQL Server, Azure SQL (Azure SQL database, Azure SQL managed instance, SQL virtual machines), and Azure Synapse Analytics.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: erinstellato
-ms.date: 06/13/2025
+ms.reviewer: erinstellato, iqrashaikh, mbarickman, drskwier, roblescarlos
+ms.date: 07/09/2025
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: overview
@@ -43,10 +43,10 @@ The **database/application developer** writes Transact-SQL queries, debugs store
 
 Recommended tools:
 
+- **[MSSQL extension for Visual Studio Code](#mssql)**: Connect, manage database schemas, and run queries directly in Visual Studio Code
 - **[SQL Server Management Studio (SSMS)](#ssms)**: Create objects, run queries, and perform lightweight tasks
 - **[SQL Server Data Tools (SSDT)](#ssdt)** for Visual Studio: Schema and project-based development
 - **[.NET libraries](/azure/azure-sql/database/connect-query-dotnet-core)**: Programmatic access using libraries such as `Microsoft.Data.SqlClient`
-- **[Azure Data Studio](#ads)**: Lightweight scripting
 
 ### [Data analyst](#tab/analyst)
 
@@ -55,7 +55,6 @@ The **data analyst** runs queries, and generates reports.
 - **[SQL Server Management Studio (SSMS)](#ssms)**: Run queries and perform lightweight tasks
 - **[sqlcmd](#sqlcmd)**: Lightweight CLI for automation
 - **[MSSQL extension for Visual Studio Code](#mssql)**: Lightweight tasks and scripting
-- **[Azure Data Studio](#ads)**: Queries and visualization
 
 ### [Data engineer](#tab/engineer)
 
@@ -72,7 +71,7 @@ The following table lists available tools and extensions.
 
 | Tool | Description | Operating system | Feedback |
 | --- | --- | --- | --- |
-| **Graphical tools** | | | |
+| **Graphical&nbsp;tools** | | | |
 | <a id="ssms"></a> **[SQL Server Management Studio (SSMS)](../ssms/download-sql-server-management-studio-ssms.md)** | Manage SQL Server and Azure SQL databases with full GUI support. Access, configure, manage, administer, and develop all components of the SQL Database Engine on-premises and the cloud, including Azure Synapse Analytics and SQL database for Microsoft Fabric. SSMS is a comprehensive application that combines a broad group of graphical tools and a rich script editor to provide access to SQL for database administrators and developers of all skill levels. | Windows only | [Feedback](https://aka.ms/ssms-feedback) |
 | <a id="ssdt"></a> **[SQL Server Data Tools (SSDT)](../ssdt/download-sql-server-data-tools-ssdt.md)** | A modern development tool for building SQL Server relational databases, Azure SQL databases, Analysis Services (AS) data models, Integration Services (IS) packages, and Reporting Services (RS) reports. With SQL Server Data tools (SSDT), you can design and deploy any SQL Server content type with the same ease as you would develop an application in **[Visual Studio](https://visualstudio.microsoft.com/downloads/)**. | Windows only | [Feedback](https://aka.ms/vs-feedback) |
 | <a id="mssql"></a> **[MSSQL extension for Visual Studio Code](visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md)** | The official SQL Server extension that supports connections to SQL Server and Azure SQL, and a rich editing experience for Transact-SQL (T-SQL). Write T-SQL scripts in a lightweight editor. | Windows, macOS, Linux | [Feedback](https://github.com/microsoft/vscode-mssql) |
@@ -96,7 +95,7 @@ These tools are available for Windows only.
 | --- | --- |
 | <a id="sscm"></a> **[SQL Server Configuration Manager](configuration-manager/sql-server-configuration-manager-help.md)** | Use SQL Server Configuration Manager to configure SQL Server services and configure network connectivity. |
 | <a id="dreplay"></a> **[Distributed Replay](distributed-replay/install-distributed-replay.md)** <sup>1</sup> | Use the Distributed Replay feature to help you assess the impact of future SQL Server upgrades. Also use Distributed Replay to help assess the impact of hardware and operating system upgrades, and SQL Server tuning. |
-| <a id="ssbdiagnose"></a> **[ssbdiagnose](ssbdiagnose/ssbdiagnose-utility-service-broker.md)** |**ssbdiagnose** reports issues in Service Broker conversations or the configuration of Service Broker services. |
+| <a id="ssbdiagnose"></a> **[ssbdiagnose](ssbdiagnose/ssbdiagnose-utility-service-broker.md)** | **ssbdiagnose** reports issues in Service Broker conversations or the configuration of Service Broker services. |
 | <a id="ssma"></a> **[SQL Server Migration Assistant (SSMA)](../ssma/sql-server-migration-assistant.md)** | Use SQL Server Migration Assistant to automate database migration to SQL Server and Azure SQL from Microsoft Access, Db2, MySQL, Oracle, and Sybase. |
 
 <sup>1</sup> Distributed Replay is supported on [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] through [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] only.
