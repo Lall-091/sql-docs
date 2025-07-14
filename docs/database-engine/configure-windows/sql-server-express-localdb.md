@@ -3,7 +3,7 @@ title: "SQL Server Express LocalDB"
 description: Become familiar with SQL Server Express LocalDB. Developers can use this lightweight Database Engine for writing and testing Transact-SQL code.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/19/2025
+ms.date: 07/14/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -52,7 +52,7 @@ The LocalDB setup program uses the `SqlLocalDB.msi` program to install the neces
 
 For more information about including LocalDB in an application, see [!INCLUDE [vsprvs](../../includes/vsprvs-md.md)] [Local Data Overview](/previous-versions/visualstudio/visual-studio-2012/ms233817(v=vs.110)), [Create a database and add tables in Visual Studio](/visualstudio/data-tools/create-a-sql-database-by-using-a-designer).
 
-For more information about the LocalDB API, see [SQL Server Express LocalDB Reference](../../relational-databases/sql-server-express-localdb-reference.md).
+For more information about the LocalDB API, see [SQL Server Express LocalDB reference](../../relational-databases/sql-server-express-localdb-reference.md).
 
 The `SqlLocalDB` utility can create new instances of LocalDB, start and stop an instance of LocalDB, and includes options to help you manage LocalDB. For more information about the `SqlLocalDB` utility, see [SqlLocalDB utility](../../tools/sqllocaldb-utility.md).
 
