@@ -3,7 +3,7 @@ title: "Differential Backups (SQL Server)"
 description: In SQL Server, a differential backup captures only data that has changed since the last full backup, which is the base of the differential backup.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/10/2022
+ms.date: 07/15/2025
 ms.service: sql
 ms.subservice: backup-restore
 ms.topic: conceptual
@@ -15,7 +15,7 @@ helpviewer_keywords:
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
-This backup and restore article is relevant for all [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] databases.
+This backup and restore article is relevant for all [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] databases.
 
 A differential backup is based on the most recent, previous full data backup. A differential backup captures only the data that has changed since that full backup. The full backup upon which a differential backup is based is known as the *base* of the differential. Full backups, except for copy-only backups, can serve as the base for a series of differential backups, including database backups, partial backups, and file backups. The base backup for a file differential backup can be contained within a full backup, a file backup, or a partial backup.
 
@@ -36,7 +36,7 @@ The following illustration shows how a differential backup works. The figure sho
 :::image type="content" source="media/differential-backups-sql-server/how-differential-backups-work.png" alt-text="Diagram of how the differential bitmap identifies changed extents.":::
 
 > [!NOTE]  
-> The differential bitmap is not updated by a copy-only backup. Therefore, a copy-only backup does not affect subsequent differential backups.
+> The differential bitmap isn't updated by a copy-only backup. Therefore, a copy-only backup doesn't affect subsequent differential backups.
 
 A differential backup that is taken fairly soon after its base can be significantly smaller than the differential base. This saves storage space and backup time. However, as a database changes over time, the difference between the database and a specific differential base increases. The longer the time between a differential backup and its base, the larger the differential backup is likely to be. This means that the differential backups can eventually approach the differential base in size. A large differential backup loses the advantages of a faster and smaller backup.
 
@@ -46,13 +46,13 @@ At restore time, before you restore a differential backup, you must restore its 
 
 ## Differential backups of databases with memory-optimized tables
 
-For information about differential backups and databases with memory-optimized tables, see [Backing Up a Database with Memory-Optimized Tables](../../relational-databases/in-memory-oltp/backing-up-a-database-with-memory-optimized-tables.md).
+For information about differential backups and databases with memory-optimized tables, see [Backing Up a Database with Memory-Optimized Tables](../in-memory-oltp/backing-up-a-database-with-memory-optimized-tables.md).
 
 ## Differential backups of read-only databases
 
-For read-only databases, full backups used alone are easier to manage than when they're used with differential backups. When a database is read-only, backup and other operations can't change the metadata that is contained in the file. Therefore, metadata that is required by a differential backup, such as the log sequence number at which the differential backup begins (the differential base LSN) is stored in the `master` database. If the differential base is taken when the database is read-only, the differential bitmap indicates more changes than have occurred since the base backup. The extra data is read by backup, but isn't written to the backup, because the `differential_base_lsn` stored in the [backupset](../../relational-databases/system-tables/backupset-transact-sql.md) system table is used to determine whether the data has changed since the base.
+For read-only databases, full backups used alone are easier to manage than when they're used with differential backups. When a database is read-only, backup and other operations can't change the metadata that is contained in the file. Therefore, metadata that is required by a differential backup, such as the log sequence number at which the differential backup begins (the differential base LSN) is stored in the `master` database. If the differential base is taken when the database is read-only, the differential bitmap indicates more changes than have occurred since the base backup. The extra data is read by backup, but isn't written to the backup, because the `differential_base_lsn` stored in the [backupset](../system-tables/backupset-transact-sql.md) system table is used to determine whether the data has changed since the base.
 
-When a read-only database is rebuilt, restored, or detached and attached, the differential-base information is lost. This occurs because the `master` database isn't synchronized with the user database. The [!INCLUDE[ssDEnoversion](../../includes/ssdenoversion-md.md)] can't detect or prevent this problem. Any later differential backups aren't based on the most recent full backup and could provide unexpected results. To establish a new differential base, we recommend that you create a full database backup.
+When a read-only database is rebuilt, restored, or detached and attached, the differential-base information is lost. This occurs because the `master` database isn't synchronized with the user database. The [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)] can't detect or prevent this problem. Any later differential backups aren't based on the most recent full backup and could provide unexpected results. To establish a new differential base, we recommend that you create a full database backup.
 
 ### Best practices for using differential backups with a read-only database
 
@@ -64,14 +64,13 @@ If you detach and attach a read-only database for which you plan to later use di
 
 ## Related tasks
 
-- [Create a Differential Database Backup &#40;SQL Server&#41;](../../relational-databases/backup-restore/create-a-differential-database-backup-sql-server.md)
+- [Create a Differential Database Backup (SQL Server)](create-a-differential-database-backup-sql-server.md)
+- [Restore a differential database backup (SQL Server)](restore-a-differential-database-backup-sql-server.md)
 
-- [Restore a Differential Database Backup &#40;SQL Server&#41;](../../relational-databases/backup-restore/restore-a-differential-database-backup-sql-server.md)
+## Related content
 
-## See also
-
-- [Backup Overview &#40;SQL Server&#41;](../../relational-databases/backup-restore/backup-overview-sql-server.md)
-- [Full Database Backups &#40;SQL Server&#41;](../../relational-databases/backup-restore/full-database-backups-sql-server.md)
-- [Complete Database Restores &#40;Full Recovery Model&#41;](../../relational-databases/backup-restore/complete-database-restores-full-recovery-model.md)
-- [Complete Database Restores &#40;Simple Recovery Model&#41;](../../relational-databases/backup-restore/complete-database-restores-simple-recovery-model.md)
-- [Transaction Log Backups &#40;SQL Server&#41;](../../relational-databases/backup-restore/transaction-log-backups-sql-server.md)
+- [Backup overview (SQL Server)](backup-overview-sql-server.md)
+- [Full database backups (SQL Server)](full-database-backups-sql-server.md)
+- [Complete Database Restores (Full Recovery Model)](complete-database-restores-full-recovery-model.md)
+- [Complete Database Restores (Simple Recovery Model)](complete-database-restores-simple-recovery-model.md)
+- [Transaction log backups (SQL Server)](transaction-log-backups-sql-server.md)

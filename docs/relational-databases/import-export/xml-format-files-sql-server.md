@@ -3,7 +3,7 @@ title: "XML Format Files (SQL Server)"
 description: SQL Server provides an XML schema that defines syntax for writing XML format files to use for bulk importing data into a SQL Server table.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 03/04/2025
+ms.date: 07/15/2025
 ms.service: sql
 ms.subservice: data-movement
 ms.topic: conceptual
@@ -182,7 +182,7 @@ Each `<FIELD>` element is independent of the others. A field is described in ter
   | `CharTerm` | `TERMINATOR` | `MAX_LENGTH`, `COLLATION` |
   | `NCharTerm` | `TERMINATOR` | `MAX_LENGTH`, `COLLATION` |
 
-  For more information about [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] data types, see [Data Types](../../t-sql/data-types/data-types-transact-sql.md).
+  For more information about [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] data types, see [Data types](../../t-sql/data-types/data-types-transact-sql.md).
 
 <a id="AttrOfColumnElement"></a>
 
@@ -235,7 +235,7 @@ Each `<FIELD>` element is independent of the others. A field is described in ter
   > [!IMPORTANT]  
   > To bulk export or import SQLXML data, use one of the following data types in your format file: `SQLCHAR` or `SQLVARYCHAR` (the data is sent in the client code page or in the code page implied by the collation), `SQLNCHAR` or `SQLNVARCHAR` (the data is sent as Unicode), or `SQLBINARY` or `SQLVARYBIN` (the data is sent without any conversion).
 
-  For more information about [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] data types, see [Data Types](../../t-sql/data-types/data-types-transact-sql.md).
+  For more information about [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] data types, see [Data types](../../t-sql/data-types/data-types-transact-sql.md).
 
 <a id="HowUsesROW"></a>
 
@@ -305,7 +305,7 @@ The examples illustrate key aspects of using XML format files, as follows:
 - [Import fixed-length or fixed-width fields](#ImportFixedFields)
 - [Additional examples](#AdditionalExamples)
 
-For information about how to create format files, see [Create a Format File (SQL Server)](../../relational-databases/import-export/create-a-format-file-sql-server.md).
+For information about how to create format files, see [Create a format file with bcp (SQL Server)](create-a-format-file-sql-server.md).
 
 <a id="OrderCharFieldsSameAsCols"></a>
 
@@ -345,7 +345,7 @@ The data fields correspond one-to-one with the columns of the table. In the `<RO
 ```
 
 > [!NOTE]  
-> For an equivalent [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)] example, see [Create a Format File (SQL Server)](../../relational-databases/import-export/create-a-format-file-sql-server.md).
+> For an equivalent [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)] example, see [Create a format file with bcp (SQL Server)](create-a-format-file-sql-server.md).
 
 <a id="OrderFieldsAndColsDifferently"></a>
 
@@ -382,7 +382,7 @@ In the `<ROW>` element, the format file maps the column `Age` to the first field
 ```
 
 > [!NOTE]  
-> For an equivalent [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)] example, see [Use a Format File to Map Table Columns to Data-File Fields (SQL Server)](../../relational-databases/import-export/use-a-format-file-to-map-table-columns-to-data-file-fields-sql-server.md).
+> For an equivalent [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)] example, see [Use a format file to map table columns to data-file fields (SQL Server)](use-a-format-file-to-map-table-columns-to-data-file-fields-sql-server.md).
 
 <a id="OmitField"></a>
 
@@ -424,7 +424,7 @@ In the `<ROW>` element, the format file maps the column `Age` to the first field
 ```
 
 > [!NOTE]  
-> For an equivalent [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)] example, see [Use a Format File to Skip a Data Field (SQL Server)](../../relational-databases/import-export/use-a-format-file-to-skip-a-data-field-sql-server.md).
+> For an equivalent [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)] example, see [Use a format file to skip a data field (SQL Server)](use-a-format-file-to-skip-a-data-field-sql-server.md).
 
 <a id="MapXSItype"></a>
 
@@ -522,17 +522,17 @@ The following example describes fixed fields of `10` or `6` characters each. The
 
 For more examples of both non-XML format files and XML format files, see the following articles:
 
-- [Use a Format File to Skip a Table Column (SQL Server)](../../relational-databases/import-export/use-a-format-file-to-skip-a-table-column-sql-server.md)
-- [Use a Format File to Skip a Data Field (SQL Server)](../../relational-databases/import-export/use-a-format-file-to-skip-a-data-field-sql-server.md)
-- [Use a Format File to Map Table Columns to Data-File Fields (SQL Server)](../../relational-databases/import-export/use-a-format-file-to-map-table-columns-to-data-file-fields-sql-server.md)
+- [Use a Format File to Skip a Table Column (SQL Server)](use-a-format-file-to-skip-a-table-column-sql-server.md)
+- [Use a format file to skip a data field (SQL Server)](use-a-format-file-to-skip-a-data-field-sql-server.md)
+- [Use a format file to map table columns to data-file fields (SQL Server)](use-a-format-file-to-map-table-columns-to-data-file-fields-sql-server.md)
 
 ## Related tasks
 
-- [Create a Format File (SQL Server)](../../relational-databases/import-export/create-a-format-file-sql-server.md)
-- [Use a Format File to Bulk Import Data (SQL Server)](../../relational-databases/import-export/use-a-format-file-to-bulk-import-data-sql-server.md)
-- [Use a Format File to Skip a Table Column (SQL Server)](../../relational-databases/import-export/use-a-format-file-to-skip-a-table-column-sql-server.md)
-- [Use a Format File to Skip a Data Field (SQL Server)](../../relational-databases/import-export/use-a-format-file-to-skip-a-data-field-sql-server.md)
-- [Use a Format File to Map Table Columns to Data-File Fields (SQL Server)](../../relational-databases/import-export/use-a-format-file-to-map-table-columns-to-data-file-fields-sql-server.md)
+- [Create a format file with bcp (SQL Server)](create-a-format-file-sql-server.md)
+- [Use a format file to bulk import data (SQL Server)](use-a-format-file-to-bulk-import-data-sql-server.md)
+- [Use a Format File to Skip a Table Column (SQL Server)](use-a-format-file-to-skip-a-table-column-sql-server.md)
+- [Use a format file to skip a data field (SQL Server)](use-a-format-file-to-skip-a-data-field-sql-server.md)
+- [Use a format file to map table columns to data-file fields (SQL Server)](use-a-format-file-to-map-table-columns-to-data-file-fields-sql-server.md)
 
 ## Related content
 

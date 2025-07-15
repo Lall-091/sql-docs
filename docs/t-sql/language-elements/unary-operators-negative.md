@@ -1,9 +1,9 @@
 ---
-title: "- (Unary negative) (Transact-SQL)"
+title: "- (Unary Negative) (Transact-SQL)"
 description: Returns the negative of the value of a numeric expression (a unary operator).
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/23/2024
+ms.date: 07/15/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -100,7 +100,7 @@ VariableValue NegativeValue
 5             -5
 ```
 
-## Examples: [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE [ssPDW](../../includes/sspdw-md.md)]
+## Examples: Azure Synapse Analytics and Analytics Platform System (PDW)
 
 [!INCLUDE [article-uses-adventureworks](../../includes/article-uses-adventureworks.md)]
 
@@ -121,7 +121,7 @@ SELECT TOP (1) - 17 FROM DimEmployee;
 -17
 ```
 
-  Notice the same result returned as if the unary negative is applied to a value with unary [Unary operators - Positive](unary-operators-positive.md) applied.
+The same result is returned as if the unary negative is applied to a value with unary [Unary operators - Positive](unary-operators-positive.md) applied.
 
 ```sql
 USE ssawPDW;

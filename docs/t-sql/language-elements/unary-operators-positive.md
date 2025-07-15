@@ -1,9 +1,9 @@
 ---
-title: "+ (Unary positive) (Transact-SQL)"
+title: "+ (Unary Positive) (Transact-SQL)"
 description: Returns the value of a numeric expression (a unary operator).
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/23/2024
+ms.date: 07/15/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference

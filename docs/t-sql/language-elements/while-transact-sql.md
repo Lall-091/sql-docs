@@ -3,7 +3,7 @@ title: "WHILE (Transact-SQL)"
 description: WHILE sets a condition for the repeated execution of a SQL statement or statement block.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/10/2024
+ms.date: 07/15/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -96,9 +96,9 @@ BEGIN
     FROM Production.Product
 
     IF (
-            SELECT MAX(ListPrice)
-            FROM Production.Product
-            ) > $500
+        SELECT MAX(ListPrice)
+        FROM Production.Product
+        ) > $500
         BREAK
     ELSE
         CONTINUE
@@ -117,8 +117,7 @@ DECLARE @Title AS NVARCHAR(50)
 
 DECLARE Employee_Cursor CURSOR
 FOR
-SELECT LoginID,
-    JobTitle
+SELECT LoginID, JobTitle
 FROM AdventureWorks2022.HumanResources.Employee
 WHERE JobTitle = 'Marketing Specialist';
 
@@ -126,8 +125,7 @@ OPEN Employee_Cursor;
 
 FETCH NEXT
 FROM Employee_Cursor
-INTO @EmployeeID,
-    @Title;
+INTO @EmployeeID, @Title;
 
 WHILE @@FETCH_STATUS = 0
 BEGIN
@@ -135,8 +133,7 @@ BEGIN
 
     FETCH NEXT
     FROM Employee_Cursor
-    INTO @EmployeeID,
-        @Title;
+    INTO @EmployeeID, @Title;
 END;
 
 CLOSE Employee_Cursor;
@@ -145,9 +142,9 @@ DEALLOCATE Employee_Cursor;
 GO
 ```
 
-## Examples: [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE [ssPDW](../../includes/sspdw-md.md)]
+## Examples: Azure Synapse Analytics and Analytics Platform System (PDW)
 
-### C: WHILE loop
+### C. WHILE loop
 
 In the following example, if the average list price of a product is less than $300, the `WHILE` loop doubles the prices and then selects the maximum price. If the maximum price is less than or equal to $500, the `WHILE` loop restarts and doubles the prices again. This loop continues doubling the prices until the maximum price is greater than $500, and then exits the `WHILE` loop.
 

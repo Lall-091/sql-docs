@@ -3,7 +3,7 @@ title: "Mapping CLR Parameter Data"
 description: This article lists Microsoft SQL Server data types, equivalents in the CLR for SQL Server, and native CLR equivalents in the .NET Framework.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 12/27/2024
+ms.date: 07/15/2025
 ms.service: sql
 ms.subservice: clr
 ms.topic: "reference"
@@ -31,7 +31,7 @@ helpviewer_keywords:
 The following table lists [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] data types, their equivalents in the common language runtime (CLR) for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] in the `System.Data.SqlTypes` namespace, and their native CLR equivalents in the .NET Framework.
 
 | SQL Server data type | Type (in `System.Data.SqlTypes` or `Microsoft.SqlServer.Types`) | CLR data type (.NET Framework) |
-| - | - | - |
+| --- | --- | --- |
 | **bigint** | `SqlInt64` | `Int64`, `Nullable<Int64>` |
 | **binary** | `SqlBytes`, `SqlBinary` | `Byte[]` |
 | **bit** | `SqlBoolean` | `Boolean`, `Nullable<Boolean>` |
