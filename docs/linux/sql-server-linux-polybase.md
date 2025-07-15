@@ -4,7 +4,7 @@ description: Learn how to connect to ODBC data sources with PolyBase on SQL Serv
 author: HugoMSFT
 ms.author: hudequei
 ms.reviewer: mikeray, randolphwest
-ms.date: 06/11/2025
+ms.date: 07/15/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
@@ -152,30 +152,6 @@ Failed to bind port "127.0.0.1:25100"
 ```
 
 You can find this message in PolyBase's log file, located at: `/var/opt/mssql-polybase-ees/log/`. In [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and later versions, the location has moved to `/var/opt/mssql/log/polybase-ees-log`.
-
-To fix, customize the service to use an available port and restart.
-
-1. Find and edit the `/var/opt/mssql/binn/PolyBase/DMs.exe.config` file. Locate the key entry `EESPort`, and assign the new port.
-
-1. Find and edit the `/var/opt/mssql/binn/PolyBase/DWEngineService.exe.config` file. Locate the key entry `EESPort`, and assign the new port.
-
-1. Run the following command to restart the service informing the new port:
-
-   ```bash
-   sudo /opt/mssql/lib/dotnet6/dotnet/opt/mssql/lib/ExternalExecutionService.dll -port <newportnumber>
-   ```
-
-   In [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and later versions, use the following command instead:
-
-   ```bash
-   sudo /opt/mssql/bin/mssql-conf set polybaseEES eesport <newportnumber>
-   ```
-
-1. You're prompted to restart the PolyBase service.
-
-   ```bash
-   systemctl restart mssql-ees.service
-   ```
 
 ## Related content
 
