@@ -1,10 +1,10 @@
 ---
 title: "STRING_AGG (Transact-SQL)"
-description: STRING_AGG concatenates the values of string expressions and places separator values between them."
+description: STRING_AGG concatenates the values of string expressions and places separator values between them.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 01/16/2025
+ms.date: 07/16/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -38,11 +38,11 @@ STRING_AGG ( expression , separator ) [ <order_clause> ]
 
 #### *expression*
 
-An [expression](../../t-sql/language-elements/expressions-transact-sql.md) of any type. Expressions are converted to **nvarchar** or **varchar** types during concatenation. Non-string types are converted to **nvarchar** type.
+An [expression](../language-elements/expressions-transact-sql.md) of any type. Expressions are converted to **nvarchar** or **varchar** types during concatenation. Non-string types are converted to **nvarchar** type.
 
 #### *separator*
 
-An [expression](../../t-sql/language-elements/expressions-transact-sql.md) of **nvarchar** or **varchar** type that is used as separator for concatenated strings. It can be literal or variable.
+An [expression](../language-elements/expressions-transact-sql.md) of **nvarchar** or **varchar** type that is used as separator for concatenated strings. It can be literal or variable.
 
 #### <order_clause>
 
@@ -54,7 +54,7 @@ WITHIN GROUP ( ORDER BY <order_by_expression_list> [ ASC | DESC ] )
 
 - `<order_by_expression_list>`
 
-  A list of non-constant [expressions](../../t-sql/language-elements/expressions-transact-sql.md) that can be used for sorting results. Only one `<order_by_expression_list>` is allowed per query. The default sort order is ascending.
+  A list of non-constant [expressions](../language-elements/expressions-transact-sql.md) that can be used for sorting results. Only one `<order_by_expression_list>` is allowed per query. The default sort order is ascending.
 
 ## Return types
 
@@ -70,11 +70,11 @@ Return type depends on first argument (expression). If input argument is string 
 
 ## Remarks
 
-`STRING_AGG` is an aggregate function that takes all expressions from rows and concatenates them into a single string. Expression values are implicitly converted to string types and then concatenated. The implicit conversion to strings follows the existing rules for data type conversions. For more information about data type conversions, see [CAST and CONVERT](../../t-sql/functions/cast-and-convert-transact-sql.md).
+`STRING_AGG` is an aggregate function that takes all expressions from rows and concatenates them into a single string. Expression values are implicitly converted to string types and then concatenated. The implicit conversion to strings follows the existing rules for data type conversions. For more information about data type conversions, see [CAST and CONVERT](cast-and-convert-transact-sql.md).
 
 If the input expression is type **varchar**, the separator can't be type **nvarchar**.
 
-Null values are ignored and the corresponding separator isn't added. To return a place holder for null values, use the `ISNULL` function as demonstrated in [example B](#b-generate-list-of-names-separated-with-comma-without-null-values).
+Null values are ignored and the corresponding separator isn't added. To return a place holder for null values, use the `ISNULL` function as demonstrated in [example B](#b-generate-list-of-middle-names-separated-with-comma-without-null-values).
 
 `STRING_AGG` is available in any compatibility level.
 
@@ -98,7 +98,7 @@ FROM Person.Person;
 GO
 ```
 
-[!INCLUDE [ssResult_md](../../includes/ssresult-md.md)]
+[!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
 
 ```output
 csv
@@ -115,18 +115,17 @@ Hazem
 `NULL` values found in `name` cells aren't returned in the result.
 
 > [!NOTE]  
-> If using the [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] Query Editor, the **Results to Grid** option can't implement the carriage return. Switch to **Results to Text** to see the result set properly.
-> Results to Text are truncated to 256 characters by default. To increase this limit, change the **Maximum number of characters displayed in each column** option.
+> If you use the [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] Query Editor, the **Results to Grid** option can't implement the carriage return. Switch to **Results to Text** to see the result set properly. Results to Text are truncated to 256 characters by default. To increase this limit, change the **Maximum number of characters displayed in each column** option.
 
-### B. Generate list of names separated with comma without `NULL` values
+### B. Generate list of middle names separated with comma without NULL values
 
-The following example replaces null values with 'N/A' and returns the names separated by commas in a single result cell.
+The following example replaces `NULL` values with `N/A` and returns the names separated by commas in a single result cell.
 
 ```sql
 USE AdventureWorks2022;
 GO
 
-SELECT STRING_AGG(CONVERT (NVARCHAR (MAX), ISNULL(FirstName, 'N/A')), ',') AS csv
+SELECT STRING_AGG(CONVERT (NVARCHAR (MAX), ISNULL(MiddleName, 'N/A')), ',') AS csv
 FROM Person.Person;
 GO
 ```
@@ -136,7 +135,7 @@ Here's a trimmed result set.
 ```output
 csv
 -----
-Syed,Catherine,Kim,Kim,Kim,Hazem,Sam,Humberto,Gustavo,Pilar,Pilar, ...
+E,R.,N/A,N/A,B,E,N/A,N/A,N/A,N/A,G,B,N/A,C,J,L,P,N/A,M,N/A,N/A,N/A,L,J., ...
 ```
 
 ### C. Generate comma-separated values
@@ -163,7 +162,7 @@ Rob Walters (Dec 29 2001 12:00AM)
 ```
 
 > [!NOTE]  
-> If using the Management Studio Query Editor, the **Results to Grid** option can't implement the carriage return. Switch to **Results to Text** to see the result set properly.
+> If you use the [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] Query Editor, the **Results to Grid** option can't implement the carriage return. Switch to **Results to Text** to see the result set properly. Results to Text are truncated to 256 characters by default. To increase this limit, change the **Maximum number of characters displayed in each column** option.
 
 ### D. Return news articles with related tags
 
@@ -180,7 +179,7 @@ GROUP BY a.articleId, title;
 GO
 ```
 
-[!INCLUDE [ssResult_md](../../includes/ssresult-md.md)]
+[!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
 
 | articleId | title | tags |
 | --- | --- | --- |
@@ -210,10 +209,7 @@ GROUP BY City;
 GO
 ```
 
-[!INCLUDE [ssResult_md](../../includes/ssresult-md.md)]
-
-> [!NOTE]  
-> Results are shown trimmed.
+Here's the trimmed result set.
 
 | City | emails |
 | --- | --- |
@@ -249,10 +245,7 @@ GROUP BY City;
 GO
 ```
 
-[!INCLUDE [ssResult_md](../../includes/ssresult-md.md)]
-
-> [!NOTE]  
-> Results are shown trimmed.
+Here's the trimmed result set.
 
 | City | Emails |
 | --- | --- |
