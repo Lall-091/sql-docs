@@ -51,6 +51,8 @@ There are two variants of **sqlcmd**:
 
 ### [Windows](#tab/windows)
 
+Choose one of the following options to install **sqlcmd** (Go) on Windows.
+
 #### winget (Windows Package Manager CLI)
 
 1. Install the [Windows Package Manager Client](/windows/package-manager/winget) if you don't already have it.
@@ -77,6 +79,8 @@ There are two variants of **sqlcmd**:
 
 ### [macOS](#tab/mac)
 
+Choose one of the following options to install **sqlcmd** (Go) on macOS.
+
 #### Homebrew
 
 1. Install Homebrew if you need to.
@@ -98,6 +102,8 @@ There are two variants of **sqlcmd**:
 1. Extract the `sqlcmd` file from the downloaded zip folder.
 
 ### [Linux](#tab/linux)
+
+Choose one of the following options to install **sqlcmd** (Go) on Linux.
 
 #### apt (Debian/Ubuntu)
 
