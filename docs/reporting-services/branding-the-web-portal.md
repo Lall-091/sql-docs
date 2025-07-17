@@ -16,7 +16,7 @@ ms.custom:
 
 [!INCLUDE[ssrs-appliesto](../includes/ssrs-appliesto.md)] [!INCLUDE[ssrs-appliesto-2016-and-later](../includes/ssrs-appliesto-2016-and-later.md)] [!INCLUDE[ssrs-appliesto-pbirs](../includes/ssrs-appliesto-pbirs.md)]
 
-Learn how to customize your SQL Server Reporting Services (SSRS) or Power BI Report Server web portal to match your business’s branding. By using an uploaded brand package, you can change colors, logos, and other styling elements on your web portal. A brand package consists of three items that you package as a zip file. The following sections describe the items in the brand package and provide examples of the contents. 
+Learn how to customize your SQL Server Reporting Services (SSRS) or Power BI Report Server web portal to match your business's branding. By using an uploaded brand package, you can change colors, logos, and other styling elements on your web portal. A brand package consists of three items that you package as a zip file. The following sections describe the items in the brand package and provide examples of the contents. 
 
 > [!VIDEO https://www.youtube-nocookie.com/embed/m08kLuofwFA]
 
@@ -94,7 +94,7 @@ The following example includes a logo file:
 
 The `colors.json` file defines the color scheme for your brand package. When you upload the brand package, the server extracts the name/value pairs from this file and merges them with the primary LESS stylesheet, `brand.less`. It processes the stylesheet, and serves the resulting CSS file to the client. All colors in the stylesheet follow the six-character hexadecimal representation of a color.
 
-Here’s an example of the `colors.json` file:
+Here's an example of the `colors.json` file:
 
 ```json
 {

@@ -384,7 +384,7 @@ As a general practice, it is recommended to check on the health of your backups 
    BACKUP CERTIFICATE [AutoBackup_Certificate] TO FILE = <file_path> WITH PRIVATE KEY (FILE = <file_path>, ENCRYPTION BY PASSWORD = <password>)
    ```
 
-1. Confirm that your backup files are uploaded with at least 1 full backup. Because mistakes happen, you should be sure you always have at least one full backup before deleting your VM, or in case your VM gets corrupted, so you know you can still access your data. You should make sure the backup in storage is safe and recoverable before deleting your VM’s data disks.
+1. Confirm that your backup files are uploaded with at least 1 full backup. Because mistakes happen, you should be sure you always have at least one full backup before deleting your VM, or in case your VM gets corrupted, so you know you can still access your data. You should make sure the backup in storage is safe and recoverable before deleting your VM's data disks.
 
 
 ## Monitoring

@@ -156,7 +156,7 @@ Each installation of an associated service is  represented in Azure Resource Man
 ```json
 "serviceType":  {
          "type": "string",
-         "enum": [ "Engine", "SSAS", "SSIS", "SSRS", “PBIRS” ],
+         "enum": [ "Engine", "SSAS", "SSIS", "SSRS", "PBIRS" ],
          "default": "Engine"
      }
 ```

@@ -145,7 +145,7 @@ Restart the VM to test the script. After the VM restarts, check that the `tempdb
 
 ## Configure buffer pool extension
 
-You can further enhance SQL Server performance by configuring the [buffer pool extension](/sql/database-engine/configure-windows/buffer-pool-extension) to use the local SSD drive on Azure VMs. This feature extends the in-memory buffer pool by using a file on disk to boost I/O throughput for memory-intensive workloads that exceed available RAM. Since the local SSD (ephemeral storage) offers low latency and high performance, it’s an ideal location for this extension.
+You can further enhance SQL Server performance by configuring the [buffer pool extension](/sql/database-engine/configure-windows/buffer-pool-extension) to use the local SSD drive on Azure VMs. This feature extends the in-memory buffer pool by using a file on disk to boost I/O throughput for memory-intensive workloads that exceed available RAM. Since the local SSD (ephemeral storage) offers low latency and high performance, it's an ideal location for this extension.
  
 When configuring the buffer pool extension, specify the size of the file in kilobytes (KB), megabytes (MB), or gigabytes (GB). The recommended size is typically 4 to 8 times the [max_server_memory] setting configured for SQL Server, though for Standard edition, the maximum is capped at 4 times this value (Enterprise edition allows up to 32 times). For example, if **max_server_memory** is set to 16 GB, aim for a buffer pool extension size of 64-128 GB, adjusted to your SQL Server edition and workload needs. 
  

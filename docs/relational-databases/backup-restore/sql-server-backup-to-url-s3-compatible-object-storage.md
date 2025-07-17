@@ -87,81 +87,81 @@ High-level overview of the supported features for `BACKUP` and `RESTORE`:
 
 | `WITH` options | S3 Endpoint | Notes |
 | --- | --- | --- |
-| `BLOCKSIZE` | Y | `MAXTRANSFERSIZE` determines the Part size. |
-| `BUFFERCOUNT` | Y | |
-| `COMPRESSION` | Y | |
-| `COPY_ONLY` | Y |  |
-| `CREDENTIAL` | Y |  |
-| `DESCRIPTION` | Y |  |
-| `DIFFERENTIAL` | Y |  |
-| `ENCRYPTION` | Y |  |
-| `FILE_SNAPSHOT` | N | |
-| `MAXTRANSFERSIZE` | Y | From 5 MB (5,242,880 Bytes) to 20 MB (20,971,520 Bytes), default value is 10 MB (10,485,760 Bytes).|
-| `MEDIADESCRIPTION` | Y |  |
-| `MEDIANAME` | Y |  |
-| `MIRROR TO` | Y | Only works with another URL, `MIRROR` with `URL` and `DISK` isn't supported. |
-| `NAME` | Y |  |
-| `NOFORMAT` / `FORMAT` |  Y |  |
-| `NOINIT` / `INIT` | N | Appending isn't supported. To overwrite a backup, use `WITH FORMAT`. |
-| `NO_CHECKSUM` / `CHECKSUM` | Y |  |
-| `NO_TRUNCATE` | Y |  |
-| `REGION` | Y | Default value is `us-east-1`. Must be used with `BACKUP_OPTIONS`.|
-| `STATS` | Y |  |
+| `BLOCKSIZE` | Yes | `MAXTRANSFERSIZE` determines the Part size. |
+| `BUFFERCOUNT` | Yes | |
+| `COMPRESSION` | Yes | |
+| `COPY_ONLY` | Yes |  |
+| `CREDENTIAL` | Yes |  |
+| `DESCRIPTION` | Yes |  |
+| `DIFFERENTIAL` | Yes |  |
+| `ENCRYPTION` | Yes |  |
+| `FILE_SNAPSHOT` | No | |
+| `MAXTRANSFERSIZE` | Yes | From 5 MB (5,242,880 Bytes) to 20 MB (20,971,520 Bytes), default value is 10 MB (10,485,760 Bytes).|
+| `MEDIADESCRIPTION` | Yes |  |
+| `MEDIANAME` | Yes |  |
+| `MIRROR TO` | Yes | Only works with another URL, `MIRROR` with `URL` and `DISK` isn't supported. |
+| `NAME` | Yes |  |
+| `NOFORMAT` / `FORMAT` | Yes |  |
+| `NOINIT` / `INIT` | No | Appending isn't supported. To overwrite a backup, use `WITH FORMAT`. |
+| `NO_CHECKSUM` / `CHECKSUM` | Yes |  |
+| `NO_TRUNCATE` | Yes |  |
+| `REGION` | Yes | Default value is `us-east-1`. Must be used with `BACKUP_OPTIONS`.|
+| `STATS` | Yes |  |
 
 ### Supported arguments for restore
 
 | `WITH` options | S3 Endpoint | Notes |
 | --- | --- | --- |
-| `BLOCKSIZE` | Y | `MAXTRANSFERSIZE` determines the Part size. |
-| `BUFFERCOUNT` | **N** |   |
-| `CHECKSUM` / `NO_CHECKSUM` | Y |   |
-| `CREDENTIAL` | Y |  |
-| `ENABLE_BROKER` / `ERROR_BROKER_CONVERSATIONS` / `NEW_BROKER` | Y |  |
-| `FILE` | **N** | Logical names not supported with `RESTORE FROM URL`. |
-| `FILESTREAM` | Y |  |
-| `KEEP_CDC` | Y |  |
-| `KEEP_REPLICATION` | Y |  |
-| `LOADHISTORY` | Y |  |
-| `MAXTRANSFERSIZE` | **Y** |   |
-| `MEDIANAME` | Y |  |
-| `MEDIAPASSWORD` | **N** | Required for some backups taken in versions before SQL Server 2012. |
-| `MOVE` | Y |  |
-| `PARTIAL` | Y |  |
-| `PASSWORD` | **N** | Required for some backups taken in versions before SQL Server 2012. |
-| `RECOVERY` / `NORECOVERY` / `STANDBY` | Y |  |
-| `REGION` | Y | Default value is `us-east-1`. Must be used with `RESTORE_OPTIONS`.|
-| `REPLACE` | Y |  |
-| `RESTART` | Y |  |
-| `RESTRICTED_USER` | Y |  |
-| `REWIND` / `NOREWIND` | **N** |  |
-| `STATS` | Y |  |
-| `STOP_ON_ERROR` / `CONTINUE_AFTER_ERROR` | Y |  |
-| `STOPAT` / `STOPATMARK` / `STOPBEFOREMARK` | Y |  |
-| `UNLOAD` / `NOUNLOAD` | **N** |  |
+| `BLOCKSIZE` | Yes | `MAXTRANSFERSIZE` determines the Part size. |
+| `BUFFERCOUNT` | No |   |
+| `CHECKSUM` / `NO_CHECKSUM` | Yes |   |
+| `CREDENTIAL` | Yes |  |
+| `ENABLE_BROKER` / `ERROR_BROKER_CONVERSATIONS` / `NEW_BROKER` | Yes |  |
+| `FILE` | No | Logical names not supported with `RESTORE FROM URL`. |
+| `FILESTREAM` | Yes |  |
+| `KEEP_CDC` | Yes |  |
+| `KEEP_REPLICATION` | Yes |  |
+| `LOADHISTORY` | Yes |  |
+| `MAXTRANSFERSIZE` | No |   |
+| `MEDIANAME` | Yes |  |
+| `MEDIAPASSWORD` | No | Required for some backups taken in versions before SQL Server 2012. |
+| `MOVE` | Yes |  |
+| `PARTIAL` | Yes |  |
+| `PASSWORD` | No | Required for some backups taken in versions before SQL Server 2012. |
+| `RECOVERY` / `NORECOVERY` / `STANDBY` | Yes |  |
+| `REGION` | Yes | Default value is `us-east-1`. Must be used with `RESTORE_OPTIONS`.|
+| `REPLACE` | Yes |  |
+| `RESTART` | Yes |  |
+| `RESTRICTED_USER` | Yes |  |
+| `REWIND` / `NOREWIND` | No |  |
+| `STATS` | Yes |  |
+| `STOP_ON_ERROR` / `CONTINUE_AFTER_ERROR` | Yes |  |
+| `STOPAT` / `STOPATMARK` / `STOPBEFOREMARK` | Yes |  |
+| `UNLOAD` / `NOUNLOAD` | No |  |
 
-<!-- | DBREADSIZE | **N** | Y | DBREADSIZE is not available |-->
+<!-- | DBREADSIZE | No | Yes | DBREADSIZE is not available |-->
 <!-- | WITH options | Blob Storage | S3 Connector | Notes |
 | --- | --- | --- | --- |
-| `BLOCKSIZE` | Y | Y |  |
-| `BUFFERCOUNT` | Y | Y |  |
-| `COMPRESSION` | Y | Y | |
-| `COPY\_ONLY` | Y | Y |  |
-| `CREDENTIAL` | Y | Y |  |
-| `DESCRIPTION` | Y | Y |  |
-| `DIFFERENTIAL` | Y | Y |  |
-| `ENCRYPTION` | Y | Y |  |
-| `FILE\_SNAPSHOT` | Y | **N** | FILE\_SNAPSHOT is only available in Azure |
-| `MAXTRANSFERSIZE` | Y | Y | From 5 MB (5,242,880 Bytes) to 20 MB (20,971,520 Bytes), default value is 10 MB (10,485,760 Bytes)|
-| `MEDIADESCRIPTION` | Y | Y |  |
-| `MEDIANAME` | Y | Y |  |
-| `NAME` | Y | Y |  |
-| `NOFORMAT/FORMAT` | Y | Y |  |
-| `NORECOVERY/STANDBY` | Y | Y |  |
-| `NO\_CHECKSUM/CHECKSUM` | Y | Y |  |
-| `NO\_TRUNCATE` | Y | Y |  |
-| `REGION` | N | Y | |
-| `STATS` | Y | Y |  |
-| DBREADSIZE | **N** | Y | DBREADSIZE is not available |-->
+| `BLOCKSIZE` | Yes | Yes |  |
+| `BUFFERCOUNT` | Yes | Yes |  |
+| `COMPRESSION` | Yes | Yes | |
+| `COPY_ONLY` | Yes | Yes |  |
+| `CREDENTIAL` | Yes | Yes |  |
+| `DESCRIPTION` | Yes | Yes |  |
+| `DIFFERENTIAL` | Yes | Yes |  |
+| `ENCRYPTION` | Yes | Yes |  |
+| `FILE_SNAPSHOT` | Yes | No | FILE_SNAPSHOT is only available in Azure |
+| `MAXTRANSFERSIZE` | Yes | Yes | From 5 MB (5,242,880 Bytes) to 20 MB (20,971,520 Bytes), default value is 10 MB (10,485,760 Bytes)|
+| `MEDIADESCRIPTION` | Yes | Yes |  |
+| `MEDIANAME` | Yes | Yes |  |
+| `NAME` | Yes | Yes |  |
+| `NOFORMAT/FORMAT` | Yes | Yes |  |
+| `NORECOVERY/STANDBY` | Yes | Yes |  |
+| `NO_CHECKSUM/CHECKSUM` | Yes | Yes |  |
+| `NO_TRUNCATE` | Yes | Yes |  |
+| `REGION` | No | Yes | |
+| `STATS` | Yes | Yes |  |
+| DBREADSIZE | No | Yes | DBREADSIZE is not available |-->
 
 <!--An example of virtual host style format is below:
 

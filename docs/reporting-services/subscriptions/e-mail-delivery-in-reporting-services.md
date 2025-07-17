@@ -60,7 +60,7 @@ helpviewer_keywords:
 ::: moniker range="<=sql-server-2017"
 
 > [!NOTE]  
-> In versions prior to Reporting Services 2019, the Comment field is only available for roles that include the ‘Manage all subscriptions’ task.
+> In versions prior to Reporting Services 2019, the Comment field is only available for roles that include the 'Manage all subscriptions' task.
 
 ::: moniker-end
 

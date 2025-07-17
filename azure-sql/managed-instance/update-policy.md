@@ -118,7 +118,7 @@ Set `databaseFormat` = `AlwaysUpToDate` when you update an existing SQL managed 
 Although the **SQL Server 2022** update policy is enabled by default, you can choose the **Always-up-to-date** policy when you create your instance by using the Azure portal, PowerShell, Azure CLI and REST API. 
 
 > [!IMPORTANT]
-> Make sure to add update policy configuration to your deployment templates, so that you don’t rely on system defaults that may change over time. 
+> Make sure to add update policy configuration to your deployment templates, so that you don't rely on system defaults that may change over time. 
 
 ### [Azure portal](#tab/azure-portal)
 

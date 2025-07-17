@@ -17,7 +17,7 @@ This document focuses on the best practices to use existing SSIS packages to wor
 
 ## Introduction
 
-****Microsoft Fabric**** is a comprehensive analytics platform that covers every aspect of an organization’s data estate. One of its key experiences is Fabric Data Warehouse, which serves as a simplified SaaS solution for a fully transactional warehouse. It stores data in OneLake using an open format called Delta Parquet, ensuring that data can be accessed by other experiences within Fabric and other client applications that connect using SQL drivers.
+****Microsoft Fabric**** is a comprehensive analytics platform that covers every aspect of an organization's data estate. One of its key experiences is Fabric Data Warehouse, which serves as a simplified SaaS solution for a fully transactional warehouse. It stores data in OneLake using an open format called Delta Parquet, ensuring that data can be accessed by other experiences within Fabric and other client applications that connect using SQL drivers.
 
 ****Microsoft Fabric****, as an analytics platform, exclusively supports authentication through ****Microsoft Entra ID**** for users and Service Principals (SPNs). This deliberate choice ensures centralized and identity-based security, aligning with modern security practices. So, SQL authentication and other authentication methods aren't supported in Fabric Data Warehouse within the Fabric ecosystem.
 
@@ -27,7 +27,7 @@ Microsoft SQL Server Integration Services (SSIS) is a component of the Microsoft
 Two key modifications are required in SSIS package to work seamlessly with Fabric Data Warehouse, outlined as follows.
 
 ### Authentication
-If you're using SQL Authentication or Windows Authentication, reconfigure it to utilize Microsoft Entra ID User or Service Principal Name (SPN). Keep in mind that if you’re using a User account, multifactor authentication (MFA) must be disabled, as SSIS doesn't support pop-up prompts.  It also needs respective drivers as mentioned below:
+If you're using SQL Authentication or Windows Authentication, reconfigure it to utilize Microsoft Entra ID User or Service Principal Name (SPN). Keep in mind that if you're using a User account, multifactor authentication (MFA) must be disabled, as SSIS doesn't support pop-up prompts.  It also needs respective drivers as mentioned below:
 
 ****To use [OLEDB connection manager](../connection-manager/ole-db-connection-manager.md)****:
 - Install [OLE DB Driver for SQL Server](../../connect/oledb/features/using-azure-active-directory.md) version that supports Microsoft Entra ID
@@ -42,7 +42,7 @@ If you're using SQL Authentication or Windows Authentication, reconfigure it to 
 :::image type="content" source="media/ado-net-connection.png" alt-text="Screenshot of ado connection manager part 1." lightbox="media/ado-net-connection.png":::
  
 ### File ingestion 
-The ****Fabric Data Warehouse**** recommends utilizing the native T-SQL command ‘COPY INTO’ for efficient data insertion into the warehouse. So, any DFT operations that currently rely on ****Fast Insert Mode**** or ****BCP IN**** scripts should be replaced with the ****COPY INTO**** statement by utilizing [Execute SQL Task](../control-flow/execute-sql-task.md). 
+The ****Fabric Data Warehouse**** recommends utilizing the native T-SQL command 'COPY INTO' for efficient data insertion into the warehouse. So, any DFT operations that currently rely on ****Fast Insert Mode**** or ****BCP IN**** scripts should be replaced with the ****COPY INTO**** statement by utilizing [Execute SQL Task](../control-flow/execute-sql-task.md). 
 
 ### SSIS writing data into Data Warehouse in Fabric
 

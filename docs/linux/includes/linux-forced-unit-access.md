@@ -18,7 +18,12 @@ Use this recommended configuration if the following conditions are met.
 
 - Linux distribution and version that supports FUA capability (starting with Red Hat Enterprise Linux 8.0, SUSE Linux Enterprise Server 12 SP5, or Ubuntu 18.04)
 
-- XFS file system for [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] storage
+- **XFS** file system for [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] storage, on Linux kernel 4.18 or later versions.
+
+- **ext4** file system for [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] storage, on Linux kernel 5.6 or later versions.
+
+  > [!NOTE]  
+  > You should use the **XFS** filesystem for hosting [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] data and transaction log files when the Linux kernel version is lower than 5.6. Starting with the kernel version 5.6, you can choose between **XFS** and **ext4** based on your specific requirements.
 
 - Storage subsystem and/or hardware that supports and is configured for FUA capability
 
@@ -38,7 +43,7 @@ For almost all other configuration that doesn't meet the previous conditions, th
 
 1. The [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] must use persisted mounted storage, and not `overlayfs`.
 
-1. The storage must use the XFS filesystem and should support FUA. Before enabling this setting, you should work with your Linux distribution and storage vendor, to ensure that the OS and storage subsystem supports FUA options. On Kubernetes, you can query for the filesystem type using the following command, where `<pvc-name>` is your `PersistentVolumeClaim`:
+1. The storage must use the **XFS** or **ext4** filesystems and should support FUA (**ext4** does not support FUA on the Linux kernel earlier than version 5.6). Before enabling this setting, you should work with your Linux distribution and storage vendor, to ensure that the OS and storage subsystem supports FUA options. On Kubernetes, you can query for the filesystem type using the following command, where `<pvc-name>` is your `PersistentVolumeClaim`:
 
    ```bash
    kubectl describe pv <pvc-name>

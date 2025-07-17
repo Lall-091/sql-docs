@@ -4,20 +4,20 @@ description: Use regular expressions to filter and manipulate text strings in SQ
 author: MikeRayMSFT
 ms.author: wiassaf
 ms.reviewer: abhtiwar, randolphwest, wiassaf, 
-ms.date: 05/19/2025
+ms.date: 07/17/2025
 ms.service: sql
 ms.topic: quickstart
-helpviewer_keywords:
-  - "Regular expressions functions"
-  - regex
-dev_langs:
-  - "TSQL"
-monikerRange: "= sql-server-ver17 || = sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
 ms.custom:
   - build-2025
+helpviewer_keywords:
+  - "Regular expressions functions"
+  - "regex"
+dev_langs:
+  - "TSQL"
+monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
 ---
 
-# Regular expressions preview 
+# Regular expressions preview
 
 [!INCLUDE [sqlserver2025-asdb-asmi-fabric](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
@@ -27,7 +27,7 @@ This article introduces regular expressions for SQL Server.
 
 A regular expression, or regex, is a sequence of characters that defines a search pattern for text. Regex is commonly used for a variety of tasks including pattern matching, data validation, data transformation, and querying. It offers a flexible and an efficient way to search, manipulate, and handle complex data operations.
 
-> [!NOTE]
+> [!NOTE]  
 > Regular expressions are available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) update policy.
 
 This implementation of regular expression is based on the [RE2 regular expression library](https://github.com/google/re2/). For more information, visit [RE2 Regular Expression Syntax](https://cran.r-project.org/web/packages/re2/vignettes/re2_syntax.html#:~:text=The%20simplest%20regular%20expression%20is,matches%20a%20literal%20plus%20character).
@@ -45,7 +45,7 @@ A simple regular expression is a single literal character. Characters match them
 ### Single character expressions
 
 | Kinds of single-character expressions | Examples |
-|---------------------------------------|----------|
+| --- | --- |
 | any character, possibly including newline (s=true) | `.` |
 | character class | `[xyz]` |
 | negated character class | `[^xyz]` |
@@ -63,35 +63,34 @@ A simple regular expression is a single literal character. Characters match them
 The following table lists currently supported Perl character classes.
 
 | Perl character classes (all ASCII-only) | Description |
-|-----------------------------------------|-------------|
-| `\d`                                    | digits ( `[0-9]`) |
-| `\D`                                    | not digits ( `[^0-9]`) |
-| `\s`                                    | whitespace ( `[\t\n\f\r ]`) |
-| `\S`                                    | not whitespace ( `[^\t\n\f\r ]`) |
-| `\w`                                    | word characters ( `[0-9A-Za-z_]`) |
-| `\W`                                    | not word characters ( `[^0-9A-Za-z_]`) |
+| --- | --- |
+| `\d` | digits ( `[0-9]`) |
+| `\D` | not digits ( `[^0-9]`) |
+| `\s` | whitespace ( `[\t\n\f\r ]`) |
+| `\S` | not whitespace ( `[^\t\n\f\r ]`) |
+| `\w` | word characters ( `[0-9A-Za-z_]`) |
+| `\W` | not word characters ( `[^0-9A-Za-z_]`) |
 
 ## ASCII character classes
 
 The following table lists currently supported ASCII character classes.
 
-|ASCII character classes  |Description  |
-|---------|---------|
-| `[[:alnum:]]`           | alphanumeric ( `[0-9A-Za-z]`) |
-| `[[:alpha:]]`           | alphabetic ( `[A-Za-z]`) |
-| `[[:ascii:]]`           | ASCII ( `[\x00-\x7F]`) |
-| `[[:blank:]]`           | blank ( `[\t ]`) |
-| `[[:cntrl:]]`           | control ( `[\x00-\x1F\x7F]`) |
-| `[[:digit:]]`           | digits ( `[0-9]`) |
-| `[[:graph:]]`           |	graphical ( `[!-~]` or ``[A-Za-z0-9!“#$%&’()*+,\-./:;<=>?@[\\\]^_`{|}~]``) |
-| `[[:lower:]]`           | lower case ( `[a-z]`) |
-| `[[:print:]]`           | printable ( `[ -~]` or `[ [:graph:]]`) |
-| `[[:punct:]]`           | punctuation ( `[!-/:-@[-\``{-~]`) |
-| `[[:space:]]`           | whitespace ( `[\t\n\v\f\r ]`) |
-| `[[:upper:]]`           | upper case ( `[A-Z]`) |
-| `[[:word:]]`            | word characters ( `[0-9A-Za-z_]`) |
-| `[[:xdigit:]]`          | hex digit ( `[0-9A-Fa-f]`) |
-
+| ASCII character classes | Description |
+| --- | --- |
+| `[[:alnum:]]` | alphanumeric ( `[0-9A-Za-z]`) |
+| `[[:alpha:]]` | alphabetic ( `[A-Za-z]`) |
+| `[[:ascii:]]` | ASCII ( `[\x00-\x7F]`) |
+| `[[:blank:]]` | blank ( `[\t ]`) |
+| `[[:cntrl:]]` | control ( `[\x00-\x1F\x7F]`) |
+| `[[:digit:]]` | digits ( `[0-9]`) |
+| `[[:graph:]]` | graphical ( `[!-~]` or ``[A-Za-z0-9!"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~]``) |
+| `[[:lower:]]` | lower case ( `[a-z]`) |
+| `[[:print:]]` | printable ( `[ -~]` or `[ [:graph:]]`) |
+| `[[:punct:]]` | punctuation ( `[!-/:-@[-\``{-~]`) |
+| `[[:space:]]` | whitespace ( `[\t\n\v\f\r ]`) |
+| `[[:upper:]]` | upper case ( `[A-Z]`) |
+| `[[:word:]]` | word characters ( `[0-9A-Za-z_]`) |
+| `[[:xdigit:]]` | hex digit ( `[0-9A-Fa-f]`) |
 
 ### Literal characters
 
@@ -133,15 +132,15 @@ This implementation supports the POSIX standard of regular expressions following
 
 ### What is the performance impact of using regex?
 
-Regex queries may have a performance impact depending on the complexity of the regex pattern, the size of the text data, and the number of rows involved. You can use the execution plan and statistics to monitor and optimize the performance of your regex queries.
+Regex queries can have a performance impact depending on the complexity of the regex pattern, the size of the text data, and the number of rows involved. You can use the execution plan and statistics to monitor and optimize the performance of your regex queries.
 
 ## Known Issues, behaviors, and limitations
 
-These are the items that are not currently supported in this preview:
+These are the items that aren't currently supported in this preview:
 
 - LOB data types (**varchar(max)** or **nvarchar(max)**) for `string_expressions`
-- Regular expression functions are not supported on memory-optimized OLTP tables
+- Regular expression functions aren't supported on memory-optimized OLTP tables
 
 ## Related content
 
-- [Regular expressions functions preview (Transact-SQL)](../../t-sql/functions/regular-expressions-functions-transact-sql.md)
+- [Regular expressions functions (Transact-SQL) preview](../../t-sql/functions/regular-expressions-functions-transact-sql.md)
