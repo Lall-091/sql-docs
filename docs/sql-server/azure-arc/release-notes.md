@@ -25,14 +25,14 @@ Extension versions are cumulative. Higher extension versions include all of the 
 
 Only Azure extension for SQL Server agent versions released within the last year are supported.
 
-## July 7, 2025
+## July 2025
 
 **Extension version**: `1.1.3106.305`
 
 This release enables the following feature:
 - [Migrate to Azure SQL Managed Instance directly from the Azure portal](migrate-to-azure-sql-managed-instance.md)
 
-## June 18, 2025
+## June 2025
 
 **Extension version**: `1.1.3089.297`
 
@@ -56,7 +56,7 @@ SQL Server enabled by Azure Arc is available as preview feature in US Government
 
 This release announces the preview region availability. It doesn't update extension version or other components of any agent or extension.
 
-## May 13, 2025
+## May 2025
 
 **Extension version**: `1.1.3049.285`
 
@@ -72,7 +72,7 @@ This version is no longer available.
 
 **Extension version**: `1.1.3021.274`
 
-## March 11, 2025
+## March 2025
 
 **Extension version**: `1.1.2986.256`
 
@@ -82,7 +82,7 @@ This release introduces:
 
 - New Arc SQL Server properties table and stored procedure in `msdb`.
 
-## February 28, 2025
+## February 2025
 
 **Extension version**: `1.1.2971.246`
 
@@ -98,7 +98,7 @@ This release introduces:
 
 - New documentation that describes how to connect without routing through the Internet: [Connect to Azure with a private path for SQL Server enabled by Azure Arc](configure-private-path.md).
 
-## January 29, 2025
+## January 2025
 
 **Extension version**: `1.1.2914.231`
 
@@ -109,13 +109,13 @@ This release includes bug fixes in the high availability and disaster recovery (
 - `master`
 - `model`
 
-## November 12, 2024
+## November 2024
 
 **Extension version**: `1.1.2859.223`
 
 Minor bug fixes. This release doesn't enable or introduce new features.
 
-## October 8, 2024
+## October 2024
 
 **Extension version**: `1.1.2830.214`
 
@@ -133,7 +133,7 @@ Inventory additional service resources in portal (preview):
 
 ESU sets the bill-back date to the beginning of the current ESU year based on the timestamp when ESU was enabled, or p-core ESU license was activated. For details, review [SQL Server Extended Security Updates enabled by Azure Arc](extended-security-updates.md).
 
-## September 9, 2024
+## September 2024
 
 **Extension version**: `1.1.2803.208`
 
@@ -145,30 +145,10 @@ Availability group (AG) inventory feature for all license types is now released 
 
 Apply physical core license types to physical core machines - general availability.
 
-## August 13, 2024
+## August 2024
 
 **Extension version**: `1.1.2769.203`
 
 ### Security improvements
 
 Various security improvements for SQL Server enabled by Azure Arc.
-
-## July 09, 2024
-
-**Extension version**: `1.1.2735.199`
-
-### Extended Security Updates enabled for SQL Server 2014
-
-Extended Security Updates (ESU) subscription for [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)] will automatically start billing when SQL Server 2014 ESU program starts. Requires [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)] be enabled for ESU.
-
-### Extended Security Updates using unlimited virtualization
-
-Extended Security Updates (ESU) subscription for [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)] and [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)] can be activated using ESU p-core license with unlimited virtualization. For details, see [Manage unlimited virtualization benefit for SQL Server ESU subscription](manage-configuration.md#manage-pcore-esu-license).
-
-> [!NOTE]  
-> Billing for the ESU p-core licenses will be activated in the next monthly release, but the full ESU costs will be reflected using a back-bill meter.
-
-### Azure extension for SQL Server
-
-`SqlServerExtensionPermissionProvider` task no longer runs hourly. The task is triggered by specific events. For details, review [Roles](permissions-granted-agent-extension.md#roles).
-

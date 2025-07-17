@@ -44,7 +44,7 @@ Review [Compare the MI link with LRS migration methods](/azure/azure-sql/managed
 ## Prerequisites 
 
 To migrate your SQL Server instance to Azure SQL Managed Instance through the Azure portal, your instance must meet the following prerequisites: 
-- [Enabled by Azure Arc](overview.md) starting with the [July 2025 update](release-notes.md#july-7-2025) to the Azure Extension for SQL Server (1.1.3106.305). 
+- [Enabled by Azure Arc](overview.md) starting with the [July 2025 update](release-notes.md#july-2025) to the Azure Extension for SQL Server (1.1.3106.305). 
 
 Requirements for the source SQL Server instance are determined by the migration method you plan to use. For example: 
 - [Managed Instance link](/azure/azure-sql/managed-instance/managed-instance-link-feature-overview) supports SQL Server 2016 and later on any supported edition of Windows Server. 
