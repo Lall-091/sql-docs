@@ -120,7 +120,7 @@ To use immutable storage with [!INCLUDE [sssql25-md](../../includes/sssql25-md.m
 1. Enable trace flag 3012 for your [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance by running the following DBCC command:   
    `DBCC TRACEON(3012,-1)`.
 1. Issue the [BACKUP](../../t-sql/statements/backup-transact-sql.md) to back up your database to the Azure storage container:   
-   `BACKP DATABASE [<Database>] TO URL = ‘<url>’ WITH FORMAT`.
+   `BACKP DATABASE [<Database>] TO URL = '<url>' WITH FORMAT`.
 
 ## Security for Azure Blob Storage
 
@@ -177,13 +177,13 @@ The following are security considerations and requirements when backing up to or
 
 | Backup/Restore Statement | Supported | Exceptions | Comments |
 | --- | --- | --- | --- |
-| BACKUP | Y | BLOCKSIZE and MAXTRANSFERSIZE are supported for block blobs. They aren't supported for page blobs. | BACKUP to a block blob requires a Shared Access Signature saved in a SQL Server credential. BACKUP to page blob requires the storage account key saved in a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] credential, and requires the WITH CREDENTIAL argument to be specified. |
-| RESTORE | Y | | Requires a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] credential to be defined, and requires the WITH CREDENTIAL argument to be specified if the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] credential is defined using the storage account key as the secret |
-| RESTORE FILELISTONLY | Y | | Requires a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] credential to be defined, and requires the WITH CREDENTIAL argument to be specified if the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] credential is defined using the storage account key as the secret |
-| RESTORE HEADERONLY | Y | | Requires a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] credential to be defined, and requires the WITH CREDENTIAL argument to be specified if the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] credential is defined using the storage account key as the secret |
-| RESTORE LABELONLY | Y | | Requires a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] credential to be defined, and requires the WITH CREDENTIAL argument to be specified if the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] credential is defined using the storage account key as the secret |
-| RESTORE VERIFYONLY | Y | | Requires a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] credential to be defined, and requires the WITH CREDENTIAL argument to be specified if the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] credential is defined using the storage account key as the secret |
-| RESTORE REWINDONLY | - | | |
+| BACKUP | Yes | BLOCKSIZE and MAXTRANSFERSIZE are supported for block blobs. They aren't supported for page blobs. | BACKUP to a block blob requires a Shared Access Signature saved in a SQL Server credential. BACKUP to page blob requires the storage account key saved in a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] credential, and requires the WITH CREDENTIAL argument to be specified. |
+| RESTORE | Yes | | Requires a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] credential to be defined, and requires the WITH CREDENTIAL argument to be specified if the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] credential is defined using the storage account key as the secret |
+| RESTORE FILELISTONLY | Yes | | Requires a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] credential to be defined, and requires the WITH CREDENTIAL argument to be specified if the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] credential is defined using the storage account key as the secret |
+| RESTORE HEADERONLY | Yes | | Requires a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] credential to be defined, and requires the WITH CREDENTIAL argument to be specified if the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] credential is defined using the storage account key as the secret |
+| RESTORE LABELONLY | Yes | | Requires a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] credential to be defined, and requires the WITH CREDENTIAL argument to be specified if the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] credential is defined using the storage account key as the secret |
+| RESTORE VERIFYONLY | Yes | | Requires a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] credential to be defined, and requires the WITH CREDENTIAL argument to be specified if the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] credential is defined using the storage account key as the secret |
+| RESTORE REWINDONLY | No | | |
 
 For syntax and general information about backup statements, see [BACKUP](../../t-sql/statements/backup-transact-sql.md).
 
@@ -193,36 +193,36 @@ For syntax and general information about restore statements, see [RESTORE Statem
 
 | Argument | Supported | Exception | Comments |
 | --- | --- | --- | --- |
-| DATABASE | Y | | |
-| LOG | Y | | |
+| DATABASE | Yes | | |
+| LOG | Yes | | |
 | |
-| TO (URL) | Y | Unlike DISK and TAPE, URL doesn't support specifying or creating a logical name. | This argument is used to specify the URL path for the backup file. |
-| MIRROR TO | Y | | |
+| TO (URL) | Yes | Unlike DISK and TAPE, URL doesn't support specifying or creating a logical name. | This argument is used to specify the URL path for the backup file. |
+| MIRROR TO | Yes | | |
 | **`WITH` options:** | | | |
-| CREDENTIAL | Y | | WITH CREDENTIAL is only supported when using BACKUP TO URL option to back up to Azure Blob Storage and only if the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] credential is defined using the storage account key as the secret |
-| FILE_SNAPSHOT | Y | | |
-| ENCRYPTION | Y | | When the `WITH ENCRYPTION` argument is specified, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] File-Snapshot Backup ensures that the entire database was TDE-encrypted before taking the backup and, if so, encrypts the file-snapshot backup file itself using the algorithm specified for TDE on the database. If all data in the database in the entire database isn't encrypted, the backup fails (for example, the encryption process isn't yet complete). |
-| DIFFERENTIAL | Y | | |
-| COPY_ONLY | Y | | |
-| COMPRESSION&#124;NO_COMPRESSION | Y | Not supported for file-snapshot backup | |
-| DESCRIPTION | Y | | |
-| NAME | Y | | |
-| EXPIREDATE &#124; RETAINDAYS | - | | |
-| NOINIT &#124; INIT | - | | Appending to blobs isn't possible. To overwrite a backup, use the `WITH FORMAT` argument. However, when using file-snapshot backups (using the `WITH FILE_SNAPSHOT` argument), the `WITH FORMAT` argument isn't permitted to avoid leaving orphaned file-snapshots that were created with the original backup. |
-| NOSKIP &#124; SKIP | - | | |
-| NOFORMAT &#124; FORMAT | Y | | A backup taken to an existing blob fails unless `WITH FORMAT` is specified. The existing blob is overwritten when `WITH FORMAT` is specified. However, when using file-snapshot backups (using the `WITH FILE_SNAPSHOT` argument), the FORMAT argument isn't permitted to avoid leaving orphaned file-snapshots that were created with the original file-snapshot backup. However, when using file-snapshot backups (using the `WITH FILE_SNAPSHOT` argument), the `WITH FORMAT` argument isn't permitted to avoid leaving orphaned file-snapshots that were created with the original backup. |
-| MEDIADESCRIPTION | Y | | |
-| MEDIANAME | Y | | |
-| BLOCKSIZE | Y | Not supported for page blob. Supported for block blob. | Recommend BLOCKSIZE=65536 to optimize use of the 50,000 blocks allowed in a block blob. |
-| BUFFERCOUNT | Y | | |
-| MAXTRANSFERSIZE | Y | Not supported for page blob. Supported for block blob. | Default is 1048576. The value can range up to 4 MB in increments of 65536 bytes.<br />Recommend MAXTRANSFERSIZE=4194304 to optimize use of the 50,000 blocks allowed in a block blob. |
-| NO_CHECKSUM &#124; CHECKSUM | Y | | |
-| STOP_ON_ERROR &#124; CONTINUE_AFTER_ERROR | Y | | |
-| STATS | Y | | |
-| REWIND &#124; NOREWIND | - | | |
-| UNLOAD &#124; NOUNLOAD | - | | |
-| NORECOVERY &#124; STANDBY | Y | | |
-| NO_TRUNCATE | Y | | |
+| CREDENTIAL | Yes | | WITH CREDENTIAL is only supported when using BACKUP TO URL option to back up to Azure Blob Storage and only if the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] credential is defined using the storage account key as the secret |
+| FILE_SNAPSHOT | Yes | | |
+| ENCRYPTION | Yes | | When the `WITH ENCRYPTION` argument is specified, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] File-Snapshot Backup ensures that the entire database was TDE-encrypted before taking the backup and, if so, encrypts the file-snapshot backup file itself using the algorithm specified for TDE on the database. If all data in the database in the entire database isn't encrypted, the backup fails (for example, the encryption process isn't yet complete). |
+| DIFFERENTIAL | Yes | | |
+| COPY_ONLY | Yes | | |
+| COMPRESSION&#124;NO_COMPRESSION | Yes | Not supported for file-snapshot backup | |
+| DESCRIPTION | Yes | | |
+| NAME | Yes | | |
+| EXPIREDATE &#124; RETAINDAYS | No | | |
+| NOINIT &#124; INIT | No | | Appending to blobs isn't possible. To overwrite a backup, use the `WITH FORMAT` argument. However, when using file-snapshot backups (using the `WITH FILE_SNAPSHOT` argument), the `WITH FORMAT` argument isn't permitted to avoid leaving orphaned file-snapshots that were created with the original backup. |
+| NOSKIP &#124; SKIP | No | | |
+| NOFORMAT &#124; FORMAT | Yes | | A backup taken to an existing blob fails unless `WITH FORMAT` is specified. The existing blob is overwritten when `WITH FORMAT` is specified. However, when using file-snapshot backups (using the `WITH FILE_SNAPSHOT` argument), the FORMAT argument isn't permitted to avoid leaving orphaned file-snapshots that were created with the original file-snapshot backup. However, when using file-snapshot backups (using the `WITH FILE_SNAPSHOT` argument), the `WITH FORMAT` argument isn't permitted to avoid leaving orphaned file-snapshots that were created with the original backup. |
+| MEDIADESCRIPTION | Yes | | |
+| MEDIANAME | Yes | | |
+| BLOCKSIZE | Yes | Not supported for page blob. Supported for block blob. | Recommend BLOCKSIZE=65536 to optimize use of the 50,000 blocks allowed in a block blob. |
+| BUFFERCOUNT | Yes | | |
+| MAXTRANSFERSIZE | Yes | Not supported for page blob. Supported for block blob. | Default is 1048576. The value can range up to 4 MB in increments of 65536 bytes.<br />Recommend MAXTRANSFERSIZE=4194304 to optimize use of the 50,000 blocks allowed in a block blob. |
+| NO_CHECKSUM &#124; CHECKSUM | Yes | | |
+| STOP_ON_ERROR &#124; CONTINUE_AFTER_ERROR | Yes | | |
+| STATS | Yes | | |
+| REWIND &#124; NOREWIND | No | | |
+| UNLOAD &#124; NOUNLOAD | No | | |
+| NORECOVERY &#124; STANDBY | Yes | | |
+| NO_TRUNCATE | Yes | | |
 
 For more information about backup arguments, see [BACKUP](../../t-sql/statements/backup-transact-sql.md).
 
@@ -230,35 +230,35 @@ For more information about backup arguments, see [BACKUP](../../t-sql/statements
 
 | Argument | Supported | Exceptions | Comments |
 | --- | --- | --- | --- |
-| DATABASE | Y | | |
-| LOG | Y | | |
-| FROM (URL) | Y | | The FROM URL argument is used to specify the URL path for the backup file. |
+| DATABASE | Yes | | |
+| LOG | Yes | | |
+| FROM (URL) | Yes | | The FROM URL argument is used to specify the URL path for the backup file. |
 | **WITH Options:** | | | |
-| CREDENTIAL | Y | | WITH CREDENTIAL is only supported when using RESTORE FROM URL option to restore from Microsoft Azure Blob Storage. |
-| PARTIAL | Y | | |
-| RECOVERY &#124; NORECOVERY &#124; STANDBY | Y | | |
-| LOADHISTORY | Y | | |
-| MOVE | Y | | |
-| REPLACE | Y | | |
-| RESTART | Y | | |
-| RESTRICTED_USER | Y | | |
-| FILE | - | | |
-| PASSWORD | Y | | |
-| MEDIANAME | Y | | |
-| MEDIAPASSWORD | Y | | |
-| BLOCKSIZE | Y | | |
-| BUFFERCOUNT | - | | |
-| MAXTRANSFERSIZE | - | | |
-| CHECKSUM &#124; NO_CHECKSUM | Y | | |
-| STOP_ON_ERROR &#124; CONTINUE_AFTER_ERROR | Y | | |
-| FILESTREAM | Y | Not supported for snapshot backup | |
-| STATS | Y | | |
-| REWIND &#124; NOREWIND | - | | |
-| UNLOAD &#124; NOUNLOAD | - | | |
-| KEEP_REPLICATION | Y | | |
-| KEEP_CDC | Y | | |
-| ENABLE_BROKER &#124; ERROR_BROKER_CONVERSATIONS &#124; NEW_BROKER | Y | | |
-| STOPAT &#124; STOPATMARK &#124; STOPBEFOREMARK | Y | | |
+| CREDENTIAL | Yes | | WITH CREDENTIAL is only supported when using RESTORE FROM URL option to restore from Microsoft Azure Blob Storage. |
+| PARTIAL | Yes | | |
+| RECOVERY &#124; NORECOVERY &#124; STANDBY | Yes | | |
+| LOADHISTORY | Yes | | |
+| MOVE | Yes | | |
+| REPLACE | Yes | | |
+| RESTART | Yes | | |
+| RESTRICTED_USER | Yes | | |
+| FILE | No | | |
+| PASSWORD | Yes | | |
+| MEDIANAME | Yes | | |
+| MEDIAPASSWORD | Yes | | |
+| BLOCKSIZE | Yes | | |
+| BUFFERCOUNT | No | | |
+| MAXTRANSFERSIZE | No | | |
+| CHECKSUM &#124; NO_CHECKSUM | Yes | | |
+| STOP_ON_ERROR &#124; CONTINUE_AFTER_ERROR | Yes | | |
+| FILESTREAM | Yes | Not supported for snapshot backup | |
+| STATS | Yes | | |
+| REWIND &#124; NOREWIND | No | | |
+| UNLOAD &#124; NOUNLOAD | No | | |
+| KEEP_REPLICATION | Yes | | |
+| KEEP_CDC | Yes | | |
+| ENABLE_BROKER &#124; ERROR_BROKER_CONVERSATIONS &#124; NEW_BROKER | Yes | | |
+| STOPAT &#124; STOPATMARK &#124; STOPBEFOREMARK | Yes | | |
 
 For more information about Restore arguments, see [RESTORE Statements - Arguments](../../t-sql/statements/restore-statements-arguments-transact-sql.md).
 
