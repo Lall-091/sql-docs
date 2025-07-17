@@ -22,6 +22,9 @@ ms.custom:
 
 This article explains how to migrate databases to Azure SQL Managed Instance by using [Log Replay Service (LRS)](log-replay-service-overview.md). LRS is a free-of-charge cloud service that's available for Azure SQL Managed Instance, based on SQL Server log-shipping technology.
 
+> [!NOTE]
+> It's now possible to migrate your SQL Server instance enabled by Azure Arc to Azure SQL Managed Instance directly through the Azure portal. To learn more, review [Migrate to Azure SQL Managed Instance](/sql/sql-server/azure-arc/migrate-to-azure-sql-managed-instance).
+
 The following sources are supported: 
 
 - SQL Server on Virtual Machines
@@ -141,7 +144,7 @@ This generates an email that notifies you that auditing for the SQL managed inst
 
 To configure the firewall, follow these steps: 
 
-1. Go to your managed instance in the [Azure portal](https://portal.azure.com) and select the subnet to open the **Subnets** page.
+1. Go to your SQL managed instance in the [Azure portal](https://portal.azure.com) and select the subnet to open the **Subnets** page.
 
    :::image type="content" source="media/log-replay-service-migrate/sql-managed-instance-overview-page.png" alt-text="Screenshot of the SQL managed instance Overview page of the Azure portal, with the subnet selected.":::
 
@@ -645,7 +648,7 @@ Consider the following limitations when migrating with LRS:
 
 When migrating to a SQL Managed Instance in the **Business Critical** service tier, consider the following limitations:
 
-- When migrating large databases, there may considerable downtime as databases are unavailable after cutover while databases are seeded to secondary replicas of the **Business Critical** service tier. Workarounds are listed in the [longer cutover](#longer-cutover-in-the-business-critical-service-tier) section.
+- When migrating large databases, there might be considerable downtime as databases are unavailable after cutover while databases are seeded to secondary replicas of the **Business Critical** service tier. Workarounds are listed in the [longer cutover](#longer-cutover-in-the-business-critical-service-tier) section.
 - Migration is automatically restarted from the beginning if the migration is interrupted by an unplanned failover, system update, or security patch, making it difficult to plan a predictable migration without last minute surprises. 
 
 > [!IMPORTANT]

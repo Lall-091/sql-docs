@@ -4,7 +4,7 @@ description: Latest release notes for SQL Server enabled by Azure Arc
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest
-ms.date: 06/30/2025
+ms.date: 07/16/2025
 ms.topic: conceptual
 ms.custom:
   - ignite-2023
@@ -28,6 +28,9 @@ Only Azure extension for SQL Server agent versions released within the last year
 ## July 7, 2025
 
 **Extension version**: `1.1.3106.305`
+
+This release enables the following feature:
+- [Migrate to Azure SQL Managed Instance directly from the Azure portal](migrate-to-azure-sql-managed-instance.md)
 
 ## June 18, 2025
 

@@ -9482,6 +9482,8 @@ items:
         href: sql-server/azure-arc/migration-assessment.md
       - name: Migration dashboard
         href: sql-server/azure-arc/migration-inventory.md
+      - name: Migrate to Azure SQL Managed Instance
+        href: sql-server/azure-arc/migrate-to-azure-sql-managed-instance.md
     - name: FAQ
       href: sql-server/azure-arc/faq.yml
     - name: Data collection & reporting

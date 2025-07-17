@@ -4,7 +4,7 @@ description: Connect an instance of SQL Server to Azure Arc. Allows you to manag
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, maghan
-ms.date: 07/03/2025
+ms.date: 07/08/2025
 ms.topic: how-to
 ms.custom:
   - references_regions
@@ -27,11 +27,12 @@ If the server that runs your SQL Server instance isn't yet connected to Azure, y
 
 ### Generate an onboarding script for SQL Server
 
-1. Go to **Azure Arc > SQL Server** and select **+ Add**
+1. Go to [Azure Arc](https://portal.azure.com/#view/Microsoft_Azure_ArcCenterUX/ArcCenterMenuBlade/~/getStarted) in the Azure portal.
+1. Under **Data services**, select **SQL Server instances** and then select **+ Add** to open the **Add existing SQL Server instances** page.
 
-   :::image type="content" source="media/join/start-creation-of-sql-server-azure-arc-resource.png" alt-text="Screenshot of the start creation." lightbox="media/join/start-creation-of-sql-server-azure-arc-resource.png":::
+   :::image type="content" source="media/join/start-creation-of-sql-server-azure-arc-resource.png" alt-text="Screenshot of the Azure Arc page with SQL Server instances and +Add selected." lightbox="media/join/start-creation-of-sql-server-azure-arc-resource.png":::
 
-1. Under **Connect SQL Server to Azure Arc**, select **Connect Servers**
+1. On the **Add existing SQL Server instances** page, select **Connect SQL Server instances** for a new registration or **Register SQL Server instances** for a disconnected instance.
 
 1. Review the prerequisites and select **Next: Server details**
 
@@ -53,7 +54,7 @@ If the server that runs your SQL Server instance isn't yet connected to Azure, y
 1. Specify the SQL Server instance(s) you want to exclude from registering (if you have multiple instances installed on the server). Separate each excluded instance by a space.
 
    > [!IMPORTANT]  
-   > If the machine hosting the SQL Server instance is already [connected to Azure Arc](/azure/azure-arc/servers/onboard-portal), make sure to select the same resource group that contains the corresponding **Server - Azure Arc** resource.
+   > If the machine that hosts the SQL Server instance is already [connected to Azure Arc](/azure/azure-arc/servers/onboard-portal), make sure to select the same resource group that contains the corresponding **Server - Azure Arc** resource.
 
    :::image type="content" source="media/join/server-details-sql-server-management-azure-arc.png" alt-text="Screenshot of server management details." lightbox="media/join/server-details-sql-server-management-azure-arc.png":::
 

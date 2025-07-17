@@ -80,7 +80,7 @@ You'll also need the following tools:
 | The latest [Az.SQL](https://www.powershellgallery.com/packages/Az.Sql) or [Azure CLI](/cli/azure/install-azure-cli) | For link setup via scripts. |
 
 > [!NOTE]
-> The Managed Instance link feature is available in all public Azure regions and national or government clouds.
+> The Managed Instance link feature is available in all global Azure regions and national or government clouds.
 
 ## How the link works
 
@@ -139,10 +139,10 @@ The link feature also facilitates migrating from SQL Server to SQL Managed Insta
 - The most performant, minimal downtime migration, compared to all other solutions available today.
 - True online migration to SQL Managed Instance in any service tier. 
 
-Because the link feature enables minimal downtime migration, you can migrate to your managed instance as you maintain your primary workload online. Although it's currently possible to achieve online migrations to the *General Purpose* service tier with other solutions, the link feature is the only solution that allows true online migrations to the *Business Critical* service tier. 
+Because the link feature enables minimal downtime migration, you can migrate to your managed instance as you maintain your primary workload online. Although it's currently possible to achieve online migrations to the *General Purpose* service tier with other solutions, the link feature is the only solution that allows true online migrations to the *Business Critical* service tier. For an in-depth migration comparison between migrating with the link and the Log Replay Service, see [Compare the Managed Instance link to LRS](log-replay-service-compare-mi-link.md).
 
 > [!NOTE]
-> For an in-depth migration comparison, see [Compare the Managed Instance link to LRS](log-replay-service-compare-mi-link.md).
+> It's now possible to migrate your SQL Server instance enabled by Azure Arc to Azure SQL Managed Instance directly through the Azure portal. To learn more, review [Migrate to Azure SQL Managed Instance](/sql/sql-server/azure-arc/migrate-to-azure-sql-managed-instance).
 
 ## Copy data on-premises
 

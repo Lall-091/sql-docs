@@ -19,6 +19,9 @@ This article teaches you to migrate your SQL Server database to Azure SQL Manage
 
 For a detailed migration guide, review [Migrate to Azure SQL Managed Instance](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md). To compare migration tools, review [Compare LRS with MI link](log-replay-service-compare-mi-link.md). 
 
+> [!NOTE]
+> It's now possible to migrate your SQL Server instance enabled by Azure Arc to Azure SQL Managed Instance directly through the Azure portal. To learn more, review [Migrate to Azure SQL Managed Instance](/sql/sql-server/azure-arc/migrate-to-azure-sql-managed-instance).
+
 ## Overview
 
 The Managed Instance link enables migration from SQL Server hosted anywhere, to Azure SQL Managed Instance. The link uses Always On availability group technology to replicate changes nearly in real time from the primary SQL Server instance to the secondary SQL Managed Instance. The link provides the only truly online migration option between SQL Server and Azure SQL Managed Instance, since the only downtime is cutting over to the target SQL managed instance. 
