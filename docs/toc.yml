@@ -8975,7 +8975,7 @@ items:
     - name: Ownership Chains & Context Switching
       href: relational-databases/tutorial-ownership-chains-and-context-switching.md
     - name: Use Azure Blob Storage with SQL Server databases
-      href: relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016.md
+      href: relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server.md
   - name: Writing T-SQL Statements
     href: t-sql/tutorial-writing-transact-sql-statements.md
     items:
