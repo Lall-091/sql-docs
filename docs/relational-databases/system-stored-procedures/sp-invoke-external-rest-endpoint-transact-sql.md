@@ -19,7 +19,7 @@ helpviewer_keywords:
   - "sp_invoke_external_rest_endpoint"
 dev_langs:
   - "TSQL"
-monikerRange: "=fabric"
+monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
 ---
 # sp_invoke_external_rest_endpoint (Transact-SQL)
 
