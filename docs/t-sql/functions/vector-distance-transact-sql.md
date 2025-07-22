@@ -24,12 +24,9 @@ ms.custom:
   - build-2025
 ---
 
-# VECTOR_DISTANCE (Transact-SQL) (Preview)
+# VECTOR_DISTANCE (Transact-SQL) 
 
 [!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
-
-> [!NOTE]
-> This data type is in preview and is subject to change. Make sure to read preview usage terms in [Service Level Agreements (SLA) for Online Services](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services).
 
 Calculates the distance between two vectors using a specified distance metric. Vector distance is always exact and doesn't use any vector index, even if available. In order to use a vector index and thus perform an approximate vector search, you must use the [VECTOR_SEARCH](vector-search-transact-sql.md) function. To learn more about how vector indexing and vector search works, and the differences between exact and approximate search, refer to [Vectors in the SQL Database Engine](../../relational-databases/vectors/vectors-sql-server.md).
 
