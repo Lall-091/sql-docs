@@ -33,7 +33,7 @@ Failover groups for a SQL Managed Instance deployment support only one replica. 
 
 ## Cost benefit
 
-When you designate a managed instance replica as standby, Microsoft doesn't charge you SQL Server licensing costs for the vCores used by the standby replica. However, because the instance is billed for the entire hour, you might still be charged licensing costs for the entire hour if the state change is made in the middle of the hour. 
+When you designate a SQL managed instance replica as standby, Microsoft doesn't charge you SQL Server licensing costs for the vCores used by the standby replica. However, because the instance is billed for the entire hour, you might still be charged licensing costs for the entire hour if the state change is made in the middle of the hour. 
 
 The benefit translates differently between customers who use the pay-as-you-go model and customers who use the [Azure Hybrid Benefit](../azure-hybrid-benefit.md) model. For a pay-as-you-go customer, the vCores are discounted on their invoice. For a customer who uses the Azure Hybrid Benefit for the standby replica, the number of vCores that the secondary replica uses are returned to their licensing pool.
 

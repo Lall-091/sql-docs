@@ -135,6 +135,10 @@ Contrary to the availability group, an FCI must use shared storage between all n
 
 The VNN for the FCI provides a unified connection point for the FCI. This allows applications to connect to the VNN without the need to know the currently active node. When a failover occurs, the VNN is registered to the new active node after it starts. This process is transparent to the client or application connecting to [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] and this minimizes the downtime the application or clients experience during a failure.
 
+The following screenshot highlights the network name for the failover cluster instance in Failover Cluster Manager: 
+
+:::image type="content" source="media/always-on-failover-cluster-instances-sql-server/fci-network-name.png" alt-text="Screenshot of the fci network name in Failover Cluster Manager.":::
+
 ### Virtual IPs
 
 In the case of a multi-subnet FCI, a virtual IP address is assigned to each subnet in the FCI. During a failover, the VNN on the DNS server is updated to point to the virtual IP address for the respective subnet. Applications and clients can then connect to the FCI using the same VNN after a multi-subnet failover.

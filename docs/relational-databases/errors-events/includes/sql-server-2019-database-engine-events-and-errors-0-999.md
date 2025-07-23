@@ -655,7 +655,7 @@ ms.topic: include
 | 985 | 10 | Yes | Successfully installed the file '%ls' into folder '%ls'. |
 | 986 | 10 | No | Couldn't get a clean bootpage for database '%.\*ls' after %d tries. This is an informational message only. No user action is required. |
 | 987 | 23 | Yes | A duplicate key insert was hit when updating system objects in database '%.\*ls'. |
-| 988 | 14 | No | Unable to access database '%.\*ls' because it lacks a quorum of nodes for high availability. Try the operation again later. |
+| [988](../mssqlserver-988-database-engine-error.md) | 14 | No | Unable to access database '%.\*ls' because it lacks a quorum of nodes for high availability. Try the operation again later. |
 | 989 | 16 | No | Failed to take the host database with ID %d offline when one or more of its partition databases is marked as suspect. |
 | 990 | 16 | No | Taking the host database with ID %d offline because one or more of its partition databases is marked as suspect. |
 | 991 | 16 | No | Failed to take the host database '%.\*ls' offline when one or more of its partition databases is marked as suspect. |

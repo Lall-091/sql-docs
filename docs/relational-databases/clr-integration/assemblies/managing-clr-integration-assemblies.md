@@ -3,7 +3,7 @@ title: Manage CLR Integration Assemblies
 description: You can host managed DLL assemblies in SQL Server. You can register, alter, and drop assemblies, and also manage associated files and permissions.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 12/27/2024
+ms.date: 07/23/2025
 ms.service: sql
 ms.subservice: clr
 ms.topic: "reference"
@@ -37,7 +37,11 @@ Assembly information is stored in the `sys.assembly_files` table in the database
 | [Alter an assembly](altering-an-assembly.md) | Describes updating CLR assemblies in [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] |
 | [Drop an assembly](dropping-an-assembly.md) | Discusses dropping CLR assemblies from [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] |
 
+## Code access security no longer supported
+
+[!INCLUDE [code-access-security](../../../database-engine/includes/code-access-security.md)]
+
 ## Related content
 
 - [CLR integration security](../security/clr-integration-security.md)
-- [CLR integration Code Access Security](../security/clr-integration-code-access-security.md)
+- [CLR integration code access security](../security/clr-integration-code-access-security.md)

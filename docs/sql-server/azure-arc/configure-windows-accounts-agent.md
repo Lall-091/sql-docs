@@ -12,21 +12,21 @@ ms.topic: reference
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
-This article lists the permissions the Azure extension for SQL Server grants to the `NT Service\SQLServerExtension` account when [least privilege](configure-least-privilege.md) is used for [SQL Server instances enabled by Azure Arc](overview.md). With the least privilege configuration, the extension only grants necessary permissions when you enable features in the Azure portal. 
+This article lists the permissions the Azure extension for SQL Server grants to the `NT Service\SQLServerExtension` account when you use [least privilege](configure-least-privilege.md) for [SQL Server instances enabled by Azure Arc](overview.md). With the least privilege configuration, the extension grants only necessary permissions when you enable features in the Azure portal. 
 
 > [!NOTE]  
-> `NT Authority\System` must have access to modify permissions on listed directories and registry keys. This is needed so that `NT Authority\System` can grant required access to the `NT Service\SqlServerExtension` account for least privilege mode.
+> `NT Authority\System` must have access to modify permissions on listed directories and registry keys. This access is necessary so that `NT Authority\System` can grant required access to the `NT Service\SqlServerExtension` account for least privilege mode.
 
 ## Overview
 
-When SQL Server is connected to Azure Arc with [least privilege](configure-least-privilege.md) enabled, the Azure Arc extension grants its service account, `NT SERVICE\SQLServerExtension`, only the permissions required by each feature at the moment that feature is enabled. Those permissions are automatically revoked if the feature is later disabled, and any feature that remains inactive is never granted its associated permissions.
+When you connect SQL Server to Azure Arc with [least privilege](configure-least-privilege.md) enabled, the Azure Arc extension grants its service account, `NT SERVICE\SQLServerExtension`, only the permissions each feature needs when you enable that feature. The extension automatically removes those permissions if you disable the feature. If a feature is inactive, the extension doesn't grant any permissions for that feature.
 
 Manually setting the permissions for the agent account isn't supported.
 
 > [!NOTE]  
 > [!INCLUDE [least-privilege-default](includes/least-privilege-default.md)] 
 
-[SQL privileges by feature](#sql-privileges-by-feature) details the permissions granted by the extension when the following features are enabled: 
+The section [SQL privileges by feature](#sql-privileges-by-feature) explains the permissions the extension grants when you enable the following features: 
 
 - [Default permissions for the extension](#default-extension-permissions)
 - [Automated backups](#automated-backups)
@@ -42,7 +42,7 @@ Manually setting the permissions for the agent account isn't supported.
 
 | Directory path | Required permissions | Details | Feature |
 | :--- | :--- | :--- | :--- |
-| `<SystemDrive>\Packages\Plugins\Microsoft.AzureData.WindowsAgent.SQLServer` | Full control | Extension related dlls and exe files. | Default |
+| `<SystemDrive>\Packages\Plugins\Microsoft.AzureData.WindowsAgent.SQLServer` | Full control | Extension related DLLs and EXE files. | Default |
 | `C:\Packages\Plugins\Microsoft.AzureData.WindowsAgent.SqlServer\<extension_version>\RuntimeSettings` | Full control | Extension settings file. | Default |
 | `C:\Packages\Plugins\Microsoft.AzureData.WindowsAgent.SqlServer\<extension_version>\status` | Full control | Extension status file. | Default |
 | `C:\ProgramData\GuestConfig\extension_logs\Microsoft.AzureData.WindowsAgent.SqlServer` | Full control | Extension log files. | Default |
@@ -85,7 +85,7 @@ The `NT Service\SQLServerExtension` account is added:
 The extension also grants permissions to instance and database objects as features are enabled.
 
 > [!NOTE]  
-> Minimum permissions depend on enabled features. Permissions are updated when they are no longer necessary. Necessary permissions are granted when features are enabled.
+> Minimum permissions depend on enabled features. The extension updates permissions when they're no longer necessary. It grants necessary permissions when you enable features.
 
 ## SQL privileges by feature
 
@@ -135,9 +135,9 @@ The following default permissions are the minimum requirement for the basic leve
 
 ### Automated backups
 
-[Automated backups](backup-local.md) are disabled by default. Backup permissions are granted to any database that has automated backups enabled. Enabling the backup feature also enables the [point-in-time restore](point-in-time-restore.md) feature, so the permission to create a database is also granted.
+[Automated backups](backup-local.md) are disabled by default. The extension grants backup permissions to any database that has automated backups enabled. Enabling the backup feature also enables the [point-in-time restore](point-in-time-restore.md) feature, so the permission to create a database is also granted.
 
-If the features are enabled, the following permissions are automatically granted: 
+If the features are enabled, the extension automatically grants the following permissions: 
 
 | Object type | Database or object name | Privilege |
 | --- | --- | --- |
@@ -147,9 +147,9 @@ If the features are enabled, the following permissions are automatically granted
 
 ### Availability groups
 
-[Availability group](manage-availability-group.md) discovery and management features such as failing over are enabled by default, but they can be disabled through the `AvailabilityGroupDiscovery` feature flag.
+[Availability group](manage-availability-group.md) discovery and management features such as failing over are enabled by default, but you can disable them through the `AvailabilityGroupDiscovery` feature flag.
 
-If the feature is enabled, the following permissions are automatically granted:
+If the feature is enabled, the extension automatically grants the following permissions:
 
 | Object type | Database or object name | Privilege |
 | --- | --- | --- |
@@ -160,7 +160,7 @@ If the feature is enabled, the following permissions are automatically granted:
 
 The [best practices assessment](assess.md) is disabled by default. 
 
-If the feature is enabled, the following permissions are automatically granted: 
+If the feature is enabled, the extension automatically grants the following permissions: 
 
 | Object type | Database or object name | Privilege |
 | --- | --- | --- |
@@ -177,7 +177,7 @@ If the feature is enabled, the following permissions are automatically granted:
 
 The [Database migration (preview)](migrate-to-azure-sql-managed-instance.md) feature is enabled by default, and only requires the permissions listed in [default extension permissions](#default-extension-permissions), though some permissions used by the Database migration (preview) feature are granted [just-in-time permissions](#just-in-time-sql-permissions) when a specific migration action is performed.
 
-The following actions require additional permissions that are granted just-in-time:
+The following actions require additional permissions that the extension grants just-in-time:
 - [Create Managed Instance link migration](#create-managed-instance-link-migration)
 - [Complete cutover of Managed Instance link migration](#complete-cutover-of-managed-instance-link-migration)
 - [Cancel Managed Instance link migration](#cancel-managed-instance-link-migration)
@@ -187,7 +187,7 @@ The following actions require additional permissions that are granted just-in-ti
 
 ### Create Managed Instance link migration
 
-On the [Migrate data](migrate-to-azure-sql-managed-instance.md#migrate-data) step, [just-in-time permissions](#just-in-time-sql-permissions) are granted when you select **Start data migration** on the **Review + Create** tab for a Managed Instance link migration. Elevated permissions are necessary to configure the distributed availability group. Permissions are revoked once the distributed availability group is created, and the deployment visible in the Azure portal is in the completed state. If another migration is running at the same time, permissions aren't revoked until the last distributed availability group is created.
+On the [Migrate data](migrate-to-azure-sql-managed-instance.md#migrate-data) step, the extension grants [just-in-time permissions](#just-in-time-sql-permissions) when you select **Start data migration** on the **Review + Create** tab for a Managed Instance link migration. The service account needs elevated permissions to configure the distributed availability group. It revokes permissions once the distributed availability group is created, and the deployment visible in the Azure portal is in the completed state. If another migration is running at the same time, the extension doesn't revoke permissions until the last distributed availability group is created.
 
 The action to create a Managed Instance link migration acquires the following permissions for the duration of the create request:
 
@@ -203,7 +203,7 @@ The action to create a Managed Instance link migration acquires the following pe
 
 ### Complete cutover of Managed Instance link migration
 
-On the [Monitor and cutover](migrate-to-azure-sql-managed-instance.md#monitor-and-cutover) step, [just-in-time permissions](#just-in-time-sql-permissions) are granted when you select the **Complete cutover** option for a Managed Instance link migration. Permissions are revoked after the cutover completes.
+On the [Monitor and cutover](migrate-to-azure-sql-managed-instance.md#monitor-and-cutover) step, the extension grants [just-in-time permissions](#just-in-time-sql-permissions) when you select the **Complete cutover** option for a Managed Instance link migration. The extension revokes permissions after the cutover completes.
 
 The action to complete cutover of a Managed Instance link migration acquires the following permissions for the duration of the complete request: 
 
@@ -218,7 +218,7 @@ The action to complete cutover of a Managed Instance link migration acquires the
 
 ### Cancel Managed Instance link migration
 
-On the [Monitor and cutover step](migrate-to-azure-sql-managed-instance.md#monitor-and-cutover), [just-in-time permissions](#just-in-time-sql-permissions) are granted when you select the **Cancel migration** option for a Managed Instance link migration. Permissions are revoked after the migration is canceled.
+On the [Monitor and cutover step](migrate-to-azure-sql-managed-instance.md#monitor-and-cutover), the extension grants [just-in-time permissions](#just-in-time-sql-permissions) when you select the **Cancel migration** option for a Managed Instance link migration. The extension revokes permissions after the migration is canceled.
 
 The action to cancel a Managed Instance link migration acquires the following permissions for the duration of the cancel request: 
 
@@ -234,7 +234,7 @@ The action to cancel a Managed Instance link migration acquires the following pe
 
 [Migration assessments (preview)](migration-assessment.md) are enabled by default. 
 
-If the feature is disabled, the following permissions are revoked unless other enabled features require them:
+If the feature is disabled, the extension revokes the following permissions unless other enabled features require them:
     
 | Object type | Database or object name | Privilege |
 | --- | --- | --- |
@@ -255,7 +255,7 @@ If the feature is disabled, the following permissions are revoked unless other e
 
 The [Purview](/purview/register-scan-azure-arc-enabled-sql-server) features are disabled by default.
 
-If the feature is enabled, the following permissions are automatically granted:
+If the feature is enabled, the extension automatically grants the following permissions:
 
 | Object type | Database or object name | Privilege |
 | --- | --- | --- |

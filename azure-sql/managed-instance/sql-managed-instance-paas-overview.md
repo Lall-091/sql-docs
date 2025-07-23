@@ -38,7 +38,7 @@ Azure SQL Managed Instance is a PaaS service that has near 100% compatibility wi
 
 SQL Managed Instance is designed for customers looking to migrate a large number of apps from an on-premises or IaaS, self-built, or ISV provided environment to a fully managed PaaS cloud environment, with as low a migration effort as possible. Using the fully automated [Azure Data Migration Service](/azure/dms/tutorial-sql-server-to-managed-instance#create-an-azure-database-migration-service-instance), or the [Managed Instance link](managed-instance-link-feature-overview.md), customers can lift and shift their existing SQL Server database or SQL Server instance to Azure SQL Managed Instance, which offers compatibility with SQL Server and complete isolation of customer instances with native VNet support.
 
-With Software Assurance, you can exchange your existing licenses for discounted rates on SQL Managed Instance using the [Azure Hybrid Benefit for SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). SQL Managed Instance is the best migration destination in the cloud for SQL Server instances that require high security and a rich programmability surface.
+With Software Assurance, you can allocate your existing licenses for discounted rates on SQL Managed Instance using the [Azure Hybrid Benefit for SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). SQL Managed Instance is the best migration destination in the cloud for SQL Server instances that require high security and a rich programmability surface.
 
 For more information on migration options and tools, see [Migration overview: SQL Server to Azure SQL Managed Instance](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md).
 
@@ -175,8 +175,8 @@ As with any Azure service, when you use Azure SQL Managed Instance, you are bill
 
 SQL Managed Instance offers several ways to save on costs:
 
-- **Azure Hybrid Benefit**: If you have Software Assurance, you can use the [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) to save up to 55% on licensing costs. The Azure Hybrid Benefit for SQL Server allows you to use your on-premises SQL Server licenses to run Azure SQL Managed Instance at a reduced rate.
-- **Azure Reservations**: You can save up to 80% on costs by purchasing [reservations](../database/reservations-discount-overview.md) for SQL Managed Instance. 
+- **Azure Hybrid Benefit**: If you have Software Assurance, you can use the [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/), which grants you a discount on the allocation of SQL Server licenses to the SQL Database Engine.
+- **Azure Reservations**: You can save up to 80% on costs by purchasing [reservations](../database/reservations-discount-overview.md) for SQL Managed Instance. `
 - **Instance pools**: If you have multiple managed instances, you can save on costs by using [instance pools](instance-pools-overview.md), which also support [reservations](instance-pools-overview.md#reservations-pricing).
 - **Instance stop and start**: You can [stop and start](instance-stop-start-how-to.md) your managed instance to save on costs. When you stop your instance, you only pay for storage, and you can restart it at any time.
 - **Free DR replica**: You can save on licensing costs by designating a secondary replica for [disaster recovery (DR) only](business-continuity-high-availability-disaster-recover-hadr-overview.md#license-free-dr-replicas). 
@@ -184,7 +184,7 @@ SQL Managed Instance offers several ways to save on costs:
 
 ## vCore-based purchasing model
 
-The [vCore-based purchasing model](service-tiers-managed-instance-vcore.md) for SQL Managed Instance gives you flexibility, control, transparency, and a straightforward way to translate on-premises workload requirements to the cloud. This model allows you to change compute, memory, and storage based upon your workload needs. The vCore model is also eligible for up to 55 percent savings with the [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) for SQL Server.
+The [vCore-based purchasing model](service-tiers-managed-instance-vcore.md) for SQL Managed Instance gives you flexibility, control, transparency, and a straightforward way to translate on-premises workload requirements to the cloud. This model allows you to change compute, memory, and storage based upon your workload needs. The vCore model is also eligible for savings with the [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) for SQL Server.
 
 In the vCore model, you can choose hardware configurations as follows:
 

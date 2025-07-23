@@ -3,7 +3,7 @@ title: "Designing Assemblies"
 description: This article describes factors to consider when you design an assembly to host on SQL Server, including packaging, managing, and restrictions on assemblies.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 12/27/2024
+ms.date: 07/23/2025
 ms.service: sql
 ms.subservice: clr
 ms.topic: "reference"
@@ -31,6 +31,10 @@ When you're packaging code into assembly, consider:
 
 - If a piece of managed code requires higher permission, it's better to separate that code into a separate assembly from code that doesn't require higher permission.
 
+## Code access security no longer supported
+
+[!INCLUDE [code-access-security](../../database-engine/includes/code-access-security.md)]
+
 ## Manage assembly security
 
 You can control how much an assembly can access resources protected by .NET Code Access Security when it runs managed code. You do this by specifying one of three permission sets when you create or modify an assembly: `SAFE`, `EXTERNAL_ACCESS`, or `UNSAFE`.
@@ -45,7 +49,7 @@ Most assemblies perform computation and data management tasks without having to 
 
 `EXTERNAL_ACCESS` allows for assemblies to access certain external system resources such as files, networks, Web services, environmental variables, and the registry. Only [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logins with `EXTERNAL ACCESS` permissions can create `EXTERNAL_ACCESS` assemblies.
 
-SAFE and `EXTERNAL_ACCESS` assemblies can contain only code that is verifiably type-safe. This means that these assemblies can only access classes through well-defined entry points that are valid for the type definition. Therefore, they can't arbitrarily access memory buffers not owned by the code. Additionally, they can't perform operations that might have an adverse effect on the robustness of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] process.
+`SAFE` and `EXTERNAL_ACCESS` assemblies can contain only code that is verifiably type-safe. This means that these assemblies can only access classes through well-defined entry points that are valid for the type definition. Therefore, they can't arbitrarily access memory buffers not owned by the code. Additionally, they can't perform operations that might have an adverse effect on the robustness of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] process.
 
 ### UNSAFE permission
 

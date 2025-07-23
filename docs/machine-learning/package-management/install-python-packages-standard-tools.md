@@ -118,4 +118,4 @@ import cntk
 
 + [Get Python package information](python-package-information.md)
 + [Python tutorials for SQL Server Machine Learning Services](../tutorials/python-tutorials.md)
-+ [Python API for CNTK](https://cntk.ai/pythondocs/tutorials.html).
++ [Python API for CNTK](https://github.com/microsoft/CNTK)

@@ -226,7 +226,7 @@ SQL Managed Instance tier choice is guided by availability, performance (for exa
 
 #### Can I move only a specific workload out of an on-premises cluster, and what is the impact to licensing and cost?
 
-It's possible to only migrate the databases related to one workload toward an Azure SQL Managed Instance. Creating and operating an Azure SQL managed instance requires SQL Server licenses. [Azure Hybrid Benefit](../azure-hybrid-benefit.md) provides you with the ability to reuse your licenses. Reach out to your licensing partner to review what possibilities can be used with [license mobility](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility) and restructuring your current licenses.
+It's possible to only migrate the databases related to one workload toward an Azure SQL Managed Instance. Creating and operating an Azure SQL Managed Instance requires SQL Server licenses. [Azure Hybrid Benefit](../azure-hybrid-benefit.md) provides you with the ability to allocate your licenses to the SQL Server Database Engine. Reach out to your licensing partner to review what possibilities can be used with [license mobility](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility) and restructuring your current licenses.
 
 #### I maintain a highly consolidated SQL Server with multiple applications running against it. Can I move it to SQL Managed Instance?
 

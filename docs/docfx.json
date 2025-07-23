@@ -333,7 +333,7 @@
         "tools/sql-server-profiler/*.md": "UpdateFrequency5",
         "tools/ssbdiagnose/*.md": "UpdateFrequency5"
       },
-       "ms.update-cycle": {
+      "ms.update-cycle": {
         "ado/*.md": "1825-days",
         "ado/guide/appendixes/*.md": "1825-days",
         "ado/guide/data/*.md": "1825-days",
@@ -536,6 +536,9 @@
         ],
         "dea/**/*.md": [
           "sql-server-ver16"
+        ],
+        "dma/**/*.{md,yml,yaml}": [
+          "sql-server-ver16"
         ]
       }
     },
@@ -557,7 +560,7 @@
         "exclude": [
           "connect/jdbc/download-microsoft-jdbc-driver-for-sql-server.md",
           "connect/oledb/download-oledb-driver-for-sql-server.md",
-          "connect/odbc/download-odbc-driver-for-sql-server.md",
+          "connect/odbc/download-odbc-driver-for-sql-server.md"
         ]
       },
       "sensitive-language-ma": {

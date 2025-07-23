@@ -3,7 +3,7 @@ title: CLR Integration Programming Model Restrictions
 description: SQL Server performs code checks on managed database objects when first registered using CREATE ASSEMBLY and at runtime.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 12/27/2024
+ms.date: 07/23/2025
 ms.service: sql
 ms.subservice: clr
 ms.topic: "reference"
@@ -21,9 +21,13 @@ When you build a managed stored procedure or other managed database object, [!IN
 
 These code checks provide flexibility for registering third-party assemblies especially, so that an assembly isn't blocked where there's *unsafe* code designed to run in a client environment, but would never be executed in the hosted common language runtime (CLR). The requirements that the managed code must meet depend on whether the assembly is registered as `SAFE`, `EXTERNAL_ACCESS`, or `UNSAFE`. `SAFE` is the strictest security level.
 
-In addition to restrictions being placed on the managed code assemblies, there are also code security permissions that are granted. The CLR supports a security model called code access security (CAS) for managed code. In this model, permissions are granted to assemblies based on the identity of the code. `SAFE`, `EXTERNAL_ACCESS`, and `UNSAFE` assemblies have different CAS permissions. For more information, see [CLR integration Code Access Security](../security/clr-integration-code-access-security.md).
+In addition to restrictions being placed on the managed code assemblies, there are also code security permissions that are granted. The CLR supports a security model called code access security (CAS) for managed code. In this model, permissions are granted to assemblies based on the identity of the code. `SAFE`, `EXTERNAL_ACCESS`, and `UNSAFE` assemblies have different CAS permissions. For more information, see [CLR integration code access security](../security/clr-integration-code-access-security.md).
 
 If the [publisher policy](/dotnet/framework/configure-apps/how-to-create-a-publisher-policy) is set, `CREATE ASSEMBLY` fails.
+
+## Code access security no longer supported
+
+[!INCLUDE [code-access-security](../../../database-engine/includes/code-access-security.md)]
 
 ## CREATE ASSEMBLY checks
 
@@ -105,6 +109,6 @@ All `EXTERNAL_ACCESS` conditions are checked.
 ## Related content
 
 - [Supported .NET Framework libraries](supported-net-framework-libraries.md)
-- [CLR integration Code Access Security](../security/clr-integration-code-access-security.md)
+- [CLR integration code access security](../security/clr-integration-code-access-security.md)
 - [Host protection attributes and CLR integration programming](../../clr-integration-security-host-protection-attributes/host-protection-attributes-and-clr-integration-programming.md)
 - [Create an assembly](../assemblies/creating-an-assembly.md)

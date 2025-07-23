@@ -1,6 +1,126 @@
 {
   "redirections": [
     {
+      "source_path": "docs/dma/dma-assess-sql-data-estate-to-sqldb-commandline.md",
+      "redirect_url": "/previous-versions/sql/dma/dma-assess-sql-data-estate-to-sqldb-commandline",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver16"
+      ]
+    },
+    {
+      "source_path": "docs/dma/dma-assess-sql-data-estate-to-sqldb.md",
+      "redirect_url": "/previous-versions/sql/dma/dma-assess-sql-data-estate-to-sqldb",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver16"
+      ]
+    },
+    {
+      "source_path": "docs/dma/dma-assess-ssis.md",
+      "redirect_url": "/previous-versions/sql/dma/dma-assess-ssis",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver16"
+      ]
+    },
+    {
+      "source_path": "docs/dma/dma-assesssqlonprem.md",
+      "redirect_url": "/previous-versions/sql/dma/dma-assesssqlonprem",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver16"
+      ]
+    },
+    {
+      "source_path": "docs/dma/dma-bestpractices.md",
+      "redirect_url": "/previous-versions/sql/dma/dma-bestpractices",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver16"
+      ]
+    },
+    {
+      "source_path": "docs/dma/dma-commandline.md",
+      "redirect_url": "/previous-versions/sql/dma/dma-commandline",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver16"
+      ]
+    },
+    {
+      "source_path": "docs/dma/dma-configurationsettings.md",
+      "redirect_url": "/previous-versions/sql/dma/dma-configurationsettings",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver16"
+      ]
+    },
+    {
+      "source_path": "docs/dma/dma-diagnostic-data-collection.md",
+      "redirect_url": "/previous-versions/sql/dma/dma-diagnostic-data-collection",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver16"
+      ]
+    },
+    {
+      "source_path": "docs/dma/dma-migrateonpremsql.md",
+      "redirect_url": "/previous-versions/sql/dma/dma-migrateonpremsql",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver16"
+      ]
+    },
+    {
+      "source_path": "docs/dma/dma-migrateonpremsqltosqldb.md",
+      "redirect_url": "/previous-versions/sql/dma/dma-migrateonpremsqltosqldb",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver16"
+      ]
+    },
+    {
+      "source_path": "docs/dma/dma-migrateserverlogins.md",
+      "redirect_url": "/previous-versions/sql/dma/dma-migrateserverlogins",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver16"
+      ]
+    },
+    {
+      "source_path": "docs/dma/dma-overview.md",
+      "redirect_url": "/previous-versions/sql/dma/dma-overview",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver16"
+      ]
+    },
+    {
+      "source_path": "docs/dma/dma-save-load-assessments.md",
+      "redirect_url": "/previous-versions/sql/dma/dma-save-load-assessments",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver16"
+      ]
+    },
+    {
+      "source_path": "docs/dma/dma-sku-recommend-sql-db.md",
+      "redirect_url": "/previous-versions/sql/dma/dma-sku-recommend-sql-db",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver16"
+      ]
+    },
+    {
+      "source_path": "docs/dma/dma-whats-new.md",
+      "redirect_url": "/previous-versions/sql/dma/dma-whats-new",
+      "redirect_document_id": false,
+      "monikers": [
+        "sql-server-ver16"
+      ]
+    },
+    {
       "source_path": "azure-sql/database/saas-dbpertenant-dr-geo-replication.md",
       "redirect_url": "/previous-versions/sql/database/saas-dbpertenant-dr-geo-replication",
       "redirect_document_id": false,

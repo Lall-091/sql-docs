@@ -5,7 +5,7 @@ description: Learn how to use the Managed Instance link to migrate your SQL Serv
 author: danimir
 ms.author: danil
 ms.reviewer: mathoma
-ms.date: 08/22/2024
+ms.date: 07/22/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: data-movement
 ms.custom: ignite-2023
@@ -20,7 +20,7 @@ This article teaches you to migrate your SQL Server database to Azure SQL Manage
 For a detailed migration guide, review [Migrate to Azure SQL Managed Instance](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md). To compare migration tools, review [Compare LRS with MI link](log-replay-service-compare-mi-link.md). 
 
 > [!NOTE]
-> It's now possible to migrate your SQL Server instance enabled by Azure Arc to Azure SQL Managed Instance directly through the Azure portal. To learn more, review [Migrate to Azure SQL Managed Instance](/sql/sql-server/azure-arc/migrate-to-azure-sql-managed-instance).
+> You can now migrate your SQL Server instance enabled by Azure Arc to Azure SQL Managed Instance directly through the Azure portal. For more information, see [Migrate to Azure SQL Managed Instance](/sql/sql-server/azure-arc/migrate-to-azure-sql-managed-instance).
 
 ## Overview
 

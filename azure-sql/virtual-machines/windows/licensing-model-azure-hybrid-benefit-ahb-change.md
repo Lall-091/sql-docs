@@ -21,7 +21,7 @@ This article describes how to change the license model for SQL Server on Azure V
 There are three license models for an Azure VM that's hosting SQL Server: pay-as-you-go, Azure Hybrid Benefit, and High Availability/Disaster Recovery (HA/DR). You can modify the license model of your SQL Server VM by using the Azure portal, the Azure CLI, or PowerShell.
 
 - The **pay-as-you-go** model means that the per-second cost of running the Azure VM includes the cost of the SQL Server license.
-- [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) allows you to use your own SQL Server license with a VM that's running SQL Server.
+- [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) grants you the ability to allocate your SQL Server licenses to a VM that's running SQL Server.
 - The **HA/DR** license type is used for the [free HA/DR replica](business-continuity-high-availability-disaster-recovery-hadr-overview.md#free-dr-replica-in-azure) in Azure.
 
 ## Azure Hybrid Benefit
@@ -111,7 +111,6 @@ Once CMB-AHB is enabled for a subscription, the **License type** on the **Overvi
 With CMB-AHB, making license type changes to individual VMs is no longer possible, and you see the following message on the **Configure** pane of your *SQL virtual machines* resource: 
 
 `Your organization manages licenses assigned to Azure at a scope level such as Azure subscription instead of each individual resource. Billing administrators can manage licenses centrally under Cost Management + Billing. `
-
 
 > [!IMPORTANT]
 > If [automatic registration](sql-agent-extension-automatic-registration-all-vms.md) is activated after [Centrally Managed-AHB (CM-AHB)](licensing-model-azure-hybrid-benefit-ahb-change.md) is enabled, you run the risk of unnecessary pay-as-you-go charges for your SQL Server on Azure VM workloads. To mitigate this risk, adjust your license assignments in CM-AHB to account for the additional usage that will be reported by the SQL IaaS Agent extension after auto-registration. We published an [open source tool](https://github.com/microsoft/sql-server-samples/tree/master/samples/manage/azure-hybrid-benefit) that provides insights into the utilization of SQL Server licenses, including the utilization by the SQL Servers on Azure Virtual Machines that are not yet registered with the SQL IaaS Agent extension.

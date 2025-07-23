@@ -30,7 +30,7 @@ You can enable the Azure Hybrid Benefit for Azure SQL Database by using the Azur
 
 For Azure SQL Database, Azure Hybrid Benefit is only available when using the provisioned compute tier of the [vCore-based purchasing model](database/service-tiers-vcore.md). Azure Hybrid Benefit doesn't apply to the [DTU-based purchasing model](database/service-tiers-dtu.md) or the [serverless compute tier](database/serverless-tier-overview.md).
 
-#### [Portal](#tab/azure-portal)
+#### [Azure portal](#tab/azure-portal)
 
 To set or update the license type to the Azure Hybrid Benefit by using the Azure portal:
 
@@ -65,7 +65,7 @@ To set or update the license type to the Azure Hybrid Benefit by using the REST 
 
 You can enable the Azure Hybrid Benefit for Azure SQL Managed Instance by using the Azure portal, PowerShell, Azure CLI, or REST API.
 
-#### [Portal](#tab/azure-portal)
+#### [Azure portal](#tab/azure-portal)
 
 To set or update the license type to the Azure Hybrid Benefit by using the Azure portal:
 

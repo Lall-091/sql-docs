@@ -29,7 +29,7 @@ To add a Data Lake Analytics task to a package, drag the task from SSIS Toolbox 
 
 ## General page configuration
 
-Use the **General** page to configure the task and provide the U-SQL script that the task submits. To learn more about the U-SQL language, see [U-SQL language reference](/u-sql/).
+Use the **General** page to configure the task and provide the U-SQL script that the task submits.
 
 ### Basic configuration
 

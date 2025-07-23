@@ -81,7 +81,7 @@ On the **Basics** tab, provide the following information:
 
    :::image type="content" source="./media/create-sql-vm-portal/basics-inbound-port-rules.png" alt-text="Screenshot from the Azure portal of inbound port rules.":::
 
-You also have the option to enable the [Azure Hybrid Benefit](/azure/virtual-machines/windows/hybrid-use-benefit-licensing) to use your own SQL Server license and save on licensing cost. 
+You also have the option to enable the [Azure Hybrid Benefit](/azure/virtual-machines/windows/hybrid-use-benefit-licensing), which grants you a discount on the allocation of SQL Server licenses to your SQL Server on Azure VM.
 
 
 ## Disks

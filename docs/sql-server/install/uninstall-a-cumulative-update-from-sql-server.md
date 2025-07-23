@@ -3,7 +3,7 @@ title: "Uninstall a Cumulative Update from SQL Server"
 description: This article describes how to remove a Cumulative Update from a stand-alone instance of SQL Server.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 12/20/2022
+ms.date: 07/23/2025
 ms.service: sql
 ms.subservice: install
 ms.custom: linux-related-content
@@ -26,6 +26,8 @@ To uninstall [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] on Window
 ## Considerations
 
 - To remove a CU on [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], you must be a local administrator.
+
+- During the uninstallation process of a Cumulative Update, `.msi` files can be requested. The required `.msi` files are included in the installation media.
 
 ## Prepare
 
