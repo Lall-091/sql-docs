@@ -44,8 +44,6 @@ landingContent:
             url: /data-migration/
           - text: Database compatibility certification
             url: ../database-engine/install-windows/compatibility-certification.md
-          - text: Data Migration Assistant (DMA)
-            url: ../dma/dma-overview.md
           - text: SQL Server Migration Assistant (SSMA)
             url: ../ssma/sql-server-migration-assistant.md
 
