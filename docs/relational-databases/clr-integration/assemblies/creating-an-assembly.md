@@ -3,7 +3,7 @@ title: Create an Assembly
 description: Use CREATE ASSEMBLY to register an assembly in SQL Server and specify its security settings. Register an assembly to use its functionality.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 12/27/2024
+ms.date: 07/23/2025
 ms.service: sql
 ms.subservice: clr
 ms.topic: "reference"
@@ -20,6 +20,10 @@ helpviewer_keywords:
 [!INCLUDE [SQL Server](../../../includes/applies-to-version/sqlserver.md)]
 
 Managed database objects, such as stored procedures or triggers, are compiled and then deployed in units called an assembly. Managed DLL assemblies must be registered in [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] before the functionality the assembly provides can be used. To register an assembly in a [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] database, use the `CREATE ASSEMBLY` statement. This article discusses how to register an assembly in a database using the `CREATE ASSEMBLY` statement, and how to specify the security settings for the assembly.
+
+## Code access security no longer supported
+
+[!INCLUDE [code-access-security](../../../database-engine/includes/code-access-security.md)]
 
 ## The CREATE ASSEMBLY statement
 
@@ -138,5 +142,5 @@ For more information about the permissions for each of the settings, see [CLR in
 - [Manage CLR integration assemblies](managing-clr-integration-assemblies.md)
 - [Alter an assembly](altering-an-assembly.md)
 - [Drop an assembly](dropping-an-assembly.md)
-- [CLR integration Code Access Security](../security/clr-integration-code-access-security.md)
+- [CLR integration code access security](../security/clr-integration-code-access-security.md)
 - [TRUSTWORTHY database property](../../security/trustworthy-database-property.md)

@@ -4,7 +4,7 @@ description: CREATE ASSEMBLY creates a managed application module that contains 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/02/2024
+ms.date: 07/23/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -97,11 +97,11 @@ We recommend using `SAFE`. `SAFE` is the most restrictive permission set. Code e
 > [!NOTE]  
 > The `EXTERNAL_ACCESS` and `UNSAFE` options aren't available in a contained database.
 
-We recommend using `EXTERNAL_ACCESS` for assemblies that access resources outside of an instance of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)]. `EXTERNAL_ACCESS` assemblies include the reliability and scalability protections of `SAFE` assemblies, but from a security perspective, are similar to `UNSAFE` assemblies. Code in `EXTERNAL_ACCESS` assemblies runs by default under the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] service account, and accesses external resources under that account, unless the code explicitly impersonates the caller. Therefore, permission to create `EXTERNAL_ACCESS` assemblies should be granted only to logins that are trusted to run code under the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] service account. For more information about impersonation, see [CLR Integration Security](../../relational-databases/clr-integration/security/clr-integration-security.md).
+We recommend using `EXTERNAL_ACCESS` for assemblies that access resources outside of an instance of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)]. `EXTERNAL_ACCESS` assemblies include the reliability and scalability protections of `SAFE` assemblies, but from a security perspective, are similar to `UNSAFE` assemblies. Code in `EXTERNAL_ACCESS` assemblies runs by default under the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] service account, and accesses external resources under that account, unless the code explicitly impersonates the caller. Therefore, permission to create `EXTERNAL_ACCESS` assemblies should be granted only to logins that are trusted to run code under the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] service account. For more information about impersonation, see [CLR integration security](../../relational-databases/clr-integration/security/clr-integration-security.md).
 
 Specifying `UNSAFE` enables the code in the assembly complete freedom to perform operations in the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] process space that can potentially compromise the robustness of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. `UNSAFE` assemblies can also potentially subvert the security system of either [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or the common language runtime. `UNSAFE` permissions should be granted only to highly trusted assemblies. Only members of the **sysadmin** fixed server role can create and alter `UNSAFE` assemblies.
 
-For more information about assembly permission sets, see [Designing assemblies](../../relational-databases/clr-integration/assemblies-designing.md).
+For more information about assembly permission sets, see [Design assemblies](../../relational-databases/clr-integration/assemblies-designing.md).
 
 ## Code access security no longer supported
 
@@ -145,7 +145,7 @@ Besides the previous checks that are performed when `CREATE ASSEMBLY` executes, 
 
 - For `SAFE` and `EXTERNAL_ACCESS` assemblies, any attempt to call [!INCLUDE [dnprdnshort](../../includes/dnprdnshort-md.md)] APIs that are annotated with certain HostProtectionAttributes fails.
 
-For more information, see [Designing assemblies](../../relational-databases/clr-integration/assemblies-designing.md).
+For more information, see [Design assemblies](../../relational-databases/clr-integration/assemblies-designing.md).
 
 ## Permissions
 
@@ -164,7 +164,7 @@ The following permissions required to create a CLR assembly when `CLR strict sec
   - The assembly is signed with a certificate or asymmetric key that has a corresponding login with the `UNSAFE ASSEMBLY` permission on the server. Signing the assembly is recommended.
   - The database has the `TRUSTWORTHY` property set to `ON`, and the database is owned by a login that has the `UNSAFE ASSEMBLY` permission on the server. This option isn't recommended.
 
-For more information about assembly permission sets, see [Designing assemblies](../../relational-databases/clr-integration/assemblies-designing.md).
+For more information about assembly permission sets, see [Design assemblies](../../relational-databases/clr-integration/assemblies-designing.md).
 
 ## Examples
 

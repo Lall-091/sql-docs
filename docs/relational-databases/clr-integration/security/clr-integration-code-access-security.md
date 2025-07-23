@@ -3,7 +3,7 @@ title: CLR Integration Code Access Security
 description: For SQL Server CLR integration, CLR supports code access security for managed code, where permissions are granted to assemblies based on code identity.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 12/27/2024
+ms.date: 07/23/2025
 ms.service: sql
 ms.subservice: clr
 ms.topic: "reference"
@@ -15,7 +15,7 @@ helpviewer_keywords:
   - "code access security [CLR integration]"
   - "EXTERNAL_ACCESS assemblies"
 ---
-# CLR integration Code Access Security
+# CLR integration code access security
 
 [!INCLUDE [SQL Server](../../../includes/applies-to-version/sqlserver.md)]
 
@@ -32,6 +32,10 @@ The security policy that determines the permissions granted to assemblies is def
 The code access security mechanism supported by the CLR is based on the assumption that the runtime can host both fully trusted and partially trusted code. The resources that are protected by CLR code access security are typically wrapped by managed application programming interfaces that require the corresponding permission before allowing access to the resource. The demand for the permission is satisfied only if all the callers (at the assembly level) in the call stack have the corresponding resource permission.
 
 The set of code access security permissions that are granted to managed code when running inside [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] is the intersection of the set of permissions granted by the previous three policy levels. Even if [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] grants a set of permissions to an assembly loaded in [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)], the eventual set of permissions given to user code might be further restricted by the user and machine-level policies.
+
+## Code access security no longer supported
+
+[!INCLUDE [code-access-security](../../../database-engine/includes/code-access-security.md)]
 
 ## SQL Server host policy level permission sets
 
