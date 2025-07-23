@@ -10135,6 +10135,8 @@ items:
           href: relational-databases/errors-events/mssqlserver-945-database-engine-error.md
         - name: "948"
           href: relational-databases/errors-events/mssqlserver-948-database-engine-error.md
+        - name: "988"
+          href: relational-databases/errors-events/mssqlserver-988-database-engine-error.md
       - name: Errors 1,000 to 1,999
         items:
         - name: Overview
