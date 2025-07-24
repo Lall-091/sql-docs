@@ -209,7 +209,7 @@ Use the SELECT statement to read the data in a table. The SELECT statement is on
 
 1. Use a `WHERE` clause to limit the rows that are returned to the user.
 
-   ``` sql
+   ```sql
    -- Returns only two of the records in the table
    SELECT ProductID, ProductName, Price, ProductDescription
        FROM dbo.Products

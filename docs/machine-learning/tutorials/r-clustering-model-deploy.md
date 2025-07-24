@@ -196,7 +196,9 @@ SELECT TOP (5) *
 FROM customer_return_clusters;
 ```
 
-```result
+[!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
+
+```output
 cluster  customer  orderRatio  itemsRatio  monetaryRatio  frequency
 1        29727     0           0           0              0
 4        26429     0           0           0.041979       1

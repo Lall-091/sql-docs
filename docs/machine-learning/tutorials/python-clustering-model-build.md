@@ -112,7 +112,7 @@ Now that you've performed clustering using K-Means, the next step is to analyze 
 
 Look at the clustering mean values and cluster sizes printed from the previous script.
 
-```results
+```output
 Cluster0(n=31675):
 -------------------
 Cluster1(n=4989):

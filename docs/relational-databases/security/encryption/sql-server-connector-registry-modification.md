@@ -44,7 +44,7 @@ To upgrade the SQL Server Connector (Version: 1.0.5.0 with a Date Published: Jan
 
 If your database is in a `RECOVERY PENDING` state, you need to run an `ALTER` command on the cryptographic provider. Replace *AzureKeyVault_EKM* with the name of your actual cryptographic provider, which you can find in the [sys.cryptographic_providers](../../../relational-databases/system-catalog-views/sys-cryptographic-providers-transact-sql.md) system view.
 
-``` sql
+```sql
 ALTER CRYPTOGRAPHIC PROVIDER AzureKeyVault_EKM DISABLE;  
 ALTER CRYPTOGRAPHIC PROVIDER AzureKeyVault_EKM FROM FILE = 'C:\Program Files\SQL Server Connector for Microsoft Azure Key Vault\Microsoft.AzureKeyVaultService.EKM.dll';  
 ALTER CRYPTOGRAPHIC PROVIDER AzureKeyVault_EKM ENABLE;

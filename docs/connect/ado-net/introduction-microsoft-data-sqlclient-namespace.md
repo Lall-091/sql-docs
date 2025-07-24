@@ -158,7 +158,7 @@ SqlBulkCopy has a new property `RowsCopied64` which supports `long` value types.
 
 Example usage:
 
-```C#
+```csharp
     using (SqlConnection srcConn = new SqlConnection(srcConstr))
     using (SqlCommand srcCmd = new SqlCommand("select top 5 * from employees", srcConn))
     {

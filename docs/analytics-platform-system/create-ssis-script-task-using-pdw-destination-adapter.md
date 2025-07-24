@@ -25,7 +25,7 @@ This SSIS package script code is a code example for using the SSIS PDW destinati
   
     -   Replace four occurrences of the placeholder value *XXXXXXXX* with the values appropriate to your environment and intended action.  
   
-    ```c#  
+    ```csharp
     #region Help:  Introduction to the script task  
     /* The Script Task allows you to perform virtually any operation that can be accomplished in  
      * a .Net application within the context of an Integration Services control flow.   

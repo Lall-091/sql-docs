@@ -39,14 +39,14 @@ The easiest way to enable the encryption of parameters, and the decryption of qu
 
 The following is an example of a connection string that enables Always Encrypted:
 
-```cs
+```csharp
 string connectionString = "Data Source=server63; Initial Catalog=Clinic; Integrated Security=true; Column Encryption Setting=enabled";
 SqlConnection connection = new SqlConnection(connectionString);
 ```
 
 The following is an equivalent example using the SqlConnectionStringBuilder.ColumnEncryptionSetting Property.
 
-```cs
+```csharp
 SqlConnectionStringBuilder strbldr = new SqlConnectionStringBuilder();
 strbldr.DataSource = "server63";
 strbldr.InitialCatalog = "Clinic";
@@ -122,7 +122,7 @@ This example inserts a row into the Patients table. Note the following:
 - The data type of the parameter targeting the SSN column is set to an ANSI (non-Unicode) string, which maps to the char/varchar SQL Server data type. If the type of the parameter was set to a Unicode string (String), which maps to nchar/nvarchar, the query would fail, as Always Encrypted doesn't support conversions from encrypted nchar/nvarchar values to encrypted char/varchar values. See [SQL Server Data Type Mappings](/dotnet/framework/data/adonet/sql-server-data-type-mappings) for information about the data type mappings.
 - The data type of the parameter inserted into the BirthDate column is explicitly set to the target SQL Server data type using [SqlParameter.SqlDbType Property](/dotnet/api/system.data.sqlclient.sqlparameter.sqldbtype), instead of relying on the implicit mapping of .NET types to SQL Server data types applied when using [SqlParameter.DbType Property](/dotnet/api/system.data.sqlclient.sqlparameter.dbtype). By default, [DateTime Structure](/dotnet/api/system.datetime) maps to the datetime SQL Server data type. As the data type of the BirthDate column is date and Always Encrypted doesn't support a conversion of encrypted datetime values to encrypted date values, using the default mapping would result in an error.
 
-```cs
+```csharp
 string connectionString = "Data Source=server63; Initial Catalog=Clinic; Integrated Security=true; Column Encryption Setting=enabled";
 using (SqlConnection connection = new SqlConnection(strbldr.ConnectionString))
 {
@@ -175,7 +175,7 @@ The following example demonstrates filtering data based on encrypted values, and
 > [!NOTE]
 > Queries can perform equality comparisons on columns if they are encrypted using deterministic encryption. For more information, see [Selecting Deterministic or Randomized Encryption](always-encrypted-database-engine.md#selecting--deterministic-or-randomized-encryption).
 
-```cs
+```csharp
 string connectionString = "Data Source=server63; Initial Catalog=Clinic; Integrated Security=true; Column Encryption Setting=enabled";
     
 using (SqlConnection connection = new SqlConnection(strbldr.ConnectionString))
@@ -210,7 +210,7 @@ The following example demonstrates how to retrieve binary encrypted data from en
 - As Always Encrypted isn't enabled in the connection string, the query will return encrypted values of SSN and BirthDate as byte arrays (the program converts the values to strings).
 - A query retrieving data from encrypted columns with Always Encrypted disabled can have parameters, as long as none of the parameters target an encrypted column. The above query filters by LastName, which isn't encrypted in the database. If the query filtered by SSN or BirthDate, the query would fail.
 
-```cs
+```csharp
 string connectionString = "Data Source=server63; Initial Catalog=Clinic; Integrated Security=true";
                 
 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -254,7 +254,7 @@ Always Encrypted supports few conversions for encrypted data types. See [Always 
 
 Any value that targets an encrypted column needs to be encrypted inside the application. An attempt to insert/modify or to filter by a plaintext value on an encrypted column will result in an error similar to this:
 
-```cs
+```csharp
 System.Data.SqlClient.SqlException (0x80131904): Operand type clash: varchar is incompatible with varchar(8000) encrypted with (encryption_type = 'DETERMINISTIC', encryption_algorithm_name = 'AEAD_AES_256_CBC_HMAC_SHA_256', column_encryption_key_name = 'CEK_Auto1', column_encryption_key_database_name = 'Clinic') collation_name = 'SQL_Latin1_General_CP1_CI_AS'
 ```
 
@@ -262,7 +262,7 @@ To prevent such errors, make sure:
 - Always Encrypted is enabled for application queries targeting encrypted columns (for the connection string or in the [SqlCommand](/dotnet/api/system.data.sqlclient.sqlcommand) object for a specific query).
 - You use SqlParameter to send data targeting encrypted columns. The following example shows a query that incorrectly filters by a literal/constant on an encrypted column (SSN)(instead of passing the literal inside a SqlParameter object).
 
-```cs
+```csharp
 using (SqlCommand cmd = connection.CreateCommand())
 {
    cmd.CommandText = @"SELECT [SSN], [FirstName], [LastName], [BirthDate] FROM [dbo].[Patients] WHERE SSN='795-73-9838'";
@@ -316,7 +316,7 @@ Azure Key Vault is a convenient option to store and manage column master keys fo
 If you want to store column master keys in a key store that isn't supported by an existing provider, you can implement a custom provider by extending the [SqlColumnEncryptionCngProvider Class](/dotnet/api/system.data.sqlclient.sqlcolumnencryptioncngprovider) and registering the provider using the [SqlConnection.RegisterColumnEncryptionKeyStoreProviders](/dotnet/api/system.data.sqlclient.sqlconnection.registercolumnencryptionkeystoreproviders) method.
 
 
-```cs
+```csharp
 public class MyCustomKeyStoreProvider : SqlColumnEncryptionKeyStoreProvider
     {
         public override byte[] EncryptColumnEncryptionKey(string masterKeyPath, string encryptionAlgorithm, byte[] columnEncryptionKey)
@@ -338,7 +338,7 @@ public class MyCustomKeyStoreProvider : SqlColumnEncryptionKeyStoreProvider
             SqlConnection.RegisterColumnEncryptionKeyStoreProviders(providers);
             providers.Add(SqlColumnEncryptionCertificateStoreProvider.ProviderName, customProvider);
             SqlConnection.RegisterColumnEncryptionKeyStoreProviders(providers); 
-	   // ...
+       // ...
         }
 
     }
@@ -350,7 +350,7 @@ When accessing encrypted columns, the .NET Framework Data Provider for SQL Serve
 Implementing your own key management tools may be required only if you use a custom key store provider. When using keys stored in keys stores, for which built-in providers exist, and or in  Azure Key Vault, you can use existing tools, such as SQL Server Management Studio or PowerShell, to manage and provision keys.
 The below example, illustrates generating a column encryption key and using [SqlColumnEncryptionCertificateStoreProvider Class](/dotnet/api/system.data.sqlclient.sqlcolumnencryptioncertificatestoreprovider) to encrypt the key with a certificate.
 
-```cs
+```csharp
 using System.Security.Cryptography;
 static void Main(string[] args)
 {
@@ -416,7 +416,7 @@ To control the Always Encrypted behavior of individual queries, you need to use 
 
 In the below example, Always Encrypted is disabled for the database connection. The query that the application issues has a parameter that targets the LastName column that isn't encrypted. The query retrieves data from the SSN and BirthDate columns that are both encrypted. In such a case, calling sys.sp_describe_parameter_encryption to retrieve encryption metadata isn't required. However, the decryption of the query results needs to be enabled, so that the application can receive plaintext values from the two encrypted columns. SqlCommandColumnEncryptionSetting.ResultSet setting is used to ensure that.
 
-```cs
+```csharp
 string connectionString = "Data Source=server63; Initial Catalog=Clinic; Integrated Security=true";
 using (SqlConnection connection = new SqlConnection(connectionString))
 {
@@ -468,7 +468,7 @@ Although using the **SqlParameter.ForceColumnEncryption Property** helps improve
 
 The following code sample illustrates using the **SqlParameter.ForceColumnEncryption Property** to prevent social security numbers to be sent in plaintext to the database.
 
-```cs
+```csharp
 SqlCommand cmd = _sqlconn.CreateCommand(); 
 
 // Use parameterized queries to access Always Encrypted data. 
@@ -497,7 +497,7 @@ Although setting trusted key paths improves security of your application, you'll
 
 The following example shows how to configure trusted column master key paths:
 
-```cs
+```csharp
 // Configure trusted key paths to protect against fake key paths sent by a compromised SQL Server instance 
 // First, create a list of trusted key paths for your server 
 List<string> trustedKeyPathList = new List<string>(); 
@@ -521,7 +521,7 @@ The AllowEncryptedValueModifications option is available in .NET Framework 4.6.1
 
 Here's an example that copies data from one table to another. The SSN and BirthDate columns are assumed to be encrypted.
 
-```cs
+```csharp
 static public void CopyTablesUsingBulk(string sourceTable, string targetTable)
 {
    string sourceConnectionString = "Data Source=server63; Initial Catalog=Clinic; Integrated Security=true";

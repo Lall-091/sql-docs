@@ -19,7 +19,7 @@ The following Transact-SQL scripts provide examples for each of these areas.
 
 Each example is based on the two prerequisites: an asymmetric key from your key vault called **CONTOSO_KEY** and a credential created by the AKV Integration feature called **Azure_EKM_cred**. The following Transact-SQL commands setup these prerequisites for running the examples.
 
-``` sql
+```sql
 USE master;
 GO
 
@@ -46,7 +46,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
 
 1. Create a SQL Server login to be used by the Database Engine for TDE, then add the credential to it.
 
-   ``` sql
+   ```sql
    USE master;
    -- Create a SQL Server login associated with the asymmetric key
    -- for the Database engine to use when it loads a database
@@ -64,7 +64,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
 
 1. Create the database encryption key that will be used for TDE.
 
-   ``` sql
+   ```sql
    USE ContosoDatabase;
    GO
 
@@ -83,7 +83,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
 
 1. Create a SQL Server login to be used by the Database Engine for encrypting backups, and add the credential to it.
 
-   ``` sql
+   ```sql
    USE master;
    -- Create a SQL Server login associated with the asymmetric key
    -- for the Database engine to use when it is encrypting the backup.
@@ -100,7 +100,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
 
 1. Backup the database specifying encryption with the asymmetric key stored in the key vault.
 
-   ``` sql
+   ```sql
    USE master;
    BACKUP DATABASE [DATABASE_TO_BACKUP]
    TO DISK = N'[PATH TO BACKUP FILE]'
@@ -113,7 +113,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
 
 This script creates a symmetric key protected by the asymmetric key in the key vault, and then uses the symmetric key to encrypt data in the database.
 
-``` sql
+```sql
 CREATE SYMMETRIC KEY DATA_ENCRYPTION_KEY
 WITH ALGORITHM=AES_256
 ENCRYPTION BY ASYMMETRIC KEY CONTOSO_KEY;

@@ -253,7 +253,7 @@ To drop your distributed availability group, replace the following value and the
 
 - `<DAGName>` with the name of the distributed availability group on SQL Server (used to create the link). 
 
-``` sql
+```sql
 -- Run on SQL Server
 USE MASTER
 GO
@@ -282,7 +282,7 @@ If you decide to drop your availability group, replace the following value and t
 
 - `<AGName>` with the name of the availability group on SQL Server (used to create the link).
 
-``` sql
+```sql
 -- Run on SQL Server
 USE MASTER
 GO

@@ -20,7 +20,7 @@ When you use the [!INCLUDE[jdbcNoVersion](../../includes/jdbcnoversion_md.md)], 
 
 A typical permission in the policy file looks like the following.
 
-```config
+```java
 // Example policy file entry.
 grant [signedBy <signer>,] [codeBase <code source>] {
    permission  <class>  [<name> [, <action list>]];
@@ -29,7 +29,7 @@ grant [signedBy <signer>,] [codeBase <code source>] {
 
  The following codebase should be restricted to the JDBC driver codebase to ensure that you grant the least number of privileges.
 
-```config
+```java
 grant codeBase "file:/install_dir/lib/-" {
 
 // Grant access to data source.

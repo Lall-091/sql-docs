@@ -142,7 +142,7 @@ head(customer_data, n = 5);
 
 You should see results similar to the following.
 
-```results
+```output
   customer orderRatio itemsRatio monetaryRatio frequency
 1    29727          0          0      0.000000         0
 2    26429          0          0      0.041979         1

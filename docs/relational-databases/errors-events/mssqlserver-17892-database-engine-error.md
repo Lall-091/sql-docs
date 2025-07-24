@@ -78,7 +78,7 @@ You can use one of the resolutions below depending on the scenario you are in.
 
 Another situation where log on triggers fail is when using the `EVENTDATA` function. This function returns XML, and its case sensitive.  So, you create the following logon trigger, intending to block access based on IP address, you can  ran into the issue:
 
-``` sql
+```sql
  CREATE TRIGGER tr_logon_CheckIP  
  ON ALL SERVER  
  FOR LOGON  

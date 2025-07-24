@@ -23,15 +23,8 @@ Read reads binary representation of **SqlHierarchyId** from the passed-in **Bina
   
 ## Syntax  
 
-<!--
-This is not T-SQL, despite the ```sql colorizer specified.
-Neither should this be ```syntaxsql.
-Rather, this is C# (or C# syntax).  Same for the later code blocks.
-I am making this fix now, from ```sql to ```cs, on 2020/04/16.  GeneMi.
--->
-
 ```csharp
-void Read( BinaryReader r )   
+void Read(BinaryReader r)
 ```  
 
 ## Arguments

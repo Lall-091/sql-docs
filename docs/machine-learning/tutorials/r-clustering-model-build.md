@@ -101,7 +101,7 @@ Now that you've done the clustering using K-Means, the next step is to analyze t
 clust[-1]
 ```
 
-```results
+```output
 $centers
    orderRatio itemsRatio monetaryRatio frequency
 1 0.621835791  0.1701519    0.35510836  1.009025

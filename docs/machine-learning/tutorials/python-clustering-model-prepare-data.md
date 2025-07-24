@@ -127,7 +127,9 @@ Now display the beginning of the data frame to verify it looks correct.
 print("Data frame:", customer_data.head(n=5))
 ```
 
-```results
+[!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
+
+```output
 Rows Read: 37336, Total Rows Processed: 37336, Total Chunk Time: 0.172 seconds
 Data frame:     customer  orderRatio  itemsRatio  monetaryRatio  frequency
 0    29727.0    0.000000    0.000000       0.000000          0

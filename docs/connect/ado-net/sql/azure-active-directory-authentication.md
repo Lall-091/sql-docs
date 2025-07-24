@@ -59,7 +59,7 @@ When the application is connecting to Azure SQL data sources by using Microsoft 
 
 `Active Directory Password` authentication mode supports authentication to Azure data sources with Microsoft Entra ID for native or federated Microsoft Entra users. When you're using this mode, user credentials must be provided in the connection string. The following example shows how to use `Active Directory Password` authentication.
 
-```cs
+```csharp
 // Use your own server, database, user ID, and password.
 string ConnectionString = @"Server=demo.database.windows.net;"
    + "Authentication=Active Directory Password; Encrypt=True; Database=testdb;"
@@ -78,7 +78,7 @@ When you're signed in to a domain-joined machine, you can access Azure SQL data 
 
 The following code snippet is an example of when `Active Directory Integrated` authentication is in use.
 
-```cs
+```csharp
 // Use your own server and database.
 string ConnectionString1 = @"Server=demo.database.windows.net;"
   + "Authentication=Active Directory Integrated; Encrypt=True; Database=testdb";
@@ -105,7 +105,7 @@ You can't set the `Credential` property of SqlConnection in this mode. With **Mi
 
 The following example shows how to use `Active Directory Interactive` authentication.
 
-```cs
+```csharp
 // Use your own server, database, and user ID.
 // User ID is optional.
 string ConnectionString1 = @"Server=demo.database.windows.net;"
@@ -136,7 +136,7 @@ In `Active Directory Service Principal` authentication mode, the client applicat
 
 The following example shows how to use `Active Directory Service Principal` authentication.
 
-```cs
+```csharp
 // Use your own server, database, app ID, and secret.
 string ConnectionString = @"Server=demo.database.windows.net;"
   + "Authentication=Active Directory Service Principal; Encrypt=True;"
@@ -158,7 +158,7 @@ The following code snippet is an example of using `Active Directory Device Code 
 > [!NOTE]
 > The timeout for `Active Directory Device Code Flow` defaults to the connection's `Connect Timeout` setting. Make sure to specify a `Connect Timeout` that provides enough time to go through the device code flow authentication process.
 
-```cs
+```csharp
 // Use your own server and database and increase Connect Timeout as needed for
 // device code flow.
 string ConnectionString = @"Server=demo.database.windows.net;"
@@ -187,7 +187,7 @@ For a user-assigned managed identity, the **client id** of the managed identity 
 
 The following example shows how to use `Active Directory Managed Identity` authentication with a system-assigned managed identity.
 
-```cs
+```csharp
 // For system-assigned managed identity
 // Use your own values for Server and Database.
 string ConnectionString1 = @"Server=demo.database.windows.net;"
@@ -208,7 +208,7 @@ using (SqlConnection conn = new SqlConnection(ConnectionString2)) {
 
 The following example demonstrates `Active Directory Managed Identity` authentication with a user-assigned managed identity with **Microsoft.Data.SqlClient v3.0 onwards**.
 
-```cs
+```csharp
 // For user-assigned managed identity
 // Use your own values for Server, Database, and User Id.
 
@@ -233,7 +233,7 @@ using (SqlConnection conn = new SqlConnection(ConnectionString2)) {
 
 The following example demonstrates `Active Directory Managed Identity` authentication with a user-assigned managed identity with **Microsoft.Data.SqlClient v2.1**.
 
-```cs
+```csharp
 // For user-assigned managed identity
 // Use your own values for Server, Database, and User Id.
 
@@ -291,7 +291,7 @@ With this authentication mode, the driver acquires a token by passing "[DefaultA
 
 The following example shows how to use **Active Directory Default** authentication.
 
-```cs
+```csharp
 // Use your own server, database
 string ConnectionString = @"Server=demo.database.windows.net;"
   + "Authentication=Active Directory Default; Encrypt=True; Database=testdb;";
@@ -307,7 +307,7 @@ Available starting in version 5.2, like with managed identities, [workload ident
 
 The following example demonstrates `Active Directory Workload Identity` authentication with a user-assigned managed identity with **Microsoft.Data.SqlClient v5.2 onwards**.
 
-```cs
+```csharp
 // Use your own values for Server, Database, and User Id.
 // With Microsoft.Data.SqlClient v5.2+
 string ConnectionString = @"Server=demo.database.windows.net;"
@@ -389,7 +389,7 @@ The following example shows how to use a new authentication provider for `Active
 
 In addition to improving the `Active Directory Interactive` authentication experience, **Microsoft.Data.SqlClient** 2.1.0 and later provide the following APIs for client applications to customize interactive authentication and device code flow authentication.
 
-```cs
+```csharp
 public class ActiveDirectoryAuthenticationProvider
 {
     // For .NET Framework targeted applications only

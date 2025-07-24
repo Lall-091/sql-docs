@@ -89,7 +89,9 @@ head(predict_lm);
 head(predict_rpart);
 ```
 
-```results
+[!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
+
+```output
     RentalCount_Pred  RentalCount  Month  Day  WeekDay  Snow  Holiday
 1         27.45858          42       2     11     4      0       0
 2        387.29344         360       3     29     1      0       0

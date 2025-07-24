@@ -57,7 +57,7 @@ By default the two extra columns in an [!INCLUDE[ssISnoversion](../includes/ssis
   
     [Visual C#]  
   
-    ```cs
+    ```csharp
     Row.ErrorDescription = this.ComponentMetaData.GetErrorDescription(Row.ErrorCode);  
     ```  
   
@@ -76,7 +76,7 @@ By default the two extra columns in an [!INCLUDE[ssISnoversion](../includes/ssis
   
     [Visual C#]  
   
-    ```cs
+    ```csharp
     public override void Input0_ProcessInputRow(Input0Buffer Row)  
         {  
   

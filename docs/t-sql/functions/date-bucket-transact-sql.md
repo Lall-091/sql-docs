@@ -140,7 +140,7 @@ SELECT DATE_BUCKET(DAY, 2147483648, @date);
 
 If a negative value for number is passed to the `DATE_BUCKET` function, the following error will be returned.
 
-```txt
+```text
 Msg 9834, Level 16, State 1, Line 1
 Invalid bucket width value passed to DATE_BUCKET function. Only positive values are allowed.
 ```

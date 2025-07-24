@@ -73,7 +73,7 @@ lin_model.fit(train[columns], train[target])
 
 You should see results similar to the following.
 
-```results
+```output
 Training set shape: (362, 7)
 Testing set shape: (91, 7)
 ```
@@ -94,7 +94,7 @@ print("Computed error:", lin_mse)
 
 You should see results similar to the following.
 
-```results
+```output
 Predictions: [124.41293228 123.8095075  117.67253182 209.39332151 135.46159387
  199.50603805 472.14918499  90.15781602 216.61319499 120.30710327
   89.47591091 127.71290441 207.44065517 125.68466139 201.38119194

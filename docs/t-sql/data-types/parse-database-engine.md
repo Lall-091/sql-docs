@@ -67,7 +67,7 @@ GO
   
 [!INCLUDE[ssResult](../../includes/ssresult-md.md)]
   
-```txt
+```text
 hierarchyidRepresentation    StringRepresentation
 -------------------------    -----------------------
 0x5ADE                       /1/1/3/

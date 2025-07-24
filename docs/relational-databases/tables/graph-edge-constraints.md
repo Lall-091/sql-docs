@@ -255,7 +255,7 @@ GO
 
 In the preceding example, imagine that we now need to also include the `Supplier` to `Product` relationship, through the `bought` edge table. You can try adding a new edge constraint:
 
-``` sql
+```sql
 ALTER TABLE bought ADD CONSTRAINT EC_BOUGHT1 CONNECTION (Supplier TO Product);
 ```
 

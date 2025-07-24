@@ -54,7 +54,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 
 Open Notepad and copy the following lines of data into a new text file and then save this file to your local temp directory, `C:\Temp\DimDate2.txt`. This data is in ASCII format.
 
-```txt
+```text
 20150301,1,3
 20150501,2,4
 20151001,4,2

@@ -62,7 +62,7 @@ RSPortal!subscription!RSPortal.exe!93!06/20/2019-01:16:51:: i INFO: Subscription
   
 :::image type="icon" source="/analysis-services/analysis-services/instances/install-windows/media/rs-powershellicon.jpg"::: **Use Windows PowerShell to disable a single subscription:** Use the following PowerShell script to disable a specific subscription. Update the server name and subscription ID in the script.  
   
-```PS  
+```powershell
 #disable specific subscription  
 $rs2010 = New-WebServiceProxy -Uri "https://SERVERNAME/ReportServer/ReportService2010.asmx" -Namespace SSRS.ReportingService2010 -UseDefaultCredential;  
 $subscriptionID = "subscription guid";  

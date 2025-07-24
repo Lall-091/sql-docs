@@ -196,7 +196,7 @@ GO
 
 You should see a result similar to the following.
 
-```results
+```output
 RentalCount_Predicted
 332.571428571429
 ```

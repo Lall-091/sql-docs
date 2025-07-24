@@ -143,14 +143,14 @@ sudo systemctl status nginx
 
 To configure nginx, you must edit the `/etc/nginx/sites-available/default` file. Add `index.php` to the list below the section that says `# Add index.php to the list if you are using PHP`:
 
-```config
+```text
 # Add index.php to the list if you are using PHP
 index index.html index.htm index.nginx-debian.html index.php;
 ```
 
 Next, uncomment and modify the section following `# pass PHP scripts to FastCGI server` as follows:
 
-```config
+```text
 # pass PHP scripts to FastCGI server
 #
 location ~ \.php$ {
