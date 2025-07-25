@@ -1,38 +1,42 @@
 ---
-title: "isSparseColumnSet Method (SQLServerResultSetMetaData)"
-description: "isSparseColumnSet Method (SQLServerResultSetMetaData)"
+title: "IsSparseColumnSet Method (SQLServerResultSetMetaData)"
+description: Indicates if a column in a result set is a sparse column set.
 author: David-Engel
 ms.author: davidengel
-ms.date: "01/19/2017"
+ms.reviewer: randolphwest
+ms.date: 07/24/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: reference
 ---
 # isSparseColumnSet Method (SQLServerResultSetMetaData)
-[!INCLUDE[Driver_JDBC_Download](../../../includes/driver_jdbc_download.md)]
 
-  Indicates if a column in a result set is a sparse column set.  
-  
-## Syntax  
-  
-```scr  
-public boolean isSparseColumnSet(int column)  
-```  
-  
-#### Parameters  
- *column*  
-  
- The (one-based) index of the column.  
-  
-## Return Value  
- **true** if a column in a result set is a sparse column set, otherwise **false**.  
-  
-## Remarks  
- This method does not retrieve information from the database.  
-  
-## See Also  
- [SQLServerResultSetMetaData Methods](../../../connect/jdbc/reference/sqlserverresultsetmetadata-methods.md)   
- [SQLServerResultSetMetaData Members](../../../connect/jdbc/reference/sqlserverresultsetmetadata-members.md)   
- [SQLServerResultSetMetaData Class](../../../connect/jdbc/reference/sqlserverresultsetmetadata-class.md)  
-  
-  
+[!INCLUDE [Driver_JDBC_Download](../../../includes/driver_jdbc_download.md)]
+
+Indicates if a column in a result set is a sparse column set.
+
+## Syntax
+
+```java
+public boolean isSparseColumnSet(int column)
+```
+
+#### Parameters
+
+*column*
+
+The (one-based) index of the column.
+
+## Return value
+
+**true** if a column in a result set is a sparse column set, otherwise **false**.
+
+## Remarks
+
+This method doesn't retrieve information from the database.
+
+## Related content
+
+- [SQLServerResultSetMetaData Methods](sqlserverresultsetmetadata-methods.md)
+- [SQLServerResultSetMetaData Members](sqlserverresultsetmetadata-members.md)
+- [SQLServerResultSetMetaData Class](sqlserverresultsetmetadata-class.md)

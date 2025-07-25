@@ -4,7 +4,7 @@ description: The vector data type stores vector data optimized for machine learn
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: damauri, pookam
-ms.date: 05/01/2025
+ms.date: 07/25/2025
 ms.update-cycle: 180-days
 ms.service: sql
 ms.subservice: t-sql
@@ -140,37 +140,107 @@ You can start using the new **vector** type right away. The following examples s
 > Requires **Microsoft.Data.SqlClient 6.1.0** or later for native vector support.
 
 ```csharp
-static void InsertNonNullVal(SqlConnection conn)
+
+using Microsoft.Data;
+using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlTypes;
+
+namespace VectorSampleApp
 {
-    Console.WriteLine("Inserting non-null value with SqlDbType");
-
-    using SqlCommand command = new SqlCommand("INSERT INTO dbo.vectors VALUES (@Id, @VectorData)", conn);
-
-    command.Parameters.AddWithValue("@Id", 1);
-
-    var vectorParameter = new SqlParameter("@VectorData", Microsoft.Data.SqlDbTypeExtensions.Vector);
-    vectorParameter.Value = new Microsoft.Data.SqlTypes.SqlVectorFloat32(new float[] { 3.14159f, 1.61803f, 1.41421f });
-    command.Parameters.Add(vectorParameter);
-
-    command.ExecuteNonQuery();
-}
-
-static void ReadWithGetValue(SqlConnection connection)
-{
-    Console.WriteLine("Reading values using GetValue method:");
-
-    using (SqlCommand commandSourceData = new SqlCommand("SELECT v FROM dbo.vectors;", connection))
-    using (SqlDataReader reader = commandSourceData.ExecuteReader())
-    while (reader.Read())
+    class Program
     {
-        var vector = reader.GetValue(0);        
-        if (vector != null && vector != DBNull.Value)
-        {
-            Console.WriteLine("Type: " + vector.GetType() + " Element Count: " + ((SqlVectorFloat32)vector).Length);
+        // Set your environment variable or fallback to local server
+        private static readonly string connectionString =
+            Environment.GetEnvironmentVariable("CONNECTION_STR")
+            ?? "Server=tcp:localhost,1433;Database=Demo2;Integrated Security=True;TrustServerCertificate=True";
 
-            var values = ((SqlVectorFloat32)vector).Values;
-            Console.WriteLine("Values: " + string.Join(", ", values));
-        }              
+        private const int VectorDimensions = 3;
+        private const string TableName = "dbo.Vectors";
+
+        static void Main()
+        {
+            using var connection = new SqlConnection(connectionString);
+            connection.Open();
+            SetupTables(connection, TableName, VectorDimensions);
+            InsertVectorData(connection, TableName);
+            ReadVectorData(connection, TableName);
+        }
+
+        private static void SetupTables(SqlConnection connection, string tableName, int vectorDimensionCount)
+        {
+            using var command = connection.CreateCommand();
+
+            command.CommandText = $@"
+                IF OBJECT_ID('{tableName}', 'U') IS NOT NULL DROP TABLE {tableName};
+                IF OBJECT_ID('{tableName}Copy', 'U') IS NOT NULL DROP TABLE {tableName}Copy;";
+            command.ExecuteNonQuery();
+
+            command.CommandText = $@"
+                CREATE TABLE {tableName} (
+                    Id INT IDENTITY(1,1) PRIMARY KEY,
+                    VectorData VECTOR({vectorDimensionCount})
+                );
+
+                CREATE TABLE {tableName}Copy (
+                    Id INT IDENTITY(1,1) PRIMARY KEY,
+                    VectorData VECTOR({vectorDimensionCount})
+                );";
+            command.ExecuteNonQuery();
+        }
+
+        private static void InsertVectorData(SqlConnection connection, string tableName)
+        {
+            using var command = new SqlCommand($"INSERT INTO {tableName} (VectorData) VALUES (@VectorData)", connection);
+            var param = command.Parameters.Add("@VectorData", SqlDbTypeExtensions.Vector);
+
+            // Insert null using DBNull.Value
+            param.Value = DBNull.Value;
+            command.ExecuteNonQuery();
+
+            // Insert non-null vector
+            param.Value = new SqlVector<float>(new float[] { 3.14159f, 1.61803f, 1.41421f });
+            command.ExecuteNonQuery();
+
+            // Insert typed null vector
+            param.Value = SqlVector<float>.CreateNull(VectorDimensions);
+            command.ExecuteNonQuery();
+
+            // Prepare once and reuse for loop
+            command.Prepare();
+            for (int i = 0; i < 10; i++)
+            {
+                param.Value = new SqlVector<float>(new float[]
+                {
+                    i + 0.1f,
+                    i + 0.2f,
+                    i + 0.3f
+                });
+                command.ExecuteNonQuery();
+            }
+        }
+
+        private static void ReadVectorData(SqlConnection connection, string tableName)
+        {
+            using var command = new SqlCommand($"SELECT VectorData FROM {tableName}", connection);
+            using var reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                var sqlVector = reader.GetSqlVector<float>(0);
+
+                Console.WriteLine($"Type: {sqlVector.GetType()}, IsNull: {sqlVector.IsNull}, Length: {sqlVector.Length}");
+
+                if (!sqlVector.IsNull)
+                {
+                    float[] values = sqlVector.Memory.ToArray();
+                    Console.WriteLine("VectorData: " + string.Join(", ", values));
+                }
+                else
+                {
+                    Console.WriteLine("VectorData: NULL");
+                }
+            }
+        }
     }
 }
 ```
@@ -208,9 +278,9 @@ class Program
 ### [JDBC](#tab/jdbc)
 
 > [!IMPORTANT]
-> Requires **Microsoft JDBC Driver for SQL Server 13.1.0 Preview or later** for native vector type support.
+> Requires **Microsoft JDBC Driver for SQL Server 13.1.0 or later versions** for native vector type support.
 
-Example of Insertion of **vector** data into table
+Example of insertion of **vector** data into table:
 
 ```java
 @Test
@@ -245,7 +315,43 @@ public void getVectorData() throws SQLException {
     }
 }
 ```
-  
+
+Example of selecting **vector** data from a table:
+
+```java
+@Test
+    public void getVectorData() throws SQLException {
+        String query = "SELECT v FROM " + AbstractSQLGenerator.escapeIdentifier(tableName);
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            try (ResultSet rs = stmt.executeQuery()) {
+                assertTrue(rs.next(), "No result found for inserted vector.");
+                ResultSetMetaData meta = rs.getMetaData();
+                int columnCount = meta.getColumnCount();
+
+                while (rs.next()) {
+                    for (int i = 1; i <= columnCount; i++) {
+                        String columnName = meta.getColumnName(i);
+                        int columnType = meta.getColumnType(i); // from java.sql.Types
+
+                        Object value = null;
+                        switch (columnType) {
+                            case Types.VARCHAR:
+                            case Types.NVARCHAR:
+                                value = rs.getString(i);
+                                break;
+                            case microsoft.sql.Types.VECTOR:
+                                value = rs.getObject(i, microsoft.sql.Vector.class);
+                        }
+
+                        System.out.println(columnName + " = " + value + " (type: " + columnType + ")");
+                    }
+                    System.out.println("---");
+                }
+            }
+        }
+    }  
+```
+
 ### [Python (mssql-python)](#tab/python)
 
 With Python, applications can write and read vector data using `json.loads` and `json.dumps`:

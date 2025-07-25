@@ -55,8 +55,7 @@ Starting with **Microsoft.Data.SqlClient** v3.0, event tracing can be enabled wi
 
 With **Microsoft.Data.SqlClient** v2.1, event tracing needs to be enabled by configuring the `EventCommand` with an event source listener. The valid `EventCommand` values applicable to Native SNI are:
 
-```cs
-
+```csharp
 // Enables trace events:
 EventSource.SendCommand(eventSource, (EventCommand)8192, null);
 
@@ -69,7 +68,7 @@ EventSource.SendCommand(eventSource, (EventCommand)(8192 | 16384), null);
 
 The following example enables event tracing in native SNI DLLs.
 
-```cs
+```csharp
 // Native SNI tracing example
 using System;
 using System.Diagnostics.Tracing;
