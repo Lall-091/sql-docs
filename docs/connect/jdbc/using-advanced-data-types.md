@@ -167,7 +167,11 @@ For information about sql_variant data type, see [Using Sql_variant data type](u
 
 ## Spatial data types
 
-For information about spatial data types, see [Using Spatial Datatypes](use-spatial-datatypes.md).  
+For information about spatial data types, see [Using Spatial Datatypes](use-spatial-datatypes.md).
+
+## JSON data type
+
+For information about JSON data type, see [Using JSON Datatype](using-json-datatype.md).
 
 ## See also
 
