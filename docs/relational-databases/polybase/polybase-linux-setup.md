@@ -4,8 +4,8 @@ titleSuffix: SQL Server
 description: Learn how to install SQL Server PolyBase on Linux. PolyBase enables you to run external queries against remote data sources.
 author: MikeRayMSFT
 ms.author: mikeray
-ms.reviewer: dakryze, randolphwest
-ms.date: 12/29/2023
+ms.reviewer: dakryze, hudequei, randolphwest
+ms.date: 7/28/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -233,6 +233,12 @@ After installation, PolyBase must be enabled to access its features. Connect to 
 exec sp_configure @configname = 'polybase enabled', @configvalue = 1;
 RECONFIGURE WITH OVERRIDE;
 ```
+
+### Trace flag
+
+**Applies to:** [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions
+
+To use PolyBase capabilities on Linux, you must enable [Trace Flag 13702](../../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md#tf13702) during SQL Server start up. For more information, see [Configure SQL Server on Linux with the mssql-conf tool](../../linux/sql-server-linux-configure-mssql-conf.md).
 
 ## Update PolyBase
 
