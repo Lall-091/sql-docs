@@ -4,7 +4,7 @@ description: "OPENROWSET includes all connection information that is required to
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest, hudequei, wiassaf, nzagorac, jovanpop
-ms.date: 06/17/2025
+ms.date: 06/25/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -37,9 +37,9 @@ The `OPENROWSET` function can be referenced in the `FROM` clause of a query as i
 
 `OPENROWSET` without the `BULK` operator is available on [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] only. Details and links to similar examples on other platforms:
 
- - `OPENROWSET` supports bulk operations through a built-in `BULK` provider on many [!INCLUDE [ssde-md](../../includes/ssde-md.md)] platforms, including Azure and Microsoft Fabric. For more information, see [OPENROWSET BULK (Transact-SQL)](openrowset-bulk-transact-sql.md).
-- For examples on [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], see [Query data sources using OPENROWSET](/azure/azure-sql/managed-instance/data-virtualization-overview?view=azuresql-mi&preserve-view=true#query-data-sources-using-openrowset).
-- Azure SQL Database only supports [OPENROWSET BULK (Transact-SQL)](openrowset-bulk-transact-sql.md?view=azuresql-db&preserve-view=true).
+ - `OPENROWSET` supports bulk operations through a built-in `BULK` provider on many [!INCLUDE [ssde-md](../../includes/ssde-md.md)] platforms, including SQL Server, Azure SQL Database, Azure SQL Managed Instance, and Microsoft Fabric Data Warehouse. For more information, see [OPENROWSET BULK (Transact-SQL)](openrowset-bulk-transact-sql.md).
+   - For examples on [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], see [Data virtualization with Azure SQL Database](/azure/azure-sql/database/data-virtualization-overview?view=azuresql-db&preserve-view=true).
+   - For examples on [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], see [Data virtualization with Azure SQL Managed Instance](/azure/azure-sql/managed-instance/data-virtualization-overview?view=azuresql-mi&preserve-view=true#query-data-sources-using-openrowset).
 - For information and examples with serverless SQL pools in Azure Synapse, see [How to use OPENROWSET using serverless SQL pool in Azure Synapse Analytics](/azure/synapse-analytics/sql/develop-openrowset). Dedicated SQL pools in Azure Synapse don't support the `OPENROWSET` function.
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
