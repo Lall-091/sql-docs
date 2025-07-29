@@ -3,8 +3,8 @@ title: "OPENROWSET BULK (Transact-SQL)"
 description: "OPENROWSET BULK operations perform bulk data manipulation operations on an external data source."
 author: MikeRayMSFT
 ms.author: mikeray
-ms.reviewer: randolphwest, hudequei, wiassaf
-ms.date: 06/17/2025
+ms.reviewer: randolphwest, hudequei, wiassaf, jovanpop
+ms.date: 06/25/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -28,7 +28,8 @@ The `OPENROWSET` function can be referenced in the `FROM` clause of a query as i
 Details and links to similar examples on other platforms:
 
 - For Microsoft Fabric Data Warehouse syntax, [select Fabric in the version dropdown list](openrowset-transact-sql.md?view=fabric&preserve-view=true).
-- For examples on [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], see [Query data sources using OPENROWSET](/azure/azure-sql/managed-instance/data-virtualization-overview#query-data-sources-using-openrowset).
+- For more information on `OPENROWSET` in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], see [Data virtualization with Azure SQL Database](/azure/azure-sql/database/data-virtualization-overview?view=azuresql-db&preserve-view=true).
+- For more information on `OPENROWSET` in [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], see [Data virtualization with Azure SQL Managed Instance](/azure/azure-sql/managed-instance/data-virtualization-overview?view=azuresql-mi&preserve-view=true#query-data-sources-using-openrowset).
 - For information and examples with serverless SQL pools in Azure Synapse, see [How to use OPENROWSET using serverless SQL pool in Azure Synapse Analytics](/azure/synapse-analytics/sql/develop-openrowset).
 - Dedicated SQL pools in Azure Synapse don't support the `OPENROWSET` function.
 
@@ -608,7 +609,7 @@ For more examples that show using `INSERT...SELECT * FROM OPENROWSET(BULK...)`, 
 
 [!INCLUDE [fabric-se-and-dw](../../includes/applies-to-version/fabric-se-and-dw.md)]
 
-The T-SQL `OPENROWSET` function reads a content of a file in Azure Data Lake storage. You can read text/CSV or Parquet file formats.
+The T-SQL `OPENROWSET` function reads a content of a file in Azure Data Lake storage. You can read text/CSV, Parquet, or JSON-lines file formats that are stored in Azure Data Lake or Azure Blob storage.
 
 The `OPENROWSET` function reads data from a file and returns it as a rowset. The `OPENROWSET` function can be referenced in the `FROM` clause of a query as if it were a table name. 
 
@@ -616,21 +617,20 @@ This article applies only to [!INCLUDE [fabric](../../includes/fabric.md)] [!INC
 
 Details and links to similar examples on other platforms:
 
-- For SQL Server syntax, [select your version of SQL Server in the version drop down](openrowset-transact-sql.md?view=sql-server-ver16&preserve-view=true).
-- For examples on [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], see [Query data sources using OPENROWSET](/azure/azure-sql/managed-instance/data-virtualization-overview#query-data-sources-using-openrowset).
-- Azure SQL Database only supports [OPENROWSET BULK (Transact-SQL)](openrowset-bulk-transact-sql.md?view=azuresql-db&preserve-view=true).
-- For information and examples with serverless SQL pools in Azure Synapse, see [How to use OPENROWSET using serverless SQL pool in Azure Synapse Analytics](/azure/synapse-analytics/sql/develop-openrowset).
-- Dedicated SQL pools in Azure Synapse don't support the `OPENROWSET` function.
+- For syntax in other services [select your version in the version drop down](openrowset-transact-sql.md?view=sql-server-ver16&preserve-view=true).
 
 ## Syntax
 
 ```syntaxsql
 SELECT <columns>
 FROM OPENROWSET(
-    BULK 'https://<storage>.blob.core.windows.net/path/folder1=*/folder2=*/filename.parquet'
-    [, FORMAT = ('PARQUET' | 'CSV') ]
+    BULK 'https://<storage>.blob.core.windows.net/path/folder1=*/folder2=*/<filename>'
+    [, FORMAT = ('PARQUET' | 'CSV' | 'JSONL') ]
 
-    -- Text formatting options
+    -- execution options
+    [, ROWS_PER_BATCH=number_of_rows]
+
+    -- Text/CSV encoding options
     [, DATAFILETYPE = {'char' | 'widechar' }     ]
     [, CODEPAGE = {'ACP' | 'OEM' | 'raw' | '<code_page>' } ]
 
@@ -638,6 +638,7 @@ FROM OPENROWSET(
     [, ROWTERMINATOR = 'row_terminator' ]
     [, FIELDTERMINATOR =  'field_terminator' ]
     [, FIELDQUOTE = 'string_delimiter' ]
+    [ , PARSER_VERSION = 'parser_version' ]
     [, ESCAPECHAR = 'escape_char' ]
     [, HEADER_ROW = [true|false] ]
     [, FIRSTROW = first_row ]
@@ -658,13 +659,34 @@ FROM OPENROWSET(
 
 The URI of the data file(s) whose data is to be read and returned as row set. The URI can reference Azure Data Lake storage or Azure Blob storage.
 
-The URI can contain * character representing any sequence of characters and enables the OPENROWSET to match the URI with the pattern.
+The URI may include the `*` character to match any sequence of characters, allowing `OPENROWSET` to pattern-match against the URI. Additionally, it can end with `/**` to enable recursive traversal through all subfolders.
+
+The URI of the data file(s) whose data is to be read and returned as row set. The URI can reference Azure Data Lake storage or Azure Blob storage. The supported URI formats are:
+
+- `https://{storage}.blob.core.windows.net/[container}/{file path}`
+- `https://{storage}.dfs.core.windows.net/[container}/{file path}`
+- `abfss://[container}@{storage}.dfs.core.windows.net/{file path}`
+
+For example:
+
+```sql
+SELECT TOP 10 *
+FROM OPENROWSET(
+    BULK 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/*.parquet'
+);
+```
 
 ### BULK input file format options
 
-#### FORMAT = { 'CSV' | 'PARQUET' }
+#### FORMAT = { 'CSV' | 'PARQUET' | 'JSONL' }
 
-Specifies the format of the referenced file. If the file extension in the path ends with .csv, .parquet, or .parq, the `FORMAT` option doesn't need to be specified. For example:
+Specifies the format of the referenced file. If the file extension in the path ends with `.csv`, `.tsv`, `.parquet`, `.parq`, `.jsonl`, `.ldjson`, or `.ndjson`, the `FORMAT` option doesn't need to be specified. 
+
+> [!NOTE]
+> The `OPENROWSET` function can read only **newline-delimited** JSON format. This feature is currently in preview.
+> The newline character must be used as a separator between JSON documents, and cannot be placed in the middle of a JSON document.
+
+For example:
 
 ```sql
 SELECT *
@@ -672,6 +694,32 @@ FROM OPENROWSET(
     BULK 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.parquet'
 );
 ```
+
+If the file path doesn't end with one of these extensions, you need to specify a `FORMAT`, for example:
+
+```sql
+SELECT TOP 10 *
+FROM OPENROWSET(
+      BULK 'abfss://nyctlc@azureopendatastorage.blob.core.windows.net/yellow/**',
+      FORMAT='PARQUET'
+)
+```
+
+#### ROWS_PER_BATCH = *rows_per_batch*
+
+Specifies the approximate number of rows of data in the data file. This value is an estimate, and should be an approximation (within one order of magnitude) of the actual number of rows. By default, `ROWS_PER_BATCH` is estimated based on file characteristics (number of files, file sizes, size of the returned data types). Specifying `ROWS_PER_BATCH = 0` is the same as omitting `ROWS_PER_BATCH`.
+
+For example:
+
+```sql
+SELECT TOP 10 *
+FROM OPENROWSET(
+    BULK 'abfss://public@pandemicdatalake.dfs.core.windows.net/curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.parquet',
+    ROWS_PER_BATCH = 100000
+);
+```
+
+### Text/CSV encoding options
 
 #### DATAFILETYPE = { 'char' | 'widechar' }
 
@@ -701,21 +749,107 @@ Specifies the row terminator to be used for **char** and **widechar** data files
 
 #### FIELDTERMINATOR = '*field_terminator*'
 
-Specifies the field terminator to be used for **char** and **widechar** data files. The default field terminator is `,` (comma). For more information, see [Specify field and row terminators](../../relational-databases/import-export/specify-field-and-row-terminators-sql-server.md).
+Specifies the field terminator to be used for **char** and **widechar** data files. The default field terminator is `,` (comma). For more information, see [Specify Field and Row Terminators](../../relational-databases/import-export/specify-field-and-row-terminators-sql-server.md?view=fabric&preserve-view=true).
+
+For example, to read tab-delimited data from a file:
+
+```sql
+SELECT *
+FROM OPENROWSET(
+    BULK '{file path}',
+    ROWTERMINATOR = '\t'
+);
+```
 
 #### FIELDQUOTE = '*field_quote*'
 
-Specifies a character that is used as the quote character in the CSV file. If not specified, the quote character (`"`) is used as the quote character as defined in the [RFC 4180](https://datatracker.ietf.org/doc/html/rfc4180) standard.
+Specifies a character that is used as the quote character in the CSV file. If not specified, the quote character (`"`) is used as the quote character as defined in the [RFC 4180](https://datatracker.ietf.org/doc/html/rfc4180) standard. The `FIELDTERMINATOR` character (for example, a comma) can be placed within the field quotes and it will be considered as a regular character in the cell wrapped with the `FIELDQUOTE` characters. 
+
+For example, use `FIELDQUOTE = '"'` on the following comma-separated value (CSV) dataset, with commas in an address field. The address field's values will be retained as a single value, not split into multiple values by the commas within the `"` (quote) characters.
+
+```sql
+SELECT *
+FROM OPENROWSET(
+    BULK '{file path}',
+    FIELDQUOTE = '"',
+    FIELDTERMINATOR = ','
+);
+```
+
+```csv
+Empire State Building,40.748817,-73.985428,"20 W 34th St, New York, NY 10118","\icons\sol.png"
+Statue of Liberty,40.689247,-74.044502,"Liberty Island, New York, NY 10004","\icons\sol.png"
+```
+
+#### PARSER_VERSION = 'parser_version'
+
+Specifies parser version to be used when reading files. Currently supported CSV parser versions are 1.0 and 2.0:
+
+- PARSER_VERSION = '1.0'
+- PARSER_VERSION = '2.0'
+
+CSV parser version 1.0 is default and feature rich. Version 2.0 is built for performance and doesn't support all options and encodings. 
+
+CSV parser version 1.0 specifics:
+
+- Following options aren't supported: HEADER_ROW.
+- Default terminators are `\r\n`, `\n` and `\r`. 
+- If you specify `\n` (newline) as the row terminator, it will be automatically prefixed with a `\r` (carriage return) character, which results in a row terminator of `\r\n`.
+
+CSV parser version 2.0 specifics:
+
+- Not all data types are supported.
+- Maximum character column length is 8000.
+- Maximum row size limit is 8 MB.
+- Following options aren't supported: `DATA_COMPRESSION`.
+- Quoted empty string ("") is interpreted as empty string.
+- DATEFORMAT SET option isn't honored.
+- Supported format for **date** data type: `YYYY-MM-DD`
+- Supported format for **time** data type: `HH:MM:SS[.fractional seconds]`
+- Supported format for **datetime2** data type: `YYYY-MM-DD HH:MM:SS[.fractional seconds]`
+- Default terminators are `\r\n` and `\n`.
 
 #### ESCAPE_CHAR = 'char'
 
-Specifies the character in the file that is used to escape itself and all delimiter values in the file. If the escape character is followed by a value other than itself, or any of the delimiter values, the escape character is dropped when reading the value.
+Specifies the character in the file that is used to escape itself and all delimiter values in the file. If the escape character is followed by a value other than itself, or any of the delimiter values, the escape character is dropped when reading the value. 
 
-The ESCAPECHAR parameter will be applied regardless of whether the FIELDQUOTE is or isn't enabled. It won't be used to escape the quoting character. The quoting character must be escaped with another quoting character. Quoting character can appear within column value only if value is encapsulated with quoting characters.
+The `ESCAPECHAR` parameter will be applied regardless of whether the `FIELDQUOTE` is or isn't enabled. It won't be used to escape the quoting character. The quoting character must be escaped with another quoting character. The quoting character can appear within column value only if value is encapsulated with quoting characters.
+
+In the following example, comma (`,`) and backslash (`\`) are escaped and represented as `\,` and `\\`:
+
+```sql
+SELECT *
+FROM OPENROWSET(
+    BULK '{file path}',
+    ESCAPECHAR = '\'
+);
+```
+
+```csv
+Place,Address,Icon
+Empire State Building,20 W 34th St\, New York\, NY 10118,\\icons\\sol.png
+Statue of Liberty,Liberty Island\, New York\, NY 10004,\\icons\\sol.png
+```
 
 #### HEADER_ROW = { TRUE | FALSE }
 
-Specifies whether a CSV file contains header row. Default is FALSE. Supported in PARSER_VERSION='2.0'. If TRUE, the column names will be read from the first row according to FIRSTROW argument. If TRUE and schema is specified using WITH, binding of column names will be done by column name, not ordinal positions.
+Specifies whether a CSV file contains header row. Default is `FALSE`. Supported in `PARSER_VERSION='2.0'`. If `TRUE`, the column names will be read from the first row according to `FIRSTROW` argument. If `TRUE` and schema is specified using `WITH`, binding of column names will be done by column name, not ordinal positions.
+
+Specifies whether a CSV file contains header row that should not be returned with other data rows. Default is `FALSE`. Supported in `PARSER_VERSION='2.0'`. If `TRUE`, the column names will be read from the first row according to `FIRSTROW` argument. If `TRUE` and schema is specified using `WITH`, binding of column names will be done by column name, not ordinal positions.
+
+```sql
+SELECT *
+FROM OPENROWSET(
+    BULK '{file path}',
+    HEADER_ROW = TRUE
+);
+```
+
+```csv
+Place,Latitude,Longitude,Address,Area,State,Zipcode
+Empire State Building,40.748817,-73.985428,20 W 34th St,New York,NY,10118
+Statue of Liberty,40.689247,-74.044502,Liberty Island,New York,NY,10004
+```
 
 #### FIRSTROW = *first_row*
 
@@ -737,13 +871,31 @@ By default, `ROWS_PER_BATCH` is estimated based on file characteristics (number 
 
 The `WITH` schema specifies the columns that define the result set of the `OPENROWSET` function. It includes column definitions for every column that will be returned as a result and outlines the mapping rules that bind the underlying file columns to the columns in the result set.
 
+In the following example:
+
+- The `country_region` column has **varchar(50)** type and referencing the underlying column with the same name
+- The `date` column is referencing a CSV/Parquet column or JSONL property with a different physical name
+- The `cases` column is referencing the third column in the file
+- The `fatal_cases` column is referencing a nested Parquet property or JSONL sub-object
+
+```sql
+SELECT *
+FROM OPENROWSET(<...>) 
+WITH (
+        country_region varchar(50), --> country_region column has varchar(50) type and referencing the underlying column with the same name
+        [date] DATE '$.updated',   --> date is referencing a CSV/Parquet column or JSONL property with a different physical name
+        cases INT 3,             --> cases is referencing third column in the file
+        fatal_cases INT '$.statistics.deaths'  --> fatal_cases is referencing a nested Parquet property or JSONL sub-object
+     );
+```
+
 #### <column_name>
 
-The name of the column that will be returned in the result rowset. The data for this column is read from the underlying file column with the same name, unless overridden by `<column_path>` or `<column_ordinal>`.
+The name of the column that will be returned in the result rowset. The data for this column is read from the underlying file column with the same name, unless overridden by `<column_path>` or `<column_ordinal>`. The name of the column must follow the [rules for column name identifiers](../../relational-databases/databases/database-identifiers.md?view=fabric&preserve-view=true#rules-for-regular-identifiers).
 
 #### <column_type>
 
-The T-SQL type of the column in the result set. The values from the underlying file are converted to this type when `OPENROWSET` returns the results.
+The T-SQL type of the column in the result set. The values from the underlying file are converted to this type when `OPENROWSET` returns the results. For more information, see [Data types in Fabric Warehouse](/fabric/data-warehouse/data-types#data-types-in-warehouse).
 
 #### <column_path>
 
@@ -757,13 +909,13 @@ A number representing the physical index of the column that will be mapped to th
 
 The supported features are summarized in the table:
 
-| Feature         | Supported | Not available |
-|-----------------|-----------|----------------------|
-| **File formats**| Parquet, CSV   | Delta, Azure Cosmos DB |
-| **Authentication**| EntraID passthrough, public storage | SAS/SAK, SPN, Managed access |
-| **Storage**     | Azure Blob Storage, Azure Data Lake Storage | OneLake |
-| **Options**     | Only full/absolute URI in `OPENROWSET`  | Relative URI path in `OPENROWSET`, `DATA_SOURCE` |
-| **Partitioning**| You can use the `filepath()` function in a query. |  |
+| Feature           | Supported | Not available |
+|-------------------|-----------|----------------------|
+| **File formats**  | Parquet, CSV, JSONL (preview) | Delta, Azure Cosmos DB, JSON, relational databases |
+| **Authentication**| EntraID/SPN passthrough, public storage | SAS/SAK, SPN, Managed access |
+| **Storage**       | Azure Blob Storage, Azure Data Lake Storage | Fabric OneLake |
+| **Options**       | Only full/absolute URI in `OPENROWSET`  | Relative URI path in `OPENROWSET`, `DATA_SOURCE` |
+| **Partitioning**  | You can use the `filepath()` function in a query. |  |
 
 ## Examples
 
@@ -793,7 +945,7 @@ BULK 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/bin
 
 ### C. Specify the file column schema while reading a file
 
-In the following example you can see how to explicitly specify the schema of row that will be returned as a result of the OPENROWSET function:
+In the following example you can see how to explicitly specify the schema of row that will be returned as a result of the `OPENROWSET` function:
 
 ```sql
 SELECT *
@@ -824,6 +976,24 @@ BULK 'https://synapseaisolutionsa.blob.core.windows.net/public/NYC_Property_Sale
 AS files
 WHERE files.filepath(1) = '2009';
 ```
+
+### E. Specify the file column schema while reading a JSONL file
+
+In the following example, you can see how to explicitly specify the schema of row that will be returned as a result of the `OPENROWSET` function:
+
+```sql
+SELECT TOP 10 *
+FROM OPENROWSET(
+BULK 'https://pandemicdatalake.dfs.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.jsonl') 
+WITH (
+        country_region varchar(50),
+        date DATE '$.updated',
+        cases INT '$.confirmed',
+        fatal_cases INT '$.deaths'
+     );
+```
+
+If a column name doesn't match the physical name of a column in the properties if the JSONL file, you can specify the physical name in JSON path after the type definition. You can use multiple properties. For example, `$.location.latitude` to reference the nested properties in parquet complex types or JSON sub-objects.
 
 ## Related content
 

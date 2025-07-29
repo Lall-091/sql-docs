@@ -4,7 +4,7 @@ description: Learn how to automate database development tasks with SqlPackage Ex
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: maghan
-ms.date: 9/29/2022
+ms.date: 07/28/2025
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: conceptual
@@ -13,7 +13,7 @@ ms.collection:
 ---
 
 # SqlPackage Export parameters and properties
-The SqlPackage Export action exports a connected database to a BACPAC file (.bacpac). By default, data for all tables will be included in the .bacpac file. Optionally, you can specify only a subset of tables for which to export data. The Export action is part of the [database portability](sqlpackage.md#portability) functionality of SqlPackage.
+The SqlPackage Export action exports a connected database to a BACPAC file (.bacpac). By default, data for all tables will be included in the .bacpac file. Optionally, you can specify only a subset of tables for which to export data. The Export action is part of the [database portability](sqlpackage.md#portability) functionality of SqlPackage. For an export to be transactionally consistent, you must ensure either that no write activity is occurring during the export, or that you're exporting from a [transactionally consistent copy](/azure/azure-sql/database/database-copy) of your database.
 
 [!INCLUDE [entra-id](../../includes/entra-id-hard-coded.md)]
 

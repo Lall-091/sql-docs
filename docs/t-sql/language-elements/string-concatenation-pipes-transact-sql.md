@@ -1,10 +1,10 @@
 ---
 title: "|| (String Concatenation) (Transact-SQL)"
 description: "Use || to concatenate two or more character or binary strings, columns, or a combination of strings and column names into one expression (a string operator)."
-author: abhimantiwari
-ms.author: abhtiwar
-ms.reviewer: randolphwest, wiassaf, umajay
-ms.date: 05/19/2025
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: abhtiwar, umajay, randolphwest
+ms.date: 07/28/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -19,19 +19,14 @@ helpviewer_keywords:
   - "|| (string concatenation)"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric"
+monikerRange: "=sql-server-ver17 || =azuresqldb-current || =fabric || =azuresqldb-mi-current"
 ---
 
-# || (String concatenation) (Transact-SQL) preview
+# || (String concatenation) (Transact-SQL)
 
-[!INCLUDE [asdb-asmi-fabricsqldb](../../includes/applies-to-version/asdb-asmi-fabricsqldb.md)]
-
-[!INCLUDE [preview](../../includes/preview.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabric](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
 The `||` pipes operator in a string expression concatenates two or more character or binary strings, columns, or a combination of strings and column names into one expression (a string operator). For example, `SELECT 'SQL ' || 'Server';` returns `SQL Server`. The `||` operator follows the ANSI SQL standard for concatenating strings. In SQL Server you can also do string concatenation using `+` operator and the `CONCAT()` function.
-
-> [!NOTE]
-> The `||` pipes operator is available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) update policy. 
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
@@ -60,6 +55,8 @@ Some benefits of using the ANSI string concatenation syntax include:
 - Consistency: Adhering to the ANSI standard promotes consistency in your SQL code, making it easier to read and maintain, especially when working in environments with multiple database systems.
 
 - Interoperability: The ANSI standard is widely recognized and supported by most SQL-compliant database systems, enhancing interoperability between different systems and tools.
+
+The `||` string concatenation operator is available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) update policy.
 
 ### String truncation behavior
 

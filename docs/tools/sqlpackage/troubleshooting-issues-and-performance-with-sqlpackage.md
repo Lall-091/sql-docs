@@ -151,6 +151,8 @@ For imports that contain large tables or tables with many indexes, the use of `/
 
 ## Export action tips
 
+For an export to be transactionally consistent, you must ensure either that no write activity is occurring during the export, or that you're exporting from a [transactionally consistent copy](/azure/azure-sql/database/database-copy) of your database. Receiving errors about foreign key constraints during an import can indicate that the export was not transactionally consistent due to inserted or updated records during the export process.
+
 A common cause of performance degradation during export is unresolved object references, which causes SqlPackage to attempt to resolve the object multiple times. For example, a view is defined that references a table and the table no longer exists in the database. If unresolved references appear in the export log, consider correcting the schema of the database to improve the export performance.
 
 In scenarios where the OS disk space is limited and runs out during the export, the use of `/p:TempDirectoryForTableData` allows the data for export to be buffered on an alternative disk. The space required for this action might be large and is relative to the full size of the database. That and other properties are available to tune the [SqlPackage Export](sqlpackage-export.md) operation.

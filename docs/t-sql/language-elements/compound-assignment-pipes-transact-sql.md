@@ -1,10 +1,10 @@
 ---
 title: "||= (Compound assignment) (Transact-SQL)"
 description: "Use ||= to concatenate an expression with the value of a character or binary string variable, and assign the resulting expression to the variable."
-author: abhimantiwari
-ms.author: abhtiwar
-ms.reviewer: randolphwest, wiassaf, umajay
-ms.date: 05/19/2025
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: abhtiwar, randolphwest, umajay
+ms.date: 07/28/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -18,21 +18,16 @@ helpviewer_keywords:
   - "||= (string concatenation with compound assignment)"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =fabric || =azuresqldb-mi-current"
+monikerRange: "=sql-server-ver17 || =azuresqldb-current || =fabric || =azuresqldb-mi-current"
 ---
 
-# ||= (Compound assignment) (Transact-SQL) preview
+# ||= (Compound assignment) (Transact-SQL)
 
 [!INCLUDE [sqlserver2025-asdb-asmi-fabric](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
-
-[!INCLUDE [preview](../../includes/preview.md)]
 
 The `||=` concatenation with compound assignment operator can be used to [concatenate an expression](string-concatenation-pipes-transact-sql.md) with the value of a character or binary string variable, and then assign the resulting expression to the variable.
 
 The `||=` operator supports the same behavior as the [+= operator](string-concatenation-equal-transact-sql.md) for character and binary strings.
-
-> [!NOTE]
-> The `||=` pipes operator is available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) update policy.
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
@@ -66,6 +61,9 @@ Assigns the result of the concatenation operator for character strings to the va
 If the result of the concatenation of strings exceeds the limit of 8,000 bytes, the result is truncated. However, if at least one of the strings concatenated is a large value type, truncation doesn't occur.
 
 An explicit conversion to character data must be used when concatenating binary strings and any characters between the binary strings.
+
+The `||=` pipes operator is available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) update policy.
+
 
 ### Zero-length strings and characters
 

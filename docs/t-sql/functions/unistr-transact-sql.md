@@ -1,10 +1,10 @@
 ---
 title: "UNISTR (Transact-SQL)"
 description: The UNISTR function provides support for Unicode string literals and returns the Unicode output for the input expression.
-author: abhimantiwari
-ms.author: abhtiwar
-ms.reviewer: randolphwest, wiassaf, umajay
-ms.date: 05/19/2025
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: abhtiwar, umajay, randolphwest
+ms.date: 07/28/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -17,13 +17,11 @@ helpviewer_keywords:
   - "unistr [SQL Server], UNISTR function"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric"
+monikerRange: "=sql-server-ver17 || =azuresqldb-current || =fabric || =azuresqldb-mi-current"
 ---
-# UNISTR (Transact-SQL) preview
+# UNISTR (Transact-SQL)
 
 [!INCLUDE [sqlserver2025-asdb-asmi-fabric](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
-
-[!INCLUDE [preview](../../includes/preview.md)]
 
 `UNISTR` provides support for Unicode string literals by letting you specify the Unicode encoding value of characters in the string. `UNISTR` returns the Unicode characters corresponding to the input expression, as defined by the Unicode standard.
 
@@ -51,6 +49,8 @@ Key benefits of `UNISTR` include:
 - **Flexibility with input types**: `UNISTR` supports various character types such as **char**, **nchar**, **varchar**, and **nvarchar**. For **char** and **varchar** data types, the collation should be a valid UTF-8 collation.
 
 - **Custom escape characters**: You can define a custom escape character to perform the necessary conversion of Unicode values into a string character set.
+
+The `||` pipes operator is available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) update policy. 
 
 ### Code page support
 
