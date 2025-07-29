@@ -3,8 +3,8 @@ title: "OPENROWSET BULK (Transact-SQL)"
 description: "OPENROWSET BULK operations perform bulk data manipulation operations on an external data source."
 author: MikeRayMSFT
 ms.author: mikeray
-ms.reviewer: randolphwest, hudequei, wiassaf, jovanpop
-ms.date: 06/25/2025
+ms.reviewer: randolphwest, hudequei, wiassaf, jovanpop, fresantos
+ms.date: 07/29/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -661,22 +661,21 @@ The URI of the data file(s) whose data is to be read and returned as row set. Th
 
 The URI may include the `*` character to match any sequence of characters, allowing `OPENROWSET` to pattern-match against the URI. Additionally, it can end with `/**` to enable recursive traversal through all subfolders.
 
-The URI of the data file(s) whose data is to be read and returned as row set. The URI can reference Azure Data Lake storage or Azure Blob storage. 
-
 You can use `OPENROWSET(BULK)` to read data directly from files stored in the Fabric OneLake, specifically from the **Files folder** of a Fabric Lakehouse. This eliminates the need for external staging accounts (such as ADLS Gen2 or Blob Storage) and enables workspace-governed, SaaS-native ingestion using Fabric permissions. This functionality supports:
+
 - Reading from `Files` folders in Lakehouses
 - Workspace-to-warehouse loads within the same tenant
 - Native identity enforcement using Microsoft Entra ID
 
 > [!NOTE]
-> Fabric OneLake storage is in [preview](/fabric/fundamentals/preview). See the [limitations](../statements/copy-into-transact-sql.md#limitations-for-onelake-as-source-public-preview) that are applicable both to `COPY INTO` and `OPENROWSET(BULK)`.
+> Fabric OneLake storage is in [preview](/fabric/fundamentals/preview). See the [limitations](../statements/copy-into-transact-sql.md#limitations-for-onelake-as-source) that are applicable both to `COPY INTO` and `OPENROWSET(BULK)`.
 
 The supported URI formats are:
 
 - `https://{storage}.blob.core.windows.net/[container}/{file path}`
 - `https://{storage}.dfs.core.windows.net/[container}/{file path}`
 - `abfss://[container}@{storage}.dfs.core.windows.net/{file path}`
-- `https://onelake.dfs.fabric.microsoft.com/<workspaceId>/<lakehouseId>/Files/{file path}` - [preview](/fabric/fundamentals/preview)!
+- `https://onelake.dfs.fabric.microsoft.com/<workspaceId>/<lakehouseId>/Files/{file path}` - currently in [preview](/fabric/fundamentals/preview)
 
 For example:
 

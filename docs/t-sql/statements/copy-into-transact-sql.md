@@ -5,7 +5,7 @@ description: Use the COPY statement in Azure Synapse Analytics and Warehouse in 
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: procha, mikeray, fresantos
-ms.date: 07/28/2025
+ms.date: 07/29/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -549,7 +549,7 @@ Follow these steps to work around this issue by re-registering the workspace's m
 
 This article explains how to use the COPY statement in [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)] for loading from external storage accounts. The COPY statement provides the most flexibility for high-throughput data ingestion into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)], and is as strategy to [Ingest data into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)]](/fabric/data-warehouse/ingest-data).
 
-In [!INCLUDE [fabric](../../includes/fabric.md)], the [COPY (Transact-SQL)](/sql/t-sql/statements/copy-into-transact-sql?view=fabric&preserve-view=true) statement currently supports the PARQUET and CSV file formats. For data sources, Azure Data Lake Storage Gen2 accounts and OneLake sources are supported.
+In [!INCLUDE [fabric](../../includes/fabric.md)], the [COPY (Transact-SQL)](/sql/t-sql/statements/copy-into-transact-sql?view=fabric&preserve-view=true) statement currently supports the PARQUET and CSV file formats. For data sources, Azure Data Lake Storage Gen2 accounts, and OneLake sources are supported.
 
 For more information on using COPY INTO on your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], see [Ingest data into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] using the COPY statement](/fabric/data-warehouse/ingest-data-copy).
 
@@ -631,11 +631,11 @@ When a column list isn't specified, COPY maps columns based on the source and ta
 
 #### *External location*
 
-Specifies where the files containing the data is staged. Currently Azure Data Lake Storage (ADLS) Gen2, Azure Blob Storage and OneLake (Preview) are supported:
+Specifies where the files containing the data is staged. Currently Azure Data Lake Storage (ADLS) Gen2, Azure Blob Storage, and OneLake (Preview) are supported:
 
 - *External location* for Blob Storage: `https://<account\>.blob.core.windows.net/<container\>/<path\>`
 - *External location* for ADLS Gen2: `https://<account\>.dfs.core.windows.net/<container\>/<path\>`
-- *External location* for OneLake (Preview): `'https://onelake.dfs.fabric.microsoft.com/<workspaceId>/<lakehouseId>/Files/'`
+- *External location* for OneLake (Preview): `https://onelake.dfs.fabric.microsoft.com/<workspaceId>/<lakehouseId>/Files/`
 
 Azure Data Lake Storage (ADLS) Gen2 offers better performance than Azure Blob Storage (legacy). Consider using an ADLS Gen2 account whenever possible.
 
@@ -678,10 +678,13 @@ To access files on Azure Data Lake Storage (ADLS) Gen2 and Azure Blob Storage lo
 
 #### *CREDENTIAL (IDENTITY = '', SECRET = '')*
 
-*CREDENTIAL* specifies the authentication mechanism to access the external storage account. On [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], the only supported authentication mechanisms are Shared Access Signature (SAS) and Storage Account Key (SAK). User's EntraID authentication is default, no credential needs to be specified.
+*CREDENTIAL* specifies the authentication mechanism to access the external storage account. On [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], the only supported authentication mechanisms are Shared Access Signature (SAS) and Storage Account Key (SAK). 
+
+The user's EntraID authentication is default, no credential needs to be specified. COPY INTO using OneLake as source only supports EntraID authentication.
 
 > [!NOTE]
 > When using a public storage account, CREDENTIAL does not need to be specified. By default the executing user's Entra ID is used.
+
 - Authenticating with Shared Access Signature (SAS)
 
   - *IDENTITY: A constant with a value of 'Shared Access Signature'*
@@ -692,9 +695,6 @@ To access files on Azure Data Lake Storage (ADLS) Gen2 and Azure Blob Storage lo
 
   - *IDENTITY: A constant with a value of 'Storage Account Key'*
 - *SECRET: Storage account key*
-
-> [!NOTE]  
-> COPY INTO using OneLake as source only supports EntraID authentication.
 
 #### *ERRORFILE = Directory Location*
 
@@ -824,9 +824,6 @@ WITH (
 );
 ```
 
-> [!NOTE]
-> This feature is currently in [preview](/fabric/fundamentals/preview).
-
 ## Permissions
 
 ### Control plane permissions
@@ -846,18 +843,20 @@ GO
 GRANT INSERT to [mike@contoso.com];
 GO
 ```
-> [!NOTE]  
-> When using the *ErrorFile* option, the user must have the minimal permission of Blob Storage Contributor on the Storage Account container.
 
-> [!NOTE]
-> When using OneLake as the source (Public Preview), the user must have **Contributor** or higher permissions on both the **source workspace** (where the Lakehouse is located) and the **target workspace** (where the Warehouse resides).  
-> All access is governed via Microsoft Entra ID and Fabric workspace roles.
+When using the *ErrorFile* option, the user must have the minimal permission of Blob Storage Contributor on the Storage Account container.
+
+When using OneLake as the source, the user must have **Contributor** or higher permissions on both the **source workspace** (where the Lakehouse is located) and the **target workspace** (where the Warehouse resides). All access is governed via Microsoft Entra ID and Fabric workspace roles.
 
 ## Remarks
 
 The COPY statement accepts only UTF-8 and UTF-16 valid characters for row data and command parameters. Source files or parameters (such as `ROW TERMINATOR` or `FIELD TERMINATOR`) that use invalid characters might be interpreted incorrectly by the COPY statement and cause unexpected results such as data corruption, or other failures. Make sure your source files and parameters are UTF-8 or UTF-16 compliant before you invoke the COPY statement.  
 
-## Limitations for OneLake as source (Public Preview)
+<a id="limitations-for-onelake-as-source-public-preview"></a>
+
+## Limitations for OneLake as source
+
+Fabric OneLake storage as a source for both `COPY INTO` and `OPENROWSET(BULK)` is a [preview feature](/fabric/fundamentals/preview).
 
 - **Only Microsoft Entra ID authentication is supported.** Other authentication methods, such as SAS tokens, shared keys, or connection strings, are not permitted.
 
