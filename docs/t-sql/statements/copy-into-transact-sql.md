@@ -549,7 +549,7 @@ Follow these steps to work around this issue by re-registering the workspace's m
 
 This article explains how to use the COPY statement in [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)] for loading from external storage accounts. The COPY statement provides the most flexibility for high-throughput data ingestion into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)], and is as strategy to [Ingest data into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)]](/fabric/data-warehouse/ingest-data).
 
-In [!INCLUDE [fabric](../../includes/fabric.md)], the [COPY (Transact-SQL)](/sql/t-sql/statements/copy-into-transact-sql?view=fabric&preserve-view=true) statement currently supports the PARQUET and CSV file formats. For data sources, only Azure Data Lake Storage Gen2 accounts are supported.
+In [!INCLUDE [fabric](../../includes/fabric.md)], the [COPY (Transact-SQL)](/sql/t-sql/statements/copy-into-transact-sql?view=fabric&preserve-view=true) statement currently supports the PARQUET and CSV file formats. For data sources, Azure Data Lake Storage Gen2 accounts and OneLake sources are supported.
 
 For more information on using COPY INTO on your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], see [Ingest data into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] using the COPY statement](/fabric/data-warehouse/ingest-data-copy).
 
@@ -631,10 +631,11 @@ When a column list isn't specified, COPY maps columns based on the source and ta
 
 #### *External location*
 
-Specifies where the files containing the data is staged. Currently Azure Data Lake Storage (ADLS) Gen2 and Azure Blob Storage are supported:
+Specifies where the files containing the data is staged. Currently Azure Data Lake Storage (ADLS) Gen2, Azure Blob Storage and OneLake (Preview) are supported:
 
 - *External location* for Blob Storage: `https://<account\>.blob.core.windows.net/<container\>/<path\>`
 - *External location* for ADLS Gen2: `https://<account\>.dfs.core.windows.net/<container\>/<path\>`
+- *External location* for OneLake (Preview): `'https://onelake.dfs.fabric.microsoft.com/<workspaceId>/<lakehouseId>/Files/'`
 
 Azure Data Lake Storage (ADLS) Gen2 offers better performance than Azure Blob Storage (legacy). Consider using an ADLS Gen2 account whenever possible.
 
@@ -691,6 +692,9 @@ To access files on Azure Data Lake Storage (ADLS) Gen2 and Azure Blob Storage lo
 
   - *IDENTITY: A constant with a value of 'Storage Account Key'*
 - *SECRET: Storage account key*
+
+> [!NOTE]  
+> COPY INTO using OneLake as source only supports EntraID authentication.
 
 #### *ERRORFILE = Directory Location*
 
@@ -803,11 +807,22 @@ Parser version 1.0 is available for backward compatibility only, and should be u
 
 ## Use COPY INTO with OneLake
 
-You can now use `COPY INTO` to load data directly from files stored in the Fabric OneLake, specifically from the **Files folder** of a Fabric Lakehouse. This eliminates the need for external staging accounts (such as ADLS Gen2 or Blob Storage) and enables workspace-governed, SaaS-native ingestion using Fabric permissions. This functionality supports:
+You can use `COPY INTO` to load data directly from files stored in the Fabric OneLake, specifically from the **Files folder** of a Fabric Lakehouse. This eliminates the need for external staging accounts (such as ADLS Gen2 or Blob Storage) and enables workspace-governed, SaaS-native ingestion using Fabric permissions. This functionality supports:
 
 - Reading from `Files` folders in Lakehouses
 - Workspace-to-warehouse loads within the same tenant
 - Native identity enforcement using Microsoft Entra ID
+
+Example:
+
+```sql
+COPY INTO t1
+FROM 'https://onelake.dfs.fabric.microsoft.com/<workspaceId>/<lakehouseId>/Files/*.csv'
+WITH (
+    FILE_TYPE = 'CSV',
+    FIRSTROW = 2
+);
+```
 
 > [!NOTE]
 > This feature is currently in [preview](/fabric/fundamentals/preview).
