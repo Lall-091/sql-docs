@@ -4,7 +4,7 @@ description: Learn how to automate database development tasks with SqlPackage Pu
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: maghan
-ms.date: 9/29/2022
+ms.date: 07/30/2025
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: conceptual

@@ -4,7 +4,7 @@ description: Tips for using SqlPackage with data stored in Azure Blob Storage
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: llali, randolphwest
-ms.date: 04/17/2025
+ms.date: 07/30/2025
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: conceptual
@@ -16,11 +16,13 @@ ms.custom:
 
 # SqlPackage with data in Parquet files (preview)
 
-This article covers SqlPackage support for interacting with data stored in Azure Blob Storage that is in Parquet format. For SQL Server 2022 and Azure SQL Managed Instance, preview support for [extract](#extract-export-data) and [publish](#publish-import-data) with data in Parquet files in Azure Blob Storage is available in SqlPackage 162.1.176 and higher. Azure SQL Database and SQL Server 2019 and earlier aren't supported. The [import](sqlpackage-import.md) and [export](sqlpackage-export.md) actions continue to be available for SQL Server, Azure SQL Managed Instance, and Azure SQL Database. Support for Parquet files in Azure Blob Storage continues to be generally available for [Azure Synapse Analytics](sqlpackage-for-azure-synapse-analytics.md).
+This article covers SqlPackage support for interacting with data stored in Azure Blob Storage that is in Parquet format. 
 
 With [extract](#extract-export-data), the database schema (`.dacpac` file) is written to the local client running SqlPackage and the data is written to Azure Blob Storage in Parquet format. The data is stored in individual folders named with two-part table names. [CREATE EXTERNAL TABLE AS SELECT (CETAS)](../../t-sql/statements/create-external-table-as-select-transact-sql.md) is used to write the files in Azure Blob Storage.
 
 With [publish](#publish-import-data), the database schema (`.dacpac` file) is read from the local client running SqlPackage and the data is read from or written to Azure Blob Storage in Parquet format.
+
+For SQL Server 2022 and Azure SQL Managed Instance, preview support for [extract](#extract-export-data) and [publish](#publish-import-data) with data in Parquet files in Azure Blob Storage is available in SqlPackage 162.1.176 and higher. For Azure SQL Database, preview support for [publish](#publish-import-data) is available in SqlPackage 170.1.61 and higher. SQL Server 2019 and earlier isn't supported. The [import](sqlpackage-import.md) and [export](sqlpackage-export.md) actions continue to be available for SQL Server, Azure SQL Managed Instance, and Azure SQL Database. Support for Parquet files in Azure Blob Storage continues to be generally available for [Azure Synapse Analytics](sqlpackage-for-azure-synapse-analytics.md).
 
 In SQL databases hosted in Azure, the extract/publish operations with Parquet files offer improved performance over import/export operations with `.bacpac` files in many scenarios.
 
@@ -75,7 +77,7 @@ See [SqlPackage publish](sqlpackage-publish.md#examples) for more examples of au
 
 ### PolyBase
 
-[PolyBase](../../relational-databases/polybase/polybase-guide.md) is required for SqlPackage operations with Parquet files. The following query can be used to check if PolyBase is enabled:
+For SQL Server and Azure SQL Managed Instance, [PolyBase](../../relational-databases/polybase/polybase-guide.md) is required for SqlPackage operations with Parquet files. The following query can be used to check if PolyBase is enabled:
 
 ```sql
 // configuration_id = 16397 is 'allow polybase export'
