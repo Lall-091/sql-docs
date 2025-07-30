@@ -3,7 +3,7 @@ title: Install the Microsoft ODBC driver for SQL Server (Linux)
 description: Learn how to install the Microsoft ODBC Driver for SQL Server on Linux clients to enable database connectivity.
 author: David-Engel
 ms.author: davidengel
-ms.date:  04/28/2025
+ms.date:  07/30/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -61,7 +61,7 @@ sudo apk add --allow-untrusted mssql-tools18_18.4.1.1-1_$architecture.apk
 ### [Debian](#tab/debian18-install)
 
 ```bash
-if ! [[ "11 12" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)"* ]];
+if ! [[ "9 10 11 12" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)"* ]];
 then
     echo "Debian $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1) is not currently supported.";
     exit;
@@ -92,7 +92,7 @@ sudo apt-get install -y libgssapi-krb5-2
 ### [RHEL and Oracle Linux](#tab/redhat18-install)
 
 ```bash
-if ! [[ "8 9" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)"* ]];
+if ! [[ "7 8 9" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)"* ]];
 then
     echo "RHEL $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1) is not currently supported.";
     exit;
@@ -146,7 +146,7 @@ sudo zypper install -y unixODBC-devel
 ### [Ubuntu](#tab/ubuntu18-install)
 
 ```bash
-if ! [[ "20.04 22.04 24.04 24.10" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2)"* ]];
+if ! [[ "18.04 20.04 22.04 24.04 24.10" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2)"* ]];
 then
     echo "Ubuntu $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2) is not currently supported.";
     exit;
