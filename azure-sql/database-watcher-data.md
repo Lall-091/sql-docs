@@ -5,7 +5,7 @@ description: A detailed description of SQL monitoring data collected by database
 author: lcwright
 ms.author: lancewright
 ms.reviewer: dfurman
-ms.date: 07/08/2025
+ms.date: 07/30/2025
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: conceptual
@@ -129,6 +129,16 @@ Compute resources available to database watcher queries in a dense elastic pool 
 > To monitor a dense elastic pool, enable monitoring at the pool level by adding the elastic pool as a SQL target.
 >
 > It is not recommended to monitor more than a few individual databases in a dense elastic pool. You might see gaps in the collected data or larger than expected intervals between data samples due to insufficient compute resources available to database watcher queries.
+
+## Data collection in serverless databases
+
+If a [serverless](./database/serverless-tier-overview.md) database has auto-pause disabled, database watcher monitors it just like a provisioned database.
+
+If you enable auto-pause on a serverless database, database watcher data collection stops when the database pauses. Database watcher monitoring queries do not prevent a serverless database from pausing if it is [eligible to be paused](./database/serverless-tier-overview.md#auto-pause) otherwise.
+
+Shortly after a serverless database transitions to a **Paused** state, its status on the watcher summary dashboard changes to **Not collecting**. The previously collected data for the database remains in the watcher data store, and is accessible via dashboards and queries.
+
+Data collection resumes within minutes after the database transitions from the **Paused** to the **Online** state.
 
 ## Data residency
 
