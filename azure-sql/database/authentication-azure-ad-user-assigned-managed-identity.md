@@ -32,7 +32,7 @@ To retrieve the current UMIs or SMI for Azure SQL Managed instance or Azure SQL 
 There are several benefits of using a UMI as a server identity:
 
 - Users have the flexibility to create and maintain their own UMIs for a tenant. You can use UMIs as server identities for Azure SQL. A UMI is managed by the user, whereas an SMI is uniquely defined per server and assigned by the system.
-- In the past, you needed the Microsoft Entra ID [Directory Readers](authentication-aad-directory-readers-role.md) role when using an SMI as the server or instance identity. With the introduction of accessing Microsoft Entra ID through [Microsoft Graph](/graph/api/resources/azure-ad-overview), users who are concerned with giving high-level permissions such as the Directory Readers role to the SMI or UMI can alternatively give lower-level permissions so that the server or instance identity can access Microsoft Graph. 
+- In the past, you needed the Microsoft Entra ID [Directory Readers](authentication-aad-directory-readers-role.md) role when using an SMI as the server or instance identity. With the introduction of accessing Microsoft Entra ID through [Microsoft Graph](/graph/auth/auth-concepts), users who are concerned with giving high-level permissions such as the Directory Readers role to the SMI or UMI can alternatively give lower-level permissions so that the server or instance identity can access Microsoft Graph. 
 
   For more information on providing Directory Readers permissions and its function, see [Directory Readers role in Microsoft Entra ID for Azure SQL](authentication-aad-directory-readers-role.md).
 - Users can choose a specific UMI to be the server or instance identity for all databases or managed instances in the tenant. Or they can have multiple UMIs assigned to different servers or instances. 
@@ -50,7 +50,7 @@ For information on how to create a UMI, see [Manage user-assigned managed identi
 
 ## Permissions
 
-After the UMI is created, some permissions are needed to allow the UMI to read from [Microsoft Graph](/graph/api/resources/azure-ad-overview) as the server identity. Grant the following permissions, or give the UMI the [Directory Readers](authentication-aad-directory-readers-role-tutorial.md) role. 
+After the UMI is created, some permissions are needed to allow the UMI to read from [Microsoft Graph](/graph/auth/auth-concepts) as the server identity. Grant the following permissions, or give the UMI the [Directory Readers](authentication-aad-directory-readers-role-tutorial.md) role. 
 
 These permissions should be granted before you provision a logical server or managed instance. After you grant the permissions to the UMI, they're enabled for all servers or instances that are created with the UMI assigned as a server identity.
 
