@@ -101,7 +101,7 @@ Vectors in the SQL Database Engine can be efficiently stored and queried, as des
 
 ## Azure OpenAI
 
-Embedding is the process of representing the real world as data. Text, images, or sounds can be converted into embeddings. Azure OpenAI models are able to transform real-world information into embeddings. The models are available as REST endpoints and thus can easily be consumed from the SQL Database Engine using the [sp_invoke_external_rest_endpoint](../relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql.md) system stored procedure, available starting in SQL Server 2025 (preview) and Azure SQL Managed Instance configured with the [Always-up-to-date update policy](https://learn.microsoft.com/en-us/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy):
+Embedding is the process of representing the real world as data. Text, images, or sounds can be converted into embeddings. Azure OpenAI models are able to transform real-world information into embeddings. The models are available as REST endpoints and thus can easily be consumed from the SQL Database Engine using the [sp_invoke_external_rest_endpoint](../relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql.md) system stored procedure, available starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and Azure SQL Managed Instance configured with the [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy):
 
 ```sql
 DECLARE @retval INT, @response NVARCHAR(MAX);
@@ -124,7 +124,7 @@ Using a call to a REST service to get embeddings is just one of the integration 
 
 :::image type="content" source="media/ai-artificial-intelligence-intelligent-applications/data-chatbot.png" alt-text="Screenshot of an AI bot answering the question using data stored in SQL Server.":::
 
-For additional examples on using Azure SQL and OpenAI, see the following articles:
+For additional examples on using Azure SQL and OpenAI, see the following articles, which also apply to SQL Server and Azure SQL Managed Instance:
 
 - [Generate images with Azure OpenAI Service (DALL-E) and Azure SQL](https://devblogs.microsoft.com/azure-sql/generate-images-with-openai-and-azure-sql/)
 - [Using OpenAI REST Endpoints with Azure SQL](https://devblogs.microsoft.com/azure-sql/using-openai-rest-endpoints-with-azure-sql-database/)
@@ -155,13 +155,15 @@ ORDER BY
 
 Implement RAG-patterns with the SQL Database Engine and Azure AI Search. You can run supported chat models on data stored in the SQL Database Engine, without having to train or fine-tune models, thanks to the integration of Azure AI Search with Azure OpenAI and the SQL Database Engine. Running models on your data enables you to chat on top of, and analyze, your data with greater accuracy and speed.
 
+To learn more about the integration of Azure AI Search with Azure OpenAI and the SQL Database Engine, see the following articles, which also apply to SQL Server and Azure SQL Managed Instance:
+
 - [Azure OpenAI on your data](/azure/ai-services/openai/concepts/use-your-data)
 - [Retrieval Augmented Generation (RAG) in Azure AI Search](/azure/search/retrieval-augmented-generation-overview)
 - [Vector Search with Azure SQL and Azure AI Search](https://devblogs.microsoft.com/azure-sql/vector-search-with-azure-sql-database/)
 
 ## Intelligent applications
 
-THe SQL Database Engine can be used to build intelligent applications that include AI features, such as recommenders, and Retrieval Augmented Generation (RAG) as the following diagram demonstrates: 
+The SQL Database Engine can be used to build intelligent applications that include AI features, such as recommenders, and Retrieval Augmented Generation (RAG) as the following diagram demonstrates: 
 
 :::image type="content" source="media/ai-artificial-intelligence-intelligent-applications/session-recommender-architecture.png" alt-text="Diagram of different AI features to build intelligent applications with Azure SQL Database." lightbox="media/ai-artificial-intelligence-intelligent-applications/session-recommender-architecture.png":::
 
@@ -169,6 +171,10 @@ For an end-to-end sample to build an AI-enabled application using sessions abstr
 
 - [How I built a session recommender in 1 hour using OpenAI](https://devblogs.microsoft.com/azure-sql/how-i-built-a-session-recommender-in-1-hour-using-open-ai/).
 - [Using Retrieval Augmented Generation to build a conference session assistant](https://github.com/Azure-Samples/azure-sql-db-session-recommender-v2)
+
+> [!NOTE]
+> Langchan integration and Semantic Kernel integration rely on the [vector data type](../t-sql/data-types/vector-data-type.md), which is available starting with [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and in Azure SQL Managed Instance configured with the [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy).
+
 
 ### LangChain integration
 

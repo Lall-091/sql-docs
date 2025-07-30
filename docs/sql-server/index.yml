@@ -19,10 +19,10 @@ landingContent:
         links:
           - text: SQL Server 2025 Preview
             url: what-s-new-in-sql-server-2025.md
-          - text: SQL Server on Linux
-            url: ../linux/sql-server-linux-overview.md
           - text: SQL Server enabled by Azure Arc
             url: azure-arc/overview.md
+          - text: SQL Server on Linux
+            url: ../linux/sql-server-linux-overview.md
           - text: SQL database in Microsoft Fabric
             url: /fabric/database/sql/overview
       - linkListType: download
@@ -56,7 +56,7 @@ landingContent:
           - text: Educational SQL resources
             url: ../sql-server/educational-sql-resources.yml
 
-  - title: SQL on Azure
+  - title: Azure SQL & Microsoft Fabric
     linkLists:
       - linkListType: overview
         links:
@@ -70,6 +70,8 @@ landingContent:
             url: /azure/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview
           - text: SQL Server on Azure Linux VMs
             url: /azure/azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview
+          - text: SQL database in Microsoft Fabric
+            url: /fabric/database/sql/overview
           - text: Connect to Azure SQL
             url: /azure/azure-sql/database/develop-overview#client-connections
 
@@ -85,23 +87,25 @@ landingContent:
             url: /ssms/copilot/copilot-in-ssms-overview
           - text: Microsoft Copilot in Azure SQL Database
             url: /azure/azure-sql/copilot/copilot-azure-sql-overview
+          - text: SQL Server Machine Learning (R & Python)
+            url: ../machine-learning/index.yml
 
-  - title: Reference
+  - title: Business Intelligence & Machine Learning
     linkLists:
-      - linkListType: reference
+      - linkListType: overview
         links:
-          - text: Transact-SQL (T-SQL)
-            url: ../t-sql/language-reference.md
-          - text: SQL PowerShell
-            url: /powershell/sql-server/sql-server-powershell
-          - text: Sample databases
-            url: ../samples/sql-samples-where-are.md
-          - text: Scripting
-            url: /ssms/scripting/database-engine-scripting
-          - text: System dynamic management views (DMVs)
-            url: ../relational-databases/system-dynamic-management-views/system-dynamic-management-views.md
-          - text: Stored procedures
-            url: ../relational-databases/stored-procedures/stored-procedures-database-engine.md
+          - text: Mirroring to Microsoft Fabric
+            url: /fabric/database/mirrored-database/sql-server
+          - text: SQL Server Reporting Services (SSRS)
+            url: ../reporting-services/create-deploy-and-manage-mobile-and-paginated-reports.md
+          - text: SQL Server Analysis Services (SSAS)
+            url: /analysis-services/analysis-services-overview
+          - text: SQL Server Integration Services (SSIS)
+            url: ../integration-services/sql-server-integration-services.md
+          - text: Azure Data Factory
+            url: /azure/data-factory/
+          - text: Data virtualization with PolyBase
+            url: ../relational-databases/polybase/polybase-guide.md
 
   - title: Database design
     linkLists:
@@ -145,6 +149,21 @@ landingContent:
           - text: Synonyms
             url: ../relational-databases/synonyms/synonyms-database-engine.md
 
-
+  - title: Reference
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: Transact-SQL (T-SQL)
+            url: ../t-sql/language-reference.md
+          - text: SQL PowerShell
+            url: /powershell/sql-server/sql-server-powershell
+          - text: Sample databases
+            url: ../samples/sql-samples-where-are.md
+          - text: Scripting
+            url: /ssms/scripting/database-engine-scripting
+          - text: System dynamic management views (DMVs)
+            url: ../relational-databases/system-dynamic-management-views/system-dynamic-management-views.md
+          - text: Stored procedures
+            url: ../relational-databases/stored-procedures/stored-procedures-database-engine.md
 
 
