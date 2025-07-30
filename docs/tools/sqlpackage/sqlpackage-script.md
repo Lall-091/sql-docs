@@ -4,7 +4,7 @@ description: Learn how to automate database development tasks with SqlPackage Sc
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: maghan
-ms.date: 12/19/2022
+ms.date: 07/30/2025
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: conceptual
@@ -144,6 +144,8 @@ SqlPackage {parameters}{properties}{SQLCMD Variables}
 |**/p:**|IgnoreObjectPlacementOnPartitionScheme=(BOOLEAN 'True')|Specifies whether an object's placement on a partition scheme should be ignored or updated when you publish to a database.|
 |**/p:**|IgnorePartitionSchemes=(BOOLEAN)|Specifies whether differences in partition schemes and functions should be ignored or updated when you publish to a database.|
 |**/p:**|IgnorePermissions=(BOOLEAN)|Specifies whether differences in the permissions should be ignored or updated when you publish to a database.|
+|**/p:**|IgnorePostDeployScript=(BOOLEAN 'False')|When true, the post-deployment script from the .dacpac will not be attached to the deployment plan.|
+|**/p:**|IgnorePreDeployScript=(BOOLEAN 'False')|When true, the pre-deployment script from the .dacpac will not be attached to the deployment plan.|
 |**/p:**|IgnoreQuotedIdentifiers=(BOOLEAN 'True')|Specifies whether differences in the quoted identifiers setting should be ignored or updated when you publish to a database.|
 |**/p:**|IgnoreRoleMembership=(BOOLEAN)|Specifies whether differences in the role membership of logins should be ignored or updated when you publish to a database.|
 |**/p:**|IgnoreRouteLifetime=(BOOLEAN 'True')|Specifies whether differences in the amount of time that SQL Server retains the route in the routing table should be ignored or updated when you publish to a database.|
