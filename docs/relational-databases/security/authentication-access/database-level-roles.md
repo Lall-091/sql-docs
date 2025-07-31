@@ -4,7 +4,7 @@ description: SQL Server provides several roles that are security principals that
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 02/28/2025
+ms.date: 07/31/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
@@ -74,7 +74,7 @@ The following table shows the fixed database roles and their capabilities. These
 | **db_datawriter** | Members of the **db_datawriter** fixed database role can add, delete, or change data in all user tables. In most use cases, this role is combined with **db_datareader** membership to allow reading the data that is to be modified. |
 | **db_datareader** | Members of the **db_datareader** fixed database role can read all data from all user tables and views. User objects can exist in any schema except `sys` and `INFORMATION_SCHEMA`. |
 | **db_denydatawriter** | Members of the **db_denydatawriter** fixed database role can't add, modify, or delete any data in the user tables within a database. |
-| **db_denydatareader** | Members of the **db_denydatareader** fixed database role can't read any data from the user tables and views within a database. |
+| **db_denydatareader** | Members of the **db_denydatareader** fixed database role can't read any data from the user tables and views within a database. Members of this role also can't read metadata about the database and its objects, such as viewing system views. |
 
 The permissions assigned to the fixed database roles can't be changed. All roles (including the `public` role) have the CONNECT permissions. The following figure shows the permissions assigned to the fixed database roles:
 
