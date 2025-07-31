@@ -11,6 +11,8 @@ items:
     href: sql-server/what-is-sql-server.md
   - name: Connect to the Database Engine
     href: sql-server/connect-to-database-engine.md
+  - name: Intelligent applications and AI
+    href: sql-server/ai-artificial-intelligence-intelligent-applications.md
   - name: What's new?
     items:
     - name: SQL Server 2025 Preview

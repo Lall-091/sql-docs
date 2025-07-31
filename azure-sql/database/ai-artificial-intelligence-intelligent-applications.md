@@ -1,5 +1,5 @@
 ---
-title: Intelligent Applications
+title: Intelligent Applications and AI
 description: "Use AI options such as OpenAI and vectors to build intelligent applications with Azure SQL Database and Fabric SQL database."
 author: WilliamDAssafMSFT
 ms.author: wiassaf
@@ -15,13 +15,13 @@ ms.custom:
   - build-2025
 monikerRange: "=azuresql || =azuresql-db || =fabricsql"
 ---
-# Intelligent applications
+# Intelligent applications and AI
 
 [!INCLUDE [asdb-fabricsqldb](../includes/appliesto-sqldb-fabricsqldb.md)]
 
 > [!div class="op_single_selector"]
 > * [Azure SQL Database](ai-artificial-intelligence-intelligent-applications.md?view=azuresql&preserve-view=true)
-> * [Azure SQL Managed Instance](../managed-instance/ai-artificial-intelligence-intelligent-applications.md?view=azuresql&preserve-view=true)
+> * [SQL Server & Azure SQL Managed Instance](/sql/sql-server/ai-artificial-intelligence-intelligent-applications)
 
 This article provides an overview of using artificial intelligence (AI) options, such as OpenAI and vectors, to build intelligent applications with Azure SQL Database and [Fabric SQL database](/fabric/database/sql/overview), which shares many of these features of Azure SQL Database.
 

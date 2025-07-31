@@ -992,7 +992,7 @@
     - name: Try for free
       href: managed-instance/free-offer.md
     - name: Intelligent applications and AI
-      href: managed-instance/ai-artificial-intelligence-intelligent-applications.md
+      href: /sql/sql-server/ai-artificial-intelligence-intelligent-applications
     - name: Frequently asked questions
       displayName: faq
       href: managed-instance/frequently-asked-questions-faq.yml
