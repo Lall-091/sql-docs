@@ -2,7 +2,7 @@
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 07/11/2025
+ms.date: 07/31/2025
 ms.service: sql
 ms.topic: include
 ---
@@ -178,6 +178,10 @@ Or,
 <a id="configure-azure-ad-authentication-for-sql-server-through-azure-portal"></a>
 
 ## Configure Microsoft Entra authentication for SQL Server through Azure portal
+
+The steps in Azure portal apply to [!INCLUDE [sssql22-md](sssql22-md.md)].
+
+The steps in Azure portal do not apply to [!INCLUDE [sssql25-md](sssql25-md.md)].
 
 > [!NOTE]  
 > You can configure Microsoft Entra authentication with any of the following experiences:

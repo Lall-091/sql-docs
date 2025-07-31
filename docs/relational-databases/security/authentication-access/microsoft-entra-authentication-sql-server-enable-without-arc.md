@@ -4,7 +4,7 @@ description: Tutorial on how to set up Microsoft Entra authentication for SQL Se
 author: PratimDasgupta
 ms.author: prdasgu
 ms.reviewer: vanto
-ms.date: 05/09/2025
+ms.date: 07/31/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: tutorial
@@ -13,7 +13,7 @@ monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16"
 
 # Tutorial: Enable Microsoft Entra authentication for SQL Server on Windows without Azure Arc
 
-[!INCLUDE [SQL Server 2022](../../../includes/applies-to-version/sqlserver2022.md)]
+[!INCLUDE [SQL Server 2022](../../../includes/applies-to-version/sqlserver2022.md)] and later.
 
 This article describes how to authenticate with Microsoft Entra ID without setting up Azure Arc for your on-premises SQL Server 2022 and later versions. Microsoft Entra authentication is a cloud-based identity management service that provides secure access to SQL Server databases. This tutorial guides you through the process of setting up Microsoft Entra authentication for SQL Server on Windows without Azure Arc.
 
