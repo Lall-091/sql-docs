@@ -25,12 +25,6 @@ Parameters aren't case sensitive. They require a prefix:
 - `rv:`: Targets the Report Viewer web part.
 
 You can also specify parameters that are specific to devices or rendering extensions. For more information about device-specific parameters, see [Specify device information settings in a URL](../reporting-services/specify-device-information-settings-in-a-url.md).
-  
-> [!IMPORTANT]  
->  For a SharePoint mode report server, it's important that the URL includes the `_vti_bin` proxy syntax to route the request through SharePoint and the [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] HTTP proxy. The proxy adds context to the HTTP request that's required to ensure proper execution of the report for SharePoint mode report servers. For examples, see [Access report server items by using URL access](../reporting-services/access-report-server-items-using-url-access.md).
-> 
-> Reporting Services integration with SharePoint is no longer available after SQL Server 2016.
-  
 
 ##  <a name="bkmk_htmlviewer"></a> HTML Viewer commands (`rc:`)
 
@@ -38,10 +32,9 @@ Target the HTML Viewer by using the prefix `rc:`.
 
 |Command|Parameter|Description|
 |---|---|---|
-|`Toolbar`|`True`|Displays the toolbar. The default value is **true**.<br><br>**Note**: If you omit this parameter, the toolbar is automatically displayed for rendering formats that support it.|
-|`Toolbar` |`False`|Hides the toolbar. If this parameter is **false**, all remaining options are ignored.|
-|`Toolbar`|`Navigation`|Displays only pagination in the toolbar.|
-|`Parameters`|`True`|Displays the parameters area of the toolbar. The default value is **true**.<br><br>**Examples**:<br><br> *Native Mode*: ```https://myrshost/reportserver?/Sales&rc:Parameters=Collapsed```<br><br> *SharePoint mode*: ```https://myspsite/subsite/_vti_bin/reportserver?https://myspsite/subsite/Sales&rc:Parameters=Collapsed```|
+|`Toolbar`|`True`|Displays the toolbar. The default value is **true**.<br><br>**Example**: ```https://myrshost/reportserver?/Sales&rc:Toolbar=True```<br><br>**Note**: If you omit this parameter, the toolbar is automatically displayed for rendering formats that support it.|
+|`Toolbar` |`False`|Hides the toolbar. If this parameter is **false**, all remaining options are ignored.<br><br>**Example**: ```https://myrshost/reportserver?/Sales&rc:Toolbar=False```|
+|`Parameters`|`True`|Displays the parameters area of the toolbar. The default value is **true**.<br><br>**Example**: ```https://myrshost/reportserver?/Sales&rc:Parameters=Collapsed```|
 |`Parameters`|`False`|Hides the parameters area, and the user can't display it.|
 |`Parameters`|`Collapsed`|Hides the parameters area, but the user can toggle to see it.<br><br>**Examples**:<br><br> *Native Mode*: ```https://myrshost/reportserver?/Sales&rc:Parameters=Collapsed```<br><br> *SharePoint mode*: ```https://myspsite/subsite/_vti_bin/reportserver?https://myspsite/subsite/Sales&rc:Parameters=Collapsed```|
 |`Zoom`|`Page Width`|Set the report zoom to fit the page width.<br><br>**Examples**:<br><br> *Native Mode*: ```https://myrshost/reportserver?/Sales&rc:Zoom=Page%20Width```<br><br> *SharePoint mode*: ```https://myspsite/subsite/_vti_bin/reportserver?https://myspsite/subsite/Sales&rc:Zoom=Page%20Width```|
