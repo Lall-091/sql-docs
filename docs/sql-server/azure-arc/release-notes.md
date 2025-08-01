@@ -25,6 +25,10 @@ Extension versions are cumulative. Higher extension versions include all of the 
 
 Only Azure extension for SQL Server agent versions released within the last year are supported.
 
+## July 29, 2025
+
+**Extension version**: `1.1.3119.307`
+
 ## July 2025
 
 **Extension version**: `1.1.3106.305`
