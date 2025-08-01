@@ -3,7 +3,7 @@ title: "Join a secondary replica to an availability group"
 description: "Steps to join a secondary replica to an Always On availability group using either Transact-SQL (T-SQL), PowerShell, or SQL Server Management Studio."
 author: MashaMSFT
 ms.author: mathoma
-ms.date: "05/17/2016"
+ms.date: "08/25/2025"
 ms.service: sql
 ms.subservice: availability-groups
 ms.topic: how-to
@@ -16,35 +16,36 @@ helpviewer_keywords:
 ---
 # Join a secondary replica to an Always On availability group
 [!INCLUDE [SQL Server](../../../includes/applies-to-version/sqlserver.md)]
-  This topic describes how to join a secondary replica to an Always On availability group by using [!INCLUDE[ssManStudioFull](../../../includes/ssmanstudiofull-md.md)], [!INCLUDE[tsql](../../../includes/tsql-md.md)], or PowerShell in [!INCLUDE[ssnoversion](../../../includes/ssnoversion-md.md)]. After a secondary replica is added to an Always On availability group, the secondary replica must be joined to the availability group. The join-replica operation must be performed on the instance of [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] that is hosting the secondary replica.  
+  This topic describes how to join a secondary replica to an Always On availability group by using [!INCLUDE[ssManStudioFull](../../../includes/ssmanstudiofull-md.md)], [!INCLUDE[tsql](../../../includes/tsql-md.md)], or PowerShell in [!INCLUDE[ssnoversion](../../../includes/ssnoversion-md.md)]. After a secondary replica is added to an Always On availability group, the secondary replica must be joined to the availability group. 
 
   
 ##  <a name="Prerequisites"></a> Prerequisites  
   
--   The primary replica of the availability group must currently be online.    
--   You must be connected to the server instance that hosts a secondary replica that has not yet have been joined to the availability group.    
--   The local server instance must be able to connect to the database mirroring endpoint of the server instance that is hosting the primary replica.  
+- The primary replica of the availability group must currently be online.    
+- The instance that you intend on joining to the availability group has already been [added as a secondary replica](add-a-secondary-replica-to-an-availability-group-sql-server.md).
+- To use SQL Server Management Studio (SSMS), you must be connected to the server instance that hosts a primary replica. To use Transact-SQL or PowerShell, you must be connected to, and execute teh commands from, the secondary replica.
+- The local server instance must be able to connect to the database mirroring endpoint of the server instance that is hosting the secondary replica.  
   
 > [!IMPORTANT]  
->  If any prerequisite is not met, the join operation fails. After a failed join attempt, you might need to connect to the server instance that hosts the primary replica to remove and re-add the secondary replica before you can join it to the availability group. For more information, see [Remove a Secondary Replica from an Availability Group &#40;SQL Server&#41;](../../../database-engine/availability-groups/windows/remove-a-secondary-replica-from-an-availability-group-sql-server.md) and [Add a Secondary Replica to an Availability Group &#40;SQL Server&#41;](../../../database-engine/availability-groups/windows/add-a-secondary-replica-to-an-availability-group-sql-server.md).  
+>  If any prerequisite is not met, the join operation fails. After a failed join attempt, you might need to connect to the server instance that hosts the primary replica to remove and re-add the secondary replica before you can join it to the availability group. For more information, see [Remove a Secondary Replica from an Availability Group](remove-a-secondary-replica-from-an-availability-group-sql-server.md) and [Add a Secondary Replica to an Availability Group](add-a-secondary-replica-to-an-availability-group-sql-server.md).  
   
 ##  <a name="Permissions"></a> Permissions  
- Requires ALTER AVAILABILITY GROUP permission on the availability group, CONTROL AVAILABILITY GROUP permission, ALTER ANY AVAILABILITY GROUP permission, or CONTROL SERVER permission.  
+ Requires **ALTER AVAILABILITY GROUP** permission on the availability group, **CONTROL AVAILABILITY GROUP** permission, **ALTER ANY AVAILABILITY GROUP** permission, or **CONTROL SERVER** permission.  
   
 ##  <a name="SSMSProcedure"></a> Using SQL Server Management Studio  
  **To join an availability replica to an availability group**  
   
-1.  In Object Explorer, connect to the server instance that hosts the secondary replica, and click the server name to expand the server tree.  
+1. In **Object Explorer**, connect to the server instance that hosts the primary replica, and expand the server tree.  
+
+1. Expand the **Always On High Availability** node and the **Availability Groups** node.  
   
-2.  Expand the **Always On High Availability** node and the **Availability Groups** node.  
-  
-3.  Select the availability group of the secondary replica to which you are connected.  
-  
-4.  Right-click the secondary replica, and click **Join to Availability Group**.  
-  
-5.  This opens the **Join Replica to Availability Group** dialog box.  
-  
-6.  To join the secondary replica to the availability group, click **OK**.  
+1. Select the availability group of the connected, but not yet joined, secondary replica.  
+
+1. Right-click the secondary replica, and select **Join to Availability Group**.  
+
+1. The **Connect to Server** dialog box appears. Select **Connect** to open the **Join Replica to Availability Group** dialog box.  
+
+1.  To join the secondary replica to the availability group, select **OK**.  
   
 ##  <a name="TsqlProcedure"></a> Using Transact-SQL  
  **To join an availability replica to an availability group**  
@@ -95,8 +96,8 @@ helpviewer_keywords:
   
 2.  Join each secondary database to the availability group. For more information, see [Join a Secondary Database to an Availability Group &#40;SQL Server&#41;](../../../database-engine/availability-groups/windows/join-a-secondary-database-to-an-availability-group-sql-server.md).  
   
-## See Also  
- [Creation and Configuration of Availability Groups &#40;SQL Server&#41;](../../../database-engine/availability-groups/windows/creation-and-configuration-of-availability-groups-sql-server.md)   
- [Overview of Always On Availability Groups &#40;SQL Server&#41;](../../../database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server.md)   
- [Troubleshoot Always On Availability Groups Configuration &#40;SQL Server&#41;](../../../database-engine/availability-groups/windows/troubleshoot-always-on-availability-groups-configuration-sql-server.md)  
-  
+## Related content
+- [Creation and Configuration of Availability Groups &#40;SQL Server&#41;](../../../database-engine/availability-groups/windows/creation-and-configuration-of-availability-groups-sql-server.md)
+- [Overview of Always On Availability Groups &#40;SQL Server&#41;](../../../database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server.md)
+- [Troubleshoot Always On Availability Groups Configuration &#40;SQL Server&#41;](../../../database-engine/availability-groups/windows/troubleshoot-always-on-availability-groups-configuration-sql-server.md)
+
