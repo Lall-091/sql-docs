@@ -190,7 +190,7 @@ The system-assigned managed identity, which uses the Arc-enabled machine name, m
 - [GroupMember.Read.All](/graph/permissions-reference#group-permissions): Allows access to Microsoft Entra group information.
 - [Application.Read.ALL](/graph/permissions-reference#application-resource-permissions): Allows access to Microsoft Entra service principal (application) information.
 
-You can use PowerShell to grant required permissions to the managed identity. Alternatively, you can [create a role-assignable group](/entra/identity/role-based-access-control/groups-create-eligible). After the group is created, assign the **Directory readers** role or `User.Read.All`, `GroupMember.Read.All`, and `Application.Read.All` to the group, and add all system-assigned managed identities for your Arc-enabled machines to the group. We do not recommend using Directory readers in the production. 
+You can use PowerShell to grant required permissions to the managed identity. Alternatively, you can [create a role-assignable group](/entra/identity/role-based-access-control/groups-create-eligible). After the group is created, assign the **Directory readers** role or the `User.Read.All`, `GroupMember.Read.All`, and `Application.Read.All` permissions to the group, and add all system-assigned managed identities for your Azure Arc-enabled machines to the group. We do not recommend using the **Directory Readers** role in your production environment. 
 
 The following PowerShell script grants the required permissions to the managed identity. Make sure this script is run on PowerShell 7.5 or a later version, and has the `Microsoft.Graph` module 2.28 or later installed.
 
@@ -265,7 +265,7 @@ Follow the steps in the [Microsoft Entra tutorial](../../sql-server/azure-arc/en
 
 Consider the following limitations when using a managed identity with SQL Server 2025:
 
-- The managed identity setup for Microsoft Entra authentication is only supported with Arc enabled SQL Server 2025, running on Windows Server.
+- The managed identity setup for Microsoft Entra authentication is only supported with Azure Arc-enabled SQL Server 2025, running on Windows Server.
 - SQL Server needs access to Azure public cloud to use Microsoft Entra authentication.
 - Using Microsoft Entra authentication with failover cluster instances isn't supported.
 - Once Microsoft Entra authentication is enabled, disabling isn't advisable. Disabling Microsoft Entra authentication forcefully by deleting registry entries can result in unpredictable behavior with SQL Server 2025.
