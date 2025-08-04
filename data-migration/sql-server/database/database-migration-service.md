@@ -74,7 +74,7 @@ To complete this tutorial, you need the following prerequisites:
 To create the login and user on the target Azure SQL Database, run the following script on the `master` database:
 
 ```sql
-CREATE LOGIN testuser with Password = '*********'
+CREATE LOGIN testuser WITH PASSWORD = '<password>';
 
 ALTER SERVER ROLE ##MS_DefinitionReader## ADD MEMBER [testuser];
 GO
@@ -88,9 +88,9 @@ GO
 ALTER SERVER ROLE ##MS_LoginManager## ADD MEMBER [testuser];
 GO
 
-CREATE USER testuser from login testuser;
-EXEC sp_addRoleMember 'dbmanager', 'testuser';
-EXEC sp_addRoleMember 'loginmanager', 'testuser';
+CREATE USER testuser FOR LOGIN testuser;
+EXECUTE sp_addRoleMember 'dbmanager', 'testuser';
+EXECUTE sp_addRoleMember 'loginmanager', 'testuser';
 ```
 
 Now, you can migrate both the database schema and data using Database Migration Service. You can also use other tools such as the [SQL Server dacpac extension](/azure-data-studio/extensions/sql-server-dacpac-extension) or the [SQL Database Projects extension](/azure-data-studio/extensions/sql-database-project-extension) in Azure Data Studio to migrate the schema before selecting the list of tables to migrate.
@@ -206,7 +206,6 @@ To open the Migrate to Azure SQL wizard:
 
 > [!NOTE]  
 > If no tables are selected or if a username and password aren't entered, the **Next** button isn't available to select.
-
 
 Now, you can migrate database Schema and data both using Database Migration Service. Also, you can use tools like the [SQL Server dacpac extension](/azure-data-studio/extensions/sql-server-dacpac-extension) or the [SQL Database Projects extension](/azure-data-studio/extensions/sql-database-project-extension) in Azure Data Studio to migrate Schema before selecting the list of tables to migrate.
 
@@ -358,7 +357,7 @@ Before you begin the tutorial:
 To create the login and user on the target Azure SQL Database, run the following script on the `master` database:
 
 ```sql
-CREATE LOGIN testuser with Password = '*********'
+CREATE LOGIN testuser WITH PASSWORD = '<password>';
 
 ALTER SERVER ROLE ##MS_DefinitionReader## ADD MEMBER [testuser];
 GO
@@ -372,9 +371,9 @@ GO
 ALTER SERVER ROLE ##MS_LoginManager## ADD MEMBER [testuser];
 GO
 
-CREATE USER testuser from login testuser;
-EXEC sp_addRoleMember 'dbmanager', 'testuser';
-EXEC sp_addRoleMember 'loginmanager', 'testuser';
+CREATE USER testuser FOR LOGIN testuser;
+EXECUTE sp_addRoleMember 'dbmanager', 'testuser';
+EXECUTE sp_addRoleMember 'loginmanager', 'testuser';
 ```
 
 Now, you can migrate both the database schema and data using Database Migration Service. You can also use other tools such as the [SQL Server dacpac extension](/azure-data-studio/extensions/sql-server-dacpac-extension) or the [SQL Database Projects extension](/azure-data-studio/extensions/sql-database-project-extension) in Azure Data Studio to migrate the schema before selecting the list of tables to migrate.
@@ -396,17 +395,17 @@ Now, you can migrate both the database schema and data using Database Migration 
 
    :::image type="content" source="media/database-migration-service/dms-portal-sql-database-scenario-new.png" alt-text="Screenshot of select new migration scenario." lightbox="media/database-migration-service/dms-portal-sql-database-scenario-new.png":::
 
-1. On the **Azure SQL Database Offline Migration Wizard**, follow these steps: 
+1. On the **Azure SQL Database Offline Migration Wizard**, follow these steps:
 
-   1. On the **Source details** tab, enter details for the source SQL Server instance, and then select **Next: Connect to source SQL Server**: 
+   1. On the **Source details** tab, enter details for the source SQL Server instance, and then select **Next: Connect to source SQL Server**:
 
       :::image type="content" source="media/database-migration-service/dms-portal-sql-database-source-1-new.png" alt-text="Screenshot of Source Tracking." lightbox="media/database-migration-service/dms-portal-sql-database-source-1-new.png":::
 
-   1. On the **Connect to source SQL Server** tab, provide connection details and then select **Next: Select databases for migration**: 
-    
+   1. On the **Connect to source SQL Server** tab, provide connection details and then select **Next: Select databases for migration**:
+
       :::image type="content" source="media/database-migration-service/dms-portal-sql-database-source-2-new.png" alt-text="Screenshot of Connect to source." lightbox="media/database-migration-service/dms-portal-sql-database-source-2-new.png":::
 
-   1. On the **Select databases for migration** tab, check the box next to the databases you want to migrate. Populating the list of databases can take some time. Select **Next: Connect to target Azure SQL Database**. 
+   1. On the **Select databases for migration** tab, check the box next to the databases you want to migrate. Populating the list of databases can take some time. Select **Next: Connect to target Azure SQL Database**.
 
       :::image type="content" source="media/database-migration-service/dms-portal-sql-database-select-db-1-new.png" alt-text="Screenshot of select db." lightbox="media/database-migration-service/dms-portal-sql-database-select-db-1-new.png":::
 
@@ -418,7 +417,7 @@ Now, you can migrate both the database schema and data using Database Migration 
 
       :::image type="content" source="media/database-migration-service/dms-portal-sql-database-map-db-1-new.png" alt-text="Screenshot of Map databases." lightbox="media/database-migration-service/dms-portal-sql-database-map-db-1-new.png":::
 
-   1. (Optional) Check the box next to **Migrate Missing schema** to deploy missing schema objects from the source to the Azure SQL Database target to migrate the following schema objects with a *single checkbox*: 
+   1. (Optional) Check the box next to **Migrate Missing schema** to deploy missing schema objects from the source to the Azure SQL Database target to migrate the following schema objects with a *single checkbox*:
 
       - Schemas
       - Tables (selected)
@@ -442,8 +441,8 @@ Now, you can migrate both the database schema and data using Database Migration 
       - XmlSchemaCollections
 
       > [!NOTE]  
-      > - If you select **Migrate Missing Schema**, the Database Migration service performs the schema migration before data is migrated. 
-      > - DMS proceeds with the data migration phase even if schema migration encounters errors, unless there are issues with table objects. 
+      > - If you select **Migrate Missing Schema**, the Database Migration service performs the schema migration before data is migrated.
+      > - DMS proceeds with the data migration phase even if schema migration encounters errors, unless there are issues with table objects.
 
       Next, either use **Select all tables** to migrate all tables, or use the text entry box to filter the list of tables and select individual tables to migrate. Then select **Next: Database migration summary**.
 
@@ -477,7 +476,7 @@ Now, you can migrate both the database schema and data using Database Migration 
    | **Rebuilding indexes** | The service is rebuilding indexes on target tables. |
    | **Succeeded** | All data is copied and the indexes are rebuilt. |
 
-1. Under **Source name**, select a database name to open the table view.. In this detailed view, you see the current status of the migration, the number of tables that currently are in that status, and a detailed status of each table: 
+1. Under **Source name**, select a database name to open the table view.. In this detailed view, you see the current status of the migration, the number of tables that currently are in that status, and a detailed status of each table:
 
    :::image type="content" source="media/database-migration-service/dms-portal-sql-database-monitoring-1-new.png" alt-text="Screenshot of Detailed migration monitoring." lightbox="media/database-migration-service/dms-portal-sql-database-monitoring-1-new.png":::
 

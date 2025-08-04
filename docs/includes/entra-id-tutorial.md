@@ -2,7 +2,7 @@
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 07/11/2025
+ms.date: 07/31/2025
 ms.service: sql
 ms.topic: include
 ---
@@ -179,6 +179,10 @@ Or,
 
 ## Configure Microsoft Entra authentication for SQL Server through Azure portal
 
+The steps in Azure portal apply to [!INCLUDE [sssql22-md](sssql22-md.md)].
+
+The steps in Azure portal do not apply to [!INCLUDE [sssql25-md](sssql25-md.md)].
+
 > [!NOTE]  
 > You can configure Microsoft Entra authentication with any of the following experiences:
 >
@@ -238,7 +242,7 @@ After the Azure Arc agent on the SQL Server host has completed its operation, th
 The same syntax for creating Microsoft Entra logins and users on Azure SQL Database and Azure SQL Managed Instance can now be used on SQL Server.
 
 > [!NOTE]  
-> On SQL Server, any account that has the `ALTER ANY LOGIN` or `ALTER ANY USER` permission can create Microsoft Entra logins or users, respectively. The account doesn't need to be a Microsoft Entra login.
+> On SQL Server, any Microsoft Entra account that has the `ALTER ANY LOGIN` or `ALTER ANY USER` permission can create Microsoft Entra logins or users, respectively. Otherwise, only accounts with `sysadmin` permissions can create Microsoft Entra logins or users.
 
 To create a login for a Microsoft Entra account, execute the following T-SQL command in the `master` database:
 
