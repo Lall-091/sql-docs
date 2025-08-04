@@ -82,7 +82,7 @@ In the SQL Database Engine, k-NN searches can be performed using the [VECTOR_DIS
 The following example shows how to do k-NN to return the top 10 most similar vectors stored in the `content_vector` table to the given query vector `@qv`.
 
 ```sql
-DECLARE @qv VECTOR(1536) = AI_GENERATE_EMBEDDING(N'Pink Floyd music style' USE MODEL Ada2Embeddings);
+DECLARE @qv VECTOR(1536) = AI_GENERATE_EMBEDDINGS(N'Pink Floyd music style' USE MODEL Ada2Embeddings);
 SELECT TOP (10) id, VECTOR_DISTANCE('cosine', @qv, [content_vector]) AS distance, title
 FROM [dbo].[wikipedia_articles_embeddings]
 ORDER BY distance
@@ -112,7 +112,7 @@ In the SQL Database engine, vector indexes are based on the [DiskANN](https://ww
 An approximate nearest neighbors algorithm search can be done first creating a vector index using the [CREATE VECTOR INDEX](../../t-sql/statements/create-vector-index-transact-sql.md) T-SQL command and then using [VECTOR_SEARCH](../../t-sql/functions/vector-search-transact-sql.md) T-SQL function to run the approximate search.
 
 ```sql
-DECLARE @qv VECTOR(1536) = AI_GENERATE_EMBEDDING(N'Pink Floyd music style' USE MODEL Ada2Embeddings);
+DECLARE @qv VECTOR(1536) = AI_GENERATE_EMBEDDINGS(N'Pink Floyd music style' USE MODEL Ada2Embeddings);
 SELECT 
     t.id, s.distance, t.title
 FROM

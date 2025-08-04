@@ -18,7 +18,7 @@ helpviewer_keywords:
   - "metadata [SQL Server], permissions"
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
-# Metadata Visibility Configuration
+# Metadata visibility configuration
 
 [!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
 
@@ -35,7 +35,7 @@ GO
 
 However, if the user has no permission on `myTable`, the query returns an empty result set.
 
-## Scope and Impact of Metadata Visibility Configuration
+## Scope and impact of metadata visibility configuration
 
 Metadata visibility configuration only applies to the following securables:
 
@@ -58,9 +58,7 @@ Metadata visibility configuration doesn't apply to the following securables:
 Limited metadata accessibility means the following:
 
 - Queries on system views might only return a subset of rows, or sometimes an empty result set.
-
 - Metadata-emitting, built-in functions such as OBJECTPROPERTYEX might return `NULL`.
-
 - The [!INCLUDE [ssDE](../../includes/ssde-md.md)] `sp_help` stored procedures might return only a subset of rows, or `NULL`.
 - As a result, applications that assume **public** metadata access will break.
 
@@ -98,7 +96,7 @@ GO
 > [!NOTE]  
 > You can use EXECUTE AS to temporarily switch to the security context of the caller. For more information, see [EXECUTE AS (Transact-SQL)](../../t-sql/statements/execute-as-transact-sql.md).
 
-## Benefits and Limits of Metadata Visibility Configuration
+## Benefits and limits of metadata visibility configuration
 
 Metadata visibility configuration can play an important role in your overall security plan. However, there are cases in which a skilled and determined user can force the disclosure of some metadata. We recommend that you deploy metadata permissions as one of many defenses-in-depth.
 
@@ -147,7 +145,7 @@ The following metadata isn't subject to forced disclosure:
 > [!NOTE]  
 > The system stored procedure `sp_helptext` isn't supported in Azure Synapse Analytics. Instead, use the `sys.sql_modules` object catalog view.
 
-## General Principles of Metadata Visibility
+## General principles of metadata visibility
 
 The following are some general principles to consider regarding metadata visibility:
 
@@ -159,11 +157,11 @@ The following are some general principles to consider regarding metadata visibil
 
 - Visibility of subcomponent metadata
 
-### Fixed Roles and Implicit Permissions
+### Fixed roles and implicit permissions
 
 Metadata that can be accessed by fixed roles depends upon their corresponding implicit permissions.
 
-### Scope of Permissions
+### Scope of permissions
 
 Permissions at one scope imply the ability to see metadata at that scope and at all enclosed scopes. For example, **SELECT** permission on a schema implies that the grantee has **SELECT** permission on all securables that are contained by that schema. The granting of **SELECT** permission on a schema therefore enables a user to see the metadata of the schema and also all tables, views, functions, procedures, queues, synonyms, types, and XML schema collections within it. For more information about scopes, see [Permissions Hierarchy (Database Engine)](../../relational-databases/security/permissions-hierarchy-database-engine.md).
 
@@ -178,7 +176,7 @@ Additionally, if a user is denied **EXECUTE** permission on a schema but has bee
 
 For another example, if a user has been granted and denied **EXECUTE** permission on a stored procedure, which is possible through your various role memberships, **DENY** takes precedence and the user can't view the metadata of the stored procedure.
 
-### Visibility of Subcomponent Metadata
+### Visibility of subcomponent metadata
 
 The visibility of subcomponents, such as indexes, check constraints, and triggers are determined by permissions on the parent. These subcomponents don't have grantable permissions. For example, if a user has been granted some permission on a table, the user can view the metadata for the tables, columns, indexes, check constraints, triggers, and other such subcomponents. Another example is granting **SELECT** on only an individual column of a given table: this will allow the grantee to view the metadata of the whole table, including all columns. One way to think of it, is that the **VIEW DEFINITION** permission only works on entity-level (the table in this case) and isn't available for Subentity lists (such as column or security expressions).
 
@@ -215,7 +213,7 @@ DROP TABLE t1
 DROP USER testUser
 ```
 
-#### Metadata That Is Accessible to All Database Users
+#### Metadata that is accessible to all database users
 
 Some metadata must be accessible to all users in a specific database. For example, filegroups don't have conferrable permissions; therefore, a user can't be granted permission to view the metadata of a filegroup. However, any user that can create a table must be able to access filegroup metadata to use the ON *filegroup* or TEXTIMAGE_ON *filegroup* clauses of the CREATE TABLE statement.
 
