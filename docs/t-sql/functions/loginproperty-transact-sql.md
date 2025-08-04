@@ -65,7 +65,7 @@ LOGINPROPERTY ( 'login_name' , 'property_name' )
 |**LockoutTime**|Returns the date when the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login was locked out because it had exceeded the permitted number of failed login attempts.|  
 |**PasswordHash**|Returns the hash of the password.|  
 |**PasswordLastSetTime**|Returns the date when the current password was set.|  
-|**PasswordHashAlgorithm**|Returns the algorithm used to hash the password.|  
+|**PasswordHashAlgorithm**|Returns the algorithm used to hash the password. In [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions, the stored password information is calculated using SHA-512 of the salted password. Starting with [!INCLUDE [ssSQL25](../../includes/sssql25-md.md)], an iterated hash algorithm, RFC2898 (PBKDF), is used. The first byte of the hash indicates the version: `0x02` for version 2 ([!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions) and `0x03` for version 3 ([!INCLUDE [ssSQL25](../../includes/sssql25-md.md)] and later versions).|  
   
 ## Returns  
  Data type depends on requested value.  
