@@ -509,6 +509,7 @@ Be aware of the following limitations:
 - Removing a failover group for a single or pooled database doesn't stop replication, and it doesn't delete the replicated database. You'll need to manually stop geo-replication and delete the database from the secondary server if you wanted to add a single or pooled database back to a failover group after it's been removed. Failing to do either might result in an error similar to `The operation cannot be performed due to multiple errors` when attempting to add the database to the failover group.
 - Failover group name is subject to [naming restrictions](/azure/azure-resource-manager/management/resource-name-rules).
 - When creating a new failover group, or when adding databases to an existing failover group, you can _only_ designate the databases as [standby replicas](standby-replica-how-to-configure.md) _when using the Azure portal_ - Azure PowerShell and the Azure CLI are not currently available.
+- Azure portal doesn't support creating failover groups across different subscriptions but is possible with PowerShell.  See Programmatically manage failover groups below.
 
 ## <a name="programmatically-managing-failover-groups"></a> Programmatically manage failover groups
 
