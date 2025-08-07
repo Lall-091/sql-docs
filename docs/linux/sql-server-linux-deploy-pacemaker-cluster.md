@@ -11,6 +11,7 @@ ms.topic: install-set-up-deploy
 ms.custom:
   - intro-deployment
   - linux-related-content
+  - sfi-image-nochange
 ---
 # Deploy a Pacemaker cluster for SQL Server on Linux
 

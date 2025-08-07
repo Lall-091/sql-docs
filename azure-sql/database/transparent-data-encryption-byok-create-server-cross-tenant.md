@@ -8,10 +8,11 @@ ms.date: 06/25/2025
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
+monikerRange: "=azuresql || =azuresql-db"
 ms.custom:
   - devx-track-azurecli
   - has-azure-ad-ps-ref
-monikerRange: "=azuresql || =azuresql-db"
+  - sfi-image-nochange
 ---
 
 # Create Azure SQL Database logical server configured with user-assigned managed identity and cross-tenant CMK for TDE

@@ -9,7 +9,9 @@ ms.date: 04/27/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
 ms.topic: quickstart
-ms.custom: mode-other
+ms.custom:
+  - mode-other
+  - sfi-image-nochange
 ---
 # Quickstart: Configure a point-to-site connection to Azure SQL Managed Instance from on-premises
 

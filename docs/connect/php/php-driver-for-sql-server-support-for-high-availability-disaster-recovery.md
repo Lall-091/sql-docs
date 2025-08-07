@@ -7,6 +7,7 @@ ms.date: "07/31/2018"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
+ms.custom: sfi-ropc-nochange
 ---
 # Support for High Availability, Disaster Recovery
 [!INCLUDE[Driver_PHP_Download](../../includes/driver_php_download.md)]

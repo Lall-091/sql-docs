@@ -8,6 +8,7 @@ ms.date: 04/17/2018
 ms.service: sql
 ms.subservice: data-warehouse
 ms.topic: conceptual
+ms.custom: sfi-ropc-nochange
 ---
 
 # T-SQL statements for Parallel Data Warehouse

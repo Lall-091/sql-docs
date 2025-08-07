@@ -7,6 +7,7 @@ ms.subservice: linux
 ms.topic: include
 ms.custom:
   - linux-related-content
+  - sfi-ropc-blocked
 ---
 The `sa` account is a system administrator on the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instance that's created during setup. After you create your [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] container, the `MSSQL_SA_PASSWORD` environment variable you specified is discoverable by running `echo $MSSQL_SA_PASSWORD` in the container. For security purposes, change your `sa` password:
 

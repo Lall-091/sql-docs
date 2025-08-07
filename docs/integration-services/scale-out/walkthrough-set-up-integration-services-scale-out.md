@@ -8,7 +8,9 @@ ms.date: "12/13/2017"
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: conceptual
-ms.custom: performance
+ms.custom:
+  - performance
+  - sfi-image-nochange
 ---
 # Walkthrough: Set up Integration Services (SSIS) Scale Out
 

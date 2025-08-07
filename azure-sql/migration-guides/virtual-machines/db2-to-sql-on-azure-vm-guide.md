@@ -11,6 +11,7 @@ ms.subservice: migration-guide
 ms.topic: how-to
 ms.collection:
   - sql-migration-content
+ms.custom: sfi-image-nochange
 ---
 # Migration guide: IBM Db2 to SQL Server on Azure VM
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]

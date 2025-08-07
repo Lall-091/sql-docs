@@ -9,9 +9,10 @@ ms.date: 05/04/2025
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: quickstart
+monikerRange: "=azuresql||=azuresql-db||=azuresql-mi"
 ms.custom:
   - subject-monitoring
-monikerRange: "=azuresql||=azuresql-db||=azuresql-mi"
+  - sfi-image-nochange
 ---
 
 # Quickstart: Create a watcher to monitor Azure SQL (preview)

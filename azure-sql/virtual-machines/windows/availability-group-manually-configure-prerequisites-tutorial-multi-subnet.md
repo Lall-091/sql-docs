@@ -10,6 +10,7 @@ ms.subservice: hadr
 ms.topic: tutorial
 editor: monicar
 tags: azure-service-management
+ms.custom: sfi-image-nochange
 ---
 
 # Tutorial: Prerequisites for availability groups in multiple subnets (SQL Server on Azure VMs) 

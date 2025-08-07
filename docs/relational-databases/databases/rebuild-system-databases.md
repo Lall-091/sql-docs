@@ -12,6 +12,7 @@ helpviewer_keywords:
   - "REBUILDDATABASE parameter"
   - "rebuilding databases, master"
   - "system databases [SQL Server], rebuilding"
+ms.custom: sfi-ropc-blocked
 ---
 # Rebuild system databases
 

@@ -8,6 +8,7 @@ ms.date: "11/25/2020"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
+ms.custom: sfi-ropc-nochange
 ---
 # System.Transactions integration with SQL Server
 

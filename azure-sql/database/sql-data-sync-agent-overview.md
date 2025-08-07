@@ -10,6 +10,7 @@ ms.subservice: sql-data-sync
 ms.topic: conceptual
 ms.custom:
   - sqldbrb=1
+  - sfi-ropc-nochange
 ---
 # Data Sync Agent for SQL Data Sync
 [!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]

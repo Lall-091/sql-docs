@@ -16,6 +16,7 @@ helpviewer_keywords:
   - "SSIS packages, expressions"
   - "expressions [Integration Services], property expressions"
   - "property expressions [Integration Services]"
+ms.custom: sfi-ropc-nochange
 ---
 # Use Property Expressions in Packages
 

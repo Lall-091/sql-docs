@@ -8,6 +8,7 @@ ms.date: 12/04/2023
 ms.service: sql
 ms.subservice: data-warehouse
 ms.topic: conceptual
+ms.custom: sfi-image-nochange
 ---
 
 # Topology of Analytics Platform System (PDW)

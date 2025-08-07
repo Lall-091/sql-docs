@@ -10,6 +10,7 @@ ms.subservice: linux
 ms.topic: how-to
 ms.custom:
   - linux-related-content
+  - sfi-image-nochange
 ---
 # Configure failover cluster instance - NFS - SQL Server on Linux
 

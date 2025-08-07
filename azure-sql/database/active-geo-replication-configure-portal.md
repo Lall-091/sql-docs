@@ -13,6 +13,7 @@ ms.custom:
   - devx-track-azurecli
   - ignite-2023
   - devx-track-azurepowershell
+  - sfi-image-nochange
 ---
 # Tutorial: Configure active geo-replication and failover (Azure SQL Database)
 

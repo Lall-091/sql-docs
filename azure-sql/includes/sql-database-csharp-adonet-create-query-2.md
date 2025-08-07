@@ -4,6 +4,7 @@ ms.author: jroth
 ms.date: 12/10/2018
 ms.service: azure-sql-database
 ms.topic: include
+ms.custom: sfi-ropc-nochange
 ---
 
 ## C# program example

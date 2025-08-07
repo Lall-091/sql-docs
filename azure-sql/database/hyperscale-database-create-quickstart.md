@@ -11,6 +11,7 @@ ms.topic: quickstart
 ms.custom:
   - devx-track-azurecli
   - ignite-2023
+  - sfi-image-nochange
 ---
 # Quickstart: Create a Hyperscale database in Azure SQL Database
 

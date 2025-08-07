@@ -8,6 +8,7 @@ ms.service: sql
 ms.subservice: machine-learning-services
 ms.topic: tutorial
 monikerRange: ">=sql-server-2017||>=sql-server-linux-ver15"
+ms.custom: sfi-ropc-nochange
 ---
 # Use Python with revoscalepy to create a model that runs remotely on SQL Server
 [!INCLUDE [SQL Server 2017](../../includes/applies-to-version/sqlserver2017.md)]

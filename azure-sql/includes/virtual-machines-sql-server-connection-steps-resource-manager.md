@@ -4,6 +4,7 @@ ms.author: jroth
 ms.date: 10/26/2018
 ms.service: azure-vm-sql-server
 ms.topic: include
+ms.custom: sfi-image-nochange
 ---
 ### Configure a DNS Label for the public IP address
 

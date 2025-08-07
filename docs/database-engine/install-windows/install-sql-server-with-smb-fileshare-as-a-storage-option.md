@@ -7,9 +7,10 @@ ms.date: 06/03/2025
 ms.service: sql
 ms.subservice: install
 ms.topic: install-set-up-deploy
+monikerRange: ">=sql-server-2016"
 ms.custom:
   - intro-installation
-monikerRange: ">=sql-server-2016"
+  - sfi-ropc-blocked
 ---
 # Install SQL Server with SMB fileshare storage
 

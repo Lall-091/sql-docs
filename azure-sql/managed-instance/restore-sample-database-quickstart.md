@@ -12,6 +12,7 @@ ms.topic: quickstart
 ms.custom:
   - mode-other
   - kr2b-contr-experiment
+  - sfi-image-nochange
 ---
 # Quickstart: Restore a database to Azure SQL Managed Instance with SSMS
 

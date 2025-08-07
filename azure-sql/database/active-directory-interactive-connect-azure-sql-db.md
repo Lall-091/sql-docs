@@ -8,12 +8,13 @@ ms.date: 06/10/2025
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
+monikerRange: "=azuresql || =azuresql-db || =fabricsql"
 ms.custom:
   - active directory
   - has-adal-ref
   - sqldbrb=1
   - ignite-2024
-monikerRange: "=azuresql || =azuresql-db || =fabricsql"
+  - sfi-ropc-nochange
 ---
 # Connect to Azure SQL Database with Microsoft Entra multifactor authentication
 

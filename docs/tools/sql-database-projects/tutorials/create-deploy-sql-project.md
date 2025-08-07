@@ -10,9 +10,11 @@ ms.subservice: sql-database-projects
 ms.topic: tutorial
 ms.collection:
   - data-tools
+zone_pivot_groups: sq1-sql-projects-tools
 ms.custom:
   - ignite-2024
-zone_pivot_groups: sq1-sql-projects-tools
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 ---
 
 # Tutorial: Create and deploy a SQL project

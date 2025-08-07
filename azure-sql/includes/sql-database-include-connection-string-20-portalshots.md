@@ -7,11 +7,12 @@ ms.reviewer: randolphwest
 ms.date: 01/14/2025
 ms.service: azure-sql-database
 ms.topic: include
-ms.custom:
-  - develop apps
 keywords:
   - sql connection
   - connection string
+ms.custom:
+  - develop apps
+  - sfi-ropc-nochange
 ---
 
 ### Obtain the connection string from the Azure portal

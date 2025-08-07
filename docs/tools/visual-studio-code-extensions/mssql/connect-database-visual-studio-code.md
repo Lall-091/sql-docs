@@ -10,6 +10,7 @@ ms.subservice: vs-code-sql-extensions
 ms.topic: quickstart
 ms.collection:
   - data-tools
+ms.custom: sfi-image-nochange
 ---
 
 # Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code

@@ -8,10 +8,11 @@ ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: machine-learning-services
 ms.topic: how-to
+monikerRange: "=sql-server-ver15 || =sql-server-linux-ver15"
 ms.custom:
   - intro-installation
   - linux-related-content
-monikerRange: "=sql-server-ver15 || =sql-server-linux-ver15"
+  - sfi-ropc-blocked
 ---
 # Install SQL Server Machine Learning Services (Python and R) on Docker
 

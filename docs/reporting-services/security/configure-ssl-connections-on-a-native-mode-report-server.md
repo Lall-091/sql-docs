@@ -7,10 +7,11 @@ ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: security
 ms.topic: how-to
-ms.custom:
-  - updatefrequency5
 helpviewer_keywords:
   - "Secure Sockets Layer (SSL)"
+ms.custom:
+  - updatefrequency5
+  - sfi-image-nochange
 # customer intent: As a SQL Server user, I want to learn how to configure TLS connections on my native mode report server so that I can encrypt my connections to the server.
 ---
 

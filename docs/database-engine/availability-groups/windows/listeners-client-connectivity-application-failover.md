@@ -15,6 +15,9 @@ helpviewer_keywords:
   - "Availability Groups [SQL Server], configuring"
   - "Availability Groups [SQL Server], read-only routing"
   - "Availability Groups [SQL Server], client connectivity"
+ms.custom:
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 ---
 # Connect to an Always On availability group listener
 

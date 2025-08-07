@@ -10,6 +10,7 @@ ms.topic: conceptual
 f1_keywords:
   - "sql13.dts.designer.odatasource.connectionmanager.f1"
   - "sql13.dts.designer.odataconnectionmanager.f1"
+ms.custom: sfi-ropc-blocked
 ---
 # OData Connection Manager
 

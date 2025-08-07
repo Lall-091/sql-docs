@@ -6,6 +6,7 @@ ms.author: amamun
 ms.reviewer: mikeray, randolphwest
 ms.date: 05/08/2024
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 
 # View Always On failover cluster instances in Azure Arc

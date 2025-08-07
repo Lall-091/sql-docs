@@ -6,6 +6,7 @@ ms.author: sashan
 ms.reviewer: mikeray, randolphwest
 ms.date: 07/03/2025
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 
 # Configure SQL Server enabled by Azure Arc

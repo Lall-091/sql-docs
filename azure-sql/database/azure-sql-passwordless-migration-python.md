@@ -8,12 +8,13 @@ ms.date: 06/13/2025
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
+ms.devlang: python
+monikerRange: "=azuresql || =azuresql-db"
 ms.custom:
   - devx-track-csharp
   - passwordless-python
   - devx-track-azurecli
-ms.devlang: python
-monikerRange: "=azuresql || =azuresql-db"
+  - sfi-ropc-nochange
 ---
 
 # Migrate a Python application to use passwordless connections with Azure SQL Database

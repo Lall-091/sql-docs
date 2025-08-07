@@ -5,7 +5,9 @@ ms.reviewer: rotabor, alexwolf
 ms.date: 06/01/2023
 ms.service: azure-sql-database
 ms.topic: include
-ms.custom: generated
+ms.custom:
+  - generated
+  - sfi-image-nochange
 ---
 
 1) In the [Azure portal](https://portal.azure.com), browse to your SQL database and select **Query editor (preview)**.

@@ -7,6 +7,7 @@ ms.date: "06/20/2017"
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 # Connect to an Access Data Source (SQL Server Import and Export Wizard)
 

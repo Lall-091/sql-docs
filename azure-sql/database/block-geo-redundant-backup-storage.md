@@ -9,6 +9,7 @@ ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: how-to
 ROBOTS: NOINDEX
+ms.custom: sfi-image-nochange
 ---
 
 # What is Block Geo-replication of Azure SQL Database Backups feature?

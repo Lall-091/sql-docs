@@ -7,8 +7,10 @@ ms.reviewer: vanto
 ms.date: 03/28/2025
 ms.service: sql
 ms.subservice: security
-ms.custom: devx-track-azurepowershell
 ms.topic: how-to
+ms.custom:
+  - devx-track-azurepowershell
+  - sfi-ropc-nochange
 ---
 # Provision enclave-enabled keys
 

@@ -15,6 +15,7 @@ helpviewer_keywords:
   - "sp_adddistpublisher"
 dev_langs:
   - "TSQL"
+ms.custom: sfi-ropc-nochange
 ---
 # sp_adddistpublisher (Transact-SQL)
 

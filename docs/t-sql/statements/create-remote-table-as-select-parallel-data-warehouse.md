@@ -11,6 +11,7 @@ ms.topic: reference
 dev_langs:
   - "TSQL"
 monikerRange: ">=aps-pdw-2016"
+ms.custom: sfi-ropc-blocked
 ---
 # CREATE REMOTE TABLE AS SELECT (Parallel Data Warehouse)
 

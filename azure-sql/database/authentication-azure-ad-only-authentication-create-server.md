@@ -9,10 +9,11 @@ ms.date: 09/17/2024
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: how-to
+monikerRange: "=azuresql||=azuresql-db||=azuresql-mi"
 ms.custom:
   - devx-track-azurepowershell
   - devx-track-azurecli
-monikerRange: "=azuresql||=azuresql-db||=azuresql-mi"
+  - sfi-image-nochange
 ---
 
 # Create server with Microsoft Entra-only authentication enabled in Azure SQL

@@ -9,6 +9,7 @@ ms.subservice: mobile-reports
 ms.topic: how-to
 ms.custom:
   - updatefrequency5
+  - sfi-image-nochange
 ---
 # Get data from shared datasets in Reporting Services mobile reports
 

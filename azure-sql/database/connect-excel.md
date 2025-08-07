@@ -9,9 +9,10 @@ ms.date: 06/13/2025
 ms.service: azure-sql
 ms.subservice: connect
 ms.topic: how-to
+monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
 ms.custom:
   - sqldbrb=1
-monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
+  - sfi-image-nochange
 ---
 
 # Connect Excel to a database in Azure SQL Database or Azure SQL Managed Instance, and create a report

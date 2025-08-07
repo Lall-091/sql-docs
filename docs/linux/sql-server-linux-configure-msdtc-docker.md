@@ -9,6 +9,7 @@ ms.subservice: linux
 ms.topic: how-to
 ms.custom:
   - linux-related-content
+  - sfi-ropc-blocked
 ---
 
 # How to use distributed transactions with SQL Server Linux containers

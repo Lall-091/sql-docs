@@ -7,12 +7,13 @@ ms.date: 09/25/2024
 ms.service: sql
 ms.subservice: replication
 ms.topic: tutorial
-ms.custom:
-  - updatefrequency5
 helpviewer_keywords:
   - "tutorials [SQL Server replication]"
   - "replication [SQL Server], tutorials"
   - "wizards [SQL Server replication]"
+ms.custom:
+  - updatefrequency5
+  - sfi-image-nochange
 ---
 # Tutorial: Configure replication between two fully connected servers (transactional)
  [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]

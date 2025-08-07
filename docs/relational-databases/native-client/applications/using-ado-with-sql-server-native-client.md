@@ -12,6 +12,7 @@ helpviewer_keywords:
   - "data access [SQL Server Native Client], ADO"
   - "ADO [SQL Server Native Client]"
   - "SQLNCLI, ADO"
+ms.custom: sfi-ropc-nochange
 ---
 # Using ADO with SQL Server Native Client
 [!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]

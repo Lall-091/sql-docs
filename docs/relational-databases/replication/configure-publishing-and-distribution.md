@@ -7,13 +7,14 @@ ms.date: 09/25/2024
 ms.service: sql
 ms.subservice: replication
 ms.topic: how-to
-ms.custom:
-  - updatefrequency5
 helpviewer_keywords:
   - "replication [SQL Server], distribution"
   - "distribution configuration [SQL Server replication]"
   - "publishing [SQL Server replication], configuring"
 monikerRange: "=azuresqldb-mi-current||>=sql-server-2016"
+ms.custom:
+  - updatefrequency5
+  - sfi-ropc-nochange
 ---
 # Configure Publishing and Distribution
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]

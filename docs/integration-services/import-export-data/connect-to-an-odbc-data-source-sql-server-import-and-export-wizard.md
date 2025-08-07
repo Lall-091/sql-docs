@@ -8,6 +8,7 @@ ms.date: 09/12/2024
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: how-to
+ms.custom: sfi-ropc-nochange
 ---
 # Connect to an ODBC Data Source (SQL Server Import and Export Wizard)
 

@@ -10,6 +10,7 @@ ms.topic: install-set-up-deploy
 ms.custom:
   - linux-related-content
   - build-2025
+  - sfi-ropc-blocked
 ---
 # Configure SQL Server on Linux with the mssql-conf tool
 

@@ -11,6 +11,7 @@ helpviewer_keywords:
   - "ConnectionString property"
 apilocation: "sqlmgmproviderxpsp2up.mof"
 apiname: "ConnectionString Property (SqlServerAlias Class)"
+ms.custom: sfi-ropc-nochange
 ---
 # ConnectionString Property (SqlServerAlias Class)
 [!INCLUDE [SQL Server](../../../includes/applies-to-version/sqlserver.md)]

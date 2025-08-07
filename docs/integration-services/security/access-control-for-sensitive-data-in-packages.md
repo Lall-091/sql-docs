@@ -48,7 +48,10 @@ helpviewer_keywords:
   
  The package protection levels that encrypt packages by using passwords require that you provide a password also. If you change the protection level from a level that does not use a password to one that does, you will be prompted for a password.  
   
- Also, for the protection levels that use a password, [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] uses the Triple DES cipher algorithm with a key length of 192 bits, available in the [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)] Class Library (FCL).  
+ Also, for the protection levels that use a password, [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] uses the AES cipher algorithm with a key length of 256 bits, available in the [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)] Class Library (FCL).  
+
+> [!NOTE]
+> Integration Services 2016 uses Triple DES cipher algorithm with a key length of 192 bits.
   
 ## Protection Levels  
  The following table describes the protection levels that [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] provides. The values in parentheses are values from the <xref:Microsoft.SqlServer.Dts.Runtime.DTSProtectionLevel> enumeration. These values appear in the Properties window that you use to configure the properties of the package when you work with packages in [!INCLUDE[ssBIDevStudioFull](../../includes/ssbidevstudiofull-md.md)].  

@@ -8,9 +8,11 @@ ms.date: 04/10/2025
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: quickstart
+monikerRange: "=azuresql || =azuresql-db"
 ms.custom:
   - passwordless-dotnet
-monikerRange: "=azuresql || =azuresql-db"
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 ---
 
 # Connect to and query Azure SQL Database using .NET and Entity Framework Core

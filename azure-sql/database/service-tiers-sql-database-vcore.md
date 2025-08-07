@@ -10,6 +10,7 @@ ms.subservice: performance
 ms.topic: conceptual
 ms.custom:
   - azure-sql-split
+  - sfi-image-nochange
 ---
 # vCore purchasing model - Azure SQL Database
 

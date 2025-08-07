@@ -8,9 +8,10 @@ ms.date: 06/13/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: how-to
+monikerRange: "=azuresql || =azuresql-db "
 ms.custom:
   - template-how-to
-monikerRange: "=azuresql || =azuresql-db "
+  - sfi-image-nochange
 ---
 
 # Try Azure SQL Database free with Azure free account (old offer)

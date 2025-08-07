@@ -11,6 +11,7 @@ keywords:
   - (sqlrutils)
   - StoredProcedure
 monikerRange: ">=sql-server-2016||>=sql-server-linux-ver15"
+ms.custom: sfi-ropc-nochange
 ---
 
 

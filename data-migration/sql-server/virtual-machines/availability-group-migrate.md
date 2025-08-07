@@ -11,6 +11,7 @@ ms.subservice: migration-guide
 ms.topic: how-to
 ms.collection:
   - sql-migration-content
+ms.custom: sfi-image-nochange
 ---
 # Migrate an availability group to SQL Server on Azure VM
 

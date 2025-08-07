@@ -7,8 +7,6 @@ ms.date: "03/23/2016"
 ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
-ms.custom:
-  - ignite-2024
 f1_keywords:
   - "sql13.swb.server.permissions.f1--May use common.permissions"
 helpviewer_keywords:
@@ -19,6 +17,9 @@ helpviewer_keywords:
   - "permissions [SQL Server], hierarchy"
   - "security [SQL Server], granting access"
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+ms.custom:
+  - ignite-2024
+  - sfi-image-nochange
 ---
 # Permissions Hierarchy (Database Engine)
 [!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]

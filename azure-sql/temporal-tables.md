@@ -8,10 +8,11 @@ ms.date: 06/13/2025
 ms.service: azure-sql
 ms.subservice: performance
 ms.topic: how-to
+monikerRange: "=azuresql || =azuresql-db || =azuresql-mi || =fabricsql"
 ms.custom:
   - sqldbrb=2
   - ignite-2024
-monikerRange: "=azuresql || =azuresql-db || =azuresql-mi || =fabricsql"
+  - sfi-image-nochange
 ---
 # Getting started with temporal tables
 

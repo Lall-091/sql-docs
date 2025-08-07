@@ -8,6 +8,7 @@ ms.service: sql
 ms.subservice: install
 ms.topic: upgrade-and-migration-article
 monikerRange: ">=sql-server-2016"
+ms.custom: sfi-image-nochange
 ---
 # Choose a Database Engine upgrade method
 

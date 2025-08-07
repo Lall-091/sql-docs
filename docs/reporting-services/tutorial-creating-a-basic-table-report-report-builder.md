@@ -9,6 +9,7 @@ ms.subservice: reporting-services
 ms.topic: tutorial
 ms.custom:
   - updatefrequency5
+  - sfi-image-nochange
 # customer intent: As a developer, I want to create a table report with Report Builder in SSRS, so I can organize, format, save, and export my SQL Server data.
 ---
 

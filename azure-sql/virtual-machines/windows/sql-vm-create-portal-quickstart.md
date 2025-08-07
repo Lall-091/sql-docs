@@ -8,8 +8,10 @@ ms.date: 10/14/2022
 ms.service: azure-vm-sql-server
 ms.subservice: deployment
 ms.topic: quickstart
-ms.custom: mode-ui
 tags: azure-resource-manager
+ms.custom:
+  - mode-ui
+  - sfi-image-nochange
 ---
 
 # Quickstart: Create SQL Server on a Windows virtual machine in the Azure portal

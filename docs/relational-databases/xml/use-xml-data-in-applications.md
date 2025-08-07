@@ -23,6 +23,7 @@ helpviewer_keywords:
   - "columns [XML in SQL Server], ADO"
   - "xml data type [SQL Server], ADO.NET"
   - "XML [SQL Server], SQL Server Native Client"
+ms.custom: sfi-ropc-nochange
 ---
 # Use XML data in applications
 

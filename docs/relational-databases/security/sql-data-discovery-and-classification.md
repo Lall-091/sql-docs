@@ -7,7 +7,9 @@ ms.reviewer: vanto
 ms.date: 03/09/2022
 ms.service: sql
 ms.topic: conceptual
-ms.custom: security
+ms.custom:
+  - security
+  - sfi-image-nochange
 ---
 # SQL Data Discovery and Classification
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]

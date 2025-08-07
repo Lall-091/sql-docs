@@ -7,7 +7,9 @@ ms.date: "12/19/2017"
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: conceptual
-ms.custom: performance
+ms.custom:
+  - performance
+  - sfi-image-nochange
 ---
 # Integration Services Scale Out Manager
 

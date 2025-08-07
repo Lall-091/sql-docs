@@ -9,6 +9,7 @@ ms.subservice: report-data
 ms.topic: how-to
 ms.custom:
   - updatefrequency5
+  - sfi-ropc-nochange
 # customer intent: As a Report Builder user, I want to learn how to create data strings so that I can connect Report Builder to my data sources.
 ---
 # Create data connection strings in Report Builder

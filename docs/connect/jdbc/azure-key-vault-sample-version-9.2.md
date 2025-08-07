@@ -7,6 +7,7 @@ ms.date: 01/31/2022
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
+ms.custom: sfi-ropc-nochange
 ---
 # Azure Key Vault sample version 9.2
 

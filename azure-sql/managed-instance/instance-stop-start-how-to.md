@@ -7,8 +7,12 @@ ms.reviewer: mathoma, randolphwest
 ms.date: 05/21/2024
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
-ms.custom: ignite-2023, devx-track-azurecli, devx-track-azurepowershell
 ms.topic: how-to
+ms.custom:
+  - ignite-2023
+  - devx-track-azurecli
+  - devx-track-azurepowershell
+  - sfi-image-nochange
 ---
 
 # Stop and start an instance - Azure SQL Managed Instance

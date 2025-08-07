@@ -10,6 +10,7 @@ ms.subservice: security
 ms.topic: tutorial
 ms.custom:
   - devx-track-azurepowershell
+  - sfi-image-nochange
 ---
 # Tutorial: Getting started using Always Encrypted with Intel SGX enclaves in Azure SQL Database
 

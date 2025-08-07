@@ -8,7 +8,10 @@ ms.date: 05/22/2018
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: tutorial
-ms.custom: intro-deployment
+ms.custom:
+  - intro-deployment
+  - sfi-image-nochange
+  - sfi-ropc-blocked
 ---
 # Tutorial: Deploy and run a SQL Server Integration Services (SSIS) package in Azure
 

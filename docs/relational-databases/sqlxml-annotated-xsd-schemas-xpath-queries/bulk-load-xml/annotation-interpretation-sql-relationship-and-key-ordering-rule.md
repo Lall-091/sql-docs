@@ -8,6 +8,7 @@ ms.service: sql
 ms.subservice: xml
 ms.topic: "reference"
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+ms.custom: sfi-ropc-nochange
 ---
 # Annotation Interpretation - sql:relationship and Key Ordering Rule
 [!INCLUDE [SQL Server Azure SQL Database](../../../includes/applies-to-version/sql-asdb.md)]

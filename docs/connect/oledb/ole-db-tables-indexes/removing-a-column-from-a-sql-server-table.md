@@ -12,6 +12,7 @@ helpviewer_keywords:
   - "removing columns"
   - "DropColumn function"
   - "OLE DB Driver for SQL Server, columns"
+ms.custom: sfi-ropc-nochange
 ---
 # Removing a Column from a SQL Server Table
 [!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]

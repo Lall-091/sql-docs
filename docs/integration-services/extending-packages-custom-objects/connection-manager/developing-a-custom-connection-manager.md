@@ -15,6 +15,7 @@ helpviewer_keywords:
   - "SSIS packages, connection managers"
   - "SQL Server Integration Services packages, connection managers"
   - "custom connection managers [Integration Services]"
+ms.custom: sfi-ropc-nochange
 ---
 # Developing a Custom Connection Manager
 

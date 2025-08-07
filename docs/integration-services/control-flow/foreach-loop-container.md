@@ -27,6 +27,7 @@ helpviewer_keywords:
   - "Foreach Loop containers"
   - "foreach enumerators [Integration Services]"
   - "containers [Integration Services], Foreach Loop"
+ms.custom: sfi-ropc-nochange
 ---
 # Foreach Loop Container
 

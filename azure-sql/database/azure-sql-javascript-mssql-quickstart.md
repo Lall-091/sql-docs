@@ -4,12 +4,14 @@ description: Learn how to connect to a database in Azure SQL Database and query 
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: diberry, mathoma
-ms.custom: passwordless-js
 ms.date: 03/04/2025
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: quickstart
 monikerRange: "= azuresql || = azuresql-db"
+ms.custom:
+  - passwordless-js
+  - sfi-ropc-nochange
 ---
 
 # Connect to and query Azure SQL Database using Node.js and mssql npm package

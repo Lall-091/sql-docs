@@ -9,6 +9,7 @@ ms.service: sql
 ms.subservice: security
 ms.topic: tutorial
 monikerRange: ">=sql-server-ver16||>= sql-server-linux-ver16"
+ms.custom: sfi-image-nochange
 ---
 
 # Tutorial: Set up Microsoft Entra authentication for SQL Server

@@ -9,10 +9,11 @@ ms.date: 07/30/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
 ms.topic: how-to
+monikerRange: "=azuresql||=azuresql-mi"
 ms.custom:
   - azure-sql-split
   - build-2024
-monikerRange: "=azuresql||=azuresql-mi"
+  - sfi-image-nochange
 ---
 # Update policy in Azure SQL Managed Instance
 [!INCLUDE [appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

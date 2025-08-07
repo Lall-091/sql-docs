@@ -15,6 +15,7 @@ helpviewer_keywords:
   - "sp_helpdistpublisher"
 dev_langs:
   - "TSQL"
+ms.custom: sfi-ropc-nochange
 ---
 # sp_helpdistpublisher (Transact-SQL)
 

@@ -8,9 +8,13 @@ ms.reviewer: vanto, mathoma
 ms.date: 06/30/2025
 ms.service: azure-sql-database
 ms.subservice: security
-ms.custom: devx-track-azurecli, devx-track-azurepowershell, has-azure-ad-ps-ref
 ms.topic: how-to
 monikerRange: "= azuresql || = azuresql-db"
+ms.custom:
+  - devx-track-azurecli
+  - devx-track-azurepowershell
+  - has-azure-ad-ps-ref
+  - sfi-image-nochange
 ---
 
 # Identity and key management for TDE with database level customer-managed keys

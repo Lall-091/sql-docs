@@ -8,11 +8,12 @@ ms.date: 03/17/2025
 ms.service: azure-vm-sql-server
 ms.subservice: hadr
 ms.topic: how-to
+editor: monicar
+tags: azure-service-management
 ms.custom:
   - na
   - devx-track-azurepowershell
-editor: monicar
-tags: azure-service-management
+  - sfi-image-nochange
 ---
 
 # Create an FCI with Azure shared disks (SQL Server on Azure VMs)

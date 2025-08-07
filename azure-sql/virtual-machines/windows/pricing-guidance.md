@@ -11,6 +11,7 @@ ms.topic: conceptual
 tags: azure-service-management
 ms.custom:
   - build-2025
+  - sfi-image-nochange
 ---
 # Pricing guidance for SQL Server on Azure VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

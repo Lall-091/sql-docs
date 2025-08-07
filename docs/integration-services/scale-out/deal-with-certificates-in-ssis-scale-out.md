@@ -10,6 +10,7 @@ ms.subservice: integration-services
 ms.topic: how-to
 ms.custom:
   - performance
+  - sfi-image-nochange
 ---
 # Manage certificates for SQL Server Integration Services Scale Out
 

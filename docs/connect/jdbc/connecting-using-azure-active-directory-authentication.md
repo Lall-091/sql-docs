@@ -7,6 +7,7 @@ ms.date: 03/17/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
+ms.custom: sfi-image-nochange
 ---
 # Connect using Microsoft Entra authentication
 

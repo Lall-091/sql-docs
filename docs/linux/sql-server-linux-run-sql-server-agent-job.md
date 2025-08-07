@@ -9,6 +9,7 @@ ms.subservice: linux
 ms.topic: how-to
 ms.custom:
   - linux-related-content
+  - sfi-image-nochange
 ---
 # Create and run SQL Server Agent jobs on Linux
 

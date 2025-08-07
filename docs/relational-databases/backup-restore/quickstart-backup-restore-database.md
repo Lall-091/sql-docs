@@ -9,6 +9,7 @@ ms.date: 07/18/2024
 ms.service: sql
 ms.subservice: backup-restore
 ms.topic: quickstart
+ms.custom: sfi-image-nochange
 ---
 
 # Quickstart: Backup and restore a SQL Server database with SSMS

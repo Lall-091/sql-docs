@@ -9,11 +9,12 @@ ms.date: 06/30/2025
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: tutorial
+monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
 ms.custom:
   - azure-synapse
   - has-azure-ad-ps-ref
   - azure-ad-ref-level-one-done
-monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
+  - sfi-image-nochange
 ---
 
 # Tutorial: Assign Directory Readers role to a Microsoft Entra group and manage role assignments

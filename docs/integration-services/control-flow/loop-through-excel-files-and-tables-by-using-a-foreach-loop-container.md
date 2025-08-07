@@ -11,6 +11,7 @@ helpviewer_keywords:
   - "connections [Integration Services], Excel"
   - "Excel [Integration Services]"
   - "connection managers [Integration Services], Excel"
+ms.custom: sfi-ropc-nochange
 ---
 # Loop through Excel Files and Tables with a Foreach Loop Container
 

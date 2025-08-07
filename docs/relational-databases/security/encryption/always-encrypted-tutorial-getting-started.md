@@ -8,6 +8,9 @@ ms.date: 02/15/2023
 ms.service: sql
 ms.subservice: security
 ms.topic: tutorial
+ms.custom:
+  - sfi-image-nochange
+  - sfi-ropc-blocked
 ---
 # Tutorial: Getting started with Always Encrypted
 

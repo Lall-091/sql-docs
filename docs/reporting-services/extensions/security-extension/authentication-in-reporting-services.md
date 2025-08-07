@@ -7,13 +7,14 @@ ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: extensions
 ms.topic: reference
-ms.custom:
-  - updatefrequency5
 helpviewer_keywords:
   - "security [Reporting Services], authentication"
   - "forms-based authentication [Reporting Services]"
   - "authentication [Reporting Services]"
   - "custom authentication [Reporting Services]"
+ms.custom:
+  - updatefrequency5
+  - sfi-image-nochange
 ---
 # Authentication in Reporting Services
   Authentication is the process of establishing a user's right to an identity. There are many techniques that you can use to authenticate a user. The most common way is to use passwords. When you implement Forms Authentication, for example, you want an implementation that queries users for credentials (usually by some interface that requests a sign-in name and password) and then validates users against a data store, such as a database table or configuration file. If the credentials can't be validated, the authentication process fails and the user assumes an anonymous identity.  

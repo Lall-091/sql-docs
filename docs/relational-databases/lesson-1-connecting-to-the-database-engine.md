@@ -10,6 +10,7 @@ ms.subservice: connectivity
 ms.topic: quickstart
 ms.custom:
   - intro-quickstart
+  - sfi-image-nochange
 ---
 
 # Lesson 1: Connecting to the Database Engine

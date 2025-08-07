@@ -5,6 +5,7 @@ author: MikeRayMSFT
 ms.author: mikeray
 ms.topic: concept-article 
 ms.date: 07/26/2024
+ms.custom: sfi-image-nochange
 
 # ms.service: sql defined in docfx.json
 # ms.subservice: azure-arc-sql-server <optional> defined in docfx.json

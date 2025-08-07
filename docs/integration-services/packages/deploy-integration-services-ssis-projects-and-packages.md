@@ -8,8 +8,6 @@ ms.date: 09/17/2024
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: install-set-up-deploy
-ms.custom:
-  - intro-deployment
 f1_keywords:
   - "sql13.ssis.bids.converttolegacydeployment.f1"
   - "sql13.ssis.deploymentwizard.f1"
@@ -18,6 +16,9 @@ f1_keywords:
   - "sql13.ssis.ssms.iscreateenv.f1"
   - "sql13.ssis.ssms.isenvprop.variables.f1"
   - "sql13.ssis.migrationwizard.f1"
+ms.custom:
+  - intro-deployment
+  - sfi-ropc-nochange
 ---
 # Deploy Integration Services (SSIS) Projects and Packages
 

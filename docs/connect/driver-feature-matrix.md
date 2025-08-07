@@ -8,6 +8,7 @@ ms.date: 07/17/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
+ms.custom: sfi-ropc-nochange
 ---
 # Driver feature support matrix for Microsoft SQL Server
 

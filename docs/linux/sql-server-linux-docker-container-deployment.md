@@ -8,12 +8,13 @@ ms.date: 07/11/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
+zone_pivot_groups: cs1-command-shell
+monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017"
 ms.custom:
   - intro-deployment
   - linux-related-content
   - build-2025
-zone_pivot_groups: cs1-command-shell
-monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017"
+  - sfi-ropc-blocked
 ---
 # Deploy and connect to SQL Server Linux containers
 

@@ -9,6 +9,7 @@ ms.service: sql
 ms.subservice: machine-learning
 ms.topic: tutorial
 monikerRange: ">=sql-server-2017||>=sql-server-linux-ver15||=azuresqldb-mi-current"
+ms.custom: sfi-ropc-blocked
 ---
 # Python Tutorial: Prepare data to train a linear regression model with SQL machine learning
 [!INCLUDE [SQL Server 2017 SQL MI](../../includes/applies-to-version/sqlserver2017-asdbmi.md)]

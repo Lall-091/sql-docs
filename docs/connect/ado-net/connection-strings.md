@@ -7,6 +7,7 @@ ms.date: "11/13/2020"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
+ms.custom: sfi-ropc-nochange
 ---
 # Connection strings in ADO.NET
 

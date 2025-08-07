@@ -8,7 +8,9 @@ ms.date: 04/03/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: reference
-ms.custom: sqldbrb=1
+ms.custom:
+  - sqldbrb=1
+  - sfi-image-nochange
 ---
 # Time zones in Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

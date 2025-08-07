@@ -9,6 +9,7 @@ ms.subservice: security
 ms.topic: how-to
 ms.custom:
   - updatefrequency5
+  - sfi-image-nochange
 ---
 # Configure Reporting Services to use a Subject Alternative Name (SAN)
 

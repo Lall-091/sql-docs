@@ -8,6 +8,7 @@ ms.date: 04/17/2018
 ms.service: sql
 ms.subservice: data-warehouse
 ms.topic: how-to
+ms.custom: sfi-ropc-nochange
 ---
 
 # Configure Windows Server Update Services (WSUS) in Analytics Platform System

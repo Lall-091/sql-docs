@@ -8,6 +8,7 @@ ms.date: 01/26/2024
 ms.service: azure-sql-database
 ms.subservice: development
 ms.topic: tutorial
+ms.custom: sfi-image-nochange
 ---
 # Tutorial: Design a relational database in Azure SQL Database
 

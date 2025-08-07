@@ -14,6 +14,7 @@ helpviewer_keywords:
   - "data sources [Integration Services], connections"
   - "connection managers [Integration Services], OLEDB"
   - "connections [Integration Services], OLEDB"
+ms.custom: sfi-ropc-nochange
 ---
 # OLEDB connection manager
 

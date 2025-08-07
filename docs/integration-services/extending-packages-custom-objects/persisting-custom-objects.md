@@ -9,6 +9,7 @@ ms.subservice: integration-services
 ms.topic: "reference"
 helpviewer_keywords:
   - "custom objects [Integration Services], persisting"
+ms.custom: sfi-ropc-nochange
 ---
 # Persisting Custom Objects
 

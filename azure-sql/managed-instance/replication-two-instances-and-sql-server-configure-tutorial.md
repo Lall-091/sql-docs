@@ -8,7 +8,11 @@ ms.date: 11/16/2022
 ms.service: azure-sql-managed-instance
 ms.subservice: security
 ms.topic: tutorial
-ms.custom: sqldbrb=1, devx-track-azurepowershell
+ms.custom:
+  - sqldbrb=1
+  - devx-track-azurepowershell
+  - sfi-image-nochange
+  - sfi-ropc-blocked
 ---
 # Tutorial: Configure transactional replication between Azure SQL Managed Instance and SQL Server
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

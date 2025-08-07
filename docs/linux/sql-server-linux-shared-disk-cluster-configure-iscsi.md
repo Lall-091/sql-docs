@@ -11,6 +11,7 @@ ms.topic: how-to
 ms.custom:
   - linux-related-content
   - build-2025
+  - sfi-image-nochange
 ---
 # Configure failover cluster instance - iSCSI - SQL Server on Linux
 

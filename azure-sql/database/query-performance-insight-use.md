@@ -10,6 +10,7 @@ ms.subservice: performance
 ms.topic: how-to
 ms.custom:
   - sqldbrb=1
+  - sfi-image-nochange
 ---
 # Query Performance Insight for Azure SQL Database
 

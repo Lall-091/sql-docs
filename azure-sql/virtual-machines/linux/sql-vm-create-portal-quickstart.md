@@ -7,8 +7,11 @@ ms.date: 10/22/2019
 ms.service: azure-vm-sql-server
 ms.subservice: deployment
 ms.topic: quickstart
-ms.custom: mode-ui, linux-related-content
 tags: azure-service-management
+ms.custom:
+  - mode-ui
+  - linux-related-content
+  - sfi-image-nochange
 ---
 
 # Provision a Linux virtual machine running SQL Server in the Azure portal

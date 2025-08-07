@@ -18,6 +18,7 @@ helpviewer_keywords:
   - "digital signatures [SQL Server]"
 dev_langs:
   - "TSQL"
+ms.custom: sfi-image-nochange
 ---
 
 # ADD SIGNATURE (Transact-SQL)

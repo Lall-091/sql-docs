@@ -9,6 +9,7 @@ ms.subservice: reporting-services
 ms.topic: conceptual
 ms.custom:
   - updatefrequency5
+  - sfi-ropc-nochange
 ---
 # Lesson 4: Define a data connection and data table for the child report
 After you design the parent report, your next step is to create a data connection and a data table for the child report.

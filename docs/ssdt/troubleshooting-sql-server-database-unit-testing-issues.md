@@ -7,6 +7,7 @@ ms.date: 02/09/2017
 ms.service: sql
 ms.subservice: ssdt
 ms.topic: troubleshooting-general
+ms.custom: sfi-ropc-nochange
 ---
 
 # Troubleshooting SQL Server Database Unit Testing Issues

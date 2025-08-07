@@ -7,12 +7,13 @@ ms.date: "09/14/2023"
 ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
-ms.custom:
-  - ignite-2024
 helpviewer_keywords:
   - "contained database, users"
   - "user [SQL Server], about contained database users"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || =azure-sqldw-latest || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+ms.custom:
+  - ignite-2024
+  - sfi-ropc-blocked
 ---
 
 # Make your database portable by using contained databases

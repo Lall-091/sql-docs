@@ -10,6 +10,7 @@ ms.subservice: high-availability
 ms.topic: how-to
 ms.custom:
   - ignite-2023
+  - sfi-image-nochange
 ---
 
 # Configure a license-free standby replica for Azure SQL Database

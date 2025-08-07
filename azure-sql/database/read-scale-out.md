@@ -9,10 +9,11 @@ ms.date: 06/13/2025
 ms.service: azure-sql
 ms.subservice: scale-out
 ms.topic: concept-article
+monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
 ms.custom:
   - sqldbrb=1
   - devx-track-azurepowershell
-monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
+  - sfi-image-nochange
 ---
 # Use read-only replicas to offload read-only query workloads
 

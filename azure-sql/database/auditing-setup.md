@@ -9,6 +9,7 @@ ms.date: 05/07/2025
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 # Set up Auditing for Azure SQL Database and Azure Synapse Analytics
 

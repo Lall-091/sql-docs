@@ -7,6 +7,7 @@ ms.date: 01/24/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
+ms.custom: sfi-ropc-nochange
 ---
 # Introduction to Microsoft.Data.SqlClient namespace
 

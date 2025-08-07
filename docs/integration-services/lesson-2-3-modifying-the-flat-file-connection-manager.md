@@ -7,6 +7,7 @@ ms.date: "01/03/2019"
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: tutorial
+ms.custom: sfi-ropc-nochange
 ---
 # Lesson 2-3: Modify the Flat File connection manager
 

@@ -9,9 +9,11 @@ ms.date: 03/26/2024
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: conceptual
-ms.custom: sqldbrb=1
 tags: azure-synapse
 monikerRange: "= azuresql || = azuresql-db || = azuresql-mi"
+ms.custom:
+  - sqldbrb=1
+  - sfi-image-nochange
 ---
 # Data Discovery & Classification
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]

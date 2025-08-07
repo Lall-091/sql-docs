@@ -14,6 +14,7 @@ helpviewer_keywords:
   - "data collector [SQL Server], stored procedures"
 dev_langs:
   - "TSQL"
+ms.custom: sfi-ropc-nochange
 ---
 # Data collector stored procedures (Transact-SQL)
 

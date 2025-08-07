@@ -8,7 +8,9 @@ ms.date: 02/17/2022
 ms.service: sql
 ms.subservice: analysis-services
 ms.topic: reference
-ms.custom: mdx
+ms.custom:
+  - mdx
+  - sfi-ropc-nochange
 ---
 # MDX Data Manipulation - UPDATE CUBE
 

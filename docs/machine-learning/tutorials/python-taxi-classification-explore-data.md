@@ -9,6 +9,7 @@ ms.service: sql
 ms.subservice: machine-learning
 ms.topic: tutorial
 monikerRange: ">=sql-server-2017||>=sql-server-linux-ver15||>=azuresqldb-mi-current"
+ms.custom: sfi-ropc-blocked
 ---
 
 # Python tutorial: Explore and visualize data

@@ -13,6 +13,7 @@ ms.custom:
   - devx-track-azurepowershell
   - devx-track-azurecli
   - ignite-2024
+  - sfi-image-nochange
 ---
 # Create an instance pool - Azure SQL Managed Instance
 

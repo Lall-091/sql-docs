@@ -8,9 +8,10 @@ ms.date: 06/13/2025
 ms.service: azure-sql-database
 ms.subservice: development
 ms.topic: how-to
+monikerRange: "=azuresql || =azuresql-db"
 ms.custom:
   - sqldbrb=1
-monikerRange: "=azuresql || =azuresql-db"
+  - sfi-image-nochange
 ---
 
 # Stream data into Azure SQL Database using Azure Stream Analytics integration (preview)

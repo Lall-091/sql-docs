@@ -12,6 +12,7 @@ helpviewer_keywords:
   - "ODBC destination [Integration Services]"
   - "destinations [Integration Services], components"
   - "Script component [Integration Services], examples"
+ms.custom: sfi-ropc-nochange
 ---
 # Creating an ODBC Destination with the Script Component
 

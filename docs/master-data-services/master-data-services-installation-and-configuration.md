@@ -10,6 +10,7 @@ ms.topic: quickstart
 ms.custom:
   - intro-quickstart
   - build-2025
+  - sfi-image-nochange
 ---
 # Master Data Services Installation and Configuration
 

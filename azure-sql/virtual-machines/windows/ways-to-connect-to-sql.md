@@ -9,6 +9,7 @@ ms.service: azure-vm-sql-server
 ms.subservice: management
 ms.topic: how-to
 tags: azure-resource-manager
+ms.custom: sfi-image-nochange
 ---
 # Connect to a SQL Server virtual machine on Azure
 

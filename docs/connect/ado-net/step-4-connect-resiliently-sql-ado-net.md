@@ -10,6 +10,7 @@ ms.subservice: connectivity
 ms.topic: conceptual
 dev_langs:
   - "CSharp"
+ms.custom: sfi-ropc-nochange
 ---
 # Step 4: Connect resiliently to SQL with ADO.NET
 

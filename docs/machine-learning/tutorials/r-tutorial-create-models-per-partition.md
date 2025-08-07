@@ -8,6 +8,7 @@ ms.service: sql
 ms.subservice: machine-learning-services
 ms.topic: tutorial
 monikerRange: ">=sql-server-ver15||>=sql-server-linux-ver15"
+ms.custom: sfi-ropc-nochange
 ---
 # Tutorial: Create partition-based models in R on SQL Server
 

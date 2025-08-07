@@ -4,7 +4,7 @@ description: Use Azure SQL Database from a GitHub Actions workflow
 author: juliakm
 ms.author: jukullam
 ms.reviewer: wiassaf, mathoma
-ms.date: 02/11/2025
+ms.date: 08/05/2025
 ms.service: azure-sql-database
 ms.subservice: connect
 ms.topic: quickstart
@@ -26,14 +26,14 @@ You need:
 
 ## Workflow file overview
 
-A GitHub Actions workflow is defined by a YAML (.yml) file in the `/.github/workflows/` path in your repository. This definition contains the various steps and parameters that make up the workflow.
+A GitHub Actions workflow is defined by a YAML (.yml) file in the `/.github/workflows/` path in your repository. This file has the steps and parameters that make up the workflow.
 
 The file has two sections:
 
 |Section  |Tasks  |
 |---------|---------|
-|**Authentication** | 1.1. Generate deployment credentials. |
-|**Deploy** | 1. Deploy the database. |
+|**Authentication** | 1. Generate deployment credentials. |
+|**Deploy** | 2. Deploy the database. |
 
 ## Generate deployment credentials
 
@@ -69,7 +69,7 @@ You'll set the connection string as a GitHub secret, `AZURE_SQL_CONNECTION_STRIN
 
 2. Select **Set up your workflow yourself**.
 
-3. Delete everything after the `on:` section of your workflow file. For example, your remaining workflow may look like this. 
+3. Delete everything after the `on:` section of your workflow file. For example, your remaining workflow can look like this. 
 
     ```yaml
     name: SQL for GitHub Actions
@@ -132,14 +132,14 @@ You'll set the connection string as a GitHub secret, `AZURE_SQL_CONNECTION_STRIN
 5. Use the Azure SQL Deploy action to connect to your SQL instance. You should have a dacpac package (`Database.dacpac`) at the root level of your repository. Use the `AZURE_SQL_CONNECTION_STRING` GitHub secret you created earlier.
 
     ```yaml
-    - uses: azure/sql-action@v2
+    - uses: azure/sql-action@v2.3
       with:
         connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
         path: './Database.dacpac'
-        action: 'Publish'
+        action: 'publish'
     ```
 
-6. Complete your workflow by adding an action to logout of Azure. Here's the completed workflow. The file appears in the `.github/workflows` folder of your repository.
+5. Complete your workflow by adding an action to logout of Azure. Here's the completed workflow. The file appears in the `.github/workflows` folder of your repository.
 
     # [OpenID Connect](#tab/openid)
 
@@ -162,6 +162,12 @@ You'll set the connection string as a GitHub secret, `AZURE_SQL_CONNECTION_STRIN
                     client-id: ${{ secrets.AZURE_CLIENT_ID }}
                     tenant-id: ${{ secrets.AZURE_TENANT_ID }}
                     subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+             - uses: azure/sql-action@v2.3
+               with:
+                connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
+                path: './Database.dacpac'
+                action: 'publish'
+
                 # Azure logout 
                  - name: logout
                    run: |
@@ -187,11 +193,11 @@ You'll set the connection string as a GitHub secret, `AZURE_SQL_CONNECTION_STRIN
              - uses: azure/login@v2
                with:
                 creds: ${{ secrets.AZURE_CREDENTIALS }}
-             - uses: azure/sql-action@v2
+             - uses: azure/sql-action@v2.3
                with:
                 connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
                 path: './Database.dacpac'
-                action: 'Publish'
+                action: 'publish'
 
                 # Azure logout 
              - name: logout

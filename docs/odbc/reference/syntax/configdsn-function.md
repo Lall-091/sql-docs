@@ -14,6 +14,7 @@ helpviewer_keywords:
 apilocation: "sqlsrv32.dll"
 apiname: "ConfigDSN"
 apitype: "dllExport"
+ms.custom: sfi-ropc-blocked
 ---
 # ConfigDSN Function
 **Conformance**  

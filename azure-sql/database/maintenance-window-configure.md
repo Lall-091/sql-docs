@@ -9,11 +9,12 @@ ms.date: 01/11/2024
 ms.service: azure-sql-database
 ms.subservice: deployment-configuration
 ms.topic: how-to
+monikerRange: "=azuresql||=azuresql-db"
 ms.custom:
   - devx-track-azurecli
   - devx-track-azurepowershell
   - azure-sql-split
-monikerRange: "=azuresql||=azuresql-db"
+  - sfi-image-nochange
 ---
 # Configure maintenance window in Azure SQL Database
 

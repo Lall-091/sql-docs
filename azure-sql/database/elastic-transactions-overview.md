@@ -9,9 +9,10 @@ ms.date: 06/13/2025
 ms.service: azure-sql
 ms.subservice: scale-out
 ms.topic: conceptual
+monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
 ms.custom:
   - sqldbrb=1
-monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
+  - sfi-ropc-nochange
 ---
 # Distributed transactions across cloud databases
 

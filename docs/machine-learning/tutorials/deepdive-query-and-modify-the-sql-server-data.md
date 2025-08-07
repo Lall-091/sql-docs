@@ -8,6 +8,7 @@ ms.service: sql
 ms.subservice: machine-learning-services
 ms.topic: tutorial
 monikerRange: ">=sql-server-2016||>=sql-server-linux-ver15"
+ms.custom: sfi-ropc-nochange
 ---
 # Query and modify the SQL Server data (SQL Server and RevoScaleR tutorial)
 [!INCLUDE [SQL Server 2016 and later](../../includes/applies-to-version/sqlserver2016.md)]

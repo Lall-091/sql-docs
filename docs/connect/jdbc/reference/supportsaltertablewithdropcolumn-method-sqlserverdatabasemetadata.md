@@ -10,6 +10,7 @@ ms.topic: reference
 apilocation: "sqljdbc.jar"
 apiname: "SQLServerDatabaseMetaData.supportsAlterTableWithDropColumn"
 apitype: "Assembly"
+ms.custom: sfi-ropc-nochange
 ---
 # supportsAlterTableWithDropColumn Method (SQLServerDatabaseMetaData)
 [!INCLUDE[Driver_JDBC_Download](../../../includes/driver_jdbc_download.md)]

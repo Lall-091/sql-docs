@@ -4,7 +4,7 @@ description: "Intersect (MDX)"
 author: kfollis
 ms.author: kfollis
 ms.reviewer: kfollis
-ms.date: 02/17/2022
+ms.date: 08/06/2025
 ms.service: sql
 ms.subservice: analysis-services
 ms.topic: reference
@@ -35,7 +35,7 @@ Intersect(Set_Expression1 , Set_Expression2 [ , ALL ] )
  The optional **ALL** flag retains duplicates. If **ALL** is specified, the **Intersect** function intersects nonduplicated elements as usual, and also intersects each duplicate in the first set that has a matching duplicate in the second set. The two sets specified must have the same dimensionality.  
   
 ## Example  
- The following query returns the Years 2003 and 2004, the two members that appear in both the sets specified:  
+ The following query returns the Years 2002 and 2003, the two members that appear in both the sets specified:  
   
 ```  
 SELECT  

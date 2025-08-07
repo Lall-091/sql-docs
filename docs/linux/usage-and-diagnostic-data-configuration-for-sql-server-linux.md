@@ -10,6 +10,7 @@ ms.topic: how-to
 ms.custom:
   - linux-related-content
   - build-2025
+  - sfi-ropc-blocked
 ---
 # Configure usage and diagnostic data collection for SQL Server on Linux
 

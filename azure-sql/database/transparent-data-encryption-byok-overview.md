@@ -9,9 +9,10 @@ ms.date: 06/24/2025
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: conceptual
+monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
 ms.custom:
   - azure-synapse
-monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
+  - sfi-image-nochange
 ---
 # Azure SQL transparent data encryption with customer-managed key
 

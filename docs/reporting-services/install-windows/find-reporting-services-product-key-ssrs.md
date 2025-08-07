@@ -7,9 +7,10 @@ ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server
 ms.topic: how-to
+monikerRange: "=sql-server-2017||=sql-server-ver15"
 ms.custom:
   - updatefrequency5
-monikerRange: "=sql-server-2017||=sql-server-ver15"
+  - sfi-image-nochange
 ---
 # Find the product key for SQL Server Reporting Services
 

@@ -8,6 +8,7 @@ ms.service: sql
 ms.subservice: table-view-index
 ms.topic: conceptual
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current||=fabric"
+ms.custom: sfi-image-nochange
 ---
 # Temporal table usage scenarios
 

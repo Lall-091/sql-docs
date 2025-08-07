@@ -10,6 +10,7 @@ ms.subservice: migration-guide
 ms.topic: how-to
 ms.collection:
   - sql-migration-content
+ms.custom: sfi-image-nochange
 ---
 
 # Migration guide: Oracle to Azure SQL Database

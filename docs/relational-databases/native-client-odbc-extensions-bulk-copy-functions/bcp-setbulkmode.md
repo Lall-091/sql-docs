@@ -9,6 +9,7 @@ ms.subservice: native-client
 ms.topic: "reference"
 helpviewer_keywords:
   - "bcp_setbulkmode function"
+ms.custom: sfi-ropc-nochange
 ---
 # bcp_setbulkmode
 [!INCLUDE[SQL Server Azure SQL Database Synapse Analytics PDW](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]

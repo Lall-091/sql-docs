@@ -8,9 +8,10 @@ ms.date: 05/07/2024
 ms.service: azure-sql-database
 ms.subservice: high-availability
 ms.topic: conceptual
+monikerRange: "=azuresql||=azuresql-db"
 ms.custom:
   - build-2024
-monikerRange: "=azuresql||=azuresql-db"
+  - sfi-image-nochange
 ---
 # Disaster recovery guidance - Azure SQL Database
 [!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]

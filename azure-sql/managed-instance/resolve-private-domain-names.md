@@ -8,8 +8,10 @@ ms.reviewer: mathoma, srbozovi
 ms.date: 09/16/2022
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
-ms.custom: ignite-2023
 ms.topic: how-to
+ms.custom:
+  - ignite-2023
+  - sfi-image-nochange
 ---
 # Resolve private domain names in Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

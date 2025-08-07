@@ -7,11 +7,12 @@ ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: subscriptions
 ms.topic: conceptual
-ms.custom:
-  - updatefrequency5
 helpviewer_keywords:
   - "subscriptions [Reporting Services], file share delivery"
   - "file share delivery [Reporting Services]"
+ms.custom:
+  - updatefrequency5
+  - sfi-image-nochange
 # customer intent: As a SQL Server user, I want learn how to use the file share delivery extension so that I can deliver my report to a folder.
 ---
 # File share delivery in Reporting Services

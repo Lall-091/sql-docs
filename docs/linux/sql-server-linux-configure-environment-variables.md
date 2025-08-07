@@ -10,6 +10,7 @@ ms.topic: how-to
 ms.custom:
   - linux-related-content
   - build-2025
+  - sfi-ropc-blocked
 ---
 # Configure SQL Server settings with environment variables on Linux
 

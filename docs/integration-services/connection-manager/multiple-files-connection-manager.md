@@ -14,6 +14,7 @@ helpviewer_keywords:
   - "connection managers [Integration Services], Multiple Files"
   - "connections [Integration Services], files"
   - "multiple file connections"
+ms.custom: sfi-ropc-nochange
 ---
 # Multiple Files Connection Manager
 

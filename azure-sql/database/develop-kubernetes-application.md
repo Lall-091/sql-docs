@@ -9,10 +9,12 @@ ms.date: 06/13/2025
 ms.service: azure-sql-database
 ms.subservice: development
 ms.topic: tutorial
+monikerRange: "=azuresql || =azuresql-db "
 ms.custom:
   - references-regions
   - devx-track-azurecli
-monikerRange: "=azuresql || =azuresql-db "
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 ---
 # Develop a Kubernetes application for Azure SQL Database
 

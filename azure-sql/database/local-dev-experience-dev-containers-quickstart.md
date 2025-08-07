@@ -9,6 +9,7 @@ ms.date: 06/13/2025
 ms.service: azure-sql-database
 ms.topic: quickstart
 monikerRange: "=azuresql || =azuresql-db"
+ms.custom: sfi-image-nochange
 ---
 
 # Quickstart: Set up a development environment with Dev Container Templates for Azure SQL Database

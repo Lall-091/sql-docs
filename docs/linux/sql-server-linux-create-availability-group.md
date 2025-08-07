@@ -10,6 +10,7 @@ ms.subservice: linux
 ms.topic: install-set-up-deploy
 ms.custom:
   - linux-related-content
+  - sfi-image-nochange
 ---
 
 # Create and configure an availability group for SQL Server on Linux

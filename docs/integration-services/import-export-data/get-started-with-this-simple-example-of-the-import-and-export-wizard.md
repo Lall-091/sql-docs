@@ -7,7 +7,9 @@ ms.date: "02/15/2017"
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: quickstart
-ms.custom: intro-quickstart
+ms.custom:
+  - intro-quickstart
+  - sfi-image-nochange
 ---
 # Get started with this simple example of the Import and Export Wizard
 

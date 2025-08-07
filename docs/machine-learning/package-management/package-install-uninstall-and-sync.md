@@ -8,6 +8,7 @@ ms.service: sql
 ms.subservice: machine-learning-services
 ms.topic: how-to
 monikerRange: "=sql-server-2017"
+ms.custom: sfi-ropc-nochange
 ---
 
 # R package synchronization for SQL Server

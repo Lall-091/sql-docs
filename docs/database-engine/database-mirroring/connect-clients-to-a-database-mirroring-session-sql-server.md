@@ -12,6 +12,7 @@ helpviewer_keywords:
   - "database mirroring [SQL Server], connecting clients to"
   - "client connections [SQL Server], database mirroring"
   - "connections [SQL Server], database mirroring"
+ms.custom: sfi-ropc-nochange
 ---
 # Connect Clients to a Database Mirroring Session (SQL Server)
  [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]

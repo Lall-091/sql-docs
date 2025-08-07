@@ -11,6 +11,7 @@ ms.topic: conceptual
 ms.custom:
   - fasttrack-edit
   - sqldbrb=1
+  - sfi-image-nochange
 ---
 # Database Advisor performance recommendations for Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

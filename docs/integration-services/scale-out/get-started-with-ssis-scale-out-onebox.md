@@ -11,6 +11,7 @@ ms.topic: get-started
 ms.custom:
   - performance
   - intro-get-started
+  - sfi-image-nochange
 ---
 # Get started with Integration Services (SSIS) Scale Out on a single computer
 

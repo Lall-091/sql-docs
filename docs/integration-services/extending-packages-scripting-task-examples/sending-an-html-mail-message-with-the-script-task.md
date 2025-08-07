@@ -13,6 +13,7 @@ helpviewer_keywords:
   - "Script task [Integration Services], HTML mail message"
 dev_langs:
   - "VB"
+ms.custom: sfi-ropc-nochange
 ---
 # Sending an HTML Mail Message with the Script Task
 

@@ -10,6 +10,7 @@ ms.subservice: migration-guide
 ms.topic: how-to
 ms.custom:
   - intro-migration
+  - sfi-image-nochange
 ---
 
 # Migration guide: MySQL to SQL Server

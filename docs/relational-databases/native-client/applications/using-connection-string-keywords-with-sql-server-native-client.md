@@ -14,6 +14,7 @@ helpviewer_keywords:
   - "SQLNCLI, connection string keywords"
   - "connection strings [SQL Server Native Client]"
   - "SQL Server Native Client, connection string keywords"
+ms.custom: sfi-ropc-blocked
 ---
 # Using Connection String Keywords with SQL Server Native Client
 [!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]

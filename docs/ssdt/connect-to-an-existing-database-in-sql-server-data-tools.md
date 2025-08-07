@@ -8,6 +8,7 @@ ms.date: 03/14/2024
 ms.service: sql
 ms.subservice: ssdt
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 
 # Connect to an existing database in SSDT

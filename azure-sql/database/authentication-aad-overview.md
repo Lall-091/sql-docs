@@ -9,10 +9,11 @@ ms.date: 09/27/2024
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: conceptual
+monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
 ms.custom:
   - azure-synapse
   - sqldbrb=1
-monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
+  - sfi-image-nochange
 ---
 # Microsoft Entra authentication for Azure SQL
 

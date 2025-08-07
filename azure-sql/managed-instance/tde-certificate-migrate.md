@@ -8,7 +8,10 @@ ms.date: 02/27/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: security
 ms.topic: how-to
-ms.custom: sqldbrb=1, devx-track-azurepowershell
+ms.custom:
+  - sqldbrb=1
+  - devx-track-azurepowershell
+  - sfi-image-nochange
 ---
 
 # Migrate a SQL Server TDE certificate to Azure SQL Managed Instance

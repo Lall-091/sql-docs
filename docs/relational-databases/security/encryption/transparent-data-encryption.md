@@ -17,6 +17,7 @@ helpviewer_keywords:
   - "Transparent data encryption, about"
   - "encryption [SQL Server], Transparent data encryption"
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+ms.custom: sfi-image-nochange
 ---
 # Transparent data encryption (TDE)
 

@@ -7,6 +7,7 @@ ms.date: 02/09/2017
 ms.service: sql
 ms.subservice: ssdt
 ms.topic: how-to
+ms.custom: sfi-ropc-nochange
 ---
 
 # How to: Run SQL Server Unit Tests from Team Foundation Build

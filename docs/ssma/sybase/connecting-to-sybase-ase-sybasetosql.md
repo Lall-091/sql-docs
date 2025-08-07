@@ -13,6 +13,7 @@ f1_keywords:
   - "ssma.sybase.connectsybaseform.f1"
 helpviewer_keywords:
   - "Connecting to Sybase"
+ms.custom: sfi-ropc-blocked
 ---
 
 # Connecting to SAP ASE (SybaseToSQL)

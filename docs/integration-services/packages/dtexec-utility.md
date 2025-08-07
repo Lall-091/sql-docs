@@ -7,6 +7,7 @@ ms.date: "08/26/2016"
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: conceptual
+ms.custom: sfi-ropc-nochange
 ---
 # dtexec Utility
 

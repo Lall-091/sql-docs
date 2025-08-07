@@ -10,6 +10,7 @@ ms.subservice: security
 ms.topic: how-to
 ROBOTS: NOINDEX
 monikerRange: "=azuresql || =azuresql-db "
+ms.custom: sfi-image-nochange
 ---
 
 # What is Block T-SQL CRUD feature?

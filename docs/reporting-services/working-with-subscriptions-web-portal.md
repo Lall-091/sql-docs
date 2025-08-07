@@ -9,6 +9,7 @@ ms.subservice: reporting-services
 ms.topic: conceptual
 ms.custom:
   - updatefrequency5
+  - sfi-image-nochange
 ---
 
 # Work with subscriptions (web portal)

@@ -7,9 +7,12 @@ ms.reviewer: vanto, randolphwest
 ms.date: 10/20/2022
 ms.service: sql
 ms.subservice: security
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
 ms.topic: tutorial
 monikerRange: ">=sql-server-ver16||>= sql-server-linux-ver16"
+ms.custom:
+  - devx-track-azurepowershell
+  - devx-track-azurecli
+  - sfi-image-nochange
 ---
 
 # Tutorial: Using automation to set up the Microsoft Entra admin for SQL Server

@@ -12,6 +12,7 @@ helpviewer_keywords:
   - "backing up databases [SQL Server], SQL Server Management Studio"
   - "backups [SQL Server], creating"
   - "database backups [SQL Server], SQL Server Management Studio"
+ms.custom: sfi-image-nochange
 ---
 # Create a Full Database Backup
 

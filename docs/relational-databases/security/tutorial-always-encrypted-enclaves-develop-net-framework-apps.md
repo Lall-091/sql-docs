@@ -9,6 +9,7 @@ ms.service: sql
 ms.subservice: security
 ms.topic: tutorial
 monikerRange: ">= sql-server-ver15"
+ms.custom: sfi-ropc-blocked
 ---
 # Tutorial: Develop a .NET Framework application using Always Encrypted with secure enclaves
 

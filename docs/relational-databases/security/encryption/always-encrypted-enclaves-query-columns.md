@@ -7,8 +7,10 @@ ms.reviewer: vanto
 ms.date: 11/14/2023
 ms.service: sql
 ms.subservice: security
-ms.custom: ignite-2023
 ms.topic: how-to
+ms.custom:
+  - ignite-2023
+  - sfi-image-nochange
 ---
 # Run Transact-SQL statements using secure enclaves
 

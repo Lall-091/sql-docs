@@ -7,11 +7,12 @@ ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: subscriptions
 ms.topic: conceptual
-ms.custom:
-  - updatefrequency5
 helpviewer_keywords:
   - "standard subscriptions [Reporting Services]"
   - "subscriptions [Reporting Services], standard"
+ms.custom:
+  - updatefrequency5
+  - sfi-image-nochange
 ---
 # Create and manage subscriptions for native mode report servers
   A standard subscription is one that individual users create who want to have a report delivered through e-mail or to a shared folder. This article provides information about standard subscriptions that individual users create and manage. Data-driven subscriptions have different requirements and steps, and are discussed in a separate article. For more information, see [Create, modify, and delete data-driven subscriptions](../../reporting-services/subscriptions/create-modify-and-delete-data-driven-subscriptions.md)  

@@ -9,13 +9,14 @@ ms.date: 06/13/2025
 ms.service: azure-sql
 ms.subservice: connect
 ms.topic: quickstart
+ms.devlang: python
+monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
 ms.custom:
   - sqldbrb=2
   - devx-track-python
   - mode-api
   - py-fresh-zinc
-ms.devlang: python
-monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
+  - sfi-ropc-nochange
 ---
 # Quickstart: Use Python to query a database in Azure SQL Database or Azure SQL Managed Instance
 

@@ -10,6 +10,7 @@ ms.subservice: xml
 ms.topic: conceptual
 helpviewer_keywords:
   - "revoking permissions [SQL Server]"
+ms.custom: sfi-ropc-blocked
 ---
 # Revoke permissions on an XML schema collection
 

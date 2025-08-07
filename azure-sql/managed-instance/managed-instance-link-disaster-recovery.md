@@ -8,8 +8,11 @@ ms.reviewer: mathoma
 ms.date: 03/06/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: data-movement
-ms.custom: ignite-2023, build-2024
 ms.topic: how-to
+ms.custom:
+  - ignite-2023
+  - build-2024
+  - sfi-image-nochange
 ---
 
 # Disaster recovery with Managed Instance link - Azure SQL Managed Instance

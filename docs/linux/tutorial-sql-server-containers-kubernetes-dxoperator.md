@@ -11,6 +11,7 @@ ms.topic: tutorial
 ms.custom:
   - intro-deployment
   - linux-related-content
+  - sfi-ropc-blocked
 ---
 # Deploy availability groups on Kubernetes with DH2i DxOperator on Azure Kubernetes Service
 

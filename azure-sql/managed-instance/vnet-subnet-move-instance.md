@@ -8,8 +8,10 @@ ms.reviewer: mathoma, bonova, srbozovi, wiassaf
 ms.date: 04/12/2023
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
-ms.custom: ignite-2023
 ms.topic: how-to
+ms.custom:
+  - ignite-2023
+  - sfi-image-nochange
 ---
 # Move Azure SQL Managed Instance across subnets
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

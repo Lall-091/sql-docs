@@ -15,6 +15,7 @@ helpviewer_keywords:
   - "TDE, EKM and key vault"
   - "Key Management with key vault"
   - "SQL Server Connector, about"
+ms.custom: sfi-image-nochange
 ---
 # Extensible Key Management Using Azure Key Vault (SQL Server)
 [!INCLUDE [SQL Server](../../../includes/applies-to-version/sqlserver.md)]

@@ -8,6 +8,7 @@ ms.service: sql
 ms.subservice: security
 ms.topic: how-to
 monikerRange: ">= sql-server-ver16||>= sql-server-linux-ver16"
+ms.custom: sfi-image-nochange
 ---
 
 # Connect to SQL Server with strict encryption

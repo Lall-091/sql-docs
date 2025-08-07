@@ -12,6 +12,7 @@ helpviewer_keywords:
   - "full-text search [SQL Server], FDHOST Launcher (MSSQLFDLauncher) service account"
   - "FDHOST Launcher (MSSQLFDLauncher) [SQL Server]"
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+ms.custom: sfi-image-nochange
 ---
 # Set the Service Account for the Full-text Filter Daemon Launcher
 [!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb.md)]

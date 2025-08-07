@@ -6,11 +6,12 @@ ms.author: "maghan"
 ms.date: "03/04/2017"
 ms.service: sql
 ms.topic: "reference"
-ms.custom:
-  - ignite-2024
 helpviewer_keywords:
   - "object models [SMO]"
 monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+ms.custom:
+  - ignite-2024
+  - sfi-image-nochange
 ---
 # SMO Object Model Diagram
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Synapse Analytics FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricsqldb.md)]

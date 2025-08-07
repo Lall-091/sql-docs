@@ -8,9 +8,10 @@ ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: tutorial
+monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017 || =sqlallproducts-allversions"
 ms.custom:
   - linux-related-content
-monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017 || =sqlallproducts-allversions"
+  - sfi-image-nochange
 ---
 
 # Tutorial: Use adutil to configure Active Directory authentication with SQL Server on Linux

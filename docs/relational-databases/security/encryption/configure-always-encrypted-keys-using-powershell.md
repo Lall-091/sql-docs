@@ -8,9 +8,10 @@ ms.date: 04/30/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: how-to
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ms.custom:
   - devx-track-azurepowershell
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+  - sfi-ropc-nochange
 ---
 # Provision Always Encrypted keys using PowerShell
 

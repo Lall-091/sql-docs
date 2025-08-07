@@ -11,6 +11,7 @@ ms.topic: conceptual
 ms.custom:
   - sqldbrb=1
   - devx-track-azurecli
+  - sfi-image-nochange
 ---
 # Create and manage servers and single databases in Azure SQL Database
 

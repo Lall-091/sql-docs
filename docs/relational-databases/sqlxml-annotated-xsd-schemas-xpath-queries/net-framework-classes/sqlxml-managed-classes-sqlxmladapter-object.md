@@ -14,6 +14,7 @@ helpviewer_keywords:
   - "SQLXML Managed Classes, SqlXmlAdapter object"
   - "Managed Classes [SQLXML], SqlXmlAdapter object"
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+ms.custom: sfi-ropc-nochange
 ---
 # SQLXML Managed Classes - SqlXmlAdapter Object
 [!INCLUDE [SQL Server Azure SQL Database](../../../includes/applies-to-version/sql-asdb.md)]

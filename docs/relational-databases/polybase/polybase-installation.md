@@ -8,10 +8,12 @@ ms.date: 07/03/2024
 ms.service: sql
 ms.subservice: polybase
 ms.topic: install-set-up-deploy
-ms.custom: intro-installation
 helpviewer_keywords:
   - "PolyBase, installation"
 monikerRange: ">= sql-server-2016"
+ms.custom:
+  - intro-installation
+  - sfi-ropc-blocked
 ---
 # Install PolyBase on Windows
 

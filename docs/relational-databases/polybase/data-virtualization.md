@@ -9,6 +9,7 @@ ms.service: sql
 ms.subservice: polybase
 ms.topic: conceptual
 monikerRange: ">= sql-server-ver15"
+ms.custom: sfi-image-nochange
 ---
 
 # Use the External Table Wizard with ODBC data sources

@@ -10,13 +10,14 @@ ms.subservice: sql-database-projects
 ms.topic: concept-article
 ms.collection:
   - data-tools
-ms.custom:
-  - ignite-2024
 f1_keywords:
   - "sql.data.tools.adddatabasereference.dialog"
   - "sql.data.tools.newdatabase.dialog"
   - "sql.data.tools.criticalerror.dialog"
 zone_pivot_groups: sq1-sql-projects-tools
+ms.custom:
+  - ignite-2024
+  - sfi-ropc-nochange
 ---
 
 # Database references overview

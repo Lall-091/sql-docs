@@ -8,10 +8,11 @@ ms.date: 06/13/2025
 ms.service: azure-sql-database
 ms.subservice: development
 ms.topic: how-to
-ms.custom:
-  - linux-related-content
 ms.devlang: cpp
 monikerRange: "=azuresql || =azuresql-db"
+ms.custom:
+  - linux-related-content
+  - sfi-image-nochange
 ---
 # Connect to SQL Database using C and C++
 

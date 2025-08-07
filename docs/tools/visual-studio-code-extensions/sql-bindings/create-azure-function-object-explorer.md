@@ -10,6 +10,7 @@ ms.subservice: vs-code-sql-extensions
 ms.topic: conceptual
 ms.collection:
   - data-tools
+ms.custom: sfi-image-nochange
 ---
 
 # Create Azure Functions with the SQL Bindings extension for Visual Studio Code through the Object Explorer

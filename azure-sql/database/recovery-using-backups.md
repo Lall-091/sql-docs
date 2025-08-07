@@ -9,9 +9,10 @@ ms.date: 05/14/2025
 ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: how-to
+monikerRange: "=azuresql || =azuresql-db"
 ms.custom:
   - azure-sql-split
-monikerRange: "=azuresql || =azuresql-db"
+  - sfi-image-nochange
 ---
 # Restore a database from a backup in Azure SQL Database
 

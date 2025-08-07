@@ -267,7 +267,7 @@ OPTION (USE HINT ('FORCE_LEGACY_CARDINALITY_ESTIMATION'));
    ```
 
   > [!NOTE]
-  > For more information, see [Query Story Hints](query-store-hints.md) (Preview). Currently, this feature is available only in Azure SQL Database.
+  > For more information, see [Query Store Hints](query-store-hints.md) (Preview). Currently, this feature is available only in Azure SQL Database.
 
 ### How to force a particular query plan
 

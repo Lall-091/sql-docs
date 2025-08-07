@@ -10,6 +10,7 @@ ms.subservice: linux
 ms.topic: quickstart
 ms.custom:
   - linux-related-content
+  - sfi-image-nochange
 ---
 
 # Quickstart: Deploy a SQL Server Linux container to Kubernetes using Helm charts

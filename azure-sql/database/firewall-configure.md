@@ -13,6 +13,7 @@ ms.custom:
   - sqldbrb=1
   - devx-track-azurecli
   - devx-track-azurepowershell
+  - sfi-image-nochange
 ---
 # Azure SQL Database and Azure Synapse IP firewall rules
 

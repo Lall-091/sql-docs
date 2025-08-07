@@ -7,7 +7,9 @@ ms.date: "05/21/2018"
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: quickstart
-ms.custom: intro-quickstart
+ms.custom:
+  - intro-quickstart
+  - sfi-ropc-blocked
 ---
 # Run an SSIS package with C# code in a .NET app
 

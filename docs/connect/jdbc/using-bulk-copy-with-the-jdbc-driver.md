@@ -7,6 +7,7 @@ ms.date: 07/31/2024
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
+ms.custom: sfi-ropc-nochange
 ---
 # Using bulk copy with the JDBC driver
 

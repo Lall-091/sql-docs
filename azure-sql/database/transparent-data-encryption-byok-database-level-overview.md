@@ -10,6 +10,7 @@ ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: conceptual
 monikerRange: "= azuresql || = azuresql-db"
+ms.custom: sfi-image-nochange
 ---
 
 # Transparent data encryption (TDE) with customer-managed keys at the database level

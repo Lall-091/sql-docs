@@ -9,6 +9,7 @@ ms.service: sql
 ms.subservice: security
 ms.topic: how-to
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+ms.custom: sfi-ropc-nochange
 ---
 # Rotate Always Encrypted keys using PowerShell
 

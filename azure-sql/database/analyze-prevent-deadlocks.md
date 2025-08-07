@@ -9,9 +9,10 @@ ms.date: 01/28/2025
 ms.service: azure-sql-database
 ms.subservice: performance
 ms.topic: troubleshooting-general
+monikerRange: "=azuresql || =azuresql-db || =fabricsql"
 ms.custom:
   - ignite-2024
-monikerRange: "=azuresql || =azuresql-db || =fabricsql"
+  - sfi-image-nochange
 ---
 
 # Analyze and prevent deadlocks in Azure SQL Database and Fabric SQL database

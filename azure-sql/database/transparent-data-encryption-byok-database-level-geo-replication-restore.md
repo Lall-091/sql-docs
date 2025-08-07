@@ -9,10 +9,11 @@ ms.date: 06/13/2025
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
+monikerRange: "=azuresql || =azuresql-db"
 ms.custom:
   - devx-track-azurecli
   - devx-track-azurepowershell
-monikerRange: "=azuresql || =azuresql-db"
+  - sfi-image-nochange
 ---
 
 # Configure geo replication and backup restore for transparent data encryption with database level customer-managed keys

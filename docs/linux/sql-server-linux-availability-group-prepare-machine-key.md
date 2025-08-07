@@ -9,6 +9,7 @@ ms.subservice: linux
 ms.topic: how-to
 ms.custom:
   - linux-related-content
+  - sfi-ropc-blocked
 ---
 
 # Prepare machine key for contained availability groups on Linux and containers

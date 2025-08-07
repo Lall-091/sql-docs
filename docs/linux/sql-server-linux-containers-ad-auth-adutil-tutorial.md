@@ -8,9 +8,11 @@ ms.date: 07/11/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: tutorial
+monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017 || =sqlallproducts-allversions"
 ms.custom:
   - linux-related-content
-monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017 || =sqlallproducts-allversions"
+  - sfi-image-nochange
+  - sfi-ropc-blocked
 ---
 
 # Tutorial: Configure Active Directory authentication with SQL Server on Linux containers

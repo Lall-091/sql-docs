@@ -11,6 +11,7 @@ ms.topic: tutorial
 ms.custom:
   - sqldbrb=1
   - devx-track-csharp
+  - sfi-image-nochange
 ---
 # Tutorial: Design a relational database in Azure SQL Database C&#x23; and ADO.NET
 [!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]

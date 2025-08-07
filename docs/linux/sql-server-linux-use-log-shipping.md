@@ -10,6 +10,7 @@ ms.topic: how-to
 ms.custom:
   - intro-get-started
   - linux-related-content
+  - sfi-ropc-blocked
 ---
 # Get started with log shipping on Linux
 

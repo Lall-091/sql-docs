@@ -8,6 +8,7 @@ ms.service: sql
 ms.subservice: machine-learning-services
 ms.topic: how-to
 monikerRange: ">=sql-server-2016||>=sql-server-linux-ver15"
+ms.custom: sfi-ropc-nochange
 ---
 # Use ODBC to save and load R objects in SQL Server Machine Learning Services
 [!INCLUDE [SQL Server 2016 and later](../../includes/applies-to-version/sqlserver2016.md)]

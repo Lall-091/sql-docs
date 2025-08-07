@@ -10,6 +10,8 @@ ms.subservice: linux
 ms.topic: how-to
 ms.custom:
   - linux-related-content
+  - sfi-image-nochange
+  - sfi-ropc-blocked
 ---
 # Configure SMB storage failover cluster instance - SQL Server on Linux
 

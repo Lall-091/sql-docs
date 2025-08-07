@@ -8,8 +8,10 @@ ms.reviewer: mathoma, danil
 ms.date: 11/16/2022
 ms.service: azure-sql-managed-instance
 ms.subservice: data-movement
-ms.custom: ignite-2023
 ms.topic: how-to
+ms.custom:
+  - ignite-2023
+  - sfi-image-nochange
 ---
 # Distributed Transaction Coordinator (DTC) for Azure SQL Managed Instance
 

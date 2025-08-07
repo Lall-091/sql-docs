@@ -9,13 +9,15 @@ ms.date: 09/27/2024
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: how-to
+monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
 ms.custom:
   - azure-synapse
   - has-adal-ref
   - sqldbrb=2
   - devx-track-azurepowershell
   - has-azure-ad-ps-ref, azure-ad-ref-level-one-done
-monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 ---
 
 # Configure and manage Microsoft Entra authentication with Azure SQL

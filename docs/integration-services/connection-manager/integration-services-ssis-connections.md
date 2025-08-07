@@ -20,6 +20,7 @@ helpviewer_keywords:
   - "connections [Integration Services], about connections"
   - "connections [Integration Services]"
   - "SQL Server Integration Services packages, connections"
+ms.custom: sfi-ropc-nochange
 ---
 # Integration Services (SSIS) Connections
 

@@ -25,6 +25,9 @@ f1_keywords:
   - "sql13.ssis.ssms.isprojectprop.versions.f1"
   - "sql13.ssis.ssms.isprojectvalidate.f1"
   - "sql13.ssis.ssms.ispackagevalidate.f1"
+ms.custom:
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 ---
 
 # SSIS Catalog

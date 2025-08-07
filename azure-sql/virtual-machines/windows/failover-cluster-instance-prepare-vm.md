@@ -10,6 +10,7 @@ ms.subservice: hadr
 ms.topic: how-to
 editor: monicar
 tags: azure-service-management
+ms.custom: sfi-image-nochange
 ---
 
 # Prepare virtual machines for an FCI (SQL Server on Azure VMs)

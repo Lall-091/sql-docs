@@ -9,6 +9,7 @@ ms.subservice: report-server
 ms.topic: conceptual
 ms.custom:
   - updatefrequency5
+  - sfi-ropc-nochange
 ---
 # RsReportServer.config configuration file
 The [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] `RsReportServer.config` file stores settings that are used by the Report Server web service and background processing. All [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] applications run within a single process that reads configuration settings stored in the `RSReportServer.config` file. Both native mode and SharePoint mode report servers use the `RSReportServer.config`, however the two modes don't use all of the same settings in the configuration file. The SharePoint mode version of the file is smaller as many of the settings for SharePoint mode are stored in SharePoint configuration databases rather than the file. This article describes the default configuration file that is installed for native mode and SharePoint mode. The article also describes some of the important settings and behaviors that the configuration file controls.  

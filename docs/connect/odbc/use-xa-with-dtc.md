@@ -7,10 +7,12 @@ ms.reviewer: v-davidengel
 ms.date: 04/20/2021
 ms.service: sql
 ms.subservice: connectivity
-ms.custom: linux-related-content
 ms.topic: conceptual
 helpviewer_keywords:
   - "driver"
+ms.custom:
+  - linux-related-content
+  - sfi-ropc-nochange
 ---
 # Using XA Transactions
 

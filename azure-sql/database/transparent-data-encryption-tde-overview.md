@@ -9,8 +9,10 @@ ms.date: 06/25/2025
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: conceptual
-ms.custom: sqldbrb=3
 monikerRange: "= azuresql || = azuresql-db || = azuresql-mi"
+ms.custom:
+  - sqldbrb=3
+  - sfi-image-nochange
 ---
 # Transparent data encryption for SQL Database, SQL Managed Instance, and Azure Synapse Analytics
 

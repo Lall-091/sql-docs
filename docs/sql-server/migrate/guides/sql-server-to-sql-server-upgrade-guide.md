@@ -8,6 +8,7 @@ ms.date: 06/16/2025
 ms.service: sql
 ms.subservice: migration-guide
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 
 # Upgrade SQL Server to the latest version

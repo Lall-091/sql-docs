@@ -41,6 +41,14 @@
     "fileMetadata": {},
     "template": [],
     "dest": "data-migration",
-    "markdownEngineName": "markdig"
+    "markdownEngineName": "markdig",
+    "rules": {
+      "filename-incomplete": {
+          "exclude": [
+            "includes/*",
+            "*/include"
+          ]
+      }
+    }
   }
 }

@@ -14,6 +14,7 @@ ms.custom:
   - build-2023
   - build-2023-dataai
   - ignite-2023
+  - sfi-image-nochange
 ---
 
 # Connectivity architecture for Azure SQL Managed Instance

@@ -6,8 +6,10 @@ ms.author: davidengel
 ms.date: 07/31/2024
 ms.service: sql
 ms.subservice: connectivity
-ms.custom: linux-related-content
 ms.topic: conceptual
+ms.custom:
+  - linux-related-content
+  - sfi-image-nochange
 ---
 # Using Microsoft Entra ID with the ODBC Driver
 

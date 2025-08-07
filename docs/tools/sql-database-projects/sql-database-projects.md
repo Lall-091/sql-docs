@@ -12,6 +12,7 @@ ms.collection:
   - data-tools
 ms.custom:
   - ignite-2024
+  - sfi-ropc-nochange
 ---
 
 # What are SQL database projects?

@@ -14,6 +14,7 @@ helpviewer_keywords:
 apilocation: "sqlsrv32.dll"
 apiname: "SQLDriverConnect"
 apitype: "dllExport"
+ms.custom: sfi-ropc-nochange
 ---
 # SQLDriverConnect Function
 **Conformance**  

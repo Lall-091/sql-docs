@@ -7,6 +7,7 @@ ms.date: 02/15/2023
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
+ms.custom: sfi-ropc-nochange
 ---
 
 # Using Always Encrypted with the Microsoft .NET Data Provider for SQL Server

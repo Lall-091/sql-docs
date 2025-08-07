@@ -10,6 +10,8 @@ ms.topic: how-to
 monikerRange: ">=sql-server-ver15"
 ms.custom:
   - build-2025
+  - sfi-image-nochange
+  - sfi-ropc-blocked
 ---
 # Host an MDS database on a managed instance
 

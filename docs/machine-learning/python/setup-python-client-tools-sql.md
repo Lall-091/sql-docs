@@ -8,9 +8,11 @@ ms.date: 05/29/2024
 ms.service: sql
 ms.subservice: machine-learning-services
 ms.topic: how-to
+monikerRange: "=sql-server-2016||=sql-server-2017||=sql-server-ver15||=sql-server-linux-ver15"
 ms.custom:
   - linux-related-content
-monikerRange: "=sql-server-2016||=sql-server-2017||=sql-server-ver15||=sql-server-linux-ver15"
+  - sfi-image-nochange
+  - sfi-ropc-blocked
 ---
 # Set up a data science client for Python development on SQL Server Machine Learning Services
 [!INCLUDE [SQL Server 2016-2019 2019 linux only](../../includes/applies-to-version/sqlserver2016-2019-2019linux-only.md)]

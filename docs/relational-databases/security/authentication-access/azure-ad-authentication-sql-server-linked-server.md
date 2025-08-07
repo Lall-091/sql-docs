@@ -9,6 +9,7 @@ ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
 monikerRange: ">=sql-server-ver15||>= sql-server-linux-ver16"
+ms.custom: sfi-image-nochange
 ---
 
 # Linked server for SQL Server with Microsoft Entra authentication

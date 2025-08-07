@@ -7,8 +7,10 @@ ms.date: 08/26/2020
 ms.service: sql
 ms.subservice: machine-learning
 ms.topic: how-to
-ms.custom: intro-installation
 monikerRange: ">=sql-server-ver15||>=sql-server-linux-ver15||=azuresqldb-mi-current"
+ms.custom:
+  - intro-installation
+  - sfi-ropc-blocked
 ---
 
 # Install Python packages with sqlmlutils

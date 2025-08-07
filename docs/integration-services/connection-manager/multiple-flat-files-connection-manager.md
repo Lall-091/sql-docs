@@ -19,6 +19,7 @@ helpviewer_keywords:
   - "flat file connections [Integration Services]"
   - "connection managers [Integration Services], Multiple Flat Files"
   - "multiple flat file connections"
+ms.custom: sfi-ropc-nochange
 ---
 # Multiple Flat Files Connection Manager
 

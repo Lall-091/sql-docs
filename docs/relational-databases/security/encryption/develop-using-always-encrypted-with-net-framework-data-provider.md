@@ -9,6 +9,7 @@ ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+ms.custom: sfi-ropc-nochange
 ---
 # Using Always Encrypted with the .NET Framework Data Provider for SQL Server
 

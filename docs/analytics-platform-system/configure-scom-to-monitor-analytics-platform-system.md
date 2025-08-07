@@ -8,6 +8,7 @@ ms.date: 12/05/2023
 ms.service: sql
 ms.subservice: data-warehouse
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 
 # Configure System Center Operations Manager (SCOM) to Monitor Analytics Platform System

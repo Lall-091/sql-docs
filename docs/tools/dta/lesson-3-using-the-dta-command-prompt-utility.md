@@ -11,6 +11,7 @@ ms.collection:
   - data-tools
 helpviewer_keywords:
   - "Database Engine [SQL Server], tutorials"
+ms.custom: sfi-image-nochange
 ---
 # Lesson 3: Using the dta Command Prompt Utility
  [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]

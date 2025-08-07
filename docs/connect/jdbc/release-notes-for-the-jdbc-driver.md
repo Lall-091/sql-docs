@@ -7,6 +7,7 @@ ms.date: 06/18/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
+ms.custom: sfi-ropc-nochange
 ---
 # Release notes for the Microsoft JDBC Driver for SQL Server
 

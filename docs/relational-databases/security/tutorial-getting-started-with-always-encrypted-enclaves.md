@@ -8,8 +8,10 @@ ms.date: 02/15/2023
 ms.service: sql
 ms.subservice: security
 ms.topic: tutorial
-ms.custom: intro-get-started
 monikerRange: ">= sql-server-ver15"
+ms.custom:
+  - intro-get-started
+  - sfi-image-nochange
 ---
 # Tutorial: Getting started using Always Encrypted with secure enclaves in SQL Server
 

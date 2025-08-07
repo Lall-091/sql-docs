@@ -9,8 +9,10 @@ ms.date: 07/09/2025
 ms.service: azure-sql
 ms.subservice: performance
 ms.topic: sample
-ms.custom: sqldbrb=1
 monikerRange: "= azuresql || = azuresql-db || = azuresql-mi || = fabricsql"
+ms.custom:
+  - sqldbrb=1
+  - sfi-image-nochange
 ---
 # Create an event session with an event_file target in Azure Storage
 

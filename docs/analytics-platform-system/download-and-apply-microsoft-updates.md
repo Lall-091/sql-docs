@@ -8,6 +8,7 @@ ms.date: 04/17/2018
 ms.service: sql
 ms.subservice: data-warehouse
 ms.topic: how-to
+ms.custom: sfi-ropc-nochange
 ---
 
 # Download and apply Microsoft updates for Analytics Platform System

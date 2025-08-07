@@ -10,6 +10,7 @@ ms.subservice: machine-learning
 ms.topic: tutorial
 ms.devlang: python
 monikerRange: ">=sql-server-2017||>=sql-server-linux-ver15||=azuresqldb-mi-current"
+ms.custom: sfi-ropc-blocked
 ---
 # Python tutorial: Prepare data to categorize customers with SQL machine learning
 [!INCLUDE [SQL Server 2017 SQL MI](../../includes/applies-to-version/sqlserver2017-asdbmi.md)]

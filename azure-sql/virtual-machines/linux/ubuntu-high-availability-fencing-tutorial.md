@@ -7,8 +7,11 @@ ms.reviewer: amitkh-msft, randolphwest
 ms.date: 11/29/2023
 ms.service: azure-vm-sql-server
 ms.subservice: hadr
-ms.custom: devx-track-azurecli, linux-related-content
 ms.topic: tutorial
+ms.custom:
+  - devx-track-azurecli
+  - linux-related-content
+  - sfi-image-nochange
 ---
 
 # Tutorial: Configure availability groups for SQL Server on Ubuntu virtual machines in Azure

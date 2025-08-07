@@ -7,6 +7,9 @@ ms.date: "08/14/2019"
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: how-to
+ms.custom:
+  - sfi-image-nochange
+  - sfi-ropc-blocked
 ---
 # Oracle Connection Manager
 

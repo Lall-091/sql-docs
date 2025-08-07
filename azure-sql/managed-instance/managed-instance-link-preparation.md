@@ -8,8 +8,10 @@ ms.reviewer: mathoma, danil, randolphwest
 ms.date: 10/03/2024
 ms.service: azure-sql-managed-instance
 ms.subservice: data-movement
-ms.custom: ignite-2023
 ms.topic: how-to
+ms.custom:
+  - ignite-2023
+  - sfi-image-nochange
 ---
 
 # Prepare your environment for a link - Azure SQL Managed Instance

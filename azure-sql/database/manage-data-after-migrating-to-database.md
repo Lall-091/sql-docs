@@ -13,6 +13,7 @@ ms.collection:
   - sql-migration-content
 ms.custom:
   - sqldbrb=1
+  - sfi-image-nochange
 ---
 # New DBA in the cloud – Managing Azure SQL Database after migration
 [!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]

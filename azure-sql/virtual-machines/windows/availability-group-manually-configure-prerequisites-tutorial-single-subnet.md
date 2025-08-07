@@ -10,6 +10,7 @@ ms.subservice: hadr
 ms.topic: how-to
 editor: monicar
 tags: azure-service-management
+ms.custom: sfi-image-nochange
 ---
 
 # Tutorial: Prerequisites for single-subnet availability groups - SQL Server on Azure VMs

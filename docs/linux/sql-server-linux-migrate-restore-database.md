@@ -11,6 +11,7 @@ ms.topic: upgrade-and-migration-article
 ms.custom:
   - intro-migration
   - linux-related-content
+  - sfi-image-nochange
 ---
 # Migrate a SQL Server database from Windows to Linux using backup and restore
 

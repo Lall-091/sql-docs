@@ -10,6 +10,7 @@ ms.subservice: tools-other
 ms.topic: install-set-up-deploy
 ms.collection:
   - data-tools
+ms.custom: sfi-ropc-nochange
 ---
 
 # SqlPackage deploy report and drift report

@@ -8,6 +8,7 @@ ms.date: 01/26/2024
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: tutorial
+ms.custom: sfi-image-nochange
 ---
 # Tutorial: Secure a database in Azure SQL Database
 [!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]

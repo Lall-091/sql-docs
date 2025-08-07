@@ -15,6 +15,7 @@ helpviewer_keywords:
   - "MSOLEDBSQL, connection string keywords"
   - "connection strings [OLE DB Driver for SQL Server]"
   - "OLE DB Driver for SQL Server, connection string keywords"
+ms.custom: sfi-ropc-nochange
 ---
 # Using Connection String Keywords with OLE DB Driver for SQL Server
 

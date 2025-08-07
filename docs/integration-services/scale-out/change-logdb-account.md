@@ -8,7 +8,9 @@ ms.date: 06/29/2020
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: conceptual
-ms.custom: performance
+ms.custom:
+  - performance
+  - sfi-ropc-nochange
 ---
 # Change the account for Scale Out logging
 

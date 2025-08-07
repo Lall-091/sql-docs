@@ -7,8 +7,11 @@ ms.reviewer: atsingh, dinethi, rsetlem
 ms.date: 04/24/2025
 ms.service: azure-sql-database
 ms.subservice: scale-out
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.topic: how-to
+ms.custom:
+  - devx-track-azurecli
+  - devx-track-azurepowershell
+  - sfi-image-nochange
 ---
 # Configure and manage Hyperscale named replicas
 [!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]

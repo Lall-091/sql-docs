@@ -8,8 +8,10 @@ ms.date: 06/18/2024
 ms.service: azure-vm-sql-server
 ms.subservice: backup
 ms.topic: how-to
-ms.custom: devx-track-azurepowershell
 tags: azure-resource-manager
+ms.custom:
+  - devx-track-azurepowershell
+  - sfi-image-nochange
 ---
 
 # Automated Backup for SQL Server 2014 virtual machines (Resource Manager)

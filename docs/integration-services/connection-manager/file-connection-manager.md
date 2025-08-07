@@ -18,6 +18,7 @@ helpviewer_keywords:
   - "connection managers [Integration Services], File"
   - "connections [Integration Services], files"
   - "File connection manager"
+ms.custom: sfi-ropc-nochange
 ---
 # File Connection Manager
 

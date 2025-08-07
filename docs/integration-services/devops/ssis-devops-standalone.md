@@ -7,6 +7,7 @@ ms.date: "10/16/2020"
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: conceptual
+ms.custom: sfi-ropc-nochange
 ---
 # Standalone SQL Server Integration Service (SSIS) DevOps Tools
 

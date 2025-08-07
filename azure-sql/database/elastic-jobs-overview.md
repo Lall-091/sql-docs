@@ -10,6 +10,7 @@ ms.subservice: elastic-jobs
 ms.topic: concept-article
 ms.custom:
   - sqldbrb=1
+  - sfi-image-nochange
 ---
 
 # Elastic jobs in Azure SQL Database

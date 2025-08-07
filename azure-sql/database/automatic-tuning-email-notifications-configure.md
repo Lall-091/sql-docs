@@ -9,9 +9,10 @@ ms.date: 04/23/2025
 ms.service: azure-sql
 ms.subservice: performance
 ms.topic: how-to
+monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
 ms.custom:
   - sqldbrb=1
-monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
+  - sfi-image-nochange
 ---
 # Email notifications for automatic tuning
 

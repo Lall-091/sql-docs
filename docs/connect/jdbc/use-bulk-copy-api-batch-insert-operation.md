@@ -7,6 +7,7 @@ ms.date: 04/13/2023
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
+ms.custom: sfi-ropc-nochange
 ---
 
 # Using bulk copy API for batch insert operation

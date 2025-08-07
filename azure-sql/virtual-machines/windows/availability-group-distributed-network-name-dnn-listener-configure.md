@@ -9,6 +9,7 @@ ms.service: azure-vm-sql-server
 ms.subservice: hadr
 ms.topic: how-to
 tags: azure-resource-manager
+ms.custom: sfi-image-nochange
 ---
 # Configure a DNN listener for an availability group
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

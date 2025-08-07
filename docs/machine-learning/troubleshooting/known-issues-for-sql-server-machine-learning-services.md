@@ -9,6 +9,7 @@ ms.service: sql
 ms.subservice: machine-learning-services
 ms.topic: troubleshooting
 monikerRange: ">=sql-server-2016||>=sql-server-linux-ver15"
+ms.custom: sfi-ropc-nochange
 ---
 # Known issues for Python and R in SQL Server Machine Learning Services
 

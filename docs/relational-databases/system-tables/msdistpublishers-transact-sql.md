@@ -15,6 +15,7 @@ helpviewer_keywords:
   - "MSdistpublishers system table"
 dev_langs:
   - "TSQL"
+ms.custom: sfi-ropc-nochange
 ---
 # MSdistpublishers (Transact-SQL)
 

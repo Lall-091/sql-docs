@@ -9,9 +9,10 @@ ms.date: 07/30/2025
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: conceptual
+monikerRange: "=azuresql||=azuresql-db||=azuresql-mi"
 ms.custom:
   - sqldbrb=2
-monikerRange: "=azuresql||=azuresql-db||=azuresql-mi"
+  - sfi-image-nochange
 ---
 
 # Monitor Azure SQL workloads with database watcher (preview)

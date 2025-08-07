@@ -12,6 +12,7 @@ ms.topic: overview
 ms.custom:
   - sqldbrb=1
   - fasttrack-edit
+  - sfi-image-nochange
 ---
 
 # Azure Private Link for Azure SQL Database and Azure Synapse Analytics

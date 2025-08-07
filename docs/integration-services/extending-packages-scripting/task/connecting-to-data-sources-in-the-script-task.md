@@ -20,6 +20,7 @@ helpviewer_keywords:
   - "SSIS Script task, connections"
 dev_langs:
   - "VB"
+ms.custom: sfi-ropc-nochange
 ---
 # Connecting to Data Sources in the Script Task
 

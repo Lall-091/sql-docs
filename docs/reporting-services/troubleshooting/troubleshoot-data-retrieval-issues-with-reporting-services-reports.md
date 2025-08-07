@@ -9,6 +9,7 @@ ms.subservice: troubleshooting
 ms.topic: conceptual
 ms.custom:
   - updatefrequency5
+  - sfi-ropc-nochange
 ---
 # Troubleshoot data retrieval issues with Reporting Services reports
 The first step during report processing is to retrieve the report data for each dataset by running the dataset query. When you preview a report locally, your data source connections and credentials must use sufficient permissions to retrieve the data to your computer. When you run a report on the report server, the data source connections and credentials must use sufficient permissions to retrieve the data on the report server. Use this article to help troubleshoot issues about report data retrieval.   

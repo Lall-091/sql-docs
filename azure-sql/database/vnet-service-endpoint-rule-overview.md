@@ -11,6 +11,7 @@ ms.topic: how-to
 ms.custom:
   - sqldbrb=1
   - subject-rbac-steps
+  - sfi-image-nochange
 ---
 # Use virtual network service endpoints and rules for servers in Azure SQL Database
 

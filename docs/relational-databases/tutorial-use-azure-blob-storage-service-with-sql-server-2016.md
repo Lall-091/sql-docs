@@ -5,8 +5,10 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.date: 03/01/2023
 ms.service: sql
-ms.custom: devx-track-azurepowershell
 ms.topic: tutorial
+ms.custom:
+  - devx-track-azurepowershell
+  - sfi-image-nochange
 ---
 # Tutorial: Use Azure Blob Storage with SQL Server
 

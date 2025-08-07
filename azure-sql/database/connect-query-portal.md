@@ -9,10 +9,6 @@ ms.date: 01/15/2025
 ms.service: azure-sql-database
 ms.subservice: development
 ms.topic: quickstart
-ms.custom:
-  - sqldbrb=1
-  - mode-ui
-  - kr2b-contr-experiment
 keywords:
   - connect to sql database
   - query sql database
@@ -20,6 +16,11 @@ keywords:
   - portal
   - query editor
 monikerRange: "=azuresql||=azuresql-db"
+ms.custom:
+  - sqldbrb=1
+  - mode-ui
+  - kr2b-contr-experiment
+  - sfi-image-nochange
 ---
 # Quickstart: Use the Azure portal query editor to query Azure SQL Database
 

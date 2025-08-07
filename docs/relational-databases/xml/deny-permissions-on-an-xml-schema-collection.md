@@ -10,6 +10,7 @@ ms.subservice: xml
 ms.topic: how-to
 helpviewer_keywords:
   - "denying permissions [SQL Server], XML server collections"
+ms.custom: sfi-ropc-blocked
 ---
 # Deny permissions on an XML schema collection
 

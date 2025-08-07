@@ -9,6 +9,7 @@ ms.subservice: integration-services
 ms.topic: "reference"
 helpviewer_keywords:
   - "custom connection managers [Integration Services], coding"
+ms.custom: sfi-ropc-nochange
 ---
 # Coding a Custom Connection Manager
 

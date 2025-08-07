@@ -9,9 +9,10 @@ ms.date: 07/24/2024
 ms.service: azure-sql
 ms.subservice: data-movement
 ms.topic: how-to
+monikerRange: "=azuresql||=azuresql-db||=azuresql-mi"
 ms.custom:
   - sqldbrb=2
-monikerRange: "=azuresql||=azuresql-db||=azuresql-mi"
+  - sfi-image-nochange
 ---
 # Export to a BACPAC file - Azure SQL Database and Azure SQL Managed Instance
 

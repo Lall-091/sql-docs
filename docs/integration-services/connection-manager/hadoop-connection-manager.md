@@ -9,6 +9,7 @@ ms.subservice: integration-services
 ms.topic: conceptual
 f1_keywords:
   - "sql13.ssis.designer.hadoopconn.f1"
+ms.custom: sfi-image-nochange
 ---
 # Hadoop Connection Manager
 

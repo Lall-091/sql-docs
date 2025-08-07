@@ -8,11 +8,12 @@ ms.date: 05/02/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: troubleshooting
+zone_pivot_groups: cs1-command-shell
+monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017"
 ms.custom:
   - linux-related-content
   - build-2025
-zone_pivot_groups: cs1-command-shell
-monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017"
+  - sfi-ropc-blocked
 ---
 # Configure and customize SQL Server Linux containers
 

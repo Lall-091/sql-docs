@@ -10,6 +10,7 @@ ms.subservice: ssma
 ms.topic: how-to
 ms.collection:
   - sql-migration-content
+ms.custom: sfi-ropc-blocked
 ---
 # Connecting to Sybase (SybaseToSQL)
 

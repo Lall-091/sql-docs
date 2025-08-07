@@ -8,6 +8,7 @@ ms.service: sql
 ms.subservice: integration-services
 ms.topic: reference
 monikerRange: ">= sql-server-2017"
+ms.custom: sfi-ropc-nochange
 ---
 # catalog.update_logdb_info (SSISDB Database)
 

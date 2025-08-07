@@ -591,7 +591,13 @@
       },
       "sensitive-language-bl": {
         "exclude": []
-      }
+      },
+      "filename-incomplete": {
+        "exclude": [
+          "includes/*",
+          "*/include"
+        ]
+      } 
     }
   }
 }

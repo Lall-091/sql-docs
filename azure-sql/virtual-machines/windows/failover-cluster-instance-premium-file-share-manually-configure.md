@@ -8,11 +8,12 @@ ms.date: 10/02/2023
 ms.service: azure-vm-sql-server
 ms.subservice: hadr
 ms.topic: how-to
+editor: monicar
+tags: azure-service-management
 ms.custom:
   - na
   - devx-track-azurepowershell
-editor: monicar
-tags: azure-service-management
+  - sfi-image-nochange
 ---
 # Create an FCI with a premium file share (SQL Server on Azure VMs)
 

@@ -8,8 +8,6 @@ ms.date: 06/16/2025
 ms.service: azure-sql-database
 ms.subservice: development
 ms.topic: troubleshooting
-ms.custom:
-  - sqldbrb=1
 keywords:
   - "sql connection"
   - "connection string"
@@ -17,6 +15,9 @@ keywords:
   - "transient error"
   - "connection error"
 monikerRange: "=azuresql || =azuresql-db || =azuresql-mi || =fabricsql"
+ms.custom:
+  - sqldbrb=1
+  - sfi-ropc-nochange
 ---
 
 # Troubleshoot transient connection errors

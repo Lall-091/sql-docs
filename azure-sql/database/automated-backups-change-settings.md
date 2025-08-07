@@ -9,11 +9,12 @@ ms.date: 06/10/2025
 ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: how-to
+monikerRange: "=azuresql || =azuresql-db"
 ms.custom:
   - devx-track-azurepowershell
   - devx-track-azurecli
   - azure-sql-split
-monikerRange: "=azuresql || =azuresql-db"
+  - sfi-image-nochange
 ---
 # Change automated backup settings for Azure SQL Database
 

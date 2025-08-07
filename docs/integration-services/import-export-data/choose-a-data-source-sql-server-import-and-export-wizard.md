@@ -9,6 +9,7 @@ ms.subservice: integration-services
 ms.topic: conceptual
 f1_keywords:
   - "sql13.dts.impexpwizard.chooseadatasource.f1"
+ms.custom: sfi-ropc-nochange
 ---
 # Choose a Data Source (SQL Server Import and Export Wizard)
 

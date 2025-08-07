@@ -8,6 +8,7 @@ ms.service: sql
 ms.subservice: machine-learning-services
 ms.topic: how-to
 monikerRange: ">=sql-server-2017||>=sql-server-linux-ver15"
+ms.custom: sfi-image-nochange
 ---
 # Run Python and R scripts in Azure Data Studio notebooks with SQL Server Machine Learning Services
 [!INCLUDE [SQL Server 2017 and later](../../includes/applies-to-version/sqlserver2017.md)]

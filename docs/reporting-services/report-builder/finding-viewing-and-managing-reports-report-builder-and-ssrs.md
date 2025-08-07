@@ -9,6 +9,7 @@ ms.subservice: report-builder
 ms.topic: how-to
 ms.custom:
   - updatefrequency5
+  - sfi-image-nochange
 # customer-intent: As a Report Builder and SSRS user, I want to see how to find, view, and manage reports so that I can deploy them effectively.
 ---
 # Find, view, and manage reports (Report Builder and SSRS)

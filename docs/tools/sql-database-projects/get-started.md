@@ -10,9 +10,10 @@ ms.subservice: sql-database-projects
 ms.topic: get-started
 ms.collection:
   - data-tools
+zone_pivot_groups: sq1-sql-projects-tools
 ms.custom:
   - ignite-2024
-zone_pivot_groups: sq1-sql-projects-tools
+  - sfi-ropc-nochange
 ---
 
 # Get started with SQL database projects

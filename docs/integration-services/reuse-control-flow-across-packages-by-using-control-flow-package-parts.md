@@ -12,6 +12,7 @@ f1_keywords:
   - "sql13.dts.designer.addcopyexistingtemplate.f1"
   - "sql13.dts.designer.addcopyexistingpackagepart.f1"
   - "sql13.dts.designer.packagepart.general.f1"
+ms.custom: sfi-image-nochange
 ---
 # Reuse Control Flow across Packages by Using Control Flow Package Parts
 

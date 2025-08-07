@@ -10,6 +10,7 @@ ms.subservice: tools-other
 ms.topic: conceptual
 ms.collection:
   - data-tools
+ms.custom: sfi-ropc-blocked
 ---
 
 # SqlPackage Export parameters and properties

@@ -11,6 +11,7 @@ ms.topic: upgrade-and-migration-article
 helpviewer_keywords:
   - "Integration Services, migrating"
   - "migrating packages [Integration Services]"
+ms.custom: sfi-ropc-nochange
 ---
 # Upgrade Integration Services Packages
 

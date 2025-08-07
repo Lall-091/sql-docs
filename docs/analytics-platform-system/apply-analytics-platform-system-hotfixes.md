@@ -8,6 +8,7 @@ ms.date: 12/04/2023
 ms.service: sql
 ms.subservice: data-warehouse
 ms.topic: how-to
+ms.custom: sfi-ropc-nochange
 ---
 
 # Apply Analytics Platform System hotfixes

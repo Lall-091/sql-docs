@@ -14,6 +14,7 @@ f1_keywords:
   - "ssma.oracle.connectoracleform.f1"
 helpviewer_keywords:
   - "Refreshing Oracle Metadata"
+ms.custom: sfi-ropc-blocked
 ---
 # Connecting to Oracle Database (OracleToSQL)
 

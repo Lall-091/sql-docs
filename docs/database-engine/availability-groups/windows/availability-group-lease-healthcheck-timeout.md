@@ -10,6 +10,7 @@ ms.subservice: availability-groups
 ms.topic: how-to
 ms.custom:
   - build-2025
+  - sfi-image-nochange
 ---
 # Mechanics and guidelines of lease, cluster, and health check timeouts for Always On availability groups
 

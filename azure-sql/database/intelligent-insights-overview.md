@@ -9,8 +9,10 @@ ms.date: 08/16/2024
 ms.service: azure-sql
 ms.subservice: performance
 ms.topic: concept-article 
-ms.custom: sqldbrb=2
 monikerRange: "= azuresql || = azuresql-db || = azuresql-mi"
+ms.custom:
+  - sqldbrb=2
+  - sfi-image-nochange
 ---
 # Intelligent Insights to monitor and troubleshoot database performance (preview)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

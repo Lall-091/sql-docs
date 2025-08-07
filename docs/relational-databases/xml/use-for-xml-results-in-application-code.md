@@ -16,6 +16,7 @@ helpviewer_keywords:
   - "ADO [SQL Server]"
   - "XML data islands [SQL Server]"
   - "data islands [SQL Server]"
+ms.custom: sfi-ropc-nochange
 ---
 # Use FOR XML Results in application code
 

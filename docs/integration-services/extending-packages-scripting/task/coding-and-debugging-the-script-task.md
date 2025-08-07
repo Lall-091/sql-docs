@@ -18,6 +18,7 @@ helpviewer_keywords:
   - "SSIS Script task, coding"
 dev_langs:
   - "VB"
+ms.custom: sfi-ropc-nochange
 ---
 # Coding and Debugging the Script Task
 

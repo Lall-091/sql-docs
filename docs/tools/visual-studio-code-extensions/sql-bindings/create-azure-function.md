@@ -10,6 +10,7 @@ ms.subservice: vs-code-sql-extensions
 ms.topic: how-to
 ms.collection:
   - data-tools
+ms.custom: sfi-ropc-nochange
 ---
 
 # Create Azure Functions with the SQL Bindings extension for Visual Studio Code

@@ -8,14 +8,15 @@ ms.date: 07/30/2025
 ms.service: sql
 ms.subservice: performance
 ms.topic: conceptual
-ms.custom:
-  - ignite-2024
-  - build-2025
 helpviewer_keywords:
   - "optimized locking"
 dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric || >=sql-server-ver17 || >=sql-server-linux-ver17"
+ms.custom:
+  - ignite-2024
+  - build-2025
+  - sfi-image-nochange
 ---
 
 # Optimized locking

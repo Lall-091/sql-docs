@@ -11,9 +11,10 @@ ms.subservice: distributed-replay
 ms.topic: install-set-up-deploy
 ms.collection:
   - data-tools
+monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017"
 ms.custom:
   - intro-installation
-monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017"
+  - sfi-ropc-blocked
 ---
 
 # Install Distributed Replay

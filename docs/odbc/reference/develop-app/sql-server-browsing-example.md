@@ -11,6 +11,7 @@ helpviewer_keywords:
   - "SQLBrowseConnect function [ODBC], example"
   - "connecting to data source [ODBC], SqlBrowseConnect"
   - "connecting to driver [ODBC], SQLBrowseConnect"
+ms.custom: sfi-ropc-blocked
 ---
 # SQL Server Browsing Example
 The following example shows how **SQLBrowseConnect** might be used to browse the connections available with a driver for SQL Server. First, the application requests a connection handle:  

@@ -8,6 +8,9 @@ ms.date: 12/04/2023
 ms.service: sql
 ms.subservice: data-warehouse
 ms.topic: how-to
+ms.custom:
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 ---
 
 # Appliance Network configuration for Analytics Platform System

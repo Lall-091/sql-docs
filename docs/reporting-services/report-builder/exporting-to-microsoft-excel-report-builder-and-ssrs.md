@@ -7,7 +7,9 @@ ms.date: 09/30/2024
 ms.service: reporting-services
 ms.subservice: report-builder
 ms.topic: conceptual
-ms.custom: updatefrequency5
+ms.custom:
+  - updatefrequency5
+  - sfi-image-nochange
 
 # customer intent: As a SQL Server Reporting Services user, I want to see how the Excel rendering extension positions and organizes report data in Excel so that I can design my reports for successful exports.
 ---

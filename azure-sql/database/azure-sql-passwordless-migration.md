@@ -8,12 +8,13 @@ ms.date: 06/13/2025
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
+ms.devlang: csharp
+monikerRange: "=azuresql || =azuresql-db"
 ms.custom:
   - devx-track-csharp
   - passwordless-dotnet
   - devx-track-azurecli
-ms.devlang: csharp
-monikerRange: "=azuresql || =azuresql-db"
+  - sfi-ropc-nochange
 ---
 
 # Migrate a .NET application to use passwordless connections with Azure SQL Database

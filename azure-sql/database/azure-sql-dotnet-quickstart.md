@@ -8,8 +8,10 @@ ms.date: 09/17/2024
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: quickstart
-ms.custom: passwordless-dotnet
 monikerRange: "=azuresql || =azuresql-db"
+ms.custom:
+  - passwordless-dotnet
+  - sfi-ropc-nochange
 ---
 
 # Connect to and query Azure SQL Database using .NET and the Microsoft.Data.SqlClient library

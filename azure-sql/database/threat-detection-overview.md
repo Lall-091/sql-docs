@@ -9,10 +9,11 @@ ms.date: 06/24/2024
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: conceptual
-ms.custom:
-  - sqldbrb=2
 tags: azure-synapse
 monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
+ms.custom:
+  - sqldbrb=2
+  - sfi-image-nochange
 ---
 
 # SQL Advanced Threat Protection

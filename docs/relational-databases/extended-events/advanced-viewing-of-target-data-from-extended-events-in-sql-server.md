@@ -9,6 +9,7 @@ ms.service: sql
 ms.subservice: xevents
 ms.topic: tutorial
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+ms.custom: sfi-image-nochange
 ---
 # View event data in SQL Server Management Studio
 

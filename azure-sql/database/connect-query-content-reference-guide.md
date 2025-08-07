@@ -9,9 +9,10 @@ ms.date: 01/14/2025
 ms.service: azure-sql
 ms.subservice: connect
 ms.topic: concept-article 
+monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
 ms.custom:
   - sqldbrb=1
-monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
+  - sfi-image-nochange
 ---
 # Azure SQL Database and Azure SQL Managed Instance connect and query articles
 

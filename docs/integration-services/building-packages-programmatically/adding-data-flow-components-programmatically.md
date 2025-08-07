@@ -14,6 +14,7 @@ helpviewer_keywords:
 dev_langs:
   - "VB"
   - "CSharp"
+ms.custom: sfi-ropc-nochange
 ---
 # Adding Data Flow Components Programmatically
 

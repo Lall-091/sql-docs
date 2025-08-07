@@ -7,11 +7,12 @@ ms.date: 09/25/2024
 ms.service: sql
 ms.subservice: replication
 ms.topic: tutorial
-ms.custom:
-  - updatefrequency5
 helpviewer_keywords:
   - "replication [SQL Server], tutorials"
 monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+ms.custom:
+  - updatefrequency5
+  - sfi-image-nochange
 ---
 # Tutorial: Configure replication between a server and mobile clients (merge)
  [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]

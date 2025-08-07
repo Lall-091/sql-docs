@@ -11,6 +11,7 @@ helpviewer_keywords:
   - "web configuration file [Master Data Services]"
 ms.custom:
   - build-2025
+  - sfi-ropc-nochange
 ---
 # Web Configuration Reference (Master Data Services)
 

@@ -20,6 +20,7 @@ helpviewer_keywords:
 dev_langs:
   - "VB"
   - "CSharp"
+ms.custom: sfi-ropc-nochange
 ---
 # Enabling Logging Programmatically
 

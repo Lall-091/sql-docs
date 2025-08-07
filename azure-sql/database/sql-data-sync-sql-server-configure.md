@@ -10,6 +10,7 @@ ms.subservice: sql-data-sync
 ms.topic: tutorial
 ms.custom:
   - sqldbrb=1
+  - sfi-image-nochange
 ---
 # Tutorial: Set up SQL Data Sync between databases in Azure SQL Database and SQL Server
 

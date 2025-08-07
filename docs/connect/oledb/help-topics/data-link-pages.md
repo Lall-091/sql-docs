@@ -8,6 +8,7 @@ ms.date: "10/26/2022"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
+ms.custom: sfi-image-nochange
 ---
 # Universal Data Link (UDL) configuration
 [!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]

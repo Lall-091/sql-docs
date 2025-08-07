@@ -13,6 +13,7 @@ helpviewer_keywords:
   - "attribute mapping [SQLXML], XML Bulk Load"
   - "overflow data [SQLXML]"
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+ms.custom: sfi-ropc-nochange
 ---
 # Annotation Interpretation - sql:mapped
 [!INCLUDE [SQL Server Azure SQL Database](../../../includes/applies-to-version/sql-asdb.md)]

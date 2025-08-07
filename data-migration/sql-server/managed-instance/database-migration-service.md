@@ -13,6 +13,7 @@ ms.collection:
 ms.custom:
   - seo-lt-2019
   - ignite-2024
+  - sfi-image-nochange
 ---
 
 # Tutorial: Migrate SQL Server to Azure SQL Managed Instance with DMS

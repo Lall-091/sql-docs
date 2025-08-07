@@ -10,6 +10,7 @@ ms.subservice: supportability
 ms.topic: "reference"
 helpviewer_keywords:
   - "4064 (Database Engine error)"
+ms.custom: sfi-ropc-blocked
 ---
 # MSSQLSERVER_4064
 

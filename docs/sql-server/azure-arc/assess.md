@@ -6,6 +6,7 @@ ms.author: rajpo
 ms.reviewer: mikeray, randolphwest
 ms.date: 09/09/2024
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 
 # Configure best practices assessment for SQL Server enabled by Azure Arc

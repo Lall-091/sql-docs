@@ -7,6 +7,7 @@ ms.date: 07/31/2020
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
+ms.custom: sfi-ropc-nochange
 ---
 
 # SQL Data Discovery and Classification JDBC Sample

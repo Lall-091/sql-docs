@@ -13,6 +13,7 @@ ms.custom:
   - devx-track-azurepowershell
   - mode-ui
   - references-regions
+  - sfi-image-nochange
 ---
 # Quickstart: Create a single database - Azure SQL Database
 

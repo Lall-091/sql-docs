@@ -10,6 +10,7 @@ ms.subservice: linux
 ms.topic: how-to
 ms.custom:
   - linux-related-content
+  - sfi-ropc-blocked
 ---
 # Configure SLES shared disk cluster for SQL Server
 

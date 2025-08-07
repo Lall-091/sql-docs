@@ -9,7 +9,9 @@ ms.date: 02/18/2019
 ms.service: azure-sql-managed-instance
 ms.subservice: connect
 ms.topic: quickstart
-ms.custom: mode-other
+ms.custom:
+  - mode-other
+  - sfi-image-nochange
 ---
 # Quickstart: Configure an Azure VM to connect to Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

@@ -8,6 +8,9 @@ ms.date: 05/31/2024
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: how-to
+ms.custom:
+  - sfi-image-nochange
+  - sfi-ropc-blocked
 ---
 
 # Connect to a MySQL Data Source (SQL Server Import and Export Wizard)

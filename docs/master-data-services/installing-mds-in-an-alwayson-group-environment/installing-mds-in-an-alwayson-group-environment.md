@@ -9,6 +9,7 @@ ms.subservice: master-data-services
 ms.topic: conceptual
 ms.custom:
   - build-2025
+  - sfi-image-nochange
 ---
 
 # High Availability and Disaster Recovery for Master Data Services

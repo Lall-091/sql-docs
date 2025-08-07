@@ -9,6 +9,7 @@ ms.service: sql
 ms.subservice: machine-learning
 ms.topic: "how-to"
 monikerRange: ">=sql-server-2016||>=sql-server-linux-ver15"
+ms.custom: sfi-ropc-nochange
 ---
 
 # Convert R code to a stored procedure using sqlrutils

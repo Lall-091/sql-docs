@@ -10,6 +10,7 @@ ms.subservice: scale-out
 ms.topic: how-to
 ms.custom:
   - sqldbrb=1
+  - sfi-ropc-nochange
 ---
 # Deploy a split-merge service to move data between sharded databases
 

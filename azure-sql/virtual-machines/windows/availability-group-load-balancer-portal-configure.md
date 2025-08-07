@@ -9,6 +9,7 @@ ms.service: azure-vm-sql-server
 ms.subservice: hadr
 ms.topic: how-to
 editor: monicar
+ms.custom: sfi-image-nochange
 ---
 # Configure a load balancer & availability group listener (SQL Server on Azure VMs)
 

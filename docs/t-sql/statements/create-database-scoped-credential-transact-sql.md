@@ -8,8 +8,6 @@ ms.date: 05/14/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
-ms.custom:
-  - ignite-2024
 f1_keywords:
   - "DATABASE SCOPED CREDENTIAL"
   - "DATABASE_SCOPED_CREDENTIAL_TSQL"
@@ -24,6 +22,9 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=aps-pdw-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+ms.custom:
+  - ignite-2024
+  - sfi-ropc-blocked
 ---
 # CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)
 

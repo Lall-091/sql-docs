@@ -8,7 +8,10 @@ ms.date: 06/18/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
 ms.topic: quickstart
-ms.custom: mode-ui, devx-track-azurecli
+ms.custom:
+  - mode-ui
+  - devx-track-azurecli
+  - sfi-image-nochange
 ---
 # Quickstart: Create Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

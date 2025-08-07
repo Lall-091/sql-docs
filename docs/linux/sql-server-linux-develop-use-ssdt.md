@@ -9,6 +9,7 @@ ms.subservice: linux
 ms.topic: install-set-up-deploy
 ms.custom:
   - linux-related-content
+  - sfi-image-nochange
 ---
 
 # Use Visual Studio to create databases for SQL Server on Linux

@@ -11,6 +11,7 @@ ms.subservice: connect
 ms.topic: concept-article
 ms.custom:
   - sqldbrb=1
+  - sfi-image-nochange
 ---
 
 # Connect your application to Azure SQL Managed Instance

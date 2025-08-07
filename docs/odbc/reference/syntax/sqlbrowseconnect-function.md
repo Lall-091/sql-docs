@@ -14,6 +14,7 @@ helpviewer_keywords:
 apilocation: "sqlsrv32.dll"
 apiname: "SQLBrowseConnect"
 apitype: "dllExport"
+ms.custom: sfi-ropc-blocked
 ---
 # SQLBrowseConnect Function
 **Conformance**  

@@ -8,6 +8,7 @@ ms.date: 09/22/2024
 ms.service: azure-sql-managed-instance
 ms.subservice: high-availability
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 # Configure zone redundancy - Azure SQL Managed Instance
 

@@ -8,9 +8,10 @@ ms.date: 06/13/2025
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
+monikerRange: "=azuresql || =azuresql-db"
 ms.custom:
   - sqldbrb=1
-monikerRange: "=azuresql || =azuresql-db"
+  - sfi-image-nochange
 ---
 
 # Configure Advanced Threat Protection for Azure SQL Database

@@ -6,6 +6,7 @@ ms.service: azure-database-migration-service
 ms.topic: include
 ms.collection:
   - sql-migration-content
+ms.custom: sfi-image-nochange
 ---
 
 ### Create a Database Migration Service instance

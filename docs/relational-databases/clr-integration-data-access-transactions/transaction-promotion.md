@@ -12,6 +12,7 @@ helpviewer_keywords:
   - "promoting transactions [CLR integration]"
   - "Enlist keyword"
   - "transaction promotion [CLR integration]"
+ms.custom: sfi-ropc-nochange
 ---
 # Transaction promotion
 

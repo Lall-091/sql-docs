@@ -14,6 +14,7 @@ helpviewer_keywords:
   - "assigning port numbers"
   - "dynamic ports [SQL Server]"
   - "TCP/IP [SQL Server], port numbers"
+ms.custom: sfi-image-nochange
 ---
 # Configure SQL Server to listen on a specific TCP port
 

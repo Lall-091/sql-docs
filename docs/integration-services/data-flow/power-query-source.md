@@ -15,6 +15,7 @@ f1_keywords:
   - "sql14.ssis.designer.powerqueryconnmgr.f1"
   - "sql14.ssis.designer.powerquerysource.queries.f1"
   - "sql14.ssis.designer.powerquerysource.connmgrs.f1"
+ms.custom: sfi-image-nochange
 ---
 # Power Query Source (Preview)
 

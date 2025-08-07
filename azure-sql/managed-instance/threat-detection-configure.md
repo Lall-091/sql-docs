@@ -9,7 +9,9 @@ ms.date: 12/01/2020
 ms.service: azure-sql-managed-instance
 ms.subservice: security
 ms.topic: how-to
-ms.custom: sqldbrb=1
+ms.custom:
+  - sqldbrb=1
+  - sfi-image-nochange
 ---
 # Configure Advanced Threat Protection in Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

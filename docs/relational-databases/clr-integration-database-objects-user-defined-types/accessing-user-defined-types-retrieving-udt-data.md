@@ -19,6 +19,7 @@ helpviewer_keywords:
 dev_langs:
   - "VB"
   - "CSharp"
+ms.custom: sfi-ropc-nochange
 ---
 # Retrieve user-defined type (UDT) data in ADO.NET
 

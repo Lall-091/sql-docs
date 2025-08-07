@@ -9,9 +9,10 @@ ms.date: 07/22/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: how-to
+monikerRange: "=azuresql||=azuresql-mi"
 ms.custom:
   - azure-sql-split
-monikerRange: "=azuresql||=azuresql-mi"
+  - sfi-image-nochange
 ---
 # Configure advance notifications for planned maintenance events in Azure SQL Managed Instance
 [!INCLUDE [appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

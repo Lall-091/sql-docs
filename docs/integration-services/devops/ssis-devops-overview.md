@@ -7,6 +7,7 @@ ms.date: "7/22/2022"
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: concept-article
+ms.custom: sfi-image-nochange
 ---
 # SQL Server Integration Services (SSIS) DevOps Tools Azure DevOps extension
 

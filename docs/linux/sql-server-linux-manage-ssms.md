@@ -9,6 +9,7 @@ ms.subservice: linux
 ms.topic: how-to
 ms.custom:
   - linux-related-content
+  - sfi-image-nochange
 ---
 # Use SQL Server Management Studio on Windows to manage SQL Server on Linux
 

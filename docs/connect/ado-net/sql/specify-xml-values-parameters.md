@@ -10,6 +10,7 @@ ms.subservice: connectivity
 ms.topic: conceptual
 dev_langs:
   - "csharp"
+ms.custom: sfi-ropc-nochange
 ---
 # Specifying XML values as parameters
 

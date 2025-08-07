@@ -14,6 +14,7 @@ helpviewer_keywords:
   - "failover clustering [SQL Server], Always On Availability Groups"
   - "multi-site failover cluster"
   - "failover clustering [SQL Server]"
+ms.custom: sfi-image-nochange
 ---
 # SQL Server Multi-Subnet Clustering (SQL Server)
 [!INCLUDE [SQL Server](../../../includes/applies-to-version/sqlserver.md)]

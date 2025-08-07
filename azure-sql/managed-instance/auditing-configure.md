@@ -8,9 +8,11 @@ ms.date: 12/23/2022
 ms.service: azure-sql-managed-instance
 ms.subservice: security
 ms.topic: how-to
-ms.custom: sqldbrb=1
 f1_keywords:
   - "mi.azure.sqlaudit.general.f1"
+ms.custom:
+  - sqldbrb=1
+  - sfi-image-nochange
 ---
 # Get started with Azure SQL Managed Instance auditing
 

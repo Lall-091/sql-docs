@@ -7,8 +7,6 @@ ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server
 ms.topic: how-to
-ms.custom:
-  - updatefrequency5
 helpviewer_keywords:
   - "recreating encryption keys"
   - "encryption keys [Reporting Services]"
@@ -16,6 +14,9 @@ helpviewer_keywords:
   - "symmetric keys [Reporting Services]"
   - "removing encryption keys"
   - "resetting encryption keys"
+ms.custom:
+  - updatefrequency5
+  - sfi-ropc-nochange
 ---
 # Delete and Recreate Encryption Keys (Report Server Configuration Manager)
   Deleting and recreating encryption keys are activities that fall outside of routine encryption key maintenance. You perform these tasks in response to a specific threat to your report server, or as a last resort when you can no longer access a report server database.  

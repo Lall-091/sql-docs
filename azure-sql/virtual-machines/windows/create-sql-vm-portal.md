@@ -11,6 +11,7 @@ ms.topic: how-to
 tags: azure-resource-manager
 ms.custom:
   - build-2025
+  - sfi-image-nochange
 ---
 # Provision SQL Server on Azure VM (Azure portal)
 

@@ -11,6 +11,7 @@ ms.custom:
   - template-quickstart
   - intro-deployment
   - linux-related-content
+  - sfi-ropc-blocked
 ---
 # Quickstart: Deploy a SQL Server container cluster on Azure or Red Hat OpenShift
 

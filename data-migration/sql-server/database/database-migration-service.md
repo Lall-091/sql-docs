@@ -10,6 +10,7 @@ ms.service: azure-database-migration-service
 ms.topic: tutorial
 ms.collection:
   - sql-migration-content
+ms.custom: sfi-image-nochange
 ---
 
 # Tutorial: Migrate SQL Server to Azure SQL Database (offline)

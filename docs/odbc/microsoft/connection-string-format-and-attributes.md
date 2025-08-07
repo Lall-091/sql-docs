@@ -10,6 +10,7 @@ ms.topic: reference
 helpviewer_keywords:
   - "connection strings [ODBC], ODBC driver for Oracle"
   - "ODBC driver for Oracle [ODBC], connection strings"
+ms.custom: sfi-ropc-nochange
 ---
 # Connection String Format and Attributes
 > [!IMPORTANT]  

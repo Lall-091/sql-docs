@@ -8,9 +8,10 @@ ms.date: 12/21/2023
 ms.service: sql
 ms.subservice: ssdt
 ms.topic: conceptual
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || =fabric"
 ms.custom:
   - ignite-2024
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || =fabric"
+  - sfi-image-nochange
 ---
 # Microsoft Entra ID support in SQL Server Data Tools (SSDT)
 

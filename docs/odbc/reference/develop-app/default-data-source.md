@@ -18,6 +18,7 @@ helpviewer_keywords:
   - "connecting to driver [ODBC], functions"
   - "connection functions [ODBC]"
   - "ODBC drivers [ODBC], connection functions"
+ms.custom: sfi-ropc-nochange
 ---
 # Default Data Source
 The driver may select a data source, called the default data source, in certain cases where the application does not explicitly specify one:  

@@ -10,6 +10,7 @@ ms.subservice: tools-other
 ms.topic: reference
 ms.collection:
   - data-tools
+ms.custom: sfi-ropc-nochange
 ---
 
 # SqlPackage CLI reference

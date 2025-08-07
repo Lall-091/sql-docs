@@ -8,12 +8,13 @@ ms.date: 06/13/2025
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
+ms.devlang: nodejs
+monikerRange: "=azuresql || =azuresql-db"
 ms.custom:
   - passwordless-js
   - devx-track-azurecli
   - devx-track-javascript
-ms.devlang: nodejs
-monikerRange: "=azuresql || =azuresql-db"
+  - sfi-image-nochange
 ---
 
 # Migrate a Node.js application to use passwordless connections with Azure SQL Database

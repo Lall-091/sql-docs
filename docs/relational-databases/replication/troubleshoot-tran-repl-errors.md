@@ -8,11 +8,12 @@ ms.date: 06/12/2025
 ms.service: sql
 ms.subservice: replication
 ms.topic: how-to
-ms.custom:
-  - updatefrequency5
 helpviewer_keywords:
   - "replication [SQL Server], tutorials"
 monikerRange: "=azuresqldb-mi-current || >=sql-server-2016"
+ms.custom:
+  - updatefrequency5
+  - sfi-image-nochange
 ---
 # Troubleshooter: Find errors with SQL Server transactional replication
 

@@ -8,6 +8,7 @@ ms.service: sql
 ms.topic: concept-article
 helpviewer_keywords:
   - "network trace [SQL Server]"
+ms.custom: sfi-image-nochange
 ---
 
 # Trace the network authentication process to the Database Engine

@@ -9,6 +9,7 @@ ms.service: sql
 ms.subservice: security
 ms.topic: how-to
 monikerRange: "= azuresqldb-current||>= sql-server-ver16||>= sql-server-linux-ver16||=azuresqldb-mi-current"
+ms.custom: sfi-image-nochange
 ---
 
 # Verify a ledger table to detect tampering

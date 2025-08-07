@@ -7,8 +7,10 @@ ms.reviewer: mathoma
 ms.date: 12/15/2023
 ms.service: azure-sql-managed-instance
 ms.subservice: high-availability
-ms.custom: ignite-2023
 ms.topic: how-to
+ms.custom:
+  - ignite-2023
+  - sfi-image-nochange
 ---
 
 # Configure a license-free standby replica for Azure SQL Managed Instance

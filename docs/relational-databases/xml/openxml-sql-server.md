@@ -21,6 +21,7 @@ helpviewer_keywords:
   - "queries [XML in SQL Server], OPENXML statement"
   - "XML [SQL Server], OPENXML statement"
   - "element-centric mapping [SQL Server]"
+ms.custom: sfi-image-nochange
 ---
 # OPENXML (SQL Server)
 

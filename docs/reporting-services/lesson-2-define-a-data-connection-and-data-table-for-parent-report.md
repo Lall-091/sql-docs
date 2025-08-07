@@ -9,6 +9,7 @@ ms.subservice: reporting-services
 ms.topic: conceptual
 ms.custom:
   - updatefrequency5
+  - sfi-ropc-nochange
 ---
 # Lesson 2: Define a data connection and data table for the parent report
 After you create a new website project using the ASP.NET website template for Visual C#, your next step is to create a data connection and a data table for the parent report.

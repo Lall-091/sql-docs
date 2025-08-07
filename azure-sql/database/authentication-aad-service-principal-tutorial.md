@@ -7,8 +7,12 @@ ms.reviewer: wiassaf, vanto, mathoma
 ms.date: 02/16/2024
 ms.service: azure-sql-database
 ms.subservice: security
-ms.custom: has-azure-ad-ps-ref, azure-ad-ref-level-one-done
 ms.topic: tutorial
+ms.custom:
+  - has-azure-ad-ps-ref
+  - azure-ad-ref-level-one-done
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 ---
 
 # Tutorial: Create Microsoft Entra users using Microsoft Entra applications

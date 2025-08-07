@@ -12,6 +12,8 @@ ms.collection:
   - sql-migration-content
 ms.custom:
   - sqldbrb=1
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 ---
 # Import or export an Azure SQL Database without allowing Azure services to access the server
 [!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]

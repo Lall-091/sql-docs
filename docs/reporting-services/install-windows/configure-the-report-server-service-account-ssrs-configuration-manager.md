@@ -3,7 +3,7 @@ title: "Configure the Report Server Service Account"
 description: Learn how to implement Reporting Services, a single service that contains a Report Server Web service, web portal, and a background processing application.
 author: kfollis
 ms.author: kfollis
-ms.date: 09/25/2024
+ms.date: 08/06/2025
 ms.service: reporting-services
 ms.subservice: report-server
 ms.topic: how-to
@@ -91,11 +91,7 @@ The primary consideration for local accounts is whether the report server requir
 
 - Built-in Windows service accounts (Local Service or Network Service) aren't supported as report server service accounts on a computer that's a domain controller.
 
-For help with deciding on an approach that's best for your deployment, see the following guidelines:
-
-- [Configure Windows service accounts and permissions](../../database-engine/configure-windows/configure-windows-service-accounts-and-permissions.md)
-
-- [The services and service accounts security planning guide](https://www.zubairalexander.com/blog/services-and-service-accounts-security-planning-guide/)
+For help with deciding on an approach that's best for your deployment, see [Configure Windows service accounts and permissions](../../database-engine/configure-windows/configure-windows-service-accounts-and-permissions.md).
 
 ## Update an expired password
 

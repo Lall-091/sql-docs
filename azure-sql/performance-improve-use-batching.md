@@ -8,9 +8,10 @@ ms.date: 07/29/2025
 ms.service: azure-sql-database
 ms.subservice: performance
 ms.topic: how-to
+monikerRange: "= azuresql || = azuresql-db || = azuresql-mi || = fabricsql"
 ms.custom:
   - sqldbrb=2
-monikerRange: "= azuresql || = azuresql-db || = azuresql-mi || = fabricsql"
+  - sfi-ropc-nochange
 ---
 # How to use batching to improve application performance
 [!INCLUDE [appliesto-sqldb-sqlmi-fabricsqldb](includes/appliesto-sqldb-sqlmi-fabricsqldb.md)]

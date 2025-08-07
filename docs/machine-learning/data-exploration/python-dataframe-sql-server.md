@@ -9,6 +9,7 @@ ms.service: sql
 ms.subservice: machine-learning
 ms.topic: how-to
 monikerRange: ">=sql-server-2017||>=sql-server-linux-ver15||=azuresqldb-mi-current||=azuresqldb-current||=fabric"
+ms.custom: sfi-ropc-blocked
 ---
 # Insert Python dataframe into SQL table
 [!INCLUDE[SQL Server SQL DB SQL MI FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]

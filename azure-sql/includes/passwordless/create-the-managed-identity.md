@@ -6,7 +6,9 @@ ms.reviewer: rotabor, alexwolf
 ms.date: 06/01/2023
 ms.service: azure-sql-database
 ms.topic: include
-ms.custom: generated
+ms.custom:
+  - generated
+  - sfi-image-nochange
 ---
 
 Create a user-assigned managed identity using the Azure portal or the Azure CLI. Your application uses the identity to authenticate to other services.

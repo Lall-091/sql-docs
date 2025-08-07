@@ -8,10 +8,11 @@ ms.date: 10/11/2024
 ms.service: sql
 ms.subservice: replication
 ms.topic: tutorial
-ms.custom:
-  - updatefrequency5
 helpviewer_keywords:
   - "replication [SQL Server], tutorials"
+ms.custom:
+  - updatefrequency5
+  - sfi-image-nochange
 ---
 # Tutorial: Prepare SQL Server for replication (publisher, distributor, subscriber)
 

@@ -7,9 +7,6 @@ ms.date: 04/30/2025
 ms.service: sql
 ms.subservice: install
 ms.topic: install-set-up-deploy
-ms.custom:
-  - intro-installation
-  - build-2025
 helpviewer_keywords:
   - "installing SQL Server, command prompt"
   - "installing SQL Server, command line"
@@ -87,6 +84,10 @@ helpviewer_keywords:
   - "nodes [Faillover Clustering], command prompt"
   - "INSTALLSQLSHAREDDIR parameter"
 monikerRange: ">=sql-server-2016"
+ms.custom:
+  - intro-installation
+  - build-2025
+  - sfi-ropc-blocked
 ---
 
 # Install and configure SQL Server on Windows from the command prompt

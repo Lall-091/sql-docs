@@ -8,6 +8,7 @@ ms.subservice: security
 ms.topic: how-to
 ms.reviewer: vanto
 ms.date: 02/07/2024
+ms.custom: sfi-image-nochange
 ---
 
 # Configure Azure SQL Managed Instance NSG rules to work with Azure Confidential Ledger

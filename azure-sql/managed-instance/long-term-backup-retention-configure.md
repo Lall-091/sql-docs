@@ -12,6 +12,7 @@ ms.custom:
   - devx-track-azurepowershell
   - devx-track-azurecli
   - build-2024
+  - sfi-image-nochange
 ---
 # Manage Azure SQL Managed Instance long-term backup retention
 [!INCLUDE [appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

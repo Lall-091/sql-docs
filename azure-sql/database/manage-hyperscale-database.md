@@ -8,10 +8,11 @@ ms.date: 02/10/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: how-to
+monikerRange: "=azuresql || =azuresql-db"
 ms.custom:
   - devx-track-azurepowershell
   - devx-track-azurecli
-monikerRange: "=azuresql || =azuresql-db"
+  - sfi-image-nochange
 ---
 
 # How to manage a Hyperscale database

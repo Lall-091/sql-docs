@@ -9,7 +9,9 @@ ms.date: 11/16/2022
 ms.service: azure-sql-managed-instance
 ms.subservice: replication
 ms.topic: tutorial
-ms.custom: sqldbrb=1
+ms.custom:
+  - sqldbrb=1
+  - sfi-ropc-blocked
 ---
 # Tutorial: Configure replication between two managed instances
 

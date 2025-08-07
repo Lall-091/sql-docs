@@ -12,6 +12,7 @@ ms.collection:
 helpviewer_keywords:
   - "Sybase Console,Creating Server Connection Files"
   - "Sybase Console,Server Connection File Validation"
+ms.custom: sfi-ropc-blocked
 ---
 # Creating the Server Connection Files (SybaseToSQL)
 Server information can be specified either in the servers section of the script file or in a separate server connection file. The command line parameter for the server connection file is, `-c <serverconnectionfile>`. If the same server id is present in both the script file and server connection file, then the server definition in the script file is considered.  

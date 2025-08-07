@@ -9,6 +9,7 @@ ms.service: azure-vm-sql-server
 ms.subservice: management
 ms.topic: how-to
 tags: azure-resource-manager
+ms.custom: sfi-image-nochange
 ---
 
 # In-place change of SQL Server version - SQL Server on Azure VMs

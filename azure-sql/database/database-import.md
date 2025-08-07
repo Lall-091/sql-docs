@@ -9,11 +9,13 @@ ms.date: 02/28/2025
 ms.service: azure-sql
 ms.subservice: backup-restore
 ms.topic: quickstart
+monikerRange: "=azuresql||=azuresql-db||=azuresql-mi"
 ms.custom:
   - sqldbrb=1
   - devx-track-azurepowershell
   - mode-api
-monikerRange: "=azuresql||=azuresql-db||=azuresql-mi"
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 ---
 # Quickstart: Import a bacpac file to a database in Azure SQL Database or Azure SQL Managed Instance
 

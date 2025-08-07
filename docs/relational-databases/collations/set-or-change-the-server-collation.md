@@ -9,6 +9,7 @@ ms.topic: conceptual
 helpviewer_keywords:
   - "server collations [SQL Server]"
   - "collations [SQL Server], server"
+ms.custom: sfi-ropc-blocked
 ---
 # Set or change the server collation
 

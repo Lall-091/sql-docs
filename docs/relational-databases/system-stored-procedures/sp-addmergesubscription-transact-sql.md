@@ -114,9 +114,9 @@ A value indicating when the Merge Agent runs. *@frequency_type* is **int**, and 
 | `1` | Once |
 | `4` | Daily |
 | `8` | Weekly |
-| `10` | Monthly |
-| `20` | Monthly, relative to the frequency interval |
-| `40` | When [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent starts |
+| `16` | Monthly |
+| `32` | Monthly, relative to the frequency interval |
+| `64` | When [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent starts |
 | `NULL` (default) | |
 
 #### [ @frequency_interval = ] *frequency_interval*

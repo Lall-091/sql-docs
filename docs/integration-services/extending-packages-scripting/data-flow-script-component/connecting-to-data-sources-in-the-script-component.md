@@ -9,6 +9,7 @@ ms.subservice: integration-services
 ms.topic: "reference"
 helpviewer_keywords:
   - "Script component [Integration Services], connecting to data sources"
+ms.custom: sfi-ropc-nochange
 ---
 # Connecting to Data Sources in the Script Component
 

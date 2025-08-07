@@ -7,6 +7,7 @@ ms.date: 08/12/2019
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
+ms.custom: sfi-ropc-nochange
 ---
 
 # Retrieving result set data sample

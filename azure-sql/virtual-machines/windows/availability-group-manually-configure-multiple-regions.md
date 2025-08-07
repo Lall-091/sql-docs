@@ -10,6 +10,7 @@ ms.subservice: hadr
 ms.topic: tutorial
 editor: monicar
 tags: azure-service-management
+ms.custom: sfi-image-nochange
 ---
 
 # Configure an availability group across Azure regions - SQL Server on Azure VMs

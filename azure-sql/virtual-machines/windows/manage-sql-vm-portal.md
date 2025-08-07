@@ -9,6 +9,7 @@ ms.date: 01/28/2024
 ms.subservice: management
 ms.topic: how-to
 tags: azure-resource-manager
+ms.custom: sfi-image-nochange
 ---
 # Manage SQL Server VMs by using the Azure portal
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

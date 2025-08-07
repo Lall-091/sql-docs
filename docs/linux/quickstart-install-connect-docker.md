@@ -8,13 +8,14 @@ ms.date: 07/11/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: quickstart
+zone_pivot_groups: cs1-command-shell
+monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017"
 ms.custom:
   - intro-quickstart
   - kr2b-contr-experiment
   - linux-related-content
   - build-2025
-zone_pivot_groups: cs1-command-shell
-monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017"
+  - sfi-ropc-blocked
 ---
 # Quickstart: Run SQL Server Linux container images with Docker
 

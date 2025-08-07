@@ -11,6 +11,7 @@ ms.topic: how-to
 ms.collection:
  - sql-migration-content
  - migration
+ms.custom: sfi-image-nochange
 ---
 
 # Migration guide: MySQL to Azure SQL Database

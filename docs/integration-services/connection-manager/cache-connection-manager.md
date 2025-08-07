@@ -11,6 +11,7 @@ f1_keywords:
   - "sql13.dts.designer.cacheconnection.f1"
 helpviewer_keywords:
   - "Cache connection manager"
+ms.custom: sfi-ropc-nochange
 ---
 # Cache Connection Manager
 

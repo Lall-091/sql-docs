@@ -9,9 +9,11 @@ ms.date: 02/13/2024
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: how-to
-ms.custom: sqldbrb=1
 tag: azure-synapse
 monikerRange: "= azuresql || = azuresql-db || = azuresql-mi"
+ms.custom:
+  - sqldbrb=1
+  - sfi-image-nochange
 ---
 
 # Conditional access

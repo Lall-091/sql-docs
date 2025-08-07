@@ -9,11 +9,12 @@ ms.subservice: ssma
 ms.topic: get-started
 ms.collection:
   - sql-migration-content
-ms.custom:
-  - intro-get-started
 helpviewer_keywords:
   - "MySQL Console, launching console"
   - "MySQL Console, output conventions"
+ms.custom:
+  - intro-get-started
+  - sfi-image-nochange
 ---
 # Getting Started with SSMA for MySQL Console (MySQLToSQL)
 This section describes the procedure to launch and get started with the MySQL console application. Also listed, herein, are the conventions used in a typical SSMA Console output window.  

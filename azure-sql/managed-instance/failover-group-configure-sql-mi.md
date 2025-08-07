@@ -12,6 +12,7 @@ ms.custom:
   - azure-sql-split
   - devx-track-azurepowershell
   - build-2024
+  - sfi-image-nochange
 ---
 # Configure a failover group for Azure SQL Managed Instance
 

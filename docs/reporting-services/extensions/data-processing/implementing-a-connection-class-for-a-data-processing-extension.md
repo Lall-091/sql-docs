@@ -7,12 +7,13 @@ ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: extensions
 ms.topic: reference
-ms.custom:
-  - updatefrequency5
 helpviewer_keywords:
   - "connections [Reporting Services], data processing extensions"
   - "Connection class"
   - "data processing extensions [Reporting Services], connections"
+ms.custom:
+  - updatefrequency5
+  - sfi-ropc-nochange
 ---
 # Implement a Connection class for a data processing extension
   The **Connection** object represents a database connection or similar resource and is the starting point for users of a [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] [!INCLUDE[ssRSnoversion](../../../includes/ssrsnoversion-md.md)] data processing extension. It represents connections to database servers, though any entity with similar behavior can be exposed as a **Connection**.  

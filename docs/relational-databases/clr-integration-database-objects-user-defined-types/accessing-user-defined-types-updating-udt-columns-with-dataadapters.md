@@ -20,6 +20,7 @@ dev_langs:
   - "TSQL"
   - "VB"
   - "CSharp"
+ms.custom: sfi-ropc-nochange
 ---
 # Update user-defined type (UDT) columns with DataAdapters
 

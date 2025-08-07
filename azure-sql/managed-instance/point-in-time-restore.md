@@ -9,7 +9,10 @@ ms.date: 03/25/2023
 ms.service: azure-sql-managed-instance
 ms.subservice: backup-restore
 ms.topic: how-to
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.custom:
+  - devx-track-azurepowershell
+  - devx-track-azurecli
+  - sfi-image-nochange
 ---
 # Restore a database in Azure SQL Managed Instance to a previous point in time
 

@@ -12,6 +12,7 @@ ms.custom:
   - mode-other
   - devx-track-azurepowershell
   - devx-track-azurecli
+  - sfi-image-nochange
 ---
 
 # Quickstart: Create a database in Azure SQL Database with ledger enabled

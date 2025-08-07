@@ -7,7 +7,9 @@ ms.date: 08/23/2024
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: tutorial
-ms.custom: intro-deployment
+ms.custom:
+  - intro-deployment
+  - sfi-image-nochange
 ---
 # Tutorial: Integrating SSIS with Fabric Data Warehouse
 

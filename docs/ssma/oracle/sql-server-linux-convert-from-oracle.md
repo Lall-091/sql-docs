@@ -13,6 +13,7 @@ ms.collection:
 ms.custom:
   - intro-migration
   - linux-related-content
+  - sfi-image-nochange
 ---
 
 # Migrate an Oracle schema to SQL Server 2017 on Linux by using the SQL Server Migration Assistant

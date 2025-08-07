@@ -9,6 +9,7 @@ ms.subservice: report-server
 ms.topic: how-to
 ms.custom:
   - updatefrequency5
+  - sfi-image-nochange
 ---
 
 # Power BI Report Server Integration (Configuration Manager)

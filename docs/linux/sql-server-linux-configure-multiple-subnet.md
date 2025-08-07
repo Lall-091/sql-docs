@@ -10,6 +10,7 @@ ms.subservice: linux
 ms.topic: how-to
 ms.custom:
   - linux-related-content
+  - sfi-image-nochange
 ---
 
 # Configure multiple-subnet Always On availability groups and failover cluster instances

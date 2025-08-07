@@ -12,6 +12,7 @@ helpviewer_keywords:
   - "error numbers [Integration Services]"
   - "hresults [Integration Services]"
   - "errors [Integration Services], listed"
+ms.custom: sfi-ropc-nochange
 ---
 # Integration Services error and message reference
 

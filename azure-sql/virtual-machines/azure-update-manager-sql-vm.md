@@ -9,6 +9,7 @@ ms.service: azure-vm-sql-server
 ms.subservice: management
 ms.topic: how-to
 tags: azure-resource-manager
+ms.custom: sfi-image-nochange
 ---
 # Azure Update Manager for SQL Server on Azure VMs 
 

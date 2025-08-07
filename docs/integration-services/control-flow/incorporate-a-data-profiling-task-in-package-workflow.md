@@ -9,6 +9,7 @@ ms.subservice: integration-services
 ms.topic: how-to
 helpviewer_keywords:
   - "Data Profiling task [Integration Services], using output in workflow"
+ms.custom: sfi-ropc-nochange
 ---
 # Incorporate a Data Profiling Task in Package Workflow
 

@@ -9,6 +9,7 @@ ms.date: 11/04/2024
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
 ms.topic: how-to
+ms.custom: sfi-ga-blocked
 ---
 
 # How to set up Windows Authentication for Microsoft Entra ID with the incoming trust-based flow

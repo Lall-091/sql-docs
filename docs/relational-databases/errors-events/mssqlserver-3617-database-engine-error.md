@@ -9,6 +9,7 @@ ms.subservice: supportability
 ms.topic: "reference"
 helpviewer_keywords:
   - "3617 (Database Engine error)"
+ms.custom: sfi-ropc-nochange
 ---
 # MSSQLSERVER_3617
  [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]

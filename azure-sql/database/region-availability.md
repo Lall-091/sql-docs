@@ -3,8 +3,8 @@ title: Feature Availability by Region
 description: Learn about feature availability by region for Azure SQL Database.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: rsetlem
-ms.date: 06/24/2025
+ms.reviewer: rsetlem, peskount
+ms.date: 07/17/2025
 ms.service: azure-sql-database
 ms.topic: concept-article
 ms.custom:
@@ -161,7 +161,7 @@ DC-series is available in the following regions:
 
 Choosing a [maintenance window in Azure SQL Database](maintenance-window.md) other than the default is currently available in certain regions, depending on the option to enable zone-redundancy.
 
-Availability depends on whether your database is configured to be zone redundant. Zone-redundant availability ensures your data is spread across three Azure availability zones in the primary region. For up to date information about the regions that support zone-redundant databases, see [Services support by region](/azure/reliability/availability-zones-region-support).
+Availability depends on whether your database is configured to be zone redundant. Zone-redundant availability ensures your data is distributed across multiple Azure availability zones in the primary region. Data spans two or three zones, selected by Azure SQL for optimal resilience. The zones are in separate physical locations with independent power, cooling, and networking. For up to date information about the regions that support zone-redundant databases, see [Services support by region](/azure/reliability/availability-zones-region-support).
 
 ### Maintenance window availability for databases that are not zone redundant
 

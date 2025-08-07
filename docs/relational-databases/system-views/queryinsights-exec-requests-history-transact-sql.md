@@ -26,9 +26,12 @@ The `queryinsights.exec_requests_history` in [!INCLUDE [fabric](../../includes/f
 
 | Column name | Data type | Description |
 | --- | --- | --- |
+| `database_name` | **varchar(200)** | Specifies the name of the item to which the SQL endpoint was connected at the time of query execution. | 
 | `distributed_statement_id` | **uniqueidentifier** | Unique ID for each query. |
 | `submit_time` | **datetime2** | Time at which the request was submitted for execution. |
 | `start_time` | **datetime2** | Time when the query started running. |
+| `end_time` | **datetime2** | Time when the query completed execution. |
+| `is_distributed` | **int** | Specifies whether the query was executed in a distributed nature (`1`), or not (`0`). |
 | `command` | **varchar(8000)** | Complete text of the executed query. |
 | `login_name` | **varchar(128)** | Name of the user or system that sent the query. |
 | `program_name` | **varchar(128)** | Name of client program that initiated the session. The value is `NULL` for internal sessions. Is nullable. |

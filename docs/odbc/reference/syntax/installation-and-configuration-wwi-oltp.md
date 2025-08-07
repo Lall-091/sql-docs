@@ -9,6 +9,7 @@ ms.subservice: connectivity
 ms.topic: reference
 helpviewer_keywords:
   - "SQLSetDriverConnectInfo function [ODBC]"
+ms.custom: sfi-ropc-nochange
 ---
 # SQLSetDriverConnectInfo Function
 **Conformance**  

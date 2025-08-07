@@ -8,7 +8,9 @@ ms.date: 04/03/2024
 ms.service: azure-sql-database
 ms.subservice: elastic-jobs
 ms.topic: tutorial
-ms.custom: devx-track-azurepowershell
+ms.custom:
+  - devx-track-azurepowershell
+  - sfi-ropc-nochange
 ---
 # Create and manage elastic jobs by using PowerShell
 

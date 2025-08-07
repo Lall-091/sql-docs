@@ -10,6 +10,7 @@ ms.topic: how-to
 f1_keywords:
   - "sql13.dts.designer.afpsubscrconn.f1"
   - "sql14.dts.designer.afpsubscrconn.f1"
+ms.custom: sfi-image-nochange
 ---
 # Azure Subscription Connection Manager
 

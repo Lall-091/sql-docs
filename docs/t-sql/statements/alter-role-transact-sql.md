@@ -7,8 +7,6 @@ ms.date: "09/08/2022"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
-ms.custom:
-  - ignite-2024
 f1_keywords:
   - "ALTER_ROLE_TSQL"
   - "ALTER ROLE"
@@ -21,6 +19,9 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 monikerRange: ">=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+ms.custom:
+  - ignite-2024
+  - sfi-ropc-blocked
 ---
 # ALTER ROLE (Transact-SQL)
 [!INCLUDE [sql-asdb-asdbmi-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-fabricse-fabricdw-fabricsqldb.md)]

@@ -12,6 +12,7 @@ ms.collection:
   - sql-migration-content
 ms.custom:
   - sqldbrb=1
+  - sfi-image-nochange
 ---
 # Import or export an Azure SQL Database using private link
 

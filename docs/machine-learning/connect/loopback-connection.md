@@ -9,6 +9,7 @@ ms.service: sql
 ms.subservice: machine-learning-services
 ms.topic: how-to
 monikerRange: ">=sql-server-ver15||>=sql-server-linux-ver15"
+ms.custom: sfi-ropc-nochange
 ---
 # Loopback connection to SQL Server from a Python or R script
 [!INCLUDE [SQL Server 2019 and later, and SQL MI](../../includes/applies-to-version/sqlserver2019-asdbmi.md)]

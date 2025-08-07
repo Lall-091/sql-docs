@@ -9,10 +9,11 @@ ms.date: 01/10/2025
 ms.service: azure-sql
 ms.subservice: connect
 ms.topic: quickstart
-ms.custom:
-  - mode-ui
 keywords: connect to sql database
 monikerRange: "=azuresql||=azuresql-db||=azuresql-mi"
+ms.custom:
+  - mode-ui
+  - sfi-image-nochange
 ---
 
 # Quickstart: Use Visual Studio Code to connect and query Azure SQL Database or Azure SQL Managed Instance

@@ -8,7 +8,9 @@ ms.date: "12/01/2021"
 ms.service: sql
 ms.subservice: data-warehouse
 ms.topic: whats-new
-ms.custom: intro-whats-new
+ms.custom:
+  - intro-whats-new
+  - sfi-ropc-nochange
 ---
 # What's new in Analytics Platform System, a scale-out MPP data warehouse
 See what's new in the latest Appliance Updates for Microsoft Analytics Platform System (APS). APS is a scale-out on-premises appliance that hosts MPP SQL Server Parallel Data Warehouse. 

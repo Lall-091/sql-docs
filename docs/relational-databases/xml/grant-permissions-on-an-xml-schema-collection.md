@@ -11,6 +11,7 @@ ms.topic: how-to
 helpviewer_keywords:
   - "granting permissions [SQL Server], XML schema collections"
   - "ALTER permission"
+ms.custom: sfi-ropc-blocked
 ---
 # Grant permissions on an XML schema collection
 

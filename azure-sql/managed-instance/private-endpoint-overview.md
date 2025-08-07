@@ -8,6 +8,7 @@ ms.date: 08/02/2023
 ms.service: azure-sql-managed-instance
 ms.subservice: backup-restore
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 # Azure Private Link for Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

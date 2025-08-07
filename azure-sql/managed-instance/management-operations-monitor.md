@@ -9,6 +9,7 @@ ms.date: 09/03/2020
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 
 # Monitoring Azure SQL Managed Instance management operations

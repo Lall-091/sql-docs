@@ -22,6 +22,7 @@ helpviewer_keywords:
 dev_langs:
   - "VB"
   - "CSharp"
+ms.custom: sfi-ropc-nochange
 ---
 
 # Add Connections Programmatically

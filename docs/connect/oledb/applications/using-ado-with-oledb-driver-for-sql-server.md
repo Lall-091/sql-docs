@@ -12,6 +12,7 @@ helpviewer_keywords:
   - "data access [OLE DB Driver for SQL Server], ADO"
   - "ADO [OLE DB Driver for SQL Server]"
   - "MSOLEDBSQL, ADO"
+ms.custom: sfi-ropc-nochange
 ---
 # Using ADO with OLE DB Driver for SQL Server
 

@@ -9,13 +9,14 @@ ms.date: 09/27/2024
 ms.service: azure-sql
 ms.subservice: connect
 ms.topic: quickstart
-ms.custom:
-  - sqldbrb=2
-  - mode-other
 keywords:
   - "connect to sql database"
   - "sql server management studio"
 monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
+ms.custom:
+  - sqldbrb=2
+  - mode-other
+  - sfi-image-nochange
 ---
 
 # Quickstart: Use SSMS to connect to and query Azure SQL Database or Azure SQL Managed Instance

@@ -11,6 +11,7 @@ ms.subservice: security
 ms.topic: how-to
 ms.custom:
   - devx-track-azurecli
+  - sfi-image-nochange
 ---
 # Create Azure SQL Database logical server configured with user-assigned managed identity and customer-managed TDE
 

@@ -9,10 +9,11 @@ ms.date: 04/30/2025
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: conceptual
+monikerRange: "=azuresql || =azuresql-db || =azuresql-mi || =fabricsql"
 ms.custom:
   - ignite-2024
   - build-2025
-monikerRange: "=azuresql || =azuresql-db || =azuresql-mi || =fabricsql"
+  - sfi-image-nochange
 ---
 
 # Microsoft Entra logins and users with nonunique display names

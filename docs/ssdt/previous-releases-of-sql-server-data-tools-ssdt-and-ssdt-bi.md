@@ -8,9 +8,10 @@ ms.date: 09/25/2024
 ms.service: sql
 ms.subservice: ssdt
 ms.topic: conceptual
+monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||=azuresqldb-mi-current"
 ms.custom:
   - UpdateFrequency5
-monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||=azuresqldb-mi-current"
+  - sfi-ropc-nochange
 ---
 
 # Previous releases of SQL Server Data Tools (SSDT and SSDT-BI)

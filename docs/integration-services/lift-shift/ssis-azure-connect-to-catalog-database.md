@@ -8,6 +8,7 @@ ms.date: "09/23/2018"
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 # Connect to the SSIS Catalog (SSISDB) in Azure
 

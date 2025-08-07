@@ -8,9 +8,12 @@ ms.reviewer: vanto, wiassaf, mathoma
 ms.date: 04/08/2025
 ms.service: azure-sql
 ms.subservice: security
-ms.custom: has-azure-ad-ps-ref, azure-ad-ref-level-one-done
 ms.topic: conceptual
 monikerRange: "= azuresql || = azuresql-db || = azuresql-mi"
+ms.custom:
+  - has-azure-ad-ps-ref
+  - azure-ad-ref-level-one-done
+  - sfi-image-nochange
 ---
 
 # Managed identities in Microsoft Entra for Azure SQL

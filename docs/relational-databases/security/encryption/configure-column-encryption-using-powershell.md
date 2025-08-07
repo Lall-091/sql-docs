@@ -7,9 +7,11 @@ ms.reviewer: vanto
 ms.date: "04/05/2023"
 ms.service: sql
 ms.subservice: security
-ms.custom: devx-track-azurepowershell
 ms.topic: how-to
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+ms.custom:
+  - devx-track-azurepowershell
+  - sfi-ropc-nochange
 ---
 # Configure column encryption using Always Encrypted with PowerShell
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../../includes/applies-to-version/sql-asdb-asdbmi.md)]

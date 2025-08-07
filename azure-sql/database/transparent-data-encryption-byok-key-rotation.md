@@ -9,11 +9,12 @@ ms.date: 06/25/2025
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: how-to
+monikerRange: "=azuresql||=azuresql-db||=azuresql-mi"
 ms.custom:
   - sqldbrb=1
   - devx-track-azurecli
   - devx-track-azurepowershell
-monikerRange: "=azuresql||=azuresql-db||=azuresql-mi"
+  - sfi-image-nochange
 ---
 # Rotate the Transparent data encryption (TDE) protector
 

@@ -7,6 +7,9 @@ ms.date: 06/29/2020
 ms.service: sql
 ms.subservice: integration-services
 ms.topic: conceptual
+ms.custom:
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 ---
 # Connect to a SQL Server Data Source (SQL Server Import and Export Wizard)
 

@@ -12,6 +12,7 @@ ms.collection:
   - data-tools
 ms.custom:
   - build-2025
+  - sfi-image-nochange
 ---
 
 # What is the MSSQL extension for Visual Studio Code?

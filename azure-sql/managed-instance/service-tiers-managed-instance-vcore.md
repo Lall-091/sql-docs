@@ -8,6 +8,7 @@ ms.date: 05/19/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: performance
 ms.topic: conceptual
+ms.custom: sfi-image-nochange
 ---
 # vCore purchasing model - Azure SQL Managed Instance
 [!INCLUDE [appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

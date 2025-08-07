@@ -8,6 +8,7 @@ ms.date: "09/26/2019"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
+ms.custom: sfi-ropc-nochange
 ---
 # Application security scenarios in SQL Server
 

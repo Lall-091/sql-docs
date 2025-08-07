@@ -14,6 +14,7 @@ ms.custom:
   - devx-track-azurepowershell
   - devx-track-azurecli
   - ignite-2024
+  - sfi-image-nochange
 ---
 
 # Migrate databases from SQL Server by using Log Replay Service - Azure SQL Managed Instance

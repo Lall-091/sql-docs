@@ -8,8 +8,11 @@ ms.reviewer: mathoma, bonova, urmilano, wiassaf
 ms.date: 09/27/2023
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
-ms.custom: has-azure-ad-ps-ref, azure-ad-ref-level-one-done
 ms.topic: how-to
+ms.custom:
+  - has-azure-ad-ps-ref
+  - azure-ad-ref-level-one-done
+  - sfi-image-nochange
 ---
 
 # Configure Azure SQL Managed Instance for Windows Authentication for Microsoft Entra ID

@@ -14,6 +14,7 @@ helpviewer_keywords:
   - "SQL Server Connector, setup"
   - "SQL Server Connector"
   - "TDE, AKV, EKM"
+ms.custom: sfi-image-nochange
 ---
 # Set up SQL Server TDE Extensible Key Management by using Azure Key Vault
 

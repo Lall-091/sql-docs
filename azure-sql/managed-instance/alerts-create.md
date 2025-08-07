@@ -8,6 +8,7 @@ ms.date: 04/29/2024
 ms.service: azure-sql-managed-instance
 ms.subservice: performance
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 # Create alerts for Azure SQL Managed Instance using the Azure portal
 [!INCLUDE [appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

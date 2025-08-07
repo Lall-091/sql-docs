@@ -18,6 +18,7 @@ helpviewer_keywords:
   - "query profiling"
   - "lightweight query profiling"
   - "lightweight profiling"
+ms.custom: sfi-image-nochange
 ---
 
 # Upgrade databases using the Query Tuning Assistant

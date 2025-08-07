@@ -11,6 +11,7 @@ ms.topic: install-set-up-deploy
 ms.custom:
   - linux-related-content
   - build-2025
+  - sfi-ropc-blocked
 ---
 # Sample: Unattended SQL Server installation script for Ubuntu
 

@@ -14,6 +14,7 @@ helpviewer_keywords:
 monikerRange: ">=sql-server-ver16"
 ms.custom:
   - build-2025
+  - sfi-ropc-blocked
 ---
 
 # What is a contained availability group?

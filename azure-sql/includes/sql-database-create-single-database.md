@@ -5,8 +5,10 @@ ms.reviewer: vanto
 ms.date: 06/07/2022
 ms.service: azure-sql-database
 ms.subservice: service-overview
-ms.custom: devx-track-azurecli
 ms.topic: include
+ms.custom:
+  - devx-track-azurecli
+  - sfi-image-nochange
 ---
 
 In this step, you create a [logical SQL server](../database/logical-servers.md) and a [single database](../database/single-database-overview.md) that uses `AdventureWorksLT` sample data. You can create the database by using Azure portal menus and screens, or by using an Azure CLI or PowerShell script in the Azure Cloud Shell.

@@ -13,6 +13,7 @@ helpviewer_keywords:
   - "Excel [Integration Services]"
 dev_langs:
   - "VB"
+ms.custom: sfi-ropc-nochange
 ---
 # Working with Excel Files with the Script Task
 

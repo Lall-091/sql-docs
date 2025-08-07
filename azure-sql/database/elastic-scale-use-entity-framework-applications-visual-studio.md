@@ -8,9 +8,10 @@ ms.date: 06/13/2025
 ms.service: azure-sql-database
 ms.subservice: scale-out
 ms.topic: sample
+monikerRange: "=azuresql || =azuresql-db "
 ms.custom:
   - sqldbrb=1
-monikerRange: "=azuresql || =azuresql-db "
+  - sfi-ropc-nochange
 ---
 # Elastic Database client library with Entity Framework
 

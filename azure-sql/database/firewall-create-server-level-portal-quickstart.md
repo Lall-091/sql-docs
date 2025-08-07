@@ -10,6 +10,7 @@ ms.subservice: security
 ms.topic: quickstart
 ms.custom:
   - kr2b-contr-experiment
+  - sfi-image-nochange
 ---
 # Quickstart: Create a server-level firewall rule in Azure portal
 [!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]

@@ -20,6 +20,7 @@ helpviewer_keywords:
   - "copying data [Integration Services]"
   - "importing data, SSIS packages"
   - "sources [Integration Services], copying data"
+ms.custom: sfi-ropc-nochange
 ---
 # Import and Export Data with the SQL Server Import and Export Wizard
 

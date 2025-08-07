@@ -9,7 +9,6 @@ ms.date: 06/30/2025
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: conceptual
-ms.custom: sqldbrb=3
 keywords:
   - "sql database security"
   - "database security management"
@@ -17,6 +16,9 @@ keywords:
   - "database security"
   - "database access"
 monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
+ms.custom:
+  - sqldbrb=3
+  - sfi-image-nochange
 ---
 # Authorize database access to SQL Database, SQL Managed Instance, and Azure Synapse Analytics
 

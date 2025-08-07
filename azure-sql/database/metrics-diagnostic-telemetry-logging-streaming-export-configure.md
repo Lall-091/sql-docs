@@ -10,6 +10,7 @@ ms.service: azure-sql
 ms.subservice: performance
 ms.topic: how-to
 monikerRange: "= azuresql || = azuresql-db || = azuresql-mi"
+ms.custom: sfi-image-nochange
 ---
 # Configure streaming export of diagnostic telemetry - Azure SQL Database & Azure SQL Managed Instance
 

@@ -8,10 +8,11 @@ ms.date: 01/06/2025
 ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: how-to
+monikerRange: "=azuresql||=azuresql-db"
 ms.custom:
   - devx-track-azurepowershell
   - devx-track-azurecli
-monikerRange: "=azuresql||=azuresql-db"
+  - sfi-image-nochange
 ---
 
 # Manage Azure SQL Database long-term backup retention
