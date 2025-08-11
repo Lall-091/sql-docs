@@ -4,7 +4,7 @@ titleSuffix: SQL Server
 description: Use a sample bash script to install SQL Server on Red Hat Enterprise Linux (RHEL) without interactive input.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: armaha
+ms.reviewer: amitkh
 ms.date: 05/02/2025
 ms.service: sql
 ms.subservice: linux

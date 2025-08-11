@@ -14,5 +14,5 @@ ms.topic: include
 - [Stack Overflow (tag sql-server) - also has some answers about SQL development](https://stackoverflow.com/questions/tagged/sql-server)
 - [Reddit - general discussion about SQL Server](https://www.reddit.com/r/SQLServer/)
 - [Microsoft SQL Server License Terms and Information](https://www.microsoft.com/download/details.aspx?id=39299)
-- [Support options for business users](https://support.microsoft.com/gp/support-options-for-business)
+- [Support options for business users](https://support.serviceshub.microsoft.com/supportforbusiness)
 - [Contact Microsoft](https://support.microsoft.com/contactus/)

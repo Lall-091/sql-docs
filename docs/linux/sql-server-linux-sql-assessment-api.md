@@ -1,9 +1,9 @@
 ---
 title: Use SQL Assessment API for SQL Server on Linux
 description: This article describes how to run the SQL Assessment API for SQL Server on Linux and containers.
-author: aravindmahadevan-ms
-ms.author: armaha
-ms.reviewer: amitkh-msft, randolphwest
+author: amitkh-msft
+ms.author: amitkh
+ms.reviewer: amitkh, randolphwest
 ms.date: 11/18/2024
 ms.service: sql
 ms.subservice: linux
