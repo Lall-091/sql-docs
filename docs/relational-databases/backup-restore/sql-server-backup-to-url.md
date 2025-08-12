@@ -124,10 +124,10 @@ To use immutable storage with [!INCLUDE [sssql25-md](../../includes/sssql25-md.m
    DBCC TRACEON(3012, -1);
    ```
 
-1. Issue the [BACKUP](../../t-sql/statements/backup-transact-sql.md) to back up your database to the Azure storage container:
+1. Issue the [BACKUP](../../t-sql/statements/backup-transact-sql.md) to back up your database to the Azure storage container. If you use the `WITH FORMAT` option on immutable storage, and a backup already exists with the same name, you get an error and the backup fails.
 
    ```sql
-   BACKP DATABASE [<Database>] TO URL = '<url>' WITH FORMAT;
+   BACKUP DATABASE [<Database>] TO URL = '<url>';
    ```
 
 ## Security for Azure Blob Storage
