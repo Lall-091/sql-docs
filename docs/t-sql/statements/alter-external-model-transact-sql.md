@@ -4,7 +4,7 @@ description: ALTER EXTERNAL MODEL (Transact-SQL) for altering an external model 
 author: jettermctedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 04/21/2025
+ms.date: 08/15/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: "reference"
@@ -68,14 +68,14 @@ The specific model hosted by the AI provider. For example, `text-embedding-ada-0
 
 ### CREDENTIAL
 
-Indicate which DATABASE SCOPED CREDENTIAL object is used with the AI model inference endpoint.
+Indicate which `DATABASE SCOPED CREDENTIAL` object is used with the AI model inference endpoint.
 
 ### PARAMETERS
 
 A valid JSON string that contains parameters to be appended to the AI model inference endpoint request message. For example:
 
-```json
-'{"Dimensions" : 1536}'
+```text
+'{ "dimensions": 1536 }'
 ```
 
 ## Remarks
@@ -86,7 +86,7 @@ Only single external model object can be modified at a time. Concurrent requests
 
 ### Alter EXTERNAL MODEL and change the MODEL parameter
 
-This example alters the EXTERNAL MODEL named dbo.myAImodel and changes the MODEL parameter.
+This example alters the `EXTERNAL MODEL` named `dbo.myAImodel`, and changes the `MODEL` parameter.
 
 ```sql
 -- Alter an external model

@@ -4,7 +4,7 @@ description: CREATE EXTERNAL MODEL (Transact-SQL) for creating an external model
 author: jettermctedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 06/27/2025
+ms.date: 08/15/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: "reference"
@@ -92,7 +92,7 @@ Indicate which `DATABASE SCOPED CREDENTIAL` object is used with the AI model inf
 A valid JSON string that contains runtime parameters to be appended to the AI model inference endpoint request message. For example:
 
 ```text
-'{ "Dimensions": 1536 }'
+'{ "dimensions": 1536 }'
 ```
 
 ## Permissions
@@ -143,7 +143,7 @@ For example, to set the `retry_count` to 3, you would write the following JSON s
 Retry count can also be combined with other parameters as long as it's a valid JSON string.
 
 ```json
-{ "Dimensions": 725, "sql_rest_options": { "retry_count": 5 } }
+{ "dimensions": 725, "sql_rest_options": { "retry_count": 5 } }
 ```
 
 ## Remarks
@@ -252,7 +252,7 @@ WITH (
 
 ### Create an EXTERNAL MODEL with Azure OpenAI using API keys and parameters
 
-This example creates an `EXTERNAL MODEL` of the `EMBEDDINGS` type using Azure OpenAI and uses API Keys for authentication. The example also uses `PARAMETERS` to set the Dimensions parameter at the endpoint to 725.
+This example creates an `EXTERNAL MODEL` of the `EMBEDDINGS` type using Azure OpenAI and uses API Keys for authentication. The example also uses `PARAMETERS` to set the dimensions parameter at the endpoint to 725.
 
 ```sql
 -- Create access credentials to Azure OpenAI using a key:
@@ -269,7 +269,7 @@ WITH (
       MODEL_TYPE = EMBEDDINGS,
       MODEL = 'text-embedding-3-small',
       CREDENTIAL = [https://my-azure-openai-endpoint.openai.azure.com/],
-      PARAMETERS = '{"Dimensions":725}'
+      PARAMETERS = '{"dimensions":725}'
 );
 ```
 
