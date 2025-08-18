@@ -4,7 +4,7 @@ description: This article discusses some security best practices that you should
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 06/03/2025
+ms.date: 08/14/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
@@ -130,6 +130,20 @@ For security reasons, we recommend that you don't install [!INCLUDE [ssNoVersion
 - [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] failover cluster instances aren't supported where cluster nodes are domain controllers.
 
 - [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Setup can't create security groups or provision [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] service accounts on a read-only domain controller. In this scenario, Setup fails.
+
+### Ensure required user rights are assigned for successful installation
+
+Setup requires that the following user rights are granted to the account under which [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] is installed:
+
+- Backup files and directories
+- Debug programs
+- Manage auditing and security log
+
+These user privileges are usually granted by default to the local administrator group (`BUILTIN\Administrators`). In most cases, no action is required to assign them. However, if a security policy revokes these privileges, you must make sure they are correctly assigned, or [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Setup fails with the following error:
+
+```output
+The account that is running SQL Server Setup doesn't have one or all of the following rights: the right to back up files and directories, the right to manage auditing and the security log and the right to debug programs. To continue, use an account with both of these rights.
+```
 
 ## During or after installation of SQL Server
 
