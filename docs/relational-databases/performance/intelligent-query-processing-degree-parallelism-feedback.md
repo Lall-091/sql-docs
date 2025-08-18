@@ -76,7 +76,7 @@ Only verified feedback is persisted. If the adjusted DOP results in a performanc
 
 ### Degree of parallelism (DOP) feedback considerations
 
-DOP Feedback is `not enabled` by default in [!INCLUDE [SQL Server 2022](../../includes/sssql22-md.md)]. It is also not available in the [SQL Server 2022 update policy](/azure/azure-sql/managed-instance/update-policy#sql-server-2022-update-policy) of the [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] offering.
+DOP feedback is `not enabled` by default in [!INCLUDE [SQL Server 2022](../../includes/sssql22-md.md)]. It is also not currently available in the [SQL Server 2022 update policy](/azure/azure-sql/managed-instance/update-policy#sql-server-2022-update-policy) of the [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] offering.
 
 Minimum DOP for any query adjusted with DOP feedback is 2. Serial executions are out of scope for DOP feedback.
 
@@ -84,7 +84,7 @@ Feedback information can be tracked using the [sys.query_store_plan_feedback](..
 
 If a query has a query plan forced through Query Store, DOP feedback can still be used for that query.
 
-Currently, DOP Feedback is not compatible with query hints. For more information, see [Hints (Transact-SQL) - Query](../../t-sql/queries/hints-transact-sql-query.md) and [Query Store hints](../../relational-databases/performance/query-store-hints.md).
+Currently, DOP feedback is not compatible with query hints. For more information, see [Hints (Transact-SQL) - Query](../../t-sql/queries/hints-transact-sql-query.md) and [Query Store hints](../../relational-databases/performance/query-store-hints.md).
 
 #### <a id="extended-events-for-dop-feedback"></a> Extended events for degree of parallelism (DOP) feedback
 
