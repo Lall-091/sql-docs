@@ -4,7 +4,7 @@ description: Learn about Degree of parallelism (DOP) feedback, part of the Intel
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: derekw, wiassaf
-ms.date: 07/09/2025
+ms.date: 08/18/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -31,7 +31,7 @@ DOP feedback is part of the [intelligent query processing](../../relational-data
 
 Instead of incurring in the pains of an all-encompassing default or manual adjustments to each query, DOP feedback self-adjusts DOP to avoid these issues.
 
-DOP feedback is available for queries that operate in the database compatibility level 160 (introduced with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]) or higher versions, in Azure SQL Database, Azure SQL Managed Instance with the Always-up-to-date update policy, and SQL database in Fabric.
+DOP feedback is available for queries that operate in the database compatibility level 160 (introduced with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]) or higher versions, in Azure SQL Database, Azure SQL Managed Instance with the Always-up-to-date update policy, and SQL database in Fabric. It is not currently available in the [SQL Server 2022 update policy](/azure/azure-sql/managed-instance/update-policy#sql-server-2022-update-policy) of [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)].
 
 For other query feedback features, see [Memory grant feedback](intelligent-query-processing-memory-grant-feedback.md) and [Cardinality estimation (CE) feedback](intelligent-query-processing-cardinality-estimation-feedback.md).
 
@@ -76,13 +76,15 @@ Only verified feedback is persisted. If the adjusted DOP results in a performanc
 
 ### Degree of parallelism (DOP) feedback considerations
 
+DOP feedback is not enabled by default in [!INCLUDE [SQL Server 2022](../../includes/sssql22-md.md)]. 
+
 Minimum DOP for any query adjusted with DOP feedback is 2. Serial executions are out of scope for DOP feedback.
 
 Feedback information can be tracked using the [sys.query_store_plan_feedback](../system-catalog-views/sys-query-store-plan-feedback.md) catalog view.
 
 If a query has a query plan forced through Query Store, DOP feedback can still be used for that query.
 
-Currently, DOP Feedback is not compatible with query hints. For more information, see [Hints (Transact-SQL) - Query](../../t-sql/queries/hints-transact-sql-query.md) and [Query Store hints](../../relational-databases/performance/query-store-hints.md).
+Currently, DOP feedback is not compatible with query hints. For more information, see [Hints (Transact-SQL) - Query](../../t-sql/queries/hints-transact-sql-query.md) and [Query Store hints](../../relational-databases/performance/query-store-hints.md).
 
 #### <a id="extended-events-for-dop-feedback"></a> Extended events for degree of parallelism (DOP) feedback
 
