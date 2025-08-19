@@ -180,6 +180,20 @@ To override this behavior, either:
 
 - Remove the SQL Server service account permissions to the undesired certificate
 
+## Certificate precedence 
+
+The SQL Server service loads the server certificate in the following order of precedence:
+
+1. The certificate configured with SQL Server Configuration Manager or specified in the registry key `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\<instance_name>\MSSQLServer\SuperSocketNetLib\Certificate`.
+1. If there's no explicitly configured certificate, the SQL Server service loads the certificate from the certificate store as described in the [Certificate behavior](#sql-server-certificate-behavior-with-permissions) section.
+1. If there is no trusted or valid certificate available, SQL Server uses a self-generated certificate as described in the [self-signed certificate](#sql-server-generated-self-signed-certificates) section.
+
+To learn more, see [SQL Server certificate requirements](certificate-requirements.md).
+
+> [!NOTE]
+> SQL Server Configuration Manager only displays certificates imported through the registry if the thumbprint in the registry is an exact match for the thumbprint of the certificate, including case sensitivity. If the thumbprint doesn't match the case exactly, the certificate isn't displayed in SQL Server Configuration Manager, but the certificate is still loaded and used by SQL Server.
+
+
 ## Related content
 
 - [Certificate requirements for SQL Server](certificate-requirements.md)
