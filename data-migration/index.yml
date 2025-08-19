@@ -7,7 +7,7 @@ metadata:
   description: Step-by-step guidance for modernizing your data assets by migrating to SQL Server, Azure SQL Database, Azure SQL Managed Instance, Azure Database, Azure Cosmos DB, SQL Server on Azure VMs and Azure Synapse Analytics.
   author: rwestMSFT
   ms.author: randolphwest
-  ms.date: 06/16/2024
+  ms.date: 08/19/2025
   ms.service: sql
   ms.subservice: migration-guide
   ms.topic: hub-page
@@ -30,9 +30,6 @@ conceptualContent:
         - text: SQL Server on Azure VMs
           url: /azure/azure-sql/migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide
           itemType: how-to-guide
-        - text: Azure Synapse Analytics
-          url: /azure/synapse-analytics/migration-guides/migrate-to-synapse-analytics-guide
-          itemType: how-to-guide
         - text: Migrate SQL Server to Azure video
           url: /shows/data-exposed/migrate-sql-server-to-azure?WT.mc_id=dataexposed-c9-niner-mighub
           itemType: video
@@ -52,9 +49,6 @@ conceptualContent:
           itemType: how-to-guide
         - text: SQL Server on Azure VMs
           url: /azure/azure-sql/migration-guides/virtual-machines/oracle-to-sql-on-azure-vm-guide
-          itemType: how-to-guide
-        - text: Azure Synapse Analytics
-          url: /azure/synapse-analytics/migration-guides/migrate-to-synapse-analytics-guide
           itemType: how-to-guide
     - title: "Db2 to"
       links:
@@ -120,6 +114,23 @@ conceptualContent:
         - text: Google Cloud SQL for PostgreSQL to Azure Database for PostgreSQL
           url: /azure/postgresql/migrate/migration-service/tutorial-migration-service-cloud-sql-offline
           itemType: tutorial
+    - title: "Azure Synapse Analytics to Microsoft Fabric"
+      links:
+        - text: Microsoft Fabric adoption roadmap
+          url: /power-bi/guidance/fabric-adoption-roadmap
+          itemType: reference
+        - text: Migrate to Fabric Data Warehouse
+          url: /fabric/data-warehouse/migration-synapse-dedicated-sql-pool-warehouse
+          itemType: concept
+        - text: Migration Assistant for Fabric Data Warehouse
+          url: /fabric/data-warehouse/migration-assistant
+          itemType: concept
+        - text: Migrate from Azure Synapse Analytics to Fabric
+          url: /fabric/data-warehouse/migrate-with-migration-assistant
+          itemType: how-to-guide
+        - text: Migrate from Azure Synapse Spark to Fabric
+          url: /fabric/data-engineering/migrate-synapse-overview
+          itemType: concept
     - title: "NoSQL"
       links:
         - text: Relational to Azure Cosmos DB
@@ -153,13 +164,10 @@ conceptualContent:
           itemType: video
         - text: Azure Migration Center
           url: https://azure.microsoft.com/migration/
-          itemType: reference
-        - text: Migration partner resources
-          url: https://www.microsoft.com/azure/partners/advspec?filters=windows-server-and-sql-server-migration-to-azure
-          itemType: reference
-        - text: Cloud Economics
-          url: https://azure.microsoft.com/overview/cloud-economics
-          itemType: reference
+          itemType: overview
+        - text: Azure Migrate
+          url: /azure/migrate/migrate-services-overview
+          itemType: concept
         - text: Azure Migrate Business case total cost of ownership
           url: /azure/migrate/concepts-business-case-calculation
           itemType: reference
@@ -167,13 +175,13 @@ conceptualContent:
           url: https://azure.microsoft.com/pricing/hybrid-benefit/
           itemType: reference
         - text: Browse Azure Architecture
-          url: /azure/architecture/browse/?azure_categories=migration
+          url: /azure/architecture/browse/?azure_categories=migration&expanded=azure&terms=SQL
           itemType: reference
         - text: Microsoft cloud Adoption Framework for Azure
           url: https://azure.microsoft.com/cloud-adoption-framework/#cloud-adoption-journey
           itemType: reference
         - text: Browse customer stories
-          url: https://customers.microsoft.com/en-us/search?sq=&ff=&p=0&so=story_publish_date%20desc
+          url: https://www.microsoft.com/customers/search?sq=&ff=&p=0&so=story_publish_date+desc&filters=product%3Aazure%2Fdatabases
           itemType: reference
 
 tools:
@@ -192,14 +200,17 @@ tools:
       imageSrc: media/index/sql-server-migration-assistant-symbol.svg
       url: /sql/ssma/sql-server-migration-assistant
     # Card
-    - title: Azure Synapse Pathway
+    - title: Fabric Migration Assistant for Data Warehouse
       imageSrc: media/index/azure-synapse-pathway-symbol.svg
-      url: /sql/tools/synapse-pathway/azure-synapse-pathway-overview
+      url: /fabric/data-warehouse/migration-assistant
 
 additionalContent:
   sections:
     - title: Recent customer case studies
       items:
-        - title: Minecraft Realms (United States)
+        - title: Minecraft Realms
           summary: Minecraft Realms migrates from AWS to Azure with minimal disruption to the user base.
           url: https://developer.microsoft.com/games/blog/migrating-minecraft-realms-from-aws-to-azure/
+        - title: Cloud Services
+          summary: From systems integrator to data analytics expert, Cloud Services harnesses the power of Azure for digital transformation.
+          url: https://partner.microsoft.com/case-studies/cloud-services
