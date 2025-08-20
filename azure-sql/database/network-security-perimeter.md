@@ -5,13 +5,13 @@ description: Overview of Network Security Perimeter for Azure SQL Database
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: wiassaf, vanto, mathoma
-ms.date: 06/24/2025
+ms.date: 08/20/2025
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: how-to
 ---
 
-# Network Security Perimeter for Azure SQL Database
+# Network Security Perimeter for Azure SQL Database (preview)
 
 [!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
@@ -51,6 +51,10 @@ By default, Network Security Perimeter uses [Learning Mode](/azure/private-link/
 Error 42118
 Login failed because the network security perimeter denied inbound access.
 ```
+
+## Limitations
+
+- A logical server in Azure SQL Database can't be associated with a network security perimeter if it contains one or more dedicated SQL pools (formerly SQL DW).
 
 ## Related content
 
