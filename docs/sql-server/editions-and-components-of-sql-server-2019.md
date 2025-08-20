@@ -1,10 +1,10 @@
 ---
-title: "Editions and supported features of SQL Server 2019"
+title: "Editions and Supported Features of SQL Server 2019"
 description: "Editions and supported features of SQL Server 2019"
 author: "MikeRayMSFT"
 ms.author: "mikeray"
 ms.reviewer: randolphwest
-ms.date: 09/16/2024
+ms.date: 08/20/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: conceptual
@@ -31,7 +31,7 @@ helpviewer_keywords:
   - "installing SQL Server, editions"
   - "editions [SQL Server], about edition options"
   - "Setup [SQL Server]"
-monikerRange: ">= sql-server-2016"
+monikerRange: ">=sql-server-2016"
 ---
 # Editions and supported features of SQL Server 2019
 
@@ -52,7 +52,7 @@ Installation requirements vary based on your application needs. The different ed
 For the latest release notes and what's new information, see the following:
 
 - [[!INCLUDE [sssql19-md](../includes/sssql19-md.md)] release notes](../sql-server/sql-server-version-15-release-notes.md)
-- [What's new in SQL Server 2019](./what-s-new-in-sql-server-2019.md)
+- [What's new in SQL Server 2019](what-s-new-in-sql-server-2019.md)
 
 **Try [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]!: [Download [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] from the Evaluation Center](https://www.microsoft.com/evalcenter/evaluate-sql-server-2019)**
 
@@ -68,7 +68,7 @@ The client tools option installs the following [!INCLUDE [ssNoVersion](../includ
 
 ### Run with IIS
 
-On an internet server, such as a server that is running Internet Information Services (IIS), you will typically install the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] client tools. Client tools include the client connectivity components used by an application connecting to an instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)].
+On an internet server, such as a server that is running Internet Information Services (IIS), you'll typically install the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] client tools. Client tools include the client connectivity components used by an application connecting to an instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)].
 
 > [!NOTE]  
 > Although you can install an instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on a computer that is running IIS, this is typically done only for small Web sites that have a single server computer. Most Web sites have their middle-tier IIS systems on one server or a cluster of servers, and their databases on a separate server or federation of servers.
@@ -108,7 +108,9 @@ For features supported by Developer and Evaluation editions, see features listed
 
 The Developer edition continues to support only 1 client for [[!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Distributed Replay](../tools/distributed-replay/sql-server-distributed-replay.md).
 
-## <a id="Cross-BoxScaleLimits"></a> Scale limits
+<a id="Cross-BoxScaleLimits"></a>
+
+## Scale limits
 
 | Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
 | --- | :---: | :---: | :---: | :---: | :---: |
@@ -127,7 +129,9 @@ The Developer edition continues to support only 1 client for [[!INCLUDE [ssNoVer
 
 <sup>3</sup> MOLAP
 
-## <a id="RDBMSHA"></a> RDBMS high availability
+<a id="RDBMSHA"></a>
+
+## RDBMS high availability
 
 | Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
 | --- | :---: | :---: | :---: | :---: | :---: |
@@ -162,7 +166,7 @@ The Developer edition continues to support only 1 client for [[!INCLUDE [ssNoVer
 
 <sup>3</sup> Witness only
 
-<sup>4</sup> On Enterprise edition, the maximum number of nodes is 16. On Standard edition there is support for two nodes.
+<sup>4</sup> On Enterprise edition, the maximum number of nodes is 16. On Standard edition there's support for two nodes.
 
 <sup>5</sup> On Enterprise edition, provides support for up to 8 secondary replicas - including 5 synchronous secondary replicas.
 
@@ -170,7 +174,9 @@ The Developer edition continues to support only 1 client for [[!INCLUDE [ssNoVer
 
 <sup>7</sup> [Software assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) required.
 
-## <a id="RDBMSSP"></a> RDBMS scalability and performance
+<a id="RDBMSSP"></a>
+
+## RDBMS scalability and performance
 
 | Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
 | --- | :---: | :---: | :-: | :---: | :---: |
@@ -211,7 +217,9 @@ The Developer edition continues to support only 1 client for [[!INCLUDE [ssNoVer
 
 <sup>3</sup> This feature isn't included in the LocalDB installation option.
 
-## <a id="RDBMSS"></a> RDBMS security
+<a id="RDBMSS"></a>
+
+## RDBMS security
 
 | Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
 | --- | :---: | :---: | :-: | :---: | :---: | :---: |
@@ -228,7 +236,9 @@ The Developer edition continues to support only 1 client for [[!INCLUDE [ssNoVer
 | Encryption for backups | Yes | Yes | No | No | No |
 | Data classification and auditing | Yes | Yes | Yes | Yes | Yes |
 
-## <a id="Replication"></a> Replication
+<a id="Replication"></a>
+
+## Replication
 
 | Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
 | --- | :---: | :---: | :---: | :---: | :---: |
@@ -244,7 +254,9 @@ The Developer edition continues to support only 1 client for [[!INCLUDE [ssNoVer
 
 <sup>1</sup> Subscriber only
 
-## <a id="SSMS"></a> Management tools
+<a id="SSMS"></a>
+
+## Management tools
 
 | Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
 | --- | :---: | :---: | :---: | :---: | :---: |
@@ -269,7 +281,9 @@ The Developer edition continues to support only 1 client for [[!INCLUDE [ssNoVer
 
 <sup>4</sup> Tuning enabled only on Standard edition features
 
-## <a id="RDBMSM"></a> RDBMS manageability
+<a id="RDBMSM"></a>
+
+## RDBMS manageability
 
 | Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
 | --- | :---: | :---: | :---: | :---: | :---: |
@@ -284,7 +298,7 @@ The Developer edition continues to support only 1 client for [[!INCLUDE [ssNoVer
 | Able to enroll as a managed instance in multi-instance management | Yes | Yes | Yes | No | No |
 | Standard performance reports | Yes | Yes | Yes | No | No |
 | Plan guides and plan freezing for plan guides | Yes | Yes | Yes | No | No |
-| Direct query of indexed views (using NOEXPAND hint) | Yes | Yes | Yes | Yes | Yes |
+| Direct query of indexed views (using `NOEXPAND` hint) | Yes | Yes | Yes | Yes | Yes |
 | Direct query SQL Server Analysis Services | Yes | Yes | No | No | Yes |
 | Automatic indexed views maintenance | Yes | Yes | Yes | No | No |
 | Distributed partitioned views | Yes | No | No | No | No |
@@ -302,7 +316,9 @@ The Developer edition continues to support only 1 client for [[!INCLUDE [ssNoVer
 
 <sup>3</sup> On Linux, PowerShell scripts are supported, from Windows computers targeting [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on Linux.
 
-## <a id="DevTools"></a> Development tools
+<a id="DevTools"></a>
+
+## Development tools
 
 | Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
 | --- | :---: | :---: | :---: | :---: | :---: |
@@ -311,7 +327,9 @@ The Developer edition continues to support only 1 client for [[!INCLUDE [ssNoVer
 | [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Data Tools (SSDT) | Yes | Yes | Yes | Yes | No |
 | MDX edit, debug, and design tools | Yes | Yes | No | No | No |
 
-## <a id="Programmability"></a> Programmability
+<a id="Programmability"></a>
+
+## Programmability
 
 | Feature | Enterprise | Standard | Web | Express with<br />Advanced Services | Express |
 | --- | :---: | :---: | :---: | :---: | :---: |
@@ -329,7 +347,7 @@ The Developer edition continues to support only 1 client for [[!INCLUDE [ssNoVer
 | Java Language Runtime Integration | Yes | Yes | Yes | Yes | Yes |
 | Native XML support | Yes | Yes | Yes | Yes | Yes |
 | XML indexing | Yes | Yes | Yes | Yes | Yes |
-| MERGE and UPSERT capabilities | Yes | Yes | Yes | Yes | Yes |
+| `MERGE` and UPSERT capabilities | Yes | Yes | Yes | Yes | Yes |
 | FILESTREAM support | Yes | Yes | Yes | Yes | Yes |
 | FileTable | Yes | Yes | Yes | Yes | Yes |
 | Date and Time datatypes | Yes | Yes | Yes | Yes | Yes |
@@ -351,15 +369,21 @@ The Developer edition continues to support only 1 client for [[!INCLUDE [ssNoVer
 
 <sup>5</sup> Client only
 
-## <a id="IS"></a> Integration Services
+<a id="IS"></a>
+
+## Integration Services
 
 For info about [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Integration Services (SSIS) features supported by the editions of [!INCLUDE [ssNoVersion_md](../includes/ssnoversion-md.md)], see [Integration Services features supported by the editions of SQL Server](../integration-services/integration-services-features-supported-by-the-editions-of-sql-server.md).
 
-## <a id="MDS"></a> Master Data Services
+<a id="MDS"></a>
+
+## Master Data Services
 
 For information about the [!INCLUDE [ssMDSshort_md](../includes/ssmdsshort-md.md)] and Data Quality Services features supported by the editions of [!INCLUDE [ssNoVersion_md](../includes/ssnoversion-md.md)], see [Master Data Services and Data Quality Services Features Support](../master-data-services/master-data-services-and-data-quality-services-features-support.md).
 
-## <a id="DW"></a> Data warehouse
+<a id="DW"></a>
+
+## Data warehouse
 
 | Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
 | --- | :---: | :---: | :---: | :---: | :---: |
@@ -369,19 +393,27 @@ For information about the [!INCLUDE [ssMDSshort_md](../includes/ssmdsshort-md.md
 | Parallel query processing on partitioned tables and indexes | Yes | No | No | No | No |
 | Global batch aggregation | Yes | No | No | No | No |
 
-## <a id="SSAS"></a> Analysis Services
+<a id="SSAS"></a>
+
+## Analysis Services
 
 For information about the Analysis Services features supported by the editions of [!INCLUDE [ssNoVersion_md](../includes/ssnoversion-md.md)], see [Analysis Services features supported by SQL Server edition](/analysis-services/analysis-services-features-by-edition).
 
-## <a id="SSRS"></a> Report Services
+<a id="SSRS"></a>
+
+## Report Services
 
 For information about the Reporting Services features supported by the editions of [!INCLUDE [ssNoVersion_md](../includes/ssnoversion-md.md)], see [SQL Server Reporting Services features supported by editions](../reporting-services/reporting-services-features-supported-by-the-editions-of-sql-server-2016.md).
 
-## <a id="BIC"></a> Business intelligence clients
+<a id="BIC"></a>
+
+## Business intelligence clients
 
 For information about the Business Intelligence Client features supported by the editions of [!INCLUDE [ssNoVersion_md](../includes/ssnoversion-md.md)], see [Analysis Services features supported by SQL Server edition](/analysis-services/analysis-services-features-by-edition) or [SQL Server Reporting Services features supported by editions](../reporting-services/reporting-services-features-supported-by-the-editions-of-sql-server-2016.md).
 
-## <a id="SLS"></a> Spatial and location services
+<a id="SLS"></a>
+
+## Spatial and location services
 
 | Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
 | --- | :---: | :---: | :---: | :---: | :---: |
@@ -390,7 +422,9 @@ For information about the Business Intelligence Client features supported by the
 | Advanced spatial libraries | Yes | Yes | Yes | Yes | Yes |
 | Import/export of industry-standard spatial data formats | Yes | Yes | Yes | Yes | Yes |
 
-## <a id="ADS"></a> Additional database services
+<a id="ADS"></a>
+
+## Additional database services
 
 | Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
 | --- | :---: | :---: | :---: | :---: | :---: |

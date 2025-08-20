@@ -3,7 +3,7 @@ title: "Tutorials for SQL Server"
 description: Use these SQL Server tutorials to learn new technologies and features. Tutorials for earlier versions of SQL Server usually work with more recent versions.
 author: MikeRayMSFT
 ms.author: mikeray
-ms.date: 09/16/2024
+ms.date: 08/20/2025
 ms.service: sql
 ms.topic: tutorial
 ---

@@ -1,19 +1,19 @@
 ---
-title: "Monitor performance by using the Query Store"
+title: "Monitor Performance by Using the Query Store"
 description: Query Store provides insight on query plan choice and performance for SQL Server, Azure SQL Database, Azure SQL Managed Instance, and Azure Synapse Analytics. Query Store captures history of queries, plans, and runtime statistics.
 author: MikeRayMSFT
 ms.author: mikeray
-ms.date: 07/19/2024
+ms.date: 08/20/2025
 ms.service: sql
 ms.subservice: performance
 ms.topic: concept-article
+ms.custom:
+  - ignite-2024
+  - sfi-image-nochange
 helpviewer_keywords:
   - "Query Store"
   - "Query Store, described"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azure-sqldw-latest || =fabric"
-ms.custom:
-  - ignite-2024
-  - sfi-image-nochange
 ---
 # Monitor performance by using the Query Store
 
@@ -21,20 +21,22 @@ ms.custom:
 
 The Query Store feature provides you with insight on query plan choice and performance for SQL Server, Azure SQL Database, Fabric SQL database, Azure SQL Managed Instance, and Azure Synapse Analytics. The Query Store simplifies performance troubleshooting by helping you quickly find performance differences caused by query plan changes. Query Store automatically captures a history of queries, plans, and runtime statistics, and retains these for your review. It separates data by time windows so you can see database usage patterns and understand when query plan changes happened on the server.
 
-You can configure Query Store using the [ALTER DATABASE SET](../../t-sql/statements/alter-database-transact-sql-set-options.md) option. 
+You can configure Query Store using the [ALTER DATABASE SET](../../t-sql/statements/alter-database-transact-sql-set-options.md) option.
 
 - For information about operating the Query Store in Azure [!INCLUDE [ssSDS](../../includes/sssds-md.md)], see [Operating the Query Store in Azure SQL Database](best-practice-with-the-query-store.md#Insight).
 - For information on discovering actionable information and tune performance with the Query Store, see [Tune performance with the Query Store](tune-performance-with-the-query-store.md).
 - For information on shaping query plans without changing application code, see [Query Store hints](query-store-hints.md).
 
 > [!IMPORTANT]  
-> If you are using Query Store for just in time workload insights in [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)], plan to install the performance scalability fixes in [KB 4340759](https://support.microsoft.com/help/4340759) as soon as possible.
+> If you're using Query Store for just in time workload insights in [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)], plan to install the performance scalability fixes in [KB 4340759](https://support.microsoft.com/help/4340759) as soon as possible.
 
-## <a id="Enabling"></a> Enable the Query Store
+<a id="Enabling"></a>
+
+## Enable the Query Store
 
 - Query Store is enabled by default for new Azure SQL Database and Azure SQL Managed Instance databases.
-- Query Store is not enabled by default for [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)], [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)], [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)]. It is enabled by default in the `READ_WRITE` mode for new databases starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]. To enable features to better track performance history, troubleshoot query plan related issues, and enable new capabilities in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], we recommend enabling Query Store on all databases.
-- Query Store is not enabled by default for new Azure Synapse Analytics databases.
+- Query Store isn't enabled by default for [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)], [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)], [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)]. It's enabled by default in the `READ_WRITE` mode for new databases starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]. To enable features to better track performance history, troubleshoot query plan related issues, and enable new capabilities in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], we recommend enabling Query Store on all databases.
+- Query Store isn't enabled by default for new Azure Synapse Analytics databases.
 
 ### Use the Query Store page in [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)]
 
@@ -68,23 +70,25 @@ SET QUERY_STORE = ON;
 For more syntax options related to the Query Store, see [ALTER DATABASE SET Options (Transact-SQL)](../../t-sql/statements/alter-database-transact-sql-set-options.md).
 
 > [!NOTE]  
-> Query Store cannot be enabled for the `master` or `tempdb` databases.
+> Query Store can't be enabled for the `master` or `tempdb` databases.
 
 > [!IMPORTANT]  
 > For information on enabling Query Store and keeping it adjusted to your workload, refer to [Best Practice with the Query Store](../../relational-databases/performance/best-practice-with-the-query-store.md#Configure).
 
-## <a id="About"></a> Information in the Query Store
+<a id="About"></a>
+
+## Information in the Query Store
 
 Execution plans for any specific query in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] typically evolve over time due to a number of different reasons such as statistics changes, schema changes, creation/deletion of indexes, etc. The procedure cache (where cached query plans are stored) only stores the latest execution plan. Plans also get evicted from the plan cache due to memory pressure. As a result, query performance regressions caused by execution plan changes can be non-trivial and time consuming to resolve.
 
-Since the Query Store retains multiple execution plans per query, it can enforce policies to direct the Query Processor to use a specific execution plan for a query. This is referred to as plan forcing. Plan forcing in Query Store is provided by using a mechanism similar to the [USE PLAN](../../t-sql/queries/hints-transact-sql-query.md) query hint, but it does not require any change in user applications. Plan forcing can resolve a query performance regression caused by a plan change in a very short period of time.
+Since the Query Store retains multiple execution plans per query, it can enforce policies to direct the Query Processor to use a specific execution plan for a query. This is referred to as plan forcing. Plan forcing in Query Store is provided by using a mechanism similar to the [USE PLAN](../../t-sql/queries/hints-transact-sql-query.md) query hint, but it doesn't require any change in user applications. Plan forcing can resolve a query performance regression caused by a plan change in a very short period of time.
 
 > [!NOTE]  
 > Query Store collects plans for DML Statements such as `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `MERGE`, and `BULK INSERT`.
-> 
-> By design, Query Store does not collect plans for DDL statements such as `CREATE INDEX`, etc. Query Store captures cumulative resource consumption by collecting plans for the underlying DML statements. For example, Query Store might display the `SELECT` and `INSERT` statements executed internally to populate a new index.
->
-> Query Store does not collect data for natively compiled stored procedures by default. Use [sys.sp_xtp_control_query_exec_stats](../../relational-databases/system-stored-procedures/sys-sp-xtp-control-query-exec-stats-transact-sql.md) to enable data collection for natively compiled stored procedures.
+>  
+> By design, Query Store doesn't collect plans for DDL statements such as `CREATE INDEX`, etc. Query Store captures cumulative resource consumption by collecting plans for the underlying DML statements. For example, Query Store might display the `SELECT` and `INSERT` statements executed internally to populate a new index.
+>  
+> Query Store doesn't collect data for natively compiled stored procedures by default. Use [Sys.sp_xtp_control_query_exec_stats](../system-stored-procedures/sys-sp-xtp-control-query-exec-stats-transact-sql.md) to enable data collection for natively compiled stored procedures.
 
 **Wait stats** are another source of information that helps to troubleshoot performance in the [!INCLUDE [ssDE-md](../../includes/ssde-md.md)]. For a long time, wait statistics were available only on instance level, which made it hard to backtrack waits to a specific query. Starting with [!INCLUDE [ssSQL17](../../includes/sssql17-md.md)] and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], Query Store includes a dimension that tracks wait stats. The following example enables the Query Store to collect wait stats.
 
@@ -128,17 +132,19 @@ ON Pln.plan_id = RtSt.plan_id;
 
 **Applies to:** [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE [sql-server-2022](../../includes/sssql22-md.md)])
 
-The Query Store for secondary replicas feature enables the same Query Store functionality on secondary replica workloads that is available for primary replicas. When Query Store for secondary replicas is enabled, replicas send the query execution information that would normally be stored in the Query Store back to the primary replica. The primary replica then persists the data to disk within its own Query Store. In essence, there is one Query Store shared between the primary and all secondary replicas. The Query Store exists on the primary replica and stores data for all replicas together.
+The Query Store for secondary replicas feature enables the same Query Store functionality on secondary replica workloads that is available for primary replicas. When Query Store for secondary replicas is enabled, replicas send the query execution information that would normally be stored in the Query Store back to the primary replica. The primary replica then persists the data to disk within its own Query Store. In essence, there's one Query Store shared between the primary and all secondary replicas. The Query Store exists on the primary replica and stores data for all replicas together.
 
 For complete information on Query Store for secondary replicas, see [Query Store for Always On availability group secondary replicas](query-store-for-secondary-replicas.md).
 
-## <a id="Regressed"></a> Use the Regressed Queries feature
+<a id="Regressed"></a>
+
+## Use the Regressed Queries feature
 
 After enabling the Query Store, refresh the database portion of the Object Explorer pane to add the **Query Store** section.
 
 :::image type="content" source="media/monitoring-performance-by-using-the-query-store/object-explorer-query-store.png" alt-text="Screenshot of the Query Store reporting tree in SSMS Object Explorer.":::
 
-> [!NOTE]
+> [!NOTE]  
 > For Azure Synapse Analytics, Query Store views are available under **System Views** in the database portion of the Object Explorer pane.
 
 Select **Regressed Queries** to open the **Regressed Queries** pane in [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)]. The Regressed Queries pane shows you the queries and plans in the Query Store. Use the dropdown list boxes at the top to filter queries based on various criteria: Duration (ms) (Default), CPU Time (ms), Logical Reads (KB), Logical Writes (KB), Physical Reads (KB), CLR Time (ms), DOP, Memory Consumption (KB), Row Count, Log Memory Used (KB), Temp DB Memory Used (KB), and Wait Time (ms).
@@ -149,7 +155,9 @@ Select a plan to see the graphical query plan. Buttons are available to view the
 
 To force a plan, select a query and plan, then select **Force Plan**. You can only force plans that were saved by the query plan feature and are still retained in the query plan cache.
 
-## <a id="Waiting"></a> Find waiting queries
+<a id="Waiting"></a>
+
+## Find waiting queries
 
 Starting with [!INCLUDE [ssSQL17](../../includes/sssql17-md.md)] and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], wait statistics per query over time are available in Query Store.
 
@@ -173,21 +181,25 @@ Here are some examples how you can get more insights into your workload before a
 | - | - | - |
 | High RESOURCE_SEMAPHORE waits per database | High Memory waits in Query Store for specific queries | Find the top memory consuming queries in Query Store. These queries are probably delaying further progress of the affected queries. Consider using MAX_GRANT_PERCENT query hint for these queries, or for the affected queries. |
 | High LCK_M_X waits per database | High Lock waits in Query Store for specific queries | Check the query texts for the affected queries and identify the target entities. Look in Query Store for other queries modifying the same entity, which are executed frequently and/or have high duration. After identifying these queries, consider changing the application logic to improve concurrency, or use a less restrictive isolation level. |
-| High PAGEIOLATCH_SH waits per database | High Buffer IO waits in Query Store for specific queries | Find the queries with a high number of physical reads in Query Store. If they match the queries with high IO waits, consider introducing an index on the underlying entity, in order to do seeks instead of scans, and thus minimize the IO overhead of the queries. |
+| High PAGEIOLATCH_SH waits per database | High Buffer `IO` waits in Query Store for specific queries | Find the queries with a high number of physical reads in Query Store. If they match the queries with high `IO` waits, consider introducing an index on the underlying entity, in order to do seeks instead of scans, and thus minimize the `IO` overhead of the queries. |
 | High SOS_SCHEDULER_YIELD waits per database | High CPU waits in Query Store for specific queries | Find the top CPU consuming queries in Query Store. Among them, identify the queries for which high CPU trend correlates with high CPU waits for the affected queries. Focus on optimizing those queries - there could be a plan regression, or perhaps a missing index. |
 
-## <a id="Options"></a> Configuration options
+<a id="Options"></a>
+
+## Configuration options
 
 For the available options to configure Query Store parameters, see [ALTER DATABASE SET options (Transact-SQL)](../../t-sql/statements/alter-database-transact-sql-set-options.md#query-store).
 
-Query the `sys.database_query_store_options` view to determine the current options of the Query Store. For more information about the values, see [sys.database_query_store_options](../../relational-databases/system-catalog-views/sys-database-query-store-options-transact-sql.md).
+Query the `sys.database_query_store_options` view to determine the current options of the Query Store. For more information about the values, see [Sys.database_query_store_options](../system-catalog-views/sys-database-query-store-options-transact-sql.md).
 
 For examples about setting configuration options using [!INCLUDE [tsql](../../includes/tsql-md.md)] statements, see [Option Management](#OptionMgmt).
 
 > [!NOTE]  
-> For Azure Synapse Analytics, the Query Store can be enabled as on other platforms but additional configuration options are not supported.
+> For Azure Synapse Analytics, the Query Store can be enabled as on other platforms but additional configuration options aren't supported.
 
-## <a id="Related"></a> Related views, functions, and procedures
+<a id="Related"></a>
+
+## Related views, functions, and procedures
 
 View and manage Query Store through [!INCLUDE [ssManStudio](../../includes/ssmanstudio-md.md)] or by using the following views and procedures.
 
@@ -197,7 +209,7 @@ Functions help operations with the Query Store.
 
 :::row:::
     :::column:::
-        [sys.fn_stmt_sql_handle_from_sql_stmt (Transact-SQL)](../../relational-databases/system-functions/sys-fn-stmt-sql-handle-from-sql-stmt-transact-sql.md)
+        [Sys.fn_stmt_sql_handle_from_sql_stmt (Transact-SQL)](../system-functions/sys-fn-stmt-sql-handle-from-sql-stmt-transact-sql.md)
     :::column-end:::
 :::row-end:::
 
@@ -207,39 +219,39 @@ Catalog views present information about the Query Store.
 
 :::row:::
     :::column:::
-        [sys.database_query_store_options (Transact-SQL)](../../relational-databases/system-catalog-views/sys-database-query-store-options-transact-sql.md)
+        [Sys.database_query_store_options (Transact-SQL)](../system-catalog-views/sys-database-query-store-options-transact-sql.md)
     :::column-end:::
     :::column:::
-        [sys.query_context_settings (Transact-SQL)](../../relational-databases/system-catalog-views/sys-query-context-settings-transact-sql.md)
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [sys.query_store_plan (Transact-SQL)](../../relational-databases/system-catalog-views/sys-query-store-plan-transact-sql.md)
-    :::column-end:::
-    :::column:::
-        [sys.query_store_query (Transact-SQL)](../../relational-databases/system-catalog-views/sys-query-store-query-transact-sql.md)
+        [Sys.query_context_settings (Transact-SQL)](../system-catalog-views/sys-query-context-settings-transact-sql.md)
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [sys.query_store_query_text (Transact-SQL)](../../relational-databases/system-catalog-views/sys-query-store-query-text-transact-sql.md)
+        [Sys.query_store_plan (Transact-SQL)](../system-catalog-views/sys-query-store-plan-transact-sql.md)
     :::column-end:::
     :::column:::
-        [sys.query_store_runtime_stats (Transact-SQL)](../../relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql.md)
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [sys.query_store_wait_stats (Transact-SQL)](../../relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql.md)
-    :::column-end:::
-    :::column:::
-        [sys.query_store_runtime_stats_interval (Transact-SQL)](../../relational-databases/system-catalog-views/sys-query-store-runtime-stats-interval-transact-sql.md)
+        [Sys.query_store_query (Transact-SQL)](../system-catalog-views/sys-query-store-query-transact-sql.md)
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [sys.database_query_store_internal_state (Transact-SQL)](../system-catalog-views/sys-database-query-store-internal-state-transact-sql.md)
+        [Sys.query_store_query_text (Transact-SQL)](../system-catalog-views/sys-query-store-query-text-transact-sql.md)
+    :::column-end:::
+    :::column:::
+        [Sys.query_store_runtime_stats (Transact-SQL)](../system-catalog-views/sys-query-store-runtime-stats-transact-sql.md)
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [Sys.query_store_wait_stats (Transact-SQL)](../system-catalog-views/sys-query-store-wait-stats-transact-sql.md)
+    :::column-end:::
+    :::column:::
+        [Sys.query_store_runtime_stats_interval (Transact-SQL)](../system-catalog-views/sys-query-store-runtime-stats-interval-transact-sql.md)
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [Sys.database_query_store_internal_state (Transact-SQL)](../system-catalog-views/sys-database-query-store-internal-state-transact-sql.md)
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -251,66 +263,69 @@ Stored procedures configure the Query Store.
 
 :::row:::
     :::column:::
-        [sp_query_store_flush_db (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-query-store-flush-db-transact-sql.md)
+        [Sp_query_store_flush_db (Transact-SQL)](../system-stored-procedures/sp-query-store-flush-db-transact-sql.md)
     :::column-end:::
     :::column:::
-        [sp_query_store_reset_exec_stats (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-query-store-reset-exec-stats-transact-sql.md)
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [sp_query_store_force_plan (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-query-store-force-plan-transact-sql.md)
-    :::column-end:::
-    :::column:::
-        [sp_query_store_unforce_plan (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-query-store-unforce-plan-transact-sql.md)
+        [Sp_query_store_reset_exec_stats (Transact-SQL)](../system-stored-procedures/sp-query-store-reset-exec-stats-transact-sql.md)
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [sp_query_store_remove_plan (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-query-store-remove-plan-transact-sql.md)
+        [Sp_query_store_force_plan (Transact-SQL)](../system-stored-procedures/sp-query-store-force-plan-transact-sql.md)
     :::column-end:::
     :::column:::
-        [sp_query_store_remove_query (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-query-store-remove-query-transact-sql.md)
+        [Sp_query_store_unforce_plan (Transact-SQL)](../system-stored-procedures/sp-query-store-unforce-plan-transact-sql.md)
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [sp_query_store_clear_message_queues (Transact-SQL)](../system-stored-procedures/sp-query-store-clear-message-queues-transact-sql.md)
+        [Sp_query_store_remove_plan (Transact-SQL)](../system-stored-procedures/sp-query-store-remove-plan-transact-sql.md)
+    :::column-end:::
+    :::column:::
+        [Sp_query_store_remove_query (Transact-SQL)](../system-stored-procedures/sp-query-store-remove-query-transact-sql.md)
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [Sp_query_store_clear_message_queues (Transact-SQL)](../system-stored-procedures/sp-query-store-clear-message-queues-transact-sql.md)
     :::column-end:::
     :::column:::
         `sp_query_store_consistency_check` (Transact-SQL)<sup>1</sup>
     :::column-end:::
 :::row-end:::
 
-<sup>1</sup> In extreme scenarios Query Store can enter an ERROR state because of internal errors. Starting with [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)], if this happens, Query Store can be recovered by executing the `sp_query_store_consistency_check` stored procedure in the affected database. See [sys.database_query_store_options](../../relational-databases/system-catalog-views/sys-database-query-store-options-transact-sql.md) for more details described in the `actual_state_desc` column description.
+<sup>1</sup> In extreme scenarios Query Store can enter an ERROR state because of internal errors. Starting with [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)], if this happens, Query Store can be recovered by executing the `sp_query_store_consistency_check` stored procedure in the affected database. See [Sys.database_query_store_options](../system-catalog-views/sys-database-query-store-options-transact-sql.md) for more details described in the `actual_state_desc` column description.
 
-<a id="Scenarios"></a> 
-<a name="OptionMgmt"></a>
+<a id="Scenarios"></a>
+<a id="OptionMgmt"></a>
+
 ## Query Store maintenance
 
 Best practices and recommendations for maintenance and management of the Query Store have been expanded in this article: [Best practices for managing the Query Store](manage-the-query-store.md).
 
-## <a id="Performance"></a> Performance auditing and troubleshooting
+<a id="Performance"></a>
+
+## Performance auditing and troubleshooting
 
 For more information about diving into performance tuning with Query Store, see [Tune performance with the Query Store](tune-performance-with-the-query-store.md).
 
 Other performance topics:
-- [Query Store Usage Scenarios](../../relational-databases/performance/query-store-usage-scenarios.md)
+- [Query Store Usage Scenarios](query-store-usage-scenarios.md)
 
 ## Related content
 
-- [Query Store Stored Procedures (Transact-SQL)](../../relational-databases/system-stored-procedures/query-store-stored-procedures-transact-sql.md)
-- [Query Store Catalog Views (Transact-SQL)](../../relational-databases/system-catalog-views/query-store-catalog-views-transact-sql.md)
-- [sys.database_query_store_options (Transact-SQL)](../../relational-databases/system-catalog-views/sys-database-query-store-options-transact-sql.md)
-- [Live Query Statistics](../../relational-databases/performance/live-query-statistics.md)
-- [Activity Monitor](../../relational-databases/performance-monitor/activity-monitor.md)
-- [How Query Store Collects Data](../../relational-databases/performance/how-query-store-collects-data.md)
-- [Monitor and Tune for Performance](../../relational-databases/performance/monitor-and-tune-for-performance.md)
-- [Performance Monitoring and Tuning Tools](../../relational-databases/performance/performance-monitoring-and-tuning-tools.md)
-- [Using the Query Store with In-Memory OLTP](../../relational-databases/performance/using-the-query-store-with-in-memory-oltp.md)
-- [Best Practices with the Query Store](../../relational-databases/performance/best-practice-with-the-query-store.md)
+- [Query Store stored procedures (Transact-SQL)](../system-stored-procedures/query-store-stored-procedures-transact-sql.md)
+- [Query Store catalog views (Transact-SQL)](../system-catalog-views/query-store-catalog-views-transact-sql.md)
+- [sys.database_query_store_options (Transact-SQL)](../system-catalog-views/sys-database-query-store-options-transact-sql.md)
+- [Live Query Statistics](live-query-statistics.md)
+- [Activity Monitor](../performance-monitor/activity-monitor.md)
+- [How Query Store collects data](how-query-store-collects-data.md)
+- [Monitor and Tune for Performance](monitor-and-tune-for-performance.md)
+- [Performance monitoring and tuning tools](performance-monitoring-and-tuning-tools.md)
+- [Use the Query Store with In-Memory OLTP](using-the-query-store-with-in-memory-oltp.md)
+- [Best practices for monitoring workloads with Query Store](best-practice-with-the-query-store.md)
 - [Best practices for managing the Query Store](manage-the-query-store.md)
 - [Tune performance with the Query Store](tune-performance-with-the-query-store.md)
 - [Query Store hints](query-store-hints.md)
 - [Query Store Usage Scenarios](query-store-usage-scenarios.md)
-- [Open Activity Monitor (SQL Server Management Studio)](../../relational-databases/performance-monitor/open-activity-monitor-sql-server-management-studio.md)
+- [Open Activity Monitor in SQL Server Management Studio (SSMS)](../performance-monitor/open-activity-monitor-sql-server-management-studio.md)

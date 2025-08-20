@@ -3,7 +3,7 @@ title: "Subqueries (SQL Server)"
 description: Look at an example of a subquery, which is a query that is nested in a SELECT, INSERT, UPDATE, or DELETE statement, or inside another subquery in SQL Server.
 author: MikeRayMSFT
 ms.author: mikeray
-ms.date: 07/19/2024
+ms.date: 08/20/2025
 ms.service: sql
 ms.subservice: performance
 ms.topic: conceptual
@@ -38,7 +38,9 @@ FROM Sales.SalesOrderHeader AS Ord;
 GO
 ```
 
-## <a id="fundamentals"></a> Subquery fundamentals
+<a id="fundamentals"></a>
+
+## Subquery fundamentals
 
 A subquery is also called an inner query or inner select, while the statement containing a subquery is also called an outer query or outer select.
 
@@ -69,7 +71,7 @@ WHERE Prd2.[Name] = 'Chainring Bolts';
 GO
 ```
 
-A subquery nested in the outer SELECT statement has the following components:
+A subquery nested in the outer `SELECT` statement has the following components:
 
 - A regular `SELECT` query including the regular select list components.
 - A regular `FROM` clause including one or more table or view names.
@@ -77,9 +79,9 @@ A subquery nested in the outer SELECT statement has the following components:
 - An optional `GROUP BY` clause.
 - An optional `HAVING` clause.
 
-The SELECT query of a subquery is always enclosed in parentheses. It can't include a `COMPUTE` or `FOR BROWSE` clause, and can only include an `ORDER BY` clause when a TOP clause is also specified.
+The `SELECT` query of a subquery is always enclosed in parentheses. It can't include a `COMPUTE` or `FOR BROWSE` clause, and can only include an `ORDER BY` clause when a `TOP` clause is also specified.
 
-A subquery can be nested inside the `WHERE` or `HAVING` clause of an outer `SELECT`, `INSERT`, `UPDATE`, or `DELETE` statement, or inside another subquery. Up to 32 levels of nesting is possible, although the limit varies based on available memory and the complexity of other expressions in the query. Individual queries do not support nesting up to 32 levels. A subquery can appear anywhere an expression can be used, if it returns a single value.
+A subquery can be nested inside the `WHERE` or `HAVING` clause of an outer `SELECT`, `INSERT`, `UPDATE`, or `DELETE` statement, or inside another subquery. Up to 32 levels of nesting is possible, although the limit varies based on available memory and the complexity of other expressions in the query. Individual queries don't support nesting up to 32 levels. A subquery can appear anywhere an expression can be used, if it returns a single value.
 
 If a table appears only in a subquery and not in the outer query, then columns from that table can't be included in the output (the select list of the outer query).
 
@@ -97,7 +99,9 @@ There are three basic types of subqueries. Those that:
 - Are introduced with an unmodified comparison operator and must return a single value.
 - Are existence tests introduced with `EXISTS`.
 
-## <a id="rules"></a> Subquery rules
+<a id="rules"></a>
+
+## Subquery rules
 
 A subquery is subject to the following restrictions:
 
@@ -111,7 +115,9 @@ A subquery is subject to the following restrictions:
 - A view created by using a subquery can't be updated.
 - The select list of a subquery introduced with `EXISTS`, by convention, has an asterisk (`*`) instead of a single column name. The rules for a subquery introduced with `EXISTS` are the same as those for a standard select list, because a subquery introduced with `EXISTS` creates an existence test and returns TRUE or FALSE, instead of data.
 
-## <a id="qualifying"></a> Qualify column names in subqueries
+<a id="qualifying"></a>
+
+## Qualify column names in subqueries
 
 In the following example, the `BusinessEntityID` column in the `WHERE` clause of the outer query is implicitly qualified by the table name in the outer query `FROM` clause (`Sales.Store`). The reference to `CustomerID` in the select list of the subquery is qualified by the subquery `FROM` clause, that is, by the `Sales.Customer` table.
 
@@ -146,9 +152,11 @@ GO
 It's never wrong to state the table name explicitly, and it's always possible to override implicit assumptions about table names with explicit qualifications.
 
 > [!IMPORTANT]  
-> If a column is referenced in a subquery that does not exist in the table referenced by the subquery's `FROM` clause, but exists in a table referenced by the outer query's `FROM` clause, the query executes without error. [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] implicitly qualifies the column in the subquery with the table name in the outer query.
+> If a column is referenced in a subquery that doesn't exist in the table referenced by the subquery's `FROM` clause, but exists in a table referenced by the outer query's `FROM` clause, the query executes without error. [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] implicitly qualifies the column in the subquery with the table name in the outer query.
 
-## <a id="nesting"></a> Multiple levels of nesting
+<a id="nesting"></a>
+
+## Multiple levels of nesting
 
 A subquery can itself include one or more subqueries. Any number of subqueries can be nested in a statement.
 
@@ -211,7 +219,9 @@ ON e.BusinessEntityID = s.BusinessEntityID;
 GO
 ```
 
-## <a id="correlated"></a> Correlated subqueries
+<a id="correlated"></a>
+
+## Correlated subqueries
 
 Many queries can be evaluated by executing the subquery once and substituting the resulting value or values into the `WHERE` clause of the outer query. In queries that include a correlated subquery (also known as a repeating subquery), the subquery depends on the outer query for its values. This means that the subquery is executed repeatedly, once for each row that might be selected by the outer query.
 
@@ -270,7 +280,9 @@ Because this is false, the row for `Syed Abbas` isn't included in the results of
 
 Correlated subqueries can also include table-valued functions in the `FROM` clause by referencing columns from a table in the outer query as an argument of the table-valued function. In this case, for each row of the outer query, the table-valued function is evaluated according to the subquery.
 
-## <a id="types"></a> Subquery types
+<a id="types"></a>
+
+## Subquery types
 
 Subqueries can be specified in many places:
 
@@ -279,11 +291,13 @@ Subqueries can be specified in many places:
 - In `UPDATE`, `DELETE`, and `INSERT` statements. For more information, see [Subqueries in UPDATE, DELETE, and INSERT Statements](#upsert).
 - With comparison operators. For more information, see [Subqueries with comparison operators](#comparison).
 - With `ANY`, `SOME`, or `ALL`. For more information, see [Comparison operators modified by ANY, SOME, or ALL](#comparison_modified).
-- With `IS [NOT] DISTINCT FROM`. For more information, see [IS [NOT] DISTINCT FROM (Transact-SQL)](../../t-sql/queries/is-distinct-from-transact-sql.md).
+- With `IS [NOT] DISTINCT FROM`. For more information, see [IS [NOT] `DISTINCT FROM` (Transact-SQL)](../../t-sql/queries/is-distinct-from-transact-sql.md).
 - With `EXISTS` or `NOT EXISTS`. For more information, see [Subqueries with EXISTS](#exists) and [Subqueries with NOT EXISTS](#notexists).
 - In place of an expression. For more information, see [Subqueries used in place of an expression](#expression).
 
-### <a id="aliases"></a> Subqueries with table aliases
+<a id="aliases"></a>
+
+### Subqueries with table aliases
 
 Many statements in which the subquery and the outer query refer to the same table can be stated as self-joins (joining a table to itself). For example, you can find addresses of employees from a particular state using a subquery:
 
@@ -341,7 +355,9 @@ GO
 
 Explicit table aliases make it clear that a reference to `Person.Address` in the subquery doesn't mean the same thing as the reference in the outer query.
 
-### <a id="in"></a> Subqueries with IN
+<a id="in"></a>
+
+### Subqueries with IN
 
 The result of a subquery introduced with `IN` (or with `NOT IN`) is a list of zero or more values. After the subquery returns results, the outer query makes use of them.
 The following query finds the names of all the wheel products that Adventure Works Cycles makes.
@@ -484,7 +500,9 @@ GO
 
 A join can always be expressed as a subquery. A subquery can often, but not always, be expressed as a join. This is because joins are symmetric: you can join table `A` to `B` in either order and get the same answer. The same isn't true if a subquery is involved.
 
-### <a id="notin"></a> Subqueries with NOT IN
+<a id="notin"></a>
+
+### Subqueries with NOT IN
 
 Subqueries introduced with the keyword `NOT IN` also return a list of zero or more values.
 The following query finds the names of the products that aren't finished bicycles.
@@ -505,7 +523,9 @@ GO
 
 This statement can't be converted to a join. The analogous not-equal join has a different meaning: It finds the names of products that are in some subcategory that isn't a finished bicycle.
 
-### <a id="upsert"></a> Subqueries in UPDATE, DELETE, and INSERT statements
+<a id="upsert"></a>
+
+### Subqueries in UPDATE, DELETE, and INSERT statements
 
 Subqueries can be nested in the `UPDATE`, `DELETE`, `INSERT`, and `SELECT` data manipulation (DML) statements.
 
@@ -549,7 +569,9 @@ INNER JOIN Purchasing.ProductVendor AS pv
 GO
 ```
 
-### <a id="comparison"></a> Subqueries with comparison operators
+<a id="comparison"></a>
+
+### Subqueries with comparison operators
 
 Subqueries can be introduced with one of the comparison operators (`=`, `< >`, `>`, `> =`, `<`, `! >`, `! <`, or `< =`).
 
@@ -601,7 +623,9 @@ WHERE ListPrice >
 GO
 ```
 
-### <a id="comparison_modified"></a> Comparison operators modified by `ANY`, `SOME`, or `ALL`
+<a id="comparison_modified"></a>
+
+### Comparison operators modified by `ANY`, `SOME`, or `ALL`
 
 Comparison operators that introduce a subquery can be modified by the keywords `ALL` or `ANY`. `SOME` is an ISO standard equivalent for `ANY`. For more information on these comparison operators, see [SOME | ANY](../../t-sql/language-elements/some-any-transact-sql.md).
 
@@ -699,17 +723,19 @@ WHERE TerritoryID <> ANY
 GO
 ```
 
-The results include all customers, except those whose sales territories are NULL, because every territory that is assigned to a customer is covered by a sales person. The inner query finds all the sales territories covered by sales persons, and then, for each territory, the outer query finds the customers who aren't in one.
+The results include all customers, except those whose sales territories are `NULL`, because every territory that is assigned to a customer is covered by a sales person. The inner query finds all the sales territories covered by sales persons, and then, for each territory, the outer query finds the customers who aren't in one.
 
 For the same reason, when you use `NOT IN` in this query, the results include none of the customers.
 
 You can get the same results with the `<> ALL` operator, which is equivalent to `NOT IN`.
 
-### <a id="exists"></a> Subqueries with `EXISTS`
+<a id="exists"></a>
+
+### Subqueries with `EXISTS`
 
 When a subquery is introduced with the keyword `EXISTS`, the subquery functions as an existence test. The `WHERE` clause of the outer query tests whether the rows that are returned by the subquery exist. The subquery doesn't actually produce any data; it returns a value of `TRUE` or `FALSE`.
 
-A subquery introduced with EXISTS has the following syntax: `WHERE [NOT] EXISTS (subquery)`
+A subquery introduced with `EXISTS` has the following syntax: `WHERE [NOT] EXISTS (subquery)`
 
 The following query finds the names of all products that are in the Wheels subcategory:
 
@@ -752,7 +778,7 @@ Touring Rear Wheel
 
 To understand the results of this query, consider the name of each product in turn. Does this value cause the subquery to return at least one row? In other words, does the query cause the existence test to evaluate to `TRUE`?
 
-Subqueries that are introduced with EXISTS are a bit different from other subqueries in the following ways:
+Subqueries that are introduced with `EXISTS` are a bit different from other subqueries in the following ways:
 
 - The keyword `EXISTS` isn't preceded by a column name, constant, or other expression.
 - The select list of a subquery introduced by `EXISTS` almost always consists of an asterisk (*). There's no reason to list column names because you're just testing whether rows that meet the conditions specified in the subquery exist.
@@ -773,7 +799,9 @@ WHERE ProductSubcategoryID IN
 GO
 ```
 
-### <a id="notexists"></a> Subqueries with `NOT EXISTS`
+<a id="notexists"></a>
+
+### Subqueries with `NOT EXISTS`
 
 `NOT EXISTS` works like `EXISTS`, except the `WHERE` clause is satisfied if no rows are returned by the subquery.
 
@@ -793,7 +821,9 @@ WHERE NOT EXISTS
 GO
 ```
 
-### <a id="expression"></a> Subqueries used in place of an expression
+<a id="expression"></a>
+
+### Subqueries used in place of an expression
 
 In [!INCLUDE [tsql](../../includes/tsql-md.md)], a subquery can be substituted anywhere an expression can be used in `SELECT`, `UPDATE`, `INSERT`, and `DELETE` statements, except in an `ORDER BY` list.
 
@@ -816,10 +846,10 @@ GO
 - [IN (Transact-SQL)](../../t-sql/language-elements/in-transact-sql.md)
 - [EXISTS (Transact-SQL)](../../t-sql/language-elements/exists-transact-sql.md)
 - [ALL (Transact-SQL)](../../t-sql/language-elements/all-transact-sql.md)
-- [SOME | ANY (Transact-SQL)](../../t-sql/language-elements/some-any-transact-sql.md)
-- [Joins](../../relational-databases/performance/joins.md)
+- [SOME &#124; ANY (Transact-SQL)](../../t-sql/language-elements/some-any-transact-sql.md)
+- [Joins (SQL Server)](joins.md)
 - [Comparison Operators (Transact-SQL)](../../t-sql/language-elements/comparison-operators-transact-sql.md)
-- [Query Processing Architecture Guide](../query-processing-architecture-guide.md)
-- [Best practices with Query Store](best-practice-with-the-query-store.md)
+- [Query processing architecture guide](../query-processing-architecture-guide.md)
+- [Best practices for monitoring workloads with Query Store](best-practice-with-the-query-store.md)
 - [Intelligent query processing in SQL databases](intelligent-query-processing.md)
 - [Cardinality Estimation (SQL Server)](cardinality-estimation-sql-server.md)
