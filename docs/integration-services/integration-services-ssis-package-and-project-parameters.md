@@ -18,7 +18,7 @@ f1_keywords:
 
   [!INCLUDE[ssISnoversion](../includes/ssisnoversion-md.md)] (SSIS) parameters allow you to assign values to properties within packages at the time of package execution. You can create *project parameters* at the project level and *package parameters* at the package level. Project parameters are used to supply any external input the project receives to one or more packages in the project. Package parameters allow you to modify package execution without having to edit and redeploy the package.  
   
- In [!INCLUDE[ssBIDevStudio](../includes/ssbidevstudio-md.md)] you create, modify, or delete project parameters by using the **Project.params** window. You create, modify, and delete package parameters by using the **Parameters** tab in the [!INCLUDE[ssIS](../includes/ssis-md.md)] Designer. You associate a new or an existing parameter with a task property by using the **Parameterize** dialog box. For more about using the **Project.params** window and the **Parameters** tab, see [Create Parameters](). For more information about the **Parameterize** dialog box, see [Parameterize Dialog Box]().  
+ In [!INCLUDE[ssBIDevStudio](../includes/ssbidevstudio-md.md)] you create, modify, or delete project parameters by using the **Project.params** window. You create, modify, and delete package parameters by using the **Parameters** tab in the [!INCLUDE[ssIS](../includes/ssis-md.md)] Designer. You associate a new or an existing parameter with a task property by using the **Parameterize** dialog box.
   
 ## Parameters and Package Deployment Model  
  In general, if you are deploying a package using the package deployment model, you should use configurations instead of parameters.  
@@ -161,7 +161,7 @@ You use [!INCLUDE[ssBIDevStudioFull](../includes/ssbidevstudiofull-md.md)] to cr
     > You can in-place edit in the list or use the **Properties** window to modify the values of parameter properties. You can delete a parameter by using the **Delete (X)** toolbar button. Using the last toolbar button to open the **Manage Parameter Values** dialog box, you can specify a value for a parameter that is used only when you execute the package in [!INCLUDE[ssBIDevStudio](../includes/ssbidevstudio-md.md)].  
     
 ## Parameterize Dialog Box
-The **Parameterize** dialog box lets you associate a new or an existing parameter with a property of a task. You open the dialog box by right-clicking a task or the Control Flow tab in [!INCLUDE[ssIS](../includes/ssis-md.md)] Designer and then by clicking **Parameterize**. The following list describes UI elements in the dialog box. For more information about parameters, see [Integration Services (SSIS) Parameters]().
+The **Parameterize** dialog box lets you associate a new or an existing parameter with a property of a task. You open the dialog box by right-clicking a task or the Control Flow tab in [!INCLUDE[ssIS](../includes/ssis-md.md)] Designer and then by clicking **Parameterize**. The following list describes UI elements in the dialog box. 
   
 ### Options  
  **Property**  

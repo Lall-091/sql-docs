@@ -42,7 +42,7 @@ Enables result set caching for the current client session.  Result set caching c
 Disable result set caching for the current client session.
 
 > [!NOTE]
-> Result set caching should not be used in conjunction with [DECRYPTBYKEY](../functions/decryptbykey-transact-sql.md). If this cryptographic function must be used, ensure you have result set caching disabled (either at [session-level]() or [database-level](./alter-database-transact-sql-set-options.md)) at the time of execution.
+> Result set caching should not be used in conjunction with [DECRYPTBYKEY](../functions/decryptbykey-transact-sql.md). If this cryptographic function must be used, ensure you have result set caching disabled (either at session-level or database-level) at the time of execution.
 
 ## Examples
 
@@ -57,6 +57,12 @@ WHERE request_id = 'QID58286'
 ## Permissions
 
 Requires membership in the public role
+
+```sql
+SELECT result_cache_hit
+FROM sys.dm_pdw_exec_requests
+WHERE request_id = 'QID58286'
+```
 
 ## See also
 

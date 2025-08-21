@@ -29,8 +29,6 @@ ms.topic: "reference"
   
 -   [Running Stored Procedures How-to Topics &#40;ODBC&#41;](./running-stored-procedures-call-stored-procedures.md)  
   
--   [Managing text and image Columns How-to Topics &#40;ODBC&#41;]()  
-  
 -   [Profiling ODBC Driver Performance How-to Topics &#40;ODBC&#41;](../../relational-databases/native-client-odbc-how-to/profiling-odbc-driver-performance-odbc.md)  
   
 -   [Process ODBC Errors &#40;ODBC&#41;](../../relational-databases/native-client-odbc-how-to/process-odbc-errors-odbc.md)  

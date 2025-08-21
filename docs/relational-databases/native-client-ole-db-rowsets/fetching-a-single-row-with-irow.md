@@ -31,7 +31,6 @@ helpviewer_keywords:
   
 -   [Using IRow::GetColumns](../../relational-databases/native-client-ole-db-rowsets/using-irow-getcolumns.md)  
   
--   [Fetching BLOB Data Using IRow]()  
   
 ## See Also  
  [Rowsets](../../relational-databases/native-client-ole-db-rowsets/rowsets.md)  

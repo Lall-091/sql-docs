@@ -60,9 +60,7 @@ The Service Master Key can only be opened by the Windows service account under w
 >  If you lose all access to the keys described earlier, you will lose access to the objects, connections, and data secured by those keys. You can restore the service master key, as described in the links that are shown here, or you can go back to the original encrypting system to recover the access. There is no "back-door" to recover the access.  
   
 ## In This Section  
- [Service Master Key]()  
- Provides a brief explanation for the service master key and its best practices.  
-  
+
  [Extensible Key Management &#40;EKM&#41;](../../../relational-databases/security/encryption/extensible-key-management-ekm.md)  
  Explains how to use third-party key management systems with [!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)].  
   

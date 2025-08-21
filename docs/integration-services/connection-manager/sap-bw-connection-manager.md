@@ -44,9 +44,7 @@ f1_keywords:
   
 ### Using the SSIS Designer to Configure the Source  
  For more information about the properties of the SAP BW connection manager that you can set in [!INCLUDE[ssIS](../../includes/ssis-md.md)] Designer, click the following topic:  
-  
--   [SAP BW Connection Manager Editor]()  
-  
+
 ## SAP BW Connection Manager Editor
   Use the **SAP BW Connection Manager Editor** to specify the properties to use to connect to an SAP Netweaver BW version 7 system.  
   

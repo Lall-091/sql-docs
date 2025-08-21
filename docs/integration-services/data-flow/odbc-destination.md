@@ -57,12 +57,6 @@ f1_keywords:
   
  For more information, see one of the following topics:  
   
--   [ODBC Destination Editor &#40;Connection Manager Page&#41;]()  
-  
--   [ODBC Destination Editor &#40;Mappings Page&#41;]()  
-  
--   [ODBC Destination Editor &#40;Error Output Page&#41;]()  
-  
  The **Advanced Editor** dialog box contains the properties that can be set programmatically.  
   
  To open the **Advanced Editor** dialog box:  

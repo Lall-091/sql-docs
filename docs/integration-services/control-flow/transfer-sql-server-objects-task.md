@@ -321,7 +321,6 @@ helpviewer_keywords:
 ## See Also  
  [Integration Services Error and Message Reference](../../integration-services/integration-services-error-and-message-reference.md)   
  [Integration Services Tasks](../../integration-services/control-flow/integration-services-tasks.md)   
- [Transfer SQL Server Objects Task Editor &#40;General Page&#41;]()   
  [Expressions Page](../../integration-services/expressions/expressions-page.md)   
  [Data Formats for Bulk Import or Bulk Export &#40;SQL Server&#41;](../../relational-databases/import-export/data-formats-for-bulk-import-or-bulk-export-sql-server.md)   
  [Security Considerations for a SQL Server Installation](../../sql-server/install/security-considerations-for-a-sql-server-installation.md)

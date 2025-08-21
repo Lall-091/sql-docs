@@ -42,6 +42,5 @@ dev_langs:
  Requires membership in the sysadmin fixed server role to view all of the columns. Members of the public role can view the instance_name, description, and type_version columns.  
   
 ## See Also  
- [Data-tier Applications](../../relational-databases/data-tier-applications/data-tier-applications.md)   
- [Data-tier Application Views &#40;Transact-SQL&#41;]()  
+ [Data-tier Applications](../../relational-databases/data-tier-applications/data-tier-applications.md) 
   

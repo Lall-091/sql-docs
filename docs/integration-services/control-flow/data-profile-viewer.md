@@ -58,9 +58,7 @@ helpviewer_keywords:
 >  The drilldown capability that is available in the Data Profile Viewer sends live queries to the original data source. These queries may have a negative impact on the performance of the server.  
 >   
 >  If you drill down from an output file that was not created recently, the drilldown queries might return a different set of rows than those on which the original output was calculated.  
-  
- For more information about the user interface of the Data Profile Viewer, see [Data Profile Viewer F1 Help]().  
-  
+
 ## Data Profile Viewer F1 Help
   Use the Data Profile Viewer to view the output of the Data Profiling task.  
   

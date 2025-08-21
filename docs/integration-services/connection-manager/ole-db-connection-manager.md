@@ -53,8 +53,8 @@ Configure the OLEDB connection manager in the following ways:
  You can log the calls that the OLEDB connection manager makes to external data providers. You can then troubleshoot the connections that the OLEDB connection manager makes to external data sources. To log the calls that the OLEDB connection manager makes to external data providers, enable package logging, and select the **Diagnostic** event at the package level. For more information, see [Troubleshooting Tools for Package Execution](../../integration-services/troubleshooting/troubleshooting-tools-for-package-execution.md).    
     
 ## Configure the OLEDB connection manager    
- You can set properties through [!INCLUDE[ssIS](../../includes/ssis-md.md)] Designer, or programmatically. For more information about the properties that you can set in [!INCLUDE[ssIS](../../includes/ssis-md.md)] Designer, see [Configure OLEDB Connection Manager](). For information about configuring a connection manager programmatically, see the documentation for **T:Microsoft.SqlServer.Dts.Runtime.ConnectionManager** class in the Developer Guide.    
-    
+ You can set properties through [!INCLUDE[ssIS](../../includes/ssis-md.md)] Designer, or programmatically.
+
 ### Configure OLEDB connection manager
 
 Use the **Configure OLEDB Connection Manager** dialog box to add a connection to a data source. This connection can be new, or a copy of an existing connection.  

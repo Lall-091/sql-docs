@@ -23,12 +23,10 @@ helpviewer_keywords:
   
  This [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Native Client OLE DB provider programming reference does not document all of the OLE DB interfaces and methods, only those interfaces and methods that exhibit provider-specific behavior when using the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Native Client OLE DB provider.  
   
- For a full description of the core OLE DB interfaces and methods, see the [OLE DB Programmer's Reference](/previous-versions/windows/desktop/ms713643(v=vs.85)).  
-  
 ## In This Section  
-  
--   [Interfaces &#40;OLE DB&#41;]()  
-  
-## See Also  
+
  [SQL Server Native Client &#40;OLE DB&#41;](../../relational-databases/native-client/ole-db/sql-server-native-client-ole-db.md)  
   
+## See also
+
+[IBCPSession::BCPColFmt (OLE DB)](../../connect/oledb/ole-db-interfaces/ibcpsession-bcpcolfmt-ole-db.md)

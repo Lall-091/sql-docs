@@ -104,6 +104,5 @@ ms.custom:
   
 ## Related content
 
-- [Dataset Properties Dialog Box, Fields &#40;Report Builder&#41;]()
 - [Report Parts and Datasets in Report Builder](../../reporting-services/report-data/report-parts-and-datasets-in-report-builder.md)
 - [Report Embedded Datasets and Shared Datasets &#40;Report Builder and SSRS&#41;](../../reporting-services/report-data/report-embedded-datasets-and-shared-datasets-report-builder-and-ssrs.md)

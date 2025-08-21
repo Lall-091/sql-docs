@@ -191,7 +191,7 @@ helpviewer_keywords:
  Select an existing table or view from the list, or create a new table by clicking **New**.  
   
 > [!NOTE]  
->  If you specify a SQL statement on the **Advanced** page of the **Lookup Transformation Editor**, that SQL statement overrides and replaces the table name selected here. For more information, see [Lookup Transformation Editor &#40;Advanced Page&#41;]().  
+>  If you specify a SQL statement on the **Advanced** page of the **Lookup Transformation Editor**, that SQL statement overrides and replaces the table name selected here.
   
  **New**  
  Create a new table by using the **Create Table** dialog box.  
@@ -263,7 +263,7 @@ helpviewer_keywords:
  Modify the SQL statement that is used to generate the reference dataset.  
   
 > [!NOTE]  
->  The optional SQL statement that you specify on this page overrides and replaces the table name that you specified on the **Connection** page of the **Lookup Transformation Editor**. For more information, see [Lookup Transformation Editor &#40;Connection Page&#41;]().  
+>  The optional SQL statement that you specify on this page overrides and replaces the table name that you specified on the **Connection** page of the **Lookup Transformation Editor**. .  
   
  **Set Parameters**  
  Map input columns to parameters by using the **Set Query Parameters** dialog box.  

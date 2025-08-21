@@ -56,8 +56,6 @@ You can set properties through [!INCLUDE [ssIS](../../includes/ssis-md.md)] Desi
   
 Many of configuration options of the [!INCLUDE [vstecado](../../includes/vstecado-md.md)] connection manager depend on the .NET provider that the connection manager uses.  
   
-For more information about the properties that you can set in [!INCLUDE [ssIS](../../includes/ssis-md.md)] Designer, see [Configure ADO.NET Connection Manager]().  
-  
  For information about configuring a connection manager programmatically, see <xref:Microsoft.SqlServer.Dts.Runtime.ConnectionManager> and [Adding Connections Programmatically](../../integration-services/building-packages-programmatically/adding-connections-programmatically.md).  
   
 ### Configure ADO.NET connection manager

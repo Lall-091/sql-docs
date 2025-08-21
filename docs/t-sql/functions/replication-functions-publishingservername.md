@@ -41,5 +41,4 @@ PUBLISHINGSERVERNAME()
   
 ## See Also  
  [Database Mirroring and Replication &#40;SQL Server&#41;](../../database-engine/database-mirroring/database-mirroring-and-replication-sql-server.md)   
- [Replication Functions &#40;Transact-SQL&#41;]()  
   

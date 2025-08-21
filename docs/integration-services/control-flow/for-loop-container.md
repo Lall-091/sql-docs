@@ -59,7 +59,7 @@ helpviewer_keywords:
   
 3.  Connect tasks and containers in the For Loop container using precedence constraints. For more information, see [Connect Tasks and Containers by Using a Default Precedence Constraint](./precedence-constraints.md).  
   
-4.  Configure the For Loop container. For more information, see [Configure a For Loop Container]().  
+4.  Configure the For Loop container.
 
 ##  Configure the For Loop container
 This procedure describes how to configure a For Loop container by using the **For Loop Editor** dialog box.  

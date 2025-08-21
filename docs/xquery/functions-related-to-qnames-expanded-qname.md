@@ -191,8 +191,5 @@ FROM T
 ```  
   
 ### Implementation Limitations  
- There is one limitation: The **expanded-QName()** function accepts the empty sequence as the second argument and will return empty instead of raising a run-time error when the second argument is incorrect.  
-  
-## See Also  
- [Functions Related to QNames &#40;XQuery&#41;]()  
+ There is one limitation: The **expanded-QName()** function accepts the empty sequence as the second argument and will return empty instead of raising a run-time error when the second argument is incorrect. 
   

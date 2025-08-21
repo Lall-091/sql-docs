@@ -68,7 +68,6 @@ helpviewer_keywords:
   
 -   [Sparse Columns Support &#40;ODBC&#41;](../../../relational-databases/native-client/odbc/sparse-columns-support-odbc.md)  
   
--   [SQL Server Native Client &#40;ODBC&#41; Reference]()  
   
 -   [ODBC How-to Topics](../../../relational-databases/native-client-odbc-how-to/odbc-how-to-topics.md)  
   

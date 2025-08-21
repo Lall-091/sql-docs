@@ -35,7 +35,7 @@ helpviewer_keywords:
  If an application switches from manual-commit to autocommit mode, the driver commits any transactions currently open on the connection.  
   
  ODBC applications should not use Transact-SQL transaction statements such as BEGIN TRANSACTION, COMMIT TRANSACTION, or ROLLBACK TRANSACTION because this can cause indeterminate behavior in the driver. An ODBC application should run in autocommit mode and not use any transaction management functions or statements, or run in manual-commit mode and use the ODBC **SQLEndTran** function to either commit or roll back transactions.  
-  
-## See Also  
- [Performing Transactions &#40;ODBC&#41;]()  
-  
+
+## Related content
+
+- [Create a distributed transaction](performing-transactions-distributed-transactions.md)

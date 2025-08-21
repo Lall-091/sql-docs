@@ -29,7 +29,7 @@ f1_keywords:
   
  The CDC source uses the following configurations:  
   
--   A [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] ADO.NET connection manager to access the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] CDC database. For more information about configuring the CDC source connection, see [CDC Source Editor &#40;Connection Manager Page&#41;]().  
+-   A [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] ADO.NET connection manager to access the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] CDC database. 
   
 -   A table enabled for CDC.  
   
@@ -97,12 +97,6 @@ use <cdc-enabled-database-name>
  You can configure the CDC source programmatically or through the SSIS Designer.  
   
  For more information, see one of the following topics:  
-  
--   [CDC Source Editor &#40;Connection Manager Page&#41;]()  
-  
--   [CDC Source Editor &#40;Columns Page&#41;]()  
-  
--   [CDC Source Editor &#40;Error Output Page&#41;]()  
   
  The **Advanced Editor** dialog box contains the properties that can be set programmatically.  
   

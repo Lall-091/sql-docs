@@ -546,7 +546,6 @@ items:
       - name: selectFeatures
         href: ../machine-learning/r/reference/microsoftml/selectfeatures.md
     - name: olapR
-      href: 
       items:
       - name: Package overview
         href: ../machine-learning/r/ref-r-olapr.md

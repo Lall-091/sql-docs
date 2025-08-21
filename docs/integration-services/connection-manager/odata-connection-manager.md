@@ -48,7 +48,7 @@ For anonymous access, select the Windows Authentication option.
 To connect to Microsoft Dynamics AX Online or Microsoft Dynamics CRM online, you can't use the **Microsoft Online Services** authentication option. You also can't use any option that's configured for multi-factor authentication. Currently Modern authentication is not supported. 
   
 ### Specifying and Securing Credentials  
- If the OData service requires basic authentication, you can specify a username and password in the [OData Connection Manager Editor](). The values you enter in the editor are persisted in the package. The password value is encrypted according to the package protection level.  
+ If the OData service requires basic authentication, you can specify a username and password in the OData Connection Manager Editor. The values you enter in the editor are persisted in the package. The password value is encrypted according to the package protection level.  
   
  There are several ways to parameterize the username and password values or to store them outside the package. For example, you can use parameters, or set the connection manager properties directly when you run the package from SQL Server Management Studio.  
   

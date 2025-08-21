@@ -88,7 +88,7 @@ helpviewer_keywords:
   
  You can use the .NET Data Provider for SQL Server (SqlClient) to connect to [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)].  
   
- If you select **Use bulk insert when available**, and set the **Error** option to **Redirect the row**, the batch of data that the destination redirects to the error output may include good rows.For more information about handling errors in bulk operations, see [Error Handling in Data](../../integration-services/data-flow/error-handling-in-data.md). For more information about the **Error** option, see [ADO NET Destination Editor &#40;Error Output Page&#41;]().  
+ If you select **Use bulk insert when available**, and set the **Error** option to **Redirect the row**, the batch of data that the destination redirects to the error output may include good rows.For more information about handling errors in bulk operations, see [Error Handling in Data](../../integration-services/data-flow/error-handling-in-data.md).  
   
 > [!NOTE]
 >  If a SQL Server or Sybase source table includes an identity column, you must use Execute SQL tasks to enable IDENTITY_INSERT before the ADO NET destination and to disable it again afterward. (The identity column property specifies an incremental value for the column. The SET IDENTITY_INSERT statement lets explicit values from the source table be inserted into the identity column in the destination table.)  

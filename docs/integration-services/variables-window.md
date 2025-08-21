@@ -40,7 +40,7 @@ helpviewer_keywords:
  Select a variable from the list, and then click **Delete Variable**.  
   
  **Grid Options**  
- Click to open the **Variable Grid Options** dialog box where you can change the column selection and apply filters to the **Variables** window. For more information, see [Variable Grid Options]().  
+ Click to open the **Variable Grid Options** dialog box where you can change the column selection and apply filters to the **Variables** window. 
   
  **Name**  
  View the variable name. You can update the name for user-defined variables.  

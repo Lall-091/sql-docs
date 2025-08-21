@@ -56,7 +56,7 @@ helpviewer_keywords:
  In the [!INCLUDE[ssIS](../../../includes/ssis-md.md)] Designer, the Script component has two modes: metadata-design mode and code-design mode. In metadata-design mode, you can add and modify the Script component inputs and outputs, but you cannot write code. After all the inputs and outputs are configured, you switch to code-design mode to write the script. The Script component automatically generates base code from the metadata of the inputs and outputs. If you change the metadata after the Script component generates the base code, your code may no longer compile because the updated base code may be incompatible with your code.  
   
 ## Writing the Script that the Component Uses  
- The Script component uses [!INCLUDE[msCoName](../../../includes/msconame-md.md)] [!INCLUDE[vsprvs](../../../includes/vsprvs-md.md)] Tools for Applications (VSTA) as the environment in which you write the scripts. You access VSTA from the **Script Transformation Editor**. For more information, see [Script Transformation Editor &#40;Script Page&#41;]().  
+ The Script component uses [!INCLUDE[msCoName](../../../includes/msconame-md.md)] [!INCLUDE[vsprvs](../../../includes/vsprvs-md.md)] Tools for Applications (VSTA) as the environment in which you write the scripts. You access VSTA from the **Script Transformation Editor**.
   
  The Script component provides a VSTA project that includes an auto-generated class, named ScriptMain, that represents the component metadata. For example, if the Script component is used as a transformation that has three outputs, ScriptMain includes a method for each output. ScriptMain is the entry point to the script.  
   

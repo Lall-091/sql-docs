@@ -38,7 +38,6 @@ dev_langs:
 ## See Also  
  [THROW &#40;Transact-SQL&#41;](../../t-sql/language-elements/throw-transact-sql.md)   
  [Catalog Views &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/catalog-views-transact-sql.md)   
- [Messages &#40;for Errors&#41; Catalog Views &#40;Transact-SQL&#41;]()   
  [Exception Message Box Programming](/previous-versions/sql/sql-server-2016/ms166343(v=sql.130))   
  [Error Messages](../../relational-databases/native-client-odbc-error-messages/error-messages.md)   
  [Database Engine Events and Errors](../../relational-databases/errors-events/database-engine-events-and-errors.md)  

@@ -52,10 +52,6 @@ helpviewer_keywords:
   
  For information about additional package properties that you cannot set in the **Properties** window, see <xref:Microsoft.SqlServer.Dts.Runtime.Package>.  
   
-### To set package properties in the Properties window  
-  
--   [Set the Properties of a Package]()  
-  
 ## Properties by Category  
  The following tables list the package properties by category.  
   

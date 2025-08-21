@@ -52,8 +52,6 @@ You can provide the SQL statement in the following ways:
   
  You can also provide direct input by typing the query in the task or data flow component dialog box or the Properties window.  
   
- For more information, see [Query Builder]().  
-  
 ## SQL in Files  
  The SQL statement for the Execute SQL task can also reside in a separate file. For example, you can write queries using tools such as the Query Editor in [!INCLUDE[ssManStudioFull](../includes/ssmanstudiofull-md.md)], save the query to a file, and then read the query from the file when running a package. The file can contain only the SQL statements to run and comments. To use a SQL statement stored in a file, you must provide a file connection that specifies the file name and location. For more information, see [File Connection Manager](../integration-services/connection-manager/file-connection-manager.md).  
   

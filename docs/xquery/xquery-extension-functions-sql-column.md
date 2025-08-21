@@ -121,7 +121,6 @@ select @x
 ```  
   
 ## See Also  
- [SQL Server XQuery Extension Functions]()   
  [Compare Typed XML to Untyped XML](../relational-databases/xml/compare-typed-xml-to-untyped-xml.md)   
  [XML Data &#40;SQL Server&#41;](../relational-databases/xml/xml-data-sql-server.md)   
  [Create Instances of XML Data](../relational-databases/xml/create-instances-of-xml-data.md)   

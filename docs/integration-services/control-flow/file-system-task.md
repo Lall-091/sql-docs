@@ -58,8 +58,6 @@ helpviewer_keywords:
   
  For more information about the properties that you can set in [!INCLUDE[ssIS](../../includes/ssis-md.md)] Designer, see the following topics:  
   
--   [File System Task Editor &#40;General Page&#41;]()  
-  
 -   [Expressions Page](../../integration-services/expressions/expressions-page.md)  
   
  For more information about how to set these properties in [!INCLUDE[ssIS](../../includes/ssis-md.md)] Designer, see the following topic:  

@@ -74,7 +74,7 @@ helpviewer_keywords:
   
  ![Semantic Model Query Designer UI](../../reporting-services/report-data/media/rsqd-dsawmodel-smql.gif "Semantic Model Query Designer UI")  
   
- To use the Report Model query designer, you must define a data source that points to a published model. When you define a dataset for the data source, you can open the dataset query in the Report Model query designer. The Report Model query designer can be used in graphical or text-based modes. You can toggle the **Edit As Text** button on the toolbar to switch between the graphical query designer and the text-based query designer. For more information, see [Report Model Query Designer User Interface]().  
+ To use the Report Model query designer, you must define a data source that points to a published model. When you define a dataset for the data source, you can open the dataset query in the Report Model query designer. The Report Model query designer can be used in graphical or text-based modes. You can toggle the **Edit As Text** button on the toolbar to switch between the graphical query designer and the text-based query designer.
   
 ##  <a name="MDX"></a> MDX Query Designer  
  The Multidimensional Expression (MDX) query designer is used to create or modify queries that run against an [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] data source with multidimensional cubes. The following image provides an illustration of the MDX query designer after the query and filter are defined.  

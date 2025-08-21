@@ -121,8 +121,6 @@ At run time, containers and tasks raise events. You can create custom event hand
   
  For information about how to set these properties in [!INCLUDE[ssBIDevStudioFull](../includes/ssbidevstudiofull-md.md)], see [Set the Properties of a Task or Container](./control-flow/add-or-delete-a-task-or-a-container-in-a-control-flow.md).  
   
- For information about programmatically setting these properties, see <xref:Microsoft.SqlServer.Dts.Runtime.DtsEventHandler>.  
-  
-## Related Tasks  
- For information about how to add an event handler to a package, see [Add an Event Handler to a Package]().  
+ For information about programmatically setting these properties, see <xref:Microsoft.SqlServer.Dts.Runtime.DtsEventHandler>.
+
   

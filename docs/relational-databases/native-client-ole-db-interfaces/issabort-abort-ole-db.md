@@ -61,6 +61,6 @@ HRESULT Abort(void);
  E_OUTOFMEMORY  
  Out of memory error.  
   
-## See Also  
- [ISSAbort &#40;OLE DB&#41;]()  
-  
+## Related content
+
+- [ISSAsynchStatus::Abort (Native Client OLE DB Provider)](issasynchstatus-abort-ole-db.md)

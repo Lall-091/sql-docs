@@ -108,7 +108,7 @@ ms.custom: sfi-ropc-nochange
   
 3.  Connect tasks and containers in the Foreach Loop container using precedence constraints. For more information, see [Connect Tasks and Containers by Using a Default Precedence Constraint](./precedence-constraints.md).  
   
-4.  Configure the Foreach Loop container. For more information, see [Configure a Foreach Loop Container]().  
+4.  Configure the Foreach Loop container.
 
 ## Configure a Foreach Loop Container
 This procedure describes how to configure a Foreach Loop container, including property expressions at the enumerator and container levels.  
@@ -176,8 +176,6 @@ This procedure describes how to configure a Foreach Loop container, including pr
 ## General Page - Foreach Loop Editor
 Use the **General** page of the **Foreach Loop Editor** dialog box to name and describe a Foreach Loop container that uses a specified enumerator to repeat a workflow for each member in a collection.  
   
- To learn about the Foreach Loop container and how to configure it, see [Foreach Loop Container](#foreach-loop-container) and [Configure a Foreach Loop Container]().  
-  
 ### Options  
  **Name**  
  Provide a unique name for the Foreach Loop container. This name is used as the label in the task icon and in the logs.  
@@ -190,9 +188,9 @@ Use the **General** page of the **Foreach Loop Editor** dialog box to name and d
 
 ## Collection Page - Foreach Loop Editor
  Use the **Collection** page of the **Foreach Loop Editor** dialog box to specify the enumerator type and configure the enumerator.  
-  
- To learn about the Foreach Loop container and how to configure it, see [Foreach Loop Container](#foreach-loop-container) and [Configure a Foreach Loop Container]().  
-  
+
+ To learn about the Foreach Loop container and how to configure it, see [Foreach Loop Container](#foreach-loop-container) and [Configure a Foreach Loop Container](#configure-a-foreach-loop-container).  
+
 ### Static Options  
  **Enumerator**  
  Select the enumerator type from the list. This property has the options listed in the following table:  
@@ -280,7 +278,7 @@ Use the **General** page of the **Foreach Loop Editor** dialog box to name and d
  **Columns**  
  Click to configure the data type of the columns in the item.  
   
- **Related Topics:** [For Each Item Columns Dialog Box UI Reference]()  
+ **Related Topics:** For each item columns dialog box UI reference  
   
 #### Enumerator = Foreach ADO Enumerator  
  You use the Foreach ADO enumerator to enumerate rows or tables in an ADO or ADO.NET object that is stored in a variable. For example, if the Foreach Loop includes a Script task that writes a dataset to a variable, you can use the Foreach ADO enumerator to enumerate the rows in the dataset. If the variable contains an ADO.NET dataset, the enumerator can be configured to enumerate rows in multiple tables or to enumerate tables.  
@@ -317,9 +315,7 @@ Use the **General** page of the **Foreach Loop Editor** dialog box to name and d
  Select the schema to enumerate.  
   
  **Set Restrictions**  
- Set the restrictions to apply to the specified schema.  
-  
- **Related Topics:** [Schema Restrictions Dialog Box]()  
+**Related Topics:** Schema Restrictions dialog box; configuring the ADO.NET connection manager; and working with Integration Services (SSIS) variables and the Add Variable dialog box.
   
 #### Enumerator = Foreach From Variable Enumerator  
  You use the Foreach From Variable enumerator to enumerate the enumerable objects in the specified variable. For example, if the Foreach Loop includes an Execute SQL task that runs a query and stores the result in a variable, you can use the Foreach From Variable enumerator to enumerate the query results.  
@@ -515,8 +511,6 @@ See [this](/azure/storage/blobs/data-lake-storage-access-control) article for de
 
 ## Variable Mappings Page - Foreach Loop Editor
  Use the **Variables Mappings** page of the **Foreach Loop Editor** dialog box to map variables to the collection value. The value of the variable is updated with the collection values on each iteration of the loop.  
-  
- To learn about how to use the Foreach Loop container in an Integration Services package,  see [Foreach Loop Container](#foreach-loop-container). To learn about how to configure it, see [Configure a Foreach Loop Container]().  
   
  The [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] [!INCLUDE[ssISnoversion](../../includes/ssisnoversion-md.md)] tutorial, Creating a Simple ETL Package Tutorial, includes a lesson that teaches you to add and configure a Foreach Loop.  
   

@@ -79,7 +79,7 @@ helpviewer_keywords:
   
 -   **Parameters**  
   
-     You can configure the Execute Package Task to map parent package variables or parameters, or project parameters, to child package parameters. The project must use the project deployment model and the child package must be contained in the same project that contains the parent package. For more information, see [Execute Package Task Editor]().  
+     You can configure the Execute Package Task to map parent package variables or parameters, or project parameters, to child package parameters. The project must use the project deployment model and the child package must be contained in the same project that contains the parent package. 
   
     > [!NOTE]  
     >  If the child package parameter is not sensitive and is mapped to a parent parameter that is sensitive, the child package will fail to run.  

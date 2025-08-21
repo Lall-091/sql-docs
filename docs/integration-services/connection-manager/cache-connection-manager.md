@@ -23,8 +23,8 @@ ms.custom: sfi-ropc-nochange
  The Cache Transform transformation writes data from a connected data source in the data flow to a Cache connection manager. The Lookup transformation in a package performs lookups on the data.  
   
 > [!NOTE]  
->  The Cache connection manager does not support the Binary Large Object (BLOB) data types DT_TEXT, DT_NTEXT, and DT_IMAGE. If the reference dataset contains a BLOB data type, the component will fail when you run the package. You can use the **Cache Connection Manager Editor** to modify column data types. For more information, see [Cache Connection Manager Editor]().  
-  
+>  The Cache connection manager does not support the Binary Large Object (BLOB) data types DT_TEXT, DT_NTEXT, and DT_IMAGE. If the reference dataset contains a BLOB data type, the component will fail when you run the package. You can use the **Cache Connection Manager Editor** to modify column data types. 
+
 > [!NOTE]  
 >  The protection level of the package does not apply to the cache file. If the cache file contains sensitive information, use an access control list (ACL) to restrict access to the location or folder in which you store the file. You should enable access only to certain accounts. For more information, see [Access to Files Used by Packages](../../integration-services/security/security-overview-integration-services.md#files).  
   

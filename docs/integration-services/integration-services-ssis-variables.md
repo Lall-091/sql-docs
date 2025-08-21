@@ -69,8 +69,6 @@ helpviewer_keywords:
   
  A different set of system variables is available for different container types. For more information about the system variables used by packages and their elements, see [System Variables](../integration-services/system-variables.md).  
   
- For more information about real-life use scenarios for variables, see [Use Variables in Packages]().  
-  
 ## Properties of variables  
  You can configure user-defined variables by setting the following properties in either the **Variables** window or the **Properties** window. Certain properties are available only in the Properties window.  
   
@@ -177,9 +175,9 @@ A variable has options for setting the variable value and the data type of the v
 5.  In the **Variables** window, click the **Add Variable** icon. The new variable is added to the list.  
   
 6.  Optionally, click the **Grid Options** icon, select additional columns to show in the **Variables Grid Options** dialog box, and then click **OK**.  
-  
-7.  Optionally, set the variable properties. For more information, see [Set the Properties of a User-Defined Variable]().  
-  
+
+7.  Optionally, set the variable properties. For more information, see [Set the Properties of a User-Defined Variable](../integration-services/integration-services-ssis-variables.md#set-the-properties-of-a-user-defined-variable).  
+
 8.  To save the updated package, click **Save Selected Items** on the **File** menu.  
 
 ### Add Variable dialog box
