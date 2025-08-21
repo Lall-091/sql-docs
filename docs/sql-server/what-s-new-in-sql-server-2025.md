@@ -105,7 +105,7 @@ The following sections identify features that are improved or introduced in [!IN
 - [Query Store and intelligent query processing](#query-store-and-intelligent-query-processing)
 - [Language](#language)
 - [Tools](#tools)
-- [Fabric](#microsoft-fabric)
+- [Microsoft Fabric](#microsoft-fabric)
 
 ## AI
 
@@ -279,7 +279,11 @@ The [intelligent query processing (IQP)](../relational-databases/performance/int
 
 ## Microsoft Fabric
 
-### Fabric mirroring for SQL Server 2025 (Preview)
+| New feature or update | Details |
+| --- | --- |
+| [Mirroring in Fabric](/fabric/database/mirrored-database/overview) | Continuously replicate data to Microsoft Fabric from SQL Server 2025 on-premises. Microsoft Fabric already includes mirroring from a variety of sources, including Azure SQL Database and Azure SQL Managed Instance. For more information on SQL Server 2025 database mirroring to Fabric, see [Mirrored SQL Server databases in Microsoft Fabric](/fabric/database/mirrored-database/sql-server). |
+
+### Fabric mirroring for SQL Server 2025 RC0 (Preview)
 
 - You can configure SQL Server resource governor to manage resource usage for Mirroring in Fabric for [!INCLUDE [sssql25-md](../includes/sssql25-md.md)]. Each workload group is for a specific phase of mirroring.
 
