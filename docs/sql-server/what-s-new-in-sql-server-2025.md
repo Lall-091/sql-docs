@@ -289,11 +289,11 @@ The [intelligent query processing (IQP)](../relational-databases/performance/int
 
 - You can enable and configure the autoreseed feature for Fabric mirroring to prevent the transaction log from filling in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)].
 
-   For an example and to get started, see [Configure resource governor for Fabric mirroring](/fabric/database/mirrored-database/sql-server-configure-automatic-reseed).
+   For an example and to get started, see [Configure automatic reseed](/fabric/database/mirrored-database/sql-server-configure-automatic-reseed).
 
 - You can configure a maximum and lower bound of transactions to be processed by Fabric Mirroring in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)].
 
-   For an example and to get started, see [Configure resource governor for Fabric mirroring](/fabric/database/mirrored-database/sql-server-performance#control-scan-performance).
+   For an example and to get started, see [Configure control scan performance](/fabric/database/mirrored-database/sql-server-performance#control-scan-performance).
 
 ## SQL Server Analysis Services
 
