@@ -33,7 +33,7 @@ When you download the driver, there are multiple JAR files. The JAR file with `j
 
 This release of Microsoft JDBC Driver for SQL Server is available in the following languages:
 
-Microsoft JDBC Driver 12.10.1 for SQL Server (zip):
+Microsoft JDBC Driver 13.2.0 for SQL Server (zip):
 [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2330663&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2330663&clcid=0x404) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2330663&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2330663&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2330663&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2330663&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2330663&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2330663&clcid=0x412) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2330663&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2330663&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2330663&clcid=0x40a)
 
 Microsoft JDBC Driver 13.2.0 for SQL Server (tar.gz):
