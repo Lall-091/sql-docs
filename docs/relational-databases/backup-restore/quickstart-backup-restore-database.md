@@ -1,39 +1,39 @@
 ---
-title: "Quickstart: Back up & restore database with SSMS"
+title: "Quickstart: Back Up and Restore a Database by Using SSMS"
 titleSuffix: SQL Server
-description: In this article, learn how to create a new database, take a backup of the database, and restore the backup in SQL Server using SSMS
+description: Learn how to create a new database, create a backup of the database, and restore the backup in SQL Server by using SSMS.
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest, markingmyname
-ms.date: 07/18/2024
+ms.date: 08/21/2025
+ms.update-cycle: 365-days
 ms.service: sql
 ms.subservice: backup-restore
 ms.topic: quickstart
-ms.custom: sfi-image-nochange
+ms.custom:
+  - sfi-image-nochange
 ---
 
 # Quickstart: Backup and restore a SQL Server database with SSMS
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
-In this quickstart, you create a new database, take a full backup of it, and then restore it.
+In this quickstart, you create a new database, create a full backup of it, and then restore it.
 
-For a more detailed how-to, see [Create a full database backup](create-a-full-database-backup-sql-server.md) and [Restore a database backup using SSMS](restore-a-database-backup-using-ssms.md).
+For more detailed information, see [Create a full database backup](create-a-full-database-backup-sql-server.md) and [Restore a database backup using SSMS](restore-a-database-backup-using-ssms.md).
 
 ## Prerequisites
-
-To complete this quickstart, you need:
 
 - [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads)
 - [SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md)
 
 ## Create a test database
 
-1. Launch [SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md) and connect to your SQL Server instance.
+1. Open [SQL Server Management Studio](../../ssms/download-sql-server-management-studio-ssms.md) and connect to your SQL Server instance.
 
 1. Open a **New Query** window.
 
-1. Create your test database using the following Transact-SQL (T-SQL) code.
+1. Create your test database by using the following Transact-SQL (T-SQL) code.
 
    ```sql
    USE [master];
@@ -67,23 +67,23 @@ To complete this quickstart, you need:
 
 1. Refresh the **Databases** node in **Object Explorer** to see your new database.
 
-## Take a backup
+## Create a backup
 
-To take a backup of your database, follow these steps, using [!INCLUDE [ssmanstudiofull-md](../../includes/ssmanstudiofull-md.md)] or [!INCLUDE [tsql-md](../../includes/tsql-md.md)]:
+To create a backup of your database, follow these steps by using [!INCLUDE [ssmanstudiofull-md](../../includes/ssmanstudiofull-md.md)] or [!INCLUDE [tsql-md](../../includes/tsql-md.md)]:
 
 #### [SSMS](#tab/ssms)
 
-1. Launch [SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md) and connect to your SQL Server instance.
+1. Open [SSMS](../../ssms/download-sql-server-management-studio-ssms.md) and connect to your SQL Server instance.
 1. Expand the **Databases** node in **Object Explorer**.
-1. Right-click the database, hover over **Tasks**, and select **Back up...**.
-1. Under **Destination**, confirm that the path for your backup is correct. If you need to change the path, select **Remove** to remove the existing path, and then **Add** to type in a new path. You can use the ellipses to navigate to a specific file.
-1. Select **OK** to take a backup of your database.
+1. Right-click the database, hover over **Tasks**, and then select **Back up...**.
+1. Under **Destination**, confirm that the path for your backup is correct. If you need to change the path, select **Remove** to remove the existing path, and then select **Add** to type in a new path. You can use the ellipsis button (**...**) to navigate to a specific file.
+1. Select **OK** to create a backup of your database.
 
-:::image type="content" source="media/quickstart-backup-restore-database/backup-db-ssms.png" alt-text="Screenshot of SQL Server Management Studio take backup." lightbox="media/quickstart-backup-restore-database/backup-db-ssms.png":::
+:::image type="content" source="media/quickstart-backup-restore-database/backup-db-ssms.png" alt-text="Screenshot that shows the SSMS menu options for creating a backup." lightbox="media/quickstart-backup-restore-database/backup-db-ssms.png":::
 
 #### [T-SQL](#tab/t-sql)
 
-Alternatively, you can run the following Transact-SQL command to back up your database. The path might be different on your computer:
+Alternatively, you can run the following Transact-SQL command to back up your database. The path might be different on your computer.
 
 ```sql
 USE [master];
@@ -98,30 +98,30 @@ GO
 
 ---
 
-To read more about the different backup options, see [BACKUP](../../t-sql/statements/backup-transact-sql.md).
+For more information about backup options, see [BACKUP](../../t-sql/statements/backup-transact-sql.md).
 
-## Restore a backup
+## Restore a database
 
 #### [SSMS](#tab/ssms)
 
 To restore your database, follow these steps:
 
-1. Launch [SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md) and connect to your SQL Server instance.
+1. Open [SSMS](../../ssms/download-sql-server-management-studio-ssms.md) and connect to your SQL Server instance.
 
 1. Right-click the **Databases** node in **Object Explorer** and select **Restore Database...**.
 
-   :::image type="content" source="media/quickstart-backup-restore-database/restore-db-ssms1.png" alt-text="Screenshot of Restore a database.":::
+   :::image type="content" source="media/quickstart-backup-restore-database/restore-db-ssms1.png" alt-text="Screenshot that shows the SSMS menu options for restoring a database.":::
 
-1. Select **Device:**, and then select the ellipses (...) to locate your backup file.
-1. Select **Add** and navigate to where your `.bak` file is located. Select the `.bak` file and then select **OK**.
-1. Select **OK** to close the **Select backup devices** dialog box.
-1. Select **OK** to restore the backup of your database.
+1. Select **Device**, and then select the ellipsis button (**...**) to locate your backup file.
+1. Select **Add** and navigate to the location of your `.bak` file. Select the `.bak` file, and then select **OK**.
+1. Select **OK** to close the **Select backup devices** dialog.
+1. Select **OK** to restore your database.
 
-   :::image type="content" source="media/quickstart-backup-restore-database/restore-db-ssms2.png" alt-text="Screenshot of Restore the database." lightbox="media/quickstart-backup-restore-database/restore-db-ssms2.png":::
+   :::image type="content" source="media/quickstart-backup-restore-database/restore-db-ssms2.png" alt-text="Screenshot that shows the steps for restoring a database." lightbox="media/quickstart-backup-restore-database/restore-db-ssms2.png":::
 
 #### [T-SQL](#tab/t-sql)
 
-Alternatively, you can run the following Transact-SQL script to restore your database. The path might be different on your computer:
+Alternatively, you can run the following Transact-SQL script to restore your database. The path might be different on your computer.
 
 ```sql
 USE [master];
@@ -153,6 +153,6 @@ GO
 - [Quickstart: Restore a database to Azure SQL Managed Instance with SSMS](/azure/azure-sql/managed-instance/restore-sample-database-quickstart)
 - [Restore a database from a backup in Azure SQL Database](/azure/azure-sql/database/recovery-using-backups)
 - [Back Up and Restore of SQL Server Databases](back-up-and-restore-of-sql-server-databases.md)
-- [SQL Server backup to URL for Microsoft Azure Blob Storage](sql-server-backup-to-url.md)
-- [Create a Full Database Backup](create-a-full-database-backup-sql-server.md)
-- [Restore a Database Backup Using SSMS](restore-a-database-backup-using-ssms.md)
+- [SQL Server backup to URL for Azure Blob Storage](sql-server-backup-to-url.md)
+- [Create a full database backup](create-a-full-database-backup-sql-server.md)
+- [Restore a database backup using SSMS](restore-a-database-backup-using-ssms.md)

@@ -1,10 +1,11 @@
 ---
-title: "Back up a transaction log"
+title: "Back up a Transaction Log"
 description: This article describes how to back up a transaction log in SQL Server by using SQL Server Management Studio, Transact-SQL, or PowerShell.
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 11/21/2023
+ms.date: 08/21/2025
+ms.update-cycle: 1825-days
 ms.service: sql
 ms.subservice: backup-restore
 ms.topic: how-to
@@ -27,9 +28,9 @@ Transaction log backups of the `master` system database aren't supported.
 
 ## Recommendations
 
-If a database uses either the full or bulk-logged [recovery model](recovery-models-sql-server.md), you must back up the transaction log regularly enough to protect your data, and to prevent the [transaction log from filling](../logs/troubleshoot-a-full-transaction-log-sql-server-error-9002.md). This truncates the log and supports restoring the database to a specific point in time.
+If a database uses either the full or bulk-logged [recovery model](recovery-models-sql-server.md), you must back up the transaction log regularly enough to protect your data and to prevent the [transaction log from filling](../logs/troubleshoot-a-full-transaction-log-sql-server-error-9002.md). This truncates the log and supports restoring the database to a specific point in time.
 
-By default, every successful backup operation adds an entry in the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] error log and in the system event log. If you back up the log frequently, these success messages accumulate quickly, resulting in huge error logs, making finding other messages difficult. In such cases you can suppress these log entries by using trace flag 3226, if none of your scripts depend on those entries, see [Trace Flags (Transact-SQL)](../../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md).
+By default, every successful backup operation adds an entry in the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] error log and in the system event log. If you back up the log frequently, these success messages accumulate quickly, resulting in huge error logs, making finding other messages difficult. In such cases, you can suppress these log entries by using trace flag 3226, if none of your scripts depend on those entries, see [DBCC TRACEON - Trace Flags (Transact-SQL)](../../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md).
 
 ## Permissions
 
@@ -51,7 +52,7 @@ Ownership and permission problems on the backup device's physical file can inter
 > [!NOTE]  
 > The steps in this section also apply to [!INCLUDE [azure-data-studio](../../includes/azure-data-studio-short.md)].
 
-1. After connecting to the appropriate instance of the [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)], in Object Explorer, select the server name to expand the server tree.
+1. After connecting to the appropriate instance of the [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)], in **Object Explorer**, select the server name to expand the server tree.
 
 1. Expand **Databases**, and, depending on the database, either select a user database or expand **System Databases** and select a system database.
 
@@ -59,7 +60,7 @@ Ownership and permission problems on the backup device's physical file can inter
 
 1. In the **Database** list box, verify the database name. You can optionally select a different database from the list.
 
-1. Verify that the recovery model is either **FULL** or **BULK_LOGGED**.
+1. Verify that the recovery model is either `FULL` or `BULK_LOGGED`.
 
 1. In the **Backup type** list box, select **Transaction Log**.
 
@@ -90,11 +91,11 @@ Ownership and permission problems on the backup device's physical file can inter
 
    - **Back up to the existing media set**
 
-     For this option, select either **Append to the existing backup set** or **Overwrite all existing backup sets**, see [Media Sets, Media Families, and Backup Sets (SQL Server)](media-sets-media-families-and-backup-sets-sql-server.md).
+     For this option, select either **Append to the existing backup set** or **Overwrite all existing backup sets**; see [Media sets, media families, and backup sets (SQL Server)](media-sets-media-families-and-backup-sets-sql-server.md).
 
      - *(optional)* Select **Check media set name and backup set expiration** to cause the backup operation to verify the date and time at which the media set and backup set expire.
 
-     - *(optional)* Enter a name in the **Media set name** text box. If no name is specified, a media set with a blank name is created. If you specify a media set name, the media (tape or disk) is checked to see whether the actual name matches the name you enter here.
+     - *(optional)* Enter a name in the **Media set name** text box. If no name is specified, a media set with a blank name is created. If you specify a media set name, the media (tape or disk) is checked to see whether the actual name matches the name you entered.
 
      If you leave the media name blank and check the box to check it against the media, success equals the media name on the media also being blank.
 
@@ -108,7 +109,7 @@ Ownership and permission problems on the backup device's physical file can inter
 
    - **Perform checksum before writing to media** and *(optional)* **Continue on checksum error**.
 
-     For information on checksums, see [Possible Media Errors During Backup and Restore (SQL Server)](possible-media-errors-during-backup-and-restore-sql-server.md).
+     For information on checksums, see [Possible media errors during backup and restore (SQL Server)](possible-media-errors-during-backup-and-restore-sql-server.md).
 
 1. In the **Transaction log** section:
 
@@ -116,17 +117,17 @@ Ownership and permission problems on the backup device's physical file can inter
 
    - To back up the tail of the log (the active log), check **Back up the tail of the log, and leave database in the restoring state**.
 
-     A tail-log backup is taken after a failure to back up the tail of the log in order to prevent work loss. Back up the active log (a tail-log backup) both after a failure, before beginning to restore the database, or when failing over to a secondary database. Selecting this option is equivalent to specifying the NORECOVERY option in the BACKUP LOG statement of Transact-SQL.
+     A tail-log backup is taken after a failure to back up the tail of the log in order to prevent work loss. Back up the active log (a tail-log backup) both after a failure, before beginning to restore the database, or when failing over to a secondary database. Selecting this option is equivalent to specifying the `NORECOVERY` option in the `BACKUP LOG` statement of Transact-SQL.
 
      For more information about tail-log backups, see [Tail-log backups (SQL Server)](tail-log-backups-sql-server.md).
 
 1. If you're backing up to a tape drive (as specified in the **Destination** section of the **General** page), the **Unload the tape after backup** option is active. Selecting this option activates the **Rewind the tape before unloading** option.
 
-1. By default, whether a [backup is compression](backup-compression-sql-server.md) depends on the value of the **backup-compression default** server configuration option. However, regardless of the current server-level default, you can compress a backup by checking **Compress backup**, and you can prevent compression by checking **Don't compress backup**.
+1. By default, whether a [Backup is compressed](backup-compression-sql-server.md) depends on the value of the **backup-compression default** server configuration option. However, regardless of the current server-level default, you can compress a backup by checking **Compress backup**, and you can prevent compression by checking **Don't compress backup**.
 
    [Backup compression](backup-compression-sql-server.md) is supported on [!INCLUDE [ssEnterpriseEd10](../../includes/ssenterpriseed10-md.md)] and later versions, and [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] Standard with Service Pack 1 and later versions.
 
-   To view the current backup compression default, see [View or Configure the backup compression default (server configuration option)](../../database-engine/configure-windows/view-or-configure-the-backup-compression-default-server-configuration-option.md).
+   To view the current backup compression default, see [Server configuration: backup compression default](../../database-engine/configure-windows/view-or-configure-the-backup-compression-default-server-configuration-option.md).
 
    To encrypt the backup file, check the **Encrypt backup** check box. Select an encryption algorithm to use for encrypting the backup file and provide a Certificate or Asymmetric key. The available algorithms for encryption are:
 
@@ -137,14 +138,14 @@ Ownership and permission problems on the backup device's physical file can inter
 
 ## Use Transact-SQL
 
-Execute the BACKUP LOG statement to back up the transaction log, providing the following information:
+Execute the `BACKUP LOG` statement to back up the transaction log, providing the following information:
 
 - The name of the database to which the transaction log that you want to back up belongs.
 - The backup device where the transaction log backup is written.
 
 > [!IMPORTANT]  
 > This example uses the [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)] database, which uses the simple recovery model. To permit log backups, before taking a full database backup, the database was set to use the full recovery model.
->
+>  
 > For more information, see [View or change the recovery model of a database (SQL Server)](view-or-change-the-recovery-model-of-a-database-sql-server.md).
 
 This example creates a transaction log backup for the [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)] database to the previously created named backup device, `MyAdvWorks_FullRM_log1`.
@@ -155,9 +156,11 @@ BACKUP LOG AdventureWorks2022
 GO
 ```
 
-## <a id="PowerShellProcedure"></a> Use PowerShell
+<a id="PowerShellProcedure"></a>
 
-Set up and use the [SQL Server PowerShell Provider](/powershell/sql-server/sql-server-powershell-provider). Use the **Backup-SqlDatabase** cmdlet and specify **Log** for the value of the **-BackupAction** parameter.
+## Use PowerShell
+
+Set up and use the [SQL Server PowerShell provider](/powershell/sql-server/sql-server-powershell-provider). Use the **Backup-SqlDatabase** cmdlet and specify **Log** for the value of the **-BackupAction** parameter.
 
 The following example creates a log backup of the `<myDatabase>` database to the default backup location of the server instance `Computer\Instance`.
 
@@ -168,11 +171,11 @@ Backup-SqlDatabase -ServerInstance Computer\Instance -Database <myDatabase> -Bac
 ## Related tasks
 
 - [Restore a Transaction Log Backup (SQL Server)](restore-a-transaction-log-backup-sql-server.md)
-- [Restore a SQL Server Database to a Point in Time (Full Recovery Model)](restore-a-sql-server-database-to-a-point-in-time-full-recovery-model.md)
+- [Restore a SQL Server database to a point in time (Full Recovery Model)](restore-a-sql-server-database-to-a-point-in-time-full-recovery-model.md)
 - [Troubleshoot a full transaction log (SQL Server Error 9002)](../logs/troubleshoot-a-full-transaction-log-sql-server-error-9002.md)
 
 ## Related content
-
+    
 - [BACKUP (Transact-SQL)](../../t-sql/statements/backup-transact-sql.md)
 - [Apply Transaction Log Backups (SQL Server)](apply-transaction-log-backups-sql-server.md)
 - [Maintenance plans](../maintenance-plans/maintenance-plans.md)

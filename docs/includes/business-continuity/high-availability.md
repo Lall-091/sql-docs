@@ -20,7 +20,7 @@ Before [!INCLUDE[sssql22-md](../sssql22-md.md)], AGs only provide database-level
 
 Starting with [!INCLUDE[sssql22-md](../sssql22-md.md)], you can manage metadata objects including users, logins, permissions and [!INCLUDE[ssnoversion-md](../ssnoversion-md.md)] Agent jobs at the AG level in addition to the instance level. For more information, see [Contained availability groups](../../database-engine/availability-groups/windows/contained-availability-groups-overview.md).
 
-An AG also has another component called the *listener*, which allows applications and end users to connect without needing to know which [!INCLUDE[ssnoversion-md](../ssnoversion-md.md)] instance is hosting the primary replica. Each AG would have its own listener. While the implementations of the listener are slightly different on Windows Server versus Linux, the functionality it provides and how it's used is the same. The diagram below shows a Windows Server-based AG that is using a Windows Server Failover Cluster (WSFC). An underlying cluster at the OS layer is required for availability whether it is on Linux or Windows Server. The example shows a simple configuration with two servers, or *nodes*, with a WSFC as the underlying cluster.
+An AG also has another component called the *listener*, which allows applications and end users to connect without needing to know which [!INCLUDE[ssnoversion-md](../ssnoversion-md.md)] instance is hosting the primary replica. Each AG would have its own listener. While the implementations of the listener are slightly different on Windows Server versus Linux, the functionality it provides and how it's used is the same. The following diagram shows a Windows Server-based AG that is using a Windows Server Failover Cluster (WSFC). An underlying cluster at the OS layer is required for availability whether it is on Linux or Windows Server. The example shows a simple configuration with two servers, or *nodes*, with a WSFC as the underlying cluster.
 
 :::image type="content" source="media/business-continuity/simple-availability-group.png" alt-text="Diagram of a simple availability group.":::
 
@@ -31,7 +31,7 @@ Standard and Enterprise edition have different maximums when it comes to replica
 
 When it comes to availability, AGs can provide either automatic or manual failover. Automatic failover can occur if synchronous data movement is configured and the database on the primary and secondary replica are in a synchronized state. As long as the listener is used and the application uses a later version of .NET Framework (3.5 with an update, or 4.0 and above), the failover should be handled with minimal to no effect on end users if a listener is utilized. Failing over to a secondary replica to make it the new primary replica can be configured to be automatic or manual, and is generally measured in seconds.
 
-The list below highlights some differences with AGs on Windows Server versus Linux:
+The following list highlights some differences with AGs on Windows Server versus Linux:
 
 - Owing to differences in the way the underlying cluster works on Linux and Windows Server, all failovers (manual or automatic) of AGs are done via the cluster on Linux. On Windows Server-based AG deployments, manual failovers must be done via [!INCLUDE[ssnoversion-md](../ssnoversion-md.md)]. Automatic failovers are handled by the underlying cluster on both Windows Server and Linux.
 - For [!INCLUDE [ssnoversion-md](../ssnoversion-md.md)] on Linux, the recommended configuration for AGs is a minimum of three replicas. This is due to the way that the underlying clustering works.
@@ -40,7 +40,7 @@ The list below highlights some differences with AGs on Windows Server versus Lin
 Starting with [!INCLUDE[sssql17-md](../sssql17-md.md)], there are some new features and enhancements to AGs:
 
 - Cluster types
-- REQUIRED_SECONDARIES_TO_COMMIT
+- `REQUIRED_SYNCHRONIZED_SECONDARIES_TO_COMMIT`
 - Enhanced Microsoft Distributor Transaction Coordinator (DTC) support for Windows Server-based configurations
 - Additional scale out scenarios for read-only databases (described later in this article)
 
@@ -67,9 +67,9 @@ A cluster type of None can be used with both Windows Server and Linux AGs. Setti
 > [!IMPORTANT]  
 > Starting with [!INCLUDE[sssql17-md](../sssql17-md.md)], you can't change a cluster type for an AG after it is created. This means that an AG cannot be switched from None to External or WSFC, or vice versa.
 
-For those who are only looking to just add additional read-only copies of a database, or like what an AG provides for migration/upgrades but don't want to be tied to the additional complexity of an underlying cluster or even the replication, an AG with a cluster type of None is a perfect solution. For more information, see the sections [Migrations and Upgrades](#Migrations) and [read-scale](#ReadScaleOut).
+For those who are only looking to just add additional read-only copies of a database, or like what an AG provides for migration/upgrades but don't want to be tied to the additional complexity of an underlying cluster or even the replication, an AG with a cluster type of None is a perfect solution. For more information, see the sections [Migrations and upgrades](#Migrations) and [read-scale](#ReadScaleOut).
 
-The screenshot below shows the support for the different kinds of cluster types in SQL Server Management Studio (SSMS). You must be running version 17.1 or later. The screenshot below is from version 17.2.
+The following screenshot shows the support for the different kinds of cluster types in SQL Server Management Studio (SSMS). You must be running version 17.1 or later. The following screenshot follow is from version 17.2: 
 
 :::image type="content" source="media/business-continuity/availability-group-options.png" alt-text="Screenshot of SSMS AG options." lightbox="media/business-continuity/availability-group-options.png":::
 
@@ -100,19 +100,19 @@ In [!INCLUDE[sssql17-md](../sssql17-md.md)] and later versions, DTC support can 
 
 ### Failover cluster instances
 
-Clustered installations have been a feature of [!INCLUDE[ssnoversion-md](../ssnoversion-md.md)] since version 6.5. FCIs are a proven method of providing availability for the entire installation of [!INCLUDE[ssnoversion-md](../ssnoversion-md.md)], known as an instance. This means that everything inside the instance, including databases, [!INCLUDE[ssnoversion-md](../ssnoversion-md.md)] Agent jobs, linked servers, and so on, will move to another server should the underlying server encounter a problem. All FCIs require some sort of shared storage, even if it's provided via networking. The FCI's resources can only be running and owned by one node at any given time. In the diagram below, the first node of the cluster owns the FCI, which also means it owns the shared storage resources associated with it denoted by the solid line to the storage.
+Clustered installations have been a feature of [!INCLUDE[ssnoversion-md](../ssnoversion-md.md)] since version 6.5. FCIs are a proven method of providing availability for the entire installation of [!INCLUDE[ssnoversion-md](../ssnoversion-md.md)], known as an instance. This means that everything inside the instance, including databases, [!INCLUDE[ssnoversion-md](../ssnoversion-md.md)] Agent jobs, linked servers, and so on, will move to another server should the underlying server encounter a problem. All FCIs require some sort of shared storage, even if it's provided via networking. The FCI's resources can only be running and owned by one node at any given time. In the following diagram, the first node of the cluster owns the FCI, which also means it owns the shared storage resources associated with it denoted by the solid line to the storage.
 
-:::image type="content" source="media/business-continuity/failover-cluster-instance.png" alt-text="Diagram of a Failover Cluster Instance.":::
+:::image type="content" source="media/business-continuity/failover-cluster-instance.png" alt-text="Diagram of a failover cluster instance.":::
 
-After a failover, ownership changes as is seen in the diagram below.
+After a failover, ownership changes as is seen in the following diagram: 
 
-:::image type="content" source="media/business-continuity/failover-cluster-instance-post-failover.png" alt-text="Diagram of a Failover Cluster Instance, post failover.":::
+:::image type="content" source="media/business-continuity/failover-cluster-instance-post-failover.png" alt-text="Diagram of a failover cluster instance, post failover.":::
 
 There's zero data loss with an FCI, but the underlying shared storage is a single point of failure since there's one copy of the data. FCIs are often combined with another availability method, such as an AG or log shipping, to have redundant copies of databases. The additional method deployed should use physically separate storage from the FCI. When the FCI fails over to another node, it stops on one node and starts on another, not unlike powering off a server and turning it on. An FCI goes through the normal recovery process, meaning any transactions that need to be rolled forward will be, and any transactions that are incomplete will be rolled back. Therefore, the database is consistent from a data point to the time of the failure or manual failover, hence no data loss. Databases are only available after recovery is complete, so recovery time will depend on many factors, and will generally be longer than failing over an AG. The tradeoff is that when you fail over an AG, there may be extra tasks required to make a database usable, such as enabling a [!INCLUDE[ssnoversion-md](../ssnoversion-md.md)] Agent job.
 
 Like an AG, FCIs abstract which node of the underlying cluster is hosting it. An FCI always retains the same name. Applications and end users never connect to the nodes; the unique name assigned to the FCI is used. An FCI can participate in an AG as one of the instances hosting either a primary or secondary replica.
 
-The list below highlights some differences with FCIs on Windows Server versus Linux:
+The following list highlights some differences with FCIs on Windows Server versus Linux:
 
 - On Windows Server, an FCI is part of the installation process. An FCI on Linux is configured after installing [!INCLUDE[ssnoversion-md](../ssnoversion-md.md)].
 - Linux only supports a single installation of [!INCLUDE[ssnoversion-md](../ssnoversion-md.md)] per host, so all FCIs will be a default instance. Windows Server supports up to 25 FCIs per WSFC.
@@ -124,7 +124,7 @@ If recovery point and recovery time objectives are more flexible, or databases a
 
 :::image type="content" source="media/business-continuity/log-shipping.png" alt-text="Diagram of Log Shipping.":::
 
-Arguably the biggest advantage of using log shipping in some capacity is that it accounts for human error. The application of transaction logs can be delayed. Therefore, if someone issues something like an UPDATE without a WHERE clause, the standby may not have the change so you could switch to that while you repair the primary system. While log shipping is easy to configure, switching from the primary to a warm standby, known as a role change, is always manual. A role change is initiated via Transact-SQL, and like an AG, all objects not captured in the transaction log must be manually synchronized. Log shipping also needs to be configured per database, whereas a single AG can contain multiple databases.  
+Arguably the biggest advantage of using log shipping in some capacity is that it accounts for human error. The application of transaction logs can be delayed. Therefore, if someone issues something like an `UPDATE` without a `WHERE` clause, the standby may not have the change so you could switch to that while you repair the primary system. While log shipping is easy to configure, switching from the primary to a warm standby, known as a role change, is always manual. A role change is initiated via Transact-SQL, and like an AG, all objects not captured in the transaction log must be manually synchronized. Log shipping also needs to be configured per database, whereas a single AG can contain multiple databases.  
 
 Unlike an AG or FCI, log shipping has no abstraction for a role change, which applications must be able to handle. Techniques such as a DNS alias (CNAME) could be employed, but there are pros and cons, such as the time it takes for DNS to refresh after the switch.
 
@@ -134,7 +134,7 @@ When your primary availability location experiences a catastrophic event like an
 
 ### Availability groups
 
-One of the benefits of AGs is that both high availability and disaster recovery can be configured using a single feature. Without the requirement for ensuring that shared storage is also highly available, it's much easier to have replicas that are local in one data center for high availability, and remote ones in other data centers for disaster recovery each with separate storage. Having extra copies of the database is the tradeoff for ensuring redundancy. An example of an AG that spans multiple data centers is shown below. One primary replica is responsible for keeping all secondary replicas synchronized.
+One of the benefits of AGs is that both high availability and disaster recovery can be configured using a single feature. Without the requirement for ensuring that shared storage is also highly available, it's much easier to have replicas that are local in one data center for high availability, and remote ones in other data centers for disaster recovery each with separate storage. Having extra copies of the database is the tradeoff for ensuring redundancy. An example of an AG that spans multiple data centers is shown in the following diagram. One primary replica is responsible for keeping all secondary replicas synchronized.
 
 :::image type="content" source="media/business-continuity/availability-group-span.png" alt-text="Diagram of an availability group spanning data centers.":::
 

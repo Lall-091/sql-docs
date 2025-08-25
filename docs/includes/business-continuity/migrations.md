@@ -33,7 +33,7 @@ AGs can provide minimal downtime during patching of the underlying OS by manuall
 ### Failover cluster instances
 
 FCIs on their own can't assist with a traditional migration or upgrade; an AG or log shipping would have to be configured for the databases in the FCI and all other objects accounted for. However, FCIs under Windows Server are still a popular option for when the underlying Windows Servers need to be patched. A manual failover can be initiated, which means a brief outage instead of having the instance unavailable for the entire time that Windows Server is being patched.
-An FCI can be upgraded in place to later versions of [!INCLUDE[ssnoversion-md](../ssnoversion-md.md)]. For information, see [Upgrade a SQL Server Failover Cluster Instance](../../sql-server/failover-clusters/windows/upgrade-a-sql-server-failover-cluster-instance.md).
+An FCI can be upgraded in place to later versions of [!INCLUDE[ssnoversion-md](../ssnoversion-md.md)]. For information, see [Upgrade a SQL Server failover cluster instance](../../sql-server/failover-clusters/windows/upgrade-a-sql-server-failover-cluster-instance.md).
 
 ### Log shipping
 
@@ -78,6 +78,6 @@ Starting with [!INCLUDE[sssql17-md](../sssql17-md.md)], It's possible to create 
 
 The only major caveat is that due to no underlying cluster with a cluster type of None, configuring read-only routing is a little different. From a [!INCLUDE[ssnoversion-md](../ssnoversion-md.md)] perspective, a listener is still required to route the requests even though there's no cluster. Instead of configuring a traditional listener, the IP address or name of the primary replica is used. The primary replica is then used to route the read-only requests.
 
-A log shipping warm standby can technically be configured for readable usage by restoring the database WITH STANDBY. However, because the transaction logs require exclusive use of the database for restoration, it means that users can't be accessing the database while that happens. This makes log shipping a less than ideal solution - especially if near real-time data is required.
+A log shipping warm standby can technically be configured for readable usage by restoring the database `WITH STANDBY`. However, because the transaction logs require exclusive use of the database for restoration, it means that users can't be accessing the database while that happens. This makes log shipping a less than ideal solution - especially if near real-time data is required.
 
 One thing that should be noted for all read-scale scenarios with AGs is that unlike using transactional replication where all of the data is live, each secondary replica isn't in a state where unique indexes can be applied, the replica is an exact copy of the primary. If any indexes are required for reporting or data needs to be manipulated, they must be created on the database(s) on the primary replica. If you need that flexibility, replication is a better solution for readable data.
