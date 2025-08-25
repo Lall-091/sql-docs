@@ -59,7 +59,7 @@ The unique programmatic identifier (PROGID) of the OLE DB provider that correspo
 
 - Starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], you must specify a provider name. `MSOLEDBSQL` is recommended. If you omit *@provider*, you can experience unexpected behavior.
 
-- Starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], `MSOLEDBSQL` uses Microsoft OLE DB Driver version 19, which adds support for [TDS 8.0](../security/networking/tds-8.md). However, this driver introduces a breaking change. You must now specify the `encrypt` parameter. Use `encrypt` to define whether or not encryption is mandatory. You must provide a valid CA-signed certificate to encrypt your connection to another SQL Server instance, or assign `encrypt=optional` in the *@provstr* argument. If you can't modify the linked server configuration, enable trace flag `17600` to maintain OLE DB 18 behavior and defaults.
+- Starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], `MSOLEDBSQL` uses Microsoft OLE DB Driver version 19, which adds support for [TDS 8.0](../security/networking/tds-8.md). However, this driver introduces a breaking change. You must now specify the `encrypt` parameter. Use `encrypt` to define whether or not encryption is mandatory. You must provide a valid CA-signed certificate to encrypt your connection to another SQL Server instance, or assign `encrypt=optional` in the *@provstr* argument. If you can't modify the linked server configuration, enable Trace Flag 17600 to maintain OLE DB version 18 behavior and defaults.
 
    For details about encryption properties, review [Major version differences](../../connect/oledb/major-version-differences.md).
 
