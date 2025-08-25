@@ -40,8 +40,7 @@ For full documentation on Pacemaker, including a more in-depth explanation of wh
 
 - [RHEL](https://docs.redhat.com/documentation/red_hat_enterprise_linux/9/html/configuring_and_managing_high_availability_clusters/index)
 - [SLES](https://documentation.suse.com/sle-ha/15-SP2/html/SLE-HA-all/book-sleha-guide.html)
-
-Ubuntu doesn't have a guide for availability.
+- [Ubuntu](https://documentation.ubuntu.com/server/explanation/intro-to/high-availability/)
 
 For more information about the whole stack, also see the official [Pacemaker documentation page](https://clusterlabs.org/projects/pacemaker/) on the ClusterLabs site.
 
