@@ -33,7 +33,7 @@ You can use Service Connector to create a connection between an Azure compute ho
     
     # [Azure Spring Apps](#tab/spring-connector)
     
-    If you're using Azure Spring Apps, use the [az spring connection](/cli/azure/spring/connection/create) command:
+    If you're using Azure Spring Apps, use the [az spring connection create](/azure/service-connector/quickstart-portal-spring-cloud-connection?tabs=using-Managed-Identity&pivots=azure-cli) command to establish a service connection via Azure CLI.
     
     ```azurecli
     az spring connection create storage-blob \

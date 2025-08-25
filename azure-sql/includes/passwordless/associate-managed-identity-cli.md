@@ -31,7 +31,7 @@ If you are working with Git Bash, be careful of path conversions when using full
 
 # [Azure Spring Apps](#tab/spring-apps-identity)
 
-You can assign a managed identity to an Azure Spring Apps instance with the [az spring app identity assign](/cli/azure/spring/app/identity) command.
+You can assign a managed identity to your Azure Spring Apps instance using the [az spring app identity assign](/azure/spring-apps/basic-standard/how-to-manage-user-assigned-managed-identities?tabs=azure-cli&pivots=sc-standard) command command in the Azure CLI.
 
 ```azurecli
 az spring app identity assign \

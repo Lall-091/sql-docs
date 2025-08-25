@@ -47,8 +47,6 @@ When you install SQL Server 2016 Reporting Services SharePoint mode, PowerShell 
     Add-PSSnapin Microsoft.SharePoint.PowerShell  
     ```  
   
- For more information, see [Use Windows PowerShell to administer SharePoint 2013](/powershell/module/sharepoint-server/).  
-  
 ### Open the SharePoint Management Shell and run cmdlets
   
 1.  Select the **Start** button.  

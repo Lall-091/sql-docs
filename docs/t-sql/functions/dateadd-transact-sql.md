@@ -4,7 +4,7 @@ description: DATEADD returns a date modified by the specified date part.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 05/19/2025
+ms.date: 08/25/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -33,10 +33,6 @@ This function adds a *number* (a signed integer) to a *datepart* of an input *da
 
 See [Date and time data types and functions](date-and-time-data-types-and-functions-transact-sql.md) for an overview of all [!INCLUDE [tsql](../../includes/tsql-md.md)] date and time data types and functions.
 
-> [!NOTE]
-> `DATEADD` is available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) update policy. 
-
-
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ## Syntax
@@ -50,9 +46,6 @@ DATEADD (datepart , number , date )
 #### *datepart*
 
 The part of *date* to which `DATEADD` adds an **int** *number*.
-
-> [!NOTE]  
-> In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] and [!INCLUDE [fabric](../../includes/fabric-sqldb.md)], *number* can be expressed as a **bigint**. This feature is in preview.
 
 This table lists all valid *datepart* arguments. `DATEADD` doesn't accept user-defined variable equivalents for the *datepart* arguments.
 
@@ -77,7 +70,7 @@ This table lists all valid *datepart* arguments. `DATEADD` doesn't accept user-d
 An expression that can resolve to an [int](../data-types/int-bigint-smallint-and-tinyint-transact-sql.md) that `DATEADD` adds to a *datepart* of *date*. `DATEADD` accepts user-defined variable values for *number*. `DATEADD` truncates a specified *number* value that has a decimal fraction. It doesn't round the *number* value in this situation.
 
 > [!NOTE]  
-> In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [fabric](../../includes/fabric-sqldb.md)], *number* can be expressed as a **bigint**. This feature is in preview.
+> In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] and [!INCLUDE [fabric](../../includes/fabric-sqldb.md)], *number* can be expressed as a **bigint**. This feature is in preview.
 
 #### *date*
 
@@ -129,11 +122,12 @@ SELECT DATEADD(year, -2147483649, '20240731');
 These statements both return the following error message:
 
 ```output
-Msg 8115, Level 16, State 2, Line 1. Arithmetic overflow error converting expression to data type int.
+Msg 8115, Level 16, State 2, Line 1
+Arithmetic overflow error converting expression to data type int.
 ```
 
 > [!NOTE]  
-> In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [fabric](../../includes/fabric-sqldb.md)], *number* can be expressed as a **bigint**. This feature is in preview.
+> In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] and [!INCLUDE [fabric](../../includes/fabric-sqldb.md)], *number* can be expressed as a **bigint**. This feature is in preview.
 
 ### *date* argument
 
@@ -147,7 +141,8 @@ SELECT DATEADD(year, -2147483647, '20240731');
 `DATEADD` returns the following error message:
 
 ```output
-Msg 517, Level 16, State 1, Line 1 Adding a value to a 'datetime' column caused overflow.
+Msg 517, Level 16, State 1
+Line 1 Adding a value to a 'datetime' column caused overflow.
 ```
 
 ### Return values for a smalldatetime date and a second or fractional seconds datepart

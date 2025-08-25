@@ -65,7 +65,7 @@ An expression that evaluates to **vector** data type.
 |Metric|Description|Range|Examples|
 |-----|-----|-----|-----|
 |`cosine`|Cosine (angular) distance|[0, 2]| `0`: identical vectors <br/>`2`: opposing vectors|
-|`euclidean`|Euclidean distance|[-∞, +∞]| `0`: identical vectors|
+|`euclidean`|Euclidean distance|[0, +∞]| `0`: identical vectors|
 |`dot`|Dot product-based indication of distance,<br/>obtained by calculating the *negative* dot product |[-∞, +∞]| Smaller numbers indicate more similar vectors|
 
 ## Return value
