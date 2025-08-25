@@ -225,7 +225,7 @@ The following features and services aren't available for [!INCLUDE [sssql19](../
 | | Windows integrated authentication for linked servers | |
 | | Windows integrated authentication for availability group (AG) endpoints | Create and use certificate based endpoint authentication for availability groups. For more information, see [Configure SQL Server Always On Availability Group for high availability on Linux](sql-server-linux-availability-group-configure-ha.md). |
 | | SQL Server on Linux deployments aren't FIPS compliant | |
-| **Services** | SQL Server Browser | |
+| **Services** | SQL Server Browser | The SQL Server Browser service is not required on Linux because only a single default instance is supported per host. Unlike, Windows, there are no named instances to resolve, and the port is explicitly configured during setup. |
 | | SQL Server R services | SQL Server R is supported within [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], but [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] R services as a separate package isn't supported.<br /><br />You can install Machine Learning Services on Linux for [SQL Server 2019](sql-server-linux-setup-machine-learning.md) and [SQL Server 2022](sql-server-linux-setup-machine-learning-sql-2022.md). |
 | | Analysis Services | |
 | | Reporting Services | [Configure Power BI Report Server catalog databases for SQL Server on Linux](sql-server-linux-configure-power-bi-report-server-catalog.md). Run [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Reporting Services (SSRS) on Windows, and host the catalog databases for SSRS on [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux deployments. |
