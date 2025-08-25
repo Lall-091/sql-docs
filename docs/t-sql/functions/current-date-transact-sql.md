@@ -4,7 +4,7 @@ description: CURRENT_DATE returns the current database system date as a date val
 author: PratimDasgupta
 ms.author: prdasgu
 ms.reviewer: randolphwest
-ms.date: 08/08/2024
+ms.date: 08/25/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -30,13 +30,13 @@ helpviewer_keywords:
   - "time [SQL Server], system"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azuresqldb-mi-current"
+monikerRange: ">=sql-server-ver17 || >=sql-server-linux-ver17 || >=aps-pdw-2016 || =azuresqldb-current || =azuresqldb-mi-current"
 ---
 # CURRENT_DATE (Transact-SQL)
 
-[!INCLUDE [asdb-asdbmi](../../includes/applies-to-version/asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
-In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], this function returns the current database system date as a **date** value, without the database time and time zone offset. `CURRENT_DATE` derives this value from the underlying operating system on the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] runs.
+This function returns the current database system date as a **date** value, without the database time and time zone offset. `CURRENT_DATE` derives this value from the underlying operating system on the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] runs.
 
 > [!NOTE]  
 > `SYSDATETIME` and `SYSUTCDATE` have more precision, as measured by fractional seconds precision, than `GETDATE` and `GETUTCDATE`. The `SYSDATETIMEOFFSET` function includes the system time zone offset. You can assign `SYSDATETIME`, `SYSUTCDATETIME`, and `SYSDATETIMEOFFSET` to a variable of any of the date and time types.
@@ -48,8 +48,6 @@ See [Date and time data types and functions](date-and-time-data-types-and-functi
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ## Syntax
-
-[!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] only:
 
 ```syntaxsql
 CURRENT_DATE
@@ -77,17 +75,13 @@ These examples use the system functions that return current date and time values
 
 ```sql
 SELECT SYSDATETIME(),
-    SYSDATETIMEOFFSET(),
-    SYSUTCDATETIME(),
-    CURRENT_TIMESTAMP,
-    GETDATE(),
-    GETUTCDATE(),
-    CURRENT_DATE;
+       SYSDATETIMEOFFSET(),
+       SYSUTCDATETIME(),
+       CURRENT_TIMESTAMP,
+       GETDATE(),
+       GETUTCDATE(),
+       CURRENT_DATE;
 ```
-
-> [!NOTE]  
-> [CURRENT_DATE (Transact-SQL)](current-date-transact-sql.md) is available in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] only.
-
 
 [!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
 
@@ -104,17 +98,14 @@ SELECT SYSDATETIME(),
 ### B. Get the current system date
 
 ```sql
-SELECT CONVERT(DATE, SYSDATETIME()),
-    CONVERT(DATE, SYSDATETIMEOFFSET()),
-    CONVERT(DATE, SYSUTCDATETIME()),
-    CONVERT(DATE, CURRENT_TIMESTAMP),
-    CONVERT(DATE, GETDATE()),
-    CONVERT(DATE, GETUTCDATE()),
-    CURRENT_DATE;
+SELECT CONVERT (DATE, SYSDATETIME()),
+       CONVERT (DATE, SYSDATETIMEOFFSET()),
+       CONVERT (DATE, SYSUTCDATETIME()),
+       CONVERT (DATE, CURRENT_TIMESTAMP),
+       CONVERT (DATE, GETDATE()),
+       CONVERT (DATE, GETUTCDATE()),
+       CURRENT_DATE;
 ```
-
-> [!NOTE]  
-> [CURRENT_DATE (Transact-SQL)](current-date-transact-sql.md) is available in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] only.
 
 [!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
 
