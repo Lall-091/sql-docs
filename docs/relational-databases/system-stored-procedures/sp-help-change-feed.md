@@ -57,7 +57,7 @@ EXECUTE sys.sp_help_change_feed;
 | `table_name` | **sysname** | The name of the change feed table. |
 | `table_id` | **uniqueidentifier** | The unique identifier for the change feed table. Generated during change feed setup workflow. |
 | `table_object_id` | **int** | The object ID of the change feed table. |
-| `state` | **tinyint** | The state of the change feed table. Valid state values:<br /><br />`1` - Enabled.<br />`2` - Exporting.<br />`3` - Exported.<br />`4` - Active.<br />`5` - Disabled.<br />`6` - Pending Disablement. |
+| `state` | **tinyint** | The state of the change feed table. Valid state values:<br /><br />`1` - Enabled.<br />`2` - Exporting.<br />`3` - Exported.<br />`4` - Active.<br />`5` - Disabled.<br />`6` - Pending Disablement.<br />`7` - Reseeding.<br />`8` - Reseed Notified. |
 | `version` | **binary(10)** | The version of the change feed table. |
 | `snapshot_phase` | **tinyint** | Phase of the current snapshot which progresses from one to six.<br /><br />`1` - ABORT_PRIOR_SNAPSHOT_IF_ANY<br />`2` - SET_TABLEVERSIONLSN<br />`3` - EXPORT_SCHEMA_FILE<br />`4` - EMIT_SNAPSHOT_BEGINENTRY<br />`5` - EXPORT_DATA_FILE<br />`6` - EMIT_SNAPSHOT_ENDENTRY |
 | `snapshot_current_phase_time` | **datetime** | Time when the current snapshot phase started. |
