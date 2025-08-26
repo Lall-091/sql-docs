@@ -252,7 +252,7 @@ The [intelligent query processing (IQP)](../relational-databases/performance/int
 | [AI_GENERATE_EMBEDDINGS](../t-sql/functions/ai-generate-embeddings-transact-sql.md) | Creates embeddings (vector arrays) using a precreated AI model definition stored in the database. |
 | **Regular expressions** | |
 | [REGEXP_LIKE](../t-sql/functions/regexp-like-transact-sql.md) | Indicates if the regular expression pattern matches in a string. |
-| [REGEXP_REPLACE](../t-sql/functions/regexp-replace-transact-sql.md) | Returns a modified source string replaced by a replacement string, where the occurrence of the regular expression pattern found. If no matches are found, the function returns the original string. |
+| [REGEXP_REPLACE](../t-sql/functions/regexp-replace-transact-sql.md) | Returns a modified source string replaced by a replacement string, where the occurrence of the regular expression pattern was found. If no matches are found, the function returns the original string. |
 | [REGEXP_SUBSTR](../t-sql/functions/regexp-substr-transact-sql.md) | Returns one occurrence of a substring of a string that matches the regular expression pattern. If no match is found, it returns `NULL`. |
 | [REGEXP_INSTR](../t-sql/functions/regexp-instr-transact-sql.md) | Returns the starting or ending position of the matched substring, depending on the value of the `return_option` argument. |
 | [REGEXP_COUNT](../t-sql/functions/regexp-count-transact-sql.md) | Counts the number of times that a regular expression pattern is matched in a string. |
