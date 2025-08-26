@@ -1,10 +1,10 @@
 ---
-title: "Server configuration: ADR cleaner retry timeout (min)"
+title: "Server Configuration: ADR cleaner retry timeout (min)"
 description: "Explains the SQL Server instance configuration setting for ADR cleaner retry timeout."
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 02/03/2025
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual

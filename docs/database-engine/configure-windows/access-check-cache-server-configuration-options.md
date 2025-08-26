@@ -1,9 +1,9 @@
 ---
-title: "Server configuration: access check cache"
+title: "Server Configuration: access check cache"
 description: "Learn about the access check result cache and the options that control the cache's behavior. See when to change these options in SQL Server."
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/18/2024
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -27,7 +27,7 @@ INNER JOIN t2
 INNER JOIN t3;
 ```
 
-In this case, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] computes a cumulative permission check for this query. This check determines whether a user has SELECT permissions on `t1`, `t2`, and `t3`. These cumulative permission check results are embedded into an access check token entry and are inserted into the access check cache store with an ID of 65535. If the same user reuses or executes this query multiple times, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] reuses the access check token cache entry one time.
+In this case, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] computes a cumulative permission check for this query. This check determines whether a user has `SELECT` permissions on `t1`, `t2`, and `t3`. These cumulative permission check results are embedded into an access check token entry and are inserted into the access check cache store with an ID of 65535. If the same user reuses or executes this query multiple times, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] reuses the access check token cache entry one time.
 
 To optimize the use of this cache, you should consider using various query parameterization techniques, or convert frequent query patterns to use stored procedures.
 

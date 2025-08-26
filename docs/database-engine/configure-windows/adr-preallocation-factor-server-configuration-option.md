@@ -1,10 +1,10 @@
 ---
-title: "Server configuration: ADR Preallocation Factor"
+title: "Server Configuration: ADR Preallocation Factor"
 description: "Explains the SQL Server instance configuration setting for ADR preallocation factor."
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest, dfurman
-ms.date: 03/28/2025
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -28,7 +28,7 @@ The number of pages the background thread preallocates is based on various workl
 
 While the background thread takes workload patterns into consideration, this factor can be increased if necessary to improve performance. The `tx_version_optimized_insert_stats` extended event fires periodically when space allocations in PVS occur and provides space allocation statistics. If the value in the `foreground_allocation_percent` field is significantly higher than zero, consider increasing the `ADR Preallocation Factor` setting.
 
-> [!WARNING]
+> [!WARNING]  
 > If PVS preallocation factor is increased too much, it can contend with other allocations in the system and might actually reduce overall performance. Before you modify this setting, obtain a baseline of the system performance for tracking and comparison purposes.
 
 ::: moniker range="= sql-server-linux-ver15 || = sql-server-ver15"

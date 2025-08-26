@@ -1,9 +1,9 @@
 ---
-title: "Server configuration: network packet size"
+title: "Server Configuration: network packet size"
 description: Learn how to set the packet size that SQL Server uses when transferring requests and results between clients and servers.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/18/2024
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual

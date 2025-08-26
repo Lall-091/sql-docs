@@ -1,10 +1,10 @@
 ---
-title: "Server configuration: affinity mask"
+title: "Server Configuration: affinity mask"
 description: Learn about the affinity mask option in SQL Server. View an example that uses it to bind processors to specific threads.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray
-ms.date: 07/18/2024
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -29,7 +29,7 @@ helpviewer_keywords:
 
 To carry out multitasking, Windows sometimes move process threads among different processors. Although efficient from an operating system point of view, this activity can reduce [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] performance under heavy system loads, as each processor cache is repeatedly reloaded with data. Assigning processors to specific threads can improve performance under these conditions by eliminating processor reloads; such an association between a thread and a processor is called processor affinity.
 
-[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] supports processor affinity with two affinity mask options: `affinity mask` (also known as *CPU affinity mask*) and `affinity I/O mask`. For more information on the `affinity I/O mask option`, see [Configure the affinity I/O mask server configuration option](affinity-input-output-mask-server-configuration-option.md). CPU and I/O affinity support for servers with 33 to 64 processors requires that you also use the [affinity64 mask](affinity64-mask-server-configuration-option.md) and [affinity64 I/O mask](affinity64-input-output-mask-server-configuration-option.md) server configuration options respectively.
+[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] supports processor affinity with two affinity mask options: `affinity mask` (also known as *CPU affinity mask*) and `affinity I/O mask`. For more information on the `affinity I/O mask option`, see [Server configuration: affinity I/O mask](affinity-input-output-mask-server-configuration-option.md). CPU and I/O affinity support for servers with 33 to 64 processors requires that you also use the [affinity64 mask](affinity64-mask-server-configuration-option.md) and [affinity64 I/O mask](affinity64-input-output-mask-server-configuration-option.md) server configuration options respectively.
 
 > [!NOTE]  
 > Affinity support for servers with 33 to 64 processors is only available on 64-bit operating systems.
@@ -141,4 +141,4 @@ If a specified affinity mask violates the licensing policy when running [!INCLUD
 - [Server configuration options](server-configuration-options-sql-server.md)
 - [sp_configure (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-configure-transact-sql.md)
 - [ALTER SERVER CONFIGURATION (Transact-SQL)](../../t-sql/statements/alter-server-configuration-transact-sql.md)
-- [Configure the affinity64 mask server configuration option](affinity64-mask-server-configuration-option.md)
+- [Server configuration: affinity64 mask](affinity64-mask-server-configuration-option.md)

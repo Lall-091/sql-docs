@@ -1,10 +1,10 @@
 ---
-title: "Server configuration: ADR cleaner thread count"
+title: "Server Configuration: ADR cleaner thread count"
 description: "Explains the SQL Server instance configuration setting for ADR cleaner thread count."
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest, dfurman
-ms.date: 02/03/2025
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -21,16 +21,16 @@ By default, this configuration setting is set to `1`. This means that the cleane
 
 If the cleaner performance is insufficient and you observe that PVS size is reduced too slowly or remains large, you can increase this configuration to make the cleaner multi-threaded.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > PVS cleanup might be slow or blocked due to workload activity. Before increasing this configuration value, review [Monitor and troubleshoot accelerated database recovery](../../relational-databases/accelerated-database-recovery-troubleshoot.md). If PVS cleanup is slow or blocked for one of the reasons mentioned in that article, follow the recommendations in the article instead of increasing the `ADR Cleaner Thread Count` configuration value.
 
 ## Remarks
 
-Increasing the  `ADR Cleaner Thread Count` configuration value to a large value isn't recommended. First start with a small increase, and then gradually increase the value incrementally until cleaner performance improves sufficiently. For example, you might increase the value to 2, and then to 4.
+Increasing the `ADR Cleaner Thread Count` configuration value to a large value isn't recommended. First start with a small increase, and then gradually increase the value incrementally until cleaner performance improves sufficiently. For example, you might increase the value to 2, and then to 4.
 
 Database engine instances with many databases that experience large PVS growth might require higher values of this setting.
 
-Regardless of configuration, the cleaner does not use more threads than the number of logical CPUs.
+Regardless of configuration, the cleaner doesn't use more threads than the number of logical CPUs.
 
 ## Examples
 

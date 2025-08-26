@@ -1,9 +1,9 @@
 ---
-title: "Server configuration: max worker threads"
+title: "Server Configuration: max worker threads"
 description: Find out how to use the max worker threads option to configure the number of worker threads that are available to SQL Server to process certain requests.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 06/05/2024
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -115,9 +115,7 @@ Execute permissions on `sp_configure` with no parameters or with only the first 
 1. In the **Max worker threads** box, type or select a value from 128 through 65,535.
 
 > [!TIP]  
-> Use the `max worker threads` option to configure the number of worker threads available to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] processes. The default setting for `max worker threads` is best for most systems.  
-> However, depending on your system configuration, setting `max worker threads` to a smaller value sometimes improves performance.
-> For more information, see the [Recommendations](#recommendations) section in this article.
+> Use the `max worker threads` option to configure the number of worker threads available to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] processes. The default setting for `max worker threads` is best for most systems. However, depending on your system configuration, setting `max worker threads` to a smaller value sometimes improves performance. For more information, see the [Recommendations](#recommendations) section in this article.
 
 <a id="TsqlProcedure"></a>
 

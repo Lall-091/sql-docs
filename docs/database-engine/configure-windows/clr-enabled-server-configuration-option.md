@@ -1,9 +1,9 @@
 ---
-title: "Server configuration: clr enabled"
+title: "Server Configuration: clr enabled"
 description: Learn how to use the clr enabled option to specify whether SQL Server can run user assemblies. See when common language runtime execution isn't supported.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 08/02/2024
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual

@@ -1,9 +1,9 @@
 ---
-title: "Server configuration: allow updates"
+title: "Server Configuration: allow updates"
 description: "Learn about the obsolete SQL Server configuration option allow updates. See how using this option causes RECONFIGURE statements to fail."
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/18/2024
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual

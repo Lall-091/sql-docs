@@ -1,13 +1,14 @@
 ---
-title: View or change the default locations for data and log files
+title: View or Change the Default Locations for Data and Log Files
 description: "Find out how to view or change the default locations for SQL Server data files and log files. See how to protect the files with access control lists (ACLs)."
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 03/22/2024
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
-ms.custom: linux-related-content
 ms.topic: how-to
+ms.custom:
+  - linux-related-content
 helpviewer_keywords:
   - "log files [SQL Server], changing default location"
   - "data files [SQL Server], changing default location"
@@ -33,8 +34,8 @@ The best practice for protecting your data files and log files is to ensure that
 
 ## Use Transact-SQL
 
-> [!CAUTION]
-> The following example uses an extended stored procedure to modify the server registry. Serious problems might occur if you modify the registry incorrectly. These problems might require you to reinstall the operating system. Microsoft cannot guarantee that these problems can be resolved. Modify the registry at your own risk.
+> [!CAUTION]  
+> The following example uses an extended stored procedure to modify the server registry. Serious problems might occur if you modify the registry incorrectly. These problems might require you to reinstall the operating system. Microsoft can't guarantee that these problems can be resolved. Modify the registry at your own risk.
 
 1. Connect to the [!INCLUDE [ssDE](../../includes/ssde-md.md)].
 

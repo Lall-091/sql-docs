@@ -1,9 +1,9 @@
 ---
-title: Manage the Database Engine services
+title: Manage the Database Engine Services
 description: Get acquainted with services that are available in SQL Server. See how to start SQL Server Configuration Manager, which you can use to manage various services.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/26/2024
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -57,7 +57,7 @@ Because SQL Server Configuration Manager is a snap-in for the [!INCLUDE [msconam
 - [Configure file system permissions for Database Engine access](configure-file-system-permissions-for-database-engine-access.md)
 - [Configure Windows service accounts and permissions](configure-windows-service-accounts-and-permissions.md)
 - [Database Engine Service startup options](database-engine-service-startup-options.md)
-- [Log In to an Instance of SQL Server (Command Prompt)](log-in-to-an-instance-of-sql-server-command-prompt.md)
+- [Sign in to an instance of SQL Server (Command Prompt)](log-in-to-an-instance-of-sql-server-command-prompt.md)
 - [Run SQL Server With or Without a Network](run-sql-server-with-or-without-a-network.md)
 - [Security Requirements for Managing Services](security-requirements-for-managing-services.md)
 - [Single-user mode for SQL Server](start-sql-server-in-single-user-mode.md)
@@ -70,10 +70,10 @@ Because SQL Server Configuration Manager is a snap-in for the [!INCLUDE [msconam
 - [SQL Server Configuration Manager: Prevent automatic startup of an instance](scm-services-prevent-automatic-startup-of-an-instance.md)
 - [SQL Server Configuration Manager: Set an instance to start automatically](scm-services-set-an-instance-to-start-automatically.md)
 - [SQL Writer service](sql-writer-service.md)
-- [Start SQL Server with Minimal Configuration](start-sql-server-with-minimal-configuration.md)
+- [Start SQL Server with minimal configuration](start-sql-server-with-minimal-configuration.md)
 - [Start, stop, pause, resume, and restart SQL Server services](start-stop-pause-resume-restart-sql-server-services.md)
 
 ## Related content
 
 - [Configure SQL Server Agent](../../ssms/agent/configure-sql-server-agent.md)
-- [Logging In to SQL Server](logging-in-to-sql-server.md)
+- [Sign in to SQL Server](logging-in-to-sql-server.md)

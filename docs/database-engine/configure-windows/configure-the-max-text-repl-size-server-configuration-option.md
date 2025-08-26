@@ -1,9 +1,9 @@
 ---
-title: "Server configuration: max text repl size"
+title: "Server Configuration: max text repl size"
 description: Learn how to use the max text repl size option to limit the size of certain types of data that SQL Server adds to replicated or captured columns.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/18/2024
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual

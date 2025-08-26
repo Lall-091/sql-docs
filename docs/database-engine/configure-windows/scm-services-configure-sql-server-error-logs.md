@@ -1,9 +1,9 @@
 ---
-title: "Configure SQL Server error logs (SQL Server Configuration Manager)"
+title: "Configure SQL Server Error Logs (SQL Server Configuration Manager)"
 description: Learn about error log recycling. See how to set a maximum log file size and how to set the number of previous log files that SQL Server backs up and archives.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/26/2024
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: how-to
@@ -24,16 +24,16 @@ This article describes how to view or modify the way [!INCLUDE [ssNoVersion](../
 
    - Log files count
 
-      **Limit the number of the error log files before they are recycled**
+     **Limit the number of the error log files before they are recycled**
 
-      Check to limit the number of error logs created before they're recycled. A new error log is created each time an instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] is started. [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] retains backups of the previous six logs, unless you check this option, and specify a different maximum number of error log files.
+     Check to limit the number of error logs created before they're recycled. A new error log is created each time an instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] is started. [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] retains backups of the previous six logs, unless you check this option, and specify a different maximum number of error log files.
 
-      **Maximum number of error log files**
+     **Maximum number of error log files**
 
-      Specify the maximum number of archived error log files created before they're recycled. The default is 6, not including the current one. This value determines the number of previous backup logs that [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] retains before recycling them.
+     Specify the maximum number of archived error log files created before they're recycled. The default is 6, not including the current one. This value determines the number of previous backup logs that [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] retains before recycling them.
 
    - Log file size
 
-      **Maximum size for error log file in KB**
+     **Maximum size for error log file in KB**
 
-      You can set the size amount of each file in KB. If you leave it at `0`, the log size is unlimited.
+     You can set the size amount of each file in KB. If you leave it at `0`, the log size is unlimited.

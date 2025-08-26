@@ -1,9 +1,9 @@
 ---
-title: "Server configuration: media retention"
+title: "Server Configuration: media retention"
 description: Learn about the media retention option. See how to use it to specify how long SQL Server retains transaction log and database backups.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/18/2024
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -26,7 +26,7 @@ If you use the backup medium before the set number of days has passed, [!INCLUDE
 
 This option is an advanced option and should be changed only by an experienced database administrator or certified [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] professional.
 
-The `media retention` option can be overridden by using the RETAINDAYS clause of the [BACKUP](../../t-sql/statements/backup-transact-sql.md) statement.
+The `media retention` option can be overridden by using the `RETAINDAYS` clause of the [BACKUP](../../t-sql/statements/backup-transact-sql.md) statement.
 
 ## Permissions
 
@@ -85,7 +85,7 @@ The setting takes effect immediately without restarting the server.
 
 ## Related content
 
-- [Back Up and Restore of SQL Server Databases](../../relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases.md)
+- [Back up and restore of SQL Server databases](../../relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases.md)
 - [BACKUP (Transact-SQL)](../../t-sql/statements/backup-transact-sql.md)
 - [RECONFIGURE (Transact-SQL)](../../t-sql/language-elements/reconfigure-transact-sql.md)
 - [Server configuration options](server-configuration-options-sql-server.md)

@@ -1,9 +1,9 @@
 ---
-title: "Server configuration: min memory per query"
+title: "Server Configuration: min memory per query"
 description: Learn how to use the min memory per query option to specify the minimum number of kilobytes that SQL Server allocates for a query.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/18/2024
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual

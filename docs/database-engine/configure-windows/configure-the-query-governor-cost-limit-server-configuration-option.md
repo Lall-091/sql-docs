@@ -1,9 +1,9 @@
 ---
-title: "Server configuration: query governor cost limit"
+title: "Server Configuration: query governor cost limit"
 description: Learn about the query governor cost limit option. See how to use it to limit execution of queries.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/18/2024
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual

@@ -1,9 +1,9 @@
 ---
-title: "Server configuration: affinity64 I/O mask"
+title: "Server Configuration: affinity64 I/O mask"
 description: Learn about the affinity64 I/O mask option. See when to use it to bind SQL Server disk I/O to a specified subset of CPUs.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/18/2024
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -20,7 +20,7 @@ The `affinity64 I/O mask` binds [!INCLUDE [ssNoVersion](../../includes/ssnoversi
 
 ## Related content
 
-- [Configure the affinity I/O mask server configuration option](affinity-input-output-mask-server-configuration-option.md)
+- [Server configuration: affinity I/O mask](affinity-input-output-mask-server-configuration-option.md)
 - [Monitor Resource Usage (Performance Monitor)](../../relational-databases/performance-monitor/monitor-resource-usage-system-monitor.md)
 - [Server configuration options](server-configuration-options-sql-server.md)
 - [sp_configure (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-configure-transact-sql.md)

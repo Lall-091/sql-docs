@@ -1,9 +1,9 @@
 ---
-title: "Server configuration: nested triggers"
+title: "Server Configuration: nested triggers"
 description: Learn about the nested triggers option. See how to use it to set the number of levels of AFTER triggers that can cascade in SQL Server.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/18/2024
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual

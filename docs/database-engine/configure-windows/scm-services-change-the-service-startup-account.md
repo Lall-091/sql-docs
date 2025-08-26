@@ -1,9 +1,9 @@
 ---
-title: "Change the service startup account (SQL Server Configuration Manager)"
+title: "Change the Service Startup Account (SQL Server Configuration Manager)"
 description: Learn how to change the service accounts that SQL Server and many of its services use. View limitations and restrictions on changes in service accounts.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/26/2024
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: how-to
@@ -33,9 +33,9 @@ This article describes how to use SQL Server Configuration Manager to change the
 
   During [!INCLUDE [ssExpress](../../includes/ssexpress-md.md)] installation, the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent service is configured to use the Network Service account but disabled. SQL Server Configuration Manager can change the account assigned for the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent service   but the service can't be enabled or started. After SKU upgrade from [!INCLUDE [ssExpress](../../includes/ssexpress-md.md)] to non-Express, the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent service isn't automatically enabled, but can be enabled when needed by using the SQL Server Configuration Manager and changing the service start mode to Manual or Automatic.
 
-## <a id="SSMSProcedure"></a> Use SQL Server Configuration Manager
+<a id="SSMSProcedure"></a>
 
-#### Change the SQL Server service startup account
+## Use SQL Server Configuration Manager
 
 1. On the **Start** menu, point to **All Programs**, point to **[!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)]**, point to **Configuration Tools**, and then select **SQL Server Configuration Manager**.
 

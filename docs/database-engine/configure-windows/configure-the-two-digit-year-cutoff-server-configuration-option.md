@@ -1,9 +1,9 @@
 ---
-title: "Server configuration: two digit year cutoff"
+title: "Server Configuration: two digit year cutoff"
 description: "Get acquainted with the two digit year cutoff option. Understand how it determines how SQL Server translates two-digit years into four-digit years."
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/18/2024
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual

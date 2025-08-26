@@ -1,9 +1,9 @@
 ---
-title: Configure file system permissions for Database Engine access
+title: Configure File System Permissions for Database Engine Access
 description: Learn about per-service security identifiers (SIDs). See how to grant them access permission to the database file location so that the Database Engine can access the database files.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/08/2024
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: install-set-up-deploy
@@ -36,6 +36,6 @@ In [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] and later versions, permis
 ## Related content
 
 - [Move system databases](../../relational-databases/databases/move-system-databases.md)
-- [Move User Databases](../../relational-databases/databases/move-user-databases.md)
-- [Manage the Database Engine Services](manage-the-database-engine-services.md)
+- [Move user databases](../../relational-databases/databases/move-user-databases.md)
+- [Manage the Database Engine services](manage-the-database-engine-services.md)
 - [Security identifiers](/windows-server/identity/ad-ds/manage/understand-security-identifiers)

@@ -1,9 +1,9 @@
 ---
-title: "Server configuration: fill factor"
+title: "Server Configuration: fill factor"
 description: Learn about the fill factor option. See how to configure it to specify the percentage of space on each leaf-level page that SQL Server fills with data.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/18/2024
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual

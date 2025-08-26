@@ -1,9 +1,9 @@
 ---
-title: "Server configuration: default language"
+title: "Server Configuration: default language"
 description: Find out about the default language option. See how to configure it to specify the default language that SQL Server uses for all newly created logins.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/18/2024
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual

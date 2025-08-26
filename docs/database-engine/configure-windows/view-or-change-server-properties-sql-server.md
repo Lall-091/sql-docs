@@ -1,9 +1,9 @@
 ---
-title: View or change server properties (SQL Server)
+title: "View or Change Server Properties (SQL Server)"
 description: Learn how to use SQL Server Management Studio, Transact-SQL, or SQL Server Configuration Manager to view or change the properties of an instance of SQL Server.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/18/2024
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: how-to
@@ -97,14 +97,14 @@ Execute permissions on `sp_configure` with no parameters or with only the first 
 
 1. Copy and paste the following example into the query window and select **Execute**. This example queries the [sys.configurations](../../relational-databases/system-catalog-views/sys-configurations-transact-sql.md) catalog view to return information about each server configuration option on the current server. The example returns the name (`name`) and description (`description`) of the option, its value (`value`), and whether the option is an advanced option (`is_advanced`).
 
-    ```sql
-    SELECT name,
-           description,
-           value,
-           is_advanced
-    FROM sys.configurations;
-    GO
-    ```
+   ```sql
+   SELECT name,
+          description,
+          value,
+          is_advanced
+   FROM sys.configurations;
+   GO
+   ```
 
 ### Change a server property by using sp_configure
 

@@ -1,9 +1,9 @@
 ---
-title: "Server configuration: remote login timeout"
+title: "Server Configuration: remote login timeout"
 description: "Learn about the remote login timeout option. See how it limits the number of seconds that SQL Server allots for connecting to a remote server."
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/18/2024
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -37,7 +37,7 @@ Execute permissions on `sp_configure` with no parameters or with only the first 
 
 1. Under **Network**, select a value for the **Remote Login Timeout** box.
 
-     Use the **remote login timeout** option to specify the number of seconds to wait before returning from a failed remote login attempt.
+   Use the **remote login timeout** option to specify the number of seconds to wait before returning from a failed remote login attempt.
 
 <a id="TsqlProcedure"></a>
 

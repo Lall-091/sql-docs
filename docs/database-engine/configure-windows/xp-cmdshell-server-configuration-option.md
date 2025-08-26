@@ -1,9 +1,9 @@
 ---
-title: "Server configuration: xp_cmdshell"
+title: "Server Configuration: xp_cmdshell"
 description: "Learn about the xp_cmdshell option. See how it controls whether SQL Server can run the xp_cmdshell extended stored procedure. Find out how to turn it on."
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/18/2024
+ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
