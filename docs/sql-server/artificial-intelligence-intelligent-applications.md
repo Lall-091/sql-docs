@@ -82,7 +82,7 @@ In Azure OpenAI, input text provided to the API is turned into tokens (tokenized
 
 ### Vectors
 
-Vectors are ordered arrays of numbers (typically floats) that can represent information about some data. For example, an image can be represented as a vector of pixel values, or a string of text can be represented as a vector or ASCII values. The process to turn data into a vector is called *vectorization*. For more information, see [Vector examples](#vector-examples).
+Vectors are ordered arrays of numbers (typically floats) that can represent information about some data. For example, an image can be represented as a vector of pixel values, or a string of text can be represented as a vector of ASCII values. The process to turn data into a vector is called *vectorization*. For more information, see [Vector examples](#vector-examples).
 
 Working with vector data is easier with the introduction of the [vector data type](/sql/t-sql/data-types/vector-data-type?view=azuresqldb-mi-current&preserve-view=true) and [vector functions](/sql/t-sql/functions/vector-functions-transact-sql?view=azuresqldb-mi-current&preserve-view=true).
 
@@ -196,7 +196,7 @@ End-to-end examples:
 
 - [Microsoft.SemanticKernel.Connectors.SqlServer](/dotnet/api/microsoft.semantickernel.connectors.sqlserver)
 
-An example of how easily Semantic Kernel helps to build AI-enabled solution is here:
+An example of how easily Semantic Kernel helps to build AI-enabled solutions is here:
 
 - [The ultimate chatbot?](https://devblogs.microsoft.com/azure-sql/the-ultimate-chatbot/): Build a chatbot on your own data using both NL2SQL and RAG patterns for the ultimate user experience. 
 
