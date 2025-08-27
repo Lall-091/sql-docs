@@ -39,7 +39,7 @@ WHERE [name] = 'PREVIEW_FEATURES'
 GO
 ```
 
-Read more details in the [`DATABASE SCOPED CONFIGURATION`](../t-sql/statements/alter-database-scoped-configuration-transact-sql#preview_features---on--off-) page.
+Read more details in the [`DATABASE SCOPED CONFIGURATION`](../t-sql/statements/alter-database-scoped-configuration-transact-sql.md#preview_features---on--off-) page.
 
 ## Do I need to enable PREVIEW_FEATURES to use AI functionalities in SQL Server 2025?
 
