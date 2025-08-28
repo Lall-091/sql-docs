@@ -218,7 +218,7 @@ Specifies that endpoint is to try to connect by using Windows Authentication and
 
 Specifies that endpoint is to try to connect by using the specified certificate and, if that attempt fails, to then try using Windows Authentication.
 
-#### ENCRYPTION = { DISABLED \| SUPPORTED \| REQUIRED } [ ALGORITHM { AES \| RC4 \| AES RC4 \| RC4 AES } ] **
+#### ENCRYPTION = { DISABLED \| SUPPORTED \| REQUIRED } [ ALGORITHM { AES \| RC4 \| AES RC4 \| RC4 AES } ]
 
 Specifies whether encryption is used in the process. The default is REQUIRED.
 
@@ -326,7 +326,7 @@ Requires CREATE ENDPOINT permission, or membership in the **sysadmin** fixed ser
 
 ## Example
 
-### Creating a database mirroring endpoint
+### Create a database mirroring endpoint
 
 The following example creates a database mirroring endpoint. The endpoint uses port number `7022`, although any available port number would work. The endpoint is configured to use Windows Authentication using only Kerberos. The `ENCRYPTION` option is configured to the nondefault value of `SUPPORTED` to support encrypted or unencrypted data. The endpoint is being configured to support both the partner and witness roles.
 
