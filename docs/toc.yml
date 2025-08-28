@@ -4544,165 +4544,165 @@ items:
       items:
       - name: Overview
         href: database-engine/configure-windows/server-configuration-options-sql-server.md
-      - name: access check cache
+      - name: Configure access check cache
         href: database-engine/configure-windows/access-check-cache-server-configuration-options.md
-      - name: ad hoc distributed queries
+      - name: Configure ad hoc distributed queries
         href: database-engine/configure-windows/ad-hoc-distributed-queries-server-configuration-option.md
-      - name: ADR cleaner retry timeout
-        href: database-engine/configure-windows/adr-cleaner-retry-timeout-configuration-option.md
-      - name: ADR Cleaner Thread Count
+      - name: Configure ADR Cleaner Thread Count
         href: database-engine/configure-windows/adr-cleaner-thread-count-configuration-option.md
-      - name: ADR Preallocation Factor
+      - name: Configure ADR Preallocation Factor
         href: database-engine/configure-windows/adr-preallocation-factor-server-configuration-option.md
-      - name: affinity Input-Output mask
+      - name: Configure ADR cleaner retry timeout
+        href: database-engine/configure-windows/adr-cleaner-retry-timeout-configuration-option.md
+      - name: Configure affinity Input-Output mask
         href: database-engine/configure-windows/affinity-input-output-mask-server-configuration-option.md
-      - name: affinity64 Input-Output mask
-        href: database-engine/configure-windows/affinity64-input-output-mask-server-configuration-option.md
-      - name: affinity mask
+      - name: Configure affinity mask
         href: database-engine/configure-windows/affinity-mask-server-configuration-option.md
-      - name: affinity64 mask
+      - name: Configure affinity64 Input-Output mask
+        href: database-engine/configure-windows/affinity64-input-output-mask-server-configuration-option.md
+      - name: Configure affinity64 mask
         href: database-engine/configure-windows/affinity64-mask-server-configuration-option.md
-      - name: Agent XPs
+      - name: Configure Agent XPs
         href: database-engine/configure-windows/agent-xps-server-configuration-option.md
-      - name: allow polybase export
+      - name: Configure allow polybase export
         href: database-engine/configure-windows/allow-polybase-export.md
-      - name: allow updates
+      - name: Configure allow updates
         href: database-engine/configure-windows/allow-updates-server-configuration-option.md
-      - name: availability group commit time
+      - name: Configure availability group commit time
         href: database-engine/configure-windows/availability-group-commit-time-server-configuration-options.md
-      - name: backup checksum default
+      - name: Configure backup checksum default
         href: database-engine/configure-windows/backup-checksum-default.md
-      - name: backup compression algorithm
+      - name: Configure backup compression algorithm
         href: database-engine/configure-windows/view-or-configure-the-backup-compression-algorithm-server-configuration-option.md
-      - name: backup compression default
+      - name: Configure backup compression default
         href: database-engine/configure-windows/view-or-configure-the-backup-compression-default-server-configuration-option.md
-      - name: blocked process threshold
+      - name: Configure blocked process threshold
         href: database-engine/configure-windows/blocked-process-threshold-server-configuration-option.md
-      - name: c2 audit mode
+      - name: Configure c2 audit mode
         href: database-engine/configure-windows/c2-audit-mode-server-configuration-option.md
-      - name: clr enabled
+      - name: Configure clr enabled
         href: database-engine/configure-windows/clr-enabled-server-configuration-option.md
-      - name: clr strict security
+      - name: Configure clr strict security
         href: database-engine/configure-windows/clr-strict-security.md
-      - name: column encryption enclave type
+      - name: Configure column encryption enclave type
         href: database-engine/configure-windows/configure-column-encryption-enclave-type.md
-      - name: common criteria compliance enabled
+      - name: Configure common criteria compliance enabled
         href: database-engine/configure-windows/common-criteria-compliance-enabled-server-configuration-option.md
-      - name: contained database authentication
+      - name: Configure contained database authentication
         href: database-engine/configure-windows/contained-database-authentication-server-configuration-option.md
-      - name: Configure the cost threshold for parallelism
+      - name: Configure cost threshold for parallelism
         href: database-engine/configure-windows/configure-the-cost-threshold-for-parallelism-server-configuration-option.md
-      - name: Configure the cursor threshold
-        href: database-engine/configure-windows/configure-the-cursor-threshold-server-configuration-option.md
-      - name: cross db ownership chaining
+      - name: Configure cross db ownership chaining
         href: database-engine/configure-windows/cross-db-ownership-chaining-server-configuration-option.md
-      - name: Database Mail XPs
+      - name: Configure cursor threshold
+        href: database-engine/configure-windows/configure-the-cursor-threshold-server-configuration-option.md
+      - name: Configure Database Mail XPs
         href: database-engine/configure-windows/database-mail-xps-server-configuration-option.md
-      - name: Configure the default full-text language
+      - name: Configure default full-text language
         href: database-engine/configure-windows/configure-the-default-full-text-language-server-configuration-option.md
-      - name: Configure the default language
+      - name: Configure default language
         href: database-engine/configure-windows/configure-the-default-language-server-configuration-option.md
-      - name: default trace enabled
+      - name: Configure default trace enabled
         href: database-engine/configure-windows/default-trace-enabled-server-configuration-option.md
-      - name: disallow results from triggers
+      - name: Configure disallow results from triggers
         href: database-engine/configure-windows/disallow-results-from-triggers-server-configuration-option.md
-      - name: EKM provider enabled
+      - name: Configure EKM provider enabled
         href: database-engine/configure-windows/ekm-provider-enabled-server-configuration-option.md
-      - name: external scripts enabled
-        href: database-engine/configure-windows/external-scripts-enabled-server-configuration-option.md
-      - name: filestream access level
-        href: database-engine/configure-windows/filestream-access-level-server-configuration-option.md
-      - name: Enable hardware offload
+      - name: Configure enable hardware offload
         href: database-engine/configure-windows/hardware-offload-enable-configuration-option.md
-      - name: Configure the fill factor
+      - name: Configure external scripts enabled
+        href: database-engine/configure-windows/external-scripts-enabled-server-configuration-option.md
+      - name: Configure filestream access level
+        href: database-engine/configure-windows/filestream-access-level-server-configuration-option.md
+      - name: Configure fill factor
         href: database-engine/configure-windows/configure-the-fill-factor-server-configuration-option.md
-      - name: ft crawl bandwidth
+      - name: Configure ft crawl bandwidth
         href: database-engine/configure-windows/ft-crawl-bandwidth-server-configuration-option.md
-      - name: ft notify bandwidth
+      - name: Configure ft notify bandwidth
         href: database-engine/configure-windows/ft-notify-bandwidth-server-configuration-option.md
-      - name: PolyBase connectivity configuration
-        href: database-engine/configure-windows/polybase-connectivity-configuration-transact-sql.md
-      - name: PolyBase network encryption
-        href: database-engine/configure-windows/polybase-network-encryption-server-configuration-option.md
-      - name: in-doubt xact resolution
+      - name: Configure in-doubt xact resolution
         href: database-engine/configure-windows/in-doubt-xact-resolution-server-configuration-option.md
-      - name: Configure the index create memory
+      - name: Configure index create memory
         href: database-engine/configure-windows/configure-the-index-create-memory-server-configuration-option.md
-      - name: lightweight pooling
+      - name: Configure lightweight pooling
         href: database-engine/configure-windows/lightweight-pooling-server-configuration-option.md
-      - name: Configure the locks
+      - name: Configure locks
         href: database-engine/configure-windows/configure-the-locks-server-configuration-option.md
-      - name: Configure the max degree of parallelism
-        href: database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md
-      - name: max full-text crawl range
-        href: database-engine/configure-windows/max-full-text-crawl-range-server-configuration-option.md
-      - name: max RPC request params (KB)
+      - name: Configure max RPC request params (KB)
         href: database-engine/configure-windows/max-rpc-request-params-configuration-option.md
-      - name: Configure the max text repl size
+      - name: Configure max degree of parallelism
+        href: database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md
+      - name: Configure max full-text crawl range
+        href: database-engine/configure-windows/max-full-text-crawl-range-server-configuration-option.md
+      - name: Configure max text repl size
         href: database-engine/configure-windows/configure-the-max-text-repl-size-server-configuration-option.md
-      - name: Configure the max worker threads
+      - name: Configure max worker threads
         href: database-engine/configure-windows/configure-the-max-worker-threads-server-configuration-option.md
-      - name: Configure ucs flow control
-        href: database-engine/configure-windows/ucs-flow-control-sp-configure.md
-      - name: Configure the media retention
+      - name: Configure media retention
         href: database-engine/configure-windows/configure-the-media-retention-server-configuration-option.md
-      - name: Configure the min memory per query
+      - name: Configure min memory per query
         href: database-engine/configure-windows/configure-the-min-memory-per-query-server-configuration-option.md
-      - name: Configure the nested triggers
+      - name: Configure nested triggers
         href: database-engine/configure-windows/configure-the-nested-triggers-server-configuration-option.md
-      - name: Configure the network packet size
+      - name: Configure network packet size
         href: database-engine/configure-windows/configure-the-network-packet-size-server-configuration-option.md
-      - name: Ole Automation Procedures
+      - name: Configure Ole Automation Procedures
         href: database-engine/configure-windows/ole-automation-procedures-server-configuration-option.md
-      - name: open objects
+      - name: Configure open objects
         href: database-engine/configure-windows/open-objects-server-configuration-option.md
-      - name: optimize for ad hoc workloads
+      - name: Configure optimize for ad hoc workloads
         href: database-engine/configure-windows/optimize-for-ad-hoc-workloads-server-configuration-option.md
-      - name: PH timeout
+      - name: Configure PH timeout
         href: database-engine/configure-windows/ph-timeout-server-configuration-option.md
-      - name: Configure the priority boost
+      - name: Configure PolyBase connectivity
+        href: database-engine/configure-windows/polybase-connectivity-configuration-transact-sql.md
+      - name: Configure PolyBase network encryption
+        href: database-engine/configure-windows/polybase-network-encryption-server-configuration-option.md
+      - name: Configure priority boost
         href: database-engine/configure-windows/configure-the-priority-boost-server-configuration-option.md
-      - name: Configure the query governor cost limit
+      - name: Configure query governor cost limit
         href: database-engine/configure-windows/configure-the-query-governor-cost-limit-server-configuration-option.md
-      - name: Configure the query wait
+      - name: Configure query wait
         href: database-engine/configure-windows/configure-the-query-wait-server-configuration-option.md
-      - name: Configure the recovery interval
+      - name: Configure recovery interval
         href: database-engine/configure-windows/configure-the-recovery-interval-server-configuration-option.md
       - name: Configure remote access
         href: database-engine/configure-windows/configure-the-remote-access-server-configuration-option.md
-      - name: remote admin connections
+      - name: Configure remote admin connections
         href: database-engine/configure-windows/remote-admin-connections-server-configuration-option.md
-      - name: Configure the remote data archive
+      - name: Configure remote data archive
         href: database-engine/configure-windows/configure-the-remote-data-archive-server-configuration-option.md
-      - name: Configure the remote login timeout
+      - name: Configure remote login timeout
         href: database-engine/configure-windows/configure-the-remote-login-timeout-server-configuration-option.md
-      - name: Configure the remote proc trans
+      - name: Configure remote proc trans
         href: database-engine/configure-windows/configure-the-remote-proc-trans-server-configuration-option.md
-      - name: Configure the remote query timeout
+      - name: Configure remote query timeout
         href: database-engine/configure-windows/configure-the-remote-query-timeout-server-configuration-option.md
-      - name: Configure the scan for startup procs
+      - name: Configure scan for startup procs
         href: database-engine/configure-windows/configure-the-scan-for-startup-procs-server-configuration-option.md
-      - name: Server Memory
+      - name: Configure server memory
         href: database-engine/configure-windows/server-memory-server-configuration-options.md
-      - name: server trigger recursion
+      - name: Configure server trigger recursion
         href: database-engine/configure-windows/server-trigger-recursion-server-configuration-option.md
-      - name: set working set size
+      - name: Configure set working set size
         href: database-engine/configure-windows/set-working-set-size-server-configuration-option.md
-      - name: show advanced options
+      - name: Configure show advanced options
         href: database-engine/configure-windows/show-advanced-options-server-configuration-option.md
-      - name: SMO & DMO XPs
+      - name: Configure SMO & DMO XPs
         href: database-engine/configure-windows/smo-and-dmo-xps-server-configuration-option.md
-      - name: suppress recovery model errors
+      - name: Configure suppress recovery model errors
         href: database-engine/configure-windows/suppress-recovery-model-errors-server-configuration-option.md
-      - name: transform noise words
+      - name: Configure transform noise words
         href: database-engine/configure-windows/transform-noise-words-server-configuration-option.md
-      - name: Configure the two digit year cutoff
+      - name: Configure two digit year cutoff
         href: database-engine/configure-windows/configure-the-two-digit-year-cutoff-server-configuration-option.md
-      - name: Configure the user connections
+      - name: Configure ucs flow control
+        href: database-engine/configure-windows/ucs-flow-control-sp-configure.md
+      - name: Configure user connections
         href: database-engine/configure-windows/configure-the-user-connections-server-configuration-option.md
-      - name: Configure the user options
+      - name: Configure user options
         href: database-engine/configure-windows/configure-the-user-options-server-configuration-option.md
-      - name: xp_cmdshell
+      - name: Configure xp_cmdshell
         href: database-engine/configure-windows/xp-cmdshell-server-configuration-option.md
     - name: Manage the Database Engine Services
       href: database-engine/configure-windows/manage-the-database-engine-services.md
