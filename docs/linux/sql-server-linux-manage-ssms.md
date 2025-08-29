@@ -18,7 +18,7 @@ ms.custom:
 This article introduces [SQL Server Management Studio](../ssms/sql-server-management-studio-ssms.md) (SSMS) and walks you through a few common tasks. SSMS is a Windows application, so use SSMS when you have a Windows machine that can connect to a remote [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance on Linux.
 
 > [!TIP]  
-> [!INCLUDE [ssms-azure-data-studio-mention](../includes/ssms-azure-data-studio-mention.md)]
+> [!INCLUDE [connect-instance-client](../includes/connect-instance-client.md)]
 
 SQL Server Management Studio (SSMS) is part of a suite of SQL tools that Microsoft offers free of charge for your development and management needs. SSMS is an integrated environment to access, configure, manage, administer, and develop all components of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. It can connect to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] running on any platform both on-premises, in Docker containers, and in the cloud. It also connects to Azure SQL Database and Azure Synapse Analytics. SSMS combines a broad group of graphical tools with many rich script editors to provide access to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] to developers and administrators of all skill levels.
 
@@ -102,9 +102,7 @@ While connected to the `master` database, you can create databases on the server
 ### Create a new database
 
 1. Start SSMS and connect to your server in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance on Linux.
-
 1. In Object Explorer, right-click on the **Databases** folder, and then select **New Database...**.
-
 1. In the **New Database** dialog, enter a name for your new database, and then select **OK**.
 
 The new database is successfully created in your server. If you prefer to create a new database using T-SQL, then see [CREATE DATABASE](../t-sql/statements/create-database-transact-sql.md).
@@ -112,11 +110,8 @@ The new database is successfully created in your server. If you prefer to create
 ### Drop a database
 
 1. Start SSMS and connect to your server in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux.
-
 1. In Object Explorer, expand the **Databases** folder to see a list of all the database on the server.
-
 1. In Object Explorer, right-click on the database you wish to drop, and then select **Delete**.
-
 1. In the **Delete Object** dialog, select the **Close existing connections** checkbox, and then select **OK**.
 
 The database is successfully dropped from your server. If you prefer to drop a database using T-SQL, then see [DROP DATABASE](../t-sql/statements/drop-database-transact-sql.md).
@@ -126,7 +121,6 @@ The database is successfully dropped from your server. If you prefer to drop a d
 The [Activity Monitor](../relational-databases/performance-monitor/activity-monitor.md) tool is built into SQL Server Management Studio (SSMS) and displays information about [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] processes and how these processes affect the current instance of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 
 1. Start SSMS and connect to your server in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux.
-
 1. In Object Explorer, right-click the *server* node, and then select **Activity Monitor**.
 
 Activity Monitor shows expandable and collapsible panes with the following information:

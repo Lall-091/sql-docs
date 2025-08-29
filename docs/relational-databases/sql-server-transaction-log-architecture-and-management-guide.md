@@ -1,10 +1,10 @@
 ---
-title: "SQL Server transaction log architecture and management guide"
+title: "SQL Server Transaction Log Architecture and Management Guide"
 description: "The SQL Server transaction log is a critical component. Learn about its architecture and how to manage it."
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: jopilov
-ms.date: 06/12/2024
+ms.date: 08/28/2025
 ms.service: sql
 ms.topic: conceptual
 ms.custom:
@@ -27,7 +27,9 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 
 Every [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] database has a transaction log that records all transactions and the database modifications that are made by each transaction. The transaction log is a critical component of the database and, if there's a system failure, the transaction log might be required to bring your database back to a consistent state. This guide provides information about the physical and logical architecture of the transaction log. Understanding the architecture can improve your effectiveness in managing transaction logs.
 
-## <a id="Logical_Arch"></a> Transaction log logical architecture
+<a id="Logical_Arch"></a>
+
+## Transaction log logical architecture
 
 The [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] transaction log operates logically as if the transaction log is a string of log records. Each log record is identified by a *log sequence number* (LSN). Each new log record is written to the logical end of the log with an LSN that is higher than the LSN of the record before it. Log records are stored in a serial sequence as they're created, such that if LSN2 is greater than LSN1, the change described by the log record referred to by LSN2 occurred after the change described by the log record LSN1. Each log record contains the ID of the transaction that it belongs to. For each transaction, all log records associated with the transaction are individually linked in a chain using backward pointers that speed the rollback of the transaction.
 
@@ -61,11 +63,15 @@ Many types of operations are recorded in the transaction log. These operations i
 
 Rollback operations are also logged. Each transaction reserves space in the transaction log to make sure that enough log space exists to support a rollback that is caused by either an explicit rollback statement, or if an error is encountered. The amount of space reserved depends on the operations performed in the transaction, but generally it's equal to the amount of space used to log each operation. This reserved space is freed when the transaction is completed.
 
-<a id="minlsn"></a> The section of the log file from the first log record that must be present for a successful database-wide rollback to the last-written log record is called the active part of the log, *active log*, or *tail of the log*. This is the section of the log required to a full [recovery](../relational-databases/backup-restore/restore-and-recovery-overview-sql-server.md#TlogAndRecovery) of the database. No part of the active log can ever be truncated. The log sequence number (LSN) of this first log record is known as the *minimum recovery LSN* (MinLSN). For more information on operations supported by the transaction log, see [The transaction log](logs/the-transaction-log-sql-server.md).
+<a id="minlsn"></a>
+
+The section of the log file from the first log record that must be present for a successful database-wide rollback to the last-written log record is called the active part of the log, *active log*, or *tail of the log*. This is the section of the log required to a full [recovery](../relational-databases/backup-restore/restore-and-recovery-overview-sql-server.md#TlogAndRecovery) of the database. No part of the active log can ever be truncated. The log sequence number (LSN) of this first log record is known as the *minimum recovery LSN* (MinLSN). For more information on operations supported by the transaction log, see [The transaction log](logs/the-transaction-log-sql-server.md).
 
 Differential and log backups advance the restored database to a later time, which corresponds to a higher LSN.
 
-## <a id="physical_arch"></a> Transaction log physical architecture
+<a id="physical_arch"></a>
+
+## Transaction log physical architecture
 
 The database transaction log maps over one or more physical files. Conceptually, the log file is a string of log records. Physically, the sequence of log records is stored efficiently in the set of physical files that implement the transaction log. There must be at least one log file for each database.
 
@@ -193,7 +199,9 @@ Log truncation occurs automatically after the following events, except when dela
 
 Log truncation can be delayed by various factors. In the event of a long delay in log truncation, the transaction log can fill up. For information, see [Factors that can delay log truncation](../relational-databases/logs/the-transaction-log-sql-server.md#FactorsThatDelayTruncation) and [Troubleshoot a full transaction log (SQL Server Error 9002)](logs/troubleshoot-a-full-transaction-log-sql-server-error-9002.md).
 
-## <a id="WAL"></a> Write-ahead transaction log
+<a id="WAL"></a>
+
+## Write-ahead transaction log
 
 This section describes the role of the write-ahead transaction log in recording data modifications to disk. [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] uses a write-ahead logging (WAL) algorithm, which guarantees that no data modifications are written to disk before the associated log record is written to disk. This maintains the ACID properties for a transaction.
 
@@ -203,23 +211,27 @@ To understand how write-ahead logging works in relation to the transaction log, 
 
 Writing a modified data page from the buffer cache to disk is called flushing the page. [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] has logic that prevents a dirty page from being flushed before the associated log record is written. Log records are written to disk when the log buffers are flushed. This happens whenever a transaction commits or the log buffers become full.
 
-## <a id="Backups"></a> Transaction log backups
+<a id="Backups"></a>
 
-This section presents concepts about how to back up and restore (apply) transaction logs. Under the full and bulk-logged recovery models, taking routine backups of transaction logs (*log backups*) is necessary for recovering data. You can back up the log while any full backup is running. For more information about recovery models, see [Back Up and Restore of SQL Server Databases](backup-restore/back-up-and-restore-of-sql-server-databases.md).
+## Transaction log backups
+
+This section presents concepts about how to back up and restore (apply) transaction logs. Under the full and bulk-logged recovery models, taking routine backups of transaction logs (*log backups*) is necessary for recovering data. You can back up the log while any full backup is running. For more information about recovery models, see [Back up and restore of SQL Server databases](backup-restore/back-up-and-restore-of-sql-server-databases.md).
 
 Before you can create the first log backup, you must create a full backup, such as a database backup or the first in a set of file backups. Restoring a database by using only file backups can become complex. Therefore, we recommend that you start with a full database backup when you can. Thereafter, backing up the transaction log regularly is necessary. This not only minimizes work-loss exposure but also enables truncation of the transaction log. Typically, the transaction log is truncated after every conventional log backup.
-
-> [!IMPORTANT]  
-> We recommend taking frequent enough log backups to support your business requirements, specifically your tolerance for work loss such as might be caused by a damaged log storage.
->  
-> The appropriate frequency for taking log backups depends on your tolerance for work-loss exposure balanced by how many log backups you can store, manage, and, potentially, restore. Think about the required recovery time objective ([RTO](https://wikipedia.org/wiki/Recovery_time_objective)) and recovery point objective ([RPO](https://wikipedia.org/wiki/Recovery_point_objective)) when implementing your recovery strategy, and specifically the log backup cadence.
-> Taking a log backup every 15 to 30 minutes might be enough. If your business requires that you minimize work-loss exposure, consider taking log backups more frequently. More frequent log backups have the added advantage of increasing the frequency of log truncation, resulting in smaller log files.
 
 To limit the number of log backups that you need to restore, it's essential to routinely back up your data. For example, you might schedule a weekly full database backup and daily differential database backups.
 
 Think about the required [RTO](https://wikipedia.org/wiki/Recovery_time_objective) and [RPO](https://wikipedia.org/wiki/Recovery_point_objective) when implementing your recovery strategy, and specifically the full and differential database backup cadence.
 
 For more information about transaction log backups, see [Transaction log backups (SQL Server)](backup-restore/transaction-log-backups-sql-server.md).
+
+### Backup frequency and business requirements
+
+You should take frequent enough log backups to support your business requirements, specifically your tolerance for work loss such as might be caused by a damaged log storage.
+
+The appropriate frequency for taking log backups depends on your tolerance for work-loss exposure balanced by how many log backups you can store, manage, and, potentially, restore. Think about the required recovery time objective ([RTO](https://wikipedia.org/wiki/Recovery_time_objective)) and recovery point objective ([RPO](https://wikipedia.org/wiki/Recovery_point_objective)) when implementing your recovery strategy, and specifically the log backup cadence.
+
+Taking a log backup every 15 to 30 minutes might be enough. If your business requires that you minimize work-loss exposure, consider taking log backups more frequently. More frequent log backups have the added advantage of increasing the frequency of log truncation, resulting in smaller log files.
 
 ### The log chain
 
@@ -236,13 +248,14 @@ Restoring a log backup rolls forward the changes that were recorded in the trans
 Checkpoints flush dirty data pages from the buffer cache of the current database to disk. This minimizes the active portion of the log that must be processed during a full recovery of a database. During a full recovery, the following types of actions are performed:
 
 - The log records of modifications not flushed to disk before the system stopped are rolled forward.
-- All modifications associated with incomplete transactions, such as transactions for which there's no COMMIT or ROLLBACK log record, are rolled back.
+- All modifications associated with incomplete transactions, such as transactions for which there's no `COMMIT` or `ROLLBACK` log record, are rolled back.
 
 ### Checkpoint operation
 
 A checkpoint performs the following processes in the database:
 
 - Writes a record to the log file, marking the start of the checkpoint.
+
 - Stores information recorded for the checkpoint in a chain of checkpoint log records.
 
   One piece of information recorded in the checkpoint is the log sequence number (LSN) of the first log record that must be present for a successful database-wide rollback. This LSN is called the Minimum Recovery LSN (MinLSN). The MinLSN is the minimum of the:
@@ -254,21 +267,30 @@ A checkpoint performs the following processes in the database:
   The checkpoint records also contain a list of all the active transactions that have modified the database.
 
 - If the database uses the simple recovery model, marks for reuse the space that precedes the MinLSN.
+
 - Writes all dirty log and data pages to disk.
+
 - Writes a record marking the end of the checkpoint to the log file.
+
 - Writes the LSN of the start of this chain to the database boot page.
 
 #### Activities that cause a checkpoint
 
 Checkpoints occur in the following situations:
 
-- A CHECKPOINT statement is explicitly executed. A checkpoint occurs in the current database for the connection.
+- A `CHECKPOINT` statement is explicitly executed. A checkpoint occurs in the current database for the connection.
+
 - A minimally logged operation is performed in the database; for example, a bulk-copy operation is performed on a database that is using the Bulk-Logged recovery model.
-- Database files have been added or removed by using ALTER DATABASE.
-- An instance of SQL Server is stopped by a SHUTDOWN statement or by stopping the SQL Server (MSSQLSERVER) service. Either action causes a checkpoint in each database in the instance of SQL Server.
+
+- Database files have been added or removed by using `ALTER DATABASE`.
+
+- An instance of SQL Server is stopped by a `SHUTDOWN` statement or by stopping the SQL Server (MSSQLSERVER) service. Either action causes a checkpoint in each database in the instance of SQL Server.
+
 - An instance of SQL Server periodically generates automatic checkpoints in each database to reduce the time that the instance would take to recover the database.
+
 - A database backup is taken.
-- An activity requiring a database shutdown is performed. This can happen when the AUTO_CLOSE option is ON and the last user connection to the database is closed. Another example is when a database option change is made that requires a restart of the database.
+
+- An activity requiring a database shutdown is performed. This can happen when the `AUTO_CLOSE` option is `ON` and the last user connection to the database is closed. Another example is when a database option change is made that requires a restart of the database.
 
 ### Automatic checkpoints
 
@@ -279,19 +301,20 @@ Use the **recovery interval** server configuration option to calculate the inter
 The interval between automatic checkpoints also depends on the recovery model:
 
 - If the database is using either the full or bulk-logged recovery model, an automatic checkpoint is generated whenever the number of log records reaches the number the Database Engine estimates it can process during the time specified in the recovery interval option.
+
 - If the database is using the simple recovery model, an automatic checkpoint is generated whenever the number of log records reaches the lesser of these two values:
 
   - The log becomes 70 percent full.
   - The number of log records reaches the number the Database Engine estimates it can process during the time specified in the recovery interval option.
 
-For information about setting the recovery interval, see [Configure the recovery interval (min) (server configuration option)](../database-engine/configure-windows/configure-the-recovery-interval-server-configuration-option.md).
+For information about setting the recovery interval, see [Server configuration: recovery interval (min)](../database-engine/configure-windows/configure-the-recovery-interval-server-configuration-option.md).
 
 > [!TIP]  
 > The `-k` SQL Server advanced setup option enables a database administrator to throttle checkpoint I/O behavior based on the throughput of the I/O subsystem for some types of checkpoints. The `-k` setup option applies to automatic checkpoints and any otherwise unthrottled checkpoints.
 
 Automatic checkpoints truncate the unused section of the transaction log if the database is using the simple recovery model. However, if the database is using the full or bulk-logged recovery models, the log isn't truncated by automatic checkpoints. For more information, see [The transaction log](logs/the-transaction-log-sql-server.md).
 
-The CHECKPOINT statement now provides an optional checkpoint_duration argument that specifies the requested period of time, in seconds, for checkpoints to finish. For more information, see [CHECKPOINT](../t-sql/language-elements/checkpoint-transact-sql.md).
+The `CHECKPOINT` statement now provides an optional checkpoint_duration argument that specifies the requested period of time, in seconds, for checkpoints to finish. For more information, see [CHECKPOINT](../t-sql/language-elements/checkpoint-transact-sql.md).
 
 ### Active log
 
@@ -322,9 +345,8 @@ The Log Reader Agent monitors the transaction log of each database configured fo
 - [Manage the size of the transaction log file](logs/manage-the-size-of-the-transaction-log-file.md)
 - [Transaction log backups (SQL Server)](backup-restore/transaction-log-backups-sql-server.md)
 - [Database checkpoints (SQL Server)](logs/database-checkpoints-sql-server.md)
-- [Configure the recovery interval (min) (server configuration option)](../database-engine/configure-windows/configure-the-recovery-interval-server-configuration-option.md)
+- [Server configuration: recovery interval (min)](../database-engine/configure-windows/configure-the-recovery-interval-server-configuration-option.md)
 - [Accelerated database recovery](backup-restore/restore-and-recovery-overview-sql-server.md#adr)
 - [sys.dm_db_log_info (Transact-SQL)](system-dynamic-management-views/sys-dm-db-log-info-transact-sql.md)
 - [sys.dm_db_log_space_usage (Transact-SQL)](system-dynamic-management-views/sys-dm-db-log-space-usage-transact-sql.md)
-- [Understanding Logging and Recovery in SQL Server by Paul Randal](/previous-versions/technet-magazine/dd392031(v=msdn.10))
-- [SQL Server Transaction Log Management by Tony Davis and Gail Shaw](https://www.red-gate.com/simple-talk/books/sql-books/sql-server-transaction-log-management-by-tony-davis-and-gail-shaw)
+- [Understanding Logging and Recovery in SQL Server](/previous-versions/technet-magazine/dd392031(v=msdn.10))
