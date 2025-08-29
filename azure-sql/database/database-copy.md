@@ -92,7 +92,7 @@ Sign in to the `master` database with the server administrator login or the logi
 
 Start copying the source database with the [CREATE DATABASE ... AS COPY OF](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true#copy-a-database) statement. The T-SQL statement continues running until the database copy operation is complete.
 
-This section provides steps for the following operations:
+This section provides Transact-SQL commands for the following operations:
 - [Copy to the same logical server](#copy-to-the-same-logical-server)
 - [Copy to an elastic pool](#copy-to-an-elastic-pool)
 - [Copy to a different logical server](#copy-to-a-different-logical-server)

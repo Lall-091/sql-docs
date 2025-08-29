@@ -134,7 +134,7 @@ Check [Supported subscription types](../managed-instance/resource-limits.md#supp
 
 #### Can I use my on-premises SQL Server license when moving to Azure SQL?
 
-If you own Software Assurance for core-based or qualifying subscription licenses for SQL Server Standard Edition or SQL Server Enterprise Edition, you can use your existing SQL Server license when moving to SQL Managed Instance, SQL Database, or Azure VM by applying Azure Hybrid Benefit. You can also simultaneously use these licenses both in on-premises and Azure environments (dual use rights) for up to 180 days.
+If you own Software Assurance for core-based or qualifying subscription licenses for SQL Server Standard Edition or SQL Server Enterprise Edition, you can use your existing SQL Server license when moving to SQL Managed Instance, SQL Database, or Azure VM by applying Azure Hybrid Benefit. You can also simultaneously use these licenses both in on-premises and Azure environments (migration allowance) for up to 180 days.
 
 #### How do I move from SQL VM to SQL Managed Instance?
 
