@@ -4,7 +4,7 @@ description: Find out about changes to SQL Server Migration Assistant (SSMA) for
 author: nilabjaball
 ms.author: niball
 ms.reviewer: randolphwest
-ms.date: 05/15/2025
+ms.date: 09/02/2025
 ms.service: sql
 ms.subservice: ssma
 ms.topic: whats-new
@@ -18,6 +18,12 @@ ms.custom:
 This article lists SQL Server Migration Assistant (SSMA) for Oracle changes in each release.
 
 [!INCLUDE [entra-id](../../includes/entra-id-hard-coded.md)]
+
+## SSMA v10.3
+
+The v10.3 release of SSMA for Oracle contains the following changes:
+
+- Important security, compliance and accessibility fixes
 
 ## SSMA v10.2
 
@@ -246,7 +252,7 @@ The v8.7 release of SSMA for Oracle has minor fixes and performance improvements
 In addition, SSMA for Oracle now allows you to filter objects based on validity state in 'Advanced Object Selection' dialog.
 
 > [!IMPORTANT]  
-> With SSMA v8.5 and later, .NET 4.7.2 is an installation prerequisite. If you need to install this version, you can download the runtime file from [here](https://dotnet.microsoft.com/download/dotnet-framework/net472).
+> With SSMA v8.5 and later, .NET 4.7.2 is an installation prerequisite. If you need to install this version, you can [download the runtime](https://dotnet.microsoft.com/download/dotnet-framework/net472).
 
 ## SSMA v8.6
 
@@ -259,7 +265,7 @@ To use this setting, in SSMA for Oracle, navigate to **Tools** > **Project Setti
 In addition, SSMA for Oracle now provides improved parsing of the `XMLTABLE` clause.
 
 > [!IMPORTANT]  
-> With SSMA v8.5 and later, .NET 4.7.2 is an installation prerequisite. If you need to install this version, you can download the runtime file from [here](https://dotnet.microsoft.com/download/dotnet-framework/net472).
+> With SSMA v8.5 and later, .NET 4.7.2 is an installation prerequisite. If you need to install this version, you can [download the runtime](https://dotnet.microsoft.com/download/dotnet-framework/net472).
 
 ## SSMA v8.5
 
@@ -277,7 +283,7 @@ Finally, the v8.5 release of SSMA for Oracle now provides:
 - An update for Oracle Data Provider for .NET to version 19.5.0.
 
 > [!IMPORTANT]  
-> With SSMA v8.5, .NET 4.7.2 is an installation prerequisite. If you need to install this version, you can download the runtime file from [here](https://dotnet.microsoft.com/download/dotnet-framework/net472).
+> With SSMA v8.5, .NET 4.7.2 is an installation prerequisite. If you need to install this version, you can [download the runtime](https://dotnet.microsoft.com/download/dotnet-framework/net472).
 
 ## SSMA v8.4
 
@@ -314,14 +320,14 @@ In addition, this version includes a targeted set of fixes designed to improve q
 - An intermittent crash that occurs when a new version is downloaded.
 
 > [!NOTE]  
-> A known issue with auto-update might cause the failure of an update from SSMA v8.1 to v8.2. If you encounter this error, please download the new version and install it manually.
+> A known issue with auto-update might cause the failure of an update from SSMA v8.1 to v8.2. If you encounter this error, download the new version and install it manually.
 
 ## SSMA v8.1
 
 The v8.1 release of SSMA for Oracle is enhanced with targeted fixes that are designed to improve quality and conversion metrics.
 
 > [!NOTE]  
-> A known issue with auto-update might cause the failure of an update from SSMA v8.0 to v8.1. If you encounter this error, please download the new version and install it manually.
+> A known issue with auto-update might cause the failure of an update from SSMA v8.0 to v8.1. If you encounter this error, download the new version and install it manually.
 
 ## SSMA v8.0
 
@@ -335,9 +341,9 @@ The v8.0 release of SSMA for Oracle is enhanced with targeted fixes designed to 
 
   :::image type="content" source="../media/ssma-oracle-ext-pack.png" alt-text="Screenshot of SSMA for Oracle Extension Pack.":::
 
-  Some features, including Tester and Server-side data migration, aren't supported when targeting Azure SQL Managed Instance. Read more about it [here](https://techcommunity.microsoft.com/t5/microsoft-data-migration-blog/bg-p/MicrosoftDataMigration).
+  Some features, including Tester and Server-side data migration, aren't supported when targeting Azure SQL Managed Instance. Read more about it [here](https://techcommunity.microsoft.com/category/azuredatabases/blog/microsoftdatamigration).
 
-- Post-conversion **Fix advisor**. Learn more about it [here](https://techcommunity.microsoft.com/t5/microsoft-data-migration-blog/bg-p/MicrosoftDataMigration).
+- Post-conversion **Fix advisor**. Learn more about it [here](https://techcommunity.microsoft.com/category/azuredatabases/blog/microsoftdatamigration).
 
 - Preliminary database/schema selection.
 
@@ -432,8 +438,8 @@ The v7.3 release of SSMA for Oracle contains the following changes:
       :::image type="content" source="../media/export-schema-scripts_red.png" alt-text="Screenshot of Save as SSDT project command.":::
   - Libraries that can be consumed by SSMA for performing custom conversions.
     - You can now construct code that can handle custom syntax conversions and conversions that weren't previously handled by SSMA.
-      - Instructions on how to construct a custom converter are available in this blog post, [Extending SQL Server Migration Assistant's conversion capabilities](https://techcommunity.microsoft.com/t5/microsoft-data-migration-blog/bg-p/MicrosoftDataMigration).
-      - Download a sample project for conversion from this [blog post](https://techcommunity.microsoft.com/t5/microsoft-data-migration-blog/bg-p/MicrosoftDataMigration).
+      - Instructions on how to construct a custom converter are available in this blog post, [Extending SQL Server Migration Assistant's conversion capabilities](https://techcommunity.microsoft.com/category/azuredatabases/blog/microsoftdatamigration).
+      - Download a sample project for conversion from this [blog post](https://techcommunity.microsoft.com/category/azuredatabases/blog/microsoftdatamigration).
 
 ## SSMA v7.2
 

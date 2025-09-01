@@ -4,7 +4,7 @@ description: Find out about changes to SQL Server Migration Assistant (SSMA) for
 author: nilabjaball
 ms.author: niball
 ms.reviewer: randolphwest
-ms.date: 05/19/2025
+ms.date: 09/02/2025
 ms.service: sql
 ms.subservice: ssma
 ms.topic: whats-new
@@ -19,9 +19,13 @@ This article lists SQL Server Migration Assistant (SSMA) for Access changes in e
 
 [!INCLUDE [entra-id](../../includes/entra-id-hard-coded.md)]
 
+## SSMA v10.3
+
+The v10.3 release of SSMA for Access contains important security, compliance and accessibility fixes.
+
 ## SSMA v10.2
 
-The v10.1 release of SSMA for Access contains minor performance improvements and bug fixes.
+The v10.2 release of SSMA for Access contains minor performance improvements and bug fixes.
 
 ## SSMA v10.1
 
@@ -36,7 +40,7 @@ The v10.0 release of SSMA for Access contains minor performance improvements, bu
 The v9.5 release of SSMA for Access contains the following changes:
 
 - Support for exclude schema in SSMA console mode.
-  
+
 ## SSMA v9.4
 
 The v9.4 release of SSMA for Access contains minor performance improvements, bug fixes, and an enhanced help experience.
@@ -179,8 +183,8 @@ The v8.8 release of SSMA for Access includes:
 
 The v8.7 release of SSMA for Access has improved conversion for `IIF` function in queries, as well as minor fixes and performance improvements in graphical user interface.
 
-> [!IMPORTANT]
-> With SSMA v8.5 and later, .NET 4.7.2 is an installation pre-requisite. If you need to install this version, you can download the runtime file from [here](https://dotnet.microsoft.com/download/dotnet-framework/net472).
+> [!IMPORTANT]  
+> With SSMA v8.5 and later, .NET 4.7.2 is an installation prerequisite. If you need to install this version, you can [download the runtime](https://dotnet.microsoft.com/download/dotnet-framework/net472).
 
 ## SSMA v8.6
 
@@ -188,10 +192,10 @@ In addition to a targeted set of fixes designed to improve usability and perform
 
 To use this setting, in SSMA for Access, navigate to **Tools** > **Project Settings** > **General** > **Conversion**, and then under **Misc**, update the value of the **Omit Extended Properties** setting to **Yes**.
 
-![Omit Extended Properties setting](../access/media/ssma-omit-extended-properties.png)
+:::image type="content" source="media/ssma-omit-extended-properties.png" alt-text="Screenshot of Omit Extended Properties setting." lightbox="media/ssma-omit-extended-properties.png":::
 
-> [!IMPORTANT]
-> With SSMA v8.5 and later, .NET 4.7.2 is an installation pre-requisite. If you need to install this version, you can download the runtime file from [here](https://dotnet.microsoft.com/download/dotnet-framework/net472).
+> [!IMPORTANT]  
+> With SSMA v8.5 and later, .NET 4.7.2 is an installation prerequisite. If you need to install this version, you can [download the runtime](https://dotnet.microsoft.com/download/dotnet-framework/net472).
 
 ## SSMA v8.5
 
@@ -199,15 +203,15 @@ The v8.5 release of SSMA for Access is enhanced with support for Microsoft Entra
 
 In addition, SSMA for Access now supports conversion of multiple standard functions (`ISNULL`, `IIF`, etc.).
 
-> [!IMPORTANT]
-> With SSMA v8.5, .NET 4.7.2 is an installation pre-requisite. If you need to install this version, you can download the runtime file from [here](https://dotnet.microsoft.com/download/dotnet-framework/net472).
+> [!IMPORTANT]  
+> With SSMA v8.5, .NET 4.7.2 is an installation prerequisite. If you need to install this version, you can [download the runtime](https://dotnet.microsoft.com/download/dotnet-framework/net472).
 
 ## SSMA v8.4
 
 The v8.4 release of SSMA for Access is enhanced with targeted fixes that are designed to address accessibility issues and fix a bug related to max index columns (to allow 32 instead of 16) for SQL Server 2016 and later versions.
 
-> [!IMPORTANT]
-> With SSMA versions 7.4 though 8.4, .NET 4.5.2 is an installation pre-requisite.
+> [!IMPORTANT]  
+> With SSMA versions 7.4 though 8.4, .NET 4.5.2 is an installation prerequisite.
 
 ## SSMA v8.3
 
@@ -220,15 +224,15 @@ The v8.3 release of SSMA for Access is enhanced with targeted fixes that are des
 
 The v8.2 release of SSMA for Access is enhanced with targeted fixes that are designed to improve quality and conversion metrics.
 
-> [!NOTE]
-> A known issue with auto-update may cause the failure of an update from SSMA v8.1 to v8.2. If you encounter this error, please download the new version and install it manually.
+> [!NOTE]  
+> A known issue with auto-update might cause the failure of an update from SSMA v8.1 to v8.2. If you encounter this error, download the new version and install it manually.
 
 ## SSMA v8.1
 
 The v8.1 release of SSMA for Access is enhanced with targeted fixes that are designed to improve quality and conversion metrics.
 
-> [!NOTE]
-> A known issue with auto-update may cause the failure of an update from SSMA v8.0 to v8.1. If you encounter this error, please download the new version and install it manually.
+> [!NOTE]  
+> A known issue with auto-update might cause the failure of an update from SSMA v8.0 to v8.1. If you encounter this error, download the new version and install it manually.
 
 ## SSMA v8.0
 
@@ -236,15 +240,15 @@ The v8.0 release of SSMA for Access is enhanced with targeted fixes designed to 
 
 - Support for **Azure SQL Managed Instance** as a target. You can now create new projects targeting Azure SQL Managed Instance:
 
-  ![SQL MI project](../media/ssma-newproject-sqldbmi.png)
+  :::image type="content" source="../media/ssma-newproject-sqldbmi.png" alt-text="Screenshot of SQL MI project.":::
 
-- Post-conversion **Fix advisor**. Learn more about it [here](https://techcommunity.microsoft.com/t5/Microsoft-Data-Migration/Accelerate-your-Oracle-migrations-with-new-machine-learning/ba-p/368733).
+- Post-conversion **Fix advisor**. For more information, see [Accelerate your Oracle migrations with new machine learning capabilities in SSMA](https://techcommunity.microsoft.com/blog/microsoftdatamigration/accelerate-your-oracle-migrations-with-new-machine-learning-capabilities-in-ssma/368733).
 
 - Preliminary database/schema selection.
 
-    When you connect to the source, you can now select databases/schemas of interest. Selecting only the schemas that you plan to migrate will save time during initial connection and improve overall SSMA performance.
+  When you connect to the source, you can now select databases/schemas of interest. Selecting only the schemas that you plan to migrate will save time during initial connection and improve overall SSMA performance.
 
-   ![SSMA filter objects](../media/ssma-filter-objects.png)
+  :::image type="content" source="../media/ssma-filter-objects.png" alt-text="Screenshot of SSMA filter objects.":::
 
 ## SSMA v7.10
 
@@ -286,12 +290,12 @@ The v7.4 release of SSMA for Access contains the following changes:
 
 - The **Query timeout** option is now available during schema object discovery at source and target.
 
-  ![query timeout option](../media/query-timeout_red.png)
+  :::image type="content" source="../media/query-timeout_red.png" alt-text="Screenshot of query timeout option.":::
 
 - The quality and conversion metric has been improved with targeted fixes, based on customer feedback.
 
-  > [!IMPORTANT]
-  > .NET 4.5.2 is a pre-requisite for installing SSMA v7.4. In addition, beginning with v7.4, the 32-bit version of SSMA has been discontinued.
+  > [!IMPORTANT]  
+  > .NET 4.5.2 is a prerequisite for installing SSMA v7.4. In addition, beginning with v7.4, the 32-bit version of SSMA has been discontinued.
 
 ## SSMA v7.3
 
@@ -302,10 +306,11 @@ The v7.3 release of SSMA for Access contains the following changes:
   - Export functionality to a SQL Server Data Tools (SSDT) project.
     - You can now export schema scripts from SSMA to an SSDT project. You can use the schema scripts to make additional schema changes and deploy your database.
 
-        ![Save as SSDT project command](../media/export-schema-scripts_red.png)
+      :::image type="content" source="../media/export-schema-scripts_red.png" alt-text="Screenshot of Save as SSDT project command.":::
+
   - Libraries that can be consumed by SSMA for performing custom conversions.
     - You can now construct code that can handle custom syntax conversions and conversions that weren't previously handled by SSMA.
-      - Instructions on how to construct a custom converter, along with a sample project for conversion, are available in the blog post [Extending SQL Server Migration Assistant's conversion capabilities](https://techcommunity.microsoft.com/t5/Microsoft-Data-Migration/Extending-SQL-Server-Migration-Assistant-s-conversion/ba-p/1004181).
+      - Instructions on how to construct a custom converter, along with a sample project for conversion, are available in the blog post [Extending SQL Server Migration Assistant's conversion capabilities](https://techcommunity.microsoft.com/blog/microsoftdatamigration/extending-sql-server-migration-assistants-conversion-capabilities/1004181).
 
 ## SSMA v7.2
 
