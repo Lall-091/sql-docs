@@ -4,7 +4,7 @@ description: Find information about SQL Server 2025 (17.x) limitations, known is
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 08/27/2025
+ms.date: 09/02/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: release-notes
@@ -35,7 +35,7 @@ For more information, review [Opt in for preview features - FAQ](preview-feature
 
 ### Optimized Halloween protection not available
 
-The Optimized Halloween protection feature is not currently available in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] RC 0.
+The Optimized Halloween protection feature is not currently available in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] starting with RC 0. For more information, see the [SQL Server 2025: introducing optimized Halloween protection](https://aka.ms/optimized-hp-blog) blog.
 
 ## Breaking changes
 
