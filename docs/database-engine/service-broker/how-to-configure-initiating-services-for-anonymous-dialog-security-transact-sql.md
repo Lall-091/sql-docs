@@ -25,7 +25,7 @@ SQL Server uses dialog security for any conversation to a service for which a re
 
 1. Create a user without a login.
 
-1. Install the certificate for the remote service. The user created in step 3 owns the certificate. By default the certificate is active for `BEGIN` DIALOG.
+1. Install the certificate for the remote service. The user created in step 3 owns the certificate. By default the certificate is active for `BEGIN DIALOG`.
 
 1. Create a remote service binding that specifies the user and the target service. For anonymous dialog security, the remote service binding specifies `ANONYMOUS = ON`.
 
