@@ -155,9 +155,9 @@ Beginning with [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)], the *data_
 ::: moniker-end
 ::: moniker range="=fabric"
 
-- `https://{storage}.blob.core.windows.net/[container}/{file path}` to access Azure Blob Storage or Azure Data Lake Storage
-- `https://{storage}.dfs.core.windows.net/[container}/{file path}` to access Azure Data Lake Storage
-- `abfss://[container}@{storage}.dfs.core.windows.net/{file path}` to access Azure Data Lake Storage
+- `https://{storage}.blob.core.windows.net/{container}/{file path}` to access Azure Blob Storage or Azure Data Lake Storage
+- `https://{storage}.dfs.core.windows.net/{container}/{file path}` to access Azure Data Lake Storage
+- `abfss://{container}@{storage}.dfs.core.windows.net/{file path}` to access Azure Data Lake Storage
 - `https://onelake.dfs.fabric.microsoft.com/<workspaceId>/<lakehouseId>/Files/{file path}` - to access Fabric OneLake (currently in [preview](/fabric/fundamentals/preview))
 
 > [!NOTE]
