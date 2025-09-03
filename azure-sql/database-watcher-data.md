@@ -5,7 +5,7 @@ description: A detailed description of SQL monitoring data collected by database
 author: lcwright
 ms.author: lancewright
 ms.reviewer: dfurman
-ms.date: 07/30/2025
+ms.date: 09/02/2025
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: conceptual
@@ -37,6 +37,8 @@ To further reduce the risk of impact to application workloads, all database watc
 # [SQL elastic pool](#tab/sqlep)
 
 To further reduce the risk of impact to application workloads, all database watcher queries in Azure SQL Database are resource-governed as an [internal workload](./database/resource-limits-logical-server.md#resource-consumption-by-user-workloads-and-internal-processes). When resource contention is present, resource consumption by the monitoring queries is limited to a small fraction of total resources available to the elastic pool. This prioritizes application workloads over monitoring queries.
+
+For more information about database watcher impact to application workloads when there are many databases in an elastic pool, see [Monitor dense elastic pools](#monitor-dense-elastic-pools).
 
 # [SQL managed instance](#tab/sqlmi)
 
@@ -121,14 +123,18 @@ If you add individual databases from an elastic pool as SQL targets, you should 
 
 #### Monitor dense elastic pools
 
-A [dense elastic pool](./database/elastic-pool-resource-management.md) contains a large number of databases, but has a relatively small compute size. This configuration lets customers achieve substantial cost savings by keeping the compute resource allocation to a minimum on the assumption that only a small number of databases in the pool are active at the same time.
+A [dense elastic pool](./database/elastic-pool-resource-management.md) contains a large number of databases, but has a relatively small compute size. This configuration lets customers achieve substantial cost savings by keeping the compute resource allocation to a minimum.
 
-Compute resources available to database watcher queries in a dense elastic pool are further limited to avoid affecting application queries. Because of this, database watcher might not be able to collect monitoring data from every database in a dense elastic pool.
+Importantly, this approach assumes that only a small number of databases in the pool have queries running at the same time.
 
-> [!TIP]
-> To monitor a dense elastic pool, enable monitoring at the pool level by adding the elastic pool as a SQL target.
+> [!WARNING]
+> Because monitoring queries must execute continuously in every monitored database, it is not recommended to monitor more than a few individual databases in a dense elastic pool.
 >
-> It is not recommended to monitor more than a few individual databases in a dense elastic pool. You might see gaps in the collected data or larger than expected intervals between data samples due to insufficient compute resources available to database watcher queries.
+> If you add many databases from a dense elastic pool as SQL targets, the cumulative resource utilization by the monitoring queries running in each database might impact application workloads because of insufficient resources in the pool.
+>
+> For the same reason, you might see gaps in the collected data or larger than expected intervals between data samples.
+
+To monitor a dense elastic pool, enable monitoring at the pool level by adding the elastic pool itself as a SQL target. By reducing the total number of monitoring queries in the elastic pool you avoid the risk of impacting application workloads, while still collecting actionable pool-level data in the **SQL elastic pool** [datasets](#datasets).
 
 ## Data collection in serverless databases
 
