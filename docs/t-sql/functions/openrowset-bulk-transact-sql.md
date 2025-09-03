@@ -4,7 +4,7 @@ description: "OPENROWSET BULK function reads data from an external data source."
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest, hudequei, wiassaf, jovanpop, fresantos
-ms.date: 08/27/2025
+ms.date: 09/03/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -141,11 +141,11 @@ The supported path formats are:
 
 ::: moniker range="=azuresqldb-mi-current||=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017"
 
-- `{drive letter}:\{file path}` to access files on local disk
-- `\\{network-share\{file path}` to access files on network shares
-- `adls://{container}@{storage}.dfs.core.windows.net/{file path}` to access Azure Data Lake Storage
-- `abs://{storage}.blob.core.windows.net/{container}/{file path}` to access Azure Blob Storage
-- `s3://{ip-address}:{port}/{file path}` to access s3-compatible storage
+- `<drive letter>:\<file path>` to access files on local disk
+- `\\<network-share\<file path>` to access files on network shares
+- `adls://<container>@<storage>.dfs.core.windows.net/<file path>` to access Azure Data Lake Storage
+- `abs://<storage>.blob.core.windows.net/<container>/<file path>` to access Azure Blob Storage
+- `s3://<ip-address>:<port>/<file path>` to access s3-compatible storage
 
 > [!NOTE]
 > This article and the supported URI patterns differ on different platforms. For the URI patterns that are available in Microsoft Fabric Data Warehouse, [select Fabric in the version dropdown list](openrowset-bulk-transact-sql.md?view=fabric&preserve-view=true#bulk-data_file_path).
@@ -155,10 +155,10 @@ Beginning with [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)], the *data_
 ::: moniker-end
 ::: moniker range="=fabric"
 
-- `https://{storage}.blob.core.windows.net/[container}/{file path}` to access Azure Blob Storage or Azure Data Lake Storage
-- `https://{storage}.dfs.core.windows.net/[container}/{file path}` to access Azure Data Lake Storage
-- `abfss://[container}@{storage}.dfs.core.windows.net/{file path}` to access Azure Data Lake Storage
-- `https://onelake.dfs.fabric.microsoft.com/<workspaceId>/<lakehouseId>/Files/{file path}` - to access Fabric OneLake (currently in [preview](/fabric/fundamentals/preview))
+- `https://<storage>.blob.core.windows.net/<container>/<file path>` to access Azure Blob Storage or Azure Data Lake Storage
+- `https://<storage>.dfs.core.windows.net/<container>/<file path>` to access Azure Data Lake Storage
+- `abfss://<container>@<storage>.dfs.core.windows.net/<file path>` to access Azure Data Lake Storage
+- `https://onelake.dfs.fabric.microsoft.com/<workspaceId>/<lakehouseId>/Files/<file path>` - to access Fabric OneLake (currently in [preview](/fabric/fundamentals/preview))
 
 > [!NOTE]
 > This article and the supported URI patterns differ on different platforms. For the URI patterns that are available in SQL Server, Azure SQL Database, and Azure SQL Managed Instance, [select the product in the version dropdown list](openrowset-bulk-transact-sql.md?view=sql-server-ver17&preserve-view=true#bulk-data_file_path).
@@ -172,7 +172,7 @@ For example:
 ```sql
 SELECT TOP 10 *
 FROM OPENROWSET(
-    BULK '{scheme:}//pandemicdatalake.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/*.parquet'
+    BULK '<scheme:>//pandemicdatalake.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/*.parquet'
 );
 ```
 
@@ -212,7 +212,7 @@ For example:
 
 ```sql
 CREATE EXTERNAL DATA SOURCE root
-WITH (LOCATION = '{scheme:}//pandemicdatalake.blob.core.windows.net/public')
+WITH (LOCATION = '<scheme:>//pandemicdatalake.blob.core.windows.net/public')
 GO
 SELECT *
 FROM OPENROWSET(
@@ -262,7 +262,7 @@ Specifies the format of the referenced file, for example:
 
 ```sql
 SELECT *
-FROM OPENROWSET(BULK N'{data-file-path}',
+FROM OPENROWSET(BULK N'<data-file-path>',
                 FORMAT='CSV') AS cars;
 ```
 
@@ -353,7 +353,7 @@ Specifies the row terminator to be used for **char** and **widechar** data files
 ```sql
 SELECT *
 FROM OPENROWSET(
-    BULK '{data-file-path}',
+    BULK '<data-file-path>',
     ROWTERMINATOR = '\n'
 );
 ```
@@ -367,7 +367,7 @@ Specifies the field terminator to be used for **char** and **widechar** data fil
 ```sql
 SELECT *
 FROM OPENROWSET(
-    BULK '{data-file-path}',
+    BULK '<data-file-path>',
     FIELDTERMINATOR = '\t'
 );
 ```
@@ -390,7 +390,7 @@ For example, in order to read the previous New York sample CSV dataset, use `FIE
 ```sql
 SELECT *
 FROM OPENROWSET(
-    BULK '{data-file-path}',
+    BULK '<data-file-path>',
     FIELDQUOTE = '"'
 );
 ```
@@ -454,7 +454,7 @@ In the following example, comma (`,`) and backslash (`\`) are escaped and repres
 ```sql
 SELECT *
 FROM OPENROWSET(
-    BULK '{data-file-path}',
+    BULK '<data-file-path>',
     ESCAPECHAR = '\'
 );
 ```
@@ -474,7 +474,7 @@ Default is `FALSE`. Supported in `PARSER_VERSION='2.0'`. If `TRUE`, the column n
 ```sql
 SELECT *
 FROM OPENROWSET(
-    BULK '{data-file-path}',
+    BULK '<data-file-path>',
     HEADER_ROW = TRUE
 );
 ```
@@ -490,8 +490,8 @@ Specifies the file used to collect rows that have formatting errors and can't be
 ```sql
 SELECT *
 FROM OPENROWSET(
-    BULK '{data-file-path}',
-    ERRORFILE = '{error-file-path}'
+    BULK '<data-file-path>',
+    ERRORFILE = '<error-file-path>'
 );
 ```
 
@@ -507,12 +507,12 @@ Beginning with [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)], this argum
 
 ```sql
 CREATE EXTERNAL DATA SOURCE root
-WITH (LOCATION = '{root-error-file-path}')
+WITH (LOCATION = '<root-error-file-path>')
 GO
 SELECT *
 FROM OPENROWSET(
-    BULK '{data-file-path}',
-    ERRORFILE = '{relative-error-file-path}',
+    BULK '<data-file-path>',
+    ERRORFILE = '<relative-error-file-path>',
     ERRORFILE_DATA_SOURCE = 'root'
 );
 ```
@@ -526,7 +526,7 @@ Specifies the maximum number of syntax errors or nonconforming rows, as defined 
 ```sql
 SELECT *
 FROM OPENROWSET(
-    BULK '{data-file-path}',
+    BULK '<data-file-path>',
     MAXERRORS = 0
 );
 ```
@@ -553,7 +553,7 @@ Specifies the approximate number of rows of data in the data file. This value is
 ```sql
 SELECT TOP 10 *
 FROM OPENROWSET(
-    BULK '{data-file-path}',
+    BULK '<data-file-path>',
     ROWS_PER_BATCH = 100000
 );
 ```
