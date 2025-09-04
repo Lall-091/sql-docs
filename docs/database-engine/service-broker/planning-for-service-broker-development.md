@@ -37,7 +37,7 @@ For example, an online order entry application might not have to completely proc
 
 Most services exchange semi-structured information. Therefore, XML encoding a good choice. A binary encoding is useful for exchanging binary files such as images. When a message communicates only the fact that the message arrived, use an empty message.
 
-By selecting the correct message type, you're less likely to have to update your application later. Depending on the message type encoding, updates can include anything from having to update an XML schema file to having to make significant coding changes in your application. If there are data items that you don't currently need but you expect to need in the future, it might make sense to include them. If you define these elements in the schema to begin with, you not have to change the schema when you do support them.
+By selecting the correct message type, you're less likely to have to update your application later. Depending on the message type encoding, updates can include anything from having to update an XML schema file to having to make significant coding changes in your application. If there are data items that you don't currently need but you expect to need in the future, it might make sense to include them. If you define these elements in the schema to begin with, you will not have to change the schema when you do support them.
 
 ### Where will your message processing logic run?
 
