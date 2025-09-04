@@ -6,7 +6,7 @@ ms.author: drskwier
 ms.reviewer: maghan, randolphwest
 ms.date: 05/22/2025
 ms.service: sql
-ms.subservice: sql-tools
+ms.subservice: sql-database-projects
 ms.topic: concept-article
 ms.collection:
   - data-tools

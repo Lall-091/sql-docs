@@ -6,7 +6,7 @@ ms.author: drskwier
 ms.reviewer: maghan
 ms.date: 09/10/2024
 ms.service: sql
-ms.subservice: sql-tools
+ms.subservice: sql-database-projects
 ms.topic: how-to
 ms.collection:
   - data-tools
