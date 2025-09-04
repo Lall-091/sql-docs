@@ -53,6 +53,20 @@ You can use SQL Database auditing to:
   - Read-only database replicas previously had their logs stored in a read-only folder. Those logs will now be written into the `master` folder. You can retrieve these logs by filtering on the new column `is_secondary_replica_true`.
 - Permissions required to view Audit logs:
   - `VIEW DATABASE SECURITY AUDIT` permission in user database
+    
+__Full-Length SQL Audit Statements in Azure SQL Database__
+
+Azure SQL Database now supports full-length audit statements, removing the previous 4,000-character truncation limit for fields like statement and data_sensitivity_information.
+
+Key Benefits
+
+- Complete Visibility: Audit logs now capture the entire content of SQL statements, improving traceability.
+
+- Enhanced Security & Compliance: Full context enables better threat detection and forensic analysis.
+
+- Feature Parity: Aligns Azure SQL Database with SQL Server and Managed Instance auditing capabilities.
+
+This change ensures that no critical query details are lost, helping security and compliance teams maintain robust oversight.
 
 ## Auditing limitations
 
