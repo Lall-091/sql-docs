@@ -27,20 +27,18 @@ This feature consists of three main components:
 
 ## Quick start
 
-To use this feature, follow these four steps:
+To use this feature, follow these steps:
 
-1. Enable the safety switch in the preview version. For information on how to enable the AppContext safety switch, see [Enable configurable retry logic](appcontext-switches.md#enable-configurable-retry-logic).
-
-2. Define the retry logic options using <xref:Microsoft.Data.SqlClient.SqlRetryLogicOption>.  
+1. Define the retry logic options using <xref:Microsoft.Data.SqlClient.SqlRetryLogicOption>.  
 In this sample, some of the retry parameters are set and the rest of them will use the default values.
 
     [!code-csharp[SqlConfigurableRetryLogic_StepByStep_OpenConnection#1](~/../sqlclient/doc/samples/SqlConfigurableRetryLogic_StepByStep_OpenConnection.cs#1)]
 
-3. Create a retry logic provider using your <xref:Microsoft.Data.SqlClient.SqlRetryLogicOption> object.
+2. Create a retry logic provider using your <xref:Microsoft.Data.SqlClient.SqlRetryLogicOption> object.
 
     [!code-csharp[SqlConfigurableRetryLogic_StepByStep_OpenConnection#2](~/../sqlclient/doc/samples/SqlConfigurableRetryLogic_StepByStep_OpenConnection.cs#2)]
 
-4. Assign the <xref:Microsoft.Data.SqlClient.SqlRetryLogicBaseProvider> instance to the <xref:Microsoft.Data.SqlClient.SqlConnection.RetryLogicProvider%2A?displayProperty=nameWithType> or <xref:Microsoft.Data.SqlClient.SqlCommand.RetryLogicProvider%2A?displayProperty=nameWithType>.  
+3. Assign the <xref:Microsoft.Data.SqlClient.SqlRetryLogicBaseProvider> instance to the <xref:Microsoft.Data.SqlClient.SqlConnection.RetryLogicProvider%2A?displayProperty=nameWithType> or <xref:Microsoft.Data.SqlClient.SqlCommand.RetryLogicProvider%2A?displayProperty=nameWithType>.  
 In this sample, the connection open command will retry if it hits one of the transient errors in the <xref:Microsoft.Data.SqlClient.SqlConfigurableRetryFactory> internal list for a maximum of five times.
 
     [!code-csharp[SqlConfigurableRetryLogic_StepByStep_OpenConnection#3](~/../sqlclient/doc/samples/SqlConfigurableRetryLogic_StepByStep_OpenConnection.cs#3)]
@@ -53,6 +51,5 @@ In this sample, the connection open command will retry if it hits one of the tra
 - [Configurable retry logic core APIs in SqlClient](configurable-retry-logic-core-apis-sqlclient.md)
 - [Internal retry logic providers in SqlClient](internal-retry-logic-providers-sqlclient.md)
 - [Configurable retry logic configuration file with SqlClient](configurable-retry-logic-config-file-sqlclient.md)
-- [Enable configurable retry logic](appcontext-switches.md#enable-configurable-retry-logic)
 - [Configurable retry logic in SqlClient](configurable-retry-logic.md)
 - [Microsoft ADO.NET for SQL Server](microsoft-ado-net-sql-server.md)

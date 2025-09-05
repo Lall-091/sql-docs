@@ -1,9 +1,9 @@
 ---
 title: Asynchronous programming
 description: Learn about asynchronous programming in the Microsoft SqlClient Data Provider for SQL Server.
-author: David-Engel
-ms.author: davidengel
-ms.date: 12/04/2020
+author: cheenamalhotra
+ms.author: cmalhotra
+ms.date: 08/19/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -28,6 +28,9 @@ The Microsoft SqlClient Data Provider for SQL Server includes methods from **Sys
 
 > [!TIP]
 > In the Microsoft SqlClient Data Provider for SQL Server, these legacy methods no longer require `Asynchronous Processing=true` in the connection string.
+
+> [!WARNING]
+> The `Asynchronous Processing` connection property is no longer supported in the Microsoft SqlClient Data Provider v4.0 onwards.
 
 ## Asynchronous programming features
 
