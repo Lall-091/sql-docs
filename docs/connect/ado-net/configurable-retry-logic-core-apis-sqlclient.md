@@ -66,9 +66,6 @@ The implementation in this sample is as simple as possible to demonstrate step-b
 
     [!code-csharp[SqlConfigurableRetryLogic_StepByStep_CustomProvider#3](~/../sqlclient/doc/samples/SqlConfigurableRetryLogic_StepByStep_CustomProvider.cs#3)]
 
-> [!NOTE]
-> Don't forget to enable the configurable retry logic switch before using it. For more information, see [Enable configurable retry logic](appcontext-switches.md#enable-configurable-retry-logic).
-
 ## See also
 
 - [Microsoft.Data.SqlClient GitHub repository](https://github.com/dotnet/SqlClient/)

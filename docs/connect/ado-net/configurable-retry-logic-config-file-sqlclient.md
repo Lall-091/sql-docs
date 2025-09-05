@@ -35,36 +35,8 @@ Default retry logic options for an application can be changed by adding the foll
         type="Microsoft.Data.SqlClient.SqlConfigurableRetryCommandSection, Microsoft.Data.SqlClient"/>
 ```
 
-- `AppContextSwitchOverrides`: .NET Framework supports AppContext switches via an [AppContextSwitchOverrides](/dotnet/framework/configure-apps/file-schema/runtime/appcontextswitchoverrides-element) section, which doesn't need to be defined explicitly. To turn on a switch in **.NET Core**, you must specify this section.
-
-```csharp
-<section name="AppContextSwitchOverrides"
-        type="Microsoft.Data.SqlClient.AppContextSwitchOverridesSection, Microsoft.Data.SqlClient"/>
-```
-
 > [!NOTE]
 > The following configurations should be specified inside the `configuration` section. Declare these new sections to configure the default retry logic through an application configuration file.
-
-### Enable safety switch
-
-> [!NOTE]
-> Starting from Microsoft.Data.SqlClient v4.0, the App Context switch "Switch.Microsoft.Data.SqlClient.EnableRetryLogic" will no longer be required to use the configurable retry logic feature. The feature is now supported in production. The default behavior of the feature will continue to be a non-retry policy, which will need to be overridden by client applications to enable retries.
-
-You can enable the safety switch through a configuration file. To learn how to enable it through application code, see [Enable configurable retry logic](appcontext-switches.md#enable-configurable-retry-logic).
-
-- **.NET Framework**: For more information, see [AppContextSwitchOverrides element](/dotnet/framework/configure-apps/file-schema/runtime/appcontextswitchoverrides-element).
-
-```csharp
-<runtime>
-    <AppContextSwitchOverrides value="Switch.Microsoft.Data.SqlClient.EnableRetryLogic=true"/>
-</runtime>
-```
-
-- **.NET Core**: supports multiple, semi-colon (;) delimited switches like .NET Framework.
-
-```csharp
-<AppContextSwitchOverrides value="Switch.Microsoft.Data.SqlClient.EnableRetryLogic=true"/>
-```
 
 ### Connection section
 
@@ -159,7 +131,6 @@ The following attribute can also be set for all <xref:Microsoft.Data.SqlClient.S
 
 ## See also
 
-- [Enable configurable retry logic](appcontext-switches.md#enable-configurable-retry-logic)
 - [Internal retry logic providers in SqlClient](internal-retry-logic-providers-sqlclient.md)
 - [Enable event tracing in SqlClient](enable-eventsource-tracing.md)
 - [Specifying fully qualified type names](/dotnet/framework/reflection-and-codedom/specifying-fully-qualified-type-names)
