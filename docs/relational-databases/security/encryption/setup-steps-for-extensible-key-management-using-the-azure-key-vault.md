@@ -390,7 +390,7 @@ In [step 2](#step-2-create-a-key-vault), we learned how to create a key vault an
    > [!NOTE]
    > When creating a credential to access the Managed HSM, the identity is `<name of Managed HSM>.managedhsm.azure.net`, which can be found in the Azure Key Vault Managed HSM **Overview** as the **HSM URI** in the Azure portal.
    >
-   > Algorithm RSA-HSM_2048 and RSA-HSM_3072 are supported starting in SQL Server 2022 (16.x).
+   > Algorithm RSA-HSM_2048 and RSA-HSM_3072 are supported starting in SQL Server 2022 (16.x) Cumulative Update 13.
    > 
    > Automatic key rotation is supported in Azure Key Vault Managed HSM. For more information, see [Configure key auto-rotation in Azure Managed HSM](/azure/key-vault/managed-hsm/key-rotation).
    >

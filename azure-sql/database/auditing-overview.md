@@ -5,7 +5,7 @@ description: SQL Auditing for Azure SQL Database and Azure Synapse Analytics tra
 author: sravanisaluru
 ms.author: srsaluru
 ms.reviewer: wiassaf, vanto, mathoma
-ms.date: 07/02/2025
+ms.date: 09/04/2025
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: conceptual
@@ -54,6 +54,18 @@ You can use SQL Database auditing to:
 - Permissions required to view Audit logs:
   - `VIEW DATABASE SECURITY AUDIT` permission in user database
 
+### Full-length SQL audit statements (August 2025)
+
+Azure SQL Database supports full-length audit statements, removing the previous 4,000 character truncation limit for fields like `statement` and `data_sensitivity_information` in the audit file.
+
+Key benefits of this update include:
+
+- Complete visibility: Audit logs capture the entire content of SQL statements, improving traceability.
+- Enhanced security & compliance: Full context enables better threat detection and forensic analysis.
+- Feature parity: Aligns Azure SQL Database with SQL Server and Azure SQL Managed Instance auditing capabilities.
+
+This change ensures that no critical query details are lost, helping security and compliance teams maintain robust oversight.
+
 ## Auditing limitations
 
 - Enabling auditing on a paused **Azure Synapse SQL pool** isn't supported. To enable auditing, resume the **Synapse SQL pool**.
@@ -63,7 +75,7 @@ You can use SQL Database auditing to:
 - Auditing for **Azure Synapse SQL pools** supports default audit action groups **only**.
 - When you configure auditing for a [logical server in Azure](logical-servers.md) or Azure SQL Database with the log destination as a storage account, the authentication mode must match the configuration for that storage account. If using storage access keys as the authentication type, the target storage account must be enabled with access to the storage account keys. If the storage account is configured to only use authentication with Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)), auditing can be configured to use managed identities for authentication.
 
-- Auditing is not supported on databases with names that contain the `?` character. This applies to both **server-level** and **database-level** auditing, as databases with `?` in their names are *no longer supported on Azure*.
+- Auditing isn't supported on databases with names that contain the `?` character. This applies to both **server-level** and **database-level** auditing, as databases with `?` in their names are *no longer supported on Azure*.
 
 ## Remarks
 
