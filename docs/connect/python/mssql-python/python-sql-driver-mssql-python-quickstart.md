@@ -4,7 +4,7 @@ description: This quickstart describes installing Python, and mssql-python then 
 author: dlevy-msft-sql
 ms.author: dlevy
 ms.reviewer: vanto, randolphwest
-ms.date: 07/10/2025
+ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: quickstart-sdk
@@ -27,8 +27,6 @@ In this quickstart, you connect a Python script to a database that you created a
   - Prefer to not use your own environment? Open as a devcontainer using [GitHub Codespaces](https://github.com/features/codespaces).
 
     [:::image type="icon" source="https://github.com/codespaces/badge.svg":::](https://codespaces.new/github/codespaces-blank?quickstart=1)
-
-- `mssql-python` package from PyPI.
 
 - A database on SQL Server, Azure SQL Database, or SQL database in Fabric with the [!INCLUDE [sssampledbobject-md](../../../includes/sssampledbobject-md.md)] sample schema and a valid connection string.
 
