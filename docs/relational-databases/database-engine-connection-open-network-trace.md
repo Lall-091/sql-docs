@@ -1,14 +1,15 @@
 ---
-title: Trace the network authentication process to SQL Server
+title: Trace the Network Authentication Process to SQL Server
 description: Learn about the various handshakes and authentication sequences during the connection process to the SQL Server Database Engine.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 06/05/2024
+ms.date: 09/07/2025
 ms.service: sql
 ms.topic: concept-article
+ms.custom:
+  - sfi-image-nochange
 helpviewer_keywords:
   - "network trace [SQL Server]"
-ms.custom: sfi-image-nochange
 ---
 
 # Trace the network authentication process to the Database Engine
@@ -245,12 +246,12 @@ Frame Time Offset Source IP   Dest IP     Description
   Frame: Number = 238, Captured Frame Length = 250, MediaType = ETHERNET
 + Ethernet: Etype = Internet IP (IPv4),DestinationAddress:[00-15-5D-03-F6-03],SourceAddress:[00-15-5D-03-F6-00]
 + Ipv4: Src = 10.10.10.20, Dest = 10.10.10.10, Next Protocol = TCP, Packet ID = 26363, Total IP Length = 236
-+ Tcp: Flags=...AP..., SrcPort=1433, DstPort=49299, PayloadLen=196, Seq=329198912 - 329199108, Ack=2243178543, Win=8212 (scale factor 0x8) = 
++ Tcp: Flags=...AP..., SrcPort=1433, DstPort=49299, PayloadLen=196, Seq=329198912 - 329199108, Ack=2243178543, Win=8212 (scale factor 0x8) =
 - Tds: Response, Version = 7.4 (0x74000004), SPID = 0, PacketID = 0, Flags=...AP..., SrcPort=1433, DstPort=49299, PayloadLen=196, Seq=3291989
   + PacketHeader: SPID = 0, Size = 196, PacketID = 0, Window = 0
-  - TDSServerResponseData: 
+  - TDSServerResponseData:
      TokenType: SSPI   <---- SSPI Token
-   + TokenData: 
+   + TokenData:
 ```
 
 #### Step 6. Login confirmation and acknowledgment
@@ -386,7 +387,7 @@ The server responds with a TDS packet confirming the login and acknowledging the
 ```output
 Frame Time Offset  Source IP    Dest IP      Description
 ----- ------------ ------------ ------------ ---------------------------------------------------------------------------------------------------
-76100 1182.0274716 10.10.10.55  10.10.10.120 TDS:Response, Version = 7.3 (0x730a0003), SPID = 315, PacketID = 1, Flags=...AP..., SrcPort=57139, 
+76100 1182.0274716 10.10.10.55  10.10.10.120 TDS:Response, Version = 7.3 (0x730a0003), SPID = 315, PacketID = 1, Flags=...AP..., SrcPort=57139,
 ```
 
 #### Step 7. Execute a command

@@ -1,9 +1,9 @@
 ---
-title: Memory management architecture guide
+title: Memory Management Architecture Guide
 description: Learn about memory management architecture in SQL Server, including changes to memory management in previous versions.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 09/25/2024
+ms.date: 09/07/2025
 ms.service: sql
 ms.subservice: supportability
 ms.topic: conceptual
@@ -45,7 +45,7 @@ One of the primary design goals of all database software is to minimize disk I/O
 - Keep the buffer pool from becoming so large that the entire system is low on memory.
 - Minimize physical I/O to the database files by maximizing the size of the buffer pool.
 
-In a heavily loaded system, some large queries that require a large amount of memory to run can't get the minimum amount of requested memory, and receive a time-out error while waiting for memory resources. To resolve this, increase the [query wait Option](../database-engine/configure-windows/configure-the-query-wait-server-configuration-option.md). For a parallel query, consider reducing the [max degree of parallelism Option](../database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md).
+In a heavily loaded system, some large queries that require a large amount of memory to run can't get the minimum amount of requested memory, and receive a time-out error while waiting for memory resources. To resolve this, increase the [query wait Option](../database-engine/configure-windows/configure-the-query-wait-server-configuration-option.md). For a parallel query, consider reducing the [max degree of parallelism](../database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md) value.
 
 In a heavily loaded system under memory pressure, queries with merge join, sort, and bitmap in the query plan can drop the bitmap when the queries don't get the minimum required memory for the bitmap. This can affect the query performance and if the sorting process can't fit in memory, it can increase the usage of worktables in `tempdb` database, causing `tempdb` to grow. To resolve this problem, add physical memory, or tune the queries to use a different and faster query plan.
 
@@ -57,7 +57,7 @@ All SQL Server editions support conventional memory on 64-bit platform. The SQL 
 
 By using [Address Windowing Extensions](/windows/win32/memory/address-windowing-extensions) (AWE) and the *Lock pages in memory* (LPIM) privilege required by AWE, you can keep most of SQL Server process memory *locked* in physical RAM under low virtual memory conditions. This happens in both 32-bit and 64-bit AWE allocations. The locking of memory occurs because AWE memory doesn't go through the Virtual Memory Manager in Windows, which controls paging of memory. The AWE memory allocation API requires the *Lock pages in memory* (SeLockMemoryPrivilege) privilege; see [AllocateUserPhysicalPages notes](/windows/win32/api/memoryapi/nf-memoryapi-allocateuserphysicalpages#remarks). Therefore, the main benefit of using the AWE API is to keep most of the memory resident in RAM if there's memory pressure on the system. For information on how to allow SQL Server to use AWE, see [Enable the Lock pages in memory option (Windows)](../database-engine/configure-windows/enable-the-lock-pages-in-memory-option-windows.md).
 
-If LPIM is granted, we strongly recommend that you set **max server memory (MB)** to a specific value, rather than leaving the default of 2,147,483,647 megabytes (MB). For more information, see [Server Memory Server Configuration: Set options manually](../database-engine/configure-windows/server-memory-server-configuration-options.md#manually) and [Lock pages in memory (LPIM)](../database-engine/configure-windows/server-memory-server-configuration-options.md#lock-pages-in-memory-lpim).
+If LPIM is granted, we strongly recommend that you set `max server memory (MB)` to a specific value, rather than leaving the default of 2,147,483,647 megabytes (MB). For more information, see [Server memory configuration options: Set options manually](../database-engine/configure-windows/server-memory-server-configuration-options.md#manually) and [Lock pages in memory (LPIM)](../database-engine/configure-windows/server-memory-server-configuration-options.md#lock-pages-in-memory-lpim).
 
 If LPIM isn't enabled, SQL Server switches to using conventional memory and in cases of OS memory exhaustion, and the [MSSQLSERVER_17890] error(errors-events/mssqlserver-17890-database-engine-error.md) might be reported in the error log. The error resembles the following example:
 
@@ -71,19 +71,23 @@ A significant part of SQL Server process memory has been paged out. This may res
 
 In older versions of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)], memory allocation was done using five different mechanisms:
 
-- **Single-Page Allocator (SPA)**, including only memory allocations that were less than, or equal to 8 KB in the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] process. The **max server memory (MB)** and **min server memory (MB)** configuration options determined the limits of physical memory that the SPA consumed. The Buffer Pool was simultaneously the mechanism for SPA, and the largest consumer of single-page allocations.
+- **Single-Page Allocator (SPA)**, including only memory allocations that were less than, or equal to 8 KB in the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] process. The `max server memory (MB)` and `min server memory (MB)` configuration options determined the limits of physical memory that the SPA consumed. The Buffer Pool was simultaneously the mechanism for SPA, and the largest consumer of single-page allocations.
+
 - **Multi-Page Allocator (MPA)**, for memory allocations that request more than 8 KB.
+
 - **CLR Allocator**, including the SQL CLR heaps and its global allocations that are created during CLR initialization.
+
 - Memory allocations for **[thread stacks](../relational-databases/memory-management-architecture-guide.md#stacksizes)** in the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] process.
+
 - **Direct Windows allocations (DWA)**, for memory allocation requests made directly to Windows. These include Windows heap usage and direct virtual allocations made by modules that are loaded into the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] process. Examples of such memory allocation requests include allocations from extended stored procedure DLLs, objects that are created by using Automation procedures (`sp_OA` calls), and allocations from linked server providers.
 
-Starting with [!INCLUDE [ssSQL11](../includes/sssql11-md.md)], Single-Page allocations, Multi-Page allocations and CLR allocations are all consolidated into an **"Any size" Page Allocator**, and included in memory limits controlled by **max server memory (MB)** and **min server memory (MB)** configuration options. This change provided a more accurate sizing ability for all memory requirements that go through the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] memory manager.
+Starting with [!INCLUDE [ssSQL11](../includes/sssql11-md.md)], Single-Page allocations, Multi-Page allocations and CLR allocations are all consolidated into an **"Any size" Page Allocator**, and included in memory limits controlled by `max server memory (MB)` and `min server memory (MB)` configuration options. This change provided a more accurate sizing ability for all memory requirements that go through the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] memory manager.
 
 > [!IMPORTANT]  
-> Carefully review your current **max server memory (MB)** and **min server memory (MB)** configurations after you upgrade to [!INCLUDE [ssSQL11](../includes/sssql11-md.md)] and later versions. This is because starting in [!INCLUDE [ssSQL11](../includes/sssql11-md.md)], such configurations now include and account for more memory allocations compared to earlier versions.
+> Carefully review your current `max server memory (MB)` and `min server memory (MB)` configurations after you upgrade to [!INCLUDE [ssSQL11](../includes/sssql11-md.md)] and later versions. This is because starting in [!INCLUDE [ssSQL11](../includes/sssql11-md.md)], such configurations now include and account for more memory allocations compared to earlier versions.
 > These changes apply to both 32-bit and 64-bit versions of [!INCLUDE [ssSQL11](../includes/sssql11-md.md)] and [!INCLUDE [ssSQL14](../includes/sssql14-md.md)], and 64-bit versions of [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] and later versions.
 
-The following table indicates whether a specific type of memory allocation is controlled by the **max server memory (MB)** and **min server memory (MB)** configuration options:
+The following table indicates whether a specific type of memory allocation is controlled by the `max server memory (MB)` and `min server memory (MB)` configuration options:
 
 | Type of memory allocation | [!INCLUDE [ssVersion2005](../includes/ssversion2005-md.md)], [!INCLUDE [sql2008-md](../includes/sql2008-md.md)] and [!INCLUDE [sql2008r2-md](../includes/sql2008r2-md.md)] | Starting with [!INCLUDE [ssSQL11](../includes/sssql11-md.md)] |
 | --- | --- | --- |
@@ -95,9 +99,9 @@ The following table indicates whether a specific type of memory allocation is co
 
 ### SQL Server might commit memory over the max server memory setting
 
-Starting with [!INCLUDE [ssSQL11](../includes/sssql11-md.md)], [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] might allocate more memory than the value specified in the **max server memory (MB)** setting. This behavior can occur when the **Total Server Memory (KB)** value has already reached the **Target Server Memory (KB)** setting, as specified by **max server memory (MB)**. If there's insufficient contiguous free memory to meet the demand of multi-page memory requests (more than 8 KB) because of memory fragmentation, [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] can perform over-commitment instead of rejecting the memory request.
+Starting with [!INCLUDE [ssSQL11](../includes/sssql11-md.md)], [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] might allocate more memory than the value specified in the `max server memory (MB)` setting. This behavior can occur when the **Total Server Memory (KB)** value has already reached the **Target Server Memory (KB)** setting, as specified by `max server memory (MB)`. If there's insufficient contiguous free memory to meet the demand of multi-page memory requests (more than 8 KB) because of memory fragmentation, [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] can perform over-commitment instead of rejecting the memory request.
 
-As soon as this allocation is performed, the Resource Monitor background task starts to signal all memory consumers to release the allocated memory, and tries to bring the **Total Server Memory (KB)** value below the **Target Server Memory (KB)** specification. Therefore, [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] memory usage could briefly exceed the **max server memory (MB)** setting. In this situation, the **Total Server Memory (KB)** performance counter reading exceeds the **max server memory (MB)** and **Target Server Memory (KB)** settings.
+As soon as this allocation is performed, the Resource Monitor background task starts to signal all memory consumers to release the allocated memory, and tries to bring the **Total Server Memory (KB)** value below the **Target Server Memory (KB)** specification. Therefore, [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] memory usage could briefly exceed the `max server memory (MB)` setting. In this situation, the **Total Server Memory (KB)** performance counter reading exceeds the `max server memory (MB)` and **Target Server Memory (KB)** settings.
 
 This behavior is typically observed during the following operations:
 
@@ -116,11 +120,11 @@ If you observe this behavior frequently, consider using [Trace Flag 8121](../t-s
 
 In older versions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] memory manager set aside a part of the process virtual address space (VAS) for use by the **Multi-Page Allocator (MPA)**, **CLR Allocator**, memory allocations for **thread stacks** in the SQL Server process, and **Direct Windows allocations (DWA)**. This part of the virtual address space is also known as "Mem-To-Leave" or "non-Buffer Pool" region.
 
-The virtual address space that is reserved for these allocations is determined by the **memory_to_reserve** configuration option. The default value that [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] uses is 256 MB.
+The virtual address space that is reserved for these allocations is determined by the `memory_to_reserve` configuration option. The default value that [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] uses is 256 MB.
 
-Because the "any size" page allocator also handles allocations greater than 8 KB, the **memory_to_reserve** value doesn't include the multi-page allocations. Except for this change, everything else remains the same with this configuration option.
+Because the "any size" page allocator also handles allocations greater than 8 KB, the `memory_to_reserve` value doesn't include the multi-page allocations. Except for this change, everything else remains the same with this configuration option.
 
-The following table indicates whether a specific type of memory allocation falls into the **memory_to_reserve** region of the virtual address space for the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] process:
+The following table indicates whether a specific type of memory allocation falls into the `memory_to_reserve` region of the virtual address space for the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] process:
 
 | Type of memory allocation | [!INCLUDE [ssVersion2005](../includes/ssversion2005-md.md)], [!INCLUDE [sql2008-md](../includes/sql2008-md.md)] and [!INCLUDE [sql2008r2-md](../includes/sql2008r2-md.md)] | Starting with [!INCLUDE [ssSQL11](../includes/sssql11-md.md)] |
 | --- | --- | --- |
@@ -136,9 +140,9 @@ The default memory management behavior of the [!INCLUDE [ssDEnoversion](../inclu
 
 When [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] is using memory dynamically, it queries the system periodically to determine the amount of free memory. Maintaining this free memory prevents the operating system (OS) from paging. If less memory is free, [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] releases memory to the OS. If more memory is free, [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] can allocate more memory. [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] adds memory only when its workload requires more memory; a server at rest doesn't increase the size of its virtual address space. If you notice that Task Manager and Performance Monitor show a steady decrease in available memory when [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] is using dynamic memory management, this is the default behavior and shouldn't be perceived as a memory leak.
 
-**[Server memory configuration options](../database-engine/configure-windows/server-memory-server-configuration-options.md)** controls the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] memory allocation, compile memory, all caches (including the buffer pool), [query execution memory grants](#effects-of-min-memory-per-query), [lock manager memory](#memory-used-by-sql-server-objects-specifications), and CLR<sup>1</sup> memory (essentially any memory clerk found in **[sys.dm_os_memory_clerks](system-dynamic-management-views/sys-dm-os-memory-clerks-transact-sql.md)**).
+**[Server memory configuration options](../database-engine/configure-windows/server-memory-server-configuration-options.md)** controls the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] memory allocation, compile memory, all caches (including the buffer pool), [query execution memory grants](#effects-of-min-memory-per-query), [lock manager memory](#memory-used-by-sql-server-objects-specifications), and CLR<sup>1</sup> memory (essentially any memory clerk found in [sys.dm_os_memory_clerks](system-dynamic-management-views/sys-dm-os-memory-clerks-transact-sql.md)).
 
-<sup>1</sup> CLR memory is managed under max_server_memory allocations starting with [!INCLUDE [ssSQL11](../includes/sssql11-md.md)].
+<sup>1</sup> CLR memory is managed under `max server memory (MB)` allocations starting with [!INCLUDE [ssSQL11](../includes/sssql11-md.md)].
 
 The following query returns information about currently allocated memory:
 
@@ -160,9 +164,9 @@ FROM sys.dm_os_process_memory;
 
 ### Stack sizes
 
-Memory for thread stacks <sup>1</sup>, CLR <sup>2</sup>, extended procedure .dll files, the OLE DB providers referenced by distributed queries, automation objects referenced in [!INCLUDE [tsql](../includes/tsql-md.md)] statements, and any memory allocated by a non [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] DLL, are *not* controlled by **max server memory (MB)**.
+Memory for thread stacks <sup>1</sup>, CLR <sup>2</sup>, extended procedure .dll files, the OLE DB providers referenced by distributed queries, automation objects referenced in [!INCLUDE [tsql](../includes/tsql-md.md)] statements, and any memory allocated by a non [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] DLL, are *not* controlled by `max server memory (MB)`.
 
-<sup>1</sup> Refer to the article on how to [Configure the max worker threads (server configuration option)](../database-engine/configure-windows/configure-the-max-worker-threads-server-configuration-option.md), for information on the calculated default worker threads for a given number of affinitized CPUs in the current host. [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] stack sizes are as follows:
+<sup>1</sup> Refer to [Server configuration: max worker threads](../database-engine/configure-windows/configure-the-max-worker-threads-server-configuration-option.md), for information on the calculated default worker threads for a given number of affinitized CPUs in the current host. [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] stack sizes are as follows:
 
 | SQL Server architecture | OS architecture | Stack size |
 | --- | --- | --- |
@@ -171,28 +175,28 @@ Memory for thread stacks <sup>1</sup>, CLR <sup>2</sup>, extended procedure .dll
 | x64 (64-bit) | x64 (64-bit) | 2,048 KB |
 | IA64 (Itanium) | IA64 (Itanium) | 4,096 KB |
 
-<sup>2</sup> CLR memory is managed under max_server_memory allocations starting with [!INCLUDE [ssSQL11](../includes/sssql11-md.md)].
+<sup>2</sup> CLR memory is managed under `max server memory (MB)` allocations starting with [!INCLUDE [ssSQL11](../includes/sssql11-md.md)].
 
-[!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] uses the memory notification API **QueryMemoryResourceNotification** to determine when the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] memory manager might allocate memory and release memory.
+[!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] uses the memory notification API `QueryMemoryResourceNotification` to determine when the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] memory manager might allocate memory and release memory.
 
 When [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] starts, it computes the size of virtual address space for the buffer pool based on several parameters such as amount of physical memory on the system, number of server threads and various startup parameters. [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] reserves the computed amount of its process virtual address space for the buffer pool, but it acquires (commits) only the required amount of physical memory for the current load.
 
-The instance then continues to acquire memory as needed to support the workload. As more users connect and run queries, [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] acquires more physical memory on demand. A [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] instance continues to acquire physical memory until it either reaches its **max server memory (MB)** allocation target or the OS indicates there's no longer an excess of free memory; it frees memory when it's more than the min server memory setting, and the OS indicates that there's a shortage of free memory.
+The instance then continues to acquire memory as needed to support the workload. As more users connect and run queries, [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] acquires more physical memory on demand. A [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] instance continues to acquire physical memory until it either reaches its `max server memory (MB)` allocation target or the OS indicates there's no longer an excess of free memory; it frees memory when it's more than the min server memory setting, and the OS indicates that there's a shortage of free memory.
 
 As other applications are started on a computer running an instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)], they consume memory and the amount of free physical memory drops below the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] target. The instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] adjusts its memory consumption. If another application is stopped and more memory becomes available, the instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] increases the size of its memory allocation. [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] can free and acquire several megabytes of memory each second, allowing it to quickly adjust to memory allocation changes.
 
 ## Effects of min and max server memory
 
-The *min server memory* and *max server memory* configuration options establish upper and lower limits to the amount of memory used by the buffer pool and other caches of the [!INCLUDE [ssDE-md](../includes/ssde-md.md)]. The buffer pool doesn't immediately acquire the amount of memory specified in min server memory. The buffer pool starts with only the memory required to initialize. As the [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] workload increases, it keeps acquiring the memory required to support the workload. The buffer pool doesn't free any of the acquired memory until it reaches the amount specified in min server memory. Once min server memory is reached, the buffer pool then uses the standard algorithm to acquire and free memory as needed. The only difference is that the buffer pool never drops its memory allocation below the level specified in min server memory, and never acquires more memory than the level specified in **max server memory (MB)**.
+The *min server memory* and *max server memory* configuration options establish upper and lower limits to the amount of memory used by the buffer pool and other caches of the [!INCLUDE [ssDE-md](../includes/ssde-md.md)]. The buffer pool doesn't immediately acquire the amount of memory specified in min server memory. The buffer pool starts with only the memory required to initialize. As the [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] workload increases, it keeps acquiring the memory required to support the workload. The buffer pool doesn't free any of the acquired memory until it reaches the amount specified in min server memory. Once min server memory is reached, the buffer pool then uses the standard algorithm to acquire and free memory as needed. The only difference is that the buffer pool never drops its memory allocation below the level specified in min server memory, and never acquires more memory than the level specified in `max server memory (MB)`.
 
 > [!NOTE]  
-> [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] as a process acquires more memory than specified by **max server memory (MB)** option. Both internal and external components can allocate memory outside of the buffer pool, which consumes additional memory, but the memory allocated to the buffer pool usually still represents the largest portion of memory consumed by [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)].
+> [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] as a process acquires more memory than specified by `max server memory (MB)` option. Both internal and external components can allocate memory outside of the buffer pool, which consumes additional memory, but the memory allocated to the buffer pool usually still represents the largest portion of memory consumed by [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)].
 
-The amount of memory acquired by the [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] is entirely dependent on the workload placed on the instance. A [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] instance that isn't processing many requests might never reach the value specified by **min server memory**.
+The amount of memory acquired by the [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] is entirely dependent on the workload placed on the instance. A [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] instance that isn't processing many requests might never reach the value specified by `min server memory (MB)`.
 
-If the same value is specified for both min server memory and **max server memory (MB)**, then once the memory allocated to the [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] reaches that value, the [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] stops dynamically freeing and acquiring memory for the buffer pool.
+If the same value is specified for both min server memory and `max server memory (MB)`, then once the memory allocated to the [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] reaches that value, the [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] stops dynamically freeing and acquiring memory for the buffer pool.
 
-If an instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] is running on a computer where other applications are frequently stopped or started, the allocation and deallocation of memory by the instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] can slow the startup times of other applications. Also, if [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] is one of several server applications running on a single computer, the system administrators should control the amount of memory allocated to [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]. In these cases, you can use the min server memory and **max server memory (MB)** options to control how much memory [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] can use. The **min server memory** and **max server memory** options are specified in megabytes. For more information including recommendations on how to set these memory configurations, see [Server memory configuration options](../database-engine/configure-windows/server-memory-server-configuration-options.md).
+If an instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] is running on a computer where other applications are frequently stopped or started, the allocation and deallocation of memory by the instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] can slow the startup times of other applications. Also, if [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] is one of several server applications running on a single computer, the system administrators should control the amount of memory allocated to [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]. In these cases, you can use the min server memory and `max server memory (MB)` options to control how much memory [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] can use. The `min server memory (MB)` and `max server memory (MB)` options are specified in megabytes. For more information including recommendations on how to set these memory configurations, see [Server memory configuration options](../database-engine/configure-windows/server-memory-server-configuration-options.md).
 
 ## Memory used by SQL Server objects specifications
 
@@ -207,15 +211,15 @@ When multiple active result sets (MARS) are enabled, the user connection is appr
 
 ## Effects of min memory per query
 
-The **min memory per query** configuration option establishes the minimum amount of memory (in kilobytes) that will be allocated for the execution of a query. This is also known as the minimum memory grant. All queries must wait until the minimum memory requested can be secured, before execution can start, or until the value specified in the query wait server configuration option is exceeded. The wait type that is accumulated in this scenario is `RESOURCE_SEMAPHORE`.
+The `min memory per query` configuration option establishes the minimum amount of memory (in kilobytes) that will be allocated for the execution of a query. This is also known as the minimum memory grant. All queries must wait until the minimum memory requested can be secured, before execution can start, or until the value specified in the query wait server configuration option is exceeded. The wait type that is accumulated in this scenario is `RESOURCE_SEMAPHORE`.
 
 > [!IMPORTANT]  
-> Don't set the **min memory per query** server configuration option too high, especially on very busy systems, because doing so could lead to:
->  
+> Don't set the `min memory per query` server configuration option too high, especially on very busy systems, because doing so could lead to:
+>
 > - Increased competition for memory resources.
 > - Decreased concurrency by increasing the amount of memory for every single query, even if the required memory at runtime is lower that this configuration.
->  
-> For recommendations on using this configuration, see [Configure the min memory per query Server Configuration Option](../database-engine/configure-windows/configure-the-min-memory-per-query-server-configuration-option.md#Recommendations).
+>
+> For recommendations on using this configuration, see [Server configuration: min memory per query](../database-engine/configure-windows/configure-the-min-memory-per-query-server-configuration-option.md#recommendations).
 
 ### Memory grant considerations
 
@@ -240,9 +244,9 @@ For a detailed explanation of disk I/O in [!INCLUDE [ssnoversion-md](../includes
 
 ### How buffer management works
 
-A buffer is an 8-KB page in memory, the same size as a data or index page. Thus, the buffer cache is divided into 8-KB pages. The buffer manager manages the functions for reading data or index pages from the database disk files into the buffer cache, and writing modified pages back to disk. A page remains in the buffer cache until the buffer manager needs the buffer area to read in more data. Data is written back to disk only if it's modified. Data in the buffer cache can be modified multiple times before being written back to disk. For more information, see [Reading Pages](reading-pages.md) and [Writing Pages](writing-pages.md).
+A buffer is an 8-KB page in memory, the same size as a data or index page. Thus, the buffer cache is divided into 8-KB pages. The buffer manager manages the functions for reading data or index pages from the database disk files into the buffer cache, and writing modified pages back to disk. A page remains in the buffer cache until the buffer manager needs the buffer area to read in more data. Data is written back to disk only if it's modified. Data in the buffer cache can be modified multiple times before being written back to disk. For more information, see [Read data pages in the Database Engine](reading-pages.md) and [Write pages in the Database Engine](writing-pages.md).
 
-When [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] starts, it computes the size of virtual address space for the buffer cache based on several parameters such as the amount of physical memory on the system, the configured number of maximum server threads, and various startup parameters. [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] reserves this computed amount of its process virtual address space (called the memory target) for the buffer cache, but it acquires (commits) only the required amount of physical memory for the current load. You can query the **committed_target_kb** and **committed_kb** columns in the [sys.dm_os_sys_info](system-dynamic-management-views/sys-dm-os-sys-info-transact-sql.md) catalog view to return the number of pages reserved as the memory target and the number of pages currently committed in the buffer cache, respectively.
+When [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] starts, it computes the size of virtual address space for the buffer cache based on several parameters such as the amount of physical memory on the system, the configured number of maximum server threads, and various startup parameters. [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] reserves this computed amount of its process virtual address space (called the memory target) for the buffer cache, but it acquires (commits) only the required amount of physical memory for the current load. You can query the `committed_target_kb` and `committed_kb` columns in the [sys.dm_os_sys_info](system-dynamic-management-views/sys-dm-os-sys-info-transact-sql.md) catalog view to return the number of pages reserved as the memory target and the number of pages currently committed in the buffer cache, respectively.
 
 The interval between [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] startup and when the buffer cache obtains its memory target is called ramp-up. During this time, read requests fill the buffers as needed. For example, a single 8-KB page read request fills a single buffer page. This means the ramp-up depends on the number and type of client requests. Ramp-up is expedited by transforming single page read requests into aligned eight page requests (making up one extent). This allows the ramp-up to finish much faster, especially on machines with a lot of memory. For more information about pages and extents, see [Pages and Extents Architecture Guide](../relational-databases/pages-and-extents-architecture-guide.md#pages-and-extents).
 
@@ -261,7 +265,7 @@ The buffer manager supports the following features:
 - The buffer manager supports *large pages* on 64-bit platforms. The page size is specific to the version of Windows.
 
   > [!NOTE]  
-  > Prior to [!INCLUDE [ssSQL11](../includes/sssql11-md.md)], enabling large pages in [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] requires [trace flag 834](../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md).
+  > Prior to [!INCLUDE [ssSQL11](../includes/sssql11-md.md)], enabling large pages in [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] requires [Trace Flag 834](../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md).
 
 - The buffer manager provides extra diagnostics that are exposed through dynamic management views. You can use these views to monitor various operating system resources that are specific to [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]. For example, you can use the [sys.dm_os_buffer_descriptors](system-dynamic-management-views/sys-dm-os-buffer-descriptors-transact-sql.md) view to monitor the pages in the buffer cache.
 
@@ -290,6 +294,7 @@ The [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] implements a fra
 Two ring buffers hold information relevant to dynamic memory management:
 
 - The Resource Monitor ring buffer, which tracks Resource Monitor activity like was memory pressure signaled or not. This ring buffer has status information depending on the current condition of `RESOURCE_MEMPHYSICAL_HIGH`, `RESOURCE_MEMPHYSICAL_LOW`, `RESOURCE_MEMPHYSICAL_STEADY`, or `RESOURCE_MEMVIRTUAL_LOW`.
+
 - The Memory Broker ring buffer, which contains records of memory notifications for each Resource Governor resource pool. As internal memory pressure is detected, low memory notification is turned on for components that allocate memory, to trigger actions meant to balance the memory between caches.
 
 Memory brokers monitor the demand consumption of memory by each component and then based on the information collected, it calculates and optimal value of memory for each of these components. There's a set of brokers for each Resource Governor resource pool. This information is then broadcast to each of the components, which grow or shrink their usage as required.
@@ -342,7 +347,7 @@ However, the use of mutexes can lead to contention if many threads are allocatin
 In most cases, using a single partition suffices, but in some scenarios this can lead to contention, which can be prevented only with a highly partitioned memory object. It isn't desirable to partition each memory object as more partitions can result in other inefficiencies and increase memory fragmentation.
 
 > [!NOTE]  
-> Before [!INCLUDE [sssql16-md](../includes/sssql16-md.md)], trace flag 8048 could be used to force a node-based PMO to become a CPU-based PMO. Starting with [!INCLUDE [ssSQL14](../includes/sssql14-md.md)] SP2 and [!INCLUDE [sssql16-md](../includes/sssql16-md.md)], this behavior is dynamic and controlled by the engine.
+> Before [!INCLUDE [sssql16-md](../includes/sssql16-md.md)], Trace Flag 8048 could be used to force a node-based PMO to become a CPU-based PMO. Starting with [!INCLUDE [ssSQL14](../includes/sssql14-md.md)] SP2 and [!INCLUDE [sssql16-md](../includes/sssql16-md.md)], this behavior is dynamic and controlled by the engine.
 
 Starting with [!INCLUDE [ssSQL14](../includes/sssql14-md.md)] SP2 and [!INCLUDE [sssql16-md](../includes/sssql16-md.md)], the [!INCLUDE [ssDE-md](../includes/ssde-md.md)] can dynamically detect contention on a specific `CMemThread` object and promote the object to a per-node or a per-CPU based implementation. Once promoted, the PMO remains promoted until the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] process is restarted. `CMemThread` contention can be detected by the presence of high `CMEMTHREAD` waits in the [sys.dm_os_wait_stats](system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql.md) DMV, and by observing the [sys.dm_os_memory_objects](system-dynamic-management-views/sys-dm-os-memory-objects-transact-sql.md) DMV columns `contention_factor`, `partition_type`, `exclusive_allocations_count`, and `waiting_tasks_count`.
 
@@ -350,8 +355,8 @@ Starting with [!INCLUDE [ssSQL14](../includes/sssql14-md.md)] SP2 and [!INCLUDE 
 
 - [SQL Server I/O fundamentals](sql-server-storage-guide.md)
 - [Server memory configuration options](../database-engine/configure-windows/server-memory-server-configuration-options.md)
-- [Reading Pages](reading-pages.md)
-- [Writing Pages](writing-pages.md)
+- [Read data pages in the Database Engine](reading-pages.md)
+- [Write pages in the Database Engine](writing-pages.md)
 - [Soft-NUMA (SQL Server)](../database-engine/configure-windows/soft-numa-sql-server.md)
 - [Requirements for using memory-optimized tables](in-memory-oltp/requirements-for-using-memory-optimized-tables.md)
 - [Troubleshoot out of memory or low memory issues in SQL Server](/troubleshoot/sql/performance/troubleshoot-memory-issues)

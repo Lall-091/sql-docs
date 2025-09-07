@@ -3,7 +3,7 @@ title: "Pages and Extents Architecture Guide"
 description: "This guide describes the data structures that are used to manage pages and extents in all versions of SQL Server."
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 06/12/2024
+ms.date: 09/07/2025
 ms.service: sql
 ms.topic: conceptual
 helpviewer_keywords:
@@ -33,14 +33,14 @@ The following table shows the page types used in the data files of a [!INCLUDE [
 
 | Page type | Contents |
 | --- | --- |
-| Data | Data rows with all data, except **text**, **ntext**, **image**, **nvarchar(max)**, **varchar(max)**, **varbinary(max)**, and **xml** data, when text in row is set to ON. |
+| Data | Data rows with all data, except **text**, **ntext**, **image**, **nvarchar(max)**, **varchar(max)**, **varbinary(max)**, and **xml** data, when text in row is set to `ON`. |
 | Index | Index entries. |
 | Text/image | Large object data types: **text**, **ntext**, **image**, **nvarchar(max)**, **varchar(max)**, **varbinary(max)**, and **xml** data.<br /><br />Variable length columns when the data row exceeds 8 KB: **varchar**, **nvarchar**, **varbinary**, and **sql_variant**. |
 | Global Allocation Map (GAM)<br /><br />Shared Global Allocation Map (SGAM) | Information about whether extents are allocated. |
 | Page Free Space (PFS) | Information about page allocation and free space available on pages. |
 | Index Allocation Map (IAM) | Information about extents used by a table or index per allocation unit. |
-| Bulk Changed Map (BCM) | Information about extents modified by bulk operations since the last BACKUP LOG statement per allocation unit. |
-| Differential Changed Map (DCM) | Information about extents that have changed since the last BACKUP DATABASE statement per allocation unit. |
+| Bulk Changed Map (BCM) | Information about extents modified by bulk operations since the last `BACKUP LOG` statement per allocation unit. |
+| Differential Changed Map (DCM) | Information about extents that have changed since the last `BACKUP DATABASE` statement per allocation unit. |
 
 > [!NOTE]  
 > Log files don't contain pages. They contain a series of log records which don't have a fixed size.
@@ -65,7 +65,7 @@ A row can't reside on multiple pages, and can overflow if the combined size of v
 
   Querying and performing other select operations, such as sorts or joins on large records that contain row-overflow data slows processing time, because these records are processed synchronously instead of asynchronously.
 
-  Therefore, when you design a table with multiple **varchar**, **nvarchar**, **varbinary**, or **sql_variant**, or CLR user-defined type columns, consider the percentage of rows that are likely to flow over and the frequency with which this overflow data is likely to be queried. If there are likely to be frequent queries on many rows of row-overflow data, consider normalizing the table so that some columns are moved to another table. This can then be queried in an asynchronous JOIN operation.
+  Therefore, when you design a table with multiple **varchar**, **nvarchar**, **varbinary**, or **sql_variant**, or CLR user-defined type columns, consider the percentage of rows that are likely to flow over and the frequency with which this overflow data is likely to be queried. If there are likely to be frequent queries on many rows of row-overflow data, consider normalizing the table so that some columns are moved to another table. This can then be queried in an asynchronous `JOIN` operation.
 
 - The length of individual columns must still fall within the limit of 8,000 bytes for **varchar**, **nvarchar**, **varbinary**, or **sql_variant**, and CLR user-defined type columns. Only their combined lengths can exceed the 8,060-byte row limit of a table.
 
@@ -95,9 +95,9 @@ Up to, and including, [!INCLUDE [ssSQL14](../includes/sssql14-md.md)], the [!INC
 Starting with [!INCLUDE [sssql15-md](../includes/sssql16-md.md)], the default for most allocations in a user database and `tempdb` is to use uniform extents, except for allocations belonging to the first eight pages of an [IAM chain](#IAM). Allocations for `master`, `msdb`, and `model` databases still retain the previous behavior.
 
 > [!NOTE]  
-> In [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], up to and including [!INCLUDE [ssSQL14](../includes/sssql14-md.md)], you can use trace flag (TF) 1118 to change the default allocation to *always* use uniform extents. For more information about this trace flag, see [DBCC TRACEON - Trace Flags](../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md#tf1118).  
->  
-> Starting with [!INCLUDE [sssql16-md](../includes/sssql16-md.md)], the functionality provided by TF 1118 is automatically enabled for `tempdb` and all user databases. For user databases, this behavior is controlled by the `SET MIXED_PAGE_ALLOCATION` option of `ALTER DATABASE`, with the default value set to OFF, and TF 1118 has no effect. For more information, see [ALTER DATABASE SET options](../t-sql/statements/alter-database-transact-sql-set-options.md).
+> In [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], up to and including [!INCLUDE [ssSQL14](../includes/sssql14-md.md)], you can use Trace Flag (TF) 1118 to change the default allocation to *always* use uniform extents. For more information about this trace flag, see [Trace Flag 1118](../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md#tf1118).
+>
+> Starting with [!INCLUDE [sssql16-md](../includes/sssql16-md.md)], the functionality provided by TF 1118 is automatically enabled for `tempdb` and all user databases. For user databases, this behavior is controlled by the `SET MIXED_PAGE_ALLOCATION` option of `ALTER DATABASE`, with the default value set to `OFF`, and TF 1118 has no effect. For more information, see [ALTER DATABASE SET options](../t-sql/statements/alter-database-transact-sql-set-options.md).
 
 Starting with [!INCLUDE [ssSQL11](../includes/sssql11-md.md)], the `sys.dm_db_database_page_allocations` system function can report page allocation information for a database, table, index, and partition.
 
@@ -161,7 +161,9 @@ The following illustration shows the sequence of pages used by the [!INCLUDE [ss
 
 :::image type="content" source="media/pages-and-extents-architecture-guide/manage-extents.svg" alt-text="Diagram showing the sequence of pages for managing extents.":::
 
-## <a id="IAM"></a> Manage space used by objects
+<a id="IAM"></a>
+
+## Manage space used by objects
 
 An **Index Allocation Map (IAM)** page maps the extents in a 4-GB part of a database file used by an allocation unit. An allocation unit is one of three types:
 
@@ -196,7 +198,9 @@ When the [!INCLUDE [ssde-md](../includes/ssde-md.md)] has to insert a new row an
 
 The [!INCLUDE [ssde-md](../includes/ssde-md.md)] allocates a new extent to an allocation unit only when it can't quickly find a page in an existing extent with sufficient space to hold the row being inserted.
 
-### <a id="ProportionalFill"></a> Proportional fill allocation
+<a id="ProportionalFill"></a>
+
+### Proportional fill allocation
 
 The [!INCLUDE [ssde-md](../includes/ssde-md.md)] allocates extents from those available in the filegroup using a *proportional fill allocation* algorithm. In the same filegroup with two files, if one file has double the free space as the other, two pages will be allocated from the file with the available space for every one page allocated from the other file. This means that every file in a filegroup should have a similar percentage of space used.
 
@@ -226,5 +230,5 @@ The interval between DCM pages and BCM pages is the same as the interval between
 - [sys.allocation_units (Transact-SQL)](system-catalog-views/sys-allocation-units-transact-sql.md)
 - [Heaps (Tables without Clustered Indexes)](indexes/heaps-tables-without-clustered-indexes.md#heap-structures)
 - [sys.dm_db_page_info (Transact-SQL)](system-dynamic-management-views/sys-dm-db-page-info-transact-sql.md)
-- [Reading Pages](reading-pages.md)
-- [Writing Pages](writing-pages.md)
+- [Read data pages in the Database Engine](reading-pages.md)
+- [Write pages in the Database Engine](writing-pages.md)

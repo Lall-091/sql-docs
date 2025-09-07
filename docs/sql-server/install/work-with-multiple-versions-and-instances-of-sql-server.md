@@ -1,13 +1,14 @@
 ---
-title: "Work with multiple versions and instances"
+title: "Work with Multiple Versions and Instances"
 description: You can install multiple instances of SQL Server or install SQL Server on a computer where earlier SQL Server versions are already installed.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 09/27/2023
+ms.date: 09/07/2025
 ms.service: sql
 ms.subservice: install
-ms.custom: linux-related-content
 ms.topic: conceptual
+ms.custom:
+  - linux-related-content
 helpviewer_keywords:
   - "concurrent installations [SQL Server]"
   - "versions [SQL Server], multiple"
@@ -36,7 +37,7 @@ The following [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]-related
 
 <sup>1</sup> Starting with [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)], [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Reporting Services (SSRS) is installed separately.
 
-You can upgrade earlier versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on a computer where other [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] versions are already installed. For supported upgrade scenarios, see [Supported Version and Edition Upgrades](../../database-engine/install-windows/supported-version-and-edition-upgrades.md).
+You can upgrade earlier versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on a computer where other [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] versions are already installed. For supported upgrade scenarios, see [Supported version and edition upgrades (SQL Server 2022)](../../database-engine/install-windows/supported-version-and-edition-upgrades-2022.md).
 
 ## Version components and numbering
 
@@ -44,9 +45,9 @@ The following concepts are useful in understanding the behavior of [!INCLUDE [ss
 
 The standard product version format for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] is `MM.nn.bbbb.rr`, where each segment is defined as:
 
-- `MM` - Major version  
-- `nn` - Minor version  
-- `bbbb` - Build number  
+- `MM` - Major version
+- `nn` - Minor version
+- `bbbb` - Build number
 - `rr` - Build revision number
 
 In each major or minor release of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], there's an increment to the version number to differentiate it from earlier versions. This change to the version is used for many purposes, including:
@@ -86,7 +87,7 @@ Examples: [!INCLUDE [ssDE](../../includes/ssde-md.md)], [!INCLUDE [ssASnoversion
 
 ### Components that are independent of the SQL Server versions
 
-Certain components are installed during [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] setup, but are independent of the versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. They may be shared across major versions or by all [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] versions.
+Certain components are installed during [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] setup, but are independent of the versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. They might be shared across major versions or by all [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] versions.
 
 Examples: Microsoft Sync Framework, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Compact.
 
@@ -105,11 +106,11 @@ The following table shows side-by-side support for each version of [!INCLUDE [ss
 | [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] | [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)] through [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] |
 | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] | [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)] through [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)] |
 
-For more information, see [Using SQL Server in Windows 8 and later](https://support.microsoft.com/help/2681562/).
+For more information, see [Version requirements for SQL Server in Windows operating system](/troubleshoot/sql/database-engine/install/windows/use-sql-server-in-windows).
 
 ### SysPrep considerations
 
-[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] SysPrep doesn't support side by side installation of prepared instances of [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] with earlier versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on the same computer. However, you can install multiple prepared instances of the same major version of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] side by side on the same computer. For more information, see [Considerations for Installing SQL Server Using SysPrep](../../database-engine/install-windows/considerations-for-installing-sql-server-using-sysprep.md).  
+[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] SysPrep doesn't support side by side installation of prepared instances of [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] with earlier versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on the same computer. However, you can install multiple prepared instances of the same major version of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] side by side on the same computer. For more information, see [Considerations for installing SQL Server using SysPrep](../../database-engine/install-windows/considerations-for-installing-sql-server-using-sysprep.md).
 
 [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] and later versions can't be installed side-by-side with earlier versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on a computer that is running [!INCLUDE [winserver2008r2-md](../../includes/winserver2008r2-md.md)] Server Core SP 1. For more information on Server Core installations, see [Install SQL Server on Server Core](../../database-engine/install-windows/install-sql-server-on-server-core.md).
 
@@ -121,8 +122,8 @@ To avoid conflicts, configure one instance to use a non-default fixed port. Conf
 
 ## Related content
 
-- [Hardware and Software Requirements for Installing SQL Server](hardware-and-software-requirements-for-installing-sql-server.md)
+- [Hardware and software requirements for SQL Server 2022](hardware-and-software-requirements-for-installing-sql-server-2022.md)
 - [Install SQL Server from the Installation Wizard (Setup)](../../database-engine/install-windows/install-sql-server-from-the-installation-wizard-setup.md)
-- [Supported Version and Edition Upgrades](../../database-engine/install-windows/supported-version-and-edition-upgrades.md)
+- [Supported version and edition upgrades (SQL Server 2022)](../../database-engine/install-windows/supported-version-and-edition-upgrades-2022.md)
 - [Upgrade SQL Server](../../database-engine/install-windows/upgrade-sql-server.md)
 - [Backward Compatibility](/previous-versions/sql/sql-server-2016/cc280407(v=sql.130))
