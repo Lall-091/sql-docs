@@ -1,11 +1,11 @@
 ---
-title: "Database Engine: Breaking changes"
+title: "Database Engine: Breaking Changes"
 titleSuffix: "SQL Server 2017"
 description: "Learn about changes that might break applications, scripts, or functionalities that are based on earlier versions of SQL Server."
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 08/02/2024
+ms.date: 09/08/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: conceptual

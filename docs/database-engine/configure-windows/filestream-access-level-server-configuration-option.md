@@ -3,7 +3,7 @@ title: "Server Configuration: filestream access level"
 description: "Become familiar with the filestream_access_level option. See how it changes the FILESTREAM access level for an instance of SQL Server."
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 08/26/2025
+ms.date: 09/09/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -24,6 +24,11 @@ Before this option has any effect, the Windows administration settings for FILES
 | `0` | Disables FILESTREAM support for this instance. |
 | `1` | Enables FILESTREAM for [!INCLUDE [tsql](../../includes/tsql-md.md)] access. |
 | `2` | Enables FILESTREAM for [!INCLUDE [tsql](../../includes/tsql-md.md)] and Win32 streaming access. |
+| `3` | Enables FILESTREAM for [!INCLUDE [tsql](../../includes/tsql-md.md)], Win32 streaming access, and remote clients. |
+
+## Remarks
+
+If you plan on using FILESTREAM in a local environment only, you don't need to enable remote access.
 
 ## Related content
 

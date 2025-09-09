@@ -1,13 +1,15 @@
 ---
-title: Discontinued database engine functionality
+title: Discontinued Database Engine Functionality
 description: Learn which database engine functionality and features were discontinued in SQL Server.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 05/19/2025
+ms.date: 09/08/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: conceptual
+ms.custom:
+  - build-2025
 helpviewer_keywords:
   - "VIA protocol"
   - "unsupported features [SQL Server]"
@@ -33,8 +35,6 @@ helpviewer_keywords:
   - "FASTFIRSTROW hint"
   - "SET DISABLE_DEF_CNST_CHK"
 monikerRange: ">=sql-server-linux-2017 || >=sql-server-2016"
-ms.custom:
-  - build-2025
 ---
 # Discontinued Database Engine functionality in SQL Server
 
@@ -114,7 +114,7 @@ No other features were discontinued in [!INCLUDE [sssql14](../includes/sssql17-m
 
 - Startup parameters `-h` and `-g`. For more information, see [Database Engine Service Startup Options](/previous-versions/sql/2014/database-engine/configure-windows/database-engine-service-startup-options?view=sql-server-2014&preserve-view=true).
 
-- Secure Sockets Layer (SSL) encryption is discontinued. Use Transport Layer Security (TLS) instead. For more information, see [Configure SQL Server Database Engine for encrypting connections](configure-windows/configure-sql-server-encryption.md).
+- Secure Sockets Layer (SSL) encryption is discontinued. Use Transport Layer Security (TLS) instead. For more information, see [Encrypt connections to SQL Server by importing a certificate](configure-windows/configure-sql-server-encryption.md).
 
 - The **precompute rank** server configuration option was discontinued beginning with [!INCLUDE [sql2008-md](../includes/sql2008-md.md)]. The article was removed from documentation.
 

@@ -3,7 +3,7 @@ title: What Is SQL Server?
 description: An overview of the relational database engine and components of SQL Server
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 06/16/2025
+ms.date: 09/08/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: overview

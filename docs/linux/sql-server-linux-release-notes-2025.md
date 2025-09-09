@@ -4,7 +4,7 @@ description: This article contains the release notes and supported features for 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh, vanto
-ms.date: 08/20/2025
+ms.date: 09/09/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: release-notes
@@ -59,11 +59,11 @@ This section lists the latest versions of each package per distribution, for [!I
 | SLES 15 | High Availability | 17.0.800.3-1 | [High Availability RPM package](https://packages.microsoft.com/sles/15/mssql-server-preview/Packages/m/mssql-server-ha-17.0.800.3-1.x86_64.rpm) |
 | SLES 15 | PolyBase | 17.0.800.3-1 | [PolyBase RPM package](https://packages.microsoft.com/sles/15/mssql-server-preview/Packages/m/mssql-server-polybase-17.0.800.3-1.x86_64.rpm) |
 | **Ubuntu** | | | |
-| Ubuntu 24.04 (preview) | Database Engine | 17.0.900.7-2-preview | [Database Engine Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-preview/pool/main/m/mssql-server/mssql-server_17.0.900.7-2-preview_amd64.deb) |
-| Ubuntu 24.04 (preview) | Extensibility | 17.0.900.7-2-preview | [Extensibility Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-preview/pool/main/m/mssql-server-extensibility/mssql-server-extensibility_17.0.900.7-2-preview_amd64.deb) |
-| Ubuntu 24.04 (preview) | Full-Text Search | 17.0.900.7-2-preview | [Full-Text Search Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-preview/pool/main/m/mssql-server-fts/mssql-server-fts_17.0.900.7-2-preview_amd64.deb) |
-| Ubuntu 24.04 (preview) | High Availability | 17.0.900.7-2-preview | [High Availability Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-preview/pool/main/m/mssql-server-ha/mssql-server-ha_17.0.900.7-2-preview_amd64.deb) |
-| Ubuntu 24.04 (preview) | PolyBase | 17.0.900.7-2-preview | [PolyBase Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-preview/pool/main/m/mssql-server-polybase/mssql-server-polybase_17.0.900.7-2-preview_amd64.deb) |
+| Ubuntu 24.04 (in preview) | Database Engine | 17.0.900.7-2-preview | [Database Engine Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-preview/pool/main/m/mssql-server/mssql-server_17.0.900.7-2-preview_amd64.deb) |
+| Ubuntu 24.04 (in preview) | Extensibility | 17.0.900.7-2-preview | [Extensibility Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-preview/pool/main/m/mssql-server-extensibility/mssql-server-extensibility_17.0.900.7-2-preview_amd64.deb) |
+| Ubuntu 24.04 (in preview) | Full-Text Search | 17.0.900.7-2-preview | [Full-Text Search Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-preview/pool/main/m/mssql-server-fts/mssql-server-fts_17.0.900.7-2-preview_amd64.deb) |
+| Ubuntu 24.04 (in preview) | High Availability | 17.0.900.7-2-preview | [High Availability Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-preview/pool/main/m/mssql-server-ha/mssql-server-ha_17.0.900.7-2-preview_amd64.deb) |
+| Ubuntu 24.04 (in preview) | PolyBase | 17.0.900.7-2-preview | [PolyBase Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-preview/pool/main/m/mssql-server-polybase/mssql-server-polybase_17.0.900.7-2-preview_amd64.deb) |
 
 <a id="cuinstall"></a>
 

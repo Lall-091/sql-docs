@@ -1,11 +1,11 @@
 ---
-title: "Database Engine: Breaking changes"
+title: "Database Engine: Breaking Changes"
 titleSuffix: "SQL Server 2019"
 description: "Breaking changes to database engine features in SQL Server 2019"
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 07/09/2024
+ms.date: 09/08/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: conceptual

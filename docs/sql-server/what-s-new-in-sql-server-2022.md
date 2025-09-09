@@ -1,16 +1,16 @@
 ---
-title: "What's new in SQL Server 2022"
+title: "What's New in SQL Server 2022"
 description: Learn about new features for SQL Server 2022 (16.x), which gives you choices of development languages, data types, environments, and operating systems.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: wiassaf, randolphwest
-ms.date: 02/28/2025
+ms.date: 09/08/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: whats-new
 ms.custom:
   - intro-whats-new
-monikerRange: ">= sql-server-2016"
+monikerRange: ">=sql-server-2016"
 ---
 
 # What's new in SQL Server 2022
@@ -33,7 +33,7 @@ For additional video content, see:
 
 This article summarizes the new features and enhancements for [!INCLUDE [sql-server-2022](../includes/sssql22-md.md)].
 
-## Get [!INCLUDE [sssql22-md](../includes/sssql22-md.md)]
+## Get SQL Server 2022 (16.x)
 
 [Get SQL Server 2022 Evaluation Edition](https://go.microsoft.com/fwlink/?linkid=2162126). Build number: 16.0.1000.6.
 
@@ -57,7 +57,7 @@ The following sections identify features that are improved or introduced in [!IN
 ## Analytics
 
 | New feature or update | Details |
-| :--- | :--- |
+| --- | --- |
 | Azure Synapse Link for SQL | Get near real time analytics over operational data in [!INCLUDE [sql-server-2022](../includes/sssql22-md.md)]. With a seamless integration between operational stores in [!INCLUDE [sql-server-2022](../includes/sssql22-md.md)] and Azure Synapse Analytics dedicated SQL pools, Azure Synapse Link for SQL enables you to run analytics, business intelligence and machine learning scenarios on your operational data with minimum effect on source databases with a new change feed technology.<br /><br />For more information, see [What is Azure Synapse Link for SQL?](/azure/synapse-analytics/synapse-link/sql-synapse-link-overview).<br /><br />See also, [Limitations and known issues with Azure Synapse Link for SQL](/azure/synapse-analytics/synapse-link/synapse-link-for-sql-known-issues). |
 | Object storage integration | [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] introduces new object storage integration to the data platform, enabling you to integrate SQL Server with S3-compatible object storage, in addition to Azure Storage. The first is [backup to URL](../relational-databases/backup-restore/sql-server-backup-to-url-s3-compatible-object-storage.md) and the second is Data Lake Virtualization.<br /><br />Data Lake Virtualization integrates [PolyBase with S3-compatible object storage](../relational-databases/polybase/polybase-configure-s3-compatible.md), and adds support for querying parquet files with T-SQL. |
 | Data Virtualization | Query different types of data on different types of data sources from SQL Server.<br /><br />[!INCLUDE [sql-server-2022](../includes/sssql22-md.md)] Cumulative update 2 now introduces support for Oracle TNS files. For more information and samples, see [CREATE EXTERNAL DATA SOURCE (Transact-SQL) CONNECTION_OPTIONS](../t-sql/statements/create-external-data-source-connection-options.md). |
@@ -65,7 +65,7 @@ The following sections identify features that are improved or introduced in [!IN
 ## Availability
 
 | New feature or update | Details |
-| :--- | :--- |
+| --- | --- |
 | Link to Azure SQL Managed Instance | Replicate your data between your SQL Server instance to Azure SQL Managed Instance for disaster recovery and migration. See [Overview of the Managed Instance link](/azure/azure-sql/managed-instance/managed-instance-link-feature-overview). |
 | Contained availability group | Create an Always On availability group that:<br /><br />- Manages its own metadata objects (users, logins, permissions, SQL Agent jobs etc.) at the availability group level in addition to the instance level.<br />- Includes specialized contained system databases within the availability group. For more information, see [What is a contained availability group?](../database-engine/availability-groups/windows/contained-availability-groups-overview.md) |
 | Distributed availability group | Now using multiple TCP connections for better network bandwidth utilization across a remote link with long tcp latencies. |
@@ -74,24 +74,24 @@ The following sections identify features that are improved or introduced in [!IN
 ## Security
 
 | New feature or update | Details |
-| :--- | :--- |
+| --- | --- |
 | Microsoft Defender for Cloud integration | Protect your SQL servers using the Defender for SQL plan. Defender for SQL plan requires that SQL Server Extension for Azure is enabled and includes functionalities for discovering and mitigating potential database vulnerabilities and detecting anomalous activities that could indicate a threat to your databases. For more information about how Defender for SQL can protect your entire database estate, see [Overview of Microsoft Defender for Azure SQL](/azure/defender-for-cloud/defender-for-sql-introduction). |
 | Microsoft Purview integration | Apply Microsoft Purview access policies to any SQL Server instance that is enrolled in both Azure Arc and the Microsoft Purview Data Use Management.<br /><br />Newly introduced *SQL Performance Monitor* and *SQL Security Auditor* roles, align with the principle of least privilege using Microsoft Purview access policies.<br /><br />Check out [Provision access by data owner for SQL Server enabled by Azure Arc](/azure/purview/how-to-policies-data-owner-arc-sql-server) for details. |
 | Ledger | The ledger feature provides tamper-evidence capabilities in your database. You can cryptographically attest to other parties, such as auditors or other business parties, that your data wasn't tampered with. See [Ledger overview](../relational-databases/security/ledger/ledger-overview.md). |
 | Microsoft Entra authentication | Use [authentication](../relational-databases/security/authentication-access/azure-ad-authentication-sql-server-overview.md) with Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)) to connect to SQL Server.<br /><br />Starting with [!INCLUDE [sql-server-2022](../includes/sssql22-md.md)] Cumulative Update 6, you can configure [transactional replication with Microsoft Entra authentication](../relational-databases/replication/configure-replication-with-azure-ad-authentication.md) - generally available (GA) in Cumulative Update 12. |
-| Always encrypted with secure enclaves | Support for JOIN, GROUP BY, and ORDER BY, and for text columns using UTF-8 collations in confidential queries using enclaves. Improved performance. See [Always Encrypted with secure enclaves](../relational-databases/security/encryption/always-encrypted-enclaves.md). |
-| Access Control: Permissions | New [granular permissions](https://techcommunity.microsoft.com/t5/sql-server-blog/new-granular-permissions-for-sql-server-2022-and-azure-sql-to/ba-p/3607507) improve adherence with the [Principle of Least Privilege](https://techcommunity.microsoft.com/t5/azure-sql-blog/security-the-principle-of-least-privilege-polp/ba-p/2067390)<br /><br />Read here for an in-depth explanation of the [revamped SQL Permission system for Principle of Least Privilege and external policies](https://techcommunity.microsoft.com/t5/azure-sql-blog/revamped-sql-permission-system-for-principle-of-least-privilege/ba-p/3639399) |
+| Always encrypted with secure enclaves | Support for `JOIN`, `GROUP BY`, and `ORDER BY`, and for text columns using UTF-8 collations in confidential queries using enclaves. Improved performance. See [Always Encrypted with secure enclaves](../relational-databases/security/encryption/always-encrypted-enclaves.md). |
+| Access Control: Permissions | New [granular permissions](https://techcommunity.microsoft.com/blog/sqlserver/new-granular-permissions-for-sql-server-2022-and-azure-sql-to-improve-adherence-/3607507) improve adherence with the [Principle of Least Privilege](https://techcommunity.microsoft.com/blog/azuresqlblog/security-the-principle-of-least-privilege-polp/2067390)<br /><br />For more information, see [Revamped SQL Permission system for Principle of Least Privilege and external policies](https://techcommunity.microsoft.com/blog/azuresqlblog/revamped-sql-permission-system-for-principle-of-least-privilege-and-external-pol/3639399). |
 | Access Control: Server-level Roles | New [built-in server-level roles](../relational-databases/security/authentication-access/server-level-roles.md#fixed-server-level-roles-introduced-in-sql-server-2022) enable least privileged access for administrative tasks that apply to the whole SQL Server Instance |
 | Dynamic data masking | Granular UNMASK permissions for [Dynamic Data Masking](../relational-databases/security/dynamic-data-masking.md#granular). |
 | Support for PFX certificates, and other cryptographic improvements | New support for import and export of PFX file formatted [certificates](../t-sql/statements/create-certificate-transact-sql.md) and private keys. Ability to [backup](../t-sql/statements/backup-master-key-transact-sql.md) and [restore](../t-sql/statements/restore-master-key-transact-sql.md) master keys to Azure Blob Storage. SQL Server-generated certificates now have a default RSA key size of 3,072 bits.<br /><br />Added [BACKUP SYMMETRIC KEY](../t-sql/statements/backup-symmetric-key-transact-sql.md) and [RESTORE SYMMETRIC KEY](../t-sql/statements/restore-symmetric-key-transact-sql.md).<br /><br />See also, [BACKUP CERTIFICATE](../t-sql/statements/backup-certificate-transact-sql.md). |
-| Support MS-TDS 8.0 protocol | New MS-TDS protocol iteration. See [TDS 8.0 support](../relational-databases/security/networking/tds-8.md) and [TLS 1.3 support](../relational-databases/security/networking/tls-1-3.md):<br /><br />- Makes encryption mandatory<br />- Aligns MS-TDS with HTTPS making it manageable by network appliances for additional security<br />- Removes MS-TDS / TLS custom interleaving and enables usage of TLS 1.3 and subsequent TLS protocol versions. |
+| Support MS-TDS 8.0 protocol | New MS-TDS protocol iteration. See [TDS 8.0](../relational-databases/security/networking/tds-8.md) and [TLS 1.3 support](../relational-databases/security/networking/tls-1-3.md):<br /><br />- Makes encryption mandatory<br />- Aligns MS-TDS with HTTPS making it manageable by network appliances for additional security<br />- Removes MS-TDS / TLS custom interleaving and enables usage of TLS 1.3 and subsequent TLS protocol versions. |
 
 ## Performance
 
 | New feature or update | Details |
-| :--- | :--- |
+| --- | --- |
 | System page latch concurrency enhancements | Concurrent updates to global allocation map (GAM) pages and shared global allocation map (SGAM) pages reduce page latch contention while allocating/deallocating data pages and extents. These enhancements apply to all user databases and especially benefit `tempdb` heavy workloads. |
-| Buffer pool parallel scan | Improves the performance of buffer pool scan operations on large-memory machines by utilizing multiple CPU cores. Learn more about [Operations that trigger a buffer pool scan might run slowly on large-memory computers](/troubleshoot/sql/database-engine/performance/buffer-pool-scan-runs-slowly-large-memory-machines). |
+| Buffer pool parallel scan | Improves the performance of buffer pool scan operations on large-memory machines by utilizing multiple CPU cores. Learn more about [Operations that trigger a buffer pool scan may run slowly on large-memory computers](/troubleshoot/sql/database-engine/performance/buffer-pool-scan-runs-slowly-large-memory-machines). |
 | Ordered clustered columnstore index | An ordered clustered columnstore index (CCI) sorts the existing data in memory before the index builder compresses the data into index segments. This has the potential of more efficient segment elimination, resulting in better performance as the number of segments to read from disk is reduced. For more information, see [CREATE COLUMNSTORE INDEX](../t-sql/statements/create-columnstore-index-transact-sql.md) and [What's new in columnstore indexes](../relational-databases/indexes/columnstore-indexes-what-s-new.md). See [Performance tuning with ordered columnstore indexes](../relational-databases/indexes/ordered-columnstore-indexes.md). |
 | Improved columnstore segment elimination | All columnstore indexes benefit from enhanced segment elimination by data type. Data type choices might have a significant impact on query performance based common filter predicates for queries on the columnstore index. This segment elimination applied to numeric, date, and time data types, and the datetimeoffset data type with scale less than or equal to two. Beginning in [!INCLUDE [sssql22-md](../includes/sssql22-md.md)], segment elimination capabilities extend to string, binary, guid data types, and the datetimeoffset data type for scale greater than two. |
 | In-memory OLTP management | Improve memory management in large memory servers to reduce out-of-memory conditions. |
@@ -109,8 +109,8 @@ The [intelligent query processing (IQP)](../relational-databases/performance/int
 :::image type="content" source="../relational-databases/performance/media/iqp-feature-family.svg" alt-text="Diagram of the Intelligent Query Processing family of features and when they were first introduced to SQL Server.":::
 
 | New feature or update | Details |
-| :--- | :--- |
-| Query Store on secondary replicas | Query Store on secondary replicas enables the same Query Store functionality on secondary replica workloads that is available for primary replicas. Learn more in [Query Store for secondary replicas](../relational-databases/performance/query-store-for-secondary-replicas.md).<br /><br />For more information, see [Query Store improvements](#query-store-improvements) later in this article. |
+| --- | --- |
+| Query Store on secondary replicas | Query Store on secondary replicas enables the same Query Store functionality on secondary replica workloads that is available for primary replicas. Learn more in [Query Store for readable secondaries](../relational-databases/performance/query-store-for-secondary-replicas.md).<br /><br />For more information, see [Query Store improvements](#query-store-improvements) later in this article. |
 | Query Store hints | [Query Store hints](../relational-databases/performance/query-store-hints.md) use the Query Store to provide a method to shape query plans without changing application code. Previously only available on Azure SQL Database and Azure SQL Managed Instance, Query Store hints are now available in [!INCLUDE [sssql22-md](../includes/sssql22-md.md)]. Requires the Query Store to be enabled and in "Read write" mode. |
 | Memory grant feedback | Memory grant feedback adjusts the size of the memory allocated for a query based on past performance. [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] introduces [Percentile and Persistence mode memory grant feedback](../relational-databases/performance/intelligent-query-processing-memory-grant-feedback.md#percentile-and-persistence-mode-memory-grant-feedback). Requires enabling Query Store.<br /><br />- **Persistence**: A capability that allows the memory grant feedback for a given cached plan to be persisted in the Query Store so that feedback can be reused after cache evictions. Persistence benefits memory grant feedback as well as the new DOP and CE feedback features.<br /><br />- **Percentile**: A new algorithm improves performance of queries with widely oscillating memory requirements, using memory grant information from several previous query executions over, instead of just the memory grant from the immediately preceding query execution. Requires enabling Query Store. Query Store is enabled by default for newly created databases as of SQL Server 2022 CTP 2.1. |
 | Parameter sensitive plan optimization | Automatically enables multiple, active cached plans for a single parameterized statement. Cached execution plans accommodate largely different data sizes based on the customer-provided runtime parameter values. For more information, see [Parameter Sensitive Plan optimization](../relational-databases/performance/parameter-sensitive-plan-optimization.md). |
@@ -121,13 +121,13 @@ The [intelligent query processing (IQP)](../relational-databases/performance/int
 ## Management
 
 | New feature or update | Details |
-| :--- | :--- |
+| --- | --- |
 | Integrated setup experience for the Azure extension for SQL Server | Install the Azure extension for SQL Server at setup. Required for Azure integration features. For more information, see:<br /><br />- [Install SQL Server from the Command Prompt](../database-engine/install-windows/install-sql-server-from-the-command-prompt.md#install-sql-server-from-the-command-prompt)<br />- [Install SQL Server from the Installation Wizard (Setup)](../database-engine/install-windows/install-sql-server-from-the-installation-wizard-setup.md?view=sql-server-ver16&preserve-view=true). |
 | Manage Azure extension for SQL Server | Use SQL Server Configuration Manager to manage Azure extension for SQL Server service. Required to create a [!INCLUDE [ssazurearc](../includes/ssazurearc.md)] instance, and for other Azure connected features. See [SQL Server Configuration Manager](../relational-databases/sql-server-configuration-manager.md). |
 | Max server memory calculations | During setup, SQL Setup recommends a value for max server memory to align with documented recommendations. The underlying calculation is different in [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] to reflect recommended [server memory configuration options](../database-engine/configure-windows/server-memory-server-configuration-options.md). |
 | Accelerated Database Recovery (ADR) improvements | There are several improvements to address persistent version store (PVS) storage and improve overall scalability. [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] implements a multithreaded persistent version store cleaner. The memory footprint for PVS page tracker has been improved. There are also several ADR efficiency improvements, such as concurrency improvements that help the cleanup process to work more efficiently. ADR cleans pages that couldn't previously be cleaned due to locking.<br /><br />See [ADR improvements in SQL Server 2022 (16.x)](../relational-databases/accelerated-database-recovery-concepts.md#adr-improvements-in-sql-server-2022). |
 | Improved snapshot backup support | Adds Transact-SQL support for freezing and thawing I/O without requiring a VDI client. [Create a Transact-SQL snapshot backup](../relational-databases/backup-restore/create-a-transact-sql-snapshot-backup.md). |
-| Shrink database WAIT_AT_LOW_PRIORITY | In previous releases, shrinking databases and database files to reclaim space often leads to concurrency issues. [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] adds WAIT_AT_LOW_PRIORITY as an additional option for shrink operations (DBCC SHRINKDATABASE and DBCC SHRINKFILE). When you specify WAIT_AT_LOW_PRIORITY, new queries requiring Sch-S or Sch-M locks aren't blocked by the waiting shrink operation, until the shrink operation stops waiting and begins executing. See [Shrink a database](../relational-databases/databases/shrink-a-database.md) and [Shrink a file](../relational-databases/databases/shrink-a-file.md). |
+| Shrink database `WAIT_AT_LOW_PRIORITY` | In previous releases, shrinking databases and database files to reclaim space often leads to concurrency issues. [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] adds `WAIT_AT_LOW_PRIORITY` as an additional option for shrink operations (`DBCC SHRINKDATABASE` and `DBCC SHRINKFILE`). When you specify `WAIT_AT_LOW_PRIORITY`, new queries requiring Sch-S or Sch-M locks aren't blocked by the waiting shrink operation, until the shrink operation stops waiting and begins executing. See [Shrink a database](../relational-databases/databases/shrink-a-database.md) and [Shrink a file](../relational-databases/databases/shrink-a-file.md). |
 | XML compression | XML compression provides a method to compress off-row XML data for both XML columns and indexes, improving capacity requirements. For more information, see [CREATE TABLE](../t-sql/statements/create-table-transact-sql.md) and [CREATE INDEX](../t-sql/statements/create-index-transact-sql.md). |
 | Asynchronous auto update statistics concurrency | Avoid potential concurrency issues using asynchronous statistics update if you enable the `ASYNC_STATS_UPDATE_WAIT_AT_LOW_PRIORITY` [database-scoped configuration](../t-sql/statements/alter-database-scoped-configuration-transact-sql.md). |
 | Backup and restore to S3-compatible object storage | [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] extends the `BACKUP`/`RESTORE` `TO`/`FROM` `URL` syntax by adding support for a new S3 connector using the REST API. See [backup to URL](../relational-databases/backup-restore/sql-server-backup-to-url-s3-compatible-object-storage.md). |
@@ -135,7 +135,7 @@ The [intelligent query processing (IQP)](../relational-databases/performance/int
 ## Platform
 
 | New feature or update | Details |
-| :--- | :--- |
+| --- | --- |
 | SQL Server Native Client (SNAC) has been removed | [!INCLUDE [snac-removed-oledb-and-odbc](../includes/snac-removed-oledb-and-odbc.md)] |
 | Hybrid buffer pool with direct write | Reduces the number of `memcpy` commands that need to be performed on modified data or index pages residing on PMEM devices. This *enlightenment* is now available for Window 2022 and Linux. For details, see [Hybrid buffer pool with direct write](../database-engine/configure-windows/hybrid-buffer-pool.md#hybrid-buffer-pool-with-direct-write) and [Configure persistent memory (PMEM) for SQL Server on Windows](../database-engine/configure-windows/configure-persistent-memory.md). |
 | Integrated acceleration & offloading | [!INCLUDE [sql-server-2022](../includes/sssql22-md.md)] uses acceleration technologies from partners such as Intel to provide extended capabilities. At release, Intel&reg; QuickAssist Technology (QAT) provides backup compression and hardware offloading. For more information, see [Integrated acceleration and offloading](../relational-databases/integrated-acceleration/overview.md). |
@@ -144,13 +144,13 @@ The [intelligent query processing (IQP)](../relational-databases/performance/int
 ## Language
 
 | New feature or update | Details |
-| :--- | :--- |
+| --- | --- |
 | Resumable add table constraints | Supports [pausing and resuming an ALTER TABLE ADD CONSTRAINT](../relational-databases/security/resumable-add-table-constraints.md) operation. Resume such operation after maintenance windows, failovers, or system failures. |
-| CREATE INDEX | [WAIT_AT_LOW_PRIORITY](../t-sql/statements/create-index-transact-sql.md#wait-at-low-priority) with online index operations clause added. |
+| `CREATE INDEX` | [WAIT_AT_LOW_PRIORITY](../t-sql/statements/create-index-transact-sql.md#wait-at-low-priority) with online index operations clause added. |
 | Transactional replication | Peer-to-peer replication enables conflict detection and resolution to allow last writer to win. Originally introduced in [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] CU 13. For more information, see [Automatically handle conflicts with last write wins](../relational-databases/replication/transactional/peer-to-peer-conflict-detection-in-peer-to-peer-replication.md#automatically-handle-conflicts-with-last-write-wins). |
-| CREATE STATISTICS | Adds [AUTO_DROP option](../relational-databases/statistics/statistics.md#auto_drop-option)<br /><br />Automatic statistics with low priority. |
-| SELECT ... WINDOW clause | Determines the partitioning and ordering of a rowset before the window function, which uses the window in OVER clause is applied. See [SELECT - WINDOW](../t-sql/queries/select-window-transact-sql.md). |
-| IS \[NOT\] DISTINCT FROM | Determines whether two expressions when compared with each other evaluate to NULL, and guarantees a true or false value as the result. For more information, see [IS [NOT] DISTINCT FROM (Transact-SQL)](../t-sql/queries/is-distinct-from-transact-sql.md). |
+| `CREATE STATISTICS` | Adds [AUTO_DROP option](../relational-databases/statistics/statistics.md#auto_drop-option)<br /><br />Automatic statistics with low priority. |
+| `SELECT ... WINDOW` clause | Determines the partitioning and ordering of a rowset before the window function, which uses the window in `OVER` clause is applied. See [SELECT - WINDOW clause](../t-sql/queries/select-window-transact-sql.md). |
+| `IS [NOT] DISTINCT FROM` | Determines whether two expressions when compared with each other evaluate to `NULL`, and guarantees a true or false value as the result. For more information, see [IS &#91;NOT&#93; DISTINCT FROM](../t-sql/queries/is-distinct-from-transact-sql.md). |
 | Time series functions | You can store and analyze data that changes over time, using time-windowing, aggregation, and filtering capabilities.<br />- [DATE_BUCKET](../t-sql/functions/date-bucket-transact-sql.md)<br />- [GENERATE_SERIES](../t-sql/functions/generate-series-transact-sql.md)<br /><br />The following functions add support to `IGNORE NULLS` and `RESPECT NULLS`:<br />- [FIRST_VALUE](../t-sql/functions/first-value-transact-sql.md)<br />- [LAST_VALUE](../t-sql/functions/last-value-transact-sql.md) |
 | JSON functions | - [ISJSON](../t-sql/functions/isjson-transact-sql.md)<br />- [JSON_PATH_EXISTS](../t-sql/functions/json-path-exists-transact-sql.md)<br />- [JSON_OBJECT](../t-sql/functions/json-object-transact-sql.md)<br />- [JSON_ARRAY](../t-sql/functions/json-array-transact-sql.md) |
 | Aggregate functions | - [APPROX_PERCENTILE_CONT](../t-sql/functions/approx-percentile-cont-transact-sql.md)<br />- [APPROX_PERCENTILE_DISC](../t-sql/functions/approx-percentile-disc-transact-sql.md) |
@@ -160,7 +160,7 @@ The [intelligent query processing (IQP)](../relational-databases/performance/int
 ## Tools
 
 | New feature or update | Details |
-| :--- | :--- |
+| --- | --- |
 | Azure Data Studio | Get the latest release at [Download and install Azure Data Studio](/azure-data-studio/download-azure-data-studio). The latest release includes support for [!INCLUDE [sssql22-md](../includes/sssql22-md.md)]. |
 | Distributed Replay | SQL Server setup no longer includes the Distributed Replay client and controller executables. These are available, along with the Admin executable, as a separate download |
 | SQL Server Management Studio | SSMS version 19.0 is now available and is the recommended version of SSMS for [!INCLUDE [sssql22-md](../includes/sssql22-md.md)]. [Download SQL Server Management Studio (SSMS)](../ssms/download-sql-server-management-studio-ssms.md). |
@@ -183,7 +183,7 @@ Query Store helps you better track performance history, troubleshoot query plan 
 
 - For databases that are restored from previous SQL Server instances, separately evaluate the [database compatibility level settings](../t-sql/statements/alter-database-transact-sql-compatibility-level.md) as some Intelligent Query Processing features are enabled by the compatibility level setting.
 
-If there's concern about the overhead Query Store might introduce, administrators can use custom capture policies to further tune what the Query Store captures. Custom capture policies are available to help further tune Query Store captures. Custom capture policies can be used to be more selective about which queries, and query details are captured. For example, an administrator might choose to capture only the most expensive queries, repeated queries, or the queries that have a high level of compute overhead. [Custom capture policies](../t-sql/statements/alter-database-transact-sql-set-options.md#query_capture_policy_option_list--) can help Query Store capture the most important queries in your workload. Except for the `STALE_CAPTURE_POLICY_THRESHOLD` option, these options define the OR conditions that need to happen for queries to be captured in the defined Stale Capture Policy Threshold value. For example, these are the default values in the `QUERY_CAPTURE_MODE = AUTO`:
+If there's concern about the overhead Query Store might introduce, administrators can use custom capture policies to further tune what the Query Store captures. Custom capture policies are available to help further tune Query Store captures. Custom capture policies can be used to be more selective about which queries, and query details are captured. For example, an administrator might choose to capture only the most expensive queries, repeated queries, or the queries that have a high level of compute overhead. [Custom capture policies](../t-sql/statements/alter-database-transact-sql-set-options.md#query_capture_policy_option_list--) can help Query Store capture the most important queries in your workload. Except for the `STALE_CAPTURE_POLICY_THRESHOLD` option, these options define the `OR` conditions that need to happen for queries to be captured in the defined Stale Capture Policy Threshold value. For example, these are the default values in the `QUERY_CAPTURE_MODE = AUTO`:
 
 ```sql
 ...

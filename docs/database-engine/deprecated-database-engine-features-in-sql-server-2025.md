@@ -1,19 +1,19 @@
 ---
-title: "Deprecated Database Engine features"
+title: "Deprecated Database Engine Features"
 titleSuffix: "SQL Server 2025 Preview"
 description: Find out about deprecated Database Engine features that are still available in SQL Server 2025 (17.x), but shouldn't be used in new applications.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 05/19/2025
+ms.date: 09/08/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: conceptual
+ms.custom:
+  - build-2025
 helpviewer_keywords:
   - "deprecated changes 2019 [SQL Server]"
 monikerRange: ">=sql-server-ver15 || >=sql-server-linux-ver15"
-ms.custom:
-  - build-2025
 ---
 # Deprecated Database Engine features in SQL Server 2025 (17.x) Preview
 
@@ -22,7 +22,7 @@ ms.custom:
 [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] doesn't deprecate any features beyond features deprecated in prior releases:
 
 - [Deprecated Database Engine features in SQL Server 2022 (16.x)](deprecated-database-engine-features-in-sql-server-2022.md)
-- [Deprecated Database Engine features in SQL Server 2019 (17.x)](deprecated-database-engine-features-in-sql-server-2019.md)
+- [Deprecated Database Engine features in SQL Server 2019 (15.x)](deprecated-database-engine-features-in-sql-server-2019.md)
 - [Deprecated Database Engine features in SQL Server 2017 (14.x)](deprecated-database-engine-features-in-sql-server-2017.md)
 - [Deprecated Database Engine features in SQL Server 2016 (13.x)](deprecated-database-engine-features-in-sql-server-2016.md)
 
