@@ -3,7 +3,7 @@ title: "sys.stats (Transact-SQL)"
 description: sys.stats (Transact-SQL)
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/13/2022
+ms.date: 09/12/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -51,6 +51,9 @@ monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-s
 |**stats_generation_method**|**int**|Indicates the method by which statistics are created.<br /><br />**0** = Sort based statistics<br /><br />1 = Internal use only<br /><br />**Applies to**: [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE[sssql19-md](../../includes/sssql19-md.md)])|
 |**stats_generation_method_desc**|**varchar(255)**|The text description of the method by which statistics are created.<br /><br />Sort based statistics<br /><br />Internal use only<br /><br />**Applies to**: [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE[sssql19-md](../../includes/sssql19-md.md)])|
 |**auto_drop**|**bit**|Indicates whether or not the auto drop feature is enabled for this statistics object. The AUTO_DROP property allows the creation of statistics objects in a mode such that a subsequent schema change will not be blocked by the statistic object, but instead the statistics will be dropped as necessary. In this way, manually created statistics with AUTO_DROP enabled behave like auto-created statistics. For more information, see [AUTO_DROP option](../statistics/statistics.md#auto_drop-option).<br /><br />**Applies to**: [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)], and starting with [!INCLUDE[ssSQL22](../../includes/sssql22-md.md)]. |
+| **replica_role_id** | **tinyint** | Indicates the replica in which auto stats were last updated from. <br /><br />1 = Primary<br /><br />2 = Secondary<br /><br /> 3 = Geo Secondary<br /><br />4 = Geo HA Secondary<br /><br />**Applies to**: [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)], and starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. |
+| **replica_role_desc** | **nvarchar(60)** | Primary, Secondary, Geo Secondary, Geo HA Secondary<br /><br />**Applies to**: [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)], and starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. |
+| **replica_name** | **sysname** | Instance name of the replica in the availability group. Will be **NULL** for the primary replica<br /><br />**Applies to**: [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)], and starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] |
 
 ## Permissions
 
