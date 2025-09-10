@@ -4,7 +4,7 @@ description: The Microsoft OLE DB Driver for SQL Server provides connectivity to
 author: David-Engel
 ms.author: davidengel
 ms.reviewer: randolphwest
-ms.date: 07/02/2025
+ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: "reference"
@@ -26,7 +26,7 @@ helpviewer_keywords:
 
 [!INCLUDE [Driver_OLEDB_Download](../../includes/driver_oledb_download.md)]
 
-The OLE DB Driver for SQL Server is a stand-alone data access application programming interface (API), that is part of [OLE DB](/cpp/data/oledb/ole-db-programming-overview). It was introduced in [!INCLUDE [ssVersion2005](../../includes/ssversion2005-md.md)]. The OLE DB Driver for SQL Server is delivered in one dynamic-link library (DLL). It provides new functionality beyond the SQL Server OLE DB provider supplied by the Windows Data Access Components (Windows DAC, formerly Microsoft Data Access Components, or MDAC). The OLE DB Driver for SQL Server can be used to create new applications or enhance existing applications that need to take advantage of features such as multiple active result sets (MARS), user-defined data types (UDT), query notifications, snapshot isolation, XML data type support, Microsoft Entra ID, and strict encryption.
+The OLE DB Driver for SQL Server is a stand-alone data access application programming interface (API), that is part of [OLE DB](/cpp/data/oledb/ole-db-programming-overview). It was first released in 2018 as version 18 and included in [!INCLUDE [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)]. The OLE DB Driver for SQL Server is generally backwards compatible with SQL Server Native Client (SNAC). (For differences between major versions of OLE DB Driver for SQL Server, including breaking changes, see [Major version differences](major-version-differences.md).) The driver provides new functionality beyond SNAC and the SQL Server OLE DB provider supplied by the Windows Data Access Components (Windows DAC, formerly Microsoft Data Access Components, or MDAC). The OLE DB Driver for SQL Server can be used to create new applications or enhance existing applications that need to take advantage of features such as multiple active result sets (MARS), user-defined data types (UDT), query notifications, snapshot isolation, XML data type support, Microsoft Entra ID, and strict encryption.
 
 For a list of the differences between OLE DB Driver for SQL Server and Windows DAC, plus information about issues to consider before updating a Windows DAC application to OLE DB Driver for SQL Server, see [Updating an Application to OLE DB Driver for SQL Server from MDAC](applications/updating-an-application-to-oledb-driver-for-sql-server-from-mdac.md).
 
@@ -46,7 +46,7 @@ There are three distinct generations of Microsoft OLE DB providers for SQL Serve
 
 The newest generation of the OLE DB driver (MSOLEDBSQL) offers the latest features, including:
 
-- TLS 1.3 support
+- TLS 1.3 support (version 19+, MSOLEDBSQL19)
 - multiple language support
 - support for various SQL Server features for Availability Groups
 - Microsoft Entra ID support
@@ -63,7 +63,7 @@ The [SQL Server Native Client](../../relational-databases/native-client/sql-serv
 
 ### 3. Microsoft OLE DB Provider for SQL Server (SQLOLEDB)
 
-The [Microsoft OLE DB Provider for SQL Server](../../ado/guide/appendixes/microsoft-ole-db-provider-for-sql-server.md) (SQLOLEDB) was the original OLE DB connectivity software for SQL Server applications. It still ships as part of [Windows Data Access Components](/previous-versions/windows/desktop/ms692897(v=vs.85)). It isn't maintained anymore and it isn't recommended to use this driver for new development. The legacy Microsoft OLE DB Provider for SQL Server (SQLOLEDB) isn't recommended for new development. Switch to the new Microsoft OLE DB Driver (MSOLEDBSQL) for SQL Server going forward.
+The [Microsoft OLE DB Provider for SQL Server](../../ado/guide/appendixes/microsoft-ole-db-provider-for-sql-server.md) (SQLOLEDB) was the original OLE DB connectivity software for SQL Server applications. It still ships as part of [Windows Data Access Components](/previous-versions/windows/desktop/ms692897(v=vs.85)). It isn't maintained anymore and it isn't recommended to use this driver for new development. The legacy Microsoft OLE DB Provider for SQL Server (SQLOLEDB) isn't recommended for new development. Switch to the new Microsoft OLE DB Driver (MSOLEDBSQL / MSOLEDBSQL19) for SQL Server going forward.
 
 ## In this section
 
