@@ -16,7 +16,7 @@ helpviewer_keywords:
   - "security [SQL Server], services"
   - "services [SQL Server], WMI"
 ---
-# Security Requirements for managing services
+# Security requirements for managing services
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 

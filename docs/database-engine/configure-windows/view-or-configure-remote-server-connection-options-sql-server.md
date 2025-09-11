@@ -72,7 +72,7 @@ USE master;
 EXECUTE sp_serveroption 'SEATTLE3', 'collation compatible', 'true';
 ```
 
-## Follow Up: After you configure remote server connection options
+## Follow up: After you configure remote server connection options
 
 The remote server must be stopped and restarted before the setting can take effect.
 
@@ -80,7 +80,7 @@ The remote server must be stopped and restarted before the setting can take effe
 
 - [Server configuration: remote access](configure-the-remote-access-server-configuration-option.md)
 - [Server configuration options](server-configuration-options-sql-server.md)
-- [Remote Servers](remote-servers.md)
+- [Remote servers](remote-servers.md)
 - [Linked servers (Database Engine)](../../relational-databases/linked-servers/linked-servers-database-engine.md)
 - [sp_linkedservers (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-linkedservers-transact-sql.md)
 - [sp_helpserver (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-helpserver-transact-sql.md)
