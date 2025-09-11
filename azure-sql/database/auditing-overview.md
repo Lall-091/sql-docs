@@ -56,7 +56,7 @@ You can use SQL Database auditing to:
 
 ### Full-length SQL audit statements (August 2025)
 
-Azure SQL Database supports full-length audit statements, removing the previous 4,000 character truncation limit for fields like `statement` in the audit file.
+Azure SQL Database supports full-length audit statements, removing the previous 4,000 character truncation limit in the audit file.
 
 Key benefits of this update include:
 
