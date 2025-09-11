@@ -1,6 +1,6 @@
 ---
-title: "Geo-Replication Dynamic Management Views and Functions (Azure SQL Database)"
-description: Geo-Replication Dynamic Management Views and Functions (Azure SQL Database)
+title: "Geo-Replication Dynamic Management Views and Functions"
+description: Geo-Replication Dynamic Management Views and Functions
 author: rwestMSFT
 ms.author: randolphwest
 ms.date: "11/24/2015"
@@ -14,13 +14,13 @@ helpviewer_keywords:
   - "geo-replication [Azure SQL Database]"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||=fabric"
 ---
-# Geo-Replication Dynamic Management Views and Functions (Azure SQL Database)
+# Geo-Replication Dynamic Management Views and Functions
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
 
-  This section contains the following catalog views that display information about geo-replication.  
+  This section contains the following catalog views that display information about geo-replication.
 
 :::row:::
     :::column:::
