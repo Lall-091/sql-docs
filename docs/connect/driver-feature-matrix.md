@@ -4,7 +4,7 @@ description: Learn which SQL Server features are supported in the drivers for .N
 author: David-Engel
 ms.author: davidengel
 ms.reviewer: davidengel
-ms.date: 07/17/2025
+ms.date: 09/11/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -75,8 +75,8 @@ We wish all drivers supported every feature and spend effort to ensure feature p
 | [MultiSubnetFailover](../relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery.md#connecting-with-multisubnetfailover) | [Yes](../relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery.md#connecting-with-multisubnetfailover) | [Yes](../relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery.md#connecting-with-multisubnetfailover) | [Yes](jdbc/jdbc-driver-support-for-high-availability-disaster-recovery.md) | [Yes](oledb/features/oledb-driver-for-sql-server-support-for-high-availability-disaster-recovery.md#connecting-with-multisubnetfailover) |
 | [Transparent Network IP Resolution](odbc/using-transparent-network-ip-resolution.md) | [Yes](odbc/using-transparent-network-ip-resolution.md) (v13.0+) | [Yes](odbc/using-transparent-network-ip-resolution.md) (v13.1+) | [Yes](jdbc/setting-the-connection-properties.md) (v6.0+) | [Yes](oledb/features/using-transparent-network-ip-resolution.md) (v18.4+) |
 | [TDS 8.0 (strict encryption) and TLS 1.3](../relational-databases/security/networking/tds-8.md) | Yes (v18.0+) | Yes (v18.0+) | Yes (v11.2+) | Yes (v19.2+) |
-| [JSON data type](../relational-databases/json/json-data-sql-server.md) | | | | |
-| [Vector data type](../relational-databases/vectors/vectors-sql-server.md) | | | | |
+| [JSON data type](../relational-databases/json/json-data-sql-server.md) | | | [Yes](jdbc/use-json-data-type.md) (v13.2+) | |
+| [Vector data type](../relational-databases/vectors/vectors-sql-server.md) | | | [Yes](jdbc/use-vector-data-type.md) (v13.2+) | |
 
 | <a id="table3"></a>Feature | [Drivers for PHP for SQL Server on Windows](php/microsoft-php-driver-for-sql-server.md)<sup>[1](#note1)</sup> | [Drivers for PHP for SQL Server on Linux and macOS](php/microsoft-php-driver-for-sql-server.md)<sup>[1](#note1)</sup> | [Tedious (Node.js)](node-js/node-js-driver-for-sql-server.md) | [pyODBC (Python)](python/pyodbc/python-sql-driver-pyodbc.md)<sup>[1](#note1)</sup> | [Go (go-lang)](https://aka.ms/go-mssqldb) |
 | :-- | :-- | :-- | :-- | :-- | :-- |
