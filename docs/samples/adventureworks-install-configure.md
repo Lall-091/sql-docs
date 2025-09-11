@@ -164,7 +164,7 @@ To get sample data for SQL Managed Instance instead, see [Restore World Wide Imp
 
 When you create a new database in SQL Database, you can create a blank database, restore from a backup, or select sample data to populate your new database.
 
-Follow these steps to add sample data to your new database:
+Follow these steps to deploy a new sample `AdventureWorksLT` database in Azure SQL Database:
 
 1. Connect to the Azure portal.
 1. Select **Create a resource** at the top of the left pane.
@@ -174,7 +174,7 @@ Follow these steps to add sample data to your new database:
 
    :::image type="content" source="media/adventureworks-install-configure/deploy-sample-to-azure.png" alt-text="Screenshot that shows the Sample option under Use existing data." lightbox="media/adventureworks-install-configure/deploy-sample-to-azure.png":::
 
-1. Select **Create** to create your new database, which is the restored copy of the `AdventureWorksLT` database.
+1. Select **Create** to create your new sample database.
 
 ### Deploy a database from SQL Server
 
