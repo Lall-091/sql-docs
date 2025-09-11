@@ -163,12 +163,12 @@ Follow these steps to set up the variables needed to hard-delete the soft-delete
 1. Update the API request body to update the retentionDays parameter. The value `0` means immediate deletion with no retention period.
 
    ```powershell
-    $body={
+    $body='{
       "properties": {
         "retentionDays": 0 
       },
       "location": "<Azure region name>"
-    }
+    }'
    ```
 1. Run the following PowerShell command to update the retention of the restored Azure SQL Database logical server. Allow a minute for this update operation to complete.
 
