@@ -14,14 +14,14 @@ ms.topic: conceptual
 
 [!INCLUDE [sql-asdbmi](../../includes/applies-to-version/sql-asdbmi.md)]
 
-You can create a Broker Configuration Notice (BCN) service on an initiating server which will automatically bind conversations to a specific user on a target server.
+You can create a Broker Configuration Notice (BCN) service on an initiating server which automatically binds conversations to a specific user on a target server.
 
 ## Initiate conversations
 
-When a BCN service is created, the initiating service will send a **MissingRemoteServiceBinding** message to the BCN service to ask if a user context is available for the conversation on the target server. When the BCN service responds that a user context is available, the user context is bound to the conversation, and all messages are added to the queue under the context of the user. If `ENCRYPTION = ON`, the dialog will not proceed until the BCN service confirms that a user context is available. If `ENCRYPTION = OFF`, the dialog will proceed after the BCN ends the **MissingRemoteServiceBinding** conversation.
+When a BCN service is created, the initiating service sends a **MissingRemoteServiceBinding** message to the BCN service to ask if a user context is available for the conversation on the target server. When the BCN service responds that a user context is available, the user context is bound to the conversation, and all messages are added to the queue under the context of the user. If `ENCRYPTION = ON`, the dialog won't proceed until the BCN service confirms that a user context is available. If `ENCRYPTION = OFF`, the dialog proceeds after the BCN ends the **MissingRemoteServiceBinding** conversation.
 
 > [!NOTE]  
-> If a BCN service is created, the initiating service will request the user context regardless of the encryption status.
+> If a BCN service is created, the initiating service requests the user context regardless of the encryption status.
 
 ## Service Broker Configuration Notice service and dynamic routing
 

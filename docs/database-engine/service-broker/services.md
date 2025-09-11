@@ -31,5 +31,5 @@ Each service specifies a queue to hold incoming messages. The contracts associat
 - [ALTER SERVICE (Transact-SQL)](../../t-sql/statements/alter-service-transact-sql.md)
 - [DROP SERVICE (Transact-SQL)](../../t-sql/statements/drop-service-transact-sql.md)
 - [Service Broker routing](service-broker-routing.md)
-- [Understanding when activation occurs](understanding-when-activation-occurs.md)
+- [Understand when activation occurs](understanding-when-activation-occurs.md)
 - [Create Service Broker services](creating-service-broker-services.md)

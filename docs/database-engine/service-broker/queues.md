@@ -33,6 +33,6 @@ A queue might be associated with a stored procedure. In this case, SQL Server ac
 - [RECEIVE (Transact-SQL)](../../t-sql/statements/receive-transact-sql.md)
 - [Service Broker activation](service-broker-activation.md)
 - [Choose a startup strategy](choosing-a-startup-strategy.md)
-- [Understanding when activation occurs](understanding-when-activation-occurs.md)
+- [Understand when activation occurs](understanding-when-activation-occurs.md)
 - [Create Service Broker queues](creating-service-broker-queues.md)
 - [Benefits of programming with Service Broker](benefits-of-programming-with-service-broker.md)

@@ -60,7 +60,7 @@ Fragmenting messages has several advantages. Sending a large message in small fr
 
 While a message is being reassembled, the partial message is stored in the destination queue. If the destination queue isn't available, it's stored in the transmission queue. A partial message can't be received by an application. The `status` column for a partial message is set to `2` (Disabled). This value is also used for messages received out of order.
 
-### Message acknowledgement
+### Message acknowledgment
 
 Service Broker acknowledges each message received. An acknowledgment can acknowledge one or several message fragments. If possible, an acknowledgment is included in the header of a message returned on the same conversation. If no other messages are ready to be sent, Service Broker returns a dedicated acknowledgment message. Message acknowledgment is handled entirely by Service Broker; an application that uses Service Broker doesn't receive these messages.
 

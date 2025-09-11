@@ -1,5 +1,5 @@
 ---
-title: Removing Poison Messages
+title: Remove Poison Messages
 description: "A poison message is a message containing information that an application cannot successfully process."
 author: rwestMSFT
 ms.author: randolphwest
@@ -20,7 +20,7 @@ A poison message isn't a corrupt message, and might not be an invalid request. S
 
 ## Automatic poison message detection
 
-Service Broker provides automatic poison message detection. When a transaction that contains a `RECEIVE` statement rolls back five times, Service Broker disables all queues that the transaction received messages from, by automatically setting the queue status to `OFF`. In addition, Service Broker generates an event of type Broker:Queue Disabled.
+Service Broker provides automatic poison message detection. When a transaction that contains a `RECEIVE` statement rolls back five times, Service Broker disables all queues from which the transaction received messages by automatically setting the queue status to `OFF`. In addition, Service Broker generates an event of type **Broker:Queue Disabled**.
 
 An administrator might use SQL Server Agent alerts to be notified when a queue is disabled. A developer can also create an application that detects when a queue is disabled by Service Broker. That application often inspects the messages in the queue to find the poison message. Once the application determines which message can't be processed, the application sets the queue status to `ON` and ends the conversation for the message with an error. An application that detects poison messages must be careful to clean up any state associated with the conversation when ending the conversation. For more information on creating an application to recover from poison messages, see [Handle poison messages](handling-poison-messages.md).
 
@@ -94,7 +94,7 @@ ROLLBACK TRANSACTION;
 GO
 ```
 
-When you find a poison message, you end the conversation. The following example ends the conversation e29059bb-9922-40f4-a575-66b2e4c70cf9.
+When you find a poison message, you end the conversation. The following example ends the conversation e29059bb-9922-40f4-a575-66b2e4c70cf9:
 
 ```sql
 -- End the conversation. Do this only if the message cannot be

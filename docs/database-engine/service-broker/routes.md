@@ -18,15 +18,15 @@ Service Broker uses routes to determine where to deliver messages. When a servic
 
 There are three basic components of a route:
 
-- Service name
+- **Service name**
 
   The name of the service that this route specifies addressing for. This name must be an exact match for the Service Name in the `BEGIN DIALOG` command.
 
-- Broker instance identifier
+- **Broker instance identifier**
 
   A unique identifier for a specific database to send the messages to. This is the `service_broker_guid` column in the `sys.databases` table row for the database that this route points to.
 
-- Network address
+- **Network address**
 
   An actual machine address, a keyword that restricts the route to the local machine, or a keyword that indicates that the transport layer deduces the address from the service name. A network address can be the address of the broker that hosts the service, or it can be the address of a forwarding broker.
 

@@ -37,4 +37,4 @@ Using activation stored procedures is a common way to design Service Broker appl
 - [CREATE QUEUE (Transact-SQL)](../../t-sql/statements/create-queue-transact-sql.md)
 - [Conversation architecture](conversation-architecture.md)
 - [Queues](queues.md)
-- [Understanding when activation occurs](understanding-when-activation-occurs.md)
+- [Understand when activation occurs](understanding-when-activation-occurs.md)
