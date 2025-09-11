@@ -130,7 +130,7 @@ GO
 
 ## Related content
 
-- [How to: Configure Target Services for Full Dialog Security (Transact-SQL)](how-to-configure-target-services-for-full-dialog-security-transact-sql.md)
+- [How to: Configure target services for full dialog security (Transact-SQL)](how-to-configure-target-services-for-full-dialog-security-transact-sql.md)
 - [How to: Configure permissions for a local service (Transact-SQL)](how-to-configure-permissions-for-a-local-service-transact-sql.md)
 - [CREATE LOGIN (Transact-SQL)](../../t-sql/statements/create-login-transact-sql.md)
 - [CREATE USER (Transact-SQL)](../../t-sql/statements/create-user-transact-sql.md)

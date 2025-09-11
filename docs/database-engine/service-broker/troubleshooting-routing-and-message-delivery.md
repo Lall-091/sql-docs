@@ -50,7 +50,7 @@ The most common causes for this problem are as follows:
 - The `SEND` statement created the message when no route existed to successfully deliver the message.
 - The route was then created, but Service Broker hasn't yet tried to resend the message.
 
-For more information about retries, see [Service Broker Routing and Networking](service-broker-routing-and-networking.md).
+For more information about retries, see [Service Broker routing and networking](service-broker-routing-and-networking.md).
 
 Ensure that the service name specified in the message exactly matches the service name specified in the route. Service Broker uses a byte-by-byte binary comparison to match service names. If a route that specifies the service name exists, you can compare the names by running the following query:
 
@@ -63,7 +63,7 @@ WHERE NOT EXISTS (SELECT remote_service_name
 ```
 
 > [!NOTE]  
-> Some service names might appear in the result set even though they do match a route. A route that doesn't specify a service name (`remote_service_name = NULL`) matches the service name used with any message. For more information about Service Broker routes, see [Service Broker Routing](service-broker-routing.md).
+> Some service names might appear in the result set even though they do match a route. A route that doesn't specify a service name (`remote_service_name = NULL`) matches the service name used with any message. For more information about Service Broker routes, see [Service Broker routing](service-broker-routing.md).
 
 If the message specifies a broker instance identifier, verify either that the route specifies the same broker instance identifier, or that the route doesn't specify a broker instance identifier at all.
 
@@ -75,7 +75,7 @@ The destination didn't accept the message. This can indicate that the service na
 
 ## Problem: Transmission status shows transport layer unavailable
 
-Verify that a Service Broker endpoint exists. If no endpoint exists, create one. If an endpoint does exist, verify that the state of the endpoint is `STARTED`. For more information, see [Service Broker Endpoints](service-broker-endpoints.md). For more information about how to create an endpoint, see [How to: Activate Service Broker networking](how-to-activate-service-broker-networking-transact-sql.md).
+Verify that a Service Broker endpoint exists. If no endpoint exists, create one. If an endpoint does exist, verify that the state of the endpoint is `STARTED`. For more information, see [Service Broker endpoints](service-broker-endpoints.md). For more information about how to create an endpoint, see [How to: Activate Service Broker networking](how-to-activate-service-broker-networking-transact-sql.md).
 
 ## Problem: Transmission status shows "An existing connection was forcibly closed by the remote host"
 
@@ -84,7 +84,7 @@ Transport security might be incorrectly configured, or the TCP/IP address for th
 > [!NOTE]  
 > The port specified in the route must correspond to the port that is used by the Service Broker endpoint on the remote instance of the Database Engine. Service Broker uses the Service Broker communications protocols to transmit messages, not the Tabular Data Stream protocol that is used to transmit Transact-SQL batches and results. Therefore, the port that is used by a Service Broker endpoint differs from the port that is used to transmit Transact-SQL. Check the Service Broker endpoint configuration to ensure that the two instances have compatible network security settings. If the Service Broker endpoint for one instance specifies `REQUIRED` or `ENABLED`, the Service Broker endpoint for the other instance can't specify `NONE`.
 
-Check certificates, users, and permissions for Service Broker transport security. For more information, see [Service Broker Transport Security](service-broker-transport-security.md).
+Check certificates, users, and permissions for Service Broker transport security. For more information, see [Service Broker transport security](service-broker-transport-security.md).
 
 ## Related content
 
@@ -92,7 +92,7 @@ Check certificates, users, and permissions for Service Broker transport security
 - [sys.databases (Transact-SQL)](../../relational-databases/system-catalog-views/sys-databases-transact-sql.md)
 - [sys.routes (Transact-SQL)](../../relational-databases/system-catalog-views/sys-routes-transact-sql.md)
 - [sys.service_broker_endpoints (Transact-SQL)](../../relational-databases/system-catalog-views/sys-service-broker-endpoints-transact-sql.md)
-- [Service Broker Routing and Networking](service-broker-routing-and-networking.md)
-- [Service Broker Endpoints](service-broker-endpoints.md)
-- [Service Broker Routing](service-broker-routing.md)
-- [Starting and Stopping the Queue](starting-and-stopping-the-queue.md)
+- [Service Broker routing and networking](service-broker-routing-and-networking.md)
+- [Service Broker endpoints](service-broker-endpoints.md)
+- [Service Broker routing](service-broker-routing.md)
+- [Start and stop the Service Broker queue](starting-and-stopping-the-queue.md)

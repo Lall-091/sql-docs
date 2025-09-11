@@ -64,12 +64,12 @@ If your application involves sending messages between SQL Server instances, we r
 | [Create Service Broker contracts](creating-service-broker-contracts.md) | Describes contracts and how they are used. |
 | [Create Service Broker queues](creating-service-broker-queues.md) | Describes queues and how they are used. |
 | [Create Service Broker services](creating-service-broker-services.md) | Describes services and how they are used. |
-| [Naming Service Broker Objects](naming-service-broker-objects.md) | Describes considerations for naming service broker objects. |
-| [Service Script Example](service-script-example.md) | Describes a Transact-SQL code sample and defines a service. |
+| [Name Service Broker objects](naming-service-broker-objects.md) | Describes considerations for naming service broker objects. |
+| [Service script example](service-script-example.md) | Describes a Transact-SQL code sample and defines a service. |
 
 ## Related content
 
 - [Contracts](contracts.md)
 - [Queues](queues.md)
-- [Message Types](message-types.md)
-- [Service Broker Routing](service-broker-routing.md)
+- [Message types](message-types.md)
+- [Service Broker routing](service-broker-routing.md)

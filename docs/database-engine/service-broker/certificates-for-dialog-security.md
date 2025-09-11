@@ -61,4 +61,4 @@ When Service Broker itself generates a message in response to an incoming messag
 - [ALTER CERTIFICATE (Transact-SQL)](../../t-sql/statements/alter-certificate-transact-sql.md)
 - [DROP CERTIFICATE (Transact-SQL)](../../t-sql/statements/drop-certificate-transact-sql.md)
 - [Certificates and Service Broker](certificates-and-service-broker.md)
-- [Remote Service Bindings](remote-service-bindings.md)
+- [Remote service bindings](remote-service-bindings.md)

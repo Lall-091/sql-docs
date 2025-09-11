@@ -21,10 +21,10 @@ This section provides high-level information that can help when you design and i
 | Article | Description |
 | --- | --- |
 | [Benefits of programming with Service Broker](benefits-of-programming-with-service-broker.md) | Lists some of the benefits of programming with Service Broker. |
-| [Service Broker Applications](service-broker-applications.md) | Provides a high-level overview of Service Broker application components. |
-| [Planning for Service Broker Development](planning-for-service-broker-development.md) | Provides issues to consider when designing and implementing Service Broker applications. |
+| [Service Broker applications](service-broker-applications.md) | Provides a high-level overview of Service Broker application components. |
+| [Plan for Service Broker development](planning-for-service-broker-development.md) | Provides issues to consider when designing and implementing Service Broker applications. |
 | [Developer responsibilities for Service Broker](developer-responsibilities-for-service-broker.md) | Lists the tasks involved with creating Service Broker applications. |
 
 ## Related content
 
-- [Planning for Service Broker Development](planning-for-service-broker-development.md)
+- [Plan for Service Broker development](planning-for-service-broker-development.md)

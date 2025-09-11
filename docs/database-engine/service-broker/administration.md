@@ -20,12 +20,12 @@ This section describes the tasks that are involved in administering a database t
 
 | Article | Description |
 | --- | --- |
-| [Managing Service Broker Applications](managing-service-broker-applications.md) | Describes the tasks that are required to install, maintain, and uninstall Service Broker applications. |
-| [Managing Service Broker Identities](managing-service-broker-identities.md) | Describes how Service Broker identities protect against message misdirection. |
-| [Managing Queues and Messages](managing-queues-and-messages.md) | Describes how an administrator works with queues and messages. |
-| [Managing Forwarding (Service Broker)](managing-forwarding.md) | Describes administrative considerations to manage a database that provides Service Broker message forwarding. |
-| [Managing Security (Service Broker)](managing-security.md) | Describes administrative considerations to manage the security for a Service Broker application. |
-| [Managing Routing](managing-routing.md) | Describes considerations to manage routing. |
+| [Manage Service Broker applications](managing-service-broker-applications.md) | Describes the tasks that are required to install, maintain, and uninstall Service Broker applications. |
+| [Manage Service Broker identities](managing-service-broker-identities.md) | Describes how Service Broker identities protect against message misdirection. |
+| [Manage queues and messages](managing-queues-and-messages.md) | Describes how an administrator works with queues and messages. |
+| [Manage forwarding (Service Broker)](managing-forwarding.md) | Describes administrative considerations to manage a database that provides Service Broker message forwarding. |
+| [Manage security (Service Broker)](managing-security.md) | Describes administrative considerations to manage the security for a Service Broker application. |
+| [Manage routing](managing-routing.md) | Describes considerations to manage routing. |
 
 ## Related content
 

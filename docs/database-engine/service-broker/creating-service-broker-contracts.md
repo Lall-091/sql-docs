@@ -22,7 +22,7 @@ A contract doesn't specify message ordering or the number of messages of a parti
 
 More than one contract can use the same message types. For example, a message that consists of an XML document that contains a part number and quantity might be useful in a task that accepts an order from a customer, a task that manages inventory, and a task that requests shipping. Each task corresponds to a distinct contract, but all three contracts can use the same message type.
 
-The network format for a message includes the name of the contract. Therefore, contract names are often chosen to avoid collation issues and naming conflicts. For more information on naming, see [Naming Service Broker Objects](naming-service-broker-objects.md).
+The network format for a message includes the name of the contract. Therefore, contract names are often chosen to avoid collation issues and naming conflicts. For more information on naming, see [Name Service Broker objects](naming-service-broker-objects.md).
 
 ## Related content
 

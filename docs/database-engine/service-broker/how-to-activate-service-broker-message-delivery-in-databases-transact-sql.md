@@ -38,7 +38,7 @@ GO
 
 ## Related content
 
-- [How to: Deactivate Service Broker Message Delivery in Databases (Transact-SQL)](how-to-deactivate-service-broker-message-delivery-in-databases-transact-sql.md)
+- [How to: Deactivate Service Broker message delivery in databases (Transact-SQL)](how-to-deactivate-service-broker-message-delivery-in-databases-transact-sql.md)
 - [How to: Activate Service Broker networking (Transact-SQL)](how-to-activate-service-broker-networking-transact-sql.md)
 - [ALTER DATABASE (Transact-SQL)](../../t-sql/statements/alter-database-transact-sql.md)
 - [sys.databases (Transact-SQL)](../../relational-databases/system-catalog-views/sys-databases-transact-sql.md)

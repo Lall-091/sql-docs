@@ -27,9 +27,9 @@ SQL Server uses certificates to verify a remote database's identity and to ident
 
 To verify a remote server's identity, SQL Server must receive information that can be decrypted with the public key in a certificate owned by a local database principal. If SQL Server can successfully decrypt the information, it means that the remote database contains the private key that corresponds to the public key in the local certificate. Once SQL Server verifies a remote database's identity, the remote database can act with the permissions of the local database principal.
 
-For transport security, each database must trust the other database. Transport security can use either certificates or Windows Authentication. For more information on transport security, see [Service Broker Transport Security](service-broker-transport-security.md).
+For transport security, each database must trust the other database. Transport security can use either certificates or Windows Authentication. For more information on transport security, see [Service Broker transport security](service-broker-transport-security.md).
 
-For dialog security, the initiator of the dialog must trust the target, and must be able to verify the identity of the target. However, the target might allow connections from initiators that don't provide identifying information. In this case, the initiators use the **public** role in the database that hosts the target service. Dialog security always uses certificates. For more information on dialog security, see [Service Broker Dialog Security](service-broker-dialog-security.md).
+For dialog security, the initiator of the dialog must trust the target, and must be able to verify the identity of the target. However, the target might allow connections from initiators that don't provide identifying information. In this case, the initiators use the **public** role in the database that hosts the target service. Dialog security always uses certificates. For more information on dialog security, see [Service Broker dialog security](service-broker-dialog-security.md).
 
 SQL Server doesn't provide automated methods for configuration of Service Broker security by means of certificates.
 
@@ -53,6 +53,6 @@ In order for SQL Server to use a certificate to begin a conversation, the certif
 
 - [CREATE CERTIFICATE (Transact-SQL)](../../t-sql/statements/create-certificate-transact-sql.md)
 - [Encryption hierarchy](../../relational-databases/security/encryption/encryption-hierarchy.md)
-- [Service Broker Communication Protocols](service-broker-communication-protocols.md)
-- [Remote Service Bindings](remote-service-bindings.md)
+- [Service Broker communication protocols](service-broker-communication-protocols.md)
+- [Remote service bindings](remote-service-bindings.md)
 - [Certificates for dialog security](certificates-for-dialog-security.md)

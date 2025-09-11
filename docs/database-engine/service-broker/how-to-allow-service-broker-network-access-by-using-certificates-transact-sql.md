@@ -75,7 +75,7 @@ GO
 
 ## Related content
 
-- [How to: Create Certificates for Service Broker Transport Security (Transact-SQL)](how-to-create-certificates-for-service-broker-transport-security-transact-sql.md)
+- [How to: Create certificates for Service Broker transport security (Transact-SQL)](how-to-create-certificates-for-service-broker-transport-security-transact-sql.md)
 - [CREATE CERTIFICATE (Transact-SQL)](../../t-sql/statements/create-certificate-transact-sql.md)
 - [CREATE LOGIN (Transact-SQL)](../../t-sql/statements/create-login-transact-sql.md)
 - [CREATE USER (Transact-SQL)](../../t-sql/statements/create-user-transact-sql.md)

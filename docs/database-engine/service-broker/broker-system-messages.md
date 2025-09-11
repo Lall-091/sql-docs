@@ -59,7 +59,7 @@ Dialog timer messages are empty messages. A receive operation receives the dialo
 
 ## Related content
 
-- [How to: Retrieve Information from a Service Broker Error Message (Transact SQL)](how-to-retrieve-information-from-a-service-broker-error-message-transact-sql.md)
+- [How to: Retrieve information from a Service Broker error message (Transact SQL)](how-to-retrieve-information-from-a-service-broker-error-message-transact-sql.md)
 - [BEGIN CONVERSATION TIMER (Transact-SQL)](../../t-sql/statements/begin-conversation-timer-transact-sql.md)
 - [BEGIN DIALOG CONVERSATION (Transact-SQL)](../../t-sql/statements/begin-dialog-conversation-transact-sql.md)
 - [CREATE CONTRACT (Transact-SQL)](../../t-sql/statements/create-contract-transact-sql.md)

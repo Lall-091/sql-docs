@@ -16,13 +16,13 @@ ms.topic: how-to
 
 A queue holds incoming messages for a service. To simplify processing, applications typically create one queue per service instead of using the same queue for multiple services.
 
-Setting the retention option for a queue cause messages to be retained after they are processed. Because retention reduces application performance, specify retention only if the application requires persistent access to the exact messages sent and received. For more information about message retention, see [Message Retention](message-retention.md).
+Setting the retention option for a queue cause messages to be retained after they are processed. Because retention reduces application performance, specify retention only if the application requires persistent access to the exact messages sent and received. For more information about message retention, see [Message retention](message-retention.md).
 
 For applications that don't use internal activation, don't specify an activation clause on the queue definition.
 
 For applications that use internal activation, the queue definition includes the name of the stored procedure, the maximum number of readers for SQL Server to start, and the name of the database principal to impersonate before starting the stored procedure.
 
-The name of a queue isn't included in the network format of a message. Queues are schema-owned objects. Therefore, queue names follow SQL Server naming conventions. For more information about naming, see [Naming Service Broker Objects](naming-service-broker-objects.md).
+The name of a queue isn't included in the network format of a message. Queues are schema-owned objects. Therefore, queue names follow SQL Server naming conventions. For more information about naming, see [Name Service Broker objects](naming-service-broker-objects.md).
 
 ## Stored procedure activation
 

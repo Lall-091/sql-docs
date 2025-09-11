@@ -4,7 +4,7 @@ description: "A Service Broker service is a name for a specific business task or
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray, maghan
-ms.date: 05/27/2025
+ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -30,6 +30,6 @@ Each service specifies a queue to hold incoming messages. The contracts associat
 - [CREATE SERVICE (Transact-SQL)](../../t-sql/statements/create-service-transact-sql.md)
 - [ALTER SERVICE (Transact-SQL)](../../t-sql/statements/alter-service-transact-sql.md)
 - [DROP SERVICE (Transact-SQL)](../../t-sql/statements/drop-service-transact-sql.md)
-- [Service Broker Routing](service-broker-routing.md)
-- [Understanding When Activation Occurs](understanding-when-activation-occurs.md)
-- [Creating Service Broker Services](creating-service-broker-services.md)
+- [Service Broker routing](service-broker-routing.md)
+- [Understanding when activation occurs](understanding-when-activation-occurs.md)
+- [Create Service Broker services](creating-service-broker-services.md)

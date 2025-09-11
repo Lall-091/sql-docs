@@ -87,5 +87,5 @@ The most flexible way to do this is to create a certificate and remote service b
 
 - [Broker:Corrupted Message Event Class](../../relational-databases/event-classes/broker-corrupted-message-event-class.md)
 - [Audit Broker Login Event Class](../../relational-databases/event-classes/audit-broker-login-event-class.md)
-- [Remote Service Bindings](remote-service-bindings.md)
+- [Remote service bindings](remote-service-bindings.md)
 - [Determine the dialog security type](determining-the-dialog-security-type.md)

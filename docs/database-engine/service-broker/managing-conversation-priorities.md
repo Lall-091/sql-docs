@@ -4,7 +4,7 @@ description: "Service Broker conversation priorities let you specify which conve
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray, maghan
-ms.date: 08/29/2025
+ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: how-to
@@ -18,18 +18,20 @@ Service Broker conversation priorities let you specify which conversations to pr
 
 ## Enable conversation priorities
 
-Conversation priorities are always active for `RECEIVE` statements. The `HONOR_BROKER_PRIORITY` database option must be on to make conversation priorities active for `SEND` statements. By default, this option is off for all databases.
+Conversation priorities are always active for `RECEIVE` statements. The **HONOR_BROKER_PRIORITY** database option must be on to make conversation priorities active for `SEND` statements. By default, this option is off for all databases.
 
 An administrator can enable conversation priorities for `SEND` statements in a database by using the following statement:
 
 ```sql
-ALTER DATABASE MyDatabase SET HONOR_BROKER_PRIORITY ON;
+ALTER DATABASE MyDatabase
+    SET HONOR_BROKER_PRIORITY ON;
 ```
 
 An administrator can turn off conversation priorities for `SEND` statements by using the following statement:
 
 ```sql
-ALTER DATABASE MyDatabase SET HONOR_BROKER_PRIORITY OFF;
+ALTER DATABASE MyDatabase
+    SET HONOR_BROKER_PRIORITY OFF;
 ```
 
 ## Specify conversation priorities

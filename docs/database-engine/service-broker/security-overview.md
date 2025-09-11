@@ -60,9 +60,9 @@ To satisfy the requirement that only qualified vendors can connect to the Advent
 
 1. Finally, the AdventureWorks2008R2 administrator creates a user in the `master` database to own each vendor public key certificate and installs each vendor certificate in the database.
 
-The combination of transport security and dialog security helps the AdventureWorks2008R2 administrator meet the security requirements of this application. Notice that, in this scenario, vendors can't log on to the AdventureWorks2008R2 database, and the Adventure Works administrator can't log on to the vendor databases. Only Service Broker messages can be exchanged between the databases.
+The combination of transport security and dialog security helps the AdventureWorks2008R2 administrator meet the security requirements of this application. In this scenario, vendors can't log on to the AdventureWorks2008R2 database, and the Adventure Works administrator can't log on to the vendor databases. Only Service Broker messages can be exchanged between the databases.
 
 ## Related content
 
 - [CREATE CERTIFICATE (Transact-SQL)](../../t-sql/statements/create-certificate-transact-sql.md)
-- [Service Broker Communication Protocols](service-broker-communication-protocols.md)
+- [Service Broker communication protocols](service-broker-communication-protocols.md)

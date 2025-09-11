@@ -1,10 +1,10 @@
 ---
-title: "Lesson 3: Dropping the Conversation Objects"
+title: "Lesson 3: Drop the Conversation Objects"
 description: "In this lesson, you learn to drop the objects that enabled a database to support a conversation in the database."
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray, maghan
-ms.date: 09/03/2025
+ms.date: 09/08/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: how-to
@@ -22,7 +22,7 @@ In this lesson, you learn to drop the objects that enabled a database to support
 
 ### Switch to the AdventureWorks2008R2 database
 
-- Copy and paste the following code into a Query Editor window. Then, run it to switch context to the AdventureWorks2008R2 database.
+- Copy and paste the following code into a Query Editor window, then run it to switch context to the AdventureWorks2008R2 database.
 
   ```sql
   USE AdventureWorks2008R2;
@@ -31,7 +31,7 @@ In this lesson, you learn to drop the objects that enabled a database to support
 
 ### Drop the conversation objects
 
-- Copy and paste the following code into a Query Editor window. Then, run it to drop the objects that were used to support the conversation.
+- Copy and paste the following code into a Query Editor window, then run it to drop the objects that were used to support the conversation.
 
   ```sql
   IF EXISTS (SELECT *

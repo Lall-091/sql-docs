@@ -1,35 +1,30 @@
 ---
-title: Managing Queues and Messages
+title: Manage Queues and Messages
 description: "When a Service Broker application is in production, most day-to-day management occurs as a normal part of maintenance of the Database Engine."
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray, maghan
-ms.date: "03/30/2022"
+ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: reference
 ---
 
-# Managing Queues and Messages
+# Manage queues and messages
 
 [!INCLUDE [sql-asdbmi](../../includes/applies-to-version/sql-asdbmi.md)]
 
 When a Service Broker application is in production, most day-to-day management occurs as a normal part of maintenance of the Database Engine. Service Broker provides performance counters and event notifications to monitor a service. However, you might have to work directly with a message queue or with the messages in a queue. This might be necessary to troubleshoot a service or to collect information about the traffic that is received by a queue.
 
-## In This Section
+## In this section
 
-- [Starting and Stopping the Queue](starting-and-stopping-the-queue.md)  
-    Describes how to start and stop a queue.
+| Article | Description |
+| --- | --- |
+| [Start and stop the Service Broker queue](starting-and-stopping-the-queue.md) | Describes how to start and stop a queue. |
+| [Query queues](querying-queues.md) | Describes the data that a queue contains, and the process for running queries against a queue. |
+| [Remove poison messages](removing-poison-messages.md) | Describes how to handle messages that can't be processed by the service. |
+| [Manage conversation priorities](managing-conversation-priorities.md) | Describes how to enable, specify, and query conversation priorities. |
 
-- [Querying Queues](querying-queues.md)  
-    Describes the data that a queue contains, and the process for running queries against a queue.
+## Related content
 
-- [Removing Poison Messages](removing-poison-messages.md)  
-    Describes how to handle messages that cannot be processed by the service.
-
-- [Managing Conversation Priorities](managing-conversation-priorities.md)  
-    Describes how to enable, specify, and query conversation priorities.
-
-## See also
-
-- [Managing Service Broker Applications](managing-service-broker-applications.md)
+- [Manage Service Broker applications](managing-service-broker-applications.md)

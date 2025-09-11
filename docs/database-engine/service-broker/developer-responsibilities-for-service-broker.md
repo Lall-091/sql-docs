@@ -46,4 +46,4 @@ The tasks involved in creating an individual application depend on the needs of 
 
 ## Related content
 
-- [Planning for Service Broker Development](planning-for-service-broker-development.md)
+- [Plan for Service Broker development](planning-for-service-broker-development.md)

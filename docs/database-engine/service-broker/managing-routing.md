@@ -1,10 +1,10 @@
 ---
-title: Managing Routing
+title: Manage Routing
 description: "Service Broker uses routes to determine where to deliver messages."
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray, maghan
-ms.date: 09/03/2025
+ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -31,4 +31,4 @@ An application that uses dynamic routing, however, might use route expiration to
 ## Related content
 
 - [Routes](routes.md)
-- [Service Broker Routing](service-broker-routing.md)
+- [Service Broker routing](service-broker-routing.md)

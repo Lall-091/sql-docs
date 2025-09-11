@@ -24,7 +24,7 @@ The Service Broker communications protocols are designed to work with this messa
 
 The validation specified for the message depends on the content of the message. A common practice is to use the most restrictive validation available during testing, and then to choose less-restrictive validation to improve performance when the application is deployed. For example, it's possible to exchange a typed XML document as the body of a message that specifies a validation of `NONE`. In this case, your application validates the message when processing the XML.
 
-The network format for a message includes the name of the message type. Therefore, message type names are often chosen to avoid collation issues and naming conflicts. For more information on naming, see [Naming Service Broker Objects](naming-service-broker-objects.md).
+The network format for a message includes the name of the message type. Therefore, message type names are often chosen to avoid collation issues and naming conflicts. For more information on naming, see [Name Service Broker objects](naming-service-broker-objects.md).
 
 ## Indicate success and failure
 
@@ -37,4 +37,4 @@ Either participant can end a conversation with an error at any time. For a discu
 ## Related content
 
 - [CREATE MESSAGE TYPE (Transact-SQL)](../../t-sql/statements/create-message-type-transact-sql.md)
-- [Service Broker Communication Protocols](service-broker-communication-protocols.md)
+- [Service Broker communication protocols](service-broker-communication-protocols.md)

@@ -26,7 +26,7 @@ For information on creating applications with Service Broker, see [Benefits of p
 
 The following illustration shows the interaction in an application that uses Service Broker:
 
-:::image type="content" source="media/broker03.gif" alt-text="Diagram of the relationship and flow of messages in conversations.":::
+:::image type="content" source="media/building-applications-with-service-broker/broker-message-flow.png" alt-text="Diagram of the relationship and flow of messages in conversations.":::
 
 As shown in the illustration, the `SubmitExpense`, `AcceptDenyExpense`, and `ReimbursementIssued` message types are created first. The `ProcessExpenses` contract is created based on these message types and provides a schema for having a conversation to complete an expense reimbursement task. The `ProcessExpenses` contract governs all conversations between the `ProcessExpense` service and the `SubmitExpense` service. The `ProcessExpenses` contract and the message types that it uses must exist in the databases of all services that have conversations based on this contract.
 

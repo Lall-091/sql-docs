@@ -20,7 +20,7 @@ Dialogs provide exactly-once-in-order (EOIO) message delivery. Dialogs use the c
 
 A dialog conversation has two participants. The initiator starts the conversation. The target accepts a conversation begun by the initiator. Whether a participant starts the conversation determines the messages that the participant can send, as specified in the contract for the conversation. The following diagram shows the message flow of a dialog:
 
-:::image type="content" source="media/broker04.gif" alt-text="Diagram of the message flow between initiator and target.":::
+:::image type="content" source="media/dialog-conversations/message-flow.png" alt-text="Diagram of the message flow between initiator and target.":::
 
 Applications exchange messages as part of the dialog. When SQL Server receives a message for a dialog, SQL Server puts the message in the queue for the dialog. The application receives the message from the queue and processes the message as necessary. As part of the processing, the application might send messages to the other participant in the dialog.
 
@@ -37,7 +37,7 @@ Messages can be exchanged between applications during the lifetime of the dialog
 
 The local Service Broker for an initiating application creates a conversation endpoint for the dialog when the application starts the dialog. The local Service Broker for a target application creates a conversation endpoint for the dialog when the instance receives the first message on the dialog.
 
-Dialogs can also guarantee that the lifetime of a conversation doesn't exceed a specified limit. The initiating application can optionally specify a maximum lifetime for the dialog. Both the local Service Broker and the remote Service Broker keep track of this lifetime. When a dialog remains active at the maximum lifetime, each side of the conversation puts a timeout error message on the service queue and refuses new messages for the dialog. Conversations never live beyond the maximum lifetime that's established when the dialog starts. Notice that, while an application can still receive messages for the conversation after the conversation ends, no new messages can arrive for that conversation. The application can't send messages about the conversation.
+Dialogs can also guarantee that the lifetime of a conversation doesn't exceed a specified limit. The initiating application can optionally specify a maximum lifetime for the dialog. Both the local Service Broker and the remote Service Broker keep track of this lifetime. When a dialog remains active at the maximum lifetime, each side of the conversation puts a timeout error message on the service queue and refuses new messages for the dialog. Conversations never live beyond the maximum lifetime that's established when the dialog starts. While an application can still receive messages for the conversation after the conversation ends, no new messages can arrive for that conversation. The application can't send messages about the conversation.
 
 Applications are responsible for indicating when they're finished with a dialog by explicitly ending the dialog. Service Broker never ends a dialog automatically. The dialog remains in the database until an application explicitly ends the conversation. Therefore, even when the dialog times out or the broker reports an error, each participant in the conversation must explicitly issue the `END CONVERSATION` statement.
 

@@ -18,7 +18,7 @@ The type of dialog security that's used for a conversation depends on the option
 
 The following table lists the type of dialog security for each valid combination. If a remote service binding exists, the dialog uses encryption regardless of the settings on the `BEGIN DIALOG CONVERSATION` statement.
 
-| Certificate | Encryption | No remote service binding | Remote service binding with ANONYMOUS = ON | Remote service binding with ANONYMOUS = OFF |
+| Certificate | Encryption | No remote service binding | Remote service binding with `ANONYMOUS = ON` | Remote service binding with `ANONYMOUS = OFF` |
 | --- | --- | --- | --- | --- |
 | Service owner has a certificate | `ENCRYPTION = ON` | Dialog fails | Anonymous security | Full security |
 | Service owner has a certificate | `ENCRYPTION = OFF` | No dialog security | Anonymous security | Full security |
@@ -31,7 +31,7 @@ The following table lists the type of dialog security for each valid combination
 
 - **No dialog security**
 
-  SQL Server doesn't provide dialog security for the dialog. Operations on behalf of the initiating service run as **public** in the target database. Messages aren't encrypted for this dialog. Notice, however, that transport security might encrypt the message on the network.
+  SQL Server doesn't provide dialog security for the dialog. Operations on behalf of the initiating service run as **public** in the target database. Messages aren't encrypted for this dialog. However, transport security might encrypt the message on the network.
 
 - **Anonymous security**
 
@@ -45,7 +45,7 @@ The following table lists the type of dialog security for each valid combination
 
 - [How to: Configure initiating services for anonymous dialog security (Transact-SQL)](how-to-configure-initiating-services-for-anonymous-dialog-security-transact-sql.md)
 - [How to: Configure initiating services for full dialog security (Transact-SQL)](how-to-configure-initiating-services-for-full-dialog-security-transact-sql.md)
-- [How to: Configure Target Services for Anonymous Dialog Security (Transact-SQL)](how-to-configure-target-services-for-anonymous-dialog-security-transact-sql.md)
-- [How to: Configure Target Services for Full Dialog Security (Transact-SQL)](how-to-configure-target-services-for-full-dialog-security-transact-sql.md)
+- [How to: Configure target services for anonymous dialog security (Transact-SQL)](how-to-configure-target-services-for-anonymous-dialog-security-transact-sql.md)
+- [How to: Configure target services for full dialog security (Transact-SQL)](how-to-configure-target-services-for-full-dialog-security-transact-sql.md)
 - [How to: Configure permissions for a local service (Transact-SQL)](how-to-configure-permissions-for-a-local-service-transact-sql.md)
-- [Service Broker Communication Protocols](service-broker-communication-protocols.md)
+- [Service Broker communication protocols](service-broker-communication-protocols.md)

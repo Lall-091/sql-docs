@@ -4,33 +4,30 @@ description: "To help enable secure, reliable communication between different in
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray, maghan
-ms.date: "03/30/2022"
+ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
 ---
 
-# Networking and Remote Security
+# Networking and remote security
 
 [!INCLUDE [sql-asdbmi](../../includes/applies-to-version/sql-asdbmi.md)]
 
 To help enable secure, reliable communication between different instances of SQL Server, Service Broker includes features to let you manage routing and establish security for the conversation.
 
-## In This Section
+## In this section
 
-- [Remote Service Bindings](remote-service-bindings.md)  
-    Describes setting the certificate that the broker uses for dialog security. Dialog security provides end-to-end encryption and remote authorization for conversations to specific services.
+| Article | Description |
+| --- | --- |
+| [Remote service bindings](remote-service-bindings.md) | Describes setting the certificate that the broker uses for dialog security. Dialog security provides end-to-end encryption and remote authorization for conversations to specific services. |
+| [Routes](routes.md) | Describes specifying the location of the service and the database that contains the service. A route is required for Service Broker to deliver messages. By default, each database contains a route that specifies that services with no other route defined are delivered within the current instance. |
+| [Service Broker endpoints](service-broker-endpoints.md) | Describes configuring SQL Server to send and receive messages over TCP/IP connections. Endpoints can provide transport security, which prevents unauthorized connections to the endpoint. |
 
-- [Routes](routes.md)  
-    Describes specifying the location of the service and the database that contains the service. A route is required for Service Broker to deliver messages. By default, each database contains a route that specifies that services with no other route defined are delivered within the current instance.
+## Related content
 
-- [Service Broker Endpoints](service-broker-endpoints.md)  
-    Describes configuring SQL Server to send and receive messages over TCP/IP connections. Endpoints can provide transport security, which prevents unauthorized connections to the endpoint.
-
-## See also
-
-- [Remote Service Bindings](remote-service-bindings.md)
+- [Remote service bindings](remote-service-bindings.md)
 - [Routes](routes.md)
-- [Service Broker Endpoints](service-broker-endpoints.md)
-- [Service Broker Dialog Security](service-broker-dialog-security.md)
-- [Service Broker Transport Security](service-broker-transport-security.md)
+- [Service Broker endpoints](service-broker-endpoints.md)
+- [Service Broker dialog security](service-broker-dialog-security.md)
+- [Service Broker transport security](service-broker-transport-security.md)

@@ -4,7 +4,7 @@ description: "The Service Broker activation process consists of two steps. First
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray, maghan
-ms.date: 05/27/2025
+ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: concept-article
@@ -54,6 +54,6 @@ For external applications, Service Broker has no information on the number of di
 
 ## Related content
 
-- [Troubleshooting Activation Stored Procedures](troubleshooting-activation-stored-procedures.md)
+- [Troubleshooting activation stored procedures](troubleshooting-activation-stored-procedures.md)
 - [CREATE QUEUE (Transact-SQL)](../../t-sql/statements/create-queue-transact-sql.md)
 - [Implement internal activation in Service Broker](implementing-internal-activation.md)

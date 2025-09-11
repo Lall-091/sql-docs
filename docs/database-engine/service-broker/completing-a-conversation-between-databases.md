@@ -36,10 +36,10 @@ This tutorial is divided into four lessons:
 
 | Lesson | Description |
 | --- | --- |
-| [Lesson 1: Creating the Databases](lesson-1-creating-the-databases.md) | In this lesson, you create the databases and enable the `TRUSTWORTHY` option in the initiator database. |
-| [Lesson 2: Creating the Target Conversation Objects](lesson-2-creating-the-target-conversation-objects.md) | In this lesson, you create the message types, contract, services, and queues in the target database. |
-| [Lesson 3: Creating the Initiator Conversation Objects](lesson-3-creating-the-initiator-conversation-objects.md) | In this lesson, you create the message types, contract, services, and queues in the initiator database. |
-| [Lesson 4: Beginning a Conversation and Transmitting Messages](lesson-4-beginning-a-conversation-and-transmitting-messages.md) | In this lesson, you complete a basic conversation by beginning the conversation and transmitting a request message from the initiator to the target. Then, you transmit a reply message back to the initiator and end the conversation. |
+| [Lesson 1: Create the databases](lesson-1-creating-the-databases.md) | In this lesson, you create the databases and enable the `TRUSTWORTHY` option in the initiator database. |
+| [Lesson 2: Create the target conversation objects](lesson-2-creating-the-target-conversation-objects.md) | In this lesson, you create the message types, contract, services, and queues in the target database. |
+| [Lesson 3: Create the initiator conversation objects](lesson-3-creating-the-initiator-conversation-objects.md) | In this lesson, you create the message types, contract, services, and queues in the initiator database. |
+| [Lesson 4: Begin a conversation and transmit messages](lesson-4-beginning-a-conversation-and-transmitting-messages.md) | In this lesson, you complete a basic conversation by beginning the conversation and transmitting a request message from the initiator to the target. Then, you transmit a reply message back to the initiator and end the conversation. |
 
 ## Requirements
 

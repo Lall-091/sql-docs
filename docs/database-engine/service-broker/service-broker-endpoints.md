@@ -4,13 +4,13 @@ description: "SQL Server uses Service Broker endpoints for Service Broker commun
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray, maghan
-ms.date: "03/30/2022"
+ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
 ---
 
-# Service Broker Endpoints
+# Service Broker endpoints
 
 [!INCLUDE [sql-asdbmi](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -20,12 +20,12 @@ An endpoint is a SQL Server object that represents the capability for SQL Server
 
 Service Broker endpoints provide options for transport security and message forwarding. A Service Broker endpoint listens on a specific TCP port number.
 
-By default, an instance of SQL Server does not contain a Service Broker endpoint. Thus, Service Broker does not send or receive messages over the network by default. You must create a Service Broker endpoint to send or receive messages outside the SQL Server instance. For more information on creating Service Broker endpoints, see [CREATE ENDPOINT (Transact-SQL)](../../t-sql/statements/create-endpoint-transact-sql.md). An instance may contain only one Service Broker endpoint.
+By default, an instance of SQL Server doesn't contain a Service Broker endpoint. Thus, Service Broker doesn't send or receive messages over the network by default. You must create a Service Broker endpoint to send or receive messages outside the SQL Server instance. For more information on creating Service Broker endpoints, see [CREATE ENDPOINT](../../t-sql/statements/create-endpoint-transact-sql.md). An instance might contain only one Service Broker endpoint.
 
-> [!NOTE]
-> When you create a Service Broker endpoint, SQL Server accepts TCP/IP connections on the port that is specified in the endpoint. Service Broker transport security requires authorization for connections to the port. If the computer on which SQL Server runs has a firewall enabled, the firewall configuration on the computer must allow both incoming and outgoing connections for the port that is specified in the endpoint. For more information on Service Broker transport security, see [Service Broker Transport Security](service-broker-transport-security.md).
+> [!NOTE]  
+> When you create a Service Broker endpoint, SQL Server accepts TCP/IP connections on the port that is specified in the endpoint. Service Broker transport security requires authorization for connections to the port. If the computer on which SQL Server runs has a firewall enabled, the firewall configuration on the computer must allow both incoming and outgoing connections for the port that is specified in the endpoint. For more information on Service Broker transport security, see [Service Broker transport security](service-broker-transport-security.md).
 
-## See also
+## Related content
 
 - [CREATE ENDPOINT (Transact-SQL)](../../t-sql/statements/create-endpoint-transact-sql.md)
-- [Service Broker Transport Security](service-broker-transport-security.md)
+- [Service Broker transport security](service-broker-transport-security.md)

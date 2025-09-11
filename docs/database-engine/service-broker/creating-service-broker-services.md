@@ -20,7 +20,7 @@ A service represents a business process as a distinct set of tasks. Each contrac
 
 Each service uses a queue to store messages. Messages sent to the service are delivered to the queue. In general, applications are easiest to implement when only one service uses a given queue. However, for flexibility, Service Broker allows multiple services to specify the same queue. In this case, the application either treats all messages of the same type the same way, or inspects both the message-type name and the service name to determine how to process the message. This strategy can be convenient when an application supports multiple versions of the same service.
 
-The network format for a message includes the name of the service. Therefore, service names are often chosen to avoid collation issues and naming conflicts. For more information on naming, see [Naming Service Broker Objects](naming-service-broker-objects.md).
+The network format for a message includes the name of the service. Therefore, service names are often chosen to avoid collation issues and naming conflicts. For more information on naming, see [Name Service Broker objects](naming-service-broker-objects.md).
 
 To create a service, you must do the following:
 

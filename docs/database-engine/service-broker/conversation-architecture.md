@@ -27,4 +27,4 @@ All Service Broker applications communicate through conversations. Conversations
 
 ## Related content
 
-- [Logical Architecture \(Service Broker\)](logical-architecture.md)
+- [Logical architecture (Service Broker)](logical-architecture.md)

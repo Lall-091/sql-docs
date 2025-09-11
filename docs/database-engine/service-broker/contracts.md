@@ -28,5 +28,5 @@ For example, a contract can have message types **SubmitRequest**, **ProcessReque
 
 - [CREATE CONTRACT (Transact-SQL)](../../t-sql/statements/create-contract-transact-sql.md)
 - [DROP CONTRACT (Transact-SQL)](../../t-sql/statements/drop-contract-transact-sql.md)
-- [Message Types](message-types.md)
+- [Message types](message-types.md)
 - [Create Service Broker contracts](creating-service-broker-contracts.md)

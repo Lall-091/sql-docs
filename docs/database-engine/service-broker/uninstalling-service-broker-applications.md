@@ -35,4 +35,4 @@ Finally, drop the service definition to ensure that Service Broker no longer acc
 ## Related content
 
 - [ALTER QUEUE (Transact-SQL)](../../t-sql/statements/alter-queue-transact-sql.md)
-- [Starting and Stopping the Queue](starting-and-stopping-the-queue.md)
+- [Start and stop the Service Broker queue](starting-and-stopping-the-queue.md)

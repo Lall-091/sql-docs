@@ -34,12 +34,12 @@ This tutorial is divided into six lessons:
 
 | Lesson | Description |
 | --- | --- |
-| [Lesson 1: Creating the Target Database](lesson-1-creating-the-target-database.md) | In this lesson, you create the target database and all the objects that don't have dependencies on the initiator database. This includes the endpoint, master key, certificate, users, message types, contract, service, and queue. |
-| [Lesson 2: Creating the Initiator Database](lesson-2-creating-the-initiator-database.md) | In this lesson, you create the initiator database and its endpoint, master key, certificate, users, routes, remote service bindings, message types, contract, service, and queue. |
-| [Lesson 3: Completing the Target Conversation Objects](lesson-3-completing-the-target-conversation-objects.md) | In this lesson, you create the target objects that have dependencies on the initiator database. This includes certificates, users, routes, and remote service bindings. |
-| [Lesson 4: Beginning the Conversation](lesson-4-beginning-the-conversation.md) | In this lesson, you start the conversation and send a request message from the initiator to the target. |
-| [Lesson 5: Receiving a Request and Sending a Reply](lesson-5-receiving-a-request-and-sending-a-reply.md) | In this lesson, you receive the request message at the target service and send a reply message back to the initiator. |
-| [Lesson 6: Receiving the Reply and Ending the Conversation](lesson-6-receiving-the-reply-and-ending-the-conversation.md) | In this lesson, you receive the reply message at the initiator service and end the conversation. |
+| [Lesson 1: Create the target database](lesson-1-creating-the-target-database.md) | In this lesson, you create the target database and all the objects that don't have dependencies on the initiator database. This includes the endpoint, master key, certificate, users, message types, contract, service, and queue. |
+| [Lesson 2: Create the initiator database](lesson-2-creating-the-initiator-database.md) | In this lesson, you create the initiator database and its endpoint, master key, certificate, users, routes, remote service bindings, message types, contract, service, and queue. |
+| [Lesson 3: Complete the target conversation objects](lesson-3-completing-the-target-conversation-objects.md) | In this lesson, you create the target objects that have dependencies on the initiator database. This includes certificates, users, routes, and remote service bindings. |
+| [Lesson 4: Begin the conversation](lesson-4-beginning-the-conversation.md) | In this lesson, you start the conversation and send a request message from the initiator to the target. |
+| [Lesson 5: Receive a request and send a reply](lesson-5-receiving-a-request-and-sending-a-reply.md) | In this lesson, you receive the request message at the target service and send a reply message back to the initiator. |
+| [Lesson 6: Receive the reply and end the conversation](lesson-6-receiving-the-reply-and-ending-the-conversation.md) | In this lesson, you receive the reply message at the initiator service and end the conversation. |
 
 ## Requirements
 

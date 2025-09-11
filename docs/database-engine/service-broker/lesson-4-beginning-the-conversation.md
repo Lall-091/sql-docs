@@ -1,10 +1,10 @@
 ---
-title: "Lesson 4: Beginning the Conversation"
+title: "Lesson 4: Begin the Conversation"
 description: "In this lesson, you learn to start a conversation that spans two instances of the Database Engine and send a request message from the initiator instance to the target instance."
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray, maghan
-ms.date: 09/03/2025
+ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: how-to
@@ -20,7 +20,7 @@ In this lesson, you learn to start a conversation that spans two instances of th
 
 ### Switch to the InitiatorDB database
 
-- Copy and paste the following code into a Query Editor window. Then, run it to switch context to the `InstInitiatorDB` database where you initiate the conversation.
+- Copy and paste the following code into a Query Editor window. Then, run it to switch context to the **InstInitiatorDB** database where you initiate the conversation.
 
   ```sql
   USE InstInitiatorDB;
@@ -29,7 +29,7 @@ In this lesson, you learn to start a conversation that spans two instances of th
 
 ### Start a conversation and send a request message
 
-Copy and paste the following code into a Query Editor window. Then, run it to begin a conversation and send a request message to the **//TgtDB/2InstSample/TargetService** in the `InstTargetDB`. The code must be run in one block because a variable is used to pass a dialog handle from `BEGIN DIALOG` to the `SEND` statement.
+Copy and paste the following code into a Query Editor window, then run it to begin a conversation and send a request message to the **//TgtDB/2InstSample/TargetService** in the **InstTargetDB**. The code must be run in one block because a variable is used to pass a dialog handle from `BEGIN DIALOG` to the `SEND` statement.
 
 The batch runs the `BEGIN DIALOG` statement to begin the conversation, and then builds a request message. Then, it uses the dialog handle in a `SEND` statement to send the request message on that conversation. The last `SELECT` statement just displays the text of the message that was sent.
 
@@ -60,5 +60,5 @@ The batch runs the `BEGIN DIALOG` statement to begin the conversation, and then 
 
 - [BEGIN DIALOG CONVERSATION (Transact-SQL)](../../t-sql/statements/begin-dialog-conversation-transact-sql.md)
 - [SEND (Transact-SQL)](../../t-sql/statements/send-transact-sql.md)
-- [Service Broker Applications](service-broker-applications.md)
+- [Service Broker applications](service-broker-applications.md)
 - [Lesson 5: Receive a request and send a reply](lesson-5-receiving-a-request-and-sending-a-reply.md)

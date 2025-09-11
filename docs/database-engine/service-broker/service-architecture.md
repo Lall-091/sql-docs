@@ -4,13 +4,13 @@ description: "This section describes the database objects that specify the basic
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray, maghan
-ms.date: "03/30/2022"
+ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
 ---
 
-# Service Architecture
+# Service architecture
 
 [!INCLUDE [sql-asdbmi](../../includes/applies-to-version/sql-asdbmi.md)]
 
@@ -30,24 +30,19 @@ A Service Broker application uses the SQL Server objects in the preceding list t
 
 The following diagram shows a Service Broker service:
 
-![Relationship of Service Broker objects](media/broker02.gif "Relationship of Service Broker objects")
+:::image type="content" source="media/service-architecture/broker-relationships.png" alt-text="Diagram showing the relationship of Service Broker objects.":::
 
 As shown in the illustration, the **ProcessExpenses** contract specifies three message types: **SubmitExpense**, **AcceptDenyExpense**, and **ReimbursementIssued**. The contract lists the message types required for a conversation that performs an expense reimbursement task. The **ProcessExpenses** contract governs all conversations between the **ProcessExpense** service and any services that initiate a conversation with the **ProcessExpense** service. The **ProcessExpense** service stores incoming and outgoing messages in the **ExpenseQueue** queue. The **ExpenseProcessing** stored procedure receives messages from this queue, processes the messages, and sends messages back to the queue for routing to the appropriate broker if a reply is necessary.
 
-## In This Section
+## In this section
 
-- [Message Types](message-types.md)  
-    Participants in a conversation must agree on the name and content of each message. Message types define names and content.
+| Article | Description |
+| --- | --- |
+| [Message types](message-types.md) | Participants in a conversation must agree on the name and content of each message. Message types define names and content. |
+| [Contracts](contracts.md) | Contracts defines which message types an application uses to accomplish a particular task. |
+| [Queues](queues.md) | Queues store Service Broker messages. |
+| [Services](services.md) | Service Broker services are names for specific business tasks or sets of business tasks. |
 
-- [Contracts](contracts.md)  
-    Contracts defines which message types an application uses to accomplish a particular task.
+## Related content
 
-- [Queues](queues.md)  
-    Queues store Service Broker messages.
-
-- [Services](services.md)  
-    Service Broker services are names for specific business tasks or sets of business tasks.
-
-## See also
-
-- [Building Applications with Service Broker](building-applications-with-service-broker.md)
+- [Build applications with Service Broker](building-applications-with-service-broker.md)

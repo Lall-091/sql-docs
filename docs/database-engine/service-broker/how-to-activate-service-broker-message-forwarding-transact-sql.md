@@ -39,4 +39,4 @@ GO
 ## Related content
 
 - [How to: Activate Service Broker networking (Transact-SQL)](how-to-activate-service-broker-networking-transact-sql.md)
-- [How to: Deactivate Service Broker Message Forwarding (Transact-SQL)](how-to-deactivate-service-broker-message-forwarding-transact-sql.md)
+- [How to: Deactivate Service Broker message forwarding (Transact-SQL)](how-to-deactivate-service-broker-message-forwarding-transact-sql.md)

@@ -4,7 +4,7 @@ description: "Service Broker uses a broker-specific protocol to communicate with
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray, maghan
-ms.date: 09/03/2025
+ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -50,7 +50,7 @@ Service Broker uses two distinct categories of message. A sequenced message is a
 
 Service Broker uses sequenced messages for all user-defined message types, end dialog messages, and error messages created by an application. Each sequenced message has a sequence number. The instance that originates the message creates the message sequence number and assigns the sequence number to the message. The receiving broker uses the message sequence number to order the messages it provides to an application. For a given dialog, the application always receives the message with the lowest sequence number first. Service Broker also uses the message sequence number to detect duplicate messages. When the dialog protocol layer receives two messages on the same dialog with the same sequence number, the dialog protocol layer considers the messages to be duplicates and discards one.
 
-Service Broker uses unsequenced messages for dedicated acknowledgment messages and error messages created by Service Broker. Service Broker takes no special precautions to deliver an unsequenced message. Notice, however, that Service Broker creates unsequenced messages in response to incoming messages. Therefore, if the unsequenced message is lost, the sender will retry the original message; the recipient then generates another unsequenced message.
+Service Broker uses unsequenced messages for dedicated acknowledgment messages and error messages created by Service Broker. Service Broker takes no special precautions to deliver an unsequenced message. However, Service Broker creates unsequenced messages in response to incoming messages. Therefore, if the unsequenced message is lost, the sender will retry the original message; the recipient then generates another unsequenced message.
 
 ### Message fragmentation
 
@@ -112,4 +112,4 @@ To deliver a message, Service Broker holds the message in the transmission queue
 
 ## Related content
 
-- [Service Broker Routing](service-broker-routing.md)
+- [Service Broker routing](service-broker-routing.md)

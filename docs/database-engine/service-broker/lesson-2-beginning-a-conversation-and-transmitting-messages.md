@@ -35,7 +35,6 @@ In this lesson, you learn to start a conversation, complete a simple request-rep
 
   ```sql
   DECLARE @InitDlgHandle AS UNIQUEIDENTIFIER;
-
   DECLARE @RequestMsg AS NVARCHAR (100);
 
   BEGIN TRANSACTION;
@@ -119,11 +118,11 @@ In this lesson, you learn to start a conversation, complete a simple request-rep
 - [SEND (Transact-SQL)](../../t-sql/statements/send-transact-sql.md)
 - [RECEIVE (Transact-SQL)](../../t-sql/statements/receive-transact-sql.md)
 - [END CONVERSATION (Transact-SQL)](../../t-sql/statements/end-conversation-transact-sql.md)
-- [Service Broker Applications](service-broker-applications.md)
+- [Service Broker applications](service-broker-applications.md)
 
 ## Next step
 
 You've successfully completed a request-reply message cycle between the **//AWDB/1DBSample/InitiatorService** and the **//AWDB/1DBSample/TargetService**. You can repeat the steps in this lesson as many times as you want to transmit a request-reply pair of messages. When you've finished investigating the `SEND` and `REPLY` statements, you can drop all the objects that were used by the conversation.
 
 > [!div class="nextstepaction"]
-> Lesson 3: Drop the conversation objects](lesson-3-dropping-the-conversation-objects.md)
+> [Lesson 3: Drop the conversation objects](lesson-3-dropping-the-conversation-objects.md)

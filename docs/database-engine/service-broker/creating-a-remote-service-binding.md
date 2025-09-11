@@ -25,7 +25,7 @@ When a conversation is initiated, Service Broker checks to see whether a remote 
 
 Requests for remote service bindings use the message type `https://schemas.microsoft.com/SQL/ServiceBroker/BrokerConfigurationNotice/MissingRemoteServiceBinding`. The message is in XML format and contains the name of the service for which remote service binding information should be available.
 
-For example, the following message is a request for a remote service binding to the service `<https://Adventure-Works.com/Elsewhere>`:
+For example, the following message is a request for a remote service binding to the service `https://Adventure-Works.com/Elsewhere`:
 
 ```xml
 <MissingRemoteServiceBinding xmlns="https://schemas.microsoft.com/SQL/ServiceBroker/BrokerConfigurationNotice/MissingRemoteServiceBinding">
@@ -37,9 +37,9 @@ The application that's defined in the BCN queue reads a `MissingRemoteServiceBin
 
 If the application ended the conversation with an error, Service Broker stores this response for 10 minutes. Service Broker doesn't send a `MissingRemoteServiceBinding` message for dialogs to the BCN service during this time. If a conversation is started after 10 minutes, Service Broker will send another `MissingRemoteServiceBinding` message to check whether a remote service binding has been created.
 
-In either case, the application ends the conversation. Service Broker sends one `MissingRemoteServiceBinding` message at a time for a specific service regardless of the number of conversations to the service. Further, Service Broker uses the longest possible timeout for requests to the BCN service. Therefore, if the BCN service doesn't end the conversation, Service Broker doesn't create a new request to the service. If the BCN service didn't create a remote service binding, secure messages (`ENCRYPTION`=`ON`) remain delayed until the conversation lifetime expires. However, nonsecure messages (`ENCRYPTION`=`OFF`) will continue after the BCN service ends the conversation.
+In either case, the application ends the conversation. Service Broker sends one `MissingRemoteServiceBinding` message at a time for a specific service regardless of the number of conversations to the service. Further, Service Broker uses the longest possible timeout for requests to the BCN service. Therefore, if the BCN service doesn't end the conversation, Service Broker doesn't create a new request to the service. If the BCN service didn't create a remote service binding, secure messages (`ENCRYPTION = ON`) remain delayed until the conversation lifetime expires. However, nonsecure messages (`ENCRYPTION = OFF`) will continue after the BCN service ends the conversation.
 
 ## Related content
 
 - [CREATE REMOTE SERVICE BINDING (Transact-SQL)](../../t-sql/statements/create-remote-service-binding-transact-sql.md)
-- [Service Broker Configuration Notice Service](service-broker-configuration-notice-service.md)
+- [Service Broker Configuration Notice service](service-broker-configuration-notice-service.md)

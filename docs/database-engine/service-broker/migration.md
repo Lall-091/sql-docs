@@ -4,7 +4,7 @@ description: "The usual process for migrating a Service Broker application is to
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray, maghan
-ms.date: 05/27/2025
+ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -26,7 +26,7 @@ After moving the database, you must do the following steps:
 
 - Update the services that initiate conversations with the service that you're moving. In each database that contains a route for the service that you're moving, alter the route to use the new network address.
 
-- Use the `CREATE DATABASE` or `ALTER DATABASE` statements to activate Service Broker message delivery in the restored database, and to set a different broker instance identifier. You should only use one broker instance identifier on one database on the network at a time. Typically, you don't change the instance identifier when you restore a backup that is intended to be identical to the original database. For example, you don't change the broker instance identifier when you attach a database for any of the following reasons:
+- Use the `CREATE DATABASE` or `ALTER DATABASE` statements to activate Service Broker message delivery in the restored database, and to set a different broker instance identifier. You should only use one broker instance identifier on one database on the network at a time. Typically, you don't change the instance identifier when you restore a backup that's intended to be identical to the original database. For example, you don't change the broker instance identifier when you attach a database for any of the following reasons:
 
   - To recover a database
   - To create a mirrored pair
@@ -40,12 +40,12 @@ After moving a database, you can check for Service Broker errors by running the 
 
 ## Related content
 
-- [How to: Activate Service Broker Message Delivery in Databases (Transact-SQL)](how-to-activate-service-broker-message-delivery-in-databases-transact-sql.md)
+- [How to: Activate Service Broker message delivery in databases (Transact-SQL)](how-to-activate-service-broker-message-delivery-in-databases-transact-sql.md)
 - [ALTER DATABASE (Transact-SQL)](../../t-sql/statements/alter-database-transact-sql.md)
 - [ALTER ROUTE (Transact-SQL)](../../t-sql/statements/alter-route-transact-sql.md)
 - [CREATE DATABASE](../../t-sql/statements/create-database-transact-sql.md)
 - [CREATE ENDPOINT (Transact-SQL)](../../t-sql/statements/create-endpoint-transact-sql.md)
 - [Copy databases to other servers](../../relational-databases/databases/copy-databases-to-other-servers.md)
-- [Managing Service Broker Identities](managing-service-broker-identities.md)
+- [Manage Service Broker identities](managing-service-broker-identities.md)
 - [Routes](routes.md)
-- [Service Broker Routing](service-broker-routing.md)
+- [Service Broker routing](service-broker-routing.md)
