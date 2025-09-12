@@ -18,6 +18,7 @@ Use the `mssql-python` driver to connect to a SQL database from Python code. Thi
 
 - [Quickstart: Connect with the mssql-python driver for Python](python-sql-driver-mssql-python-quickstart.md)
 - [Quickstart: Repeatable deployments with the mssql-python driver for Python](python-sql-driver-mssql-python-repeatable-deployments-quickstart.md)
+- [Quickstart: Rapid prototyping with the mssql-python driver for Python](python-sql-driver-mssql-python-rapid-prototyping-quickstart.md)
 
 ## Documentation
 

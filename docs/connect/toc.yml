@@ -5909,6 +5909,8 @@
       href: ../connect/python/mssql-python/python-sql-driver-mssql-python-quickstart.md
     - name: 'Quickstart: Repeatable deployments with the Python driver for SQL Server'
       href: ../connect/python/mssql-python/python-sql-driver-mssql-python-repeatable-deployments-quickstart.md
+    - name: 'Quickstart: Rapid prototyping with the Python driver for SQL Server'
+      href: ../connect/python/mssql-python/python-sql-driver-mssql-python-rapid-prototyping-quickstart.md
   - name: Python SQL driver - pyodbc
     href: ../connect/python/pyodbc/python-sql-driver-pyodbc.md
     items:
