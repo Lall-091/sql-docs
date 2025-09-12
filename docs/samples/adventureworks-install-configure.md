@@ -4,17 +4,18 @@ description: Follow these instructions to download and install AdventureWorks sa
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 08/25/2025
+ms.date: 09/11/2025
 ms.service: sql
 ms.subservice: samples
 ms.topic: concept-article
+monikerRange: ">=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||=fabric"
 ---
 
 # AdventureWorks sample databases
 
-[!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW](../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL MI FabricSQLDB](../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
-This article provides direct links for downloading `AdventureWorks` sample databases and instructions for restoring them to SQL Server, Azure SQL Database, and Azure SQL Managed Instance.
+This article provides direct links for downloading `AdventureWorks` sample databases and instructions for restoring them to your database.
 
 For more information about samples, see the [Samples GitHub repository](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases).
 
@@ -189,6 +190,10 @@ To deploy a sample database from [!INCLUDE [ssnoversion-md](../includes/ssnovers
    :::image type="content" source="media/adventureworks-install-configure/deploy-db-to-azure.png" alt-text="Screenshot that shows the menu steps for deploying a database to SQL Database.":::
 
 1. Complete the steps in the wizard to connect to SQL Database and deploy your database.
+
+## Deploy to SQL database in Microsoft Fabric
+
+To load a sample `AdventureWorksLT` database in a new SQL database in Microsoft Fabric, [create a new SQL database in Fabric](/fabric/database/sql/create). Then, under **Build your database**, select the **Sample data** button.
 
 ## Scripts for creating a database
 

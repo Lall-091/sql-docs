@@ -19,7 +19,7 @@ dev_langs:
 monikerRange: "=fabric"
 ---
 # queryinsights.long_running_queries (Transact-SQL)
-[!INCLUDE [fabric-se-and-dw](../../includes/applies-to-version/fabric-se-and-dw.md)]
+[!INCLUDE [Fabric SE DW](../../includes/applies-to-version/fabric-se-dw.md)]
 
   The `queryinsights.long_running_queries` in [!INCLUDE [fabric](../../includes/fabric.md)] provides information about SQL query execution times.
 

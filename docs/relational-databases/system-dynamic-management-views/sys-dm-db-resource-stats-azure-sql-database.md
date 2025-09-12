@@ -1,10 +1,11 @@
 ---
-title: "sys.dm_db_resource_stats (Azure SQL Database)"
-description: sys.dm_db_resource_stats returns CPU, I/O, and memory consumption for a database in Azure SQL Database.
+title: "sys.dm_db_resource_stats"
+titleSuffix: Azure SQL Database & SQL database in Fabric
+description: sys.dm_db_resource_stats returns CPU, I/O, and memory consumption for a database.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: wiassaf
-ms.date: 11/21/2023
+ms.date: 09/11/2025
 ms.service: azure-sql-database
 ms.topic: "reference"
 f1_keywords:
@@ -17,11 +18,11 @@ helpviewer_keywords:
   - "dm_db_resource_stats"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric"
 ---
-# sys.dm_db_resource_stats (Azure SQL Database)
+# sys.dm_db_resource_stats
 
-[!INCLUDE [asdb](../../includes/applies-to-version/asdb.md)]
+[!INCLUDE [asdb-fabricsqldb](../../includes/applies-to-version/asdb-fabricsqldb.md)]
 
 Returns CPU, I/O, and memory consumption for a database in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]. One row exists for every 15 seconds, even if there's no activity. Historical data is maintained for approximately one hour.
 

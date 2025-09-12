@@ -3,7 +3,7 @@ title: "Data Sources Supported by Reporting Services"
 description: Learn about the various data sources that are supported by Reporting Services, including Microsoft SQL Server, Oracle, and ODBC.
 author: kfollis
 ms.author: kfollis
-ms.date: 09/25/2024
+ms.date: 09/11/2025
 ms.service: reporting-services
 ms.subservice: report-data
 ms.topic: conceptual
@@ -29,7 +29,9 @@ helpviewer_keywords:
   
 -   [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] for MDX, DMX, [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[power-pivot-md](../../includes/power-pivot-md.md)], and tabular models  
   
--   [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]  
+-   [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)]
+ 
+-   [!INCLUDE [Fabric SQL analytics endpoint and DW](../../includes/fabric-se-dw.md)]
   
 -   Oracle  
   

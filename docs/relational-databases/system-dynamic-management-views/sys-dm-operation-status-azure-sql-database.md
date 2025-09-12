@@ -1,10 +1,10 @@
 ---
 title: "sys.dm_operation_status"
-description: The sys.dm_operation_status dynamic management view displays information about operations performed on databases in an Azure SQL Database logical server.
+description: The sys.dm_operation_status dynamic management view displays information about operations performed on databases.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest
-ms.date: 06/30/2025
+ms.date: 09/11/2025
 ms.service: azure-sql-database
 ms.topic: "reference"
 f1_keywords:
@@ -17,13 +17,13 @@ helpviewer_keywords:
   - "sys.dm_operation_status dynamic management view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || =azuresqldb-mi-current || =fabric"
 ---
 # sys.dm_operation_status
 
-[!INCLUDE [asdb-asdbmi-asa](../../includes/applies-to-version/asdb-asdbmi-asa.md)]
+[!INCLUDE [asdb-asdbmi-asa-fabricsqldb](../../includes/applies-to-version/asdb-asdbmi-asa-fabricsqldb.md)]
 
-Returns information about operations.
+The sys.dm_operation_status dynamic management view displays information about operations performed on databases.
 
 | Column name | Data type | Description |
 | --- | --- | --- |

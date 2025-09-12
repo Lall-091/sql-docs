@@ -3,7 +3,7 @@ title: Connect to the SQL Server Database Engine
 description: Learn how to connect to the Database Engine used by SQL Server and Azure SQL services
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 06/05/2025
+ms.date: 09/11/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -18,6 +18,8 @@ This article provides a high level overview for connecting to the [!INCLUDE [ssd
 - [!INCLUDE [ssazuremi-md](../includes/ssazuremi-md.md)]
 - [!INCLUDE [ssazurepdw_md](../includes/ssazurepdw_md.md)]
 - [!INCLUDE [ssazuresynapse-md](../includes/ssazuresynapse-md.md)]
+- [!INCLUDE [fabric-sqldb](../includes/fabric-sqldb.md)]
+- [!INCLUDE [Fabric SE DW](../includes/fabric-se-dw.md)]
 
 ## Prerequisites
 
@@ -163,6 +165,15 @@ In this example, the named instance is called `MyInstance`. Make sure the [!INCL
 
 - `tcp:MyServer\MyInstance`
 - `tcp:192.10.1.128\MyInstance`
+
+#### Connect to data in Microsoft Fabric
+
+You can connect to Fabric Data Warehouse and SQL database in Fabric in much the same way you connect to an Azure SQL Database.
+
+For complete details, see:
+
+- [Connect to Fabric Data Warehouse](/fabric/data-warehouse/how-to-connect)
+- [Connect to SQL database in Fabric](/fabric/database/sql/connect)
 
 <a id="tsql"></a>
 

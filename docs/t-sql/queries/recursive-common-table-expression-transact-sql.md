@@ -3,7 +3,8 @@ title: "Recursive Queries Using Common Table Expressions"
 description: "Learn how recursive common table expressions (CTE) work."
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/14/2025
+ms.reviewer: wiassaf, xiaoyul
+ms.date: 09/11/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -24,13 +25,15 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 ---
 # Recursive queries using common table expressions (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 A common table expression (CTE) provides the significant advantage of being able to reference itself, thus creating a recursive CTE. A recursive CTE is one in which an initial CTE is repeatedly executed to return subsets of data until the complete result set is obtained.
 
 A query is referred to as a recursive query when it references a recursive CTE. Returning hierarchical data is a common use of recursive queries. For example, displaying employees in an organizational chart, or data in a bill of materials scenario in which a parent product has one or more components and those components might have subcomponents, or might be components, of other parents.
 
 A recursive CTE can greatly simplify the code required to run a recursive query within a `SELECT`, `INSERT`, `UPDATE`, `DELETE`, or `CREATE VIEW` statement. In earlier versions of SQL Server, a recursive query usually requires using temporary tables, cursors, and logic to control the flow of the recursive steps. For more information about common table expressions, see [WITH common_table_expression](with-common-table-expression-transact-sql.md).
+
+In Microsoft Fabric, Fabric Data Warehouse and the SQL analytics endpoint both support standard, sequential, and [nested CTEs](nested-common-table-expression.md), but not recursive CTEs.
 
 ## Structure of a recursive CTE
 

@@ -20,7 +20,7 @@ monikerRange: "=fabric"
 ---
 # queryinsights.exec_sessions_history (Transact-SQL)
 
-[!INCLUDE [fabric-se-and-dw](../../includes/applies-to-version/fabric-se-and-dw.md)]
+[!INCLUDE [Fabric SE DW](../../includes/applies-to-version/fabric-se-dw.md)]
 
   The `queryinsights.exec_sessions_history` in [!INCLUDE [fabric](../../includes/fabric.md)] provides information about each completed session.
 

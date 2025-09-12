@@ -16,7 +16,7 @@ monikerRange: ">=aps-pdw-2016 || =azure-sqldw-latest || =fabric"
 
 ::: moniker range="=fabric"
 
-[!INCLUDE [applies-to-version/fabricse-fabricdw](../../includes/applies-to-version/fabric-se-and-dw.md)]
+[!INCLUDE [applies-to-version/fabricse-fabricdw](../../includes/applies-to-version/fabric-se-dw.md)]
 
  `CREATE FUNCTION` can create inline table-value functions and scalar functions. 
  

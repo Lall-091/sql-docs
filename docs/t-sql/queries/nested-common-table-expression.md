@@ -1,10 +1,10 @@
 ---
-title: "Nested Common Table Expression (CTE) in Fabric data warehousing"
-description: "Nested CTE in Fabric Data Warehousing. Common Table Expressions (CTEs) can simplify complex queries by deconstructing ordinarily complex queries into reusable blocks."
-author: XiaoyuMSFT
-ms.author: xiaoyul
-ms.reviewer: wiassaf, randolphwest
-ms.date: 10/06/2024
+title: "Nested Common Table Expression (CTE)"
+description: "Nested common table expressions (CTEs) can simplify complex queries by deconstructing ordinarily complex queries into reusable blocks."
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: wiassaf, xiaoyul
+ms.date: 09/11/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: "reference"
@@ -16,7 +16,7 @@ monikerRange:
 ---
 # Nested Common Table Expression (CTE) in Fabric data warehousing (Transact-SQL)
 
-[!INCLUDE [fabric-se-and-dw](../../includes/applies-to-version/fabric-se-and-dw.md)]
+[!INCLUDE [Fabric SE DW](../../includes/applies-to-version/fabric-se-dw.md)]
 
 Common Table Expressions (CTEs) can simplify complex queries by deconstructing ordinarily complex queries into reusable blocks.
 
@@ -27,7 +27,7 @@ There are four types of CTE, including *standard*, *sequential*, *recursive*, an
 - A sequential CTE's definition can reference an existing CTE but can't define another CTE.
 - A recursive CTE references itself in its definition.
 
-Fabric Warehouse and SQL analytics endpoint both support *standard*, *sequential*, and *nested* CTEs. While standard and sequential CTEs are generally available in Microsoft Fabric, nested CTEs are currently a preview feature.
+In Microsoft Fabric, Fabric Data Warehouse and the SQL analytics endpoint both support *standard*, *sequential*, and *nested* CTEs, but not [recursive CTEs](recursive-common-table-expression-transact-sql.md). While standard and sequential CTEs are generally available in Microsoft Fabric, nested CTEs are currently a preview feature.
 
 For more information about common table expressions, see [WITH common_table_expression (Transact-SQL)](with-common-table-expression-transact-sql.md?view=fabric&preserve-view=true).
 
