@@ -198,7 +198,7 @@ However, this support is limited to input sizes up to 2 MB.
 - LOB data types aren't supported in the regex table-valued functions (TVFs):
   - `REGEXP_MATCHES`
   - `REGEXP_SPLIT_TO_TABLE`
-- Regular expression functions aren't supported on memory-optimized OLTP tables.
+- Regular expression functions aren't supported in natively compiled stored procedures.
 
 ## Related content
 
