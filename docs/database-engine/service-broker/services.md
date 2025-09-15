@@ -16,10 +16,10 @@ ms.topic: conceptual
 
 A Service Broker service is a name for a specific business task or set of business tasks. Conversations occur between services. Service Broker uses the name of the service to:
 
-- deliver messages to the correct queue within a database
-- route messages
-- enforce the contract for a conversation
-- determine the remote security for a new conversation.
+- Deliver messages to the correct queue within a database.
+- Route messages.
+- Enforce the contract for a conversation.
+- Determine the remote security for a new conversation.
 
 ## Remarks
 

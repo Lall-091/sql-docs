@@ -1,5 +1,5 @@
 ---
-title: Troubleshooting Routing and Message Delivery
+title: Troubleshoot Routing and Message Delivery
 description: "This section provides suggestions to correct common problems related to routing and message delivery."
 author: rwestMSFT
 ms.author: randolphwest
@@ -30,7 +30,7 @@ FROM sys.databases
 WHERE database_id = DB_ID();
 ```
 
-Broker message delivery can be deactivated to prevent messages from being delivered to the wrong database. For more information about Service Broker message delivery, see [Manage Service Broker identities](managing-service-broker-identities.md). For more information about how to activate Service Broker message delivery, see [How to: Activate Service Broker message delivery in databases](how-to-activate-service-broker-message-delivery-in-databases-transact-sql.md).
+You can deactivate Broker message delivery to prevent messages from being delivered to the wrong database. For more information about Service Broker message delivery, see [Manage Service Broker identities](managing-service-broker-identities.md). For more information about how to activate Service Broker message delivery, see [How to: Activate Service Broker message delivery in databases](how-to-activate-service-broker-message-delivery-in-databases-transact-sql.md).
 
 If Service Broker message delivery is active, check the `transmission_status` column in the `sys.transmission_queue` catalog view for the messages. Common error messages include:
 
@@ -63,7 +63,7 @@ WHERE NOT EXISTS (SELECT remote_service_name
 ```
 
 > [!NOTE]  
-> Some service names might appear in the result set even though they do match a route. A route that doesn't specify a service name (`remote_service_name = NULL`) matches the service name used with any message. For more information about Service Broker routes, see [Service Broker routing](service-broker-routing.md).
+> Some service names might appear in the result set even though they match a route. A route that doesn't specify a service name (`remote_service_name = NULL`) matches the service name used with any message. For more information about Service Broker routes, see [Service Broker routing](service-broker-routing.md).
 
 If the message specifies a broker instance identifier, verify either that the route specifies the same broker instance identifier, or that the route doesn't specify a broker instance identifier at all.
 
@@ -82,7 +82,7 @@ Verify that a Service Broker endpoint exists. If no endpoint exists, create one.
 Transport security might be incorrectly configured, or the TCP/IP address for the route specifies a port that is being used by a service other than Service Broker.
 
 > [!NOTE]  
-> The port specified in the route must correspond to the port that is used by the Service Broker endpoint on the remote instance of the Database Engine. Service Broker uses the Service Broker communications protocols to transmit messages, not the Tabular Data Stream protocol that is used to transmit Transact-SQL batches and results. Therefore, the port that is used by a Service Broker endpoint differs from the port that is used to transmit Transact-SQL. Check the Service Broker endpoint configuration to ensure that the two instances have compatible network security settings. If the Service Broker endpoint for one instance specifies `REQUIRED` or `ENABLED`, the Service Broker endpoint for the other instance can't specify `NONE`.
+> The port specified in the route must correspond to the port the Service Broker endpoint uses on the remote instance of the Database Engine. Service Broker uses the Service Broker communications protocols to transmit messages, not the Tabular Data Stream protocol that's used to transmit Transact-SQL batches and results. Therefore, the port that a Service Broker endpoint uses differs from the port that's used to transmit Transact-SQL. Check the Service Broker endpoint configuration to ensure that the two instances have compatible network security settings. If the Service Broker endpoint for one instance specifies `REQUIRED` or `ENABLED`, the Service Broker endpoint for the other instance can't specify `NONE`.
 
 Check certificates, users, and permissions for Service Broker transport security. For more information, see [Service Broker transport security](service-broker-transport-security.md).
 

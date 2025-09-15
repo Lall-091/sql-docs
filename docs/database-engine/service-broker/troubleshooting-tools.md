@@ -36,9 +36,9 @@ For more information about how to use the utility, see [ssbdiagnose utility](../
 
 Service Broker messages that aren't successfully transmitted to the receiving queue are held in the Service Broker transmission queue in the sending database. You can use the `sys.transmission_queue` system view in each database to see the messages in the queue. For any messages that are in the queue because of a transmission error, the `transmission_status` column contains the error message.
 
-Not all messages in the transmission queue are caused by errors:
+Not all messages in the transmission queue are caused by errors.
 
-- Some messages in the queue could be in the process of being sent. Examples include waiting for a disconnected receiver to be reconnected or a network send to be acknowledged.
+- Some messages in the queue could be in the process of being sent. Examples include waiting for a disconnected receiver to reconnect, or a network send to be acknowledged.
 
 - If a queue has `RETENTION` set to `ON`, successfully transmitted messages are kept in the transmission queue until the conversation is ended.
 
@@ -60,11 +60,11 @@ Service Broker provides several performance objects that you can use in System M
 
 For more information, see [Monitor Resource Usage (Performance Monitor)](../../relational-databases/performance-monitor/monitor-resource-usage-system-monitor.md).
 
-For more information about the Service Broker performance objects, see the following topics:
+For more information about the Service Broker performance objects, see the following articles:
 
-- [SQL Server, Broker Activation object](../../relational-databases/performance-monitor/sql-server-broker-activation-object.md).
-- [SQL Server, Broker Statistics object](../../relational-databases/performance-monitor/sql-server-broker-statistics-object.md).
-- [SQL Server, Broker/DBM Transport object](../../relational-databases/performance-monitor/sql-server-broker-dbm-transport-object.md).
+- [SQL Server, Broker Activation object](../../relational-databases/performance-monitor/sql-server-broker-activation-object.md)
+- [SQL Server, Broker Statistics object](../../relational-databases/performance-monitor/sql-server-broker-statistics-object.md)
+- [SQL Server, Broker/DBM Transport object](../../relational-databases/performance-monitor/sql-server-broker-dbm-transport-object.md)
 
 ## Service Broker errors
 

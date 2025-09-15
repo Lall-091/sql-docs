@@ -14,7 +14,7 @@ ms.topic: conceptual
 
 [!INCLUDE [sql-asdbmi](../../includes/applies-to-version/sql-asdbmi.md)]
 
-Service Broker communications are designed around reliable, asynchronous message delivery. Service Broker uses the authentication features that are provided by SQL Server to help protect against unauthorized access to a service. To help protect message data, Service Broker lets you encrypt messages that leave the instance.
+Service Broker communications are designed around reliable, asynchronous message delivery. Service Broker uses the authentication features SQL Server provides to help protect against unauthorized access to a service. To help protect message data, Service Broker lets you encrypt messages that leave the instance.
 
 Communication between two applications occurs through messages. When an application sends messages, Service Broker locates a route for the service and transmits the message to the network address that is specified by the route.
 

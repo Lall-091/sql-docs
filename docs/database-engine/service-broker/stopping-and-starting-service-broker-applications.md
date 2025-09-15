@@ -1,5 +1,5 @@
 ---
-title: Stopping and Starting Service Broker Applications
+title: Stop and Start Service Broker Applications
 description: "Sometimes it may be necessary to temporarily stop a Service Broker application."
 author: rwestMSFT
 ms.author: randolphwest
@@ -18,7 +18,7 @@ Sometimes it might be necessary to temporarily stop a Service Broker application
 
 The information in this section applies to stopping an application temporarily for maintenance purposes. For information about permanently removing a service from the database, see [Uninstall Service Broker applications](uninstalling-service-broker-applications.md).
 
-To temporarily stop a service, alter the queue that the application uses so that the queue status is `OFF`. When the queue status is `OFF`, the queue is unavailable for receive operations, which effectively stops the application. Service Broker doesn't deliver new messages to the queue and doesn't allow an application to receive messages from the queue. When an application attempts to receive a message from a queue that is unavailable, the application receives a Transact-SQL error. An application can call `END CONVERSATION` on a conversation at any time, regardless of whether the queue that the conversation uses is available or not. However, Service Broker doesn't deliver the End Dialog message to the remote service until the queue becomes available.
+To temporarily stop a service, alter the queue that the application uses so that the queue status is `OFF`. When the queue status is `OFF`, the queue is unavailable for receive operations, which effectively stops the application. Service Broker doesn't deliver new messages to the queue and doesn't allow an application to receive messages from the queue. When an application attempts to receive a message from a queue that's unavailable, the application receives a Transact-SQL error. An application can call `END CONVERSATION` on a conversation at any time, regardless of whether the queue that the conversation uses is available or not. However, Service Broker doesn't deliver the End Dialog message to the remote service until the queue becomes available.
 
 When a message arrives for a stopped queue, Service Broker holds the message in the transmission queue for the database until the destination queue becomes available. Service Broker doesn't consider a message arriving for a stopped queue to be an error, and doesn't notify the sender. When the queue becomes available, Service Broker delivers the messages in the transmission queue to the service queue. This delivery uses the normal retry logic for messages. Messages are marked delayed in the transmission queue, and retried periodically. Service Broker holds the message in the transmission queue and delays the message regardless of whether the message originates in the same instance as the queue or arrives from the network.
 

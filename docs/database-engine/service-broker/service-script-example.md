@@ -14,10 +14,12 @@ ms.topic: how-to
 
 [!INCLUDE [sql-asdbmi](../../includes/applies-to-version/sql-asdbmi.md)]
 
-This Transact-SQL code sample defines a service that archives untyped XML documents. Two scripts are included: the contract script and the service definition script. The contract script defines the message types and the contract for the service. The message type definition and the contract definition should match for both the initiating service and the target service. Therefore, the definitions are included in a separate service definition script that can be distributed to the databases that host the initiating service. The service definition script defines the service itself. This script should be run only in a database that implements the target service.
+This Transact-SQL code sample defines a service that archives untyped XML documents. Two scripts are included: the contract script and the service-definition script. The contract script defines the message types and the contract for the service. The message-type definition and the contract definition should match for both the initiating service and the target service. Therefore, the definitions are included in a separate service-definition script that can be distributed to the databases that host the initiating service. The service-definition script defines the service itself. This script should be run only in a database that implements the target service.
 
 > [!NOTE]  
-> The service definition script defines the target service, but doesn't include an implementation of the service.## Contract Script
+> The service-definition script defines the target service, but doesn't include an implementation of the service.
+
+## Contract script
 
 [!INCLUDE [SQL Server Service Broker AdventureWorks2008R2](../../includes/service-broker-adventureworks-2008-r2.md)]
 

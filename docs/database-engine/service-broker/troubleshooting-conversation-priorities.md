@@ -1,5 +1,5 @@
 ---
-title: Troubleshooting Conversation Priorities
+title: Troubleshoot Conversation Priorities
 description: "This article provides suggestions for correcting common symptoms related to Service Broker conversation priorities."
 author: rwestMSFT
 ms.author: randolphwest
@@ -32,7 +32,7 @@ ORDER BY database_name;
 
 ## Symptom: Messages aren't sent in priority sequence
 
-Open a SQL Server Profiler trace and review the Broker Remote Message Ack events. A value of 1 in the `StarvationElevation` column indicates the priority of messages was elevated to prevent starvation. A value of 0 in the `HonorBrokerPriority` column indicates the `HONOR_BROKER_PRIORITY` option wasn't enabled in the sending database.
+Open a SQL Server Profiler trace and review the **Broker:Remote Message Ack** events. A value of 1 in the `StarvationElevation` column indicates the priority of messages was elevated to prevent starvation. A value of 0 in the `HonorBrokerPriority` column indicates the `HONOR_BROKER_PRIORITY` option wasn't enabled in the sending database.
 
 Also review the Broker/DBM Transport System Monitor counter to see the transmission rates for messages of different priority levels.
 

@@ -23,7 +23,7 @@ Service Broker endpoints provide options for transport security and message forw
 By default, an instance of SQL Server doesn't contain a Service Broker endpoint. Thus, Service Broker doesn't send or receive messages over the network by default. You must create a Service Broker endpoint to send or receive messages outside the SQL Server instance. For more information on creating Service Broker endpoints, see [CREATE ENDPOINT](../../t-sql/statements/create-endpoint-transact-sql.md). An instance might contain only one Service Broker endpoint.
 
 > [!NOTE]  
-> When you create a Service Broker endpoint, SQL Server accepts TCP/IP connections on the port that is specified in the endpoint. Service Broker transport security requires authorization for connections to the port. If the computer on which SQL Server runs has a firewall enabled, the firewall configuration on the computer must allow both incoming and outgoing connections for the port that is specified in the endpoint. For more information on Service Broker transport security, see [Service Broker transport security](service-broker-transport-security.md).
+> When you create a Service Broker endpoint, SQL Server accepts TCP/IP connections on the port that's specified in the endpoint. Service Broker transport security requires authorization for connections to the port. If the computer on which SQL Server runs has a firewall enabled, the firewall configuration on the computer must allow both incoming and outgoing connections for the port that's specified in the endpoint. For more information on Service Broker transport security, see [Service Broker transport security](service-broker-transport-security.md).
 
 ## Related content
 

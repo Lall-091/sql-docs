@@ -1,5 +1,5 @@
 ---
-title: Understanding When Activation Occurs
+title: Understand When Activation Occurs
 description: "The Service Broker activation process consists of two steps. First, Service Broker determines whether activation is necessary."
 author: rwestMSFT
 ms.author: randolphwest
@@ -10,7 +10,7 @@ ms.subservice: configuration
 ms.topic: concept-article
 ---
 
-# Understanding when activation occurs
+# Understand when activation occurs
 
 [!INCLUDE [sql-asdbmi](../../includes/applies-to-version/sql-asdbmi.md)]
 

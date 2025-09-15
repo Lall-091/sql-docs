@@ -24,17 +24,17 @@ SQL Server maintains two distinct levels of routing information. Each database c
 
 The basic matching process is identical whether the conversation originates in the instance or outside the instance. The process ignores routes that have expired. The routing process consists of three distinct steps:
 
-1. **Finding matching routes**. Service Broker finds a set of possible routes by matching the service name and the Service Broker identifier.
+1. **Find matching routes**: Service Broker finds a set of possible routes by matching the service name and the Service Broker identifier.
 
-1. **Choosing a route**. Service Broker chooses a route from among the set of possible routes.
+1. **Choose a route**: Service Broker chooses a route from among the set of possible routes.
 
-1. **Locating the destination service**. When the route chosen specifies `'LOCAL'` as the network address, Service Broker locates the service in the instance. If the service doesn't exist in the instance, Service Broker might return to step 2 and choose another route.
+1. **Locate the destination service**: When the route chosen specifies `'LOCAL'` as the network address, Service Broker locates the service in the instance. If the service doesn't exist in the instance, Service Broker might return to Step 2 and choose another route.
 
 When a message has been sent from the initiator to the target and the initiator receives an acknowledgment message from the target, the initiator uses the Service Broker identifier in the acknowledgment messages to route subsequent messages to the same target. Service Broker handles acknowledgment messages; the process is transparent to an application that uses Service Broker. For more information about acknowledgment messages, see [Service Broker communication protocols](service-broker-communication-protocols.md).
 
 ## Reply messages from a target service
 
-When a message arriving from outside the instance is from a target service, SQL Server checks to see whether the current instance contains the Service Broker identifier in the message. If so, then the message is delivered in the current instance as described in "Locating the Destination Service." Otherwise, SQL Server follows the standard matching process.
+When a message arriving from outside the instance is from a target service, SQL Server checks to see whether the current instance contains the Service Broker identifier in the message. If so, then the message is delivered in the current instance as described in [Locate the destination service](#locate-the-destination-service) later in this article. Otherwise, SQL Server follows the standard matching process.
 
 ## Find matching routes
 
@@ -54,7 +54,7 @@ The following procedure describes how SQL Server matches routes. At each step, i
 
 1. Mark the conversation delayed.
 
-When a conversation is marked delayed, Service Broker performs the matching process again after a time-out period. Failure to find a matching route isn't considered an error.
+When a conversation is marked delayed, Service Broker performs the matching process again after a timeout period. Failure to find a matching route isn't considered an error.
 
 ## Choose a route
 

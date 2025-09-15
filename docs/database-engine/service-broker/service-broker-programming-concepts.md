@@ -14,7 +14,7 @@ ms.topic: reference
 
 [!INCLUDE [sql-asdbmi](../../includes/applies-to-version/sql-asdbmi.md)]
 
-Service Broker introduces concepts that are unique to developing a Service Broker application. Understanding these concepts will help you build applications that take full advantage of Service Broker capabilities.
+Service Broker introduces concepts that are unique to developing a Service Broker application. Understanding these concepts helps you build applications that take full advantage of Service Broker capabilities.
 
 ## In this section
 

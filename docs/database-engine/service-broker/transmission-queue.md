@@ -24,7 +24,7 @@ Outgoing messages are added to the transmission queue in the database that sends
 
 Incoming messages are generally directly added to the queue for the destination service. However, if the destination queue is `OFF`, incoming messages are held in the transmission queue for the database that contains the destination queue.
 
-## Single instance optimization
+## Single-instance optimization
 
 In cases where both sides of the conversation are in the same instance, Service Broker might optimize message delivery by placing the message directly on the destination queue.
 
