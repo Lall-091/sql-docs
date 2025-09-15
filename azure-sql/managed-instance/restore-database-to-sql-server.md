@@ -1,39 +1,37 @@
 ---
 title: Restore a Database to SQL Server
 titleSuffix: Azure SQL Managed Instance
-description: Learn how to restore a database to SQL Server 2022 from Azure SQL Managed Instance.
+description: Learn how to restore a database to SQL Server 2022, or SQL Server 2025, from Azure SQL Managed Instance.
 author: mladjoa
 ms.author: mlandzic
 ms.reviewer: mathoma, danil, randolphwest
-ms.date: 06/09/2025
+ms.date: 09/15/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: data-movement
 ms.topic: how-to
 ms.custom:
-  - ignite-2023
-  - build-2024
 ---
 
-# Restore a database to SQL Server 2022 from Azure SQL Managed Instance
+# Restore a database to SQL Server from Azure SQL Managed Instance
 
 [!INCLUDE [appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-This article describes how to restore a database backup from Azure SQL Managed Instance to SQL Server 2022.
+This article describes how to restore a database backup *from* Azure SQL Managed Instance *to* SQL Server 2022 *or* SQL Server 2025.
 
 ## Overview
 
-The database format alignment between SQL Managed Instance and SQL Server 2022 gives you an easy way to copy or move databases from your managed instance to an Enterprise, Developer, or Standard edition of SQL Server 2022 hosted on-premises, on virtual machines in Azure, or in other clouds.
+When you configure your SQL Managed Instance with an [update policy](update-policy.md), you align your internal database format with a specific version of SQL Server. Database format alignment between SQL Managed Instance and SQL Server gives you an easy way to copy or move databases from your SQL managed instance to an Enterprise, Developer, or Standard edition of SQL Server hosted on-premises, on virtual machines in Azure, or in other clouds.
 
-Restoring databases from managed instances to SQL Server 2022 instances unlocks the following scenarios:
+Restoring databases from SQL managed instances to SQL Server 2022, or SQL Server 2025, instances unlocks the following scenarios:
 
 - Ensures database mobility between SQL Managed Instance and SQL Server-based products.
 - Provides database copies to customers and other eligible parties.
 - Refreshes environments outside SQL Managed Instance.
 
-The ability to restore copy-only full backups of databases from SQL Managed Instance to SQL Server 2022 is available by default in all existing and any new deployed instances.
+Consider the following: 
+- The ability to restore copy-only full backups of databases from SQL Managed Instance to SQL Server 2022 is available by default for all existing and newly deployed instances. This ability is available until the end of [mainstream support for SQL Server 2022](/lifecycle/products/sql-server-2022). Once the update policy of an instance is changed to **SQL Server 2025**, or **Always-up-to-date**, restoring a database to SQL Server 2022 is no longer possible.
+- The ability to restore copy-only full backups of databases from SQL Managed Instance to SQL Server 2025 is only available to instances configured with the [SQL Server 2025 update policy](update-policy.md#sql-server-2025-update-policy). This ability is available until the end of mainstream support for SQL Server 2025. Once the update policy of an instance is changed to **Always-up-to-date**, restoring a database to SQL Server 2025 is no longer possible.
 
-> [!IMPORTANT]  
-> The ability to restore copy-only full backups of databases from SQL Managed Instance to SQL Server 2022 is available until the end of [mainstream support for SQL Server 2022](/lifecycle/products/sql-server-2022).
 
 ## Take a backup on SQL Managed Instance
 
@@ -114,19 +112,19 @@ When you're restoring a database to SQL Server, consider the following:
 
 - Databases that are encrypted with service-managed TDE keys can't be restored to SQL Server. You can restore an encrypted database to SQL Server only if it was encrypted with a customer-managed key and the destination server has access to the same key that's used to encrypt the database. For more information, see [Set up SQL Server TDE Extensible Key Management by using Azure Key Vault](/sql/relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault).
 
-- This capability is only available to instances with the [**SQL Server 2022** update policy](update-policy.md#sql-server-2022-update-policy). You can't restore your database backup to SQL Server 2022 from an instance with the **Always up to date** update policy.
+- The update policy for your SQL Managed Instance must match, or be a higher, version of your SQL Server instance. Databases restored to SQL Server 2022 must come from instances with the [**SQL Server 2022** update policy](update-policy.md#sql-server-2022-update-policy). Likewise, databases restored to SQL Server 2025 must come from instances with the [**SQL Server 2025** update policy](update-policy.md#sql-server-2025-update-policy). It's also possible to restore a database from an instance with a **SQL Server 2022** update policy to an instance with a **SQL Server 2025** update policy. Once a database is restored to an instance with a higher version update policy, that database can no longer be restored to an instance with a lower version update policy. Restoring databases from instances with a lower version update policy isn't supported. 
 
-- After restoring an Azure SQL Managed Instance database to SQL Server 2022, and dropping an index, or a table with an index, you might see [Error 8992](doc-changes-updates-known-issues.md#error-8992-when-running-dbcc-checkdb-on-a-sql-server-database-that-originated-from-sql-managed-instance) when running the `DBCC CHECKDB` command.
+- After restoring an Azure SQL Managed Instance database to SQL Server, and dropping an index, or a table with an index, you might see [Error 8992](doc-changes-updates-known-issues.md#error-8992-when-running-dbcc-checkdb-on-a-sql-server-database-that-originated-from-sql-managed-instance) when running the `DBCC CHECKDB` command.
 
   > [!CAUTION]  
   > If you create a partitioned index on a table after dropping an index as described in this scenario, the table becomes inaccessible.
 
 ## Related content
 
-- To learn how to create your first managed instance, see [Quickstart guide](instance-create-quickstart.md).
+- To learn how to create your first SQL managed instance, see the [Quickstart guide](instance-create-quickstart.md).
 - For a features and comparison list, see [SQL common features](../database/features-comparison.md).
 - For more information about virtual network configuration, see [SQL Managed Instance virtual network configuration](connectivity-architecture-overview.md).
-- For a quickstart that creates a managed instance and restores a database from a backup file, see [Create a managed instance](instance-create-quickstart.md).
+- For a quickstart that creates a SQL managed instance and restores a database from a backup file, see [Create a SQL managed instance](instance-create-quickstart.md).
 - For a tutorial about using Azure Database Migration Service for migration, see [SQL Managed Instance migration using Database Migration Service](/azure/dms/tutorial-sql-server-to-managed-instance).
 - For advanced monitoring of SQL Managed Instance, see [database watcher](../database-watcher-overview.md).
 - For pricing information, see [SQL Database pricing](https://azure.microsoft.com/pricing/details/sql-database/managed/).

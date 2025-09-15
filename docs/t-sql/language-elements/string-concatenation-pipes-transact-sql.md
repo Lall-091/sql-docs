@@ -56,7 +56,7 @@ Some benefits of using the ANSI string concatenation syntax include:
 
 - Interoperability: The ANSI standard is widely recognized and supported by most SQL-compliant database systems, enhancing interoperability between different systems and tools.
 
-The `||` string concatenation operator is available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) update policy.
+The `||` string concatenation operator is available in Azure SQL Managed Instance with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).
 
 ### String truncation behavior
 

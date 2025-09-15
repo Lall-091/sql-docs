@@ -80,9 +80,15 @@ Fail back is optional. If you don't need to fail back, you can keep the secondar
 
 ## Managed Instance link
 
-It's possible to use a [Managed Instance link](managed-instance-link-disaster-recovery.md) for disaster recovery. Two-way failover is only supported with SQL Server 2022, and instances configured with the [SQL Server 2022 update policy](update-policy.md#sql-server-2022-update-policy). SQL Server 2019 and earlier versions support one-way failover only and fail back to SQL Server isn't supported. 
+It's possible to use a [Managed Instance link](managed-instance-link-disaster-recovery.md) for disaster recovery. 
 
-This sections describes how to perform a disaster recovery drill with SQL Server 2022. When using a [Managed Instance link](managed-instance-link-disaster-recovery.md) for disaster recovery, the drill exercise involves planned failover to the secondary instance. The planned failover ensures that the primary and the secondary instances in the Managed Instance link remain in sync when the roles are switched. Unlike the unplanned failover, this operation doesn't result in data loss, so the drill can be performed in a production environment. 
+Two-way failover is only supported between: 
+- SQL Server 2022, and instances configured with the [SQL Server 2022 update policy](update-policy.md#sql-server-2022-update-policy). 
+- SQL Server 2025, and instances configured with the [SQL Server 2025 update policy](update-policy.md#sql-server-2025-update-policy).
+
+SQL Server 2019 and earlier versions only support one-way failover and fail back to SQL Server isn't supported. 
+
+This section describes how to perform a disaster recovery drill with SQL Server 2022 or SQL Server 2025. When using a [Managed Instance link](managed-instance-link-disaster-recovery.md) for disaster recovery, the drill exercise involves planned failover to the secondary instance. The planned failover ensures that the primary and the secondary instances in the Managed Instance link remain in sync when the roles are switched. Unlike the unplanned failover, this operation doesn't result in data loss, so the drill can be performed in a production environment. 
 
 ### Outage simulation
 

@@ -52,8 +52,9 @@ Consider the following:
 - The link feature supports one database per link. To replicate multiple databases on an instance, create a link for each individual database. For example, to replicate 10 databases to SQL Managed Instance, create 10 individual links.
 - Collation between SQL Server and SQL Managed Instance should be the same. A mismatch in collation could cause a mismatch in server name casing and prevent a successful connection from SQL Server to SQL Managed Instance.
 - Error 1475 on your initial SQL Server primary indicates that you need to start a new backup chain by creating a full backup without the `COPY ONLY` option.
-- To establish a link, or fail over, from SQL Managed Instance to SQL Server 2022, your managed instance must be configured with the [SQL Server 2022 update policy](update-policy.md#sql-server-2022-update-policy). Data replication and failover from SQL Managed Instance to SQL Server 2022 is not supported by instances configured with the Always-up-to-date update policy. 
-- While you can establish a link from SQL Server 2022 to a SQL managed instance configured with the Always-up-to-date update policy, after failover to SQL Managed Instance, you will no longer be able to replicate data or fail back to SQL Server 2022. 
+- To establish a link, or fail over, *from* SQL Managed Instance to SQL Server 2025, your SQL managed instance must be configured with the [SQL Server 2025 update policy](update-policy.md#sql-server-2025-update-policy). Data replication and failover *from* SQL Managed Instance to SQL Server 2025 is not supported by instances configured with a mismatched update policy.
+- To establish a link, or fail over, *from* SQL Managed Instance to SQL Server 2022, your SQL managed instance must be configured with the [SQL Server 2022 update policy](update-policy.md#sql-server-2022-update-policy). Data replication and failover *from* SQL Managed Instance to SQL Server 2022 is not supported by instances configured with a mismatched update policy.
+- While you can establish a link from a supported version of SQL Server to a SQL managed instance configured with the **Always-up-to-date** update policy, after failover to SQL Managed Instance, you will no longer be able to replicate data or fail back to your SQL Server instance. 
 
 
 ## Permissions
@@ -761,7 +762,7 @@ To simplify the process, sign in to the Azure portal and run the following scrip
 - `<SQLServerIP>` with the IP address of your SQL Server. The provided IP address must be accessible by managed instance.
  
 > [!NOTE]
-> If you want establish a link to an availability group that already exists, then provide the IP address of the listener when supplying the `<SQLServerIP>` parameter. Please ensure that trust has been established between all availability group nodes and SQL Managed Instance (see [Establish trust between instances](#establish-trust-between-instances) section).
+> If you want to establish a link to an availability group that already exists, then provide the IP address of the listener when supplying the `<SQLServerIP>` parameter. Please ensure that trust has been established between all availability group nodes and SQL Managed Instance (see [Establish trust between instances](#establish-trust-between-instances) section).
 
 
 ```powershell-interactive

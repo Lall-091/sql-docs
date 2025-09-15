@@ -80,7 +80,7 @@ The following table shows characteristics of SQL Managed Instance:
 | VNet - Azure Resource Manager deployment | Yes |
 | VNet - Classic deployment model | No |
 
-<sup>1</sup> Based on the [**Always-up-to-date** update policy](update-policy.md#always-up-to-date-update-policy). Instances configured with the **SQL Server 2022** update policy have updates from the latest stable SQL Server 2022 database engine.
+<sup>1</sup> Based on the [**Always-up-to-date** update policy](update-policy.md#always-up-to-date-update-policy). Instances configured with the **SQL Server 2022** update policy have updates from the latest stable SQL Server 2022 Database Engine. Instances configured with the **SQL Server 2025** update policy have updates from the latest stable SQL Server 2025 Database Engine.
 
 ## Supported SQL features
 
@@ -309,9 +309,9 @@ Because the link feature enables minimal downtime migration, you can migrate to 
 
 ## Management operations
 
-Azure SQL Managed Instance provides management operations that you can use to automatically deploy new managed instances, update instance properties, and delete instances when no longer needed. Detailed explanation of management operations can be found in [management operations](management-operations-overview.md).
+Azure SQL Managed Instance provides management operations that you can use to automatically deploy new SQL managed instances, update instance properties, and delete instances when no longer needed. Detailed explanation of management operations can be found in [management operations](management-operations-overview.md).
 
-## Programmatically identify a managed instance
+## Programmatically identify a SQL managed instance
 
 The following table shows several properties, accessible through Transact-SQL, that you can use to detect that your application is working with SQL Managed Instance and retrieve important properties.
 

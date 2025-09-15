@@ -31,7 +31,7 @@ Provides memory health snapshots for a database engine instance. Each row repres
 
 For more information on troubleshooting insufficient memory in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], see [Troubleshoot out of memory errors in Azure SQL Database](/azure/azure-sql/database/troubleshoot-memory-errors-issues).
 
-In Azure SQL Managed Instance, this view is available only on instances with the **always-up-to-date** update policy.
+In Azure SQL Managed Instance, this view is available only on instances with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).
 
 | Column Name | Data Type | Description |
 |:--|:--|:--|

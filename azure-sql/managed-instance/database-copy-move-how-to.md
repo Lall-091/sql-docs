@@ -5,7 +5,7 @@ description: Learn how to perform an online move or copy operation of your datab
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: mathoma, danil, randolphwest, wiassaf
-ms.date: 09/11/2025
+ms.date: 09/15/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: data-movement
 ms.topic: how-to
@@ -259,7 +259,8 @@ Consider the following limitations of the copy and move feature:
 - The source or destination SQL managed instance shouldn't be configured with a failover group (geo-disaster recovery) setup.
 - You need to reconfigure transactional replication, change data capture (CDC), or distributed transactions after you move a database that relies on these features.
 - When the source database uses a customer-managed key (CMK) as the TDE protector, to copy or move the database to the target SQL Managed Instance, the target instance must have access to the same key used to encrypt the source database in Azure Key Vault.
-- A database from an instance configured with the [Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy) can't be copied or moved to an instance configured with the [SQL Server 2022 update policy](update-policy.md#sql-server-2022-update-policy). Once a database from an instance configured with the SQL Server 2022 update policy is copied or moved to an instance with the Always-up-to-date update policy, it can't be copied or moved to an instance configured with the SQL Server 2022 update policy.
+- Databases can only be copied or moved to instances with matching, or higher version, [update policies](update-policy.md). For example, a database from an instance configured with the **Always-up-to-date** update policy can't be copied or moved to an instance configured with the **SQL Server 2022** or **SQL Server 2025** update policy. Once a database is copied or moved to an instance with a higher version update policy, it can't be copied or moved to an instance configured with a lower version update policy.
+
 
 ## Related content
 

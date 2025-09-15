@@ -173,6 +173,7 @@ Ordered columnstore indexes are available in the following platforms:
 |:--|:--|:--|
 |[!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] | Yes | Yes |
 |[!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]<sup>AUTD</sup>|Yes|Yes|
+|[!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]<sup>2025</sup>|Yes|Yes|
 |[!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]<sup>2022</sup>|Yes|No|
 |[!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)] | Yes<sup>1</sup> | Yes |
 |[!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]|Yes|Yes|
@@ -180,6 +181,7 @@ Ordered columnstore indexes are available in the following platforms:
 |[!INCLUDE [sss-dedicated-pool-md](../../includes/sss-dedicated-pool-md.md)] in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)]|[Yes](/azure/synapse-analytics/sql-data-warehouse/performance-tuning-ordered-cci)|No|
 
 <sup>AUTD</sup> Applies to Azure SQL Managed Instance configured with the [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy).   
+<sup>2025</sup> Applies to Azure SQL Managed Instance configured with the [SQL Server 2025 update policy](/azure/azure-sql/managed-instance/update-policy#sql-server-2025-update-policy).   
 <sup>2022</sup> Applies to Azure SQL Managed Instance configured with the [SQL Server 2022 update policy](/azure/azure-sql/managed-instance/update-policy#sql-server-2022-update-policy).   
 <sup>1</sup>In Fabric SQL database, tables with clustered columnstore indexes are not [mirrored to Fabric OneLake](/fabric/database/sql/mirroring-overview).
 

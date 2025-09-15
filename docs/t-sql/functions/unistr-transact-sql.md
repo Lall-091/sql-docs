@@ -30,7 +30,7 @@ The escape sequence for a Unicode character can be specified in the form of `\xx
 Compared to functions like `NCHAR`, `UNISTR` provides a more flexible and comprehensive way to handle Unicode characters. For example, while `NCHAR` can convert a single Unicode value to a character, `UNISTR` handles multiple Unicode values and escape sequences, making it easier to work with complex strings that include various Unicode characters.
 
 > [!NOTE]
-> `UNISTR` is available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) update policy. 
+> `UNISTR` is available in Azure SQL Managed Instance with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy). 
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
@@ -50,7 +50,7 @@ Key benefits of `UNISTR` include:
 
 - **Custom escape characters**: You can define a custom escape character to perform the necessary conversion of Unicode values into a string character set.
 
-The `||` pipes operator is available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) update policy. 
+The `||` pipes operator is available in Azure SQL Managed Instance configured with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy). 
 
 ### Code page support
 

@@ -71,17 +71,14 @@ The next sections discuss the key capabilities that [!INCLUDE [ssnoversion-md](.
 
 ### JSON data type
 
+[!INCLUDE [json-data-supportability](../../includes/json-data-supportability.md)]
+
 The new **json** data type that stores JSON documents in a native binary format that provides the following benefits over storing JSON data in **varchar**/**nvarchar**:
 
 - More efficient reads, as the document is already parsed
 - More efficient writes, as the query can update individual values without accessing the entire document
 - More efficient storage, optimized for compression
 - No change in compatibility with existing code
-
-> [!NOTE]
-> The [JSON data type](../../t-sql/data-types/json-data-type.md): 
-> - is generally available for Azure SQL Database and Azure SQL Managed Instance configured with the **[Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy)**.  
-> - is in preview for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. 
 
 Using the JSON same functions described in this article remain the most efficient way to query the **json** data type. For more information on the native **json** data type, see [JSON data type](../../t-sql/data-types/json-data-type.md).
 
@@ -272,8 +269,10 @@ JSON aggregate functions enable construction of JSON objects or arrays based on 
 - [JSON_OBJECTAGG](../../t-sql/functions/json-objectagg-transact-sql.md) constructs a JSON **object** from an aggregation of SQL data or columns.
 - [JSON_ARRAYAGG](../../t-sql/functions/json-arrayagg-transact-sql.md) constructs a JSON **array** from an aggregation of SQL data or columns.
 
-> [!NOTE]
-> Both **json** aggregate functions `JSON_OBJECTAGG` and `JSON_ARRAYAGG` are currently in preview for Azure SQL Database and Azure SQL Managed Instance (configured with the [**Always-up-to-date** update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy)). 
+> [!NOTE]  
+> Both **json** aggregate functions `JSON_OBJECTAGG` and `JSON_ARRAYAGG` are: 
+> -  generally available for Azure SQL Database, Azure SQL Managed Instance (with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy)), and Fabric Data Warehouse.
+> - in preview for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
 
 ## Use cases for JSON data in SQL Server
 

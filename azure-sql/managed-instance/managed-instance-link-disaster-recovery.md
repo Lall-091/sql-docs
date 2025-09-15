@@ -42,11 +42,17 @@ With SQL Server 2016, 2017 and 2019, the primary is always SQL Server and failov
 To use the link with Azure SQL Managed Instance for disaster recovery, you need the following prerequisites: 
 
 - An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
-- [Supported version of SQL Server](managed-instance-link-feature-overview.md#prerequisites)) with the required service update installed.
+- [Supported version of SQL Server](managed-instance-link-feature-overview.md#prerequisites) with the required service update installed.
 - Azure SQL Managed Instance. [Get started](instance-create-quickstart.md) if you don't have an instance. 
 - A configured [Managed Instance link](managed-instance-link-configure-how-to-ssms.md) between SQL Server and Azure SQL Managed Instance. 
-- To establish a link, or fail over, from SQL Managed Instance to SQL Server 2022, your managed instance must be configured with the [SQL Server 2022 update policy](update-policy.md#sql-server-2022-update-policy). Data replication and failover from SQL Managed Instance to SQL Server 2022 is not supported by instances configured with the Always-up-to-date update policy. 
-- While you can establish a link from SQL Server 2022 to a SQL managed instance configured with the Always-up-to-date update policy, after failover to SQL Managed Instance, you will no longer be able to replicate data or fail back to SQL Server 2022. 
+- Your instance must have the appropriate [update policy](update-policy.md): 
+   - To establish a link, or fail over, *from* SQL Managed Instance to SQL Server 2025, your SQL managed instance must be configured with the [SQL Server 2025 update policy](update-policy.md#sql-server-2025-update-policy). Data replication and failover *from* SQL Managed Instance to SQL Server 2025 is not supported by instances configured with a mismatched update policy.
+   - To establish a link, or fail over, *from* SQL Managed Instance to SQL Server 2022, your SQL managed instance must be configured with the [SQL Server 2022 update policy](update-policy.md#sql-server-2022-update-policy). Data replication and failover *from* SQL Managed Instance to SQL Server 2022 is not supported by instances configured with a mismatched update policy.
+   - While you can establish a link from a supported version of SQL Server to a SQL managed instance configured with the **Always-up-to-date** update policy, after failover to SQL Managed Instance, you will no longer be able to replicate data or fail back to your SQL Server instance. 
+
+
+
+
 
 ## Permissions
 

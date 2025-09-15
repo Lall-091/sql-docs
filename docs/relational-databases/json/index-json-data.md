@@ -20,18 +20,14 @@ monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-20
 
 You can optimize your queries over JSON documents using standard indexes.
 
-The [JSON data type](../../t-sql/data-types/json-data-type.md):
-
-- is generally available for Azure SQL Database and SQL database in Fabric.
-- is generally available in Azure SQL Managed Instance configured with the **[Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy)**.
-- is in preview for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
-
 > [!NOTE]  
 > In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], you can use the [CREATE JSON INDEX (Transact-SQL)](../../t-sql/statements/create-json-index-transact-sql.md) feature.
 
 Indexes work the same way on JSON data in **varchar**/**nvarchar** or the [native **json** data type](../../t-sql/data-types/json-data-type.md).
 
 Database indexes improve the performance of filter and sort operations. Without indexes, SQL Server has to perform a full table scan every time you query data.
+
+[!INCLUDE [json-data-supportability](../../includes/json-data-supportability.md)]
 
 ## Index JSON properties by using computed columns
 

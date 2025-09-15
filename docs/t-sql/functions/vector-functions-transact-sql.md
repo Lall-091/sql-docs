@@ -28,7 +28,7 @@ The following scalar functions perform operations on [vectors](../../relational-
 
 > [!NOTE]
 > - Vector features are in preview and are subject to change. Make sure to read preview usage terms in the [Service Level Agreements (SLA) for Online Services](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services) document.
-> - Vector features are available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) update policy. 
+> - Vector features are available in Azure SQL Managed Instance with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy). 
 
 All Vector functions support the [Vector data type](../data-types/vector-data-type.md).
 

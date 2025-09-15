@@ -62,7 +62,7 @@ If the result of the concatenation of strings exceeds the limit of 8,000 bytes, 
 
 An explicit conversion to character data must be used when concatenating binary strings and any characters between the binary strings.
 
-The `||=` pipes operator is available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) update policy.
+The `||=` pipes operator is available in Azure SQL Managed Instance with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).
 
 
 ### Zero-length strings and characters

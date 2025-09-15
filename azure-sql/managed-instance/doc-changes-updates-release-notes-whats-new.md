@@ -5,7 +5,7 @@ description: Learn about the new features and documentation improvements for Azu
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: wiassaf, mathoma
-ms.date: 09/10/2025
+ms.date: 09/15/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: whats-new
@@ -47,8 +47,9 @@ The following table lists the features of Azure SQL Managed Instance that are cu
 |[Regular expression functions](/sql/relational-databases/regular-expressions/overview) | Regular expression (REGEX) functions return text based on values in a search pattern. |
 |[SDK-style SQL project](/sql/azure-data-studio/extensions/sql-database-project-extension-sdk-style-projects) | Use [Microsoft.Build.Sql](https://www.nuget.org/packages/Microsoft.Build.Sql) for SDK-style SQL projects in the SQL Database Projects extension in Azure Data Studio or Visual Studio Code. SDK-style SQL projects are especially advantageous for applications shipped through pipelines or built in cross-platform environments.|
 |[Service Broker](/sql/database-engine/configure-windows/sql-server-service-broker) | Support for cross-instance message exchange using Service Broker between instances of Azure SQL Managed Instance, and between SQL Server and Azure SQL Managed Instance. |
+|[SQL Server 2025 update policy](update-policy.md#sql-server-2025-update-policy) | Align your SQL managed instance database format with the SQL Server 2025 database engine. | 
 |[Threat detection](threat-detection-configure.md) | Threat detection notifies you of security threats detected to your database. |
-|[Vector data type and functions](/sql/t-sql/data-types/vector-data-type?view=azuresqldb-current&preserve-view=true) | Working with vector data is now easier in Azure SQL Managed Instance with the [Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy) with the introduction of a new [vector data type](/sql/t-sql/data-types/vector-data-type?view=azuresqlmi-current&preserve-view=true) and [vector functions](/sql/t-sql/functions/vector-functions-transact-sql?view=azuresqlmi-current&preserve-view=true). For more information, see [Intelligent applications with Azure SQL Managed Instance](ai-artificial-intelligence-intelligent-applications.md#vectors). |
+|[Vector data type and functions](/sql/t-sql/data-types/vector-data-type?view=azuresqldb-current&preserve-view=true) | Working with vector data is now easier in Azure SQL Managed Instance with the introduction of a new [vector data type](/sql/t-sql/data-types/vector-data-type?view=azuresqlmi-current&preserve-view=true) and [vector functions](/sql/t-sql/functions/vector-functions-transact-sql?view=azuresqlmi-current&preserve-view=true). For more information, see [Intelligent applications with Azure SQL Managed Instance](ai-artificial-intelligence-intelligent-applications.md#vectors). |
 
 
 ## General availability (GA)
@@ -57,10 +58,10 @@ The following table lists features of Azure SQL Managed Instance that have been 
 
 | Feature | GA Month | Details |
 | ---| --- |--- |
-|[Optimized locking](/sql/relational-databases/performance/optimized-locking)| July 2025 | Azure SQL Managed Instance with the [Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy) now has optimized locking enabled for all user databases. |
+|[Optimized locking](/sql/relational-databases/performance/optimized-locking)| July 2025 | Azure SQL Managed Instance with the Always-up-to-date and SQL Server 2025 [update policy](update-policy.md) now has optimized locking enabled for all user databases. |
 |[UNISTR (Transact-SQL)](/sql/t-sql/functions/unistr-transact-sql) | July 2025 | Azure SQL Managed Instance now supports the `UNISTR` T-SQL syntax for Unicode string literals.|
 |[\|\| (String concatenation)](/sql/t-sql/language-elements/string-concatenation-pipes-transact-sql?view=azuresqldb-current&preserve-view=true) and [\|\|= (Compound assignment)](/sql/t-sql/language-elements/compound-assignment-pipes-transact-sql?view=azuresqldb-current&preserve-view=true) syntax support | July 2025 |Azure SQL Managed Instance now supports [\|\| (String concatenation)](/sql/t-sql/language-elements/string-concatenation-pipes-transact-sql?view=azuresqldb-current&preserve-view=true) and [\|\|= (Compound assignment)](/sql/t-sql/language-elements/compound-assignment-pipes-transact-sql?view=azuresqldb-current&preserve-view=true) Transact-SQL syntax.|
-| [Degrees of parallelism (DOP) feedback](/sql/relational-databases/performance/intelligent-query-processing-degree-parallelism-feedback?view=azuresqldb-mi-current&preserve-view=true) | July 2025|  DOP feedback improves query performance by identifying parallelism inefficiencies for repeating queries, based on elapsed time and waits. For more information, see the [Smarter Parallelism: Degree of parallelism feedback in SQL Server 2025](https://techcommunity.microsoft.com/blog/sqlserver/smarter-parallelism-degree-of-parallelism-feedback-in-sql-server-2025/4431318) blog. |
+|[Degrees of parallelism (DOP) feedback](/sql/relational-databases/performance/intelligent-query-processing-degree-parallelism-feedback?view=azuresqldb-mi-current&preserve-view=true) | July 2025|  DOP feedback improves query performance by identifying parallelism inefficiencies for repeating queries, based on elapsed time and waits. For more information, see the [Smarter Parallelism: Degree of parallelism feedback in SQL Server 2025](https://techcommunity.microsoft.com/blog/sqlserver/smarter-parallelism-degree-of-parallelism-feedback-in-sql-server-2025/4431318) blog. |
 |[Zone redundancy for General Purpose](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability) | June 2025|  Deploy your General Purpose SQL Managed Instance to multiple availability zones to improve the availability of your instance in the event of a disaster. | 
 |[Invoke an HTTPS REST endpoint SP](/sql/relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql) | June 2025 | Use the `sp_invoke_external_rest_endpoint` stored procedure to invoke an HTTPS REST endpoint provided as an input argument to the procedure. | 
 |[TLS 1.3 support for replication](replication-transactional-overview.md#tls-13-support) | May 2025 | Configure Azure SQL Managed Instance replication agents to use TLS 1.3. |
@@ -81,22 +82,25 @@ The following table lists features of Azure SQL Managed Instance that have been 
 
 Learn about significant changes to the Azure SQL Managed Instance documentation. For previous years, see the [What's new archive](doc-changes-updates-release-notes-whats-new-archive.md).
 
-### September 2025
+
+### September 
 
 | Changes | Details |
 | --- | --- |
 | **New Azure SQL hub** | Choosing the right Azure SQL service can be challenging. To make this easier, we built the [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub), a new home for everything related to Azure SQL in the Azure portal. For more information, read the blog post [Introducing the Azure SQL hub: A simpler, guided entry into Azure SQL](https://aka.ms/azuresqlhubblog). | 
+|**SQL Server 2025 update policy preview**|  Align your SQL managed instance database format with the SQL Server 2025 database engine. This capability is now in preview. To learn more, review [SQL Server 2025 update policy](update-policy.md#sql-server-2025-update-policy). | 
+
 
 ### July 2025
 
 | Changes | Details |
 | --- | --- |
-| **Degrees of parallelism (DOP) feedback GA** |  DOP feedback improves query performance by identifying parallelism inefficiencies for repeating queries, based on elapsed time and waits. DOP feedback is now generally available for Azure SQL Managed Instance with the [Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy). To learn more, see [Degrees of parallelism (DOP) feedback](/sql/relational-databases/performance/intelligent-query-processing-degree-parallelism-feedback?view=azuresqldbmi-current&preserve-view=true). For additional information, see the [Smarter Parallelism: Degree of parallelism feedback in SQL Server 2025](https://techcommunity.microsoft.com/blog/sqlserver/smarter-parallelism-degree-of-parallelism-feedback-in-sql-server-2025/4431318) blog. |
+| **Degrees of parallelism (DOP) feedback GA** |  DOP feedback improves query performance by identifying parallelism inefficiencies for repeating queries, based on elapsed time and waits. DOP feedback is now generally available for Azure SQL Managed Instance. To learn more, see [Degrees of parallelism (DOP) feedback](/sql/relational-databases/performance/intelligent-query-processing-degree-parallelism-feedback?view=azuresqldbmi-current&preserve-view=true). For additional information, see the [Smarter Parallelism: Degree of parallelism feedback in SQL Server 2025](https://techcommunity.microsoft.com/blog/sqlserver/smarter-parallelism-degree-of-parallelism-feedback-in-sql-server-2025/4431318) blog. |
 |**Migrate SQL Server instance to Azure preview** | Migrate your SQL Server instance enabled by Azure Arc to Azure SQL Managed Instance through the Azure portal. This feature is currently in preview. Review [Migrate SQL Server instance to Azure SQL Managed Instance](/sql/sql-server/azure-arc/migrate-to-azure-sql-managed-instance) to learn more. |
 | **TLS 1.0 and 1.1 retirement FAQ** | Azure has announced that support for older TLS versions (TLS 1.0, and 1.1) ends August 31, 2025. For more information, see [TLS 1.0 and 1.1 deprecation frequently asked questions](minimal-tls-version-configure.md#upcoming-tls-10-and-11-retirement-changes-faq). Starting August 2025, versions below TLS 1.2 won't be available. |
-|**Optimized locking GA**| The [optimized locking](/sql/relational-databases/performance/optimized-locking) feature is generally available for Azure SQL Managed Instance configured with the [Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy) and enabled for all user databases.|
-| **UNISTR (Transact-SQL) GA** | Azure SQL Managed Instance now supports the `UNISTR` T-SQL syntax for Unicode string literals. This capability is now generally available for Azure SQL Managed Instance configured with the [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy). For more information, see [UNISTR (Transact-SQL)](/sql/t-sql/functions/unistr-transact-sql).|
-| **\|\| (String concatenation) and \|\|= (Compound assignment) syntax support GA** | Azure SQL Managed Instance now supports [\|\| (String concatenation)](/sql/t-sql/language-elements/string-concatenation-pipes-transact-sql) and [\|\|= (Compound assignment)](/sql/t-sql/language-elements/compound-assignment-pipes-transact-sql) Transact-SQL syntax. This capability is now generally available in an Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) update policy.|
+|**Optimized locking GA**| The [optimized locking](/sql/relational-databases/performance/optimized-locking) feature is generally available for Azure SQL Managed Instance configured with the Always-up-to-date or SQL Server 2025 [update policy](update-policy.md) and enabled for all user databases.|
+| **UNISTR (Transact-SQL) GA** | Azure SQL Managed Instance now supports the `UNISTR` T-SQL syntax for Unicode string literals. This capability is now generally available for Azure SQL Managed Instance. For more information, see [UNISTR (Transact-SQL)](/sql/t-sql/functions/unistr-transact-sql).|
+| **\|\| (String concatenation) and \|\|= (Compound assignment) syntax support GA** | Azure SQL Managed Instance now supports [\|\| (String concatenation)](/sql/t-sql/language-elements/string-concatenation-pipes-transact-sql) and [\|\|= (Compound assignment)](/sql/t-sql/language-elements/compound-assignment-pipes-transact-sql) Transact-SQL syntax. This capability is now generally available in an Azure SQL Managed Instance.|
 
 
 ### June 2025
@@ -129,7 +133,7 @@ Learn about significant changes to the Azure SQL Managed Instance documentation.
 
 | Changes | Details |
 | --- | --- |
-| **Vector data type and functions preview** | Working with vector data is now easier in Azure SQL Managed Instance with the [Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy) with the introduction of a new [vector data type](/sql/t-sql/data-types/vector-data-type) and [vector functions](/sql/t-sql/functions/vector-functions-transact-sql). This feature is now in preview. For more information, see [Intelligent applications with Azure SQL Managed Instance](ai-artificial-intelligence-intelligent-applications.md#vectors). |
+| **Vector data type and functions preview** | Working with vector data is now easier in Azure SQL Managed Instance with the introduction of a new [vector data type](/sql/t-sql/data-types/vector-data-type) and [vector functions](/sql/t-sql/functions/vector-functions-transact-sql). This feature is now in preview. For more information, see [Intelligent applications with Azure SQL Managed Instance](ai-artificial-intelligence-intelligent-applications.md#vectors). |
 
 
 ### March 2025
@@ -177,7 +181,7 @@ Learn about significant changes to the Azure SQL Managed Instance documentation.
 | --- | --- |
 | **CURRENT_DATE Transact-SQL GA** | The `CURRENT_DATE` Transact-SQL (T-SQL) function returns the current database system date as a date value, without the database time and time zone offset. This function is now generally available. For more information, see [CURRENT_DATE (Transact-SQL)](/sql/t-sql/functions/current-date-transact-sql). |
 | **JSON native data type preview** | The new [**JSON** native data type](/sql/t-sql/data-types/json-data-type) is currently in preview. For more information, see [JSON Type and aggregates preview](https://aka.ms/json-type-aggregates-public-preview). Your SQL managed instance must be configured with the [Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy).|
-| **JSON aggregate functions preview** | Two new **JSON** aggregate functions [JSON_OBJECTAGG and JSON_ARRAYAGG](/sql/relational-databases/json/json-data-sql-server#json-data-from-aggregates) enable construction of JSON objects or arrays based on an aggregate from SQL data. For more information, see [JSON Type and aggregates preview](https://aka.ms/json-type-aggregates-public-preview). Your SQL managed instance must be configured with the [the Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy).|
+| **JSON aggregate functions preview** | Two new **JSON** aggregate functions [JSON_OBJECTAGG and JSON_ARRAYAGG](/sql/relational-databases/json/json-data-sql-server#json-data-from-aggregates) enable construction of JSON objects or arrays based on an aggregate from SQL data. For more information, see [JSON Type and aggregates preview](https://aka.ms/json-type-aggregates-public-preview).|
 | **Fail over link with T-SQL preview** | You can now fail over a [Managed Instance link](managed-instance-link-feature-overview.md) by using Transact-SQL (T-SQL) commands. This capability is currently in preview starting with [SQL Server 2022 CU13 (KB5036432)](/troubleshoot/sql/releases/sqlserver-2022/cumulativeupdate13). To learn more, review [fail over a database](managed-instance-link-failover-how-to.md?tabs=tsql#fail-over-a-database). |
 
 ## Archive

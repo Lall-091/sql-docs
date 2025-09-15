@@ -4,7 +4,7 @@ description: "OPENROWSET BULK function reads data from an external data source."
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest, hudequei, wiassaf, jovanpop, fresantos
-ms.date: 09/03/2025
+ms.date: 09/08/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -96,6 +96,7 @@ OPENROWSET( BULK 'data_file_path',
 ]
 
 <bulk_option> ::=
+   DATA_SOURCE = 'data_source_name' |
 
    -- file format options
    CODEPAGE = { 'ACP' | 'OEM' | 'RAW' | 'code_page' } |
@@ -200,8 +201,6 @@ You can use `OPENROWSET(BULK)` to read data directly from files stored in the Fa
 
 ::: moniker-end
 
-::: moniker range="=azuresqldb-mi-current||=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017"
-
 #### DATA_SOURCE 
 
 `DATA_SOURCE` defines the root location of the data file path. It enables you use relative paths in BULK path. The data source is created with [CREATE EXTERNAL DATA SOURCE](../statements/create-external-data-source-transact-sql.md?view=sql-server-ver17&preserve-view=true).
@@ -221,7 +220,8 @@ FROM OPENROWSET(
 );
 ```
 
-::: moniker-end
+> [!NOTE]
+> The `DATA_SOURCE` option is [preview](/fabric/fundamentals/preview) in [!INCLUDE [fabric-md](../../includes/fabric.md)] [!INCLUDE [dw-md](../../includes/fabric-dw.md)] and [!INCLUDE [se-md](../../includes/fabric-se.md)].
 
 ### File format options
 
@@ -275,12 +275,12 @@ The valid values are  'CSV' (comma separated values file compliant to the [RFC 4
 | [!INCLUDE [azsql-md](../../includes/ssazure-sqldb.md)] | Yes | Yes | Yes | No |
 | [!INCLUDE [mi-md](../../includes/ssazuremi-md.md)] | Yes | Yes | Yes | No |
 | [!INCLUDE [ssod-md](../../includes/sssod-md.md)] in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] | Yes | Yes | Yes | No |
-| [!INCLUDE [fabric-md](../../includes/fabric.md)] [!INCLUDE [dw-md](../../includes/fabric-dw.md)] and [!INCLUDE [se-md](../../includes/fabric-se.md)] | Yes | Yes | No | Yes ([preview](/fabric/fundamentals/preview)) |
+| [!INCLUDE [fabric-md](../../includes/fabric.md)] [!INCLUDE [dw-md](../../includes/fabric-dw.md)] and [!INCLUDE [se-md](../../includes/fabric-se.md)] | Yes | Yes | No | Yes |
 
 ::: moniker range="=fabric"
 
 > [!IMPORTANT]
-> The `OPENROWSET` function can read only **newline-delimited** JSON format. This feature is currently in [preview](/fabric/fundamentals/preview). 
+> The `OPENROWSET` function can read only **newline-delimited** JSON format.
 > The newline character must be used as a separator between JSON documents, and cannot be placed in the middle of a JSON document.
 
 The `FORMAT` option doesn't need to be specified if the file extension in the path ends with `.csv`, `.tsv`, `.parquet`, `.parq`, `.jsonl`, `.ldjson`, or `.ndjson`. For example, the `OPENROWSET(BULK)` function knows that the format is parquet based on extension in the following example:
@@ -652,7 +652,7 @@ A number representing the physical index of the column that will be mapped to th
   or
 - `ADMINISTER BULK OPERATIONS`
 
-The following T-SQL example grants `ADMINISTEER DATABASE BULK OPERATIONS` to a principal.
+The following T-SQL example grants `ADMINISTER DATABASE BULK OPERATIONS` to a principal.
 
 ```sql
 GRANT ADMINISTER DATABASE BULK OPERATIONS TO [<principal_name>];
@@ -690,7 +690,7 @@ In Microsoft Fabric, the supported features are summarized in the table:
 
 | Feature           | Supported | Not available |
 |-------------------|-----------|----------------------|
-| **File formats**  | Parquet, CSV, JSONL (preview) | Delta, Azure Cosmos DB, JSON, relational databases |
+| **File formats**  | Parquet, CSV, JSONL | Delta, Azure Cosmos DB, JSON, relational databases |
 | **Authentication**| EntraID/SPN passthrough, public storage | SAS/SAK, SPN, Managed access |
 | **Storage**       | Azure Blob Storage, Azure Data Lake Storage, Fabric OneLake (preview) |  |
 | **Options**       | Only full/absolute URI in `OPENROWSET`  | Relative URI path in `OPENROWSET`, `DATA_SOURCE` |

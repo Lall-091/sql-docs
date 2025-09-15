@@ -26,7 +26,7 @@ Calculates a similarity value ranging from 0 (indicating no match) to 100 (indic
 > [!NOTE]
 > - `EDIT_DISTANCE_SIMILARITY` is currently in preview. 
 > - SQL Server support for `EDIT_DISTANCE_SIMILARITY` introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. 
-> - `EDIT_DISTANCE_SIMILARITY` is available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) update policy.
+> - `EDIT_DISTANCE_SIMILARITY` is available in Azure SQL Managed Instance with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).
 
 ## Syntax
 

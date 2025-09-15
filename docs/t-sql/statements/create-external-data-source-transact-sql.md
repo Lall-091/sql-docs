@@ -3,8 +3,8 @@ title: "CREATE EXTERNAL DATA SOURCE (Transact-SQL)"
 description: CREATE EXTERNAL DATA SOURCE creates an external data source used to establish connectivity and data virtualization from SQL Server and Azure SQL platforms.
 author: MikeRayMSFT
 ms.author: mikeray
-ms.reviewer: randolphwest, hudequei
-ms.date: 08/08/2025
+ms.reviewer: randolphwest, hudequei, wiassaf, jovanpop
+ms.date: 09/08/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -17,12 +17,12 @@ helpviewer_keywords:
   - "PolyBase, create data source"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azuresqledge-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azuresqledge-current || =fabric"
 ---
 
 # CREATE EXTERNAL DATA SOURCE (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
 
 Creates an external data source for querying external data, used for PolyBase and data virtualization features.
 
@@ -54,6 +54,9 @@ This article provides the syntax, arguments, remarks, permissions, and examples 
     :::column-end:::
     :::column:::
         [Analytics Platform<br />System (PDW)](create-external-data-source-transact-sql.md?view=aps-pdw-2016-au7&preserve-view=true)
+    :::column-end:::
+    :::column:::
+        [Microsoft Fabric](create-external-data-source-transact-sql.md?view=fabric&preserve-view=true)
     :::column-end:::
 :::row-end:::
 
@@ -2334,6 +2337,9 @@ WITH (
     :::column:::
         [Analytics Platform<br />System (PDW)](create-external-data-source-transact-sql.md?view=aps-pdw-2016-au7&preserve-view=true)
     :::column-end:::
+    :::column:::
+        [Microsoft Fabric](create-external-data-source-transact-sql.md?view=fabric&preserve-view=true)
+    :::column-end:::
 :::row-end:::
 
 &nbsp;
@@ -2601,6 +2607,9 @@ CREATE EXTERNAL DATA SOURCE MyEdgeHub
     :::column-end:::
     :::column:::
         [Analytics Platform<br />System (PDW)](create-external-data-source-transact-sql.md?view=aps-pdw-2016-au7&preserve-view=true)
+    :::column-end:::
+    :::column:::
+        [Microsoft Fabric](create-external-data-source-transact-sql.md?view=fabric&preserve-view=true)
     :::column-end:::
 :::row-end:::
 
@@ -2879,6 +2888,9 @@ WITH (
     :::column:::
         **_\* Analytics<br />Platform System (PDW) \*_** &nbsp;
     :::column-end:::
+    :::column:::
+        [Microsoft Fabric](create-external-data-source-transact-sql.md?view=fabric&preserve-view=true)
+    :::column-end:::
 :::row-end:::
 
 &nbsp;
@@ -3118,6 +3130,9 @@ WITH (
     :::column:::
         [Analytics Platform<br />System (PDW)](create-external-data-source-transact-sql.md?view=aps-pdw-2016-au7&preserve-view=true)
     :::column-end:::
+    :::column:::
+        [Microsoft Fabric](create-external-data-source-transact-sql.md?view=fabric&preserve-view=true)
+    :::column-end:::
 :::row-end:::
 
 ## Overview: Azure SQL Managed Instance
@@ -3322,6 +3337,127 @@ For more examples, see [CREATE EXTERNAL DATA SOURCE](create-external-data-source
 - [Data virtualization with Azure SQL Managed Instance](/azure/azure-sql/managed-instance/data-virtualization-overview?view=azuresql-mi&preserve-view=true)
 - [CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)](create-database-scoped-credential-transact-sql.md)
 - [CREATE EXTERNAL TABLE (Transact-SQL)](create-external-table-transact-sql.md)
+- [sys.external_data_sources (Transact-SQL)](../../relational-databases/system-catalog-views/sys-external-data-sources-transact-sql.md)
+- [Using Shared Access Signatures (SAS)](/azure/storage/common/storage-sas-overview)
+
+::: moniker-end
+
+::: moniker range="=fabric"
+
+:::row:::
+    :::column:::
+        [SQL Server](create-external-data-source-transact-sql.md?view=sql-server-ver15&preserve-view=true)
+    :::column-end:::
+    :::column:::
+        [Azure SQL Database](create-external-data-source-transact-sql.md?view=azuresqldb-current&preserve-view=true)
+    :::column-end:::
+    :::column:::
+        [SQL Managed<br />Instance](create-external-data-source-transact-sql.md?view=azuresqldb-mi-current&preserve-view=true)
+    :::column-end:::
+    :::column:::
+        [Azure Synapse<br />Analytics](create-external-data-source-transact-sql.md?view=azure-sqldw-latest&preserve-view=true)
+    :::column-end:::
+    :::column:::
+        [Analytics Platform<br />System (PDW)](create-external-data-source-transact-sql.md?view=aps-pdw-2016-au7&preserve-view=true)
+    :::column-end:::
+    :::column:::
+        **_\*Microsoft Fabric \*_**
+    :::column-end:::
+:::row-end:::
+
+## Overview: Microsoft Fabric
+
+**Applies to**: Fabric Data Warehouse
+
+Creates an external data source. 
+
+:::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
+
+## Syntax
+
+```syntaxsql
+CREATE EXTERNAL DATA SOURCE <data_source_name>
+WITH
+  ( LOCATION = '<prefix>://<path>[:<port>]' )
+[ ; ]
+```
+
+## Arguments
+
+#### data_source_name
+
+Specifies the user-defined name for the data source. The name must be unique within the database.
+
+#### LOCATION = '*\<prefix>://\<path[:port]>*'
+
+Provides the connectivity protocol and path to the external data source.
+
+| External Data Source | Location prefix | Location path |
+| --- | --- | --- |
+| Azure Blob Storage | `https` | `https://<storage_account>.blob.core.windows.net/<container>/<path>` |
+| Azure Data Lake Service Gen2 | `abfss` | `abfss://<container>@<storage_account>.dfs.core.windows.net/<path>` |
+
+The [!INCLUDE [ssDE-md](../../includes/ssde-md.md)] doesn't verify the existence of the external data source when the object is created. 
+
+Don't add a trailing **/**, file name, or shared access signature parameters at the end of the `LOCATION` URL when configuring an external data source for bulk operations.
+
+## Permissions
+
+If the target storage account is private, the principal must also have the the permission the read referenced files.
+- For Azure Data Lake Storage and Azure Blob Storage, the principal must have **Storage Blob Data Reader** role (or higher) assigned at the container or storage account level.
+- For Fabric One Lake storage, the principal must have "ReadAll" permissions.
+
+## Locking
+
+Takes a shared lock on the `EXTERNAL DATA SOURCE` object.
+
+## Examples
+
+### A. Query external data with OPENROWSET or an external table
+
+1. Create the external data source.
+
+   ```sql
+   --Create external data source pointing to the file path, and referencing database-scoped credential:
+   CREATE EXTERNAL DATA SOURCE MyPrivateExternalDataSource
+   WITH (
+       LOCATION = 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest'
+   );
+   ```
+
+1. Query parquet data file in the external data source using the OPENROWSET T-SQL syntax, relying on schema inference to quickly explore data without knowing the schema.
+
+    ```sql
+    --Query data with OPENROWSET, relying on schema inference.
+    SELECT TOP 10 *
+    FROM OPENROWSET (
+        BULK 'bing_covid-19_data.parquet',
+        DATA_SOURCE = 'MyPrivateExternalDataSource'
+    );
+    ```
+
+1. Or, query data using OPENROWSET the WITH clause, instead of relying on schema inference, which might query execution cost.
+
+    ```sql
+    --Or, query data using the WITH clause on a CSV, where schema inference is not supported
+    SELECT TOP 10 id,
+        updated,
+        confirmed,
+        confirmed_change
+    FROM OPENROWSET (
+        BULK 'bing_covid-19_data.csv', DATA_SOURCE = 'MyPrivateExternalDataSource'
+        FIRSTROW = 2
+    ) WITH (
+        id INT,
+        updated DATE,
+        confirmed INT,
+        confirmed_change INT
+    ) AS filerows;
+    ```
+
+## Related content
+
+- [OPENROWSET BULK (Transact-SQL)](../functions/openrowset-bulk-transact-sql.md)
 - [sys.external_data_sources (Transact-SQL)](../../relational-databases/system-catalog-views/sys-external-data-sources-transact-sql.md)
 - [Using Shared Access Signatures (SAS)](/azure/storage/common/storage-sas-overview)
 

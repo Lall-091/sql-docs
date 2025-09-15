@@ -294,11 +294,11 @@ Specifies the event retention mode to use for handling event loss.
   No event loss is allowed. This option ensures that all events raised are retained. Using this option forces all tasks that fire events to wait until space is available in an event buffer. Using NO_EVENT_LOSS can cause detectable performance issues while the event session is active. User sessions and queries might stall while waiting for events to be flushed from the buffer.
 
   > [!NOTE]  
-  > For the event file targets in Azure SQL Database and in Azure SQL Managed Instance with the always-up-to-date update policy, starting from June 2024, NO_EVENT_LOSS behaves the same as LOW_SINGLE_EVENT_LOSS. If you specify NO_EVENT_LOSS, a warning with message ID 25665, severity 10, and message *This target doesn't support the NO_EVENT_LOSS event retention mode. The ALLOW_SINGLE_EVENT_LOSS retention mode is used instead.* is returned, and the session is created.
+  > For the event file targets in Azure SQL Database and in Azure SQL Managed Instance (with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy)), starting from June 2024, `NO_EVENT_LOSS` behaves the same as `ALLOW_SINGLE_EVENT_LOSS`. If you specify `NO_EVENT_LOSS`, a warning with message ID 25665, severity 10, and message `This target doesn't support the NO_EVENT_LOSS event retention mode. The ALLOW_SINGLE_EVENT_LOSS retention mode is used instead.` is returned, and the session is created.
   >
-  > This change avoids connection timeouts, failover delays, and other issues that can reduce database availability when NO_EVENT_LOSS is used with event file targets in Azure blob storage.
+  > This change avoids connection timeouts, failover delays, and other issues that can reduce database availability when `NO_EVENT_LOSS` is used with event file targets in Azure blob storage.
   >
-  > NO_EVENT_LOSS is planned for removal as a supported EVENT_RETENTION_MODE argument in future updates to Azure SQL Database and Azure SQL Managed Instance. Avoid using this feature in new development work, and plan to modify applications that currently use this feature.
+  > `NO_EVENT_LOSS` is planned for removal as a supported `EVENT_RETENTION_MODE` argument in future updates to Azure SQL Database and Azure SQL Managed Instance. Avoid using this feature in new development work, and plan to modify applications that currently use this feature.
 
 #### MAX_DISPATCH_LATENCY = { *seconds* SECONDS | INFINITE }
 

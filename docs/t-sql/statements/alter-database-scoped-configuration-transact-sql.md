@@ -472,7 +472,7 @@ Optimized plan forcing reduces compilation overhead for repeating forced queries
 
 #### DOP_FEEDBACK = { ON | OFF }
 
-**Applies to:** [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE [sql-server-2022](../../includes/sssql22-md.md)]), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi](../../includes/ssazuremi-md.md)] with the Always-up-to-date update policy, SQL database in Fabric
+**Applies to:** [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE [sql-server-2022](../../includes/sssql22-md.md)]), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi](../../includes/ssazuremi-md.md)] with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy), SQL database in Fabric
 
 Identifies parallelism inefficiencies for repeating queries, based on elapsed time and waits. If parallelism usage is deemed inefficient, DOP feedback lowers the DOP for the next execution of the query, from whatever is the configured DOP, and verifies if it helps. Requires Query Store enabled and in `READ_WRITE` mode. For more information, see [Degrees of Parallelism (DOP) feedback](../../relational-databases/performance/intelligent-query-processing-degree-parallelism-feedback.md). The default is `OFF`. 
 

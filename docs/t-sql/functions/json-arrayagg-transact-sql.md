@@ -28,7 +28,11 @@ Constructs a JSON array from an aggregation of SQL data or columns. `JSON_ARRAYA
 
 To create a JSON object from an aggregate instead, use [JSON_OBJECTAGG](json-objectagg-transact-sql.md).
 
-The **json** aggregate functions `JSON_OBJECTAGG` and `JSON_ARRAYAGG` are generally available for Azure SQL Database, Azure SQL Managed Instance (configured with the **[Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy)**), SQL database in Microsoft Fabric, and Fabric Data Warehouse.
+> [!NOTE]  
+> Both **json** aggregate functions `JSON_OBJECTAGG` and `JSON_ARRAYAGG` are: 
+> -  generally available for Azure SQL Database, Azure SQL Managed Instance (with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy)**), SQL database in Microsoft Fabric, and Fabric Data Warehouse.
+> - in preview for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
+
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 

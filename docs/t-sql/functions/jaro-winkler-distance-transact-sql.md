@@ -26,7 +26,7 @@ Calculates the edit distance between two strings giving preference to strings th
 > [!NOTE]
 > - `JARO_WINKLER_DISTANCE` is currently in preview. 
 > - SQL Server support for `JARO_WINKLER_DISTANCE` introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. 
-> - `JARO_WINKLER_DISTANCE` is available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) update policy.
+> - `JARO_WINKLER_DISTANCE` is available in Azure SQL Managed Instance with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).
 
 ## Syntax
 

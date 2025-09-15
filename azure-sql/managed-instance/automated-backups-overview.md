@@ -129,7 +129,7 @@ This table summarizes the capabilities and features of [point-in-time restore](r
 
 <sup>1</sup> For business-critical applications that require large databases and must ensure business continuity, see [failover groups](failover-group-sql-mi.md).  
 <sup>2</sup> All PITR backups are stored on geo-redundant storage by default, meaning geo-restore is enabled by default.  
-<sup>3</sup> Database backups taken from instances configured with the SQL Server 2022 [update policy](update-policy.md) can be restored to instances configured with either the SQL Server 2022 or Always-up-to-date update policy. Database backups taken from instances configured with the Always-up-to-date update policy can only be restored to instances also configured with the Always-up-to-date update policy.  
+<sup>3</sup> Database backups can only be restored to instances with matching [update policies](update-policy.md), or to an update policy of a higher version of SQL Server. For example, a database backup taken from an instance with a **SQL Server 2022** update policy can be restored to an instance with either the **SQL Server 2022**, **SQL Server 2025**, or **Always-up-to-date** update policy.  
 <sup>4</sup> The workaround is to restore to a new server and use Resource Move to move the server to another subscription.
 
 ## Restore a database from backup

@@ -60,10 +60,7 @@ JSON function support was first introduced in [!INCLUDE [sssql16-md](../../inclu
 
 **json** is available under all database compatibility levels.
 
-> [!NOTE]
-> The [JSON data type](json-data-type.md): 
-> - is generally available for Azure SQL Database and Azure SQL Managed Instance configured with the **[Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy)**.  
-> - is in preview for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. 
+[!INCLUDE [json-data-supportability](../../includes/json-data-supportability.md)]
 
 ## modify method
 

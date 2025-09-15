@@ -118,7 +118,7 @@ GRANT EXECUTE ANY EXTERNAL ENDPOINT TO [<PRINCIPAL>];
 > [!NOTE]  
 > The `sp_invoke_external_rest_endpoint` stored procedure is in preview for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
 
-The `sp_invoke_external_rest_endpoint` stored procedure is available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and Azure SQL Managed Instance configured with the [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) and is disabled by default.
+The `sp_invoke_external_rest_endpoint` stored procedure is available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and Azure SQL Managed Instance with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy) and is disabled by default.
 
 To enable the `sp_invoke_external_rest_endpoint` stored procedure in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and Azure SQL Managed Instance, run the following T-SQL code:
 

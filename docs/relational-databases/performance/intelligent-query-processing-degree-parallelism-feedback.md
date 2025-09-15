@@ -31,7 +31,7 @@ DOP feedback is part of the [intelligent query processing](../../relational-data
 
 Instead of incurring in the pains of an all-encompassing default or manual adjustments to each query, DOP feedback self-adjusts DOP to avoid these issues.
 
-DOP feedback is available for queries that operate in the database compatibility level 160 (introduced with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]) or higher versions, in Azure SQL Database, Azure SQL Managed Instance with the Always-up-to-date update policy, and SQL database in Fabric. It is not currently available in the [SQL Server 2022 update policy](/azure/azure-sql/managed-instance/update-policy#sql-server-2022-update-policy) of [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)].
+DOP feedback is available for queries that operate in the database compatibility level 160 (introduced with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]) or higher versions, in Azure SQL Database, Azure SQL Managed Instance (with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy)), and SQL database in Fabric. 
 
 For other query feedback features, see [Memory grant feedback](intelligent-query-processing-memory-grant-feedback.md) and [Cardinality estimation (CE) feedback](intelligent-query-processing-cardinality-estimation-feedback.md).
 

@@ -1,14 +1,16 @@
 ---
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/24/2025
+ms.date: 09/15/2025
 ms.service: sql
 ms.topic: include
 ---
 | Product | Database Engine version | Default compatibility level designation | Supported compatibility level values |
 | --- | --- | --- | --- |
 | [!INCLUDE [ssazure-sqldb](ssazure-sqldb.md)] | 17 | 170 | 170, 160, 150, 140, 130, 120, 110, 100 |
-| [!INCLUDE [ssazuremi-md](ssazuremi-md.md)] | 16 | 150 | 160, 150, 140, 130, 120, 110, 100 |
+| [!INCLUDE [ssazuremi-md](ssazuremi-md.md)] <br /> ([**Always-up-to-date** update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy)) | 17 | 170 | 170, 160, 150, 140, 130, 120, 110, 100 |
+| [!INCLUDE [ssazuremi-md](ssazuremi-md.md)] <br /> ([**SQL Server 2025** update policy](/azure/azure-sql/managed-instance/update-policy#sql-server-2025-update-policy)) | 17 | 170 | 170, 160, 150, 140, 130, 120, 110, 100 |
+| [!INCLUDE [ssazuremi-md](ssazuremi-md.md)] <br /> ([**SQL Server 2022** update policy](/azure/azure-sql/managed-instance/update-policy#sql-server-2022-update-policy)) | 16 | 150 | 160, 150, 140, 130, 120, 110, 100 |
 | [!INCLUDE [sssql25-md](sssql25-md.md)] | 17 | 170 | 170, 160, 150, 140, 130, 120, 110, 100 |
 | [!INCLUDE [sssql22-md](sssql22-md.md)] | 16 | 160 | 160, 150, 140, 130, 120, 110, 100 |
 | [!INCLUDE [sssql19-md](sssql19-md.md)] | 15 | 150 | 150, 140, 130, 120, 110, 100 |

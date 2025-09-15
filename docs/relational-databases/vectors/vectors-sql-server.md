@@ -24,7 +24,7 @@ monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-curre
 The SQL Database Engine provides the ability to store any kind of data and run any kind of query: structured and unstructured, and to perform vector search on that data. It's a good choice for scenarios where you need to search across all these data together, and you don't want to use a separate service for search that would complicate your architecture.
 
 > [!NOTE]
-> - Vector features are available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) update policy. 
+> - Vector features are available in Azure SQL Managed Instance configured with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy). 
 
 ## Vectors 
 

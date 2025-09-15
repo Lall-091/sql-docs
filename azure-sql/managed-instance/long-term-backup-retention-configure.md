@@ -4,7 +4,7 @@ description: Learn how to store and restore automated backups on separate Azure 
 author: Stralle
 ms.author: strrodic
 ms.reviewer: mathoma, wiassaf
-ms.date: 09/11/2025
+ms.date: 09/15/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: backup-restore
 ms.topic: how-to
@@ -431,7 +431,11 @@ Remove-AzSqlInstanceDatabaseLongTermRetentionBackup -ResourceId $ltrBackup.Resou
 
 ## Limitations
 
-Database backups taken from instances configured with the SQL Server 2022 [update policy](update-policy.md) can be restored to instances configured with either the SQL Server 2022 or Always-up-to-date update policy. Database backups taken from instances configured with the Always-up-to-date update policy can only be restored to instances also configured with the Always-up-to-date update policy.
+Consider the following limitations: 
+
+- Database backups taken from instances configured with the [SQL Server 2022 update policy](update-policy.md#sql-server-2022-update-policy) can be restored to instances configured with either the **SQL Server 2022**, **SQL Server 2025**, or **Always-up-to-date** update policy. 
+- Database backups taken from instances configured with the [SQL Server 2025 update policy](update-policy.md#sql-server-2025-update-policy) can be restored to instances configured with either the **SQL Server 2025** or **Always-up-to-date** update policy, but not to instances configured with the **SQL Server 2022** update policy.
+- Database backups taken from instances configured with the **Always-up-to-date** update policy can only be restored to instances also configured with the **Always-up-to-date** update policy. 
 
 ## Related content
 

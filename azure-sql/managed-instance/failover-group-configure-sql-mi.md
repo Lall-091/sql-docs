@@ -433,12 +433,12 @@ Let's assume instance A is the primary instance, instance B is the existing seco
 
 ## Change update policy
 
-Instances in a failover group must have matching [update policies](update-policy.md). To enable the **Always-up-to-date** update policy on instances that are part of a failover group, first enable the **Always-up-to-date** update policy on the secondary instance, wait for the change to take effect, and then update the policy for the primary instance.
+Instances in a failover group must have matching [update policies](update-policy.md). To change the update policy to a higher version on instances that are part of a failover group, first enable the update policy on the secondary instance, wait for the change to take effect, and then update the policy for the primary instance.
 
 While changing the update policy on the primary instance in the failover group causes the instance to fail over to another local node (similar to [management operations](management-operations-overview.md) on instances that aren't part of a failover group), it doesn't cause the failover group to failover, keeping the primary instance in the primary role.
 
 > [!CAUTION]
-> Once the updated policy is changed to **Always-up-to-date**, changing it back to the **SQL Server 2022** update policy is no longer possible. 
+> Once the updated policy is changed to higher SQL Server version, including Always-up-to-date, changing it back to the lower version update policy is no longer possible. 
 
 ## Enable scenarios dependent on objects from the system databases
 

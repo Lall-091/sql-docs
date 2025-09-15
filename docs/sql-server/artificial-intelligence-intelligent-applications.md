@@ -102,7 +102,7 @@ Vectors in the SQL Database Engine can be efficiently stored and queried, as des
 
 ## Azure OpenAI
 
-Embedding is the process of representing the real world as data. Text, images, or sounds can be converted into embeddings. Azure OpenAI models are able to transform real-world information into embeddings. The models are available as REST endpoints and thus can easily be consumed from the SQL Database Engine using the [sp_invoke_external_rest_endpoint](../relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql.md) system stored procedure, available starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and Azure SQL Managed Instance configured with the [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy):
+Embedding is the process of representing the real world as data. Text, images, or sounds can be converted into embeddings. Azure OpenAI models are able to transform real-world information into embeddings. The models are available as REST endpoints and thus can easily be consumed from the SQL Database Engine using the [sp_invoke_external_rest_endpoint](../relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql.md) system stored procedure, available starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and Azure SQL Managed Instance with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy):
 
 ```sql
 DECLARE @retval INT, @response NVARCHAR(MAX);
@@ -172,7 +172,7 @@ For an end-to-end sample to build an AI-enabled application using sessions abstr
 - [Using Retrieval Augmented Generation to build a conference session assistant](https://github.com/Azure-Samples/azure-sql-db-session-recommender-v2)
 
 > [!NOTE]
-> LangChain integration and Semantic Kernel integration rely on the [vector data type](../t-sql/data-types/vector-data-type.md), which is available starting with [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and in Azure SQL Managed Instance configured with the [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy).
+> LangChain integration and Semantic Kernel integration rely on the [vector data type](../t-sql/data-types/vector-data-type.md), which is available starting with [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and in Azure SQL Managed Instance configured with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).
 
 
 ### LangChain integration
