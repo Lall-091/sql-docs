@@ -55,6 +55,12 @@ Each time the debugger pauses execution on a specific [!INCLUDE [tsql](../../inc
 
 - **Results** and **Messages**. These tabs on the Query Editor window display the results of previously executed [!INCLUDE [tsql](../../includes/tsql-md.md)] statements.
 
+## Known issues and limitations
+
+The T-SQL debugger is applicable only to [!INCLUDE [SQL Server](../../includes/ssnoversion-md.md)] instances. The debugger doesn't support debugging [!INCLUDE [tsql](../../includes/tsql-md.md)] code running on [!INCLUDE [Azure SQL database](../../includes/ssazure-sqldb.md)], [!INCLUDE [Azure SQL Managed Instance](../../includes/ssazuremi-md.md)], or SQL database in Fabric.
+
+Under certain conditions, the T-SQL debugger line highlighting can become out of sync with the actual execution point when stepping through a SQL script. The issue can surface in several scenarios, including a comment at the top of the script or empty lines after `GO` statements.
+
 ## Transact-SQL debugger tasks
 
 | Task Description | Article |
