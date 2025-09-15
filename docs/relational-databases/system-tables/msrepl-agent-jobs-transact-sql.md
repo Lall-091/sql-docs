@@ -1,8 +1,8 @@
 ---
 title: "MSrepl_agent_jobs (Transact-SQL)"
 description: MSrepl_agent_jobs contains information about Replication agent jobs to sync between primary and secondary replicas when the Distribution database is part of an availability group.
-author: briancarrig
-ms.author: brcarrig
+author: tameikal-msft
+ms.author: talawren
 ms.reviewer: randolphwest
 ms.date: 03/13/2023
 ms.service: sql

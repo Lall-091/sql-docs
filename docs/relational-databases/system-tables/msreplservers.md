@@ -1,8 +1,8 @@
 ---
 title: "MSreplservers (Transact-SQL)"
 description: MSreplservers persists server metadata and shares it among the distribution database availability group replicas.
-author: briancarrig
-ms.author: brcarrig
+author: tameikal-msft
+ms.author: talawren
 ms.reviewer: randolphwest
 ms.date: 03/28/2023
 ms.service: sql
