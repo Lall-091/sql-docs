@@ -174,5 +174,5 @@ If you believe that the processing you perform on the message might cause a tran
 
 - [TRY...CATCH (Transact-SQL)](../../t-sql/language-elements/try-catch-transact-sql.md)
 - [sys.conversation_endpoints (Transact-SQL)](../../relational-databases/system-catalog-views/sys-conversation-endpoints-transact-sql.md)
-- [Removing Poison Messages](removing-poison-messages.md)
+- [Remove poison messages](removing-poison-messages.md)
 - [Understanding Database Engine Errors](../../relational-databases/errors-events/understanding-database-engine-errors.md)

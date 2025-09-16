@@ -14,7 +14,7 @@ ms.topic: conceptual
 
 [!INCLUDE [sql-asdbmi](../../includes/applies-to-version/sql-asdbmi.md)]
 
-Service Broker helps developers build asynchronous, loosely coupled applications in which independent components work together to accomplish a task. These application components exchange messages that contain the information that is required to complete the task. This topic describes the following aspects of Service Broker:
+Service Broker helps developers build asynchronous, loosely coupled applications in which independent components work together to accomplish a task. These application components exchange messages that contain the information required to complete the task. This topic describes the following aspects of Service Broker:
 
 - Conversations
 - Message ordering and coordination
@@ -30,7 +30,7 @@ New Transact-SQL statements let applications reliably send and receive these mes
 
 Messages for the same task are part of the same conversation. Within each conversation, Service Broker guarantees that an application receives each message exactly once, in the order in which the message was sent. The program that implements a service can associate related conversations for the same service in a conversation group.
 
-Certificate-based security helps you protect sensitive messages and control access to services. An analogy is to think of Service Broker being like a postal service. To hold a conversation with a distant colleague, you can communicate by sending letters through the postal service. The postal service sorts and delivers the letters. You and your colleague then retrieve the letters from your mailboxes, read them, write responses, and send new letters until the conversation has ended. Letter delivery occurs asynchronously while you and your colleague handle other tasks.
+Certificate-based security helps you protect sensitive messages and control access to services. You can think of Service Broker being like a postal service: to hold a conversation with a distant colleague, you can communicate by sending letters through the postal service. The postal service sorts and delivers the letters. You and your colleague then retrieve the letters from your mailboxes, read them, write responses, and send new letters until the conversation has ended. Letter delivery occurs asynchronously while you and your colleague handle other tasks.
 
 :::image type="content" source="media/what-does-service-broker-do/mail-exchange.png" alt-text="Diagram of two users exchanging mail through a postal service.":::
 
@@ -98,11 +98,11 @@ Service Broker supports loosely coupled applications. Loosely coupled applicatio
 
 Service Broker has three types of components:
 
-- **Conversation components**. Conversation groups, conversations, and messages form the run-time structure of a Service Broker application. Applications exchange messages as part of a conversation. Each conversation is part of one conversation group, and a conversation group can contain multiple conversations. Each Service Broker conversation is a dialog. A dialog is a conversation where exactly two participants exchange messages. For more information about conversation components, see [Conversation architecture](conversation-architecture.md).
+- **Conversation components**: Conversation groups, conversations, and messages form the runtime structure of a Service Broker application. Applications exchange messages as part of a conversation. Each conversation is part of one conversation group, and a conversation group can contain multiple conversations. Each Service Broker conversation is a dialog. A dialog is a conversation where exactly two participants exchange messages. For more information about conversation components, see [Conversation architecture](conversation-architecture.md).
 
-- **Service definition components**. These are design-time components that specify the basic structure of the conversations that the application uses. They define the message types for the application, the conversation flow for the application, and the database storage for the application. For more information about service definition components, see [Service architecture](service-architecture.md).
+- **Service definition components**: These are design-time components that specify the basic structure of the conversations that the application uses. They define the message types for the application, the conversation flow for the application, and the database storage for the application. For more information about service definition components, see [Service architecture](service-architecture.md).
 
-- **Networking and security components**. These components define the infrastructure used to exchange messages between instances of the Database Engine. To help database administrators manage changing environments, Service Broker lets administrators configure these components independently of the application code. For more information about networking and security components, see [Networking and remote security](networking-and-remote-security.md).
+- **Networking and security components**: These components define the infrastructure used to exchange messages between instances of the Database Engine. To help database administrators manage changing environments, Service Broker lets administrators configure these components independently of the application code. For more information about networking and security components, see [Networking and remote security](networking-and-remote-security.md).
 
 Service definition components, networking components, and security components are part of the metadata for the database and the SQL Server instance. Conversation groups, conversations, and messages are part of the data that the database contains.
 

@@ -22,27 +22,27 @@ Activation is necessary whenever a new queue reader would have useful work to pe
 
 Each queue monitor tracks the following criteria:
 
-- Whether the queue contains messages that are ready for receive.
-- How recently a `RECEIVE` statement on the queue returned an empty result set.
-- How many activation stored procedures are currently running for the queue.
+- Whether the queue contains messages that are ready for receive
+- How recently a `RECEIVE` statement on the queue returned an empty result set
+- How many activation stored procedures are currently running for the queue
 
 A queue monitor checks whether activation is necessary every few seconds and when one or more of the following events occurs:
 
-- A new message arrives on the queue.
-- SQL Server executes a `RECEIVE` statement for the queue.
-- A transaction that contains a `RECEIVE` statement rolls back.
-- All stored procedures started by the queue monitor exit.
-- SQL Server executes an `ALTER` statement for the queue.
+- A new message arrives on the queue
+- SQL Server executes a `RECEIVE` statement for the queue
+- A transaction that contains a `RECEIVE` statement rolls back
+- All stored procedures started by the queue monitor exit
+- SQL Server executes an `ALTER` statement for the queue
 
 Activation is necessary if either of the following conditions is true:
 
 - A new message arrives on a queue that contains no unread messages and there are no activation stored procedures running for the queue.
 
-- The queue contains unread messages, there's no session waiting in a `GET CONVERSATION GROUP` statement or a `RECEIVE` statement without a `WHERE` clause, and no `GET CONVERSATION GROUP` statement or `RECEIVE` statement without a `WHERE` clause has returned an empty result set for a few seconds. In other words when messages are accumulating on the queue because the activated procedures aren't able to read them fast enough.
+- The queue contains unread messages, there's no session waiting in a `GET CONVERSATION GROUP` statement or a `RECEIVE` statement without a `WHERE` clause, and no `GET CONVERSATION GROUP` statement or `RECEIVE` statement without a `WHERE` clause has returned an empty result set for a few seconds. In other words, when messages are accumulating on the queue because the activated procedures aren't able to read them fast enough.
 
 In effect, this procedure allows the queue monitor to tell whether the number of queue readers processing the queue is keeping up with the incoming message traffic. This approach takes conversation group locking into account. Because only one queue reader at a time can process messages for a conversation, starting queue readers in response to a simpler approach, such as the number of unread messages in the queue, might waste resources. Instead, Service Broker activation considers whether a new queue reader has useful work to do.
 
-For example, a queue might contain a large number of unprocessed messages on a single conversation. In this case, only one queue reader can process the messages. The queue monitor activates another queue reader. The second queue reader waits in the `RECEIVE` statement, since all of the messages belong to a single conversation. As long as all the messages in the queue belong to the same conversation, and the second queue reader remains running, the queue monitor doesn't start another queue reader.
+For example, a queue might contain a large number of unprocessed messages on a single conversation. In this case, only one queue reader can process the messages. The queue monitor activates another queue reader. The second queue reader waits in the `RECEIVE` statement, because all of the messages belong to a single conversation. As long as all the messages in the queue belong to the same conversation and the second queue reader remains running, the queue monitor doesn't start another queue reader.
 
 ## Determine whether activation occurs
 
@@ -50,10 +50,10 @@ Once Service Broker determines that activation is necessary, Service Broker must
 
 For internal activation, the queue monitor activates a new instance of the activation stored procedure when the number of running programs is lower than the `MAX_QUEUE_READERS` value set for the queue. If the number of running programs is equal to or greater than the `MAX_QUEUE_READERS` value, the queue monitor doesn't start a new instance of the stored procedure. The management view [sys.dm_broker_activated_tasks](../../relational-databases/system-dynamic-management-views/sys-dm-broker-activated-tasks-transact-sql.md) contains information on stored procedures started by Service Broker.
 
-For external applications, Service Broker has no information on the number of distinct queue readers that might be working with the queue. Further, there might be some start-up time required between the time that the activation event is raised and the time that a reader begins reading the queue. Therefore, Service Broker provides a timeout for an external application to respond. During the timeout, Service Broker doesn't produce another notification. Once an application calls `RECEIVE` on the queue or the timeout expires, Service Broker creates another event notification if activation is required. An external application monitors the event notifications while the program is running to determine whether more queue readers are required to read events.
+For external applications, Service Broker has no information on the number of distinct queue readers that might be working with the queue. Further, there might be some startup time required between the time that the activation event is raised and the time that a reader begins reading the queue. Therefore, Service Broker provides a timeout for an external application to respond. During the timeout, Service Broker doesn't produce another notification. Once an application calls `RECEIVE` on the queue or the timeout expires, Service Broker creates another event notification if activation is required. An external application monitors the event notifications while the program is running to determine whether more queue readers are required to read events.
 
 ## Related content
 
-- [Troubleshooting activation stored procedures](troubleshooting-activation-stored-procedures.md)
+- [Troubleshoot activation stored procedures](troubleshooting-activation-stored-procedures.md)
 - [CREATE QUEUE (Transact-SQL)](../../t-sql/statements/create-queue-transact-sql.md)
 - [Implement internal activation in Service Broker](implementing-internal-activation.md)

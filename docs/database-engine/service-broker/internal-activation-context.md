@@ -32,7 +32,7 @@ Within a session started by Service Broker, SQL Server writes the output of `PRI
 
 ## Transaction context
 
-An activated stored procedure is responsible for managing transactions. SQL Server doesn't start a transaction before activating the stored procedure, and the stored procedure runs in a different transaction context than the internal operation that activates the procedure. For a discussion of managing transactions in activated stored procedures, see [Transactional Messaging](transactional-messaging.md).
+An activated stored procedure is responsible for managing transactions. SQL Server doesn't start a transaction before activating the stored procedure, and the stored procedure runs in a different transaction context than the internal operation that activates the procedure. For a discussion of managing transactions in activated stored procedures, see [Transactional messaging](transactional-messaging.md).
 
 ## Failure detection
 

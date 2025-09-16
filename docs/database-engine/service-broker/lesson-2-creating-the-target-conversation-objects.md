@@ -71,7 +71,7 @@ In this lesson, you learn to build all the objects that enable a database to be 
 - [CREATE QUEUE (Transact-SQL)](../../t-sql/statements/create-queue-transact-sql.md)
 - [CREATE SERVICE (Transact-SQL)](../../t-sql/statements/create-service-transact-sql.md)
 - [Conversation architecture](conversation-architecture.md)
-- [Service Architecture](service-architecture.md)
+- [Service architecture](service-architecture.md)
 
 ## Next step
 

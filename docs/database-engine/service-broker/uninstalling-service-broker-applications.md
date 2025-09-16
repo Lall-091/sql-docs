@@ -1,5 +1,5 @@
 ---
-title: Uninstalling Service Broker Applications
+title: Uninstall Service Broker Applications
 description: "You must uninstall a Service Broker application only when the database continues to be hosted in the same instance, but no longer provides the service that the application implements."
 author: rwestMSFT
 ms.author: randolphwest
@@ -14,7 +14,7 @@ ms.topic: conceptual
 
 [!INCLUDE [sql-asdbmi](../../includes/applies-to-version/sql-asdbmi.md)]
 
-You must uninstall a Service Broker application only when the database continues to be hosted in the same instance, but no longer provides the service that the application implements. Dropping a database drops the Service Broker objects within that database. Moving a database from one instance to another also moves the services hosted within that database.
+You must uninstall a Service Broker application only when the database continues to be hosted in the same instance but no longer provides the service that the application implements. Dropping a database drops the Service Broker objects within that database. Moving a database from one instance to another also moves the services hosted within that database.
 
 ## Uninstall an initiating service
 

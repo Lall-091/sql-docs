@@ -189,7 +189,7 @@ In this lesson, you learn to create the initiator database and all the initiator
 - [sp_addlinkedserver (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-addlinkedserver-transact-sql.md)
 - [Service Broker dialog security](service-broker-dialog-security.md)
 - [Conversation architecture](conversation-architecture.md)
-- [Service Architecture](service-architecture.md)
+- [Service architecture](service-architecture.md)
 
 ## Next step
 

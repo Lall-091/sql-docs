@@ -212,5 +212,5 @@ While individual messages or message fragments might be sent out of priority ord
 - [sys.conversation_priorities (Transact-SQL)](../../relational-databases/system-catalog-views/sys-conversation-priorities-transact-sql.md)
 - [sys.transmission_queue (Transact-SQL)](../../relational-databases/system-catalog-views/sys-transmission-queue-transact-sql.md)
 - [Conversation architecture](conversation-architecture.md)
-- [Service Architecture](service-architecture.md)
-- [Service Broker Routing and Networking](service-broker-routing-and-networking.md)
+- [Service architecture](service-architecture.md)
+- [Service Broker routing and networking](service-broker-routing-and-networking.md)

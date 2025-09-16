@@ -19,7 +19,7 @@ To exchange messages with Service Broker, you must create the appropriate user s
 When a conversation is initiated, Service Broker checks to see whether a remote service binding is available for the target service. If a remote service binding isn't available, Service Broker checks the routing table for the Broker Configuration Notice (BCN) service; the service name is `SQL/ServiceBroker/BrokerConfiguration`. If a BCN route exists, Service Broker creates a new conversation with the BCN and sends a message on that conversation that requests creation of a remote service binding. The application defined for the BCN queue must then respond to the request.
 
 > [!NOTE]  
-> The behavior is comparable to [Service Broker Dynamic Routing](service-broker-dynamic-routing.md).
+> The behavior is comparable to [Service Broker dynamic routing](service-broker-dynamic-routing.md).
 
 ## Request remote service binding
 

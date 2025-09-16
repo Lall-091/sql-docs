@@ -63,5 +63,5 @@ This strategy can be useful for an application that processes a constant stream 
 ## Related content
 
 - [Create a Job](../../ssms/agent/create-a-job.md)
-- [Service Broker Activation](service-broker-activation.md)
+- [Service Broker activation](service-broker-activation.md)
 - [Implement internal activation in Service Broker](implementing-internal-activation.md)

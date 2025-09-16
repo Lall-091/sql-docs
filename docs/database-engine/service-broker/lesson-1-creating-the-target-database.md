@@ -135,7 +135,7 @@ In this lesson, you learn to create the target database and all the Service Brok
 - [CREATE USER (Transact-SQL)](../../t-sql/statements/create-user-transact-sql.md)
 - [Service Broker dialog security](service-broker-dialog-security.md)
 - [Conversation architecture](conversation-architecture.md)
-- [Service Architecture](service-architecture.md)
+- [Service architecture](service-architecture.md)
 
 ## Next step
 

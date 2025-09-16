@@ -31,7 +31,7 @@ When the original transaction commits, Service Broker delivers the message to th
 
 ## Reliable query processing
 
-Some applications must reliably process queries, without regard to computer failures, power outages, or similar problems. An application that needs reliable query processing can submit queries by sending messages to a Service Broker service. The application that implements the service reads the message, runs the query, and returns the results. All three of these operations take place in the same transaction. If a failure occurs before the transaction commits, the entire transaction rolls back and the message returns to the queue. When the computer recovers, the application restarts and processes the message again.
+Some applications must reliably process queries without regard to computer failures, power outages, or similar problems. An application that needs reliable query processing can submit queries by sending messages to a Service Broker service. The application that implements the service reads the message, runs the query, and returns the results. All three of these operations take place in the same transaction. If a failure occurs before the transaction commits, the entire transaction rolls back and the message returns to the queue. When the computer recovers, the application restarts and processes the message again.
 
 ## Reliable data collection
 
@@ -39,7 +39,7 @@ Applications that collect data from a large set of sources can take advantage of
 
 ## Distributed server-side processing for client applications
 
-Large applications that access multiple SQL Server databases can benefit from Service Broker. For example, a Web application for ordering books could use Service Broker on the server side to exchange information between the different databases that contain data on ordering, customer, inventory, and credit. Because Service Broker provides message queuing and reliable message delivery, the application can continue to accept orders even when one of the databases is unavailable or heavily loaded. In this scenario, Service Broker functions as a framework for a distributed OLTP system.
+Large applications that access multiple SQL Server databases can benefit from Service Broker. For example, a Web application for ordering books could use Service Broker on the server side to exchange information among the different databases that contain data on ordering, customer, inventory, and credit. Because Service Broker provides message queuing and reliable message delivery, the application can continue to accept orders even when one of the databases is unavailable or heavily loaded. In this scenario, Service Broker functions as a framework for a distributed OLTP system.
 
 ## Data consolidation for client applications
 
