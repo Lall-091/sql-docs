@@ -4,7 +4,7 @@ description: The native JSON data type provides advantages for storing JSON data
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest, jovanpop, umajay
-ms.date: 07/23/2025
+ms.date: 09/16/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -19,9 +19,9 @@ monikerRange: "=sql-server-ver17 || =azuresqldb-current || =azuresqldb-mi-curren
 
 [!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
-The native **json** data type that stores JSON documents in a native binary format.
+The **json** data type stores JSON documents in a native binary format.
 
-The **json** type provides a high-fidelity storage of JSON documents optimized for easy querying and manipulation, and provides the following benefits over storing JSON data in **varchar** or **nvarchar**:
+The **json** type provides a high-fidelity storage of JSON documents optimized for easy querying and manipulation, and provides the following benefits over storing JSON data as **varchar** or **nvarchar**:
 
 - More efficient reads, as the document is already parsed
 - More efficient writes, as the query can update individual values without accessing the entire document
@@ -37,37 +37,46 @@ For more information on querying JSON data, see [JSON data in SQL Server](../../
 The usage syntax for the **json** type is similar to all other SQL Server data types in a table.
 
 ```syntaxsql
-column_name JSON [NOT NULL | NULL] [CHECK(constraint_expression)] [DEFAULT(default_expression)]
+column_name JSON [ NOT NULL | NULL ] [CHECK ( constraint_expression ) ] [ DEFAULT ( default_expression ) ]
 ```
 
-The **json** type can be used in column definition contained in a `CREATE TABLE` statement, for example:
+The **json** data type can be used in column definition contained in a `CREATE TABLE` statement. For example:
 
 ```sql
-CREATE TABLE Orders (order_id int, order_details JSON NOT NULL);
+CREATE TABLE Orders
+(
+    order_id INT,
+    order_details JSON NOT NULL
+);
 ```
 
-Constraints can be specified as part of the column definition, for example:
+Constraints can be specified as part of the column definition. For example:
 
 ```sql
-CREATE TABLE Orders (order_id int, order_details JSON NOT NULL
-   CHECK (JSON_PATH_EXISTS(order_details, '$.basket') = 1)
+CREATE TABLE Orders
+(
+    order_id INT,
+    order_details JSON NOT NULL
+        CHECK (JSON_PATH_EXISTS(order_details, '$.basket') = 1)
 );
 ```
 
 ## Feature availability
 
-JSON function support was first introduced in [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)]. The native **json** type was introduced in 2024 in Azure SQL Database and Azure SQL Managed Instance.
+JSON function support was first introduced in [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)]. The native **json** type was introduced in Azure SQL Database and Azure SQL Managed Instance, and is also available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
 
-**json** is available under all database compatibility levels.
+The **json** data type is available under all database compatibility levels.
 
 [!INCLUDE [json-data-supportability](../../includes/json-data-supportability.md)]
 
-## modify method
+<a id="modify-method"></a>
 
-> [!NOTE]
-> `modify` method is currently in preview and only available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. 
+## The modify method
 
-The native **json** type supports the `modify` method. Use `modify` to modify JSON documents stored in a column. The `modify` method has optimizations to perform in-place modifications to the data where possible, and is the preferred way to modify a JSON document in a **json** type column.
+> [!NOTE]  
+> The `modify` method is currently in preview and only available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
+
+The **json** data type supports the `modify` method. Use `modify` to modify JSON documents stored in a column. The `modify` method has optimizations to perform in-place modifications to the data where possible, and is the preferred way to modify a JSON document in a **json** column.
 
 For JSON strings, if the new value is less than or equal to the existing value, then in-place modification is possible.
 
@@ -75,11 +84,20 @@ For JSON numbers, if the new value is of the same type, or within the range of t
 
 ```sql
 DROP TABLE IF EXISTS JsonTable;
-CREATE TABLE JsonTable ( id int PRIMARY KEY, d JSON );
-INSERT INTO JsonTable (id, d) VALUES(1, '{"a":1, "b":"abc", "c":true}');
+
+CREATE TABLE JsonTable
+(
+    id INT PRIMARY KEY,
+    d JSON
+);
+
+INSERT INTO JsonTable (id, d)
+VALUES (1, '{"a":1, "b":"abc", "c":true}');
+
 UPDATE JsonTable
 SET d.modify('$.a', 14859)
 WHERE id = 1;
+
 UPDATE JsonTable
 SET d.modify('$.b', 'def')
 WHERE id = 1;
@@ -87,8 +105,9 @@ WHERE id = 1;
 
 ## Function support
 
-All JSON functions support the **json** type with no code changes or usage difference necessary. 
- - `OPENJSON` currently does not support the **json** data type on some platforms. For more information, see [Limitations](#limitations).
+All JSON functions support the **json** data type with no code changes or usage difference necessary.
+
+- `OPENJSON` currently doesn't support the **json** data type on some platforms. For more information, see [Limitations](#limitations).
 
 For a complete list of JSON functions, see [JSON functions](../functions/json-functions-transact-sql.md).
 
@@ -100,31 +119,34 @@ The **json** type can't be used as key column in a `CREATE INDEX` statement. How
 
 ## Conversion
 
-Explicit conversion using `CAST` or `CONVERT` from the **json** type can be done to **char**, **nchar**, **varchar**, and **nvarchar** types. All implicit conversions aren't allowed, similar to the behavior of **xml**. Similarly, only **char**, **nchar**, **varchar**, and **nvarchar** can be explicitly converted to the **json** type.
+Explicit conversion using `CAST` or `CONVERT` from the **json** type can be done to **char**, **nchar**, **varchar**, and **nvarchar** types. All implicit conversions aren't allowed, similar to the behavior of **xml**. Similarly, only **char**, **nchar**, **varchar**, and **nvarchar** can be explicitly converted to the **json** data type.
 
-The **json** type can't be used with the **sql_variant** type or assigned to a **sql_variant** variable or column. This restriction similar to **varchar(max)**, **varbinary(max)**, **nvarchar(max)**, **xml**, and CLR-based data types.
+The **json** data type can't be used with the **sql_variant** type or assigned to a **sql_variant** variable or column. This restriction similar to **varchar(max)**, **varbinary(max)**, **nvarchar(max)**, **xml**, and CLR-based data types.
 
-You can convert existing columns, like a **varchar(max)** column to **json** using `ALTER TABLE`. Similar to the **xml** data type, you cannot convert a **json** column to any of the string or binary types using `ALTER TABLE`.
+You can convert existing columns like **varchar(max)** to **json** using `ALTER TABLE`. Similar to the **xml** data type, you can't convert a **json** column to any of the string or binary types using `ALTER TABLE`.
 
-For more information, see [Data type conversion](data-type-conversion-database-engine.md).
+For more information, see [Data type conversion (Database Engine)](data-type-conversion-database-engine.md).
 
 ## Compatibility
 
-The **json** type can be used as a parameter or return type in a user-defined function, or the parameter of a stored procedure. The **json** type is compatible with triggers and views.
+The **json** data type can be used as a parameter or return type in a user-defined function, or the parameter of a stored procedure. The **json** type is compatible with triggers and views.
 
-Currently, the [bcp](../../tools/bcp-utility.md) tool's native format contains the **json** document as **varchar** or **nvarchar**. You must specify a format file to designate a **json** data type column.
+Currently, the [bcp](../../tools/bcp-utility.md) tool's native format contains the **json** document as **varchar** or **nvarchar**. You must specify a format file to designate a **json** column.
 
-Creation of alias type using `CREATE TYPE` for the **json** type isn't allowed. This is same behavior as **xml** type.
+Creation of alias type using `CREATE TYPE` for the **json** data type isn't allowed. This behavior is the same as the **xml** data type.
 
-Using `SELECT ... INTO` with the JSON type creates a table with the JSON type.
+Using `SELECT ... INTO` with the **json** data type creates a table with the **json** type.
 
 ## Limitations
 
-- The behavior of `CAST ( ... AS JSON)` returns a **json** type, but the [sp_describe_first_result_set](../../relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql.md) system stored procedure doesn't correctly return the **json** data type. Therefore, many data access clients and driver will see a **varchar** or **nvarchar** data type.
-  - Currently, TDS >= 7.4 (with UTF-8) sees **varchar(max)** with `Latin_General_100_bin2_utf8`.
-  - Currently, TDS < 7.4 sees **nvarchar(max)** with database collation.
-- Currently, the `OPENJSON()` function doesn't accept the **json** type in some platforms. Currently, it is an implicit conversion. Explicitly convert to **nvarchar(max)** first.
-  - In SQL Server 2025 (Preview), the `OPENJSON()` function does supports the **json** type. For more information, see [Key JSON capabilities in SQL Server 2025](../../relational-databases/json/json-data-sql-server.md#key-json-capabilities).
+The behavior of `CAST ( ... AS JSON)` returns a **json** data type, but the [sp_describe_first_result_set](../../relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql.md) system stored procedure doesn't correctly return the **json** data type. Therefore, many data access clients and driver see a **varchar** or **nvarchar** data type.
+
+- Currently, TDS >= 7.4 (with UTF-8) sees **varchar(max)** with `Latin_General_100_bin2_utf8`.
+- Currently, TDS < 7.4 sees **nvarchar(max)** with database collation.
+
+Currently, the `OPENJSON()` function doesn't accept the **json** data type in some platforms. Currently, it's an implicit conversion. Explicitly convert to **nvarchar(max)** first.
+
+- In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], the `OPENJSON()` function does support **json**. For more information, see [Key JSON capabilities in SQL Server 2025](../../relational-databases/json/json-data-sql-server.md#key-json-capabilities).
 
 ## Related content
 
