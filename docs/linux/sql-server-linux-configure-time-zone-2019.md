@@ -217,8 +217,8 @@ Symbolic links in `/usr/share/zoneinfo` and `/usr/lib/zoneinfo` are considered. 
 | America/Pangnirtung | Eastern Standard Time |
 | America/Paramaribo | SA Eastern Standard Time |
 | America/Phoenix | US Mountain Standard Time |
-| America/Port-au-Prince | Haiti Standard Time |
 | America/Port_of_Spain | SA Western Standard Time |
+| America/Port-au-Prince | Haiti Standard Time |
 | America/Porto_Velho | SA Western Standard Time |
 | America/Puerto_Rico | SA Western Standard Time |
 | America/Punta_Arenas | Magallanes Standard Time |
@@ -280,7 +280,6 @@ Symbolic links in `/usr/share/zoneinfo` and `/usr/lib/zoneinfo` are considered. 
 | Asia/Beirut | Middle East Standard Time |
 | Asia/Bishkek | Central Asia Standard Time |
 | Asia/Brunei | Singapore Standard Time |
-| Asia/Kolkata | India Standard Time |
 | Asia/Chita | Transbaikal Standard Time |
 | Asia/Choibalsan | Ulaanbaatar Standard Time |
 | Asia/Colombo | Sri Lanka Standard Time |
@@ -293,6 +292,7 @@ Symbolic links in `/usr/share/zoneinfo` and `/usr/lib/zoneinfo` are considered. 
 | Asia/Gaza | West Bank Standard Time |
 | Asia/Hebron | West Bank Standard Time |
 | Asia/Ho_Chi_Minh | SE Asia Standard Time |
+| Asia/Ho_Chi_Minh_City | SE Asia Standard Time |
 | Asia/Hong_Kong | China Standard Time |
 | Asia/Hovd | W. Mongolia Standard Time |
 | Asia/Irkutsk | North Asia East Standard Time |
@@ -326,9 +326,7 @@ Symbolic links in `/usr/share/zoneinfo` and `/usr/lib/zoneinfo` are considered. 
 | Asia/Qatar | Arab Standard Time |
 | Asia/Qostanay | Central Asia Standard Time |
 | Asia/Qyzylorda | Qyzylorda Standard Time |
-| Asia/Yangon | Myanmar Standard Time |
 | Asia/Riyadh | Arab Standard Time |
-| Asia/Ho_Chi_Minh_City | SE Asia Standard Time |
 | Asia/Sakhalin | Sakhalin Standard Time |
 | Asia/Samarkand | West Asia Standard Time |
 | Asia/Seoul | Korea Standard Time |
@@ -377,24 +375,7 @@ Symbolic links in `/usr/share/zoneinfo` and `/usr/lib/zoneinfo` are considered. 
 | CST6CDT | Central Standard Time |
 | EST5EDT | Eastern Standard Time |
 | Etc/GMT | UTC |
-| Etc/GMT+1 | Cabo Verde Standard Time |
-| Etc/GMT+10 | Hawaiian Standard Time |
-| Etc/GMT+11 | UTC-11 |
-| Etc/GMT+12 | Dateline Standard Time |
-| Etc/GMT+2 | UTC-02 |
-| Etc/GMT+3 | SA Eastern Standard Time |
-| Etc/GMT+4 | SA Western Standard Time |
-| Etc/GMT+5 | SA Pacific Standard Time |
-| Etc/GMT+6 | Central America Standard Time |
-| Etc/GMT+7 | US Mountain Standard Time |
-| Etc/GMT+8 | UTC-08 |
-| Etc/GMT+9 | UTC-09 |
 | Etc/GMT-1 | W. Central Africa Standard Time |
-| Etc/GMT-10 | West Pacific Standard Time |
-| Etc/GMT-11 | Central Pacific Standard Time |
-| Etc/GMT-12 | UTC+12 |
-| Etc/GMT-13 | UTC+13 |
-| Etc/GMT-14 | Line Islands Standard Time |
 | Etc/GMT-2 | South Africa Standard Time |
 | Etc/GMT-3 | E. Africa Standard Time |
 | Etc/GMT-4 | Arabian Standard Time |
@@ -403,6 +384,23 @@ Symbolic links in `/usr/share/zoneinfo` and `/usr/lib/zoneinfo` are considered. 
 | Etc/GMT-7 | SE Asia Standard Time |
 | Etc/GMT-8 | Singapore Standard Time |
 | Etc/GMT-9 | Tokyo Standard Time |
+| Etc/GMT-10 | West Pacific Standard Time |
+| Etc/GMT-11 | Central Pacific Standard Time |
+| Etc/GMT-12 | UTC+12 |
+| Etc/GMT-13 | UTC+13 |
+| Etc/GMT-14 | Line Islands Standard Time |
+| Etc/GMT+1 | Cabo Verde Standard Time |
+| Etc/GMT+2 | UTC-02 |
+| Etc/GMT+3 | SA Eastern Standard Time |
+| Etc/GMT+4 | SA Western Standard Time |
+| Etc/GMT+5 | SA Pacific Standard Time |
+| Etc/GMT+6 | Central America Standard Time |
+| Etc/GMT+7 | US Mountain Standard Time |
+| Etc/GMT+8 | UTC-08 |
+| Etc/GMT+9 | UTC-09 |
+| Etc/GMT+10 | Hawaiian Standard Time |
+| Etc/GMT+11 | UTC-11 |
+| Etc/GMT+12 | Dateline Standard Time |
 | Etc/UTC | UTC |
 | Europe/Amsterdam | W. Europe Standard Time |
 | Europe/Andorra | W. Europe Standard Time |
@@ -425,8 +423,8 @@ Symbolic links in `/usr/share/zoneinfo` and `/usr/lib/zoneinfo` are considered. 
 | Europe/Istanbul | Türkiye Standard Time |
 | Europe/Jersey | GMT Standard Time |
 | Europe/Kaliningrad | Kaliningrad Standard Time |
-| Europe/Kyiv | FLE Standard Time |
 | Europe/Kirov | Russian Standard Time |
+| Europe/Kyiv | FLE Standard Time |
 | Europe/Lisbon | GMT Standard Time |
 | Europe/Ljubljana | Central Europe Standard Time |
 | Europe/London | GMT Standard Time |
@@ -688,8 +686,8 @@ Symbolic links in `/usr/share/zoneinfo` and `/usr/lib/zoneinfo` are considered. 
 | America/Pangnirtung | Eastern Standard Time |
 | America/Paramaribo | SA Eastern Standard Time |
 | America/Phoenix | US Mountain Standard Time |
-| America/Port-au-Prince | Haiti Standard Time |
 | America/Port_of_Spain | SA Western Standard Time |
+| America/Port-au-Prince | Haiti Standard Time |
 | America/Porto_Velho | SA Western Standard Time |
 | America/Puerto_Rico | SA Western Standard Time |
 | America/Rainy_River | Central Standard Time |
@@ -749,7 +747,6 @@ Symbolic links in `/usr/share/zoneinfo` and `/usr/lib/zoneinfo` are considered. 
 | Asia/Beirut | Middle East Standard Time |
 | Asia/Bishkek | Central Asia Standard Time |
 | Asia/Brunei | Singapore Standard Time |
-| Asia/Kolkatav | India Standard Time |
 | Asia/Chita | Transbaikal Standard Time |
 | Asia/Choibalsan | Ulaanbaatar Standard Time |
 | Asia/Colombo | Sri Lanka Standard Time |
@@ -760,6 +757,7 @@ Symbolic links in `/usr/share/zoneinfo` and `/usr/lib/zoneinfo` are considered. 
 | Asia/Dushanbe | West Asia Standard Time |
 | Asia/Gaza | West Bank Standard Time |
 | Asia/Hebron | West Bank Standard Time |
+| Asia/Ho_Chi_Minh | SE Asia Standard Time |
 | Asia/Hong_Kong | China Standard Time |
 | Asia/Hovd | W. Mongolia Standard Time |
 | Asia/Irkutsk | North Asia East Standard Time |
@@ -771,6 +769,7 @@ Symbolic links in `/usr/share/zoneinfo` and `/usr/lib/zoneinfo` are considered. 
 | Asia/Karachi | Pakistan Standard Time |
 | Asia/Katmandu | Nepal Standard Time |
 | Asia/Khandyga | Yakutsk Standard Time |
+| Asia/Kolkatav | India Standard Time |
 | Asia/Krasnoyarsk | North Asia Standard Time |
 | Asia/Kuala_Lumpur | Singapore Standard Time |
 | Asia/Kuching | Singapore Standard Time |
@@ -790,9 +789,7 @@ Symbolic links in `/usr/share/zoneinfo` and `/usr/lib/zoneinfo` are considered. 
 | Asia/Pyongyang | North Korea Standard Time |
 | Asia/Qatar | Arab Standard Time |
 | Asia/Qyzylorda | Central Asia Standard Time |
-| Asia/Yangon | Myanmar Standard Time |
 | Asia/Riyadh | Arab Standard Time |
-| Asia/Ho_Chi_Minh | SE Asia Standard Time |
 | Asia/Sakhalin | Sakhalin Standard Time |
 | Asia/Samarkand | West Asia Standard Time |
 | Asia/Seoul | Korea Standard Time |
@@ -812,6 +809,7 @@ Symbolic links in `/usr/share/zoneinfo` and `/usr/lib/zoneinfo` are considered. 
 | Asia/Vientiane | SE Asia Standard Time |
 | Asia/Vladivostok | Vladivostok Standard Time |
 | Asia/Yakutsk | Yakutsk Standard Time |
+| Asia/Yangon | Myanmar Standard Time |
 | Asia/Yekaterinburg | Ekaterinburg Standard Time |
 | Asia/Yerevan | Caucasus Standard Time |
 | Atlantic/Azores | Azores Standard Time |
@@ -839,24 +837,7 @@ Symbolic links in `/usr/share/zoneinfo` and `/usr/lib/zoneinfo` are considered. 
 | CST6CDT | Central Standard Time |
 | EST5EDT | Eastern Standard Time |
 | Etc/GMT | UTC |
-| Etc/GMT+1 | Cabo Verde Standard Time |
-| Etc/GMT+10 | Hawaiian Standard Time |
-| Etc/GMT+11 | UTC-11 |
-| Etc/GMT+12 | Dateline Standard Time |
-| Etc/GMT+2 | UTC-02 |
-| Etc/GMT+3 | SA Eastern Standard Time |
-| Etc/GMT+4 | SA Western Standard Time |
-| Etc/GMT+5 | SA Pacific Standard Time |
-| Etc/GMT+6 | Central America Standard Time |
-| Etc/GMT+7 | US Mountain Standard Time |
-| Etc/GMT+8 | UTC-08 |
-| Etc/GMT+9 | UTC-09 |
 | Etc/GMT-1 | W. Central Africa Standard Time |
-| Etc/GMT-10 | West Pacific Standard Time |
-| Etc/GMT-11 | Central Pacific Standard Time |
-| Etc/GMT-12 | UTC+12 |
-| Etc/GMT-13 | Tonga Standard Time |
-| Etc/GMT-14 | Line Islands Standard Time |
 | Etc/GMT-2 | South Africa Standard Time |
 | Etc/GMT-3 | E. Africa Standard Time |
 | Etc/GMT-4 | Arabian Standard Time |
@@ -865,6 +846,23 @@ Symbolic links in `/usr/share/zoneinfo` and `/usr/lib/zoneinfo` are considered. 
 | Etc/GMT-7 | SE Asia Standard Time |
 | Etc/GMT-8 | Singapore Standard Time |
 | Etc/GMT-9 | Tokyo Standard Time |
+| Etc/GMT-10 | West Pacific Standard Time |
+| Etc/GMT-11 | Central Pacific Standard Time |
+| Etc/GMT-12 | UTC+12 |
+| Etc/GMT-13 | Tonga Standard Time |
+| Etc/GMT-14 | Line Islands Standard Time |
+| Etc/GMT+1 | Cabo Verde Standard Time |
+| Etc/GMT+2 | UTC-02 |
+| Etc/GMT+3 | SA Eastern Standard Time |
+| Etc/GMT+4 | SA Western Standard Time |
+| Etc/GMT+5 | SA Pacific Standard Time |
+| Etc/GMT+6 | Central America Standard Time |
+| Etc/GMT+7 | US Mountain Standard Time |
+| Etc/GMT+8 | UTC-08 |
+| Etc/GMT+9 | UTC-09 |
+| Etc/GMT+10 | Hawaiian Standard Time |
+| Etc/GMT+11 | UTC-11 |
+| Etc/GMT+12 | Dateline Standard Time |
 | Europe/Amsterdam | W. Europe Standard Time |
 | Europe/Andorra | W. Europe Standard Time |
 | Europe/Astrakhan | Astrakhan Standard Time |
@@ -886,8 +884,8 @@ Symbolic links in `/usr/share/zoneinfo` and `/usr/lib/zoneinfo` are considered. 
 | Europe/Istanbul | Türkiye Standard Time |
 | Europe/Jersey | GMT Standard Time |
 | Europe/Kaliningrad | Kaliningrad Standard Time |
-| Europe/Kyiv | FLE Standard Time |
 | Europe/Kirov | Russian Standard Time |
+| Europe/Kyiv | FLE Standard Time |
 | Europe/Lisbon | GMT Standard Time |
 | Europe/Ljubljana | Central Europe Standard Time |
 | Europe/London | GMT Standard Time |
