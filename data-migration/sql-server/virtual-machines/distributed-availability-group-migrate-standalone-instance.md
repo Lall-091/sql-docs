@@ -1,11 +1,11 @@
 ---
-title: Use distributed AG to migrate databases from a standalone instance
+title: Use Distributed AG to Migrate Databases from a Standalone Instance
 titleSuffix: SQL Server on Azure VMs
 description: Learn to use a distributed availability group (AG) to migrate a database (or multiple databases) from a standalone instance of SQL Server to a target SQL Server on Azure VM.
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 06/26/2024
+ms.date: 09/17/2025
 ms.service: azure-vm-sql-server
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -52,14 +52,17 @@ Use Transact-SQL (T-SQL) to create endpoints on both your source (`OnPremNode`) 
 To create your endpoints, run this T-SQL script on both source and target servers:
 
 ```sql
-CREATE ENDPOINT [Hadr_endpoint] STATE = STARTED
-AS TCP (
-    LISTENER_PORT = 5022,
-    LISTENER_IP = ALL
-)
-FOR DATA_MIRRORING(ROLE = ALL,
-AUTHENTICATION = WINDOWS NEGOTIATE,
-ENCRYPTION = REQUIRED ALGORITHM AES);
+CREATE ENDPOINT [Hadr_endpoint]
+    STATE = STARTED
+    AS TCP (
+        LISTENER_PORT = 5022,
+        LISTENER_IP = ALL
+    )
+    FOR DATABASE_MIRRORING (
+        ROLE = ALL,
+        AUTHENTICATION = WINDOWS NEGOTIATE,
+        ENCRYPTION = REQUIRED ALGORITHM AES
+    );
 GO
 ```
 

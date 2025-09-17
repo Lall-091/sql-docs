@@ -5,7 +5,7 @@ description: In this guide, you learn how to migrate your individual SQL Server 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mathoma
-ms.date: 06/16/2025
+ms.date: 09/17/2025
 ms.service: azure-vm-sql-server
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -22,7 +22,7 @@ Complete [pre-migration](../pre-migration.md) steps before continuing.
 
 ## Migrate
 
-After you complete the steps for the [pre-migration stage](../pre-migration.md), you're ready to migrate the user databases and components. Migrate your databases by using your preferred [migration method](overview.md#migrate).
+After you complete the steps for the [pre-migration stage](../pre-migration.md), you're ready to migrate the user databases and components. Migrate your databases by using your preferred [migration method](overview.md#migrate).
 
 The following sections provide options for performing a migration in order of preference:
 
@@ -31,7 +31,7 @@ The following sections provide options for performing a migration in order of pr
 - [convert to a VM, upload to a URL, and deploy as a new VM](#convert-vm)
 - [log shipping](#log-shipping)
 - [ship a hard drive](#ship-a-hard-drive)
-- [migrate using the Azure SQL migration extension for Azure Data Studio with minimal downtime](#migrate-using-the-azure-sql-migration-extension-for-azure-data-studio-minimal-downtime)
+- [migrate using the SQL Server migration component in SSMS with minimal downtime](#ssms-migration-component)
 - [migrate objects outside user databases](#migrate-objects-outside-user-databases)
 
 ### Detach and attach from a URL
@@ -47,13 +47,20 @@ Detach your database and log files and transfer them to [Azure Blob storage](/sq
 To perform a standard migration by using backup and restore:
 
 1. Set up connectivity to SQL Server on Azure Virtual Machines based on your requirements. For more information, see [Connect to a SQL Server virtual machine on Azure](/azure/azure-sql/virtual-machines/windows/ways-to-connect-to-sql).
+
 1. Pause or stop any applications that are using databases intended for migration.
+
 1. Ensure user databases are inactive by using [single user mode](/sql/relational-databases/databases/set-a-database-to-single-user-mode).
+
 1. Perform a full database backup to an on-premises location.
+
 1. Copy your on-premises backup files to your VM by using a remote desktop, [Azure Data Explorer](/azure/data-explorer/data-explorer-overview), or the [AzCopy command-line utility](/azure/storage/common/storage-use-azcopy-v10). (Greater than 2-TB backups are recommended.)
+
 1. Restore full database backups to the SQL Server on Azure Virtual Machines.
 
-### <a id="convert-vm"></a> Convert to a VM, upload to a URL, and deploy as a new VM
+<a id="convert-vm"></a>
+
+### Convert to a VM, upload to a URL, and deploy as a new VM
 
 Use this method to migrate all system and user databases in an on-premises SQL Server instance to an Azure virtual machine. Use the following general steps to migrate an entire SQL Server instance using this manual method:
 
@@ -74,24 +81,18 @@ For more information, see [Log Shipping Tables and Stored Procedures](/sql/datab
 
 Use the [Windows Import/Export Service method](/azure/import-export/storage-import-export-service) to transfer large amounts of file data to Azure Blob storage in situations where uploading over the network is prohibitively expensive or not feasible. With this service, you send one or more hard drives containing that data to an Azure data center where your data will be uploaded to your storage account.
 
-### Migrate using the Azure SQL migration extension for Azure Data Studio (minimal downtime)
+<a id="ssms-migration-component"></a>
 
-To perform a minimal downtime migration using Azure Data Studio, follow the high level steps below. For a detailed step-by-step tutorial, see [Tutorial: Migrate SQL Server to SQL Server on Azure Virtual Machines with DMS](database-migration-service.md):
+### Migrate using the SQL Server migration component in SQL Server Management Studio (minimal downtime)
 
-1. Download and install [Azure Data Studio](/azure-data-studio/download-azure-data-studio) and the [Azure SQL migration extension](/azure-data-studio/extensions/azure-sql-migration-extension).
-1. Launch the Migrate to Azure SQL wizard in the extension in Azure Data Studio.
-1. Select databases for assessment and view migration readiness or issues (if any). Additionally, collect performance data and get right-sized Azure recommendation.
-1. Select your Azure account and your target SQL Server on Azure Machine from your subscription.
-1. Select the location of your database backups. Your database backups can either be located on an on-premises network share or in an Azure Blob Storage container.
-1. Create a new Azure Database Migration Service using the wizard in Azure Data Studio. If you have previously created an Azure Database Migration Service using Azure Data Studio, you can reuse the same if desired.
-1. *Optional*: If your backups are on an on-premises network share, download and install [self-hosted integration runtime](https://www.microsoft.com/download/details.aspx?id=39717) on a machine that can connect to source SQL Server and the location containing the backup files.
-1. Start the database migration and monitor the progress in Azure Data Studio. You can also monitor the progress under the Azure Database Migration Service resource in Azure portal.
-1. Complete the cutover.
-   1. Stop all incoming transactions to the source database.
-   1. Make application configuration changes to point to the target database in SQL Server on Azure Virtual Machine.
-   1. Take any tail log backups for the source database in the backup location specified.
-   1. Ensure all database backups have the status Restored in the monitoring details page.
-   1. Select **Complete cutover** in the monitoring details page.
+The migration component in SQL Server Management Studio (SSMS) checks upgrade and compatibility issues from lower versions of SQL Server to higher versions of SQL Server, running on-premises and on other virtual machine (VM) environments.
+
+The migration component finds compatibility issues related to breaking changes, behavior changes, deprecated features, and other information.
+
+- The report also provides a feature parity check if you want to migrate from one cross-platform database to another.
+- The upgrade adviser assessment report provides the effect of objects, the possible cause, and remediation steps.
+
+For more information, see [Use the SQL Server migration component in SQL Server Management Studio](/ssms/migrate-sql-server-component).
 
 ### Migrate objects outside user databases
 
@@ -118,7 +119,7 @@ The following table provides a list of components and recommended migration meth
 | | Alerts | Script with SQL Server Management Studio. |
 | | Operators | Script with SQL Server Management Studio. |
 | | Proxies | Script with SQL Server Management Studio. |
-| **Operating system** | Files, file shares | Make a note of any other files or file shares that are used by your SQL servers and replicate on the Azure Virtual Machines target. |
+| **Operating&nbsp;system** | Files, file shares | Make a note of any other files or file shares that are used by your SQL servers and replicate on the Azure Virtual Machines target. |
 
 ## Post-migration
 
@@ -135,8 +136,11 @@ Apply any fixes recommended by the SQL Server migration component to user databa
 The test approach to database migration consists of the following activities:
 
 1. **Develop validation tests**: To test the database migration, you need to use SQL queries. Create validation queries to run against both the source and target databases. Your validation queries should cover the scope you've defined.
+
 1. **Set up a test environment**: The test environment should contain a copy of the source database and the target database. Be sure to isolate the test environment.
+
 1. **Run validation tests**: Run validation tests against the source and the target, and then analyze the results.
+
 1. **Run performance tests**: Run performance tests against the source and target, and then analyze and compare the results.
 
 ### Optimize
