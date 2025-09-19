@@ -2,7 +2,7 @@
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: mathoma
-ms.date: 08/27/2025
+ms.date: 09/19/2025
 ms.service: azure-sql
 ms.topic: include
 ---
@@ -55,10 +55,6 @@ Servers configured with no minimum TLS version and connecting with TLS 1.0/1.1 s
 #### How will I be notified about TLS retirement for my resources?
 
 Email reminders will continue leading up to the retirement of TLS 1.0 and 1.1 in August.
-
-#### Can I request an exception or extension if I can’t meet the August 31, 2025 deadline?
-
-The retirement of TLS 1.0 and 1.1 by August 31 is an Azure-wide deadline. If you can't update your database resources to use minimal TLS version 1.2 by the retirement deadline and require support for your scenario, [submit a request to Azure Databases](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_a1gOAu1S1AjXceLdgUTExUNkFVQ1VHSFlTNzdCSUlWTlM3WEdaVkw4SS4u) explaining your migration blocker.
 
 #### Who can I contact if I need help with validating or with updating my TLS settings?
 
