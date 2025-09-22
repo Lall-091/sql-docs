@@ -349,6 +349,8 @@ GRANT ALTER on SCHEMA::HR to [mike@contoso.com];
 
 The COPY statement accepts only UTF-8 and UTF-16 valid characters for row data and command parameters. Source files or parameters (such as ROW TERMINATOR or FIELD TERMINATOR) that use invalid characters might be interpreted incorrectly by the COPY statement and cause unexpected results such as data corruption, or other failures. Make sure your source files and parameters are UTF-8 or UTF-16 compliant before you invoke the COPY statement.  
 
+The MAXDOP query hint is not supported with COPY INTO.
+
 ## Examples
 
 ### A. Load from a public storage account

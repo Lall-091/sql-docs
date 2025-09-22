@@ -22,7 +22,7 @@ This article helps you determine the appropriate subnet size and IP address rang
 
 ## Overview
 
-Azure SQL Managed Instance is made up of service components that are hosted on a *dedicated set of isolated virtual machines* placed inside one or more virtual machine groups hosted by a [virtual cluster](virtual-cluster-architecture.md) and deployed within an Azure [virtual network](/azure/virtual-network/virtual-networks-overview).
+Azure SQL Managed Instance is made up of service components that are hosted on a *dedicated set of isolated virtual machines* placed inside one or more virtual machine (VM) groups hosted by a [virtual cluster](virtual-cluster-architecture.md) and deployed within an Azure [virtual network](/azure/virtual-network/virtual-networks-overview).
 
 A virtual cluster, associated with a single subnet in a virtual network, can host one or more SQL managed instances. The number of instances that can be deployed to a subnet depends on the size of the subnet (subnet range).
 
@@ -48,7 +48,7 @@ Use the following list of considerations when determining the size of your subne
 Use the following parameters to help form a calculation:
 
 - Azure uses five IP addresses in the subnet for its own needs.
-- Each [virtual machine group](virtual-cluster-architecture.md#number-of-vm-groups) allocates six more addresses.
+- Each [VM group](virtual-cluster-architecture.md#number-of-vm-groups) allocates six more addresses.
 - The number of addresses that each SQL managed instance uses, depends on the service tier.
   - General Purpose SQL managed instance uses three addresses
   - Business Critical SQL managed instance uses five addresses
@@ -61,76 +61,78 @@ Use the following parameters to help form a calculation:
 
 The following table shows the number of IP addresses required for a single instance in a subnet deployed to each service tier:
 
-| **Service tier** | **Azure usage** <sup>1</sup> | **VM group usage** <sup>2</sup> | **Instance usage** | **Total**<sup>3</sup> |
-| --- | --- | --- | --- | --- |
-| General Purpose | 5 | 6 | 3 | 14 |
-| Business Critical | 5 | 6 | 5 | 16 |
+| **Service tier** | **Azure usage**<sup>1</sup> | **VM group usage**<sup>2</sup> | **Instance usage** | **Zone redundancy (ZR)** | **Total**<sup>3</sup> |
+| --- | --- | --- | --- | --- | --- |
+| General Purpose | 5 | 8 | 2 | 0 | 15 |
+| Business Critical | 5 | 8 | 5 | 2 | 18 (20 with ZR) |
 
 <sup>1</sup> Addresses used by Azure are shared across all instances in the subnet.   
-<sup>2</sup> Addresses used by the virtual machine (VM) group are shared across instances placed inside the same group.   
-<sup>3</sup> The total number of addresses used by the instance.
+<sup>2</sup> Addresses used by the VM group are shared across instances placed inside the same group.   
+<sup>3</sup> The total number of addresses used by the instance. Additional IP addresses are allocated when zone redundancy is enabled for instances in the Business Critical service tier. 
 
 Adding instances to the subnet increases the number of addresses used by the instance and therefore increases the total number of addresses.
 
 ### Multi-instance subnets
 
-The formula in this section calculates the number of addresses necessary for multiple instances in a subnet. The formula takes into account the potential of creating new virtual machine groups during a subsequent instance create or update request, and the maintenance window and hardware requirements of virtual clusters.
+The formula in this section calculates the number of addresses necessary for multiple instances in a subnet. The formula takes into account the potential of creating new VM groups during a subsequent instance create or update request, and the maintenance window and hardware requirements of virtual clusters.
 
 Use the following formula to calculate the total number of IP addresses based on the number of instances:
 
-`5 + (a * 6) + (b * 10) + (c * 6)` where
+`5 + (gp * 4) + (bc * 10) + (bc_zr * 2) + (vmg * 8)` where   
 
-- a = number of GP instances
-- b = number of BC instances
-- c = number of different virtual machine groups
+- gp = number of General Purpose instances
+- bc = number of Business Critical instances
+- bc_zr = number of zone redundant Business Critical instances
+- vmg = number of different VM groups
 
 The following list explains the numbers used in the formula:
 
 - 5 is the number of IP addresses reserved by Azure
-- 6 addresses per GP instance (3 for the initial deployment, 3 for an eventual scaling operation)
-- 10 addresses per BC instance (5 for the initial deployment, 5 for an eventual scaling operation)
-- 6 addresses per virtual machine group
+- 4 addresses per General Purpose instance (2 for the initial deployment, 2 for an eventual scaling operation)
+- 10 addresses per Business Critical instance (5 for the initial deployment, 5 for an eventual scaling operation)
+- 8 addresses per VM group
 
 > [!IMPORTANT]  
-> Since there's a limit to the number of virtual machines that can join a group, a lack of space in an existing group can result in creating a virtual machine group with identical specifications. It's possible for a subnet with a large number of instances to have multiple machine groups with the same configuration, and exceed 9 virtual machine groups.
+> Since there's a limit to the number of virtual machines that can join a group, a lack of space in an existing group can result in creating a VM group with identical specifications. It's possible for a subnet with a large number of instances to have multiple VM groups with the same configuration, exceeding 9 VM groups.
 
 #### Example 1
 
-You plan to have three General Purpose and two Business Critical instances deployed to the same subnet. All instances have the same maintenance window and run on the same hardware configuration.
+You plan to have three General Purpose and two Business Critical instances deployed to the same subnet. All instances have the same maintenance window, run on the same hardware configuration, and none are zone redundant.
 
-To plug these values into the formula:
-`5 + (3 * 6) + (2 * 10) + (1 * 6) = 49`
+Substituting these values into the formula yields the following equation:
+`5 + (3 * 4) + (2 * 10) + 0 + (1 * 8) = 45`
 
-Since IP ranges are defined in powers of 2, to support 49 IP addresses, your subnet requires a minimum IP range of 64 (2^6) for this deployment. Reserve the subnet with a subnet mask of /26.
+Since IP ranges are defined in powers of 2, to support 45 IP addresses, your subnet requires a minimum IP range of 64 (2^6) for this deployment. Reserve the subnet with a subnet mask of /26.
 
 #### Example 2
 
-You plan to deploy a total of seven instances to the same subnet, four General Purpose, and three Business Critical instances. Three are dev/test instances running on Standard-series hardware with a default maintenance window (virtual machine group 1), while the remaining four are in production, running on Premium-series hardware with a weekend maintenance window (virtual machine group 2).
+You plan to deploy a total of seven instances to the same subnet, four General Purpose, and three Business Critical instances. Three are dev/test instances running on Standard-series hardware with a default maintenance window (VM group 1), while the remaining four are in production, running on Premium-series hardware with a weekend maintenance window (VM group 2). Two of the Business Critical instances are zone redundant.
 
-To plug these values into the formula:
-`5 + (4 * 6) + (3 * 10) + (2 * 6) = 71`
+Substituting these values into the formula yields the following equation:
+`5 + (4 * 4) + (3 * 10) + (1 * 2) + (2 * 8) = 69`
 
-Since IP ranges are defined in powers of 2, to support 71 IP addresses, your subnet requires a minimum IP range of 128 (2^7) for this deployment. You need to reserve the subnet with a subnet mask of /25.
+Since IP ranges are defined in powers of 2, to support the 69 IP addresses, your subnet requires a minimum IP range of 128 (2^7) for this deployment. You need to reserve the subnet with a subnet mask of /25.
 
-> [!CAUTION]  
-> It's possible to deploy SQL managed instances to a subnet with fewer IP addresses than the formula suggests. However, you should always consider using bigger subnets instead, to avoid future issues that stem from a lack of IP addresses. Such as, the inability to create more instances within the subnet or scale existing instances.
+> [!CAUTION]
+> Although you can deploy instances into a subnet smaller than the calculated size, doing so can prevent you from adding instances or completing scale and maintenance operations that require temporary IP addresses. To avoid service interruptions, reserve a larger subnet than the minimum and plan for future growth, additional VM groups, and temporary increases in IP usage during certain operations.
+
 
 ## Update scenarios
 
 During a scaling operation, instances temporarily require added IP capacity that depends on the service tier.
 
-The following table shows the temporary number of additional IP addresses required for a scale operation that doesn't require creating a new virtual machine group:
+The following table shows the temporary number of additional IP addresses required for a scale operation that doesn't require creating a new VM group:
 
 | **Service tier** | **Scenario** | **Additional addresses**  |
 | --- | --- | --- |
-| GP | Scaling vCores | 3 |
+| GP | Scaling vCores | 2 |
 | GP | Scaling storage | 0 |
 | GP | Switching to BC | 5 |
 | BC | Scaling vCores | 5 |
 | BC | Scaling storage | 5 |
-| BC | Switching to GP | 3 |
+| BC | Switching to GP | 2 |
 
-Operations that result in creating a new virtual machine group, such as changing a hardware generation or maintenance window, require 6 more permanent addresses for the new group.
+Operations that result in creating a new VM group, such as changing a hardware generation or maintenance window, require an additional 6 permanent addresses for the new group. 
 
 ## Related content
 
