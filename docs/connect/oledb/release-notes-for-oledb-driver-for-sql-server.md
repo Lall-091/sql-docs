@@ -4,7 +4,7 @@ description: This release notes article describes the changes in each release of
 author: David-Engel
 ms.author: davidengel
 ms.reviewer: randolphwest
-ms.date: 09/09/2025
+ms.date: 09/26/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -55,6 +55,28 @@ For the x86 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?link
 | Don't migrate TrustServerCertificiate registry flag. | Modified the installer to not copy the TrustServerCertificiate registry flag value from a previously installed major version; and instead use the installer default value for the flag. For more information, see [Registry settings](features/registry-settings.md). |
 
 ## Previous releases
+
+## 19.3.7
+
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download x64 installer](https://go.microsoft.com/fwlink/?linkid=2335761)**  
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download x86 installer](https://go.microsoft.com/fwlink/?linkid=2335682)**  
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Arm64 installer](https://go.microsoft.com/fwlink/?linkid=2335762)**  
+
+Released: September 26, 2025
+
+If you need to download the installer in a language other than the one detected for you, you can use these direct links.
+
+For the x64 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2335761&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2335761&clcid=0x404) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2335761&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2335761&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2335761&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2335761&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2335761&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2335761&clcid=0x412) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2335761&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2335761&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2335761&clcid=0x40a)
+
+For the x86 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2335682&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2335682&clcid=0x404) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2335682&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2335682&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2335682&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2335682&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2335682&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2335682&clcid=0x412) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2335682&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2335682&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2335682&clcid=0x40a)
+
+For the Arm64 driver: [Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2335762&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2335762&clcid=0x404) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2335762&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2335762&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2335762&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2335762&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2335762&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2335762&clcid=0x412) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2335762&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2335762&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2335762&clcid=0x40a)
+
+### Bugs fixed
+
+| Bug fixed | Details |
+| --- | --- |
+| Fixed potential crashes. | Avoid potential crashes caused by memory corruption. |
 
 ## 19.3.6
 
