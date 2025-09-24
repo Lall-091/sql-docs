@@ -1,10 +1,10 @@
 ---
 title: "Change Data Capture (CDC) With Azure SQL Database"
 description: "Learn about change data capture (CDC) in Azure SQL Database, which records insert, update, and delete activity that applies to a table."
-author: croblesm
-ms.author: roblescarlos
-ms.reviewer: mathoma, randolphwest
-ms.date: 08/22/2025
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: mathoma, randolphwest, roblescarlos
+ms.date: 09/24/2025
 ms.service: azure-sql-database
 ms.subservice: replication
 ms.topic: how-to
@@ -20,8 +20,9 @@ helpviewer_keywords:
 [!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!div class="op_single_selector"]
-> - [Azure SQL Database](change-data-capture-overview.md)
-> - [SQL Server](/sql/relational-databases/track-changes/about-change-data-capture-sql-server)
+> - [Azure SQL Database](change-data-capture-overview.md?view=azuresql-db&preserve-view=true)
+> - [Azure SQL Managed Instance](/sql/relational-databases/track-changes/about-change-data-capture-sql-server?view=azuresqldb-mi-current&preserve-view=true)
+> - [SQL Server](/sql/relational-databases/track-changes/about-change-data-capture-sql-server?view=sql-server-ver17&preserve-view=true)
 
 In this article, learn how change data capture (CDC) is implemented in Azure SQL Database to record activity on a database when tables and rows have been modified. For details about the CDC feature, including how it's implemented in SQL Server and Azure SQL Managed Instance, see [What is change data capture (CDC)?](/sql/relational-databases/track-changes/about-change-data-capture-sql-server)
 
@@ -244,13 +245,15 @@ Consider the following best practices when you use CDC with Azure SQL Database:
 
 - **No Service Level Agreement (SLA)** is provided for when changes are populated to the change tables. Subsecond latency is also not supported.
 
-### Known issues and limitations
+## Known issues and limitations
+
+### Default constraints on added columns 
+
+When CDC is enabled on a table and a non-nullable column with a default constraint is added, existing row data will have the value of the default constraint. However, CDC will use `NULL` instead of the default value for *existing* rows. This applies only to data present before the DDL was applied. As a workaround, issue non-changing `UPDATE` statements to existing rows, or, perform an `ALTER INDEX ... REBUILD` on the clustered index of the table. Use `ALTER TABLE ... REBUILD` on the heap if no clustered index is present.
 
 ### Aggressive log truncation
 
 When you enable change data capture (CDC) in Azure SQL Database, the aggressive log truncation feature of Accelerated Database Recovery (ADR) is disabled. This is because the CDC scan accesses the database transaction log. Active transactions prevent transaction log truncation until the transaction commits and CDC scan catches up, or the transaction aborts.
-
-When enabling CDC, we recommend using the resumable index option when you create or rebuild an index. Resumable indexes don't keep a long-running transaction open, and allow log truncation during the operation for better log space management. For more information, see [Guidelines for online index operations - Resumable Index considerations](/sql/relational-databases/indexes/guidelines-for-online-index-operations#resumable-index-considerations).
 
 ### Azure SQL Database service tier
 
@@ -266,10 +269,6 @@ When you enable CDC, you might observe higher transaction log utilization. You m
 > If your workload demands higher overall performance due to higher transaction log throughput and faster transaction commit times, use the [Hyperscale service tier](service-tier-hyperscale.md).
 
 ## Online operations
-
-### Online DDL statements are unsupported
-
-[Online DDL statements](/sql/t-sql/statements/alter-table-transact-sql?view=azuresqldb-current&preserve-view=true#with--online--on--off-as-applies-to-altering-a-column) are unsupported when change change data capture is enabled on a database. 
 
 ### Online index operations are unsupported
 
