@@ -17,7 +17,7 @@ SQL Server enabled by Azure Arc is available in the following regions:
 - North Central US
 - South Central US
 - West Central US
-- US Government Virginia <sup>1</sup>
+- US Government Virginia
 - Canada Central
 - Canada East
 - UK South
@@ -36,8 +36,6 @@ SQL Server enabled by Azure Arc is available in the following regions:
 - Australia East
 - Sweden Central
 - Norway East
-
-<sup>1</sup> The US Government Virginia region is currently in preview, and not all features are supported yet. For details, review [SQL Server enabled by Azure Arc in US Government Preview](../us-government-region.md).
 
 > [!IMPORTANT]
 >
