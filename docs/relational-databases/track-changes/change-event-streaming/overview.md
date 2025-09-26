@@ -1,8 +1,8 @@
 ---
 title: "What is change event streaming"
 description: "Provides an overview of change event streaming"
-author: sasapopo
-ms.author: sasapopo
+author: nzagorac-ms
+ms.author: nzagorac
 ms.reviewer: mathoma, mikeray
 ms.service: sql
 ms.topic: overview

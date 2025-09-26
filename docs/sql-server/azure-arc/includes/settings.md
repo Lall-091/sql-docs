@@ -19,7 +19,8 @@ The following table identifies settings, if they're enabled by default, and wher
 | [Purview](/purview/register-scan-azure-arc-enabled-sql-server)             | Disabled                   | Yes             | Extension, Instance    |
 | [Automated backups](../backup-local.md)                                    | Disabled                   | Yes             | Instance, Database     |
 | [Collect performance metrics (preview)](../sql-monitoring.md)              | Enabled                    | Yes             | Instance               |
-| [Migration assessment ](../migration-assessment.md)                        | Enabled                    | Yes             | Instance               |
+| [Migration assessment](../migration-assessment.md)                        | Enabled                    | Yes             | Instance               |
+| [Database migration (preview)](../migrate-to-azure-sql-managed-instance.md) | Enabled                   | No             | Extension               |
 | [Availability Group discovery management](../manage-availability-group.md) | Enabled                    | Yes             | `AvailabilityGroupDiscovery` feature flag |
 | [Extension log collection](../troubleshoot-deployment.md#log-file-locations) | Enabled                    | No              | Not configurable       |
 | [SQL Server instance and DB discovery](../view-inventory.md)               | Enabled                    | No              | Not configurable       |

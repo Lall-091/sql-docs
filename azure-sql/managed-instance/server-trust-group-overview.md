@@ -2,8 +2,8 @@
 title: Server trust group
 titleSuffix: Azure SQL Managed Instance
 description: Learn how to manage trust between instances by using a server trust group in Azure SQL Managed Instance.
-author: sasapopo
-ms.author: sasapopo
+author: MladjoA
+ms.author: mlandzic
 ms.reviewer: mathoma
 ms.date: 11/02/2021
 ms.service: azure-sql-managed-instance

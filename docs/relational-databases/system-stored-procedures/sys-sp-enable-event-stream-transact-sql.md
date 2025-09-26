@@ -1,8 +1,8 @@
 ---
 title: "sys.sp_enable_event_stream (Transact-SQL)"
 description: "Enables change event streaming, a feature introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] by using Transact-SQL (T-SQL)."
-author: sasapopo
-ms.author: sasapopo
+author: nzagorac-ms
+ms.author: nzagorac
 ms.reviewer: mathoma, mikeray, randolphwest
 ms.date: 06/23/2025
 ms.service: sql
