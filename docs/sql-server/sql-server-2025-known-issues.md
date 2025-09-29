@@ -29,6 +29,7 @@ This article describes known issues for [!INCLUDE [sssql25-md](../includes/sssql
 - [Local ONNX models not supported on Linux operating systems](#local-onnx-models-not-supported-on-linux-operating-systems)
 - [PBKDF2 hashing algorithm can affect login performance](#pbkdf2-hashing-algorithm-can-affect-login-performance)
 - [Access violation exception can occur on readable secondary replicas under certain conditions](#access-violation-exception-can-occur-on-readable-secondary-replicas-under-certain-conditions)
+- [Vector index](#vector-index)
 
 ## Windows Arm64 not supported
 
@@ -130,6 +131,15 @@ A fix has been identified and will be part of a future release of [!INCLUDE [sss
 ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY
     SET PARAMETER_SENSITIVE_PLAN_OPTIMIZATION = OFF;
 ```
+
+## Vector index
+
+Currently, when you create a vector index on some datasets, it may return the following errors:
+
+- Error 9829: `STRING_AGG aggregation result exceeded the limit of 8000 bytes. Use LOB types to avoid result truncation.`
+- 42234: `Internal SQL error during DiskANN graph build`
+
+A fix has been identified and will be part of a future release of [!INCLUDE [sssql25-md](../includes/sssql25-md.md)].
 
 ## Related content
 

@@ -71,7 +71,7 @@ Table on which the index is created. It must be a base table. Views, temporary t
 
 Column to use to create the vector index. It must be of **vector** type.
 
-### METRIC = { 'cosine' | 'dot' | 'euclidean' }
+### METRIC
 
 A string with the name of the distance metric to use to calculate the distance between the two given vectors. The following distance metrics are supported:
 
@@ -79,11 +79,11 @@ A string with the name of the distance metric to use to calculate the distance b
 - `euclidean` - Euclidean distance
 - `dot` - (Negative) Dot product
 
-## TYPE = 'DiskANN'
+### TYPE
 
 The type of [ANN algorithm](../../sql-server/ai/vectors.md#approximate-vector-index-and-vector-search-approximate-nearest-neighbors) used to build the index. Only `DiskANN` is currently supported. DiskANN is the default value.
 
-## MAXDOP = *max_degree_of_parallelism*
+### MAXDOP
 
 Overrides the **max degree of parallelism** configuration option for the index operation. For more information, see [Max degree of parallelism](../../database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md). Use `MAXDOP` to limit the degree of parallelism and the resulting resource consumption for an index build operation.
 
@@ -114,6 +114,15 @@ The current preview has the following limitations:
 - The table must have a single column, integer, primary key clustered index.
 - A table with a vector index becomes read only. No data modification is allowed while the vector index is present on the table.
 - Vector indexes aren't replicated to subscribers.
+
+## Known issues
+
+Currently, when you create a vector index on some datasets, it may return the following errors:
+
+- Error 9829: `STRING_AGG aggregation result exceeded the limit of 8000 bytes. Use LOB types to avoid result truncation.`
+- 42234: `Internal SQL error during DiskANN graph build`
+
+For more information, review [Known issues](../../sql-server/sql-server-2025-known-issues.md#vector-index).
 
 ## Permissions
 
