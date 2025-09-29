@@ -335,7 +335,7 @@ The v8.0 release of SSMA for Oracle is enhanced with targeted fixes designed to 
 
 - Support for **Azure SQL Managed Instance** as a target. You can now create new projects targeting Azure SQL Managed Instance:
 
-  :::image type="content" source="../media/ssma-newproject-sqldbmi.png" alt-text="Screenshot of SQL MI project.":::
+  :::image type="content" source="../media/ssma-newproject-managed-instance.png" alt-text="Screenshot of SQL MI project.":::
 
   The SSMA for Oracle Extension Pack was also updated to allow remote installations on Azure SQL Managed Instance:
 
@@ -410,16 +410,18 @@ The v7.4 release of SSMA for Oracle contains the following changes:
 - SSMA for Oracle now supports Azure Synapse Analytics as a target platform for migration.
 
   :::image type="content" source="../media/new-project.png" alt-text="Screenshot of New Project window.":::
+
   - Supports the Data Warehouse storage options as shown in the following image:
 
-  :::image type="content" source="../media/storage-options_red.png" alt-text="Screenshot of storage options for data warehouse.":::
+  :::image type="content" source="../media/storage-options-red.png" alt-text="Screenshot of storage options for data warehouse.":::
+
   - Supports the data distribution options as shown in the following image:
 
-  :::image type="content" source="../media/data-distribution_red.png" alt-text="Screenshot of data distribution for data warehouse." lightbox="../media/data-distribution_red.png":::
+  :::image type="content" source="../media/data-distribution-red.png" alt-text="Screenshot of data distribution for data warehouse." lightbox="../media/data-distribution-red.png":::
 
 - The **Query timeout** option is now available during schema object discovery at source and target.
 
-  :::image type="content" source="../media/query-timeout_red.png" alt-text="Screenshot of query timeout option.":::
+  :::image type="content" source="../media/query-timeout-red.png" alt-text="Screenshot of query timeout option.":::
 
 - The quality and conversion metric has been improved with targeted fixes, based on customer feedback.
 
@@ -435,7 +437,8 @@ The v7.3 release of SSMA for Oracle contains the following changes:
   - Export functionality to a SQL Server Data Tools (SSDT) project.
     - You can now export schema scripts from SSMA to an SSDT project. You can use the schema scripts to make additional schema changes and deploy your database.
 
-      :::image type="content" source="../media/export-schema-scripts_red.png" alt-text="Screenshot of Save as SSDT project command.":::
+      :::image type="content" source="../media/export-schema-scripts-red.png" alt-text="Screenshot of Save as SSDT project command.":::
+
   - Libraries that can be consumed by SSMA for performing custom conversions.
     - You can now construct code that can handle custom syntax conversions and conversions that weren't previously handled by SSMA.
       - Instructions on how to construct a custom converter are available in this blog post, [Extending SQL Server Migration Assistant's conversion capabilities](https://techcommunity.microsoft.com/category/azuredatabases/blog/microsoftdatamigration).

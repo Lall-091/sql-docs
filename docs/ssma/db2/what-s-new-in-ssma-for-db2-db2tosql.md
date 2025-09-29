@@ -328,7 +328,7 @@ The v8.0 release of SSMA for Db2 is enhanced to provide targeted fixes designed 
 
 - Support for **Azure SQL Managed Instance** as a target. You can now create new projects targeting Azure SQL Managed Instance:
 
-:::image type="content" source="../media/ssma-newproject-sqldbmi.png" alt-text="Screenshot of SQL MI project.":::
+:::image type="content" source="../media/ssma-newproject-managed-instance.png" alt-text="Screenshot of SQL MI project.":::
 
 - Post-conversion **Fix advisor**. Learn more about it [here](https://techcommunity.microsoft.com/category/azuredatabases/blog/microsoftdatamigration).
 
@@ -382,7 +382,7 @@ The v7.4 release of SSMA for Db2 contains the following changes:
 
 - The **Query timeout** option is now available during schema object discovery at source and target.
 
-:::image type="content" source="../media/query-timeout_red.png" alt-text="Screenshot of query timeout option.":::
+:::image type="content" source="../media/query-timeout-red.png" alt-text="Screenshot of query timeout option.":::
 
 - The quality and conversion metric has been improved with targeted fixes, based on customer feedback.
 
@@ -398,7 +398,7 @@ The v7.3 release of SSMA for Db2 contains the following changes:
   - Export functionality to a SQL Server Data Tools (SSDT) project.
     - You can now export schema scripts from SSMA to an SSDT project. You can use the schema scripts to make additional schema changes and deploy your database.
 
-      :::image type="content" source="../media/export-schema-scripts_red.png" alt-text="Screenshot of Save as SSDT project command.":::
+      :::image type="content" source="../media/export-schema-scripts-red.png" alt-text="Screenshot of Save as SSDT project command.":::
 
   - Libraries that can be consumed by SSMA for performing custom conversions.
     - You can now construct code that can handle custom syntax conversions and conversions that weren't previously handled by SSMA.
