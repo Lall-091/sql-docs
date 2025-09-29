@@ -5,7 +5,7 @@ metadata:
   description: Frequently asked questions about database watcher for Azure SQL
   author: lcwright
   ms.author: lancewright
-  ms.date: 05/04/2025
+  ms.date: 09/29/2025
   ms.reviewer: wiassaf, dfurman
   ms.service: azure-sql
   ms.subservice: monitoring
@@ -109,6 +109,10 @@ sections:
       - question: |
           Can I export SQL monitoring data from Azure Data Explorer?
         answer: Yes. For example, you can [export](/azure/data-explorer/kusto/management/data-export) data to Azure storage, a data lake, or a SQL Server or an Azure SQL database.
+
+      - question: |
+          What happens to the collected SQL monitoring data when I delete a SQL target?
+        answer: The data for the deleted SQL targets is retained in the data store according to the [retention policy](database-watcher-manage.md#manage-data-retention) for the database or table, and can be accessed via the dashboards and queries for historical purposes. For more information about deleting collected data from the data store before the retention period expires, see [Delete data](/kusto/concepts/delete-data). The summary page of the watcher uses the data in the data store, and shows recently deleted SQL targets for up to 72 hours.
 
   - name: Data collection
     questions:
