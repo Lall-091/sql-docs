@@ -108,6 +108,10 @@ Starting with [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)] CU5, set
 
 For more information, see [BACKUP (Transact-SQL)](../../t-sql/statements/backup-transact-sql.md).
 
+> [!WARNING]
+> If you are performing multiple backups to a single backup media set after applying SQL Server 2019 CU5, install SQL Server 2019 CU9 ([KB13768244](/troubleshoot/sql/releases/sqlserver-2019/cumulativeupdate9)) to resolve a known restore issue. Failure to do so can result in backups that can't be restored.
+> After applying SQL Server 2019 CU9, the backup process enforces the `INIT` option, which prevents combining backups of databases that use TDE or have different Database Encryption Keys (DEKs) into a single backup media set.
+
 ##  <a name="Allocation"></a> Allocation of space for the backup file
 
  For compressed backups, the size of the final backup file depends on how compressible the data is, and this is unknown before the backup operation finishes.  Therefore, by default, when backing up a database using compression, the Database Engine uses a preallocation algorithm for the backup file. This algorithm preallocates a predefined percentage of the size of the database for the backup file. If more space is needed during the backup operation, the Database Engine grows the file. If the final size is less than the allocated space, at the end of the backup operation, the Database Engine shrinks the file to the actual final size of the backup.  

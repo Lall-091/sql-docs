@@ -105,7 +105,7 @@ Learn about significant changes to the Azure SQL Database documentation. For pre
 | Changes | Details |
 | --- | --- |
 | **sys.dm_hs_database_replicas** | You can query the details of Azure SQL Database Hyperscale replicas with the new dynamic management view (DMV) [sys.dm_hs_database_replicas](/sql/relational-databases/system-functions/sys-dm-hs-database-replicas).|
-| **Full-length SQL audit statements** | Support for full-length audit statements helps ensure query details are not lost and improves parity with SQL Server and Azure SQL Managed Instance auditing capabilities. For more information, see [Auditing](auditing-overview.md#full-length-sql-audit-statements-august-2025). |
+
 
 ### July 2025
 
