@@ -4,7 +4,7 @@ description: "Create an SDK-style SQL project from an existing project."
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: maghan, randolphwest
-ms.date: 06/27/2025
+ms.date: 09/25/2025
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: how-to
@@ -41,6 +41,9 @@ SDK-style projects aren't supported in SQL Server Data Tools (SSDT) in Visual St
 - the SQL Database Projects extension in Visual Studio Code
 - the SQL Database Projects extension in Azure Data Studio
 - the SQL Server Data Tools, SDK-style (preview) in Visual Studio 2022
+
+> [!NOTE]  
+> You might find that your SQL project contains customization that extends the changes required beyond these steps. In addition to this article, the [DacFx GitHub repository](https://github.com/microsoft/dacfx) can be used to understand the changes necessary to upgrade from an original SQL project to SDK-style SQL projects.
 
 ## Prerequisites
 
@@ -224,7 +227,7 @@ The [project properties](../concepts/project-properties.md) reference lists the 
 
 Your project file might be referenced in a solution file (`.sln`). If you have a solution file, you should update it to reference the new SDK-style project file. If you do not have a solution file, you can skip this section and proceed to Step 5.
 
-### Optional: Create a new solution file
+### Option 1: Create a new solution file
 
 For a solution file that only contains the SQL project, it is more straightforward to remove the solution file and create a new solution file with the SDK-style project.
 
@@ -233,7 +236,7 @@ dotnet new sln --name MySolution
 dotnet sln MySolution.sln add MyDatabaseProject\MyDatabaseProject.sqlproj
 ```
 
-### Optional: Edit the solution file
+### Option 2: Edit the solution file
 
 When a solution file contains multiple projects, you should update the solution file to reference the new SDK-style project file. You can edit the solution file in a text editor and change the project reference to the new SDK-style project file. The project reference in the solution file should look like this:
 
@@ -242,7 +245,7 @@ Project("{PROJECT_TYPE_GUID}") = "MyDatabaseProject", "MyDatabaseProject\MyDatab
 EndProject
 ```
 
-The `PROJECT_TYPE_GUID` value for a Microsoft.Build.Sql project is `42EA0DBD-9CF1-443E-919E-BE9C484E4577`, and the `PROJECT_GUID` is a unique identifier for the project found in the project file `<ProjectGuid>` element. The `PROJECT_GUID` value is not required to be changed and can remain the same as in the original project file. The `PROJECT_TYPE_GUID` value is required to be changed to the Microsoft.Build.Sql project type GUID.
+The `PROJECT_TYPE_GUID` value for a Microsoft.Build.Sql project is `42EA0DBD-9CF1-443E-919E-BE9C484E4577`, and the `PROJECT_GUID` is a unique identifier for the project found in the project file `<ProjectGuid>` element. If you have a solution file with your project, the `PROJECT_GUID` value is not required to be changed and can remain the same as in the original project file. The `PROJECT_TYPE_GUID` value is required to be changed to the Microsoft.Build.Sql project type GUID.
 
 ## Step 5: Build a `.dacpac` file from the modified project for comparison
 

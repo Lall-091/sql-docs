@@ -1,10 +1,10 @@
 ---
 title: "CREATE INDEX (Transact-SQL)"
-description: CREATE INDEX (Transact-SQL)
+description: The CREATE INDEX statement creates a relational index on a table or view.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: wiassaf, dfurman
-ms.date: 04/04/2025
+ms.date: 09/26/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -51,18 +51,18 @@ helpviewer_keywords:
   - "XML indexes [SQL Server], creating"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||=fabric"
 ---
 
 # CREATE INDEX (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 Creates a relational index on a table or view. Also called a rowstore index because it is either a clustered or nonclustered B-tree index. You can create a rowstore index before there is data in the table. Use a rowstore index to improve query performance, especially when the queries select from specific columns or require values to be sorted in a particular order.
 
 [!INCLUDE [sql-b-tree](../../includes/sql-b-tree.md)]
 
-[!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE[ssPDW](../../includes/sspdw-md.md)] currently don't support unique constraints. Any examples referencing unique constraints are only applicable to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)].
+[!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE[ssPDW](../../includes/sspdw-md.md)] currently don't support unique constraints. Any examples referencing unique constraints are only applicable to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)].
 
 For information on index design guidelines, refer to the [SQL Server index design guide](../../relational-databases/sql-server-index-design-guide.md).
 
@@ -88,7 +88,7 @@ For information on index design guidelines, refer to the [SQL Server index desig
 
 **Key scenario:**
 
-Starting with [!INCLUDE[sssql16-md](../../includes/sssql16-md.md)], in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and in [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)], you can use a nonclustered index on a columnstore index to improve data warehousing query performance. For more information, see [Columnstore indexes - data warehouse](../../relational-databases/indexes/columnstore-indexes-data-warehouse.md).
+Starting with [!INCLUDE[sssql16-md](../../includes/sssql16-md.md)], in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and in [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)], you can use a nonclustered index on a columnstore index to improve data warehousing query performance. For more information, see [Columnstore indexes - data warehouse](../../relational-databases/indexes/columnstore-indexes-data-warehouse.md).
 
 For additional types of indexes, see:
 
@@ -100,7 +100,7 @@ For additional types of indexes, see:
 
 ## Syntax
 
-### Syntax for SQL Server, Azure SQL Database, Azure SQL Managed Instance
+### Syntax for SQL Server, Azure SQL Database, SQL database in Fabric, Azure SQL Managed Instance
 
 ```syntaxsql
 CREATE [ UNIQUE ] [ CLUSTERED | NONCLUSTERED ] INDEX index_name
@@ -280,7 +280,7 @@ Specifies the non-key columns to be added to the leaf level of a nonclustered in
 
 Column names can't be repeated in the `INCLUDE` list and can't be used simultaneously as both key and non-key columns. Nonclustered indexes always implicitly contain the clustered index columns if a clustered index is defined on the table. For more information, see [Create indexes with included columns](../../relational-databases/indexes/create-indexes-with-included-columns.md).
 
-All data types are allowed except **text**, **ntext**, and **image**. Starting with [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)], in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and in [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)], if any one of the specified non-key columns are **varchar(max)**, **nvarchar(max)**, or **varbinary(max)** data types, the index can be built or rebuilt using the `ONLINE` option.
+All data types are allowed except **text**, **ntext**, and **image**. Starting with [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)], in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and in [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)], if any one of the specified non-key columns are **varchar(max)**, **nvarchar(max)**, or **varbinary(max)** data types, the index can be built or rebuilt using the `ONLINE` option.
 
 Computed columns that are deterministic and either precise or imprecise can be included columns. Computed columns derived from **image**, **ntext**, **text**, **varchar(max)**, **nvarchar(max)**, **varbinary(max)**, and **xml** data types can be included as long as the computed column data type is allowable as an included column. For more information, see [Indexes on computed columns](../../relational-databases/indexes/indexes-on-computed-columns.md).
 
@@ -457,7 +457,7 @@ In backward compatible syntax, `WITH STATISTICS_NORECOMPUTE` is equivalent to `W
 
 #### STATISTICS_INCREMENTAL = { ON | OFF }
 
-**Applies to**: [!INCLUDE[ssSQL14](../../includes/sssql14-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
+**Applies to**: [!INCLUDE[ssSQL14](../../includes/sssql14-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
 
 When `ON`, the statistics created are per partition statistics. When `OFF`, the statistics tree is dropped and [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] re-computes the statistics. The default is `OFF`.
 
@@ -523,14 +523,14 @@ Indexes, including indexes on global temp tables, can be created online except f
 - Clustered columnstore indexes in [!INCLUDE[ssSQL17](../../includes/sssql17-md.md)]) and older versions
 - Nonclustered columnstore indexes in [!INCLUDE[ssSQL16](../../includes/sssql16-md.md)]) and older versions
 - Clustered index, if the underlying table contains LOB data types (**image**, **ntext**, **text**) and spatial data types
-- **varchar(max)** and **varbinary(max)** columns can't be part of an index key. In [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (starting with [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)]), in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and in [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)], when a table contains **varchar(max)** or **varbinary(max)** columns, a clustered index containing other columns can be built or rebuilt using the `ONLINE` option.
+- **varchar(max)** and **varbinary(max)** columns can't be part of an index key. In [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] (starting with [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)]), in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and in [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)], when a table contains **varchar(max)** or **varbinary(max)** columns, a clustered index containing other columns can be built or rebuilt using the `ONLINE` option.
 - Nonclustered indexes on a table with a clustered columnstore index
 
 For more information, see [How online index operations work](../../relational-databases/indexes/how-online-index-operations-work.md).
 
 #### RESUMABLE = { ON | OFF }
 
-**Applies to**: [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
+**Applies to**: [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
 
 Specifies whether an online index operation is resumable. For more information, see [Resumable index operations](#resumable-indexes) and [Resumable index considerations](../../relational-databases/indexes/guidelines-for-online-index-operations.md#resumable-index-considerations).
 
@@ -544,7 +544,7 @@ Specifies whether an online index operation is resumable. For more information, 
 
 #### MAX_DURATION = *time* [MINUTES] used with `RESUMABLE = ON` (requires `ONLINE = ON`)
 
-**Applies to**: [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
+**Applies to**: [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
 
 Specifies for how long, in minutes, a resumable index operation is executed before it's paused.
 
@@ -574,7 +574,7 @@ Specifies whether page locks are allowed. The default is `ON`.
 
 #### OPTIMIZE_FOR_SEQUENTIAL_KEY = { ON | OFF }
 
-**Applies to**: [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
+**Applies to**: [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
 
 Specifies whether or not to optimize to avoid last-page insert contention. The default is `OFF`. See the [Sequential keys](#sequential-keys) section for more information.
 
@@ -619,13 +619,13 @@ Specifies the data compression option for the specified index, partition number,
 
 - COLUMNSTORE
 
-  **Applies to**: [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
+  **Applies to**: [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
 
   Applies only to columnstore indexes, including both nonclustered columnstore and clustered columnstore indexes.
 
 - COLUMNSTORE_ARCHIVE
 
-  **Applies to**: [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
+  **Applies to**: [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
 
   Applies only to columnstore indexes, including both nonclustered columnstore and clustered columnstore indexes. `COLUMNSTORE_ARCHIVE` further compresses the specified partition to a smaller size. This can be used for archival, or for other situations that require a smaller storage size and can afford more time for storage and retrieval.
 
@@ -633,7 +633,7 @@ For more information about compression, see [Data compression](../../relational-
 
 #### XML_COMPRESSION
 
-**Applies to**: [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi](../../includes/ssazuremi-md.md)]
+**Applies to**: [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and [!INCLUDE [ssazuremi](../../includes/ssazuremi-md.md)]
 
 Specifies the XML compression option for the specified index that contains one or more **xml** data type columns. The options are as follows:
 
@@ -699,7 +699,7 @@ Creating a clustered index on a table (heap) or dropping and re-creating an exis
 
 ## Nonclustered indexes
 
-Starting with [!INCLUDE[sssql16-md](../../includes/sssql16-md.md)], in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and in [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)], you can create a nonclustered index on a table stored as a clustered columnstore index. If you first create a nonclustered index on a table stored as a heap or clustered index, the index persists if you later convert the table to a clustered columnstore index. It is also not necessary to drop the nonclustered index when you rebuild the clustered columnstore index.
+Starting with [!INCLUDE[sssql16-md](../../includes/sssql16-md.md)], in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and in [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)], you can create a nonclustered index on a table stored as a clustered columnstore index. If you first create a nonclustered index on a table stored as a heap or clustered index, the index persists if you later convert the table to a clustered columnstore index. It is also not necessary to drop the nonclustered index when you rebuild the clustered columnstore index.
 
 The `FILESTREAM_ON` option isn't valid when you create a nonclustered index on a table stored as a clustered columnstore index.
 
@@ -847,7 +847,7 @@ For more information, see [Perform index operations online](../../relational-dat
 
 ### Resumable index operations
 
-**Applies to**: [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
+**Applies to**: [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
 
 You can make an online index create operation resumable. That means that the index build can be stopped and later restarted from the point where it stopped. To run an index build as resumable, specify the `RESUMABLE = ON` option.
 
@@ -895,9 +895,9 @@ Resumable index create operations have the following limitations:
 
 ### <a name="wait-at-low-priority"></a> WAIT_AT_LOW_PRIORITY with online index operations
 
-**Applies to**: [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)]
+**Applies to**: [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)]
 
-When you don't use the `WAIT_AT_LOW_PRIORITY` option, all active blocking transactions holding locks on the table or index must complete for the index create operation to start and to complete. When the online index operation starts and before it completes, it needs to acquire a shared (`S`) or a schema modification (`Sch-M`) lock on the table and hold it for a short time. Even though the lock is held for a short time only, it might significantly affect workload throughput, increase query latency, or cause execution time-outs.
+When you don't use the `WAIT_AT_LOW_PRIORITY` option, all active blocking transactions holding locks on the table or index must complete for the index create operation to start and to complete. When the online index operation starts and before it completes, it needs to acquire a shared (`S`) or a schema modification (`Sch-M`) lock on the table and hold it for a short time. Even though the lock is held for a short time only, it might significantly affect workload throughput, increase query latency, or cause execution timeouts.
 
 To avoid these problems, the `WAIT_AT_LOW_PRIORITY` option allows you to manage the behavior of `S` or `Sch-M` locks required for an online index operation to start and complete, selecting from three options. In all cases, if during the wait time specified by `MAX_DURATION = n [minutes]` there is no blocking that involves the index operation, the index operation proceeds immediately.
 
@@ -930,7 +930,7 @@ When `ALLOW_ROW_LOCKS = OFF` and `ALLOW_PAGE_LOCK = OFF`, only a table-level loc
 
 ## Sequential keys
 
-**Applies to**: [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)] and later versions, in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and in [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)].
+**Applies to**: [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)] and later versions, in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and in [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)].
 
 Last-page insert contention is a common performance problem that occurs when a large number of concurrent threads attempt to insert rows into an index with a sequential key. An index is considered sequential when the leading key column contains values that are always increasing (or decreasing), such as an identity column or a date that defaults to the current date/time. Because the keys being inserted are sequential, all new rows are inserted at the end of the index structure - in other words, on the same page. This leads to contention for the page in memory which can be observed as several threads waiting to acquire a latch for the page in question. The corresponding wait type is `PAGELATCH_EX`.
 
@@ -953,7 +953,7 @@ To evaluate how changing the compression state affects the space usage by a tabl
 
 ### XML compression
 
-**Applies to**: [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi](../../includes/ssazuremi-md.md)].
+**Applies to**: [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and [!INCLUDE [ssazuremi](../../includes/ssazuremi-md.md)].
 
 Many of the data compression considerations apply to XML compression. You should also be aware of the following considerations:
 
@@ -987,10 +987,10 @@ To view information on existing indexes, you can query the [sys.indexes](../../r
 
 ## Version notes
 
-- [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] doesn't support filegroups other than `PRIMARY`.
-- [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)] don't support `FILESTREAM` options.
+- [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)] don't support filegroups other than `PRIMARY`.
+- [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)] don't support `FILESTREAM` options.
 - Columnstore indexes aren't available before [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)].
-- Resumable index operations are available starting with [!INCLUDE [ssSQL17](../../includes/sssql17-md.md)], in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and in [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)].
+- Resumable index operations are available starting with [!INCLUDE [ssSQL17](../../includes/sssql17-md.md)], in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and in [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)].
 
 ## Examples: All versions. Uses the AdventureWorks database
 
@@ -1032,7 +1032,7 @@ CREATE INDEX IX_FF ON dbo.FactFinance (FinanceKey, DateKey, OrganizationKey DESC
   WITH (DROP_EXISTING = ON);
 ```
 
-## Examples: SQL Server, Azure SQL Database
+## Examples: SQL Server, Azure SQL Database, SQL database in Fabric
 
 ### E. Create a unique nonclustered index
 
@@ -1269,7 +1269,7 @@ GO
 
 ### M. Create an index with XML compression
 
-**Applies to**: [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi](../../includes/ssazuremi-md.md)].
+**Applies to**: [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and [!INCLUDE [ssazuremi](../../includes/ssazuremi-md.md)].
 
 The following example creates an index on a nonpartitioned table by using XML compression. At least one column in the index must be the **xml** data type.
 
@@ -1291,7 +1291,7 @@ GO
 
 ### N. Create, resume, pause, and abort resumable index operations
 
-**Applies to**: [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
+**Applies to**: [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
 
 ```sql
 -- Execute a resumable online index create statement with MAXDOP=1
@@ -1344,7 +1344,7 @@ CREATE CLUSTERED INDEX idx_1 ON dbo.T2 (a) WITH (ONLINE = ON (WAIT_AT_LOW_PRIORI
 
 Create, resume, pause, and abort resumable index operations
 
-**Applies to**: [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
+**Applies to**: [!INCLUDE[sql-server-2019](../../includes/sssql19-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
 
 ```sql
 -- Execute a resumable online index create statement with MAXDOP=1

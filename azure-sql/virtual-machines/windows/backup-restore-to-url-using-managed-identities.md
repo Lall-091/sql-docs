@@ -23,8 +23,6 @@ This article teaches you to back up to and restore [SQL Server on Azure Virtual 
 
 Starting with SQL Server 2022 Cumulative Update 17 (CU17), you can use managed identities with [SQL Server credentials](/sql/t-sql/statements/create-credential-transact-sql) to back up to and restore SQL Server on Azure VM databases from Azure Blob storage. [Managed identities](/entra/identity/managed-identities-azure-resources/overview) provide an identity for applications to use when connecting to resources that support Microsoft Entra authentication.
 
-Using managed identities in the credentials for the `BACKUP TO URL` and `RESTORE FROM URL` T-SQL operations is only supported by SQL Server on Azure VMs. Using managed identities with SQL Server on-premises to `BACKUP TO URL` and `RESTORE FROM URL` isn't supported.
-
 ## Prerequisites
 
 - A SQL Server on Azure VM with SQL Server 2022 CU17 or later [registered with the SQL IaaS Agent extension](sql-agent-extension-manually-register-single-vm.md).

@@ -8,14 +8,12 @@ ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
 f1_keywords:
-  - "sys.sys.dm_hadr_instance_node_map_TSQL"
-  - "sys.sys.dm_hadr_instance_node_map"
   - "sys.dm_hadr_instance_node_map_TSQL"
   - "sys.dm_hadr_instance_node_map"
 helpviewer_keywords:
   - "Availability Groups [SQL Server], monitoring"
   - "Availability Groups [SQL Server], WSFC"
-  - "sys.sys.dm_hadr_instance_node_map dynamic management view"
+  - "sys.dm_hadr_instance_node_map dynamic management view"
 dev_langs:
   - "TSQL"
 ---

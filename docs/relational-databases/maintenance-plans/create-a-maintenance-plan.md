@@ -21,6 +21,9 @@ This article describes how to create a single server or multiserver maintenance 
 
 To create a multiserver maintenance plan, a multiserver environment containing one master server and one or more target servers must be configured. Multiserver maintenance plans must be created and maintained on the master server. These plans can be viewed, but not maintained, on target servers.
 
+> [!NOTE]  
+> Make sure you always have the latest supported version of SQL Server Management Studio (SSMS) installed. You can install SSMS with the SQL Server Integration Services (SSIS) component, under the Business Intelligence feature, to enable maintenance plan functionality. If the SSIS component isn't installed, certain features related to maintenance plans are unavailable.
+
 ## Prerequisites
 
 The [Agent XPs Server Configuration Option](../../database-engine/configure-windows/agent-xps-server-configuration-option.md) must be enabled.

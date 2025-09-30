@@ -1,10 +1,10 @@
 ---
-title: Guidelines for online index operations
+title: Guidelines for Online Index Operations
 description: Guidelines for online index operations.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 02/27/2025
+ms.date: 09/22/2025
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: conceptual
@@ -27,8 +27,11 @@ monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-20
 When you perform online index operations, the following guidelines apply:
 
 - Clustered indexes must be created, rebuilt, or dropped offline when the underlying table contains the following large object (LOB) data types: **image**, **ntext**, and **text**.
+
 - Nonunique nonclustered indexes can be created online when the table has columns using the LOB data types but none of these columns are used in the index definition as either key or included columns.
+
 - Indexes on local temp tables can't be created, rebuilt, or dropped online. This restriction doesn't apply to indexes on global temp tables.
+
 - You can start an online index operation as a resumable operation by using the `RESUMABLE` clause of [CREATE INDEX](../../t-sql/statements/create-index-transact-sql.md) or [ALTER INDEX](../../t-sql/statements/alter-index-transact-sql.md). A resumable index operation can restart after an unexpected failure, database failover, or an `ALTER INDEX PAUSE` command and continue from where it was interrupted.
 
 > [!NOTE]  
@@ -38,7 +41,7 @@ The following table shows the index operations that can be performed online, the
 
 | Online index operation | Excluded indexes | Other restrictions |
 | --- | --- | --- |
-| `ALTER INDEX REBUILD` | Disabled clustered index or disabled indexed view<br /><br />XML index<br /><br />Index on a local temp table | Specifying the keyword `ALL` can cause the operation to fail when the table contains an excluded index.<br /><br />Additional restrictions on rebuilding disabled indexes apply. For more information, see [Disable Indexes and Constraints](disable-indexes-and-constraints.md). |
+| `ALTER INDEX REBUILD` | Disabled clustered index or disabled indexed view<br /><br />XML index<br /><br />Index on a local temp table | Specifying the keyword `ALL` can cause the operation to fail when the table contains an excluded index.<br /><br />Additional restrictions on rebuilding disabled indexes apply. For more information, see [Disable indexes and constraints](disable-indexes-and-constraints.md). |
 | `CREATE INDEX` | XML index<br /><br />Initial unique clustered index on a view<br /><br />Index on a local temp table | |
 | `CREATE INDEX WITH DROP_EXISTING` | Disabled clustered index or disabled indexed view<br /><br />Index on a local temp table<br /><br />XML index | |
 | `DROP INDEX` | Disabled index<br /><br />XML index<br /><br />Nonclustered index<br /><br />Index on a local temp table | Multiple indexes can't be specified within a single statement. |
@@ -47,7 +50,7 @@ The following table shows the index operations that can be performed online, the
 
 The underlying table can't be modified, truncated, or dropped while an online index operation is in progress.
 
-The online option setting (`ON` or `OFF`) specified when you create or drop a clustered index is applied to any nonclustered indexes that must be rebuilt. For example, if the clustered index is built online by using `CREATE INDEX WITH DROP_EXISTING, ONLINE=ON`, all associated nonclustered indexes are also recreated online.
+The online option setting (`ON` or `OFF`) specified when you create or drop a clustered index is applied to any nonclustered indexes that must be rebuilt. For example, if the clustered index is built online by using `CREATE INDEX WITH DROP_EXISTING, ONLINE = ON`, all associated nonclustered indexes are also recreated online.
 
 When you create or rebuild a `UNIQUE` index online, the index builder and a concurrent user transaction might try to insert the same key, therefore violating uniqueness. If a row entered by a user is inserted into the new index (target) before the original row from the source table is moved to the new index, the online index operation fails.
 
@@ -62,7 +65,9 @@ An online operation can't be performed when an index contains a column of the la
 Online index operations require more disk space than offline index operations.
 
 - During index creation and index rebuild operations, additional space is required for the index being built (or rebuilt). Commonly, this additional space is the same as the current space occupied by the index, but it could be greater or smaller depending on the compression used in the current or the rebuilt index.
+
 - In addition, disk space is required for the temporary mapping index. This temporary index is used in online index operations that create, rebuild, or drop a clustered index.
+
 - Dropping a clustered index online requires as much space as creating (or rebuilding) a clustered index online.
 
 For more information, see [Disk space requirements for index DDL operations](disk-space-requirements-for-index-ddl-operations.md).
@@ -79,7 +84,7 @@ On multiprocessor computers that are running [!INCLUDE [sssql16-md](../../includ
 
 Because a shared (`S`) lock or a schema modification (`Sch-M`) lock is held in the final phase of the index operation, be careful when you run an online index operation inside an explicit user transaction, such as `BEGIN TRANSACTION ... COMMIT` block. Doing this causes the locks to be held until the end of the transaction, potentially blocking other workloads.
 
-If index page locks are disabled using `ALLOW_PAGE_LOCKS=OFF`, online index rebuild can increase index fragmentation when it runs with `MAXDOP` greater than 1. For more information, see [How It Works: Online Index Rebuild - Can Cause Increased Fragmentation](/archive/blogs/psssql/how-it-works-online-index-rebuild-can-cause-increased-fragmentation).
+If index page locks are disabled using `ALLOW_PAGE_LOCKS = OFF`, online index rebuild can increase index fragmentation when it runs with `MAXDOP` greater than 1. For more information, see [How It Works: Online Index Rebuild - Can Cause Increased Fragmentation](https://techcommunity.microsoft.com/blog/sqlserversupport/how-it-works-online-index-rebuild---can-cause-increased-fragmentation/317246).
 
 ## Transaction log considerations
 
@@ -91,21 +96,25 @@ Online index operations don't cause high transaction log growth if [accelerated 
 
 ## Persistent version store considerations
 
-If ADR is enabled, creating or rebuilding a large index online can substantially increase the size of persistent version store (PVS) while the index operation is in progress. Ensure that the database has sufficient free space for PVS to grow. For more information, see [Monitor and troubleshoot accelerated database recovery](../accelerated-database-recovery-troubleshoot.md).
+If ADR is enabled, creating, or rebuilding a large index online can substantially increase the size of persistent version store (PVS) while the index operation is in progress. Ensure that the database has sufficient free space for PVS to grow. For more information, see [Monitor and troubleshoot accelerated database recovery](../accelerated-database-recovery-troubleshoot.md).
 
 ## Resumable index considerations
 
-The `RESUMABLE` index option for `CREATE INDEX` and `ALTER INDEX` applies to [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] (`ALTER INDEX` starting with [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)], and `CREATE INDEX` starting with  [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)]), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]. For more information, see [CREATE INDEX](../../t-sql/statements/create-index-transact-sql.md) and [ALTER INDEX](../../t-sql/statements/alter-index-transact-sql.md).
+The `RESUMABLE` index option for `CREATE INDEX` and `ALTER INDEX` applies to [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] (`ALTER INDEX` starting with [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)], and `CREATE INDEX` starting with [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)]), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]. For more information, see [CREATE INDEX](../../t-sql/statements/create-index-transact-sql.md) and [ALTER INDEX](../../t-sql/statements/alter-index-transact-sql.md).
 
 To use the `RESUMABLE` option, you must also use the `ONLINE` option. When you perform resumable index create or rebuild, the following guidelines apply:
 
 - You have better control over managing, planning, and extending index maintenance windows. You can pause and restart an index create or rebuild operation multiple times to fit your maintenance windows.
+
 - You can recover from index create or rebuild failures (such as database failovers or running out of disk space) without having to restart the index operation from the beginning.
+
 - When an index operation is paused, both the original index and the newly created one require disk space and need to be updated during DML operations.
-- The `SORT_IN_TEMPDB=ON` option isn't supported.
+
+- The `SORT_IN_TEMPDB = ON` option isn't supported.
+
 - Disabled indexes aren't supported.
 
-> [!TIP]
+> [!TIP]  
 > Resumable index operations don't require a large transaction, allowing frequent log truncation during this operation and avoiding large log growth. The data required to resume and complete an index operation is stored in the data files of a database.
 
 Generally, there's no performance difference between resumable and nonresumable online index operations. For resumable `CREATE INDEX`, there's a constant overhead that might cause noticeably slower operations for smaller tables.
@@ -117,12 +126,13 @@ When a resumable index operation is paused:
 
 Generally, there's no difference in defragmentation quality between resumable and nonresumable online index create or rebuild.
 
-> [!NOTE]  
-> While an online index operation is paused, any transaction that requires a table-level exclusive (`X`) lock on the table that contains the paused index fails. For example, this might occur with `INSERT ... WITH (TABLOCK)` operations. In this case, you get error 10637:
->  
-> `Cannot perform this operation on '<object name>' with ID (<object ID>) as one or more indexes are currently in resumable index rebuild state. Please refer to sys.index_resumable_operations for more details.`
->  
-> To resolve error 10637, remove the `TABLOCK` hint from your transaction, or unpause the index operation and wait for it to complete before attempting your transaction again.
+While an online index operation is paused, any transaction that requires a table-level exclusive (`X`) lock on the table that contains the paused index fails. For example, this might occur with `INSERT ... WITH (TABLOCK)` operations. In this case, you get error 10637:
+
+```output
+Cannot perform this operation on '<object name>' with ID (<object ID>) as one or more indexes are currently in resumable index rebuild state. Please refer to sys.index_resumable_operations for more details.
+```
+
+To resolve error 10637, remove the `TABLOCK` hint from your transaction, or unpause the index operation and wait for it to complete before attempting your transaction again.
 
 ## Online default options
 
@@ -130,7 +140,7 @@ You can set online and resumable index operations as the default options at the 
 
 You can set either option as `FAIL_UNSUPPORTED`, `WHEN_SUPPORTED`, or `OFF`. You can set different values for `ELEVATE_ONLINE` and `ELEVATE_RESUMABLE`. For more information, see [ALTER DATABASE SCOPED CONFIGURATION](../../t-sql/statements/alter-database-scoped-configuration-transact-sql.md).
 
-Both `ELEVATE_ONLINE` and `ELEVATE_RESUMABLE` only apply to DDL statements that support the online and resumable syntax respectively. For example, if you attempt to create an XML index with `ELEVATE_ONLINE=FAIL_UNSUPPORTED`, the operation runs offline since XML indexes don't support the `ONLINE` option. The options only affect DDL statements that are submitted without specifying an `ONLINE` or `RESUMABLE` option. For example, by submitting a statement with `ONLINE=OFF` or `RESUMABLE=OFF`, the user can override a `FAIL_UNSUPPORTED` setting and run a statement offline and/or nonresumably.
+Both `ELEVATE_ONLINE` and `ELEVATE_RESUMABLE` only apply to DDL statements that support the online and resumable syntax respectively. For example, if you attempt to create an XML index with `ELEVATE_ONLINE = FAIL_UNSUPPORTED`, the operation runs offline since XML indexes don't support the `ONLINE` option. The options only affect DDL statements that are submitted without specifying an `ONLINE` or `RESUMABLE` option. For example, by submitting a statement with `ONLINE = OFF` or `RESUMABLE = OFF`, the user can override a `FAIL_UNSUPPORTED` setting and run a statement offline and/or nonresumably.
 
 > [!NOTE]  
 > `ELEVATE_ONLINE` and `ELEVATE_RESUMABLE` don't apply to XML index operations.

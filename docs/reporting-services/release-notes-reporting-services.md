@@ -23,8 +23,18 @@ For the release notes for Report Viewer controls, see [Release notes for the Rep
 
 ## SQL Server 2022 Reporting Services
 
+## 16.0.9388.19190, 2025/09/22
+*(Product Version: 16.0.1118.33)*
+
+- Support for default fallback to SimSun-ExtG font
+- Fixed issue expanding document maps for some reports
+- Fixed issue where custom authentication didn't re-authenticate upon cookie expiration 
+- Security improvements
+- Accessibility improvements
+
 ## 16.0.9276.19198, 2025/05/27
 *(Product Version: 16.0.1117.43)*
+
 - Add new advanced server property EnableCommentsOnReports and set default value to false to control comments on reports. This will disable comments on upgrade and must be enabled if you wish to have the ability to comment on reports in the future. This feature is now considered deprecated and will be removed in 2026.
 - Updated underlying version of jQuery to 3.7.1
 

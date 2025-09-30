@@ -1,11 +1,11 @@
 ---
 title: Create an Event Session with a ring_buffer Target in Memory
-titleSuffix: Azure SQL Database & Azure SQL Managed Instance
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance & SQL database in Fabric
 description: Provides example steps to create an  event session in Azure SQL, using the in-memory event_file target.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: mathoma, randolphwest
-ms.date: 06/13/2025
+ms.reviewer: mathoma, randolphwest, dfurman
+ms.date: 09/05/2025
 ms.service: azure-sql
 ms.subservice: performance
 ms.topic: sample
@@ -14,6 +14,7 @@ ms.custom:
   - ignite-2024
 monikerRange: "=azuresql || =azuresql-db || =azuresql-mi || =fabricsql"
 ---
+
 # Create an event session with a ring_buffer target in memory
 
 [!INCLUDE [appliesto-sqldb-sqlmi-fabricsqldb](../includes/appliesto-sqldb-sqlmi-fabricsqldb.md)]
@@ -27,11 +28,10 @@ The high-level steps in this walkthrough are:
 1. View captured event data as a relational rowset
 
 With the `ring_buffer` target, the steps are simpler than with the `event_file` target because you don't need to store event data in Azure Storage.
-This article is relevant to Fabric SQL database where Azure SQL Database is mentioned.
 
 ## Create and start an event session with a ring_buffer target
 
-To create a new event session in SQL Server Management Studio (SSMS), expand the **Extended Events** node. This node is under the database folder in Azure SQL Database, and under the **Management** folder in Azure SQL Managed Instance. Right-click on the **Sessions** folder, and select **New Session...**. On the **General** page, enter a name for the session, which is `example-session` in this example. On the **Events** page, select one or more events to add to the session. In this example, we selected the `sql_batch_starting` event.
+To create a new event session in SQL Server Management Studio (SSMS), expand the **Extended Events** node. This node is under the database folder in Azure SQL Database and SQL database in Fabric, and under the **Management** folder in Azure SQL Managed Instance and SQL Server. Right-click on the **Sessions** folder, and select **New Session...**. On the **General** page, enter a name for the session, which is `example-session` in this example. On the **Events** page, select one or more events to add to the session. In this example, we selected the `sql_batch_starting` event.
 
 :::image type="content" source="media/xevent-code-ring-buffer/create-event-session-events.png" alt-text="Screenshot of the New Session SSMS dialog showing the event selection page with the sql_batch_starting event selected.":::
 
@@ -58,7 +58,6 @@ ADD EVENT sqlserver.sql_batch_starting
 ADD TARGET package0.ring_buffer(SET max_memory=(1024))
 GO
 ```
-
 ---
 
 Select **OK** to create the session.
@@ -67,7 +66,7 @@ Select **OK** to create the session.
 
 In Object Explorer, expand the **Sessions** folder to see the event session you created. By default, the session isn't started when it's created. To start the session, right-click on the session name, and select **Start Session**. You can later stop it by similarly selecting **Stop Session**, once the session is running.
 
-As T-SQL batches are executed in this database or managed instance, the session writes events in a memory buffer. Because the size of the memory buffer is finite, once all memory is used the older events are discarded to make room for newer events.
+As T-SQL batches are executed, the session writes events in a memory buffer. Because the size of the memory buffer is finite, once all memory is used the older events are discarded to make room for newer events.
 
 In Object Explorer, expand the session to see the `package0.ring_buffer` target, and double-click on the target. You can also right-click and select **View Target Data...**. This opens a grid with an XML fragment shown. Select this XML fragment to see an XML document representing the memory buffer contents.
 
@@ -160,7 +159,6 @@ SELECT EventInfo.value('(event/@timestamp)[1]','datetimeoffset') AS timestamp,
 FROM EventNode
 ORDER BY timestamp DESC;
 ```
-
 ---
 
 ## Related content

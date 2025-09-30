@@ -4,7 +4,7 @@ description: Transact-SQL reference for the CREATE TRIGGER statement, which is u
 author: markingmyname
 ms.author: maghan
 ms.reviewer: mathoma, randolphwest
-ms.date: 06/23/2025
+ms.date: 09/26/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -26,11 +26,12 @@ helpviewer_keywords:
   - "database-scoped triggers [SQL Server]"
 dev_langs:
   - "TSQL"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
 
 # CREATE TRIGGER (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Creates a DML, DDL, or logon trigger. A trigger is a special type of stored procedure that automatically runs when an event occurs in the database server. DML triggers run when a user tries to modify data through a data manipulation language (DML) event. DML events are `INSERT`, `UPDATE`, or `DELETE` statements on a table or view. These triggers fire when any valid event fires, whether table rows are affected or not. For more information, see [DML Triggers](../../relational-databases/triggers/dml-triggers.md).
 
@@ -42,7 +43,7 @@ Logon triggers fire in response to the `LOGON` event that is raised when a user'
 > Malicious code inside triggers can run under escalated privileges. For more information on how to mitigate this threat, see [Manage trigger security](../../relational-databases/triggers/manage-trigger-security.md).
 
 > [!NOTE]  
-> The integration of .NET Framework CLR into SQL Server is discussed in this article. CLR integration doesn't apply to Azure SQL Database.
+> The integration of .NET Framework CLR into SQL Server is discussed in this article. CLR integration doesn't apply to [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] or [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)].
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
@@ -114,7 +115,7 @@ AS { sql_statement  [ ; ] [ , ...n ] | EXTERNAL NAME < method specifier >  [ ; ]
     [ EXECUTE AS Clause ]
 ```
 
-### Azure SQL Database syntax
+### Azure SQL Database or SQL database in Fabric syntax
 
 Trigger on an `INSERT`, `UPDATE`, or `DELETE` statement to a table or view (DML trigger):
 
@@ -147,7 +148,7 @@ AS { sql_statement  [ ; ] [ , ...n ]  [ ; ] }
 
 #### OR ALTER
 
-**Applies to**: [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] SP1 and later versions, and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]
+**Applies to**: [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] SP1 and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)].
 
 Conditionally alters the trigger only if it already exists.
 

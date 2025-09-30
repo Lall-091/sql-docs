@@ -11,12 +11,6 @@ items:
     href: sql-server/what-is-sql-server.md
   - name: Connect to the Database Engine
     href: sql-server/connect-to-database-engine.md
-  - name: AI
-    items:
-    - name: Intelligent applications and AI
-      href: sql-server/artificial-intelligence-intelligent-applications.md
-    - name: Intelligent applications and AI FAQ
-      href: sql-server/artificial-intelligence-intelligent-applications-faq.md
   - name: What's new?
     items:
     - name: SQL Server 2025 Preview
@@ -68,6 +62,16 @@ items:
     - name: SQL Server 2025 Preview
       href: sql-server/sql-server-2025-known-issues.md?view=sql-server-ver16&preserve-view=true
   expanded: true
+- name: AI
+  items:
+  - name: Intelligent applications and AI
+    href: sql-server/ai/artificial-intelligence-intelligent-applications.md
+  - name: Intelligent applications and AI FAQ
+    href: sql-server/ai/artificial-intelligence-intelligent-applications-faq.md
+  - name: Vectors and embeddings
+    href: sql-server/ai/vectors.md    
+  - name: Vectors and embeddings FAQ
+    href: sql-server/ai/vectors-faq.md          
 - name: Business continuity
   items:
   - name: Overview
@@ -2219,8 +2223,9 @@ items:
       - name: Generate an Inline XDR Schema
         href: relational-databases/xml/generate-an-inline-xdr-schema.md
     - name: OPENXML
-      href: relational-databases/xml/openxml-sql-server.md
       items:
+      - name: Overview
+        href: relational-databases/xml/openxml-sql-server.md
       - name: 'Examples: Using OPENXML'
         href: relational-databases/xml/examples-using-openxml.md
       - name: Specify Metaproperties
@@ -2229,12 +2234,6 @@ items:
         href: relational-databases/xml/xml-system-stored-procedures.md
       - name: Use the value() & nodes() Methods with OPENXML
         href: relational-databases/xml/use-the-value-and-nodes-methods-with-openxml.md
-  - name: Vectors and embeddings
-    items:
-      - name: Vectors and embeddings
-        href: relational-databases/vectors/vectors-sql-server.md    
-      - name: Vectors and embeddings FAQ
-        href: relational-databases/vectors/vectors-faq.md    
 - name: Development
   items:
   - name: Code a client program >
@@ -2630,8 +2629,6 @@ items:
         href: relational-databases/json/use-for-json-output-in-sql-server-and-in-client-apps-sql-server.md
   - name: Fuzzy string match
     href: relational-databases/fuzzy-string-match/overview.md
-  - name: Vectors
-    href: relational-databases/vectors/vectors-sql-server.md
   - name: Regular expressions
     href: relational-databases/regular-expressions/overview.md
   - name: Language Extensions
@@ -15488,8 +15485,6 @@ items:
         href: t-sql/data-types/vector-data-type-half-precision-float.md
       - name: Vectors functions
         href: t-sql/functions/vector-functions-transact-sql.md
-      - name: Vectors indexes
-        href: relational-databases/vectors/vectors-sql-server.md
     - name: XML
       href: t-sql/xml/xml-transact-sql.md
       items:

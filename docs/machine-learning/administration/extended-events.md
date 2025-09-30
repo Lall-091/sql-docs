@@ -16,7 +16,7 @@ Learn how to use extended events to monitor and troubleshooting operations relat
 
 ## Extended events for SQL Server Machine Learning Services
 
-To view a list of events related to SQL Server Machine Learning Services, run the following query from Azure Data Studio or SQL Server Management Studio.
+To view a list of events related to SQL Server Machine Learning Services, run the following query in [SQL Server Management Studio (SSMS)](https://aka.ms/ssms), the [MSSQL extension for Visual Studio Code](../../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md), [sqlcmd](../../tools/sqlcmd/sqlcmd-utility.md), or your favorite T-SQL querying tool.
 
 ```sql
 SELECT o.name AS event_name, o.description

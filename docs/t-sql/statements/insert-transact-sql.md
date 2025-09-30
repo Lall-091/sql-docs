@@ -298,6 +298,12 @@ OUTPUT Clause
 ## Remarks  
 For information specific to inserting data into SQL graph tables, see [INSERT (SQL Graph)](../../t-sql/statements/insert-sql-graph.md). 
 
+::: moniker range="=azure-sqldw-latest"
+
+The MAXDOP query hint is not supported during INSERT SELECT operations when the SELECT portion of the statement reads from external sources.
+
+::: moniker-end
+
 ## Best Practices  
 
  Use the @@ROWCOUNT function to return the number of inserted rows to the client application. For more information, see [@@ROWCOUNT &#40;Transact-SQL&#41;](../../t-sql/functions/rowcount-transact-sql.md).  

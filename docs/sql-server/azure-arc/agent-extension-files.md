@@ -72,6 +72,8 @@ In each instance of SQL Server enabled by Azure Arc, the extension creates the f
 
 These tables store background job definition and execution history. Background jobs perform scheduled and user-initiated actions. These tables allow long-running jobs to automatically resume in the event that the Azure Extension for SQL Server is restarted.
 
+Additionally, the table `dbo.SQLServerAzureArcProperties` contains the resource identity for the SQL Server instance in Azure Resource Manager.  This table can be used to detect if the SQL Server instance is Arc-enabled, and if so, what the identity of the resource is in Azure.
+
 ## Related content
 
 - [Configure Windows service accounts and permissions](../../database-engine/configure-windows/configure-windows-service-accounts-and-permissions.md)

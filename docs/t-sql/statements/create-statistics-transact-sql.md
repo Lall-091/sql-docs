@@ -1,10 +1,10 @@
 ---
-title: CREATE STATISTICS (Transact-SQL)
+title: "CREATE STATISTICS (Transact-SQL)"
 description: Creates query optimization statistics on one or more columns of a table, an indexed view, or an external table.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: derekw, wiassaf, randolphwest
-ms.date: 05/21/2024
+ms.date: 09/26/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -37,7 +37,7 @@ To learn more, see [Statistics](../../relational-databases/statistics/statistics
 ::: moniker range="=fabric"
 
 > [!NOTE]  
-> For more information on statistics in [!INCLUDE [fabric](../../includes/fabric.md)], see [Statistics in Fabric data warehousing](/fabric/data-warehouse/statistics).
+> For more information on statistics in [!INCLUDE [fabric](../../includes/fabric.md)], see [Statistics in Fabric Data Warehouse](/fabric/data-warehouse/statistics).
 
 ::: moniker-end
 
@@ -68,7 +68,7 @@ ON { table_or_indexed_view_name } ( column [ , ...n ] )
         [ [ , ] MAXDOP = max_degree_of_parallelism ]
         [ [ , ] AUTO_DROP = { ON | OFF } ]
         ]
-    ];
+    ] ;
 
 <filter_predicate> ::=
     <conjunct> [ AND <conjunct> ]
@@ -185,7 +185,7 @@ Specifies the approximate percentage, or number of rows, in the table or indexed
 
 `SAMPLE` is useful for special cases in which the query plan, based on default sampling, isn't optimal. In most situations, it's not necessary to specify `SAMPLE` because the query optimizer already uses sampling and determines the statistically significant sample size by default, as required to create high-quality query plans.
 
-`SAMPLE` can't be used with the FULLSCAN option. When `SAMPLE` or `FULLSCAN` aren't specified, the query optimizer uses sampled data and computes the sample size by default.
+`SAMPLE` can't be used with the `FULLSCAN` option. When `SAMPLE` or `FULLSCAN` aren't specified, the query optimizer uses sampled data and computes the sample size by default.
 
 We recommend against specifying `0 PERCENT` or `0 ROWS`. When `0 PERCENT` or `0 ROWS` is specified, the statistics object is created, but doesn't contain statistics data.
 
@@ -233,7 +233,7 @@ If per partition statistics aren't supported, an error is generated. Incremental
 
 **Applies to**: [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] SP 2, [!INCLUDE [ssSQL17](../../includes/sssql17-md.md)] CU 3, and later versions
 
-Overrides the **max degree of parallelism** configuration option during the statistic operation. For more information, see [Configure the max degree of parallelism (server configuration option)](../../database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md). Use `MAXDOP` to limit the number of processors used in a parallel plan execution. The maximum is 64 processors.
+Overrides the **max degree of parallelism** configuration option during the statistic operation. For more information, see [Server configuration: max degree of parallelism](../../database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md). Use `MAXDOP` to limit the number of processors used in a parallel plan execution. The maximum is 64 processors.
 
 *max_degree_of_parallelism* can be:
 
@@ -251,7 +251,7 @@ Overrides the **max degree of parallelism** configuration option during the stat
 
 Before [!INCLUDE [ssSQL22](../../includes/sssql22-md.md)], if statistics are manually created by a user or third party tool on a user database, those statistics objects can block or interfere with schema changes the customer might desire.
 
-Starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], the `AUTO_DROP` option is enabled by default on all new and migrated databases. The `AUTO_DROP` property allows the creation of statistics objects in a mode such that a subsequent schema change is *not* blocked by the statistic object, but instead the statistics are dropped as necessary. In this way, manually created statistics with `AUTO_DROP` enabled behave like autocreated statistics.
+Starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], the `AUTO_DROP` option is enabled by default on all new and migrated databases. The `AUTO_DROP` property allows the creation of statistics objects in a mode such that a subsequent schema change *isn't* blocked by the statistic object, but instead the statistics are dropped as necessary. In this way, manually created statistics with `AUTO_DROP` enabled behave like autocreated statistics.
 
 > [!NOTE]  
 > Trying to set or unset the *Auto_Drop* property on auto-created statistics might raise errors. Auto-created statistics always uses auto drop. Some backups, when restored, might have this property set incorrectly until the next time the statistics object is updated (manually or automatically). However, auto-created statistics always behave like auto drop statistics. When restoring a database to [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] from a previous version, it's recommended to execute `sp_updatestats` on the database, setting the proper metadata for the statistics `AUTO_DROP` feature.
@@ -278,7 +278,7 @@ When the external table is using `DELIMITEDTEXT`, `CSV`, `PARQUET`, or `DELTA` a
 
 ### Statistics with a filtered condition
 
-Filtered statistics can improve query performance for queries that select from well-defined subsets of data. Filtered statistics use a filter predicate in the WHERE clause to select the subset of data that is included in the statistics.
+Filtered statistics can improve query performance for queries that select from well-defined subsets of data. Filtered statistics use a filter predicate in the `WHERE` clause to select the subset of data that is included in the statistics.
 
 ### When to use CREATE STATISTICS
 
@@ -306,7 +306,7 @@ The following example creates the `ContactMail1` statistics, using a random samp
 
 ```sql
 CREATE STATISTICS ContactMail1
-    ON Person.Person (BusinessEntityID, EmailPromotion)
+    ON Person.Person(BusinessEntityID, EmailPromotion)
     WITH SAMPLE 5 PERCENT;
 ```
 
@@ -316,7 +316,7 @@ The following example creates the `NamePurchase` statistics for all rows in the 
 
 ```sql
 CREATE STATISTICS NamePurchase
-    ON AdventureWorks2022.Person.Person (BusinessEntityID, EmailPromotion)
+    ON AdventureWorks2022.Person.Person(BusinessEntityID, EmailPromotion)
     WITH FULLSCAN, NORECOMPUTE;
 ```
 
@@ -326,9 +326,9 @@ The following example creates the filtered statistics `ContactPromotion1`. The [
 
 ```sql
 CREATE STATISTICS ContactPromotion1
-    ON Person.Person (BusinessEntityID, LastName, EmailPromotion)
-WHERE EmailPromotion = 2
-WITH SAMPLE 50 PERCENT;
+    ON Person.Person(BusinessEntityID, LastName, EmailPromotion)
+    WHERE EmailPromotion = 2
+    WITH SAMPLE 50 PERCENT;
 GO
 ```
 
@@ -340,10 +340,13 @@ Since [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] imports data fr
 
 ```sql
 --Create statistics on an external table and use default sampling.
-CREATE STATISTICS CustomerStats1 ON DimCustomer (CustomerKey, EmailAddress);
-
+CREATE STATISTICS CustomerStats1
+    ON DimCustomer(CustomerKey, EmailAddress);
 --Create statistics on an external table and scan all the rows
-CREATE STATISTICS CustomerStats1 ON DimCustomer (CustomerKey, EmailAddress) WITH FULLSCAN;
+
+CREATE STATISTICS CustomerStats1
+    ON DimCustomer(CustomerKey, EmailAddress)
+    WITH FULLSCAN;
 ```
 
 ### E. Use CREATE STATISTICS with FULLSCAN and PERSIST_SAMPLE_PERCENT
@@ -363,7 +366,8 @@ CREATE STATISTICS NamePurchase
 The following example creates the `CustomerStats1` statistics, based on the `CustomerKey` and `EmailAddress` columns of the `DimCustomer` table. The statistics are created based on a statistically significant sampling of the rows in the `Customer` table.
 
 ```sql
-CREATE STATISTICS CustomerStats1 ON DimCustomer (CustomerKey, EmailAddress);
+CREATE STATISTICS CustomerStats1
+    ON DimCustomer(CustomerKey, EmailAddress);
 ```
 
 ### G. Create statistics by using a full scan
@@ -372,7 +376,8 @@ The following example creates the `CustomerStatsFullScan` statistics, based on s
 
 ```sql
 CREATE STATISTICS CustomerStatsFullScan
-ON DimCustomer (CustomerKey, EmailAddress) WITH FULLSCAN;
+    ON DimCustomer(CustomerKey, EmailAddress)
+    WITH FULLSCAN;
 ```
 
 ### H. Create statistics by specifying the sample percentage
@@ -381,15 +386,18 @@ The following example creates the `CustomerStatsSampleScan` statistics, based on
 
 ```sql
 CREATE STATISTICS CustomerStatsSampleScan
-ON DimCustomer (CustomerKey, EmailAddress) WITH SAMPLE 50 PERCENT;
+    ON DimCustomer(CustomerKey, EmailAddress)
+    WITH SAMPLE 50 PERCENT;
 ```
 
 ### I. Use CREATE STATISTICS with AUTO_DROP
 
-To use [auto drop statistics](#auto_drop---on--off-), just add the following to the "WITH" clause of statistics create or update.
+To use [auto drop statistics](#auto_drop---on--off-), just add the following to the `WITH` clause of statistics create or update.
 
 ```sql
-CREATE STATISTICS CustomerStats1 ON DimCustomer (CustomerKey, EmailAddress) WITH AUTO_DROP = ON
+CREATE STATISTICS CustomerStats1
+    ON DimCustomer(CustomerKey, EmailAddress)
+    WITH AUTO_DROP = ON;
 ```
 
 To evaluate the auto drop setting on existing statistics, use the `auto_drop` column in [sys.stats](../../relational-databases/system-catalog-views/sys-stats-transact-sql.md):
@@ -402,7 +410,7 @@ FROM sys.stats;
 ## Related content
 
 - [Statistics](../../relational-databases/statistics/statistics.md)
-- [Statistics in Fabric data warehousing](/fabric/data-warehouse/statistics)
+- [Statistics in Fabric Data Warehouse](/fabric/data-warehouse/statistics)
 - [UPDATE STATISTICS (Transact-SQL)](update-statistics-transact-sql.md)
 - [sp_updatestats (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-updatestats-transact-sql.md)
 - [DBCC SHOW_STATISTICS (Transact-SQL)](../database-console-commands/dbcc-show-statistics-transact-sql.md)

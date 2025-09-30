@@ -30,12 +30,11 @@ monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17"
 
 [!INCLUDE [sqlserver2025](../../includes/applies-to-version/sqlserver2025.md)]
 
-Create an approximate index on a vector column to improve performances of nearest neighbors search. To learn more about how vector indexing and vector search works, and the differences between exact and approximate search, refer to [Vectors in the SQL Database Engine](../../relational-databases/vectors/vectors-sql-server.md).
+Create an approximate index on a vector column to improve performances of nearest neighbors search. To learn more about how vector indexing and vector search works, and the differences between exact and approximate search, refer to [Vectors in the SQL Database Engine](../../sql-server/ai/vectors.md).
 
 ## Preview feature
 
-> [!NOTE]  
-> This function is in preview and is subject to change. In order to use this feature, you must enable the `PREVIEW_FEATURES` [database scoped configuration](alter-database-scoped-configuration-transact-sql.md).
+This function is in preview and is subject to change. In order to use this feature, you must enable the `PREVIEW_FEATURES` [database scoped configuration](alter-database-scoped-configuration-transact-sql.md).
 
 > [!WARNING]  
 > The trace flags (466, 474, 13981) that were required in previous CTP version are no longer necessary and should be avoided, as their use will prevent vector index functionality from working correctly.
@@ -72,7 +71,7 @@ Table on which the index is created. It must be a base table. Views, temporary t
 
 Column to use to create the vector index. It must be of **vector** type.
 
-### METRIC = { 'cosine' | 'dot' | 'euclidean' }
+### METRIC
 
 A string with the name of the distance metric to use to calculate the distance between the two given vectors. The following distance metrics are supported:
 
@@ -80,11 +79,11 @@ A string with the name of the distance metric to use to calculate the distance b
 - `euclidean` - Euclidean distance
 - `dot` - (Negative) Dot product
 
-## TYPE = 'DiskANN'
+### TYPE
 
-The type of [ANN algorithm](../../relational-databases/vectors/vectors-sql-server.md#approximate-vector-index-and-vector-search-approximate-nearest-neighbors) used to build the index. Only `DiskANN` is currently supported. DiskANN is the default value.
+The type of [ANN algorithm](../../sql-server/ai/vectors.md#approximate-vector-index-and-vector-search-approximate-nearest-neighbors) used to build the index. Only `DiskANN` is currently supported. DiskANN is the default value.
 
-## MAXDOP = *max_degree_of_parallelism*
+### MAXDOP
 
 Overrides the **max degree of parallelism** configuration option for the index operation. For more information, see [Max degree of parallelism](../../database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md). Use `MAXDOP` to limit the degree of parallelism and the resulting resource consumption for an index build operation.
 
@@ -115,6 +114,15 @@ The current preview has the following limitations:
 - The table must have a single column, integer, primary key clustered index.
 - A table with a vector index becomes read only. No data modification is allowed while the vector index is present on the table.
 - Vector indexes aren't replicated to subscribers.
+
+## Known issues
+
+Currently, when you create a vector index on some datasets, it may return the following errors:
+
+- Error 9829: `STRING_AGG aggregation result exceeded the limit of 8000 bytes. Use LOB types to avoid result truncation.`
+- 42234: `Internal SQL error during DiskANN graph build`
+
+For more information, review [Known issues](../../sql-server/sql-server-2025-known-issues.md#vector-index).
 
 ## Permissions
 
@@ -207,7 +215,7 @@ ORDER BY s.distance, t.title;
 
 ## Related content
 
-- [Overview of vectors in the SQL Database Engine](../../relational-databases/vectors/vectors-sql-server.md)
+- [Overview of vectors in the SQL Database Engine](../../sql-server/ai/vectors.md)
 - [Vector data type](../data-types/vector-data-type.md)
 - [VECTOR_SEARCH (Transact-SQL) (Preview)](../functions/vector-search-transact-sql.md)
 - [sys.vector_indexes (Transact-SQL)](../../relational-databases/system-catalog-views/sys-vector-indexes-transact-sql.md)

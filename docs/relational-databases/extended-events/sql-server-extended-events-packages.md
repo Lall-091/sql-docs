@@ -3,7 +3,7 @@ title: "Extended Events packages"
 description: A package is a container for Extended Events objects. This article describes the objects a package can contain.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: randolphwest
+ms.reviewer: randolphwest, dfurman
 ms.date: 09/12/2024
 ms.service: sql
 ms.subservice: xevents
@@ -11,11 +11,11 @@ ms.topic: conceptual
 helpviewer_keywords:
   - "extended events [SQL Server], packages"
   - "xe"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
 # Extended Events packages
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 A package is a container for Extended Events objects in the [!INCLUDE [ssdenoversion-md](../../includes/ssdenoversion-md.md)]. For example, the following packages exist in any [!INCLUDE [ssde-md](../../includes/ssde-md.md)] that supports Extended Events:
 

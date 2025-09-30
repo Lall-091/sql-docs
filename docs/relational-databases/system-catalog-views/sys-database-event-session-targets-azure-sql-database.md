@@ -29,7 +29,7 @@ The `sys.database_event_session_targets` dynamic management view (DMV) returns a
   
 ## Permissions  
 
-Requires the VIEW DATABASE STATE permission.  
+Requires the VIEW DATABASE PERFORMANCE STATE permission.  
   
 ## Remarks  
 

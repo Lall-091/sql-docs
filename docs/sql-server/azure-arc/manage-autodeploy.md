@@ -4,7 +4,7 @@ description: In this article, you learn how you can manage the automatic connect
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest
-ms.date: 07/03/2025
+ms.date: 09/24/2025
 ms.topic: how-to
 ---
 
@@ -37,9 +37,9 @@ Add one of the following tags and values to your subscription, resource groups, 
 | --- | --- |
 | `ArcSQLServerExtensionDeployment` | `Paid` |
 | `ArcSQLServerExtensionDeployment` | `PAYG` |
-| `ArcSQLServerExtensionDeployment` | `LicenseOnly` |
+| `ArcSQLServerExtensionDeployment` | `LicenseOnly` <sup>1</sup> |
 
-Microsoft uses this value when the automatic connecting workflow deploys the SQL Server extension.
+<sup>1</sup> This is the default value when the automatic connecting workflow deploys the SQL Server extension.
 
 > [!IMPORTANT]  
 > To maximize the value of Azure Arc for SQL Server customers, Microsoft uses an automated process of determining the license type value if you haven't set the default value using the `ArcSQLServerExtensionDeployment` tag. If your SQL Server is covered by Software Assurance (SA) or Subscription and Support, and the number of licenses you have purchased is greater than the number of licenses you already committed to Azure to use Azure Hybrid Benefit, this process sets the license type value to **Paid** for the onboarded SQL Server instances on a first-come-first-serve basis. As a result, you automatically have access to valuable management features provided to SA customers.

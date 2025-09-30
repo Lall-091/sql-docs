@@ -5,7 +5,7 @@ metadata:
   description: Frequently asked questions about database watcher for Azure SQL
   author: lcwright
   ms.author: lancewright
-  ms.date: 05/04/2025
+  ms.date: 09/29/2025
   ms.reviewer: wiassaf, dfurman
   ms.service: azure-sql
   ms.subservice: monitoring
@@ -64,7 +64,7 @@ sections:
 
       - question: |
           Does it support cross-subscription and cross-tenant monitoring?
-        answer: The watcher and the SQL targets it monitors can be in different subscriptions within the same Microsoft Entra ID tenant. Similarly, if the watcher is using a database on an Azure Data Explorer cluster as its data store, the cluster must be in any subscription within the same tenant as the watcher. If you want to monitor SQL targets in multiple tenants using a single data store, create a watcher in each tenant, and use a database in either [Real-Time Analytics](/fabric/real-time-analytics/overview) or on a [free Azure Data Explorer cluster](/azure/data-explorer/start-for-free) as the data store for all watchers. For more information, see [Monitor large estates](database-watcher-manage.md#monitor-large-estates).
+        answer: The watcher and the SQL target it monitors can be in different subscriptions within the same Microsoft Entra ID tenant. Similarly, if the watcher is using a database on an Azure Data Explorer cluster as its data store, the cluster must be in any subscription within the same tenant as the watcher. If you want to monitor SQL targets in multiple tenants using a single data store, create a watcher in each tenant, and use a database in either [Real-Time Analytics](/fabric/real-time-analytics/overview) or on a [free Azure Data Explorer cluster](/azure/data-explorer/start-for-free) as the data store for all watchers. For more information, see [Monitor large estates](database-watcher-manage.md#monitor-large-estates).
 
   - name: Watcher
     questions:
@@ -109,6 +109,10 @@ sections:
       - question: |
           Can I export SQL monitoring data from Azure Data Explorer?
         answer: Yes. For example, you can [export](/azure/data-explorer/kusto/management/data-export) data to Azure storage, a data lake, or a SQL Server or an Azure SQL database.
+
+      - question: |
+          What happens to the collected SQL monitoring data when I delete a SQL target?
+        answer: The data for the deleted SQL targets is retained in the data store according to the [retention policy](database-watcher-manage.md#manage-data-retention) for the database or table, and can be accessed via the dashboards and queries for historical purposes. For more information about deleting collected data from the data store before the retention period expires, see [Delete data](/kusto/concepts/delete-data). The summary page of the watcher uses the data in the data store, and shows recently deleted SQL targets for up to 72 hours.
 
   - name: Data collection
     questions:

@@ -12,17 +12,15 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.custom:
   - build-2025
+monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
 ---
 # Intelligent applications and AI
 
-[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
-
-> [!div class="op_single_selector"]
->
-> * [Azure SQL Database](/azure/azure-sql/database/ai-artificial-intelligence-intelligent-applications)
-> * [SQL Server & Azure SQL Managed Instance](ai-artificial-intelligence-intelligent-applications.md)
+[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
 This article provides an overview of using artificial intelligence (AI) options, such as OpenAI and vectors, to build intelligent applications with the SQL Database Engine in SQL Server and Azure SQL Managed Instance.
+
+For Azure SQL Database, review [Azure SQL Database](/azure/azure-sql/database/ai-artificial-intelligence-intelligent-applications).
 
 For samples and examples, visit the [SQL AI Samples repository](https://aka.ms/sqlaisamples).
 
@@ -102,7 +100,7 @@ Vectors in the SQL Database Engine can be efficiently stored and queried, as des
 
 ## Azure OpenAI
 
-Embedding is the process of representing the real world as data. Text, images, or sounds can be converted into embeddings. Azure OpenAI models are able to transform real-world information into embeddings. The models are available as REST endpoints and thus can easily be consumed from the SQL Database Engine using the [sp_invoke_external_rest_endpoint](../relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql.md) system stored procedure, available starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and Azure SQL Managed Instance with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy):
+Embedding is the process of representing the real world as data. Text, images, or sounds can be converted into embeddings. Azure OpenAI models are able to transform real-world information into embeddings. The models are available as REST endpoints and thus can easily be consumed from the SQL Database Engine using the [sp_invoke_external_rest_endpoint](../../relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql.md) system stored procedure, available starting in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and Azure SQL Managed Instance configured with the [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy).
 
 ```sql
 DECLARE @retval INT, @response NVARCHAR(MAX);
@@ -121,7 +119,7 @@ DECLARE @e VECTOR(1536) = JSON_QUERY(@response, '$.result.data[0].embedding');
 
 Using a call to a REST service to get embeddings is just one of the integration options you have when working with SQL Managed Instance and OpenAI. You can let any of the [available models](/azure/ai-services/openai/concepts/models) access data stored in the SQL Database Engine to create solutions where your users can interact with the data, such as the following example: 
 
-:::image type="content" source="media/ai-artificial-intelligence-intelligent-applications/data-chatbot.png" alt-text="Screenshot of an AI bot answering the question using data stored in SQL Server.":::
+:::image type="content" source="../media/ai-artificial-intelligence-intelligent-applications/data-chatbot.png" alt-text="Screenshot of an AI bot answering the question using data stored in SQL Server.":::
 
 For additional examples on using Azure SQL and OpenAI, see the following articles, which also apply to SQL Server and Azure SQL Managed Instance:
 
@@ -130,7 +128,7 @@ For additional examples on using Azure SQL and OpenAI, see the following article
 
 ## Vector examples
 
-The dedicated **vector** data type allows for efficient and optimized storing of vector data, and comes with a set of functions to help developers streamline vector and similarity search implementation. Calculating distance between two vectors can be done in one line of code using the new `VECTOR_DISTANCE` function. For more information and examples, see [Vector search and vector indexes in the SQL Database Engine](/sql/relational-databases/vectors/vectors-sql-server?view=azuresqldb-mi-current&preserve-view=true).
+The dedicated **vector** data type allows for efficient and optimized storing of vector data, and comes with a set of functions to help developers streamline vector and similarity search implementation. Calculating distance between two vectors can be done in one line of code using the new `VECTOR_DISTANCE` function. For more information and examples, review [Vector search and vector indexes in the SQL Database Engine](vectors.md).
 
 For example:
 
@@ -164,7 +162,7 @@ To learn more about the integration of Azure AI Search with Azure OpenAI and the
 
 The SQL Database Engine can be used to build intelligent applications that include AI features, such as recommenders, and Retrieval Augmented Generation (RAG) as the following diagram demonstrates: 
 
-:::image type="content" source="media/ai-artificial-intelligence-intelligent-applications/session-recommender-architecture.png" alt-text="Diagram of different AI features to build intelligent applications with Azure SQL Database." lightbox="media/ai-artificial-intelligence-intelligent-applications/session-recommender-architecture.png":::
+:::image type="content" source="../media/ai-artificial-intelligence-intelligent-applications/session-recommender-architecture.png" alt-text="Diagram of different AI features to build intelligent applications with Azure SQL Database." lightbox="../media/ai-artificial-intelligence-intelligent-applications/session-recommender-architecture.png":::
 
 For an end-to-end sample to build an AI-enabled application using sessions abstract as a sample dataset, see:
 
@@ -172,7 +170,7 @@ For an end-to-end sample to build an AI-enabled application using sessions abstr
 - [Using Retrieval Augmented Generation to build a conference session assistant](https://github.com/Azure-Samples/azure-sql-db-session-recommender-v2)
 
 > [!NOTE]
-> LangChain integration and Semantic Kernel integration rely on the [vector data type](../t-sql/data-types/vector-data-type.md), which is available starting with [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and in Azure SQL Managed Instance configured with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).
+> LangChain integration and Semantic Kernel integration rely on the [vector data type](../../t-sql/data-types/vector-data-type.md), which is available starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and in Azure SQL Managed Instance configured with the [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy).
 
 
 ### LangChain integration
@@ -203,7 +201,7 @@ An example of how easily Semantic Kernel helps to build AI-enabled solutions is 
 ## Related content
 
 - [Intelligent applications and AI Frequently Asked Questions (FAQ)](artificial-intelligence-intelligent-applications-faq.md)
-- [Vector and embeddings: Frequently asked questions (FAQ)](../relational-databases/vectors/vectors-faq.md)
+- [Vector and embeddings: Frequently asked questions (FAQ)](vectors-faq.md)
 - [Create and deploy an Azure OpenAI Service resource](/azure/ai-services/openai/how-to/create-resource?pivots=web-portal)
 - [Embeddings models](/azure/ai-services/openai/concepts/models#embeddings-models)
 - [SQL AI Samples and Examples](https://aka.ms/sqlaisamples)

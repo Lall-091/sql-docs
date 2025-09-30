@@ -5902,7 +5902,7 @@
   items:
   - name: Python drivers for SQL Server
     href: ../connect/python/python-driver-for-sql-server.md
-  - name: Python SQL driver - mssql-python
+  - name: Microsoft Python Driver for SQL Server - mssql-python
     href: ../connect/python/mssql-python/python-sql-driver-mssql-python.md
     items:
     - name: 'Quickstart: mssql-python driver for Python'

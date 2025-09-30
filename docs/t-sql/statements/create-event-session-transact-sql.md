@@ -20,10 +20,11 @@ helpviewer_keywords:
   - "CREATE EVENT SESSION statement"
 dev_langs:
   - "TSQL"
+monikerRange: "= azuresqldb-current || >= sql-server-2016 || >=sql-server-linux-2017 || = azuresqldb-mi-current || = fabric"
 ---
 # CREATE EVENT SESSION (Transact-SQL)
 
-[!INCLUDE [SQL Server SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server SQL Database SQL MI FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Creates an Extended Events session that identifies the events to collect, the event session targets, and the event session options.
 
@@ -103,6 +104,12 @@ ON { SERVER | DATABASE }
 #### *event_session_name*
 
 The user-defined name for the event session. *event_session_name* is alphanumeric, can be up to 128 characters, must be unique within an instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], and must comply with the rules for [Database identifiers](../../relational-databases/databases/database-identifiers.md).
+
+#### ON { SERVER | DATABASE }
+
+Determines whether the event session is in the context of the server or database.
+
+[!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)] require `DATABASE`.
 
 #### ADD EVENT [*event_module_guid*].*event_package_name*.*event_name*
 
@@ -283,7 +290,7 @@ Specifies the event retention mode to use for handling event loss.
 
 - ALLOW_SINGLE_EVENT_LOSS
 
-  An event can be lost from the session. A single event is only dropped when all the event buffers are full. Losing a single event when event buffers are full minimizes the performance impact while also minimizing the loss of data in the processed event stream.
+  An event can be lost from the session. A single event is only dropped when all the event buffers are full. Losing a single event when event buffers are full minimizes the performance impact while also minimizing the loss of data in the processed eventstream.
 
 - ALLOW_MULTIPLE_EVENT_LOSS
 
@@ -294,11 +301,11 @@ Specifies the event retention mode to use for handling event loss.
   No event loss is allowed. This option ensures that all events raised are retained. Using this option forces all tasks that fire events to wait until space is available in an event buffer. Using NO_EVENT_LOSS can cause detectable performance issues while the event session is active. User sessions and queries might stall while waiting for events to be flushed from the buffer.
 
   > [!NOTE]  
-  > For the event file targets in Azure SQL Database and in Azure SQL Managed Instance (with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy)), starting from June 2024, `NO_EVENT_LOSS` behaves the same as `ALLOW_SINGLE_EVENT_LOSS`. If you specify `NO_EVENT_LOSS`, a warning with message ID 25665, severity 10, and message `This target doesn't support the NO_EVENT_LOSS event retention mode. The ALLOW_SINGLE_EVENT_LOSS retention mode is used instead.` is returned, and the session is created.
+  > For the event file targets in Azure SQL Database, [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and Azure SQL Managed Instance (with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy)), starting from June 2024, `NO_EVENT_LOSS` behaves the same as `ALLOW_SINGLE_EVENT_LOSS`. If you specify `NO_EVENT_LOSS`, a warning with message ID 25665, severity 10, and message `This target doesn't support the NO_EVENT_LOSS event retention mode. The ALLOW_SINGLE_EVENT_LOSS retention mode is used instead.` is returned, and the session is created.
   >
   > This change avoids connection timeouts, failover delays, and other issues that can reduce database availability when `NO_EVENT_LOSS` is used with event file targets in Azure blob storage.
   >
-  > `NO_EVENT_LOSS` is planned for removal as a supported `EVENT_RETENTION_MODE` argument in future updates to Azure SQL Database and Azure SQL Managed Instance. Avoid using this feature in new development work, and plan to modify applications that currently use this feature.
+  > `NO_EVENT_LOSS` is planned for removal as a supported `EVENT_RETENTION_MODE` argument in future updates to Azure SQL Database, [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and Azure SQL Managed Instance. Avoid using this feature in new development work, and plan to modify applications that currently use this feature.
 
 #### MAX_DISPATCH_LATENCY = { *seconds* SECONDS | INFINITE }
 
@@ -375,7 +382,7 @@ The order of precedence for the logical operators is `NOT` (highest), followed b
 
 SQL Server and Azure SQL Managed Instance require the `CREATE ANY EVENT SESSION` (introduced in SQL Server 2022), or `ALTER ANY EVENT SESSION` permission.
 
-Azure SQL Database requires the `CREATE ANY DATABASE EVENT SESSION` permission in the database.
+Azure SQL Database and [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)] require the `CREATE ANY DATABASE EVENT SESSION` permission in the database.
 
 > [!TIP]  
 > SQL Server 2022 introduced more granular permissions for Extended Events. For more information, see [Blog: New granular permissions for SQL Server 2022 and Azure SQL to improve adherence with PoLP](https://techcommunity.microsoft.com/blog/sqlserver/new-granular-permissions-for-sql-server-2022-and-azure-sql-to-improve-adherence-/3607507).
@@ -415,6 +422,8 @@ For example walkthroughs, review [Create an event session with an event_file tar
 
 ## Related content
 
+- [Create an event session with an event_file target in Azure Storage](/azure/azure-sql/database/xevent-code-event-file)
+- [Targets for Extended Events](../../relational-databases/extended-events/targets-for-extended-events-in-sql-server.md)
 - [sys.server_event_sessions (Transact-SQL)](../../relational-databases/system-catalog-views/sys-server-event-sessions-transact-sql.md)
 - [sys.dm_xe_objects (Transact-SQL)](../../relational-databases/system-dynamic-management-views/sys-dm-xe-objects-transact-sql.md)
 - [sys.dm_xe_object_columns (Transact-SQL)](../../relational-databases/system-dynamic-management-views/sys-dm-xe-object-columns-transact-sql.md)

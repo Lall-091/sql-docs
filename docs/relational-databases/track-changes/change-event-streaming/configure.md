@@ -1,8 +1,8 @@
 ---
 title: Configure change event streaming
 description: "Describes how to configure change event streaming."
-author: sasapopo
-ms.author: sasapopo
+author: nzagorac-ms
+ms.author: nzagorac
 ms.reviewer: mathoma, mikeray
 ms.date: 06/19/2025
 ms.service: sql

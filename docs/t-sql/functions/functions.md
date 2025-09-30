@@ -1,10 +1,10 @@
 ---
-title: "What are the Microsoft SQL database functions?"
+title: "What Are the Microsoft SQL Database Functions?"
 description: "What are the Microsoft SQL database functions?"
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/26/2022
+ms.date: 09/26/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -17,19 +17,19 @@ helpviewer_keywords:
   - "functions [SQL Server]"
 dev_langs:
   - "TSQL"
-monikerRange: ">= aps-pdw-2016 || = azuresqldb-current || = azure-sqldw-latest || >= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-mi-current ||=fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
 # What are the SQL database functions?
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 Learn about the categories of built-in functions you can use with SQL databases. You can use the built-in functions or create your own user-defined functions.
 
 ## Aggregate functions
 
-Aggregate functions perform a calculation on a set of values and return a single value. They're allowed in the select list or the HAVING clause of a SELECT statement. You can use an aggregation in combination with the GROUP BY clause to calculate the aggregation on categories of rows. Use the OVER clause to calculate the aggregation on a specific range of value. The OVER clause can't follow the GROUPING or GROUPING_ID aggregations.
+Aggregate functions perform a calculation on a set of values and return a single value. They're allowed in the select list or the `HAVING` clause of a `SELECT` statement. You can use an aggregation in combination with the `GROUP BY` clause to calculate the aggregation on categories of rows. Use the `OVER` clause to calculate the aggregation on a specific range of value. The `OVER` clause can't follow the `GROUPING` or `GROUPING_ID` aggregations.
 
-All aggregate functions are deterministic, which means they always return the same value when they run on the same input values. For more information, see [Deterministic and Nondeterministic Functions](../../relational-databases/user-defined-functions/deterministic-and-nondeterministic-functions.md).
+All aggregate functions are deterministic, which means they always return the same value when they run on the same input values. For more information, see [Deterministic and nondeterministic functions](../../relational-databases/user-defined-functions/deterministic-and-nondeterministic-functions.md).
 
 ## Analytic functions
 
@@ -37,7 +37,7 @@ Analytic functions compute an aggregate value based on a group of rows. However,
 
 ## Bit manipulation functions
 
-**Applies to:** [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]
+**Applies to:** [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)]
 
 Bit manipulation functions allow you to process and store data more efficiently than with individual bits. For more information, see [Bit manipulation functions](bit-manipulation-functions-overview.md).
 
@@ -74,7 +74,7 @@ Operate on a single value and then return a single value. Scalar functions can b
 
 ## Function determinism
 
-[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] built-in functions are either deterministic or nondeterministic. Functions are deterministic when they always return the same result anytime they're called by using a specific set of input values. Functions are nondeterministic when they could return different results every time they're called, even with the same specific set of input values. For more information, see [Deterministic and Nondeterministic Functions](../../relational-databases/user-defined-functions/deterministic-and-nondeterministic-functions.md)
+[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] built-in functions are either deterministic or nondeterministic. Functions are deterministic when they always return the same result anytime they're called by using a specific set of input values. Functions are nondeterministic when they could return different results every time they're called, even with the same specific set of input values. For more information, see [Deterministic and nondeterministic functions](../../relational-databases/user-defined-functions/deterministic-and-nondeterministic-functions.md)
 
 ## Function collation
 
@@ -82,14 +82,13 @@ Functions that take a character string input and return a character string outpu
 
 Functions that take non-character inputs and return a character string use the default collation of the current database for the output.
 
-Functions that take multiple character string inputs and return a character string use the rules of collation precedence to set the collation of the output string. For more information, see [Collation Precedence &#40;Transact-SQL&#41;](../../t-sql/statements/collation-precedence-transact-sql.md).
+Functions that take multiple character string inputs and return a character string use the rules of collation precedence to set the collation of the output string. For more information, see [Collation precedence](../statements/collation-precedence-transact-sql.md).
 
 ## Limitations
 
-For information on limitations of function types and platforms, see [CREATE FUNCTION](../statements/create-function-transact-sql.md).
+For information on limitations of function types and platforms, see [CREATE FUNCTION (Transact-SQL)](../statements/create-function-transact-sql.md).
 
-## See also
+## Related content
 
-- [CREATE FUNCTION &#40;Transact-SQL&#41;](../../t-sql/statements/create-function-transact-sql.md)
-- [Deterministic and Nondeterministic Functions](../../relational-databases/user-defined-functions/deterministic-and-nondeterministic-functions.md)
-- [Using Stored Procedures &#40;MDX&#41;](../../mdx/using-stored-procedures-mdx.md)
+- [CREATE FUNCTION (Transact-SQL)](../statements/create-function-transact-sql.md)
+- [Deterministic and nondeterministic functions](../../relational-databases/user-defined-functions/deterministic-and-nondeterministic-functions.md)

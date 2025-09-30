@@ -3,22 +3,19 @@ title: "XEvents related system objects"
 description: These resources relate to Extended Events, including how system objects support them, how SQL Server uses them, and aspects particular to Azure SQL Database.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: jukoesma
-ms.date: 03/24/2019
+ms.reviewer: jukoesma, dfurman
+ms.date: 09/23/2025
 ms.service: sql
 ms.subservice: xevents
 ms.topic: reference
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+
 ---
 # System objects that support Extended Events
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
-The present article provides links to other articles that relate to Extended Events. They are articles that describe the following:
-
-- System objects that provide support for the Extended Events feature.
-- Parts of SQL Server itself that use Extended Events.
-- Aspects of Extended Events that are particular to Azure SQL Database in the cloud.
+The present article provides links to other articles that relate to Extended Events.
 
 The lists are not necessarily complete.
 
@@ -56,7 +53,9 @@ This list is not meant to be complete.
 
 - [Extended Events for Stretch Database](/previous-versions/sql/sql-server/stretch-database/extended-events-for-stretch-database)
 
-## Azure SQL Database and extended events
+<a id="#azure-sql-database-and-extended-events"></a>
+
+## Azure SQL Database and SQL database in Fabric extended events
 
 - [Extended Events in Azure SQL Database](/azure/sql-database/sql-database-xevent-db-diff-from-svr)
 

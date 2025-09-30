@@ -22,7 +22,7 @@ monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-curre
 
 # Intelligent applications and AI Frequently Asked Questions (FAQ)
 
-[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
 > [!div class="op_single_selector"]
 >
@@ -78,17 +78,17 @@ Refer to the [Data, privacy, and security for Azure OpenAI Service](/azure/ai-fo
 
 Azure SQL and SQL Server provide extensive support for fine-grained access security:
 
-- [Get started with Database Engine permissions](../relational-databases/security/authentication-access/getting-started-with-database-engine-permissions.md): Control access to database objects at a granular level using permissions.
-- [Row-Level Security (RLS)](../relational-databases/security/row-level-security.md): Control access to rows in a table based on the characteristics of the user executing a query. You can see RLS in action in this [video](https://youtu.be/Uddhx8Bu2ZM?si=90_i05RjhQarN7Jk&t=1236).
-- [Dynamic data masking](../relational-databases/security/dynamic-data-masking.md): Limit the exposure of sensitive data by masking it to non-privileged users.
-- [Always Encrypted](../relational-databases/security/encryption/always-encrypted-database-engine.md): Protect sensitive data by encrypting it at rest and in transit, ensuring that only authorized users can access the unencrypted data.
+- [Get started with Database Engine permissions](../../relational-databases/security/authentication-access/getting-started-with-database-engine-permissions.md): Control access to database objects at a granular level using permissions.
+- [Row-Level Security (RLS)](../../relational-databases/security/row-level-security.md): Control access to rows in a table based on the characteristics of the user executing a query. You can see RLS in action in this [video](https://youtu.be/Uddhx8Bu2ZM?si=90_i05RjhQarN7Jk&t=1236).
+- [Dynamic data masking](../../relational-databases/security/dynamic-data-masking.md): Limit the exposure of sensitive data by masking it to non-privileged users.
+- [Always Encrypted](../../relational-databases/security/encryption/always-encrypted-database-engine.md): Protect sensitive data by encrypting it at rest and in transit, ensuring that only authorized users can access the unencrypted data.
 
 It's also possible to audit any operation done on the database using the Audit feature in Azure SQL and SQL Server.
 
-[SQL Server Audit (Database Engine)](../relational-databases/security/auditing/sql-server-audit-database-engine.md)
+[SQL Server Audit (Database Engine)](../../relational-databases/security/auditing/sql-server-audit-database-engine.md)
 
 ## Related content
 
 - [Intelligent applications and AI](artificial-intelligence-intelligent-applications.md)
-- [Vector and embeddings: Frequently asked questions (FAQ)](../relational-databases/vectors/vectors-faq.md)
+- [Vector and embeddings: Frequently asked questions (FAQ)](vectors-faq.md)
 - [SQL AI Samples and Examples](https://aka.ms/sqlaisamples)

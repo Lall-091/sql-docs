@@ -1,10 +1,10 @@
 ---
 title: "Known Issues, Limitations, and Errors with CDC"
 description: "Known issues and errors with change data capture (CDC) in SQL Server and Azure SQL Managed Instance"
-author: croblesm
-ms.author: roblescarlos
-ms.reviewer: mathoma, randolphwest
-ms.date: 08/21/2025
+author: MashaMSFT
+ms.author: mathoma
+ms.reviewer: mathoma, randolphwest, roblescarlos
+ms.date: 09/24/2025
 ms.service: sql
 ms.topic: troubleshooting
 helpviewer_keywords:
@@ -72,8 +72,6 @@ Enabling both change data capture (CDC) and accelerated database recovery (ADR) 
 
 When you enable CDC, the aggressive log truncation feature of ADR is disabled. This is because the CDC scan accesses the database transaction log. Active transactions continue to hold the transaction log truncation until the transaction commits and CDC scan catches up, or the transaction aborts. If you enable CDC on a database where ADR is enabled, you might observe higher transaction log utilization. Ensure that sufficient transaction log space is available for the needs of all your workloads.
 
-When enabling CDC, we recommend using the resumable index option. Resumable index doesn't require to keep open a long-running transaction to create or rebuild an index, allowing log truncation during this operation and better log space management. For more information, see [Guidelines for online index operations - resumable index considerations](../../relational-databases/indexes/guidelines-for-online-index-operations.md#resumable-index-considerations). 
-
 <a id="enabling-cdc-fails-if-schema-or-user-named-cdc-already-exists"></a>
 
 ## Enable CDC fails if schema or user named `cdc` already exists
@@ -130,11 +128,15 @@ Using variables with partition switching on databases or tables with change data
 
 ### Online DDL statements are unsupported
 
-[ALTER TABLE online DDL statements](../../t-sql/statements/alter-table-transact-sql.md#with--online--on--off-as-applies-to-altering-a-column) are unsupported when change data capture is enabled on a database. 
+In Azure SQL Managed Instance and versions of SQL Server before [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], [ALTER TABLE online DDL statements](../../t-sql/statements/alter-table-transact-sql.md#with--online--on--off-as-applies-to-altering-a-column) are unsupported when change data capture is enabled on a database. 
 
 ### Online index operations are unsupported
 
 [Online index operations](../indexes/perform-index-operations-online.md) are unsupported when change data capture is enabled on a database. You can encounter Error 18773, "Could not locate text information records for the column "%.*ls", ID %d during command construction.". 
+
+### Default constraints on added columns 
+
+When CDC is enabled on a table and a non-nullable column with a default constraint is added, existing row data will have the value of the default constraint. However, CDC will use `NULL` instead of the default value for *existing* rows. This applies only to data present before the DDL was applied. As a workaround, issue non-changing `UPDATE` statements to existing rows, or, perform an `ALTER INDEX ... REBUILD` on the clustered index of the table. Use `ALTER TABLE ... REBUILD` on the heap if no clustered index is present.
 
 <a id="troubleshooting-errors"></a>
 

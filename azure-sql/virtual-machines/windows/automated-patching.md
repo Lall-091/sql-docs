@@ -1,25 +1,24 @@
 ---
 title: Automated Patching
-description: This article explains the Automated Patching feature for SQL Server on Azure VMs.
+description: This article explains the Automated Patching feature for SQL Server on Azure virtual machines (VMs).
 author: dplessMSFT
 ms.author: dpless
 ms.reviewer: mathoma, randolphwest
-ms.date: 09/17/2024
+ms.date: 09/15/2025
 ms.service: azure-vm-sql-server
 ms.subservice: management
 ms.topic: article
-ms.custom:
 tags: azure-resource-manager
 ---
 # Automated Patching for SQL Server on Azure virtual machines
 
 [!INCLUDE [appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Automated Patching establishes a maintenance window for an Azure virtual machine running SQL Server. Automated Updates can only be installed during this maintenance window. For SQL Server, this restriction ensures that system updates and any associated restarts occur at the best possible time for the database.
+This article describes how to enable Automated Patching for new and existing SQL Server on Azure virtual machines (VMs). Automated Patching establishes a maintenance window for an Azure virtual machine running SQL Server. Automated updates can only be installed during this maintenance window. For SQL Server, this restriction ensures that system updates and any associated restarts occur at the best possible time for the database.
 
 > [!IMPORTANT]  
-> - The [automated patching](automated-patching.md) feature will retire. Currently scheduled for September 17, 2027. To avoid service disruptions, migrate to [Azure Update Manager](../azure-update-manager-sql-vm.md) before this date. Avoid automated patching in new environments. For existing environments, migrate to [Azure Update Manager](../azure-update-manager-sql-vm.md) as soon as possible to continue receiving future enhancements for the patching feature on your SQL Server on Azure VM.
-> - With automated patching, only Windows and SQL Server updates marked as **Important** or **Critical** are installed. Other SQL Server updates, such as service packs and cumulative updates that are not marked as **Important** or **Critical**, must be installed manually. To automatically install Cumulative Updates, use the integrated [Azure Update Manager](../azure-update-manager-sql-vm.md) experience instead. 
+> - The Automated Patching feature is scheduled to retire on September 17, 2027. To avoid service disruptions, migrate to [Azure Update Manager](../azure-update-manager-sql-vm.md) before this date. Avoid Automated Patching in new environments. For existing environments, migrate to [Azure Update Manager](../azure-update-manager-sql-vm.md) as soon as possible to continue receiving future enhancements for the patching feature on your SQL Server on Azure VM.
+> - With Automated Patching, only Windows and SQL Server updates marked as **Important** or **Critical** are installed. Other SQL Server updates, such as service packs and cumulative updates that aren't marked as **Important** or **Critical**, must be installed manually. To automatically install Cumulative Updates, use the integrated [Azure Update Manager](../azure-update-manager-sql-vm.md) experience instead.
 
 ## Prerequisites
 
@@ -30,11 +29,11 @@ To use Automated Patching, you need the following prerequisites:
 
 Automated Patching is supported starting with SQL Server 2012 on Windows Server 2012.
 
-Additionally, consider the following:
+Additionally, consider the following information:
 
-- There are also several other ways to enable automatic patching of Azure VMs, such as [Update Manager](/azure/update-manager/assessment-options) or [Automatic VM guest patching](/azure/virtual-machines/automatic-vm-guest-patching). Choose only one option to automatically update your VM as overlapping tools may lead to failed updates.
-- If you want to receive [ESU updates](/sql/sql-server/end-of-support/sql-server-extended-security-updates) without using the automated patching feature, you can use the built-in Windows Update channel.
-- For SQL Server VMs in different availability zones that participate in an Always On availability group, configure the automated patching schedule so that availability replicas in different availability zones aren't patched at the same time.
+- There are also several other ways to enable automatic patching of Azure VMs, such as [Update Manager](/azure/update-manager/assessment-options) or [Automatic VM guest patching](/azure/virtual-machines/automatic-vm-guest-patching). Choose only one option to automatically update your VM as overlapping tools can lead to failed updates.
+- If you want to receive [Extended Security Updates (ESUs)](/sql/sql-server/end-of-support/sql-server-extended-security-updates) without using the Automated Patching feature, you can use the built-in Windows Update channel.
+- For SQL Server VMs in different availability zones that participate in an Always On availability group, configure the Automated Patching schedule so that availability replicas in different availability zones aren't patched at the same time.
 
 ## Settings
 
@@ -66,15 +65,15 @@ For more information, see [Provision a SQL Server virtual machine on Azure](crea
 
 For existing SQL Server virtual machines, open your [SQL virtual machines resource](manage-sql-vm-portal.md#access-the-resource) and select **Updates** under **Settings**.
 
-If you've never enabled the [Azure Update Manager](../azure-update-manager-sql-vm.md) experience for any SQL Server VM in your portal, then select **Enable** to enable Automated Patching for your existing SQL Server VM. 
+If you've never enabled the [Azure Update Manager](../azure-update-manager-sql-vm.md) experience for any SQL Server VM in your portal, then select **Enable** to enable Automated Patching for your existing SQL Server VM.
 
 :::image type="content" source="./media/automated-patching/azure-sql-rm-patching-existing-vms.png" alt-text="Screenshot of SQL Automatic Patching for existing VMs.":::
 
-If you've used the Azure Update Manager before, you'll need to go to the **Updates** page under **Settings** in your [SQL virtual machines resource](manage-sql-vm-portal.md#access-the-resource) and then choose **Leave new experience** to go back to the **Automated Patching** experience: 
+If you've used the Azure Update Manager before, you need to go to the **Updates** page under **Settings** in your [SQL virtual machines resource](manage-sql-vm-portal.md#access-the-resource) and then choose **Leave new experience** to go back to the **Automated Patching** experience:
 
 :::image type="content" source="media/manage-sql-vm-portal/updates-automated-patching.png" alt-text="Screenshot of the updates page in the SQL virtual machines resource in the Azure portal with leave new experience highlighted.":::
 
-After you've enabled Automated Patching and configured your patching settings, select the **OK** button on the bottom of the **Updates** page to save your changes.
+After you enable Automated Patching and configure your patching settings, select the **OK** button on the bottom of the **Updates** page to save your changes.
 
 If you're enabling Automated Patching for the first time, Azure configures the SQL Server IaaS Agent in the background. During this time, the Azure portal might not show that Automated Patching is configured. Wait several minutes for the agent to be installed and configured. After that the Azure portal reflects the new settings.
 
@@ -110,27 +109,25 @@ Update-AzSqlVM -ResourceGroupName 'resourcegroupname' -Name 'vmname' -AutoPatchi
 ```
 
 ## Understand which updates will be applied with Automated Patching
+
 To understand which updates will be applied through Automated Patching, review the [update guide](https://msrc.microsoft.com/update-guide) and apply the **Severity** filter to identify Critical and Important updates.
 
 ## Considerations
 
-Consider the following:
+Consider the following information about Automated Patching:
 
-- Automated Patching isn't aware of Always On availability group configurations for your SQL Server VM, so be cautious when creating patching schedules for availability group replicas to avoid unexpected failovers.
-- If your SQL Server VMs are in an availability set and you've configured an Always On availability group, both nodes might be restarted if patches are applied at the same time, so it's important the patching schedules are set for a different day/time for each node. 
-- Your virtual machine can restart during a predefined maintenance window. You can use Event Viewer to confirm that your VM restarted during a maintenance window from automated patching. [Guest patching](/azure/virtual-machines/automatic-vm-guest-patching#how-does-automatic-vm-guest-patching-work) can restart your VM outside of a maintenance window. 
-- If your update fails with an error message that states `The user data or log directory is invalid`, it's likely due to the default locations of new data or log files for a database pointing to an invalid location. To resolve this, review [Invalid directory error](/troubleshoot/sql/database-engine/install/windows/user-data-log-directory-invalid).
-
+- Automated Patching isn't aware of Always On availability group configurations for your SQL Server VM. So, be cautious when creating patching schedules for availability group replicas to avoid unexpected failovers.
+- If your SQL Server VMs are in an availability set and you've configured an Always On availability group, both nodes might be restarted if patches are applied at the same time, so it's important the patching schedules are set for a different day/time for each node.
+- Your virtual machine can restart during a predefined maintenance window. You can use Event Viewer to confirm that your VM restarted during a maintenance window from Automated Patching. [Guest patching](/azure/virtual-machines/automatic-vm-guest-patching#how-does-automatic-vm-guest-patching-work) can restart your VM outside of a maintenance window.
+- If your update fails with an error message that states `The user data or log directory is invalid`, it's likely due to the default locations of new data or log files for a database pointing to an invalid location. To resolve this issue, review [Invalid directory error](/troubleshoot/sql/database-engine/install/windows/user-data-log-directory-invalid).
 
 ## Migrate from Automated Patching to Azure Update Manager
 
-[Azure Update Manager](/azure/update-center/overview) is a unified service to help you manage and govern updates for all your virtual machines and SQL Server instances at scale. Unlike with Automated Patching, [Azure Update Manager](../azure-update-manager-sql-vm.md) installs Cumulative Updates for SQL Server. It is recommended to only use one automated patching service to manage updates for your SQL Server VM. 
+[Azure Update Manager](/azure/update-center/overview) is a unified service to help you manage and govern updates for all your virtual machines and SQL Server instances at scale. Unlike with Automated Patching, [Azure Update Manager](../azure-update-manager-sql-vm.md) installs Cumulative Updates for SQL Server. It's recommended that you only use one Automated Patching service to manage updates for your SQL Server VM.
 
-If you are currently using Automated Patching, you can [migrate to Azure Update Manager](../azure-update-manager-sql-vm.md#migrate-from-automated-patching-to-azure-update-manager)
+If you're currently using Automated Patching, you can [migrate to Azure Update Manager](../azure-update-manager-sql-vm.md#migrate-from-automated-patching-to-azure-update-manager).
 
+## Related content
 
-## Next steps
-
-For information about other available automation tasks, see [SQL Server IaaS Agent Extension](sql-server-iaas-agent-extension-automate-management.md).
-
-For more information about running SQL Server on Azure VMs, see [SQL Server on Azure virtual machines overview](sql-server-on-azure-vm-iaas-what-is-overview.md).
+- [Automate management with the Windows SQL Server IaaS Agent extension](sql-server-iaas-agent-extension-automate-management.md)
+- [What is SQL Server on Azure Windows Virtual Machines?](sql-server-on-azure-vm-iaas-what-is-overview.md)

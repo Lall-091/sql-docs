@@ -29,14 +29,14 @@ The `sys.database_event_session_fields` dynamic management view (DMV) returns a 
 
 ## Permissions
 
-Requires the VIEW DATABASE STATE permission.  
+Requires the VIEW DATABASE PERFORMANCE STATE permission.  
 
 ## Remarks
 
 This view has the following relationship cardinalities.  
 
 | From | To | Relationship |
-| ---- | -- | ------------ |
+| ---- | ---- | ------------ |
 |`sys.database_event_session_actions.event_session_id`|`sys.database_event_sessions.event_session_id`|Many to one|
 |`sys.database_event_session_actions.event_id`<br /><br /> `sys.database_event_session_actions.object_id`<br /><br /> `sys.database_event_session_actions.event_session_id`|`sys.database_event_session_events.event_session_id`<br /><br /> `sys.database_event_session_events.event_id`|Many to one|  
 |`sys.database_event_session_actions.event_session_id`<br /><br /> `sys.database_event_session_actions.object_id`|`sys.database_event_session_targets.event_session_id`<br /><br /> `sys.database_event_session_targets.target_id`|Many to one|  

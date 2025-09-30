@@ -1,10 +1,10 @@
 ---
-title: Configure availability groups for SQL Server on RHEL virtual machines in Azure - Linux virtual machines
+title: Configure Availability Groups for SQL Server on RHEL Virtual Machines in Azure - Linux Virtual Machines
 description: Learn about setting up high availability in an RHEL cluster environment and set up fencing.
 author: aravindmahadevan-ms
 ms.author: armaha
 ms.reviewer: amitkh-msft, randolphwest
-ms.date: 11/29/2023
+ms.date: 09/25/2025
 ms.service: azure-vm-sql-server
 ms.subservice: hadr
 ms.topic: tutorial
@@ -88,157 +88,98 @@ You should get the following results once the command completes:
 ## Create RHEL VMs inside the availability set
 
 > [!WARNING]  
-> If you choose a pay-as-you-go RHEL image, and configure high availability (HA), you might be required to register your subscription. This can cause you to pay twice for the subscription, as you'll be charged for the Microsoft Azure RHEL subscription for the VM, and a subscription to Red Hat. For more information, see https://access.redhat.com/solutions/2458541.
->  
-> To avoid being "double billed", use a RHEL HA image when creating the Azure VM. Images offered as RHEL-HA images are also pay-as-you-go images with HA repo pre-enabled.
+> If you choose a pay-as-you-go RHEL image, and configure high availability (HA), you might be required to register your subscription. This can cause you to pay twice for the subscription, as you'll be charged for the Microsoft Azure RHEL subscription for the VM, and a subscription to Red Hat. For more information, see [How to manage subscription of the Virtual Machine launched from Azure Marketplace](https://access.redhat.com/solutions/2458541). To avoid being "double billed", use a RHEL HA image when creating the Azure VM. Images offered as RHEL-HA images are also pay-as-you-go images with HA repo pre-enabled.
 
 1. Get a list of virtual machine images that offer RHEL with HA:
 
-    ```azurecli-interactive
-    az vm image list --all --offer "RHEL-HA"
-    ```
+   ```azurecli-interactive
+   az vm image list --all --offer "RHEL-HA"
+   ```
 
-    You should see the following results:
+   You should see the following results:
 
-    ```output
-    [
-      {
-    "offer": "RHEL-HA",
-    "publisher": "RedHat",
-    "sku": "7.4",
-    "urn": "RedHat:RHEL-HA:7.4:7.4.2019062021",
-    "version": "7.4.2019062021"
-       },
-       {
-    "offer": "RHEL-HA",
-    "publisher": "RedHat",
-    "sku": "7.5",
-    "urn": "RedHat:RHEL-HA:7.5:7.5.2019062021",
-    "version": "7.5.2019062021"
+   ```output
+   [
+        {
+             "offer": "RHEL-HA",
+             "publisher": "RedHat",
+             "sku": "7.4",
+             "urn": "RedHat:RHEL-HA:7.4:7.4.2019062021",
+             "version": "7.4.2019062021"
         },
         {
-    "offer": "RHEL-HA",
-    "publisher": "RedHat",
-    "sku": "7.6",
-    "urn": "RedHat:RHEL-HA:7.6:7.6.2019062019",
-    "version": "7.6.2019062019"
-         },
-         {
-    "offer": "RHEL-HA",
-    "publisher": "RedHat",
-    "sku": "8.0",
-    "urn": "RedHat:RHEL-HA:8.0:8.0.2020021914",
-    "version": "8.0.2020021914"
-         },
-         {
-    "offer": "RHEL-HA",
-    "publisher": "RedHat",
-    "sku": "8.1",
-    "urn": "RedHat:RHEL-HA:8.1:8.1.2020021914",
-    "version": "8.1.2020021914"
-          },
-          {
-    "offer": "RHEL-HA",
-    "publisher": "RedHat",
-    "sku": "80-gen2",
-    "urn": "RedHat:RHEL-HA:80-gen2:8.0.2020021915",
-    "version": "8.0.2020021915"
-           },
-           {
-    "offer": "RHEL-HA",
-    "publisher": "RedHat",
-    "sku": "81_gen2",
-    "urn": "RedHat:RHEL-HA:81_gen2:8.1.2020021915",
-    "version": "8.1.2020021915"
-           }
-    ]
-    ```
+             "offer": "RHEL-HA",
+             "publisher": "RedHat",
+             "sku": "7.5",
+             "urn": "RedHat:RHEL-HA:7.5:7.5.2019062021",
+             "version": "7.5.2019062021"
+        },
+        {
+             "offer": "RHEL-HA",
+             "publisher": "RedHat",
+             "sku": "7.6",
+             "urn": "RedHat:RHEL-HA:7.6:7.6.2019062019",
+             "version": "7.6.2019062019"
+        },
+        {
+             "offer": "RHEL-HA",
+             "publisher": "RedHat",
+             "sku": "8.0",
+             "urn": "RedHat:RHEL-HA:8.0:8.0.2020021914",
+             "version": "8.0.2020021914"
+        },
+        {
+             "offer": "RHEL-HA",
+             "publisher": "RedHat",
+             "sku": "8.1",
+             "urn": "RedHat:RHEL-HA:8.1:8.1.2020021914",
+             "version": "8.1.2020021914"
+        },
+        {
+             "offer": "RHEL-HA",
+             "publisher": "RedHat",
+             "sku": "80-gen2",
+             "urn": "RedHat:RHEL-HA:80-gen2:8.0.2020021915",
+             "version": "8.0.2020021915"
+        },
+        {
+             "offer": "RHEL-HA",
+             "publisher": "RedHat",
+             "sku": "81_gen2",
+             "urn": "RedHat:RHEL-HA:81_gen2:8.1.2020021915",
+             "version": "8.1.2020021915"
+        }
+   ]
+   ```
 
-    For this tutorial, we're choosing the image `RedHat:RHEL-HA:7.6:7.6.2019062019` for the RHEL 7 example and choosing `RedHat:RHEL-HA:8.1:8.1.2020021914` for the RHEL 8 example.
+   For this tutorial, we're choosing the image `RedHat:RHEL-HA:7.6:7.6.2019062019` for the RHEL 7 example and choosing `RedHat:RHEL-HA:8.1:8.1.2020021914` for the RHEL 8 example.
 
-    You can also choose [!INCLUDE [sssql19-md](../../../docs/includes/sssql19-md.md)] preinstalled on RHEL8-HA images. To get the list of these images, run the following command:
-
-    ```azurecli-interactive
-    az vm image list --all --offer "sql2019-rhel8"
-    ```
-
-    You should see the following results:
-
-    ```json
-    [
-       {
-          "offer": "sql2019-rhel8",
-          "publisher": "MicrosoftSQLServer",
-          "sku": "enterprise",
-          "urn": "MicrosoftSQLServer:sql2019-rhel8:enterprise:15.0.200317",
-          "version": "15.0.200317"
-       },
-       {
-          "offer": "sql2019-rhel8",
-          "publisher": "MicrosoftSQLServer",
-          "sku": "enterprise",
-          "urn": "MicrosoftSQLServer:sql2019-rhel8:enterprise:15.0.200512",
-          "version": "15.0.200512"
-       },
-       {
-          "offer": "sql2019-rhel8",
-          "publisher": "MicrosoftSQLServer",
-          "sku": "sqldev",
-          "urn": "MicrosoftSQLServer:sql2019-rhel8:sqldev:15.0.200317",
-          "version": "15.0.200317"
-       },
-       {
-          "offer": "sql2019-rhel8",
-          "publisher": "MicrosoftSQLServer",
-          "sku": "sqldev",
-          "urn": "MicrosoftSQLServer:sql2019-rhel8:sqldev:15.0.200512",
-          "version": "15.0.200512"
-       },
-       {
-          "offer": "sql2019-rhel8",
-          "publisher": "MicrosoftSQLServer",
-          "sku": "standard",
-          "urn": "MicrosoftSQLServer:sql2019-rhel8:standard:15.0.200317",
-          "version": "15.0.200317"
-       },
-       {
-          "offer": "sql2019-rhel8",
-          "publisher": "MicrosoftSQLServer",
-          "sku": "standard",
-          "urn": "MicrosoftSQLServer:sql2019-rhel8:standard:15.0.200512",
-          "version": "15.0.200512"
-       }
-    ]
-    ```
-
-    If you do use one of the above images to create the virtual machines, it has [!INCLUDE [sssql19-md](../../../docs/includes/sssql19-md.md)] preinstalled. Skip the [Install SQL Server and mssql-tools](#install-sql-server-and-mssql-tools) section as described in this article.
-
-    > [!IMPORTANT]  
-    > Machine names must be fewer than 15 characters to set up availability group. Username can't contain upper case characters, and passwords must have more than 12 characters.
+   > [!IMPORTANT]  
+   > Machine names must be fewer than 15 characters to set up availability group. Username can't contain upper case characters, and passwords must have more than 12 characters.
 
 1. We want to create 3 VMs in the availability set. Replace these values in the following command:
 
-    - `<resourceGroupName>`
-    - `<VM-basename>`
-    - `<availabilitySetName>`
-    - `<VM-Size>` - An example would be "Standard_D16_v3"
-    - `<username>`
-    - `<password>`
+   - `<resourceGroupName>`
+   - `<VM-basename>`
+   - `<availabilitySetName>`
+   - `<VM-Size>` - An example would be "Standard_D16_v3"
+   - `<username>`
+   - `<password>`
 
-    ```azurecli-interactive
-    for i in `seq 1 3`; do
-           az vm create \
-             --resource-group <resourceGroupName> \
-             --name <VM-basename>$i \
-             --availability-set <availabilitySetName> \
-             --size "<VM-Size>"  \
-             --image "RedHat:RHEL-HA:7.6:7.6.2019062019" \
-             --admin-username "<username>" \
-             --admin-password "<password>" \
-             --authentication-type all \
-             --generate-ssh-keys
-    done
-    ```
+   ```azurecli-interactive
+   for i in `seq 1 3`; do
+          az vm create \
+            --resource-group <resourceGroupName> \
+            --name <VM-basename>$i \
+            --availability-set <availabilitySetName> \
+            --size "<VM-Size>"  \
+            --image "RedHat:RHEL-HA:7.6:7.6.2019062019" \
+            --admin-username "<username>" \
+            --admin-password "<password>" \
+            --authentication-type all \
+            --generate-ssh-keys
+   done
+   ```
 
 The above command creates the VMs, and creates a default virtual network for those VMs. For more information on the different configurations, see the [az vm create](/cli/azure/vm) article.
 
@@ -260,7 +201,7 @@ You should get results similar to the following once the command completes for e
 
 > [!IMPORTANT]  
 > The default image that is created with the above command creates a 32GB OS disk by default. You could potentially run out of space with this default installation. You can use the following parameter added to the above `az vm create` command to create an OS disk with 128GB as an example: `--os-disk-size-gb 128`.
->  
+>
 > You can then [configure Logical Volume Manager (LVM)](/previous-versions/azure/virtual-machines/linux/configure-lvm) if you need to expand appropriate folder volumes to accommodate your installation.
 
 ### Test connection to the created VMs
@@ -288,51 +229,51 @@ Connect to each VM node and follow this guide to enable HA. For more information
 
 > [!TIP]  
 > It will be easier if you open an SSH session to each of the VMs simultaneously as the same commands will need to be run on each VM throughout the article.
->  
+>
 > If you're copying and pasting multiple `sudo` commands, and are prompted for a password, the additional commands will not run. Run each command separately.
 
 1. To open the Pacemaker firewall ports, run the following commands on each VM:
 
-    ```bash
-    sudo firewall-cmd --permanent --add-service=high-availability
-    sudo firewall-cmd --reload
-    ```
+   ```bash
+   sudo firewall-cmd --permanent --add-service=high-availability
+   sudo firewall-cmd --reload
+   ```
 
 1. Update and install Pacemaker packages on all nodes using the following commands:
 
-    > [!NOTE]  
-    > **nmap** is installed as part of this command block as a tool to find available IP addresses in your network. You don't have to install **nmap**, but it will be useful later in this tutorial.
+   > [!NOTE]  
+   > **nmap** is installed as part of this command block as a tool to find available IP addresses in your network. You don't have to install **nmap**, but it will be useful later in this tutorial.
 
-    ```bash
-    sudo yum update -y
-    sudo yum install -y pacemaker pcs fence-agents-all resource-agents fence-agents-azure-arm nmap
-    sudo reboot
-    ```
+   ```bash
+   sudo yum update -y
+   sudo yum install -y pacemaker pcs fence-agents-all resource-agents fence-agents-azure-arm nmap
+   sudo reboot
+   ```
 
 1. Set the password for the default user that is created when installing Pacemaker packages. Use the same password on all nodes.
 
-    ```bash
-    sudo passwd hacluster
-    ```
+   ```bash
+   sudo passwd hacluster
+   ```
 
 1. Use the following command to open the hosts file and set up host name resolution. For more information, see [Configure AG](/sql/linux/sql-server-linux-availability-group-configure-ha#prerequisites) on configuring the hosts file.
 
-    ```bash
-    sudo vi /etc/hosts
-    ```
+   ```bash
+   sudo vi /etc/hosts
+   ```
 
-    In the **vi** editor, enter `i` to insert text, and on a blank line, add the **Private IP** of the corresponding VM. Then add the VM name after a space next to the IP. Each line should have a separate entry.
+   In the **vi** editor, enter `i` to insert text, and on a blank line, add the **Private IP** of the corresponding VM. Then add the VM name after a space next to the IP. Each line should have a separate entry.
 
-    ```output
-    <IP1> <VM1>
-    <IP2> <VM2>
-    <IP3> <VM3>
-    ```
+   ```output
+   <IP1> <VM1>
+   <IP2> <VM2>
+   <IP3> <VM3>
+   ```
 
-    > [!IMPORTANT]  
-    > We recommend that you use your **Private IP** address in the previous example. Using the Public IP address in this configuration will cause the setup to fail and we don't recommend exposing your VM to external networks.
+   > [!IMPORTANT]  
+   > We recommend that you use your **Private IP** address in the previous example. Using the Public IP address in this configuration will cause the setup to fail and we don't recommend exposing your VM to external networks.
 
-    To exit the **vi** editor, first hit the **Esc** key, and then enter the command `:wq` to write the file and quit.
+   To exit the **vi** editor, first hit the **Esc** key, and then enter the command `:wq` to write the file and quit.
 
 ## Create the Pacemaker cluster
 
@@ -342,76 +283,76 @@ In this section, you enable and start the pcsd service, and then configure the c
 
 1. Run the commands on all nodes. These commands allow the nodes to rejoin the cluster after each node restarts.
 
-    ```bash
-    sudo systemctl enable pcsd
-    sudo systemctl start pcsd
-    sudo systemctl enable pacemaker
-    ```
+   ```bash
+   sudo systemctl enable pcsd
+   sudo systemctl start pcsd
+   sudo systemctl enable pacemaker
+   ```
 
 1. Remove any existing cluster configuration from all nodes. Run the following command:
 
-    ```bash
-    sudo pcs cluster destroy
-    sudo systemctl enable pacemaker
-    ```
+   ```bash
+   sudo pcs cluster destroy
+   sudo systemctl enable pacemaker
+   ```
 
 1. On the primary node, run the following commands to set up the cluster.
 
-    - When running the `pcs cluster auth` command to authenticate the cluster nodes, you're prompted for a password. Enter the password for the **hacluster** user created earlier.
+   - When running the `pcs cluster auth` command to authenticate the cluster nodes, you're prompted for a password. Enter the password for the **hacluster** user created earlier.
 
-    **RHEL7**
+   **RHEL7**
 
-    ```bash
-    sudo pcs cluster auth <VM1> <VM2> <VM3> -u hacluster
-    sudo pcs cluster setup --name az-hacluster <VM1> <VM2> <VM3> --token 30000
-    sudo pcs cluster start --all
-    sudo pcs cluster enable --all
-    ```
+   ```bash
+   sudo pcs cluster auth <VM1> <VM2> <VM3> -u hacluster
+   sudo pcs cluster setup --name az-hacluster <VM1> <VM2> <VM3> --token 30000
+   sudo pcs cluster start --all
+   sudo pcs cluster enable --all
+   ```
 
-    **RHEL8**
+   **RHEL8**
 
-    For RHEL 8, you need to authenticate the nodes separately. Manually enter in the username and password for **hacluster** when prompted.
+   For RHEL 8, you need to authenticate the nodes separately. Manually enter in the username and password for **hacluster** when prompted.
 
-    ```bash
-    sudo pcs host auth <node1> <node2> <node3>
-    sudo pcs cluster setup <clusterName> <node1> <node2> <node3>
-    sudo pcs cluster start --all
-    sudo pcs cluster enable --all
-    ```
+   ```bash
+   sudo pcs host auth <node1> <node2> <node3>
+   sudo pcs cluster setup <clusterName> <node1> <node2> <node3>
+   sudo pcs cluster start --all
+   sudo pcs cluster enable --all
+   ```
 
 1. Run the following command to check that all nodes are online.
 
-    ```bash
-    sudo pcs status
-    ```
+   ```bash
+   sudo pcs status
+   ```
 
    **RHEL 7**
 
-    If all nodes are online, you see output similar to the following example:
+   If all nodes are online, you see output similar to the following example:
 
-    ```output
-    Cluster name: az-hacluster
+   ```output
+   Cluster name: az-hacluster
 
-    WARNINGS:
-    No stonith devices and stonith-enabled is not false
+   WARNINGS:
+   No stonith devices and stonith-enabled is not false
 
-    Stack: corosync
-    Current DC: <VM2> (version 1.1.19-8.el7_6.5-c3c624ea3d) - partition with quorum
-    Last updated: Fri Aug 23 18:27:57 2019
-    Last change: Fri Aug 23 18:27:56 2019 by hacluster via crmd on <VM2>
+   Stack: corosync
+   Current DC: <VM2> (version 1.1.19-8.el7_6.5-c3c624ea3d) - partition with quorum
+   Last updated: Fri Aug 23 18:27:57 2019
+   Last change: Fri Aug 23 18:27:56 2019 by hacluster via crmd on <VM2>
 
-    3 nodes configured
-    0 resources configured
+   3 nodes configured
+   0 resources configured
 
-    Online: [ <VM1> <VM2> <VM3> ]
+   Online: [ <VM1> <VM2> <VM3> ]
 
-    No resources
+   No resources
 
-    Daemon Status:
-          corosync: active/enabled
-          pacemaker: active/enabled
-          pcsd: active/enabled
-    ```
+   Daemon Status:
+         corosync: active/enabled
+         pacemaker: active/enabled
+         pcsd: active/enabled
+   ```
 
    **RHEL 8**
 
@@ -443,11 +384,11 @@ In this section, you enable and start the pcsd service, and then configure the c
 
 1. Set expected votes in the live cluster to 3. This command only affects the live cluster, and doesn't change the configuration files.
 
-    On all nodes, set the expected votes with the following command:
+   On all nodes, set the expected votes with the following command:
 
-    ```bash
-    sudo pcs quorum expected-votes 3
-    ```
+   ```bash
+   sudo pcs quorum expected-votes 3
+   ```
 
 ## Configure the fencing agent
 
@@ -477,7 +418,7 @@ License     : GPLv2+ and LGPLv2+
 Description : The fence-agents-azure-arm package contains a fence agent for Azure instances.
 ```
 
-### <a id="register-a-new-application-in-azure-active-directory"></a> Register a new application in Microsoft Entra ID
+### Register a new application in Microsoft Entra ID
 
 To register a new application in Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)), follow these steps:
 
@@ -561,8 +502,8 @@ You should see the following output:
 
 Assign the custom role `Linux Fence Agent Role-<username>` that was created in the last step to the Service Principal. Don't use the Owner role anymore.
 
-1. Go to https://portal.azure.com
-1. Open the [All resources pane](https://portal.azure.com/#blade/HubsExtension/BrowseAll)
+1. Go to the [Azure portal](https://portal.azure.com)
+1. Open the **All resources** pane
 1. Select the virtual machine of the first cluster node
 1. Select **Access control (IAM)**
 1. Select **Add a role assignment**
@@ -600,7 +541,7 @@ sudo firewall-cmd --reload
 > [!NOTE]  
 > If you have created the VMs with [!INCLUDE [sssql19-md](../../../docs/includes/sssql19-md.md)] pre-installed on RHEL8-HA then you can skip the below steps to install SQL Server and mssql-tools and start the **Configure an Availability Group** section after you set up the sa password on all the VMs by running the command `sudo /opt/mssql/bin/mssql-conf set-sa-password` on all VMs.
 
-Use the below section to install SQL Server and mssql-tools on the VMs. You can choose one of the below samples to install [!INCLUDE [sssql17-md](../../../docs/includes/sssql17-md.md)] on RHEL 7 or [!INCLUDE [sssql19-md](../../../docs/includes/sssql19-md.md)] on RHEL 8. Perform each of these actions on all nodes. For more information, see [Install SQL Server on a Red Hat VM](/sql/linux/quickstart-install-connect-red-hat).
+Use the below section to install SQL Server and mssql-tools on the VMs. You can choose one of the below samples to install [!INCLUDE [sssql17-md](../../../docs/includes/sssql17-md.md)] on RHEL 7 or [!INCLUDE [sssql19-md](../../../docs/includes/sssql19-md.md)] on RHEL 8. Perform each of these actions on all nodes. For more information, see [Quickstart: Install SQL Server and create a database on Red Hat](/sql/linux/quickstart-install-connect-red-hat).
 
 ### Install SQL Server on the VMs
 
@@ -651,11 +592,13 @@ sudo curl -o /etc/yum.repos.d/msprod.repo https://packages.microsoft.com/config/
 sudo yum install -y mssql-tools unixODBC-devel
 ```
 
-> [!NOTE]  
-> For convenience, add /opt/mssql-tools/bin/ to your PATH environment variable. This enables you to run the tools without specifying the full path. Run the following commands to modify the PATH for both login sessions and interactive/non-login sessions:</br></br>
-`echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile`</br>
-`echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc`</br>
-`source ~/.bashrc`
+For convenience, add `/opt/mssql-tools/bin/` to your `PATH` environment variable. This enables you to run the tools without specifying the full path. Run the following commands to modify the `PATH` for both login sessions and interactive/non-login sessions:
+
+```bash
+echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
+echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
+source ~/.bashrc
+```
 
 ### Check the status of the SQL Server
 
@@ -697,33 +640,33 @@ We currently don't support AD authentication to the AG endpoint. Therefore, we m
 
 1. Connect to **all nodes** using SQL Server Management Studio (SSMS) or **sqlcmd**. Run the following commands to enable an AlwaysOn_health session and create a master key:
 
-    > [!IMPORTANT]  
-    > If you're connecting remotely to your SQL Server instance, you'll need to have port 1433 open on your firewall. You'll also need to allow inbound connections to port 1433 in your NSG for each VM. For more information, see [Create a security rule](/azure/virtual-network/manage-network-security-group#create-a-security-rule) for creating an inbound security rule.
+   > [!IMPORTANT]  
+   > If you're connecting remotely to your SQL Server instance, you'll need to have port 1433 open on your firewall. You'll also need to allow inbound connections to port 1433 in your NSG for each VM. For more information, see [Create a security rule](/azure/virtual-network/manage-network-security-group#create-a-security-rule) for creating an inbound security rule.
 
-    - Replace the `<password>` with your own password.
+   - Replace the `<password>` with your own password.
 
-    ```sql
-    ALTER EVENT SESSION  AlwaysOn_health ON SERVER WITH (STARTUP_STATE=ON);
-    GO
-    CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>';
-    ```
+   ```sql
+   ALTER EVENT SESSION AlwaysOn_health ON SERVER WITH (STARTUP_STATE = ON);
+   GO
+
+   CREATE MASTER KEY ENCRYPTION BY PASSWORD= '<password>';
+   ```
 
 1. Connect to the primary replica using SSMS or **sqlcmd**. The following commands create a certificate at `/var/opt/mssql/data/dbm_certificate.cer` and a private key at `var/opt/mssql/data/dbm_certificate.pvk` on your primary SQL Server replica:
 
-    - Replace the `<password>` with your own password.
+   - Replace the `<password>` with your own password.
 
-    ```sql
-    CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
-    GO
+   ```sql
+   CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
+   GO
 
-    BACKUP CERTIFICATE dbm_certificate
-       TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
-       WITH PRIVATE KEY (
-               FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
-               ENCRYPTION BY PASSWORD = '<password>'
-           );
-    GO
-    ```
+   BACKUP CERTIFICATE dbm_certificate TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
+   WITH PRIVATE KEY (
+      FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
+      ENCRYPTION BY PASSWORD = '<password>'
+   );
+   GO
+   ```
 
 Exit the **sqlcmd** session by running the `exit` command, and return back to your SSH session.
 
@@ -731,48 +674,48 @@ Exit the **sqlcmd** session by running the `exit` command, and return back to yo
 
 1. Copy the two files that were created to the same location on all servers that will host availability replicas.
 
-    On the primary server, run the following `scp` command to copy the certificate to the target servers:
+   On the primary server, run the following `scp` command to copy the certificate to the target servers:
 
-    - Replace `<username>` and `<VM2>` with the user name and target VM name that you're using.
-    - Run this command for all secondary replicas.
+   - Replace `<username>` and `<VM2>` with the user name and target VM name that you're using.
+   - Run this command for all secondary replicas.
 
-    > [!NOTE]  
-    > You don't have to run `sudo -i`, which gives you the root environment. You could just run the `sudo` command in front of each command as we previously did in this tutorial.
+   > [!NOTE]  
+   > You don't have to run `sudo -i`, which gives you the root environment. You could just run the `sudo` command in front of each command as we previously did in this tutorial.
+
+   ```bash
+   # The below command allows you to run commands in the root environment
+   sudo -i
+   ```
 
     ```bash
-    # The below command allows you to run commands in the root environment
-    sudo -i
-    ```
-
-    ```bash
-    scp /var/opt/mssql/data/dbm_certificate.* <username>@<VM2>:/home/<username>
-    ```
+   scp /var/opt/mssql/data/dbm_certificate.* <username>@<VM2>:/home/<username>
+   ```
 
 1. On the target server, run the following command:
 
-    - Replace `<username>` with your user name.
-    - The `mv` command moves the files or directory from one place to another.
-    - The `chown` command is used to change the owner and group of files, directories, or links.
-    - Run these commands for all secondary replicas.
+   - Replace `<username>` with your user name.
+   - The `mv` command moves the files or directory from one place to another.
+   - The `chown` command is used to change the owner and group of files, directories, or links.
+   - Run these commands for all secondary replicas.
 
-    ```bash
-    sudo -i
-    mv /home/<username>/dbm_certificate.* /var/opt/mssql/data/
-    cd /var/opt/mssql/data
-    chown mssql:mssql dbm_certificate.*
-    ```
+   ```bash
+   sudo -i
+   mv /home/<username>/dbm_certificate.* /var/opt/mssql/data/
+   cd /var/opt/mssql/data
+   chown mssql:mssql dbm_certificate.*
+   ```
 
 1. The following Transact-SQL script creates a certificate from the backup that you created on the primary SQL Server replica. Update the script with strong passwords. The decryption password is the same password that you used to create the .pvk file in the previous step. To create the certificate, run the following script using **sqlcmd** or SSMS on all secondary servers:
 
-    ```sql
-    CREATE CERTIFICATE dbm_certificate
-        FROM FILE = '/var/opt/mssql/data/dbm_certificate.cer'
-        WITH PRIVATE KEY (
-        FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
-        DECRYPTION BY PASSWORD = '<password>'
-                );
-    GO
-    ```
+   ```sql
+   CREATE CERTIFICATE dbm_certificate
+   FROM FILE = '/var/opt/mssql/data/dbm_certificate.cer'
+   WITH PRIVATE KEY (
+      FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
+      DECRYPTION BY PASSWORD = '<password>'
+   );
+   GO
+   ```
 
 ### Create the database mirroring endpoints on all replicas
 
@@ -780,11 +723,11 @@ Run the following script on all SQL Server instances using **sqlcmd** or SSMS:
 
 ```sql
 CREATE ENDPOINT [Hadr_endpoint]
-    AS TCP (LISTENER_PORT = 5022)
-    FOR DATABASE_MIRRORING (
+AS TCP (LISTENER_PORT = 5022)
+FOR DATABASE_MIRRORING (
     ROLE = ALL,
     AUTHENTICATION = CERTIFICATE dbm_certificate,
-ENCRYPTION = REQUIRED ALGORITHM AES
+    ENCRYPTION = REQUIRED ALGORITHM AES
 );
 GO
 
@@ -837,10 +780,10 @@ On all SQL Server instances, create a SQL Server login for Pacemaker. The follow
 - Replace `<password>` with your own complex password.
 
 ```sql
-USE [master]
+USE [master];
 GO
 
-CREATE LOGIN [pacemakerLogin] with PASSWORD= N'<password>';
+CREATE LOGIN [pacemakerLogin] WITH PASSWORD = N'<password>';
 GO
 
 ALTER SERVER ROLE [sysadmin] ADD MEMBER [pacemakerLogin];
@@ -851,58 +794,59 @@ On all SQL Server instances, save the credentials used for the SQL Server login.
 
 1. Create the file:
 
-    ```bash
-    sudo vi /var/opt/mssql/secrets/passwd
-    ```
+   ```bash
+   sudo vi /var/opt/mssql/secrets/passwd
+   ```
 
 1. Add the following lines to the file:
 
-    ```bash
-    pacemakerLogin
-    <password>
-    ```
+   ```output
+   pacemakerLogin
+   <password>
+   ```
 
-    To exit the **vi** editor, first hit the **Esc** key, and then enter the command `:wq` to write the file and quit.
+   To exit the **vi** editor, first hit the **Esc** key, and then enter the command `:wq` to write the file and quit.
 
 1. Make the file only readable by root:
 
-    ```bash
-    sudo chown root:root /var/opt/mssql/secrets/passwd
-    sudo chmod 400 /var/opt/mssql/secrets/passwd
-    ```
+   ```bash
+   sudo chown root:root /var/opt/mssql/secrets/passwd
+   sudo chmod 400 /var/opt/mssql/secrets/passwd
+   ```
 
 ### Join secondary replicas to the availability group
 
 1. In order to join the secondary replicas to the AG, you need to open port 5022 on the firewall for all servers. Run the following command in your SSH session:
 
-    ```bash
-    sudo firewall-cmd --zone=public --add-port=5022/tcp --permanent
-    sudo firewall-cmd --reload
-    ```
+   ```bash
+   sudo firewall-cmd --zone=public --add-port=5022/tcp --permanent
+   sudo firewall-cmd --reload
+   ```
 
 1. On your secondary replicas, run the following commands to join them to the AG:
 
-    ```sql
-    ALTER AVAILABILITY GROUP [ag1] JOIN WITH (CLUSTER_TYPE = EXTERNAL);
-    GO
+   ```sql
+   ALTER AVAILABILITY GROUP [ag1] JOIN WITH (CLUSTER_TYPE = EXTERNAL);
+   GO
 
-    ALTER AVAILABILITY GROUP [ag1] GRANT CREATE ANY DATABASE;
-    GO
-    ```
+   ALTER AVAILABILITY GROUP [ag1] GRANT CREATE ANY DATABASE;
+   GO
+   ```
 
 1. Run the following Transact-SQL script on the primary replica and each secondary replica:
 
-    ```sql
-    GRANT ALTER, CONTROL, VIEW DEFINITION ON AVAILABILITY GROUP::ag1 TO pacemakerLogin;
-    GO
+   ```sql
+   GRANT ALTER, CONTROL, VIEW DEFINITION
+       ON AVAILABILITY GROUP::ag1 TO pacemakerLogin;
+   GO
 
-    GRANT VIEW SERVER STATE TO pacemakerLogin;
-    GO
-    ```
+   GRANT VIEW SERVER STATE TO pacemakerLogin;
+   GO
+   ```
 
 1. Once the secondary replicas are joined, you can see them in SSMS Object Explorer by expanding the **Always On High Availability** node:
 
-    :::image type="content" source="media/rhel-high-availability-fencing-tutorial/availability-group-joined.png" alt-text="Screenshot shows the primary and secondary availability replicas.":::
+   :::image type="content" source="media/rhel-high-availability-fencing-tutorial/availability-group-joined.png" alt-text="Screenshot shows the primary and secondary availability replicas.":::
 
 ### Add a database to the availability group
 
@@ -918,7 +862,7 @@ ALTER DATABASE [db1] SET RECOVERY FULL; -- set the database in full recovery mod
 GO
 
 BACKUP DATABASE [db1] -- backs up the database to disk
-   TO DISK = N'/var/opt/mssql/data/db1.bak';
+    TO DISK = N'/var/opt/mssql/data/db1.bak';
 GO
 
 ALTER AVAILABILITY GROUP [ag1] ADD DATABASE [db1]; -- adds the database db1 to the AG
@@ -930,9 +874,14 @@ GO
 On each secondary SQL Server replica, run the following query to see if the db1 database was created and is in a SYNCHRONIZED state:
 
 ```sql
-SELECT * FROM sys.databases WHERE name = 'db1';
+SELECT *
+FROM sys.databases
+WHERE name = 'db1';
 GO
-SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.dm_hadr_database_replica_states;
+
+SELECT DB_NAME(database_id) AS 'database',
+       synchronization_state_desc
+FROM sys.dm_hadr_database_replica_states;
 ```
 
 If the `synchronization_state_desc` lists SYNCHRONIZED for `db1`, this means the replicas are synchronized. The secondaries are showing `db1` in the primary replica.
@@ -947,66 +896,66 @@ We follow the guide to [create the availability group resources in the Pacemaker
 
 1. Use one of the following commands based on the environment chosen earlier to create the resource `ag_cluster` in the availability group `ag1`.
 
-    **RHEL 7**
+   **RHEL 7**
 
-    ```bash
-    sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true
-    ```
+   ```bash
+   sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true
+   ```
 
-    **RHEL 8**
+   **RHEL 8**
 
-    ```bash
-    sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s promotable notify=true
-    ```
+   ```bash
+   sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s promotable notify=true
+   ```
 
 1. Ensure your resources are online before proceeding, using the following command:
 
-    ```bash
-    sudo pcs resource
-    ```
+   ```bash
+   sudo pcs resource
+   ```
 
-    You should see the following output:
+   You should see the following output:
 
-    **RHEL 7**
+   **RHEL 7**
 
-    ```output
-    [<username>@VM1 ~]$ sudo pcs resource
-    Master/Slave Set: ag_cluster-master [ag_cluster]
-    Masters: [ <VM1> ]
-    Slaves: [ <VM2> <VM3> ]
-    ```
+   ```output
+   [<username>@VM1 ~]$ sudo pcs resource
+   Master/Slave Set: ag_cluster-master [ag_cluster]
+   Masters: [ <VM1> ]
+   Slaves: [ <VM2> <VM3> ]
+   ```
 
-    **RHEL 8**
+   **RHEL 8**
 
-    ```output
-    [<username>@VM1 ~]$ sudo pcs resource
-    * Clone Set: ag_cluster-clone [ag_cluster] (promotable):
-    * ag_cluster             (ocf::mssql:ag) :            Slave VMrhel3 (Monitoring)
-    * ag_cluster             (ocf::mssql:ag) :            Master VMrhel1 (Monitoring)
-    * ag_cluster             (ocf::mssql:ag) :            Slave VMrhel2 (Monitoring)
-    ```
+   ```output
+   [<username>@VM1 ~]$ sudo pcs resource
+   * Clone Set: ag_cluster-clone [ag_cluster] (promotable):
+   * ag_cluster             (ocf::mssql:ag) :            Slave VMrhel3 (Monitoring)
+   * ag_cluster             (ocf::mssql:ag) :            Master VMrhel1 (Monitoring)
+   * ag_cluster             (ocf::mssql:ag) :            Slave VMrhel2 (Monitoring)
+   ```
 
 ### Create a virtual IP resource
 
 1. Use an available static IP address from your network to create a virtual IP resource. You can find one using the command tool `nmap`.
 
     ```bash
-    nmap -sP <IPRange>
-    # For example: nmap -sP 10.0.0.*
-    # The above will scan for all IP addresses that are already occupied in the 10.0.0.x space.
-    ```
+   nmap -sP <IPRange>
+   # For example: nmap -sP 10.0.0.*
+   # The above will scan for all IP addresses that are already occupied in the 10.0.0.x space.
+   ```
 
 1. Set the **stonith-enabled** property to false:
 
-    ```bash
-    sudo pcs property set stonith-enabled=false
-    ```
+   ```bash
+   sudo pcs property set stonith-enabled=false
+   ```
 
 1. Create the virtual IP resource by using the following command. Replace `<availableIP>` with an unused IP address.
 
-    ```bash
-    sudo pcs resource create virtualip ocf:heartbeat:IPaddr2 ip=<availableIP>
-    ```
+   ```bash
+   sudo pcs resource create virtualip ocf:heartbeat:IPaddr2 ip=<availableIP>
+   ```
 
 ### Add constraints
 
@@ -1014,59 +963,59 @@ We follow the guide to [create the availability group resources in the Pacemaker
 
    **RHEL 7**
 
-    ```bash
-    sudo pcs constraint colocation add virtualip ag_cluster-master INFINITY with-rsc-role=Master
-    ```
+   ```bash
+   sudo pcs constraint colocation add virtualip ag_cluster-master INFINITY with-rsc-role=Master
+   ```
 
    **RHEL 8**
 
-    ```bash
-     sudo pcs constraint colocation add virtualip with master ag_cluster-clone INFINITY with-rsc-role=Master
-    ```
+   ```bash
+    sudo pcs constraint colocation add virtualip with master ag_cluster-clone INFINITY with-rsc-role=Master
+   ```
 
 1. Create an ordering constraint to ensure that the AG resource is up and running before the IP address. While the colocation constraint implies an ordering constraint, this enforces it.
 
    **RHEL 7**
 
-    ```bash
-    sudo pcs constraint order promote ag_cluster-master then start virtualip
-    ```
+   ```bash
+   sudo pcs constraint order promote ag_cluster-master then start virtualip
+   ```
 
    **RHEL 8**
 
-    ```bash
-    sudo pcs constraint order promote ag_cluster-clone then start virtualip
-    ```
+   ```bash
+   sudo pcs constraint order promote ag_cluster-clone then start virtualip
+   ```
 
 1. To verify the constraints, run the following command:
 
-    ```bash
-    sudo pcs constraint list --full
-    ```
+   ```bash
+   sudo pcs constraint list --full
+   ```
 
-    You should see the following output:
+   You should see the following output:
 
-    **RHEL 7**
+   **RHEL 7**
 
-    ```output
-    Location Constraints:
-    Ordering Constraints:
-          promote ag_cluster-master then start virtualip (kind:Mandatory) (id:order-ag_cluster-master-virtualip-mandatory)
-    Colocation Constraints:
-          virtualip with ag_cluster-master (score:INFINITY) (with-rsc-role:Master) (id:colocation-virtualip-ag_cluster-master-INFINITY)
-    Ticket Constraints:
-    ```
+   ```output
+   Location Constraints:
+   Ordering Constraints:
+         promote ag_cluster-master then start virtualip (kind:Mandatory) (id:order-ag_cluster-master-virtualip-mandatory)
+   Colocation Constraints:
+         virtualip with ag_cluster-master (score:INFINITY) (with-rsc-role:Master) (id:colocation-virtualip-ag_cluster-master-INFINITY)
+   Ticket Constraints:
+   ```
 
-    **RHEL 8**
+   **RHEL 8**
 
-    ```output
-    Location Constraints:
-    Ordering Constraints:
-            promote ag_cluster-clone then start virtualip (kind:Mandatory) (id:order-ag_cluster-clone-virtualip-mandatory)
-    Colocation Constraints:
-            virtualip with ag_cluster-clone (score:INFINITY) (with-rsc-role:Master) (id:colocation-virtualip-ag_cluster-clone-INFINITY)
-    Ticket Constraints:
-    ```
+   ```output
+   Location Constraints:
+   Ordering Constraints:
+           promote ag_cluster-clone then start virtualip (kind:Mandatory) (id:order-ag_cluster-clone-virtualip-mandatory)
+   Colocation Constraints:
+           virtualip with ag_cluster-clone (score:INFINITY) (with-rsc-role:Master) (id:colocation-virtualip-ag_cluster-clone-INFINITY)
+   Ticket Constraints:
+   ```
 
 ### Re-enable stonith
 
@@ -1115,103 +1064,103 @@ To ensure that the configuration has succeeded so far, we test a failover. For m
 
    **RHEL 7**
 
-    ```bash
-    sudo pcs resource move ag_cluster-master <VM2> --master
-    ```
+   ```bash
+   sudo pcs resource move ag_cluster-master <VM2> --master
+   ```
 
    **RHEL 8**
 
-    ```bash
-    sudo pcs resource move ag_cluster-clone <VM2> --master
-    ```
+   ```bash
+   sudo pcs resource move ag_cluster-clone <VM2> --master
+   ```
 
    You can also specify an additional option so that the temporary constraint that was created to move the resource to a desired node is disabled automatically, and you don't have to perform steps 2 and 3 in the following instructions.
 
    **RHEL 7**
 
-    ```bash
-    sudo pcs resource move ag_cluster-master <VM2> --master lifetime=30S
-    ```
+   ```bash
+   sudo pcs resource move ag_cluster-master <VM2> --master lifetime=30S
+   ```
 
    **RHEL 8**
 
-    ```bash
-    sudo pcs resource move ag_cluster-clone <VM2> --master lifetime=30S
-    ```
+   ```bash
+   sudo pcs resource move ag_cluster-clone <VM2> --master lifetime=30S
+   ```
 
    Another alternative to automate steps 2 and 3, which clear the temporary constraint in the resource move command itself, is by combining multiple commands in a single line.
 
    **RHEL 7**
 
-    ```bash
-    sudo pcs resource move ag_cluster-master <VM2> --master && sleep 30 && pcs resource clear ag_cluster-master
-    ```
+   ```bash
+   sudo pcs resource move ag_cluster-master <VM2> --master && sleep 30 && pcs resource clear ag_cluster-master
+   ```
 
    **RHEL 8**
 
-    ```bash
-    sudo pcs resource move ag_cluster-clone <VM2> --master && sleep 30 && pcs resource clear ag_cluster-clone
-    ```
+   ```bash
+   sudo pcs resource move ag_cluster-clone <VM2> --master && sleep 30 && pcs resource clear ag_cluster-clone
+   ```
 
 1. If you check your constraints again, you see that another constraint was added because of the manual failover:
 
-    **RHEL 7**
+   **RHEL 7**
 
-    ```output
-    [<username>@VM1 ~]$ sudo pcs constraint list --full
-    Location Constraints:
-          Resource: ag_cluster-master
-            Enabled on: VM2 (score:INFINITY) (role: Master) (id:cli-prefer-ag_cluster-master)
-    Ordering Constraints:
-            promote ag_cluster-master then start virtualip (kind:Mandatory) (id:order-ag_cluster-master-virtualip-mandatory)
-    Colocation Constraints:
-            virtualip with ag_cluster-master (score:INFINITY) (with-rsc-role:Master) (id:colocation-virtualip-ag_cluster-master-INFINITY)
-    Ticket Constraints:
-    ```
+   ```output
+   [<username>@VM1 ~]$ sudo pcs constraint list --full
+   Location Constraints:
+         Resource: ag_cluster-master
+           Enabled on: VM2 (score:INFINITY) (role: Master) (id:cli-prefer-ag_cluster-master)
+   Ordering Constraints:
+           promote ag_cluster-master then start virtualip (kind:Mandatory) (id:order-ag_cluster-master-virtualip-mandatory)
+   Colocation Constraints:
+           virtualip with ag_cluster-master (score:INFINITY) (with-rsc-role:Master) (id:colocation-virtualip-ag_cluster-master-INFINITY)
+   Ticket Constraints:
+   ```
 
-    **RHEL 8**
+   **RHEL 8**
 
-    ```output
-    [<username>@VM1 ~]$ sudo pcs constraint list --full
-    Location Constraints:
-          Resource: ag_cluster-master
-            Enabled on: VM2 (score:INFINITY) (role: Master) (id:cli-prefer-ag_cluster-clone)
-    Ordering Constraints:
-            promote ag_cluster-clone then start virtualip (kind:Mandatory) (id:order-ag_cluster-clone-virtualip-mandatory)
-    Colocation Constraints:
-            virtualip with ag_cluster-clone (score:INFINITY) (with-rsc-role:Master) (id:colocation-virtualip-ag_cluster-clone-INFINITY)
-    Ticket Constraints:
-    ```
+   ```output
+   [<username>@VM1 ~]$ sudo pcs constraint list --full
+   Location Constraints:
+         Resource: ag_cluster-master
+           Enabled on: VM2 (score:INFINITY) (role: Master) (id:cli-prefer-ag_cluster-clone)
+   Ordering Constraints:
+           promote ag_cluster-clone then start virtualip (kind:Mandatory) (id:order-ag_cluster-clone-virtualip-mandatory)
+   Colocation Constraints:
+           virtualip with ag_cluster-clone (score:INFINITY) (with-rsc-role:Master) (id:colocation-virtualip-ag_cluster-clone-INFINITY)
+   Ticket Constraints:
+   ```
 
 1. Remove the constraint with ID `cli-prefer-ag_cluster-master` using the following command:
 
-    **RHEL 7**
+   **RHEL 7**
 
-    ```bash
-    sudo pcs constraint remove cli-prefer-ag_cluster-master
-    ```
+   ```bash
+   sudo pcs constraint remove cli-prefer-ag_cluster-master
+   ```
 
-    **RHEL 8**
+   **RHEL 8**
 
-    ```bash
-    sudo pcs constraint remove cli-prefer-ag_cluster-clone
-    ```
+   ```bash
+   sudo pcs constraint remove cli-prefer-ag_cluster-clone
+   ```
 
 1. Check your cluster resources using the command `sudo pcs resource`, and you should see that the primary instance is now `<VM2>`.
 
-    ```output
-    [<username>@<VM1> ~]$ sudo pcs resource
-    Master/Slave Set: ag_cluster-master [ag_cluster]
-         ag_cluster (ocf::mssql:ag):        FAILED <VM1> (Monitoring)
-         Masters: [ <VM2> ]
-         Slaves: [ <VM3> ]
-    virtualip      (ocf::heartbeat:IPaddr2):       Started <VM2>
-    [<username>@<VM1> ~]$ sudo pcs resource
-    Master/Slave Set: ag_cluster-master [ag_cluster]
-         Masters: [ <VM2> ]
-         Slaves: [ <VM1> <VM3> ]
-    virtualip      (ocf::heartbeat:IPaddr2):       Started <VM2>
-    ```
+   ```output
+   [<username>@<VM1> ~]$ sudo pcs resource
+   Master/Slave Set: ag_cluster-master [ag_cluster]
+        ag_cluster (ocf::mssql:ag):        FAILED <VM1> (Monitoring)
+        Masters: [ <VM2> ]
+        Slaves: [ <VM3> ]
+   virtualip      (ocf::heartbeat:IPaddr2):       Started <VM2>
+   [<username>@<VM1> ~]$ sudo pcs resource
+   Master/Slave Set: ag_cluster-master [ag_cluster]
+        Masters: [ <VM2> ]
+        Slaves: [ <VM1> <VM3> ]
+   virtualip      (ocf::heartbeat:IPaddr2):       Started <VM2>
+   ```
 
 ## Test fencing
 
@@ -1235,7 +1184,8 @@ Return Value: 0
 
 Node: <VM3> fenced
 ```
-For more information on testing a fence device, see the following [Red Hat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/s1-stonithtest-haar) article.
+
+For more information on testing a fence device, see [Testing a Fence Device](https://docs.redhat.com/documentation/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/s1-stonithtest-haar) from Red Hat.
 
 ## Next step
 

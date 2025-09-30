@@ -3,7 +3,7 @@ title: "DBCC SHOW_STATISTICS (Transact-SQL)"
 description: DBCC SHOW_STATISTICS displays current query optimization statistics for a table or indexed view.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/10/2025
+ms.date: 09/26/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -34,7 +34,7 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 
 # DBCC SHOW_STATISTICS (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 Displays current query optimization statistics for a table or indexed view. The query optimizer uses statistics to estimate the cardinality or number of rows in the query result, which enables the Query Optimizer to create a high quality query plan. For example, the Query Optimizer could use cardinality estimates to choose the index seek operator instead of the index scan operator in the query plan, improving query performance by avoiding a resource-intensive index scan.
 
@@ -52,13 +52,13 @@ Important updates in past versions of SQL Server:
 
 - [!INCLUDE [synapse-analytics-od-unsupported-syntax](../../includes/synapse-analytics-od-unsupported-syntax.md)]
 
-- For more information on statistics in Microsoft Fabric, see [Statistics](/fabric/data-warehouse/statistics).
+- For more information on statistics in Microsoft Fabric Data Warehouse, see [Statistics](/fabric/data-warehouse/statistics).
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ## Syntax
 
-Syntax for SQL Server and Azure SQL Database:
+Syntax for SQL Server, Azure SQL Database, and SQL database in Fabric:
 
 ```syntaxsql
 DBCC SHOW_STATISTICS ( table_or_indexed_view_name , target )
@@ -68,7 +68,7 @@ DBCC SHOW_STATISTICS ( table_or_indexed_view_name , target )
 [ ; ]
 ```
 
-Syntax for [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], [!INCLUDE [ssPDW](../../includes/sspdw-md.md)], and [!INCLUDE [fabric](../../includes/fabric.md)]:
+Syntax for [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], [!INCLUDE [ssPDW](../../includes/sspdw-md.md)], and [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]:
 
 ```syntaxsql
 DBCC SHOW_STATISTICS ( table_name , target )
@@ -97,7 +97,7 @@ If an automatically created statistic doesn't exist for a column target, error m
 
 In [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE [ssPDW](../../includes/sspdw-md.md)], *target* can't be a column name.
 
-In [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], *target* can be either the name of a single-column histogram statistics or a column. If a column name is used for *target*, this command returns distribution information only about the automatically generated histogram statistic. To view the information about a manually created histogram statistic, specify the statistics name as *target*.
+In [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], *target* can be either the name of a single-column histogram statistics or a column. If a column name is used for *target*, this command returns distribution information only about the automatically generated histogram statistic. To view the information about a manually created histogram statistic, specify the statistics name as *target*.
 
 #### NO_INFOMSGS
 
@@ -210,9 +210,9 @@ In order to view the statistics object in Fabric Data Warehouse or the SQL analy
 
 `DBCC SHOW_STATISTICS` isn't supported on external tables.
 
-In [!INCLUDE [fabric](../../includes/fabric.md)], `DBCC SHOW_STATISTICS` only shows results for histogram statistics, not `ACE-*` statistics.
+In [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], `DBCC SHOW_STATISTICS` only shows results for histogram statistics, not `ACE-*` statistics.
 
-## Examples: SQL Server and Azure SQL Database
+## Examples: SQL Server , Azure SQL Database, and SQL database in Fabric
 
 ### A. Return all statistics information
 

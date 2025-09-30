@@ -4,14 +4,15 @@ description: Learn how to use the Azure Update Manager to automatically update a
 author: dplessMSFT
 ms.author: dpless
 ms.reviewer: mathoma, randolphwest
-ms.date: 04/09/2024
+ms.date: 09/17/2025
 ms.service: azure-vm-sql-server
 ms.subservice: management
 ms.topic: how-to
+ms.custom:
+  - sfi-image-nochange
 tags: azure-resource-manager
-ms.custom: sfi-image-nochange
 ---
-# Azure Update Manager for SQL Server on Azure VMs 
+# Azure Update Manager for SQL Server on Azure VMs
 
 [!INCLUDE [appliesto-sqlvm](../includes/appliesto-sqlvm.md)]
 
@@ -23,13 +24,13 @@ This article explains how to integrate Azure Update Manager with your [SQL virtu
 
 With the Azure Update Manager, you can:
 
-- Perform updates on demand
-- Manage updates at scale for multiple VMs
-- Configure schedules for your patches within designated maintenance windows
-- Perform periodic assessments, which automatically check your VMs for updates every 24 hours and reports machines out of compliance
+- Perform updates on demand.
+- Manage updates at scale for multiple VMs.
+- Configure schedules for your patches within designated maintenance windows.
+- Perform periodic assessments, which automatically check your VMs for updates every 24 hours and reports machines out of compliance.
 
 > [!CAUTION]  
-> You should use either Azure Update Manager or Automated Patching to manage automatic updates for your SQL Server VM, but not both. Enabling both Automated Patching and Azure Update Manager could lead to unexpected behavior, scheduling conflicts, and unintentional changes outside of designated maintenance windows. Disable Automated Patching before using Azure Update Manager or [migrate directly to Azure Update Manager using PowerShell](windows/automated-patching.md).
+> You should use either Azure Update Manager or Automated Patching to manage automatic updates for your SQL Server VM but not both. Enabling both Automated Patching and Azure Update Manager could lead to unexpected behavior, scheduling conflicts, and unintentional changes outside of designated maintenance windows. Disable Automated Patching before using Azure Update Manager or [migrate directly to Azure Update Manager using PowerShell](windows/automated-patching.md).
 
 ## Enable Azure Update Manager
 
@@ -45,7 +46,7 @@ You can enable Azure Update Manager for your SQL Server VM through the Azure por
    :::image type="content" source="media/azure-update-manager-sql-vm/updates.png" alt-text="Screenshot of the updates page for the Windows SQL virtual machines resource in the Azure portal with Try Azure Update Manager highlighted.":::
 
 1. (Optional) If you want to go back to Automated Patching, select **Leave new experience** to go back to the Automated Patching page, and then select **Enable** to enable Automated Patching. This disables the Azure Update Manager integration.
-1. On the **Updates** page, select **Settings** from the navigation bar and then choose **Enable Microsoft updates** to allow SQL Server VMs to receive updates.
+1. On the **Updates** page, select **Settings** from the navigation bar, and then choose **Enable Microsoft updates** to allow SQL Server VMs to receive updates.
 
    :::image type="content" source="media/azure-update-manager-sql-vm/enable-microsoft-updates.png" alt-text="Screenshot of the Updates page of the SQL virtual machines resource in the Azure portal with Enable Microsoft Update highlighted. ":::
 
@@ -130,7 +131,7 @@ To configure a schedule for multiple SQL Server VMs, follow these steps:
 1. Select **Machines** under **Manage**.
    - For Windows, filter the workload by **SQL virtual machine**.
    - For Linux, filter the workload by **OS**.
-1. Check the boxes next to the machines you want to configure a schedule for, to open the **Create a maintenance configuration** page.
+1. Check the boxes next to the machines you want to configure a schedule to open the **Create a maintenance configuration** page.
 1. On the **Basics** tab, fill out details for your subscription, resource group, and configuration details, such as the name of your schedule.
 1. Select **Add a schedule** to define your maintenance window.
 1. (Optional) On the **Updates** tab, select **Include update classification**, and then check the box next to **Updates** if you want to install SQL Server Cumulative updates automatically within the specified schedule. Select **Add** to save your settings.
@@ -138,27 +139,27 @@ To configure a schedule for multiple SQL Server VMs, follow these steps:
    :::image type="content" source="media/azure-update-manager-sql-vm/update-classification.png" alt-text="Screenshot of the Create a maintenance configuration page choosing updates as classification in the Azure portal." lightbox="media/azure-update-manager-sql-vm/update-classification.png":::
 
 1. Select **Review + create** to create your schedule.
-1. After the schedule is created, go back to the **Azure Update Manager** and select the VMs you want to use the new schedule.
+1. After the schedule is created, go back to the **Azure Update Manager**, and select the VMs you want to use the new schedule.
 1. Select **Update settings** on the **Update Settings** dialog box to go to the **Change update settings page**.
 1. Update the **Patch orchestration** option to **Customer Managed Schedules** to ensure your VMs are patched based on your chosen schedule instead of autopatched based on default Microsoft settings.
 
 ## Migrate from Automated Patching to Azure Update Manager
 
-If you're currently using [Automated Patching](windows/automated-patching.md), and want to migrate to Azure Update Manager, you can do so by using the [MigrateSQLVMPatchingSchedule](https://www.powershellgallery.com/packages/MigrateSQLVMPatchingSchedule-Module) PowerShell module to perform following steps:
+If you're currently using [Automated Patching](windows/automated-patching.md) and want to migrate to Azure Update Manager, you can do so by using the [MigrateSQLVMPatchingSchedule](https://www.powershellgallery.com/packages/MigrateSQLVMPatchingSchedule-Module) PowerShell module to perform the following steps:
 
 - Disable Automated Patching
 - Enable Microsoft Update on the virtual machine
 - Create a new maintenance configuration in Azure Update Manager with a similar schedule to Automated Patching
-- Assign the virtual machine to the maintenance configuration 
+- Assign the virtual machine to the maintenance configuration
 
-To migrate to Azure Update Manager by using PowerShell, use the following sample script: 
+To migrate to Azure Update Manager by using PowerShell, use the following sample script:
 
 ```azurepowershell
 $rgname = 'YourResourceGroup'
 $vmname = 'YourVM'
 
 # Install latest migration module
-Install-Module -Name MigrateSQLVMPatchingSchedule-Module -Force -AllowClobber 
+Install-Module -Name MigrateSQLVMPatchingSchedule-Module -Force -AllowClobber
 
 # Import the module
 Import-Module MigrateSQLVMPatchingSchedule-Module
@@ -166,7 +167,7 @@ Import-Module MigrateSQLVMPatchingSchedule-Module
 Convert-SQLVMPatchingSchedule -ResourceGroupName $rgname -VmName $vmname
 ```
 
-The output of the script includes details about the old schedule in Automated Patching and details about the new schedule in Azure Update Manager. For example, if the Automated Patching schedule was every Friday, with a start hour of 2am, and a duration of 150 minutes, the output from the script is:
+The output of the script includes details about the old schedule in Automated Patching and details about the new schedule in Azure Update Manager. For example, if the Automated Patching schedule was every Friday with a start hour of 2am and a duration of 150 minutes, the output from the script is:
 
 :::image type="content" source="media/azure-update-manager-sql-vm/migration-output-powershell.png" alt-text="Screenshot of the output of the PowerShell script that migrates an Automated Patching schedule to Azure Update Manager.":::
 
@@ -174,21 +175,16 @@ The output of the script includes details about the old schedule in Automated Pa
 
 Consider the following:
 
-- [Automated patching via the SQL Server IaaS Agent extension](./windows/automated-patching.md) is incompatible with the Azure Update Manager. If you choose to use the Azure Update Manager to manage your SQL Server VMs, be sure to disable automated patching to avoid unexpected and unscheduled patching.
+- [Automated patching via the SQL Server IaaS Agent extension](windows/automated-patching.md) is incompatible with the Azure Update Manager. If you choose to use the Azure Update Manager to manage your SQL Server VMs, be sure to disable automated patching to avoid unexpected and unscheduled patching.
 - Azure Update Manager isn't aware if you have an Always On availability group configured for your SQL Server VM, so be cautious when creating your patching schedules for your availability group replicas to avoid unexpected failovers.
 
-## Next steps
+## Related content
 
-To learn more, review the following articles:
-
-- About [Azure Update Manager](/azure/update-center/overview).
-- [Check and install on-demand updates](/azure/update-center/quickstart-on-demand).
-- [Schedule patching configuration](/azure/update-center/prerequsite-for-schedule-patching) on Azure VMs.
-- [Update configuration settings](/azure/update-center/manage-update-settings) in Azure Update Manager.
-
-For more information, see the following articles:
-
-- [Overview of SQL Server on Windows VMs](windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
+- [Azure Update Manager](/azure/update-center/overview)
+- [Check and install on-demand updates](/azure/update-center/quickstart-on-demand)
+- [Schedule patching configuration](/azure/update-center/prerequsite-for-schedule-patching)
+- [Update configuration settings](/azure/update-center/manage-update-settings)
+- [What is SQL Server on Azure Windows Virtual Machines?](windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 - [FAQ for SQL Server on Windows VMs](windows/frequently-asked-questions-faq.yml)
-- [Pricing guidance for SQL Server on Windows VMs](windows/pricing-guidance.md)
-- [What's new for SQL Server on Azure VMs](windows/doc-changes-updates-release-notes-whats-new.md)
+- [Pricing guidance for SQL Server on Azure VMs](windows/pricing-guidance.md)
+- [What's new with SQL Server on Azure Virtual Machines?](windows/doc-changes-updates-release-notes-whats-new.md)

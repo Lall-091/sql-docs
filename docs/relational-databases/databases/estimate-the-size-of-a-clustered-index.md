@@ -4,7 +4,7 @@ description: Use this procedure to estimate the amount of space that is required
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest
-ms.date: 02/28/2025
+ms.date: 09/22/2025
 ms.service: sql
 ms.subservice: supportability
 ms.topic: how-to
@@ -38,7 +38,7 @@ You can use the following steps to estimate the amount of space that is required
 
 1. Specify the number of rows that are present in the table:
 
-   ***Num_Rows*** = number of rows in the table
+   - ***Num_Rows*** = number of rows in the table
 
 1. Specify the number of fixed-length and variable-length columns and calculate the space that is required for their storage:
 
@@ -201,9 +201,9 @@ This calculation doesn't consider the following conditions:
 ## Related content
 
 - [Clustered and nonclustered indexes](../indexes/clustered-and-nonclustered-indexes-described.md)
-- [Estimate the Size of a Table](estimate-the-size-of-a-table.md)
+- [Estimate the size of a table](estimate-the-size-of-a-table.md)
 - [Create a clustered index](../indexes/create-clustered-indexes.md)
 - [Create nonclustered indexes](../indexes/create-nonclustered-indexes.md)
-- [Estimate the Size of a Nonclustered Index](estimate-the-size-of-a-nonclustered-index.md)
-- [Estimate the Size of a Heap](estimate-the-size-of-a-heap.md)
-- [Estimate the Size of a Database](estimate-the-size-of-a-database.md)
+- [Estimate the size of a nonclustered index](estimate-the-size-of-a-nonclustered-index.md)
+- [Estimate the size of a heap](estimate-the-size-of-a-heap.md)
+- [Estimate the size of a database](estimate-the-size-of-a-database.md)

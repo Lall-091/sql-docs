@@ -1,10 +1,10 @@
 ---
-title: Configure an availability group for SQL Server on Ubuntu virtual machines in Azure - Linux virtual machines
+title: Configure an Availability Group for SQL Server on Ubuntu Virtual Machines in Azure - Linux Virtual Machines
 description: Learn about setting up an availability group in SQL Server on Ubuntu virtual machines in Azure.
 author: aravindmahadevan-ms
 ms.author: armaha
 ms.reviewer: amitkh-msft, randolphwest
-ms.date: 11/29/2023
+ms.date: 09/25/2025
 ms.service: azure-vm-sql-server
 ms.subservice: hadr
 ms.topic: tutorial
@@ -19,7 +19,6 @@ ms.custom:
 In this tutorial, you'll learn how to:
 
 > [!div class="checklist"]
->  
 > - Create virtual machines, place them in availability set
 > - Enable high availability (HA)
 > - Create a Pacemaker cluster
@@ -105,113 +104,10 @@ You should get the following results once the command completes:
 
 ## Create Ubuntu VMs inside the availability set
 
-1. Get a list of virtual machine images that offer Ubuntu based OS in Azure.
+1. Get a list of virtual machine images that offer Ubuntu based OS in Azure from Canonical.
 
    ```azurecli-interactive
-    az vm image list --all --offer "sql2022-ubuntupro2004"
-   ```
-
-   You should see the following results when you search for the BYOS images:
-
-   ```json
-   [
-     {
-       "architecture": "x64",
-       "offer": "sql2022-ubuntupro2004",
-       "publisher": "MicrosoftSQLServer",
-       "sku": "enterprise_upro",
-       "urn": "MicrosoftSQLServer:sql2022-ubuntupro2004:enterprise_upro:16.0.221108",
-       "version": "16.0.221108"
-     },
-     {
-       "architecture": "x64",
-       "offer": "sql2022-ubuntupro2004",
-       "publisher": "MicrosoftSQLServer",
-       "sku": "enterprise_upro",
-       "urn": "MicrosoftSQLServer:sql2022-ubuntupro2004:enterprise_upro:16.0.230207",
-       "version": "16.0.230207"
-     },
-     {
-       "architecture": "x64",
-       "offer": "sql2022-ubuntupro2004",
-       "publisher": "MicrosoftSQLServer",
-       "sku": "enterprise_upro",
-       "urn": "MicrosoftSQLServer:sql2022-ubuntupro2004:enterprise_upro:16.0.230808",
-       "version": "16.0.230808"
-     },
-     {
-       "architecture": "x64",
-       "offer": "sql2022-ubuntupro2004",
-       "publisher": "MicrosoftSQLServer",
-       "sku": "sqldev_upro",
-       "urn": "MicrosoftSQLServer:sql2022-ubuntupro2004:sqldev_upro:16.0.221108",
-       "version": "16.0.221108"
-     },
-     {
-       "architecture": "x64",
-       "offer": "sql2022-ubuntupro2004",
-       "publisher": "MicrosoftSQLServer",
-       "sku": "sqldev_upro",
-       "urn": "MicrosoftSQLServer:sql2022-ubuntupro2004:sqldev_upro:16.0.230207",
-       "version": "16.0.230207"
-     },
-     {
-       "architecture": "x64",
-       "offer": "sql2022-ubuntupro2004",
-       "publisher": "MicrosoftSQLServer",
-       "sku": "sqldev_upro",
-       "urn": "MicrosoftSQLServer:sql2022-ubuntupro2004:sqldev_upro:16.0.230808",
-       "version": "16.0.230808"
-     },
-     {
-       "architecture": "x64",
-       "offer": "sql2022-ubuntupro2004",
-       "publisher": "MicrosoftSQLServer",
-       "sku": "standard_upro",
-       "urn": "MicrosoftSQLServer:sql2022-ubuntupro2004:standard_upro:16.0.221108",
-       "version": "16.0.221108"
-     },
-     {
-       "architecture": "x64",
-       "offer": "sql2022-ubuntupro2004",
-       "publisher": "MicrosoftSQLServer",
-       "sku": "standard_upro",
-       "urn": "MicrosoftSQLServer:sql2022-ubuntupro2004:standard_upro:16.0.230207",
-       "version": "16.0.230207"
-     },
-     {
-       "architecture": "x64",
-       "offer": "sql2022-ubuntupro2004",
-       "publisher": "MicrosoftSQLServer",
-       "sku": "standard_upro",
-       "urn": "MicrosoftSQLServer:sql2022-ubuntupro2004:standard_upro:16.0.230808",
-       "version": "16.0.230808"
-     },
-     {
-       "architecture": "x64",
-       "offer": "sql2022-ubuntupro2004",
-       "publisher": "MicrosoftSQLServer",
-       "sku": "web_upro",
-       "urn": "MicrosoftSQLServer:sql2022-ubuntupro2004:web_upro:16.0.221108",
-       "version": "16.0.221108"
-     },
-     {
-       "architecture": "x64",
-       "offer": "sql2022-ubuntupro2004",
-       "publisher": "MicrosoftSQLServer",
-       "sku": "web_upro",
-       "urn": "MicrosoftSQLServer:sql2022-ubuntupro2004:web_upro:16.0.230207",
-       "version": "16.0.230207"
-     },
-     {
-       "architecture": "x64",
-       "offer": "sql2022-ubuntupro2004",
-       "publisher": "MicrosoftSQLServer",
-       "sku": "web_upro",
-       "urn": "MicrosoftSQLServer:sql2022-ubuntupro2004:web_upro:16.0.230808",
-       "version": "16.0.230808"
-     }
-   ]
+    az vm image list --all --publisher "Canonical"
    ```
 
    This tutorial uses `Ubuntu 20.04`.
@@ -332,9 +228,9 @@ For more information about DNS and Active Directory, see [Join SQL Server on a L
 
 > [!IMPORTANT]  
 > We recommend that you use your **private IP** address in the previous example. Using the public IP address in this configuration will cause the setup to fail, and would expose your VM to external networks.
->  
+>
 > The VMs and their IP address used in this example are listed as follows:
->  
+>
 > - `ubuntu1`: 10.0.0.85
 > - `ubuntu2`: 10.0.0.86
 > - `ubuntu3`: 10.0.0.87
@@ -507,7 +403,7 @@ Create a JSON file called `fence-agent-role.json` and add the following (adding 
 
 ### Create a custom role from JSON file in PowerShell/CLI
 
-```bash
+```azurecli
 az role definition create --role-definition fence-agent-role.json
 ```
 
@@ -649,7 +545,7 @@ sudo systemctl restart mssql-server
 
    ```sql
    ALTER EVENT SESSION AlwaysOn_health ON SERVER
-       WITH (STARTUP_STATE = ON);
+   WITH (STARTUP_STATE = ON);
    GO
 
    CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<MasterKeyPassword>';
@@ -667,9 +563,9 @@ sudo systemctl restart mssql-server
 
    BACKUP CERTIFICATE dbm_certificate TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
    WITH PRIVATE KEY (
-           FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
-           ENCRYPTION BY PASSWORD = '<PrivateKeyPassword>'
-           );
+       FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
+       ENCRYPTION BY PASSWORD = '<PrivateKeyPassword>'
+   );
    GO
    ```
 
@@ -714,8 +610,8 @@ Exit the **sqlcmd** session by running the `exit` command, and return back to yo
 
    ```sql
    CREATE CERTIFICATE dbm_certificate
-       FROM FILE = '/var/opt/mssql/data/dbm_certificate.cer'
-       WITH PRIVATE KEY (
+   FROM FILE = '/var/opt/mssql/data/dbm_certificate.cer'
+   WITH PRIVATE KEY (
        FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
        DECRYPTION BY PASSWORD = '<PrivateKeyPassword>'
    );
@@ -728,11 +624,11 @@ Run the following script on all SQL Server instances using **sqlcmd** or SSMS:
 
 ```sql
 CREATE ENDPOINT [Hadr_endpoint]
-   AS TCP (LISTENER_PORT = 5022)
-   FOR DATABASE_MIRRORING (
-   ROLE = ALL,
-   AUTHENTICATION = CERTIFICATE dbm_certificate,
-ENCRYPTION = REQUIRED ALGORITHM AES
+AS TCP (LISTENER_PORT = 5022)
+FOR DATABASE_MIRRORING (
+    ROLE = ALL,
+    AUTHENTICATION = CERTIFICATE dbm_certificate,
+    ENCRYPTION = REQUIRED ALGORITHM AES
 );
 GO
 
@@ -790,7 +686,7 @@ On all SQL Server instances, create a SQL Server login for Pacemaker. The follow
 - Replace `<password>` with your own complex password.
 
 ```sql
-USE [master]
+USE [master];
 GO
 
 CREATE LOGIN [pacemakerLogin]
@@ -812,7 +708,7 @@ On all SQL Server instances, save the credentials used for the SQL Server login.
 
 1. Add the following two lines to the file:
 
-   ```bash
+   ```output
    pacemakerLogin
    <password>
    ```
@@ -884,7 +780,7 @@ WHERE name = 'db1';
 GO
 
 SELECT DB_NAME(database_id) AS 'database',
-    synchronization_state_desc
+       synchronization_state_desc
 FROM sys.dm_hadr_database_replica_states;
 GO
 ```
@@ -983,7 +879,7 @@ Full List of Resources:
     * Masters: [ ubuntu1 ]
     * Slaves : [ ubuntu2 ubuntu3 ]
   * Resource Group:  virtual ip-group:
-    * azure-load-balancer  (ocf  :: heartbeat:azure-lb):           Started ubuntu1     
+    * azure-load-balancer  (ocf  :: heartbeat:azure-lb):           Started ubuntu1
     * virtualip     (ocf :: heartbeat: IPaddr2):                   Started ubuntu1
   * fence-vm     (stonith:fence_azure_arm):                        Started ubuntu1
 ```

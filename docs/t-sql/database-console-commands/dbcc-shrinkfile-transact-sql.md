@@ -4,7 +4,7 @@ description: "DBCC SHRINKFILE shrinks the size of a database file."
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: umajay, dpless, randolphwest
-ms.date: 04/22/2025
+ms.date: 09/26/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -27,11 +27,11 @@ helpviewer_keywords:
   - "DBCC SHRINKFILE statement"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azure-sqldw-latest||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azure-sqldw-latest||=azuresqldb-mi-current||=fabric"
 ---
 # DBCC SHRINKFILE (Transact-SQL)
 
-[!INCLUDE [SQL Server SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Shrinks the current database's specified data or log file size. You can use it to move data from one file to other files in the same filegroup, which empties the file and allows for its database removal. You can shrink a file to less than its size at creation, resetting the minimum file size to the new value. Use DBCC SHRINKFILE only when necessary.
 
@@ -97,7 +97,7 @@ Migrates all data from the specified file to other files in the *same filegroup*
 
 For FILESTREAM filegroup containers, you can't use `ALTER DATABASE` to remove a file until the FILESTREAM Garbage Collector has run and deleted all the unnecessary filegroup container files that `EMPTYFILE` has copied to another container. For more information, see [sp_filestream_force_garbage_collection](../../relational-databases/system-stored-procedures/filestream-and-filetable-sp-filestream-force-garbage-collection.md). For information on removing a FILESTREAM container, see the corresponding section in [ALTER DATABASE File and Filegroup Options (Transact-SQL)](../../t-sql/statements/alter-database-transact-sql-file-and-filegroup-options.md)
 
-`EMPTYFILE` is not supported in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] or [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] Hyperscale.
+`EMPTYFILE` is not supported in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] Hyperscale, or [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)].
 
 #### NOTRUNCATE
 
@@ -121,7 +121,7 @@ Suppresses all informational messages.
 
 ### WAIT_AT_LOW_PRIORITY with shrink operations
 
-**Applies to:** [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]
+**Applies to:** [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)]
 
 The wait at low priority feature reduces lock contention. For more information, see [Understanding concurrency issues with DBCC SHRINKDATABASE](#understand-concurrency-issues-with-dbcc-shrinkfile).
 
@@ -131,14 +131,14 @@ This feature is similar to the [WAIT_AT_LOW_PRIORITY with online index operation
 
 #### WAIT_AT_LOW_PRIORITY
 
-**Applies to**: [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] ([!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later) and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)].
+**Applies to**: [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] ([!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)].
 
 When a shrink command is executed in WAIT_AT_LOW_PRIORITY mode, new queries requiring schema stability (Sch-S) locks are not blocked by the waiting shrink operation until the shrink operation stops waiting and starts executing. The shrink operation executes when it is able to obtain a schema modify lock (Sch-M) lock. If a new shrink operation in WAIT_AT_LOW_PRIORITY mode cannot obtain a lock due to a long-running query, the shrink operation will eventually time out after 1 minute by default and will silently exit.
 
 If a new shrink operation in WAIT_AT_LOW_PRIORITY mode cannot obtain a lock due to a long-running query, the shrink operation will eventually time out after 1 minute by default and silently exit. This will occur if the shrink operation cannot obtain the Sch-M lock due to concurrent query or queries holding Sch-S locks. When a timeout occurs, error 49516 is sent to the [SQL Server error log](../../tools/configuration-manager/viewing-the-sql-server-error-log.md), for example: `Msg 49516, Level 16, State 1, Line 134 Shrink timeout waiting to acquire schema modify lock in WLP mode to process IAM pageID 1:2865 on database ID 5`. Retry the shrink operation in `WAIT_AT_LOW_PRIORITY` mode. 
 
 #### ABORT_AFTER_WAIT = [ SELF | BLOCKERS ]
-**Applies to**: [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] ([!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later) and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)].
+**Applies to**: [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] ([!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)].
 
 - SELF
 
@@ -175,7 +175,7 @@ When specified with WAIT_AT_LOW_PRIORITY, the shrink operation's Sch-M lock requ
 
 ### Known issues
 
-**Applies to:** [!INCLUDE [sql-server](../../includes/ssnoversion-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] dedicated SQL pool
+**Applies to:** [!INCLUDE [sql-server](../../includes/ssnoversion-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] dedicated SQL pool
 
 - Currently, LOB column types (**varbinary(max)**, **varchar(max)**, and **nvarchar(max)**) in compressed columnstore segments are not affected by `DBCC SHRINKDATABASE` and `DBCC SHRINKFILE`.
 

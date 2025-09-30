@@ -15,4 +15,4 @@ Can be a constant, variable, or column of character string.
 Data types: **char**, **nchar**, **varchar**, or **nvarchar**.
 
 > [!NOTE]  
-> The `REGEXP_LIKE`, `REGEXP_COUNT`, `REGEXP_INSTR`, `REGEXP_REPLACE`, and `REGEXP_SUBSTR` functions support LOB types (**varchar(max)** and **nvarchar(max)**) up to 2 MB for the *string_expression* parameter.
+> The `REGEXP_LIKE`, `REGEXP_COUNT`, `REGEXP_INSTR`, and `REGEXP_SUBSTR` functions support LOB types (**varchar(max)** and **nvarchar(max)**) up to 2 MB for the *string_expression* parameter.

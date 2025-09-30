@@ -4,7 +4,7 @@ description: This quickstart describes repeatable deployments of the mssql-pytho
 author: dlevy-msft-sql
 ms.author: dlevy
 ms.reviewer: vanto, randolphwest
-ms.date: 09/11/2025
+ms.date: 09/23/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: quickstart-sdk
@@ -34,10 +34,34 @@ The `mssql-python` doesn't require any external dependencies on Windows machines
 - A database on SQL Server, Azure SQL Database, or SQL database in Fabric with the [!INCLUDE [sssampledbobject-md](../../../includes/sssampledbobject-md.md)] sample schema and a valid connection string.
 - Install one-time operating system specific prerequisites.
 
-  ### [Linux](#tab/linux)
+  ### [Alpine](#tab/alpine-linux)
 
   ```bash
-  sudo apt-get -y install libltdl7
+  apk add libtool krb5-libs krb5-dev
+  ```
+
+  ### [Debian/Ubuntu](#tab/debianUbuntu-linux)
+
+  ```bash
+  apt-get install -y libltdl7 libkrb5-3 libgssapi-krb5-2
+  ```
+
+  ### [RHEL](#tab/RHEL-linux)
+
+  ```bash
+  dnf install -y libtool-ltdl krb5-libs
+  ```
+
+  ### [SUSE](#tab/SUSE-linux)
+
+  ```bash
+  zypper install -y libltdl7 libkrb5-3 libgssapi-krb5-2
+  ```
+
+  ### [openSUSE](#tab/openSUSE-linux)
+
+  ```bash
+  zypper install -y libltdl7
   ```
 
   ### [macOS](#tab/mac)
@@ -219,12 +243,12 @@ In the same directory, install the `mssql-python`, `python-dotenv`, and `rich` p
         c.CompanyName
         ORDER BY
         OrderCount DESC;
-     """
+      """
 
-    conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute(SQL_QUERY)
-    return cursor
+      conn = get_connection()
+      cursor = conn.cursor()
+      cursor.execute(SQL_QUERY)
+      return cursor
    ```
 
 1. Find this code.
@@ -237,7 +261,7 @@ In the same directory, install the `mssql-python`, `python-dotenv`, and `rich` p
 1. Replace it with this code.
 
    ```python
-   def main():
+   def main() -> None:
       parser = ArgumentParser()
       parser.add_argument("--sleep-time", type=int, default=0,
                           help="Time to sleep in seconds to simulate slow connection")

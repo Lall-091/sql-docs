@@ -5,7 +5,7 @@ description: Learn how to analyze deadlocks and prevent them from reoccurring in
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mathoma, dfurman, wiassaf
-ms.date: 01/28/2025
+ms.date: 09/23/2025
 ms.service: azure-sql-database
 ms.subservice: performance
 ms.topic: troubleshooting-general
@@ -19,7 +19,7 @@ ms.custom:
 
 [!INCLUDE [appliesto-sqldb-fabricsqldb](../includes/appliesto-sqldb-fabricsqldb.md)]
 
-This article teaches you how to identify deadlocks, use deadlock graphs and Query Store to identify the queries in the deadlock, and plan and test changes to prevent deadlocks from reoccurring. This article applies to Azure SQL Database and Fabric SQL database, which shares many features of Azure SQL Database.
+This article teaches you how to identify deadlocks, use deadlock graphs and Query Store to identify the queries in the deadlock, and plan and test changes to prevent deadlocks from reoccurring. This article applies to Azure SQL Database and SQL database in Fabric, which shares many features of Azure SQL Database.
 
 This article focuses on identifying and analyzing deadlocks due to lock contention. Learn more about other types of deadlocks in [resources that can deadlock](/sql/relational-databases/sql-server-deadlocks-guide#deadlock_resources).
 
@@ -118,7 +118,7 @@ Learn more about each of these approaches in the [Prevent a deadlock from reoccu
 
 In this article, we use the `AdventureWorksLT` sample database to set up alerts for deadlocks, cause an example deadlock, analyze the deadlock graph for the example deadlock, and test changes to prevent the deadlock from reoccurring.
 
-We use the [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) client in this article, as it contains functionality to display deadlock graphs in an interactive visual mode. You can use other clients such as [Azure Data Studio](/azure-data-studio/download-azure-data-studio) to follow along with the examples, but you might only be able to view deadlock graphs as XML.
+We use the [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) client in this article, as it contains functionality to display deadlock graphs in an interactive visual mode. You can use other clients such as [Azure Data Studio](/azure-data-studio/download-azure-data-studio), the [MSSQL extension for Visual Studio Code](/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code), [sqlcmd](/sql/tools/sqlcmd/sqlcmd-utility), or your favorite T-SQL querying tool to follow along with the examples, but you might only be able to view deadlock graphs as XML.
 
 ### Create the AdventureWorksLT database
 
@@ -128,13 +128,13 @@ For detailed instructions on how to create `AdventureWorksLT` with the Azure por
 
 ### Set up deadlock alerts in the Azure portal
 
-To set up alerts for deadlock events, follow the steps in the article [Create alerts for Azure SQL Database and Azure Synapse Analytics using the Azure portal](alerts-create.md).
+To set up alerts for deadlock events, follow the steps in the article [Create alerts for Azure SQL Database using the Azure portal](alerts-create.md).
 
 Select **Deadlocks** as the signal name for the alert. Configure the **Action group** to notify you using the method of your choice, such as the **Email/SMS/Push/Voice** action type.
 
 ## Collect deadlock graphs in Azure SQL Database with Extended Events
 
-Deadlock graphs are a rich source of information regarding the processes and locks involved in a deadlock. To collect deadlock graphs with Extended Events (XEvents) in Azure SQL Database, capture the `sqlserver.database_xml_deadlock_report` event.
+Deadlock graphs are a rich source of information regarding the processes and locks involved in a deadlock. To collect deadlock graphs with Extended Events (XEvents) in Azure SQL Database and SQL database in Fabric, capture the `sqlserver.database_xml_deadlock_report` event.
 
 You can collect deadlock graphs with XEvents using either the [ring buffer target](xevent-code-ring-buffer.md) or an [event file target](xevent-code-event-file.md). Considerations for selecting the appropriate target type are summarized in the following table:
 
@@ -184,7 +184,7 @@ To create an XEvents session that writes to an event file target, we:
 To configure an Azure Storage container, first create or select an existing Azure Storage account, then create the container. Generate a Shared Access Signature (SAS) token for the container. This section describes completing this process in the Azure portal.
 
 > [!NOTE]  
-> If you wish to create and configure the Azure Storage blob container with PowerShell, see [Event File target code for extended events in Azure SQL Database](xevent-code-event-file.md). Alternately, you might find it convenient to [Use Azure Storage Explorer](#use-azure-storage-explorer) to create and configure the Azure Storage blob container instead of using the Azure portal.
+> If you wish to create and configure the Azure Storage blob container with PowerShell, see [Event File target code for extended events in Azure SQL Database and SQL database in Fabric](xevent-code-event-file.md). Alternately, you might find it convenient to [Use Azure Storage Explorer](#use-azure-storage-explorer) to create and configure the Azure Storage blob container instead of using the Azure portal.
 
 #### Create or select an Azure Storage account
 
@@ -228,7 +228,7 @@ From the container page in the Azure portal:
 
 ### Create a database scoped credential
 
-Connect to your database in Azure SQL Database with SSMS to run the following steps.
+Connect to your database with SSMS to run the following steps.
 
 To create a database scoped credential, you must first create a [database master key](/sql/t-sql/statements/create-master-key-transact-sql) (DMK) in the database if one doesn't exist.
 
@@ -688,7 +688,7 @@ Resources are represented by rectangles in the visual representation of the dead
 :::image type="content" source="media/analyze-prevent-deadlocks/deadlock-graph-resource-list.png" alt-text="Screenshot of a deadlock graph, displayed visually in SSMS. Rectangles show the resources that are involved in the deadlock." lightbox="media/analyze-prevent-deadlocks/deadlock-graph-resource-list.png":::
 
 > [!NOTE]  
-> Database names are represented as GUIDs (**uniqueidentifier**) in deadlock graphs for databases in Azure SQL Database. This is the `physical_database_name` for the database listed in the [sys.databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) and [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dynamic management views.
+> Database names are represented as GUIDs (**uniqueidentifier**) in deadlock graphs for databases in Azure SQL Database and SQL database in Fabric. This is the `physical_database_name` for the database listed in the [sys.databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) and [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dynamic management views.
 
 In this example deadlock:
 

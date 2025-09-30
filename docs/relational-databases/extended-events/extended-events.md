@@ -1,10 +1,10 @@
 ---
-title: "Extended Events overview - SQL Server, Azure SQL Database, and Azure SQL Managed Instance"
+title: "Extended Events Overview - SQL Server, Azure SQL Database, and Azure SQL Managed Instance"
 description: The Extended Events architecture lets you collect data necessary to identify and troubleshoot a performance problem in SQL Server, Azure SQL Database, and Azure SQL Managed Instance. It's configurable and scalable.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: randolphwest
-ms.date: 10/22/2023
+ms.reviewer: randolphwest, dfurman
+ms.date: 09/23/2025
 ms.service: sql
 ms.subservice: xevents
 ms.topic: overview
@@ -14,12 +14,12 @@ helpviewer_keywords:
   - "extended events [SQL Server]"
   - "xe"
   - "XEvents"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
 
 # Extended Events overview
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 The Extended Events (XEvents) architecture enables users to collect as much or as little data as is necessary to monitor, identify, or troubleshoot performance in SQL Server, Azure SQL Database, and Azure SQL Managed Instance. Extended Events is highly configurable, lightweight, and scales well. For more information, see [Extended Events Architecture](extended-events.md#extended-events-architecture).
 
@@ -27,8 +27,8 @@ Extended Events replace the deprecated [SQL Trace](../sql-trace/sql-trace.md) an
 
 To get started with Extended Events, use [Quickstart: Extended Events](quick-start-extended-events-in-sql-server.md).
 
-> [!NOTE]  
-> If you use Azure SQL, learn how [Code examples can differ for Azure SQL Database and SQL Managed Instance](#code-examples-can-differ-for-azure-sql-database-and-sql-managed-instance) and more about [Extended events in Azure SQL Database](/azure/azure-sql/database/xevent-db-diff-from-svr).
+> [!NOTE]
+> For Azure SQL Database, SQL database in Fabric, and SQL Managed Instance, [code examples can differ](#code-examples-can-differ-for-azure-sql-database-and-sql-managed-instance) because event file files are stored in Azure Storage blobs. For more information, see [Extended events in Azure SQL Database](/azure/azure-sql/database/xevent-db-diff-from-svr).
 
 ## Benefits of Extended Events
 
@@ -109,7 +109,136 @@ ORDER BY obj1.name,
     col2.name
 ```
 
-## Code examples can differ for Azure SQL Database and SQL Managed Instance
+## Extended Events catalog views
+
+Extended Events provides several [catalog views](/sql/relational-databases/system-catalog-views/catalog-views-transact-sql). Catalog views tell you about event session *metadata* or *definition*. These views don't return information about instances of active event sessions.
+
+# [Azure SQL Database and SQL database in Fabric](#tab/sqldb)
+
+| Name of catalog view | Description |
+| :--- | :--- |
+| [sys.database_event_session_actions](/sql/relational-databases/system-catalog-views/sys-database-event-session-actions-azure-sql-database) | Returns a row for each action on each event of an event session. |
+| [sys.database_event_session_events](/sql/relational-databases/system-catalog-views/sys-database-event-session-events-azure-sql-database) | Returns a row for each event in an event session. |
+| [sys.database_event_session_fields](/sql/relational-databases/system-catalog-views/sys-database-event-session-fields-azure-sql-database) | Returns a row for each customize-able column that was explicitly set on events and targets. |
+| [sys.database_event_session_targets](/sql/relational-databases/system-catalog-views/sys-database-event-session-targets-azure-sql-database) | Returns a row for each event target for an event session. |
+| [sys.database_event_sessions](/sql/relational-databases/system-catalog-views/sys-database-event-sessions-azure-sql-database) | Returns a row for each event session in the database. |
+
+# [Azure SQL Managed Instance](#tab/sqlmi)
+
+| Name of catalog view | Description |
+| :--- | :--- |
+| [sys.server_event_session_actions](/sql/relational-databases/system-catalog-views/sys-server-event-session-actions-transact-sql) | Returns a row for each action on each event of an event session. |
+| [sys.server_event_session_events](/sql/relational-databases/system-catalog-views/sys-server-event-session-events-transact-sql) | Returns a row for each event in an event session. |
+| [sys.server_event_session_fields](/sql/relational-databases/system-catalog-views/sys-server-event-session-fields-transact-sql) | Returns a row for each customizable column that was explicitly set on events and targets. |
+| [sys.server_event_session_targets](/sql/relational-databases/system-catalog-views/sys-server-event-session-targets-transact-sql) | Returns a row for each event target for an event session. |
+| [sys.server_event_sessions](/sql/relational-databases/system-catalog-views/sys-server-event-sessions-transact-sql) | Returns a row for each event session on the server. |
+
+# [SQL Server](#tab/sqlserver)
+
+| Name of catalog view | Description |
+| :--- | :--- |
+| [sys.server_event_session_actions](/sql/relational-databases/system-catalog-views/sys-server-event-session-actions-transact-sql) | Returns a row for each action on each event of an event session. |
+| [sys.server_event_session_events](/sql/relational-databases/system-catalog-views/sys-server-event-session-events-transact-sql) | Returns a row for each event in an event session. |
+| [sys.server_event_session_fields](/sql/relational-databases/system-catalog-views/sys-server-event-session-fields-transact-sql) | Returns a row for each customizable column that was explicitly set on events and targets. |
+| [sys.server_event_session_targets](/sql/relational-databases/system-catalog-views/sys-server-event-session-targets-transact-sql) | Returns a row for each event target for an event session. |
+| [sys.server_event_sessions](/sql/relational-databases/system-catalog-views/sys-server-event-sessions-transact-sql) | Returns a row for each event session on the server. |
+
+---
+
+## Extended Events dynamic management views
+
+Extended Events provides several [dynamic management views (DMVs)](/sql/relational-databases/system-dynamic-management-views/extended-events-dynamic-management-views). DMVs return information about *started* event sessions.
+
+# [Azure SQL Database and SQL database in Fabric](#tab/sqldb)
+
+| Name of DMV | Description |
+| :--- | :--- |
+| [sys.dm_xe_database_session_event_actions](/sql/relational-databases/system-dynamic-management-views/sys-dm-xe-database-session-event-actions-azure-sql-database) | Returns information about event session actions. |
+| [sys.dm_xe_database_session_events](/sql/relational-databases/system-dynamic-management-views/sys-dm-xe-database-session-events-azure-sql-database) | Returns information about session events. |
+| [sys.dm_xe_database_session_object_columns](/sql/relational-databases/system-dynamic-management-views/sys-dm-xe-database-session-object-columns-azure-sql-database) | Shows the configuration values for objects that are bound to a session. |
+| [sys.dm_xe_database_session_targets](/sql/relational-databases/system-dynamic-management-views/sys-dm-xe-database-session-targets-azure-sql-database) | Returns information about session targets. |
+| [sys.dm_xe_database_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-xe-database-sessions-azure-sql-database) | Returns a row for each event session running in the current database. |
+
+# [Azure SQL Managed Instance](#tab/sqlmi)
+
+| Name of DMV | Description |
+| :--- | :--- |
+| [sys.dm_xe_session_event_actions](/sql/relational-databases/system-dynamic-management-views/sys-dm-xe-session-event-actions-transact-sql) | Returns information about event session actions. |
+| [sys.dm_xe_session_events](/sql/relational-databases/system-dynamic-management-views/sys-dm-xe-session-events-transact-sql) | Returns information about session events. |
+| [sys.dm_xe_session_object_columns](/sql/relational-databases/system-dynamic-management-views/sys-dm-xe-session-object-columns-transact-sql) | Shows the configuration values for objects that are bound to a session. |
+| [sys.dm_xe_session_targets](/sql/relational-databases/system-dynamic-management-views/sys-dm-xe-session-targets-transact-sql) | Returns information about session targets. |
+| [sys.dm_xe_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-xe-sessions-transact-sql) | Returns a row for each event session running on the server. |
+
+# [SQL Server](#tab/sqlserver)
+
+| Name of DMV | Description |
+| :--- | :--- |
+| [sys.dm_xe_session_event_actions](/sql/relational-databases/system-dynamic-management-views/sys-dm-xe-session-event-actions-transact-sql) | Returns information about event session actions. |
+| [sys.dm_xe_session_events](/sql/relational-databases/system-dynamic-management-views/sys-dm-xe-session-events-transact-sql) | Returns information about session events. |
+| [sys.dm_xe_session_object_columns](/sql/relational-databases/system-dynamic-management-views/sys-dm-xe-session-object-columns-transact-sql) | Shows the configuration values for objects that are bound to a session. |
+| [sys.dm_xe_session_targets](/sql/relational-databases/system-dynamic-management-views/sys-dm-xe-session-targets-transact-sql) | Returns information about session targets. |
+| [sys.dm_xe_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-xe-sessions-transact-sql) | Returns a row for each event session running on the server. |
+
+---
+
+## Permissions
+
+In Azure SQL Database, SQL database in Fabric, Azure SQL Managed Instance, and in SQL Server 2022 and later versions, Extended Events supports a granular permission model. The following permissions can be granted:
+
+# [Azure SQL Database and SQL database in Fabric](#tab/sqldb)
+
+```sql
+CREATE ANY DATABASE EVENT SESSION
+DROP ANY DATABASE EVENT SESSION
+ALTER ANY DATABASE EVENT SESSION
+ALTER ANY DATABASE EVENT SESSION ADD EVENT
+ALTER ANY DATABASE EVENT SESSION DROP EVENT
+ALTER ANY DATABASE EVENT SESSION ADD TARGET
+ALTER ANY DATABASE EVENT SESSION DROP TARGET
+ALTER ANY DATABASE EVENT SESSION ENABLE
+ALTER ANY DATABASE EVENT SESSION DISABLE
+ALTER ANY DATABASE EVENT SESSION OPTION
+```
+
+# [Azure SQL Managed Instance](#tab/sqlmi)
+
+```sql
+CREATE ANY EVENT SESSION
+DROP ANY EVENT SESSION
+ALTER ANY EVENT SESSION
+ALTER ANY EVENT SESSION ADD EVENT
+ALTER ANY EVENT SESSION DROP EVENT
+ALTER ANY EVENT SESSION ADD TARGET
+ALTER ANY EVENT SESSION DROP TARGET
+ALTER ANY EVENT SESSION ENABLE
+ALTER ANY EVENT SESSION DISABLE
+ALTER ANY EVENT SESSION OPTION
+```
+
+# [SQL Server](#tab/sqlserver)
+
+```sql
+CREATE ANY EVENT SESSION
+DROP ANY EVENT SESSION
+ALTER ANY EVENT SESSION
+ALTER ANY EVENT SESSION ADD EVENT
+ALTER ANY EVENT SESSION DROP EVENT
+ALTER ANY EVENT SESSION ADD TARGET
+ALTER ANY EVENT SESSION DROP TARGET
+ALTER ANY EVENT SESSION ENABLE
+ALTER ANY EVENT SESSION DISABLE
+ALTER ANY EVENT SESSION OPTION
+```
+
+---
+
+For information on what each of these permissions controls, see [CREATE EVENT SESSION](/sql/t-sql/statements/create-event-session-transact-sql), [ALTER EVENT SESSION](/sql/t-sql/statements/alter-event-session-transact-sql), and [DROP EVENT SESSION](/sql/t-sql/statements/drop-event-session-transact-sql).
+
+All of these permissions are included in the `CONTROL` permission on the database, managed instance, or SQL Server instance. In Azure SQL Database, the database owner (`dbo`), members of the `db_owner` database role, and the administrators of the logical server hold the database `CONTROL` permission. In Azure SQL Managed Instance and in SQL Server, members of the `sysadmin` server role hold the `CONTROL` permission on the instance.
+
+<a id="code-examples-can-differ-for-azure-sql-database-and-sql-managed-instance"></a>
+
+## Code examples can differ for Azure SQL Database, SQL database in Fabric, and SQL Managed Instance
 
 [!INCLUDE [sql-on-premises-vs-azure-similar-sys-views-include](../../includes/paragraph-content/sql-on-premises-vs-azure-similar-sys-views-include.md)]
 
@@ -117,10 +246,9 @@ ORDER BY obj1.name,
 
 - [Extended Events Dynamic Management Views](../system-dynamic-management-views/extended-events-dynamic-management-views.md)
 - [Extended Events Catalog Views (Transact-SQL)](../system-catalog-views/extended-events-catalog-views-transact-sql.md)
-- [SQL Mysteries: Causality tracking vs Event Sequence for XEvent Sessions](https://techcommunity.microsoft.com/t5/sql-server-blog/sql-mysteries-causality-tracking-vs-event-sequence-for-xevent/ba-p/3198826)
+- [SQL Mysteries: Causality tracking vs Event Sequence for XEvent Sessions](https://techcommunity.microsoft.com/blog/sqlserver/sql-mysteries-causality-tracking-vs-event-sequence-for-xevent-sessions/3198826)
 - [Analyze and prevent deadlocks in Azure SQL Database](/azure/azure-sql/database/analyze-prevent-deadlocks)
 - [Quickstart: Extended Events](quick-start-extended-events-in-sql-server.md)
 - [Event File target code for Extended Events in Azure SQL Database](/azure/azure-sql/database/xevent-code-event-file)
 - [Extended events in Azure SQL Database](/azure/azure-sql/database/xevent-db-diff-from-svr)
 - [XELite: Cross-platform library to read XEvents from XEL files or live SQL streams](https://www.nuget.org/packages/Microsoft.SqlServer.XEvent.XELite/)
-- [Read-SQLXEvent PowerShell cmdlet](https://www.powershellgallery.com/packages/SqlServer.XEvent)

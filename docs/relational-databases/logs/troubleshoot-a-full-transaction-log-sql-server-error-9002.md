@@ -4,7 +4,7 @@ description: Learn how to resolve a full SQL Server transaction log, and how to 
 author: "MashaMSFT"
 ms.author: "mathoma"
 ms.reviewer: randolphwest
-ms.date: 04/21/2025
+ms.date: 09/25/2025
 ms.service: sql
 ms.subservice: supportability
 ms.topic: troubleshooting
@@ -160,8 +160,8 @@ SELECT
     END AS log_reuse_wait_explanation,
     sdb.database_id,
     sdb.recovery_model_desc,
-    lsu.used_log_space_in_bytes / 1024 AS Used_log_size_MB,
-    lsu.total_log_size_in_bytes / 1024 AS Total_log_size_MB,
+    lsu.used_log_space_in_bytes / 1024. / 1024. AS Used_log_size_MB,
+    lsu.total_log_size_in_bytes / 1024. / 1024. AS Total_log_size_MB,
     100 - lsu.used_log_space_in_percent AS Percent_Free_Space
 INTO #CannotTruncateLog_Db
 FROM sys.databases AS sdb

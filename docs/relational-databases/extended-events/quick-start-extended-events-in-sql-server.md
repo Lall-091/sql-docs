@@ -3,8 +3,8 @@ title: "Quickstart: Extended Events"
 description: This quickstart helps you use Extended Events, a lightweight performance monitoring system, to collect data to monitor and troubleshoot problems.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: maghan, randolphwest
-ms.date: 10/28/2024
+ms.reviewer: maghan, randolphwest, dfurman
+ms.date: 09/23/2025
 ms.service: sql
 ms.subservice: xevents
 ms.topic: quickstart
@@ -15,12 +15,13 @@ f1_keywords:
   - "sql11.ssms.XeNewEventSession.Events.f1"
   - "sql11.ssms.XeNewEventSession.Targets.f1"
   - "sql11.ssms.XeNewEventSession.Advanced.f1"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
 
 # Quickstart: Extended Events
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
+
 
 Extended Events is a lightweight performance monitoring feature that enables users to collect data to monitor and troubleshoot problems. By using Extended Events, you can see details of the database engine internal operations that are relevant for performance monitoring and troubleshooting purposes. To learn more about Extended Events, see [Extended Events overview](extended-events.md).
 
@@ -41,7 +42,7 @@ After reading this article, you can:
 - See how you can search for and discover all the available events.
 - Understand the relationships among Extended Events system views.
 
-> [!TIP]  
+> [!TIP]
 > For more information about Extended Events in Azure SQL Database, including code samples, see [Extended Events in Azure SQL Database and Azure SQL Managed Instance](/azure/azure-sql/database/xevent-db-diff-from-svr).
 
 ## Prerequisites
@@ -51,6 +52,7 @@ To get started, you need to:
 - [Download SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md). We recommend using a recent version of SSMS with the latest improvements and fixes.
 - Ensure that your account has `CREATE ANY EVENT SESSION` (introduced in SQL Server 2022), or `ALTER ANY EVENT SESSION` [server permission](../../t-sql/statements/grant-server-permissions-transact-sql.md).
 - Additionally, when using SSMS and for viewing sessions that are created, the login requires the permission `VIEW SERVER PERFORMANCE STATE`.
+- For Azure SQL Database, Azure SQL Managed Instance, and SQL database in Fabric, Extended Events event files are stored in Azure Storage. You'll need an [Azure storage account](/azure/storage/common/storage-account-create).
 
 Details about security and permissions related to Extended Events are available at the end of this article in the [Appendix](#appendix1).
 
@@ -78,7 +80,7 @@ The text and supporting screenshots can be slightly different in your version of
 
 1. Connect to a database engine instance. Extended Events are supported starting with [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)], in Azure SQL Database, and Azure SQL Managed Instance.
 
-1. In Object Explorer, select **Management > Extended Events**. In Azure SQL Database, event sessions are database-scoped, so the **Extended Events** option is found under each database, not under **Management**. 
+1. In Object Explorer, select **Management > Extended Events**. In Azure SQL Database, event sessions are database-scoped, so the **Extended Events** option is found under each database, not under **Management**.
 1. Right-click on the **Sessions** folder and select **New Session...**. The **New Session...** dialog is preferable to **New Session Wizard**, although the two are similar.
 
    > [!TIP]
@@ -104,14 +106,14 @@ The text and supporting screenshots can be slightly different in your version of
    - For **Operator**, choose `like_i_sql_unicode_string`. Here, `i` in the name of operator means case-**i**nsensitive.
    - For **Value**, type `%SELECT%HAVING%`. Here, percent signs (`%`) are wildcards standing for any character string.
 
-   > [!NOTE]  
-   > In the two-part name of the field, *sqlserver* is the package name and *sql_text* is the field name. The event we chose earlier, *sql_statement_completed*, must be in the same package as the field we choose.
+   > [!NOTE]
+   > In the two-part name of the field, `sqlserver` is the package name and `sql_text` is the field name. The event we chose earlier, `sql_statement_completed`, must be in the same package as the field we choose.
 
    :::image type="content" source="media/quick-start-extended-events-in-sql-server/xevents-session-new-session-filter-predicate.png" alt-text="Screenshot of New Session > Events > Configure > Filter (Predicate) > Field." lightbox="media/quick-start-extended-events-in-sql-server/xevents-session-new-session-filter-predicate.png":::
 
 1. Select the **Data Storage** page.
 
-1. In the **Targets** area, select the new Target Type line that says **Click here to add a target**. In this tutorial, we'll write our captured extended events data to an event file. This means the event data is stored in a file that we can open and view later. Starting with [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], event data can also be written to be stored in Azure Storage, the default in Azure SQL.
+1. In the **Targets** area, select the new Target Type line that says **Click here to add a target**. In this tutorial, we'll write our captured extended events data to an event file. This means the event data is stored in a file that we can open and view later. Starting with [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], event data can also be written to be stored in Azure Storage. For Azure SQL Database, Azure SQL Managed Instance, and SQL database in Fabric, event files are always stored in Azure Storage.
 
    - In the **Type** dropdown list, choose `event_file`.
 
@@ -151,7 +153,7 @@ CREATE EVENT SESSION [YourSession]
         ( [sqlserver].[like_i_sql_unicode_string]([sqlserver].[sql_text], N'%SELECT%HAVING%')
         )
     )
-    ADD TARGET package0.event_file 
+    ADD TARGET package0.event_file
     (SET filename=N'C:\temp\YourSession_Target.xel');
 GO
 ```
@@ -231,7 +233,7 @@ trace_event_id         3
 
 In a query window in SSMS, run the following `SELECT` statement to see the event data captured by your session. Each row represents one event occurrence. The `CAST(... AS xml)` changes the data type of the column from **nvarchar** to **xml**. This lets you select the column value, to open it in a new window for easier reading.
 
-> [!NOTE]  
+> [!NOTE]
 > The `event_file` target always inserts a numeric part in the `xel` file name. Before you can run the following query, you must copy the actual full name of the `xel` file that includes this numeric part, and paste it into the `SELECT` statement. In the following example, the numeric part is `_0_131085363367310000`.
 
 ```sql
@@ -245,12 +247,11 @@ SELECT object_name,
 FROM sys.fn_xe_file_target_read_file(
     'C:\Temp\YourSession_Target_0_131085363367310000.xel', NULL, NULL, NULL
 );
-
 ```
 
 This query provides two ways to view the full results of any given event row:
 
-- Run the SELECT in SSMS, and then select a cell in the `event_data_XML` column.
+- Run the `SELECT` in SSMS, and then select a cell in the `event_data_XML` column.
 
 - Copy the XML string from a cell in the `event_data` column. Paste into any text editor like Notepad, and save the file with extension `xml`. Then open the file in a browser or an editor capable of displaying XML data.
 

@@ -3,7 +3,7 @@ title: "sys.dm_xtp_system_memory_consumers (Transact-SQL)"
 description: Reports system level memory consumers for In-Memory OLTP.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 09/27/2023
+ms.date: 09/18/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -17,6 +17,7 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 ---
+
 # sys.dm_xtp_system_memory_consumers (Transact-SQL)
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
@@ -41,8 +42,8 @@ For more information, see [In-Memory OLTP (In-Memory Optimization)](../in-memory
 | allocated_bytes | **bigint** | Number of bytes reserved for this consumer. |
 | used_bytes | **bigint** | Bytes used by this consumer. Applies only to varheap memory consumers.<br /><br />Starting with [!INCLUDE [sqlserver2022](../../includes/sssql22-md.md)], applies to varheap and lookaside memory consumers. |
 | allocation_count | **int** | Number of allocations.<br /><br />Starting with [!INCLUDE [sqlserver2022](../../includes/sssql22-md.md)], the number of allocations from the system heap for lookaside memory consumers. |
-| partition_count | **int** | Internal use only. |
-| sizeclass_count | **int** | Internal use only. |
+| partition_count | **int** | The number of superblock partitions for this memory consumer. For more information, see [Memory fragmentation](../../relational-databases/in-memory-oltp/estimate-memory-requirements-for-memory-optimized-tables.md#memory-fragmentation). |
+| sizeclass_count | **int** | The number of superblock sizeclasses for this memory consumer. [Memory fragmentation](../../relational-databases/in-memory-oltp/estimate-memory-requirements-for-memory-optimized-tables.md#memory-fragmentation). |
 | min_sizeclass | **int** | Internal use only. |
 | max_sizeclass | **int** | Internal use only. |
 | memory_consumer_address | **varbinary** | Internal address of the consumer. |

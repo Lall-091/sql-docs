@@ -4,7 +4,7 @@ description: "Enables unforcing a previously forced plan for a particular query 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 09/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -34,7 +34,7 @@ Enables unforcing a previously forced plan for a particular query in the Query S
 sp_query_store_unforce_plan
     [ @query_id = ] query_id ,
     [ @plan_id = ] plan_id ,
-    [ @force_plan_scope = ] 'replica_group_id'
+    [ @replica_group_id = ] 'replica_group_id'
 [ ; ]
 ```
 
@@ -50,9 +50,9 @@ The ID of the query. *@query_id* is **bigint**, with no default.
 
 The ID of the query plan that will no longer be enforced. *@plan_id* is **bigint**, with no default.
 
-#### [ @force_plan_scope = ] '*replica_group_id*'
+#### [ @replica_group_id = ] '*replica_group_id*'
 
-You can unforce plans on a secondary replica when [Query Store for readable secondaries](../performance/query-store-for-secondary-replicas.md) is enabled. Execute `sp_query_store_force_plan` and `sp_query_store_unforce_plan` on the primary replica. Using the *@force_plan_scope* argument defaults to the local replica where the command is being executed, but you can specify a *replica_group_id* referencing the [sys.query_store_plan_forcing_locations](../system-catalog-views/sys-query-store-plan-forcing-locations-transact-sql.md) system catalog view.
+You can unforce plans on a secondary replica when [Query Store for readable secondaries](../performance/query-store-for-secondary-replicas.md) is enabled. Execute `sp_query_store_force_plan` and `sp_query_store_unforce_plan` on the primary replica. Using the *@replica_group_id* argument defaults to the local replica where the command is being executed, but you can specify a *replica_group_id* referencing the [sys.query_store_plan_forcing_locations](../system-catalog-views/sys-query-store-plan-forcing-locations-transact-sql.md) system catalog view.
 
 ## Return code values
 
@@ -60,7 +60,7 @@ You can unforce plans on a secondary replica when [Query Store for readable seco
 
 ## Permissions
 
-Requires the ALTER permission on the database.
+Requires the `ALTER` permission on the database.
 
 ## Examples
 

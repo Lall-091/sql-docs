@@ -1,6 +1,6 @@
 ---
-title: Vector Search & Vector Index in the SQL Database Engine
-description: How to create, manage, and search vectors in the SQL Database Engine.
+title: Vector Search & Vector Index
+description: How to create, manage, and search vectors in the SQL Server Database Engine.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: damauri, pookam, jovanpop, randolphwest, mikeray
@@ -17,7 +17,7 @@ helpviewer_keywords:
 monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
 ---
 
-# Overview of vector search and vector indexes in the SQL Database Engine
+# Vector search and vector indexes in the SQL Database Engine
 
 [!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 

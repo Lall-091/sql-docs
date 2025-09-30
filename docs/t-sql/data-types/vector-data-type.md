@@ -53,7 +53,7 @@ GO
 
 For more information on working with vector data, see:
 
-- [Overview of vectors in the SQL Database Engine](../../relational-databases/vectors/vectors-sql-server.md)
+- [Overview of vectors in the SQL Database Engine](../../sql-server/ai/vectors.md)
 - [Intelligent applications](/azure/azure-sql/database/ai-artificial-intelligence-intelligent-applications#vector-search)
 
 ## Sample syntax
@@ -507,6 +507,6 @@ The **vector** type has the following limitations:
 ## Related content
 
 - [Half Precision Float - Vector Data Type](vector-data-type-half-precision-float.md)
-- [Overview of vectors in the SQL Database Engine](../../relational-databases/vectors/vectors-sql-server.md)
+- [Overview of vectors in the SQL Database Engine](../../sql-server/ai/vectors.md)
 - [Intelligent applications](/azure/azure-sql/database/ai-artificial-intelligence-intelligent-applications?view=azuresql&preserve-view=true#vector-search)
 - [Vector Functions](../functions/vector-functions-transact-sql.md)

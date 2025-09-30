@@ -4,7 +4,7 @@ description: "SUSER_SNAME returns the login name associated with a security iden
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 10/04/2023
+ms.date: 09/26/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -23,11 +23,11 @@ helpviewer_keywords:
   - "names [SQL Server], logins"
 dev_langs:
   - "TSQL"
-monikerRange: ">= aps-pdw-2016 || = azuresqldb-current || = azure-sqldw-latest || >= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
 # SUSER_SNAME (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 Returns the login name associated with a security identification number (SID).
 
@@ -45,7 +45,7 @@ SUSER_SNAME ( [ server_user_sid ] )
 
 The optional login security identification number. *server_user_sid* is **varbinary(85)**. *server_user_sid* can be the security identification number of any [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login or [!INCLUDE[msCoName](../../includes/msconame-md.md)] Windows user or group. Refer to the `sid` column in `sys.server_principals` or `sys.sql_logins` catalog views. If *server_user_sid* isn't specified, information about the current user is returned. If the parameter contains the word `NULL`, `SUSER_SNAME` returns `NULL`.
 
-*server_user_sid* is not supported on [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)].
+*server_user_sid* is not supported on [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] or [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)].
 
 ## Return type
 
@@ -53,15 +53,17 @@ The optional login security identification number. *server_user_sid* is **varbin
 
 ## Remarks
 
-`SUSER_SNAME` can be used as a DEFAULT constraint in either `ALTER TABLE` or `CREATE TABLE`. `SUSER_SNAME` can be used in a select list, in a WHERE clause, and anywhere an expression is allowed. `SUSER_SNAME` must always be followed by parentheses, even if no parameter is specified.
+`SUSER_SNAME` can be used as a `DEFAULT` constraint in either `ALTER TABLE` or `CREATE TABLE`. `SUSER_SNAME` can be used in a select list, in a `WHERE` clause, and anywhere an expression is allowed. `SUSER_SNAME` must always be followed by parentheses, even if no parameter is specified.
 
 When called without an argument, `SUSER_SNAME` returns the name of the current security context. When called without an argument within a batch that has switched context by using `EXECUTE AS`, `SUSER_SNAME` returns the name of the impersonated context. When called from an impersonated context, `ORIGINAL_LOGIN` returns the name of the original context.
 
-## [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] remarks
+<a id="-remarks"></a>
+
+### Remarks for Azure SQL Database, SQL database in Fabric
 
 `SUSER_SNAME` always returns the login name for the current security context.
 
-The `SUSER_SNAME` statement doesn't support execution using an impersonated security context through EXECUTE AS.
+The `SUSER_SNAME` statement doesn't support execution using an impersonated security context through `EXECUTE AS`.
 
 `SUSER_SNAME` doesn't support the *server_user_id* argument.
 
@@ -87,7 +89,7 @@ GO
 
 ### C. Use SUSER_SNAME as a DEFAULT constraint
 
-The following example uses `SUSER_SNAME` as a DEFAULT constraint in a `CREATE TABLE` statement.
+The following example uses `SUSER_SNAME` as a `DEFAULT` constraint in a `CREATE TABLE` statement.
 
 ```sql
 USE AdventureWorks2022;
@@ -153,7 +155,7 @@ GO
 
 ## Related content
 
-- [SUSER_SID (Transact-SQL)](../../t-sql/functions/suser-sid-transact-sql.md)
+- [SUSER_SID (Transact-SQL)](suser-sid-transact-sql.md)
 - [Principals (Database Engine)](../../relational-databases/security/authentication-access/principals-database-engine.md)
 - [sys.server_principals (Transact-SQL)](../../relational-databases/system-catalog-views/sys-server-principals-transact-sql.md)
-- [EXECUTE AS (Transact-SQL)](../../t-sql/statements/execute-as-transact-sql.md)
+- [EXECUTE AS (Transact-SQL)](../statements/execute-as-transact-sql.md)

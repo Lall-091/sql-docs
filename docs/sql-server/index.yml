@@ -82,7 +82,7 @@ landingContent:
           - text: Overview
             url: artificial-intelligence-intelligent-applications.md
           - text: Vectors
-            url: ../relational-databases/vectors/vectors-sql-server.md
+            url: ../sql-server/ai/vectors.md
           - text: Copilot in SSMS
             url: /ssms/copilot/copilot-in-ssms-overview
           - text: Microsoft Copilot in Azure SQL Database

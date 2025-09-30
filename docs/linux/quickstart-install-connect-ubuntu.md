@@ -3,7 +3,7 @@ title: "Ubuntu: Install SQL Server on Linux"
 description: This quickstart shows how to install SQL Server 2017 and later versions on Ubuntu and then create and query a database with sqlcmd.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 08/12/2025
+ms.date: 09/25/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: quickstart
@@ -55,45 +55,6 @@ For more information on supported platforms, see [Release notes for SQL Server 2
 
 > [!TIP]  
 > This tutorial requires user input and an internet connection. If you're interested in the [unattended](sql-server-linux-setup.md#unattended) or [offline](sql-server-linux-setup.md#offline) installation procedures, see [Installation guidance for SQL Server on Linux](sql-server-linux-setup.md).
-
-If you choose to have a preinstalled SQL Server virtual machine (VM) on Ubuntu ready to run your production-based workload, then follow the [best practices](/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist) for creating the SQL Server VM.
-
-<!--SQL Server 2019 on Linux-->
-::: moniker range="=sql-server-linux-ver15 || =sql-server-ver15"
-
-## Azure Marketplace images
-
-You can create your VM based on one of the following two Azure Marketplace images:
-
-- [Ubuntu 20.04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2019-ubuntupro2004)
-- [Ubuntu 18.04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2019-ubuntupro1804)
-
-When you use these images, you avoid the installation step, and can directly configure the instance by providing the SKU and the `sa` password needed to get started with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. SQL Server Azure VMs deployed on Ubuntu Pro using the above Marketplace images, are fully supported by both Microsoft and Canonical.
-
-You can configure SQL Server on Linux with **mssql-conf**, using the following command:
-
-```bash
-sudo /opt/mssql/bin/mssql-conf setup
-```
-
-::: moniker-end
-
-<!--SQL Server 2022 on Linux-->
-::: moniker range="=sql-server-linux-ver16 || =sql-server-ver16"
-
-## Azure Marketplace image
-
-You can create your VM based on the following Azure Marketplace image: [Ubuntu 20.04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2022-ubuntupro2004).
-
-When you use this image, you avoid the installation step, and can directly configure the instance by providing the SKU and the `sa` password needed to get started with SQL Server. SQL Server Azure VMs deployed on Ubuntu Pro using the above Marketplace images, are fully supported by both Microsoft and Canonical.
-
-You can configure SQL Server on Linux with **mssql-conf**, using the following command:
-
-```bash
-sudo /opt/mssql/bin/mssql-conf setup
-```
-
-::: moniker-end
 
 > [!CAUTION]  
 > [!INCLUDE [password-complexity](includes/password-complexity.md)]

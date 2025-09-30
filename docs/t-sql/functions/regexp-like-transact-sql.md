@@ -64,6 +64,8 @@ Boolean value. `true` or `false`.
 
 ### SARGability support
 
+**Applies to**: [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE[ssazuremi](../../includes/ssazuremi-md.md)], and SQL database in Microsoft Fabric. Currently not supported on [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)].
+
 `REGEXP_LIKE` supports *SARGability* when the pattern begins with anchor `^` and also the patterns that include quantifiers such as `*`, `+`, `?`, `{n}`, `{n,}`, and `{n,m}`, for example, `^ab+` or `^ab*` etc. It also supports range characters like `[0-9A-Za-z]` and allows the use of backslash `\` to escape the metacharacters. This allows the query optimizer to use index seek operations, improving query performance. However, regular expressions do not honor collation rules, which may lead to differences in behavior when compared to other string comparison functions like `LIKE`, especially on indexed columns with language-specific collations.
 
 For example, in Turkish collation, the characters `i` and `I` are treated distinctly even in the case-insensitive collation due to language-specific rules.

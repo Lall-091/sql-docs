@@ -3,8 +3,8 @@ title: "Targets for Extended Events"
 description: This article explains different targets for Extended Events sessions. Learn about target abilities in gathering and reporting data and target parameters.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: randolphwest
-ms.date: 08/13/2025
+ms.reviewer: dfurman, randolphwest
+ms.date: 09/23/2025
 ms.service: sql
 ms.subservice: xevents
 ms.topic: conceptual
@@ -12,7 +12,7 @@ monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-201
 ---
 # Targets for Extended Events
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This article explains when and how to use Extended Events targets. For each target, the present article explains:
 
@@ -49,12 +49,12 @@ The [CREATE EVENT SESSION](../../t-sql/statements/create-event-session-transact-
 - The fields associated with each chosen event
 - The parameters associated with each target you want to add to the sessions
 
-SELECT statements, which return such lists from system views are available to copy from the following article, in its section C:
+`SELECT` statements, which return such lists from system views are available to copy from the following article, in its section C:
 
 - [SELECTs and JOINs From System Views for Extended Events in SQL Server](selects-and-joins-from-system-views-for-extended-events-in-sql-server.md)
-  - [C.4](selects-and-joins-from-system-views-for-extended-events-in-sql-server.md#section_C_4_data_fields) SELECT fields for an event.
-  - [C.6](selects-and-joins-from-system-views-for-extended-events-in-sql-server.md#section_C_6_parameters_targets) SELECT parameters for a target.
-  - [C.3](selects-and-joins-from-system-views-for-extended-events-in-sql-server.md#section_C_3_select_all_available_objects) SELECT actions.
+  - [C.4](selects-and-joins-from-system-views-for-extended-events-in-sql-server.md#section_C_4_data_fields) `SELECT` fields for an event.
+  - [C.6](selects-and-joins-from-system-views-for-extended-events-in-sql-server.md#section_C_6_parameters_targets) `SELECT` parameters for a target.
+  - [C.3](selects-and-joins-from-system-views-for-extended-events-in-sql-server.md#section_C_3_select_all_available_objects) `SELECT` actions.
 
 You can see parameters, fields, and actions used in the context of an actual `CREATE EVENT SESSION` statement, from [section B2](selects-and-joins-from-system-views-for-extended-events-in-sql-server.md#section_B_2_TSQL_perspective) (T-SQL perspective).
 
@@ -62,13 +62,13 @@ You can see parameters, fields, and actions used in the context of an actual `CR
 
 In SQL Server, Extended Events can interoperate with Event Tracing for Windows (ETW) to monitor system activity. For more information, see:
 
-- [Event Tracing for Windows Target](event-tracing-for-windows-target.md)
+- [Event Tracing for Windows target](event-tracing-for-windows-target.md)
 - [Monitor System Activity Using Extended Events](monitor-system-activity-using-extended-events.md)
 
 This ETW target processes the data it receives *synchronously*, whereas most targets process *asynchronously*.
 
 ::: moniker range="= azuresqldb-current || = azuresqldb-mi-current "
-> [!NOTE]  
+> [!NOTE]
 > [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] don't support the `etw_classic_sync_target` target. As an alternative, use the `event_file` target with blobs stored in Azure Storage.
 ::: moniker-end
 
@@ -112,73 +112,200 @@ The `event_file` target writes event session output from buffer to a disk file o
 
 - You specify the `filename` parameter in the `ADD TARGET` clause. The file extension must be `xel`.
 - The file name you choose is used by the system as a prefix to which a date-time based long integer is appended, followed by the `xel` extension.
-- You can optionally specify the `MAX_FILE_SIZE` parameter. It defines the maximum size in megabytes (MB) to which the file can grow. 
-- You also have the choice to use the `MAX_ROLLOVER_FILES` option to specify the maximum number of files to retain in the file system in addition to the current file. The default value is UNLIMITED. When `MAX_ROLLOVER_FILES` is evaluated, if the number of files exceeds the `MAX_ROLLOVER_FILES` setting, the oldest file is deleted. For more information, see [MAX_ROLLOVER_FILES](../../t-sql/statements/create-server-audit-transact-sql.md#max_rollover_files---integer--unlimited-). 
+- You can optionally specify the `MAX_FILE_SIZE` parameter. It defines the maximum size in megabytes (MB) to which the file can grow.
+- You also have the choice to use the `MAX_ROLLOVER_FILES` option to specify the maximum number of files to retain in the file system in addition to the current file. The default value is `UNLIMITED`. When `MAX_ROLLOVER_FILES` is evaluated, if the number of files exceeds the `MAX_ROLLOVER_FILES` setting, the oldest file is deleted. For more information, see [MAX_ROLLOVER_FILES](../../t-sql/statements/create-server-audit-transact-sql.md#max_rollover_files---integer--unlimited-).
 
 > [!IMPORTANT]
 > Depending on the events added to a session, the files produced by the `event_file` target might contain sensitive data. Carefully review the file system and share permissions on the directory and individual `.xel` files, including inherited access, to avoid granting unnecessary read access. Follow the [principle of least privilege](/entra/identity-platform/secure-least-privileged-access).
 
 ::: moniker range="= azuresqldb-current || = azuresqldb-mi-current "
 
-> [!NOTE]  
-> [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] only blobs in Azure Storage as the value of the `filename` parameter.
->  
-> For an `event_file` code example for SQL Database or SQL Managed Instance, see [Event File target code for Extended Events in SQL Database](/azure/sql-database/sql-database-xevent-code-event-file).
+> [!NOTE]
+> [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] only support blobs in [Azure Storage](/azure/storage/common/storage-account-create) as the value of the `filename` parameter. For an `event_file` code example for Azure SQL Database, SQL database in Fabric, or Azure SQL Managed Instance, see [Create an event session with an event_file target in Azure Storage](/azure/azure-sql/database/xevent-code-event-file).
 
 ::: moniker-end
 
-#### CREATE EVENT SESSION with event_file target
+### Create an event session with event_file target in Azure Storage
 
-Here's an example of the `CREATE EVENT SESSION` with an `ADD TARGET` clause that adds an `event_file` target.
+For a detailed description of how to create a storage account in Azure Storage, see [Create a storage account](/azure/storage/common/storage-account-create). You can create a storage account using Azure portal, PowerShell, Azure SQL, an ARM template, or a Bicep template. Use an account that:
+
+- Is a `Standard general-purpose v2` account.
+- Uses the `Hot` [blob access tier](/azure/storage/blobs/access-tiers-overview).
+- If using SQL Server in Azure VM, the VM should be in the same Azure region as your SQL Server instance.
+- Doesn't have the [hierarchical namespace](/azure/storage/blobs/data-lake-storage-namespace) enabled.
+
+Next, [create a container](/azure/storage/blobs/blob-containers-portal#create-a-container) in this storage account using Azure portal. You can also create a container [using PowerShell](/azure/storage/blobs/blob-containers-powershell#create-a-container), or [using Azure CLI](/azure/storage/blobs/blob-containers-cli#create-a-container).
+
+Note the names of the *storage account* and *container* you created. You will use them in the following steps.
+
+First, grant access to the container. To read and write event data, the database engine requires specific access to the container. You can grant this access in one of two ways, depending on your choice of authentication type:
+
+- If using managed identity with Microsoft Entra authentication, you assign the **Storage Blob Data Contributor** RBAC role for the container to the managed identity. For steps, see [Grant access using managed identity](#grant-access-using-managed-identity). For more information, see the following based on the platform:
+  - The [managed identity of the Azure SQL Database logical server](/azure/azure-sql/database/authentication-azure-ad-user-assigned-managed-identity?view=azuresql-db&preserve-view=true).
+    - Use a database-scoped credential.
+  - The [managed identity of the Azure SQL managed instance](/azure/azure-sql/database/authentication-azure-ad-user-assigned-managed-identity?view=azuresql-mi&preserve-view=true).
+    - Use a server-scoped credential (recommended), or a database-scoped credential.
+  - The [managed identity of the Azure VM hosting your SQL Server instance](/azure/azure-sql/virtual-machines/windows/configure-azure-ad-authentication-for-sql-vm?view=azuresql-vm&preserve-view=true). For more information, see [How managed identities work in Azure VMs](/entra/identity/managed-identities-azure-resources/how-managed-identities-work-vm).
+    - Use a server-scoped credential.
+  - The [managed identity of the Arc-enabled SQL Server instance](../../sql-server/azure-arc/managed-identity.md).
+    - Use a server-scoped credential.
+- If using secret-based authentication, you create a [shared access signature (SAS) token](/azure/storage/common/storage-sas-overview#sas-token) for the container. For steps, see [Grant access using a SAS token](#grant-access-using-a-sas-token). To use this authentication type, the **Allow storage account key access** option must be enabled. For more information, see [Prevent Shared Key authorization for an Azure Storage account](/azure/storage/common/shared-key-authorization-prevent).
+
+#### Grant access using managed identity
+
+1. Create a [server-scoped credential or database-scoped credential](../security/authentication-access/credentials-database-engine.md).
+
+   **Create a server-scoped credential**: *Applies to:* SQL Server, Azure SQL Managed Instance.
+
+    Using a client tool such as SSMS, open a new query window, connect to `master` database in the instance where you create the event session, and paste the following T-SQL batch.
+
+    ```sql
+    /* The name of the credential must match the URL of the blob container. */
+    IF EXISTS ( SELECT 1 FROM sys.credentials
+                WHERE name = 'https://<storage-account-name>.blob.core.windows.net/<container-name>' )
+        DROP CREDENTIAL [https://<storage-account-name>.blob.core.windows.net/<container-name>];
+
+    /* When using managed identity, the credential does not contain a secret */
+    CREATE CREDENTIAL [https://<storage-account-name>.blob.core.windows.net/<container-name>]
+    WITH IDENTITY = 'MANAGED IDENTITY';
+    ```
+
+   **Create a database-scoped credential**: *Applies to:* Azure SQL Database, Azure SQL Managed Instance.
+
+    Using a client tool such as SSMS, open a new query window, connect to user database where you create the event session, and paste the following T-SQL batch.
+
+    ```sql
+    /* The name of the credential must match the URL of the blob container. */
+    IF EXISTS ( SELECT 1 FROM sys.database_credentials
+              WHERE name = 'https://<storage-account-name>.blob.core.windows.net/<container-name>' )
+        DROP DATABASE SCOPED CREDENTIAL
+            [https://<storage-account-name>.blob.core.windows.net/<container-name>];
+
+    /* When using managed identity, the credential does not contain a secret */
+    CREATE DATABASE SCOPED CREDENTIAL
+        [https://<storage-account-name>.blob.core.windows.net/<container-name>]
+    WITH IDENTITY = 'MANAGED IDENTITY';
+    ```
+
+1. Then, follow the steps to [create an event session in SSMS with event_file target in Azure Storage](#create-an-event-session-in-ssms-with-event_file-target-in-azure-storage).
+
+<a id ="grant-access-using-a-sas-token"></a>
+
+#### Grant access using a shared access signature (SAS) token
+
+1. In the Azure portal, navigate to the storage account and container that you created. Select the container, and navigate to **Settings > Shared access tokens**.
+
+    The SAS token must satisfy the following requirements:
+
+      - **Permissions** set to `Read`, `Write`, `Delete`, `List`.
+      - The **Start** time and **Expiry** time must encompass the lifetime of the event session. The SAS token you create only works within this time interval.
+      - Have no IP address restrictions.
+    
+    Select the **Generate SAS token and URL** button. The SAS token is in the **Blob SAS token** box. You can copy it to use in the next step.
+
+    > [!IMPORTANT]
+    > The SAS token provides read and write access to this container. Treat it as you would treat a password or any other secret.
+
+    :::image type="content" source="media/targets-for-extended-events-in-sql-server/create-shared-access-signature-token.png" alt-text="Screenshot of the Shared Access Tokens screen for an Azure Storage container, with a generated SAS token for an example container." lightbox="media/targets-for-extended-events-in-sql-server/create-shared-access-signature-token.png":::
+
+1. Create a credential to store the SAS token.
+
+    Store the SAS token in a server-scoped [credential](/sql/relational-databases/security/authentication-access/credentials-database-engine). Using a client tool such as SSMS, open a new query window, connect it to the `master` database on the SQL Server instance where you create the event session, and paste the following T-SQL batch.
+
+    > [!NOTE]
+    > Executing the following T-SQL batch requires the `CONTROL` database permission in the `master` database, which is held by the members of the `db_owner` database role in `master`, and by the members of the `sysadmin` server role on the SQL Server instance.
+
+    Before executing this batch, make the following changes:
+
+   - In the `CREATE MASTER KEY` statement, replace `<password>` with an actual password that will protect the master key. For more information, see [CREATE MASTER KEY](/sql/t-sql/statements/create-master-key-transact-sql).
+   - In all three occurrences of `https://<storage-account-name>.blob.core.windows.net/<container-name>`, replace `<storage-account-name>` with the name of your storage account, and replace `<container-name>` with the name of your container.
+   - In the `SECRET` clause, replace `<sas-token>` with the SAS token you copied in the previous step.
+
+   **Create a server-scoped credential**: Applies to SQL Server, Azure SQL Managed Instance
+
+    ```sql
+    /* Create a master key to protect the secret of the credential */
+    IF NOT EXISTS (
+                  SELECT 1
+                  FROM sys.symmetric_keys
+                  WHERE name = '##MS_DatabaseMasterKey##'
+                  )
+    CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>';
+
+    /* The name of the credential must match the URL of the blob container. */
+    IF EXISTS
+        (SELECT 1 FROM sys.credentials
+        WHERE name = 'https://<storage-account-name>.blob.core.windows.net/<container-name>'
+        )
+        DROP CREDENTIAL
+            [https://<storage-account-name>.blob.core.windows.net/<container-name>];
+
+    /* The secret is the SAS token for the container. The Read, Write, and List permissions are set. */
+    CREATE CREDENTIAL
+        [https://<storage-account-name>.blob.core.windows.net/<container-name>]
+    WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+        SECRET = '<sas-token>';
+    ```
+
+   **Create a database-scoped credential**: Applies to Azure SQL Database
+
+    ```sql
+    /* The name of the credential must match the URL of the blob container. */
+    IF EXISTS
+        (SELECT 1 FROM sys.database_credentials
+        WHERE name = 'https://<storage-account-name>.blob.core.windows.net/<container-name>')
+        DROP DATABASE SCOPED CREDENTIAL
+            [https://<storage-account-name>.blob.core.windows.net/<container-name>];
+
+    /* When using managed identity, the credential does not contain a secret */
+    CREATE DATABASE SCOPED CREDENTIAL
+        [https://<storage-account-name>.blob.core.windows.net/<container-name>]
+    WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+        SECRET = '<sas-token>';
+    ```
+
+1. Then, follow the steps in the next section to [create an event session in SSMS with event_file target in Azure Storage](#create-an-event-session-in-ssms-with-event_file-target-in-azure-storage).
+
+<a id="create-event-session-with-event_file-target"></a>
+
+#### Create an event session in SSMS with event_file target in Azure Storage
+
+Once the credential is created, you can create the event session. Unlike creating the credential, creating an event session doesn't require the `CONTROL` permission. Once the credential is created, you can create event sessions even if you have more restricted permissions. See [permissions](extended-events.md#permissions) for the specific permissions needed.
+
+To create a new event session in SSMS:
+
+1. Expand the **Extended Events** node under the **Management** folder.
+1. Right-click on the **Sessions** folder, and select **New Session...**.
+1. On the **General** page, enter a name for the session, which will be `example-session` for the following code sample.
+1. On the **Events** page, select one or more events to add to the session. In this example, we selected the `sql_batch_starting` event.
+1. On the **Data Storage** page, select `event_file` as the target type. Paste the URL of the storage container in the **Storage URL** box. Type a forward slash (`/`) at the end of this URL, followed by the file (blob) name. For example, `https://<storage-account-name>.blob.core.windows.net/<container-name>/example-session.xel`.
+
+#### Create an event session in T-SQL with event_file target in Azure Storage
+
+Here's an example of the `CREATE EVENT SESSION` with an `ADD TARGET` clause that adds an Azure Storage-based `event_file` target.
 
 ```sql
-CREATE EVENT SESSION [locks_acq_rel_eventfile_22]
-    ON SERVER
-    ADD EVENT sqlserver.lock_acquired
-    (
-        SET
-            collect_database_name=(1),
-            collect_resource_description=(1)
-        ACTION (sqlserver.sql_text,sqlserver.transaction_id)
-        WHERE
-        (
-            [database_name]=N'InMemTest2'
-            AND
-            [object_id]=370100359
-        )
-    ),
-    ADD EVENT sqlserver.lock_released
-    (
-        SET
-            collect_database_name=1,
-            collect_resource_description=1
-        ACTION(sqlserver.sql_text,sqlserver.transaction_id)
-        WHERE
-        (
-            [database_name]=N'InMemTest2'
-            AND
-            [object_id]=370100359
-        )
-    )
-    ADD TARGET package0.event_counter,
-    ADD TARGET package0.event_file
-    (
-        SET filename=N'C:\temp\locks_acq_rel_eventfile_22.xel',
-        max_file_size=(100), 
-        max_rollover_files=(10)
-    )
-    WITH
-    (
-        MAX_MEMORY=4096 KB,
-        MAX_DISPATCH_LATENCY=10 SECONDS
-    );
+CREATE EVENT SESSION [example-session] ON SERVER
+ADD EVENT sqlserver.sql_batch_starting
+ADD TARGET package0.event_file
+    (SET filename=
+     N'https://<storage-account-name>.blob.core.windows.net/<container-name>/example-session.xel')
+GO
 ```
+
+### Troubleshoot event sessions with event_file target in Azure Storage
+
+[!INCLUDE [troubleshoot-event-sessions-with-event_file-target-azure-storage](../../includes/troubleshoot-event-sessions-with-event-file-target-azure-storage.md)]
+
+### Create an event session on local event_file target
+
+For a complete walkthrough for creating an event sesion on a local event file, with SSMS or T-SQL, see [Quickstart: Extended Events](quick-start-extended-events-in-sql-server.md).
 
 #### sys.fn_xe_file_target_read_file() function
 
 The `event_file` target stores the data it receives in a binary format that's not human readable. The [sys.fn_xe_file_target_read_file](../system-functions/sys-fn-xe-file-target-read-file-transact-sql.md) function lets you represent the contents of an `xel` file as a relational rowset.
 
-For SQL Server 2016 and later versions, use a `SELECT` statement similar to the following example.
+For SQL Server 2016 and later versions, use a `SELECT` statement similar to the following example to read from a local event file.
 
 ```sql
 SELECT f.*
@@ -187,7 +314,7 @@ FROM sys.fn_xe_file_target_read_file(
     'C:\temp\locks_acq_rel_eventfile_22-*.xel', NULL, NULL, NULL)  AS f;
 ```
 
-For SQL Server 2014, use a `SELECT` statement similar to the following example. After SQL Server 2014, the `xem` files are no longer used.
+For SQL Server 2014, use a `SELECT` statement similar to the following example to read from a local event file. After SQL Server 2014, the `xem` files are no longer used.
 
 ```sql
 SELECT f.*
@@ -196,86 +323,21 @@ FROM sys.fn_xe_file_target_read_file(
     'C:\temp\locks_acq_rel_eventfile_22-*.xel', 'C:\temp\metafile.xem', NULL, NULL) AS f;
 ```
 
-In both of these examples, the `*` wildcard is used to read all `xel` files that start with the specified prefix.
+In both of previous examples, the `*` wildcard is used to read all `xel` files that start with the specified prefix.
 
-In Azure SQL Database, you can call the `sys.fn_xe_file_target_read_file()` function after you create a *database-scoped* credential containing a SAS token with the `Read` and `List` permissions on the container with the `xel` blobs:
-
-```sql
-/*
-Create a master key to protect the secret of the credential
-*/
-IF NOT EXISTS (
-    SELECT 1
-    FROM sys.symmetric_keys
-    WHERE name = '##MS_DatabaseMasterKey##'
-)
-CREATE MASTER KEY;
-
-/*
-(Re-)create a database scoped credential.
-The name of the credential must match the URI of the blob container.
-*/
-IF EXISTS (
-    SELECT *
-    FROM sys.database_credentials
-    WHERE name = 'https://exampleaccount4xe.blob.core.windows.net/extended-events-container'
-)
-DROP DATABASE SCOPED CREDENTIAL [https://exampleaccount4xe.blob.core.windows.net/extended-events-container];
-
-/*
-The secret is the SAS token for the container. The Read and List permissions are set.
-*/
-CREATE DATABASE SCOPED CREDENTIAL [https://exampleaccount4xe.blob.core.windows.net/extended-events-container]
-    WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
-        SECRET = 'sp=rl&st=2023-10-09T22:12:54Z&se=2023-10-10T06:12:54Z&spr=https&sv=2022-11-02&sr=c&sig=REDACTED';
-
-/*
-Return event session data
-*/
-SELECT f.*
---,CAST(f.event_data AS XML)  AS [Event-Data-Cast-To-XML]  -- Optional
-FROM sys.fn_xe_file_target_read_file('https://exampleaccount4xe.blob.core.windows.net/extended-events-container/event-session-1', DEFAULT, DEFAULT, DEFAULT) AS f;
-```
-
-In Azure SQL Managed Instance, you can call the `sys.fn_xe_file_target_read_file()` function after you create a *server* credential containing a SAS token with the `Read` and `List` permissions on the container with the `xel` blobs:
+When the event file is stored in Azure Storage, you can call the `sys.fn_xe_file_target_read_file()` function. A credential allowing access to the container must exist, for example, the [same credential used to create the event file in previous steps](#create-an-event-session-with-event_file-target-in-azure-storage).
 
 ```sql
-IF NOT EXISTS (
-    SELECT 1
-    FROM sys.symmetric_keys
-    WHERE name = '##MS_DatabaseMasterKey##'
-)
-CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'REDACTED';
-
-/*
-(Re-)create a database scoped credential.
-The name of the credential must match the URI of the blob container.
-*/
-IF EXISTS (
-    SELECT *
-    FROM sys.credentials
-    WHERE name = 'https://exampleaccount4xe.blob.core.windows.net/extended-events-container'
-)
-DROP CREDENTIAL [https://exampleaccount4xe.blob.core.windows.net/extended-events-container];
-
-/*
-The secret is the SAS token for the container. The Read and List permissions are set.
-*/
-CREATE CREDENTIAL [https://exampleaccount4xe.blob.core.windows.net/extended-events-container]
-    WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
-        SECRET = 'sp=rl&st=2023-10-09T22:12:54Z&se=2023-10-10T06:12:54Z&spr=https&sv=2022-11-02&sr=c&sig=REDACTED';
-
-/*
-Return event session data
-*/
 SELECT f.*
 --,CAST(f.event_data AS XML)  AS [Event-Data-Cast-To-XML]  -- Optional
-FROM sys.fn_xe_file_target_read_file('https://exampleaccount4xe.blob.core.windows.net/extended-events-container/event-session-1', DEFAULT, DEFAULT, DEFAULT) AS f;
+FROM sys.fn_xe_file_target_read_file
+    ('https://exampleaccount4xe.blob.core.windows.net/extended-events-container/event-session-1'
+    , DEFAULT, DEFAULT, DEFAULT) AS f;
 ```
 
-> [!TIP]  
+> [!TIP]
 > If you specify a blob name prefix instead of the full blob name in the first argument of `sys.fn_xe_file_target_read_file()`, the function will return data from all blobs in the container that match the prefix. This lets you retrieve data from all rollover files of a given event session without using the `*` wildcard, which isn't supported by Azure Storage.
->  
+>
 > The previous Azure SQL examples omit the `xel` extension to read all rollover files for a session named `event-session-1`.
 
 #### Data stored in the event_file target
@@ -326,7 +388,7 @@ In its `ADD TARGET ... (SET ...)` clause, the following `CREATE EVENT SESSION` s
 
 In the present example, the `ADD EVENT ... (ACTION ...)` clause happens to offer only one action to choose, namely `sqlos.system_thread_id`. In the `ADD TARGET ... (SET ...)` clause, we see the assignment `source=N'sqlos.system_thread_id'`.
 
-> [!NOTE]  
+> [!NOTE]
 > It isn't possible to add more than one target of the same type per event session. This includes the `histogram` target. It's also not possible to have more than one source (action / event field) per `histogram` target. Therefore, a new event session is required to track any additional actions or event fields in a separate `histogram` target.
 
 ```sql
@@ -536,7 +598,7 @@ The `ring_buffer` target is handy for a quick and simple event collection in mem
 
 In this section, we also show how you can use XQuery to convert the XML representation of the ring buffer contents into a more readable relational rowset.
 
-> [!TIP]  
+> [!TIP]
 > When adding a `ring_buffer` target, set its `MAX_MEMORY` parameter to 1024 KB or less. Using larger values might increase memory consumption unnecessarily.
 >
 > By default, `MAX_MEMORY` for a `ring_buffer` target isn't limited in SQL Server, and is limited to 32 MB in Azure SQL Database and Azure SQL Managed Instance.
@@ -549,7 +611,9 @@ You know that the contents of the ring buffer are omitted during conversion to X
 <RingBufferTarget truncated="1" processingTime="0" totalEventsProcessed="284" eventCount="284" droppedCount="0" memoryUsed="64139">
 ```
 
-#### CREATE EVENT SESSION with a ring_buffer target
+<a id="create-event-session-with-a-ring_buffer-target"></a>
+
+#### Create an event session with a ring_buffer target
 
 Here's an example of creating an event session with a `ring_buffer` target. In this example, the `MAX_MEMORY` parameter appears twice: once to set the `ring_buffer` target memory to 1024 KB, and once to set the event session buffer memory to 2 MB.
 
@@ -676,9 +740,9 @@ SELECT *
 FROM #XmlAsTable;
 ```
 
-### XQuery to see the XML as a rowset
+#### XQuery to see the XML as a rowset
 
-To see the preceding XML as a relational rowset, continue from the preceding `SELECT` statement by issuing the following T-SQL. The commented lines explain each use of XQuery.
+To see the preceding XML as a relational rowset, continue from the preceding `SELECT` statement by issuing the following T-SQL. We create the `#XmlAsTable` temporary table to stage the XML data, now we pull values from the XML into a rowset. The commented lines explain each use of XQuery.
 
 ```sql
 SELECT
@@ -730,6 +794,36 @@ OccurredDtTm              Mode    DatabaseName
 ------------              ----    ------------
 2016-08-05 23:59:53.987   SCH_S   InMemTest2
 2016-08-05 23:59:56.013   SCH_S   InMemTest2
+```
+
+### View session data as a relational rowset with a CTE
+
+To see event data from a `ring_buffer` target in a relational rowset, you could also use a common table expression (CTE) and use [XQuery](/sql/xquery/xquery-language-reference-sql-server) expressions to convert XML to relational data. For example:
+
+```sql
+WITH
+/* An XML document representing memory buffer contents */
+RingBuffer AS
+(
+SELECT CAST(xst.target_data AS xml) AS TargetData
+FROM sys.dm_xe_session_targets AS xst
+INNER JOIN sys.dm_xe_sessions AS xs
+ON xst.event_session_address = xs.address
+WHERE xs.name = N'ring_buffer_lock_acquired_4'
+),
+/* A row for each event in the buffer, represented as an XML fragment */
+EventNode AS
+(
+SELECT CAST(NodeData.query('.') AS xml) AS EventInfo
+FROM RingBuffer AS rb
+CROSS APPLY rb.TargetData.nodes('/RingBufferTarget/event') AS n(NodeData)
+)
+/* A relational rowset formed by using the XQuery value method */
+SELECT EventInfo.value('(event/@timestamp)[1]','datetimeoffset') AS timestamp,
+       EventInfo.value('(event/@name)[1]','sysname') AS event_name,
+       EventInfo.value('(event/data/value)[1]','nvarchar(max)') AS sql_batch_text
+FROM EventNode
+ORDER BY timestamp DESC;
 ```
 
 ## event_stream target

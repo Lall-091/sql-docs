@@ -1,10 +1,10 @@
 ---
-title: CREATE SYNONYM (Transact-SQL)
-description: Creates a new synonym.
+title: "CREATE SYNONYM (Transact-SQL)"
+description: The CREATE SYNONYM statement creates a new synonym.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 07/12/2023
+ms.date: 09/26/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -20,10 +20,11 @@ helpviewer_keywords:
   - "synonyms [SQL Server], creating"
 dev_langs:
   - "TSQL"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
 # CREATE SYNONYM (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Creates a new synonym.
 
@@ -47,7 +48,7 @@ CREATE SYNONYM [ schema_name_1. ] synonym_name FOR <object>
 }
 ```
 
-Azure SQL Database syntax:
+[!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)] syntax:
 
 ```syntaxsql
 CREATE SYNONYM [ schema_name_1. ] synonym_name FOR <object>
@@ -84,8 +85,8 @@ The name of the schema of the base object. If *schema_name* isn't specified, the
 
 The name of the base object that the synonym references.
 
-> [!NOTE]  
-> [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] supports the three-part name format `database_name.[schema_name].object_name` when the *database_name* is the current database, or the *database_name* is `tempdb` and the *object_name* starts with `#`.
+> [!NOTE]
+> [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)] supports the three-part name format `database_name.[schema_name].object_name` when the *database_name* is the current database, or the *database_name* is `tempdb` and the *object_name* starts with `#`.
 
 ## Remarks
 
@@ -114,11 +115,11 @@ The base object need not exist at synonym create time. [!INCLUDE [ssNoVersion](.
 
 ## Permissions
 
-To create a synonym in a given schema, a user must have `CREATE SYNONYM` permission and either own the schema or have ALTER SCHEMA permission.
+To create a synonym in a given schema, a user must have `CREATE SYNONYM` permission and either own the schema or have `ALTER SCHEMA` permission.
 
 The `CREATE SYNONYM` permission is a grantable permission.
 
-> [!NOTE]  
+> [!NOTE]
 > You don't need permission on the base object to successfully compile the `CREATE SYNONYM` statement, because all permission checking on the base object is deferred until run time.
 
 ## Examples
@@ -209,13 +210,14 @@ SELECT
     dbo.CorrectOrder(@Amt) AS ModifiedOrder;
 ```
 
-## See also
+## Related content
 
 - [DROP SYNONYM (Transact-SQL)](drop-synonym-transact-sql.md)
 - [EVENTDATA (Transact-SQL)](../functions/eventdata-transact-sql.md)
 - [GRANT (Transact-SQL)](grant-transact-sql.md)
 - [Synonyms (Database Engine)](../../relational-databases/synonyms/synonyms-database-engine.md)
 
-## Next steps
+## Next step
 
-- [Create Synonyms](../../relational-databases/synonyms/create-synonyms.md)
+> [!div class="nextstepaction"]
+> [Create Synonyms](../../relational-databases/synonyms/create-synonyms.md)

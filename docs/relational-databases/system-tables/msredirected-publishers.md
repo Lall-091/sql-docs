@@ -1,8 +1,8 @@
 ---
 title: "MSRedirected_publishers (Transact-SQL)"
 description: MSRedirected_publishers (Transact-SQL)
-author: briancarrig
-ms.author: brcarrig
+author: tameikal-msft
+ms.author: talawren
 ms.date: "10/06/2021"
 ms.service: sql
 ms.subservice: replication

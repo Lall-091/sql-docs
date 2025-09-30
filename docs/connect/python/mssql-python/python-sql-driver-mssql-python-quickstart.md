@@ -4,7 +4,7 @@ description: This quickstart describes installing Python, and mssql-python then 
 author: dlevy-msft-sql
 ms.author: dlevy
 ms.reviewer: vanto, randolphwest
-ms.date: 09/10/2025
+ms.date: 09/23/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: quickstart-sdk
@@ -30,7 +30,7 @@ In this quickstart, you connect a Python script to a database that you created a
 
 - A database on SQL Server, Azure SQL Database, or SQL database in Fabric with the [!INCLUDE [sssampledbobject-md](../../../includes/sssampledbobject-md.md)] sample schema and a valid connection string.
 
-## Setting up
+## Setup
 
 Follow these steps to configure your development environment to develop an application using the `mssql-python` Python driver.
 
@@ -51,10 +51,38 @@ Get the [`mssql-python` package](https://pypi.org/project/mssql-python/) from Py
    pip install mssql-python
    ```
 
-   ### [Linux](#tab/linux)
+   ### [Alpine](#tab/alpine-linux)
 
    ```bash
-   sudo apt-get -y install libltdl7
+   apk add libtool krb5-libs krb5-dev
+   pip install mssql-python
+   ```
+
+   ### [Debian/Ubuntu](#tab/debianUbuntu-linux)
+
+   ```bash
+   apt-get install -y libltdl7 libkrb5-3 libgssapi-krb5-2
+   pip install mssql-python
+   ```
+
+   ### [RHEL](#tab/RHEL-linux)
+
+   ```bash
+   dnf install -y libtool-ltdl krb5-libs
+   pip install mssql-python
+   ```
+
+   ### [SUSE](#tab/SUSE-linux)
+
+   ```bash
+   zypper install -y libltdl7 libkrb5-3 libgssapi-krb5-2
+   pip install mssql-python
+   ```
+
+   ### [openSUSE](#tab/openSUSE-linux)
+
+   ```bash
+   zypper install -y libltdl7
    pip install mssql-python
    ```
 

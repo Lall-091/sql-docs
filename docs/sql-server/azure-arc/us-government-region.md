@@ -59,8 +59,6 @@ Currently, in the US Government Virginia region, SQL Server registration provide
 The following SQL Server features aren't currently available in any US Government region:
 
 - Failover cluster instance (FCI)
-- License physical cores (p-cores) with unlimited virtualization.
-- License physical cores (p-cores) without virtual machines.
 
 ## Related content
 

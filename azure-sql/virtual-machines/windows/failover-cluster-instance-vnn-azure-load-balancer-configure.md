@@ -56,8 +56,6 @@ To create the load balancer:
    - **Type**: Either **Public** or **Internal**. An internal load balancer can be accessed from within the virtual network. Most Azure applications can use an internal load balancer. If your application needs access to SQL Server directly over the internet, use a public load balancer.
    - **Tier**: **Regional**.
 
-   :::image type="content" source="media/availability-group-manually-configure-tutorial-single-subnet/84-create-load-balancer.png" alt-text="Screenshot of the Azure portal that shows the page for basic information about a load balancer." lightbox="media/availability-group-manually-configure-tutorial-single-subnet/84-create-load-balancer.png":::
-
 1. Select **Next: Frontend IP configuration**.
 
 1. Select **Add a frontend IP configuration**.

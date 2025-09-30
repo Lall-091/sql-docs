@@ -5,8 +5,8 @@ metadata:
   ms.date: 05/19/2025
   ms.service: sql
   ms.topic: conceptual
-  author: sasapopo
-  ms.author: sasapopo
+  author: nzagorac-ms
+  ms.author: nzagorac
   ms.reviewer: mathoma, mikeray
   monikerRange: " = sql-server-ver17 || = sql-server-linux-ver17 "    
   ms.custom: build-2025

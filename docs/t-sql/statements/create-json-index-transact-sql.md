@@ -122,7 +122,7 @@ For more information, see [Specify Fill Factor for an Index](../../relational-da
 
 #### DROP_EXISTING = { ON | OFF }
 
-Specifies that the named, preexisting spatial index is dropped and rebuilt. The default is `OFF`.
+Specifies that the named, preexisting JSON index is dropped and rebuilt. The default is `OFF`.
 
 - **ON**
 
@@ -173,7 +173,7 @@ Specifies whether page locks are allowed. The default is `ON`.
 Overrides the `max degree of parallelism` configuration option for the duration of the index operation. Use `MAXDOP` to limit the number of processors used in a parallel plan execution. The maximum is 64 processors.
 
 > [!IMPORTANT]  
-> Although the `MAXDOP` option is syntactically supported, `CREATE SPATIAL INDEX` currently always uses only a single processor.
+> Although the `MAXDOP` option is syntactically supported, `CREATE JSON INDEX` currently always uses only a single processor.
 
 *max_degree_of_parallelism* can be one of the following values.
 

@@ -3,7 +3,7 @@ title: Download ODBC Driver for SQL Server
 description: Download the Microsoft ODBC Driver for SQL Server to develop native-code applications that connect to SQL Server and Azure SQL Database.
 author: David-Engel
 ms.author: davidengel
-ms.date: 03/17/2025
+ms.date: 09/26/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -22,19 +22,19 @@ Microsoft ODBC Driver for SQL Server is a single dynamic-link library (DLL) cont
 
 The redistributable installer for Microsoft ODBC Driver 18 for SQL Server installs the client components, which are required during run time to take advantage of newer SQL Server features. It optionally installs the header files needed to develop an application that uses the ODBC API. Starting with version 17.4.2, the installer also includes and installs the Microsoft Active Directory Authentication Library (ADAL.dll).
 
-Version 18.5.1.1 is the latest general availability (GA) version. If you have a previous version of Microsoft ODBC Driver 18 for SQL Server installed, installing 18.5.1.1 upgrades it to 18.5.1.1. The Microsoft ODBC Driver 18 for SQL Server can be installed side by side with Microsoft ODBC Driver 17 for SQL Server.
+Version 18.5.2.1 is the latest general availability (GA) version. If you have a previous version of Microsoft ODBC Driver 18 for SQL Server installed, installing 18.5.2.1 upgrades it to 18.5.2.1. The Microsoft ODBC Driver 18 for SQL Server can be installed side by side with Microsoft ODBC Driver 17 for SQL Server.
 
-:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft ODBC Driver 18 for SQL Server (x64)](https://go.microsoft.com/fwlink/?linkid=2307162)**  
-:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft ODBC Driver 18 for SQL Server (x86)](https://go.microsoft.com/fwlink/?linkid=2306655)**  
-:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft ODBC Driver 18 for SQL Server (ARM64)](https://go.microsoft.com/fwlink/?linkid=2308434)**  
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft ODBC Driver 18 for SQL Server (x64)](https://go.microsoft.com/fwlink/?linkid=2335671)**  
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft ODBC Driver 18 for SQL Server (x86)](https://go.microsoft.com/fwlink/?linkid=2335863)**  
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft ODBC Driver 18 for SQL Server (ARM64)](https://go.microsoft.com/fwlink/?linkid=2335756)**  
 
 > [!NOTE]
 > Use the x86 installer for 32-bit machines, or the x64 installer to install both 64-bit and 32-bit drivers on a 64-bit machine.
 
 ### Version information
 
-- Release number: 18.5.1.1
-- Released: March 17, 2025
+- Release number: 18.5.2.1
+- Released: September 26, 2025
 
 > [!NOTE]
 > If you're accessing this page from a non-English language version, and want to see the most up-to-date content, select **Read in English** at the top of this page. You can download different languages from the US-English version site by selecting [available languages](#available-languages).
@@ -43,14 +43,14 @@ Version 18.5.1.1 is the latest general availability (GA) version. If you have a 
 
 This release of Microsoft ODBC Driver for SQL Server can be installed in the following languages:
 
-Microsoft ODBC Driver 18.5.1.1 for SQL Server (x64):
-[Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x404) | [Czech](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x405) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x412) | [Polish](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x415) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x40a) | [Turkish](https://go.microsoft.com/fwlink/?linkid=2307162&clcid=0x41f)
+Microsoft ODBC Driver 18.5.2.1 for SQL Server (x64):
+[Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x404) | [Czech](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x405) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x412) | [Polish](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x415) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x40a) | [Turkish](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x41f)
 
-Microsoft ODBC Driver 18.5.1.1 for SQL Server (x86):
-[Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x404) | [Czech](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x405) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x412) | [Polish](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x415) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x40a) | [Turkish](https://go.microsoft.com/fwlink/?linkid=2306655&clcid=0x41f)
+Microsoft ODBC Driver 18.5.2.1 for SQL Server (x86):
+[Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x404) | [Czech](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x405) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x412) | [Polish](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x415) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x40a) | [Turkish](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x41f)
 
-Microsoft ODBC Driver 18.5.1.1 for SQL Server (ARM64):
-[Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x404) | [Czech](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x405) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x412) | [Polish](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x415) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x40a) | [Turkish](https://go.microsoft.com/fwlink/?linkid=2308434&clcid=0x41f)
+Microsoft ODBC Driver 18.5.2.1 for SQL Server (ARM64):
+[Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x404) | [Czech](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x405) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x412) | [Polish](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x415) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x40a) | [Turkish](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x41f)
 
 ## Version 17
 

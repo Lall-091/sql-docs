@@ -4,7 +4,7 @@ description: Learn how to deploy a free Azure SQL Managed Instance.
 author: Stralle
 ms.author: strrodic
 ms.reviewer: mathoma, randolphwest, vladiv
-ms.date: 08/25/2025
+ms.date: 09/25/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: how-to
@@ -19,7 +19,7 @@ monikerRange: "=azuresql || =azuresql-mi"
 > - [Azure SQL Database](../database/free-offer.md?view=azuresql&preserve-view=true)
 > - [Azure SQL Managed Instance](free-offer.md?view=azuresql&preserve-view=true)
 
-This article describes the free offer of [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md), which gets you the following, free of charge, for the first 12 months:
+This article describes the free offer of [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md), which gets you the following capacity free of charge for the first 12 months:
 - a General Purpose or [Next-gen General Purpose (preview)](service-tiers-next-gen-general-purpose-use.md) instance
 - Up to 500 databases (based on the service tier)
 - 720 vCore hours of compute every month
@@ -32,7 +32,7 @@ The free Azure SQL Managed Instance offer is designed for:
 - Existing customers who need a development environment to build proof-of-concept applications.
 - Testing existing SQL Server workloads in Azure before committing to a paid plan.
 
-To get started, [create a new Azure SQL Managed Instance](https://portal.azure.com/#browse/Microsoft.Sql%2FmanagedInstances) from the Azure portal. To use the free offer, select **Apply free offer** from the banner at the top of the **Create Azure SQL Managed Instance** page, or select the **Try for free** link on the [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
+To get started, [create a new Azure SQL Managed Instance](https://portal.azure.com/#browse/Microsoft.Sql%2FmanagedInstances) from the Azure portal. To use the free offer, select **Apply free offer** from the banner at the top of the [Create Azure SQL Managed Instance](https://portal.azure.com/#view/SqlAzureExtension/CreateManagedInstanceBladeV2/_provisioningContext~/) page, or select the **Try for free** link on the [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
 
 :::image type="content" source="media/free-offer/free-sql-managed-instance-banner.png" alt-text="Screenshot from the Azure portal of the Free Offer banner.":::
 
@@ -48,80 +48,132 @@ The free SQL Managed Instance offer includes:
 - Creating up to **500 databases** in the Next-gen General Purpose service tier, or up to **100 databases** in the General Purpose service tier.
 - 64 GB of data storage.
 - SQL license for the instance.
-- Automatically backed up databases retained for up to 7 days.
-- **Standard workday** (9am-5pm) start/stop **schedule enabled by default** to ensure efficient use of credits.
-- The instance is automatically stopped when you reach the monthly vCore limit. When the start/stop schedule is set on the instance the next scheduled start succeeds when credits are available again.
+- Automatically backed up databases retained for up to seven days.
+- **Standard workday** [start/stop schedule enabled by default](#default-instance-schedule) to ensure efficient use of credits.
+- The instance automatically stops when you reach the monthly vCore limit. When you set the start/stop schedule on the instance, the next scheduled start succeeds when credits are available again.
 - No extra charges are applied until you decide to upgrade to paid version.
 
 ## Create a free instance
 
-Use the Azure portal to create the new free Azure SQL Managed Instance.
+Use the Azure portal to create a free Azure SQL Managed Instance.
 
 To create your free SQL managed instance, follow these steps:
 
 1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
-1. In the pane for **Azure SQL Managed Instance**, select **Show options**.
-1. In the **Azure SQL Managed Instance options** window, select **Create SQL Managed Instance**.
+1. On the **Azure SQL Managed Instance** tile, select **Try for free** to open the **Create Azure SQL Managed Instance** page, with the free offer already applied:
 
-   :::image type="content" source="media/free-offer/show-options-create-sql-managed-instance.png" alt-text="Screenshot from the Azure portal of the Azure SQL hub, showing the Show options button and the Create SQL Managed Instance button." lightbox="media/free-offer/show-options-create-sql-managed-instance.png":::
+   :::image type="content" source="media/free-offer/show-options-create-sql-managed-instance.png" alt-text="Screenshot from the Azure portal of the Azure SQL hub, showing the Try for free  button for the  SQL Managed Instance button." lightbox="media/free-offer/show-options-create-sql-managed-instance.png":::
 
-1. On the **Basics** tab, look for the **Want to try Azure SQL Managed Instance for free?** banner and select the **Apply offer** button. Check the **Estimated costs per month** to validate the free offer is applied to your instance.
+   Alternatively, you can go to the [Create Azure SQL Managed Instance](https://portal.azure.com/#view/SqlAzureExtension/CreateManagedInstanceBladeV2/_provisioningContext~/) page in the Azure portal directly, and then select **Apply free offer** from the banner at the top of the page.
+
+1. Check the **Estimated costs per month** to validate the free offer is applied to your instance.
 1. For **Resource group**, either select an existing resource group from the dropdown list or select **Create new** to create a new resource group. Enter the name of your resource group, such as `myFreeMIResourceGroup` and then select **OK**.
 1. Instance details such as the name and region, are already populated with default values but you can choose to modify these values.
-1. You can choose to leave the **Compute + storage** as default, or select **Configure Managed Instance** to update the number of vCores, and change the service tier from General Purpose to [Next-gen General Purpose (preview)](service-tiers-next-gen-general-purpose-use.md). 
+1. You can choose to leave the **Compute + storage** as default, or select **Configure Managed Instance** to update the number of vCores, and change the service tier from General Purpose to [Next-gen General Purpose (preview)](service-tiers-next-gen-general-purpose-use.md).
 1. Select your preferred authentication method. Select **Next : Networking**.
-1. On the **Networking** tab, the public endpoint is enabled by default so you can connect to the instance from any application that can access the internet. You can choose to disable the public endpoint to test a closed environment and to [connect to your instance](#connect-to-your-instance) when you need to perform extra steps.
+1. On the **Networking** tab, the public endpoint is enabled by default so you can connect to the instance from any application that can access the internet. You can choose to disable the public endpoint to test a closed environment and to [connect to your instance](#connect-to-your-instance).
 1. Select **Next: Security**. You can choose to leave these options as default, or modify them as needed.
 1. Select **Next: Additional settings**. You can choose to leave these options as default, or modify them as needed. The [instance schedule](#default-instance-schedule) is based on the time zone you configure on this page.
 1. Select **Review + create** to review your settings and then use **Create** to create your free instance.
 
 ## Connect to your instance
 
-The way to connect to your instance depends on whether or not you enabled the public endpoint when you created your instance.
+The way to connect to your instance depends on whether or not you disabled the public endpoint when you created your instance. For more information about endpoints, review [Connectivity architecture](connectivity-architecture-overview.md#communication-overview).
 
 ### Public endpoint enabled
 
-If you enabled the public endpoint, follow these steps to connect to your instance:
+When you apply the free offer to your instance, the public endpoint is enabled by default so you can connect to your instance from any application that can access the internet.
 
-1. Go to your SQL Managed Instance in the [Azure portal](https://portal.azure.com).
-1. Select **Overview** and then copy the value under **Host** in the **Essentials** section.
-1. Open your preferred data tool, such as [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) or [Azure Data Studio](/azure-data-studio/download-azure-data-studio).
-1. Select **Connect** and then paste in the **Host** value for the SQL Managed Instance you copied from the Azure portal.
-1. Select your preferred authentication method - either SQL administrator or Microsoft Entra and provide credentials, if necessary.
+If your public endpoint is enabled, follow these steps to connect to your instance:
+
+1. Go to your SQL Managed Instance in the [Azure portal](https://portal.azure.com/#view/HubsExtension/ServiceMenuBlade/~/SingleInstance/extension/SqlAzureExtension/menuId/AzureSqlHub/itemId/SingleInstance).
+1. Under **Security**, select **Networking** and then copy the value from the **Endpoint** field, such as: 
+
+   `contoso-free-sqlmi.public.123456789.database.windows.net,3342`
+
+   :::image type="content" source="media/free-offer/public-instance-endpoint.png" alt-text="Screenshot of the highlighted instance public endpoint in the Azure portal on the networking page." lightbox="media/free-offer/public-instance-endpoint.png":::  
+
+   You can also find connection strings to connect to your instance under **Settings** and then **Connection strings**.
+
+1. Open your preferred data tool, such as [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
+1. Select **Connect** and then paste the **Endpoint** value for the SQL Managed Instance you copied from the Azure portal into the server name field:
+
+   :::image type="content" source="media/free-offer/connect-to-instance.png" alt-text="Screenshot of the Connect to Server dialog box in SQL Server Management Studio.":::
+
+1. Select your preferred authentication method - either SQL Server Authentication or Microsoft Entra and provide credentials, if necessary.
 1. Select **Connect** to connect to your SQL Managed Instance.
 
 ### Public endpoint disabled
 
-If your public endpoint is disabled, you can choose to either [Create an Azure VM within the same virtual network](connect-vm-instance-configure.md) or [Configure point-to-site](point-to-site-p2s-configure.md) to connect to your instance. Review [Connect your application to Azure SQL Managed Instance](connect-application-instance.md) for more information.
+If you disable the public endpoint, you can choose to either [Create an Azure VM within the same virtual network](connect-vm-instance-configure.md) or [Configure point-to-site](point-to-site-p2s-configure.md) to connect to your instance. Review [Connect your application to Azure SQL Managed Instance](connect-application-instance.md) for more information.
 
 ## Default instance schedule
 
-To conserve credits, by default, the free instance is scheduled to be on from 9am to 5pm Monday through Friday in the time zone configured when you created the instance. You can [modify the schedule](instance-stop-start-how-to.md) to suit your business needs.
+To conserve credits, the free instance is scheduled to be on from 9 a.m. to 5 p.m. Monday through Friday in the time zone configured when you created the instance. If no time zone is configured, the default time zone is UTC. The time zone can't be modified after the instance is created.
+
+You can [modify the schedule](instance-stop-start-how-to.md) to suit your business needs.
+
+## Restore sample database
+
+You can use your preferred query tool, such as [SQL Server Management Studio (SSMS)](/ssms/install/install), to restore the sample [Wide World Importers](/sql/samples/wide-world-importers-what-is) database to your free SQL Managed Instance.
+
+To restore your database by using Transact-SQL in SQL Server Management Studio, follow these steps:
+
+1. Connect to your free instance and open a new query window.
+1. Run the following command to create a credential that accesses a publicly available storage account:
+
+   ```sql
+   CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/examples/WideWorldImporters-Standard.bak]
+   WITH IDENTITY = 'SHARED ACCESS SIGNATURE';
+   ```
+
+1. Run the following command to check that your credential has access to the storage account:
+
+   ```sql
+   RESTORE FILELISTONLY FROM URL = 'https://mitutorials.blob.core.windows.net/examples/WideWorldImporters-Standard.bak';
+   ```
+
+1. Run the following statement to restore the sample Wide World Importers database:
+
+   ```sql
+   RESTORE DATABASE [WideWorldImportersExample] FROM URL =
+     'https://mitutorials.blob.core.windows.net/examples/WideWorldImporters-Standard.bak';
+   ```
+
+1. Run the following statement to track the status of your restore process:
+
+   ```sql
+   SELECT session_id as SPID, command, a.text AS Query, start_time, percent_complete
+      , dateadd(second,estimated_completion_time/1000, getdate()) as estimated_completion_time
+   FROM sys.dm_exec_requests r
+   CROSS APPLY sys.dm_exec_sql_text(r.sql_handle) a
+   WHERE r.command in ('BACKUP DATABASE','RESTORE DATABASE');
+   ```
 
 ## Upgrade to paid instance
 
-If you want to take advantage of an unlimited paid Azure SQL Managed Instance, or if you run out of vCore hours, you can upgrade your free instance to a paid instance directly from the Azure portal. 
+To use an unlimited paid Azure SQL Managed Instance, or if you run out of vCore hours, upgrade your free instance to a paid instance directly from the Azure portal.
 
-To upgrade your instance, follow these steps: 
+To upgrade your instance, follow these steps:
 
-1. Go to your [SQL managed instance](https://portal.azure.com/#view/HubsExtension/ServiceMenuBlade/~/SingleInstance/extension/SqlAzureExtension/menuId/AzureSqlHub/itemId/SingleInstance) in the Azure portal. 
-1. Select the free instance you want to upgrade to navigate to the **Overview** page for the SQL Managed Instance. 
+1. Go to your [SQL managed instance](https://portal.azure.com/#view/HubsExtension/ServiceMenuBlade/~/SingleInstance/extension/SqlAzureExtension/menuId/AzureSqlHub/itemId/SingleInstance) in the Azure portal.
+1. Select the free instance you want to upgrade to navigate to the **Overview** page for the SQL Managed Instance.
 1. Under **Settings**, select **Compute + storage** to open the **Compute + storage** page. Alternatively, you can select **Upgrade to a paid offer** from the banner on the **Overview** page.
-1. On the **Compute + storage** page:  
-   1. Choose the **Paid offer** under **Offer type** to upgrade your instance to the paid version. 
-   1. Observe the **Estimated costs per month**. 
+1. On the **Compute + storage** page:
+   1. Choose the **Paid offer** under **Offer type** to upgrade your instance to the paid version.
+   1. Review the **Estimated costs per month**.
    1. Select **Apply** to confirm the upgrade.
 
    :::image type="content" source="media/free-offer/upgrade-to-paid-offer.png" alt-text="Screenshot of the paid offer selected on the compute + storage page for your instance in the Azure portal." lightbox="media/free-offer/upgrade-to-paid-offer.png":::
 
-> [!NOTE]
-> Once a free SQL managed instance is changed to a paid offer, the free offer is no longer available for that instance. To continue using the free offer, you must create a new instance and apply the offer again. 
+> [!NOTE]  
+> When you change a free SQL managed instance to a paid offer, the free offer is no longer available for that instance. To continue using the free offer, you must create a new instance and apply the free offer again.
 
 ## Clean up resources
 
 When you're done using your free Azure SQL Managed Instance or want to start fresh with a new one, you can delete the entire resource group or the individual instance. This action removes the instance and any associated databases.
 
-To delete your resource group and all its resources using the Azure portal, follow these steps: 
+To delete your resource group and all its resources by using the Azure portal, follow these steps:
 
 1. In the [Azure portal](https://portal.azure.com), search for **Resource groups** in the top search bar and select it.
 1. Select your resource group from the list - such as `myFreeMIResourceGroup`.
@@ -129,64 +181,64 @@ To delete your resource group and all its resources using the Azure portal, foll
 1. When prompted, type the name of the resource group to confirm.
 1. Select **Delete** to remove the group and **all its resources**.
 
-Similar procedure applies for removing the individual free SQL managed instance resource.
+Use a similar procedure to remove the individual free SQL managed instance resource.
 
-> [!WARNING]
+> [!WARNING]  
 > Deleting a resource group is irreversible. Make sure you no longer need any of the resources it contains.
 
 ## Free offer limits
 
-The free Azure SQL Managed Instance offer is the same fully managed platform-as-a-service (PaaS) instance you get with the paid version and includes handling all of the same database management functions (such as upgrading, patching, backups, and monitoring) without user involvement. The offer is available for one instance per Azure subscription.
+The free Azure SQL Managed Instance offer is the same fully managed platform as a service (PaaS) instance you get with the paid version. It handles all of the same database management functions (such as upgrading, patching, backups, and monitoring) without user involvement. You can get one free instance per Azure subscription.
 
-The following table describes the limits of the free SQL Managed Instance: 
+The following table describes the limits of the free SQL Managed Instance:
 
 |Category  |Limit  |
 |---------|---------|
-|Compute | 4 or 8 vCore instances only | 
+|Compute | 4 or 8 vCore instances only |
 |Databases    | 100 (General Purpose) / 500 (Next-gen General Purpose)         |
 |vCore hours    | 720 vCore hours monthly         |
 |Storage     |  64 GB of data<sup>1</sup>       |
-|IOPS | Depends on file size / 300 for Next-gen General Purpose<sup>2</sup>
+|IOPS | Depends on file size / 300 for Next-gen General Purpose<sup>2</sup> |
 |Instances per subscription     |    1     |
-|Service tiers | General purpose, and [Next-gen General Purpose (preview)](service-tiers-next-gen-general-purpose-use.md) | 
-|Hardware | Standard only | 
+|Service tiers | General purpose, and [Next-gen General Purpose (preview)](service-tiers-next-gen-general-purpose-use.md) |
+|Hardware | Standard only |
 |Backup retention     |  1-7 days for short term retention       |
 |SQL License cost     |  None     |
-|Guaranteed SLA| None| 
+|Guaranteed SLA| None|
 
-<sup>1</sup> Since system files can take up to 32 GB of storage, the available storage for user data could be less than 64 GB.   
-<sup>2</sup> Free instances using the [Next-gen General Purpose (preview)](service-tiers-next-gen-general-purpose-use.md) service tier upgrade are limited to 300 IOPS, and the IOPS slider is unavailable. 
+<sup>1</sup> Since system files can take up to 32 GB of storage, the available storage for user data could be less than 64 GB.
+<sup>2</sup> Free instances that use the [Next-gen General Purpose (preview)](service-tiers-next-gen-general-purpose-use.md) service tier upgrade are limited to 300 IOPS, and the IOPS slider is unavailable.
 
-Additionally, the following limitations apply: 
+Additionally, the following limitations apply:
 
-- The offer is valid for 12 months from the day the offer is initially activated, and can be applied to only one instance at a time, per subscription.
-- After 12 months, the free SQL managed instance is stopped. If the instance isn't upgraded to a paid version within 30 days, the instance and all databases are deleted, and no longer recoverable.
-- The following capabilities aren't supported: [Zone redundancy](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability), [failover groups](failover-group-sql-mi.md), [long-term backup retention](../database/long-term-retention-overview.md), modifying the backup storage redundancy.
-- Scaling up and down is only possible within the free offer limits. 
-- The free offer is currently available in the [following regions](region-availability.md#free-offer). 
-- If you delete a free SQL managed instance, all its databases are deleted and can't be restored.
+- The offer is valid for 12 months from the day you activate the offer. You can apply it to only one instance at a time, per subscription.
+- After 12 months, the free SQL managed instance stops. If you don't upgrade the instance to a paid version within 30 days, the instance and all databases are deleted and no longer recoverable.
+- The following capabilities aren't supported: [Zone redundancy](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability), [Failover groups](failover-group-sql-mi.md), [Long-term backup retention](../database/long-term-retention-overview.md), modifying the backup storage redundancy.
+- You can only scale up and down within the free offer limits.
+- The free offer is currently available in the [following regions](region-availability.md#free-offer).
+- If you delete a free SQL managed instance, you delete all its databases and can't restore them.
 
 ## Monthly vCore limits
 
-The monthly free limits include 720 vCore hours of compute. Your free month of credits starts when you create your instance and is renewed on the same day of the following month.
+The monthly free limits include 720 vCore hours of compute. Your free month of credits starts when you create your instance and renews on the same day of the following month.
 
-Once you reach the monthly free vCore limit, the instance is stopped with a status of `Stopped - Insufficient credit` and a banner on the **Overview** page of your instance in the Azure portal gives you the option to create a new paid instance. You can [restore your database](point-in-time-restore.md#restore-an-existing-database) to the new instance to continue your business without the limits imposed by the free offer.
+When you reach the monthly free vCore limit, the instance stops with a status of `Stopped - Insufficient credit`. A banner on the **Overview** page of your instance in the Azure portal gives you the option to create a new paid instance. You can [restore your database](point-in-time-restore.md#restore-an-existing-database) to the new instance to continue your business without the limits imposed by the free offer.
 
-The free vCore hours renew on the same date each month, starting the day the offer is applied. If your instance is stopped due to insufficient credits, then after you have credits available again, the instance is started automatically at the next scheduled start. You can also stop the instance manually at any time to avoid using up your free monthly vCore hours.
+The free vCore hours renew on the same date each month, starting the day the offer is applied. If your instance stops due to insufficient credits, then after you have credits available again, the instance starts automatically at the next scheduled start. You can also stop the instance manually at any time to avoid using up your free monthly vCore hours.
 
-On the **Overview** pane of your free instance in the Azure portal, you can identify: 
-- **Pricing tier**: the free offer is applied to your instance.
-- **Free vCore hours renew in**: the number of days until your free vCore hours recycle. 
-- **Free vCore hours**: the remaining free vCore hours for the current 30-day cycle. 
+On the **Overview** pane of your free instance in the Azure portal, you can identify:
+- **Pricing tier**: the free offer applied to your instance.
+- **Free vCore hours renew in**: the number of days until your free vCore hours recycle.
+- **Free vCore hours**: the remaining free vCore hours for the current 30-day cycle.
 
 :::image type="content" source="media/free-offer/remaining-credits.png" alt-text="Screenshot showing the remaining vCore hours for a free instance in the Azure portal." lightbox="media/free-offer/remaining-credits.png":::
 
-> [!NOTE]
-> If you delete your original free SQL Managed Instance and create a new one, your free credits are not reset. The remaining vCore hours for the current month carry over to the new instance and your full 720 vCore hours are available again on your original monthly renewal date.
+> [!NOTE]  
+> If you delete your original free SQL Managed Instance and create a new one, your free credits don't reset. The remaining vCore hours for the current month carry over to the new instance and your full 720 vCore hours are available again on your original monthly renewal date.
 
 ## Supported subscription types
 
-The free Azure SQL Managed Instance offer is available on the following subscription types: 
+The free Azure SQL Managed Instance offer is available on the following subscription types:
 
 :::row:::
     :::column:::

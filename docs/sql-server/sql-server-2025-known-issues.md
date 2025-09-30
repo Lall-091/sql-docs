@@ -4,7 +4,7 @@ description: "Known issues, causes, and workarounds for SQL Server 2025 Preview 
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 09/16/2025
+ms.date: 09/24/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: troubleshooting-known-issue
@@ -25,10 +25,11 @@ This article describes known issues for [!INCLUDE [sssql25-md](../includes/sssql
 - [Database mail on Linux](#database-mail-on-linux)
 - [SQLPS](#sqlps)
 - [Incorrect behavior of SESSION_CONTEXT in parallel plans](#incorrect-behavior-of-session_context-in-parallel-plans)
-- [Access violation exception occurs under certain conditions](#access-violation-exception-occurs-under-certain-conditions)
 - [Issue when setting the backup compression algorithm to ZSTD](#setting-the-backup-compression-algorithm-to-zstd)
 - [Local ONNX models not supported on Linux operating systems](#local-onnx-models-not-supported-on-linux-operating-systems)
 - [PBKDF2 hashing algorithm can affect login performance](#pbkdf2-hashing-algorithm-can-affect-login-performance)
+- [Access violation exception can occur on readable secondary replicas under certain conditions](#access-violation-exception-can-occur-on-readable-secondary-replicas-under-certain-conditions)
+- [Vector index](#vector-index)
 
 ## Windows Arm64 not supported
 
@@ -82,12 +83,6 @@ Queries that use the built-in `SESSION_CONTEXT` function might return incorrect 
 
 For more information, see the [Known issues](../t-sql/functions/session-context-transact-sql.md#known-issues) section in `SESSION_CONTEXT`.
 
-## Access violation exception occurs under certain conditions
-
-When the Optional parameter plan optimization feature encounters a predicate that is based on a LOB column, an access violation exception can occur. A fix has been identified and will be part of the next preview release of SQL Server 2025.
-
-Large object (LOB) data types in the Database Engine can store data that exceeds 8,000 bytes. These data types store data on a [row-overflow](../relational-databases/pages-and-extents-architecture-guide.md#row-overflow-considerations) data page. A LOB also encompasses data types that store data on dedicated LOB page structures, which use a text or image pointer of in-row references to LOB data pages. For more information about data storage, see [Pages and extents architecture guide](../relational-databases/pages-and-extents-architecture-guide.md).
-
 <a id="setting-the-backup-compression-algorithm-to-zstd"></a>
 
 ## Issue when setting the backup compression algorithm to ZSTD
@@ -112,6 +107,39 @@ Use the new compression algorithm directly in the [BACKUP](../t-sql/statements/b
 In [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], password-based authentication uses PBKDF2 (RFC2898) as the default hashing algorithm. This enhancement improves password security by applying 100,000 iterations of SHA-512 hashing. The increased computational cost of PBKDF2 means slightly longer SQL Authentication login time. This effect is especially noticeable in environments without connection pooling, or where login latency is closely monitored. In pooled environments, the effect is typically minimal.
 
 For more information, see [CREATE LOGIN](../t-sql/statements/create-login-transact-sql.md) and [Support for Iterated and Salted Hash Password Verifiers in SQL Server 2022 CU12](https://techcommunity.microsoft.com/blog/azuresqlblog/support-for-iterated-and-salted-hash-password-verifiers-in-sql-server-2022-cu12/4087155).
+
+## Access violation exception can occur on readable secondary replicas under certain conditions
+
+Consider a database enabled to use the [Query Store for readable secondaries](../relational-databases/performance/query-store-for-secondary-replicas.md) feature, using the following data definitional language (DDL) command:
+
+```sql
+ALTER DATABASE [Database_Name]
+    SET QUERY_STORE (OPERATION_MODE = READ_WRITE);
+```
+
+Queries that meet the following conditions could experience an access violation when a PSP [query variant](../relational-databases/performance/parameter-sensitive-plan-optimization.md#query-variant) can't determine the persisted state of its parent dispatcher statement:
+
+- Executed on a secondary replica
+- Sensitive to parameter sniffing
+- Eligible for parameter sensitive plan (PSP) optimization
+
+A fix has been identified and will be part of a future release of [!INCLUDE [sssql25-md](../includes/sssql25-md.md)].
+
+**Workaround**: Disable PSP on secondaries for each database that was onboarded to use the Query Store for readable secondaries feature. From within the context of a specific database, issue the following Transact-SQL statement:
+
+```sql
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY
+    SET PARAMETER_SENSITIVE_PLAN_OPTIMIZATION = OFF;
+```
+
+## Vector index
+
+Currently, when you create a vector index on some datasets, it may return the following errors:
+
+- Error 9829: `STRING_AGG aggregation result exceeded the limit of 8000 bytes. Use LOB types to avoid result truncation.`
+- 42234: `Internal SQL error during DiskANN graph build`
+
+A fix has been identified and will be part of a future release of [!INCLUDE [sssql25-md](../includes/sssql25-md.md)].
 
 ## Related content
 

@@ -5,7 +5,7 @@ description: Learn how Azure SQL Database automatically backs up all databases a
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma, danil, dinethi
-ms.date: 03/03/2025
+ms.date: 09/25/2025
 ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: conceptual
@@ -144,7 +144,7 @@ For information on recovery times, see [RTO and RPO](business-continuity-high-av
 | **Types of SQL backup** | Full, differential, log. | Most recent geo-replicated copies of PITR backups. | Only the full backups. |
 | **Retention** | 7 days by default, configurable between 1 and 35 days (except Basic databases, which are configurable between 1 and 7 days). | Enabled by default, same as source.<sup>2</sup>| Not enabled by default. Retention is up to 10 years. |
 | **Azure Storage**  | Geo-redundant by default. You can optionally configure zone-redundant or locally redundant storage. | Available when PITR backup storage redundancy is set to geo-redundant. Not available when PITR backup storage is zone-redundant or locally redundant. | Geo-redundant by default. You can configure zone-redundant or locally redundant storage. |
-| **Configure backups as [immutable](/azure/storage/blobs/immutable-storage-overview)** | Not supported | Not supported | Not supported | 
+| **Configure backups as [immutable](/azure/storage/blobs/immutable-storage-overview)** | Not supported | Not supported | [Supported](backup-immutability.md) (in Preview) | 
 | **Restoring a new database in the same region** | Supported | Supported | Supported |
 | **Restoring a new database in another region** | Not supported | Supported in any Azure region | Supported in any Azure region |
 | **Restoring a new database in another subscription** |  Not supported  |  Not supported<sup>3</sup> | Not supported<sup>3</sup> |

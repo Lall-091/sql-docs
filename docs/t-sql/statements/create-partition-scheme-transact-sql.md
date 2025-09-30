@@ -4,7 +4,7 @@ description: Creates a scheme in the current database that maps the partitions o
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 12/16/2024
+ms.date: 09/26/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -26,15 +26,16 @@ helpviewer_keywords:
   - "mapping partitions [SQL Server]"
 dev_langs:
   - "TSQL"
+monikerRange: "= azuresqldb-current || >= sql-server-2016 || >=sql-server-linux-2017 || = azuresqldb-mi-current || = fabric"
 ---
 # CREATE PARTITION SCHEME (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Creates a scheme in the current database that maps the partitions of a partitioned table or index to one or more filegroups. The values that map the rows of a table or index into partitions are specified in a partition function. A partition function must first be created in a [CREATE PARTITION FUNCTION](create-partition-function-transact-sql.md) statement before creating a partition scheme.
 
 > [!NOTE]  
-> In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], only primary filegroups are supported. Learn more about filegroups and partitioning strategies in [Filegroups](../../relational-databases/partitions/partitioned-tables-and-indexes.md#filegroups).
+> In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], only primary filegroups are supported. Learn more about filegroups and partitioning strategies in [Filegroups](../../relational-databases/partitions/partitioned-tables-and-indexes.md#filegroups).
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
@@ -169,7 +170,7 @@ If partition function `myRangePF4` is changed to add a partition, filegroup `tes
 
 ### E. Create a partition scheme only on PRIMARY
 
-In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], adding files and file groups isn't supported, but table partitioning is supported by partitioning across only the `PRIMARY` filegroup.
+In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], adding files and file groups isn't supported, but table partitioning is supported by partitioning across only the `PRIMARY` filegroup.
 
 The following example creates a partition function to partition a table or index into four partitions. A partition scheme is then created that specifies that all partitions are created in the `PRIMARY` filegroup.
 

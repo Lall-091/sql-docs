@@ -120,10 +120,11 @@
       - name: Extended events
         items:
         - name: Extended events
+          displayName: Extended events overview
           href: database/xevent-db-diff-from-svr.md
-        - name: Extended events - event file
+        - name: Event file walkthrough
           href: database/xevent-code-event-file.md
-        - name: Extended events - ring buffer
+        - name: Ring buffer walkthrough
           href: database/xevent-code-ring-buffer.md
   - name: Shared how-to's
     items:
@@ -511,6 +512,14 @@
         href: database/high-availability-disaster-recovery-checklist.md
       - name: Automated backups
         href: database/automated-backups-overview.md
+      - name: Backup immutability
+        items:
+        - name: Backup immutability for LTR backups
+          href: database/backup-immutability.md
+        - name: Configure time-based backup immutability
+          href: database/backup-immutability-time-based.md
+        - name: Configure legal hold backup immutability
+          href: database/backup-immutability-legal-hold.md
       - name: Disaster recovery
         items:
         - name: Active geo-replication
@@ -1102,6 +1111,8 @@
 
     - name: Security
       items:
+      - name: Secure your instance
+        href: managed-instance/secure-managed-instance.md
       - name: Always Encrypted
         href: database/always-encrypted-landing.yml
       - name: Auditing

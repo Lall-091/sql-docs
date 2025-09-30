@@ -1,9 +1,9 @@
 ---
 title: Use activity logs
 description: Learn how to view or download activity logs for Azure Arc-enabled SQL Server instances or databases.
-author: guptasnigdha12
-ms.author: guptasnigdha
-ms.reviewer: mikeray, rajpo, randolphwest
+author: lcwright
+ms.author: lancewright
+ms.reviewer: mikeray, randolphwest
 ms.date: 05/19/2025
 ms.topic: conceptual
 ---

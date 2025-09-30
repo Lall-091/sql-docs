@@ -1,8 +1,8 @@
 ---
 title: "Configure Persistent Memory (PMEM) - Linux"
 description: Learn how to configure persistent memory (PMEM) for SQL Server on Linux, and how to create namespaces for PMEM devices
-author: briancarrig
-ms.author: brcarrig
+author: thesqlsith
+ms.author: derekw
 ms.reviewer: randolphwest
 ms.date: 05/02/2025
 ms.service: sql

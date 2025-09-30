@@ -121,5 +121,5 @@ Dimensions
 
 ## Related content
 
-- [Overview of vectors in the SQL Database Engine](../../relational-databases/vectors/vectors-sql-server.md)
+- [Overview of vectors in the SQL Database Engine](../../sql-server/ai/vectors.md)
 - [Azure SQL Database Vector Search Samples](https://github.com/Azure-Samples/azure-sql-db-vector-search)

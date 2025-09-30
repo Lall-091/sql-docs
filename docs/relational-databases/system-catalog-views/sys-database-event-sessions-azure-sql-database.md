@@ -34,7 +34,7 @@ The `sys.database_event_sessions` dynamic management view (DMV) lists all the da
 
 ## Permissions
 
-Requires the VIEW DATABASE STATE permission.  
+Requires the VIEW DATABASE PERFORMANCE STATE permission.
 
 ## Related content
 

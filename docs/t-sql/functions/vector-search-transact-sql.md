@@ -25,12 +25,11 @@ monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17"
 
 [!INCLUDE [sqlserver2025](../../includes/applies-to-version/sqlserver2025.md)]
 
-Search for vectors similar to a given query vectors using an approximate nearest neighbors vector search algorithm. To learn more about how vector indexing and vector search works, and the differences between exact and approximate search, refer to [Vectors in the SQL Database Engine](../../relational-databases/vectors/vectors-sql-server.md).
+Search for vectors similar to a given query vectors using an approximate nearest neighbors vector search algorithm. To learn more about how vector indexing and vector search works, and the differences between exact and approximate search, refer to [Vectors in the SQL Database Engine](../../sql-server/ai/vectors.md).
 
 ## Preview feature
 
-> [!NOTE]  
-> This function is in preview and is subject to change. In order to use this feature, you must enable the `PREVIEW_FEATURES` [database scoped configuration](../statements/alter-database-scoped-configuration-transact-sql.md).
+This function is in preview and is subject to change. In order to use this feature, you must enable the `PREVIEW_FEATURES` [database scoped configuration](../statements/alter-database-scoped-configuration-transact-sql.md).
 
 > [!WARNING]  
 > The trace flags (466, 474, 13981) that were required in previous CTP version are no longer necessary and should be avoided, as their use will prevent vector index functionality from working correctly.
@@ -237,7 +236,7 @@ ORDER BY s.distance, t.title;
 
 ## Related content
 
-- [Overview of vectors in the SQL Database Engine](../../relational-databases/vectors/vectors-sql-server.md)
+- [Overview of vectors in the SQL Database Engine](../../sql-server/ai/vectors.md)
 - [Vector data type](../data-types/vector-data-type.md)
 - [CREATE VECTOR INDEX (Transact-SQL)](../statements/create-vector-index-transact-sql.md)
 - [Azure SQL Database Vector Search Samples](https://github.com/Azure-Samples/azure-sql-db-vector-search)

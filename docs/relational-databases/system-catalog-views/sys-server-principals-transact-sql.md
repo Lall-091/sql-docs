@@ -1,9 +1,9 @@
 ---
 title: "sys.server_principals (Transact-SQL)"
-description: sys.server_principals (Transact-SQL)
+description: The sys.server_principals system catalog view contains a row for every server-level principal.
 author: VanMSFT
 ms.author: vanto
-ms.date: "08/11/2023"
+ms.date: "09/25/2025"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -53,7 +53,11 @@ In Azure SQL Database, only the following principals can see all logins:
 - the Microsoft Entra admin and SQL server admin
 
 [!INCLUDE[ssCatViewPerm](../../includes/sscatviewperm-md.md)] For more information, see [Metadata Visibility Configuration](../../relational-databases/security/metadata-visibility-configuration.md).  
-  
+
+## Remarks
+
+In Azure SQL Database, SQL logins are not persisted in the `sys.server_principals` catalog view. Therefore, to retrieve the server-level role membership in Azure SQL Database, the catalog view `sys.sql_logins` needs to be joined.
+
 ## Examples  
 
 The following query lists the permissions explicitly granted or denied to server principals.  

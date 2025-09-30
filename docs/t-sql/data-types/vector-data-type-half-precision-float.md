@@ -232,20 +232,11 @@ Additionally, *explicit conversion* using `CAST` or `CONVERT` is currently *bloc
 DECLARE @v1 VECTOR(3, float16);
 DECLARE @v2 VECTOR(3, float32) = '[1.0, 2.0, 3.0]';
 SET @v1 = CAST(@v2 AS VECTOR(3, float16)); -- Explicit conversion from float32 to float16
--- Error: Msg 42238, Level 16, State 1, Line 61
-```
-
-Conversion of vector from data type `float32` to `float16` is not allowed.
-
-```sql
-DECLARE @v1 VECTOR(3, float16);
-DECLARE @v2 VECTOR(3, float32) = '[1.0, 2.0, 3.0]';
-SET @v1 = @v2;
--- Error: Implicit conversion from float32 to float16 is not allowed
+-- ❌ Error: Msg 42238, Level 16, State 1, Line 61
+Conversion of vector from data type float32 to float16 is not allowed.
 ```
 
 ### Dimension mismatch
-
 Conversion between vectors with mismatched dimensions isn't allowed and raises a dimension mismatch error.
 
 ```sql
@@ -328,5 +319,5 @@ SQL Server Management Studio (SSMS) doesn't currently distinguish between `float
 
 ## Related content
 
-- [Overview of vector search and vector indexes in the SQL Database Engine](../../relational-databases/vectors/vectors-sql-server.md)
+- [Overview of vector search and vector indexes in the SQL Database Engine](../../sql-server/ai/vectors.md)
 - [Intelligent applications](/azure/azure-sql/database/ai-artificial-intelligence-intelligent-applications#vector-search)

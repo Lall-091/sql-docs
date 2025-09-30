@@ -3,7 +3,7 @@ title: SQL Server Service Broker
 description: Learn about Service Broker. See how it provides native support for messaging in the SQL Server Database Engine and Azure SQL Managed Instance.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 08/26/2025
+ms.date: 09/23/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: how-to
@@ -34,22 +34,26 @@ Use Service Broker components to implement native in-database asynchronous messa
 
 ## Overview
 
-Service Broker is a message delivery framework that enables you to create native in-database service-oriented applications. Unlike classic query processing functionalities that constantly read data from the tables and process them during the query lifecycle, in service-oriented application you have database services that are exchanging the messages. Every service has a queue where the messages are placed until they are processed.
+Service Broker is a message delivery framework that enables you to create native in-database service-oriented applications. Unlike classic query processing functionalities that constantly read data from the tables and process them during the query lifecycle, service-oriented applications have database services that are exchanging the messages. Every service has a queue where the messages are placed until they're processed.
 
 :::image type="content" source="media/service-broker.png" alt-text="Diagram of Service Broker process flow.":::
 
-The messages in the queues can be fetched using the Transact-SQL `RECEIVE` command or by the activation procedure that will be called whenever the message arrives in the queue.
+The messages in the queues can be fetched using the Transact-SQL `RECEIVE` command, or by the activation procedure that is called whenever the message arrives in the queue.
 
 ### Create services
 
-Database services are created by using the [CREATE SERVICE](../../t-sql/statements/create-service-transact-sql.md) Transact SQL statement. Service can be associated with the message queue create by using the [CREATE QUEUE](../../t-sql/statements/create-queue-transact-sql.md) statement:
+>[!NOTE]
+> A target service must expose one or more **contracts**. If you create a service without a contracts it will not be able to receive messages. Messages sent will appear to succeed, but the messages will remain on the initiator's [sys.transmission_queue](../../relational-databases/system-catalog-views/sys-transmission-queue-transact-sql.md)
 
 ```sql
+/*
+In this example, the initiator must then use ON CONTRACT [DEFAULT] and a MESSAGE TYPE [DEFAULT]. [DEFAULT] is a delimited identifier for the built‑in contract and isn't a T‑SQL keyword, so it must be bracketed or quoted.
+*/
 CREATE QUEUE dbo.ExpenseQueue;
 GO
 
 CREATE SERVICE ExpensesService
-    ON QUEUE dbo.ExpenseQueue;
+ON QUEUE dbo.ExpenseQueue ([DEFAULT]);
 ```
 
 ### Send messages
@@ -57,31 +61,51 @@ CREATE SERVICE ExpensesService
 Messages are sent on the conversation between the services using the [SEND](../../t-sql/statements/send-transact-sql.md) Transact-SQL statement. A conversation is a communication channel that is established between the services using the `BEGIN DIALOG` Transact-SQL statement.
 
 ```sql
+-- Begin a dialog
 DECLARE @dialog_handle AS UNIQUEIDENTIFIER;
 
 BEGIN DIALOG @dialog_handle
     FROM SERVICE ExpensesClient
-    TO SERVICE 'ExpensesService';
+    TO SERVICE N'ExpensesService'
+    ON CONTRACT [DEFAULT];
 
-SEND ON CONVERSATION (@dialog_handle) (@Message);
+-- Send a message
+SEND ON CONVERSATION (@dialog_handle)
+    MESSAGE TYPE [DEFAULT] (N'<Expense ExpenseId="1" Amount="123.45" Currency="USD"/>');
 ```
 
-The message will be sent to the `ExpensesService` and placed in `dbo.ExpenseQueue`. Because there's no activation procedure associated to this queue, the message will remain in the queue until someone reads it.
+The message is sent to the `ExpensesService` and placed in `dbo.ExpenseQueue`. Because there's no activation procedure associated with this queue, the message remains in the queue until someone reads it.
 
 ### Process messages
 
-The messages that are placed in the queue can be selected by using a standard `SELECT` query. The `SELECT` statement will not modify the queue and remove the messages. To read and pull the messages from the queue, you can use the [RECEIVE](../../t-sql/statements/receive-transact-sql.md) Transact-SQL statement.
+The messages that are placed in the queue can be selected by using a standard `SELECT` query. The `SELECT` statement doesn't modify the queue and remove the messages. To read and pull the messages from the queue, you can use the [RECEIVE](../../t-sql/statements/receive-transact-sql.md) Transact-SQL statement.
 
 ```sql
-RECEIVE conversation_handle, message_type_name, message_body
-FROM ExpenseQueue;
+RECEIVE TOP (1)
+    conversation_handle,
+    message_type_name,
+    TRY_CAST (message_body AS NVARCHAR (MAX)) AS message_body_text
+FROM dbo.ExpenseQueue;
+GO
 ```
 
 Once you process all messages from the queue, you should close the conversation using the [END CONVERSATION](../../t-sql/statements/end-conversation-transact-sql.md) Transact-SQL statement.
 
+```sql
+-- Drain any remaining target conversations for the from the queue
+DECLARE @conversation_hdl AS UNIQUEIDENTIFIER;
+
+WHILE EXISTS (SELECT 1 FROM dbo.ExpenseQueue)
+    BEGIN
+        RECEIVE TOP (1) @conversation_hdl = conversation_handle FROM dbo.ExpenseQueue;
+        END CONVERSATION @conversation_hdl;
+    END
+GO
+```
+
 ## Service Broker documentation
 
-The reference documentation for [!INCLUDE [ssSB](../../includes/sssb-md.md)] is included in the [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] documentation. This reference documentation includes the following sections:
+For more information about [!INCLUDE [ssSB](../../includes/sssb-md.md)], see:
 
 - [Data Definition Language statements](../../t-sql/statements/statements.md) for `CREATE`, `ALTER`, and `DROP` statements
 - [Transact-SQL statements](../../t-sql/statements/statements.md)
@@ -89,7 +113,7 @@ The reference documentation for [!INCLUDE [ssSB](../../includes/sssb-md.md)] is 
 - [Service Broker Related Dynamic Management Views (Transact-SQL)](../../relational-databases/system-dynamic-management-views/service-broker-related-dynamic-management-views-transact-sql.md)
 - [ssbdiagnose utility (Service Broker)](../../tools/ssbdiagnose/ssbdiagnose-utility-service-broker.md)
 
-See the [previously published documentation](/previous-versions/sql/sql-server-2008-r2/bb522893(v=sql.105)) for [!INCLUDE [ssSB](../../includes/sssb-md.md)] concepts and for development and management tasks. This documentation isn't reproduced in the [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] documentation due to the small number of changes in [!INCLUDE [ssSB](../../includes/sssb-md.md)] in recent versions of [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)].
+You can also refer to the [previously published documentation](/previous-versions/sql/sql-server-2008-r2/bb522893(v=sql.105)) for [!INCLUDE [ssSB](../../includes/sssb-md.md)] concepts and for development and management tasks.
 
 ## What's new in Service Broker
 
@@ -100,7 +124,7 @@ Cross-instance Service Broker message exchange between instances of Azure SQL Ma
 - `CREATE ROUTE`: Port specified must be 4022. See [CREATE ROUTE (Transact-SQL)](../../t-sql/statements/create-route-transact-sql.md).
 - `ALTER ROUTE`: Port specified must be 4022. See [ALTER ROUTE (Transact-SQL)](../../t-sql/statements/alter-route-transact-sql.md).
 
-Transport security is supported, dialog security isn't:
+Transport security is supported, while dialog security is not:
 
 - `CREATE REMOTE SERVICE BINDING` isn't supported.
 
@@ -113,7 +137,7 @@ No significant changes were introduced in [!INCLUDE [sssql19-md](../../includes/
 
 ### Messages can be sent to multiple target services (multicast)
 
-The syntax of the [SEND](../../t-sql/statements/send-transact-sql.md) statement has been extended to enable multicast by supporting multiple conversation handles.
+The syntax of the [SEND](../../t-sql/statements/send-transact-sql.md) statement was extended to enable multicast by supporting multiple conversation handles.
 
 ### Queues expose the message enqueued time
 

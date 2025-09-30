@@ -28,7 +28,7 @@ monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-curre
 
 [!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
-The `VECTOR_DISTANCE` function calculates the distance between two vectors using a specified distance metric. Vector distance is always exact and doesn't use any vector index, even if available. In order to use a vector index and thus perform an approximate vector search, you must use the [VECTOR_SEARCH](vector-search-transact-sql.md) function. To learn more about how vector indexing and vector search works, and the differences between exact and approximate search, refer to [Vectors in the SQL Database Engine](../../relational-databases/vectors/vectors-sql-server.md).
+The `VECTOR_DISTANCE` function calculates the distance between two vectors using a specified distance metric. Vector distance is always exact and doesn't use any vector index, even if available. In order to use a vector index and thus perform an approximate vector search, you must use the [VECTOR_SEARCH](vector-search-transact-sql.md) function. To learn more about how vector indexing and vector search works, and the differences between exact and approximate search, refer to [Vectors in the SQL Database Engine](../../sql-server/ai/vectors.md).
 
 > [!NOTE]  
 > `VECTOR_DISTANCE` is available in Azure SQL Managed Instance with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).
@@ -133,6 +133,6 @@ ORDER BY distance;
 
 ## Related content
 
-- [Overview of vector search and vector indexes in the SQL Database Engine](../../relational-databases/vectors/vectors-sql-server.md)
+- [Overview of vector search and vector indexes in the SQL Database Engine](../../sql-server/ai/vectors.md)
 - [Azure SQL Database Vector Search Samples](https://github.com/Azure-Samples/azure-sql-db-vector-search)
 - [Vector data type](../data-types/vector-data-type.md)

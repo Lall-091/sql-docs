@@ -1,10 +1,10 @@
 ---
-title: "Extended Events sessions"
+title: "Extended Events Sessions"
 description: An Extended Events session is created in the Database Engine process that hosts the Extended Events engine.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: randolphwest
-ms.date: 08/07/2025
+ms.reviewer: randolphwest, dfurman
+ms.date: 09/23/2025
 ms.service: sql
 ms.subservice: xevents
 ms.topic: conceptual
@@ -12,12 +12,12 @@ helpviewer_keywords:
   - "xe"
   - "sessions"
   - "extend events [SQL Server]"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
 
 # Extended Events sessions
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 An Extended Events session is created in the [!INCLUDE [ssdenoversion-md](../../includes/ssdenoversion-md.md)] process hosting the Extended Events engine. The following aspects of an Extended Events session provide a context for understanding the Extended Events infrastructure and the processing that takes place:
 
@@ -29,16 +29,16 @@ An Extended Events session is created in the [!INCLUDE [ssdenoversion-md](../../
 
 The following illustration shows the various states of an Extended Events session.
 
-:::image type="content" source="media/xesessionstate.png" alt-text="Diagram showing Extended Events session state.":::
+:::image type="content" source="media/sql-server-extended-events-sessions/extended-events-session-state.png" alt-text="Diagram showing Extended Events session state.":::
 
 Referring to the preceding figure, observe that session state changes as the different data definition language (DDL) commands are issued for an event session. The following table describes these changes in state.
 
 | Illustration label | DDL statement | Description |
 | --- | --- | --- |
-| **Create** | `CREATE EVENT SESSION` | The host process creates a session object that contains the metadata provided by `CREATE EVENT SESSION`. The host process validates the session definition, validates the user permission level, and stores the metadata in the `master` database. At this point, the session isn't active. |
-| **Alter** | `ALTER EVENT SESSION`, `STATE=START` | The host process starts the session. The host process reads the stored metadata, validates the session definition, verifies the level of user permission level, and creates the session. Session objects, such as events and targets, are loaded and event handling is active. |
-| **Alter** | `ALTER EVENT SESSION`, `STATE=STOP` | The host process stops the active session but retains the metadata. |
-| **Drop** | `DROP EVENT SESSION` | Depending on whether or not the session is active, Drop (`DROP SESSION`) deletes the metadata and closes the active session, or deletes the session metadata. |
+| `Create` | `CREATE EVENT SESSION` | The host process creates a session object that contains the metadata provided by `CREATE EVENT SESSION`. The host process validates the session definition, validates the user permission level, and stores the metadata in the `master` database. At this point, the session isn't active. |
+| `Alter` | `ALTER EVENT SESSION`, `STATE=START` | The host process starts the session. The host process reads the stored metadata, validates the session definition, verifies the level of user permission level, and creates the session. Session objects, such as events and targets, are loaded and event handling is active. |
+| `Alter` | `ALTER EVENT SESSION`, `STATE=STOP` | The host process stops the active session but retains the metadata. |
+| `Drop` | `DROP EVENT SESSION` | Depending on whether or not the session is active, Drop (`DROP SESSION`) deletes the metadata and closes the active session, or deletes the session metadata. |
 
 ## Session content and characteristics
 
@@ -46,7 +46,7 @@ Extended Events sessions have implied boundaries in that the configuration of on
 
 The following illustration shows session content and the relationship between packages and sessions.
 
-:::image type="content" source="media/xesessions.gif" alt-text="Diagram showing object coexistence and sharing in sessions.":::
+:::image type="content" source="media/sql-server-extended-events-sessions/extended-events-sessions.gif" alt-text="Diagram showing object coexistence and sharing in sessions.":::
 
 Referring to the preceding illustration, keep in mind that:
 
