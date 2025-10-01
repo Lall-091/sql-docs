@@ -142,7 +142,7 @@ Auditors can use Azure Monitor to review managed HSM AuditEvent logs, if logging
 
   To maintain high availability and avoid throttling issues, follow these guidelines per subscription:
 
-  - Use a **dedicated Azure Key Vault** for Azure SQL.
+  - Use a **dedicated Azure Key Vault** for Azure SQL resources.
 
   - Associate **no more than 500 General Purpose databases** with a single Azure Key Vault.
 
@@ -157,7 +157,7 @@ Auditors can use Azure Monitor to review managed HSM AuditEvent logs, if logging
     WHERE type_desc = 'ROWS';
     ```
 
-    Associate **no more than 200 page servers** with a single Azure Key Vault. The number of page servers increases automatically as the database expands. It's recommended to regularly monitor the size of the database.
+    Do not associate more than **500 page servers** with a single Azure Key Vault. As the database grows, the number of page servers increases automatically, so it's important to monitor database size regularly. If the number of page servers exceeds 500, use a dedicated Azure Key Vault for each Hyperscale database that is not shared with other Azure SQL resources.
 
   - **Monitor** and configure Azure Key Vault **alerts**. For more information on monitoring and alerting, see [Monitor Azure Key Vault](/azure/key-vault/general/monitor-key-vault) and [Configure Azure Key Vault alerts](/azure/key-vault/general/alert).
 
@@ -178,7 +178,7 @@ Auditors can use Azure Monitor to review managed HSM AuditEvent logs, if logging
 
   To maintain high availability and avoid throttling issues, follow these guidelines per subscription:
 
-  - Use a **dedicated Azure Key Vault Managed HSM** for Azure SQL.
+  - Use a **dedicated Azure Key Vault Managed HSM** for Azure SQL resources.
 
   - Associate **no more than 500 General Purpose databases** with a single Azure Key Vault Managed HSM.
 
@@ -193,7 +193,7 @@ Auditors can use Azure Monitor to review managed HSM AuditEvent logs, if logging
     WHERE type_desc = 'ROWS';
     ```
 
-    Associate **no more than 200 page servers** with a single Azure Key Vault Managed HSM. The number of page servers increases automatically as the database expands. It's recommended to regularly monitor the size of the database.
+    Do not associate more than **500 page servers** with a single Azure Key Vault Managed HSM. As the database grows, the number of page servers increases automatically, so it's important to monitor database size regularly. If the number of page servers exceeds 500, use a dedicated Azure Key Vault Managed HSM for each Hyperscale database that is not shared with other Azure SQL resources.
 
   - **Monitor** and configure Azure Key Vault Managed HSM **alerts**. For more information on monitoring and alerting, see [Monitor Azure Key Vault](/azure/key-vault/general/monitor-key-vault) and [Configure Azure Key Vault alerts](/azure/key-vault/general/alert).
 
