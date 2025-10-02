@@ -27,7 +27,7 @@ There are four types of CTE, including *standard*, *sequential*, *recursive*, an
 - A sequential CTE's definition can reference an existing CTE but can't define another CTE.
 - A recursive CTE references itself in its definition.
 
-In Microsoft Fabric, Fabric Data Warehouse and the SQL analytics endpoint both support *standard*, *sequential*, and *nested* CTEs, but not [recursive CTEs](recursive-common-table-expression-transact-sql.md). While standard and sequential CTEs are generally available in Microsoft Fabric, nested CTEs are currently a preview feature.
+In Microsoft Fabric, Fabric Data Warehouse and the SQL analytics endpoint both support *standard*, *sequential*, and *nested* CTEs, but not [recursive CTEs](recursive-common-table-expression-transact-sql.md). 
 
 For more information about common table expressions, see [WITH common_table_expression (Transact-SQL)](with-common-table-expression-transact-sql.md?view=fabric&preserve-view=true).
 
