@@ -4,7 +4,7 @@ description: CREATE COLUMNSTORE INDEX converts a rowstore table to a clustered c
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 04/14/2025
+ms.date: 10/01/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -28,7 +28,7 @@ helpviewer_keywords:
   - "CREATE COLUMNSTORE INDEX statement"
   - "CREATE INDEX statement"
 dev_langs:
-  - "TSQL"
+  - TSQL
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
 
@@ -44,13 +44,13 @@ Follow [What's new in columnstore indexes](../../relational-databases/indexes/co
 
 - Starting with [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)], you can create the table as a clustered columnstore index. It's no longer necessary to first create a rowstore table and then convert it to a clustered columnstore index.
 
-- For information on columnstore index design guidelines, see [Columnstore indexes - Design guidance](../../relational-databases/indexes/columnstore-indexes-design-guidance.md).
+- For information on columnstore index design guidelines, see [Columnstore indexes - design guidance](../../relational-databases/indexes/columnstore-indexes-design-guidance.md).
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ## Syntax
 
-Syntax for [!INCLUDE[ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [ssazure-sqlmi-autd](../../includes/ssazure-sqlmi-autd.md)]:
+Syntax for [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [ssazure-sqlmi-autd](../../includes/ssazure-sqlmi-autd.md)]:
 
 ```syntaxsql
 -- Create a clustered columnstore index on disk-based table.
@@ -128,7 +128,7 @@ CREATE [ NONCLUSTERED ]  COLUMNSTORE INDEX index_name
     | column_name { IS | IS NOT | = | <> | != | > | >= | !> | < | <= | !< } constant )
 ```
 
-Syntax for [!INCLUDE [ssazuresynapse_md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE[sspdw-md](../../includes/sspdw-md.md)]:
+Syntax for [!INCLUDE [ssazuresynapse_md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE [sspdw-md](../../includes/sspdw-md.md)]:
 
 ```syntaxsql
 CREATE CLUSTERED COLUMNSTORE INDEX index_name
@@ -158,9 +158,9 @@ For more detail on feature availability, see [What's new in columnstore indexes]
 
 ### CREATE CLUSTERED COLUMNSTORE INDEX
 
-Create a clustered columnstore index in which all of the data is compressed and stored by column. The index includes all of the columns in the table, and stores the entire table. If the existing table is a heap or clustered index, then it is converted to a clustered columnstore index. If the table is already stored as a clustered columnstore index, then the existing index is dropped and rebuilt.
+Create a clustered columnstore index in which all of the data is compressed and stored by column. The index includes all of the columns in the table, and stores the entire table. If the existing table is a heap or clustered index, then it's converted to a clustered columnstore index. If the table is already stored as a clustered columnstore index, then the existing index is dropped and rebuilt.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > In SQL database in Fabric, a clustered columnstore index must be created within the same batch or transaction as the table it belongs to. Adding a clustered columnstore index to a table after it has already been created can result in the following error:
 >
 > ```output
@@ -179,7 +179,7 @@ Specifies the one-, two-, or three-part name of the table to be stored as a clus
 
 #### ORDER for clustered columnstore
 
-Use the `column_store_order_ordinal` column in [sys.index_columns](../../relational-databases/system-catalog-views/sys-index-columns-transact-sql.md) to determine the order of the columns for a clustered columnstore index. Columnstore ordering aids with [segment elimination](../../relational-databases/indexes/columnstore-indexes-query-performance.md#segment-elimination), especially with string data. For more information, see [Performance tuning with ordered columnstore indexes](../../relational-databases/indexes/ordered-columnstore-indexes.md) and [Columnstore indexes - Design guidance](../../relational-databases/indexes/columnstore-indexes-design-guidance.md).
+Use the `column_store_order_ordinal` column in [sys.index_columns](../../relational-databases/system-catalog-views/sys-index-columns-transact-sql.md) to determine the order of the columns for a clustered columnstore index. Columnstore ordering aids with [segment elimination](../../relational-databases/indexes/columnstore-indexes-query-performance.md#segment-elimination), especially with string data. For more information, see [Performance tuning with ordered columnstore indexes](../../relational-databases/indexes/ordered-columnstore-indexes.md) and [Columnstore indexes - design guidance](../../relational-databases/indexes/columnstore-indexes-design-guidance.md).
 
 To convert to an ordered clustered columnstore index, the existing index must be a clustered columnstore index. Use the `DROP_EXISTING` option.
 
@@ -196,8 +196,8 @@ For ordered columnstore index availability, see [Columnstore indexes: Overview](
 `DROP_EXISTING = ON` specifies to drop the existing index, and create a new columnstore index.
 
 ```sql
-CREATE CLUSTERED COLUMNSTORE INDEX cci ON Sales.OrderLines
-WITH (DROP_EXISTING = ON);
+CREATE CLUSTERED COLUMNSTORE INDEX cci
+    ON Sales.OrderLines WITH (DROP_EXISTING = ON);
 ```
 
 The default, DROP_EXISTING = OFF, expects the index name is the same as the existing name. An error occurs if the specified index name already exists.
@@ -213,11 +213,11 @@ This option can override the existing maximum degree of parallelism server confi
 - 0 (default), which means to use the actual number of processors, or fewer, based on the current system workload.
 
 ```sql
-CREATE CLUSTERED COLUMNSTORE INDEX cci ON Sales.OrderLines
-WITH (MAXDOP = 2);
+CREATE CLUSTERED COLUMNSTORE INDEX cci
+    ON Sales.OrderLines WITH (MAXDOP = 2);
 ```
 
-For more information, see [Server configuration: max degree of parallelism](../../database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md), and [Configure Parallel Index Operations](../../relational-databases/indexes/configure-parallel-index-operations.md).
+For more information, see [Server configuration: max degree of parallelism](../../database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md), and [Configure parallel index operations](../../relational-databases/indexes/configure-parallel-index-operations.md).
 
 ###### COMPRESSION_DELAY = 0 | *delay* [ MINUTES ]
 
@@ -226,11 +226,11 @@ For a disk-based table, *delay* specifies the minimum number of minutes that a d
 The default is 0 minutes.
 
 ```sql
-CREATE CLUSTERED COLUMNSTORE INDEX cci ON Sales.OrderLines
-WITH ( COMPRESSION_DELAY = 10 MINUTES );
+CREATE CLUSTERED COLUMNSTORE INDEX cci
+    ON Sales.OrderLines WITH (COMPRESSION_DELAY = 10 MINUTES);
 ```
 
-For recommendations on when to use COMPRESSION_DELAY, see [Get started with Columnstore for real-time operational analytics](../../relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics.md).
+For recommendations on when to use COMPRESSION_DELAY, see [Get started with columnstore indexes for real-time operational analytics](../../relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics.md).
 
 ##### DATA_COMPRESSION = COLUMNSTORE | COLUMNSTORE_ARCHIVE
 
@@ -240,8 +240,8 @@ Specifies the data compression option for the specified table, partition number,
 - `COLUMNSTORE_ARCHIVE` further compresses the table or partition to a smaller size. Use this option for situations such as archival, which requires a smaller storage size and can afford more time for storage and retrieval.
 
 ```sql
-CREATE CLUSTERED COLUMNSTORE INDEX cci ON Sales.OrderLines
-WITH ( DATA_COMPRESSION = COLUMNSTORE_ARCHIVE );
+CREATE CLUSTERED COLUMNSTORE INDEX cci
+    ON Sales.OrderLines WITH (DATA_COMPRESSION = COLUMNSTORE_ARCHIVE);
 ```
 
 For more information about compression, see [Data compression](../../relational-databases/data-compression/data-compression.md).
@@ -252,21 +252,21 @@ For more information about compression, see [Data compression](../../relational-
 - `OFF` specifies that the index isn't available for use while the new copy is being built.
 
 ```sql
-CREATE CLUSTERED COLUMNSTORE INDEX cci ON Sales.OrderLines
-WITH ( ONLINE = ON );
+CREATE CLUSTERED COLUMNSTORE INDEX cci
+    ON Sales.OrderLines WITH (ONLINE = ON);
 ```
 
 #### ON options
 
 With these options, you can specify options for data storage, such as a partition scheme, a specific filegroup, or the default filegroup. If the ON option isn't specified, the index uses the settings partition or filegroup settings of the existing table.
 
-*partition_scheme_name* ( *column_name* ) specifies the partition scheme for the table. The partition scheme must already exist in the database. To create the partition scheme, see [CREATE PARTITION SCHEME (Transact-SQL)](create-partition-scheme-transact-sql.md).
+*partition_scheme_name* ( *column_name* ) specifies the partition scheme for the table. The partition scheme must already exist in the database. To create the partition scheme, see [CREATE PARTITION SCHEME](create-partition-scheme-transact-sql.md).
 
 *column_name* specifies the column against which a partitioned index is partitioned. This column must match the data type, length, and precision of the argument of the partition function that *partition_scheme_name* is using.
 
 *filegroup_name* specifies the filegroup for storing the clustered columnstore index. If no location is specified and the table isn't partitioned, the index uses the same filegroup as the underlying table or view. The filegroup must already exist.
 
-To create the index on the default filegroup, use `"default"` or `[default]`. If you specify `"default"`, the `QUOTED_IDENTIFIER` option must be `ON` for the current session. `QUOTED_IDENTIFIER` is `ON` by default. For more information, see [SET QUOTED_IDENTIFIER (Transact-SQL)](set-quoted-identifier-transact-sql.md).
+To create the index on the default filegroup, use `"default"` or `[default]`. If you specify `"default"`, the `QUOTED_IDENTIFIER` option must be `ON` for the current session. `QUOTED_IDENTIFIER` is `ON` by default. For more information, see [SET QUOTED_IDENTIFIER](set-quoted-identifier-transact-sql.md).
 
 ### CREATE [NONCLUSTERED] COLUMNSTORE INDEX
 
@@ -274,7 +274,7 @@ Create a nonclustered columnstore index on a rowstore table stored as a heap or 
 
 #### *index_name*
 
-Specifies the name of the index. *index_name*  must be unique within the table, but doesn't have to be unique within the database. Index names must follow the rules of [identifiers](../../relational-databases/databases/database-identifiers.md).
+Specifies the name of the index. *index_name* must be unique within the table, but doesn't have to be unique within the database. Index names must follow the rules of [identifiers](../../relational-databases/databases/database-identifiers.md).
 
 #### ( *column* [ ,...*n* ] )
 
@@ -290,7 +290,7 @@ Specifies the one-, two-, or three-part name of the table that contains the inde
 
 The columns specified in the `ORDER` clause for a nonclustered columnstore index must be a subset of the key columns for the index.
 
-Use the `column_store_order_ordinal` column in [sys.index_columns](../../relational-databases/system-catalog-views/sys-index-columns-transact-sql.md) to determine the order of the columns for a nonclustered columnstore index. Columnstore ordering aids with [segment elimination](../../relational-databases/indexes/columnstore-indexes-query-performance.md#segment-elimination), especially with string data. For more information, see [Performance tuning with ordered columnstore indexes](../../relational-databases/indexes/ordered-columnstore-indexes.md) and [Columnstore indexes - Design guidance](../../relational-databases/indexes/columnstore-indexes-design-guidance.md). Design and performance considerations in these articles generally apply to both clustered and nonclustered columnstore indexes.
+Use the `column_store_order_ordinal` column in [sys.index_columns](../../relational-databases/system-catalog-views/sys-index-columns-transact-sql.md) to determine the order of the columns for a nonclustered columnstore index. Columnstore ordering aids with [segment elimination](../../relational-databases/indexes/columnstore-indexes-query-performance.md#segment-elimination), especially with string data. For more information, see [Performance tuning with ordered columnstore indexes](../../relational-databases/indexes/ordered-columnstore-indexes.md) and [Columnstore indexes - design guidance](../../relational-databases/indexes/columnstore-indexes-design-guidance.md). Design and performance considerations in these articles generally apply to both clustered and nonclustered columnstore indexes.
 
 LOB data types (the (max) length data types) can't be the key of an ordered nonclustered columnstore index.
 
@@ -300,13 +300,15 @@ For ordered columnstore index availability, see [Ordered column index availabili
 
 #### WITH options
 
-##### DROP_EXISTING = [OFF] | ON
+#### DROP_EXISTING = { OFF | ON }
 
-DROP_EXISTING = ON
-The existing index is dropped and rebuilt. The index name specified must be the same as a currently existing index; however, the index definition can be modified. For example, you can specify different columns, or index options.
+- DROP_EXISTING = ON
 
-DROP_EXISTING = OFF  
-An error is shown if the specified index name already exists. The index type can't be changed by using DROP_EXISTING. In backward-compatible syntax, WITH DROP_EXISTING is equivalent to WITH DROP_EXISTING = ON.
+  The existing index is dropped and rebuilt. The index name specified must be the same as a currently existing index; however, the index definition can be modified. For example, you can specify different columns, or index options.
+
+- DROP_EXISTING = OFF
+
+  An error is shown if the specified index name already exists. The index type can't be changed by using DROP_EXISTING. In backward-compatible syntax, WITH DROP_EXISTING is equivalent to WITH DROP_EXISTING = ON.
 
 ##### MAXDOP = *max_degree_of_parallelism*
 
@@ -318,7 +320,7 @@ Overrides the [Server configuration: max degree of parallelism](../../database-e
 - \>1, which means to restrict the maximum number of processors used in a parallel index operation to the specified number, or fewer, based on the current system workload. For example, when MAXDOP = 4, the number of processors used is 4 or less.
 - 0 (default), which means to use the actual number of processors or fewer based on the current system workload.
 
-For more information, see [Configure Parallel Index Operations](../../relational-databases/indexes/configure-parallel-index-operations.md).
+For more information, see [Configure parallel index operations](../../relational-databases/indexes/configure-parallel-index-operations.md).
 
 > [!NOTE]  
 > Parallel index operations aren't available in every edition of [!INCLUDE [msC](../../includes/msconame-md.md)] [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. For a list of features that are supported by the editions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], see [Editions and supported features of SQL Server 2022](../../sql-server/editions-and-components-of-sql-server-2022.md).
@@ -329,15 +331,15 @@ For more information, see [Configure Parallel Index Operations](../../relational
 - `OFF` specifies that the index isn't available for use while the new copy is being built. In a nonclustered index, the base table remains available. Only the nonclustered columnstore index isn't used to satisfy queries until the new index is complete.
 
 ```sql
-CREATE COLUMNSTORE INDEX ncci ON Sales.OrderLines (StockItemID, Quantity, UnitPrice, TaxRate)
-WITH ( ONLINE = ON );
+CREATE COLUMNSTORE INDEX ncci
+    ON Sales.OrderLines(StockItemID, Quantity, UnitPrice, TaxRate) WITH (ONLINE = ON);
 ```
 
 ##### COMPRESSION_DELAY = 0 | *delay* [ MINUTES ]
 
 Specifies a lower bound on how long a row should stay in a delta rowgroup, before it's eligible for migration to a compressed rowgroup. For example, you can say that if a row is unchanged for 120 minutes, that row is eligible for compressing into columnar storage format.
 
-For a columnstore index on disk-based tables, the time when a row was inserted or updated isn't tracked. Instead, the delta rowgroup closed time is used as a proxy for the row. The default duration is 0 minutes. A row is migrated to columnar storage after 1 million rows accumulate in the delta rowgroup, and it is marked closed.
+For a columnstore index on disk-based tables, the time when a row was inserted or updated isn't tracked. Instead, the delta rowgroup closed time is used as a proxy for the row. The default duration is 0 minutes. A row is migrated to columnar storage after 1 million rows accumulate in the delta rowgroup, and it's marked closed.
 
 ##### DATA_COMPRESSION
 
@@ -396,7 +398,7 @@ Requires ALTER permission on the table.
 
 You can create a columnstore index on a temporary table. When the table is dropped or the session ends, the index is also dropped.
 
-In Fabric SQL database, tables with clustered columnstore indexes are not [mirrored to Fabric OneLake](/fabric/database/sql/mirroring-overview).
+In Fabric SQL database, tables with clustered columnstore indexes aren't [mirrored to Fabric OneLake](/fabric/database/sql/mirroring-overview).
 
 ## Filtered indexes
 
@@ -412,13 +414,13 @@ The SET options in the required value column are required whenever any of the fo
 
 | SET options | Required value | Default server value | Default OLE DB and ODBC value | Default DB-Library value |
 | --- | --- | --- | --- | --- |
-| ANSI_NULLS | ON | ON | ON | OFF |
-| ANSI_PADDING | ON | ON | ON | OFF |
-| ANSI_WARNINGS <sup>1</sup> | ON | ON | ON | OFF |
-| ARITHABORT | ON | ON | OFF | OFF |
-| CONCAT_NULL_YIELDS_NULL | ON | ON | ON | OFF |
-| NUMERIC_ROUNDABORT | OFF | OFF | OFF | OFF |
-| QUOTED_IDENTIFIER | ON | ON | ON | OFF |
+| `ANSI_NULLS` | ON | ON | ON | OFF |
+| `ANSI_PADDING` | ON | ON | ON | OFF |
+| `ANSI_WARNINGS` <sup>1</sup> | ON | ON | ON | OFF |
+| `ARITHABORT` | ON | ON | OFF | OFF |
+| `CONCAT_NULL_YIELDS_NULL` | ON | ON | ON | OFF |
+| `NUMERIC_ROUNDABORT` | OFF | OFF | OFF | OFF |
+| `QUOTED_IDENTIFIER` | ON | ON | ON | OFF |
 
 <sup>1</sup> Setting ANSI_WARNINGS to ON implicitly sets ARITHABORT to ON when the database compatibility level is set to 90 or later. If the database compatibility level is set to 80 or earlier, you must explicitly set the ARITHABORT option to ON.
 
@@ -434,7 +436,9 @@ For more information about filtered indexes, see [Create filtered indexes](../..
 
 <a id="LimitRest"></a>
 
-## Limitations and restrictions
+<a id="limitations-and-restrictions"></a>
+
+## Limitations
 
 Each column in a columnstore index must be of one of the following common business data types:
 
@@ -519,7 +523,7 @@ The following limitations apply only to [!INCLUDE [ssSQL14](../../includes/sssql
 - Multiple Active Result Sets (MARS). [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] uses this feature for read-only connections to tables with a columnstore index. However, [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] doesn't support this feature for concurrent data manipulation language (DML) operations on a table with a columnstore index. If you try to use the feature for this purpose, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] terminates the connections and cancels the transactions.
 - Nonclustered columnstore indexes can't be created on a view or indexed view.
 
-For information about the performance benefits and limitations of columnstore indexes, see [Columnstore indexes: Overview](../../relational-databases/indexes/columnstore-indexes-overview.md).
+For information about the performance benefits and limitations of columnstore indexes, see [Columnstore indexes: overview](../../relational-databases/indexes/columnstore-indexes-overview.md).
 
 ## Metadata
 
@@ -541,13 +545,17 @@ All of the columns in a columnstore index are stored in the metadata as included
 This example creates a table as a heap, and then converts it to a clustered columnstore index named `cci_Simple`. The creation of the clustered columnstore index changes the storage for the entire table from rowstore to columnstore.
 
 ```sql
-CREATE TABLE dbo.SimpleTable(
-    ProductKey [INT] NOT NULL,
-    OrderDateKey [INT] NOT NULL,
-    DueDateKey [INT] NOT NULL,
-    ShipDateKey [INT] NOT NULL);
+CREATE TABLE dbo.SimpleTable
+(
+    ProductKey INT NOT NULL,
+    OrderDateKey INT NOT NULL,
+    DueDateKey INT NOT NULL,
+    ShipDateKey INT NOT NULL
+);
 GO
-CREATE CLUSTERED COLUMNSTORE INDEX cci_Simple ON dbo.SimpleTable;
+
+CREATE CLUSTERED COLUMNSTORE INDEX cci_Simple
+    ON dbo.SimpleTable;
 GO
 ```
 
@@ -556,16 +564,21 @@ GO
 This example creates a table with clustered index, and then demonstrates the syntax of converting the clustered index to a clustered columnstore index. The creation of the clustered columnstore index changes the storage for the entire table from rowstore to columnstore.
 
 ```sql
-CREATE TABLE dbo.SimpleTable2 (
-    ProductKey [INT] NOT NULL,
-    OrderDateKey [INT] NOT NULL,
-    DueDateKey [INT] NOT NULL,
-    ShipDateKey [INT] NOT NULL);
+CREATE TABLE dbo.SimpleTable2
+(
+    ProductKey INT NOT NULL,
+    OrderDateKey INT NOT NULL,
+    DueDateKey INT NOT NULL,
+    ShipDateKey INT NOT NULL
+);
 GO
-CREATE CLUSTERED INDEX cl_simple ON dbo.SimpleTable2 (ProductKey);
+
+CREATE CLUSTERED INDEX cl_simple
+    ON dbo.SimpleTable2(ProductKey);
 GO
-CREATE CLUSTERED COLUMNSTORE INDEX cl_simple ON dbo.SimpleTable2
-WITH (DROP_EXISTING = ON);
+
+CREATE CLUSTERED COLUMNSTORE INDEX cl_simple
+    ON dbo.SimpleTable2 WITH (DROP_EXISTING = ON);
 GO
 ```
 
@@ -579,16 +592,18 @@ In [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] and [!INCLUDE [ssSQL14](..
 
 ```sql
 --Create the table for use with this example.
-CREATE TABLE dbo.SimpleTable (
-    ProductKey [INT] NOT NULL,
-    OrderDateKey [INT] NOT NULL,
-    DueDateKey [INT] NOT NULL,
-    ShipDateKey [INT] NOT NULL);
+CREATE TABLE dbo.SimpleTable
+(
+    ProductKey INT NOT NULL,
+    OrderDateKey INT NOT NULL,
+    DueDateKey INT NOT NULL,
+    ShipDateKey INT NOT NULL
+);
 GO
-  
+
 --Create two nonclustered indexes for use with this example
-CREATE INDEX nc1_simple ON dbo.SimpleTable (OrderDateKey);
-CREATE INDEX nc2_simple ON dbo.SimpleTable (DueDateKey);
+CREATE INDEX nc1_simple ON dbo.SimpleTable(OrderDateKey);
+CREATE INDEX nc2_simple ON dbo.SimpleTable(DueDateKey);
 GO
 ```
 
@@ -597,9 +612,10 @@ Only for [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)] and [!INCLUDE [ss
 ```sql
 DROP INDEX dbo.SimpleTable.nc1_simple;
 DROP INDEX dbo.SimpleTable.nc2_simple;
-  
+
 --Convert the rowstore table to a columnstore index.
-CREATE CLUSTERED COLUMNSTORE INDEX cci_simple ON dbo.SimpleTable;
+CREATE CLUSTERED COLUMNSTORE INDEX cci_simple
+    ON dbo.SimpleTable;
 GO
 ```
 
@@ -609,62 +625,67 @@ This example explains how to convert a large fact table from a rowstore table to
 
 1. Create a small table to use in this example.
 
-    ```sql
-    --Create a rowstore table with a clustered index and a nonclustered index.
-    CREATE TABLE dbo.MyFactTable (
-        ProductKey [INT] NOT NULL,
-        OrderDateKey [INT] NOT NULL,
-        DueDateKey [INT] NOT NULL,
-        ShipDateKey [INT] NOT NULL
-    INDEX IDX_CL_MyFactTable CLUSTERED  ( ProductKey )
-    );
-  
-    --Add a nonclustered index.
-    CREATE INDEX my_index ON dbo.MyFactTable ( ProductKey, OrderDateKey );
-    ```
+   ```sql
+   --Create a rowstore table with a clustered index and a nonclustered index.
+   CREATE TABLE dbo.MyFactTable
+   (
+       ProductKey INT NOT NULL,
+       OrderDateKey INT NOT NULL,
+       DueDateKey INT NOT NULL,
+       ShipDateKey INT NOT NULL INDEX IDX_CL_MyFactTable CLUSTERED (ProductKey)
+   );
+
+   --Add a nonclustered index.
+   CREATE INDEX my_index
+       ON dbo.MyFactTable(ProductKey, OrderDateKey);
+   ```
 
 1. Drop all nonclustered indexes from the rowstore table. You might want to [script out the indexes to re-create them later](../../ssms/tutorials/scripting-ssms.md#script-a-database-by-using-the-generate-scripts-option).
 
-    ```sql
-    --Drop all nonclustered indexes
-    DROP INDEX my_index ON dbo.MyFactTable;
-    ```
+   ```sql
+   --Drop all nonclustered indexes
+   DROP INDEX my_index
+       ON dbo.MyFactTable;
+   ```
 
 1. Convert the rowstore table to a columnstore table with a clustered columnstore index.
 
-    First, look up the name of the existing clustered rowstore index. In Step 1, we set the name of the index to `IDX_CL_MyFactTable`. If the index name wasn't specified, it was given an automatically generated unique index name. You can retrieve the automatically generated name with the following sample query:
+   First, look up the name of the existing clustered rowstore index. In Step 1, we set the name of the index to `IDX_CL_MyFactTable`. If the index name wasn't specified, it was given an automatically generated unique index name. You can retrieve the automatically generated name with the following sample query:
 
-    ```sql
-    SELECT i.object_id, i.name, t.object_id, t.name
-    FROM sys.indexes i
-    INNER JOIN sys.tables t ON i.object_id = t.object_id
-    WHERE i.type_desc = 'CLUSTERED'
-    AND t.name = 'MyFactTable';
-    ```
+   ```sql
+   SELECT i.object_id,
+          i.name,
+          t.object_id,
+          t.name
+   FROM sys.indexes AS i
+        INNER JOIN sys.tables AS t
+            ON i.object_id = t.object_id
+   WHERE i.type_desc = 'CLUSTERED'
+         AND t.name = 'MyFactTable';
+   ```
 
-    Option 1: Drop the existing clustered index `IDX_CL_MyFactTable`, and convert `MyFactTable` to columnstore. Change the name of the new clustered columnstore index.
+   Option 1: Drop the existing clustered index `IDX_CL_MyFactTable`, and convert `MyFactTable` to columnstore. Change the name of the new clustered columnstore index.
 
-    ```sql
-    --Drop the clustered rowstore index.
-    DROP INDEX [IDX_CL_MyFactTable]
-    ON dbo.MyFactTable;
-    GO
-    --Create a new clustered columnstore index with the name MyCCI.
-    CREATE CLUSTERED COLUMNSTORE
-    INDEX IDX_CCL_MyFactTable ON dbo.MyFactTable;
-    GO
-    ```
+   ```sql
+   --Drop the clustered rowstore index.
+   DROP INDEX [IDX_CL_MyFactTable]
+       ON dbo.MyFactTable;
+   GO
 
-    Option 2: Convert to columnstore, and reuse the existing rowstore clustered index name.
+   --Create a new clustered columnstore index with the name MyCCI.
+   CREATE CLUSTERED COLUMNSTORE INDEX IDX_CCL_MyFactTable
+       ON dbo.MyFactTable;
+   GO
+   ```
 
-    ```sql
-    --Create the clustered columnstore index,
-    --replacing the existing rowstore clustered index of the same name
-    CREATE CLUSTERED COLUMNSTORE
-    INDEX [IDX_CL_MyFactTable]
-    ON dbo.MyFactTable
-    WITH (DROP_EXISTING = ON);
-    ```
+   Option 2: Convert to columnstore, and reuse the existing rowstore clustered index name.
+
+   ```sql
+   --Create the clustered columnstore index,
+   --replacing the existing rowstore clustered index of the same name
+   CREATE CLUSTERED COLUMNSTORE INDEX [IDX_CL_MyFactTable]
+       ON dbo.MyFactTable WITH (DROP_EXISTING = ON);
+   ```
 
 ### E. Convert a columnstore table to a rowstore table with a clustered index
 
@@ -672,8 +693,7 @@ To convert a columnstore table to a rowstore table with a clustered index, use t
 
 ```sql
 CREATE CLUSTERED INDEX [IDX_CL_MyFactTable]
-ON dbo.[MyFactTable] ( ProductKey )
-WITH ( DROP_EXISTING = ON );
+    ON dbo.[MyFactTable](ProductKey) WITH (DROP_EXISTING = ON);
 ```
 
 ### F. Convert a columnstore table to a rowstore heap
@@ -682,23 +702,27 @@ To convert a columnstore table to a rowstore heap, drop the clustered columnstor
 
 ```sql
 DROP INDEX [IDX_CL_MyFactTable]
-ON dbo.[MyFactTable];
+    ON dbo.[MyFactTable];
 ```
 
 <a id="g-defragment-by-rebuilding-the-entire-clustered-columnstore-index"></a>
 
 ### G. Defragment by reorganizing the columnstore index
 
-There are two ways to maintain the clustered columnstore index. Starting with [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)], use `ALTER INDEX...REORGANIZE` instead of REBUILD. For more information, see [Columnstore index rowgroup](../../relational-databases/indexes/columnstore-indexes-overview.md#rowgroup). In previous versions of SQL Server, you can use CREATE CLUSTERED COLUMNSTORE INDEX with DROP_EXISTING=ON, or [ALTER INDEX (Transact-SQL)](alter-index-transact-sql.md) and the REBUILD option. Both methods achieved the same results.
+There are two ways to maintain the clustered columnstore index. Starting with [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)], use `ALTER INDEX...REORGANIZE` instead of REBUILD. For more information, see [Columnstore index rowgroup](../../relational-databases/indexes/columnstore-indexes-overview.md#rowgroup). In previous versions of SQL Server, you can use CREATE CLUSTERED COLUMNSTORE INDEX with DROP_EXISTING=ON, or [ALTER INDEX](alter-index-transact-sql.md) and the REBUILD option. Both methods achieved the same results.
 
 Start by determining the clustered columnstore index name in `MyFactTable`.
 
 ```sql
-SELECT i.object_id, i.name, t.object_id, t.name
-FROM sys.indexes i
-INNER JOIN sys.tables t on i.object_id = t.object_id
+SELECT i.object_id,
+       i.name,
+       t.object_id,
+       t.name
+FROM sys.indexes AS i
+     INNER JOIN sys.tables AS t
+         ON i.object_id = t.object_id
 WHERE i.type_desc = 'CLUSTERED COLUMNSTORE'
-AND t.name = 'MyFactTable';
+      AND t.name = 'MyFactTable';
 ```
 
 Remove fragmentation by performing a REORGANIZE on the columnstore index.
@@ -706,8 +730,7 @@ Remove fragmentation by performing a REORGANIZE on the columnstore index.
 ```sql
 --Rebuild the entire index by using ALTER INDEX and the REBUILD option.
 ALTER INDEX IDX_CL_MyFactTable
-ON dbo.[MyFactTable]
-REORGANIZE;
+    ON dbo.[MyFactTable] REORGANIZE;
 ```
 
 <a id="nonclustered"></a>
@@ -719,18 +742,21 @@ REORGANIZE;
 This example creates a nonclustered columnstore index on a rowstore table. Only one columnstore index can be created in this situation. The columnstore index requires extra storage, because it contains a copy of the data in the rowstore table. This example creates a simple table and a rowstore clustered index, and then demonstrates the syntax of creating a nonclustered columnstore index.
 
 ```sql
-CREATE TABLE dbo.SimpleTable (
-    ProductKey [INT] NOT NULL,
-    OrderDateKey [INT] NOT NULL,
-    DueDateKey [INT] NOT NULL,
-    ShipDateKey [INT] NOT NULL);
+CREATE TABLE dbo.SimpleTable
+(
+    ProductKey INT NOT NULL,
+    OrderDateKey INT NOT NULL,
+    DueDateKey INT NOT NULL,
+    ShipDateKey INT NOT NULL
+);
 GO
 
-CREATE CLUSTERED INDEX cl_simple ON dbo.SimpleTable (ProductKey);
+CREATE CLUSTERED INDEX cl_simple
+    ON dbo.SimpleTable(ProductKey);
 GO
 
 CREATE NONCLUSTERED COLUMNSTORE INDEX csindx_simple
-ON dbo.SimpleTable (OrderDateKey, DueDateKey, ShipDateKey);
+    ON dbo.SimpleTable(OrderDateKey, DueDateKey, ShipDateKey);
 GO
 ```
 
@@ -740,10 +766,8 @@ The following example demonstrates the syntax of creating a nonclustered columns
 
 ```sql
 CREATE NONCLUSTERED COLUMNSTORE INDEX csindx_simple
-ON SimpleTable (OrderDateKey, DueDateKey, ShipDateKey)
-WITH (DROP_EXISTING =  ON,
-    MAXDOP = 2)
-ON "DEFAULT";
+    ON SimpleTable(OrderDateKey, DueDateKey, ShipDateKey) WITH (DROP_EXISTING = ON, MAXDOP = 2)
+    ON "DEFAULT";
 GO
 ```
 
@@ -752,14 +776,16 @@ GO
 The following example creates a filtered, nonclustered columnstore index on the `Production.BillOfMaterials` table in the [!INCLUDE [sssampledbobject-md](../../includes/sssampledbobject-md.md)] sample database. The filter predicate can include columns that aren't key columns in the filtered index. The predicate in this example selects only the rows where `EndDate` is non-NULL.
 
 ```sql
-IF EXISTS (SELECT name FROM sys.indexes
-    WHERE name = N'FIBillOfMaterialsWithEndDate'
-    AND object_id = OBJECT_ID(N'Production.BillOfMaterials'))
-DROP INDEX FIBillOfMaterialsWithEndDate
-    ON Production.BillOfMaterials;
+IF EXISTS (SELECT name
+           FROM sys.indexes
+           WHERE name = N'FIBillOfMaterialsWithEndDate'
+                 AND object_id = OBJECT_ID(N'Production.BillOfMaterials'))
+    DROP INDEX FIBillOfMaterialsWithEndDate
+        ON Production.BillOfMaterials;
 GO
+
 CREATE NONCLUSTERED COLUMNSTORE INDEX "FIBillOfMaterialsWithEndDate"
-    ON Production.BillOfMaterials (ComponentID, StartDate)
+    ON Production.BillOfMaterials(ComponentID, StartDate)
     WHERE EndDate IS NOT NULL;
 ```
 
@@ -773,18 +799,20 @@ In [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)] and earlier versions, a
 
 - Disable or drop the columnstore index. You can then update the data in the table. If you disable the columnstore index, you can rebuild the columnstore index when you finish updating the data. For example:
 
-    ```sql
-    ALTER INDEX mycolumnstoreindex ON dbo.mytable DISABLE;
+  ```sql
+  ALTER INDEX mycolumnstoreindex
+      ON dbo.mytable DISABLE;
 
-    -- update the data in mytable as necessary
-    ALTER INDEX mycolumnstoreindex on dbo.mytable REBUILD;
-    ```
+  -- update the data in mytable as necessary
+  ALTER INDEX mycolumnstoreindex
+      ON dbo.mytable REBUILD;
+  ```
 
 - Load data into a staging table that doesn't have a columnstore index. Build a columnstore index on the staging table. Switch the staging table into an empty partition of the main table.
 
-- Switch a partition from the table with the columnstore index into an empty staging table. If there is a columnstore index on the staging table, disable the columnstore index. Perform any updates. Build (or rebuild) the columnstore index. Switch the staging table back into the (now empty) partition of the main table.
+- Switch a partition from the table with the columnstore index into an empty staging table. If there's a columnstore index on the staging table, disable the columnstore index. Perform any updates. Build (or rebuild) the columnstore index. Switch the staging table back into the (now empty) partition of the main table.
 
-## Examples: [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], [!INCLUDE [ssPDW](../../includes/sspdw-md.md)]
+## Examples: Azure Synapse Analytics, Analytics Platform System (PDW)
 
 ### A. Change a clustered index to a clustered columnstore index
 
@@ -798,27 +826,39 @@ This example creates the `xDimProduct` table as a rowstore table with a clustere
 
 ```sql
 -- Uses AdventureWorks
-  
-IF EXISTS (SELECT name FROM sys.tables
-    WHERE name = N'xDimProduct'
-    AND object_id = OBJECT_ID (N'xDimProduct'))
-DROP TABLE xDimProduct;
-  
+IF EXISTS (SELECT name
+           FROM sys.tables
+           WHERE name = N'xDimProduct'
+                 AND object_id = OBJECT_ID(N'xDimProduct'))
+    DROP TABLE xDimProduct;
+
 --Create a distributed table with a clustered index.
-CREATE TABLE xDimProduct (ProductKey, ProductAlternateKey, ProductSubcategoryKey)
-WITH ( DISTRIBUTION = HASH(ProductKey),
-    CLUSTERED INDEX (ProductKey) )
-AS SELECT ProductKey, ProductAlternateKey, ProductSubcategoryKey FROM DimProduct;
+CREATE TABLE xDimProduct
+(
+    ProductKey,
+    ProductAlternateKey,
+    ProductSubcategoryKey
+)
+WITH (DISTRIBUTION = HASH(ProductKey), CLUSTERED INDEX(ProductKey)) AS
+SELECT ProductKey,
+       ProductAlternateKey,
+       ProductSubcategoryKey
+FROM DimProduct;
 ```
 
 Look up the name of the clustered index automatically created for the new table in the system metadata, using `sys.indexes`. For example:
 
 ```sql
-SELECT i.object_id, i.name, t.object_id, t.name, i.type_desc
-FROM sys.indexes i
-INNER JOIN sys.tables t ON i.object_id = t.object_id
+SELECT i.object_id,
+       i.name,
+       t.object_id,
+       t.name,
+       i.type_desc
+FROM sys.indexes AS i
+     INNER JOIN sys.tables AS t
+         ON i.object_id = t.object_id
 WHERE i.type_desc = 'CLUSTERED'
-AND t.name = 'xdimProduct';
+      AND t.name = 'xdimProduct';
 ```
 
 Now, you can choose to:
@@ -830,17 +870,18 @@ For example:
 
 ```sql
 --1. DROP the existing clustered columnstore index with an automatically-created name, for example:
-DROP INDEX ClusteredIndex_1bd8af8797f7453182903cc68df48541 on xdimProduct;
+DROP INDEX ClusteredIndex_1bd8af8797f7453182903cc68df48541
+    ON xdimProduct;
 GO
+
 CREATE CLUSTERED COLUMNSTORE INDEX [<new_index_name>]
-ON xdimProduct;
+    ON xdimProduct;
 GO
 
 --Or,
 --2. Change the existing clustered index to a clustered columnstore index with the same name.
 CREATE CLUSTERED COLUMNSTORE INDEX [ClusteredIndex_1bd8af8797f7453182903cc68df48541]
-ON xdimProduct
-WITH ( DROP_EXISTING = ON );
+    ON xdimProduct WITH (DROP_EXISTING = ON);
 GO
 ```
 
@@ -851,8 +892,7 @@ Building on the previous example, this example uses CREATE CLUSTERED COLUMNSTORE
 ```sql
 --Rebuild the existing clustered columnstore index.
 CREATE CLUSTERED COLUMNSTORE INDEX cci_xDimProduct
-ON xdimProduct
-WITH ( DROP_EXISTING = ON );
+    ON xdimProduct WITH (DROP_EXISTING = ON);
 ```
 
 ### C. Change the name of a clustered columnstore index
@@ -866,12 +906,12 @@ This example references the `cci_xDimProduct` clustered columnstore index from t
 ```sql
 --For illustration purposes, drop the clustered columnstore index.
 --The table continues to be distributed, but changes to a heap.
-DROP INDEX cci_xdimProduct ON xDimProduct;
-  
+DROP INDEX cci_xdimProduct
+    ON xDimProduct;
+
 --Create a clustered index with a new name, mycci_xDimProduct.
 CREATE CLUSTERED COLUMNSTORE INDEX mycci_xDimProduct
-ON xdimProduct
-WITH ( DROP_EXISTING = OFF );
+    ON xdimProduct WITH (DROP_EXISTING = OFF);
 ```
 
 ### D. Convert a columnstore table to a rowstore table with a clustered index
@@ -883,8 +923,7 @@ There might be a situation for which you want to drop a clustered columnstore in
 --All of the columns are stored in the rowstore clustered index.
 --The columns listed are the included columns in the index.
 CREATE CLUSTERED INDEX cci_xDimProduct
-ON xdimProduct (ProductKey, ProductAlternateKey, ProductSubcategoryKey, WeightUnitMeasureCode)
-WITH ( DROP_EXISTING = ON);
+    ON xdimProduct(ProductKey, ProductAlternateKey, ProductSubcategoryKey, WeightUnitMeasureCode) WITH (DROP_EXISTING = ON);
 ```
 
 ### E. Convert a columnstore table back to a rowstore heap
@@ -893,7 +932,8 @@ Use [DROP INDEX](drop-index-transact-sql.md) to drop the clustered columnstore i
 
 ```sql
 --Drop the clustered columnstore index. The table continues to be distributed, but changes to a heap.
-DROP INDEX cci_xdimProduct ON xdimProduct;
+DROP INDEX cci_xdimProduct
+    ON xdimProduct;
 ```
 
 ### F. Create an ordered clustered columnstore index on a table with no index
@@ -903,16 +943,15 @@ An unordered columnstore index covers all columns by default, without needing to
 For more information, see [Performance tuning with ordered columnstore indexes](../../relational-databases/indexes/ordered-columnstore-indexes.md).
 
 ```sql
-CREATE CLUSTERED COLUMNSTORE INDEX cci ON Sales.OrderLines
-ORDER (SHIPDATE);
+CREATE CLUSTERED COLUMNSTORE INDEX cci
+    ON Sales.OrderLines ORDER(SHIPDATE);
 ```
 
 ### G. Convert a clustered columnstore index to an ordered clustered columnstore index
 
 ```sql
-CREATE CLUSTERED COLUMNSTORE INDEX cci ON Sales.OrderLines
-ORDER (SHIPDATE)
-WITH (DROP_EXISTING = ON);
+CREATE CLUSTERED COLUMNSTORE INDEX cci
+    ON Sales.OrderLines ORDER(SHIPDATE) WITH (DROP_EXISTING = ON);
 ```
 
 ### H. Add a column to the ordering of an ordered clustered columnstore index
@@ -920,9 +959,8 @@ WITH (DROP_EXISTING = ON);
 You can specify an order for the columns in a columnstore index. The original ordered, clustered columnstore index was ordered on the `SHIPDATE` column only. The following example adds the `PRODUCTKEY` column to the ordering. For ordered columnstore index availability, see [Columnstore indexes: Overview](../../relational-databases/indexes/columnstore-indexes-overview.md#ordered-columnstore-index-availability).
 
 ```sql
-CREATE CLUSTERED COLUMNSTORE INDEX cci ON Sales.OrderLines
-ORDER (SHIPDATE, PRODUCTKEY)
-WITH (DROP_EXISTING = ON);
+CREATE CLUSTERED COLUMNSTORE INDEX cci
+    ON Sales.OrderLines ORDER(SHIPDATE, PRODUCTKEY) WITH (DROP_EXISTING = ON);
 ```
 
 ### I. Change the ordinal of ordered columns
@@ -930,9 +968,8 @@ WITH (DROP_EXISTING = ON);
 The original ordered, clustered columnstore index was ordered on `SHIPDATE`, `PRODUCTKEY`. The following example changes the ordering to `PRODUCTKEY`, `SHIPDATE`. For ordered columnstore index availability, see [Columnstore indexes: Overview](../../relational-databases/indexes/columnstore-indexes-overview.md#ordered-columnstore-index-availability).
 
 ```sql
-CREATE CLUSTERED COLUMNSTORE INDEX cci ON Sales.OrderLines
-ORDER (PRODUCTKEY,SHIPDATE)
-WITH (DROP_EXISTING = ON);
+CREATE CLUSTERED COLUMNSTORE INDEX cci
+    ON Sales.OrderLines ORDER(PRODUCTKEY, SHIPDATE) WITH (DROP_EXISTING = ON);
 ```
 
 ### J. Create an ordered clustered columnstore index
@@ -940,16 +977,15 @@ WITH (DROP_EXISTING = ON);
 You can create a clustered columnstore index with ordering keys. When creating an ordered clustered columnstore index, you should apply the query hint `MAXDOP = 1` for maximum quality of sorting and shortest duration. For ordered columnstore index availability, see [Columnstore indexes: Overview](../../relational-databases/indexes/columnstore-indexes-overview.md#ordered-columnstore-index-availability).
 
 ```sql
-CREATE CLUSTERED COLUMNSTORE INDEX [OrderedCCI] ON dbo.FactResellerSalesPartCategoryFull
-ORDER (EnglishProductSubcategoryName, EnglishProductName)
-WITH (MAXDOP = 1, DROP_EXISTING = ON);
+CREATE CLUSTERED COLUMNSTORE INDEX [OrderedCCI]
+    ON dbo.FactResellerSalesPartCategoryFull ORDER(EnglishProductSubcategoryName, EnglishProductName) WITH (MAXDOP = 1, DROP_EXISTING = ON);
 ```
 
 ## Related content
 
-- [Columnstore indexes: Overview](../../relational-databases/indexes/columnstore-indexes-overview.md)
+- [Columnstore indexes: overview](../../relational-databases/indexes/columnstore-indexes-overview.md)
 - [What's new in columnstore indexes](../../relational-databases/indexes/columnstore-indexes-what-s-new.md)
-- [Get started with Columnstore for real-time operational analytics](../../relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics.md)
+- [Get started with columnstore indexes for real-time operational analytics](../../relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics.md)
 - [Columnstore indexes in data warehousing](../../relational-databases/indexes/columnstore-indexes-data-warehouse.md)
-- [Columnstore indexes - Query performance](../../relational-databases/indexes/columnstore-indexes-query-performance.md)
-- [Columnstore indexes - Design guidance](../../relational-databases/indexes/columnstore-indexes-design-guidance.md)
+- [Columnstore indexes - query performance](../../relational-databases/indexes/columnstore-indexes-query-performance.md)
+- [Columnstore indexes - design guidance](../../relational-databases/indexes/columnstore-indexes-design-guidance.md)
