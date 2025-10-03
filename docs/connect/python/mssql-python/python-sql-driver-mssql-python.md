@@ -4,7 +4,7 @@ description: This guide provides an overview to get started with the mssql-pytho
 author: dlevy-msft-sql
 ms.author: dlevy
 ms.reviewer: vanto, randolphwest
-ms.date: 09/24/2025
+ms.date: 10/06/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -17,6 +17,7 @@ Use the `mssql-python` driver to connect to a SQL database from Python code. Thi
 ## Get started
 
 - [Quickstart: Connect with the mssql-python driver for Python](python-sql-driver-mssql-python-quickstart.md)
+- [Quickstart: Connect to a SQL database from a Jupyter Notebook](python-sql-driver-mssql-python-connect-jupyter-notebook.md)
 - [Quickstart: Repeatable deployments with the mssql-python driver for Python](python-sql-driver-mssql-python-repeatable-deployments-quickstart.md)
 - [Quickstart: Rapid prototyping with the mssql-python driver for Python](python-sql-driver-mssql-python-rapid-prototyping-quickstart.md)
 
