@@ -57,6 +57,8 @@ If you don't have an Azure subscription, create a [free account](https://azure.m
 
 The instructions for basic details vary between deploying a conventional SQL Server on Azure VM and [SQL Server on an Azure confidential VM](sql-vm-create-confidential-vm-how-to.md).
 
+[!INCLUDE [sql-vm-deplyment-failure](../../includes/sql-vm-deplyment-failure.md)]
+
 ### [Conventional VM](#tab/conventional-vm)
 
 To deploy a conventional SQL Server on Azure VM, on the **Basics** tab, provide the following information:

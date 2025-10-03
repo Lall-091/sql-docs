@@ -63,12 +63,12 @@ If you plan to manually install SQL Server on an Azure VM, follow these essentia
 
 ## VM size
 
+[!INCLUDE [sql-vm-deplyment-failure](../../includes/sql-vm-deplyment-failure.md)]
+
 The checklist in this section covers the [VM size best practices](performance-guidelines-best-practices-vm-size.md) for SQL Server on Azure VMs.
 
 [!INCLUDE [vm size best practices](../../includes/virtual-machines-best-practices-vm-size.md)]
 
-> [!CAUTION]
-> SQL Server isn't supported on VM sizes that deploy with an uninitialized ephemeral disk. To learn more, review [VM deployment and SQL Server failures](/troubleshoot/sql/azure-sql/sql-deployment-fails-drive-not-ready). 
 
 ## Storage
 

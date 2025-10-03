@@ -506,6 +506,8 @@
         href: database/business-continuity-high-availability-disaster-recover-hadr-overview.md
       - name: High availability
         href: database/high-availability-sla-local-zone-redundancy.md
+      - name: Reliability
+        href: /azure/reliability/reliability-sql-database?toc=/azure/azure-sql/toc.json
       - name: HA/DR checklist
         href: database/high-availability-disaster-recovery-checklist.md
       - name: Automated backups

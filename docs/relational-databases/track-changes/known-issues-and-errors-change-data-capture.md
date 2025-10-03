@@ -4,7 +4,7 @@ description: "Known issues and errors with change data capture (CDC) in SQL Serv
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: mathoma, randolphwest, roblescarlos
-ms.date: 09/24/2025
+ms.date: 10/07/2025
 ms.service: sql
 ms.topic: troubleshooting
 helpviewer_keywords:
@@ -90,21 +90,24 @@ To resolve this issue:
 
 ## CDC fails after ALTER COLUMN
 
-When the data type of a column on a CDC-enabled table is changed to an unsupported conversion, and an existing row is updated to an off-row value, the CDC scan might result in errors after the update. 
+When the data type of a column on a CDC-enabled table is changed to an unsupported conversion, the CDC scan might result in errors after the update. 
 
 The following are examples of `ALTER COLUMN` data type changes that aren't supported when CDC is enabled on a table:
 
-- **text** to **nvarchar**
-- **image** to **varbinary**
-- **nvarchar** to **DATE** or **INT**
 - **bigint** to **int**
+- **char(x)**, **nvarchar(x)**, or **nvarchar(x)** to **uniqueidentifier**, **DATE**, or **INT**
 
-Changing the data type of a column can result in the following errors: 
+Changing the data type of a columns of a CDC-enabled table can result in the following errors: 
 
 - [Error 241](#error-241---conversion-failed-when-converting-date-andor-time-from-character-string) - Conversion failed when converting date and/or time from character string.
 - [Error 245](#error-245---conversion-failed-when-converting-the-value-from-string-to-int) - Conversion failed when converting the value. 
+- [Error 8169](#error-8169---conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier) - Conversion failed when converting from a character string to uniqueidentifier.
 
-Changing the size of columns of a CDC-enabled table using DDL statements can cause issues with the subsequent CDC capture process, resulting in [Error 2628](#error-2628---string-or-binary-data-would-be-truncated-in-table) or [Error 8115](#error-8115---arithmetic-overflow-error-converting-data-type-from-bigint-to-int). Remember that data in CDC change tables are retained based on user-configured settings. So, before making any changes to column size, you must assess whether the alteration is compatible with the existing data in CDC change tables.
+Changing the size of columns of a CDC-enabled table using DDL statements can cause issues with the subsequent CDC capture process can result in the following errors: 
+- [Error 2628](#error-2628---string-or-binary-data-would-be-truncated-in-table) - String or binary data would be truncated in table.
+- [Error 8115](#error-8115---arithmetic-overflow-error-converting-data-type-from-bigint-to-int) - Arithmetic overflow error converting data type from bigint to int
+
+Remember that data in CDC change tables are retained based on user-configured settings. So, before making any changes to column size, you must assess whether the alteration is compatible with the existing data in CDC change tables.
 
 If the `sys.dm_cdc_errors` indicate that scans are failing due to the [Error 2628](#error-2628---string-or-binary-data-would-be-truncated-in-table) or [Error 8115](#error-8115---arithmetic-overflow-error-converting-data-type-from-bigint-to-int) for change tables, you should first consume the change data in the affected change tables. After that, you need to [disable and then reenable CDC](enable-and-disable-change-data-capture-sql-server.md) on the table to resolve the problem effectively.
 
@@ -232,7 +235,7 @@ These are the different troubleshooting categories included in this section:
 
 #### Error 2628 - string or binary data would be truncated in table
 
-* **Cause**: Changing the size of columns of a CDC-enabled table using DDL statements can cause issues with the subsequent CDC capture process. The 'sys.dm_cdc_errors' Dynamic Management View (DMV) is a useful for checking any CDC for any reported issues, like errors number 2628 and 8115.
+* **Cause**: Changing the size of columns of a CDC-enabled table using DDL statements can cause issues with the subsequent CDC capture process. The [sys.dm_cdc_errors ](../system-dynamic-management-views/change-data-capture-sys-dm-cdc-errors.md) Dynamic Management View (DMV) is a useful for checking any CDC for any reported issues, like errors number 2628 and 8115.
 
 * **Recommendation**: Before making any changes to column size, you must assess whether the alteration is compatible with the existing data in CDC change tables. To address this problem, you need to disable and re-enable CDC for your database. For more information about enabling CDC for a database or a table, see [Enable CDC for a database](enable-and-disable-change-data-capture-sql-server.md#enable-for-a-database) and [Enable CDC for a table](enable-and-disable-change-data-capture-sql-server.md#enable-for-a-table).
 
@@ -240,13 +243,19 @@ These are the different troubleshooting categories included in this section:
 
 * **Cause**: This error occurs when an [ALTER COLUMN](../../t-sql/statements/alter-table-transact-sql.md#alter-column) DDL is executed on a CDC-enabled table that results in a decrease in the precision of the column (such as changing the data type of the column from **bigint** to **int**). The decreased precision column is unable to hold the values present in the change table.
 
-* **Recommendation**: To resolve this issue, disable and re-enable CDC for your table after altering the column. Alternatively, disable CDC before altering the column, and then reenable CDC after the `ALTER COLUMN` change.
+* **Recommendation**: To resolve this issue, disable and re-enable CDC for your table after altering the column. Alternatively, disable CDC before running the `ALTER COLUMN` command, and then reenable CDC after the `ALTER COLUMN` change.
+
+#### Error 8169 - Conversion failed when converting from a character string to uniqueidentifier
+
+* **Cause**: This error occurs when an [ALTER COLUMN](../../t-sql/statements/alter-table-transact-sql.md#alter-column) command is issued to change the data type of a column when table has CDC enabled. For example, if a table has a **char(x)**, **nvarchar(x)**, **nvarchar(x)** column and you change the data type to **uniqueidentifier**, or **DATE**, or **INT** (such as: `ALTER TABLE table_name ALTER COLUMN [column_name] uniqueidentifier`), you might see this error in the [sys.dm_cdc_errors](../system-dynamic-management-views/change-data-capture-sys-dm-cdc-errors.md) Dynamic Management View (DMV). Error 8169 indicates an unsupported data conversion in the change table, even though the ALTER command on the source table succeeds.
+
+* **Recommendation**: To resolve this issue, disable and re-enable CDC for your table after altering the column. Alternatively, disable CDC before running the `ALTER COLUMN` command, and then reenable CDC after the `ALTER COLUMN` change.
 
 ## Create user and assign role
 
 If the `cdc user` was removed, you can manually add the user back. 
 
-Use the following T-SQL script, to create a user (`cdc`), and assign the proper role for the same (`db_owner`).
+Use the following T-SQL script, to create a user (`cdc`), and assign the proper role for the same (**db_owner**).
 
 ```sql
 IF NOT EXISTS 

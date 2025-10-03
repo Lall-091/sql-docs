@@ -93,7 +93,7 @@ To use the Azure Hybrid Benefit with a SQL Server VM, you must have a license fo
 | Azure Hybrid Benefit | Description |
 |-----|-----|
 | **Cost savings** | With the [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/), you get a discount on the allocation of SQL Server licenses to SQL Server Database Engine. For more information, see [Switch licensing model](licensing-model-azure-hybrid-benefit-ahb-change.md). |
-| **Free passive secondary replica** | Another benefit of bringing your own license is the [free licensing for one passive secondary replica](https://azure.microsoft.com/pricing/licensing-faq/) for high availability and one passive secondary for disaster recovery per SQL Server. This cuts the licensing cost of a highly available SQL Server deployment (for example, using Always On availability groups) by more than half. |
+| **Free passive secondary replica** | Another benefit of allocating your license is the [free licensing for one passive secondary replica](https://azure.microsoft.com/pricing/licensing-faq/) for high availability and one passive secondary for disaster recovery per SQL Server. This cuts the licensing cost of a highly available SQL Server deployment (for example, using Always On availability groups) by more than half. |
 
 > [!NOTE]  
 > As of November 2022, it's possible to use free licensing for one passive secondary replica for high availability and one passive secondary replica for disaster recovery when using [pay-as-you-go licensing as well as the Azure Hybrid Benefit](https://cloudblogs.microsoft.com/sqlserver/2022/11/16/new-sql-server-on-azure-virtual-machines-and-azure-sql-managed-instance-dr-benefits/).

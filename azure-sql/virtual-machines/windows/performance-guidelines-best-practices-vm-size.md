@@ -22,6 +22,8 @@ There's typically a trade-off between optimizing for costs and optimizing for pe
 
 For comprehensive details, see the other articles in this series: [Checklist](performance-guidelines-best-practices-checklist.md), [Storage](performance-guidelines-best-practices-storage.md), [Security](security-considerations-best-practices.md), [HADR configuration](hadr-cluster-best-practices.md), [Collect baseline](performance-guidelines-best-practices-collect-baseline.md).
 
+[!INCLUDE [sql-vm-deplyment-failure](../../includes/sql-vm-deplyment-failure.md)]
+
 ## Checklist
 
 Review the following checklist for a brief overview of the VM size best practices that the rest of the article covers in greater detail:
@@ -44,9 +46,6 @@ Consider the following VM series based on your SQL Server workloads:
 SQL Server data warehouse and mission critical environments will often need to scale beyond the 8:1 memory-to-vCore ratio. For medium environments, you may want to choose a 16:1 memory-to-vCore ratio, and a 32:1 memory-to-vCore ratio for larger data warehouse environments.
 
 Use the SQL Server VM marketplace images with the storage configuration in the portal. This makes it easier to properly create the storage pools necessary to get the size, IOPS, and throughput necessary for your workloads. It's important to choose SQL Server VMs that support premium storage performance. See the [storage](performance-guidelines-best-practices-storage.md) article to learn more.
-
-> [!CAUTION]
-> SQL Server isn't supported on VM sizes that deploy with an uninitialized ephemeral disk. To learn more, review [VM deployment and SQL Server failures](/troubleshoot/sql/azure-sql/sql-deployment-fails-drive-not-ready). 
 
 ## Supportability
 

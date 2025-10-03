@@ -74,7 +74,7 @@ To learn more, see the overview of [Always On availability groups](availability-
 
 To get started, see the tutorials for [availability groups](availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md) or [preparing your VM for a failover cluster instance](failover-cluster-instance-prepare-vm.md).
 
-## Licensing
+## SQL VM images
 
 To get started, choose a SQL Server virtual machine image with your required version, edition, and operating system. The following sections provide direct links to the Azure portal for the SQL Server virtual machine gallery images. Change the licensing model of a pay-per-usage SQL Server VM to use your own license. For more information, see [How to change the licensing model for a SQL Server VM](licensing-model-azure-hybrid-benefit-ahb-change.md).
 
@@ -108,6 +108,21 @@ For more information about deploying SQL Server VMs using PowerShell, view [How 
 
 > [!IMPORTANT]  
 > Older images might be outdated. Remember to apply all SQL Server and Windows updates before using them for production.
+
+## Azure Hybrid Benefit
+
+Azure Hybrid Benefit grants you the ability to allocate your SQL Server license to your SQL Server on Azure VM. With Azure Hybrid Benefit, you get a discount on the allocation of SQL Server licenses to the SQL Server instance but must still pay for the cost of the underlying cloud compute (that is, the base rate), storage, and backups. You must also pay for I/O associated with their use of the services (as applicable).
+
+To estimate the cost of Pay-as-you-go licensing and see cost savings with the Azure Hybrid benefit use the [Pricing calculator](https://azure.microsoft.com/pricing/calculator/).
+
+According to the Microsoft [Product Terms](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzureServices/EAEAS): "Customers must indicate that they're using Azure SQL Database (SQL Managed Instance, Elastic Pool, and Single Database), Azure Data Factory, SQL Server Integration Services, or SQL Server Virtual Machines under Azure Hybrid Benefit for SQL Server when configuring workloads on Azure."
+
+To indicate the use of Azure Hybrid Benefit for SQL Server on Azure VM and be compliant, you have two options:
+
+- Provision a virtual machine by using a pay-as-you-go SQL Server image from Azure Marketplace and [activate the Azure Hybrid Benefit](licensing-model-azure-hybrid-benefit-ahb-change.md#change-license-model).
+- Self-install SQL Server on Azure VM, manually [register with the SQL IaaS Agent Extension](sql-agent-extension-manually-register-single-vm.md), and activate Azure Hybrid Benefit.
+
+The license type of SQL Server can be configured when the VM is provisioned or anytime afterward. Switching between license models incurs no downtime, doesn't restart the VM or the SQL Server service, doesn't add any additional costs, and is effective immediately. In fact, activating Azure Hybrid Benefit *reduces* cost.
 
 ## Customer experience improvement program (CEIP)
 

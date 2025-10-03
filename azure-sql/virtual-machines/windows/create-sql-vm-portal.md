@@ -34,7 +34,7 @@ The Developer edition is used in this article because it's a full-featured, free
 > [!NOTE]  
 > SQL Server 2025 Preview introduces separate Enterprise Developer and Standard Developer editions of SQL Server.
 
-Licensing costs for SQL Server are incorporated into the per-second pricing of the VM you create and varies by edition and cores. However, SQL Server Developer edition is free for development and testing but not production. Also, SQL Express is free for lightweight workloads (less than 1 GB of memory, less than 10 GB of storage). You can also bring-your-own-license (BYOL) and pay only for the VM. Those image names are prefixed with {BYOL}. For more information on these options, see [Pricing guidance for SQL Server Azure VMs](pricing-guidance.md).
+Licensing costs for SQL Server are incorporated into the per-second pricing of the VM you create and varies by edition and cores. However, SQL Server Developer edition is free for development and testing but not production. Also, SQL Express is free for lightweight workloads (less than 1 GB of memory, less than 10 GB of storage). You can also allocate your SQL Server license to your SQL Server on Azure VM with the [Azure Hybrid Benefit](sql-server-on-azure-vm-iaas-what-is-overview.md#azure-hybrid-benefit) and pay only for the VM. For more information on these options, see [Pricing guidance for SQL Server Azure VMs](pricing-guidance.md).
 
 To choose an image, follow these steps:
 
@@ -48,6 +48,8 @@ To choose an image, follow these steps:
 [!INCLUDE [appliesto-sqlvm](../../includes/virtual-machines-2014-end-of-support.md)]
 
 ## Basic settings
+
+[!INCLUDE [sql-vm-deplyment-failure](../../includes/sql-vm-deplyment-failure.md)]
 
 The **Basics** tab allows you to select the subscription, resource group, and instance details.
 

@@ -17,7 +17,6 @@ tags: azure-resource-manager
 > * [Windows](sql-server-iaas-agent-extension-automate-management.md)
 > * [Linux](../linux/sql-server-iaas-agent-extension-linux.md)
 
-
 The SQL Server IaaS Agent extension (SqlIaasExtension) runs on SQL Server on Azure Windows Virtual Machines (VMs) to automate management and administration tasks. 
 
 This article provides an overview of the extension. To install the SQL Server IaaS Agent extension to SQL Server on Azure VMs, see the articles for [Automatic registration](sql-agent-extension-automatic-registration-all-vms.md), [Register single VMs](sql-agent-extension-manually-register-single-vm.md),  or [Register VMs in bulk](sql-agent-extension-manually-register-vms-bulk.md). 
@@ -27,6 +26,7 @@ To learn more about the SQL Server on Azure VM deployment and management experie
 - [Automate Management with the SQL Server IaaS Agent extension ](/shows/data-exposed/azure-sql-vm-automate-management-with-the-sql-server-iaas-agent-extension-ep-2?WT.mc_id=dataexposed-c9-niner-mighub)
 - [New and Improved SQL on Azure VM deployment and management experience](/shows/data-exposed/new-and-improved-sql-on-azure-vm-deployment-and-management-experience?WT.mc_id=dataexposed-c9-niner-mighub).
 
+[!INCLUDE [sql-vm-deplyment-failure](../../includes/sql-vm-deplyment-failure.md)]
 
 ## Overview
 
