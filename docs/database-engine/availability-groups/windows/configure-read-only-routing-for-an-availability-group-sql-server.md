@@ -253,10 +253,6 @@ Starting with [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)], you can 
 -    [SQL Server Always On Team Blogs: The official SQL Server Always On Team Blog](/archive/blogs/sqlalwayson/)  
   
 -    [CSS SQL Server Engineers Blogs](/archive/blogs/psssql/)  
-  
-**White papers:**  
-  
--    [SQL Server Customer Advisory Team Whitepapers](https://techcommunity.microsoft.com/t5/DataCAT/bg-p/DataCAT/)  
 
 **Additional content**
 

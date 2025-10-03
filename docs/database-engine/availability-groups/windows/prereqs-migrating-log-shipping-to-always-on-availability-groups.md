@@ -87,7 +87,6 @@ After you have created all the secondary databases for the availability group, i
 - [SQL Server Always On Team Blogs: The official SQL Server Always On Team Blog](/archive/blogs/sqlalwayson/)
 - [CSS SQL Server Engineers Blogs](/archive/blogs/psssql/)
 - [Migration Guide: Migrating to Always On Availability Groups from Prior Deployments Combining Database Mirroring and Log Shipping](/previous-versions/sql/sql-server-2012/jj635217(v=msdn.10))
-- [SQL Server Customer Advisory Team Whitepapers](https://techcommunity.microsoft.com/t5/DataCAT/bg-p/DataCAT/)
 - [About Log Shipping (SQL Server)](../../../database-engine/log-shipping/about-log-shipping-sql-server.md)
 - [Overview of Always On Availability Groups (SQL Server)](../../../database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server.md)
 - [Monitoring of Availability Groups (SQL Server)](../../../database-engine/availability-groups/windows/monitoring-of-availability-groups-sql-server.md)
