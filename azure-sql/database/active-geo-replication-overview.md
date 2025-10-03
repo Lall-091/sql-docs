@@ -67,7 +67,8 @@ To achieve full business continuity, adding database regional redundancy is only
 > [!IMPORTANT]  
 > You can use geo-replication to create secondary replicas in the same region as the primary. You can use these secondaries to satisfy read scale-out scenarios in the same region. However, a secondary replica in the same region does not provide additional resilience to catastrophic failures or large scale outages, and therefore is not a suitable failover target for disaster recovery purposes. It also does not guarantee availability zone isolation. Use Business Critical or Premium service tiers [zone redundant configuration](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability) or General Purpose service tier [zone redundant configuration](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability) to achieve availability zone isolation.
 
-- **Failover (no data loss)**: When a Failover (no data loss) is initiated, a full data synchronization step is completed before switching the roles of the primary and geo-secondary databases.  This ensures there is no data loss Duration of the failover depends on the size of the transaction log on the primary that needs to be synchronized to the geo-secondary. Failover is designed for the following scenarios:
+- **Failover (no data loss)**: When a Failover (no data loss) is initiated, a full data synchronization step is completed before switching the roles of the primary and geo-secondary databases.  This ensures there is no data loss. Duration of the failover depends on the size of the transaction log on the primary that needs to be synchronized to the geo-secondary. Failover is designed for the following scenarios:
+
     - Perform DR drills in production when the data loss isn't acceptable
     - Relocate the database to a different region
     - Return the database to the primary region after the outage has been mitigated (known as failback).
