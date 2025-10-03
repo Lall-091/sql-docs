@@ -58,7 +58,7 @@ A join condition defines the way two tables are related in a query by:
 
 Joins are expressed logically using the following [!INCLUDE [tsql](../../includes/tsql-md.md)] syntax:
 
-- `INNER JOIN`
+- `[ INNER ] JOIN`
 - `LEFT [ OUTER ] JOIN`
 - `RIGHT [ OUTER ] JOIN`
 - `FULL [ OUTER ] JOIN`

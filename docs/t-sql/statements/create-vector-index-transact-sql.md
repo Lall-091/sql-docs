@@ -151,7 +151,7 @@ The following example creates a vector index on the `title_vector` column using 
 
 ```sql
 CREATE VECTOR INDEX vec_idx ON [dbo].[wikipedia_articles]([title_vector])
-WITH (METRIC = 'cosine', TYPE = 'diskann', MAXDOP = 8)
+WITH (METRIC = 'dot', TYPE = 'diskann', MAXDOP = 8)
 ON [SECONDARY]
 ```
 
