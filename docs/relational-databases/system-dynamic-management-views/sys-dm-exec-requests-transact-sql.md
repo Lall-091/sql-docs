@@ -4,7 +4,7 @@ description: sys.dm_exec_requests returns information about each request that is
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mikeray, randolphwest, derekw
-ms.date: 04/06/2025
+ms.date: 10/02/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -19,6 +19,7 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azure-sqldw-latest || =fabric"
 ---
+
 # sys.dm_exec_requests (Transact-SQL)
 
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
@@ -43,7 +44,7 @@ Returns information about each request that is executing in [!INCLUDE [ssNoVersi
 | `user_id` | **int** | ID of the user who submitted the request. Not nullable. |
 | `connection_id` | **uniqueidentifier** | ID of the connection on which the request arrived. Nullable. |
 | `blocking_session_id` | **smallint** | ID of the session that is blocking the request. If this column is `NULL` or `0`, the request isn't blocked, or the session information of the blocking session isn't available (or can't be identified). For more information, see [Understand and resolve SQL Server blocking problems](/troubleshoot/sql/performance/understand-resolve-blocking).<br /><br />-2 = The blocking resource is owned by an orphaned distributed transaction.<br /><br />-3 = The blocking resource is owned by a deferred recovery transaction.<br /><br />-4 = `session_id` of the blocking latch owner couldn't be determined at this time because of internal latch state transitions.<br /><br />`-5` = `session_id` of the blocking latch owner couldn't be determined because it isn't tracked for this latch type (for example, for an SH latch).<br /><br />By itself, `blocking_session_id` `-5` doesn't indicate a performance problem. `-5` is an indication that the session is waiting on an asynchronous action to complete. Before `-5` was introduced, the same session would have shown `blocking_session_id` `0`, even though it was still in a wait state.<br /><br />Depending on workload, observing `blocking_session_id = -5` might be a common occurrence. |
-| `wait_type` | **nvarchar(60)** | If the request is currently blocked, this column returns the type of wait. Nullable.<br /><br />For information about types of waits, see [sys.dm_os_wait_stats](sys-dm-os-wait-stats-transact-sql.md). |
+| `wait_type` | **nvarchar(60)** | If the request is currently blocked, this column returns the type of wait. Nullable.<br /><br />When a request uses multiple tasks, for example because of intra-query parallelism, tasks can wait on different resources with different wait types. A task can be blocked while other tasks of the same request continue execution. To find the wait type and duration for each task and whether it is blocked, use [sys.dm_os_waiting_tasks](sys-dm-os-waiting-tasks-transact-sql.md).<br /><br />For information about types of waits, see [sys.dm_os_wait_stats](sys-dm-os-wait-stats-transact-sql.md). |
 | `wait_time` | **int** | If the request is currently blocked, this column returns the duration in milliseconds, of the current wait. Not nullable. |
 | `last_wait_type` | **nvarchar(60)** | If this request has previously been blocked, this column returns the type of the last wait. Not nullable. |
 | `wait_resource` | **nvarchar(256)** | If the request is currently blocked, this column returns the resource for which the request is currently waiting. Not nullable. |
