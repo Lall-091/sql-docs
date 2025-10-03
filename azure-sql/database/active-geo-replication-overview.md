@@ -60,50 +60,33 @@ To achieve full business continuity, adding database regional redundancy is only
 
 ## Terminology and capabilities
 
-- **Automatic asynchronous replication**
+- **Automatic asynchronous replication**: You can only create a geo-secondary for an existing database. The geo-secondary can be created on any logical server, other than the server with the primary database. Once created, the geo-secondary replica is populated with the data of the primary database. This process is known as seeding. After a geo-secondary has been created and seeded, updates to the primary database are automatically and asynchronously replicated to the geo-secondary replica. Asynchronous replication means that transactions are committed on the primary database before they're replicated.
 
-You can only create a geo-secondary for an existing database. The geo-secondary can be created on any logical server, other than the server with the primary database. Once created, the geo-secondary replica is populated with the data of the primary database. This process is known as seeding. After a geo-secondary has been created and seeded, updates to the primary database are automatically and asynchronously replicated to the geo-secondary replica. Asynchronous replication means that transactions are committed on the primary database before they're replicated.
-
-- **Readable geo-secondary replicas**
-
-An application can access a geo-secondary replica to execute read-only queries using the same or different security principals used for accessing the primary database. For more information, see [Use read-only replicas to offload read-only query workloads](read-scale-out.md).
+- **Readable geo-secondary replicas**: An application can access a geo-secondary replica to execute read-only queries using the same or different security principals used for accessing the primary database. For more information, see [Use read-only replicas to offload read-only query workloads](read-scale-out.md).
 
 > [!IMPORTANT]  
 > You can use geo-replication to create secondary replicas in the same region as the primary. You can use these secondaries to satisfy read scale-out scenarios in the same region. However, a secondary replica in the same region does not provide additional resilience to catastrophic failures or large scale outages, and therefore is not a suitable failover target for disaster recovery purposes. It also does not guarantee availability zone isolation. Use Business Critical or Premium service tiers [zone redundant configuration](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability) or General Purpose service tier [zone redundant configuration](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability) to achieve availability zone isolation.
 
-- **Failover (no data loss)**
-
-Failover switches the roles of primary and geo-secondary databases after completing full data synchronization so there's no data loss. Duration of the failover depends on the size of the transaction log on the primary that needs to be synchronized to the geo-secondary. Failover is designed for the following scenarios:
-
-- Perform DR drills in production when the data loss isn't acceptable
-- Relocate the database to a different region
-- Return the database to the primary region after the outage has been mitigated (known as failback).
-
-- **Forced failover (potential data loss)**
-
-Forced failover immediately switches the geo-secondary to the primary role without waiting for synchronization with the primary. Any transactions committed on the primary but not yet replicated to the secondary are lost. This operation is designed as a recovery method during outages when the primary isn't accessible, but database availability must be quickly restored. When the original primary is back online, it's automatically reconnected, reseeded using current data from the primary, and become the new geo-secondary.
+- **Failover (no data loss)**: When a Failover (no data loss) is initiated, a full data synchronization step is completed before switching the roles of the primary and geo-secondary databases.  This ensures there is no data loss Duration of the failover depends on the size of the transaction log on the primary that needs to be synchronized to the geo-secondary. Failover is designed for the following scenarios:
+    - Perform DR drills in production when the data loss isn't acceptable
+    - Relocate the database to a different region
+    - Return the database to the primary region after the outage has been mitigated (known as failback).
+  
+- **Forced failover (potential data loss)**: Forced failover immediately switches the geo-secondary to the primary role without waiting for synchronization with the primary. Any transactions committed on the primary but not yet replicated to the secondary are lost. This operation is designed as a recovery method during outages when the primary isn't accessible, but database availability must be quickly restored. When the original primary is back online, it's automatically reconnected, reseeded using current data from the primary, and become the new geo-secondary.
 
 > [!IMPORTANT]  
 > After either failover or forced failover, the connection endpoint for the new primary changes because the new primary is now located on a different logical server.
-
-- **Multiple readable geo-secondaries**
-
-Up to four geo-secondaries can be created for a primary. If there's only one secondary, and it fails, the application is exposed to higher risk until a new secondary is created. If multiple secondaries exist, the application remains protected even if one of the secondaries fails. Additional secondaries can also be used to scale out read-only workloads.
+    
+- **Multiple readable geo-secondaries**: Up to four geo-secondaries can be created for a primary. If there's only one secondary, and it fails, the application is exposed to higher risk until a new secondary is created. If multiple secondaries exist, the application remains protected even if one of the secondaries fails. Additional secondaries can also be used to scale out read-only workloads.
 
 > [!TIP]  
 > If you are using active geo-replication to build a globally distributed application and need to provide read-only access to data in more than four regions, you can create a secondary of a secondary (a process known as chaining) to create additional geo-replicas. Replication lag on chained geo-replicas might be higher than on geo-replicas connected directly to the primary. Setting up chained geo-replication topologies is only supported programmatically, and not from Azure portal.
+    
+- **Geo-replication of databases in an elastic pool**: Each geo-secondary can be a single database or a database in an elastic pool. The elastic pool choice for each geo-secondary database is separate and doesn't depend on the configuration of any other replica in the topology (either primary or secondary). Each elastic pool is contained within a single logical server. Because database names on a logical server must be unique, multiple geo-secondaries of the same primary can never share an elastic pool.
+    
+- **User-controlled geo-failover and failback**: A geo-secondary that has finished initial seeding can be explicitly switched to the primary role (failed over) at any time by the application or the user. During an outage where the primary is inaccessible, only forced failover can be used, which immediately promotes a geo-secondary to be the new primary. When the outage is mitigated, the system automatically makes the recovered primary a geo-secondary, and brings it up-to-date with the new primary. Due to the asynchronous nature of geo-replication, recent transactions might be lost during forced failovers if the primary fails before these transactions are replicated to a geo-secondary. When a primary with multiple geo-secondaries fails over, the system automatically reconfigures replication relationships and links the remaining geo-secondaries to the newly promoted primary, without requiring any user intervention. After the outage that caused the geo-failover is mitigated, it might be desirable to return the primary to its original region. To do that, perform a manual failover.
 
-- **Geo-replication of databases in an elastic pool**
-
-Each geo-secondary can be a single database or a database in an elastic pool. The elastic pool choice for each geo-secondary database is separate and doesn't depend on the configuration of any other replica in the topology (either primary or secondary). Each elastic pool is contained within a single logical server. Because database names on a logical server must be unique, multiple geo-secondaries of the same primary can never share an elastic pool.
-
-- **User-controlled geo-failover and failback**
-
-A geo-secondary that has finished initial seeding can be explicitly switched to the primary role (failed over) at any time by the application or the user. During an outage where the primary is inaccessible, only forced failover can be used, which immediately promotes a geo-secondary to be the new primary. When the outage is mitigated, the system automatically makes the recovered primary a geo-secondary, and brings it up-to-date with the new primary. Due to the asynchronous nature of geo-replication, recent transactions might be lost during forced failovers if the primary fails before these transactions are replicated to a geo-secondary. When a primary with multiple geo-secondaries fails over, the system automatically reconfigures replication relationships and links the remaining geo-secondaries to the newly promoted primary, without requiring any user intervention. After the outage that caused the geo-failover is mitigated, it might be desirable to return the primary to its original region. To do that, perform a manual failover.
-
-- **Standby replica**
-
-If your secondary replica is used _only_ for disaster recovery (DR) and doesn't have any read or write workloads, you can designate the replica as [standby](standby-replica-how-to-configure.md) to save on licensing costs.
+- **Standby replica**: If your secondary replica is used _only_ for disaster recovery (DR) and doesn't have any read or write workloads, you can designate the replica as [standby](standby-replica-how-to-configure.md) to save on licensing costs.
 
 <a id="preparing-secondary-database-for-failover"></a>
 
@@ -151,8 +134,9 @@ For methods and step-by-step instructions, see [Tutorial: Configure active geo-r
 
 Adding a geo-secondary using T-SQL is not supported when connecting to the primary server over a [private endpoint](private-endpoint-overview.md). 
 
-   - If a private endpoint is configured but public network access is allowed, adding a geo-secondary is supported when connected to the primary server from a public IP address.
-   - Once a geo-secondary is added, [public network access can be denied](connectivity-settings.md#deny-public-network-access).
+If a private endpoint is configured but public network access is allowed, adding a geo-secondary is supported when connected to the primary server from a public IP address.
+
+Once a geo-secondary is added, [public network access can be denied](connectivity-settings.md#deny-public-network-access).
 
 <a id="keeping-credentials-and-firewall-rules-in-sync"></a>
 
@@ -266,7 +250,7 @@ Configure active geo-replication:
   - [For a pooled database using PowerShell](scripts/setup-geodr-and-failover-elastic-pool-powershell.md)
 
 Other business continuity content: 
-  - [Overview of business continuity with Azure SQL Database](business-continuity-high-availability-disaster-recover-hadr-overview.md)
+- [Overview of business continuity with Azure SQL Database](business-continuity-high-availability-disaster-recover-hadr-overview.md)
   - [Failover groups](failover-group-sql-db.md)
   - [Free standby replica](standby-replica-how-to-configure.md)
 - [Hyperscale Geo-replica](service-tier-hyperscale-replicas.md#geo-replica)
