@@ -155,7 +155,7 @@ The following are security considerations and requirements when backing up to or
 
 - You can issue backup or restore statements by using Transact-SQL, SMO, PowerShell cmdlets, or the SQL Server Management Studio Backup or Restore wizard.
 
-- Backup to Azure Storage account only supports authentication with Shared Access Signature (SAS) tokens or storage account keys. All other authentication methods, including authentication with Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)), aren't supported.
+- Backup to Azure Storage account only supports authentication with Shared Access Signature (SAS) tokens or storage account keys (SQL Server box limitation). All other authentication methods, including authentication with Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)), aren't supported.
 
 - Creating a logical device name isn't supported. So adding URL as a backup device using `sp_dumpdevice` or through SQL Server Management Studio isn't supported.
 
