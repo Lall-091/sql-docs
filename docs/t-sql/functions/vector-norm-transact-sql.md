@@ -1,10 +1,10 @@
 ---
 title: "VECTOR_NORM (Transact-SQL)"
-description: "VECTOR_NORM takes a vector as an input and returns the norm of the vector (which is a measure of its length or magnitude) in a given norm type."
+description: VECTOR_NORM takes a vector as an input and returns the norm of the vector (which is a measure of its length or magnitude) in a given norm type.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: damauri, pookam
-ms.date: 07/24/2025
+ms.reviewer: damauri, pookam, randolphwest
+ms.date: 10/03/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -20,10 +20,10 @@ helpviewer_keywords:
   - "VECTOR_NORM function"
   - "vector, norm calculation"
 dev_langs:
-  - "TSQL"
+  - TSQL
 monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
 ---
-# VECTOR_NORM (Transact-SQL) (Preview)
+# VECTOR_NORM (Transact-SQL)
 
 [!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
@@ -36,17 +36,15 @@ SELECT VECTOR_NORM ( vector, 'norm2' )
 FROM ...
 ```
 
-> [!NOTE]
-> This data type is in preview and is subject to change. Make sure to read preview usage terms in the [Service Level Agreements (SLA) for Online Services](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services) document.
-
-`VECTOR_NORM` is available in Azure SQL Managed Instance with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).
+> [!NOTE]  
+> `VECTOR_NORM` is available in Azure SQL Managed Instance with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).
 
 ## Syntax
 
-:::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)  
+:::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ```syntaxsql
-VECTOR_NORM ( vector, norm_type )
+VECTOR_NORM ( vector , norm_type )
 ```
 
 ## Arguments
@@ -60,14 +58,14 @@ An expression that evaluates to **vector** data type.
 A string with the name of the norm type to use to calculate the norm of the given vector. The following norm types are supported:
 
 - `norm1` - The 1-norm, which is the sum of the absolute values of the vector components.
-- `norm2` - The 2-norm, also known as the Euclidean Norm which is the square root of the sum of the squares of the vector components.
+- `norm2` - The 2-norm, also known as the Euclidean Norm, which is the square root of the sum of the squares of the vector components.
 - `norminf` - The infinity norm, which is the maximum of the absolute values of the vector components.
 
 ## Return value
 
 The function returns a **float** value that represents the norm of the vector using the specified norm type.
 
-An error is returned if *norm_type* isn't a valid norm type and if the vector is not of the [vector data type](../data-types/vector-data-type.md).
+An error is returned if *norm_type* isn't a valid norm type and if the vector isn't of the [vector data type](../data-types/vector-data-type.md).
 
 ## Examples
 
@@ -76,19 +74,18 @@ An error is returned if *norm_type* isn't a valid norm type and if the vector is
 The following example creates a vector with three dimensions from a string with a JSON array.
 
 ```sql
-DECLARE @v VECTOR(3) = '[1, 2, 3]';
+DECLARE @v AS VECTOR(3) = '[1, 2, 3]';
 
-SELECT 
-    vector_norm(@v, 'norm2') AS norm2,
-    vector_norm(@v, 'norm1') AS norm1,
-    vector_norm(@v, 'norminf') AS norminf;
+SELECT VECTOR_NORM(@v, 'norm2') AS norm2,
+       VECTOR_NORM(@v, 'norm1') AS norm1,
+       VECTOR_NORM(@v, 'norminf') AS norminf;
 ```
 
 The expected return values would be:
 
-| `norm2`             | `norm1` | `norminf` |
-|-------------------|-------|---------|
-| 3.7416573867739413| 6.0   | 3.0     |
+| `norm2` | `norm1` | `norminf` |
+| --- | --- | --- |
+| 3.7416573867739413 | 6.0 | 3.0 |
 
 ### Example 2
 
@@ -97,23 +94,21 @@ The following example calculates the norm of each vector in a table.
 ```sql
 CREATE TABLE dbo.vectors
 (
-  ID INT PRIMARY KEY,
-  v VECTOR(3) NOT NULL
+    ID INT PRIMARY KEY,
+    v VECTOR(3) NOT NULL
 );
 
-INSERT INTO dbo.vectors (ID, v) VALUES 
-(1, '[0.1, -2, 42]'),
-(2, '[2, 0.1, -42]');
+INSERT INTO dbo.vectors (ID, v)
+VALUES
+    (1, '[0.1, -2, 42]'),
+    (2, '[2, 0.1, -42]');
 
-SELECT 
-  ID, 
-  VECTOR_NORM(v, 'norm2') AS norm 
-FROM 
-  dbo.vectors;
+SELECT ID, VECTOR_NORM(v, 'norm2') AS norm
+FROM dbo.vectors;
 ```
 
 ## Related content
 
-- [Vector Data Type](../data-types/vector-data-type.md)
-- [Intelligent applications with Azure SQL Database](/azure/azure-sql/database/ai-artificial-intelligence-intelligent-applications)
-- [Vector Functions](vector-functions-transact-sql.md)
+- [Vector data type](../data-types/vector-data-type.md)
+- [Intelligent applications and AI](/azure/azure-sql/database/ai-artificial-intelligence-intelligent-applications)
+- [Vector functions](vector-functions-transact-sql.md)
