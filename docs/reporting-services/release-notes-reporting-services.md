@@ -139,6 +139,13 @@ Release Candidate 0 (RC 0)
 
 ## SQL Server 2019 Reporting Services
 
+## 15.0.9395.19445, 2025/09/24
+*(Product Version: 15.0.1105.34)*
+- Support for default fallback to SimSun-ExtG font
+- Fixed issue expanding document maps for some reports
+- Resolved several accessibility issues
+- Security updates
+
 ## 15.0.9276.19365, 2025/05/27
 *(Product Version: 15.0.1104.39)*
 - Add new advanced server property EnableCommentsOnReports and set default value to false to control comments on reports. This will disable comments on upgrade and must be enabled if you wish to have the ability to comment on reports in the future. This feature is now considered deprecated and will be removed in 2026.

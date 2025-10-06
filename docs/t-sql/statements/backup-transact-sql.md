@@ -628,7 +628,9 @@ Specifies the total number of I/O buffers to be used for the backup operation. Y
 
 The total space used by the buffers is determined by: `BUFFERCOUNT * MAXTRANSFERSIZE`.
 
-> [!NOTE]  
+Increasing `BUFFERCOUNT` can significantly reduce backup time at the cost of higher memory usage.
+
+> [!NOTE]
 > For important information about using the `BUFFERCOUNT` option, see the [Incorrect BufferCount data transfer option can lead to OOM condition](/archive/blogs/sqlserverfaq/incorrect-buffercount-data-transfer-option-can-lead-to-oom-condition) blog.
 
 #### MAXTRANSFERSIZE = { *maxtransfersize* | *@maxtransfersize_variable* }

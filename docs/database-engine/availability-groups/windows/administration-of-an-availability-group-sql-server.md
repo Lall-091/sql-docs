@@ -101,7 +101,6 @@ Managing an existing Always On availability group in [!INCLUDE[ssnoversion](../.
 - [SQL Server Always On Team Blogs: The official SQL Server Always On Team Blog](/archive/blogs/sqlalwayson/)
 - [CSS SQL Server Engineers Blogs](/archive/blogs/psssql/)
 - [Microsoft White Papers for SQL Server 2012](https://msdn.microsoft.com/library/hh403491.aspx)
-- [SQL Server Customer Advisory Team Whitepapers](https://techcommunity.microsoft.com/t5/DataCAT/bg-p/DataCAT/)
 - [Always On Availability Groups (SQL Server)](../../../database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server.md)
 - [Overview of Always On Availability Groups (SQL Server)](../../../database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server.md)
 - [Configuration of a Server Instance for Always On Availability Groups (SQL Server)](../../../database-engine/availability-groups/windows/configuration-of-a-server-instance-for-always-on-availability-groups-sql-server.md)

@@ -34,7 +34,7 @@ The ability to convert a [geo-replicated](active-geo-replication-overview.md) no
 - The number of geo-secondary replicas should be reduced to one because Hyperscale doesn't support more than one geo-secondary.
 - Creating geo-replica of a geo-replica (also known as "geo-replica chaining") isn't supported in Hyperscale. If a chained geo-replication configuration exists, it must be removed before starting the conversion to Hyperscale.
 - A planned failover isn't possible while the conversion of the geo-primary database to Hyperscale is in progress. A forced failover to a geo-secondary replica is possible. However, depending on the state of the conversion when the forced failover occurs, the new geo-primary after failover might use either the Hyperscale service tier, or its original service tier.
-If a geo-primary database is in an elastic pool, it can be moved to an existing Hyperscale elastic pool as part of the conversion or can be made a standalone Hyperscale database. However, if a geo-secondary database is in an elastic pool, conversion to Hyperscale always moves it out of the pool. You can move the geo-secondary database to a Hyperscale elastic pool in a separate step once conversion completes.
+- If a geo-primary database is in an elastic pool, it can be moved to an existing Hyperscale elastic pool as part of the conversion or can be made a standalone Hyperscale database. However, if a geo-secondary database is in an elastic pool, conversion to Hyperscale always moves it out of the pool. You can move the geo-secondary database to a Hyperscale elastic pool in a separate step once conversion completes.
 
 ## Cutover
 

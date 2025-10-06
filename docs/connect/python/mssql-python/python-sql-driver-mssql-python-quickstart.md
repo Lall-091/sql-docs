@@ -4,7 +4,7 @@ description: This quickstart describes installing Python, and mssql-python then 
 author: dlevy-msft-sql
 ms.author: dlevy
 ms.reviewer: vanto, randolphwest
-ms.date: 09/23/2025
+ms.date: 10/06/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: quickstart-sdk
@@ -130,6 +130,10 @@ This quickstart requires the *[!INCLUDE [sssampledbnormal-md](../../../includes/
 ### [Microsoft SQL Server](#tab/sql-server)
 
 [AdventureWorks sample databases](../../../samples/adventureworks-install-configure.md)
+
+[Create a new local copy of a database in a container with sqlcmd](../../../tools/sqlcmd/quickstart-sqlcmd-create-container.md)
+
+[Create a new SQL Server container using the MSSQL extension for Visual Studio Code](../../../tools/visual-studio-code-extensions/mssql/mssql-local-container.md)
 
 ---
 

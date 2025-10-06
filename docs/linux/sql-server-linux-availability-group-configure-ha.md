@@ -4,20 +4,20 @@ description: Learn about creating a SQL Server Always On availability group (AG)
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 11/18/2024
+ms.date: 10/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
 ms.custom:
   - linux-related-content
 ---
-# Configure SQL Server Always On Availability Group for high availability on Linux
+# Configure SQL Server availability group for high availability on Linux
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
 This article describes how to create a SQL Server Always On availability group (AG) for high availability on Linux. There are two configuration types for AGs. A *high availability* configuration uses a cluster manager to provide business continuity. This configuration can also include read-scale replicas. This document explains how to create the AG for high availability.
 
-You can also create an AG without a cluster manager for *read-scale*. The AG for read scale only provides read-only replicas for performance scale-out. It doesn't provide high availability. To create an AG for read-scale, see [Configure a SQL Server Availability Group for read-scale on Linux](sql-server-linux-availability-group-configure-rs.md).
+You can also create an AG without a cluster manager for *read-scale*. The AG for read scale only provides read-only replicas for performance scale-out. It doesn't provide high availability. To create an AG for read-scale, see [Configure a SQL Server availability group for read-scale on Linux](sql-server-linux-availability-group-configure-rs.md).
 
 Configurations that guarantee high availability and data protection require either two or three synchronous commit replicas. With three synchronous replicas, the AG can automatically recover even if one server isn't available. For more information, see [High availability and data protection for availability group configurations](sql-server-linux-availability-group-ha.md).
 
@@ -46,7 +46,7 @@ The steps to create an AG on Linux servers for high availability are different f
    > Production environments require a fencing agent for high availability. The examples in this article don't use fencing agents. They are for testing and validation only.
    >
    > A Pacemaker cluster uses fencing to return the cluster to a known state. The way to configure fencing depends on the distribution and the environment. Currently, fencing isn't available in some cloud environments. For more information, see [Support Policies for RHEL High Availability Clusters - Virtualization Platforms](https://access.redhat.com/articles/2912891).
-   >  
+   >
    > For SLES, see [SUSE Linux Enterprise High Availability Extension](https://documentation.suse.com/sle-ha/12-SP5/#redirectmsg).
 
 1. Add the AG as a resource in the cluster.
@@ -96,7 +96,7 @@ The following Transact-SQL scripts create an AG for high availability named `ag1
 
 > [!IMPORTANT]  
 > In the current implementation of the SQL Server resource agent, the node name must match the `ServerName` property from your instance. For example, if your node name is *node1*, make sure SERVERPROPERTY('ServerName') returns *node1* in your SQL Server instance. If there's a mismatch, your replicas will go into a resolving state after the pacemaker resource is created.
->  
+>
 > A scenario where this rule is important is when using fully qualified domain names. For example, if you use *node1.yourdomain.com* as the node name during cluster setup, make sure SERVERPROPERTY('ServerName') returns *node1.yourdomain.com*, and not just *node1*. The possible workarounds for this problem are:
 >
 > - Rename your host name to the FQDN and use `sp_dropserver` and `sp_addserver` store procedures to ensure the metadata in SQL Server matches the change.  

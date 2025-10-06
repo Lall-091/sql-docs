@@ -242,7 +242,7 @@ The current passive instance detection logic has the following limitations:
 - The checks are hourly. A failover within the hour may or may not bill both replicas.
 - Passive instances for other disaster recovery technologies like log shipping or mirroring are not automatically detected at this time.
 - The detection logic does not support free disaster recovery testing.
-- Monitoring resource usage data on the replica requires an app attribute in the connection string: `App = Monitoring or Backup`.
+- The detection logic doesn't support monitoring connections like database consistency checks, backups, or monitoring resource usage data.
 
 If you are unable to work within these limitations, you can use volume licensing instead of `PAYG`. For details, review [Configure SQL Server enabled by Azure Arc](manage-configuration.md).
 
