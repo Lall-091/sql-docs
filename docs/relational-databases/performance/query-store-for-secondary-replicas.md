@@ -4,7 +4,7 @@ description: Query Store can be configured to monitor and tuning workloads on se
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 10/02/2025
+ms.date: 10/06/2025
 ms.service: sql
 ms.subservice: performance
 ms.topic: concept-article
@@ -31,21 +31,16 @@ Beginning with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and [!INCLU
 
 ## Enable Query Store for readable secondaries
 
-- Before you use Query Store for readable secondaries on a [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] instance, an [Always On availability group](../../database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server.md) must be configured.
+Before you use Query Store for readable secondaries on a [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] instance, an [Always On availability group](../../database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server.md) must be configured.
 
-- For Azure SQL Database, Query Store for readable secondaries supports the following service tiers:
+For Azure SQL Database, Query Store for readable secondaries supports the following service tiers:
 
-  - General purpose with [active geo-replication](/azure/azure-sql/database/active-geo-replication-overview)
-  - Premium
-  - Business critical
-  - Hyperscale with at least one [high Availability replica](/azure/azure-sql/database/service-tier-hyperscale-replicas#high-availability-replica) and/or [named replica](/azure/azure-sql/database/service-tier-hyperscale-replicas#named-replica)
+- General purpose with [active geo-replication](/azure/azure-sql/database/active-geo-replication-overview) (no built-in high availability replicas; requires geo-replication configuration for secondary support)
+- Premium (includes built-in high availability replicas; active geo-replication also supported)
+- Business critical (includes built-in high availability replicas; active geo-replication also supported)
 
-<!-- - Azure SQL Managed Instance
-    - General purpose with a failover group [failover group](../../../azure-sql/managed-instance/failover-group-sql-mi.md)
-    - Business critical
--->
-
-[!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] databases are automatically enrolled to support the feature.
+> [!NOTE]
+> [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] existing and newly created databases are automatically enrolled and enabled to support the Query Store for readable secondaries feature on supported service tiers.
 
 **Applies to**: [!INCLUDE [ssSQL22](../../includes/sssql22-md.md)] and later versions.
 
@@ -63,10 +58,23 @@ ALTER DATABASE [Database_Name]
     FOR SECONDARY
     SET QUERY_STORE = ON
     (OPERATION_MODE = READ_WRITE);
-GO
 ```
 
+### Enable automatic plan correction for secondary replicas
+
 **Applies to**: [!INCLUDE [ssSQL22](../../includes/sssql22-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)].
+
+After enabling Query Store for secondary replicas, you can optionally enable automatic tuning to allow the automatic plan correction feature to force plans on secondary replicas. This enables the query optimizer to automatically identify and fix query performance issues caused by execution plan regressions on secondary replicas.
+
+To enable automatic plan correction for secondary replicas, connect to the primary replica and execute the following script for each desired database:
+
+```sql
+ALTER DATABASE [Database_Name]
+FOR SECONDARY
+SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON);
+```
+
+## Disable Query Store for secondary replicas
 
 To disable the Query Store for secondary replicas feature on all secondary replicas, connect to the `master` database on the `primary` replica and execute the following script for each desired database:
 
@@ -77,6 +85,8 @@ ALTER DATABASE [Database_Name]
     (OPERATION_MODE = READ_ONLY);
 ```
 
+### Validate Query Store is enabled on secondary replicas
+
 You can validate that Query Store is enabled on a `secondary` replica by connecting to the database on the secondary replica and execute the following t-sql statement:
 
 ```sql
@@ -84,7 +94,6 @@ SELECT desired_state_desc,
        actual_state_desc,
        readonly_reason
 FROM sys.database_query_store_options;
-GO
 ```
 
 The results from querying the [sys.database_query_store_options](../system-catalog-views/sys-database-query-store-options-transact-sql.md) catalog view should indicate that the Query Store's actual state is `READ_CAPTURE_SECONDARY` with a `readonly_reason` of `8`.
@@ -92,9 +101,6 @@ The results from querying the [sys.database_query_store_options](../system-catal
 | `desired_state_desc` | `actual_state_desc` | `readonly_reason` |
 | --- | --- | --- |
 | `READ_CAPTURE_SECONDARY` | `READ_CAPTURE_SECONDARY` | `8` |
-
-<!-- Once enabled, you can use [sys.query_store_replicas](../system-catalog-views/sys-query-store-replicas.md) to verify the health of the Query Store on the secondary replica.
--->
 
 ## Remarks
 
@@ -120,7 +126,7 @@ The data stored about queries can be analyzed as workloads on a role basis. Quer
 
 - One remote primary replica in another location that is part of a separate availability group (AG2). In SQL Server terms, it would also be commonly referred to as a global forwarder, however, the Query Store for readable secondaries feature will recognize and refer to it as a `Geo secondary` replica, assuming that it's a geographically distributed secondary replica.
 
-If AG1 and AG2 have been configured to allow read-only connections when a read-only workload executes against either of AG1's secondary replicas, the Query Store execution statistics are sent to AG1's primary replica and aggregated and persisted as data that was generated from the `secondary` role before that data is sent back to all of the secondary replicas including the global forwarder in AG2. When a separate workload is executed against AG2's primary, the global fowarder, its data is sent back to the primary replica of AG1 and persisted as data that was generated from `Geo secondary` role.
+If AG1 and AG2 are configured to allow read-only connections when a read-only workload executes against either of AG1's secondary replicas, the Query Store execution statistics are sent to AG1's primary replica and aggregated and persisted as data that was generated from the `secondary` role before that data is sent back to all of the secondary replicas including the global forwarder in AG2. When a separate workload is executed against AG2's primary, the global fowarder, its data is sent back to the primary replica of AG1 and persisted as data that was generated from `Geo secondary` role.
 
 From an observability perspective, the [sys.query_store_runtime_stats](../system-catalog-views/sys-query-store-runtime-stats-transact-sql.md) system catalog view is extended to help identify the role where the execution statistics originated from. There's a relationship between this view and the [sys.query_store_replicas](../system-catalog-views/sys-query-store-replicas.md) system catalog view, which can provide a more friendly name of the role. In SQL Server, Azure SQL Database, and Azure SQL Managed Instance, the replica_name column is `NULL`. However, the replica_name column is populated for the Hyperscale service tier if there's a named replica present and is being used for read-only workloads.
 
@@ -158,6 +164,17 @@ ORDER BY SUM(qrs.count_executions * qrs.avg_cpu_time / 1000.0) DESC, AVG(qrs.avg
 ```
 
 The Query Store reports in [SQL Server Management Studio (SSMS) 21](/ssms/release-notes-21#whats-new-in-2100) and later versions provide a **Replica** dropdown list, which provides a way to view Query Store data across various replica sets/roles. Also, inside of the Object explorer view, the Query Store node reflects the current state of Query Store (that is, READ_CAPTURE) if connected to a readable secondary replica.
+
+### Query Store for readable secondaries telemetry in Azure diagnostic settings
+
+**Applies to**: [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]
+
+When streaming Query Store [runtime statistics](/azure/azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure#query-store-runtime-statistics) through Azure diagnostic settings, two columns are included to help identify the replica source of the telemetry data:
+
+- `is_primary_b`: A Boolean value indicating whether the data originated from the primary replica (true) or a secondary replica (false)
+- `replica_group_id`: An integer that corresponds to the replica role
+
+These columns are essential for disambiguating metrics and performance data when analyzing workloads across replica sets. When configuring diagnostic settings to stream Query Store runtime statistics to Log Analytics, Event Hubs, or Azure Storage, ensure your queries and dashboards account for these columns to properly segment data by replica role. For more information on configuring diagnostic settings and available metrics, see [Diagnostic settings in Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings).
 
 ### Performance considerations for Query Store for readable secondaries
 
