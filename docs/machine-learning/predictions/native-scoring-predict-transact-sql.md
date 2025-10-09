@@ -5,7 +5,7 @@ description: Learn how to use native scoring with the PREDICT T-SQL function to 
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: monamaki
-ms.date: 10/05/2025
+ms.date: 10/08/2025
 ms.service: sql
 ms.subservice: machine-learning
 ms.topic: how-to
@@ -39,7 +39,7 @@ The function returns predictions for the input data, together with any columns o
 + Azure SQL Managed Instance
 + Azure Synapse Analytics
 
-The function is enabled by default. You do not need to install R or Python, or enable additional features.
+The function is enabled by default. You don't need to install R or Python, or enable additional features.
 
 ## Supported models
 
@@ -86,7 +86,7 @@ The following algorithms are supported in revoscalepy and RevoScaleR.
   + [rxDtree](/r-server/r-reference/revoscaler/rxdtree)
   + [rxDForest](/r-server/r-reference/revoscaler/rxdforest)
 
-If you need to use an algorithms from MicrosoftML or microsoftml, use [real-time scoring with sp_rxPredict](../predictions/real-time-scoring.md).
+If you need to use an algorithm from MicrosoftML or microsoftml, use [real-time scoring with sp_rxPredict](../predictions/real-time-scoring.md).
 
 Unsupported model types include the following types:
 
@@ -201,7 +201,7 @@ EXECUTE sp_execute_external_script
 ```
 
 > [!NOTE]
-> Be sure to use the [rxSerializeModel](/machine-learning-server/r-reference/revoscaler/rxserializemodel) function from RevoScaleR to save the model. The standard R `serialize` function cannot generate the required format.
+> Be sure to use the [rxSerializeModel](/machine-learning-server/r-reference/revoscaler/rxserializemodel) function from RevoScaleR to save the model. The standard R `serialize` function can't generate the required format.
 
 You can run a statement such as the following to view the stored model in binary format:
 
