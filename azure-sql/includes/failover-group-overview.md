@@ -32,7 +32,7 @@ Each failover policy has a unique set of use cases and corresponding expectation
 | Failover policy | Failover scope | Use case | Potential data loss |
 | --- | --- | --- | --- |
 | Customer managed <br> **(Recommended)** | Failover groups | One or more databases in a failover group is impacted by an outage and becomes unavailable. You can choose to fail over. | Yes |
-| Microsoft managed | All failover groups in the region | A widespread outage in a datacenter, availability zone, or region causes unavailability of databases and the Microsoft Azure SQL service team decides to trigger a forced failover. <br> Use this option only when you want to delegate the disaster recovery responsibility to Microsoft and the application is tolerant to RTO (downtime) of at least one hour or more.| Yes |
+| Microsoft managed | All failover groups in the region | A widespread outage in a region causes unavailability of databases and the Microsoft Azure SQL service team decides to trigger a forced failover. <br> Use this option only when you want to delegate the disaster recovery responsibility to Microsoft and the application is tolerant to RTO (downtime) of at least one hour or more. <br> Microsoft managed failover might only execute in extreme circumstances. A [customer-managed failover policy[(#customer-managed) is highly recommended. | Yes |
 
 ### Customer managed
 

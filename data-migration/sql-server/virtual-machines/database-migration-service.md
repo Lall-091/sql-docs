@@ -5,7 +5,7 @@ description: Learn how to migrate on-premises SQL Server to SQL Server on Azure 
 author: abhims14
 ms.author: abhishekum
 ms.reviewer: cawrites, randolphwest
-ms.date: 10/09/2025
+ms.date: 10/13/2025
 ms.service: azure-database-migration-service
 ms.topic: tutorial
 ms.collection:
@@ -55,7 +55,7 @@ Before you begin the tutorial:
   - As an alternative to using one of these built-in roles, you can [assign custom roles](custom-roles.md).
 
   > [!NOTE]  
-  > When migrating to Azure SQL Managed Instance or Azure SQL Virtual Machine via **Azure portal**, make sure the signed in user has **Storage Blob Data Reader** access on the storage account. This permission is needed to list folders and files in the blob container during migration setup via Azure portal only.
+  > When migrating to Azure SQL Managed Instance or Azure SQL Virtual Machine via **Azure portal**, make sure the signed in user has **Storage Blob Data Reader** access on the blob container that contains the backup files. This permission is needed to list folders and files in the blob container during migration setup via Azure portal only.
 
 - Create a target instance of [SQL Server on Azure Virtual Machines](/azure/azure-sql/virtual-machines/windows/create-sql-vm-portal).
 
@@ -348,7 +348,7 @@ This article describes an online migration from an on-premises SQL Server to a S
      | **Password** | The Windows credential (password) that has read access to the network share to retrieve the backup files. |
      | **Target database name** | The target database name can be modified if you wish to change the database name on the target during the migration process. |
 
-   - For backups stored in an Azure storage blob container, specify the below details of the Target database name, resource group, Azure storage account, Blob container from the corresponding dropdown lists.
+   - For backups stored in an Azure storage blob container, specify the below details of the Target database name, resource group, Azure storage account, blob container from the corresponding dropdown lists.
 
      | Field | Description |
      | --- | --- |

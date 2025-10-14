@@ -4,7 +4,7 @@ titleSuffix: Azure Database Migration Service
 description: Learn to use the custom roles for SQL Server to Azure SQL Managed Instance migrations.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/08/2025
+ms.date: 10/13/2025
 ms.service: azure-database-migration-service
 ms.topic: conceptual
 ms.collection:
@@ -77,7 +77,7 @@ You can use either the Azure portal, Azure PowerShell, Azure CLI, or Azure REST 
 For more information, see [Create or update Azure custom roles using the Azure portal](/azure/role-based-access-control/custom-roles-portal) and [Azure custom roles](/azure/role-based-access-control/custom-roles).
 
 > [!NOTE]  
-> When migrating to Azure SQL Managed Instance or Azure SQL Virtual Machine via **Azure portal**, make sure the signed in user has **Storage Blob Data Reader** access on the storage account. This permission is needed to list folders and files in the blob container during migration setup via Azure portal only.
+> When migrating to Azure SQL Managed Instance or Azure SQL Virtual Machine via **Azure portal**, make sure the signed in user has **Storage Blob Data Reader** access on the blob container that contains the backup files. This permission is needed to list folders and files in the blob container during migration setup via Azure portal only.
 
 ## Description of permissions needed to migrate to Azure SQL Managed Instance
 
@@ -115,6 +115,7 @@ For more information, see [Create or update Azure custom roles using the Azure p
 | `Microsoft.DataMigration/SqlMigrationServices/tasks/read` | Get Migration Service Task details |
 | `Microsoft.DataMigration/SqlMigrationServices/tasks/write` | Create or Update Migration Service Task |
 | `Microsoft.DataMigration/SqlMigrationServices/tasks/delete` | Delete Migration Service Task |
+| `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` | Read blob containers in an Azure Storage account |
 
 You can get a sample script to create a login and provision it with the necessary permissions, for [VMware](/azure/migrate/migrate-support-matrix-vmware?pivots=sql-server-instance-database-discovery-requirements#sql-server-instance-and-database-discovery-requirements), [Hyper-V](/azure/migrate/migrate-support-matrix-hyper-v#sql-server-instance-and-database-discovery-requirements), or [physical servers](/azure/migrate/migrate-support-matrix-physical#sql-server-instance-and-database-discovery-requirements), using Windows authentication or SQL Server authentication.
 

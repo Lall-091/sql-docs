@@ -4,7 +4,7 @@ description: This article explains different targets for Extended Events session
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: dfurman, randolphwest
-ms.date: 10/02/2025
+ms.date: 10/13/2025
 ms.service: sql
 ms.subservice: xevents
 ms.topic: conceptual
@@ -49,7 +49,7 @@ The `event_file` target writes event session output from memory buffers to a dis
 - You can optionally specify the `MAX_ROLLOVER_FILES` option to choose the maximum number of files to retain in the file system in addition to the current file. The default value is `UNLIMITED`. When `MAX_ROLLOVER_FILES` is evaluated, if the number of files exceeds the `MAX_ROLLOVER_FILES` setting, the older files are deleted.
 
 > [!IMPORTANT]  
-> Depending on the events added to a session, the files produced by the `event_file` target might contain sensitive data. Carefully review the file system and share permissions on the directory and individual `.xel` files, including inherited access, to avoid granting unnecessary read access. Follow the [principle of least privilege](/entra/identity-platform/secure-least-privileged-access).
+> Depending on the events added to a session, the files produced by the `event_file` target might contain sensitive data. Carefully review the file system and share permissions on the directory and individual `.xel` files, including inherited access, to avoid granting unnecessary read access. Follow the [principle of least privilege](/entra/identity-platform/secure-least-privileged-access). To reduce the risk of collecting sensitive data inadvertently, avoid long-running event sessions if they might collect sensitive data.
 
 ::: moniker range="= azuresqldb-current || = azuresqldb-mi-current "
 

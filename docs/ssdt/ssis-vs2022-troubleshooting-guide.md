@@ -1,16 +1,16 @@
 ---
-title: SSIS Projects Extension for Visual Studio 2022 Troubleshooting Guide
-description: "SSIS Projects extension for Visual Studio 2022 troubleshooting guide"
+title: SSIS Projects Extension for Visual Studio 2022+ Troubleshooting Guide
+description: SSIS Projects extension for Visual Studio 2022+ troubleshooting guide
 author: chugugrace
 ms.author: chugu
 ms.reviewer: drskwier, mikeray, randolphwest
-ms.date: 09/09/2025
+ms.date: 10/14/2025
 ms.service: sql
 ms.subservice: ssdt
 ms.topic: troubleshooting-general
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || =azuresqldb-mi-current"
 ---
-# SSIS Projects extension for Visual Studio 2022 troubleshooting guide
+# SSIS Projects extension for Visual Studio 2022+ troubleshooting guide
 
 [!INCLUDE [sql-asdb-asa](../includes/applies-to-version/sql-asdb-asa.md)]
 
@@ -45,46 +45,25 @@ Visit the [SQL Server Integration Services (SSIS) Blog](https://techcommunity.mi
 
 ## Known issues
 
+1. In the context menu (right mouse button) on objects in the project (for example, the solution, a package) in Visual Studio, many of the entries appear many times.
+1. Sometimes when you repair or update Visual Studio, the SSIS extension might be uninstalled. Reinstall it again.
+1. If SSIS installed successfully, but the Solution Explorer shows `incompatible`, or `The application is not installed`:
+   1. Open Visual Studio and navigate to **Extension** > **Manage Extensions** > **Installed**
+   1. Enable SSIS extension
+   1. Relaunch Visual Studio
+
 For more information, see the [Release notes](https://marketplace.visualstudio.com/items?itemName=SSIS.MicrosoftDataToolsIntegrationServices).
 
 ## Installation issues
 
-If SSIS installed successfully, but the Solution Explorer shows `incompatible`, or `The application is not installed`:
+The installation log file, Microsoft.DataTools.IntegrationServices_{Timestamp}_ISVsix.log, is located under the %temp%\SsdtisSetup folder. Check the error messages in the log file and follow these troubleshooting steps:
 
-1. Open Visual Studio and navigate to **Extension** > **Manage Extensions** > **Installed**
-1. Enable SSIS extension
-1. Relaunch Visual Studio
+1. Pre-check verification AnotherInstallationRunning failure
+   - If the log file contains keywords: `Pre-check verification failed with warning(s): AnotherInstallationRunning`, keep waiting and retry.
+   - This error occurs because Windows Installer blocks your installation. Windows Installer is a subservice of Windows that manages the installation of packages like MSIs, Windows Update, or a third-party component, and it can only handle one thing at a time.
 
-If SSIS installation shows Setup Failed with `Unknown error(0x80131500)` or `ISVsix Unknown error`, open %temp%\SsdtisSetup folder, search in Microsoft.DataTools.IntegrationServices_{latestTimestamp}_ISVsix.log:
-
-- The error is `Pre-check verification failed with warning(s): AnotherInstallationRunning`:
-
-  1. Keep waiting and retry. More detail: Windows Installer block your installation. Windows Installer is a subservice of Windows that manages the installation of packages like MSIs, Windows Update, or a third party component, and it can only handle one thing at a time.
-
-- The error is `The file {filefullpath} already exists.`:
-
-  1. Run the following commands from an elevated command prompt:
-
-     ```console
-     cd "C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\"
-     rm CommonExtensions\Microsoft\SSIS\*
-     rm PublicAssemblies\SSIS\*
-     rm "PublicAssemblies\Microsoft BI\Business Intelligence Projects\Integration Services\"*
-     ```
-
-  1. Repair the Visual Studio 2022 via Visual Studio installer
-
-  1. Restart PC and reinstall SSIS
-
-- The error is `Object reference not set to an instance of an object.`:
-
-  - Delete the broken instance folder `%ProgramData%\Microsoft\VisualStudio\Packages\_Instances\<InstallationID>`
-
-- The error is `Error 0x80091007: Failed to verify hash of payload`:
-
-  - Delete `C:\ProgramData\Package Cache\15160B731819F56D87A626F9A2777550340022D7` and retry.
-
-If your error isn't in the previous list, you can zip %temp%\SsdtisSetup and send the logs to ssistoolsfeedbacks@microsoft.com for troubleshooting.
+1. Other errors
+   - Download [VSInstallationTroubleShooting.ps1](https://github.com/Azure/Azure-DataFactory/blob/main/SamplesV2/SQLServerIntegrationServices/VSInstallationTroubleShooting.ps1) and run it on your machine to help with troubleshooting.
 
 ## Offline installation
 

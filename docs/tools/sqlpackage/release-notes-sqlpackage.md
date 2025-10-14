@@ -3,8 +3,8 @@ title: DacFx and SqlPackage Release Notes
 description: Release notes for Microsoft SqlPackage.
 author: dzsquared
 ms.author: drskwier
-ms.reviewer: llali
-ms.date: 07/30/2025
+ms.reviewer: llali, randolphwest
+ms.date: 10/14/2025
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: release-notes
@@ -18,6 +18,46 @@ ms.custom:
 **[Download the latest version](sqlpackage-download.md)**
 
 This article lists the features and fixes delivered by the released versions of SqlPackage.
+
+## 170.2.70 SqlPackage
+
+**Release date:** October 14, 2025
+
+```bash
+dotnet tool install -g microsoft.sqlpackage --version 170.2.70
+```
+
+| Platform | Download |
+| --- | --- |
+| Windows .NET 8 | [.zip file](https://go.microsoft.com/fwlink/?linkid=2338326) |
+| Windows | [.msi file](https://go.microsoft.com/fwlink/?linkid=2338524) |
+| macOS .NET 8 | [.zip file](https://go.microsoft.com/fwlink/?linkid=2338443) |
+| Linux .NET 8 | [.zip file](https://go.microsoft.com/fwlink/?linkid=2338525) |
+
+### Features
+
+| Feature | Details |
+| --- | --- |
+| External models | Adds support for external models in Azure SQL Database and SQL Server 2025 for import, export, extract, deployment, and SQL project build. |
+| External models | Adds support for functions `AI_GENERATE_CHUNKS` and `AI_GENERATE_EMBEDDINGS`. |
+| JSON | Adds support for JSON indexes in Azure SQL Database and SQL Server 2025 for import, export, extract, deployment, and SQL project build. |
+| JSON | Adds support for JSON functions `JSON_ARRAYAGG`, `JSON_OBJECTAGG`, and `JSON_QUERY`. |
+| Platform | The SqlPackage .zip build .NET SDK is updated to 8.0.414 |
+| Regex | Adds support for the `REGEXP_LIKE` function. |
+| ScriptDom | Updated ScriptDom to version 170.128.0. |
+| Vector | Adds support for the vector indexes in Azure SQL Database and SQL Server 2025 for import, export, extract, deployment, and SQL project build. |
+| Vector | Expands support for vector data type to SQL Server 2025 and specifying the 32-bit float size. |
+| Vector | Adds support for Vector function `VECTOR_SEARCH`. |
+
+### Fixes
+
+| Feature | Details |
+| --- | --- |
+| Data masking | Fixed an issue where the datetime data masking functions weren't being recognized during project build. [GitHub issue](https://github.com/microsoft/DacFx/issues/476) |
+| External models | Fixed an issue where external model dependencies on a database-scoped credential would cause project build to fail. |
+| JSON | Fixed a bug when comparing JSON indexes with the default JSON path. |
+| Platform | References [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient/5.1.7) v5.1.7. |
+| XML | Fixed an issue where the XML query path ([xQuery](../../xquery/xquery-language-reference-sql-server.md)) was not treated as case-sensitive during model comparison. Even on case-insensitive databases, the xQuery path is case-sensitive. [GitHub issue](https://github.com/microsoft/DacFx/issues/231) |
 
 ## 170.1.61 SqlPackage
 
@@ -88,7 +128,6 @@ dotnet tool install -g microsoft.sqlpackage --version 170.0.94
 | SQL projects | The default compatibility level for Azure SQL Database and SQL database in Fabric is now set to 170. For more information, see [Database compatibility level 170 in Azure SQL Database and SQL database in Microsoft Fabric](https://techcommunity.microsoft.com/blog/azuresqlblog/database-compatibility-level-170-in-azure-sql-database-and-sql-database-in-micro/4405102). |
 | Vector | Vector data type is now supported in the target platform `Azure SQL Database` for import, export, extract, deployment, and SQL project build. |
 
-
 ### Fixes
 
 |Feature|Details|
@@ -103,7 +142,6 @@ dotnet tool install -g microsoft.sqlpackage --version 170.0.94
 | SQL projects | Fixes an issue where building without SSDT installed in Visual Studio results in incorrect build behavior. [GitHub](https://github.com/microsoft/DacFx/issues/99) |
 | SQL projects | Fixes an issue where build warnings are duplicated in output when code analysis is enabled. [GitHub](https://github.com/microsoft/DacFx/issues/481) |
 | SQL projects | Fixes an issue where [service broker](../../database-engine/configure-windows/sql-server-service-broker.md) parameters set to variables results in false warnings. [GitHub](https://github.com/microsoft/DacFx/issues/326) |
-
 
 ## 162.5.57 SqlPackage
 
