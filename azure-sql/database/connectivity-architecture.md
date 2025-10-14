@@ -48,15 +48,12 @@ Logical SQL servers support the following three options for the server's connect
    - Allow outbound communication from the client to all Azure SQL IP addresses in the region on ports in the range of 11000 to 11999. Use the Service Tags for SQL to make this easier to manage. If you are using Private Link, see [Use Redirect connection policy with private endpoints](private-endpoint-overview.md#use-redirect-connection-policy-with-private-endpoints) for the port ranges to allow.
    - Allow outbound communication from the client to Azure SQL Database gateway IP addresses on port 1433.
    - When using the Redirect connection policy, refer to the [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519) for a list of your region's IP addresses to allow.
-
-   > [!NOTE]
-   > Currently, the connection policy for [SQL database in Microsoft Fabric](/fabric/database/sql/limitations#connection-policy) is **redirect** and cannot be changed.
-
 - **Proxy:** In this mode, all connections are proxied via the Azure SQL Database gateways, leading to increased latency and reduced throughput. For connections to use this mode, clients need to allow outbound communication from the client to Azure SQL Database gateway IP addresses on port 1433.
    - When using the Proxy connection policy, refer to the [Gateway IP addresses](#gateway-ip-addresses) list later in this article for your region's IP addresses to allow.
 - **Default:** This is the connection policy in effect on all servers after creation unless you explicitly alter the connection policy to either `Proxy` or `Redirect`. The default policy is:
    - `Redirect` for all client connections originating inside of Azure (for example, from an Azure Virtual Machine). 
    - `Proxy` for all client connections originating outside (for example, connections from your local workstation).
+   - Currently, the connection policy for [SQL database in Microsoft Fabric](/fabric/database/sql/limitations#connection-policy) is **default** and cannot be changed.
 
 We highly recommend the `Redirect` connection policy over the `Proxy` connection policy for the lowest latency and highest throughput. However, you need to meet the extra requirements for allowing network traffic for outbound communication:
 
