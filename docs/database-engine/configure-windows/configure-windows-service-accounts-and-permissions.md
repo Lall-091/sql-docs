@@ -3,7 +3,7 @@ title: Configure Windows Service Accounts and Permissions
 description: Get acquainted with the service accounts that are used to start and run services in SQL Server. See how to configure them and assign appropriate permissions.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 08/26/2025
+ms.date: 10/14/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: reference
@@ -16,6 +16,9 @@ ms.custom:
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
 Each service in SQL Server represents a process or a set of processes to manage authentication of SQL Server operations with Windows. This article describes the default configuration of services in this release of SQL Server, and configuration options for SQL Server services that you can set during and after SQL Server installation. This article helps advanced users understand the details of the service accounts.
+
+> [!NOTE]  
+> For more information about SQL Server on Linux permissions, see [SQL Server on Linux - Security and permissions guide](../../linux/sql-server-linux-security-permissions-guide.md).
 
 Most services and their properties can be configured by using SQL Server Configuration Manager. Here are the paths to recent versions when Windows is installed on the C drive.
 
@@ -184,7 +187,7 @@ Managed service accounts, group-managed service accounts, and virtual accounts a
 
 - **Virtual accounts**
 
-  Virtual accounts (beginning with [!INCLUDE [winserver2008r2-md](../../includes/winserver2008r2-md.md)] and [!INCLUDE [win7-md](../../includes/win7-md.md)]) are *managed local accounts* that provide the following features to simplify service administration. The virtual account is auto-managed, and the virtual account can access the network in a domain environment. If the default value is used for the service accounts during SQL Server setup, a virtual account using the instance name as the service name is used, in the format `NT SERVICE\<SERVICENAME>`. Services that run as virtual accounts access network resources by using the credentials of the computer account in the format `<domain_name>\<computer_name>$`. When specifying a virtual account to start SQL Server, leave the password blank. If the virtual account fails to register the Service Principal Name (SPN), register the SPN manually. For more information on registering an SPN manually, see [Register a Service Principal Name for Kerberos connections](register-a-service-principal-name-for-kerberos-connections.md).
+  Virtual accounts are *managed local accounts* that provide the following features to simplify service administration. The virtual account is automanaged, and the virtual account can access the network in a domain environment. If the default value is used for the service accounts during SQL Server setup, a virtual account using the instance name as the service name is used, in the format `NT SERVICE\<SERVICENAME>`. Services that run as virtual accounts access network resources by using the credentials of the computer account in the format `<domain_name>\<computer_name>$`. When specifying a virtual account to start SQL Server, leave the password blank. If the virtual account fails to register the Service Principal Name (SPN), register the SPN manually. For more information on registering an SPN manually, see [Register a Service Principal Name for Kerberos connections](register-a-service-principal-name-for-kerberos-connections.md).
 
   > [!NOTE]  
   > Virtual accounts can't be used for SQL Server failover cluster instance, because the virtual account wouldn't have the same SID on each node of the cluster.
@@ -233,7 +236,7 @@ The following table shows the SQL Server services that can be configured during 
 | R Services or Machine Learning Services | EXTSVCACCOUNT, EXTSVCPASSWORD, ADVANCEDANALYTICS <sup>3</sup> |
 | PolyBase Engine | PBENGSVCACCOUNT, PBENGSVCPASSWORD, PBENGSVCSTARTUPTYPE, PBDMSSVCACCOUNT, PBDMSSVCPASSWORD, PBDMSSVCSTARTUPTYPE, PBSCALEOUT, PBPORTRANGE |
 
-<sup>1</sup> For more information and sample syntax for unattended installations, see [Install and configure SQL Server on Windows from the command prompt](../install-windows/install-sql-server-from-the-command-prompt.md).
+<sup>1</sup> For more information and sample syntax for unattended installations, see [Install, configure, or uninstall SQL Server on Windows from the command prompt](../install-windows/install-sql-server-from-the-command-prompt.md).
 
 <sup>2</sup> The SQL Server Agent service is disabled on instances of [!INCLUDE [ssExpress](../../includes/ssexpress-md.md)] and [!INCLUDE [ssExpress](../../includes/ssexpress-md.md)] with Advanced Services.
 
@@ -433,7 +436,7 @@ When installed to a local drive that isn't the default drive, the per-service SI
 
 **Network share**
 
-When databases are installed to a network share, the service account must have access to the file location of the user and `tempdb` databases. SQL Server Setup can't provision access to a network share. The user must provision access to a tempdb location for the service account before running setup. The user must provision access to the user database location before creating the database.
+When databases are installed to a network share, the service account must have access to the file location of the user and `tempdb` databases. SQL Server Setup can't provision access to a network share. The user must provision access to a `tempdb` location for the service account before running setup. The user must provision access to the user database location before creating the database.
 
 > [!NOTE]  
 > Virtual accounts can't be authenticated to a remote location. All virtual accounts use the permission of machine account. Provision the machine account in the format `<domain_name>\<computer_name>$`.

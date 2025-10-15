@@ -9305,6 +9305,8 @@ items:
         href: linux/sql-server-linux-security-overview.md
       - name: Get started with security features
         href: linux/sql-server-linux-security-get-started.md
+      - name: Security and permissions guide
+        href: linux/sql-server-linux-security-permissions-guide.md
       - name: Get started with SQL Server on SELinux
         href: linux/sql-server-linux-security-selinux.md
       - name: Active Directory authentication
