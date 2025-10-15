@@ -388,10 +388,7 @@ In Azure virtual machines, the listener requires a load balancer. The next step 
 
 On Azure virtual machines in a single subnet, a SQL Server availability group requires a load balancer. The load balancer holds the IP addresses for the availability group listeners and the Windows Server failover cluster. This section summarizes how to create the load balancer in the Azure portal.
 
-A load balancer in Azure can be either *standard* or *basic*. A standard load balancer has more features than the basic load balancer. For an availability group, the standard load balancer is required if you use an availability zone (instead of an availability set). For details on the difference between the SKUs, see [Azure Load Balancer SKUs](/azure/load-balancer/skus).
-
-> [!IMPORTANT]  
-> On September 30, 2025, the Basic SKU for Azure Load Balancer will be retired. For more information, see the [official announcement](https://azure.microsoft.com/updates/azure-basic-load-balancer-will-be-retired-on-30-september-2025-upgrade-to-standard-load-balancer/). If you're currently using Basic Load Balancer, upgrade to Standard Load Balancer before the retirement date. For guidance, review [Upgrade Load Balancer](/azure/load-balancer/load-balancer-basic-upgrade-guidance).
+[!INCLUDE [sql-vm-basic-load-balancer-retired](../../includes/sql-vm-basic-load-balancer-retired.md)]
 
 1. In the Azure portal, go to the resource group that contains your SQL Server VMs and select **+ Add**.
 1. Search for **load balancer**. Choose the load balancer that Microsoft publishes.

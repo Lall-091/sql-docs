@@ -39,12 +39,7 @@ In this portion of the task, do the following steps:
 1. Configure the back-end pool.
 1. Create the probe.
 1. Set the load-balancing rules.
-
-> [!NOTE]  
-> If the SQL Server instances are in multiple resource groups and regions, perform each step twice, once in each resource group.
->
-> [!IMPORTANT]  
-> On September 30, 2025, the Basic SKU for the Azure Load Balancer will be retired. For more information, see the [official announcement](https://azure.microsoft.com/updates/azure-basic-load-balancer-will-be-retired-on-30-september-2025-upgrade-to-standard-load-balancer/). If you're currently using Basic Load Balancer, upgrade to Standard Load Balancer prior to the retirement date. For guidance, review [upgrade load balancer](/azure/load-balancer/load-balancer-basic-upgrade-guidance).
+1. If the SQL Server instances are in multiple resource groups and regions, perform each step twice, once in each resource group.
 
 ### Step 1: Create the load balancer and configure the IP address
 
@@ -66,8 +61,9 @@ First, create the load balancer.
    | **Resource Group** | Use the same resource group as the virtual machine. |
    | **Name** | Use a text name for the load balancer, for example **sqlLB**. |
    | **Region** | Use the same region as the virtual machine. |
-   | **SKU** | Standard |
    | **Type** | Internal |
+
+   [!INCLUDE [sql-vm-basic-load-balancer-retired](../../includes/sql-vm-basic-load-balancer-retired.md)]
 
 1. Select **Next: Frontend IP Configuration**
 

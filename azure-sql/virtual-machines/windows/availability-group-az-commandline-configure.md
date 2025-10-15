@@ -214,11 +214,9 @@ Manually create the availability group as you normally would, by using [SQL Serv
 
 [!INCLUDE [sql-ag-use-dnn-listener](../../includes/sql-ag-use-dnn-listener.md)]
 
-The Always On availability group listener requires an internal instance of Azure Load Balancer. The internal load balancer provides a "floating" IP address for the availability group listener that allows for faster failover and reconnection. If the SQL Server VMs in an availability group are part of the same availability set, you can use a Basic load balancer. Otherwise, you need to use a Standard load balancer.  
+The Always On availability group listener requires an internal instance of Azure Load Balancer. The internal load balancer provides a "floating" IP address for the availability group listener that allows for faster failover and reconnection. The internal load balancer should be in the same virtual network as the SQL Server VM instances. 
 
-> [!IMPORTANT]
-> - The internal load balancer should be in the same virtual network as the SQL Server VM instances. 
-> - The public IP resource for each SQL Server VM should have a Standard SKU to be compatible with the Standard load balancer. To determine the SKU of your VM's public IP resource, go to **Resource Group**, select your **Public IP Address** resource for the desired SQL Server VM, and locate the value under **SKU** in the **Overview** pane.  
+[!INCLUDE [sql-vm-basic-load-balancer-retired](../../includes/sql-vm-basic-load-balancer-retired.md)]
 
 The following code snippet creates the internal load balancer:
 

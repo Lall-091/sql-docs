@@ -194,7 +194,6 @@ Azure Virtual Machines supports Microsoft Distributed Transaction Coordinator (M
 On Azure Virtual Machines, MSDTC isn't supported for Windows Server 2016 or earlier with Clustered Shared Volumes because:
 
 - The clustered MSDTC resource can't be configured to use shared storage. On Windows Server 2016, if you create an MSDTC resource, it doesn't show any shared storage available for use, even if storage is available. This issue was fixed in Windows Server 2019.
-- The basic load balancer doesn't handle RPC ports.
 
 ## Related content
 
