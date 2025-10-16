@@ -1,10 +1,10 @@
 ---
 title: "TRY_CAST (Transact-SQL)"
-description: "Returns a value cast to the specified data type if the cast succeeds; otherwise, returns null."
+description: Returns a value cast to the specified data type if the cast succeeds; otherwise, returns null.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 06/06/2023
+ms.date: 10/15/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -14,8 +14,8 @@ f1_keywords:
 helpviewer_keywords:
   - "TRY_CAST function"
 dev_langs:
-  - "TSQL"
-monikerRange: "= azuresqldb-current || >= sql-server-2016 || >= sql-server-linux-2017 || >= aps-pdw-2016 || = azure-sqldw-latest || =fabric"
+  - TSQL
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || >=aps-pdw-2016 || =azure-sqldw-latest || =fabric"
 ---
 # TRY_CAST (Transact-SQL)
 
@@ -39,13 +39,11 @@ Specifies any valid expression to be cast.
 
 #### *data_type*
 
-The data type into which to cast *expression*.
+The data type into which to cast *expression*. This value determines the range of acceptable values.
 
 #### *length*
 
 Optional integer that specifies the length of the target data type.
-
-The range of acceptable values is determined by the value of *data_type*.
 
 ## Return types
 
@@ -57,7 +55,10 @@ Returns a value cast to the specified data type if the cast succeeds; otherwise,
 
 `TRY_CAST` isn't a new reserved keyword and is available in all compatibility levels. `TRY_CAST` has the same semantics as `TRY_CONVERT` when connecting to remote servers.
 
-`TRY_CAST` doesn't work for **varchar(max)** if the length is over 8000.
+`TRY_CAST` doesn't work for an *expression* in the following cases:
+
+- **varchar(max)** if the length is over 8,000
+- **nvarchar(max)** if the length is over 4,000
 
 ## Examples
 
@@ -74,14 +75,12 @@ END AS Result;
 GO
 ```
 
-[!INCLUDE[ssResult](../../includes/ssresult-md.md)]
+[!INCLUDE [ssResult](../../includes/ssresult-md.md)]
 
 ```output
 Result
 ------------
 Cast failed
-  
-(1 row(s) affected)
 ```
 
 The following example demonstrates that the expression must be in the expected format.
@@ -93,14 +92,12 @@ SELECT TRY_CAST('12/31/2022' AS DATETIME2) AS Result;
 GO
 ```
 
-[!INCLUDE[ssResult](../../includes/ssresult-md.md)]
+[!INCLUDE [ssResult](../../includes/ssresult-md.md)]
 
 ```output
 Result
 ----------------------
 NULL
-  
-(1 row(s) affected)
 ```
 
 ### B. TRY_CAST fails with an error
@@ -129,17 +126,15 @@ SELECT TRY_CAST('12/31/2022' AS DATETIME2) AS Result;
 GO
 ```
 
-[!INCLUDE[ssResult](../../includes/ssresult-md.md)]
+[!INCLUDE [ssResult](../../includes/ssresult-md.md)]
 
 ```output
 Result
 ----------------------------------
 2022-12-31 00:00:00.0000000
-  
-(1 row(s) affected)
 ```
 
-## See also
+## Related content
 
-- [TRY_CONVERT (Transact-SQL)](../../t-sql/functions/try-convert-transact-sql.md)
-- [CAST and CONVERT (Transact-SQL)](../../t-sql/functions/cast-and-convert-transact-sql.md)
+- [TRY_CONVERT (Transact-SQL)](try-convert-transact-sql.md)
+- [CAST and CONVERT (Transact-SQL)](cast-and-convert-transact-sql.md)
