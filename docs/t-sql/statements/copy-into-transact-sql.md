@@ -5,7 +5,7 @@ description: Use the COPY statement in Azure Synapse Analytics and Warehouse in 
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: procha, mikeray, fresantos
-ms.date: 07/29/2025
+ms.date: 10/15/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -199,7 +199,7 @@ Multiple file locations can only be specified from the same storage account and 
 
 #### *ERRORFILE = Directory Location*
 
-*ERRORFILE* only applies to CSV. Specifies the directory within the COPY statement where the rejected rows and the corresponding error file should be written. The full path from the storage account can be specified or the path relative to the container can be specified. If the specified path doesn't exist, one is created on your behalf. A child directory is created with the name "\_rejectedrows". The "\_" character ensures that the directory is escaped for other data processing unless explicitly named in the location parameter.
+*ERRORFILE* only applies to CSV. Specifies the directory within the COPY statement where the rejected rows and the corresponding error file should be written. The full path from the storage account can be specified or the path relative to the container can be specified. If the specified path doesn't exist, one is created on your behalf. A child directory is created with the name `_rejectedrows`. The `_` character ensures that the directory is escaped for other data processing unless explicitly named in the location parameter.
 
 > [!NOTE]
 > When a relative path is passed to *ERRORFILE*, the path is relative to the container path specified in *external_location*. 
@@ -247,7 +247,7 @@ Using a storage account key with ERRORFILE_CREDENTIAL is not supported.
 
 *MAXERRORS* cannot be used with AUTO_CREATE_TABLE. 
 
-When *FILE_TYPE* is 'PARQUET', exceptions that are caused by data type conversion errors (e.g., Parquet binary to SQL integer) still cause COPY INTO will to fail, ignoring *MAXERRORS*. 
+When *FILE_TYPE* is `PARQUET`, exceptions that are caused by data type conversion errors (for example, Parquet binary to SQL integer) still cause `COPY INTO` to fail, ignoring *MAXERRORS*. 
 
 #### *COMPRESSION = { 'DefaultCodec ' | 'Snappy' | 'GZIP' | 'NONE'}*
 
@@ -346,6 +346,10 @@ GRANT ALTER on SCHEMA::HR to [mike@contoso.com];
 The COPY statement accepts only UTF-8 and UTF-16 valid characters for row data and command parameters. Source files or parameters (such as ROW TERMINATOR or FIELD TERMINATOR) that use invalid characters might be interpreted incorrectly by the COPY statement and cause unexpected results such as data corruption, or other failures. Make sure your source files and parameters are UTF-8 or UTF-16 compliant before you invoke the COPY statement.  
 
 The MAXDOP query hint is not supported with COPY INTO.
+
+To ensure reliable execution, the source files and folders must remain unchanged throughout the duration of the `COPY INTO` operation.
+- Modifying, deleting, or replacing any referenced files or folders while the command is running can cause the operation to fail or result in inconsistent data ingestion.
+- Before executing `COPY INTO`, verify that all source data is stable and will not be altered during the process.
 
 ## Examples
 
@@ -519,7 +523,7 @@ There's no need to split Parquet and ORC files because the COPY command automati
 
 ### Are there any limitations on the number or size of files?
 
-There are no limitations on the number or size of files; however, for best performance, we recommend files that are at least 4 MB. Also, limit the count of source files to a maximum of 5000 files for better performance.
+There are no limitations on the number or size of files; however, for best performance, we recommend files that are at least 4 MB. Also, limit the count of source files to a maximum of 5,000 files for better performance.
 
 ### Are there any known issues with the COPY statement?
 
@@ -551,7 +555,7 @@ In [!INCLUDE [fabric](../../includes/fabric.md)], the [COPY (Transact-SQL)](/sql
 
 For more information on using COPY INTO on your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], see [Ingest data into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] using the COPY statement](/fabric/data-warehouse/ingest-data-copy).
 
-By default, `COPY INTO` will authenticate as the executing Entra ID user.
+By default, `COPY INTO` authenticates as the executing Entra ID user.
 
 > [!NOTE]
 > For [!INCLUDE[ssazuresynapse_md](../../includes/ssazuresynapse-md.md)], visit [COPY INTO for [!INCLUDE [ssazuresynapse_md](../../includes/ssazuresynapse-md.md)]](copy-into-transact-sql.md?view=azure-sqldw-latest&preserve-view=true).  
@@ -678,7 +682,7 @@ To access files on Azure Data Lake Storage (ADLS) Gen2 and Azure Blob Storage lo
 
 *CREDENTIAL* specifies the authentication mechanism to access the external storage account. On [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], the only supported authentication mechanisms are Shared Access Signature (SAS) and Storage Account Key (SAK). 
 
-The user's EntraID authentication is default, no credential needs to be specified. COPY INTO using OneLake as source only supports EntraID authentication.
+The user's EntraID authentication is default. No credential needs to be specified. COPY INTO using OneLake as source only supports EntraID authentication.
 
 > [!NOTE]
 > When using a public storage account, CREDENTIAL does not need to be specified. By default the executing user's Entra ID is used.
@@ -696,7 +700,7 @@ The user's EntraID authentication is default, no credential needs to be specifie
 
 #### *ERRORFILE = Directory Location*
 
-*ERRORFILE* only applies to CSV. Specifies the directory where the rejected rows and the corresponding error file should be written. The full path from the storage account can be specified or the path relative to the container can be specified. If the specified path doesn't exist, one is created on your behalf. A child directory is created with the name "\_rejectedrows". The "\_" character ensures that the directory is escaped for other data processing unless explicitly named in the location parameter.
+*ERRORFILE* only applies to CSV. Specifies the directory where the rejected rows and the corresponding error file should be written. The full path from the storage account can be specified or the path relative to the container can be specified. If the specified path doesn't exist, one is created on your behalf. A child directory is created with the name `_rejectedrows`. The `_` character ensures that the directory is escaped for other data processing unless explicitly named in the location parameter.
 
 > [!NOTE]
 > When a relative path is passed to *ERRORFILE*, the path is relative to the container path specified in *external_location*. 
@@ -705,7 +709,7 @@ Within this directory, there's a folder created based on the time of load submis
 
 If ERRORFILE has the full path of the storage account defined, then the ERRORFILE_CREDENTIAL is used to connect to that storage. Otherwise, the value mentioned for CREDENTIAL is used. When the same credential that is used for the source data is used for ERRORFILE, restrictions that apply to ERRORFILE_CREDENTIAL also apply.
 
-When using a firewall protected Azure Storage Account, the error file will be created in the same container specified in the storage account path. When considering using the *ERRORFILES* option in this scenario, it is also required to specify the *MAXERROR* parameter. If ERRORFILE has the full path of the storage account defined, then the ERRORFILE_CREDENTIAL is used to connect to that storage. Otherwise, the value mentioned for CREDENTIAL is used. 
+When using a firewall protected Azure Storage Account, the error file is created in the same container specified in the storage account path. When considering using the *ERRORFILES* option in this scenario, it is also required to specify the *MAXERROR* parameter. If ERRORFILE has the full path of the storage account defined, then the ERRORFILE_CREDENTIAL is used to connect to that storage. Otherwise, the value mentioned for CREDENTIAL is used. 
 
 #### *ERRORFILE_CREDENTIAL = (IDENTITY= '', SECRET = '')*
 
@@ -723,7 +727,7 @@ When using a firewall protected Azure Storage Account, the error file will be cr
 
 *MAXERRORS* specifies the maximum number of reject rows allowed in the load before the COPY operation fails. Each row that the COPY operation can't import is ignored and counted as one error. If max_errors isn't specified, the default is 0.
 
-In Microsoft Fabric, *MAXERRORS* cannot be used when *FILE_TYPE* is 'PARQUET'. 
+In Microsoft Fabric, *MAXERRORS* cannot be used when *FILE_TYPE* is `PARQUET`. 
 
 #### *COMPRESSION = { 'Snappy' | 'GZIP' | 'NONE'}*
 
@@ -850,6 +854,10 @@ When using OneLake as the source, the user must have **Contributor** or higher p
 
 The COPY statement accepts only UTF-8 and UTF-16 valid characters for row data and command parameters. Source files or parameters (such as `ROW TERMINATOR` or `FIELD TERMINATOR`) that use invalid characters might be interpreted incorrectly by the COPY statement and cause unexpected results such as data corruption, or other failures. Make sure your source files and parameters are UTF-8 or UTF-16 compliant before you invoke the COPY statement.  
 
+To ensure reliable execution, the source files and folders must remain unchanged throughout the duration of the COPY INTO operation.
+- Modifying, deleting, or replacing any referenced files or folders while the command is running can cause the operation to fail or result in inconsistent data ingestion.
+- Before executing COPY INTO, verify that all source data is stable and will not be altered during the process.
+
 <a id="limitations-for-onelake-as-source-public-preview"></a>
 
 ## Limitations for OneLake as source
@@ -942,7 +950,7 @@ WITH (
 
 ### D. Load Parquet
 
-This example uses a wildcard to load all Parquet files under a folder using the executing user's EntraID.
+This example uses a wildcard to load all Parquet files under a folder using the executing user's Entra ID.
 
 ```sql
 COPY INTO test_parquet
@@ -993,7 +1001,7 @@ There are no limitations on the number or size of files; however, for best perfo
 
 ### What authentication method is used when I don't specify a credential?
 
-By default, `COPY INTRO` will use the executing user's Entra ID.
+By default, `COPY INTRO` uses the executing user's Entra ID.
 
 ## Related content
 

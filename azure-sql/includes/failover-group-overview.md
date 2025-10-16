@@ -44,7 +44,7 @@ _Setting your failover policy to customer managed is highly recommended_, as it 
 
 With a Microsoft managed failover policy, disaster recovery responsibility is delegated to the Azure SQL service. For the Azure SQL service to initiate a forced failover, the following conditions must be met:
 
-- Datacenter, availability zone, or region level outage caused by a natural disaster event, configuration changes, software bugs or hardware component failures and many databases in the region are impacted.  
+- Region level outage caused by a natural disaster event, configuration changes, software bugs or hardware component failures and many databases in the region are impacted.  
 - Grace period is expired. Because verifying the scale of, and mitigating, the outage depends on human actions, the grace period can't be set below one hour.
   
 When these conditions are met, the Azure SQL service initiates forced failovers for all failover groups in the region that have the failover policy set to Microsoft managed. 
