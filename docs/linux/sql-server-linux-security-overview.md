@@ -22,6 +22,7 @@ ms.custom:
 - Password expiration is hard-coded to 90 days if you use [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] authentication.
 - Using keys stored in the Azure Key Vault isn't supported in [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] CU 11 and earlier versions.
 - [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] generates its own self-signed certificate for encrypting connections. [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] can be configured to use a user provided certificate for TLS.
+- SQL Server on Linux deployments aren't FIPS compliant. 
 
 > [!NOTE]  
 > If you don't plan to connect your [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] containers to Windows Active Directory, the password expiration is hard-coded to 90 days, if you use [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] authentication only. To work around this issue, consider changing the [CHECK_EXPIRATION policy](../t-sql/statements/alter-login-transact-sql.md).
