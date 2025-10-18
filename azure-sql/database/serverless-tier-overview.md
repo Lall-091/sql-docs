@@ -4,7 +4,7 @@ description: This article describes the new serverless compute tier and compares
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: moslake, mathoma, dfurman, blakhani
-ms.date: 02/10/2025
+ms.date: 10/17/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: conceptual
@@ -190,7 +190,7 @@ Auto-resuming is triggered if any of the following conditions are true at any ti
 
 |Feature|Auto-resume trigger|
 |---|---|
-|Authentication and authorization|Login|
+|Authentication and authorization|Login attempt|
 |Threat detection|Enabling/disabling threat detection settings at the database or server level.<br>Modifying threat detection settings at the database or server level.|
 |Data discovery and classification|Adding, modifying, deleting, or viewing sensitivity labels|
 |Auditing|Viewing auditing records.<br>Updating or viewing auditing policy.|
