@@ -4,7 +4,7 @@ description: SQL Server audits consist of audit action items, which are recorded
 author: sravanisaluru
 ms.author: srsaluru
 ms.reviewer: vanto
-ms.date: 08/14/2025
+ms.date: 10/20/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
