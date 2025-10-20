@@ -21,7 +21,7 @@ helpviewer_keywords:
   
 -   Developers can create custom applications that include script. You can run script that makes calls to the Report Server Web service. Almost any operation that you can write in managed code can also be written in script.  
 
-- The `RS.exe` utility, a script host running on the report server, processes [!INCLUDE[msCoName] (../../includes/msconame-md.md)] [!INCLUDE[visual-basic](../../includes/visual-basic-md.md)] .NET script as the supported script language in [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)]. 
+- The `RS.exe` utility, a script host running on the report server, processes [!INCLUDE[visual-basic](../../includes/visual-basic-md.md)] .NET script as the supported script language in [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)]. 
   `
 ## Reporting Services SharePoint mode PowerShell cmdlets and samples   
 <!--:::image type="icon" source="/analysis-services/analysis-services/instances/install-windows/media/rs-powershellicon.jpg":::-->

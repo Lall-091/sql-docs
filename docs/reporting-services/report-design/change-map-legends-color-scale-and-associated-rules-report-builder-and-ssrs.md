@@ -142,7 +142,7 @@ f1_keywords:
   
 ##  <a name="ColorRanges"></a> Vary map element colors based on color ranges  
   
-1### Vary map element colors based on color ranges  
+### Vary map element colors based on color ranges  
   
 1.  In Design view, select the map until the **Map** pane appears.  
   

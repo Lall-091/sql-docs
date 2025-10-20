@@ -31,7 +31,7 @@ By default, the container wizard uses [!INCLUDE [sssql25-md](../../../includes/s
 Local SQL Server container in the MSSQL extension provides the following capabilities:
 
 - Create a local SQL Server container without writing Docker commands.
-- Choose from multiple SQL Server versions ([!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)] (default), [!INCLUDE [sssql22-md](../../../includes/sssql22-md.md)], [!INCLUDE [sssql19-md](../../../includes/sssql19-md.md)]), and [!INCLUDE [sssql17-md](../../../includes/sssql17-md.md)]).
+- Choose from multiple SQL Server versions ([!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)] (default), [!INCLUDE [sssql22-md](../../../includes/sssql22-md.md)], [!INCLUDE [sssql19-md](../../../includes/sssql19-md.md)], and [!INCLUDE [sssql17-md](../../../includes/sssql17-md.md)]).
 - Customize the container name, hostname, and port.
 - Automatically check Docker installation and running status before deployment.
 - Automatically assign an available port if 1433 is already in use.

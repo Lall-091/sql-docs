@@ -166,7 +166,7 @@ Adds an Extensible Key Management (EKM) provider credential to the login. For mo
 
 #### DROP CREDENTIAL
 
-Removes an Extensible Key Management (EKM) provider credential from the login. For more information, see [Extensible Key Management (EKM)] (../.. /relational-databases/security/encryption/extensible-key-management-ekm.md).
+Removes an Extensible Key Management (EKM) provider credential from the login. For more information, see [Extensible Key Management (EKM)](../../relational-databases/security/encryption/extensible-key-management-ekm.md).
 
 ## Remarks
 
