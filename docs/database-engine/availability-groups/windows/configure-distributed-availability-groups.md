@@ -431,7 +431,7 @@ This section provides the steps in a detailed example to fail over the distribut
 1. Wait until the status of the distributed availability group changes to `SYNCHRONIZED`. Run the following query on the global primary:
 
    ```sql
-   -- Run this query on the Global Primary and the forwarder
+   -- Run this query on the Global Primary
 
    -- Check the results to see if synchronization_state_desc is SYNCHRONIZED
    SELECT ag.name,
