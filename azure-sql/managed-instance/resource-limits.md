@@ -287,6 +287,7 @@ SQL Managed Instance currently supports deployment only on the following types o
 - [Free Trial](https://azure.microsoft.com/pricing/offers/ms-azr-0044p/)
 - [Azure For Students](https://azure.microsoft.com/pricing/offers/ms-azr-0170p/)
 - [Azure In Open](https://azure.microsoft.com/pricing/offers/ms-azr-0111p/)
+- [Azure plan](https://azure.microsoft.com/pricing/offers/ms-azr-0017g/)
 
 ## Regional resource limitations
 

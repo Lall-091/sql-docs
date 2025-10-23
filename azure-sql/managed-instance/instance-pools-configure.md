@@ -2,8 +2,8 @@
 title: Create Instance Pool
 titleSuffix: Azure SQL Managed Instance
 description: Learn how to create instance pools for Azure SQL Managed Instance, a feature that lets you share resources for multiple instances, and provides a convenient and cost-efficient way to migrate smaller SQL Server databases to the cloud at scale. Create your instance pool by using the Azure portal, PowerShell, or the Azure CLI.
-author: MariDjo
-ms.author: dmarinkovic
+author: MladjoA
+ms.author: mlandzic
 ms.reviewer: mathoma, randolphwest
 ms.date: 08/25/2025
 ms.service: azure-sql-managed-instance

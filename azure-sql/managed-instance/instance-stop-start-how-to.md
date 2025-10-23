@@ -117,7 +117,7 @@ Consider the following limitations:
 
 ## Prerequisites
 
-To use the instance stop and start feature, your instance must be in the General Purpose service tier.
+To use the instance stop and start feature, your instance must be in the General Purpose service tier. Users that have permission to manage the instance can stop and start the instance. To learn more, review [Azure permissions for Databases](/azure/role-based-access-control/permissions/databases#microsoftsql).
 
 Instances that don't meet the prerequisite have the stop and start controls disabled on the **Overview** page for the SQL managed instance resource in the Azure portal. Hovering over the control explains why the instance can't use the stop and start feature.
 

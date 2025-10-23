@@ -1,8 +1,8 @@
 ---
 title: "Add persistent log buffer to a database"
 description: "Explains how to add a persistent log buffer to a database in SQL Server 2016 and later. Provides Transact SQL examples."
-author: "briancarrig"
-ms.author: "brcarrig"
+author: dplessMSFT
+ms.author: dpless
 ms.reviewer: mikeray
 ms.date: "11/22/2024"
 ms.service: sql
@@ -128,7 +128,7 @@ ALTER DATABASE WideWorldImporters SET MULTI_USER;
 
 ## Interoperability with other PMEM features
 
-When both persistent log buffer and [Hybrid Buffer Pool](../../database-engine/configure-windows/hybrid-buffer-pool.md) are enabled, along with the start up [trace flag 809](../../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md), Hybrid Buffer Pool will operate in what is known as _Direct Write_ mode.
+When both persistent log buffer and [Hybrid Buffer Pool](../../database-engine/configure-windows/hybrid-buffer-pool.md) are enabled, along with the startup [trace flag 809](../../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md), Hybrid Buffer Pool will operate in what is known as _Direct Write_ mode.
 
 ## Back up and restore operations
 
