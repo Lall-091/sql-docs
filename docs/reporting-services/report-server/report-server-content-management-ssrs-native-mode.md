@@ -16,7 +16,7 @@ helpviewer_keywords:
   - "content management [Reporting Services]"
 ---
 # Report server content management (SSRS native mode)
-In [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)], content management refers to the management of report server items. All items can be managed independently of each other through properties and security settings. Any item can be moved to a different location in the report server folder namespace. To manage items effectively, you need to know which tasks a content manager performs. In SQL Server 2016 Reporting Services or later (SSRS) CTP 3.2, the [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] web portal is available. This article looks at the web portal and the new web portal experience.  
+In [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)], content management refers to the management of report server items. All items can be managed independently of each other through properties and security settings. Any item can be moved to a different location in the report server folder namespace. To manage items effectively, you need to know which tasks a content manager performs. In SQL Server 2016 Reporting Services or later (SSRS), the [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] web portal is available. This article looks at the web portal and the new web portal experience.  
   
 > [!NOTE]  
 > Content management is different from report server administration. For more information about how to manage the environment in which a report server runs, see [Reporting Services report server &#40;native mode&#41;](../../reporting-services/report-server/reporting-services-report-server-native-mode.md).  
@@ -47,7 +47,7 @@ Tools for managing report server content include [!INCLUDE[ssManStudio](../../in
  You can move report server items to different folder locations in the report server folder hierarchy. When you move an item, all properties, including security settings, move with the item to the new location. When you move a folder, all the items in the folder move with it.  
   
 > [!NOTE]  
->  For CTP 3.2, if you want to move the location of an item, you need to perform that action in the web portal.  
+> If you want to move the location of an item, you need to perform that action in the web portal.  
   
  In the web portal, the items that you can move are indicated in the folder hierarchy. The following image shows the icon for each movable item.  
   

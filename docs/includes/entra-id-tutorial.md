@@ -31,7 +31,7 @@ In this tutorial, you learn how to:
 - Access to Microsoft Entra ID is available for authentication purpose. For more information, see [Microsoft Entra authentication for SQL Server](../relational-databases/security/authentication-access/azure-ad-authentication-sql-server-overview.md).
 - [SQL Server Management Studio (SSMS)](../ssms/download-sql-server-management-studio-ssms.md) version 18.0 or higher is installed on the client machine.
 - A supported certificate.
-- [Network requirements for enabling Entra ID authentication](../sql-server/azure-arc/prerequisites.md#network-requirements-for-enabling-entra-id-authentication)
+- [Network requirements for enabling Entra ID authentication](../sql-server/azure-arc/prerequisites.md#network-requirements-for-enabling-microsoft-entra-authentication)
 
   Microsoft Entra ID supports CSP certificates. Entra ID doesn't support CNG certificates.
 
@@ -47,7 +47,7 @@ In this tutorial, you learn how to:
 > [!WARNING]  
 > Connections authenticated by Microsoft Entra ID are always encrypted. If SQL Server is using a self-signed certificate, you must add `trust server cert = true` in the connection string. SQL Server and Windows authenticated connections don't require encryption, but it's strongly recommended.
 >
-> SQL Server connects directly to Microsoft Entra ID for authentication. Either [explicit firewall URLs](../sql-server/azure-arc/prerequisites.md#network-requirements-for-enabling-entra-id-authentication) need to be opened for direct access, or use a proxy server. Microsoft Entra ID doesn't use the Arc Connected Machine Agent proxy for authentication. If the machine requires using a proxy server, Microsoft Entra ID requires that the machine-level WinHTTP proxy is set using the following commands (replace `<http://proxyserver:port>` with the appropriate value):
+> SQL Server connects directly to Microsoft Entra ID for authentication. Either [explicit firewall URLs](../sql-server/azure-arc/prerequisites.md#network-requirements-for-enabling-microsoft-entra-authentication) need to be opened for direct access, or use a proxy server. Microsoft Entra ID doesn't use the Arc Connected Machine Agent proxy for authentication. If the machine requires using a proxy server, Microsoft Entra ID requires that the machine-level WinHTTP proxy is set using the following commands (replace `<http://proxyserver:port>` with the appropriate value):
 >
 > ```console
 > netsh winhttp set proxy proxy-server="<http://proxyserver:port>"

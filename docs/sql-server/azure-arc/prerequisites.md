@@ -4,7 +4,7 @@ description: Describes prerequisites required for SQL Server enabled by Azure Ar
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest
-ms.date: 03/25/2025
+ms.date: 10/21/2025
 ms.topic: conceptual
 ms.custom: references_regions
 ---
@@ -15,7 +15,7 @@ ms.custom: references_regions
 
 An Azure Arc-enabled instance of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] is an instance on-premises or in a cloud provider that is connected to Azure Arc. This article explains those prerequisites.
 
-If your SQL Server VMs are on VMware clusters, review [Support on VMware](#support-on-vmware).
+If your SQL Server virtual machines are on VMware clusters, review [Support on VMware](#support-on-vmware).
 
 ## Before you deploy
 
@@ -70,7 +70,7 @@ Only databases that are online and updateable are included.
 
 Verify the state of any databases you plan to manage from Azure.
 
-This query lists all databases, their status, and if they are updateable:
+This query lists all databases, their status, and if they're updateable:
 
 ```sql
 SELECT 
@@ -98,9 +98,9 @@ For more information about this requirement, review [SQL Server service account]
 ### Set proxy exclusions
 
 > [!NOTE]
-> The exclusion in this section is required for the March, 2024 release and before.
+> The exclusion in this section is required for the March 2024 release and before.
 >
-> Beginning with the release in April, 2024 this exclusion is not required.
+> Beginning with the release in April 2024, this exclusion isn't required.
 
 If a proxy server is used, set the `NO_PROXY` environment variable to exclude proxy traffic for:
 
@@ -121,7 +121,7 @@ If a proxy server is used, set the `NO_PROXY` environment variable to exclude pr
 > [!NOTE]
 > You can't use Azure Private Link connections to the Azure Arc data processing service. See [Unsupported configurations](#unsupported-configurations).
 
-### Network requirements for enabling Entra ID authentication
+### Network requirements for enabling Microsoft Entra authentication
 
 [!INCLUDE [entra-id-authentication-prerequisites](includes/entra-id-authentication-prerequisites.md)]
 

@@ -14,7 +14,7 @@ ms.custom:
 You can use the Power BI Mobile app to consume Mobile Reports. There are a few things that you need to configure to allow the Power BI Mobile app to connect to Reporting Services.  
   
 -   [Mobile Reports require Reporting Services native mode](#nativemode)  
--   [Enable basic authentication for Reporting Services](#basicauth) (for CTP 3.2)  
+-   [Enable basic authentication for Reporting Services](#basicauth)  
 -   [Recommended to enable HTTPS along with a valid certificate trust for the client device](#https)  
 -   [Review firewall settings](#firewall)  
   

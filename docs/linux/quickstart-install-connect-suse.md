@@ -86,7 +86,7 @@ To install SUSE Linux Enterprise Server on your own machine, go to [https://www.
 
 For more information about support periods for SUSE versions, see [https://www.suse.com/lifecycle](https://www.suse.com/lifecycle).
 
-If you previously installed a community technology preview (CTP) or release candidate (RC) of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], you must first remove the old repository before following these steps. For more information, see [Configure repositories for installing and upgrading SQL Server on Linux](sql-server-linux-change-repo.md).
+If you previously installed a preview version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], you must first remove the old repository before following these steps. For more information, see [Configure repositories for installing and upgrading SQL Server on Linux](sql-server-linux-change-repo.md).
 
 > [!NOTE]  
 > At this time, the [Windows Subsystem for Linux](/windows/wsl/about) for Windows 10 or Windows 11 isn't supported as an installation target.

@@ -219,7 +219,7 @@ The Incremental Package Deployment feature lets you deploy one or more packages 
  For more info about this change and about the error column improvement, see the following updated blog post. [Error Column Improvements for SSIS Data Flow (Updated for CTP3.3)](https://techcommunity.microsoft.com/t5/sql-server-integration-services/error-column-improvements-for-ssis-data-flow-updated-for-rc2/ba-p/388253)  
   
 > [!NOTE]  
->  (In RC 0, this method has been moved to the new <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSComponentMetaData130> interface. For more info, see [New IDTSComponentMetaData130 interface in the API](#CMD130).)  
+> This method has been moved to the <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSComponentMetaData130> interface. For more info, see [New IDTSComponentMetaData130 interface in the API](#CMD130).
 
 ####  <a name="ServerLogLevel"></a> Support for server-wide default logging level  
  In SQL Server **Server Properties**, under the **Server logging level** property, you can now select a default server-wide logging level. You can pick from one of the built-in logging levels - basic, none, verbose, performance, or runtime lineage - or you can pick an existing customized logging level. The selected logging level applies to all packages deployed to the SSIS Catalog. It also applies by default to a SQL Agent job step that runs an SSIS package.  
@@ -239,7 +239,7 @@ The Incremental Package Deployment feature lets you deploy one or more packages 
  Save a commonly used control flow task or container to a standalone template file and reuse it multiple times in one or more packages in a project by using control flow templates. This reusability makes SSIS packages easier to design and maintain. For more info, see [Reuse Control Flow across Packages by Using Control Flow Package Parts](../integration-services/reuse-control-flow-across-packages-by-using-control-flow-package-parts.md).  
 
 ####  <a name="Parts"></a> New templates renamed as parts  
- The new reusable control flow templates released in CTP 3.0 have been renamed as control flow parts or package parts. For more info about this feature, see [Reuse Control Flow across Packages by Using Control Flow Package Parts](../integration-services/reuse-control-flow-across-packages-by-using-control-flow-package-parts.md).  
+ The new reusable control flow templates released in an earlier preview have been renamed as control flow parts or package parts. For more info about this feature, see [Reuse Control Flow across Packages by Using Control Flow Package Parts](../integration-services/reuse-control-flow-across-packages-by-using-control-flow-package-parts.md).  
 
 ## Connectivity  
 
@@ -248,9 +248,9 @@ The Incremental Package Deployment feature lets you deploy one or more packages 
 ####  <a name="ODatav4"></a> Support for OData v4 data sources  
  The OData Source and the OData Connection Manager now support the OData v3 and v4 protocols.  
   
--   For OData V3 protocol, the component supports the ATOM and JSON data formats .  
+-   For OData V3 protocol, the component supports the ATOM and JSON data formats.  
   
--   For OData V4 protocol, the component supports the JSON data format .  
+-   For OData V4 protocol, the component supports the JSON data format.  
   
  For more info, see [OData Source](../integration-services/data-flow/odata-source.md).  
 
@@ -264,7 +264,7 @@ The Incremental Package Deployment feature lets you deploy one or more packages 
   
 -   The Hadoop Connection Manager now supports both Basic and Kerberos authentication. For more info, see [Hadoop Connection Manager](../integration-services/connection-manager/hadoop-connection-manager.md).  
   
--   The HDFS File Source and the HDFS File Destination how support both Text and Avro format. For more info, see  [HDFS File Source](../integration-services/data-flow/hdfs-file-source.md) and  [HDFS File Destination](../integration-services/data-flow/hdfs-file-destination.md).  
+-   The HDFS File Source and the HDFS File Destination now support both Text and Avro format. For more info, see  [HDFS File Source](../integration-services/data-flow/hdfs-file-source.md) and  [HDFS File Destination](../integration-services/data-flow/hdfs-file-destination.md).  
   
 -   The Hadoop File System task now supports the CopyWithinHadoop option in addition to the CopyToHadoop and the CopyFromHadoop options. For more info, see [Hadoop File System Task](../integration-services/control-flow/hadoop-file-system-task.md).  
 

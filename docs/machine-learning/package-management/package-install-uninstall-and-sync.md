@@ -41,7 +41,7 @@ You must also enable the [package management feature](r-package-how-to-enable-or
 
 ### Determine whether your server supports package management
 
-This feature is available in SQL Server 2017 CTP 2 or later.
+This feature is available in [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and later versions.
 
 ### Enable the package management feature
 

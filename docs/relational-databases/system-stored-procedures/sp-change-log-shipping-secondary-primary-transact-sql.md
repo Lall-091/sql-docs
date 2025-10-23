@@ -1,20 +1,20 @@
 ---
 title: "sp_change_log_shipping_secondary_primary (Transact-SQL)"
-description: "Changes secondary database settings."
+description: Changes secondary database settings.
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 08/11/2025
+ms.date: 10/22/2025
 ms.service: sql
 ms.subservice: system-objects
-ms.topic: "reference"
+ms.topic: reference
 f1_keywords:
   - "sp_change_log_shipping_secondary_primary"
   - "sp_change_log_shipping_secondary_primary_TSQL"
 helpviewer_keywords:
   - "sp_change_log_shipping_secondary_primary"
 dev_langs:
-  - "TSQL"
+  - TSQL
 ---
 # sp_change_log_shipping_secondary_primary (Transact-SQL)
 
@@ -79,15 +79,16 @@ The username of the account used to access the monitor server.
 
 The password of the account used to access the monitor server.
 
-#### [ @monitor_connection_options = ] *'<key_value_pairs>;[...]'*
-**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] RC 0 and later
+#### [ @monitor_connection_options = ] '*<key_value_pairs>; [...]*'
 
-Specifies additional connectivity options for the linked server connection when utilizing a remote monitor, in the form of key value pairs. **@monitor_connection_options** is **nvarchar(4000)** and has the default of `NULL`. 
+**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions
+
+Specifies more connectivity options for the linked server connection when utilizing a remote monitor, in the form of key value pairs. *@monitor_connection_options* is **nvarchar(4000)** and has the default of `NULL`.
 
 The following table lists the available connectivity options:
 
-| `Key` | Value |
-|-----------|-----------------|
+| Key | Value |
+| --- | --- |
 | `Encrypt` | `strict`, `mandatory`, `optional`, `true`, `false` |
 | `TrustServerCertificate` | `true`, `false`, `yes`, `no` |
 | `ServerCertificate` | Path on the filesystem to the server certificate. This has a maximum length of 260 characters. |
@@ -103,7 +104,7 @@ None.
 
 ## Remarks
 
-`sp_change_log_shipping_secondary_primary` must be run from the `master` database on the secondary server. This stored procedure does the following:
+`sp_change_log_shipping_secondary_primary` must be run from the `master` database on the secondary server. This stored procedure does the following actions:
 
 1. Changes settings in `log_shipping_secondary` as necessary.
 
