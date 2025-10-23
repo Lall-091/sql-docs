@@ -3,8 +3,8 @@ title: Manage Licensing and Billing
 description: This article explains how to manage SQL Server licensing options. It also demonstrates how SQL Server enabled by Azure Arc can be billed from Microsoft Azure.
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mikeray, randolphwest, maghan
-ms.date: 10/21/2025
+ms.reviewer: mikeray, randolphwest, maghan, mathoma
+ms.date: 10/23/2025
 ms.topic: conceptual
 ---
 
@@ -14,7 +14,9 @@ This article explains how to manage licensing and billing of SQL Server enabled 
 
 The full range of the licensing options is described in the [SQL Server licensing guide (download link)](https://go.microsoft.com/fwlink/p/?linkid=2215573).
 
-## Licensing and billing in the production environment
+<a id="licensing-and-billing-in-the-production-environment"></a>
+
+## License and billing in the production environment
 
 You can use one of the following three licensing options. The links in the list take you to sections in this article that provide more details.
 
@@ -54,7 +56,7 @@ For each of these options, you have to decide how you want to pay for the licens
 
 <sup>1</sup> You already have a license with active Software Assurance or an active SQL Server subscription.
 
-<sup>2</sup> You own a perpetual license or use a Server+CAL license.
+<sup>2</sup> You own a perpetual license or use a free SQL Server edition.
 
 Your choice of payment option might affect your outsourcing options. For more information, see the [service-specific terms](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzure/eaeas#ServiceSpecificTerms) and the [Flexible Virtualization Benefit licensing guide](https://www.microsoft.com/licensing/docs/view/Virtualization).
 
@@ -83,31 +85,28 @@ The following license types are supported when you're licensing v-cores:
 | --- | --- | --- |
 | Pay-as-you-go | Subscribe to the Standard or Enterprise edition of the service and be billed on an hourly meter. See [SQL Server pricing and licensing](https://www.microsoft.com/sql-server/sql-server-2022-pricing). | `PAYG` |
 | License with Software Assurance | Bring your own Standard or Enterprise license with Software Assurance or a SQL Server subscription. Your software usage is reported through a free hourly meter according to the metering rules. See [Metering software usage](#usage-metering) later in this article. | `Paid` |
-| License only | You use a perpetual or Server+CAL license for the Standard or Enterprise edition, or you use the Developer, Evaluation, or Express edition. Your software usage is reported according to the metering rules. See [Metering software usage](#usage-metering) later in this article. | `LicenseOnly` |
+| License only | You use a perpetual license for Standard or Enterprise edition, or you use the free Developer, Evaluation, or Express editions. Your software usage is reported according to the metering rules. See [Metering software usage](#usage-metering) later in this article. | `LicenseOnly` |
 
 #### Important considerations
 
-- The pay-as-you-go subscription requires the hosting machine to be continuously connected to Azure.
+- The pay-as-you-go subscription requires the hosting machine to maintain connectivity with Azure. Hourly charges apply only when SQL Server is running on the machine during any part of an hour and the machine is online.
+   
+   Built-in resilience tolerates intermittent connectivity disruptions for up to 30 consecutive days without affecting billing accuracy. This means that as long as connectivity is not interrupted for more than 30 days, your billing remains correct—even if there are short, intermittent disconnections. If the machine stays disconnected for more than 30 days, the pay-as-you-go subscription expires, and you're no longer authorized to use the software.
 
-  Intermittent connectivity disruptions for up to 30 days are tolerated with built-in resilience. After 30 days without a connection, the pay-as-you-go subscription expires. After your subscription expires, you aren't authorized to use the software.
+- If you're using an Azure subscription managed by a Cloud Service Provider (CSP), enabling pay-as-you-go requires that you or the CSP consents to recurrent billing. For details, review [Manage recurrent billing for SQL Server enabled by Azure Arc with pay-as-you-go license](manage-pay-as-you-go-transition.md).
 
-- The pay-as-you-go hourly charges are issued only when SQL Server is running on the machine at any point within a particular hour, and if the machine is online.
-
-- You can configure recurrent billing. For details, review [Move SQL Server license agreement to pay-as-you-go subscription](manage-pay-as-you-go-transition.md).
-
-- By selecting a license with Software Assurance, you attest that you have Enterprise or Standard licenses with active Software Assurance or an active SQL Server subscription license.
+- By selecting a license with Software Assurance, you attest that you have Enterprise or Standard licenses with active Software Assurance or an active SQL Server subscription license, and that the device is in compliance with the [Product Terms outsourcing restrictions](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzure/allprograms#:~:text=When%20using%20SQL%20Server%20enabled%20by%20Azure%20Arc%20with%20a,%2C%20regardless%20of%20whether%20those%20Servers%20are%20dedicated%20to%20Customer).
 
 - For SQL Server Enterprise, Standard, or Web edition instances of SQL Server licensed from cloud service providers or hosting service providers using the Service Provider Licensing Agreement (SPLA), use `license only` for the license type.
 
-#### Available features
+#### Available benefits
 
-In addition to billing differences, the license type determines what features are available to your SQL Server instance.
+In addition to different billing methods, the license type determines which benefits are included.
 
 [!INCLUDE [license-types](includes/license-types.md)]
 
 > [!NOTE]  
->
-> - The license type is a required parameter when you install Azure Extension for SQL Server. Each supported onboarding method includes the license type options.
+> - The license type is a required parameter when you install the Azure Extension for SQL Server. Each supported onboarding method includes the license type options.
 > - [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] allows you to select the license type during setup. See [Install SQL Server from the Installation Wizard](../../database-engine/install-windows/install-sql-server-from-the-installation-wizard-setup.md#azure-extension-for-sql-server-2022).
 
 <a id="license-pcores-without-vms"></a>
@@ -286,9 +285,7 @@ The SQL Server associated services are represented and managed for licensing pur
 
 <a id="usage-metering"></a>
 
-<a id="metering-and-reporting-software-usage"></a>
-
-## Meter and reporting software usage
+## Metering and reporting software usage
 
 The usage of the SQL Server software is reported once an hour. The specific meter is automatically selected based on the SQL Server edition and the number v-cores or p-cores visible to the OSE. The following rules apply:
 

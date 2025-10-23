@@ -45,7 +45,7 @@ You can upgrade from [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)], [!IN
 
 - Upgrade from an Evaluation edition of a previous [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] version isn't supported.
 
-- When you upgrade from RC1 or previous versions of SQL Server 2016 to RC3 or later versions, PolyBase must be uninstalled before the upgrade and reinstalled after the upgrade.
+- When you upgrade from previous versions to SQL Server 2016, PolyBase must be uninstalled before the upgrade and reinstalled after the upgrade.
 
 ## Upgrades from earlier versions to SQL Server 2016
 

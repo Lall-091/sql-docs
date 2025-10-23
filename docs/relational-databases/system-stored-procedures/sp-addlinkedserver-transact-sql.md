@@ -463,14 +463,14 @@ With pass-through authentication, the security context of the local login is car
 
 ### J. Use Microsoft SQL Server OLE DB Provider version 19
 
-The following example creates a linked server named `SQLSales`, targeting a SQL Server named `LABSQL2025` with instance name `SQL2025CTP2`, using OLE DB version 19, Encryption is disabled.
+The following example creates a linked server named `SQLSales`, targeting a SQL Server named `LABSQL2025` with instance name `SQL2025`, using OLE DB version 19, encryption is disabled.
 
 ```sql
 EXECUTE sp_addlinkedserver
     @server = N'SQLSales',
     @srvproduct = N'',
     @provider = N'MSOLEDBSQL19',
-    @datasrc = N'LABSQL2025\SQL2025CTP2',
+    @datasrc = N'LABSQL2025\SQL2025',
     @provstr = N'Encrypt=No;';
 ```
 

@@ -8,11 +8,18 @@ ms.custom:
   - ignite-2023
 ---
 
-The following table identifies the features that are enabled for each license type:
+The following table identifies the capabilities and use rights offered with each license type:
 
-| Feature | License only <sup>1</sup> | License with Software Assurance<br />or SQL Server subscription | Pay-as-you-go |
+| Capability and use rights | License only | License with Software Assurance<br />or SQL Server subscription | Pay-as-you-go subscription |
 | --- | --- | --- | --- |
-| [Connect your SQL Server to Azure Arc](../connect.md) | Yes | Yes | Yes |
+| [Free new version upgrade](https://download.microsoft.com/download/9/3/d/93d32de6-f268-45ed-ba25-2f9a6756b6af/SQL_Server_2022_Licensing_guide.pdf) | No | Yes | Yes |
+| [High availability and disaster recovery benefit](https://download.microsoft.com/download/9/3/d/93d32de6-f268-45ed-ba25-2f9a6756b6af/SQL_Server_2022_Licensing_guide.pdf) | No | Yes | Yes |
+| [Unlimited virtualization with Enterprise edition](https://download.microsoft.com/download/9/3/d/93d32de6-f268-45ed-ba25-2f9a6756b6af/SQL_Server_2022_Licensing_guide.pdf) | No | Yes | Yes |
+| [Flexible Virtualization Benefit licensing guide](https://download.microsoft.com/download/9/3/d/93d32de6-f268-45ed-ba25-2f9a6756b6af/SQL_Server_2022_Licensing_guide.pdf)| No | Yes | Yes |
+| [Option to license by virtual machine](https://download.microsoft.com/download/9/3/d/93d32de6-f268-45ed-ba25-2f9a6756b6af/SQL_Server_2022_Licensing_guide.pdf) | No | Yes | Yes |
+| [Free Power BI Report Server license](../manage-license-billing.md#manage-ssxs) | Yes<sup>1</sup> | Yes | Yes |
+| [180-day dual-use benefit](https://download.microsoft.com/download/9/3/d/93d32de6-f268-45ed-ba25-2f9a6756b6af/SQL_Server_2022_Licensing_guide.pdf ) | No | Yes | Yes |
+| [Connect your SQL Server to Azure Arc](../connect.md)<sup>2</sup> | Yes | Yes | Yes |
 | [ESU Subscription](../extended-security-updates.md) | No | Yes | Yes |
 | [SQL Server inventory](../overview.md#manage-your-sql-server-instances-at-scale-from-a-single-point-of-control) | Yes | Yes | Yes |
 | [Best practices assessment](../assess.md) | No | Yes | Yes |
@@ -31,4 +38,5 @@ The following table identifies the features that are enabled for each license ty
 | [Client connection summary (preview)](../sql-monitoring.md) | No | Yes | Yes |
 | [Operate with least privilege](../configure-least-privilege.md) | Yes | Yes | Yes |
 
-<sup>1</sup> The license-only option includes SQL Server instances that are Developer, Express, Web, or Evaluation edition and instances that use a Server+CAL license.
+<sup>1</sup> For [!INCLUDE [sssql22-md](../../../includes/sssql22-md.md)] and earlier versions, the free Power BI Report Server license is limited to Enterprise Edition (EE) customers with Software Assurance (SA) or subscriptions. For [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)], the free Power BI Report Server license is available to both Standard Edition (SE) and Enterprise Edition (EE) customers with all license types.   
+<sup>2</sup> Connecting SQL Server to Azure Arc is subject to [outsourcing rules](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzure/allprograms#:~:text=Azure%20Arc%F0%9F%94%97-,Outsourcing,%2C%20regardless%20of%20whether%20those%20Servers%20are%20dedicated%20to%20Customer.,-Unlimited%20Virtualization).

@@ -216,7 +216,7 @@ The Incremental Package Deployment feature lets you deploy one or more packages 
   
  The method GetIdentificationStringByLineageID has been renamed to <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSComponentMetaData130.GetIdentificationStringByID%2A>. For more info, see [Column names for errors in the data flow](#ErrorColumn).  
   
- For more info about this change and about the error column improvement, see the following updated blog post. [Error Column Improvements for SSIS Data Flow (Updated for CTP3.3)](https://techcommunity.microsoft.com/t5/sql-server-integration-services/error-column-improvements-for-ssis-data-flow-updated-for-rc2/ba-p/388253)  
+ For more info about this change and about the error column improvement, see the following updated blog post. [Error Column Improvements for SSIS Data Flow (Updated for RC2)](https://techcommunity.microsoft.com/blog/ssis/error-column-improvements-for-ssis-data-flow-updated-for-rc2/388253).  
   
 > [!NOTE]  
 > This method has been moved to the <xref:Microsoft.SqlServer.Dts.Pipeline.Wrapper.IDTSComponentMetaData130> interface. For more info, see [New IDTSComponentMetaData130 interface in the API](#CMD130).

@@ -31,9 +31,6 @@ Search for vectors similar to a given query vectors using an approximate nearest
 
 This function is in preview and is subject to change. In order to use this feature, you must enable the `PREVIEW_FEATURES` [database scoped configuration](../statements/alter-database-scoped-configuration-transact-sql.md).
 
-> [!WARNING]  
-> The trace flags (466, 474, 13981) that were required in previous CTP version are no longer necessary and should be avoided, as their use will prevent vector index functionality from working correctly.
-
 Make sure to check out the [current limitations](#limitations) before using it.
 
 ## Syntax

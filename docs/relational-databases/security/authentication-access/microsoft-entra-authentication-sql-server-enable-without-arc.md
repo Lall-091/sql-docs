@@ -66,7 +66,7 @@ In this tutorial, you learn how to:
 ## Create and register a Microsoft Entra ID application
 
 - Go to the [Azure portal](https://portal.azure.com), select **Microsoft Entra ID** > **App Registrations** > **New Registration**.
-   1. Specify a name - The example in this article uses *SQLServerCTP1*.
+   1. Specify a name - The example in this article uses *SQLServer*.
    1. Select **Supported account types** and use **Accounts in this organization directory only**
    1. Don't set a redirect URI
    1. Select **Register**

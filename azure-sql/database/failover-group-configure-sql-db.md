@@ -502,6 +502,7 @@ The following table lists specific permission scopes for Azure SQL Database:
 
 Be aware of the following limitations:
 
+- Failover groups can only be created between logical servers in the same [Microsoft Entra tenant](/entra/fundamentals/what-is-entra).
 - Failover groups can't be created between two servers in the same Azure region.
 - Failover groups support geo-replication of all databases in the group to only one secondary logical server in a different region.
 - Failover groups can't be renamed. You'll need to delete the group and re-create it with a different name.
