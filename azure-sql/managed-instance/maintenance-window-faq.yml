@@ -10,7 +10,7 @@ metadata:
   ms.author: wiassaf
   ms.reviewer: scottkim, mathoma, urosmil
   ms.custom: azure-sql-split
-  ms.date: 06/25/2025
+  ms.date: 10/23/2025
   monikerRange: "=azuresql||=azuresql-mi"
 
 title: Maintenance window FAQ for Azure SQL Managed Instance
@@ -142,6 +142,10 @@ sections:
       - question: Is there a scenario where I don't get notification about planned event?
         answer: |
           Yes, in case that you have created a new resource, executed scaling operation, or changed maintenance window, your SQL managed instance can end up on the machine that is already scheduled for upgrade. In this case, you are notified only when deployment window starts and ends. For all future deployments, you will get advance notification about planned events.
+
+          The other scenario when [Maintenance notifications](advance-notifications.md) aren't sent is when instances are in a stopped state. The result is:
+          - An incomplete sequence of notifications. For example, an *advanced notification* isn't sent, while an *in progress notification* is sent.
+          - SQL Managed Instance is missing from the list of affected resources in the notification content.
           
       - question: Can I check if my instance has been upgraded in the last X days?
         answer: |
