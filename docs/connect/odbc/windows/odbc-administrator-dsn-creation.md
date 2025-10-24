@@ -65,6 +65,8 @@ Specifies that the driver authenticate to SQL Server using a login ID and passwo
 
 ### With Active Directory Password authentication
 
+**ActiveDirectoryPassword is deprecated.** Migrate to multifactor authentication (ActiveDirectoryInteractive) for user principals. For more information, see [Planning for mandatory multifactor authentication for Azure](/entra/identity/authentication/concept-mandatory-multifactor-authentication).
+
 Specifies that the driver authenticate to SQL Server using a Microsoft Entra login ID and password.
 
 ### With Active Directory Interactive authentication

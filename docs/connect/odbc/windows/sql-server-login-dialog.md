@@ -45,11 +45,11 @@ If you use a trusted connection, you can specify a service principal name (SPN) 
 
 ### Login ID
 
-Specifies the SQL Server or Microsoft Entra login ID to use for the connection if **Authentication Mode** is set to **SQL Server**, **Active Directory Password**, **Active Directory Interactive**, **Managed Service Identity**, or **Active Directory Service Principal**. Otherwise, the **Login ID** box is disabled.
+Specifies the SQL Server or Microsoft Entra login ID to use for the connection if **Authentication Mode** is set to **SQL Server**, **Active Directory Password [DEPRECATED]**, **Active Directory Interactive**, **Managed Service Identity**, or **Active Directory Service Principal**. Otherwise, the **Login ID** box is disabled.
 
 ### Password
 
-Specifies the password for the SQL Server or Microsoft Entra login ID used for the connection if **Authentication Mode** is set to **SQL Server** or **Active Directory Password**. Otherwise, the **Password** box is disabled.
+Specifies the password for the SQL Server or Microsoft Entra login ID used for the connection if **Authentication Mode** is set to **SQL Server** or **Active Directory Password [DEPRECATED]**. Otherwise, the **Password** box is disabled.
 
 ### Options
 
