@@ -4,7 +4,7 @@ description: Query Store can be configured to monitor and tuning workloads on se
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 10/06/2025
+ms.date: 10/23/2025
 ms.service: sql
 ms.subservice: performance
 ms.topic: concept-article
@@ -16,7 +16,7 @@ monikerRange: ">=sql-server-ver16"
 ---
 # Query Store for readable secondaries
 
-[!INCLUDE [sqlserver2025-asdb](../../includes/applies-to-version/sqlserver2025-asdb.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi](../../includes/applies-to-version/sqlserver2025-asdb-asmi.md)]
 
 Query Store for readable secondaries enables Query Store insights for workloads that run on secondary replicas. When enabled, secondary replicas stream query execution information (such as runtime and wait statistics) to the primary replica, where the data is persisted in Query Store and made visible across all replicas.
 
@@ -38,6 +38,9 @@ For Azure SQL Database, Query Store for readable secondaries supports the follow
 - General purpose with [active geo-replication](/azure/azure-sql/database/active-geo-replication-overview) (no built-in high availability replicas; requires geo-replication configuration for secondary support)
 - Premium (includes built-in high availability replicas; active geo-replication also supported)
 - Business critical (includes built-in high availability replicas; active geo-replication also supported)
+- [Azure SQL Managed Instance with the Always-up-to-date policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy)
+  - General purpose with a [failover group](/azure/azure-sql/managed-instance/failover-group-sql-mi)
+  - Business critical (includes built-in high availability replicas)
 
 > [!NOTE]
 > [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] existing and newly created databases are automatically enrolled and enabled to support the Query Store for readable secondaries feature on supported service tiers.

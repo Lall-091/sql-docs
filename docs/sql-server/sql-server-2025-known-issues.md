@@ -4,7 +4,7 @@ description: "Known issues, causes, and workarounds for SQL Server 2025 Preview 
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 10/14/2025
+ms.date: 10/23/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: troubleshooting-known-issue
@@ -125,7 +125,9 @@ Consider a database enabled to use the [Query Store for readable secondaries](..
 
 ```sql
 ALTER DATABASE [Database_Name]
-    SET QUERY_STORE (OPERATION_MODE = READ_WRITE);
+    FOR SECONDARY
+    SET QUERY_STORE = ON
+    (OPERATION_MODE = READ_WRITE);
 ```
 
 Queries that meet the following conditions could experience an access violation when a PSP [query variant](../relational-databases/performance/parameter-sensitive-plan-optimization.md#query-variant) can't determine the persisted state of its parent dispatcher statement:
@@ -145,7 +147,7 @@ ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY
 
 ## Vector index
 
-Currently, when you create a vector index on some datasets, it may return the following errors:
+Currently, when you create a vector index on some datasets, it might return the following errors:
 
 - Error 9829: `STRING_AGG aggregation result exceeded the limit of 8000 bytes. Use LOB types to avoid result truncation.`
 - 42234: `Internal SQL error during DiskANN graph build`
