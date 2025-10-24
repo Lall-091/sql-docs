@@ -29,10 +29,6 @@ Connection properties to support Microsoft Entra authentication in the Microsoft
   - **ActiveDirectoryIntegrated**
     - Since driver version 6.0, `authentication=ActiveDirectoryIntegrated` can be used to connect to Azure SQL/Synapse Analytics via integrated authentication. To use this authentication mode, you must [federate](/azure/active-directory/hybrid/connect/whatis-fed) the on-premises Active Directory Federation Services (ADFS) with Microsoft Entra ID in the cloud. Once you set it up, you can connect by either adding the native library `mssql-jdbc_auth-<version>-<arch>.dll` to the application class path on Windows, or by setting up a Kerberos ticket for cross-platform authentication support. You're able to access Azure SQL/Azure Synapse Analytics without being prompted for credentials when you're logged in to a domain-joined machine. For more information, see [Connect using ActiveDirectoryIntegrated authentication mode](#connect-using-activedirectoryintegrated-authentication-mode).
 
-  - **ActiveDirectoryPassword [DEPRECATED]**
-    - ActiveDirectoryPassword is deprecated. Migrate to multifactor authentication (ActiveDirectoryInteractive) for user principals. For more information, see [Planning for mandatory multifactor authentication for Azure](/entra/identity/authentication/concept-mandatory-multifactor-authentication).
-    - Since driver version 6.0, `authentication=ActiveDirectoryPassword` can be used to connect to Azure SQL/Synapse Analytics with Microsoft Entra username and password. For more information, see [Connect using ActiveDirectoryPassword authentication mode](#connect-using-activedirectorypassword-authentication-mode).
-
   - **ActiveDirectoryInteractive**
     - Since driver version 9.2, `authentication=ActiveDirectoryInteractive` can be used to connect to an Azure SQL/Synapse Analytics via interactive authentication flow (multifactor authentication). For more information, see [Connect using ActiveDirectoryInteractive authentication mode](#connect-using-activedirectoryinteractive-authentication-mode).
 
@@ -41,10 +37,14 @@ Connection properties to support Microsoft Entra authentication in the Microsoft
 
   - **ActiveDirectoryServicePrincipalCertificate**
     - Since driver version 12.4, `authentication=ActiveDirectoryServicePrincipalCertificate` can be used to connect to an Azure SQL Database/Synapse Analytics by specifying the application/client ID in the userName property and the location of the Service Principal certificate in the `clientCertificate` property. For more information, see [Connect using ActiveDirectoryServicePrincipalCertificate authentication mode](#connect-using-activedirectoryserviceprincipalcertificate-authentication-mode).
+  - **ActiveDirectoryPassword [DEPRECATED]**
+    - ActiveDirectoryPassword is deprecated. Migrate to multifactor authentication (ActiveDirectoryInteractive) for user principals. For more information, see [Planning for mandatory multifactor authentication for Azure](/entra/identity/authentication/concept-mandatory-multifactor-authentication).
+    - Since driver version 6.0, `authentication=ActiveDirectoryPassword` can be used to connect to Azure SQL/Synapse Analytics with Microsoft Entra username and password. For more information, see [Connect using ActiveDirectoryPassword authentication mode](#connect-using-activedirectorypassword-authentication-mode).
+
   - **SqlPassword**
     - Use `authentication=SqlPassword` to connect to a SQL Server using userName/user and password properties.
   - **NotSpecified**
-    - Use `authentication=NotSpecified` or leave it as the default when none of these authentication methods are needed.
+    - The default value when none of these authentication methods are specified.
   - **accessToken**: Use this connection property to connect to a SQL Database with access token. `accessToken` can only be set using the Properties parameter of the `getConnection()` method in the DriverManager class. It can't be used in the connection URL.
 
 For more information, see the authentication property on the [Setting the Connection Properties](setting-the-connection-properties.md) page.
@@ -289,7 +289,7 @@ You have successfully logged on as: <your domain user name>
 
 ### Set Kerberos ticket on Windows, Linux And macOS
 
-You must up a Kerberos ticket to link your current user to a Windows domain account. Following is a summary of the key steps.
+You must set up a Kerberos ticket to link your current user to a Windows domain account. Following is a summary of the key steps.
 
 #### Windows
 
@@ -360,7 +360,7 @@ Access to a Windows domain-joined machine to query your Kerberos Domain Controll
 ## Connect using ActiveDirectoryPassword authentication mode
 
 > [!NOTE]  
-> ActiveDirectoryPassword is **deprecated**. Migrate to multifactor authentication (ActiveDirectoryInteractive) for user principals. For more information, see [Planning for mandatory multifactor authentication for Azure](/entra/identity/authentication/concept-mandatory-multifactor-authentication).
+> ActiveDirectoryPassword is deprecated. Migrate to multifactor authentication (ActiveDirectoryInteractive) for user principals. For more information, see [Planning for mandatory multifactor authentication for Azure](/entra/identity/authentication/concept-mandatory-multifactor-authentication).
 
 The following example shows how to use `authentication=ActiveDirectoryPassword` mode.
 

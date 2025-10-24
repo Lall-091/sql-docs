@@ -28,7 +28,7 @@ Microsoft Entra authentication uses identities in Microsoft Entra ID to access d
 
 When you set the `Authentication` connection property in the connection string, the client can choose a preferred Microsoft Entra authentication mode according to the value provided:
 
-- The earliest **Microsoft.Data.SqlClient** version supports `Active Directory Password` **[DEPRECATED]** for .NET Framework, .NET Core, and .NET Standard. It also supports `Active Directory Integrated` authentication and `Active Directory Interactive` authentication for .NET Framework.
+- The earliest **Microsoft.Data.SqlClient** version supports `Active Directory Password` [DEPRECATED] for .NET Framework, .NET Core, and .NET Standard. It also supports `Active Directory Integrated` authentication and `Active Directory Interactive` authentication for .NET Framework.
 - Starting with **Microsoft.Data.SqlClient** 2.0.0, support for `Active Directory Integrated` authentication and `Active Directory Interactive` authentication is extended across .NET Framework, .NET Core, and .NET Standard.
 
   A new `Active Directory Service Principal` authentication mode is also added in SqlClient 2.0.0. It makes use of the client ID and secret of a service principal identity to accomplish authentication.
@@ -44,7 +44,6 @@ When the application is connecting to Azure SQL data sources by using Microsoft 
 
 | Value | Description  | Microsoft.Data.SqlClient version |
 |:--|:--|:--:|
-| Active Directory Password **[DEPRECATED]** | Authenticate with a Microsoft Entra identity's username and password.<br/><br/>**Active Directory Password is deprecated**. Migrate to multifactor authentication (Active Directory Interactive) for user principals. For more information, see [Planning for mandatory multifactor authentication for Azure](/entra/identity/authentication/concept-mandatory-multifactor-authentication). | 1.0+ |
 | Active Directory Integrated | Authenticate with a Microsoft Entra identity by using Integrated Windows Authentication (IWA) | 2.0.0+<sup>1</sup> |
 | Active Directory Interactive | Authenticate with a Microsoft Entra identity by using interactive authentication | 2.0.0+<sup>1</sup> |
 | Active Directory Service Principal | Authenticate with a Microsoft Entra service principal, using its client ID and secret | 2.0.0+ |
@@ -52,6 +51,7 @@ When the application is connecting to Azure SQL data sources by using Microsoft 
 | Active Directory Managed Identity, <br>Active Directory MSI | Authenticate using a Microsoft Entra system-assigned or user-assigned managed identity | 2.1.0+ |
 | Active Directory Default | Authenticate with a Microsoft Entra identity by using password-less and non-interactive mechanisms including managed identities, Visual Studio Code, Visual Studio, Azure CLI, etc. | 3.0.0+ |
 | Active Directory Workload Identity | Authenticate with a Microsoft Entra identity by using a federated User Assigned Managed Identity to connect to SQL Database from Azure client environments that are enabled for Workload Identity. | 5.2.0+ |
+| Active Directory Password [DEPRECATED] | Authenticate with a Microsoft Entra identity's username and password.<br/><br/>Active Directory Password is deprecated. Migrate to multifactor authentication (Active Directory Interactive) for user principals. For more information, see [Planning for mandatory multifactor authentication for Azure](/entra/identity/authentication/concept-mandatory-multifactor-authentication). | 1.0+ |
 
 <sup>1</sup> Before **Microsoft.Data.SqlClient** 2.0.0, `Active Directory Integrated`, and `Active Directory Interactive` authentication modes are supported only on .NET Framework.
 
@@ -335,7 +335,7 @@ The following example displays how to use a custom callback when `Active Directo
 
 [!code-csharp [AADAuthenticationCustomDeviceFlowCallback#1](~/../sqlclient/doc/samples/AADAuthenticationCustomDeviceFlowCallback.cs#1)]
 
-With a customized `ActiveDirectoryAuthenticationProvider` class, a user-defined application client ID can be passed to SqlClient when a supported Microsoft Entra authentication mode is in use. Supported Microsoft Entra authentication modes include `Active Directory Password` **[DEPRECATED]**, `Active Directory Integrated`, `Active Directory Interactive`, `Active Directory Service Principal`, and `Active Directory Device Code Flow`.
+With a customized `ActiveDirectoryAuthenticationProvider` class, a user-defined application client ID can be passed to SqlClient when a supported Microsoft Entra authentication mode is in use. Supported Microsoft Entra authentication modes include `Active Directory Integrated`, `Active Directory Interactive`, `Active Directory Service Principal`, `Active Directory Device Code Flow`, and `Active Directory Password` [DEPRECATED].
 
 The application client ID is also configurable via `SqlAuthenticationProviderConfigurationSection` or `SqlClientAuthenticationProviderConfigurationSection`. The configuration property `applicationClientId` applies to .NET Framework 4.6+ and .NET Core 2.1+.
 

@@ -31,7 +31,7 @@ You can select the following authentication options from the dropdown list:
 | --- | --- |
 | **SQL Server** | Authenticate using SQL username and password. |
 | **Windows Integrated** | Authenticate to SQL Server using the currently logged-in user's Windows account credentials. |
-| **Active Directory Password** | Username and password authentication with a Microsoft Entra identity. |
+| **Active Directory Password** | [DEPRECATED] Username and password authentication with a Microsoft Entra identity. |
 | **Active Directory Integrated** | Integrated Windows authentication through Microsoft Entra ID. This mode is used for Windows authentication in Active Directory environments federated with Microsoft Entra ID. |
 | **Active Directory Interactive** | Interactive authentication with a Microsoft Entra identity. This mode supports Microsoft Entra multifactor authentication. |
 | **Managed Service Identity** | Authenticate with a Microsoft Entra managed identity. |
