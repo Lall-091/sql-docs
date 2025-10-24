@@ -26,7 +26,7 @@ To use Microsoft Entra ID, use the **Authentication** or **AccessToken** keyword
 ||A byte string|The Microsoft Entra access token extracted from an OAuth JSON response. The connection string must not contain user ID, password, or the `Authentication` keyword (requires ODBC Driver version 17 or above in Linux or macOS). |
 |**Authentication**|Not set (default)|Authentication mode determined by other keywords. For more information, see [Connection Options](connection-options.md). |
 ||`SqlPassword`|Directly authenticate to a SQL Server instance (which may be an Azure instance) using a username and password. The username and password must be passed into the connection string using the **UID** and **PWD** keywords. |
-||`ActiveDirectoryPassword` **DEPRECATED**| _**ActiveDirectoryPassword is deprecated**_. Migrate to multifactor authentication (ActiveDirectoryInteractive) for user principals. For more information, see [Planning for mandatory multifactor authentication for Azure](/entra/identity/authentication/concept-mandatory-multifactor-authentication).<br/>Authenticate with a Microsoft Entra identity using a username and password. The username and password must be passed into the connection string using the **UID** and **PWD** keywords. |
+||`ActiveDirectoryPassword`|Authenticate with a Microsoft Entra identity using a username and password. The username and password must be passed into the connection string using the **UID** and **PWD** keywords. |
 ||`ActiveDirectoryMsi`|Authenticate using either a Microsoft Entra system-assigned user-assigned managed identity (requires ODBC Driver version 17.3.1.1 or above). For an overview and tutorials, refer to [What are managed identities for Azure resources?](/azure/active-directory/managed-identities-azure-resources/overview).|
 ||`ActiveDirectoryServicePrincipal`|Authenticate using service principal objects (requires ODBC Driver version 17.7 or above). For more details and examples, refer to [Application and service principal objects in Microsoft Entra ID](/azure/active-directory/develop/app-objects-and-service-principals).|
 
@@ -37,9 +37,6 @@ The **Authentication** keyword affects the connection security settings. If it i
 On Windows, the underlying ODBC driver supports one more value for the **Authentication** keyword, **ActiveDirectoryIntegrated**, but the PHP drivers do not support this value on any platform.
 
 ## Example - connect using SqlPassword and ActiveDirectoryPassword
-
-> [!NOTE]
-> ActiveDirectoryPassword is deprecated. Migrate to multifactor authentication (ActiveDirectoryInteractive) for user principals. For more information, see [Planning for mandatory multifactor authentication for Azure](/entra/identity/authentication/concept-mandatory-multifactor-authentication).
 
 ```php
 <?php
