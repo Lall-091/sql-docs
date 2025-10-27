@@ -51,6 +51,7 @@ The following table summarizes the availability and enabled state of optimized l
 | [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] | Yes | Yes (always enabled) |
 | [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)] | Yes | Yes (always enabled) |
 | [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]<sup>[AUTD](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy)</sup> | Yes | Yes (always enabled) |
+| [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]<sup>[2025](/azure/azure-sql/managed-instance/update-policy#sql-server-2025-update-policy)</sup> | Yes | Yes (always enabled) |
 | [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]<sup>[2022](/azure/azure-sql/managed-instance/update-policy#sql-server-2022-update-policy)</sup> | No | N/A |
 | [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] | Yes | No (can be enabled per database) |
 | [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and older versions | No | N/A |
