@@ -97,7 +97,7 @@ Each node in the cluster must have an appropriate subscription for RHEL and the 
    sudo subscription-manager repos --enable=rhel-8-for-x86_64-highavailability-rpms
    ```
 
-   **RHEL 9 and later versions**
+   **RHEL 9**
 
    ```bash
    sudo subscription-manager repos --enable=rhel-9-for-x86_64-highavailability-rpms
@@ -129,8 +129,8 @@ Node level fencing ensures that a node doesn't run any resources. This is done b
 
 For information about fencing a failed node, see the following articles:
 
-- [Pacemaker Clusters from Scratch](https://clusterlabs.org/pacemaker/doc/deprecated/en-US/Pacemaker/1.1/html/Clusters_from_Scratch/index.html)
-- [Fencing and STONITH](https://clusterlabs.org/pacemaker/doc/crm_fencing.html)
+- [Clusters from Scratch](https://clusterlabs.org/projects/pacemaker/doc/3.0/Clusters_from_Scratch/singlehtml/)
+- [Fencing and STONITH](https://clusterlabs.org/projects/pacemaker/doc/3.0/Clusters_from_Scratch/singlehtml/#document-fencing)
 - [Red Hat High Availability Add-On with Pacemaker: Fencing](https://docs.redhat.com/documentation/red_hat_enterprise_linux/9/html/configuring_and_managing_high_availability_clusters/assembly_configuring-fencing-configuring-and-managing-high-availability-clusters)
 
 > [!NOTE]  
