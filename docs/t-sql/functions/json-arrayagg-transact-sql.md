@@ -4,7 +4,7 @@ description: JSON_ARRAYAGG constructs a JSON array from an aggregation of SQL da
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: umajay, jovanpop, randolphwest
-ms.date: 07/23/2025
+ms.date: 10/27/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -17,7 +17,7 @@ f1_keywords:
 helpviewer_keywords:
   - "JSON_ARRAYAGG function"
 dev_langs:
-  - "TSQL"
+  - TSQL
 monikerRange: "=sql-server-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
 ---
 # JSON_ARRAYAGG (Transact-SQL)
@@ -26,20 +26,21 @@ monikerRange: "=sql-server-ver17 || =azuresqldb-current || =azuresqldb-mi-curren
 
 Constructs a JSON array from an aggregation of SQL data or columns. `JSON_ARRAYAGG` can also be used in a `SELECT` statement with `GROUP BY GROUPING SETS` clause.
 
-To create a JSON object from an aggregate instead, use [JSON_OBJECTAGG](json-objectagg-transact-sql.md).
-
 > [!NOTE]  
-> Both **json** aggregate functions `JSON_OBJECTAGG` and `JSON_ARRAYAGG` are: 
-> -  generally available for Azure SQL Database, Azure SQL Managed Instance (with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy)**), SQL database in Microsoft Fabric, and Fabric Data Warehouse.
-> - in preview for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
+> To create a JSON object from an aggregate instead, use [JSON_OBJECTAGG](json-objectagg-transact-sql.md).
 
+Both **json** aggregate functions `JSON_OBJECTAGG` and `JSON_ARRAYAGG` are:
+
+- generally available for Azure SQL Database, Azure SQL Managed Instance (with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy)**), SQL database in Microsoft Fabric, and Fabric Data Warehouse.
+
+- in preview for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ## Syntax
 
 ```syntaxsql
-JSON_ARRAYAGG (value_expression [ order_by_clause ] [ json_null_clause ] )
+JSON_ARRAYAGG (value_expression [ order_by_clause ] [ json_null_clause ] [ RETURNING json ] )
 
 json_null_clause ::=  NULL ON NULL | ABSENT ON NULL
 
@@ -59,6 +60,10 @@ Optional. *json_null_clause* can be used to control the behavior of `JSON_ARRAYA
 #### *order_by_clause*
 
 Optional. The order of elements in the resulting JSON array can be specified to order the input rows to the aggregate.
+
+## Return value
+
+Returns a valid JSON array string of **nvarchar(max)** type. If the `RETURNING json` option is included then the JSON array is returned as **json** type.
 
 ## Examples
 
@@ -121,7 +126,7 @@ GROUP BY c.object_id;
 **Result**
 
 | object_id | column_list |
-| :--- | :--- |
+| --- | --- |
 | 3 | `["rsid","rscolid","hbcolid","rcmodified","ti","cid","ordkey","maxinrowlen","status","offset","nullbit","bitpos","colguid","ordlock"]` |
 | 5 | `["rowsetid","ownertype","idmajor","idminor","numpart","status","fgidfs","rcrows","cmprlevel","fillfact","maxnullbit","maxleaf","maxint","minleaf","minint","rsguid","lockres","scope_id"]` |
 | 6 | `["id","subid","partid","version","segid","cloneid","rowsetid","dbfragid","status"]` |
@@ -147,7 +152,7 @@ GROUP BY GROUPING SETS((id), (type), (id, type), ());
 **Result**
 
 | id | type | total_amount | json_total_name_amount |
-| :--- | :--- | :--- | :--- |
+| --- | --- | --- | --- |
 | 1 | a | 2 | `[2]` |
 | `NULL` | a | 2 | `[2]` |
 | 1 | b | 7 | `[4,3]` |
@@ -158,8 +163,22 @@ GROUP BY GROUPING SETS((id), (type), (id, type), ());
 | 1 | `NULL` | 9 | `[3,4,2]` |
 | 2 | `NULL` | 16 | `[9,7]` |
 
+### Example 6
+
+The following example returns a JSON array as **json** type.
+
+```sql
+SELECT JSON_ARRAYAGG(1 RETURNING JSON);
+```
+
+**Result**
+
+```json
+[1]
+```
+
 ## Related content
 
-- [JSON Path Expressions](../../relational-databases/json/json-path-expressions-sql-server.md)
+- [JSON Path Expressions in the SQL Database Engine](../../relational-databases/json/json-path-expressions-sql-server.md)
 - [JSON data in SQL Server](../../relational-databases/json/json-data-sql-server.md)
 - [JSON_OBJECTAGG (Transact-SQL)](json-objectagg-transact-sql.md)

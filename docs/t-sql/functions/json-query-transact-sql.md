@@ -4,7 +4,7 @@ description: JSON_QUERY extracts an object or an array from a JSON string.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: jovanpop, umajay, randolphwest
-ms.date: 07/23/2025
+ms.date: 10/27/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -20,7 +20,7 @@ helpviewer_keywords:
   - "JSON, querying"
   - "JSON_QUERY function"
 dev_langs:
-  - "TSQL"
+  - TSQL
 monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
 # JSON_QUERY (Transact-SQL)
@@ -36,7 +36,7 @@ To extract a scalar value from a JSON string instead of an object or an array, s
 ## Syntax
 
 ```syntaxsql
-JSON_QUERY ( expression [ , path ] [WITH ARRAY WRAPPER])
+JSON_QUERY ( expression [ , path ] [ WITH ARRAY WRAPPER ] )
 ```
 
 ## Arguments
@@ -53,7 +53,7 @@ A JSON path that specifies the object or the array to extract.
 
 In [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], you can provide a variable as the value of *path*.
 
-The JSON path can specify lax or strict mode for parsing. If you don't specify the parsing mode, lax mode is the default. For more info, see [JSON Path Expressions](../../relational-databases/json/json-path-expressions-sql-server.md).
+The JSON path can specify lax or strict mode for parsing. If you don't specify the parsing mode, lax mode is the default. For more info, see [JSON Path Expressions in the SQL Database Engine](../../relational-databases/json/json-path-expressions-sql-server.md).
 
 The default value for *path* is `$`. As a result, if you don't provide a value for *path*, `JSON_QUERY` returns the input *expression*.
 
@@ -61,19 +61,19 @@ If the format of *path* isn't valid, `JSON_QUERY` returns an error.
 
 #### *WITH ARRAY WRAPPER*
 
-> [!NOTE]
-> `WITH ARRAY WRAPPER` is currently in preview and only available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. 
+> [!NOTE]  
+> `WITH ARRAY WRAPPER` is currently in preview and only available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
 
 The ANSI SQL `JSON_QUERY` function is currently used to return a JSON object or array in a specified path. With the support for [array wildcards](../../relational-databases/json/json-path-expressions-sql-server.md#array-wildcard-and-range-support) in SQL/JSON path expression introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], `JSON_QUERY` can be used to return specified properties of elements in a JSON array where each element is a JSON object. Since wildcard searches can return multiple values, specify the `WITH ARRAY WRAPPER` clause in a JSON query expression along with a SQL/JSON path expression with wildcard or range or list to return the values as a JSON array. `WITH ARRAY WRAPPER` clause is supported only if the input is a **json** type.
 
 Consider the following JSON document:
 
 ```sql
-declare @j JSON = '{
+DECLARE @j AS JSON = '{
     "id": 2,
     "first_name": "Mamie",
     "last_name": "Baudassi",
-    "email": "mbaudassi1@abc.net.au",
+    "email": "mbaudassi1@example.com",
     "gender": "Female",
     "ip_address": "148.199.129.123",
     "credit_cards": [
@@ -156,7 +156,7 @@ Consider the following JSON text:
 }
 ```
 
-The following table compares the behavior of `JSON_QUERY` in lax mode and in strict mode. For more info about the optional path mode specification (lax or strict), see [JSON Path Expressions](../../relational-databases/json/json-path-expressions-sql-server.md).
+The following table compares the behavior of `JSON_QUERY` in lax mode and in strict mode. For more info about the optional path mode specification (lax or strict), see [JSON Path Expressions in the SQL Database Engine](../../relational-databases/json/json-path-expressions-sql-server.md).
 
 | Path | Return value in lax mode | Return value in strict mode | More info |
 | --- | --- | --- | --- |
@@ -205,7 +205,8 @@ FOR JSON PATH;
 The following example shows the use of `WITH ARRAY WRAPPER` with the `JSON_QUERY` function to return multiple elements from a JSON array:
 
 ```sql
-DECLARE @j JSON = ' {"id":2,"first_name":"Mamie","last_name":"Baudassi","email":"mbaudassi1@abc.net.au","gender":"Female","ip_address":"148.199.129.123","credit_cards":[{"type":"jcb","card#":"3545138777072343","currency":"Koruna"},{"type":"diners-club-carte-blanche","card#":"30282304348533","currency":"Dong"},{"type":"jcb","card#":"3585303288595361","currency":"Yuan Renminbi"},{"type":"maestro","card#":"675984450768756054","currency":"Rupiah"},{"type":"instapayment","card#":"6397068371771473","currency":"Euro"}]}
+DECLARE @j JSON = '
+{"id":2, "first_name":"Mamie", "last_name":"Baudassi", "email":"mbaudassi1@example.com", "gender":"Female", "ip_address":"148.199.129.123", "credit_cards":[ {"type":"jcb", "card#":"3545138777072343", "currency":"Koruna"}, {"type":"diners-club-carte-blanche", "card#":"30282304348533", "currency":"Dong"}, {"type":"jcb", "card#":"3585303288595361", "currency":"Yuan Renminbi"}, {"type":"maestro", "card#":"675984450768756054", "currency":"Rupiah"}, {"type":"instapayment", "card#":"6397068371771473", "currency":"Euro"}]}
 ';
 SELECT JSON_QUERY(@j, '$.credit_cards[*].type' WITH ARRAY WRAPPER ) as credit_card_types;
 ```
@@ -220,5 +221,5 @@ credit_card_types
 
 ## Related content
 
-- [JSON Path Expressions](../../relational-databases/json/json-path-expressions-sql-server.md)
+- [JSON Path Expressions in the SQL Database Engine](../../relational-databases/json/json-path-expressions-sql-server.md)
 - [JSON data in SQL Server](../../relational-databases/json/json-data-sql-server.md)

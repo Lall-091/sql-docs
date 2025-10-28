@@ -4,13 +4,13 @@ description: Creates a JSON index on a specified table and column in [!INCLUDE [
 author: uc-msft
 ms.author: umajay
 ms.reviewer: randolphwest
-ms.date: 05/26/2025
+ms.date: 10/27/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: language-reference
-monikerRange: ">=sql-server-2016"
 ms.custom:
   - build-2025
+monikerRange: ">=sql-server-2016"
 ---
 # CREATE JSON INDEX (Transact-SQL)
 
@@ -47,7 +47,8 @@ CREATE JSON INDEX name ON table_name (json_column_name)
 
 <json_index_option> ::=
 {
-    FILLFACTOR = fillfactor
+    OPTIMIZE_FOR_ARRAY_SEARCH = { ON | OFF }
+  | FILLFACTOR = fillfactor
   | DROP_EXISTING = { ON | OFF }
   | ONLINE = OFF
   | ALLOW_ROW_LOCKS = { ON | OFF }
@@ -106,6 +107,10 @@ The fully qualified or non-fully qualified object to be indexed.
 - ***table_name***
 
   The name of the table to be indexed.
+
+#### OPTIMIZE_FOR_ARRAY_SEARCH = { ON | OFF }
+
+Specifies if array searches are optimized in the JSON index. The default is `OFF`.
 
 #### FILLFACTOR = *fillfactor*
 
@@ -183,7 +188,7 @@ Overrides the `max degree of parallelism` configuration option for the duration 
 | `>1` | Restricts the maximum number of processors used in a parallel index operation to the specified number or fewer based on the current system workload. |
 | `0` (default) | Uses the actual number of processors or fewer based on the current system workload. |
 
-For more information, see [Configure Parallel Index Operations](../../relational-databases/indexes/configure-parallel-index-operations.md).
+For more information, see [Configure parallel index operations](../../relational-databases/indexes/configure-parallel-index-operations.md).
 
 Parallel index operations aren't available in every edition of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 
@@ -222,7 +227,8 @@ Searching operations on JSON documents contained in a **json** column in a table
 The following examples use the `Sales.SalesOrderHeader` table in the [!INCLUDE [sssampledbobject-md](../../includes/sssampledbobject-md.md)] database with a **json** column called `Info`. The `Info` column is created as a **json** type. A JSON index is also created on the `Info` column with default settings. The following code sample shows the `CREATE JSON INDEX` statement:
 
 ```sql
-CREATE JSON INDEX sales_info_idx ON Sales.SalesOrderHeader(Info);
+CREATE JSON INDEX sales_info_idx
+    ON Sales.SalesOrderHeader (Info);
 ```
 
 For the sample search expressions, use the following JSON documents as data:
@@ -326,8 +332,14 @@ The following example creates a table named `docs` that contains a **json** type
 ```sql
 DROP TABLE IF EXISTS docs;
 
-CREATE TABLE docs (content JSON, id INT PRIMARY KEY);
-CREATE JSON INDEX json_content_index ON docs(content);
+CREATE TABLE docs
+(
+    content JSON,
+    id INT PRIMARY KEY
+);
+
+CREATE JSON INDEX json_content_index
+    ON docs (content);
 ```
 
 ### A. Create a JSON index on a JSON column with specific paths
@@ -338,11 +350,41 @@ The example also sets the index FILLFACTOR to `80`.
 ```sql
 DROP TABLE IF EXISTS docs;
 
-CREATE TABLE docs (content JSON, id INT PRIMARY KEY);
+CREATE TABLE docs
+(
+    content JSON,
+    id INT PRIMARY KEY
+);
 
 CREATE JSON INDEX json_content_index
-    ON docs(content) FOR ('$.a', '$.b')
-    WITH (FILLFACTOR = 80);
+    ON docs (content)
+    FOR ('$.a', '$.b') WITH (FILLFACTOR = 80);
+```
+
+### B. JSON index with array search optimization
+
+The following example returns JSON indexes for the table `dbo.Customers`. The JSON index is created with the array search optimization option enabled.
+
+```sql
+DROP TABLE IF EXISTS dbo.Customers;
+
+CREATE TABLE dbo.Customers
+(
+    customer_id INT IDENTITY PRIMARY KEY,
+    customer_info JSON NOT NULL
+);
+
+CREATE JSON INDEX CustomersJsonIndex
+    ON dbo.Customers (customer_info) WITH (OPTIMIZE_FOR_ARRAY_SEARCH = ON);
+
+INSERT INTO dbo.Customers (customer_info)
+VALUES ('{"name":"customer1", "email": "customer1@example.com", "phone":["123-456-7890", "234-567-8901"]}');
+
+SELECT object_id,
+       index_id,
+       optimize_for_array_search
+FROM sys.json_indexes AS ji
+WHERE object_id = OBJECT_ID('dbo.Customers');
 ```
 
 ## Related content
