@@ -11687,6 +11687,10 @@ items:
         href: relational-databases/system-catalog-views/sys-triggers-transact-sql.md
       - name: sys.vector_indexes
         href: relational-databases/system-catalog-views/sys-vector-indexes-transact-sql.md
+      - name: sys.json_indexes
+        href: relational-databases/system-catalog-views/sys-json-indexes-transact-sql.md
+      - name: sys.json_index_paths
+        href: relational-databases/system-catalog-views/sys-json-index-paths-transact-sql.md
       - name: sys.views
         href: relational-databases/system-catalog-views/sys-views-transact-sql.md
     - name: Partition Function

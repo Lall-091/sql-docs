@@ -4,13 +4,13 @@ description: The JSON_CONTAINS function searches for a SQL value in a path in a 
 author: uc-msft
 ms.author: umajay
 ms.reviewer: randolphwest
-ms.date: 05/19/2025
+ms.date: 10/27/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: language-reference
-monikerRange: " >=sql-server-2016"
 ms.custom:
   - build-2025
+monikerRange: ">=sql-server-2016"
 ---
 # JSON_CONTAINS (Transact-SQL)
 
@@ -18,15 +18,15 @@ ms.custom:
 
 Searches for a SQL value in a path in a JSON document.
 
-> [!NOTE]
-> The `JSON_CONTAINS` function is currently in preview and only available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. 
+> [!NOTE]  
+> The `JSON_CONTAINS` function is currently in preview and only available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ## Syntax
 
 ```syntaxsql
-JSON_CONTAINS( target_expression , search_value_expression [ , path_expression ] )
+JSON_CONTAINS( target_expression , search_value_expression [ , path_expression ]  [ , search_mode ] )
 ```
 
 ## Arguments
@@ -43,11 +43,15 @@ An expression that returns a SQL scalar value or **json** type value to search i
 
 A SQL/JSON path that specifies the search target in the JSON document. This parameter is optional.
 
-You can provide a variable as the value of *path*. The JSON path can specify lax or strict mode for parsing. If you don't specify the parsing mode, lax mode is the default. For more info, see [JSON Path Expressions](../../relational-databases/json/json-path-expressions-sql-server.md).
+You can provide a variable as the value of *path*. The JSON path can specify lax or strict mode for parsing. If you don't specify the parsing mode, lax mode is the default. For more info, see [JSON Path Expressions in the SQL Database Engine](../../relational-databases/json/json-path-expressions-sql-server.md).
 
 The default value for *path* is `$`. As a result, if you don't provide a value for *path*, `JSON_CONTAINS` searches for the value in the entire JSON document.
 
 If the format of *path* isn't valid, `JSON_CONTAINS` returns an error.
+
+#### *search_mode*
+
+Indicates if the search mode for the value should use an equality or LIKE predicate semantics. This parameter only applies when the *search_value_expression* is a character string value. The default value for *search_mode* is 0, which indicates equality predicate semantics. If the *search_mode* is 1, then it indicates that LIKE predicate semantics should be used.
 
 ## Return value
 
@@ -71,7 +75,7 @@ The `JSON_CONTAINS` function follows these rules for searching if a value is con
 
 Using the `JSON_CONTAINS` function has the following limitations:
 
-- The **json** type isn't supported as search value. 
+- The **json** type isn't supported as search value.
 - The JSON object or array returned from `JSON_QUERY` isn't supported as search value.
 - The path parameter is currently required.
 - If the SQL/JSON path points to an array then wildcard is required in the SQL/JSON path expression. Automatic array unwrapping is currently only at the first level.
@@ -80,7 +84,6 @@ JSON index support includes the `JSON_CONTAINS` predicate and the following oper
 
 - Comparison operators (`=`)
 - `IS [NOT] NULL` predicate (not currently supported)
-
 
 ## Examples
 
@@ -174,8 +177,25 @@ is_value_found
 1
 ```
 
+### F. Search for a SQL character string value in a JSON path using a wildcard pattern
+
+The following example shows how to search for a SQL character string value using a pattern in a JSON array in a JSON path.
+
+```sql
+DECLARE @j AS JSON = '{"a": 1, "b": 2, "c": {"d": 4, "ce":["dd"]}, "d": [1, 3, {"df": [89]}, false], "e":null, "f":true}';
+
+SELECT json_contains(@j, 'dd', '$.c.ce[*]') AS is_value_found;
+```
+
+[!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
+
+```output
+is_value_found
+--------
+1
+```
 
 ## Related content
 
-- [JSON Path Expressions](../../relational-databases/json/json-path-expressions-sql-server.md)
+- [JSON Path Expressions in the SQL Database Engine](../../relational-databases/json/json-path-expressions-sql-server.md)
 - [JSON data in SQL Server](../../relational-databases/json/json-data-sql-server.md)
