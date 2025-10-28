@@ -4,7 +4,7 @@ description: This article explains different targets for Extended Events session
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: dfurman, randolphwest
-ms.date: 10/13/2025
+ms.date: 10/27/2025
 ms.service: sql
 ms.subservice: xevents
 ms.topic: conceptual
@@ -416,6 +416,29 @@ value   count
 10144      49
  5244      44
  2396      28
+```
+
+Here's an example of reading the data from a `histogram` target with T-SQL:
+
+```sql
+WITH
+histogram_target AS
+(
+SELECT TRY_CAST(st.target_data AS xml) AS target_data
+FROM sys.dm_xe_sessions AS s
+INNER JOIN sys.dm_xe_session_targets AS st
+ON s.address = st.event_session_address
+WHERE s.name = 'event-session-name-placeholder'
+),
+histogram AS
+(
+SELECT hb.slot.value('(@count)[1]', 'bigint') AS slot_count,
+       hb.slot.value('(value/text())[1]', 'nvarchar(max)') AS slot_value
+FROM histogram_target AS ht
+CROSS APPLY ht.target_data.nodes('/HistogramTarget/Slot') AS hb(slot)
+)
+SELECT slot_value, slot_count
+FROM histogram;
 ```
 
 ## event_counter target
