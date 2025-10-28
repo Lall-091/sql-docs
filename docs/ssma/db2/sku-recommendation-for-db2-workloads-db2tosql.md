@@ -4,7 +4,7 @@ description: Learn how to use the builtin SKU sizing recommendation engine to ge
 author: subhojit-msft
 ms.author: subasak
 ms.reviewer: randolphwest
-ms.date: 09/17/2025
+ms.date: 10/27/2025
 ms.service: sql
 ms.subservice: ssma
 ms.topic: how-to
@@ -77,7 +77,7 @@ The report includes:
   - Azure SQL Database: Based on compatibility and performance needs
 
 > [!NOTE]  
-> This SKU recommendation is based on performance and resource usage data. It doesn't take feature compatibility such as XA/DTC transactions into account. Evaluate these aspects individually before selecting the appropriate SKU.
+> SKU recommendations are based on performance and resource usage data only. They don't account for feature compatibility (for example, XA/DTC transactions). Review these requirements separately before choosing a SKU. Also, Storage estimates can differ between Db2 and Azure SQL due to varying compression mechanisms. The final storage footprint, and associated cost, can vary slightly from the source system.
 
 ## Related content
 
