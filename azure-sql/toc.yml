@@ -623,11 +623,9 @@
       items:
       - name: Connect and run ad hoc queries
         items:
-        - name: Azure Data Studio
-          href: /azure-data-studio/quickstart-sql-database
         - name: Azure portal query editor
           href: database/query-editor.md
-        - name: VS Code
+        - name: Visual Studio Code
           href: database/connect-query-vscode.md
       - name: Connect and query from apps
         items:

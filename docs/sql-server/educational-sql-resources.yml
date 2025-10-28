@@ -42,8 +42,6 @@ landingContent:
             url: https://aka.ms/sqlworkshops
       - linkListType: quickstart
         links:
-          - text: Connect & query with Azure Data Studio
-            url: ../azure-data-studio/quickstart-sql-server.md
           - text: Connect & query with SSMS
             url: ../ssms/quickstarts/ssms-connect-query-sql-server.md
           - text: Writing Transact-SQL (T-SQL)

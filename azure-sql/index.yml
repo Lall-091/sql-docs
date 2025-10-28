@@ -157,8 +157,6 @@ landingContent:
             url: database/connect-query-ssms.md
           - text: Visual Studio Code with the MSSQL extension
             url: https://aka.ms/mssql-marketplace
-          - text: Azure Data Studio
-            url: /azure-data-studio/quickstart-sql-database?toc=/azure/azure-sql/toc.json
           - text: Azure portal
             url: database/connect-query-portal.md 
           - text: Visual Studio (.NET)
@@ -190,8 +188,6 @@ landingContent:
           url: /sql/ssms/download-sql-server-management-studio-ssms
         - text: Visual Studio Code 
           url: https://code.visualstudio.com/download
-        - text: Azure Data Studio 
-          url: /azure-data-studio/download-azure-data-studio
         - text: SQL Server Data Tools 
           url: /sql/ssdt/download-sql-server-data-tools-ssdt
         - text: Visual Studio

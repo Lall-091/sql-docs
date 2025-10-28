@@ -39,7 +39,7 @@ sections:
         answer: |
          - Track usage throughout the month with the "Free amount remaining" Azure Metric. For more information, see [Monitor and track service usage](free-offer.md#monitor-and-track-service-usage).
          - Review the Azure SQL Database serverless [auto-pause troubleshooting article](/azure/azure-sql/database/serverless-tier-overview?tabs=general-purpose#auto-pause-troubleshooting) for tips on saving vCore seconds. 
-         - Disconnect querying tools such as [Azure Data Studio](/azure-data-studio/download-azure-data-studio) and [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms), including the Object Explorer, when you're done using them. Leaving connections open can continue to consume credits by preventing auto-pause.
+         - Disconnect querying tools such as [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms), including the Object Explorer, when you're done using them. Leaving connections open can continue to consume credits by preventing auto-pause.
 
       - question: Can I restore a database to a free offer database?
         answer: |

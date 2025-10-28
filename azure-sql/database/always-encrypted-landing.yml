@@ -100,8 +100,6 @@ landingContent:
         links:
           - text: Query columns using Always Encrypted with SQL Server Management Studio
             url: /sql/relational-databases/security/encryption/always-encrypted-query-columns-ssms
-          - text: Query columns using Always Encrypted with Azure Data Studio
-            url: /sql/relational-databases/security/encryption/always-encrypted-query-columns-ads
 
 
   # Card

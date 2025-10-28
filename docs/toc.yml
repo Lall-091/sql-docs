@@ -7863,8 +7863,6 @@ items:
           items:
           - name: Query columns using Always Encrypted with SSMS
             href: relational-databases/security/encryption/always-encrypted-query-columns-ssms.md
-          - name: Query columns using Always Encrypted with Azure Data Studio
-            href: relational-databases/security/encryption/always-encrypted-query-columns-ads.md
         - name: Migrate sensitive data protected with Always Encrypted
           items:
           - name: Export and import
@@ -8159,8 +8157,6 @@ items:
   items:
   - name: Overview
     href: tools/overview-sql-tools.md
-  - name: Azure Data Studio >
-    href: azure-data-studio/index.yml
   - name: SSMS >
     href: /ssms/ssms-21/release-notes-21
   - name: Command prompt utilities
@@ -9210,8 +9206,6 @@ items:
         href: linux/sql-server-linux-start-stop-restart-sql-server-services.md
       - name: Use SSMS to manage
         href: linux/sql-server-linux-manage-ssms.md
-      - name: Use Azure Data Studio to manage
-        href: /azure-data-studio/quickstart-sql-server
       - name: Use Windows PowerShell
         href: linux/sql-server-linux-manage-powershell.md
       - name: Use PowerShell Core
@@ -9749,8 +9743,6 @@ items:
         href: big-data-cluster/cluster-manage-notebooks.md
     - name: Monitor
       items:
-      - name: Monitor with Azure Data Studio
-        href: big-data-cluster/cluster-monitor-ads.md
       - name: Monitor with cmdlet
         href: big-data-cluster/cluster-monitor-cmdlet.md
       - name: Monitor with notebooks

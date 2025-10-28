@@ -147,11 +147,9 @@ landingContent:
         links:
         - text: SQL Server Management Studio (SSMS)
           url: /sql/ssms/download-sql-server-management-studio-ssms
-        - text: Azure Data Studio 
-          url: /azure-data-studio/download-azure-data-studio
         - text: SQL Server Data Tools 
           url: /sql/ssdt/download-sql-server-data-tools-ssdt
-        - text: Visual Studio 2019
+        - text: Visual Studio 2022
           url: https://visualstudio.microsoft.com/downloads/
       - linkListType: reference
         links:
