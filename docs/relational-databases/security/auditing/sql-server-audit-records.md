@@ -4,7 +4,7 @@ description: SQL Server audits consist of audit action items, which are recorded
 author: sravanisaluru
 ms.author: srsaluru
 ms.reviewer: vanto
-ms.date: 08/14/2025
+ms.date: 10/20/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
@@ -64,8 +64,8 @@ Audits consist of zero or more audit action items, which are recorded to an audi
 | **data_sensitivity_information** | **Applies to**: Azure SQL Database only<br /><br />Information types and sensitivity labels returned by the audited query, based on the classified columns in the database. Learn more about [Azure SQL Database data discover and classification](/azure/azure-sql/database/data-discovery-and-classification-overview) | **nvarchar(4000)** | No |
 | **host_name** | Host name of the client connection | **nvarchar(128)** | No |
 | **session_context** | Session context information for the connection | **nvarchar(4000)** | No |
-| **client_tls_version** | TLS version number used by the client connection | **int** | No |
-| **client_tls_version_name** | TLS version name used by the client connection | **nvarchar(128)** | No |
+| **client_tls_version** | **Applies to**: SQL Server 2022 and later<br /><br />TLS version number used by the client connection | **int** | No |
+| **client_tls_version_name** | **Applies to**: SQL Server 2022 and later<br /><br />TLS version name used by the client connection | **nvarchar(128)** | No |
 | **database_transaction_id** | Database transaction identifier | **bigint** | No |
 | **ledger_start_sequence_number** | **Applies to**: SQL Server 2022 and later<br /><br />Ledger start sequence number for ledger operations | **bigint** | No |
 | **external_policy_permissions_checked** | External policy permissions that were checked during the operation | **nvarchar(4000)** | No |

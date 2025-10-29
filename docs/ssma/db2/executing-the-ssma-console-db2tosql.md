@@ -637,6 +637,93 @@ Or
    sql-files="<folder-name>\*.sql" />
 ```
 
+## Execute SSMA console in parallel
+
+The SSMA console utility can be executed in parallel through scripting, by specifying the database name and corresponding folder path as input parameters. In the following example, the databases `SAMPLE1`, `SAMPLE2`, and `SAMPLE3`, with their respective folder paths, are supplied as input to the script.
+
+```txt
+SAMPLE1,C:\folder path\SSMA Project1
+SAMPLE2,C:\folder path\SSMA Project2
+SAMPLE3,C:\folder path\SSMA Project3
+```
+
+The following sample PowerShell script enables parallel execution of the SSMA console.
+
+```powershell
+$baseFolder = "C:\folder path\folder1"
+$ssmaExe = "C:\folder path\SSMAforDb2Console.exe"
+$databaselistPath = Join-Path $baseFolder "Databaselist.txt"
+$conversionXmlTemplate = Join-Path $baseFolder "ConversionAndDataMigrationSample.xml"
+$variableXmlTemplate = Join-Path $baseFolder "VariableValueFileSample.xml"
+
+# Read all entries
+$entries = Get-Content $databaselistPath | Where-Object { $_.Trim() -ne "" }
+
+# Prepare the entries
+$preparedEntries = foreach ($entry in $entries) {
+    $parts = $entry -split ","
+    $dbName = $parts[0].Trim()
+    $workingFolder = $parts[1].Trim()
+    if ($dbNameCounts.ContainsKey($dbName)) {
+        $dbNameCounts[$dbName]++
+        $suffix = "_{0:D2}" -f $dbNameCounts[$dbName]
+        $fileDbName = "$dbName$suffix"
+    }
+    else {
+        $dbNameCounts[$dbName] = 0
+        $fileDbName = $dbName
+    }
+    [PSCustomObject]@{
+        DbName        = $dbName
+        WorkingFolder = $workingFolder
+        FileDbName    = $fileDbName
+    }
+}
+
+# Run in parallel
+$preparedEntries | ForEach-Object -Parallel {
+    $dbName = $_.DbName
+    $workingFolder = $_.WorkingFolder
+    $fileDbName = $_.FileDbName
+
+    # Update ConversionAndDataMigrationSample.xml
+    $convTree = [xml](Get-Content $using:conversionXmlTemplate)
+    $convTree.SelectNodes("//initial-catalog") | ForEach-Object { $_.SetAttribute("value", $dbName) }
+    $conversionXmlPath = Join-Path $using:baseFolder "ConversionAndDataMigrationSample_$fileDbName.xml"
+    $convTree.Save($conversionXmlPath)
+	
+    # Update VariableValueFileSample.xml
+    $varTree = [xml](Get-Content $using:variableXmlTemplate)
+    $nodes = $varTree.SelectNodes('//variable[@name="$WorkingFolder$"]')
+    if ($nodes.Count -eq 0) {
+        Write-Host "No variable node found for `$WorkingFolder$"
+    }
+    else {
+        $nodes | ForEach-Object { $_.value = $workingFolder }
+    }
+    $nodes2 = $varTree.SelectNodes('//variable[@name="$Db2InitialCatalog$"]')
+    if ($nodes2.Count -eq 0) {
+        Write-Host "No variable node found for `$Db2InitialCatalog$"
+    }
+    else {
+        $nodes2 | ForEach-Object { $_.value = $dbName }
+    }
+    $variableXmlPath = Join-Path $using:baseFolder "VariableValueFileSample_$fileDbName.xml"
+    $varTree.Save($variableXmlPath)
+
+    # Prepare output/error file paths
+    $outputFile = Join-Path $using:baseFolder "ssma_output_$fileDbName.txt"
+    $errorFile = Join-Path $using:baseFolder "ssma_error_$fileDbName.txt"
+
+    # Prepare argument list
+    $arguments = "-s `"$conversionXmlPath`" -v `"$variableXmlPath`""
+
+    # Run SSMA console
+    Start-Process -FilePath $using:ssmaExe -ArgumentList $arguments -RedirectStandardOutput $outputFile -RedirectStandardError $errorFile -Wait
+    Write-Host "Executed command: `"$using:ssmaExe`" $arguments"
+}
+```
+
 ## Related content
 
 - [Command line options in SSMA console (Db2ToSQL)](command-line-options-in-ssma-console-db2tosql.md)
