@@ -4,7 +4,7 @@ description: This quickstart describes installing Python, and mssql-python then 
 author: dlevy-msft-sql
 ms.author: dlevy
 ms.reviewer: vanto, randolphwest
-ms.date: 10/06/2025
+ms.date: 10/30/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: quickstart-sdk
@@ -16,7 +16,9 @@ ms.custom:
 
 In this quickstart, you connect a Python script to a database that you created and loaded with sample data. You use the `mssql-python` driver for Python to connect to your database and perform basic operations, like reading and writing data.
 
-[mssql-python documentation](https://github.com/microsoft/mssql-python/wiki) | [mssql-python source code](https://github.com/microsoft/mssql-python/wiki) | [Package (PyPi)](https://pypi.org/project/mssql-python/)
+The `mssql-python` driver doesn't require any external dependencies on Windows machines. The driver installs everything that it needs with a single `pip` install, allowing you to use the latest version of the driver for new scripts without breaking other scripts that you don't have time to upgrade and test.
+
+[mssql-python documentation](https://github.com/microsoft/mssql-python/wiki) | [mssql-python source code](https://github.com/microsoft/mssql-python/wiki) | [Package (PyPi)](https://pypi.org/project/mssql-python/) | [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## Prerequisites
 
@@ -27,6 +29,8 @@ In this quickstart, you connect a Python script to a database that you created a
   - Prefer to not use your own environment? Open as a devcontainer using [GitHub Codespaces](https://github.com/features/codespaces).
 
     [:::image type="icon" source="https://github.com/codespaces/badge.svg":::](https://codespaces.new/github/codespaces-blank?quickstart=1)
+
+- [(Optional) Azure Command-Line Interface (CLI)](/cli/azure/install-azure-cli)
 
 - A database on SQL Server, Azure SQL Database, or SQL database in Fabric with the [!INCLUDE [sssampledbobject-md](../../../includes/sssampledbobject-md.md)] sample schema and a valid connection string.
 
@@ -47,48 +51,48 @@ Get the [`mssql-python` package](https://pypi.org/project/mssql-python/) from Py
 
    ### [Windows](#tab/windows)
 
-   ```bash
+   ```console
    pip install mssql-python
    ```
 
    ### [Alpine](#tab/alpine-linux)
 
-   ```bash
+   ```console
    apk add libtool krb5-libs krb5-dev
    pip install mssql-python
    ```
 
    ### [Debian/Ubuntu](#tab/debianUbuntu-linux)
 
-   ```bash
+   ```console
    apt-get install -y libltdl7 libkrb5-3 libgssapi-krb5-2
    pip install mssql-python
    ```
 
    ### [RHEL](#tab/RHEL-linux)
 
-   ```bash
+   ```console
    dnf install -y libtool-ltdl krb5-libs
    pip install mssql-python
    ```
 
    ### [SUSE](#tab/SUSE-linux)
 
-   ```bash
+   ```console
    zypper install -y libltdl7 libkrb5-3 libgssapi-krb5-2
    pip install mssql-python
    ```
 
    ### [openSUSE](#tab/openSUSE-linux)
 
-   ```bash
+   ```console
    zypper install -y libltdl7
    pip install mssql-python
    ```
 
    ### [macOS](#tab/mac)
 
-   ```bash
+   ```console
    brew install openssl
    pip install mssql-python
    ```
@@ -101,7 +105,7 @@ Get the [`python-dotenv`](https://pypi.org/project/python-dotenv/) from PyPI.
 
 1. In the same directory, install the `python-dotenv` package.
 
-   ```bash
+   ```console
    pip install python-dotenv
    ```
 
@@ -111,7 +115,7 @@ You can use the PyPI command-line tool to verify that your intended packages are
 
 1. Check the list of installed packages with `pip list`.
 
-   ```bash
+   ```console
    pip list
    ```
 
@@ -224,9 +228,12 @@ Use a SQL query string to execute a query and parse the results.
 
 1. **Save** the `app.py` file.
 
+> [!TIP]  
+> To use Microsoft Entra Authentication in macOS, you need to be logged in by running `az login` via the [Azure Command-Line Interface (CLI)](/cli/azure/install-azure-cli).
+
 1. Open a terminal and test the application.
 
-   ```bash
+   ```console
    python app.py
    ```
 
@@ -308,7 +315,7 @@ Execute an [INSERT](../../../t-sql/statements/insert-transact-sql.md) statement 
 
 1. **Save** the `app.py` file and test the application again.
 
-   ```bash
+   ```console
    python app.py
    ```
 

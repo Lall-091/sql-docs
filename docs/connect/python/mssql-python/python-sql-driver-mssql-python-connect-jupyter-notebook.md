@@ -4,7 +4,7 @@ description: This quickstart describes connect to your SQL database from a Jupyt
 author: dlevy-msft-sql
 ms.author: dlevy
 ms.reviewer: vanto, randolphwest
-ms.date: 10/06/2025
+ms.date: 10/30/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: quickstart-sdk
@@ -36,6 +36,10 @@ The `mssql-python` driver doesn't require any external dependencies on Windows m
 
   - [Jupyter Extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter)
 
+  - [(Optional) Azure Repos](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-repos)
+
+- [(Optional) Azure Command-Line Interface (CLI)](/cli/azure/install-azure-cli)
+
 - If you don't already have `uv`, install `uv` by following the instructions from [https://docs.astral.sh/uv/getting-started/installation/](https://docs.astral.sh/uv/getting-started/installation/).
 
 - A database on SQL Server, Azure SQL Database, or SQL database in Fabric with the [!INCLUDE [sssampledbobject-md](../../../includes/sssampledbobject-md.md)] sample schema and a valid connection string.
@@ -44,37 +48,37 @@ The `mssql-python` driver doesn't require any external dependencies on Windows m
 
   ### [Alpine](#tab/alpine-linux)
 
-  ```bash
+  ```console
   apk add libtool krb5-libs krb5-dev
   ```
 
   ### [Debian/Ubuntu](#tab/debianUbuntu-linux)
 
-  ```bash
+  ```console
   apt-get install -y libltdl7 libkrb5-3 libgssapi-krb5-2
   ```
 
   ### [RHEL](#tab/RHEL-linux)
 
-  ```bash
+  ```console
   dnf install -y libtool-ltdl krb5-libs
   ```
 
   ### [SUSE](#tab/SUSE-linux)
 
-  ```bash
+  ```console
   zypper install -y libltdl7 libkrb5-3 libgssapi-krb5-2
   ```
 
   ### [openSUSE](#tab/openSUSE-linux)
 
-  ```bash
+  ```console
   zypper install -y libltdl7
   ```
 
   ### [macOS](#tab/mac)
 
-  ```bash
+  ```console
   brew install openssl
   ```
 
@@ -119,7 +123,7 @@ This quickstart requires the *[!INCLUDE [sssampledbnormal-md](../../../includes/
 
 1. Create a new [project](https://docs.astral.sh/uv/guides/projects/#project-structure) with `uv`.
 
-   ```bash
+   ```console
    uv init jupyter-notebook-qs
    cd jupyter-notebook-qs
    ```
@@ -128,7 +132,7 @@ This quickstart requires the *[!INCLUDE [sssampledbnormal-md](../../../includes/
 
 In the same directory, install the `mssql-python`, `python-dotenv`, `rich`, `pandas`, and `matplotlib` packages. Then add `ipykernel` and `uv` as dev dependencies. VS Code requires `ipykernel` and `uv` are added to be able to interact with `uv` from within your notebook cells using commands like `!uv add mssql_python`.
 
-```bash
+```console
 uv add mssql_python dotenv rich pandas matplotlib
 uv add --dev ipykernel
 uv add --dev uv
@@ -138,7 +142,7 @@ uv add --dev uv
 
 In the same directory, run the following command.
 
-```bash
+```console
 code .
 ```
 
@@ -283,6 +287,9 @@ code .
 
                Console().print(table)
    ```
+
+   > [!TIP]  
+   > To use Microsoft Entra Authentication in macOS, you must be signed in via either the [Azure Repos](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-repos) extension in Visual Studio Code, or by running `az login` via the [Azure Command-Line Interface (CLI)](/cli/azure/install-azure-cli).
 
 1. Use the **Run All** button at the top of the notebook to run the notebook.
 
