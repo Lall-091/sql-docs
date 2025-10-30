@@ -126,7 +126,7 @@ The extension sends logs to Azure about extension events.
 
 ## Migration assessment metrics
 
-Migration assessment automatically produces an assessment for migration to Azure. Learn more at [Select the optimal Azure SQL target using Migration assessment (preview) - SQL Server enabled by Azure Arc](migration-assessment.md).
+Migration assessment automatically produces an assessment for migration to Azure. Learn more at [Select the optimal Azure SQL target using Migration assessment - SQL Server enabled by Azure Arc](migration-assessment.md).
 
 [!INCLUDE [assessment-metrics](includes/assessment-metrics.md)]
 

@@ -19,14 +19,14 @@ The following table identifies features available by SQL Server version:
 | [Microsoft Entra ID authentication for SQL Server](../../../relational-databases/security/authentication-access/azure-ad-authentication-sql-server-overview.md) | No | No | Yes | Yes |
 | [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-sql-usage) | Yes | Yes | Yes | Yes |
 | [Microsoft Purview: DevOps policies](/azure/purview/how-to-policies-devops-authoring-generic) | No | No | Yes | No |
-| [Microsoft Purview: data owner policies (preview)](/azure/purview/how-to-policies-data-owner-authoring-generic) | No | No | Yes | No |
+| [Microsoft Purview: data owner policies (preview)](/purview/legacy/how-to-policies-data-owner-authoring-generic) | No | No | Yes | No |
 | [Automated backups to local storage (preview)](../backup-local.md) | Yes | Yes | Yes | Yes |
 | [Point-in-time-restore (preview)](../point-in-time-restore.md) | Yes | Yes | Yes | Yes |
 | [Automatic updates](../update.md) | Yes <sup>1</sup> | Yes | Yes | Yes |
 | [Failover cluster instances](../support-for-fci.md) | Yes | Yes | Yes | Yes |
-| [Always On availability groups (preview)](../manage-availability-group.md) | Yes | Yes | Yes | Yes |
+| [Always On availability groups](../manage-availability-group.md) | Yes | Yes | Yes | Yes |
 | [Monitoring (preview)](../sql-monitoring.md) | No | Yes <sup>2</sup> | Yes | Yes |
-| [Client connection summary (preview)](../sql-connection-summary.md) | No | Yes <sup>2</sup> | Yes | Yes |
+| [Client connection summary](../sql-connection-summary.md) | No | Yes <sup>2</sup> | Yes | Yes |
 | [Operate with least privilege](../configure-least-privilege.md) | Yes | Yes | Yes | Yes |
 
 <sup>1</sup> Requires subscription to [Extended Security Updates (ESU) enabled by Azure Arc](../../end-of-support/sql-server-extended-security-updates.md#subscribe-instances-for-esus) for [!INCLUDE [sssql11-md](../../../includes/sssql11-md.md)].

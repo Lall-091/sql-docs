@@ -99,10 +99,10 @@ sections:
         answer: Review [Configure Windows service accounts and permissions for Azure extension for SQL Server](configure-windows-accounts-agent.md).
 
       - question: What user is the Microsoft SQL Server extension service running as?
-        answer: When the least privileges mode is enabled, then it runs as the NT Service\SQLServerExtension account. When it is disabled, it runs as Local System. To enable least privilege mode, review [Least privilege mode (preview)](configure-least-privilege.md).
+        answer: When the least privileges mode is enabled, then it runs as the NT Service\SQLServerExtension account. When it is disabled, it runs as Local System. To enable least privilege mode, review [Least privilege mode](configure-least-privilege.md).
 
       - question: Is least privilege mode supported for SQL Server enabled by Azure Arc?
-        answer: Yes, least privilege mode is currently in preview for SQL Server enabled by Azure Arc. When this mode is generally available, least privilege mode will become the default configuration. Existing deployments will also be migrated automatically to least privilege mode to bolster security. Learn more about the permission assigned at [Configure Windows service accounts and permissions for Azure extension for SQL Server](configure-windows-accounts-agent.md).
+        answer: Yes, least privilege mode is supported for SQL Server enabled by Azure Arc. Existing servers with extension version `1.1.2859.223` or greater will eventually have the least privileged configuration applied. This extension was released in November, 2024. To prevent the automatic application of least privilege, block extension upgrades after `1.1.2859.223`. Learn more about the permission assigned at [Configure Windows service accounts and permissions for Azure extension for SQL Server](configure-windows-accounts-agent.md).
 
       - question: How do I set the minimum permissions to deploy SQL Server enabled by Azure Arc?
         answer: Least privilege mode uses minimum permissions to deploy SQL Server enabled by Azure Arc. To enable least privilege mode, review [Operate SQL Server enabled by Azure Arc with least privilege](configure-least-privilege.md).

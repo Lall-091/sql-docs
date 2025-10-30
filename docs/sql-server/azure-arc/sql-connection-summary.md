@@ -4,19 +4,16 @@ description: Learn how you can view client connections to an instance of SQL Ser
 author: ajithkr-ms
 ms.author: ajithkr
 ms.reviewer: nhebbar, randolphwest
-ms.date: 03/26/2025
+ms.date: 10/15/2025
 ms.topic: how-to
 ms.custom:
 ---
 
-# Client connection summary for SQL Server enabled by Azure Arc (preview)
+# Client connection summary for SQL Server enabled by Azure Arc
 
 [!INCLUDE [sqlserver](../../includes/applies-to-version/sqlserver.md)]
 
 This article teaches you how to view client connections to [!INCLUDE [ssazurearc](../../includes/ssazurearc.md)] in Azure portal. 
-
-> [!NOTE]
-> The SQL Server Connections view in the Azure portal is currently in preview. 
 
 ## View SQL Server connections
 

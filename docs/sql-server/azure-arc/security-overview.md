@@ -143,7 +143,7 @@ The Extension Service  collects inventory and database metadata (Windows Only) a
 
 ### Run with least privilege
 
-You can configure the Extension Service to run with minimal privileges. This option, to apply the principle of least privilege, is available for preview on Windows servers. For details on how to configure least privilege mode, review [Enable least privilege (preview)](configure-least-privilege.md).
+You can configure the Extension Service to run with minimal privileges. For details on how to configure least privilege mode, review [Enable least privilege](configure-least-privilege.md).
 
 When configured for least privilege, the Extension Service runs as the `NT Service\SQLServerExtension` service account.
 
@@ -253,7 +253,7 @@ Key requirements to use [Purview](/purview/register-scan-azure-arc-enabled-sql-s
 
 Implement the following configurations to comply with current best practices to secure instances of SQL Server enabled by Azure Arc:
 
-* Enable [least privilege mode (preview)](configure-least-privilege.md).
+* Enable [least privilege mode](configure-least-privilege.md).
 * Run [SQL best practices assessment](assess.md). Review the assessment and apply recommendations.
 * Enable [Microsoft Entra authentication](../../relational-databases/security/authentication-access/azure-ad-authentication-sql-server-overview.md).
 * Enable [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-sql-usage) and resolve the issues pointed out by Defender for SQL.

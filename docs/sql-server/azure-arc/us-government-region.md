@@ -50,15 +50,10 @@ Currently, in the US Government Virginia region, SQL Server registration provide
   - View the properties for each server. For example, you can view the version, edition, and database for each instance.
 - [Subscribe to Extended Security Updates in a production environment](extended-security-updates.md#subscribe-to-extended-security-updates-in-a-production-environment).
 - [Manage licensing and billing of SQL Server enabled by Azure Arc](manage-license-billing.md).
-- License virtual cores. Review [licensing limitations](#limitations).
+- License virtual cores. 
+- [Managing Always On availability groups](manage-availability-group.md).
 
 [All other features](overview.md#feature-differentiation) aren't currently available.
-
-## Limitations
-
-The following SQL Server features aren't currently available in any US Government region:
-
-- Failover cluster instance (FCI)
 
 ## Related content
 

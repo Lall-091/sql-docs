@@ -33,7 +33,7 @@ The section [SQL privileges by feature](#sql-privileges-by-feature) explains the
 - [Availability groups](#availability-groups)
 - [Best practices assessment](#best-practices-assessment)
 - [Database migration (preview)](#database-migration)
-- [Migration assessment (preview)](#migration-assessment)
+- [Migration assessment](#migration-assessment)
 - [Point in time restore](#automated-backups)
 - [Purview](#purview)
 
@@ -110,7 +110,7 @@ The following table lists the default behavior for the features that control per
 | [Availability groups](#availability-groups) | Enabled by default |
 | [Best practices assessment](#best-practices-assessment) | Disabled by default |
 | [Database migration (preview)](#database-migration) | Enabled by default |
-| [Migration assessment (preview)](#migration-assessment) | Enabled by default |
+| [Migration assessment](#migration-assessment) | Enabled by default |
 | [Point in time restore](#automated-backups) | Disabled by default |
 | [Purview](#purview) | Disabled by default |
 

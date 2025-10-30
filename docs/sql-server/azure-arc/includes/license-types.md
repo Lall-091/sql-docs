@@ -35,7 +35,7 @@ The following table identifies the capabilities and use rights offered with each
 | [Failover cluster instances](../support-for-fci.md) | Yes | Yes | Yes |
 | [Always On availability groups](../manage-availability-group.md) | Yes | Yes | Yes |
 | [Monitoring (preview)](../sql-monitoring.md) | No | Yes | Yes |
-| [Client connection summary (preview)](../sql-monitoring.md) | No | Yes | Yes |
+| [Client connection summary](../sql-connection-summary.md) | No | Yes | Yes |
 | [Operate with least privilege](../configure-least-privilege.md) | Yes | Yes | Yes |
 
 <sup>1</sup> For [!INCLUDE [sssql22-md](../../../includes/sssql22-md.md)] and earlier versions, the free Power BI Report Server license is limited to Enterprise Edition (EE) customers with Software Assurance (SA) or subscriptions. For [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)], the free Power BI Report Server license is available to both Standard Edition (SE) and Enterprise Edition (EE) customers with all license types.   
