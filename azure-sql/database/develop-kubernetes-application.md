@@ -2,8 +2,8 @@
 title: Develop a Kubernetes Application
 titleSuffix: Azure SQL Database
 description: Learn how to develop a modern application using Python, Docker Containers, Kubernetes, and Azure SQL Database.
-author: BuckWoody
-ms.author: bwoody
+author: rwestMSFT
+ms.author: randolphwest
 ms.reviewer: wiassaf, damauri, mathoma
 ms.date: 06/13/2025
 ms.service: azure-sql-database
