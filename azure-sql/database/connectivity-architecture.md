@@ -8,7 +8,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 03/18/2025
 ms.service: azure-sql-database
 ms.subservice: connect
-ms.topic: conceptual
+ms.topic: article
 ms.custom:
   - fasttrack-edit
   - sqldbrb=1
@@ -78,6 +78,12 @@ If you're connecting from outside Azure, your connections have a connection poli
 > Open TCP ports 1434 and 14000-14999 to enable [Connecting with DAC](/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators#connecting-with-dac).
 
 ## Gateway IP addresses
+
+This section lists the IP address ranges assigned to the regional gateways of SQL Database.
+
+When the proxy [connection policy](#connection-policy) is in effect, database clients must be able to reach all given IP addresses in all ranges for the region of the logical server. With the redirect connection type, clients must be able to reach a wider set of IP addresses; refer to the `Sql.\<region\>` service tags in [Azure IP Ranges and Service Tags - Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519) for a complete list.
+
+Clients connecting to private endpoints don't need connectivity to any of these ranges because a private endpoint has direct connectivity to the gateways.
 
 [!INCLUDE [gateway-ip-addresses](includes/gateway-ip-addresses.md)]
 

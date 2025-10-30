@@ -5,7 +5,7 @@ description: Learn about the new features and documentation improvements for Azu
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: wiassaf, mathoma
-ms.date: 12/01/2025
+ms.date: 12/03/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: whats-new
@@ -74,6 +74,12 @@ The following table lists features of Azure SQL Managed Instance that have been 
 ## Documentation changes
 
 Learn about significant changes to the Azure SQL Managed Instance documentation. For previous years, see the [What's new archive](doc-changes-updates-release-notes-whats-new-archive.md).
+
+### December
+
+| Changes | Details |
+| --- | --- |
+|**Traffic management** | Learn about how network traffic is managed in Azure SQL Managed Instance, including user-managed and service-managed traffic. Review [Traffic management overview](traffic-management-overview.md) to learn more. |
 
 ### November
 

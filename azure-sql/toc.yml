@@ -1089,6 +1089,8 @@
         href: managed-instance/resource-limits.md
       - name: Virtual cluster architecture
         href: managed-instance/virtual-cluster-architecture.md
+      - name: Traffic management
+        href: managed-instance/traffic-management-overview.md
       - name: Connectivity architecture
         href: managed-instance/connectivity-architecture-overview.md
 
