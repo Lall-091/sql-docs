@@ -109,7 +109,7 @@ As a best practice, if you have [TDS 8.0](/sql/relational-databases/security/net
 
 If your drivers lack support for TDS 8.0, use mandatory encryption and do not trust the server certificate. For example, when using the ADO.NET driver, use `Encrypt=True` and `TrustServerCertificate=False` in the connection string to accomplish this. The connection string you obtain from the Azure portal is already configured with these values.
 
-Setting the parameter `TrustServerCertificate` to `True` should be avoided in production use. `TrustServerCertificate=true` is too permissive and doesn't shield against man-in-the-middle attacks. Instead, if your client expects a different domain name in the server certificate, use the `HostNameInCertificate` parameter to provide the correct domain name for validation.
+Setting the parameter `TrustServerCertificate` to `True` should be avoided in production use. `TrustServerCertificate=True` is too permissive and doesn't shield against man-in-the-middle attacks. Instead, if your client expects a different domain name in the server certificate, use the `HostNameInCertificate` parameter to provide the correct domain name for validation.
 
 For example, when using the ADO.NET driver to connect to your managed instance `contoso-instance.123456.database.windows.net` via a custom domain name `contoso-instance.contoso.com`, set the connection parameters `Encrypt=True` and set `HostNameInCertificate=contoso-instance.123456.database.windows.net`. This allows the driver to validate the server certificate against an expected VNet-local endpoint domain name.
 
