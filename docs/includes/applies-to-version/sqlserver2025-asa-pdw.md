@@ -8,4 +8,4 @@ ms.custom:
   - build-2025
 ---
 
-[!INCLUDE [Applies to](../../includes/applies-md.md)] [!INCLUDE [SQL Server 2025](_ss2025.md)] and later [!INCLUDE [Synapse Analytics](_asa.md)] [!INCLUDE [Analytics Platform System (PDW)](../../includes/applies-to-version/_pdw.md)]
+[!INCLUDE [Applies to](../../includes/applies-md.md)] [!INCLUDE [SQL Server 2025](_ss2025.md)] and later versions [!INCLUDE [Synapse Analytics](_asa.md)] [!INCLUDE [Analytics Platform System (PDW)](../../includes/applies-to-version/_pdw.md)]
