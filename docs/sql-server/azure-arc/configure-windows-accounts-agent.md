@@ -244,7 +244,7 @@ The action to cancel a Managed Instance link migration acquires the following pe
 
 ### Migration assessment
 
-[Migration assessments (preview)](migration-assessment.md) are enabled by default. 
+[Migration assessments](migration-assessment.md) are enabled by default. 
 
 If the feature is disabled, the extension revokes the following permissions unless other enabled features require them:
     
