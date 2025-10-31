@@ -4,7 +4,7 @@ description: Learn to configure PolyBase to query Azure resources by using manag
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 10/30/2025
+ms.date: 10/31/2025
 ms.service: sql
 ms.topic: concept-article
 ---
@@ -42,10 +42,11 @@ Update the registry subkey `\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL
 The following example script inserts the registry keys for a [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] named instance called `SQL25Inst`, if it doesn't already exist:
 
 ```powershell
-$yourinstance = "MSSQL17.SQL25Inst"
+# Change to your SQL Server instance.
+$yourInstance = "MSSQL17.SQL25Inst"
 
 # Define the registry path
-$regPath = "HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\$($yourinstance)\MSSQLServer\FederatedAuthentication"
+$regPath = "HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\$($yourInstance)\MSSQLServer\FederatedAuthentication"
 Write-Host "Path to be updated: $regPath"
 
 # Ensure the path exists
@@ -170,9 +171,9 @@ Check the following items:
 
 - The required registry entries exist.
 
-- `allow server scoped db credentials` is enabled.
+- Verify that the `allow server scoped db credentials` server configuation option is enabled.
 
-### File can't be opened (Error 16562)
+### File can't be opened (Error 13822)
 
 You might encounter error 13822 when you access Azure Blob Storage or Azure Data Lake if the managed identity lacks permissions on the storage account, or network access to storage is blocked.
 
