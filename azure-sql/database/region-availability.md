@@ -3,8 +3,8 @@ title: Feature Availability by Region
 description: Learn about feature availability by region for Azure SQL Database.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: rsetlem, peskount
-ms.date: 07/17/2025
+ms.reviewer: rsetlem, peskount, rokhot
+ms.date: 10/31/2025
 ms.service: azure-sql-database
 ms.topic: concept-article
 ms.custom:
