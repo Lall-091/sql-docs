@@ -110,6 +110,17 @@ When using `Encrypt=false` in the connection string, a security warning is outpu
 AppContext.SetSwitch("Switch.Microsoft.Data.SqlClient.SuppressInsecureTLSWarning", true);
 ```
 
+## Ignore Server Provided Failover Partner
+[!INCLUDE [appliesto-netfx-netcore-netst-md](../../includes/appliesto-netfx-netcore-netst-md.md)]
+
+(Available starting with versions 5.1.8, 6.0.4, and 6.1.3)
+
+Upon failover, failover partner information provided by the server is preferred over failover partner information provided in the connection string. To ignore failover partner information provided by the server and only consider failover partner information provided in the connection string, enable this AppContext switch on application startup:
+
+```csharp
+AppContext.SetSwitch("Switch.Microsoft.Data.SqlClient.IgnoreServerProvidedFailoverPartner", true);
+```
+
 ## See also
 
 [AppContext Class](/dotnet/api/system.appcontext?view=netcore-3.1&preserve-view=true)
