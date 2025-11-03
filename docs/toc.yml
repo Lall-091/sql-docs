@@ -4457,8 +4457,10 @@ items:
       href: database-engine/install-windows/upgrade-master-data-services.md
     - name: Power Pivot for SharePoint
       href: database-engine/install-windows/upgrade-power-pivot-for-sharepoint.md
-    - name: Replicated Databases
+    - name: Replicated databases
       href: database-engine/install-windows/upgrade-replicated-databases.md
+    - name: Peer-to-peer replicated databases
+      href: database-engine/install-windows/upgrade-peer-to-peer-replicated-databases.md
     - name: SQL Server Management Tools
       href: database-engine/install-windows/upgrade-sql-server-management-tools.md
     - name: Installation Wizard (Setup)
