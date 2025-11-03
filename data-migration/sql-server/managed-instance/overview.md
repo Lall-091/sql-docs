@@ -4,7 +4,7 @@ description: Learn about the tools and options available to migrate your SQL Ser
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mathoma, danil
-ms.date: 06/16/2025
+ms.date: 11/03/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -88,6 +88,7 @@ We recommend the following migration tools:
 | Technology | Description |
 | --- | --- |
 | [Azure Migrate](/azure/migrate/how-to-create-azure-sql-assessment) | This Azure service helps you discover and assess your SQL data estate at scale on VMware. It provides Azure SQL deployment recommendations, target sizing, and monthly estimates. |
+| [Database migration](/sql/sql-server/azure-arc/migrate-to-azure-sql-managed-instance) | Migrate your SQL Server enabled by Azure Arc instance to Azure SQL Managed Instance through the Azure portal.
 | [Native backup and restore](/azure/azure-sql/managed-instance/restore-sample-database-quickstart) | SQL Managed Instance supports restore of native SQL Server database backups (.bak files). It's the easiest migration option for customers who can provide full database backups to Azure Storage. |
 | [Log Replay Service](/azure/azure-sql/managed-instance/log-replay-service-migrate) | This cloud service is enabled for SQL Managed Instance based on SQL Server log-shipping technology. It's a migration option for customers who can provide full, differential, and log database backups to Azure Storage. Log Replay Service is used to restore backup files from Azure Blob Storage to SQL Managed Instance. |
 | [Managed Instance link](/azure/azure-sql/managed-instance/managed-instance-link-feature-overview) | This feature enables online migration to SQL Managed Instance by using Always On availability technology to replicate changes nearly real time. It's a migration option for customers who require the database on SQL Managed Instance to be accessible in R/O mode while the migration is in progress, who need to keep the migration running for prolonged periods of time (such as weeks or months at a time), who require true online replication to the Business Critical service tier, and for customers who require the most performant minimum downtime migration. |

@@ -4,7 +4,7 @@ description: This guide teaches you to migrate your SQL Server databases to Azur
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mathoma, danil
-ms.date: 06/16/2025
+ms.date: 11/15/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -40,6 +40,12 @@ To move SQL instances, you need to plan carefully:
 - The migration of instance-level objects that your application depends on, including logins, credentials, SQL Agent jobs and operators, and server-level triggers.
 
 SQL Managed Instance is a managed service that allows you to delegate some of the regular DBA activities to the platform as they're built in. Therefore, some instance-level data doesn't need to be migrated, such as maintenance jobs for regular backups or Always On configuration, as [high availability](/azure/azure-sql/database/high-availability-sla-local-zone-redundancy) is built in.
+
+### Database migration
+
+Migrate your SQL Server enabled by Azure Arc instance to Azure SQL Managed Instance directly through the Azure portal. For detailed instructions, review [Migrate SQL Server instance to Azure SQL Managed Instance](/sql/sql-server/azure-arc/migrate-to-azure-sql-managed-instance).
+
+Database migration provides a built-in migration experience by using the Managed Instance link or Log Replay Service (LRS) methods behind the scenes while simplifying configuration, management, and monitoring of the migration process.
 
 ### Managed Instance link
 

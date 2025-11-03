@@ -4,7 +4,7 @@ description: Get acquainted with permissions required to start and run Azure Ext
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: safeitle, randolphwest
-ms.date: 07/15/2025
+ms.date: 11/03/2025
 ms.topic: reference
 ---
 
@@ -32,8 +32,8 @@ The section [SQL privileges by feature](#sql-privileges-by-feature) explains the
 - [Automated backups](#automated-backups)
 - [Availability groups](#availability-groups)
 - [Best practices assessment](#best-practices-assessment)
-- [Database migration (preview)](#database-migration)
 - [Migration assessment](#migration-assessment)
+- [Database migration](#database-migration)
 - [Point in time restore](#automated-backups)
 - [Purview](#purview)
 
@@ -109,8 +109,8 @@ The following table lists the default behavior for the features that control per
 | [Automated backups](#automated-backups) | Disabled by default |
 | [Availability groups](#availability-groups) | Enabled by default |
 | [Best practices assessment](#best-practices-assessment) | Disabled by default |
-| [Database migration (preview)](#database-migration) | Enabled by default |
 | [Migration assessment](#migration-assessment) | Enabled by default |
+| [Database migration](#database-migration) | Enabled by default |
 | [Point in time restore](#automated-backups) | Disabled by default |
 | [Purview](#purview) | Disabled by default |
 
@@ -187,7 +187,7 @@ If the feature is enabled, the extension automatically grants the following perm
 
 ### Database migration 
 
-The [Database migration (preview)](migrate-to-azure-sql-managed-instance.md) feature is enabled by default, and only requires the permissions listed in [default extension permissions](#default-extension-permissions), though some permissions used by the Database migration (preview) feature are granted [just-in-time permissions](#just-in-time-sql-permissions) when a specific migration action is performed.
+The [Database migration](migrate-to-azure-sql-managed-instance.md) feature is enabled by default, and only requires the permissions listed in [default extension permissions](#default-extension-permissions), though some permissions used by the Database migration feature are granted [just-in-time permissions](#just-in-time-sql-permissions) when a specific migration action is performed.
 
 The following actions require additional permissions that the extension grants just-in-time:
 - [Create Managed Instance link migration](#create-managed-instance-link-migration)
@@ -195,7 +195,7 @@ The following actions require additional permissions that the extension grants j
 - [Cancel Managed Instance link migration](#cancel-managed-instance-link-migration)
 
 > [!NOTE]
-> Users with the `SqlServerAvailabilityGroups_CreateManagedInstanceLink`, `SqlServerAvailabilityGroups_failoverMiLink`, and `SqlServerAvailabilityGroups_deleteMiLink` permissions in Azure can perform actions on the [Database migration (preview)](migrate-to-azure-sql-managed-instance.md) page during the migration process that elevate the SQL Server permissions of the account used by the extension, including the `sysadmin` role. 
+> Users with the `SqlServerAvailabilityGroups_CreateManagedInstanceLink`, `SqlServerAvailabilityGroups_failoverMiLink`, and `SqlServerAvailabilityGroups_deleteMiLink` permissions in Azure can perform actions on the [Database migration](migrate-to-azure-sql-managed-instance.md) page during the migration process that elevate the SQL Server permissions of the account used by the extension, including the `sysadmin` role. 
 
 ### Create Managed Instance link migration
 

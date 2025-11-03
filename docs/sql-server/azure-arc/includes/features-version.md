@@ -14,7 +14,7 @@ The following table identifies features available by SQL Server version:
 | [Azure pay-as-you-go billing](../manage-configuration.md) | Yes | Yes | Yes | Yes |
 | [Best practices assessment](../assess.md) | Yes | Yes | Yes | Yes |
 | [Migration assessment](../migration-assessment.md) | Yes | Yes | Yes | Yes |
-| [Database migration (preview)](../migrate-to-azure-sql-managed-instance.md) | LRS only | LRS & MI link | LRS & MI link | LRS & MI link |
+| [Database migration](../migrate-to-azure-sql-managed-instance.md) | LRS only | LRS & MI link | LRS & MI link | LRS & MI link |
 | [Detailed inventory](../view-inventory.md#inventory-databases) | Yes | Yes | Yes | Yes |
 | [Microsoft Entra ID authentication for SQL Server](../../../relational-databases/security/authentication-access/azure-ad-authentication-sql-server-overview.md) | No | No | Yes | Yes |
 | [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-sql-usage) | Yes | Yes | Yes | Yes |

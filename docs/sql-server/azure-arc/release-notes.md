@@ -4,7 +4,7 @@ description: Latest release notes for SQL Server enabled by Azure Arc
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest, mathoma
-ms.date: 10/29/2025
+ms.date: 11/03/2025
 ms.topic: conceptual
 ms.custom:
   - ignite-2023
@@ -38,8 +38,7 @@ The following table lists the features of SQL Server enabled by Azure Arc that a
 | --- | --- |
 | [Automated backups](backup-local.md) | Automatically perform backups to local storage or network shares. |
 | [Azure Extension for SQL Server on Linux](connect.md?tabs=linux) | Connect SQL Server on Linux to Azure Arc. |
-| [Backup to URL with a managed identity](backup-to-url.md)| Use a managed identity to authenticate to Azure Blob Storage for backups to URL. |
-| [Database migration](migrate-to-azure-sql-managed-instance.md) | Migrate your SQL Server databases to Azure SQL Managed Instance directly from the Azure portal. |
+| [Backup to URL with a managed identity](backup-to-url.md) | Use a managed identity to authenticate to Azure Blob Storage for backups to URL. |
 | [Managed identity](managed-identity.md) | Use a managed identity to authenticate to your SQL Server instance starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. |
 | [Microsoft Purview: data owner policies](/purview/legacy/how-to-policies-data-owner-authoring-generic) | Manage access to user data in sources that have been registered for Data Policy Enforcement in Microsoft Purview for your SQL Server instances and databases. |
 | [Monitoring](sql-monitoring.md) | Monitor SQL Server performance and activity with built-in dashboards in the Azure portal. |
@@ -51,6 +50,7 @@ The following table lists features of SQL Server enabled by Azure Arc that have 
 
 | Feature | GA Month | Details |
 | --- | --- | --- |
+| [Database migration](migrate-to-azure-sql-managed-instance.md) | October 2025 | Migrate your SQL Server databases to Azure SQL Managed Instance directly from the Azure portal. |
 | [Client connection summary](sql-connection-summary.md)| October 2025 | View a summary of all client connections to your SQL Server instances. |
 | [US Government Virginia region availability](us-government-region.md) | August 2025 | Connect SQL Server instances in US Government Virginia to Azure Arc. |
 | [Migration assessment](migration-assessment.md) | June 2025 | Assess your SQL Server instances for migration readiness to Azure SQL. |
@@ -83,7 +83,9 @@ This section lists the release notes by date, starting with the most recent rele
 
 **Extension version**: `1.1.3211.337`
 
-[Client connection summary](sql-connection-summary.md) is now generally available (GA). You can view a summary of all client connections to your SQL Server instances in the Azure portal.
+The following features are now generally available (GA):
+- [Client connection summary](sql-connection-summary.md): You can view a summary of all client connections to your SQL Server instances in the Azure portal.
+- [Database migration](migrate-to-azure-sql-managed-instance.md): Migrate your SQL Server databases to Azure SQL Managed Instance directly from the Azure portal.
 
 Certain limitations in [US Government Virginia](us-government-region.md) are lifted. You can now onboard environments with:
 - [Failover cluster instances](../failover-clusters/windows/always-on-failover-cluster-instances-sql-server.md)

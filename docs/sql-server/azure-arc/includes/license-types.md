@@ -24,7 +24,7 @@ The following table identifies the capabilities and use rights offered with each
 | [SQL Server inventory](../overview.md#manage-your-sql-server-instances-at-scale-from-a-single-point-of-control) | Yes | Yes | Yes |
 | [Best practices assessment](../assess.md) | No | Yes | Yes |
 | [Migration readiness](../migration-assessment.md) | Yes | Yes | Yes |
-| [Database migration (preview)](../migrate-to-azure-sql-managed-instance.md) | Yes | Yes | Yes |
+| [Database migration](../migrate-to-azure-sql-managed-instance.md) | Yes | Yes | Yes |
 | [Detailed inventory](../view-inventory.md#inventory-databases) | Yes | Yes | Yes |
 | [Microsoft Entra authentication](../../../relational-databases/security/authentication-access/azure-ad-authentication-sql-server-overview.md) | Yes | Yes | Yes |
 | [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-sql-usage) | Yes | Yes | Yes |

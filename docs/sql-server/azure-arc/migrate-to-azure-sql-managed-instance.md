@@ -1,24 +1,22 @@
 ---
-title: Migrate to Azure SQL Managed Instance (preview)
+title: Migrate to Azure SQL Managed Instance
 description: Migrate your SQL Server instance enabled by Azure Arc to Azure SQL Managed Instance by using the Azure portal.
 author: danimir
 ms.author: danil
 ms.reviewer: mikeray, randolphwest, mathoma
-ms.date: 07/16/2025
+ms.date: 11/03/2025
 ms.topic: how-to
 ---
 
-# Migrate to Azure SQL Managed Instance (preview) - SQL Server enabled by Azure Arc
+# Migrate to Azure SQL Managed Instance - SQL Server enabled by Azure Arc
 
 [!INCLUDE [sqlserver](../../includes/applies-to-version/sqlserver.md)]
 
 This article demonstrates how to migrate your SQL Server instance enabled by Azure Arc to [Azure SQL Managed Instance](/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview) in the Azure portal.
 
-> [!NOTE]
-> Database migration to Azure SQL Managed Instance through the Azure portal is currently in preview.
-
 ## Overview
-SQL Managed Instance is a fully managed lift-and-shift, platform as a service (PaaS) target to run your SQL Server workloads in the Azure cloud platform. After your SQL Server instance is enabled by Azure Arc, you can assess your SQL Server data estate to identify an optimal SQL Managed Instance configuration. Then you can migrate your SQL Server databases to SQL Managed Instance directly from the Azure portal.
+
+Azure SQL Managed Instance is a fully managed lift-and-shift platform as a service (PaaS) target to run your SQL Server workloads on the Azure cloud platform. After your SQL Server instance is enabled by Azure Arc, you can assess your SQL Server data estate to identify an optimal SQL Managed Instance configuration. Then you can migrate your SQL Server databases to SQL Managed Instance directly from the Azure portal.
 
 When your SQL Server instance is enabled by Azure Arc, you can:
 
@@ -28,18 +26,18 @@ When your SQL Server instance is enabled by Azure Arc, you can:
 
 Discovery of SQL Server instances and generation of readiness reports happen instantly, automatically, and continuously. No extra configuration or setup is required. First, you choose an appropriate SQL Managed Instance target and prepare your environment. Then, you can migrate your SQL Server databases to SQL Managed Instance directly from the Azure portal through a fully managed and automated process.
 
-Database migration (preview) is available by default for all SQL Server instances enabled by Azure Arc, starting with [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)].
+Database migration is available by default for all SQL Server instances enabled by Azure Arc, starting with [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)].
 
 ## Choose the integrated migration method
 
-You can choose the migration method that best fits your needs on the **Database migration (preview)** pane. After some initial configuration, migration is automated for you based on your selection.
+You can choose the migration method that best fits your needs on the **Database migration** pane. After some initial configuration, migration is automated for you based on your selection.
 
 The following methods are built into the migration process:
 
 - [Managed Instance link](/azure/azure-sql/managed-instance/managed-instance-link-feature-overview): Migrate by using real-time replication with a distributed availability group (online).
 - [Log Replay Service (LRS)](/azure/azure-sql/managed-instance/log-replay-service-overview): Migrate by using log shipping (online).
 
-To understand the differences between the two migration options, see [Compare the Managed Instance link with LRS for migration](/azure/azure-sql/managed-instance/log-replay-service-compare-mi-link). On the **Database migration (preview)** pane in the Azure portal, you can choose the option that best suits your needs in the **Migrate data** step.
+To understand the differences between the two migration options, see [Compare the Managed Instance link with LRS for migration](/azure/azure-sql/managed-instance/log-replay-service-compare-mi-link). On the **Database migration** pane in the Azure portal, you can choose the option that best suits your needs in the **Migrate data** step.
 
 ## Prerequisites
 
@@ -72,7 +70,7 @@ To migrate with the Managed Instance link, you need one of the following permiss
 For minimum permissions, see [Custom permissions](/azure/azure-sql/managed-instance/managed-instance-link-preparation#permissions).
 
 > [!NOTE]
-> Users with the `SqlServerAvailabilityGroups_CreateManagedInstanceLink`, `SqlServerAvailabilityGroups_failoverMiLink`, and `SqlServerAvailabilityGroups_deleteMiLink` permissions in Azure can perform actions on the **Database migration (preview)** pane during the migration process that elevate the SQL Server permissions of the account used by the extension, including the `sysadmin` role.
+> Users with the `SqlServerAvailabilityGroups_CreateManagedInstanceLink`, `SqlServerAvailabilityGroups_failoverMiLink`, and `SqlServerAvailabilityGroups_deleteMiLink` permissions in Azure can perform actions on the **Database migration** pane during the migration process that elevate the SQL Server permissions of the account used by the extension, including the `sysadmin` role.
 
 ### [LRS](#tab/lrs)
 
@@ -114,7 +112,7 @@ The following tiles guide you through the migration of your SQL Server databases
 1. [Migrate data](#migrate-data): Migrate your SQL Server databases to SQL Managed Instance.
 1. [Monitor and cutover](#monitor-and-cutover): Monitor the migration process and cut over to the SQL Managed Instance target.
 
-The following screenshot shows the tiles on the **Database migration (preview)** pane for your SQL Server instance in the Azure portal:
+The following screenshot shows the tiles on the **Database migration** pane for your SQL Server instance in the Azure portal:
 
 :::image type="content" source="media/migrate-to-azure-sql-managed-instance/migration-home-page.png" alt-text="Screenshot that shows the migration home page for a SQL Server instance in the Azure portal." lightbox="media/migrate-to-azure-sql-managed-instance/migration-home-page.png":::
 
@@ -123,13 +121,13 @@ The following screenshot shows the tiles on the **Database migration (preview)**
 To assess the source instance, follow these steps:
 
 1. Go to your [SQL Server instance](https://portal.azure.com/#view/Microsoft_Azure_ArcCenterUX/ArcCenterMenuBlade/~/sqlServerInstances) in the Azure portal.
-1. Under **Migration**, select **Database migration (preview)** to open the **Database migration (preview)** pane. Under **Assess source instance**, select **View report** to open the **Assessments** pane.
+1. Under **Migration**, select **Database migration** to open the **Database migration** pane. Under **Assess source instance**, select **View report** to open the **Assessments** pane.
 
    :::image type="content" source="media/migrate-to-azure-sql-managed-instance/database-migration-pane.png" alt-text="Screenshot that shows the Database migration pane for the SQL Server instance in the Azure portal, with View report highlighted.":::
 
 1. On the **Assessments** pane:
 
-   - Use **Run assessment** to initiate a new assessment if one wasn't run recently.
+   - Use **Run assessment** to start a new assessment if one wasn't run recently.
    - Use **View assessment details** in the **Azure SQL MI Recommended Target** box to learn more about your assessment results, including the readiness of your SQL Server instance to migrate to SQL Managed Instance. You also learn about the recommended service tier and configuration for your target instance.
 
 ### Select target
@@ -148,14 +146,14 @@ After you assess your SQL Server instance, select a SQL Managed Instance target.
    :::image type="content" source="media/migrate-to-azure-sql-managed-instance/select-or-create-target.png" alt-text="Screenshot that shows the Create or select target pane.":::
 
 1. Fill in the required information for the SQL Managed Instance target. Then use either **Select target** or **Create target** to proceed to the next step based on your **Target exists** selection.
-    1. If you already have an instance as a target, choosing **Select target** takes you to the **Database migration (preview)** pane for your SQL Server instance. The instance name is populated as the selected target. Then you can proceed to the **Migrate data** step.
-    1. If you chose to create a new instance, you're guided to the **Create Azure SQL Managed Instance** pane on the **Database migration (preview)** pane to create the target instance. After you finish, check the progress of the deployment on the **Database migration (preview)** pane for your SQL Server instance. The target name populates in the **Target** tile. Then you can proceed to the **Migrate data** step.
+    1. If you already have an instance as a target, choosing **Select target** takes you to the **Database migration** pane for your SQL Server instance. The instance name is populated as the selected target. Then you can proceed to the **Migrate data** step.
+    1. If you chose to create a new instance, you're guided to the **Create Azure SQL Managed Instance** pane on the **Database migration** pane to create the target instance. After you finish, check the progress of the deployment on the **Database migration** pane for your SQL Server instance. The target name populates in the **Target** tile. Then you can proceed to the **Migrate data** step.
 
 ### Migrate data
 
 After your target is ready, start the migration process.
 
-1. On the **Database migration (preview)** pane, select **Migrate data**.
+1. On the **Database migration** pane, select **Migrate data**.
 
 1. On the **New data migration** pane, choose the migration option that suits your business needs, and then use **Select** to proceed to the next pane:
 
@@ -172,11 +170,11 @@ After your target is ready, start the migration process.
 1. On the **Review + create** tab, review the settings. Select **Start data migration** to migrate your data to your SQL Managed Instance target.
 
 > [!NOTE]
-> Starting the data migration process when you use the Managed Instance link grants more [just-in-time permissions](configure-windows-accounts-agent.md#create-managed-instance-link-migration) until the distributed availability group is created.
+> When you use the Managed Instance link and start the data migration process, the system grants [just-in-time permissions](configure-windows-accounts-agent.md#create-managed-instance-link-migration) until the distributed availability group is created.
 
 ### Monitor and cutover
 
-After you start your migration, you can monitor the progress. On the **Database migration (preview)** pane, select **Monitor migrations**.
+After you start your migration, you can monitor the progress. On the **Database migration** pane, select **Monitor migrations**.
 
 The **Monitor and cutover** pane shows useful information about the migration process, such as:
 
