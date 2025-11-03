@@ -3,8 +3,8 @@ title: Feature Availability by Region
 description: Learn about feature availability by region for Azure SQL Database.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: rsetlem, peskount
-ms.date: 07/17/2025
+ms.reviewer: rsetlem, peskount, rokhot
+ms.date: 10/31/2025
 ms.service: azure-sql-database
 ms.topic: concept-article
 ms.custom:
@@ -235,8 +235,8 @@ The following table is for [zone-redundant](high-availability-sla-local-zone-red
 | Central US | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
 | East US 1 | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
 | East US 2 | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
-| South Central US | | | [!INCLUDE [yes](../includes/yes.md)] |
-| West US 2 | | | [!INCLUDE [yes](../includes/yes.md)] |
+| South Central US | | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
+| West US 2 | | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
 | West US 3 | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
 
 #### [Asia Pacific](#tab/asia)
@@ -245,7 +245,8 @@ The following table is for [zone-redundant](high-availability-sla-local-zone-red
 |:---|:---|:---|:---|
 | Southeast Asia | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
 | Australia East | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
-| Japan East | | | [!INCLUDE [yes](../includes/yes.md)] |
+| Central India | | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
+| Japan East | | [!INCLUDE [yes](../includes/yes.md)] | [!INCLUDE [yes](../includes/yes.md)] |
 
 #### [Europe, the Middle East, and Africa](#tab/emea)
 

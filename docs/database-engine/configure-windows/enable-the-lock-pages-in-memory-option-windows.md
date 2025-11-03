@@ -1,9 +1,9 @@
 ---
 title: "Enable the Lock Pages in Memory Option (Windows)"
-description: "Learn how to turn on the Lock pages in memory option. See how it can boost performance by keeping data in physical memory instead of paging it to disk."
+description: Learn how to turn on the Lock pages in memory option. See how it can boost performance by keeping data in physical memory instead of paging it to disk.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/16/2025
+ms.date: 10/31/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: how-to
@@ -19,7 +19,7 @@ This Windows policy determines which accounts can use a process to keep data in 
 > [!NOTE]  
 > Locking pages in memory might boost performance when paging memory to disk is expected. For more information, see [Lock pages in memory (LPIM)](server-memory-server-configuration-options.md#lock-pages-in-memory-lpim).
 
-Use the Windows Group Policy tool (`gpedit.msc`) to enable this policy for the account used by [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. You must be a system administrator to change this policy.
+A system administrator can enable this policy for the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] service account with the Windows Group Policy tool (`gpedit.msc`), or with SQL Server Configuration Manager in [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and later versions.
 
 ### Enable the Lock pages in memory option
 
