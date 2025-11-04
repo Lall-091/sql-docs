@@ -4,7 +4,7 @@ description: This overview introduces SQL Data Sync for Azure, which allows you 
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma, hudequei
-ms.date: 04/04/2025
+ms.date: 11/03/2025
 ms.service: azure-sql-database
 ms.subservice: sql-data-sync
 ms.topic: concept-article
@@ -164,7 +164,6 @@ Provisioning and deprovisioning during sync group creation, update, and deletion
 - An Azure Elastic jobs database can't be used as the SQL Data Sync Metadata database, and vice versa.
 - SQL Data Sync isn't supported for [ledger databases](/sql/relational-databases/security/ledger/ledger-database-ledger).
 - Data Sync is not a disaster recovery or high availability tool and does not synchronize its own Sync Group information. There is no automatic disaster recovery for Data Sync.
-
 - Data Sync does not support [Network security perimeter (NSP)](/azure/private-link/network-security-perimeter-concepts).
 
 #### Unsupported data types
