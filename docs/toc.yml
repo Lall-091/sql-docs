@@ -9927,8 +9927,6 @@ items:
           href: azdata/install/deploy-install-azdata-yum.md
         - name: SUSE Linux Enterprise Server
           href: azdata/install/deploy-install-azdata-zypper.md
-        - name: From script
-          href: azdata/install/deploy-install-azdata-pip.md
     - name: azdata
       href: azdata/reference/reference-azdata.md
     - name: context

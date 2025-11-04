@@ -50007,7 +50007,12 @@
     },
     {
       "source_path": "docs/big-data-cluster/deploy-install-azdata-pip.md",
-      "redirect_url": "/sql/azdata/install/deploy-install-azdata-pip",
+      "redirect_url": "/sql/azdata/install/deploy-install-azdata-installer",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/azdata/install/deploy-install-azdata-pip.md",
+      "redirect_url": "/sql/azdata/install/deploy-install-azdata-installer",
       "redirect_document_id": false
     },
     {
