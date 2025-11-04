@@ -98,7 +98,7 @@ To specify task parallelism, link two or more dependent tasks to a single preced
 
 ### Edit task properties
 
-After a maintenance task is placed on the design surface, its properties can be edited as needed. For example, the specific database to back up in a Back Up Database task is specified after the task is added the plan. Tasks on the design surface that aren't properly configured contain a red icon with a white x.
+After a maintenance task is placed on the design surface, its properties can be edited as needed. For example, the specific database to back up in a Back Up Database task is specified after the task is added to the plan. Tasks on the design surface that aren't properly configured contain a red icon with a white x.
 
 ## Extra features available from the shortcut menu
 
