@@ -87,9 +87,6 @@ The following features are now generally available (GA):
 - [Client connection summary](sql-connection-summary.md): You can view a summary of all client connections to your SQL Server instances in the Azure portal.
 - [Database migration](migrate-to-azure-sql-managed-instance.md): Migrate your SQL Server databases to Azure SQL Managed Instance directly from the Azure portal.
 
-Certain limitations in [US Government Virginia](us-government-region.md) are lifted. You can now onboard environments with:
-- [Failover cluster instances](../failover-clusters/windows/always-on-failover-cluster-instances-sql-server.md)
-
 ### September 15, 2025
 
 **Extension version**: `1.1.3176.319`
