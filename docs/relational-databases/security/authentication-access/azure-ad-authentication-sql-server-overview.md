@@ -4,7 +4,7 @@ description: Learn about Microsoft Entra authentication support for SQL Server
 author: PratimDasgupta
 ms.author: prdasgu
 ms.reviewer: vanto, randolphwest
-ms.date: 02/21/2024
+ms.date: 11/04/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: concept-article
@@ -47,12 +47,18 @@ If your Windows Server Active Directory is [federated](/entra/identity/hybrid/co
 
 ## <a id="connect-sql-server-to-azure-with-azure-ad"></a> Connect SQL Server to Azure with Microsoft Entra ID
 
-For SQL Server to communicate with Azure, both SQL Server and the Windows or Linux host it runs on must be registered with [Azure Arc](../../../sql-server/azure-arc/overview.md). To enable SQL Server's communication with Azure, you need to install the [Azure Arc Agent](/azure/azure-arc/servers/overview) and [Azure extension for SQL Server](../../../sql-server/azure-arc/overview.md).
+### Setting up Microsoft Entra authentication with Azure Arc
+
+For SQL Server to communicate with Azure, both SQL Server and the Windows or Linux host it runs on can be registered with [Azure Arc](../../../sql-server/azure-arc/overview.md). To enable SQL Server's communication with Azure, you need to install the [Azure Arc Agent](/azure/azure-arc/servers/overview) and [Azure extension for SQL Server](../../../sql-server/azure-arc/overview.md).
 
 To get started, see [Connect your SQL Server to Azure Arc](../../../sql-server/azure-arc/connect.md).
 
-> [!Note]
+> [!NOTE]
 > If you are running SQL Server on an Azure VM, you don't need to register the VM with Azure Arc, you must instead register the VM with the [SQL IaaS Agent extension](/azure/azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm). Once the VM is registered, see [Enable Azure AD authentication for SQL Server on Azure VMs](/azure/azure-sql/virtual-machines/windows/configure-azure-ad-authentication-for-sql-vm) for more details.
+
+### Setting up Microsoft Entra authentication without Azure Arc
+
+You can also set up Microsoft Entra authentication for SQL Server on Windows without using Azure Arc. This approach involves manually configuring certificates, registry settings, and Microsoft Entra ID application registrations. For detailed instructions, see [Tutorial: Enable Microsoft Entra authentication for SQL Server on Windows without Azure Arc](microsoft-entra-authentication-sql-server-enable-without-arc.md).
 
 ## <a id="azure-active-directory-default"></a> Default authentication
 
@@ -109,5 +115,6 @@ Some non-GUI clients such as [Invoke-sqlcmd](/powershell/module/sqlserver/invoke
 - [Linked server for SQL Server with Microsoft Entra authentication](azure-ad-authentication-sql-server-linked-server.md)
 - [Tutorial: Using automation to set up the Microsoft Entra admin for SQL Server](azure-ad-authentication-sql-server-automation-setup-tutorial.md)
 - [Tutorial: Set up Microsoft Entra authentication for SQL Server](azure-ad-authentication-sql-server-setup-tutorial.md)
+- [Tutorial: Enable Microsoft Entra authentication for SQL Server on Windows without Azure Arc](microsoft-entra-authentication-sql-server-enable-without-arc.md)
 - [Rotate certificates](../../../sql-server/azure-arc/rotate-certificates.md)
 - [Connect your SQL Server to Azure Arc](../../../sql-server/azure-arc/connect.md)
