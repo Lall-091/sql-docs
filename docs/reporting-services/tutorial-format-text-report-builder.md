@@ -1,8 +1,6 @@
 ---
 title: "Tutorial: Format text (Report Builder)"
 description: Learn how to format text in various ways in a Reporting Services paginated report. For example, you can experiment with different formats.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

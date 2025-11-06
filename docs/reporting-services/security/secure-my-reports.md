@@ -1,8 +1,6 @@
 ---
 title: "Secure My Reports"
 description: "Secure My Reports"
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: security

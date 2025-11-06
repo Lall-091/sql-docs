@@ -194,11 +194,13 @@
       },
       "author": {
         "azdata/**/*.md": "swells",
-        "**/*/index.yml": "MikeRayMSFT"
+        "**/*/index.yml": "MikeRayMSFT",
+        "reporting-services/**/*.md": "nidenyse"
       },
       "ms.author": {
         "azdata/**/*.md": "seanw",
-        "**/*/index.yml": "mikeray"
+        "**/*/index.yml": "mikeray",
+        "reporting-services/**/*.md": "dniwenshuti"
       },
       "ms.date": {
         "azdata/**/*.md": "02/09/2021"

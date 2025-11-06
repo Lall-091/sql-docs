@@ -1,8 +1,6 @@
 ---
 title: "InstanceName property (WMI MSReportServer_Instance)"
 description: "InstanceName property (WMI MSReportServer_Instance)"
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: wmi-provider-library-reference

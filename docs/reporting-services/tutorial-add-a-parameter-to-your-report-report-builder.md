@@ -1,8 +1,6 @@
 ---
 title: "Tutorial: Add parameters to your report (Report Builder)"
 description: Learn how to add parameters to a Reporting Services paginated report to support multiple-value parameters, report data filters, and data visibility.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

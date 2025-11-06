@@ -1,8 +1,6 @@
 ---
 title: "Set report processing properties"
 description: Learn about report execution properties in Report Server that control how reports are processed and how to set them for each report by using the web portal.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

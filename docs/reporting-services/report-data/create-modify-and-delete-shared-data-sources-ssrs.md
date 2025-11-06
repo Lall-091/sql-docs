@@ -1,8 +1,6 @@
 ---
 title: "Create, Modify, and Delete Shared Data Sources"
 description: Learn to manage data sources that can be referenced by multiple reports, models, and data-driven subscriptions that run on a Reporting Services report server.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

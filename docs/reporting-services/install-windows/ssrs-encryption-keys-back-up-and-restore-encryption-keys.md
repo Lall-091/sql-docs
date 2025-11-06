@@ -1,8 +1,6 @@
 ---
 title: "Back up and restore SQL Server Reporting Services (SSRS) encryption keys"
 description: "Learn how to back up and restore SSRS encryption keys by using Report Server Configuration Manager."
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

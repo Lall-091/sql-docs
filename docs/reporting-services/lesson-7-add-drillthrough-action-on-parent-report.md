@@ -1,8 +1,6 @@
 ---
 title: "Lesson 7: Add a drillthrough action on the parent report"
 description: Learn how to add a drillthrough action on the parent report after you add a ReportViewer control to the website application.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

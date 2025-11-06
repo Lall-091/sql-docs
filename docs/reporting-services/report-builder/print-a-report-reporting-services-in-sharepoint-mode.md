@@ -1,8 +1,6 @@
 ---
 title: "Print a report (Reporting Services in SharePoint mode)"
 description: If a report server runs in SharePoint mode, you can print a report from a SharePoint Web application from a SharePoint site, a browser, or a target application.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-builder

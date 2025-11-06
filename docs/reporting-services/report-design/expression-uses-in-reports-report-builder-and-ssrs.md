@@ -1,8 +1,6 @@
 ---
 title: "Expression uses in paginated reports"
 description: Specify or calculate values with paginated report expressions for parameters, queries, filters, and text box properties in Report Builder.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

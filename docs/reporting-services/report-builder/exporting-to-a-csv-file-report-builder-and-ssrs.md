@@ -1,8 +1,6 @@
 ---
 title: "Export a paginated report to a CSV file"
 description: In Report Builder, the CSV rendering extension renders paginated reports to a plain text format that is readable and compatible with many applications.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-builder

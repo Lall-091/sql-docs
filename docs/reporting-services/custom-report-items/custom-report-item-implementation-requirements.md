@@ -1,8 +1,6 @@
 ---
 title: "Custom report item implementation requirements"
 description: Learn about the development and deployment requirements that you need for custom report item implementations.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: custom-report-items

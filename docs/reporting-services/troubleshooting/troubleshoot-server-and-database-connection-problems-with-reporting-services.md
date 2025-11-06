@@ -1,8 +1,6 @@
 ---
 title: Troubleshoot server and database connection problems
 description: Learn how to diagnose and fix problems you experience when you're connecting to a report server and about 'Unexpected error' messages.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: troubleshooting

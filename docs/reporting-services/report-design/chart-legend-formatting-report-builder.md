@@ -1,8 +1,6 @@
 ---
 title: "Formatting the legend on a paginated report chart"
 description: Learn how to format a legend on a paginated report chart in Report Builder with the Legend Properties dialog box or by using the Properties pane.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

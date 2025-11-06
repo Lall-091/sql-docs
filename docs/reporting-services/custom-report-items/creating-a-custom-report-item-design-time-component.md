@@ -1,8 +1,6 @@
 ---
 title: "Creating a custom report item design-time component"
 description: Learn how to create a custom report item design-time component. This component provides an activated design surface that can accept drag-and-drop operations.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: custom-report-items

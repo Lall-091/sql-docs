@@ -1,8 +1,6 @@
 ---
 title: "Uninstall Report Builder"
 description: "Uninstall Report Builder"
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

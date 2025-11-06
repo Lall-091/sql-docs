@@ -1,8 +1,6 @@
 ---
 title: "Implement the IRenderingExtension interface"
 description: Learn how to implement the IRenderingExtension interface, which transforms report data into output formats that viewers, printers, and other targets consume.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: extensions

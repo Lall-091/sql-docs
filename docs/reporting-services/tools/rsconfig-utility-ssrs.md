@@ -1,8 +1,6 @@
 ---
 title: "rsconfig utility"
 description: Learn about the rsconfig.exe utility that encrypts and stores report server database connection and account values in the RSReportServer.config file.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools

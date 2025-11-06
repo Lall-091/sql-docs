@@ -1,8 +1,6 @@
 ---
 title: "File share delivery in Reporting Services"
 description: Learn how to set up the file share delivery extension in Reporting Services so that you can deliver a report to a folder.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: subscriptions

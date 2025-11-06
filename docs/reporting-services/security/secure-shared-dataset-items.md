@@ -1,8 +1,6 @@
 ---
 title: "Secure shared dataset items"
 description: "Secure shared dataset items"
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: security

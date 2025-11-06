@@ -1,8 +1,6 @@
 ---
 title: "MSReportServer_Instance methods"
 description: "MSReportServer_Instance methods"
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: wmi-provider-library-reference

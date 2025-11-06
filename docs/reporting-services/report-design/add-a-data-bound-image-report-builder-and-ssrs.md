@@ -1,8 +1,6 @@
 ---
 title: "Add a data-bound image to a paginated report"
 description: Learn how to reference an image that is stored in a database to display the image in your paginated reports in Report Builder.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

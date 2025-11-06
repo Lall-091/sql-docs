@@ -1,8 +1,6 @@
 ---
 title: "Prepare data for Reporting Services mobile reports"
 description: SQL Server Mobile Report Publisher supports complex data operations, like filtering, aggregation, and time slicing. Learn to prepare data for these operations.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: mobile-reports

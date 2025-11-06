@@ -1,8 +1,6 @@
 ---
 title: "Images, text boxes, rectangles, and lines in a paginated report"
 description: Add visual interest, highlight key information, or provide related information in Report Builder. Add images, text boxes, rectangles, and lines in a paginated report.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

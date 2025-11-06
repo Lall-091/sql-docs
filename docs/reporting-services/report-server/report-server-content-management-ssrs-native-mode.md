@@ -1,8 +1,6 @@
 ---
 title: "Report server content management (native mode)"
 description: Learn about the web portal and the new web portal experience for Reporting Services content management. Manage items through properties and security settings.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

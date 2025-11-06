@@ -1,8 +1,6 @@
 ---
 title: "Subscription and delivery methods"
 description: In Reporting Services, you can use these methods to create and manage subscriptions and delivery of catalog items.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server-web-service

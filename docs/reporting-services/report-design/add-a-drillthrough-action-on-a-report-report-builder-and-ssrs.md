@@ -1,8 +1,6 @@
 ---
 title: "Add a drillthrough action on a paginated report"
 description: Improve query performance with the addition of a drillthrough action link in a text box, an image, or data points on a chart.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

@@ -1,8 +1,6 @@
 ---
 title: "Install Reporting Services 2016 in SharePoint mode"
 description: "Install Reporting Services 2016 in SharePoint mode"
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server-sharepoint

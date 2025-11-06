@@ -1,8 +1,6 @@
 ---
 title: "Managing Report Parts"
 description: Organize report parts for multiple users and reports, with choices of flexible options for publishing, permissions, and security.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

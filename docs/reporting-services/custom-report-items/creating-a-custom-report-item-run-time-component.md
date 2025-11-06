@@ -1,8 +1,6 @@
 ---
 title: "Creating a custom report item run-time component"
 description: Learn how to create a custom report item run-time component and define the properties for that component in the design environment.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: custom-report-items

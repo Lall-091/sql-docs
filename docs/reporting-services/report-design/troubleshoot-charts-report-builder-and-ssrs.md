@@ -1,8 +1,6 @@
 ---
 title: "Troubleshoot charts in a paginated report"
 description: Use fields with numeric data types along the value axis, rather than formatted numbers, to display a numeric value in a paginated report.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

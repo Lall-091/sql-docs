@@ -1,8 +1,6 @@
 ---
 title: "Migrate a Reporting Services Installation (SharePoint Mode)"
 description: "Migrate a Reporting Services Installation (SharePoint Mode)"
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server-sharepoint

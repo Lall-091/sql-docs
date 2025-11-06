@@ -1,8 +1,6 @@
 ---
 title: "Report server service trace log"
 description: Learn about report server trace logs in Reporting Services, which contain detailed information for Report Server service operations.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

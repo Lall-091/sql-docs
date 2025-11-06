@@ -1,8 +1,6 @@
 ---
 title: "Integrate using Report Viewer controls"
 description: Visual Studio provides two Report Viewer controls for integrating report viewing functionality into your applications.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: application-integration

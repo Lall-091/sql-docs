@@ -1,8 +1,6 @@
 ---
 title: "Add SQL Server Reporting Services Report Viewer web part to a SharePoint page"
 description: Display a report, from SQL Server Reporting Services or Power BI Report Server, by adding a Report Viewer web part to a SharePoint page.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server-sharepoint

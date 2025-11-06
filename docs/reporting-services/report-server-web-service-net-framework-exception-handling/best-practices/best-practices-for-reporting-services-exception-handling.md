@@ -1,8 +1,6 @@
 ---
 title: "Best practices for Reporting Services exception management"
 description: Learn about best practices for Reporting Services exception handling, such as how to deal with error cases that don't throw exceptions.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server-web-service

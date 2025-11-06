@@ -1,8 +1,6 @@
 ---
 title: Configure Basic authentication on the report server
 description: See how to configure the report server to support Basic authentication. View configuration file entries to use to configure Basic authentication options.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: security

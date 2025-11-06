@@ -1,8 +1,6 @@
 ---
 title: "Feature reference (Reporting Services)"
 description: Learn about SQL Server Reporting Services tools and applications that you can use to create, manage, and view reports.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

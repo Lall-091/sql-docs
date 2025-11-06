@@ -1,8 +1,6 @@
 ---
 title: "Interactive functionality - different report rendering extensions"
 description: Reporting Services allows you to interact with a paginated report at runtime. This article describes how the interactive features work in specific formats.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-builder

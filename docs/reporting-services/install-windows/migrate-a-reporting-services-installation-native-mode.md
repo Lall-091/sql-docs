@@ -1,8 +1,6 @@
 ---
 title: "Migrate a Reporting Services Installation (Native Mode)"
 description: Learn how to migrate a supported version of Reporting Services Installation native mode deployment to a new SQL Server Reporting Services instance.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

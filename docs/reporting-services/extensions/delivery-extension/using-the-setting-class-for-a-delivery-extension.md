@@ -1,8 +1,6 @@
 ---
 title: "Use the Setting class for a delivery extension"
 description: Learn how delivery extensions can use the Setting class, which stores information that the delivery extension needs to deliver notifications and reports.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: extensions

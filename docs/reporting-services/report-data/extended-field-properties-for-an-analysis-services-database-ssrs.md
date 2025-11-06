@@ -1,8 +1,6 @@
 ---
 title: "Extended Field Properties for an Analysis Services Database"
 description: Learn about extended field properties for an Analysis Services database and how to include extended field property values in your report.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

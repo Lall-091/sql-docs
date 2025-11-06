@@ -1,8 +1,6 @@
 ---
 title: "New shared schedule (Management Studio)"
 description: Learn how to create a new shared schedule to run published reports and subscriptions by using the options on the New Schedule page in SQL Server Management Studio.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools

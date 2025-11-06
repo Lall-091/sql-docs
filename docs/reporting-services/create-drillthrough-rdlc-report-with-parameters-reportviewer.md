@@ -1,8 +1,6 @@
 ---
 title: "Create drillthrough (RDLC) reports with parameters - ReportViewer"
 description: Learn about creating a drillthrough (RDLC) report with parameters and a query in local mode reporting.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services

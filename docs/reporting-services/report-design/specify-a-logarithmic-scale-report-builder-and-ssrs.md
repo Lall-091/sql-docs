@@ -1,8 +1,6 @@
 ---
 title: "Specify a logarithmic scale in a paginated report"
 description: Improve the appearance of your chart by making your data more manageable with a logarithmic scale on a chart in a paginated report.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

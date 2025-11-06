@@ -1,8 +1,6 @@
 ---
 title: "Custom report item class libraries"
 description: Learn about the custom report item class libraries and use code samples to understand how to use these classes.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: custom-report-items

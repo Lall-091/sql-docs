@@ -1,8 +1,6 @@
 ---
 title: "Controlling page breaks, headings, columns, and rows in paginated reports"
 description: Optimize viewing and printing of your tables, lists, or images in paginated reports with choices for page lengths, columns, headings, and rows in Report Builder.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

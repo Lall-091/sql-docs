@@ -1,8 +1,6 @@
 ---
 title: "Azure SQL Connection Type"
 description: The Azure SQL Connection data extension supports multivalued parameters, server aggregates, and credentials managed separately from the connection string.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data

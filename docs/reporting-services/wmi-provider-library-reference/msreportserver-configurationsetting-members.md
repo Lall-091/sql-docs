@@ -1,8 +1,6 @@
 ---
 title: "MSReportServer_ConfigurationSetting members"
 description: "MSReportServer_ConfigurationSetting members"
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: wmi-provider-library-reference

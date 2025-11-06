@@ -1,8 +1,6 @@
 ---
 title: Paginated report parameters in Report Builder
 description: Learn how you can take advantage of common uses for Reporting Services paginated report parameters and their properties.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design

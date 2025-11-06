@@ -1,8 +1,6 @@
 ---
 title: "URL Reservation Syntax  (Configuration Manager)"
 description: "URL Reservation Syntax  (Report Server Configuration Manager)"
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server

@@ -1,8 +1,6 @@
 ---
 title: "Print a report (Report Builder)"
 description: You can view and print a report from a browser, the Reporting Services web portal, or any application that you use to view an exported report.
-author: kfollis
-ms.author: kfollis
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-builder

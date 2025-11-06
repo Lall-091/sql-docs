@@ -1,8 +1,8 @@
 ---
 title: "What's New in SQL Server Reporting Services (SSRS)"
 description: Learn about what's new in the different versions of SQL Server Reporting Services (SSRS), including changes to the major feature areas.
-author: kfollis
-ms.author: kfollis
+
+
 ms.reviewer: randolphwest
 ms.date: 06/16/2025
 ms.service: reporting-services
