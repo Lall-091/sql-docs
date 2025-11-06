@@ -69,10 +69,11 @@ Use the following to configure auditing using user-assigned managed identity:
 
 # [The Azure CLI](#tab/azure-cli)
 
-In order to use a managed identity, pass the `--storage-key` parameter as an empty string to use the primary managed identity assigned to the server when configuring auditing. Here's a sample command:
+In order to use a managed identity, pass the `--storage-key` parameter as an empty string to use the primary managed identity assigned to the server when configuring auditing. Here's a sample command :
 
-```azurecli
-az SQL server audit-policy update -g "sampleresourcegroup" -n "sampleauditingtestserver" --state Enabled --bsts Enabled --storage-endpoint https://<storageaccountname>.blob.core.windows.net --storage-key ""
+
+```azurecli 
+az SQL server audit-policy update -g "sampleresourcegroup" -n "sampleauditingtestserver" --state Enabled --bsts Enabled --storage-endpoint https://<storageaccountname>.blob.core.windows.net --storage-key """"
 ```
 
 For more information, see [az sql server audit-policy](/cli/azure/sql/server/audit-policy).
