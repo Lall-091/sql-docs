@@ -653,7 +653,7 @@ Azure Data Lake Storage (ADLS) Gen2 offers better performance than Azure Blob St
 Wildcards can be included in the path where
 
 - Wildcard path name matching is case-sensitive
-- Wildcard can be escaped using the backslash character (\\)
+- Wildcard can be escaped using the backslash character (`\`)
 
 > [!NOTE]  
 > For best performance, avoid specifying wildcards that would expand over a larger number of files. If possible, list multiple file locations instead of specifying wildcards.
@@ -680,21 +680,22 @@ To access files on Azure Data Lake Storage (ADLS) Gen2 and Azure Blob Storage lo
 
 #### *CREDENTIAL (IDENTITY = '', SECRET = '')*
 
-*CREDENTIAL* specifies the authentication mechanism to access the external storage account. 
+`CREDENTIAL` specifies the authentication mechanism to access the external storage account. 
 
 In Fabric Data Warehouse: 
--    For private storage accounts, the only supported authentication mechanisms are Shared Access Signature (SAS) and Storage Account Key (SAK).  
--    For public storage accounts, Microsoft Entra ID authentication is the only supported authentication method. When using a public storage account, CREDENTIAL does not need to be specified. By default the executing user's Entra ID is used.
+- `COPY INTO` is not supported where public access is disabled.
+- For public storage accounts, the supported authentication mechanisms are Microsoft Entra ID, Shared Access Signature (SAS), or Storage Account Key (SAK). 
+- For public storage accounts behind a firewall, Microsoft Entra ID authentication is the only supported authentication method. `COPY INTO` using OneLake as source only supports EntraID authentication.
 
-The user's EntraID authentication is default. No credential needs to be specified. COPY INTO using OneLake as source only supports EntraID authentication.
+The user's EntraID authentication is default. No credential needs to be specified. 
 
 - Authenticating with Shared Access Signature (SAS)
-  - *IDENTITY: A constant with a value of 'Shared Access Signature'*
-  - *SECRET: The* [*shared access signature*](/azure/storage/common/storage-sas-overview) *provides delegated access to resources in your storage account.*
-  - Minimum permissions required: READ and LIST
+  - `IDENTITY`: A constant with a value of 'Shared Access Signature'.
+  - `SECRET`: The [shared access signature](/azure/storage/common/storage-sas-overview) provides delegated access to resources in your storage account.
+  - Minimum permissions required: READ and LIST.
 - Authenticating with Storage Account Key
-  - *IDENTITY: A constant with a value of 'Storage Account Key'*
-  - *SECRET: Storage account key*
+  - `IDENTITY`: A constant with a value of 'Storage Account Key'.
+  - `SECRET`: Storage account key.
 
 #### *ERRORFILE = Directory Location*
 
