@@ -59,7 +59,7 @@ Beginning with [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)], [!INCLUDE 
 The download location for [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] depends on the edition:
 
 - **[!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] Enterprise, Standard, and Express editions** are licensed for production use. For the Enterprise and Standard Editions, contact your software vendor for the installation media. You can find purchasing information and a directory of Microsoft partners on the [Microsoft licensing page](https://www.microsoft.com/licensing/product-licensing/sql-server).
-- If you have a volume licensing agreement, for example an [Enterprise Agreement](https://www.microsoft.com/licensing/licensing-programs/enterprise), you can download software from the [Volume Licensing Service Center (VLSC)](https://www.microsoft.com/licensing/servicecenter/default.aspx).
+- If you have a volume licensing agreement, for example an [Enterprise Agreement](https://www.microsoft.com/licensing/licensing-programs/enterprise), you can download software from the [Microsoft 365 admin center](https://go.microsoft.com/fwlink/p/?linkid=2024339). The software's activation wizard automatically detects an embedded product key during installation.
 - [Free versions](https://www.microsoft.com/sql-server/sql-server-downloads).
 
 Other [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] components can be found here:
