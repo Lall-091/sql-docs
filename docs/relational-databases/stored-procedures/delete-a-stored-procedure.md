@@ -9,12 +9,12 @@ ms.service: sql
 ms.subservice: stored-procedures
 ms.topic: how-to
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "removing stored procedures"
   - "stored procedures [SQL Server], deleting"
   - "deleting stored procedures"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Delete a stored procedure
 

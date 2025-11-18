@@ -4,13 +4,13 @@ description: This detailed guide explains available configuration options when d
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: dpless
-ms.date: 09/15/2025
+ms.date: 11/18/2025
 ms.service: azure-vm-sql-server
 ms.subservice: deployment
 ms.topic: how-to
 ms.custom:
-  - build-2025
   - sfi-image-nochange
+  - ignite-2025
 tags: azure-resource-manager
 ---
 # Provision SQL Server on Azure VM (Azure portal)
@@ -32,7 +32,7 @@ Use the Azure Marketplace to choose one of several pre-configured images from th
 The Developer edition is used in this article because it's a full-featured, free edition of SQL Server for development testing. You pay only for the cost of running the VM. However, you're free to choose any of the images to use in this walkthrough. For a description of available images, see the [SQL Server Windows Virtual Machines overview](sql-server-on-azure-vm-iaas-what-is-overview.md#sql-vm-images-and-licensing).
 
 > [!NOTE]  
-> SQL Server 2025 Preview introduces separate Enterprise Developer and Standard Developer editions of SQL Server.
+> SQL Server 2025 introduces separate Enterprise Developer and Standard Developer editions of SQL Server.
 
 Licensing costs for SQL Server are incorporated into the per-second pricing of the VM you create and varies by edition and cores. However, SQL Server Developer edition is free for development and testing but not production. Also, SQL Express is free for lightweight workloads (less than 1 GB of memory, less than 10 GB of storage). You can also allocate your SQL Server license to your SQL Server on Azure VM with the [Azure Hybrid Benefit](sql-server-on-azure-vm-iaas-what-is-overview.md#azure-hybrid-benefit) and pay only for the VM. For more information on these options, see [Pricing guidance for SQL Server Azure VMs](pricing-guidance.md).
 

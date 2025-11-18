@@ -9,7 +9,7 @@ ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "sql13.swb.databaseuser.permissions.database.f1--May use common.permissions"
   - "sql13.swb.databaseuser.permissions.object.f1--May use common.permissions"
@@ -18,7 +18,7 @@ helpviewer_keywords:
   - "permissions [SQL Server]"
   - "security [SQL Server], permissions"
   - "naming conventions [SQL Server]"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # Permissions (Database Engine)
 

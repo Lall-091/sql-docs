@@ -7,6 +7,8 @@ ms.date: "12/01/2016"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "securable_classes_TSQL"
   - "securable_classes"
@@ -16,10 +18,10 @@ helpviewer_keywords:
   - "sys.securable_classes catalog view"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||=fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # sys.securable_classes (Transact-SQL)
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
   Returns a list of securable classes  
   
@@ -42,3 +44,4 @@ SELECT * FROM sys.securable_classes ORDER BY class;
  [Securables](../../relational-databases/security/securables.md)  
   
   
+

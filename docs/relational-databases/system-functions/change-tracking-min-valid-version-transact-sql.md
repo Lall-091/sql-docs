@@ -7,6 +7,8 @@ ms.date: "08/08/2016"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "CHANGE_TRACKING_CLEANUP_VERSION"
   - "CHANGE_TRACKING_CLEANUP_VERSION_TSQL"
@@ -15,10 +17,10 @@ helpviewer_keywords:
   - "change tracking [SQL Server], CHANGE_TRACKING_MIN_VALID_VERSION"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # CHANGE_TRACKING_MIN_VALID_VERSION (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Returns the minimum version on the client that is valid for use in obtaining change tracking information from the specified table, when you're using the [CHANGETABLE](../../relational-databases/system-functions/changetable-transact-sql.md) function.  
     
@@ -82,3 +84,4 @@ ELSE
  [sys.change_tracking_tables &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/change-tracking-catalog-views-sys-change-tracking-tables.md)  
   
   
+

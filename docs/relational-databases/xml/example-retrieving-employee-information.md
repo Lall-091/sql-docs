@@ -8,12 +8,14 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "EXPLICIT mode"
 ---
 # Example: Retrieve employee information
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This example retrieves an employee ID and employee name for each employee. In the [!INCLUDE[ssSampleDBobject](../../includes/sssampledbobject-md.md)] database, the employeeID can be obtained from the BusinessEntityID column in the Employee table. Employee names can be obtained from the Person table. The BusinessEntityID column can be used to join the tables.
 
@@ -115,3 +117,4 @@ This process is repeated for rest of the rows in the rowset. Note the importance
 ## See also
 
 - [Use EXPLICIT Mode with FOR XML](../../relational-databases/xml/use-explicit-mode-with-for-xml.md)
+

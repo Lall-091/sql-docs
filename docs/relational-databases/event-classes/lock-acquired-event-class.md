@@ -8,13 +8,15 @@ ms.date: 06/27/2025
 ms.service: sql
 ms.subservice: supportability
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
-  - "Acquired event class"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+  - "Lock:Acquired event class"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Lock:Acquired Event Class
 
-[!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
+ [!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
 
 The Lock:Acquired event class indicates that acquisition of a lock on a resource, such as a data page, has been achieved.
 
@@ -59,3 +61,4 @@ The Lock:Acquired and Lock:Released event classes can be used to monitor when ob
 - [Lock:Released Event Class](lock-released-event-class.md)
 - [sp_trace_setevent (Transact-SQL)](../system-stored-procedures/sp-trace-setevent-transact-sql.md)
 - [sys.dm_tran_locks (Transact-SQL)](../system-dynamic-management-views/sys-dm-tran-locks-transact-sql.md)
+

@@ -4,15 +4,15 @@ description: EDIT_DISTANCE calculates the number of insertions, deletions, subst
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: abhtiwar, wiassaf, randolphwest
-ms.date: 05/19/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
-dev_langs:
-  - "TSQL"
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric || >=sql-server-2016"
 ms.custom:
-  - build-2025
+  - ignite-2025
+dev_langs:
+  - TSQL
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb || >=sql-server-2016"
 ---
 
 # EDIT_DISTANCE (Transact-SQL) preview
@@ -23,7 +23,7 @@ ms.custom:
 
 Calculates the number of insertions, deletions, substitutions, and transpositions needed to transform one string to another.
 
-> [!NOTE]
+> [!NOTE]  
 >
 > - `EDIT_DISTANCE` is in preview.
 > - `EDIT_DISTANCE` currently doesn't support transpositions.
@@ -34,20 +34,20 @@ Calculates the number of insertions, deletions, substitutions, and transposition
 
 ```syntaxsql
 EDIT_DISTANCE (
-    character_expression,
-    character_expression [ , maximum_distance ]
-)  
+    character_expression
+    , character_expression [ , maximum_distance ]
+)
 ```
 
 ## Arguments
 
 #### *character_expression*
 
-An alphanumeric expression of character data. *character_expression* can be a constant, variable, or column. The character expression cannot be of type **varchar(max)** or **nvarchar(max)**.
+An alphanumeric expression of character data. *character_expression* can be a constant, variable, or column. The character expression can't be of type **varchar(max)** or **nvarchar(max)**.
 
 #### *maximum_distance*
 
-The maximum distance that should be computed. Integer. If greater than or equal to zero, then the function returns the actual distance value or a distance value that is greater than *maxiumum_distance* value. If the actual distance is greater than *maximum_distance*, then the function may return a value greater than or equal to *maximum_distance*. If the parameter is not specified or if *maximum_distance* is negative, then the function returns the actual number of transformations needed. If the value is NULL, then the function returns NULL.
+The maximum distance that should be computed. *maximum_distance* is an integer. If greater than or equal to zero, then the function returns the actual distance value or a distance value that is greater than *maxiumum_distance* value. If the actual distance is greater than *maximum_distance*, then the function might return a value greater than or equal to *maximum_distance*. If the parameter isn't specified or if *maximum_distance* is negative, then the function returns the actual number of transformations needed. If the value is NULL, then the function returns NULL.
 
 ## Return value
 
@@ -57,13 +57,13 @@ The maximum distance that should be computed. Integer. If greater than or equal 
 
 This function implements the Damerau-Levenshtein algorithm. If any of the inputs is `NULL` then the function returns a `NULL` value. Otherwise, the function returns an integer value from 0 to the number of transformations or *maximum_distance* value.
 
-## Example
+## Examples
 
 The following example compares two words and returns the `EDIT_DISTANCE()` value as a column, named `Distance`.
 
 ```sql
-SELECT 'Colour' AS WordUK, 
-       'Color' AS WordUS, 
+SELECT 'Colour' AS WordUK,
+       'Color' AS WordUS,
        EDIT_DISTANCE('Colour', 'Color') AS Distance;
 ```
 
@@ -79,6 +79,6 @@ For additional examples, see [Example *EDIT_DISTANCE()*](../../relational-databa
 
 ## Related content
 
-- [EDIT_DISTANCE_SIMILARITY](edit-distance-similarity-transact-sql.md)
-- [JARO_WINKLER_DISTANCE](jaro-winkler-distance-transact-sql.md)
-- [JARO_WINKLER_SIMILARITY](jaro-winkler-similarity-transact-sql.md)
+- [EDIT_DISTANCE_SIMILARITY (Transact-SQL)](edit-distance-similarity-transact-sql.md)
+- [JARO_WINKLER_DISTANCE (Transact-SQL)](jaro-winkler-distance-transact-sql.md)
+- [JARO_WINKLER_SIMILARITY (Transact-SQL)](jaro-winkler-similarity-transact-sql.md)

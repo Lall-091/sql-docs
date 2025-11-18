@@ -8,6 +8,8 @@ ms.date: 04/04/2024
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "LEAST"
   - "LEAST_TSQL"
@@ -15,11 +17,11 @@ helpviewer_keywords:
   - "LEAST function"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-ver16||>=sql-server-linux-ver16||=azuresqldb-current||=azuresqldb-mi-current||=azure-sqldw-latest||=fabric"
+monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-current || =azuresqldb-mi-current || =azure-sqldw-latest || =fabric || =fabric-sqldb"
 ---
 # Logical functions - LEAST (Transact-SQL)
 
-[!INCLUDE [sqlserver-2022-asdb-asmi-asa-fabricse-fabricdw](../../includes/applies-to-version/sqlserver2022-asdb-asmi-asa-fabricse-fabricdw.md)]
+[!INCLUDE [sqlserver-2022-asdb-asmi-asa-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sqlserver2022-asdb-asmi-asa-fabricse-fabricdw-fabricsqldb.md)]
 
 This function returns the minimum value from a list of one or more expressions.
 
@@ -223,3 +225,4 @@ Var3       0.610                 0.590
 - [MIN (Transact-SQL)](../../t-sql/functions/min-transact-sql.md)
 - [CASE (Transact-SQL)](../../t-sql/language-elements/case-transact-sql.md)
 - [CHOOSE (Transact-SQL)](../../t-sql/functions/logical-functions-choose-transact-sql.md)
+

@@ -3,13 +3,13 @@ title: "IDENTITY (Property) (Transact-SQL)"
 description: Creates an identity column in a table.
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: randolphwest
-ms.date: 10/24/2023
+ms.reviewer: randolphwest, wiassaf, procha
+ms.date: 10/30/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "IDENTITY_TSQL"
   - "IDENTITY"
@@ -19,28 +19,38 @@ helpviewer_keywords:
   - "identity columns [SQL Server], IDENTITY property"
   - "autonumbers, identity numbers"
 dev_langs:
-  - "TSQL"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+  - TSQL
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # CREATE TABLE (Transact-SQL) IDENTITY (Property)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricsqldb.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricdw-fabricsqldb.md)]
 
-Creates an identity column in a table. This property is used with the CREATE TABLE and ALTER TABLE [!INCLUDE [tsql](../../includes/tsql-md.md)] statements.
+Creates an identity column in a table. This property is used with the `CREATE TABLE` and `ALTER TABLE` [!INCLUDE [tsql](../../includes/tsql-md.md)] statements.
 
 > [!NOTE]  
 > The IDENTITY property is different from the SQL-DMO `Identity` property that exposes the row identity property of a column.
 
-:::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
+:::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ## Syntax
+
+::: moniker range="=fabric" 
+
+Syntax for Fabric Data Warehouse:
+
+```syntaxsql
+IDENTITY 
+```
+
+::: moniker-end
+
+::: moniker range="=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 
 ```syntaxsql
 IDENTITY [ (seed , increment) ]
 ```
-
-[!INCLUDE [synapse-analytics-od-unsupported-syntax](../../includes/synapse-analytics-od-unsupported-syntax.md)]
-
+ 
 ## Arguments
 
 #### *seed*
@@ -51,14 +61,17 @@ The value that is used for the very first row loaded into the table.
 
 The incremental value that is added to the identity value of the previous row that was loaded.
 
-> [!NOTE]  
-> In Azure Synapse Analytics values for identity aren't incremental due to the distributed architecture of the data warehouse. For more information, see [Using IDENTITY to create surrogate keys in a Synapse SQL pool](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-identity#allocation-of-values).
-
 You must specify both the seed and increment or neither. If neither is specified, the default is (1,1).
+
+::: moniker-end
 
 ## Remarks
 
-Identity columns can be used for generating key values. The identity property on a column guarantees the following conditions:
+Identity columns can be used for generating key values. 
+
+::: moniker range="=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
+
+The identity property on a column guarantees the following conditions:
 
 - Each new value is generated based on the current seed and increment.
 
@@ -67,9 +80,6 @@ Identity columns can be used for generating key values. The identity property on
 The identity property on a column doesn't guarantee the following conditions:
 
 - **Uniqueness of the value** - Uniqueness must be enforced by using a `PRIMARY KEY` or `UNIQUE` constraint or `UNIQUE` index.
-
-  > [!NOTE]  
-  > Azure Synapse Analytics doesn't support `PRIMARY KEY` or `UNIQUE` constraint or `UNIQUE` index. For more information, see [Using IDENTITY to create surrogate keys in a Synapse SQL pool](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-identity#what-is-a-surrogate-key).
 
 - **Consecutive values within a transaction** - A transaction inserting multiple rows isn't guaranteed to get consecutive values for the rows because other concurrent inserts might occur on the table. If values must be consecutive, then the transaction should use an exclusive lock on the table or use the `SERIALIZABLE` isolation level.
 
@@ -81,13 +91,31 @@ These restrictions are part of the design in order to improve performance, and b
 
 If a table with an identity column is published for replication, the identity column must be managed in a way that is appropriate for the type of replication used. For more information, see [Replicate Identity Columns](../../relational-databases/replication/publish/replicate-identity-columns.md).
 
-Only one identity column can be created per table.
-
 In memory-optimized tables, the seed and increment must be set to `1, 1`. Setting the seed or increment to a value other than `1` results in the following error: `The use of seed and increment values other than 1 is not supported with memory optimized tables`.
+
+::: moniker-end
+
+Only one identity column can be created per table.
 
 Once the identity property is set on a column, it can't be removed. The data type can be changed as long as the new data type is compatible with the identity property.
 
+::: moniker range="=fabric" 
+
+In Fabric Data Warehouse, you cannot specify `seed` or `increment`, as these values are automatically managed to provide unique integers. `BIGINT IDENTITY` is all that is required for a column definition in a `CREATE TABLE` statement. For more information, see [IDENTITY in Fabric Data Warehouse](/fabric/data-warehouse/identity).
+
+You can [migrate tables to Fabric Data Warehouse with surrogate key columns](/fabric/data-warehouse/migrate-identity-columns) after adapting to the differences in the `IDENTITY` implementation in Fabric Data Warehouse.
+
+::: moniker-end
+
+::: moniker Range="=azure-sqldw-latest"
+Azure Synapse Analytics doesn't support `PRIMARY KEY` or `UNIQUE` constraint or `UNIQUE` index. For more information, see [Using IDENTITY to create surrogate keys in a Synapse SQL pool](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-identity#what-is-a-surrogate-key).
+    - In dedicated SQL pools in Azure Synapse Analytics, values for identity aren't incremental due to the distributed architecture of the data warehouse. For more information, see [Using IDENTITY to create surrogate keys in a Synapse SQL pool](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-identity#allocation-of-values). 
+    - `IDENTITY` is not supported by serverless SQL pools in Azure Synapse Analytics.
+::: moniker-end
+
 ## Examples
+
+::: moniker range="=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 
 ### A. Use the IDENTITY property with CREATE TABLE
 
@@ -196,8 +224,40 @@ ELSE
 
 SET IDENTITY_INSERT img OFF;
 ```
+::: moniker-end
+
+::: moniker range="=fabric" 
+### A. Create a table with an IDENTITY column in Fabric Data Warehouse
+
+**Applies to:** Fabric Data Warehouse
+
+```sql
+CREATE TABLE dbo.Employees (
+    EmployeeID BIGINT IDENTITY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Retired BIT
+);
+```
+
+This statement creates the `dbo.Employees` table where every new row automatically receives a unique `EmployeeID` as a **bigint** value. For more information, see [IDENTITY in Fabric Data Warehouse](/fabric/data-warehouse/identity).
+
+We can use then `SELECT... INTO` to create a copy of this table, persisting the `IDENTITY` property in the target table:
+
+```sql
+SELECT *
+INTO dbo.RetiredEmployees
+FROM dbo.Employees
+WHERE Retired = 1;
+```
+
+The column on the target table inherits the `IDENTITY` property from the source table. For a list of limitations that apply to this scenario, refer to the [Data Types section of SELECT - INTO Clause](../queries/select-into-clause-transact-sql.md?view=fabric&preserve-view=true#data-types).
+
+::: moniker-end
 
 ## Related content
+
+::: moniker range="=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 
 - [ALTER TABLE (Transact-SQL)](alter-table-transact-sql.md)
 - [CREATE TABLE (Transact-SQL)](create-table-transact-sql.md)
@@ -206,6 +266,16 @@ SET IDENTITY_INSERT img OFF;
 - [&#x40;&#x40;IDENTITY (Transact-SQL)](../functions/identity-transact-sql.md)
 - [IDENTITY (Function) (Transact-SQL)](../functions/identity-function-transact-sql.md)
 - [IDENT_SEED (Transact-SQL)](../functions/ident-seed-transact-sql.md)
-- [SELECT (Transact-SQL)](../queries/select-transact-sql.md)
 - [SET IDENTITY_INSERT (Transact-SQL)](set-identity-insert-transact-sql.md)
 - [Replicate Identity Columns](../../relational-databases/replication/publish/replicate-identity-columns.md)
+- [sys.identity_columns](../../relational-databases/system-catalog-views/sys-identity-columns-transact-sql.md) 
+
+::: moniker-end
+
+::: moniker range="=fabric" 
+
+- [IDENTITY in Fabric Data Warehouse](/fabric/data-warehouse/identity)
+- [sys.identity_columns](../../relational-databases/system-catalog-views/sys-identity-columns-transact-sql.md) 
+- [Migrate tables to Fabric Data Warehouse with surrogate key columns](/fabric/data-warehouse/migrate-identity-columns)
+
+::: moniker-end

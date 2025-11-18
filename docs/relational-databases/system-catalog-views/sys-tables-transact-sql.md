@@ -7,6 +7,8 @@ ms.date: 03/27/2024
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.tables_TSQL"
   - "sys.tables"
@@ -14,11 +16,11 @@ helpviewer_keywords:
   - "sys.tables catalog view"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # sys.tables (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 Returns a row for each user table in a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] database.
 
@@ -132,3 +134,4 @@ WHERE T1.temporal_type = 2;
 - [DBCC CHECKTABLE (Transact-SQL)](../../t-sql/database-console-commands/dbcc-checktable-transact-sql.md)
 - [Querying the SQL Server System Catalog FAQ](querying-the-sql-server-system-catalog-faq.yml)
 - [In-Memory OLTP overview and usage scenarios](../in-memory-oltp/overview-and-usage-scenarios.md)
+

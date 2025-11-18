@@ -7,6 +7,8 @@ ms.date: "08/08/2016"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "WITH_CHANGE_TRACKING_CONTEXT_TSQL"
   - "WITH CHANGE_TRACKING_CONTEXT"
@@ -15,10 +17,10 @@ helpviewer_keywords:
   - "change tracking [SQL Server], WITH CHANGE_TRACKING_CONTEXT"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # WITH CHANGE_TRACKING_CONTEXT (Transact-SQL)
-[!INCLUDE [SQL Server SQL Database](../../includes/applies-to-version/sql-asdb.md)]
+[!INCLUDE [SQL Server SQL Database-fabricsqldb](../../includes/applies-to-version/sql-asdb-fabricsqldb.md)]
 
   Enables the context of a change to be specified, such as an originator ID, when data is changed. For example, when using change tracking, an application might want to differentiate between changes that were made by the application itself and changes that were made to the data outside the application.  
 
@@ -50,3 +52,4 @@ WITH CHANGE_TRACKING_CONTEXT ( context )
  [Track Data Changes &#40;SQL Server&#41;](../../relational-databases/track-changes/track-data-changes-sql-server.md)  
   
   
+

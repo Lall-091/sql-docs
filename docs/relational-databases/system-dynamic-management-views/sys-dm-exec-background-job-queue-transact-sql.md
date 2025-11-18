@@ -7,6 +7,8 @@ ms.date: "02/24/2023"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "dm_exec_background_job_queue"
   - "sys.dm_exec_background_job_queue_TSQL"
@@ -16,10 +18,10 @@ helpviewer_keywords:
   - "sys.dm_exec_background_job_queue dynamic management function"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.dm_exec_background_job_queue (Transact-SQL)
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
   Returns a row for each query processor job that is scheduled for asynchronous (background) execution.  
   
@@ -78,3 +80,4 @@ GO
  - [Statistics](../../relational-databases/statistics/statistics.md)   
  - [KILL STATS JOB &#40;Transact-SQL&#41;](../../t-sql/language-elements/kill-stats-job-transact-sql.md)  
   
+

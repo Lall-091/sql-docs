@@ -8,6 +8,8 @@ ms.date: 12/06/2023
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "PERCENTILE_DISC"
   - "PERCENTILE_DISC_TSQL"
@@ -16,12 +18,12 @@ helpviewer_keywords:
   - "analytic functions,PERCENTILE_DISC"
 dev_langs:
   - "TSQL"
-monikerRange: "azuresqldb-current||=azuresqldb-mi-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqledge-current||=fabric"
+monikerRange: "=azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqledge-current || =fabric || =fabric-sqldb"
 ---
 
 # APPROX_PERCENTILE_DISC (Transact-SQL)
 
-[!INCLUDE [SQL Server 2022 Azure SQL Database Azure SQL Managed Instance Fabric SE DW](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricse-fabricdw.md)]
+[!INCLUDE [SQL Server 2022 Azure SQL Database Azure SQL Managed Instance Fabric SE DW FabricSQLDB](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricse-fabricdw-fabricsqldb.md)]
 
 This function returns the value from the set of values in a group based on the provided percentile and sort specification. Since this is an approximate function, the output would be within rank based error bound with certain confidence. As this approximate percentile is based on a discrete distribution of the column values, the output value would be equal to one of the specific values in the column. This function can be used as an alternative to PERCENTILE_DISC for large datasets where negligible error with faster response is acceptable as compared to accurate percentile value with slow response time.
 
@@ -94,3 +96,4 @@ GROUP BY DeptId
 
 - [PERCENTILE_DISC (Transact-SQL)](percentile-disc-transact-sql.md)
 - [APPROX_PERCENTILE_CONT (Transact-SQL)](approx-percentile-cont-transact-sql.md)
+

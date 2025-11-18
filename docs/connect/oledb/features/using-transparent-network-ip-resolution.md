@@ -7,9 +7,11 @@ ms.date: "01/02/2020"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 ---
 # Using Transparent Network IP Resolution
-[!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics PDW FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 [!INCLUDE[Driver_OLEDB_Download](../../../includes/driver_oledb_download.md)]
 
@@ -33,3 +35,4 @@ TransparentNetworkIPResolution is enabled by default. MultiSubnetFailover is dis
 
 ## See Also 
 [OLE DB Driver for SQL Server Support for High Availability, Disaster Recovery](./oledb-driver-for-sql-server-support-for-high-availability-disaster-recovery.md)
+

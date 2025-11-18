@@ -8,6 +8,8 @@ ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_trace_generateevent_TSQL"
   - "sp_trace_generateevent"
@@ -18,7 +20,7 @@ dev_langs:
 ---
 # sp_trace_generateevent (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Creates a user-defined event. The event can be collected using [SQL Trace](../sql-trace/sql-trace.md) or [Extended Events](../extended-events/extended-events.md).
 
@@ -130,3 +132,4 @@ SELECT CAST (0x5B007B0022004900640022003A0031002C002200440061007400610022003A002
 - [sys.fn_trace_geteventinfo (Transact-SQL)](../system-functions/sys-fn-trace-geteventinfo-transact-sql.md)
 - [sp_trace_setevent (Transact-SQL)](sp-trace-setevent-transact-sql.md)
 - [SQL Trace](../sql-trace/sql-trace.md)
+

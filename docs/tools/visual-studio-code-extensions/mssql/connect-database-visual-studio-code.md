@@ -10,7 +10,9 @@ ms.subservice: vs-code-sql-extensions
 ms.topic: quickstart
 ms.collection:
   - data-tools
-ms.custom: sfi-image-nochange
+ms.custom:
+  - sfi-image-nochange
+  - ignite-2025
 ---
 
 # Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code
@@ -31,7 +33,7 @@ To complete this quickstart, you must have:
 
   - **Azure SQL Database:** If you prefer a cloud-based option, create a free Azure account and set up an Azure SQL Database. For more information, see [Quickstart: Create a single database - Azure SQL Database](/azure/azure-sql/database/single-database-create-quickstart).
   
-  - **SQL database in Fabric (preview):** If you need a simple, autonomous and secure, and optimized for AI database, create a SQL database in Fabric (preview). For more information, see [Create a SQL database in Microsoft Fabric](/fabric/database/sql/tutorial-create-database).
+  - **SQL database in Fabric:** If you need a simple, autonomous and secure, and optimized for AI database, create a SQL database in Fabric. For more information, see [Create a SQL database in Microsoft Fabric](/fabric/database/sql/tutorial-create-database).
 
   - **Local SQL Server:** Alternatively, download and install SQL Server 2022 Developer Edition on your local machine. For more information, see [Microsoft SQL Server website](https://www.microsoft.com/sql-server/sql-server-downloads).
   

@@ -7,6 +7,8 @@ ms.date: "12/03/2019"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "GROUPING"
   - "GROUPING_TSQL"
@@ -19,10 +21,10 @@ helpviewer_keywords:
   - "CUBE operator"
 dev_langs:
   - "TSQL"
-monikerRange: "= azuresqldb-current || = azuresqldb-mi-current || >= sql-server-2016 || >= sql-server-linux-2017 || = azuresqledge-current || = azure-sqldw-latest||=fabric"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqledge-current || =azure-sqldw-latest || =fabric || =fabric-sqldb"
 ---
 # GROUPING (Transact-SQL)
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb.md)]
 
   Indicates whether a specified column expression in a GROUP BY list is aggregated or not. GROUPING returns 1 for aggregated or 0 for not aggregated in the result set. GROUPING can be used only in the SELECT \<select> list, HAVING, and ORDER BY clauses when GROUP BY is specified.  
   
@@ -74,3 +76,4 @@ NULL           44294026.1344         1
  [GROUP BY &#40;Transact-SQL&#41;](../../t-sql/queries/select-group-by-transact-sql.md)  
   
   
+

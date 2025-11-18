@@ -1,13 +1,15 @@
 ---
-title: "Full-Text Search"
+title: Full-Text Search
 description: Full-Text Search lets users and applications run full-text queries against character-based data in Database Engine tables.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray
-ms.date: 05/19/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: search
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "full-text search [SQL Server]"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
@@ -17,6 +19,9 @@ monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-20
 [!INCLUDE [sql-asdb-asdbmi](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
 
 Full-Text Search in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] lets users and applications run full-text queries against character-based data in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] tables.
+
+> [!IMPORTANT]  
+> There are breaking changes to Full-Text Search in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions. For more information, see [Breaking changes to Database Engine features in SQL Server 2025](../../database-engine/breaking-changes-to-database-engine-features-in-sql-server-2025.md#full-text-queries-and-populations-fail-after-upgrade).
 
 ## Basic tasks
 
@@ -58,18 +63,18 @@ Full-text queries use a small set of [!INCLUDE [tsql](../../includes/tsql-md.md)
   ```sql
   SELECT product_id
   FROM products
-  WHERE CONTAINS (product_description, '"Snap Happy 100EZ" OR FORMSOF(THESAURUS,"Snap Happy") OR "100EZ"')
-      AND product_cost < 200;
+  WHERE CONTAINS ((product_description), '"Snap Happy 100EZ" OR FORMSOF(THESAURUS,"Snap Happy") OR "100EZ"')
+        AND product_cost < 200;
   ```
 
 - Recruitment scenario-searching for job candidates that have experience working with [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]:
 
   ```sql
   SELECT candidate_name,
-      SSN
+         SSN
   FROM candidates
-  WHERE CONTAINS (candidate_resume, '"SQL Server"')
-      AND candidate_division = 'DBA';
+  WHERE CONTAINS ((candidate_resume), '"SQL Server"')
+        AND candidate_division = 'DBA';
   ```
 
 For more information, see [Query with Full-Text Search](query-with-full-text-search.md).

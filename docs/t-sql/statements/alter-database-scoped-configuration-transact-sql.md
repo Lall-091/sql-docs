@@ -4,14 +4,13 @@ titleSuffix: SQL Server (Transact-SQL)
 description: Enable several database configuration settings at the individual database level.
 author: markingmyname
 ms.author: maghan
-ms.reviewer: derekw, jovanpop, wiassaf, mariyaali
-ms.date: 07/09/2025
+ms.reviewer: derekw, jovanpop, wiassaf, mariyaali, randolphwest
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
-  - build-2025
+  - ignite-2025
 f1_keywords:
   - "ALTER_DATABASE_SCOPED_CONFIGURATION"
   - "ALTER_DATABASE_SCOPED_CONFIGURATION_TSQL"
@@ -25,7 +24,7 @@ helpviewer_keywords:
   - "configuration [SQL Server], ALTER DATABASE SCOPED CONFIGURATION statement"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =fabric"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =fabric-sqldb"
 ---
 
 # ALTER DATABASE SCOPED CONFIGURATION (Transact-SQL)
@@ -115,7 +114,8 @@ ALTER DATABASE SCOPED CONFIGURATION
     | LEDGER_DIGEST_STORAGE_ENDPOINT = { <endpoint URL string> | OFF }
     | OPTIMIZED_SP_EXECUTESQL = { ON | OFF }
     | OPTIONAL_PARAMETER_PLAN_OPTIMIZATION = { ON | OFF }
-    | PREVIEW_FEATURES = { ON | OFF}
+    | ALLOW_STALE_VECTOR_INDEX = { ON | OFF }
+    | PREVIEW_FEATURES = { ON | OFF }
 }
 ```
 
@@ -526,6 +526,27 @@ The feature can choose a more optimal plan at runtime based on whether the param
 
 The default is `ON` starting in database compatibility level 170.
 
+#### ALLOW_STALE_VECTOR_INDEX = { ON | OFF }
+
+**Applies to**: [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)]
+
+Currently in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], vector indexes make tables read-only. To allow the table to be writable, use the `ALLOW_STALE_VECTOR_INDEX` database scoped configuration.
+
+```sql
+ALTER DATABASE SCOPED CONFIGURATION
+SET ALLOW_STALE_VECTOR_INDEX = ON;
+GO
+
+SELECT * FROM sys.database_scoped_configurations
+WHERE [name] = 'ALLOW_STALE_VECTOR_INDEX';
+GO
+```
+
+The vector index isn't updated when new data is inserted or updated in the table. To refresh the vector index, you must drop and recreate it.
+
+> [!NOTE]  
+> The `ALLOW_STALE_VECTOR_INDEX` database scoped configuration option isn't currently available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
+
 <a id="preview-features"></a>
 
 #### PREVIEW_FEATURES = { ON | OFF }
@@ -809,6 +830,25 @@ SELECT * FROM sys.database_scoped_configurations
 WHERE [name] = 'PREVIEW_FEATURES'
 GO
 ```
+
+### O. Allow Vector index to go stale
+
+In Azure SQL and Fabric SQL, in the current Public Preview state, vector indexes make tables read-only. To allow the table to be writable, enable the following database scoped configuration:
+
+```sql
+ALTER DATABASE SCOPED CONFIGURATION 
+SET ALLOW_STALE_VECTOR_INDEX = ON;
+GO
+
+SELECT * FROM sys.database_scoped_configurations 
+WHERE [name] = 'ALLOW_STALE_VECTOR_INDEX'
+GO
+```
+
+The vector index will not be updated when new data is inserted or updated in the table. To refresh the vector index, you must drop and recreate it.
+
+In SQL Server 2025 this configuration is not available yet.
+
 
 ## Additional Resources
 

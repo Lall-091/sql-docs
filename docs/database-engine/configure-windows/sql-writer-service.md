@@ -3,10 +3,12 @@ title: SQL Writer Service
 description: The SQL Writer service provides added backup and restore functionality in SQL Server through the Volume Shadow Copy Service framework.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/04/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "VDI [SQL Server]"
   - "restoring [SQL Server], SQL Writer service"
@@ -74,6 +76,20 @@ The SQL Writer service is a separate service from the [!INCLUDE [ssdenoversion-m
 When a new instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] is installed on a server or an existing instance is upgraded, if the version number of the instance being installed or upgraded is higher than the version number of the SQL Writer service that is currently on the server, that file is replaced with the one from the installation package.
 
 If the SQL Writer service was updated by a Service Pack or Cumulative Update and newer version of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] is being installed, you can replace a newer version of the SQL Writer service with an older one, as long as the installation has a higher major version number. For example, the SQL Writer service was updated in [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] SP2 CU2. If that instance is upgraded to [!INCLUDE [ssSQL17](../../includes/sssql17-md.md)] RTM, the updated SQL Writer service is replaced with an older version. In this case, you would need to apply the latest CU to the new instance in order to get the newer version of the SQL Writer service.
+
+## SQL Server 2025 and TDS 8.0 support
+
+[!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] introduces [TDS 8.0](../../relational-databases/security/networking/tds-8.md) support for SQL VSS Writer.
+
+### Encryption settings
+
+SQL VSS Writer in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] uses the following encryption settings:
+
+- **Default encryption**: `Encrypt=Mandatory` with `TrustServerCertificate=No`, requiring a valid server certificate for TLS handshake.
+- **Self-signed certificates**: For environments using self-signed certificates, `TrustServerCertificate` can be set to `Yes`.
+- **Strict encryption**: To enforce TLS 1.3 and TDS 8.0, configure `Encrypt=Strict`. When configured with strict encryption, VSS Writer enforces full certificate validation and requires `TrustServerCertificate=False`.
+
+When using `Encrypt=Strict`, VSS Writer always verifies the server certificate and ignores the `TrustServerCertificate` setting, ensuring enhanced security for backup operations.
 
 ## Related content
 

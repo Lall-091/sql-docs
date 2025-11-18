@@ -3,14 +3,15 @@ title: "SUSE: Install SQL Server on Linux"
 description: This quickstart shows how to install SQL Server on SUSE Linux Enterprise Server and then create and query a database with sqlcmd.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/02/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: quickstart
 ms.custom:
   - intro-installation
   - linux-related-content
-  - build-2025
+  - ignite-2025
+monikerRange: "<=sql-server-linux-ver16 || <=sql-server-ver16"
 ---
 # Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server
 
@@ -40,14 +41,8 @@ In this quickstart, you install [!INCLUDE [sssql22-md](../includes/sssql22-md.md
 For more information on supported platforms, see [Release notes for SQL Server 2022 on Linux](sql-server-linux-release-notes-2022.md).
 
 ::: moniker-end
-<!--SQL Server 2025 on Linux-->
-::: moniker range=">=sql-server-linux-ver17 || >=sql-server-ver17"
 
-In this quickstart, you install [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] on SUSE Linux Enterprise Server (SLES) 15. Then you can connect with **sqlcmd** to create your first database and run queries.
-
-For more information on supported platforms, see [Release notes for SQL Server 2025 Preview on Linux](sql-server-linux-release-notes-2025.md).
-
-::: moniker-end
+SUSE Linux Enterprise Server (SLES) isn't supported on [!INCLUDE [sssql25-md](../includes/sssql25-md.md)].
 
 > [!TIP]  
 > This tutorial requires user input and an internet connection. If you're interested in the [unattended](sql-server-linux-setup.md#unattended) or [offline](sql-server-linux-setup.md#offline) installation procedures, see [Installation guidance for SQL Server on Linux](sql-server-linux-setup.md).
@@ -70,13 +65,6 @@ You must have a SLES 15 (SP6) machine with **at least 2 GB** of memory. The file
 
 <!--SQL Server 2022 on Linux-->
 ::: moniker range="=sql-server-linux-ver16 || =sql-server-ver16"
-
-You must have a SLES 15 (SP6) machine with **at least 2 GB** of memory. The file system must be **XFS** or **ext4**. Other file systems, such as **BTRFS**, are unsupported.
-
-::: moniker-end
-
-<!--SQL Server 2025 on Linux-->
-::: moniker range=">=sql-server-linux-ver17 || >=sql-server-ver17"
 
 You must have a SLES 15 (SP6) machine with **at least 2 GB** of memory. The file system must be **XFS** or **ext4**. Other file systems, such as **BTRFS**, are unsupported.
 
@@ -109,7 +97,7 @@ To configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on SLES,
    ```
 
    > [!TIP]  
-   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [[!INCLUDE [sssql19-md](../includes/sssql19-md.md)]](quickstart-install-connect-suse.md?view=sql-server-linux-ver15&preserve-view=true#install), [[!INCLUDE [sssql22-md](../includes/sssql22-md.md)]](quickstart-install-connect-suse.md?view=sql-server-linux-ver16&preserve-view=true#install), or [[!INCLUDE [sssql25-md](../includes/sssql25-md.md)]](quickstart-install-connect-suse.md?view=sql-server-linux-ver17&preserve-view=true#install) version of this article.
+   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [[!INCLUDE [sssql19-md](../includes/sssql19-md.md)]](quickstart-install-connect-suse.md?view=sql-server-linux-ver15&preserve-view=true#install), or [[!INCLUDE [sssql22-md](../includes/sssql22-md.md)]](quickstart-install-connect-suse.md?view=sql-server-linux-ver16&preserve-view=true#install) version of this article.
 
 1. Refresh your repositories.
 
@@ -165,7 +153,7 @@ At this point, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is run
    ```
 
    > [!TIP]  
-   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [[!INCLUDE [sssql17-md](../includes/sssql17-md.md)]](quickstart-install-connect-suse.md?view=sql-server-linux-2017&preserve-view=true#install), [[!INCLUDE [sssql22-md](../includes/sssql22-md.md)]](quickstart-install-connect-suse.md?view=sql-server-linux-ver16&preserve-view=true#install), or [[!INCLUDE [sssql25-md](../includes/sssql25-md.md)]](quickstart-install-connect-suse.md?view=sql-server-linux-ver17&preserve-view=true#install) version of this article.
+   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [[!INCLUDE [sssql17-md](../includes/sssql17-md.md)]](quickstart-install-connect-suse.md?view=sql-server-linux-2017&preserve-view=true#install), or [[!INCLUDE [sssql22-md](../includes/sssql22-md.md)]](quickstart-install-connect-suse.md?view=sql-server-linux-ver16&preserve-view=true#install) version of this article.
 
 1. Refresh your repositories.
 
@@ -220,62 +208,7 @@ At this point, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is run
    ```
 
    > [!TIP]  
-   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [[!INCLUDE [sssql17-md](../includes/sssql17-md.md)]](quickstart-install-connect-suse.md?view=sql-server-linux-2017&preserve-view=true#install), [[!INCLUDE [sssql19-md](../includes/sssql19-md.md)]](quickstart-install-connect-suse.md?view=sql-server-linux-ver15&preserve-view=true#install), or [[!INCLUDE [sssql25-md](../includes/sssql25-md.md)]](quickstart-install-connect-suse.md?view=sql-server-linux-ver17&preserve-view=true#install) version of this article.
-
-1. Refresh your repositories.
-
-   ```bash
-   sudo zypper --gpg-auto-import-keys refresh
-   ```
-
-   To ensure that the Microsoft package signing key is installed on your system, you can import it using the following command:
-
-   ```bash
-   sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-   ```
-
-1. Before you install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], and after you register and activate your SUSE Linux Enterprise Server with SUSE Customer Center, you must activate both the [Desktop Applications module and Development Tools module](https://documentation.suse.com/sles/15-SP6/html/SLES-all/cha-register-sle.html). These modules are required for some of the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] package dependencies.
-
-1. The following command installs [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]:
-
-   ```bash
-   sudo zypper install -y mssql-server
-   ```
-
-1. After the package installation finishes, run `mssql-conf setup` and follow the prompts to set the `sa` password and choose your edition. As a reminder, the following [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] editions are freely licensed: Evaluation, Developer, and Express.
-
-   ```bash
-   sudo /opt/mssql/bin/mssql-conf setup
-   ```
-
-   > [!CAUTION]  
-   > [!INCLUDE [password-complexity](includes/password-complexity.md)]
-
-1. Once the configuration is done, verify that the service is running:
-
-   ```bash
-   systemctl status mssql-server
-   ```
-
-1. If you plan to connect remotely, you might need to open the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] TCP port (default 1433) on your firewall.
-
-   > [!NOTE]  
-   > On SLES, you can manage your firewall using `firewalld` for example. Install it using `sudo zypper install firewalld`, and then start it up with `sudo systemctl start firewalld`. Add the firewall rule with `sudo firewall-cmd --zone=public --add-port=1433/tcp --permanent`, and then reload the firewall with `sudo firewall-cmd --reload` for the settings to take effect.
-
-At this point, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is running on your SLES machine and is ready to use.
-
-::: moniker-end
-<!--SQL Server 2025 on Linux-->
-::: moniker range=">=sql-server-linux-ver17 || >=sql-server-ver17"
-
-1. Download the [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] SLES repository configuration file:
-
-   ```bash
-   sudo zypper addrepo -fc https://packages.microsoft.com/config/sles/15/mssql-server-preview.repo
-   ```
-
-   > [!TIP]  
-   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [[!INCLUDE [sssql17-md](../includes/sssql17-md.md)]](quickstart-install-connect-suse.md?view=sql-server-linux-2017&preserve-view=true#install), [[!INCLUDE [sssql19-md](../includes/sssql19-md.md)]](quickstart-install-connect-suse.md?view=sql-server-linux-ver15&preserve-view=true#install), or [[!INCLUDE [sssql22-md](../includes/sssql22-md.md)]](quickstart-install-connect-suse.md?view=sql-server-linux-ver16&preserve-view=true#install) version of this article.
+   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [[!INCLUDE [sssql17-md](../includes/sssql17-md.md)]](quickstart-install-connect-suse.md?view=sql-server-linux-2017&preserve-view=true#install), or [[!INCLUDE [sssql19-md](../includes/sssql19-md.md)]](quickstart-install-connect-suse.md?view=sql-server-linux-ver15&preserve-view=true#install) version of this article.
 
 1. Refresh your repositories.
 

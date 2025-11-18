@@ -8,6 +8,8 @@ ms.date: 07/26/2022
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "LEFT_SHIFT"
   - "LEFT_SHIFT_TSQL"
@@ -17,10 +19,10 @@ helpviewer_keywords:
   - "bit shifting [SQL Server], left shift"
 dev_langs:
   - "TSQL"
-monikerRange: ">= sql-server-ver16 || >= sql-server-linux-ver16 || = azuresqldb-mi-current ||= azuresqldb-current || =fabric"
+monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current || =azuresqldb-current || =fabric || =fabric-sqldb"
 ---
 # LEFT_SHIFT (Transact SQL)
-[!INCLUDE [SQL Server 2022, SQL Database, SQL Managed Instance FabricSE FabricDW](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricse-fabricdw.md)]
+[!INCLUDE [SQL Server 2022, SQL Database, SQL Managed Instance FabricSE FabricDW FabricSQLDB](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricse-fabricdw-fabricsqldb.md)]
 
 LEFT_SHIFT takes two parameters, and returns the first parameter bit-shifted left by the number of bits specified in the second parameter.
 
@@ -87,3 +89,4 @@ The following table demonstrates what happens during each shift.
 - [GET_BIT (Transact SQL)](get-bit-transact-sql.md)
 - [BIT_COUNT (Transact SQL)](bit-count-transact-sql.md)
 - [Bit manipulation functions](bit-manipulation-functions-overview.md)
+

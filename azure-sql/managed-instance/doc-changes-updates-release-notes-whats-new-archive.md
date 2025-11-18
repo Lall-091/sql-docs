@@ -9,7 +9,8 @@ ms.date: 01/22/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: whats-new
-ms.custom: 
+ms.custom:
+  - ignite-2025
 ---
 # What's new in Azure SQL Managed Instance? (Archive)
 
@@ -44,7 +45,7 @@ Return to [What's new in Azure SQL Managed Instance?](doc-changes-updates-releas
 | **Zone redundancy guide** | May | We've published a guide making it easier for you to enable [zone redundancy](instance-zone-redundancy-configure.md) for Azure SQL Managed Instance. | 
 |**Azure SQL triggers for Azure Functions GA** | March | Azure Functions supports function triggers for Azure SQL Managed Instance. This feature is now generally available. Review [Azure SQL triggers for Azure Functions](/azure/azure-functions/functions-bindings-azure-sql) to learn more. |
 | **Database watcher for Azure SQL preview** | March | [Database watcher](../database-watcher-overview.md) is a managed monitoring solution for database services in the Azure SQL family. Database watcher collects in-depth workload monitoring data to give you a detailed view of database performance, configuration, and health. This feature is now in preview.  Learn more about [database watchers](https://aka.ms/dbwatcher-preview-announcement).|
-|**Next-gen General Purpose preview** |  March | An architectural upgrade of the General Purpose service tier that uses managed disks for greater resource flexibility, and improved performance while maintaining the same baseline cost as the General Purpose service tier. This service tier upgrade is currently in preview. Review [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) to learn more.   |
+|**Next-gen General Purpose preview** |  March | An architectural upgrade of the General Purpose service tier that uses [Elastic SAN](/azure/storage/elastic-san/elastic-san-introduction) for greater resource flexibility, and improved performance while maintaining the same baseline cost as the General Purpose service tier. This service tier upgrade is currently in preview. Review [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) to learn more.   |
 | **OBJECT_ID T-SQL syntax preview** | February | The [CREATE USER](/sql/t-sql/statements/create-user-transact-sql) Transact-SQL (T-SQL) syntax has been extended to include `WITH OBJECT_ID` to support creating Microsoft Entra logins and users in Azure SQL Managed Instance that have nonunique names. Using the `OBJECT_ID` syntax to create users and logins in Azure SQL Managed Instance is currently in preview. To learn more, review [Microsoft Entra nonunique name support](../database/authentication-microsoft-entra-create-users-with-nonunique-names.md). | 
 |**Instance pool preview refresh** | January | Instance pools have a number of additional capabilities, such as the ability to deploy a 2-vCore instance. The preview of this feature has been refreshed. Review [instance pools](instance-pools-overview.md#whats-new) to learn more. |
 

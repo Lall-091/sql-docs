@@ -8,6 +8,8 @@ ms.date: 03/27/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "ntext_TSQL"
   - "ntext"
@@ -19,7 +21,7 @@ helpviewer_keywords:
   - "image data type, about image data type"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # ntext, text, and image (Transact-SQL)
 

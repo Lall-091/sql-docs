@@ -8,6 +8,8 @@ ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_xml_preparedocument_TSQL"
   - "sp_xml_preparedocument"
@@ -18,7 +20,7 @@ dev_langs:
 ---
 # sp_xml_preparedocument (Transact-SQL)
 
-[!INCLUDE [SQL Server SQL Database](../../includes/applies-to-version/sql-asdb.md)]
+[!INCLUDE [SQL Server SQL Database-fabricsqldb](../../includes/applies-to-version/sql-asdb-fabricsqldb.md)]
 
 Reads the XML text provided as input, parses the text by using the MSXML parser (`msxmlsql.dll`), and provides the parsed document in a state ready for consumption. This parsed document is a tree representation of the various nodes in the XML document: elements, attributes, text, comments, and so on.
 
@@ -168,3 +170,4 @@ EXECUTE sp_xml_preparedocument
 - [sys.dm_exec_xml_handles (Transact-SQL)](../system-dynamic-management-views/sys-dm-exec-xml-handles-transact-sql.md)
 - [sp_xml_removedocument (Transact-SQL)](sp-xml-removedocument-transact-sql.md)
 - [nodes() Method (xml Data Type)](../../t-sql/xml/nodes-method-xml-data-type.md)
+

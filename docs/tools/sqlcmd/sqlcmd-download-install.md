@@ -12,6 +12,7 @@ ms.collection:
   - data-tools
 ms.custom:
   - linux-related-content
+  - ignite-2025
 helpviewer_keywords:
   - "statements [SQL Server], command prompt"
   - "go-sqlcmd"
@@ -29,7 +30,7 @@ helpviewer_keywords:
   - "scripts [SQL Server], command prompt"
   - "RESET command"
   - "GO command"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric-sqldb"
 ---
 # Download and install the sqlcmd utility
 

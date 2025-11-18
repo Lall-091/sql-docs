@@ -8,13 +8,15 @@ ms.date: 04/22/2024
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "table constraints [SQL Server]"
   - "attaching check constraints"
   - "columns [SQL Server], constraints"
   - "constraints [SQL Server], check"
   - "CHECK constraints, attaching"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current||=fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Create check constraints
 

@@ -7,6 +7,8 @@ ms.date: "03/11/2022"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "IIF_TSQL"
   - "IIF"
@@ -16,7 +18,7 @@ dev_langs:
   - "TSQL"
 ---
 # Logical Functions - IIF (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Returns one of two values, depending on whether the Boolean expression evaluates to true or false in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].  
   
@@ -95,3 +97,4 @@ NULL
 
 - [CASE &#40;Transact-SQL&#41;](../../t-sql/language-elements/case-transact-sql.md)   
 - [CHOOSE &#40;Transact-SQL&#41;](../../t-sql/functions/logical-functions-choose-transact-sql.md)
+

@@ -7,12 +7,14 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
-  - "SP:CacheInsert event class"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+  - "SQL:CacheInsert event class"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # SP:CacheInsert Event Class
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   The SP:CacheInsert event class indicates that the stored procedure has been inserted into the procedure cache.  
   
 ## SP:CacheInsert Event Class Data Columns  
@@ -48,3 +50,4 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
  [SP:CacheMiss Event Class](../../relational-databases/event-classes/sp-cachemiss-event-class.md)  
   
   
+

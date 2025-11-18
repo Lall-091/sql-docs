@@ -9,12 +9,12 @@ ms.service: sql
 ms.subservice: performance
 ms.topic: concept-article
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "Query Store hints"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-ver16 || >=sql-server-linux-ver16 || =fabric"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-ver16 || >=sql-server-linux-ver16 || =fabric-sqldb"
 ---
 
 # Query Store hints

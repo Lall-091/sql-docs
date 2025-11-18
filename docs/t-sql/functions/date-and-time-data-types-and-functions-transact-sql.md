@@ -9,6 +9,8 @@ ms.date: 08/08/2024
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "dates [SQL Server], functions"
   - "dates [SQL Server]"
@@ -19,11 +21,11 @@ helpviewer_keywords:
   - "time [SQL Server], functions"
 dev_langs:
   - "TSQL"
-monikerRange: "=azure-sqldw-latest || =azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017"
+monikerRange: "=azure-sqldw-latest || =azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric-sqldb"
 ---
 # Date and time data types and functions (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa](../../includes/applies-to-version/sql-asdb-asdbmi-asa.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricsqldb.md)]
 
 The sections in this article cover all [!INCLUDE [tsql](../../includes/tsql-md.md)] date and time data types and functions.
 
@@ -151,3 +153,4 @@ Since [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)], the [!INCLUDE [ssde
 
 - [Functions](functions.md)
 - [Data types (Transact-SQL)](../data-types/data-types-transact-sql.md)
+

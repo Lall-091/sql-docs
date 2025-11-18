@@ -7,6 +7,8 @@ ms.date: "02/24/2023"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "dm_exec_query_memory_grants_TSQL"
   - "sys.dm_exec_query_memory_grants"
@@ -16,10 +18,10 @@ helpviewer_keywords:
   - "sys.dm_exec_query_memory_grants dynamic management view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||>=aps-pdw-2016||=azure-sqldw-latest"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || >=aps-pdw-2016 || =azure-sqldw-latest || =fabric-sqldb"
 ---
 # sys.dm_exec_query_memory_grants (Transact-SQL)
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
   Returns information about all queries that have requested and are waiting for a memory grant or have been given a memory grant. Queries that do not require a memory grant will not appear in this view. For example, sort and hash join operations have memory grants for query execution, while queries without an `ORDER BY` clause will not have a memory grant.  
   
@@ -138,3 +140,4 @@ Requires VIEW SERVER PERFORMANCE STATE permission on the server.
  - [Thread and Task Architecture Guide](../../relational-databases/thread-and-task-architecture-guide.md)   
  - [MSSQLSERVER_701](../errors-events/mssqlserver-701-database-engine-error.md)
  - [Troubleshoot out of memory errors with Azure SQL Database](/azure/azure-sql/database/troubleshoot-memory-errors-issues)
+

@@ -1,16 +1,18 @@
 ---
-title: "Microsoft Python Driver for SQL Server - mssql-python (preview)"
+title: "Microsoft Python Driver for SQL Server - mssql-python"
 description: This guide provides an overview to get started with the mssql-python driver
 author: dlevy-msft-sql
 ms.author: dlevy
 ms.reviewer: vanto, randolphwest
-ms.date: 10/06/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 ---
 
-# Microsoft Python Driver for SQL Server - mssql-python (preview)
+# Microsoft Python Driver for SQL Server - mssql-python
 
 Use the `mssql-python` driver to connect to a SQL database from Python code. This series of articles provides step-by-step guidance for installing and using this Python SQL driver.
 
@@ -27,10 +29,10 @@ Use the `mssql-python` driver to connect to a SQL database from Python code. Thi
 
 ## Support
 
-`mssql-python` is community-supported while in preview. While Microsoft is the primary maintainer, community contributions are encouraged.
+`mssql-python` is fully supported by Microsoft. While Microsoft is the primary maintainer, community contributions are encouraged.
 
 > [!TIP]  
-> To get help, file an [issue in the mssql-python GitHub repository](https://github.com/microsoft/mssql-python/issues) or visit other Python community resources.
+> To request new functionality, file an [issue in the mssql-python GitHub repository](https://github.com/microsoft/mssql-python/issues) or visit other Python community resources.
 
 ## Community resources
 

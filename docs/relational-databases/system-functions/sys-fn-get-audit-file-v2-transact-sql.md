@@ -1,13 +1,15 @@
 ---
 title: "sys.fn_get_audit_file_v2 (Transact-SQL)"
-description: "The sys.fn_get_audit_file_v2 system function replaces sys.fn_get_audit_file, and returns information from an audit file created by a server audit in SQL Server."
+description: "The sys.fn_get_audit_file_v2 system function replaces sys.fn_get_audit_file, and returns information from an audit file created by a server audit."
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest, srsaluru, fresantos
-ms.date: 03/21/2025
+ms.date: 10/24/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "fn_get_audit_file_v2_TSQL"
   - "sys.fn_get_audit_file_v2_TSQL"
@@ -18,20 +20,19 @@ helpviewer_keywords:
   - "fn_get_audit_file_v2 function"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =fabric"
+monikerRange: "=azuresqldb-current || =fabric || =fabric-sqldb"
 ---
 # sys.fn_get_audit_file_v2 (Transact-SQL)
 
-[!INCLUDE [asdb-fabricdw](../../includes/applies-to-version/asdb-fabricdw.md)]
+[!INCLUDE [asdb-fabricdw-fabricsqldb](../../includes/applies-to-version/asdb-fabricdw-fabricsqldb.md)]
 
 The `sys.fn_get_audit_file_v2` system function is designed to retrieve audit log data with enhanced efficiency compared to its predecessor, `sys.fn_get_audit_file`. The function introduces time-based filtering at both the file and record levels, providing significant performance improvements, particularly for queries targeting specific time ranges.
 
-Returns information from an audit file created by a server audit in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]. For more information, see [SQL Server Audit (Database Engine)](../security/auditing/sql-server-audit-database-engine.md).
+Returns information from an audit file created by a server audit. For more information, see [SQL Server Audit (Database Engine)](../security/auditing/sql-server-audit-database-engine.md).
 
-For information on setting up Azure SQL Database auditing, see [Get Started with SQL Database auditing](/azure/sql-database/sql-database-auditing?view=azuresql-db&preserve-view=true).
-
-For information on setting up Fabric Data Warehouse auditing, see [SQL Audit Logs in Fabric Data Warehouse](/fabric/data-warehouse/sql-audit-logs).
-
+- For information on setting up Azure SQL Database auditing, see [Get Started with SQL Database auditing](/azure/sql-database/sql-database-auditing?view=azuresql-db&preserve-view=true).
+- For information on setting up Fabric Data Warehouse auditing, see [SQL Audit Logs in Fabric Data Warehouse](/fabric/data-warehouse/sql-audit-logs).
+- For information on setting up SQL database in Fabric auditing, see [SQL Audit in SQL database in Fabric](/fabric/database/sql/auditing).
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
@@ -191,7 +192,7 @@ This example retrieves audit logs from a specific Azure Blob Storage location, f
 
 ```sql
 SELECT *
-FROM sys. fn_get_audit_file_v2(
+FROM sys.fn_get_audit_file_v2(
     'https://<storage_account>.blob.core.windows.net/sqldbauditlogs/server_name/database_name/SqlDbAuditing_ServerAudit/',
     DEFAULT,
     DEFAULT,
@@ -215,6 +216,25 @@ FROM sys. fn_get_audit_file_v2(
     DEFAULT,
     '2023-11-17T08:40:40Z',
     '2023-11-17T09:10:40Z')
+```
+
+### C. View SQL audit logs for SQL database in Microsoft Fabric
+
+This example retrieves audit logs from OneLake in Microsoft Fabric, between `2025-11-17T08:40:40Z` and `2025-11-17T09:10:40Z`.
+
+In the following script, you need to provide your Microsoft Fabric workspace ID and database ID. Both can be found in the URL from the Fabric portal. For example: `https://fabric.microsoft.com/groups/<fabric workspace id>/sqldatabases/<fabric sql database id>`. The first unique identifier string in the URL is the Fabric workspace ID, and the second unique identifier string is the SQL database ID.
+
+- Replace `<fabric_workspace_id>` with your Fabric workspace ID. You can [find the ID of a workspace](/fabric/admin/portal-workspace#identify-your-workspace-id) easily in the URL, it's the unique string inside two `/` characters after `/groups/` in your browser window.
+- Replace `<fabric sql database id>` with your SQL database in Fabric database ID. You can find the ID of the database item easily in the URL, it's the unique string inside two `/` characters after `/sqldatabases/` in your browser window.
+
+```sql
+SELECT *
+FROM sys.fn_get_audit_file_v2(
+    'https://onelake.blob.fabric.microsoft.com/<fabric workspace id>/<fabric sql database id>/Audit/sqldbauditlogs/',
+    DEFAULT,
+    DEFAULT,
+    '2025-11-17T08:40:40Z',
+    '2025-11-17T09:10:40Z')
 ```
 
 ## More information

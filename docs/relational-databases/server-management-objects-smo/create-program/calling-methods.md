@@ -7,13 +7,13 @@ ms.date: "08/06/2017"
 ms.service: sql
 ms.topic: "reference"
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "methods [SMO]"
   - "calling methods"
   - "SQL Server Management Objects, method calling"
   - "SMO [SQL Server], method calling"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Calling Methods
 

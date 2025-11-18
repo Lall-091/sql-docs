@@ -9,7 +9,7 @@ ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "full-text search [SQL Server], permissions"
   - "search property lists [SQL Server], permissions"
@@ -17,7 +17,7 @@ helpviewer_keywords:
   - "GRANT statement, search property list permissions"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # GRANT Search Property List Permissions (Transact-SQL)
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics PDW FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]

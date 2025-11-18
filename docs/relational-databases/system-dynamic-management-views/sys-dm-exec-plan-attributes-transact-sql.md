@@ -7,6 +7,8 @@ ms.date: "02/24/2023"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_exec_plan_attributes_TSQL"
   - "dm_exec_plan_attributes_TSQL"
@@ -16,9 +18,11 @@ helpviewer_keywords:
   - "sys.dm_exec_plan_attributes dynamic management function"
 dev_langs:
   - "TSQL"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.dm_exec_plan_attributes (Transact-SQL)
-[!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
+
+ [!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
 
   Returns one row per plan attribute for the plan specified by the plan handle. You can use this table-valued function to get details about a particular plan, such as the cache key values or the number of current simultaneous executions of the plan.  
   
@@ -177,3 +181,4 @@ GO
  [sys.databases &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-databases-transact-sql.md)   
  [sys.objects &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-objects-transact-sql.md)  
   
+

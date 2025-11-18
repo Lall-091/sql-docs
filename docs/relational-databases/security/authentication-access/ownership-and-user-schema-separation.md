@@ -9,8 +9,8 @@ ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
 ms.custom:
-  - ignite-2024
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+  - ignite-2025
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Ownership and user-schema separation in SQL Server
 

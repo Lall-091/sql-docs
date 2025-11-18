@@ -1,34 +1,34 @@
 ---
 title: Microsoft Entra logins and users with nonunique display names
-titleSuffix: Azure SQL Database and Azure SQL Managed Instance
+titleSuffix: SQL Server Database Engine
 description: Learn how to mitigate naming conflicts for Microsoft Entra logins and users with nonunique display names by using the T-SQL Object_ID syntax.
 author: tameikal-msft
 ms.author: talawren
-ms.reviewer: vanto, mathoma, jaszymas
-ms.date: 04/30/2025
-ms.service: azure-sql
+ms.reviewer: vanto, mathoma
+ms.date: 10/30/2025
+ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
-monikerRange: "=azuresql || =azuresql-db || =azuresql-mi || =fabricsql"
 ms.custom:
-  - ignite-2024
-  - build-2025
   - sfi-image-nochange
+  - ignite-2025
+monikerRange: ">=sql-server-ver17 || =azuresqldb-mi-current || =fabric"
 ---
 
 # Microsoft Entra logins and users with nonunique display names
-[!INCLUDE [appliesto-sqldb-sqlmi-fabricsqldb](../includes/appliesto-sqldb-sqlmi-fabricsqldb.md)]
 
-This article teaches you how to use the T-SQL `Object_ID` syntax to create Microsoft Entra logins and users with nonunique display names in Azure SQL Database, Fabric SQL database, and Azure SQL Managed Instance. 
+[!INCLUDE [SQL Server 2025 Azure SQL Database Azure SQL Managed Instance SQL database in Fabric](../../../includes/applies-to-version/sqlserver2025-asdb-asdbmi-fabric.md)]
+
+This article teaches you how to use the T-SQL `Object_ID` syntax to create Microsoft Entra logins and users with nonunique display names in Azure SQL Database, Fabric SQL database, Azure SQL Managed Instance, and SQL Server 2025 and later versions.
 
 > [!NOTE]
 > You can create users in Fabric SQL database, but not logins.
 
 ## Overview
 
-Microsoft Entra ID supports authentication for service principals. However, using a service principal with a display name that isn't unique in Microsoft Entra ID leads to errors when creating the login or user in Azure SQL Database and Azure SQL Managed Instance. 
+Microsoft Entra ID supports authentication for service principals. However, using a service principal with a display name that isn't unique in Microsoft Entra ID leads to errors when creating the login or user in SQL Server, Azure SQL Database, and Azure SQL Managed Instance.
 
-For example, if the application `myapp` isn't unique, you might run into the following error: 
+For example, if the application `myapp` isn't unique, you might run into the following error:
 
 ```output
 Msg 33131, Level 16, State 1, Line 4 
@@ -43,7 +43,7 @@ CREATE LOGIN [myapp] FROM EXTERNAL PROVIDER
 
 ## The `WITH OBJECT_ID` extension
 
-The *duplicate display name* error occurs because Microsoft Entra ID allows duplicate display names for [Microsoft Entra application (service principal)](authentication-aad-service-principal.md), while Azure SQL requires unique names to create Microsoft Entra logins and users. To mitigate this problem, the Data Definition Language (DDL) statement to create logins and users has been extended to include the Object ID of the Azure resource with the `WITH OBJECT_ID` clause.
+The *duplicate display name* error occurs because Microsoft Entra ID allows duplicate display names for [Microsoft Entra application (service principal)](../../../connect/sql-connection-libraries.md), while SQL Server and Azure SQL require unique names to create Microsoft Entra logins and users. To mitigate this problem, the Data Definition Language (DDL) statement to create logins and users has been extended to include the Object ID of the Azure resource with the `WITH OBJECT_ID` clause.
 
 > [!NOTE]
 > Most nonunique display names in Microsoft Entra ID are related to service principals, though occasionally group names can also be nonunique. Microsoft Entra user principal names are unique, as two users can't have the same user principal. However, an app registration (service principal) can be created with a display name that is the same as a user principal name.
@@ -69,21 +69,21 @@ CREATE LOGIN [myapp4466e] FROM EXTERNAL PROVIDER
   WITH OBJECT_ID = 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb' 
 ```
 
-- To execute this T-SQL query, the specified Object ID must exist in the Microsoft Entra tenant where the Azure SQL resource resides. Otherwise, the `CREATE` command will fail with the error message: `Msg 37545, Level 16, State 1, Line 1 '' is not a valid object id for '' or you do not have permission.`
+- To execute this T-SQL query, the specified Object ID must exist in the Microsoft Entra tenant where the SQL resource resides. Otherwise, the `CREATE` command will fail with the error message: `Msg 37545, Level 16, State 1, Line 1 '' is not a valid object id for '' or you do not have permission.`
 - The login or user name must contain the original service principal name extended by a user-defined suffix when using the `CREATE LOGIN` or `CREATE USER` statement. As a best practice, the suffix can include an initial part of its Object ID. For example, `myapp2ba6c` for the Object ID `bbbbbbbb-1111-2222-3333-cccccccccccc`. However, you can also define a custom suffix. Forming the suffix from the Object ID isn't required.
 
 This naming convention is recommended to explicitly associate the database user or login back to its object in Microsoft Entra ID.
 
 > [!NOTE]
-> The alias adheres to the T-SQL specification for `sysname`, including a max length of 128 characters. We recommend limiting the suffix to the first 5 characters of the Object ID.
+> The alias adheres to the T-SQL specification for `sysname`, including a max length of 128 characters. We recommend limiting the suffix to the first five characters of the Object ID.
 >
-> The display name of the service principal in Microsoft Entra ID isn't synchronized to the database login or user alias. Running `CREATE LOGIN` or `CREATE USER` won't affect the display name in the Azure portal. Similarly, modifying the Microsoft Entra ID display name will not affect the database login or user alias.
+> The display name of the service principal in Microsoft Entra ID isn't synchronized to the database login or user alias. Running `CREATE LOGIN` or `CREATE USER` won't affect the display name in the Azure portal. Similarly, modifying the Microsoft Entra ID display name won't affect the database login or user alias.
 
 ## Identify the user created for the application
 
 For nonunique service principals, it's important to verify the Microsoft Entra alias is tied to the correct application. To check that the user was created for the correct service principal (application):
 
-1. Get the **Application ID** of the application, or **Object ID** of the Microsoft Entra group from the user created in SQL Database. See the following queries:
+1. Get the **Application ID** of the application, or **Object ID** of the Microsoft Entra group from the user created in Azure SQL or SQL Server. See the following queries:
 
    - To get the **Application ID** of the service principal from the user created, execute the following query:
 
@@ -125,7 +125,7 @@ For nonunique service principals, it's important to verify the Microsoft Entra a
 
      :::image type="content" source="media/authentication-microsoft-entra-create-users-with-nonunique-names/security-id-group-output.png" alt-text="Screenshot of SQL Server Management Studio (SSMS) query output for the SID of the group.":::
 
-   - To get the Object ID and Application ID of the application using PowerShell execute the following command: 
+   - To get the Object ID and Application ID of the application using PowerShell execute the following command:
 
      ```powershell
      Get-AzADApplication -DisplayName "myapp2ba6c"
@@ -134,7 +134,7 @@ For nonunique service principals, it's important to verify the Microsoft Entra a
 1. Go to the [Azure portal](https://portal.azure.com), and in your **Enterprise application** or Microsoft Entra group resource, check the **Application ID** or **Object ID** respectively. See if it matches the one obtained from the previous query.
 
 > [!NOTE]
-> When creating a user from a service principal, the **Object ID** is required when using the `WITH OBJECT_ID` clause with the `CREATE` T-SQL statement. This is different from the **Application ID** that is returned when you're trying to verify the alias in Azure SQL. Using this verification process, you can identify the service principal or group associated with the SQL alias in Microsoft Entra ID, and prevent possible mistakes when creating logins or users with an Object ID.
+> When creating a user from a service principal, the **Object ID** is required when using the `WITH OBJECT_ID` clause with the `CREATE` T-SQL statement. This is different from the **Application ID** that is returned when you're trying to verify the alias in SQL Server. Using this verification process, you can identify the service principal or group associated with the SQL alias in Microsoft Entra ID, and prevent possible mistakes when creating logins or users with an Object ID.
 
 ### Finding the right Object ID
 
@@ -145,6 +145,6 @@ For information on the Object ID of a service principal, see [Service principal 
 
 ## Related content
 
-- [Microsoft Entra server principals](authentication-azure-ad-logins.md)
-- [CREATE LOGIN (Transact-SQL)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true)
-- [CREATE USER (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql)
+- [Principals (Database Engine)](principals-database-engine.md)
+- [CREATE LOGIN (Transact-SQL)](../../../t-sql/statements/create-login-transact-sql.md)
+- [CREATE USER (Transact-SQL)](../../../t-sql/statements/create-user-transact-sql.md)

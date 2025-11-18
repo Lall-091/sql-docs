@@ -9,7 +9,7 @@ ms.service: sql
 ms.subservice: performance
 ms.topic: conceptual
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "statistical information [SQL Server], query optimization"
   - "query performance [SQL Server], statistics"
@@ -25,7 +25,7 @@ helpviewer_keywords:
   - "statistics [SQL Server]"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # Statistics

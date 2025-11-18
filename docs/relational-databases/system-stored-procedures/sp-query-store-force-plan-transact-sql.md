@@ -8,6 +8,8 @@ ms.date: 09/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SYS.SP_QUERY_STORE_FORCE_PLAN"
   - "SP_QUERY_STORE_FORCE_PLAN"
@@ -18,11 +20,11 @@ helpviewer_keywords:
   - "sp_query_store_force_plan"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sp_query_store_force_plan (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
 
 Enables forcing a particular plan for a particular query in the Query Store.
 
@@ -123,3 +125,4 @@ WHERE qsr.replica_name = 'yourSecondaryReplicaName';
 - [sp_query_store_reset_exec_stats (Transact-SQL)](sp-query-store-reset-exec-stats-transact-sql.md)
 - [sp_query_store_flush_db (Transact-SQL)](sp-query-store-flush-db-transact-sql.md)
 - [Best Practice with the Query Store](../performance/best-practice-with-the-query-store.md#CheckForced)
+

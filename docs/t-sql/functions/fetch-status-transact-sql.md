@@ -7,6 +7,8 @@ ms.date: "09/18/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "@@FETCH_STATUS"
   - "@@FETCH_STATUS_TSQL"
@@ -19,7 +21,7 @@ dev_langs:
 ---
 
 # &#x40;&#x40;FETCH_STATUS (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This function returns the status of the last cursor FETCH statement issued against any cursor currently opened by the connection.  
   
@@ -73,3 +75,4 @@ GO
  [FETCH &#40;Transact-SQL&#41;](../../t-sql/language-elements/fetch-transact-sql.md)  
   
   
+

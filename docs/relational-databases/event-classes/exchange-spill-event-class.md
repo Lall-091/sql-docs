@@ -7,12 +7,14 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "Exchange Spill event class"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Exchange Spill Event Class
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   The **Exchange Spill** event class indicates that communication buffers in a parallel query plan have been temporarily written to the **tempdb** database. This occurs rarely and only when a query plan has multiple range scans.  
   
  Normally, the [!INCLUDE[tsql](../../includes/tsql-md.md)] query that generates such range scans has many BETWEEN operators, each of which selects a range of rows from a table or an index. Alternatively, you can obtain multiple ranges using expressions such as (T.a > 10 AND T.a < 20) OR (T.a > 100 AND T.a < 120). Additionally, the query plans must require that these ranges be scanned in order either because there is an ORDER BY clause on T.a, or because an iterator within the plan requires that it consume the tuples in sorted order.  
@@ -71,3 +73,4 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
  [ALTER INDEX &#40;Transact-SQL&#41;](../../t-sql/statements/alter-index-transact-sql.md)  
   
   
+

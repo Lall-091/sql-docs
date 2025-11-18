@@ -9,7 +9,7 @@ ms.service: sql
 ms.subservice: performance
 ms.topic: conceptual
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "guide, transaction locking and row versioning"
   - "transaction locking and row versioning guide"
@@ -18,7 +18,7 @@ helpviewer_keywords:
   - "deadlocks, [SQL Server]"
   - "lock escalation, [SQL Server]"
   - "lock partitioning, [SQL Server]"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Transaction locking and row versioning guide
 

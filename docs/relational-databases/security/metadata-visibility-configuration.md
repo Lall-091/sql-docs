@@ -8,6 +8,8 @@ ms.date: 08/21/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "subcomponents visibility [SQL Server]"
   - "metadata [SQL Server], visibility"
@@ -17,11 +19,11 @@ helpviewer_keywords:
   - "displaying metadata"
   - "database metadata [SQL Server]"
   - "metadata [SQL Server], permissions"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Metadata visibility configuration
 
-[!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 The visibility of metadata is limited to securables that a user either owns or on which the user has been granted some permission.
 
@@ -258,3 +260,4 @@ This is a list of the catalog views that are visible to the **public** role.
 - [EXECUTE AS Clause (Transact-SQL)](../../t-sql/statements/execute-as-clause-transact-sql.md)
 - [System catalog views (Transact-SQL)](../system-catalog-views/catalog-views-transact-sql.md)
 - [System Compatibility Views (Transact-SQL)](../system-compatibility-views/system-compatibility-views-transact-sql.md)
+

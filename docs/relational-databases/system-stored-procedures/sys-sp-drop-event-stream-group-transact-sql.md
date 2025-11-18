@@ -4,12 +4,12 @@ description: "Drops an event stream group for the change event streaming feature
 author: nzagorac-ms
 ms.author: nzagorac
 ms.reviewer: mathoma, mikeray, randolphwest
-ms.date: 06/23/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
 ms.custom:
-  - build-2025
+  - ignite-2025
 f1_keywords:
   - "sys_sp_drop_event_stream_group_TSQL"
   - "sys_sp_drop_event_stream_group"
@@ -20,13 +20,11 @@ dev_langs:
 monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17"
 ---
 # sys.sp_drop_event_stream_group (Transact-SQL)
+[!INCLUDE [sqlserver2025](../../includes/applies-to-version/sqlserver2025-asdb.md)]
 
-[!INCLUDE [sqlserver2025](../../includes/applies-to-version/sqlserver2025.md)]
+Drops a stream event group for the [change event streaming (CES)](../track-changes/change-event-streaming/overview.md) feature introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and Azure SQL Database.
 
-Drops a stream event group for the [change event streaming (CES)](../track-changes/change-event-streaming/overview.md) feature introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
-
-> [!NOTE]  
-> Change event streaming is currently in **preview** for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
+[!INCLUDE [change-event-streaming-preview](../../includes/change-event-streaming-preview.md)]
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 

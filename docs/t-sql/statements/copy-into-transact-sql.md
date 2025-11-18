@@ -4,11 +4,13 @@ titleSuffix: Azure Synapse Analytics and Microsoft Fabric
 description: Use the COPY statement in Azure Synapse Analytics and Warehouse in Microsoft Fabric for loading from external storage accounts.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: procha, mikeray, fresantos
+ms.reviewer: procha, mikeray, fresantos, jovanpop
 ms.date: 11/10/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "COPY_TSQL"
   - "COPY INTO"
@@ -24,7 +26,7 @@ monikerRange: "=azure-sqldw-latest || =fabric"
 
 [!INCLUDE [asa](../../includes/applies-to-version/asa.md)]
 
-This article explains how to use the COPY statement in [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] for loading from external storage accounts. The COPY statement provides the most flexibility for high-throughput data ingestion into [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)].
+This article explains how to use the `COPY` statement in [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] for loading from external storage accounts. The `COPY` statement provides the most flexibility for high-throughput data ingestion into [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)].
 
 > [!NOTE]  
 > For [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], visit [COPY INTO](copy-into-transact-sql.md?view=fabric&preserve-view=true).
@@ -35,7 +37,7 @@ Use COPY for the following capabilities:
 - Execute a single T-SQL statement without having to create any other database objects
 - Properly parse and load CSV files where *delimiters* (string, field, row) are escaped *within* string delimited columns
 - Specify a finer permission model without exposing storage account keys using Share Access Signatures (SAS)
-- Use a different storage account for the ERRORFILE location (REJECTED_ROW_LOCATION)
+- Use a different storage account for the `ERRORFILE` location (`REJECTED_ROW_LOCATION`)
 - Customize default values for each target column and specify source data fields to load into specific target columns
 - Specify a custom row terminator, field terminator, and field quote for CSV files
 - Use SQL Server Date formats for CSV files
@@ -314,7 +316,7 @@ Azure Synapse Analytics automatically assigns unique values based on the seed an
 
 *AUTO_CREATE_TABLE* specifies if the table could be automatically created by working alongside with automatic schema discovery. It's available only for Parquet files.
 
-- ON: Enables automatic table creation. The COPY INTO process creates a new table automatically by discovering the structure of the file to be loaded. Can also be used with preexisting tables to take advantage of automatic schema discovery of Parquet files.
+- ON: Enables automatic table creation. The `COPY INTO` process creates a new table automatically by discovering the structure of the file to be loaded. Can also be used with preexisting tables to take advantage of automatic schema discovery of Parquet files.
 - OFF: Automatic table creation isn't enabled. Default.
 
 > [!NOTE]  
@@ -343,9 +345,9 @@ GRANT ALTER on SCHEMA::HR to [mike@contoso.com];
 
 ## Remarks
 
-The COPY statement accepts only UTF-8 and UTF-16 valid characters for row data and command parameters. Source files or parameters (such as ROW TERMINATOR or FIELD TERMINATOR) that use invalid characters might be interpreted incorrectly by the COPY statement and cause unexpected results such as data corruption, or other failures. Make sure your source files and parameters are UTF-8 or UTF-16 compliant before you invoke the COPY statement.  
+The COPY statement accepts only UTF-8 and UTF-16 valid characters for row data and command parameters. Source files or parameters (such as ROW TERMINATOR or FIELD TERMINATOR) that use invalid characters might be interpreted incorrectly by the COPY statement and cause unexpected results such as data corruption, or other failures. Make sure your source files and parameters are UTF-8 or UTF-16 compliant before you invoke the COPY statement.
 
-The MAXDOP query hint is not supported with COPY INTO.
+The `MAXDOP` query hint is not supported with `COPY INTO`.
 
 To ensure reliable execution, the source files and folders must remain unchanged throughout the duration of the `COPY INTO` operation.
 - Modifying, deleting, or replacing any referenced files or folders while the command is running can cause the operation to fail or result in inconsistent data ingestion.
@@ -355,7 +357,7 @@ To ensure reliable execution, the source files and folders must remain unchanged
 
 ### A. Load from a public storage account
 
-The following example is the simplest form of the COPY command, which loads data from a public storage account. For this example, the COPY statement's defaults match the format of the line item csv file.
+The following example is the simplest form of the `COPY` command, which loads data from a public storage account. For this example, the COPY statement's defaults match the format of the line item csv file.
 
 ```sql
 COPY INTO dbo.[lineitem]
@@ -553,22 +555,22 @@ This article explains how to use the COPY statement in [!INCLUDE [fabricdw](../.
 
 In [!INCLUDE [fabric](../../includes/fabric.md)], the [COPY (Transact-SQL)](/sql/t-sql/statements/copy-into-transact-sql?view=fabric&preserve-view=true) statement currently supports the PARQUET and CSV file formats. For data sources, Azure Data Lake Storage Gen2 accounts, and OneLake sources are supported.
 
-For more information on using COPY INTO on your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], see [Ingest data into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] using the COPY statement](/fabric/data-warehouse/ingest-data-copy).
+For more information on using `COPY INTO` on your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], see [Ingest data into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] using the COPY statement](/fabric/data-warehouse/ingest-data-copy).
 
 By default, `COPY INTO` authenticates as the executing Entra ID user.
 
 > [!NOTE]
 > For [!INCLUDE[ssazuresynapse_md](../../includes/ssazuresynapse-md.md)], visit [COPY INTO for [!INCLUDE [ssazuresynapse_md](../../includes/ssazuresynapse-md.md)]](copy-into-transact-sql.md?view=azure-sqldw-latest&preserve-view=true).  
 
-Use COPY for the following capabilities:
+Use `COPY` for the following capabilities:
 
 - Use lower privileged users to load without needing strict CONTROL permissions on the data warehouse.
 - Execute a single T-SQL statement without having to create any other database objects.
 - Properly parse and load CSV files where **delimiters** (string, field, row) **are escaped within string delimited columns**.
 - Specify a finer permission model without exposing storage account keys using Share Access Signatures (SAS).
-- Use a different storage account for the ERRORFILE location (REJECTED_ROW_LOCATION).
+- Use a different storage account for the `ERRORFILE` location (`REJECTED_ROW_LOCATION`).
 - Customize default values for each target column and specify source data fields to load into specific target columns.
-- Specify a custom row terminator, field terminator, and field quote for CSV files
+- Specify a custom row terminator, field terminator, and field quote for CSV files.
 - Specify wildcards and multiple files in the storage location path.
 - For more on data ingestion options and best practices, see [Ingest data into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] using the COPY statement](/fabric/data-warehouse/ingest-data-copy).
 
@@ -601,15 +603,15 @@ WITH
 
 #### *warehouse_name*
 
-Optional if the current warehouse for the user performing the operation is the warehouse of the specified table. If *warehouse* isn't specified, and the specified schema and table doesn't exist on the current warehouse, COPY fails, and an error message is returned.
+Optional if the current warehouse for the user performing the operation is the warehouse of the specified table. If *warehouse* isn't specified, and the specified schema and table doesn't exist on the current warehouse, `COPY` fails, and an error message is returned.
 
 #### *schema_name*
 
-Optional if the default schema for the user performing the operation is the schema of the specified table. If *schema* isn't specified, and the default schema of the user performing the COPY operation is different from the schema of the specified table, COPY is canceled, and an error message is returned.
+Optional if the default schema for the user performing the operation is the schema of the specified table. If *schema* isn't specified, and the default schema of the user performing the `COPY` operation is different from the schema of the specified table, `COPY` is canceled, and an error message is returned.
 
 #### *table_name*
 
-The name of the table to COPY data into. The target table must already exist in the warehouse.
+The name of the table to `COPY` data into. The target table must already exist in the warehouse.
 
 #### *(column_list)*
 
@@ -620,16 +622,16 @@ An optional list of one or more columns used to map source data fields to target
 [(Column_name [default Default_value] [Field_number] [,...n])]
 
 - *Column_name* - the name of the column in the target table.
-- *Default_value* - the default value that replaces any NULL value in the input file. Default value applies to all file formats. COPY attempts to load NULL from the input file when a column is omitted from the column list or when there's an empty input file field. Default value is preceded by the keyword 'default'
-- *Field_number* - The input file field number that is mapped to the target column. 
+- *Default_value* - the default value that replaces any `NULL` value in the input file. Default value applies to all file formats. `COPY` attempts to load `NULL` from the input file when a column is omitted from the column list or when there's an empty input file field. Default value is preceded by the keyword 'default'.
+- *Field_number* - The input file field number that is mapped to the target column.
 - The field indexing starts at 1.
 
-When *column_list* isn't specified, COPY maps columns based on the source and target order: Input field 1 goes to target column 1, field 2 goes to column 2, etc.
+When *column_list* isn't specified, `COPY` maps columns based on the source and target order: Input field 1 goes to target column 1, field 2 goes to column 2, etc.
 
 > [!NOTE]  
 > When working with Parquet files on [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], column names must match exactly in the source and destination. If the name of the column in target table is different than that of the column name in the parquet file, the target table column is filled with NULL.
 
-When a column list isn't specified, COPY maps columns based on the source and target order: Input field 1 goes to target column 1, field 2 goes to column 2, etc.
+When a column list isn't specified, `COPY` maps columns based on the source and target order: Input field 1 goes to target column 1, field 2 goes to column 2, etc.
 
 #### *External location*
 
@@ -648,7 +650,7 @@ Azure Data Lake Storage (ADLS) Gen2 offers better performance than Azure Blob St
 
 - *Container* - The blob container name
 
-- *Path* - the folder or file path for the data. The location starts from the container. If a folder is specified, COPY retrieves all files from the folder and all its subfolders. COPY ignores hidden folders and doesn't return files that begin with an underline (_) or a period (.) unless explicitly specified in the path. This behavior is the same even when specifying a path with a wildcard.
+- *Path* - the folder or file path for the data. The location starts from the container. If a folder is specified, `COPY` retrieves all files from the folder and all its subfolders. `COPY` ignores hidden folders and doesn't return files that begin with an underline (_) or a period (.) unless explicitly specified in the path. This behavior is the same even when specifying a path with a wildcard.
 
 Wildcards can be included in the path where
 
@@ -724,7 +726,7 @@ When using a firewall protected Azure Storage Account, the error file is created
 
 #### *MAXERRORS = max_errors*
 
-*MAXERRORS* specifies the maximum number of reject rows allowed in the load before the COPY operation fails. Each row that the COPY operation can't import is ignored and counted as one error. If max_errors isn't specified, the default is 0.
+*MAXERRORS* specifies the maximum number of reject rows allowed in the load before the `COPY` operation fails. Each row that the `COPY` operation can't import is ignored and counted as one error. If max_errors isn't specified, the default is 0.
 
 In Microsoft Fabric, *MAXERRORS* cannot be used when *FILE_TYPE* is `PARQUET`. 
 
@@ -735,13 +737,13 @@ In Microsoft Fabric, *MAXERRORS* cannot be used when *FILE_TYPE* is `PARQUET`.
 - CSV supports GZIP
 - Parquet supports GZIP and Snappy
 
-The COPY command autodetects the compression type based on the file extension when this parameter isn't specified:
+The `COPY` command autodetects the compression type based on the file extension when this parameter isn't specified:
 
 - `.gz` - **GZIP**
 
 Loading compressed files is currently only supported with *PARSER_VERSION* 1.0. 
 
-The COPY command requires that gzip files do not contain any trailing garbage to operate normally. The gzip format strictly requires that files be composed of valid members without any additional information before, between, or after them. Any deviation from this format, such as the presence of trailing non-gzip data, will result in the failure of the COPY command. Make sure to verify there's no trailing garbage at the end of gzip files to ensure COPY can successfully process these files.
+The `COPY` command requires that gzip files do not contain any trailing garbage to operate normally. The gzip format strictly requires that files be composed of valid members without any additional information before, between, or after them. Any deviation from this format, such as the presence of trailing non-gzip data, will result in the failure of the `COPY` command. Make sure to verify there's no trailing garbage at the end of gzip files to ensure `COPY` can successfully process these files.
 
 #### *FIELDQUOTE = 'field_quote'*
 
@@ -758,21 +760,21 @@ The COPY command requires that gzip files do not contain any trailing garbage to
 
 *ROWTERMINATOR* only applies to CSV. Specifies the row terminator that is used in the CSV file. The row terminator can be specified using hexadecimal notation. The row terminator can be multi-character. The default terminators are `\r\n`, `\n`, and `\r`.
 
-The COPY command prefixes the `\r` character when specifying `\n` (newline) resulting in `\r\n`. To specify only the `\n` character, use hexadecimal notation (`0x0A`). When specifying multi-character row terminators in hexadecimal, don't specify 0x between each character.
+The `COPY` command prefixes the `\r` character when specifying `\n` (newline) resulting in `\r\n`. To specify only the `\n` character, use hexadecimal notation (`0x0A`). When specifying multi-character row terminators in hexadecimal, don't specify 0x between each character.
 
 Extended ASCII and multi-byte characters aren't supported with UTF-8 for ROWTERMINATOR.
 
 #### *FIRSTROW = First_row_int*
 
-*FIRSTROW* only applies to CSV. Specifies the row number that is read first in all files for the COPY command. Values start from 1, which is the default value. If the value is set to two, the first row in every file (header row) is skipped when the data is loaded. Rows are skipped based on the existence of row terminators.
+*FIRSTROW* only applies to CSV. Specifies the row number that is read first in all files for the `COPY` command. Values start from 1, which is the default value. If the value is set to two, the first row in every file (header row) is skipped when the data is loaded. Rows are skipped based on the existence of row terminators.
 
 #### *DATEFORMAT = { 'mdy' | 'dmy' | 'ymd' | 'ydm' | 'myd' | 'dym' }*
 
-DATEFORMAT only applies to CSV and specifies the date format of the date mapping to SQL Server date formats. For an overview of all Transact-SQL date and time data types and functions, see [Date and Time Data Types and Functions (Transact-SQL)](../functions/date-and-time-data-types-and-functions-transact-sql.md). DATEFORMAT within the COPY command takes precedence over [DATEFORMAT configured at the session level](set-dateformat-transact-sql.md).
+DATEFORMAT only applies to CSV and specifies the date format of the date mapping to SQL Server date formats. For an overview of all Transact-SQL date and time data types and functions, see [Date and Time Data Types and Functions (Transact-SQL)](../functions/date-and-time-data-types-and-functions-transact-sql.md). DATEFORMAT within the `COPY` command takes precedence over [DATEFORMAT configured at the session level](set-dateformat-transact-sql.md).
 
 #### *ENCODING = 'UTF8' | 'UTF16'*
 
-*ENCODING* only applies to CSV. Default is UTF8. Specifies the data encoding standard for the files loaded by the COPY command.
+*ENCODING* only applies to CSV. Default is UTF8. Specifies the data encoding standard for the files loaded by the `COPY` command.
 
 #### PARSER_VERSION = { '1.0' | '2.0' }
 
@@ -782,14 +784,14 @@ Parser version 2.0 has the following limitations:
 
 - Compressed CSV files are not supported
 - Files with UTF-16 encoding are not supported
-- Multicharacter or multibyte ROWTERMINATOR, FIELDTERMINATOR, or FIELDQUOTE is not supported. However, '\r\n' is accepted as a default ROWTERMINATOR
+- Multicharacter or multibyte `ROWTERMINATOR`, `FIELDTERMINATOR`, or `FIELDQUOTE` is not supported. However, `\r\n` is accepted as a default `ROWTERMINATOR`.
 
 When using parser version 1.0 with UTF-8 files, multibyte and multicharacter terminators are not supported for FIELDTERMINATOR. 
 
 Parser version 1.0 is available for backward compatibility only, and should be used only when these limitations are encountered.  
 
 > [!NOTE]  
-> When COPY INTO is used with compressed CSV files or files with UTF-16 encoding, COPY INTO automatically switches to PARSER_VERSION 1.0, without user action required. For multi-character terminators on FIELDTERMINATOR or ROWTERMINATOR, the COPY INTO statement will fail. Use PARSER_VERSION = '1.0' if multi-character separators are needed.
+> When `COPY INTO` is used with compressed CSV files or files with UTF-16 encoding, `COPY INTO` automatically switches to `PARSER_VERSION` 1.0, without user action required. For multi-character terminators on `FIELDTERMINATOR` or `ROWTERMINATOR`, the `COPY INTO` statement will fail. Use `PARSER_VERSION = '1.0'` if multi-character separators are needed.
 
 #### MATCH_COLUMN_COUNT = { 'ON' | 'OFF' }
 
@@ -798,10 +800,10 @@ Parser version 1.0 is available for backward compatibility only, and should be u
 - If *MATCH_COLUMN_COUNT* is `OFF`:
   - Exceeding columns from source rows are ignored.
   - Rows with fewer columns are inserted as null in nullable columns.
-  - If a value is not provided to a non-nullable column, the COPY command fails.
+  - If a value is not provided to a non-nullable column, the `COPY` command fails.
 - If *MATCH_COLUMN_COUNT* is `ON`:
-  - The COPY command checks if the column count on each row in each file from the source matches the column count of the destination table.
-- If there is a column count mismatch, the COPY command fails.
+  - The `COPY` command checks if the column count on each row in each file from the source matches the column count of the destination table.
+- If there is a column count mismatch, the `COPY` command fails.
 
 > [!NOTE]  
 > *MATCH_COLUMN_COUNT* works independently from *MAXERRORS*. A column count mismatch causes `COPY INTO` to fail regardless of *MAXERRORS*.
@@ -851,11 +853,11 @@ When using OneLake as the source, the user must have **Contributor** or higher p
 
 ## Remarks
 
-The COPY statement accepts only UTF-8 and UTF-16 valid characters for row data and command parameters. Source files or parameters (such as `ROW TERMINATOR` or `FIELD TERMINATOR`) that use invalid characters might be interpreted incorrectly by the COPY statement and cause unexpected results such as data corruption, or other failures. Make sure your source files and parameters are UTF-8 or UTF-16 compliant before you invoke the COPY statement.  
+The `COPY` statement accepts only UTF-8 and UTF-16 valid characters for row data and command parameters. Source files or parameters (such as `ROW TERMINATOR` or `FIELD TERMINATOR`) that use invalid characters might be interpreted incorrectly by the `COPY` statement and cause unexpected results such as data corruption, or other failures. Make sure your source files and parameters are UTF-8 or UTF-16 compliant before you invoke the `COPY` statement.  
 
-To ensure reliable execution, the source files and folders must remain unchanged throughout the duration of the COPY INTO operation.
+To ensure reliable execution, the source files and folders must remain unchanged throughout the duration of the `COPY INTO` operation.
 - Modifying, deleting, or replacing any referenced files or folders while the command is running can cause the operation to fail or result in inconsistent data ingestion.
-- Before executing COPY INTO, verify that all source data is stable and will not be altered during the process.
+- Before executing `COPY INTO`, verify that all source data is stable and will not be altered during the process.
 
 <a id="limitations-for-onelake-as-source-public-preview"></a>
 
@@ -873,37 +875,37 @@ Fabric OneLake storage as a source for both `COPY INTO` and `OPENROWSET(BULK)` i
 
 ## Examples
 
-For more information on using COPY INTO on your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], see [Ingest data into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] using the COPY statement](/fabric/data-warehouse/ingest-data-copy).
+For more information on using `COPY INTO` on your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], see [Ingest data into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] using the COPY statement](/fabric/data-warehouse/ingest-data-copy).
 
 ### A. Load from a public storage account
 
-The following example is the simplest form of the COPY command, which loads data from a public storage account. For this example, the COPY statement's defaults match the format of the line item csv file.
+The following example is the simplest form of the `COPY` command, which loads data from a public storage account. For this example, the `COPY` statement's defaults match the format of the line item csv file.
 
 ```sql
 COPY INTO dbo.[lineitem]
 FROM 'https://unsecureaccount.blob.core.windows.net/customerdatasets/folder1/lineitem.csv'
 ```
 
-The default values of the COPY command are:
+The default values of the `COPY` command are:
 
-- MAXERRORS = 0
+- `MAXERRORS = 0`
 
-- COMPRESSION default is uncompressed
+- `COMPRESSION` default is uncompressed
 
-- FIELDQUOTE = '"'
+- `FIELDQUOTE = '"'`
 
-- FIELDTERMINATOR = ','
+- `FIELDTERMINATOR = ','`
 
-- ROWTERMINATOR = '\n'
+- `ROWTERMINATOR = '\n'`
 
-> [!IMPORTANT]  
-> COPY treats `\n` as `\r\n` internally. For more information, see the ROWTERMINATOR section.
+  > [!IMPORTANT]  
+  > `COPY` treats `\n` as `\r\n` internally. For more information, see the `ROWTERMINATOR` section.
 
-- FIRSTROW = 1
+- `FIRSTROW = 1`
 
-- ENCODING = 'UTF8'
+- `ENCODING = 'UTF8'`
 
-- FILE_TYPE = 'CSV'
+- `FILE_TYPE = 'CSV'`
 
 ### B. Load authenticating via Share Access Signature (SAS)
 

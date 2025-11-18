@@ -7,14 +7,16 @@ ms.reviewer: mathoma
 ms.date: 09/27/2024
 ms.service: sql
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "collations [SQL Server], database"
   - "database collations [SQL Server]"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
 # Set or change the database collation
 
-[!INCLUDE [SQL Server, Azure SQL Database Managed Instance](../../includes/applies-to-version/sql-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdbmi.md)]
 
 This article describes how to set or change the database [collation](collation-and-unicode-support.md) by using [SQL Server Management Studio (SSMS)](../../ssms/sql-server-management-studio-ssms.md) or [!INCLUDE [tsql](../../includes/tsql-md.md)]. 
 
@@ -158,3 +160,4 @@ When a database collation is changed, only new tables inherit the new database c
 - [CREATE DATABASE](../../t-sql/statements/create-database-transact-sql.md)
 - [ALTER TABLE (Transact-SQL)](../../t-sql/statements/alter-table-transact-sql.md)
 - [ALTER DATABASE (Transact-SQL)](../../t-sql/statements/alter-database-transact-sql.md)
+

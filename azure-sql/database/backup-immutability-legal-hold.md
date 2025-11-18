@@ -9,6 +9,8 @@ ms.date: 11/06/2025
 ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 monikerRange: "=azuresql || =azuresql-db"
 ---
 # Configure legal hold backup immutability for long-term retention backups in Azure SQL Database
@@ -20,6 +22,9 @@ In this article, learn how to configure **legal hold backup immutability** for l
 [Backup immutability for long-term retention backups](backup-immutability.md) is available in two modes: time-based immutability and legal hold immutability.
 
 Once locked with legal hold backup immutability, backups can't be deleted or modified until legal hold backup immutability is manually removed.
+
+> [!NOTE]
+> Legal hold backup immutability is a preview feature. [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## Prerequisites
 

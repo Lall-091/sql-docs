@@ -7,13 +7,15 @@ ms.date: 12/20/2023
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "UNIQUE_TSQL"
 helpviewer_keywords:
   - "UNIQUE constraints [SQL Server], creating"
   - "constraints [SQL Server], creating"
   - "constraints [SQL Server], unique"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||=fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Create unique constraints
 

@@ -8,14 +8,14 @@ ms.date: 09/04/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
-monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-current || =azuresqldb-mi-current"
 ms.custom:
-  - build-2025
+  - ignite-2025
+monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # TDS 8.0
 
-[!INCLUDE [SQL Server 2022, Azure SQL Database, Azure SQL Managed Instance](../../../includes/applies-to-version/sqlserver2022-asdb-asmi.md)]
+[!INCLUDE [SQL Server 2022, Azure SQL Database, Azure SQL Managed Instance FabricSQLDB](../../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricsqldb.md)]
 
 [!INCLUDE [sssql22-md](../../../includes/sssql22-md.md)], [!INCLUDE [ssazure-sqldb](../../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md](../../../includes/ssazuremi-md.md)] support Tabular Data Stream (TDS) 8.0.
 
@@ -125,3 +125,4 @@ The following options are added to connection strings to encrypt communication:
 ## Related content
 
 - [Connect to SQL Server with strict encryption](connect-with-strict-encryption.md)
+

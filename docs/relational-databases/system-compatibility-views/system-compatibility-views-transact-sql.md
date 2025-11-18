@@ -7,6 +7,8 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "compatibility views [SQL Server]"
   - "system tables [SQL Server], compatibility views"
@@ -20,11 +22,11 @@ helpviewer_keywords:
   - "user IDs [SQL Server]"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||=fabric" 
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # System Compatibility Views (Transact-SQL)
 
-[!INCLUDE[sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE[sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
   Many of the system tables from earlier releases of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] are now implemented as a set of views. These views are known as compatibility views, and they are meant for backward compatibility only. The compatibility views expose the same metadata that was available in [!INCLUDE[ssVersion2000](../../includes/ssversion2000-md.md)]. However, the compatibility views do not expose any of the metadata related to features that are introduced in [!INCLUDE[ssVersion2005](../../includes/ssversion2005-md.md)] and later. Therefore, when you use new features, such as [!INCLUDE[ssSB](../../includes/sssb-md.md)] or partitioning, you must switch to using the catalog views.  
   
@@ -58,3 +60,4 @@ monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-s
  [Mapping System Tables to System Views &#40;Transact-SQL&#41;](../../relational-databases/system-tables/mapping-system-tables-to-system-views-transact-sql.md)  
   
   
+

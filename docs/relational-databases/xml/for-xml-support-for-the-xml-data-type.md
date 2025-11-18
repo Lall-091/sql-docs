@@ -8,13 +8,15 @@ ms.date: 09/26/2025
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "user-defined functions [SQL Server], XML"
   - "xml data type [SQL Server], FOR XML clause"
 ---
 # FOR XML support for the XML data type
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 If a `FOR XML` query specifies a column of **xml** type in the `SELECT` clause, column values are mapped as elements in the returned XML, regardless of whether you specify the `ELEMENTS` directive. Any XML declaration in the **xml** type column isn't serialized.
 
@@ -196,3 +198,4 @@ SELECT @x;
 ## Related content
 
 - [FOR XML support for various SQL Server data types](for-xml-support-for-various-sql-server-data-types.md)
+

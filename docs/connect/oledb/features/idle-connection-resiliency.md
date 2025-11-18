@@ -8,12 +8,12 @@ ms.service: sql
 ms.subservice: connectivity
 ms.topic: "reference"
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 ---
 
 # Idle connection resiliency in the OLE DB Driver
 
-[!INCLUDE[SQL Server Azure SQL Database](../../../includes/applies-to-version/sqlserver2014-asdb.md)]
+[!INCLUDE[SQL Server Azure SQL Database-fabricsqldb](../../../includes/applies-to-version/sqlserver2014-asdb-fabricsqldb.md)]
 
 [!INCLUDE[Driver_OLEDB_Download](../../../includes/driver_oledb_download.md)]
 
@@ -65,3 +65,4 @@ If using asynchronous execution and the connection needs to be recovered, the co
 * The connection is broken and recovery is not possible. The connection is marked by the server as unrecoverable. No attempt was made to restore the connection.  
 * The connection is broken and recovery is not possible. The connection is marked by the client driver as unrecoverable. No attempt was made to restore the connection.  
 * The server did not preserve SSL encryption during a recovery attempt, connection recovery is not possible.  
+

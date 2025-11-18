@@ -7,6 +7,8 @@ ms.date: "06/10/2016"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SET QUERY_GOVERNOR_COST_LIMIT"
   - "SET_QUERY_GOVERNOR_COST_LIMIT_TSQL"
@@ -21,7 +23,9 @@ dev_langs:
   - "TSQL"
 ---
 # SET QUERY_GOVERNOR_COST_LIMIT (Transact-SQL)
-[!INCLUDE [SQL Server SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+
+[!INCLUDE [SQL Server SQL Database SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
+
 
   Overrides the currently configured **query governor cost limit** value for the current connection.  
   
@@ -53,3 +57,4 @@ SET QUERY_GOVERNOR_COST_LIMIT value
   
 ## See Also  
  [SET Statements &#40;Transact-SQL&#41;](../../t-sql/statements/set-statements-transact-sql.md)  
+

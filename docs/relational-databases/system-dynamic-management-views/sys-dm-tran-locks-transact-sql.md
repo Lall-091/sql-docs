@@ -8,6 +8,8 @@ ms.date: 09/29/2024
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "dm_tran_locks"
   - "sys.dm_tran_locks"
@@ -17,11 +19,11 @@ helpviewer_keywords:
   - "sys.dm_tran_locks dynamic management view"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # sys.dm_tran_locks (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricdw-fabricsqldb.md)]
 
 Returns information about currently active lock manager resources in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)]. Each row represents a currently active request to the lock manager for a lock that has been granted or is waiting to be granted.
 
@@ -393,3 +395,4 @@ GO
 - [System dynamic management views](system-dynamic-management-views.md)
 - [Transaction Related Dynamic Management Views and Functions (Transact-SQL)](transaction-related-dynamic-management-views-and-functions-transact-sql.md)
 - [SQL Server, Locks object](../performance-monitor/sql-server-locks-object.md)
+

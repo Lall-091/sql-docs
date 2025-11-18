@@ -1,32 +1,30 @@
 ---
-title: Configure change event streaming
-description: "Describes how to configure change event streaming."
+title: Configure Change Event Streaming
+description: Describes how to configure change event streaming.
 author: nzagorac-ms
 ms.author: nzagorac
-ms.reviewer: mathoma, mikeray
-ms.date: 06/19/2025
+ms.reviewer: mathoma, mikeray, randolphwest
+ms.date: 11/18/2025
 ms.service: sql
 ms.topic: how-to
-monikerRange: " = sql-server-ver17 || = sql-server-linux-ver17 "
 ms.custom:
-  - build-2025
+  - ignite-2025
+monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17"
 ---
 
-# Configure change event streaming
+# Configure change event streaming (preview)
 
-[!INCLUDE [sqlserver2025](../../../includes/applies-to-version/sqlserver2025.md)]
+[!INCLUDE [sqlserver2025](../../../includes/applies-to-version/sqlserver2025-asdb.md)]
 
-This article describes how to configure [change event streaming (CES)](overview.md) feature introduced in [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)].
+This article describes how to configure the [change event streaming (CES)](overview.md) feature introduced in [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)] and Azure SQL Database.
 
-> [!NOTE]
-> Change event streaming is currently in [preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms) for SQL Server 2025 and requires enabling the [preview feature database scoped configuration](../../../t-sql/statements/alter-database-scoped-configuration-transact-sql.md#preview-features). During preview, this feature is subject to change. For current supportability, see [Limitations](configure.md#limitations).
-
+[!INCLUDE [change-event-streaming-preview](../../../includes/change-event-streaming-preview.md)]
 
 ## Overview
 
-To configure and use change event streaming, follow this sequence of steps:
+To configure and use change event streaming, follow these steps:
 
-1. Use an existing or create a new [Azure Event Hubs](/azure/event-hubs/event-hubs-about) namespace and Event Hubs instance. Event Hubs instance receives events.
+1. Use an existing or create a new [Azure Event Hubs](/azure/event-hubs/event-hubs-about) namespace and Event Hubs instance. The Event Hubs instance receives events.
 1. Enable change event streaming for a user database.
 1. Create an event stream group. With this group, configure the destination, credentials, message size limits, and partitioning schema.
 1. Add one or more tables to the event stream group.
@@ -35,36 +33,53 @@ Each step is described in detail in the following sections of this article.
 
 ## Prerequisites
 
-To configure change event streaming, you need the following:
+To configure change event streaming, you need the following resources, permissions, and configuration:
 
 - Azure Event Hubs namespace
 - Azure Event Hubs instance
 - Azure Event Hubs host name
-- Policy with **Send** access level
 - A login in the [db_owner](../../security/authentication-access/database-level-roles.md#fixed-database-roles) role or that has [CONTROL DATABASE](../../security/permissions-database-engine.md#permissions-database-engine) permission for the database where you intend to enable CES.
-- Set the [database scoped credential preview configuration option](../../../t-sql/statements/alter-database-scoped-configuration-transact-sql.md#preview-features) to yes.
+- For [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)], enable the [preview feature database scoped configuration](../../../t-sql/statements/alter-database-scoped-configuration-transact-sql.md#preview-features). Azure SQL Database doesn't require this configuration.
+- For Azure SQL Database configured to use [outbound firewall rules](/azure/azure-sql/database/outbound-firewall-rule-overview) or a [Network Security Perimeter](/azure/azure-sql/database/network-security-perimeter), allow access to the destination Azure Event Hubs:
+  - [Firewall ports to open](/azure/event-hubs/event-hubs-faq#what-ports-do-i-need-to-open-on-the-firewall)
+  - [Network Security Perimeter for Azure Event Hubs](/azure/event-hubs/network-security-perimeter).
 
 ## Configure Azure Event Hubs
 
 To learn how to create Azure Event Hubs, review [Create an event hub using the Azure portal](/azure/event-hubs/event-hubs-create).
 
-To configure streaming to Azure Event Hubs with AMQP protocol (default, native Azure Event Hubs protocol), generate a SAS token for your Azure Event Hubs namespace and instance name. You can do that programmatically with any programming or scripting language. The example in this article demonstrates how to generate a SAS token from a new or existing policy by using a PowerShell script.
+## Azure Event Hubs access control
+
+Configure access control for your SQL resource to Azure Event Hubs. Microsoft Entra authentication is the most secure method but is currently only supported by Azure SQL Database for CES. While using a shared access policy is supported by both Azure SQL Database and SQL Server 2025, use it only in Azure SQL Database if Microsoft Entra authentication isn't an option.
+
+### [Shared access policy based access control](#tab/sas-access)
+
+[Shared access policies](/azure/event-hubs/authorize-access-shared-access-signature#shared-access-authorization-policies) provide authentication and authorization to Azure Event Hubs. Each shared access policy needs a name, an access level (`Manage`, `Send`, or `Listen`), and a resource binding (Event Hubs namespace or a specific Event Hub instance). Instance level policies offer more security by following the principle of least privilege. Both SQL Server 2025 and Azure SQL Database support this method. However, use Microsoft Entra authentication whenever possible with Azure SQL Database, as it provides better security.
+
+If you use a shared access policy for authentication and authorization, clients sending data to an Azure Event Hub need to provide the name of the policy they want to use, along with either a **SAS token** generated from the policy or the policy's **Service key**.
+
+SAS tokens have a security advantage over service keys: If the client is compromised, the SAS token is only valid until it expires, and the compromised client can't create new SAS tokens. In contrast, service keys don't automatically expire. A compromised client with a service key can generate new SAS tokens by using the key.
+
+To configure streaming to Azure Event Hubs with the AMQP protocol (the default native Azure Event Hubs protocol), create or reuse a shared access policy with **Send** permission and generate a SAS token. You can generate the token programmatically with any programming or scripting language. The example in this article shows how to generate a SAS token from a new or existing policy by using a PowerShell script.
+
+> [!NOTE]  
+> For improved security, use Microsoft Entra based access control whenever possible. If Microsoft Entra based access control isn't possible and you're using shared access policies, use SAS token authentication instead of service key-based authentication whenever possible. Best practices for SAS tokens include defining an appropriate access scope, setting an expiration date, and rotating the SAS key regularly. For key-based authentication, rotate keys periodically. Store all secrets securely by using Azure Key Vault or a similar service.
 
 ### Install required modules
 
-To manage Azure Event Hubs resources with PowerShell scripts, you need to have the following modules:
+To manage Azure Event Hubs resources with PowerShell scripts, you need the following modules:
 
 - Az PowerShell module
 - Az.EventHub PowerShell module
 
-The following script installs the required modules: 
+The following script installs the required modules:
 
 ```powershell
 Install-Module -Name Az -AllowClobber -Scope CurrentUser -Repository PSGallery -Force
 Install-Module -Name Az.EventHub -Scope CurrentUser -Force
 ```
 
-If you already have the required modules, and want to update them to the latest version, run the following script: 
+If you already have the required modules and want to update them to the latest version, run the following script:
 
 ```powershell
 Update-Module -Name Az -Force
@@ -73,28 +88,28 @@ Update-Module -Name Az.EventHub -Force
 
 ### Connect to Azure
 
-You can either use Azure Cloud Shell or login and set your subscription context.
+You can either use Azure Cloud Shell or sign in and set your subscription context.
 
 To run with Azure Cloud Shell, review [Sign in to Azure](/powershell/azure/get-started-azureps#sign-in-to-azure).
 
 ### Define a policy
 
-To create the SAS token, you need a policy. You can either:
+To create the SAS token, you need a policy with **Send** rights. You can either:
 
-- Create a new policy with the specific rights.
+- Create a new policy
 
   Or
 
-- Use an existing policy with the correct rights.
+- Use an existing policy
 
-#### Create SAS token for a new or existing policy
+> [!NOTE]  
+> The policy must have **Send** rights.
 
-> [!NOTE]
-> For improved security, SAS token authentication is strongly recommended over key-based authentication whenever possible. Best practices for SAS tokens include: define an appropriate access scope, set an expiration date, and rotate the SAS key regularly. For key-based authentication, ensure keys are rotated periodically. Store all secrets securely using Azure Key Vault or a similar service.
+### Create SAS token for a new or existing policy
 
-When creating a new policy, ensure it has the **Send** right. If you use an existing policy, verify that it has the **Send** right.
+When you create a new policy, make sure it has the **Send** right. If you use an existing policy, check that it has the **Send** right.
 
-The following script will create a new policy, or get an existing one, and then generates from it a full SAS token in an HTTP authorization header format.
+The following script creates a new policy or gets an existing one, then generates a full SAS token in an HTTP authorization header format.
 
 Replace values in angle brackets (`<value>`) with values for your environment.
 
@@ -154,7 +169,7 @@ if (-not $keys.PrimaryKey) {
 }
 
 # Get the Primary Key of the Shared Access Policy
-$primaryKey = ($keys.PrimaryKey) 
+$primaryKey = ($keys.PrimaryKey)
 Write-Host $primaryKey
 
 ## Check that the primary key is not empty.
@@ -192,9 +207,36 @@ $sasToken
 Generate-SasToken
 ```
 
+The output of the previous command should look like the following text:
+
+```text
+-- Generated SAS Token --
+SharedAccessSignature sr=https%3a%2f%YourEventHubNamespace.servicebus.windows.net%2fYourEventHub&sig=xxxxxxxxxxxxxxxxxxxxxxx&se=2059133074&skn=SharedKeyNameIsHERE
+-- End of generated SAS Token --
+```
+
+Copy the entire SAS token value (the line that starts with `SharedAccessSignature`) to use it later when you configure CES, such as the following example:
+
+```text
+SharedAccessSignature sr=https%3a%2f%YourEventHubNamespace.servicebus.windows.net%2fYourEventHub&sig=xxxxxxxxxxxxxxxxxxxxxxx&se=2059133074&skn=SharedKeyNameIsHERE
+```
+
+### [Microsoft Entra based access control](#tab/entra-access)
+
+Use Microsoft Entra [managed identities](/entra/identity/managed-identities-azure-resources/overview) to control access to Azure Event Hubs. It's the simplest and most secure way to grant access to Azure Event Hubs. Currently, only Azure SQL Database supports Microsoft Entra authentication for CES.
+
+To [allow Azure SQL Database managed identity write access](/azure/event-hubs/authenticate-managed-identity) to the Events Hub, follow these steps:
+
+1. Configure a [managed identity](/azure/azure-sql/database/authentication-azure-ad-user-assigned-managed-identity) for your Azure SQL Database [logical server](/azure/azure-sql/database/logical-servers), if you haven't already.
+1. Add the `Azure Event Hubs Data Sender` role assignment to the managed identity of your logical server for your Azure Event Hub instance. You can do this programmatically with any programming or scripting language, or on the **Access Control (IAM)** page for your Azure Event Hub instance in the Azure portal.
+
+To follow the principle of least privilege, grant access to the specific Event Hubs instance that receives the change events. Granting write access to the entire Event Hubs namespace is technically allowed, but not recommended since it applies to any event Event Hubs instance within the namespace.
+
+---
+
 ## Enable and configure change event streaming
 
-To enable and configure change event streaming, change the database context to the user database and then follow these steps: 
+To enable and configure change event streaming, change the database context to the user database and then follow these steps:
 
 1. If it's not already configured, set the database to the [full recovery model](../../backup-restore/recovery-models-sql-server.md#recovery-model-overview).
 1. Create a master key and a database scoped credential.
@@ -202,29 +244,48 @@ To enable and configure change event streaming, change the database context to t
 1. Create the event stream group.
 1. Add one or more tables to the event stream group.
 
-The examples in this section demonstrate how to enable CES for the AMQP protocol and the Apache Kafka protocol.
+The examples in this section demonstrate how to enable CES for the AMQP protocol and the Apache Kafka protocol:
+
+- [Stream to Azure Event Hubs via AMQP protocol](#example-stream-to-azure-event-hubs-via-amqp-protocol)
+- [Stream to Azure Event Hubs via Apache Kafka protocol](#example-stream-to-azure-event-hubs-via-apache-kafka-protocol)
 
 The following are sample parameter values for the examples in this section:
 
 - `@stream_group_name = N'myStreamGroup'`
-- `@destination_location = N'myEventHubsNamespace.servicebus.windows.net/myEventHubsInstance'`
-- `@partition_key_scheme =   N'None'`
-- Primary or secondary key value: `Secret = 'BVFnT3baC/K6I8xNZzio4AeoFt6nHeK0i+ZErNGsxiw='`
+- `@destination_location = N'myEventHubsNamespace.servicebus.windows.net/myEventHubsInstance'` - this value is the FQDN of the specific Azure Event Hubs and instance name.
+
+- `@partition_key_scheme = N'None'` - (default) partitions are chosen round robin. Other possible options are:
+  - `StreamGroup` - partitioning by the stream group
+  - `Table` - partitioning by table
+  - `Column` - partitioning by columns
+
+- *[optional, if Shared Access policies via Service Key are used]*
+
+  - Primary or secondary key value taken from the Shared access policy: `Secret = 'BVFnT3baC/K6I8xNZzio4AeoFt6nHeK0i+ZErNGsxiw='`
+
 - `EXEC sys.sp_add_object_to_event_stream_group N'myStreamGroup', N'dbo.myTable'`
 
-### Example: Stream to Azure Event Hubs via AMQP protocol (SAS token auth)
+- `@max_message_size_kb = 256` - 256 KB is the default maximum message size, but this value should be aligned with the limits of the destination Azure Event Hubs.
 
-Replace values in angle brackets (`<value>`) with values for your environment. 
+### Example: Stream to Azure Event Hubs via AMQP protocol
+
+The examples in this section show how to stream change events to Azure Event Hubs by using the AMQP protocol. AMQP is the default native Azure Event Hubs protocol.
+
+#### [SAS token authentication](#tab/sas-token-auth)
+
+The example in this section uses a SAS token to authenticate to your Azure Event Hubs instance through the AMQP protocol. If Microsoft Entra authentication isn't available, use a SAS token instead of a service key value for improved security.
+
+Replace values in angle brackets (`<value>`) with values for your environment.
 
 ```sql
-USE <database name>
+USE <database name>;
 
 -- Create the Master Key with a password.
-CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Password>'
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Password>';
 
 CREATE DATABASE SCOPED CREDENTIAL <CredentialName>
     WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
-    SECRET = '<Generated SAS Token>'
+    SECRET = '<Generated SAS Token>' -- Be sure to copy the entire token. The SAS token starts with "SharedAccessSignature sr="
 
 EXEC sys.sp_enable_event_stream
 
@@ -233,7 +294,7 @@ EXEC sys.sp_create_event_stream_group
     @destination_type =       N'AzureEventHubsAmqp',
     @destination_location =   N'<AzureEventHubsHostName>/<EventHubsInstance>',
     @destination_credential = <CredentialName>,
-    @max_message_size_kb =    <MaxMessageSize>, 
+    @max_message_size_kb =    <MaxMessageSize>,
     @partition_key_scheme =   N'<PartitionKeyScheme>'
 
 EXEC sys.sp_add_object_to_event_stream_group
@@ -241,9 +302,41 @@ EXEC sys.sp_add_object_to_event_stream_group
     N'<SchemaName>.<TableName>'
 ```
 
-### Example: Stream to Azure Event Hubs via AMQP protocol (Key value auth)
+#### [Microsoft Entra authentication](#tab/entra-auth)
 
-Replace values in angle brackets (`<value>`) with values for your environment.
+The example in this section uses Microsoft Entra authentication to authenticate to your Azure Event Hubs instance through the AMQP protocol. This method is the most secure but is currently only supported by Azure SQL Database for CES.
+
+Replace the values in angle brackets (`<value>`) with values for your environment.
+
+```sql
+USE <database name>;
+
+-- Create the Master Key with a password.
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Password>';
+
+CREATE DATABASE SCOPED CREDENTIAL <CredentialName>
+    WITH IDENTITY = 'Managed Identity'
+
+EXEC sys.sp_enable_event_stream
+
+EXEC sys.sp_create_event_stream_group
+    @stream_group_name =      N'<EventStreamGroupName>',
+    @destination_type =       N'AzureEventHubsAmqp',
+    @destination_location =   N'<AzureEventHubsHostName>/<EventHubsInstance>',
+    @destination_credential = <CredentialName>,
+    @max_message_size_kb =    <MaxMessageSize>,
+    @partition_key_scheme =   N'<PartitionKeyScheme>'
+
+EXEC sys.sp_add_object_to_event_stream_group
+    N'<EventStreamGroupName>',
+    N'<SchemaName>.<TableName>'
+```
+
+#### [Service key authentication](#tab/key-value-auth)
+
+The example in this section uses a Shared Access policy key value to authenticate to your Azure Event Hubs instance through the AMQP protocol. If Microsoft Entra authentication isn't available, use a SAS token instead of a service key value for improved security.
+
+Replace the values in angle brackets (`<value>`) with values for your environment.
 
 ```sql
 USE <database name>
@@ -270,36 +363,15 @@ EXEC sys.sp_add_object_to_event_stream_group
     N'<SchemaName>.<TableName>'
 ```
 
-### Example: Stream to Azure Event Hubs via Apache Kafka protocol (Connection string auth)
+---
 
-Replace values in angle brackets (`<value>`) with values for your environment. 
+### Example: Stream to Azure Event Hubs via Apache Kafka protocol
 
-```sql
-USE <database name>
+The examples in this section show how to stream change events to Azure Event Hubs by using the Apache Kafka protocol.
 
--- Create the Master Key with a password.
-CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Password>'
+#### [SAS token authentication](#tab/sas-token-auth)
 
-CREATE DATABASE SCOPED CREDENTIAL credential1
-    WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
-    SECRET = '<Event Hubs Namespace – Primary or Secondary connection string>'
-
-EXEC sys.sp_enable_event_stream
-
-EXEC sys.sp_create_event_stream_group
-    @stream_group_name =      N'<EventStreamGroupName>',
-    @destination_type =       N'AzureEventHubsApacheKafka',
-    @destination_location =   N'<AzureEventHubsHostName>:<port>/<EventHubsInstance>',
-    @destination_credential = <CredentialName>,
-    @max_message_size_kb =    <MaxMessageSize>,
-    @partition_key_scheme =   N'<PatitionKeyScheme>'
-
-EXEC sys.sp_add_object_to_event_stream_group
-    N'<EventStreamGroupName>',
-    N'<SchemaName>.<TableName>'
-```
-
-### Example: Stream to Azure Event Hubs via Apache Kafka protocol (Key value auth)
+The example in this section uses a SAS token to authenticate to your Azure Event Hubs instance through the Apache Kafka protocol. If Microsoft Entra authentication isn't available, use a SAS token instead of a service key value for improved security.
 
 Replace values in angle brackets (`<value>`) with values for your environment.
 
@@ -309,7 +381,68 @@ USE <database name>
 -- Create the Master Key with a password.
 CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Password>'
 
-CREATE DATABASE SCOPED CREDENTIAL credential1
+CREATE DATABASE SCOPED CREDENTIAL <CredentialName>
+    WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+    SECRET = '<Event Hubs Namespace – Primary or Secondary connection string>'
+
+EXEC sys.sp_enable_event_stream
+
+EXEC sys.sp_create_event_stream_group
+    @stream_group_name =      N'<EventStreamGroupName>',
+    @destination_type =       N'AzureEventHubsApacheKafka',
+    @destination_location =   N'<AzureEventHubsHostName>:<port>/<EventHubsInstance>', -- myEventHubsNamespace.servicebus.windows.net:9093/myEventHubsInstance
+    @destination_credential = <CredentialName>,
+    @max_message_size_kb =    <MaxMessageSize>,
+    @partition_key_scheme =   N'<PatitionKeyScheme>'
+
+EXEC sys.sp_add_object_to_event_stream_group
+    N'<EventStreamGroupName>',
+    N'<SchemaName>.<TableName>'
+```
+
+#### [Microsoft Entra authentication](#tab/entra-auth)
+
+The example in this section uses Microsoft Entra authentication to authenticate to your Azure Event Hubs instance through the Apache Kafka protocol. This method is the most secure but is currently only supported by Azure SQL Database for CES.
+
+Replace the values in angle brackets (`<value>`) with values for your environment.
+
+```sql
+USE <database name>
+
+-- Create the Master Key with a password.
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Password>'
+
+CREATE DATABASE SCOPED CREDENTIAL <CredentialName>
+    WITH IDENTITY = 'Managed Identity'
+
+EXEC sys.sp_enable_event_stream
+
+EXEC sys.sp_create_event_stream_group
+    @stream_group_name =      N'<EventStreamGroupName>',
+    @destination_type =       N'AzureEventHubsApacheKafka',
+    @destination_location =   N'<AzureEventHubsHostName>:<port>/<EventHubsInstance>', -- myEventHubsNamespace.servicebus.windows.net:9093/myEventHubsInstance
+    @destination_credential = <CredentialName>,
+    @max_message_size_kb =    <MaxMessageSize>,
+    @partition_key_scheme =   N'<PatitionKeyScheme>'
+
+EXEC sys.sp_add_object_to_event_stream_group
+    N'<EventStreamGroupName>',
+    N'<SchemaName>.<TableName>'
+```
+
+#### [Service key authentication](#tab/key-value-auth)
+
+The example in this section uses a Shared Access policy key value to authenticate to your Azure Event Hubs instance through the Apache Kafka protocol. If Microsoft Entra authentication isn't available, use a SAS token instead of a service key value for improved security.
+
+Replace the values in angle brackets (`<value>`) with values for your environment.
+
+```sql
+USE <database name>
+
+-- Create the Master Key with a password.
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Password>'
+
+CREATE DATABASE SCOPED CREDENTIAL <CredentialName>
     WITH IDENTITY = '<Azure Event Hubs SAS Policy name>',
     SECRET = '<Primary or Secondary key value>' -- BVFnT3baC/K6I8xNZzio4AeoFt6nHeK0i+ZErNGsxiw=
 
@@ -328,77 +461,97 @@ EXEC sys.sp_add_object_to_event_stream_group
     N'<SchemaName>.<TableName>' -- dbo.myTable
 ```
 
+---
+
 ## View CES configuration and function
 
-In [sys.databases](../../system-catalog-views/sys-databases-transact-sql.md),  `is_event_stream_enabled = 1` indicates that change event streaming is enabled for the database. 
+In [sys.databases](../../system-catalog-views/sys-databases-transact-sql.md), `is_event_stream_enabled = 1` indicates that change event streaming is enabled for the database.
 
-The following query returns all databases with change event streaming enabled: 
+The following query returns all databases with change event streaming enabled:
 
 ```sql
-SELECT * FROM sys.databases WHERE is_event_stream_enabled = 1
+SELECT *
+FROM sys.databases
+WHERE is_event_stream_enabled = 1;
 ```
 
 In [sys.tables](../../system-catalog-views/sys-tables-transact-sql.md), `is_replicated = 1` indicates a table is streamed, and [sp_help_change_feed_table](../../system-stored-procedures/sp-help-change-feed-table.md) provides information about the table group and table metadata for change event streaming.
 
-The following query returns all tables with change event streaming enabled, and provides metadata information: 
+The following query returns all tables with change event streaming enabled, and provides metadata information:
 
 ```sql
-SELECT name, is_replicated FROM sys.tables
+SELECT name,
+       is_replicated
+FROM sys.tables;
 
-EXEC sp_help_change_feed_table @source_schema = '<schema name>', @source_name = '<table name>'
+EXECUTE sp_help_change_feed_table
+    @source_schema = '<schema name>',
+    @source_name = '<table name>';
 ```
-
-> [!NOTE]
-> Currently, CES isn't supported on database that configured with change data capture (CDC), transactional replication, or [Fabric Mirrored Databases for SQL Server](/fabric/database/mirrored-database/sql-server).
 
 ## CES stored procedures, system functions, and DMVs
 
-The following table lists the stored procedures, system functions, and DMVs that are used to configure, disable and monitor change event streaming: 
+The following table lists the stored procedures, system functions, and DMVs that you can use to configure, disable, and monitor change event streaming:
 
 | System object | Description |
-|-----------------|------------|
-|<center>**Configure CES**</center>|
-|[sys.sp_enable_event_stream](../../system-stored-procedures/sys-sp-enable-event-stream-transact-sql.md) | Enables CES for the current user database.| 
-|[sys.sp_create_event_stream_group](../../system-stored-procedures/sys-sp-create-event-stream-group-transact-sql.md) | Creates a stream group, which is a streaming configuration for a group of tables. The stream group also defines the destination and related details (such as authentication, message size, partitioning). The stream_group_id is automatically generated and displayed for the end user when the procedure completes.|
-|[sys.sp_add_object_to_event_stream_group](../../system-stored-procedures/sys-sp-add-object-to-event-stream-group-transact-sql.md) | Adds a table to the stream group.|
-|<center>**Disable CES**</center>|
-|[sys.sp_remove_object_from_event_stream_group](../../system-stored-procedures/sys-sp-remove-object-from-event-stream-group-transact-sql.md) | Removes a table from the stream group.|
-|[sys.sp_drop_event_stream_group](../../system-stored-procedures/sys-sp-drop-event-stream-group-transact-sql.md) | Drops the stream group. The stream group must not be in use.|
-|[sys.sp_disable_event_stream](../../system-stored-procedures/sys-sp-disable-event-stream-transact-sql.md) | Disables CES for the current user database.|  
-|<center>**Monitor CES**</center>| 
-|[sys.dm_change_feed_errors](../../system-dynamic-management-views/sys-dm-change-feed-errors.md) | Returns delivery errors. | 
-|[sys.dm_change_feed_log_scan_sessions](../../system-dynamic-management-views/sys-dm-change-feed-log-scan-sessions.md)  | Returns information about log scan activity. |
-|[sys.sp_help_change_feed_settings](../../system-stored-procedures/sp-help-change-feed-settings.md) |  Provides the status and information of configured change event streaming.|
-|[sys.sp_help_change_feed](../../system-stored-procedures/sp-help-change-feed.md) | Monitors the current configuration of the change stream.| 
-|[sys.sp_help_change_feed_table_groups](../../system-stored-procedures/sp-help-change-feed-table-groups.md) | Returns metadata that is used to configure change event streaming groups.| 
-|[sys.sp_help_change_feed_table](../../system-stored-procedures/sp-help-change-feed-table.md) | Provides the status and information of the streaming group and table metadata for change event streaming. | 
+| --- | --- |
+| <center>**Configure CES**</center> | |
+| [sys.sp_enable_event_stream](../../system-stored-procedures/sys-sp-enable-event-stream-transact-sql.md) | Enables CES for the current user database. |
+| [sys.sp_create_event_stream_group](../../system-stored-procedures/sys-sp-create-event-stream-group-transact-sql.md) | Creates a stream group, which is a streaming configuration for a group of tables. The stream group also defines the destination and related details (such as authentication, message size, partitioning). The stream_group_id is automatically generated and displayed for the end user when the procedure completes. |
+| [sys.sp_add_object_to_event_stream_group](../../system-stored-procedures/sys-sp-add-object-to-event-stream-group-transact-sql.md) | Adds a table to the stream group. |
+| <center>**Disable CES**</center> | |
+| [sys.sp_remove_object_from_event_stream_group](../../system-stored-procedures/sys-sp-remove-object-from-event-stream-group-transact-sql.md) | Removes a table from the stream group. |
+| [sys.sp_drop_event_stream_group](../../system-stored-procedures/sys-sp-drop-event-stream-group-transact-sql.md) | Drops the stream group. The stream group must not be in use. |
+| [sys.sp_disable_event_stream](../../system-stored-procedures/sys-sp-disable-event-stream-transact-sql.md) | Disables CES for the current user database. |
+| <center>**Monitor CES**</center> | |
+| [sys.dm_change_feed_errors](../../system-dynamic-management-views/sys-dm-change-feed-errors.md) | Returns delivery errors. |
+| [sys.dm_change_feed_log_scan_sessions](../../system-dynamic-management-views/sys-dm-change-feed-log-scan-sessions.md) | Returns information about log scan activity. |
+| [sys.sp_help_change_feed_settings](../../system-stored-procedures/sp-help-change-feed-settings.md) | Provides the status and information of configured change event streaming. |
+| [sys.sp_help_change_feed](../../system-stored-procedures/sp-help-change-feed.md) | Monitors the current configuration of the change stream. |
+| [sys.sp_help_change_feed_table_groups](../../system-stored-procedures/sp-help-change-feed-table-groups.md) | Returns metadata that is used to configure change event streaming groups. |
+| [sys.sp_help_change_feed_table](../../system-stored-procedures/sp-help-change-feed-table.md) | Provides the status and information of the streaming group and table metadata for change event streaming. |
 
 ## Limitations
 
 Change event streaming (CES) has the following limitations:
 
+- [Azure SQL Database](#azure-sql-database)
+- [Server-level and general limitations](#server-level-and-general-limitations)
+- [Database-level limitations](#database-level-limitations)
+- [Table-level limitations](#table-level-limitations)
+- [Column-level limitations](#column-level-limitations)
+- [Permissions in the source database](#permissions-in-the-source-database)
+
+### Azure SQL Database
+
+The following limitations apply when using CES with Azure SQL Database:
+
+- Extended Event (xEvent) debugging in Azure SQL Database isn't currently available.
+
 ### Server-level and general limitations
 
-- CES isn't supported on SQL Server 2025 on Linux or SQL Server 2025 Express edition.
+- CES isn't supported on [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)] on Linux.
 - CES emits events only for data changes from `INSERT`, `UPDATE`, and `DELETE` DML statements.
-- CES doesn't handle schema changes (DDL operations), which means it won't emit events for DDL operations. However, DDL operations aren't blocked, so if executed, the schema of subsequent DML events reflect the updated table structure. Users are expected to gracefully handle events with the updated schema.
+- CES doesn't handle schema changes (DDL operations), which means it doesn't emit events for DDL operations. However, DDL operations aren't blocked, so if you execute them, the schema of subsequent DML events reflects the updated table structure. You're expected to gracefully handle events with the updated schema.
+- Currently, CES doesn't stream data that exists in a table before CES is enabled. Existing data isn't seeded, or sent as a snapshot, when CES is enabled.
 - When JSON is the specified output format, large event messages might be split at approximately 25% of the configured maximum message size per stream group. This limitation doesn't apply to the binary output type.
-- If a message exceeds the Azure Event Hubs message size limit, the failure is currently only observable via Extended Events.
-- Table and column renames are blocked for tables configured for CES. Database renames are allowed.
+- If a message exceeds the Azure Event Hubs message size limit, the failure is currently only observable through Extended Events. CES xEvents are currently only available in SQL Server 2025, and not Azure SQL Database.
+- Renaming tables and columns configuired for CES isn't supported. Renaming a table or column fails. Database renames **are allowed**.
+- Microsoft Entra authentication for CES isn't currently available in SQL Server 2025.
 
 ### Database-level limitations
 
-- CES is only supported on databases configured with the full recovery model. 
-- CES isn't supported on databases configured with [Fabric Mirrored Databases for SQL Server](/fabric/database/mirrored-database/sql-server), [transactional replication](../../replication/transactional/transactional-replication.md), [change data capture](../about-change-data-capture-sql-server.md), or [Azure Synapse Link](/azure/synapse-analytics/synapse-link/sql-synapse-link-overview). [Change tracking](../about-change-tracking-sql-server.md) is supported on databases configured with CES.
-- CES can only stream from writable primary databases. Secondary databases that are part of Always On availability groups or that use the [Managed Instance Link](/azure/azure-sql/managed-instance/managed-instance-link-feature-overview) can't be configured as streaming sources.
-- CES can't be enabled on views or materialized views.
+- CES only supports databases configured with the full recovery model.
+- CES doesn't support databases configured with [Fabric Mirrored Databases for SQL Server](/fabric/database/mirrored-database/sql-server), [transactional replication](../../replication/transactional/transactional-replication.md), [change data capture](../about-change-data-capture-sql-server.md), or [Azure Synapse Link](/azure/synapse-analytics/synapse-link/sql-synapse-link-overview). [Change tracking](../about-change-tracking-sql-server.md) is supported on databases configured with CES.
+- CES can only stream from writable primary databases. Secondary databases that are part of Always On availability groups or that use the [Managed Instance link](/azure/azure-sql/managed-instance/managed-instance-link-feature-overview) can't be configured as streaming sources.
+- You can't enable CES on views or materialized views.
 
 ### Table-level limitations
 
-- A table can belong to only one streaming group. Streaming the same table to multiple destinations isn't supported.
-- Only user tables can be configured for CES. System tables aren't supported.
+- A table can belong to only one streaming group. You can't stream the same table to multiple destinations.
+- You can only configure user tables for CES. CES doesn't support streaming system tables.
 - You can configure up to 4,096 stream groups. Each stream group can include up to 40,000 tables.
-- While CES is enabled on a table, primary key constraint can't be added to, or dropped from, that table.
+- While CES is enabled on a table, you can't add or drop a primary key constraint on that table.
 - `ALTER TABLE SWITCH PARTITION` isn't supported on tables configured for CES.
 - `TRUNCATE TABLE` isn't supported on tables enabled for CES.
 - CES doesn't support tables that use any of the following features:
@@ -411,26 +564,26 @@ Change event streaming (CES) has the following limitations:
 
 ### Column-level limitations
 
-- The following data types aren't supported by CES. Columns of these types are skipped by streaming:
-  - `json`
-  - `image`
-  - `text` / `ntext`
-  - `xml`
-  - `rowversion` / `timestamp`
-  - `sql_variant`
+- CES doesn't support the following data types. Streaming skips columns of these types:
+  - **geography**
+  - **geometry**
+  - **image**
+  - **json**
+  - **rowversion** / **timestamp**
+  - **sql_variant**
+  - **text** / **ntext**
+  - **vector**
+  - **xml**
   - User-defined types (UDT)
-  - `geometry`
-  - `geography`
-  - `vector`
 
 ### Permissions in the source database
 
 - For row-level security, CES emits changes from all rows, regardless of user permissions.
-- Dynamic data masking doesn't apply to data sent via CES. Data is streamed unmasked, even if masking is configured.
+- Dynamic data masking doesn't apply to data sent through CES. Data is streamed unmasked, even if masking is configured.
 - CES doesn't emit events related to object-level permission changes (for example, granting permissions to specific columns).
 
 ## Related content
 
 - [What is change event streaming?](overview.md)
 - [Frequently asked questions](frequently-asked-questions-faq.yml)
-- [Message format](message-format.md)
+- [JSON message format - change event streaming](message-format.md)

@@ -4,10 +4,12 @@ description: DATEADD returns a date modified by the specified date part.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 08/25/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "DATEADD"
   - "DATEADD_TSQL"
@@ -22,14 +24,24 @@ helpviewer_keywords:
   - "date and time [SQL Server], DATEADD"
   - "DATEADD function [SQL Server]"
 dev_langs:
-  - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+  - TSQL
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # DATEADD (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
+
+::: moniker range="<=sql-server-ver16 || <=sql-server-linux-ver16"
 
 This function adds a *number* (a signed integer) to a *datepart* of an input *date*, and returns a modified date/time value. For example, you can use this function to find the date that is 7,000 minutes from today: *number* = 7000, *datepart* = minute, *date* = today.
+
+::: moniker-end
+
+::: moniker range=">=sql-server-ver17 || >=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
+
+This function adds a *number* (a signed **bigint**) to a *datepart* of an input *date*, and returns a modified date/time value. For example, you can use this function to find the date that is 7,000 minutes from today: *number* = 7000, *datepart* = minute, *date* = today.
+
+::: moniker-end
 
 See [Date and time data types and functions](date-and-time-data-types-and-functions-transact-sql.md) for an overview of all [!INCLUDE [tsql](../../includes/tsql-md.md)] date and time data types and functions.
 
@@ -38,14 +50,24 @@ See [Date and time data types and functions](date-and-time-data-types-and-functi
 ## Syntax
 
 ```syntaxsql
-DATEADD (datepart , number , date )
+DATEADD ( datepart , number , date )
 ```
 
 ## Arguments
 
 #### *datepart*
 
+::: moniker range="<=sql-server-ver16 || <=sql-server-linux-ver16"
+
 The part of *date* to which `DATEADD` adds an **int** *number*.
+
+::: moniker-end
+
+::: moniker range=">=sql-server-ver17 || >=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
+
+The part of *date* to which `DATEADD` adds a **bigint** *number*.
+
+::: moniker-end
 
 This table lists all valid *datepart* arguments. `DATEADD` doesn't accept user-defined variable equivalents for the *datepart* arguments.
 
@@ -67,10 +89,17 @@ This table lists all valid *datepart* arguments. `DATEADD` doesn't accept user-d
 
 #### *number*
 
+::: moniker range="<=sql-server-ver16 || <=sql-server-linux-ver16"
+
 An expression that can resolve to an [int](../data-types/int-bigint-smallint-and-tinyint-transact-sql.md) that `DATEADD` adds to a *datepart* of *date*. `DATEADD` accepts user-defined variable values for *number*. `DATEADD` truncates a specified *number* value that has a decimal fraction. It doesn't round the *number* value in this situation.
 
-> [!NOTE]  
-> In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] and [!INCLUDE [fabric](../../includes/fabric-sqldb.md)], *number* can be expressed as a **bigint**. This feature is in preview.
+::: moniker-end
+
+::: moniker range=">=sql-server-ver17 || >=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
+
+An expression that can resolve to a [bigint](../data-types/int-bigint-smallint-and-tinyint-transact-sql.md) that `DATEADD` adds to a *datepart* of *date*. `DATEADD` accepts user-defined variable values for *number*. `DATEADD` truncates a specified *number* value that has a decimal fraction. It doesn't round the *number* value in this situation.
+
+::: moniker-end
 
 #### *date*
 
@@ -112,6 +141,8 @@ SELECT DATEADD(month, 1, '2024-08-31');
 
 ### *number* argument
 
+::: moniker range="<=sql-server-ver16 || <=sql-server-linux-ver16"
+
 The *number* argument can't exceed the range of **int**. In the following statements, the argument for *number* exceeds the range of **int** by 1.
 
 ```sql
@@ -126,8 +157,28 @@ Msg 8115, Level 16, State 2, Line 1
 Arithmetic overflow error converting expression to data type int.
 ```
 
-> [!NOTE]  
-> In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] and [!INCLUDE [fabric](../../includes/fabric-sqldb.md)], *number* can be expressed as a **bigint**. This feature is in preview.
+::: moniker-end
+
+::: moniker range=">=sql-server-ver17 || >=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
+
+The *number* argument can't exceed the range of **bigint**. In the following statements, the argument for *number* exceeds the range of **bigint** by 1.
+
+```sql
+DECLARE @datetime2 AS DATETIME2;
+SET @datetime2 = '2025-11-01 01:01:01.1111111';
+SELECT DATEADD(nanosecond, 9223372036854775808, @datetime2);
+SELECT DATEADD(nanosecond, -9223372036854775809, @datetime2);
+GO
+```
+
+These statements both return the following error message:
+
+```output
+Msg 8115, Level 16, State 2, Line 3
+Arithmetic overflow error converting expression to data type bigint.
+```
+
+::: moniker-end
 
 ### *date* argument
 
@@ -179,18 +230,12 @@ These statements add a *datepart* of `millisecond`, `microsecond`, or `nanosecon
 DECLARE @datetime2 AS DATETIME2 = '2024-01-01 13:10:10.1111111';
 
 SELECT '1 millisecond', DATEADD(millisecond, 1, @datetime2)
-UNION ALL
-SELECT '2 milliseconds', DATEADD(millisecond, 2, @datetime2)
-UNION ALL
-SELECT '1 microsecond', DATEADD(microsecond, 1, @datetime2)
-UNION ALL
-SELECT '2 microseconds', DATEADD(microsecond, 2, @datetime2)
-UNION ALL
-SELECT '49 nanoseconds', DATEADD(nanosecond, 49, @datetime2)
-UNION ALL
-SELECT '50 nanoseconds', DATEADD(nanosecond, 50, @datetime2)
-UNION ALL
-SELECT '150 nanoseconds', DATEADD(nanosecond, 150, @datetime2);
+UNION ALL SELECT '2 milliseconds', DATEADD(millisecond, 2, @datetime2)
+UNION ALL SELECT '1 microsecond', DATEADD(microsecond, 1, @datetime2)
+UNION ALL SELECT '2 microseconds', DATEADD(microsecond, 2, @datetime2)
+UNION ALL SELECT '49 nanoseconds', DATEADD(nanosecond, 49, @datetime2)
+UNION ALL SELECT '50 nanoseconds', DATEADD(nanosecond, 50, @datetime2)
+UNION ALL SELECT '150 nanoseconds', DATEADD(nanosecond, 150, @datetime2);
 ```
 
 [!INCLUDE [ssResult](../../includes/ssresult-md.md)]
@@ -219,30 +264,18 @@ Each of these statements increments *datepart* by an interval of 1:
 DECLARE @datetime2 AS DATETIME2 = '2024-01-01 13:10:10.1111111';
 
 SELECT 'year', DATEADD(year, 1, @datetime2)
-UNION ALL
-SELECT 'quarter', DATEADD(quarter, 1, @datetime2)
-UNION ALL
-SELECT 'month', DATEADD(month, 1, @datetime2)
-UNION ALL
-SELECT 'dayofyear', DATEADD(dayofyear, 1, @datetime2)
-UNION ALL
-SELECT 'day', DATEADD(day, 1, @datetime2)
-UNION ALL
-SELECT 'week', DATEADD(week, 1, @datetime2)
-UNION ALL
-SELECT 'weekday', DATEADD(weekday, 1, @datetime2)
-UNION ALL
-SELECT 'hour', DATEADD(hour, 1, @datetime2)
-UNION ALL
-SELECT 'minute', DATEADD(minute, 1, @datetime2)
-UNION ALL
-SELECT 'second', DATEADD(second, 1, @datetime2)
-UNION ALL
-SELECT 'millisecond', DATEADD(millisecond, 1, @datetime2)
-UNION ALL
-SELECT 'microsecond', DATEADD(microsecond, 1, @datetime2)
-UNION ALL
-SELECT 'nanosecond', DATEADD(nanosecond, 1, @datetime2);
+UNION ALL SELECT 'quarter', DATEADD(quarter, 1, @datetime2)
+UNION ALL SELECT 'month', DATEADD(month, 1, @datetime2)
+UNION ALL SELECT 'dayofyear', DATEADD(dayofyear, 1, @datetime2)
+UNION ALL SELECT 'day', DATEADD(day, 1, @datetime2)
+UNION ALL SELECT 'week', DATEADD(week, 1, @datetime2)
+UNION ALL SELECT 'weekday', DATEADD(weekday, 1, @datetime2)
+UNION ALL SELECT 'hour', DATEADD(hour, 1, @datetime2)
+UNION ALL SELECT 'minute', DATEADD(minute, 1, @datetime2)
+UNION ALL SELECT 'second', DATEADD(second, 1, @datetime2)
+UNION ALL SELECT 'millisecond', DATEADD(millisecond, 1, @datetime2)
+UNION ALL SELECT 'microsecond', DATEADD(microsecond, 1, @datetime2)
+UNION ALL SELECT 'nanosecond', DATEADD(nanosecond, 1, @datetime2);
 ```
 
 [!INCLUDE [ssResult](../../includes/ssresult-md.md)]
@@ -328,9 +361,8 @@ SalesOrderID OrderDate               PromisedShipDate
 This example specifies user-defined variables as arguments for *number* and *date*:
 
 ```sql
-DECLARE
-    @days AS INT = 365,
-    @datetime AS DATETIME = '2000-01-01 01:01:01.111'; /* 2000 was a leap year */
+DECLARE @days AS INT = 365,
+        @datetime AS DATETIME = '2000-01-01 01:01:01.111' /* 2000 was a leap year */;
 
 SELECT DATEADD(day, @days, @datetime);
 ```
@@ -409,3 +441,4 @@ GO
 ## Related content
 
 - [CAST and CONVERT (Transact-SQL)](cast-and-convert-transact-sql.md)
+

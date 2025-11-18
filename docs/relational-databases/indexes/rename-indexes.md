@@ -8,12 +8,12 @@ ms.service: sql
 ms.subservice: table-view-index
 ms.topic: how-to
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "renaming indexes"
   - "index names [SQL Server]"
   - "indexes [SQL Server], renaming"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Rename Indexes
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]

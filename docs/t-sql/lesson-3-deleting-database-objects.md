@@ -9,10 +9,10 @@ ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "deleting database objects"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Lesson 3: Delete database objects
 

@@ -8,6 +8,8 @@ ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_droprolemember_TSQL"
   - "sp_droprolemember"
@@ -15,11 +17,11 @@ helpviewer_keywords:
   - "sp_droprolemember"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sp_droprolemember (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 Removes a security account from a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] role in the current database.
 
@@ -99,3 +101,4 @@ EXECUTE sp_droprolemember 'Sales', 'JonB';
 - [sp_dropsrvrolemember (Transact-SQL)](sp-dropsrvrolemember-transact-sql.md)
 - [sp_helpuser (Transact-SQL)](sp-helpuser-transact-sql.md)
 - [System stored procedures (Transact-SQL)](system-stored-procedures-transact-sql.md)
+

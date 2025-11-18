@@ -8,11 +8,11 @@ ms.service: sql
 ms.topic: get-started
 ms.custom:
   - intro-get-started
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "SQL Server Management Objects, about SQL Server Management Objects"
   - "SMO [SQL Server], about SQL Server Management Objects"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Getting Started in SMO
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Synapse Analytics FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricsqldb.md)]

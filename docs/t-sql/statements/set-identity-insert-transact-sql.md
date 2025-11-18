@@ -8,6 +8,8 @@ ms.date: 01/16/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SET IDENTITY_INSERT"
   - "SET_IDENTITY_INSERT_TSQL"
@@ -20,11 +22,11 @@ helpviewer_keywords:
   - "identity columns [SQL Server], explicit values"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =fabric-sqldb"
 ---
 # SET IDENTITY_INSERT (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricsqldb.md)]
 
 Allows explicit values to be inserted into the identity column of a table.
 
@@ -152,3 +154,4 @@ GO
 - [SCOPE_IDENTITY (Transact-SQL)](../functions/scope-identity-transact-sql.md)
 - [INSERT (Transact-SQL)](insert-transact-sql.md)
 - [SET Statements (Transact-SQL)](set-statements-transact-sql.md)
+

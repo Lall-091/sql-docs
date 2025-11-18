@@ -7,6 +7,8 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "PWDENCRYPT"
   - "PWDENCRYPT_TSQL"
@@ -16,7 +18,7 @@ dev_langs:
   - "TSQL"
 ---
 # PWDENCRYPT (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Returns the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] password hash of the input value that uses the current version of the password hashing algorithm.  
   
@@ -45,3 +47,4 @@ PWDENCRYPT ( 'password' )
  [PWDCOMPARE &#40;Transact-SQL&#41;](../../t-sql/functions/pwdcompare-transact-sql.md)  
   
   
+

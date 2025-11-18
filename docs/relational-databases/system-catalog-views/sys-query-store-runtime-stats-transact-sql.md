@@ -7,6 +7,8 @@ ms.date: 09/19/2022
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SYS.QUERY_STORE_RUNTIME_STATS_TSQL"
   - "QUERY_STORE_RUNTIME_STATS_TSQL"
@@ -17,11 +19,11 @@ helpviewer_keywords:
   - "sys.query_store_runtime_stats catalog view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||=azure-sqldw-latest||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || =azure-sqldw-latest || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.query_store_runtime_stats (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi-asa](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-fabricsqldb.md)]
 
   Contains information about the runtime execution statistics information for the query.
 
@@ -125,3 +127,4 @@ Learn more about Query Store in the following articles:
 - [Catalog Views (Transact-SQL)](../../relational-databases/system-catalog-views/catalog-views-transact-sql.md)
 - [Query Store Stored Procedures (Transact-SQL)](../../relational-databases/system-stored-procedures/query-store-stored-procedures-transact-sql.md)
 - [Best Practice with the Query Store](../../relational-databases/performance/best-practice-with-the-query-store.md)
+

@@ -1,16 +1,17 @@
 ---
-title: "Editions and Supported Features of SQL Server 2025 Preview - Linux"
-description: This article describes editions, features, and components supported by the various editions of SQL Server 2025 Preview on Linux.
+title: Editions and Supported Features
+titleSuffix: SQL Server 2025 on Linux
+description: This article describes editions, features, and components supported by the various editions of SQL Server 2025 on Linux.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh, vanto
-ms.date: 09/05/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: conceptual
 ms.custom:
   - linux-related-content
-  - build-2025
+  - ignite-2025
 helpviewer_keywords:
   - "Enterprise Edition [SQL Server]"
   - "Developer Edition [SQL Server]"
@@ -29,22 +30,22 @@ helpviewer_keywords:
   - "editions [SQL Server], about edition options"
   - "Setup [SQL Server]"
 ---
-# Editions and supported features of SQL Server 2025 Preview on Linux
+# Editions and supported features of SQL Server 2025 on Linux
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
 This article provides details of features supported by the various editions of [!INCLUDE [sssql25](../includes/sssql25-md.md)] on Linux.
 
-For editions and supported features of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Windows, see [Editions and supported features of SQL Server 2025 Preview](../sql-server/editions-and-components-of-sql-server-2025.md).
+For editions and supported features of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Windows, see [Editions and supported features of SQL Server 2025](../sql-server/editions-and-components-of-sql-server-2025.md).
 
 For more information on what's new in [!INCLUDE [sssql25](../includes/sssql25-md.md)], see:
 
-- [What's new for SQL Server 2025 Preview on Linux](sql-server-linux-whats-new-2025.md)
-- [What's new in SQL Server 2025 Preview](../sql-server/what-s-new-in-sql-server-2025.md)
+- [What's new for SQL Server 2025 on Linux](sql-server-linux-whats-new-2025.md)
+- [What's new in SQL Server 2025](../sql-server/what-s-new-in-sql-server-2025.md)
 
 Installation requirements vary based on your application needs. The different editions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] accommodate the unique performance, runtime, and price requirements of organizations and individuals. The [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] components that you install also depend on your specific requirements. The following sections help you understand how to make the best choice among the editions and components available in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 
-For the latest release notes and what's new information, see [Release notes for SQL Server 2025 Preview on Linux](sql-server-linux-release-notes-2025.md).
+For the latest release notes and what's new information, see [Release notes for SQL Server 2025 on Linux](sql-server-linux-release-notes-2025.md).
 
 For a list of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] features not available on Linux, see [Unsupported features and services](#unsupported-features-and-services).
 
@@ -75,39 +76,39 @@ The Developer editions continue to support only one client for [SQL Server Distr
 
 ## Scale limits
 
-| Feature | Enterprise | Standard | Web | Express |
-| --- | :---: | :---: | :---: | :---: |
-| Maximum compute capacity used by a single instance - [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] <sup>1</sup> | Operating system maximum | Limited to lesser of 4 sockets or 24 cores | Limited to lesser of 4 sockets or 16 cores | Limited to lesser of 1 socket or 4 cores |
-| Maximum compute capacity used by a single instance - [!INCLUDE [ssASnoversion](../includes/ssasnoversion-md.md)] or [!INCLUDE [ssRSnoversion](../includes/ssrsnoversion-md.md)] | Operating system maximum | Limited to lesser of 4 sockets or 24 cores | Limited to lesser of 4 sockets or 16 cores | Limited to lesser of 1 socket or 4 cores |
-| Maximum memory for buffer pool per instance of [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] | Operating system maximum | 128 GB | 64 GB | 1,410 MB |
-| Maximum capacity for [buffer pool extension](../database-engine/configure-windows/buffer-pool-extension.md) per instance of [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] | 32 * (max server memory configuration) | 4 * (max server memory configuration) | N/A | N/A |
-| Maximum memory for Columnstore segment cache per instance of [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] | Unlimited memory | 32 GB | 16 GB | 352 MB |
-| Maximum memory-optimized data size per database in [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] | Unlimited memory | 32 GB | 16 GB | 352 MB |
-| Maximum relational database size | 524 PB | 524 PB | 524 PB | 10 GB |
+| Feature | Enterprise | Standard | Express |
+| --- | :---: | :---: | :---: |
+| Maximum compute capacity used by a single instance - [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] <sup>1</sup> | Operating system maximum | Limited to lesser of 4 sockets or 32 cores | Limited to lesser of 1 socket or 4 cores |
+| Maximum compute capacity used by a single instance - [!INCLUDE [ssASnoversion](../includes/ssasnoversion-md.md)] or [!INCLUDE [ssRSnoversion](../includes/ssrsnoversion-md.md)] | Operating system maximum | Limited to lesser of 4 sockets or 32 cores | Limited to lesser of 1 socket or 4 cores |
+| Maximum memory for buffer pool per instance of [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] | Operating system maximum | 256 GB | 1,410 MB |
+| Maximum capacity for [buffer pool extension](../database-engine/configure-windows/buffer-pool-extension.md) per instance of [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] | 32 * (max server memory configuration) | 4 * (max server memory configuration) | N/A |
+| Maximum memory for Columnstore segment cache per instance of [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] | Unlimited memory | 32 GB | 352 MB |
+| Maximum memory-optimized data size per database in [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] | Unlimited memory | 32 GB | 352 MB |
+| Maximum relational database size | 524 PB | 524 PB | 10 GB |
 
 <sup>1</sup> Enterprise edition with Server + Client Access License (CAL) based licensing (not available for new agreements) is limited to a maximum of 20 cores per SQL Server instance. There are no limits under the Core-based Server Licensing model. For more information, see [Compute capacity limits by edition of SQL Server](../sql-server/compute-capacity-limits-by-edition-of-sql-server.md).
 
 ## RDBMS high availability
 
-| Feature | Enterprise | Standard | Web | Express |
-| --- | :---: | :---: | :---: | :---: |
-| Log shipping | Yes | Yes | Yes | No |
-| Backup compression | Yes | Yes | No | No |
-| Database snapshot | Yes | Yes | No | No |
-| Always On failover cluster instance <sup>1</sup> | Yes | Yes | No | No |
-| Always On availability groups <sup>2</sup> | Yes | No | No | No |
-| Basic availability groups <sup>3</sup> | No | Yes | No | No |
-| Minimum replica commit availability group | Yes | Yes | No | No |
-| Clusterless availability group | Yes | Yes | No | No |
-| Online page and file restore | Yes | No | No | No |
-| Online indexing | Yes | No | No | No |
-| Resumable online index rebuilds | Yes | No | No | No |
-| Online schema change | Yes | No | No | No |
-| Fast recovery | Yes | No | No | No |
-| Mirrored backups | Yes | No | No | No |
-| Hot add memory and CPU | Yes | No | No | No |
-| Encrypted backup | Yes | Yes | No | No |
-| Hybrid backup to Azure (backup to URL) | Yes | Yes | No | No |
+| Feature | Enterprise | Standard | Express |
+| --- | :---: | :---: | :---: |
+| Log shipping | Yes | Yes | No |
+| Backup compression | Yes | Yes | No |
+| Database snapshot | Yes | Yes | No |
+| Always On failover cluster instance <sup>1</sup> | Yes | Yes | No |
+| Always On availability groups <sup>2</sup> | Yes | No | No |
+| Basic availability groups <sup>3</sup> | No | Yes | No |
+| Minimum replica commit availability group | Yes | Yes | No |
+| Clusterless availability group | Yes | Yes | No |
+| Online page and file restore | Yes | No | No |
+| Online indexing | Yes | No | No |
+| Resumable online index rebuilds | Yes | No | No |
+| Online schema change | Yes | No | No |
+| Fast recovery | Yes | No | No |
+| Mirrored backups | Yes | No | No |
+| Hot add memory and CPU | Yes | No | No |
+| Encrypted backup | Yes | Yes | No |
+| Hybrid backup to Azure (backup to URL) | Yes | Yes | No |
 
 <sup>1</sup> On Enterprise edition, the number of nodes is the operating system maximum. On Standard edition, there's support for two nodes.
 
@@ -117,81 +118,81 @@ The Developer editions continue to support only one client for [SQL Server Distr
 
 ## RDBMS scalability and performance
 
-| Feature | Enterprise | Standard | Web | Express |
-| --- | :---: | :---: | :---: | :---: |
-| Columnstore <sup>1</sup> | Yes | Yes | Yes | Yes |
-| Large object binaries in clustered columnstore indexes | Yes | Yes | Yes | Yes |
-| Online nonclustered columnstore index rebuild | Yes | No | No | No |
-| In-Memory OLTP <sup>1</sup> | Yes | Yes | Yes | Yes |
-| Persistent Main Memory | Yes | Yes | Yes | Yes |
-| Table and index partitioning | Yes | Yes | Yes | Yes |
-| Data compression | Yes | Yes | Yes | Yes |
-| Resource Governor | Yes | No | No | No |
-| Partitioned Table Parallelism | Yes | No | No | No |
-| NUMA Aware and Large Page Memory and Buffer Array Allocation | Yes | No | No | No |
-| IO Resource Governance | Yes | No | No | No |
-| Delayed Durability | Yes | Yes | Yes | Yes |
-| Automatic tuning | Yes | No | No | No |
-| Batch Mode Adaptive Joins | Yes | No | No | No |
-| Batch Mode Memory Grant Feedback | Yes | No | No | No |
-| Interleaved Execution for Multi-Statement Table Valued Functions | Yes | Yes | Yes | Yes |
-| Bulk insert improvements | Yes | Yes | Yes | Yes |
+| Feature | Enterprise | Standard | Express |
+| --- | :---: | :---: | :---: |
+| Columnstore <sup>1</sup> | Yes | Yes | Yes |
+| Large object binaries in clustered columnstore indexes | Yes | Yes | Yes |
+| Online nonclustered columnstore index rebuild | Yes | No | No |
+| In-Memory OLTP <sup>1</sup> | Yes | Yes | Yes |
+| Persistent Main Memory | Yes | Yes | Yes |
+| Table and index partitioning | Yes | Yes | Yes |
+| Data compression | Yes | Yes | Yes |
+| Resource Governor | Yes | No | No |
+| Partitioned Table Parallelism | Yes | No | No |
+| NUMA Aware and Large Page Memory and Buffer Array Allocation | Yes | No | No |
+| IO Resource Governance | Yes | No | No |
+| Delayed Durability | Yes | Yes | Yes |
+| Automatic tuning | Yes | No | No |
+| Batch Mode Adaptive Joins | Yes | No | No |
+| Batch Mode Memory Grant Feedback | Yes | No | No |
+| Interleaved Execution for Multi-Statement Table Valued Functions | Yes | Yes | Yes |
+| Bulk insert improvements | Yes | Yes | Yes |
 
-<sup>1</sup> In-Memory OLTP data size and columnstore segment cache are limited to the amount of memory specified by edition in the [Scale limits](#scale-limits) section. The max degree of parallelism is limited. The degree of process parallelism (DOP) for an index build is limited to 2 DOP for the Standard edition and 1 DOP for the Web and Express editions. This refers to columnstore indexes created over disk-based tables and memory-optimized tables.
+<sup>1</sup> In-Memory OLTP data size and columnstore segment cache are limited to the amount of memory specified by edition in the [Scale limits](#scale-limits) section. The max degree of parallelism is limited. The degree of process parallelism (DOP) for an index build is limited to 2 DOP for the Standard edition and 1 DOP for Express edition. This refers to columnstore indexes created over disk-based tables and memory-optimized tables.
 
 ## RDBMS security
 
-| Feature | Enterprise | Standard | Web | Express |
-| --- | :---: | :---: | :---: | :---: |
-| Row-level security | Yes | Yes | Yes | Yes |
-| Always Encrypted | Yes | Yes | Yes | Yes |
-| Dynamic data masking | Yes | Yes | Yes | Yes |
-| Basic auditing | Yes | Yes | Yes | Yes |
-| Fine-grained auditing | Yes | Yes | Yes | Yes |
-| Transparent database encryption (TDE) | Yes | Yes | No | No |
-| Extensible Key Management (EKM) using Azure Key Vault | Yes | Yes | Yes | Yes |
-| User-defined roles | Yes | Yes | Yes | Yes |
-| Contained databases | Yes | Yes | Yes | Yes |
-| Encryption for backups | Yes | Yes | No | No |
+| Feature | Enterprise | Standard | Express |
+| --- | :---: | :---: | :---: |
+| Row-level security | Yes | Yes | Yes |
+| Always Encrypted | Yes | Yes | Yes |
+| Dynamic data masking | Yes | Yes | Yes |
+| Basic auditing | Yes | Yes | Yes |
+| Fine-grained auditing | Yes | Yes | Yes |
+| Transparent database encryption (TDE) | Yes | Yes | No |
+| Extensible Key Management (EKM) using Azure Key Vault | Yes | Yes | Yes |
+| User-defined roles | Yes | Yes | Yes |
+| Contained databases | Yes | Yes | Yes |
+| Encryption for backups | Yes | Yes | No |
 
 ## RDBMS manageability
 
-| Feature | Enterprise | Standard | Web | Express |
-| --- | :---: | :---: | :---: | :---: |
-| Dedicated admin connection | Yes | Yes | Yes | Yes <sup>1</sup> |
-| PowerShell scripting support | Yes | Yes | Yes | Yes |
-| Support for data-tier application component operations - extract, deploy, upgrade, delete | Yes | Yes | Yes | Yes |
-| Policy automation (check on schedule and change) | Yes | Yes | Yes | No |
-| Performance data collector | Yes | Yes | Yes | No |
-| Standard performance reports | Yes | Yes | Yes | No |
-| Plan guides and plan freezing for plan guides | Yes | Yes | Yes | No |
-| Direct query of indexed views (using `NOEXPAND` hint) | Yes | Yes | Yes | Yes |
-| Automatic indexed views maintenance | Yes | Yes | Yes | No |
-| Distributed partitioned views | Yes | No | No | No |
-| Parallel index operations | Yes | No | No | No |
-| Automatic use of indexed view by query optimizer | Yes | No | No | No |
-| Parallel consistency check | Yes | No | No | No |
-| SQL Server Utility Control Point | Yes | No | No | No |
+| Feature | Enterprise | Standard | Express |
+| --- | :---: | :---: | :---: |
+| Dedicated admin connection | Yes | Yes | Yes <sup>1</sup> |
+| PowerShell scripting support | Yes | Yes | Yes |
+| Support for data-tier application component operations - extract, deploy, upgrade, delete | Yes | Yes | Yes |
+| Policy automation (check on schedule and change) | Yes | Yes | No |
+| Performance data collector | Yes | Yes | No |
+| Standard performance reports | Yes | Yes | No |
+| Plan guides and plan freezing for plan guides | Yes | Yes | No |
+| Direct query of indexed views (using `NOEXPAND` hint) | Yes | Yes | Yes |
+| Automatic indexed views maintenance | Yes | Yes | No |
+| Distributed partitioned views | Yes | No | No |
+| Parallel index operations | Yes | No | No |
+| Automatic use of indexed view by query optimizer | Yes | No | No |
+| Parallel consistency check | Yes | No | No |
+| SQL Server Utility Control Point | Yes | No | No |
 
 <sup>1</sup> With trace flag.
 
 ## Programmability
 
-| Feature | Enterprise | Standard | Web | Express |
-| --- | :---: | :---: | :---: | :---: |
-| JSON | Yes | Yes | Yes | Yes |
-| Query Store | Yes | Yes | Yes | Yes |
-| Temporal | Yes | Yes | Yes | Yes |
-| Native XML support | Yes | Yes | Yes | Yes |
-| XML indexing | Yes | Yes | Yes | Yes |
-| `MERGE` and UPSERT capabilities | Yes | Yes | Yes | Yes |
-| Date and time data types | Yes | Yes | Yes | Yes |
-| Internationalization support | Yes | Yes | Yes | Yes |
-| Full-text and semantic search | Yes | Yes | Yes | Yes |
-| Specification of language in query | Yes | Yes | Yes | Yes |
-| Service Broker (messaging) | Yes | Yes | No <sup>1</sup> | No <sup>1</sup> |
-| Transact-SQL endpoints | Yes | Yes | Yes | No |
-| Graph | Yes | Yes | Yes | Yes |
+| Feature | Enterprise | Standard | Express |
+| --- | :---: | :---: | :---: |
+| JSON | Yes | Yes | Yes |
+| Query Store | Yes | Yes | Yes |
+| Temporal | Yes | Yes | Yes |
+| Native XML support | Yes | Yes | Yes |
+| XML indexing | Yes | Yes | Yes |
+| `MERGE` and UPSERT capabilities | Yes | Yes | Yes |
+| Date and time data types | Yes | Yes | Yes |
+| Internationalization support | Yes | Yes | Yes |
+| Full-text and semantic search | Yes | Yes | Yes |
+| Specification of language in query | Yes | Yes | Yes |
+| Service Broker (messaging) | Yes | Yes | No <sup>1</sup> |
+| Transact-SQL endpoints | Yes | Yes | No |
+| Graph | Yes | Yes | Yes |
 
 <sup>1</sup> Client only.
 
@@ -201,12 +202,12 @@ For info about the Integration Services (SSIS) features supported by the edition
 
 ## Spatial and location services
 
-| Feature name | Enterprise | Standard | Web | Express |
-| --- | :---: | :---: | :---: | :---: |
-| Spatial indexes | Yes | Yes | Yes | Yes |
-| Planar and geodetic data types | Yes | Yes | Yes | Yes |
-| Advanced spatial libraries | Yes | Yes | Yes | Yes |
-| Import/export of industry-standard spatial data formats | Yes | Yes | Yes | Yes |
+| Feature name | Enterprise | Standard | Express |
+| --- | :---: | :---: | :---: |
+| Spatial indexes | Yes | Yes | Yes |
+| Planar and geodetic data types | Yes | Yes | Yes |
+| Advanced spatial libraries | Yes | Yes | Yes |
+| Import/export of industry-standard spatial data formats | Yes | Yes | Yes |
 
 ## Configure memory limits with control group (cgroup) v2
 
@@ -232,7 +233,7 @@ The following features and services aren't available for [!INCLUDE [sssql25](../
 | **High Availability** | Database mirroring | This feature is [deprecated](../database-engine/database-mirroring/database-mirroring-sql-server.md). Use Always On availability groups instead. |
 | **Security** | Extensible Key Management (EKM) | Extensible Key Management using Azure Key Vault is available for SQL Server on Linux environments, starting with [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] CU 12. Follow the instructions from [Step 5: Configure SQL Server](../relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault.md#step-5-configure-sql-server) onward. |
 | | Windows integrated authentication for linked servers | |
-| | Windows integrated authentication for availability group (AG) endpoints | Create and use certificate based endpoint authentication for availability groups. For more information, see [Configure SQL Server Always On Availability Group for high availability on Linux](sql-server-linux-availability-group-configure-ha.md). |
+| | Windows integrated authentication for availability group (AG) endpoints | Create and use certificate based endpoint authentication for availability groups. For more information, see [Configure SQL Server availability group for high availability on Linux](sql-server-linux-availability-group-configure-ha.md). |
 | | Always Encrypted with secure enclaves | |
 | | SQL Server on Linux deployments aren't FIPS compliant | |
 | **Services** | SQL Server Browser | The SQL Server Browser service isn't required on Linux because only a single default instance is supported per host. Unlike, Windows, there are no named instances to resolve, and the port is explicitly configured during setup. |
@@ -247,6 +248,6 @@ The following features and services aren't available for [!INCLUDE [sssql25](../
 
 ## Related content
 
-- [What's new in SQL Server 2025 Preview](../sql-server/what-s-new-in-sql-server-2025.md)
+- [What's new in SQL Server 2025](../sql-server/what-s-new-in-sql-server-2025.md)
 - [SQL Server installation guide](../database-engine/install-windows/install-sql-server.md)
 - [SQL Server technical documentation](../sql-server/index.yml)

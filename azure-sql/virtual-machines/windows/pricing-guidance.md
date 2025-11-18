@@ -4,13 +4,13 @@ description: Provides best practices for choosing the right SQL Server virtual m
 author: dplessMSFT
 ms.author: dpless
 ms.reviewer: mathoma
-ms.date: 09/16/2025
+ms.date: 11/18/2025
 ms.service: azure-vm-sql-server
 ms.subservice: management
 ms.topic: conceptual
 ms.custom:
-  - build-2025
   - sfi-image-nochange
+  - ignite-2025
 tags: azure-service-management
 ---
 # Pricing guidance for SQL Server on Azure VMs
@@ -28,7 +28,7 @@ This article provides pricing guidance for [SQL Server on Azure Virtual Machines
 If you want to develop, test, or build a proof of concept, then use the freely licensed **SQL Server Developer edition**. This edition has all the features of SQL Server Enterprise edition, allowing you to build and test any type of application. However, you can't run the Developer edition in production. A SQL Server Developer edition VM only incurs charges for the cost of the VM, because there are no associated SQL Server licensing costs.
 
 > [!NOTE]  
-> SQL Server 2025 Preview introduces separate Enterprise Developer and Standard Developer editions of SQL Server.
+> SQL Server 2025 introduces separate Enterprise Developer and Standard Developer editions of SQL Server.
 
 If you want to run a lightweight workload in production (<4 cores, <1-GB memory, <10 GB/database), use the freely licensed **SQL Server Express edition**. A SQL Server Express edition VM also only incurs charges for the cost of the VM.
 

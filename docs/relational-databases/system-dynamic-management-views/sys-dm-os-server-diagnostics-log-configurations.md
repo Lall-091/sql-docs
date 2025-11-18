@@ -7,6 +7,8 @@ ms.date: "02/27/2023"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_os_server_diagnostics_log_configurations"
   - "sys.dm_os_server_diagnostics_log_configurations_TSQL"
@@ -17,10 +19,10 @@ helpviewer_keywords:
   - "sys.dm_os_server_diagnostics_log_configurations"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.dm_os_server_diagnostics_log_configurations
-[!INCLUDE [sql-asdb-asdbmi](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [sql-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Returns one row with the current configuration for the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] failover cluster diagnostic log. These property settings determine whether the diagnostic logging is on or off, and the location, number, and size of the log files.  
   
@@ -56,3 +58,4 @@ FROM sys.dm_os_server_diagnostics_log_configurations;
  [View and Read Failover Cluster Instance Diagnostics Log](../../sql-server/failover-clusters/windows/view-and-read-failover-cluster-instance-diagnostics-log.md)  
   
   
+

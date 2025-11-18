@@ -8,8 +8,7 @@ ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
-  - build-2025
+  - ignite-2025
 f1_keywords:
   - "ALTER SYMMETRIC KEY"
   - "ALTER_SYMMETRIC_KEY_TSQL"
@@ -21,7 +20,7 @@ helpviewer_keywords:
   - "ALTER SYMMETRIC KEY statement"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =fabric"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =fabric-sqldb"
 ---
 # ALTER SYMMETRIC KEY (Transact-SQL)
 [!INCLUDE [sql-asdb-asdbmi-asa-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricsqldb.md)]

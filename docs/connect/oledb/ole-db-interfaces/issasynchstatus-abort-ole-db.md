@@ -7,13 +7,15 @@ ms.date: "06/14/2018"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "Abort method"
 apiname: "ISSAsynchStatus::Abort (OLE DB)"
 apitype: "COM"
 ---
 # ISSAsynchStatus::Abort (OLE DB)
-[!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics PDW FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 [!INCLUDE[Driver_OLEDB_Download](../../../includes/driver_oledb_download.md)]
 
@@ -71,3 +73,4 @@ HRESULT Abort(
  [Performing Asynchronous Operations](../../oledb/features/performing-asynchronous-operations.md)  
   
   
+

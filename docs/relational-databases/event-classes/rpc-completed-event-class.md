@@ -8,13 +8,15 @@ ms.date: 10/20/2025
 ms.service: sql
 ms.subservice: supportability
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "RPC:Completed event class"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # RPC:Completed event class
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 The `RPC:Completed` event class indicates that a remote procedure call has been completed.
 
@@ -56,3 +58,4 @@ The `RPC:Completed` event class indicates that a remote procedure call has been 
 ## Related content
 
 - [sp_trace_setevent (Transact-SQL)](../system-stored-procedures/sp-trace-setevent-transact-sql.md)
+

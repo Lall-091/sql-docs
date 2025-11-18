@@ -7,6 +7,8 @@ ms.date: "06/10/2016"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "spatial_reference_systems_TSQL"
   - "sys.spatial_reference_systems_TSQL"
@@ -17,10 +19,10 @@ helpviewer_keywords:
   - "spatial_reference_systems"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.spatial_reference_systems (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Lists the spatial reference systems (SRIDs) supported by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].  
 
@@ -38,3 +40,4 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
  [!INCLUDE[ssCatViewPerm](../../includes/sscatviewperm-md.md)]  
   
   
+

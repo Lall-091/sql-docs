@@ -8,6 +8,8 @@ ms.date: 08/21/2025
 ms.service: sql
 ms.topic: how-to
 ms.update-cycle: 1825-days
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "change data capture [SQL Server], compared to change tracking"
   - "change data capture vs. change tracking"
@@ -17,7 +19,7 @@ helpviewer_keywords:
   - "change tracking [SQL Server]"
   - "change data capture [SQL Server], security"
   - "change data capture [SQL Server], other SQL Server features and"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Track data changes (SQL Server)
 

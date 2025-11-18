@@ -8,11 +8,11 @@ ms.date: 07/23/2025
 ms.service: sql
 ms.topic: conceptual
 ms.custom:
-  - build-2024
+  - ignite-2025
 helpviewer_keywords:
   - "JSON, built-in functions"
   - "functions (JSON)"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Validate, query, and change JSON data with built-in functions
 

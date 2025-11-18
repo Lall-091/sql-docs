@@ -8,6 +8,8 @@ ms.date: 02/28/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "BASE64_DECODE"
   - "BASE64_DECODE_TSQL"
@@ -17,12 +19,12 @@ helpviewer_keywords:
   - "base64 decoding [SQL Server]"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||=fabric"
+monikerRange: "=azuresqldb-current || =fabric || =fabric-sqldb"
 ---
 
 # BASE64_DECODE (Transact-SQL)
 
-[!INCLUDE [asdb-Fabric SE DW](../../includes/applies-to-version/asdb-fabricse-fabricdw.md)]
+[!INCLUDE [asdb-Fabric-SE-fabricDW-fabricsqldb](../../includes/applies-to-version/asdb-fabricse-fabricdw-fabricsqldb.md)]
 
 `BASE64_DECODE` converts a base64-encoded **varchar** expression into the corresponding **varbinary** expression.
 
@@ -122,3 +124,4 @@ Invalid data for type "Base64Decode".
 ## Related content
 
 - [BASE64_ENCODE (Transact-SQL)](base64-encode-transact-sql.md)
+

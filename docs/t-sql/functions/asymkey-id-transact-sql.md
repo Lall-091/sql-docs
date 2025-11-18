@@ -8,7 +8,7 @@ ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "AsymKey_ID"
   - "ASYMKEY_ID_TSQL"
@@ -21,7 +21,7 @@ helpviewer_keywords:
   - "cryptography [SQL Server], asymmetric keys"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # ASYMKEY_ID (Transact-SQL)
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]

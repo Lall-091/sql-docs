@@ -7,17 +7,19 @@ ms.date: "10/18/2019"
 ms.service: sql
 ms.subservice: xevents
 ms.topic: tutorial
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "queries [SQL Server], extended events"
   - "queries [SQL Server], holding locks"
   - "xe"
   - "extended events [SQL Server], locks"
   - "extended events [SQL Server], holding locks"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Determine Which Queries Are Holding Locks
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Fabric SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Database administrators often need to identify the source of locks that are hindering database performance.  
   

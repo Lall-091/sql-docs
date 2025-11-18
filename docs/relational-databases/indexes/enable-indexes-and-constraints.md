@@ -9,7 +9,7 @@ ms.service: sql
 ms.subservice: table-view-index
 ms.topic: how-to
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "indexes [SQL Server], enabling"
   - "nonclustered indexes [SQL Server], enabling a disabled index"
@@ -17,7 +17,7 @@ helpviewer_keywords:
   - "disabled indexes [SQL Server], how to enable"
   - "constraints [SQL Server], enabling"
   - "clustered indexes, enabling disabled indexes"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Enable indexes and constraints
 

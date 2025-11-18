@@ -8,11 +8,13 @@ ms.date: 10/22/2023
 ms.service: sql
 ms.subservice: xevents
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "event tracing for windows target"
   - "ETW target"
   - "targets [SQL Server extended events], event tracing for windows target"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
 # Event Tracing for Windows target
 

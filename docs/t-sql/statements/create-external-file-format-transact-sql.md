@@ -3,11 +3,13 @@ title: "CREATE EXTERNAL FILE FORMAT (Transact-SQL)"
 description: "CREATE EXTERNAL FILE FORMAT creates an external file format object defining external data stored in Hadoop, Azure Blob Storage, Azure Data Lake Store or for the input and output streams associated with external streams."
 author: MikeRayMSFT
 ms.author: mikeray
-ms.reviewer: randolphwest, hudequei
-ms.date: 05/13/2025
+ms.reviewer: randolphwest, hudequei, wiassaf
+ms.date: 10/22/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "CREATE EXTERNAL FILE FORMAT"
   - "CREATE_EXTERNAL_FILE_FORMAT"
@@ -17,25 +19,27 @@ helpviewer_keywords:
   - "PolyBase, external file format"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # CREATE EXTERNAL FILE FORMAT (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
-Creates an external file format object defining external data stored in Hadoop, Azure Blob Storage, Azure Data Lake Store or for the input and output streams associated with external streams. Creating an external file format is a prerequisite for creating an External Table. By creating an External File Format, you specify the actual layout of the data referenced by an external table. To create an External Table, see [CREATE EXTERNAL TABLE (Transact-SQL)](create-external-table-transact-sql.md).
+Creates an external file format object defining external data stored in Hadoop, Azure Blob Storage, Azure Data Lake Store, OneLake in Microsoft Fabric, or for the input and output streams associated with external streams. Creating an external file format is a prerequisite for creating an External Table. By creating an External File Format, you specify the actual layout of the data referenced by an external table. To create an External Table, see [CREATE EXTERNAL TABLE (Transact-SQL)](create-external-table-transact-sql.md).
 
 The following file formats are supported:
 
 - **Delimited text**
 
+  [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)] only supports CSV format of delimited text.
+
 - **Hive RCFile**
 
-  Doesn't apply to [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], or [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)].
+  Doesn't apply to [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], or [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)].
 
 - **Hive ORC**
 
-  Doesn't apply to [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], or [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)].
+  Doesn't apply to [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], or [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)].
 
 - **Parquet**
 
@@ -45,7 +49,7 @@ The following file formats are supported:
 
 - **Delta**
 
-  Applies only to [serverless SQL pools in Azure Synapse Analytics](/azure/synapse-analytics/sql/query-delta-lake-format), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)] and later versions. You can query [Delta Lake version 1.0](https://github.com/delta-io/delta/releases/tag/v1.0.1). Changes introduced since, in [Delta Lake 1.2](https://github.com/delta-io/delta/releases/tag/v1.2.0), like renaming columns are not supported. If you are using the higher versions of Delta with delete vectors, v2 checkpoints, and other features, consider using other query engines like [Microsoft Fabric SQL analytics endpoint for Lakehouses](/fabric/data-engineering/lakehouse-sql-analytics-endpoint).
+  Applies *only* to [serverless SQL pools in Azure Synapse Analytics](/azure/synapse-analytics/sql/query-delta-lake-format), [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)] and later versions. You can query [Delta Lake version 1.0](https://github.com/delta-io/delta/releases/tag/v1.0.1). Changes introduced since, in [Delta Lake 1.2](https://github.com/delta-io/delta/releases/tag/v1.2.0), like renaming columns are not supported. If you are using the higher versions of Delta with delete vectors, v2 checkpoints, and other features, consider using other query engines like [Microsoft Fabric SQL analytics endpoint for Lakehouses](/fabric/data-engineering/lakehouse-sql-analytics-endpoint).
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
@@ -92,9 +96,6 @@ WITH (
     [ , DATA_COMPRESSION = 'org.apache.hadoop.io.compress.DefaultCodec' ]);
 ```
 
-> [!NOTE]  
-> [!INCLUDE[synapse-analytics-od-unsupported-syntax](../../includes/synapse-analytics-od-unsupported-syntax.md)]
-
 ### [ORC](#tab/orc)
 
 ```syntaxsql
@@ -107,9 +108,6 @@ WITH (
       | 'org.apache.hadoop.io.compress.DefaultCodec' }
     ]);
 ```
-
-> [!NOTE]  
-> [!INCLUDE[synapse-analytics-od-unsupported-syntax](../../includes/synapse-analytics-od-unsupported-syntax.md)]
 
 ### [Parquet](#tab/parquet)
 
@@ -178,7 +176,7 @@ Specifies the format of the external data.
 
 - FORMAT_TYPE = DELIMITEDTEXT
 
-  Specifies a text format with column delimiters, also called field terminators.
+  Specifies a text format with column delimiters, also known as field terminators.
 
 - FORMAT_TYPE = JSON
 
@@ -396,9 +394,13 @@ In SQL Server, PolyBase doesn't support reading UTF16 encoded files.
 
  The external file format is database-scoped in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] and [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)]. It is server-scoped in [!INCLUDE[ssPDW](../../includes/sspdw-md.md)].
 
+ The Hadoop format is only supported in SQL Server 2016, 2017, and 2019.
+
  The format options are all optional and only apply to delimited text files.
 
  When the data is stored in one of the compressed formats, PolyBase first decompresses the data before returning the data records.
+
+ [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)] only supports CSV format of delimited text and Parquet file formats. Fabric SQL database only supports OneLake in Microsoft Fabric as a data source.
 
 ## Limitations
 

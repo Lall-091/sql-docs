@@ -7,11 +7,13 @@ ms.date: "08/10/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 dev_langs:
   - "TSQL"
 ---
 # CREATE SELECTIVE XML INDEX (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Creates a new selective XML index on the specified table and XML column. Selective XML indexes improve the performance of XML indexing and querying by indexing only the subset of nodes that you typically query. You can also create secondary selective XML indexes. For information, see [Create, Alter, and Drop Secondary Selective XML Indexes](../../relational-databases/xml/create-alter-and-drop-secondary-selective-xml-indexes.md).  
   
@@ -157,4 +159,5 @@ FOR ( path1 = '/myns:book/myns:author/text()' );
  [Specify Paths and Optimization Hints for Selective XML Indexes](../../relational-databases/xml/specify-paths-and-optimization-hints-for-selective-xml-indexes.md)  
   
   
+
 

@@ -8,6 +8,8 @@ ms.date: 03/03/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "COLLATE"
   - "COLLATE_TSQL"
@@ -16,12 +18,12 @@ helpviewer_keywords:
   - "COLLATE clause"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 
 # COLLATE (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricdw-fabricsqldb.md)]
 
 Defines a collation of a database or table column, or a collation cast operation when applied to character string expression. Collation name can be either a Windows collation name or a SQL collation name. If not specified during database creation, the database is assigned the default collation of the instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. If not specified during table column creation, the column is assigned the default collation of the database.
 
@@ -197,3 +199,4 @@ For additional examples that use **COLLATE**, see [CREATE DATABASE](../../t-sql/
 - [CREATE TABLE](../../t-sql/statements/create-table-transact-sql.md)
 - [DECLARE @local_variable](../../t-sql/language-elements/declare-local-variable-transact-sql.md)
 - [Table data type](../../t-sql/data-types/table-transact-sql.md)
+

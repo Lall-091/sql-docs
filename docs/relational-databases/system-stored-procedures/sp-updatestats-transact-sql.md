@@ -8,6 +8,8 @@ ms.date: 07/07/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_updatestats_TSQL"
   - "sp_updatestats"
@@ -15,11 +17,11 @@ helpviewer_keywords:
   - "sp_updatestats"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sp_updatestats (Transact-SQL)
 
-[!INCLUDE [SQL Server SQL Database](../../includes/applies-to-version/sql-asdb.md)]
+[!INCLUDE [SQL Server SQL Database-fabricsqldb](../../includes/applies-to-version/sql-asdb-fabricsqldb.md)]
 
 Runs `UPDATE STATISTICS` against all user-defined and internal tables in the current database.
 
@@ -89,3 +91,4 @@ Use solutions such as [Adaptive Index Defrag](https://github.com/Microsoft/tiger
 - [sp_createstats (Transact-SQL)](sp-createstats-transact-sql.md)
 - [sys.dm_db_stats_properties](../system-dynamic-management-views/sys-dm-db-stats-properties-transact-sql.md)
 - [UPDATE STATISTICS (Transact-SQL)](../../t-sql/statements/update-statistics-transact-sql.md)
+

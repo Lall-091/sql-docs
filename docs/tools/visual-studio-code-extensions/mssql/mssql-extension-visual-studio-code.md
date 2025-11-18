@@ -4,20 +4,20 @@ description: Enhancing your developer experience with the MSSQL extension for Vi
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: randolphwest
-ms.date: 06/18/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
 ms.collection:
   - data-tools
 ms.custom:
-  - build-2025
   - sfi-image-nochange
+  - ignite-2025
 ---
 
 # What is the MSSQL extension for Visual Studio Code?
 
-The [MSSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) is designed to support developers in building applications that use Azure SQL (including Azure SQL Database, Azure SQL Managed Instance, and SQL Server on Azure VMs), SQL database in Fabric (preview) or SQL Server as backend databases. With a comprehensive suite of features for connecting to databases, designing and managing database schemas, exploring database objects, executing queries, and visualizing query plans, this extension transforms the SQL development experience within Visual Studio Code.
+The [MSSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) is designed to support developers in building applications that use Azure SQL (including Azure SQL Database, Azure SQL Managed Instance, and SQL Server on Azure VMs), SQL database in Fabric, or SQL Server as backend databases. With a comprehensive suite of features for connecting to databases, designing and managing database schemas, exploring database objects, executing queries, and visualizing query plans, this extension transforms the SQL development experience within Visual Studio Code.
 
 The latest enhancements to this extension are aimed at boosting productivity. Whether you're working with databases running locally or in the cloud, the extension equips you with advanced IntelliSense, efficient Transact-SQL script execution, and customizable options. As a result, you can enjoy a modern and streamlined SQL development workflow.
 
@@ -34,7 +34,7 @@ To get started with SQL development in Visual Studio Code, install the **MSSQL e
 :::image type="content" source="media/mssql-extension-visual-studio-code/mssql-extension-vscode.png" alt-text="Screenshot of the MSSQL extension in Visual Studio Code." lightbox="media/mssql-extension-visual-studio-code/mssql-extension-vscode.png":::
 
 > [!TIP]  
-> You'll know the extension is installed correctly when the **MSSQL** icon appears in the Activity Bar and the **Connections** view becomes available.
+> You know the extension is installed correctly when the **MSSQL** icon appears in the Activity Bar and the **Connections** view becomes available.
 
 ## Modern UI
 
@@ -52,7 +52,7 @@ These features are now seamlessly integrated and enabled by default—no setup r
 
 ### Connection dialog
 
-The Connection dialog allows you to quickly connect to databases hosted in Azure SQL (including Azure SQL Database, Azure SQL Managed Instance, and SQL Server on Azure VMs), SQL database in Fabric (preview) or SQL Server through a simple and intuitive interface. It provides multiple input options to cater to different scenarios:
+The Connection dialog allows you to quickly connect to databases hosted in Azure SQL (including Azure SQL Database, Azure SQL Managed Instance, and SQL Server on Azure VMs), SQL database in Fabric, or SQL Server through a simple and intuitive interface. It provides multiple input options to cater to different scenarios:
 
 - **Parameters**: Enter individual connection details such as server name, database name, username, and password.
 
@@ -88,7 +88,7 @@ The Table Designer offers a new UI for creating and managing tables for your dat
 
 - **Primary Key**: Easily define one or more columns as the primary key for your table, ensuring each row is uniquely identifiable.
 
-- **Indexes**: Create and manage indexes to improve query performance by adding additional columns as indexes for faster data retrieval.
+- **Indexes**: Create and manage indexes to improve query performance by adding extra columns as indexes for faster data retrieval.
 
 - **Foreign Keys**: Define relationships between tables by adding foreign keys referencing primary keys in other tables, ensuring data integrity across tables.
 
@@ -103,6 +103,26 @@ Within the designer, the **Script As Create** panel provides an automatically ge
 - **Copy script**: You can copy the generated T-SQL script from the preview panel for manual execution or open it directly in the editor for further adjustments and modifications as needed.
 
 :::image type="content" source="media/mssql-extension-visual-studio-code/table-designer.png" alt-text="Screenshot of the new table designer feature." lightbox="media/mssql-extension-visual-studio-code/table-designer.png":::
+
+### View & Edit Data (Preview)
+
+View & Edit Data (Preview) provides an intuitive, interactive way to browse and modify table data directly within the editor without writing Transact-SQL data manipulation language (DML) statements. Developers can interact with their data in an intuitive interface, simplifying everything from quick edits to in-depth validation.
+
+To use this feature, right-click a table in Object Explorer and select **View & Edit Data (Preview)**. The table data opens in a data grid within a new editor tab, displaying the contents in a familiar, spreadsheet-like layout with paging controls based on the configured rows per page.
+
+Key capabilities include:
+
+- **Inline editing**: Update cell values directly within the grid. Edits are validated in real time and return an error message for incorrect inputs (for example, invalid data types, or violating a constraint). The cell with the incorrect input is highlighted in red.
+
+- **Add and delete rows**: Insert new rows or delete existing ones, allowing for quick data adjustments during development and testing.
+
+- **Pagination**: Efficiently load and navigate large datasets using built-in paging controls for smooth scrolling and performance.
+
+- **Save Changes**: All edits remain in a pending state until you select **Save Changes**, giving you complete control over when updates are committed to the database.
+
+- **Show Script**: This pane displays a read-only DML script that reflects all actions performed in the data grid in real time. This allows you to review the underlying DML operations before saving changes
+
+:::image type="content" source="media/mssql-extension-visual-studio-code/edit-data.png" alt-text="Screenshot of the Edit Data screen." lightbox="media/mssql-extension-visual-studio-code/edit-data.png":::
 
 ### Query Results pane
 
@@ -142,7 +162,7 @@ Key features and capabilities include:
 - **Zoom Controls**: The visualizer offers flexible zoom options to help you analyze the plan in detail. You can zoom in or out to adjust the level of detail, use the "zoom to fit" feature to resize the view and fit the entire plan on your screen, or set custom zoom levels to examine specific elements precisely.
 - **Metrics and Highlighting**: The metrics toolbar allows you to analyze key performance indicators and highlight expensive operations. You can select metrics such as **Actual Elapsed Time**, **Cost**, **Subtree Cost**, or **Number of Rows Read** from the dropdown list to identify bottlenecks and use these metrics to search for specific nodes within the query plan for deeper analysis.
 
-The right-hand sidebar provides quick access to additional actions:
+The right-hand sidebar provides quick access to more actions:
 
 - **Save Plan**: Save the current execution plan for future reference.
 - **Open XML**: Open the XML representation of the query plan to inspect details at the code level.
@@ -163,7 +183,7 @@ Currently, this extension supports the following operating systems:
 - Debian 10, 11, 12
 - CentOS 7, 8 / Oracle Linux 7, 8
 - Red Hat Enterprise Linux (RHEL): 8, 9
-- Fedora 35,36
+- Fedora 35, 36
 - OpenSUSE Leap 15
 
 ## Offline installation

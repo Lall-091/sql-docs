@@ -9,7 +9,7 @@ ms.service: sql
 ms.subservice: table-view-index
 ms.topic: how-to
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "sql13.swb.disableindexes.f1"
 helpviewer_keywords:
@@ -23,7 +23,7 @@ helpviewer_keywords:
   - "statistical information [SQL Server], indexes"
   - "index disabling [SQL Server]"
   - "indexed views [SQL Server], disabled indexes"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Disable indexes and constraints
 

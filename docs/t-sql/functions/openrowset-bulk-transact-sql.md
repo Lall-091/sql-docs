@@ -8,13 +8,15 @@ ms.date: 09/08/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-mi-current || >=sql-server-2016 || =azuresqldb-current || >=sql-server-linux-2017 || =fabric"
+monikerRange: "=azuresqldb-mi-current || >=sql-server-2016 || =azuresqldb-current || >=sql-server-linux-2017 || =fabric || =fabric-sqldb"
 ---
 # OPENROWSET BULK (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Fabric SE DW](../../includes/applies-to-version/sql-asdb-asdbmi-fabricse-fabricdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Fabric SE DW](../../includes/applies-to-version/sql-asdb-asdbmi-fabricse-fabricdw-fabricsqldb.md)]
 
 The `OPENROWSET` function reads data from one or many files and returns the content as a rowset. Depending on a service, the file might be stored in Azure Blob Storage, Azure Data Lake storage, on-premises disk, network shares, etc. You can read various file formats such as text/CSV, Parquet, or JSON-lines.
 
@@ -37,9 +39,11 @@ Details and links to similar examples on other platforms:
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
-::: moniker range="=azuresqldb-mi-current||=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017"
+::: moniker range="=azuresqldb-mi-current||=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=fabric-sqldb"
 
-## Syntax for SQL Server, Azure SQL Database, and Azure SQL Managed Instance
+## Syntax 
+
+For SQL Server, Azure SQL Database, SQL database in Fabric, and Azure SQL Managed Instance:
 
 ```syntaxsql
 OPENROWSET( BULK 'data_file_path',
@@ -85,7 +89,7 @@ OPENROWSET( BULK 'data_file_path',
 ::: moniker-end
 ::: moniker range="=fabric"
 
-## Syntax for Fabric Data Warehouse
+### Syntax for Fabric Data Warehouse
 
 ```syntaxsql
 OPENROWSET( BULK 'data_file_path',
@@ -159,7 +163,7 @@ Beginning with [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)], the *data_
 - `https://<storage>.blob.core.windows.net/<container>/<file path>` to access Azure Blob Storage or Azure Data Lake Storage
 - `https://<storage>.dfs.core.windows.net/<container>/<file path>` to access Azure Data Lake Storage
 - `abfss://<container>@<storage>.dfs.core.windows.net/<file path>` to access Azure Data Lake Storage
-- `https://onelake.dfs.fabric.microsoft.com/<workspaceId>/<lakehouseId>/Files/<file path>` - to access Fabric OneLake (currently in [preview](/fabric/fundamentals/preview))
+- `https://onelake.dfs.fabric.microsoft.com/<workspaceId>/<lakehouseId>/Files/<file path>` - to access OneLake in Microsoft Fabric
 
 > [!NOTE]
 > This article and the supported URI patterns differ on different platforms. For the URI patterns that are available in SQL Server, Azure SQL Database, and Azure SQL Managed Instance, [select the product in the version dropdown list](openrowset-bulk-transact-sql.md?view=sql-server-ver17&preserve-view=true#bulk-data_file_path).
@@ -179,25 +183,25 @@ FROM OPENROWSET(
 
 The storage types that can be referenced by the URI are shown in the following table:
 
-| Version | On-premises | Azure storage | Fabric OneLake | S3 | Google Cloud (GCS) |
+| Version | On-premises | Azure storage | OneLake in Fabric | S3 | Google Cloud (GCS) |
 |---|---|---|---|---|---|
 | [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)], [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] | Yes | Yes | No | No | No |
 | [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] | Yes | Yes | No | Yes | No |
 | [!INCLUDE [azsql-md](../../includes/ssazure-sqldb.md)] | No | Yes | No | No | No |
 | [!INCLUDE [mi-md](../../includes/ssazuremi-md.md)] | No | Yes | No | No | No |
 | [!INCLUDE [ssod-md](../../includes/sssod-md.md)] in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)]| No | Yes | Yes | No | No |
-| [!INCLUDE [fabric-md](../../includes/fabric.md)] [!INCLUDE [dw-md](../../includes/fabric-dw.md)] and [!INCLUDE [se-md](../../includes/fabric-se.md)] | No | Yes | Yes ([preview](/fabric/fundamentals/preview)) | Yes ([preview](/fabric/fundamentals/preview)), using Fabric OneLake shortcuts | Yes ([preview](/fabric/fundamentals/preview)), using Fabric OneLake shortcuts |
+| [!INCLUDE [fabric-md](../../includes/fabric.md)] [!INCLUDE [dw-md](../../includes/fabric-dw.md)] and [!INCLUDE [se-md](../../includes/fabric-se.md)] | No | Yes | Yes | Yes, using [OneLake in Fabric shortcuts](/fabric/onelake/onelake-shortcuts) | Yes, using [OneLake in Fabric shortcuts](/fabric/onelake/onelake-shortcuts) |
+| [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)] | No | Yes, using [OneLake in Fabric shortcuts](/fabric/onelake/onelake-shortcuts) | Yes | Yes, using [OneLake in Fabric shortcuts](/fabric/onelake/onelake-shortcuts) | Yes, using [OneLake in Fabric shortcuts](/fabric/onelake/onelake-shortcuts) |
 
 ::: moniker range="=fabric"
 
-You can use `OPENROWSET(BULK)` to read data directly from files stored in the Fabric OneLake, specifically from the **Files folder** of a Fabric Lakehouse. This eliminates the need for external staging accounts (such as ADLS Gen2 or Blob Storage) and enables workspace-governed, SaaS-native ingestion using Fabric permissions. This functionality supports:
+You can use `OPENROWSET(BULK)` to read data directly from files stored in the OneLake in Microsoft Fabric, specifically from the **Files folder** of a Fabric Lakehouse. This eliminates the need for external staging accounts (such as ADLS Gen2 or Blob Storage) and enables workspace-governed, SaaS-native ingestion using Fabric permissions. This functionality supports:
 
 - Reading from `Files` folders in Lakehouses
 - Workspace-to-warehouse loads within the same tenant
 - Native identity enforcement using Microsoft Entra ID
 
-> [!NOTE]
-> Accessing Fabric OneLake storage is in [preview](/fabric/fundamentals/preview). See the [limitations](../statements/copy-into-transact-sql.md?view=fabric&preserve-view=true#limitations-for-onelake-as-source) that are applicable both to `COPY INTO` and `OPENROWSET(BULK)`.
+See the [limitations](../statements/copy-into-transact-sql.md?view=fabric&preserve-view=true#limitations-for-onelake-as-source) that are applicable both to `COPY INTO` and `OPENROWSET(BULK)`.
 
 ::: moniker-end
 
@@ -219,9 +223,6 @@ FROM OPENROWSET(
     DATA_SOURCE = 'root'
 );
 ```
-
-> [!NOTE]
-> The `DATA_SOURCE` option is [preview](/fabric/fundamentals/preview) in [!INCLUDE [fabric-md](../../includes/fabric.md)] [!INCLUDE [dw-md](../../includes/fabric-dw.md)] and [!INCLUDE [se-md](../../includes/fabric-se.md)].
 
 ### File format options
 
@@ -276,6 +277,7 @@ The valid values are  'CSV' (comma separated values file compliant to the [RFC 4
 | [!INCLUDE [mi-md](../../includes/ssazuremi-md.md)] | Yes | Yes | Yes | No |
 | [!INCLUDE [ssod-md](../../includes/sssod-md.md)] in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] | Yes | Yes | Yes | No |
 | [!INCLUDE [fabric-md](../../includes/fabric.md)] [!INCLUDE [dw-md](../../includes/fabric-dw.md)] and [!INCLUDE [se-md](../../includes/fabric-se.md)] | Yes | Yes | No | Yes |
+| [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)] | Yes | Yes | No | No | 
 
 ::: moniker range="=fabric"
 
@@ -399,7 +401,7 @@ FROM OPENROWSET(
 
 #### PARSER_VERSION = 'parser_version'
 
-**Applies to:** Fabric Data Warehouse
+**Applies to:** Fabric Data Warehouse only
 
 Specifies parser version to be used when reading files. Currently supported `CSV` parser versions are 1.0 and 2.0:
 - PARSER_VERSION = '1.0'
@@ -469,7 +471,7 @@ Empire State Building,40.748817,-73.985428,20 W 34th St,New York,NY,10118
 Statue of Liberty,40.689247,-74.044502,Liberty Island,New York,NY,10004
 ```
 
-Default is `FALSE`. Supported in `PARSER_VERSION='2.0'`. If `TRUE`, the column names will be read from the first row according to `FIRSTROW` argument. If `TRUE` and schema is specified using `WITH`, binding of column names will be done by column name, not ordinal positions.
+Default is `FALSE`. Supported in `PARSER_VERSION='2.0'` in Fabric Data Warehouse. If `TRUE`, the column names will be read from the first row according to `FIRSTROW` argument. If `TRUE` and schema is specified using `WITH`, binding of column names will be done by column name, not ordinal positions.
 
 ```sql
 SELECT *
@@ -686,13 +688,13 @@ If the target storage account is private, the principal must also have the **Sto
 
 ::: moniker range="=fabric"
 
-In Microsoft Fabric, the supported features are summarized in the table:
+In Microsoft Fabric Data Warehouse, supported features are summarized in the table:
 
 | Feature           | Supported | Not available |
 |-------------------|-----------|----------------------|
 | **File formats**  | Parquet, CSV, JSONL | Delta, Azure Cosmos DB, JSON, relational databases |
 | **Authentication**| EntraID/SPN passthrough, public storage | SAS/SAK, SPN, Managed access |
-| **Storage**       | Azure Blob Storage, Azure Data Lake Storage, Fabric OneLake (preview) |  |
+| **Storage**       | Azure Blob Storage, Azure Data Lake Storage, OneLake in Microsoft Fabric |  |
 | **Options**       | Only full/absolute URI in `OPENROWSET`  | Relative URI path in `OPENROWSET`, `DATA_SOURCE` |
 | **Partitioning**  | You can use the `filepath()` function in a query. |  |
 
@@ -718,6 +720,115 @@ To bulk export or import SQLXML data, use one of the following data types in you
 | `SQLBINARY` or `SQLVARYBIN` | The data is sent without any conversion. |
 
 ::: moniker-end
+
+## File metadata functions
+
+Sometimes, you might need to know which file or folder source correlates to a specific row in the result set.
+
+You can use functions `filepath` and `filename` to return file names and/or the path in the result set. Or you can use them to filter data based on the file name and/or folder path. In the following sections, you'll find short descriptions along samples.
+
+### Filename function
+
+This function returns the file name that the row originates from.
+
+Return data type is **nvarchar(1024)**. For optimal performance, always cast result of filename function to appropriate data type. If you use character data type, make sure appropriate length is used.
+
+The following sample reads the NYC Yellow Taxi data files for the last three months of 2017 and returns the number of rides per file. The `OPENROWSET` part of the query specifies which files will be read.
+
+```sql
+SELECT
+    nyc.filename() AS [filename]
+    ,COUNT_BIG(*) AS [rows]
+FROM  
+    OPENROWSET(
+        BULK 'parquet/taxi/year=2017/month=9/*.parquet',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT='PARQUET'
+    ) nyc
+GROUP BY nyc.filename();
+```
+
+The following example shows how `filename()` can be used in the `WHERE` clause to filter the files to be read. It accesses the entire folder in the `OPENROWSET` part of the query and filters files in the `WHERE` clause.
+
+Your results will be the same as the prior example.
+
+```sql
+SELECT
+    r.filename() AS [filename]
+    ,COUNT_BIG(*) AS [rows]
+FROM OPENROWSET(
+    BULK 'csv/taxi/yellow_tripdata_2017-*.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV',
+        FIRSTROW = 2) 
+        WITH (C1 varchar(200) ) AS [r]
+WHERE
+    r.filename() IN ('yellow_tripdata_2017-10.csv', 'yellow_tripdata_2017-11.csv', 'yellow_tripdata_2017-12.csv')
+GROUP BY
+    r.filename()
+ORDER BY
+    [filename];
+```
+
+### Filepath function
+
+This function returns a full path or a part of path:
+
+- When called without parameter, returns the full file path that a row originates from.
+- When called with parameter, returns part of path that matches the wildcard on position specified in the parameter. For example, parameter value 1 would return part of path that matches the first wildcard.
+
+Return data type is **nvarchar(1024)**. For optimal performance, always cast result of `filepath` function to appropriate data type. If you use character data type, make sure appropriate length is used.
+
+The following sample reads NYC Yellow Taxi data files for the last three months of 2017. It returns the number of rides per file path. The `OPENROWSET` part of the query specifies which files will be read.
+
+```sql
+SELECT
+    r.filepath() AS filepath
+    ,COUNT_BIG(*) AS [rows]
+FROM OPENROWSET(
+        BULK 'csv/taxi/yellow_tripdata_2017-1*.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV',
+        FIRSTROW = 2
+    )
+    WITH (
+        vendor_id INT
+    ) AS [r]
+GROUP BY
+    r.filepath()
+ORDER BY
+    filepath;
+```
+
+The following example shows how `filepath()` can be used in the `WHERE` clause to filter the files to be read.
+
+You can use the wildcards in the `OPENROWSET` part of the query and filter the files in the `WHERE` clause. Your results will be the same as the prior example.
+
+```sql
+SELECT
+    r.filepath() AS filepath
+    ,r.filepath(1) AS [year]
+    ,r.filepath(2) AS [month]
+    ,COUNT_BIG(*) AS [rows]
+FROM OPENROWSET(
+        BULK 'csv/taxi/yellow_tripdata_*-*.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV',
+        FIRSTROW = 2
+    )
+WITH (
+    vendor_id INT
+) AS [r]
+WHERE
+    r.filepath(1) IN ('2017')
+    AND r.filepath(2) IN ('10', '11', '12')
+GROUP BY
+    r.filepath()
+    ,r.filepath(1)
+    ,r.filepath(2)
+ORDER BY
+    filepath;
+```
 
 ## Examples
 
@@ -1083,6 +1194,67 @@ If a column name doesn't match the physical name of a column in the properties i
 - [Browse file content using OPENROWSET function](/fabric/data-warehouse/browse-file-content-with-openrowset)
 - [Performance Guidelines for Fabric Data Warehouse](/fabric/data-warehouse/guidelines-warehouse-performance)
 - [Ingest data into your Warehouse using Transact-SQL](/fabric/data-warehouse/ingest-data-tsql)
+
+::: moniker-end
+
+::: moniker range="=fabric-sqldb"
+
+### A. Use OPENROWSET to read a CSV file from a Fabric Lakehouse
+
+In this example, `OPENROWSET` will be used to read a CSV file available on Fabric Lakehouse, named `customer.csv`, stored under the `Files/Contoso/` folder. Since no Data Source and Database Scoped Credentials are provided, Fabric SQL database authenticates with the user's Entra ID context. 
+
+```sql
+SELECT * FROM OPENROWSET 
+( BULK ' abfss://<workspace id>@<tenant>.dfs.fabric.microsoft.com/<lakehouseid>/Files/Contoso/customer.csv' 
+, FORMAT = 'CSV' 
+, FIRST_ROW = 2 
+) WITH 
+(  
+    CustomerKey INT,  
+    GeoAreaKey INT,  
+    StartDT DATETIME2,  
+    EndDT DATETIME2,  
+    Continent NVARCHAR(50),  
+    Gender NVARCHAR(10),  
+    Title NVARCHAR(10),  
+    GivenName NVARCHAR(100),  
+    MiddleInitial VARCHAR(2),  
+    Surname NVARCHAR(100),  
+    StreetAddress NVARCHAR(200),  
+    City NVARCHAR(100),  
+    State NVARCHAR(100),  
+    StateFull NVARCHAR(100),  
+    ZipCode NVARCHAR(20),  
+    Country_Region NCHAR(2),  
+    CountryFull NVARCHAR(100),  
+    Birthday DATETIME2,  
+    Age INT,  
+    Occupation NVARCHAR(100),  
+    Company NVARCHAR(100),  
+    Vehicle NVARCHAR(100),  
+    Latitude DECIMAL(10,6),  
+    Longitude DECIMAL(10,6) ) AS DATA 
+```
+ 
+### B. Use OPENROWSET to read file from Fabric Lakehouse and insert into a new table 
+
+In this example, `OPENROWSET` will first be used to read data from a parquet file named`store.parquet`. Then, `INSERT` the data into a new table called `Store`. The parquet file is located in Fabric Lakehouse, since no DATA_SOURCE and database-scoped credential are provided, SQL database in Fabric authenticates with the user's Entra ID context. 
+ 
+```sql
+SELECT * 
+FROM OPENROWSET 
+(BULK 'abfss://<workspace id>@<tenant>.dfs.fabric.microsoft.com/<lakehouseid>/Files/Contoso/store.parquet' 
+, FORMAT = 'parquet' )
+ AS dataset; 
+
+-- insert into new table 
+SELECT * 
+INTO Store 
+FROM OPENROWSET 
+(BULK 'abfss://<workspace id>@<tenant>.dfs.fabric.microsoft.com/<lakehouseid>/Files/Contoso/store.parquet' 
+, FORMAT = 'parquet' ) 
+ AS STORE; 
+```
 
 ::: moniker-end
 

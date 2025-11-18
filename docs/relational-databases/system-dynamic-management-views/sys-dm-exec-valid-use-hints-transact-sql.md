@@ -7,6 +7,8 @@ ms.date: "11/17/2016"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_exec_valid_use_hints"
   - "sys.dm_exec_valid_use_hints_TSQL"
@@ -18,7 +20,7 @@ dev_langs:
   - "TSQL"
 ---
 # sys.dm_exec_valid_use_hints (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Returns [USE HINT](../../t-sql/queries/hints-transact-sql-query.md#use_hint) supported hint names. It lists one hint name per row.  
   
@@ -36,4 +38,5 @@ Introduced in [!INCLUDE[ssSQL15_md](../../includes/sssql16-md.md)] SP1.
     
  [Dynamic Management Views and Functions &#40;Transact-SQL&#41;](~/relational-databases/system-dynamic-management-views/system-dynamic-management-views.md)   
  [Database Related Dynamic Management Views &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/database-related-dynamic-management-views-transact-sql.md)  
+
 

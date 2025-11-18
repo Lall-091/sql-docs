@@ -9,7 +9,7 @@ ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "DROP CERTIFICATE"
   - "DROP_CERTIFICATE_TSQL"
@@ -21,7 +21,7 @@ helpviewer_keywords:
   - "deleting certificates"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =fabric"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =fabric-sqldb"
 ---
 # DROP CERTIFICATE (Transact-SQL)
 

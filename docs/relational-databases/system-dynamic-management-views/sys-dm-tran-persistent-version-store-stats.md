@@ -8,6 +8,8 @@ ms.date: 02/05/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "dm_tran_persistent_version_store_stats"
   - "sys.dm_tran_persistent_version_store_stats"
@@ -17,12 +19,12 @@ helpviewer_keywords:
   - "sys.dm_tran_persistent_version_store_stats dynamic management view"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-ver15 || >=sql-server-linux-ver15 || =azuresqldb-mi-current || =azuresqldb-current"
+monikerRange: ">=sql-server-ver15 || >=sql-server-linux-ver15 || =azuresqldb-mi-current || =azuresqldb-current || =fabric-sqldb"
 ---
 
 # sys.dm_tran_persistent_version_store_stats (Transact-SQL)
 
-[!INCLUDE [SQL Server 2019, ASDB, ASDBMI](../../includes/applies-to-version/sqlserver2019-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server 2019, ASDB, ASDBMI-fabricsqldb](../../includes/applies-to-version/sqlserver2019-asdb-asdbmi-fabricsqldb.md)]
 
 Returns information for accelerated database recovery (ADR) persistent version store (PVS) metrics.
 
@@ -63,3 +65,4 @@ On SQL Database **Basic**, **S0**, and **S1** service objectives, and for databa
 - [Monitor and troubleshoot accelerated database recovery](../accelerated-database-recovery-troubleshoot.md)
 - [Accelerated database recovery](../accelerated-database-recovery-concepts.md)
 - [Manage accelerated database recovery](../accelerated-database-recovery-management.md)
+

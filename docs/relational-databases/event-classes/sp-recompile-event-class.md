@@ -7,12 +7,14 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
-  - "SP:Recompile event class"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+  - "SQL:Recompile event class"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # SP:Recompile Event Class
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   The SP:Recompile event class indicates that a stored procedure, trigger, or user-defined function has been recompiled. Recompilations reported by this event class occur at the statement level.  
   
  The preferred way to trace statement-level recompilations is to use the SQL:StmtRecompile event class. The SP:Recompile event class is deprecated. For more information, see [SQL:StmtRecompile Event Class](../../relational-databases/event-classes/sql-stmtrecompile-event-class.md).  
@@ -56,3 +58,4 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
  [SQL:StmtRecompile Event Class](../../relational-databases/event-classes/sql-stmtrecompile-event-class.md)  
   
   
+

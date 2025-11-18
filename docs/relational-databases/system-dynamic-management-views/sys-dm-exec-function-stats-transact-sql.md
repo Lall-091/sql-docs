@@ -7,6 +7,8 @@ ms.date: "06/19/2023"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_exec_function_stats"
   - "sys.dm_exec_function_stats_tsql"
@@ -16,10 +18,10 @@ helpviewer_keywords:
   - "sys.dm_exec_function_stats dynamic management view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.dm_exec_function_stats (Transact-SQL)
-[!INCLUDE [sqlserver2016-asdb-asdbmi](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
 
   Returns aggregate performance statistics for cached functions. The view returns one row for each cached function plan, and the lifetime of the row is as long as the function remains cached. When a  function is removed from the cache, the corresponding row is eliminated from this view. At that time, a Performance Statistics SQL trace event is raised similar to **sys.dm_exec_query_stats**. Returns information about scalar functions, including in-memory functions and CLR scalar functions. Does not return information about table valued functions, and about scalar functions that are inlined with [Scalar UDF Inlining](../../relational-databases/user-defined-functions/scalar-udf-inlining.md).
   
@@ -95,3 +97,4 @@ ORDER BY [total_worker_time] DESC;
  [sys.dm_exec_trigger_stats &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql.md)   
  [sys.dm_exec_procedure_stats &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql.md)  
   
+

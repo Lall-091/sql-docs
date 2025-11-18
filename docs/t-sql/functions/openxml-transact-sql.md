@@ -8,6 +8,8 @@ ms.date: 06/20/2024
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "OPENXML_TSQL"
   - "OPENXML"
@@ -20,7 +22,7 @@ dev_langs:
 ---
 # OPENXML (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 `OPENXML` provides a rowset view over an XML document. Because `OPENXML` is a rowset provider, `OPENXML` can be used in [!INCLUDE [tsql](../../includes/tsql-md.md)] statements in which rowset providers such as a table, view, or the `OPENROWSET` function can appear.
 
@@ -259,3 +261,4 @@ EXEC sp_xml_removedocument @idoc;
 ## Related content
 
 - [Examples: Using OPENXML](../../relational-databases/xml/examples-using-openxml.md)
+

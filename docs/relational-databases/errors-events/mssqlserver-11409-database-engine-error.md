@@ -7,11 +7,13 @@ ms.date: "04/04/2017"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "11409 (Database Engine error)"
 ---
 # MSSQLSERVER_11409
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   
 ## Details  
   
@@ -32,3 +34,4 @@ With the current columns in the table, you must retain the column set.
   
 To remove the column set, first remove columns from the table, until you have no more than 1024 columns. Then, you can remove the column set.  
   
+

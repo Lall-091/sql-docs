@@ -7,13 +7,15 @@ ms.reviewer: vanto
 ms.date: 05/24/2024
 ms.service: sql
 ms.topic: language-reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "triggers [SQL Server], security"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Manage trigger security
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 By default, both DML and DDL triggers execute under the context of the user that calls the trigger. The caller of a trigger is the user that executes the statement that causes the trigger to run. For example, if user **Mary** executes a DELETE statement that causes DML trigger **DML_trigMary** to run, the code inside **DML_trigMary** executes in the context of the user privileges for **Mary**. This default behavior can be exploited by users who want to introduce malicious code in the database or server instance. For example, the following DDL trigger is created by user **JohnDoe**:
 
@@ -118,3 +120,4 @@ You can take the following measures to prevent trigger code from executing under
 - [DML Triggers](../../relational-databases/triggers/dml-triggers.md)
 - [DDL Triggers](../../relational-databases/triggers/ddl-triggers.md)
 - [Logon Triggers](../../relational-databases/triggers/logon-triggers.md)
+

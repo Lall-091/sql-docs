@@ -7,6 +7,8 @@ ms.date: 09/26/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "OBJECTPROPERTY"
   - "OBJECTPROPERTY_TSQL"
@@ -18,7 +20,7 @@ helpviewer_keywords:
   - "objects [SQL Server], schema-scoped"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # OBJECTPROPERTY (Transact-SQL)
 

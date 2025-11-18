@@ -7,11 +7,13 @@ ms.date: "04/04/2017"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "137 (Database Engine error)"
 ---
 # MSSQLSERVER_137
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   
 ## Details  
   
@@ -69,3 +71,4 @@ EXECUTE ('SELECT ' + @mycol + ' FROM Production.Product;') ;
 [SET Statements &#40;Transact-SQL&#41;](~/t-sql/statements/set-statements-transact-sql.md)  
 [DECLARE @local_variable &#40;Transact-SQL&#41;](~/t-sql/language-elements/declare-local-variable-transact-sql.md)  
   
+

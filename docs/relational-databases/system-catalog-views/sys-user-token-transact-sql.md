@@ -8,7 +8,7 @@ ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "sys.user_token"
   - "user_token"
@@ -22,7 +22,7 @@ helpviewer_keywords:
   - "user_token catalog view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =fabric-sqldb"
 ---
 # sys.user_token (Transact-SQL)
 

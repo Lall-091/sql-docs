@@ -7,6 +7,8 @@ ms.date: "06/10/2016"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "WITH_XMLNAMESPACES_TSQL"
   - "WITH XMLNAMESPACES"
@@ -20,7 +22,7 @@ dev_langs:
   - "TSQL"
 ---
 # WITH XMLNAMESPACES
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Declares one or more XML namespaces.  
   
@@ -97,3 +99,4 @@ DEFAULT <xml_namespace_uri>
  [XQuery Language Reference &#40;SQL Server&#41;](../../xquery/xquery-language-reference-sql-server.md)  
   
   
+

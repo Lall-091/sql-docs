@@ -8,6 +8,8 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "BINARY BASE64 directive"
   - "ROOT directive"
@@ -17,7 +19,7 @@ helpviewer_keywords:
 ---
 # Basic syntax of the FOR XML clause
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 The FOR XML mode can be RAW, AUTO, EXPLICIT, or PATH. It determines the shape of the resulting XML.
 
@@ -56,10 +58,6 @@ XML
    [ , TYPE ]
    [ , ROOT [ ('RootName') ] ]
 ```
-
-### Syntax for Azure SQL Database
-
-For documentation of the SELECT...**FOR XML** clause that also applies to Azure SQL Database, see [FOR XML (SQL Server)](../../relational-databases/xml/for-xml-sql-server.md).
 
 ## Arguments
 
@@ -103,7 +101,11 @@ Specifies that the query returns the results as the **xml** type. For more infor
 
 Specifies that a single, top-level element is added to the resulting XML. You can optionally specify the root element name to generate. The default value is `<root>`.
 
-## See also
+## Remarks
+
+For documentation of the `SELECT... FOR XML` clause that also applies to Azure SQL Database or SQL database in Fabric, see [FOR XML (SQL Server)](../../relational-databases/xml/for-xml-sql-server.md).
+
+## Related content
 
 - [Use RAW Mode with FOR XML](../../relational-databases/xml/use-raw-mode-with-for-xml.md)
 - [Use AUTO Mode with FOR XML](../../relational-databases/xml/use-auto-mode-with-for-xml.md)

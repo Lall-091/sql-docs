@@ -10,18 +10,18 @@ ms.subservice: xevents
 ms.topic: quickstart
 ms.custom:
   - intro-quickstart
+  - ignite-2025
 f1_keywords:
   - "sql11.ssms.XeNewEventSession.General.f1"
   - "sql11.ssms.XeNewEventSession.Events.f1"
   - "sql11.ssms.XeNewEventSession.Targets.f1"
   - "sql11.ssms.XeNewEventSession.Advanced.f1"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # Quickstart: Extended Events
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
-
 
 Extended Events is a lightweight performance monitoring feature that enables users to collect data to monitor and troubleshoot problems. By using Extended Events, you can see details of the database engine internal operations that are relevant for performance monitoring and troubleshooting purposes. To learn more about Extended Events, see [Extended Events overview](extended-events.md).
 

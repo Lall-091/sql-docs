@@ -7,12 +7,14 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "Log File Auto Shrink event class"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Log File Auto Shrink Event Class
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   The **Log File Auto Shrink** event class indicates that the log file shrank automatically. This event is not triggered if the log file shrinks because of an explicit ALTER DATABASE statement.  
   
  Include the **Log File Auto Shrink** event class in traces that monitor the shrinking of the log file. When this event class is included in a trace the amount of overhead incurred will be low unless the file frequently shrinks.  
@@ -45,3 +47,4 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
  [sp_trace_setevent &#40;Transact-SQL&#41;](../../relational-databases/system-stored-procedures/sp-trace-setevent-transact-sql.md)  
   
   
+

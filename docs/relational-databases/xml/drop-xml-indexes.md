@@ -8,6 +8,8 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "removing indexes"
   - "dropping indexes"
@@ -15,7 +17,7 @@ helpviewer_keywords:
 ---
 # Drop XML indexes
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 The [DROP INDEX &#40;Transact-SQL&#41;](../../t-sql/statements/drop-index-transact-sql.md)[!INCLUDE[tsql](../../includes/tsql-md.md)] statement can be used to drop existing primary or secondary XML and non-XML indexes. However, no options of DROP INDEX apply to XML indexes. If you drop the primary XML index, any secondary indexes that are present are also deleted.
 
@@ -97,3 +99,4 @@ This query returns the column name on which the specified XML index is created.
 ## See also
 
 - [XML indexes &#40;SQL Server&#41;](xml-indexes-sql-server.md)
+

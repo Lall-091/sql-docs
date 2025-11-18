@@ -1,12 +1,15 @@
 ---
-title: "Backup compression (SQL Server)"
+title: "Backup Compression (SQL Server)"
 description: Learn about compression of SQL Server backups, including restrictions, performance trade-offs, Configuring backup compression, and the compression ratio.
 author: MashaMSFT
 ms.author: mathoma
-ms.date: 05/19/2025
+ms.reviewer: randolphwest
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: backup-restore
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "log shipping [SQL Server], backup compression"
   - "backup compression [SQL Server], about backup compression"
@@ -14,8 +17,6 @@ helpviewer_keywords:
   - "backups [SQL Server], compression"
   - "backing up [SQL Server], backup compression"
   - "backup compression [SQL Server]"
-ms.custom:
-  - build-2025
 ---
 # Backup compression (SQL Server)
 
@@ -48,9 +49,6 @@ Starting with [!INCLUDE[sssql25-md](../../includes/sssql25-md.md)], a new compre
 You can use the ZSTD algorithm for backup compression in one of the following ways:
 - By specifying the `WITH COMPRESSION (ALGORITHM = ZSTD)` option in the [BACKUP](../../t-sql/statements/backup-transact-sql.md#compression) Transact-SQL command for *a specific backup*. 
 - By setting the [backup compression algorithm server configuration option](../../database-engine/configure-windows/view-or-configure-the-backup-compression-algorithm-server-configuration-option.md#backup-compression-algorithms) to 3. This option sets the default backup compression algorithm to ZSTD *for all backups* that use the `WITH COMPRESSION` option.
-
-> [!NOTE]
-> The ZSTD algorithm is currently in preview and only available in [!INCLUDE[sssql25-md](../../includes/sssql25-md.md)]. 
  
 ##  <a name="PerfImpact"></a> Performance impact of compressing backups  
 

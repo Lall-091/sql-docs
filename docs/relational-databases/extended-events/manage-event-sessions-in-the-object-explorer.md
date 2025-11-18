@@ -7,11 +7,13 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: xevents
 ms.topic: tutorial
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+ms.custom:
+  - ignite-2025
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Manage Event Sessions in the Object Explorer
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Fabric SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   This topic discusses the actions you can take in **Object Explorer** that affect Extended Events:  
   

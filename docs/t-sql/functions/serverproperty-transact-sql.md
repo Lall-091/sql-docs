@@ -4,12 +4,12 @@ description: SERVERPROPERTY returns property information about the server instan
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest, amitkh-msft
-ms.date: 10/21/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - build-2024
+  - ignite-2025
 f1_keywords:
   - "SERVERPROPERTY_TSQL"
   - "SERVERPROPERTY"
@@ -23,7 +23,7 @@ helpviewer_keywords:
   - "server properties [SQL Server]"
 dev_langs:
   - TSQL
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # SERVERPROPERTY (Transact-SQL)
 
@@ -189,7 +189,7 @@ GO
 
 ## Related content
 
-- [Editions and supported features of SQL Server 2025 Preview](../../sql-server/editions-and-components-of-sql-server-2025.md)
+- [Editions and supported features of SQL Server 2025](../../sql-server/editions-and-components-of-sql-server-2025.md)
 - [Editions and supported features of SQL Server 2022](../../sql-server/editions-and-components-of-sql-server-2022.md)
 - [Editions and supported features of SQL Server 2019](../../sql-server/editions-and-components-of-sql-server-2019.md)
 - [Editions and supported features of SQL Server 2017](../../sql-server/editions-and-components-of-sql-server-2017.md)

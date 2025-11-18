@@ -8,6 +8,8 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "XSD schemas [SQL Server]"
   - "xml_schema_namespace function"
@@ -22,7 +24,7 @@ helpviewer_keywords:
 ---
 # XML schema collections (SQL Server)
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 As described in the [xml &#40;Transact-SQL&#41;](../../t-sql/xml/xml-transact-sql.md) article, SQL Server provides native storage of XML data through the **xml** data type. You can optionally associate XSD schemas with a variable or a column of **xml** type through an XML schema collection. The XML schema collection stores the imported XML schemas and is then used to do the following:
 
@@ -216,3 +218,4 @@ You can query XML schemas that you have loaded into XML schema collections in th
 - [View a Stored XML Schema Collection](../../relational-databases/xml/view-a-stored-xml-schema-collection.md)
 - [Preprocess a Schema to Merge Included Schemas](../../relational-databases/xml/preprocess-a-schema-to-merge-included-schemas.md)
 - [Requirements and Limitations for XML Schema Collections on the Server](../../relational-databases/xml/requirements-and-limitations-for-xml-schema-collections-on-the-server.md)
+

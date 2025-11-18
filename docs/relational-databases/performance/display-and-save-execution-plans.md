@@ -9,7 +9,7 @@ ms.service: sql
 ms.subservice: performance
 ms.topic: conceptual
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "Showplan results"
   - "execution plans [SQL Server]"
@@ -17,7 +17,7 @@ helpviewer_keywords:
   - "execution plans [SQL Server], how-to topics"
   - "SQL Server Management Studio [SQL Server], execution plans"
   - "tuning queries [SQL Server]"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Display and save execution plans
 

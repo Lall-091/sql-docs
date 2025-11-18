@@ -8,12 +8,14 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "xsd:simpleType declarations"
 ---
 # Values for &lt;xsd:simpleType&gt; declarations
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 The following table outlines the restrictions that are applied, based on all recognized XSD simple type enumerations.
 
@@ -38,3 +40,4 @@ Also, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] doesn't support 
 ## See also
 
 - [Requirements and Limitations for XML Schema Collections on the Server](../../relational-databases/xml/requirements-and-limitations-for-xml-schema-collections-on-the-server.md)
+

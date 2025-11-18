@@ -8,6 +8,8 @@ ms.date: 09/26/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "DECRYPTBYKEY_TSQL"
   - "DECRYPTBYKEY"
@@ -18,11 +20,11 @@ helpviewer_keywords:
   - "DECRYPTBYKEY function"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =fabric-sqldb"
 ---
 # DECRYPTBYKEY (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa](../../includes/applies-to-version/sql-asdb-asdbmi-asa.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricsqldb.md)]
 
 This function uses a symmetric key to decrypt data.
 
@@ -194,3 +196,4 @@ GO
 - [DROP SYMMETRIC KEY (Transact-SQL)](../statements/drop-symmetric-key-transact-sql.md)
 - [Encryption hierarchy](../../relational-databases/security/encryption/encryption-hierarchy.md)
 - [Choose an encryption algorithm](../../relational-databases/security/encryption/choose-an-encryption-algorithm.md)
+

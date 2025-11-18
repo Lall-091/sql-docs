@@ -8,10 +8,12 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 ---
 # Selective XML indexes (SXI)
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Selective XML indexes are another type of XML index that is available to you in addition to ordinary XML indexes. The goals of the selective XML index feature are the following:
 
@@ -182,3 +184,4 @@ When you CREATE or ALTER a selective XML index, it is rebuilt in a single-thread
 - [Specify paths and optimization hints for selective XML indexes](../../relational-databases/xml/specify-paths-and-optimization-hints-for-selective-xml-indexes.md).
 - [Create, alter, and drop selective XML indexes](../../relational-databases/xml/create-alter-and-drop-selective-xml-indexes.md)
 - [Create, alter, and drop secondary selective XML indexes](../../relational-databases/xml/create-alter-and-drop-secondary-selective-xml-indexes.md)
+

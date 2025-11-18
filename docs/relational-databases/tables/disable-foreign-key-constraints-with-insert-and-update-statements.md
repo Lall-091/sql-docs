@@ -7,13 +7,15 @@ ms.date: "04/13/2022"
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "constraints [SQL Server], foreign keys"
   - "foreign keys [SQL Server], disabling constraints"
   - "disabling constraints"
   - "UPDATE statement [SQL Server], foreign key constraints"
   - "INSERT statement [SQL Server], foreign key constraints"
-monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||=fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Disable foreign key constraints with INSERT and UPDATE statements
 [!INCLUDE [sqlserver2016-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-pdw-fabricsqldb.md)]

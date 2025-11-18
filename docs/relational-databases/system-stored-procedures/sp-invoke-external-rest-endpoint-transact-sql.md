@@ -8,8 +8,7 @@ ms.date: 07/31/2025
 ms.service: sql
 ms.topic: "reference"
 ms.custom:
-  - ignite-2024
-  - build-2025
+  - ignite-2025
 f1_keywords:
   - "sp_invoke_external_rest_endpoint_TSQL"
   - "sys.sp_invoke_external_rest_endpoint"
@@ -19,7 +18,7 @@ helpviewer_keywords:
   - "sp_invoke_external_rest_endpoint"
 dev_langs:
   - "TSQL"
-monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
+monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sp_invoke_external_rest_endpoint (Transact-SQL)
 

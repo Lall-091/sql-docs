@@ -4,10 +4,12 @@ description: This article discusses compute capacity limits for SQL Server 2019 
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest, derekw
-ms.date: 02/10/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: concept-article
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "simultaneous multithreading [SQL Server]"
   - "SMT [SQL Server]"
@@ -159,10 +161,12 @@ The following table specifies the compute capacity limits for a single instance 
 | --- | --- | --- |
 | Enterprise edition: Core-based licensing <sup>1</sup> | Operating system maximum | Operating system maximum |
 | Developer | Operating system maximum | Operating system maximum |
-| Standard | Limited to lesser of 4 sockets or 24 cores | Limited to lesser of 4 sockets or 24 cores |
+| Standard <sup>2</sup> | Limited to lesser of 4 sockets or 32 cores | Limited to lesser of 4 sockets or 32 cores |
 | Express | Limited to lesser of 1 socket or 4 cores | Limited to lesser of 1 socket or 4 cores |
 
 <sup>1</sup> Enterprise edition with Server + Client Access License (CAL) licensing is limited to 20 cores per [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] instance. (This licensing isn't available for new agreements.) There are no limits under the Core-based Server Licensing model.
+
+<sup>2</sup> In [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] and earlier versions, the limit is the lesser of 4 sockets or 24 cores.
 
 In a virtualized environment, the compute capacity limit is based on the number of logical processors, not cores. The reason is that the processor architecture isn't visible to the guest applications.
 

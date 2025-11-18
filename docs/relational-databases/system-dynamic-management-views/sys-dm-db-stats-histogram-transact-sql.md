@@ -7,6 +7,8 @@ ms.date: 09/07/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_db_stats_histogram"
   - "sys.dm_db_stats_histogram_TSQL"
@@ -16,12 +18,12 @@ helpviewer_keywords:
   - "sys.dm_db_stats_histogram dynamic management function"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # sys.dm_db_stats_histogram (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
 
 Returns the statistics histogram for the specified database object (table or indexed view) in the current [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] database. Similar to `DBCC SHOW_STATISTICS WITH HISTOGRAM`.
 
@@ -166,3 +168,4 @@ WHERE ss.[object_id] = OBJECT_ID('Region')
 - [DBCC SHOW_STATISTICS (Transact-SQL)](../../t-sql/database-console-commands/dbcc-show-statistics-transact-sql.md)
 - [Object Related Dynamic Management Views and Functions (Transact-SQL)](object-related-dynamic-management-views-and-functions-transact-sql.md)
 - [sys.dm_db_stats_properties (Transact-SQL)](sys-dm-db-stats-properties-transact-sql.md)
+

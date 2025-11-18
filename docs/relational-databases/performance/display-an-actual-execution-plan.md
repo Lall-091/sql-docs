@@ -9,13 +9,13 @@ ms.service: sql
 ms.subservice: performance
 ms.topic: how-to
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "displaying execution plans"
   - "actual execution plans"
   - "viewing execution plans"
   - "execution plans [SQL Server], displaying"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Display an actual execution plan
 

@@ -7,11 +7,13 @@ ms.date: "04/04/2017"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "10770 (Database Engine error)"
 ---
 # MSSQLSERVER_10770
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   
 ## Details  
   
@@ -29,3 +31,4 @@ For a list of unsupported features and suggested resolutions, see [Transact-SQL 
   
 For more information, see [In-Memory OLTP &#40;In-Memory Optimization&#41;](~/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization.md).  
   
+

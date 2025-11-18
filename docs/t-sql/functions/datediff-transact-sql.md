@@ -8,6 +8,8 @@ ms.date: 10/26/2024
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "DATEDIFF_TSQL"
   - "DATEDIFF"
@@ -28,11 +30,11 @@ helpviewer_keywords:
   - "calculating dates times [SQL Server]"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # DATEDIFF (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 This function returns the count (as a signed integer value) of the specified datepart boundaries crossed between the specified *startdate* and *enddate*.
 
@@ -431,3 +433,4 @@ FROM dbo.DimEmployee;
 
 - [DATEDIFF_BIG (Transact-SQL)](datediff-big-transact-sql.md)
 - [CAST and CONVERT (Transact-SQL)](cast-and-convert-transact-sql.md)
+

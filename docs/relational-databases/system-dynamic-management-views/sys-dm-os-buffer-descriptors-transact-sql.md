@@ -7,6 +7,8 @@ ms.date: "06/19/2023"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_os_buffer_descriptors_TSQL"
   - "dm_os_buffer_descriptors_TSQL"
@@ -16,10 +18,10 @@ helpviewer_keywords:
   - "sys.dm_os_buffer_descriptors dynamic management view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||>=aps-pdw-2016||=azure-sqldw-latest"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || >=aps-pdw-2016 || =azure-sqldw-latest || =fabric-sqldb"
 ---
 # sys.dm_os_buffer_descriptors (Transact-SQL)
-[!INCLUDE [SQL Server SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server SQL Database-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
   Returns information about all the data pages that are currently in the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] buffer pool. The output of this view can be used to determine the distribution of database pages in the buffer pool according to database, object, or type. In [!INCLUDE[ssnoversion](../../includes/ssnoversion-md.md)], this dynamic management view also returns information about the data pages in the buffer pool extension file. For more information, see [Buffer Pool Extension](../../database-engine/configure-windows/buffer-pool-extension.md).  
   
@@ -116,3 +118,4 @@ ORDER BY cached_pages_count DESC;
  [Resource Database](../../relational-databases/databases/resource-database.md)   
  [sys.dm_os_buffer_pool_extension_configuration &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-os-buffer-pool-extension-configuration-transact-sql.md)  
   
+

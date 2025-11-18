@@ -7,12 +7,14 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "User-Configurable event class"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # User-Configurable Event Class
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   Use the User-Configurable event category to monitor user-defined events. Create user-defined event classes to monitor events that cannot be monitored by the system-supplied event classes in other event categories. For example, a user-defined event can be created to monitor the progress of the application you are testing. As the application runs, it can generate events at predefined points, allowing you to determine the current execution point in your application.  
   
 ## User-Configurable Event Class Data Columns  
@@ -46,3 +48,4 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
  [sp_trace_generateevent &#40;Transact-SQL&#41;](../../relational-databases/system-stored-procedures/sp-trace-generateevent-transact-sql.md)  
   
   
+

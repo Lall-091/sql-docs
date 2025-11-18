@@ -8,10 +8,13 @@ ms.date: 10/02/2023
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 ---
 # Retrieve data from a FILESTREAM column using ISequentialStream (OLE DB)
 
-[!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW](../../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW FabricSQLDB](../../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
+
 
 [!INCLUDE [driver_oledb_download](../../../../includes/driver_oledb_download.md)]
 
@@ -620,3 +623,4 @@ MainCleanup:
    printf_s( "Test complete.\n" );
 }
 ```
+

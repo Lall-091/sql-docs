@@ -37,7 +37,7 @@ sections:
 
       - question: What service tier am I eligible for?
         answer: |
-          Any customer is eligible for any service tier. Both Standard and Enterprise editions licenses covered with Software Assurance can be allocated to the SQL Server Database Engine by using the [Azure Hybrid Benefit (AHB)](../azure-hybrid-benefit.md) for the General Purpose service tier (which includes the [Next-gen General Purpose service tier upgrade](service-tiers-next-gen-general-purpose-use.md), currently in preview), or for the Business Critical service tier. The Azure Hybrid Benefit uses the following exchange ratios: 1 Standard edition = 1 General Purpose, 1 Enterprise edition = 1 Business Critical, 1 Enterprise edition = 4 General Purpose, and 4 General Purpose = 1 Enterprise Edition. For more information, see [Specific rights of the Azure Hybrid Benefit](../azure-hybrid-benefit.md?tabs=azure-powershell#what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server).
+          Any customer is eligible for any service tier. Both Standard and Enterprise editions licenses covered with Software Assurance can be allocated to the SQL Server Database Engine by using the [Azure Hybrid Benefit (AHB)](../azure-hybrid-benefit.md) for the General Purpose service tier (which includes the [Next-gen General Purpose service tier upgrade](service-tiers-next-gen-general-purpose-use.md)), or for the Business Critical service tier. The Azure Hybrid Benefit uses the following exchange ratios: 1 Standard edition = 1 General Purpose, 1 Enterprise edition = 1 Business Critical, 1 Enterprise edition = 4 General Purpose, and 4 General Purpose = 1 Enterprise Edition. For more information, see [Specific rights of the Azure Hybrid Benefit](../azure-hybrid-benefit.md?tabs=azure-powershell#what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server).
 
       - question: What subscription types are supported for SQL Managed Instance?
         answer: |
@@ -238,7 +238,7 @@ sections:
           
           This occurrence is rare, and doesn't impact the average latency of I/O requests to remote storage. Depending on the workload or thread that initiates the I/O request, customers might observe SQL command timeouts and increased latency in specific scenarios, while others are unlikely to experience any impact at all. For example, not all long-running I/O requests block operations, such as, for instance, read-ahead page access is often unaffected.
           
-          Using the [Next-gen General Purpose service tier upgrade](service-tiers-next-gen-general-purpose-use.md) (currently in public preview) can help mitigate this issue, as it improves performance and reliability at no extra cost. Customers are encouraged to explore it for enhanced service quality.
+          Using the [Next-gen General Purpose service tier upgrade](service-tiers-next-gen-general-purpose-use.md) can help mitigate this issue, as it improves performance and reliability at no extra cost. Customers are encouraged to explore it for enhanced service quality.
           
           If this error occurs persistently, consider reviewing workload patterns, storage performance, and networking configurations. Also, consider using the Business Critical service tier designed for applications with low I/O latency requirements.
 

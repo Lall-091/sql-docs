@@ -8,6 +8,8 @@ ms.date: 06/11/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "online database state [SQL Server]"
   - "database options [SQL Server]"
@@ -28,8 +30,6 @@ helpviewer_keywords:
 dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =azuresqldb-mi-current || =fabric"
-ms.custom:
-  - build-2025
 ---
 # ALTER DATABASE SET options (Transact-SQL)
 
@@ -60,7 +60,7 @@ In the following row, select whichever product name you're interested in. Doing 
         [Azure Synapse<br />Analytics](alter-database-transact-sql-set-options.md?view=azure-sqldw-latest&preserve-view=true)
     :::column-end:::
     :::column:::
-        [Microsoft Fabric](alter-database-transact-sql-set-options.md?view=fabric&preserve-view=true)
+        [Microsoft Fabric Data Warehouse](alter-database-transact-sql-set-options.md?view=fabric&preserve-view=true)
     :::column-end:::
 :::row-end:::
 
@@ -1783,7 +1783,7 @@ SET QUERY_STORE = ON
         [Azure Synapse<br />Analytics](alter-database-transact-sql-set-options.md?view=azure-sqldw-latest&preserve-view=true)
     :::column-end:::
     :::column:::
-        [Microsoft Fabric](alter-database-transact-sql-set-options.md?view=fabric&preserve-view=true)
+        [Microsoft Fabric Data Warehouse](alter-database-transact-sql-set-options.md?view=fabric&preserve-view=true)
     :::column-end:::    
 :::row-end:::
 
@@ -2859,7 +2859,7 @@ SET QUERY_STORE = ON
         [Azure Synapse<br />Analytics](alter-database-transact-sql-set-options.md?view=azure-sqldw-latest&preserve-view=true)
     :::column-end:::
     :::column:::
-        [Microsoft Fabric](alter-database-transact-sql-set-options.md?view=fabric&preserve-view=true)
+        [Microsoft Fabric Data Warehouse](alter-database-transact-sql-set-options.md?view=fabric&preserve-view=true)
     :::column-end:::    
 :::row-end:::
 
@@ -3742,7 +3742,7 @@ SET QUERY_STORE = ON
         ***\* Azure Synapse<br />Analytics \**** &nbsp;
     :::column-end:::
     :::column:::
-        [Microsoft Fabric](alter-database-transact-sql-set-options.md?view=fabric&preserve-view=true)
+        [Microsoft Fabric Data Warehouse](alter-database-transact-sql-set-options.md?view=fabric&preserve-view=true)
     :::column-end:::
 :::row-end:::
 
@@ -3998,13 +3998,13 @@ SET READ_COMMITTED_SNAPSHOT ON;
         [Azure Synapse<br />Analytics](alter-database-transact-sql-set-options.md?view=azure-sqldw-latest&preserve-view=true)
     :::column-end:::
     :::column:::
-        ***Microsoft Fabric***
+        ***Microsoft Fabric Data Warehouse***
     :::column-end:::
 :::row-end:::
 
 &nbsp;
 
-## Microsoft Fabric
+## Microsoft Fabric Data Warehouse
 
 Use `ALTER DATABASE ... SET` to manage a [!INCLUDE [fabric](../../includes/fabric.md)] [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)].
 

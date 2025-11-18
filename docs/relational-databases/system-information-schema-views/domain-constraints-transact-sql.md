@@ -7,6 +7,8 @@ ms.date: "03/15/2017"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "DOMAIN_CONSTRAINTS"
   - "DOMAIN_CONSTRAINTS_TSQL"
@@ -15,10 +17,10 @@ helpviewer_keywords:
   - "DOMAIN_CONSTRAINTS view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # DOMAIN_CONSTRAINTS (Transact-SQL)
-[!INCLUDE [SQL Server SQL Database](../../includes/applies-to-version/sql-asdb.md)]
+[!INCLUDE [SQL Server SQL Database-fabricsqldb](../../includes/applies-to-version/sql-asdb-fabricsqldb.md)]
 
   Returns one row for each alias data type in the current database that has a rule bound to it and that can be accessed by current user.  
   
@@ -41,3 +43,4 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
  [sys.objects &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-objects-transact-sql.md)   
  [sys.types &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-types-transact-sql.md)  
   
+

@@ -10,6 +10,7 @@ ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
 ms.topic: overview
 ms.custom:
+  - ignite-2025
 ---
 
 # Duration of management operations in Azure SQL Managed Instance 
@@ -126,7 +127,7 @@ The following table details the duration of management operations in the **Gener
 | Moving an instance to an instance pool | None | 95% of operations finish in 10 minutes |
 | Moving an instance out of an instance pool | [Creating or resizing VM group](management-operations-overview.md#vm-group-operations) | 95% of operations finish in 60 minutes |
 | <center> ***Delete operations*** </center> |
-|Deleting non-last instance<sup>1</sup> |Log tail backup for all databases | 90% of operations finish in 1 minute.  |
+|Deleting non-last instance<sup>1</sup> |Log tail backup for all databases | 95% of operations finish in 1 minute.  |
 |Deleting last instance<sup>2</sup> |Log tail backup for all databases <br /> [Deleting virtual cluster](management-operations-overview.md#vm-group-operations) | 95% of operations finish in 90 minutes |
 
 <sup>1</sup> If there are multiple VM groups in the cluster, deleting the last instance in the group immediately triggers deleting the VM group **asynchronously**.   
@@ -135,7 +136,7 @@ The following table details the duration of management operations in the **Gener
 
 #### [Next-gen General Purpose service tier](#tab/ngp)
 
-The following table details the duration of management operations in the **Next-gen General Purpose** service tier, including the long-running segments and estimated duration for each operation:
+The following table details the duration of management operations in the [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) service tier, including the long-running segments and estimated duration for each operation:
 
 | Management operation | Long-running segments | Estimated duration |
 |--|--|--|--|
@@ -143,19 +144,20 @@ The following table details the duration of management operations in the **Next-
 | Creating a new instance| [Creating or resizing VM group](management-operations-overview.md#vm-group-operations) | 95% of operations finish in 30 minutes |
 | <center> ***Update operations*** </center> |
 | Changing basic instance properties such as the license type or Microsoft Entra |  None | Up to 1 minute |
-| Scaling storage | None | 99% complete in 5 minutes|
+| Scaling storage<sup>1</sup> | None | 99% complete in 5 minutes|
 | Scaling compute (vCores) | [Creating or resizing VM group](management-operations-overview.md#vm-group-operations) | 95% of operations finish in 60 minutes  |
-| Scaling [memory (RAM)](resource-limits.md#flexible-memory-preview) |  [Creating or resizing VM group](management-operations-overview.md#vm-group-operations) | 95% of operations finish in 60 minutes | 
+| Scaling [memory (RAM)](resource-limits.md#flexible-memory) |  [Creating or resizing VM group](management-operations-overview.md#vm-group-operations) | 95% of operations finish in 60 minutes | 
 | Scaling IOPS | None | 99% of operations finish in 5 minutes |
 | Changing to **Business Critical** service tier | [Resizing the VM group](management-operations-overview.md#vm-group-operations) <br /> + [Database seeding](management-operations-overview.md#seeding) | 95% of operations finish in 60 minutes + [time to seed databases](#seeding-duration)  | 
 | Changing to **General Purpose** service tier | [Creating or resizing VM group](management-operations-overview.md#vm-group-operations) <br /> + [Database seeding](management-operations-overview.md#seeding) | 95% of operations finish in 60 minutes + [time to seed databases](#seeding-duration) |
 | Changing hardware or maintenance window | [Creating or resizing VM group](management-operations-overview.md#vm-group-operations) | 95% of operations finish in 60 minutes  |
 | <center> ***Delete operations*** </center> |
-|Deleting non-last instance<sup>1</sup> |Log tail backup for all databases | 90% of operations finish in 1 minute.  |
-|Deleting last instance<sup>2</sup> |Log tail backup for all databases <br /> [Deleting virtual cluster](management-operations-overview.md#vm-group-operations) | 95% of operations finish in 90 minutes |
+|Deleting non-last instance<sup>2</sup> |Log tail backup for all databases | 95% of operations finish in 1 minute.  |
+|Deleting last instance<sup>3</sup> |Log tail backup for all databases <br /> [Deleting virtual cluster](management-operations-overview.md#vm-group-operations) | 95% of operations finish in 90 minutes |
 
-<sup>1</sup> If there are multiple VM groups in the cluster, deleting the last instance in the group immediately triggers deleting the VM group **asynchronously**.   
-<sup>2</sup> Deleting the last instance in the subnet immediately triggers deleting the virtual cluster **synchronously**.
+<sup>1</sup> When scaling storage, if the delta between the target value and the initially configured value is greater than 5.5TB, databases are seeded.
+<sup>2</sup> If there are multiple VM groups in the cluster, deleting the last instance in the group immediately triggers deleting the VM group **asynchronously**.   
+<sup>3</sup> Deleting the last instance in the subnet immediately triggers deleting the virtual cluster **synchronously**.
 
 
 ### [Business Critical service tier](#tab/bc)
@@ -176,7 +178,7 @@ The following table details the duration of management operations in the **Busin
 | Enabling zone redundancy | [Creating new VM group](management-operations-overview.md#vm-group-operations) <br /> + [Database seeding](management-operations-overview.md#seeding) | 95% of operations finish in 4 hours + [time to seed databases](#seeding-duration)   |
 | Disabling zone redundancy | [Creating new VM group](management-operations-overview.md#vm-group-operations) <br /> + [Database seeding](management-operations-overview.md#seeding) | 95% of operations finish in 30 + [time to seed databases](#seeding-duration)    |
 | <center> ***Delete operations*** </center> |
-|Deleting non-last instance<sup>1</sup> |Log tail backup for all databases | 90% of operations finish in 1 minute.  |
+|Deleting non-last instance<sup>1</sup> |Log tail backup for all databases | 95% of operations finish in 1 minute.  |
 |Deleting last instance<sup>2</sup> |Log tail backup for all databases <br /> [Deleting virtual cluster](management-operations-overview.md#vm-group-operations) | 95% of operations finish in 90 minutes |
 
 <sup>1</sup> If there are multiple VM groups in the cluster, deleting the last instance in the group immediately triggers deleting the VM group *asynchronously*.   
@@ -185,6 +187,9 @@ The following table details the duration of management operations in the **Busin
 ---
 
 Your instance is available for the duration of all management operations, except during the final [failover](management-operations-overview.md#failover) step, when traffic is redirected to the new SQL Database Engine process. In the **Business Critical** service tier, your instance is unavailable for up to 20 seconds, while in the **General Purpose** and **Next-gen General Purpose** service tiers, your instance can be unavailable for up to 2 minutes.
+
+> [!IMPORTANT]
+> For update operations that don't complete in place but that result in reattaching the database (such as scaling vCores, scaling memory, changing hardware or the maintenance window), failover duration of databases on the [Next-gen General Purpose service tier](service-tiers-next-gen-general-purpose-use.md) scales with the number of databases, up to 10 minutes. While the instance becomes available after 2 minutes, some databases might be available after a delay. Failover duration is measured from the moment when the first database goes offline, until the moment when the last database comes online. The Next-gen General Purpose service tier increases the maximum number of databases per instance from 100 to 500.
 
 ## Seeding duration 
 

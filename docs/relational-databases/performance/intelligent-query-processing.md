@@ -4,14 +4,13 @@ description: Intelligent query processing features to improve query performance 
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: derekw, randolphwest
-ms.date: 10/21/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: performance
 ms.topic: conceptual
 ms.custom:
-  - ignite-2024
-  - build-2025
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+  - ignite-2025
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # Intelligent query processing in SQL databases
@@ -20,7 +19,7 @@ monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-20
 
 The intelligent query processing (IQP) feature family includes features with broad impact that improve the performance of existing workloads with minimal implementation effort to adopt. The following graphic details the family of IQP features and when they were first introduced for SQL Server. All IQP features are available in [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]. Some features depend on the database's compatibility level.
 
-:::image type="content" source="media/iqp-feature-family.svg" alt-text="Diagram of the Intelligent Query Processing family of features and when they were first introduced to SQL Server.":::
+:::image type="content" source="media/intelligent-query-processing/intelligent-query-processing-features.png" alt-text="Diagram representing the features in the intelligent query processing family and when they were introduced in SQL Server." lightbox="media/intelligent-query-processing/intelligent-query-processing-features.png":::
 
 Watch this video for an overview of intelligent query processing:
 
@@ -41,7 +40,7 @@ The following table details all intelligent query processing features, along wit
 
 <a id="sql2025"></a>
 
-## IQP features for Azure SQL Database and SQL Server 2025 Preview
+## IQP features for Azure SQL Database and SQL Server 2025
 
 | IQP Feature | Supported in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] | Supported in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] | Description |
 | --- | --- | --- | --- |

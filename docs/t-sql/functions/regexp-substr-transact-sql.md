@@ -4,36 +4,33 @@ description: REGEXP_SUBSTR returns one occurrence of a substring of a string tha
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: abhtiwar, wiassaf, randolphwest
-ms.date: 05/19/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
-dev_langs:
-  - "TSQL"
-monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
 ms.custom:
-  - build-2025
+  - ignite-2025
+dev_langs:
+  - TSQL
+monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
-# REGEXP_SUBSTR (Transact-SQL) preview
+# REGEXP_SUBSTR (Transact-SQL)
 
-[!INCLUDE [sqlserver2025-asdb-asmi-fabric](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
-
-[!INCLUDE [preview](../../includes/preview.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
 Returns one occurrence of a substring of a string that matches the regular expression pattern. If no match is found, it returns `NULL`.
 
 ```syntaxsql
 REGEXP_SUBSTR
-     (
-      string_expression,
-      pattern_expression [, start [, occurrence [, flags [, group ] ] ] ]
-     )
+(
+    string_expression,
+    pattern_expression [ , start [ , occurrence [ , flags [ , group ] ] ] ]
+)
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Regular expressions are available in Azure SQL Managed Instance with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).
-
 
 ## Arguments
 
@@ -61,7 +58,9 @@ An expression (positive integer) that specifies which occurrence of the pattern 
 
 #### *group*
 
-Specifies which capture group (*subexpression*) of a *pattern_expression* determines the position within *string_expression* to return. The capture group (*subexpression*) is a fragment of pattern enclosed in parentheses and can be nested. The capture groups are numbered in the order in which their left parentheses appear. The data type of group will be integer and the value must be greater than or equal to 0 and must not be greater than the number of capture groups (subexpressions) in pattern_expression. The default group value is 0, which indicates that the position is based on the string that matches the entire pattern.
+Specifies which capture group (*subexpression*) of a *pattern_expression* determines the position within *string_expression* to return. The capture group (*subexpression*) is a fragment of pattern enclosed in parentheses and can be nested.
+
+The capture groups are numbered in the order in which their left parentheses appear. The data type of group is **int** and the value must be greater than or equal to `0`, and must not be greater than the number of capture groups (subexpressions) in *pattern_expression*. The default group value is `0`, which indicates that the position is based on the string that matches the entire pattern.
 
 ## Return value
 
@@ -92,5 +91,5 @@ FROM PAYMENTS;
 
 ## Related content
 
-- [Regular expressions preview](../../relational-databases/regular-expressions/overview.md)
+- [Regular expressions](../../relational-databases/regular-expressions/overview.md)
 - [Regular expressions functions (Transact-SQL)](regular-expressions-functions-transact-sql.md)

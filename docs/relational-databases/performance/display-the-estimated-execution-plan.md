@@ -8,7 +8,7 @@ ms.service: sql
 ms.subservice: performance
 ms.topic: how-to
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "zoom [SQL Server]"
   - "estimated execution plan [SQL Server]"
@@ -18,7 +18,7 @@ helpviewer_keywords:
   - "customizing execution plan display [SQL Server]"
   - "modifying execution plan display"
   - "custom zoom [SQL Server]"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azure-sqldw-latest || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azure-sqldw-latest || =fabric-sqldb"
 ---
 # Display the Estimated Execution Plan
 

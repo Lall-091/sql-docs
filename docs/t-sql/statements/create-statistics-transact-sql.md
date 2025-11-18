@@ -8,6 +8,8 @@ ms.date: 09/26/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "STATISTICS"
   - "STATISTICS_TSQL"
@@ -23,12 +25,12 @@ helpviewer_keywords:
   - "NORECOMPUTE clause"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 
 # CREATE STATISTICS (Transact-SQL)
 
-[!INCLUDE [sqlserver2022-asdb-asmi-asa-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricse-fabricdw.md)]
+[!INCLUDE [sqlserver2022-asdb-asmi-asa-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb.md)]
 
 Creates query optimization statistics on one or more columns of a table, an indexed view, or an external table. For most queries, the query optimizer already generates the necessary statistics for a high-quality query plan; in a few cases, you need to create extra statistics with `CREATE STATISTICS` or modify the query design to improve query performance.
 
@@ -417,3 +419,4 @@ FROM sys.stats;
 - [DROP STATISTICS (Transact-SQL)](drop-statistics-transact-sql.md)
 - [sys.stats (Transact-SQL)](../../relational-databases/system-catalog-views/sys-stats-transact-sql.md)
 - [sys.stats_columns (Transact-SQL)](../../relational-databases/system-catalog-views/sys-stats-columns-transact-sql.md)
+

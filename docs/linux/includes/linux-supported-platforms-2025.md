@@ -1,20 +1,19 @@
 ---
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/02/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: include
 ms.custom:
   - linux-related-content
-  - build-2025
+  - ignite-2025
 ---
-You should run production workloads on supported platforms like [Red Hat Enterprise Linux](https://www.redhat.com/technologies/linux-platforms/enterprise-linux/sql-server), [SUSE Linux Enterprise Server](https://www.suse.com/c/microsoft-sql-server-on-suse-linux-enterprise-server-new-suse-best-practices), and [Ubuntu Pro](https://ubuntu.com/blog/microsoft-sql-server-on-ubuntu), as they receive regular OS security updates, and have support coverage options that you need for enterprise database deployments.
+You should run production workloads on supported platforms like [Red Hat Enterprise Linux](https://www.redhat.com/technologies/linux-platforms/enterprise-linux/sql-server) and [Ubuntu Pro](https://ubuntu.com/blog/microsoft-sql-server-on-ubuntu), as they receive regular OS security updates, and have support coverage options that you need for enterprise database deployments.
 
 | Platform | File system | Installation guide | Get |
 | --- | --- | --- | --- |
 | Red Hat Enterprise Linux 9.x Server | **XFS** or **ext4** | [Installation guide](../quickstart-install-connect-red-hat.md) | [Get RHEL 9](https://access.redhat.com/products/red-hat-enterprise-linux/evaluation) |
-| SUSE Linux Enterprise Server v15 (SP5 and later versions) | **XFS** or **ext4** | [Installation guide](../quickstart-install-connect-suse.md) | [Get SLES v15](https://www.suse.com/products/server) |
 | Ubuntu 22.04 | **XFS** or **ext4** | [Installation guide](../quickstart-install-connect-ubuntu.md) | [Get Ubuntu 22.04](https://releases.ubuntu.com/22.04/) |
 | Docker Engine 1.8+ on Linux <sup>1</sup> | N/A | [Installation guide](../quickstart-install-connect-docker.md) | [Get Docker](https://www.docker.com/get-started) |
 

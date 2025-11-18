@@ -8,6 +8,8 @@ ms.date: 10/02/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_exec_requests_TSQL"
   - "sys.dm_exec_requests"
@@ -17,12 +19,12 @@ helpviewer_keywords:
   - "sys.dm_exec_requests dynamic management view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azure-sqldw-latest || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azure-sqldw-latest || =fabric || =fabric-sqldb"
 ---
 
 # sys.dm_exec_requests (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 Returns information about each request that is executing in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. For more information about requests, see the [Thread and task architecture guide](../thread-and-task-architecture-guide.md).
 
@@ -233,3 +235,4 @@ GO
 - [Thread and task architecture guide](../thread-and-task-architecture-guide.md)
 - [Transaction locking and row versioning guide](../sql-server-transaction-locking-and-row-versioning-guide.md)
 - [Understand and resolve SQL Server blocking problems](/troubleshoot/sql/performance/understand-resolve-blocking)
+

@@ -8,6 +8,8 @@ ms.date: 09/26/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SHRINKFILE"
   - "DBCC_SHRINKFILE_TSQL"
@@ -27,7 +29,7 @@ helpviewer_keywords:
   - "DBCC SHRINKFILE statement"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azure-sqldw-latest||=azuresqldb-mi-current||=fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # DBCC SHRINKFILE (Transact-SQL)
 

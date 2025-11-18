@@ -8,13 +8,13 @@ ms.service: sql
 ms.subservice: stored-procedures
 ms.topic: conceptual
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "sp_recompile"
   - "WITH RECOMPILE clause"
   - "recompiling stored procedures"
   - "stored procedures [SQL Server], recompiling"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Recompile a Stored Procedure
 [!INCLUDE [SQL Server Azure SQL Database PDW-fabric](../../includes/applies-to-version/sql-asdb-asdbmi-pdw-fabricsqldb.md)]

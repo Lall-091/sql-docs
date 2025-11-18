@@ -7,6 +7,8 @@ ms.date: "03/03/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "DECRYPTBYPASSPHRASE"
   - "DECRYPTBYPASSPHRASE_TSQL"
@@ -18,7 +20,7 @@ dev_langs:
   - "TSQL"
 ---
 # DECRYPTBYPASSPHRASE (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This function decrypts data originally encrypted with a passphrase.  
   
@@ -93,3 +95,4 @@ GO
  [ENCRYPTBYPASSPHRASE &#40;Transact-SQL&#41;](../../t-sql/functions/encryptbypassphrase-transact-sql.md)  
   
   
+

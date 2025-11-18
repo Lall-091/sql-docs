@@ -8,7 +8,7 @@ ms.service: sql
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "exporting data"
   - "bulk importing [SQL Server], about bulk importing"
@@ -23,7 +23,7 @@ helpviewer_keywords:
   - "bulk exporting [SQL Server], about bulk exporting"
   - "bulk importing [SQL Server]"
   - "importing data"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Bulk Import and Export of Data (SQL Server)
 

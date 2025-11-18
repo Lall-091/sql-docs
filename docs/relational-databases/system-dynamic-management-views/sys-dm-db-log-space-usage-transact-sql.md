@@ -7,6 +7,8 @@ ms.date: 09/07/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_db_log_space_usage"
   - "sys.dm_db_log_space_usage_TSQL"
@@ -16,12 +18,12 @@ helpviewer_keywords:
   - "sys.dm_db_log_space_usage dynamic management view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # sys.dm_db_log_space_usage (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Returns space usage information for the transaction log.
 
@@ -67,3 +69,4 @@ FROM sys.dm_db_log_space_usage;
 - [sys.dm_db_session_space_usage (Transact-SQL)](sys-dm-db-session-space-usage-transact-sql.md)
 - [sys.dm_db_log_info (Transact-SQL)](sys-dm-db-log-info-transact-sql.md)
 - [sys.dm_db_log_stats (Transact-SQL)](sys-dm-db-log-stats-transact-sql.md)
+

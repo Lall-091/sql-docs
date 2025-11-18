@@ -8,13 +8,15 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - sfi-ropc-blocked
+  - ignite-2025
 helpviewer_keywords:
   - "revoking permissions [SQL Server]"
-ms.custom: sfi-ropc-blocked
 ---
 # Revoke permissions on an XML schema collection
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 The permission to create an XML schema collection can be revoked by using one of the following:
 
@@ -144,3 +146,4 @@ GO
 - [Compare Typed XML to Untyped XML](../../relational-databases/xml/compare-typed-xml-to-untyped-xml.md)
 - [XML Schema Collections &#40;SQL Server&#41;](../../relational-databases/xml/xml-schema-collections-sql-server.md)
 - [Requirements and Limitations for XML Schema Collections on the Server](../../relational-databases/xml/requirements-and-limitations-for-xml-schema-collections-on-the-server.md)
+

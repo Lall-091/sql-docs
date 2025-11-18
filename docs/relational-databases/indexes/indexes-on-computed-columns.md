@@ -8,17 +8,19 @@ ms.date: 10/14/2022
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "computed columns, index creation"
   - "index creation [SQL Server], computed columns"
   - "imprecise columns"
   - "persisted computed columns"
   - "precise [SQL Server]"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Indexes on computed columns
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 You can define indexes on computed columns as long as the following requirements are met:
 
@@ -124,3 +126,4 @@ This option enables you to create an index on a computed column when [!INCLUDE[s
 - [COLUMNPROPERTY (Transact-SQL)](../../t-sql/functions/columnproperty-transact-sql.md)  
 - [CREATE TABLE (Transact-SQL)](../../t-sql/statements/create-table-transact-sql.md)  
 - [ALTER TABLE (Transact-SQL)](../../t-sql/statements/alter-table-transact-sql.md)
+

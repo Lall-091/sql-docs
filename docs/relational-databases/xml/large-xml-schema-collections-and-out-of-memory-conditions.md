@@ -8,13 +8,15 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "out-of-memory conditions"
   - "XML schema collections [SQL Server], large"
 ---
 # Large XML schema collections and out-of-memory conditions
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb.md)]
+[!INCLUDE [SQL Server Azure SQL Database-fabricsqldb](../../includes/applies-to-version/sql-asdb-fabricsqldb.md)]
 
 During a call to the built-in XML_SCHEMA_NAMESPACE() function on a large XML schema collection, or when you try to drop large XML schema collections, an out-of-memory condition may occur. The following are solutions you can use to handle this:
 
@@ -25,3 +27,4 @@ During a call to the built-in XML_SCHEMA_NAMESPACE() function on a large XML sch
 ## See also
 
 - [Requirements and Limitations for XML Schema Collections on the Server](../../relational-databases/xml/requirements-and-limitations-for-xml-schema-collections-on-the-server.md)
+

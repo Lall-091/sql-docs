@@ -7,13 +7,15 @@ ms.date: "06/14/2018"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "OLE DB Driver for SQL Server, errors"
   - "errors [OLE DB], SQL Server message results"
   - "OLE DB error handling, SQL Server message results"
 ---
 # SQL Server Message Results
-[!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics PDW FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 [!INCLUDE[Driver_OLEDB_Download](../../../includes/driver_oledb_download.md)]
 
@@ -39,3 +41,4 @@ The OLE DB Driver for SQL Server consumer is allowed dynamic specification of qu
  [Errors](../../oledb/ole-db-errors/errors.md)  
   
   
+

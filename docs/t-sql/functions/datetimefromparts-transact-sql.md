@@ -8,6 +8,8 @@ ms.date: 05/21/2024
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "DATETIMEFROMPARTS_TSQL"
   - "DATETIMEFROMPARTS"
@@ -15,11 +17,11 @@ helpviewer_keywords:
   - "DATETIMEFROMPARTS function"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # DATETIMEFROMPARTS (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 This function returns a **datetime** value for the specified date and time arguments. For more information about valid ranges, see [datetime](../data-types/datetime-transact-sql.md).
 
@@ -86,3 +88,4 @@ SELECT DATETIMEFROMPARTS ( 2010, 12, 31, 23, 59, 59, 0 ) AS Result;
 ## Related content
 
 - [datetime (Transact-SQL)](../data-types/datetime-transact-sql.md)
+

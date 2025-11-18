@@ -8,7 +8,7 @@ ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "fn_builtin_permissions"
   - "sys.fn_builtin_permissions_TSQL"
@@ -25,7 +25,7 @@ helpviewer_keywords:
   - "sys.fn_builtin_permissions function"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.fn_builtin_permissions (Transact-SQL)
 

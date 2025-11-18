@@ -7,12 +7,11 @@ ms.date: 09/07/2025
 ms.service: sql
 ms.topic: conceptual
 ms.custom:
-  - ignite-2024
-  - build-2025
+  - ignite-2025
 helpviewer_keywords:
   - "guide"
   - "guide, list"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # SQL Server internals and architecture guides
 

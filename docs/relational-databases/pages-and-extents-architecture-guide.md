@@ -6,14 +6,17 @@ ms.author: randolphwest
 ms.date: 09/07/2025
 ms.service: sql
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "page and extent architecture guide"
   - "guide, page and extent architecture"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Pages and extents architecture guide
 
-[!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW](../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW FabricSQLDB](../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
+
 
 The *page* is the fundamental unit of data storage in [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]. An *extent* is a collection of eight physically contiguous pages. Extents help efficiently manage pages. This guide describes the data structures that are used to manage pages and extents in all versions of SQL Server. Understanding the architecture of pages and extents is important for designing and developing databases that perform efficiently.
 
@@ -232,3 +235,4 @@ The interval between DCM pages and BCM pages is the same as the interval between
 - [sys.dm_db_page_info (Transact-SQL)](system-dynamic-management-views/sys-dm-db-page-info-transact-sql.md)
 - [Read data pages in the Database Engine](reading-pages.md)
 - [Write pages in the Database Engine](writing-pages.md)
+

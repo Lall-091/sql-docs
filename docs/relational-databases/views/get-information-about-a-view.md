@@ -7,6 +7,8 @@ ms.date: 07/19/2024
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sql13.swb.viewproperties.general.f1"
 helpviewer_keywords:
@@ -18,10 +20,10 @@ helpviewer_keywords:
   - "viewing view information"
   - "status information [SQL Server], views"
   - "view dependencies"
-monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Get information about a view
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
   You can gain information about a view's definition or properties in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] by using [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or [!INCLUDE [tsql](../../includes/tsql-md.md)]. You might need to see the definition of the view to understand how its data is derived from the source tables or to see the data defined by the view.  
   
@@ -219,3 +221,4 @@ In T-SQL, use one of the following commands:
 
 - [Views](views.md)
 - [Create views](create-views.md)
+

@@ -3,11 +3,13 @@ title: "DATEPART (Transact-SQL)"
 description: "Transact-SQL reference for the DATEPART function. This function returns an integer corresponding to the datepart of a specified date."
 author: markingmyname
 ms.author: maghan
-ms.reviewer: "derekw"
+ms.reviewer: derekw
 ms.date: 07/25/2022
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "DATEPART_TSQL"
   - "DATEPART"
@@ -24,12 +26,12 @@ helpviewer_keywords:
   - "dates [SQL Server], dateparts"
 dev_langs:
   - "TSQL"
-monikerRange: ">= aps-pdw-2016 || = azuresqldb-current || = azure-sqldw-latest || >= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # DATEPART (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 This function returns an integer representing the specified *datepart* of the specified *date*.
   
@@ -252,3 +254,4 @@ SELECT TOP(1) DATEPART (year,'12/20/1974') FROM dbo.DimCustomer;
 
 [CAST and CONVERT &#40;Transact-SQL&#41;](../../t-sql/functions/cast-and-convert-transact-sql.md)
 [DATETRUNC](../../t-sql/functions/datetrunc-transact-sql.md)
+

@@ -8,13 +8,15 @@ ms.date: 06/16/2025
 ms.service: reporting-services
 ms.subservice: reporting-services
 ms.topic: faq
+ms.custom:
+  - ignite-2025
 ---
 
 # Reporting Services consolidation FAQ
 
 Starting with SQL Server 2025, Microsoft is consolidating all on-premises reporting services under Power BI Report Server (PBIRS). No new versions of SQL Server Reporting Services (SSRS) will be released. PBIRS becomes the default on-premises reporting solution for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 
-You can expect more information about specific editions when SQL Server 2025 is in General Availability (GA).
+Power BI Report Server is available for customers running SQL Server 2025 Enterprise and Standard editions. For SQL Server Enterprise edition in SQL Server 2022 and earlier versions, Power BI Report Server usage rights apply only to Enterprise edition core licenses with active Software Assurance (SA). This right expires upon expiration of the customer's SA coverage. For more information about PBIRS licensing, see [What is Power BI Report Server?](/power-bi/report-server/)
 
 This article outlines the implications of these changes for you as a customer, and addresses any questions you might have.
 
@@ -53,11 +55,11 @@ PBIRS is a superset of SSRS, offering all SSRS capabilities plus support for int
 
 ### What editions of SQL Server 2025 include PBIRS?
 
-PBIRS will be available for all paid editions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], including licenses with no Software Assurance (SA). You can expect more information about specific [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] editions when SQL Server 2025 is in General Availability (GA). In the meantime, you can explore PBIRS by installing one of the [free Developer or Evaluation](/power-bi/report-server/install-report-server) editions.
+Power BI Report Server is available for customers running SQL Server 2025 Enterprise and Standard editions. For SQL Server Enterprise edition in SQL Server 2022 and earlier versions, Power BI Report Server usage rights apply only to Enterprise edition core licenses with active Software Assurance (SA). This right expires upon expiration of the customer's SA coverage. For more information about PBIRS licensing, see [What is Power BI Report Server?](/power-bi/report-server/) Customers can also explore PBIRS by installing one of the [free Developer or Evaluation](/power-bi/report-server/install-report-server) editions.
 
 ### Is there an SSRS equivalent for non-SA customers going forward?
 
-PBIRS will be available for all paid editions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] regardless of licensing programs. For instance, license-only customers and SPLA customers who run paid editions have access to Power BI Report Server without incurring additional costs, same as customers with Software Assurance.
+Power BI Report Server is available for customers running SQL Server 2025 Enterprise and Standard editions. For SQL Server Enterprise edition in SQL Server 2022 and earlier versions, Power BI Report Server usage rights apply only to Enterprise edition core licenses with active Software Assurance (SA). This right expires upon expiration of the customer's SA coverage. For more information about PBIRS licensing, see [What is Power BI Report Server?](/power-bi/report-server/)
 
 ### How long can customers use their existing SSRS installations?
 
@@ -65,7 +67,7 @@ SQL Server Reporting Services (SSRS) 2022 will continue to receive security upda
 
 ### How can customers purchase PBIRS keys with SQL Server starting in 2025?
 
-Once SQL Server 2025 is in General Availability (GA), customers who purchase a qualifying SQL Server 2025 license can use the same key to install and use PBIRS.
+Customers who purchase a qualifying SQL Server 2025 license can use the same SQL Server 2025 key to install and use PBIRS.
 
 ### If customers already have a SQL Server license and key, can they use it to install PBIRS?
 

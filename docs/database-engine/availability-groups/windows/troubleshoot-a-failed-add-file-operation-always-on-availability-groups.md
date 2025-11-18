@@ -4,10 +4,12 @@ description: Troubleshoot failed add-file operations in an Always On availabilit
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 10/21/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: availability-groups
 ms.topic: troubleshooting
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "secondary databases [SQL Server], Availability Groups"
   - "Availability Groups [SQL Server], troubleshooting"

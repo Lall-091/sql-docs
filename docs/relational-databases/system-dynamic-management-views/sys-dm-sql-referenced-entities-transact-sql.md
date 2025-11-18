@@ -7,6 +7,8 @@ ms.date: "05/01/2019"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "dm_sql_referenced_entities_TSQL"
   - "dm_sql_referenced_entities"
@@ -16,11 +18,11 @@ helpviewer_keywords:
   - "sys.dm_sql_referenced_entities dynamic management function"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.dm_sql_referenced_entities (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Returns one row for each user-defined entity that is referenced by name in the definition of the specified referencing entity in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. A dependency between two entities is created when one user-defined entity, called the *referenced entity*, appears by name in a persisted SQL expression of another user-defined entity, called the *referencing entity*. For example, if a stored procedure is the specified referencing entity, this function returns all user-defined entities that are referenced in the stored procedure such as tables, views, user-defined types (UDTs), or other stored procedures.  
   
@@ -328,3 +330,4 @@ SELECT
  [sys.sql_expression_dependencies &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-sql-expression-dependencies-transact-sql.md)  
   
   
+

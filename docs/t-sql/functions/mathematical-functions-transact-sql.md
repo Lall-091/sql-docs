@@ -8,17 +8,19 @@ ms.date: 12/16/2024
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "calculations [SQL Server]"
   - "mathematical functions [SQL Server]"
   - "functions [SQL Server], mathematical"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqledge-current || =azure-sqldw-latest || >=aps-pdw-2016 || =fabric"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqledge-current || =azure-sqldw-latest || >=aps-pdw-2016 || =fabric || =fabric-sqldb"
 ---
 # Mathematical functions (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 The following scalar functions perform a calculation, usually based on input values that are provided as arguments, and return a numeric value:
 
@@ -54,3 +56,4 @@ All mathematical functions, except for `RAND`, are deterministic functions. This
 
 - [Arithmetic operators (Transact-SQL)](../language-elements/arithmetic-operators-transact-sql.md)
 - [What are the SQL database functions?](functions.md)
+

@@ -8,6 +8,8 @@ ms.date: 11/19/2024
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "uniqueidentifier data type"
   - "bit data type"
@@ -29,7 +31,7 @@ helpviewer_keywords:
   - "negative values"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current ||=fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Constants (Transact-SQL)
 

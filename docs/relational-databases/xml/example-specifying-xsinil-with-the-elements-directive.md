@@ -8,12 +8,14 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "RAW mode, specifying XSINIL example"
 ---
 # Example: Specify XSINIL with the ELEMENTS Directive
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 The following query specifies the `ELEMENTS` directive to generate element-centric XML from the query result.
 
@@ -72,3 +74,4 @@ This is the partial result:
 ## See also
 
 - [Use RAW Mode with FOR XML](../../relational-databases/xml/use-raw-mode-with-for-xml.md)
+

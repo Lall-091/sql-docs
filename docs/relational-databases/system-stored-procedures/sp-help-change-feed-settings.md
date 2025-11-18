@@ -9,8 +9,7 @@ ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
 ms.custom:
-  - ignite-2024
-  - build-2025
+  - ignite-2025
 f1_keywords:
   - "sys.sp_help_change_feed_settings_TSQL"
   - "sys.sp_help_change_feed_settings"
@@ -20,7 +19,7 @@ helpviewer_keywords:
   - "sp_help_change_feed_settings"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-ver16 || =azuresqldb-current || =azuresqldb-mi-current || =fabric || =azure-sqldw-latest"
+monikerRange: ">=sql-server-ver16 || =azuresqldb-current || =azuresqldb-mi-current || =fabric || =fabric-sqldb || =azure-sqldw-latest"
 ---
 # sys.sp_help_change_feed_settings (Transact-SQL)
 
@@ -33,7 +32,7 @@ This system stored procedure is used for:
 - [SQL database in Microsoft Fabric](/fabric/database/sql/overview)
 - [Microsoft Fabric mirrored databases](/fabric/database/mirrored-database/overview)
 - [Azure Synapse Link](../../sql-server/synapse-link/synapse-link-sql-server-change-feed-manage.md)
-- [Change event streaming (preview)](../track-changes/change-event-streaming/overview.md) introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
+- [Change event streaming (preview)](../track-changes/change-event-streaming/overview.md) introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and Azure SQL Database.
 
 ## Syntax
 
@@ -59,7 +58,7 @@ None.
 | `destination_type` | **sysname** | Change event streaming destination type.<br /><br />`AzureEventHubsAmqp`<br />`AzureEventHubsKafka`<br /><br />Introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] |
 | `partition_scheme` | **tinyint** | Change event streaming partition scheme.<br /><br />`0` = None<br />`1` = Table group.<br />`2` = Table<br />`3` = Column<br /><br />Introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] |
 | `encoding` | **tinyint** | Change event streaming message encoding.<br /><br />`0` = JSON<br />`1` = Avro Binary<br /><br />Introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] |
-| `autoreseed` | **tinyint** | Whether or not automatic reseeding is enabled for the current database in Fabric Mirroring.<br /><br />`0` = Disabled<br />`1` = Enabled<br /><br />The autoreseed feature is disabled by default in SQL Server 2025 (Preview). The autoreseed feature is enabled and cannot be managed or disabled in Azure SQL Database and Azure SQL Managed Instance. For more information, see [Configure automatic reseed for Fabric mirrored databases from SQL Server](/fabric/database/mirrored-database/sql-server-configure-automatic-reseed). |
+| `autoreseed` | **tinyint** | Whether or not automatic reseeding is enabled for the current database in Fabric Mirroring.<br /><br />`0` = Disabled<br />`1` = Enabled<br /><br />The autoreseed feature is disabled by default in SQL Server 2025. The autoreseed feature is enabled and cannot be managed or disabled in Azure SQL Database and Azure SQL Managed Instance. For more information, see [Configure automatic reseed for Fabric mirrored databases from SQL Server](/fabric/database/mirrored-database/sql-server-configure-automatic-reseed). |
 | `autoreseedthreshold` | **tinyint** | If `autoreseed` is enabled, the transactions log usage percentage at which to trigger automatic reseed. The default is `70`. For SQL Server 2025 (Preview), this must be configured when `autoreseed` is enabled. |
 | `dynamicmaxtrans` | **int** | Whether or not the dynamic maximum transactions setting is enabled. The dynamic maximum transactions feature is enabled by default in SQL Server 2025 (Preview). The dynamic maximum transactions feature is enabled and cannot be managed or disabled in Azure SQL Database and Azure SQL Managed Instance. Fabric mirroring always follows a maximum number of transactions to process in each scan cycle as defined by the `maxtrans` setting. When `dynamicmaxtrans` = `1`, Fabric mirroring dynamically adjusts the number of transactions to process per scan between configured values for `dynamicmaxtranslowerbound` and `maxtrans`. For more information, [Mirrored databases from SQL Server performance](/fabric/database/mirrored-database/sql-server-performance). |
 | `dynamicmaxtranslowerbound` | **int** | The lower bound for dynamic maxtrans setting for Fabric Mirroring. By default, the lower bound value is `200` but can be modified by [sys.sp_change_feed_configure_parameters (Transact-SQL)](sp-change-feed-configure-parameters.md).|

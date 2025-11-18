@@ -8,10 +8,10 @@ ms.service: sql
 ms.subservice: performance
 ms.topic: best-practice
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "Query Store, best practices"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azure-sqldw-latest || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azure-sqldw-latest || =fabric-sqldb"
 ---
 
 # Best practices for monitoring workloads with Query Store

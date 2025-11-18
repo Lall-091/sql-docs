@@ -9,7 +9,7 @@ ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "concatenation"
   - "string"
@@ -19,12 +19,12 @@ helpviewer_keywords:
   - "|| (string concatenation)"
 dev_langs:
   - "TSQL"
-monikerRange: "=sql-server-ver17 || =azuresqldb-current || =fabric || =azuresqldb-mi-current"
+monikerRange: "=sql-server-ver17 || =azuresqldb-current || =fabric-sqldb || =azuresqldb-mi-current"
 ---
 
 # || (String concatenation) (Transact-SQL)
 
-[!INCLUDE [sqlserver2025-asdb-asmi-fabric](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
 The `||` pipes operator in a string expression concatenates two or more character or binary strings, columns, or a combination of strings and column names into one expression (a string operator). For example, `SELECT 'SQL ' || 'Server';` returns `SQL Server`. The `||` operator follows the ANSI SQL standard for concatenating strings. In SQL Server you can also do string concatenation using `+` operator and the `CONCAT()` function.
 

@@ -6,6 +6,8 @@ ms.author: mikeray
 ms.date: "03/14/2017"
 ms.service: sql
 ms.topic: language-reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "metadata [SQL Server], triggers"
   - "viewing DML triggers"
@@ -13,10 +15,10 @@ helpviewer_keywords:
   - "displaying DML triggers"
   - "status information [SQL Server], triggers"
   - "DML triggers, viewing"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Get Information About DML Triggers
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   This topic describes how to get information about DML triggers in [!INCLUDE[ssnoversion](../../includes/ssnoversion-md.md)] by using [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or [!INCLUDE[tsql](../../includes/tsql-md.md)]. This information can include the types of triggers on a table, the name of a trigger, its owner and the date it was created or modified. If the trigger was not encrypted when it was created, you obtain the definition of the trigger. You can use the definition to help you understand how a trigger affects the table up on which it is defined. Also, you can find out the objects that a specific trigger uses. With this information, you can identify the objects that affect the trigger if they are changed or deleted in the database.  
   
  **In This Topic**  
@@ -216,3 +218,4 @@ GO
  [OBJECT_DEFINITION &#40;Transact-SQL&#41;](../../t-sql/functions/object-definition-transact-sql.md)  
   
   
+

@@ -4,14 +4,14 @@ description: This article describes how to install SQL Server Integration Servic
 author: lrtoyou1223
 ms.author: lle
 ms.reviewer: maghan, randolphwest
-ms.date: 05/02/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
 ms.custom:
   - intro-installation
   - linux-related-content
-  - build-2025
+  - ignite-2025
 ---
 # Install SQL Server Integration Services (SSIS) on Linux
 
@@ -19,7 +19,7 @@ ms.custom:
 
 Follow the steps in this article to install SQL Server Integration Services (**mssql-server-is**) on Linux. For more information about the features that are supported in Integration Services for Linux, see:
 
-- [Release notes for SQL Server 2025 Preview on Linux](sql-server-linux-release-notes-2025.md)
+- [Release notes for SQL Server 2025 on Linux](sql-server-linux-release-notes-2025.md)
 - [Release notes for SQL Server 2022 on Linux](sql-server-linux-release-notes-2022.md)
 - [Release notes for SQL Server 2019 on Linux](sql-server-linux-release-notes-2019.md)
 - [Release notes for SQL Server 2017 on Linux](sql-server-linux-release-notes-2017.md)

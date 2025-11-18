@@ -8,6 +8,8 @@ ms.date: 11/21/2022
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "COUNT_TSQL"
   - "COUNT"
@@ -20,11 +22,11 @@ helpviewer_keywords:
   - "COUNT function [Transact-SQL]"
 dev_langs:
   - "TSQL"
-monikerRange: ">= aps-pdw-2016 || = azuresqldb-current || = azure-sqldw-latest || >= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-mi-current||=fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # COUNT (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 This function returns the number of items found in a group. `COUNT` operates like the [COUNT_BIG](../../t-sql/functions/count-big-transact-sql.md) function. These functions differ only in the data types of their return values. `COUNT` always returns an **int** data type value. `COUNT_BIG` always returns a **bigint** data type value.
 
@@ -299,3 +301,4 @@ ProductCount   SalesOrderID
 - [Aggregate Functions (Transact-SQL)](../../t-sql/functions/aggregate-functions-transact-sql.md)
 - [COUNT_BIG (Transact-SQL)](../../t-sql/functions/count-big-transact-sql.md)
 - [OVER Clause (Transact-SQL)](../../t-sql/queries/select-over-clause-transact-sql.md)
+

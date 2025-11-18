@@ -7,9 +7,11 @@ ms.date: "06/14/2018"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 ---
 # Display Column and Catalog Metadata for Sparse Columns (OLE DB)
-[!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics PDW FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 [!INCLUDE[Driver_OLEDB_Download](../../../includes/driver_oledb_download.md)]
 
@@ -399,3 +401,4 @@ ERR:
 ```  
   
   
+

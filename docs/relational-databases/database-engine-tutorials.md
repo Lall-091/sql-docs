@@ -7,10 +7,12 @@ ms.date: 02/28/2023
 ms.service: sql
 ms.subservice: performance
 ms.topic: tutorial
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+ms.custom:
+  - ignite-2025
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Database Engine Tutorials
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 This section contains tutorials for [!INCLUDE [ssdenoversion-md](../includes/ssdenoversion-md.md)].  
   
 [Tutorial: Getting Started with the Database Engine](../relational-databases/tutorial-getting-started-with-the-database-engine.md)  
@@ -47,3 +49,4 @@ This tutorial helps you understand how to store SQL Server data files in Azure B
 
 [Tutorials for SQL Server 2016](../sql-server/tutorials-for-sql-server-2016.md)  
 [SQL Server Samples](../samples/sql-samples-where-are.md)  
+

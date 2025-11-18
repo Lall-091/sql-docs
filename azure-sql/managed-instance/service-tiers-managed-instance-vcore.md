@@ -8,7 +8,9 @@ ms.date: 05/19/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: performance
 ms.topic: conceptual
-ms.custom: sfi-image-nochange
+ms.custom:
+  - sfi-image-nochange
+  - ignite-2025
 ---
 # vCore purchasing model - Azure SQL Managed Instance
 [!INCLUDE [appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -64,7 +66,7 @@ Storage for database backups is allocated to support the capabilities of SQL Man
 The service tier generally defines the storage architecture, space and I/O limits, and business continuity options related to availability and disaster recovery.
 
 Azure SQL Managed Instance has two service tiers: 
-- General Purpose. You can choose to use the upgraded [Next-gen General Purpose service tier (preview)](service-tiers-next-gen-general-purpose-use.md).
+- General Purpose. You can choose to use the upgraded [Next-gen General Purpose service tier](service-tiers-next-gen-general-purpose-use.md).
 - Business Critical. 
 
 For a detailed comparison between service tiers, review [resource limits](resource-limits.md), but use the following table for a brief overview: 
@@ -105,8 +107,7 @@ The General Purpose service tier is the default service tier in Azure SQL Manage
 
 ### Next-gen General Purpose
 
-> [!NOTE]
-> The Next-gen General Purpose service tier upgrade is currently in preview. To get started, [use the Next-gen General Purpose service tier upgrade](service-tiers-next-gen-general-purpose-use.md) for eligible new and existing instances. 
+To get started, [use the Next-gen General Purpose service tier upgrade](service-tiers-next-gen-general-purpose-use.md) for eligible new and existing instances. 
 
 [!INCLUDE [azure-sql-managed-instance-compare-service-tiers](../includes/sql-managed-instance/azure-sql-managed-instance-next-gen-general-purpose-upgrade.md)]
 

@@ -4,10 +4,10 @@ description: Latest release notes for SQL Server enabled by Azure Arc
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest, mathoma
-ms.date: 11/03/2025
+ms.date: 11/18/2025
 ms.topic: conceptual
 ms.custom:
-  - ignite-2023
+  - ignite-2025
 ---
 
 # Release notes - SQL Server enabled by Azure Arc
@@ -38,8 +38,6 @@ The following table lists the features of SQL Server enabled by Azure Arc that a
 | --- | --- |
 | [Automated backups](backup-local.md) | Automatically perform backups to local storage or network shares. |
 | [Azure Extension for SQL Server on Linux](connect.md?tabs=linux) | Connect SQL Server on Linux to Azure Arc. |
-| [Backup to URL with a managed identity](backup-to-url.md) | Use a managed identity to authenticate to Azure Blob Storage for backups to URL. |
-| [Managed identity](managed-identity.md) | Use a managed identity to authenticate to your SQL Server instance starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. |
 | [Microsoft Purview: data owner policies](/purview/legacy/how-to-policies-data-owner-authoring-generic) | Manage access to user data in sources that have been registered for Data Policy Enforcement in Microsoft Purview for your SQL Server instances and databases. |
 | [Monitoring](sql-monitoring.md) | Monitor SQL Server performance and activity with built-in dashboards in the Azure portal. |
 | [Restore to a point in time](point-in-time-restore.md) | Restore a database to a specific point in time. |
@@ -50,6 +48,8 @@ The following table lists features of SQL Server enabled by Azure Arc that have 
 
 | Feature | GA Month | Details |
 | --- | --- | --- |
+| [Backup to URL with a managed identity](backup-to-url.md)| November 2025 | Use a managed identity to authenticate to Azure Blob Storage for backups to URL. |
+| [Managed identity](managed-identity.md) | November 2025 | Use a managed identity to authenticate to your SQL Server instance starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. |
 | [Database migration](migrate-to-azure-sql-managed-instance.md) | October 2025 | Migrate your SQL Server databases to Azure SQL Managed Instance directly from the Azure portal. |
 | [Client connection summary](sql-connection-summary.md)| October 2025 | View a summary of all client connections to your SQL Server instances. |
 | [US Government Virginia region availability](us-government-region.md) | August 2025 | Connect SQL Server instances in US Government Virginia to Azure Arc. |
@@ -78,6 +78,12 @@ This section lists the release notes by date, starting with the most recent rele
 | [January 2025](#january-2025) | `1.1.2914.231` |
 | [November 2024](#november-2024) | `1.1.2859.223` |
 | [October 2024](#october-2024) | `1.1.2830.214` |
+
+### November 2025
+
+The following features are now generally available (GA):
+- [Backup to URL with a managed identity](backup-to-url.md):  Use a managed identity to authenticate to Azure Blob Storage for backups to URL.
+- [Managed identity](managed-identity.md): Use a managed identity to authenticate to your SQL Server instance starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
 
 ### October 2025
 

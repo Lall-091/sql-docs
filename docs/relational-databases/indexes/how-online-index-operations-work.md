@@ -8,7 +8,7 @@ ms.service: sql
 ms.subservice: table-view-index
 ms.topic: conceptual
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "online index operations"
   - "source indexes [SQL Server]"
@@ -16,7 +16,7 @@ helpviewer_keywords:
   - "target indexes [SQL Server]"
   - "temporary mapping index [SQL Server]"
   - "index temporary mappings [SQL Server]"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # How online index operations work

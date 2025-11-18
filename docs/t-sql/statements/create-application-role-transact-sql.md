@@ -3,10 +3,13 @@ title: "CREATE APPLICATION ROLE (Transact-SQL)"
 description: CREATE APPLICATION ROLE (Transact-SQL)
 author: VanMSFT
 ms.author: vanto
-ms.date: 04/29/2025
+ms.reviewer: randolphwest
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "APPLICATION_ROLE_TSQL"
   - "CREATE APPLICATION ROLE"
@@ -19,9 +22,7 @@ helpviewer_keywords:
   - "CREATE APPLICATION ROLE statement"
   - "application roles [SQL Server], creating"
 dev_langs:
-  - "TSQL"
-ms.custom:
-  - build-2025
+  - TSQL
 ---
 # CREATE APPLICATION ROLE (Transact-SQL)
 
@@ -44,11 +45,11 @@ CREATE APPLICATION ROLE application_role_name
 
 Specifies the name of the application role. This name must not already be used to refer to any principal in the database.
 
-#### PASSWORD = '*_password_*'
+#### PASSWORD = '*password*'
 
 Specifies the password that database users will use to activate the application role. You should always use strong passwords. `password` must meet the Windows password policy requirements of the computer that is running the instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 
-#### DEFAULT_SCHEMA = _schema\_name_
+#### DEFAULT_SCHEMA = *schema_name*
 
 Specifies the first schema that will be searched by the server when it resolves the names of objects for this role. If DEFAULT_SCHEMA is left undefined, the application role will use `dbo` as its default schema. *schema_name* can be a schema that doesn't exist in the database.
 
@@ -62,7 +63,7 @@ Application roles are visible in the [sys.database_principals](../../relational-
 For information about how to use application roles, see [Application Roles](../../relational-databases/security/authentication-access/application-roles.md).
 
 > [!NOTE]  
-> [!INCLUDE[ssCautionUserSchema](../../includes/sscautionuserschema-md.md)]  
+> [!INCLUDE [ssCautionUserSchema](../../includes/sscautionuserschema-md.md)]
 
 [!INCLUDE [encryption-algorithm-history-md](../../includes/encryption-algorithm-history.md)]
 
@@ -85,7 +86,7 @@ GO
 
 - [Application Roles](../../relational-databases/security/authentication-access/application-roles.md)
 - [sp_setapprole](../../relational-databases/system-stored-procedures/sp-setapprole-transact-sql.md)
-- [ALTER APPLICATION ROLE](alter-application-role-transact-sql.md)
-- [DROP APPLICATION ROLE](drop-application-role-transact-sql.md)
+- [ALTER APPLICATION ROLE (Transact-SQL)](alter-application-role-transact-sql.md)
+- [DROP APPLICATION ROLE (Transact-SQL)](drop-application-role-transact-sql.md)
 - [Password Policy](../../relational-databases/security/password-policy.md)
-- [EVENTDATA](../functions/eventdata-transact-sql.md)
+- [EVENTDATA (Transact-SQL)](../functions/eventdata-transact-sql.md)

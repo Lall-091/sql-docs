@@ -3,10 +3,12 @@ title: SQL Server Express LocalDB
 description: Become familiar with SQL Server Express LocalDB. Developers can use this lightweight Database Engine for writing and testing Transact-SQL code.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/21/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "user instances"
   - "LocalDB, described"
@@ -19,7 +21,7 @@ helpviewer_keywords:
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
-Microsoft SQL Server Express LocalDB is a feature of [!INCLUDE [ssexpress-md](../../includes/ssexpress-md.md)] targeted to developers. It's available on SQL Server Express edition with Advanced Services.
+Microsoft SQL Server Express LocalDB is a feature of [!INCLUDE [ssexpress-md](../../includes/ssexpress-md.md)] targeted to developers. It's available on SQL Server Express edition with Advanced Services. In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, it's available on [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Express edition.
 
 LocalDB installation copies a minimal set of files necessary to start the [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)]. Once LocalDB is installed, you can initiate a connection using a special connection string. When you connect, the necessary [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] infrastructure is automatically created and started, enabling the application to use the database without complex configuration tasks. Developer Tools can provide developers with a [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)] that lets them write and test [!INCLUDE [tsql](../../includes/tsql-md.md)] code without having to manage a full server instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 

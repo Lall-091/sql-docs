@@ -7,6 +7,8 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: performance
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sql13.swb.planguideprop.general.f1"
 helpviewer_keywords:
@@ -14,7 +16,7 @@ helpviewer_keywords:
   - "viewing plan guide properties"
 ---
 # View Plan Guide Properties
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   You can view the properties of plan guides in [!INCLUDE[ssnoversion](../../includes/ssnoversion-md.md)] by using [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or [!INCLUDE[tsql](../../includes/tsql-md.md)]  
   
  **In This Topic**  
@@ -123,3 +125,4 @@ helpviewer_keywords:
  For more information, see [sys.plan_guides &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-plan-guides-transact-sql.md).  
   
   
+

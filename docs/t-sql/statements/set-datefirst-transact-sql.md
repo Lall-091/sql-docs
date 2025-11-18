@@ -7,6 +7,8 @@ ms.date: 04/04/2024
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SET DATEFIRST"
   - "SET_DATEFIRST_TSQL"
@@ -21,10 +23,10 @@ helpviewer_keywords:
   - "options [SQL Server], date"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # SET DATEFIRST (Transact-SQL)
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
   Sets the first day of the week to a number from 1 through 7. 
   
@@ -104,3 +106,4 @@ GO
 ## Related content
 
 - [SET Statements (Transact-SQL)](../../t-sql/statements/set-statements-transact-sql.md)
+

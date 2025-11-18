@@ -7,13 +7,15 @@ ms.date: "08/10/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "DROP XML INDEX statement"
 dev_langs:
   - "TSQL"
 ---
 # DROP INDEX (Selective XML Indexes)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Drops an existing selective XML index or secondary selective XML index in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. For more information, see [Selective XML Indexes &#40;SXI&#41;](../../relational-databases/xml/selective-xml-indexes-sxi.md).  
   
@@ -70,4 +72,5 @@ DROP INDEX sxi_index ON tbl;
  [Create, Alter, and Drop Selective XML Indexes](../../relational-databases/xml/create-alter-and-drop-selective-xml-indexes.md)  
   
   
+
 

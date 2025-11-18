@@ -7,13 +7,15 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "Deprecation Final Support event class"
   - "deprecation [SQL Server], events final support"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Deprecation Final Support Event Class
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   The **Deprecation Final Support** event class occurs when you use a feature that will be removed from the next major release of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. For greatest longevity of your applications, do not use features that cause the **Deprecation Final Support** event class or the **Deprecation Announcement** event class. Modify applications that use final deprecation features as soon as possible.  
   
 ## Deprecation Final Support Event Class Data Columns  
@@ -52,3 +54,4 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
  [Deprecated Database Engine Features in SQL Server 2016](../../database-engine/deprecated-database-engine-features-in-sql-server-2016.md)  
   
   
+

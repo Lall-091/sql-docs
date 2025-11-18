@@ -7,6 +7,8 @@ ms.date: "03/04/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "TIMEFROMPARTS_TSQL"
   - "TIMEFROMPARTS"
@@ -14,10 +16,10 @@ helpviewer_keywords:
   - "TIMEFROMPARTS function"
 dev_langs:
   - "TSQL"
-monikerRange: ">= aps-pdw-2016 || = azuresqldb-current || = azure-sqldw-latest || >= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # TIMEFROMPARTS (Transact-SQL)
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
   Returns a **time** value for the specified time and with the specified precision.  
   
@@ -108,4 +110,5 @@ GO
 (1 row(s) affected)  
 ```  
   
+
 

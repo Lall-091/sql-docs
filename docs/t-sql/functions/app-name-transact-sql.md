@@ -7,6 +7,8 @@ ms.date: "07/24/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "APP_NAME_TSQL"
   - "APP_NAME"
@@ -20,7 +22,7 @@ dev_langs:
   - "TSQL"
 ---
 # APP_NAME (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This function returns the application name for the current session, if the application sets that name value.
   
@@ -61,3 +63,4 @@ GO
 [Functions](../../t-sql/functions/functions.md)
   
   
+

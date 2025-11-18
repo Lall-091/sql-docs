@@ -8,6 +8,8 @@ ms.date: 08/18/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "parallel queries [SQL Server]"
   - "processors [SQL Server], parallel queries"
@@ -18,7 +20,7 @@ helpviewer_keywords:
   - "processors [SQL Server], parallel queries"
   - "number of processors for parallel queries"
   - "degree of parallelism feedback"
-monikerRange: "=azuresqldb-current || >=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # Degree of parallelism (DOP) feedback

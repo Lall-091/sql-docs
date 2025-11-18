@@ -8,6 +8,8 @@ ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_estimate_data_compression_savings_TSQL"
   - "sp_estimate_data_compression_savings"
@@ -19,7 +21,7 @@ dev_langs:
 ---
 # sp_estimate_data_compression_savings (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [sql-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Returns the current size of the requested object and estimates the object size for the requested compression state. Compression can be evaluated for whole tables or parts of tables. This includes heaps, clustered indexes, nonclustered indexes, columnstore indexes, indexed views, and table and index partitions. The objects can be compressed by using row, page, columnstore, or columnstore archive compression. If the table, index, or partition is already compressed, you can use this procedure to estimate the size of the table, index, or partition if it's recompressed or stored without compression.
 
@@ -205,3 +207,4 @@ GO
 - [sys.partitions (Transact-SQL)](../system-catalog-views/sys-partitions-transact-sql.md)
 - [Database Engine stored procedures (Transact-SQL)](database-engine-stored-procedures-transact-sql.md)
 - [Unicode compression implementation](../data-compression/unicode-compression-implementation.md)
+

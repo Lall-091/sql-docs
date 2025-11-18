@@ -8,6 +8,8 @@ ms.date: 05/09/2024
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "EOMONTH"
   - "EOMONTH_TSQL"
@@ -15,11 +17,11 @@ helpviewer_keywords:
   - "EOMONTH function"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # EOMONTH (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 This function returns the last day of the month containing a specified date, with an optional offset.
 
@@ -124,3 +126,4 @@ Last Month
 - [What are the SQL database functions?](functions.md)
 - [SYSDATETIME (Transact-SQL)](sysdatetime-transact-sql.md)
 - [SYSDATETIMEOFFSET (Transact-SQL)](sysdatetimeoffset-transact-sql.md)
+

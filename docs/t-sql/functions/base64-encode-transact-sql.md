@@ -8,6 +8,8 @@ ms.date: 02/28/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "BASE64_ENCODE"
   - "BASE64_ENCODE_TSQL"
@@ -17,12 +19,12 @@ helpviewer_keywords:
   - "base64 encoding [SQL Server]"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||=fabric"
+monikerRange: "=azuresqldb-current || =fabric || =fabric-sqldb"
 ---
 
 # BASE64_ENCODE (Transact-SQL)
 
-[!INCLUDE [asdb-Fabric SE DW](../../includes/applies-to-version/asdb-fabricse-fabricdw.md)]
+[!INCLUDE [asdb-Fabric-SE-fabricDW-fabricsqldb](../../includes/applies-to-version/asdb-fabricse-fabricdw-fabricsqldb.md)]
 
 `BASE64_ENCODE` converts the value of a **varbinary** expression into a base64-encoded **varchar** expression.
 
@@ -63,10 +65,10 @@ If `url_safe` is true, the base64url string that is generated is incompatible wi
 
 ### A. Standard BASE64_ENCODE
 
-The following example returns the base64 encoded value for the `©` symbol.
+The following example returns the base64 encoded value for the `&copy;` symbol.
 
 ```sql
-SELECT Base64_Encode(0xA9) AS "Encoded © symbol";
+SELECT Base64_Encode(0xA9) AS "Encoded &copy; symbol";
 ```
 
 [!INCLUDE [ssResult_md](../../includes/ssresult-md.md)]
@@ -118,3 +120,4 @@ yv7K_g
 ## Related content
 
 - [BASE64_DECODE (Transact-SQL)](base64-decode-transact-sql.md)
+

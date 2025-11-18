@@ -8,7 +8,7 @@ ms.date: 02/10/2025
 ms.service: azure-sql-database
 ms.topic: "reference"
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "dm_database_backups_TSQL"
   - "dm_database_backups"
@@ -19,7 +19,7 @@ helpviewer_keywords:
   - "sys.dm_database_backups dynamic management view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =fabric"
+monikerRange: "=azuresqldb-current || =fabric-sqldb"
 ---
 # sys.dm_database_backups
 

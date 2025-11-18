@@ -7,6 +7,8 @@ ms.date: "09/18/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "@@DBTS_TSQL"
   - "@@DBTS"
@@ -19,7 +21,7 @@ dev_langs:
 
 # &#x40;&#x40;DBTS (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This function returns the value of the current **timestamp** data type for the current database. The current database will have a guaranteed unique timestamp value.
   
@@ -55,3 +57,4 @@ SELECT @@DBTS;
 [MIN_ACTIVE_ROWVERSION &#40;Transact-SQL&#41;](../../t-sql/functions/min-active-rowversion-transact-sql.md)
   
   
+

@@ -3,11 +3,14 @@ title: Using Connection String Keywords with OLE DB Driver
 description: "Some APIs in OLE DB Driver for SQL Server use connection strings, which are a list of keywords and values that identify particular connection attributes."
 author: David-Engel
 ms.author: davidengel
-ms.reviewer: "vanto"
+ms.reviewer: vanto
 ms.date: 10/26/2022
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: "conceptual"
+ms.custom:
+  - sfi-ropc-nochange
+  - ignite-2025
 f1_keywords:
   - "sql13.swb.connecttoserver.options.registeredservers.f1"
 helpviewer_keywords:
@@ -15,11 +18,10 @@ helpviewer_keywords:
   - "MSOLEDBSQL, connection string keywords"
   - "connection strings [OLE DB Driver for SQL Server]"
   - "OLE DB Driver for SQL Server, connection string keywords"
-ms.custom: sfi-ropc-nochange
 ---
 # Using Connection String Keywords with OLE DB Driver for SQL Server
 
-[!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics PDW FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 [!INCLUDE[Driver_OLEDB_Download](../../../includes/driver_oledb_download.md)]
 
@@ -245,3 +247,4 @@ The following table describes the keywords that may be used with an ADO connecti
 ## See also
 
 [Building Applications with OLE DB Driver for SQL Server](building-applications-with-oledb-driver-for-sql-server.md)
+

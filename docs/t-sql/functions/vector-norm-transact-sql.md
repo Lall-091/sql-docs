@@ -4,7 +4,7 @@ description: VECTOR_NORM takes a vector as an input and returns the norm of the 
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: damauri, pookam, randolphwest
-ms.date: 10/03/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -12,7 +12,7 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
 ms.custom:
-  - build-2025
+  - ignite-2025
 f1_keywords:
   - "VECTOR_NORM"
   - "VECTOR_NORM_TSQL"
@@ -21,7 +21,7 @@ helpviewer_keywords:
   - "vector, norm calculation"
 dev_langs:
   - TSQL
-monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
+monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # VECTOR_NORM (Transact-SQL)
 
@@ -99,9 +99,8 @@ CREATE TABLE dbo.vectors
 );
 
 INSERT INTO dbo.vectors (ID, v)
-VALUES
-    (1, '[0.1, -2, 42]'),
-    (2, '[2, 0.1, -42]');
+VALUES (1, '[0.1, -2, 42]'),
+       (2, '[2, 0.1, -42]');
 
 SELECT ID, VECTOR_NORM(v, 'norm2') AS norm
 FROM dbo.vectors;

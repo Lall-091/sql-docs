@@ -8,12 +8,14 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "AUTO FOR XML mode, examples"
 ---
 # Examples: Using AUTO mode
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 The following examples illustrate the use of AUTO mode. Many of these queries are specified against bicycle manufacturing instructions XML documents that are stored in the Instructions column of the ProductModel table in the [!INCLUDE[ssSampleDBnormal](../../includes/sssampledbnormal-md.md)] sample database.
 
@@ -242,3 +244,4 @@ This is the process for encoding special characters in the result:
 ## See also
 
 - [Use AUTO Mode with FOR XML](../../relational-databases/xml/use-auto-mode-with-for-xml.md)
+

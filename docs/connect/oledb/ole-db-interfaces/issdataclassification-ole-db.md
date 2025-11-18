@@ -8,13 +8,15 @@ ms.date: "09/30/2020"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "ISSDataClassification interface"
 apiname: "ISSDataClassification"
 apitype: "COM"
 ---
 # ISSDataClassification
-[!INCLUDE[SQL Server Azure SQL Database Synapse Analytics PDW](../../../includes/applies-to-version/sql-asdb-asa.md)]
+[!INCLUDE[SQL Server Azure SQL Database Synapse Analytics PDW FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asa-fabricsqldb.md)]
 
 [!INCLUDE[Driver_OLEDB_Download](../../../includes/driver_oledb_download.md)]
 
@@ -31,3 +33,4 @@ apitype: "COM"
  [Interfaces &#40;OLE DB&#41;](../../oledb/ole-db-interfaces/oledb-driver-for-sql-server-ole-db-interfaces.md)   
  [Rowsets](../ole-db-rowsets/rowsets.md)   
  [Using data classification](../features/using-data-classification.md)
+

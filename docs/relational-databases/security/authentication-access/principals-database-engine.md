@@ -8,7 +8,7 @@ ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "sql13.swb.roleproperties.selectroll.f1"
   - "sql13.swb.databaseuser.permissions.user.f1--May use common.permissions"
@@ -27,7 +27,7 @@ helpviewer_keywords:
   - "security [SQL Server], principals"
   - "users [SQL Server], principals"
   - "##MS_SQLReplicationSigningCertificate##"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Principals (Database Engine)
 

@@ -7,6 +7,8 @@ ms.date: 12/05/2022
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "FREESYSTEMCACHE_TSQL"
   - "DBCC_FREESYSTEMCACHE_TSQL"
@@ -21,10 +23,11 @@ helpviewer_keywords:
   - "cleaning unused cache entries"
 dev_langs:
   - "TSQL"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # DBCC FREESYSTEMCACHE (Transact-SQL)
 
-[!INCLUDE [SQL Server SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Releases all unused cache entries from all caches. The [!INCLUDE[ssDEnoversion](../../includes/ssdenoversion-md.md)] proactively cleans up unused cache entries in the background to make memory available for current entries. However, you can use this command to manually remove unused entries from every cache or from a specified Resource Governor pool cache.
 

@@ -9,7 +9,7 @@ ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - build-2025
+  - ignite-2025
 f1_keywords:
   - "BACKUP_TSQL"
   - "BACKUP"
@@ -323,7 +323,7 @@ The URL format is used for creating backups to Microsoft Azure Blob Storage or S
 
 You can back up to Microsoft Azure Blob Storage using a managed identity starting with:
 
-- [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]: [Back up to URL with managed identity (preview) - SQL Server enabled by Azure Arc](../../sql-server/azure-arc/backup-to-url.md)
+- [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]: [Back up to URL with managed identity - SQL Server enabled by Azure Arc](../../sql-server/azure-arc/backup-to-url.md)
 - [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] CU 17 for SQL Server on Azure VMs: [Backup and restore to URL using managed identities](/azure/azure-sql/virtual-machines/windows/backup-restore-to-url-using-managed-identities)
 
 > [!NOTE]  

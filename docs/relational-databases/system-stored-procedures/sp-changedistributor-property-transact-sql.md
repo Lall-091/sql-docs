@@ -4,10 +4,12 @@ description: sp_changedistributor_property changes the properties of the Distrib
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest, mathoma
-ms.date: 10/21/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: replication
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_changedistributor_property_TSQL"
   - "sp_changedistributor_property"
@@ -79,7 +81,7 @@ EXECUTE sp_changedistributor_property
 
 [!INCLUDE [sql-25-repl-distributor-info](../../includes/sql-25-repl-distributor-info.md)]
 
-For more information, review the [remote distributor breaking change in SQL Server 2025 Preview](../../database-engine/breaking-changes-to-database-engine-features-in-sql-server-2025.md#replication-components-fail-after-an-upgrade).
+For more information, review the [remote distributor breaking change in SQL Server 2025](../../database-engine/breaking-changes-to-database-engine-features-in-sql-server-2025.md#replication-components-fail-after-an-upgrade).
 
 ## Permissions
 

@@ -8,6 +8,8 @@ ms.date: 04/22/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "DBCC_SHRINKDATABASE_TSQL"
   - "DBCC SHRINKDATABASE"
@@ -25,11 +27,11 @@ helpviewer_keywords:
   - "reducing database size"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azure-sqldw-latest||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # DBCC SHRINKDATABASE (Transact-SQL)
 
-[!INCLUDE [SQL Server SQL Database Azure SQL Managed Instance Azure Synapse Analytics](../../includes/applies-to-version/sql-asdb-asdbmi-asa.md)]
+[!INCLUDE [SQL Server SQL Database Azure SQL Managed Instance Azure Synapse Analytics FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricsqldb.md)]
 
 Shrinks the size of the data and log files in the specified database.
 

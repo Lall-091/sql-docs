@@ -7,6 +7,8 @@ ms.date: 08/16/2022
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "EDGE_ID_FROM_PARTS"
 helpviewer_keywords:
@@ -14,10 +16,10 @@ helpviewer_keywords:
   - "Graph, system functions, graph ID, edge ID, edge"
 dev_langs:
   - "TSQL"
-monikerRange: "= azuresqldb-current || >= sql-server-2017 || >= sql-server-linux-2017 || = azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2017 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # EDGE_ID_FROM_PARTS (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sqlserver2017-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sqlserver2017-asdb-asdbmi-fabricsqldb.md)]
 
 Returns the character representation (JSON) of the edge ID for a given object ID and graph ID.
 
@@ -75,3 +77,4 @@ FROM OPENROWSET (BULK 'person_likes_restaurant.csv',
 - [NODE_ID_FROM_PARTS](./node-id-from-parts-transact-sql.md)
 - [GRAPH_ID_FROM_EDGE_ID](./graph-id-from-edge-id-transact-sql.md)
 - [GRAPH_ID_FROM_NODE_ID](./graph-id-from-node-id-transact-sql.md)
+

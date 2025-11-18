@@ -8,12 +8,12 @@ ms.date: 06/30/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
+ms.custom:
+  - sfi-ropc-blocked
+  - ignite-2025
 helpviewer_keywords:
   - "SQL Injection"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
-ms.custom:
-  - ignite-2024
-  - sfi-ropc-blocked
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # SQL injection
 

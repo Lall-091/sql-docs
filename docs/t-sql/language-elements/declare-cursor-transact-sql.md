@@ -8,7 +8,7 @@ ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "DECLARE_CURSOR_TSQL"
   - "CURSOR_TSQL"
@@ -23,7 +23,7 @@ helpviewer_keywords:
   - "global cursors [SQL Server]"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # DECLARE CURSOR (Transact-SQL)
 

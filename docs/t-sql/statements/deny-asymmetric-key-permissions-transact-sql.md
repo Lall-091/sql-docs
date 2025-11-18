@@ -8,7 +8,7 @@ ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "denying permissions [SQL Server], asymmetric keys"
   - "encryption [SQL Server], asymmetric keys"
@@ -18,7 +18,7 @@ helpviewer_keywords:
   - "cryptography [SQL Server], asymmetric keys"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # DENY Asymmetric Key Permissions (Transact-SQL)
 

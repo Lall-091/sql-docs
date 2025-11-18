@@ -8,6 +8,8 @@ ms.date: 08/08/2024
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "type casting string instances [XML in SQL Server]"
   - "XML [SQL Server], typed"
@@ -20,7 +22,7 @@ helpviewer_keywords:
 ---
 # Create instances of XML data
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This article describes how to generate XML instances.
 
@@ -250,3 +252,4 @@ The enhanced [OPENROWSET](../../t-sql/functions/openrowset-transact-sql.md) func
 - [xml Data Type Methods](../../t-sql/xml/xml-data-type-methods.md)
 - [XML Data Modification Language (XML DML)](../../t-sql/xml/xml-data-modification-language-xml-dml.md)
 - [XML data (SQL Server)](xml-data-sql-server.md)
+

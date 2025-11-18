@@ -8,6 +8,8 @@ ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_recompile_TSQL"
   - "sp_recompile"
@@ -15,11 +17,11 @@ helpviewer_keywords:
   - "sp_recompile"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sp_recompile (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Causes stored procedures, triggers, and user-defined functions to be recompiled the next time that they're run. It does this by dropping the existing plan from the procedure cache, forcing a new plan to be created the next time that the procedure or trigger is run. In a [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)] collection, the event `SP:CacheInsert` is logged instead of the event `SP:Recompile`.
 
@@ -84,3 +86,4 @@ GO
 - [System stored procedures (Transact-SQL)](system-stored-procedures-transact-sql.md)
 - [SQL:StmtRecompile Event Class](../event-classes/sql-stmtrecompile-event-class.md)
 - [Recompile a stored procedure](../stored-procedures/recompile-a-stored-procedure.md)
+

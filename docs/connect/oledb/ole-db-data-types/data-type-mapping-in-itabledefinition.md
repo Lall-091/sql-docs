@@ -7,6 +7,8 @@ ms.date: "06/14/2018"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "mapping data types [OLE DB]"
   - "OLE DB Driver for SQL Server, data types"
@@ -17,7 +19,7 @@ helpviewer_keywords:
   - "OLE DB, data types"
 ---
 # Data Type Mapping in ITableDefinition
-[!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics PDW FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 [!INCLUDE[Driver_OLEDB_Download](../../../includes/driver_oledb_download.md)]
 
@@ -52,3 +54,4 @@ helpviewer_keywords:
  [Data Types &#40;OLE DB&#41;](../../oledb/ole-db-data-types/data-types-ole-db.md)  
   
   
+

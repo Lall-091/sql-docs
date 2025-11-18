@@ -6,6 +6,8 @@ ms.author: wiassaf
 ms.date: 06/11/2025
 ms.service: azure-sql-database
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_os_out_of_memory_events"
   - "sys.dm_os_out_of_memory_events_TSQL"
@@ -16,11 +18,11 @@ helpviewer_keywords:
   - "dm_os_out_of_memory_events"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.dm_os_out_of_memory_events
 
-[!INCLUDE [Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/asdb-asdbmi.md)]
+[!INCLUDE [Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/asdb-asdbmi-fabricsqldb.md)]
 
 Returns a set of recent out of memory (OOM) events.
 
@@ -133,3 +135,4 @@ ORDER BY event_time DESC, pool_allocations_mb DESC;
 - [Monitor In-Memory OLTP storage in Azure SQL Database](/azure/azure-sql/database/in-memory-oltp-monitor-space?view=azuresql-db&preserve-view=true)
 - [Monitor In-Memory OLTP storage in Azure SQL Managed Instance](/azure/azure-sql/managed-instance/in-memory-oltp-monitor-space?view=azuresql-mi&preserve-view=true)
 - [Troubleshoot out of memory errors with Azure SQL Database](/azure/azure-sql/database/troubleshoot-memory-errors-issues)
+

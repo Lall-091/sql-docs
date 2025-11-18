@@ -7,6 +7,8 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "ENCRYPTBYKEY_TSQL"
   - "ENCRYPTBYKEY"
@@ -17,10 +19,10 @@ helpviewer_keywords:
   - "ENCRYPTBYKEY function"
 dev_langs:
   - "TSQL"
-monikerRange: "= azuresqldb-current || = azuresqldb-mi-current || >= sql-server-2016 || >= sql-server-linux-2017 || = azure-sqldw-latest"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =fabric-sqldb"
 ---
 # ENCRYPTBYKEY (Transact-SQL)
-[!INCLUDE [sql-asdb-asdbmi-asa](../../includes/applies-to-version/sql-asdb-asdbmi-asa.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricsqldb.md)]
 
   Encrypts data by using a symmetric key.  
   
@@ -148,3 +150,4 @@ GO
  [HASHBYTES &#40;Transact-SQL&#41;](../../t-sql/functions/hashbytes-transact-sql.md)  
   
   
+

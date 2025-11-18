@@ -3,16 +3,16 @@ title: Restore a SQL Server Database in a Linux Container
 description: This tutorial shows how to restore a SQL Server database backup in a new Linux container.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/03/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
-monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017"
 ms.custom:
   - intro-migration
   - linux-related-content
-  - build-2025
   - sfi-ropc-blocked
+  - ignite-2025
+monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017"
 ---
 # Restore a SQL Server database in a Linux container
 
@@ -92,7 +92,7 @@ This section provides deployment options for your environment.
    This command creates a [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] container with the Developer edition (default). [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] port `1433` is exposed on the host as port `1401`. The optional `-v sql1data:/var/opt/mssql` parameter creates a data volume container named `sql1data`. This is used to persist the data created by [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 
    > [!IMPORTANT]  
-   > This example uses a data volume container within Docker. For more information, see [Configure SQL Server container images on Docker](./sql-server-linux-docker-container-configure.md#persist).
+   > This example uses a data volume container within Docker. For more information, see [Configure SQL Server container images on Docker](sql-server-linux-docker-container-configure.md#persist).
 
 1. To view your containers, use the `docker ps` command.
 
@@ -136,7 +136,7 @@ This section provides deployment options for your environment.
    This command creates a [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] container with the Developer edition (default). [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] port `1433` is exposed on the host as port `1401`. The optional `-v sql1data:/var/opt/mssql` parameter creates a data volume container named `sql1data`. This is used to persist the data created by [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 
    > [!IMPORTANT]  
-   > This example uses a data volume container within Docker. For more information, see [Configure SQL Server container images on Docker](./sql-server-linux-docker-container-configure.md#persist).
+   > This example uses a data volume container within Docker. For more information, see [Configure SQL Server container images on Docker](sql-server-linux-docker-container-configure.md#persist).
 
 1. To view your containers, use the `docker ps` command.
 
@@ -180,7 +180,7 @@ This section provides deployment options for your environment.
    This command creates a [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] container with the Developer edition (default). [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] port `1433` is exposed on the host as port `1401`. The optional `-v sql1data:/var/opt/mssql` parameter creates a data volume container named `sql1data`. This is used to persist the data created by [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 
    > [!IMPORTANT]  
-   > This example uses a data volume container within Docker. For more information, see [Configure SQL Server container images on Docker](./sql-server-linux-docker-container-configure.md#persist).
+   > This example uses a data volume container within Docker. For more information, see [Configure SQL Server container images on Docker](sql-server-linux-docker-container-configure.md#persist).
 
 1. To view your containers, use the `docker ps` command.
 
@@ -224,7 +224,7 @@ This section provides deployment options for your environment.
    This command creates a [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] container with the Developer edition (default). [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] port `1433` is exposed on the host as port `1401`. The optional `-v sql1data:/var/opt/mssql` parameter creates a data volume container named `sql1data`. This is used to persist the data created by [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 
    > [!IMPORTANT]  
-   > This example uses a data volume container within Docker. For more information, see [Configure SQL Server container images on Docker](./sql-server-linux-docker-container-configure.md#persist).
+   > This example uses a data volume container within Docker. For more information, see [Configure SQL Server container images on Docker](sql-server-linux-docker-container-configure.md#persist).
 
 1. To view your containers, use the `docker ps` command.
 

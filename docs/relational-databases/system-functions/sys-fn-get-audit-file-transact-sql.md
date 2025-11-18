@@ -4,10 +4,12 @@ description: "The sys.fn_get_audit_file system function returns information from
 author: sravanisaluru
 ms.author: srsaluru
 ms.reviewer: wiassaf, randolphwest
-ms.date: 11/18/2024
+ms.date: 10/27/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "fn_get_audit_file_TSQL"
   - "sys.fn_get_audit_file_TSQL"
@@ -18,16 +20,20 @@ helpviewer_keywords:
   - "fn_get_audit_file function"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azure-sqldw-latest"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azure-sqldw-latest || =fabric-sqldb"
 ---
 # sys.fn_get_audit_file (Transact-SQL)
 
-[!INCLUDE [SQL Server SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi-asa.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricsqldb.md)]
 
 Returns information from an audit file created by a server audit in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. For more information, see [SQL Server Audit (Database Engine)](../security/auditing/sql-server-audit-database-engine.md).
 
+::: moniker range="=azuresqldb-current || =fabric || = fabric-sqldb"
+
 > [!NOTE]  
-> For [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], consider using [sys.fn_get_audit_file_v2](sys-fn-get-audit-file-v2-transact-sql.md) instead. `sys.fn_get_audit_file_v2` introduces time-based filtering at both the file and record levels, providing significant performance improvements, particularly for queries targeting specific time ranges.
+> Consider using [sys.fn_get_audit_file_v2](sys-fn-get-audit-file-v2-transact-sql.md) instead. `sys.fn_get_audit_file_v2` introduces time-based filtering at both the file and record levels, providing significant performance improvements, particularly for queries targeting specific time ranges.
+
+::: moniker-end
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 

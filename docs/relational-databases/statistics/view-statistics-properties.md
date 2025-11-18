@@ -8,13 +8,13 @@ ms.service: sql
 ms.subservice: performance
 ms.topic: how-to
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "sql13.swb.statistics.details.f1"
 helpviewer_keywords:
   - "viewing statistics properties"
   - "statistics [SQL Server], viewing properties"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # View Statistics Properties
 [!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]

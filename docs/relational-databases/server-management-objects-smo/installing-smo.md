@@ -8,12 +8,12 @@ ms.service: sql
 ms.topic: "reference"
 ms.custom:
   - intro-installation
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "installing SMO"
   - "SMO [SQL Server], installing"
   - "SQL Server Management Objects, installing"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # Installing SMO

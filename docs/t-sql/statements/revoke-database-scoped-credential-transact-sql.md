@@ -8,7 +8,7 @@ ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "REVOKE DATABASE SCOPED CREDENTIAL"
   - "REVOKE_DATABASE_SCOPED_CREDENTIAL_TSQL"
@@ -17,7 +17,7 @@ helpviewer_keywords:
   - "revoking permissions [SQL Server], database scoped credentials"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2017 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2017 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # REVOKE Database Scoped Credential (Transact-SQL)

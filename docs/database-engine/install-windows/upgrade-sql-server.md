@@ -3,13 +3,13 @@ title: Upgrade SQL Server
 description: This article provides links to resources that contain upgrade information for instances of different versions of SQL Server.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/21/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: install
 ms.topic: quickstart
 ms.custom:
   - intro-quickstart
-  - build-2025
+  - ignite-2025
 helpviewer_keywords:
   - "upgrading SQL Server"
 monikerRange: ">=sql-server-2016"
@@ -22,7 +22,7 @@ You can upgrade instances of [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)],
 
 Check out what's new in each version of the product:
 
-- [SQL Server 2025 Preview release notes](../../sql-server/sql-server-2025-release-notes.md)
+- [SQL Server 2025 release notes](../../sql-server/sql-server-2025-release-notes.md)
 - [SQL Server 2022 release notes](../../sql-server/sql-server-2022-release-notes.md)
 - [SQL Server 2019 release notes](../../sql-server/sql-server-2019-release-notes.md)
 - [SQL Server 2017 release notes](../../sql-server/sql-server-2017-release-notes.md)

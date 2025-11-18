@@ -6,14 +6,16 @@ ms.author: mikeray
 ms.date: "11/01/2016"
 ms.service: sql
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "DDL events"
   - "DDL triggers, events"
   - "events [SQL Server], DDL"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # DDL Events
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   The following tables list the DDL events that can be used to fire a DDL trigger or event notification. Note that each event corresponds to a [!INCLUDE[tsql](../../includes/tsql-md.md)] statement or stored procedure, with the statement syntax modified to include an underscore character (_) between keywords.  
   
 > [!IMPORTANT]  
@@ -817,3 +819,4 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
  [DDL Event Groups](../../relational-databases/triggers/ddl-event-groups.md)  
   
   
+

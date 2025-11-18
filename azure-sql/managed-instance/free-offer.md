@@ -9,7 +9,7 @@ ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: how-to
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 monikerRange: "=azuresql || =azuresql-mi"
 ---
 
@@ -20,7 +20,7 @@ monikerRange: "=azuresql || =azuresql-mi"
 > - [Azure SQL Managed Instance](free-offer.md?view=azuresql&preserve-view=true)
 
 This article describes the free offer of [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md), which gets you the following capacity free of charge for the first 12 months:
-- a General Purpose or [Next-gen General Purpose (preview)](service-tiers-next-gen-general-purpose-use.md) instance
+- a General Purpose or [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) instance
 - Up to 500 databases (based on the service tier)
 - 720 vCore hours of compute every month
 - 64 GB of storage
@@ -69,7 +69,7 @@ To create your free SQL managed instance, follow these steps:
 1. Check the **Estimated costs per month** to validate the free offer is applied to your instance.
 1. For **Resource group**, either select an existing resource group from the dropdown list or select **Create new** to create a new resource group. Enter the name of your resource group, such as `myFreeMIResourceGroup` and then select **OK**.
 1. Instance details such as the name and region, are already populated with default values but you can choose to modify these values.
-1. You can choose to leave the **Compute + storage** as default, or select **Configure Managed Instance** to update the number of vCores, and change the service tier from General Purpose to [Next-gen General Purpose (preview)](service-tiers-next-gen-general-purpose-use.md).
+1. You can choose to leave the **Compute + storage** as default, or select **Configure Managed Instance** to update the number of vCores, and upgrade the service tier from General Purpose to [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md).
 1. Select your preferred authentication method. Select **Next : Networking**.
 1. On the **Networking** tab, the public endpoint is enabled by default so you can connect to the instance from any application that can access the internet. You can choose to disable the public endpoint to test a closed environment and to [connect to your instance](#connect-to-your-instance).
 1. Select **Next: Security**. You can choose to leave these options as default, or modify them as needed.
@@ -200,14 +200,14 @@ The following table describes the limits of the free SQL Managed Instance:
 |Storage     |  64 GB of data<sup>1</sup>       |
 |IOPS | Depends on file size / 300 for Next-gen General Purpose<sup>2</sup> |
 |Instances per subscription     |    1     |
-|Service tiers | General purpose, and [Next-gen General Purpose (preview)](service-tiers-next-gen-general-purpose-use.md) |
+|Service tiers | General purpose, and [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) |
 |Hardware | Standard only |
 |Backup retention     |  1-7 days for short term retention       |
 |SQL License cost     |  None     |
 |Guaranteed SLA| None|
 
 <sup>1</sup> Since system files can take up to 32 GB of storage, the available storage for user data could be less than 64 GB.
-<sup>2</sup> Free instances that use the [Next-gen General Purpose (preview)](service-tiers-next-gen-general-purpose-use.md) service tier upgrade are limited to 300 IOPS, and the IOPS slider is unavailable.
+<sup>2</sup> Free instances that use the [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) service tier upgrade are limited to 300 IOPS, and the IOPS slider is unavailable.
 
 Additionally, the following limitations apply:
 

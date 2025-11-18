@@ -9,7 +9,9 @@ ms.date: 07/29/2025
 ms.service: sql
 ms.subservice: machine-learning
 ms.topic: how-to
-monikerRange: ">=sql-server-2017||>=sql-server-linux-ver15||=azuresqldb-mi-current||=azuresqldb-current||=fabric"
+ms.custom:
+  - ignite-2025
+monikerRange: ">=sql-server-2017 || >=sql-server-linux-ver15 || =azuresqldb-mi-current || =azuresqldb-current || =fabric-sqldb"
 ---
 # Plot histograms in Python
 
@@ -23,9 +25,13 @@ This article describes how to plot data using the Python package [pandas'.hist()
 - [SQL Server for Windows](../../database-engine/install-windows/install-sql-server.md) or [for Linux](../../linux/sql-server-linux-overview.md)
 ::: moniker-end
 
-::: moniker range="=azuresqldb-current||=fabric"
+::: moniker range="=azuresqldb-current"
 - [Azure SQL Database](/azure/sql-database/sql-database-get-started-portal)
-::: moniker-end
+  ::: moniker-end
+
+::: moniker range="=fabric-sqldb"
+- [SQL database in Fabric](/fabric/database/sql/create)
+  ::: moniker-end
 
 ::: moniker range="=azuresqldb-mi-current"
 - [Azure SQL Managed Instance](/azure/azure-sql/managed-instance/instance-create-quickstart)

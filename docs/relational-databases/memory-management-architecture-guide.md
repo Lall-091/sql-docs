@@ -3,10 +3,12 @@ title: Memory Management Architecture Guide
 description: Learn about memory management architecture in SQL Server, including changes to memory management in previous versions.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/21/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: supportability
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "guide, memory management architecture"
   - "memory management architecture guide"
@@ -51,7 +53,14 @@ In a heavily loaded system under memory pressure, queries with merge join, sort,
 
 ### Conventional (virtual) memory
 
-All SQL Server editions support conventional memory on 64-bit platform. The SQL Server process can access virtual address space up to Operating System maximum on x64 architecture (SQL Server Standard Edition supports up to 128 GB). With IA64 architecture, the limit was 7 TB (IA64 not supported in [!INCLUDE [sssql11-md](../includes/sssql11-md.md)] and later versions). See [Memory Limits for Windows](/windows/win32/memory/memory-limits-for-windows-releases) for more information.
+All SQL Server editions support conventional memory on 64-bit platform. The SQL Server process can access virtual address space up to operating system maximum on x64 architecture.
+
+> [!NOTE]  
+> Starting with [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SQL Server Standard edition supports up to 256 GB. In [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] and earlier versions, SQL Server Standard edition supports up to 128 GB.
+
+With IA64 architecture, the limit was 7 TB (IA64 not supported in [!INCLUDE [sssql11-md](../includes/sssql11-md.md)] and later versions).
+
+For more information, see [Memory Limits for Windows](/windows/win32/memory/memory-limits-for-windows-releases).
 
 ### Address Windows Extensions (AWE) memory
 

@@ -8,14 +8,14 @@ ms.service: sql
 ms.subservice: table-view-index
 ms.topic: how-to
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "removing indexes"
   - "deleting indexes"
   - "dropping indexes"
   - "indexes [SQL Server], dropping"
   - "index deletions [SQL Server]"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || =fabric-sqldb"
 ---
 # Delete an index
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]

@@ -8,6 +8,9 @@ ms.date: 03/10/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - sfi-image-nochange
+  - ignite-2025
 f1_keywords:
   - "ADD SIGNATURE"
   - "ADD_SIGNATURE_TSQL"
@@ -18,12 +21,11 @@ helpviewer_keywords:
   - "digital signatures [SQL Server]"
 dev_langs:
   - "TSQL"
-ms.custom: sfi-image-nochange
 ---
 
 # ADD SIGNATURE (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Adds a digital signature to a stored procedure, function, assembly, or DML-trigger. Also adds a countersignature to a stored procedure, function, assembly, or DML-trigger.
 
@@ -275,3 +277,4 @@ DROP LOGIN Alice;
 
 - [sys.crypt_properties (Transact-SQL)](../../relational-databases/system-catalog-views/sys-crypt-properties-transact-sql.md)
 - [DROP SIGNATURE (Transact-SQL)](drop-signature-transact-sql.md)
+

@@ -7,6 +7,8 @@ ms.date: "02/24/2023"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "dm_exec_connections_TSQL"
   - "sys.dm_exec_connections_TSQL"
@@ -16,11 +18,11 @@ helpviewer_keywords:
   - "sys.dm_exec_connections dynamic management view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||=azure-sqldw-latest||=fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azure-sqldw-latest || =fabric || =fabric-sqldb"
 ---
 # sys.dm_exec_connections (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb.md)]
 
 Returns information about the connections established to this instance of the database engine and the details of each connection. Returns server wide connection information for SQL Server and Azure SQL Managed Instance. Returns connection information for the current database in Azure SQL Database. Returns connection information for all databases in the same elastic pool for databases in [elastic pools](/azure/azure-sql/database/elastic-pool-overview) in Azure SQL Database.
 
@@ -104,3 +106,4 @@ Learn more about related concepts in the following articles:
 - [sys.dm_exec_sessions (Transact-SQL)](sys-dm-exec-sessions-transact-sql.md)
 - [sys.dm_exec_sql_text (Transact-SQL)](sys-dm-exec-sql-text-transact-sql.md)
 - [sys.dm_pdw_exec_connections (Transact-SQL)](sys-dm-pdw-exec-connections-transact-sql.md)
+

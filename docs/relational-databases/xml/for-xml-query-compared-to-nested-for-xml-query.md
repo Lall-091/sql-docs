@@ -8,13 +8,15 @@ ms.date: 05/24/2024
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "FOR XML query"
   - "queries [XML in SQL Server], comparing query types"
 ---
 # FOR XML query compared to nested FOR XML query
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This article compares a single-level `FOR XML` query to a nested `FOR XML` query. One of the benefits of using nested `FOR XML` queries is that you can specify a combination of attribute-centric and element-centric XML for query results. The example demonstrates this benefit.
 
@@ -203,3 +205,4 @@ If you remove the `ELEMENTS` directive from the nested `FOR XML` query that gene
 ## Related content
 
 - [Use Nested FOR XML Queries](use-nested-for-xml-queries.md)
+

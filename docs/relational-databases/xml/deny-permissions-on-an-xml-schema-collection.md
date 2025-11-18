@@ -8,13 +8,15 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - sfi-ropc-blocked
+  - ignite-2025
 helpviewer_keywords:
   - "denying permissions [SQL Server], XML server collections"
-ms.custom: sfi-ropc-blocked
 ---
 # Deny permissions on an XML schema collection
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Permission can be denied to either create a new XML schema collection or use an existing one.
 
@@ -197,3 +199,4 @@ GO
 - [DENY Object Permissions &#40;Transact-SQL&#41;](../../t-sql/statements/deny-object-permissions-transact-sql.md)
 - [GRANT Object Permissions &#40;Transact-SQL&#41;](../../t-sql/statements/grant-object-permissions-transact-sql.md)
 - [XML Data &#40;SQL Server&#41;](../../relational-databases/xml/xml-data-sql-server.md)
+

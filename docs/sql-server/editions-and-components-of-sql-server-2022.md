@@ -4,10 +4,12 @@ description: Learn details of the features supported by the various editions of 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray
-ms.date: 10/21/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "Enterprise Edition [SQL Server]"
   - "Developer Edition [SQL Server]"
@@ -94,7 +96,7 @@ The Developer edition continues to support only 1 client for [SQL Server Distrib
 | Maximum compute capacity used by a single instance - [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] <sup>1</sup> | Operating system maximum | Limited to lesser of 4 sockets or 24 cores | Limited to lesser of 4 sockets or 16 cores | Limited to lesser of 1 socket or 4 cores | Limited to lesser of 1 socket or 4 cores |
 | Maximum compute capacity used by a single instance - [!INCLUDE [ssASnoversion](../includes/ssasnoversion-md.md)] or [!INCLUDE [ssRSnoversion](../includes/ssrsnoversion-md.md)] | Operating system maximum | Limited to lesser of 4 sockets or 24 cores | Limited to lesser of 4 sockets or 16 cores | Limited to lesser of 1 socket or 4 cores | Limited to lesser of 1 socket or 4 cores |
 | Maximum memory for buffer pool per instance of [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] | Operating System Maximum | 128&nbsp;GB | 64&nbsp;GB | 1,410&nbsp;MB | 1,410&nbsp;MB |
-| Maximum memory for Columnstore segment cache per instance of [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] | Unlimited memory | 32&nbsp;GB | 16&nbsp;GB | 352&nbsp;MB | 352&nbsp;MB |
+| Maximum memory for columnstore segment cache per instance of [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] | Unlimited memory | 32&nbsp;GB | 16&nbsp;GB | 352&nbsp;MB | 352&nbsp;MB |
 | Maximum memory-optimized data size per database in [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] | Unlimited memory | 32&nbsp;GB | 16&nbsp;GB | 352&nbsp;MB | 352&nbsp;MB |
 | Maximum memory utilized per instance of [!INCLUDE [ssASnoversion](../includes/ssasnoversion-md.md)] | Operating System Maximum | 16&nbsp;GB <sup>2</sup><br /><br />64&nbsp;GB <sup>3</sup> | N/A | N/A | N/A |
 | Maximum memory utilized per instance of [!INCLUDE [ssRSnoversion](../includes/ssrsnoversion-md.md)] | Operating System Maximum | 64&nbsp;GB | 64&nbsp;GB | 4&nbsp;GB | N/A |
@@ -216,18 +218,20 @@ SQL Server 2022 includes features for connecting to [Azure Synapse Analytics](/a
 | Intelligent Database: Batch mode memory grant feedback | Yes | No | No | No | No |
 | Intelligent Database: Interleaved execution for multi-statement table valued functions | Yes | Yes | Yes | Yes | Yes |
 | Bulk insert improvements | Yes | Yes | Yes | Yes | Yes |
-| Advanced Vector Extension (AVX) 512 integration | Yes | No | No | No | No |
+| Support for Advanced Vector Extension (AVX) 512 <sup>5</sup> | Yes | No | No | No | No |
 | Integrated acceleration and offloading (hardware) | Yes | No | No | No | No |
 | Integrated acceleration and offloading (software) | Yes | Yes | No | No | No |
 | System page latch concurrency enhancements | Yes | Yes | Yes | Yes | Yes |
 
-<sup>1</sup> In-Memory OLTP data size and Columnstore segment cache are limited to the amount of memory specified by edition in the [Scale Limits](#scale-limits) section. The degree of parallelism (DOP) for [batch mode](../relational-databases/query-processing-architecture-guide.md#batch-mode-execution) operations is limited to 2 for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Standard edition and 1 for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Web and Express editions. This refers to columnstore indexes created over disk-based tables and memory-optimized tables.
+<sup>1</sup> In-Memory OLTP data size and columnstore segment cache are limited to the amount of memory specified by edition in the [Scale Limits](#scale-limits) section. The degree of parallelism (DOP) for [batch mode](../relational-databases/query-processing-architecture-guide.md#batch-mode-execution) operations is limited to 2 for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Standard edition and 1 for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Web and Express editions. This refers to columnstore indexes created over disk-based tables and memory-optimized tables.
 
-<sup>2</sup> Aggregate Pushdown, String Predicate Pushdown, and SIMD Optimizations are [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Enterprise edition scalability enhancements. For more detail, see [What's new in columnstore indexes](../relational-databases/indexes/columnstore-indexes-what-s-new.md).
+<sup>2</sup> Aggregate pushdown, string predicate pushdown, and SIMD optimizations are [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Enterprise edition scalability enhancements. For more detail, see [What's new in columnstore indexes](../relational-databases/indexes/columnstore-indexes-what-s-new.md).
 
 <sup>3</sup> This feature isn't included in the LocalDB installation option.
 
 <sup>4</sup> Stretch Database is a deprecated feature.
+
+<sup>5</sup> Requires [trace flag 15097](../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md#tf15097).
 
 <a id="RDBMSS"></a>
 
@@ -277,6 +281,7 @@ SQL Server 2022 includes features for connecting to [Azure Synapse Analytics](/a
 
 | Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
 | --- | :---: | :---: | :---: | :---: | :---: |
+| SQL Server Management Studio (SSMS) | Yes | Yes | Yes | Yes | Yes |
 | SQL Management Objects (SMO) | Yes | Yes | Yes | Yes | Yes |
 | SQL Assessment API | Yes | Yes | Yes | Yes | Yes |
 | SQL Vulnerability Assessment | Yes | Yes | Yes | Yes | Yes |
@@ -301,6 +306,7 @@ SQL Server 2022 includes features for connecting to [Azure Synapse Analytics](/a
 | User instances | No | No | No | Yes | Yes |
 | LocalDB | No | No | No | Yes | No |
 | Dedicated admin connection | Yes | Yes | Yes | Yes <sup>1</sup> | Yes <sup>1</sup> |
+| Create new endpoints | Yes | Yes | Yes | No | No |
 | SysPrep support <sup>2</sup> | Yes | Yes | Yes | Yes | Yes |
 | PowerShell scripting support <sup>3</sup> | Yes | Yes | Yes | Yes | Yes |
 | Support for data-tier application component operations - extract, deploy, upgrade, delete | Yes | Yes | Yes | Yes | Yes |

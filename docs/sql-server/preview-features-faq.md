@@ -4,10 +4,12 @@ description: Frequently asked questions about the PREVIEW_FEATURES opt-in mechan
 author: yorek
 ms.author: damauri
 ms.reviewer: mikeray, randolphwest
-ms.date: 10/21/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: release-notes
+ms.custom:
+  - ignite-2025
 monikerRange: ">=sql-server-ver17"
 ---
 
@@ -91,4 +93,4 @@ GDR patches are orthogonal to CUs and don't affect the status of `PREVIEW_FEATUR
 
 ## Related content
 
-- [What's new in SQL Server 2025 Preview](what-s-new-in-sql-server-2025.md)
+- [What's new in SQL Server 2025](what-s-new-in-sql-server-2025.md)

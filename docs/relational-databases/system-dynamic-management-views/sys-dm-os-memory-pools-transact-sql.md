@@ -7,6 +7,8 @@ ms.date: "02/27/2023"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_os_memory_pools_TSQL"
   - "dm_os_memory_pools"
@@ -16,10 +18,10 @@ helpviewer_keywords:
   - "sys.dm_os_memory_pools dynamic management view"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.dm_os_memory_pools (Transact-SQL)
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
   Returns a row for each object store in the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. You can use this view to monitor cache memory use and to identify bad caching behavior  
   
@@ -54,3 +56,4 @@ Requires VIEW SERVER PERFORMANCE STATE permission on the server.
  
   [SQL Server Operating System Related Dynamic Management Views &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sql-server-operating-system-related-dynamic-management-views-transact-sql.md)  
   
+

@@ -11,7 +11,7 @@ ms.topic: how-to
 ms.collection:
   - data-tools
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "sql13.swb. importdac.results.f1"
   - "sql13.swb.importdac.settings.f1"
@@ -35,7 +35,7 @@ helpviewer_keywords:
   - "DAC"
   - "deploy database wizard"
   - "database deploy [SQL Server]"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # Import a BACPAC file to create a new database

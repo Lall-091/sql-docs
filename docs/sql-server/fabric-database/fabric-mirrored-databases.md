@@ -1,26 +1,27 @@
 ---
 title: "Microsoft Fabric mirrored databases"
-description: Learn about the mirrored databases in Microsoft Fabric from SQL Server, Azure SQL Database and Azure SQL Managed Instance. 
+description: Learn about the mirrored databases in Microsoft Fabric from SQL Server, Azure SQL Database and Azure SQL Managed Instance.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: imotiwala
-ms.date: 02/20/2025
+ms.date: 10/31/2025
 ms.service: fabric
 ms.topic: conceptual
-monikerRange: "=azuresqldb-current||=azuresqldb-mi-current||=fabric||>= sql-server-ver17"
 ms.custom:
-  - build-2025
+  - ignite-2025
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb || >=sql-server-ver17"
 ---
 # Microsoft Fabric mirrored databases
-[!INCLUDE [asdb-asdbmi-fabric](../../includes/applies-to-version/sqlserver2025-asdb-asdbmi-fabric.md)]
 
-You can mirror databases from SQL Server, Azure SQL Database, and Azure SQL Managed Instance to Microsoft Fabric. You can continuously replicate your existing data estate directly into Fabric's OneLake.
+[!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
+
+You can mirror databases from SQL Server (2016-2025), Azure SQL Database, and Azure SQL Managed Instance to Microsoft Fabric. You can continuously replicate your existing data estate directly into Fabric's OneLake.
 
 For more information and tutorials, see:
 
  - [Mirroring Azure SQL Database](/fabric/database/mirrored-database/azure-sql-database)
- - [Mirroring Azure SQL Managed Instance (Preview)](/fabric/database/mirrored-database/azure-sql-managed-instance)
- - [Mirroring SQL Server (Preview)](/fabric/database/mirrored-database/sql-server)
+ - [Mirroring Azure SQL Managed Instance](/fabric/database/mirrored-database/azure-sql-managed-instance)
+ - [Mirroring SQL Server](/fabric/database/mirrored-database/sql-server)
 
 For more information, see:
 
@@ -47,8 +48,6 @@ Enabling Mirroring via the Fabric portal will create a `changefeed` database use
 You can also create a [SQL database in Microsoft Fabric](sql-database-in-fabric.md). A [SQL database in Microsoft Fabric is distinct from an Azure SQL Database](/fabric/database/sql/decision-guide) or a mirrored database from Azure SQL Database, and each use similar mirroring technology to replicate data into Microsoft Fabric's OneLake. 
 
 With [SQL database in Fabric](/fabric/database/sql/overview), your data is automatically accessible from other Fabric experiences. SQL database in Microsoft Fabric, which uses the same SQL Database Engine as Microsoft SQL Server and is similar to Azure SQL Database, inherits most of the Fabric mirroring capabilities from Azure SQL Database. Your SQL database in Fabric is automatically mirrored to OneLake and presented in a read-only, queryable format. You can use all the different services in Fabric, such as running analytics with Spark, executing notebooks, data engineering, visualizing through Power BI Reports, and more.
-
-For more information, see [SQL database in Microsoft Fabric (Preview)](sql-database-in-fabric.md).
 
 ## Related content
 

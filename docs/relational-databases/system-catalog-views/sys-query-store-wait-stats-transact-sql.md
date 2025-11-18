@@ -7,6 +7,8 @@ ms.date: 06/26/2023
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.query_store_wait_stats"
   - "query_store_wait_stats"
@@ -16,13 +18,13 @@ helpviewer_keywords:
   - "sys.query_store_wait_stats catalog view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2017||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2017 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.query_store_wait_stats (Transact-SQL)
 
-[!INCLUDE[sqlserver2017-asdb](../../includes/applies-to-version/sqlserver2017-asdb.md)]
+[!INCLUDE[sqlserver2017-asdb-fabricsqldb](../../includes/applies-to-version/sqlserver2017-asdb-fabricsqldb.md)]
 
-  Contains  information about the wait information for the query.
+  Contains information about the wait information for the query.
 
 |Column name|Data type|Description|
 |-----------------|---------------|-----------------|
@@ -92,3 +94,4 @@ Learn more about Query Store in the following articles:
 - [Monitoring Performance By Using the Query Store](../../relational-databases/performance/monitoring-performance-by-using-the-query-store.md)
 - [Catalog Views (Transact-SQL)](../../relational-databases/system-catalog-views/catalog-views-transact-sql.md)
 - [Query Store Stored Procedures (Transact-SQL)](../../relational-databases/system-stored-procedures/query-store-stored-procedures-transact-sql.md)
+

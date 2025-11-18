@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan, mikeray
-ms.date: 08/14/2025
+ms.date: 11/18/2025
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -388,7 +388,7 @@ ms.topic: include
 | 10920 | 16 | No | Cannot %S_MSG user-defined function '%.\*ls'. It is being used as a resource governor classifier. |
 | 10921 | 16 | No | The '%.\*ls' %S_MSG cannot be moved out of '%.\*ls' %S_MSG. |
 | 10922 | 16 | No | %ls failed. Rerun the statement. |
-| 10923 | 16 | No | %ls failed. The resource governor is not available in this edition of SQL Server. You can manipulate resource governor metadata but you will not be able to apply resource governor configuration. Only Enterprise edition of SQL Server supports resource governor. |
+| 10923 | 16 | No | %ls failed. The resource governor is not available in this edition of SQL Server. You can manipulate resource governor metadata but you will not be able to apply resource governor configuration. |
 | 10924 | 16 | No | The pool affinity range is invalid. The lower bound %d must be less than the upper bound %d. |
 | 10925 | 16 | No | A %S_MSG value was specified more than one time in the pool affinity range list. |
 | 10926 | 16 | No | The %S_MSG range that specifies %S_MSG %d includes at least one %S_MSG that is not available to the current instance. The maximum %S_MSG number that is available to this instance is %d. |

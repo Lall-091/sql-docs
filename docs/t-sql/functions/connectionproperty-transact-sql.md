@@ -7,6 +7,8 @@ ms.date: "07/24/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "CONNECTIONPROPERTY_TSQL"
   - "CONNECTIONPROPERTY"
@@ -16,7 +18,7 @@ dev_langs:
   - "TSQL"
 ---
 # CONNECTIONPROPERTY (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 For a request that comes in to the server, this function returns information about the connection properties of the unique connection which supports that request.
   
@@ -59,3 +61,4 @@ ConnectionProperty('protocol_type') AS 'Protocol type';
 [sys.dm_exec_requests &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql.md)
   
   
+

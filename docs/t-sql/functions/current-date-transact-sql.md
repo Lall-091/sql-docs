@@ -9,7 +9,7 @@ ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "CURRENT_DATE"
   - "CURRENT_DATE_TSQL"
@@ -30,7 +30,7 @@ helpviewer_keywords:
   - "time [SQL Server], system"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-ver17 || >=sql-server-linux-ver17 || >=aps-pdw-2016 || =azuresqldb-current || =azuresqldb-mi-current"
+monikerRange: ">=sql-server-ver17 || >=sql-server-linux-ver17 || >=aps-pdw-2016 || =azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # CURRENT_DATE (Transact-SQL)
 

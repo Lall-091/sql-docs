@@ -7,11 +7,13 @@ ms.date: "04/04/2017"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "12300 (Database Engine error)"
 ---
 # MSSQLSERVER_12300
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   
 ## Details  
   
@@ -30,3 +32,4 @@ Computed columns are not supported with memory-optimized tables.
 ## See Also  
 [In-Memory OLTP &#40;In-Memory Optimization&#41;](~/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization.md)  
   
+

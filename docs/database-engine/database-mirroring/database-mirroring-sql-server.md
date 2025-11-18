@@ -7,6 +7,8 @@ ms.date: 09/02/2025
 ms.service: sql
 ms.subservice: database-mirroring
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "partners [SQL Server]"
   - "standby servers [SQL Server]"
@@ -25,14 +27,17 @@ helpviewer_keywords:
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
-> [!NOTE]  
-> [!INCLUDE [ssNoteDepFutureAvoid](../../includes/ssnotedepfutureavoid-md.md)] Use [!INCLUDE [ssHADR](../../includes/sshadr-md.md)] instead.
-> Database Mirroring in SQL Server is a distinct technology from [Microsoft Fabric Database Mirroring](/fabric/database/mirrored-database/overview).
+> [!CAUTION]
+> [!INCLUDE [ssNoteDepFutureAvoid](../../includes/ssnotedepfutureavoid-md.md)] For high availability, use [!INCLUDE [ssHADR](../../includes/sshadr-md.md)] instead.
+
+> [!IMPORTANT]
+> Database Mirroring in SQL Server is a distinct technology from [Microsoft Fabric Database Mirroring](/fabric/database/mirrored-database/overview). Mirroring to Fabric provides better analytical performance, the ability to unify your data estate with OneLake in Fabric, and open access to your data in Delta Parquet format.
+>
+> With Mirroring to Microsoft Fabric, you can continuously replicate your existing data estate directly into OneLake in Fabric, including data from SQL Server 2016+, Azure SQL Database, Azure SQL Managed Instance, Cosmos DB, Oracle, Snowflake, and more.
 
 *Database mirroring* is a solution for increasing the availability of a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] database. Mirroring is implemented on a per-database basis and works only with databases that use the full recovery model.
 
-> [!IMPORTANT]  
-> For information about support for database mirroring, restrictions, prerequisites, recommendations for configuring partner servers, and recommendations for deploying database mirroring, see [Prerequisites, Restrictions, and Recommendations for Database Mirroring](prerequisites-restrictions-and-recommendations-for-database-mirroring.md).
+For information about support for database mirroring, restrictions, prerequisites, recommendations for configuring partner servers, and recommendations for deploying database mirroring, see [Prerequisites, Restrictions, and Recommendations for Database Mirroring](prerequisites-restrictions-and-recommendations-for-database-mirroring.md).
 
 <a id="Benefits"></a>
 

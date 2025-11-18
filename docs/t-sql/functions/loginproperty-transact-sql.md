@@ -7,6 +7,8 @@ ms.date: 08/05/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "BadPasswordCount_TSQL"
   - "BadPasswordTime_TSQL"
@@ -29,11 +31,11 @@ helpviewer_keywords:
   - "LOGINPROPERTY function"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =fabric-sqldb"
 ---
 # LOGINPROPERTY (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdbmi.md)]
+[!INCLUDE [SQL Server SQLDB SQLMI FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricsqldb.md)]
 
 Returns information about login policy settings.
 
@@ -139,3 +141,4 @@ GO
 
 - [CREATE LOGIN (Transact-SQL)](../../t-sql/statements/create-login-transact-sql.md)
 - [sys.server_principals (Transact-SQL)](../../relational-databases/system-catalog-views/sys-server-principals-transact-sql.md)
+

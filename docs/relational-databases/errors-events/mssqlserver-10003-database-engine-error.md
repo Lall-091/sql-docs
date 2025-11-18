@@ -7,11 +7,13 @@ ms.date: "04/04/2017"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "10003 (Database Engine error)"
 ---
 # MSSQLSERVER_10003
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   
 ## Details  
   
@@ -34,3 +36,4 @@ Restart the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)
 [SQL Server Profiler Templates and Permissions](~/tools/sql-server-profiler/sql-server-profiler-templates-and-permissions.md)  
 [SQL Server Native Client &#40;OLE DB&#41;](~/relational-databases/native-client/ole-db/sql-server-native-client-ole-db.md)  
   
+

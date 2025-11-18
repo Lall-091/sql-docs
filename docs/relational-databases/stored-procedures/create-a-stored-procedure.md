@@ -9,12 +9,12 @@ ms.subservice: stored-procedures
 ms.topic: quickstart
 ms.custom:
   - intro-quickstart
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "new stored procedures"
   - "stored procedures [SQL Server], creating"
   - "creating stored procedures"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Create a stored procedure
 

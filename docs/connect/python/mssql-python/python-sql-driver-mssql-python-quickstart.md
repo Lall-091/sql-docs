@@ -1,15 +1,16 @@
 ---
-title: "Quickstart: Python SQL Driver - mssql-python (Preview)"
+title: "Quickstart: Python SQL Driver - mssql-python"
 description: This quickstart describes installing Python, and mssql-python then shows how to connect to and interact with a SQL database.
 author: dlevy-msft-sql
 ms.author: dlevy
 ms.reviewer: vanto, randolphwest
-ms.date: 10/30/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: quickstart-sdk
 ms.custom:
   - sfi-ropc-nochange
+  - ignite-2025
 ---
 
 # Quickstart: Connect with the mssql-python driver for Python

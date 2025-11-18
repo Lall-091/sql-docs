@@ -7,6 +7,8 @@ ms.date: "07/24/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "functions [SQL Server], cursors"
   - "cursor functions"
@@ -14,7 +16,7 @@ dev_langs:
   - "TSQL"
 ---
 # Cursor Functions (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 These scalar functions return information about cursors:
   
@@ -27,3 +29,4 @@ All cursor functions are nondeterministic. In other words, these functions do no
 ## See also
 
 [Built-in Functions &#40;Transact-SQL&#41;](~/t-sql/functions/functions.md)
+

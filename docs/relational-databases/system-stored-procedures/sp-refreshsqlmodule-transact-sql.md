@@ -8,6 +8,8 @@ ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_refreshsqlmodule_TSQL"
   - "sp_refreshsqlmodule"
@@ -23,11 +25,11 @@ helpviewer_keywords:
   - "user-defined functions [SQL Server], refreshing metadata"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azure-sqldw-latest"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azure-sqldw-latest || =fabric-sqldb"
 ---
 # sp_refreshsqlmodule (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-dedicated-poolonly](../../includes/applies-to-version/sql-asdb-asdbmi-asa-dedicated-poolonly.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-dedicated-poolonly-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-dedicated-poolonly-fabricsqldb.md)]
 
 Updates the metadata for the specified non-schema-bound stored procedure, user-defined function, view, DML trigger, database-level DDL trigger, or server-level DDL trigger in the current database. Persistent metadata for these objects, such as data types of parameters, can become outdated because of changes to their underlying objects. For example, you might see an error like `The definition for user-defined data type 'typename' has changed`. Refreshing the metadata for the module that uses the type specified in the error might resolve the problem.
 
@@ -187,3 +189,4 @@ GO
 
 - [sp_refreshview (Transact-SQL)](sp-refreshview-transact-sql.md)
 - [Database Engine stored procedures (Transact-SQL)](database-engine-stored-procedures-transact-sql.md)
+

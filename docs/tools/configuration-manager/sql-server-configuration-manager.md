@@ -3,13 +3,15 @@ title: SQL Server Configuration Manager
 description: Utilizing the SQL Server Configuration Manager client.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: randolphwest, vanto
-ms.date: 03/14/2025
+ms.reviewer: vanto
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: concept-article
 ms.collection:
   - data-tools
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "protocols [SQL Server], managing"
   - "network protocols [SQL Server], managing"
@@ -23,8 +25,6 @@ helpviewer_keywords:
   - "configuration manager [SQL Server]"
 ai-usage: ai-assisted
 monikerRange: ">=sql-server-2016"
-ms.custom:
-  - build-2025
 ---
 
 # SQL Server Configuration Manager
@@ -33,7 +33,7 @@ ms.custom:
 
 SQL Server Configuration Manager is a tool to manage the services associated with SQL Server, configure the network protocols used by SQL Server, and manage the network connectivity configuration from SQL Server client computers. In SQL Server 2022 (16.x) and later versions, you can also use SQL Server Configuration Manager to manage the Azure extension for SQL Server.
 
-SQL Server Configuration Manager is installed automatically with your SQL Server installation. It's a Microsoft Management Console (MMC) snap-in that can be accessed from the Start menu or added to any other MMC display. The MMC uses the `SQLServerManager<version>.msc` file (for example, SQLServerManager16.msc for SQL Server 2022) to open SQL Server Configuration Manager.
+SQL Server Configuration Manager is installed automatically with your SQL Server installation. It's a Microsoft Management Console (MMC) snap-in that can be accessed from the Start menu or added to any other MMC display. The MMC uses the `SQLServerManager<version>.msc` file (for example, `SQLServerManager17.msc` for SQL Server 2025) to open SQL Server Configuration Manager.
 
 | Version | Path |
 | --- | --- |
@@ -49,8 +49,7 @@ Because SQL Server Configuration Manager is a snap-in for the [!INCLUDE [msconam
 
 ## Access SQL Server Configuration Manager
 
-- **Windows 10 and Windows 11:** To open SQL Server Configuration Manager, type `SQLServerManager16.msc` (for SQL Server 2022) in the Start Page. For other versions, replace `16` with the appropriate number. You can pin SQL Server Configuration Manager to the Start Page or Task Bar by right-clicking `SQLServerManager16.msc` and selecting "Open file location." Then, right-click the file and select "Pin to Start" or "Pin to Taskbar".
-- **Windows 8:** In the Search charm, under Apps, type `SQLServerManager<version>.msc` (for example, `SQLServerManager16.msc`) and press Enter.
+In **Windows 10 and Windows 11**, to open SQL Server Configuration Manager, type `SQLServerManager17.msc` (for SQL Server 2025) in the Start Page. For other versions, replace `17` with the appropriate number. You can pin SQL Server Configuration Manager to the Start Page or Task Bar by right-clicking `SQLServerManager17.msc` and selecting "Open file location." Then, right-click the file and select "Pin to Start" or "Pin to Taskbar".
 
 SQL Server Configuration Manager and SQL Server Management Studio use Window Management Instrumentation (WMI) to view and change some server settings. WMI provides a unified way to interface with API calls and manages the registry operations requested by the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] tools. WMI also provides enhanced control and manipulation over the selected SQL services of the SQL Server Configuration Manager snap-in component. For information about configuring permissions related to WMI, see [Configure WMI to Show Server Status in SQL Server Tools](../../ssms/configure-wmi-to-show-server-status-in-sql-server-tools.md).
 
@@ -86,13 +85,13 @@ SQL Server Configuration Manager allows you to create or remove an alias, change
 - Connection Parameters - The parameters associated with the connection address for the network protocol configuration.
 
 > [!NOTE]  
-> SQL Server 2022 and later versions don't support creating aliases using SQL Server Configuration Manager. To create an alias for SQL Server 2022 and later versions, use the [SQL Server Client Network Utility tool](/previous-versions/windows/desktop/odbc/dn170508(v=vs.85)).
+> [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions don't support creating aliases using SQL Server Configuration Manager. To create an alias for [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, use the [SQL Server Client Network Utility tool](/previous-versions/windows/desktop/odbc/dn170508(v=vs.85)).
 
 The SQL Server Configuration Manager also allows you to view information about failover cluster instances, though Cluster Administrator should be used for some actions, such as starting and stopping the services.
 
 ### Available network protocols
 
-[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] supports Shared Memory, TCP/IP, and Named Pipes protocols. For information about choosing network protocols, see [Configure Client Protocols](../../database-engine/configure-windows/configure-client-protocols.md). [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] doesn't support VIA, Banyan VINES Sequenced Packet Protocol (SPP), Multiprotocol, AppleTalk, or NWLink IPX/SPX network protocols. Clients previously connecting with these protocols must select a different protocol to connect to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. You can't use SQL Server Configuration Manager to configure the WinSock proxy. To configure the WinSock proxy, see your Internet Security and Authentication Server (ISA) documentation.
+[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] supports Shared Memory, TCP/IP, and Named Pipes protocols. For information about choosing network protocols, see [Configure client protocols](../../database-engine/configure-windows/configure-client-protocols.md). [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] doesn't support VIA, Banyan VINES Sequenced Packet Protocol (SPP), Multiprotocol, AppleTalk, or NWLink IPX/SPX network protocols. Clients previously connecting with these protocols must select a different protocol to connect to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. You can't use SQL Server Configuration Manager to configure the WinSock proxy. To configure the WinSock proxy, see your Internet Security and Authentication Server (ISA) documentation.
 
 ## Related content
 

@@ -1898,6 +1898,6 @@
   - name: Stack Overflow >>
     href: https://stackoverflow.com/questions/tagged/ssis
   - name: SSIS blog >>
-    href: https://blogs.msdn.microsoft.com/ssis/
+    href: https://techcommunity.microsoft.com/category/sql-server/blog/ssis
   - name: Product feedback >>
     href: https://feedback.azure.com/forums/908035-sql-server

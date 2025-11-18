@@ -4,15 +4,15 @@ description: EDIT_DISTANCE_SIMILARITY calculates a similarity value ranging from
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: abhtiwar, wiassaf, randolphwest
-ms.date: 05/19/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
-dev_langs:
-  - "TSQL"
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric || >=sql-server-2016"
 ms.custom:
-  - build-2025
+  - ignite-2025
+dev_langs:
+  - TSQL
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb || >=sql-server-2016"
 ---
 
 # EDIT_DISTANCE_SIMILARITY (Transact-SQL) preview
@@ -23,10 +23,10 @@ ms.custom:
 
 Calculates a similarity value ranging from 0 (indicating no match) to 100 (indicating full match).
 
-> [!NOTE]
+> [!NOTE]  
 >
-> - `EDIT_DISTANCE_SIMILARITY` is currently in preview. 
-> - `EDIT_DISTANCE_SIMILARITY` currently doesn't support transpositions. 
+> - `EDIT_DISTANCE_SIMILARITY` is currently in preview.
+> - `EDIT_DISTANCE_SIMILARITY` currently doesn't support transpositions.
 > - SQL Server support for `EDIT_DISTANCE_SIMILARITY` introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
 > - `EDIT_DISTANCE_SIMILARITY` is available in Azure SQL Managed Instance with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).
 
@@ -34,18 +34,18 @@ Calculates a similarity value ranging from 0 (indicating no match) to 100 (indic
 
 ```syntaxsql
 EDIT_DISTANCE_SIMILARITY (
-    character_expression,
     character_expression
-)  
+    , character_expression
+)
 ```
 
 ## Arguments
 
 #### *character_expression*
 
-An alphanumeric expression of character data. *character_expression* can be a constant, variable, or column. The character expression cannot be of type **varchar(max)** or **nvarchar(max)**.
+An alphanumeric expression of character data. *character_expression* can be a constant, variable, or column. The character expression can't be of type **varchar(max)** or **nvarchar(max)**.
 
-## Return type
+## Return types
 
 **int**
 
@@ -53,13 +53,13 @@ An alphanumeric expression of character data. *character_expression* can be a co
 
 This function implements the Damerau-Levenshtein algorithm. If any of the inputs is NULL then the function returns a NULL value. Otherwise, the function returns an integer value from 0 to 100. The similarity value is computed as `(1 – (edit_distance / greatest(len(string1), len(string2)))) * 100`.
 
-## Example
+## Examples
 
 The following example compares two words and returns the `EDIT_DISTANCE_SIMILARITY()` value as a column, named `Distance`.
 
 ```sql
-SELECT 'Colour' AS WordUK, 
-       'Color' AS WordUS, 
+SELECT 'Colour' AS WordUK,
+       'Color' AS WordUS,
        EDIT_DISTANCE_SIMILARITY('Colour', 'Color') AS Distance;
 ```
 
@@ -75,6 +75,6 @@ For additional examples, see [Example *EDIT_DISTANCE_SIMILARITY()*](../../relati
 
 ## Related content
 
-- [EDIT_DISTANCE](edit-distance-transact-sql.md)
-- [JARO_WINKLER_DISTANCE](jaro-winkler-distance-transact-sql.md)
-- [JARO_WINKLER_SIMILARITY](jaro-winkler-similarity-transact-sql.md)
+- [EDIT_DISTANCE (Transact-SQL)](edit-distance-transact-sql.md)
+- [JARO_WINKLER_DISTANCE (Transact-SQL)](jaro-winkler-distance-transact-sql.md)
+- [JARO_WINKLER_SIMILARITY (Transact-SQL)](jaro-winkler-similarity-transact-sql.md)

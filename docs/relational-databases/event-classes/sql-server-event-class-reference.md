@@ -7,16 +7,18 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "events [SQL Server], event classes"
   - "event classes [SQL Server], listed"
   - "event classes [SQL Server]"
   - "SQL Server event classes, listed"
   - "SQL Server event classes"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # SQL Server Event Class Reference
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   [!INCLUDE[ssSqlProfiler](../../includes/sssqlprofiler-md.md)] lets you record events as they occur in an instance of the [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[ssDEnoversion](../../includes/ssdenoversion-md.md)]. The recorded events are instances of the event classes in the trace definition. In [!INCLUDE[ssSqlProfiler](../../includes/sssqlprofiler-md.md)], event classes and their event categories are available on the **Events Selection** tab of the **Trace File Properties** dialog box.  
   
  The following table describes the event categories and lists their associated event classes.  
@@ -47,3 +49,4 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
 ## See Also  
  [SQL Server Profiler](../../tools/sql-server-profiler/sql-server-profiler.md)  
   
+

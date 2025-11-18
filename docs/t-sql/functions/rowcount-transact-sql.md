@@ -8,6 +8,8 @@ ms.date: 06/06/2024
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "@@ROWCOUNT_TSQL"
   - "@@ROWCOUNT"
@@ -22,7 +24,7 @@ dev_langs:
 ---
 # @@ROWCOUNT (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Returns the number of rows affected by the last statement. If the number of rows is more than 2 billion, use [ROWCOUNT_BIG](rowcount-big-transact-sql.md).
 
@@ -79,3 +81,4 @@ GO
 
 - [System Functions (Transact-SQL)](../../relational-databases/system-functions/system-functions-category-transact-sql.md)
 - [SET ROWCOUNT (Transact-SQL)](../statements/set-rowcount-transact-sql.md)
+

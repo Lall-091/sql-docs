@@ -5,11 +5,13 @@ description: This article provides an overview of the resource limits for Azure 
 author: vladai78
 ms.author: vladiv
 ms.reviewer: mathoma, vladiv, sachinp, wiassaf, randolphwest
-ms.date: 06/18/2025
+ms.date: 11/18/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: reference
-ms.custom: references_regions
+ms.custom:
+  - references_regions
+  - ignite-2025
 ---
 # Overview of Azure SQL Managed Instance resource limits
 
@@ -41,7 +43,7 @@ Hardware generations have different characteristics, as described in the followi
 <sup>1</sup> Deploying a 2-vCore instance is only possible inside an [instance pool](instance-pools-overview.md).   
 <sup>2</sup> Dependent on [the number of vCores](#service-tier-characteristics).   
 <sup>3</sup> The [following regions](#regional-supports-for-memory-optimized-premium-series-hardware-and-for-premium-series-hardware-with-16-tb-storage) can provide 16 TB of storage, while other regions limit available storage to 5.5 TB.   
-<sup>4</sup> 16 TB for classic General Purpose. 32 TB only for [Next-gen General Purpose service tier (preview)](service-tiers-next-gen-general-purpose-use.md)
+<sup>4</sup> 16 TB for classic General Purpose. 32 TB only for [Next-gen General Purpose service tier](service-tiers-next-gen-general-purpose-use.md)
 
 > [!NOTE]  
 > If your workload requires storage sizes greater than the available resource limits for Azure SQL Managed Instance, consider the Azure SQL Database [Hyperscale service tier](../database/service-tier-hyperscale.md).
@@ -77,7 +79,7 @@ The amount of In-memory OLTP space in [Business Critical](../database/service-ti
 
 ## Service tier characteristics
 
-SQL Managed Instance has two [service tiers](service-tiers-managed-instance-vcore.md#compute-tiers): General Purpose and Business Critical. You can choose to use the upgraded [Next-gen General Purpose service tier (preview)](service-tiers-next-gen-general-purpose-use.md).
+SQL Managed Instance has two [service tiers](service-tiers-managed-instance-vcore.md#compute-tiers): General Purpose and Business Critical. You can choose to use the upgraded [Next-gen General Purpose service tier](service-tiers-next-gen-general-purpose-use.md).
 
 > [!IMPORTANT]  
 > The Business Critical service tier provides an additional built-in copy of the SQL Managed Instance (secondary replica) that can be used for read-only workload. If you can separate read-write queries and read-only/analytic/reporting queries, you're getting twice the vCores and memory for the same price. The secondary replica might lag a few seconds behind the primary instance, so it's designed to offload reporting/analytic workloads that don't need exact current state of data. In the following table, **read-only queries** are the queries that are executed on secondary replica.
@@ -222,10 +224,7 @@ Storage for database backups is allocated to support the [point-in-time restore 
 
 - **LTR**: You also have the option to configure long-term retention of full backups for up to 10 years. If you set up an LTR policy, these backups are stored in RA-GRS storage automatically, but you can control how often the backups are copied. To meet different compliance requirements, you can select different retention periods for weekly, monthly, and/or yearly backups. The configuration you choose determines how much storage is used for LTR backups. For more information, see [Long-term retention - Azure SQL Database and Azure SQL Managed Instance](../database/long-term-retention-overview.md).
 
-## Flexible memory (preview)
-
-> [!NOTE]
-> The flexible memory feature is currently in [preview](doc-changes-updates-release-notes-whats-new.md#preview). 
+## Flexible memory
 
 By default, the amount of memory allocated to Azure SQL Managed Instance is a static value determined by the selected number of vCores. The flexible memory feature for the [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) service tier allows you to change the amount of memory allocated to your managed instance without changing the number of vCores. This feature is useful for workloads that require more memory than the default allocation for a given number of vCores. 
 

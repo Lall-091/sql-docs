@@ -7,6 +7,8 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "ORIGINAL_LOGIN_TSQL"
   - "ORIGINAL_LOGIN"
@@ -20,7 +22,7 @@ dev_langs:
   - "TSQL"
 ---
 # ORIGINAL_LOGIN (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Returns the name of the login that connected to the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. You can use this function to return the identity of the original login in sessions in which there are many explicit or implicit context switches.  
   
@@ -75,3 +77,4 @@ GO
  [REVERT &#40;Transact-SQL&#41;](../../t-sql/statements/revert-transact-sql.md)  
   
   
+

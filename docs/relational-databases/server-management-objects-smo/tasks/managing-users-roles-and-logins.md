@@ -7,12 +7,12 @@ ms.date: 12/23/2024
 ms.service: sql
 ms.topic: "reference"
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "logins [SMO]"
   - "roles [SMO]"
   - "users [SMO]"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # Managing Users, Roles, and Logins

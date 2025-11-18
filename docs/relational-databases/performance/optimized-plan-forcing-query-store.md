@@ -9,12 +9,12 @@ ms.service: sql
 ms.subservice: performance
 ms.topic: conceptual
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "Query Store"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # Optimized plan forcing with Query Store

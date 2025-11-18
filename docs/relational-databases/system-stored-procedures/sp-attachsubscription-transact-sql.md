@@ -8,6 +8,8 @@ ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: replication
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_attachsubscription"
   - "sp_attachsubscription_TSQL"
@@ -18,7 +20,7 @@ dev_langs:
 ---
 # sp_attachsubscription (Transact-SQL)
 
-[!INCLUDE [sql-asdb](../../includes/applies-to-version/sql-asdb.md)]
+[!INCLUDE [sql-asdb-fabricsqldb](../../includes/applies-to-version/sql-asdb-fabricsqldb.md)]
 
 Attaches an existing subscription database to any Subscriber. This stored procedure is executed at the new Subscriber on the `master` database.
 
@@ -152,3 +154,4 @@ Only members of the **sysadmin** fixed server role can execute `sp_attachsubscri
 ## Related content
 
 - [System stored procedures (Transact-SQL)](system-stored-procedures-transact-sql.md)
+

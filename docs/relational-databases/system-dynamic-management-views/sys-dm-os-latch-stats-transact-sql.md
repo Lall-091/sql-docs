@@ -7,6 +7,8 @@ ms.date: "02/27/2023"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_os_latch_stats_TSQL"
   - "dm_os_latch_stats_TSQL"
@@ -16,10 +18,10 @@ helpviewer_keywords:
   - "sys.dm_os_latch_stats dynamic management view"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-current||>=aps-pdw-2016||=azure-sqldw-latest"
+monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-current || >=aps-pdw-2016 || =azure-sqldw-latest || =fabric-sqldb"
 ---
 # sys.dm_os_latch_stats (Transact-SQL)
-[!INCLUDE [sql-asdb-asa-asdbmi-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asa-asdbmi-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 Returns information about all latch waits organized by class. 
   
@@ -197,3 +199,4 @@ GO
 [DBCC SQLPERF &#40;Transact-SQL&#41;](../../t-sql/database-console-commands/dbcc-sqlperf-transact-sql.md)       
 [SQL Server Operating System Related Dynamic Management Views &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sql-server-operating-system-related-dynamic-management-views-transact-sql.md)       
 [SQL Server, Latches Object](../../relational-databases/performance-monitor/sql-server-latches-object.md)
+

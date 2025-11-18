@@ -9,7 +9,8 @@ ms.subservice: table-view-index
 ms.topic: conceptual
 ms.custom:
   - sfi-image-nochange
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+  - ignite-2025
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Temporal table usage scenarios
 

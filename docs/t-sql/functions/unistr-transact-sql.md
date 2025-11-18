@@ -8,6 +8,8 @@ ms.date: 07/28/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "UNISTR"
   - "UNISTR_TSQL"
@@ -17,11 +19,11 @@ helpviewer_keywords:
   - "unistr [SQL Server], UNISTR function"
 dev_langs:
   - "TSQL"
-monikerRange: "=sql-server-ver17 || =azuresqldb-current || =fabric || =azuresqldb-mi-current"
+monikerRange: "=sql-server-ver17 || =azuresqldb-current || =fabric-sqldb || =azuresqldb-mi-current"
 ---
 # UNISTR (Transact-SQL)
 
-[!INCLUDE [sqlserver2025-asdb-asmi-fabric](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
 `UNISTR` provides support for Unicode string literals by letting you specify the Unicode encoding value of characters in the string. `UNISTR` returns the Unicode characters corresponding to the input expression, as defined by the Unicode standard.
 

@@ -9,7 +9,7 @@ ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - build-2024
+  - ignite-2025
 f1_keywords:
   - "JSON_OBJECT"
   - "JSON_OBJECT_TSQL"
@@ -18,7 +18,7 @@ helpviewer_keywords:
   - "JSON, validating"
 dev_langs:
   - TSQL
-monikerRange: "=azuresqldb-current || >=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # JSON_OBJECT (Transact-SQL)
 

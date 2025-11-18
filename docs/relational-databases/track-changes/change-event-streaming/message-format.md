@@ -4,21 +4,20 @@ description: "Describes the message format for change event streaming"
 author: nzagorac-ms
 ms.author: nzagorac
 ms.reviewer: mathoma, mikeray
+ms.date: 11/18/2025
 ms.service: sql
 ms.topic: "reference"
-ms.date: 05/19/2025
-monikerRange: " = sql-server-ver17 || = sql-server-linux-ver17 "
 ms.custom:
-  - build-2025
+  - ignite-2025
+monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17"
 ---
 
 # JSON message format - change event streaming
-[!INCLUDE [_ss2025](../../../includes/applies-to-version/_ss2025.md)]
+[!INCLUDE [sqlserver2025](../../../includes/applies-to-version/sqlserver2025-asdb.md)]
 
-This article describes the JSON format of a CloudEvents message that is streamed from SQL Server to Azure Event Hubs when using the [change event streaming (CES)](overview.md) feature introduced in [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)]. 
+This article describes the JSON format of a CloudEvents message that is streamed from SQL Server to Azure Event Hubs when using the [change event streaming (CES)](overview.md) feature introduced in [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)] and Azure SQL Database.
 
-> [!NOTE]
-> Change event streaming is currently in **preview** for SQL Server 2025. 
+[!INCLUDE [change-event-streaming-preview](../../../includes/change-event-streaming-preview.md)]
 
 ## Overview
 
@@ -38,12 +37,14 @@ When applicable, the descriptions in this section are taken from [CloudEvent spe
 - **`type`**
   - Data type: String
   - Required CloudEvent attribute
-  - Contains a value that describes the type of event related to the originating occurrence. Often this attribute is used for routing, observability, or policy enforcement. The format of this is defined by the producer and might include information such as the version of the type. For more information, review [Versioning of CloudEvents](https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/primer.md).
+  - Contains a value that describes the type of event related to the originating occurrence. The format of this is defined by the producer and might include information such as the version of the type. For more information, review [Versioning of CloudEvents](https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/primer.md).
+  - For Change Event Streaming events, the type is currently: `com.microsoft.SQL.CES.DML.V{n}`, where `{n}` indicates the version of Microsoft Change Event Streaming DML event schema.
+    - The current latest schema version is 1.
 
 - **`source`**
   - Data type: String
   - Required CloudEvent attribute
-  - Identifies the context in which an event happened. Source + ID must be unique for each event.
+  - Identifies the context in which an event happened. Source + ID must be unique for each event. Currently, this field is always sent as `\/` in events streamed from SQL.
 
 - **`id`**
   - Data type: String
@@ -58,27 +59,30 @@ When applicable, the descriptions in this section are taken from [CloudEvent spe
 - **`time`**
   - Data type: Timestamp
   - Optional CloudEvent attribute
-  - Timestamp of when the occurrence happened. If the time of the occurrence can't be determined then this attribute might be set to some other time (such as the current time) by the CloudEvents producer. All producers for the same source must be consistent in this respect - either they all use the actual time of the occurrence, or they all use the same algorithm to determine the value used.
+  - UTC timestamp of when the commit happened within a SQL transaction that originally triggers a streamed event.
 
 - **datacontenttype**
   - Data type: String
   - Optional CloudEvent attribute
-  - Content type of data value. This attribute enables data to carry any type of content, whereby format and encoding might differ from that of the chosen event format. For example, an event rendered using the JSON envelope format might carry an XML payload in the data, and the consumer is informed by this attribute being set to "application/xml". The rules for how data content is rendered for different `datacontenttype` values are defined in the event format specifications; for example, the JSON event format defines the relationship in section 3.1.
+  - Content type of data value. This attribute enables data to carry any type of content, whereby format and encoding might differ from that of the chosen event format. For example, an event rendered using the JSON envelope format might carry an XML payload in the data, and the consumer is informed by this attribute being set to "application/xml". The rules for how data content is rendered for different `datacontenttype` values are defined in the event format specifications
 
 - **`operation`**
   - Data type: String
   - Extension
-  - Represents the type of SQL operation that happened.
+  - Represents the type of SQL operation that happened:
+    -  INS for inserts
+    -  UPD for updates
+    -  DEL for deletes
 
 - **`segmentindex`**
   - Data type: Integer
   - Extension attribute
-  - Segment index, that denotes the position of the message within the logical message chunks. The segment index provides information about where the message stands in the sequence of logical message fragments. In this implementation of change event streaming, this field is always present.
+  - Segment index, that denotes the position of the message within the logical message chunks. The segment index provides information about where the message stands in the sequence of logical message fragments. This field is always present. Use logicalid + segmentindex + finalsegment fields to sort the incoming events representing a large SQL payload split into multiple events.
 
 - **`finalsegment`**
   - Data type: Boolean
   - Extension attribute
-  - Tells if this segment is final segment of the sequence. In this implementation of change event streaming, this field is always present.
+  - Tells if this segment is final segment of the sequence. This field is always present and helps to identify if a SQL event that was too large for configured max message size was split into sub-events.
 
 - **`data`**
   - Data type: String

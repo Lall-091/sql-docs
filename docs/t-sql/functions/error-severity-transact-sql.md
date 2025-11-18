@@ -8,6 +8,8 @@ ms.date: 06/19/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "ERROR_SEVERITY_TSQL"
   - "ERROR_SEVERITY"
@@ -19,11 +21,11 @@ helpviewer_keywords:
   - "ERROR_SEVERITY function"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # ERROR_SEVERITY (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 This function returns the severity value of the error where an error occurs, if that error caused the `CATCH` block of a `TRY...CATCH` construct to execute.
 
@@ -131,3 +133,4 @@ ErrorNumber ErrorSeverity ErrorState  ErrorProcedure  ErrorLine   ErrorMessage
 - [RAISERROR (Transact-SQL)](../language-elements/raiserror-transact-sql.md)
 - [&#x40;&#x40;ERROR (Transact-SQL)](error-transact-sql.md)
 - [Errors and events reference (Database Engine)](../../relational-databases/errors-events/errors-and-events-reference-database-engine.md)
+

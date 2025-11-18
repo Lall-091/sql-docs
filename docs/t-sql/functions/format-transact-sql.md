@@ -8,6 +8,8 @@ ms.date: 04/18/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "FORMAT_TSQL"
   - "FORMAT"
@@ -16,12 +18,12 @@ helpviewer_keywords:
 dev_langs:
   - TSQL
 ai-usage: "ai-assisted"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =fabric || =fabric-sqldb"
 ---
 
 # FORMAT (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb.md)]
 
 Returns a value formatted with the specified format and optional culture. Use the `FORMAT` function for locale-aware formatting of date/time and number values as strings. For general data type conversions, use `CAST` or `CONVERT`.
 
@@ -273,3 +275,4 @@ SELECT FORMAT(1234567.89, 'N0') AS FormattedNumber;
 - [CAST and CONVERT (Transact-SQL)](cast-and-convert-transact-sql.md)
 - [STR (Transact-SQL)](str-transact-sql.md)
 - [String Functions (Transact-SQL)](string-functions-transact-sql.md)
+

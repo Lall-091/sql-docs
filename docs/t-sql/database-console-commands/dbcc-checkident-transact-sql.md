@@ -7,6 +7,8 @@ ms.date: 12/05/2022
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "CHECKIDENT"
   - "DBCC CHECKIDENT"
@@ -25,12 +27,12 @@ helpviewer_keywords:
   - "reporting current identity values"
 dev_langs:
   - "TSQL"
-monikerRange: "= azuresqldb-current || >= sql-server-2016 || >= sql-server-linux-2017 || = azure-sqldw-latest"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =fabric-sqldb"
 ---
 
 # DBCC CHECKIDENT (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricsqldb.md)]
 
 Checks the current identity value for the specified table in [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] and, if needed, changes the identity value. You can also use `DBCC CHECKIDENT` to manually set a new current identity value for the identity column.
 

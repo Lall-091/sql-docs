@@ -7,13 +7,13 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.topic: "reference"
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "conventions [SMO]"
   - "SMO [SQL Server], syntax conventions"
   - "syntax [SMO]"
   - "SQL Server Management Objects, syntax conventions"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # SMO Syntax Conventions
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Synapse Analytics FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricsqldb.md)]

@@ -8,6 +8,8 @@ ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sql13.TSQLSysNoExpandPortal.f1"
   - "sql13.TSQLSysNoExpandPortal.f1_TSQL"
@@ -19,11 +21,11 @@ helpviewer_keywords:
   - "system stored procedures [SQL Server]"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # System stored procedures (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-fabricse-fabricdw](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-fabricse-fabricdw.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb.md)]
 
 In [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)], many administrative and informational activities can be performed by using system stored procedures. The system stored procedures are grouped into the categories shown in the following table.
 
@@ -743,3 +745,4 @@ The following stored procedures aren't documented:
 - [Running stored procedures (OLE DB)](../native-client/ole-db/stored-procedures-running.md)
 - [Running stored procedures](../native-client-odbc-stored-procedures/running-stored-procedures.md)
 - [Database Engine stored procedures (Transact-SQL)](database-engine-stored-procedures-transact-sql.md)
+

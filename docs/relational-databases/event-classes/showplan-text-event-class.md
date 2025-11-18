@@ -7,12 +7,14 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "Showplan Text event class"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Showplan Text Event Class
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   The Showplan Text event class occurs when [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] executes a SQL statement. The information included is a subset of the information available in Showplan All, Showplan XML Statistics Profile or Showplan XML event class.  
   
  When the Showplan Text event class is included in a trace, the amount of overhead will significantly impede performance. To minimize this, limit use of this event class to traces that monitor specific problems for brief periods of time. Showplan Text will not incur as much overhead as other Showplan event classes.  
@@ -58,3 +60,4 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
  [Showplan XML Event Class](../../relational-databases/event-classes/showplan-xml-event-class.md)  
   
   
+

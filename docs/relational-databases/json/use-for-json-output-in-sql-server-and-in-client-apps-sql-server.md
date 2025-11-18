@@ -7,11 +7,13 @@ ms.reviewer: jovanpop, umajay
 ms.date: 07/23/2025
 ms.service: sql
 ms.topic: language-reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "FOR JSON, using in client apps"
   - "FOR JSON, using in SQL Server"
   - "FOR JSON, using in the SQL Database Engine"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Use FOR JSON output in the SQL Database Engine and in client apps
 

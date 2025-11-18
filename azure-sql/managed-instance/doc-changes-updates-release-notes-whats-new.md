@@ -5,15 +5,12 @@ description: Learn about the new features and documentation improvements for Azu
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: wiassaf, mathoma
-ms.date: 11/03/2025
+ms.date: 11/18/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: whats-new
 ms.custom:
-  - ignite-2023
-  - build-2024
-  - ignite-2024
-  - build-2025
+  - ignite-2025
 ---
 # What's new in Azure SQL Managed Instance?
 [!INCLUDE [appliesto-sqldb-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -38,11 +35,9 @@ The following table lists the features of Azure SQL Managed Instance that are cu
 | ---| --- |
 |[Approximate or fuzzy string matching](/sql/relational-databases/fuzzy-string-match/overview)| Check if two strings are similar, and calculate the difference between two strings. Use this capability to identify strings that might be different because of character corruption.|
 |[Database watcher for Azure SQL](../database-watcher-overview.md) | Database watcher is a managed monitoring solution for database services in the Azure SQL family. Database watcher collects in-depth workload monitoring data to give you a detailed view of database performance, configuration, and health. Learn more about [database watcher](https://aka.ms/dbwatcher-preview-announcement).|
-|[DATEADD number allows bigint](/sql/t-sql/functions/dateadd-transact-sql) | For `DATEADD (datepart , number , date )`, number can be expressed as a **bigint**.|
+|[DATEADD number allows bigint](/sql/t-sql/functions/dateadd-transact-sql) | For `DATEADD (datepart, number, date)`, number can be expressed as a **bigint**.|
 |[Endpoint policies](./service-endpoint-policies-configure.md) | Configure which Azure Storage accounts can be accessed from a SQL Managed Instance subnet. Grants an extra layer of protection against inadvertent or malicious data exfiltration.|
-|[Flexible memory](resource-limits.md#flexible-memory-preview) | Save on cost by choosing the memory allocation for your [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) instance based on your workload needs.|
 |[Modernization Advisor](../virtual-machines/modernization-advisor.md) | Use the Modernization Advisor in the Azure portal to help you determine if migrating to Azure SQL Managed Instance from a SQL Server VM saves you money or optimizes performance. |
-|[Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) | An architectural upgrade of the General Purpose service tier that uses managed disks for greater resource flexibility, and improved performance while maintaining the same baseline cost as the General Purpose service tier.  |
 |[Regular expression functions](/sql/relational-databases/regular-expressions/overview) | Regular expression (REGEX) functions return text based on values in a search pattern. |
 |[SDK-style SQL project](/sql/azure-data-studio/extensions/sql-database-project-extension-sdk-style-projects) | Use [Microsoft.Build.Sql](https://www.nuget.org/packages/Microsoft.Build.Sql) for SDK-style SQL projects in the SQL Database Projects extension in Visual Studio Code. SDK-style SQL projects are especially advantageous for applications shipped through pipelines or built in cross-platform environments.|
 |[Service Broker](/sql/database-engine/configure-windows/sql-server-service-broker) | Support for cross-instance message exchange using Service Broker between instances of Azure SQL Managed Instance, and between SQL Server and Azure SQL Managed Instance. |
@@ -56,6 +51,8 @@ The following table lists features of Azure SQL Managed Instance that have been 
 
 | Feature | GA Month | Details |
 | ---| --- |--- |
+|[Flexible memory](resource-limits.md#flexible-memory) | November 2025 | Save on cost by choosing the memory allocation for your [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) instance based on your workload needs.|
+|[Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) | November 2025 | An architectural upgrade of the General Purpose service tier that uses [Elastic SAN storage](/azure/storage/elastic-san/elastic-san-introduction) for greater resource flexibility, and improved performance while maintaining the same baseline cost as the General Purpose service tier.  |
 |[Migrate SQL Server to Azure](/sql/sql-server/azure-arc/migrate-to-azure-sql-managed-instance) | October 2025 | Migrate your SQL Server enabled by Azure Arc instance to Azure SQL Managed Instance through the Azure portal.|
 |[Optimized locking](/sql/relational-databases/performance/optimized-locking)| July 2025 | Azure SQL Managed Instance with the **Always-up-to-date** and **SQL Server 2025** [update policy](update-policy.md) now has optimized locking enabled for all user databases. |
 |[UNISTR (Transact-SQL)](/sql/t-sql/functions/unistr-transact-sql) | July 2025 | Azure SQL Managed Instance now supports the `UNISTR` T-SQL syntax for Unicode string literals.|
@@ -78,6 +75,13 @@ The following table lists features of Azure SQL Managed Instance that have been 
 
 Learn about significant changes to the Azure SQL Managed Instance documentation. For previous years, see the [What's new archive](doc-changes-updates-release-notes-whats-new-archive.md).
 
+### November
+
+| Changes | Details |
+| --- | --- |
+|**Flexible memory GA** | Save on cost by choosing the memory allocation for your [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) instance based on your workload needs. This capability is now generally available. To learn more, review [Flexible memory](resource-limits.md#flexible-memory). |
+|**Next-gen General Purpose GA** | An architectural upgrade of the General Purpose service tier that uses [Elastic SAN storage](/azure/storage/elastic-san/elastic-san-introduction) for greater resource flexibility, and improved performance while maintaining the same baseline cost as the General Purpose service tier. This upgrade to the service tier is now generally available (GA). To learn more, review [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md).|
+
 ### October 
 
 | Changes | Details |
@@ -97,7 +101,7 @@ Learn about significant changes to the Azure SQL Managed Instance documentation.
 
 | Changes | Details |
 | --- | --- |
-| **Degrees of parallelism (DOP) feedback GA** |  DOP feedback improves query performance by identifying parallelism inefficiencies for repeating queries, based on elapsed time and waits. DOP feedback is now generally available for Azure SQL Managed Instance. To learn more, see [Degrees of parallelism (DOP) feedback](/sql/relational-databases/performance/intelligent-query-processing-degree-parallelism-feedback?view=azuresqldbmi-current&preserve-view=true). For additional information, see the [Smarter Parallelism: Degree of parallelism feedback in SQL Server 2025](https://techcommunity.microsoft.com/blog/sqlserver/smarter-parallelism-degree-of-parallelism-feedback-in-sql-server-2025/4431318) blog. |
+| **Degrees of parallelism (DOP) feedback GA** |  DOP feedback improves query performance by identifying parallelism inefficiencies for repeating queries, based on elapsed time and waits. DOP feedback is now generally available for Azure SQL Managed Instance. To learn more, see [Degrees of parallelism (DOP) feedback](/sql/relational-databases/performance/intelligent-query-processing-degree-parallelism-feedback?view=azuresqldb-mi-current&preserve-view=true). For additional information, see the [Smarter Parallelism: Degree of parallelism feedback in SQL Server 2025](https://techcommunity.microsoft.com/blog/sqlserver/smarter-parallelism-degree-of-parallelism-feedback-in-sql-server-2025/4431318) blog. |
 |**Migrate SQL Server instance to Azure preview** | Migrate your SQL Server instance enabled by Azure Arc to Azure SQL Managed Instance through the Azure portal. This feature is currently in preview. Review [Migrate SQL Server instance to Azure SQL Managed Instance](/sql/sql-server/azure-arc/migrate-to-azure-sql-managed-instance) to learn more. |
 | **TLS 1.0 and 1.1 retirement FAQ** | Azure has announced that support for older TLS versions (TLS 1.0, and 1.1) ends August 31, 2025. For more information, see [TLS 1.0 and 1.1 deprecation frequently asked questions](minimal-tls-version-configure.md#upcoming-tls-10-and-11-retirement-changes-faq). Starting August 2025, versions below TLS 1.2 won't be available. |
 |**Optimized locking GA**| The [optimized locking](/sql/relational-databases/performance/optimized-locking) feature is generally available for Azure SQL Managed Instance configured with the Always-up-to-date or SQL Server 2025 [update policy](update-policy.md) and enabled for all user databases.|
@@ -110,7 +114,7 @@ Learn about significant changes to the Azure SQL Managed Instance documentation.
 | Changes | Details |
 | --- | --- |
 |**Faster management operations** | The duration of management operations have improved! To learn more, review [Management operations overview](management-operations-overview.md) and [Management operations duration](management-operations-duration.md). |
-| **Flexible memory preview** | Save on cost by choosing the memory allocation for your [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) instance based on your workload needs. This feature is currently in preview. Review [Flexible memory](resource-limits.md#flexible-memory-preview) to learn more. |
+| **Flexible memory preview** | Save on cost by choosing the memory allocation for your [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) instance based on your workload needs. This feature is currently in preview. Review [Flexible memory](resource-limits.md#flexible-memory) to learn more. |
 |**Invoke an HTTPS REST endpoint SP GA** | Use the `sp_invoke_external_rest_endpoint` stored procedure to invoke an HTTPS REST endpoint provided as an input argument to the procedure. This feature is now generally available (GA). Review [Invoke an HTTPS REST endpoint SP](/sql/relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql) to learn more. | 
 |**Reservations discount for zone redundancy** | Take advantage of a reservations discount for the zone redundancy addon for instances in the Business Critical service tier. Review [Reserved instance discount for zone redundancy](../database/reservations-discount-overview.md#reservations-for-zone-redundant-resources) to learn more. |
 |**Zone redundancy for General Purpose GA**|  Deploy your General Purpose SQL Managed Instance to multiple availability zones to improve the availability of your instance in the event of a disaster. This capability is now generally available (GA). Review [Zone redundancy for General Purpose](high-availability-sla-local-zone-redundancy.md#zone-redundant-availability) to learn more. | 
@@ -121,7 +125,7 @@ Learn about significant changes to the Azure SQL Managed Instance documentation.
 | Changes | Details |
 | --- | --- |
 | **Approximate or fuzzy string matching preview**| Check if two strings are similar, and calculate the difference between two strings. Use this capability to identify strings that might be different because of character corruption. This capability is currently in preview for Azure SQL Managed Instance. [What is fuzzy string matching?](/sql/relational-databases/fuzzy-string-match/overview)|
-| **DATEADD number allows bigint preview** | For `DATEADD (datepart , number , date )`, number can be expressed as a **bigint**. This capability is currently in preview for Azure SQL Managed Instance. For more information, see [DATEADD (Transact-SQL)](/sql/t-sql/functions/dateadd-transact-sql).|
+| **DATEADD number allows bigint preview** | For `DATEADD (datepart, number, date)`, number can be expressed as a **bigint**. This capability is currently in preview for Azure SQL Managed Instance. For more information, see [DATEADD (Transact-SQL)](/sql/t-sql/functions/dateadd-transact-sql).|
 | **Free instance GA** | The free Azure SQL Managed Instance offer is now generally available (GA), allowing you to try SQL managed instance for free, for the first 12 months after you create your instance. Review [Free SQL Managed Instance](free-offer.md) to learn more. |
 | **JSON native data type GA** |  The  [**json** data type](/sql/t-sql/data-types/json-data-type?view=azuresqlmi-current&preserve-view=true) provides new capabilities for handling semistructured data in Azure SQL Managed Instance. This data type is now generally available. |
 | **JSON aggregate functions GA** | Two [**json** aggregate functions `JSON_OBJECTAGG` and `JSON_ARRAYAGG`](/sql/relational-databases/json/json-data-sql-server?view=azuresqlmi-current&preserve-view=true#json-data-from-aggregates) enable construction of JSON objects or arrays based on an aggregate from SQL data. These JSON functions are now generally available. |

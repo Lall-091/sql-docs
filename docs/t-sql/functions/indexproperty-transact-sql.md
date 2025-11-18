@@ -8,6 +8,8 @@ ms.date: 10/31/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "INDEXPROPERTY"
   - "INDEXPROPERTY_TSQL"
@@ -17,11 +19,11 @@ helpviewer_keywords:
   - "indexes [SQL Server], properties"
 dev_langs:
   - TSQL
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # INDEXPROPERTY (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 Returns the named index or statistics property value of a specified table identification number, index or statistics name, and property name. Returns `NULL` for XML indexes.
 

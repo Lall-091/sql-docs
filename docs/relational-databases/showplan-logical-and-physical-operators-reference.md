@@ -6,6 +6,8 @@ ms.author: randolphwest
 ms.date: 09/07/2025
 ms.service: sql
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sql13.swb.showplan.leftouterjoin.f1"
   - "sql13.swb.showplan.remotedelete.f1"
@@ -132,11 +134,11 @@ helpviewer_keywords:
   - "physical operators [SQL Server]"
   - "ActualRebinds attribute"
   - "execution plans [SQL Server], reading output"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Logical and physical showplan operator reference
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Operators describe how [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] executes a query or a Data Manipulation Language (DML) statement. The query optimizer uses operators to build a query plan to create the result specified in the query, or to perform the operation specified in the DML statement. The query plan is a tree consisting of physical operators. You can view the query plan by using the `SET SHOWPLAN` statements, the graphical execution plan options in [!INCLUDE [ssManStudioFull](../includes/ssmanstudiofull-md.md)], or the Extended Events showplan events.
 
@@ -299,3 +301,4 @@ This section contains descriptions of the logical and physical operators. You ca
 | :::image type="icon" source="media/showplan-logical-and-physical-operators-reference/icon-table-spool.png" border="false"::: | **Window Spool** | The **Window Spool** operator expands each row into the set of rows that represents the window associated with it. In a query, the `OVER` clause defines the window within a query result set and a window function then computes a value for each row in the window.<br /><br />**Window Spool** is a logical and physical operator. |
 
 [!INCLUDE [sql-b-tree](../includes/sql-b-tree.md)]
+

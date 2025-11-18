@@ -1,17 +1,19 @@
 ---
-title: "SQL Server 2025 Known Issues"
-description: "Known issues, causes, and workarounds for SQL Server 2025 Preview (17.x), covering upgrades, replication, PolyBase, session behavior, platform compatibility (Windows and Linux), backup compression, and other platform-specific limitations."
+title: SQL Server 2025 Known Issues
+description: Known issues, causes, and workarounds for SQL Server 2025 (17.x), covering upgrades, replication, PolyBase, session behavior, platform compatibility (Windows and Linux), backup compression, and other platform-specific limitations.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 10/23/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: troubleshooting-known-issue
+ms.custom:
+  - ignite-2025
 monikerRange: ">=sql-server-2016"
 ---
 
-# SQL Server 2025 Preview known issues
+# SQL Server 2025 known issues
 
 [!INCLUDE [sqlserver2025](../includes/applies-to-version/sqlserver2025.md)]
 
@@ -26,11 +28,14 @@ This article describes known issues for [!INCLUDE [sssql25-md](../includes/sssql
 - [Database mail on Linux](#database-mail-on-linux)
 - [SQLPS](#sqlps)
 - [Incorrect behavior of SESSION_CONTEXT in parallel plans](#incorrect-behavior-of-session_context-in-parallel-plans)
-- [Issue when setting the backup compression algorithm to ZSTD](#setting-the-backup-compression-algorithm-to-zstd)
+- [Issue when setting the backup compression algorithm to ZSTD](#issue-when-setting-the-backup-compression-algorithm-to-zstd)
 - [Local ONNX models not supported on Linux operating systems](#local-onnx-models-not-supported-on-linux-operating-systems)
 - [PBKDF2 hashing algorithm can affect login performance](#pbkdf2-hashing-algorithm-can-affect-login-performance)
 - [Access violation exception can occur on readable secondary replicas under certain conditions](#access-violation-exception-can-occur-on-readable-secondary-replicas-under-certain-conditions)
 - [Vector index](#vector-index)
+- [SQL Server audit events don't write to the Security log](#sql-server-audit-events-dont-write-to-the-security-log)
+- [Upgrade fails if Data Quality Services is installed](#upgrade-fails-if-data-quality-services-is-installed)
+- [Full-Text Search fails to index plaintext documents larger than 25 MB](#full-text-search-fails-to-index-plaintext-documents-larger-than-25-mb)
 
 ## SQL Server 2025 installation fails when TLS 1.2 is disabled
 
@@ -38,9 +43,13 @@ This article describes known issues for [!INCLUDE [sssql25-md](../includes/sssql
 
 **Workaround**: Enable TLS 1.2 on the machine before attempting to install [!INCLUDE [sssql25-md](../includes/sssql25-md.md)].
 
-To enable TLS 1.2, set the `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols` registry entry for TLS 1.2 to `true`. 
+To enable TLS 1.2, set the following registry entry for TLS 1.2 to `true`:
 
-[Configure Windows to use TLS 1.2](../relational-databases/security/networking/connect-with-tls-1-3.md) provides a PowerShell script to enable TLS 1.2 programmatically.
+```text
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols
+```
+
+[Configure Windows to use TLS](../relational-databases/security/networking/connect-with-tls-1-3.md) provides a PowerShell script to enable TLS 1.2 programmatically.
 
 ## Windows Arm64 not supported
 
@@ -78,13 +87,13 @@ For more information, see [Limit number of logical cores per NUMA node to 64](co
 
 **Issue**: Database mail on Linux doesn't work when SQL Server is configured to enforce strict encryption.
 
-Currently, the only workaround isn't to enforce strict encryption.
+Currently, the only workaround is to not enforce strict encryption.
 
 ## SQLPS
 
 **Issue**: SQLPS.exe, the SQL Agent PowerShell subsystem, and the SQLPS PowerShell module don't work when SQL is configured to enforce strict encryption.
 
-Currently, the only workaround isn't to enforce strict encryption.
+Currently, the only workaround is to not enforce strict encryption.
 
 The SQL Server Agent job `syspolicy_purge_history` reports a failure on step 3. This job runs daily by default. An instance that doesn't enforce strict encryption doesn't reproduce this problem; another option is to disable the job.
 
@@ -93,8 +102,6 @@ The SQL Server Agent job `syspolicy_purge_history` reports a failure on step 3. 
 Queries that use the built-in `SESSION_CONTEXT` function might return incorrect results or trigger access violation (AV) dumps when executed in parallel query plans. This issue stems from the way the function interacts with parallel execution threads, particularly when the session is reset for reuse.
 
 For more information, see the [Known issues](../t-sql/functions/session-context-transact-sql.md#known-issues) section in `SESSION_CONTEXT`.
-
-<a id="setting-the-backup-compression-algorithm-to-zstd"></a>
 
 ## Issue when setting the backup compression algorithm to ZSTD
 
@@ -111,7 +118,7 @@ Use the new compression algorithm directly in the [BACKUP](../t-sql/statements/b
 
 ## Local ONNX models not supported on Linux operating systems
 
-[CREATE EXTERNAL MODEL](../t-sql/statements/create-external-model-transact-sql.md) local ONNX models hosted directly on the SQL Server aren't currently available for Linux on [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] RC 1.
+[CREATE EXTERNAL MODEL](../t-sql/statements/create-external-model-transact-sql.md) local ONNX models hosted directly on the SQL Server aren't currently available for Linux on [!INCLUDE [sssql25-md](../includes/sssql25-md.md)].
 
 ## PBKDF2 hashing algorithm can affect login performance
 
@@ -145,17 +152,84 @@ ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY
     SET PARAMETER_SENSITIVE_PLAN_OPTIMIZATION = OFF;
 ```
 
-## Vector index
+## SQL Server audit events don't write to the Security log
 
-Currently, when you create a vector index on some datasets, it might return the following errors:
+Assume that you configured multiple [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] audit events to write to the Security log in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)]. In this scenario, you notice that all server audits, except the first server audit, don't write. Additionally, when you add the second server audit, you might receive an error that resembles the following message in the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] error log:
 
-- Error 9829: `STRING_AGG aggregation result exceeded the limit of 8000 bytes. Use LOB types to avoid result truncation.`
-- 42234: `Internal SQL error during DiskANN graph build`
+```output
+Error: 33204, Severity: 17, State: 1.
+SQL Server Audit could not write to the security log.
+```
 
 A fix has been identified and will be part of a future release of [!INCLUDE [sssql25-md](../includes/sssql25-md.md)].
 
+**Workaround**: Use one of the following methods:
+
+- Write audit events to a file instead of the SQL Server Security log.
+
+- To let multiple server audits write to the Security log, change this registry subkey value from `0` to `1`:
+
+  ```text
+  HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\Security\MSSQL$<InstanceName>$Audit\EventSourceFlags
+  ```
+
+  Server audits must be restarted for the new registry setting to take effect:
+
+  ```sql
+  ALTER SERVER AUDIT [AuditName] WITH (STATE = OFF);
+  GO
+  ALTER SERVER AUDIT [AuditName] WITH (STATE = ON);
+  GO
+  ```
+
+## Vector index
+
+When you build a vector index using the `CREATE VECTOR INDEX` statement, or using the vector index via `VECTOR_SEARCH`, you get the following warning message:
+
+```output
+Warning: The join order has been enforced because a local join hint is used.
+```
+
+The warning can be safely ignored, as it doesn't affect the correctness of the results.
+
+When you use `MAXDOP` with `CREATE VECTOR INDEX` or `VECTOR_SEARCH`, the value set for `MAXDOP` is ignored. To set the desired value for `MAXDOP`, set the server-level `max degree of parallelism` configuration option instead. For more information, see [Server configuration: max degree of parallelism](../database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md) or the database-level `MAXDOP` option in [ALTER DATABASE SCOPED CONFIGURATION](../t-sql/statements/alter-database-scoped-configuration-transact-sql.md).
+
+## Upgrade fails if Data Quality Services is installed
+
+If Data Quality Services is installed and you upgrade your [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance to [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], the upgrade fails during the Feature Rules step of the SQL Server Upgrade wizard.
+
+:::image type="content" source="media/sql-server-2025-known-issues/upgrade-error-data-quality-services.png" alt-text="Screenshot of SQL Server Upgrade Feature Rules screen, with the Data Quality Services highlighted in red.":::
+
+**Workaround**: Use the `/IACCEPTDQUNINSTALL` parameter from the command line. For more information, see [Upgrade parameters](../database-engine/install-windows/install-sql-server-from-the-command-prompt.md#upgrade-parameters) in the article [Install, configure, or uninstall SQL Server on Windows from the command prompt](../database-engine/install-windows/install-sql-server-from-the-command-prompt.md).
+
+You can also run a full unattended upgrade from the command line, as long as you include the `/IACCEPTDQUNINSTALL` parameter.
+
+## Full-Text Search fails to index plaintext documents larger than 25 MB
+
+If you try to index a plaintext document larger than 25 MB, you see the symbolic error `FILTER_E_PARTIALLY_FILTERED` in the crawl log:
+
+```output
+Error '0x8004173e: The document was too large to filter in its entirety. Portions of the document were not emitted.' occurred during full-text index population for table or indexed view ...
+```
+
+> [!NOTE]  
+> Plaintext documents include documents with a `class_id` of `{C1243CA0-BF96-11CD-B579-08002B30BFEB}`, as reported by [sys.fulltext_document_types](../relational-databases/system-catalog-views/sys-fulltext-document-types-transact-sql.md).
+
+**Workaround**: Configure the maximum file size in the Windows registry:
+
+> [!WARNING]  
+> [!INCLUDE [ssnoteregistry-md](../includes/ssnoteregistry-md.md)]
+
+Edit the DWORD value `MaxTextFilterBytes`, which is located in `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\ContentIndex`. For example, to remove the size limit entirely from the command line with [`reg add`](/windows-server/administration/windows-commands/reg-add), run the following command:
+
+```console
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\ContentIndex" /v MaxTextFilterBytes /t REG_DWORD /d ffffffff
+```
+
+After updating the registry value, re-issue the Full-Text crawl.
+
 ## Related content
 
-- [What's new in SQL Server 2025 Preview](what-s-new-in-sql-server-2025.md)
-- [SQL Server 2025 Preview release notes](sql-server-2025-release-notes.md)
-- [Breaking changes to Database Engine features in SQL Server 2025 Preview](../database-engine/breaking-changes-to-database-engine-features-in-sql-server-2025.md)
+- [What's new in SQL Server 2025](what-s-new-in-sql-server-2025.md)
+- [SQL Server 2025 release notes](sql-server-2025-release-notes.md)
+- [Breaking changes to Database Engine features in SQL Server 2025](../database-engine/breaking-changes-to-database-engine-features-in-sql-server-2025.md)

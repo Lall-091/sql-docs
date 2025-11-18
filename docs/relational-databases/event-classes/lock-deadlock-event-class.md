@@ -7,12 +7,16 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
-  - "Deadlock event class"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+  - "Lock:Deadlock event class"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Lock:Deadlock Event Class
- [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
+
+ [!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
+
   The Lock:Deadlock event class is produced when an attempt to acquire a lock is canceled because the attempt was part of a deadlock and was chosen as the deadlock victim.  
   
  Use the Lock:Deadlock event class to monitor when deadlocks occur and which objects are involved. You can use this information to determine if deadlocks are significantly affecting the performance of your application. You can then examine the application code to determine if you can make changes to minimize deadlocks.  
@@ -57,3 +61,4 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
  [sys.dm_tran_locks &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql.md)  
   
   
+

@@ -7,6 +7,8 @@ ms.date: "05/10/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "DISABLE_TSQL"
   - "DISABLE"
@@ -22,7 +24,7 @@ dev_langs:
   - "TSQL"
 ---
 # DISABLE TRIGGER (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Disables a trigger.  
   
@@ -115,3 +117,4 @@ GO
  [sys.triggers &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-triggers-transact-sql.md)  
   
   
+

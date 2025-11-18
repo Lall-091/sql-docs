@@ -8,6 +8,8 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "XDR schemas [SQL Server]"
   - "inline XDR schema generation [SQL Server]"
@@ -16,7 +18,7 @@ helpviewer_keywords:
 ---
 # Generate an inline XDR schema
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 The **XMLDATA** directive in FOR XML returns an inline XDR schema together with the query result. However, the XDR schema doesn't support all the new data types and other enhancements introduced in [!INCLUDE[ssVersion2005](../../includes/ssversion2005-md.md)] and later versions. Instead, you can request an inline XSD schema by using [the XMLSCHEMA directive](../../relational-databases/xml/generate-an-inline-xsd-schema.md).
 
@@ -34,3 +36,4 @@ Also note the following about the inline XDR schema support:
   - Base 64 encoding is used when **binary base64** is specified.
 
   - URL encoding is used in AUTO mode when **binary base64** isn't specified.
+

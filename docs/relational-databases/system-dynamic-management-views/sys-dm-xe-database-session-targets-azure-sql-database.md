@@ -6,9 +6,11 @@ ms.author: randolphwest
 ms.date: 07/29/2025
 ms.service: azure-sql-database
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.dm_xe_database_session_targets
 [!INCLUDE [Azure SQL Database and Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/asdb-asmi-fabricsqldb.md)]

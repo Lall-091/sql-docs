@@ -9,7 +9,7 @@ ms.subservice: performance
 ms.topic: conceptual
 ms.update-cycle: 1825-days
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "HASH join"
   - "NESTED LOOPS join"
@@ -17,7 +17,7 @@ helpviewer_keywords:
   - "ADAPTIVE join"
   - "joins [SQL Server], about joins"
   - "join hints [SQL Server]"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Joins (SQL Server)
 

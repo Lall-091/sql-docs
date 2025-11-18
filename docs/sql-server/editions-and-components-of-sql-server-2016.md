@@ -5,10 +5,12 @@ description: This article describes features supported by the various editions o
 author: "MikeRayMSFT"
 ms.author: "mikeray"
 ms.reviewer: randolphwest
-ms.date: 09/02/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "Enterprise Edition [SQL Server]"
   - "Developer Edition [SQL Server]"
@@ -193,9 +195,9 @@ The Developer edition continues to support only 1 client for [SQL Server Distrib
 | Advanced Scanning | Yes | No | No | No | No |
 | Delayed Durability | Yes | Yes | Yes | Yes | Yes |
 
-<sup>1</sup> In-Memory OLTP data size and Columnstore segment cache are limited to the amount of memory specified by edition in the Scale Limits section. The max degree of parallelism is limited. The degree of process parallelism (DOP) for an index build is limited to 2 DOP for the Standard Edition and 1 DOP for the Web and Express Editions. This refers to columnstore indexes created over disk-based tables and memory-optimized tables.
+<sup>1</sup> In-Memory OLTP data size and columnstore segment cache are limited to the amount of memory specified by edition in the Scale Limits section. The max degree of parallelism is limited. The degree of process parallelism (DOP) for an index build is limited to 2 DOP for the Standard Edition and 1 DOP for the Web and Express Editions. This refers to columnstore indexes created over disk-based tables and memory-optimized tables.
 
-<sup>2</sup> Applies to [!INCLUDE [sssql15-md](../includes/sssql16-md.md)] SP1 as part of creating a Common Programmability Surface Area (CPSA) across editions. Aggregate Pushdown, String Predicate Pushdown, and SIMD Optimizations are [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Enterprise Edition scalability enhancements. For more detail, see [What's new in columnstore indexes](../relational-databases/indexes/columnstore-indexes-what-s-new.md).
+<sup>2</sup> Applies to [!INCLUDE [sssql15-md](../includes/sssql16-md.md)] SP1 as part of creating a Common Programmability Surface Area (CPSA) across editions. Aggregate pushdown, string predicate pushdown, and SIMD optimizations are [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Enterprise Edition scalability enhancements. For more detail, see [What's new in columnstore indexes](../relational-databases/indexes/columnstore-indexes-what-s-new.md).
 
 <sup>3</sup> This feature isn't included in the LocalDB installation option.
 
@@ -268,8 +270,9 @@ The Developer edition continues to support only 1 client for [SQL Server Distrib
 | User instances | No | No | No | Yes | Yes |
 | LocalDB | No | No | No | Yes | No |
 | Dedicated admin connection | Yes | Yes | Yes | Yes <sup>3</sup> | Yes <sup>3</sup> |
-| PowerShell scripting support | Yes | Yes | Yes | Yes | Yes |
+| Create new endpoints | Yes | Yes | Yes | No | No |
 | SysPrep support <sup>1</sup> | Yes | Yes | Yes | Yes | Yes |
+| PowerShell scripting support | Yes | Yes | Yes | Yes | Yes |
 | Support for data-tier application component operations - extract, deploy, upgrade, delete | Yes | Yes | Yes | Yes | Yes |
 | Policy automation (check on schedule and change) | Yes | Yes | Yes | No | No |
 | Performance data collector | Yes | Yes | Yes | No | No |

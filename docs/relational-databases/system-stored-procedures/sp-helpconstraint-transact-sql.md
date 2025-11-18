@@ -8,6 +8,8 @@ ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_helpconstraint"
   - "sp_helpconstraint_TSQL"
@@ -15,11 +17,11 @@ helpviewer_keywords:
   - "sp_helpconstraint"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sp_helpconstraint (Transact-SQL)
 
-[!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
+[!INCLUDE [SQL Server SQLDB SQLMI FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Returns a list of all constraint types, their user-defined or system-supplied name, the columns on which they're defined, and the expression that defines the constraint (for `DEFAULT` and `CHECK` constraints only).
 
@@ -83,3 +85,4 @@ EXECUTE sp_helpconstraint 'Production.Product';
 - [sys.key_constraints (Transact-SQL)](../system-catalog-views/sys-key-constraints-transact-sql.md)
 - [sys.check_constraints (Transact-SQL)](../system-catalog-views/sys-check-constraints-transact-sql.md)
 - [sys.default_constraints (Transact-SQL)](../system-catalog-views/sys-default-constraints-transact-sql.md)
+

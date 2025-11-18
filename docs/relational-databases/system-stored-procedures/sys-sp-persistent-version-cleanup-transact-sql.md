@@ -4,10 +4,12 @@ description: "Manually starts persistent version store (PVS) cleanup process, a 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: dfurman
-ms.date: 06/23/2025
+ms.date: 10/19/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_persistent_version_cleanup"
   - "sys.sp_persistent_version_cleanup"
@@ -15,11 +17,11 @@ f1_keywords:
   - "sp_persistent_version_cleanup_TSQL"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-ver15 || >=sql-server-linux-ver15 || =azuresqldb-mi-current || =azuresqldb-current"
+monikerRange: ">=sql-server-ver15 || >=sql-server-linux-ver15 || =azuresqldb-mi-current || =azuresqldb-current || =fabric-sqldb"
 ---
 # sys.sp_persistent_version_cleanup (Transact-SQL)
 
-[!INCLUDE [SQL Server 2019, ASDB, ASDBMI](../../includes/applies-to-version/sqlserver2019-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server 2019, ASDB, ASDBMI-fabricsqldb](../../includes/applies-to-version/sqlserver2019-asdb-asdbmi-fabricsqldb.md)]
 
 Manually starts persistent version store (PVS) cleanup process, a key element of accelerated database recovery (ADR). This cleaner also removes uncommitted data in PVS from aborted transactions.
 
@@ -121,3 +123,4 @@ EXECUTE sys.sp_persistent_version_cleanup;
 - [Accelerated database recovery](../accelerated-database-recovery-concepts.md)
 - [Monitor and troubleshoot accelerated database recovery](../accelerated-database-recovery-troubleshoot.md)
 - [Manage accelerated database recovery](../accelerated-database-recovery-management.md)
+

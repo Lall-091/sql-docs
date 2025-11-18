@@ -7,6 +7,8 @@ ms.date: 10/02/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.stats"
   - "stats_TSQL"
@@ -16,11 +18,11 @@ helpviewer_keywords:
   - "sys.stats catalog view"
 dev_langs:
   - TSQL
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # sys.stats (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 Contains a row for each statistics object that exists for the tables, indexes, and indexed views in the database in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. Every index has a corresponding statistics row with the same name and ID (`index_id` = `stats_id`), but not every statistics row has a corresponding index.
 
@@ -92,3 +94,4 @@ WHERE s.object_id = OBJECT_ID('HumanResources.Employee');
 - [sp_updatestats (Transact-SQL)](../system-stored-procedures/sp-updatestats-transact-sql.md)
 - [CREATE STATISTICS (Transact-SQL)](../../t-sql/statements/create-statistics-transact-sql.md)
 - [Create statistics](../statistics/create-statistics.md)
+

@@ -6,16 +6,18 @@ ms.author: mikeray
 ms.date: "03/04/2017"
 ms.service: sql
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "first triggers [SQL Server]"
   - "last triggers"
   - "DML triggers, first or last triggers"
   - "INSTEAD OF triggers"
   - "AFTER triggers"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Specify First and Last Triggers
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   You can specify that one of the AFTER triggers associated with a table be either the first AFTER trigger or the last AFTER trigger that is fired for each INSERT, DELETE, and UPDATE triggering actions. The AFTER triggers that are fired between the first and last triggers are executed in undefined order.  
   
  To specify the order for an AFTER trigger, use the **sp_settriggerorder** stored procedure. **sp_settriggerorder** has the following options.  
@@ -52,3 +54,4 @@ sp_settriggerorder @triggername = 'MyTrigger', @order = 'first', @stmttype = 'UP
  [sp_settriggerorder &#40;Transact-SQL&#41;](../../relational-databases/system-stored-procedures/sp-settriggerorder-transact-sql.md)  
   
   
+

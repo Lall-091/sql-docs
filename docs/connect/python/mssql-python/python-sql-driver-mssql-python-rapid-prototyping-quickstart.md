@@ -1,15 +1,16 @@
 ---
-title: "Quickstart: Python SQL Driver - mssql-python (Preview) Rapid Prototyping with the Python Driver for SQL Server"
+title: "Quickstart: Python SQL Driver - mssql-python Rapid Prototyping with the Python Driver for SQL Server"
 description: This quickstart describes creating prototypes reports quickly using mssql-python.
 author: dlevy-msft-sql
 ms.author: dlevy
 ms.reviewer: vanto, randolphwest
-ms.date: 10/30/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: quickstart-sdk
 ms.custom:
   - sfi-ropc-nochange
+  - ignite-2025
 ---
 
 # Quickstart: Rapid prototyping with the mssql-python driver for Python

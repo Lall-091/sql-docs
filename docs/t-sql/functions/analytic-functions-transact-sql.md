@@ -8,13 +8,15 @@ ms.date: 05/09/2022
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 dev_langs:
   - "TSQL"
-monikerRange: ">= aps-pdw-2016 || = azuresqldb-current || = azure-sqldw-latest || >= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-mi-current||=fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # Analytic functions (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-edge-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-edge-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-edge-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-edge-fabricse-fabricdw-fabricsqldb.md)]
 
 SQL Server supports these analytic functions:
 
@@ -32,3 +34,4 @@ Analytic functions calculate an aggregate value based on a group of rows. Unlike
 ## See also
 
 - [OVER Clause &#40;Transact-SQL&#41;](../../t-sql/queries/select-over-clause-transact-sql.md)
+

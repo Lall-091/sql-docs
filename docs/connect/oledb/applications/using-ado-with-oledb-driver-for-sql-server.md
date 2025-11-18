@@ -7,16 +7,18 @@ ms.date: 03/30/2022
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: "reference"
+ms.custom:
+  - sfi-ropc-nochange
+  - ignite-2025
 helpviewer_keywords:
   - "OLE DB Driver for SQL Server, ADO"
   - "data access [OLE DB Driver for SQL Server], ADO"
   - "ADO [OLE DB Driver for SQL Server]"
   - "MSOLEDBSQL, ADO"
-ms.custom: sfi-ropc-nochange
 ---
 # Using ADO with OLE DB Driver for SQL Server
 
-[!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics PDW FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 [!INCLUDE[Driver_OLEDB_Download](../../../includes/driver_oledb_download.md)]
 
@@ -171,3 +173,4 @@ In prior versions of the OLE DB provider, this code would cause an implicit conn
 ## See also
 
 [Building applications with OLE DB Driver for SQL Server](building-applications-with-oledb-driver-for-sql-server.md)
+

@@ -7,15 +7,17 @@ ms.date: "11/12/2019"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "APPROX_COUNT_DISTINCT"
 dev_langs:
   - "TSQL"
-monikerRange: ">= aps-pdw-2016 || = azuresqldb-current || = azure-sqldw-latest || >= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-mi-current||=fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # APPROX_COUNT_DISTINCT (Transact-SQL)
 
-[!INCLUDE [sqlserver2019-asdb-asdbmi-asa-fabricse-fabricdw](../../includes/applies-to-version/sqlserver2019-asdb-asdbmi-asa-fabricse-fabricdw.md)]
+[!INCLUDE [sqlserver2019-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sqlserver2019-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb.md)]
 
 This function returns the approximate number of unique non-null values in a group. 
   
@@ -89,3 +91,4 @@ P                                                                388036
 ## See also
 [Aggregate Functions &#40;Transact-SQL&#41;](../../t-sql/functions/aggregate-functions-transact-sql.md)  
 [COUNT &#40;Transact-SQL&#41;](../../t-sql/functions/count-transact-sql.md) 
+

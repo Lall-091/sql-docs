@@ -4,44 +4,41 @@ description: Returns a table of strings split, delimited by the regex pattern. I
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: abhtiwar, wiassaf, randolphwest
-ms.date: 05/19/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
-dev_langs:
-  - "TSQL"
-monikerRange: "= sql-server-ver17 || = sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
 ms.custom:
-  - build-2025
+  - ignite-2025
+dev_langs:
+  - TSQL
+monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
-# REGEXP_SPLIT_TO_TABLE preview
+# REGEXP_SPLIT_TO_TABLE
 
-[!INCLUDE [sqlserver2025-asdb-asmi-fabric](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
-
-[!INCLUDE [preview](../../includes/preview.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
 Returns a table of strings split, delimited by the regex pattern. If there's no match to the pattern, the function returns the string.
 
 ```syntaxsql
 REGEXP_SPLIT_TO_TABLE
-     (
-      string_expression,
-      pattern_expression [, flags ]
-     )
+(
+    string_expression,
+    pattern_expression [ , flags ]
+)
 ```
 
-Requires database compatibility level 170. To set database compatibility level, review [ALTER DATABASE (Transact-SQL) compatibility level](../../t-sql/statements/alter-database-transact-sql-compatibility-level.md).
+Requires database compatibility level 170. To set database compatibility level, review [ALTER DATABASE (Transact-SQL) compatibility level](../statements/alter-database-transact-sql-compatibility-level.md).
 
-> [!NOTE]
+> [!NOTE]  
 > Regular expressions are available in Azure SQL Managed Instance with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).
-
 
 ## Arguments
 
 #### *string_expression*
 
-[!INCLUDE [regexp-string-expression](../../includes/regexp-string-expression.md)] 
+[!INCLUDE [regexp-string-expression](../../includes/regexp-string-expression.md)]
 
 #### *pattern_expression*
 
@@ -64,7 +61,7 @@ Return a table split for `the quick brown fox jumps over the lazy dog`.
 
 ```sql
 SELECT *
-FROM REGEXP_SPLIT_TO_TABLE('the quick brown fox jumps over the lazy dog', '\s+');
+FROM REGEXP_SPLIT_TO_TABLE ('the quick brown fox jumps over the lazy dog', '\s+');
 ```
 
 ```output
@@ -82,5 +79,5 @@ dog    9
 
 ## Related content
 
-- [Work with regular expressions](../../relational-databases/regular-expressions/overview.md)
+- [Regular expressions](../../relational-databases/regular-expressions/overview.md)
 - [Regular expressions functions (Transact-SQL)](regular-expressions-functions-transact-sql.md)

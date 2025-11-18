@@ -8,6 +8,8 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "ColPattern [XML in SQL Server]"
   - "XML [SQL Server], mapping data"
@@ -27,7 +29,7 @@ helpviewer_keywords:
 ---
 # Examples: Use OPENXML
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 The examples in this article show how OPENXML is used to create a rowset view of an XML document. For information about the syntax of OPENXML, see [OPENXML &#40;Transact-SQL&#41;](../../t-sql/functions/openxml-transact-sql.md). The examples show all aspects of OPENXML, but don't specify metaproperties in OPENXML. For more information about how to specify metaproperties in OPENXML, see [Specify Metaproperties in OPENXML](../../relational-databases/xml/specify-metaproperties-in-openxml.md).
 
@@ -813,3 +815,4 @@ Col1        BinaryCol
 - [sp_xml_removedocument &#40;Transact-SQL&#41;](../../relational-databases/system-stored-procedures/sp-xml-removedocument-transact-sql.md)
 - [OPENXML &#40;Transact-SQL&#41;](../../t-sql/functions/openxml-transact-sql.md)
 - [OPENXML &#40;SQL Server&#41;](../../relational-databases/xml/openxml-sql-server.md)
+

@@ -8,13 +8,15 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "XML data [SQL Server], loading"
   - "loading XML data"
 ---
 # Load XML data
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb.md)]
+[!INCLUDE [SQL Server Azure SQL Database-fabricsqldb](../../includes/applies-to-version/sql-asdb-fabricsqldb.md)]
 
 You can transfer XML data into [!INCLUDE[ssnoversion](../../includes/ssnoversion-md.md)] in several ways. For example:
 
@@ -84,3 +86,4 @@ CREATE XML SCHEMA COLLECTION XMLCOLL1 AS N'<xsd:schema ... '
 ## See also
 
 - [XML Data &#40;SQL Server&#41;](../../relational-databases/xml/xml-data-sql-server.md)
+

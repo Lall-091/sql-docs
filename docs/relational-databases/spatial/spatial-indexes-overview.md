@@ -6,9 +6,11 @@ ms.author: mlandzic
 ms.date: "09/17/2021"
 ms.service: sql
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "spatial indexes [SQL Server]"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Spatial Indexes Overview
 

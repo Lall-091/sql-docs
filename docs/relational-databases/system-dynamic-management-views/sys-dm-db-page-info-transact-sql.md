@@ -8,6 +8,8 @@ ms.date: "06/19/2023"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_db_page_info"
   - "sys.dm_db_page_info_TSQL"
@@ -18,11 +20,11 @@ helpviewer_keywords:
   - "sys.dm_db_page_info dynamic management view"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-ver15"
+monikerRange: ">=sql-server-ver15 || =fabric-sqldb"
 ---
 # sys.dm_db_page_info (Transact-SQL)
 
-[!INCLUDE [sqlserver2019-asdb-asdbmi](../../includes/applies-to-version/sqlserver2019-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2019-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2019-asdb-asdbmi-fabricsqldb.md)]
 
 Returns information about a page in a database.  The function returns one row that contains the header information from the page, including the `object_id`, `index_id`, and `partition_id`.  This function replaces the need to use `DBCC PAGE` in most cases.
 
@@ -158,3 +160,4 @@ CROSS APPLY sys.dm_db_page_info(r.db_id, r.file_id, r.page_id, 'LIMITED') AS pag
 - [Database Related Dynamic Management Views (Transact-SQL)](../../relational-databases/system-dynamic-management-views/database-related-dynamic-management-views-transact-sql.md)
 - [sys.dm_exec_requests (Transact-SQL)](../../relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql.md)
 - [sys.fn_PageResCracker](../../relational-databases/system-functions/sys-fn-pagerescracker-transact-sql.md)
+

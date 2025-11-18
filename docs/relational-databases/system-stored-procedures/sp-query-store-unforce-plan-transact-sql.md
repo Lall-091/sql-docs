@@ -8,6 +8,8 @@ ms.date: 09/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SP_QUERY_STORE_UNFORCE_PLAN_TSQL"
   - "SP_QUERY_STORE_UNFORCE_PLAN"
@@ -18,11 +20,11 @@ helpviewer_keywords:
   - "sp_query_store_unforce_plan"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sp_query_store_unforce_plan (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
 
 Enables unforcing a previously forced plan for a particular query in the Query Store.
 
@@ -96,3 +98,4 @@ EXECUTE sp_query_store_unforce_plan 3, 3;
 - [Query Store catalog views (Transact-SQL)](../system-catalog-views/query-store-catalog-views-transact-sql.md)
 - [Monitor performance by using the Query Store](../performance/monitoring-performance-by-using-the-query-store.md)
 - [Best Practice with the Query Store](../performance/best-practice-with-the-query-store.md#CheckForced)
+

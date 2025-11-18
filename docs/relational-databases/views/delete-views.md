@@ -8,16 +8,18 @@ ms.date: 05/10/2023
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "dropping views"
   - "deleting views"
   - "views [SQL Server], deleting"
   - "removing views"
-monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Delete views
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 You can delete (drop) views in the [!INCLUDE [ssdenoversion-md](../../includes/ssdenoversion-md.md)] by using [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or [!INCLUDE[tsql](../../includes/tsql-md.md)]
 
@@ -72,3 +74,4 @@ Requires ALTER permission on SCHEMA or CONTROL permission on OBJECT.
 ## Next steps
 
 - [DROP VIEW (Transact-SQL)](../../t-sql/statements/drop-view-transact-sql.md)
+

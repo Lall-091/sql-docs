@@ -7,6 +7,8 @@ ms.date: "02/27/2023"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "dm_cdc_errors_TSQL"
   - "dm_cdc_errors"
@@ -19,7 +21,7 @@ dev_langs:
   - "TSQL"
 ---
 # Change Data Capture - sys.dm_cdc_errors
-[!INCLUDE [SQL Server - ASDBMI](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server - ASDBMI-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Returns one row for each error encountered during the change data capture log scan session.  
  
@@ -53,3 +55,4 @@ Requires VIEW DATABASE PERFORMANCE STATE permission on the database.
  - [sys.dm_repl_traninfo &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-repl-traninfo-transact-sql.md)  
   
   
+

@@ -8,6 +8,8 @@ ms.date: 08/07/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "COL_NAME"
   - "COL_NAME_TSQL"
@@ -18,11 +20,11 @@ helpviewer_keywords:
   - "names [SQL Server], columns"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # COL_NAME (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 This function returns the name of a table column, based on the table identification number and column identification number values of that table column.
 
@@ -90,3 +92,4 @@ BusinessEntityID    PersonType
 - [Metadata Functions (Transact-SQL)](metadata-functions-transact-sql.md)
 - [COLUMNPROPERTY (Transact-SQL)](columnproperty-transact-sql.md)
 - [COL_LENGTH (Transact-SQL)](col-length-transact-sql.md)
+

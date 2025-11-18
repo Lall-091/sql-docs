@@ -6,14 +6,16 @@ ms.author: randolphwest
 ms.date: 04/26/2024
 ms.service: sql
 ms.topic: language-reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "invoking user-defined functions"
   - "user-defined functions [SQL Server], executing"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Execute user-defined functions
 
-[!INCLUDE [SQL Server SQL Database](../../includes/applies-to-version/sql-asdb.md)]
+[!INCLUDE [SQL Server SQL Database-fabricsqldb](../../includes/applies-to-version/sql-asdb-fabricsqldb.md)]
 
 Execute a user defined function using Transact-SQL.
 
@@ -56,3 +58,4 @@ Order Status: Shipped
 
 - [User-defined functions](user-defined-functions.md)
 - [CREATE FUNCTION (Transact-SQL)](../../t-sql/statements/create-function-transact-sql.md)
+

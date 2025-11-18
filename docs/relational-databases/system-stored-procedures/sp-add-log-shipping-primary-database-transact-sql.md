@@ -1,20 +1,22 @@
 ---
 title: "sp_add_log_shipping_primary_database (Transact-SQL)"
-description: "Sets up the primary database for a log shipping configuration, including the backup job, local monitor record, and remote monitor record."
+description: Sets up the primary database for a log shipping configuration, including the backup job, local monitor record, and remote monitor record.
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 08/11/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: system-objects
-ms.topic: "reference"
+ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_add_log_shipping_primary_database"
   - "sp_add_log_shipping_primary_database_TSQL"
 helpviewer_keywords:
   - "sp_add_log_shipping_primary_database"
 dev_langs:
-  - "TSQL"
+  - TSQL
 ---
 # sp_add_log_shipping_primary_database (Transact-SQL)
 
@@ -128,16 +130,16 @@ Specifies whether a log shipping configuration uses [backup compression](../back
 
 **Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions
 
- Specifies additional connectivity options when connecting to the primary, in the form of key value pairs. **@primary_connection_options** is **nvarchar(4000)** and has the default of `NULL`. 
+Specifies additional connectivity options when connecting to the primary, in the form of key value pairs. *@primary_connection_options* is **nvarchar(4000)** and has the default of `NULL`.
 
 The following table lists the available connectivity options:
 
-|Key|Value|
-|-----------|-----------------|
-|`Encrypt`|`strict`, `mandatory`, `optional`, `true`, `false`|
-|`TrustServerCertificate`|`true`, `false`, `yes`, `no`|
-|`ServerCertificate`|Path on the filesystem to the server certificate. This has a maximum length of 260 characters.|
-|`HostNameInCertificate`|Hostname override for the certificate. This has a maximum length of 255 characters.|
+| Key | Value |
+| --- | --- |
+| `Encrypt` | `strict`, `mandatory`, `optional`, `true`, `false` |
+| `TrustServerCertificate` | `true`, `false`, `yes`, `no` |
+| `ServerCertificate` | Path on the filesystem to the server certificate. This has a maximum length of 260 characters. |
+| `HostNameInCertificate` | Hostname override for the certificate. This has a maximum length of 255 characters. |
 
 #### [ @monitor_connection_options = ] *'<key_value_pairs>;[...]'*
 
@@ -147,12 +149,12 @@ Specifies additional connectivity options for the linked server connection when 
 
 The following table lists the available connectivity options:
 
-|Key|Value|
-|-----------|-----------------|
-|`Encrypt`|`strict`, `mandatory`, `optional`, `true`, `false`|
-|`TrustServerCertificate`|`true`, `false`, `yes`, `no`|
-|`ServerCertificate`|Path on the filesystem to the server certificate. This has a maximum length of 260 characters.|
-|`HostNameInCertificate`|Hostname override for the certificate. This has a maximum length of 255 characters.|
+| Key | Value |
+| --- | --- |
+| `Encrypt` | `strict`, `mandatory`, `optional`, `true`, `false` |
+| `TrustServerCertificate` | `true`, `false`, `yes`, `no` |
+| `ServerCertificate` | Path on the filesystem to the server certificate. This has a maximum length of 260 characters. |
+| `HostNameInCertificate` | Hostname override for the certificate. This has a maximum length of 255 characters. |
 
 ## Return code values
 
@@ -182,6 +184,8 @@ Only members of the **sysadmin** fixed server role can run this procedure.
 
 ## Examples
 
+### A. Add a primary database in a log shipping configuration
+
 This example adds the database [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)] as the primary database in a log shipping configuration.
 
 ```sql
@@ -206,6 +210,8 @@ EXECUTE master.dbo.sp_add_log_shipping_primary_database
     @backup_compression = 0;
 GO
 ```
+
+### B. Add primary database with strict encryption
 
 This example adds the database [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)] as the primary database in a log shipping configuration and instructs log shipping to use the strict encryption options for both the connection to the primary instance from the log shipping executable and from the primary instance to the remote monitor instance `monitor-server`.
 
@@ -233,6 +239,37 @@ EXECUTE master.dbo.sp_add_log_shipping_primary_database
     @monitor_connection_options = N'Encrypt=Strict;';
 GO
 ```
+
+### C. Use a remote monitor with connectivity options
+
+Log shipping monitoring can break if the monitor is a remote [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] instance, when other SQL Server instances in the log shipping topology use a previous version.
+
+Once you drop the existing configuration, use the following example script to recreate the log shipping configuration with the correct *@monitor_connection_options*, for both the primary and the secondary replicas.
+
+```sql
+DECLARE @LS_BackupJobId AS UNIQUEIDENTIFIER;
+DECLARE @LS_PrimaryId AS UNIQUEIDENTIFIER;
+
+EXECUTE
+    master.dbo.sp_add_log_shipping_primary_database
+    @database = N'LogShippedDB',
+    @backup_directory = N'\\backupshare\lsbackup',
+    @backup_share = N'\\backupshare\lsbackup',
+    @backup_job_name = N'LSBackup_AdventureWorks',
+    @backup_retention_period = 4320,
+    @backup_compression = 2,
+    @monitor_server = N'LS25Monitor',
+    @monitor_server_security_mode = 1,
+    @backup_threshold = 60,
+    @threshold_alert_enabled = 1,
+    @history_retention_period = 5760,
+    @backup_job_id = @LS_BackupJobId OUTPUT,
+    @primary_id = @LS_PrimaryId OUTPUT,
+    @overwrite = 1,
+    @monitor_connection_options = N'Encrypt=Mandatory;TrustServerCertificate=Yes;';
+```
+
+For more information, see [Encryption and certificate validation behavior](../../connect/oledb/features/encryption-and-certificate-validation.md#encryption-and-certificate-validation-behavior).
 
 ## Related content
 

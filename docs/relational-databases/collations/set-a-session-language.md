@@ -6,6 +6,9 @@ ms.author: wiassaf
 ms.date: "03/16/2017"
 ms.service: sql
 ms.topic: conceptual
+ms.custom:
+  - sfi-ropc-nochange
+  - ignite-2025
 helpviewer_keywords:
   - "errors [SQL Server], international considerations"
   - "globalization [SQL Server], sessions"
@@ -18,11 +21,10 @@ helpviewer_keywords:
   - "time [SQL Server], session languages"
   - "messages [SQL Server], international considerations"
   - "server-side session language"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
-ms.custom: sfi-ropc-nochange
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Set a Session Language
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   The session language can be used to set how the following elements are displayed on the server, based on language and cultural preference:  
   
 -   The language that will be used for error and other system messages. [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] supports having multiple copies of all system error strings and messages in all the languages in which [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] is available. These messages can be viewed in the [sys.messages](../../relational-databases/system-catalog-views/messages-for-errors-catalog-views-sys-messages.md) catalog view. When you install a localized version of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], these system messages are translated for the language version that you install. By default, you also obtain the U.S. English set of these messages. Additionally, you can add user-defined messages in a specific language by using [sp_addmessage](../../relational-databases/system-stored-procedures/sp-addmessage-transact-sql.md).  
@@ -48,3 +50,4 @@ ms.custom: sfi-ropc-nochange
  For ADO.NET, use the **Current Language** parameter of the **ConnectionString** object. For more information, see the [!INCLUDE[msCoName](../../includes/msconame-md.md)] Data Access Components (MDAC) software development kit (SDK) documentation.  
   
   
+

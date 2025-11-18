@@ -8,7 +8,7 @@ ms.service: sql
 ms.subservice: performance
 ms.topic: conceptual
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "database performance [SQL Server], baselines"
   - "monitoring performance [SQL Server], baselines"
@@ -19,7 +19,7 @@ helpviewer_keywords:
   - "measurements for baseline statistics [SQL Server]"
   - "monitoring server performance [SQL Server], establishing baseline"
   - "database monitoring [SQL Server], baselines"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Establish a Performance Baseline
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]

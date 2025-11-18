@@ -10,13 +10,15 @@ ms.subservice: sql-database-projects
 ms.topic: concept-article
 ms.collection:
   - data-tools
+ms.custom:
+  - ignite-2025
 ---
 
 # SQL Database Projects extension
 
 [!INCLUDE [azure-data-studio-deprecation](../../../includes/azure-data-studio-deprecation.md)]
 
-The SQL Database Projects extension is a Visual Studio Code extension for developing SQL databases in a project-based development environment. Compatible databases include SQL Server, Azure SQL Database, Azure SQL Managed Instance, Warehouse in Fabric, and SQL database in Fabric (preview). A SQL project is a local representation of SQL objects that comprise the schema for a single database, such as tables, stored procedures, or functions. When a SQL Database project is built, the output artifact is a `.dacpac` file. New and existing databases can be updated to match the contents of the `.dacpac` by publishing the SQL Database project with the SQL Database Projects extension or by publishing the `.dacpac` with the [SqlPackage](../../sqlpackage/sqlpackage-publish.md) command line interface.
+The SQL Database Projects extension is a Visual Studio Code extension for developing SQL databases in a project-based development environment. Compatible databases include SQL Server, Azure SQL Database, Azure SQL Managed Instance, Warehouse in Fabric, and SQL database in Fabric. A SQL project is a local representation of SQL objects that comprise the schema for a single database, such as tables, stored procedures, or functions. When a SQL Database project is built, the output artifact is a `.dacpac` file. New and existing databases can be updated to match the contents of the `.dacpac` by publishing the SQL Database project with the SQL Database Projects extension or by publishing the `.dacpac` with the [SqlPackage](../../sqlpackage/sqlpackage-publish.md) command line interface.
 
 :::image type="content" source="media/sql-database-projects-extension/sql-project-summary.png" border="true" alt-text="Screenshot of Summary of SQL Database Projects containing predeployment and post-deployment scripts as well as database objects." lightbox="media/sql-database-projects-extension/sql-project-summary.png":::
 

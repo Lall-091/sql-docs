@@ -8,6 +8,9 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - sfi-ropc-nochange
+  - ignite-2025
 helpviewer_keywords:
   - "parameters [XML in SQL Server]"
   - "XML [SQL Server], ADO"
@@ -23,11 +26,10 @@ helpviewer_keywords:
   - "columns [XML in SQL Server], ADO"
   - "xml data type [SQL Server], ADO.NET"
   - "XML [SQL Server], SQL Server Native Client"
-ms.custom: sfi-ropc-nochange
 ---
 # Use XML data in applications
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This article describes the options that are available to you for working with the **xml** data type in your application. The article includes information about the following:
 
@@ -157,3 +159,4 @@ For more information and example code, see "XML Values as Command Parameters" in
 ## See also
 
 - [XML Data &#40;SQL Server&#41;](../../relational-databases/xml/xml-data-sql-server.md)
+

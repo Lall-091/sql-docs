@@ -4,10 +4,11 @@ description: Learn how to manage licensing and billing of Extended Security Upda
 author: MikeRayMSFT
 ms.author: sashan
 ms.reviewer: randolphwest, maghan
-ms.date: 10/21/2025
+ms.date: 11/18/2025
 ms.topic: conceptual
 ms.custom:
   - references_regions
+  - ignite-2025
 ---
 
 # SQL Server Extended Security Updates enabled by Azure Arc
@@ -277,10 +278,12 @@ The following table shows the ESU subscription meters (also called *SKUs*) that 
 | Standard | 2014 | Yes | Yes or no | None |
 | Evaluation | Any | Yes or no | Yes or no | None |
 | Developer | Any | Yes or no | Yes or no | None |
-| Web | Any | Not applicable | Yes or no | None |
+| Web <sup>2</sup> | Any | Not applicable | Yes or no | None |
 | Express | Any | Not applicable | Yes or no | None |
 
 <sup>1</sup> For edition projection rules, see [Metering software usage](manage-license-billing.md#usage-metering).
+
+<sup>2</sup> Web edition isn't available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions.
 
 The next table shows the meter SKUs that are used for metering and billing for active p-core ESU licenses:
 

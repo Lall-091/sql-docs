@@ -7,6 +7,8 @@ ms.date: "03/22/2016"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "DROP STATISTICS"
   - "DROP_STATISTICS_TSQL"
@@ -20,12 +22,12 @@ helpviewer_keywords:
   - "statistical information [SQL Server], removing"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||=fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 
 # DROP STATISTICS (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 Drops statistics for multiple collections within the specified tables in the current database.  
 
@@ -112,3 +114,4 @@ DROP STATISTICS dbo.Customer.CustomerStats1;
  [EVENTDATA &#40;Transact-SQL&#41;](../../t-sql/functions/eventdata-transact-sql.md)   
  [USE &#40;Transact-SQL&#41;](../../t-sql/language-elements/use-transact-sql.md)  
  [Statistics in Microsoft Fabric](/fabric/data-warehouse/statistics)
+

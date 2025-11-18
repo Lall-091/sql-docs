@@ -10,11 +10,12 @@ ms.subservice: xevents
 ms.topic: overview
 ms.custom:
   - intro-overview
+  - ignite-2025
 helpviewer_keywords:
   - "extended events [SQL Server]"
   - "xe"
   - "XEvents"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # Extended Events overview

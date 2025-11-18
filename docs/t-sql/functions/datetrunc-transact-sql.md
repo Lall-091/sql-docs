@@ -8,17 +8,19 @@ ms.date: 07/26/2024
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "DATETRUNC_TSQL"
   - "DATETRUNC"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 
 # DATETRUNC (Transact-SQL)
 
-[!INCLUDE [SQL Server 2022 Azure SQL Database Azure SQL Managed Instance FabricSE FabricDW](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricse-fabricdw.md)]
+[!INCLUDE [SQL Server 2022 Azure SQL Database Azure SQL Managed Instance FabricSE FabricDW FabricSQLDB](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricse-fabricdw-fabricsqldb.md)]
 
 The `DATETRUNC` function returns an input *date* truncated to a specified *datepart*.
 
@@ -341,3 +343,4 @@ A `DATEPART` error is thrown if the `DATETRUNC` function, or the input date data
 - [@@DATEFIRST (Transact-SQL)](datefirst-transact-sql.md)
 - [DATEPART (Transact-SQL)](datepart-transact-sql.md)
 - [Date and time data types and functions (Transact-SQL)](date-and-time-data-types-and-functions-transact-sql.md)
+

@@ -1,20 +1,23 @@
 ---
-title: "Quickstart: Use GitHub Copilot Slash Commands (Preview)"
+title: "Quickstart: Use GitHub Copilot Slash Commands"
+titleSuffix: MSSQL Extension for Visual Studio Code
 description: Learn how to use GitHub Copilot slash commands with the MSSQL extension to manage connections, explore schemas, and run SQL queries directly in the GitHub Copilot chat in Visual Studio Code.
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: randolphwest
-ms.date: 09/11/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: quickstart
 ms.collection:
   - data-tools
   - ce-skilling-ai-copilot
+ms.custom:
+  - ignite-2025
 ai-usage: ai-assisted
 ---
 
-# Quickstart: Use GitHub Copilot slash commands (Preview)
+# Quickstart: Use GitHub Copilot slash commands
 
 GitHub Copilot slash commands provide a quick, discoverable way to interact with your SQL Server databases directly from the GitHub Copilot chat in Visual Studio Code. These commands are available through the MSSQL extension's integration with GitHub Copilot, using the `@mssql` chat participant. By typing `/` in the chat input, you can see a list of supported commands that accelerate common workflows like connecting, switching databases, exploring schemas, and running queries.
 
@@ -172,14 +175,14 @@ Both approaches can be used together; slash commands speed up prompt entry, whil
 
 ## Related content
 
-- [Quickstart: Use Chat and inline GitHub Copilot suggestions (Preview)](inline-copilot-suggestions.md)
-- [Quickstart: Use GitHub Copilot Agent Mode (Preview)](agent-mode.md)
-- [Quickstart: Generate code (Preview)](code-generation.md)
-- [Quickstart: Use the Schema Explorer and designer (Preview)](schema-explorer-designer.md)
-- [Quickstart: Use the Smart Query Builder (Preview)](smart-query-builder.md)
-- [Quickstart: Query Optimizer Assistant (Preview)](query-optimizer-assistant.md)
-- [Quickstart: Use the Business Logic Explainer (Preview)](business-logic-explainer.md)
-- [Quickstart: Security Analyzer (Preview)](security-analyzer.md)
-- [Quickstart: Localization & Formatting Helper (Preview)](localization-formatting-helper.md)
-- [Quickstart: Generate data for testing and mocking (Preview)](test-and-mocking-data-generator.md)
+- [Quickstart: Use chat and inline GitHub Copilot suggestions](inline-copilot-suggestions.md)
+- [Quickstart: Use GitHub Copilot Agent Mode](agent-mode.md)
+- [Quickstart: Generate code](code-generation.md)
+- [Quickstart: Use the schema explorer and designer](schema-explorer-designer.md)
+- [Quickstart: Use the smart query builder](smart-query-builder.md)
+- [Quickstart: Query optimizer assistant](query-optimizer-assistant.md)
+- [Quickstart: Use the business logic explainer](business-logic-explainer.md)
+- [Quickstart: Security analyzer](security-analyzer.md)
+- [Quickstart: Localization and formatting helper](localization-formatting-helper.md)
+- [Quickstart: Generate data for testing and mocking](test-and-mocking-data-generator.md)
 - [Limitations and known issues](limitations-and-known-issues.md)

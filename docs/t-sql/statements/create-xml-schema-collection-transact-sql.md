@@ -8,6 +8,8 @@ ms.date: 10/20/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "CREATE XML SCHEMA COLLECTION"
   - "CREATE_XML_SCHEMA_COLLECTION_TSQL"
@@ -26,7 +28,7 @@ dev_langs:
 ---
 # CREATE XML SCHEMA COLLECTION (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Imports the schema components into a database.
 
@@ -288,3 +290,4 @@ GO
 - [EVENTDATA (Transact-SQL)](../functions/eventdata-transact-sql.md)
 - [Compare typed XML to untyped XML](../../relational-databases/xml/compare-typed-xml-to-untyped-xml.md)
 - [Requirements and limitations for XML schema collections on the server](../../relational-databases/xml/requirements-and-limitations-for-xml-schema-collections-on-the-server.md)
+

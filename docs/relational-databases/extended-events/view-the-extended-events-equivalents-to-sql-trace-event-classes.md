@@ -7,11 +7,13 @@ ms.date: 09/23/2025
 ms.service: sql
 ms.subservice: xevents
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "SQL Trace, extended events equivalents"
   - "extended events [SQL Server], SQL Trace equivalents"
   - "extended events [SQL Server], user configurable events"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # View the Extended Events Equivalents to SQL Trace Event Classes
 

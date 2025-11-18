@@ -8,6 +8,8 @@ ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_set_session_context"
   - "sp_set_session_context_TSQL"
@@ -17,11 +19,11 @@ helpviewer_keywords:
   - "sp_set_session_context"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # sp_set_session_context (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-fabricse-fabricdw](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-fabricse-fabricdw.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb.md)]
 
 Sets a key-value pair in the session context.
 
@@ -120,3 +122,4 @@ The following example shows how to set and retrieve a session context key named 
 - [Row-level security](../security/row-level-security.md)
 - [CONTEXT_INFO (Transact-SQL)](../../t-sql/functions/context-info-transact-sql.md)
 - [SET CONTEXT_INFO (Transact-SQL)](../../t-sql/statements/set-context-info-transact-sql.md)
+

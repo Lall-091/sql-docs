@@ -8,6 +8,8 @@ ms.date: 05/23/2024
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "PERCENTILE_CONT_TSQL"
   - "PERCENTILE_CONT"
@@ -16,11 +18,11 @@ helpviewer_keywords:
   - "PERCENTILE_CONT function"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # PERCENTILE_CONT (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 Calculates a percentile based on a continuous distribution of the column value in the [!INCLUDE [ssdenoversion-md](../../includes/ssdenoversion-md.md)]. The result is interpolated, and might not equal any of the specific values in the column.
 
@@ -129,3 +131,4 @@ Shipping and Receiving 9.250000      9.0000
 ## Related content
 
 - [PERCENTILE_DISC (Transact-SQL)](percentile-disc-transact-sql.md)
+

@@ -8,12 +8,14 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "names [SQL Server], columns with"
 ---
 # Columns with a name specified as a wildcard character
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 If the column name specified is a wildcard character (\*), the content of that column is inserted as if there's no column name specified. If this column is a non-**xml** type column, the column content is inserted as a text node, as shown in the following example:
 
@@ -66,3 +68,4 @@ This is the result. The XML returned by XQuery is inserted without a wrapping el
 ## See also
 
 - [Use PATH Mode with FOR XML](../../relational-databases/xml/use-path-mode-with-for-xml.md)
+

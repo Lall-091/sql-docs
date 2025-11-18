@@ -8,6 +8,8 @@ ms.date: 04/25/2024
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "PERCENT_RANK_TSQL"
   - "PERCENT_RANK"
@@ -16,11 +18,11 @@ helpviewer_keywords:
   - "analytic functions, PERCENT_RANK"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # PERCENT_RANK (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb.md)]
 
 Calculates the relative rank of a row within a group of rows in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)]. Use `PERCENT_RANK` to evaluate the relative standing of a value within a query result set or partition. `PERCENT_RANK` is similar to the [CUME_DIST](cume-dist-transact-sql.md) function.
 
@@ -94,3 +96,4 @@ Information Services   Bueno                  27.4038           0.4             
 ## Related content
 
 - [CUME_DIST (Transact-SQL)](cume-dist-transact-sql.md)
+

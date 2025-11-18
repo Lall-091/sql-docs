@@ -9,7 +9,7 @@ ms.service: sql
 ms.subservice: supportability
 ms.topic: how-to
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "pages [SQL Server], space"
   - "space [SQL Server], tables"
@@ -25,7 +25,7 @@ helpviewer_keywords:
   - "designing databases [SQL Server], estimating size"
   - "reserved free rows per page [SQL Server]"
   - "calculating table size"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Estimate the size of a table
 

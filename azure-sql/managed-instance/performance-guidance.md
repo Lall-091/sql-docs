@@ -12,7 +12,8 @@ ms.topic: best-practice
 ms.custom:
   - sqldbrb=2
   - azure-sql-split
-monikerRange: "=azuresql||=azuresql-mi"
+  - ignite-2025
+monikerRange: "=azuresql || =azuresql-mi"
 ---
 # Tune applications and databases for performance in Azure SQL Managed Instance
 [!INCLUDE [appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -272,7 +273,7 @@ Some database applications have read-heavy workloads. Caching layers might reduc
 
 ## Increase memory for your instance
 
-To improve performance of your [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) instance, you can use the [flexible memory (preview)](resource-limits.md#flexible-memory-preview) feature to choose the amount of memory you want to allocate to your instance based on your workload.
+To improve performance of your [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) instance, you can use the [flexible memory](resource-limits.md#flexible-memory) feature to choose the amount of memory you want to allocate to your instance based on your workload.
 
 ## Related content
 

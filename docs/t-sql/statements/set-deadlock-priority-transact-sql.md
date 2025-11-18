@@ -7,6 +7,8 @@ ms.date: 09/15/2022
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SET DEADLOCK_PRIORITY"
   - "DEADLOCK_PRIORITY_TSQL"
@@ -20,11 +22,11 @@ helpviewer_keywords:
   - "SET DEADLOCK_PRIORITY statement"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # SET DEADLOCK_PRIORITY (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-svrless-poolonly](../../includes/applies-to-version/sql-asdb-asdbmi-asa-svrless-poolonly.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-svrless-poolonly-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-svrless-poolonly-fabricsqldb.md)]
 
   Specifies the relative importance that the current session continue processing if it is deadlocked with another session.
 
@@ -100,3 +102,4 @@ GO
 - [@@LOCK_TIMEOUT (Transact-SQL)](../../t-sql/functions/lock-timeout-transact-sql.md)
 - [SET Statements (Transact-SQL)](../../t-sql/statements/set-statements-transact-sql.md)
 - [SET LOCK_TIMEOUT (Transact-SQL)](../../t-sql/statements/set-lock-timeout-transact-sql.md)
+

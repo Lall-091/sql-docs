@@ -7,15 +7,17 @@ ms.reviewer: randolphwest
 ms.date: 08/08/2024
 ms.service: sql
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "renaming triggers"
   - "modifying triggers"
   - "DML triggers, modifying"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Modify or Rename DML Triggers
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This article describes how to modify or rename a DML trigger in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] by using [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or [!INCLUDE [tsql](../../includes/tsql-md.md)].
 
@@ -140,3 +142,4 @@ GO
 - [sys.server_trigger_events (Transact-SQL)](../system-catalog-views/sys-server-trigger-events-transact-sql.md)
 - [sys.server_sql_modules (Transact-SQL)](../system-catalog-views/sys-server-sql-modules-transact-sql.md)
 - [sys.server_assembly_modules (Transact-SQL)](../system-catalog-views/sys-server-assembly-modules-transact-sql.md)
+

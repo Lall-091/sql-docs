@@ -8,6 +8,8 @@ ms.date: 09/04/2024
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SEQUENCES"
   - "SEQUENCES_TSQL"
@@ -16,11 +18,11 @@ helpviewer_keywords:
   - "INFORMATION_SCHEMA.SEQUENCES view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # SEQUENCES (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Returns one row for each sequence that can be accessed by the current user in the current database.
 
@@ -56,3 +58,4 @@ SELECT * FROM test.INFORMATION_SCHEMA.SEQUENCES;
 
 - [System Information Schema Views (Transact-SQL)](system-information-schema-views-transact-sql.md)
 - [sys.sequences (Transact-SQL)](../system-catalog-views/sys-sequences-transact-sql.md)
+

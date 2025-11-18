@@ -7,6 +7,8 @@ ms.date: "11/07/2022"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "dm_server_external_policy_principals_TSQL"
   - "sys.dm_server_external_policy_principals"
@@ -20,7 +22,7 @@ dev_langs:
 
 # sys.dm_server_external_policy_principals (Transact-SQL)
 
-[!INCLUDE [sqlserver2022](../../includes/applies-to-version/sqlserver2022-asdb.md)]
+[!INCLUDE [sqlserver2022-fabricsqldb](../../includes/applies-to-version/sqlserver2022-asdb-fabricsqldb.md)]
 
 Lists all database and server principals created from Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)) which are given connect permissions through external policies.
   
@@ -44,3 +46,4 @@ Principals must have the **VIEW SERVER SECURITY STATE** permission.
 - [Provision access by data owner for Azure SQL Database](/azure/purview/how-to-policies-data-owner-azure-sql-db)
 
 - [Provision access by data owner for SQL Server on Azure Arc-enabled servers](/azure/purview/how-to-policies-data-owner-arc-sql-server)
+

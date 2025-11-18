@@ -7,6 +7,8 @@ ms.date: "06/10/2016"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SET_STATISTICS_TIME_TSQL"
   - "SET STATISTICS TIME"
@@ -23,7 +25,7 @@ dev_langs:
   - "TSQL"
 ---
 # SET STATISTICS TIME (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]	
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]	
 
   Displays the number of milliseconds required to parse, compile, and execute each statement.  
   
@@ -88,3 +90,4 @@ SQL Server parse and compile time:
  [SET STATISTICS IO &#40;Transact-SQL&#41;](../../t-sql/statements/set-statistics-io-transact-sql.md)  
   
   
+

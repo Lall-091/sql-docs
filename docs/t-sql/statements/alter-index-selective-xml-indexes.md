@@ -7,11 +7,13 @@ ms.date: "05/01/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 dev_langs:
   - "TSQL"
 ---
 # ALTER INDEX (Selective XML Indexes)
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Modifies an existing selective XML index. The ALTER INDEX statement changes one or more of the following items:  
   
@@ -165,3 +167,4 @@ PAD_INDEX = ON;
  [Specify Paths and Optimization Hints for Selective XML Indexes](../../relational-databases/xml/specify-paths-and-optimization-hints-for-selective-xml-indexes.md)  
   
   
+

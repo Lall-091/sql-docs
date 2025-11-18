@@ -8,6 +8,8 @@ ms.date: 06/03/2025
 ms.service: sql
 ms.subservice: supportability
 ms.topic: concept-article
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "guide, thread and task architecture"
   - "thread and task architecture guide"
@@ -19,13 +21,11 @@ helpviewer_keywords:
   - "tasks, SQL Server"
   - "threads, SQL Server"
   - "quantum, SQL Server"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
-ms.custom:
-  - build-2025
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Thread and task architecture guide
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 ## Operating system task scheduling
 
@@ -296,3 +296,4 @@ The following table lists [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)]
 | [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Agent | Sqlagent.exe | No |
 | [!INCLUDE [ssmanstudiofull-md](../includes/ssmanstudiofull-md.md)] | Ssms.exe | No |
 | [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Setup | Setup.exe | No |
+

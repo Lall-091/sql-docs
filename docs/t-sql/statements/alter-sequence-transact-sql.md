@@ -8,6 +8,8 @@ ms.date: 10/20/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "ALTER_SEQUENCE_TSQL"
   - "ALTER SEQUENCE"
@@ -19,7 +21,7 @@ dev_langs:
 ---
 # ALTER SEQUENCE (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Modifies the arguments of an existing sequence object. If the sequence was created with the `CACHE` option, altering the sequence recreates the cache.
 
@@ -188,3 +190,4 @@ The owner realized that the **bigint** data type uses 8 bytes each time it's use
 - [NEXT VALUE FOR (Transact-SQL)](../functions/next-value-for-transact-sql.md)
 - [Sequence Numbers](../../relational-databases/sequence-numbers/sequence-numbers.md)
 - [sp_sequence_get_range (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-sequence-get-range-transact-sql.md)
+

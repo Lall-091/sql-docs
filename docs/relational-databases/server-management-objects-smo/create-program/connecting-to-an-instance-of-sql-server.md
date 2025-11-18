@@ -7,13 +7,13 @@ ms.date: 08/08/2023
 ms.service: sql
 ms.topic: "reference"
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "SQL Server Management Objects, connections"
   - "connections [SMO]"
   - "instances of SQL Server, connections"
   - "SMO [SQL Server], connections"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # Connect to an Instance of SQL Server

@@ -7,14 +7,16 @@ ms.date: 10/08/2024
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # sys.fn_stmt_sql_handle_from_sql_stmt (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
 
 Gets the `stmt_sql_handle` for a [!INCLUDE [tsql](../../includes/tsql-md.md)] statement under the given parameterization type (simple or forced). You can refer to queries stored in the Query Store by using their `stmt_sql_handle` when you know their text.
 
@@ -106,3 +108,4 @@ CROSS APPLY sys.fn_stmt_sql_handle_from_sql_stmt(qt.query_sql_text, NULL) AS fn_
 - [sp_query_store_remove_query (Transact-SQL)](../system-stored-procedures/sp-query-store-remove-query-transact-sql.md)
 - [Query Store catalog views (Transact-SQL)](../system-catalog-views/query-store-catalog-views-transact-sql.md)
 - [Monitor performance by using the Query Store](../performance/monitoring-performance-by-using-the-query-store.md)
+

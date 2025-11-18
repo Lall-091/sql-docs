@@ -5,12 +5,12 @@ description: Find out about deprecated Database Engine features that are still a
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 10/21/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: conceptual
 ms.custom:
-  - build-2025
+  - ignite-2025
 helpviewer_keywords:
   - "deprecated features [SQL Server]"
   - "Database Engine [SQL Server], backward compatibility"
@@ -28,7 +28,7 @@ monikerRange: ">=sql-server-2017 || >=sql-server-linux-2017"
 
 Features that were deprecated in prior releases are also deprecated in [!INCLUDE [sssql17-md](../includes/sssql17-md.md)]. For information about deprecated features in other versions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see:
 
-- [Deprecated Database Engine features in SQL Server 2025 (17.x) Preview](deprecated-database-engine-features-in-sql-server-2025.md)
+- [Deprecated Database Engine features in SQL Server 2025 (17.x)](deprecated-database-engine-features-in-sql-server-2025.md)
 - [Deprecated Database Engine features in SQL Server 2022 (16.x)](deprecated-database-engine-features-in-sql-server-2022.md)
 - [Deprecated Database Engine features in SQL Server 2019 (15.x)](deprecated-database-engine-features-in-sql-server-2019.md)
 - [Deprecated Database Engine features in SQL Server 2016 (13.x)](deprecated-database-engine-features-in-sql-server-2016.md)

@@ -7,6 +7,8 @@ ms.reviewer: randolphwest
 ms.date: 03/27/2025
 ms.service: sql
 ms.topic: language-reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "encryption [SQL Server], DML triggers"
   - "deferred name resolution, DML triggers"
@@ -16,11 +18,11 @@ helpviewer_keywords:
   - "DML triggers, programming"
   - "testing column changes"
   - "results [SQL Server], DML triggers"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Create DML triggers
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This article describes how to create a [!INCLUDE [tsql](../../includes/tsql-md.md)] Data Manipulation Language (DML) trigger with [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)], or the [!INCLUDE [tsql](../../includes/tsql-md.md)] `CREATE TRIGGER` statement.
 
@@ -126,3 +128,4 @@ You can use one of the following methods:
        FROM inserted);
    END;
    ```
+

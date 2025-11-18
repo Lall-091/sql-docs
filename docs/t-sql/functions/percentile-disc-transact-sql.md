@@ -8,6 +8,8 @@ ms.date: 10/20/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "PERCENTILE_DISC"
   - "PERCENTILE_DISC_TSQL"
@@ -16,12 +18,12 @@ helpviewer_keywords:
   - "analytic functions,PERCENTILE_DISC"
 dev_langs:
   - TSQL
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 
 # PERCENTILE_DISC (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 Computes a specific percentile for sorted values in an entire rowset or within a rowset's distinct partitions in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. For a given percentile value *P*, `PERCENTILE_DISC` sorts the expression values in the `ORDER BY` clause. It then returns the value with the smallest `CUME_DIST` value given (with respect to the same sort specification) that's greater than or equal to *P*. For example, `PERCENTILE_DISC (0.5)` computes the 50th percentile (that is, the median) of an expression. `PERCENTILE_DISC` calculates the percentile based on a discrete distribution of the column values. The result is equal to a specific column value.
 
@@ -125,3 +127,4 @@ Shipping and Receiving  9.250000     9.0000
 ## Related content
 
 - [PERCENTILE_CONT (Transact-SQL)](percentile-cont-transact-sql.md)
+

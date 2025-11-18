@@ -7,6 +7,8 @@ ms.date: "07/27/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "xml_schema_namespace_TSQL"
   - "xml_schema_namespace"
@@ -20,7 +22,7 @@ dev_langs:
   - "TSQL"
 ---
 # xml_schema_namespace
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Reconstructs all the schemas or a specific schema in the specified XML schema collection. This function returns an **xml** data type instance.  
   
@@ -67,3 +69,4 @@ GO
  [XML Schema Collections &#40;SQL Server&#41;](../../relational-databases/xml/xml-schema-collections-sql-server.md)  
   
   
+

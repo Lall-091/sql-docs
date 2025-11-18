@@ -4,11 +4,13 @@ description: "Editions and supported features of SQL Server 2019"
 author: "MikeRayMSFT"
 ms.author: "mikeray"
 ms.reviewer: randolphwest
-ms.date: 08/21/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: conceptual
 ms.update-cycle: 1825-days
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "Enterprise Edition [SQL Server]"
   - "Developer Edition [SQL Server]"
@@ -212,9 +214,9 @@ The Developer edition continues to support only 1 client for [SQL Server Distrib
 | Interleaved execution for multi-statement table valued functions | Yes | Yes | Yes | Yes | Yes |
 | Bulk insert improvements | Yes | Yes | Yes | Yes | Yes |
 
-<sup>1</sup> In-Memory OLTP data size and Columnstore segment cache are limited to the amount of memory specified by edition in the [Scale Limits](#Cross-BoxScaleLimits) section. The degree of parallelism (DOP) for [batch mode](../relational-databases/query-processing-architecture-guide.md#batch-mode-execution) operations is limited to 2 for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Standard edition and 1 for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Web and Express editions. This refers to columnstore indexes created over disk-based tables and memory-optimized tables.
+<sup>1</sup> In-Memory OLTP data size and columnstore segment cache are limited to the amount of memory specified by edition in the [Scale Limits](#Cross-BoxScaleLimits) section. The degree of parallelism (DOP) for [batch mode](../relational-databases/query-processing-architecture-guide.md#batch-mode-execution) operations is limited to 2 for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Standard edition and 1 for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Web and Express editions. This refers to columnstore indexes created over disk-based tables and memory-optimized tables.
 
-<sup>2</sup> Aggregate Pushdown, String Predicate Pushdown, and SIMD Optimizations are [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Enterprise edition scalability enhancements. For more detail, see [What's new in columnstore indexes](../relational-databases/indexes/columnstore-indexes-what-s-new.md).
+<sup>2</sup> Aggregate pushdown, string predicate pushdown, and SIMD optimizations are [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Enterprise edition scalability enhancements. For more detail, see [What's new in columnstore indexes](../relational-databases/indexes/columnstore-indexes-what-s-new.md).
 
 <sup>3</sup> This feature isn't included in the LocalDB installation option.
 
@@ -291,6 +293,7 @@ The Developer edition continues to support only 1 client for [SQL Server Distrib
 | User instances | No | No | No | Yes | Yes |
 | LocalDB | No | No | No | Yes | No |
 | Dedicated admin connection | Yes | Yes | Yes | Yes <sup>1</sup> | Yes <sup>1</sup> |
+| Create new endpoints | Yes | Yes | Yes | No | No |
 | SysPrep support <sup>2</sup> | Yes | Yes | Yes | Yes | Yes |
 | PowerShell scripting support <sup>3</sup> | Yes | Yes | Yes | Yes | Yes |
 | Support for data-tier application component operations - extract, deploy, upgrade, delete | Yes | Yes | Yes | Yes | Yes |

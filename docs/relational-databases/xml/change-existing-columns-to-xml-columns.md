@@ -8,12 +8,14 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "tables [XML]"
 ---
 # Change existing columns to XML columns
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 The ALTER TABLE statement supports the **xml** data type. For example, you can alter any string type column to the **xml** data type. In these cases, the documents contained in the column must be well formed. Also, if you're changing the type of the column from string to typed xml, the documents in the column are validated against the specified XSD schemas.
 
@@ -53,3 +55,4 @@ In the previous example, all the instances stored in the column are validated an
 ## See also
 
 - For more information about typed XML, see [Compare Typed XML to Untyped XML](../../relational-databases/xml/compare-typed-xml-to-untyped-xml.md).
+

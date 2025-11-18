@@ -7,6 +7,8 @@ ms.date: "06/14/2018"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "fetching BLOB data"
   - "ISequentialStream interface"
@@ -14,7 +16,7 @@ helpviewer_keywords:
   - "BLOBs, fetching"
 ---
 # Fetching BLOB Data by Using IRow::GetColumns and ISequentialStream
-[!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics PDW FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 [!INCLUDE[Driver_OLEDB_Download](../../../includes/driver_oledb_download.md)]
 
@@ -83,3 +85,4 @@ HRESULT GetSequentialColumn(IRow* pUnkRow, ULONG iCol)
  [Fetching BLOB Data Using IRow](../../oledb/ole-db-rowsets/fetching-a-single-row-with-irow.md)  
   
   
+

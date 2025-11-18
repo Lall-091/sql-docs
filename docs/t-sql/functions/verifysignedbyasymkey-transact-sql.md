@@ -7,6 +7,8 @@ ms.date: "03/06/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "VERIFYSIGNEDBYASYMKEY_TSQL"
   - "VERIFYSIGNEDBYASYMKEY"
@@ -21,7 +23,7 @@ dev_langs:
   - "TSQL"
 ---
 # VERIFYSIGNEDBYASYMKEY (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Tests whether digitally signed data has been changed since it was signed.  
   
@@ -90,3 +92,4 @@ GO
  [Encryption Hierarchy](../../relational-databases/security/encryption/encryption-hierarchy.md)  
   
   
+

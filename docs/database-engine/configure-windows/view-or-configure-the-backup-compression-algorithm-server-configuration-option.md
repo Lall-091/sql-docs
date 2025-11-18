@@ -1,15 +1,15 @@
 ---
-title: "Server Configuration: backup compression algorithm"
-description: "Find out about the backup compression algorithm option. See how it determines the algorithm to use for backup compression, and learn how to set it."
+title: "Server Configuration: Backup Compression Algorithm"
+description: Find out about the backup compression algorithm option. See how it determines the algorithm to use for backup compression, and learn how to set it.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest, wiassaf, dinethi
-ms.date: 08/26/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
 ms.custom:
-  - build-2025
+  - ignite-2025
 helpviewer_keywords:
   - "backup compression algorithm [SQL Server], backup compression algorithm option"
 ---
@@ -42,7 +42,7 @@ You can use the `backup compression algorithm` option to specify the algorithm u
 ## View the backup compression algorithm option
 
 > [!NOTE]  
-> There's currently a [known issue](../../sql-server/sql-server-2025-known-issues.md#setting-the-backup-compression-algorithm-to-zstd) with setting the `backup compression algorithm` to ZSTD.
+> There's currently a [known issue](../../sql-server/sql-server-2025-known-issues.md#issue-when-setting-the-backup-compression-algorithm-to-zstd) with setting the `backup compression algorithm` to ZSTD.
 
 1. In [!INCLUDE [ssmanstudiofull-md](../../includes/ssmanstudiofull-md.md)], connect to the [!INCLUDE [ssDE](../../includes/ssde-md.md)].
 

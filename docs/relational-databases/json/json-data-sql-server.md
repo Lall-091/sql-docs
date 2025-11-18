@@ -4,17 +4,15 @@ description: Combine NoSQL and relational concepts in the same database with JSO
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: jovanpop, umajay, randolphwest
-ms.date: 07/23/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.topic: overview
 ms.custom:
-  - build-2024
-  - ignite-2024
-  - build-2025
+  - ignite-2025
 helpviewer_keywords:
   - "JSON"
   - "JSON, built-in support"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # JSON data in SQL Server
 
@@ -57,11 +55,11 @@ By using [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] built-in 
 
 ## SQL Server 2025 changes
 
-[!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] introduces the following JSON enhancements, all currently in preview: 
+[!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] introduces the following JSON enhancements, all currently in preview:
 
-- [Modify method for the `json` type](../../t-sql/data-types/json-data-type.md#modify-method)
+- [Modify method for the **json** type](../../t-sql/data-types/json-data-type.md#modify-method)
 - [CREATE JSON INDEX](../../t-sql/statements/create-json-index-transact-sql.md)
-- [JSON_CONTAINS function](../../t-sql/functions/json-contains-transact-sql.md)
+- [JSON_CONTAINS](../../t-sql/functions/json-contains-transact-sql.md)
 - [ANSI SQL path expression array wildcard support](json-path-expressions-sql-server.md#array-wildcard-and-range-support)
 - [ANSI SQL WITH ARRAY WRAPPER clause in JSON_QUERY function](../../t-sql/functions/json-query-transact-sql.md#with-array-wrapper)
 
@@ -86,10 +84,10 @@ Using the JSON same functions described in this article remain the most efficien
 
 If you have JSON text that's stored in database tables, you can read or modify values in the JSON text by using the following built-in functions:
 
-- [ISJSON (Transact-SQL)](../../t-sql/functions/isjson-transact-sql.md) tests whether a string contains valid JSON.
-- [JSON_VALUE (Transact-SQL)](../../t-sql/functions/json-value-transact-sql.md) extracts a scalar value from a JSON string.
-- [JSON_QUERY (Transact-SQL)](../../t-sql/functions/json-query-transact-sql.md) extracts an object or an array from a JSON string.
-- [JSON_MODIFY (Transact-SQL)](../../t-sql/functions/json-modify-transact-sql.md) changes a value in a JSON string.
+- [ISJSON](../../t-sql/functions/isjson-transact-sql.md) tests whether a string contains valid JSON.
+- [JSON_VALUE](../../t-sql/functions/json-value-transact-sql.md) extracts a scalar value from a JSON string.
+- [JSON_QUERY](../../t-sql/functions/json-query-transact-sql.md) extracts an object or an array from a JSON string.
+- [JSON_MODIFY](../../t-sql/functions/json-modify-transact-sql.md) changes a value in a JSON string.
 
 **Example**
 
@@ -97,33 +95,33 @@ In the following example, the query uses both relational and JSON data (stored i
 
 ```sql
 SELECT Name,
-    Surname,
-    JSON_VALUE(jsonCol, '$.info.address.PostCode') AS PostCode,
-    JSON_VALUE(jsonCol, '$.info.address."Address Line 1"')
-        + ' ' + JSON_VALUE(jsonCol, '$.info.address."Address Line 2"') AS Address,
-    JSON_QUERY(jsonCol, '$.info.skills') AS Skills
+       Surname,
+       JSON_VALUE(jsonCol, '$.info.address.PostCode') AS PostCode,
+       JSON_VALUE(jsonCol, '$.info.address."Address Line 1"') + ' ' +
+           JSON_VALUE(jsonCol, '$.info.address."Address Line 2"') AS Address,
+       JSON_QUERY(jsonCol, '$.info.skills') AS Skills
 FROM People
 WHERE ISJSON(jsonCol) > 0
-    AND JSON_VALUE(jsonCol, '$.info.address.Town') = 'Belgrade'
-    AND STATUS = 'Active'
+      AND JSON_VALUE(jsonCol, '$.info.address.Town') = 'Belgrade'
+      AND STATUS = 'Active'
 ORDER BY JSON_VALUE(jsonCol, '$.info.address.PostCode');
 ```
 
 Applications and tools see no difference between the values taken from scalar table columns and the values taken from JSON columns. You can use values from JSON text in any part of a Transact-SQL query (including WHERE, ORDER BY, or GROUP BY clauses, window aggregates, and so on). JSON functions use JavaScript-like syntax for referencing values inside JSON text.
 
-For more information, see [Validate, Query, and Change JSON Data with Built-in Functions](validate-query-and-change-json-data-with-built-in-functions-sql-server.md), [JSON_VALUE](../../t-sql/functions/json-value-transact-sql.md), and [JSON_QUERY](../../t-sql/functions/json-query-transact-sql.md).
+For more information, see [Validate, query, and change JSON data with built-in functions](validate-query-and-change-json-data-with-built-in-functions-sql-server.md), [JSON_VALUE](../../t-sql/functions/json-value-transact-sql.md), and [JSON_QUERY](../../t-sql/functions/json-query-transact-sql.md).
 
 ### Change JSON values
 
-If you must modify parts of JSON text, you can use the [JSON_MODIFY (Transact-SQL)](../../t-sql/functions/json-modify-transact-sql.md) function to update the value of a property in a JSON string and return the updated JSON string. The following example updates the value of a property in a variable that contains JSON:
+If you must modify parts of JSON text, you can use the [JSON_MODIFY](../../t-sql/functions/json-modify-transact-sql.md) function to update the value of a property in a JSON string and return the updated JSON string. The following example updates the value of a property in a variable that contains JSON:
 
 ```sql
-DECLARE @json NVARCHAR(MAX);
+DECLARE @json AS NVARCHAR (MAX);
 
 SET @json = '{"info": {"address": [{"town": "Belgrade"}, {"town": "Paris"}, {"town":"Madrid"}]}}';
 SET @json = JSON_MODIFY(@json, '$.info.address[1].town', 'London');
 
-SELECT modifiedJson = @json;
+SELECT @json AS modifiedJson;
 ```
 
 [!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
@@ -134,12 +132,12 @@ SELECT modifiedJson = @json;
 
 ### Convert JSON collections to a rowset
 
-You don't need a custom query language to query JSON in [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)]. To query JSON data, you can use standard T-SQL. If you must create a query or report on JSON data, you can easily convert JSON data to rows and columns by calling the `OPENJSON` rowset function. For more information, see [Parse and Transform JSON Data with OPENJSON](convert-json-data-to-rows-and-columns-with-openjson-sql-server.md).
+You don't need a custom query language to query JSON in [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)]. To query JSON data, you can use standard T-SQL. If you must create a query or report on JSON data, you can easily convert JSON data to rows and columns by calling the `OPENJSON` rowset function. For more information, see [Parse and transform JSON data with OPENJSON](convert-json-data-to-rows-and-columns-with-openjson-sql-server.md).
 
 The following example calls `OPENJSON` and transforms the array of objects that is stored in the `@json` variable to a rowset that can be queried with a standard Transact-SQL `SELECT` statement:
 
 ```sql
-DECLARE @json NVARCHAR(MAX);
+DECLARE @json AS NVARCHAR (MAX);
 
 SET @json = N'[
   {"id": 2, "info": {"name": "John", "surname": "Smith"}, "age": 25},
@@ -147,10 +145,10 @@ SET @json = N'[
 ]';
 
 SELECT *
-FROM OPENJSON(@json) WITH (
+FROM OPENJSON (@json) WITH (
     id INT 'strict $.id',
-    firstName NVARCHAR(50) '$.info.name',
-    lastName NVARCHAR(50) '$.info.surname',
+    firstName NVARCHAR (50) '$.info.name',
+    lastName NVARCHAR (50) '$.info.surname',
     age INT,
     dateOfBirth DATETIME2 '$.dob'
 );
@@ -172,14 +170,14 @@ FROM OPENJSON(@json) WITH (
 - You can optionally specify a path after the type specification to reference a nested property or to reference a property by a different name.
 - The optional `strict` prefix in the path specifies that values for the specified properties must exist in the JSON text.
 
-For more information, see [Parse and Transform JSON Data with OPENJSON](convert-json-data-to-rows-and-columns-with-openjson-sql-server.md) and [OPENJSON](../../t-sql/functions/openjson-transact-sql.md).
+For more information, see [Parse and transform JSON data with OPENJSON](convert-json-data-to-rows-and-columns-with-openjson-sql-server.md) and [OPENJSON](../../t-sql/functions/openjson-transact-sql.md).
 
 JSON documents might have sub-elements and hierarchical data that can't be directly mapped into the standard relational columns. In this case, you can flatten JSON hierarchy by joining parent entity with sub-arrays.
 
 In the following example, the second object in the array has sub-array representing person skills. Every sub-object can be parsed using additional `OPENJSON` function call:
 
 ```sql
-DECLARE @json NVARCHAR(MAX);
+DECLARE @json AS NVARCHAR (MAX);
 
 SET @json = N'[
   {"id": 2, "info": {"name": "John", "surname": "Smith"}, "age": 25},
@@ -187,20 +185,20 @@ SET @json = N'[
 ]';
 
 SELECT id,
-    firstName,
-    lastName,
-    age,
-    dateOfBirth,
-    skill
-FROM OPENJSON(@json) WITH (
+       firstName,
+       lastName,
+       age,
+       dateOfBirth,
+       skill
+FROM OPENJSON (@json) WITH (
     id INT 'strict $.id',
-    firstName NVARCHAR(50) '$.info.name',
-    lastName NVARCHAR(50) '$.info.surname',
+    firstName NVARCHAR (50) '$.info.name',
+    lastName NVARCHAR (50) '$.info.surname',
     age INT,
     dateOfBirth DATETIME2 '$.dob',
-    skills NVARCHAR(MAX) '$.info.skills' AS JSON
+    skills NVARCHAR (MAX) '$.info.skills' AS JSON
 )
-OUTER APPLY OPENJSON(skills) WITH (skill NVARCHAR(8) '$');
+OUTER APPLY OPENJSON (skills) WITH (skill NVARCHAR (8) '$');
 ```
 
 The `skills` array is returned in the first `OPENJSON` as original JSON text fragment and passed to another `OPENJSON` function using `APPLY` operator. The second `OPENJSON` function parses JSON array and return string values as single column rowset that will be joined with the result of the first `OPENJSON`.
@@ -219,7 +217,7 @@ The `skills` array is returned in the first `OPENJSON` as original JSON text fra
 ### Convert SQL Server data to JSON or export JSON
 
 > [!NOTE]  
-> Converting Azure Synapse Analytics data to JSON or exporting JSON is not supported.
+> Converting Azure Synapse Analytics data to JSON or exporting JSON isn't supported.
 
 Format [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] data or the results of SQL queries as JSON by adding the `FOR JSON` clause to a `SELECT` statement. Use `FOR JSON` to delegate the formatting of JSON output from your client applications to [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)]. For more information, see [Format query results as JSON with FOR JSON](format-query-results-as-json-with-for-json-sql-server.md).
 
@@ -227,10 +225,10 @@ The following example uses PATH mode with the `FOR JSON` clause:
 
 ```sql
 SELECT id,
-    firstName AS "info.name",
-    lastName AS "info.surname",
-    age,
-    dateOfBirth AS dob
+       firstName AS "info.name",
+       lastName AS "info.surname",
+       age,
+       dateOfBirth AS dob
 FROM People
 FOR JSON PATH;
 ```
@@ -270,9 +268,7 @@ JSON aggregate functions enable construction of JSON objects or arrays based on 
 - [JSON_ARRAYAGG](../../t-sql/functions/json-arrayagg-transact-sql.md) constructs a JSON **array** from an aggregation of SQL data or columns.
 
 > [!NOTE]  
-> Both **json** aggregate functions `JSON_OBJECTAGG` and `JSON_ARRAYAGG` are: 
-> -  generally available for Azure SQL Database, Azure SQL Managed Instance (with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy)), and Fabric Data Warehouse.
-> - in preview for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
+> The `JSON_OBJECTAGG` and `JSON_ARRAYAGG` aggregate functions are generally available for Azure SQL Database, Azure SQL Managed Instance (with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy)), and Fabric Data Warehouse, and in preview for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
 
 ## Use cases for JSON data in SQL Server
 
@@ -280,23 +276,23 @@ JSON support in [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] an
 
 - Simplify complex data models
 
-    Consider denormalizing your data model with JSON fields in place of multiple child tables.
+  Consider denormalizing your data model with JSON fields in place of multiple child tables.
 
 - Store retail and e-commerce data
 
-    Store info about products with a wide range of variable attributes in a denormalized model for flexibility.
+  Store info about products with a wide range of variable attributes in a denormalized model for flexibility.
 
 - Process log and telemetry data
 
-    Load, query, and analyze log data stored as JSON files with all the power of the Transact-SQL language.
+  Load, query, and analyze log data stored as JSON files with all the power of the Transact-SQL language.
 
 - Store semi-structured IoT data
 
-    When you need real-time analysis of IoT data, load the incoming data directly into the database instead of staging it in a storage location.
+  When you need real-time analysis of IoT data, load the incoming data directly into the database instead of staging it in a storage location.
 
 - Simplify REST API development
 
-    Transform relational data from your database easily into the JSON format used by the REST APIs that support your web site.
+  Transform relational data from your database easily into the JSON format used by the REST APIs that support your web site.
 
 ## Combine relational and JSON data
 
@@ -331,7 +327,7 @@ If you must load JSON data from an external service into [!INCLUDE [ssnoversion-
 In supported platforms, use the native **json** data type instead of **nvarchar(max)** for improved performance and more efficient storage.
 
 ```sql
-DECLARE @jsonVariable NVARCHAR(MAX);
+DECLARE @jsonVariable AS NVARCHAR (MAX);
 
 SET @jsonVariable = N'[
   {
@@ -360,10 +356,10 @@ SET @jsonVariable = N'[
 
 -- INSERT INTO <sampleTable>
 SELECT SalesOrderJsonData.*
-FROM OPENJSON(@jsonVariable, N'$') WITH (
-    Number VARCHAR(200) N'$.Order.Number',
+FROM OPENJSON (@jsonVariable, N'$') WITH (
+    Number VARCHAR (200) N'$.Order.Number',
     Date DATETIME N'$.Order.Date',
-    Customer VARCHAR(200) N'$.AccountNumber',
+    Customer VARCHAR (200) N'$.AccountNumber',
     Quantity INT N'$.Item.Quantity'
 ) AS SalesOrderJsonData;
 ```
@@ -376,18 +372,18 @@ If you must filter or aggregate JSON data for reporting purposes, you can use `O
 
 ```sql
 SELECT Tab.Id,
-    SalesOrderJsonData.Customer,
-    SalesOrderJsonData.Date
+       SalesOrderJsonData.Customer,
+       SalesOrderJsonData.Date
 FROM SalesOrderRecord AS Tab
-CROSS APPLY OPENJSON(Tab.json, N'$.Orders.OrdersArray') WITH (
-    Number VARCHAR(200) N'$.Order.Number',
+CROSS APPLY OPENJSON (Tab.json, N'$.Orders.OrdersArray') WITH (
+    Number VARCHAR (200) N'$.Order.Number',
     Date DATETIME N'$.Order.Date',
-    Customer VARCHAR(200) N'$.AccountNumber',
+    Customer VARCHAR (200) N'$.AccountNumber',
     Quantity INT N'$.Item.Quantity'
 ) AS SalesOrderJsonData
 WHERE JSON_VALUE(Tab.json, '$.Status') = N'Closed'
 ORDER BY JSON_VALUE(Tab.json, '$.Group'),
-    Tab.DateModified;
+         Tab.DateModified;
 ```
 
 You can use both standard table columns and values from JSON text in the same query. You can add indexes on the `JSON_VALUE(Tab.json, '$.Status')` expression to improve the performance of the query. For more information, see [Index JSON data](index-json-data.md).
@@ -406,8 +402,8 @@ This OData URL represents a request for the ProductID and ProductName columns fo
 
 ```sql
 SELECT 'https://services.odata.org/V4/Northwind/Northwind.svc/$metadata#Products(ProductID,ProductName)/$entity' AS '@odata.context',
-  ProductID,
-  Name as ProductName
+       ProductID,
+       Name AS ProductName
 FROM Production.Product
 WHERE ProductID = 1
 FOR JSON AUTO;
@@ -425,9 +421,9 @@ Here's what you can do with the scripts that are included in the file:
 
 1. Denormalize the existing schema to create columns of JSON data.
 
-  - Store information from `SalesReasons`, `SalesOrderDetails`, `SalesPerson`, `Customer`, and other tables that contain information related to sales order into JSON columns in the `SalesOrder_json` table.
+   - Store information from `SalesReasons`, `SalesOrderDetails`, `SalesPerson`, `Customer`, and other tables that contain information related to sales order into JSON columns in the `SalesOrder_json` table.
 
-  - Store information from `EmailAddresses` and `PersonPhone` tables in the `Person_json` table as arrays of JSON objects.
+   - Store information from `EmailAddresses` and `PersonPhone` tables in the `Person_json` table as arrays of JSON objects.
 
 1. Create procedures and views that query JSON data.
 
@@ -443,7 +439,7 @@ Here's what you can do with the scripts that are included in the file:
 
 - [SELECT - FOR Clause (Transact-SQL)](../../t-sql/queries/select-for-clause-transact-sql.md)
 - [OPENJSON (Transact-SQL)](../../t-sql/functions/openjson-transact-sql.md)
-- [JSON Functions (Transact-SQL)](../../t-sql/functions/json-functions-transact-sql.md)
+- [JSON functions (Transact-SQL)](../../t-sql/functions/json-functions-transact-sql.md)
 - [ISJSON (Transact-SQL)](../../t-sql/functions/isjson-transact-sql.md)
 - [JSON_VALUE (Transact-SQL)](../../t-sql/functions/json-value-transact-sql.md)
 - [JSON_OBJECT (Transact-SQL)](../../t-sql/functions/json-object-transact-sql.md)

@@ -7,6 +7,8 @@ ms.date: "05/17/2016"
 ms.service: sql
 ms.subservice: database-mirroring
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "database mirroring [SQL Server], deployment"
   - "partners [SQL Server]"
@@ -19,9 +21,13 @@ helpviewer_keywords:
 # Prerequisites, Restrictions, and Recommendations for Database Mirroring
  [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
     
-> [!NOTE]  
->  [!INCLUDE[ssNoteDepFutureAvoid](../../includes/ssnotedepfutureavoid-md.md)] Use [!INCLUDE[ssHADR](../../includes/sshadr-md.md)] instead.  
-> Database Mirroring in SQL Server is a distinct technology from [Microsoft Fabric Database Mirroring](/fabric/database/mirrored-database/overview).
+> [!CAUTION]
+> [!INCLUDE[ssNoteDepFutureAvoid](../../includes/ssnotedepfutureavoid-md.md)] For high availability, use [!INCLUDE[ssHADR](../../includes/sshadr-md.md)] instead.  
+
+> [!IMPORTANT]
+> Database Mirroring in SQL Server is a distinct technology from [Microsoft Fabric Database Mirroring](/fabric/database/mirrored-database/overview). Mirroring to Fabric provides better analytical performance, the ability to unify your data estate with OneLake in Fabric, and open access to your data in Delta Parquet format.
+>
+> With Mirroring to Microsoft Fabric, you can continuously replicate your existing data estate directly into OneLake in Fabric, including data from SQL Server 2016+, Azure SQL Database, Azure SQL Managed Instance, Cosmos DB, Oracle, Snowflake, and more.
   
  This topic describes the prerequisites and recommendations for setting up database mirroring. For an introduction to database mirroring, see [Database Mirroring &#40;SQL Server&#41;](../../database-engine/database-mirroring/database-mirroring-sql-server.md).  
   
@@ -71,7 +77,7 @@ helpviewer_keywords:
 -   The partners should run on comparable systems that can handle identical workloads.  
   
     > [!NOTE]  
-    >  If you plan to use high-safety mode with automatic failover, the normal load on each failover partner should be less than 50 percent of the CPU. If your work load overloads the CPU, a failover partner might be unable to ping the other server instances in the mirroring session. This causes a unnecessary failover. If you cannot keep the CPU usage under 50 percent, we recommend that you use either high-safety mode without automatic failover or high-performance mode.  
+    >  If you plan to use high-safety mode with automatic failover, the normal load on each failover partner should be less than 50 percent of the CPU. If your work load overloads the CPU, a failover partner might be unable to ping the other server instances in the mirroring session. This causes an unnecessary failover. If you cannot keep the CPU usage under 50 percent, we recommend that you use either high-safety mode without automatic failover or high-performance mode.  
   
 -   If possible, the path (including the drive letter) of the mirror database should be identical to the path of the principal database. You must include the MOVE option in the RESTORE statement if the file layouts must differ. For example, if the principal database is on drive 'F:' but the mirror system lacks an F: drive.  
   

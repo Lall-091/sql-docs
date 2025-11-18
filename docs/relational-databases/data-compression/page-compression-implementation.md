@@ -8,14 +8,16 @@ ms.date: 08/21/2023
 ms.service: sql
 ms.subservice: performance
 ms.topic: concept-article
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "page compression [Database Engine]"
   - "compression [SQL Server], page"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Page compression implementation
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This article summarizes how the [!INCLUDE [ssDE](../../includes/ssde-md.md)] implements page compression. This summary provides basic information to help you plan the storage space that you need for your data.
 
@@ -68,3 +70,4 @@ When an existing table that contains data is converted to page compression, each
 - [Data compression](data-compression.md)
 - [Row compression implementation](row-compression-implementation.md)  
 - [Unicode compression implementation](unicode-compression-implementation.md)
+

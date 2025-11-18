@@ -8,6 +8,8 @@ ms.date: 01/06/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_tran_version_store_space_usage_TSQL"
   - "sys.dm_tran_version_store_space_usage"
@@ -17,12 +19,12 @@ helpviewer_keywords:
   - "sys.dm_tran_version_store_space_usage dynamic management view"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-2017 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # sys.dm_tran_version_store_space_usage (Transact-SQL)
 
-[!INCLUDE [tsql-appliesto-2016sp2-asdb-xxxx-xxx-md](../../includes/tsql-appliesto-2016sp2-asdb-xxxx-xxx-md.md)]
+ [!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016sp2-asdb-asdbmi-fabricsqldb.md)]
 
 Returns a table that displays total space in `tempdb` used by version store records for each database. **sys.dm_tran_version_store_space_usage** is efficient and not expensive to run, as it doesn't navigate through individual version store records, and returns aggregated version store space consumed in tempdb per database.
 
@@ -71,3 +73,4 @@ WideWorldImporters        20                   160
 
 - [Dynamic Management Views and Functions (Transact-SQL)](~/relational-databases/system-dynamic-management-views/system-dynamic-management-views.md)
 - [Transaction Related Dynamic Management Views and Functions (Transact-SQL)](../../relational-databases/system-dynamic-management-views/transaction-related-dynamic-management-views-and-functions-transact-sql.md)
+

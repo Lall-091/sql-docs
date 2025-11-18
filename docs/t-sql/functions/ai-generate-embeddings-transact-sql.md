@@ -4,25 +4,25 @@ description: The AI_GENERATE_EMBEDDINGS function creates vector arrays for data.
 author: jettermctedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 05/21/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: t-sql
-ms.topic: "reference"
+ms.topic: reference
 ms.custom:
   - sql-ai
-  - build-2025
+  - ignite-2025
 f1_keywords:
   - "ai_generate_embeddings_TSQL"
   - "ai_generate_embeddings"
 helpviewer_keywords:
   - "ai_generate_embeddings"
 dev_langs:
-  - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-ver17 || >=sql-server-linux-ver17"
+  - TSQL
+monikerRange: "=azuresqldb-current || >=sql-server-ver17 || >=sql-server-linux-ver17 || =fabric-sqldb"
 ---
 # AI_GENERATE_EMBEDDINGS (Transact-SQL)
 
-[!INCLUDE [sqlserver2025](../../includes/applies-to-version/sqlserver2025.md)]
+[!INCLUDE [sqlserver2025-asdb-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-fabricsqldb.md)]
 
 `AI_GENERATE_EMBEDDINGS` is a built-in function that creates embeddings (vector arrays) using a precreated AI model definition stored in the database.
 
@@ -99,7 +99,7 @@ The value passed into `optional_json_request_body_parameters` must be valid JSON
 
 ### Create embedding endpoints
 
-For more information on creating embedding endpoints, review the process for [Azure OpenAI](/azure/ai-services/openai/how-to/create-resource), [OpenAI](https://platform.openai.com/docs/guides/embeddings), or [Ollama](https://github.com/ollama/ollama/blob/main/docs/api.md#generate-embeddings).
+For more information on creating embedding endpoints, review the process for [Azure OpenAI in Azure AI Foundry Models](/azure/ai-services/openai/how-to/create-resource), [OpenAI](https://platform.openai.com/docs/guides/embeddings), or [Ollama](https://github.com/ollama/ollama/blob/main/docs/api.md#generate-embeddings).
 
 ### Extended Events (XEvent)
 
@@ -122,15 +122,12 @@ FROM myTable;
 The following example shows how to use the `AI_GENERATE_EMBEDDINGS` function with the `AI_GENERATE_CHUNKS` function to pass text broken up in specified chunk sizes with a select statement which returns vector array results.
 
 ```sql
-SELECT
-    id,
-    title,
-    large_text,
-    AI_GENERATE_EMBEDDINGS(c.chunk_text USE MODEL MyAzureOpenAiModel)
-FROM
-    myTable
-CROSS APPLY
-    AI_GENERATE_CHUNKS(source = large_text, chunk_type = FIXED , chunk_size = 10) c;
+SELECT id,
+       title,
+       large_text,
+       AI_GENERATE_EMBEDDINGS(c.chunk_text USE MODEL MyAzureOpenAiModel)
+FROM myTable
+    CROSS APPLY AI_GENERATE_CHUNKS (SOURCE = large_text, CHUNK_TYPE = FIXED, CHUNK_SIZE = 10) AS c;
 ```
 
 ### C. Create embeddings with a table update
@@ -206,7 +203,7 @@ CREATE TABLE text_embeddings
 (
     embeddings_id INT IDENTITY (1, 1) PRIMARY KEY,
     chunked_text NVARCHAR (MAX),
-    vector_embeddings VECTOR (1536)
+    vector_embeddings VECTOR(1536)
 );
 
 -- Insert the chunked text and vector embeddings into the text_embeddings table using AI_GENERATE_CHUNKS and AI_GENERATE_EMBEDDINGS
@@ -227,4 +224,4 @@ SELECT * FROM text_embeddings;
 - [DROP EXTERNAL MODEL (Transact-SQL)](../statements/drop-external-model-transact-sql.md)
 - [AI_GENERATE_CHUNKS (Transact-SQL)](ai-generate-chunks-transact-sql.md)
 - [sp_invoke_external_rest_endpoint](../../relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql.md)
-- [Create and deploy an Azure OpenAI Service resource](/azure/ai-services/openai/how-to/create-resource)
+- [Create and deploy an Azure OpenAI in Azure AI Foundry Models resource](/azure/ai-services/openai/how-to/create-resource)

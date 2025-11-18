@@ -7,6 +7,8 @@ ms.date: "03/16/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "xml data type [SQL Server], methods"
   - "methods [XML in SQL Server]"
@@ -14,7 +16,7 @@ dev_langs:
   - "TSQL"
 ---
 # xml Data Type Methods
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   You can use the **xml** data type methods to query an XML instance stored in a variable or column of **xml** type. The topics in this section describe how to use the **xml** data type methods.  
   
@@ -45,3 +47,4 @@ FROM Table
  [Create Instances of XML Data](../../relational-databases/xml/create-instances-of-xml-data.md)  
   
   
+

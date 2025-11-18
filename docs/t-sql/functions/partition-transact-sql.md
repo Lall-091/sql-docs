@@ -8,6 +8,8 @@ ms.date: 01/07/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "$partition_TSQL"
   - "$partition"
@@ -19,7 +21,7 @@ dev_langs:
 ---
 # $PARTITION (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Returns the partition number into which a set of partitioning column values can be mapped for any specified partition function.
 
@@ -154,3 +156,4 @@ WHERE $PARTITION.RangePF1 (col1) = 3;
 - [Modify a partition scheme](../../relational-databases/partitions/modify-a-partition-scheme.md)
 - [sys.partition_functions (Transact-SQL)](../../relational-databases/system-catalog-views/sys-partition-functions-transact-sql.md)
 - [sys.partition_schemes (Transact-SQL)](../../relational-databases/system-catalog-views/sys-partition-schemes-transact-sql.md)
+

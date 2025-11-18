@@ -9,8 +9,7 @@ ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
-  - build-2025
+  - ignite-2025
 f1_keywords:
   - "ALTER_USER_TSQL"
   - "ALTER USER"
@@ -25,7 +24,7 @@ helpviewer_keywords:
   - "modifying default schemas"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # ALTER USER (Transact-SQL)
 
@@ -34,7 +33,6 @@ Renames a database user or changes its default schema.
  :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 [!INCLUDE [entra-id](../../includes/entra-id.md)]
-
 
 [!INCLUDE [select-product](../includes/select-product.md)]
 
@@ -48,7 +46,10 @@ Renames a database user or changes its default schema.
         [SQL Database](alter-user-transact-sql.md?view=azuresqldb-current&preserve-view=true)
     :::column-end:::
     :::column:::
-        [Microsoft Fabric](alter-user-transact-sql.md?view=fabric&preserve-view=true)
+        [Microsoft Fabric Data Warehouse](alter-user-transact-sql.md?view=fabric&preserve-view=true)
+    :::column-end:::
+    :::column:::
+        [SQL database in Microsoft Fabric](alter-user-transact-sql.md?view=fabric-sqldb&preserve-view=true)
     :::column-end:::
     :::column:::
         [SQL Managed Instance](alter-user-transact-sql.md?view=azuresqldb-mi-current&preserve-view=true)
@@ -251,7 +252,7 @@ GO
 - [sp_migrate_user_to_contained (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-migrate-user-to-contained-transact-sql.md)
 
 ::: moniker-end
-::: moniker range="=azuresqldb-current||=fabric"
+::: moniker range="=azuresqldb-current||=fabric||=fabric-sqldb"
 
 :::row:::
     :::column:::
@@ -273,11 +274,11 @@ GO
 
 &nbsp;
 
-## Azure SQL Database and Microsoft Fabric
+## Azure SQL Database, SQL database in Microsoft Fabric, and Fabric Data Warehouse
 
 ## Syntax
 
-Syntax for Azure SQL Database
+**Syntax for Azure SQL Database**
 
 ```syntaxsql
 -- Syntax for Azure SQL Database
@@ -313,9 +314,10 @@ ALTER USER user_name
  NAME = new_user_name
 ```
 
-Syntax for [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)]
+**Syntax for [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)]**
 
 ```syntaxsql
+-- Syntax for SQL database in Fabric
 ALTER USER   
     {  
     Microsoft_Entra_principal FROM EXTERNAL PROVIDER [WITH OBJECT_ID = 'objectid'] 
@@ -338,7 +340,7 @@ ALTER USER user_name
 [;]
 ```
 
-Syntax for [!INCLUDE [fabric](../../includes/fabric.md)] [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)]
+**Syntax for [!INCLUDE [fabric](../../includes/fabric.md)] [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)]**
 
 ```syntaxsql
 -- Syntax for Fabric Data Warehouse
@@ -544,7 +546,10 @@ GO
         [SQL Database](alter-user-transact-sql.md?view=azuresqldb-current&preserve-view=true)
     :::column-end:::
     :::column:::
-        [Microsoft Fabric](alter-user-transact-sql.md?view=fabric&preserve-view=true)
+        [Microsoft Fabric Data Warehouse](alter-user-transact-sql.md?view=fabric&preserve-view=true)
+    :::column-end:::
+    :::column:::
+        [SQL database in Microsoft Fabric](alter-user-transact-sql.md?view=fabric-sqldb&preserve-view=true)
     :::column-end:::
     :::column:::
         **_\* SQL Managed Instance \*_**
@@ -841,7 +846,10 @@ ALTER USER [westus\mygroup] WITH LOGIN = mygroup;
         [SQL Database](alter-user-transact-sql.md?view=azuresqldb-current&preserve-view=true)
     :::column-end:::
     :::column:::
-        [Microsoft Fabric](alter-user-transact-sql.md?view=fabric&preserve-view=true)
+        [Microsoft Fabric Data Warehouse](alter-user-transact-sql.md?view=fabric&preserve-view=true)
+    :::column-end:::
+    :::column:::
+        [SQL database in Microsoft Fabric](alter-user-transact-sql.md?view=fabric-sqldb&preserve-view=true)
     :::column-end:::
     :::column:::
         [SQL Managed Instance](alter-user-transact-sql.md?view=azuresqldb-mi-current&preserve-view=true)
@@ -980,7 +988,10 @@ GO
         [SQL Database](alter-user-transact-sql.md?view=azuresqldb-current&preserve-view=true)
     :::column-end:::
     :::column:::
-        [Microsoft Fabric](alter-user-transact-sql.md?view=fabric&preserve-view=true)
+        [Microsoft Fabric Data Warehouse](alter-user-transact-sql.md?view=fabric&preserve-view=true)
+    :::column-end:::
+    :::column:::
+        [SQL database in Microsoft Fabric](alter-user-transact-sql.md?view=fabric-sqldb&preserve-view=true)
     :::column-end:::
     :::column:::
         [SQL Managed Instance](alter-user-transact-sql.md?view=azuresqldb-mi-current&preserve-view=true)

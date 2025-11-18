@@ -9,14 +9,17 @@ ms.subservice: tools-other
 ms.topic: conceptual
 ms.collection:
   - data-tools
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "sqlps utility"
   - "PowerShell [SQL Server], sqlps utility"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric-sqldb"
 ---
 # sqlps utility
 
-[!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW](../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW FabricSQLDB](../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
+
 
 The **sqlps** utility starts a Windows PowerShell session with the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] PowerShell provider and cmdlets loaded and registered. You can enter PowerShell commands or scripts that use the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] PowerShell components to work with instances of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] and their objects.
 
@@ -129,3 +132,4 @@ sqlps -NoExit -Command "&{.\MyFolder.MyScript.ps1}"
 
 - [Enable or disable a server network protocol](../database-engine/configure-windows/enable-or-disable-a-server-network-protocol.md)
 - [SQL Server PowerShell](/powershell/sql-server/sql-server-powershell)
+

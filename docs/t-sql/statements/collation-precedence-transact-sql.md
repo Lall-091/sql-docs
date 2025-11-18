@@ -8,6 +8,8 @@ ms.date: 09/07/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "coercible-default collation label"
   - "precedence [SQL Server], collations"
@@ -23,11 +25,11 @@ helpviewer_keywords:
   - "rules [SQL Server], collations"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # Collation precedence
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 Collation precedence, also known as collation coercion rules, determines the following two outcomes:
 
@@ -254,3 +256,4 @@ The following functions are collation-sensitive and their output strings have th
 - [Data type conversion (Database Engine)](../data-types/data-type-conversion-database-engine.md)
 - [Operators (Transact-SQL)](../language-elements/operators-transact-sql.md)
 - [Expressions (Transact-SQL)](../language-elements/expressions-transact-sql.md)
+

@@ -4,15 +4,15 @@ description: "An introduction to the concepts that are central for configuring a
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest, vanto
-ms.update-cycle: 1825-days
 ms.date: 10/10/2025
 ms.service: sql
 ms.subservice: availability-groups
 ms.topic: concept-article
+ms.update-cycle: 1825-days
 ms.custom:
   - intro-overview
   - UpdateFrequency5
-  - ignite-2023
+  - ignite-2025
 helpviewer_keywords:
   - "secondary databases [SQL Server], in availability group"
   - "primary databases [SQL Server], in availability group"
@@ -215,7 +215,16 @@ An availability group listener is associated with a unique DNS name that serves 
 If an availability group has only two availability replicas and isn't configured to allow read-access to the secondary replica, clients can connect to the primary replica by using a [database mirroring connection string](../../database-mirroring/connect-clients-to-a-database-mirroring-session-sql-server.md). This approach can be useful temporarily after you migrate a database from database mirroring to [!INCLUDE [ssHADR](../../../includes/sshadr-md.md)]. Before you add secondary replicas, you need to create an availability group listener for the availability group and update your applications to use the network name of the listener.
 
 > [!NOTE]
-> [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)] introduces TDS 8.0 support, which allows enforcing strict [TLS 1.3](../../../relational-databases/security/networking/tls-1-3.md) encryption for connections to your Always On availability group replicas and listener. To get started, review [Connect with strict encryption](../../../relational-databases/security/networking/connect-with-strict-encryption.md#connect-to-an-always-on-availability-group).
+> [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)] introduces TDS 8.0 support, which allows enforcing strict [TLS 1.3](../../../relational-databases/security/networking/tls-1-3.md) encryption for connections to your Always On availability group replicas and listener.
+>
+> **Configuration requirements:**
+>
+> - **New availability groups**: Create the AG with `Encrypt=Strict` in the `CLUSTER_CONNECTION_OPTIONS` clause and failover to apply settings.
+> - **Existing availability groups**: Alter the AG with `CLUSTER_CONNECTION_OPTIONS` clause to set `Encrypt=Strict` and failover to apply settings.
+> - **Force Strict Encryption**: Set this option to Yes in SQL Server Configuration Manager for each replica and restart SQL Server replicas.
+> - **Certificate requirements**: When `Encrypt=Strict` is set, `TrustServerCertificate` will be ignored.
+>
+> To get started, review [Connect with strict encryption](../../../relational-databases/security/networking/connect-with-strict-encryption.md#connect-to-an-always-on-availability-group).
 
 
 <a id="ActiveSecondaries"></a>

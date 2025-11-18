@@ -8,10 +8,12 @@ ms.date: 12/29/2023
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "constraints [SQL Server], Visual Database Tools"
   - "Visual Database Tools [SQL Server], constraints"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current ||=fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Unique constraints and check constraints
 

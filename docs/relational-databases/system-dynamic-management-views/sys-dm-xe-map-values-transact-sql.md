@@ -7,6 +7,8 @@ ms.date: 09/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_xe_map_values"
   - "dm_xe_map_values"
@@ -20,7 +22,7 @@ dev_langs:
 ---
 # sys.dm_xe_map_values (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL DB Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL DB Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Returns a mapping of internal numeric keys to human-readable text.    
 
@@ -54,3 +56,4 @@ Requires `VIEW SERVER PERFORMANCE STATE` permission on the server.
 - [Quickstart: Extended Events](../extended-events/quick-start-extended-events-in-sql-server.md)
 - [Extended events in Azure SQL Database](/azure/azure-sql/database/xevent-db-diff-from-svr)
 - [Event File target code for extended events in Azure SQL Database and SQL Managed Instance](/azure/azure-sql/database/xevent-code-event-file)
+

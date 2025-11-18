@@ -8,6 +8,8 @@ ms.date: 07/16/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "information schema views"
   - "schemas [SQL Server], information schema views"
@@ -19,7 +21,7 @@ dev_langs:
 ---
 # System information schema views (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 An information schema view is one of several methods [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] provides for obtaining metadata. Information schema views provide an internal, system table-independent view of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] metadata. Information schema views enable applications to work correctly, although significant changes were made to the underlying system tables. The information schema views included in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] comply with the ISO standard definition for the `INFORMATION_SCHEMA`.
 
@@ -88,3 +90,4 @@ You can't deny access to information schema views in [!INCLUDE [ssazure-sqldb](.
 - [Replication Views (Transact-SQL)](../system-views/replication-views-transact-sql.md)
 - [Data types (Transact-SQL)](../../t-sql/data-types/data-types-transact-sql.md)
 - [System stored procedures (Transact-SQL)](../system-stored-procedures/system-stored-procedures-transact-sql.md)
+

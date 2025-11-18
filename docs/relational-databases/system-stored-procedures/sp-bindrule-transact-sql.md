@@ -8,6 +8,8 @@ ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_bindrule_TSQL"
   - "sp_bindrule"
@@ -15,11 +17,11 @@ helpviewer_keywords:
   - "sp_bindrule"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sp_bindrule (Transact-SQL)
 
-[!INCLUDE [SQL Server SQL Database](../../includes/applies-to-version/sql-asdb.md)]
+[!INCLUDE [SQL Server SQL Database-fabricsqldb](../../includes/applies-to-version/sql-asdb-fabricsqldb.md)]
 
 Binds a rule to a column or to an alias data type.
 
@@ -138,3 +140,4 @@ EXECUTE sp_bindrule rule1, '[t.2].c1';
 - [CREATE RULE (Transact-SQL)](../../t-sql/statements/create-rule-transact-sql.md)
 - [DROP RULE (Transact-SQL)](../../t-sql/statements/drop-rule-transact-sql.md)
 - [sp_unbindrule (Transact-SQL)](sp-unbindrule-transact-sql.md)
+

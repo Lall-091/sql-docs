@@ -8,12 +8,14 @@ ms.date: 10/22/2023
 ms.service: sql
 ms.subservice: xevents
 ms.topic: tutorial
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
-ms.custom: sfi-image-nochange
+ms.custom:
+  - sfi-image-nochange
+  - ignite-2025
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # View event data in SQL Server Management Studio
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This article describes how you can use SQL Server Management Studio (SSMS) to view target data from Extended Events. The article explains how to:
 

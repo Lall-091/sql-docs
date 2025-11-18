@@ -7,12 +7,16 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
-  - "Timeout event class"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+  - "Lock:Timeout event class"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Lock:Timeout Event Class
- [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
+
+ [!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
+
   The Lock:Timeout event class indicates that a request for a lock on a resource, such as a page, has timed out because another transaction is holding a blocking lock on the required resource. Time-out is determined by the @@LOCK_TIMEOUT system function and can be set with the SET LOCK_TIMEOUT statement.  
   
  Use the Lock:Timeout event class to monitor when time-out conditions occur. This information is useful to determine if time-outs are significantly affecting the performance of your application, and which objects are involved. You can examine the application code that modifies these objects to determine if changes to minimize time-outs can be made.  
@@ -59,3 +63,4 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
  [sys.dm_tran_locks &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql.md)  
   
   
+

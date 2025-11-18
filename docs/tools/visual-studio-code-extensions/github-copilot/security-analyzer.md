@@ -1,22 +1,23 @@
 ---
 title: "Quickstart: Security Analyzer with GitHub Copilot"
+titleSuffix: MSSQL Extension for Visual Studio Code
 description: Learn how GitHub Copilot helps developers identify and address common security risks in SQL code and application-layer queries.
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: randolphwest
-ms.date: 05/19/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: quickstart
 ms.collection:
   - data-tools
   - ce-skilling-ai-copilot
-ai-usage: ai-assisted
 ms.custom:
-  - build-2025
+  - ignite-2025
+ai-usage: ai-assisted
 ---
 
-# Quickstart: Security Analyzer (Preview)
+# Quickstart: Security analyzer
 
 GitHub Copilot assists developers in identifying and addressing common security risks in SQL code and application-layer queries. It can help detect vulnerabilities like SQL injection, overexposed data, and unsafe patterns, especially for developers without a strong security background, by providing practical, context-aware recommendations during development.
 
@@ -34,29 +35,42 @@ Here are common use cases and examples of what you can ask via the chat particip
 
 SQL injection is one of the most common and dangerous security vulnerabilities in database applications. GitHub Copilot can help identify unparameterized queries, string interpolation issues, and misuse of dynamic SQL, while recommending safer, parameterized alternatives tailored to your context.
 
-- I'm working with `SQLAlchemy` in `Python` for my current database `SalesLT` schema. Check the following `SQLAlchemy` query for potential security risks, such as `SQL` injection, over-fetching, or performance issues. If applicable, suggest improvements using parameterized queries, connection pooling, and other secure `SQL Server` practices to ensure performance and security.
+#### SQLAlchemy in Python example
 
-```python
+```copilot-prompt
+I'm working with SQLAlchemy in Python for my current database `SalesLT` schema. Check the following `SQLAlchemy` query for potential security risks, such as SQL injection, over-fetching, or performance issues. If applicable, suggest improvements using parameterized queries, connection pooling, and other secure `SQL Server` practices to ensure performance and security.
+
 query = f"SELECT * FROM SalesLT.Customer WHERE LastName = '{user_input}'"
 result = engine.execute(query).fetchall()
 ```
 
-- Analyze the following `JavaScript` `SQL` query for potential security vulnerabilities. Identify risks such as `SQL` injection, over-fetching, and poor authentication practices.
-  Explain why this query is insecure and provide a secure alternative.
+#### JavaScript SQL example
 
-```javascript
+```copilot-prompt
+Analyze the following JavaScript SQL query for potential security vulnerabilities. Identify risks such as SQL injection, over-fetching, and poor authentication practices. Explain why this query is insecure and provide a secure alternative.
+
 const query = `SELECT * FROM Users WHERE Username = '${username}' AND Password = '${password}'`;
 ```
 
-- Using my current database, simulate an `SQL` injection attack for the `SalesLT.uspGetCustomerOrderHistory` stored procedure and suggest fixes.
+#### SQL injection attack simulation
 
-- Review the stored procedure `SalesLT.uspGetCustomerOrderHistory` in my current database for potential SQL injection vulnerabilities. Explain how unparameterized or improperly validated inputs could be exploited and recommend secure coding practices.
+```copilot-prompt
+Using my current database, simulate a SQL injection attack for the `SalesLT.uspGetCustomerOrderHistory` stored procedure and suggest fixes.
+```
 
-- Review the `SalesLT.uspGetCustomerOrderHistory_Insecure` stored procedure. Identify any potential security issues in the implementation and then provide a revised version of the stored procedure that addresses these concerns without explicitly listing security best practices.
+#### Review stored procedure example
+
+```copilot-prompt
+Review the stored procedure `SalesLT.uspGetCustomerOrderHistory` in my current database for potential SQL injection vulnerabilities. Explain how unparameterized or improperly validated inputs could be exploited and recommend secure coding practices.
+```
+
+#### Identify security issues example
+
+```copilot-prompt
+Review the `SalesLT.uspGetCustomerOrderHistory_Insecure` stored procedure. Identify any potential security issues in the implementation and then provide a revised version of the stored procedure that addresses these concerns without explicitly listing security best practices.
 
 You can use the following T-SQL to create the stored procedure:
 
-```sql
 CREATE OR ALTER PROCEDURE [SalesLT].[uspGetCustomerOrderHistory_Insecure]
 @CustomerID NVARCHAR (50)
 AS
@@ -73,29 +87,49 @@ GO
 
 Beyond SQL injection, many database applications expose sensitive data or use insecure configurations by default. GitHub Copilot provides guidance for encrypting connections, masking or protecting personal data, and aligning with secure authentication and authorization best practices across multiple development stacks.
 
-- Recommend secure methods for storing sensitive data in the `SalesLT.Address` table.
+#### Sensitive data storage example
 
-- What are the best strategies or built-in features in my database for masking personal data in the `SalesLT.Customer` table?
+```copilot-prompt
+Recommend secure methods for storing sensitive data in the `SalesLT.Address` table.
+```
 
-- How can I configure my connection string in `Entity Framework Core` to enforce encryption and avoid exposing credentials?
+#### Masking personal data example
 
-- In a `Prisma` or Node.js environment, how can I securely use Microsoft Entra ID authentication or managed identity with `SQL Server` instead of storing passwords?
+```copilot-prompt
+What are the best strategies or built-in features in my database for masking personal data in the `SalesLT.Customer` table?
+```
 
-- What `SQL Server` options should I enable or verify (for example, `Always Encrypted`, `Transparent Data Encryption`) to protect customer data when using ORMs like Sequelize or EF Core?
+#### Enforce encryption in Entity Framework Core example
 
-## Feedback: Security Analyzer
+```copilot-prompt
+How can I configure my connection string in Entity Framework Core to enforce encryption and avoid exposing credentials?
+```
+
+#### Microsoft Entra ID in Node.js authentication example
+
+```copilot-prompt
+In a Prisma or Node.js environment, how can I securely use Microsoft Entra ID authentication or managed identity with SQL Server instead of storing passwords?
+```
+
+#### Recommend SQL Server options for securing data example
+
+```copilot-prompt
+What SQL Server options should I enable or verify (for example, Always Encrypted, Transparent Data Encryption) to protect customer data when using ORMs like Sequelize or EF Core?
+```
+
+## Share your experience
 
 [!INCLUDE [feedback](../includes/feedback.md)]
 
 ## Related content
 
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](overview.md)
-- [Quickstart: Use Chat and inline GitHub Copilot suggestions (Preview)](inline-copilot-suggestions.md)
-- [Quickstart: Generate code (Preview)](code-generation.md)
-- [Quickstart: Use the Schema Explorer and designer (Preview)](schema-explorer-designer.md)
-- [Quickstart: Use the Smart Query Builder (Preview)](smart-query-builder.md)
-- [Quickstart: Query Optimizer Assistant (Preview)](query-optimizer-assistant.md)
-- [Quickstart: Use the Business Logic Explainer (Preview)](business-logic-explainer.md)
-- [Quickstart: Localization & Formatting Helper (Preview)](localization-formatting-helper.md)
-- [Quickstart: Generate data for testing and mocking (Preview)](test-and-mocking-data-generator.md)
-- [Limitations and Known Issues](limitations-and-known-issues.md)
+- [Quickstart: Use chat and inline GitHub Copilot suggestions](inline-copilot-suggestions.md)
+- [Quickstart: Generate code](code-generation.md)
+- [Quickstart: Use the schema explorer and designer](schema-explorer-designer.md)
+- [Quickstart: Use the smart query builder](smart-query-builder.md)
+- [Quickstart: Query optimizer assistant](query-optimizer-assistant.md)
+- [Quickstart: Use the business logic explainer](business-logic-explainer.md)
+- [Quickstart: Localization and formatting helper](localization-formatting-helper.md)
+- [Quickstart: Generate data for testing and mocking](test-and-mocking-data-generator.md)
+- [Limitations and known issues](limitations-and-known-issues.md)

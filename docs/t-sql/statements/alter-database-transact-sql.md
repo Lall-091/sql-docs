@@ -10,7 +10,7 @@ ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
   - references_regions
-  - build-2025
+  - ignite-2025
 f1_keywords:
   - "ALTER_DATABASE_TSQL"
   - "ALTER DATABASE"
@@ -59,7 +59,7 @@ For more information about the syntax conventions, see [Transact-SQL syntax conv
         [Analytics Platform<br />System (PDW)](alter-database-transact-sql.md?view=aps-pdw-2016-au7&preserve-view=true)
     :::column-end:::
     :::column:::
-        [Microsoft Fabric](alter-database-transact-sql.md?view=fabric&preserve-view=true)
+        [Microsoft Fabric Data Warehouse](alter-database-transact-sql.md?view=fabric&preserve-view=true)
     :::column-end:::
 :::row-end:::
 
@@ -309,7 +309,7 @@ GO
         [Analytics Platform<br />System (PDW)](alter-database-transact-sql.md?view=aps-pdw-2016-au7&preserve-view=true)
     :::column-end:::
     :::column:::
-        [Microsoft Fabric](alter-database-transact-sql.md?view=fabric&preserve-view=true)
+        [Microsoft Fabric Data Warehouse](alter-database-transact-sql.md?view=fabric&preserve-view=true)
     :::column-end:::    
 :::row-end:::
 
@@ -777,7 +777,7 @@ ALTER DATABASE [mySampleDatabase] PERFORM_CUTOVER;
         [Analytics Platform<br />System (PDW)](alter-database-transact-sql.md?view=aps-pdw-2016-au7&preserve-view=true)
     :::column-end:::
     :::column:::
-        [Microsoft Fabric](alter-database-transact-sql.md?view=fabric&preserve-view=true)
+        [Microsoft Fabric Data Warehouse](alter-database-transact-sql.md?view=fabric&preserve-view=true)
     :::column-end:::    
 :::row-end:::
 
@@ -938,7 +938,7 @@ ALTER DATABASE WideWorldImporters
         [Analytics Platform<br />System (PDW)](alter-database-transact-sql.md?view=aps-pdw-2016-au7&preserve-view=true)
     :::column-end:::
     :::column:::
-        [Microsoft Fabric](alter-database-transact-sql.md?view=fabric&preserve-view=true)
+        [Microsoft Fabric Data Warehouse](alter-database-transact-sql.md?view=fabric&preserve-view=true)
     :::column-end:::
 :::row-end:::
 
@@ -1129,7 +1129,7 @@ ALTER DATABASE dw1 MODIFY ( MAXSIZE=10240 GB, SERVICE_OBJECTIVE= 'DW1200' );
         **_\* Analytics<br />Platform System (PDW) \*_** &nbsp;
     :::column-end:::
     :::column:::
-        [Microsoft Fabric](alter-database-transact-sql.md?view=fabric&preserve-view=true)
+        [Microsoft Fabric Data Warehouse](alter-database-transact-sql.md?view=fabric&preserve-view=true)
     :::column-end:::    
 :::row-end:::
 
@@ -1378,7 +1378,7 @@ ALTER DATABASE
         [Analytics Platform<br />System (PDW)](alter-database-transact-sql.md?view=aps-pdw-2016-au7&preserve-view=true)
     :::column-end:::
     :::column:::
-        ***Microsoft Fabric***
+        ***Microsoft Fabric Data Warehouse***
     :::column-end:::
 :::row-end:::
 

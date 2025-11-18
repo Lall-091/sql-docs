@@ -7,6 +7,8 @@ ms.date: "03/06/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "Key_GUID_TSQL"
   - "Key_GUID"
@@ -18,7 +20,7 @@ dev_langs:
   - "TSQL"
 ---
 # KEY_GUID (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Returns the GUID of a symmetric key in the database.  
   
@@ -58,3 +60,4 @@ SELECT Key_GUID('ABerglundKey1');
  [sys.key_encryptions &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-key-encryptions-transact-sql.md)  
   
   
+

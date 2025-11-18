@@ -8,16 +8,18 @@ ms.date: 05/10/2023
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "views [SQL Server], renaming"
   - "views [SQL Server], modifying"
   - "modifying views"
   - "renaming views"
-monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Modify views
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 After you define a view, you can modify its definition in the [!INCLUDE [ssdenoversion-md](../../includes/ssdenoversion-md.md)] without dropping and re-creating the view by using [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or [!INCLUDE[tsql](../../includes/tsql-md.md)].
 
@@ -87,3 +89,4 @@ To execute ALTER VIEW, at a minimum, ALTER permission on OBJECT is required.
 ## Next steps
 
 - [ALTER VIEW (Transact-SQL)](../../t-sql/statements/alter-view-transact-sql.md)
+

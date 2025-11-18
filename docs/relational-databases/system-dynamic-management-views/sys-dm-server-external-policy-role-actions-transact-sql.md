@@ -7,6 +7,8 @@ ms.date: "11/07/2022"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "dm_server_external_policy_role_actions_TSQL"
   - "sys.dm_server_external_policy_role_actions"
@@ -20,7 +22,7 @@ dev_langs:
 
 # sys.dm_server_external_policy_role_actions (Transact-SQL)
 
-[!INCLUDE [sqlserver2022](../../includes/applies-to-version/sqlserver2022-asdb.md)]
+[!INCLUDE [sqlserver2022-fabricsqldb](../../includes/applies-to-version/sqlserver2022-asdb-fabricsqldb.md)]
 
 Lists the links between the roles and actions and can be used to join the two DMVs *sys.dm_server_external_policy_roles* and *sys.dm_server_external_policy_actions*. 
   
@@ -40,3 +42,4 @@ Principals must have the **VIEW SERVER SECURITY STATE** permission.
 - [Provision access by data owner for Azure SQL Database](/azure/purview/how-to-policies-data-owner-azure-sql-db)
 
 - [Provision access by data owner for SQL Server on Azure Arc-enabled servers](/azure/purview/how-to-policies-data-owner-arc-sql-server)
+

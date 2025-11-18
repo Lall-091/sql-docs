@@ -8,6 +8,8 @@ ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_setapprole"
   - "sp_setapprole_TSQL"
@@ -18,7 +20,7 @@ dev_langs:
 ---
 # sp_setapprole (Transact-SQL)
 
-[!INCLUDE [SQL Server SQL Database](../../includes/applies-to-version/sql-asdb.md)]
+[!INCLUDE [SQL Server SQL Database-fabricsqldb](../../includes/applies-to-version/sql-asdb-fabricsqldb.md)]
 
 Activates the permissions associated with an application role in the current database.
 
@@ -143,3 +145,4 @@ GO
 - [CREATE APPLICATION ROLE (Transact-SQL)](../../t-sql/statements/create-application-role-transact-sql.md)
 - [DROP APPLICATION ROLE (Transact-SQL)](../../t-sql/statements/drop-application-role-transact-sql.md)
 - [sp_unsetapprole (Transact-SQL)](sp-unsetapprole-transact-sql.md)
+

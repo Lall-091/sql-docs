@@ -6,17 +6,19 @@ ms.author: "mathoma"
 ms.date: 09/27/2024
 ms.service: sql
 ms.topic: concept-article
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "sequence number object, overview"
   - "sequence [Database Engine]"
   - "autonumbers, sequences"
   - "sequence numbers [SQL Server]"
   - "sequence number object"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Sequence Numbers
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This article explains how to use sequence numbers in SQL Server, Azure SQL Database and Azure SQL Managed Instance. A sequence is a user-defined schema-bound object that generates a sequence of numeric values according to the specification with which the sequence was created.
 
@@ -407,3 +409,4 @@ FROM Test.Department;
 - [ALTER SEQUENCE (Transact-SQL)](../../t-sql/statements/alter-sequence-transact-sql.md)
 - [DROP SEQUENCE (Transact-SQL)](../../t-sql/statements/drop-sequence-transact-sql.md)
 - [CREATE TABLE (Transact-SQL) IDENTITY (Property)](../../t-sql/statements/create-table-transact-sql-identity-property.md)
+

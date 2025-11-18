@@ -8,6 +8,8 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "testing preprocessor tool"
   - "xsd:include"
@@ -20,7 +22,7 @@ helpviewer_keywords:
 ---
 # Preprocess a schema to merge included schemas
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 The W3C XSD **include** element provides support for schema modularity in which an XML schema can be partitioned into more than one physical file. [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] currently doesn't support this element. XML schemas that include this element will be rejected by the server.
 
@@ -211,3 +213,4 @@ You can use the following XSD schemas to test the preprocessor tool:
 ## See also
 
 - [XML Schema Collections &#40;SQL Server&#41;](../../relational-databases/xml/xml-schema-collections-sql-server.md)
+

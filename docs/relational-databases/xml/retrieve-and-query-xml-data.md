@@ -8,13 +8,15 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "XML data [SQL Server], retrieving"
   - "XML instance retrieval"
 ---
 # XML query options and preserved data
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This article describes the query options that you have to specify to query XML data. It also describes the parts of XML instances that aren't preserved when they're stored in databases.
 
@@ -101,3 +103,4 @@ The namespace prefix in the result may be different. For example:
 ## See also
 
 - [Create Instances of XML Data](../../relational-databases/xml/create-instances-of-xml-data.md)
+

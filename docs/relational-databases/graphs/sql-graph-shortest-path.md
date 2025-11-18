@@ -7,7 +7,7 @@ ms.date: 06/28/2023
 ms.service: sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "SHORTEST PATH"
   - "SHORTEST_PATH"
@@ -16,7 +16,7 @@ helpviewer_keywords:
   - "SQL graph, MATCH statement"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-ver15 || >=sql-server-linux-ver15 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-ver15 || >=sql-server-linux-ver15 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # SHORTEST_PATH (Transact-SQL)
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sqlserver2019-and-later-asdb-asdbmi-fabricsqldb.md)]

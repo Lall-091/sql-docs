@@ -8,13 +8,15 @@ ms.date: 06/29/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "computed columns, XML"
   - "XML [SQL Server], computed columns"
 ---
 # Use XML in computed columns
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 XML instances can appear as a source for a computed column, or as a type of computed column. The examples in this article show how to use XML with computed columns.
 
@@ -84,3 +86,4 @@ FROM T;
 ### See also
 
 - [Promote Frequently Used XML Values with Computed Columns](../../relational-databases/xml/promote-frequently-used-xml-values-with-computed-columns.md)  
+

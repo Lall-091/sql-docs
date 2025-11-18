@@ -8,6 +8,8 @@ ms.date: 08/06/2024
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "regular identifiers [SQL Server]"
   - "identifiers [SQL Server]"
@@ -18,7 +20,7 @@ helpviewer_keywords:
   - "database objects [SQL Server], names"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # Database identifiers
 
@@ -138,9 +140,9 @@ For details and examples, see [CREATE DATABASE](../../t-sql/statements/create-da
 
 ## Catalog collation in SQL database in Microsoft Fabric
 
-You can't change or set the logical server collation on SQL database in Microsoft Fabric (preview). 
+You can't change or set the logical server collation on SQL database in Fabric. 
 
-Currently, by default the collation of a SQL database in Fabric (preview) is `SQL_Latin1_General_CP1_CI_AS` and can't be updated. Collations on individual columns are supported. 
+Currently, by default the collation of a SQL database in Fabric is `SQL_Latin1_General_CP1_CI_AS` and can't be updated. Collations on individual columns are supported. 
 
 ## Related content
 

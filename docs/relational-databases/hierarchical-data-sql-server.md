@@ -6,6 +6,8 @@ ms.author: randolphwest
 ms.date: 05/19/2025
 ms.service: sql
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "hierarchies [SQL Server], tables to support"
   - "hierarchyid [Database Engine], concepts"
@@ -13,7 +15,7 @@ helpviewer_keywords:
   - "SqlHierarchyId"
   - "hierarchyid [Database Engine]"
   - "hierarchical queries [SQL Server], using hierarchyid data type"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Hierarchical data (SQL Server)
 

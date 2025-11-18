@@ -7,6 +7,8 @@ ms.date: "09/18/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "@@PROCID"
   - "@@PROCID_TSQL"
@@ -23,7 +25,7 @@ dev_langs:
   - "TSQL"
 ---
 # &#x40;&#x40;PROCID (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Returns the object identifier (ID) of the current [!INCLUDE[tsql](../../includes/tsql-md.md)] module. A [!INCLUDE[tsql](../../includes/tsql-md.md)] module can be a stored procedure, user-defined function, or trigger. @@PROCID cannot be specified in CLR modules or the in-process data access provider.  
   
@@ -73,3 +75,4 @@ EXECUTE dbo.usp_FindName 'P%', 'A%';
  [RAISERROR &#40;Transact-SQL&#41;](../../t-sql/language-elements/raiserror-transact-sql.md)  
   
   
+

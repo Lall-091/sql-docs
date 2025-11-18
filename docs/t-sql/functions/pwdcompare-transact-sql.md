@@ -7,6 +7,8 @@ ms.date: "11/21/2024"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "PWDCOMPARE"
   - "PWDCOMPARE_TSQL"
@@ -18,7 +20,7 @@ dev_langs:
   - "TSQL"
 ---
 # PWDCOMPARE (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Hashes a password and compares the hash to the hash of an existing password. PWDCOMPARE can be used to search for blank [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login passwords or common weak passwords.  
   
@@ -84,3 +86,4 @@ WHERE PWDCOMPARE('password', password_hash) = 1 ;
  [PWDENCRYPT &#40;Transact-SQL&#41;](../../t-sql/functions/pwdencrypt-transact-sql.md)   
  [Security Functions &#40;Transact-SQL&#41;](../../t-sql/functions/security-functions-transact-sql.md)  
  [sys.sql_logins &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-sql-logins-transact-sql.md)  
+

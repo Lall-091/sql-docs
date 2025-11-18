@@ -4,37 +4,33 @@ description: REGEXP_INSTR Returns the starting or ending position of the matched
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: abhtiwar, wiassaf, randolphwest
-ms.date: 05/19/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
-dev_langs:
-  - "TSQL"
-monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
 ms.custom:
-  - build-2025
+  - ignite-2025
+dev_langs:
+  - TSQL
+monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
-# REGEXP_INSTR (Transact-SQL) preview
+# REGEXP_INSTR (Transact-SQL)
 
-[!INCLUDE [sqlserver2025-asdb-asmi-fabric](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
-
-[!INCLUDE [preview](../../includes/preview.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
 Returns the starting or ending position of the matched substring, depending on the value of the `return_option` argument.
 
 ```syntaxsql
 REGEXP_INSTR
-     (
-      string_expression,
-      pattern_expression
-         [, start [, occurrence [, return_option [, flags [, group ] ] ] ] ]
-     )
+(
+    string_expression,
+    pattern_expression [ , start [ , occurrence [ , return_option [ , flags [ , group ] ] ] ] ]
+)
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Regular expressions are available in Azure SQL Managed Instance with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).
-
 
 ## Arguments
 
@@ -99,5 +95,5 @@ FROM PRODUCTS;
 
 ## Related content
 
-- [Regular expressions preview](../../relational-databases/regular-expressions/overview.md)
+- [Regular expressions](../../relational-databases/regular-expressions/overview.md)
 - [Regular expressions functions (Transact-SQL)](regular-expressions-functions-transact-sql.md)

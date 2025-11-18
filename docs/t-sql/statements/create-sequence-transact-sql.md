@@ -8,6 +8,8 @@ ms.date: 09/26/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SEQUENCE"
   - "CREATE SEQUENCE"
@@ -24,7 +26,7 @@ dev_langs:
 
 # CREATE SEQUENCE (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Creates a sequence object and specifies its properties. A sequence is a user-defined schema bound object that generates a sequence of numeric values according to the specification with which the sequence was created. The sequence of numeric values is generated in an ascending or descending order at a defined interval and can be configured to restart (cycle) when exhausted.
 
@@ -312,3 +314,4 @@ WHERE name = 'DecSeq';
 - [DROP SEQUENCE (Transact-SQL)](drop-sequence-transact-sql.md)
 - [NEXT VALUE FOR (Transact-SQL)](../functions/next-value-for-transact-sql.md)
 - [Sequence Numbers](../../relational-databases/sequence-numbers/sequence-numbers.md)
+

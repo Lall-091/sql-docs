@@ -8,10 +8,12 @@ ms.date: "10/26/2022"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
-ms.custom: sfi-image-nochange
+ms.custom:
+  - sfi-image-nochange
+  - ignite-2025
 ---
 # SQL Server Login dialog box
-[!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics PDW FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 [!INCLUDE[Driver_OLEDB_Download](../../../includes/driver_oledb_download.md)]
 
@@ -54,3 +56,4 @@ When you attempt to connect without specifying enough information, the OLE DB dr
 ## Next steps
 - [Authenticate to Microsoft Entra ID](../features/using-azure-active-directory.md) using the OLE DB driver.
 - Set connection information using [Universal Data Link (UDL)](data-link-pages.md).
+

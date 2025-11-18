@@ -7,12 +7,14 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "Degree of Parallelism event class"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Degree of Parallelism (7.0 Insert) Event Class
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   The **Degree of Parallelism (7.0 Insert)** event class occurs each time [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] executes a SELECT, INSERT, UPDATE, or DELETE statement.  
   
  When this event class is included in a trace, the amount of entailed overhead may significantly impede performance if these events occur frequently. To minimize overhead incurred, limit use of this event class to traces that briefly monitor specific problems.  
@@ -49,3 +51,4 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
  [INSERT &#40;Transact-SQL&#41;](../../t-sql/statements/insert-transact-sql.md)  
   
   
+

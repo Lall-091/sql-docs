@@ -7,11 +7,13 @@ ms.date: "06/14/2018"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "OLE DB, processing results"
 ---
 # Processing Results How-to Topics (OLE DB)
-[!INCLUDE[SQL Server Azure SQL Database Synapse Analytics PDW](../../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE[SQL Server Azure SQL Database Synapse Analytics PDW FabricSQLDB](../../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 [!INCLUDE[Driver_OLEDB_Download](../../../../includes/driver_oledb_download.md)]
 
@@ -31,3 +33,4 @@ helpviewer_keywords:
  [OLE DB How-to Topics](../../../oledb/ole-db-how-to/ole-db-how-to-topics.md)  
   
   
+

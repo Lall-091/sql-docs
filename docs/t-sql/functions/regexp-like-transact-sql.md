@@ -4,31 +4,29 @@ description: REGEXP_LIKE Returns a Boolean value that indicates whether the text
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: abhtiwar, wiassaf, randolphwest
-ms.date: 10/25/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - build-2025
+  - ignite-2025
 dev_langs:
   - TSQL
-monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
+monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
-# REGEXP_LIKE (Transact-SQL) preview
+# REGEXP_LIKE (Transact-SQL)
 
-[!INCLUDE [sqlserver2025-asdb-asmi-fabric](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
-
-[!INCLUDE [preview](../../includes/preview.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
 Indicates if the regular expression pattern matches in a string.
 
 ```syntaxsql
 REGEXP_LIKE
-     (
-      string_expression,
-      pattern_expression [, flags ]
-     )
+(
+    string_expression,
+    pattern_expression [ , flags ]
+)
 ```
 
 `REGEXP_LIKE` requires database compatibility level 170 and above. If the database compatibility level is lower than 170, `REGEXP_LIKE` isn't available. Other [regular expression scalar functions](regular-expressions-functions-transact-sql.md) are available at all compatibility levels.
@@ -36,7 +34,8 @@ REGEXP_LIKE
 You can check compatibility level in the `sys.databases` view or in database properties. You can change the compatibility level of a database with the following command:
 
 ```sql
-ALTER DATABASE [DatabaseName] SET COMPATIBILITY_LEVEL = 170;
+ALTER DATABASE [DatabaseName]
+    SET COMPATIBILITY_LEVEL = 170;
 ```
 
 > [!NOTE]  
@@ -113,5 +112,5 @@ CREATE TABLE Employees
 
 ## Related content
 
-- [Work with regular expressions](../../relational-databases/regular-expressions/overview.md)
+- [Regular expressions](../../relational-databases/regular-expressions/overview.md)
 - [Regular expressions functions (Transact-SQL)](regular-expressions-functions-transact-sql.md)

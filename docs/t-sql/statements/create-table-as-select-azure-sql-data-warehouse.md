@@ -1,16 +1,18 @@
 ---
-title: "CREATE TABLE AS SELECT (Azure Synapse Analytics and Microsoft Fabric)"
-description: "CREATE TABLE AS SELECT in Azure Synapse Analytics and Microsoft Fabric creates a new table based on the output of a SELECT statement. CTAS is the simplest and fastest way to create a copy of a table."
+title: "CREATE TABLE AS SELECT (Microsoft Fabric and Azure Synapse Analytics)"
+description: "CREATE TABLE AS SELECT creates a new table based on the output of a SELECT statement. CTAS is the simplest and fastest way to create a copy of a table."
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: vanto, xiaoyul, mariyaali, periclesrocha
-ms.date: 05/20/2024
+ms.date: 11/03/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 dev_langs:
   - "TSQL"
-monikerRange: "=azure-sqldw-latest||=fabric"
+monikerRange: "=azure-sqldw-latest || =fabric"
 ---
 # CREATE TABLE AS SELECT
 
@@ -18,7 +20,7 @@ monikerRange: "=azure-sqldw-latest||=fabric"
  
 [!INCLUDE[applies-to-version/asa-pdw](../../includes/applies-to-version/asa-pdw.md)]
 
-CREATE TABLE AS SELECT (CTAS) is one of the most important T-SQL features available. It's a fully parallelized operation that creates a new table based on the output of a SELECT statement. CTAS is the simplest and fastest way to create a copy of a table.
+`CREATE TABLE AS SELECT` (CTAS) is one of the most important T-SQL features available. It's a fully parallelized operation that creates a new table based on the output of a SELECT statement. CTAS is the simplest and fastest way to create a copy of a table.
 
 For example, use CTAS to:  
   
@@ -28,10 +30,11 @@ For example, use CTAS to:
 -   Query or import external data.  
 
 > [!NOTE]  
-> Since CTAS adds to the capabilities of creating a table, this topic tries not to repeat the CREATE TABLE topic. Instead, it describes the differences between the CTAS and CREATE TABLE statements. For the CREATE TABLE details, see [CREATE TABLE (Azure Synapse Analytics)](create-table-azure-sql-data-warehouse.md) statement. 
+> Since `CREATE TABLE AS SELECT` (CTAS) adds to the capabilities of creating a table, this topic tries not to repeat the `CREATE TABLE` topic. Instead, it describes the differences between the CTAS and [CREATE TABLE](create-table-azure-sql-data-warehouse.md).
   
+- CTAS is supported in the [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]. View [the Fabric version of the CREATE TABLE AS SELECT article](create-table-as-select-azure-sql-data-warehouse.md?view=fabric&preserve-view=true).
 - [!INCLUDE[synapse-analytics-od-unsupported-syntax](../../includes/synapse-analytics-od-unsupported-syntax.md)]
-- CTAS is supported in the [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)].
+- `CREATE TABLE AS SELECT` (CTAS) is supported in the [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]. For more information, see the [Fabric Data Warehouse version of this article](create-table-as-select-azure-sql-data-warehouse.md?view=fabric&preserve-view=true).
 
  :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../language-elements/transact-sql-syntax-conventions-transact-sql.md)  
   
@@ -82,14 +85,14 @@ CREATE TABLE { database_name.schema_name.table_name | schema_name.table_name | t
   
 ## Arguments
 
-For details, see the [Arguments section](create-table-azure-sql-data-warehouse.md#arguments) in CREATE TABLE.  
+For more information, see the [Arguments section](create-table-azure-sql-data-warehouse.md#arguments) in `CREATE TABLE`. 
 
 <a name="column-options-bk"></a>
 
 ### Column options
 
 `column_name` [ ,...`n` ]   
- Column names don't allow the [column options](create-table-azure-sql-data-warehouse.md#ColumnOptions) mentioned in CREATE TABLE.  Instead, you can provide an optional list of one or more column names for the new table. The columns in the new table use the names you specify. When you specify column names, the number of columns in the column list must match the number of columns in the select results. If you don't specify any column names, the new target table uses the column names in the select statement results. 
+ Column names don't allow the [CREATE TABLE column options](create-table-azure-sql-data-warehouse.md#ColumnOptions) mentioned in `CREATE TABLE`. Instead, you can provide an optional list of one or more column names for the new table. The columns in the new table use the names you specify. When you specify column names, the number of columns in the column list must match the number of columns in the select results. If you don't specify any column names, the new target table uses the column names in the select statement results. 
   
  You can't specify any other column options such as data types, collation, or nullability. Each of these attributes is derived from the results of the `SELECT` statement. However, you can use the SELECT statement to change the attributes. For an example, see [Use CTAS to change column attributes](#ctas-change-column-attributes-bk).   
 
@@ -97,12 +100,14 @@ For details, see the [Arguments section](create-table-azure-sql-data-warehouse.m
 
 ### Table distribution options
 
-For details and to understand how to choose the best distribution column, see the [Table distribution options](create-table-azure-sql-data-warehouse.md#TableDistributionOptions) section in CREATE TABLE. For recommendations on which distribution to choose for a table based on actual usage or sample queries, see [Distribution Advisor in Azure Synapse SQL](/azure/synapse-analytics/sql/distribution-advisor).
+For details and to understand how to choose the best distribution column, see the [Table distribution options](create-table-azure-sql-data-warehouse.md#TableDistributionOptions) section in `CREATE TABLE`. For recommendations on which distribution to choose for a table based on actual usage or sample queries, see [Distribution Advisor in Azure Synapse SQL](/azure/synapse-analytics/sql/distribution-advisor).
 
 `DISTRIBUTION` = `HASH` (*distribution_column_name*) | ROUND_ROBIN | REPLICATE
+
 The CTAS statement requires a distribution option and doesn't have default values. This is different from CREATE TABLE, which has defaults.
 
 `DISTRIBUTION = HASH ( [distribution_column_name [, ...n]] )`
+
 Distributes the rows based on the hash values of up to eight columns, allowing for more even distribution of the base table data, reducing the data skew over time and improving query performance.
 
 > [!NOTE]
@@ -110,11 +115,11 @@ Distributes the rows based on the hash values of up to eight columns, allowing f
 > - To enable feature, change the database's compatibility level to 50 with this command. For more information on setting the database compatibility level, see [ALTER DATABASE SCOPED CONFIGURATION](alter-database-scoped-configuration-transact-sql.md). For example: `ALTER DATABASE SCOPED CONFIGURATION SET DW_COMPATIBILITY_LEVEL = 50;`
 > - To disable the multi-column distribution (MCD) feature, run this command to change the database's compatibility level to AUTO. For example: `ALTER DATABASE SCOPED CONFIGURATION SET DW_COMPATIBILITY_LEVEL = AUTO;` Existing MCD tables will stay but become unreadable. Queries over MCD tables will return this error: `Related table/view is not readable because it distributes data on multiple columns and multi-column distribution is not supported by this product version or this feature is disabled.`
 >   - To regain access to MCD tables, enable the feature again.
->   - To load data into a MCD table, use CTAS statement and the data source needs be Synapse SQL tables.  
+>   - To load data into an MCD table, use CTAS statement and the data source needs be Synapse SQL tables.  
 >   - CTAS on MCD HEAP target tables is not supported. Instead, use [INSERT SELECT](insert-transact-sql.md?view=azure-sqldw-latest&preserve-view=true) as a workaround to load data into MCD HEAP tables.
 > - Using SSMS for [generating a script](../../ssms/scripting/generate-scripts-sql-server-management-studio.md) to create MCD tables is currently supported beyond SSMS version 19.
 
-For details and to understand how to choose the best distribution column, see the [Table distribution options](create-table-azure-sql-data-warehouse.md#TableDistributionOptions) section in CREATE TABLE. 
+For details and to understand how to choose the best distribution column, see the [Table distribution options](create-table-azure-sql-data-warehouse.md#TableDistributionOptions) section in `CREATE TABLE`. 
 
 
 For recommendations on the best distribution do to use based on your workloads, see the [Synapse SQL Distribution Advisor (Preview)](/azure/synapse-analytics/sql/distribution-advisor).
@@ -125,7 +130,7 @@ For recommendations on the best distribution do to use based on your workloads, 
 
 The CTAS statement creates a nonpartitioned table by default, even if the source table is partitioned. To create a partitioned table with the CTAS statement, you must specify the partition option. 
 
-For details, see the [Table partition options](create-table-azure-sql-data-warehouse.md#TablePartitionOptions) section in CREATE TABLE.
+For details, see the [Table partition options](create-table-azure-sql-data-warehouse.md#TablePartitionOptions) section in `CREATE TABLE`.
 
 <a name="select-options-bk"></a>
 
@@ -150,18 +155,18 @@ Users can set MAXDOP to an integer value to control the maximum degree of parall
 ## Permissions
 CTAS requires `SELECT` permission on any objects referenced in the *select_criteria*.
 
-For permissions to create a table, see [Permissions](create-table-azure-sql-data-warehouse.md#permissions) in CREATE TABLE. 
+For permissions to create a table, see [Permissions](create-table-azure-sql-data-warehouse.md#permissions) in `CREATE TABLE`. 
   
 <a name="general-remarks-bk"></a>
   
 ## Remarks
-For details, see [General Remarks](create-table-azure-sql-data-warehouse.md#GeneralRemarks) in CREATE TABLE.
+For details, see [General Remarks](create-table-azure-sql-data-warehouse.md#GeneralRemarks) in `CREATE TABLE`.
 
 <a name="limitations-bk"></a>
 
 ## Limitations and restrictions
 
-For more details on limitations and restrictions, see [Limitations and Restrictions](create-table-azure-sql-data-warehouse.md#LimitationsRestrictions) in CREATE TABLE.
+For more details on limitations and restrictions, see [Limitations and Restrictions](create-table-azure-sql-data-warehouse.md#LimitationsRestrictions) in `CREATE TABLE`.
 
 - An ordered clustered columnstore index can be created on columns of any data types supported in [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] except for string columns.  
 
@@ -212,7 +217,7 @@ For more details on limitations and restrictions, see [Limitations and Restricti
   
 ## Locking behavior
 
- For details, see [Locking Behavior](create-table-azure-sql-data-warehouse.md#LockingBehavior) in CREATE TABLE.
+ For details, see [Locking Behavior](create-table-azure-sql-data-warehouse.md#LockingBehavior) in `CREATE TABLE`.
  
 <a name="performance-bk"></a>
  
@@ -806,8 +811,7 @@ AS SELECT * FROM ExampleTable
 OPTION (MAXDOP 1);
 ```
 
- 
-## Next steps
+## Related content
 
 - [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](../statements/create-external-data-source-transact-sql.md)
 - [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](../statements/create-external-file-format-transact-sql.md)
@@ -824,7 +828,7 @@ OPTION (MAXDOP 1);
 ::: moniker range="=fabric"
 [!INCLUDE[applies-to-version/fabricdw](../../includes/applies-to-version/fabric-dw.md)]
 
-CREATE TABLE AS SELECT (CTAS) is one of the most important T-SQL features available. It's a fully parallelized operation that creates a new table based on the output of a SELECT statement. CTAS is the simplest and fastest way to create a copy of a table.
+`CREATE TABLE AS SELECT` (CTAS) is one of the most important T-SQL features available. It's a fully parallelized operation that creates a new table based on the output of a SELECT statement. CTAS is the simplest and fastest way to create a copy of a table.
  
 For example, use CTAS in [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)] to:  
   
@@ -834,7 +838,7 @@ For example, use CTAS in [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [
 For more information on using CTAS on your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], see [Ingest data into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] using Transact-SQL](/fabric/data-warehouse/ingest-data-tsql).
 
 > [!NOTE]  
-> Since CTAS adds to the capabilities of creating a table, this topic tries not to repeat the CREATE TABLE topic. Instead, it describes the differences between the CTAS and CREATE TABLE statements. For the CREATE TABLE details, see [CREATE TABLE](create-table-azure-sql-data-warehouse.md?version=fabric&preserve-view=true) statement. 
+> Since `CREATE TABLE AS SELECT` (CTAS) adds to the capabilities of creating a table, this topic tries not to repeat the CREATE TABLE topic. Instead, it describes the differences between the CTAS and [CREATE TABLE](create-table-azure-sql-data-warehouse.md?version=fabric&preserve-view=true). 
   
  :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../language-elements/transact-sql-syntax-conventions-transact-sql.md)  
   
@@ -843,8 +847,9 @@ For more information on using CTAS on your [!INCLUDE [fabricdw](../../includes/f
 ## Syntax
 
 ```syntaxsql
-CREATE TABLE { database_name.schema_name.table_name | schema_name.table_name | table_name }
-    AS <select_statement>  
+CREATE TABLE { warehouse_name.schema_name.table_name | schema_name.table_name | table_name } (
+) WITH (CLUSTER BY [ ,... n ])
+AS <select_statement>
 [;]  
 
 <select_statement> ::=  
@@ -855,26 +860,23 @@ CREATE TABLE { database_name.schema_name.table_name | schema_name.table_name | t
   
 ## Arguments
 
-For details, see the [Arguments in CREATE TABLE for Microsoft Fabric](create-table-azure-sql-data-warehouse.md?version=fabric&preserve-view=true#arguments).
+For details on common arguments, see the [Arguments in CREATE TABLE for Microsoft Fabric](create-table-azure-sql-data-warehouse.md?version=fabric&preserve-view=true#arguments).
 
-<a name="column-options-bk-fabric"></a>
+#### WITH (CLUSTER BY [ ,... n])
 
-### Column options
+The `CLUSTER BY` clause for data clustering in Fabric Data Warehouse requires at least one column to be specified for data clustering, and a maximum of four columns. 
 
-`column_name` [ ,...`n` ]   
- Column names don't allow the [column options](create-table-azure-sql-data-warehouse.md?version=fabric&preserve-view=true#ColumnOptions) mentioned in CREATE TABLE.  Instead, you can provide an optional list of one or more column names for the new table. The columns in the new table use the names you specify. When you specify column names, the number of columns in the column list must match the number of columns in the select results. If you don't specify any column names, the new target table uses the column names in the select statement results.
-  
- You can't specify any other column options such as data types, collation, or nullability. Each of these attributes is derived from the results of the `SELECT` statement. However, you can use the SELECT statement to change the attributes. 
+For more information, see [Data clustering in Fabric Data Warehouse](/fabric/data-warehouse/data-clustering).
 
 <a name="select-options-bk-fabric"></a>
 
 ### SELECT statement
 
-The SELECT statement is the fundamental difference between CTAS and CREATE TABLE.  
+The `SELECT` statement is the fundamental difference between CTAS and `CREATE TABLE`.  
 
-#### `SELECT` *select_criteria*  
+#### SELECT *select_criteria*  
 
- Populates the new table with the results from a SELECT statement. *select_criteria* is the body of the SELECT statement that determines which data to copy to the new table. For information about SELECT statements, see [SELECT (Transact-SQL)](../queries/select-transact-sql.md?version=fabric&preserve-view=true).  
+ Populates the new table with the results from a `SELECT` statement. *select_criteria* is the body of the `SELECT` statement that determines which data to copy to the new table. For information about `SELECT` statements, see [SELECT (Transact-SQL)](../queries/select-transact-sql.md?version=fabric&preserve-view=true).  
  
 <a name="permissions-bk-fabric"></a>  
 
@@ -885,13 +887,13 @@ The SELECT statement is the fundamental difference between CTAS and CREATE TABLE
 
 CTAS requires `SELECT` permission on any objects referenced in the *select_criteria*.
 
-For permissions to create a table, see [Permissions](create-table-azure-sql-data-warehouse.md?version=fabric&preserve-view=true#permissions) in CREATE TABLE. 
+For permissions to create a table, see [Permissions](create-table-azure-sql-data-warehouse.md?version=fabric&preserve-view=true#permissions) in `CREATE TABLE`. 
   
 <a name="general-remarks-bk-fabric"></a>
   
 ## Remarks
 
-For details, see [General Remarks](create-table-azure-sql-data-warehouse.md?version=fabric&preserve-view=true#GeneralRemarks) in CREATE TABLE.
+For details, see [General Remarks](create-table-azure-sql-data-warehouse.md?version=fabric&preserve-view=true#GeneralRemarks) in `CREATE TABLE`.
 
 <a name="limitations-bk-fabric"></a>
 
@@ -899,13 +901,13 @@ For details, see [General Remarks](create-table-azure-sql-data-warehouse.md?vers
 
 [SET ROWCOUNT (Transact-SQL)](../statements/set-rowcount-transact-sql.md) has no effect on CTAS. To achieve a similar behavior, use [TOP (Transact-SQL)](../queries/top-transact-sql.md?version=fabric&preserve-view=true).  
  
-For details, see [Limitations and Restrictions](create-table-azure-sql-data-warehouse.md?version=fabric&preserve-view=true#LimitationsRestrictions) in CREATE TABLE.
+For details, see [Limitations and Restrictions](create-table-azure-sql-data-warehouse.md?version=fabric&preserve-view=true#LimitationsRestrictions) in `CREATE TABLE`.
 
 <a name="locking-behavior-bk-fabric"></a>
-  
+
 ## Locking behavior
 
- For details, see [Locking Behavior](create-table-azure-sql-data-warehouse.md?version=fabric&preserve-view=true#LockingBehavior) in CREATE TABLE.
+ For details, see [Locking Behavior](create-table-azure-sql-data-warehouse.md?version=fabric&preserve-view=true#LockingBehavior) in `CREATE TABLE`.
  
 <a name="examples-copy-table-bk-fabric"></a>
 
@@ -1018,9 +1020,22 @@ WHERE NOT EXISTS
 ;
 ```
 
-## Next steps
+### D. Create a table with data clustering
+
+Use the following command to create a new table using `CREATE TABLE AS SELECT` (CTAS) with a data clustering column specified:
+
+```sql
+CREATE TABLE nyctlc_With_DataClustering 
+WITH (CLUSTER BY (lpepPickupDatetime)) 
+AS SELECT * FROM nyctlc;
+```
+
+For more information, see [Data clustering in Fabric Data Warehouse](/fabric/data-warehouse/data-clustering).
+
+## Related content
 
 - [Create tables on [!INCLUDE[fabric-data-warehouse](../../includes/fabric-dw.md)] in [!INCLUDE[microsoft-fabric](../../includes/fabric.md)]](/fabric/data-warehouse/create-table)
 - [What is data warehousing in [!INCLUDE [fabric](../../includes/fabric.md)]?](/fabric/data-warehouse/data-warehousing)
 - [Ingest data into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] using Transact-SQL](/fabric/data-warehouse/ingest-data-tsql)
+
 ::: moniker-end

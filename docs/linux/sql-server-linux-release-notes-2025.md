@@ -1,18 +1,18 @@
 ---
-title: Release Notes for SQL Server 2025 Preview on Linux
-description: This article contains the release notes and supported features for SQL Server 2025 Preview running on Linux. Release notes include the most recent release and several previous releases.
+title: Release Notes for SQL Server 2025 on Linux
+description: This article contains the release notes and supported features for SQL Server 2025 running on Linux. Release notes include the most recent release and several previous releases.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh, vanto
-ms.date: 09/16/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: release-notes
 ms.custom:
   - linux-related-content
-  - build-2025
+  - ignite-2025
 ---
-# Release notes for SQL Server 2025 Preview on Linux
+# Release notes for SQL Server 2025 on Linux
 
 [!INCLUDE [sqlserver2025-linux](../includes/applies-to-version/sqlserver2025-linux.md)]
 
@@ -36,16 +36,18 @@ Most existing client tools that target [!INCLUDE [ssNoVersion](../includes/ssnov
 
 ## Latest versions for all packages
 
-This section lists the latest versions of each package per distribution, for [!INCLUDE [ssSQL25](../includes/sssql25-md.md)]. The following table shows the most recent release, which is **RC 1**. For full release history, see [Release history for SQL Server 2025 Preview on Linux](/troubleshoot/sql/releases/linux/release-history-2025).
+This section lists the latest versions of each package per distribution, for [!INCLUDE [ssSQL25](../includes/sssql25-md.md)]. The following table shows the most recent release, which is **GA**. For full release history, see [Release history for SQL Server 2025 on Linux](/troubleshoot/sql/releases/linux/release-history-2025).
 
 | Version | Release | Date | Build | KB article |
 | --- | --- | --- | --- | --- |
-| [!INCLUDE [ssSQL25](../includes/sssql25-md.md)] | RC 1 | 2025-09-16 | 17.0.925.4 | |
+| [!INCLUDE [ssSQL25](../includes/sssql25-md.md)] | GA | 2025-11-18 | 17.0.1000.7 | |
 
 > [!NOTE]  
-> **Red Hat 10** is supported (in preview) on [!INCLUDE [ssSQL25](../includes/sssql25-md.md)], starting with RC 1.
+> **Red Hat 10** and **Ubuntu 24.04** are supported (in preview) on [!INCLUDE [ssSQL25](../includes/sssql25-md.md)], starting with GA.
 
-- The **mssql-server-is** package isn't supported on SUSE in this release. For more information, see [SQL Server on Linux: Known issues](sql-server-linux-known-issues.md#sql-server-integration-services-ssis).
+- Starting with [!INCLUDE [ssSQL25](../includes/sssql25-md.md)], **SUSE Linux Enterprise Server** (SLES) isn't supported.
+
+  Customers using earlier versions of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on SLES aren't affected, and there are no changes to your support for existing deployments. For more information about version lifecycle policies, see [SQL Server 2022](/lifecycle/products/sql-server-2022), [SQL Server 2019](/lifecycle/products/sql-server-2019), and [SQL Server 2017](/lifecycle/products/sql-server-2017). To upgrade to [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], [back up your databases and restore them](sql-server-linux-backup-and-restore-database.md) to a [supported distribution](#supported-platforms).
 
 | Distribution | Package name | Package version | Download |
 | --- | --- | --- | --- |
@@ -55,12 +57,6 @@ This section lists the latest versions of each package per distribution, for [!I
 | RHEL 10 (in preview) | Full-Text Search | 17.0.925.4-1 | [Full-Text Search RPM package](https://packages.microsoft.com/rhel/10/mssql-server-preview/Packages/m/mssql-server-fts-17.0.925.4-1_preview.x86_64.rpm) |
 | RHEL 10 (in preview) | High Availability | 17.0.925.4-1 | [High Availability RPM package](https://packages.microsoft.com/rhel/10/mssql-server-preview/Packages/m/mssql-server-ha-17.0.925.4-1_preview.x86_64.rpm) |
 | RHEL 10 (in preview) | PolyBase | 17.0.925.4-1 | [PolyBase RPM package](https://packages.microsoft.com/rhel/10/mssql-server-preview/Packages/m/mssql-server-polybase-17.0.925.4-1_preview.x86_64.rpm) |
-| **SUSE Linux Enterprise Server** | | | |
-| SLES 15 | Database Engine | 17.0.925.4-1 | [Database Engine RPM package](https://packages.microsoft.com/sles/15/mssql-server-preview/Packages/m/mssql-server-17.0.925.4-1.x86_64.rpm) |
-| SLES 15 | Extensibility | 17.0.925.4-1 | [Extensibility RPM package](https://packages.microsoft.com/sles/15/mssql-server-preview/Packages/m/mssql-server-extensibility-17.0.925.4-1.x86_64.rpm) |
-| SLES 15 | Full-Text Search | 17.0.925.4-1 | [Full-Text Search RPM package](https://packages.microsoft.com/sles/15/mssql-server-preview/Packages/m/mssql-server-fts-17.0.925.4-1.x86_64.rpm) |
-| SLES 15 | High Availability | 17.0.925.4-1 | [High Availability RPM package](https://packages.microsoft.com/sles/15/mssql-server-preview/Packages/m/mssql-server-ha-17.0.925.4-1.x86_64.rpm) |
-| SLES 15 | PolyBase | 17.0.925.4-1 | [PolyBase RPM package](https://packages.microsoft.com/sles/15/mssql-server-preview/Packages/m/mssql-server-polybase-17.0.925.4-1.x86_64.rpm) |
 | **Ubuntu** | | | |
 | Ubuntu 24.04 (in preview) | Database Engine | 17.0.925.4-1-preview | [Database Engine Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-preview/pool/main/m/mssql-server/mssql-server_17.0.925.4-1-preview_amd64.deb) |
 | Ubuntu 24.04 (in preview) | Extensibility | 17.0.925.4-1-preview | [Extensibility Debian package](https://packages.microsoft.com/ubuntu/24.04/mssql-server-preview/pool/main/m/mssql-server-extensibility/mssql-server-extensibility_17.0.925.4-1-preview_amd64.deb) |
@@ -72,7 +68,7 @@ This section lists the latest versions of each package per distribution, for [!I
 
 ## How to install updates
 
-If you require Docker container images, see official images for [Microsoft SQL Server on Linux for Docker Engine](https://hub.docker.com/_/microsoft-mssql-server). For more information about repository configuration, see [Configure repositories for installing and upgrading SQL Server on Linux](sql-server-linux-change-repo.md).
+When you configure the CU repository (`mssql-server-2025`), you get the latest CU of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] packages when you perform new installations. If you require Docker container images, see official images for [Microsoft SQL Server on Linux for Docker Engine](https://hub.docker.com/_/microsoft-mssql-server). For more information about repository configuration, see [Configure repositories for installing and upgrading SQL Server on Linux](sql-server-linux-change-repo.md).
 
 If you update existing [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] packages, run the appropriate update command for each package to get the latest CU. For specific update instructions for each package, see the following installation guides:
 
@@ -92,10 +88,7 @@ The following table lists the release history for [!INCLUDE [ssSQL25](../include
 
 | Release | Version | Release date |
 | --- | --- | --- |
-| [RC 1](/troubleshoot/sql/releases/linux/release-history-2025#RC1) | 17.0.925.4 | 2025-09-16 |
-| [RC 0](/troubleshoot/sql/releases/linux/release-history-2025#RC0) | 17.0.900.7 | 2025-08-20 |
-| [CTP 2.1](/troubleshoot/sql/releases/linux/release-history-2025#CTP2.1) | 17.0.800.3 | 2025-06-16 |
-| [CTP 2.0](/troubleshoot/sql/releases/linux/release-history-2025#CTP2.0) | 17.0.700.9 | 2025-05-19 |
+| [GA](/troubleshoot/sql/releases/linux/release-history-2025#GA) | 17.0.1000.7 | 2025-11-18 |
 
 ## Known issues
 

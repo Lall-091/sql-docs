@@ -8,7 +8,7 @@ ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "variable_TSQL"
   - "@local_variable"
@@ -23,7 +23,7 @@ helpviewer_keywords:
   - "local variables [SQL Server]"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || =azure-sqldw-latest || >=sql-server-linux-2017 || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || =azure-sqldw-latest || >=sql-server-linux-2017 || =fabric || =fabric-sqldb"
 ---
 # SELECT @local_variable (Transact-SQL)
 

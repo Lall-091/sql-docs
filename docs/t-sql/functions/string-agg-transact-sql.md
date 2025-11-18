@@ -8,6 +8,8 @@ ms.date: 07/16/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "STRING_AGG"
   - "STRING_AGG_TSQL"
@@ -15,11 +17,11 @@ helpviewer_keywords:
   - "STRING_AGG function"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2017 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2017 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # STRING_AGG (Transact-SQL)
 
-[!INCLUDE [sqlserver2017-asdb-asdbmi-asa-fabricse-fabricdw](../../includes/applies-to-version/sqlserver2017-asdb-asdbmi-asa-fabricse-fabricdw.md)]
+[!INCLUDE [sqlserver2017-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sqlserver2017-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb.md)]
 
 Concatenates the values of string expressions and places separator values between them. The separator isn't added at the end of string.
 
@@ -268,3 +270,4 @@ Here's the trimmed result set.
 - [CONCAT_WS (Transact-SQL)](concat-ws-transact-sql.md)
 - [Aggregate Functions (Transact-SQL)](aggregate-functions-transact-sql.md)
 - [String Functions (Transact-SQL)](string-functions-transact-sql.md)
+

@@ -1,13 +1,15 @@
 ---
 title: "PRODUCT (Transact-SQL)"
-description: "PRODUCT (Transact-SQL)"
+description: PRODUCT (Transact-SQL)
 author: AaronPitman
 ms.author: aaronpitman
 ms.reviewer: randolphwest
-ms.date: 05/05/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "PRODUCT"
   - "PRODUCT_TSQL"
@@ -21,10 +23,8 @@ helpviewer_keywords:
   - "totals [SQL Server], PRODUCT"
   - "multiply values [SQL Server]"
 dev_langs:
-  - "TSQL"
+  - TSQL
 monikerRange: "=fabric || =sql-server-ver17 || =sql-server-linux-ver17"
-ms.custom:
-  - build-2025
 ---
 
 # PRODUCT (Transact-SQL)
@@ -61,7 +61,7 @@ Specifies that PRODUCT returns the PRODUCT of unique values.
 
 #### *expression*
 
-A constant, column, or function, and any combination of arithmetic, bitwise, and string operators. *expression* is an expression of the exact numeric or approximate numeric data type category, except for the **bit** data type. Aggregate functions and subqueries aren't permitted. For more information, see [Expressions](../../t-sql/language-elements/expressions-transact-sql.md).
+A constant, column, or function, and any combination of arithmetic, bitwise, and string operators. *expression* is an expression of the exact numeric or approximate numeric data type category, except for the **bit** data type. Aggregate functions and subqueries aren't permitted. For more information, see [Expressions](../language-elements/expressions-transact-sql.md).
 
 #### OVER ( [ PARTITION BY clause ] ORDER BY *clause* )
 
@@ -69,7 +69,7 @@ Determines the partitioning and ordering of a rowset before the function is appl
 
 `PARTITION BY` clause divides the result set produced by the FROM clause into partitions to which the function is applied. If not specified, the function treats all rows of the query result set as a single group.
 
-`ORDER BY` clause determines the logical order in which the operation is performed. Required. For more information, see [OVER clause](../../t-sql/queries/select-over-clause-transact-sql.md).
+`ORDER BY` clause determines the logical order in which the operation is performed. Required. For more information, see [SELECT - OVER clause](../queries/select-over-clause-transact-sql.md).
 
 ## Return types
 
@@ -125,15 +125,13 @@ The following example uses the PRODUCT function with the OVER clause to provide 
 
 ```sql
 SELECT finInstrument,
-    PRODUCT(1 + rateOfReturn)
-        OVER (PARTITION BY finInstrument) AS CompoundedReturn
-FROM (
-    VALUES (0.1626, 'instrumentA'),
-           (0.0483, 'instrumentB'),
-           (0.2689, 'instrumentC'),
-           (-0.1944, 'instrumentA'),
-           (0.2423, 'instrumentA'))
-AS MyTable(rateOfReturn, finInstrument);
+       PRODUCT(1 + rateOfReturn) OVER (PARTITION BY finInstrument) AS CompoundedReturn
+FROM (VALUES (0.1626, 'instrumentA'),
+             (0.0483, 'instrumentB'),
+             (0.2689, 'instrumentC'),
+             (-0.1944, 'instrumentA'),
+             (0.2423, 'instrumentA')
+) AS MyTable(rateOfReturn, finInstrument);
 ```
 
 [!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
@@ -150,5 +148,5 @@ instrumentC   1.268900
 
 ## Related content
 
-- [Aggregate Functions (Transact-SQL)](../../t-sql/functions/aggregate-functions-transact-sql.md)
-- [SELECT - OVER clause (Transact-SQL)](../../t-sql/queries/select-over-clause-transact-sql.md)
+- [Aggregate Functions (Transact-SQL)](aggregate-functions-transact-sql.md)
+- [SELECT - OVER clause (Transact-SQL)](../queries/select-over-clause-transact-sql.md)

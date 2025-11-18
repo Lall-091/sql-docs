@@ -1,16 +1,16 @@
 ---
-title: "SQL Server Backup to URL for Azure Blob Storage"
+title: SQL Server Backup to URL for Azure Blob Storage
 description: Learn about the concepts, requirements, and components necessary for SQL Server to use the Azure Blob Storage as a backup destination.
 author: dplessMSFT
 ms.author: dpless
 ms.reviewer: mathoma, wiassaf, hudequei, randolphwest
-ms.date: 10/06/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: backup-restore
 ms.topic: conceptual
 ms.custom:
   - devx-track-azurepowershell
-  - build-2025
+  - ignite-2025
 monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
 # SQL Server backup to URL for Azure Blob Storage
@@ -20,7 +20,7 @@ monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-cu
 This article introduces the concepts, requirements, and components necessary to use Azure Blob Storage as a backup destination. The backup and restore functionality are same or similar to when using `DISK` or `TAPE`, with a few differences. These differences and a few code examples are included in this article.
 
 > [!TIP]  
-> [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] introduces backup to URL with managed identity. Review [Back up to URL with managed identity (preview) - SQL Server enabled by Azure Arc](../../sql-server/azure-arc/backup-to-url.md).
+> Starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], you can back up to URL with managed identity. Review [Back up to URL with managed identity (preview) - SQL Server enabled by Azure Arc](../../sql-server/azure-arc/backup-to-url.md).
 
 ## Overview
 
@@ -113,17 +113,9 @@ For information on other examples where credentials are used, see [Create a SQL 
 
 Typically, SQL Server backups are created in two steps. Initially, the `.bak` backup file is created with zeroes, and then the file is updated with data. Since file modification on immutable storage isn't allowed once the file is written and committed, the backup process now skips the initial step to create the backup file with zeroes. Instead, the entire backup is created in one step when written to block blobs.
 
-During preview, [trace flag 3012](../../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md#tf3012) is required to enable immutable storage support for backups to URL.
-
 To use immutable storage with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] backup to URL, follow these steps:
 
 1. Configure [immutability for your Azure storage container](/azure/storage/blobs/immutable-policy-configure-container-scope).
-1. Enable trace flag 3012 for your [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance by running the following DBCC command:
-
-   ```sql
-   DBCC TRACEON(3012, -1);
-   ```
-
 1. Issue the [BACKUP](../../t-sql/statements/backup-transact-sql.md) to back up your database to the Azure storage container. If you use the `WITH FORMAT` option on immutable storage, and a backup already exists with the same name, you get an error and the backup fails.
 
    ```sql
@@ -295,7 +287,7 @@ The following steps describe the changes made to the Back Up Database task in SQ
 
    1. **Backup File:** Name of the backup file.
 
-   1. **New Container:** Used to register an existing container that you don't have a Shared Access Signature for. See [Connect to a Azure Subscription (Backup TO URL)](connect-to-a-microsoft-azure-subscription.md).
+   1. **New Container:** Used to register an existing container that you don't have a Shared Access Signature for. See [Connect to a Microsoft Azure Subscription (Backup TO URL)](connect-to-a-microsoft-azure-subscription.md).
 
 > [!NOTE]  
 > **Add** supports multiple backup files and storage containers for a single media set.
@@ -311,7 +303,7 @@ When you select **URL** as the destination, certain options in the **Media Optio
 
 ## Back up with maintenance plan
 
-Similar to the backup task described previously, the Maintenance Plan Wizard in SQL Server Management Studio includes **URL** as one of the destination options, and other supporting objects required to back up to Azure storage like the SQL Credential. It has the same For more information, see the **Define Backup Tasks** section in [Using Maintenance Plan Wizard](../../relational-databases/maintenance-plans/use-the-maintenance-plan-wizard.md#SSMSProcedure).
+Similar to the backup task described previously, the Maintenance Plan Wizard in SQL Server Management Studio includes **URL** as one of the destination options, and other supporting objects required to back up to Azure storage like the SQL Credential. It has the same For more information, see the **Define Backup Tasks** section in [Using Maintenance Plan Wizard](../maintenance-plans/use-the-maintenance-plan-wizard.md#SSMSProcedure).
 
 > [!NOTE]  
 > To create a striped backup set, a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] file-snapshot backup, or a SQL credential using Shared Access token, you must use Transact-SQL, PowerShell, or C# rather than the Backup task in Maintenance Plan Wizard.

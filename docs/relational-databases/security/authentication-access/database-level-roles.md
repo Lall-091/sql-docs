@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Database-level roles"
 description: SQL Server provides several roles that are security principals that group other principals to manage the permissions in your databases.
 author: VanMSFT
@@ -9,7 +9,7 @@ ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "sql13.swb.roleproperties.database.f1"
   - "sql13.swb.roleproperties.object.f1"
@@ -37,7 +37,7 @@ helpviewer_keywords:
   - "fixed database roles [SQL Server]"
   - "authentication [SQL Server], roles"
   - "groups [SQL Server], roles"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Database-level roles
 

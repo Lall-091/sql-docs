@@ -8,6 +8,8 @@ ms.date: 12/21/2022
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "CAST_TSQL"
   - "CONVERT_TSQL"
@@ -32,11 +34,11 @@ helpviewer_keywords:
   - "roundtrip conversions"
 dev_langs:
   - "TSQL"
-monikerRange: ">= aps-pdw-2016 || = azuresqldb-current || = azure-sqldw-latest || >= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-mi-current||=fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # CAST and CONVERT (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 These functions convert an expression of one data type to another.
 
@@ -958,3 +960,4 @@ UnconvertedText         UsingCast               UsingConvertFrom_ISO8601
 - [Data type precedence (Transact-SQL)](../data-types/data-type-precedence-transact-sql.md)
 - [Data type conversion (Database Engine)](../data-types/data-type-conversion-database-engine.md)
 - [Write International Transact-SQL Statements](../../relational-databases/collations/write-international-transact-sql-statements.md)
+

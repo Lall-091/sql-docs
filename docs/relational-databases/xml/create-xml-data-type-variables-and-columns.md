@@ -8,13 +8,15 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "xml data type [SQL Server], variables"
   - "xml data type [SQL Server], columns"
 ---
 # Create XML data type variables and columns
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 The **xml** data type is a built-in data type in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] and is somewhat similar to other built-in types such as **int** and **varchar**. As with other built-in types, you can use the **xml** data type as a column type when you create a table as a variable type, a parameter type, a function-return type, or in [CAST and CONVERT](../../t-sql/functions/cast-and-convert-transact-sql.md).
 
@@ -141,3 +143,4 @@ Create the **xml** data type column in a separate table if the following conditi
 - You want to build an XML index on the **xml** data type column, but the primary key of the main table is different from its clustering key, or the main table doesn't have a primary key, or the main table is a heap (no clustering key). This may be true if the main table already exists.
 
 - You don't want table scans to slow down because of the presence of the XML column in the table. This uses space whether it is stored in-row or out-of-row.
+

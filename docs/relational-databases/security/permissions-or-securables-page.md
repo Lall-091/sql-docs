@@ -8,14 +8,14 @@ ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "sql13.swb.common.permissions.f1"
   - "sql13.swb.SecurableAndEffectPermissions.f1"
   - "sql13.swb.common.columnperm.f1"
   - "sql13.swb.availabilitygroupproperties.permission.f1"
   - "sql13.swb.SecurableAndEffectivePermission.f1"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Permissions or Securables Page
 

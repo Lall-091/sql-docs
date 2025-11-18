@@ -8,6 +8,8 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "schema collections [SQL Server], viewing"
   - "XML schemas [SQL Server], viewing"
@@ -19,7 +21,7 @@ helpviewer_keywords:
 ---
 # View a stored XML schema collection
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 After you import an XML schema collection by using [CREATE XML SCHEMA COLLECTION](../../t-sql/statements/create-xml-schema-collection-transact-sql.md), the schema components are stored in the metadata. You can use the [xml_schema_namespace](../../t-sql/xml/xml-schema-namespace.md) intrinsic function to reconstruct the XML schema collection. This function returns an **xml** data type instance.
 
@@ -64,3 +66,4 @@ The [sys.xml_schema_collections](../../relational-databases/system-catalog-views
 ## See also
 
 - [XML Schema Collections &#40;SQL Server&#41;](../../relational-databases/xml/xml-schema-collections-sql-server.md)
+

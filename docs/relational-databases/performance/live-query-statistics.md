@@ -8,7 +8,7 @@ ms.service: sql
 ms.subservice: performance
 ms.topic: how-to
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "query statistics [SQL Server] live query stats"
   - "live query statistics"
@@ -17,7 +17,7 @@ helpviewer_keywords:
   - "query profiling"
   - "lightweight query profiling"
   - "lightweight profiling"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Live Query Statistics
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]

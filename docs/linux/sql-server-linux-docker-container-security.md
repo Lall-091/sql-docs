@@ -8,12 +8,12 @@ ms.date: 07/03/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
-monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017"
 ms.custom:
   - engagement-fy23
   - linux-related-content
-  - build-2025
   - sfi-ropc-blocked
+  - ignite-2025
+monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017"
 ---
 
 # Secure SQL Server Linux containers

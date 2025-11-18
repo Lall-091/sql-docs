@@ -8,6 +8,9 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - sfi-image-nochange
+  - ignite-2025
 helpviewer_keywords:
   - "ColPattern [XML in SQL Server]"
   - "OPENXML statement, about OPENXML statement"
@@ -21,11 +24,10 @@ helpviewer_keywords:
   - "queries [XML in SQL Server], OPENXML statement"
   - "XML [SQL Server], OPENXML statement"
   - "element-centric mapping [SQL Server]"
-ms.custom: sfi-image-nochange
 ---
 # OPENXML (SQL Server)
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 OPENXML is a [!INCLUDE[tsql](../../includes/tsql-md.md)] keyword, which provides a rowset over in-memory XML documents that is similar to a table or a view. OPENXML allows access to XML data as though it's a relational rowset. It does this by providing a rowset view of the internal representation of an XML document. The records in the rowset can be stored in database tables.
 
@@ -210,3 +212,4 @@ Setting the *flags* parameter in OPENXML to 2 (XML_ELEMENTS) specifies **element
 - [sp_xml_removedocument &#40;Transact-SQL&#41;](../../relational-databases/system-stored-procedures/sp-xml-removedocument-transact-sql.md)
 - [OPENXML &#40;Transact-SQL&#41;](../../t-sql/functions/openxml-transact-sql.md)
 - [XML Data &#40;SQL Server&#41;](../../relational-databases/xml/xml-data-sql-server.md)
+

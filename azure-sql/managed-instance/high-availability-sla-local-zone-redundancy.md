@@ -11,7 +11,7 @@ ms.subservice: high-availability
 ms.topic: conceptual
 ms.custom:
   - azure-sql-split
-  - ignite-2023
+  - ignite-2025
 monikerRange: "=azuresql || =azuresql-mi"
 ---
 
@@ -76,10 +76,7 @@ Whenever the database engine or the operating system is upgraded, or a failure i
 
 ### Next-gen General Purpose service tier
 
-> [!NOTE]  
-> The [Next-gen General Purpose service tier upgrade](service-tiers-next-gen-general-purpose-use.md) is currently in preview.
-
-Next-gen General Purpose is an architectural upgrade to the existing General Purpose service tier that uses an upgraded remote storage layer that stores instance data and log files on managed disks instead of page blobs and maintains it locally.
+Next-gen General Purpose is an architectural upgrade to the existing General Purpose service tier that uses an upgraded remote storage layer that stores instance data and log files on [Elastic SAN](/azure/storage/elastic-san/elastic-san-introduction) instead of page blobs and maintains it locally.
 
 Zone redundancy isn't available for the Next-gen General Purpose service tier upgrade.
 

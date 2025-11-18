@@ -8,6 +8,8 @@ ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_bindefault"
   - "sp_bindefault_TSQL"
@@ -15,11 +17,11 @@ helpviewer_keywords:
   - "sp_bindefault"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sp_bindefault (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Binds a default to a column or to an alias data type.
 
@@ -132,3 +134,4 @@ EXECUTE sp_bindefault 'default1', '[t.1].c1';
 - [DROP DEFAULT (Transact-SQL)](../../t-sql/statements/drop-default-transact-sql.md)
 - [sp_unbindefault (Transact-SQL)](sp-unbindefault-transact-sql.md)
 - [System stored procedures (Transact-SQL)](system-stored-procedures-transact-sql.md)
+

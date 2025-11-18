@@ -8,6 +8,8 @@ ms.date: 03/09/2023
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "DECOMPRESS"
   - "DECOMPRESS_TSQL"
@@ -15,11 +17,11 @@ helpviewer_keywords:
   - "DECOMPRESS function"
 dev_langs:
   - "TSQL"
-monikerRange: "= azuresqldb-current || = azuresqldb-mi-current || >= sql-server-2016 || >= sql-server-linux-2017 || = azuresqledge-current || = azure-sqldw-latest ||=fabric"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqledge-current || =azure-sqldw-latest || =fabric || =fabric-sqldb"
 ---
 # DECOMPRESS (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-fabricse-fabricdw](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-fabricse-fabricdw.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb.md)]
 
 This function decompresses an input expression value, using the **Gzip** algorithm. `DECOMPRESS` returns a byte array in the **varbinary(max)** data type.
 
@@ -79,3 +81,4 @@ CREATE TABLE example_table (
 
 - [String Functions (Transact-SQL)](../../t-sql/functions/string-functions-transact-sql.md)
 - [COMPRESS (Transact-SQL)](../../t-sql/functions/compress-transact-sql.md)
+

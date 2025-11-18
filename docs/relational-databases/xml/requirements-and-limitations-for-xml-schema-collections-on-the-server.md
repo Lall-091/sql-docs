@@ -8,6 +8,8 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "identifiers [XML schema collections]"
   - "XML schema collections [SQL Server], limitations"
@@ -25,7 +27,7 @@ helpviewer_keywords:
 ---
 # Requirements and limitations for XML schema collections on the server
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 The XML schema definition language (XSD) validation has some limitations regarding SQL columns that use the **xml** data type. The following table provides details about those limitations and guidelines for modifying your XSD schema so it can work with [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. The articles in this section provide additional information about specific limitations and guidance for working with them.
 
@@ -90,3 +92,4 @@ Provides solutions for the out-of-memory condition that sometimes occurs with la
 - [Grant Permissions on an XML Schema Collection](../../relational-databases/xml/grant-permissions-on-an-xml-schema-collection.md)
 - [Unique Particle Attribution Constraint](../../relational-databases/xml/unique-particle-attribution-constraint.md)
 - [XML Schema Collections &#40;SQL Server&#41;](../../relational-databases/xml/xml-schema-collections-sql-server.md)
+

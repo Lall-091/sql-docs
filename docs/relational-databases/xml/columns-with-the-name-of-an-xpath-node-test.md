@@ -8,13 +8,15 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "names [SQL Server], columns with"
   - "XPath node test"
 ---
 # Columns with the name of an XPath node test
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 If the column name is one of the XPath node tests, the content is mapped as shown in the following table. When the column name is an XPath node test, the content is mapped to the corresponding node. If the SQL type of the column is **xml**, an error is returned.
 
@@ -74,3 +76,4 @@ This is the result:
 ## See also
 
 - [Use PATH Mode with FOR XML](../../relational-databases/xml/use-path-mode-with-for-xml.md)
+

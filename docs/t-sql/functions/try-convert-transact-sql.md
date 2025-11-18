@@ -8,6 +8,8 @@ ms.date: 05/23/2024
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "TRY_CONVERT_TSQL"
   - "TRY_CONVERT"
@@ -15,11 +17,11 @@ helpviewer_keywords:
   - "TRY_CONVERT function"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || >=aps-pdw-2016 || =azure-sqldw-latest || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || >=aps-pdw-2016 || =azure-sqldw-latest || =fabric || =fabric-sqldb"
 ---
 # TRY_CONVERT (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 Returns a value cast to the specified data type if the cast succeeds; otherwise, returns `NULL`.
 
@@ -140,3 +142,4 @@ Result
 ## Related content
 
 - [CAST and CONVERT (Transact-SQL)](cast-and-convert-transact-sql.md)
+

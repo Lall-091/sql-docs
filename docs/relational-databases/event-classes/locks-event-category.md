@@ -7,15 +7,19 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "Locks event category [SQL Server]"
   - "SQL Server event classes, Locks event category"
   - "event classes [SQL Server], Locks event category"
   - "lock escalation [SQL Server], locks event category"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Locks Event Category
- [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
+
+ [!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
+
   Use the event classes in the **Locks** event category to monitor locking activity in an instance of the [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[ssDEnoversion](../../includes/ssdenoversion-md.md)]. These event classes can help you investigate locking problems caused by multiple users reading and modifying data concurrently.  
   
  Because the [!INCLUDE[ssDE](../../includes/ssde-md.md)] often processes many locks, capturing the **Locks** event classes during a trace can incur significant overhead and result in large trace files or tables.  
@@ -35,3 +39,4 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
 |[Lock:Timeout Event Class](../../relational-databases/event-classes/lock-timeout-event-class.md)|Tracks when lock requests cannot be completed because another transaction has a blocking lock on the requested resource.|  
   
   
+

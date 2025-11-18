@@ -9,7 +9,7 @@ ms.service: sql
 ms.subservice: table-view-index
 ms.topic: conceptual
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "clustered indexes, online operations"
   - "online index operations"
@@ -17,7 +17,7 @@ helpviewer_keywords:
   - "disk space [SQL Server], indexes"
   - "nonclustered indexes [SQL Server], online operations"
   - "transaction logs [SQL Server], indexes"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # Guidelines for online index operations

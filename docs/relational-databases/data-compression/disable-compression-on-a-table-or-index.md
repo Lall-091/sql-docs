@@ -8,13 +8,15 @@ ms.date: 08/21/2023
 ms.service: sql
 ms.subservice: performance
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "data compression [SQL Server], disabling"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || =fabric-sqldb"
 ---
 # Disable compression on a table or index
 
-[!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 This article describes how to disable compression on a table or index in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] by using [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or [!INCLUDE [tsql](../../includes/tsql-md.md)].
 
@@ -217,3 +219,4 @@ Requires ALTER permission on the table or index.
 ## Next steps
 
 - [ALTER TABLE (Transact-SQL)](../../t-sql/statements/alter-table-transact-sql.md) and [ALTER INDEX (Transact-SQL)](../../t-sql/statements/alter-index-transact-sql.md)
+

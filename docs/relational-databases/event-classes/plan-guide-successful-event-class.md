@@ -7,12 +7,14 @@ ms.date: "06/22/2021"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "Plan Guide Successful event class"
-monikerRange: ">=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
 # Plan Guide Successful Event Class
- [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
+ [!INCLUDE [SQL Server SQLMI](../../includes/applies-to-version/sql-asdbmi.md)]
 
   The Plan Guide Successful event class indicates that [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] successfully produced an execution plan for a query or batch that contained a plan guide. The event fires when the following conditions are true:  
   
@@ -57,3 +59,4 @@ monikerRange: ">=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-curren
  [sp_trace_setevent &#40;Transact-SQL&#41;](../../relational-databases/system-stored-procedures/sp-trace-setevent-transact-sql.md)  
   
   
+

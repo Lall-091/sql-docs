@@ -8,17 +8,16 @@ ms.date: 04/30/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
+ms.custom:
+  - sfi-image-nochange
+  - ignite-2025
 helpviewer_keywords:
   - "encryption [SQL Server], hierarchies"
   - "cryptography [SQL Server], hierarchies"
   - "encryption keys [SQL Server]"
   - "security [SQL Server], encryption"
   - "hierarchies [SQL Server], encryption"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
-ms.custom:
-  - ignite-2024
-  - build-2025
-  - sfi-image-nochange
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Encryption hierarchy
 

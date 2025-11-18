@@ -7,17 +7,19 @@ ms.date: "02/21/2019"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "collations [SQL Server], SQL collations"
   - "SQL collations"
   - "names [SQL Server], collations"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||=fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # SQL Server Collation Name (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 Is a single string that specifies the collation name for a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] collation.
 
@@ -76,3 +78,4 @@ WHERE name LIKE 'SQL%';
 - [DECLARE @local_variable](../../t-sql/language-elements/declare-local-variable-transact-sql.md)
 - [table](../../t-sql/data-types/table-transact-sql.md)
 - [sys.fn_helpcollations](../../relational-databases/system-functions/sys-fn-helpcollations-transact-sql.md)
+

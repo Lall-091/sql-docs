@@ -7,6 +7,8 @@ ms.date: "02/27/2023"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_xtp_gc_queue_stats"
   - "dm_xtp_gc_queue_stats"
@@ -16,12 +18,12 @@ helpviewer_keywords:
   - "sys.dm_xtp_gc_stats dynamic management view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||=azuresqldb-mi-current||>=sql-server-2016||>=sql-server-linux-2017"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric-sqldb"
 ---
 
 # sys.dm_xtp_gc_queue_stats (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Outputs information about each garbage collection worker queue on the server, and various statistics about each. There is one queue per logical CPU.  
   
@@ -65,3 +67,4 @@ queue_id total_enqueues total_dequeues current_queue_depth  maximum_queue_depth 
 ## See also  
  [Memory-Optimized Table Dynamic Management Views &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/memory-optimized-table-dynamic-management-views-transact-sql.md)  
   
+

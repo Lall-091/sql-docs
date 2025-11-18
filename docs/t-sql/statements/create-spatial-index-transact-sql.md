@@ -7,6 +7,8 @@ ms.date: "04/10/2019"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SPATIAL INDEX"
   - "CREATE SPATIAL INDEX"
@@ -21,7 +23,7 @@ dev_langs:
   - "TSQL"
 ---
 # CREATE SPATIAL INDEX (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Creates a spatial index on a specified table and column in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. An index can be created before there is data in the table. Indexes can be created on tables or views in another database by specifying a qualified database name. Spatial indexes require the table to have a clustered primary key. Spatial indexes cannot be specified on indexed views. For information about spatial indexes, see [Spatial Indexes Overview](../../relational-databases/spatial/spatial-indexes-overview.md).  
   
@@ -578,3 +580,4 @@ CREATE SPATIAL INDEX SIndx_SpatialTable_geography_col3
 [sys.spatial_index_tessellations &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-spatial-index-tessellations-transact-sql.md)       
 [sys.spatial_indexes &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-spatial-indexes-transact-sql.md)       
 [Spatial Indexes Overview](../../relational-databases/spatial/spatial-indexes-overview.md)       
+

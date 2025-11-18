@@ -7,13 +7,15 @@ ms.date: "07/23/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "data types [SQL Server], synonyms"
   - "alternate names [SQL Server]"
   - "synonyms [SQL Server], data types"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||=fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # Data type synonyms (Transact-SQL)
 

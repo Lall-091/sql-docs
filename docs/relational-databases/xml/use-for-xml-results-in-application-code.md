@@ -8,6 +8,9 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - sfi-ropc-nochange
+  - ignite-2025
 helpviewer_keywords:
   - "FOR XML clause, application code usage"
   - "XML [SQL Server], FOR XML clause"
@@ -16,11 +19,10 @@ helpviewer_keywords:
   - "ADO [SQL Server]"
   - "XML data islands [SQL Server]"
   - "data islands [SQL Server]"
-ms.custom: sfi-ropc-nochange
 ---
 # Use FOR XML Results in application code
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 By using FOR XML clauses with SQL queries, you can retrieve and even cast query results as XML data. This functionality allows you to do the following when FOR XML query results can be used in XML application code:
 
@@ -296,3 +298,4 @@ SqlConnection closed.
 ## See also
 
 - [FOR XML &#40;SQL Server&#41;](../../relational-databases/xml/for-xml-sql-server.md)
+

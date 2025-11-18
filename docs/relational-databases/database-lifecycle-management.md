@@ -8,6 +8,8 @@ ms.date: 03/11/2025
 ms.service: sql
 ms.subservice: supportability
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "Data sync"
   - "SQL Database"
@@ -27,11 +29,11 @@ helpviewer_keywords:
   - "SSDT"
   - "Database migration"
   - "Database connectivity"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Database Lifecycle Management
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Database lifecycle management (DLM) is a policy-based approach to managing databases and data assets. DLM isn't a product but a comprehensive approach to managing the database schema, data, and metadata for a database application. A thoughtful and proactive approach to DLM enables an organization to manage data resources according to appropriate levels of performance, protection, availability, and cost.
 
@@ -68,3 +70,4 @@ For tools, tutorials, and more information, see the following articles:
 ## Related content
 
 - [Microsoft Modern Lifecycle Policy](/lifecycle/policies/modern)
+

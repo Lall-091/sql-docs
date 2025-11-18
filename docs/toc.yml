@@ -13,7 +13,7 @@ items:
     href: sql-server/connect-to-database-engine.md
   - name: What's new?
     items:
-    - name: SQL Server 2025 Preview
+    - name: SQL Server 2025
       href: sql-server/what-s-new-in-sql-server-2025.md?view=sql-server-ver17&preserve-view=true
     - name: SQL Server 2022
       href: sql-server/what-s-new-in-sql-server-2022.md?view=sql-server-ver16&preserve-view=true
@@ -25,8 +25,8 @@ items:
       href: sql-server/what-s-new-in-sql-server-2016.md?view=sql-server-2016&preserve-view=true
   - name: Editions and features
     items:
-    - name: SQL Server 2025 Preview
-      href: sql-server/editions-and-components-of-sql-server-2025.md
+    - name: SQL Server 2025
+      href: sql-server/editions-and-components-of-sql-server-2025.md?view=sql-server-ver17&preserve-view=true
     - name: SQL Server 2022
       href: sql-server/editions-and-components-of-sql-server-2022.md?view=sql-server-ver16&preserve-view=true
     - name: SQL Server 2019
@@ -37,7 +37,7 @@ items:
       href: sql-server/editions-and-components-of-sql-server-2016.md?view=sql-server-2016&preserve-view=true
   - name: Release notes
     items:
-    - name: SQL Server 2025 Preview
+    - name: SQL Server 2025
       href: sql-server/sql-server-2025-release-notes.md?view=sql-server-ver16&preserve-view=true
     - name: SQL Server 2022
       href: sql-server/sql-server-2022-release-notes.md?view=sql-server-ver16&preserve-view=true
@@ -59,7 +59,7 @@ items:
       href: sql-server/preview-features-faq.md
   - name: Known issues
     items:
-    - name: SQL Server 2025 Preview
+    - name: SQL Server 2025
       href: sql-server/sql-server-2025-known-issues.md?view=sql-server-ver16&preserve-view=true
   expanded: true
 - name: AI
@@ -4329,7 +4329,7 @@ items:
     items:
     - name: Discontinued functionality in SQL Server
       href: database-engine/discontinued-database-engine-functionality-in-sql-server.md
-    - name: Deprecated in SQL Server 2025 Preview
+    - name: Deprecated in SQL Server 2025
       href: database-engine/deprecated-database-engine-features-in-sql-server-2025.md
     - name: Deprecated in SQL Server 2022
       href: database-engine/deprecated-database-engine-features-in-sql-server-2022.md
@@ -4339,7 +4339,7 @@ items:
       href: database-engine/deprecated-database-engine-features-in-sql-server-2017.md
     - name: Deprecated in SQL Server 2016
       href: database-engine/deprecated-database-engine-features-in-sql-server-2016.md
-    - name: Breaking changes in SQL Server 2025 Preview
+    - name: Breaking changes in SQL Server 2025
       href: database-engine/breaking-changes-to-database-engine-features-in-sql-server-2025.md
     - name: Breaking changes in SQL Server 2019
       href: database-engine/breaking-changes-to-database-engine-features-in-sql-server-2019.md
@@ -4356,7 +4356,7 @@ items:
       href: sql-server/compute-capacity-limits-by-edition-of-sql-server.md
     - name: Hardware & software requirements
       items:
-      - name: SQL Server 2025 Preview
+      - name: SQL Server 2025
         href: sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2025.md
       - name: SQL Server 2022
         href: sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2022.md
@@ -4439,13 +4439,15 @@ items:
     items:
     - name: Compatibility Certification
       href: database-engine/install-windows/compatibility-certification.md
-    - name: Supported Version & Edition Upgrades SQL Server 2022
+    - name: Supported version & edition upgrades SQL Server 2025
+      href: database-engine/install-windows/supported-version-and-edition-upgrades-2025.md
+    - name: Supported version & edition upgrades SQL Server 2022
       href: database-engine/install-windows/supported-version-and-edition-upgrades-2022.md
-    - name: Supported Version & Edition Upgrades SQL Server 2019
+    - name: Supported version & edition upgrades SQL Server 2019
       href: database-engine/install-windows/supported-version-and-edition-upgrades-2019.md
-    - name: Supported Version & Edition Upgrades SQL Server 2017
+    - name: Supported version & edition upgrades SQL Server 2017
       href: database-engine/install-windows/supported-version-and-edition-upgrades-2017.md
-    - name: Supported Version & Edition Upgrades SQL Server 2016
+    - name: Supported version & edition upgrades SQL Server 2016
       href: database-engine/install-windows/supported-version-and-edition-upgrades.md?view=sql-server-2016&preserve-view=true
     - name: Analysis Services
       href: database-engine/install-windows/upgrade-analysis-services.md
@@ -8039,6 +8041,8 @@ items:
         href: relational-databases/security/authentication-access/ownership-and-user-schema-separation.md
       - name: Microsoft Entra authentication
         href: relational-databases/security/authentication-access/azure-ad-authentication-sql-server-overview.md
+      - name: Microsoft Entra nonunique display names
+        href: relational-databases/security/authentication-access/authentication-microsoft-entra-create-users-with-nonunique-names.md
     - name: Encryption
       items:
       - name: Overview
@@ -8147,6 +8151,8 @@ items:
         href: relational-databases/security/authentication-access/microsoft-entra-authentication-sql-server-enable-without-arc.md
       - name: Set Microsoft Entra admin automation
         href: relational-databases/security/authentication-access/azure-ad-authentication-sql-server-automation-setup-tutorial.md
+      - name: Set up Microsoft Entra managed identity
+        href: sql-server/azure-arc/microsoft-entra-authentication-with-managed-identity.md
   - name: Reference
     items:
     - name: Permissions or Securables page
@@ -9026,7 +9032,7 @@ items:
     items:
     - name: What's new?
       items:
-      - name: SQL Server 2025 Preview
+      - name: SQL Server 2025
         href: linux/sql-server-linux-whats-new-2025.md
       - name: SQL Server 2022
         href: linux/sql-server-linux-whats-new-2022.md
@@ -9036,7 +9042,7 @@ items:
         href: linux/sql-server-linux-whats-new.md
     - name: Release notes
       items:
-      - name: SQL Server 2025 Preview
+      - name: SQL Server 2025
         href: linux/sql-server-linux-release-notes-2025.md
       - name: SQL Server 2022
         href: linux/sql-server-linux-release-notes-2022.md
@@ -9046,7 +9052,7 @@ items:
         href: linux/sql-server-linux-release-notes-2017.md
     - name: Release history
       items:
-      - name: SQL Server 2025 Preview >
+      - name: SQL Server 2025 >
         href: /troubleshoot/sql/releases/linux/release-history-2025?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
       - name: SQL Server 2022 >
         href: /troubleshoot/sql/releases/linux/release-history-2022?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
@@ -9056,7 +9062,7 @@ items:
         href: /troubleshoot/sql/releases/linux/release-history-2017?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
     - name: Editions and features
       items:
-      - name: SQL Server 2025 Preview
+      - name: SQL Server 2025
         href: linux/sql-server-linux-editions-and-components-2025.md
       - name: SQL Server 2022
         href: linux/sql-server-linux-editions-and-components-2022.md
@@ -9158,7 +9164,7 @@ items:
         href: linux/sql-server-linux-configure-msdtc.md
       - name: Configure persistent memory (PMEM)
         href: linux/sql-server-linux-configure-pmem.md
-      - name: Configure tempdb on tmpfs for SQL Server 2025 Preview
+      - name: Configure tempdb on tmpfs for SQL Server 2025
         href: linux/sql-server-linux-tmpfs-tempdb.md
       - name: Configure time zone on SQL Server 2022 and later
         href: linux/sql-server-linux-configure-time-zone.md
@@ -9449,7 +9455,7 @@ items:
       items:
       - name: Automatic backups (preview)
         href: sql-server/azure-arc/backup-local.md
-      - name: Back up to URL with managed identity (preview)
+      - name: Back up to URL with managed identity
         href: sql-server/azure-arc/backup-to-url.md
       - name: Point-in-time restore (preview)
         href: sql-server/azure-arc/point-in-time-restore.md
@@ -9473,7 +9479,7 @@ items:
         href: sql-server/azure-arc/managed-identity-extensible-key-management.md
       - name: Set up Microsoft Entra authentication | Azure Arc
         href: sql-server/azure-arc/entra-authentication-setup-tutorial.md
-      - name: Configure managed identity
+      - name: Managed identity overview
         href: sql-server/azure-arc/managed-identity.md
       - name: Register Purview
         href: /purview/register-scan-azure-arc-enabled-sql-server?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
@@ -17087,8 +17093,8 @@ items:
         - name: FUNCTION
           displayName: CREATE FUNCTION
           href: t-sql/statements/create-function-transact-sql.md
-        - name: FUNCTION (Synapse Analytics and Fabric)
-          displayName: CREATE FUNCTION (Synapse Analytics and Fabric)
+        - name: FUNCTION (Fabric and Synapse Analytics)
+          displayName: CREATE FUNCTION (Fabric and Synapse Analytics)
           href: t-sql/statements/create-function-sql-data-warehouse.md
         - name: INDEX
           displayName: CREATE INDEX
@@ -17183,14 +17189,14 @@ items:
         - name: TABLE AS CLONE OF
           displayName: CREATE TABLE AS CLONE OF
           href: t-sql/statements/create-table-as-clone-of-transact-sql.md
-        - name: TABLE (Synapse Analytics and Fabric)
+        - name: TABLE (Fabric and Synapse Analytics)
           displayName: CREATE TABLE
           href: t-sql/statements/create-table-azure-sql-data-warehouse.md
         - name: TABLE (SQL Graph)
           displayName: CREATE TABLE (SQL Graph)
           href: t-sql/statements/create-table-sql-graph.md
-        - name: TABLE AS SELECT (Synapse Analytics and Fabric)
-          displayName: CREATE TABLE AS SELECT
+        - name: TABLE AS SELECT
+          displayName: CREATE TABLE AS SELECT (CTAS)
           href: t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md
         - name: TABLE IDENTITY (Property)
           displayName: CREATE TABLE IDENTITY (Property)

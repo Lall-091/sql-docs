@@ -1,11 +1,12 @@
 ---
 author: MikeRayMSFT
 ms.author: mikeray
-ms.date: 05/19/2025
+ms.reviewer: randolphwest
+ms.date: 11/18/2025
 ms.service: sql
 ms.topic: include
 ms.custom:
-  - build-2025
+  - ignite-2025
 ---
 
 ## Background
@@ -16,4 +17,4 @@ To achieve security, messages require padding. Currently, data is encrypted with
 
 Newer versions of PKCS#1 v1.5 describe a new padding type called Optimal Asymmetric Encryption Padding (OAEP), which uses a hash function to add significant internal redundancy, making it improbable for a random string to match the padding format. OAEP introduces some hashing between the RSA encryption and the padding check. The hashing from OAEP significantly alters the attacker's ability to understand what they see.
 
-From [!INCLUDE[ssSQL25](sssql25-md.md)] onwards, OAEP-256 support for RSA-based encryption was introduced. Switching to OAEP padding mode is driven by the database compatibility level. This feature is available for databases at the 170 level of database compatibility or higher.
+OAEP-256 support for RSA-based encryption was introduced in [!INCLUDE [sssql25-md](sssql25-md.md)]. Switching to OAEP padding mode is driven by the database compatibility level. This feature is available for databases at the 170 level of database compatibility or higher.

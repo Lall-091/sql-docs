@@ -10,11 +10,7 @@ ms.subservice: service-overview
 ms.topic: overview
 ms.custom:
   - sqldbrb=1
-  - build-2023
-  - build-2023-dataai
-  - ignite-2023
-  - build-2024
-  - ignite-2024
+  - ignite-2025
 ---
 
 # What is Azure SQL Managed Instance?
@@ -180,7 +176,7 @@ SQL Managed Instance offers several ways to save on costs:
 - **Instance pools**: If you have multiple managed instances, you can save on costs by using [instance pools](instance-pools-overview.md), which also support [reservations](instance-pools-overview.md#reservations-pricing).
 - **Instance stop and start**: You can [stop and start](instance-stop-start-how-to.md) your managed instance to save on costs. When you stop your instance, you only pay for storage, and you can restart it at any time.
 - **Free DR replica**: You can save on licensing costs by designating a secondary replica for [disaster recovery (DR) only](business-continuity-high-availability-disaster-recover-hadr-overview.md#license-free-dr-replicas). 
-- **Flexible memory**: With [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) instances, you can save on costs by using the [flexible memory (preview)](resource-limits.md#flexible-memory-preview) feature, which allows you to choose the amount of memory you want to allocate to your instance. 
+- **Flexible memory**: With [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md) instances, you can save on costs by using the [flexible memory](resource-limits.md#flexible-memory) feature, which allows you to choose the amount of memory you want to allocate to your instance. 
 
 ## vCore-based purchasing model
 
@@ -192,7 +188,7 @@ In the vCore model, you can choose hardware configurations as follows:
 - **Premium Series** logical CPUs are based on Intel&reg; 8370C (Ice Lake) 2.8-GHz processors, with **7 GB of RAM per CPU vCore** (up to 128 vCores), fast NVMe SSD, hyper-threaded logical core, and compute sizes between 4 and 128 cores.
 - **Premium Series Memory-Optimized** logical CPUs are based on Intel&reg; 8370C (Ice Lake) 2.8-GHz processors, with **13.6 GB of RAM per CPU vCore** (up to 64 vCores), fast NVMe SSD, hyper-threaded logical core, and compute sizes between 4 and 64 cores.
 
-Additionally, with the [Next-gen General Purpose service tier (preview)](service-tiers-next-gen-general-purpose-use.md), you can choose the amount of memory to allocate to your instance when you use the [flexible memory (preview)](resource-limits.md#flexible-memory-preview) feature. 
+Additionally, with the [Next-gen General Purpose service tier](service-tiers-next-gen-general-purpose-use.md), you can choose the amount of memory to allocate to your instance when you use the [flexible memory](resource-limits.md#flexible-memory) feature. 
 
 Find more information about the difference between hardware configurations in [SQL Managed Instance resource limits](resource-limits.md#hardware-configuration-characteristics).
 
@@ -202,7 +198,7 @@ The [service tier](service-tiers-managed-instance-vcore.md#compute-tiers) genera
 
 SQL Managed Instance is available in two service tiers:
 
-- **General Purpose**: Designed for applications with typical performance and I/O latency requirements. You can use the upgraded [Next-gen General Purpose service tier (preview)](service-tiers-next-gen-general-purpose-use.md) for improved performance metrics and greater resource flexibility.
+- **General Purpose**: Designed for applications with typical performance and I/O latency requirements. You can use the upgraded [Next-gen General Purpose service tier](service-tiers-next-gen-general-purpose-use.md) for improved performance metrics, and greater resource flexibility.
 - **Business Critical**: Designed for applications with low I/O latency requirements and minimal impact of underlying maintenance operations on the workload.
 
 ## High availability

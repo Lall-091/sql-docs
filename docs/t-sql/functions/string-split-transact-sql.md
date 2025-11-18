@@ -8,6 +8,8 @@ ms.date: 10/30/2023
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "STRING_SPLIT"
   - "STRING_SPLIT_TSQL"
@@ -15,11 +17,11 @@ helpviewer_keywords:
   - "STRING_SPLIT function"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric || =fabric-sqldb"
 ---
 # STRING_SPLIT (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics fabricse fabricdw](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-fabricse-fabricdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics fabricse FabricDW FabricSQLDB](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb.md)]
 
 `STRING_SPLIT` is a table-valued function that splits a string into rows of substrings, based on a specified separator character.
 
@@ -260,3 +262,4 @@ The above statement returns the following table:
 - [SUBSTRING (Transact-SQL)](substring-transact-sql.md)
 - [TRIM (Transact-SQL)](trim-transact-sql.md)
 - [String Functions (Transact-SQL)](string-functions-transact-sql.md)
+

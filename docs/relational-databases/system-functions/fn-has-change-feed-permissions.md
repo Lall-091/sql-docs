@@ -9,8 +9,7 @@ ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
 ms.custom:
-  - ignite-2024
-  - build-2025
+  - ignite-2025
 f1_keywords:
   - "sys.fn_has_change_feed_permissions_TSQL"
   - "sys.fn_has_change_feed_permissions"
@@ -20,7 +19,7 @@ helpviewer_keywords:
   - "fn_has_change_feed_permissions"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-ver16 || =azuresqldb-current || =azuresqldb-mi-current || =fabric || =azure-sqldw-latest"
+monikerRange: ">=sql-server-ver16 || =azuresqldb-current || =azuresqldb-mi-current || =fabric || =fabric-sqldb || =azure-sqldw-latest"
 ---
 # sys.fn_has_change_feed_permissions (Transact-SQL)
 

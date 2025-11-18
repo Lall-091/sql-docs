@@ -8,8 +8,10 @@ ms.date: 07/23/2020
 ms.service: sql
 ms.subservice: machine-learning
 ms.topic: how-to
-monikerRange: ">=sql-server-2017||>=sql-server-linux-ver15||=azuresqldb-mi-current||=azuresqldb-current||=fabric"
-ms.custom: sfi-ropc-blocked
+ms.custom:
+  - sfi-ropc-blocked
+  - ignite-2025
+monikerRange: ">=sql-server-2017 || >=sql-server-linux-ver15 || =azuresqldb-mi-current || =azuresqldb-current || =fabric-sqldb"
 ---
 # Insert data from a SQL table into a Python pandas dataframe
 [!INCLUDE[SQL Server SQL DB SQL MI FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
@@ -23,8 +25,12 @@ This article describes how to insert SQL data into a [pandas](https://pandas.pyd
 ::: moniker-end
 
 ::: moniker range="=azuresqldb-current"
-* [Azure SQL Database](/azure/sql-database/sql-database-get-started-portal)
-::: moniker-end
+- [Azure SQL Database](/azure/sql-database/sql-database-get-started-portal)
+  ::: moniker-end
+
+::: moniker range="=fabric-sqldb"
+- [SQL database in Fabric](/fabric/database/sql/create)
+  ::: moniker-end
 
 ::: moniker range="=azuresqldb-mi-current"
 * [Azure SQL Managed Instance](/azure/azure-sql/managed-instance/instance-create-quickstart)

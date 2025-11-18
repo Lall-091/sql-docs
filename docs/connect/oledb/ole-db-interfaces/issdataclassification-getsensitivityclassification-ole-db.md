@@ -8,13 +8,15 @@ ms.date: "09/30/2020"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "GetSensitivityClassification method"
 apiname: "ISSDataClassification::GetSensitivityClassification"
 apitype: "COM"
 ---
 # ISSDataClassification::GetSensitivityClassification
-[!INCLUDE[SQL Server Azure SQL Database Synapse Analytics PDW](../../../includes/applies-to-version/sql-asdb-asa.md)]
+[!INCLUDE[SQL Server Azure SQL Database Synapse Analytics PDW FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asa-fabricsqldb.md)]
 
 [!INCLUDE[Driver_OLEDB_Download](../../../includes/driver_oledb_download.md)]
 
@@ -144,3 +146,4 @@ typedef struct tagSENSITIVITYPROPERTY
 ## See Also  
  [ISSDataClassification](../../oledb/ole-db-interfaces/issdataclassification-ole-db.md)  
  [Rowsets](../ole-db-rowsets/rowsets.md)  
+

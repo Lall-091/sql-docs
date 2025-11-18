@@ -10,7 +10,8 @@ ms.subservice: machine-learning
 ms.topic: how-to
 ms.custom:
   - sfi-ropc-blocked
-monikerRange: ">=sql-server-2017 || >=sql-server-linux-ver15 || =azuresqldb-mi-current || =azuresqldb-current || =fabric"
+  - ignite-2025
+monikerRange: ">=sql-server-2017 || >=sql-server-linux-ver15 || =azuresqldb-mi-current || =azuresqldb-current || =fabric-sqldb"
 ---
 # Insert Python dataframe into SQL table
 
@@ -26,6 +27,10 @@ This article describes how to insert a [pandas](https://pandas.pydata.org/) data
 
 ::: moniker range="=azuresqldb-current"
 - [Azure SQL Database](/azure/sql-database/sql-database-get-started-portal)
+  ::: moniker-end
+
+::: moniker range="=fabric-sqldb"
+- [SQL database in Fabric](/fabric/database/sql/create)
   ::: moniker-end
 
 ::: moniker range="=azuresqldb-mi-current"

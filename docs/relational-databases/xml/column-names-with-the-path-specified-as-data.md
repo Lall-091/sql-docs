@@ -8,12 +8,14 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "names [SQL Server], columns with"
 ---
 # Column names with the path specified as data()
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 If the path specified as column name is `data()`, the value is treated as an atomic value in the generated XML. A space character is added to the XML if the next item in the serialization is also an atomic value. This is useful when you're creating list typed element and attribute values. The following query retrieves the product model ID, name, and list of products in that product model.
 
@@ -45,3 +47,4 @@ The nested SELECT retrieves a list of product IDs. It specifies "data()" as the 
 ## See also
 
 - [Use PATH Mode with FOR XML](../../relational-databases/xml/use-path-mode-with-for-xml.md)
+

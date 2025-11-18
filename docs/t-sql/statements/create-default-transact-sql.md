@@ -8,6 +8,8 @@ ms.date: 10/20/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "CREATE_DEFAULT_TSQL"
   - "CREATE DEFAULT"
@@ -22,7 +24,7 @@ dev_langs:
 ---
 # CREATE DEFAULT (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Creates an object called a default. When bound to a column or an alias data type, a default specifies a value to be inserted into the column to which the object is bound (or into all columns, if of an alias data type), when no value is explicitly supplied during an insert.
 
@@ -128,3 +130,4 @@ EXECUTE sp_bindefault 'phonedflt', 'Person.PersonPhone.PhoneNumber';
 - [sp_helptext (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-helptext-transact-sql.md)
 - [sp_rename (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-rename-transact-sql.md)
 - [sp_unbindefault (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-unbindefault-transact-sql.md)
+

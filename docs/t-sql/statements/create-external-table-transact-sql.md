@@ -4,12 +4,12 @@ description: CREATE EXTERNAL TABLE (Transact-SQL) creates an external table.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: hudequei, wiassaf, randolphwest
-ms.date: 06/17/2025
+ms.date: 10/23/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "CREATE_EXTERNAL_TABLE"
   - "CREATE EXTERNAL TABLE"
@@ -20,11 +20,11 @@ helpviewer_keywords:
   - "PolyBase, external table"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # CREATE EXTERNAL TABLE (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-pdw-fabricdw](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-pdw-fabricdw.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-pdw-fabricdw-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-pdw-fabricdw-fabricsqldb.md)]
 
 Creates an external table.
 
@@ -45,7 +45,10 @@ This article provides the syntax, arguments, remarks, permissions, and examples 
         [Azure SQL Managed Instance](create-external-table-transact-sql.md?view=azuresqldb-mi-current&preserve-view=true)
     :::column-end:::
     :::column:::
-        [Microsoft Fabric](create-external-table-transact-sql.md?view=fabric&preserve-view=true)
+        [Fabric Data Warehouse](create-external-table-transact-sql.md?view=fabric&preserve-view=true)
+    :::column-end:::
+    :::column:::
+        [Fabric SQL database](create-external-table-transact-sql.md?view=fabric-sqldb&preserve-view=true)
     :::column-end:::
     :::column:::
         [Azure Synapse<br />Analytics](create-external-table-transact-sql.md?view=azure-sqldw-latest&preserve-view=true)
@@ -121,6 +124,9 @@ The column definitions, including the data types and number of columns, must mat
 
 Specifies the folder or the file path and file name for the actual data in Hadoop or Azure Blob Storage. Additionally, S3-compatible object storage is supported starting in [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)]). The location starts from the root folder. The root folder is the data location specified in the external data source.
 
+::: moniker-end
+::: moniker range="=sql-server-2016||=sql-server-linux-2017||=sql-server-2017||=sql-server-ver15||=sql-server-linux-ver15"
+<!-- content only applies to SQL Server 2016-2019, no other platforms/versions -->
 In SQL Server, the `CREATE EXTERNAL TABLE` statement creates the path and folder if it doesn't already exist. You can then use INSERT INTO to export data from a local SQL Server table to the external data source. For more information, see [PolyBase query scenarios](../../relational-databases/polybase/polybase-queries.md).
 
 If you specify LOCATION to be a folder, a PolyBase query that selects from the external table will retrieve files from the folder and all of its subfolders. Just like Hadoop, PolyBase doesn't return hidden folders. It also doesn't return files for which the file name begins with an underline (_) or a period (.).
@@ -130,6 +136,9 @@ In the following image example, if `LOCATION='/webdata/'`, a PolyBase query will
 :::image type="content" source="media/create-external-table-transact-sql/aps-polybase-folder-traversal.png" alt-text="Diagram of folders and file data for external tables.":::
 
 To change the default and only read from the root folder, set the attribute `<polybase.recursive.traversal>` to 'false' in the core-site.xml configuration file. This file is located under `<SqlBinRoot>\PolyBase\Hadoop\Conf` under the `bin` root of SQL Server. For example, `C:\Program Files\Microsoft SQL Server\MSSQL13.XD14\MSSQL\Binn`.
+
+::: moniker-end
+::: moniker range=">=sql-server-2016||>=sql-server-linux-2017"
 
 #### DATA_SOURCE = *external_data_source_name*
 
@@ -225,11 +234,11 @@ While executing the `CREATE EXTERNAL TABLE` statement, PolyBase attempts to conn
 
 ## Remarks
 
-In ad hoc query scenarios, such as `SELECT FROM EXTERNAL TABLE`, PolyBase stores the rows that are retrieved from the external data source in a temporary table. After the query completes, PolyBase removes and deletes the temporary table. No permanent data is stored in SQL tables.
+In ad hoc query scenarios, such as `SELECT FROM EXTERNAL TABLE`, PolyBase stores the rows that are retrieved from the external data source in a temporary table. After the query completes, PolyBase removes and deletes the temporary table. No permanent data is stored in SQL tables. In contrast, in the import scenario, such as `SELECT INTO FROM EXTERNAL TABLE`, PolyBase stores the rows that are retrieved from the external data source as permanent data in the SQL table. The new table is created during query execution when PolyBase retrieves the external data.
 
-In contrast, in the import scenario, such as SELECT INTO FROM EXTERNAL TABLE, PolyBase stores the rows that are retrieved from the external data source as permanent data in the SQL table. The new table is created during query execution when PolyBase retrieves the external data.
+The Hadoop format is only supported in SQL Server 2016, 2017, and 2019.
 
-PolyBase can push some of the query computation to Hadoop to improve query performance. This action is called predicate pushdown. To enable it, specify the Hadoop resource manager location option in [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](create-external-data-source-transact-sql.md).
+PolyBase can push some of the query computation to Hadoop to improve query performance. This action is known as predicate pushdown. To enable it, specify the Hadoop resource manager location option in [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](create-external-data-source-transact-sql.md). 
 
 You can create many external tables that reference the same or different external data sources.
 
@@ -658,7 +667,10 @@ GO
         [Azure SQL Managed Instance](create-external-table-transact-sql.md?view=azuresqldb-mi-current&preserve-view=true)
     :::column-end:::
     :::column:::
-        [Microsoft Fabric](create-external-table-transact-sql.md?view=fabric&preserve-view=true)
+        [Fabric Data Warehouse](create-external-table-transact-sql.md?view=fabric&preserve-view=true)
+    :::column-end:::
+    :::column:::
+        [Fabric SQL database](create-external-table-transact-sql.md?view=fabric-sqldb&preserve-view=true)
     :::column-end:::
     :::column:::
         [Azure Synapse<br />Analytics](create-external-table-transact-sql.md?view=azure-sqldw-latest&preserve-view=true)
@@ -745,6 +757,7 @@ For an external table, SQL stores only the table metadata along with basic stati
 - **ntext**
 - **xml**
 - **json**
+- Any user-defined type
 
 The column definitions, including the data types and number of columns, must match the data in the external files. If there's a mismatch, the file rows are rejected when querying the actual data.
 
@@ -796,11 +809,11 @@ Users with access to the external table automatically gain access to the underly
 
 `CREATE EXTERNAL TABLE` requires these user permissions:
 
-- **CREATE TABLE**
-- **ALTER ANY SCHEMA**
-- **ALTER ANY EXTERNAL DATA SOURCE**
-- **ALTER ANY EXTERNAL FILE FORMAT**
-- **CONTROL DATABASE** permissions are required to create only the master key, database scoped credential, and external data source.
+- `CREATE TABLE`
+- `ALTER ANY SCHEMA`
+- `ALTER ANY EXTERNAL DATA SOURCE`
+- `ALTER ANY EXTERNAL FILE FORMAT`
+- `CONTROL DATABASE` permissions are required to create only the master key, database scoped credential, and external data source.
 
 Note, the login that creates the external data source must have permission to read and write to the external data source, located in Hadoop or Azure Blob Storage.
 
@@ -876,19 +889,6 @@ Constructs and operations not supported:
 - **Executed as remote query**: External tables are implemented as remote query, so the estimated number of rows returned is generally 1000. There are other rules based on the type of predicate used to filter the external table. They are rules-based estimates rather than estimates based on the actual data in the external table. The optimizer doesn't access the remote data source to obtain a more accurate estimate.
 
 - **Not supported for private endpoint**: External table queries are not supported when connection to remote table is a private endpoint.
-
-### Data type limitations
-
-The following data types cannot be used in external tables:
-
-- **geography**
-- **geometry**
-- **hierarchyid**
-- **image**
-- **text**
-- **ntext**
-- **xml**
-- Any user-defined type
 
 ## Examples
 
@@ -1026,7 +1026,10 @@ WITH
         [Azure SQL Managed Instance](create-external-table-transact-sql.md?view=azuresqldb-mi-current&preserve-view=true)
     :::column-end:::
     :::column:::
-        [Microsoft Fabric](create-external-table-transact-sql.md?view=fabric&preserve-view=true)
+        [Fabric Data Warehouse](create-external-table-transact-sql.md?view=fabric&preserve-view=true)
+    :::column-end:::
+    :::column:::
+        [Fabric SQL database](create-external-table-transact-sql.md?view=fabric-sqldb&preserve-view=true)
     :::column-end:::
     :::column:::
         **_\* Azure Synapse<br />Analytics \*_** &nbsp;
@@ -1254,7 +1257,7 @@ In ad hoc query scenarios, such as `SELECT FROM EXTERNAL TABLE`, PolyBase stores
 
 In contrast, in the import scenario, such as SELECT INTO FROM EXTERNAL TABLE, PolyBase stores the rows that are retrieved from the external data source as permanent data in the SQL table. The new table is created during query execution when PolyBase retrieves the external data.
 
-PolyBase can push some of the query computation to Hadoop to improve query performance. This action is called predicate pushdown. To enable it, specify the Hadoop resource manager location option in [CREATE EXTERNAL DATA SOURCE](../../t-sql/statements/create-external-data-source-transact-sql.md?view=azure-sqldw-latest&preserve-view=true).
+PolyBase can push some of the query computation to Hadoop to improve query performance. This action is known as predicate pushdown. To enable it, specify the Hadoop resource manager location option in [CREATE EXTERNAL DATA SOURCE](../../t-sql/statements/create-external-data-source-transact-sql.md?view=azure-sqldw-latest&preserve-view=true).
 
 You can create many external tables that reference the same or different external data sources.
 
@@ -1405,8 +1408,11 @@ SELECT TOP 1 * FROM census_external_table;
         [Azure SQL Managed Instance](create-external-table-transact-sql.md?view=azuresqldb-mi-current&preserve-view=true)
     :::column-end:::
     :::column:::
-        [Microsoft Fabric](create-external-table-transact-sql.md?view=fabric&preserve-view=true)
+        [Fabric Data Warehouse](create-external-table-transact-sql.md?view=fabric&preserve-view=true)
     :::column-end:::    
+    :::column:::
+        [Fabric SQL database](create-external-table-transact-sql.md?view=fabric-sqldb&preserve-view=true)
+    :::column-end:::
     :::column:::
         [Azure Synapse<br />Analytics](create-external-table-transact-sql.md?view=azure-sqldw-latest&preserve-view=true)
     :::column-end:::
@@ -1568,7 +1574,7 @@ In ad hoc query scenarios, such as `SELECT FROM EXTERNAL TABLE`, PolyBase stores
 
 In contrast, in the import scenario, such as SELECT INTO FROM EXTERNAL TABLE, PolyBase stores the rows that are retrieved from the external data source as permanent data in the SQL table. The new table is created during query execution when PolyBase retrieves the external data.
 
-PolyBase can push some of the query computation to Hadoop to improve query performance. This action is called predicate pushdown. To enable it, specify the Hadoop resource manager location option in [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](create-external-data-source-transact-sql.md).
+PolyBase can push some of the query computation to Hadoop to improve query performance. This action is known as predicate pushdown. To enable it, specify the Hadoop resource manager location option in [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](create-external-data-source-transact-sql.md).
 
 You can create many external tables that reference the same or different external data sources.
 
@@ -1669,7 +1675,10 @@ FROM ClickStream;
         **_\* Azure SQL Managed Instance \*_** &nbsp;  
     :::column-end:::
     :::column:::
-        [Microsoft Fabric](create-external-table-transact-sql.md?view=fabric&preserve-view=true)
+        [Fabric Data Warehouse](create-external-table-transact-sql.md?view=fabric&preserve-view=true)
+    :::column-end:::
+    :::column:::
+        [Fabric SQL database](create-external-table-transact-sql.md?view=fabric-sqldb&preserve-view=true)
     :::column-end:::
     :::column:::
         [Azure Synapse<br />Analytics](create-external-table-transact-sql.md?view=azure-sqldw-latest&preserve-view=true)
@@ -1918,4 +1927,207 @@ For more information and examples for `OPENROWSET` in Fabric Data Warehouse, see
 - [Ingest Data into Your Warehouse Using Transact-SQL](/fabric/data-warehouse/ingest-data-tsql)
 - [Tutorial: Load data with T-SQL into a Warehouse](/fabric/data-warehouse/tutorial-load-data)
 
+::: moniker-end
+::: moniker range="=fabric-sqldb"
+
+:::row:::
+    :::column:::
+        [SQL Server](create-external-table-transact-sql.md?view=sql-server-ver15&preserve-view=true)
+    :::column-end:::
+    :::column:::
+        [SQL Database](create-external-table-transact-sql.md?view=azuresqldb-current&preserve-view=true)
+    :::column-end:::
+    :::column:::
+        [Azure SQL Managed Instance](create-external-table-transact-sql.md?view=azuresqldb-mi-current&preserve-view=true)
+    :::column-end:::
+    :::column:::
+        [Fabric Data Warehouse](create-external-table-transact-sql.md?view=fabric&preserve-view=true)
+    :::column-end:::
+    :::column:::
+        **_\* Fabric SQL database \*_** &nbsp;
+    :::column-end:::
+    :::column:::
+        [Azure Synapse<br />Analytics](create-external-table-transact-sql.md?view=azure-sqldw-latest&preserve-view=true)
+    :::column-end:::
+    :::column:::
+        [Analytics Platform<br />System (PDW)](create-external-table-transact-sql.md?view=aps-pdw-2016-au7&preserve-view=true)
+    :::column-end:::
+:::row-end:::
+
+&nbsp;
+
+## Overview: SQL database in Microsoft Fabric
+
+Creates an external table.
+
+For use with [Data virtualization in SQL database in Fabric](/fabric/database/sql/data-virtualization).
+
+## Syntax
+
+```syntaxsql
+CREATE EXTERNAL TABLE { database_name.schema_name.table_name | schema_name.table_name | table_name }
+    ( <column_definition> [ ,...n ] )
+    WITH (
+        LOCATION = 'filepath',
+        DATA_SOURCE = external_data_source_name,
+        FILE_FORMAT = external_file_format_name
+    )
+[;]
+
+<column_definition> ::=
+column_name <data_type>
+    [ COLLATE collation_name ]
+    [ NULL | NOT NULL ]
+```
+
+## Arguments
+
+#### *{ database_name.schema_name.table_name | schema_name.table_name | table_name }*
+
+The one to three-part name of the table to create. 
+
+For an external table, SQL stores only the table metadata along with basic statistics about the file or folder. No actual data is moved or stored in the SQL database in Fabric when external tables are created.
+
+> [!IMPORTANT]  
+> For best performance, if the external data source driver supports a three-part name, it is strongly recommended to provide the three-part name.
+
+#### \<column_definition> [ ,...*n* ]
+
+`CREATE EXTERNAL TABLE` supports the ability to configure column name, data type, nullability, and collation. You can't use the `DEFAULT CONSTRAINT` on external tables. These data types are not supported for columns in external tables:
+
+- **geography**
+- **geometry**
+- **hierarchyid**
+- **image**
+- **text**
+- **ntext**
+- **xml**
+- **json**
+- Any user-defined type
+
+The column definitions, including the data types and number of columns, must match the data in the external files. If there's a mismatch, the file rows are rejected when querying the actual data.
+
+#### LOCATION = '*folder_or_filepath*'
+
+Specifies the folder or the file path and file name for the actual data in OneLake in Microsoft Fabric.
+
+#### DATA_SOURCE
+
+DATA_SOURCE specifies the name of the external data source that contains the location of the external data. To create an external data source, use [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](create-external-data-source-transact-sql.md).
+
+#### FILE_FORMAT = *external_file_format_name*
+
+Specifies the name of the external file format object that stores the file type and compression method for the external data. To create an external file format, use [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](create-external-file-format-transact-sql.md).
+
+## Permissions
+
+Users with access to the external table automatically gain access to the underlying remote tables under the credential given in the external data source definition. Avoid undesired elevation of privileges through the credential of the external data source. Use `GRANT` or `REVOKE` for an external table just as though it were a regular table. Once you have defined your external data source and your external tables, you can now use full T-SQL over your external tables.
+
+`CREATE EXTERNAL TABLE` requires these user permissions:
+
+- `CREATE TABLE`
+- `ALTER ANY SCHEMA`
+- `ALTER ANY EXTERNAL DATA SOURCE`
+- `ALTER ANY EXTERNAL FILE FORMAT`
+- `CONTROL DATABASE` permissions are required to create only the master key, database scoped credential, and external data source.
+
+Note, the login that creates the external data source must have permission to read and write to the external data source, located in Hadoop or Azure Blob Storage.
+
+> [!IMPORTANT]  
+> The ALTER ANY EXTERNAL DATA SOURCE permission grants any principal the ability to create and modify any external data source object, and therefore, it also grants the ability to access all database scoped credentials on the database. This permission must be considered as highly privileged, and therefore must be granted only to trusted principals in the system.
+
+## Locking
+
+Shared lock on the SCHEMARESOLUTION object.
+
+## Remarks
+
+In ad hoc query scenarios, such as `SELECT FROM EXTERNAL TABLE`, the rows that are retrieved from the external data source are stored in a temporary table. After the query completes, the rows are removed and the temporary table is deleted. No permanent data is stored in SQL tables.
+
+In contrast, in the import scenario, such as `SELECT INTO FROM EXTERNAL TABLE`, the rows that are retrieved from the external data source are stored as permanent data in the SQL table. The new table is created during query execution when the external data is retrieved.
+
+Fabric SQL database only supports OneLake in Microsoft Fabric as a data source.
+
+You can create many external tables that reference the same or different external data sources.
+
+### Table width limitations
+
+The row width limit of 1 MB is based on the maximum size of a single valid row by table definition. If the sum of the column schema is greater than 1 MB, data virtualization queries will fail.
+
+### Error handling
+
+While executing the `CREATE EXTERNAL TABLE` statement, if the attempt to connect fails, the statement will fail and the external table won't be created. It can take a minute or more for the command to fail since SQL Database retries the connection before eventually failing the query.
+
+## Limitations
+
+Currently when creating an External Tables pointing to a CSV file in Fabric SQL database, you must provide the table schema, for example: `SELECT * FROM [schema].[table_name]`. Otherwise, the following error message will be displayed: Msg 208, Level 16, State 160, Line 1: Invalid object name 'SQLdatabase-id' 
+
+Since the data for an external table is not under the direct management control of the Database Engine, it can be changed or removed at any time by an external process. As a result, query results against an external table aren't guaranteed to be deterministic. The same query can return different results each time it runs against an external table. Similarly, a query might fail if the external data is moved or removed.
+
+You can create multiple external tables that each reference different external data sources.
+
+Only these Data Definition Language (DDL) statements are allowed on external tables:
+
+- `CREATE TABLE` and `DROP TABLE`
+- `CREATE STATISTICS` and `DROP STATISTICS`
+- `CREATE VIEW` and `DROP VIEW`
+
+Constructs and operations not supported:
+
+- The `DEFAULT` constraint on external table columns.
+- Data Manipulation Language (DML) operations of delete, insert, and update.
+
+## Examples
+
+### A. Create an external table targeting a Parquet file available on OneLake in Microsoft Fabric 
+
+```sql
+CREATE EXTERNAL DATA SOURCE [MainLakeHouse] 
+WITH 
+( LOCATION = 'abfss://<WorkspaceID>@<tenant>.dfs.fabric.microsoft.com/<Lakehouse_id'); 
+
+CREATE EXTERNAL FILE FORMAT [Parquetff] 
+WITH ( FORMAT_TYPE = PARQUET ); 
+
+CREATE EXTERNAL TABLE Customer_parquet ( 
+    CustomerKey INT, 
+    GeoAreaKey INT, 
+    StartDT DATETIME2, 
+    EndDT DATETIME2, 
+    Continent NVARCHAR(50), 
+    Gender NVARCHAR(10), 
+    Title NVARCHAR(10), 
+    GivenName NVARCHAR(100), 
+    MiddleInitial VARCHAR(2), 
+    Surname NVARCHAR(100), 
+    StreetAddress NVARCHAR(200), 
+    City NVARCHAR(100), 
+    State NVARCHAR(100), 
+    StateFull NVARCHAR(100), 
+    ZipCode NVARCHAR(20), 
+    Country_Region NCHAR(2), 
+    CountryFull NVARCHAR(100), 
+    Birthday DATETIME2, 
+    Age INT, 
+    Occupation NVARCHAR(100), 
+    Company NVARCHAR(100), 
+    Vehicle NVARCHAR(100), 
+    Latitude DECIMAL(10,6), 
+    Longitude DECIMAL(10,6) 
+)
+WITH 
+( 
+    LOCATION = '/Files/parquet/customer.parquet', 
+    DATA_SOURCE = MainLakeHouse, 
+    FILE_FORMAT = [parquetff] 
+);  
+ 
+SELECT * FROM Customer_parquet; 
+```
+
+## Related content
+
+- [Data virtualization in SQL database in Fabric](/fabric/database/sql/data-virtualization)
+- [CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)](create-database-scoped-credential-transact-sql.md)
+- [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](create-external-file-format-transact-sql.md)
 ::: moniker-end

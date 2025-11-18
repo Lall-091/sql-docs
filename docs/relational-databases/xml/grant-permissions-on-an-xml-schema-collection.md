@@ -8,14 +8,16 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - sfi-ropc-blocked
+  - ignite-2025
 helpviewer_keywords:
   - "granting permissions [SQL Server], XML schema collections"
   - "ALTER permission"
-ms.custom: sfi-ropc-blocked
 ---
 # Grant permissions on an XML schema collection
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 You can grant permissions to create an XML schema collection and also grant permissions on an XML schema collection object.
 
@@ -506,3 +508,4 @@ GO
 - [Compare Typed XML to Untyped XML](../../relational-databases/xml/compare-typed-xml-to-untyped-xml.md)
 - [XML Schema Collections &#40;SQL Server&#41;](../../relational-databases/xml/xml-schema-collections-sql-server.md)
 - [Requirements and Limitations for XML Schema Collections on the Server](../../relational-databases/xml/requirements-and-limitations-for-xml-schema-collections-on-the-server.md)
+

@@ -8,10 +8,12 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 ---
 # Create, alter, and drop secondary selective XML indexes
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Describes how to create a new secondary selective XML index, or alter or drop an existing secondary selective XML index.
 
@@ -67,3 +69,4 @@ ON tbl;
 ## See also
 
 - [Selective XML indexes &#40;SXI&#41;](selective-xml-indexes-sxi.md)
+

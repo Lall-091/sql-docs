@@ -8,6 +8,8 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "FOR XML query"
   - "queries [XML in SQL Server], nested FOR XML"
@@ -15,7 +17,7 @@ helpviewer_keywords:
 ---
 # Shape XML with nested FOR XML queries
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 The following example queries the `Production.Product` table to retrieve the `ListPrice` and `StandardCost` values of a specific product. To make the query interesting, both prices are returned in a `<Price>` element, and each `<Price>` element has a `PriceType` attribute.
 
@@ -96,3 +98,4 @@ This is the result:
 ## See also
 
 - [Use Nested FOR XML Queries](../../relational-databases/xml/use-nested-for-xml-queries.md)
+

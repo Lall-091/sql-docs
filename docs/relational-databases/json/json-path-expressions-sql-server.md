@@ -1,20 +1,20 @@
 ---
-title: "JSON Path Expressions"
-description: "Learn how to use JSON Path expressions to reference the properties of JSON objects."
+title: JSON Path Expressions
+description: Learn how to use JSON Path expressions to reference the properties of JSON objects.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: jovanpop, umajay, randolphwest
-ms.date: 07/23/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.topic: conceptual
 ms.custom:
-  - build-2025
+  - ignite-2025
 helpviewer_keywords:
   - "JSON, path expressions"
   - "path expressions (JSON)"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current||=fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
-# JSON Path Expressions in the SQL Database Engine
+# JSON path expressions in the SQL Database Engine
 
 [!INCLUDE [sqlserver2016-asdb-asdbmi-asa-serverless-pool-only-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-serverless-pool-only-fabricsqldb.md)]
 
@@ -22,10 +22,10 @@ Use JSON path expressions to reference the properties of JSON objects.
 
 You have to provide a path expression when you call the following functions.
 
-- When you call [OPENJSON](../../t-sql/functions/openjson-transact-sql.md) to create a relational view of JSON data. 
+- When you call [OPENJSON](../../t-sql/functions/openjson-transact-sql.md) to create a relational view of JSON data.
 - When you call [JSON_VALUE](../../t-sql/functions/json-value-transact-sql.md) to extract a value from JSON text.
-- When you call [JSON_QUERY](../../t-sql/functions/json-query-transact-sql.md) to extract a JSON object or an array. 
-- When you call [JSON_MODIFY](../../t-sql/functions/json-modify-transact-sql.md) to update the value of a property in a JSON string. 
+- When you call [JSON_QUERY](../../t-sql/functions/json-query-transact-sql.md) to extract a JSON object or an array.
+- When you call [JSON_MODIFY](../../t-sql/functions/json-modify-transact-sql.md) to update the value of a property in a JSON string.
 
 ## Parts of a path expression
 
@@ -78,10 +78,10 @@ After the optional path mode declaration, specify the path itself.
 
 ## Array wildcard and range support
 
-> [!NOTE]
-> Array wildcard and range support is currently in preview and only available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. 
+> [!NOTE]  
+> Array wildcard and range support is currently in preview and only available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
 
-[!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] expands ANSI SQL/JSON path expression to support an array wildcard. The Array wildcard allows you to specify all elements, range of elements, list of elements or the special token "last" to indicate the last value in a JSON array. SQL/JSON arrays use zero-based index. SQL/JSON path with wildcards can be used in [JSON_QUERY](../../t-sql/functions/json-query-transact-sql.md), [JSON_PATH_EXISTS](../../t-sql/functions/json-path-exists-transact-sql.md), and [JSON_CONTAINS](../../t-sql/functions/json-contains-transact-sql.md). 
+[!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] expands ANSI SQL/JSON path expression to support an array wildcard. The Array wildcard allows you to specify all elements, range of elements, list of elements or the special token "last" to indicate the last value in a JSON array. SQL/JSON arrays use zero-based index. SQL/JSON path with wildcards can be used in [JSON_QUERY](../../t-sql/functions/json-query-transact-sql.md), [JSON_PATH_EXISTS](../../t-sql/functions/json-path-exists-transact-sql.md), and [JSON_CONTAINS](../../t-sql/functions/json-contains-transact-sql.md).
 
 While `JSON_VALUE` function supports the SQL/JSON path expression, the return value of a `JSON_VALUE` function is a SQL scalar and hence the function always returns `NULL` for any SQL/JSON path that points to a JSON object or array. Array wildcards are supported only if the input is a **json** type.
 

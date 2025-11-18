@@ -4,13 +4,13 @@ description: DROP EXTERNAL MODEL (Transact-SQL) for dropping an external model o
 author: jettermctedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 04/21/2025
+ms.date: 10/14/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: "reference"
 ms.custom:
   - sql-ai
-  - build-2025
+  - ignite-2025
 f1_keywords:
   - "DROP_EXTERNAL_MODEL"
   - "EXTERNAL MODEL"
@@ -21,12 +21,12 @@ helpviewer_keywords:
   - "ai_generate_embeddings, external model"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-ver17 || >=sql-server-linux-ver17"
+monikerRange: "=azuresqldb-current || >=sql-server-ver17 || >=sql-server-linux-ver17 || =fabric-sqldb"
 ---
 
 # DROP EXTERNAL MODEL (Transact-SQL)
 
-[!INCLUDE [sqlserver2025](../../includes/applies-to-version/sqlserver2025.md)]
+[!INCLUDE [sqlserver2025-asdb-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-fabricsqldb.md)]
 
 Drops an external model object.
 

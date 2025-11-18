@@ -8,6 +8,8 @@ ms.date: 07/18/2024
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "XML DML [SQL Server]"
   - "update keyword"
@@ -19,7 +21,7 @@ dev_langs:
 ---
 # replace value of (XML DML)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Updates the value of a node in the document.
 
@@ -226,3 +228,4 @@ This example uses `cast` when replacing `LotSize` value. `cast` is required when
 - [Create instances of XML data](../../relational-databases/xml/create-instances-of-xml-data.md)
 - [xml Data Type Methods](xml-data-type-methods.md)
 - [XML Data Modification Language (XML DML)](xml-data-modification-language-xml-dml.md)
+

@@ -8,6 +8,8 @@ ms.date: 07/06/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "BINARY_CHECKSUM"
   - "BINARY_CHECKSUM_TSQL"
@@ -16,11 +18,11 @@ helpviewer_keywords:
   - "binary [SQL Server], checksum values"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # BINARY_CHECKSUM (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb.md)]
 
 Returns the binary checksum value computed over a row of a table or over a list of expressions.
 
@@ -108,3 +110,4 @@ GO
 - [CHECKSUM_AGG (Transact-SQL)](checksum-agg-transact-sql.md)
 - [CHECKSUM (Transact-SQL)](checksum-transact-sql.md)
 - [HASHBYTES (Transact-SQL)](hashbytes-transact-sql.md)
+

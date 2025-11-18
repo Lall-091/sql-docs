@@ -7,6 +7,8 @@ ms.date: "02/24/2023"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_db_tuning_recommendations"
   - "dm_db_tuning_recommendations"
@@ -17,11 +19,11 @@ helpviewer_keywords:
   - "sys.dm_db_tuning_recommendations dynamic management view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2017||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2017 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.dm_db_tuning_recommendations (Transact-SQL)
 
-[!INCLUDE[sqlserver2017-asdb](../../includes/applies-to-version/sqlserver2017-asdb-asdbmi.md)]
+[!INCLUDE[sqlserver2017-asdb-fabricsqldb](../../includes/applies-to-version/sqlserver2017-asdb-asdbmi-fabricsqldb.md)]
 
 Returns detailed information about automatic tuning recommendations. For more information, see [Automatic tuning](../../relational-databases/automatic-tuning/automatic-tuning.md)
 
@@ -202,3 +204,4 @@ Requires `VIEW SERVER PERFORMANCE STATE` permission on the server.
 - [sys.database_query_store_options (Transact-SQL)](../../relational-databases/system-catalog-views/sys-database-query-store-options-transact-sql.md)
 - [JSON Support](../json/json-data-sql-server.md)
 - [sys.dm_os_sys_info (Transact-SQL)](sys-dm-os-sys-info-transact-sql.md)
+

@@ -8,12 +8,14 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "names [SQL Server], columns without"
 ---
 # Columns without a Name
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Any column without a name will be inlined. For example, computed columns or nested scalar queries that don't specify column alias will generate columns without any name. If the column is of **xml** type, the content of that data type instance is inserted. Otherwise, the column content is inserted as a text node.
 
@@ -58,3 +60,4 @@ This is the partial result:
 ## See also
 
 - [Use PATH Mode with FOR XML](../../relational-databases/xml/use-path-mode-with-for-xml.md)
+

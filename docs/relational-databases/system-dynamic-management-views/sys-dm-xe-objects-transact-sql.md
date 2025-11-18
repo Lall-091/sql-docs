@@ -7,6 +7,8 @@ ms.date: "02/27/2023"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "dm_xe_objects"
   - "sys.dm_xe_objects"
@@ -19,7 +21,7 @@ dev_langs:
   - "TSQL"
 ---
 # sys.dm_xe_objects (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL DB Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL DB Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Returns a row for each object that is exposed by an event package. Objects can be one of the following:  
   
@@ -69,3 +71,4 @@ Learn more about related concepts in the following articles:
 - [Quickstart: Extended events](../extended-events/quick-start-extended-events-in-sql-server.md)
 - [Extended events in Azure SQL Database](/azure/azure-sql/database/xevent-db-diff-from-svr)
 - [Event File target code for extended events in Azure SQL Database and SQL Managed Instance](/azure/azure-sql/database/xevent-code-event-file)
+

@@ -7,11 +7,13 @@ ms.date: 01/17/2024
 ms.service: sql
 ms.subservice: polybase
 ms.topic: tutorial
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "PolyBase, fundamentals"
   - "PolyBase, SQL statements"
   - "PolyBase, SQL objects"
-monikerRange: ">=sql-server-linux-ver15||>=sql-server-2016||>=aps-pdw-2016||=azure-sqldw-latest"
+monikerRange: ">=sql-server-linux-ver15 || >=sql-server-2016"
 ---
 # PolyBase Transact-SQL reference
 

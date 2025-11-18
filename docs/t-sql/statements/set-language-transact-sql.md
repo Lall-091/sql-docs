@@ -8,6 +8,8 @@ ms.date: 08/30/2024
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SET_LANGUAGE_TSQL"
   - "SET LANGUAGE"
@@ -19,11 +21,11 @@ helpviewer_keywords:
   - "default languages"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # SET LANGUAGE (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb.md)]
 
 Specifies the language environment for the session. The session language determines the **datetime** formats and system messages.
 
@@ -73,3 +75,4 @@ GO
 - [syslanguages](../../relational-databases/system-compatibility-views/sys-syslanguages-transact-sql.md)
 - [sp_helplanguage (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-helplanguage-transact-sql.md)
 - [SET Statements (Transact-SQL)](set-statements-transact-sql.md)
+

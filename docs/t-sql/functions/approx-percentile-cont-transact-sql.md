@@ -8,6 +8,8 @@ ms.date: 12/06/2023
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "PERCENTILE_CONT_TSQL"
   - "PERCENTILE_CONT"
@@ -16,12 +18,12 @@ helpviewer_keywords:
   - "PERCENTILE_CONT function"
 dev_langs:
   - "TSQL"
-monikerRange: "azuresqldb-current||=azuresqldb-mi-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqledge-current||=fabric"
+monikerRange: "=azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqledge-current || =fabric || =fabric-sqldb"
 ---
 
 # APPROX_PERCENTILE_CONT (Transact-SQL)
 
-[!INCLUDE [SQL Server 2022 Azure SQL Database Azure SQL Managed Instance Fabric SE DW](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricse-fabricdw.md)]
+[!INCLUDE [SQL Server 2022 Azure SQL Database Azure SQL Managed Instance Fabric SE DW FabricSQLDB](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricse-fabricdw-fabricsqldb.md)]
 
 This function returns an approximate interpolated value from the set of values in a group based on percentile value and sort specification. Since this is an approximate function, the output would be within rank based error bound with certain confidence. The percentile value returned by this function is based on a continuous distribution of the column values and the result would be interpolated. Due to this, the output might not be one of values in the data set. One of the common use cases for this function is to avoid the data outliers. This function can be used as an alternative to PERCENTILE_CONT for large datasets where negligible error with faster response is acceptable as compared to accurate percentile value with slow response time.
 
@@ -98,3 +100,4 @@ GROUP BY DeptId;
 ## Related content
 
 - [PERCENTILE_CONT (Transact-SQL)](percentile-cont-transact-sql.md)
+

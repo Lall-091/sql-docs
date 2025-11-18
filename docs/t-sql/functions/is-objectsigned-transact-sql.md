@@ -7,6 +7,8 @@ ms.date: "03/10/2016"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "IS_OBJECTSIGNED"
   - "IS_OBJECTSIGNED_TSQL"
@@ -16,7 +18,7 @@ dev_langs:
   - "TSQL"
 ---
 # IS_OBJECTSIGNED (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Indicates whether an object is signed by a specified certificate or asymmetric key.  
   
@@ -94,3 +96,4 @@ IS_OBJECTSIGNED(
  [sys.fn_check_object_signatures &#40;Transact-SQL&#41;](../../relational-databases/system-functions/sys-fn-check-object-signatures-transact-sql.md)  
   
   
+

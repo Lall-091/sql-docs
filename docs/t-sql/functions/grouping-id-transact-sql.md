@@ -8,6 +8,8 @@ ms.date: 09/06/2024
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "GROUPING_ID_TSQL"
   - "GROUPING_ID"
@@ -19,7 +21,7 @@ dev_langs:
 ---
 # GROUPING_ID (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 `GROUPING_ID` Is a function that computes the level of grouping. `GROUPING_ID` can be used only in the `SELECT <select>` list, `HAVING`, or `ORDER BY` clauses when `GROUP BY` is specified.
 
@@ -393,3 +395,4 @@ Here's a partial result set.
 
 - [GROUPING (Transact-SQL)](grouping-transact-sql.md)
 - [SELECT - GROUP BY (Transact-SQL)](../queries/select-group-by-transact-sql.md)
+

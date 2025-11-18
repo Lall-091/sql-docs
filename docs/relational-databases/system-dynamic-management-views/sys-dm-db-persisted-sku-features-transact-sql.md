@@ -7,6 +7,9 @@ ms.date: 06/23/2023
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - linux-related-content
+  - ignite-2025
 f1_keywords:
   - "sys.dm_db_persisted_sku_features_TSQL"
   - "sys.dm_db_persisted_sku_features"
@@ -17,12 +20,11 @@ helpviewer_keywords:
   - "sys.dm_db_persisted_sku_features dynamic management view"
 dev_langs:
   - "TSQL"
-ms.custom: linux-related-content
-monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||=fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # sys.dm_db_persisted_sku_features (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 Some features of the [!INCLUDE [ssDE](../../includes/ssde-md.md)] change the way that information is stored in the database files. These features are restricted to specific editions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. A database that contains these features can't be moved to an edition of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] that doesn't support them. Use the `sys.dm_db_persisted_sku_features` dynamic management view to list edition-specific features that are enabled in the current database.
 
@@ -76,3 +78,4 @@ GO
 
 - [System Dynamic Management Views](system-dynamic-management-views.md)
 - [Database Related Dynamic Management Views (Transact-SQL)](database-related-dynamic-management-views-transact-sql.md)
+

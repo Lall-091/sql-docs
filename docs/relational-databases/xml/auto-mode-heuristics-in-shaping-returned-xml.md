@@ -8,12 +8,14 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "AUTO FOR XML mode, heuristics in shaping returned XML"
 ---
 # AUTO mode heuristics in shaping returned XML
 
-[!INCLUDE[tsql-appliesto-ss2008-xxxx-xxxx-xxx-md](../../includes/appliesto-ss-asdb-xxxx-xxx-md.md)]
+ [!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 AUTO mode determines the shape of returned XML based on the query. In determining how elements are to be nested, AUTO mode heuristics compare column values in adjacent rows. Columns of all types, except **ntext**, **text**, **image**, and **xml**, are compared. Columns of type **(n)varchar(max)** and **varbinary(max)** are compared.
 
@@ -68,3 +70,4 @@ Now assume that the `Name` column is of **text** type. The AUTO mode heuristics 
 ## See also
 
 - [Use AUTO Mode with FOR XML](../../relational-databases/xml/use-auto-mode-with-for-xml.md)
+

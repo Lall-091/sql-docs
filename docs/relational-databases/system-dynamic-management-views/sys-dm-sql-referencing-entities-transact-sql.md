@@ -7,6 +7,8 @@ ms.date: "06/10/2016"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_sql_referencing_entities"
   - "dm_sql_referencing_entities_TSQL"
@@ -16,10 +18,10 @@ helpviewer_keywords:
   - "sys.dm_sql_referencing_entities dynamic management function"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.dm_sql_referencing_entities (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Returns one row for each entity in the current database that references another user-defined entity by name. A dependency between two entities is created when one entity, called the *referenced entity*, appears by name in a persisted SQL expression of another entity, called the *referencing entity*. For example, if a user-defined type (UDT) is specified as the referenced entity, this function returns each user-defined entity that reference that type by name in its definition. The function does not return entities in other databases that may reference the specified entity. This function must be executed in the context of the master database to return a server-level DDL trigger as a referencing entity.  
   
@@ -170,3 +172,4 @@ GO
  [sys.sql_expression_dependencies &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-sql-expression-dependencies-transact-sql.md)  
   
   
+

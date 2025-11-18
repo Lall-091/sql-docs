@@ -9,7 +9,7 @@ ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "WINDOW"
 helpviewer_keywords:
@@ -22,7 +22,7 @@ helpviewer_keywords:
   - "summary values [SQL Server]"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-ver16 || =azuresqldb-mi-current || >=sql-server-linux-ver16 || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-ver16 || =azuresqldb-mi-current || >=sql-server-linux-ver16 || =fabric-sqldb"
 ---
 
 # SELECT - WINDOW clause (Transact-SQL)

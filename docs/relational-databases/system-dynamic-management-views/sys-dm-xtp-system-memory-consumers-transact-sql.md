@@ -7,6 +7,8 @@ ms.date: 09/18/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "dm_xtp_system_memory_consumers"
   - "sys.dm_xtp_system_memory_consumers_TSQL"
@@ -20,7 +22,7 @@ dev_langs:
 
 # sys.dm_xtp_system_memory_consumers (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Reports system level memory consumers for [!INCLUDE [inmemory](../../includes/inmemory-md.md)]. The memory for these consumers comes either from the default pool (when the allocation is in the context of a user thread) or from the internal pool (if the allocation is in the context of a system thread).
 
@@ -122,3 +124,4 @@ total_allocated_MB   total_used_MB
 - [sys.sp_xtp_force_gc (Transact-SQL)](../system-stored-procedures/sys-sp-xtp-force-gc-transact-sql.md)
 - [sys.sp_xtp_checkpoint_force_garbage_collection (Transact-SQL)](../system-stored-procedures/sys-sp-xtp-checkpoint-force-garbage-collection-transact-sql.md)
 - [In-Memory OLTP (In-Memory Optimization)](../in-memory-oltp/overview-and-usage-scenarios.md)
+

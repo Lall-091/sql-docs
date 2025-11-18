@@ -8,6 +8,8 @@ ms.date: 02/28/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "COLUMNS_UPDATED_TSQL"
   - "COLUMNS_UPDATED"
@@ -22,7 +24,7 @@ dev_langs:
 
 # COLUMNS_UPDATED (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This function returns a **varbinary** bit pattern indicating the inserted or updated columns of a table or view. Use `COLUMNS_UPDATED` anywhere inside the body of a [!INCLUDE [tsql](../../includes/tsql-md.md)] `INSERT` or `UPDATE` trigger to test whether the trigger should execute certain actions.
 
@@ -224,3 +226,4 @@ GO
 - [Bitwise operators (Transact-SQL)](../language-elements/bitwise-operators-transact-sql.md)
 - [CREATE TRIGGER (Transact-SQL)](../statements/create-trigger-transact-sql.md)
 - [UPDATE - Trigger Functions (Transact-SQL)](update-trigger-functions-transact-sql.md)
+

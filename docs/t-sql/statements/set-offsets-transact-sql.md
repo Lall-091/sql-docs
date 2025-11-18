@@ -7,6 +7,8 @@ ms.date: "06/10/2016"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SET_OFFSETS_TSQL"
   - "OFFSETS_TSQL"
@@ -21,7 +23,7 @@ dev_langs:
   - "TSQL"
 ---
 # SET OFFSETS (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Returns the offset (position relative to the start of a statement) of specified keywords in [!INCLUDE[tsql](../../includes/tsql-md.md)] statements to DB-Library applications.  
   
@@ -58,3 +60,4 @@ SET OFFSETS keyword_list { ON | OFF }
  [SET PARSEONLY &#40;Transact-SQL&#41;](../../t-sql/statements/set-parseonly-transact-sql.md)  
   
   
+

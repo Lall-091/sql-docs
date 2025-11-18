@@ -8,14 +8,16 @@ ms.date: 07/26/2022
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "bit manipulation [SQL Server]"
 dev_langs:
   - "TSQL"
-monikerRange: ">= sql-server-ver16 || >= sql-server-linux-ver16 || = azuresqldb-mi-current ||= azuresqldb-current || =fabric"
+monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current || =azuresqldb-current || =fabric || =fabric-sqldb"
 ---
 # Bit manipulation functions
-[!INCLUDE [SQL Server 2022, SQL Database, SQL Managed Instance FabricSE FabricDW](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricse-fabricdw.md)]
+[!INCLUDE [SQL Server 2022, SQL Database, SQL Managed Instance FabricSE FabricDW FabricSQLDB](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricse-fabricdw-fabricsqldb.md)]
 
 Bit manipulation functions such as moving, retrieving (getting), setting, or counting single bits within an integer or binary value, allow you to process and store data more efficiently than with individual bits.
 
@@ -56,3 +58,4 @@ The following types aren't supported: **varchar**, **nvarchar**, **image**, **nt
 ## Remarks
 
 In the initial implementation, Distributed Query functionality for the bit manipulation functions within linked server or ad hoc queries (OPENQUERY) won't be supported.
+

@@ -4,13 +4,12 @@ description: Generates a symmetric key and specifies its properties in SQL Serve
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 04/30/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
-  - build-2025
+  - ignite-2025
 f1_keywords:
   - "CREATE SYMMETRIC KEY"
   - "SYMMETRIC KEP"
@@ -22,8 +21,8 @@ helpviewer_keywords:
   - "symmetric keys [SQL Server], creating"
   - "symmetric keys [SQL Server]"
 dev_langs:
-  - "TSQL"
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =fabric"
+  - TSQL
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azure-sqldw-latest || =fabric-sqldb"
 ---
 # CREATE SYMMETRIC KEY (Transact-SQL)
 
@@ -89,7 +88,7 @@ Specifies an Extensible Key Management (EKM) provider and name. The key isn't ex
 
 Specifies a passphrase from which to derive the key.
 
-#### IDENTITY_VALUE = '*_identity\_phrase_*'
+#### IDENTITY_VALUE = '*identity_phrase*'
 
 Specifies an identity phrase from which to generate a GUID for tagging data that is encrypted with a temporary key.
 
@@ -233,4 +232,4 @@ GO
 - [Encryption hierarchy](../../relational-databases/security/encryption/encryption-hierarchy.md)
 - [sys.symmetric_keys (Transact-SQL)](../../relational-databases/system-catalog-views/sys-symmetric-keys-transact-sql.md)
 - [Extensible Key Management (EKM)](../../relational-databases/security/encryption/extensible-key-management-ekm.md)
-- [Extensible Key Management Using Azure Key Vault (SQL Server)](../../relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server.md)
+- [Extensible Key Management using Azure Key Vault (SQL Server)](../../relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server.md)

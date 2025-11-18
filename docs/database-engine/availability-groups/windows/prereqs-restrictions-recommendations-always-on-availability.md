@@ -4,11 +4,13 @@ description: A description of the prerequisites, restrictions, and recommendatio
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 10/21/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: availability-groups
 ms.topic: conceptual
 ms.update-cycle: 1825-days
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "Availability Groups [SQL Server], server instance"
   - "Availability Groups [SQL Server], deploying"
@@ -47,7 +49,7 @@ To support the [!INCLUDE [ssHADR](../../../includes/sshadr-md.md)] feature, ensu
 | Requirement | Link |
 | --- | --- |
 | Ensure that the system isn't a domain controller. | Availability groups aren't supported on domain controllers. |
-| Ensure that each computer is running on a supported Windows Server version | Hardware and software requirements for:<br /><br />- [SQL Server 2025 Preview](../../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2025.md)<br />- [SQL Server 2022](../../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2022.md)<br />- [SQL Server 2019](../../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2019.md)<br />- [SQL Server 2016 and SQL Server 2017](../../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server.md) |
+| Ensure that each computer is running on a supported Windows Server version | Hardware and software requirements for:<br /><br />- [SQL Server 2025](../../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2025.md)<br />- [SQL Server 2022](../../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2022.md)<br />- [SQL Server 2019](../../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2019.md)<br />- [SQL Server 2016 and SQL Server 2017](../../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server.md) |
 | Ensure that each computer is a node in a WSFC. | [Windows Server Failover Clustering with SQL Server](../../../sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server.md) |
 | Ensure that the WSFC contains sufficient nodes to support your availability group configurations. | A cluster node can host one replica for an availability group. The same node can't host two replicas from the same availability group. The cluster node can participate in multiple availability groups, with one replica from each group.<br /><br />Ask your database administrators how many cluster nodes are required for to support the availability replicas of the planned availability groups.<br /><br />[What is an Always On availability group?](overview-of-always-on-availability-groups-sql-server.md) |
 

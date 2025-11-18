@@ -6,12 +6,14 @@ ms.author: mikeray
 ms.date: 08/21/2025
 ms.service: sql
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "tracking data changes [SQL Server]"
   - "change tracking [SQL Server], overhead"
   - "change tracking [SQL Server]"
   - "change tracking [SQL Server], managing"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Manage Change Tracking (SQL Server)
 

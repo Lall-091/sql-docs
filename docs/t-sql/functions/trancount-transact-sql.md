@@ -7,6 +7,8 @@ ms.date: "08/29/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "@@TRANCOUNT_TSQL"
   - "@@TRANCOUNT"
@@ -17,10 +19,10 @@ helpviewer_keywords:
   - "active transactions"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||=fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # &#x40;&#x40;TRANCOUNT (Transact-SQL)
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricdw-fabricsqldb.md)]
 
   Returns the number of BEGIN TRANSACTION statements that have occurred on the current connection.  
   
@@ -99,3 +101,4 @@ PRINT @@TRANCOUNT
  [System Functions \(Transact-SQL\)](../../relational-databases/system-functions/system-functions-category-transact-sql.md)  
   
   
+

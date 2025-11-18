@@ -13,7 +13,7 @@ metadata:
   ms.topic: faq
   ms.tgt_pltfrm: vm-windows-sql-server
   ms.workload: iaas-sql-server
-  ms.date: 09/04/2025
+  ms.date: 11/18/2025
   ms.author: mathoma
   ms.reviewer: randolphwest, dpless
 title: Frequently asked questions for SQL Server on Azure VMs
@@ -40,7 +40,7 @@ sections:
       - question: |
           Are existing SQL Server virtual machine gallery images updated?
         answer: |   
-          Only the latest market versions (SQL Server 2022 and SQL Server 2025 Preview) are updated with the latest OS and SQL Server updates regularly, typically every few months. After deployment, keeping the OS and SQL Server up to date can be done manually or automated through [Azure Update Manager](../azure-update-manager-sql-vm.md).
+          Only the latest market versions (SQL Server 2022 and SQL Server 2025) are updated with the latest OS and SQL Server updates regularly, typically every few months. After deployment, keeping the OS and SQL Server up to date can be done manually or automated through [Azure Update Manager](../azure-update-manager-sql-vm.md).
 
       - question: |
           Can SQL Server virtual machine images get removed from the gallery?

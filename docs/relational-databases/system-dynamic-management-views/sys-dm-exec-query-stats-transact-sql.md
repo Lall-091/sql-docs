@@ -7,6 +7,8 @@ ms.date: 12/16/2024
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "dm_exec_query_stats_TSQL"
   - "dm_exec_query_stats"
@@ -16,11 +18,11 @@ helpviewer_keywords:
   - "sys.dm_exec_query_stats dynamic management view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || >=aps-pdw-2016 || =azure-sqldw-latest"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || >=aps-pdw-2016 || =azure-sqldw-latest || =fabric-sqldb"
 ---
 # sys.dm_exec_query_stats (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Returns aggregate performance statistics for cached query plans in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. The view contains one row per query statement within the cached plan, and the lifetime of the rows are tied to the plan itself. When a plan is removed from the cache, the corresponding rows are eliminated from this view.
 
@@ -190,3 +192,4 @@ ORDER BY qs.execution_count DESC;
 - [sys.dm_exec_procedure_stats (Transact-SQL)](sys-dm-exec-procedure-stats-transact-sql.md)
 - [sys.dm_exec_trigger_stats (Transact-SQL)](sys-dm-exec-trigger-stats-transact-sql.md)
 - [sys.dm_exec_cached_plans (Transact-SQL)](sys-dm-exec-cached-plans-transact-sql.md)
+

@@ -7,6 +7,8 @@ ms.date: "05/17/2016"
 ms.service: sql
 ms.subservice: database-mirroring
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "database mirroring [SQL Server], deployment"
   - "endpoints [SQL Server], database mirroring"
@@ -16,9 +18,16 @@ helpviewer_keywords:
 # Troubleshoot Database Mirroring Configuration (SQL Server)
  [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
   This topic provides information to help you troubleshoot problems in setting up a database mirroring session.  
-  
-> [!NOTE]  
->  Ensure that you are meeting all the [prerequisites for database mirroring](../../database-engine/database-mirroring/prerequisites-restrictions-and-recommendations-for-database-mirroring.md).  
+
+> [!CAUTION]
+> [!INCLUDE [ssNoteDepFutureAvoid](../../includes/ssnotedepfutureavoid-md.md)] For high availability, use [!INCLUDE [ssHADR](../../includes/sshadr-md.md)] instead.
+
+> [!IMPORTANT]
+> Database Mirroring in SQL Server is a distinct technology from [Microsoft Fabric Database Mirroring](/fabric/database/mirrored-database/overview). Mirroring to Fabric provides better analytical performance, the ability to unify your data estate with OneLake in Fabric, and open access to your data in Delta Parquet format.
+>
+> With Mirroring to Microsoft Fabric, you can continuously replicate your existing data estate directly into OneLake in Fabric, including data from SQL Server 2016+, Azure SQL Database, Azure SQL Managed Instance, Cosmos DB, Oracle, Snowflake, and more.
+
+Ensure that you are meeting all the [prerequisites for database mirroring](../../database-engine/database-mirroring/prerequisites-restrictions-and-recommendations-for-database-mirroring.md).  
   
 |Issue|Summary|  
 |-----------|-------------|  

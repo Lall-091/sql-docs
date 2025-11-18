@@ -7,11 +7,13 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "Auto Stats event class"
 ---
 # Auto Stats Event Class
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   The **Auto Stats** event class indicates that an automatic updating of index and column statistics has occurred.  **Auto Stats** also fires when statistics are being loaded for use by the optimizer.
   
 ## Auto Stats Event Class Data Columns  
@@ -54,3 +56,4 @@ helpviewer_keywords:
  [sp_trace_setevent &#40;Transact-SQL&#41;](../../relational-databases/system-stored-procedures/sp-trace-setevent-transact-sql.md)  
   
   
+

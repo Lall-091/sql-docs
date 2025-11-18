@@ -6,6 +6,8 @@ ms.author: randolphwest
 ms.date: "06/03/2020"
 ms.service: azure-sql-database
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_os_job_object"
   - "sys.dm_os_job_object_TSQL"
@@ -16,10 +18,10 @@ helpviewer_keywords:
   - "dm_db_resource_stats"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current"
+monikerRange: "=azuresqldb-current || =fabric-sqldb"
 ---
 # sys.dm_os_job_object (Azure SQL Database)
-[!INCLUDE[Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/asdb-asdbmi.md)]
+[!INCLUDE[Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/asdb-asdbmi-fabricsqldb.md)]
 
 Returns a single row describing the configuration of the job object that manages the SQL Server process, as well as certain resource consumption statistics at the job object level. Returns an empty set if SQL Server is not running in a job object.
 
@@ -50,3 +52,4 @@ On SQL Database, requires the `VIEW DATABASE STATE` permission in the database.
 ## See Also  
 
 For information on Managed Instances, see [SQL Managed Instance](/azure/sql-database/sql-database-managed-instance).
+

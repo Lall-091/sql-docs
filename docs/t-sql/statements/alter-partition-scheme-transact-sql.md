@@ -7,6 +7,8 @@ ms.date: 09/26/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "ALTER PARTITION SCHEME"
   - "ALTER_PARTITION_SCHEME_TSQL"
@@ -18,7 +20,7 @@ helpviewer_keywords:
   - "NEXT USED filegroups"
 dev_langs:
   - "TSQL"
-monikerRange: "= azuresqldb-current || >= sql-server-2016 || >=sql-server-linux-2017 || = azuresqldb-mi-current || = fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # ALTER PARTITION SCHEME (Transact-SQL)
 

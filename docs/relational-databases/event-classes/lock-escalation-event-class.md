@@ -7,13 +7,17 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
-  - "Escalation event class"
+  - "Lock:Escalation event class"
   - "lock escalation [SQL Server], event class"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Lock:Escalation Event Class
- [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
+
+ [!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
+
   The **Lock:Escalation** event class indicates that a finer-grained lock has been converted to a coarser-grained lock; for example, a row lock that is converted to an object lock. The escalation event class is Event ID 60.  
   
 ## Lock:Escalation Event Class Data Columns  
@@ -94,3 +98,4 @@ GO
  [sys.dm_tran_locks &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql.md)  
   
   
+

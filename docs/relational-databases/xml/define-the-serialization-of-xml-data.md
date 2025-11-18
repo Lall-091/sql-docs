@@ -8,6 +8,8 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "entitization rules [XML in SQL Server]"
   - "serialization"
@@ -19,7 +21,7 @@ helpviewer_keywords:
 ---
 # Define the serialization of XML data
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 When casting the **xml** data type explicitly or implicitly to a SQL string or binary type, the content of the **xml** data type will be serialized according to the rules outlined in this article.
 
@@ -152,3 +154,4 @@ This returns the string value 13.4.
 
 - [Type Casting Rules in XQuery](../../xquery/type-casting-rules-in-xquery.md)
 - [CAST and CONVERT &#40;Transact-SQL&#41;](../../t-sql/functions/cast-and-convert-transact-sql.md)
+

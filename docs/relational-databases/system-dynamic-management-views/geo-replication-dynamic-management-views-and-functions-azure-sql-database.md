@@ -7,6 +7,8 @@ ms.date: 10/20/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "dynamic management objects [Azure SQL Database]"
   - "geo-replication"
@@ -14,7 +16,7 @@ helpviewer_keywords:
   - "geo-replication [Azure SQL Database]"
 dev_langs:
   - TSQL
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
 # Geo-replication dynamic management views and functions
 

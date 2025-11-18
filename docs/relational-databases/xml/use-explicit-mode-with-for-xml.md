@@ -8,6 +8,8 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "EXPLICIT FOR XML mode"
   - "FOR XML clause, EXPLICIT mode"
@@ -15,7 +17,7 @@ helpviewer_keywords:
 ---
 # Use EXPLICIT mode with FOR XML
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 As described in the article, [Constructing XML Using FOR XML](../../relational-databases/xml/for-xml-sql-server.md), RAW and AUTO mode don't provide much control over the shape of the XML generated from a query result. However, EXPLICIT mode provides the most flexibility in generating the XML you want from a query result.
 
@@ -167,3 +169,4 @@ The following examples illustrate the use of EXPLICIT mode.
 - [Use PATH Mode with FOR XML](../../relational-databases/xml/use-path-mode-with-for-xml.md)
 - [SELECT &#40;Transact-SQL&#41;](../../t-sql/queries/select-transact-sql.md)
 - [FOR XML &#40;SQL Server&#41;](../../relational-databases/xml/for-xml-sql-server.md)
+

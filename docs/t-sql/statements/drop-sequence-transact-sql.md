@@ -7,6 +7,8 @@ ms.date: "05/11/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "DROP SEQUENCE"
   - "DROP_SEQUENCE_TSQL"
@@ -17,7 +19,7 @@ dev_langs:
   - "TSQL"
 ---
 # DROP SEQUENCE (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Removes a sequence object from the current database.  
   
@@ -81,3 +83,4 @@ GO
  [CREATE SEQUENCE &#40;Transact-SQL&#41;](../../t-sql/statements/create-sequence-transact-sql.md)   
  [NEXT VALUE FOR &#40;Transact-SQL&#41;](../../t-sql/functions/next-value-for-transact-sql.md)   
  [Sequence Numbers](../../relational-databases/sequence-numbers/sequence-numbers.md)  
+

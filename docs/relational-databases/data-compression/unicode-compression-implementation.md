@@ -8,14 +8,16 @@ ms.date: 08/21/2023
 ms.service: sql
 ms.subservice: performance
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "Unicode data compression"
   - "compression [SQL Server], Unicode data"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Unicode compression implementation
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] uses an implementation of the Standard Compression Scheme for Unicode (SCSU) algorithm to compress Unicode values that are stored in row or page compressed objects. For these compressed objects, Unicode compression is automatic for **nchar(*n*)** and **nvarchar(*n*)** columns. The [!INCLUDE [ssDE](../../includes/ssde-md.md)] stores Unicode data as 2 bytes, regardless of locale. This is known as UCS-2 encoding. For some locales, the implementation of SCSU compression in SQL Server can save up to 50 percent in storage space.
 
@@ -61,3 +63,4 @@ The storage space that compression saves depends on the characteristics of the d
 - [sys.dm_db_persisted_sku_features (Transact-SQL)](../../relational-databases/system-dynamic-management-views/sys-dm-db-persisted-sku-features-transact-sql.md)
 - [Row compression implementation](row-compression-implementation.md)
 - [Page compression implementation](page-compression-implementation.md)
+

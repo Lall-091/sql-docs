@@ -5,19 +5,20 @@ author: yorek
 ms.author: damauri
 ms.reviewer: damauri, randolphwest, mathoma
 ms.date: 08/20/2025
-ms.update-cycle: 180-days
 ms.service: sql
 ms.topic: faq
 ms.collection:
   - ce-skilling-ai-copilot
+ms.update-cycle: 180-days
 ms.custom:
   - intro-quickstart
+  - ignite-2025
 helpviewer_keywords:
   - "NL2SQL"
   - "Natural Language"
   - "Intelligent Applications"
   - "AI"
-monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
+monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # Intelligent applications and AI Frequently Asked Questions (FAQ)

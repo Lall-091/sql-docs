@@ -4,11 +4,11 @@ description: Learn how to use managed identities with SQL Server enabled by Azur
 author: Pietervanhove
 ms.author: pivanho
 ms.reviewer: MikeRayMSFT, randolphwest, vanto
-ms.date: 10/21/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.topic: concept-article
 ms.custom:
-  - build-2025
+  - ignite-2025
 monikerRange: ">=sql-server-ver17"
 ---
 # Managed Identity support for Extensible Key Management with Azure Key Vault
@@ -24,7 +24,7 @@ Starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], managed ide
 ## Prerequisites
 
 - Connect the instance of SQL Server to Azure Arc. For more information, see [Automatically connect your SQL Server to Azure Arc](connect.md).
-- [Enable managed identity for SQL Server 2025 Preview](managed-identity.md).
+- [Enable managed identity for SQL Server 2025](managed-identity.md).
 - An Azure Key Vault and key created in the key vault. For more information, see [Create a key vault](../../relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault.md?tabs=portal#step-2-create-a-key-vault).
 - The managed identity for the SQL Server enabled by Azure Arc needs to have the `Key Vault Crypto Service Encryption User` role assigned to the key vault if you're using [Azure role-based access control](../../relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault.md?tabs=portal#azure-role-based-access-control) or the *Unwrap Key* and *Wrap Key* permissions if you're using [vault access policy](../../relational-databases/security/encryption/setup-steps-for-extensible-key-management-using-the-azure-key-vault.md?tabs=portal#vault-access-policy).
 - [Download and install the preview version of the SQL Server Connector](https://www.microsoft.com/download/details.aspx?id=108278).

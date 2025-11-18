@@ -8,6 +8,8 @@ ms.date: 08/28/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "COMPRESS"
   - "COMPRESS_TSQL"
@@ -15,11 +17,11 @@ helpviewer_keywords:
   - "COMPRESS function"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqledge-current || =azure-sqldw-latest || =fabric"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqledge-current || =azure-sqldw-latest || =fabric || =fabric-sqldb"
 ---
 # COMPRESS (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-fabricse-fabricdw](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-fabricse-fabricdw.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb.md)]
 
 This function compresses the input expression, using the **Gzip** algorithm. The function returns a byte array of type **varbinary(max)**.
 
@@ -109,3 +111,4 @@ WHERE datemodified < @startOfYear;
 
 - [String Functions (Transact-SQL)](string-functions-transact-sql.md)
 - [DECOMPRESS (Transact-SQL)](decompress-transact-sql.md)
+

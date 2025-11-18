@@ -8,6 +8,8 @@ ms.date: 04/28/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "ANSI_PADDING_TSQL"
   - "ANSI_PADDING"
@@ -21,11 +23,11 @@ helpviewer_keywords:
   - "trailing blanks"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # SET ANSI_PADDING (Transact-SQL)
 
-[!INCLUDE [sql-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 Controls the way the column stores values shorter than the defined size of the column, and the way the column stores values that have trailing blanks in **char**, **varchar**, **binary**, and **varbinary** data.
 - `SET ANSI_PADDING ON` - preserves the trailing blanks in the string values when they are inserted into a column. This is ANSI-compliant behavior.
@@ -148,3 +150,4 @@ DROP TABLE t2;
 - [CREATE TABLE (Transact-SQL)](create-table-transact-sql.md)
 - [INSERT (Transact-SQL)](insert-transact-sql.md)
 - [SET ANSI_DEFAULTS (Transact-SQL)](set-ansi-defaults-transact-sql.md)
+

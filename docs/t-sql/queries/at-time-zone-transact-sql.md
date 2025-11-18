@@ -9,8 +9,7 @@ ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
-  - build-2025
+  - ignite-2025
 f1_keywords:
   - "AT TIME ZONE"
   - "AT_TIME_ZONE_TSQL"
@@ -18,7 +17,7 @@ helpviewer_keywords:
   - "AT TIME ZONE function"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric || =fabric-sqldb"
 ---
 # AT TIME ZONE (Transact-SQL)
 

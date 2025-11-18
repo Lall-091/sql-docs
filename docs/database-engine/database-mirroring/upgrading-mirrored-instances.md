@@ -7,6 +7,8 @@ ms.date: "02/01/2016"
 ms.service: sql
 ms.subservice: database-mirroring
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "upgrading SQL Server, rolling upgrade of mirrored databases"
   - "database mirroring [SQL Server], upgrading system"
@@ -14,10 +16,18 @@ helpviewer_keywords:
 ---
 # Upgrading Mirrored Instances
  [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
+
+> [!CAUTION]
+> [!INCLUDE [ssNoteDepFutureAvoid](../../includes/ssnotedepfutureavoid-md.md)] For high availability, use [!INCLUDE [ssHADR](../../includes/sshadr-md.md)] instead.
+
+> [!IMPORTANT]
+> Database Mirroring in SQL Server is a distinct technology from [Microsoft Fabric Database Mirroring](/fabric/database/mirrored-database/overview). Mirroring to Fabric provides better analytical performance, the ability to unify your data estate with OneLake in Fabric, and open access to your data in Delta Parquet format.
+>
+> With Mirroring to Microsoft Fabric, you can continuously replicate your existing data estate directly into OneLake in Fabric, including data from SQL Server 2016+, Azure SQL Database, Azure SQL Managed Instance, Cosmos DB, Oracle, Snowflake, and more.
+
   When upgrading a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] mirrored instance to a new version, to a new [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] service pack or cumulative update, or to a new Windows service pack or cumulative update, you can reduce downtime for each mirrored database to only a single manual failover by performing a rolling upgrade (or two manual failovers if failing back to the original primary). A rolling upgrade is a multi-stage process that in its simplest form involves upgrading the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance that is currently acting as the mirror server in a mirroring session, then manually failing over the mirrored database, upgrading the former principal [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance, and resuming mirroring. In practice, the exact process will depend on the operating mode and the number and layout of mirroring session running on the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instances that you are upgrading.  
-  
-> [!NOTE]  
->  For information on using database mirroring with log shipping during a migration, download this [Database Mirroring and Log Shipping whitepaper](https://t.co/RmO6ruCT4J).  
+ 
+  For information on using database mirroring with log shipping during a migration, download this [Database Mirroring and Log Shipping whitepaper](https://download.microsoft.com/download/d/9/4/d948f981-926e-40fa-a026-5bfcf076d9b9/DBMandLogShipping.docx).  
   
 ## Prerequisites  
  Before you begin, review the following important information:  

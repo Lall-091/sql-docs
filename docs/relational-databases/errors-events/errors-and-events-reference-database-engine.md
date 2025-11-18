@@ -15,7 +15,7 @@ helpviewer_keywords:
 ---
 # Errors and events reference (Database Engine)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This section contains selected [!INCLUDE[ssDE](../../includes/ssde-md.md)] error messages that need further explanation.
 
@@ -36,3 +36,4 @@ The following table links to and describes these resources.
 | [SQL Server Community](../../sql-server/index.yml) | This site has links to newsgroups and forums monitored by the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] community. It also lists community information sources, such as blogs and Web sites. The [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] community is very helpful in answering questions, although an answer cannot be guaranteed. |
 | [SQL Server Developer Center Community](../../sql-server/index.yml) | This site focuses on the newsgroups, forums, and other community resources that are useful to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] developers. |
 | [Microsoft Help and Support](https://go.microsoft.com/fwlink/?linkid=16419) | You can use this Web site to open a case with a [!INCLUDE[msCoName](../../includes/msconame-md.md)] support professional. |
+

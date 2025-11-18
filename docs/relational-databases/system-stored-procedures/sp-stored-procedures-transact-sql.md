@@ -8,6 +8,8 @@ ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_stored_procedures_TSQL"
   - "sp_stored_procedures"
@@ -18,7 +20,7 @@ dev_langs:
 ---
 # sp_stored_procedures (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Returns a list of stored procedures in the current environment.
 
@@ -121,3 +123,4 @@ EXECUTE sp_stored_procedures N'uspLogError', N'dbo', N'AdventureWorks2022', 1;
 
 - [Catalog stored procedures (Transact-SQL)](catalog-stored-procedures-transact-sql.md)
 - [System stored procedures (Transact-SQL)](system-stored-procedures-transact-sql.md)
+

@@ -7,6 +7,8 @@ ms.date: 01/11/2024
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "dm_os_memory_cache_entries"
   - "sys.dm_os_memory_cache_entries"
@@ -16,11 +18,11 @@ helpviewer_keywords:
   - "sys.dm_os_memory_cache_entries dynamic management view"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || >=aps-pdw-2016 || =azure-sqldw-latest"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || >=aps-pdw-2016 || =azure-sqldw-latest || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.dm_os_memory_cache_entries (Transact-SQL)
 
-[!INCLUDE [sql-asa-pdw](../../includes/applies-to-version/sql-asa-pdw.md)]
+[!INCLUDE [sql-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 Returns information about all entries in caches in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. Use this view to trace cache entries to their associated objects. You can also use this view to obtain statistics on cache entries.
 
@@ -58,3 +60,4 @@ On [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] **Basic**, **S0**
 ## Related content
 
 - [SQL Server Operating System Related Dynamic Management Views (Transact-SQL)](sql-server-operating-system-related-dynamic-management-views-transact-sql.md)
+

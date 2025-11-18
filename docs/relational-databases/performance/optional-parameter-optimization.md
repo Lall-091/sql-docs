@@ -8,7 +8,7 @@ ms.date: 08/19/2025
 ms.service: sql
 ms.topic: concept-article
 ms.custom:
-  - build-2025
+  - ignite-2025
 # CustomerIntent: As a database engineer, I want to understand the capabilities of the Optional parameter plan optimization feature in SQL Server 2025 so that I can effectively implement and support this technology.
 monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17"
 ---
@@ -65,7 +65,7 @@ WHERE bedrooms = @bedrooms
       OR @bedrooms IS NULL;
 ```
 
-Even if parameter `@bedrooms = 10` is sniffed by the use of [parameter markers](../../relational-databases/query-processing-architecture-guide.md#parameters-and-execution-plan-reuse), and we know that the cardinality for the number of bedrooms is likely to be very low, the optimizer doesn't produce a plan that seeks on an index which exists on the bedroom column because that isn't a valid plan for the case where `@bedrooms` is `NULL`. The generated plan doesn't include a scan of the index.
+Even if parameter `@bedrooms = 10` is sniffed by the use of [parameter markers](../query-processing-architecture-guide.md#parameters-and-execution-plan-reuse), and we know that the cardinality for the number of bedrooms is likely to be very low, the optimizer doesn't produce a plan that seeks on an index which exists on the bedroom column because that isn't a valid plan for the case where `@bedrooms` is `NULL`. The generated plan doesn't include a scan of the index.
 
 Imagine if this could be rewritten as two separate statements. Depending on the runtime value of the parameter, we could evaluate something like this:
 
@@ -79,7 +79,7 @@ ELSE
 
 We can achieve this by using the adaptive plan optimization infrastructure, which allows a creation of a dispatcher plan that dispatches two query variants.
 
-Similar to the [predicate cardinality range](../../relational-databases/performance/parameter-sensitive-plan-optimization.md#predicate-cardinality-range) that PSP optimization uses, OPPO embeds a system usable query hint with the query text of the plan. This hint isn't valid for use by an application or if you attempt to use it yourself.
+Similar to the [predicate cardinality range](parameter-sensitive-plan-optimization.md#predicate-cardinality-range) that PSP optimization uses, OPPO embeds a system usable query hint with the query text of the plan. This hint isn't valid for use by an application or if you attempt to use it yourself.
 
 Continuing with the previous example,
 
@@ -132,14 +132,15 @@ The `DISABLE_OPTIONAL_PARAMETER_OPTIMIZATION` query hint can be specified direct
 ### Extended Events
 
 - `optional_parameter_optimization_skipped_reason`: Occurs when OPPO decides that a query isn't eligible for optimization. This extended event follows the same pattern as the parameter_sensitive_plan_optimization_skipped_reason event that is used by PSP optimization. Since a query can generate both PSP optimization and OPPO query variants, you should check both events to understand why one or neither feature engaged.
-The following query shows all of the possible reasons why PSP was skipped:
 
-```sql
-SELECT map_value
-FROM sys.dm_xe_map_values
-WHERE [name] = 'opo_skipped_reason_enum'
-ORDER BY map_key;
-```
+  The following query shows all of the possible reasons why PSP was skipped:
+
+  ```sql
+  SELECT map_value
+  FROM sys.dm_xe_map_values
+  WHERE [name] = 'opo_skipped_reason_enum'
+  ORDER BY map_key;
+  ```
 
 - `query_with_optional_parameter_predicate`: The extended event follows the same pattern as the query_with_parameter_sensitivity event that is used by PSP optimization. It includes the additional fields that are available in the improvements for PSP optimization which consist of displaying the number of predicates that the feature found interesting, more details in json format regarding the interesting predicates, as well as if OPPO is supported for the predicate or predicates.
 

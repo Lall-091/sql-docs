@@ -3,11 +3,12 @@ title: What's new?
 description: Learn about the new features for and improvements to SQL Server on Azure Virtual Machines.
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: randolphwest, mathoma, dpless
-ms.date: 09/10/2025
+ms.reviewer: randolphwest, dpless
+ms.date: 11/18/2025
 ms.service: azure-vm-sql-server
 ms.topic: whats-new
 ms.custom:
+  - ignite-2025
 tags: azure-service-management
 ---
 # What's new with SQL Server on Azure Virtual Machines?
@@ -65,7 +66,7 @@ Learn about significant changes to the SQL Server on Azure VMs documentation. Fo
 
 | Changes | Details |
 | --- | --- |
-| **SQL Server 2025 Preview** | SQL Server 2025 Preview is now [available to deploy as an image](sql-server-on-azure-vm-iaas-what-is-overview.md#sql-vm-images-and-licensing) for SQL Server on Azure VMs. Review [SQL Server 2025 preview](/sql/sql-server/what-s-new-in-sql-server-2025) to learn more.  |
+| **SQL Server 2025** | SQL Server 2025 is now [available to deploy as an image](sql-server-on-azure-vm-iaas-what-is-overview.md#licensing) for SQL Server on Azure VMs. Review [SQL Server 2025](/sql/sql-server/what-s-new-in-sql-server-2025) to learn more.  |
 
 ### April 2025
 

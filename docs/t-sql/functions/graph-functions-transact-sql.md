@@ -7,14 +7,16 @@ ms.date: 06/28/2023
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "SQL Graph functions"
 dev_langs:
   - "TSQL"
-monikerRange: "= azuresqldb-current || >= sql-server-2017 || >= sql-server-linux-2017 || = azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2017 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Graph functions (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sqlserver2017-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sqlserver2017-asdb-asdbmi-fabricsqldb.md)]
 
 Use the functions described on the pages in this section to extract values from, and transform values to, the pseudo-columns used in SQL Graph.
   
@@ -31,3 +33,4 @@ Use the functions described on the pages in this section to extract values from,
 
 - [SQL Graph Architecture](../../relational-databases/graphs/sql-graph-architecture.md)
 - [SQL Graph Database Sample](../../relational-databases/graphs/sql-graph-sample.md)
+

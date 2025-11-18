@@ -7,11 +7,13 @@ ms.date: "05/24/2019"
 ms.service: sql
 ms.subservice: xevents
 ms.topic: tutorial
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+ms.custom:
+  - ignite-2025
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
 # Alter an Extended Events Session
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Fabric SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   After you create an Extended Events session, you can alter it according to your needs using the **SQL Server Extended Events Wizard**.  
   

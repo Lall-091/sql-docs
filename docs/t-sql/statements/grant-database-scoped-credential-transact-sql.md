@@ -8,7 +8,7 @@ ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "GRANT DATABASE SCOPED CREDENTIAL"
   - "GRANT_DATABASE_SCOPED_CREDENTIAL_TSQL"
@@ -19,7 +19,7 @@ helpviewer_keywords:
   - "GRANT statement, database scoped credentials"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2017 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azure-sqldw-latest || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2017 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azure-sqldw-latest || =fabric-sqldb"
 ---
 
 # GRANT Database Scoped Credential permissions (Transact-SQL) 

@@ -7,6 +7,8 @@ ms.date: "03/06/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SIGNBYASYMKEY_TSQL"
   - "SIGNBYASYMKEY"
@@ -22,7 +24,7 @@ dev_langs:
   - "TSQL"
 ---
 # SIGNBYASYMKEY (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Signs plaintext with an asymmetric key  
   
@@ -78,3 +80,4 @@ GO
  [Encryption Hierarchy](../../relational-databases/security/encryption/encryption-hierarchy.md)  
   
   
+

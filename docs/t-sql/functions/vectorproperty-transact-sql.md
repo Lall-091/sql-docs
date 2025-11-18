@@ -4,7 +4,7 @@ description: The VECTORPROPERTY function returns specific properties of a given 
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: damauri, pookam, randolphwest
-ms.date: 10/03/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -12,7 +12,7 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
 ms.custom:
-  - build-2025
+  - ignite-2025
 f1_keywords:
   - "VECTORPROPERTY"
   - "VECTORPROPERTY_TSQL"
@@ -21,7 +21,7 @@ helpviewer_keywords:
   - "vector, property"
 dev_langs:
   - TSQL
-monikerRange: ">=sql-server-ver17 || >=sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=sql-server-ver17 || >=sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # VECTORPROPERTY (Transact-SQL)
@@ -91,14 +91,13 @@ CREATE TABLE mytable
 );
 
 INSERT INTO mytable (embeddings)
-VALUES
-    ('[4, -2, -1]'),
-    ('[1, 3, -5]'),
-    ('[7, -8, -10]'),
-    ('[4.0, 0.2, -1.1]'),
-    ('[0, 0, 0]'),
-    ('[10, 10, 10]'),
-    ('[-0.1, -0.2, -0.3]');
+VALUES ('[4, -2, -1]'),
+       ('[1, 3, -5]'),
+       ('[7, -8, -10]'),
+       ('[4.0, 0.2, -1.1]'),
+       ('[0, 0, 0]'),
+       ('[10, 10, 10]'),
+       ('[-0.1, -0.2, -0.3]');
 
 SELECT VECTORPROPERTY(t.embeddings, 'dimensions')
 FROM mytable AS t;

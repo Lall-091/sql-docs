@@ -11,7 +11,7 @@ ms.subservice: service-overview
 ms.topic: how-to
 ms.custom:
   - sqldbrb=2
-  - ignite-2024
+  - ignite-2025
 monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
 ---
 # Save on compute costs with Azure Reservations - Azure SQL Database & SQL Managed Instance
@@ -55,6 +55,9 @@ Further, let's suppose that you plan to deploy the following within the next mon
 - 1 business critical standard-series (Gen5) – 32 vCore elastic pool. 
 
 Also, let's suppose that you know that you will need these resources for at least 1 year. In this case, you should purchase a 32 (2x16) vCores 1-year reservation for single database/elastic pool General Purpose - standard-series (Gen5) and a 40 (2x4 + 32) vCore 1-year reservation for single database/elastic pool Business Critical - standard-series (Gen5).
+
+> [!IMPORTANT]
+> Next-gen General Purpose is an upgrade to the General Purpose tier. The same reservations are used for both the General Purpose service tier and the Next-gen General Purpose upgrade. Reservations applied to resources in the General Purpose tier continue to work on resources upgraded to the Next-gen General Purpose service tier. To apply reservations to resources running on the Next-gen General Purpose tier, purchase reservations for the General Purpose service tier with the desired hardware (standard, premium, or premium memory-optimized). 
 
 ## Reservations for zone-redundant resources 
 

@@ -7,6 +7,8 @@ ms.date: "03/13/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "ROWCOUNT_BIG"
   - "ROWCOUNT_BIG_TSQL"
@@ -20,7 +22,7 @@ dev_langs:
   - "TSQL"
 ---
 # ROWCOUNT_BIG (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Returns the number of rows affected by the last statement executed. This function operates like [@@ROWCOUNT](../../t-sql/functions/rowcount-transact-sql.md), except the return type of ROWCOUNT_BIG is **bigint**.  
   
@@ -47,3 +49,4 @@ ROWCOUNT_BIG ( )
  [Data Types &#40;Transact-SQL&#41;](../../t-sql/data-types/data-types-transact-sql.md)  
   
   
+

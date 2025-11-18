@@ -7,6 +7,8 @@ ms.date: 01/22/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SET SHOWPLAN_XML"
   - "SET_SHOWPLAN_XML_TSQL"
@@ -20,11 +22,11 @@ helpviewer_keywords:
   - "estimated execution information [SQL Server]"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||=fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # SET SHOWPLAN_XML (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Synapse dedicated only](../../includes/applies-to-version/sql-asdb-asdbmi-asa-dedicated-poolonly-fabricse-fabricdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Synapse dedicated only FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-asa-dedicated-poolonly-fabricse-fabricdw-fabricsqldb.md)]
 
 Causes [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] not to execute [!INCLUDE[tsql](../../includes/tsql-md.md)] statements. Instead, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] returns detailed information about how the statements are going to be executed in the form of a well-defined XML document.
 
@@ -106,3 +108,4 @@ SET SHOWPLAN_XML OFF;
 
 - [SET Statements (Transact-SQL)](../../t-sql/statements/set-statements-transact-sql.md)
 - [Display the Estimated Execution Plan](../../relational-databases/performance/display-the-estimated-execution-plan.md)
+

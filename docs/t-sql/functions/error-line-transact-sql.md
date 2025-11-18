@@ -7,6 +7,8 @@ ms.date: "03/16/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "ERROR_LINE"
   - "ERROR_LINE_TSQL"
@@ -23,7 +25,7 @@ dev_langs:
 
 # ERROR_LINE (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This function returns the line number of occurrence of an error that caused the CATCH block of a TRY...CATCH construct to execute.  
   
@@ -127,3 +129,4 @@ GO
  [@@ERROR &#40;Transact-SQL&#41;](../../t-sql/functions/error-transact-sql.md)  
   
   
+

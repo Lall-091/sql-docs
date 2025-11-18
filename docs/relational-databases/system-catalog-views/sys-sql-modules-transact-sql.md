@@ -7,6 +7,8 @@ ms.date: 07/14/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.sql_modules_TSQL"
   - "sql_modules"
@@ -16,11 +18,11 @@ helpviewer_keywords:
   - "sys.sql_modules catalog view"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # sys.sql_modules (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 Returns a row for each object that is a SQL language-defined module in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], including natively compiled scalar user-defined function. Objects of type `P`, `RF`, `V`, `TR`, `FN`, `IF`, `TF`, and `R` have an associated SQL module. Stand-alone defaults, objects of type `D`, also have a SQL module definition in this view. For a description of these types, see the `type` column in the [sys.objects](sys-objects-transact-sql.md) catalog view.
 
@@ -78,3 +80,4 @@ ORDER BY o.[type], ss.[name], o.[name];
 - [Object catalog views (Transact-SQL)](object-catalog-views-transact-sql.md)
 - [Querying the SQL Server System Catalog FAQ](querying-the-sql-server-system-catalog-faq.yml)
 - [In-Memory OLTP overview and usage scenarios](../in-memory-oltp/overview-and-usage-scenarios.md)
+

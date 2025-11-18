@@ -8,13 +8,15 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: concept-article
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "FOR XML clause, invalid characters"
   - "FOR XML clause, escape rules"
 ---
 # Invalid characters and escape rules
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]	
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]	
 
 This article describes how invalid XML characters are handled by the FOR XML clause, and lists the escape rules for characters that are invalid in XML names.
 
@@ -65,3 +67,4 @@ There are only two non-alphabetic characters that can occur within an XML name: 
 ## See also
 
 - [FOR XML &#40;SQL Server&#41;](../../relational-databases/xml/for-xml-sql-server.md)
+

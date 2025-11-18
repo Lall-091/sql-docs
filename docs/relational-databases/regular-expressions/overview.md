@@ -4,26 +4,24 @@ description: Use regular expressions to filter and manipulate text strings in SQ
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: abhtiwar, randolphwest, wiassaf
-ms.date: 10/24/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.topic: quickstart
 ms.custom:
-  - build-2025
+  - ignite-2025
 helpviewer_keywords:
   - "Regular expressions functions"
   - "regex"
 dev_langs:
   - TSQL
-monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
+monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
-# Regular expressions preview
+# Regular expressions
 
-[!INCLUDE [sqlserver2025-asdb-asmi-fabric](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
 This article introduces regular expressions for [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)].
-
-[!INCLUDE [preview](../../includes/preview.md)]
 
 A regular expression, or regex, is a sequence of characters that defines a search pattern for text. Regex is commonly used for a variety of tasks including pattern matching, data validation, data transformation, and querying. It offers a flexible and an efficient way to search, manipulate, and handle complex data operations.
 
@@ -185,9 +183,9 @@ This implementation supports the POSIX standard of regular expressions following
 
 Regex queries can have a performance impact depending on the complexity of the regex pattern, the size of the text data, and the number of rows involved. You can use the execution plan and statistics to monitor and optimize the performance of your regex queries.
 
-## Known Issues, behaviors, and limitations
+## Limitations
 
-These are the items that aren't currently supported in this preview:
+The following items aren't currently supported:
 
 - LOB data types (**varchar(max)** or **nvarchar(max)**) for `string_expressions` are supported in the following intrinsic functions:
   - `REGEXP_LIKE`
@@ -201,8 +199,9 @@ However, this support is limited to input sizes up to 2 MB.
   - `REGEXP_SUBSTR`
   - `REGEXP_MATCHES`
   - `REGEXP_SPLIT_TO_TABLE`
+
 - Regular expression functions aren't supported in natively compiled stored procedures.
 
 ## Related content
 
-- [Regular expressions functions (Transact-SQL) preview](../../t-sql/functions/regular-expressions-functions-transact-sql.md)
+- [Regular expressions functions (Transact-SQL)](../../t-sql/functions/regular-expressions-functions-transact-sql.md)

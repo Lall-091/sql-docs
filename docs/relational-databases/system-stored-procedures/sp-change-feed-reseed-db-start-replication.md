@@ -9,8 +9,7 @@ ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
 ms.custom:
-  - ignite-2024
-  - build-2025
+  - ignite-2025
 f1_keywords:
   - "sys.sp_change_feed_reseed_db_start_replication_TSQL"
   - "sys.sp_change_feed_reseed_db_start_replication"
@@ -20,7 +19,7 @@ helpviewer_keywords:
   - "sp_change_feed_reseed_db_start_replication"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=sql-server-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # sys.sp_change_feed_reseed_db_start_replication (Transact-SQL)
 

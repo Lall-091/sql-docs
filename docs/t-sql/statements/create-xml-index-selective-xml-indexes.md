@@ -7,11 +7,13 @@ ms.date: "08/10/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 dev_langs:
   - "TSQL"
 ---
 # CREATE XML INDEX (Selective XML Indexes)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Creates a new secondary selective XML index on a single path that is already indexed by an existing selective XML index. You can also create primary selective XML indexes. For information, see [Create, Alter, and Drop Selective XML Indexes](../../relational-databases/xml/create-alter-and-drop-selective-xml-indexes.md).  
   
@@ -106,4 +108,5 @@ FOR ( pathabc );
  [Create, Alter, and Drop Secondary Selective XML Indexes](../../relational-databases/xml/create-alter-and-drop-secondary-selective-xml-indexes.md)  
   
   
+
 

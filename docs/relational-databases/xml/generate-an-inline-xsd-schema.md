@@ -8,6 +8,8 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "XSD schemas [SQL Server]"
   - "XMLSCHEMA option"
@@ -19,7 +21,7 @@ helpviewer_keywords:
 ---
 # Generate an inline XSD schema
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb.md)]
+[!INCLUDE [SQL Server Azure SQL Database-fabricsqldb](../../includes/applies-to-version/sql-asdb-fabricsqldb.md)]
 
 In a FOR XML clause, you can request that your query return an inline schema together with the query results. If you want an XDR schema, you use the XMLDATA keyword in the FOR XML clause. If you want an XSD schema, you use the XMLSCHEMA keyword.
 
@@ -355,3 +357,4 @@ Note the following in the inline XSD schema:
 - Because both the `<Col>` elements are siblings, there's one element declaration in the schema. Also, because both of the elements are also of different types, though both are simple types, the type of the element in the schema is `xsd:anySimpleType`. In the result, each instance type is identified by the `xsi:type` attribute.
 
 - In the result, every instance of the `<Col>` element refers to its instance type by using the `xsi:type` attribute.
+

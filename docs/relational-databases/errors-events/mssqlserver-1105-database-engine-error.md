@@ -7,11 +7,13 @@ ms.date: "04/04/2017"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "1105 (Database Engine error)"
 ---
 # MSSQLSERVER_1105
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   
 ## Details  
   
@@ -41,3 +43,4 @@ The following actions may make space available in the filegroup:
 > [!NOTE]  
 > When an index is located on several files, **ALTER INDEX REORGANIZE** can return error 1105 when one of the files is full. The reorganization process is blocked when the process tries to move rows to the full file. To work around this limitation perform an **ALTER INDEX REBUILD** instead of **ALTER INDEX REORGANIZE** or increase the file growth limit of any files that are full.  
   
+

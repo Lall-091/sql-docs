@@ -8,7 +8,7 @@ ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "DROP MASTER KEY"
   - "DROP_MASTER_KEY_TSQL"
@@ -22,7 +22,7 @@ helpviewer_keywords:
   - "deleting Database Master Keys"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # DROP MASTER KEY (Transact-SQL)
 [!INCLUDE [sql-asdbmi-asa-pdw-fabric](../../includes/applies-to-version/sql-asdbmi-asa-pdw-fabricsqldb.md)]

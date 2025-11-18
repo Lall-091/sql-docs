@@ -1,14 +1,14 @@
 ---
 title: Persisted Statistics for Readable Secondary Replicas
-description: "Describes functions of auto created statistics on readable secondaries. Introduces in SQL Server 2025."
+description: Describes functions of auto created statistics on readable secondaries. Introduces in SQL Server 2025.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 09/19/2025
+ms.date: 11/18/2025
 ms.service: sql
-ms.topic: concept-article #Don't change.
+ms.topic: concept-article
 ms.custom:
-  - build-2025
+  - ignite-2025
 # customer intent: As a data engineer, I want statistics that are created on readable secondaries to be persisted so that my workloads that are running against secondary replicas are optimized.
 ---
 
@@ -72,14 +72,16 @@ SELECT sch.[name] AS SchemaName,
        obj.[name] AS TableName,
        s.[name] AS StatsName,
        CASE WHEN s.stats_id >= 2 AND s.auto_created = 1 THEN 'AUTO_STATS'
-           WHEN s.stats_id >= 2 AND s.auto_created = 0 THEN 'USER_CREATED_STATS'
-           ELSE 'INDEX_STATS'
+            WHEN s.stats_id >= 2 AND s.auto_created = 0 THEN 'USER_CREATED_STATS'
+            ELSE 'INDEX_STATS'
        END AS type,
        s.is_temporary,
        CASE WHEN s.replica_name IS NULL
                  AND s.replica_role_desc = 'PRIMARY'
                  AND s.stats_id >= 2
-                 AND s.auto_created = 1 THEN 'PRIMARY' ELSE s.replica_name
+                 AND s.auto_created = 1
+                 THEN 'PRIMARY'
+                 ELSE s.replica_name
        END AS replica_name,
        s.replica_role_id,
        s.replica_role_desc

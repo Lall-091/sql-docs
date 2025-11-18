@@ -6,6 +6,8 @@ ms.author: randolphwest
 ms.date: 12/07/2023
 ms.service: sql
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "results [SQL Server], cursors"
   - "Transact-SQL cursors, about cursors"
@@ -14,11 +16,11 @@ helpviewer_keywords:
   - "result sets [SQL Server], cursors"
   - "requesting cursors"
   - "cursors [SQL Server], about cursors"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Cursors (SQL Server)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Operations in a relational database act on a complete set of rows. For example, the set of rows returned by a `SELECT` statement consists of all the rows that satisfy the conditions in the `WHERE` clause of the statement. This complete set of rows returned by the statement is known as the *result set*. Applications, especially interactive online applications, can't always work effectively with the entire result set as a unit. These applications need a mechanism to work with one row or a small block of rows at a time. Cursors are an extension to result sets that provide that mechanism.
 
@@ -135,3 +137,4 @@ If neither a [!INCLUDE [tsql](../includes/tsql-md.md)] nor API cursor is request
 - [Cursor Functions (Transact-SQL)](../t-sql/functions/cursor-functions-transact-sql.md)
 - [Cursor stored procedures (Transact-SQL)](system-stored-procedures/cursor-stored-procedures-transact-sql.md)
 - [SET TRANSACTION ISOLATION LEVEL (Transact-SQL)](../t-sql/statements/set-transaction-isolation-level-transact-sql.md)
+

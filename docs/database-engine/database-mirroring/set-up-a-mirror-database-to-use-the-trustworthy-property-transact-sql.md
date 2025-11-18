@@ -7,6 +7,8 @@ ms.date: "03/09/2017"
 ms.service: sql
 ms.subservice: database-mirroring
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "TRUSTWORTHY database option"
   - "mirror database [SQL Server]"
@@ -14,10 +16,18 @@ helpviewer_keywords:
 ---
 # Set Up a Mirror Database to Use the Trustworthy Property (Transact-SQL)
  [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
+
+> [!CAUTION]
+> [!INCLUDE[ssNoteDepFutureAvoid](../../includes/ssnotedepfutureavoid-md.md)] For high availability, use [!INCLUDE[ssHADR](../../includes/sshadr-md.md)] instead.  
+
+> [!IMPORTANT]
+> Database Mirroring in SQL Server is a distinct technology from [Microsoft Fabric Database Mirroring](/fabric/database/mirrored-database/overview). Mirroring to Fabric provides better analytical performance, the ability to unify your data estate with OneLake in Fabric, and open access to your data in Delta Parquet format.
+>
+> With Mirroring to Microsoft Fabric, you can continuously replicate your existing data estate directly into OneLake in Fabric, including data from SQL Server 2016+, Azure SQL Database, Azure SQL Managed Instance, Cosmos DB, Oracle, Snowflake, and more.
+
   When a database is backed up, the TRUSTWORTHY database property is set to OFF. Therefore, on a new mirror database TRUSTWORTHY is always OFF. If the database needs to be trustworthy after a failover, extra setup steps are necessary after mirroring begins.  
   
-> [!NOTE]  
->  For information about this database property, see [TRUSTWORTHY Database Property](../../relational-databases/security/trustworthy-database-property.md).  
+  For information about this database property, see [TRUSTWORTHY Database Property](../../relational-databases/security/trustworthy-database-property.md).  
   
 ## Procedure  
   

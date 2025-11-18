@@ -7,6 +7,8 @@ ms.date: 05/01/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.columns_TSQL"
   - "sys.columns"
@@ -14,14 +16,12 @@ helpviewer_keywords:
   - "sys.columns catalog view"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
-ms.custom:
-  - build-2025
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 
 # sys.columns (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 Returns a row for each column of an object that has columns, such as views or tables. The following list contains the object types that have columns:
 
@@ -114,3 +114,4 @@ WHERE object_id = object_id('dbo.sample');
 - [sys.all_columns (Transact-SQL)](sys-all-columns-transact-sql.md)
 - [sys.system_columns (Transact-SQL)](sys-system-columns-transact-sql.md)
 - [sys.types (Transact-SQL)](sys-types-transact-sql.md)
+

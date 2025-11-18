@@ -8,7 +8,7 @@ ms.service: sql
 ms.subservice: supportability
 ms.topic: conceptual
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "index design guide"
   - "index design guidance"
@@ -20,7 +20,7 @@ helpviewer_keywords:
   - "sql server index architecture"
   - "sql server index design guide"
   - "sql server index design guidance"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # Index architecture and design guide

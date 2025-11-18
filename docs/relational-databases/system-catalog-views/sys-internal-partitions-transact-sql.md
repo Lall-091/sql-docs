@@ -8,14 +8,16 @@ ms.date: 06/20/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 dev_langs:
   - TSQL
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # sys.internal_partitions (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
 
 Returns one row for each rowset that tracks internal data for columnstore indexes on disk-based tables. These rowsets are internal to columnstore indexes and track deleted rows, rowgroup mappings, and delta store rowgroups. They track data for each table partition. Every table has at least one partition. The [!INCLUDE [ssDE](../../includes/ssde-md.md)] re-creates the rowsets each time it rebuilds the columnstore index.
 
@@ -65,3 +67,4 @@ WHERE p.object_id = OBJECT_ID('<table name>');
 - [Object catalog views (Transact-SQL)](object-catalog-views-transact-sql.md)
 - [System catalog views (Transact-SQL)](catalog-views-transact-sql.md)
 - [Querying the SQL Server system catalog FAQ](querying-the-sql-server-system-catalog-faq.yml)
+

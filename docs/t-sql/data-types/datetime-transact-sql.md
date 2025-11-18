@@ -8,6 +8,8 @@ ms.date: 06/06/2024
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "datetime_TSQL"
   - "datetime"
@@ -19,7 +21,7 @@ helpviewer_keywords:
   - "data types [SQL Server], date and time"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current ||=fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # datetime (Transact-SQL)
 

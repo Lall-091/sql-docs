@@ -7,9 +7,11 @@ ms.date: "08/31/2022"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 ---
 # Registry settings
-[!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics PDW FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 [!INCLUDE[Driver_OLEDB_Download](../../../includes/driver_oledb_download.md)]
 
@@ -48,3 +50,4 @@ The Keep-Alive Interval parameter (in milliseconds) determines the interval sepa
 ## See also 
 [Encryption and certificate validation](./encryption-and-certificate-validation.md)  
 [MSOLEDBSQL major version differences](../major-version-differences.md)  
+

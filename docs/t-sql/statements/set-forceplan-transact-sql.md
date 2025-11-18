@@ -7,6 +7,8 @@ ms.date: "07/26/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SET_FORCEPLAN_TSQL"
   - "SET FORCEPLAN"
@@ -22,7 +24,7 @@ dev_langs:
   - "TSQL"
 ---
 # SET FORCEPLAN (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   When FORCEPLAN is set to ON, the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] query optimizer processes a join in the same order as the tables appear in the FROM clause of a query. In addition, setting FORCEPLAN to ON forces the use of a nested loop join unless other types of joins are required to construct a plan for the query, or they are requested with join hints or query hints.  
   
@@ -98,3 +100,4 @@ GO
  [SET SHOWPLAN_TEXT &#40;Transact-SQL&#41;](../../t-sql/statements/set-showplan-text-transact-sql.md)  
   
   
+

@@ -8,13 +8,15 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "IDREFS directive"
   - "ID directive"
 ---
 # Example: Specify the ID and IDREFS directives
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 An element attribute can be specified as an **ID** type attribute, and the **IDREFS** attribute can then be used to refer to it. This enables intra-document links and is similar to the primary key and foreign key relationships in relational databases.
 
@@ -78,3 +80,4 @@ FOR XML EXPLICIT;
 ## See also
 
 - [Use EXPLICIT Mode with FOR XML](../../relational-databases/xml/use-explicit-mode-with-for-xml.md)
+

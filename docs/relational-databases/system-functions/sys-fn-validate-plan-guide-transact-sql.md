@@ -7,6 +7,8 @@ ms.date: "06/22/2021"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.fn_validate_plan_guide"
   - "sys.fn_validate_plan_guide_TSQL"

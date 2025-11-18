@@ -7,6 +7,8 @@ ms.date: "09/21/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "HOST_NAME_TSQL"
   - "HOST_NAME"
@@ -18,7 +20,7 @@ dev_langs:
 ---
 # HOST_NAME (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
 
   Returns the workstation name.  
   
@@ -60,3 +62,4 @@ GO
  [System Functions &#40;Transact-SQL&#41;](../../relational-databases/system-functions/system-functions-category-transact-sql.md)  
   
   
+

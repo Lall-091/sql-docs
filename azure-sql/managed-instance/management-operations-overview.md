@@ -10,6 +10,7 @@ ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
 ms.topic: overview
 ms.custom:
+  - ignite-2025
 ---
 
 # Overview of management operations in Azure SQL Managed Instance
@@ -61,7 +62,7 @@ Conversely, the **Business Critical** service tier, designed for high-performanc
 
 Whether or not seeding is triggered depends on the particular scenario and service tier, such as: 
 
-- **General Purpose and Next-gen General Purpose** service tiers:  
+- **General Purpose and [Next-gen General Purpose](service-tiers-next-gen-general-purpose-use.md)** service tiers:  
    - *Changing to the Business Critical service tier* – data must be transferred from the remote storage to the local storage used in the General Purpose service tier.
    - *Enabling or disabling [zone redundancy](high-availability-sla-local-zone-redundancy.md#high-availability-through-zone-redundancy)* – data must be copied to or from the zone redundant regions.
 - **Business Critical** service tier: 
@@ -96,6 +97,9 @@ Instance failover is the moment when traffic is routed from an old SQL Database 
 
 Your instance is *only unavailable during failover*, when traffic is rerouted to the new SQL Database Engine process. In the **Business Critical** service tier, your instance is unavailable for up to 20 seconds, while in the **General Purpose** service tier, your instance can be unavailable for up to 2 minutes. Any backend operations that occur to prepare for failover due to a management operation, such as reseeding databases in the **Business Critical** service tier, happen in the background and don't affect the availability of your instance.
 
+> [!IMPORTANT]
+> For update operations that don't complete in place but that result in reattaching the database (such as scaling vCores, scaling memory, changing hardware or the maintenance window), failover duration of databases on the [Next-gen General Purpose service tier](service-tiers-next-gen-general-purpose-use.md) scales with the number of databases, up to 10 minutes. While the instance becomes available after 2 minutes, some databases might be available after a delay. Failover duration is measured from the moment when the first database goes offline, until the moment when the last database comes online. The Next-gen General Purpose service tier increases the maximum number of databases per instance from 100 to 500.
+
 Architectural differences between service tiers are explained in depth in [availability](high-availability-sla-local-zone-redundancy.md#locally-redundant-availability). 
 
 ## Management operations cross-impact
@@ -108,7 +112,7 @@ Management operations on a SQL managed instance can affect the management operat
 
 - **A subsequent instance creation or scaling** operation is put on hold by a previously initiated instance creation or instance scale that initiated a resize of the VM group.
 
-  **Example:** If there are multiple create and/or scale requests in the same subnet under the same VM group, and one of them initiates a VM group resize, all requests that were submitted 5+ minutes after the initial operation request last longer than expected, as these requests must wait for the resize to complete before resuming.
+  **Example:** If there are multiple create and/or scale requests in the same subnet under the same VM group, and one of them initiates a VM group resize, all requests that were submitted 1+ minutes after the initial operation request last longer than expected, as these requests must wait for the resize to complete before resuming.
 
 - **Create/scale operations submitted in a 1-minute window** are batched and executed in parallel.
 

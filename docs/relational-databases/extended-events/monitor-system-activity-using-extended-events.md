@@ -7,14 +7,17 @@ ms.date: "03/06/2017"
 ms.service: sql
 ms.subservice: xevents
 ms.topic: tutorial
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "xe"
   - "extended events [SQL Server], monitoring system activity"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Monitor System Activity Using Extended Events
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
+
 
   This procedure illustrates how Extended Events can be used with Event Tracing for Windows (ETW) to monitor system activity. The procedure also shows how the CREATE EVENT SESSION, ALTER EVENT SESSION, and DROP EVENT SESSION statements are used.  
   

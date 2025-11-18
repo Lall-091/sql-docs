@@ -8,14 +8,14 @@ ms.service: sql
 ms.subservice: performance
 ms.topic: how-to
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "XML query plans [SQL Server]"
   - "opening execution plans"
   - "XML Showplans [SQL Server]"
   - "execution plans [SQL Server], saving"
   - "saving execution plans"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Save an Execution Plan in XML Format
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]

@@ -8,12 +8,14 @@ ms.date: 11/16/2022
 ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
-monikerRange: ">=sql-server-ver16||>= sql-server-linux-ver16"
+ms.custom:
+  - ignite-2025
+monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16 || =fabric-sqldb"
 ---
 
 # Resumable add table constraints
 
-[!INCLUDE [SQL Server 2022 Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sqlserver2022-asdb-asmi.md)]
+[!INCLUDE [SQL Server 2022 Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricsqldb.md)]
 
 The resumable operation for online index creation and rebuild are already supported for SQL Server 2019, Azure SQL Database, and Azure SQL Managed Instance. The resumable operations allow index operations to be executed while the table is [online](../../t-sql/statements/alter-table-transact-sql.md#with--online--on--off-as-applies-to-altering-a-column) (`ONLINE=ON`) and also:
 
@@ -186,3 +188,4 @@ Here's the result set:
 - [WAIT_AT_LOW_PRIORITY](../../t-sql/statements/alter-index-transact-sql.md#wait-at-low-priority)
 - [ALTER TABLE (Transact-SQL)](../../t-sql/statements/alter-table-transact-sql.md)
 - [ALTER TABLE index_option](../../t-sql/statements/alter-table-index-option-transact-sql.md)
+

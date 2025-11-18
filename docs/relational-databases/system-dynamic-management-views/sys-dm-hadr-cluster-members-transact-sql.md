@@ -7,6 +7,8 @@ ms.date: 10/17/2023
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_hadr_cluster_members_TSQL"
   - "sys.dm_hadr_cluster_members"
@@ -18,11 +20,11 @@ helpviewer_keywords:
   - "sys.dm_hadr_cluster_members catalog view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric-sqldb"
 ---
 # sys.dm_hadr_cluster_members (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb.md)]
+[!INCLUDE [SQL Server Azure SQL Database-fabricsqldb](../../includes/applies-to-version/sql-asdb-fabricsqldb.md)]
 
 If the WSFC node that hosts a local instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] that is enabled for [!INCLUDE [ssHADR](../../includes/sshadr-md.md)] has WSFC quorum, returns a row for each of the members that constitute the quorum and the state of each of them. This includes of all nodes in the cluster (returned with `CLUSTER_ENUM_NODE` type by the `Clusterenum` function) and the disk or file-share witness, if any. The row returned for a given member contains information about the state of that member. For example, for a five node cluster with majority node quorum in which one node is down, when `sys.dm_hadr_cluster_members` is queried from a server instance that is enabled for [!INCLUDE [ssHADR](../../includes/sshadr-md.md)] that resides on a node with quorum, `sys.dm_hadr_cluster_members` reflects the state of the down node as `NODE_DOWN`.
 
@@ -62,3 +64,4 @@ For [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, re
 - [Always On Availability Groups Catalog Views (Transact-SQL)](../system-catalog-views/always-on-availability-groups-catalog-views-transact-sql.md)
 - [Monitor Availability Groups (Transact-SQL)](../../database-engine/availability-groups/windows/monitor-availability-groups-transact-sql.md)
 - [What is an Always On availability group?](../../database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server.md)
+

@@ -3,13 +3,13 @@ title: CREATE TABLE
 description: "CREATE TABLE creates a new table in Azure Synapse Analytics, Analytics Platform System (PDW), and Microsoft Fabric Data Warehouse."
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: vanto, xiaoyul, mariyaali, maghan
-ms.date: 02/24/2025
+ms.reviewer: vanto, xiaoyul, mariyaali, maghan, periclesrocha
+ms.date: 11/03/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 dev_langs:
   - "TSQL"
 monikerRange: ">=aps-pdw-2016 || =azure-sqldw-latest || =fabric"
@@ -695,7 +695,7 @@ WITH
 CREATE TABLE { database_name.schema_name.table_name | schema_name.table_name | table_name }
     ( 
       { column_name <data_type>  [ <column_options> ] } [ ,...n ]
-    )  
+    )  WITH (CLUSTER BY [ ,... n ])
 [;]  
 
 <column_options> ::=
@@ -734,8 +734,13 @@ CREATE TABLE { database_name.schema_name.table_name | schema_name.table_name | t
 #### *column_name*
  The name of a table column.
 
-<a id="ColumnOptions"></a>
+#### WITH (CLUSTER BY [ ,... n])
 
+The `CLUSTER BY` clause for data clustering in Fabric Data Warehouse requires at least one column to be specified for data clustering, and a maximum of four columns. 
+
+For more information, see [Data clustering in Fabric Data Warehouse](/fabric/data-warehouse/data-clustering).
+
+<a id="ColumnOptions"></a>
 
 ### Column options
 
@@ -875,6 +880,21 @@ There is limited Transact-SQL functionality in [!INCLUDE [fabricdw](../../includ
 
 ## Locking behavior
  Takes a Schema-Modification lock on the table, a shared lock on the DATABASE, and a Schema-Stability lock on the SCHEMA. 
+
+## Examples
+
+### A. Create a clustered table for sales data
+
+This example creates a simple `Sales` table and uses the `CustomerID` and `SaleDate` columns for [data clustering](/fabric/data-warehouse/data-clustering).
+
+```sql
+CREATE TABLE Sales (
+    SaleID INT,
+    CustomerID INT,
+    SaleDate DATE,
+    Amount DECIMAL(10,2)
+) WITH (CLUSTER BY (CustomerID, SaleDate))
+```
 
 ## Related content
 

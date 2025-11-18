@@ -7,6 +7,8 @@ ms.date: "03/06/2024"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "IS_SRVROLEMEMBER_TSQL"
   - "IS_SRVROLEMEMBER"
@@ -20,7 +22,7 @@ dev_langs:
 
 # IS_SRVROLEMEMBER (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Indicates whether a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login is a member of the specified server role.  
   
@@ -111,3 +113,4 @@ SELECT IS_SRVROLEMEMBER('diskadmin', 'Contoso\Pat');
  [Security Functions &#40;Transact-SQL&#41;](../../t-sql/functions/security-functions-transact-sql.md)  
   
   
+

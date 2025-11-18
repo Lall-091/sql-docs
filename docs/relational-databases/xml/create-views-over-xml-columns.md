@@ -8,12 +8,14 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "views [XML in SQL Server]"
 ---
 # Create views over XML columns
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 You can use an **xml** type column to create views. The following example creates a view in which the value from an `xml` type column is retrieved using the `value()` method of the **xml** data type.
 
@@ -59,3 +61,4 @@ Note the following points about using the **xml** data type to create views:
 - SQL predicates running against the view won't be pushed into the XQuery of the view definition.
 
 - **xml** data type methods in a view aren't updatable.
+

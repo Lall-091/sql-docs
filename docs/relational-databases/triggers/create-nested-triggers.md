@@ -6,6 +6,8 @@ ms.author: mikeray
 ms.date: "03/14/2017"
 ms.service: sql
 ms.topic: language-reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "recursive DML triggers [SQL Server]"
   - "DML triggers, nested"
@@ -16,10 +18,10 @@ helpviewer_keywords:
   - "RECURSIVE_TRIGGERS option"
   - "indirect recursion [SQL Server]"
   - "nested DML triggers"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Create Nested Triggers
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   Both DML and DDL triggers are nested when a trigger performs an action that initiates another trigger. These actions can initiate other triggers, and so on. DML and DDL triggers can be nested up to 32 levels. You can control whether AFTER triggers can be nested through the **nested triggers** server configuration option. INSTEAD OF triggers (only DML triggers can be INSTEAD OF triggers) can be nested regardless of this setting.  
   
 > [!NOTE]  
@@ -181,3 +183,4 @@ Paul                           Alice                          0
  [Configure the nested triggers Server Configuration Option](../../database-engine/configure-windows/configure-the-nested-triggers-server-configuration-option.md)  
   
   
+

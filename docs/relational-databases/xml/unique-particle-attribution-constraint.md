@@ -8,6 +8,8 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "unique particle attribution"
 helpviewer_keywords:
@@ -18,7 +20,7 @@ helpviewer_keywords:
 ---
 # Unique particle attribution constraint
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 In XSD, complex content models are constrained by the unique particle attribution (UPA) constraint rule. This rule requires that each element in an instance document corresponds unambiguously to exactly one `<xsd:element>` or `<xsd:any>` particle in its parent's content model. Any schema that contains a type with a potentially ambiguous content model is rejected.
 
@@ -87,3 +89,4 @@ To see the document, visit [http://www.w3.org/TR/xmlschema-1](https://go.microso
 ## See also
 
 - [XML Schema Collections &#40;SQL Server&#41;](../../relational-databases/xml/xml-schema-collections-sql-server.md)
+

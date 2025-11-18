@@ -9,8 +9,7 @@ ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
 ms.custom:
-  - ignite-2024
-  - build-2025
+  - ignite-2025
 f1_keywords:
   - "sys.sp_change_feed_reseed_table_TSQL"
   - "sys.sp_change_feed_reseed_table"
@@ -20,7 +19,7 @@ helpviewer_keywords:
   - "sp_change_feed_reseed_table"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=sql-server-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # sys.sp_change_feed_reseed_table (Transact-SQL)
 

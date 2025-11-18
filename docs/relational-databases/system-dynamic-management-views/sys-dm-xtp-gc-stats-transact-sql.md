@@ -7,6 +7,8 @@ ms.date: "02/27/2023"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "dm_xtp_gc_stats"
   - "dm_xtp_gc_stats_TSQL"
@@ -20,7 +22,7 @@ dev_langs:
 
 # sys.dm_xtp_gc_stats (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Provides information (the overall statistics) about the current behavior of the [!INCLUDE[inmemory](../../includes/inmemory-md.md)] garbage-collection process.  
   
@@ -70,4 +72,5 @@ sweep_rows_expiring  sweep_rows_expired   sweep_rows_expired_removed
 ## See also  
  [Memory-Optimized Table Dynamic Management Views &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/memory-optimized-table-dynamic-management-views-transact-sql.md)  
   
+
 

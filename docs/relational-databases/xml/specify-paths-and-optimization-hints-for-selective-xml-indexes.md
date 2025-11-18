@@ -8,10 +8,12 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: concept-article
+ms.custom:
+  - ignite-2025
 ---
 # Specify paths and optimization hints for selective XML indexes
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This article describes how to specify node paths to index and optimization hints for indexing when you create or alter selective XML indexes.
 
@@ -412,3 +414,4 @@ The following sample XML document is referenced in the examples in this article:
 
 - [Selective XML Indexes &#40;SXI&#41;](../../relational-databases/xml/selective-xml-indexes-sxi.md)
 - [Create, Alter, and Drop Selective XML Indexes](../../relational-databases/xml/create-alter-and-drop-selective-xml-indexes.md)
+

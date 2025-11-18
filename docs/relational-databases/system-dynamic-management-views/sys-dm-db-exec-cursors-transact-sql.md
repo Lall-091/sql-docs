@@ -8,6 +8,8 @@ ms.date: "07/12/2023"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_db_exec_cursors_TSQL"
   - "dm_db_exec_cursors"
@@ -17,10 +19,10 @@ helpviewer_keywords:
   - "sys.dm_db_exec_cursors dynamic management function"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current"
+monikerRange: "=azuresqldb-current || =fabric-sqldb"
 ---
 # sys.dm_db_exec_cursors (Azure SQL Database)
-[!INCLUDE[Azure SQL Database](../../includes/applies-to-version/asdb.md)]
+[!INCLUDE[Azure SQL Database-fabricsqldb](../../includes/applies-to-version/asdb-fabricsqldb.md)]
 
  Returns information about open or declared cursors in Azure SQL Database. 
   
@@ -134,4 +136,5 @@ GO
  [sys.dm_exec_cursors &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-exec-cursors-transact-sql.md)
   
   
+
 

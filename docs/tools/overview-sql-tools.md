@@ -11,9 +11,9 @@ ms.topic: overview
 ms.collection:
   - data-tools
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 ai-usage: ai-assisted
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric-sqldb"
 ---
 
 # SQL tools overview
@@ -123,4 +123,4 @@ If you're looking for other tools that aren't mentioned in this article, see:
 - [Azure Database for PostgreSQL](/azure/postgresql/)
 - [Azure Database for MySQL](/azure/mysql/)
 - [Azure Cosmos DB](/azure/cosmos-db/introduction)
-- [SQL database in Microsoft Fabric (Preview)](/fabric/database/sql/overview)
+- [SQL database in Microsoft Fabric](/fabric/database/sql/overview)

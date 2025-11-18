@@ -4,13 +4,13 @@ description: ALTER EXTERNAL MODEL (Transact-SQL) for altering an external model 
 author: jettermctedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 08/15/2025
+ms.date: 10/14/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: "reference"
 ms.custom:
   - sql-ai
-  - build-2025
+  - ignite-2025
 f1_keywords:
   - "ALTER_EXTERNAL_MODEL"
   - "ALTER EXTERNAL MODEL"
@@ -21,12 +21,12 @@ helpviewer_keywords:
   - "ai_generate_embeddings, external model"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-ver17 || >=sql-server-linux-ver17"
+monikerRange: "=azuresqldb-current || >=sql-server-ver17 || >=sql-server-linux-ver17 || =fabric-sqldb"
 ---
 
 # ALTER EXTERNAL MODEL (Transact-SQL)
 
-[!INCLUDE [sqlserver2025](../../includes/applies-to-version/sqlserver2025.md)]
+[!INCLUDE [sqlserver2025-asdb-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-fabricsqldb.md)]
 
 Alters an external model object.
 

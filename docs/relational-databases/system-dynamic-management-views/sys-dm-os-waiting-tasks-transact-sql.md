@@ -8,6 +8,8 @@ ms.date: 09/17/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "dm_os_waiting_tasks"
   - "sys.dm_os_waiting_tasks_TSQL"
@@ -17,11 +19,11 @@ helpviewer_keywords:
   - "sys.dm_os_waiting_tasks dynamic management view"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.dm_os_waiting_tasks (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 Returns information about the wait queue of tasks that are waiting on some resource. For more information about tasks, see the [Thread and task architecture guide](../thread-and-task-architecture-guide.md).
 
@@ -189,3 +191,4 @@ GO
 - [Transaction locking and row versioning guide](../sql-server-transaction-locking-and-row-versioning-guide.md)
 - [sys.dm_os_wait_stats (Transact-SQL)](sys-dm-os-wait-stats-transact-sql.md)
 - [sys.dm_exec_requests (Transact-SQL)](sys-dm-exec-requests-transact-sql.md)
+

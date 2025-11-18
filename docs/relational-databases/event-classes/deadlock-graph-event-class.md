@@ -7,12 +7,16 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "Deadlock Graph event class"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Deadlock Graph Event Class
- [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
+
+ [!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
+
   The **Deadlock Graph** event class provides an XML description of a deadlock. This class occurs simultaneously with the **Lock:Deadlock** event class.  
   
 ## Deadlock Graph Event Class Data Columns  
@@ -36,3 +40,4 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
  [Lock:Deadlock Event Class](../../relational-databases/event-classes/lock-deadlock-event-class.md)  
   
   
+

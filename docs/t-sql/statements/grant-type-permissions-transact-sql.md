@@ -7,6 +7,8 @@ ms.date: "08/10/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "permissions [SQL Server], types"
   - "granting permissions [SQL Server], types"
@@ -16,7 +18,7 @@ dev_langs:
   - "TSQL"
 ---
 # GRANT Type Permissions (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Grants permissions on a type.  
   
@@ -141,4 +143,5 @@ GO
  [Principals &#40;Database Engine&#41;](../../relational-databases/security/authentication-access/principals-database-engine.md)  
   
   
+
 

@@ -4,13 +4,13 @@ description: Describes how to back up and restore databases with for SQL Server 
 author: PratimDasgupta
 ms.author: prdasgu
 ms.reviewer: mikeray, randolphwest, mathoma, vanto
-ms.date: 10/21/2025
+ms.date: 11/18/2025
 ms.topic: how-to
 ms.custom:
-  - build-2025
+  - ignite-2025
 monikerRange: ">=sql-server-ver17 || >=sql-server-linux-ver17"
 ---
-# Back up to URL with managed identity (preview) - SQL Server enabled by Azure Arc
+# Back up to URL with managed identity - SQL Server enabled by Azure Arc
 
 [!INCLUDE [sqlserver2025](../../includes/applies-to-version/sqlserver2025.md)]
 
@@ -24,7 +24,7 @@ For SQL Server on Azure VMs, review [Backup and restore to URL using managed ide
 
 To back up and restore databases with Azure Blob storage using managed identities, you need the following:
 
-- [SQL Server 2025 Preview enabled by Azure Arc](deployment-options.md) that's been assigned a [primary managed identity](managed-identity.md).
+- [SQL Server 2025 enabled by Azure Arc](deployment-options.md) that's been assigned a [primary managed identity](managed-identity.md).
 - An [Azure Blob storage account](/azure/storage/common/storage-account-create).
 - Valid network access to the Azure Blob storage and Windows Firewall permissions on the host to allow the outbound connection, and valid storage account service endpoints.
 - The primary managed identity for the SQL Server instance needs to have the `Storage Blob Data Contributor` role assigned to the storage account.

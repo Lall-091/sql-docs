@@ -8,9 +8,11 @@ ms.date: 07/26/2024
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "HierarchyID"
-monikerRange: "=azuresqldb-current||>=sql-server-2016 || >=sql-server-linux-2017 ||=azuresqldb-mi-current||=fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Lesson 2: Create and manage data in a hierarchical table
 

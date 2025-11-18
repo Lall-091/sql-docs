@@ -7,15 +7,17 @@ ms.date: "03/15/2017"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "event notifications [SQL Server], database mirroring"
   - "suspect_pages system table"
   - "database mirroring [SQL Server], event notifications"
   - "Database Suspect Data Page event class"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Database Suspect Data Page Event Class
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   The **Database Suspect Data Page** event class indicates when a page is added to the [suspect_pages](../../relational-databases/system-tables/suspect-pages-transact-sql.md) table in [msdb](../../relational-databases/databases/msdb-database.md). Include this event class in traces that are monitoring the occurrence of suspect pages.  
   
 > [!NOTE]  
@@ -41,3 +43,4 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
  [Manage the suspect_pages Table &#40;SQL Server&#41;](../../relational-databases/backup-restore/manage-the-suspect-pages-table-sql-server.md)  
   
   
+

@@ -4,10 +4,12 @@ description: CREATE CREDENTIAL (Transact-SQL)
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: wiassaf
-ms.date: 01/16/2025
+ms.date: 10/25/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "CREDENTIAL_TSQL"
   - "SQL13.SWB.CREDENTIAL.GENERAL.F1"
@@ -21,7 +23,7 @@ helpviewer_keywords:
   - "credentials [SQL Server], CREATE CREDENTIAL statement"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-mi-current||>=sql-server-2016||>=sql-server-linux-2017"
+monikerRange: "=azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017"
 ---
 # CREATE CREDENTIAL (Transact-SQL)
 
@@ -70,7 +72,7 @@ When used for backup/restore using external data platforms, such as Azure Blob S
 Specifies the name of the account to be used when connecting outside the server. When the credential is used to access the Azure Key Vault, the **IDENTITY** is the name of the key vault. See example C below. When the credential is using a shared access signature (SAS), the **IDENTITY** is *SHARED ACCESS SIGNATURE*. See example D below.
 
 > [!IMPORTANT]
-> Azure SQL Database only supports Azure Key Vault and Shared Access Signature identities. Windows user identities are not supported.
+> Azure SQL Database only supports Azure Key Vault and Shared Access Signature identities. Windows user identities aren't supported.
 
 #### SECRET **='**_secret_**'**
 
@@ -84,7 +86,7 @@ When the credential is used to access Azure Key Vault, the **SECRET** argument m
 
 ## Remarks
 
-When IDENTITY is a Windows user, the secret can be the password. The secret is encrypted using the service master key. If the service master key is regenerated, the secret is re-encrypted using the new service master key.
+When IDENTITY is a Windows user, the secret can be the password. The secret is encrypted using the service master key (SMK). If the SMK is regenerated, the secret is re-encrypted using the new SMK.
 
 After creating a credential, you can map it to a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login by using [CREATE LOGIN](../../t-sql/statements/create-login-transact-sql.md) or [ALTER LOGIN](../../t-sql/statements/alter-login-transact-sql.md). A [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] login can be mapped to only one credential, but a single credential can be mapped to multiple [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logins. For more information, see [Credentials &#40;Database Engine&#41;](../../relational-databases/security/authentication-access/credentials-database-engine.md). A server-level credential can only be mapped to a login, not to a database user. 
 
@@ -92,7 +94,7 @@ Information about credentials is visible in the [sys.credentials](../../relation
 
 If there is no login mapped credential for the provider, the credential mapped to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] service account is used.
 
-A login can have multiple credentials mapped to it as long as they are used with distinctive providers. There must be only one mapped credential per provider per login. The same credential can be mapped to other logins.
+A login can have multiple credentials mapped to it as long as they're used with distinctive providers. There must be only one mapped credential per provider per login. The same credential can be mapped to other logins.
 
 ## Permissions
 
@@ -164,7 +166,7 @@ The following example creates a shared access signature credential using a SAS t
 > [!IMPORTANT]
 > THE **CREDENTIAL NAME** argument requires that the name match the container path, start with https and not contain a trailing forward slash. The **IDENTITY** argument requires the name, *SHARED ACCESS SIGNATURE*. The **SECRET** argument requires the shared access signature token.
 >
-> The **SHARED ACCESS SIGNATURE secret** should not have the leading **?**.
+> The **SHARED ACCESS SIGNATURE secret** shouldn't have the leading **?**.
 
 ```sql
 USE master
@@ -187,9 +189,9 @@ For an example of creating a credential with a managed identity for SQL Server o
 
 ### F. Create a credential for backup/restore to S3-compatible storage
 
-**Applies to**: [!INCLUDE[ssSQL22](../../includes/sssql22-md.md)] and later versions, and Azure SQL Managed Instance
+**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions on Azure Arc, [!INCLUDE[ssSQL22](../../includes/sssql22-md.md)] and later versions (on-premises and SQL Server on Azure VM without Azure Arc), and Azure SQL Managed Instance
 
-The open S3-compatible standard provides for storage paths and details that may differ based on the storage platform. For more information, see [SQL Server backup to URL for S3-compatible object storage](../../relational-databases/backup-restore/sql-server-backup-to-url-s3-compatible-object-storage.md).
+The open S3-compatible standard provides for storage paths and details that might differ based on the storage platform. For more information, see [SQL Server backup to URL for S3-compatible object storage](../../relational-databases/backup-restore/sql-server-backup-to-url-s3-compatible-object-storage.md).
 
 For most S3-compatible storage, this example creates a server level credential and performs a `BACKUP TO URL`.
 
@@ -287,7 +289,8 @@ There are multiple approaches to successfully creating a credential for AWS S3:
 > Azure SQL Managed Instance supports only `RESTORE` operation from S3 storage accounts. `BACKUP` operation is currently not supported.
 
 ### G. Create and use a managed identity credential to access Azure Blob Storage
-**Applies to**: SQL Server 2022 CU17 and later versions, and Azure SQL Managed Instance
+
+**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions on Azure Arc, [!INCLUDE[ssSQL22](../../includes/sssql22-md.md)] and later versions (on-premises and SQL Server on Azure VM without Azure Arc), and Azure SQL Managed Instance
 
 You can use managed identities with SQL Server credentials to back up to and restore SQL Server databases from Azure Blob storage. For more information about SQL Server on Azure VM, see [Backup and restore to URL using managed identities](/azure/azure-sql/virtual-machines/windows/backup-restore-to-url-using-managed-identities).
 

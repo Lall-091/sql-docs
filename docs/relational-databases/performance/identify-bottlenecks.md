@@ -8,7 +8,7 @@ ms.service: sql
 ms.subservice: performance
 ms.topic: conceptual
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "resource bottlenecks [SQL Server]"
   - "database monitoring [SQL Server], bottlenecks"
@@ -20,7 +20,7 @@ helpviewer_keywords:
   - "server performance [SQL Server], bottlenecks"
   - "bottlenecks [SQL Server]"
   - "identifying bottlenecks [SQL Server]"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Identify Bottlenecks
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]

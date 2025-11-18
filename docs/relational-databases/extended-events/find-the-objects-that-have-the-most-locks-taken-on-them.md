@@ -7,16 +7,18 @@ ms.date: "10/18/2019"
 ms.service: sql
 ms.subservice: xevents
 ms.topic: tutorial
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "objects [SQL Server], extended events"
   - "xe"
   - "extended events [SQL Server], locks"
   - "objects [SQL Server], locks"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Find the Objects That Have the Most Locks Taken on Them
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Database administrators often need to identify the source of locks that are hindering database performance.  
   

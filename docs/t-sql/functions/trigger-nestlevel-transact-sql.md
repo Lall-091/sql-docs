@@ -7,6 +7,8 @@ ms.date: "03/03/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "TRIGGER_NESTLEVEL"
   - "TRIGGER_NESTLEVEL_TSQL"
@@ -18,7 +20,7 @@ dev_langs:
   - "TSQL"
 ---
 # TRIGGER_NESTLEVEL (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Returns the number of triggers executed for the statement that fired the trigger. TRIGGER_NESTLEVEL is used in DML and DDL triggers to determine the current level of nesting.  
   
@@ -78,3 +80,4 @@ IF ( (SELECT trigger_nestlevel() ) > 5 )
  [CREATE TRIGGER &#40;Transact-SQL&#41;](../../t-sql/statements/create-trigger-transact-sql.md)  
   
   
+

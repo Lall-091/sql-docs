@@ -9,12 +9,12 @@ ms.subservice: performance
 ms.topic: concept-article
 ms.update-cycle: 1825-days
 ms.custom:
-  - ignite-2024
   - sfi-image-nochange
+  - ignite-2025
 helpviewer_keywords:
   - "Query Store"
   - "Query Store, described"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azure-sqldw-latest || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azure-sqldw-latest || =fabric-sqldb"
 ---
 # Monitor performance by using the Query Store
 

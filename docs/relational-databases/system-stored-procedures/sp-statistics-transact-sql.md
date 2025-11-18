@@ -8,6 +8,8 @@ ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_statistics_TSQL"
   - "sp_statistics"
@@ -15,11 +17,11 @@ helpviewer_keywords:
   - "sp_statistics"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sp_statistics (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 Returns a list of all indexes and statistics on a specified table or indexed view.
 
@@ -124,3 +126,4 @@ EXECUTE sp_statistics DimEmployee;
 - [Statistics for Memory-Optimized Tables](../in-memory-oltp/statistics-for-memory-optimized-tables.md)
 - [Statistics](../statistics/statistics.md)
 - [Update statistics](../statistics/update-statistics.md)
+

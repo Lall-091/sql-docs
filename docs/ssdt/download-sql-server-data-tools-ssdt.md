@@ -9,12 +9,12 @@ ms.service: sql
 ms.subservice: ssdt
 ms.topic: install-set-up-deploy
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 keywords:
   - install ssdt
   - download ssdt
   - latest ssdt
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # Install SQL Server Data Tools (SSDT) for Visual Studio

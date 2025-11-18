@@ -7,6 +7,8 @@ ms.date: 03/19/2024
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.syslanguages"
   - "sys.syslanguages_TSQL"
@@ -17,11 +19,11 @@ helpviewer_keywords:
   - "sys.syslanguages compatibility view"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # sys.syslanguages (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 Contains one row for each language present in the instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 
@@ -82,3 +84,4 @@ The [!INCLUDE [ssDE](../../includes/ssde-md.md)] contains the following installe
 
 - [System Compatibility Views (Transact-SQL)](system-compatibility-views-transact-sql.md)
 - [Mapping System Tables to System Views (Transact-SQL)](../system-tables/mapping-system-tables-to-system-views-transact-sql.md)
+

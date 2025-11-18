@@ -1,13 +1,15 @@
 ---
-title: "CREATE FUNCTION (Azure Synapse Analytics and Microsoft Fabric)"
+title: "CREATE FUNCTION (Microsoft Fabric, Azure Synapse Analytics)"
 description: User-defined functions accept parameters, perform an action, such as a complex calculation, and return the result of that action as a value.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: jovanpop, srdjanmatin
-ms.date: 06/09/2025
+ms.date: 11/03/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 dev_langs:
   - "TSQL"
 monikerRange: ">=aps-pdw-2016 || =azure-sqldw-latest || =fabric"
@@ -473,6 +475,9 @@ WHERE dbo.cleanInput (t.name) ='myvalue';
 
   Creates a user-defined function (UDF) in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] or [!INCLUDE [ssPDW](../../includes/sspdw-md.md)]. A user-defined function is a [!INCLUDE [tsql](../../includes/tsql-md.md)] routine that accepts parameters, performs an action, such as a complex calculation, and returns the result of that action as a value. User-defined table-valued functions (TVFs) return a table data type.
 
+> [!TIP]
+> For syntax in Fabric Data Warehouse, see the version of [CREATE FUNCTION](create-function-sql-data-warehouse.md?view=fabric&preserve-view=true) for Fabric Data Warehouse.
+
 - In [!INCLUDE [ssPDW](../../includes/sspdw-md.md)], the return value must be a scalar (single) value.
 - In [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], `CREATE FUNCTION` can return a table by using the syntax for inline table-valued functions (preview) or it can return a single value by using the syntax for scalar functions.
 - In serverless SQL pools in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], `CREATE FUNCTION` can create inline table-value functions but not scalar functions. 
@@ -485,9 +490,6 @@ WHERE dbo.cleanInput (t.name) ='myvalue';
 -   To define a CHECK constraint on a column
 -   To replace a stored procedure
 -   Use an inline function as a filter predicate for a security policy
-
-> [!TIP]
-> For syntax in Fabric Data Warehouse, see the version of [CREATE FUNCTION](create-function-sql-data-warehouse.md?view=fabric&preserve-view=true) for Microsoft Fabric Data Warehouse.
 
  :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)  
 

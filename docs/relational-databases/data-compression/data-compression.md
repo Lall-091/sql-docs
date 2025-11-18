@@ -8,6 +8,8 @@ ms.date: 10/27/2023
 ms.service: sql
 ms.subservice: performance
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "page compression [Database Engine]"
   - "indexes [SQL Server], compressed"
@@ -20,11 +22,11 @@ helpviewer_keywords:
   - "compression [SQL Server], about compressed tables and indexes"
   - "data compression [Database Engine]"
   - "compressed tables [SQL Server]"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Data compression
 
-[!INCLUDE [sql-asdb-asdbmi](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [sql-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] support row and page compression for rowstore tables and indexes, and support columnstore and columnstore archival compression for columnstore tables and indexes.
 
@@ -242,3 +244,4 @@ Compression occurs in the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] and th
 - [ALTER TABLE (Transact-SQL)](../../t-sql/statements/alter-table-transact-sql.md)
 - [CREATE INDEX (Transact-SQL)](../../t-sql/statements/create-index-transact-sql.md)
 - [ALTER INDEX (Transact-SQL)](../../t-sql/statements/alter-index-transact-sql.md)
+

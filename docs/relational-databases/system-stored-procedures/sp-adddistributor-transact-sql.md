@@ -4,10 +4,12 @@ description: Adds an entry in the sys.servers and marks the server entry as a Di
 author: mashamsft
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 10/21/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: replication
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_adddistributor"
   - "sp_adddistributor_TSQL"
@@ -122,7 +124,7 @@ EXECUTE sys.sp_adddistributor @trust_distributor_certificate = 'yes';
 
 [!INCLUDE [sql-25-repl-distributor-info](../../includes/sql-25-repl-distributor-info.md)]
 
-For more information, review the [remote distributor breaking change in SQL Server 2025 Preview](../../database-engine/breaking-changes-to-database-engine-features-in-sql-server-2025.md#adding-a-remote-replication-distributor-fails).
+For more information, review the [remote distributor breaking change in SQL Server 2025](../../database-engine/breaking-changes-to-database-engine-features-in-sql-server-2025.md#adding-a-remote-replication-distributor-fails).
 
 ## Permissions
 

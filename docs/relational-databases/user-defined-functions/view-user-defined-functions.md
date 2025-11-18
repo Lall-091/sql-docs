@@ -6,6 +6,8 @@ ms.author: randolphwest
 ms.date: "06/28/2022"
 ms.service: sql
 ms.topic: language-reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sql13.swb.udfproperties.general.f1"
   - "sql13.swb.functionproperties.general.f1"
@@ -14,11 +16,11 @@ helpviewer_keywords:
   - "viewing user-defined functions"
   - "user-defined functions [SQL Server], viewing"
   - "status information [SQL Server], user-defined functions"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # View user-defined functions
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 You can gain information about the definition or properties of a user-defined function in [!INCLUDE[ssnoversion](../../includes/ssnoversion-md.md)] by using [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or [!INCLUDE[tsql](../../includes/tsql-md.md)]. You may need to see the definition of the function to understand how its data is derived from the source tables or to see the data defined by the function.
 
@@ -137,3 +139,4 @@ For more information, see [sys.sql_modules &#40;Transact-SQL&#41;](../../relatio
    ```
 
 For more information, see [sys.sql_expression_dependencies &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-sql-expression-dependencies-transact-sql.md) and [sys.objects &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-objects-transact-sql.md).
+

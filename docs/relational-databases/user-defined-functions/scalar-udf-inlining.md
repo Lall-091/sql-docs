@@ -7,11 +7,13 @@ ms.reviewer: karam, wiassaf, srdjanmatin
 ms.date: 05/27/2025
 ms.service: sql
 ms.topic: conceptual
-monikerRange: "=azuresqldb-current || >=sql-server-ver15 || >=sql-server-linux-ver15 || =fabric"
+ms.custom:
+  - ignite-2025
+monikerRange: "=azuresqldb-current || >=sql-server-ver15 || >=sql-server-linux-ver15 || =fabric || =fabric-sqldb"
 ---
 # Scalar UDF inlining
 
-[!INCLUDE [SQL Server 2019 SQL Database SQL Managed Instance FabricSE Fabric DW](../../includes/applies-to-version/sqlserver2019-asdb-asdbmi-fabricse-fabricdw.md)]
+[!INCLUDE [SQL Server 2019 SQL Database SQL Managed Instance FabricSE Fabric DW FabricSQLDB](../../includes/applies-to-version/sqlserver2019-asdb-asdbmi-fabricse-fabricdw-fabricsqldb.md)]
 
 This article introduces scalar UDF inlining, a feature under the [Intelligent query processing in SQL databases](../performance/intelligent-query-processing.md) suite of features. This feature improves the performance of queries that invoke scalar UDFs in [!INCLUDE [sssql19](../../includes/sssql19-md.md)] and later versions.
 
@@ -358,3 +360,4 @@ As described in this article, scalar UDF inlining transforms a query with scalar
 - [Joins (SQL Server)](../performance/joins.md)
 - [Demonstrating Intelligent Query Processing](https://aka.ms/IQPDemos)
 - [FIX: scalar UDF inlining issues in SQL Server 2019](https://support.microsoft.com/help/4538581)
+

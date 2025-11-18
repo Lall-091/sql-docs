@@ -7,6 +7,8 @@ ms.date: 07/14/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "QUERY_STORE_QUERY"
   - "SYS.QUERY_STORE_QUERY_TSQL"
@@ -17,11 +19,11 @@ helpviewer_keywords:
   - "sys.query_store_query catalog view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || =azure-sqldw-latest || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || =azure-sqldw-latest || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.query_store_query (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi-asa](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-fabricsqldb.md)]
 
 Contains information about the query and its associated overall aggregated runtime execution statistics.
 
@@ -90,3 +92,4 @@ Requires the `VIEW DATABASE STATE` permission.
 - [Monitor performance by using the Query Store](../performance/monitoring-performance-by-using-the-query-store.md)
 - [System catalog views (Transact-SQL)](catalog-views-transact-sql.md)
 - [Query Store stored procedures (Transact-SQL)](../system-stored-procedures/query-store-stored-procedures-transact-sql.md)
+

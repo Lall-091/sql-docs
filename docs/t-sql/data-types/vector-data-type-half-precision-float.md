@@ -1,10 +1,10 @@
 ---
-title: "Vector Data Type - Half Precision Float"
+title: Vector Data Type - Half Precision Float
 description: Introduces dimension type of half-precision floating point for vector data type.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: damauri, pookam, mikeray, randolphwest
-ms.date: 09/16/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: quickstart
@@ -12,7 +12,7 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
 ms.custom:
-  - build-2025
+  - ignite-2025
 f1_keywords:
   - "VECTOR"
   - "VECTOR_TSQL"
@@ -20,7 +20,7 @@ helpviewer_keywords:
   - "VECTOR data type"
   - "vector, data type"
 dev_langs:
-  - "TSQL"
+  - TSQL
 monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17"
 ---
 
@@ -58,7 +58,7 @@ While `float16` offers significant storage and performance advantages, it provid
 The usage syntax is similar to **vector** data type. However, to use `float16`, specify the base type explicitly.
 
 ```syntaxsql
-column_name VECTOR(<dimensions> [, <base_type>]) [NOT NULL | NULL]
+column_name VECTOR ( <dimensions> [, <base_type>] ) [ NOT NULL | NULL ]
 ```
 
 ### Feature availability
@@ -81,7 +81,7 @@ By default, the base type is `float32`.
 CREATE TABLE ExampleTable
 (
     id INT PRIMARY KEY,
-    VectorColumn VECTOR (3)
+    VectorColumn VECTOR(3)
 );
 ```
 
@@ -89,7 +89,8 @@ To use **half-precision**, specify `float16` explicitly.
 
 ```sql
 -- Explicit float16
-CREATE TABLE ExampleTable (
+CREATE TABLE ExampleTable
+(
     id INT PRIMARY KEY,
     VectorColumn VECTOR(3, float16)
 );
@@ -122,7 +123,7 @@ VALUES
     (5, 'Advanced AI', 'Exploring advanced AI techniques.', '[0.5, 0.4, 0.6, 0.1, 0.2]');
 
 -- Step 3: Perform a Vector Similarity Search Using VECTOR_DISTANCE function
-DECLARE @v VECTOR(5, float16) = '[0.3, 0.3, 0.3, 0.3, 0.3]';
+DECLARE @v AS VECTOR(5, float16) = '[0.3, 0.3, 0.3, 0.3, 0.3]';
 
 SELECT TOP (3)
     id,
@@ -139,7 +140,7 @@ WITH (
 );
 
 -- Step 5: Perform a Vector Similarity Search
-DECLARE @qv VECTOR(5, float16) = '[0.3, 0.3, 0.3, 0.3, 0.3]';
+DECLARE @qv AS VECTOR(5, float16) = '[0.3, 0.3, 0.3, 0.3, 0.3]';
 
 SELECT
     t.id,
@@ -164,11 +165,11 @@ The following query confirms actual base type and dimensions of a **vector** col
 ```sql
 --Inspect Vector Base type Metadata in sys.columns
 SELECT name AS column_name,
-    system_type_id,
-    user_type_id,
-    vector_dimensions,
-    vector_base_type,
-    vector_base_type_desc
+       system_type_id,
+       user_type_id,
+       vector_dimensions,
+       vector_base_type,
+       vector_base_type_desc
 FROM sys.columns
 WHERE object_id = OBJECT_ID('dbo.Articles');
 ```
@@ -188,34 +189,34 @@ Output columns:
 SQL Server supports both *implicit* and *explicit* conversion from **varchar**, **nvarchar**, and **json** strings to `VECTOR(<dimension_count>, float16)`, as long as the vector is declared with an explicit dimension count.
 
 ```sql
-DECLARE @j JSON = '[1.0, 2.0, 3.0]';
-DECLARE @v VECTOR(3, float16);
-SET @v = CAST(@j AS VECTOR(3, float16)); -- Explicit conversion from JSON to float16
+DECLARE @j AS JSON = '[1.0, 2.0, 3.0]';
+DECLARE @v AS VECTOR(3, float16);
+SET @v = CAST (@j AS VECTOR(3, float16)); -- Explicit conversion from JSON to float16
 
-DECLARE @v1 VARCHAR(50) = '[1.0, 2.0, 3.0]';
-DECLARE @v2 VECTOR(3, float16);
-SET @v2 = CAST(@v1 AS VECTOR(3, float16)); -- Explicit conversion from VARCHAR to float16
+DECLARE @v1 AS VARCHAR (50) = '[1.0, 2.0, 3.0]';
+DECLARE @v2 AS VECTOR(3, float16);
+SET @v2 = CAST (@v1 AS VECTOR(3, float16)); -- Explicit conversion from VARCHAR to float16
 
-DECLARE @v1 NVARCHAR(50) = N'[1.0, 2.0, 3.0]';
-DECLARE @v2 VECTOR(3, float16);
-SET @v2 = CAST(@v1 AS VECTOR(3, float16)); -- Explicit conversion from NVARCHAR to float16
+DECLARE @v1 AS NVARCHAR (50) = N'[1.0, 2.0, 3.0]';
+DECLARE @v2 AS VECTOR(3, float16);
+SET @v2 = CAST (@v1 AS VECTOR(3, float16)); -- Explicit conversion from NVARCHAR to float16
 ```
 
 Implicit Conversion is supported only when the target **vector** type is fully declared.
 
 ```sql
 -- Implicit conversion from VARCHAR to float16
-DECLARE @v1 VARCHAR(50) = '[1.0, 2.0, 3.0]';
-DECLARE @v2 VECTOR(3, float16);
+DECLARE @v1 AS VARCHAR (50) = '[1.0, 2.0, 3.0]';
+DECLARE @v2 AS VECTOR(3, float16);
 SET @v2 = @v1;
 
 -- Implicit conversion from NVARCHAR to float16
-DECLARE @v1 NVARCHAR(50) = N'[1.0, 2.0, 3.0]';
-DECLARE @v2 VECTOR(3, float16);
-SET @v2 = @v1
+DECLARE @v1 AS NVARCHAR (50) = N'[1.0, 2.0, 3.0]';
+DECLARE @v2 AS VECTOR(3, float16);
+SET @v2 = @v1;
 
 --From JSON_ARRAY to VECTOR
-DECLARE @v3 VECTOR(3, float16) = JSON_ARRAY(1.0, 2.0, 3.0);
+DECLARE @v3 AS VECTOR(3, float16) = JSON_ARRAY(1.0, 2.0, 3.0);
 ```
 
 ## Unsupported or error-prone scenarios
@@ -229,21 +230,32 @@ SQL Server currently does **not** support implicit conversion between `VECTOR(fl
 Additionally, *explicit conversion* using `CAST` or `CONVERT` is currently *blocked*.
 
 ```sql
-DECLARE @v1 VECTOR(3, float16);
-DECLARE @v2 VECTOR(3, float32) = '[1.0, 2.0, 3.0]';
-SET @v1 = CAST(@v2 AS VECTOR(3, float16)); -- Explicit conversion from float32 to float16
--- ❌ Error: Msg 42238, Level 16, State 1, Line 61
+DECLARE @v1 AS VECTOR(3, float16);
+DECLARE @v2 AS VECTOR(3, float32) = '[1.0, 2.0, 3.0]';
+SET @v1 = CAST (@v2 AS VECTOR(3, float16)); -- Explicit conversion from float32 to float16
+```
+
+The following error is returned:
+
+```output
+Error: Msg 42238, Level 16, State 1, Line 61
 Conversion of vector from data type float32 to float16 is not allowed.
 ```
 
 ### Dimension mismatch
+
 Conversion between vectors with mismatched dimensions isn't allowed and raises a dimension mismatch error.
 
 ```sql
-DECLARE @v1 VECTOR(3, float16) = '[1.0, 2.0, 3.0]';
-DECLARE @v2 VECTOR(4, float16) = NULL;
+DECLARE @v1 AS VECTOR(3, float16) = '[1.0, 2.0, 3.0]';
+DECLARE @v2 AS VECTOR(4, float16) = NULL;
 SET @v1 = @v2;
--- Error: Msg 42204, Level 16, State 1, Line 10
+```
+
+The following error is returned:
+
+```output
+Error: Msg 42204, Level 16, State 1, Line 10
 The vector dimensions 4 and 3 do not match
 ```
 
@@ -251,14 +263,19 @@ The vector dimensions 4 and 3 do not match
 
 If a vector is declared without a dimension count, assigning a value to it raises an error.
 
-```sql
-DECLARE @v1 VECTOR(3, float16) = NULL;
-DECLARE @v2 VECTOR(3, float16) = '[1.0, 2.0, 3.0]';
-SET @v1 = @v2; -- This works
+This example works:
 
---However, if the dimension count is not specified, it raises an error
-DECLARE @v1 VECTOR(float16) = NULL;
-DECLARE @v2 VECTOR(3, float16) = '[1.0, 2.0, 3.0]';
+```sql
+DECLARE @v1 AS VECTOR(3, float16) = NULL;
+DECLARE @v2 AS VECTOR(3, float16) = '[1.0, 2.0, 3.0]';
+SET @v1 = @v2;
+```
+
+However, if the dimension count isn't specified, it raises an error:
+
+```sql
+DECLARE @v1 AS VECTOR(float16) = NULL;
+DECLARE @v2 AS VECTOR(3, float16) = '[1.0, 2.0, 3.0]';
 SET @v1 = @v2;
 ```
 
@@ -267,8 +284,13 @@ SET @v1 = @v2;
 Out-of-range values for `float16` (for example, above 65504.0) raise an error during assignment.
 
 ```sql
-DECLARE @v VECTOR(3, float16) = '[1.0, 2.0, 70000.0]';
--- Error: Input JSON contains out-of-range values for float16
+DECLARE @v AS VECTOR(3, float16) = '[1.0, 2.0, 70000.0]';
+```
+
+The following error is returned:
+
+```output
+Input JSON contains out-of-range values for float16
 ```
 
 ### Mixed base types in functions
@@ -276,10 +298,16 @@ DECLARE @v VECTOR(3, float16) = '[1.0, 2.0, 70000.0]';
 Mixed base types in functions like `VECTOR_DISTANCE` aren't supported and raises a type error.
 
 ```sql
-DECLARE @v1 VECTOR(3, float32) = '[1.0, 2.0, 3.0]';
-DECLARE @v2 VECTOR(3, float16) = '[1, 2, 3]';
+DECLARE @v1 AS VECTOR(3, float32) = '[1.0, 2.0, 3.0]';
+DECLARE @v2 AS VECTOR(3, float16) = '[1, 2, 3]';
+
 SELECT VECTOR_DISTANCE('euclidean', @v1, @v2);
--- Error: VECTOR_DISTANCE does not support different base types
+```
+
+The following error is returned:
+
+```output
+VECTOR_DISTANCE does not support different base types
 ```
 
 ### Unsupported architecture
@@ -287,24 +315,32 @@ SELECT VECTOR_DISTANCE('euclidean', @v1, @v2);
 `float16` isn't supported on Arm64 architectures, and using it raises a runtime error
 
 ```sql
-DECLARE @v1 VECTOR(3, float16) = '[1.0, 2.0, 3.0]';
-DECLARE @v2 VECTOR(3, int) = '[1, 2, 3]';
+DECLARE @v1 AS VECTOR(3, float16) = '[1.0, 2.0, 3.0]';
+DECLARE @v2 AS VECTOR(3, int) = '[1, 2, 3]';
+
 SELECT VECTOR_DISTANCE('euclidean', @v1, @v2);
--- Error: float16 is not supported on ARM64 architecture
+```
+
+The following error is returned:
+
+```output
+float16 is not supported on ARM64 architecture
 ```
 
 ### SIMD overflow
 
-SIMD-based operations (for example, AVX2, SSE4.2) might produce overflow errors if values exceed representable ranges.
+Single instruction, multiple data (SIMD)-based operations, such as AVX2 or SSE4.2, might produce overflow errors if values exceed representable ranges.
 
 ```sql
-DECLARE @v AS VECTOR (8) = '[-2.9e+38, ..., 2.9e+38]';
+DECLARE @v AS VECTOR(8) = '[-2.9e+38, ..., 2.9e+38]';
 
 SELECT VECTOR_NORM(@v, 'norm1');
--- Behavior depends on ARITHABORT setting:
---     ARITHABORT ON  → Error
---     ARITHABORT OFF → NULL
 ```
+
+The behavior depends on the `ARITHABORT` setting:
+
+- `ARITHABORT ON` results in an error
+- `ARITHABORT OFF` results in `NULL`
 
 ### Tools support
 
@@ -319,5 +355,5 @@ SQL Server Management Studio (SSMS) doesn't currently distinguish between `float
 
 ## Related content
 
-- [Overview of vector search and vector indexes in the SQL Database Engine](../../sql-server/ai/vectors.md)
+- [Vector search and vector indexes in the SQL Database Engine](../../sql-server/ai/vectors.md)
 - [Intelligent applications](/azure/azure-sql/database/ai-artificial-intelligence-intelligent-applications#vector-search)

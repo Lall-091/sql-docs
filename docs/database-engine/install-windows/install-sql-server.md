@@ -3,12 +3,12 @@ title: SQL Server Installation Guide
 description: An index of content that helps you install SQL Server and associated components using options such as the installation wizard, command prompt, or sysprep.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/21/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: install
 ms.topic: conceptual
 ms.custom:
-  - build-2025
+  - ignite-2025
 helpviewer_keywords:
   - "AdventureWorks sample database"
   - "installing SQL Server, preparing to install"
@@ -36,7 +36,7 @@ Beginning with [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)], [!INCLUDE 
 
 - **Editions and features**: Review the supported features for the different editions and versions of [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] to determine which best suits your business needs.
 
-  - [SQL Server 2025 Preview](../../sql-server/editions-and-components-of-sql-server-2025.md)
+  - [SQL Server 2025](../../sql-server/editions-and-components-of-sql-server-2025.md)
   - [SQL Server 2022](../../sql-server/editions-and-components-of-sql-server-2022.md)
   - [SQL Server 2019](../../sql-server/editions-and-components-of-sql-server-2019.md)
   - [SQL Server 2017](../../sql-server/editions-and-components-of-sql-server-2017.md)
@@ -44,7 +44,7 @@ Beginning with [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)], [!INCLUDE 
 
 - **Requirements**: Review hardware and software installation requirements:
 
-  - [SQL Server 2025 Preview](../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2025.md)
+  - [SQL Server 2025](../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2025.md)
   - [SQL Server 2022](../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2022.md)
   - [SQL Server 2019](../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2019.md)
   - [SQL Server 2016 and 2017](../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server.md)

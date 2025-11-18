@@ -7,15 +7,17 @@ ms.date: "02/01/2022"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sql13.swb.synonym.general.f1"
 helpviewer_keywords:
   - "creating synonyms"
   - "synonyms [SQL Server], creating"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Create Synonyms
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   This article describes how to create a synonym in [!INCLUDE[ssnoversion](../../includes/ssnoversion-md.md)] by using [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or [!INCLUDE[tsql](../../includes/tsql-md.md)].  
   
 ###  <a name="Security"></a> Security  
@@ -95,3 +97,4 @@ GO
 ## Next steps
 
 - [CREATE SYNONYM (Transact-SQL)](../../t-sql/statements/create-synonym-transact-sql.md)
+

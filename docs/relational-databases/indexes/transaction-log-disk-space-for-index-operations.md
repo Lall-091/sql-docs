@@ -8,6 +8,8 @@ ms.date: 09/22/2025
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "index disk space [SQL Server]"
   - "space [SQL Server], indexes"
@@ -17,7 +19,7 @@ helpviewer_keywords:
 ---
 # Transaction log disk space for index operations
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Large-scale index operations can generate large data loads that can cause the transaction log to fill quickly. To make sure that the index operation can be rolled back, the transaction log can't be truncated until the index operation has completed; however, the log can be backed up during the index operation. Therefore, the transaction log must have sufficient room to store both the index operation transactions and any concurrent user transactions for the duration of the index operation.
 
@@ -42,3 +44,4 @@ When you run large-scale index operations, consider the following recommendation
 
 - [Disk space requirements for index DDL operations](disk-space-requirements-for-index-ddl-operations.md)
 - [Index disk space example](index-disk-space-example.md)
+

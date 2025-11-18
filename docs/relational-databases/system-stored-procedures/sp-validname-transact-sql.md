@@ -8,6 +8,8 @@ ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_validname"
   - "sp_validname_TSQL"
@@ -15,11 +17,11 @@ helpviewer_keywords:
   - "sp_validname"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sp_validname (Transact-SQL)
 
-[!INCLUDE [SQL Server SQL Database](../../includes/applies-to-version/sql-asdb.md)]
+[!INCLUDE [SQL Server SQL Database-fabricsqldb](../../includes/applies-to-version/sql-asdb-fabricsqldb.md)]
 
 Checks for valid [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] identifier names. All nonbinary and nonzero data, including Unicode data that can be stored by using the **nchar**, **nvarchar**, or **ntext** data types, are accepted as valid characters for identifier names.
 
@@ -60,3 +62,4 @@ Requires membership in the **public** role.
 - [nchar and nvarchar (Transact-SQL)](../../t-sql/data-types/nchar-and-nvarchar-transact-sql.md)
 - [ntext, text, and image (Transact-SQL)](../../t-sql/data-types/ntext-text-and-image-transact-sql.md)
 - [System stored procedures (Transact-SQL)](system-stored-procedures-transact-sql.md)
+

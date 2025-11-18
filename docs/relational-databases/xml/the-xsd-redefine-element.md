@@ -8,12 +8,14 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "xsd:redefine element"
 ---
 # The &lt;xsd:redefine&gt; element
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 The W3C XSD **redefine** element provides support for redefining schema components. However, support for this directive is potentially costly to performance and also requires that [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] revalidate all instances of the **xml** data type associated with the redefined schema. Therefore, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] doesn't support this element. XML schemas that include the **\<xsd:redefine>** element are rejected by the server.
 
@@ -28,3 +30,4 @@ To update a schema or its components, you can do the following instead:
 ## See also
 
 - [Requirements and Limitations for XML Schema Collections on the Server](../../relational-databases/xml/requirements-and-limitations-for-xml-schema-collections-on-the-server.md)
+

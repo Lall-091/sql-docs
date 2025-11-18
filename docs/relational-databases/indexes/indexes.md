@@ -10,10 +10,10 @@ ms.subservice: table-view-index
 ms.topic: conceptual
 ms.update-cycle: 1825-days
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "index types [SQL Server]"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Indexes
 

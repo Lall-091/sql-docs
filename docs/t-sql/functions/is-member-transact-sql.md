@@ -7,6 +7,8 @@ ms.date: "03/06/2024"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "IS_MEMBER"
   - "IS_MEMBER_TSQL"
@@ -23,10 +25,10 @@ helpviewer_keywords:
   - "members [SQL Server], verifying"
 dev_langs:
   - "TSQL"
-monikerRange: ">= aps-pdw-2016 || = azuresqldb-current || = azure-sqldw-latest || >= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # IS_MEMBER (Transact-SQL)
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
   Indicates whether the current user is a member of the specified [!INCLUDE[msCoName](../../includes/msconame-md.md)] Windows group, Microsoft Entra group, or [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] database role.
 
@@ -100,3 +102,4 @@ GO
  [Security Functions &#40;Transact-SQL&#41;](../../t-sql/functions/security-functions-transact-sql.md)  
   
   
+

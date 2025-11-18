@@ -8,17 +8,19 @@ ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "system stored procedures [SQL Server], security"
   - "stored procedures [SQL Server], security"
   - "security [SQL Server], stored procedures"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Security stored procedures (Transact-SQL)
 
-[!INCLUDE [SQL Server SQL Database](../../includes/applies-to-version/sql-asdb.md)]
+[!INCLUDE [SQL Server SQL Database-fabricsqldb](../../includes/applies-to-version/sql-asdb-fabricsqldb.md)]
 
 [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] supports the following system stored procedures that are used to manage security. Some of these stored procedures are deprecated, but continue to be available to support backward compatibility. The topics for deprecated procedures will list their replacement.
 
@@ -285,3 +287,4 @@ monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-20
 
 - [System stored procedures (Transact-SQL)](system-stored-procedures-transact-sql.md)
 - [Security Functions (Transact-SQL)](../../t-sql/functions/security-functions-transact-sql.md)
+

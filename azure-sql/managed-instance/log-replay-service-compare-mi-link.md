@@ -5,13 +5,13 @@ description: Compare log replay service (LRS) with the Managed Instance link whe
 author: danimir
 ms.author: danil
 ms.reviewer: mathoma, randolphwest
-ms.date: 04/14/2025
+ms.date: 11/18/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: migration
 ms.topic: conceptual
-monikerRange: "= azuresql || = azuresql-mi"
 ms.custom:
-  - build-2025
+  - ignite-2025
+monikerRange: "=azuresql || =azuresql-mi"
 ---
 # Compare LRS with Managed Instance link
 [!INCLUDE [appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,7 +33,7 @@ The fundamental difference between LRS and the MI link stems from the underlying
 In contrast, MI link uses Always On availability group technology to send transaction log records in near real-time from SQL Server to SQL Managed Instance, making it a considerably more performant migration solution. However, to configure the MI link, you need to set up a VPN between SQL Server and SQL Managed Instance and open the appropriate ports in the firewall whereas LRS works out of the box by using a public endpoint. LRS can be used for all editions of SQL Server 2008 and later, while MI link can be used for SQL Server 2016 and later, for Standard, Enterprise, and Developer editions only.
 
 > [!NOTE]  
-> SQL Server 2025 Preview introduces separate Enterprise Developer and Standard Developer editions of SQL Server.
+> SQL Server 2025 introduces separate Enterprise Developer and Standard Developer editions of SQL Server.
 
 A major benefit of the MI link is the ability to perform a reverse migration back to SQL Server 2022 and later, which isn't possible with LRS. Another major benefit of migrating with the MI link is that the database on the SQL Managed Instance can be used for read-only workloads while the migration is in progress. This capability isn't available with LRS, since the database is in a restoring state until the migration is complete. Likewise, when you perform a reverse migration back to SQL Server 2022 and later, the database is accessible for read-only workloads on SQL Server while the migration is in progress.
 

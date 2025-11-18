@@ -6,16 +6,18 @@ ms.author: randolphwest
 ms.date: 07/18/2025
 ms.service: sql
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "user-defined functions [SQL Server], components"
   - "user-defined functions [SQL Server], about user-defined functions"
   - "UDF"
   - "TVF"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # User-defined functions
 
-[!INCLUDE [sql-asdb-asdbmi-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-fabricse-fabricdw-fabricsqldb.md)]
 
 Like functions in programming languages, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] user-defined functions are routines that accept parameters, perform an action, such as a complex calculation, and return the result of that action as a value. The return value can either be a single scalar value or a result set.
 
@@ -144,3 +146,4 @@ A user-defined function takes zero or more input parameters and returns either a
 - [Execute user-defined functions](execute-user-defined-functions.md)
 - [Rename user-defined functions](rename-user-defined-functions.md)
 - [View user-defined functions](view-user-defined-functions.md)
+

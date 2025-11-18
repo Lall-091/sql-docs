@@ -8,10 +8,12 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 ---
 # Create, alter, and drop selective XML indexes
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This article describes how to create a new selective XML index, or alter or drop an existing selective XML index.
 
@@ -65,3 +67,4 @@ DROP INDEX sxi_index ON tbl
 
 - [Create XML indexes](create-xml-indexes.md)
 - [Create, alter, and drop secondary selective XML indexes](create-alter-and-drop-secondary-selective-xml-indexes.md)
+

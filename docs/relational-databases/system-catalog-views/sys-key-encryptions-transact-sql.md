@@ -8,6 +8,8 @@ ms.date: 04/30/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.key_encryptions"
   - "key_encryptions_TSQL"
@@ -17,13 +19,11 @@ helpviewer_keywords:
   - "sys.key_encryptions catalog view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
-ms.custom:
-  - build-2025
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.key_encryptions (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Returns a row for each symmetric key encryption specified by using the `ENCRYPTION BY` clause of the `CREATE SYMMETRIC KEY` statement.
 
@@ -49,3 +49,4 @@ To protect the key material of the symmetric key, SQL Server and Azure SQL store
 - [Security Catalog Views](security-catalog-views-transact-sql.md)
 - [Encryption hierarchy](../security/encryption/encryption-hierarchy.md)
 - [CREATE SYMMETRIC KEY](../../t-sql/statements/create-symmetric-key-transact-sql.md)
+

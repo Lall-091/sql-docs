@@ -11,7 +11,7 @@ ms.topic: how-to
 ms.collection:
   - data-tools
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "sqlcmd utility, Database Engine connections"
   - "Named Pipes [SQL Server], sqlcmd utility"
@@ -20,7 +20,7 @@ helpviewer_keywords:
   - "protocols [SQL Server], sqlcmd utility"
   - "VIA"
   - "client protocols [SQL Server]"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Connect to SQL Server with sqlcmd
 

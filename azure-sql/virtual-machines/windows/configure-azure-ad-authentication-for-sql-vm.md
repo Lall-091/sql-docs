@@ -4,18 +4,21 @@ description: This article teaches you to configure Microsoft Entra authenticatio
 author: PratimDasgupta
 ms.author: prdasgu
 ms.reviewer: mathoma
-ms.date: 02/16/2025
+ms.date: 11/18/2025
 ms.service: azure-vm-sql-server
 ms.subservice: security
-ms.custom: has-azure-ad-ps-ref, devx-track-azurecli
 ms.topic: how-to
+ms.custom:
+  - has-azure-ad-ps-ref
+  - devx-track-azurecli
+  - ignite-2025
 ---
 # Enable Microsoft Entra authentication for SQL Server on Azure VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
 > - [SQL Server 2022](/sql/sql-server/azure-arc/entra-authentication-setup-tutorial)
-> - [SQL Server 2025 Preview](/sql/sql-server/azure-arc/managed-identity)
+> - [SQL Server 2025](/sql/sql-server/azure-arc/microsoft-entra-authentication-with-managed-identity)
 > - [Azure SQL Database & Azure SQL Managed Instance](../../database/authentication-aad-configure.md)
 > - [SQL Server on Azure VMs](configure-azure-ad-authentication-for-sql-vm.md)
 
@@ -37,7 +40,7 @@ When enabling a [managed identity](/azure/active-directory/managed-identities-az
 The system-assigned and user-assigned managed identities used for Microsoft Entra authentication with SQL Server on Azure VMs offer the following benefits:
 
 - **System-assigned managed identity** offers a simplified configuration process. Since the managed identity has the same lifetime as the virtual machine, there's no need to delete it separately when you delete the virtual machine. 
-- **User-assigned managed identity** offers scalability since it can be attached to, and used for Microsoft Entra authentication, for multiple SQL Server on Azure VMs.
+- **User-assigned managed identity** offers scalability since it can be attached to, and used for Microsoft Entra authentication for multiple instances of SQL Server on Azure VMs.
 
 To get started with managed identities, review [Configure managed identities using the Azure portal](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm).
 
@@ -146,23 +149,22 @@ For Microsoft Entra authentication to work, you need the following:
 - Outbound communication from SQL Server to Microsoft Entra ID and the Microsoft Graph endpoint.
 - Outbound communication from the SQL client to Microsoft Entra ID.
 
-Default Azure VM configurations allow outbound communication to the Microsoft Graph endpoint, as well as Microsoft Entra ID, but some users choose to restrict outbound communication either by using an OS level firewall, or the Azure VNet network security group (NSG).
+Default Azure VM configurations allow outbound communication to the Microsoft Graph endpoint, as well as Microsoft Entra ID, but some users choose to restrict outbound communication either by using an OS level firewall, or the Azure network security group (NSG).
 
 Firewalls on the SQL Server VM and any SQL client need to allow outbound traffic on ports 80 and 443.
 
-The Azure VNet NSG rule for the VNet that hosts your SQL Server VM should have the following:
+The Azure virtual network NSG rule for the virtual network that hosts your SQL Server VM should have the following:
 
 - A Service Tag of `AzureActiveDirectory`.
 - **Destination port ranges** of: 80, 443.
 - Action set to **Allow**.
 - A high priority (which is a low number).
 
-
 <a name='enable-azure-ad-authentication'></a>
 
 ## Enable Microsoft Entra authentication for the registered instance
 
-When you register your SQL Server instance with the [SQL IaaS Agent extension](sql-server-iaas-agent-extension-automate-management.md), you can enable Microsoft Entra authentication for the registered instance by using the Azure portal, the Azure CLI or PowerShell. Using the Azure portal or Azure CLI to manage your instance is only supported on the registered instance of SQL Server. 
+When you register your SQL Server instance with the [SQL IaaS Agent extension](sql-server-iaas-agent-extension-automate-management.md), you can enable Microsoft Entra authentication for the registered instance by using the Azure portal, the Azure CLI, or PowerShell. Using the Azure portal or Azure CLI to manage your instance is only supported on the registered instance of SQL Server. 
 
 > [!NOTE]
 > After Microsoft Entra authentication is enabled, you can follow the same steps in this section to update the configuration to use a different managed identity.
@@ -220,7 +222,7 @@ You can enable Microsoft Entra authentication to the specified machine by runnin
 
 Assuming your SQL Server VM name is `sqlvm` and your resource group is `myResourceGroup`, the following examples enable Microsoft Entra authentication:
 
-- Enable Microsoft Entra authentication with a **system-assigned managed identity** using client-side validation: 
+- Enable Microsoft Entra authentication with a **system-assigned managed identity** using client-side validation:
 
    ```azurecli
    az sql vm enable-azure-ad-auth -n sqlvm -g myresourcegroup
@@ -233,7 +235,7 @@ Assuming your SQL Server VM name is `sqlvm` and your resource group is `myResour
    --skip-client-validation
    ```
 
-- Enable Microsoft Entra authentication with a **user-assigned managed identity** and client-side validation: 
+- Enable Microsoft Entra authentication with a **user-assigned managed identity** and client-side validation:
 
    ```azurecli
    az sql vm enable-azure-ad-auth -n sqlvm -g myresourcegroup 
@@ -261,7 +263,7 @@ For example, when you run:
 az sql vm show -n sqlvm -g myresourcegroup --expand * 
 ```
 
-The following output indicates Microsoft Entra authentication has been enabled with a **user-assigned managed identity**: 
+The following output indicates Microsoft Entra authentication has been enabled with a **user-assigned managed identity**:
 
 ```output
     "azureAdAuthenticationSettings": { 
@@ -270,7 +272,7 @@ The following output indicates Microsoft Entra authentication has been enabled w
 
 #### [PowerShell](#tab/powershell)
 
-If you have a single instance of SQL Server already registered with the SQL IaaS agent extension, you can use the [Update-AzSqlVM](/powershell/module/az.sqlvirtualmachine/update-azsqlvm) PowerShell command to enable Microsoft Entra authentication for that instance. 
+If you have a single instance of SQL Server already registered with the SQL IaaS agent extension, you can use the [Update-AzSqlVM](/powershell/module/az.sqlvirtualmachine/update-azsqlvm) PowerShell command to enable Microsoft Entra authentication for that instance.
 
 To configure Microsoft Entra authentication with a **system-assigned managed identity**, use the following sample PowerShell command:
 
@@ -288,17 +290,18 @@ Update-AzSqlVM -ResourceGroupName 'myresourcegroup' -Name 'sqlvm' -IdentityType 
 
 ## Enable Microsoft Entra authentication for unregistered instances
 
-If your SQL Server instance isn't registered with the SQL IaaS Agent extension, such as when you have multiple SQL Server instances on the same VM, you can enable Microsoft Entra authentication by using PowerShell. 
-You can enable Microsoft Entra authentication for specific unregistered instances, or for all instances on the VM. 
+If your SQL Server instance isn't registered with the SQL IaaS Agent extension, such as when you have multiple SQL Server instances on the same VM, you can enable Microsoft Entra authentication by using PowerShell.
+
+You can enable Microsoft Entra authentication for specific unregistered instances, or for all instances on the VM.
 
 > [!NOTE]
-> To use Microsoft Entra authentication with unregistered instances on SQL Server on Azure VMs, you must have at least one instance registered with the [SQL IaaS Agent extension](sql-agent-extension-manually-register-single-vm.md). 
+> To use Microsoft Entra authentication with unregistered instances on SQL Server on Azure VMs, you must have at least one instance registered with the [SQL IaaS Agent extension](sql-agent-extension-manually-register-single-vm.md).
 
 When using the `Set-AzVMExtension -ExtensionName "SqlIaasExtension"` command to enable Microsoft Entra authentication for a SQL Server instance, consider the following:
+
 - Permissions of the managed identity are only checked when the `CheckPermissions` parameter is set to `true`.
 - Specify the client ID of the identity `ClientID` parameter to use a **user-assigned managed identity**. When the `ClientID` parameter is empty, a **system-assigned managed identity** is used.
-- Provide a list of instances in the `EnableForGivenInstances` parameter to enable Microsoft Entra authentication for specific unregistered instances. Othewrise, use the `EnableForAllInstances` parameter to enable Microsoft Entra authentication for all unregistered instances on the virtual machine. 
-
+- Provide a list of instances in the `EnableForGivenInstances` parameter to enable Microsoft Entra authentication for specific unregistered instances. Otherwise, use the `EnableForAllInstances` parameter to enable Microsoft Entra authentication for all unregistered instances on the virtual machine.
 
 The following example enables Microsoft Entra authentication for all instances on the VM using a **system-assigned identity**:
 
@@ -326,7 +329,7 @@ Consider the following limitations:
 
 - Microsoft Entra authentication is only supported with SQL Server 2022 running on Windows VMs registered with the [SQL IaaS Agent extension](sql-server-iaas-agent-extension-automate-management.md), deployed to any cloud.
 - Managing Microsoft Entra authentication in the Azure portal is only available to instances supported by the SQL IaaS Agent extension, such as a default instance, or a single named instance. Use the Azure CLI or PowerShell to manage Microsoft Entra authentication additional instances on the SQL Server VM that aren't registered with the SQL IaaS Agent extension.
-- Using Microsoft Entra authentication with failover cluster instances is not supported.
+- Using Microsoft Entra authentication with failover cluster instances isn't supported.
 - The identity you choose to authenticate to SQL Server has to have either the **Directory Readers** role in Microsoft Entra ID or the following three Microsoft Graph application permissions (app roles): `User.Read.All`, `GroupMember.Read.All`, and `Application.Read.All`.
 - Once Microsoft Entra authentication is enabled, there's no way to disable it.
 - Currently, authenticating to SQL Server on Azure VMs through Microsoft Entra authentication using the [FIDO2 method](/azure/active-directory/authentication/howto-authentication-passwordless-faqs) isn't supported.

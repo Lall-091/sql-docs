@@ -8,6 +8,8 @@ ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_sequence_get_range"
   - "sp_sequence_get_range_TSQL"
@@ -16,11 +18,11 @@ helpviewer_keywords:
   - "sp_sequence_get_range"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sp_sequence_get_range (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa](../../includes/applies-to-version/sql-asdb-asdbmi-asa.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricsqldb.md)]
 
 Returns a range of sequence values from a sequence object. The sequence object generates and issues the number of values requested and provides the application with metadata related to the range.
 
@@ -200,3 +202,4 @@ Console.WriteLine(firstValueInRange.Value);
 - [DROP SEQUENCE (Transact-SQL)](../../t-sql/statements/drop-sequence-transact-sql.md)
 - [NEXT VALUE FOR (Transact-SQL)](../../t-sql/functions/next-value-for-transact-sql.md)
 - [Sequence Numbers](../sequence-numbers/sequence-numbers.md)
+

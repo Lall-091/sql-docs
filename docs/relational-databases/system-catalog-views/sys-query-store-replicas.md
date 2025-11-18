@@ -8,6 +8,8 @@ ms.date: 10/02/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SYS.QUERY_STORE_REPLICAS_TSQL"
   - "QUERY_STORE_REPLICAS_TSQL"
@@ -18,11 +20,11 @@ helpviewer_keywords:
   - "sys.query_store_replicas catalog view"
 dev_langs:
   - TSQL
-monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current"
+monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.query_store_replicas (Transact-SQL)
 
-[!INCLUDE [sqlserver2022-asdb-asmi](../../includes/applies-to-version/sqlserver2022-asdb-asmi.md)]
+[!INCLUDE [sqlserver2022-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricsqldb.md)]
 
 Contains information about Query Store replicas, when [Query Store for readable secondaries](../performance/query-store-for-secondary-replicas.md) is enabled. You can use this information to determine what `replica_group_id` to use when using Query Store to force or unforce a plan on a secondary replica with [sys.sp_query_store_set_query_hints](../system-stored-procedures/sys-sp-query-store-set-hints-transact-sql.md).
 
@@ -48,3 +50,4 @@ Requires the `VIEW DATABASE STATE` permission.
 - [sys.query_store_query (Transact-SQL)](sys-query-store-query-transact-sql.md)
 - [Monitor performance by using the Query Store](../performance/monitoring-performance-by-using-the-query-store.md)
 - [Best practices for monitoring workloads with Query Store](../performance/best-practice-with-the-query-store.md)
+

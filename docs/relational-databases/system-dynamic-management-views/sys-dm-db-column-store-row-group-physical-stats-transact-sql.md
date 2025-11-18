@@ -7,6 +7,8 @@ ms.date: 07/17/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_db_column_store_row_group_physical_stats_TSQL"
   - "sys.dm_db_column_store_row_group_physical_stats"
@@ -17,11 +19,11 @@ helpviewer_keywords:
   - "sys.dm_db_column_store_row_group_physical_stats dynamic management view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.dm_db_column_store_row_group_physical_stats (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
 
 Provides current rowgroup-level information about all of the columnstore indexes in the current database.
 
@@ -95,3 +97,4 @@ ORDER BY object_name(i.object_id), i.name, row_group_id;
 - [sys.computed_columns](../system-catalog-views/sys-computed-columns-transact-sql.md)
 - [sys.column_store_dictionaries](../system-catalog-views/sys-column-store-dictionaries-transact-sql.md)
 - [sys.column_store_segments](../system-catalog-views/sys-column-store-segments-transact-sql.md)
+

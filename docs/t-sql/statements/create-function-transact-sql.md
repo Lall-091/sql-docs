@@ -3,11 +3,13 @@ title: "CREATE FUNCTION (Transact-SQL)"
 description: CREATE FUNCTION (Transact-SQL)
 author: markingmyname
 ms.author: maghan
-ms.reviewer: randolphwest
-ms.date: 05/29/2025
+ms.reviewer: randolphwest, wiassaf
+ms.date: 11/03/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "FUNCTION"
   - "CREATE FUNCTION"
@@ -38,7 +40,7 @@ helpviewer_keywords:
   - "functions [SQL Server], invoking"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # CREATE FUNCTION (Transact-SQL)
 
@@ -590,6 +592,12 @@ For more information about how to program CLR functions, see [CLR User-Defined F
 ## Remarks
 
 Scalar functions can be invoked where scalar expressions are used, which includes computed columns and `CHECK` constraint definitions. Scalar functions can also be executed by using the [EXECUTE (Transact-SQL)](../language-elements/execute-transact-sql.md) statement. Scalar functions must be invoked by using at least the two-part name of the function (`<schema>.<function>`). For more information about multipart names, see [Transact-SQL Syntax Conventions (Transact-SQL)](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md). Table-valued functions can be invoked where table expressions are allowed in the `FROM` clause of `SELECT`, `INSERT`, `UPDATE`, or `DELETE` statements. For more information, see [Execute user-defined functions](../../relational-databases/user-defined-functions/execute-user-defined-functions.md).
+
+### UDFs in Microsoft Fabric Data Warehouse
+
+Scalar UDFs are a preview feature in Fabric Data Warehouse.
+
+In Microsoft Fabric Data Warehouse, [scalar UDFs must be inlineable](create-function-sql-data-warehouse.md#scalar-udf-inlining) for use with `SELECT ... FROM` queries on user tables, but you can still create functions that aren't inlineable. Scalar UDFs that are not inlineable work in limited number of scenarios. You can check [whether a UDF can be inlined](create-function-sql-data-warehouse.md#check-whether-a-scalar-udf-can-be-inlined). For more information, see the version of [CREATE FUNCTION](create-function-sql-data-warehouse.md?view=fabric&preserve-view=true) for Fabric Data Warehouse.
 
 ## Interoperability
 

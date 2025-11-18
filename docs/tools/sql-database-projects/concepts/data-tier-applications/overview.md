@@ -10,6 +10,8 @@ ms.subservice: sql-database-projects
 ms.topic: concept-article
 ms.collection:
   - data-tools
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sql.data.tools.DacTableChooser"
   - "sql.data.tools.DacPublishDialog"
@@ -20,7 +22,7 @@ helpviewer_keywords:
   - "How to [DAC]"
   - "data-tier application [SQL Server], designing"
   - "wizard [DAC]"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # Data-tier applications (DAC) overview

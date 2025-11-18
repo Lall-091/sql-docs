@@ -8,14 +8,16 @@ ms.date: 10/27/2023
 ms.service: sql
 ms.subservice: performance
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "compression [SQL Server], row"
   - "row compression [Database Engine]"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Row compression implementation
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This article summarizes how [!INCLUDE [ssDE](../../includes/ssde-md.md)] implements row compression. This summary provides basic information to help you plan the storage space that you need for your data.
 
@@ -80,3 +82,4 @@ The following table describes how row compression affects the existing types in 
 - [Data compression](data-compression.md)
 - [Page compression implementation](page-compression-implementation.md)
 - [Unicode compression implementation](unicode-compression-implementation.md)
+

@@ -8,6 +8,8 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "xml data type [SQL Server], variables"
   - "parameters [XML in SQL Server]"
@@ -26,7 +28,7 @@ helpviewer_keywords:
 ---
 # Compare typed XML to untyped XML
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 You can create variables, parameters, and columns of the **xml** type. You can optionally associate a collection of XML schemas with a variable, parameter, or column of **xml** type. In this case, the **xml** data type instance is called *typed*. Otherwise, the XML instance is called *untyped*.
 
@@ -166,3 +168,4 @@ You can still use a Transact-SQL SELECT statement to retrieve the whole **xml** 
 - [xml Data Type Methods](../../t-sql/xml/xml-data-type-methods.md)
 - [XML Data Modification Language &#40;XML DML&#41;](../../t-sql/xml/xml-data-modification-language-xml-dml.md)
 - [XML Data &#40;SQL Server&#41;](../../relational-databases/xml/xml-data-sql-server.md)
+

@@ -4,9 +4,11 @@ description: "The queryinsights.long_running_queries in Microsoft Fabric provide
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mariyaali
-ms.date: 07/17/2024
+ms.date: 11/03/2025
 ms.service: sql
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "queryinsights.long_running_queries"
   - "queryinsights.long_running_queries_TSQL"
@@ -19,6 +21,7 @@ dev_langs:
 monikerRange: "=fabric"
 ---
 # queryinsights.long_running_queries (Transact-SQL)
+
 [!INCLUDE [Fabric SE DW](../../includes/applies-to-version/fabric-se-dw.md)]
 
   The `queryinsights.long_running_queries` in [!INCLUDE [fabric](../../includes/fabric.md)] provides information about SQL query execution times.
@@ -37,6 +40,17 @@ monikerRange: "=fabric"
 
 You should have access to a [[!INCLUDE [fabric-se](../../includes/fabric-se.md)]](/fabric/data-warehouse/data-warehousing#sql-endpoint-of-the-lakehouse) or [[!INCLUDE [fabric-dw](../../includes/fabric-dw.md)]](/fabric/data-warehouse/data-warehousing#synapse-data-warehouse) within a [Premium capacity](/power-bi/enterprise/service-premium-what-is) workspace with Contributor or above permissions.
 
+## Example
+
+You can then find the performance of long-running queries, for example:
+
+```sql
+SELECT * 
+FROM queryinsights.long_running_queries
+WHERE last_run_command LIKE '%SALES DASHBOARD%'
+ORDER BY median_total_elapsed_time_ms DESC;
+```
+
 ## Next step
 
 > [!div class="nextstepaction"]
@@ -44,7 +58,7 @@ You should have access to a [[!INCLUDE [fabric-se](../../includes/fabric-se.md)]
 
 ## Related content
 
-- [Monitoring connections, sessions, and requests using DMVs in Microsoft Fabric](/fabric/data-warehouse/monitor-using-dmv)
+- [Monitoring connections, sessions, and requests using DMVs in Fabric Data Warehouse](/fabric/data-warehouse/monitor-using-dmv)
 - [queryinsights.exec_sessions_history (Transact-SQL)](queryinsights-exec-sessions-history-transact-sql.md)
 - [queryinsights.exec_requests_history (Transact-SQL)](queryinsights-exec-requests-history-transact-sql.md)
 - [queryinsights.frequently_run_queries (Transact-SQL)](queryinsights-frequently-run-queries-transact-sql.md)

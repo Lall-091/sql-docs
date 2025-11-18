@@ -8,6 +8,8 @@ ms.date: 02/10/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_resource_governor_resource_pools_TSQL"
   - "dm_resource_governor_resource_pools_TSQL"
@@ -17,12 +19,12 @@ helpviewer_keywords:
   - "sys.dm_resource_governor_resource_pools dynamic management view"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # sys.dm_resource_governor_resource_pools (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 Returns information about the current resource pool state, the current configuration of resource pools, and resource pool statistics.
 
@@ -104,3 +106,4 @@ Requires `VIEW SERVER PERFORMANCE STATE` permission on the server.
 - [sys.dm_resource_governor_workload_groups (Transact-SQL)](sys-dm-resource-governor-workload-groups-transact-sql.md)
 - [sys.resource_governor_resource_pools (Transact-SQL)](../system-catalog-views/sys-resource-governor-resource-pools-transact-sql.md)
 - [ALTER resource governor  (Transact-SQL)](../../t-sql/statements/alter-resource-governor-transact-sql.md)
+

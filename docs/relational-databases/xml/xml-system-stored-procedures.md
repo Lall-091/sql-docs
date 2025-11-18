@@ -8,6 +8,8 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "system stored procedures [SQL Server], XML"
   - "sp_xml_removedocument"
@@ -17,7 +19,7 @@ helpviewer_keywords:
 ---
 # XML system stored procedures
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 SQL Server provides the following system stored procedures that are used together with OPENXML:
 
@@ -36,3 +38,4 @@ The internal representation of an XML document can be removed from memory by cal
 
 - [OPENXML &#40;Transact-SQL&#41;](../../t-sql/functions/openxml-transact-sql.md)
 - [OPENXML &#40;SQL Server&#41;](../../relational-databases/xml/openxml-sql-server.md)
+

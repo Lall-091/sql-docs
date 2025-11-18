@@ -7,6 +7,8 @@ ms.date: "02/17/2017"
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sql13.swb.indexproperties.filter.f1"
   - "sql13.swb.indexproperties.partitions.f1"
@@ -15,10 +17,10 @@ f1_keywords:
   - "sql13.swb.indexproperties.columns.f1"
   - "sql13.swb.indexproperties.options.f1"
   - "sql13.swb.indexproperties.spatial.f1"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Index Properties F1 Help
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)] 
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)] 
 
 
   The sections in this topic refer to various index properties that are available by using [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] dialogs.  
@@ -296,3 +298,4 @@ The intermediate-level pages are filled to near capacity, leaving sufficient spa
  [sys.indexes &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-indexes-transact-sql.md)  
   
   
+

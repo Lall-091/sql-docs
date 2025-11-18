@@ -7,6 +7,8 @@ ms.date: 07/25/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SYS.QUERY_STORE_QUERY_HINTS"
   - "QUERY_STORE_QUERY_HINTS"
@@ -17,11 +19,11 @@ helpviewer_keywords:
   - "query_store_query_hints catalog view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-ver16 || >=sql-server-linux-ver16"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-ver16 || >=sql-server-linux-ver16 || =fabric-sqldb"
 ---
 # sys.query_store_query_hints (Transact-SQL)
 
-[!INCLUDE [sqlserver2022-asdb-asmi](../../includes/applies-to-version/sqlserver2022-asdb-asmi.md)]
+[!INCLUDE [sqlserver2022-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricsqldb.md)]
 
 Returns query hints from [Query Store hints](../performance/query-store-hints.md).
 
@@ -74,3 +76,4 @@ WHERE query_id = 39;
 - [sys.sp_query_store_set_hints](../system-stored-procedures/sys-sp-query-store-set-hints-transact-sql.md)
 - [sys.sp_query_store_clear_hints](../system-stored-procedures/sys-sp-query-store-clear-hints-transact-sql.md)
 - [sys.query_store_query (Transact-SQL)](sys-query-store-query-transact-sql.md)
+

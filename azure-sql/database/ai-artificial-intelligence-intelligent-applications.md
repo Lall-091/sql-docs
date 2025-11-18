@@ -5,14 +5,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: damauri, randolphwest, mathoma
 ms.date: 10/17/2025
-ms.update-cycle: 180-days
 ms.service: azure-sql-database
 ms.topic: conceptual
 ms.collection:
   - ce-skilling-ai-copilot
+ms.update-cycle: 180-days
 ms.custom:
-  - ignite-2024
-  - build-2025
+  - ignite-2025
 monikerRange: "=azuresql || =azuresql-db || =fabricsql"
 ---
 # Intelligent applications and AI
@@ -229,7 +228,7 @@ Copilot provides relevant answers to user questions, simplifying database manage
 
 ## Microsoft Copilot in Fabric SQL database (preview)
 
-[Copilot for SQL database in Microsoft Fabric (preview)](/fabric/database/sql/copilot) includes integrated AI assistance with the following features:
+[Copilot for SQL database in Microsoft Fabric](/fabric/database/sql/copilot) includes integrated AI assistance with the following features:
 
 - [**Code completion**](/fabric/database/sql/copilot-code-completion): Start writing T-SQL in the SQL query editor and Copilot will automatically generate a code suggestion to help complete your query. The **Tab** key accepts the code suggestion or keeps typing to ignore the suggestion. 
 

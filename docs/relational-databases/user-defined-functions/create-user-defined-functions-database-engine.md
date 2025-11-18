@@ -7,6 +7,8 @@ ms.reviewer: mathoma
 ms.date: 07/18/2025
 ms.service: sql
 ms.topic: language-reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "SCHEMABINDING clause"
   - "schema-bound functions [SQL Server]"
@@ -16,11 +18,11 @@ helpviewer_keywords:
   - "side-effecting functions"
   - "UDF"
   - "TVF"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || >=aps-pdw-2016 || =azure-sqldw-latest"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || >=aps-pdw-2016 || =azure-sqldw-latest || =fabric-sqldb"
 ---
 # Create user-defined functions (Database Engine)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 This article describes how to create a user-defined function (UDF) in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] by using [!INCLUDE [tsql](../../includes/tsql-md.md)].
 
@@ -255,3 +257,4 @@ ANSI_WARNINGS isn't honored when you pass parameters in a stored procedure, user
 - [ALTER FUNCTION (Transact-SQL)](../../t-sql/statements/alter-function-transact-sql.md)
 - [DROP FUNCTION (Transact-SQL)](../../t-sql/statements/drop-function-transact-sql.md)
 - [DROP PARTITION FUNCTION (Transact-SQL)](../../t-sql/statements/drop-partition-function-transact-sql.md)
+

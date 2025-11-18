@@ -8,12 +8,14 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "RAW mode, renaming <row> example"
 ---
 # Example: Rename the &lt;row&gt; element
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 For each row in the result set, the RAW mode generates an element `<row>`. You can optionally specify another name for this element by specifying an optional argument to the RAW mode, as shown in this query. The query returns a `<ProductModel>` element for each row in the rowset.
 
@@ -39,3 +41,4 @@ This is the result. Because the `ELEMENTS` directive is added in the query, the 
 ## See also
 
 - [Use RAW Mode with FOR XML](../../relational-databases/xml/use-raw-mode-with-for-xml.md)
+

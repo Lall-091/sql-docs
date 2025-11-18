@@ -8,6 +8,8 @@ ms.date: 03/13/2023
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "@@OPTIONS"
   - "@@OPTIONS_TSQL"
@@ -20,7 +22,7 @@ dev_langs:
 ---
 # @@OPTIONS (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Returns information about the current SET options.
 
@@ -160,3 +162,4 @@ GO
 - [Configuration Functions (Transact-SQL)](configuration-functions-transact-sql.md)
 - [sp_configure (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-configure-transact-sql.md)
 - [Configure the user options Server Configuration Option](../../database-engine/configure-windows/configure-the-user-options-server-configuration-option.md)
+

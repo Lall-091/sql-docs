@@ -8,12 +8,14 @@ ms.date: 03/28/2024
 ms.service: sql
 ms.subservice: supportability
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "102 (Database Engine error)"
 ---
 # MSSQLSERVER_102
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 ## Details
 
@@ -42,3 +44,4 @@ If you want to create a symmetric key using `RC4` or `RC4_128`, you should selec
 
 > [!CAUTION]  
 > RC4 algorithms aren't recommended. If you must use RC4, you can use `ALTER DATABASE SET COMPATIBILITY_LEVEL` to set the database to compatibility level `90` for [!INCLUDE [ssversion2005-md](../../includes/ssversion2005-md.md)], or `100` for [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)] or [!INCLUDE [sql2008r2-md](../../includes/sql2008r2-md.md)].
+

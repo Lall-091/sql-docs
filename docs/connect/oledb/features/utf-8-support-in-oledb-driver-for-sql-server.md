@@ -8,11 +8,13 @@ ms.date: "12/13/2021"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 ---
 
 # UTF-8 Support in OLE DB Driver for SQL Server
 
-[!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics PDW FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 [!INCLUDE[Driver_OLEDB_Download](../../../includes/driver_oledb_download.md)]
 
@@ -62,3 +64,4 @@ Microsoft OLE DB Driver for SQL Server ensures data is exposed to the server in 
 
 [OLE DB Driver for SQL Server Features](oledb-driver-for-sql-server-features.md)  
 [UTF-16 Support in OLE DB Driver for SQL Server](utf-16-support-in-oledb-driver-for-sql-server.md)  
+

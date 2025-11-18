@@ -8,7 +8,7 @@ ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "ALTER DATABASE SCOPED CREDENTIAL"
   - "ALTER_DATABASE_SCOPED_CREDENTIAL_TSQL"
@@ -17,7 +17,7 @@ helpviewer_keywords:
   - "credentials [SQL Server], ALTER DATABASE SCOPED CREDENTIAL statement"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || =fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || =fabric-sqldb"
 ---
 # ALTER DATABASE SCOPED CREDENTIAL (Transact-SQL)
 

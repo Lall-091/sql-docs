@@ -8,13 +8,15 @@ ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-ver16 || >=sql-server-linux-ver16"
+monikerRange: "=azuresqldb-current || >=sql-server-ver16 || >=sql-server-linux-ver16 || =fabric-sqldb"
 ---
 # sys.sp_copy_data_in_batches (Transact-SQL)
 
-[!INCLUDE [SQL Server 2022 Azure SQL Database](../../includes/applies-to-version/sqlserver2022-asdb.md)]
+[!INCLUDE [SQL Server 2022 Azure SQL Database-fabricsqldb](../../includes/applies-to-version/sqlserver2022-asdb-fabricsqldb.md)]
 
 Copies data from the source table to the target table after verifying that their schema is identical in terms of number of columns, column names and their data types. `TRANSACTION ID`, `SEQUENCE NUMBER`, and `GENERATED ALWAYS` columns are ignored since they're system generated and this allows copying data from a regular table to a ledger table and vice versa. Indexes between the tables can be different but the target table can only be a heap or have a clustered index. The data is copied in batches in individual transactions. If the operation fails, the target table is partially populated.
 
@@ -59,3 +61,4 @@ This operation requires **SELECT** on the source table, **INSERT** in the target
 - [Ledger considerations and limitations](../security/ledger/ledger-limits.md)
 - [Ledger overview](../security/ledger/ledger-overview.md)
 - [Migrate data from regular tables to ledger tables](../security/ledger/ledger-how-to-migrate-data-to-ledger-tables.md)
+

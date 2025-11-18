@@ -8,6 +8,8 @@ ms.reviewer: wiassaf
 ms.date: 09/10/2025
 ms.service: azure-sql-database
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "DATABASE_SERVICE_OBJECTIVES_TSQL"
 dev_langs:
@@ -15,7 +17,7 @@ dev_langs:
 keywords:
   - "elastic pool"
   - "elastic pool, management"
-monikerRange: "=azuresqldb-current||=azure-sqldw-latest||=fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || =fabric-sqldb"
 ---
 # sys.database_service_objectives
 [!INCLUDE [asdb-asa](../../includes/applies-to-version/asdb-asa-fabricsqldb.md)]

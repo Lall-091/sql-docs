@@ -7,6 +7,8 @@ ms.date: 12/05/2022
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "DBCC_OPENTRAN_TSQL"
   - "DBCC OPENTRAN"
@@ -22,10 +24,11 @@ helpviewer_keywords:
   - "oldest transactions [SQL Server]"
 dev_langs:
   - "TSQL"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # DBCC OPENTRAN (Transact-SQL)
 
-[!INCLUDE [SQL Server SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Helps to identify active transactions that may be preventing log truncation. `DBCC OPENTRAN` displays information about the oldest active transaction and the oldest distributed and nondistributed replicated transactions, if any, within the transaction log of the specified database. Results are displayed only if there is an active transaction that exists in the log or if the database contains replication information. An informational message is displayed if there are no active transactions in the log.
 

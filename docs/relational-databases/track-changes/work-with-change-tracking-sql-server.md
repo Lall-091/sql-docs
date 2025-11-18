@@ -7,6 +7,8 @@ ms.reviewer: randolphwest
 ms.date: 08/21/2025
 ms.service: sql
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "change tracking [SQL Server], making changes"
   - "change tracking [SQL Server], troubleshooting"
@@ -18,7 +20,7 @@ helpviewer_keywords:
   - "change tracking [SQL Server], data restore"
   - "change tracking [SQL Server], ensuring consistent results"
   - "change tracking [SQL Server], handling changes"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Work with change tracking (SQL Server)
 

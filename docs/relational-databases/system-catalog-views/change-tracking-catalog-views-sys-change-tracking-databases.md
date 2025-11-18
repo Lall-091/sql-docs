@@ -7,6 +7,8 @@ ms.date: "08/08/2016"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "change_tracking_databases"
   - "sys.change_tracking_databases_TSQL"
@@ -17,10 +19,10 @@ helpviewer_keywords:
   - "change tracking [SQL Server], sys.change_tracking_databases"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Change Tracking Catalog Views - sys.change_tracking_databases
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Returns one row for each database that has change tracking enabled.  
 
@@ -39,3 +41,4 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
  [Change Tracking Catalog Views &#40;Transact-SQL&#41;](./catalog-views-transact-sql.md)   
  [Track Data Changes &#40;SQL Server&#41;](../../relational-databases/track-changes/track-data-changes-sql-server.md)  
   
+

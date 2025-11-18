@@ -1,27 +1,27 @@
 ---
 title: Fuzzy String Match
-description: "Look up data with fuzzy or approximate values."
+description: Look up data with fuzzy or approximate values.
 author: MikeRayMSFT
 ms.author: mikeray
+ms.reviewer: randolphwest
+ms.date: 11/18/2025
 ms.service: sql
 ms.topic: overview
-ms.date: 05/19/2025
-monikerRange: "=azuresqldb-current || =fabric"
 ms.custom:
-  - build-2025
+  - ignite-2025
+monikerRange: "=azuresqldb-current || =fabric-sqldb"
 ---
 
 # What is fuzzy string matching?
 
 [!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
-Use fuzzy, or approximate, string matching to check if two strings are similar, and calculate the difference between two strings. Use this capability to identify strings that may be different because of character corruption. Corruption causes may include spelling errors, transposed characters, missing characters, or abbreviations. Fuzzy string matching uses algorithms to detect similar sounding strings.
+Use fuzzy, or approximate, string matching to check if two strings are similar, and calculate the difference between two strings. Use this capability to identify strings that might be different because of character corruption. Corruption includes spelling errors, transposed characters, missing characters, or abbreviations. Fuzzy string matching uses algorithms to detect similar sounding strings.
 
-> [!NOTE]
-> - Fuzzy string matching is currently in preview. 
-> - SQL Server support for fuzzy string matching introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. 
-> - Fuzzy string matching is available in Azure SQL Managed Instance with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).
-
+> [!NOTE]  
+> Fuzzy string matching is currently in preview for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and requires enabling the [preview feature database scoped configuration](../../t-sql/statements/alter-database-scoped-configuration-transact-sql.md#preview-features).
+>
+> Fuzzy string matching is available in Azure SQL Managed Instance with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).
 
 ## Fuzzy functions
 
@@ -32,8 +32,8 @@ Use fuzzy, or approximate, string matching to check if two strings are similar, 
 | [JARO_WINKLER_DISTANCE](../../t-sql/functions/jaro-winkler-distance-transact-sql.md) | Calculates the edit distance between two strings giving preference to strings that match from the beginning for a set prefix length. |
 | [JARO_WINKLER_SIMILARITY](../../t-sql/functions/jaro-winkler-similarity-transact-sql.md) | Calculates a similarity value ranging from 0 (indicating no match) to 100 (indicating full match). |
 
-> [!NOTE]
-> Currently, the functions do not adhere to the comparison semantics defined by collation settings, such as case-insensitivity and other collation-specific rules. Once support for collation rules is implemented, the functions' output will reflect these semantics and may change accordingly. 
+> [!NOTE]  
+> Currently, the functions don't adhere to the comparison semantics defined by collation settings, such as case insensitivity and other collation-specific rules. Once support for collation rules is implemented, the functions' output will reflect these semantics and might change accordingly.
 
 ## Examples
 
@@ -47,38 +47,41 @@ To create and populate the example table, connect to a non-production user datab
 
 ```sql
 -- Step 1: Create the table
-CREATE TABLE WordPairs (
-    WordID INT IDENTITY(1,1) PRIMARY KEY, -- Auto-incrementing ID
-    WordUK NVARCHAR(50), -- UK English word
-    WordUS NVARCHAR(50)  -- US English word
+CREATE TABLE WordPairs
+(
+    WordID INT IDENTITY (1, 1) PRIMARY KEY, -- Auto-incrementing ID
+    WordUK NVARCHAR (50), -- UK English word
+    WordUS NVARCHAR (50)  -- US English word
 );
 
 -- Step 2: Insert the data
-INSERT INTO WordPairs (WordUK, WordUS) VALUES
-('Colour', 'Color'),
-('Flavour', 'Flavor'),
-('Centre', 'Center'),
-('Theatre', 'Theater'),
-('Organise', 'Organize'),
-('Analyse', 'Analyze'),
-('Catalogue', 'Catalog'),
-('Programme', 'Program'),
-('Metre', 'Meter'),
-('Honour', 'Honor'),
-('Neighbour', 'Neighbor'),
-('Travelling', 'Traveling'),
-('Grey', 'Gray'),
-('Defence', 'Defense'),
-('Practise', 'Practice'), -- Verb form in UK
-('Practice', 'Practice'), -- Noun form in both
-('Aluminium', 'Aluminum'),
-('Cheque', 'Check'); -- Bank cheque vs. check
+INSERT INTO WordPairs (WordUK, WordUS)
+VALUES ('Colour', 'Color'),
+       ('Flavour', 'Flavor'),
+       ('Centre', 'Center'),
+       ('Theatre', 'Theater'),
+       ('Organise', 'Organize'),
+       ('Analyse', 'Analyze'),
+       ('Catalogue', 'Catalog'),
+       ('Programme', 'Program'),
+       ('Metre', 'Meter'),
+       ('Honour', 'Honor'),
+       ('Neighbour', 'Neighbor'),
+       ('Travelling', 'Traveling'),
+       ('Grey', 'Gray'),
+       ('Defence', 'Defense'),
+       ('Practise', 'Practice'), -- Verb form in UK
+       ('Practice', 'Practice'), -- Noun form in both
+       ('Aluminium', 'Aluminum'),
+       ('Cheque', 'Check'); -- Bank cheque vs. check
 ```
 
 ### Example *EDIT_DISTANCE*
 
 ```sql
-SELECT WordUK, WordUS, EDIT_DISTANCE(WordUK, WordUS) AS Distance
+SELECT WordUK,
+       WordUS,
+       EDIT_DISTANCE(WordUK, WordUS) AS Distance
 FROM WordPairs
 WHERE EDIT_DISTANCE(WordUK, WordUS) <= 2
 ORDER BY Distance ASC;
@@ -111,9 +114,11 @@ Theatre                        Theater                        2
 ### Example *EDIT_DISTANCE_SIMILARITY*
 
 ```sql
-SELECT WordUK, WordUS, EDIT_DISTANCE_SIMILARITY(WordUK, WordUS) AS Similarity
+SELECT WordUK,
+       WordUS,
+       EDIT_DISTANCE_SIMILARITY(WordUK, WordUS) AS Similarity
 FROM WordPairs
-WHERE EDIT_DISTANCE_SIMILARITY(WordUK, WordUS) >=75
+WHERE EDIT_DISTANCE_SIMILARITY(WordUK, WordUS) >= 75
 ORDER BY Similarity DESC;
 ```
 
@@ -141,7 +146,9 @@ Grey                           Gray                           75
 ### Example *JARO_WINKLER_DISTANCE*
 
 ```sql
-SELECT WordUK, WordUS, JARO_WINKLER_DISTANCE(WordUK, WordUS) AS Distance
+SELECT WordUK,
+       WordUS,
+       JARO_WINKLER_DISTANCE(WordUK, WordUS) AS Distance
 FROM WordPairs
 WHERE JARO_WINKLER_DISTANCE(WordUK, WordUS) <= .05
 ORDER BY Distance ASC;
@@ -169,10 +176,12 @@ Metre                          Meter                          0.0466666666666667
 ### Example *JARO_WINKLER_SIMILARITY*
 
 ```sql
-SELECT WordUK, WordUS, JARO_WINKLER_SIMILARITY(WordUK, WordUS) AS Similarity
+SELECT WordUK,
+       WordUS,
+       JARO_WINKLER_SIMILARITY(WordUK, WordUS) AS Similarity
 FROM WordPairs
 WHERE JARO_WINKLER_SIMILARITY(WordUK, WordUS) > 90
-ORDER BY  Similarity DESC;
+ORDER BY Similarity DESC;
 ```
 
 Returns:
@@ -203,35 +212,35 @@ Defence                        Defense                        94
 The following query demonstrates all of the regular expression functions currently available.
 
 ```sql
-SELECT	T.source_string,
-		T.target_string,
-		EDIT_DISTANCE(T.source_string, T.target_string) as ED_Distance,
-		JARO_WINKLER_DISTANCE(T.source_string, T.target_string) as JW_Distance,
-
-		EDIT_DISTANCE_SIMILARITY(T.source_string, T.target_string) as ED_Similarity,
-		JARO_WINKLER_SIMILARITY(T.source_string, T.target_string) as JW_Similarity
-FROM (VALUES('Black', 'Red'),
-			('Colour', 'Yellow'),
-			('Colour', 'Color'),
-			('Microsoft', 'Msft'),
-			('Regex', 'Regex')) as T(source_string, target_string);
+SELECT T.source_string,
+       T.target_string,
+       EDIT_DISTANCE(T.source_string, T.target_string) AS ED_Distance,
+       JARO_WINKLER_DISTANCE(T.source_string, T.target_string) AS JW_Distance,
+       EDIT_DISTANCE_SIMILARITY(T.source_string, T.target_string) AS ED_Similarity,
+       JARO_WINKLER_SIMILARITY(T.source_string, T.target_string) AS JW_Similarity
+FROM (VALUES ('Black', 'Red'),
+             ('Colour', 'Yellow'),
+             ('Colour', 'Color'),
+             ('Microsoft', 'Msft'),
+             ('Regex', 'Regex')
+     ) AS T(source_string, target_string);
 ```
 
 Returns:
 
 ```output
 source_string  target_string  ED_Distance    JW_Distance           ED_Similarity  JW_Similarity
--------------- -------------- -------------- --------------------- -------------- -------------- 
-Black	        Red	            5	           1	                   0	        0
-Colour	        Yellow	        5	           0.444444444444445 	   17	        55
-Colour	        Color	        1	           0.0333333333333333 	   83	        96
-Microsoft	    Msft	        5	           0.491666666666667 	   44	        50
-Regex	        Regex	        0	           0	                   100	        100
+-------------- -------------- -------------- --------------------- -------------- --------------
+Black          Red            5              1                     0              0
+Colour         Yellow         5              0.444444444444445     17             55
+Colour         Color          1              0.0333333333333333    83             96
+Microsoft      Msft           5              0.491666666666667     44             50
+Regex          Regex          0              0                     100            100
 ```
 
 ## Clean up
 
-After you are done using the example data, delete the example table.
+After you're done using the example data, delete the example table:
 
 ```sql
 IF OBJECT_ID('dbo.WordPairs', 'U') IS NOT NULL
@@ -242,7 +251,7 @@ END
 
 ## Related content
 
-- [EDIT_DISTANCE](../../t-sql/functions/edit-distance-transact-sql.md)
-- [EDIT_DISTANCE_SIMILARITY](../../t-sql/functions/edit-distance-similarity-transact-sql.md)
-- [JARO_WINKLER_DISTANCE](../../t-sql/functions/jaro-winkler-distance-transact-sql.md)
-- [JARO_WINKLER_SIMILARITY](../../t-sql/functions/jaro-winkler-similarity-transact-sql.md)
+- [EDIT_DISTANCE (Transact-SQL)](../../t-sql/functions/edit-distance-transact-sql.md)
+- [EDIT_DISTANCE_SIMILARITY (Transact-SQL)](../../t-sql/functions/edit-distance-similarity-transact-sql.md)
+- [JARO_WINKLER_DISTANCE (Transact-SQL)](../../t-sql/functions/jaro-winkler-distance-transact-sql.md)
+- [JARO_WINKLER_SIMILARITY (Transact-SQL)](../../t-sql/functions/jaro-winkler-similarity-transact-sql.md)

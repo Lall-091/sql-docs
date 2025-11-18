@@ -7,6 +7,8 @@ ms.date: 04/16/2020
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "query method"
   - "query() method"
@@ -14,7 +16,7 @@ dev_langs:
   - "TSQL"
 ---
 # query() Method (xml Data Type)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Specifies an XQuery against an instance of the **xml** data type. The result is of **xml** type. The method returns an instance of untyped XML.  
   
@@ -111,3 +113,4 @@ WHERE CatalogDescription.exist('/PD:ProductDescription/PD:Features/WM:Warranty '
  [XML Data Modification Language &#40;XML DML&#41;](../../t-sql/xml/xml-data-modification-language-xml-dml.md)  
   
   
+

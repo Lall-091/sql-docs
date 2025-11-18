@@ -8,12 +8,14 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "business logic [XML]"
 ---
 # Add business logic to XML data
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb.md)]
+[!INCLUDE [SQL Server Azure SQL Database-fabricsqldb](../../includes/applies-to-version/sql-asdb-fabricsqldb.md)]
 
 Your business logic can be added to XML data in several ways:
 
@@ -58,3 +60,4 @@ WHERE  xCol.exist('/book/title/text()[contains(.,"custom")]') = 1;
 The query result contains a rowset of the transformed XML.
 
 The CLR integration into [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] expands the possibilities for decomposing XML data into tables or property promotion, and querying XML data by using managed classes in the System.Xml namespace. For more information, see [XML Data &#40;SQL Server&#41;](../../relational-databases/xml/xml-data-sql-server.md).
+

@@ -4,12 +4,12 @@ description: Learn about the SQL Server resource governor feature that limits th
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: dfurman, randolphwest
-ms.date: 10/21/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: performance
 ms.topic: conceptual
 ms.custom:
-  - build-2025
+  - ignite-2025
 helpviewer_keywords:
   - "Resource Governor, overview"
   - "Resource Governor"
@@ -22,7 +22,10 @@ monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-cu
 
 You can use resource governor to manage [!INCLUDE [ssde-md](../../includes/ssde-md.md)] resource consumption and enforce policies for user workloads. Resource governor lets you reserve or limit the amount of CPU, memory, and physical I/O that user query workloads can use. You can also modify resource consumption behavior of each query, such as the degree of parallelism or the size of a memory grant.
 
-Starting with [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)], you can use resource governor to enforce limits on the total amount of `tempdb` space consumed by an application or user workload. For more information, see [Tempdb space resource governance](tempdb-space-resource-governance.md).
+Starting with [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)], you can:
+
+- Use resource governor in the Enterprise, Enterprise Developer, Standard, and Standard Developer editions. In the previous versions, resource governor is only available in the Enterprise and Developer editions. For more information, see [What's new in SQL Server 2025](../../sql-server/what-s-new-in-sql-server-2025.md).
+- Use resource governor to enforce limits on the total amount of `tempdb` space consumed by an application or user workload. For more information, see [Tempdb space resource governance](tempdb-space-resource-governance.md).
 
 For configuration and monitoring examples and to learn resource governor best practices, see [Tutorial: Resource governor configuration examples and best practices](resource-governor-walkthrough.md).
 

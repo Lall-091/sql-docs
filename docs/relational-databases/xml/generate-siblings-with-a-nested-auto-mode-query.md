@@ -8,13 +8,15 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "queries [XML in SQL Server], nested AUTO mode"
   - "nested AUTO mode query"
 ---
 # Generate siblings with a nested AUTO mode query
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]	
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]	
 
 The following example shows how to generate siblings by using a nested AUTO mode query. The only other way to generate such XML is to use the EXPLICIT mode. However, this can be cumbersome.
 
@@ -164,3 +166,4 @@ Because the `TYPE` directive returns a query result as **xml** type, you can que
 ## See also
 
 - [Use Nested FOR XML Queries](../../relational-databases/xml/use-nested-for-xml-queries.md)
+

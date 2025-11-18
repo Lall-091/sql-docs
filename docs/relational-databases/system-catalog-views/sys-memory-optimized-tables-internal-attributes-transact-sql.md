@@ -8,6 +8,8 @@ ms.date: "03/07/2017"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.memory_optimized_tables_internal_attributes"
   - "sys.memory_optimized_tables_internal_attributes_TSQL"
@@ -17,11 +19,11 @@ helpviewer_keywords:
   - "sys.memory_optimized_tables_internal_attributes catalog view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.memory_optimized_tables_internal_attributes (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
 
 Contains a row for each internal memory-optimized table used for storing user memory-optimized tables. Each user table corresponds to one or more internal tables. A single table is used for the core data storage. Additional internal tables are used to support features such as temporal, columnstore index and off-row (LOB) storage for memory-optimized tables.
  
@@ -123,5 +125,6 @@ FROM sys.memory_optimized_tables_internal_attributes moa
    JOIN sys.objects o on moa.object_id=o.object_id
 WHERE moa.type IN (0, 2, 3, 4)
 ```
+
 
 

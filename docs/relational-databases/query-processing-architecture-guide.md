@@ -7,18 +7,20 @@ ms.reviewer: maghan, randolphwest, derekw
 ms.date: 06/06/2025
 ms.service: sql
 ms.topic: concept-article
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "guide, query processing architecture"
   - "query processing architecture guide"
   - "row mode execution"
   - "batch mode execution"
 ai-usage: ai-assisted
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # Query processing architecture guide
 
-[!INCLUDE [SQL Server Azure SQL Database](../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database-fabricsqldb](../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 The [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] processes queries on various data storage architectures such as local tables, partitioned tables, and tables distributed across multiple servers. The following sections cover how [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] processes queries and optimizes query reuse through execution plan caching.
 
@@ -1611,3 +1613,4 @@ GO
 - [Operator Precedence (Transact-SQL)](../t-sql/language-elements/operator-precedence-transact-sql.md)
 - [Execution plan overview](performance/execution-plans.md)
 - [Performance Center for SQL Server Database Engine and Azure SQL Database](performance/performance-center-for-sql-server-database-engine-and-azure-sql-database.md)
+

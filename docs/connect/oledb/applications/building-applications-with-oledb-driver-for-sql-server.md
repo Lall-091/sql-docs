@@ -8,6 +8,8 @@ ms.date: "02/12/2019"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "data access [OLE DB Driver for SQL Server], building applications"
   - "MSOLEDBSQL, building applications"
@@ -16,7 +18,7 @@ helpviewer_keywords:
 ---
 # Building applications with OLE DB Driver for SQL Server
 
-[!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics PDW FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 [!INCLUDE[Driver_OLEDB_Download](../../../includes/driver_oledb_download.md)]
 
@@ -52,3 +54,4 @@ helpviewer_keywords:
 
  [OLE DB Driver for SQL Server](../../oledb/oledb-driver-for-sql-server.md)  
  [OLE DB how-to topics](../../oledb/ole-db-how-to/ole-db-how-to-topics.md)  
+

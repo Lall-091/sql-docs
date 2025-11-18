@@ -7,14 +7,16 @@ ms.date: "03/03/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: "conceptual"
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "synonyms [SQL Server], about synonyms"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Synonyms (Database Engine)
-[!INCLUDE[sql-asdb-asdbmi](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE[sql-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   A synonym is a database object that serves the following purposes:  
   
@@ -203,3 +205,4 @@ GO
  [CREATE SYNONYM &#40;Transact-SQL&#41;](../../t-sql/statements/create-synonym-transact-sql.md)    
  [DROP SYNONYM &#40;Transact-SQL&#41;](../../t-sql/statements/drop-synonym-transact-sql.md)    
   
+

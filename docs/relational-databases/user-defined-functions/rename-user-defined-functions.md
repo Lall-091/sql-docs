@@ -6,11 +6,13 @@ ms.author: randolphwest
 ms.date: "06/28/2022"
 ms.service: sql
 ms.topic: language-reference
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+ms.custom:
+  - ignite-2025
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Rename user-defined functions
 
-[!INCLUDE [SQL Server SQL Database](../../includes/applies-to-version/sql-asdb.md)]
+[!INCLUDE [SQL Server SQL Database-fabricsqldb](../../includes/applies-to-version/sql-asdb-fabricsqldb.md)]
 
 You can only rename user-defined functions in [!INCLUDE[ssnoversion](../../includes/ssnoversion-md.md)] by using [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)].
 
@@ -52,3 +54,4 @@ For more information, see [CREATE FUNCTION &#40;Transact-SQL&#41;](../../t-sql/s
 
 - [sys.sql_expression_dependencies &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-sql-expression-dependencies-transact-sql.md)
 - [View user-defined functions](../../relational-databases/user-defined-functions/view-user-defined-functions.md)
+

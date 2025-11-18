@@ -10,6 +10,10 @@ ms.subservice: tools-other
 ms.topic: conceptual
 ms.collection:
   - data-tools
+ms.custom:
+  - linux-related-content
+  - sfi-ropc-blocked
+  - ignite-2025
 helpviewer_keywords:
   - "statements [SQL Server], command prompt"
   - "go-sqlcmd"
@@ -28,12 +32,7 @@ helpviewer_keywords:
   - "RESET command"
   - "GO command"
 zone_pivot_groups: cs1-command-shell
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric"
-ms.custom:
-  - linux-related-content
-  - ignite-2024
-  - build-2025
-  - sfi-ropc-blocked
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric-sqldb"
 ---
 # sqlcmd utility
 

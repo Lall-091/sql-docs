@@ -7,6 +7,8 @@ ms.date: "07/24/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "CURRENT_TRANSACTION_ID"
   - "CURRENT_TRANSACTION_ID_TSQL"
@@ -20,7 +22,7 @@ dev_langs:
 
 # CURRENT_TRANSACTION_ID (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
 
 This function returns the transaction ID of the current transaction in the current session.
   
@@ -58,3 +60,4 @@ SELECT CURRENT_TRANSACTION_ID();
 [SET CONTEXT_INFO &#40;Transact-SQL&#41;](../../t-sql/statements/set-context-info-transact-sql.md)
   
   
+

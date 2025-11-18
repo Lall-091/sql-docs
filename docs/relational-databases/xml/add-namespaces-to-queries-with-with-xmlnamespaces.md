@@ -8,6 +8,8 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "ELEMENTS XSINIL directive"
   - "adding namespaces"
@@ -22,7 +24,7 @@ helpviewer_keywords:
 ---
 # Add namespaces to queries using WITH XMLNAMESPACES
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 [WITH XMLNAMESPACES (Transact-SQL)](../../t-sql/xml/with-xmlnamespaces.md) provides namespace URI support in the following way:
 
@@ -246,3 +248,4 @@ An explicit declaration in the XQuery prolog overrides the namespace prefix and 
 - [XQuery Language Reference &#40;SQL Server&#41;](../../xquery/xquery-language-reference-sql-server.md)
 - [WITH XMLNAMESPACES &#40;Transact-SQL&#41;](../../t-sql/xml/with-xmlnamespaces.md)
 - [FOR XML &#40;SQL Server&#41;](../../relational-databases/xml/for-xml-sql-server.md)
+

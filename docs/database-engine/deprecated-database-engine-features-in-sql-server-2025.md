@@ -1,25 +1,30 @@
 ---
-title: "Deprecated Database Engine Features"
-titleSuffix: "SQL Server 2025 Preview"
+title: Deprecated Database Engine Features
+titleSuffix: SQL Server 2025
 description: Find out about deprecated Database Engine features that are still available in SQL Server 2025 (17.x), but shouldn't be used in new applications.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 09/08/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: conceptual
 ms.custom:
-  - build-2025
+  - ignite-2025
 helpviewer_keywords:
   - "deprecated changes 2019 [SQL Server]"
 monikerRange: ">=sql-server-ver15 || >=sql-server-linux-ver15"
 ---
-# Deprecated Database Engine features in SQL Server 2025 (17.x) Preview
+# Deprecated Database Engine features in SQL Server 2025 (17.x)
 
 [!INCLUDE [sqlserver2025](../includes/applies-to-version/sqlserver2025.md)]
 
-[!INCLUDE [sssql25-md](../includes/sssql25-md.md)] doesn't deprecate any features beyond features deprecated in prior releases:
+[!INCLUDE [sssql25-md](../includes/sssql25-md.md)] deprecates:
+
+- The [Hot add CPU](../relational-databases/thread-and-task-architecture-guide.md#hot-add-cpu) feature.
+- The [lightweight pooling](configure-windows/lightweight-pooling-server-configuration-option.md) configuration option and the corresponding **fiber mode** feature.
+
+Features that were deprecated in prior releases are also deprecated in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)]. For information about deprecated features in other versions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see:
 
 - [Deprecated Database Engine features in SQL Server 2022 (16.x)](deprecated-database-engine-features-in-sql-server-2022.md)
 - [Deprecated Database Engine features in SQL Server 2019 (15.x)](deprecated-database-engine-features-in-sql-server-2019.md)

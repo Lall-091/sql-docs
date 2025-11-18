@@ -8,7 +8,7 @@ ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "sys.allocation_units_TSQL"
   - "sys.allocation_units"
@@ -18,7 +18,7 @@ helpviewer_keywords:
   - "sys.allocation_units catalog view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.allocation_units (Transact-SQL)
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]

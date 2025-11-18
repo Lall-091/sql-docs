@@ -7,6 +7,8 @@ ms.date: "07/24/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "APPLOCK_MODE_TSQL"
   - "APPLOCK_MODE"
@@ -19,7 +21,7 @@ dev_langs:
   - "TSQL"
 ---
 # APPLOCK_MODE (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This function returns the lock mode held by the lock owner on a particular application resource. As an application lock function, APPLOCK_MODE operates on the current database. The database is the scope of the application locks.
   
@@ -133,3 +135,4 @@ GO
 [sp_releaseapplock &#40;Transact-SQL&#41;](../../relational-databases/system-stored-procedures/sp-releaseapplock-transact-sql.md)
   
   
+

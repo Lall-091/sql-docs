@@ -7,6 +7,8 @@ ms.date: 05/05/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "data access [OLE DB Driver for SQL Server], encryption"
   - "cryptography [OLE DB Driver for SQL Server]"
@@ -16,7 +18,7 @@ helpviewer_keywords:
 ---
 # Encryption and certificate validation in OLE DB
 
-[!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics PDW FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 [!INCLUDE[Driver_OLEDB_Download](../../../includes/driver_oledb_download.md)]
 
@@ -124,3 +126,4 @@ The following table describes the encryption and validation outcome for legacy a
 [Connection string keywords](../applications/using-connection-string-keywords-with-oledb-driver-for-sql-server.md)  
 [Major version differences](../major-version-differences.md)  
 [Registry settings](./registry-settings.md)  
+

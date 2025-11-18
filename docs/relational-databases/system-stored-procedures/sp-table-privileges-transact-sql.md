@@ -8,6 +8,8 @@ ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_table_privileges"
   - "sp_table_privileges_TSQL"
@@ -18,7 +20,7 @@ dev_langs:
 ---
 # sp_table_privileges (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Returns a list of table permissions (such as `INSERT`, `DELETE`, `UPDATE`, `SELECT`, `REFERENCES`) for the specified table or tables.
 
@@ -92,3 +94,4 @@ EXECUTE sp_table_privileges @table_name = 'Contact%';
 
 - [Catalog stored procedures (Transact-SQL)](catalog-stored-procedures-transact-sql.md)
 - [System stored procedures (Transact-SQL)](system-stored-procedures-transact-sql.md)
+

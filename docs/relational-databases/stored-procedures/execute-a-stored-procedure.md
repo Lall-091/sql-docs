@@ -8,7 +8,7 @@ ms.service: sql
 ms.subservice: stored-procedures
 ms.topic: how-to
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "sql13.swb.executeprocedure.general.f1"
   - "sql13.swb.executeprocedure.f1"
@@ -18,7 +18,7 @@ helpviewer_keywords:
   - "system stored procedures [SQL Server], executing"
   - "stored procedures [SQL Server], executing"
   - "user-defined stored procedures [SQL Server]"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Execute a stored procedure
 

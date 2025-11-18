@@ -7,6 +7,8 @@ ms.date: 08/16/2022
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "OBJECT_ID_FROM_NODE_ID"
 helpviewer_keywords:
@@ -14,10 +16,10 @@ helpviewer_keywords:
   - "Graph, system functions, graph ID, node ID, node"
 dev_langs:
   - "TSQL"
-monikerRange: "= azuresqldb-current || >= sql-server-2017 || >= sql-server-linux-2017 || = azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2017 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # OBJECT_ID_FROM_NODE_ID (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sqlserver2017-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sqlserver2017-asdb-asdbmi-fabricsqldb.md)]
 
 Returns the object ID for a given graph node ID.
 
@@ -72,3 +74,4 @@ Here are the results:
 - [SQL Graph Database Sample](../../relational-databases/graphs/sql-graph-sample.md)
 - [GRAPH_ID_FROM_NODE_ID](./graph-id-from-node-id-transact-sql.md)
 - [NODE_ID_FROM_PARTS](./node-id-from-parts-transact-sql.md)
+

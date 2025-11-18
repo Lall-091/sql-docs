@@ -7,6 +7,8 @@ ms.date: 07/09/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "ALTER_SECURITY_POLICY_TSQL"
   - "ALTER SECURITY POLICY"
@@ -16,11 +18,11 @@ helpviewer_keywords:
   - "ALTER SECURITY POLICY statement"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # ALTER SECURITY POLICY (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi-fabricse-fabricdw](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricse-fabricdw.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricse-fabricdw-fabricsqldb.md)]
 
 Alters a security policy.
 
@@ -173,3 +175,4 @@ ALTER SECURITY POLICY rls.SecPol
 - [DROP SECURITY POLICY (Transact-SQL)](../../t-sql/statements/drop-security-policy-transact-sql.md)
 - [sys.security_policies (Transact-SQL)](../../relational-databases/system-catalog-views/sys-security-policies-transact-sql.md)
 - [sys.security_predicates (Transact-SQL)](../../relational-databases/system-catalog-views/sys-security-predicates-transact-sql.md)
+

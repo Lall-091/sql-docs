@@ -7,13 +7,15 @@ ms.reviewer: randolphwest
 ms.date: 06/23/2025
 ms.service: sql
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current"
+monikerRange: "=azuresqldb-current || =fabric-sqldb"
 ---
 # sys.sp_cleanup_temporal_history (Transact-SQL)
 
-[!INCLUDE [sqlserver2017-asdb-asdbmi](../../includes/applies-to-version/sqlserver2017-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2017-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2017-asdb-asdbmi-fabricsqldb.md)]
 
 Removes all rows from temporal history table that match configured `HISTORY_RETENTION_PERIOD` within a single transaction.
 
@@ -67,3 +69,4 @@ SELECT @rowcnt;
 ## Related content
 
 - [Temporal tables retention policy](/azure/sql-database/sql-database-temporal-tables-retention-policy)
+

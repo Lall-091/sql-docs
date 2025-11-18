@@ -7,14 +7,16 @@ ms.date: "03/17/2017"
 ms.service: sql
 ms.subservice: xevents
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "extended events [SQL Server], using"
   - "extended events [SQL Server], options for using"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Extended Events Tools
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Fabric SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   You can use the following tools to create and manage [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Extended Events sessions:  
   

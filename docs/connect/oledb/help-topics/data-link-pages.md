@@ -8,10 +8,12 @@ ms.date: "10/26/2022"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
-ms.custom: sfi-image-nochange
+ms.custom:
+  - sfi-image-nochange
+  - ignite-2025
 ---
 # Universal Data Link (UDL) configuration
-[!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics PDW FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 [!INCLUDE[Driver_OLEDB_Download](../../../includes/driver_oledb_download.md)]
 
@@ -61,3 +63,4 @@ Use the Advanced tab to view and set additional initialization properties.
 - [Authenticate to Microsoft Entra ID](../features/using-azure-active-directory.md) using the OLE DB driver.
 
 - [Prompt user for authentication credentials](../help-topics/sql-server-login-dialog.md) using the OLE DB driver.
+

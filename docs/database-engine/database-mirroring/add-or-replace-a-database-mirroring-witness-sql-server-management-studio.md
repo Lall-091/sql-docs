@@ -7,13 +7,24 @@ ms.date: "03/07/2017"
 ms.service: sql
 ms.subservice: database-mirroring
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "witness [SQL Server], establishing"
   - "database mirroring [SQL Server], witness"
 ---
 # Add or Replace a Database Mirroring Witness (SQL Server Management Studio)
  [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
-  If the database mirroring endpoints use Windows Authentication,, you can use [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] to add or replace a witness. Adding a witness in [!INCLUDE[ssManStudio](../../includes/ssmanstudio-md.md)] also changes the operating mode to high-safety mode with automatic failover.  
+
+> [!CAUTION]
+> [!INCLUDE[ssNoteDepFutureAvoid](../../includes/ssnotedepfutureavoid-md.md)] For high availability, use [!INCLUDE[ssHADR](../../includes/sshadr-md.md)] instead.  
+
+> [!IMPORTANT]
+> Database Mirroring in SQL Server is a distinct technology from [Microsoft Fabric Database Mirroring](/fabric/database/mirrored-database/overview). Mirroring to Fabric provides better analytical performance, the ability to unify your data estate with OneLake in Fabric, and open access to your data in Delta Parquet format.
+>
+> With Mirroring to Microsoft Fabric, you can continuously replicate your existing data estate directly into OneLake in Fabric, including data from SQL Server 2016+, Azure SQL Database, Azure SQL Managed Instance, Cosmos DB, Oracle, Snowflake, and more.
+
+  If the database mirroring endpoints use Windows Authentication, you can use [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] to add or replace a witness. Adding a witness in [!INCLUDE[ssManStudio](../../includes/ssmanstudio-md.md)] also changes the operating mode to high-safety mode with automatic failover.  
   
 > [!NOTE]  
 >  We strongly recommend that the witness reside on a separate computer from either of the partners. The service account used by the witness must be in the same domain as the service accounts used by the principal and mirror server instances, or it must be in a trusted domain.  

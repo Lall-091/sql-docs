@@ -7,6 +7,8 @@ ms.date: "11/10/2017"
 ms.service: sql
 ms.subservice: database-mirroring
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "database mirroring [SQL Server], preparing for mirroring"
   - "logins [SQL Server], database mirroring"
@@ -14,6 +16,15 @@ helpviewer_keywords:
 ---
 # Prepare a Mirror Database for Mirroring (SQL Server)
  [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
+
+> [!CAUTION]
+> [!INCLUDE[ssNoteDepFutureAvoid](../../includes/ssnotedepfutureavoid-md.md)] For high availability, use [!INCLUDE[ssHADR](../../includes/sshadr-md.md)] instead.  
+
+> [!IMPORTANT]
+> Database Mirroring in SQL Server is a distinct technology from [Microsoft Fabric Database Mirroring](/fabric/database/mirrored-database/overview). Mirroring to Fabric provides better analytical performance, the ability to unify your data estate with OneLake in Fabric, and open access to your data in Delta Parquet format.
+>
+> With Mirroring to Microsoft Fabric, you can continuously replicate your existing data estate directly into OneLake in Fabric, including data from SQL Server 2016+, Azure SQL Database, Azure SQL Managed Instance, Cosmos DB, Oracle, Snowflake, and more.
+  
   Before a database mirroring session can start, the database owner or system administrator must make sure that the mirror database has been created and is ready for mirroring. Creating a new mirror database minimally requires taking a full backup of the principal database and a subsequent log backup and restoring them both onto the mirror server instance, using WITH NORECOVERY.  
   
  This topic describes how to prepare a mirror database in [!INCLUDE[ssnoversion](../../includes/ssnoversion-md.md)] by using [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or [!INCLUDE[tsql](../../includes/tsql-md.md)].  
@@ -52,7 +63,7 @@ helpviewer_keywords:
   
 -   The mirror database must be in the RESTORING state for mirroring to work. When preparing a mirror database, you must use RESTORE WITH NORECOVERY for every restore operation. Minimally, you will need to restore WITH NORECOVERY a full backup of the principal database, followed by all subsequent log backups.  
   
--   The system where you plan to create the mirror database must possesses a disk drive with sufficient space to hold the mirror database.  
+-   The system where you plan to create the mirror database must possess a disk drive with sufficient space to hold the mirror database.  
   
 ###  <a name="Restrictions"></a> Limitations and Restrictions  
   

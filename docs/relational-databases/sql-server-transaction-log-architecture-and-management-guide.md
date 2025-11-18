@@ -8,7 +8,7 @@ ms.date: 08/28/2025
 ms.service: sql
 ms.topic: conceptual
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "transaction log architecture guide"
   - "guide, transaction log architecture"
@@ -19,7 +19,7 @@ helpviewer_keywords:
   - "virtual log size"
   - "vlf size"
   - "transaction log internals"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # SQL Server transaction log architecture and management guide
 

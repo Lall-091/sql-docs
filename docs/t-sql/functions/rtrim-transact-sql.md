@@ -8,6 +8,8 @@ ms.date: 05/08/2023
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "RTRIM_TSQL"
   - "RTRIM"
@@ -18,11 +20,11 @@ helpviewer_keywords:
   - "trailing blanks"
 dev_langs:
   - "TSQL"
-monikerRange: ">= aps-pdw-2016 || = azuresqldb-current || = azure-sqldw-latest || >= sql-server-2016 || >= sql-server-linux-2017 || >= sql-server-ver15 || >= sql-server-ver16 || >= sql-server-linux-ver15 || >= sql-server-linux-ver16 || = azuresqldb-mi-current ||=fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || >=sql-server-ver15 || >=sql-server-ver16 || >=sql-server-linux-ver15 || >=sql-server-linux-ver16 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # RTRIM (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 ::: moniker range="<=sql-server-ver15 || <=sql-server-linux-ver15 "
 Returns a character string after truncating all trailing spaces.
@@ -137,3 +139,4 @@ SELECT RTRIM('.123abc.' , 'abc.');
 - [CAST and CONVERT &#40;Transact-SQL&#41;](../../t-sql/functions/cast-and-convert-transact-sql.md)
 - [Data Types &#40;Transact-SQL&#41;](../../t-sql/data-types/data-types-transact-sql.md)
 - [String Functions &#40;Transact-SQL&#41;](../../t-sql/functions/string-functions-transact-sql.md)
+

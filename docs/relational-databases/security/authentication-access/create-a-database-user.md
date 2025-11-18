@@ -9,8 +9,7 @@ ms.service: sql
 ms.subservice: security
 ms.topic: how-to
 ms.custom:
-  - ignite-2024
-  - build-2025
+  - ignite-2025
 f1_keywords:
   - "sql13.swb.user.securables.f1"
   - "SQL13.SWB.DATABASEUSER.GENERAL.F1"
@@ -24,7 +23,7 @@ helpviewer_keywords:
   - "CREATE USER [Management Studio]"
   - "users [SQL Server], adding"
   - "mapping database users"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Create a database user
 

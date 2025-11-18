@@ -8,6 +8,8 @@ ms.date: 09/10/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "fn_xe_file_target_read_file_TSQL"
   - "fn_xe_file_target_read_file"
@@ -19,12 +21,12 @@ helpviewer_keywords:
   - "sys.fn_xe_file_target_read_file function"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # sys.fn_xe_file_target_read_file (Transact-SQL)
 
-[!INCLUDE [SQL Server SQL Database SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server SQL Database SQL Managed Instance-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Reads the event log XEL files created by the Extended Events `event_file` target. Each row in the result set represents an event. Event data is returned in XML format.
 
@@ -183,3 +185,4 @@ FROM sys.fn_xe_file_target_read_file(
 - [View event data in SQL Server Management Studio](../extended-events/advanced-viewing-of-target-data-from-extended-events-in-sql-server.md)
 - [Convert an Existing SQL Trace Script to an Extended Events Session](../extended-events/convert-an-existing-sql-trace-script-to-an-extended-events-session.md)
 - [Use the system_health session](../extended-events/use-the-system-health-session.md)
+

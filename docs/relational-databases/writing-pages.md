@@ -6,13 +6,16 @@ ms.author: randolphwest
 ms.date: 03/31/2025
 ms.service: sql
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "pages"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Write pages in the Database Engine
 
-[!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW](../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW FabricSQLDB](../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
+
 
 The I/O from an instance of the [!INCLUDE [ssDE](../includes/ssde-md.md)] includes logical and physical writes. A logical write occurs when data is modified in a page in the buffer cache. A physical write occurs when the page is written from the [buffer cache](memory-management-architecture-guide.md) to disk.
 
@@ -73,3 +76,4 @@ For more information, see [Checkpoints and the active portion of the log](sql-se
 
 - [Pages and extents architecture guide](pages-and-extents-architecture-guide.md)
 - [Read data pages in the Database Engine](reading-pages.md)
+

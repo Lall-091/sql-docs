@@ -7,6 +7,8 @@ ms.date: "11/29/2018"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "QUERY_CONTEXT_SETTINGS_TSQL"
   - "SYS.QUERY_CONTEXT_SETTINGS_TSQL"
@@ -16,10 +18,10 @@ helpviewer_keywords:
   - "sys.query_context_settings catalog view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||=azure-sqldw-latest||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || =azure-sqldw-latest || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.query_context_settings (Transact-SQL)
-[!INCLUDE [sqlserver2016-asdb-asdbmi-asa](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-fabricsqldb.md)]
 
   Contains  information about the semantics affecting context settings associated with a query. There are a number of context settings available in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] that influence the query semantics (defining the correct result of the query). The same query text compiled under different settings may produce different results (depending on the underlying data).  
   
@@ -55,3 +57,4 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||=azure-sqldw-latest||>=sq
  [sys.fn_stmt_sql_handle_from_sql_stmt &#40;Transact-SQL&#41;](../../relational-databases/system-functions/sys-fn-stmt-sql-handle-from-sql-stmt-transact-sql.md)  
   
   
+

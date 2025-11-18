@@ -8,6 +8,8 @@ ms.date: 07/18/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "PATINDEX"
   - "PATINDEX_TSQL"
@@ -19,11 +21,11 @@ helpviewer_keywords:
   - "PATINDEX function"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # PATINDEX (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 Returns the starting position of the first occurrence of a pattern in a specified expression, or zero if the pattern isn't found, on all valid text and character data types.
 
@@ -194,3 +196,4 @@ position
 - [\&#91;^\&#93; (Wildcard - characters not to match) (Transact-SQL)](../language-elements/wildcard-character-s-not-to-match-transact-sql.md)
 - [_ (Wildcard - match one character) (Transact-SQL)](../language-elements/wildcard-match-one-character-transact-sql.md)
 - [Percent character (wildcard - characters to match) (Transact-SQL)](../language-elements/percent-character-wildcard-character-s-to-match-transact-sql.md)
+

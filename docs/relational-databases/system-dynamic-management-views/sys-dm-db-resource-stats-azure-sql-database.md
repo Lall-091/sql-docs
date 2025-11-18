@@ -8,6 +8,8 @@ ms.reviewer: wiassaf
 ms.date: 09/11/2025
 ms.service: azure-sql-database
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_db_resource_stats"
   - "sys.dm_db_resource_stats_TSQL"
@@ -18,7 +20,7 @@ helpviewer_keywords:
   - "dm_db_resource_stats"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.dm_db_resource_stats
 

@@ -8,12 +8,14 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "FOR XML clause, generating XML from rowsets"
 ---
 # Generate XML from rowsets with FOR XML
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 You can generate an **xml** data type instance from a rowset by using FOR XML with the new **TYPE** directive.
 
@@ -44,3 +46,4 @@ SQL view definitions are similar to XML views that are created by using annotate
 ## See also
 
 - [FOR XML &#40;SQL Server&#41;](../../relational-databases/xml/for-xml-sql-server.md)
+

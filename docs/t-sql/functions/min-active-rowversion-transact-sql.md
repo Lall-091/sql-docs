@@ -7,6 +7,8 @@ ms.date: "03/03/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "MIN_ACTIVE_ROWVERSION"
   - "MIN_ACTIVE_ROWVERSION_TSQL"
@@ -16,7 +18,7 @@ dev_langs:
   - "TSQL"
 ---
 # MIN_ACTIVE_ROWVERSION (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Returns the lowest active **rowversion** value in the current database. A **rowversion** value is active if it is used in a transaction that has not yet been committed. For more information, see [rowversion &#40;Transact-SQL&#41;](../../t-sql/data-types/rowversion-transact-sql.md).  
   
@@ -129,3 +131,4 @@ GO
  [rowversion &#40;Transact-SQL&#41;](../../t-sql/data-types/rowversion-transact-sql.md)  
   
   
+

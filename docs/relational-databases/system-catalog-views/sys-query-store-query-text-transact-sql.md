@@ -7,6 +7,8 @@ ms.date: 11/01/2024
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SYS.QUERY_STORE_QUERY_TEXT"
   - "QUERY_STORE_QUERY_TEXT"
@@ -17,11 +19,11 @@ helpviewer_keywords:
   - "query_store_query_text catalog view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || =azure-sqldw-latest || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || =azure-sqldw-latest || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.query_store_query_text (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi-asa](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-fabricsqldb.md)]
 
 Contains the [!INCLUDE [tsql](../../includes/tsql-md.md)] text and the SQL handle of the query.
 
@@ -54,3 +56,4 @@ Contains the [!INCLUDE [tsql](../../includes/tsql-md.md)] text and the SQL handl
 - [System catalog views (Transact-SQL)](catalog-views-transact-sql.md)
 - [Query Store stored procedures (Transact-SQL)](../system-stored-procedures/query-store-stored-procedures-transact-sql.md)
 - [sys.fn_stmt_sql_handle_from_sql_stmt (Transact-SQL)](../system-functions/sys-fn-stmt-sql-handle-from-sql-stmt-transact-sql.md)
+

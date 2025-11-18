@@ -8,10 +8,12 @@ ms.date: 07/26/2024
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 ---
 # Use Microsoft Entra ID
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 [!INCLUDE [Driver_OLEDB_Download](../../../includes/driver_oledb_download.md)]
 
@@ -283,3 +285,4 @@ Cleanup:
 - Learn about [Microsoft Entra authentication](/azure/azure-sql/database/authentication-aad-overview) to SQL Server.
 
 - Configure driver connections using [connection string keywords](../applications/using-connection-string-keywords-with-oledb-driver-for-sql-server.md) the OLE DB driver supports.
+

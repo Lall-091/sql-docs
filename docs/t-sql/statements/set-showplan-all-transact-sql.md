@@ -7,6 +7,8 @@ ms.date: 03/10/2023
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SET SHOWPLAN_ALL"
   - "SET_SHOWPLAN_ALL_TSQL"
@@ -25,7 +27,7 @@ dev_langs:
   - "TSQL"
 ---
 # SET SHOWPLAN_ALL (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]	
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]	
 
   Causes Microsoft [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] not to execute [!INCLUDE[tsql](../../includes/tsql-md.md)] statements. Instead, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] returns detailed information about how the statements would be executed (a query plan) and provides estimates of the resource requirements for the statements and expected rows (cardinality estimation).  
   
@@ -117,3 +119,4 @@ GO
  [SET SHOWPLAN_XML &#40;Transact-SQL&#41;](../../t-sql/statements/set-showplan-xml-transact-sql.md)  
   
   
+

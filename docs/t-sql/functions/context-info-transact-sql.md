@@ -7,6 +7,8 @@ ms.date: "07/24/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "CONTEXT_INFO_TSQL"
   - "CONTEXT_INFO"
@@ -21,7 +23,7 @@ dev_langs:
 ---
 # CONTEXT_INFO (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This function returns the **context_info** value either set for the current session or batch, or derived through use of the [SET CONTEXT_INFO](../../t-sql/statements/set-context-info-transact-sql.md) statement.
   
@@ -64,4 +66,5 @@ GO
 [SESSION_CONTEXT  &#40;Transact-SQL&#41;](../../t-sql/functions/session-context-transact-sql.md)  
 [sp_set_session_context  &#40;Transact-SQL&#41;](../../relational-databases/system-stored-procedures/sp-set-session-context-transact-sql.md)  
   
+
 

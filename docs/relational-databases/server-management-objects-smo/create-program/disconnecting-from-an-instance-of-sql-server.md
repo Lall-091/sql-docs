@@ -7,13 +7,13 @@ ms.date: "08/06/2017"
 ms.service: sql
 ms.topic: "reference"
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "SQL Server Management Objects, disconnecting"
   - "SMO [SQL Server], disconnecting"
   - "instances of SQL Server, disconnecting"
   - "disconnecting [SMO]"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Disconnecting from an Instance of SQL Server
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Synapse Analytics FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricsqldb.md)]

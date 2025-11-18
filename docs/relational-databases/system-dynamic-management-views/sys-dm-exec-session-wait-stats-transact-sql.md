@@ -7,6 +7,8 @@ ms.date: 07/08/2024
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_exec_session_wait_stats"
   - "sys.dm_exec_session_wait_stats_tsql"
@@ -16,11 +18,11 @@ helpviewer_keywords:
   - "sys.dm_exec_session_wait_stats"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.dm_exec_session_wait_stats (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
 
 Returns information about all the waits encountered by threads that executed for each session. You can use this view to diagnose performance issues with the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] session and also with specific queries and batches. This view returns the same information that is aggregated for [sys.dm_os_wait_stats](sys-dm-os-wait-stats-transact-sql.md), and provides the `session_id` number as well.
 
@@ -50,3 +52,4 @@ For [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, yo
 - [System Dynamic Management Views](system-dynamic-management-views.md)
 - [SQL Server Operating System Related Dynamic Management Views (Transact-SQL)](sql-server-operating-system-related-dynamic-management-views-transact-sql.md)
 - [sys.dm_os_wait_stats (Transact-SQL)](sys-dm-os-wait-stats-transact-sql.md)
+

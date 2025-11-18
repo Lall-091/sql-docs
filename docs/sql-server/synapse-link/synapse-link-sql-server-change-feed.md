@@ -4,31 +4,31 @@ description: Learn about the Azure Synapse Link for SQL change feed, introduced 
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: imotiwala
-ms.date: 03/08/2024
+ms.date: 10/31/2025
 ms.service: sql
 ms.subservice: data-movement
 ms.topic: conceptual
+ms.update-cycle: 1825-days
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 monikerRange: ">=sql-server-ver16 || =azuresqldb-current || =azure-sqldw-latest"
 ---
 # Azure Synapse Link for SQL change feed
 
 [!INCLUDE [sqlserver2022-asdb-asa](../../includes/applies-to-version/sqlserver2022-asdb-asa.md)]
 
-This article includes detail on how the Azure Synapse Link for SQL change feed works, a feature new to [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and Azure SQL Database. 
+This article includes detail on how the Azure Synapse Link for SQL change feed works.
 
-[!INCLUDE [sql-server-2022](../../includes/sssql22-md.md)] introduces a new feature that allows connectivity between SQL Server tables and the Microsoft Azure Synapse platform, called Azure Synapse Link for SQL. Azure Synapse Link for SQL provides automatic change feeds that capture the changes within SQL Server and load them into Azure Synapse Analytics. 
+> [!IMPORTANT]
+> **Mirroring to Microsoft Fabric is now available.** Mirroring to Fabric provides all the capabilities of Azure Synapse Link with better analytical performance, the ability to unify your data estate with OneLake in Fabric, and open access to your data in Delta Parquet format. Instead of Azure Synapse Link, use Fabric Mirroring. 
+>
+> With Mirroring to Microsoft Fabric, you can continuously replicate your existing data estate directly into OneLake in Fabric, including data from SQL Server 2016+, Azure SQL Database, Azure SQL Managed Instance, Oracle, Snowflake, Cosmos DB, and more. 
+> 
+> For more information, see [Microsoft Fabric mirrored databases](/fabric/database/mirrored-database/overview).
 
-- [What is Azure Synapse Link for SQL?](/azure/synapse-analytics/synapse-link/sql-synapse-link-overview)
-- For more information, see:
-    - [Azure Synapse Link for SQL Server](/azure/synapse-analytics/synapse-link/sql-server-2022-synapse-link).
-    - [Azure Synapse Link for Azure SQL Database](/azure/synapse-analytics/synapse-link/sql-database-synapse-link).
-- To get started quickly, see:
-    - [Get started with Azure Synapse Link for SQL Server 2022](/azure/synapse-analytics/synapse-link/connect-synapse-link-sql-server-2022) 
-    - [Get started with Azure Synapse Link for Azure SQL Database](/azure/synapse-analytics/synapse-link/connect-synapse-link-sql-database)
+[!INCLUDE [sql-server-2022](../../includes/sssql22-md.md)] introduced a new feature that allows connectivity between SQL Server tables and the Microsoft Azure Synapse platform, called Azure Synapse Link for SQL. Azure Synapse Link for SQL provides automatic change feeds that capture the changes within SQL Server and load them into Azure Synapse Analytics. 
 
-This feature isn't currently available for Azure SQL Managed Instance.
+This feature isn't available for Azure SQL Managed Instance.
 
 > [!NOTE]
 > Enabling Azure Synapse Link for SQL will create a `changefeed` database user, a `changefeed` schema, and several tables within the `changefeed` schema in your source database. Please do not alter any of these objects - they are system-managed.
@@ -66,9 +66,13 @@ Azure Synapse Link for SQL Server is compatible with Always On availability grou
 
 If an initial snapshot was in progress and is interrupted for any reason, the initial snapshot export process restarts. This is the case if a SQL Server fails over in FCI or synchronous availability group.
 
-## Fabric Mirrored Databases
+<a id="fabric-mirrored-databases"></a>
 
-The Fabric Mirrored Database feature uses similar change feed technology as the Azure Synapse Link, and shares some system objects. For more information, see:
+### Mirroring in Microsoft Fabric
+
+Mirroring to Fabric provides all the capabilities of Azure Synapse Link with better analytical performance, the ability to unify your data estate with OneLake in Fabric, and open access to your data in Delta Parquet format. Instead of Azure Synapse Link, use Fabric Mirroring. 
+
+For more information, see:
 
 - [Microsoft Fabric mirrored databases](/fabric/database/mirrored-database/overview)
 - [Microsoft Fabric mirrored databases monitoring](/fabric/database/mirrored-database/monitor)

@@ -8,6 +8,8 @@ ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_flush_CT_internal_table_on_demand "
   - "sp_flush_CT_internal_table_on_demand_TSQL"
@@ -21,7 +23,7 @@ dev_langs:
 ---
 # sys.sp_flush_CT_internal_table_on_demand (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [sql-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This stored procedure allows you to manually clean the side table (`change_tracking_objectid`) for a table in a database for which change tracking is enabled. If the *TableToClean* parameter isn't passed, then this process cleans all side tables for all tables in the database where change tracking is enabled.
 
@@ -99,3 +101,4 @@ Only a member of the **sysadmin** server role or **db_owner** database role can 
 - [Change Tracking Functions (Transact-SQL)](../system-functions/change-tracking-functions-transact-sql.md)
 - [Change Tracking tables (Transact-SQL)](../system-tables/change-tracking-tables-transact-sql.md)
 - [Change Tracking stored procedures (Transact-SQL)](change-tracking-stored-procedures-transact-sql.md)
+

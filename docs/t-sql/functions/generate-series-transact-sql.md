@@ -8,6 +8,8 @@ ms.date: 10/27/2023
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "GENERATE_SERIES"
   - "GENERATE_SERIES_TSQL"
@@ -16,12 +18,11 @@ helpviewer_keywords:
   - "analytic functions, GENERATE_SERIES"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||=fabric"
-
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # GENERATE_SERIES (Transact-SQL)
 
-[!INCLUDE [sqlserver2022-asdb-asmi-fabricse-fabricdw](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricse-fabricdw.md)]
+[!INCLUDE [sqlserver2022-asdb-asmi-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricse-fabricdw-fabricsqldb.md)]
 
 Generates a series of numbers within a given interval. The interval and the step between series values are defined by the user.
 
@@ -154,3 +155,4 @@ value
 
 - [SEQUENCES (Transact-SQL)](../../relational-databases/system-information-schema-views/sequences-transact-sql.md)
 - [Relational operators (Transact-SQL)](../language-elements/relational-operators-transact-sql.md)
+

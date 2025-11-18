@@ -9,14 +9,14 @@ ms.service: sql
 ms.subservice: table-view-index
 ms.topic: how-to
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "filtered indexes [SQL Server], about filtered indexes"
   - "designing indexes [SQL Server], filtered"
   - "filtered indexes [SQL Server]"
   - "nonclustered indexes [SQL Server], filtered"
   - "indexes [SQL Server], filtered"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Create filtered indexes
 

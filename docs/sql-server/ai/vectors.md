@@ -11,10 +11,11 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.custom:
   - intro-quickstart
+  - ignite-2025
 helpviewer_keywords:
   - "Vectors"
   - "Vectors, built-in support"
-monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
+monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # Vector search and vector indexes in the SQL Database Engine

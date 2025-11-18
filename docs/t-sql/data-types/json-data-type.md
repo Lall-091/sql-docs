@@ -1,19 +1,18 @@
 ---
-title: "JSON Data Type"
+title: JSON Data Type
 description: The native JSON data type provides advantages for storing JSON data over varchar or nvarchar. Learn more about the JSON data type.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest, jovanpop, umajay
-ms.date: 11/05/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - build-2024
-  - build-2025
+  - ignite-2025
 helpviewer_keywords:
   - "JSON data type"
-monikerRange: "=sql-server-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
+monikerRange: "=sql-server-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # JSON data type
 
@@ -153,14 +152,14 @@ Currently, the `OPENJSON()` function doesn't accept the **json** data type in so
 Size limits of JSON data in storage:
 
 | Field | Limitation |
-|:--|:--|
+| --- | --- |
 | JSON data type size (binary) | Up to 2GB |
 | Number of unique keys | Up to 32K |
 | Per key string size | 7998 bytes |
 | Per string value size | 536870911 bytes |
 | Number of properties in one object | Up to 65535 |
 | Number of elements in one array | Up to 65535 |
-| Number of nested levels in JSON document | 128 |  
+| Number of nested levels in JSON document | 128 |
 
 ## Related content
 

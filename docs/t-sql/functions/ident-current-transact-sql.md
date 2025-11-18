@@ -7,6 +7,8 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "IDENT_CURRENT"
   - "IDENT_CURRENT_TSQL"
@@ -19,7 +21,7 @@ dev_langs:
   - "TSQL"
 ---
 # IDENT_CURRENT (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Returns the last identity value generated for a specified table or view. The last identity value generated can be for any session and any scope.  
   
@@ -137,3 +139,4 @@ SELECT IDENT_CURRENT('t7');
  [System Functions &#40;Transact-SQL&#41;](../../relational-databases/system-functions/system-functions-category-transact-sql.md)  
   
   
+

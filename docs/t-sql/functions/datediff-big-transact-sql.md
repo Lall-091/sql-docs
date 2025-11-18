@@ -7,6 +7,8 @@ ms.date: "01/12/2021"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "DATEDIFF_BIG"
   - "DATEDIFF_BIG_TSQL"
@@ -23,7 +25,7 @@ dev_langs:
 
 # DATEDIFF_BIG (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
 
 This function returns the count (as a signed big integer value) of the specified *datepart* boundaries crossed between the specified *startdate* and *enddate*.
   
@@ -206,3 +208,4 @@ See more closely related examples in [DATEDIFF &#40;Transact-SQL&#41;](../../t-s
 [DATEDIFF &#40;Transact-SQL&#41;](../../t-sql/functions/datediff-transact-sql.md)
   
   
+

@@ -7,13 +7,15 @@ ms.date: "10/12/2016"
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "removing constraints"
   - "UNIQUE constraints [SQL Server], deleting"
   - "constraints [SQL Server], deleting"
   - "deleting constraints"
   - "constraints [SQL Server], unique"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||=fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # Delete Unique Constraints

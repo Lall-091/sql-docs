@@ -7,15 +7,17 @@ ms.reviewer: randolphwest
 ms.date: 07/16/2025
 ms.service: sql
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "triggers [SQL Server], about triggers"
   - "DML triggers, about DML triggers"
   - "triggers [SQL Server]"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # DML triggers
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 The DML trigger is a special type of stored procedure that automatically takes effect when a data manipulation language (DML) event takes place that affects the table or view defined in the trigger. DML events include `INSERT`, `UPDATE`, or `DELETE` statements. DML triggers can be used to enforce business rules and data integrity, query other tables, and include complex [!INCLUDE [tsql](../../includes/tsql-md.md)] statements. The trigger and the statement that fires it are treated as a single transaction, which can be rolled back from within the trigger. If a severe error is detected (for example, insufficient disk space), the entire transaction automatically rolls back.
 
@@ -89,3 +91,4 @@ A common language runtime (CLR) trigger can be either an `AFTER` or `INSTEAD OF`
 - [DROP TRIGGER (Transact-SQL)](../../t-sql/statements/drop-trigger-transact-sql.md)
 - [DISABLE TRIGGER (Transact-SQL)](../../t-sql/statements/disable-trigger-transact-sql.md)
 - [Trigger Functions (Transact-SQL)](../../t-sql/functions/trigger-functions-transact-sql.md)
+

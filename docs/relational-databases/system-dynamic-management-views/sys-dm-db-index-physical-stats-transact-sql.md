@@ -8,6 +8,8 @@ ms.date: 02/05/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "dm_db_index_physical_stats"
   - "sys.dm_db_index_physical_stats_TSQL"
@@ -18,11 +20,11 @@ helpviewer_keywords:
   - "fragmentation [SQL Server]"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.dm_db_index_physical_stats (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Returns size and fragmentation information for the data and indexes of the specified table or view in the [!INCLUDE [ssdenoversion-md](../../includes/ssdenoversion-md.md)]. For an index, one row is returned for each level of the B-tree in each partition. For a heap, one row is returned for the `IN_ROW_DATA` allocation unit of each partition. For large object (LOB) data, one row is returned for the `LOB_DATA` allocation unit of each partition. If row-overflow data exists in the table, one row is returned for the `ROW_OVERFLOW_DATA` allocation unit in each partition.
 
@@ -495,3 +497,4 @@ FROM sys.dm_db_index_physical_stats(db_id(), object_id('ExpenseQueue'), DEFAULT,
 - [sys.dm_db_partition_stats (Transact-SQL)](sys-dm-db-partition-stats-transact-sql.md)
 - [sys.allocation_units (Transact-SQL)](../system-catalog-views/sys-allocation-units-transact-sql.md)
 - [Transact-SQL reference (Database Engine)](../../t-sql/language-reference.md)
+

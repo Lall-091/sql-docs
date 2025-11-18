@@ -3,14 +3,14 @@ title: "Ubuntu: Install SQL Server on Linux"
 description: This quickstart shows how to install SQL Server 2017 and later versions on Ubuntu and then create and query a database with sqlcmd.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 09/25/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: quickstart
 ms.custom:
   - intro-installation
   - linux-related-content
-  - build-2025
+  - ignite-2025
 ---
 # Quickstart: Install SQL Server and create a database on Ubuntu
 
@@ -49,7 +49,7 @@ In this quickstart, you install [!INCLUDE [sssql25-md](../includes/sssql25-md.md
 > [!NOTE]  
 > Ubuntu 24.04 is supported in preview for [!INCLUDE [sssql25-md](../includes/sssql25-md.md)]. Currently, only the 180-day Enterprise Evaluation edition is available.
 
-For more information on supported platforms, see [Release notes for SQL Server 2025 Preview on Linux](sql-server-linux-release-notes-2025.md).
+For more information on supported platforms, see [Release notes for SQL Server 2025 on Linux](sql-server-linux-release-notes-2025.md).
 
 ::: moniker-end
 

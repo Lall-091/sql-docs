@@ -8,13 +8,15 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "pattern restrictions"
   - "canonical forms"
 ---
 # Canonical forms and pattern restrictions
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 The XSD pattern facet allows for the restriction of the lexical space of simple types. When a pattern restriction is put on a type for which there's more than one possible lexical representation, some values could cause unexpected behavior upon validation.
 
@@ -29,3 +31,4 @@ Imprecise serialization of floating-point values has a similar problem. Because 
 ## See also
 
 - [Requirements and Limitations for XML Schema Collections on the Server](../../relational-databases/xml/requirements-and-limitations-for-xml-schema-collections-on-the-server.md)
+

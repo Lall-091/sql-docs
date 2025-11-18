@@ -8,12 +8,12 @@ ms.service: sql
 ms.subservice: stored-procedures
 ms.topic: how-to
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "stored procedures [SQL Server], dependencies"
   - "displaying stored procedure dependencies"
   - "viewing stored procedure dependencies"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # View the Dependencies of a Stored Procedure
 

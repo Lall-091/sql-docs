@@ -8,16 +8,18 @@ ms.date: 05/13/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "external_tables"
   - "sys.external_tables"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # sys.external_tables (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-pdw-fabricdw](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-pdw-fabricdw.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-pdw-fabricdw-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-pdw-fabricdw-fabricsqldb.md)]
 
  Contains a row for each external table in the current database.  
 
@@ -47,3 +49,4 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 - [sys.external_file_formats (Transact-SQL)](sys-external-file-formats-transact-sql.md)
 - [sys.external_data_sources (Transact-SQL)](sys-external-data-sources-transact-sql.md)
 - [CREATE EXTERNAL TABLE (Transact-SQL)](../../t-sql/statements/create-external-table-transact-sql.md)
+

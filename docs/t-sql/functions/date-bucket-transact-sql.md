@@ -8,6 +8,8 @@ ms.date: 11/03/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "DATE_BUCKET"
   - "DATE_BUCKET_TSQL"
@@ -19,7 +21,7 @@ dev_langs:
 ---
 # DATE_BUCKET (Transact-SQL)
 
-[!INCLUDE [sqlserver2022-asde](../../includes/applies-to-version/sqlserver2022-asdb-asmi-asde.md)]
+[!INCLUDE [sqlserver2022-asde-fabricsqldb](../../includes/applies-to-version/sqlserver2022-asdb-asmi-asde-fabricsqldb.md)]
 
 This function returns the date-time value corresponding to the start of each date-time bucket from the timestamp defined by the *origin* parameter, or the default origin value of `1900-01-01 00:00:00.000` if the origin parameter isn't specified.
 
@@ -325,3 +327,4 @@ SELECT DATE_BUCKET(HOUR, 2, @date, @origin);
 - [CAST and CONVERT (Transact-SQL)](cast-and-convert-transact-sql.md)
 - [Date and time types](../data-types/date-and-time-types.md)
 - [Date and time data types and functions (Transact-SQL)](date-and-time-data-types-and-functions-transact-sql.md)
+

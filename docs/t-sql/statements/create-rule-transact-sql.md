@@ -7,6 +7,8 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "RULE_TSQL"
   - "CREATE RULE"
@@ -28,7 +30,7 @@ dev_langs:
   - "TSQL"
 ---
 # CREATE RULE (Transact-SQL)
-[!INCLUDE [sql-asdb-asdbmi-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-pdw-fabricsqldb.md)]
 
   Creates an object called a rule. When bound to a column or an alias data type, a rule specifies the acceptable values that can be inserted into that column.  
   
@@ -131,3 +133,4 @@ AS
  [WHERE &#40;Transact-SQL&#41;](../../t-sql/queries/where-transact-sql.md)  
   
   
+

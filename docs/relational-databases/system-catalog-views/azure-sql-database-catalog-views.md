@@ -7,12 +7,14 @@ ms.reviewer: wiassaf
 ms.date: 07/29/2025
 ms.service: azure-sql-database
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "Azure SQL Database catalog views"
   - "SQL database in Fabric catalog views"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =fabric"
+monikerRange: "=azuresqldb-current || =fabric-sqldb"
 ---
 # Azure SQL Database and SQL database in Fabric catalog views
 

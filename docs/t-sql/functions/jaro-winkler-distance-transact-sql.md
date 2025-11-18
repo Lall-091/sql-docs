@@ -4,15 +4,15 @@ description: JARO_WINKLER_DISTANCE calculates the edit distance between two stri
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: abhtiwar, wiassaf, randolphwest
-ms.date: 05/19/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
-dev_langs:
-  - "TSQL"
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric || >=sql-server-2016"
 ms.custom:
-  - build-2025
+  - ignite-2025
+dev_langs:
+  - TSQL
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb || >=sql-server-2016"
 ---
 
 # JARO_WINKLER_DISTANCE (Transact-SQL) preview
@@ -23,25 +23,24 @@ ms.custom:
 
 Calculates the edit distance between two strings giving preference to strings that match from the beginning for a set prefix length.
 
-> [!NOTE]
-> - `JARO_WINKLER_DISTANCE` is currently in preview. 
-> - SQL Server support for `JARO_WINKLER_DISTANCE` introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. 
+> [!NOTE]  
+> - `JARO_WINKLER_DISTANCE` is currently in preview in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
 > - `JARO_WINKLER_DISTANCE` is available in Azure SQL Managed Instance with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).
 
 ## Syntax
 
 ```syntaxsql
 JARO_WINKLER_DISTANCE (
-    character_expression,
     character_expression
-)  
+    , character_expression
+)
 ```
 
 ## Arguments
 
 #### *character_expression*
 
-An alphanumeric expression of character data. *character_expression* can be a constant, variable, or column. The character expression cannot be of type **varchar(max)** or **nvarchar(max)**.
+An alphanumeric expression of character data. *character_expression* can be a constant, variable, or column. The character expression can't be of type **varchar(max)** or **nvarchar(max)**.
 
 ## Return value
 
@@ -51,13 +50,13 @@ An alphanumeric expression of character data. *character_expression* can be a co
 
 This function implements the Jaro-Winkler edit distance algorithm.
 
-## Example
+## Examples
 
 The following example compares two words and returns the `JARO_WINKLER_DISTANCE` value as a column, named `Distance`.
 
 ```sql
-SELECT 'Colour' AS WordUK, 
-       'Color' AS WordUS, 
+SELECT 'Colour' AS WordUK,
+       'Color' AS WordUS,
        JARO_WINKLER_DISTANCE('Colour', 'Color') AS Distance;
 ```
 
@@ -73,6 +72,6 @@ For additional examples, see [Example *JARO_WINKLER_DISTANCE*](../../relational-
 
 ## Related content
 
-- [EDIT_DISTANCE](edit-distance-transact-sql.md)
-- [EDIT_DISTANCE_SIMILARITY](edit-distance-similarity-transact-sql.md)
-- [JARO_WINKLER_SIMILARITY](jaro-winkler-similarity-transact-sql.md)
+- [EDIT_DISTANCE (Transact-SQL)](edit-distance-transact-sql.md)
+- [EDIT_DISTANCE_SIMILARITY (Transact-SQL)](edit-distance-similarity-transact-sql.md)
+- [JARO_WINKLER_SIMILARITY (Transact-SQL)](jaro-winkler-similarity-transact-sql.md)

@@ -8,9 +8,9 @@ ms.date: 09/19/2025
 ms.service: sql
 ms.topic: concept-article
 ms.custom:
-  - build-2025
+  - ignite-2025
 # CustomerIntent: As a database engineer, I want to understand the capabilities of the CE feedback for expressions feature in SQL Server 2025 so that I can effectively implement and support this technology.
-monikerRange: "=azuresqldb-current || =sql-server-ver17 || =sql-server-linux-ver17 || =fabric"
+monikerRange: "=azuresqldb-current || =sql-server-ver17 || =sql-server-linux-ver17 || =fabric-sqldb"
 ---
 
 # Cardinality estimation (CE) feedback for expressions
@@ -21,7 +21,7 @@ Inaccurate cardinality estimates often cause poor performance during query optim
 
 The feedback for expressions feature identifies and uses a [model](https://techcommunity.microsoft.com/blog/azuresqlblog/cardinality-estimation-feedback-explained-by-kate-smith-akatesmith/4197930) assumption that better fits a given query's expression and data distribution, which in turn improves query execution plan quality. Currently, the feedback for expressions feature can identify plan operators where the estimated number of rows and the actual number of rows are very different. Feedback is applied to expressions within a query when significant model estimation errors occur, and there's a viable alternate model to try.
 
-Different versions of the Database Engine use [different CE](../../relational-databases/performance/intelligent-query-processing-cardinality-estimation-feedback.md#cardinality-estimation-ce-feedback-implementation) model assumptions, based on how data is distributed and queried.
+Different versions of the Database Engine use [different CE](intelligent-query-processing-cardinality-estimation-feedback.md#cardinality-estimation-ce-feedback-implementation) model assumptions, based on how data is distributed and queried.
 
 ## Use CE feedback for expressions
 

@@ -4,10 +4,12 @@ description: The SUBSTRING function returns a portion of a specified character, 
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 02/10/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SUBSTRING"
   - "SUBSTRING_TSQL"
@@ -20,13 +22,13 @@ helpviewer_keywords:
   - "expressions [SQL Server], part returned"
   - "characters [SQL Server], returning part of"
 dev_langs:
-  - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+  - TSQL
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 
 # SUBSTRING (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 Returns part of a character, binary, text, or image expression in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 
@@ -35,12 +37,6 @@ Returns part of a character, binary, text, or image expression in [!INCLUDE [ssN
 ## Syntax
 
 Syntax for [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)].
-
-```syntaxsql
-SUBSTRING ( expression , start , length )
-```
-
-Syntax for [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], [!INCLUDE [ssazurepdw_md](../../includes/ssazurepdw_md.md)], and [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] and [!INCLUDE [fabric-se](../../includes/fabric-se.md)] in [!INCLUDE [fabric](../../includes/fabric.md)].
 
 ```syntaxsql
 SUBSTRING ( expression , start [ , length ] )
@@ -60,7 +56,7 @@ An integer or **bigint** expression that specifies where the returned characters
 
 A positive integer or **bigint** expression that specifies how many characters of the *expression* are returned. If *length* is negative, an error is generated and the statement is terminated. If the sum of *start* and *length* is greater than the number of characters in *expression*, the whole value expression beginning at *start* is returned. If *length* is omitted, all characters from the start position to the end of the expression is returned.
 
-You can use substring with an optional *length* argument in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], [!INCLUDE [ssazurepdw_md](../../includes/ssazurepdw_md.md)], and [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] and [!INCLUDE [fabric-se](../../includes/fabric-se.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]. However, if you use `NULL` for *length*, `SUBSTRING` returns `NULL`. Review [E. Use SUBSTRING with optional length argument](#e-use-substring-with-optional-length-argument) for an example.
+You can use substring with an optional *length* argument. However, if you use `NULL` for *length*, `SUBSTRING` returns `NULL`. Review [E. Use SUBSTRING with optional length argument](#e-use-substring-with-optional-length-argument) for an example.
 
 ## Return types
 
@@ -192,7 +188,7 @@ FROM pub_info AS pr
 ORDER BY pr.pub_id ASC;
 ```
 
-## Examples: [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE [ssPDW](../../includes/sspdw-md.md)]
+## Examples: Azure Synapse Analytics and Analytics Platform System (PDW)
 
 ### C. Use SUBSTRING with a character string
 
@@ -302,3 +298,4 @@ WHERE [Description] LIKE 'Replacement%';
 - [STRING_SPLIT (Transact-SQL)](string-split-transact-sql.md)
 - [TRIM (Transact-SQL)](trim-transact-sql.md)
 - [String Functions (Transact-SQL)](string-functions-transact-sql.md)
+

@@ -3,13 +3,13 @@ title: "Maintaining Indexes Optimally to Improve Performance and Reduce Resource
 description: This article describes index maintenance concepts, and a recommended strategy to maintain indexes.
 author: dimitri-furman
 ms.author: dfurman
-ms.reviewer: mikeray
-ms.date: 06/23/2025
+ms.reviewer: mikeray, dfurman
+ms.date: 10/06/2025
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: how-to
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "sql13.swb.index.rebuild.f1"
   - "sql13.swb.indexproperties.fragmentation.f1"
@@ -30,7 +30,7 @@ helpviewer_keywords:
   - "index defragmenting [SQL Server]"
   - "LOB data [SQL Server], defragmenting"
   - "clustered indexes, defragmenting"
-monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-current || =azuresqldb-mi-current || >=aps-pdw-2016 || =fabric"
+monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-current || =azuresqldb-mi-current || >=aps-pdw-2016 || =fabric-sqldb"
 ---
 
 # Optimize index maintenance to improve query performance and reduce resource consumption
@@ -109,8 +109,7 @@ You can reduce index fragmentation and increase page density by using one of the
 - Reorganize an index
 - Rebuild an index
 
-> [!NOTE]  
-> For [partitioned](../../relational-databases/partitions/partitioned-tables-and-indexes.md) indexes, you can use either of the following methods on all partitions or a single partition of an index.
+For [partitioned](../../relational-databases/partitions/partitioned-tables-and-indexes.md) indexes, you can use either of the following methods on all partitions or a single partition of an index.
 
 ### Reorganize an index
 

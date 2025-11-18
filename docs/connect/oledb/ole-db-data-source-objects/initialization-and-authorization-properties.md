@@ -7,6 +7,8 @@ ms.date: "10/26/2022"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "authorization [OLE DB]"
   - "properties [OLE DB]"
@@ -15,7 +17,7 @@ helpviewer_keywords:
   - "initialization properties [OLE DB]"
 ---
 # Initialization and Authorization Properties
-[!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics PDW FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 [!INCLUDE[Driver_OLEDB_Download](../../../includes/driver_oledb_download.md)]
 
@@ -96,3 +98,4 @@ Server=MyServer;UID=MyUserName;
 ## See Also  
  [Data Source Objects &#40;OLE DB&#41;](../../oledb/ole-db-data-source-objects/data-source-objects-ole-db.md)  
   
+

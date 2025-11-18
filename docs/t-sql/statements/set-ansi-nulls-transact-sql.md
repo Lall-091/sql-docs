@@ -3,11 +3,13 @@ title: "SET ANSI_NULLS (Transact-SQL)"
 description: SET ANSI_NULLS configures the behavior of the ANSI NULLS setting for equals and not equals comparison operators.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.date: 04/28/2025
 ms.reviewer: jovanpop, randolphwest
+ms.date: 04/28/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SET_ANSI_NULLS_TSQL"
   - "ANSI_NULLS"
@@ -22,10 +24,10 @@ helpviewer_keywords:
   - "comparison operators [SQL Server], null values"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||azuresqldb-current"
+monikerRange: ">=aps-pdw-2016 || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # SET ANSI_NULLS (Transact-SQL)
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 Specifies ISO compliant behavior of the Equals (`=`) and Not Equal To (`<>`) comparison operators when they are used with `NULL` values in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)].
 - `SET ANSI_NULLS ON` - Evaluates both `{expression} = NULL` and `{expression} <> NULL` as `False` if the value of `{expression}` is `NULL`. This behavior is ANSI-compliant.
@@ -208,3 +210,4 @@ DROP TABLE dbo.t1;
 - [SET ANSI_DEFAULTS (Transact-SQL)](../../t-sql/statements/set-ansi-defaults-transact-sql.md)
 - [WHERE (Transact-SQL)](../../t-sql/queries/where-transact-sql.md)
 - [WHILE (Transact-SQL)](../../t-sql/language-elements/while-transact-sql.md)
+

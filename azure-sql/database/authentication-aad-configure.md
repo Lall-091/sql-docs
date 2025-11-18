@@ -5,7 +5,7 @@ description: Learn how to connect to Azure SQL Database, Azure SQL Managed Insta
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: wiassaf, mathoma, maghan
-ms.date: 09/11/2025
+ms.date: 11/18/2025
 ms.service: azure-sql
 ms.subservice: security
 ms.topic: how-to
@@ -17,6 +17,7 @@ ms.custom:
   - has-azure-ad-ps-ref, azure-ad-ref-level-one-done
   - sfi-image-nochange
   - sfi-ropc-nochange
+  - ignite-2025
 monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
 ---
 
@@ -26,7 +27,7 @@ monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
 
 > [!div class="op_single_selector"]
 > - [SQL Server 2022](/sql/sql-server/azure-arc/entra-authentication-setup-tutorial)
-> - [SQL Server 2025 Preview](/sql/sql-server/azure-arc/managed-identity)
+> - [SQL Server 2025](/sql/sql-server/azure-arc/microsoft-entra-authentication-with-managed-identity)
 > - [Azure SQL Database & Azure SQL Managed Instance](authentication-aad-configure.md)
 > - [SQL Server on Azure VMs](../virtual-machines/windows/configure-azure-ad-authentication-for-sql-vm.md)
 
@@ -266,7 +267,7 @@ $parameters = @{
 Get-AzSqlInstanceActiveDirectoryAdministrator @parameters
 ```
 
-This example command sets the Microsoft Entra administrator to a group named DBAs (with sample object ID `aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb`) for the SQL Managed Instance named "Sample-Instance". This server is associated with the resource group "Example-Resource-Group".
+This example command sets the Microsoft Entra administrator to a group named DBAs (with sample object ID `aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb`) for the SQL managed instance named "Sample-Instance". This server is associated with the resource group "Example-Resource-Group".
 
 ```powershell
 $parameters = @{

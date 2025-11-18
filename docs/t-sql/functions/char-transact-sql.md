@@ -8,6 +8,8 @@ ms.date: 05/21/2024
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "char_TSQL"
   - "char"
@@ -24,11 +26,11 @@ helpviewer_keywords:
   - "printing ASCII values"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # CHAR (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 Returns the single-byte character with the specified integer code, as defined by the character set and encoding of the [default collation](../../relational-databases/collations/view-collation-information.md) of the current database.
 
@@ -275,3 +277,4 @@ FROM enc;
 - [UNICODE (Transact-SQL)](unicode-transact-sql.md)
 - [+ (String Concatenation) (Transact-SQL)](../language-elements/string-concatenation-transact-sql.md)
 - [String Functions (Transact-SQL)](string-functions-transact-sql.md)
+

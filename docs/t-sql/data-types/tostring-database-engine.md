@@ -7,6 +7,8 @@ ms.date: 10/05/2021
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "ToString"
   - "ToString_TSQL"
@@ -14,7 +16,7 @@ helpviewer_keywords:
   - "ToString [Database Engine]"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current ||=fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # ToString (Database Engine)

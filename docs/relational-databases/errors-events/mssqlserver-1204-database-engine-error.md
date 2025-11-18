@@ -8,12 +8,14 @@ ms.date: 06/12/2024
 ms.service: sql
 ms.subservice: supportability
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "1204 (Database Engine error)"
 ---
 # MSSQLSERVER_1204
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 ## Details
 
@@ -74,3 +76,4 @@ During execution, queries frequently acquire and release locks on the resources 
     ```
 
 - If you encountered the above error message when using the SQL Server trace flags 1211, 1224, or both, review their use and disable them while executing queries that require a large number of locks. For more information, review [Set trace flags with DBCC TRACEON](../../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md) and [Resolve blocking problems caused by lock escalation in SQL Server](/troubleshoot/sql/performance/resolve-blocking-problems-caused-lock-escalation).
+

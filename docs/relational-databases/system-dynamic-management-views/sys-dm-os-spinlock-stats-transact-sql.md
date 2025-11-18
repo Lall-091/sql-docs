@@ -8,6 +8,8 @@ ms.date: "02/27/2023"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_os_spinlock_stats_TSQL"
   - "dm_os_spinlock_stats_TSQL"
@@ -20,7 +22,7 @@ dev_langs:
 ---
 # sys.dm_os_spinlock_stats (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Returns information about all spinlock waits organized by type.
 
@@ -408,3 +410,4 @@ The following table contains brief descriptions of some of the most common spinl
 - [SQL Server Operating System Related Dynamic Management Views (Transact-SQL)](../../relational-databases/system-dynamic-management-views/sql-server-operating-system-related-dynamic-management-views-transact-sql.md)
 - [When is Spinlock a Significant Driver of CPU utilization in SQL Server?](https://techcommunity.microsoft.com/t5/SQL-Server-Support/When-is-Spinlock-a-Significant-Driver-of-CPU-utilization-in-SQL/ba-p/530142)
 - [Diagnosing and Resolving Spinlock Contention on SQL Server](../diagnose-resolve-spinlock-contention.md)
+

@@ -6,6 +6,8 @@ ms.author: randolphwest
 ms.date: 09/11/2025
 ms.service: azure-sql-database
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "dm_db_wait_stats_TSQL"
   - "dm_db_wait_stats"
@@ -16,7 +18,7 @@ helpviewer_keywords:
   - "dm_db_wait_stats"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||=fabric"
+monikerRange: "=azuresqldb-current || =fabric-sqldb"
 ---
 # sys.dm_db_wait_stats
 

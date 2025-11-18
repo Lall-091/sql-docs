@@ -7,6 +7,8 @@ ms.date: "09/30/2022"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "ENCRYPTBYPASSPHRASE"
   - "ENCRYPTBYPASSPHRASE_TSQL"
@@ -18,7 +20,7 @@ dev_langs:
   - "TSQL"
 ---
 # ENCRYPTBYPASSPHRASE (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Encrypt data with a passphrase using the TRIPLE DES algorithm with a 128 key bit length.  
   
@@ -98,3 +100,4 @@ GO
  [Encryption Hierarchy](../../relational-databases/security/encryption/encryption-hierarchy.md)  
   
   
+

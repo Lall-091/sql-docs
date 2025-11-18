@@ -8,6 +8,8 @@ ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_create_plan_guide"
   - "sp_create_plan_guide_TSQL"
@@ -18,7 +20,7 @@ dev_langs:
 ---
 # sp_create_plan_guide (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Creates a plan guide for associating query hints or actual query plans with queries in a database. For more information about plan guides, see [Plan Guides](../performance/plan-guides.md).
 
@@ -374,3 +376,4 @@ GO
 - [sp_create_plan_guide_from_handle (Transact-SQL)](sp-create-plan-guide-from-handle-transact-sql.md)
 - [sys.fn_validate_plan_guide (Transact-SQL)](../system-functions/sys-fn-validate-plan-guide-transact-sql.md)
 - [sp_get_query_template (Transact-SQL)](sp-get-query-template-transact-sql.md)
+

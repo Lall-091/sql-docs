@@ -3,13 +3,13 @@ title: Overview of SQL Server on Linux
 description: This article describes how SQL Server runs on Linux and provides information on how to learn more.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/03/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: concept-article
 ms.custom:
   - linux-related-content
-  - build-2025
+  - ignite-2025
 ---
 # What is SQL Server on Linux?
 
@@ -53,21 +53,21 @@ Starting with [!INCLUDE [sssql17-md](../includes/sssql17-md.md)], [!INCLUDE [ssn
 
 If you're already familiar with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux, review the release notes for general guidelines and known issues for this release:
 
-- [Release notes for SQL Server 2025 Preview on Linux](sql-server-linux-release-notes-2025.md)
+- [Release notes for SQL Server 2025 on Linux](sql-server-linux-release-notes-2025.md)
 - [Release notes for SQL Server 2022 on Linux](sql-server-linux-release-notes-2022.md)
 - [Release notes for SQL Server 2019 on Linux](sql-server-linux-release-notes-2019.md)
 - [Release notes for SQL Server 2017 on Linux](sql-server-linux-release-notes-2017.md)
 
 To find out more about each release, see:
 
-- [What's new for SQL Server 2025 Preview on Linux](sql-server-linux-whats-new-2025.md)
+- [What's new for SQL Server 2025 on Linux](sql-server-linux-whats-new-2025.md)
 - [What's new for SQL Server 2022 on Linux](sql-server-linux-whats-new-2022.md)
 - [What's new for SQL Server 2019 on Linux](sql-server-linux-whats-new-2019.md)
 - [What's new for SQL Server 2017 on Linux](sql-server-linux-whats-new.md)
 
 To see what's new in each version for Windows, see:
 
-- [What's new in SQL Server 2025 Preview](../sql-server/what-s-new-in-sql-server-2025.md)
+- [What's new in SQL Server 2025](../sql-server/what-s-new-in-sql-server-2025.md)
 - [What's new in SQL Server 2022](../sql-server/what-s-new-in-sql-server-2022.md)
 - [What's new in SQL Server 2019](../sql-server/what-s-new-in-sql-server-2019.md)
 - [What's new in SQL Server 2017](../sql-server/what-s-new-in-sql-server-2017.md)

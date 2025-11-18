@@ -8,6 +8,8 @@ ms.date: 04/17/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "TEXTSIZE_TSQL"
   - "TEXTSIZE"
@@ -21,11 +23,11 @@ helpviewer_keywords:
   - "text size returned [SQL Server]"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # SET TEXTSIZE (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 Specifies the size, in bytes, of **varchar(max)**, **nvarchar(max)**, **varbinary(max)**, **text**, **ntext**, and **image** data returned to the client by a `SELECT` statement.
 
@@ -65,3 +67,4 @@ Requires membership in the **public** role.
 - [&#x40;&#x40;TEXTSIZE (Transact-SQL)](../functions/textsize-transact-sql.md)
 - [Data types (Transact-SQL)](../data-types/data-types-transact-sql.md)
 - [SET Statements (Transact-SQL)](set-statements-transact-sql.md)
+

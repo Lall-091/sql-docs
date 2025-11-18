@@ -8,7 +8,7 @@ ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "principals [SQL Server], credentials"
   - "schemas [SQL Server], credentials"
@@ -20,7 +20,7 @@ helpviewer_keywords:
   - "users [SQL Server], credentials"
   - "credentials [SQL Server], about credentials"
   - "credentials [SQL Server]"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Credentials (Database Engine)
 

@@ -8,6 +8,8 @@ ms.date: 02/14/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "DROP_INDEX_TSQL"
   - "DROP INDEX"
@@ -29,12 +31,12 @@ helpviewer_keywords:
   - "DROP INDEX statement"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # DROP INDEX (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 Removes one or more relational, spatial, filtered, or XML indexes from the current database. You can drop a clustered index and move the resulting table to another filegroup or partition scheme in a single transaction by specifying the `MOVE TO` option.
 
@@ -424,3 +426,4 @@ DROP INDEX PK_MyClusteredIndex
 - [sys.tables](../../relational-databases/system-catalog-views/sys-tables-transact-sql.md)
 - [sys.filegroups](../../relational-databases/system-catalog-views/sys-filegroups-transact-sql.md)
 - [sp_spaceused](../../relational-databases/system-stored-procedures/sp-spaceused-transact-sql.md)
+

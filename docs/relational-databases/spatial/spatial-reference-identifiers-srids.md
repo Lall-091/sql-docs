@@ -8,12 +8,12 @@ ms.date: 11/04/2024
 ms.service: sql
 ms.topic: conceptual
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "Spatial Reference Identifiers (SRIDs)"
   - "geodetic spatial data [SQL Server], identifiers"
   - "SRID"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # Spatial Reference Identifiers (SRIDs)
 

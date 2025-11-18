@@ -3,14 +3,14 @@ title: Configure Environment Variables for SQL Server on Linux
 description: This article describes how to use environment variables to configure specific SQL Server settings on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/02/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
 ms.custom:
   - linux-related-content
-  - build-2025
   - sfi-ropc-blocked
+  - ignite-2025
 ---
 # Configure SQL Server settings with environment variables on Linux
 
@@ -92,7 +92,7 @@ docker run -e ACCEPT_EULA=Y -e MSSQL_PID="Developer" -e MSSQL_SA_PASSWORD="<pass
 ```
 
 > [!NOTE]  
-> The process for running production editions in containers is slightly different. For more information, see [Run production container images](./sql-server-linux-docker-container-deployment.md#production).
+> The process for running production editions in containers is slightly different. For more information, see [Run production container images](sql-server-linux-docker-container-deployment.md#production).
 
 ::: moniker-end
 <!--SQL Server 2019 on Linux-->

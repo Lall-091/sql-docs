@@ -8,6 +8,8 @@ ms.date: 02/03/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "BIT_COUNT"
   - "BIT_COUNT_TSQL"
@@ -17,11 +19,11 @@ helpviewer_keywords:
   - "bit shifting [SQL Server], bit count"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current || =azuresqldb-current || =fabric"
+monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current || =azuresqldb-current || =fabric || =fabric-sqldb"
 ---
 # BIT_COUNT (Transact SQL)
 
-[!INCLUDE [SQL Server 2022, SQL Database, SQL Managed Instance FabricSE FabricDW](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricse-fabricdw.md)]
+[!INCLUDE [SQL Server 2022, SQL Database, SQL Managed Instance FabricSE FabricDW FabricSQLDB](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricse-fabricdw-fabricsqldb.md)]
 
 `BIT_COUNT` takes one parameter and returns the number of bits set to 1 in that parameter as a **bigint** type.
 
@@ -84,3 +86,4 @@ The result is `2`. This is because `17` in binary is `0001 0001`, and there are 
 - [SET_BIT (Transact SQL)](set-bit-transact-sql.md)
 - [GET_BIT (Transact SQL)](get-bit-transact-sql.md)
 - [Bit manipulation functions](bit-manipulation-functions-overview.md)
+

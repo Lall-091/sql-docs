@@ -8,17 +8,19 @@ ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_describe_undeclared_parameters"
   - "sp_describe_undeclared_parameters_TSQL"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric || =fabric-sqldb"
 ---
 
 # sp_describe_undeclared_parameters (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb.md)]
 
 Returns a result set that contains metadata about undeclared parameters in a [!INCLUDE [tsql](../../includes/tsql-md.md)] batch. Considers each parameter that is used in the *@tsql* batch, but not declared in *@params*. A result set is returned that contains one row for each such parameter, with the deduced type information for that parameter. The procedure returns an empty result set if the *@tsql* input batch has no parameters except those declared in *@params*.
 
@@ -270,3 +272,4 @@ WHERE object_id = @id OR NAME = @name', @params = N'@id int';
 - [sp_describe_first_result_set (Transact-SQL)](sp-describe-first-result-set-transact-sql.md)
 - [sys.dm_exec_describe_first_result_set (Transact-SQL)](../system-dynamic-management-views/sys-dm-exec-describe-first-result-set-transact-sql.md)
 - [sys.dm_exec_describe_first_result_set_for_object (Transact-SQL)](../system-dynamic-management-views/sys-dm-exec-describe-first-result-set-for-object-transact-sql.md)
+

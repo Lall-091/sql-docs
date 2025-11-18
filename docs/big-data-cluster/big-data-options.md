@@ -4,13 +4,14 @@ titleSuffix: SQL Server
 description: This article discusses migration strategies for SQL Server 2019 Big Clusters
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: hudequei, randolphwest
-ms.date: 07/29/2025
+ms.reviewer: hudequei, randolphwest, imotiwala
+ms.date: 10/31/2025
 ms.service: sql
 ms.subservice: big-data-cluster
 ms.topic: conceptual
+ms.update-cycle: 1095-days
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 monikerRange: ">=sql-server-ver15"
 ---
 # Big data options on the Microsoft SQL Server platform
@@ -178,9 +179,11 @@ For more information on Microsoft Azure Databricks, see [What is Databricks Data
 
 ## Hybrid
 
-### Fabric Mirrored Database
+<a id="fabric-mirrored-database"></a>
 
-As a data replication experience, [Database Mirroring in Fabric](/fabric/database/mirrored-database/overview) is a low-cost and low-latency solution to bring data from various systems together into a single analytics platform. You can continuously replicate your existing data estate directly into Fabric's OneLake, including data from Azure SQL Database, Snowflake, and Cosmos DB.
+### Mirroring in Microsoft Fabric
+
+As a data replication experience, [Database Mirroring in Fabric](../sql-server/fabric-database/fabric-mirrored-databases.md) is a low-cost and low-latency solution to bring data from various systems together into a single analytics platform. You can continuously replicate your existing data estate directly into Fabric's OneLake, including data from SQL Server 2016+, Azure SQL Database, Azure SQL Managed Instance, Oracle, Snowflake, Cosmos DB, and more.
 
 With the most up-to-date data in a queryable format in OneLake, you can now use all the different services in Fabric, such as running analytics with Spark, executing notebooks, data engineering, visualizing through Power BI Reports, and more.
 
@@ -197,16 +200,6 @@ For more information, see:
 - [Model data in the default Power BI semantic model in Microsoft Fabric](/fabric/data-warehouse/model-default-power-bi-dataset)
 - [What is the SQL analytics endpoint for a Lakehouse?](/fabric/data-engineering/lakehouse-sql-analytics-endpoint)
 - [Direct Lake](/power-bi/enterprise/directlake-overview)
-
-### Use SQL Server 2022 with Azure Synapse Link for SQL
-
-[!INCLUDE [sql-server-2022](../includes/sssql22-md.md)] contains a new feature that allows connectivity between SQL Server tables and the Microsoft Azure Synapse platform, the [Azure Synapse Link for SQL](/azure/synapse-analytics/synapse-link/sql-synapse-link-overview). Azure Synapse Link for [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] provides automatic change feeds that capture the changes within SQL Server and load them into Azure Synapse Analytics. It provides near real-time analysis and hybrid  transactional and analytical processing with minimal impact on operational systems. Once the data is in Synapse, you can combine it with many different data sources regardless of their size, scale, or format and run powerful analytics over all of it using your choice of Azure Machine Learning, Spark, or Power BI. Since the automated change feeds only push what is new or different, data transfer happens much faster and now allows for near real-time insights, with minimal impact on the performance of the source database in [!INCLUDE [sssql22-md](../includes/sssql22-md.md)].
-
-For your operational and even much of your analytic workloads, SQL Server can handle massive database sizes - for more information on maximum capacity specifications for SQL Server, see [Compute capacity limits by edition of SQL Server](../sql-server/maximum-capacity-specifications-for-sql-server.md). Using multiple SQL Server Instances on separate machines with partitioned T-SQL requests allow a scale-out environment for applications.
-
-Using PolyBase enables your SQL Server instance to query data with T-SQL directly from SQL Server, Oracle, Teradata, MongoDB, and Cosmos DB without separately installing client connection software. You can also use the generic ODBC connector on a Microsoft Windows-based instance to connect to additional providers using third-party ODBC drivers. PolyBase allows T-SQL queries to join the data from external sources to relational tables in an instance of SQL Server. This allows the data to stay in its original location and format. You can virtualize the external data through the SQL Server instance, so that it can be queried in place like any other table in SQL Server. [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] also allows ad hoc queries and backup/restore over Object-Store (using the S3-API) hardware or software storage options.
-
-Two general reference architectures are to use SQL Server on a stand-alone server for structured data queries and a separate installation of a scale-out non-relational system (such as Apache Hadoop or Apache Spark) for on-premises Link to Synapse, and the other option is to use a set of containers in a Kubernetes cluster with all components for your solution.
 
 ### Microsoft SQL Server on Windows, Apache Spark, and object storage on-premises
 

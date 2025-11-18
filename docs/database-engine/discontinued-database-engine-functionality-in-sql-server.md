@@ -4,12 +4,12 @@ description: Learn which database engine functionality and features were discont
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 09/08/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: conceptual
 ms.custom:
-  - build-2025
+  - ignite-2025
 helpviewer_keywords:
   - "VIA protocol"
   - "unsupported features [SQL Server]"
@@ -34,6 +34,11 @@ helpviewer_keywords:
   - "DATABASEPROPERTY"
   - "FASTFIRSTROW hint"
   - "SET DISABLE_DEF_CNST_CHK"
+  - "DQS"
+  - "Data Quality Services"
+  - "MDS"
+  - "Master Data Services"
+  - "Synapse Link"
 monikerRange: ">=sql-server-linux-2017 || >=sql-server-2016"
 ---
 # Discontinued Database Engine functionality in SQL Server
@@ -42,7 +47,7 @@ monikerRange: ">=sql-server-linux-2017 || >=sql-server-2016"
 
 This article describes the [!INCLUDE [ssDE](../includes/ssde-md.md)] features that are no longer available in [!INCLUDE [ssnoversion](../includes/ssnoversion-md.md)].
 
-## Discontinued features in SQL Server 2025 (17.x) Preview
+## Discontinued features in SQL Server 2025 (17.x)
 
 - Data Quality Services (DQS) is [removed](/lifecycle/definitions#removal) in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)]. We continue to support DQS in [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] and earlier versions.
 
@@ -69,7 +74,7 @@ This article describes the [!INCLUDE [ssDE](../includes/ssde-md.md)] features th
   | R | [sqlrutils](../machine-learning/r/ref-r-sqlrutils.md) (R package in SQL Server Machine Learning Services) |
   | R | [MicrosoftML](../machine-learning/r/ref-r-microsoftml.md) (R package in SQL Server Machine Learning Services) |
 
-- SQL Server Big Data Clusters will be retired. See information in [Introducing SQL Server Big Data Clusters](../big-data-cluster/big-data-cluster-overview.md).
+- SQL Server Big Data Clusters retired on February 28, 2025. For more information, see [Big data options on the Microsoft SQL Server platform](/previous-versions/sql/big-data-cluster/big-data-options).
 
 - [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] PolyBase scale-out groups will be retired. Scale out group functionality is removed from the product in [!INCLUDE [sssql22-md](../includes/sssql22-md.md)]. PolyBase data virtualization continues to be fully supported as a scale-up feature in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 

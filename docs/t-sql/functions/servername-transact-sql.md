@@ -8,6 +8,8 @@ ms.date: 07/08/2024
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "@@SERVERNAME"
   - "@@SERVERNAME_TSQL"
@@ -19,7 +21,7 @@ dev_langs:
 ---
 # @@SERVERNAME (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Returns the name of the local server that is running [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].  
 
@@ -73,3 +75,4 @@ ACCTG
 - [Configuration Functions (Transact-SQL)](configuration-functions-transact-sql.md)
 - [SERVERPROPERTY (Transact-SQL)](serverproperty-transact-sql.md)
 - [sp_addserver (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-addserver-transact-sql.md)
+

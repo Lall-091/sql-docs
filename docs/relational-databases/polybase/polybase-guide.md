@@ -4,13 +4,13 @@ description: PolyBase enables your SQL Server instance to process Transact-SQL q
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: hudequei, randolphwest
-ms.date: 10/21/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: polybase
 ms.topic: overview
 ms.custom:
   - intro-overview
-  - build-2025
+  - ignite-2025
 f1_keywords:
   - "PolyBase"
   - "PolyBase, guide"
@@ -57,7 +57,7 @@ PolyBase provides these same functionalities for the following SQL products from
 | --- | --- |
 | Native support for CSV, Parquet, & Delta <sup>1</sup> | PolyBase Query Service for External Data installation is no longer required to use `OPENROWSET`, `CREATE EXTERNAL TABLE`, or `CREATE EXTERNAL TABLE AS SELECT` with the following types of external data: Parquet, Delta, Azure Blob Storage (ABS), Azure Data Lake Storage (ADLS), or S3-Compatible Object storage. |
 | Use generic ODBC data sources on Linux | For more information, see [Configure PolyBase to access external data with ODBC generic types](polybase-configure-odbc-generic.md). |
-| [TDS 8.0 support](../security/networking/tds-8.md) | When you use [Features of the Microsoft ODBC Driver for SQL Server on Windows](../../connect/odbc/windows/features-of-the-microsoft-odbc-driver-for-sql-server-on-windows.md), TDS 8.0 is available for [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] as an [external data source](../../t-sql/statements/create-external-data-source-transact-sql.md). Review [Breaking changes in SQL Server 2025 Preview](../../database-engine/breaking-changes-to-database-engine-features-in-sql-server-2025.md). |
+| [TDS 8.0 support](../security/networking/tds-8.md) | PolyBase uses a secure-by-default configuration with ODBC Driver for SQL Server version 18 and `Encrypt=Yes` (Mandatory). Unlike other SQL Server features, PolyBase allows `TrustServerCertificate=True` for self-signed certificate scenarios. To enforce TLS 1.3 and strict encryption with TDS 8.0, set `Encrypt=Strict` and `TrustServerCertificate=No`. For more information, see [CREATE EXTERNAL DATA SOURCE - CONNECTION_OPTIONS](../../t-sql/statements/create-external-data-source-transact-sql.md#connection_options--key_value_pair-2). Review [Breaking changes to Database Engine features in SQL Server 2025](../../database-engine/breaking-changes-to-database-engine-features-in-sql-server-2025.md). |
 | Managed Identity | Managed Identity is available for [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] enabled by Azure Arc and SQL Server 2025 on Azure VMs. |
 
 <sup>1</sup> On [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], PolyBase Query Service for External Data is still required to connect with other databases. For example: SQL Server, Oracle, DB2, Teradata, MongoDB, or ODBC.

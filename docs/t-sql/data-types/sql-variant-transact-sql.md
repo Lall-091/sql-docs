@@ -7,6 +7,8 @@ ms.date: "09/12/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sql_variant"
   - "sql_variant_TSQL"
@@ -17,7 +19,7 @@ helpviewer_keywords:
   - "storage [SQL Server], sql_variant"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current ||=fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # sql_variant (Transact-SQL)

@@ -8,6 +8,8 @@ ms.date: 10/21/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "DATABASEPROPERTYEX"
   - "DATABASEPROPERTYEX_TSQL"
@@ -17,7 +19,7 @@ helpviewer_keywords:
   - "database properties [SQL Server]"
 dev_langs:
   - TSQL
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # DATABASEPROPERTYEX (Transact-SQL)
 
@@ -73,7 +75,7 @@ An expression specifying the name of the database property to return. *property*
 | `IsMergePublished`<br /><br />Data type: **int** | [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] supports database table publication for merge replication, if replication is installed. | - `1`: True<br />- `0`: False<br />- `NULL`: Invalid input |
 | `IsNullConcat`<br /><br />Data type: **int** | Null concatenation operand yields `NULL`. | - `1`: True<br />- `0`: False<br />- `NULL`: Invalid input |
 | `IsNumericRoundAbortEnabled`<br /><br />Data type: **int** | Errors are generated when a loss of precision occurs in expressions. | - `1`: True<br />- `0`: False<br />- `NULL`: Invalid input |
-| `IsOptimizedLockingOn`<br /><br />Data type: **int** | Optimized locking is enabled for the database. | - `1`: True<br />- `0`: False<br />- `NULL`: Not available<br /><br />**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]<sup>[AUTD](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy)</sup>, and [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)]. |
+| `IsOptimizedLockingOn`<br /><br />Data type: **int** | Optimized locking is enabled for the database. | - `1`: True<br />- `0`: False<br />- `NULL`: Not available<br /><br />**Applies to**: [!INCLUDE[sssql25-md](../../includes/sssql25-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)]<sup>[AUTD](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy)</sup>, and [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)]. |
 | `IsParameterizationForced`<br /><br />Data type: **int** | `PARAMETERIZATION` database `SET` option is `FORCED`. | - `1`: True<br />- `0`: False<br />- `NULL`: Invalid input |
 | `IsQuotedIdentifiersEnabled`<br /><br />Data type: **int** | Double quotation marks on identifiers are allowed. | - `1`: True<br />- `0`: False<br />- `NULL`: Invalid input |
 | `IsPublished`<br /><br />Data type: **int** | If replication is installed, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] supports database table publication for snapshot or transactional replication. | - `1`: True<br />- `0`: False<br />- `NULL`: Invalid input |

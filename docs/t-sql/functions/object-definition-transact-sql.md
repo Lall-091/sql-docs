@@ -7,6 +7,8 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "OBJECT_DEFINITION_TSQL"
   - "OBJECT_DEFINITION"
@@ -19,7 +21,7 @@ dev_langs:
   - "TSQL"
 ---
 # OBJECT_DEFINITION (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Returns the [!INCLUDE[tsql](../../includes/tsql-md.md)] source text of the definition of a specified object.  
   
@@ -102,3 +104,4 @@ GO
  [sys.server_sql_modules &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-server-sql-modules-transact-sql.md)  
   
   
+

@@ -7,6 +7,8 @@ ms.date: "06/10/2016"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SET_STATISTICS_XML_TSQL"
   - "SET STATISTICS XML"
@@ -20,7 +22,7 @@ dev_langs:
   - "TSQL"
 ---
 # SET STATISTICS XML (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Causes Microsoft [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] to execute [!INCLUDE[tsql](../../includes/tsql-md.md)] statements and generate detailed information about how the statements were executed in the form of a well-defined XML document.  
   
@@ -87,3 +89,4 @@ GO
 ## See Also  
  [SET SHOWPLAN_XML &#40;Transact-SQL&#41;](../../t-sql/statements/set-showplan-xml-transact-sql.md)   
  [sqlcmd Utility](../../tools/sqlcmd/sqlcmd-utility.md)  
+

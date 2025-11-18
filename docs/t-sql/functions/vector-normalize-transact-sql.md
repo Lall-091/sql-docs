@@ -11,6 +11,8 @@ ms.topic: reference
 ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "VECTOR_NORMALIZE"
   - "VECTOR_NORMALIZE_TSQL"
@@ -19,7 +21,7 @@ helpviewer_keywords:
   - "vector, normalize calculation"
 dev_langs:
   - TSQL
-monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
+monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # VECTOR_NORMALIZE (Transact-SQL)
 

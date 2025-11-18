@@ -8,6 +8,9 @@ ms.date: 05/14/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - sfi-ropc-blocked
+  - ignite-2025
 f1_keywords:
   - "DATABASE SCOPED CREDENTIAL"
   - "DATABASE_SCOPED_CREDENTIAL_TSQL"
@@ -21,10 +24,7 @@ helpviewer_keywords:
   - "credentials [SQL Server], DATABASE SCOPED CREDENTIAL statement"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=aps-pdw-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
-ms.custom:
-  - ignite-2024
-  - sfi-ropc-blocked
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=aps-pdw-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)
 
@@ -68,10 +68,12 @@ Specifies the name of the account to be used when connecting outside the server.
 | **Authentication** | **T-SQL** | **Supported** | **Notes** |
 |---|---|---|---|
 | **Shared Access Signature (SAS)** | `CREATE DATABASE SCOPED CREDENTIAL <credential_name> WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'secret';` | SQL Server 2022 and later, Azure SQL Managed Instance, Azure Synapse Analytics, Azure SQL Database | |
-| **Managed Identity** | `CREATE DATABASE SCOPED CREDENTIAL <credential_name> WITH IDENTITY = 'MANAGED IDENTITY';` | Azure SQL Database, Azure SQL Managed Instance, SQL Server 2025 with Azure Arc| To enable Azure Arc, see [Managed identity (preview) for SQL Server enabled by Azure Arc](../../sql-server/azure-arc/managed-identity.md)|
-| **Microsoft Entra pass-through authentication via User Identity** | `CREATE DATABASE SCOPED CREDENTIAL <credential_name> WITH IDENTITY = 'USER IDENTITY';` | Azure SQL Database | In Azure Synapse, see [Microsoft Entra Connect: Pass-through Authentication](/entra/identity/hybrid/connect/how-to-connect-pta) |
-| **S3 Access Key Basic authentication** | `CREATE DATABASE SCOPED CREDENTIAL <credential_name> WITH IDENTITY = 'S3 ACCESS KEY', SECRET = '<accesskey>:<secretkey>';` | SQL Server 2022 and later| |
-|**ODBC Data sources or Kerberos (MIT KDC)**| `CREATE DATABASE SCOPED CREDENTIAL <credential_name> WITH IDENTITY = '<identity_name>', SECRET = '<secret>'`; | SQL Server 2019 and later||
+| **Managed Identity** | `CREATE DATABASE SCOPED CREDENTIAL <credential_name> WITH IDENTITY = 'MANAGED IDENTITY';` | Azure SQL Database, Azure SQL Managed Instance, SQL Server 2025 with Azure Arc| To enable Azure Arc, see [Managed identity for SQL Server enabled by Azure Arc](../../sql-server/azure-arc/managed-identity.md) |
+| **Microsoft Entra pass-through authentication via User Identity** | `CREATE DATABASE SCOPED CREDENTIAL <credential_name> WITH IDENTITY = 'USER IDENTITY';` | [!INCLUDE [Azure SQL Database](../../includes/applies-to-version/_asdb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)] \* | In Azure Synapse, see [Microsoft Entra Connect: Pass-through Authentication](/entra/identity/hybrid/connect/how-to-connect-pta) |
+| **S3 Access Key Basic authentication** | `CREATE DATABASE SCOPED CREDENTIAL <credential_name> WITH IDENTITY = 'S3 ACCESS KEY', SECRET = '<accesskey>:<secretkey>';` | SQL Server 2022 and later versions | |
+| **ODBC Data sources or Kerberos (MIT KDC)** | `CREATE DATABASE SCOPED CREDENTIAL <credential_name> WITH IDENTITY = '<identity_name>', SECRET = '<secret>'`; | SQL Server 2019 and later versions | |
+
+\* In [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], if no database-scoped credential is specified, authentication method defaults to 'USER IDENTITY' and uses the Entra ID user login as context.
 
 #### SECRET = '*secret*'
 
@@ -180,6 +182,19 @@ RECONFIGURE;  
 
 CREATE DATABASE SCOPED CREDENTIAL [managed_id] 
 WITH IDENTITY = 'Managed Identity'; 
+```
+
+### #. Create a database scoped credential using Microsoft Entra ID
+
+**Applies to:** [!INCLUDE [Azure SQL Database](../../includes/applies-to-version/_asdb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)]
+
+In [!INCLUDE [Azure SQL Database](../../includes/applies-to-version/_asdb.md)] and [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], it is possible to use your own Entra ID login to authenticate an external data source. 
+
+In [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], if no database-scoped credential is specified, authentication method defaults to `USER IDENTITY` and uses the Entra ID user login as context. 
+
+```sql
+CREATE DATABASE SCOPED CREDENTIAL MyCredential
+WITH IDENTITY = 'User Identity';   
 ```
 
 ## Related content

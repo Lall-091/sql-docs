@@ -9,9 +9,7 @@ ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - build-2024
-  - ignite-2024
-  - build-2025
+  - ignite-2025
 f1_keywords:
   - "JSON_QUERY"
   - "JSON_QUERY_TSQL"
@@ -21,7 +19,7 @@ helpviewer_keywords:
   - "JSON_QUERY function"
 dev_langs:
   - TSQL
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # JSON_QUERY (Transact-SQL)
 

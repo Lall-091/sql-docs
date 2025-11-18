@@ -4,12 +4,12 @@ description: ALTER EXTERNAL DATA SOURCE modifies an external data source used to
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest, hudequei, wiassaf
-ms.date: 05/15/2025
+ms.date: 11/10/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "ALTER EXTERNAL DATA SOURCE"
   - "ALTER_EXTERNAL_DATA_SOURCE"
@@ -18,13 +18,13 @@ helpviewer_keywords:
   - "ALTER EXTERNAL DATA SOURCE statement"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azuresqledge-current || =fabric || =fabric-sqldb"
 ---
 # ALTER EXTERNAL DATA SOURCE (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
-  Modifies an external data source used to create an external table, used for PolyBase and data virtualization features. The external data source can be Hadoop or Azure Blob Storage (WASBS) for SQL SERVER and Azure Blob Storage (WASBS) or Azure Data Lake storage (ABFSS/ADL) for [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)].
+ Modifies an external data source used to create an external table, used for PolyBase and data virtualization features. The external data source can be Hadoop or Azure Blob Storage (WASBS) for SQL SERVER and Azure Blob Storage (WASBS) or Azure Data Lake storage (ABFSS/ADL) for [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)].
 
  Starting in [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)], Hadoop external data sources are no longer supported. Also, Azure Blob Storage and Azure Data Lake Gen 2 prefixes changed, refer to the following table:
 

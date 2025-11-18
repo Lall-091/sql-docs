@@ -4,15 +4,15 @@ description: Explore how SQL Server can be deployed on Linux containers and lear
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: vanto, randolphwest
-ms.date: 10/21/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
 ms.custom:
   - intro-deployment
   - linux-related-content
-  - build-2025
   - sfi-ropc-blocked
+  - ignite-2025
 zone_pivot_groups: cs1-command-shell
 monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017"
 ---
@@ -338,6 +338,9 @@ docker pull mcr.microsoft.com/mssql/rhel/server:2019-CU18-rhel-8.4
 ## Run production container images
 
 The [quickstart](quickstart-install-connect-docker.md) in the previous section runs the free Developer edition of SQL Server from the Microsoft Artifact Registry. Most of the information still applies if you want to run production container images, such as Enterprise, Standard, or Web editions. However, there are a few differences that are outlined here.
+
+> [!NOTE]  
+> Web edition isn't available in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and later versions.
 
 - You can only use SQL Server in a production environment if you have a valid license. You can obtain a free SQL Server Express production license [here](https://go.microsoft.com/fwlink/?linkid=857693). SQL Server Standard and Enterprise edition licenses are available through [Microsoft Volume Licensing](https://www.microsoft.com/licensing).
 

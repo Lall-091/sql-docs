@@ -1,23 +1,23 @@
 ---
-title: "Configure Column Encryption Using Always Encrypted Wizard in SSMS 21"
-description: Learn how to configure Always Encrypted for database columns by using the Always Encrypted Wizard in SSMS 21.
+title: Configure Column Encryption Using Always Encrypted Wizard in SSMS
+description: Learn how to configure Always Encrypted for database columns by using the Always Encrypted Wizard in SSMS 21 and later versions.
 author: pietervanhove
 ms.author: pivanho
 ms.reviewer: vanto, maghan, randolphwest, mathoma
-ms.date: 04/25/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: concept-article
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sql13.swb.alwaysencryptedwizard.f1"
 helpviewer_keywords:
   - "Wizard, Always Encrypted"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
-ms.custom:
-  - build-2025
 ---
 
-# Configure column encryption using Always Encrypted Wizard in SSMS 21
+# Configure column encryption using Always Encrypted Wizard in SSMS
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../../includes/applies-to-version/sql-asdb-asdbmi.md)]
 
@@ -62,11 +62,11 @@ You can launch the wizard at three different levels:
 
 1. To encrypt:
 
-       - Multiple columns located in different tables in a database, right-click your database, point to **Tasks**, and then select **Always Encrypted Wizard**.
+   - Multiple columns located in different tables in a database, right-click your database, point to **Tasks**, and then select **Always Encrypted Wizard**.
 
-       - Multiple columns in the same table, navigate to the table, right-click on it, and then select **Always Encrypted Wizard**.
+   - Multiple columns in the same table, navigate to the table, right-click on it, and then select **Always Encrypted Wizard**.
 
-       - An individual column, navigate to the column, right-click on it, and then select **Always Encrypted Wizard**.
+   - An individual column, navigate to the column, right-click on it, and then select **Always Encrypted Wizard**.
 
 ## Column Selection page
 
@@ -87,7 +87,7 @@ The wizard doesn't support cryptographic operations on temporal and in-memory ta
 
 ## Column Assessment page
 
-The selected tables and columns are assessed for suitability for Always Encrypted, or Always Encrypted with secure enclaves. The assessment starts automatically by showing a status bar and a list of the tables and columns it currently assesses, which are done, and which are to do. The assessment checks if a table column meets the requirements for Always Encrypted or Always Encrypted with secure enclaves based on the [limitations](../../../relational-databases/security/encryption/always-encrypted-database-engine.md#limitations).
+The selected tables and columns are assessed for suitability for Always Encrypted, or Always Encrypted with secure enclaves. The assessment starts automatically by showing a status bar and a list of the tables and columns it currently assesses, which are done, and which are to do. The assessment checks if a table column meets the requirements for Always Encrypted or Always Encrypted with secure enclaves based on the [limitations](always-encrypted-database-engine.md#limitations).
 
 If a column doesn't meet the requirements, the assessment displays an "Error" status for that column. Selecting the Messages link lets you get detailed information about why that specific column can't be encrypted.
 
@@ -142,10 +142,10 @@ Clear the plan cache for all batches and stored procedures that access the table
 
    > [!NOTE]  
    > If you don't remove the plan for the affected query from the cache, the first execution of the query after encryption might fail.
-   >  
+   >
    > Use `ALTER DATABASE SCOPED CONFIGURATION CLEAR PROCEDURE_CACHE` or `DBCC FREEPROCCACHE` to clear the plan cache carefully, as it can result in temporary query performance degradation. To minimize the negative impact of clearing the cache, you can selectively remove the plans for only the affected queries.
 
-Call [sp_refresh_parameter_encryption](../../system-stored-procedures/sp-refresh-parameter-encryption-transact-sql.md) to update the metadata for the parameters of each module (stored procedure, function, view, trigger) that are persisted in [sys.parameters](../..//system-catalog-views/sys-parameters-transact-sql.md) and might have been invalidated by encrypting the columns.
+Call [sp_refresh_parameter_encryption](../../system-stored-procedures/sp-refresh-parameter-encryption-transact-sql.md) to update the metadata for the parameters of each module (stored procedure, function, view, trigger) that are persisted in [sys.parameters](../../system-catalog-views/sys-parameters-transact-sql.md) and might have been invalidated by encrypting the columns.
 
 ## Related content
 

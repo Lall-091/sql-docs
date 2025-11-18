@@ -7,6 +7,8 @@ ms.date: 10/25/2023
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "partitions"
   - "partitions_TSQL"
@@ -16,11 +18,11 @@ helpviewer_keywords:
   - "sys.partitions catalog view"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # sys.partitions (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 Contains a row for each partition of all the tables and most types of indexes in the database. Special index types such as Full-Text, Spatial, and XML aren't included in this view. All tables and indexes in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] contain at least one partition, whether or not they are explicitly partitioned.
 
@@ -72,3 +74,4 @@ ORDER BY SpaceUsed_MB DESC;
 - [Object Catalog Views (Transact-SQL)](object-catalog-views-transact-sql.md)
 - [System catalog views (Transact-SQL)](catalog-views-transact-sql.md)
 - [Querying the SQL Server System Catalog FAQ](querying-the-sql-server-system-catalog-faq.yml)
+

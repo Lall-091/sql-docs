@@ -7,6 +7,8 @@ ms.date: "03/06/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "KEY_NAME_TSQL"
   - "KEY_NAME"
@@ -16,7 +18,7 @@ dev_langs:
   - "TSQL"
 ---
 # KEY_NAME (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Returns the name of the symmetric key from either a symmetric key GUID or cipher text.  
   
@@ -103,3 +105,4 @@ SELECT KEY_NAME(@ciphertext) AS [Name of Key] ;
  [DECRYPTBYKEYAUTOASYMKEY &#40;Transact-SQL&#41;](../../t-sql/functions/decryptbykeyautoasymkey-transact-sql.md)  
   
   
+

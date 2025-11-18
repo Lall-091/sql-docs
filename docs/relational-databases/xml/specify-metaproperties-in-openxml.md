@@ -8,6 +8,8 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "overflow in XML document [SQL Server]"
   - "metaproperties [XML in SQL Server]"
@@ -17,7 +19,7 @@ helpviewer_keywords:
 ---
 # Specify metaproperties in OPENXML
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Metaproperty attributes in an XML document are attributes that describe the properties of an XML item, such as element, attribute, or any other DOM node. These attributes don't physically exist in the XML document text. However, OPENXML provides these metaproperties for all the XML items. These metaproperties allow you to extract information, such as local positioning and namespace information, of XML nodes. This information provides you with more details than are apparent in the textual representation.
 
@@ -214,3 +216,4 @@ O4    1996-01-20 00:00:00.000     <Order amount="10000"/>
 
 - [OPENXML &#40;Transact-SQL&#41;](../../t-sql/functions/openxml-transact-sql.md)
 - [OPENXML &#40;SQL Server&#41;](../../relational-databases/xml/openxml-sql-server.md)
+

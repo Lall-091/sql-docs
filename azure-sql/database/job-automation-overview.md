@@ -5,25 +5,28 @@ description: "Features for job automation to run Transact-SQL (T-SQL) scripts in
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: srinia, mathoma
-ms.date: 04/09/2024
+ms.date: 10/30/2025
 ms.service: azure-sql
 ms.topic: concept-article
-ms.custom: sqldbrb=1
+ms.custom:
+  - sqldbrb=1
+  - ignite-2025
 dev_langs:
   - "TSQL"
-monikerRange: "= azuresql || = azuresql-db || = azuresql-mi"
+monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
 ---
 # Automate management tasks in Azure SQL
 
 [!INCLUDE [appliesto-sqldb-sqlmi-asa-ss](../includes/appliesto-sqldb-sqlmi-asa-ss.md)]
 
-This article summarizes job automation options in Azure SQL platforms, including [Azure SQL Database](sql-database-paas-overview.md), [Azure SQL Database elastic pools](elastic-pool-overview.md), [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md), and [Azure Synapse Analytics](/azure/synapse-analytics/overview-what-is).
+This article summarizes job automation options.
 
-Consider the following job scheduling and task automation technologies on different Azure SQL platforms:
+Consider the following job scheduling and task automation technologies on different platforms:
 
 - **Elastic jobs** are job scheduling services that execute custom jobs on one or many databases in [Azure SQL Database](sql-database-paas-overview.md) or [Azure SQL Database elastic pools](elastic-pool-overview.md). For more information, see the [elastic jobs overview](elastic-jobs-overview.md).
 - **SQL Agent Jobs** are executed by the [SQL Agent service](/sql/ssms/agent/sql-server-agent) that continues to be used for task automation in SQL Server and is also included with Azure SQL Managed Instances. For T-SQL script job automation in Azure SQL Managed Instance, consider [SQL Agent for Azure SQL Managed Instance](../managed-instance/job-automation-managed-instance.md). The SQL Agent on SQL managed instances is very similar to SQL Server. SQL Agent is not available in Azure SQL Database.
 - **Pipelines with recurring triggers** can be used for T-SQL script automation in Azure Synapse Analytics. [Pipelines with recurring triggers](/azure/synapse-analytics/data-integration/concepts-data-factory-differences) are [based on Azure Data Factory](/azure/synapse-analytics/data-integration/concepts-data-factory-differences).
+- **Pipelines, Dataflows, Spark jobs,** and **Spark Notebooks** can be used to orchestrate data movement and automate T-SQL tasks for [!INCLUDE [fabric-sqldb](../../docs/includes/fabric-sqldb.md)]. Monitor end-to-end runs in the Fabric Monitoring hub. For more information, see [SQL database in Fabric documentation](/fabric/database/sql/overview).
 
 ## Differences between SQL Agent and elastic jobs
 

@@ -7,6 +7,8 @@ ms.date: 08/16/2022
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "NODE_ID_FROM_PARTS"
 helpviewer_keywords:
@@ -14,10 +16,10 @@ helpviewer_keywords:
   - "Graph, system functions, graph ID, node ID, node"
 dev_langs:
   - "TSQL"
-monikerRange: "= azuresqldb-current || >= sql-server-2017 || >= sql-server-linux-2017 || = azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2017 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # NODE_ID_FROM_PARTS (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sqlserver2017-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sqlserver2017-asdb-asdbmi-fabricsqldb.md)]
 
 Returns the character representation (JSON) of the node ID for a given object ID and graph ID.
 
@@ -72,3 +74,4 @@ FROM OPENROWSET (BULK 'person_0_0.csv',
 - [EDGE_ID_FROM_PARTS](./edge-id-from-parts-transact-sql.md)
 - [GRAPH_ID_FROM_EDGE_ID](./graph-id-from-edge-id-transact-sql.md)
 - [GRAPH_ID_FROM_NODE_ID](./graph-id-from-node-id-transact-sql.md)
+

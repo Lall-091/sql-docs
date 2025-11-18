@@ -4,13 +4,12 @@ description: The OPTION clause specifies that the indicated query hint should be
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: wiassaf, randolphwest
-ms.date: 06/07/2024
+ms.date: 11/03/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - build-2024
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "OPTION clause"
   - "OPTION_TSQL"
@@ -21,7 +20,7 @@ helpviewer_keywords:
   - "OPTION clause"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # OPTION clause (Transact-SQL)
 
@@ -114,11 +113,11 @@ OPTION (HASH GROUP, FAST 10);
 GO
 ```
 
-## Examples: [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE [ssPDW](../../includes/sspdw-md.md)]
+## Examples: [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], and [!INCLUDE [ssPDW](../../includes/sspdw-md.md)]
 
 ### B. SELECT statement with a label in the OPTION clause
 
-The following example shows an [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] `SELECT` statement with a label in the `OPTION` clause.
+The following example shows a `SELECT` statement with a label in the `OPTION` clause.
 
 ```sql
 SELECT * FROM FactResellerSales
@@ -247,9 +246,9 @@ WHERE ID < 10
 OPTION (DISABLE EXTERNALPUSHDOWN);
 ```
 
-### I. Query data as of a point in time
+## Examples: Microsoft Fabric Data Warehouse
 
-**Applies to**: [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]
+### I. Query data as of a point in time
 
 For more information, see [FOR TIMESTAMP query hint](hints-transact-sql-query.md#for-timestamp).
 
@@ -262,6 +261,16 @@ FROM FactInternetSales
 GROUP BY OrderDateKey
 ORDER BY OrderDateKey
 OPTION (FOR TIMESTAMP AS OF '2024-03-13T19:39:35.28');--March 13, 2024 at 7:39:35.28 PM UTC
+```
+
+
+### J. SELECT statement with a label in the OPTION clause
+
+The following example shows a `SELECT` statement with a label in the `OPTION` clause. For more information, see [Query labels in Fabric Data Warehouse](/fabric/data-warehouse/query-label).
+
+```sql
+SELECT * FROM FactResellerSales
+OPTION (LABEL = 'q17');
 ```
 
 ## Related content

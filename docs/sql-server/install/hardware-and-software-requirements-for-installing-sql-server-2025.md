@@ -1,13 +1,15 @@
 ---
-title: "SQL Server 2025 Preview: Hardware & Software Requirements"
+title: "SQL Server 2025: Hardware & Software Requirements"
 description: A list of hardware, software, and operating system requirements for installing and running SQL Server 2025.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest, jopilov, rdorr
-ms.date: 06/16/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "Setup [SQL Server], software"
   - "software [SQL Server]"
@@ -43,11 +45,9 @@ helpviewer_keywords:
   - "cross-language support"
   - "disk space [SQL Server]"
   - "localized SQL Server versions"
-ms.custom:
-  - build-2025
 ---
 
-# Hardware and software requirements for SQL Server 2025 Preview
+# Hardware and software requirements for SQL Server 2025
 
 [!INCLUDE [SQL Server -Windows Only](../../includes/applies-to-version/sql-windows-only.md)]
 
@@ -76,7 +76,7 @@ The following memory and processor requirements apply to all editions of [!INCLU
 | Recommended&nbsp;memory | - Express editions: 1 GB<br /><br />- All other editions: At least 4 GB, and should be increased as database size increases to ensure optimal performance. |
 | **Processor** | |
 | Processor type | x64 processor. All Intel and AMD x86-64 CPUs with [up to 64 cores per NUMA node](../compute-capacity-limits-by-edition-of-sql-server.md#numa-64). |
-| Minimum  speed | 1.4 GHz |
+| Minimum speed | 1.4 GHz |
 | Recommended speed | 2.0 GHz or faster |
 
 > [!NOTE]  
@@ -107,32 +107,32 @@ The following requirements apply to all installations:
 
 The following table shows which editions of [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] are compatible with which versions of Windows. You can also use the support lifecycle information to see if your version of Windows is supported.
 
-| [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] edition: | Enterprise <sup>1</sup> | Standard <sup>1</sup> | Web | Express |
-| --- | --- | --- | --- | --- |
-| **Windows Server 2025** ([Support lifecycle](/lifecycle/products/windows-server-2025)) | | | | |
-| Windows Server 2025 Datacenter | Yes | Yes | Yes | Yes |
-| Windows Server 2025 Datacenter: Azure Edition | Yes | Yes | Yes | Yes |
-| Windows Server 2025 Standard | Yes | Yes | Yes | Yes |
-| Windows Server 2025 Essentials | Yes | Yes | Yes | Yes |
-| **Windows Server 2022** ([Support lifecycle](/lifecycle/products/windows-server-2022)) | | | | |
-| Windows Server 2022 Datacenter | Yes | Yes | Yes | Yes |
-| Windows Server 2022 Datacenter: Azure Edition | Yes | Yes | Yes | Yes |
-| Windows Server 2022 Standard | Yes | Yes | Yes | Yes |
-| Windows Server 2022 Essentials | Yes | Yes | Yes | Yes |
-| **Windows Server 2019** ([Support lifecycle](/lifecycle/products/windows-server-2019)) | | | | |
-| Windows Server 2019 Datacenter | Yes | Yes | Yes | Yes |
-| Windows Server 2019 Standard | Yes | Yes | Yes | Yes |
-| Windows Server 2019 Essentials | Yes | Yes | Yes | Yes |
-| **Windows 11** ([Support lifecycle](/lifecycle/products/windows-11-home-and-pro)) | | | | |
-| Windows 11 IoT Enterprise | No | Yes | No | Yes |
-| Windows 11 Enterprise | No | Yes | No | Yes |
-| Windows 11 Professional | No | Yes | No | Yes |
-| Windows 11 Home | No | Yes | No | Yes |
-| **Windows 10** ([Support lifecycle](/lifecycle/products/windows-10-home-and-pro)) | | | | |
-| Windows 10 IoT Enterprise | No | Yes | No | Yes |
-| Windows 10 Enterprise | No | Yes | No | Yes |
-| Windows 10 Professional | No | Yes | No | Yes |
-| Windows 10 Home | No | Yes | No | Yes |
+| [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] edition: | Enterprise <sup>1</sup> | Standard <sup>1</sup> | Express |
+| --- | --- | --- | --- |
+| **Windows Server 2025** ([Support lifecycle](/lifecycle/products/windows-server-2025)) | | | |
+| Windows Server 2025 Datacenter | Yes | Yes | Yes |
+| Windows Server 2025 Datacenter: Azure Edition | Yes | Yes | Yes |
+| Windows Server 2025 Standard | Yes | Yes | Yes |
+| Windows Server 2025 Essentials | Yes | Yes | Yes |
+| **Windows Server 2022** ([Support lifecycle](/lifecycle/products/windows-server-2022)) | | | |
+| Windows Server 2022 Datacenter | Yes | Yes | Yes |
+| Windows Server 2022 Datacenter: Azure Edition | Yes | Yes | Yes |
+| Windows Server 2022 Standard | Yes | Yes | Yes |
+| Windows Server 2022 Essentials | Yes | Yes | Yes |
+| **Windows Server 2019** ([Support lifecycle](/lifecycle/products/windows-server-2019)) | | | |
+| Windows Server 2019 Datacenter | Yes | Yes | Yes |
+| Windows Server 2019 Standard | Yes | Yes | Yes |
+| Windows Server 2019 Essentials | Yes | Yes | Yes |
+| **Windows 11** ([Support lifecycle](/lifecycle/products/windows-11-home-and-pro)) | | | |
+| Windows 11 IoT Enterprise | No | Yes | Yes |
+| Windows 11 Enterprise | No | Yes | Yes |
+| Windows 11 Professional | No | Yes | Yes |
+| Windows 11 Home | No | Yes | Yes |
+| **Windows 10** ([Support lifecycle](/lifecycle/products/windows-10-home-and-pro)) | | | |
+| Windows 10 IoT Enterprise | No | Yes | Yes |
+| Windows 10 Enterprise | No | Yes | Yes |
+| Windows 10 Professional | No | Yes | Yes |
+| Windows 10 Home | No | Yes | Yes |
 
 <sup>1</sup> [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] introduces separate Enterprise Developer and Standard Developer editions of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)].
 
@@ -150,7 +150,7 @@ For more information on installing [!INCLUDE [ssNoVersion](../../includes/ssnove
 
 ## Cross-language support
 
-For more information about cross-language support and considerations for installing [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] in localized languages, see [Local Language Versions in SQL Server](local-language-versions-in-sql-server.md).
+For more information about cross-language support and considerations for installing [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] in localized languages, see [Local language versions in SQL Server](local-language-versions-in-sql-server.md).
 
 <a id="HardDiskSpace"></a>
 
@@ -230,4 +230,4 @@ Alternatively, you can create an [Azure virtual machine already running SQL Serv
 ## Related content
 
 - [Plan a SQL Server installation](planning-a-sql-server-installation.md)
-- [Security Considerations for a SQL Server Installation](security-considerations-for-a-sql-server-installation.md)
+- [Security considerations for a SQL Server installation](security-considerations-for-a-sql-server-installation.md)

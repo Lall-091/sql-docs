@@ -7,6 +7,8 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "EVENTDATA"
   - "fn_event_data"
@@ -23,7 +25,7 @@ dev_langs:
   - "TSQL"
 ---
 # EVENTDATA (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This function returns information about server or database events. When an event notification fires, and the specified service broker receives the results, `EVENTDATA` is called. A DDL or logon trigger also support internal use of `EVENTDATA`.  
   
@@ -147,3 +149,4 @@ GO
  [Logon Triggers](../../relational-databases/triggers/logon-triggers.md)  
   
   
+

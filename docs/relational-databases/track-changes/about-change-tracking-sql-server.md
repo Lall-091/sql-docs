@@ -7,15 +7,15 @@ ms.reviewer: mathoma
 ms.date: 05/19/2025
 ms.service: sql
 ms.topic: concept-article
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "data changes [SQL Server]"
   - "tracking data changes [SQL Server]"
   - "change tracking [SQL Server], about change tracking"
   - "change tracking [SQL Server]"
   - "data [SQL Server], changing"
-ms.custom:
-  - build-2025
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current||=fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # About Change Tracking (SQL Server)
 

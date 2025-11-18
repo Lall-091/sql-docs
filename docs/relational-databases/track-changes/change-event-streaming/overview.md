@@ -1,30 +1,29 @@
 ---
-title: "What is change event streaming"
+title: "What is change event streaming (preview)"
 description: "Provides an overview of change event streaming"
 author: nzagorac-ms
 ms.author: nzagorac
 ms.reviewer: mathoma, mikeray
+ms.date: 11/18/2025
 ms.service: sql
 ms.topic: overview
-ms.date: 08/11/2025
-monikerRange: " = sql-server-ver17 || = sql-server-linux-ver17 "
 ms.custom:
-  - build-2025
+  - ignite-2025
+monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17"
 ---
 
-# What is change event streaming?
-[!INCLUDE [sqlserver2025](../../../includes/applies-to-version/sqlserver2025.md)]
+# What is change event streaming (preview)?
+[!INCLUDE [sqlserver2025](../../../includes/applies-to-version/sqlserver2025-asdb.md)]
 
-This article describes the change event streaming (CES) feature introduced in [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)]. 
+This article describes the change event streaming (CES) feature introduced in [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)] and Azure SQL Database. 
 
 To get started with the feature, see [Configure change event streaming](configure.md).
 
-> [!NOTE]
-> Change event streaming is currently in [preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms) for SQL Server 2025 and requires enabling the [preview feature database scoped configuration](../../../t-sql/statements/alter-database-scoped-configuration-transact-sql.md#preview-features). During preview, this feature is subject to change. For current supportability, see [Limitations](configure.md#limitations).
+[!INCLUDE [change-event-streaming-preview](../../../includes/change-event-streaming-preview.md)]
 
 ## Overview
 
-Change event streaming (CES) is a modern data integration capability that streams SQL Server data changes directly into [Azure Event Hubs](/azure/event-hubs/event-hubs-about) - an event streaming service. CES captures and publishes incremental changes of data to an Azure Event Hubs destination in near real-time. Captured changes include updates, inserts, and deletes (DML). Details of the data changes (such as the schema, previous values, and new values) are sent to Azure Event Hubs in the form of a CloudEvent. The CloudEvent is serialized to JSON (native) or Avro Binary, and then streamed into an Azure Event Hubs destination.
+Change event streaming (CES) is a modern data integration capability that streams SQL Server data changes directly into [Azure Event Hubs](/azure/event-hubs/event-hubs-about) - a high throughput data streaming service. CES captures and publishes incremental changes of data to an Azure Event Hubs destination in near real-time. Captured changes include updates, inserts, and deletes (DML). Details of the data changes (such as the schema, previous values, and new values) are sent to Azure Event Hubs in the form of a CloudEvent. The CloudEvent is serialized to JSON (native) or Avro Binary, and then streamed into an Azure Event Hubs destination.
 
 ## Use cases
 
@@ -35,7 +34,7 @@ Use CES to:
 - Implement real-time analytics on top of your relational data.
 - Audit and monitor. Track changes of sensitive data or logging specific events.
 
-The main advantages for using an event streaming services such as Azure Event Hubs, and SQL Servers change event streaming are:
+The main advantages for using an event streaming service such as Azure Event Hubs, and SQL Server's change event streaming are:
 
 - **Scalability**:  Event streaming services are designed to handle high-throughput and can scale independently from a database.
 - **Decoupling**: Systems downstream from a database and streaming service are loosely coupled, enabling greater flexibility and easier maintenance.
@@ -52,7 +51,15 @@ To get started with the feature, see [Configure change event streaming](configur
 
 ## Consume change event streaming events from Azure Event Hubs
 
-To learn how to consume change events from Azure Event Hubs with a .NET Core console application that receives events from an event hub using an event processor, review [Quickstart: Send or receive events using .NET](/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send#receive-events-from-the-event-hub) 
+To learn how to consume change events from Azure Event Hubs with a .NET Core console application that receives events from an event hub using an event processor, review [Quickstart: Send or receive events using .NET](/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send#receive-events-from-the-event-hub).
+
+## CES in Azure SQL Database
+
+CES is also available for all service tiers of Azure SQL Database (including Hyperscale), but the following differences between SQL Server and Azure SQL Database apply:
+
+- The preview feature database scoped configuration isn't required to use CES in Azure SQL Database.
+- Azure SQL Database supports Microsoft Entra authentication for CES, while SQL Server only supports key-value authentication and shared access signatures (SAS) authentication.
+- xEvent debugging in Azure SQL Database isn't currently available.
 
 ## Limitations
 

@@ -7,6 +7,8 @@ ms.date: "06/10/2016"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "PROFILE"
   - "SET_STATISTICS_PROFILE_TSQL"
@@ -22,7 +24,7 @@ dev_langs:
   - "TSQL"
 ---
 # SET STATISTICS PROFILE (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Displays the profile information for a statement. STATISTICS PROFILE works for ad hoc queries, views, and stored procedures.  
   
@@ -61,3 +63,4 @@ SET STATISTICS PROFILE { ON | OFF }
  [SET STATISTICS IO &#40;Transact-SQL&#41;](../../t-sql/statements/set-statistics-io-transact-sql.md)  
   
   
+

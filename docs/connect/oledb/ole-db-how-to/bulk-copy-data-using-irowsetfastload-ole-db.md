@@ -7,15 +7,17 @@ ms.date: "06/14/2018"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: "reference"
+ms.custom:
+  - sfi-ropc-nochange
+  - ignite-2025
 helpviewer_keywords:
   - "bulk copy [OLE DB], text data"
   - "bulk copy [OLE DB]"
   - "bulk copy [OLE DB], data files"
   - "bulk copy [OLE DB], about bulk copy"
-ms.custom: sfi-ropc-nochange
 ---
 # Bulk Copy Data Using IRowsetFastLoad (OLE DB)
-[!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics PDW FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 [!INCLUDE[Driver_OLEDB_Download](../../../includes/driver_oledb_download.md)]
 
@@ -425,3 +427,4 @@ IF EXISTS (SELECT name FROM sysobjects WHERE name = 'IRFLTable')
 GO  
 ```  
   
+

@@ -3,12 +3,12 @@ title: "Transactions (Transact-SQL)"
 description: In the SQL Server Database Engine, a transaction is a single unit of work.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/15/2025
+ms.date: 10/30/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "Transactions"
   - "Transactions_TSQL"
@@ -19,11 +19,11 @@ helpviewer_keywords:
   - "unit of work [SQL Server]"
 dev_langs:
   - "TSQL"
-monikerRange: " =azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # Transactions (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
+[!INCLUDE [sql-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-fabricdw-fabricsqldb.md)]
 
 A transaction is a single unit of work. If a transaction is successful, all of the data modifications made during the transaction are committed and become a permanent part of the database. If a transaction encounters errors and must be canceled or rolled back, then all of the data modifications are erased.
 

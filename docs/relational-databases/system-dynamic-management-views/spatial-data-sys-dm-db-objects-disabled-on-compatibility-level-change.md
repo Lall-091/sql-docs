@@ -7,6 +7,8 @@ ms.date: "02/27/2023"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "dm_db_objects_disabled_on_compatibility_level_change"
   - "dm_db_objects_disabled_on_compatibility_level_change_TSQL"
@@ -16,10 +18,10 @@ helpviewer_keywords:
   - "sys.dm_db_objects_disabled_on_compatibility_level_change catalog view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Spatial Data - sys.dm_db_objects_disabled_on_compatibility_level_change
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Lists the indexes and constraints that will be disabled as a result of changing compatibility level in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. Indexes and constraints that contain persisted computed columns whose expressions use spatial UDTs will be disabled after upgrading or changing compatibility level. Use this dynamic management function to determine the impact of a change in compatibility level.  
   
@@ -150,3 +152,4 @@ GO
 ```  
   
   
+

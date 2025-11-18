@@ -1,16 +1,16 @@
 ---
 title: "AI_GENERATE_CHUNKS (Transact-SQL)"
-description: The ai_generate_chunks table-valued function creates text chunks.
+description: The AI_GENERATE_CHUNKS table-valued function creates text chunks.
 author: jettermctedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 10/06/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
   - sql-ai
-  - build-2025
+  - ignite-2025
 f1_keywords:
   - "ai_generate_chunks_TSQL"
   - "ai_generate_chunks"
@@ -18,11 +18,11 @@ helpviewer_keywords:
   - "ai_generate_chunks"
 dev_langs:
   - TSQL
-monikerRange: "=azuresqldb-current || >=sql-server-ver17 || >=sql-server-linux-ver17"
+monikerRange: "=azuresqldb-current || >=sql-server-ver17 || >=sql-server-linux-ver17 || =fabric-sqldb"
 ---
-# AI_GENERATE_CHUNKS (Transact-SQL) (Preview)
+# AI_GENERATE_CHUNKS (Transact-SQL)
 
-[!INCLUDE [sqlserver2025](../../includes/applies-to-version/sqlserver2025.md)]
+[!INCLUDE [sqlserver2025-asdb-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-fabricsqldb.md)]
 
 `AI_GENERATE_CHUNKS` is a table-valued function that creates "chunks", or fragments of text based on a type, size, and source expression.
 
@@ -125,7 +125,7 @@ CROSS APPLY
    AI_GENERATE_CHUNKS(source = text_to_chunk, chunk_type = FIXED, chunk_size = 50, enable_chunk_set_id = 1) c
 ```
 
-| chunk | chunk_order | chunk_offset | chunk_length |  chunk_set_id |
+| chunk | chunk_order | chunk_offset | chunk_length | chunk_set_id |
 | --- | --- | --- | --- | --- |
 | `All day long we seemed to dawdle through a country` | **1** | **1** | **50** | **1** | 
 | ` which was full of beauty of every kind. Sometimes` | 2 | 51 | 50 | 1 |

@@ -7,6 +7,8 @@ ms.date: 01/31/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sql13.swb.schemas.general.f1"
 helpviewer_keywords:
@@ -14,11 +16,11 @@ helpviewer_keywords:
   - "CREATE SCHEMA [Management Studio]"
   - "database schemas"
   - "schemas [SQL Server], creating"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # Create a database schema
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricdw](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricdw-fabricsqldb](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricdw-fabricsqldb.md)]
 
 This article describes how to create a schema in [!INCLUDE [ssnoversion](../../../includes/ssnoversion-md.md)] by using [!INCLUDE [ssManStudioFull](../../../includes/ssmanstudiofull-md.md)] or [!INCLUDE [tsql](../../../includes/tsql-md.md)].
 
@@ -121,3 +123,4 @@ The **Schema - New** dialog box also offers options on two extra pages: **Permis
 ## Related content
 
 - [CREATE SCHEMA (Transact-SQL)](../../../t-sql/statements/create-schema-transact-sql.md)
+

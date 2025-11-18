@@ -7,6 +7,8 @@ ms.date: "01/23/2019"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "QUERY_STORE_RUNTIME_STATS_INTERVAL"
   - "SYS.QUERY_STORE_RUNTIME_STATS_INTERVAL"
@@ -17,10 +19,10 @@ helpviewer_keywords:
   - "query_store_runtime_stats_interval catalog view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||=azure-sqldw-latest||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || =azure-sqldw-latest || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.query_store_runtime_stats_interval (Transact-SQL)
-[!INCLUDE [sqlserver2016-asdb-asdbmi-asa](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-fabricsqldb.md)]
 
   Contains  information about the start and end time of each interval over which runtime execution statistics information for a query has been collected.  
   
@@ -47,3 +49,4 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||=azure-sqldw-latest||>=sq
  [Query Store Stored Procedures &#40;Transact-SQL&#41;](../../relational-databases/system-stored-procedures/query-store-stored-procedures-transact-sql.md)  
   
   
+

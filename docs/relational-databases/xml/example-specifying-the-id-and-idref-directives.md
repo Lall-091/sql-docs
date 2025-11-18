@@ -8,13 +8,15 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "IDREF directive"
   - "ID directive"
 ---
 # Example: Specify the ID and IDREF directives
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This example is almost the same as the [Specifying the ELEMENTXSINIL Directive](../../relational-databases/xml/example-specifying-the-elementxsinil-directive.md) example. The only difference is that the query specifies the **ID** and **IDREF** directives. These directives overwrite the types of the **SalesPersonID** attribute in the `<OrderHeader>` and `<OrderDetail>` elements, and form intra-document links. You need the schema to see the overwritten types. Therefore, the query specifies the **XMLDATA** option in the FOR XML clause to retrieve the schema.
 
@@ -120,3 +122,4 @@ This is the partial result. In the schema, the **ID** and **IDREF** directives h
 ## See also
 
 - [Use EXPLICIT Mode with FOR XML](../../relational-databases/xml/use-explicit-mode-with-for-xml.md)
+

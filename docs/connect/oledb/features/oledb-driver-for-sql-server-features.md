@@ -7,13 +7,15 @@ ms.date: "02/18/2022"
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "MDAC [SQL Server]"
   - "MSOLEDBSQL, about OLE DB Driver for SQL Server"
   - "data access [OLE DB Driver for SQL Server], features"
 ---
 # OLE DB Driver for SQL Server Features
-[!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics PDW FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 [!INCLUDE[Driver_OLEDB_Download](../../../includes/driver_oledb_download.md)]
 
@@ -107,3 +109,4 @@ Discusses new authentication methods introduced in OLE DB driver 18.2.1 that hav
  [Installing OLE DB Driver for SQL Server](../../oledb/applications/installing-oledb-driver-for-sql-server.md)  
   
   
+

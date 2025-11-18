@@ -9,8 +9,8 @@ ms.subservice: table-view-index
 ms.topic: quickstart
 ms.custom:
   - intro-quickstart
-  - ignite-2024
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+  - ignite-2025
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # Get started with columnstore indexes for real-time operational analytics

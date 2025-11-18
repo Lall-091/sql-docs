@@ -7,6 +7,8 @@ ms.date: 11/25/2024
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.database_files"
   - "sys.database_files_TSQL"
@@ -16,11 +18,11 @@ helpviewer_keywords:
   - "sys.database_files catalog view"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.database_files (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
   Contains a row per file of a database as stored in the database itself. This is a per-database view.  
   
@@ -91,3 +93,4 @@ Find example queries using [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)], in
 - [sys.data_spaces (Transact-SQL)](sys-data-spaces-transact-sql.md)
 - [Manage file space for databases in Azure SQL Database](/azure/azure-sql/database/file-space-manage)
 - [Manage file space for databases in Azure SQL Managed Instance](/azure/azure-sql/managed-instance/file-space-manage)
+

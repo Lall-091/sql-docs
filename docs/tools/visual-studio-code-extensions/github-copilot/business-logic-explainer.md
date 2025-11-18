@@ -1,24 +1,25 @@
 ---
 title: "Quickstart: Business Logic Explainer with GitHub Copilot"
+titleSuffix: MSSQL Extension for Visual Studio Code
 description: Learn how GitHub Copilot helps developers understand and work with complex application logic in SQL, ORM frameworks, or database code.
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: randolphwest
-ms.date: 05/19/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: quickstart
 ms.collection:
   - data-tools
   - ce-skilling-ai-copilot
-ai-usage: ai-assisted
 ms.custom:
-  - build-2025
+  - ignite-2025
+ai-usage: ai-assisted
 ---
 
-# Quickstart: Use the Business Logic Explainer (Preview)
+# Quickstart: Use the business logic explainer
 
-In this quickstart, you learn how the Business Logic Explainer helps developers understand and work with complex application logic implemented in SQL, ORM (Object-Relational Mapping) frameworks, or directly in the database. The assistant analyzes SQL code, ORM models, or existing database schemas to explain the underlying business rules and provide actionable documentation.
+In this quickstart, you learn how the business logic explainer helps developers understand and work with complex application logic implemented in SQL, ORM (Object-Relational Mapping) frameworks, or directly in the database. The assistant analyzes SQL code, ORM models, or existing database schemas to explain the underlying business rules and provide actionable documentation.
 
 ## Get started
 
@@ -32,13 +33,25 @@ Here are common use cases and examples of what you can ask via the chat particip
 
 ### Explain T-SQL logic
 
-Use GitHub Copilot to understand and explain T-SQL logic, from stored procedures to inline conditional statements. Whether you're reviewing discount rules, procedural logic, or optimization conditions, GitHub Copilot can analyze and document business rules implemented in T-SQL.
+Use GitHub Copilot to understand and explain Transact-SQL (T-SQL) logic, from stored procedures to inline conditional statements. Whether you're reviewing discount rules, procedural logic, or optimization conditions, GitHub Copilot can analyze and document business rules implemented in T-SQL.
 
-- Explain what the `SalesLT.uspGetCustomerOrderHistory` stored procedure does and suggest ways to optimize it.
-- Debug the `SalesLT.uspGetTopSellingProducts` stored procedure and suggest improvements.
-- Analyze the following `SQL` code snippet from my current database. Document the business rules implemented in this discount application process, including conditions for eligibility, discount rate adjustments, and any limits imposed on the discount amount. Also, provide actionable insights or suggestions to improve clarity or performance if necessary.
+#### Explain a stored procedure
 
-```sql
+```copilot-prompt
+Explain what the `SalesLT.uspGetCustomerOrderHistory` stored procedure does and suggest ways to optimize it.
+```
+
+#### Debug a stored procedure
+
+```copilot-prompt
+Debug the `SalesLT.uspGetTopSellingProducts` stored procedure and suggest improvements.
+```
+
+#### Explain business logic in a code snippet
+
+```copilot-prompt
+Analyze the following SQL code snippet from my current database. Document the business rules implemented in this discount application process, including conditions for eligibility, discount rate adjustments, and any limits imposed on the discount amount. Also, provide actionable insights or suggestions to improve clarity or performance if necessary.
+
 DECLARE @OrderTotal AS DECIMAL (10, 2) = 1500.00;
 DECLARE @DiscountCode AS NVARCHAR (20) = 'DISCOUNT10';
 DECLARE @DiscountPct AS DECIMAL (5, 2) = CASE WHEN @OrderTotal > 1000.00 THEN 5.0 ELSE 0.0 END;
@@ -62,9 +75,11 @@ SELECT @OrderTotal AS OrderTotal,
 
 ### Explain ORM logic
 
-- Explain what the following SQLAlchemy query does:
+#### Explain a SQLAlchemy query
 
-```python
+```copilot-prompt
+Explain what the following SQLAlchemy query does:
+
 from sqlalchemy import func
 
 top_customers = (
@@ -75,9 +90,11 @@ top_customers = (
 )
 ```
 
-- What does this Entity Framework LINQ query do? Describe how it groups customers by tier based on their total purchases.
+#### Explain an Entity Framework LINQ query
 
-```csharp
+```copilot-prompt
+What does this Entity Framework LINQ query do? Describe how it groups customers by tier based on their total purchases.
+
 var customerTiers = context.SalesOrderHeaders
     .GroupBy(o => o.CustomerID)
     .Select(g => new {
@@ -88,9 +105,11 @@ var customerTiers = context.SalesOrderHeaders
     });
 ```
 
-- Analyze the logic of this Prisma query and explain how it determines which products are considered "low inventory".
+#### Explain the business logic in a Prisma query
 
-```ts
+```copilot-prompt
+Analyze the logic of this Prisma query and explain how it determines which products are considered "low inventory".
+
 const lowInventoryProducts = await prisma.product.findMany({
   where: {
     SafetyStockLevel: {
@@ -105,9 +124,11 @@ const lowInventoryProducts = await prisma.product.findMany({
 });
 ```
 
-- Review and explain what this Sequelize query does. Add inline comments to clarify how it calculates total revenue per customer and filters for customers with significant spending:
+#### Explain and comment a Sequelize query
 
-```js
+```copilot-prompt
+Review and explain what this Sequelize query does. Add inline comments to clarify how it calculates total revenue per customer and filters for customers with significant spending:
+
 const results = await SalesOrderHeader.findAll({
   attributes: ['CustomerID', [sequelize.fn('SUM', sequelize.col('TotalDue')), 'TotalSpent']],
   group: ['CustomerID'],
@@ -115,17 +136,27 @@ const results = await SalesOrderHeader.findAll({
 });
 ```
 
-- Using SQLAlchemy, generate a query to list products that have never been ordered and ask GitHub Copilot to explain the join logic and filtering behavior.
+#### Generate a SQLAlchemy query for a list of products
 
-- In Prisma, write a query that retrieves customers who placed an order in the last 30 days. Explain what the following Prisma query does. Add inline comments to clarify how the date filtering works and how recent orders are determined:
+```copilot-prompt
+Using SQLAlchemy, generate a query to list products that have never been ordered and ask GitHub Copilot to explain the join logic and filtering behavior.
+```
+
+#### Retrieve customer information using a Prisma query
+
+```copilot-prompt
+In Prisma, write a query that retrieves customers who placed an order in the last 30 days. Explain what the following Prisma query does. Add inline comments to clarify how the date filtering works and how recent orders are determined:
+```
 
 ### Understand business intent through queries
 
-GitHub Copilot helps developers understand not just how a query works, but why it exists. This includes the real-world purpose behind data filters, groupings, and aggregations. These explanations are especially useful during onboarding, allowing developers to grasp the goals behind reports, logic gates, or system metrics embedded in SQL and ORM code.
+GitHub Copilot helps developers understand not just how a query works, but why it exists. This explanation includes the real-world purpose behind data filters, groupings, and aggregations. These explanations are especially useful during onboarding, allowing developers to grasp the goals behind reports, logic gates, or system metrics embedded in SQL and ORM code.
 
-- Describe the business goal of the following SQL query. What insight is it trying to surface?
+#### Describe the business goals in a T-SQL query
 
-```sql
+```copilot-prompt
+Describe the business goal of the following SQL query. What insight is it trying to surface?
+
 SELECT TOP 10 CustomerID,
               COUNT(*) AS OrderCount
 FROM SalesLT.SalesOrderHeader
@@ -133,9 +164,11 @@ GROUP BY CustomerID
 ORDER BY OrderCount DESC;
 ```
 
-- Summarize what this query is intended to achieve from a business perspective.
+#### Summarize the intention of a T-SQL query
 
-```sql
+```copilot-prompt
+Summarize what this query is intended to achieve from a business perspective.
+
 SELECT ProductID,
        SUM(LineTotal) AS TotalSales
 FROM SalesLT.SalesOrderDetail
@@ -143,11 +176,17 @@ GROUP BY ProductID
 HAVING SUM(LineTotal) > 10000;
 ```
 
-- Analyze the `SalesLT.uspGetCustomerOrderHistory` stored procedure and describe the business logic it implements.
+#### Describe business logic in a stored procedure
 
-- Explain this Entity Framework LINQ query and describe what business logic it implements:
+```copilot-prompt
+Analyze the `SalesLT.uspGetCustomerOrderHistory` stored procedure and describe the business logic it implements.
+```
 
-```csharp
+#### Explain business logic in an Entity Framework LINQ query
+
+```copilot-prompt
+Explain this Entity Framework LINQ query and describe what business logic it implements:
+
 var highValueCustomers = context.SalesOrderHeaders
     .Where(o => o.TotalDue > 1000)
     .GroupBy(o => o.CustomerID)
@@ -157,9 +196,11 @@ var highValueCustomers = context.SalesOrderHeaders
     .ToList();
 ```
 
-- Using `Sequelize`, explain what this query does and describe any business assumptions it makes:
+#### Explain business assumptions in a Sequelize query
 
-```js
+```copilot-prompt
+Using Sequelize, explain what this query does and describe any business assumptions it makes:
+
 const customerRevenue = await SalesOrderHeader.findAll({
   attributes: ['CustomerID', [sequelize.fn('SUM', sequelize.col('TotalDue')), 'TotalSpent']],
   group: ['CustomerID'],
@@ -167,19 +208,19 @@ const customerRevenue = await SalesOrderHeader.findAll({
 });
 ```
 
-## Feedback: Business Logic Explainer
+## Share your experience
 
 [!INCLUDE [feedback](../includes/feedback.md)]
 
 ## Related content
 
 - [GitHub Copilot for MSSQL extension for Visual Studio Code](overview.md)
-- [Quickstart: Use Chat and inline GitHub Copilot suggestions (Preview)](inline-copilot-suggestions.md)
-- [Quickstart: Generate code (Preview)](code-generation.md)
-- [Quickstart: Use the Schema Explorer and designer (Preview)](schema-explorer-designer.md)
-- [Quickstart: Use the Smart Query Builder (Preview)](smart-query-builder.md)
-- [Quickstart: Query Optimizer Assistant (Preview)](query-optimizer-assistant.md)
-- [Quickstart: Security Analyzer (Preview)](security-analyzer.md)
-- [Quickstart: Localization & Formatting Helper (Preview)](localization-formatting-helper.md)
-- [Quickstart: Generate data for testing and mocking (Preview)](test-and-mocking-data-generator.md)
-- [Limitations and Known Issues](limitations-and-known-issues.md)
+- [Quickstart: Use chat and inline GitHub Copilot suggestions](inline-copilot-suggestions.md)
+- [Quickstart: Generate code](code-generation.md)
+- [Quickstart: Use the schema explorer and designer](schema-explorer-designer.md)
+- [Quickstart: Use the smart query builder](smart-query-builder.md)
+- [Quickstart: Query optimizer assistant](query-optimizer-assistant.md)
+- [Quickstart: Security analyzer](security-analyzer.md)
+- [Quickstart: Localization and formatting helper](localization-formatting-helper.md)
+- [Quickstart: Generate data for testing and mocking](test-and-mocking-data-generator.md)
+- [Limitations and known issues](limitations-and-known-issues.md)

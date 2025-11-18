@@ -3,14 +3,14 @@ title: Install, Configure, or Uninstall SQL Server on Windows from the Command P
 description: This article describes command prompt parameters for SQL Server installation on Windows. You can specify features to install, configure, or uninstall.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/09/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: install
 ms.topic: install-set-up-deploy
 ms.custom:
   - intro-installation
-  - build-2025
   - sfi-ropc-blocked
+  - ignite-2025
 helpviewer_keywords:
   - "installing SQL Server, command prompt"
   - "installing SQL Server, command line"
@@ -479,6 +479,7 @@ Use the parameters in the following table to develop command-line scripts for up
 | [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/HIDECONSOLE`<br /><br />**Optional** | Specifies that the console window is hidden or closed. |
 | [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Browser | `/BROWSERSVCSTARTUPTYPE`<br /><br />**Optional** | Specifies the [startup](#Accounts) mode for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Browser service.<br /><br />Supported values:<br /><br />- `Automatic`<br />- `Disabled`<br />- `Manual` |
 | [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Full-Text | `/FTUPGRADEOPTION`<br /><br />**Optional** | Specifies the Full-Text catalog upgrade option.<br /><br />Supported values:<br /><br />- `REBUILD`<br />- `RESET`<br />- `IMPORT` |
+| [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Data Quality Services | `/IACCEPTDQUNINSTALL`<br /><br />**Optional** | Removes Data Quality Services during upgrade to [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions. For more information, see [Upgrade fails if Data Quality Services is installed](../../sql-server/sql-server-2025-known-issues.md#upgrade-fails-if-data-quality-services-is-installed).<br /><br />**Applies to:** [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions. |
 | [!INCLUDE [ssISnoversion](../../includes/ssisnoversion-md.md)] | `/ISSVCACCOUNT`<br /><br />**Required** | Specifies the account for [!INCLUDE [ssISnoversion](../../includes/ssisnoversion-md.md)].<br /><br />Default value: `NT AUTHORITY\NETWORK SERVICE` |
 | [!INCLUDE [ssISnoversion](../../includes/ssisnoversion-md.md)] | `/ISSVCPASSWORD`<br /><br />**[Required](#Accounts)** | Specifies the [!INCLUDE [ssISnoversion](../../includes/ssisnoversion-md.md)] password. This parameter can be omitted when using a managed service account, virtual account, or built-in account. |
 | [!INCLUDE [ssISnoversion](../../includes/ssisnoversion-md.md)] | `/ISSVCStartupType`<br /><br />**Optional** | Specifies the [startup](#Accounts) mode for the [!INCLUDE [ssISnoversion](../../includes/ssisnoversion-md.md)] service. |

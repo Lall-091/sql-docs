@@ -7,12 +7,14 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "CursorClose event class"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # CursorClose Event Class
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   Cursor close events occur when the [!INCLUDE[ssDE](../../includes/ssde-md.md)] closes and deallocates a cursor. The **CursorClose** event class describes cursor close events that occur in application programming interface (API) cursors. This event class occurs when a [!INCLUDE[tsql](../../includes/tsql-md.md)] cursor statement by ODBC, OLE DB, or DB-Library is closed.  
   
  Include the **CursorClose** event class in traces that are recording the performance of cursors. The amount of overhead incurred depends on how frequently cursors are used against the database during the trace. If cursors are used extensively, the trace can significantly impede performance.  
@@ -47,3 +49,4 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
  [sp_trace_setevent &#40;Transact-SQL&#41;](../../relational-databases/system-stored-procedures/sp-trace-setevent-transact-sql.md)  
   
   
+

@@ -8,13 +8,15 @@ ms.date: 08/04/2023
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "XML [SQL Server]"
   - "XML [SQL Server], about XML"
 ---
 # XML data (SQL Server)
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] provides a powerful platform for developing rich applications for semi-structured data management. Support for XML is integrated into all the components in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] in the following ways:
 
@@ -43,3 +45,4 @@ helpviewer_keywords:
 - [Examples of Bulk Import and Export of XML Documents (SQL Server)](../../relational-databases/import-export/examples-of-bulk-import-and-export-of-xml-documents-sql-server.md)
 - [XQuery Language Reference (SQL Server)](../../xquery/xquery-language-reference-sql-server.md)
 - [xml (Transact-SQL)](../../t-sql/xml/xml-transact-sql.md)
+

@@ -11,8 +11,7 @@ ms.topic: how-to
 ms.collection:
   - data-tools
 ms.custom:
-  - ignite-2024
-  - build-2025
+  - ignite-2025
 helpviewer_keywords:
   - "bcp utility [SQL Server]"
   - "exporting data"
@@ -30,7 +29,7 @@ helpviewer_keywords:
   - "importing data, bcp utility"
   - "file importing [SQL Server]"
   - "column exporting [SQL Server]"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric-sqldb"
 ---
 # bcp utility
 

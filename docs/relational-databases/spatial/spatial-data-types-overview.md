@@ -8,13 +8,13 @@ ms.date: 11/04/2024
 ms.service: sql
 ms.topic: language-reference
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "geometry data type [SQL Server], understanding"
   - "geography data type [SQL Server], spatial data"
   - "planar spatial data [SQL Server], geometry data type"
   - "spatial data types [SQL Server]"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # Spatial Data Types Overview
 

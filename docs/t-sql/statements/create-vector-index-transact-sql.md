@@ -4,12 +4,12 @@ description: CREATE VECTOR INDEX creates an index on vector data to allow approx
 author: yorek
 ms.author: damauri
 ms.reviewer: mikeray, randolphwest
-ms.date: 10/21/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - build-2025
+  - ignite-2025
 f1_keywords:
   - "VECTOR INDEX"
   - "CREATE VECTOR INDEX"
@@ -101,23 +101,28 @@ Overrides the **max degree of parallelism** configuration option for the index o
 For more information, see [Configure parallel index operations](../../relational-databases/indexes/configure-parallel-index-operations.md).
 
 > [!NOTE]  
-> Parallel index operations aren't available in every edition of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. For a list of features that are supported by the editions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], see [Editions and supported features of SQL Server 2022](../../sql-server/editions-and-components-of-sql-server-2022.md) or [Editions and supported features of SQL Server 2025 Preview](../../sql-server/editions-and-components-of-sql-server-2025.md).
+> Parallel index operations aren't available in every edition of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. For a list of features that are supported by the editions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], see [Editions and supported features of SQL Server 2022](../../sql-server/editions-and-components-of-sql-server-2022.md) or [Editions and supported features of SQL Server 2025](../../sql-server/editions-and-components-of-sql-server-2025.md).
 
 ## Limitations
 
 The current preview has the following limitations:
 
 - Vector index can't be partitioned. No partition support.
+
 - The table must have a single column, integer, primary key clustered index.
-- A table with a vector index becomes read only. No data modification is allowed while the vector index is present on the table.
+
 - Vector indexes aren't replicated to subscribers.
 
+- A table with a vector index becomes read only. No data modification is allowed while the vector index is present on the table.
+
+  In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], you can set the `ALLOW_STALE_VECTOR_INDEX` [database scoped configuration](alter-database-scoped-configuration-transact-sql.md) to `ON`, which allows the table to be writable again.
+
+  > [!NOTE]  
+  > The `ALLOW_STALE_VECTOR_INDEX` database scoped configuration option isn't currently available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
+
+  The vector index isn't updated when new data is inserted or updated in the table. To refresh the vector index, you must drop and recreate it.
+
 ## Known issues
-
-Currently, when you create a vector index on some datasets, it might return the following errors:
-
-- Error 9829: `STRING_AGG aggregation result exceeded the limit of 8000 bytes. Use LOB types to avoid result truncation.`
-- 42234: `Internal SQL error during DiskANN graph build`
 
 For more information, review [Known issues](../../sql-server/sql-server-2025-known-issues.md#vector-index).
 

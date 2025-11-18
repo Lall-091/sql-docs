@@ -9,12 +9,12 @@ ms.service: sql
 ms.subservice: supportability
 ms.topic: how-to
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "compatibility levels [SQL Server], viewing"
   - "compatibility [SQL Server], databases"
   - "compatibility levels [SQL Server], changing"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # View or change the compatibility level of a database
 
@@ -91,7 +91,7 @@ You can use Transact-SQL to view or change the compatibility level of a database
    ```
 
 > [!NOTE]  
-> The compatibility level of a [SQL database in Microsoft Fabric (Preview)](/fabric/database/sql/overview) cannot be changed, and always uses the latest version.
+> The compatibility level of a [SQL database in Fabric](/fabric/database/sql/overview) cannot be changed, and always uses the latest version.
 
 ## Related content
 

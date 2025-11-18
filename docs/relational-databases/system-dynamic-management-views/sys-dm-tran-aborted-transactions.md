@@ -8,6 +8,8 @@ ms.date: 02/03/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "dm_tran_aborted_transactions"
   - "sys.dm_tran_aborted_transactions"
@@ -17,12 +19,12 @@ helpviewer_keywords:
   - "sys.dm_tran_aborted_transactions dynamic management view"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-ver15||>=sql-server-linux-ver15||=azuresqldb-mi-current||=azuresqldb-current"
+monikerRange: ">=sql-server-ver15 || >=sql-server-linux-ver15 || =azuresqldb-mi-current || =azuresqldb-current || =fabric-sqldb"
 ---
 
 # sys.dm_tran_aborted_transactions (Transact-SQL)
 
-[!INCLUDE [SQL Server 2019, ASDB, ASDBMI](../../includes/applies-to-version/sqlserver2019-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server 2019, ASDB, ASDBMI-fabricsqldb](../../includes/applies-to-version/sqlserver2019-asdb-asdbmi-fabricsqldb.md)]
 
 Returns information about unresolved, aborted transactions in the [!INCLUDE [ssDE](../../includes/ssde-md.md)] instance.
 
@@ -58,3 +60,4 @@ Row versions created by unresolved, aborted transactions are removed by persiste
 - [Accelerated database recovery](../accelerated-database-recovery-concepts.md)
 - [Manage accelerated database recovery](../accelerated-database-recovery-management.md)
 - [Monitor and troubleshoot accelerated database recovery](../accelerated-database-recovery-troubleshoot.md)
+

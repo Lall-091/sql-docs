@@ -7,13 +7,15 @@ ms.date: "04/04/2017"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "125"
 helpviewer_keywords:
   - "125 (Database Engine error)"
 ---
 # MSSQLSERVER_125
- [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+ [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
   
 ## Details  
   
@@ -35,3 +37,4 @@ Reduce the level of CASE statements to 10 or less.
 ## See Also  
 [CASE &#40;Transact-SQL&#41;](~/t-sql/language-elements/case-transact-sql.md)  
   
+

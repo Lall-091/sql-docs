@@ -8,6 +8,8 @@ ms.date: 07/07/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SESSION_CONTEXT"
   - "sys.SESSION_CONTEXT"
@@ -17,11 +19,11 @@ helpviewer_keywords:
   - "SESSION_CONTEXT function"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqledge-current || =azure-sqldw-latest || =fabric"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqledge-current || =azure-sqldw-latest || =fabric || =fabric-sqldb"
 ---
 # SESSION_CONTEXT (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-fabricse-fabricdw](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-fabricse-fabricdw.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb.md)]
 
 Returns the value of the specified key in the current session context. The value is set by using the [sp_set_session_context](../../relational-databases/system-stored-procedures/sp-set-session-context-transact-sql.md) procedure.
 
@@ -79,3 +81,4 @@ SELECT SESSION_CONTEXT(N'user_id');
 - [Row-level security](../../relational-databases/security/row-level-security.md)
 - [CONTEXT_INFO (Transact-SQL)](context-info-transact-sql.md)
 - [SET CONTEXT_INFO (Transact-SQL)](../statements/set-context-info-transact-sql.md)
+

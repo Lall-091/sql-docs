@@ -179,7 +179,7 @@
           - name: Managed identity
             href: database/authentication-azure-ad-user-assigned-managed-identity.md
           - name: Microsoft Entra nonunique display names
-            href: database/authentication-microsoft-entra-create-users-with-nonunique-names.md
+            href: /sql/relational-databases/security/authentication-access/authentication-microsoft-entra-create-users-with-nonunique-names
           - name: Microsoft Entra server logins
             href: database/authentication-azure-ad-logins-tutorial.md
         - name: Microsoft Entra-only authentication
@@ -1786,10 +1786,10 @@
         href: /sql/tools/overview-sql-tools
       - name: Azure Roadmap
         href: https://techcommunity.microsoft.com/discussions/microsoft-entra/introducing-the-azure-roadmap/113500
-      - name: MSDN forum
-        href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server
       - name: Stack Overflow
         href: https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server
+      - name: Microsoft Q & A
+        href: /answers/tags/94/azure-virtual-machines
   - name: Linux
     items:
     - name: Overview
@@ -2008,12 +2008,12 @@
     href: public-data-sets.md
   - name: Pricing
     href: https://azure.microsoft.com/pricing/details/azure-sql-database/single/
-  - name: MSDN forum
-    href: https://social.msdn.microsoft.com/Forums/home
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-sql-database
-  - name: Microsoft Q&A
+  - name: Microsoft Q & A
     items:
+    - name: Overview
+      href: /answers/
     - name: Azure SQL Database
       href: /answers/tags/51/azure-sql-database
     - name: SQL Server on Azure VMs

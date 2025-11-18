@@ -7,7 +7,9 @@ ms.date: 05/29/2024
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: "reference"
-ms.custom: intro-installation
+ms.custom:
+  - intro-installation
+  - ignite-2025
 helpviewer_keywords:
   - "OLE DB Driver for SQL Server, uninstalling"
   - "MSOLEDBSQL, installing"
@@ -22,7 +24,7 @@ helpviewer_keywords:
 ---
 # Installing OLE DB Driver for SQL Server
 
-[!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics PDW FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 [!INCLUDE[Driver_OLEDB_Download](../../../includes/driver_oledb_download.md)]
 
@@ -69,3 +71,4 @@ The APPGUID option requires running the installer from an elevated Command Promp
 ## See also
 
 [Building applications with OLE DB Driver for SQL Server](building-applications-with-oledb-driver-for-sql-server.md)
+

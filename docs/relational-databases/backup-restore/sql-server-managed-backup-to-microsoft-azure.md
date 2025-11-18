@@ -4,10 +4,12 @@ description: SQL Server Managed Backup to Microsoft Azure manages and automates 
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 10/21/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: backup-restore
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 ---
 # SQL Server managed backup to Microsoft Azure
 
@@ -138,7 +140,10 @@ The following support limitations and considerations are specific to [!INCLUDE [
 
 - SQL Server managed backup isn't supported with proxy servers.
 
-- Managed backups aren't supported by the Web edition of SQL Server. 
+- Managed backups aren't supported by the Web edition of SQL Server.
+
+  > [!NOTE]  
+  > Web edition isn't available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions.
 
 ## Related content
 

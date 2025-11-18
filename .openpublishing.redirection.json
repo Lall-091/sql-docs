@@ -66996,11 +66996,6 @@
       "redirect_document_id": false
     },
     {
-      "source_path": "docs/sql-server/editions-and-components-of-sql-server-2025.md",
-      "redirect_url": "/sql/sql-server/what-s-new-in-sql-server-2025#new-developer-editions",
-      "redirect_document_id": false
-    },
-    {
       "source_path": "docs/sql-server/sql-server-version-15-release-notes.md",
       "redirect_url": "/sql/sql-server/sql-server-2019-release-notes",
       "redirect_document_id": false
@@ -67538,6 +67533,11 @@
     {
       "source_path": "docs/ssdt/database-project-settings.md",
       "redirect_url": "/sql/tools/sql-database-projects/concepts/project-properties",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-sql/database/authentication-microsoft-entra-create-users-with-nonunique-names.md",
+      "redirect_url": "/sql/relational-databases/security/authentication-access/authentication-microsoft-entra-create-users-with-nonunique-names",
       "redirect_document_id": false
     },
     {

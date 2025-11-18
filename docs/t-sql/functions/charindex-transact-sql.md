@@ -8,6 +8,8 @@ ms.date: 08/14/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "CHARINDEX"
   - "CHARINDEX_TSQL"
@@ -18,11 +20,11 @@ helpviewer_keywords:
   - "starting point of expression in character string"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # CHARINDEX (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 This function searches for one character expression inside a second character expression, returning the starting position of the first expression if found.
 
@@ -244,3 +246,4 @@ FROM dbo.DimCustomer;
 - [String Functions (Transact-SQL)](string-functions-transact-sql.md)
 - [+ (String concatenation) (Transact-SQL)](../language-elements/string-concatenation-transact-sql.md)
 - [Collation and Unicode support](../../relational-databases/collations/collation-and-unicode-support.md)
+

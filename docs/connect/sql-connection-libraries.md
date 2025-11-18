@@ -8,10 +8,12 @@ ms.date: 06/18/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: article
+ms.custom:
+  - ignite-2025
 ---
 # Connection modules for Microsoft SQL Database
 
-This article provides download links to connection modules or *drivers* that your client programs can use for interacting with [databases in SQL Server](../relational-databases/databases/databases.md), [Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview?view=azuresql-db&preserve-view=true), [SQL database in Microsoft Fabric (Preview)](/fabric/database/sql/overview), and [Azure SQL Managed Instance](/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview?view=azuresql-mi&preserve-view=true).
+This article provides download links to connection modules or *drivers* that your client programs can use for interacting with [databases in SQL Server](../relational-databases/databases/databases.md), [Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview?view=azuresql-db&preserve-view=true), [SQL database in Fabric](/fabric/database/sql/overview), and [Azure SQL Managed Instance](/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview?view=azuresql-mi&preserve-view=true).
 
 Drivers are available for a variety of programming languages, running on the following operating systems:
 

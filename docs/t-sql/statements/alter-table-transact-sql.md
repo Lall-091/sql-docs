@@ -9,7 +9,7 @@ ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "WAIT_AT_LOW_PRIORITY"
   - "ABORT_AFTER_WAIT"
@@ -59,7 +59,7 @@ helpviewer_keywords:
   - "table changes [SQL Server]"
 dev_langs:
   - "TSQL"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 
 # ALTER TABLE (Transact-SQL)
@@ -1201,7 +1201,7 @@ To add new rows of data, use [INSERT](insert-transact-sql.md). To remove rows of
 
 If there are any execution plans in the procedure cache that reference the table, `ALTER TABLE` marks them to be recompiled on their next execution.
 
-In [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], some table features can be created but aren't [mirrored into the Fabric OneLake](/fabric/database/sql/mirroring-overview). For more information, see [Limitations for Fabric SQL database mirroring (preview)](/fabric/database/sql/mirroring-limitations).
+In [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], some table features can be created but aren't [mirrored into the Fabric OneLake](/fabric/database/sql/mirroring-overview). For more information, see [Limitations for Fabric SQL database mirroring](/fabric/database/sql/mirroring-limitations).
 
 ## Change the size of a column
 

@@ -7,6 +7,8 @@ ms.date: 03/31/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_exec_query_statistics_xml"
   - "sys.dm_exec_query_statistics_xml_TSQL"
@@ -19,7 +21,7 @@ dev_langs:
 ---
 # sys.dm_exec_query_statistics_xml (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
 
 Returns query execution plan for in-flight requests. Use this DMV to retrieve showplan XML with transient statistics.
 
@@ -130,3 +132,4 @@ GO
 - [Set trace flags with DBCC TRACEON (Transact-SQL)](../../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md)
 - [System dynamic management views](system-dynamic-management-views.md)
 - [Database related dynamic management views (Transact-SQL)](database-related-dynamic-management-views-transact-sql.md)
+

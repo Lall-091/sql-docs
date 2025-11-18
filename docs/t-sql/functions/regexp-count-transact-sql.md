@@ -4,35 +4,33 @@ description: REGEXP_COUNT returns the number of times that a matched expression 
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: abhtiwar, wiassaf, randolphwest
-ms.date: 05/19/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
-dev_langs:
-  - "TSQL"
-monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
 ms.custom:
-  - build-2025
+  - ignite-2025
+dev_langs:
+  - TSQL
+monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
-# REGEXP_COUNT (Transact-SQL) preview
+# REGEXP_COUNT (Transact-SQL)
 
-[!INCLUDE [sqlserver2025-asdb-asmi-fabric](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
-
-[!INCLUDE [preview](../../includes/preview.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
 Counts the number of times that a regular expression pattern is matched in a string.
 
 ```syntaxsql
-REGEXP_COUNT (
+REGEXP_COUNT
+(
     string_expression,
     pattern_expression [ , start [ , flags ] ]
 )
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Regular expressions are available in Azure SQL Managed Instance with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).
-
 
 ## Arguments
 
@@ -88,5 +86,5 @@ WHERE REGEXP_COUNT(PRODUCT_NAME, '[^aeiou]{3}', 1, 'i') > 0;
 
 ## Related content
 
-- [Regular expressions preview](../../relational-databases/regular-expressions/overview.md)
+- [Regular expressions](../../relational-databases/regular-expressions/overview.md)
 - [Regular expressions functions (Transact-SQL)](regular-expressions-functions-transact-sql.md)

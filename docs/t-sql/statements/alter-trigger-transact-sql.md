@@ -7,6 +7,8 @@ ms.date: "05/08/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "ALTER TRIGGER"
   - "ALTER_TRIGGER_TSQL"
@@ -20,7 +22,7 @@ dev_langs:
   - "TSQL"
 ---
 # ALTER TRIGGER (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Modifies the definition of a DML, DDL, or logon trigger that was previously created by the CREATE TRIGGER statement. Triggers are created by using CREATE TRIGGER. They can be created directly from [!INCLUDE[tsql](../../includes/tsql-md.md)] statements or from methods of assemblies that are created in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[dnprdnshort](../../includes/dnprdnshort-md.md)] common language runtime (CLR) and uploaded to an instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. For more information about the parameters that are used in the ALTER TRIGGER statement, see [CREATE TRIGGER &#40;Transact-SQL&#41;](../../t-sql/statements/create-trigger-transact-sql.md).  
   
@@ -276,3 +278,4 @@ GO
  [Make Schema Changes on Publication Databases](../../relational-databases/replication/publish/make-schema-changes-on-publication-databases.md)  
   
   
+

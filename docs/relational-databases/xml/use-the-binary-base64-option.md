@@ -8,12 +8,14 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "AUTO FOR XML mode, BINARY BASE64 option"
 ---
 # Use the BINARY BASE64 option
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 If the BINARY BASE64 option is specified in the query, the binary data is returned in base64 encoding format.
 
@@ -61,3 +63,4 @@ Expect the following good result:
 ## See also
 
 [Use AUTO Mode with FOR XML](../../relational-databases/xml/use-auto-mode-with-for-xml.md)
+

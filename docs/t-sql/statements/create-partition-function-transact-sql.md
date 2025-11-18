@@ -7,6 +7,8 @@ ms.date: "4/22/2022"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "CREATE PARTITION FUNCTION"
   - "PARTITION"
@@ -26,7 +28,7 @@ dev_langs:
   - "TSQL"
 ---
 # CREATE PARTITION FUNCTION (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Creates a function in the current database that maps the rows of a table or index into partitions based on the values of a specified column. Using CREATE PARTITION FUNCTION is the first step in creating a [partitioned table or index](../../relational-databases/partitions/partitioned-tables-and-indexes.md). A table or index can have a maximum of 15,000 partitions.  
   
@@ -188,3 +190,4 @@ Learn more about table partitioning and related concepts in the following articl
 - [Modify a Partition Scheme](../../relational-databases/partitions/modify-a-partition-scheme.md)
 - [sys.partition_functions (Transact-SQL)](../../relational-databases/system-catalog-views/sys-partition-functions-transact-sql.md)
 - [sys.partition_schemes (Transact-SQL)](../../relational-databases/system-catalog-views/sys-partition-schemes-transact-sql.md)
+

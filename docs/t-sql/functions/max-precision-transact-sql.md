@@ -7,6 +7,8 @@ ms.date: "09/18/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "@@MAX_PRECISION_TSQL"
   - "@@MAX_PRECISION"
@@ -20,7 +22,7 @@ dev_langs:
   - "TSQL"
 ---
 # &#x40;&#x40;MAX_PRECISION (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Returns the precision level used by **decimal** and **numeric** data types as currently set in the server.  
   
@@ -50,3 +52,4 @@ SELECT @@MAX_PRECISION AS 'Max Precision'
  [Precision, Scale, and Length &#40;Transact-SQL&#41;](../../t-sql/data-types/precision-scale-and-length-transact-sql.md)  
   
   
+

@@ -4,14 +4,14 @@ titleSuffix: SQL Server
 description: This quickstart shows how to install SQL Server on Red Hat Enterprise Linux (RHEL) and then create and query a database with sqlcmd.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/20/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: quickstart
 ms.custom:
   - intro-installation
   - linux-related-content
-  - build-2025
+  - ignite-2025
 ---
 # Quickstart: Install SQL Server and create a database on Red Hat
 
@@ -53,7 +53,7 @@ In this quickstart, you install [!INCLUDE [sssql25-md](../includes/sssql25-md.md
 
 If you would like to automate your installation using Ansible, see [Quickstart: Deploy SQL Server on Linux using an Ansible playbook](sql-server-linux-deploy-ansible.md).
 
-For more information on supported platforms, see [Release notes for SQL Server 2025 Preview on Linux](sql-server-linux-release-notes-2025.md).
+For more information on supported platforms, see [Release notes for SQL Server 2025 on Linux](sql-server-linux-release-notes-2025.md).
 
 ::: moniker-end
 
@@ -67,7 +67,7 @@ For more information on supported platforms, see [Release notes for SQL Server 2
 
 You can create your VM based on the following Azure Marketplace image:
 
-- [RHEL 8.x](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2019-rhel8)
+- [RHEL 8.x](https://marketplace.microsoft.com/product/virtual-machines/microsoftsqlserver.sql2019-rhel8)
 
 When you use these Marketplace images, you avoid the installation step, and can directly configure the instance by providing the SKU and the `sa` password needed to get started with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Azure VMs deployed on RHEL using these Marketplace images, are fully supported by both Microsoft and Red Hat.
 

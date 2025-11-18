@@ -4,10 +4,12 @@ description: Learn about SQL Server log shipping, which sends transaction log ba
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 09/03/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: log-shipping
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "secondary servers [SQL Server]"
   - "log shipping [SQL Server], jobs"
@@ -71,8 +73,24 @@ In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], log shipping uses [Mic
 
 To use TLS 1.3 encryption in your existing log shipping configuration, drop and then recreate the topology using the new TLS 1.3 parameters in the [log shipping stored procedures](../../relational-databases/system-stored-procedures/log-shipping-stored-procedures-transact-sql.md).
 
-> [!NOTE]  
-> Log shipping monitoring can break if the monitor is a remote [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] instance when other SQL Server instances in the log shipping topology use a previous version.
+### Log shipping monitoring can break if the monitor is a remote SQL Server 2025 instance
+
+Log shipping monitoring can break if the monitor is a remote [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] instance, when other SQL Server instances in the log shipping topology use a previous version. You might get one of the following errors:
+
+```output
+OLE DB provider "MSOLEDBSQL19" for linked server "<server>" returned message "Client unable to establish connection. For solutions related to encryption errors, see https://go.microsoft.com/fwlink/?linkid=2227882.".
+```
+
+Or:
+
+```output
+Msg 32055, Level 16, State 2, Procedure master.dbo.sp_add_log_shipping_primary_database, Line 325 [Batch Start Line 10]
+There was an error configuring the remote monitor server.
+```
+
+To work around this issue, drop and recreate the log shipping configuration on both the primary and secondary replicas. An example script is available at [Use a remote monitor with connectivity options](../../relational-databases/system-stored-procedures/sp-add-log-shipping-primary-database-transact-sql.md#c-use-a-remote-monitor-with-connectivity-options).
+
+For more information, see [Encryption and certificate validation behavior](../../connect/oledb/features/encryption-and-certificate-validation.md#encryption-and-certificate-validation-behavior).
 
 ## Benefits
 

@@ -8,14 +8,16 @@ ms.date: 01/13/2025
 ms.service: sql
 ms.subservice: supportability
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "cpu threshold exceeded event class"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # CPU threshold exceeded event class
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 The **CPU threshold exceeded** event class indicates that resource governor detected a batch request that exceeds the CPU threshold specified for the `REQUEST_MAX_CPU_TIME_SEC` argument of a [workload group](../resource-governor/resource-governor-workload-group.md). For more information, see [CREATE WORKLOAD GROUP](../../t-sql/statements/create-workload-group-transact-sql.md#request_max_cpu_time_sec--value).
 
@@ -37,4 +39,5 @@ The **CPU threshold exceeded** event class indicates that resource governor dete
 - [Resource governor](../../relational-databases/resource-governor/resource-governor.md)
 - [Resource governor workload group](../../relational-databases/resource-governor/resource-governor-workload-group.md)
 - [ALTER WORKLOAD GROUP](../../t-sql/statements/alter-workload-group-transact-sql.md)
+
 

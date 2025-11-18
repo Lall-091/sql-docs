@@ -7,6 +7,8 @@ ms.date: "07/29/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "HAS_PERMS_BY_NAME"
   - "HAS_PERMS_BY_NAME_TSQL"
@@ -21,7 +23,7 @@ dev_langs:
   - "TSQL"
 ---
 # HAS_PERMS_BY_NAME (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Evaluates the effective permission of the current user on a securable. A related function is [fn_my_permissions](../../relational-databases/system-functions/sys-fn-my-permissions-transact-sql.md).  
   
@@ -177,3 +179,4 @@ SELECT name AS column_name,
  [Security Catalog Views &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/security-catalog-views-transact-sql.md)  
   
   
+

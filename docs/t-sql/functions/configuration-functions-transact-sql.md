@@ -7,6 +7,8 @@ ms.date: "07/24/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "functions [SQL Server], configuration"
   - "configuration options [SQL Server], functions"
@@ -16,7 +18,7 @@ dev_langs:
   - "TSQL"
 ---
 # Configuration Functions (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 These scalar functions return information about current configuration option settings:
   
@@ -41,3 +43,4 @@ All configuration functions operate in a nondeterministic way. In other words, t
 ## See also
 
 [Functions &#40;Transact-SQL&#41;](../../t-sql/functions/functions.md)
+

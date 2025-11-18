@@ -8,13 +8,15 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "indexes [XML in SQL Server]"
   - "XML indexes [SQL Server], creating"
 ---
 # Create XML indexes
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This article describes how to create primary and secondary XML indexes.
 
@@ -202,3 +204,4 @@ GO
 
 - [XML indexes &#40;SQL Server&#41;](../../relational-databases/xml/xml-indexes-sql-server.md)
 - [XML data &#40;SQL Server&#41;](../../relational-databases/xml/xml-data-sql-server.md)
+

@@ -4,14 +4,14 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: A glossary of terms for working with Azure SQL Database, Azure SQL Managed Instance, and SQL on Azure VM.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: wiassaf, mathoma, randolphwest
-ms.date: 05/05/2025
+ms.reviewer: mathoma, randolphwest
+ms.date: 11/18/2025
 ms.service: azure-sql
 ms.subservice: service-overview
 ms.topic: reference
 ms.custom:
   - sqldbrb=4
-  - build-2025
+  - ignite-2025
 ---
 # Azure SQL glossary of terms
 
@@ -49,16 +49,16 @@ ms.custom:
 | Context | Term | More information |
 | --- | --- | --- |
 | Azure service | Azure SQL Managed Instance | [Azure SQL Managed Instance](managed-instance/sql-managed-instance-paas-overview.md) is a fully managed platform as a service (PaaS) deployment option of Azure SQL. It gives you an instance of SQL Server, including the SQL Server Agent, but removes much of the overhead of managing a virtual machine. Most of the features available in SQL Server are available in SQL Managed Instance. [Features comparison: Azure SQL Database and Azure SQL Managed Instance](database/features-comparison.md). |
-| Database engine | | The database engine used in Azure SQL Managed Instance has near 100% compatibility with the latest SQL Server (Enterprise Edition) database engine. Some database engine features are exclusive to managed instances or are available in managed instances before they are shipped with SQL Server. Managed instances provide cloud-native capabilities and integrations such as a native [virtual network (VNet)](/azure/virtual-network/virtual-networks-overview) implementation, automatic patching and version updates, [automated backups](database/automated-backups-overview.md), and [high availability](database/high-availability-sla-local-zone-redundancy.md). |
-| Server entity | Managed instance | Each managed instance is itself an instance of SQL Server. Databases created on a managed instance are colocated with one another, and you can run cross-database queries. You can connect to the managed instance and use instance-level features such as linked servers and the SQL Server Agent. |
-| Deployment option | | Managed instances can be deployed individually or as part of an instance pools (preview). Managed instances can't currently be moved into, between, or out of instance pools. |
-| | Single instance | A single [managed instance](managed-instance/sql-managed-instance-paas-overview.md) is deployed to a dedicated set of isolated virtual machines that run inside the customer's virtual network subnet. These machines form a [virtual cluster](managed-instance/connectivity-architecture-overview.md#high-level-connectivity-architecture). Multiple managed instances can be deployed into a single virtual cluster if desired. |
-| | Instance pool (preview) | [Instance pools](managed-instance/instance-pools-overview.md) enable you to deploy multiple managed instances to the same virtual machine. Instance pools enable you to migrate smaller and less compute-intensive workloads to the cloud without consolidating them in a single larger managed instance. |
-| Purchasing model | vCore-based purchasing model | SQL Managed Instance is available under the [vCore-based purchasing model](managed-instance/service-tiers-managed-instance-vcore.md). [Azure Hybrid Benefit](azure-hybrid-benefit.md) is available for managed instances. |
-| Service tier | vCore-based service tiers | SQL Managed Instance offers [two service tiers](managed-instance/service-tiers-managed-instance-vcore.md) that guarantee 99.99% availability and enable you to independently select storage size and compute capacity. Select from the General Purpose, or Business Critical service tier for a managed instance based upon your performance and latency requirements. |
+| Database engine | | The database engine used in Azure SQL Managed Instance has near 100% compatibility with the latest SQL Server (Enterprise Edition) database engine. Some database engine features are exclusive to SQL managed instances or are available in SQL managed instances before they are shipped with SQL Server. SQL managed instances provide cloud-native capabilities and integrations such as a native [virtual network (VNet)](/azure/virtual-network/virtual-networks-overview) implementation, automatic patching and version updates, [automated backups](database/automated-backups-overview.md), and [high availability](database/high-availability-sla-local-zone-redundancy.md). |
+| Server entity | SQL managed instance | Each SQL managed instance is itself an instance of SQL Server. Databases created on a SQL managed instance are colocated with one another, and you can run cross-database queries. You can connect to the SQL managed instance and use instance-level features such as linked servers and the SQL Server Agent. |
+| Deployment option | | SQL managed instances can be deployed individually or as part of an instance pool. Move an instance in or out of a pool by using PowerShell or the Azure CLI. |
+| | Single instance | A single [SQL managed instance](managed-instance/sql-managed-instance-paas-overview.md) is deployed to a dedicated set of isolated virtual machines that run inside the customer's virtual network subnet. These machines form a [virtual cluster](managed-instance/connectivity-architecture-overview.md#high-level-connectivity-architecture). Multiple SQL managed instances can be deployed into a single virtual cluster if desired. |
+| | Instance pool| [Instance pools](managed-instance/instance-pools-overview.md) enable you to deploy multiple SQL managed instances to the same virtual machine. Instance pools enable you to migrate smaller and less compute-intensive workloads to the cloud without consolidating them in a single larger SQL managed instance. |
+| Purchasing model | vCore-based purchasing model | SQL Managed Instance is available under the [vCore-based purchasing model](managed-instance/service-tiers-managed-instance-vcore.md). [Azure Hybrid Benefit](azure-hybrid-benefit.md) is available for SQL managed instances. |
+| Service tier | vCore-based service tiers | SQL Managed Instance offers [two service tiers](managed-instance/service-tiers-managed-instance-vcore.md) that guarantee 99.99% availability and enable you to independently select storage size and compute capacity. Select from the General Purpose, or Business Critical service tier for a SQL managed instance based upon your performance and latency requirements. |
 | Compute | Provisioned compute | SQL Managed Instance provides a specific amount of [compute resources](managed-instance/service-tiers-managed-instance-vcore.md#compute) that are continuously provisioned independent of workload activity, and bills for the amount of compute provisioned at a fixed price per hour. |
 | Hardware configuration | Available hardware configurations | SQL Managed Instance [hardware configurations](managed-instance/service-tiers-managed-instance-vcore.md#hardware-configurations) include standard-series (Gen5), premium-series, and memory optimized premium-series hardware. |
-| Compute size | vCore-based sizing options | Compute size (service objective) is the maximum amount of CPU, memory, and storage resources available for a single managed instance or instance pool. Configure the compute size for your managed instance by selecting the appropriate service tier and hardware for your workload. Learn about [resource limits for managed instances](managed-instance/resource-limits.md). |
+| Compute size | vCore-based sizing options | Compute size (service objective) is the maximum amount of CPU, memory, and storage resources available for a single SQL managed instance or instance pool. Configure the compute size for your SQL managed instance by selecting the appropriate service tier and hardware for your workload. Learn about [resource limits for SQL managed instances](managed-instance/resource-limits.md). |
 
 ## SQL Server on Azure VMs
 
@@ -78,4 +78,4 @@ ms.custom:
 | | Automated patching | [Automated Patching](virtual-machines/windows/automated-patching.md) establishes a maintenance window for a SQL Server VM when security updates will be automatically applied by the SQL IaaS Agent extension. There can be other mechanisms for applying Automatic Updates. If you configure automated patching using the SQL IaaS Agent extension you should ensure that there are no other conflicting update schedules. |
 | | Automated backup | [Automated Backup](virtual-machines/windows/automated-backup.md) automatically configures Managed Backup to Microsoft Azure for all existing and new databases on a SQL Server VM running SQL Server 2016 or later Standard, Enterprise, or Developer <sup>1</sup> editions. |
 
-<sup>1</sup> SQL Server 2025 Preview introduces separate Enterprise Developer and Standard Developer editions of SQL Server.
+<sup>1</sup> SQL Server 2025 introduces separate Enterprise Developer and Standard Developer editions of SQL Server.

@@ -7,6 +7,8 @@ ms.date: "07/26/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "xml_TSQL"
   - "xml"
@@ -18,7 +20,7 @@ dev_langs:
 
 # xml (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 It's the data type that stores XML data. You can store **xml** instances in a column, or a variable of **xml** type.  
   
@@ -66,3 +68,4 @@ GO
 - [Data Types &#40;Transact-SQL&#41;](../../t-sql/data-types/data-types-transact-sql.md)
 - [xml Data Type Methods](../../t-sql/xml/xml-data-type-methods.md)
 - [XQuery Language Reference &#40;SQL Server&#41;](../../xquery/xquery-language-reference-sql-server.md)
+

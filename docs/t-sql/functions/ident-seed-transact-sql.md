@@ -7,6 +7,8 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "IDENT_SEED_TSQL"
   - "IDENT_SEED"
@@ -18,7 +20,7 @@ dev_langs:
   - "TSQL"
 ---
 # IDENT_SEED (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Returns the original seed value specified when creating an identity column in a table or a view. Changing the current value of an identity column by using DBCC CHECKIDENT doesn't change the value returned by this function.  
   
@@ -89,3 +91,4 @@ dbo                AWBuildVersion                         1
  [DBCC CHECKIDENT &#40;Transact-SQL&#41;](../../t-sql/database-console-commands/dbcc-checkident-transact-sql.md)   
  [sys.identity_columns &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-identity-columns-transact-sql.md)  
   
+

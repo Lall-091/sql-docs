@@ -6,13 +6,15 @@ ms.author: randolphwest
 ms.date: 09/15/2025
 ms.service: sql
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "built-in functions [SQL Server]"
   - "nondeterministic functions"
   - "extended stored procedures [SQL Server], functions that call"
   - "deterministic functions"
   - "user-defined functions [SQL Server], deterministic"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || = fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # Deterministic and nondeterministic functions
 

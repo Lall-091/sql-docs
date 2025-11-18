@@ -8,6 +8,8 @@ ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "TRIM"
   - "TRIM_TSQL"
@@ -15,33 +17,27 @@ helpviewer_keywords:
   - "TRIM function"
 dev_langs:
   - "TSQL"
-monikerRange: "=azure-sqldw-latest || =azuresqldb-current || >=sql-server-2017 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azure-sqldw-latest || =azuresqldb-current || >=sql-server-2017 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # TRIM (Transact-SQL)
 
-[!INCLUDE [sqlserver2017-asdb-asdbmi-asa-fabricse-fabricdw](../../includes/applies-to-version/sqlserver2017-asdb-asdbmi-asa-fabricse-fabricdw.md)]
+[!INCLUDE [sqlserver2017-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sqlserver2017-asdb-asdbmi-asa-fabricse-fabricdw-fabricsqldb.md)]
 
 Removes the space character `char(32)` or other specified characters from the start and end of a string.
 
-::: moniker range="=fabric"
-Optionally removes the space character `char(32)` or other specified characters from the start, end, or both sides of a string.
-::: moniker-end
-
-::: moniker range="=azure-sqldw-latest || >=sql-server-2017 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 Starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], optionally removes the space character `char(32)` or other specified characters from the start, end, or both sides of a string.
-::: moniker-end
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ## Syntax
 
-Syntax for [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuresynapse_md](../../includes/ssazuresynapse-md.md)]:
+Syntax for [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and earlier versions, and [!INCLUDE [ssazuresynapse_md](../../includes/ssazuresynapse-md.md)]:
 
 ```syntaxsql
 TRIM ( [ characters FROM ] string )
 ```
 
-Syntax for [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], and [!INCLUDE [fabric](../../includes/fabric.md)]:
+Syntax for [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [fabric](../../includes/fabric.md)]:
 
 ::: moniker range="=azure-sqldw-latest || >=sql-server-2017 || >=sql-server-linux-2017 || = azuresqldb-mi-current"
 > [!IMPORTANT]  
@@ -54,10 +50,10 @@ TRIM ( [ LEADING | TRAILING | BOTH ] [characters FROM ] string )
 
 ## Arguments
 
-::: moniker range=">=sql-server-2017 || >=sql-server-linux-2017 || = azuresqldb-mi-current || =fabric"
+::: moniker range=">=sql-server-2017 || =azuresqldb-current || >=sql-server-linux-2017 || = azuresqldb-mi-current || =fabric || =fabric-sqldb"
 #### [ LEADING | TRAILING | BOTH ]
 
-**Applies to:** [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], and [!INCLUDE [fabric](../../includes/fabric.md)]:
+**Applies to:** [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [fabric](../../includes/fabric.md)]:
 
 The optional first argument specifies which side of the string to trim:
 
@@ -188,3 +184,4 @@ abc
 - [STRING_SPLIT (Transact-SQL)](string-split-transact-sql.md)
 - [SUBSTRING (Transact-SQL)](substring-transact-sql.md)
 - [String Functions (Transact-SQL)](string-functions-transact-sql.md)
+

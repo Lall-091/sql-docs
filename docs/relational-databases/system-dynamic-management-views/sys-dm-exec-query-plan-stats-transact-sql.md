@@ -7,6 +7,8 @@ ms.date: 09/07/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_exec_query_plan_stats"
   - "sys.dm_exec_query_plan_stats_TSQL"
@@ -19,7 +21,7 @@ dev_langs:
 ---
 # sys.dm_exec_query_plan_stats (Transact-SQL)
 
-[!INCLUDE [sqlserver2019-asdb-asdbmi](../../includes/applies-to-version/sqlserver2019-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2019-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2019-asdb-asdbmi-fabricsqldb.md)]
 
 Returns the equivalent of the last known actual execution plan for a previously cached query plan.
 
@@ -151,3 +153,4 @@ GO
 - [Set trace flags with DBCC TRACEON (Transact-SQL)](../../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md)
 - [System dynamic management views](system-dynamic-management-views.md)
 - [Execution Related Dynamic Management Views and Functions (Transact-SQL)](execution-related-dynamic-management-views-and-functions-transact-sql.md)
+

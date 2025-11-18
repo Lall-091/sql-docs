@@ -8,6 +8,8 @@ ms.date: 11/21/2024
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "database_automatic_tuning_configuration_tsql"
   - "database_automatic_tuning_configuration"
@@ -21,7 +23,7 @@ helpviewer_keywords:
   - "sys.database_automatic_tuning_configurations catalog view"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-2017 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azuresqldb-current || =fabric"
+monikerRange: ">=sql-server-2017 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azuresqldb-current || =fabric-sqldb"
 ---
 # sys.database_automatic_tuning_configurations (Transact-SQL)
 

@@ -4,9 +4,11 @@ description: Learn about collation and Unicode support in SQL Server.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest
-ms.date: 07/29/2025
+ms.date: 11/10/2025
 ms.service: sql
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "binary collations [SQL Server]"
   - "expression-level collations [SQL Server]"
@@ -30,7 +32,7 @@ helpviewer_keywords:
   - "UTF16"
   - "UCS2"
   - "server-level collations [SQL Server]"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 
 # Collation and Unicode support
@@ -644,7 +646,7 @@ For more information, see [Set or Change the Server Collation](../../relational-
 
 In Microsoft Fabric Data Warehouse, the only collations allowed are: `Latin1_General_100_BIN2_UTF8` and `Latin1_General_100_CI_AS_KS_WS_SC_UTF8`.
 
-In [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)] (preview), by default the collation is `SQL_Latin1_General_CP1_CI_AS` and currently can't be updated. Collations on individual columns are supported.
+In [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], by default the collation is `SQL_Latin1_General_CP1_CI_AS` and currently can't be updated. Collations on individual columns are supported.
 
 <a id="ctp23"></a>
 <a id="utf8"></a>

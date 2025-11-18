@@ -7,6 +7,8 @@ ms.date: "07/26/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "XML DML [SQL Server]"
   - "inserting nodes"
@@ -18,7 +20,7 @@ dev_langs:
 
 # insert (XML DML)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Inserts one or more nodes identified by *Expression1* as child nodes or siblings of the node identified by *Expression2*.  
   
@@ -407,3 +409,4 @@ GO
  [XML Data Modification Language &#40;XML DML&#41;](../../t-sql/xml/xml-data-modification-language-xml-dml.md)  
   
   
+

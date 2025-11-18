@@ -7,13 +7,16 @@ ms.date: 06/16/2023
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "views [SQL Server], renaming"
   - "renaming views"
-monikerRange: ">=aps-pdw-2016||=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Rename Views
-[!INCLUDE[tsql-appliesto-ss2008-asdb-xxxx-pdw-md](../../includes/appliesto-ss-asdb-xxxx-pdw-md.md)]
+
+[!INCLUDE [SQL Server PDW SQLDB SQLMI FabricSQLDB](../../includes/applies-to-version/sql-pdw-asdb-asdbmi-fabricsqldb.md)]
 
   You can rename a view in [!INCLUDE[ssnoversion](../../includes/ssnoversion-md.md)] by using [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or [!INCLUDE[tsql](../../includes/tsql-md.md)].  
   
@@ -65,3 +68,4 @@ monikerRange: ">=aps-pdw-2016||=azuresqldb-current||>=sql-server-2016||>=sql-ser
 
  1. Ensure that all objects, scripts, and applications that reference the view's old name now use the new name.
  1. Dropping and re-creating a view will remove any granular SQL permissions assigned to the view. If any granular SQL permissions are assigned to the view, you'll need to GRANT the permissions to the view again when it's re-created. To retrieve the granular permissions granted on an object before it's dropped, see the examples in [sys.database_permissions (Transact-SQL)](../system-catalog-views/sys-database-permissions-transact-sql.md). To grant permissions, see [Grant a Permission to a Principal](../security/authentication-access/grant-a-permission-to-a-principal.md).
+

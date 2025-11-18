@@ -346,7 +346,7 @@
     "groups": {
       "gr-sql-2016-a": {
         "dest": "temp2016a",
-        "moniker_range": "azuresqldb-current || azuresqldb-mi-current || azure-sqldw-latest || >= aps-pdw-2016 || >= sql-server-2016 || >= sql-server-linux-2017 || = fabric"
+        "moniker_range": "azuresqldb-current || azuresqldb-mi-current || azure-sqldw-latest || >= aps-pdw-2016 || >= sql-server-2016 || >= sql-server-linux-2017 || = fabric || = fabric-sqldb"
       }
     },
     "dest": "docs",
@@ -401,7 +401,7 @@
           "includes/*",
           "*/include"
         ]
-      } 
+      }
     }
   }
 }

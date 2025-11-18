@@ -8,6 +8,8 @@ ms.date: 02/03/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "GET_BIT"
   - "GET_BIT_TSQL"
@@ -17,11 +19,11 @@ helpviewer_keywords:
   - "bit shifting [SQL Server], get bit"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current ||=azuresqldb-current || =fabric"
+monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current || =azuresqldb-current || =fabric || =fabric-sqldb"
 ---
 # GET_BIT (Transact SQL)
 
-[!INCLUDE [SQL Server 2022, SQL Database, SQL Managed Instance FabricSE FabricDW](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricse-fabricdw.md)]
+[!INCLUDE [SQL Server 2022, SQL Database, SQL Managed Instance FabricSE FabricDW FabricSQLDB](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricse-fabricdw-fabricsqldb.md)]
 
 `GET_BIT` takes two parameters and returns the bit in *expression_value* that is in the offset defined by *bit_offset*.
 
@@ -84,3 +86,4 @@ The results are as follows:
 - [RIGHT_SHIFT (Transact SQL)](right-shift-transact-sql.md)
 - [BIT_COUNT (Transact SQL)](bit-count-transact-sql.md)
 - [Bit manipulation functions](bit-manipulation-functions-overview.md)
+

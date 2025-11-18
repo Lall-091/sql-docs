@@ -8,6 +8,8 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "FOR XML clause, nested FOR XML queries"
   - "queries [XML in SQL Server], nested FOR XML"
@@ -15,7 +17,7 @@ helpviewer_keywords:
 ---
 # Use nested FOR XML queries
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 The **xml** data type and the [TYPE directive in FOR XML queries](../../relational-databases/xml/type-directive-in-for-xml-queries.md) enable the XML returned by the FOR XML queries to be processed on the server as well as on the client.
 
@@ -125,3 +127,4 @@ Demonstrates how an ASPX application can use FOR XML to return XML from [!INCLUD
 
 - [Shape XML with Nested FOR XML Queries](../../relational-databases/xml/shape-xml-with-nested-for-xml-queries.md)  
 Shows how to use nested FOR XML queries to control the structure of an XML document created by [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+

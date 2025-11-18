@@ -8,12 +8,14 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "columns [XML in SQL Server], null default value"
 ---
 # Columns that contain a null value by default
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 By default, a null value in a column maps to the absence of the attribute, node, or element. This default behavior can be overridden by using the ELEMENTS XSINIL keyword phrase. This phrase requests element-centric XML. This means that null values are explicitly indicated in the returned results. These elements will have no value.
 
@@ -45,3 +47,4 @@ The following shows the result. If XSINIL isn't specified, the `<Middle>` elemen
 ## See also
 
 - [Use PATH Mode with FOR XML](../../relational-databases/xml/use-path-mode-with-for-xml.md)
+

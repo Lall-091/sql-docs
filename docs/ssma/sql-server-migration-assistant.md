@@ -4,7 +4,7 @@ description: Learn about SQL Server Migration Assistant, a tool that automates d
 author: nilabjaball
 ms.author: niball
 ms.reviewer: randolphwest
-ms.date: 09/24/2024
+ms.date: 11/12/2025
 ms.service: sql
 ms.subservice: ssma
 ms.topic: conceptual
@@ -29,12 +29,11 @@ For supported sources, review the information on the Download Center for the SSM
 
 The following target versions are supported for SSMA.
 
-- [!INCLUDE [sssql11-md](../includes/sssql11-md.md)]
-- [!INCLUDE [sssql14-md](../includes/sssql14-md.md)]
 - [!INCLUDE [sssql16-md](../includes/sssql16-md.md)]
 - [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] on Windows and Linux
 - [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] on Windows and Linux
 - [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] on Windows and Linux
+- [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] on Windows and Linux
 - [!INCLUDE [ssazure-sqldb](../includes/ssazure-sqldb.md)]
 - [!INCLUDE [ssazuremi-md](../includes/ssazuremi-md.md)]
 - [!INCLUDE [ssazuresynapse-md](../includes/ssazuresynapse-md.md)] <sup>1</sup>

@@ -8,7 +8,7 @@ ms.service: sql
 ms.subservice: system-objects
 ms.topic: conceptual
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "sys.database_scoped_credentials"
   - "sys.database_scoped_credentials_TSQL"
@@ -18,7 +18,7 @@ helpviewer_keywords:
   - "sys.database_scoped_credentials catalog view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.database_scoped_credentials (Transact-SQL)
 
@@ -38,7 +38,7 @@ monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 |
 | `target_id` |**int**|ID of the object that the database scoped credential is mapped to. Returns `0` for database scoped credentials.|  
 ::: moniker-end
 
-::: moniker range=">=sql-server-2017||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-linux-2017||=azuresqldb-mi-current||=fabric"
+::: moniker range=">=sql-server-2017||=azuresqldb-current||=azure-sqldw-latest||>=sql-server-linux-2017||=azuresqldb-mi-current|| =fabric-sqldb"
 |Column name|Data type|Description|
 |-----------------|---------------|-----------------|  
 | `name` |**sysname**|Name of the database scoped credential. Is unique in the database.|  

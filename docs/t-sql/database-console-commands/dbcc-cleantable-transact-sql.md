@@ -7,6 +7,8 @@ ms.date: 03/04/2024
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "CLEANTABLE_TSQL"
   - "DBCC_CLEANTABLE_TSQL"
@@ -23,11 +25,12 @@ helpviewer_keywords:
   - "dropping columns"
 dev_langs:
   - "TSQL"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # DBCC CLEANTABLE (Transact-SQL)
 
-[!INCLUDE [SQL Server SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Reclaims space from dropped variable-length columns in tables or indexed views.
 

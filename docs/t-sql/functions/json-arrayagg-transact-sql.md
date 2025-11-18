@@ -9,8 +9,7 @@ ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
 ms.custom:
-  - build-2024
-  - build-2025
+  - ignite-2025
 f1_keywords:
   - "JSON_ARRAYAGG"
   - "JSON_ARRAYAGG_TSQL"
@@ -18,7 +17,7 @@ helpviewer_keywords:
   - "JSON_ARRAYAGG function"
 dev_langs:
   - TSQL
-monikerRange: "=sql-server-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric"
+monikerRange: "=sql-server-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # JSON_ARRAYAGG (Transact-SQL)
 

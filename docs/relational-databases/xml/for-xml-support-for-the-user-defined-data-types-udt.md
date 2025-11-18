@@ -8,13 +8,15 @@ ms.date: 05/24/2024
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "UDTs [SQL Server], XML"
   - "user-defined types [SQL Server], XML"
 ---
 # FOR XML support for the user-defined data types (UDT)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 `FOR XML` doesn't support common language runtime (CLR) user-defined data types (UDTs).
 
@@ -23,3 +25,4 @@ To use `FOR XML` with CLR user-defined data types, make sure that the data type 
 ## Related content
 
 - [FOR XML support for various SQL Server data types](for-xml-support-for-various-sql-server-data-types.md)
+

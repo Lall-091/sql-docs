@@ -7,6 +7,8 @@ ms.date: "02/27/2023"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "dm_cdc_log_scan_sessions"
   - "dm_cdc_log_scan_sessions_TSQL"
@@ -19,7 +21,7 @@ dev_langs:
   - "TSQL"
 ---
 # Change Data Capture - sys.dm_cdc_log_scan_sessions
-[!INCLUDE [SQL Server - ASDBMI](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server - ASDBMI-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Returns one row for each log scan session in the current database. The last row returned represents the current session. You can use this view to return status information about the current log scan session, or aggregated information about all sessions since the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] was last started. 
   
@@ -83,3 +85,4 @@ GO
  - [sys.dm_cdc_errors &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/change-data-capture-sys-dm-cdc-errors.md)  
  - [What is change data capture (CDC)?](../track-changes/about-change-data-capture-sql-server.md)  
   
+

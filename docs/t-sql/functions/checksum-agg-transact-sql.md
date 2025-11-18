@@ -7,6 +7,8 @@ ms.date: "07/24/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "CHECKSUM_AGG"
   - "CHECKSUM_AGG_TSQL"
@@ -16,10 +18,10 @@ helpviewer_keywords:
   - "groups [SQL Server], checksum values"
 dev_langs:
   - "TSQL"
-monikerRange: "= azuresqldb-current || = azure-sqldw-latest || >= sql-server-2016 || >= sql-server-linux-2017 || = azuresqldb-mi-current||=fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # CHECKSUM_AGG (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSE FabricDW](../../includes/applies-to-version/sql-asdb-asdbmi-fabricse-fabricdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSE FabricDW FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricse-fabricdw-fabricsqldb.md)]
 
 This function returns the checksum of the values in a group. `CHECKSUM_AGG` ignores null values. The [OVER clause](../../t-sql/queries/select-over-clause-transact-sql.md) can follow `CHECKSUM_AGG`.
   
@@ -98,3 +100,4 @@ FROM Production.ProductInventory;
 [BINARY_CHECKSUM  &#40;Transact-SQL&#41;](../../t-sql/functions/binary-checksum-transact-sql.md)
 
 [OVER Clause &#40;Transact-SQL&#41;](../../t-sql/queries/select-over-clause-transact-sql.md)
+

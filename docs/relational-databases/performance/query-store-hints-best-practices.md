@@ -9,11 +9,10 @@ ms.service: sql
 ms.subservice: performance
 ms.topic: best-practice
 ms.custom:
-  - ignite-2024
-  - build-2025
+  - ignite-2025
 dev_langs:
   - TSQL
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-ver16 || >=sql-server-linux-ver16 || =fabric"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-ver16 || >=sql-server-linux-ver16 || =fabric-sqldb"
 ---
 
 # Query Store hints best practices

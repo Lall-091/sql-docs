@@ -9,14 +9,14 @@ ms.service: sql
 ms.topic: conceptual
 ms.custom:
   - fasttrack-edit
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "performance tuning [SQL Server]"
   - "automatic tuning"
   - "aprc"
   - "automatic plan regression correction"
   - "last known good plan"
-monikerRange: "=azuresqldb-current || >=sql-server-2017 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2017 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Automatic tuning
 

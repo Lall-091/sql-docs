@@ -9,7 +9,7 @@ ms.service: sql
 ms.subservice: performance
 ms.topic: concept-article
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "query plans [SQL Server]"
   - "execution plans [SQL Server]"
@@ -17,7 +17,7 @@ helpviewer_keywords:
   - "lightweight query profiling"
   - "lightweight profiling"
   - "lwp"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Query Profiling Infrastructure
 

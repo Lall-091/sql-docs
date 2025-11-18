@@ -11,7 +11,7 @@ ms.topic: how-to
 ms.collection:
   - data-tools
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "sql13.swb.deletedacwizard.deletedac.f1"
   - "sql13.swb.deletedacwizard.summary.f1"
@@ -22,7 +22,7 @@ helpviewer_keywords:
   - "data-tier application [SQL Server], delete"
   - "wizard [DAC], delete"
   - "delete DAC"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Delete a data-tier application
 

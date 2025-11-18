@@ -7,6 +7,8 @@ ms.author: vanto
 ms.date: 07/29/2025
 ms.service: sql
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sql13.swb.createpartition.progress.f1"
   - "sql13.swb.createpartition.partitioncolumn.f1"
@@ -25,7 +27,7 @@ helpviewer_keywords:
   - "partitioned tables [SQL Server], creating"
   - "partition functions [SQL Server]"
   - "partition schemes [SQL Server]"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current ||=fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Create partitioned tables and indexes
 

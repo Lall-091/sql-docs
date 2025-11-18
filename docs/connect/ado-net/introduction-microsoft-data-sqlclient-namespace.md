@@ -4,12 +4,13 @@ description: Learn about the Microsoft.Data.SqlClient namespace and how it's the
 author: cheenamalhotra
 ms.author: cmalhotra
 ms.reviewer: randolphwest
-ms.date: 09/05/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
 ms.custom:
   - sfi-ropc-nochange
+  - ignite-2025
 ---
 # Introduction to Microsoft.Data.SqlClient namespace
 
@@ -31,7 +32,7 @@ The Microsoft.Data.SqlClient API details can be found in the [.NET API Browser](
 
 *What changed:*
 
-- Optimized vector communications between MDS and SQL Server 2025, employing a custom binary format over the TDS protocol ([#3433](https://github.com/dotnet/SqlClient/pull/3433), [#3443](https://github.com/dotnet/SqlClient/pull/3443)).
+- Optimized vector communications between MDS and [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], employing a custom binary format over the TDS protocol ([#3433](https://github.com/dotnet/SqlClient/pull/3433), [#3443](https://github.com/dotnet/SqlClient/pull/3443)).
 
 - Reduced processing load compared to existing JSON-based vector support.
 
@@ -44,7 +45,7 @@ The Microsoft.Data.SqlClient API details can be found in the [.NET API Browser](
 
 *Effect:*
 
-- Reduced transmission and processing times for vector operations versus JSON using SQL Server 2025 preview:
+- Reduced transmission and processing times for vector operations versus JSON using [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]:
 
   - Reads: 50x improvement
   - Writes: 3.3x improvement

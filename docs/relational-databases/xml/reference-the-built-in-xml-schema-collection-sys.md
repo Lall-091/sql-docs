@@ -8,6 +8,8 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "sys XML schema collections [SQL Server]"
   - "schema collections [SQL Server], predefined"
@@ -17,7 +19,7 @@ helpviewer_keywords:
 ---
 # Reference the built-in XML schema collection (sys)
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Every database you create has a predefined **sys** XML schema collection in the **sys** relational schema. It reserves these predefined schemas, and they can be accessed from any other user-created XML schema collection. The prefixes used in these predefined schemas are meaningful in XQuery. Only **xml** is a reserved prefix.
 
@@ -147,3 +149,4 @@ The `instance of sqltypes:varchar?` expression returns TRUE, because the `<root>
 ## See also
 
 - [XML Schema Collections &#40;SQL Server&#41;](../../relational-databases/xml/xml-schema-collections-sql-server.md)
+

@@ -7,6 +7,8 @@ ms.date: "4/5/2022"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "ALTER PARTITION FUNCTION"
   - "ALTER_PARTITION_FUNCTION_TSQL"
@@ -25,7 +27,7 @@ dev_langs:
 ---
 # ALTER PARTITION FUNCTION (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Alters a partition function by splitting or merging its boundary values. Running an ALTER PARTITION FUNCTION statement can split one table or index partition that uses the partition function into two partitions. The statement can also merge two partitions into one partition.  
   
@@ -150,3 +152,4 @@ Learn more about table partitioning and related concepts in the following articl
 - [Modify a Partition Function](../../relational-databases/partitions/modify-a-partition-function.md)
 - [CREATE PARTITION SCHEME (Transact-SQL)](create-partition-scheme-transact-sql.md)
 - [Modify a Partition Scheme](../../relational-databases/partitions/modify-a-partition-scheme.md)
+

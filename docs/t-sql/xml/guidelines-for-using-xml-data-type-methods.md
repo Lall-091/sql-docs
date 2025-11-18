@@ -8,6 +8,8 @@ ms.date: 10/14/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "xml data type [SQL Server], methods"
   - "methods [XML in SQL Server]"
@@ -17,7 +19,7 @@ dev_langs:
 
 # Guidelines for using xml data type methods
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This article describes guidelines for using the **xml** data type methods.
 
@@ -109,3 +111,4 @@ This query returns the value of the first `<last-name>` element in each XML inst
 ## Related content
 
 - [xml Data Type Methods](xml-data-type-methods.md)
+

@@ -8,6 +8,8 @@ ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_xml_removedocument_TSQL"
   - "sp_xml_removedocument"
@@ -18,7 +20,7 @@ dev_langs:
 ---
 # sp_xml_removedocument (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Removes the internal representation of the XML document specified by the document handle and invalidates the document handle.
 
@@ -64,3 +66,4 @@ EXECUTE sp_xml_removedocument @hdoc;
 - [sys.dm_exec_xml_handles (Transact-SQL)](../system-dynamic-management-views/sys-dm-exec-xml-handles-transact-sql.md)
 - [sp_xml_preparedocument(Transact-SQL)](sp-xml-preparedocument-transact-sql.md)
 - [OPENXML (Transact-SQL)](../../t-sql/functions/openxml-transact-sql.md)
+

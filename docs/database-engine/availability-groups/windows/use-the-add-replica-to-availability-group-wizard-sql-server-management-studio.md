@@ -4,10 +4,12 @@ description: Add a replica to an Always On availability group using the wizard f
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 10/21/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: availability-groups
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sql13.swb.addreplicawizard.f1"
 helpviewer_keywords:

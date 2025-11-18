@@ -8,6 +8,8 @@ ms.date: 01/06/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_db_log_info"
   - "sys.dm_db_log_info_TSQL"
@@ -18,12 +20,12 @@ helpviewer_keywords:
   - "sys.dm_db_log_info dynamic management function"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # sys.dm_db_log_info (Transact-SQL)
 
-[!INCLUDE [tsql-appliesto-2016sp2-asdb-xxxx-xxx-md](../../includes/tsql-appliesto-2016sp2-asdb-asdbmi.md)]
+ [!INCLUDE [sqlserver2016sp2-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016sp2-asdb-asdbmi-fabricsqldb.md)]
 
 Returns [virtual log file (VLF)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#physical_arch) information of the transaction log. Note all transaction log files are combined in the table output. Each row in the output represents a VLF in the transaction log and provides information relevant to that VLF in the log.
 
@@ -121,3 +123,4 @@ GO
 - [Database Related Dynamic Management Views (Transact-SQL)](database-related-dynamic-management-views-transact-sql.md)
 - [sys.dm_db_log_space_usage (Transact-SQL)](sys-dm-db-log-space-usage-transact-sql.md)
 - [sys.dm_db_log_stats (Transact-SQL)](sys-dm-db-log-stats-transact-sql.md)
+

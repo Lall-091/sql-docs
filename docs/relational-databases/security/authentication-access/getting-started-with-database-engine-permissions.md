@@ -10,10 +10,10 @@ ms.subservice: security
 ms.topic: quickstart
 ms.custom:
   - intro-quickstart
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "permissions [SQL Server], getting started"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Get started with Database Engine permissions
 

@@ -10,6 +10,7 @@ ms.subservice: linux
 ms.topic: release-notes
 ms.custom:
   - linux-related-content
+  - ignite-2025
 ---
 # Release notes for SQL Server 2017 on Linux
 
@@ -21,7 +22,7 @@ These release notes are specifically for [!INCLUDE [ssSQL17](../includes/sssql17
 
 - [Release notes for SQL Server 2019 on Linux](sql-server-linux-release-notes-2019.md?view=sql-server-ver15&preserve-view=true)
 - [Release notes for SQL Server 2022 on Linux](sql-server-linux-release-notes-2022.md?view=sql-server-ver16&preserve-view=true)
-- [Release notes for SQL Server 2025 Preview on Linux](sql-server-linux-release-notes-2025.md?view=sql-server-ver17&preserve-view=true)
+- [Release notes for SQL Server 2025 on Linux](sql-server-linux-release-notes-2025.md?view=sql-server-ver17&preserve-view=true)
 
 [!INCLUDE [support-policy](includes/support-policy.md)]
 

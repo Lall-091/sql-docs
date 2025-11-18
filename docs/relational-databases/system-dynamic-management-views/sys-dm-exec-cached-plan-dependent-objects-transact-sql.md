@@ -7,6 +7,8 @@ ms.date: "02/24/2023"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_exec_cached_plan_dependent_objects"
   - "dm_exec_cached_plan_dependent_objects_TSQL"
@@ -16,10 +18,10 @@ helpviewer_keywords:
   - "sys.dm_exec_cached_plan_dependent_objects dynamic management function"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.dm_exec_cached_plan_dependent_objects (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Returns a row for each [!INCLUDE[tsql](../../includes/tsql-md.md)] execution plan, common language runtime (CLR) execution plan, and cursor associated with a plan.  
   
@@ -77,3 +79,4 @@ Requires VIEW SERVER PERFORMANCE STATE permission on the server.
  [sys.syscacheobjects &#40;Transact-SQL&#41;](../../relational-databases/system-compatibility-views/sys-syscacheobjects-transact-sql.md)  
   
   
+

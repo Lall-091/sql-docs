@@ -7,12 +7,14 @@ ms.date: "06/22/2021"
 ms.service: sql
 ms.subservice: supportability
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "Plan Guide Unsuccessful event class"
-monikerRange: ">=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
 # Plan Guide Unsuccessful Event Class
- [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
+ [!INCLUDE [SQL Server SQLMI](../../includes/applies-to-version/sql-asdbmi.md)]
 
   The Plan Guide Unsuccessful event class indicates that [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] could not produce an execution plan for a query or batch that contained a plan guide. Instead, the plan was compiled without using the plan guide. The event fires when the following conditions are true:  
   
@@ -64,3 +66,4 @@ monikerRange: ">=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-curren
  [sp_create_plan_guide_from_handle &#40;Transact-SQL&#41;](../../relational-databases/system-stored-procedures/sp-create-plan-guide-from-handle-transact-sql.md)  
   
   
+

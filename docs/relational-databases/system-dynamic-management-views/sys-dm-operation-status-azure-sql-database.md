@@ -7,6 +7,8 @@ ms.reviewer: randolphwest
 ms.date: 09/11/2025
 ms.service: azure-sql-database
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "dm_operation_status_TSQL"
   - "dm_operation_status"
@@ -17,7 +19,7 @@ helpviewer_keywords:
   - "sys.dm_operation_status dynamic management view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.dm_operation_status
 

@@ -4,7 +4,7 @@ description: This quickstart shows how to use Docker to run the SQL Server Linux
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: vanto, randolphwest
-ms.date: 10/21/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: quickstart
@@ -12,8 +12,8 @@ ms.custom:
   - intro-quickstart
   - kr2b-contr-experiment
   - linux-related-content
-  - build-2025
   - sfi-ropc-blocked
+  - ignite-2025
 zone_pivot_groups: cs1-command-shell
 monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017"
 ---
@@ -36,7 +36,7 @@ For more information on supported platforms, see [Release notes for SQL Server 2
 
 This quickstart creates [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] containers. If you prefer to create Linux containers for different versions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see:
 
-- [SQL Server 2025 Preview](quickstart-install-connect-docker.md?view=sql-server-linux-ver17&preserve-view=true#pullandrun2025)
+- [SQL Server 2025](quickstart-install-connect-docker.md?view=sql-server-linux-ver17&preserve-view=true#pullandrun2025)
 - [SQL Server 2022](quickstart-install-connect-docker.md?view=sql-server-linux-ver16&preserve-view=true#pullandrun2022)
 - [SQL Server 2019](quickstart-install-connect-docker.md?view=sql-server-linux-ver15&preserve-view=true#pullandrun2019)
 
@@ -57,7 +57,7 @@ For more information on supported platforms, see [Release notes for SQL Server 2
 
 This quickstart creates [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] containers. If you prefer to create Linux containers for different versions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see:
 
-- [SQL Server 2025 Preview](quickstart-install-connect-docker.md?view=sql-server-linux-ver17&preserve-view=true#pullandrun2025)
+- [SQL Server 2025](quickstart-install-connect-docker.md?view=sql-server-linux-ver17&preserve-view=true#pullandrun2025)
 - [SQL Server 2022](quickstart-install-connect-docker.md?view=sql-server-linux-ver16&preserve-view=true#pullandrun2022)
 - [SQL Server 2017](quickstart-install-connect-docker.md?view=sql-server-linux-2017&preserve-view=true#pullandrun2017)
 
@@ -78,7 +78,7 @@ For more information on supported platforms, see [Release notes for SQL Server 2
 
 This quickstart creates [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] containers. If you prefer to create Linux containers for different versions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see:
 
-- [SQL Server 2025 Preview](quickstart-install-connect-docker.md?view=sql-server-linux-ver17&preserve-view=true#pullandrun2025)
+- [SQL Server 2025](quickstart-install-connect-docker.md?view=sql-server-linux-ver17&preserve-view=true#pullandrun2025)
 - [SQL Server 2019](quickstart-install-connect-docker.md?view=sql-server-linux-ver15&preserve-view=true#pullandrun2019)
 - [SQL Server 2017](quickstart-install-connect-docker.md?view=sql-server-linux-2017&preserve-view=true#pullandrun2017)
 
@@ -92,7 +92,7 @@ In this quickstart, you use Docker to pull and run the [!INCLUDE [sssql25-md](..
 > [!NOTE]  
 > [!INCLUDE [container-emulation](includes/container-emulation.md)]
 
-For more information on supported platforms, see [Release notes for SQL Server 2025 Preview on Linux](sql-server-linux-release-notes-2025.md).
+For more information on supported platforms, see [Release notes for SQL Server 2025 on Linux](sql-server-linux-release-notes-2025.md).
 
 > [!WARNING]  
 > When you stop and remove a container, your [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] data in the container is permanently deleted. For more information on preserving your data, [create and copy a backup file out of the container](tutorial-restore-backup-in-sql-server-container.md) or use a [container data persistence technique](sql-server-linux-docker-container-configure.md#persist).
@@ -144,7 +144,7 @@ The examples in this article use the `docker` command. However, most of these co
 <!--SQL Server 2025 on Linux-->
 ::: moniker range=">=sql-server-linux-ver17 || >=sql-server-ver17"
 
-- For more information on hardware requirements and processor support, see [Hardware and software requirements for SQL Server 2025 Preview](../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2025.md)
+- For more information on hardware requirements and processor support, see [Hardware and software requirements for SQL Server 2025](../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2025.md)
 
 ::: moniker-end
 
@@ -203,7 +203,7 @@ docker pull mcr.microsoft.com/mssql/server:2017-latest
 
 This quickstart creates [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] containers. If you prefer to create Linux containers for different versions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see:
 
-- [SQL Server 2025 Preview](quickstart-install-connect-docker.md?view=sql-server-linux-ver17&preserve-view=true#pullandrun2025)
+- [SQL Server 2025](quickstart-install-connect-docker.md?view=sql-server-linux-ver17&preserve-view=true#pullandrun2025)
 - [SQL Server 2022](quickstart-install-connect-docker.md?view=sql-server-linux-ver16&preserve-view=true#pullandrun2022)
 - [SQL Server 2019](quickstart-install-connect-docker.md?view=sql-server-linux-ver15&preserve-view=true#pullandrun2019)
 
@@ -301,7 +301,7 @@ sqlcmd create mssql --tag 2017-latest --hostname sql1 --name sql1 --port 1433 --
 
 This quickstart creates [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] containers. If you prefer to create Linux containers for different versions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see:
 
-- [SQL Server 2025 Preview](quickstart-install-connect-docker.md?view=sql-server-linux-ver17&preserve-view=true#pullandrun2025)
+- [SQL Server 2025](quickstart-install-connect-docker.md?view=sql-server-linux-ver17&preserve-view=true#pullandrun2025)
 - [SQL Server 2022](quickstart-install-connect-docker.md?view=sql-server-linux-ver16&preserve-view=true#pullandrun2022)
 - [SQL Server 2019](quickstart-install-connect-docker.md?view=sql-server-linux-ver15&preserve-view=true#pullandrun2019)
 
@@ -444,7 +444,7 @@ docker pull mcr.microsoft.com/mssql/server:2019-latest
 
 This quickstart creates [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] containers. If you prefer to create Linux containers for different versions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see:
 
-- [SQL Server 2025 Preview](quickstart-install-connect-docker.md?view=sql-server-linux-ver17&preserve-view=true#pullandrun2025)
+- [SQL Server 2025](quickstart-install-connect-docker.md?view=sql-server-linux-ver17&preserve-view=true#pullandrun2025)
 - [SQL Server 2022](quickstart-install-connect-docker.md?view=sql-server-linux-ver16&preserve-view=true#pullandrun2022)
 - [SQL Server 2017](quickstart-install-connect-docker.md?view=sql-server-linux-2017&preserve-view=true#pullandrun2017)
 
@@ -545,7 +545,7 @@ sqlcmd create mssql --tag 2019-latest --hostname sql1 --name sql1 --port 1433 --
 
 This quickstart creates [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] containers. If you prefer to create Linux containers for different versions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see:
 
-- [SQL Server 2025 Preview](quickstart-install-connect-docker.md?view=sql-server-linux-ver17&preserve-view=true#pullandrun2025)
+- [SQL Server 2025](quickstart-install-connect-docker.md?view=sql-server-linux-ver17&preserve-view=true#pullandrun2025)
 - [SQL Server 2022](quickstart-install-connect-docker.md?view=sql-server-linux-ver16&preserve-view=true#pullandrun2022)
 - [SQL Server 2017](quickstart-install-connect-docker.md?view=sql-server-linux-2017&preserve-view=true#pullandrun2017)
 
@@ -690,7 +690,7 @@ docker pull mcr.microsoft.com/mssql/server:2022-latest
 
 This quickstart creates [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] containers. If you prefer to create Linux containers for different versions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see:
 
-- [SQL Server 2025 Preview](quickstart-install-connect-docker.md?view=sql-server-linux-ver17&preserve-view=true#pullandrun2025)
+- [SQL Server 2025](quickstart-install-connect-docker.md?view=sql-server-linux-ver17&preserve-view=true#pullandrun2025)
 - [SQL Server 2019](quickstart-install-connect-docker.md?view=sql-server-linux-ver15&preserve-view=true#pullandrun2019)
 - [SQL Server 2017](quickstart-install-connect-docker.md?view=sql-server-linux-2017&preserve-view=true#pullandrun2017)
 
@@ -841,7 +841,7 @@ sqlcmd create mssql --tag 2022-latest --hostname sql1 --name sql1 --port 1433 --
 
 This quickstart creates [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] containers. If you prefer to create Linux containers for different versions of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see:
 
-- [SQL Server 2025 Preview](quickstart-install-connect-docker.md?view=sql-server-linux-ver17&preserve-view=true#pullandrun2025)
+- [SQL Server 2025](quickstart-install-connect-docker.md?view=sql-server-linux-ver17&preserve-view=true#pullandrun2025)
 - [SQL Server 2019](quickstart-install-connect-docker.md?view=sql-server-linux-ver15&preserve-view=true#pullandrun2019)
 - [SQL Server 2017](quickstart-install-connect-docker.md?view=sql-server-linux-2017&preserve-view=true#pullandrun2017)
 

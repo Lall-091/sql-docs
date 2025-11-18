@@ -9,12 +9,11 @@ ms.service: sql
 ms.subservice: backup-restore
 ms.topic: troubleshooting-general
 ms.custom:
-  - ignite-2024
-  - build-2025
+  - ignite-2025
 helpviewer_keywords:
   - "accelerated database recovery [SQL Server], recovery-only"
   - "database recovery [SQL Server]"
-monikerRange: ">=sql-server-ver15 || >=sql-server-linux-ver15 || =azuresqldb-mi-current || =azuresqldb-current || =fabric"
+monikerRange: ">=sql-server-ver15 || >=sql-server-linux-ver15 || =azuresqldb-mi-current || =azuresqldb-current || =fabric-sqldb"
 ---
 
 # Monitor and troubleshoot accelerated database recovery

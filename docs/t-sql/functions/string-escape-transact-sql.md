@@ -7,6 +7,8 @@ ms.date: "02/25/2016"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "STRING_ESCAPE"
   - "STRING_ESCAPE_TSQL"
@@ -14,12 +16,12 @@ helpviewer_keywords:
   - "STRING_ESCAPE function"
 dev_langs:
   - "TSQL"
-monikerRange: "= azuresqldb-current || >= sql-server-2016 || >= sql-server-linux-2017"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric-sqldb"
 ---
 # STRING_ESCAPE (Transact-SQL)
 
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
 
 Escapes special characters in texts and returns text with escaped characters. **STRING_ESCAPE** is a deterministic function, introduced in SQL Server 2016. 
   
@@ -103,3 +105,4 @@ SET @json = FORMATMESSAGE('{ "id": %d,"name": "%s", "surname": "%s" }',
 - [STUFF &#40;Transact-SQL&#41;](../../t-sql/functions/stuff-transact-sql.md)  
 - [TRANSLATE &#40;Transact-SQL&#41;](../../t-sql/functions/translate-transact-sql.md)  
 - [String Functions &#40;Transact-SQL&#41;](../../t-sql/functions/string-functions-transact-sql.md)
+

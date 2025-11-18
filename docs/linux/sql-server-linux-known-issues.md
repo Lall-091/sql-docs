@@ -4,13 +4,13 @@ description: This article contains the known issues for SQL Server running on Li
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh, vanto
-ms.date: 08/12/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: troubleshooting-known-issue
 ms.custom:
   - linux-related-content
-  - build-2025
+  - ignite-2025
 ---
 # SQL Server on Linux: Known issues
 
@@ -249,33 +249,9 @@ For Ubuntu 22.04, you should reach out to Canonical directly for the exact steps
 
 ---
 
-## Known issues in SQL Server 2025 Release Candidate (RC) 0
+## Known issues in SQL Server 2025
 
-The following issues affect [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] Release Candidate (RC) 0.
-
-### SLES support for SQL Server 2025 Preview
-
-Packages for SUSE Linux Enterprise Server (SLES) aren't currently available on [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] RC 0.
-
-### TLS configuration with mssql-conf
-
-You might encounter the following error when configuring TLS settings (such as `network.tlsprotocols` or `network.tlsciphers`) using the **mssql-conf** utility.
-
-```output
-OSError: libssl.so: cannot open shared object file: No such file or directory.
-```
-
-There are two possible workarounds for this issue, depending on your distribution.
-
-1. Install `openssl-devel` using your distribution's package manager.
-
-1. Manually update the `mssql.conf` file as follows:
-
-   ```ini
-   [network]
-   tlsprotocols = 1.3,1.2
-   tlsciphers = TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-ECDSA-AES128-SHA:AES256-GCM-SHA384:AES128-GCM-SHA256:AES256-SHA256:AES128-SHA256:AES256-SHA:AES128-SHA:!DHE-RSA-AES256-GCM-SHA384:!DHE-RSA-AES128-GCM-SHA256:!DHE-RSA-AES256-SHA:!DHE-RSA-AES128-SHA
-   ```
+The following issues affect [!INCLUDE [sssql25-md](../includes/sssql25-md.md)].
 
 ### SQL Server on Linux fails to start on machines with hybrid CPU architecture
 
@@ -291,7 +267,7 @@ If you want to use a Linux host operating system, you can work around the issue 
 
 ### Local ONNX models not supported on Linux operating systems
 
-[CREATE EXTERNAL MODEL](../t-sql/statements/create-external-model-transact-sql.md) local ONNX models hosted directly on the SQL Server aren't currently available for Linux on [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] RC 0.
+[CREATE EXTERNAL MODEL](../t-sql/statements/create-external-model-transact-sql.md) local ONNX models hosted directly on the SQL Server aren't currently available for Linux on [!INCLUDE [sssql25-md](../includes/sssql25-md.md)].
 
 ## Related content
 

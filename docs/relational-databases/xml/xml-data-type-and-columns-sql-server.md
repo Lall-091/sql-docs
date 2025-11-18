@@ -8,10 +8,12 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 ---
 # xml data type and columns (SQL Server)
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This article discusses the advantages and the limitations of the **xml** data type in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], and helps you to choose how to store XML data.
 
@@ -186,3 +188,4 @@ Note the following general limitations that apply to the **xml** data type:
 ## See also
 
 - [Examples of Bulk Import and Export of XML Documents &#40;SQL Server&#41;](../../relational-databases/import-export/examples-of-bulk-import-and-export-of-xml-documents-sql-server.md)
+

@@ -7,6 +7,8 @@ ms.date: 04/15/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sys.dm_db_missing_index_group_stats_query_TSQL"
   - "sys.dm_db_missing_index_group_stats_query"
@@ -17,11 +19,11 @@ helpviewer_keywords:
   - "missing indexes feature [SQL Server], sys.dm_db_missing_index_group_stats_query dynamic management view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-ver15 || >=sql-server-linux-ver15 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-ver15 || >=sql-server-linux-ver15 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.dm_db_missing_index_group_stats_query (Transact-SQL)
 
-[!INCLUDE [SQL Server 2019 SQL Database](../../includes/applies-to-version/sqlserver2019-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server 2019 SQL Database-fabricsqldb](../../includes/applies-to-version/sqlserver2019-asdb-asdbmi-fabricsqldb.md)]
 
 Returns information about queries that needed a missing index from groups of missing indexes, excluding spatial indexes. More than one query might be returned per missing index group. One missing index group might have several queries that needed the same index.
 
@@ -101,3 +103,4 @@ ORDER BY misq.avg_total_user_cost
 - [CREATE INDEX (Transact-SQL)](../../t-sql/statements/create-index-transact-sql.md)
 - [sys.dm_os_sys_info  (Transact-SQL)](sys-dm-os-sys-info-transact-sql.md)
 - [Monitor performance by using the Query Store](../performance/monitoring-performance-by-using-the-query-store.md)
+

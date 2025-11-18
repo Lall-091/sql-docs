@@ -8,12 +8,14 @@ ms.date: 10/02/2023
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "OLE DB, how-to topics"
 ---
 # OLE DB How-to articles
 
-[!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics PDW FabricSQLDB](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
 [!INCLUDE [Driver_OLEDB_Download](../../../includes/driver_oledb_download.md)]
 
@@ -41,3 +43,4 @@ To use the OLE DB Driver for SQL Server, you have to understand how to make a co
 ## Related content
 
 - [Microsoft OLE DB Driver for SQL Server](../oledb-driver-for-sql-server.md)
+

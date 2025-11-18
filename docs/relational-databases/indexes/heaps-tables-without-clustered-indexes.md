@@ -8,14 +8,14 @@ ms.service: sql
 ms.subservice: table-view-index
 ms.topic: conceptual
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "heaps"
   - "forward record"
   - "forwarded record"
   - "forwarding pointer"
   - "RID"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Heaps (tables without clustered indexes)
 

@@ -7,13 +7,15 @@ ms.reviewer: randolphwest
 ms.date: 07/16/2025
 ms.service: sql
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "DDL triggers, about DDL triggers"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # DDL triggers
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 DDL triggers fire in response to various Data Definition Language (DDL) events. These events primarily correspond to [!INCLUDE [tsql](../../includes/tsql-md.md)] statements that start with the keywords `CREATE`, `ALTER`, `DROP`, `GRANT`, `DENY`, `REVOKE`, or `UPDATE STATISTICS`. Certain system stored procedures that perform DDL-like operations can also fire DDL triggers.
 
@@ -122,3 +124,4 @@ For a list of the predefined groups of DDL statements that are available for DDL
 - [Logon triggers](logon-triggers.md)
 - [CREATE TRIGGER (Transact-SQL)](../../t-sql/statements/create-trigger-transact-sql.md)
 - [EVENTDATA (Transact-SQL)](../../t-sql/functions/eventdata-transact-sql.md)
+

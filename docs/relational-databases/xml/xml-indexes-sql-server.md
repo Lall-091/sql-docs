@@ -8,6 +8,8 @@ ms.date: 08/04/2023
 ms.service: sql
 ms.subservice: xml
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "removing indexes"
   - "deleting indexes"
@@ -34,7 +36,7 @@ helpviewer_keywords:
 ---
 # XML indexes (SQL Server)
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 XML indexes can be created on **xml** data type columns. They index all tags, values and paths over the XML instances in the column and benefit query performance. Your application may benefit from an XML index in the following situations:
 
@@ -42,7 +44,7 @@ XML indexes can be created on **xml** data type columns. They index all tags, va
 
 - Your XML values are relatively large and the retrieved parts are relatively small. Building the index avoids parsing the whole data at run time and benefits index lookups for efficient query processing.
 
-Starting with [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)] and later versions, and in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and [!INCLUDE [ssazuremi](../../includes/ssazuremi-md.md)], you can use [XML compression](#xml-compression) to compress off-row XML data for both XML columns and indexes. XML compression reduces data storage capacity requirements.
+Starting with [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)] and later versions, and in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and [!INCLUDE [ssazuremi](../../includes/ssazuremi-md.md)], you can use [XML compression](#xml-compression) to compress off-row XML data for both XML columns and indexes. XML compression reduces data storage capacity requirements.
 
 XML indexes fall into the following categories:
 
@@ -216,7 +218,7 @@ Except for the differences described later in this article, creating an XML inde
 
 ## XML compression
 
-**Applies to**: [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi](../../includes/ssazuremi-md.md)].
+**Applies to**: [!INCLUDE[sssql22-md](../../includes/sssql22-md.md)] and later versions, and in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], and [!INCLUDE [ssazuremi](../../includes/ssazuremi-md.md)].
 
 Enabling XML compression changes the physical storage format of the data that is associated with the XML data type to a *compressed binary format*, but doesn't change XML data syntax or semantics. Application changes aren't required when one or more tables are enabled for XML compression.
 
@@ -244,3 +246,4 @@ The space use of XML indexes can be found in the table-valued function [sys.dm_d
 - [ALTER INDEX (Selective XML Indexes)](../../t-sql/statements/alter-index-selective-xml-indexes.md)
 - [sys.dm_db_index_physical_stats (Transact-SQL)](../../relational-databases/system-dynamic-management-views/sys-dm-db-index-physical-stats-transact-sql.md)
 - [XML Data (SQL Server)](../../relational-databases/xml/xml-data-sql-server.md)
+

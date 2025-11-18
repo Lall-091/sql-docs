@@ -4,12 +4,13 @@ description: This article provides a step-by-step procedure for installing a new
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: jopilov
-ms.date: 10/21/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: install
 ms.topic: install-set-up-deploy
 ms.custom:
   - intro-installation
+  - ignite-2025
 helpviewer_keywords:
   - "installing SQL Server, steps"
   - "Setup [SQL Server], steps"
@@ -37,7 +38,7 @@ The installation experience depends on the version of [!INCLUDE [ssNoVersion](..
         [SQL Server 2022](install-sql-server-from-the-installation-wizard-setup.md?view=sql-server-ver16&preserve-view=true) &nbsp;
     :::column-end:::
     :::column:::
-        [SQL Server 2025 Preview](install-sql-server-from-the-installation-wizard-setup.md?view=sql-server-ver17&preserve-view=true) &nbsp;
+        [SQL Server 2025](install-sql-server-from-the-installation-wizard-setup.md?view=sql-server-ver17&preserve-view=true) &nbsp;
     :::column-end:::
 :::row-end:::
 
@@ -56,7 +57,7 @@ The installation experience depends on the version of [!INCLUDE [ssNoVersion](..
         [SQL Server 2022](install-sql-server-from-the-installation-wizard-setup.md?view=sql-server-ver16&preserve-view=true) &nbsp;
     :::column-end:::
     :::column:::
-        [SQL Server 2025 Preview](install-sql-server-from-the-installation-wizard-setup.md?view=sql-server-ver17&preserve-view=true) &nbsp;
+        [SQL Server 2025](install-sql-server-from-the-installation-wizard-setup.md?view=sql-server-ver17&preserve-view=true) &nbsp;
     :::column-end:::
 :::row-end:::
 
@@ -75,7 +76,7 @@ The installation experience depends on the version of [!INCLUDE [ssNoVersion](..
         ***\* SQL Server 2022 \**** &nbsp;
     :::column-end:::
     :::column:::
-        [SQL Server 2025 Preview](install-sql-server-from-the-installation-wizard-setup.md?view=sql-server-ver17&preserve-view=true) &nbsp;
+        [SQL Server 2025](install-sql-server-from-the-installation-wizard-setup.md?view=sql-server-ver17&preserve-view=true) &nbsp;
     :::column-end:::
 :::row-end:::
 
@@ -94,7 +95,7 @@ The installation experience depends on the version of [!INCLUDE [ssNoVersion](..
         [SQL Server 2022](install-sql-server-from-the-installation-wizard-setup.md?view=sql-server-ver16&preserve-view=true) &nbsp;
     :::column-end:::
     :::column:::
-        ***\* SQL Server 2025 Preview \**** &nbsp;
+        ***\* SQL Server 2025 \**** &nbsp;
     :::column-end:::
 :::row-end:::
 
@@ -104,7 +105,7 @@ This article provides a step-by-step procedure for installing a new instance of 
 
 For other ways to install [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], see:
 
-- [Install and configure SQL Server on Windows from the command prompt](install-sql-server-from-the-command-prompt.md)
+- [Install, configure, or uninstall SQL Server on Windows from the command prompt](install-sql-server-from-the-command-prompt.md)
 - [Install SQL Server using a configuration file](install-sql-server-using-a-configuration-file.md)
 - [Install SQL Server with SysPrep](install-sql-server-using-sysprep.md)
 - [Create a new Always On failover cluster instance (Setup)](../../sql-server/failover-clusters/install/create-a-new-sql-server-failover-cluster-setup.md)
@@ -676,6 +677,9 @@ On the **Edition** page, select the edition you want to install.
 
 - **Specify a free edition** allows you to select Evaluation, Developer, or Web edition.
 
+  > [!NOTE]  
+  > Web edition isn't available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions.
+
 - **Use pay-as-you-go billing through Microsoft Azure** is an alternative to using the traditional license agreement. [!INCLUDE [sql-server-2022](../../includes/sssql22-md.md)] introduces this option in setup and allows you to activate your instance for use in production without supplying a product key. This option requires an active Azure subscription. For more information, see [Configure SQL Server enabled by Azure Arc](../../sql-server/azure-arc/manage-configuration.md). With this option, you can specify Standard or Enterprise edition.
 
 - **Enter the product key** allows you to provide a product key for a specific edition of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. You can also specify if you have a license with Software Assurance or SQL Software Subscription, and if you have a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] license only.
@@ -731,7 +735,7 @@ On the **Azure Extension for SQL Server** page, you can configure [!INCLUDE [ssN
 
 - If you're installing [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] on a VMware ESX host or an Azure VMware Solution (AVS) host, you don't see the **Azure Extension for SQL Server** page during installation. You can [install the extension during setup using the command line parameters](install-sql-server-from-the-command-prompt.md) or you can install [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] without the Azure Extension for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] first and then later install the [Connect your SQL Server to Azure Arc](../../sql-server/azure-arc/connect.md).
 
-- If you're installing [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] on an Azure VM, you don't see the **Azure Extension for SQL Server** page during installation. Connectivity to Azure Services for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on Azure VMs is handled through the [SQL IaaS Agent extension](/azure/azure-sql/virtual-machines/windows/sql-server-iaas-agent-extension-automate-management), which is automatically pushed to your Azure VM shortly after [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] installation. You can register your VM with the extension [manually](/azure/azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm) if you don't want to wait for automatic registration. For more information on supported configurations, see [Supported SQL Server versions and environments](../../sql-server/azure-arc/prerequisites.md#supported-sql-server-versions-and-environments).
+- If you're installing [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] on an Azure VM, you don't see the **Azure Extension for SQL Server** page during installation. Connectivity to Azure Services for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on Azure VMs is handled through the [SQL Server IaaS Agent extension](/azure/azure-sql/virtual-machines/windows/sql-server-iaas-agent-extension-automate-management), which is automatically pushed to your Azure VM shortly after [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] installation. You can register your VM with the extension [manually](/azure/azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm) if you don't want to wait for automatic registration. For more information on supported configurations, see [Supported SQL Server versions and environments](../../sql-server/azure-arc/prerequisites.md#supported-sql-server-versions-and-environments).
 
 To use the Azure extension for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], you must have an active Azure subscription and provide a set of additional Azure-related parameters. You also need to make sure the following [Azure resource providers](../../sql-server/azure-arc/prerequisites.md) are registered in your subscription:
 
@@ -917,7 +921,7 @@ If you're instructed to restart the computer, do so now.
 
 ::: moniker range="=sql-server-ver17"
 
-## Install SQL Server 2025 Preview
+## Install SQL Server 2025
 
 <a id="installation-media-2025"></a>
 
@@ -938,6 +942,9 @@ The Installation Wizard runs the [!INCLUDE [ssNoVersion](../../includes/ssnovers
 On the **Edition** page, select the edition you want to install.
 
 - **Specify a free edition** allows you to select Evaluation, Developer, or Web edition.
+
+  > [!NOTE]  
+  > Web edition isn't available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions.
 
 - **Use pay-as-you-go billing through Microsoft Azure** is an alternative to using the traditional license agreement. [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] allows you to activate your instance for use in production without supplying a product key. This option requires an active Azure subscription. For more information, see [Configure SQL Server enabled by Azure Arc](../../sql-server/azure-arc/manage-configuration.md). With this option, you can specify Standard or Enterprise edition.
 
@@ -994,7 +1001,7 @@ On the **Azure Extension for SQL Server** page, you can configure [!INCLUDE [ssN
 
 - If you're installing [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] on a VMware ESX host or an Azure VMware Solution (AVS) host, you don't see the **Azure Extension for SQL Server** page during installation. You can [install the extension during setup using the command line parameters](install-sql-server-from-the-command-prompt.md) or you can install [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] without the Azure Extension for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] first and then later install the [Connect your SQL Server to Azure Arc](../../sql-server/azure-arc/connect.md).
 
-- If you're installing [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] on an Azure VM, you don't see the **Azure Extension for SQL Server** page during installation. Connectivity to Azure Services for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on Azure VMs is handled through the [SQL IaaS Agent extension](/azure/azure-sql/virtual-machines/windows/sql-server-iaas-agent-extension-automate-management), which is automatically pushed to your Azure VM shortly after [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] installation. You can register your VM with the extension [manually](/azure/azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm) if you don't want to wait for automatic registration. For more information on supported configurations, see [Supported SQL Server versions and environments](../../sql-server/azure-arc/prerequisites.md#supported-sql-server-versions-and-environments).
+- If you're installing [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] on an Azure VM, you don't see the **Azure Extension for SQL Server** page during installation. Connectivity to Azure Services for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on Azure VMs is handled through the [SQL Server IaaS Agent extension](/azure/azure-sql/virtual-machines/windows/sql-server-iaas-agent-extension-automate-management), which is automatically pushed to your Azure VM shortly after [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] installation. You can register your VM with the extension [manually](/azure/azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm) if you don't want to wait for automatic registration. For more information on supported configurations, see [Supported SQL Server versions and environments](../../sql-server/azure-arc/prerequisites.md#supported-sql-server-versions-and-environments).
 
 To use the Azure extension for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], you must have an active Azure subscription and provide a set of additional Azure-related parameters. You also need to make sure the following [Azure resource providers](../../sql-server/azure-arc/prerequisites.md) are registered in your subscription:
 

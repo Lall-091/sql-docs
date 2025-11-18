@@ -6,6 +6,8 @@ ms.author: mlandzic
 ms.date: "03/14/2017"
 ms.service: sql
 ms.topic: conceptual
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "indexes [SQL Server], creating"
   - "spatial indexes [SQL Server], dropping"
@@ -13,7 +15,7 @@ helpviewer_keywords:
   - "indexes [SQL Server], dropping"
   - "indexes [SQL Server], modifying"
   - "spatial indexes [SQL Server], modifying"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Create, Modify, and Drop Spatial Indexes
 

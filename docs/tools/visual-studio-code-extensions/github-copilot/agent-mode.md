@@ -1,10 +1,11 @@
 ---
-title: "Quickstart: Use GitHub Copilot Agent Mode (Preview)"
+title: "Quickstart: Use GitHub Copilot Agent Mode"
+titleSuffix: MSSQL Extension for Visual Studio Code
 description: Learn how to use GitHub Copilot Agent Mode with the MSSQL extension to connect to databases, explore schemas, and run SQL queries directly from the GitHub Copilot chat in Visual Studio Code.
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: randolphwest
-ms.date: 07/23/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: quickstart
@@ -12,18 +13,18 @@ ms.collection:
   - data-tools
   - ce-skilling-ai-copilot
 ms.custom:
-  - build-2025
+  - ignite-2025
 ai-usage: ai-assisted
 ---
 
-# Quickstart: Use GitHub Copilot Agent Mode (Preview)
+# Quickstart: Use GitHub Copilot Agent Mode
 
 GitHub Copilot Agent Mode brings a contextual, action-driven chat experience into the MSSQL extension for Visual Studio Code. With Agent Mode, GitHub Copilot can go beyond suggesting code—it can securely execute real database tasks using natural language prompts or built-in tools. You can list all your connections, connect to specific server/databases, and explore schemas without leaving your editor.
 
 > [!TIP]  
-> You don't need to mention a participant like `@mssql` to use SQL tools in Agent Mode. Once the MSSQL extension is active, its tools are automatically available in the Agent Mode interface. For more information, see [Agent Mode Tools](https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode#_agent-mode-tools).
+> You don't need to mention a participant like `@mssql` to use SQL tools in Agent Mode. Once the MSSQL extension is active, its tools are automatically available in the Agent Mode interface. For more information, see [Agent Mode Tools](https://code.visualstudio.com/docs/copilot/chat/copilot-chat#_builtin-chat-modes).
 
-These actions are powered by tools contributed by the MSSQL extension and surfaced directly within GitHub Copilot's Agent Mode. For more information on how Agent Mode works, see the [Visual Studio Code documentation on Agent Mode](https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode#_use-agent-mode).
+These actions are powered by tools contributed by the MSSQL extension and surfaced directly within GitHub Copilot's Agent Mode. For more information on how Agent Mode works, see the [Visual Studio Code documentation on Agent Mode](https://code.visualstudio.com/docs/copilot/chat/copilot-chat#_builtin-chat-modes).
 
 ## What is Agent Mode?
 
@@ -156,7 +157,7 @@ GitHub Copilot can invoke MSSQL-specific tools and other extension-contributed t
 
 When a tool is invoked—especially if it interacts with your machine or database—GitHub Copilot prompts for confirmation to ensure secure execution. You can allow the tool for just the current session, the workspace, or approve it permanently.
 
-For more on tool visibility and approvals, visit [Manage tool approvals](https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode#_manage-tool-approvals).
+For more on tool visibility and approvals, visit [Manage tool approvals](https://code.visualstudio.com/docs/copilot/chat/copilot-chat#_builtin-chat-modes).
 
 ### Agent Mode confirmation workflow
 
@@ -169,18 +170,18 @@ When GitHub Copilot selects a tool, it prompts you with a confirmation dialog sh
 This confirmation step helps ensure secure, intentional interactions with your development environment.
 
 > [!NOTE]  
-> For more information on how confirmation works across all tools in Agent Mode, see the [Visual Studio Code documentation on tool approvals](https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode#_manage-tool-approvals).
+> For more information on how confirmation works across all tools in Agent Mode, see the [Visual Studio Code documentation on tool approvals](https://code.visualstudio.com/docs/copilot/chat/copilot-chat#_builtin-chat-modes).
 
 ## Related content
 
-- [Quickstart: Use Chat and inline GitHub Copilot suggestions (Preview)](inline-copilot-suggestions.md)
-- [Quickstart: Use GitHub Copilot slash commands (Preview)](slash-commands.md)
-- [Quickstart: Generate code (Preview)](code-generation.md)
-- [Quickstart: Use the Schema Explorer and designer (Preview)](schema-explorer-designer.md)
-- [Quickstart: Use the Smart Query Builder (Preview)](smart-query-builder.md)
-- [Quickstart: Query Optimizer Assistant (Preview)](query-optimizer-assistant.md)
-- [Quickstart: Use the Business Logic Explainer (Preview)](business-logic-explainer.md)
-- [Quickstart: Security Analyzer (Preview)](security-analyzer.md)
-- [Quickstart: Localization & Formatting Helper (Preview)](localization-formatting-helper.md)
-- [Quickstart: Generate data for testing and mocking (Preview)](test-and-mocking-data-generator.md)
+- [Quickstart: Use chat and inline GitHub Copilot suggestions](inline-copilot-suggestions.md)
+- [Quickstart: Use GitHub Copilot slash commands](slash-commands.md)
+- [Quickstart: Generate code](code-generation.md)
+- [Quickstart: Use the schema explorer and designer](schema-explorer-designer.md)
+- [Quickstart: Use the smart query builder](smart-query-builder.md)
+- [Quickstart: Query optimizer assistant](query-optimizer-assistant.md)
+- [Quickstart: Use the business logic explainer](business-logic-explainer.md)
+- [Quickstart: Security analyzer](security-analyzer.md)
+- [Quickstart: Localization and formatting helper](localization-formatting-helper.md)
+- [Quickstart: Generate data for testing and mocking](test-and-mocking-data-generator.md)
 - [Limitations and known issues](limitations-and-known-issues.md)

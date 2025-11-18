@@ -7,6 +7,8 @@ ms.date: 12/05/2022
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "DBCC INPUTBUFFER"
   - "INPUTBUFFER"
@@ -20,10 +22,11 @@ helpviewer_keywords:
   - "DBCC INPUTBUFFER statement"
 dev_langs:
   - "TSQL"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # DBCC INPUTBUFFER (Transact-SQL)
 
-[!INCLUDE [SQL Server SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Displays the last statement sent from a client to an instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
 

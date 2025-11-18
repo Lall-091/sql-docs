@@ -7,6 +7,8 @@ ms.date: "07/23/2019"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "FILEPROPERTYEX_TSQL"
   - "FILEPROPERTYEX"
@@ -20,7 +22,7 @@ dev_langs:
   - "TSQL"
 ---
 # FILEPROPERTYEX (Transact-SQL)
-[!INCLUDE[Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/asdb-asdbmi.md)]
+[!INCLUDE[Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/asdb-asdbmi-fabricsqldb.md)]
 
   Returns the specified extended file property value when a file name in the current database and a property name are specified. Returns NULL for files that are not in the current database or for extended file properties that do not exist. Currently, extended file properties only apply to databases that are in Azure Blob storage.  
   
@@ -87,3 +89,4 @@ file_id  type_desc  name  BlobTier  AccountType  IsInferredTier  IsPageBlob
  [sys.master_files &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-master-files-transact-sql.md)  
   
   
+

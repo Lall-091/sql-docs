@@ -7,6 +7,8 @@ ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "SET"
   - "SET_TSQL"
@@ -21,11 +23,11 @@ helpviewer_keywords:
   - "locking [SQL Server], SET statements"
 dev_langs:
   - "TSQL"
-monikerRange: "=azure-sqldw-latest||=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=fabric"
+monikerRange: "=azure-sqldw-latest || =azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =fabric || =fabric-sqldb"
 ---
 # SET Statements (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
 The [!INCLUDE[tsql](../../includes/tsql-md.md)] programming language provides several SET statements that change the current session handling of specific information. The SET statements are grouped into the categories shown in the following table.  
   
@@ -85,3 +87,4 @@ For information about setting local variables with the SET statement, see [SET @
 
 - When SET RESULT_SET_CACHING is ON, it enables the result caching feature for the current client session.   Result_set_caching cannot be turned ON for a session if it is turned OFF at the database level.    When SET RESULT_SET_CACHING is OFF, the result set caching feature is disabled for the current client session. Changing this setting requires membership in the public role.
 Applies to: [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] Gen2
+

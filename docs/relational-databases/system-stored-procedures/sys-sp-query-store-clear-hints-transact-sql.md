@@ -7,6 +7,8 @@ ms.date: 07/25/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "sp_query_store_clear_hints_TSQL"
   - "sys.sp_query_store_clear_hints_TSQL"
@@ -17,11 +19,11 @@ helpviewer_keywords:
   - "sp_query_store_clear_hints"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-ver16 || >=sql-server-linux-ver16"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-ver16 || >=sql-server-linux-ver16 || =fabric-sqldb"
 ---
 # sp_query_store_clear_hints (Transact-SQL)
 
-[!INCLUDE [sqlserver2022-asdb-asmi](../../includes/applies-to-version/sqlserver2022-asdb-asmi.md)]
+[!INCLUDE [sqlserver2022-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricsqldb.md)]
 
 Removes all [Query Store hints](../performance/query-store-hints.md) for a given query ID.
 
@@ -94,3 +96,4 @@ WHERE query_id = 39;
 - [sys.query_store_query_hints (Transact-SQL)](../system-catalog-views/sys-query-store-query-hints-transact-sql.md)
 - [Query Store hints](../performance/query-store-hints.md)
 - [Monitor performance by using the Query Store](../performance/monitoring-performance-by-using-the-query-store.md)
+

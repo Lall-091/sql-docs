@@ -1,5 +1,5 @@
 ---
-title: "SQL database in Fabric (Preview)"
+title: "SQL database in Fabric"
 description: Learn about SQL database in Microsoft Fabric, based on Azure SQL Database, a developer-friendly operational database.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
@@ -7,9 +7,11 @@ ms.reviewer: antho, sukkaur
 ms.date: 10/17/2024
 ms.service: fabric
 ms.topic: conceptual
-monikerRange: "=azuresqldb-current||=fabric"
+ms.custom:
+  - ignite-2025
+monikerRange: "=azuresqldb-current || =fabric-sqldb"
 ---
-# SQL database in Microsoft Fabric (Preview)
+# SQL database in Fabric
 [!INCLUDE [asdb-fabricsqldb](../../includes/applies-to-version/asdb-fabricsqldb.md)]
 
 With [SQL database in Microsoft Fabric](/fabric/database/sql/overview), based on [Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview?view=azuresqldb-current&preserve-view=true), you can easily create your operational database in Fabric.
@@ -18,8 +20,8 @@ With [SQL database in Microsoft Fabric](/fabric/database/sql/overview), based on
 
 To learn more about SQL Database in Microsoft Fabric, see:
 
-- [Features comparison: Azure SQL Database and SQL database in Fabric (Preview)](/fabric/database/sql/feature-comparison-sql-database-fabric)
-- [FAQ for SQL database in Microsoft Fabric (Preview)](/fabric/database/sql/faq)
+- [Features comparison: Azure SQL Database and SQL database in Fabric](/fabric/database/sql/feature-comparison-sql-database-fabric)
+- [FAQ for SQL database in Fabric](/fabric/database/sql/faq)
 - [Microsoft Fabric decision guide: choose a SQL database](/fabric/database/sql/decision-guide)
 
 To get started, [create a SQL database in the Fabric portal](/fabric/database/sql/create) then [connect to your SQL database in Microsoft Fabric](/fabric/database/sql/connect).

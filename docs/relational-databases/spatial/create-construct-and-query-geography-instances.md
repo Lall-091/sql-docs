@@ -8,12 +8,12 @@ ms.date: 11/04/2024
 ms.service: sql
 ms.topic: conceptual
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "geography data type [SQL Server]"
   - "geodetic data type [SQL Server]"
   - "geography data type [SQL Server], about geography data type"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # Create, Construct, and Query geography instances
 

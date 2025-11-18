@@ -8,12 +8,14 @@ ms.date: 12/16/2024
 ms.service: sql
 ms.subservice: supportability
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "1205 (Database Engine error)"
 ---
 # MSSQLSERVER_1205
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 ## Details
 
@@ -46,3 +48,4 @@ You can also revise the application to avoid deadlocks. The transaction that was
 To prevent or avoid deadlocks from occurring, consider having all transactions access rows in the same order (`Table1`, then `Table2`). This way, although blocking might occur, a deadlock is avoided.
 
 For more information, see [Handling Deadlocks](../sql-server-deadlocks-guide.md?#handle-deadlocks) and [Minimizing Deadlocks](../sql-server-deadlocks-guide.md#minimize-deadlocks).
+

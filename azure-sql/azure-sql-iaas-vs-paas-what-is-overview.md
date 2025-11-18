@@ -8,6 +8,8 @@ ms.date: 08/07/2025
 ms.service: azure-sql
 ms.subservice: service-overview
 ms.topic: overview
+ms.custom:
+  - ignite-2025
 keywords:
   - SQL Server cloud
   - SQL Server in the cloud
@@ -181,7 +183,7 @@ You can also create a [SQL database in Microsoft Fabric](/sql/sql-server/fabric-
 
 With [SQL database in Fabric](/fabric/database/sql/overview), your data is automatically accessible from other Fabric experiences. SQL database in Microsoft Fabric, which uses the same SQL Database Engine as Microsoft SQL Server and is similar to Azure SQL Database, inherits most of the Fabric mirroring capabilities from Azure SQL Database. Your SQL database in Fabric is automatically mirrored to OneLake and presented in a read-only, queryable format. You can use all the different services in Fabric, such as running analytics with Spark, executing notebooks, data engineering, visualizing through Power BI Reports, and more.
 
-For more information, see [SQL database in Microsoft Fabric (Preview)](/sql/sql-server/fabric-database/sql-database-in-fabric).
+For more information, see [SQL database in Fabric](/sql/sql-server/fabric-database/sql-database-in-fabric).
 
 ## Related content
 

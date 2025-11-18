@@ -7,6 +7,8 @@ ms.date: "02/24/2023"
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "dm_db_log_stats_TSQL"
   - "sys.dm_db_log_stats"
@@ -16,10 +18,11 @@ helpviewer_keywords:
   - "sys.dm_db_log_stats dynamic management function"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-2017||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.dm_db_log_stats (Transact-SQL)   
-[!INCLUDE[tsql-appliesto-2016sp2-asdb-xxxx-xxx-md](../../includes/tsql-appliesto-2016sp2-asdb-asdbmi.md)]
+
+ [!INCLUDE [sqlserver2016sp2-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016sp2-asdb-asdbmi-fabricsqldb.md)]
 
 Returns summary level attributes and information on transaction log files of databases. Use this information for monitoring and diagnostics of transaction log health.   
   
@@ -43,25 +46,25 @@ The built-in function [DB_ID](../../t-sql/functions/db-id-transact-sql.md) can b
   
 |Column name|Data type|Description|  
 |-----------------|---------------|-----------------|  
-|database_id	|**int**	|Database ID. <br /><br />In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], the values are unique within a single database or an elastic pool, but not within a logical server.|  
-|recovery_model	|**nvarchar(60)**	|	Recovery model of the database. Possible values include: <br /> SIMPLE<br /> BULK_LOGGED <br /> FULL |  
-|log_min_lsn	|**nvarchar(24)**	|	Current start [log sequence number (LSN)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#Logical_Arch) in the transaction log.|  
-|log_end_lsn	|**nvarchar(24)**	|	[log sequence number (LSN)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#Logical_Arch) of the last log record in the transaction log.|  
-|current_vlf_sequence_number	|**bigint**	|	Current [virtual log file (VLF)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#physical_arch) sequence number at the time of execution.|  
-|current_vlf_size_mb	|**float**	|	Current [virtual log file (VLF)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#physical_arch) size in MB.|   
-|total_vlf_count	|**bigint**	|	Total number of [virtual log files (VLFs)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#physical_arch) in the transaction log. |  
-|total_log_size_mb	|**float**	|	Total transaction log size in MB. |  
-|active_vlf_count	|**bigint**	|	Total number of active [virtual log files (VLFs)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#physical_arch) in the transaction log.|  
-|active_log_size_mb	|**float**	|	Total active transaction log size in MB.|  
-|log_truncation_holdup_reason	|**nvarchar(60)**	|	Log truncation holdup reason. The value is same as  `log_reuse_wait_desc` column of `sys.databases`.  (For more detailed explanations of these values, see [The Transaction Log](../../relational-databases/logs/the-transaction-log-sql-server.md)). <br />Possible values include: <br />NOTHING<br />CHECKPOINT<br />LOG_BACKUP<br />ACTIVE_BACKUP_OR_RESTORE<br />ACTIVE_TRANSACTION<br />DATABASE_MIRRORING<br />REPLICATION<br />DATABASE_SNAPSHOT_CREATION<br />LOG_SCAN<br />AVAILABILITY_REPLICA<br />OLDEST_PAGE<br />XTP_CHECKPOINT<br />OTHER TRANSIENT |  
-|log_backup_time	|**datetime**	|	Last transaction log backup time.|   
-|log_backup_lsn	|**nvarchar(24)**	|	Last transaction log backup [log sequence number (LSN)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#Logical_Arch).|   
-|log_since_last_log_backup_mb	|**float**	|	Log size in MB since last transaction log backup [log sequence number (LSN)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#Logical_Arch).|  
-|log_checkpoint_lsn	|**nvarchar(24)**	|	Last checkpoint [log sequence number (LSN)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#Logical_Arch).|  
-|log_since_last_checkpoint_mb	|**float**	|	Log size in MB since last checkpoint [log sequence number (LSN)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#Logical_Arch).|  
-|log_recovery_lsn	|**nvarchar(24)**	|	Recovery [log sequence number (LSN)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#Logical_Arch) of the database. If `log_recovery_lsn` occurs before the checkpoint LSN, `log_recovery_lsn` is the oldest active transaction LSN, otherwise `log_recovery_lsn` is the checkpoint LSN.|  
-|log_recovery_size_mb	|**float**	|	Log size in MB since log recovery [log sequence number (LSN)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#Logical_Arch).|  
-|recovery_vlf_count	|**bigint**	|	Total number of [virtual log files (VLFs)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#physical_arch) to be recovered, if there was failover or server restart. |  
+|database_id |**int** |Database ID. <br /><br />In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], the values are unique within a single database or an elastic pool, but not within a logical server.|  
+|recovery_model |**nvarchar(60)** | Recovery model of the database. Possible values include: <br /> SIMPLE<br /> BULK_LOGGED <br /> FULL |  
+|log_min_lsn |**nvarchar(24)** | Current start [log sequence number (LSN)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#Logical_Arch) in the transaction log.|  
+|log_end_lsn |**nvarchar(24)** | [log sequence number (LSN)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#Logical_Arch) of the last log record in the transaction log.|  
+|current_vlf_sequence_number |**bigint** | Current [virtual log file (VLF)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#physical_arch) sequence number at the time of execution.|  
+|current_vlf_size_mb |**float** | Current [virtual log file (VLF)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#physical_arch) size in MB.|   
+|total_vlf_count |**bigint** | Total number of [virtual log files (VLFs)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#physical_arch) in the transaction log. |  
+|total_log_size_mb |**float** | Total transaction log size in MB. |  
+|active_vlf_count |**bigint** | Total number of active [virtual log files (VLFs)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#physical_arch) in the transaction log.|  
+|active_log_size_mb |**float** | Total active transaction log size in MB.|  
+|log_truncation_holdup_reason |**nvarchar(60)** | Log truncation holdup reason. The value is same as  `log_reuse_wait_desc` column of `sys.databases`.  (For more detailed explanations of these values, see [The Transaction Log](../../relational-databases/logs/the-transaction-log-sql-server.md)). <br />Possible values include: <br />NOTHING<br />CHECKPOINT<br />LOG_BACKUP<br />ACTIVE_BACKUP_OR_RESTORE<br />ACTIVE_TRANSACTION<br />DATABASE_MIRRORING<br />REPLICATION<br />DATABASE_SNAPSHOT_CREATION<br />LOG_SCAN<br />AVAILABILITY_REPLICA<br />OLDEST_PAGE<br />XTP_CHECKPOINT<br />OTHER TRANSIENT |  
+|log_backup_time |**datetime** | Last transaction log backup time.|   
+|log_backup_lsn |**nvarchar(24)** | Last transaction log backup [log sequence number (LSN)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#Logical_Arch).|   
+|log_since_last_log_backup_mb |**float** | Log size in MB since last transaction log backup [log sequence number (LSN)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#Logical_Arch).|  
+|log_checkpoint_lsn |**nvarchar(24)** | Last checkpoint [log sequence number (LSN)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#Logical_Arch).|  
+|log_since_last_checkpoint_mb |**float** | Log size in MB since last checkpoint [log sequence number (LSN)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#Logical_Arch).|  
+|log_recovery_lsn |**nvarchar(24)** | Recovery [log sequence number (LSN)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#Logical_Arch) of the database. If `log_recovery_lsn` occurs before the checkpoint LSN, `log_recovery_lsn` is the oldest active transaction LSN, otherwise `log_recovery_lsn` is the checkpoint LSN.|  
+|log_recovery_size_mb |**float** | Log size in MB since log recovery [log sequence number (LSN)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#Logical_Arch).|  
+|recovery_vlf_count |**bigint** | Total number of [virtual log files (VLFs)](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md#physical_arch) to be recovered, if there was failover or server restart. |  
 
 
 ## Remarks
@@ -101,3 +104,4 @@ CROSS APPLY sys.dm_db_log_stats(s.database_id);
 [sys.dm_db_log_space_usage &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-db-log-space-usage-transact-sql.md)   
 [sys.dm_db_log_info &#40;Transact-SQL&#41;](../../relational-databases/system-dynamic-management-views/sys-dm-db-log-info-transact-sql.md)    
   
+

@@ -9,6 +9,8 @@ ms.date: 09/25/2025
 ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: concept-article
+ms.custom:
+  - ignite-2025
 monikerRange: "=azuresql || =azuresql-db"
 ---
 # Backup immutability for long-term retention backups in Azure SQL Database
@@ -27,9 +29,6 @@ When immutability is enabled, the backups are written to [Azure immutable storag
 
 The Cohasset report is available in the [Microsoft Service Trust Center](https://aka.ms/AzureWormStorage). The [Azure Trust Center](https://www.microsoft.com/trust-center) contains detailed information about Microsoft's compliance certifications. To request a letter of attestation from Microsoft regarding WORM immutability compliance, contact [Azure Support](https://azure.microsoft.com/support/options/).
 
-> [!NOTE]
-> Long-term backup immutability is currently a preview feature.
-
 ## Time-based and legal hold immutability
 
 Azure SQL Database LTR backups support both **time based** and **legal hold** types of immutabilities.
@@ -39,8 +38,8 @@ Azure SQL Database LTR backups support both **time based** and **legal hold** ty
 **Legal hold immutability** is a type of immutability that can be enabled or disabled on a specific existing backup, independent of any existing time based immutability. Legal hold immutability is useful for scenarios such as auditing, legal purposes, etc. where data from specific backups must be held immutable for an unknown amount of time, typically until an audit or litigation is complete. Legal hold immutability can be enabled and disabled on a backup at any time.
 
 > [!TIP]
-> - For future backups, configure **time based immutability** at the policy level.
-> - For existing backups, configure **legal hold immutability**.
+> - For future backups, configure **time based immutability** at the policy level, a generally available feature.
+> - For existing backups, configure **legal hold immutability**, a preview feature.
 
 - It's possible to have both legal hold and time based immutability on a given backup.  
 - Any backup can't be deleted as long as there's an immutability property on it. Even if the configured LTR retention expires, the backup is held available and immutable until any/all immutabilities are removed.

@@ -8,6 +8,8 @@ ms.date: 01/02/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "@@CURSOR_ROWS"
   - "@@CURSOR_ROWS_TSQL"
@@ -21,7 +23,7 @@ dev_langs:
 ---
 # @@CURSOR_ROWS (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This function returns the number of qualifying rows currently in the last cursor opened on the connection. To improve performance, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] can populate large keyset and static cursors asynchronously. `@@CURSOR_ROWS` can be called to determine that the number of the rows that qualify for a cursor are retrieved at the time of the `@@CURSOR_ROWS` call.
 
@@ -94,3 +96,4 @@ Sánchez    -1                 NULL
 
 - [Cursor Functions (Transact-SQL)](cursor-functions-transact-sql.md)
 - [OPEN (Transact-SQL)](../language-elements/open-transact-sql.md)
+

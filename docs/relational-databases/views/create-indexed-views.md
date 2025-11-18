@@ -8,6 +8,8 @@ ms.date: 01/14/2025
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "indexed views [SQL Server], creating"
   - "clustered indexes, views"
@@ -15,11 +17,11 @@ helpviewer_keywords:
   - "large_value_types_out_of_row option"
   - "indexed views [SQL Server]"
   - "views [SQL Server], indexed views"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Create indexed views
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 This article describes how to create indexes on a view. The first index created on a view must be a unique clustered index. After the unique clustered index has been created, you can create more nonclustered indexes. Creating a unique clustered index on a view improves query performance, because the view is stored in the database in the same way a table with a clustered index is stored. The query optimizer can use indexed views to speed up the query execution. The view doesn't have to be referenced in the query for the optimizer to consider that view for a substitution.
 
@@ -282,3 +284,4 @@ For more information, see [CREATE VIEW](../../t-sql/statements/create-view-trans
 - [SET CONCAT_NULL_YIELDS_NULL (Transact-SQL)](../../t-sql/statements/set-concat-null-yields-null-transact-sql.md)
 - [SET NUMERIC_ROUNDABORT (Transact-SQL)](../../t-sql/statements/set-numeric-roundabort-transact-sql.md)
 - [SET QUOTED_IDENTIFIER (Transact-SQL)](../../t-sql/statements/set-quoted-identifier-transact-sql.md)
+

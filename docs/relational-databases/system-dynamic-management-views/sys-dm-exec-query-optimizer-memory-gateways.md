@@ -8,6 +8,8 @@ ms.date: 12/03/2024
 ms.service: sql
 ms.subservice: performance
 ms.topic: "reference"
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "dm_exec_query_optimizer_memory_gateways_TSQL"
   - "dm_exec_query_optimizer_memory_gateways"
@@ -17,11 +19,11 @@ helpviewer_keywords:
   - "sys.dm_exec_query_optimizer_memory_gateways dynamic management view"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.dm_exec_query_optimizer_memory_gateways (Transact-SQL)
 
-[!INCLUDE [sqlserver2016-asdb-asdbmi](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi.md)]
+[!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
 
 Returns the current status of resource semaphores used to reduce concurrent query optimization.
 
@@ -73,3 +75,4 @@ FROM sys.dm_exec_query_optimizer_memory_gateways;
 - [Execution Related Dynamic Management Views and Functions (Transact-SQL)](execution-related-dynamic-management-views-and-functions-transact-sql.md)
 - [How to use the DBCC MEMORYSTATUS command to monitor memory usage on SQL Server 2005](/troubleshoot/sql/database-engine/performance/dbcc-memorystatus-monitor-memory-usage)
 - [Large query compilation waits on RESOURCE_SEMAPHORE_QUERY_COMPILE in SQL Server 2014](https://support.microsoft.com/help/3024815/large-query-compilation-waits-on-resource-semaphore-query-compile-in-sql-server-2014)
+

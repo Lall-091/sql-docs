@@ -8,6 +8,8 @@ ms.date: "06/09/2017"
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "denying permissions [SQL Server], XML schema collections"
   - "XML schema collections [SQL Server], permissions"
@@ -17,7 +19,7 @@ dev_langs:
   - "TSQL"
 ---
 # DENY XML Schema Collection Permissions (Transact-SQL)
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   Denies permissions on an XML schema collection.  
   
@@ -120,3 +122,4 @@ GO
  [Principals &#40;Database Engine&#41;](../../relational-databases/security/authentication-access/principals-database-engine.md)  
   
   
+

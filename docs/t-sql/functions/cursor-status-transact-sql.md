@@ -8,6 +8,8 @@ ms.date: 06/05/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "CURSOR_STATUS"
   - "CURSOR_STATUS_TSQL"
@@ -20,7 +22,7 @@ dev_langs:
 ---
 # CURSOR_STATUS (Transact-SQL)
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 For a given parameter, `CURSOR_STATUS` shows whether or not a cursor declaration has returned a cursor and result set.
 
@@ -128,3 +130,4 @@ After Close
 
 - [Cursor Functions (Transact-SQL)](cursor-functions-transact-sql.md)
 - [Data types (Transact-SQL)](../data-types/data-types-transact-sql.md)
+

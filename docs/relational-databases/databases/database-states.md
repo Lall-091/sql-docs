@@ -9,7 +9,7 @@ ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
 ms.custom:
-  - ignite-2024
+  - ignite-2025
 f1_keywords:
   - "SQL13.SWB.DATABASESTATES.F1"
 helpviewer_keywords:
@@ -26,7 +26,7 @@ helpviewer_keywords:
   - "online database state"
   - "states [SQL Server]"
   - "restoring database state [SQL Server]"
-monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # Database states
 

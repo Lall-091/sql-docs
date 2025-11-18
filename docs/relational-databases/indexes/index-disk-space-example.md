@@ -8,6 +8,8 @@ ms.date: 09/22/2025
 ms.service: sql
 ms.subservice: table-view-index
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "online index disk space"
   - "disk space [SQL Server], indexes"
@@ -18,7 +20,7 @@ helpviewer_keywords:
 ---
 # Index disk space example
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 Whenever an index is created, rebuilt, or dropped, disk space for both the old (source) and new (target) structures is required in their appropriate files and filegroups. The old structure isn't deallocated until the index creation transaction commits. Additional temporary disk space for sorting operations might also be needed. For more information, see [Disk space requirements for index DDL operations](disk-space-requirements-for-index-ddl-operations.md).
 
@@ -114,3 +116,4 @@ This example doesn't consider any additional temporary disk space required in `t
 
 - [Disk space requirements for index DDL operations](disk-space-requirements-for-index-ddl-operations.md)
 - [Transaction log disk space for index operations](transaction-log-disk-space-for-index-operations.md)
+

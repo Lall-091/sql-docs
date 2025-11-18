@@ -9,8 +9,7 @@ ms.service: sql
 ms.subservice: t-sql
 ms.topic: "reference"
 ms.custom:
-  - build-2024
-  - ignite-2024
+  - ignite-2025
 helpviewer_keywords:
   - "precedence [SQL Server]"
   - "data types [SQL Server], converting"
@@ -19,7 +18,7 @@ helpviewer_keywords:
   - "precedence [SQL Server], data types"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqledge-current || =azure-sqldw-latest || =fabric"
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqledge-current || =azure-sqldw-latest || =fabric || =fabric-sqldb"
 ---
 # Data type precedence (Transact-SQL)
 

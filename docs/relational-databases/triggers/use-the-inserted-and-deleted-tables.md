@@ -6,6 +6,8 @@ ms.author: mikeray
 ms.date: 12/10/2021
 ms.service: sql
 ms.topic: language-reference
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "inserted tables"
   - "UPDATE statement [SQL Server], DML triggers"
@@ -14,12 +16,12 @@ helpviewer_keywords:
   - "deleted tables"
   - "INSERT statement [SQL Server], DML triggers"
   - "DML triggers, deleted or inserted tables"
-monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # Use the inserted and deleted tables
 
-[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
   DML trigger statements use two special tables: the *deleted* and *inserted* tables. [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] automatically creates and manages these tables. You can use these temporary, memory-resident tables to test the effects of certain data modifications and to set conditions for DML trigger actions. You cannot directly modify the data in the tables or perform data definition language (DDL) operations on the tables, such as CREATE INDEX.  
 
@@ -102,3 +104,4 @@ Because the inserted and deleted tables are virtual, memory-resident tables, pro
 ## Next steps
 
 For more information, see the overview of [DML Triggers](dml-triggers.md).
+

@@ -8,6 +8,8 @@ ms.date: 06/07/2024
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
+ms.custom:
+  - ignite-2025
 f1_keywords:
   - "NOCOUNT"
   - "SET_NOCOUNT_TSQL"
@@ -21,11 +23,11 @@ helpviewer_keywords:
   - "SET NOCOUNT statement"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # SET NOCOUNT (Transact-SQL)
 
-[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricdw](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricdw.md)]
+[!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricdw-fabricsqldb.md)]
 
 Controls whether a message that shows the number of rows affected by a [!INCLUDE [tsql](../../includes/tsql-md.md)] statement or stored procedure is returned after the result set. This message is an extra result set.
 
@@ -97,3 +99,4 @@ GO
 
 - [@@ROWCOUNT (Transact-SQL)](../functions/rowcount-transact-sql.md)
 - [SET Statements (Transact-SQL)](set-statements-transact-sql.md)
+

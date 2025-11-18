@@ -8,6 +8,8 @@ ms.date: 05/05/2022
 ms.service: sql
 ms.subservice: xml
 ms.topic: how-to
+ms.custom:
+  - ignite-2025
 helpviewer_keywords:
   - "FOR XML clause, nested FOR XML queries"
   - "queries [XML in SQL Server], ASP.NET and"
@@ -16,7 +18,7 @@ helpviewer_keywords:
 ---
 # Use nested FOR XML queries in ASP.NET
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [SQL Server Azure SQL Database FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
 In this example, an ASP.NET application returns XML to a browser by executing a stored procedure in SQL Server. The stored procedure generates XML using nested queries. A similar SELECT statement is shown in the article [Generating Siblings by Using a Nested AUTO Mode Query](../../relational-databases/xml/generate-siblings-with-a-nested-auto-mode-query.md). This example demonstrates one way to use nested FOR XML queries to generate element-centric XML in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
 
@@ -90,3 +92,4 @@ using(System.Data.SqlClient.SqlCommand cmd = c.CreateCommand())
 ## See also
 
 - [Use Nested FOR XML Queries](../../relational-databases/xml/use-nested-for-xml-queries.md)
+
