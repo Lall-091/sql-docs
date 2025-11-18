@@ -23,18 +23,24 @@ helpviewer_keywords:
   - "DISKANN"
 dev_langs:
   - TSQL
-monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17"
+monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =fabric-sqldb"
 ---
 
-# CREATE VECTOR INDEX (Transact-SQL)
+# CREATE VECTOR INDEX (Transact-SQL) (Preview)
 
-[!INCLUDE [sqlserver2025](../../includes/applies-to-version/sqlserver2025.md)]
+[!INCLUDE [sqlserver2025-asdb-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-fabricsqldb.md)]
 
 Create an approximate index on a vector column to improve performances of nearest neighbors search. To learn more about how vector indexing and vector search works, and the differences between exact and approximate search, refer to [Vector search and vector indexes in the SQL Database Engine](../../sql-server/ai/vectors.md).
 
-## Preview feature
+## Azure SQL Database and SQL database in Fabric
 
-This function is in preview and is subject to change. In order to use this feature, you must enable the `PREVIEW_FEATURES` [database scoped configuration](alter-database-scoped-configuration-transact-sql.md).
+The feature is in preview. Make sure to check out the [current limitations](#limitations) before using it.
+
+[!INCLUDE [preview-note](../../includes/preview.md)]
+
+## SQL Server 2025 Preview feature
+
+In SQL Server 2025 this function is in preview and is subject to change. In order to use this feature, you must enable the `PREVIEW_FEATURES` [database scoped configuration](alter-database-scoped-configuration-transact-sql.md).
 
 Make sure to check out the [current limitations](#limitations) before using it.
 
