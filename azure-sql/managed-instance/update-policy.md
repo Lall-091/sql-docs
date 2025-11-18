@@ -119,7 +119,7 @@ To change the update policy for an existing instance in the Azure portal, follow
 
    :::image type="content" source="media/update-policy/update-policy-existing-instance.md.png" alt-text="Screenshot of the SQL Managed Instance page in the Azure portal, with update policy selected.":::
 
-1. Select **Yes** on the **Confirm update policy change** popup to save your changes. Once the **Always-up-to-date** update policy is enabled, the **SQL Server 2022** update policy is no longer available
+1. Select **Yes** on the **Confirm update policy change** popup to save your changes. Once the **Always-up-to-date** update policy is enabled, the **SQL Server 2022** update policy is no longer available.
 
 ### [PowerShell](#tab/powershell)
 
