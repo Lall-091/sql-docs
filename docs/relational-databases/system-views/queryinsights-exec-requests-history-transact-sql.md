@@ -4,7 +4,7 @@ description: "The queryinsights.exec_requests_history in Microsoft Fabric provid
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mariyaali, randolphwest, emtehran
-ms.date: 11/05/2025
+ms.date: 11/12/2025
 ms.service: sql
 ms.topic: "reference"
 ms.custom:
@@ -24,7 +24,7 @@ monikerRange: "=fabric"
 
 [!INCLUDE [Fabric SE DW](../../includes/applies-to-version/fabric-se-dw.md)]
 
-The `queryinsights.exec_requests_history` in [!INCLUDE [fabric](../../includes/fabric.md)] provides information about each completed SQL request.
+The `queryinsights.exec_requests_history` in [!INCLUDE [fabric](../../includes/fabric.md)] Data Warehouse provides information about each completed SQL request.
 
 | Column name | Data type | Description |
 | --- | --- | --- |
