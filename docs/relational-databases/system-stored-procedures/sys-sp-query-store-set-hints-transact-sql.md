@@ -3,7 +3,7 @@ title: "sys.sp_query_store_set_hints (Transact-SQL)"
 description: "Creates or updates Query Store hints for a given query, allowing you to influence queries without changing application code or database objects."
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/25/2025
+ms.date: 11/17/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: reference
@@ -59,7 +59,7 @@ For more information, see [Supported query hints](#supported-query-hints).
 
 #### [ @replica_group_id = ] '*replica_group_id*'
 
-This optional parameter determines the scope at which the hint is applied on a secondary replica when [Query Store for readable secondaries](../performance/query-store-for-secondary-replicas.md) is enabled. *@replica_group_id* is **bigint**.
+This optional parameter determines the scope at which the hint is applied on a secondary replica when [Query Store for readable secondaries](../performance/query-store-for-secondary-replicas.md) is enabled. *@replica_group_id* is **bigint**. Query Store for secondary replicas is supported starting in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, and in Azure SQL Database. For complete platform support, see [Query Store for secondary replicas](../performance/query-store-for-secondary-replicas.md).
 
 The *@replica_group_id* argument defaults to the local replica (primary or secondary), but you can optionally specify a value matching a value in the `replica_group_id` column in [sys.query_store_replicas](../system-catalog-views/sys-query-store-replicas.md) to set a hint for a different replica group.
 

@@ -63,7 +63,7 @@ Only verified feedback is persisted. If the adjusted DOP results in a performanc
 
 Stable feedback is reverified upon plan recompilation and might readjust up or down, but never higher than the MAXDOP setting (including a MAXDOP hint).
 
-Starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], when Query Store for secondary replicas is enabled, DOP feedback is also replica-aware for secondary replicas in availability groups. DOP feedback can apply feedback differently on a primary replica and on a secondary replica. However, DOP feedback is not persisted on secondary replicas, and on failover, the DOP feedback from the old primary replica is not applied to the new primary replica. On failover, feedback applied to primary or secondary replicas is lost. For more information, see [Query Store for secondary replicas](query-store-for-secondary-replicas.md).
+Starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], when Query Store for secondary replicas is enabled, DOP feedback is also replica-aware for secondary replicas in availability groups. DOP feedback can apply feedback differently on a primary replica and on a secondary replica. However, DOP feedback is not persisted on secondary replicas, and on failover, the DOP feedback from the old primary replica is not applied to the new primary replica. On failover, feedback applied to primary or secondary replicas is lost. The Query Store is available on secondary availability group replicas starting in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. For more information, see [Query Store for secondary replicas](query-store-for-secondary-replicas.md).
 
 ### Degree of parallelism (DOP) feedback implementation
 

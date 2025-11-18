@@ -134,7 +134,7 @@ If a query has a query plan forced through Query Store, CE feedback isn't used f
 
 If a query uses hard-coded query hints or is using Query Store hints set by the user, CE feedback isn't used for that query. For more information, see [Query hints](../../t-sql/queries/hints-transact-sql-query.md) and [Query Store hint](query-store-hints.md).
 
-Starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], when Query Store for secondary replicas is enabled, CE feedback isn't replica-aware for secondary replicas in availability groups. CE feedback currently only benefits primary replicas. On failover, feedback applied to primary or secondary replicas is lost. For more information, see [Query Store for secondary replicas](query-store-for-secondary-replicas.md).
+Starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], when Query Store for secondary replicas is enabled, CE feedback isn't replica-aware for secondary replicas in availability groups. CE feedback currently only benefits primary replicas. On failover, feedback applied to primary or secondary replicas is lost. The Query Store is available on secondary availability group replicas starting in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. For more information, see [Query Store for secondary replicas](query-store-for-secondary-replicas.md).
 
 ## Persistence for cardinality estimation (CE) feedback
 

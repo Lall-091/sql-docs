@@ -74,7 +74,7 @@ Windows Server 2022 was released with VCRuntime version 14.28.29914.
 
 ### Query Store for secondary replicas
 
-[Query Store for readable secondaries](../relational-databases/performance/query-store-for-secondary-replicas.md) is available for preview. It isn't available for use in production environments.
+[Query Store for readable secondaries](../relational-databases/performance/query-store-for-secondary-replicas.md) a preview feature. In SQL Server 2022, Query Store for readable secondaries isn't supported for use in production environments.
 
 ### Known issues with Parameter Sensitive Plan optimization
 

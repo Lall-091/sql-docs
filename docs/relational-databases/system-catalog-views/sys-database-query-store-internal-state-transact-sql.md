@@ -3,7 +3,7 @@ title: "sys.database_query_store_internal_state (Transact-SQL)"
 description: "sys.database_query_store_internal_state contains information about queue length and memory usage for the Query Store when Query Store for secondary replicas is enabled."
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 09/19/2022
+ms.date: 11/17/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -17,18 +17,20 @@ helpviewer_keywords:
   - "sys.database_query_store_internal_state catalog view"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-ver16||>=sql-server-linux-ver16||=azuresqldb-mi-current"
+monikerRange: ">=sql-server-ver16||>=sql-server-linux-ver16||=azuresqldb-current"
 ---
 # sys.database_query_store_internal_state (Transact-SQL)
 
-[!INCLUDE [sqlserver2022-asmi](../../includes/applies-to-version/sqlserver2022-asmi.md)]
+[!INCLUDE [sqlserver2025-asdb](../../includes/applies-to-version/sqlserver2025-asdb.md)]
 
-Contains information about queue length and memory usage for the Query Store when [Query Store for secondary replicas](../performance/query-store-for-secondary-replicas.md) is enabled.
+Contains information about queue length and memory usage for the Query Store when the Query Store for secondary replicas is enabled. 
+
+Query Store for secondary replicas is supported starting in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, and in Azure SQL Database. For complete platform support, see [Query Store for secondary replicas](../performance/query-store-for-secondary-replicas.md).
 
 |Column name|Data type|Description|
 |-----------------|---------------|-----------------|
-|**pending_message_count**|**bigint**|The number of messages waiting in the queue on the primary for the replica where the system view is being viewed from. Not nullable. |
-|**messaging_memory_used_mb**|**bigint**|The amount of memory in total taken up by the messages in the queue. Not nullable.|
+|`pending_message_count`|**bigint**|The number of messages waiting in the queue on the primary for the replica where the system view is being viewed from. Not nullable. |
+|`messaging_memory_used_mb`|**bigint**|The amount of memory in total taken up by the messages in the queue. Not nullable.|
 
 ## Permissions
 

@@ -3,7 +3,7 @@ title: "sys.query_store_plan_forcing_locations (Transact-SQL)"
 description: "The sys.query_store_plan_forcing_locations system view contains information about where Query Store plans have been forced on secondary replicas."
 author: MikeRayMSFT
 ms.author: mikeray
-ms.date: 10/14/2022
+ms.date: 11/17/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -17,20 +17,22 @@ helpviewer_keywords:
   - "sys.query_store_plan_forcing_locations catalog view"
 dev_langs:
   - "TSQL"
-monikerRange: ">=sql-server-ver16||>=sql-server-linux-ver16||=azuresqldb-mi-current"
+monikerRange: ">=sql-server-ver16||>=sql-server-linux-ver16||=azuresqldb-current"
 ---
 # sys.query_store_plan_forcing_locations (Transact-SQL)
 
-[!INCLUDE [sqlserver2022-asmi](../../includes/applies-to-version/sqlserver2022-asmi.md)]
+[!INCLUDE [sqlserver2025-asdb](../../includes/applies-to-version/sqlserver2025-asdb.md)]
 
-Contains information about Query Store plans that have been forced on secondary replicas using [sp_query_store_force_plan](../system-stored-procedures/sp-query-store-force-plan-transact-sql.md), when [Query Store for secondary replicas](../performance/query-store-for-secondary-replicas.md) is enabled. You can use this information to determine what queries have plans forced on different replica sets.
+Contains information about Query Store plans that have been forced on secondary replicas using [sp_query_store_force_plan](../system-stored-procedures/sp-query-store-force-plan-transact-sql.md), when Query Store for secondary replicas is enabled. You can use this information to determine what queries have plans forced on different replica sets.
+
+Query Store for secondary replicas is supported starting in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, and in Azure SQL Database. For complete platform support, see [Query Store for secondary replicas](../performance/query-store-for-secondary-replicas.md).
 
 |Column name|Data type|Description|
 |-----------------|---------------|-----------------|
-|**plan_forcing_location_id**|**bigint** |System-assigned ID for this plan forcing location. |
-|**query_id**|**bigint**|References `query_id` in [sys.query_store_query](../../relational-databases/system-catalog-views/sys-query-store-query-transact-sql.md) | 
-|**plan_id** |**bigint**|References `plan_id` in [sys.query_store_plan](../../relational-databases/system-catalog-views/sys-query-store-plan-transact-sql.md) |
-|**replica_group_id**  |**bigint** | From the parameter `force_plan_scope` in [sp_query_store_force_plan (Transact-SQL)](../system-stored-procedures/sp-query-store-force-plan-transact-sql.md). References `replica_group_id` in [sys.query_store_replicas](sys-query-store-replicas.md) |
+|`plan_forcing_location_id` |**bigint** |System-assigned ID for this plan forcing location. |
+|`query_id` |**bigint**|References `query_id` in [sys.query_store_query](../../relational-databases/system-catalog-views/sys-query-store-query-transact-sql.md) | 
+|`plan_id` |**bigint**|References `plan_id` in [sys.query_store_plan](../../relational-databases/system-catalog-views/sys-query-store-plan-transact-sql.md) |
+|`replica_group_id` |**bigint** | From the parameter `force_plan_scope` in [sp_query_store_force_plan (Transact-SQL)](../system-stored-procedures/sp-query-store-force-plan-transact-sql.md). References `replica_group_id` in [sys.query_store_replicas](sys-query-store-replicas.md) |
 
 ## Permissions
 
@@ -50,7 +52,7 @@ FROM sys.query_store_plan AS qsp
 WHERE qsr.replica_name = 'yourSecondaryReplicaName';
 ```
 
-## Next steps 
+## Related content
 
 - [sys.query_store_replicas (Transact-SQL)](sys-query-store-replicas.md)
 - [sys.sp_query_store_force_plan (Transact-SQL)](../system-stored-procedures/sp-query-store-force-plan-transact-sql.md)

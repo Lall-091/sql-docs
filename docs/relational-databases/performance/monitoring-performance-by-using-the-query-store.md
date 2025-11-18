@@ -131,11 +131,11 @@ ON Pln.plan_id = RtSt.plan_id;
 
 ## Query Store for secondary replicas
 
-**Applies to:** [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE [sql-server-2022](../../includes/sssql22-md.md)])
+**Applies to:** [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)], Azure SQL Database
 
 The Query Store for secondary replicas feature enables the same Query Store functionality on secondary replica workloads that is available for primary replicas. When Query Store for secondary replicas is enabled, replicas send the query execution information that would normally be stored in the Query Store back to the primary replica. The primary replica then persists the data to disk within its own Query Store. In essence, there's one Query Store shared between the primary and all secondary replicas. The Query Store exists on the primary replica and stores data for all replicas together.
 
-For complete information on Query Store for secondary replicas, see [Query Store for readable secondaries](query-store-for-secondary-replicas.md).
+For more information, see [Query Store for secondary replicas](query-store-for-secondary-replicas.md).
 
 <a id="Regressed"></a>
 

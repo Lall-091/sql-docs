@@ -4,7 +4,7 @@ description: "The sys.fn_get_audit_file system function returns information from
 author: sravanisaluru
 ms.author: srsaluru
 ms.reviewer: wiassaf, randolphwest
-ms.date: 10/27/2025
+ms.date: 11/17/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -20,7 +20,7 @@ helpviewer_keywords:
   - "fn_get_audit_file function"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azure-sqldw-latest || =fabric-sqldb"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =azure-sqldw-latest || =fabric ||=fabric-sqldb"
 ---
 # sys.fn_get_audit_file (Transact-SQL)
 
@@ -28,10 +28,22 @@ monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-20
 
 Returns information from an audit file created by a server audit in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. For more information, see [SQL Server Audit (Database Engine)](../security/auditing/sql-server-audit-database-engine.md).
 
-::: moniker range="=azuresqldb-current || =fabric || = fabric-sqldb"
+::: moniker range="=azuresqldb-current"
 
-> [!NOTE]  
-> Consider using [sys.fn_get_audit_file_v2](sys-fn-get-audit-file-v2-transact-sql.md) instead. `sys.fn_get_audit_file_v2` introduces time-based filtering at both the file and record levels, providing significant performance improvements, particularly for queries targeting specific time ranges.
+> [!TIP]
+> Consider using [sys.fn_get_audit_file_v2](sys-fn-get-audit-file-v2-transact-sql.md) instead. The `sys.fn_get_audit_file_v2` function introduces time-based filtering at both the file and record levels, providing significant performance improvements, particularly for queries targeting specific time ranges.
+
+::: moniker-end
+::: moniker range="=fabric"
+
+> [!TIP]
+> For Fabric Data Warehouse, `sys.fn_get_audit_file` is supported but [sys.fn_get_audit_file_v2 (Transact-SQL)](sys-fn-get-audit-file-v2-transact-sql.md) is recommended. The `sys.fn_get_audit_file_v2` function introduces time-based filtering at both the file and record levels, providing significant performance improvements, particularly for queries targeting specific time ranges. For more information and examples, see [Configure Auditing in Fabric Data Warehouse](/fabric/data-warehouse/configure-sql-audit-logs).
+
+::: moniker-end
+::: moniker range="= fabric-sqldb"
+
+> [!TIP]
+> For SQL database in Fabric, `sys.fn_get_audit_file` is supported but [sys.fn_get_audit_file_v2 (Transact-SQL)](sys-fn-get-audit-file-v2-transact-sql.md) is recommended. The `sys.fn_get_audit_file_v2` function introduces time-based filtering at both the file and record levels, providing significant performance improvements, particularly for queries targeting specific time ranges. For more information and examples, see [Configure Auditing in Fabric SQL database](/fabric/database/sql/auditing).
 
 ::: moniker-end
 
@@ -70,6 +82,12 @@ This argument is used to specify a blob URL (including the storage endpoint and 
 - `<Storage_endpoint>/<Container>/<ServerName>/<DatabaseName>/` - collects all audit files (blobs) for the specific database.
 
 - `<Storage_endpoint>/<Container>/<ServerName>/<DatabaseName>/<AuditName>/<CreationDate>/<FileName>.xel` - collects a specific audit file (blob).
+
+## [Fabric](#tab/fabric)
+
+This argument is used to specify a blob URL (including the storage endpoint and container in Fabric OneLake). While it doesn't support an asterisk wildcard, you can use a partial file (blob) name prefix (instead of the full blob name) to collect multiple files (blobs) that begin with this prefix. For example:
+
+- `https://onelake.blob.fabric.microsoft.com/<fabric workspace id>/<item id>/Audit/sqldbauditlogs/` 
 
 ---
 
@@ -165,6 +183,21 @@ Requires the `CONTROL DATABASE` permission.
 
 - Blobs that don't meet the above criteria are skipped (a list of skipped blobs is displayed in the query output message). The function returns logs only from blobs for which access is allowed.
 
+## [Fabric](#tab/fabric)
+
+### Permissions required in Fabric SQL database
+
+To manage auditing using Fabric workspace roles, users must have membership in the Fabric workspace **Contributor** role or higher permissions. 
+To manage auditing with SQL permissions:
+ - To configure the database audit, users must have ALTER ANY DATABASE AUDIT permission.
+ - To view audit logs using T-SQL, users must have the VIEW DATABASE SECURITY AUDIT permission.
+
+For more information, see [Auditing in Fabric SQL database](/fabric/database/sql/auditing).
+
+### Permissions required in Fabric Data Warehouse
+
+Users must have the Fabric item `Audit` permission. For more information, see [Permissions](/fabric/data-warehouse/sql-audit-logs#permissions).
+
 ---
 
 ## Examples
@@ -214,6 +247,15 @@ GO
 ```
 
 For information on setting up Azure SQL Database auditing, see [Get Started with SQL Database auditing](/azure/sql-database/sql-database-auditing).
+
+## [Fabric](#tab/fabric)
+
+For Fabric Data Warehouse and SQL database in Fabric, `sys.fn_get_audit_file` is supported but [sys.fn_get_audit_file_v2 (Transact-SQL)](sys-fn-get-audit-file-v2-transact-sql.md) is recommended. 
+
+For more information and examples, see:
+
+- [Configure Auditing in Fabric SQL database](/fabric/database/sql/auditing)
+- [Configure Auditing in Fabric Data Warehouse](/fabric/data-warehouse/configure-sql-audit-logs)
 
 ---
 

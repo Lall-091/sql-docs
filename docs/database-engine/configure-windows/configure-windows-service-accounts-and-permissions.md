@@ -24,7 +24,7 @@ Most services and their properties can be configured by using SQL Server Configu
 
 | SQL Server version | Path |
 | --- | --- |
-| [!INCLUDE [sssql25-md](../../includes/sssql22-md.md)] | `C:\Windows\SysWOW64\SQLServerManager17.msc` |
+| [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] | `C:\Windows\SysWOW64\SQLServerManager17.msc` |
 | [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] | `C:\Windows\SysWOW64\SQLServerManager16.msc` |
 | [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] | `C:\Windows\SysWOW64\SQLServerManager15.msc` |
 | [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] | `C:\Windows\SysWOW64\SQLServerManager14.msc` |

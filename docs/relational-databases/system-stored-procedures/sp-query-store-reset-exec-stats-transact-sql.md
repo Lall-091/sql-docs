@@ -4,7 +4,7 @@ description: "Clears the runtime stats for a specific query plan from the Query 
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 11/17/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -26,7 +26,7 @@ monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-20
 
 [!INCLUDE [sqlserver2016-asdb-asdbmi-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-fabricsqldb.md)]
 
-Clears the runtime stats for a specific query plan from the Query Store. If you [enable Query Store for secondary replicas](../performance/query-store-for-secondary-replicas.md), `sp_query_store_reset_exec_stats` can only be executed against the primary replica. The procedure's scope applies to the entire replica set.
+Clears the runtime stats for a specific query plan from the Query Store. 
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
@@ -52,6 +52,10 @@ The ID of the query plan to be cleared. *@plan_id* is **bigint**, with no defaul
 ## Permissions
 
 Requires the ALTER permission on the database.
+
+## Remarks
+
+If you [enable Query Store for secondary replicas](../performance/query-store-for-secondary-replicas.md), `sp_query_store_reset_exec_stats` can only be executed against the primary replica. The procedure's scope applies to the entire replica set. Query Store for secondary replicas is supported starting in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, and in Azure SQL Database. For complete platform support, see [Query Store for secondary replicas](../performance/query-store-for-secondary-replicas.md).
 
 ## Examples
 

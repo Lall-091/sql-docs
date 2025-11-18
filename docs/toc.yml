@@ -11556,6 +11556,8 @@ items:
         href: relational-databases/system-views/queryinsights-frequently-run-queries-transact-sql.md
       - name: queryinsights.long_running_queries
         href: relational-databases/system-views/queryinsights-long-running-queries-transact-sql.md
+      - name: queryinsights.sql_pool_insights
+        href: relational-databases/system-views/queryinsights-sql-pool-insights-transact-sql.md
     - name: Object
       href: relational-databases/system-catalog-views/object-catalog-views-transact-sql.md
       items:

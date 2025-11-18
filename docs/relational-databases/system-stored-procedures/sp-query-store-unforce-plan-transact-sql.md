@@ -64,6 +64,10 @@ You can unforce plans on a secondary replica when [Query Store for readable seco
 
 Requires the `ALTER` permission on the database.
 
+## Remarks
+
+Query Store for secondary replicas is supported starting in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, and in Azure SQL Database. For complete platform support, see [Query Store for secondary replicas](../performance/query-store-for-secondary-replicas.md).
+
 ## Examples
 
 The following example returns information about the queries in the Query Store.

@@ -49,7 +49,9 @@ You should have access to a [[!INCLUDE [fabric-se](../../includes/fabric-se.md)]
 
 ## Related content
 
-- [Monitoring connections, sessions, and requests using DMVs in Microsoft Fabric](/fabric/data-warehouse/monitor-using-dmv)
+- [Query insights in Fabric data warehousing](/fabric/data-warehouse/query-insights)
+- [Monitor connections, sessions, and requests using DMVs](/fabric/data-warehouse/monitor-using-dmv)
 - [queryinsights.exec_sessions_history (Transact-SQL)](queryinsights-exec-sessions-history-transact-sql.md)
-- [queryinsights.long_running_queries (Transact-SQL)](queryinsights-long-running-queries-transact-sql.md)
 - [queryinsights.exec_requests_history (Transact-SQL)](queryinsights-exec-requests-history-transact-sql.md)
+- [queryinsights.long_running_queries (Transact-SQL)](queryinsights-long-running-queries-transact-sql.md)
+- [queryinsights.sql_pool_insights (Transact-SQL)](queryinsights-sql-pool-insights-transact-sql.md)

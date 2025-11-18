@@ -131,8 +131,11 @@ When hints are applied, the following result set appears in the `StmtSimple` ele
 
 Query Store hints have no effect on secondary replicas unless Query Store for secondary replicas is enabled. For more information, see [Query Store for readable secondaries](query-store-for-secondary-replicas.md).
 
-- In [!INCLUDE [sssql19-md](../../includes/sssql22-md.md)] and earlier versions, Query Store hints can be applied on the primary replica only.
-- In [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, when Query Store for secondary replicas is enabled, Query Store hints can be applied on secondary replicas in availability groups.
+- In [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions, Query Store hints can be applied on the primary replica only.
+- In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, when Query Store for secondary replicas is enabled, Query Store hints can be applied on secondary replicas in availability groups. For complete platform support, see [Query Store for readable secondaries](query-store-for-secondary-replicas.md).
+
+Where the Query Store is supported on secondary replicas:
+
 - You can add a Query Store hint to be in effect only on a specific replica group when you have Query Store for secondary replicas enabled. To do this, use the `@replica_group_id` parameter when calling [sys.sp_query_store_set_query_hints](../system-stored-procedures/sys-sp-query-store-set-hints-transact-sql.md). Conversely, you can remove a Query Store hint from a specific replica group using [sys.sp_query_store_clear_query_hints](../system-stored-procedures/sys-sp-query-store-clear-hints-transact-sql.md).
 - Find the available replica groups by querying [sys.query_store_replicas](../system-catalog-views/sys-query-store-replicas.md).
 - Find plans forced on secondary replicas with [sys.query_store_plan_forcing_locations](../system-catalog-views/sys-query-store-plan-forcing-locations-transact-sql.md).

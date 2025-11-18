@@ -180,6 +180,15 @@ Requires the `CONTROL DATABASE` permission.
 
 - Blobs that don't meet the above criteria are skipped (a list of skipped blobs is displayed in the query output message). The function returns logs only from blobs for which access is allowed.
 
+### Permissions required in Fabric SQL database
+
+To manage auditing using Fabric workspace roles, users must have membership in the Fabric workspace **Contributor** role or higher permissions. 
+To manage auditing with SQL permissions:
+ - To configure the database audit, users must have ALTER ANY DATABASE AUDIT permission.
+ - To view audit logs using T-SQL, users must have the VIEW DATABASE SECURITY AUDIT permission.
+
+For more information, see [Auditing in Fabric SQL database](/fabric/database/sql/auditing).
+
 ### Permissions required in Fabric Data Warehouse
 
 Users must have the Fabric item `Audit` permission. For more information, see [Permissions](/fabric/data-warehouse/sql-audit-logs#permissions).

@@ -20,13 +20,15 @@ helpviewer_keywords:
   - "sys.query_store_replicas catalog view"
 dev_langs:
   - TSQL
-monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current || =fabric-sqldb"
+monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-current "
 ---
 # sys.query_store_replicas (Transact-SQL)
 
-[!INCLUDE [sqlserver2022-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricsqldb.md)]
+[!INCLUDE [sqlserver2025-asdb](../../includes/applies-to-version/sqlserver2025-asdb.md)]
 
 Contains information about Query Store replicas, when [Query Store for readable secondaries](../performance/query-store-for-secondary-replicas.md) is enabled. You can use this information to determine what `replica_group_id` to use when using Query Store to force or unforce a plan on a secondary replica with [sys.sp_query_store_set_query_hints](../system-stored-procedures/sys-sp-query-store-set-hints-transact-sql.md).
+
+Query Store for secondary replicas is supported starting in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, and in Azure SQL Database. For complete platform support, see [Query Store for secondary replicas](../performance/query-store-for-secondary-replicas.md).
 
 | Column name | Data type | Description |
 | --- | --- | --- |
