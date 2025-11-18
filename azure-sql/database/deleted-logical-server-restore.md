@@ -5,7 +5,7 @@ description: Learn about restoring a deleted logical server in Azure SQL Databas
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: dinethi, jaypatel
-ms.date: 09/11/2025
+ms.date: 11/18/2025
 ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: how-to
@@ -21,7 +21,7 @@ monikerRange: "=azuresql || =azuresql-db"
 This article provides steps to restore an Azure SQL Database server, also known as a logical server, if it was accidentally deleted.
 
 > [!IMPORTANT]
-> This feature is in preview and is currently only enabled for certain subscriptions.
+> Currently, the ability to restore a deleted logical server is in preview. The ability to restore a deleted logical server is enabled only for specific subscriptions, and also for all SQL logical servers that are at least two years old.
 
 You can restore a deleted Azure SQL logical server and its underlying databases with one of the following two methods:
 
@@ -82,10 +82,10 @@ Use the following steps to restore your deleted Azure SQL logical server using [
    Install-Module Az.Accounts -Repository PSGallery
    ```
 
-1. Use the `Az.Tools.Installer` to install the NuGet package.
+1. Update the `Az.Sql` module to the latest version.
 
    ```powershell
-   Install-AzModule -Path https://azposhpreview.blob.core.windows.net/public/Az.Sql.5.2.0.nupkg 
+   Update-Module Az.Sql -Force
    ```
 
 1. Sign in and connect to your Azure account.
@@ -112,7 +112,9 @@ Use the following steps to restore your deleted Azure SQL logical server using [
 
 Once the logical server is restored, restoring the databases is next. Look in the **Deleted databases** tab on the **Backups** page, by browsing to the server resource in Azure portal. For more information, see [Restore a database from a backup in Azure SQL Database](recovery-using-backups.md).
 
-## Delete the logical server without recovery using PowerShell and REST API
+<a id="delete-the-logical-server-without-recovery-using-powershell-and-rest-api"></a>
+
+## Delete the logical server without possibility of recovery using PowerShell and REST API
 
 Follow these steps to set up the variables needed to hard-delete the soft-deleted logical server, using PowerShell to invoke a REST API call.
 
