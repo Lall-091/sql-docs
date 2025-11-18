@@ -4,7 +4,7 @@ description: Follow these instructions to download and install AdventureWorks sa
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 09/11/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: samples
 ms.topic: concept-article
@@ -23,7 +23,7 @@ For more information about samples, see the [Samples GitHub repository](https://
 
 ## Prerequisites
 
-- [SQL Server](https://www.microsoft.com/evalcenter/evaluate-sql-server-2022) or [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)
+- [SQL Server](https://www.microsoft.com/evalcenter/evaluate-sql-server-2025) or [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)
 - [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms) (SSMS)
 
 ## Download backup files
@@ -38,7 +38,8 @@ If you're not sure what you need, start with the OLTP version that matches your 
 
 | OLTP | Data Warehouse | Lightweight |
 | --- | --- | --- |
-| [AdventureWorks2022.bak](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2022.bak) | [AdventureWorksDW2022.bak](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorksDW2022.bak) | [AdventureWorksLT2022.bak](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorksLT2022.bak) |
+| [AdventureWorks2025.bak](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2025.bak) | [AdventureWorksDW2025.bak](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorksDW2025.bak) | [AdventureWorksLT2025.bak](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorksLT2025.bak) |
+| [AdventureWorks2025.bak](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2025.bak) | [AdventureWorksDW2022.bak](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorksDW2022.bak) | [AdventureWorksLT2022.bak](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorksLT2022.bak) |
 | [AdventureWorks2019.bak](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2019.bak) | [AdventureWorksDW2019.bak](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorksDW2019.bak) | [AdventureWorksLT2019.bak](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorksLT2019.bak) |
 | [AdventureWorks2017.bak](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2017.bak) | [AdventureWorksDW2017.bak](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorksDW2017.bak) | [AdventureWorksLT2017.bak](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorksLT2017.bak) |
 | [AdventureWorks2016.bak](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2016.bak) | [AdventureWorksDW2016.bak](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorksDW2016.bak) | [AdventureWorksLT2016.bak](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorksLT2016.bak) |
@@ -49,7 +50,7 @@ If you're not sure what you need, start with the OLTP version that matches your 
 
 You can find additional files on GitHub:
 
-- [SQL Server 2014 - 2022](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks)
+- [SQL Server 2014 - 2025](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks)
 - [SQL Server 2012](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks2012)
 - [SQL Server 2008 and 2008 R2](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks2008r2)
 
@@ -57,9 +58,9 @@ You can find additional files on GitHub:
 
 You can use the `.bak` file to restore your sample database to your [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance. You can do so using the [RESTORE](../t-sql/statements/restore-statements-transact-sql.md) T-SQL command, or using the graphical interface (GUI) in [SSMS](/ssms/sql-server-management-studio-ssms), the [MSSQL extension](https://aka.ms/mssql-marketplace) for [Visual Studio Code](https://code.visualstudio.com/docs), or any T-SQL query tool.
 
-# [SSMS](#tab/ssms)
+### [SSMS](#tab/ssms)
 
-If you're not familiar with using SSMS, you can review [Connect and query using SSMS](../ssms/quickstarts/ssms-connect-query-sql-server.md) to get started.
+If you're not familiar with using SSMS, you can review [Connect and query using SSMS](/ssms/quickstarts/ssms-connect-query-sql-server) to get started.
 
 To restore your database in SSMS, follow these steps:
 
@@ -67,7 +68,7 @@ To restore your database in SSMS, follow these steps:
 1. Move the `.bak` file to your [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] backup location. This location varies depending on your installation location, instance name, and version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. For example, the default location for a default instance of [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] is:
 
    ```output
-   C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Backup
+   C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\Backup
    ```
 
 1. Open SSMS and connect to your [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance.
@@ -85,7 +86,7 @@ To restore your database in SSMS, follow these steps:
 
 For more information on restoring a [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database, see [Restore a database backup using SSMS](../relational-databases/backup-restore/restore-a-database-backup-using-ssms.md).
 
-# [Transact-SQL (T-SQL)](#tab/tsql)
+### [Transact-SQL (T-SQL)](#tab/tsql)
 
 You can restore your sample database by using T-SQL. The following example restores [!INCLUDE [sssampledbobject-md](../includes/sssampledbobject-md.md)], but the database name and installation file path can vary depending on your environment.
 
@@ -94,8 +95,8 @@ To restore [!INCLUDE [sssampledbobject-md](../includes/sssampledbobject-md.md)] 
 ```sql
 USE [master];
 GO
-RESTORE DATABASE [AdventureWorks2022]
-FROM DISK = N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Backup\AdventureWorks2022.bak'
+RESTORE DATABASE [AdventureWorks2025]
+FROM DISK = N'C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\Backup\AdventureWorks2025.bak'
 WITH
     FILE = 1,
     NOUNLOAD,
@@ -108,11 +109,11 @@ To restore [!INCLUDE [sssampledbobject-md](../includes/sssampledbobject-md.md)] 
 ```sql
 USE [master];
 GO
-RESTORE DATABASE [AdventureWorks2022]
-FROM DISK = '/var/opt/mssql/backup/AdventureWorks2022.bak'
+RESTORE DATABASE [AdventureWorks2025]
+FROM DISK = '/var/opt/mssql/backup/AdventureWorks2025.bak'
 WITH
-    MOVE 'AdventureWorks2022' TO '/var/opt/mssql/data/AdventureWorks2022_Data.mdf',
-    MOVE 'AdventureWorks2022_log' TO '/var/opt/mssql/data/AdventureWorks2022_log.ldf',
+    MOVE 'AdventureWorks2025' TO '/var/opt/mssql/data/AdventureWorks2025_Data.mdf',
+    MOVE 'AdventureWorks2025_log' TO '/var/opt/mssql/data/AdventureWorks2025_log.ldf',
     FILE = 1,
     NOUNLOAD,
     STATS = 5;
@@ -125,7 +126,7 @@ GO
 
 You have two options for viewing sample SQL Database data. You can use a sample when you create a new database, or you can deploy a database from [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] directly to Azure by using SSMS.
 
-To get sample data for SQL Managed Instance instead, see [Restore World Wide Importers to SQL Managed Instance](/azure/azure-sql/managed-instance/restore-sample-database-quickstart).
+To get sample data for SQL Managed Instance instead, see [Quickstart: Restore a database to Azure SQL Managed Instance with SSMS](/azure/azure-sql/managed-instance/restore-sample-database-quickstart).
 
 ### Deploy a new sample database
 
@@ -133,7 +134,7 @@ When you create a new database in SQL Database, you can create a blank database,
 
 Follow these steps to deploy a new sample `AdventureWorksLT` database in Azure SQL Database:
 
-1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). 
+1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
 1. In the pane for **Azure SQL Database**, select **Show options**.
 1. In the **Azure SQL Database options** window, select **Create SQL Database**.
 
@@ -182,5 +183,5 @@ You can find additional information about using the scripts on [GitHub](https://
 ## Related content
 
 - [Database Engine tutorials](../relational-databases/database-engine-tutorials.md)
-- [Quickstart: Connect and query a SQL Server instance using SSMS](../ssms/quickstarts/ssms-connect-query-sql-server.md)
+- [Quickstart: Connect and query a SQL Server instance using SSMS](/ssms/quickstarts/ssms-connect-query-sql-server)
 - [Quickstart: Use Azure Data Studio to connect and query SQL Server](/azure-data-studio/quickstart-sql-server)
