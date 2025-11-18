@@ -4,7 +4,7 @@ description: The sqlcmd utility lets you enter Transact-SQL statements, system p
 author: dlevy-msft
 ms.author: dlevy
 ms.reviewer: randolphwest
-ms.date: 07/02/2025
+ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: conceptual
@@ -162,6 +162,7 @@ sqlcmd
    -e (echo input)
    -E (use trusted connection)
    -f codepage | i:codepage[,o:codepage] | o:codepage[,i:codepage]
+   -F hostname_in_certificate
    -g (enable column encryption)
    -G (use Azure Active Directory for authentication)
    -h rows_per_header
@@ -175,7 +176,7 @@ sqlcmd
    -L[c] (list servers, optional clean output)
    -m error_level
    -M multisubnet_failover
-   -N (encrypt connection)
+   -N[s|m|o] (encrypt connection)
    -o output_file
    -p[1] (print statistics, optional colon format)
    -P password
@@ -224,7 +225,7 @@ The following table lists the command-line options available in **sqlcmd**, and 
 | **[-j](#-j)** | Yes | Yes |
 | **[-K *application_intent*](#-k-application_intent)** | Yes | Yes |
 | **[-M *multisubnet_failover*](#-m-multisubnet_failover)** | Yes | Yes |
-| **[-N](#-n)** | Yes | Yes |
+| **[-N\[s\|m\|o\]](#-nsmo)** | Yes | Yes |
 | **[-P *password*](#-p-password)** | Yes | Yes |
 | **[-S \[*protocol*:\]*server*\[\\*instance_name*\]\[,*port*\]](#-s-protocolserverinstance_nameport)** | Yes | Yes |
 | **[-U *login_id*](#-u-login_id)** | Yes | Yes |
@@ -232,6 +233,7 @@ The following table lists the command-line options available in **sqlcmd**, and 
 | **[-Z *new_password*](#-z-exit)** | Yes | Yes |
 | [Input/output options](#inputoutput-options) | | |
 | **[-f *codepage* \| i:*codepage*\[,o:*codepage*\] \| o:*codepage*\[,i:*codepage*\]](#-f-codepage--icodepageocodepage--ocodepageicodepage)** | Yes | Yes |
+| **[-F *hostname_in_certificate*](#-f-hostname_in_certificate)** | Yes | Yes |
 | **[-i *input_file*\[,*input_file2*...\]](#-i-input_fileinput_file2)** | Yes | Yes |
 | **[-o *output_file*](#-o-output_file)** | Yes | Yes |
 | **[-r\[0 \| 1\]](#-r0--1)** | Yes | Yes |
@@ -363,14 +365,13 @@ For more information, see:
 
 For more information, see [High availability and disaster recovery on Linux and macOS](../../connect/odbc/linux-mac/odbc-driver-on-linux-support-for-high-availability-disaster-recovery.md).
 
-#### -N
+#### -N[s|m|o]
 
 This option is used by the client to request an encrypted connection.
 
-For the **sqlcmd** (Go) utility, `-N` takes a string value that can be one of `true`, `false`, or `disable` to specify the encryption choice. (`default` is the same as omitting the parameter):
+`-N` can be `o` (for `optional`), `m` (for `mandatory`, the default), or `s` (for `strict`). If you don't include `-N`, `-Nm` (for `mandatory`) is the default. This is a breaking change from [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions, where `-No` is the default.
 
-> [!NOTE]  
-> On Linux and macOS, `[s|m|o]` were added in **sqlcmd** 18.0. `-N` can be `o` (for `optional`), `m` (for `mandatory`, the default), or `s` (for `strict`). In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], if you don't include `-N`, `-Nm` (for `mandatory`) is the default. This is a breaking change from [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions, where `-No` is the default.
+For the **sqlcmd** (Go) utility, `-N` takes a string value that can be one of `true`, `false`, or `disable` to specify the encryption choice. (`default` is the same as omitting the parameter):
 
 - If `-N` and `-C` aren't provided, **sqlcmd** negotiates authentication with the server without validating the server certificate.
 
@@ -554,6 +555,10 @@ Enter `chcp` at the command prompt to verify the code page of `cmd.exe`.
 
 > [!NOTE]  
 > On Linux, the codepage number is a numeric value that specifies an installed Linux code page (available since 17.5.1.1).
+
+#### -F *hostname_in_certificate*
+
+Specifies a different, expected Common Name (CN) or Subject Alternate Name (SAN) in the server certificate to use during server certificate validation. Without this option, certificate validation ensures that the CN or SAN in the certificate matches the server name to which you're connecting. This parameter can be populated when the server name doesn't match the CN or SAN, for example, when using DNS aliases.
 
 #### -i *input_file*[,*input_file2*...]
 

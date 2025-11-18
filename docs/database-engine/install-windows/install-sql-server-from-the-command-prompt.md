@@ -102,12 +102,12 @@ Installing a new instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-
 
 To install or configure your [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instance from the command prompt, open an administrative command prompt and navigate to where `setup.exe` is located within the [SQL Server Setup media](https://www.microsoft.com/sql-server/sql-server-downloads). Run the `setup.exe` command, along with the required and optional parameters that accomplish what you're trying to do:
 
-`C:\SQLMedia\SQLServer2022> setup.exe /[Option] /[Option] = {value}`
+`C:\SQLMedia\SQLServer2025> setup.exe /[Option] /[Option] = {value}`
 
 The following example installs the [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)], [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Analysis Services, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], and Integration Services in quiet mode:
 
 ```console
-C:\SQLMedia\SQLServer2022> setup.exe /Q /IACCEPTSQLSERVERLICENSETERMS /ACTION="install"
+C:\SQLMedia\SQLServer2025> setup.exe /Q /IACCEPTSQLSERVERLICENSETERMS /ACTION="install"
 /PID="AAAAA-BBBBB-CCCCC-DDDDD-EEEEE" /FEATURES=SQL,AS,IS
 /INSTANCENAME=MSSQLSERVER /SQLSVCACCOUNT="MyDomain\MyAccount"
 /SQLSVCPASSWORD="************" /SQLSYSADMINACCOUNTS="MyDomain\MyAccount "
@@ -120,11 +120,11 @@ C:\SQLMedia\SQLServer2022> setup.exe /Q /IACCEPTSQLSERVERLICENSETERMS /ACTION="i
 To view a list of all possible commands within the console, run the executable with the `/help` flag:
 
 ```console
-C:\SQLMedia\SQLServer2022> setup.exe /help
+C:\SQLMedia\SQLServer2025> setup.exe /help
 ```
 
 > [!IMPORTANT]  
-> A new installation parameter, `/PRODUCTCOVEREDBYSA`, was introduced in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]. This parameter indicates whether the provided product key (`/PID=`) license is covered under a Software Assurance or SQL Server Subscription contract, or just a SQL Server license.
+> The `/PRODUCTCOVEREDBYSA` installation parameter was introduced in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]. This parameter indicates whether the provided product key (`/PID=`) license is covered under a Software Assurance or SQL Server Subscription contract, or just a SQL Server license.
 
 The rest of the article provides a detailed description of the available parameters.
 
@@ -141,7 +141,7 @@ Depending on how you received the software (for example, through Microsoft volum
 
 Command line installation is supported in the following scenarios:
 
-- Installing, upgrading, or removing an instance and shared components of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on a local computer by using syntax and parameters specified at the command prompt.
+- Installing, upgrading, or removing an instance and shared components of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on a local computer by using syntax and parameters specified from the command prompt.
 - Installing, upgrading, or removing a failover cluster instance.
 - Upgrading from one [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] edition to another edition of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 - Installing an instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on a local computer by using syntax and parameters specified in a configuration file. You can use this method to copy an installation configuration to multiple computers, or to install multiple nodes of a failover cluster installation.
@@ -214,7 +214,7 @@ Use the parameters in the following table to develop command-line scripts for in
 | [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/INSTANCEDIR`<br /><br />**Optional** | Specifies a nondefault installation directory for instance-specific components. |
 | [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/INSTANCEID`<br /><br />**Optional** | Specifies a nondefault value for an [InstanceID](#InstanceID). |
 | [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/INSTANCENAME`<br /><br />**Required** | Specifies a [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)] instance name.<br /><br />For more information, see [Installation Wizard help](../../sql-server/install/instance-configuration.md). |
-| [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/PRODUCTCOVEREDBYSA`<br /><br />**Applies to:** [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions<br /><br />**Required**, when installing the Azure Extension feature from the command line with `AZUREEXTENSION`. | Specifies the license coverage for [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)].<br /><br />`/PRODUCTCOVEREDBYSA=True`, or just `/PRODUCTCOVEREDBYSA`, indicates it's covered under Software Assurance or [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] subscription.<br /><br />`/PRODUCTCOVEREDBYSA=False`, or omitting the parameter, indicates it's covered under a SQL Server license. |
+| [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/PRODUCTCOVEREDBYSA`<br /><br />**Applies to:** [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions<br /><br />**Required**, when installing the Azure Extension feature from the command prompt with `AZUREEXTENSION`. | Specifies the license coverage for [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)].<br /><br />`/PRODUCTCOVEREDBYSA=True`, or just `/PRODUCTCOVEREDBYSA`, indicates it's covered under Software Assurance or [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] subscription.<br /><br />`/PRODUCTCOVEREDBYSA=False`, or omitting the parameter, indicates it's covered under a SQL Server license. |
 | [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/PID`<br /><br />**Optional** | Specifies the product key for the edition of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. If this parameter isn't specified, Evaluation is used.<br /><br />**Note:** If you're installing [!INCLUDE [ssExpress](../../includes/ssexpress-md.md)], [!INCLUDE [ssExpress](../../includes/ssexpress-md.md)] with Advanced Services, [!INCLUDE [ssExpress](../../includes/ssexpress-md.md)] with tools, [!INCLUDE [ssdeveloper](../../includes/ssdeveloper-md.md)], or [!INCLUDE [ssevaluation](../../includes/ssevaluation-md.md)], the PID is predefined. |
 | [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/Q` or `/QUIET`<br /><br />**Optional** | Specifies that Setup runs in a quiet mode without any user interface. This is used for unattended installations. The `/Q` parameter overrides the input of the `/QS` parameter. |
 | [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/QS` or `/QUIETSIMPLE`<br /><br />**Optional** | Specifies that Setup runs and shows progress through the UI, but doesn't accept any input or show any error messages. |
@@ -288,9 +288,9 @@ Use the parameters in the following table to develop command-line scripts for in
 | [!INCLUDE [ssRSnoversion](../../includes/ssrsnoversion-md.md)] | `/RSSVCPASSWORD`<br /><br />**Applies to:** [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] and earlier versions<br /><br />**[Required](#Accounts)** | Specifies the password for the startup account for the [!INCLUDE [ssRSnoversion](../../includes/ssrsnoversion-md.md)] service. This parameter can be omitted when using a managed service account, virtual account, or built-in account. |
 | [!INCLUDE [ssRSnoversion](../../includes/ssrsnoversion-md.md)] | `/RSSVCStartupType`<br /><br />**Applies to:** [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] and earlier versions<br /><br />**Optional** | Specifies the [startup](#Accounts) mode for [!INCLUDE [ssRSnoversion](../../includes/ssrsnoversion-md.md)].<br /><br />Supported values:<br /><br />- `Automatic`<br />- `Disabled`<br />- `Manual` |
 | Python/Machine Learning Services (In-Database) | `/MPYCACHEDIRECTORY`<br /><br />**Optional** | Reserved for future use. Use `%TEMP%` to store Python .CAB files for installation on a computer that doesn't have an internet connection. |
-| R/Machine Learning Services (In-Database) | `/MRCACHEDIRECTORY`<br /><br />**Optional** | Use this parameter to specify the Cache directory for Microsoft R Open, [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] R Services, [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] R Server (Standalone), or R feature support in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Machine Learning Services or Machine Learning Server (Standalone). This setting is typically used when installing R components from the [command line on a computer without Internet access](../../machine-learning/install/sql-ml-component-install-without-internet-access.md). |
+| R/Machine Learning Services (In-Database) | `/MRCACHEDIRECTORY`<br /><br />**Optional** | Use this parameter to specify the Cache directory for Microsoft R Open, [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] R Services, [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] R Server (Standalone), or R feature support in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Machine Learning Services or Machine Learning Server (Standalone). This setting is typically used when installing R components from the [command prompt on a computer without Internet access](../../machine-learning/install/sql-ml-component-install-without-internet-access.md). |
 | Java/Language Extensions | `/SQL_INST_JAVA`,<br />`/SQLJAVADIR = "path"`<br /><br />**Applies to:** [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] only<br /><br />**Optional** | Specifies installing Java with Language Extensions. If `/SQL_INST_JAVA` is provided without the `/SQLJAVADIR` parameter, it's assumed you want to install the Zulu Open JRE that is provided by the installation media.<br /><br />Providing a path for `/SQLJAVADIR` indicates you would like to use an already-installed JRE or JDK. |
-| Azure extension for SQL Server | `/FEATURES=AZUREEXTENSION`<br /><br />**Applies to:** [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions<br /><br />**Optional** | For [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], connect the instance to Azure Arc.<br /><br />For [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], connect the instance to Azure Arc or [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] on Azure VM. |
+| Azure extension for SQL Server | `/FEATURES=AZUREEXTENSION`<br /><br />**Applies to:** [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions<br /><br />**Optional** | For [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, connect the instance to Azure Arc.<br /><br />For [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], connect the instance to Azure Arc or [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] on Azure VM. |
 | Azure extension for SQL Server | `/AZURESUBSCRIPTIONID`<br /><br />**Applies to:** [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions<br /><br />**Optional** | Azure subscription where the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance resource will be created. |
 | Azure extension for SQL Server | `/AZURERESOURCEGROUP`<br /><br />**Applies to:** [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions<br /><br />**Optional** | Azure resource group where the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance resource will be created. |
 | Azure extension for SQL Server | `/AZUREREGION`<br /><br />**Applies to:** [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions<br /><br />**Optional** | Azure region where the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance resource will be created. |
@@ -374,7 +374,7 @@ Use the parameters in the following table to develop command-line scripts for pr
 | [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/Q` or `/QUIET`<br /><br />**Optional** | Specifies that Setup runs in a quiet mode without any user interface. This is used for unattended installations. The `/Q` parameter overrides the input of the `/QS` parameter. |
 | [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/QS` or `/QUIETSIMPLE`<br /><br />**Optional** | Specifies that Setup runs and shows progress through the UI, but doesn't accept any input or show any error messages. |
 
-<sup>1</sup> Distributed Replay, SDK, and SNAC aren't available in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)].
+<sup>1</sup> Distributed Replay, SDK, and SNAC aren't available in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions.
 
 #### Sample syntax
 
@@ -399,7 +399,7 @@ Use the parameters in the following table to develop command-line scripts for co
 | [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/INDICATEPROGRESS`<br /><br />**Optional** | Specifies that the verbose Setup log file is piped to the console. |
 | [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/INSTANCEID`<br /><br />**Optional** | Use the Instance ID specified during the prepare image step.<br /><br />Supported values: `InstanceID` of a prepared instance. |
 | [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/INSTANCENAME`<br /><br />**Optional** | Specifies a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance name for the instance that's being completed.<br /><br />For more information, see [Installation Wizard help](../../sql-server/install/instance-configuration.md). |
-| [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/PRODUCTCOVEREDBYSA`<br /><br />**Applies to:** [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions<br /><br />**Required**, when installing the Azure Extension feature from the command line with `AZUREEXTENSION`. | Specifies the license coverage for [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)].<br /><br />`/PRODUCTCOVEREDBYSA=True`, or just `/PRODUCTCOVEREDBYSA`, indicates it's covered under Software Assurance or [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] subscription.<br /><br />`/PRODUCTCOVEREDBYSA=False`, or omitting the parameter, indicates it's covered under a SQL Server license. |
+| [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/PRODUCTCOVEREDBYSA`<br /><br />**Applies to:** [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions<br /><br />**Required**, when installing the Azure Extension feature from the command prompt with `AZUREEXTENSION`. | Specifies the license coverage for [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)].<br /><br />`/PRODUCTCOVEREDBYSA=True`, or just `/PRODUCTCOVEREDBYSA`, indicates it's covered under Software Assurance or [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] subscription.<br /><br />`/PRODUCTCOVEREDBYSA=False`, or omitting the parameter, indicates it's covered under a SQL Server license. |
 | [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/PID`<br /><br />**Optional** | Specifies the product key for the edition of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. If this parameter isn't specified, Evaluation is used.<br /><br />**Note:** If you're installing [!INCLUDE [ssExpress](../../includes/ssexpress-md.md)], [!INCLUDE [ssExpress](../../includes/ssexpress-md.md)] with Advanced Services, [!INCLUDE [ssExpress](../../includes/ssexpress-md.md)] with tools, [!INCLUDE [ssdeveloper](../../includes/ssdeveloper-md.md)], or [!INCLUDE [ssevaluation](../../includes/ssevaluation-md.md)], the PID is predefined. |
 | [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/Q` or `/QUIET`<br /><br />**Optional** | Specifies that Setup runs in a quiet mode without any user interface. This is used for unattended installations. The `/Q` parameter overrides the input of the `/QS` parameter. |
 | [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/QS` or `/QUIETSIMPLE`<br /><br />**Optional** | Specifies that Setup runs and shows progress through the UI, but doesn't accept any input or show any error messages. |
@@ -460,7 +460,7 @@ Use the parameters in the following table to develop command-line scripts for up
 
 | [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)] component | Parameter | Description |
 | --- | --- | --- |
-| [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/ACTION`<br /><br />**Required** | Required to indicate the installation workflow.<br /><br />Supported values:<br /><br />- `Upgrade`<br />- `EditionUpgrade`<br /><br />The value `EditionUpgrade` is used to upgrade an existing edition of [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] to a different edition. For more information about the supported version and edition upgrades, see [Supported version and edition upgrades (SQL Server 2022)](supported-version-and-edition-upgrades-2022.md). |
+| [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/ACTION`<br /><br />**Required** | Required to indicate the installation workflow.<br /><br />Supported values:<br /><br />- `Upgrade`<br />- `EditionUpgrade`<br /><br />The value `EditionUpgrade` is used to upgrade an existing edition of [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] to a different edition. For more information about the supported version and edition upgrades, see [Supported version and edition upgrades (SQL Server 2025)](supported-version-and-edition-upgrades-2025.md). |
 | [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/IACCEPTSQLSERVERLICENSETERMS`<br /><br />**Required**, when the `/Q` or `/QS` parameter is specified for unattended installations | Required to acknowledge acceptance of the license terms.<br /><br />Beginning with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], read the Microsoft [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Software License Terms at [aka.ms/useterms](https://aka.ms/useterms). |
 | [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/ENU`<br /><br />**Optional** | Use this parameter to install the English version of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on a localized operating system when the installation media includes language packs for both English and the language corresponding to the operating system. |
 | [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/UpdateEnabled`<br /><br />**Optional** | Specify whether [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Setup should discover and include product updates. The valid values are `True` and `False` or `1` and `0`. By default, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Setup includes updates that are found. |
@@ -572,7 +572,7 @@ setup.exe /Action=Uninstall /FEATURES=SQL,AS,RS,IS,Tools /INSTANCENAME=MSSQLSERV
 
 To remove a named instance, specify the name of the instance instead of `MSSQLSERVER` in the previous example.
 
-To uninstall an existing [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] update from command prompt, you can find the complete uninstall command for a specific component in the Windows registry, using the following registry path. Look for the `"UninstallString"` key.
+To uninstall an existing [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] update from the command prompt, you can find the complete uninstall command for a specific component in the Windows registry, using the following registry path. Look for the `"UninstallString"` key.
 
 > [!WARNING]  
 > [!INCLUDE [ssnoteregistry-md](../../includes/ssnoteregistry-md.md)]
@@ -595,7 +595,7 @@ C:\Program Files\Microsoft SQL Server\150\Setup Bootstrap\Update Cache\KB5014356
 
 Before you install a [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)] failover cluster instance, review the following articles:
 
-- [Hardware and software requirements for SQL Server 2022](../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2022.md)
+- [Hardware and software requirements for SQL Server 2025](../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2025.md)
 
 - [Security considerations for a SQL Server installation](../../sql-server/install/security-considerations-for-a-sql-server-installation.md)
 
@@ -640,7 +640,7 @@ For more information about Integrated Installation, see [Always On failover clus
 | [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/INSTANCEDIR`<br /><br />**Optional** | Specifies a nondefault installation directory for instance-specific components. |
 | [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/INSTANCEID`<br /><br />**Optional** | Specifies a nondefault value for an [InstanceID](#InstanceID). |
 | [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/INSTANCENAME`<br /><br />**Required** | Specifies a [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)] instance name.<br /><br />For more information, see [Installation Wizard help](../../sql-server/install/instance-configuration.md). |
-| [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/PRODUCTCOVEREDBYSA`<br /><br />**Applies to:** [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions<br /><br />**Required**, when installing the Azure Extension feature from the command line with `AZUREEXTENSION`. | Specifies the license coverage for [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)].<br /><br />`/PRODUCTCOVEREDBYSA=True`, or just `/PRODUCTCOVEREDBYSA`, indicates it's covered under Software Assurance or [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] subscription.<br /><br />`/PRODUCTCOVEREDBYSA=False`, or omitting the parameter, indicates it's covered under a SQL Server license. |
+| [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/PRODUCTCOVEREDBYSA`<br /><br />**Applies to:** [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions<br /><br />**Required**, when installing the Azure Extension feature from the command prompt with `AZUREEXTENSION`. | Specifies the license coverage for [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)].<br /><br />`/PRODUCTCOVEREDBYSA=True`, or just `/PRODUCTCOVEREDBYSA`, indicates it's covered under Software Assurance or [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] subscription.<br /><br />`/PRODUCTCOVEREDBYSA=False`, or omitting the parameter, indicates it's covered under a SQL Server license. |
 | [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/PID`<br /><br />**Optional** | Specifies the product key for the edition of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. If this parameter isn't specified, Evaluation is used.<br /><br />**Note:** If you're installing [!INCLUDE [ssExpress](../../includes/ssexpress-md.md)], [!INCLUDE [ssExpress](../../includes/ssexpress-md.md)] with Advanced Services, [!INCLUDE [ssExpress](../../includes/ssexpress-md.md)] with tools, [!INCLUDE [ssdeveloper](../../includes/ssdeveloper-md.md)], or [!INCLUDE [ssevaluation](../../includes/ssevaluation-md.md)], the PID is predefined. |
 | [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/Q` or `/QUIET`<br /><br />**Optional** | Specifies that Setup runs in a quiet mode without any user interface. This is used for unattended installations. The `/Q` parameter overrides the input of the `/QS` parameter. |
 | [!INCLUDE [ssde-md](../../includes/ssde-md.md)] Setup Control | `/QS` or `/QUIETSIMPLE`<br /><br />**Optional** | Specifies that Setup runs and shows progress through the UI, but doesn't accept any input or show any error messages. |
@@ -758,13 +758,13 @@ We recommend that you use Service SID instead of domain groups.
 
 To perform the "Preparation" step of a failover cluster advanced installation scenario for the [!INCLUDE [ssDE](../../includes/ssde-md.md)] and [!INCLUDE [ssASnoversion](../../includes/ssasnoversion-md.md)].
 
-Run the following command at the command prompt to prepare a default instance:
+Run the following command from the command prompt to prepare a default instance:
 
 ```console
 setup.exe /q /ACTION=PrepareFailoverCluster /InstanceName=MSSQLSERVER /Features=AS,SQL /INDICATEPROGRESS /ASSVCACCOUNT="<DomainName\UserName>" /ASSVCPASSWORD="xxxxxxxxxxx" /SQLSVCACCOUNT="<DomainName\UserName>" /SQLSVCPASSWORD="xxxxxxxxxxx" /AGTSVCACCOUNT="<DomainName\UserName>" /AGTSVCPASSWORD="xxxxxxxxxxx" /IACCEPTSQLSERVERLICENSETERMS
 ```
 
-Run the following command at the command prompt to prepare a named instance:
+Run the following command from the command prompt to prepare a named instance:
 
 ```console
 setup.exe /q /ACTION=PrepareFailoverCluster /InstanceName="<Insert Instance name>" /Features=AS,SQL /INDICATEPROGRESS /ASSVCACCOUNT="<DomainName\UserName>" /ASSVCPASSWORD="xxxxxxxxxxx" /SQLSVCACCOUNT="<DomainName\UserName>" /SQLSVCPASSWORD="xxxxxxxxxxx" /AGTSVCACCOUNT="<DomainName\UserName>" /AGTSVCPASSWORD="xxxxxxxxxxx" /IACCEPTSQLSERVERLICENSETERMS
@@ -825,13 +825,13 @@ Use the parameters in the following table to develop command-line scripts for fa
 
 To perform the "Completion" step of a failover cluster advanced installation scenario for the [!INCLUDE [ssDE](../../includes/ssde-md.md)] and [!INCLUDE [ssASnoversion](../../includes/ssasnoversion-md.md)]. Run the following command on the computer that is the active node in the failover cluster to make it usable. You must run the "CompleteFailoverCluster" action on the node that owns the shared disk in the [!INCLUDE [ssASnoversion](../../includes/ssasnoversion-md.md)] failover cluster.
 
-Run the following command at the command prompt to complete failover cluster installation for a default instance:
+Run the following command from the command prompt to complete failover cluster installation for a default instance:
 
 ```console
 setup.exe /q /ACTION=CompleteFailoverCluster /InstanceName=MSSQLSERVER /INDICATEPROGRESS /ASSYSADMINACCOUNTS="<DomainName\Username>" /ASDATADIR=<Drive>:\OLAP\Data /ASLOGDIR=<Drive>:\OLAP\Log /ASBACKUPDIR=<Drive>:\OLAP\Backup /ASCONFIGDIR=<Drive>:\OLAP\Config /ASTEMPDIR=<Drive>:\OLAP\Temp /FAILOVERCLUSTERDISKS="<Cluster Disk Resource Name - for example, 'Disk S:'>:" /FAILOVERCLUSTERNETWORKNAME="<Insert FOI Network Name>" /FAILOVERCLUSTERIPADDRESSES="IPv4;xx.xxx.xx.xx;Cluster Network;xxx.xxx.xxx.x" /FAILOVERCLUSTERGROUP="MSSQLSERVER" /INSTALLSQLDATADIR="<Drive>:\<Path>\MSSQLSERVER" /SQLCOLLATION="SQL_Latin1_General_CP1_CS_AS" /SQLSYSADMINACCOUNTS="<DomainName\UserName>"
 ```
 
-Run the following command at the command prompt to complete failover cluster installation for a named instance:
+Run the following command from the command prompt to complete failover cluster installation for a named instance:
 
 ```console
 setup.exe /q /ACTION=CompleteFailoverCluster /InstanceName="<Insert Instance Name>" /INDICATEPROGRESS /ASSYSADMINACCOUNTS="<DomainName\UserName>" /ASDATADIR=<Drive>:\INSTANCE\Data /ASLOGDIR=<drive>:\INSTANCE\Log /ASBACKUPDIR=<Drive>:\INSTANCE\Backup /ASCONFIGDIR=<Drive>:\INSTANCE\Config /ASTEMPDIR=<Drive>:\INSTANCE\Temp /FAILOVERCLUSTERDISKS="<Cluster Disk Resource Name - for example, 'Disk S:'>" /FAILOVERCLUSTERNETWORKNAME="CompNamedFOI" /FAILOVERCLUSTERIPADDRESSES="IPv4;xx.xxx.xx.xx;ClusterNetwork1;xxx.xxx.xxx.x" /FAILOVERCLUSTERGROUP="<Insert New Group Name>" /INSTALLSQLDATADIR="<Drive>:\<Path>\MSSQLSERVER_INSTANCE" /SQLCOLLATION="SQL_Latin1_General_CP1_CS_AS" /SQLSYSADMINACCOUNTS="<DomainName\Username>"
@@ -1023,7 +1023,7 @@ To install specific features, use the `/FEATURES` parameter and specify the pare
 
 The setup role or `/ROLE` parameter is used to install a preconfigured selection of features. The SSAS roles install an SSAS instance in either an existing SharePoint farm, or a new unconfigured farm. Two setup roles are provided to support each scenario. You can only choose one setup role to install at a time. If you choose a setup role, Setup installs the features and components that belong to the role. You can't vary the features and components that are designated for that role. For more information about how to use the feature role parameter, see [Install Power Pivot from the Command Prompt](/analysis-services/instances/install-windows/install-analysis-services-in-power-pivot-mode).
 
-The `AllFeatures_WithDefaults` role is the default behavior for editions of [!INCLUDE [ssExpress](../../includes/ssexpress-md.md)] and reduces the number of dialog boxes presented to the user. It can be specified from the command line when installing a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] edition that isn't [!INCLUDE [ssExpress](../../includes/ssexpress-md.md)].
+The `AllFeatures_WithDefaults` role is the default behavior for editions of [!INCLUDE [ssExpress](../../includes/ssexpress-md.md)] and reduces the number of dialog boxes presented to the user. It can be specified from the command prompt when installing a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] edition that isn't [!INCLUDE [ssExpress](../../includes/ssexpress-md.md)].
 
 | Role | Description | Installs... |
 | --- | --- | --- |
@@ -1037,7 +1037,7 @@ The `AllFeatures_WithDefaults` role is the default behavior for editions of [!IN
 
 To upgrade a [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)] failover cluster, you must run the Setup on one failover cluster node at a time, starting with the passive nodes. Setup determines when to fail over to the upgraded node, depending on the total number of nodes in the failover cluster instance, and the number of nodes that have already been upgraded. When half of the nodes or more have already been upgraded, Setup by default causes a failover to an upgraded node.
 
-To control the failover behavior of cluster nodes during the upgrade process, run the upgrade operation at the command line and use the `/FAILOVERCLUSTERROLLOWNERSHIP` parameter to control the failover behavior before the upgrade operation takes the node offline. Use of this parameter is as follows:
+To control the failover behavior of cluster nodes during the upgrade process, run the upgrade operation from the command prompt and use the `/FAILOVERCLUSTERROLLOWNERSHIP` parameter to control the failover behavior before the upgrade operation takes the node offline. Use of this parameter is as follows:
 
 - `/FAILOVERCLUSTERROLLOWNERSHIP=0` doesn't roll cluster ownership (move group) to upgraded nodes, and doesn't add this node to the list of possible owners of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] cluster at the end of upgrade.
 

@@ -50,7 +50,7 @@ For the best experience with [!INCLUDE [sql-server-2025](../includes/sssql25-md.
 
 ### Web edition
 
-- Web edition is discontinued.
+- Web edition is discontinued. For more information, see the [Product Changes](https://techcommunity.microsoft.com/blog/SQLServer/sql-server-2025-is-now-generally-available/4470570) section in the SQL Server 2025 GA blog post.
 
 ### Express edition
 

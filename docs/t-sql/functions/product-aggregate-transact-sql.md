@@ -46,7 +46,7 @@ PRODUCT ( [ ALL | DISTINCT ] expression )
 Analytic function syntax.
 
 ```syntaxsql
-PRODUCT ( [ ALL ] expression) OVER ( [ PARTITION BY clause ] ORDER BY clause)
+PRODUCT ( [ ALL ] expression) OVER ( [ partition_by_clause ] [ order_by_clause ] )
 ```
 
 ## Arguments
@@ -63,13 +63,13 @@ Specifies that PRODUCT returns the PRODUCT of unique values.
 
 A constant, column, or function, and any combination of arithmetic, bitwise, and string operators. *expression* is an expression of the exact numeric or approximate numeric data type category, except for the **bit** data type. Aggregate functions and subqueries aren't permitted. For more information, see [Expressions](../language-elements/expressions-transact-sql.md).
 
-#### OVER ( [ PARTITION BY clause ] ORDER BY *clause* )
+#### OVER ( [ *partition_by_clause* ] [ *order_by_clause* ] )
 
 Determines the partitioning and ordering of a rowset before the function is applied.
 
-`PARTITION BY` clause divides the result set produced by the FROM clause into partitions to which the function is applied. If not specified, the function treats all rows of the query result set as a single group.
+*partition_by_clause* divides the result set produced by the `FROM` clause into partitions to which the function is applied. If not specified, the function treats all rows of the query result set as a single group.
 
-`ORDER BY` clause determines the logical order in which the operation is performed. Required. For more information, see [SELECT - OVER clause](../queries/select-over-clause-transact-sql.md).
+*order_by_clause* determines the logical order in which the operation is performed. For more information, see [SELECT - OVER clause](../queries/select-over-clause-transact-sql.md).
 
 ## Return types
 

@@ -4,7 +4,7 @@ description: The AI_GENERATE_EMBEDDINGS function creates vector arrays for data.
 author: jettermctedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 11/18/2025
+ms.date: 11/17/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -42,13 +42,13 @@ An [expression](../language-elements/expressions-transact-sql.md) of any charact
 
 #### *model_identifier*
 
-The name of an [EXTERNAL MODEL](../statements/create-external-model-transact-sql.md) defined as an `EMBEDDING` type that is used to create the embeddings vector array.
+The name of an [external model](../statements/create-external-model-transact-sql.md) defined as an `EMBEDDINGS` type that is used to create the embeddings vector array.
 
 For more information, see [CREATE EXTERNAL MODEL](../statements/create-external-model-transact-sql.md).
 
 #### *optional_json_request_body_parameters*
 
-A valid JSON formatted list of additional parameters. These parameters are appended to the REST request message body before being sent to the `EXTERNAL MODEL`'s endpoint location. These parameters are depenantant on what the `EXTERNAL MODEL`'s endpoint supports and accepts.
+A valid JSON formatted list of additional parameters. These parameters are appended to the REST request message body before being sent to the external model's endpoint location. These parameters depend on what the external model's endpoint supports and accepts.
 
 ## Return types
 
@@ -83,17 +83,22 @@ The format of the returned JSON is as follows:
 
 ### Prerequisites
 
-There are two prerequisites you must meet to use `AI_GENERATE_EMBEDDINGS`:
+You must meet the following prerequisites to use `AI_GENERATE_EMBEDDINGS`:
 
-- `sp_invoke_external_endpoint` must be enabled in the database using [sp_configure](../../relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql.md?tabs=request-headers#permissions).
+- Enable `sp_invoke_external_endpoint` on the database, with the following command:
 
-- an [EXTERNAL MODEL](../statements/create-external-model-transact-sql.md) of the `EMBEDDINGS` type, accessible via the correct grants, roles, and/or permissions.
+  ```sql
+  EXECUTE sp_configure 'external rest endpoint enabled', 1;
+  RECONFIGURE WITH OVERRIDE;
+  ```
+
+- Create an [external model](../statements/create-external-model-transact-sql.md) of the `EMBEDDINGS` type, accessible via the correct grants, roles, and/or permissions.
 
 ### Optional parameters
 
 The parameter `optional_json_request_body_parameters` in `AI_GENERATE_EMBEDDINGS` is used when an endpoint parameter needs to be added to the body of the embeddings request message. Adding an optional parameter overrides the value at runtime if that parameter is defined in the model definition.
 
-For example, if the [EXTERNAL MODEL](../statements/create-external-model-transact-sql.md) contains the parameter for `dimensions` set to 1536, by passing that parameter in the `optional_json_request_body_parameters` at runtime with a new value as seen here: `json_object('dimensions':755)`, the `dimensions` parameter on the model is overridden.
+For example, if the [external model](../statements/create-external-model-transact-sql.md) contains the parameter for `dimensions` set to 1536, by passing that parameter in the `optional_json_request_body_parameters` at runtime with a new value as seen here: `json_object("dimensions":755)`, the `dimensions` parameter on the model is overridden.
 
 The value passed into `optional_json_request_body_parameters` must be valid JSON.
 
@@ -103,13 +108,13 @@ For more information on creating embedding endpoints, review the process for [Az
 
 ### Extended Events (XEvent)
 
-`AI_GENERATE_EMBEDDINGS` has an extended event (``ai_generate_embeddings_summary``) that can be enabled for troubleshooting. It contains information about the REST request and response such as status code, any errors it encountered, the model name used, and token counts used by the embedding endpoint. The extended event ``external_rest_endpoint_summary`` contains additional information that can be for troubleshooting and debugging REST requests.
+`AI_GENERATE_EMBEDDINGS` has an extended event (`ai_generate_embeddings_summary`) that can be enabled for troubleshooting. It contains information about the REST request and response such as status code, any errors it encountered, and the model name used. The extended event `external_rest_endpoint_summary` contains additional information that can be for troubleshooting and debugging REST requests.
 
 ## Examples
 
 ### A. Create embeddings with a SELECT statement
 
-The following example shows how to use the `AI_GENERATE_EMBEDDINGS` function with a select statement which returns vector array results.
+The following example shows how to use the `AI_GENERATE_EMBEDDINGS` function with a select statement that returns results in a JSON array.
 
 ```sql
 SELECT id,
@@ -119,15 +124,15 @@ FROM myTable;
 
 ### B. Create embeddings with a SELECT statement using AI_GENERATE_CHUNKS
 
-The following example shows how to use the `AI_GENERATE_EMBEDDINGS` function with the `AI_GENERATE_CHUNKS` function to pass text broken up in specified chunk sizes with a select statement which returns vector array results.
+The following example shows how to use the `AI_GENERATE_EMBEDDINGS` function with the [AI_GENERATE_CHUNKS](ai-generate-chunks-transact-sql.md) function to pass text broken up in specified chunk sizes with a select statement that returns vector array results.
 
 ```sql
 SELECT id,
        title,
        large_text,
-       AI_GENERATE_EMBEDDINGS(c.chunk_text USE MODEL MyAzureOpenAiModel)
+       AI_GENERATE_EMBEDDINGS(c.chunk_text USE MODEL MyAzureOpenAIModel)
 FROM myTable
-    CROSS APPLY AI_GENERATE_CHUNKS (SOURCE = large_text, CHUNK_TYPE = FIXED, CHUNK_SIZE = 10) AS c;
+CROSS APPLY AI_GENERATE_CHUNKS (SOURCE = large_text, CHUNK_TYPE = FIXED, CHUNK_SIZE = 10) AS c;
 ```
 
 ### C. Create embeddings with a table update
@@ -136,7 +141,7 @@ The following example shows how to use the `AI_GENERATE_EMBEDDINGS` function wit
 
 ```sql
 UPDATE t
-    SET myEmbeddings = AI_GENERATE_EMBEDDINGS(t.text USE MODEL MyAzureOpenAiModel)
+    SET myEmbeddings = AI_GENERATE_EMBEDDINGS(t.text USE MODEL MyAzureOpenAIModel)
 FROM myTable AS t;
 ```
 
@@ -146,16 +151,42 @@ The following example shows how to use the `AI_GENERATE_EMBEDDINGS` function wit
 
 ```sql
 SELECT id,
-       AI_GENERATE_EMBEDDINGS(large_text USE MODEL MyAzureOpenAIModel PARAMETERS '{"dimensions" : 768 }')
+       AI_GENERATE_EMBEDDINGS(large_text USE MODEL MyAzureOpenAIModel PARAMETERS TRY_CONVERT (JSON, N'{"dimensions":768}'))
 FROM myTable;
 ```
 
-### E. A full example with chunking, AI_GENERATE_EMBEDDINGS, and model creation
+### E. Retry embeddings generation with `retry_count` PARAMETERS option
 
-This example is a full flow from creating the [CREATE EXTERNAL MODEL](../statements/create-external-model-transact-sql.md), using `AI_GENERATE_EMBEDDINGS`, and using [AI_GENERATE_CHUNKS](ai-generate-chunks-transact-sql.md) to insert the results into a table with a **vector** data type. Remember to replace `<password>` with a valid password.
+If the embeddings call encounters HTTP status codes indicating temporary issues, you can configure the request to automatically retry.
+
+To specify the number of retries, add the following JSON to the `PARAMETERS` option. This value should be a positive integer between zero (`0`) and ten (`10`) inclusive, and can't be `NULL`.
+
+> [!NOTE]  
+> If a `retry_count` value is specified in the `AI_GENERATE_EMBEDDINGS` query, it overrides the `retry_count` (if defined) in the external model's configuration.
 
 ```sql
--- Turn external REST endpoint invocation ON in the database
+SELECT id,
+       AI_GENERATE_EMBEDDINGS(large_text USE MODEL MyAzureOpenAIModel PARAMETERS TRY_CONVERT (JSON, N'{"retry_count":10}'))
+FROM myTable;
+```
+
+### F. A full example with chunking, AI_GENERATE_EMBEDDINGS, and model creation
+
+The following example demonstrates an end-to-end process for making your data AI-ready:
+
+1. Use [CREATE EXTERNAL MODEL](../statements/create-external-model-transact-sql.md) to register and make your embedding model accessible.
+
+1. Split the dataset into smaller chunks with [AI_GENERATE_CHUNKS](ai-generate-chunks-transact-sql.md), so the data fits within the model's context window and improves retrieval accuracy.
+
+1. Generate embeddings using `AI_GENERATE_EMBEDDINGS`.
+
+1. Insert the results into a table with a [vector data type](../data-types/vector-data-type.md).
+
+> [!NOTE]  
+> Replace `<password>` with a valid password.
+
+```sql
+-- Enable the external REST endpoint invocation on the database server
 EXECUTE sp_configure 'external rest endpoint enabled', 1;
 RECONFIGURE WITH OVERRIDE;
 GO
@@ -175,7 +206,7 @@ CREATE DATABASE SCOPED CREDENTIAL [https://my-azure-openai-endpoint.openai.azure
 GO
 
 -- Create an external model to call the Azure OpenAI embeddings REST endpoint
-CREATE EXTERNAL MODEL MyAzureOpenAiModel
+CREATE EXTERNAL MODEL MyAzureOpenAIModel
 WITH (
       LOCATION = 'https://my-azure-openai-endpoint.openai.azure.com/openai/deployments/text-embedding-ada-002/embeddings?api-version=2023-05-15',
       API_FORMAT = 'Azure OpenAI',
@@ -203,12 +234,12 @@ CREATE TABLE text_embeddings
 (
     embeddings_id INT IDENTITY (1, 1) PRIMARY KEY,
     chunked_text NVARCHAR (MAX),
-    vector_embeddings VECTOR(1536)
+    vector_embeddings VECTOR (1536)
 );
 
 -- Insert the chunked text and vector embeddings into the text_embeddings table using AI_GENERATE_CHUNKS and AI_GENERATE_EMBEDDINGS
 INSERT INTO text_embeddings (chunked_text, vector_embeddings)
-SELECT c.chunk, AI_GENERATE_EMBEDDINGS(c.chunk USE MODEL MyAzureOpenAiModel)
+SELECT c.chunk, AI_GENERATE_EMBEDDINGS(c.chunk USE MODEL MyAzureOpenAIModel)
 FROM textchunk t
 CROSS APPLY
     AI_GENERATE_CHUNKS(source = t.text_to_chunk, chunk_type = FIXED, chunk_size = 100) c;
