@@ -193,7 +193,7 @@
     "groups": {
       "gr-azure-sql": {
         "dest": "azure-sql",
-        "moniker_range": "= azuresql|| azuresql-db || azuresql-mi || azuresql-vm "
+        "moniker_range": "= azuresql|| azuresql-db || azuresql-mi || azuresql-vm || fabricsql"
       }
     },
     "dest": "azure-sql",
