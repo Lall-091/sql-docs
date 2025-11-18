@@ -8979,6 +8979,10 @@ items:
           items:
           - name: Overview
             href: tools/visual-studio-code-extensions/mssql/mssql-schema-designer.md
+        - name: Data-tier Application
+          items:
+          - name: Overview
+            href: tools/visual-studio-code-extensions/mssql/mssql-data-tier-application.md
     - name: SQL bindings for Azure Functions
       items:
       - name: Overview
