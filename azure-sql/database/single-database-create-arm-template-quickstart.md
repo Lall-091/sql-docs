@@ -49,7 +49,7 @@ These resources are defined in the template:
 - [**Microsoft.Sql/servers**](/azure/templates/microsoft.sql/servers)
 - [**Microsoft.Sql/servers/databases**](/azure/templates/microsoft.sql/servers/databases)
 
-More Azure SQL Database template samples can be found in [Azure Quickstart Templates](https://learn.microsoft.com/azure/azure-resource-manager/templates/).
+More Azure SQL Database template samples can be found in [Azure Quickstart Templates](../../../azure-docs-pr/articles/azure-resource-manager/templates/).
 
 ## Deploy the template
 
