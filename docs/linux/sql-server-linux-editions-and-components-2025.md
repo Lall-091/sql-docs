@@ -5,10 +5,10 @@ description: This article describes editions, features, and components supported
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh, vanto
-ms.date: 11/18/2025
+ms.date: 11/27/2025
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - linux-related-content
   - ignite-2025
@@ -55,7 +55,7 @@ For a list of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] feature
 
 ## Use SQL Server with client/server applications
 
-You can install just the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] client components on a computer that is running client/server applications that connect directly to an instance of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. A client components installation is also a good option if you administer an instance of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on a database server, or if you plan to develop [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] applications.
+You can install just the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] client components on a computer running client/server applications that connect directly to an instance of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. A client components installation is also a good option if you administer an instance of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on a database server, or if you plan to develop [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] applications.
 
 ## SQL Server components
 
@@ -63,7 +63,7 @@ You can install just the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.m
 
 | Server components | Description |
 | --- | --- |
-| [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] | [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] includes the [!INCLUDE [ssDE](../includes/ssde-md.md)], the core service for storing, processing, and securing data, replication, Full-Text Search, tools for managing relational and XML data, and in database analytics integration. |
+| SQL Server Database Engine | [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] includes the [!INCLUDE [ssDE](../includes/ssde-md.md)], the core service for storing, processing, and securing data, replication, Full-Text Search, tools for managing relational and XML data, and in database analytics integration. |
 
 **Enterprise Developer, Standard Developer, Enterprise Core, and Evaluation editions**
 
@@ -78,24 +78,26 @@ The Developer editions continue to support only one client for [SQL Server Distr
 
 | Feature | Enterprise | Standard | Express |
 | --- | :---: | :---: | :---: |
-| Maximum compute capacity used by a single instance - [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] <sup>1</sup> | Operating system maximum | Limited to lesser of 4 sockets or 32 cores | Limited to lesser of 1 socket or 4 cores |
-| Maximum compute capacity used by a single instance - [!INCLUDE [ssASnoversion](../includes/ssasnoversion-md.md)] or [!INCLUDE [ssRSnoversion](../includes/ssrsnoversion-md.md)] | Operating system maximum | Limited to lesser of 4 sockets or 32 cores | Limited to lesser of 1 socket or 4 cores |
-| Maximum memory for buffer pool per instance of [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] | Operating system maximum | 256 GB | 1,410 MB |
-| Maximum capacity for [buffer pool extension](../database-engine/configure-windows/buffer-pool-extension.md) per instance of [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] | 32 * (max server memory configuration) | 4 * (max server memory configuration) | N/A |
-| Maximum memory for Columnstore segment cache per instance of [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] | Unlimited memory | 32 GB | 352 MB |
-| Maximum memory-optimized data size per database in [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] | Unlimited memory | 32 GB | 352 MB |
-| Maximum relational database size | 524 PB | 524 PB | 10 GB |
+| Maximum compute capacity used by a single instance - SQL Server Database Engine <sup>1</sup> | Operating system maximum | Limited to lesser of 4 sockets or 32 cores | Limited to lesser of 1 socket or 4 cores |
+| Maximum compute capacity used by a single instance - Analysis Services or Reporting Services | Operating system maximum | Limited to lesser of 4 sockets or 32 cores | Limited to lesser of 1 socket or 4 cores |
+| Maximum memory for buffer pool per instance of SQL Server Database Engine | Operating system maximum | 256&nbsp;GB | 1,410&nbsp;MB |
+| Maximum capacity for the [buffer pool extension](../database-engine/configure-windows/buffer-pool-extension.md) per instance of SQL Server Database Engine | 32 * (max server memory configuration) | 4 * (max server memory configuration) | N/A |
+| Maximum memory for columnstore segment cache per instance of SQL Server Database Engine | Unlimited memory | 32&nbsp;GB | 352&nbsp;MB |
+| Maximum memory-optimized data size per database in SQL Server Database Engine | Unlimited memory | 32&nbsp;GB | 352&nbsp;MB |
+| Maximum relational database size | 524&nbsp;PB | 524&nbsp;PB | 10&nbsp;GB |
 
 <sup>1</sup> Enterprise edition with Server + Client Access License (CAL) based licensing (not available for new agreements) is limited to a maximum of 20 cores per SQL Server instance. There are no limits under the Core-based Server Licensing model. For more information, see [Compute capacity limits by edition of SQL Server](../sql-server/compute-capacity-limits-by-edition-of-sql-server.md).
 
-## RDBMS high availability
+<a id="rdbms-high-availability"></a>
+
+## High availability
 
 | Feature | Enterprise | Standard | Express |
 | --- | :---: | :---: | :---: |
 | Log shipping | Yes | Yes | No |
 | Backup compression | Yes | Yes | No |
 | Database snapshot | Yes | Yes | No |
-| Always On failover cluster instance <sup>1</sup> | Yes | Yes | No |
+| Always On failover cluster instances <sup>1</sup> | Yes | Yes | No |
 | Always On availability groups <sup>2</sup> | Yes | No | No |
 | Basic availability groups <sup>3</sup> | No | Yes | No |
 | Minimum replica commit availability group | Yes | Yes | No |
@@ -116,7 +118,7 @@ The Developer editions continue to support only one client for [SQL Server Distr
 
 <sup>3</sup> Standard edition supports basic availability groups. A basic availability group supports two replicas, with one database. For more information about basic availability groups, see [Basic Always On availability groups for a single database](../database-engine/availability-groups/windows/basic-availability-groups-always-on-availability-groups.md).
 
-## RDBMS scalability and performance
+## Scalability and performance
 
 | Feature | Enterprise | Standard | Express |
 | --- | :---: | :---: | :---: |
@@ -124,23 +126,28 @@ The Developer editions continue to support only one client for [SQL Server Distr
 | Large object binaries in clustered columnstore indexes | Yes | Yes | Yes |
 | Online nonclustered columnstore index rebuild | Yes | No | No |
 | In-Memory OLTP <sup>1</sup> | Yes | Yes | Yes |
-| Persistent Main Memory | Yes | Yes | Yes |
+| Persistent main memory | Yes | Yes | Yes |
 | Table and index partitioning | Yes | Yes | Yes |
 | Data compression | Yes | Yes | Yes |
-| Resource Governor | Yes | No | No |
-| Partitioned Table Parallelism | Yes | No | No |
-| NUMA Aware and Large Page Memory and Buffer Array Allocation | Yes | No | No |
-| IO Resource Governance | Yes | No | No |
-| Delayed Durability | Yes | Yes | Yes |
-| Automatic tuning | Yes | No | No |
-| Batch Mode Adaptive Joins | Yes | No | No |
-| Batch Mode Memory Grant Feedback | Yes | No | No |
-| Interleaved Execution for Multi-Statement Table Valued Functions | Yes | Yes | Yes |
+| Resource governor | Yes | No | No |
+| Partitioned table parallelism | Yes | No | No |
+| NUMA aware large page memory and buffer array allocation | Yes | No | No |
+| I/O resource governance | Yes | No | No |
+| Delayed durability | Yes | Yes | Yes |
 | Bulk insert improvements | Yes | Yes | Yes |
 
 <sup>1</sup> In-Memory OLTP data size and columnstore segment cache are limited to the amount of memory specified by edition in the [Scale limits](#scale-limits) section. The max degree of parallelism is limited. The degree of process parallelism (DOP) for an index build is limited to 2 DOP for the Standard edition and 1 DOP for Express edition. This refers to columnstore indexes created over disk-based tables and memory-optimized tables.
 
-## RDBMS security
+## Intelligent query processing
+
+| Feature | Enterprise | Standard | Express |
+| --- | :---: | :---: | :---: |
+| Automatic tuning | Yes | No | No |
+| Batch mode adaptive joins | Yes | No | No |
+| Batch mode memory grant feedback | Yes | No | No |
+| Interleaved execution for multi-statement table valued functions | Yes | Yes | Yes |
+
+## Security
 
 | Feature | Enterprise | Standard | Express |
 | --- | :---: | :---: | :---: |
@@ -149,13 +156,15 @@ The Developer editions continue to support only one client for [SQL Server Distr
 | Dynamic data masking | Yes | Yes | Yes |
 | Basic auditing | Yes | Yes | Yes |
 | Fine-grained auditing | Yes | Yes | Yes |
-| Transparent database encryption (TDE) | Yes | Yes | No |
+| Transparent data encryption (TDE) | Yes | Yes | No |
 | Extensible Key Management (EKM) using Azure Key Vault | Yes | Yes | Yes |
 | User-defined roles | Yes | Yes | Yes |
 | Contained databases | Yes | Yes | Yes |
 | Encryption for backups | Yes | Yes | No |
 
-## RDBMS manageability
+<a id="rdbms-manageability"></a>
+
+## Manageability
 
 | Feature | Enterprise | Standard | Express |
 | --- | :---: | :---: | :---: |
@@ -169,7 +178,7 @@ The Developer editions continue to support only one client for [SQL Server Distr
 | Direct query of indexed views (using `NOEXPAND` hint) | Yes | Yes | Yes |
 | Automatic indexed views maintenance | Yes | Yes | No |
 | Distributed partitioned views | Yes | No | No |
-| Parallel index operations | Yes | No | No |
+| Parallel index maintenance operations | Yes | No | No |
 | Automatic use of indexed view by query optimizer | Yes | No | No |
 | Parallel consistency check | Yes | No | No |
 | SQL Server Utility Control Point | Yes | No | No |
@@ -185,12 +194,12 @@ The Developer editions continue to support only one client for [SQL Server Distr
 | Temporal | Yes | Yes | Yes |
 | Native XML support | Yes | Yes | Yes |
 | XML indexing | Yes | Yes | Yes |
-| `MERGE` and UPSERT capabilities | Yes | Yes | Yes |
+| `MERGE` and upsert capabilities | Yes | Yes | Yes |
 | Date and time data types | Yes | Yes | Yes |
 | Internationalization support | Yes | Yes | Yes |
 | Full-text and semantic search | Yes | Yes | Yes |
 | Specification of language in query | Yes | Yes | Yes |
-| Service Broker (messaging) | Yes | Yes | No <sup>1</sup> |
+| Service Broker (messaging and queuing) | Yes | Yes | No <sup>1</sup> |
 | Transact-SQL endpoints | Yes | Yes | No |
 | Graph | Yes | Yes | Yes |
 
@@ -202,7 +211,7 @@ For info about the Integration Services (SSIS) features supported by the edition
 
 ## Spatial and location services
 
-| Feature name | Enterprise | Standard | Express |
+| Feature | Enterprise | Standard | Express |
 | --- | :---: | :---: | :---: |
 | Spatial indexes | Yes | Yes | Yes |
 | Planar and geodetic data types | Yes | Yes | Yes |
@@ -236,7 +245,7 @@ The following features and services aren't available for [!INCLUDE [sssql25](../
 | | Windows integrated authentication for availability group (AG) endpoints | Create and use certificate based endpoint authentication for availability groups. For more information, see [Configure SQL Server availability group for high availability on Linux](sql-server-linux-availability-group-configure-ha.md). |
 | | Always Encrypted with secure enclaves | |
 | | SQL Server on Linux deployments aren't FIPS compliant | |
-| **Services** | SQL Server Browser | The SQL Server Browser service isn't required on Linux because only a single default instance is supported per host. Unlike, Windows, there are no named instances to resolve, and the port is explicitly configured during setup. |
+| **Services** | SQL Server Browser | The SQL Server Browser service isn't required on Linux because only a single default instance is supported per host. Unlike on Windows, there are no named instances to resolve, and the port is explicitly configured during setup. |
 | | SQL Server R services | SQL Server R is supported within [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], but [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] R services as a separate package isn't supported.<br /><br />You can install Machine Learning Services on Linux for [SQL Server 2019](sql-server-linux-setup-machine-learning.md) and [SQL Server 2022](sql-server-linux-setup-machine-learning-sql-2022.md). |
 | | Analysis Services | |
 | | Reporting Services | [Configure Power BI Report Server catalog databases for SQL Server on Linux](sql-server-linux-configure-power-bi-report-server-catalog.md). Run [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Reporting Services (SSRS) on Windows, and host the catalog databases for SSRS on [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux deployments. |

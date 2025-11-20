@@ -4,10 +4,10 @@ description: Learn details of the features supported by the various editions of 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray
-ms.date: 11/19/2025
+ms.date: 11/27/2025
 ms.service: sql
 ms.subservice: release-landing
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 helpviewer_keywords:
@@ -74,32 +74,32 @@ Use the information in the following tables to determine the set of features tha
 
 | Feature | Description |
 | --- | --- |
-| [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] | [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] includes the [!INCLUDE [ssDE](../includes/ssde-md.md)], the core service for storing, processing, and securing data, replication, full-text search, tools for managing relational and XML data, in database analytics integration, and PolyBase integration for access to heterogeneous data sources, and Machine Learning Services to run Python and R scripts with relational data. |
-| [!INCLUDE [ssASnoversion](../includes/ssasnoversion-md.md)] | [!INCLUDE [ssASnoversion](../includes/ssasnoversion-md.md)] includes the tools for creating and managing online analytical processing (OLAP) and data mining applications. |
-| [!INCLUDE [ssRSnoversion](../includes/ssrsnoversion-md.md)] | [!INCLUDE [ssRSnoversion](../includes/ssrsnoversion-md.md)] includes server and client components for creating, managing, and deploying tabular, matrix, graphical, and free-form reports. [!INCLUDE [ssRSnoversion](../includes/ssrsnoversion-md.md)] is also an extensible platform that you can use to develop report applications. |
-| [!INCLUDE [ssISnoversion](../includes/ssisnoversion-md.md)] | [!INCLUDE [ssISnoversion](../includes/ssisnoversion-md.md)] is a set of graphical tools and programmable objects for moving, copying, and transforming data. It also includes the [!INCLUDE [ssDQSnoversion](../includes/ssdqsnoversion-md.md)] (DQS) component for [!INCLUDE [ssISnoversion](../includes/ssisnoversion-md.md)]. |
-| [!INCLUDE [ssMDSshort](../includes/ssmdsshort-md.md)] | [!INCLUDE [ssMDSshort](../includes/ssmdsshort-md.md)] (MDS) is the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] solution for master data management. MDS can be configured to manage any domain (products, customers, accounts) and includes hierarchies, granular security, transactions, data versioning, and business rules, as well as an [!INCLUDE [ssMDSXLS](../includes/ssmdsxls-md.md)] that can be used to manage data. |
+| SQL Server Database Engine | [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] includes the [!INCLUDE [ssDE](../includes/ssde-md.md)], the core service for storing, processing, and securing data, replication, full-text search, tools for managing relational and XML data, in database analytics integration, and PolyBase integration for access to heterogeneous data sources, and Machine Learning Services to run Python and R scripts with relational data. |
+| Analysis Services | [!INCLUDE [ssASnoversion](../includes/ssasnoversion-md.md)] includes the tools for creating and managing online analytical processing (OLAP) and data mining applications. |
+| Reporting Services | [!INCLUDE [ssRSnoversion](../includes/ssrsnoversion-md.md)] includes server and client components for creating, managing, and deploying tabular, matrix, graphical, and free-form reports. [!INCLUDE [ssRSnoversion](../includes/ssrsnoversion-md.md)] is also an extensible platform that you can use to develop report applications. |
+| Integration Services | [!INCLUDE [ssISnoversion](../includes/ssisnoversion-md.md)] is a set of graphical tools and programmable objects for moving, copying, and transforming data. It also includes the [!INCLUDE [ssDQSnoversion](../includes/ssdqsnoversion-md.md)] (DQS) component for [!INCLUDE [ssISnoversion](../includes/ssisnoversion-md.md)]. |
+| Master Data Services | [!INCLUDE [ssMDSshort](../includes/ssmdsshort-md.md)] (MDS) is the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] solution for master data management. MDS can be configured to manage any domain (products, customers, accounts) and includes hierarchies, granular security, transactions, data versioning, and business rules, as well as an [!INCLUDE [ssMDSXLS](../includes/ssmdsxls-md.md)] that can be used to manage data. |
 | Machine Learning Services (In-Database) | Machine Learning Services (In-Database) supports distributed, scalable machine learning solutions using enterprise data sources. In [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] 2016, the R language was supported. [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] supports R and Python. |
 | Data Virtualization with PolyBase | Query different types of data on different types of data sources from SQL Server. |
 | Azure connected services | [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] extends Azure connected services and features including Azure Synapse Link, Microsoft Purview access policies, Azure extension for SQL Server, pay-as-you-go billing, and the link feature for SQL Managed Instance. |
 
 ### Developer and Evaluation editions
 
-For features supported by Developer and Evaluation editions, see features listed for the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Enterprise edition in the tables below.
+For features supported by Developer and Evaluation editions, see features listed for the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Enterprise edition in the following tables.
 
 The Developer edition continues to support only 1 client for [SQL Server Distributed Replay](../tools/distributed-replay/sql-server-distributed-replay.md), which is deprecated in [!INCLUDE [sssql22-md](../includes/sssql22-md.md)].
 
 ## Scale limits
 
-| Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
+| Feature | Enterprise | Standard | Web | Express with<br />Advanced Services | Express |
 | --- | :---: | :---: | :---: | :---: | :---: |
-| Maximum compute capacity used by a single instance - [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] <sup>1</sup> | Operating system maximum | Limited to lesser of 4 sockets or 24 cores | Limited to lesser of 4 sockets or 16 cores | Limited to lesser of 1 socket or 4 cores | Limited to lesser of 1 socket or 4 cores |
-| Maximum compute capacity used by a single instance - [!INCLUDE [ssASnoversion](../includes/ssasnoversion-md.md)] or [!INCLUDE [ssRSnoversion](../includes/ssrsnoversion-md.md)] | Operating system maximum | Limited to lesser of 4 sockets or 24 cores | Limited to lesser of 4 sockets or 16 cores | Limited to lesser of 1 socket or 4 cores | Limited to lesser of 1 socket or 4 cores |
-| Maximum memory for buffer pool per instance of [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] | Operating System Maximum | 128&nbsp;GB | 64&nbsp;GB | 1,410&nbsp;MB | 1,410&nbsp;MB |
-| Maximum memory for columnstore segment cache per instance of [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] | Unlimited memory | 32&nbsp;GB | 16&nbsp;GB | 352&nbsp;MB | 352&nbsp;MB |
-| Maximum memory-optimized data size per database in [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] | Unlimited memory | 32&nbsp;GB | 16&nbsp;GB | 352&nbsp;MB | 352&nbsp;MB |
-| Maximum memory utilized per instance of [!INCLUDE [ssASnoversion](../includes/ssasnoversion-md.md)] | Operating System Maximum | 16&nbsp;GB <sup>2</sup><br /><br />64&nbsp;GB <sup>3</sup> | N/A | N/A | N/A |
-| Maximum memory utilized per instance of [!INCLUDE [ssRSnoversion](../includes/ssrsnoversion-md.md)] | Operating System Maximum | 64&nbsp;GB | 64&nbsp;GB | 4&nbsp;GB | N/A |
+| Maximum compute capacity used by a single instance - SQL Server Database Engine <sup>1</sup> | Operating system maximum | Limited to lesser of 4 sockets or 24 cores | Limited to lesser of 4 sockets or 16 cores | Limited to lesser of 1 socket or 4 cores | Limited to lesser of 1 socket or 4 cores |
+| Maximum compute capacity used by a single instance - Analysis Services or Reporting Services | Operating system maximum | Limited to lesser of 4 sockets or 24 cores | Limited to lesser of 4 sockets or 16 cores | Limited to lesser of 1 socket or 4 cores | Limited to lesser of 1 socket or 4 cores |
+| Maximum memory for buffer pool per instance of SQL Server Database Engine | Operating system maximum | 128&nbsp;GB | 64&nbsp;GB | 1,410&nbsp;MB | 1,410&nbsp;MB |
+| Maximum memory for columnstore segment cache per instance of SQL Server Database Engine | Unlimited memory | 32&nbsp;GB | 16&nbsp;GB | 352&nbsp;MB | 352&nbsp;MB |
+| Maximum memory-optimized data size per database in SQL Server Database Engine | Unlimited memory | 32&nbsp;GB | 16&nbsp;GB | 352&nbsp;MB | 352&nbsp;MB |
+| Maximum memory utilized per instance of Analysis Services | Operating system maximum | 16&nbsp;GB&nbsp;<sup>2</sup><br /><br />64&nbsp;GB&nbsp;<sup>3</sup> | N/A | N/A | N/A |
+| Maximum memory utilized per instance of Reporting Services | Operating system maximum | 64&nbsp;GB | 64&nbsp;GB | 4&nbsp;GB | N/A |
 | Maximum relational database size | 524&nbsp;PB | 524&nbsp;PB | 524&nbsp;PB | 10&nbsp;GB | 10&nbsp;GB |
 
 <sup>1</sup> Enterprise edition with Server + Client Access License (CAL) based licensing (not available for new agreements) is limited to a maximum of 20 cores per [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] instance. There are no limits under the Core-based Server Licensing model. For more information, see [Compute capacity limits by edition of SQL Server](compute-capacity-limits-by-edition-of-sql-server.md).
@@ -114,7 +114,7 @@ The Developer edition continues to support only 1 client for [SQL Server Distrib
 
 SQL Server 2022 includes features for connecting to [Azure Synapse Analytics](/azure/synapse-analytics/), [Azure SQL Managed Instance](/azure/azure-sql/managed-instance/), and [Microsoft Purview](/purview/).
 
-| Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
+| Feature | Enterprise | Standard | Web | Express with<br />Advanced Services | Express |
 | --- | :---: | :---: | :---: | :---: | :---: |
 | Azure extension for SQL Server | Yes | Yes | No | No | No |
 | Azure Synapse Link <sup>1</sup> | Yes | Yes | Yes | No | No |
@@ -128,9 +128,11 @@ SQL Server 2022 includes features for connecting to [Azure Synapse Analytics](/a
 
 <sup>2</sup> Configure in Azure portal.
 
-## RDBMS high availability
+<a id="rdbms-high-availability"></a>
 
-| Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
+## High availability
+
+| Feature | Enterprise | Standard | Web | Express with<br />Advanced Services | Express |
 | --- | :---: | :---: | :---: | :---: | :---: |
 | Server core support <sup>1</sup> | Yes | Yes | Yes | Yes | Yes |
 | Log shipping | Yes | Yes | Yes | No | No |
@@ -146,17 +148,17 @@ SQL Server 2022 includes features for connecting to [Azure Synapse Analytics](/a
 | Online page and file restore | Yes | No | No | No | No |
 | Online index create and rebuild | Yes | No | No | No | No |
 | Resumable online index rebuilds | Yes | No | No | No | No |
-| Resumable online ADD CONSTRAINT | Yes | No | No | No | No |
+| Resumable online `ADD CONSTRAINT` | Yes | No | No | No | No |
 | Online schema change | Yes | No | No | No | No |
 | Fast recovery | Yes | No | No | No | No |
-| Accelerated database recovery | Yes | Yes | Yes | No | No |
+| Accelerated database recovery (ADR) | Yes | Yes | Yes | No | No |
 | Mirrored backups | Yes | No | No | No | No |
 | Hot add memory and CPU | Yes | No | No | No | No |
 | Database recovery advisor | Yes | Yes | Yes | Yes | Yes |
 | Encrypted backup | Yes | Yes | No | No | No |
 | Backup and restore to S3-compatible object storage over REST API | Yes | Yes | Yes | No | No |
 | Snapshot backup | Yes | Yes | Yes | Yes | Yes |
-| Cluster-less availability group <sup>5,6</sup> | Yes | Yes | No | No | No |
+| Clusterless availability group <sup>5, 6</sup> | Yes | Yes | No | No | No |
 | Failover servers for disaster recovery | Yes | Yes | No | No | No |
 | Failover servers for high availability | Yes | Yes | No | No | No |
 
@@ -176,9 +178,9 @@ SQL Server 2022 includes features for connecting to [Azure Synapse Analytics](/a
 
 <a id="RDBMSSP"></a>
 
-## RDBMS scalability and performance
+## Scalability and performance
 
-| Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
+| Feature | Enterprise | Standard | Web | Express with<br />Advanced Services | Express |
 | --- | :---: | :---: | :---: | :---: | :---: |
 | Columnstore <sup>1, 2</sup> | Yes | Yes | Yes | Yes | Yes |
 | Large object binaries in clustered columnstore indexes | Yes | Yes | Yes | Yes | Yes |
@@ -195,28 +197,13 @@ SQL Server 2022 includes features for connecting to [Azure Synapse Analytics](/a
 | Resource governor | Yes | No | No | No | No |
 | Partitioned table parallelism <sup>2</sup> | Yes | Yes | Yes | No | No |
 | Multiple filestream containers <sup>2</sup> | Yes | Yes | Yes | Yes | Yes |
-| NUMA aware and large page memory and buffer array allocation | Yes | No | No | No | No |
+| NUMA aware large page memory and buffer array allocation | Yes | No | No | No | No |
 | Buffer pool extension | Yes | Yes | No | No | No |
 | Buffer pool parallel scan | Yes | Yes | No | No | No |
 | I/O resource governance | Yes | No | No | No | No |
 | Read-ahead | Yes | No | No | No | No |
 | Advanced scanning | Yes | No | No | No | No |
 | Delayed durability | Yes | Yes | Yes | Yes | Yes |
-| Approximate count distinct | Yes | Yes | Yes | Yes | Yes |
-| Approximate percentile | Yes | Yes | Yes | Yes | Yes |
-| Automatic tuning | Yes | No | No | No | No |
-| Batch mode for row store <sup>1</sup> | Yes | No | No | No | No |
-| Cardinality estimate feedback | Yes | No | No | No | No |
-| Degree of parallelism feedback | Yes | No | No | No | No |
-| Memory grant feedback persistence and percentile | Yes | No | No | No | No |
-| Optimized plan forcing | Yes | Yes | Yes | Yes | Yes |
-| Parameter sensitive plan optimization | Yes | Yes | Yes | Yes | Yes |
-| Row mode memory grant feedback | Yes | No | No | No | No |
-| Table variable deferred compilation | Yes | Yes | Yes | Yes | Yes |
-| Scalar UDF inlining | Yes | Yes | Yes | Yes | Yes |
-| Batch mode adaptive joins | Yes | No | No | No | No |
-| Batch mode memory grant feedback | Yes | No | No | No | No |
-| Interleaved execution for multi-statement table valued functions | Yes | Yes | Yes | Yes | Yes |
 | Bulk insert improvements | Yes | Yes | Yes | Yes | Yes |
 | Support for Advanced Vector Extension (AVX) 512 <sup>5</sup> | Yes | No | No | No | No |
 | Integrated acceleration and offloading (hardware) | Yes | No | No | No | No |
@@ -233,11 +220,33 @@ SQL Server 2022 includes features for connecting to [Azure Synapse Analytics](/a
 
 <sup>5</sup> Requires [trace flag 15097](../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md#tf15097).
 
+## Intelligent query processing
+
+| Feature | Enterprise | Standard | Web | Express with<br />Advanced Services | Express |
+| --- | :---: | :---: | :---: | :---: | :---: |
+| Approximate count distinct | Yes | Yes | Yes | Yes | Yes |
+| Approximate percentile | Yes | Yes | Yes | Yes | Yes |
+| Automatic tuning | Yes | No | No | No | No |
+| Batch mode adaptive joins | Yes | No | No | No | No |
+| Batch mode memory grant feedback | Yes | No | No | No | No |
+| Batch mode on row store <sup>1</sup> | Yes | No | No | No | No |
+| Cardinality estimate feedback | Yes | No | No | No | No |
+| Degree of parallelism feedback | Yes | No | No | No | No |
+| Interleaved execution for multi-statement table valued functions | Yes | Yes | Yes | Yes | Yes |
+| Memory grant feedback persistence and percentile | Yes | No | No | No | No |
+| Optimized plan forcing | Yes | Yes | Yes | Yes | Yes |
+| Parameter sensitive plan optimization | Yes | Yes | Yes | Yes | Yes |
+| Row mode memory grant feedback | Yes | No | No | No | No |
+| Scalar UDF inlining | Yes | Yes | Yes | Yes | Yes |
+| Table variable deferred compilation | Yes | Yes | Yes | Yes | Yes |
+
+<sup>1</sup> Batch mode on rowstore only supports disk-based heaps and [B+ tree indexes](../relational-databases/sql-server-index-design-guide.md#index-basics). It doesn't support In-Memory OLTP tables, XML columns, or sparse column sets. The degree of parallelism (DOP) for [batch mode](../relational-databases/query-processing-architecture-guide.md#batch-mode-execution) operations is limited to `2` for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Standard edition and `1` for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Web and Express editions.
+
 <a id="RDBMSS"></a>
 
-## RDBMS security
+## Security
 
-| Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
+| Feature | Enterprise | Standard | Web | Express with<br />Advanced Services | Express |
 | --- | :---: | :---: | :---: | :---: | :---: |
 | Always Encrypted | Yes | Yes | Yes | Yes | Yes |
 | Always Encrypted with secure enclaves | Yes | Yes | Yes | Yes | Yes |
@@ -246,7 +255,7 @@ SQL Server 2022 includes features for connecting to [Azure Synapse Analytics](/a
 | Data classification and auditing | Yes | Yes | Yes | Yes | Yes |
 | Dynamic data masking | Yes | Yes | Yes | Yes | Yes |
 | Encryption for backups | Yes | Yes | No | No | No |
-| Extensible key management (EKM) | Yes | Yes | No | No | No |
+| Extensible Key Management (EKM) | Yes | Yes | No | No | No |
 | Ledger for SQL Server | Yes | Yes | Yes | Yes | Yes |
 | Microsoft Entra authentication <sup>1</sup> | Yes | Yes | Yes | Yes | Yes |
 | Row-level security | Yes | Yes | Yes | Yes | Yes |
@@ -256,52 +265,11 @@ SQL Server 2022 includes features for connecting to [Azure Synapse Analytics](/a
 
 <sup>1</sup> Requires [SQL Server enabled by Azure Arc](azure-arc/overview.md).
 
-<a id="Replication"></a>
+<a id="rdbms-manageability"></a>
 
-## Replication
+## Manageability
 
-| Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
-| --- | :---: | :---: | :---: | :---: | :---: |
-| Heterogeneous subscribers | Yes | Yes | No | No | No |
-| Merge replication | Yes | Yes | Yes <sup>1</sup> | Yes <sup>1</sup> | Yes <sup>1</sup> |
-| Oracle publishing | Yes | No | No | No | No |
-| Peer to peer transactional replication | Yes | No | No | No | No |
-| Peer to peer - last write wins - transactional replication | Yes | No | No | No | No |
-| Snapshot replication | Yes | Yes | Yes <sup>1</sup> | Yes <sup>1</sup> | Yes <sup>1</sup> |
-| [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] change tracking | Yes | Yes | Yes | Yes | Yes |
-| Transactional replication | Yes | Yes | Yes <sup>1</sup> | Yes <sup>1</sup> | Yes <sup>1</sup> |
-| Transactional replication to Azure | Yes | Yes | No | No | No |
-| Transactional replication updatable subscription | Yes | Yes | No | No | No |
-
-<sup>1</sup> Subscriber only
-
-<a id="SSMS"></a>
-
-## Management tools
-
-| Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
-| --- | :---: | :---: | :---: | :---: | :---: |
-| SQL Server Management Studio (SSMS) | Yes | Yes | Yes | Yes | Yes |
-| SQL Management Objects (SMO) | Yes | Yes | Yes | Yes | Yes |
-| SQL Assessment API | Yes | Yes | Yes | Yes | Yes |
-| SQL Vulnerability Assessment | Yes | Yes | Yes | Yes | Yes |
-| SQL Configuration Manager | Yes | Yes | Yes | Yes | Yes |
-| sqlcmd utility (command line tool) | Yes | Yes | Yes | Yes | Yes |
-| SQL Profiler | Yes | Yes | No <sup>1</sup> | No <sup>1</sup> | No <sup>1</sup> |
-| [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Agent | Yes | Yes | Yes | No | No |
-| Microsoft System Center Operations Manager Management Pack | Yes | Yes | Yes | No | No |
-| Database Tuning Advisor (DTA) | Yes | Yes <sup>2</sup> | Yes <sup>2</sup> | No | No |
-
-<sup>1</sup> [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Web, [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Express, [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Express with Tools, and [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Express with Advanced Services can be profiled using [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Standard and [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Enterprise editions.
-
-<sup>2</sup> Tuning enabled only on Standard edition features.
-
-> [!NOTE]  
-> Distributed Replay has been deprecated in [!INCLUDE [sssql22-md](../includes/sssql22-md.md)].
-
-## RDBMS manageability
-
-| Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
+| Feature | Enterprise | Standard | Web | Express with<br />Advanced Services | Express |
 | --- | :---: | :---: | :---: | :---: | :---: |
 | User instances | No | No | No | Yes | Yes |
 | LocalDB | No | No | No | Yes | No |
@@ -315,14 +283,14 @@ SQL Server 2022 includes features for connecting to [Azure Synapse Analytics](/a
 | Able to enroll as a managed instance in multi-instance management | Yes | Yes | Yes | No | No |
 | Standard performance reports | Yes | Yes | Yes | No | No |
 | Plan guides and plan freezing for plan guides | Yes | Yes | Yes | No | No |
-| Direct query of indexed views (using NOEXPAND hint) | Yes | Yes | Yes | Yes | Yes |
+| Direct query of indexed views (using `NOEXPAND` hint) | Yes | Yes | Yes | Yes | Yes |
 | Direct query SQL Server Analysis Services | Yes | Yes | No | No | Yes |
 | Automatic indexed views maintenance | Yes | Yes | Yes | No | No |
 | Distributed partitioned views | Yes | No | No | No | No |
 | Parallel index maintenance operations | Yes | No | No | No | No |
 | Automatic use of indexed view by query optimizer | Yes | No | No | No | No |
 | Parallel consistency check | Yes | No | No | No | No |
-| [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Utility Control Point | Yes | No | No | No | No |
+| SQL Server Utility Control Point | Yes | No | No | No | No |
 | Buffer pool extension | Yes | Yes | No | No | No |
 | Compatibility certification | Yes | Yes | Yes | Yes | Yes |
 
@@ -332,18 +300,9 @@ SQL Server 2022 includes features for connecting to [Azure Synapse Analytics](/a
 
 <sup>3</sup> On Linux, PowerShell scripts are supported, from Windows computers targeting [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on Linux.
 
-## Development tools
-
-| Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
-| --- | :---: | :---: | :---: | :---: | :---: |
-| Microsoft Visual Studio integration | Yes | Yes | Yes | Yes | Yes |
-| Intellisense (Transact-SQL and MDX) | Yes | Yes | Yes | Yes | Yes |
-| [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Data Tools (SSDT) | Yes | Yes | Yes | Yes | No |
-| MDX edit, debug, and design tools | Yes | Yes | No | No | No |
-
 ## Programmability
 
-| Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
+| Feature | Enterprise | Standard | Web | Express with<br />Advanced Services | Express |
 | --- | :---: | :---: | :---: | :---: | :---: |
 | Basic R integration <sup>1</sup> | Yes | Yes | Yes | Yes | No |
 | Advanced R integration <sup>2</sup> | Yes | No | No | No | No |
@@ -357,15 +316,15 @@ SQL Server 2022 includes features for connecting to [Azure Synapse Analytics](/a
 | Query Store hints | Yes | Yes | Yes | Yes | Yes |
 | Query Store on secondary replicas | Yes | No | No | No | No |
 | Temporal | Yes | Yes | Yes | Yes | Yes |
-| Common Language Runtime (CLR) Integration | Yes | Yes | Yes | Yes | Yes |
-| Java Language Runtime Integration | Yes | Yes | Yes | Yes | Yes |
+| Common language runtime (CLR) integration | Yes | Yes | Yes | Yes | Yes |
+| Java language runtime integration | Yes | Yes | Yes | Yes | Yes |
 | Native XML support | Yes | Yes | Yes | Yes | Yes |
 | XML indexing | Yes | Yes | Yes | Yes | Yes |
 | XML compression | Yes | Yes | Yes | Yes | Yes |
-| MERGE and UPSERT capabilities | Yes | Yes | Yes | Yes | Yes |
+| `MERGE` and upsert capabilities | Yes | Yes | Yes | Yes | Yes |
 | FILESTREAM support | Yes | Yes | Yes | Yes | Yes |
 | FileTable | Yes | Yes | Yes | Yes | Yes |
-| Date and Time datatypes | Yes | Yes | Yes | Yes | Yes |
+| Date and time data types | Yes | Yes | Yes | Yes | Yes |
 | Time series support | Yes | Yes | Yes | Yes | Yes |
 | Internationalization support | Yes | Yes | Yes | Yes | Yes |
 | Full-text and semantic search | Yes | Yes | Yes | Yes | No |
@@ -381,6 +340,67 @@ SQL Server 2022 includes features for connecting to [Azure Synapse Analytics](/a
 
 <sup>3</sup> Client only.
 
+## Spatial and location services
+
+| Feature | Enterprise | Standard | Web | Express with<br />Advanced Services | Express |
+| --- | :---: | :---: | :---: | :---: | :---: |
+| Spatial indexes | Yes | Yes | Yes | Yes | Yes |
+| Planar and geodetic data types | Yes | Yes | Yes | Yes | Yes |
+| Advanced spatial libraries | Yes | Yes | Yes | Yes | Yes |
+| Import/export of industry-standard spatial data formats | Yes | Yes | Yes | Yes | Yes |
+
+<a id="Replication"></a>
+
+## Replication
+
+| Feature | Enterprise | Standard | Web | Express with<br />Advanced Services | Express |
+| --- | :---: | :---: | :---: | :---: | :---: |
+| Heterogeneous subscribers | Yes | Yes | No | No | No |
+| Merge replication | Yes | Yes | Yes <sup>1</sup> | Yes <sup>1</sup> | Yes <sup>1</sup> |
+| Oracle publishing | Yes | No | No | No | No |
+| Peer to peer transactional replication | Yes | No | No | No | No |
+| Peer to peer transactional replication (last write wins) | Yes | No | No | No | No |
+| Snapshot replication | Yes | Yes | Yes <sup>1</sup> | Yes <sup>1</sup> | Yes <sup>1</sup> |
+| SQL Server change tracking | Yes | Yes | Yes | Yes | Yes |
+| Transactional replication | Yes | Yes | Yes <sup>1</sup> | Yes <sup>1</sup> | Yes <sup>1</sup> |
+| Transactional replication to Azure | Yes | Yes | No | No | No |
+| Transactional replication updatable subscription | Yes | Yes | No | No | No |
+
+<sup>1</sup> Subscriber only
+
+<a id="SSMS"></a>
+
+## Management tools
+
+| Feature | Enterprise | Standard | Web | Express with<br />Advanced Services | Express |
+| --- | :---: | :---: | :---: | :---: | :---: |
+| SQL Server Management Studio (SSMS) | Yes | Yes | Yes | Yes | Yes |
+| SQL Management Objects (SMO) | Yes | Yes | Yes | Yes | Yes |
+| SQL Assessment API | Yes | Yes | Yes | Yes | Yes |
+| SQL Vulnerability Assessment | Yes | Yes | Yes | Yes | Yes |
+| SQL Server Configuration Manager | Yes | Yes | Yes | Yes | Yes |
+| **sqlcmd** utility (command line tool) | Yes | Yes | Yes | Yes | Yes |
+| SQL Profiler | Yes | Yes | No <sup>1</sup> | No <sup>1</sup> | No <sup>1</sup> |
+| SQL Server Agent | Yes | Yes | Yes | No | No |
+| Microsoft System Center Operations Manager Management Pack | Yes | Yes | Yes | No | No |
+| Database Tuning Advisor (DTA) | Yes | Yes <sup>2</sup> | Yes <sup>2</sup> | No | No |
+
+<sup>1</sup> [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Web, [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Express, [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Express with Tools, and [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Express with Advanced Services can be profiled using [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Standard and [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Enterprise editions.
+
+<sup>2</sup> Tuning enabled only on Standard edition features.
+
+> [!NOTE]  
+> Distributed Replay has been deprecated in [!INCLUDE [sssql22-md](../includes/sssql22-md.md)].
+
+## Development tools
+
+| Feature | Enterprise | Standard | Web | Express with<br />Advanced Services | Express |
+| --- | :---: | :---: | :---: | :---: | :---: |
+| Microsoft Visual Studio integration | Yes | Yes | Yes | Yes | Yes |
+| IntelliSense (Transact-SQL and MDX) | Yes | Yes | Yes | Yes | Yes |
+| SQL Server Data Tools (SSDT) | Yes | Yes | Yes | Yes | No |
+| MDX edit, debug, and design tools | Yes | Yes | No | No | No |
+
 ## Integration Services
 
 For info about [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Integration Services (SSIS) features supported by the editions of [!INCLUDE [ssNoVersion_md](../includes/ssnoversion-md.md)], see [Integration Services features supported by the editions of SQL Server](../integration-services/integration-services-features-supported-by-the-editions-of-sql-server.md).
@@ -391,9 +411,9 @@ For information about the [!INCLUDE [ssMDSshort_md](../includes/ssmdsshort-md.md
 
 ## Data warehouse
 
-| Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
+| Feature | Enterprise | Standard | Web | Express with<br />Advanced Services | Express |
 | --- | :---: | :---: | :---: | :---: | :---: |
-| Auto-generate staging and data warehouse schema | Yes | Yes | No | No | No |
+| Autogenerate staging and data warehouse schema | Yes | Yes | No | No | No |
 | Change data capture | Yes | Yes | No | No | No |
 | Star join query optimizations | Yes | No | No | No | No |
 | Parallel query processing on partitioned tables and indexes | Yes | No | No | No | No |
@@ -411,20 +431,11 @@ For information about the Reporting Services features supported by the editions 
 
 For information about the Business Intelligence Client features supported by the editions of [!INCLUDE [ssNoVersion_md](../includes/ssnoversion-md.md)], see [Analysis Services Features Supported by the editions of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]](../analysis-services/analysis-services-features-supported-by-the-editions-of-sql-server-2016.md) or [SQL Server Reporting Services features supported by editions](../reporting-services/reporting-services-features-supported-by-the-editions-of-sql-server-2016.md).
 
-## Spatial and location services
-
-| Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
-| --- | :---: | :---: | :---: | :---: | :---: |
-| Spatial indexes | Yes | Yes | Yes | Yes | Yes |
-| Planar and geodetic data types | Yes | Yes | Yes | Yes | Yes |
-| Advanced spatial libraries | Yes | Yes | Yes | Yes | Yes |
-| Import/export of industry-standard spatial data formats | Yes | Yes | Yes | Yes | Yes |
-
 ## Additional database services
 
-| Feature | Enterprise | Standard | Web | Express<br />with<br />Advanced<br />Services | Express |
+| Feature | Enterprise | Standard | Web | Express with<br />Advanced Services | Express |
 | --- | :---: | :---: | :---: | :---: | :---: |
-| [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Migration Assistant | Yes | Yes | Yes | Yes | Yes |
+| SQL Server Migration Assistant (SSMA) | Yes | Yes | Yes | Yes | Yes |
 | Database mail | Yes | Yes | Yes | No | No |
 
 ## Related content

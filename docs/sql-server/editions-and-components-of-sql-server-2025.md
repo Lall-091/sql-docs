@@ -7,7 +7,7 @@ ms.reviewer: mikeray
 ms.date: 11/19/2025
 ms.service: sql
 ms.subservice: release-landing
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 helpviewer_keywords:
@@ -72,10 +72,10 @@ Use the information in the following tables to determine the set of features tha
 
 | Feature | Description |
 | --- | --- |
-| [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] | [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] includes the [!INCLUDE [ssDE](../includes/ssde-md.md)], the core service for storing, processing, and securing data, replication, full-text search, tools for managing relational, XML, and JSON data, in database analytics integration, and Machine Learning Services to run Python and R scripts with relational data. |
+| SQL Server Database Engine | [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] includes the [!INCLUDE [ssDE](../includes/ssde-md.md)], the core service for storing, processing, and securing data, replication, full-text search, tools for managing relational, XML, and JSON data, in database analytics integration, and Machine Learning Services to run Python and R scripts with relational data. |
 | Data&nbsp;virtualization with PolyBase | Query storage-based data sources (for example, Azure Storage and S3), and ODBC data sources from SQL Server. |
-| [!INCLUDE [ssASnoversion](../includes/ssasnoversion-md.md)] | [!INCLUDE [ssASnoversion](../includes/ssasnoversion-md.md)] includes the tools for creating and managing online analytical processing (OLAP) and data mining applications. |
-| [!INCLUDE [ssISnoversion](../includes/ssisnoversion-md.md)] | [!INCLUDE [ssISnoversion](../includes/ssisnoversion-md.md)] is a set of graphical tools and programmable objects for moving, copying, and transforming data. |
+| Analysis Services | [!INCLUDE [ssASnoversion](../includes/ssasnoversion-md.md)] includes the tools for creating and managing online analytical processing (OLAP) and data mining applications. |
+| Integration Services | [!INCLUDE [ssISnoversion](../includes/ssisnoversion-md.md)] is a set of graphical tools and programmable objects for moving, copying, and transforming data. |
 
 ### Enterprise Developer, Standard Developer, and Evaluation editions
 
@@ -85,12 +85,12 @@ For features supported by Enterprise Developer and Evaluation editions, see feat
 
 | Feature | Enterprise | Standard | Express |
 | --- | :---: | :---: | :---: |
-| Maximum compute capacity used by a single instance - [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] <sup>1</sup> | Operating system maximum | Limited to lesser of 4 sockets or 32 cores <sup>2</sup> | Limited to lesser of 1 socket or 4 cores |
+| Maximum compute capacity used by a single instance - SQL Server Database Engine <sup>1</sup> | Operating system maximum | Limited to lesser of 4 sockets or 32 cores <sup>2</sup> | Limited to lesser of 1 socket or 4 cores |
 | Maximum compute capacity used by a single instance - [!INCLUDE [ssASnoversion](../includes/ssasnoversion-md.md)] | Operating system maximum | Limited to lesser of 4 sockets or 32 cores <sup>3</sup> | N/A |
-| Maximum memory for buffer pool per instance of [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] | Operating system maximum | 256&nbsp;GB | 1,410&nbsp;MB |
-| Maximum memory for Columnstore segment cache per instance of [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] | Unlimited memory | 32&nbsp;GB | 352&nbsp;MB |
-| Maximum memory-optimized data size per database in [!INCLUDE [ssDEnoversion](../includes/ssdenoversion-md.md)] | Unlimited memory | 32&nbsp;GB | 352&nbsp;MB |
-| Maximum memory utilized per instance of [!INCLUDE [ssASnoversion](../includes/ssasnoversion-md.md)] | Operating system maximum | 16&nbsp;GB <sup>4</sup><br /><br />64&nbsp;GB <sup>5</sup> | N/A |
+| Maximum memory for buffer pool per instance of SQL Server Database Engine | Operating system maximum | 256&nbsp;GB | 1,410&nbsp;MB |
+| Maximum memory for columnstore segment cache per instance of SQL Server Database Engine | Unlimited memory | 32&nbsp;GB | 352&nbsp;MB |
+| Maximum memory-optimized data size per database in SQL Server Database Engine | Unlimited memory | 32&nbsp;GB | 352&nbsp;MB |
+| Maximum memory utilized per instance of Analysis Services | Operating system maximum | 16&nbsp;GB&nbsp;<sup>4</sup><br /><br />64&nbsp;GB&nbsp;<sup>5</sup> | N/A |
 | Maximum relational database size | 524&nbsp;PB | 524&nbsp;PB | 50&nbsp;GB |
 
 <sup>1</sup> Enterprise edition with Server + Client Access License (CAL) based licensing (not available for new agreements) is limited to a maximum of 20 cores per [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] instance. There are no limits under the Core-based Server Licensing model. For more information, see [Compute capacity limits by edition of SQL Server](compute-capacity-limits-by-edition-of-sql-server.md).
@@ -115,6 +115,8 @@ For features supported by Enterprise Developer and Evaluation editions, see feat
 
 <sup>1</sup> These features are governed by their respective [Lifecycle Policies](/lifecycle/products/sql-server-2025).
 
+<a id="rdbms-high-availability"></a>
+
 ## High availability
 
 | Feature | Enterprise | Standard | Express |
@@ -136,14 +138,14 @@ For features supported by Enterprise Developer and Evaluation editions, see feat
 | Resumable online `ADD CONSTRAINT` | Yes | No | No |
 | Online schema change | Yes | No | No |
 | Fast recovery | Yes | No | No |
-| Accelerated database recovery | Yes | Yes | No |
+| Accelerated database recovery (ADR) | Yes | Yes | No |
 | Mirrored backups | Yes | No | No |
 | Hot add memory | Yes | No | No |
 | Database recovery advisor | Yes | Yes | Yes |
 | Encrypted backup | Yes | Yes | No |
 | Backup and restore to S3-compatible object storage over REST API | Yes | Yes | No |
 | Snapshot backup | Yes | Yes | Yes |
-| Cluster-less availability group <sup>6,7</sup> | Yes | Yes | No |
+| Clusterless availability group <sup>6, 7</sup> | Yes | Yes | No |
 | Failover servers for disaster recovery | Yes | Yes | No |
 | Failover servers for high availability | Yes | Yes | No |
 
@@ -179,7 +181,7 @@ For features supported by Enterprise Developer and Evaluation editions, see feat
 | Resource governor | Yes | Yes | No |
 | Partitioned table parallelism <sup>2</sup> | Yes | Yes | No |
 | Multiple filestream containers <sup>2</sup> | Yes | Yes | Yes |
-| NUMA aware and large page memory and buffer array allocation | Yes | No | No |
+| NUMA aware large page memory and buffer array allocation | Yes | No | No |
 | Buffer pool extension | Yes | Yes | No |
 | Buffer pool parallel scan | Yes | Yes | No |
 | Read-ahead | Yes | No | No |
@@ -235,7 +237,7 @@ For features supported by Enterprise Developer and Evaluation editions, see feat
 | Data classification and auditing | Yes | Yes | Yes |
 | Dynamic data masking | Yes | Yes | Yes |
 | Encryption for backups | Yes | Yes | No |
-| Extensible key management (EKM) | Yes | Yes | No |
+| Extensible Key Management (EKM) | Yes | Yes | No |
 | Ledger for SQL Server | Yes | Yes | Yes |
 | Microsoft Entra authentication <sup>1</sup> | Yes | Yes | Yes |
 | Row-level security | Yes | Yes | Yes |
@@ -244,6 +246,8 @@ For features supported by Enterprise Developer and Evaluation editions, see feat
 | User-defined roles | Yes | Yes | Yes |
 
 <sup>1</sup> Requires SQL Server [enabled by Azure Arc](azure-arc/overview.md) or running on an [Azure Virtual Machine](/azure/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview).
+
+<a id="rdbms-manageability"></a>
 
 ## Manageability
 
@@ -357,7 +361,7 @@ For features supported by Enterprise Developer and Evaluation editions, see feat
 | Merge replication | Yes | Yes | Yes <sup>1</sup> |
 | Oracle publishing | Yes | No | No |
 | Peer to peer transactional replication | Yes | No | No |
-| Peer to peer - last write wins - transactional replication | Yes | No | No |
+| Peer to peer transactional replication (last write wins) | Yes | No | No |
 | Snapshot replication | Yes | Yes | Yes <sup>1</sup> |
 | Change tracking | Yes | Yes | Yes |
 | Change data capture | Yes | Yes | No |
@@ -378,7 +382,7 @@ For features supported by Enterprise Developer and Evaluation editions, see feat
 | SQL Management Objects (SMO) | Yes | Yes | Yes |
 | SQL Assessment API | Yes | Yes | Yes |
 | SQL Vulnerability Assessment | Yes | Yes | Yes |
-| SQL Configuration Manager | Yes | Yes | Yes |
+| SQL Server Configuration Manager | Yes | Yes | Yes |
 | **sqlcmd** utility (command line tool) | Yes | Yes | Yes |
 | SQL Profiler | Yes | Yes | No <sup>1</sup> |
 | SQL Server Agent | Yes | Yes | No |
@@ -395,8 +399,8 @@ For features supported by Enterprise Developer and Evaluation editions, see feat
 | --- | :---: | :---: | :---: |
 | Visual Studio Code integration | Yes | Yes | Yes |
 | Visual Studio integration | Yes | Yes | Yes |
-| Intellisense (Transact-SQL and MDX) | Yes | Yes | No |
-| [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Data Tools (SSDT) | Yes | Yes | Yes |
+| IntelliSense (Transact-SQL and MDX) | Yes | Yes | No |
+| SQL Server Data Tools (SSDT) | Yes | Yes | Yes |
 | MDX edit, debug, and design tools | Yes | Yes | No |
 
 ## Integration Services
@@ -407,7 +411,7 @@ For info about [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Integrati
 
 | Feature | Enterprise | Standard | Express |
 | --- | :---: | :---: | :---: |
-| Auto-generate staging and data warehouse schema | Yes | Yes | No |
+| Autogenerate staging and data warehouse schema | Yes | Yes | No |
 | Star join query optimizations | Yes | No | No |
 | Parallel query processing on partitioned tables and indexes | Yes | No | No |
 | Global batch aggregation | Yes | No | No |
