@@ -338,7 +338,7 @@ To configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on RHEL 
 1. Download the [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] Red Hat 9 repository configuration file:
 
    ```bash
-   sudo curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/9/mssql-server-preview.repo
+   sudo curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/9/mssql-server-2025.repo
    ```
 
    > [!TIP]  
