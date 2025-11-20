@@ -101,7 +101,7 @@ The following sections identify features that are improved or introduced in [!IN
 
 | New feature or update | Details |
 | --- | --- |
-| [Copilot in SQL Server Management Studio](/ssms/copilot/copilot-in-ssms-overview) | Ask questions. Get answers from your data. |
+| [GitHub Copilot in SQL Server Management Studio](/ssms/github-copilot/overview) | Ask questions. Get answers from your data. |
 | [Vector data type](../t-sql/data-types/vector-data-type.md) | Store vector data optimized for operations such as similarity search and machine learning applications. Vectors are stored in an optimized binary format but are exposed as JSON arrays for convenience. Each element of the vector can be stored either using a single-precision (4-byte) or half-precision (2-byte) floating-point value. |
 | [Vector functions](../t-sql/functions/vector-functions-transact-sql.md) | New scalar functions perform operations on vectors in binary format, allowing applications to store and manipulate vectors in the SQL Database Engine. |
 | [Vector index](ai/vectors.md#vector-search) | Create and manage approximate vector indexes to quickly and efficiently find similar vectors to a given reference vector.<br /><br />Query vector indexes from [sys.vector_indexes](../relational-databases/system-catalog-views/sys-vector-indexes-transact-sql.md). Requires [PREVIEW_FEATURES database scoped configuration](../t-sql/statements/alter-database-scoped-configuration-transact-sql.md#preview-features). |
