@@ -4,7 +4,7 @@ description: Learn details of the features supported by the various editions of 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray
-ms.date: 11/18/2025
+ms.date: 11/19/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: conceptual
@@ -206,7 +206,7 @@ For features supported by Enterprise Developer and Evaluation editions, see feat
 | Approximate count distinct | Yes | Yes | Yes |
 | Approximate percentile | Yes | Yes | Yes |
 | Automatic tuning | Yes | No | No |
-| Batch mode for row store <sup>1</sup> | Yes | No | No |
+| Batch mode on row store <sup>1</sup> | Yes | No | No |
 | Batch mode adaptive joins | Yes | No | No |
 | Batch mode memory grant feedback | Yes | No | No |
 | Cardinality estimate feedback | Yes | No | No |
@@ -222,7 +222,7 @@ For features supported by Enterprise Developer and Evaluation editions, see feat
 | Scalar UDF inlining | Yes | Yes | Yes |
 | Table variable deferred compilation | Yes | Yes | Yes |
 
-<sup>1</sup> In-Memory OLTP data size and columnstore segment cache are limited to the amount of memory specified by edition in the [Scale Limits](#scale-limits) section. The degree of parallelism (DOP) for [batch mode](../relational-databases/query-processing-architecture-guide.md#batch-mode-execution) operations is limited to 2 for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Standard edition and 1 for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Express edition.
+<sup>1</sup> Batch mode on rowstore only supports disk-based heaps and [B+ tree indexes](../relational-databases/sql-server-index-design-guide.md#index-basics). It doesn't support In-Memory OLTP tables, XML columns, or sparse column sets. The degree of parallelism (DOP) for [batch mode](../relational-databases/query-processing-architecture-guide.md#batch-mode-execution) operations is limited to `2` for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Standard edition, and `1` for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Express edition.
 
 ## Security
 

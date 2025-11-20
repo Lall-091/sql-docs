@@ -4,7 +4,7 @@ description: "Editions and supported features of SQL Server 2019"
 author: "MikeRayMSFT"
 ms.author: "mikeray"
 ms.reviewer: randolphwest
-ms.date: 11/18/2025
+ms.date: 11/19/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: conceptual
@@ -204,7 +204,7 @@ The Developer edition continues to support only 1 client for [SQL Server Distrib
 | Advanced scanning | Yes | No | No | No | No |
 | Delayed durability | Yes | Yes | Yes | Yes | Yes |
 | Intelligent Database: automatic tuning | Yes | No | No | No | No |
-| Intelligent Database: batch mode for row store <sup>1</sup> | Yes | No | No | No | No |
+| Intelligent Database: batch mode on row store <sup>1</sup> | Yes | No | No | No | No |
 | Intelligent Database: row mode memory grant feedback | Yes | No | No | No | No |
 | Intelligent Database: approximate count distinct | Yes | Yes | Yes | Yes | Yes |
 | Intelligent Database: table variable deferred compilation | Yes | Yes | Yes | Yes | Yes |
@@ -214,7 +214,7 @@ The Developer edition continues to support only 1 client for [SQL Server Distrib
 | Interleaved execution for multi-statement table valued functions | Yes | Yes | Yes | Yes | Yes |
 | Bulk insert improvements | Yes | Yes | Yes | Yes | Yes |
 
-<sup>1</sup> In-Memory OLTP data size and columnstore segment cache are limited to the amount of memory specified by edition in the [Scale Limits](#Cross-BoxScaleLimits) section. The degree of parallelism (DOP) for [batch mode](../relational-databases/query-processing-architecture-guide.md#batch-mode-execution) operations is limited to 2 for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Standard edition and 1 for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Web and Express editions. This refers to columnstore indexes created over disk-based tables and memory-optimized tables.
+<sup>1</sup> Batch mode on rowstore only supports disk-based heaps and [B+ tree indexes](../relational-databases/sql-server-index-design-guide.md#index-basics). It doesn't support In-Memory OLTP tables, XML columns, or sparse column sets. The degree of parallelism (DOP) for [batch mode](../relational-databases/query-processing-architecture-guide.md#batch-mode-execution) operations is limited to `2` for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Standard edition and `1` for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Web and Express editions.
 
 <sup>2</sup> Aggregate pushdown, string predicate pushdown, and SIMD optimizations are [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Enterprise edition scalability enhancements. For more detail, see [What's new in columnstore indexes](../relational-databases/indexes/columnstore-indexes-what-s-new.md).
 

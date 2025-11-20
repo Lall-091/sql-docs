@@ -4,7 +4,7 @@ description: Learn details of the features supported by the various editions of 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray
-ms.date: 11/18/2025
+ms.date: 11/19/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: conceptual
@@ -205,7 +205,7 @@ SQL Server 2022 includes features for connecting to [Azure Synapse Analytics](/a
 | Intelligent Database: approximate count distinct | Yes | Yes | Yes | Yes | Yes |
 | Intelligent Database: approximate percentile | Yes | Yes | Yes | Yes | Yes |
 | Intelligent Database: automatic tuning | Yes | No | No | No | No |
-| Intelligent Database: batch mode for row store <sup>1</sup> | Yes | No | No | No | No |
+| Intelligent Database: batch mode on row store <sup>1</sup> | Yes | No | No | No | No |
 | Intelligent Database: cardinality estimate feedback | Yes | No | No | No | No |
 | Intelligent Database: degree of parallelism feedback | Yes | No | No | No | No |
 | Intelligent Database: memory grant feedback persistence and percentile | Yes | No | No | No | No |
@@ -223,7 +223,7 @@ SQL Server 2022 includes features for connecting to [Azure Synapse Analytics](/a
 | Integrated acceleration and offloading (software) | Yes | Yes | No | No | No |
 | System page latch concurrency enhancements | Yes | Yes | Yes | Yes | Yes |
 
-<sup>1</sup> In-Memory OLTP data size and columnstore segment cache are limited to the amount of memory specified by edition in the [Scale Limits](#scale-limits) section. The degree of parallelism (DOP) for [batch mode](../relational-databases/query-processing-architecture-guide.md#batch-mode-execution) operations is limited to 2 for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Standard edition and 1 for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Web and Express editions. This refers to columnstore indexes created over disk-based tables and memory-optimized tables.
+<sup>1</sup> Batch mode on rowstore only supports disk-based heaps and [B+ tree indexes](../relational-databases/sql-server-index-design-guide.md#index-basics). It doesn't support In-Memory OLTP tables, XML columns, or sparse column sets. The degree of parallelism (DOP) for [batch mode](../relational-databases/query-processing-architecture-guide.md#batch-mode-execution) operations is limited to `2` for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Standard edition and `1` for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Web and Express editions.
 
 <sup>2</sup> Aggregate pushdown, string predicate pushdown, and SIMD optimizations are [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Enterprise edition scalability enhancements. For more detail, see [What's new in columnstore indexes](../relational-databases/indexes/columnstore-indexes-what-s-new.md).
 

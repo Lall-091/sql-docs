@@ -55,27 +55,6 @@ If you're restricting access with an Azure Network Security Group, ensure that t
 - The load balancer floating IP addresses for the AG listener
 - The cluster core IP address, if applicable.
 
-## Determine the load balancer SKU required
-
-[Azure load balancer](/azure/load-balancer/load-balancer-overview) is available in two stock-keeping units (SKUs): Basic and Standard. The standard load balancer is recommended as the Basic SKU will be [retired on September 30, 2025](https://azure.microsoft.com/updates/azure-basic-load-balancer-will-be-retired-on-30-september-2025-upgrade-to-standard-load-balancer/). The standard load balancer is required for virtual machines in an availability zone. Standard load balancer requires that all VM IP addresses use standard IP addresses.
-
-The current [Azure Quickstart Template](availability-group-quickstart-template-configure.md) for an availability group uses a basic load balancer with basic IP addresses.
-
-> [!NOTE]  
-> If you use a standard load balancer and Azure Storage for the cloud witness, you need to configure a [service endpoint](/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network) .
-
-The examples in this article specify a standard load balancer. In the examples, the script includes `-sku Standard`.
-
-```powershell
-$ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
-```
-
-To create a basic load balancer, remove `-sku Standard` from the line that creates the load balancer. For example:
-
-```powershell
-$ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe
-```
-
 ## Example Script: Create an internal load balancer with PowerShell
 
 > [!NOTE]  
@@ -130,6 +109,8 @@ foreach($VMName in $VMNames)
         start-AzVM -ResourceGroupName $ResourceGroupName -Name $VM.Name
     }
 ```
+
+[!INCLUDE [sql-vm-basic-load-balancer-retired](../../includes/sql-vm-basic-load-balancer-retired.md)]
 
 <a id="Add-IP"></a>
 
