@@ -1,5 +1,5 @@
 ---
-title: "binary and varbinary (Transact-SQL)"
+title: "Binary and Varbinary (Transact-SQL)"
 description: "Binary data types of either fixed length or variable length."
 author: MikeRayMSFT
 ms.author: mikeray
@@ -67,7 +67,7 @@ When other data types are converted to **binary** or **varbinary**, the data is 
 
 Converting data to the **binary** and **varbinary** data types is useful if **binary** data is the easiest way to move around data. At some point, you might convert a value type to a binary value of large enough size and then convert it back. This conversion always results in the same value if both conversions are taking place on the same version of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]. The binary representation of a value might change from version to version of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
 
-You can convert **int**, **smallint**, and **tinyint** to **binary** or **varbinary**. If you convert the **binary** value back to an integer value, this value will be different from the original integer value if truncation has occurred. For example, the following SELECT statement shows that the integer value `123456` is stored as a binary `0x0001e240`:
+You can convert **int**, **smallint**, and **tinyint** to **binary** or **varbinary**. If you convert the **binary** value back to an integer value, this value is different from the original integer value if truncation occurred. For example, the following SELECT statement shows that the integer value `123456` is stored as a binary `0x0001e240`:
 
 ```sql
 SELECT CAST( 123456 AS BINARY(4) );
@@ -83,10 +83,10 @@ The following batch shows that this silent truncation can affect arithmetic oper
 
 ```sql
 DECLARE @BinaryVariable2 BINARY(2);
-  
+
 SET @BinaryVariable2 = 123456;
 SET @BinaryVariable2 = @BinaryVariable2 + 1;
-  
+
 SELECT CAST( @BinaryVariable2 AS INT);
 GO
 ```
@@ -98,6 +98,6 @@ The final result is `57921`, not `123457`.
 
 ## Related content
 
-- [CAST and CONVERT (Transact-SQL)](../../t-sql/functions/cast-and-convert-transact-sql.md)
-- [Data Type Conversion &#40;Database Engine&#41;](../../t-sql/data-types/data-type-conversion-database-engine.md)
-- [Data Types (Transact-SQL)](../../t-sql/data-types/data-types-transact-sql.md)
+- [CAST and CONVERT (Transact-SQL)](../functions/cast-and-convert-transact-sql.md)
+- [Data Type Conversion (Database Engine)](data-type-conversion-database-engine.md)
+- [Data Types (Transact-SQL)](data-types-transact-sql.md)
