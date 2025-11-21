@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: dfurman
-ms.date: 06/10/2025
+ms.date: 11/20/2025
 ms.service: sql
 ms.topic: include
 ms.custom:
@@ -98,7 +98,7 @@ Specifies the maximum number of simultaneous requests that are allowed to execut
 
 #### GROUP_MAX_TEMPDB_DATA_MB = *value*
 
-Specifies the maximum amount of space that a workload group can consume in the `tempdb` data files, in megabytes. *value* must be 0 or a positive number. Fractional values are allowed.
+Specifies the maximum amount of space that a workload group can consume in the `tempdb` data files, in megabytes. *value* must be 0, a positive number, or NULL. Fractional values are allowed.
 
 When the value is 0, `tempdb` space allocations by sessions in the workload group are not allowed. When a value isn't set, resource governor doesn't limit `tempdb` space consumption by the workload group.
 
@@ -108,7 +108,7 @@ When a request running in a workload group attempts to increase `tempdb` data sp
 
 #### GROUP_MAX_TEMPDB_DATA_PERCENT = *value*
 
-Specifies the maximum amount of space that a workload group can consume in the `tempdb` data files, in percent of the maximum `tempdb` size. For the definition of the maximum `tempdb` size, see [Percent limit configuration](../../relational-databases/resource-governor/tempdb-space-resource-governance.md#percent-limit-configuration). *value* must be in the range from 0 to 100. Fractional values are allowed.
+Specifies the maximum amount of space that a workload group can consume in the `tempdb` data files, in percent of the maximum `tempdb` size. For the definition of the maximum `tempdb` size, see [Percent limit configuration](../../relational-databases/resource-governor/tempdb-space-resource-governance.md#percent-limit-configuration). *value* must be in the range from 0 to 100, or NULL. Fractional values are allowed.
 
 When the value is 0, `tempdb` space allocations by sessions in the workload group are not allowed. When a value isn't set, resource governor doesn't limit `tempdb` space consumption by the workload group. When `GROUP_MAX_TEMPDB_DATA_MB` is set, or when `tempdb` maximum size isn't defined, `GROUP_MAX_TEMPDB_DATA_PERCENT` has no effect.
 
