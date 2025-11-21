@@ -1,10 +1,10 @@
 ---
 title: "sys.sp_drop_event_stream_group (Transact-SQL)"
-description: "Drops an event stream group for the change event streaming feature introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] by using Transact-SQL (T-SQL)."
+description: sys.sp_drop_event_stream_group drops an event stream group for the change event streaming feature.
 author: nzagorac-ms
 ms.author: nzagorac
 ms.reviewer: mathoma, mikeray, randolphwest
-ms.date: 11/18/2025
+ms.date: 12/17/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -20,6 +20,7 @@ dev_langs:
 monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17"
 ---
 # sys.sp_drop_event_stream_group (Transact-SQL)
+
 [!INCLUDE [sqlserver2025](../../includes/applies-to-version/sqlserver2025-asdb.md)]
 
 Drops a stream event group for the [change event streaming (CES)](../track-changes/change-event-streaming/overview.md) feature introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and Azure SQL Database.
@@ -31,21 +32,21 @@ Drops a stream event group for the [change event streaming (CES)](../track-chang
 ## Syntax
 
 ```syntaxsql
-sys.sp_drop_event_stream_group
-[ @stream_group_name = ] N'stream_group_name'
+sys.sp_drop_event_stream_group [ @stream_group_name = ] N'stream_group_name'
+[ ; ]
 ```
 
 ## Arguments
 
-### [ @stream_group_name = ] N'*stream_group_name*'
+#### [ @stream_group_name = ] N'*stream_group_name*'
 
-Specifies the name of the event stream group you want to drop. *@stream_group_name* is **sysname**, and can't be `NULL`.
+Specifies the name of the event stream group you want to drop. *@stream_group_name* is **sysname**, with no default, and can't be `NULL`.
 
 ## Permissions
 
-A user with [CONTROL database permissions](../security/permissions-database-engine.md), **db_owner** database role membership, or **sysadmin** server role membership can execute this procedure.
+A user with `CONTROL` database permissions, **db_owner** database role membership, or **sysadmin** server role membership can execute this procedure.
 
 ## Related content
 
-- [What is change event streaming?](../track-changes/change-event-streaming/overview.md)
-- [Configure change event streaming](../track-changes/change-event-streaming/configure.md)
+- [What is change event streaming (preview)?](../track-changes/change-event-streaming/overview.md)
+- [Configure change event streaming (preview)](../track-changes/change-event-streaming/configure.md)

@@ -4,7 +4,7 @@ description: "The internal sys.sp_change_feed_reseed_table system stored procedu
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: imotiwala, ajayj, randolphwest
-ms.date: 06/23/2025
+ms.date: 12/17/2025
 ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,18 +27,35 @@ monikerRange: ">=sql-server-ver17 || =azuresqldb-current || =azuresqldb-mi-curre
 
 Reseeds the link table in the current database context.
 
-> [!CAUTION]  
-> This system stored procedure is used internally and isn't recommended for direct administrative use. Use the Fabric portal instead. Using this procedure could introduce inconsistency.
+[!INCLUDE [fabric-internal-use](includes/fabric-internal-use.md)]
 
 This system stored procedure is used for [Microsoft Fabric mirrored databases](/fabric/database/mirrored-database/overview) and [SQL database in Microsoft Fabric](/fabric/database/sql/overview).
 
-## Syntax
-
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
+
+## Syntax
 
 ```syntaxsql
 sys.sp_change_feed_reseed_table
+    [ @table_group_id = ] 'table_group_id'
+    , [ @table_id = ] 'table_id'
+    , [ @reseed_id = ] N'reseed_id'
+[ ; ]
 ```
+
+## Arguments
+
+#### [ @table_group_id = ] '*table_group_id*'
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
+
+#### [ @table_id = ] '*table_id*'
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
+
+#### [ @reseed_id = ] N'*reseed_id*'
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
 
 ## Returns
 
@@ -46,7 +63,7 @@ sys.sp_change_feed_reseed_table
 
 ## Permissions
 
-A user with [CONTROL database permissions](../security/permissions-database-engine.md), **db_owner** database role membership, or **sysadmin** server role membership can execute this procedure.
+A user with `CONTROL` database permissions, **db_owner** database role membership, or **sysadmin** server role membership can execute this procedure.
 
 ## Related content
 

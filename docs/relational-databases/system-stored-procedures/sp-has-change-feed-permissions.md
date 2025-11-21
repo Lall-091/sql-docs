@@ -4,7 +4,7 @@ description: "The internal sys.sp_has_change_feed_permissions system stored proc
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: imotiwala, ajayj, randolphwest
-ms.date: 06/23/2025
+ms.date: 12/17/2025
 ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,8 +27,7 @@ monikerRange: ">=sql-server-ver16 || =azuresqldb-current || =azuresqldb-mi-curre
 
 Internal procedure that checks for permissions when enabling change feed publishing.
 
-> [!CAUTION]  
-> This system stored procedure is used internally and isn't recommended for direct administrative use. Use Synapse Studio or the Fabric portal instead.
+[!INCLUDE [fabric-internal-use](includes/fabric-internal-use.md)]
 
 This system stored procedure is used for:
 
@@ -36,24 +35,36 @@ This system stored procedure is used for:
 - [Microsoft Fabric mirrored databases](/fabric/database/mirrored-database/overview)
 - [Azure Synapse Link](../../sql-server/synapse-link/synapse-link-sql-server-change-feed-manage.md)
 
-## Syntax
-
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
+## Syntax
+
 ```syntaxsql
-sys.sp_has_change_feed_permissions
-    @destination_type int
+sys.sp_has_change_feed_permissions [ [ @destination_type = ] destination_type ]
+[ ; ]
 ```
 
 ## Arguments
 
-#### destination_type
+#### [ @destination_type = ] *destination_type*
 
-Int. `0` = Azure Synapse Link. `2` = Fabric mirroring. Default is `2`.
+*@destination_type* is **int**, and can't be `NULL`.
+
+*@destination_type* can be one of the following values:
+
+| Value | Description |
+| --- | --- |
+| `0` | Azure Synapse Link |
+| `2` (default) | Fabric mirroring |
 
 ## Result set
 
-`0` (success) or `1` (failure). `22740` if *destination_type* is invalid. Error message `22702` indicates permissions are insufficient.
+| Result | Description |
+| --- | --- |
+| `0` | Success |
+| `1` | Failure |
+| `22740` | The *destination_type* is invalid |
+| `22702` | Insufficient permissions |
 
 ## Permissions
 
