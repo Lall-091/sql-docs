@@ -4,7 +4,7 @@ description: sp_refreshview updates the metadata for the specified non-schema-bo
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 11/20/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -46,20 +46,22 @@ The name of the view. *@viewname* is **nvarchar**, with no default. *@viewname* 
 
 ## Remarks
 
-If a view isn't created with SCHEMABINDING, `sp_refreshview` should be run when changes are made to the objects underlying the view, which affect the definition of the view. Otherwise, the view might produce unexpected results when it's queried.
+If a view isn't created with `SCHEMABINDING`, `sp_refreshview` should be run when changes are made to the objects underlying the view, which affects the definition of the view. Otherwise, the view could produce unexpected results when you query it.
 
 ## Permissions
 
-Requires ALTER permission on the view and REFERENCES permission on common language runtime (CLR) user-defined types and XML schema collections that are referenced by the view columns.
+Requires `ALTER` permission on the view, and `REFERENCES` permission on common language runtime (CLR) user-defined types and XML schema collections that the view columns reference.
 
 ## Examples
+
+[!INCLUDE [article-uses-adventureworks](../../includes/article-uses-adventureworks.md)]
 
 ### A. Update the metadata of a view
 
 The following example refreshes the metadata for the view `Sales.vIndividualCustomer`.
 
 ```sql
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 EXECUTE sp_refreshview N'Sales.vIndividualCustomer';
@@ -70,7 +72,7 @@ EXECUTE sp_refreshview N'Sales.vIndividualCustomer';
 Assume that the table `Person.Person` was changed in a way that would affect the definition of any views that are created on it. The following example creates a script that refreshes the metadata for all views that have a dependency on table `Person.Person`.
 
 ```sql
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 SELECT DISTINCT 'EXECUTE sp_refreshview ''' + name + ''''
@@ -87,4 +89,3 @@ WHERE so.type = 'V'
 - [System stored procedures (Transact-SQL)](system-stored-procedures-transact-sql.md)
 - [sys.sql_expression_dependencies (Transact-SQL)](../system-catalog-views/sys-sql-expression-dependencies-transact-sql.md)
 - [sp_refreshsqlmodule (Transact-SQL)](sp-refreshsqlmodule-transact-sql.md)
-
