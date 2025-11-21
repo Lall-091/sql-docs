@@ -3,9 +3,10 @@ title: "Database Mail"
 description: "Database Mail"
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.date: 05/16/2025
+ms.date: 11/21/2025
 ms.service: sql
 ms.topic: conceptual
+ai-usage: ai-assisted
 helpviewer_keywords:
   - "architecture [SQL Server], Database Mail"
   - "Database Mail [SQL Server], architecture"
@@ -57,13 +58,13 @@ monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-cu
 
 -   Attachment size governor: Database Mail enforces a configurable limit on the attachment file size. You can change this limit by using the [sysmail_configure_sp](../system-stored-procedures/sysmail-configure-sp-transact-sql.md) stored procedure.  
 
--   Prohibited file extensions: Database Mail maintains a list of prohibited file extensions. Users cannot attach files with an extension that appears in the list. You can change this list by using sysmail_configure_sp.  
+-   Prohibited file extensions: Database Mail maintains a list of prohibited file extensions. Users can't attach files with an extension that appears in the list. You can change this list by using sysmail_configure_sp.  
 
 -   Database Mail runs under the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Engine service account. To attach a file from a folder to an email, the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] engine account should have permissions to access the folder with the file.  
 
 ### Supportability
 
--   Integrated configuration: Database Mail maintains the information for e-mail accounts within [!INCLUDE[ssDEnoversion](../../includes/ssdenoversion-md.md)]. There is no need to manage a mail profile in an external client application. Database Mail Configuration Wizard provides a convenient interface for configuring Database Mail. You can also create and maintain Database Mail configurations using [!INCLUDE[tsql](../../includes/tsql-md.md)].  
+-   Integrated configuration: Database Mail maintains the information for e-mail accounts within [!INCLUDE[ssDEnoversion](../../includes/ssdenoversion-md.md)]. There's no need to manage a mail profile in an external client application. Database Mail Configuration Wizard provides a convenient interface for configuring Database Mail. You can also create and maintain Database Mail configurations using [!INCLUDE[tsql](../../includes/tsql-md.md)].  
 
 -   Logging. Database Mail logs e-mail activity to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], the Microsoft Windows Application event log, and to tables in the `msdb` database.  
 
@@ -113,6 +114,10 @@ monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-cu
 -   An alert is triggered. Alerts can be configured to send e-mail notification of specific events that occur. For example, alerts can be configured to notify an operator of a particular database event or operating system condition that might need immediate action. For more information about configuring alerts, see [Alerts](../../ssms/agent/alerts.md).  
 
 -   A scheduled task, such as a database backup or replication event, succeeds or fails. For example, you can use [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Agent Mail to notify operators if an error occurs during processing at the end of a month.  
+
+## TDS 8.0 support
+
+[!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] introduces [TDS 8.0](../security/networking/tds-8.md) support for Database Mail. The TDS 8.0 protocol provides enhanced security and encryption for data transmitted between SQL Server and client applications. This allows Database Mail to work in environments where TLS 1.3 encryption and TDS 8.0 are enforced.
 
 <a id="RelatedContent"></a>
 

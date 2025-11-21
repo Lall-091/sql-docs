@@ -4,12 +4,13 @@ description: This article discusses TDS 8.0, the application layer protocol used
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest, jaferebe, jopilov
-ms.date: 09/04/2025
+ms.date: 11/21/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: conceptual
 ms.custom:
   - ignite-2025
+ai-usage: ai-assisted
 monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
@@ -80,6 +81,7 @@ For more information on how clients use different TDS versions, see the keywords
 - [bcp utility](../../../tools/bcp-utility.md#tds-80-support)
 - [SQL VSS Writer](../../../database-engine/configure-windows/sql-writer-service.md)
 - [SQL CEIP service](../../../sql-server/usage-and-diagnostic-data-configuration-for-sql-server.md)
+- [Database Mail](../../database-mail/database-mail.md)
 - [Polybase](../../polybase/polybase-guide.md#sql-server-2025-polybase-enhancements)
 - [Always On availability groups](connect-with-strict-encryption.md#connect-to-an-always-on-availability-group)
 - [Always On failover cluster instance (FCI)](connect-with-strict-encryption.md#connect-to-a-failover-cluster-instance)
@@ -103,14 +105,6 @@ To use TDS 8.0, [!INCLUDE [sssql22-md](../../../includes/sssql22-md.md)] added `
 - [Python SQL Driver - pyodbc](../../../connect/python/pyodbc/python-sql-driver-pyodbc.md)
 
 In order to prevent a man-in-the-middle attack with `strict` connection encryption, users can't set the `TrustServerCertificate` option to `true` and allow any certificate the server provided. Instead, users would use the `HostNameInCertificate` option to specify the certificate `ServerName` that should be trusted. The certificate supplied by the server would need to pass the certificate validation. For more information on certificate validation, see [Certificate requirements for SQL Server](../../../database-engine/configure-windows/certificate-requirements.md)
-
-### Features that don't support forcing strict encryption
-
-The `Force Strict Encryption` option added with TDS 8.0 in SQL Server Network Configuration forces all clients to use `strict` as the encryption type. Any clients or features without the `strict` connection encryption fail to connect to SQL Server.
-
-The following features or tools still use previous version of drivers that don't support TDS 8.0, and as such, might not work with the `strict` connection encryption:
-
-- Database mail
 
 ## Additional changes to connection string encryption properties
 

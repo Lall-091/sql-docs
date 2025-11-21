@@ -51,10 +51,10 @@ Dropping an external model doesn't drop any credentials that the model was using
 
 ### Drop EXTERNAL MODEL
 
-This example drops the model named `dbo.myAImodel`.
+This example drops the model named `myAImodel`.
 
 ```sql
-DROP EXTERNAL MODEL dbo.myAImodel;
+DROP EXTERNAL MODEL myAImodel;
 ```
 
 ## Related content

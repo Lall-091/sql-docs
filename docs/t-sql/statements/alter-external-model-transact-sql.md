@@ -86,11 +86,11 @@ Only single external model object can be modified at a time. Concurrent requests
 
 ### Alter EXTERNAL MODEL and change the MODEL parameter
 
-This example alters the `EXTERNAL MODEL` named `dbo.myAImodel`, and changes the `MODEL` parameter.
+This example alters the `EXTERNAL MODEL` named `myAImodel`, and changes the `MODEL` parameter.
 
 ```sql
 -- Alter an external model
-ALTER EXTERNAL MODEL dbo.myAImodel
+ALTER EXTERNAL MODEL myAImodel
 SET
 (
   MODEL = 'text-embedding-3-large'

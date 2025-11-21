@@ -94,7 +94,7 @@ Using an exact search is recommended when you don't have many vectors to search 
 ### Approximate vector index and vector search (approximate nearest neighbors)
 
 > [!NOTE]
-> Approximate vector index and vector search are in preview and currently only available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. 
+> Approximate vector index and vector search are in preview and currently only available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [fabric-sqldb-md](../../includes/fabric-sqldb.md)].
 
 Identifying all vectors close to a given query vector requires substantial resources to calculate the distance between the query vector and the vectors stored in the table. Searching for all vectors close to a given query vector involves a complete scan of the table and significant CPU usage. This is called a "K-nearest neighbors" or "k-NN" query and returns the "k" closest vectors.
 
