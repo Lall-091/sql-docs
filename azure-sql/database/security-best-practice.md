@@ -56,7 +56,7 @@ Unless otherwise stated, we recommend you follow all best practices listed in ea
 
 - [FedRAMP](https://www.fedramp.gov/): AC-04, AC-06
 - [SOC](https://www.aicpa-cima.com/resources/landing/system-and-organization-controls-soc-suite-of-services): CM-3, SDL-3
-- [ISO/IEC 27001](https://www.iso27001security.com/html/27001.html): Access Control, Cryptography
+- [ISO/IEC 27001](/azure/compliance/offerings/offering-iso-27001): Access Control, Cryptography
 - [Microsoft Operational Security Assurance (OSA) practices](https://www.microsoft.com/securityengineering/osa/practices): Practice #1-6 and #9
 - [NIST Special Publication 800-53 Security Controls](https://csrc.nist.gov/projects/cprt/catalog#/cprt/framework/version/SP_800_53_5_1_1/home): AC-5, AC-6
 - [PCI DSS](https://www.pcisecuritystandards.org/document_library): 6.3.2, 6.4.2

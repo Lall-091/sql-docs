@@ -157,10 +157,6 @@ See also [Installing the Linux driver](linux-mac/installing-the-microsoft-odbc-d
 
 See also [Installing the macOS driver](linux-mac/install-microsoft-odbc-driver-sql-server-macos.md).
 
-### Older Linux releases
-
-- **Red Hat Enterprise Linux 5 and 6 (64-bit)** - [Download Microsoft ODBC Driver 11 for SQL Server - Red Hat Linux](https://go.microsoft.com/fwlink/?LinkId=267321)  
-- **SUSE Linux Enterprise 11 Service Pack 2 (64-bit)** - [Download Microsoft ODBC Driver 11 Preview for SQL Server - SUSE Linux](https://go.microsoft.com/fwlink/?LinkId=264916)
 
 ### Release notes for Linux and macOS
 
