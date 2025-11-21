@@ -11,7 +11,7 @@ ms.subservice: security
 ms.topic: concept-article
 ai-usage: ai-assisted
 ms.custom:
-  - sqldbrb=2
+  - sqldbrb=2fimage
   - sfi-image-nochange
 tags: azure-synapse
 monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
@@ -39,7 +39,7 @@ Advanced Threat Protection detects anomalous activities that indicate unusual an
 
 You receive an email notification when the system detects anomalous database activities. The email provides information on the suspicious security event, including the nature of the anomalous activities, database name, server name, application name, and the event time. In addition, the email provides information on possible causes and recommended actions to investigate and mitigate the potential threat to the database.
 
-:::image type="content" source="media/threat-detection-overview/anomalous-activity-report.png" alt-text="Anomalous activity report.":::
+:::image type="content" source="media/threat-detection-overview/anomalous-activity-report.png" alt-text="Screenshot of anomalous activity report.":::
 
 1. Select the **View recent SQL alerts** link in the email to launch the Azure portal and show the Microsoft Defender for Cloud alerts page. This page provides an overview of active threats detected on the database.
 
@@ -49,7 +49,7 @@ You receive an email notification when the system detects anomalous database act
 
    For example, SQL injection is one of the most common web application security issues on the Internet that bad actors use to attack data-driven applications. They take advantage of application vulnerabilities to inject malicious SQL statements into application entry fields, breaching or modifying data in the database. For SQL Injection alerts, the alert's details include the vulnerable SQL statement that was exploited.
 
-   :::image type="content" source="media/threat-detection-overview/specific-alert.png" alt-text="Specific alert.":::
+   :::image type="content" source="media/threat-detection-overview/specific-alert.png" alt-text="Screenshot of specific alert.":::
 
 ## Explore alerts in the Azure portal
 
@@ -57,9 +57,9 @@ Advanced Threat Protection integrates its alerts with [Microsoft Defender for Cl
 
 Select **Advanced Threat Protection alert** to launch the Microsoft Defender for Cloud alerts page and get an overview of active SQL threats detected on the database.
 
-:::image type="content" source="media/azure-defender-for-sql/advanced-threat-protection-alerts.png" alt-text="Advanced threat protection alerts in database overview." lightbox="media/azure-defender-for-sql/advanced-threat-protection-alerts.png":::
+:::image type="content" source="media/azure-defender-for-sql/advanced-threat-protection-alerts.png" alt-text="Screenshot of advanced threat protection alerts in database overview." lightbox="media/azure-defender-for-sql/advanced-threat-protection-alerts.png":::
 
-:::image type="content" source="media/azure-defender-for-sql/advanced-threat-protection.png" alt-text="Advanced threat protection in Defender for SQL." lightbox="media/azure-defender-for-sql/advanced-threat-protection.png":::
+:::image type="content" source="media/azure-defender-for-sql/advanced-threat-protection.png" alt-text="Screenshot of advanced threat protection in Defender for SQL." lightbox="media/azure-defender-for-sql/advanced-threat-protection.png":::
 
 ## Related content
 
