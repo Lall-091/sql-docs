@@ -3,7 +3,7 @@ title: "BEGIN...END (Transact-SQL)"
 description: BEGIN...END allows the execution of a group of Transact-SQL statements in a control of flow.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/18/2024
+ms.date: 11/21/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -22,30 +22,26 @@ helpviewer_keywords:
   - "statements [SQL Server], grouping"
 dev_langs:
   - "TSQL"
+ai-usage: ai-assisted
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
 # BEGIN...END (Transact-SQL)
 
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricse-fabricdw-fabricsqldb.md)]
 
-Encloses a sequence of [!INCLUDE [tsql](../../includes/tsql-md.md)] statements into a logical block of code. Note this use of "`BEGIN`" is unrelated to the `BEGIN TRANSACTION` and `BEGIN ATOMIC` statements.
+Encloses a sequence of [!INCLUDE [tsql](../../includes/tsql-md.md)] statements into a logical block of code. This use of `BEGIN` is unrelated to the `BEGIN TRANSACTION` and `BEGIN ATOMIC` statements.
 
-`BEGIN...END` blocks are often used with a preceding flow-control statement such as `IF`, `ELSE` and `WHILE`, but these blocks can also be used without any preceding flow-control to aesthetically group sequences of statements in a way similar to an anonymous scope `{ ... }` in C-style languages except that `BEGIN...END` blocks do not create a new lexical scope.
+You can use `BEGIN...END` blocks with a preceding flow-control statement such as `IF`, `ELSE`, and `WHILE`. However, you can also use these blocks without any preceding flow-control statement to group sequences of statements in an organized way. However, each new `BEGIN...END` block doesn't create a new lexical scope.
 
-:::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md#:~:text=semicolon)
+:::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ## Syntax
 
 ```syntaxsql
-BEGIN[;]
+BEGIN [ ; ]
     { sql_statement | statement_block }
-END[;]
+END [ ; ]
 ```
-
-* The use of semicolons after the `BEGIN` and `END` keywords is optional [but recommended]((../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)), excepting for some cases where they are required, such as when a CTE (`WITH`) or `THROW` statement is used within a block.
-  * Using a semicolon after `BEGIN` can help avoid potential confusion with the `BEGIN TRANSACTION` or `BEGIN ATOMIC` statements.
-    Using a semicolon after `END` ensures that any subsequent statement, in particular the `WITH` keyword or `THROW` statement, will not need any preceding semicolon.
-* `BEGIN...END` must contain at least one statement: attempting to use an empty `BEGIN...END` block will result in a syntax error, even when each keyword is used with a semicolon terminator.
 
 ## Arguments
 
@@ -55,87 +51,148 @@ Any valid [!INCLUDE [tsql](../../includes/tsql-md.md)] statement or statement gr
 
 ## Remarks
 
-* `BEGIN...END` blocks can be nested.
-* `BEGIN...END` blocks cannot span multiple batches, i.e. the `GO` batch separator cannot be used inside a `BEGIN...END` block.
-* `BEGIN...END` blocks do not define any lexical scope: a variable declared within a block will be visible throughout the parent batch and not just within the block containing the `DECLARE` statement.
-* Using a `BEGIN...END` block to group statements does not imply all that all statements in the group will be executed atomically: When a batch runs outside of a transaction and an error is raised or an exception is thrown by the 2nd statement of a multi-statement `BEGIN...END` block then the 1st statement will not be rolled-back.
-* To avoid having a (syntactically invalid) empty `BEGIN...END` block, you may use a `GOTO` label as a "no-op" placeholder statement.
+A `BEGIN...END` block must contain at least one statement. If you try to use an empty `BEGIN...END` block, you get a syntax error, even if you use a semicolon after each keyword. You can avoid empty `BEGIN...END` blocks by using a `GOTO` label as a placeholder statement. See [Example C: Use a GOTO label for dynamically generated BEGIN...END blocks](#c-use-a-goto-label-for-dynamically-generated-beginend-blocks).
 
-Although all [!INCLUDE [tsql](../../includes/tsql-md.md)] statements are valid within a `BEGIN...END` block, certain [!INCLUDE [tsql](../../includes/tsql-md.md)] statements shouldn't be grouped together within the same batch, or statement block<!-- TODO: Is there an authoritative list of statements that should not be used? -->.
+`BEGIN...END` blocks can be nested.
+
+`BEGIN...END` blocks don't define any lexical scope. If you declare a variable within a block, it's visible throughout the parent batch, not just within the block containing the `DECLARE` statement.
+
+You can't use `BEGIN...END` blocks across multiple batches. For example, you can't use the `GO` batch separator inside a `BEGIN...END` block.
+
+Using a `BEGIN...END` block to group statements doesn't mean all statements in the group run atomically. When a batch runs outside a transaction and an error is raised or an exception is thrown by the second statement of a multistatement `BEGIN...END` block, the first statement isn't rolled back.
+
+Semicolons after the `BEGIN` and `END` keywords are [optional but recommended](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md), except in the following cases:
+
+- You need a semicolon before the `WITH` keyword that starts a [common table expression](../queries/recursive-common-table-expression-transact-sql.md) (CTE).
+
+- You need a semicolon with a `THROW` statement within a block.
+
+- Use a semicolon after `BEGIN` to prevent confusion with the `BEGIN TRANSACTION` or `BEGIN ATOMIC` statements.
+
+- Using a semicolon after `END` ensures that any subsequent statement, particularly a `WITH` keyword or `THROW` statement, doesn't need a preceding semicolon.
+
+Although all [!INCLUDE [tsql](../../includes/tsql-md.md)] statements are valid within a `BEGIN...END` block, you shouldn't group certain [!INCLUDE [tsql](../../includes/tsql-md.md)] statements together within the same batch or statement block. Make sure statements don't conflict with existing Transact-SQL batch requirements.
 
 ## Examples
 
-In the following example, `BEGIN` and `END` define sequences of logically related [!INCLUDE [tsql](../../includes/tsql-md.md)] statements to be executed in-order; nested blocks are also demonstrated.
+[!INCLUDE [article-uses-adventureworks](../../includes/article-uses-adventureworks.md)]
+
+### A. Define a sequence of logically related statements in order
+
+In the following example, `BEGIN` and `END` define sequences of logically related [!INCLUDE [tsql](../../includes/tsql-md.md)] statements to execute in order. The example also shows nested blocks.
 
 ```sql
-USE AdventureWorks2022;
-
+USE AdventureWorks2025;
 GO
 
-DECLARE @personId int = ( SELECT p.BusinessEntityID FROM Person.Person AS p WHERE p.rowguid = {guid'92C4279F-1207-48A3-8448-4636514EB7E2'} );
-IF( @personId IS NULL ) THROW 50001, 'Person not found.', 1;
+DECLARE @personId AS INT = (
+    SELECT p.BusinessEntityID
+    FROM Person.Person AS p
+    WHERE p.rowguid = { GUID '92C4279F-1207-48A3-8448-4636514EB7E2' }
+);
 
-/* Concatenate the person's name fields: */
-BEGIN;
-  DECLARE @title nvarchar(8), @first nvarchar(50), @middle nvarchar(50), @last nvarchar(50), @suffix nvarchar(10);
+IF (@personId IS NULL)
+    THROW 50001, 'Person not found.', 1;
 
-  SELECT
-    @title  = NULLIF( p.Title, N'' ),
-    @first  =         p.FirstName,
-    @middle = NULLIF( p.MiddleName, N'' ),
-    @last   =         p.LastName,
-    @suffix = NULLIF( p.Suffix, N'' )
-  FROM
-    Person.Person AS p
-  WHERE
-    p.BusinessEntityID = @personId;
+/* Concatenate the person's name fields: */;
+BEGIN
+    DECLARE @title AS NVARCHAR (8),
+            @first AS NVARCHAR (50),
+            @middle AS NVARCHAR (50),
+            @last AS NVARCHAR (50),
+            @suffix AS NVARCHAR (10);
 
-  DECLARE @nameConcat nvarchar(255) = CONCAT_WS( /*separator: */ N' ', @title, @first, @middle, @last, @suffix );
+    SELECT @title = NULLIF (p.Title, N''),
+           @first = p.FirstName,
+           @middle = NULLIF (p.MiddleName, N''),
+           @last = p.LastName,
+           @suffix = NULLIF (p.Suffix, N'')
+    FROM Person.Person AS p
+    WHERE p.BusinessEntityID = @personId;
 
-  /* This is a nested BEGIN...END block: */
-  BEGIN;
-    DECLARE @emails nvarchar(max) = ( SELECT STRING_AGG( e.EmailAddress, /*separator:*/ N'; ' ) FROM Person.EmailAddress AS e WHERE e.BusinessEntityID = @personId );
-	SET @nameConcat = CONCAT( @nameConcat, N' (', @emails, N')' );
-  END;
-  
-END;
+    DECLARE @nameConcat AS NVARCHAR (255) = CONCAT_WS(N' ', @title, @first, @middle, @last, @suffix);
 
-/* BEGIN...END blocks do not define a lexical scope, so even though @nameAndEmails is declared above, it is still in-scope after the END keyword. */
+    /* This is a nested BEGIN...END block: */;
+    BEGIN
+        DECLARE @emails AS NVARCHAR (MAX) = (
+            SELECT STRING_AGG(e.EmailAddress, /*separator:*/N'; ')
+            FROM Person.EmailAddress AS e
+            WHERE e.BusinessEntityID = @personId
+        );
+
+        SET @nameConcat = CONCAT(@nameConcat, N' (', @emails, N')');
+    END
+END
+
+/* BEGIN...END blocks do not define a lexical scope, so
+   even though @nameAndEmails is declared above, it is
+   still in-scope after the END keyword. */
 SELECT @nameConcat AS NameAndEmails;
 ```
 
-## Empty blocks:
+### B. Use BEGIN...END in a transaction
 
-If you are generating Dynamic SQL with a `BEGIN...END` block such that it's simpler for your program to always render the `BEGIN...END` keywords then you may use a `GOTO` label as a "NOOP" or placeholder statement:
+In the following example, `BEGIN` and `END` define a series of [!INCLUDE [tsql](../../includes/tsql-md.md)] statements that execute together. If the `BEGIN...END` block isn't included, both `ROLLBACK TRANSACTION` statements execute, and both `PRINT` messages are returned.
 
 ```sql
-BEGIN;
-unusedNoopLabel:
-END;
+USE AdventureWorks2025;
+GO
+
+BEGIN TRANSACTION;
+
+IF @@TRANCOUNT = 0
+    BEGIN
+        SELECT FirstName,
+               MiddleName
+        FROM Person.Person
+        WHERE LastName = 'Adams';
+
+        ROLLBACK TRANSACTION;
+
+        PRINT N'Rolling back the transaction two times causes an error.';
+    END
+
+ROLLBACK TRANSACTION;
+
+PRINT N'Rolled back the transaction.';
 ```
 
-## Examples: [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE [ssPDW](../../includes/sspdw-md.md)]
+### C. Use a GOTO label for dynamically generated BEGIN...END blocks
 
-In the following example, `BEGIN` and `END` define a series of [!INCLUDE [DWsql](../../includes/dwsql-md.md)] statements that run together. If the `BEGIN` and `END` keywords are commented-out then the following example will run forever in an infinite loop because only the `SELECT` query will be looped by the `WHILE` statement while the `SET @Iteration += 1` statement will never be reached. 
+If you generate dynamic Transact-SQL with a `BEGIN...END` block and you want your program to always render the `BEGIN...END` keywords, you can use a `GOTO` label as a placeholder statement to avoid having an empty `BEGIN...END` block.
 
 ```sql
-USE AdventureWorksDW;
+BEGIN
+    unusedLabel:
+END
+```
 
-DECLARE @Iteration INT = 0;
+## Examples: Azure Synapse Analytics and Analytics Platform System (PDW)
+
+### C. Define a series of statements that run together
+
+In the following example, `BEGIN` and `END` define a series of [!INCLUDE [DWsql](../../includes/dwsql-md.md)] statements that run together.
+
+> [!CAUTION]  
+> If you remove the `BEGIN` and `END` keywords, the following example runs in an infinite loop. The `WHILE` statement loops only the `SELECT` query, and never reaches the `SET @Iteration += 1` statement.
+
+```sql
+-- Uses AdventureWorksDW;
+DECLARE @Iteration AS INT = 0;
 
 WHILE @Iteration < 10
-BEGIN;
-    SELECT FirstName, MiddleName
-    FROM dbo.DimCustomer
-    WHERE LastName = 'Adams';
-
-    SET @Iteration += 1;
-END;
+    BEGIN
+        SELECT FirstName,
+               MiddleName
+        FROM dbo.DimCustomer
+        WHERE LastName = 'Adams';
+        SET @Iteration + = 1;
+    END
 ```
 
 ## Related content
 
 - [ALTER TRIGGER (Transact-SQL)](../statements/alter-trigger-transact-sql.md)
-- [Control-of-Flow Language (Transact-SQL)](control-of-flow.md)
+- [Control-of-Flow](control-of-flow.md)
 - [CREATE TRIGGER (Transact-SQL)](../statements/create-trigger-transact-sql.md)
 - [END (BEGIN...END) (Transact-SQL)](end-begin-end-transact-sql.md)
