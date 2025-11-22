@@ -1,10 +1,10 @@
 ---
 title: "CEILING (Transact-SQL)"
-description: CEILING returns the smallest integer greater than, or equal to, the specified numeric expression.
+description: CEILING returns the smallest integer greater than or equal to the specified numeric expression.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 05/18/2024
+ms.date: 11/21/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -48,7 +48,7 @@ The return type depends on the input type of *numeric_expression*:
 | Input type | Return type |
 | --- | --- |
 | **float**, **real** | **float** |
-| **decimal(*p*, *s*)** | **decimal(38, *s*)** |
+| **decimal(*p*, *s*)** | **decimal(*p*, 0)** |
 | **int**, **smallint**, **tinyint** | **int** |
 | **bigint** | **bigint** |
 | **money**, **smallmoney** | **money** |
@@ -56,23 +56,27 @@ The return type depends on the input type of *numeric_expression*:
 
 If the result doesn't fit in the return type, an arithmetic overflow error occurs.
 
+For more information, see [Precision, scale, and length](../data-types/precision-scale-and-length-transact-sql.md).
+
 ## Examples
 
 This example shows positive numeric, negative numeric, and zero value inputs for the `CEILING` function.
 
 ```sql
-SELECT CEILING($123.45), CEILING($-123.45), CEILING($0.0);
-GO
+SELECT CEILING($123.45),
+       CEILING($-123.45),
+       CEILING($0.0);
 ```
 
-[!INCLUDE [ssResult](../../includes/ssresult-md.md)]
+The result is the integer part of the calculated value in the same data type as *numeric_expression*.
 
 ```output
---------- --------- -------------------------
-124.00    -123.00    0.00
+------- -------- -----
+124.00  -123.00  0.00
 ```
 
 ## Related content
 
-- [System Functions (Transact-SQL)](../../relational-databases/system-functions/system-functions-category-transact-sql.md)
-
+- [FLOOR (Transact-SQL)](floor-transact-sql.md)
+- [System functions by category for Transact-SQL](../../relational-databases/system-functions/system-functions-category-transact-sql.md)
+- [Mathematical functions (Transact-SQL)](mathematical-functions-transact-sql.md)
