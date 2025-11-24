@@ -4,7 +4,7 @@ description: Learn how to use the Next-gen General Purpose service tier in Azure
 author: urosmil
 ms.author: urmilano
 ms.reviewer: wiassaf, mathoma
-ms.date: 11/18/2025
+ms.date: 11/21/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
 ms.topic: how-to
@@ -32,9 +32,6 @@ To upgrade an existing instance to the Next-gen General Purpose service tier in 
 
 1. After *Next-gen General Purpose* is enabled, you can use the sliders to modify the IOPS and memory for the instance. Review the *Cost per IOPS* and *Cost per GB* in the **Estimated costs per month** box. 
 1. Select **Apply** to save your changes. 
-
-> [!NOTE]
-> For instances inside of a failover group, changing the service tier to or from the Next-gen General Purpose tier isn't supported. You must first delete the failover group before modifying either replica, and then re-create the failover group after the change takes effect.
 
 ## New instances 
 

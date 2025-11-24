@@ -3,7 +3,7 @@ title: "sys.indexes (Transact-SQL)"
 description: "The sys.indexes catalog view contains a row per index or heap of a tabular object, such as a table, view, or table-valued function."
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 08/21/2025
+ms.date: 11/24/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -35,11 +35,11 @@ Contains a row per index or heap of a tabular object, such as a table, view, or 
 | `type_desc` | **nvarchar(60)** | Description of index type:<br /><br />- HEAP<br />- CLUSTERED<br />- NONCLUSTERED<br />- XML<br />- SPATIAL<br />- CLUSTERED COLUMNSTORE <sup>2</sup><br />- NONCLUSTERED COLUMNSTORE <sup>1</sup><br />- NONCLUSTERED HASH <sup>2, 8</sup><br />- JSON <sup>5</sup> |
 | `is_unique` | **bit** | 1 = Index is unique.<br />0 = Index isn't unique.<br /><br />Always 0 for clustered columnstore indexes. |
 | `data_space_id` | **int** | ID of the data space for this index. Data space is either a filegroup or partition scheme.<br /><br />0 = object_id is a table-valued function or in-memory index. |
-| `ignore_dup_key` | **bit** | 1 = IGNORE_DUP_KEY is OFF.<br />0 = IGNORE_DUP_KEY is OFF. |
+| `ignore_dup_key` | **bit** | 1 = IGNORE_DUP_KEY is ON.<br />0 = IGNORE_DUP_KEY is OFF. |
 | `is_primary_key` | **bit** | 1 = Index is part of a PRIMARY KEY constraint.<br /><br />Always 0 for clustered columnstore indexes. |
 | `is_unique_constraint` | **bit** | 1 = Index is part of a UNIQUE constraint.<br /><br />Always 0 for clustered columnstore indexes. |
 | `fill_factor` | **tinyint** | > 0 = FILLFACTOR percentage used when the index was created or rebuilt.<br />0 = Default value<br /><br />Always 0 for clustered columnstore indexes. |
-| `is_padded` | **bit** | 1 = PADINDEX is OFF.<br />0 = PADINDEX is OFF.<br /><br />Always 0 for clustered columnstore indexes. |
+| `is_padded` | **bit** | 1 = PADINDEX is ON.<br />0 = PADINDEX is OFF.<br /><br />Always 0 for clustered columnstore indexes. |
 | `is_disabled` | **bit** | 1 = Index is disabled.<br />0 = Index isn't disabled. |
 | `is_hypothetical` | **bit** | 1 = Index is hypothetical and can't be used directly as a data access path. Hypothetical indexes hold column-level statistics.<br /><br />0 = Index isn't hypothetical. |
 | `allow_row_locks` | **bit** | 1 = Index allows row locks.<br />0 = Index doesn't allow row locks.<br /><br />Always 0 for clustered columnstore indexes. |
