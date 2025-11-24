@@ -8,7 +8,7 @@ ms.reviewer: mathoma, vanto
 ms.date: 11/24/2025
 ms.service: azure-sql-database
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Auditing Microsoft support operations
 
