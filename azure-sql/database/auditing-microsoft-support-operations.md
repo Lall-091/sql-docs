@@ -5,10 +5,10 @@ description: How to use Auditing to audit Microsoft support operations.
 author: sravanisaluru
 ms.author: srsaluru
 ms.reviewer: mathoma, vanto
-ms.date: 09/18/2025
+ms.date: 11/24/2025
 ms.service: azure-sql-database
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Auditing Microsoft support operations
 
@@ -36,6 +36,14 @@ AzureDiagnostics
 ```
 
 You have the option of choosing a different storage destination for this auditing log, or use the same auditing configuration for your server.
+
+> [!NOTE]
+> DevOps audit logs stored in Azure Storage may contain sensitive operational details. If a malicious actor within your environment accesses these logs, they could gain insights into system operations, which may lead to unauthorized access or data breaches.
+>
+> **Customer responsibility -** Secure these logs by:
+> - Restricting access to authorized personnel only
+> - Applying strong Azure role-based access control (RBAC) and network controls
+> - Monitoring and auditing storage access regularly
 
 ## Related content
 
