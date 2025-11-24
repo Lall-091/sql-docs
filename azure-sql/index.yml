@@ -185,7 +185,7 @@ landingContent:
       - linkListType: download
         links:
         - text: SQL Server Management Studio (SSMS)
-          url: /sql/ssms/download-sql-server-management-studio-ssms
+          url: /ssms/install/install
         - text: Visual Studio Code 
           url: https://code.visualstudio.com/download
         - text: SQL Server Data Tools 

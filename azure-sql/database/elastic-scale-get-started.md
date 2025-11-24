@@ -95,7 +95,7 @@ To download and run the sample, follow these steps:
 Congratulations! You have successfully built and run your first sharded application by using Elastic Database Tools on SQL Database. Use Visual Studio or SQL Server Management Studio to connect to your database and take a quick look at the shards that the sample created. You will notice new sample shard databases and a shard map manager database that the sample has created.
 
 > [!IMPORTANT]
-> We recommend that you always use the latest version of Management Studio so that you stay synchronized with updates to Azure and SQL Database. [Update SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms).
+> We recommend that you always use the latest version of Management Studio so that you stay synchronized with updates to Azure and SQL Database. [Update SQL Server Management Studio](/ssms/install/install).
 
 ## Key pieces of the code sample
 

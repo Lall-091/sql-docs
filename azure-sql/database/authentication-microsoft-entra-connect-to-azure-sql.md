@@ -132,13 +132,13 @@ On all client machines from which your applications or users connect to SQL Data
 
 - [.NET Framework 4.6 or later](/dotnet/framework/install/guide-for-developers).
 - [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-migration) or Microsoft Authentication Library for SQL Server (*ADAL.DLL*). Links to install the latest SSMS, ODBC, and OLE DB driver that contains the *ADAL.DLL* library are available here:
-  - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
+  - [SQL Server Management Studio](/ssms/install/install)
   - [ODBC Driver 17 for SQL Server](/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15&preserve-view=true)
   - [OLE DB Driver 18 for SQL Server](/sql/connect/oledb/download-oledb-driver-for-sql-server?view=sql-server-ver15&preserve-view=true)
 
 You can meet these requirements by:
 
-- Installing the latest version of [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) or [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt) to meet the .NET Framework 4.6 requirement.
+- Installing the latest version of [SQL Server Management Studio](/ssms/install/install) or [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt) to meet the .NET Framework 4.6 requirement.
   - SSMS installs the x86 version of *ADAL.DLL*.
   - SSDT installs the amd64 version of *ADAL.DLL*.
   - The latest Visual Studio from [Visual Studio Downloads](https://visualstudio.microsoft.com/downloads) meets the .NET Framework 4.6 requirement but doesn't install the required amd64 version of *ADAL.DLL*.

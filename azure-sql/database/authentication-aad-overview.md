@@ -271,7 +271,7 @@ For creating Microsoft Entra principals and a few other scenarios, Azure SQL nee
 
 ## Tools support
 
-[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) supports a number of Microsoft Entra authentication connection options, including [multifactor authentication](authentication-mfa-ssms-overview.md).
+[SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) supports a number of Microsoft Entra authentication connection options, including [multifactor authentication](authentication-mfa-ssms-overview.md).
 
 [SQL Server Data Tools (SSDT)](/sql/ssdt/sql-server-data-tools) for Visual Studio, starting with 2015, supports Password, Integrated, and Interactive authentication with Microsoft Entra ID. For more information, see [Microsoft Entra ID support in SQL Server Data Tools (SSDT)](/sql/ssdt/azure-active-directory).
 - Currently, Microsoft Entra users aren't shown in SSDT Object Explorer. As a workaround, view the users in [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql).

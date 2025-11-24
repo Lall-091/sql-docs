@@ -132,7 +132,7 @@ To publish your schema and migrate your data:
 
    :::image type="content" source="media/oracle-to-sql-database-guide/data-migration-report.png" alt-text="Screenshot that shows the Data Migration Report." lightbox="media/oracle-to-sql-database-guide/data-migration-report.png":::
 
-1. Connect to your SQL Database instance by using [Download SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms), and validate the migration by reviewing the data and schema.
+1. Connect to your SQL Database instance by using [Download SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms), and validate the migration by reviewing the data and schema.
 
    :::image type="content" source="media/oracle-to-sql-database-guide/validate-data.png" alt-text="Screenshot that shows validation in SQL Server Management Studio.":::
 

@@ -117,7 +117,7 @@ Use either SQL Server Management Studio or Transact-SQL to confirm your DNN list
 
 ### SQL Server Management Studio
 
-Expand **Availability Group Listeners** in [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) to view your DNN listener:
+Expand **Availability Group Listeners** in [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) to view your DNN listener:
 
 :::image type="content" source="media/availability-group-distributed-network-name-dnn-listener-configure/dnn-listener-in-ssms.png" alt-text="View the DNN listener under availability group listeners in SQL Server Management Studio (SSMS)":::
 
@@ -147,7 +147,7 @@ Test failover of the availability group to ensure functionality.
 
 To test failover, follow these steps:
 
-1. Connect to the DNN listener or one of the replicas by using [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
+1. Connect to the DNN listener or one of the replicas by using [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms).
 1. Expand **Always On Availability Group** in **Object Explorer**.
 1. Right-click the availability group and choose **Failover** to open the **Failover Wizard**.
 1. Follow the prompts to choose a failover target and fail the availability group over to a secondary replica.
@@ -158,7 +158,7 @@ To test failover, follow these steps:
 
 Test the connectivity to your DNN listener with these steps:
 
-1. Open [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms).
+1. Open [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms).
 1. Connect to your DNN listener.
 1. Open a new query window and check which replica you're connected to by running `SELECT @@SERVERNAME`.
 1. Fail the availability group over to another replica.

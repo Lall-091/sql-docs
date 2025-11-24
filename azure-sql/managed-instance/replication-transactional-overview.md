@@ -26,7 +26,7 @@ You can use transactional replication to push changes made in an Azure SQL manag
 - A database in Azure SQL Managed Instance
 
 > [!NOTE]  
-> To use all the features of Azure SQL Managed Instance, you must use the latest versions of [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) and [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt).
+> To use all the features of Azure SQL Managed Instance, you must use the latest versions of [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) and [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt).
 
 ### Components
 

@@ -84,7 +84,7 @@ First, add the virtual machine's public IP address to the server's firewall. The
 
 ## Export a database using SqlPackage
 
-To export an Azure SQL Database using the [SqlPackage](/sql/tools/sqlpackage) command-line utility, see [Export parameters and properties](/sql/tools/sqlpackage#export-parameters-and-properties). The SqlPackage utility ships with the latest versions of [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) and [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt), or you can download the latest version of [SqlPackage](/sql/tools/sqlpackage-download).
+To export an Azure SQL Database using the [SqlPackage](/sql/tools/sqlpackage) command-line utility, see [Export parameters and properties](/sql/tools/sqlpackage#export-parameters-and-properties). The SqlPackage utility ships with the latest versions of [SQL Server Management Studio](/ssms/install/install) and [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt), or you can download the latest version of [SqlPackage](/sql/tools/sqlpackage-download).
 
 For more information and step to create a BACPAC file, see [Export to a BACPAC file](database-export.md).
 
@@ -98,7 +98,7 @@ SqlPackage /a:Export /tf:testExport.bacpac /scs:"Data Source=<servername>.databa
 
 ## Import a database using SqlPackage
 
-To import a SQL Server database using the [SqlPackage](/sql/tools/sqlpackage) command-line utility, see [import parameters and properties](/sql/tools/sqlpackage#import-parameters-and-properties). SqlPackage has the latest [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) and [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt). You can also download the latest version of [SqlPackage](/sql/tools/sqlpackage-download).
+To import a SQL Server database using the [SqlPackage](/sql/tools/sqlpackage) command-line utility, see [import parameters and properties](/sql/tools/sqlpackage#import-parameters-and-properties). SqlPackage has the latest [SQL Server Management Studio](/ssms/install/install) and [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt). You can also download the latest version of [SqlPackage](/sql/tools/sqlpackage-download).
 
 For scale and performance, we recommend using SqlPackage in most production environments rather than using the Azure portal. For a SQL Server Customer Advisory Team blog about migrating using `BACPAC` files, see [migrating from SQL Server to Azure SQL Database using BACPAC Files](/archive/blogs/sqlcat/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files).
 

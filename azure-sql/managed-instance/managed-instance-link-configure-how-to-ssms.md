@@ -41,7 +41,7 @@ To replicate your databases to your secondary replica through the link, you need
 - An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
 - [Supported version of SQL Server](managed-instance-link-feature-overview.md#prerequisites) with required service update installed.
 - Azure SQL Managed Instance. [Get started](instance-create-quickstart.md) if you don't have it. 
-- [SQL Server Management Studio v19.2 or later](/sql/ssms/download-sql-server-management-studio-ssms).
+- [SQL Server Management Studio v19.2 or later](/ssms/sql-server-management-studio-ssms).
 - A properly [prepared environment](managed-instance-link-preparation.md).
 
 Consider the following:

@@ -249,7 +249,7 @@ To learn more, see the [documentation about listener connection timeout in SQL S
 
 Test failover of the clustered resource to validate cluster functionality:
 
-1. Open [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) and connect to your availability group listener. 
+1. Open [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms) and connect to your availability group listener. 
 1. In **Object Explorer**, expand **Always On Availability Group**. 
 1. Right-click the availability group and select **Failover**. 
 1. Follow the wizard prompts to fail over the availability group to a secondary replica. 
@@ -261,7 +261,7 @@ Failover succeeds when the replicas switch roles and are both synchronized.
 To test connectivity, sign in to another virtual machine in the same virtual network. Open SQL Server Management Studio and connect to the availability group listener.
 
 > [!NOTE]
-> If you need to, you can [download SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms).
+> If you need to, you can [download SQL Server Management Studio](/ssms/install/install).
 
 ## Next steps
 

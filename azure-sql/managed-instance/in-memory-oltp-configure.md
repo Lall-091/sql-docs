@@ -23,7 +23,7 @@ Follow these steps to adopt in-memory OLTP in an existing database in Azure SQL 
 
 ## Step 1: Identify objects to migrate to in-memory OLTP
 
-[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) includes a **Transaction Performance Analysis Overview** report that you can run against a database with an active workload. The report identifies tables and stored procedures that are candidates for migration to in-memory OLTP.
+[SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) includes a **Transaction Performance Analysis Overview** report that you can run against a database with an active workload. The report identifies tables and stored procedures that are candidates for migration to in-memory OLTP.
 
 In SSMS, to generate the report:
 
@@ -40,7 +40,7 @@ You need a test copy of your production database. The test database should be at
 
 To ease testing, tweak your test database as follows:
 
-1. Connect to the test database by using [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
+1. Connect to the test database by using [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms).
 1. To avoid needing the `WITH (SNAPSHOT)` option in queries, set the current database's  `MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT` option, as shown in the following T-SQL statement:
 
    ```sql

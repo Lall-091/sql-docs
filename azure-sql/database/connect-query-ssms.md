@@ -29,7 +29,7 @@ In this quickstart, you'll learn how to use SQL Server Management Studio (SSMS) 
 
 Completing this quickstart requires the following items:
 
-- [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms/).
+- [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms/).
 
 - A database in Azure SQL Database, Azure SQL Managed Instance or SQL Server on Azure VM. You can use one of these quickstarts to create and then configure your resource:
 

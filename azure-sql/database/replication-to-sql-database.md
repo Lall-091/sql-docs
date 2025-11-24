@@ -38,7 +38,7 @@ To successfully replicate to a database in Azure SQL Database, SQL Server publis
 > [!NOTE]
 > Attempting to configure replication using an unsupported version can result in error number MSSQL_REPL20084 (The process could not connect to Subscriber.) and MSSQL_REPL40532 (Cannot open server \<name> requested by the login. The login failed.).  
 
-To use all the features of Azure SQL Database, you must be using the latest versions of [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) and [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt).  
+To use all the features of Azure SQL Database, you must be using the latest versions of [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) and [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt).  
 
 Publishing to any **Azure SQL Database** from a SQL Server database is supported by the following versions of SQL Server:
 
@@ -67,7 +67,7 @@ There are different [types of replication](/sql/relational-databases/replication
 ## Remarks
 
 - Only push subscriptions to Azure SQL Database are supported.  
-- Replication can be configured by using [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) or by executing Transact-SQL statements on the publisher. You can't configure replication by using the Azure portal.  
+- Replication can be configured by using [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms) or by executing Transact-SQL statements on the publisher. You can't configure replication by using the Azure portal.  
 - To authenticate:
     - [Azure-Arc enabled SQL Servers](/sql/sql-server/azure-arc/overview) allow replication to use [Microsoft Entra ID authentication](/sql/relational-databases/replication/configure-replication-with-azure-ad-authentication).
     - Replication can use Microsoft Entra ID authentication with a [service principal](/entra/identity-platform/app-objects-and-service-principals).

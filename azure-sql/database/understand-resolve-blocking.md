@@ -69,7 +69,7 @@ When locking and blocking persists to the point where there's a detrimental effe
 
 * A session ID holds locks on a set of resources and never releases them. This type of blocking doesn't resolve itself and prevents access to the affected resources indefinitely.
 
-In the first scenario, the situation can be very fluid as different session IDs cause blocking on different resources over time, creating a moving target. These situations are difficult to troubleshoot using [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) to narrow down the issue to individual queries. In contrast, the second situation results in a consistent state that can be easier to diagnose.
+In the first scenario, the situation can be very fluid as different session IDs cause blocking on different resources over time, creating a moving target. These situations are difficult to troubleshoot using [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms) to narrow down the issue to individual queries. In contrast, the second situation results in a consistent state that can be easier to diagnose.
 
 ### Optimized locking
 

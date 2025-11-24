@@ -1781,7 +1781,7 @@
       - name: SQL Server Data Tools (SSDT)
         href: /sql/ssdt/download-sql-server-data-tools-ssdt
       - name: SQL Server Management Studio (SSMS)
-        href: /sql/ssms/download-sql-server-management-studio-ssms
+        href: /ssms/sql-server-management-studio-ssms
       - name: SQL Server Tools
         href: /sql/tools/overview-sql-tools
       - name: Azure Roadmap
@@ -1946,7 +1946,7 @@
     - name: Overview
       href: /sql/tools/overview-sql-tools
     - name: SQL Server Management Studio (SSMS)
-      href: /sql/ssms/download-sql-server-management-studio-ssms
+      href: /ssms/sql-server-management-studio-ssms
     - name: SQL Server Data Tools (SSDT)
       href: /sql/ssdt/download-sql-server-data-tools-ssdt
     - name: BCP

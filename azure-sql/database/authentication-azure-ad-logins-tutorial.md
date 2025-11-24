@@ -58,7 +58,7 @@ In this tutorial, you learn how to:
    >
    > For more information, see [Microsoft Entra logins and users with nonunique display names](authentication-microsoft-entra-create-users-with-nonunique-names.md).
 
-1. Using [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms), log into your SQL Database with the Microsoft Entra admin account set up for the server.
+1. Using [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms), log into your SQL Database with the Microsoft Entra admin account set up for the server.
 1. Expand **Databases** > **System Databases**. Right-click the `master` database and select **New Query** to open a new query window in the context of the `master` database.
 1. Run the following query:
 

@@ -150,7 +150,7 @@ $params = @{
 
 ### Transact-SQL
 
-  You can use the [Azure portal query editor for Azure SQL Database](query-editor.md), [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms), the [mssql extension](https://aka.ms/mssql-marketplace) for [Visual Studio Code](https://code.visualstudio.com/docs), or the [SQL query editor in the Fabric portal](/fabric/database/sql/query-editor) to execute T-SQL queries. 
+  You can use the [Azure portal query editor for Azure SQL Database](query-editor.md), [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms), the [MSSQL extension for Visual Studio Code](/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code), or the [SQL query editor in the Fabric portal](/fabric/database/sql/query-editor) to execute T-SQL queries. 
 
 1. Open a new query window.
 

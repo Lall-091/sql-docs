@@ -125,7 +125,7 @@ To publish your schema and migrate your data:
 
    ![Screenshot that shows Data Migration Report.](./media/oracle-to-managed-instance-guide/data-migration-report.png)
 
-1. Connect to your instance of SQL Managed Instance by using [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms), and validate the migration by reviewing the data and schema.
+1. Connect to your instance of SQL Managed Instance by using [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms), and validate the migration by reviewing the data and schema.
 
    ![Screenshot that shows validation in SSMA for Oracle.](./media/oracle-to-managed-instance-guide/validate-data.png)
 

@@ -45,7 +45,7 @@ To learn more, see the [Azure SQL Database security overview](security-overview.
 
 To complete the tutorial, make sure you have the following prerequisites:
 
-- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
+- [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms)
 - A [server](logical-servers.md) and a single database
   - Create them with the [Azure portal](single-database-create-quickstart.md), [CLI](az-cli-script-samples-content-guide.md), or [PowerShell](powershell-script-content-guide.md)
 

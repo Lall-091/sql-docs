@@ -46,7 +46,7 @@ You can create the `AdventureWorksLT` sample database with a few steps in the [A
 
 1. In the [Azure portal](https://portal.azure.com/), create a Premium (DTU) or Business Critical (vCore) database on a logical server. Set the **Source** to the `AdventureWorksLT` sample database. For detailed instructions, see [Create your first database in Azure SQL Database](single-database-create-quickstart.md?view=azuresql-db&preserve-view=true).
 
-1. Connect to the database with [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
+1. Connect to the database with [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms).
 
 1. Copy the [In-Memory OLTP Transact-SQL script](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) to your clipboard. The T-SQL script creates the necessary in-memory objects in the `AdventureWorksLT` sample database that you created in step 1.
 

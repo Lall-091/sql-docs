@@ -128,7 +128,7 @@ To publish your schema and migrate the data by using SSMA for Access, do the fol
 
     ![Screenshot of the "Migrate Data Report" pane showing an example report for review.](./media/access-to-sql-database-guide/migrate-data-review.png)
 
-1. Connect to your Azure SQL database by using [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms), and validate the migration by reviewing the data and schema.
+1. Connect to your Azure SQL database by using [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms), and validate the migration by reviewing the data and schema.
 
    ![Screenshot of SQL Server Management Studio Object Explorer for validating your migration in SSMA.](./media/access-to-sql-database-guide/validate-data.png)
 

@@ -292,7 +292,7 @@ The status will return **True** if the feature is enabled, and **False** if disa
 
 ## Test SQL authentication with connection failure
 
-After enabling Microsoft Entra-only authentication, test with [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) to [connect to your SQL Database or SQL Managed Instance](connect-query-ssms.md). Use SQL authentication for the connection.
+After enabling Microsoft Entra-only authentication, test with [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) to [connect to your SQL Database or SQL Managed Instance](connect-query-ssms.md). Use SQL authentication for the connection.
 
 You should see a login failed message similar to the following output:
 

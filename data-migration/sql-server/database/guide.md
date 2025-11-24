@@ -63,7 +63,7 @@ With transactional replication, all changes to your data or schema show up in yo
 #### Transaction replication workflow
 
 > [!IMPORTANT]  
-> Use the latest version of SQL Server Management Studio to remain synchronized with updates to Azure and SQL Database. Older versions of SQL Server Management Studio can't set up SQL Database as a subscriber. [Get the latest version of SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms).
+> Use the latest version of SQL Server Management Studio to remain synchronized with updates to Azure and SQL Database. Older versions of SQL Server Management Studio can't set up SQL Database as a subscriber. [Get the latest version of SQL Server Management Studio](/ssms/install/install).
 
 | Step | Method |
 | --- | --- |

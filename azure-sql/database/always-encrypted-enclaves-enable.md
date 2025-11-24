@@ -77,7 +77,7 @@ You can set the **preferredEnclaveType** property using the Azure portal, SQL Se
 
 ## Enable VBS enclaves using SQL Server Management Studio
 
-Download the latest version of [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
+Download the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 ### Create a new database with a VBS enclave
 

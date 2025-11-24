@@ -79,7 +79,7 @@ You also need the following tools:
 
 | Tool | Notes  | 
 | --- | --- |
-| The latest [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) | SQL Server Management Studio (SSMS) is the easiest way to use the Managed Instance link since it provides wizards that automate link setup. |
+| The latest [SSMS](/ssms/install/install) | SQL Server Management Studio (SSMS) is the easiest way to use the Managed Instance link since it provides wizards that automate link setup. |
 | The latest [Az.SQL](https://www.powershellgallery.com/packages/Az.Sql) or [Azure CLI](/cli/azure/install-azure-cli) | For link setup via scripts. |
 
 > [!NOTE]

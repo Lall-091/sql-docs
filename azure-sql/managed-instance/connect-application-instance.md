@@ -154,7 +154,7 @@ Although older versions might work, the following table lists the recommended mi
 | JDBC driver | 6.4.0 |
 | Node.js driver | 2.1.1 |
 | OLEDB driver | 18.0.2.0 |
-| SSMS | 18.0 or [higher](/sql/ssms/download-sql-server-management-studio-ssms) |
+| SSMS | 18.0 or [higher](/ssms/sql-server-management-studio-ssms) |
 | [SMO](/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) or higher |
 
 > [!NOTE]

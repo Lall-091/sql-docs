@@ -78,7 +78,7 @@ To publish the schema and migrate the data, do the following:
 
    To migrate data for an entire database, select the check box next to the database name. To migrate data from individual tables, expand the database, expand **Tables**, and then select the check box next to the table. To omit data from individual tables, clear the check box. 
 1. After the migration is completed, view the **Data Migration Report**. 
-1. Validate the migration by reviewing the data and schema. To do so, connect to your SQL database by using [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms).
+1. Validate the migration by reviewing the data and schema. To do so, connect to your SQL database by using [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms).
 
 ## Post-migration 
 

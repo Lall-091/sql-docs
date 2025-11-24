@@ -35,7 +35,7 @@ For a more simplistic, but more visually appealing performance demo for in-memor
 
 ## 1. Restore the in-memory OLTP sample database
 
-You can restore the `AdventureWorksLT` sample database with a few T-SQL steps in [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms). For more information on restoring a database to your SQL managed instance, see [Quickstart: Restore a database to Azure SQL Managed Instance with SSMS](restore-sample-database-quickstart.md).
+You can restore the `AdventureWorksLT` sample database with a few T-SQL steps in [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms). For more information on restoring a database to your SQL managed instance, see [Quickstart: Restore a database to Azure SQL Managed Instance with SSMS](restore-sample-database-quickstart.md).
 
 Then, the steps in this section explain how you can enrich your `AdventureWorksLT` database with in-memory OLTP objects and demonstrate performance benefits.
 

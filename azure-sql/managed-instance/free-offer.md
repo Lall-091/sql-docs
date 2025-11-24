@@ -95,7 +95,7 @@ If your public endpoint is enabled, follow these steps to connect to your instan
 
    You can also find connection strings to connect to your instance under **Settings** and then **Connection strings**.
 
-1. Open your preferred data tool, such as [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
+1. Open your preferred data tool, such as [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms).
 1. Select **Connect** and then paste the **Endpoint** value for the SQL Managed Instance you copied from the Azure portal into the server name field:
 
    :::image type="content" source="media/free-offer/connect-to-instance.png" alt-text="Screenshot of the Connect to Server dialog box in SQL Server Management Studio.":::

@@ -116,7 +116,7 @@ To publish your schema and migrate your data, follow these steps:
 
    :::image type="content" source="media/db2-to-managed-instance-guide/data-migration-report.png" alt-text="Screenshot that shows where to review the data migration report.":::
 
-1. Connect to your instance of Azure SQL Managed Instance by using [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms). Validate the migration by reviewing the data and schema:
+1. Connect to your instance of Azure SQL Managed Instance by using [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms). Validate the migration by reviewing the data and schema:
 
    :::image type="content" source="media/db2-to-managed-instance-guide/compare-schema-in-ssms.png" alt-text="Screenshot that shows comparing the schema in SQL Server Management Studio.":::
 

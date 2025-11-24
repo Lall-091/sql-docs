@@ -157,7 +157,7 @@ Server principals (logins) are created at the server level, and users (database 
 
   - To impersonate a user with EXECUTE AS statement, the user needs to be mapped directly to Microsoft Entra login. Users that are members of Microsoft Entra groups mapped into Microsoft Entra server principals can't effectively be impersonated with EXECUTE AS statement, even though the caller has the impersonate permissions on the specified user name.
 
-- Database export/import using bacpac files are supported for Microsoft Entra users in SQL Managed Instance using either [SSMS V18.4 or later](/sql/ssms/download-sql-server-management-studio-ssms), or [SqlPackage](/sql/tools/sqlpackage-download).
+- Database export/import using bacpac files are supported for Microsoft Entra users in SQL Managed Instance using either [SSMS V18.4 or later](/ssms/sql-server-management-studio-ssms), or [SqlPackage](/sql/tools/sqlpackage-download).
   - The following configurations are supported using database bacpac file:
     - Export/import a database between different manage instances within the same Microsoft Entra domain.
     - Export a database from SQL Managed Instance and import to SQL Database within the same Microsoft Entra domain.

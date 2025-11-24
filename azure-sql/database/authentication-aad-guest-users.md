@@ -53,7 +53,7 @@ Follow these steps to create a database user using a Microsoft Entra guest user.
    SELECT * FROM sys.database_principals;
    ```
 
-1. Disconnect and sign into the database as the guest user using [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) using the authentication method **Azure Active Directory - Universal with MFA**. For more information, see [Using Microsoft Entra multifactor authentication](authentication-mfa-ssms-overview.md).
+1. Disconnect and sign into the database as the guest user using [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) using the authentication method **Azure Active Directory - Universal with MFA**. For more information, see [Using Microsoft Entra multifactor authentication](authentication-mfa-ssms-overview.md).
 
 ### Create guest user in SQL Managed Instance
 
@@ -84,7 +84,7 @@ Follow these steps to create a database user using a Microsoft Entra guest user.
 
 1. There should now be a database user created for the guest user.
 
-1. Disconnect and sign into the database as the guest user using [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) using the authentication method **Azure Active Directory - Universal with MFA**. For more information, see [Using Microsoft Entra multifactor authentication](authentication-mfa-ssms-overview.md).
+1. Disconnect and sign into the database as the guest user using [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) using the authentication method **Azure Active Directory - Universal with MFA**. For more information, see [Using Microsoft Entra multifactor authentication](authentication-mfa-ssms-overview.md).
 
 ## Set a guest user as a Microsoft Entra admin
 

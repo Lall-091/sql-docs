@@ -35,7 +35,7 @@ SQL Server Management Studio (SSMS) is required for this tutorial. You can choos
 
 # [SSMS](#tab/ssmsrequirements)
 
-Download the latest version of [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
+Download the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 # [PowerShell](#tab/azure-powershellrequirements)
 

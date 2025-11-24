@@ -103,7 +103,7 @@ source SQL Server version you're running:
 
 To migrate using backup and restore, follow these steps:
 
-1. Back up your database to Azure Blob Storage. For example, use [backup to url](/sql/relational-databases/backup-restore/sql-server-backup-to-url) in [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms). Use the [Microsoft Azure Tool](https://go.microsoft.com/fwlink/?LinkID=324399) to support databases earlier than SQL Server 2012 SP1 CU2.
+1. Back up your database to Azure Blob Storage. For example, use [backup to url](/sql/relational-databases/backup-restore/sql-server-backup-to-url) in [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms). Use the [Microsoft Azure Tool](https://go.microsoft.com/fwlink/?LinkID=324399) to support databases earlier than SQL Server 2012 SP1 CU2.
 1. Connect to your Azure SQL Managed Instance using SQL Server Management Studio.
 1. Create a credential using a Shared Access Signature to access your Azure Blob storage account with your database backups. For example:
 

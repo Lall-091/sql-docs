@@ -102,7 +102,7 @@ After you update the DNS server settings on the virtual cluster, you can verify 
 
 To view the list of DNS servers configured on the SQL managed instance's network interface:
 
-1. Start [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms).
+1. Start [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms).
 1. Connect to a SQL managed instance in the cluster you updated the DNS settings for.
 1. In **Object Explorer**, expand **SQL Server Agent**.
 1. Right-click **Jobs**, and select **New Job...**.

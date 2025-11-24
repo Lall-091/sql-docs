@@ -32,10 +32,10 @@ Fortunately, you don't need to put any effort in your app to maintain this activ
 
 ## Step 1: Configure tables as temporal
 
-Depending on whether you're starting new development or upgrading existing application, you'll either create temporal tables or modify existing ones by adding temporal attributes. In general case, your scenario can be a mix of these two options. Perform these action using [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS), [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt) (SSDT), the [mssql extension](https://aka.ms/mssql-marketplace) for [Visual Studio Code](https://code.visualstudio.com/docs), or any other Transact-SQL development tool.
+Depending on whether you're starting new development or upgrading existing application, you'll either create temporal tables or modify existing ones by adding temporal attributes. In general case, your scenario can be a mix of these two options. Perform these action using [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms) (SSMS), [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt) (SSDT), the [mssql extension](https://aka.ms/mssql-marketplace) for [Visual Studio Code](https://code.visualstudio.com/docs), or any other Transact-SQL development tool.
 
 > [!IMPORTANT]
-> Always use the latest version of [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms).
+> Always use the latest version of [SQL Server Management Studio](/ssms/install/install).
 
 ### Create new table
 

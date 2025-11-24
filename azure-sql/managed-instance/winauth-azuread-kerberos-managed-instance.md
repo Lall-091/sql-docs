@@ -67,7 +67,7 @@ To enable a system assigned service principal for a SQL managed instance:
 
 If you have already implemented either the incoming [Trust-based authentication flow](winauth-azuread-setup-incoming-trust-based-flow.md) or the [Modern interactive authentication flow](winauth-azuread-setup-modern-interactive-flow.md), depending on the version of your client, you can now test connecting to your SQL managed instance with Windows Authentication.
 
-To test the connection with [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS), follow the steps in [Quickstart: Use SSMS to connect to and query Azure SQL Database or Azure SQL Managed Instance](../database/connect-query-ssms.md). Select **Windows Authentication** as your authentication type.
+To test the connection with [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms) (SSMS), follow the steps in [Quickstart: Use SSMS to connect to and query Azure SQL Database or Azure SQL Managed Instance](../database/connect-query-ssms.md). Select **Windows Authentication** as your authentication type.
 
 :::image type="content" source="media/winauth-azuread/winauth-connect-to-managed-instance.png" alt-text="Dialog box from SQL Server Management Studio with a SQL managed instance name in the 'Server Name' area and 'Authentication' set to 'Windows Authentication'." :::
 

@@ -76,7 +76,7 @@ SqlPackage /a:Export /tf:testExport.BACPAC /scs:"Data Source=apptestserver.datab
 
 ## SQL Server Management Studio (SSMS)
 
-[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) provides a wizard to export a database in Azure SQL Database or a SQL Managed Instance database to a BACPAC file. See the [Export a Data-tier Application](/sql/relational-databases/data-tier-applications/export-a-data-tier-application).
+[SQL Server Management Studio](/ssms/sql-server-management-studio-ssms) provides a wizard to export a database in Azure SQL Database or a SQL Managed Instance database to a BACPAC file. See the [Export a Data-tier Application](/sql/relational-databases/data-tier-applications/export-a-data-tier-application).
 
 ## PowerShell
 

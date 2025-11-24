@@ -74,7 +74,7 @@ The C# example relies on the [Microsoft.Data.SqlClient](/sql/connect/ado-net/int
 
 ## Verify with SQL Server Management Studio
 
-Before you run the C# example, it's a good idea to check that your setup and configurations are correct in [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms). Any C# program failure can then be narrowed to source code.
+Before you run the C# example, it's a good idea to check that your setup and configurations are correct in [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms). Any C# program failure can then be narrowed to source code.
 
 ### Verify server-level firewall IP addresses
 
