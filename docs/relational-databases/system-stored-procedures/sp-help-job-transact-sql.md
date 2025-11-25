@@ -245,7 +245,7 @@ Other users must be granted one of the following [!INCLUDE [ssNoVersion](../../i
 - **SQLAgentReaderRole**
 - **SQLAgentOperatorRole**
 
-For details about the permissions of these roles, see [SQL Server Agent Fixed Database Roles](../../ssms/agent/sql-server-agent-fixed-database-roles.md).
+For details about the permissions of these roles, see [SQL Server Agent Fixed Database Roles](/ssms/agent/sql-server-agent-fixed-database-roles).
 
 Members of **SQLAgentUserRole** can only view jobs that they own. Members of **sysadmin**, **SQLAgentReaderRole**, and **SQLAgentOperatorRole** can view all local and multiserver jobs.
 

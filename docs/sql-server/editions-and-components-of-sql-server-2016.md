@@ -101,7 +101,7 @@ Use the information in the following tables to determine the set of features tha
 
 | Management tools | Description |
 | --- | --- |
-| [!INCLUDE [ssManStudioFull](../includes/ssmanstudiofull-md.md)] | [!INCLUDE [ssManStudioFull](../includes/ssmanstudiofull-md.md)] is an integrated environment to access, configure, manage, administer, and develop components of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]. [!INCLUDE [ssManStudio](../includes/ssmanstudio-md.md)] lets developers and administrators of all skill levels use [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)].<br /><br />Download and install<br />[!INCLUDE [ssManStudio](../includes/ssmanstudio-md.md)] from [Download SQL Server Management Studio](../ssms/download-sql-server-management-studio-ssms.md) |
+| [!INCLUDE [ssManStudioFull](../includes/ssmanstudiofull-md.md)] | [!INCLUDE [ssManStudioFull](../includes/ssmanstudiofull-md.md)] is an integrated environment to access, configure, manage, administer, and develop components of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]. [!INCLUDE [ssManStudio](../includes/ssmanstudio-md.md)] lets developers and administrators of all skill levels use [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)].<br /><br />Install [SQL Server Management Studio (SSMS)](/ssms/install/install) |
 | [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Configuration Manager | [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Configuration Manager provides basic configuration management for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] services, server protocols, client protocols, and client aliases. |
 | [!INCLUDE [ssSqlProfiler](../includes/sssqlprofiler-md.md)] | [!INCLUDE [ssSqlProfiler](../includes/sssqlprofiler-md.md)] provides a graphical user interface to monitor an instance of the [!INCLUDE [ssDE](../includes/ssde-md.md)] or [!INCLUDE [ssASnoversion](../includes/ssasnoversion-md.md)]. |
 | [!INCLUDE [ssDE](../includes/ssde-md.md)] Tuning Advisor | [!INCLUDE [ssDE](../includes/ssde-md.md)] Tuning Advisor helps create optimal sets of indexes, indexed views, and partitions. |
@@ -428,7 +428,7 @@ For information about the Business Intelligence Client features supported by the
 | [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Migration Assistant | Yes | Yes | Yes | Yes | Yes |
 | Database mail | Yes | Yes | Yes | No | No |
 
-:::image type="icon" source="../includes/media/download.svg" border="false"::: **[Download the latest version of SQL Server Management Studio](../ssms/download-sql-server-management-studio-ssms.md)**
+:::image type="icon" source="../includes/media/download.svg" border="false"::: **[Install the latest version of SQL Server Management Studio](/ssms/install/install)**
 
 ## Related content
 

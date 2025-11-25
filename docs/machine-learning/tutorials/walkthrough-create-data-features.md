@@ -121,7 +121,7 @@ First, let's do it the way R users are accustomed to: get the data onto your lap
 
 In this exercise, learn how to accomplish the same task using SQL functions instead of custom R functions. 
 
-Switch to [SQL Server Management Studio](../../ssms/download-sql-server-management-studio-ssms.md) or another query editor to run the T-SQL script.
+Switch to [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) or another query editor to run the T-SQL script.
 
 1. Use a SQL function, named *fnCalculateDistance*. The function should already exist in the NYCTaxi_Sample database. In Object Explorer, verify the function exists by navigating this path: Databases > NYCTaxi_Sample > Programmability > Functions > Scalar-valued Functions >  dbo.fnCalculateDistance.
 

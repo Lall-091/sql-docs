@@ -29,7 +29,7 @@ This article outlines the best practices for using [!INCLUDE [ssNoVersion](../..
 
 ## Use the latest SQL Server Management Studio
 
-[!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] has a set of user interfaces designed for configuring Query Store and for consuming collected data about your workload. [Download the latest version of [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)]](../../ssms/download-sql-server-management-studio-ssms.md).
+[!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] has a set of user interfaces designed for configuring Query Store and for consuming collected data about your workload. Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 For a quick description on how to use Query Store in troubleshooting scenarios, see [Query Store @Azure blogs](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database/).
 

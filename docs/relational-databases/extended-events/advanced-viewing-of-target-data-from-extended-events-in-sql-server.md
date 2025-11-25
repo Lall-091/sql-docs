@@ -29,7 +29,7 @@ The present article assumes you already know how to create and start an event se
 
 [Quickstart: Extended Events](quick-start-extended-events-in-sql-server.md)
 
-We recommend using a recent release of SSMS. Download it from [Download SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md).
+Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 ### Differences with Azure SQL Database
 

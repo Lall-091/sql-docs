@@ -15,7 +15,7 @@ ms.custom:
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
-This article introduces [SQL Server Management Studio](../ssms/sql-server-management-studio-ssms.md) (SSMS) and walks you through a few common tasks. SSMS is a Windows application, so use SSMS when you have a Windows machine that can connect to a remote [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance on Linux.
+This article introduces [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) and walks you through a few common tasks. SSMS is a Windows application, so use SSMS when you have a Windows machine that can connect to a remote [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance on Linux.
 
 > [!TIP]  
 > [!INCLUDE [connect-instance-client](../includes/connect-instance-client.md)]
@@ -32,11 +32,11 @@ SSMS offers a broad set of development and management capabilities for [!INCLUDE
 - View and edit data in databases
 - Visually design T-SQL queries and database objects such as views, tables, and stored procedures
 
-For more information, see [What is SQL Server Management Studio (SSMS)?](../ssms/sql-server-management-studio-ssms.md).
+For more information, see [What is SQL Server Management Studio (SSMS)?](/ssms/sql-server-management-studio-ssms)
 
 ## Install the newest version of SQL Server Management Studio (SSMS)
 
-When working with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], you should always use the most recent version of SSMS. The latest version of SSMS is continually updated and optimized and currently works with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. To download and install the latest version, see [Download SQL Server Management Studio (SSMS)](../ssms/download-sql-server-management-studio-ssms.md). To stay up-to-date, the latest version of SSMS prompts you when there's a new version available to download.
+When working with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], you should always use the most recent version of SSMS. The latest version of SSMS is continually updated and optimized and currently works with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install). SSMS prompts you when there's a new update available.
 
 > [!NOTE]  
 > Before using SSMS to manage Linux, review [SQL Server on Linux: Known issues](sql-server-linux-known-issues.md#sql-server-management-studio-ssms).
@@ -136,9 +136,9 @@ When a pane is expanded, Activity Monitor queries the instance for information. 
 
 ## Related content
 
-- [What is SQL Server Management Studio (SSMS)?](../ssms/sql-server-management-studio-ssms.md)
+- [What is SQL Server Management Studio (SSMS)?](/ssms/sql-server-management-studio-ssms)
 - [Export and import a database on Linux with SSMS or SqlPackage.exe on Windows](sql-server-linux-migrate-ssms.md)
-- [Quickstart: Connect and query a SQL Server instance using SQL Server Management Studio (SSMS)](../ssms/quickstarts/ssms-connect-query-sql-server.md)
+- [Quickstart: Connect and query a SQL Server instance using SQL Server Management Studio (SSMS)](/ssms/quickstarts/ssms-connect-query-sql-server)
 - [Tutorial: Write Transact-SQL statements](../t-sql/tutorial-writing-transact-sql-statements.md)
 - [Server Performance and Activity Monitoring](../relational-databases/performance/server-performance-and-activity-monitoring.md)
 

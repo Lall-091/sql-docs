@@ -87,5 +87,5 @@ GO
 ## Related content
 
 - [GETDATE &#40;Transact-SQL&#41;](../../../t-sql/functions/getdate-transact-sql.md)
-- [Implement Jobs](../../../ssms/agent/implement-jobs.md)
+- [Implement Jobs](/ssms/agent/implement-jobs)
 - [Parameterized Row Filters](../../../relational-databases/replication/merge/parameterized-filters-parameterized-row-filters.md)

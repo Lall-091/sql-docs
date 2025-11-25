@@ -94,9 +94,9 @@ helpviewer_keywords:
 ##  <a name="RelatedTasks"></a> Related Tasks  
  **To create an alert using SQL Server Management Studio**  
   
--   [Create an Alert Using an Error Number](../../ssms/agent/create-an-alert-using-an-error-number.md)  
+-   [Create an Alert Using an Error Number](/ssms/agent/create-an-alert-using-an-error-number)  
   
--   [Create a WMI Event Alert](../../ssms/agent/create-a-wmi-event-alert.md)  
+-   [Create a WMI Event Alert](/ssms/agent/create-a-wmi-event-alert)  
   
  **To monitor database mirroring**  
   

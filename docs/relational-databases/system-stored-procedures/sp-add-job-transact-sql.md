@@ -157,7 +157,7 @@ Other users must be granted one of the following [!INCLUDE [ssNoVersion](../../i
 - **SQLAgentReaderRole**
 - **SQLAgentOperatorRole**
 
-For details about the permissions of these roles, see [SQL Server Agent Fixed Database Roles](../../ssms/agent/sql-server-agent-fixed-database-roles.md).
+For details about the permissions of these roles, see [SQL Server Agent Fixed Database Roles](/ssms/agent/sql-server-agent-fixed-database-roles).
 
 Only members of the **sysadmin** fixed server role can set or change the value for *@owner_login_name*. If users who aren't members of the **sysadmin** role set or change the value of *@owner_login_name*, execution of this stored procedure fails and an error is returned.
 

@@ -107,7 +107,7 @@ Linked servers can be defined to point back (loop back) to the server on which t
 
 [Azure SQL Managed Instance](/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview) linked servers support both SQL authentication and authentication with Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)).
 
-To use SQL Agent jobs on Azure SQL Managed Instance to query a remote server through a linked server, use [sp_addlinkedsrvlogin](../system-stored-procedures/sp-addlinkedsrvlogin-transact-sql.md) to create a mapping from a login on the local server to a login on the remote server. When the SQL Agent job connects to the remote server through the linked server, it executes the T-SQL query in the context of the remote login. For more information, see [SQL Agent jobs with Azure SQL Managed Instance](../../ssms/agent/implement-sql-server-agent-security.md#linked-servers).
+To use SQL Agent jobs on Azure SQL Managed Instance to query a remote server through a linked server, use [sp_addlinkedsrvlogin](../system-stored-procedures/sp-addlinkedsrvlogin-transact-sql.md) to create a mapping from a login on the local server to a login on the remote server. When the SQL Agent job connects to the remote server through the linked server, it executes the T-SQL query in the context of the remote login. For more information, see [SQL Agent jobs with Azure SQL Managed Instance](/ssms/agent/implement-sql-server-agent-security#linked-servers).
 
 <a id="limitations-of-azure-ad-authentication"></a>
 

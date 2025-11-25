@@ -109,7 +109,7 @@ Other users must be granted one of the following [!INCLUDE [ssNoVersion](../../i
 - **SQLAgentReaderRole**
 - **SQLAgentOperatorRole**
 
-For details about the permissions of these roles, see [SQL Server Agent Fixed Database Roles](../../ssms/agent/sql-server-agent-fixed-database-roles.md).
+For details about the permissions of these roles, see [SQL Server Agent Fixed Database Roles](/ssms/agent/sql-server-agent-fixed-database-roles).
 
 Members of **SQLAgentUserRole** can only view job steps for jobs that they own.
 

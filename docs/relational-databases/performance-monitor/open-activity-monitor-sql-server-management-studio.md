@@ -17,7 +17,7 @@ helpviewer_keywords:
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
-[Activity Monitor](activity-monitor.md) runs queries on the monitored instance to obtain information for the Activity Monitor display panes. When the refresh interval is set to less than 10 seconds, the time that is used to run these queries can affect server performance. We recommend that you [download and install the latest version of SSMS](../../ssms/download-sql-server-management-studio-ssms.md).
+[Activity Monitor](activity-monitor.md) runs queries on the monitored instance to obtain information for the Activity Monitor display panes. When the refresh interval is set to less than 10 seconds, the time that is used to run these queries can affect server performance. Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install)
 
 <a id="Permissions"></a>
 

@@ -34,7 +34,7 @@ To complete this tutorial, you must have the following:
 
 + Sufficient system resources. The data set is large and training operations are resource-intensive. If possible, use a system having at least 8-GB RAM. Alternatively, you can use smaller data sets to work around resource constraints. Instructions for reducing the data set are inline.
 
-+ A tool for T-SQL query execution, such as [SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md).
++ A tool for T-SQL query execution, such as [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms).
 
 + [NYCTaxi_Sample.bak](https://aka.ms/sqlmldocument/NYCTaxi_Sample.bak), which you can [download and restore](demo-data-nyctaxi-in-sql.md) to your local SQL Server instance. File size is approximately 90 MB.
 

@@ -40,7 +40,7 @@ You can change the order of columns in **Table Designer** in [!INCLUDE[ssManStud
 Though not recommended, you can change the order of columns in a table using [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] (SSMS). This requires recreating the table.
 
 > [!IMPORTANT]
-> Always use the latest version of [SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md).
+> Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 1. In **Object Explorer**, right-click the table with columns you want to reorder and select **Design**.  
   

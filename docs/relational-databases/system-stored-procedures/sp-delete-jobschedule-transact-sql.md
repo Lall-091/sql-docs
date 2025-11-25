@@ -43,7 +43,7 @@ Other users must be granted one of the following [!INCLUDE [ssNoVersion](../../i
 - **SQLAgentReaderRole**
 - **SQLAgentOperatorRole**
 
-For details about the permissions of these roles, see [SQL Server Agent Fixed Database Roles](../../ssms/agent/sql-server-agent-fixed-database-roles.md).
+For details about the permissions of these roles, see [SQL Server Agent Fixed Database Roles](/ssms/agent/sql-server-agent-fixed-database-roles).
 
 Members of the **sysadmin** role can delete any job schedule. Users who aren't members of the **sysadmin** role can only delete job schedules that they own.
 
@@ -51,7 +51,7 @@ Members of the **sysadmin** role can delete any job schedule. Users who aren't m
 
 - [sp_delete_schedule (Transact-SQL)](sp-delete-schedule-transact-sql.md)
 - [sp_detach_schedule (Transact-SQL)](sp-detach-schedule-transact-sql.md)
-- [View or Modify Jobs](../../ssms/agent/view-or-modify-jobs.md)
+- [View or Modify Jobs](/ssms/agent/view-or-modify-jobs)
 - [sp_add_schedule (Transact-SQL)](sp-add-schedule-transact-sql.md)
 - [sp_help_jobschedule (Transact-SQL)](sp-help-jobschedule-transact-sql.md)
 - [sp_update_jobschedule (Transact-SQL)](sp-update-jobschedule-transact-sql.md)

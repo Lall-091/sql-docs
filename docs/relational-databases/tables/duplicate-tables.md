@@ -78,4 +78,4 @@ Requires `CREATE TABLE` permission in the destination database.
 ## Related content
 
 - [Copy Columns from One Table to Another (Database Engine)](copy-columns-from-one-table-to-another-database-engine.md)
-- [Script objects in SQL Server Management Studio](../../ssms/tutorials/scripting-ssms.md)
+- [Script objects in SQL Server Management Studio](/ssms/tutorials/scripting-ssms)

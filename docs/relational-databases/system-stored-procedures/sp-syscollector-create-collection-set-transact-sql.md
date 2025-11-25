@@ -77,7 +77,7 @@ The number of days that the collected data is saved in the management data wareh
 
 #### [ @proxy_id = ] *proxy_id*
 
-The unique identifier for a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent proxy account. *@proxy_id* is **int**, with a default of `NULL`. If specified, *@proxy_name* must be `NULL`. To obtain *@proxy_id*, query the `sysproxies` system table. The **dc_admin** fixed database role must have permission to access the proxy. For more information, see [Create a SQL Server Agent proxy](../../ssms/agent/create-a-sql-server-agent-proxy.md).
+The unique identifier for a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent proxy account. *@proxy_id* is **int**, with a default of `NULL`. If specified, *@proxy_name* must be `NULL`. To obtain *@proxy_id*, query the `sysproxies` system table. The **dc_admin** fixed database role must have permission to access the proxy. For more information, see [Create a SQL Server Agent proxy](/ssms/agent/create-a-sql-server-agent-proxy).
 
 #### [ @proxy_name = ] N'*proxy_name*'
 

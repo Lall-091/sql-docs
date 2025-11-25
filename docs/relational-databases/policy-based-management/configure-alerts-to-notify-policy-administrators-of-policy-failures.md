@@ -23,11 +23,11 @@ helpviewer_keywords:
   
  To set up an alert to respond to the Policy-Based Management error messages, see the following topics:  
   
--   [Create an Operator](../../ssms/agent/create-an-operator.md)  
+-   [Create an Operator](/ssms/agent/create-an-operator)  
   
--   [Create an Alert Using an Error Number](../../ssms/agent/create-an-alert-using-an-error-number.md)  
+-   [Create an Alert Using an Error Number](/ssms/agent/create-an-alert-using-an-error-number)  
   
--   [Assign Alerts to an Operator](../../ssms/agent/assign-alerts-to-an-operator.md)  
+-   [Assign Alerts to an Operator](/ssms/agent/assign-alerts-to-an-operator)  
   
 ## Permissions  
  When policies are evaluated on demand, they execute in the security context of the user. To write to the error log, the user must have ALTER TRACE permissions or be a member of the sysadmin fixed server role. Policies that are evaluated by a user that has less privileges will not write to the event log, and will not fire an alert.  

@@ -25,7 +25,7 @@ This quickstart helps you understand how to write backups to and restore from S3
 To complete this quickstart, you must be familiar with [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] backup and restore concepts and Transact-SQL (T-SQL) syntax. You need an S3 endpoint, SQL Server Management Studio (SSMS), and access to either a server that's running SQL Server or Azure SQL Managed Instance. Additionally, the account used to issue the BACKUP and RESTORE commands should be in the `db_backupoperator` database role with ALTER ANY CREDENTIAL permissions, and have CREATE DATABASE permissions to RESTORE to a new database, or be a member of either the **sysadmin** and **dbcreator** fixed server role, or owner (**dbo**) of the database if restoring over an existing database.
 
 - Create an [S3 endpoint](backup-restore/sql-server-backup-and-restore-with-s3-compatible-object-storage.md#prerequisites-for-the-s3-endpoint).
-- Install [SQL Server Management Studio](../ssms/download-sql-server-management-studio-ssms.md).
+- Install [SQL Server Management Studio](/ssms/install/install).
 - Install [SQL Server 2022 Developer edition](https://www.microsoft.com/sql-server/sql-server-downloads) or deploy [Azure SQL Managed Instance](/azure/sql-database/sql-database-managed-instance-get-started) with connectivity established through an [Azure SQL virtual machine](/azure/sql-database/sql-database-managed-instance-configure-vm) or [point-to-site](/azure/sql-database/sql-database-managed-instance-configure-p2s).
 - Assign the user account to the role of [db_backupoperator](./security/authentication-access/database-level-roles.md) and grant [ALTER ANY CREDENTIAL](../t-sql/statements/alter-credential-transact-sql.md) permissions.
 - Assign the user account to the [**sysadmin** or **dbcreator**](./security/authentication-access/server-level-roles.md) fixed role, or make the user an [owner](./security/authentication-access/principals-database-engine.md) of the existing database.
@@ -33,7 +33,7 @@ To complete this quickstart, you must be familiar with [!INCLUDE[ssNoVersion](..
 ## Create a test database 
 In this step, create a test database using SQL Server Management Studio (SSMS).
 
-1. Launch [SQL Server Management Studio (SSMS)](../ssms/download-sql-server-management-studio-ssms.md) and connect to your SQL Server instance.
+1. Launch [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) and connect to your SQL Server instance.
 1. Open a **New Query** window.
 1. Run the following T-SQL code to create your test database. Refresh the **Databases** node in **Object Explorer** to see your new database. Newly created databases on SQL Managed Instance automatically have TDE enabled so you'll need to disable it to proceed.
 
@@ -82,7 +82,7 @@ In this step, create a test database using SQL Server Management Studio (SSMS).
 
 To create the SQL Server credential for authentication, follow these steps:
 
-1. Launch [SQL Server Management Studio (SSMS)](../ssms/download-sql-server-management-studio-ssms.md) and connect to your SQL Server instance.
+1. Launch [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) and connect to your SQL Server instance.
 1. Open a **New Query** window.
 1. Create a server level credential. The name of the credential depends on the S3-compatible storage platform. Unlike PolyBase database-scoped credentials, backup/restore credentials are stored at the instance level. When used with S3-compatible storage, the credential must be named according to the URL path.
 

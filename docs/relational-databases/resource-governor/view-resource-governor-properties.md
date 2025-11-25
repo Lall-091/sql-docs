@@ -39,7 +39,7 @@ Viewing resource governor properties requires the `VIEW SERVER STATE` permission
 
 ## Resource governor properties page
 
-To view resource governor properties by using the resource governor properties page in [[!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)]](../../ssms/download-sql-server-management-studio-ssms.md):
+To view resource governor properties by using the resource governor properties page in [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms):
 
 1. In [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)], open Object Explorer and expand the **Management** node down to **Resource Governor**.
 1. Use the **Resource Governor** context menu and select **Properties**.

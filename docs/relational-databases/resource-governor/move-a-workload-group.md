@@ -44,7 +44,7 @@ Moving a workload group requires the `CONTROL SERVER` permission.
 
 ## Move a workload group using SQL Server Management Studio
 
-To move a workload group by using [[!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)]](../../ssms/download-sql-server-management-studio-ssms.md):
+To move a workload group by using [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms):
 
 1. In Object Explorer, expand the **Management** node down to **Resource Governor**.
 1. Open the **Resource Governor** context menu and select **Properties**. This opens the **Resource Governor Properties** page.

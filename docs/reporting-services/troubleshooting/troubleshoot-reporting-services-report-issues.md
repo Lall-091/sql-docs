@@ -32,7 +32,7 @@ To view the call stack, sign in to the report server by using the local administ
 ## Use [!INCLUDE[ssmanstudiofull-md](../../includes/ssmanstudiofull-md.md)] to verify queries and credentials  
 You can use [!INCLUDE[ssmanstudiofull-md](../../includes/ssmanstudiofull-md.md)] to validate complex queries before you include them in your report.   
   
-For more information, see [Database Engine query editor](../../ssms/f1-help/database-engine-query-editor-sql-server-management-studio.md) and [Manage objects by using Object Explorer](../../ssms/object/manage-objects-by-using-object-explorer.md). 
+For more information, see [Database Engine query editor](/ssms/f1-help/database-engine-query-editor-sql-server-management-studio) and [Manage objects by using Object Explorer](/ssms/object/manage-objects-by-using-object-explorer). 
   
 ## Analyze problem reports with report data cached on the client  
 When a report author creates a report in Business Intelligence Development Studio, the authoring client caches data as an .rdl.data file, which is used when you preview a report. Every time the query changes, the cache is updated. To debug report problems, it's sometimes useful to prevent the refresh for report data so that the data doesn't change when you're debugging.   

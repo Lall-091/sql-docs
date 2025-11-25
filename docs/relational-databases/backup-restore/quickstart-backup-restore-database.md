@@ -25,11 +25,11 @@ For more detailed information, see [Create a full database backup](create-a-full
 ## Prerequisites
 
 - [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads)
-- [SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md)
+- [SQL Server Management Studio (SSMS)](/ssms/install/install)
 
 ## Create a test database
 
-1. Open [SQL Server Management Studio](../../ssms/download-sql-server-management-studio-ssms.md) and connect to your SQL Server instance.
+1. Open [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) and connect to your SQL Server instance.
 
 1. Open a **New Query** window.
 
@@ -73,7 +73,7 @@ To create a backup of your database, follow these steps by using [!INCLUDE [ssma
 
 #### [SSMS](#tab/ssms)
 
-1. Open [SSMS](../../ssms/download-sql-server-management-studio-ssms.md) and connect to your SQL Server instance.
+1. Open [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) and connect to your SQL Server instance.
 1. Expand the **Databases** node in **Object Explorer**.
 1. Right-click the database, hover over **Tasks**, and then select **Back up...**.
 1. Under **Destination**, confirm that the path for your backup is correct. If you need to change the path, select **Remove** to remove the existing path, and then select **Add** to type in a new path. You can use the ellipsis button (**...**) to navigate to a specific file.
@@ -106,7 +106,7 @@ For more information about backup options, see [BACKUP](../../t-sql/statements/b
 
 To restore your database, follow these steps:
 
-1. Open [SSMS](../../ssms/download-sql-server-management-studio-ssms.md) and connect to your SQL Server instance.
+1. Open [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) and connect to your SQL Server instance.
 
 1. Right-click the **Databases** node in **Object Explorer** and select **Restore Database...**.
 

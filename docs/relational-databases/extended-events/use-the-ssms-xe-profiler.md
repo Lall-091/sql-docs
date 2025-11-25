@@ -24,7 +24,7 @@ The XEvent Profiler is a SQL Server Management Studio (SSMS) feature that displa
 Unlike SQL Profiler, XEvent profiler is directly integrated into SSMS and is built on top of the scalable Extended Events technology in the SQL engine. This feature enables quick access to a live streaming view of diagnostics events on the SQL Server. This view can be customized and those customizations can be shared with other SSMS users as a .viewsettings file. The session created by XE Profiler is less intrusive to the running SQL Server than a similar SQL trace would be when using SQL Profiler. This session can be customized by the user as well, using the existing XE session properties UI or by Transact-SQL.
 
 ## Prerequisites
-This feature is only available on SQL Server Management Studio (SSMS) v17.3 or later. Make sure you are using the latest version. You can find the latest version [here.](../../ssms/download-sql-server-management-studio-ssms.md)
+This feature is only available on SQL Server Management Studio (SSMS) v17.3 or later. Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 ## <a id="getting-started"></a>Getting Started
 To access the XEvent Profiler, follow these steps:

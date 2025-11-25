@@ -54,7 +54,7 @@ In [part four](r-clustering-model-deploy.md),  you'll learn how to create a stor
 ::: moniker range="=azuresqldb-mi-current"
 - **Azure SQL Managed Instance Machine Learning Services.** For information, see the [Azure SQL Managed Instance Machine Learning Services overview](/azure/azure-sql/managed-instance/machine-learning-services-overview).
 
-- **SQL Server Management Studio (SSMS)** - Use SSMS to restore the sample database to Azure SQL Managed Instance. To download, see [SQL Server Management Studio](../../ssms/download-sql-server-management-studio-ssms.md).
+- **SQL Server Management Studio (SSMS)** - Use SSMS to restore the sample database to Azure SQL Managed Instance. Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 ::: moniker-end
 
 - [Azure Data Studio](/azure-data-studio/what-is-azure-data-studio). You'll use a notebook in Azure Data Studio for SQL. For more information about notebooks, see [How to use notebooks in Azure Data Studio](/azure-data-studio/notebooks/notebooks-guidance).

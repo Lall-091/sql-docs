@@ -43,4 +43,4 @@ This tutorial is divided into two lessons:
 ## Related content
 
 - [Connect to the Database Engine](../sql-server/connect-to-database-engine.md)
-- [Tutorial: SQL Server Management Studio](../ssms/quickstarts/ssms-connect-query-sql-server.md)
+- [Tutorial: SQL Server Management Studio](/ssms/quickstarts/ssms-connect-query-sql-server)

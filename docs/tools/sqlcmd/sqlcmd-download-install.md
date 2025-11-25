@@ -209,7 +209,7 @@ You can try the **sqlcmd** utility from Azure Cloud Shell, as it's preinstalled 
 
 ### SQL Server Management Studio (SSMS)
 
-To run SQLCMD statements in [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms) (SSMS), navigate to **Query** > **SQLCMD Mode**.
+To run SQLCMD statements in [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms), navigate to **Query** > **SQLCMD Mode**.
 
 SSMS uses the Microsoft [!INCLUDE [dnprdnshort-md](../../includes/dnprdnshort-md.md)] `SqlClient` for execution in regular and SQLCMD mode in **Query Editor**. When **sqlcmd** is run from the command-line, **sqlcmd** uses the ODBC driver. Because different default options could apply, you might see different behavior when you execute the same query in SSMS in SQLCMD mode and in the **sqlcmd** utility.
 

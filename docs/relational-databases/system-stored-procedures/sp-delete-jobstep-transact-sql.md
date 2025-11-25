@@ -84,7 +84,7 @@ Other users must be granted one of the following [!INCLUDE [ssNoVersion](../../i
 - **SQLAgentReaderRole**
 - **SQLAgentOperatorRole**
 
-For details about the permissions of these roles, see [SQL Server Agent Fixed Database Roles](../../ssms/agent/sql-server-agent-fixed-database-roles.md).
+For details about the permissions of these roles, see [SQL Server Agent Fixed Database Roles](/ssms/agent/sql-server-agent-fixed-database-roles).
 
 Only members of **sysadmin** can delete a job step that is owned by another user.
 
@@ -104,7 +104,7 @@ GO
 
 ## Related content
 
-- [View or Modify Jobs](../../ssms/agent/view-or-modify-jobs.md)
+- [View or Modify Jobs](/ssms/agent/view-or-modify-jobs)
 - [sp_add_jobstep (Transact-SQL)](sp-add-jobstep-transact-sql.md)
 - [sp_update_jobstep (Transact-SQL)](sp-update-jobstep-transact-sql.md)
 - [sp_help_jobstep (Transact-SQL)](sp-help-jobstep-transact-sql.md)

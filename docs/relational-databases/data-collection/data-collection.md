@@ -42,7 +42,7 @@ The data collector is integrated with [!INCLUDE [ssNoVersion](../../includes/ssn
 - Subsystem
 - Proxy accounts
 
-For more information, see [Automated Administration Tasks (SQL Server Agent)](../../ssms/agent/automated-administration-tasks-sql-server-agent.md).
+For more information, see [Automated Administration Tasks (SQL Server Agent)](/ssms/agent/automated-administration-tasks-sql-server-agent).
 
 [!INCLUDE [ssISnoversion](../../includes/ssisnoversion-md.md)] ([!INCLUDE [ssIS](../../includes/ssis-md.md)]) is used to execute packages that collect data from individual data providers. You should be familiar with the following [!INCLUDE [ssIS](../../includes/ssis-md.md)] tools and concepts:
 

@@ -22,7 +22,7 @@ dev_langs:
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
-Contains information about the execution of scheduled jobs by the [SQL Server Agent](../../ssms/agent/sql-server-agent.md).
+Contains information about the execution of scheduled jobs by the [SQL Server Agent](/ssms/agent/sql-server-agent).
 
 > [!NOTE]  
 > In most cases, the data is updated only after the job step completes, and the table typically contains no records for job steps that are currently in progress. In some cases, underlying processes *do* provide information about in progress job steps.

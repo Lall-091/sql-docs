@@ -49,7 +49,7 @@ After reading this article, you can:
 
 To get started, you need to:
 
-- [Download SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md). We recommend using a recent version of SSMS with the latest improvements and fixes.
+- Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 - Ensure that your account has `CREATE ANY EVENT SESSION` (introduced in SQL Server 2022), or `ALTER ANY EVENT SESSION` [server permission](../../t-sql/statements/grant-server-permissions-transact-sql.md).
 - Additionally, when using SSMS and for viewing sessions that are created, the login requires the permission `VIEW SERVER PERFORMANCE STATE`.
 - For Azure SQL Database, Azure SQL Managed Instance, and SQL database in Fabric, Extended Events event files are stored in Azure Storage. You'll need an [Azure storage account](/azure/storage/common/storage-account-create).

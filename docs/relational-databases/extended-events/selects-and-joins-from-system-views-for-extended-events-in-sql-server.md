@@ -58,7 +58,7 @@ To `SELECT` from the system views, the following permission is necessary:
 
 ## Catalog views
 
-For the purposes of this page, [create an Extended Events session with SSMS](#create-session-in-sql-server-management-studio-ssms) or [with T-SQL](#create-event-session-in-t-sql). Always use [the latest update of SSMS](../../ssms/download-sql-server-management-studio-ssms.md).  
+For the purposes of this page, [create an Extended Events session with SSMS](#create-session-in-sql-server-management-studio-ssms) or [with T-SQL](#create-event-session-in-t-sql). Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).  
 
 <a id="section_B_1_SSMS_UI_perspective"></a>
 <a id="b_1_SSMS_UI_perspective"></a>

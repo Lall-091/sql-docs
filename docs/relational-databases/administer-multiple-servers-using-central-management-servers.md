@@ -32,10 +32,10 @@ helpviewer_keywords:
 
  Central Management Servers are [also available in Azure Data Studio](/azure-data-studio/extensions/sql-server-cms-extension).
  
- For how to create Central Management Servers and server groups, see [Create a Central Management Server and Server Group &#40;SQL Server Management Studio&#41;](../ssms/register-servers/create-a-central-management-server-and-server-group.md).  
+ For how to create Central Management Servers and server groups, see [Create a Central Management Server and Server Group (SQL Server Management Studio)](/ssms/register-servers/create-a-central-management-server-and-server-group).  
   
 ## Next steps
 
 - [Administer Servers by Using Policy-Based Management](../relational-databases/policy-based-management/administer-servers-by-using-policy-based-management.md)  
-- [Create a Central Management Server and Server Group](../ssms/register-servers/create-a-central-management-server-and-server-group.md)
+- [Create a Central Management Server and Server Group](/ssms/register-servers/create-a-central-management-server-and-server-group)
 - [SQL Server Central Management Servers extension for Azure Data Studio](/azure-data-studio/extensions/sql-server-cms-extension)

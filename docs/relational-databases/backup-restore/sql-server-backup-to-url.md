@@ -103,7 +103,7 @@ For an example about how to create a Shared Access Signature, see [Create a Shar
 
 For more information about credentials, see [Credentials (Database Engine)](../security/authentication-access/credentials-database-engine.md).
 
-For information on other examples where credentials are used, see [Create a SQL Server Agent Proxy](../../ssms/agent/create-a-sql-server-agent-proxy.md).
+For information on other examples where credentials are used, see [Create a SQL Server Agent Proxy](/ssms/agent/create-a-sql-server-agent-proxy).
 
 <a id="security"></a>
 

@@ -42,7 +42,7 @@ Enabling resource governor requires the `CONTROL SERVER` permission.
 
 ## Enable resource governor using Object Explorer in SQL Server Management Studio
 
-To enable resource governor using Object Explorer in [[!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)]](../../ssms/download-sql-server-management-studio-ssms.md):
+To enable resource governor using Object Explorer in [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms):
 
 1. In [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)], open Object Explorer and expand the **Management** node down to **Resource Governor**.
 1. From the **Resource Governor** context menu, select **Enable**.

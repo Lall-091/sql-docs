@@ -258,7 +258,7 @@ Test failover of the clustered resource to validate cluster functionality:
 To test connectivity, sign in to another virtual machine in the same virtual network. Open SQL Server Management Studio and connect to the SQL Server FCI name. 
 
 > [!NOTE]
-> If you need to, you can [download SQL Server Management Studio](/ssms/install/install).
+> Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 ## Next steps
 

@@ -105,7 +105,7 @@ Other [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] components can 
 | [Install SQL Server Database Engine](install-sql-server-database-engine.md) | Install and configure the [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)]. |
 | [Install SQL Server replication](install-sql-server-replication.md) | Install and configure [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Replication. |
 | [Install Distributed Replay](../../tools/distributed-replay/install-distributed-replay.md)<sup>1</sup> | Lists articles to install the Distributed Replay feature. |
-| [SQL Server Management Tools with SSMS](../../ssms/download-sql-server-management-studio-ssms.md) | Install and configure [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] management tools. |
+| [SQL Server Management Tools](/ssms/install/install) | Install and configure [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] management tools. |
 | [SQL Server PowerShell](/powershell/sql-server/download-sql-server-ps-module) | Considerations for installing [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] PowerShell components. |
 
 <sup>1</sup> Distributed Replay is deprecated in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)].

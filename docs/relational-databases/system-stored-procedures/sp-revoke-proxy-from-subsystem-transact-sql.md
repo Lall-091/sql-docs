@@ -124,5 +124,5 @@ EXECUTE dbo.sp_revoke_proxy_from_subsystem
 ## Related content
 
 - [SQL Server Agent stored procedures (Transact-SQL)](sql-server-agent-stored-procedures-transact-sql.md)
-- [Implement SQL Server Agent Security](../../ssms/agent/implement-sql-server-agent-security.md)
+- [Implement SQL Server Agent Security](/ssms/agent/implement-sql-server-agent-security)
 - [sp_grant_proxy_to_subsystem (Transact-SQL)](sp-grant-proxy-to-subsystem-transact-sql.md)

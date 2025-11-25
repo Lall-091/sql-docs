@@ -277,7 +277,7 @@ For more information, see [Automatic Page Repair (Availability Groups: Database 
 - [Remote Blob Store (RBS) (SQL Server)](../../../relational-databases/blob/remote-blob-store-rbs-sql-server.md)
 - [SQL Server Replication](../../../relational-databases/replication/sql-server-replication.md)
 - [Service Broker](../../configure-windows/sql-server-service-broker.md)
-- [SQL Server Agent](../../../ssms/agent/sql-server-agent.md)
+- [SQL Server Agent](/ssms/agent/sql-server-agent)
 - [Reporting Services with Always On Availability Groups (SQL Server)](reporting-services-with-always-on-availability-groups-sql-server.md)
 - [Resource governor](../../../relational-databases/resource-governor/resource-governor.md)
 - [TDS 8.0](../../../relational-databases/security/networking/tds-8.md), starting with [!INCLUDE [ssSQL25](../../../includes/sssql25-md.md)]

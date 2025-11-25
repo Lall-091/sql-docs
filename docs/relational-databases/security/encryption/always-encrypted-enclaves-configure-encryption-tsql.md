@@ -36,7 +36,7 @@ The remainder of this article describes how to trigger in-place encryption using
 ### Pre-requisites
 
 - Pre-requisites described in [Configure column encryption in-place using Always Encrypted with secure enclaves](always-encrypted-enclaves-configure-encryption.md).
-- Download [the latest general availability (GA) version of SQL Server Management Studio (SSMS)](../../../ssms/download-sql-server-management-studio-ssms.md).
+- Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 ### Steps
 

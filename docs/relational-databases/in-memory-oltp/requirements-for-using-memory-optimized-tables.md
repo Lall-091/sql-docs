@@ -35,7 +35,7 @@ In addition to the [SQL Server 2022: Hardware and software requirements](../../s
 
 - [!INCLUDE [inmemory-md](../../includes/inmemory-md.md)] is installed as part of **Database Engine Services**.
 
-  To install report generation ([Determining if a Table or Stored Procedure Should Be Ported to In-Memory OLTP](determining-if-a-table-or-stored-procedure-should-be-ported-to-in-memory-oltp.md)) and [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] (to manage [!INCLUDE [inmemory-md](../../includes/inmemory-md.md)] via [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] Object Explorer), [Download SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md).
+  To install report generation ([Determining if a Table or Stored Procedure Should Be Ported to In-Memory OLTP](determining-if-a-table-or-stored-procedure-should-be-ported-to-in-memory-oltp.md)), install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install) (to manage [!INCLUDE [inmemory-md](../../includes/inmemory-md.md)] via [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] Object Explorer).
 
 > [!NOTE]
 > - For more information specific to in-memory data in Azure SQL Database, see [Optimize performance by using in-memory technologies in Azure SQL Database](/azure/azure-sql/database/in-memory-oltp-overview?view=azuresql-db&preserve-view=true) and [Blog: [!INCLUDE [inmemory](../../includes/inmemory-md.md)] in Azure SQL Database](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/).

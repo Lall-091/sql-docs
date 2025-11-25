@@ -38,6 +38,6 @@ helpviewer_keywords:
   
 ## Related content
 
-- [Implement Jobs](../../ssms/agent/implement-jobs.md)
-- [Use Performance Objects](../../ssms/agent/use-performance-objects.md)
+- [Implement Jobs](/ssms/agent/implement-jobs)
+- [Use Performance Objects](/ssms/agent/use-performance-objects)
 - [Monitor Resource Usage (Performance Monitor)](monitor-resource-usage-system-monitor.md)

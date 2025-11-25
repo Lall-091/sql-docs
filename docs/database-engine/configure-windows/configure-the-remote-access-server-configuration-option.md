@@ -28,8 +28,8 @@ If you reached this page because you're having trouble connecting to [!INCLUDE [
 - [Tutorial: Get started with the Database Engine](../../relational-databases/tutorial-getting-started-with-the-database-engine.md)
 - [Sign in to SQL Server](logging-in-to-sql-server.md)
 - [Connect to SQL Server when system administrators are locked out](connect-to-sql-server-when-system-administrators-are-locked-out.md)
-- [Connect to a registered server (SQL Server Management Studio)](../../ssms/register-servers/connect-to-a-registered-server-sql-server-management-studio.md)
-- [Connect to any SQL Server component from SQL Server Management Studio](../../ssms/f1-help/connect-to-any-sql-server-component-from-sql-server-management-studio.md)
+- [Connect to a registered server (SQL Server Management Studio)](/ssms/register-servers/connect-to-a-registered-server-sql-server-management-studio)
+- [Connect to any SQL Server component from SQL Server Management Studio](/ssms/f1-help/connect-to-any-sql-server-component-from-sql-server-management-studio)
 - [sqlcmd - Connect to the Database Engine](../../tools/sqlcmd/sqlcmd-connect-database-engine.md)
 - [How to troubleshoot connecting to the SQL Server Database Engine](/troubleshoot/sql/connect/network-related-or-instance-specific-error-occurred-while-establishing-connection)
 

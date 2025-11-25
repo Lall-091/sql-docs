@@ -195,7 +195,7 @@ In some cases, the request for an incremental population results in a full popul
          This opens the **New Full-Text Indexing Table Schedule** dialog box, where you can modify the schedule.  
   
         > [!NOTE]  
-        >  For information about modifying a SQL Server Agent job, see [Modify a Job](../../ssms/agent/modify-a-job.md).  
+        >  For information about modifying a SQL Server Agent job, see [Modify a Job](/ssms/agent/modify-a-job).  
   
     -   To **remove** an existing schedule, select the existing schedule and click **Delete**.  
   

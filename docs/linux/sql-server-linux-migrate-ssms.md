@@ -14,7 +14,7 @@ ms.custom:
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
-This article shows how to use [SQL Server Management Studio](../ssms/download-sql-server-management-studio-ssms.md) (SSMS) and [SqlPackage](../tools/sqlpackage/sqlpackage.md) to export and import a database on SQL Server on Linux. SSMS and SqlPackage.exe are Windows applications, so use this technique when you have a Windows machine that can connect to a remote SQL Server instance on Linux.
+This article shows how to use [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) and [SqlPackage](../tools/sqlpackage/sqlpackage.md) to export and import a database on SQL Server on Linux. SSMS and SqlPackage.exe are Windows applications, so use this technique when you have a Windows machine that can connect to a remote SQL Server instance on Linux.
 
 You should always install and use the most recent version of SSMS as described in [Use SQL Server Management Studio on Windows to manage SQL Server on Linux](sql-server-linux-manage-ssms.md).
 
@@ -76,5 +76,5 @@ SqlPackage.exe /a:Import /tsn:tcp:<your_server> /tdn:<your_database> /tu:<userna
 
 ## Related content
 
-- [What is SQL Server Management Studio (SSMS)?](../ssms/sql-server-management-studio-ssms.md)
+- [What is SQL Server Management Studio (SSMS)?](/ssms/sql-server-management-studio-ssms)
 - [SqlPackage](../tools/sqlpackage/sqlpackage.md)

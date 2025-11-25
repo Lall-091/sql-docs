@@ -27,7 +27,7 @@ This article describes how to create a [!INCLUDE[ssNoVersion](../../includes/ssn
  Requires CREATE PROCEDURE permission in the database and ALTER permission on the schema in which the procedure is being created.
   
 ## Create a stored procedure
-You can use the [SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md) user interface or [!INCLUDE[tsql](../../includes/tsql-md.md)] in an SSMS query window to create a stored procedure. Always use the latest version of SSMS.
+You can use SQL Server Management Studio (SSMS), or [!INCLUDE[tsql](../../includes/tsql-md.md)] in an SSMS query window, to execute a stored procedure. Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 >[!NOTE]
 >The example stored procedure in this article uses the sample `AdventureWorksLT2022` ([!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]) or `AdventureWorksLT` ([!INCLUDE[ssazure-sqldb](../../includes/ssazure-sqldb.md)]) database. For instructions on how to get and use the `AdventureWorksLT` sample databases, see [AdventureWorks sample databases](../../samples/adventureworks-install-configure.md).
@@ -40,7 +40,7 @@ To create a stored procedure in SSMS:
 
    For more information, see the following quickstarts:
 
-   - [Connect and query a SQL Server instance using SSMS](../../ssms/quickstarts/ssms-connect-query-sql-server.md)
+   - [Connect and query a SQL Server instance using SSMS](/ssms/quickstarts/ssms-connect-query-sql-server)
    - [Connect to and query Azure SQL Database or Azure SQL Managed Instance using SSMS](/azure/azure-sql/database/connect-query-ssms)
 
 1. Expand the instance, and then expand **Databases**.

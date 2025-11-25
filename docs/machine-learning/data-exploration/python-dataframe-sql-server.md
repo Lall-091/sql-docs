@@ -36,7 +36,7 @@ This article describes how to insert a [pandas](https://pandas.pydata.org/) data
 ::: moniker range="=azuresqldb-mi-current"
 - [Azure SQL Managed Instance](/azure/azure-sql/managed-instance/instance-create-quickstart)
 
-- [SQL Server Management Studio](../../ssms/download-sql-server-management-studio-ssms.md) for restoring the sample database to Azure SQL Managed Instance.
+- [SQL Server Management Studio](/ssms/install/install) for restoring the sample database to Azure SQL Managed Instance.
   ::: moniker-end
 
 - Azure Data Studio. To install, see [Download and install Azure Data Studio](/azure-data-studio/download-azure-data-studio).

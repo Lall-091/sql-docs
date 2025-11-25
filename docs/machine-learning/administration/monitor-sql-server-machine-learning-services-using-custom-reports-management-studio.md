@@ -12,7 +12,7 @@ monikerRange: ">=sql-server-2016||>=sql-server-linux-ver15||=azuresqldb-mi-curre
 # Monitor Python and R script execution using custom reports in SQL Server Management Studio
 [!INCLUDE [SQL Server 2016 SQL MI](../../includes/applies-to-version/sqlserver2016-asdbmi.md)]
 
-Use custom reports in [SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md) to monitor the execution of external scripts (Python and R), resources used, diagnose problems, and tune performance in [SQL Server Machine Learning Services](../sql-server-machine-learning-services.md).
+Use custom reports in [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) to monitor the execution of external scripts (Python and R), resources used, diagnose problems, and tune performance in [SQL Server Machine Learning Services](../sql-server-machine-learning-services.md).
 
 In these reports, you can view details such as:
 
@@ -24,7 +24,7 @@ In these reports, you can view details such as:
 
 This article explains how to install and use the custom reports provided for SQL Server Machine Learning Services.
 
-For more information on reports in SQL Server Management Studio, see [Custom reports in Management Studio](../../ssms/object/custom-reports-in-management-studio.md).
+For more information on reports in SQL Server Management Studio, see [Custom reports in Management Studio](/ssms/object/custom-reports-in-management-studio).
 
 ## How to install the reports
 

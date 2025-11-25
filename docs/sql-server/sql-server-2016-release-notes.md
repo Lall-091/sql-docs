@@ -22,7 +22,7 @@ This article describes limitations and issues with [!INCLUDE [sssql16-md](../inc
 
 :::image type="icon" source="../includes/media/download.svg" border="false"::: **[Download SQL Server from the Evaluation Center](https://www.microsoft.com/evalcenter/evaluate-sql-server-2016)**  
 :::image type="icon" source="../includes/media/azure-vm.svg" border="false"::: **[Spin up a Virtual Machine with SQL Server already installed](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2022-ws2022?tab=Overview)**  
-:::image type="icon" source="../includes/media/download.svg" border="false"::: **[Download SQL Server Management Studio (SSMS)](../ssms/download-sql-server-management-studio-ssms.md)**
+:::image type="icon" source="../includes/media/download.svg" border="false"::: **[Install SQL Server Management Studio (SSMS)](/ssms/install/install)**
 
 ## Azure Connect Pack for SQL Server 2016 (May 2022)
 

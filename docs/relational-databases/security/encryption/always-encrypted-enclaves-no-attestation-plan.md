@@ -44,7 +44,7 @@ These requirements include:
 
 ### Tooling requirements
 
-- [SQL Server Management Studio (SSMS) 19 or later](../../../ssms/download-sql-server-management-studio-ssms.md).
+Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 ### Client driver requirements
 

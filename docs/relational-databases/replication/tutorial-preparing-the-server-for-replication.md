@@ -45,7 +45,7 @@ To complete this tutorial, you need SQL Server, SQL Server Management Studio (SS
 
 - At the subscriber server (destination), install any edition of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], except [!INCLUDE [ssEW](../../includes/ssew-md.md)]. [!INCLUDE [ssEW](../../includes/ssew-md.md)] can't be a subscriber in transactional replication.
 
-- Install [SQL Server Management Studio](../../ssms/download-sql-server-management-studio-ssms.md).
+- Install [SQL Server Management Studio](/ssms/install/install).
 - Install [SQL Server Developer edition](https://www.microsoft.com/sql-server/sql-server-downloads).
 - Download the [AdventureWorks sample database](https://github.com/Microsoft/sql-server-samples/releases). For instructions on restoring a database in SSMS, see [Restore a Database Backup Using SSMS](../backup-restore/restore-a-database-backup-using-ssms.md).
 

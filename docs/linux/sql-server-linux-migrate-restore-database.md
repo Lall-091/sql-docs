@@ -34,7 +34,7 @@ The following prerequisites are required to complete this tutorial:
 
 - On a Windows machine:
   - [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads) installed.
-  - [SQL Server Management Studio](../ssms/download-sql-server-management-studio-ssms.md) installed.
+  - [SQL Server Management Studio](/ssms/install/install) installed.
   - Target database to migrate.
 
 - On a Linux machine:

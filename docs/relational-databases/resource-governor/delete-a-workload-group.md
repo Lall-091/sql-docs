@@ -42,7 +42,7 @@ Deleting a workload group requires the `CONTROL SERVER` permission.
 
 ## Delete a workload group using Object Explorer in SQL Server Management Studio
 
-To delete a workload group using [[!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)]](../../ssms/download-sql-server-management-studio-ssms.md):
+To delete a workload group using [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms):
 
 1. In [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)], open Object Explorer and expand the **Management** node down to and including **Resource Pools**.
 1. Expand **Resource Pools** down to and including the **Workload Groups** node in the resource pool that contains the workload group to be deleted.

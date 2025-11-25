@@ -36,7 +36,7 @@ All replication configurations can be configured with [replication stored proced
 To complete this tutorial, you need:
 
 - Two instances of SQL Server with the latest version of SQL Server on Linux
-- A tool to issue T-SQL queries to set up replication, such as [sqlcmd](../tools/sqlcmd/sqlcmd-utility.md) or [SQL Server Management Studio](../ssms/sql-server-management-studio-ssms.md)
+- A tool to issue T-SQL queries to set up replication, such as [sqlcmd](../tools/sqlcmd/sqlcmd-utility.md) or [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms)
 
   See [Use SQL Server Management Studio on Windows to manage SQL Server on Linux](sql-server-linux-manage-ssms.md).
 

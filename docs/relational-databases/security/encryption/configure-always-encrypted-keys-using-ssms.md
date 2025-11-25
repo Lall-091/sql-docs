@@ -19,7 +19,7 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../../includes/applies-to-version/sql-asdb-asdbmi.md)]
 
-This article provides the steps to provision column master keys and column encryption keys for Always Encrypted using SQL Server Management Studio (SSMS). Make sure you install [the latest general availability (GA) version of SSMS](../../../ssms/download-sql-server-management-studio-ssms.md) when provisioning encryption keys.
+This article provides the steps to provision column master keys and column encryption keys for Always Encrypted using SQL Server Management Studio (SSMS). Use the latest version of [SQL Server Management Studio](/ssms/install/install) when provisioning encryption keys.
 
 For an overview of Always Encrypted key management, including best practice recommendations and important security considerations, see [Overview of key management for Always Encrypted](overview-of-key-management-for-always-encrypted.md).
 

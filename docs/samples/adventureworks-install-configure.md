@@ -24,7 +24,7 @@ For more information about samples, see the [Samples GitHub repository](https://
 ## Prerequisites
 
 - [SQL Server](https://www.microsoft.com/evalcenter/evaluate-sql-server-2025) or [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)
-- [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms) (SSMS)
+- [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms)
 
 ## Download backup files
 

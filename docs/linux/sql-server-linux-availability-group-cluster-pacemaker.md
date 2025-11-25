@@ -4,7 +4,7 @@ description: Learn to create a three-node cluster on Red Hat, SUSE, or Ubuntu, a
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh-msft
-ms.date: 10/20/2025
+ms.date: 11/24/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -75,6 +75,13 @@ Each node in the cluster must have an appropriate subscription for RHEL and the 
    sudo subscription-manager list --available
    ```
 
+   > [!NOTE]  
+   > For **RHEL 10**, the list command is as follows:
+   >
+   > ```bash
+   > sudo subscription-manager repos --list
+   > ```
+
    From the list of available pools, note the pool ID for the high availability subscription.
 
 1. Update the following script. Replace `<pool id>` with the pool ID for high availability from the preceding step. Run the script to attach the subscription.
@@ -101,6 +108,12 @@ Each node in the cluster must have an appropriate subscription for RHEL and the 
 
    ```bash
    sudo subscription-manager repos --enable=rhel-9-for-x86_64-highavailability-rpms
+   ```
+
+   **RHEL 10**
+
+   ```bash
+   sudo subscription-manager repos --enable=rhel-10-for-x86_64-highavailability-rpms
    ```
 
 For more information, see [Pacemaker - The Open Source, High Availability Cluster](https://clusterlabs.org/pacemaker/).
@@ -308,13 +321,13 @@ The procedure for creating an availability group for high availability differs b
 
 To complete the following end-to-end scenario, you need three machines to deploy the three nodes cluster. The following steps outline how to configure these servers.
 
-### Setup and configure the operating system on each cluster node
+### Set up and configure the operating system on each cluster node
 
-The first step is to configure the operating system on the cluster nodes. For this walk through, use SLES 12 SP3 with a valid subscription for the HA add-on.
+The first step is to configure the operating system on the cluster nodes. For this walk-through, use SLES 12 SP3 with a valid subscription for the HA add-on.
 
 #### Install and configure SQL Server service on each cluster node
 
-1. Install and setup [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] service on all nodes. For detailed instructions, see [Installation guidance for SQL Server on Linux](sql-server-linux-setup.md).
+1. Install and set up [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] service on all nodes. For detailed instructions, see [Installation guidance for SQL Server on Linux](sql-server-linux-setup.md).
 
 1. Designate one node as primary and other nodes as secondaries. Use these terms throughout this guide.
 

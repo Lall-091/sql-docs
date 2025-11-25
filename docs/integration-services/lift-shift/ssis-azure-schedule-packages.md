@@ -32,7 +32,7 @@ You can schedule the execution of SSIS packages deployed to the SSISDB Catalog o
 
 In SQL Server Management Studio (SSMS), you can right-click on a package deployed to the SSIS Catalog database, `SSISDB`, and select **Schedule** to open the **New schedule** dialog box. For more info, see [Schedule SSIS packages in Azure with SSMS](ssis-azure-schedule-packages-ssms.md).
 
-This feature requires SQL Server Management Studio version 17.7 or higher. To get the latest version of SSMS, see [Download SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md).
+Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 ## <a name="elastic"></a> Schedule a package with SQL Database Elastic Jobs
 

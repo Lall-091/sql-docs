@@ -42,7 +42,7 @@ Requires ALTER permission on the table.
 
 ## Use SQL Server Management Studio
 
-Always use the latest version of [SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md).
+Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 ### Rename a table
 

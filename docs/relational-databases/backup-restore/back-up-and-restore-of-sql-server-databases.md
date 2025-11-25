@@ -210,9 +210,9 @@ GO
 
 - [Create a maintenance plan](../maintenance-plans/create-a-maintenance-plan.md)
 
-- [Create a SQL Server Agent job in SQL Server Management Studio](../../ssms/agent/create-a-job.md)
+- [Create a SQL Server Agent job in SQL Server Management Studio](/ssms/agent/create-a-job)
 
-- [Configure schedule for SQL Server Agent job](../../ssms/agent/schedule-a-job.md)
+- [Configure schedule for SQL Server Agent job](/ssms/agent/schedule-a-job)
 
 <a id="working-with-backup-devices-and-backup-media"></a>
 

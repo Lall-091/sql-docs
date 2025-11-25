@@ -16,7 +16,7 @@ Some types of Policy-Based Management policies can create triggers to enforce fu
 ## Prerequisites
 To complete this tutorial, you need SQL Server Management Studio, access to a server that's running SQL Server.
 
-- Install [SQL Server Management Studio](../../ssms/download-sql-server-management-studio-ssms.md).
+- Install [SQL Server Management Studio](/ssms/install/install).
 - Install [SQL Server 2017 Developer Edition](https://www.microsoft.com/sql-server/sql-server-downloads).
   
 ## Create the Finance database  

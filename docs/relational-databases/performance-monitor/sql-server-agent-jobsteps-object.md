@@ -44,6 +44,6 @@ helpviewer_keywords:
   
 ## Related content
 
-- [Manage Job Steps](../../ssms/agent/manage-job-steps.md)
-- [Use Performance Objects](../../ssms/agent/use-performance-objects.md)
+- [Manage Job Steps](/ssms/agent/manage-job-steps)
+- [Use Performance Objects](/ssms/agent/use-performance-objects)
 - [Monitor Resource Usage (Performance Monitor)](monitor-resource-usage-system-monitor.md)

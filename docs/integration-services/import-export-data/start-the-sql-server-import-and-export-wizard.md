@@ -61,7 +61,7 @@ To start the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Import a
 
    :::image type="content" source="media/start-the-sql-server-import-and-export-wizard/start-wizard-ssms.jpg" alt-text="Screenshot of start wizard SSMS.":::
 
-If you don't have SQL Server Management Studio installed, see [Download SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md).
+Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 ## Start menu
 

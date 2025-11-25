@@ -37,7 +37,7 @@ To run [!INCLUDE [tsql](../includes/tsql-md.md)] statements in [!INCLUDE [ssManS
 
 To complete this tutorial, you need SQL Server Management Studio and access to a SQL Server instance.
 
-- Install [SQL Server Management Studio](../ssms/download-sql-server-management-studio-ssms.md).
+- Install [SQL Server Management Studio](/ssms/install/install).
 
 If you don't have a SQL Server instance, create one. To create one, select your platform from the following links. If you choose SQL Authentication, use your SQL Server login credentials.
 

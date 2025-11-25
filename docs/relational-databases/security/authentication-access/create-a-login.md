@@ -27,7 +27,7 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 
 [!INCLUDE [SQL Server](../../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw.md)]
 
-This article describes how to create a login in [!INCLUDE [ssnoversion](../../../includes/ssnoversion-md.md)] or Azure [!INCLUDE [ssSDS](../../../includes/sssds-md.md)] by using [SQL Server Management Studio (SSMS)](../../../ssms/download-sql-server-management-studio-ssms.md) or [!INCLUDE [tsql](../../../includes/tsql-md.md)]. A login is the identity of the person or process that is connecting to an instance of [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)].
+This article describes how to create a login in [!INCLUDE [ssnoversion](../../../includes/ssnoversion-md.md)] or Azure [!INCLUDE [ssSDS](../../../includes/sssds-md.md)] by using [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) or [!INCLUDE [tsql](../../../includes/tsql-md.md)]. A login is the identity of the person or process that is connecting to an instance of [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)].
 
 [!INCLUDE [entra-id](../../../includes/entra-id.md)]
 

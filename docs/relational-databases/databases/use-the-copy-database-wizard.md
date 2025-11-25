@@ -75,7 +75,7 @@ The Copy Database Wizard moves or copies databases and certain server objects ea
 
 -   Ensure that SQL Server Agent is started on the destination server.
 -   Ensure the data and log file directories on the source server can be reached from the destination server.
--   Under the **detach and attach** method, a SQL Server Agent Proxy for the SQL Server Integration Services (SSIS) subsystem must exist on the destination server with a credential that can access the file system of both the source and destination servers. For more information on proxies, see [Create a SQL Server Agent Proxy](../../ssms/agent/create-a-sql-server-agent-proxy.md).
+-   Under the **detach and attach** method, a SQL Server Agent Proxy for the SQL Server Integration Services (SSIS) subsystem must exist on the destination server with a credential that can access the file system of both the source and destination servers. For more information on proxies, see [Create a SQL Server Agent Proxy](/ssms/agent/create-a-sql-server-agent-proxy).
 
 > [!IMPORTANT]
 > Under the **detach and attach** method, the copy or move process will fail if an Integration Services Proxy account is not used. Under certain situations the source database will not become re-attached to the source server and all NTFS security permissions will be stripped from the data and log files. If this happens, navigate to your files, re-apply the relevant permissions, and then re-attach the database to your instance of SQL Server.
@@ -416,5 +416,5 @@ For example, if you attach a database that was compatibility level 90 before att
 ## Related content
 
 - [Upgrade a Database Using Detach and Attach (Transact-SQL)](../../relational-databases/databases/upgrade-a-database-using-detach-and-attach-transact-sql.md)
-- [Create a SQL Server Agent Proxy](../../ssms/agent/create-a-sql-server-agent-proxy.md)
+- [Create a SQL Server Agent Proxy](/ssms/agent/create-a-sql-server-agent-proxy)
 - [SQL Server Integration Services](../../integration-services/sql-server-integration-services.md)

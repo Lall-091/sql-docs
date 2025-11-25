@@ -25,5 +25,5 @@ helpviewer_keywords:
   
 ## Related content
 
-- [Use Performance Objects](../../ssms/agent/use-performance-objects.md)
+- [Use Performance Objects](/ssms/agent/use-performance-objects)
 - [Monitor Resource Usage (Performance Monitor)](monitor-resource-usage-system-monitor.md)

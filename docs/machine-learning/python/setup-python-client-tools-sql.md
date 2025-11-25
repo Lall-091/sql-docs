@@ -35,7 +35,7 @@ To validate the installation, you can use built-in Jupyter Notebooks as describe
 
 ## Commonly used tools
 
-Whether you are a Python developer new to SQL, or a SQL developer new to Python and in-database analytics, you will need both a Python development tool and a T-SQL query editor such as [SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md) to exercise all of the capabilities of in-database analytics.
+Whether you are a Python developer new to SQL, or a SQL developer new to Python and in-database analytics, you will need both a Python development tool and a T-SQL query editor such as [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) to exercise all of the capabilities of in-database analytics.
 
 For Python development, you can use Jupyter Notebooks, which come bundled in the Anaconda distribution installed by SQL Server. This article explains how to start Jupyter Notebooks so that you can run Python code locally and remotely on SQL Server.
 
@@ -304,5 +304,5 @@ You can now import **revoscalepy**, **microsoftml**, or **azureml** modules. You
 
 ## Related content
 
-- [SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md)
+- [What is SQL Server Management Studio (SSMS)?](/ssms/sql-server-management-studio-ssms)
 - [Quickstart: Create and run simple Python scripts with SQL Server Machine Learning Services](../tutorials/quickstart-python-create-script.md)

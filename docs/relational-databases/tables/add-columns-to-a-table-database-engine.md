@@ -40,7 +40,7 @@ Requires `ALTER` permission on the table.
 ## Use SQL Server Management Studio
 
 > [!IMPORTANT]
-> Always use the latest version of [SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md).
+> Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 SQL Server Management Studio (SSMS) doesn't support all data definition language (DDL) options in Azure Synapse. Use [T-SQL scripts](#TsqlProcedure) instead.
 

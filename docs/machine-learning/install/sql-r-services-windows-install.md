@@ -103,7 +103,7 @@ This step requires a server restart. You can hold off on the restart until all o
 
 ##  Enable script execution
 
-1. Open [SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md) or [Azure Data Studio](/azure-data-studio/what-is-azure-data-studio).
+1. Open [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms).
 
 1. Connect to the instance where you installed R Services, click **New Query** to open a query window, and run the following command:
 
@@ -144,7 +144,7 @@ Use the following steps to verify that all components used to launch external sc
 
 1. If Launchpad is running, you should be able to run simple R to verify that external scripting runtimes can communicate with SQL Server.
 
-    Open a new **Query** window in [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] or Azure Data Studio, and then run a script such as the following:
+    Open a new **Query** window in [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)], and then run the following script:
 
     ```sql
     EXEC sp_execute_external_script  @language =N'R',

@@ -41,7 +41,7 @@ Finish the SQL Server installation Wizard.
 
 ## 2. Install SQL Server Management Studio
 
-Download and install [SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md).
+Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 ## 3. Enable Scale Out
 Open SSMS and connect to the local Sql Server instance.

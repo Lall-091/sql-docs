@@ -269,7 +269,7 @@ FROM sys.server_principals;
 
 ## Connect to SQL Server using Active Directory authentication
 
-To connect using [SSMS](../ssms/download-sql-server-management-studio-ssms.md), log into the SQL Server instance with your Windows credentials.
+Use your Windows credentials to connect to the SQL Server instance using [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms).
 
 You can also use a tool like the [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md) to connect to the SQL Server instance using Windows Authentication.
 

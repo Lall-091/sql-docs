@@ -31,7 +31,7 @@ To use this tutorial, you need an Azure storage account, SQL Server Management S
 - Create an [Azure storage account](/azure/storage/common/storage-quickstart-create-account?tabs=portal).
 - Install [SQL Server 2017 Developer Edition](https://www.microsoft.com/sql-server/sql-server-downloads).
 - Provision an [Azure VM running SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/).
-- Install [SQL Server Management Studio](../ssms/download-sql-server-management-studio-ssms.md).
+- Install [SQL Server Management Studio](/ssms/install/install).
 - Download [AdventureWorks sample databases](../samples/adventureworks-install-configure.md).
 - Assign the user account to the role of [db_backupoperator](security/authentication-access/database-level-roles.md) and grant [alter any credential](../t-sql/statements/alter-credential-transact-sql.md) permissions.
 

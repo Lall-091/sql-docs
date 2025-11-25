@@ -29,7 +29,7 @@ The following table describes some of the more common client tools.
 
 | Client tool | Type | Operating system |
 | --- | --- | --- |
-| **[SQL Server Management Studio](../ssms/sql-server-management-studio-ssms.md)** (SSMS) | GUI | Windows |
+| **[SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms)** | GUI | Windows |
 | **[MSSQL extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md)** | GUI | Windows, macOS, Linux |
 | **[sqlcmd](../tools/sqlcmd/sqlcmd-utility.md)** | CLI | Windows, macOS, Linux |
 | **[bcp](../tools/bcp-utility.md)** | CLI | Windows, macOS, Linux |
@@ -186,7 +186,7 @@ Once you connect successfully to the [!INCLUDE [ssde-md](../includes/ssde-md.md)
 
 For more information about running T-SQL queries in client tools, see:
 
-- [SQL Server Management Studio (SSMS)](../ssms/quickstarts/ssms-connect-query-sql-server.md)
+- [SQL Server Management Studio (SSMS)](/ssms/quickstarts/ssms-connect-query-sql-server)
 - [Quickstart: Connect to and query a database with the MSSQL extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/connect-database-visual-studio-code.md)
 - [sqlcmd utility](../tools/sqlcmd/sqlcmd-run-transact-sql-script-files.md)
 - [Azure portal query editor for Azure SQL Database](/azure/azure-sql/database/query-editor)
@@ -205,7 +205,7 @@ For more information about running T-SQL queries in client tools, see:
 ## Related content
 
 - [Sign in to SQL Server](../database-engine/configure-windows/logging-in-to-sql-server.md)
-- [What is SQL Server Management Studio (SSMS)?](../ssms/sql-server-management-studio-ssms.md)
+- [What is SQL Server Management Studio (SSMS)?](/ssms/sql-server-management-studio-ssms)
 - [What is the MSSQL extension for Visual Studio Code?](../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md)
 - [Configure Database Engine Instances (SQL Server)](../database-engine/configure-windows/configure-database-engine-instances-sql-server.md)
 - [sqlcmd utility](../tools/sqlcmd/sqlcmd-utility.md)

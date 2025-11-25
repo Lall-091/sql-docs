@@ -541,7 +541,7 @@ GO
  [FREETEXTTABLE &#40;Transact-SQL&#41;](../../relational-databases/system-functions/freetexttable-transact-sql.md)   
  [Query with Full-Text Search](../../relational-databases/search/query-with-full-text-search.md)   
  [Full-Text Search](../../relational-databases/search/full-text-search.md)   
- [Create Full-Text Search Queries &#40;Visual Database Tools&#41;](../../ssms/visual-db-tools/create-full-text-search-queries-visual-database-tools.md)   
+ [Create Full-Text Search Queries &#40;Visual Database Tools&#41;](/ssms/visual-db-tools/create-full-text-search-queries-visual-database-tools)   
  [WHERE &#40;Transact-SQL&#41;](../../t-sql/queries/where-transact-sql.md)   
  [Search Document Properties with Search Property Lists](../../relational-databases/search/search-document-properties-with-search-property-lists.md)  
   

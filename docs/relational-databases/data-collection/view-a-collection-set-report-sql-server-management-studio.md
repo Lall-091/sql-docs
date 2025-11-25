@@ -47,5 +47,5 @@ Use this dialog box to specify the start date, start time, and duration of the d
 ## Related content
 
 - [Data collection](data-collection.md)
-- [Custom Reports in Management Studio](../../ssms/object/custom-reports-in-management-studio.md)
+- [Custom Reports in Management Studio](/ssms/object/custom-reports-in-management-studio)
 - [Configure the management data warehouse (SQL Server Management Studio)](configure-the-management-data-warehouse-sql-server-management-studio.md)

@@ -71,7 +71,7 @@ To create or manage maintenance plans, you must be a member of the **sysadmin** 
 
    - **Servers**
 
-     Display the **Servers** dialog box, which is used to select the servers where the subplan tasks will be run. This option is enabled only on master servers in multiserver environments. For more information, see [Create a Multiserver Environment](../../ssms/agent/create-a-multiserver-environment.md) and [Maintenance Plan (Servers)](maintenance-plan-servers.md).
+     Display the **Servers** dialog box, which is used to select the servers where the subplan tasks will be run. This option is enabled only on master servers in multiserver environments. For more information, see [Create a Multiserver Environment](/ssms/agent/create-a-multiserver-environment) and [Maintenance Plan (Servers)](maintenance-plan-servers.md).
 
    - **Name**
 

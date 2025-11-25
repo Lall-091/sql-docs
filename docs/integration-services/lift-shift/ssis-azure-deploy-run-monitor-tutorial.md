@@ -22,7 +22,7 @@ This tutorial shows you how to deploy a SQL Server Integration Services (SSIS) p
 
 ## Prerequisites
 
-Before you start, make sure you have version 17.2 or later of SQL Server Management Studio. To download the latest version of SSMS, see [Download SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md).
+Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 Also make sure that you have set up the SSISDB database in Azure and provisioned the Azure-SSIS Integration Runtime. For info about how to provision SSIS on Azure, see [Deploy SQL Server Integration Services packages to Azure](/azure/data-factory/tutorial-deploy-ssis-packages-azure).
 

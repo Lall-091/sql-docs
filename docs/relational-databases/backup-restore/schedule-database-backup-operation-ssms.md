@@ -67,9 +67,9 @@ To schedule a database backup using the **Script Action to Job** option in SSMS,
 
 ## Manually create SQL Server Agent jobs
 
-Alternatively, you can create and schedule your own backup jobs using SQL Server Agent. For more information, see [Create Jobs](../../ssms/agent/create-jobs.md) and [Schedule a Job](../../ssms/agent/schedule-a-job.md).
+Alternatively, you can create and schedule your own backup jobs using SQL Server Agent. For more information, see [Create Jobs](/ssms/agent/create-jobs) and [Schedule a Job](/ssms/agent/schedule-a-job).
 
 ## Related content
 
-- [Script queries from the GUI](../../ssms/tutorials/scripting-ssms.md#script-queries-from-the-gui)
+- [Script queries from the GUI](/ssms/tutorials/scripting-ssms#script-queries-from-the-gui)
 - [Troubleshoot SQL Server backup and restore operations](/troubleshoot/sql/database-engine/backup-restore/backup-restore-operations)

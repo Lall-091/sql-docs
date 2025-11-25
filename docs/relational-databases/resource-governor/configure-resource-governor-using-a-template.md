@@ -33,7 +33,7 @@ The resource governor [!INCLUDE[tsql](../../includes/tsql-md.md)] statements in 
 
 ## Configure resource governor using a template
 
-To configure resource governor using a template in [[!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)]](../../ssms/download-sql-server-management-studio-ssms.md):
+To configure resource governor using a template in [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms):
 
 1. In [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)], open the **View** menu and select **Template Explorer**.
 1. In **Template Explorer**, expand **Resource governor**, and then select **Configure Resource governor**.

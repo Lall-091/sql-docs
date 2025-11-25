@@ -561,5 +561,5 @@ If the provider specifies `ForceProtocolEncryption = True`, then encryption is e
 - [sqlcmd utility](sqlcmd-utility.md)
 - [Use sqlcmd with scripting variables](sqlcmd-use-scripting-variables.md)
 - [Edit SQLCMD Scripts with Query Editor](edit-sqlcmd-scripts-query-editor.md)
-- [Manage Job Steps](../../ssms/agent/manage-job-steps.md)
-- [Create a CmdExec Job Step](../../ssms/agent/create-a-cmdexec-job-step.md)
+- [Manage Job Steps](/ssms/agent/manage-job-steps)
+- [Create a CmdExec Job Step](/ssms/agent/create-a-cmdexec-job-step)

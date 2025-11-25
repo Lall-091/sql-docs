@@ -42,7 +42,7 @@ In SQL Server Management Studio you can provision:
 
 The [Always Encrypted Wizard](always-encrypted-wizard.md) also allows you to create an enclave-enabled column master key and an enclave-enabled column encryption key. 
 
-Make sure you have installed [the latest general availability (GA) version of SQL Server Management Studio (SSMS)](../../../ssms/download-sql-server-management-studio-ssms.md).
+Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 ### Provision enclave-enabled column master keys with the New Column Master Key dialog
 

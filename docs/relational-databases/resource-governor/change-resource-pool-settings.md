@@ -39,7 +39,7 @@ Changing resource pool settings requires the `CONTROL SERVER` permission.
 
 ## Change resource pool settings using SQL Server Management Studio
 
-To change resource pool settings using [[!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)]](../../ssms/download-sql-server-management-studio-ssms.md):
+To change resource pool settings using [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms):
 
 1. In [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)], open Object Explorer and expand the **Management** node down to and including **Resource Pools**.
 1. Use the context menu for the resource pool to be modified, and select **Properties**.

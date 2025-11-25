@@ -166,7 +166,7 @@ For some properties, you might need to restart the server before the change can 
 - [sp_configure (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-configure-transact-sql.md)
 - [RECONFIGURE (Transact-SQL)](../../t-sql/language-elements/reconfigure-transact-sql.md)
 - [SELECT (Transact-SQL)](../../t-sql/queries/select-transact-sql.md)
-- [Configure WMI to Show Server Status in SQL Server Tools](../../ssms/configure-wmi-to-show-server-status-in-sql-server-tools.md)
+- [Configure WMI to Show Server Status in SQL Server Tools](/ssms/configure-wmi-to-show-server-status-in-sql-server-tools)
 - [SQL Server Configuration Manager](../../relational-databases/sql-server-configuration-manager.md)
 - [Configuration Functions (Transact-SQL)](../../t-sql/functions/configuration-functions-transact-sql.md)
 - [Server dynamic management views and functions (Transact-SQL)](../../relational-databases/system-dynamic-management-views/server-related-dynamic-management-views-and-functions-transact-sql.md)

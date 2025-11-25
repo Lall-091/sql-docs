@@ -259,7 +259,7 @@ pa.AddSubSystem(AgentSubSystem.CmdExec);
 ```  
   
 ## See Also  
- [SQL Server Agent](../../../ssms/agent/sql-server-agent.md)   
- [Implement Jobs](../../../ssms/agent/implement-jobs.md)  
+ [SQL Server Agent](/ssms/agent/sql-server-agent)   
+ [Implement Jobs](/ssms/agent/implement-jobs)  
   
   

@@ -51,7 +51,7 @@ Because SQL Server Configuration Manager is a snap-in for the [!INCLUDE [msconam
 
 In **Windows 10 and Windows 11**, to open SQL Server Configuration Manager, type `SQLServerManager17.msc` (for SQL Server 2025) in the Start Page. For other versions, replace `17` with the appropriate number. You can pin SQL Server Configuration Manager to the Start Page or Task Bar by right-clicking `SQLServerManager17.msc` and selecting "Open file location." Then, right-click the file and select "Pin to Start" or "Pin to Taskbar".
 
-SQL Server Configuration Manager and SQL Server Management Studio use Window Management Instrumentation (WMI) to view and change some server settings. WMI provides a unified way to interface with API calls and manages the registry operations requested by the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] tools. WMI also provides enhanced control and manipulation over the selected SQL services of the SQL Server Configuration Manager snap-in component. For information about configuring permissions related to WMI, see [Configure WMI to Show Server Status in SQL Server Tools](../../ssms/configure-wmi-to-show-server-status-in-sql-server-tools.md).
+SQL Server Configuration Manager and SQL Server Management Studio use Window Management Instrumentation (WMI) to view and change some server settings. WMI provides a unified way to interface with API calls and manages the registry operations requested by the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] tools. WMI also provides enhanced control and manipulation over the selected SQL services of the SQL Server Configuration Manager snap-in component. For information about configuring permissions related to WMI, see [Configure WMI to Show Server Status in SQL Server Tools](/ssms/configure-wmi-to-show-server-status-in-sql-server-tools).
 
 To start, stop, pause, resume, or configure services on another computer by using SQL Server Configuration Manager, see [SQL Server Configuration Manager: Connect to another computer](../../database-engine/configure-windows/scm-services-connect-to-another-computer.md).
 
@@ -97,6 +97,6 @@ The SQL Server Configuration Manager also allows you to view information about f
 
 - [SQL Server Configuration Manager: Connect to another computer](../../database-engine/configure-windows/scm-services-connect-to-another-computer.md)
 - [Start, stop, pause, resume, and restart SQL Server services](../../database-engine/configure-windows/start-stop-pause-resume-restart-sql-server-services.md)
-- [Start, stop, or pause the SQL Server Agent service](../../ssms/agent/start-stop-or-pause-the-sql-server-agent-service.md)
+- [Start, stop, or pause the SQL Server Agent service](/ssms/agent/start-stop-or-pause-the-sql-server-agent-service)
 - [SQL Server Configuration Manager: Set an instance to start automatically](../../database-engine/configure-windows/scm-services-set-an-instance-to-start-automatically.md)
 - [SQL Server Configuration Manager: Prevent automatic startup of an instance](../../database-engine/configure-windows/scm-services-prevent-automatic-startup-of-an-instance.md)

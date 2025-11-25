@@ -61,7 +61,7 @@ Before you create a custom collection set, you must configure data collection pa
    - CollectorSchedule_Every_60min
    - CollectorSchedule_Every_6h
 
-   If you don't want to use one of the schedules that are provided, you can create a new schedule and use it for the collection set. For more information, see [Create and Attach Schedules to Jobs](../../ssms/agent/create-and-attach-schedules-to-jobs.md).
+   If you don't want to use one of the schedules that are provided, you can create a new schedule and use it for the collection set. For more information, see [Create and Attach Schedules to Jobs](/ssms/agent/create-and-attach-schedules-to-jobs).
 
 ### Define and create a collection item
 
@@ -161,5 +161,5 @@ GO
 ## Related content
 
 - [Data collector stored procedures (Transact-SQL)](../system-stored-procedures/data-collector-stored-procedures-transact-sql.md)
-- [Manage Schedules](../../ssms/agent/manage-schedules.md)
+- [Manage Schedules](/ssms/agent/manage-schedules)
 - [Start or stop a collection set](start-or-stop-a-collection-set.md)

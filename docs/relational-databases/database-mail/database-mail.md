@@ -111,7 +111,7 @@ monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-cu
 
  You can configure [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Agent to send e-mail messages to predefined operators when:  
 
--   An alert is triggered. Alerts can be configured to send e-mail notification of specific events that occur. For example, alerts can be configured to notify an operator of a particular database event or operating system condition that might need immediate action. For more information about configuring alerts, see [Alerts](../../ssms/agent/alerts.md).  
+-   An alert is triggered. Alerts can be configured to send e-mail notification of specific events that occur. For example, alerts can be configured to notify an operator of a particular database event or operating system condition that might need immediate action. For more information about configuring alerts, see [Alerts](/ssms/agent/alerts).  
 
 -   A scheduled task, such as a database backup or replication event, succeeds or fails. For example, you can use [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Agent Mail to notify operators if an error occurs during processing at the end of a month.  
 

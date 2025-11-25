@@ -639,7 +639,7 @@ This example explains how to convert a large fact table from a rowstore table to
        ON dbo.MyFactTable(ProductKey, OrderDateKey);
    ```
 
-1. Drop all nonclustered indexes from the rowstore table. You might want to [script out the indexes to re-create them later](../../ssms/tutorials/scripting-ssms.md#script-a-database-by-using-the-generate-scripts-option).
+1. Drop all nonclustered indexes from the rowstore table. You might want to [script out the indexes to re-create them later](/ssms/tutorials/scripting-ssms#script-a-database-by-using-the-generate-scripts-option).
 
    ```sql
    --Drop all nonclustered indexes

@@ -28,7 +28,7 @@ To complete this quickstart, you must be familiar with [!INCLUDE[ssNoVersion](..
 
 - Get a free [Azure Account](https://azure.microsoft.com/offers/ms-azr-0044p/).
 - Create an [Azure storage account](/azure/storage/common/storage-quickstart-create-account?tabs=portal).
-- Install [SQL Server Management Studio](../ssms/download-sql-server-management-studio-ssms.md).
+- Install [SQL Server Management Studio](/ssms/install/install).
 - Install [SQL Server 2017 Developer Edition](https://www.microsoft.com/sql-server/sql-server-downloads) or deploy [Azure SQL Managed Instance](/azure/sql-database/sql-database-managed-instance-get-started) with connectivity established through an [Azure SQL virtual machine](/azure/sql-database/sql-database-managed-instance-configure-vm) or [point-to-site](/azure/sql-database/sql-database-managed-instance-configure-p2s).
 - Assign the user account to the role of [db_backupoperator](./security/authentication-access/database-level-roles.md) and grant [alter any credential](../t-sql/statements/alter-credential-transact-sql.md) permissions. 
 
@@ -52,7 +52,7 @@ To create a Container, follow these steps:
 ## Create a test database 
 In this step, create a test database using SQL Server Management Studio (SSMS). 
 
-1. Launch [SQL Server Management Studio (SSMS)](../ssms/download-sql-server-management-studio-ssms.md) and connect to your SQL Server instance.
+1. Launch [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) and connect to your SQL Server instance.
 1. Open a **New Query** window. 
 1. Run the following Transact-SQL (T-SQL) code to create your test database. Refresh the **Databases** node in **Object Explorer** to see your new database. Newly created databases on SQL Managed Instance automatically have TDE enabled so you'll need to disable it to proceed. 
 
@@ -101,7 +101,7 @@ GO
 
 Use the GUI in SQL Server Management Studio to create the credential by following the steps below. Alternatively, you can create the credential [programmatically](tutorial-use-azure-blob-storage-service-with-sql-server-2016.md#2---create-a-sql-server-credential-using-a-shared-access-signature) as well. 
 
-1. Expand the **Databases** node within **Object Explorer** of [SQL Server Management Studio(SSMS)](../ssms/download-sql-server-management-studio-ssms.md).
+1. Expand the **Databases** node within **Object Explorer** of [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms).
 1. Right-click your new `SQLTestDB` database, hover over **Tasks** and then select **Back up...** to launch the **Back Up Database** wizard. 
 1. Select **URL** from the **Back up to** destination drop-down, and then select **Add** to launch the **Select Backup Destination** dialog box. 
 
@@ -128,7 +128,7 @@ In this step, back up the database `SQLTestDB` to your Azure Blob storage accoun
 
 # [SSMS](#tab/SSMS)
 
-1. If the **Back Up Database** wizard is not already open, expand the **Databases** node within **Object Explorer** of [SQL Server Management Studio(SSMS)](../ssms/download-sql-server-management-studio-ssms.md).
+1. If the **Back Up Database** wizard is not already open, expand the **Databases** node within **Object Explorer** of [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms).
 1. Right-click your new `SQLTestDB` database, hover over **Tasks** and then select **Back up...** to launch the **Back Up Database** wizard. 
 1. Select **URL** from the **Back up to** drop down, and then select **Add** to launch the **Select Backup Destination** dialog box. 
 

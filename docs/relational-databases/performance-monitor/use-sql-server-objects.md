@@ -136,5 +136,5 @@ This article contains the following sections:
   
 ## Related content
 
-- [Use Performance Objects](../../ssms/agent/use-performance-objects.md)
+- [Use Performance Objects](/ssms/agent/use-performance-objects)
 - [sys.dm_os_performance_counters (Transact-SQL)](../system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql.md)

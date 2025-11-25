@@ -15,7 +15,7 @@ Using Policy-Based Management policies, you can administer one or more instances
 ## Prerequisites
 To complete this tutorial, you need SQL Server Management Studio, and access to a server that's running SQL Server. 
 
-- Install [SQL Server Management Studio](../../ssms/download-sql-server-management-studio-ssms.md).
+- Install [SQL Server Management Studio](/ssms/install/install).
 - Install [SQL Server 2017 Developer Edition](https://www.microsoft.com/sql-server/sql-server-downloads).
   
 ## Create the mail-off condition

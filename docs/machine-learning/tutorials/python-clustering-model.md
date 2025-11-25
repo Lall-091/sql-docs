@@ -57,10 +57,10 @@ In [part four](python-clustering-model-deploy.md), learn how to create a stored 
 ::: moniker range="=azuresqldb-mi-current"
 - Azure SQL Managed Instance Machine Learning Services. For information, see the [Azure SQL Managed Instance Machine Learning Services overview](/azure/azure-sql/managed-instance/machine-learning-services-overview).
 
-- [SQL Server Management Studio](../../ssms/download-sql-server-management-studio-ssms.md) for restoring the sample database to Azure SQL Managed Instance.
+- [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) for restoring the sample database to Azure SQL Managed Instance.
 ::: moniker-end
 
-- [Azure Data Studio](/azure-data-studio/what-is-azure-data-studio). use a notebook in Azure Data Studio for both Python and SQL. For more information about notebooks, see [How to use notebooks in Azure Data Studio](/azure-data-studio/notebooks/notebooks-guidance).
+- [Azure Data Studio](/azure-data-studio/what-is-azure-data-studio). Use a notebook in Azure Data Studio for both Python and SQL. For more information about notebooks, see [How to use notebooks in Azure Data Studio](/azure-data-studio/notebooks/notebooks-guidance).
 
 - Additional Python packages - The examples in this tutorial series use Python packages that you might or might not have installed.
 

@@ -120,7 +120,7 @@ To publish your schema and migrate the data by using SSMA for Access:
 
    :::image type="content" source="media/access-to-sql-server/migrate-data-review.png" alt-text="Screenshot that shows the Migrate Data Report.":::
 
-1. Connect to your SQL Server instance by using [SQL Server Management Studio](../../../ssms/download-sql-server-management-studio-ssms.md) (SSMS), and validate the migration by reviewing the data and schema.
+1. Connect to your SQL Server instance by using [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms), and validate the migration by reviewing the data and schema.
 
    :::image type="content" source="media/access-to-sql-server/validate-in-ssms.png" alt-text="Screenshot that shows the validation in SQL Server Management Studio.":::
 

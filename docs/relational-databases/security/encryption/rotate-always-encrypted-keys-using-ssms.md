@@ -19,7 +19,7 @@ monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-20
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../../includes/applies-to-version/sql-asdb-asdbmi.md)]
 
-This article describes tasks for rotating Always Encrypted column master keys and column encryption keys with [SQL Server Management Studio (SSMS)](../../../ssms/download-sql-server-management-studio-ssms.md).
+This article describes tasks for rotating Always Encrypted column master keys and column encryption keys with [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms).
 
 For an overview of Always Encrypted key management, including best practice recommendations and important security considerations, see [Overview of key management for Always Encrypted](overview-of-key-management-for-always-encrypted.md).
 

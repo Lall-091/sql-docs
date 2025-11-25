@@ -174,7 +174,7 @@ Report server administrators can use SQL Server Management Studio (SSMS) to mana
 - Managing jobs
 - Managing shared schedules
 
-For more information about using SSMS to connect to a SQL Server instance and run some Transact-SQL (T-SQL) commands, see [Quickstart: Connect and query a SQL Server instance using SQL Server Management Studio (SSMS)](../../ssms/quickstarts/ssms-connect-query-sql-server.md).
+For more information about using SSMS to connect to a SQL Server instance and run some Transact-SQL (T-SQL) commands, see [Quickstart: Connect and query a SQL Server instance using SQL Server Management Studio (SSMS)](/ssms/quickstarts/ssms-connect-query-sql-server).
 
 ##### SSMS access
 

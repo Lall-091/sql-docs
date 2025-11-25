@@ -73,7 +73,7 @@ This table provides links to fundamental concepts in [!INCLUDE [ssnoversion-md](
 ## Connect to SQL Server
 
 - [Connect to the Database Engine](connect-to-database-engine.md)
-- [What is SQL Server Management Studio (SSMS)?](../ssms/sql-server-management-studio-ssms.md)
+- [What is SQL Server Management Studio (SSMS)?](/ssms/sql-server-management-studio-ssms)
 - [What is Azure Data Studio?](/azure-data-studio/what-is-azure-data-studio)
 
 ## Azure integration

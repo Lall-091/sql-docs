@@ -261,7 +261,7 @@ Failover succeeds when the replicas switch roles and are both synchronized.
 To test connectivity, sign in to another virtual machine in the same virtual network. Open SQL Server Management Studio and connect to the availability group listener.
 
 > [!NOTE]
-> If you need to, you can [download SQL Server Management Studio](/ssms/install/install).
+> Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 ## Next steps
 

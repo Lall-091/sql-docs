@@ -23,7 +23,7 @@ This tutorial teaches you how to create and use indexes on enclave-enabled colum
 
 ## Prerequisites
 
-Download the latest version of [SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md).
+Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 Make sure you've completed one of the [Getting started using Always Encrypted with secure enclaves](/azure/azure-sql/database/always-encrypted-enclaves-getting-started) tutorials before following the below steps in this tutorial.
 

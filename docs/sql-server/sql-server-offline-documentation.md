@@ -17,7 +17,7 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 
 [!INCLUDE [sqlserver](../includes/applies-to-version/sqlserver.md)]
 
-This article describes how to download and view offline SQL Server content in [SQL Server Management Studio (SSMS)](../ssms/download-sql-server-management-studio-ssms.md). Offline content enables you to access the documentation without an internet connection (although an internet connection is initially required to download it).
+This article describes how to download and view offline SQL Server content in [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms). Offline content enables you to access the documentation without an internet connection (although an internet connection is initially required to download it).
 
 ## Overview
 
@@ -163,7 +163,7 @@ This section describes how to load offline content for [!INCLUDE [sssql11-md](..
 
 ## View offline documentation
 
-You can view SQL Server help content using the **Help** menu in the latest version of [SQL Server Management Studio (SSMS)](../ssms/download-sql-server-management-studio-ssms.md).
+You can view SQL Server help content using the **Help** menu in [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms).
 
 ### View offline help content in SSMS
 

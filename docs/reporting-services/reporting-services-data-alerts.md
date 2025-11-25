@@ -114,7 +114,7 @@ The following list summarizes the key areas of [!INCLUDE[ssRSnoversion](../inclu
   
  If you want to learn more about installing [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] in SharePoint mode, including the [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] shared service that is new in [!INCLUDE[ssSQL11](../includes/sssql11-md.md)] and [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] service application that you must create and configure before you can use [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)] features, see [Install Reporting Services SharePoint Mode for SharePoint 2010](./install-windows/install-the-first-report-server-in-sharepoint-mode.md) in MSDN library.  
   
- As the diagram earlier in the article shows, data alerts use SQL Server Agent jobs. To create the jobs, SQL Server Agent must be running. You might have configured SQL Server Agent to start automatically when you installed [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)]. If not, you can start SQL Server Agent manually. For more information, see [Configure SQL Server Agent](../ssms/agent/configure-sql-server-agent.md) and [Start, stop, pause, resume, restart the Database Engine, SQL Server Agent, or SQL Server Browser Service](../database-engine/configure-windows/start-stop-pause-resume-restart-sql-server-services.md).  
+ As the diagram earlier in the article shows, data alerts use SQL Server Agent jobs. To create the jobs, SQL Server Agent must be running. You might have configured SQL Server Agent to start automatically when you installed [!INCLUDE[ssRSnoversion](../includes/ssrsnoversion-md.md)]. If not, you can start SQL Server Agent manually. For more information, see [Configure SQL Server Agent](/ssms/agent/configure-sql-server-agent) and [Start, stop, pause, resume, restart the Database Engine, SQL Server Agent, or SQL Server Browser Service](../database-engine/configure-windows/start-stop-pause-resume-restart-sql-server-services.md).  
   
  You can use the **Provision Subscriptions and Alerts** page in SharePoint Central Administration to find out whether SQL Server Agent is running and create and download customized [!INCLUDE[tsql](../includes/tsql-md.md)] scripts that you then run to grant permissions to SQL Server Agent. It can also generate the [!INCLUDE[tsql](../includes/tsql-md.md)] scripts by using PowerShell. For more information, see [Provision subscriptions and alerts for SSRS service applications](../reporting-services/install-windows/provision-subscriptions-and-alerts-for-ssrs-service-applications.md).  
   
@@ -241,7 +241,7 @@ The following list summarizes the key areas of [!INCLUDE[ssRSnoversion](../inclu
   
 -   ReadSentAlerts  
   
- You can use SQL Agent to run the stored procedure on a schedule. For more information, see [SQL Server Agent](../ssms/agent/sql-server-agent.md).  
+ You can use SQL Agent to run the stored procedure on a schedule. For more information, see [SQL Server Agent](/ssms/agent/sql-server-agent).  
   
 #### Report server execution log  
  Reports are run to generate the data feeds that data alert definitions are built upon. The report server execution sign in the report server database captures information each time the report is run. You can query the ExecutionLog2 view in the database for detailed information. For more information, see [Report Server ExecutionLog and the ExecutionLog3 View](../reporting-services/report-server/report-server-executionlog-and-the-executionlog3-view.md).  

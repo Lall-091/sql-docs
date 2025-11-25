@@ -121,7 +121,7 @@ To publish your schema and migrate your data, perform the following steps:
 
    :::image type="content" source="media/db2-to-sql-server/data-migration-report.png" alt-text="Screenshot of the Data Migration Report." lightbox="media/db2-to-sql-server/data-migration-report.png":::
 
-1. Connect to your [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] instance by using [SQL Server Management Studio](../../../ssms/download-sql-server-management-studio-ssms.md) (SSMS), and then validate the migration by reviewing the data and schema.
+1. Connect to your [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] instance by using [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms), and then validate the migration by reviewing the data and schema.
 
    :::image type="content" source="media/db2-to-sql-server/compare-schema-in-ssms.png" alt-text="Screenshot of SQL Server Management Server." lightbox="media/db2-to-sql-server/compare-schema-in-ssms.png":::
 

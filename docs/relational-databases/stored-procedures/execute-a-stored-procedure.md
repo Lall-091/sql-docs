@@ -96,7 +96,7 @@ For permissions information, see [Permissions](../../t-sql/language-elements/exe
 
 ## Stored procedure execution
 
-You can use the [SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md) user interface or [!INCLUDE[tsql](../../includes/tsql-md.md)] in an SSMS query window to execute a stored procedure. Always use the latest version of SSMS.
+You can use SQL Server Management Studio (SSMS), or [!INCLUDE[tsql](../../includes/tsql-md.md)] in an SSMS query window, to execute a stored procedure. Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 <a id="SSMSProcedure"></a>
 

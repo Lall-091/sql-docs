@@ -29,7 +29,7 @@ When you use SSMS to schedule a package, SSIS automatically creates three new Da
 
 ## Prerequisites
 
-The feature described in this article requires SQL Server Management Studio version 17.7 or higher. To get the latest version of SSMS, see [Download SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md).
+Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 ## Schedule a package in SSMS
 

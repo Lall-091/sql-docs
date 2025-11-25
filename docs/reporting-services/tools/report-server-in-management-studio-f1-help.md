@@ -50,4 +50,4 @@ helpviewer_keywords:
 ## Related content
 
 - [Feature reference (Reporting Services)](../../reporting-services/feature-reference-reporting-services.md)
-- [Use SQL Server Management Studio](~/ssms/use-sql-server-management-studio.md)
+- [Use SQL Server Management Studio](/ssms/sql-server-management-studio-ssms)

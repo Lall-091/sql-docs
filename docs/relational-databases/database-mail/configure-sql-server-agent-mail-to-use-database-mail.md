@@ -66,17 +66,17 @@ The following steps use [SQL Server Management Studio (SSMS)](https://aka.ms/ssm
 
  The following tasks are necessary to complete the configuration of Agent to send alerts and notifications.
 
--   [Alerts](../../ssms/agent/alerts.md)  
+-   [Alerts](/ssms/agent/alerts)  
 
      SQL Agent Alerts can be configured to notify an operator of a particular database event or operating system condition.  
 
--   [Operators](../../ssms/agent/operators.md)  
+-   [Operators](/ssms/agent/operators)  
 
      SQL Agent Operators are aliases for people or groups that can receive notifications, for example by email.
 
 ## Related content
 
 - [Configure Database Mail](configure-database-mail.md)
-- [Configure SQL Server Agent](../../ssms/agent/configure-sql-server-agent.md)
+- [Configure SQL Server Agent](/ssms/agent/configure-sql-server-agent)
 - [General database mail troubleshooting steps](database-mail-general-troubleshooting.md)
 - [Automate management tasks using SQL Agent jobs in Azure SQL Managed Instance](/azure/azure-sql/managed-instance/job-automation-managed-instance)

@@ -21,7 +21,7 @@ This article contains installation and configuration instructions for the `WideW
 
 - [SQL Server 2016](https://www.microsoft.com/evalcenter/evaluate-sql-server-2016) with Service Pack 1 (and later versions), or [!INCLUDE [ssazure-sqldb](../includes/ssazure-sqldb.md)]. To use the full version of the sample, use [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Developer or Enterprise editions.
 
-- [SQL Server Management Studio](../ssms/download-sql-server-management-studio-ssms.md) (SSMS).
+- [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms).
 
 ## Download
 

@@ -38,7 +38,7 @@ SQL Server Configuration Manager and [!INCLUDE [ssManStudioFull](../../includes/
 
 ## Related tasks
 
-[Configure WMI to Show Server Status in SQL Server Tools](../../ssms/configure-wmi-to-show-server-status-in-sql-server-tools.md)
+[Configure WMI to Show Server Status in SQL Server Tools](/ssms/configure-wmi-to-show-server-status-in-sql-server-tools)
 
 ## Related content
 

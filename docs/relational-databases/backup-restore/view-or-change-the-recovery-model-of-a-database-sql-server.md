@@ -136,5 +136,5 @@ Your backup strategy remains the same: continue performing periodic database, lo
 - [Maintenance plans](../maintenance-plans/maintenance-plans.md)
 - [Create a Full Database Backup](create-a-full-database-backup-sql-server.md)
 - [Back up a transaction log](back-up-a-transaction-log-sql-server.md)
-- [Create a Job](../../ssms/agent/create-a-job.md)
-- [Disable or Enable a Job](../../ssms/agent/disable-or-enable-a-job.md)
+- [Create a Job](/ssms/agent/create-a-job)
+- [Disable or Enable a Job](/ssms/agent/disable-or-enable-a-job)

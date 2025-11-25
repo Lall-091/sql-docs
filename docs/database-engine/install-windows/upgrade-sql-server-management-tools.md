@@ -23,7 +23,7 @@ For local installations, you must run [!INCLUDE [ssNoVersion](../../includes/ssn
 
 - Consider the following issues before you upgrade to [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)]:
 
-- All TSX servers should be upgraded before the MSX server is upgraded. For more information about MSX/TSX in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], see [Automated Administration Across an Enterprise](../../ssms/agent/automated-administration-across-an-enterprise.md).
+- All TSX servers should be upgraded before the MSX server is upgraded. For more information about MSX/TSX in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], see [Automated Administration Across an Enterprise](/ssms/agent/automated-administration-across-an-enterprise).
 
 - All components in an instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] must be upgraded at the same time. Version numbers of the [!INCLUDE [ssDE](../../includes/ssde-md.md)], [!INCLUDE [ssASnoversion](../../includes/ssasnoversion-md.md)], and [!INCLUDE [ssRSnoversion](../../includes/ssrsnoversion-md.md)] components must be the same in an instance of [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)].
 

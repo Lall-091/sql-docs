@@ -120,7 +120,7 @@ The number of weeks or months between the scheduled execution of a job. *@freq_r
 
 The date on which execution of a job can begin. *@active_start_date* is **int**, with a default of `NULL`, which indicates today's date. The date is formatted as `yyyyMMdd`. If *@active_start_date* isn't `NULL`, the date must be greater than or equal to 19900101.
 
-After the schedule is created, review the start date and confirm that it's the correct date. For more information, see the section "Scheduling Start Date" in [Create and Attach Schedules to Jobs](../../ssms/agent/create-and-attach-schedules-to-jobs.md).
+After the schedule is created, review the start date and confirm that it's the correct date. For more information, see the section "Scheduling Start Date" in [Create and Attach Schedules to Jobs](/ssms/agent/create-and-attach-schedules-to-jobs).
 
 For weekly or monthly schedules, the Agent ignores if *@active_start_date* is in the past, and instead uses the current date. When a [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Agent schedule is created using `sp_add_schedule` there's an option to specify the parameter *@active_start_date* that is the date that job execution begins. If the schedule type is weekly or monthly, and the *@active_start_date* parameter is set to a date in the past, the *@active_start_date* parameter is ignored and the current date is used for *@active_start_date*.
 
@@ -174,7 +174,7 @@ Other users must be granted one of the following [!INCLUDE [ssNoVersion](../../i
 - **SQLAgentReaderRole**
 - **SQLAgentOperatorRole**
 
-For details about the permissions of these roles, see [SQL Server Agent Fixed Database Roles](../../ssms/agent/sql-server-agent-fixed-database-roles.md).
+For details about the permissions of these roles, see [SQL Server Agent Fixed Database Roles](/ssms/agent/sql-server-agent-fixed-database-roles).
 
 ## Examples
 
@@ -224,9 +224,9 @@ GO
 
 ## Related content
 
-- [Create and Attach Schedules to Jobs](../../ssms/agent/create-and-attach-schedules-to-jobs.md)
-- [Schedule a Job](../../ssms/agent/schedule-a-job.md)
-- [Create a Schedule](../../ssms/agent/create-a-schedule.md)
+- [Create and Attach Schedules to Jobs](/ssms/agent/create-and-attach-schedules-to-jobs)
+- [Schedule a Job](/ssms/agent/schedule-a-job)
+- [Create a Schedule](/ssms/agent/create-a-schedule)
 - [SQL Server Agent stored procedures (Transact-SQL)](sql-server-agent-stored-procedures-transact-sql.md)
 - [sp_add_jobschedule (Transact-SQL)](sp-add-jobschedule-transact-sql.md)
 - [sp_update_schedule (Transact-SQL)](sp-update-schedule-transact-sql.md)

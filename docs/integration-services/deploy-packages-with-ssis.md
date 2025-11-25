@@ -70,7 +70,7 @@ The computer to which you deploy packages **must have the following components i
 
 -   The [!INCLUDE [sssampledbobject-md](../includes/sssampledbobject-md.md)] sample database. You can download the [!INCLUDE [sssampledbobject-md](../includes/sssampledbobject-md.md)] database from [AdventureWorks sample databases](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks) and restore the backup.  
     
-- [SQL Server Management Studio](../ssms/download-sql-server-management-studio-ssms.md).    
+- [SQL Server Management Studio](/ssms/install/install).    
     
 -   [!INCLUDE[ssNoVersion](../includes/ssnoversion-md.md)] [!INCLUDE[ssISnoversion](../includes/ssisnoversion-md.md)]. To install SSIS, see [Install Integration Services](install-windows/install-integration-services.md).
     

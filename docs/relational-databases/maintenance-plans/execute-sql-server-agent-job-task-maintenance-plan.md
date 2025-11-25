@@ -79,5 +79,5 @@ This task uses the **.`sp_start_job` statement.
 ## See also
 
 - [sp_add_job (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-add-job-transact-sql.md)
-- [Create a Job](../../ssms/agent/create-a-job.md)
+- [Create a Job](/ssms/agent/create-a-job)
 - [sp_start_job (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-start-job-transact-sql.md)

@@ -129,7 +129,7 @@ EXECUTE sp_addlinkedsrvlogin 'Accounts', 'false', 'Domain\Mary', 'MaryP', '<pass
 
 In some cases, such as with [Azure SQL Managed Instance](/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview), to run a SQL Agent job that executes a Transact-SQL (T-SQL) query on a remote server through a linked server, you need to create a mapping between a login on the local server to a login on the remote server that has permission to execute the T-SQL query. When the SQL Agent job connects to the remote server through the linked server, it executes the T-SQL query in the context of the remote login, which must have the necessary permissions to execute the T-SQL query.
 
-If you're mapping logins for a SQL Agent job in **Azure SQL Managed Instance**, the local login that you map to the remote login *must* be the owner of the SQL Agent job, unless the SQL Agent job is **sysadmin**, in which case you should map [all the local logins](#d-map-all-local-logins-to-a-remote-server-login). For more information, review [SQL Agent jobs with Azure SQL Managed Instance](../../ssms/agent/implement-sql-server-agent-security.md#linked-servers).
+If you're mapping logins for a SQL Agent job in **Azure SQL Managed Instance**, the local login that you map to the remote login *must* be the owner of the SQL Agent job, unless the SQL Agent job is **sysadmin**, in which case you should map [all the local logins](#d-map-all-local-logins-to-a-remote-server-login). For more information, review [SQL Agent jobs with Azure SQL Managed Instance](/ssms/agent/implement-sql-server-agent-security#linked-servers).
 
 Run the following sample command on the local server to map the local login `local_login_name` to the remote server login `login_name` when connecting to the linked server `remote_server`:
 
@@ -146,7 +146,7 @@ EXECUTE master.dbo.sp_addlinkedsrvlogin
 
 By setting `locallogin` to `NULL`, you can map *all* local logins to a login on the remote server.
 
-Mapping all local logins to a remote server login is required when executing an Azure SQL Managed Instance SQL Agent job owned by **sysadmin** that queries a remote server through a linked server. For more information, review [SQL Agent jobs with Azure SQL Managed Instance](../../ssms/agent/implement-sql-server-agent-security.md#linked-servers). When the SQL Agent job connects to the remote server through the linked server, it executes the T-SQL query in the context of the remote login, which must have the necessary permissions to execute the T-SQL query.
+Mapping all local logins to a remote server login is required when executing an Azure SQL Managed Instance SQL Agent job owned by **sysadmin** that queries a remote server through a linked server. For more information, review [SQL Agent jobs with Azure SQL Managed Instance](/ssms/agent/implement-sql-server-agent-security#linked-servers). When the SQL Agent job connects to the remote server through the linked server, it executes the T-SQL query in the context of the remote login, which must have the necessary permissions to execute the T-SQL query.
 
 Run the following sample command on the local server to map all local logins to the remote server login `login_name` when connecting to the linked server `remote_server`:
 

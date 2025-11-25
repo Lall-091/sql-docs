@@ -61,9 +61,9 @@ This procedure lists the subsystems available in the instance.
 
 By default, members of the **sysadmin** fixed server role can execute this stored procedure. Other users must be granted the **SQLAgentOperatorRole** fixed database role in the `msdb` database.
 
-For details about **SQLAgentOperatorRole**, see [SQL Server Agent Fixed Database Roles](../../ssms/agent/sql-server-agent-fixed-database-roles.md).
+For details about **SQLAgentOperatorRole**, see [SQL Server Agent Fixed Database Roles](/ssms/agent/sql-server-agent-fixed-database-roles).
 
 ## Related content
 
-- [Implement SQL Server Agent Security](../../ssms/agent/implement-sql-server-agent-security.md)
+- [Implement SQL Server Agent Security](/ssms/agent/implement-sql-server-agent-security)
 - [sp_add_jobstep (Transact-SQL)](sp-add-jobstep-transact-sql.md)

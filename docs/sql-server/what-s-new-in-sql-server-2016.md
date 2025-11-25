@@ -31,7 +31,7 @@ This page provides summary information and links to more detailed SQL Server 201
 **Try SQL Server today!**
 
 - Download the **free** [**SQL Server newest edition!**](https://www.microsoft.com/sql-server/sql-server-downloads).
-- Download the latest version of [SQL Server Management Studio (SSMS)](../ssms/download-sql-server-management-studio-ssms.md).
+- Download the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 - Have an Azure account? Spin up a [Virtual Machine with SQL Server 2016 already installed](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2017-ws2019?tab=Overview).
 
 ## SQL Server 2016 Database Engine

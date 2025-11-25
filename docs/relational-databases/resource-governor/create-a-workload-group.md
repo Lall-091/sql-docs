@@ -30,7 +30,7 @@ Creating a workload group requires the `CONTROL SERVER` permission.
 
 ## Create a workload group using SQL Server Management Studio
 
-To create a workload group using [[!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)]](../../ssms/download-sql-server-management-studio-ssms.md):
+To create a workload group using [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms):
 
 1. In Object Explorer, expand the **Management** node down to and including the resource pool that contains the workload group to be modified.
 1. Use the **Workload Groups** context menu, and select **New Workload Group**.

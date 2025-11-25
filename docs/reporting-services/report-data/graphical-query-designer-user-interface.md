@@ -53,7 +53,7 @@ helpviewer_keywords:
   
  When you change information in any one of the first three panes, those changes will appear in the other panes. For example, if you add a table in the Diagram pane, it will automatically be added to the [!INCLUDE[tsql](../../includes/tsql-md.md)] query in the SQL pane. Adding a field to the query in the SQL pane will automatically add the field to the list in the Grid pane and update the table in the Diagram pane.  
   
- For more information, see [Query and View Designer Tools &#40;Visual Database Tools&#41;](../../ssms/visual-db-tools/query-and-view-designer-tools-visual-database-tools.md).  
+ For more information, see [Query and View Designer Tools &#40;Visual Database Tools&#41;](/ssms/visual-db-tools/query-and-view-designer-tools-visual-database-tools).  
   
 #### Toolbar for the Graphical Query Designer  
  The graphical query designer toolbar provides buttons to help you design [!INCLUDE[tsql](../../includes/tsql-md.md)] queries using the graphical interface.  
@@ -141,4 +141,4 @@ EXEC uspGetEmployeeManagers '1';
 - [OLE DB Connection Type &#40;SSRS&#41;](../../reporting-services/report-data/ole-db-connection-type-ssrs.md)
 - [Oracle Connection Type &#40;SSRS&#41;](../../reporting-services/report-data/oracle-connection-type-ssrs.md)
 - [RSReportDesigner Configuration File](../../reporting-services/report-server/rsreportdesigner-configuration-file.md)
-- [Design Queries and Views How-to Topics &#40;Visual Database Tools&#41;](../../ssms/visual-db-tools/design-queries-and-views-how-to-topics-visual-database-tools.md)
+- [Design Queries and Views How-to Topics &#40;Visual Database Tools&#41;](/ssms/visual-db-tools/design-queries-and-views-how-to-topics-visual-database-tools)

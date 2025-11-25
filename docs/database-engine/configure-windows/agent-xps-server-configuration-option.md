@@ -52,5 +52,5 @@ GO
 
 ## Related content
 
-- [Automated Administration Tasks (SQL Server Agent)](../../ssms/agent/automated-administration-tasks-sql-server-agent.md)
-- [Start, Stop, or Pause the SQL Server Agent Service](../../ssms/agent/start-stop-or-pause-the-sql-server-agent-service.md)
+- [Automated Administration Tasks (SQL Server Agent)](/ssms/agent/automated-administration-tasks-sql-server-agent)
+- [Start, Stop, or Pause the SQL Server Agent Service](/ssms/agent/start-stop-or-pause-the-sql-server-agent-service)

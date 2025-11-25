@@ -46,7 +46,7 @@ We recommend you configure alerts on failed ledger digest uploads if you want to
 
 ::: zone pivot="as1-sql-server"
 
-We recommend you configure an alert on event number *37417 - Uploading ledger digest failed*. The alert can be configured using [SQL Agent Alert](../../../ssms/agent/create-an-alert-using-an-error-number.md) or your favorite third-party monitoring tool.
+We recommend you configure an alert on event number *37417 - Uploading ledger digest failed*. The alert can be configured using [SQL Agent Alert](/ssms/agent/create-an-alert-using-an-error-number) or your favorite third-party monitoring tool.
 
 ::: zone-end
 

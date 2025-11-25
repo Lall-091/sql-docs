@@ -61,7 +61,7 @@ Your system must have the following installed:
 
 - Any edition of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)].
 
-- [SQL Server Management Studio](../ssms/download-sql-server-management-studio-ssms.md)
+- [SQL Server Management Studio](/ssms/install/install)
 
 ## Related content
 

@@ -77,5 +77,5 @@ View the currently running values for the options on this pane. These values are
 
 ## Related content
 
-- [Options (Query Execution: SQL Server: Advanced Page)](../../ssms/f1-help/database-engine-query-editor-sql-server-management-studio.md)
+- [Options (Query Execution: SQL Server: Advanced Page)](/ssms/f1-help/database-engine-query-editor-sql-server-management-studio)
 - [Server configuration options](server-configuration-options-sql-server.md)

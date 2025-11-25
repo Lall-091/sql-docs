@@ -39,7 +39,7 @@ Deleting a resource pool requires `CONTROL SERVER` permission.
 
 ## Delete a resource pool using Object Explorer
 
-To delete a resource pool using [[!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)]](../../ssms/download-sql-server-management-studio-ssms.md):
+To delete a resource pool using [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms):
 
 1. In [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)], open Object Explorer and expand the **Management** node down to and including **Resource Governor**.
 1. Open the context menu of the resource pool to be deleted and select **Delete**.

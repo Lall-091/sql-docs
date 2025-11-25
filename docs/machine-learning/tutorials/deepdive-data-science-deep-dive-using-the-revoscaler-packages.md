@@ -22,7 +22,7 @@ In this multi-part tutorial series, you're introduced to a range of **RevoScaleR
   
 + [Database permissions](../security/user-permission.md) and a SQL Server database user login
 
-+ [SQL Server Management Studio](../../ssms/download-sql-server-management-studio-ssms.md)
++ [SQL Server Management Studio](/ssms/install/install)
 
 + An IDE such as RStudio or the built-in RGUI tool included with R
 

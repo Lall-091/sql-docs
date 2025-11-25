@@ -76,10 +76,10 @@ sqlcmd -S localhost -U sa -Q "RESTORE LOG demodb FROM DISK = N'/var/opt/mssql/da
 
 ## Backup and restore with SQL Server Management Studio (SSMS)
 
-You can use [SSMS](../ssms/download-sql-server-management-studio-ssms.md) from a Windows computer to connect to a Linux database and take a backup through the user-interface.
+You can use [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) from a Windows computer to connect to a Linux database and take a backup through the user-interface.
 
 > [!NOTE]  
-> Use the latest version of SSMS to connect to SQL Server. To download and install the latest version, see [Download SQL Server Management Studio (SSMS)](../ssms/download-sql-server-management-studio-ssms.md). For more information on how to use SSMS, see [Use SQL Server Management Studio on Windows to manage SQL Server on Linux](sql-server-linux-manage-ssms.md).
+> Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install). For more information on how to use SSMS, see [Use SQL Server Management Studio on Windows to manage SQL Server on Linux](sql-server-linux-manage-ssms.md).
 
 The following steps walk through taking a backup with SSMS.
 

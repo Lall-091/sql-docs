@@ -60,7 +60,7 @@ Creating a foreign key in an existing table requires [ALTER TABLE](../../t-sql/s
 
 1. In Object Explorer, right-click the table that is on the foreign-key side of the relationship and select **Design**.
 
-    The table opens in [Create and update database tables](../../ssms/visual-db-tools/design-tables-visual-database-tools.md).
+    The table opens in [Create and update database tables](/ssms/visual-db-tools/design-tables-visual-database-tools).
 
 1. From the **Table Designer** menu, select **Relationships**. (See the **Table Designer** menu in the header, or, right-click in the empty space of the table definition, then select **Relationships...**.)
 

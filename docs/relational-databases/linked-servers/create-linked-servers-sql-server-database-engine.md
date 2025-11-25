@@ -19,7 +19,7 @@ helpviewer_keywords:
 
 [!INCLUDE [SQL Server SQL MI](../../includes/applies-to-version/sql-asdbmi.md)]
 
-This article shows how to create a linked server and access data from another [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], an Azure SQL managed instance, or another data source by using [SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md) or [!INCLUDE [tsql](../../includes/tsql-md.md)]. Linked servers enable the SQL Server database engine and Azure SQL Managed Instance to read data from the remote data sources and execute commands against the remote database servers (for example, OLE DB data sources) outside of the instance of SQL Server.
+This article shows how to create a linked server and access data from another [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], an Azure SQL managed instance, or another data source by using [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) or [!INCLUDE [tsql](../../includes/tsql-md.md)]. Linked servers enable the SQL Server database engine and Azure SQL Managed Instance to read data from the remote data sources and execute commands against the remote database servers (for example, OLE DB data sources) outside of the instance of SQL Server.
 
 <a id="Background"></a>
 

@@ -14,13 +14,13 @@ ms.custom:
 # SQL Data Discovery and Classification
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
-Data Discovery & Classification adds capabilities for **discovering**, **classifying**, **labeling** & **reporting** the sensitive data in your databases. This can be done via T-SQL or using [SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md).
+Data Discovery & Classification adds capabilities for **discovering**, **classifying**, **labeling** & **reporting** the sensitive data in your databases. This can be done via T-SQL or using [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms).
 Discovering and classifying your most sensitive data (business, financial, healthcare, etc.) can play a pivotal role in your organizational information protection stature. It can serve as infrastructure for:
 * Helping meet data privacy standards.
 * Monitoring access to databases/columns containing highly sensitive data.
 
 > [!NOTE]
-> Data Discovery & Classification is **supported for SQL Server 2012 and later, and can be used with [SSMS 17.5](../../ssms/download-sql-server-management-studio-ssms.md) or later**. For Azure SQL Database, see [Azure SQL Database Data Discovery & Classification](/azure/sql-database/sql-database-data-discovery-and-classification/).
+> Data Discovery & Classification is **supported for SQL Server 2012 and later, and can be used with [SSMS 17.5](/ssms/sql-server-management-studio-ssms) or later**. For Azure SQL Database, see [Azure SQL Database Data Discovery & Classification](/azure/sql-database/sql-database-data-discovery-and-classification/).
 
 ## <a id="Overview"></a>Overview
 Data Discovery & Classification forms a new information-protection paradigm for SQL Database, SQL Managed Instance, and Azure Synapse, aimed at protecting the data and not just the database. Currently it supports the following capabilities:
@@ -144,7 +144,7 @@ To enable Information Protection Policy from a custom JSON file, go to the SSMS 
 
 ## <a id="Manage-information-protection-policy-with-SSMS"></a>Manage Information Protection Policy with SSMS
 
-You can manage the Information Protection Policy using [SSMS 18.4](../../ssms/download-sql-server-management-studio-ssms.md) or later:
+You can manage the Information Protection Policy using the latest version of [SQL Server Management Studio](/ssms/install/install):
 
 1. In SQL Server Management Studio (SSMS), connect to the SQL Server.
 

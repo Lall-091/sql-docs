@@ -168,7 +168,7 @@ To add an additional node to the SQL Server FCI, follow these steps:
 1. Repeat these steps on any other nodes that you want to add to the SQL Server failover cluster instance.
 
 > [!NOTE]  
-> Azure Marketplace gallery images come with SQL Server Management Studio installed. If you didn't use a marketplace image, [download SQL Server Management Studio (SSMS)](/ssms/install/install).
+> Azure Marketplace gallery images come with SQL Server Management Studio installed. If you didn't use a marketplace image, install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 ## Register with SQL IaaS Agent extension
 

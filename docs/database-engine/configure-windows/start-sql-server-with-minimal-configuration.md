@@ -36,7 +36,7 @@ After the server has been started with minimal configuration, you should change 
 
 ## Related content
 
-- [Start, Stop, or Pause the SQL Server Agent Service](../../ssms/agent/start-stop-or-pause-the-sql-server-agent-service.md)
+- [Start, Stop, or Pause the SQL Server Agent Service](/ssms/agent/start-stop-or-pause-the-sql-server-agent-service)
 - [Diagnostic connection for database administrators](diagnostic-connection-for-database-administrators.md)
 - [sqlcmd Utility](../../tools/sqlcmd/sqlcmd-utility.md)
 - [Server configuration options](server-configuration-options-sql-server.md)

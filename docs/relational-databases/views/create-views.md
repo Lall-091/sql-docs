@@ -54,7 +54,7 @@ Requires CREATE VIEW permission in the database and ALTER permission on the sche
 
 1. In the **Choose Name** dialog box, enter a name for the new view and select **OK**.
 
-     For more information about the query and view designer, see [Query and View Designer Tools (Visual Database Tools)](../../ssms/visual-db-tools/query-and-view-designer-tools-visual-database-tools.md).
+     For more information about the query and view designer, see [Query and View Designer Tools (Visual Database Tools)](/ssms/visual-db-tools/query-and-view-designer-tools-visual-database-tools).
 
 ## <a id="TsqlProcedure"></a> Use Transact-SQL
 

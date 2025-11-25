@@ -108,7 +108,7 @@ Once you've created your new PSDrive, you can start navigating it.
 dir SQLonDocker:\Databases
 ```
 
-Here's what the output might look like. You might notice the output is similar to what [SQL Server Management Studio (SSMS)](../ssms/download-sql-server-management-studio-ssms.md) will display at the Databases node. It displays the user databases, but not the system databases.
+Here's what the output might look like. You might notice the output is similar to what [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) displays at the Databases node. It displays the user databases, but not the system databases.
 
 ```powershell
 Name                 Status           Size     Space  Recovery Compat. Owner

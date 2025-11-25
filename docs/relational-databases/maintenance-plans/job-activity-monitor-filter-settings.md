@@ -75,4 +75,4 @@ This group of filter criteria is available when filtering the Job Activity Monit
 
 ## See also
 
-- [Monitor Job Activity](../../ssms/agent/monitor-job-activity.md)
+- [Monitor Job Activity](/ssms/agent/monitor-job-activity)

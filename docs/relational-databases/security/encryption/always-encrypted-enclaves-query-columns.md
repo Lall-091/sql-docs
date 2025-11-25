@@ -89,7 +89,7 @@ Your environment needs to meet the following requirements to support executing s
 
 ### Prerequisites for running T-SQL statements using enclaves in SSMS
 
-Download the latest version of [SQL Server Management Studio (SSMS)](../../../ssms/download-sql-server-management-studio-ssms.md).
+Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 Make sure you run your statements from a query window that uses a connection that has Always Encrypted and attestation parameters correctly configured.
 

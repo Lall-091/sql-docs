@@ -37,7 +37,7 @@ For this tutorial, you need:
 - Optional, but recommended, especially if your database is in Azure: a key vault in Azure Key Vault. For information on how to create a key vault, see [Quickstart: Create a key vault using the Azure portal](/azure/key-vault/general/quick-create-portal).
   - If your key vault uses the access policy permissions model, make sure you have the following key permissions in the key vault: `get`, `list`, `create`, `unwrap key`, `wrap key`, `verify`, `sign`. See [Assign a Key Vault access policy](/azure/key-vault/general/assign-access-policy).
   - If you're using the Azure role-based access control (RBAC) permission model, make you sure you're a member of the [Key Vault Crypto Officer](/azure/role-based-access-control/built-in-roles#key-vault-crypto-officer) role for your key vault. See [Provide access to Key Vault keys, certificates, and secrets with an Azure role-based access control](/azure/key-vault/general/rbac-migration).
-- The latest version of [SQL Server Management Studio (SSMS)](../../../ssms/download-sql-server-management-studio-ssms.md) or the latest version of the [SqlServer](/powershell/sql-server/download-sql-server-ps-module) and [Az](/powershell/azure/new-azureps-module-az) PowerShell modules. The Az PowerShell module is required only if you're using Azure Key Vault.
+- The latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install) or the latest version of the [SqlServer](/powershell/sql-server/download-sql-server-ps-module) and [Az](/powershell/azure/new-azureps-module-az) PowerShell modules. The Az PowerShell module is required only if you're using Azure Key Vault.
 
 ## Step 1: Create and populate the database schema
 
@@ -45,7 +45,7 @@ In this step, you'll create the **HR** schema and the **Employees** table. Then,
 
 # [SSMS](#tab/ssms)
 
-1. Connect to your database. For instructions on how to connect to a database from SSMS, see [Quickstart: Connect and query an Azure SQL Database or an Azure SQL Managed Instance using SQL Server Management Studio (SSMS)](../../../ssms/quickstarts/ssms-connect-query-azure-sql.md) or [Quickstart: Connect and query a SQL Server instance using SQL Server Management Studio (SSMS)](../../../ssms/quickstarts/ssms-connect-query-sql-server.md).
+1. Connect to your database. For instructions on how to connect to a database from SSMS, see [Quickstart: Connect and query an Azure SQL Database or an Azure SQL Managed Instance using SQL Server Management Studio (SSMS)](/ssms/quickstarts/ssms-connect-query-azure-sql) or [Quickstart: Connect and query a SQL Server instance using SQL Server Management Studio (SSMS)](/ssms/quickstarts/ssms-connect-query-sql-server).
 1. Open a new query window for the **ContosoHR** database.
 1. Paste in and execute the below statements to create a new table, named **Employees**.
 

@@ -148,7 +148,7 @@ To publish your schema and migrate the data:
 
    :::image type="content" source="media/mysql-to-sql-server/migration-report.png" alt-text="Screenshot that shows the Data Migration Report.":::
 
-1. Connect to your SQL Server instance by using [SQL Server Management Studio](../../../ssms/download-sql-server-management-studio-ssms.md) (SSMS), and validate the migration by reviewing the data and schema.
+1. Connect to your SQL Server instance by using [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms), and validate the migration by reviewing the data and schema.
 
    :::image type="content" source="media/mysql-to-sql-server/validate-in-ssms.png" alt-text="Screenshot that shows validation in SQL Server Management Studio.":::
 

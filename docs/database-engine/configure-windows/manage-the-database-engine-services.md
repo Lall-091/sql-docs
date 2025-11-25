@@ -75,5 +75,5 @@ Because SQL Server Configuration Manager is a snap-in for the [!INCLUDE [msconam
 
 ## Related content
 
-- [Configure SQL Server Agent](../../ssms/agent/configure-sql-server-agent.md)
+- [Configure SQL Server Agent](/ssms/agent/configure-sql-server-agent)
 - [Sign in to SQL Server](logging-in-to-sql-server.md)

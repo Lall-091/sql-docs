@@ -46,7 +46,7 @@ This section identifies known issues you might experience with this product.
 
 - **Workaround**:
   1. Uninstall any version of SSMS older than SSMS 18.3.1.
-  1. Install a newer version of SSMS (18.3.1 or later). For the latest version, see [Download SSMS](../ssms/download-sql-server-management-studio-ssms.md).
+  1. Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
   1. Install [!INCLUDE [SQL Server 2019](../includes/sssql19-md.md)] normally.
 
 - **Applies to**: [!INCLUDE [SQL Server 2019](../includes/sssql19-md.md)]

@@ -39,7 +39,7 @@ Creating a resource pool requires `CONTROL SERVER` permission.
 
 ## Create a resource pool using SQL Server Management Studio
 
-To create a resource pool using [[!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)]](../../ssms/download-sql-server-management-studio-ssms.md):
+To create a resource pool using [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms):
 
 1. In [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)], open Object Explorer and expand the **Management** node down to and including **Resource Governor**.
 1. Open the **Resource Governor** context menu and select **Properties**.

@@ -30,7 +30,7 @@ Granting a user access to a database involves three steps. First, you create a l
 
 To complete this tutorial, you need SQL Server Management Studio and access to a SQL Server instance.
 
-- Install [SQL Server Management Studio](../ssms/download-sql-server-management-studio-ssms.md).
+- Install [SQL Server Management Studio](/ssms/install/install).
 
 If you don't have access to a SQL Server instance, select your platform from the following links. If you choose SQL Authentication, use your SQL Server login credentials.
 

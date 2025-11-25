@@ -58,5 +58,5 @@ The following table summarizes the three recovery models.
 - [ALTER DATABASE SET options (Transact-SQL)](../../t-sql/statements/alter-database-transact-sql-set-options.md)
 - [Back up and restore of SQL Server databases](back-up-and-restore-of-sql-server-databases.md)
 - [The transaction log](../logs/the-transaction-log-sql-server.md)
-- [Automated administration tasks (SQL Server Agent)](../../ssms/agent/automated-administration-tasks-sql-server-agent.md)
+- [Automated administration tasks (SQL Server Agent)](/ssms/agent/automated-administration-tasks-sql-server-agent)
 - [Restore and recovery overview (SQL Server)](restore-and-recovery-overview-sql-server.md)

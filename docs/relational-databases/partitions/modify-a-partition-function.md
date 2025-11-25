@@ -24,7 +24,7 @@ Table partitioning is also available in dedicated SQL pools in Azure Synapse Ana
   
 -   ALTER PARTITION FUNCTION can only be used for splitting one partition into two, or for merging two partitions into one. To change the way a table or index is partitioned (from 10 partitions to 5, for example), you can use any one of the following options:  
   
-    -   Create a new partitioned table with the desired partition function, and then insert the data from the old table into the new table by using either an INSERT INTO ... SELECT FROM [!INCLUDE[tsql](../../includes/tsql-md.md)] statement or the **Manage Partition Wizard** in [SQL Server Management Studio (SSMS)](../../ssms/sql-server-management-studio-ssms.md).  
+    -   Create a new partitioned table with the desired partition function, and then insert the data from the old table into the new table by using either an INSERT INTO ... SELECT FROM [!INCLUDE[tsql](../../includes/tsql-md.md)] statement or the **Manage Partition Wizard** in [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms).  
   
     -   Create a partitioned [clustered index](../../t-sql/statements/create-index-transact-sql.md) on a heap.  
   

@@ -117,7 +117,7 @@ Distributes the rows based on the hash values of up to eight columns, allowing f
 >   - To regain access to MCD tables, enable the feature again.
 >   - To load data into an MCD table, use CTAS statement and the data source needs be Synapse SQL tables.  
 >   - CTAS on MCD HEAP target tables is not supported. Instead, use [INSERT SELECT](insert-transact-sql.md?view=azure-sqldw-latest&preserve-view=true) as a workaround to load data into MCD HEAP tables.
-> - Using SSMS for [generating a script](../../ssms/scripting/generate-scripts-sql-server-management-studio.md) to create MCD tables is currently supported beyond SSMS version 19.
+> - Using SSMS for [generating a script](/ssms/scripting/generate-scripts-sql-server-management-studio) to create MCD tables is currently supported beyond SSMS version 19.
 
 For details and to understand how to choose the best distribution column, see the [Table distribution options](create-table-azure-sql-data-warehouse.md#TableDistributionOptions) section in `CREATE TABLE`. 
 

@@ -94,7 +94,7 @@ This article provides a brief explanation of the various downloads and stand-alo
 
 ## Related content
 
-- [SQL Server Management Studio documentation](../ssms/download-sql-server-management-studio-ssms.md)
+- [What is SQL Server Management Studio (SSMS)?](/ssms/sql-server-management-studio-ssms)
 - [Additional updates and service packs](/troubleshoot/sql/releases/download-and-install-latest-updates?bc=%2fsql%2fbreadcrumb%2ftoc.json&toc=%2fsql%2ftoc.json)
 - [Install SQL Server Data Tools (SSDT) for Visual Studio](../ssdt/download-sql-server-data-tools-ssdt.md)
 

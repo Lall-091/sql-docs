@@ -3,7 +3,7 @@ title: How to Configure MSDTC on Linux
 description: In this article, learn how to configure the Microsoft Distributed Transaction Coordinator (MSDTC) on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/03/2025
+ms.date: 11/24/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -20,7 +20,9 @@ MSDTC on Linux is supported on [!INCLUDE [sssql17-md](../includes/sssql17-md.md)
 
 ## Overview
 
-Distributed transactions are enabled on SQL Server on Linux by introducing MSDTC and remote procedure call (RPC) endpoint mapper functionality within SQL Server. By default, an RPC endpoint-mapping process listens on port 135 for incoming RPC requests and provides registered components information to remote requests. Remote requests can use the information returned by endpoint mapper to communicate with registered RPC components, such as MSDTC services. A process requires super user privileges to bind to well-known ports (port numbers less than 1024) on Linux. To avoid starting SQL Server with root privileges for the RPC endpoint mapper process, system administrators must use iptables to create Network Address Translation to route traffic on port 135 to SQL Server's RPC endpoint-mapping process.
+You enable distributed transactions on [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux by introducing MSDTC and remote procedure call (RPC) endpoint mapper functionality within [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. By default, an RPC endpoint-mapping process listens on port 135 for incoming RPC requests and provides registered components information to remote requests. Remote requests can use the information returned by endpoint mapper to communicate with registered RPC components, such as MSDTC services.
+
+A process requires super user privileges to bind to well-known ports (port numbers less than 1024) on Linux. To avoid starting [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] with root privileges for the RPC endpoint mapper process, system administrators must use **iptables** to create Network Address Translation to route traffic on port 135 to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance's RPC endpoint-mapping process.
 
 MSDTC uses two configuration parameters for the **mssql-conf** utility:
 
@@ -37,25 +39,25 @@ The following MSDTC configurations are supported:
 
 | Transaction standard | Data sources | ODBC driver | JDBC driver |
 | --- | --- | --- | --- |
-| **OLE-TX transactions** | SQL Server on Linux | Yes | No |
-| **XA distributed transactions** | SQL Server, other ODBC, and JDBC data sources that support XA | Yes (requires version 17.3 or higher) | Yes |
-| **Distributed transactions on linked server** | SQL Server | Yes | No |
+| **OLE-TX transactions** | [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux | Yes | No |
+| **XA distributed transactions** | [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], other ODBC, and JDBC data sources that support XA | Yes (requires 17.3 or later versions) | Yes |
+| **Distributed transactions on linked server** | [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] | Yes | No |
 
 For more information, see [Understanding XA Transactions](../connect/jdbc/understanding-xa-transactions.md#configuration-instructions).
 
 ## MSDTC configuration steps
 
-There are three steps to configure MSDTC communication and functionality. If the necessary configuration steps aren't done, SQL Server doesn't enable MSDTC functionality.
+Complete the following three steps to configure MSDTC communication and functionality for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 
-- Configure `network.rpcport` and `distributedtransaction.servertcpport` using **mssql-conf**.
+- Configure `network.rpcport` and `distributedtransaction.servertcpport` with **mssql-conf**.
 - Configure the firewall to allow communication on `distributedtransaction.servertcpport` and port 135.
-- Configure Linux server routing so that RPC communication on port 135 is redirected to SQL Server's `network.rpcport`.
+- Configure Linux server routing so that RPC communication on port 135 is redirected to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance's `network.rpcport`.
 
 The following sections provide detailed instructions for each step.
 
 ## Configure RPC and MSDTC ports
 
-First, configure `network.rpcport` and `distributedtransaction.servertcpport` using **mssql-conf**. This step if specific to SQL Server and common across all supported distributions.
+Configure `network.rpcport` and `distributedtransaction.servertcpport` with **mssql-conf**. This step is specific to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] and common across all supported distributions.
 
 1. Use **mssql-conf** to set the `network.rpcport` value. The following example sets it to 13500.
 
@@ -69,7 +71,7 @@ First, configure `network.rpcport` and `distributedtransaction.servertcpport` us
    sudo /opt/mssql/bin/mssql-conf set distributedtransaction.servertcpport 51999
    ```
 
-1. Restart SQL Server.
+1. Restart [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 
    ```bash
    sudo systemctl restart mssql-server
@@ -77,7 +79,9 @@ First, configure `network.rpcport` and `distributedtransaction.servertcpport` us
 
 ## Configure the firewall
 
-The second step is to configure the firewall to allow communication on `servertcpport` and port 135. This enables the RPC endpoint-mapping process and MSDTC process to communicate externally to other transaction managers and coordinators. The actual steps for this vary depending on your Linux distribution and firewall.
+Configure the firewall to allow communication on `servertcpport` and port 135. This step enables the RPC endpoint-mapping process and MSDTC process to communicate externally to other transaction managers and coordinators. The actual procedure varies depending on your Linux distribution and firewall.
+
+### [Configure Ubuntu](#tab/ubuntu)
 
 The following example shows how to create these rules on **Ubuntu**.
 
@@ -87,7 +91,9 @@ sudo ufw allow from any to any port 135 proto tcp
 sudo ufw allow from any to any port 13500 proto tcp
 ```
 
-The following example shows how this could be done on **Red Hat Enterprise Linux (RHEL)**:
+### [Configure Red Hat Enterprise Linux (RHEL)](#tab/rhel)
+
+The following example shows how to create these rules on **RHEL**.
 
 ```bash
 sudo firewall-cmd --zone=public --add-port=51999/tcp --permanent
@@ -95,15 +101,17 @@ sudo firewall-cmd --zone=public --add-port=135/tcp --permanent
 sudo firewall-cmd --reload
 ```
 
+---
+
 It's important to configure the firewall before configuring port routing in the next section. Refreshing the firewall can clear the port routing rules in some cases.
 
 ## Configure port routing
 
-Configure the Linux server routing table so that RPC communication on port 135 is redirected to SQL Server's `network.rpcport`. Configuration mechanism for port forwarding on different distribution might differ. The following sections provide guidance for Ubuntu, SUS Enterprise Linux (SLES), and Red Hat Enterprise Linux (RHEL).
+Configure the Linux server routing table so that RPC communication on port 135 is redirected to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance's `network.rpcport`. The configuration mechanism for port forwarding might differ on different distributions. The following sections provide guidance for Ubuntu, SUSE Enterprise Linux (SLES), and Red Hat Enterprise Linux (RHEL).
 
-### Port routing in Ubuntu and SLES
+### [Port routing in Ubuntu and SLES](#tab/ubuntu)
 
-Ubuntu and SLES don't use the **firewalld** service, so **iptable** rules are an efficient mechanism to achieve port routing. The **iptable** rules might not persist during restarts, so the following commands also provide instructions for restoring the rules after a restart.
+Ubuntu and SLES don't use the **firewalld** service, so **iptables** rules are an efficient mechanism to achieve port routing. The **iptables** rules might not persist during restarts, so the following commands also provide instructions for restoring the rules after a restart.
 
 1. Create routing rules for port 135. In the following example, port 135 is directed to the RPC port, 13500, defined in the previous section. Replace `<ipaddress>` with the IP address of your server.
 
@@ -114,7 +122,7 @@ Ubuntu and SLES don't use the **firewalld** service, so **iptable** rules are an
       -j DNAT --to-destination <ip>:13500 -m comment --comment RpcEndPointMapper
    ```
 
-   The `--comment RpcEndPointMapper` parameter in the previous commands assists with managing these rules in later commands.
+   The `--comment RpcEndPointMapper` parameter in the previous commands helps you manage these rules in later commands.
 
 1. View the routing rules you created with the following command:
 
@@ -137,26 +145,28 @@ Ubuntu and SLES don't use the **firewalld** service, so **iptable** rules are an
    > [!NOTE]  
    > You must have super user (sudo) privileges to edit the `rc.local` or `after.local` files.
 
-The **iptables-save** and **iptables-restore** commands, along with `rc.local`/`after.local` startup configuration, provide a basic mechanism to save and restore iptables entries. Depending on your Linux distribution, there might be more advanced or automated options available. For example, an Ubuntu alternative is the `iptables-persistent` package to make entries persistent.
+The `iptables-save` and `iptables-restore` commands, along with `rc.local`/`after.local` startup configuration, provide a basic mechanism to save and restore **iptables** entries. Depending on your Linux distribution, there might be more advanced or automated options available. For example, an Ubuntu alternative is the `iptables-persistent` package to make entries persistent.
 
-The previous steps assume a fixed IP address. If the IP address for your SQL Server instance changes (due to manual intervention or DHCP), you must remove and recreate the routing rules if they were created with iptables. If you need to recreate or delete existing routing rules, you can use the following command to remove old `RpcEndPointMapper` rules:
+The previous steps assume a fixed IP address. If the IP address for your [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance changes (due to manual intervention or DHCP), you must remove and recreate the routing rules if you created them with **iptables**. If you need to recreate or delete existing routing rules, use the following command to remove old `RpcEndPointMapper` rules:
 
 ```bash
 sudo iptables -S -t nat | grep "RpcEndPointMapper" | sed 's/^-A //' | while read rule; do iptables -t nat -D $rule; done
 ```
 
-### Port routing in RHEL
+### [Port routing in RHEL](#tab/rhel)
 
-On distributions that use **firewalld** service, such as Red Hat Enterprise Linux, the same service can be used for both opening the port on the server and internal port forwarding. For example, on Red Hat Enterprise Linux, you should use **firewalld** service (via **firewall-cmd** configuration utility with `-add-forward-port` or similar options) to create and manage persistent port forwarding rules instead of using iptables.
+On distributions that use the **firewalld** service, such as Red Hat Enterprise Linux, you can use the same service for both opening the port on the server and internal port forwarding. For example, on Red Hat Enterprise Linux, use the **firewalld** service (via the **firewall-cmd** configuration utility with `-add-forward-port` or similar options) to create and manage persistent port forwarding rules instead of using **iptables**.
 
 ```bash
 sudo firewall-cmd --permanent --add-forward-port=port=135:proto=tcp:toport=13500
 sudo firewall-cmd --reload
 ```
 
+---
+
 ## Verify
 
-At this point, SQL Server should be able to participate in distributed transactions. To verify that SQL Server is listening, run the **netstat** command (if you're using RHEL, you might have to first install the **net-tools** package):
+At this point, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] should be able to participate in distributed transactions. To verify that [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is listening, run the **netstat** command. If you're using RHEL, you might have to first install the **net-tools** package:
 
 ```bash
 sudo netstat -tulpn | grep sqlservr
@@ -164,7 +174,7 @@ sudo netstat -tulpn | grep sqlservr
 
 You should see output similar to the following example:
 
-```bash
+```output
 tcp 0 0 0.0.0.0:1433 0.0.0.0:* LISTEN 13911/sqlservr
 tcp 0 0 127.0.0.1:1434 0.0.0.0:* LISTEN 13911/sqlservr
 tcp 0 0 0.0.0.0:13500 0.0.0.0:* LISTEN 13911/sqlservr
@@ -175,29 +185,29 @@ tcp6 0 0 :::13500 :::* LISTEN 13911/sqlservr
 tcp6 0 0 :::51999 :::* LISTEN 13911/sqlservr
 ```
 
-However, after a restart, SQL Server doesn't start listening on the `servertcpport` until the first distributed transaction. In this case, you wouldn't see SQL Server listening on port 51999 in this example until the first distributed transaction.
+However, after a restart, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] doesn't start listening on the `servertcpport` until the first distributed transaction. In this case, you wouldn't see [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] listening on port 51999 in this example until the first distributed transaction.
 
 ## Configure authentication on RPC communication for MSDTC
 
-MSDTC for SQL Server on Linux doesn't use authentication on RPC communication by default. However, when the host machine is joined to an Active Directory domain, it's possible to configure MSDTC to use authenticated RPC communication using following **mssql-conf** settings:
+MSDTC for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux doesn't use authentication on RPC communication by default. However, when the host machine is joined to an Active Directory domain, you can configure MSDTC to use authenticated RPC communication by using the following **mssql-conf** settings:
 
 | Setting | Description |
 | --- | --- |
-| `distributedtransaction.allowonlysecurerpccalls` | Configure secure only RPC calls for distributed transactions. Default value is 0. |
-| `distributedtransaction.fallbacktounsecurerpcifnecessary` | Configure security only RPC calls for distributed transactions. Default value is 0. |
-| `distributedtransaction.turnoffrpcsecurity` | Enable or disable RPC security for distributed transactions. Default value is 0. |
+| `distributedtransaction.allowonlysecurerpccalls` | Configure secure only RPC calls for distributed transactions. The default value is 0. |
+| `distributedtransaction.fallbacktounsecurerpcifnecessary` | Configure security only RPC calls for distributed transactions. The default value is 0. |
+| `distributedtransaction.turnoffrpcsecurity` | Enable or disable RPC security for distributed transactions. The default value is 0. |
 
-## Additional guidance
+## Supportability and compatibility
 
-### Active directory
+### Active Directory
 
-Microsoft recommends using MSDTC with RPC enabled if SQL Server is enrolled into an Active Directory configuration. If SQL Server is configured to use Active Directory authentication, MSDTC uses mutual authentication RPC security by default.
+Microsoft recommends using MSDTC with RPC enabled if [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is enrolled in an Active Directory configuration. If you configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] to use Active Directory authentication, MSDTC uses mutual authentication RPC security by default.
 
 ### Windows and Linux
 
-If a client on a Windows operating system needs to enlist into distributed transaction with SQL Server on Linux, it must have the following minimum version of Windows operating system:
+If a client on a Windows operating system needs to enlist into distributed transaction with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux, it must have the following minimum version of Windows operating system:
 
-| Operating system | Minimum version | OS Build |
+| Operating system | Minimum version | OS build |
 | --- | --- | --- |
 | [Windows Server](/windows-server/get-started/windows-server-release-info) | 1903 | 18362.30.190401-1528 |
 | [Windows 10](/windows/release-information/) | 1903 | 18362.267 |
@@ -205,3 +215,4 @@ If a client on a Windows operating system needs to enlist into distributed trans
 ## Related content
 
 - [What is SQL Server on Linux?](sql-server-linux-overview.md)
+- [How to use distributed transactions with SQL Server Linux containers](sql-server-linux-configure-msdtc-docker.md)

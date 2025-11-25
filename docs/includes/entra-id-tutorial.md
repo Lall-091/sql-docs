@@ -29,7 +29,7 @@ In this tutorial, you learn how to:
 
 - The server and instance enabled by Azure Arc. For more information, see [Connect your SQL Server to Azure Arc](../sql-server/azure-arc/connect.md).
 - Access to Microsoft Entra ID is available for authentication purpose. For more information, see [Microsoft Entra authentication for SQL Server](../relational-databases/security/authentication-access/azure-ad-authentication-sql-server-overview.md).
-- [SQL Server Management Studio (SSMS)](../ssms/download-sql-server-management-studio-ssms.md) version 18.0 or higher is installed on the client machine.
+- A supported version of [SQL Server Management Studio](/ssms/install/install) is installed on the client machine.
 - A supported certificate.
 - [Network requirements for enabling Entra ID authentication](../sql-server/azure-arc/prerequisites.md#network-requirements-for-enabling-microsoft-entra-authentication)
 
@@ -226,7 +226,7 @@ The steps in Azure portal do not apply to [!INCLUDE [sssql25-md](sssql25-md.md)]
 
 ## Create logins and users
 
-After the Azure Arc agent on the SQL Server host has completed its operation, the admin account selected in the **Microsoft Entra ID** menu in the portal is a `sysadmin` on the SQL Server instance. Sign into SQL Server with the Microsoft Entra admin account that has `sysadmin` permissions on the server using a client like [SSMS](../ssms/download-sql-server-management-studio-ssms.md).
+After the Azure Arc agent on the SQL Server host has completed its operation, the admin account selected in the **Microsoft Entra ID** menu in the portal is a `sysadmin` on the SQL Server instance. Sign into SQL Server with the Microsoft Entra admin account that has **sysadmin** permissions on the server using a client like [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms).
 
 > [!NOTE]  
 > All connections to SQL Server that are done with Microsoft Entra authentication require an encrypted connection. If the Database Administrator (DBA) hasn't set up a trusted SSL/TLS certificate for the server, logins likely fail with the message:

@@ -4,7 +4,7 @@ description: Describes the CE feedback for expressions feature in SQL Server 202
 author: thesqlsith
 ms.author: derekw
 ms.reviewer: randolphwest
-ms.date: 09/19/2025
+ms.date: 11/24/2025
 ms.service: sql
 ms.topic: concept-article
 ms.custom:
@@ -15,7 +15,7 @@ monikerRange: "=azuresqldb-current || =sql-server-ver17 || =sql-server-linux-ver
 
 # Cardinality estimation (CE) feedback for expressions
 
-**Applies to:** [!INCLUDE [sqlserver2025-asdb-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-fabricsqldb.md)]
+**Applies to:** [!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
 Inaccurate cardinality estimates often cause poor performance during query optimization. Cardinality estimation (CE) feedback for expressions extends the framework started by the CE feedback feature. The goal is to improve cardinality estimates for repeating expressions. The feedback for expressions feature learns from previous executions of expressions across queries, to find appropriate CE model choices and apply what has been learned to future executions of those expressions. Like [CE feedback](intelligent-query-processing-cardinality-estimation-feedback.md), model recommendations are tested and applied automatically to future query executions.
 

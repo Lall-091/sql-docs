@@ -26,7 +26,7 @@ Because the walkthrough is designed to introduce R developers to [!INCLUDE [rsql
 
 + [Database permissions](../security/user-permission.md) granted to a database user mapped to a SQL Server login
 
-+ [SQL Server Management Studio](../../ssms/download-sql-server-management-studio-ssms.md)
++ [SQL Server Management Studio](/ssms/install/install)
 
 + [NYC Taxi demo database](demo-data-nyctaxi-in-sql.md)
 

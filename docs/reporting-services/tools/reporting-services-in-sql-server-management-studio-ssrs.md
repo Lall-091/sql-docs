@@ -15,7 +15,7 @@ helpviewer_keywords:
   
 -   Enable features, set server defaults, and manage running jobs.  
   
--   View custom reports. In Object Explorer, most nodes display a custom reports option. You must have administrator permissions. The schema of a custom report must match the schema of the installed reports. For more information, see [Custom reports in Management Studio](../../ssms/object/custom-reports-in-management-studio.md) and [Find the report definition schema version &#40;SSRS&#41;](../../reporting-services/reports/find-the-report-definition-schema-version-ssrs.md).  
+-   View custom reports. In Object Explorer, most nodes display a custom reports option. You must have administrator permissions. The schema of a custom report must match the schema of the installed reports. For more information, see [Custom reports in Management Studio](/ssms/object/custom-reports-in-management-studio) and [Find the report definition schema version &#40;SSRS&#41;](../../reporting-services/reports/find-the-report-definition-schema-version-ssrs.md).  
   
  The next section contains links to articles that contain step-by-step instructions for performing various reporting tasks using [!INCLUDE[ssManStudio](../../includes/ssmanstudio-md.md)]. You can also create and manage shared schedules in the web portal.  
   
@@ -32,4 +32,4 @@ helpviewer_keywords:
 ## Related content
 
 - [Report server in Management Studio F1 Help](../../reporting-services/tools/report-server-in-management-studio-f1-help.md)
-- [SQL Server Management Studio (SSMS)](../../ssms/sql-server-management-studio-ssms.md)
+- [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms)

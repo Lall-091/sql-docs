@@ -182,7 +182,7 @@ Batch mode execution is a query processing method used to process multiple rows 
 
 ## Operator descriptions
 
-This section contains descriptions of the logical and physical operators. You can view the properties of query plans and operators using the **Properties** pane in the Query Plan view of [SQL Server Management Studio](../ssms/sql-server-management-studio-ssms.md) (SSMS).
+This section contains descriptions of the logical and physical operators. You can view the properties of query plans and operators using the **Properties** pane in the Query Plan view of [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms).
 
 > [!TIP]  
 > Whenever a given graphical execution plan icon has a yellow circle with two right-to-left arrows, it means the operator executed in parallel. For more information about parallelism, see the [Thread and Task Architecture Guide](../relational-databases/thread-and-task-architecture-guide.md#sql-server-task-scheduling).

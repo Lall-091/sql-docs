@@ -32,7 +32,7 @@ For detailed technical documents about how certain standards are implemented in 
 
 Some of the Microsoft tools that issue T-SQL commands are:
 
-- [SQL Server Management Studio (SSMS)](../ssms/download-sql-server-management-studio-ssms.md)
+- [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms)
 - [SQL Server Data Tools (SSDT)](../ssdt/download-sql-server-data-tools-ssdt.md)
 - [sqlcmd](../tools/sqlcmd/sqlcmd-utility.md)
 

@@ -28,6 +28,6 @@ helpviewer_keywords:
   
 ## Related content
 
-- [Alerts](../../ssms/agent/alerts.md)
-- [Use Performance Objects](../../ssms/agent/use-performance-objects.md)
+- [Alerts](/ssms/agent/alerts)
+- [Use Performance Objects](/ssms/agent/use-performance-objects)
 - [Monitor Resource Usage (Performance Monitor)](monitor-resource-usage-system-monitor.md)

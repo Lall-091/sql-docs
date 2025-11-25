@@ -37,5 +37,5 @@ The Azure Feature Pack for Integration Services contains connection managers to 
 
 ## See also
 
-- [Use the Toolbox](../../ssms/use-the-toolbox.md)
-- [Choose Toolbox Items (Maintenance Tasks Page)](../../ssms/menu-help/choose-toolbox-items-maintenance-tasks-page.md)
+- [Use the Toolbox](/ssms/use-the-toolbox)
+- [Choose Toolbox Items (Maintenance Tasks Page)](/ssms/menu-help/choose-toolbox-items-maintenance-tasks-page)

@@ -43,7 +43,7 @@ Disabling resource governor requires the `CONTROL SERVER` permission.
 
 ## Disable resource governor using Object Explorer in SQL Server Management Studio
 
-To disable resource governor using Object Explorer in [[!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)]](../../ssms/download-sql-server-management-studio-ssms.md):
+To disable resource governor using Object Explorer in [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms):
 
 1. In [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)], open Object Explorer and expand the **Management** node down to **Resource Governor**.
 1. From the **Resource Governor** context menu, select **Disable**.

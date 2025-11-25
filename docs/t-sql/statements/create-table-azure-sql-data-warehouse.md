@@ -178,7 +178,7 @@ Distributes the rows based on the hash values of up to eight columns, allowing f
 > - To disable the multi-column distribution (MCD) feature, run this command to change the database's compatibility level to AUTO. For example: `ALTER DATABASE SCOPED CONFIGURATION SET DW_COMPATIBILITY_LEVEL = AUTO;` Existing MCD tables will stay but become unreadable. Queries over MCD tables will return this error: `Related table/view is not readable because it distributes data on multiple columns and multi-column distribution is not supported by this product version or this feature is disabled.`
 >   - To regain access to MCD tables, enable the feature again.
 >   - To load data into an MCD table, use `CREATE TABLE AS SELECT` (CTAS) statement and the data source needs be Synapse SQL tables. 
-> - [Generate scripts](../../ssms/scripting/generate-scripts-sql-server-management-studio.md) to create MCD tables is currently supported SQL Server Management Studio (SSMS) version 19 and later versions.
+> - [Generate scripts](/ssms/scripting/generate-scripts-sql-server-management-studio) to create MCD tables is currently supported SQL Server Management Studio (SSMS) version 19 and later versions.
 
 `DISTRIBUTION = ROUND_ROBIN`
 Distributes the rows evenly across all the distributions in a round-robin fashion. This behavior is the default for [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)].

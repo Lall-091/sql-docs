@@ -34,7 +34,7 @@ Requires `ALTER` permission on the database.
 
 ## Use SQL Server Management Studio
 
-To view or change the compatibility level of a database using [SQL Server Management Studio (SSMS)](../../ssms/sql-server-management-studio-ssms.md)
+To view or change the compatibility level of a database using [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms)
 
 1. Connect to the appropriate server or instance hosting your database.
 

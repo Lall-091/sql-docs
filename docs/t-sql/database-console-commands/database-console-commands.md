@@ -30,5 +30,5 @@ dev_langs:
 ## Next steps
 
 - [sp_configure (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-configure-transact-sql.md)
-- [Configure SQL Server Agent](../../ssms/agent/configure-sql-server-agent.md)
+- [Configure SQL Server Agent](/ssms/agent/configure-sql-server-agent)
 - [Monitor SQL Server Components](../../relational-databases/performance/monitor-sql-server-components.md)

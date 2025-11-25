@@ -28,7 +28,7 @@ PROSE analyzes data patterns in your input file to infer column names, types, de
 
 ## Prerequisites
 
-This feature is available on SQL Server Management Studio (SSMS) v17.3 or later. Make sure you're using the latest version. You can find the latest version [here.](../../ssms/download-sql-server-management-studio-ssms.md)
+Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install).
 
 ## <a id="started"></a>Getting Started
 

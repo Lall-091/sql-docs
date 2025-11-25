@@ -30,7 +30,7 @@ Changing workload group settings requires the `CONTROL SERVER` permission.
 
 ## Change workload group settings using SQL Server Management Studio
 
-To change workload group settings using [[!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)]](../../ssms/download-sql-server-management-studio-ssms.md):
+To change workload group settings using [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms):
 
 1. In Object Explorer, expand the **Management** node down to and including the **Workload Groups** folder that contains the workload group to be modified.
 1. Use the context menu for the workload group to be modified, and select **Properties**.

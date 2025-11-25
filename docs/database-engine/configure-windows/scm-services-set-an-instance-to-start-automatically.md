@@ -45,4 +45,4 @@ This article describes how to set an instance of [!INCLUDE [ssNoVersion](../../i
 
 - [SQL Server Configuration Manager: Prevent automatic startup of an instance](scm-services-prevent-automatic-startup-of-an-instance.md)
 - [SQL Server Configuration Manager: Connect to another computer](scm-services-connect-to-another-computer.md)
-- [Configure WMI to Show Server Status in SQL Server Tools](../../ssms/configure-wmi-to-show-server-status-in-sql-server-tools.md)
+- [Configure WMI to Show Server Status in SQL Server Tools](/ssms/configure-wmi-to-show-server-status-in-sql-server-tools)

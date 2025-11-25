@@ -225,6 +225,6 @@ EXECUTE msdb.dbo.sysmail_add_principalprofile_sp
 
 ## Related content
 
-- [Configure SQL Server Agent](../../ssms/agent/configure-sql-server-agent.md)
+- [Configure SQL Server Agent](/ssms/agent/configure-sql-server-agent)
 - [Configure SQL Server Agent mail to use Database Mail](configure-sql-server-agent-mail-to-use-database-mail.md)
 - [General database mail troubleshooting steps](database-mail-general-troubleshooting.md)

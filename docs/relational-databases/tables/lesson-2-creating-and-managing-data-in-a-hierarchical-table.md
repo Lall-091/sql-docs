@@ -24,7 +24,7 @@ In Lesson 1, you modified an existing table to use the **hierarchyid** data type
 
 To complete this tutorial, you need SQL Server Management Studio, access to a server that's running SQL Server, and an [!INCLUDE [sssampledbobject-md](../../includes/sssampledbobject-md.md)] database.
 
-- Install [SQL Server Management Studio (SSMS)](../../ssms/download-sql-server-management-studio-ssms.md).
+- Install [SQL Server Management Studio (SSMS)](/ssms/install/install).
 - Install [SQL Server 2022 Developer Edition](https://www.microsoft.com/sql-server/sql-server-downloads).
 - Download [AdventureWorks sample database](../../samples/adventureworks-install-configure.md).
 

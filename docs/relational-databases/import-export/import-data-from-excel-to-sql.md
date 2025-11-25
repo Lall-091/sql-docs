@@ -19,7 +19,7 @@ This article summarizes the frequently used methods and provides links for more 
 
 ## List of methods
 
-There are several ways to import data from Excel. You need to install [SQL Server Management Studio](../../ssms/download-sql-server-management-studio-ssms.md) (SSMS) to use some of these tools.
+There are several ways to import data from Excel. Install the latest version of [SQL Server Management Studio (SSMS)](/ssms/install/install) to use some of these tools.
 
 You can use the following tools to import data from Excel:
 

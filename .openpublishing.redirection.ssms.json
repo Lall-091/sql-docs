@@ -622,7 +622,7 @@
     },
     {
       "source_path": "docs/ssms/download-sql-server-management-studio-ssms-20.md",
-      "redirect_url": "/ssms/download-sql-server-management-studio-ssms",
+      "redirect_url": "/ssms/install/install",
       "redirect_document_id": false
     },
     {
@@ -1932,7 +1932,7 @@
     },
     {
       "source_path": "docs/ssms/about-dialog-box.md",
-      "redirect_url": "/ssms/download-sql-server-management-studio-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
@@ -2002,7 +2002,7 @@
     },
     {
       "source_path": "docs/ssms/menu-help/options-dialog-boxes-f1-help.md",
-      "redirect_url": "/ssms/download-sql-server-management-studio-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
@@ -2057,7 +2057,7 @@
     },
     {
       "source_path": "docs/ssms/menu-help/choose-search-folders-dialog-box-visual-studio.md",
-      "redirect_url": "/ssms/download-sql-server-management-studio-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
@@ -2317,7 +2317,7 @@
     },
     {
       "source_path": "docs/ssms/object/name-not-found-dialog-box.md",
-      "redirect_url": "/ssms/download-sql-server-management-studio-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
@@ -2672,7 +2672,7 @@
     },
     {
       "source_path": "docs/ssms/download-sql-server-management-studio-ssms-19.md",
-      "redirect_url": "/ssms/download-sql-server-management-studio-ssms",
+      "redirect_url": "/ssms/install/install",
       "redirect_document_id": false
     },
     {
@@ -2682,7 +2682,7 @@
     },
     {
       "source_path": "docs/ssms/sql-server-management-studio-ssms-release-candidate.md",
-      "redirect_url": "/ssms/download-sql-server-management-studio-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
@@ -2717,7 +2717,7 @@
     },
     {
       "source_path": "docs/ssms/menu-help/windows-dialog-box-microsoft-document-explorer-help.md",
-      "redirect_url": "/ssms/download-sql-server-management-studio-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
@@ -3647,7 +3647,7 @@
     },
     {
       "source_path": "docs/ssms/sql-server-management-studio-release-notes.md",
-      "redirect_url": "/ssms/download-sql-server-management-studio-ssms#release-notes",
+      "redirect_url": "/ssms/release-notes-22",
       "redirect_document_id": false
     },
     {
@@ -3692,7 +3692,7 @@
     },
     {
       "source_path": "docs/ssms/index.md",
-      "redirect_url": "/ssms/download-sql-server-management-studio-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
@@ -4522,7 +4522,7 @@
     },
     {
       "source_path": "docs/ssms/download-sql-server-management-studio-ssms.md",
-      "redirect_url": "/ssms/download-sql-server-management-studio-ssms",
+      "redirect_url": "/ssms/install/install",
       "redirect_document_id": false
     },
     {

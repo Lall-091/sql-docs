@@ -16,7 +16,7 @@ monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance](../../../includes/applies-to-version/sql-asdb-asdbmi.md)]
 
-This article describes how to query columns, encrypted with [Always Encrypted](../../../relational-databases/security/encryption/always-encrypted-database-engine.md) using [SQL Server Management Studio (SSMS)](../../../ssms/download-sql-server-management-studio-ssms.md). With SSMS, you can:
+This article describes how to query columns, encrypted with [Always Encrypted](../../../relational-databases/security/encryption/always-encrypted-database-engine.md) using [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms). With SSMS, you can:
 
 - Retrieve ciphertext values stored in encrypted columns.
 - Retrieve plaintext values stored in encrypted columns.
@@ -90,7 +90,7 @@ You can enable or disable Always Encrypted when you create a new connection or y
 
 To enable (disable) Always Encrypted:
 
-1. Open **Connect To Server** dialog (see [Connect to a SQL Server instance](../../../ssms/quickstarts/ssms-connect-query-sql-server.md#connect-to-a-sql-server-instance) for details).
+1. Open **Connect To Server** dialog (see [Connect to a SQL Server instance](/ssms/quickstarts/ssms-connect-query-sql-server#connect-to-a-sql-server-instance) for details).
 1. Select **Options**.
 1. Select the **Always Encrypted** tab. To enable Always Encrypted, select **Enable Always Encrypted (column encryption)**. To disable Always Encrypted, make sure **Enable Always Encrypted (column encryption)** isn't selected.
 1. Select **Connect**.

@@ -52,7 +52,7 @@ For information on the *main* SQL graphical and command-line tools, see [SQL too
 | [sqlmaint](sqlmaint-utility.md) | Used to execute database maintenance plans created in previous versions of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]. | `<drive>:\Program Files\Microsoft SQL Server\<nnn>\MSSQL\Binn` |
 | [sqlps](sqlps-utility.md) | Used to run PowerShell commands and scripts. Loads and registers the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] PowerShell provider and cmdlets. | `<drive>:\Program Files\Microsoft SQL Server\<nnn>\Tools\Binn` |
 | [sqlservr](sqlservr-application.md) | Used to start and stop an instance of [!INCLUDE [ssDE](../includes/ssde-md.md)] from the command prompt for troubleshooting. | `<drive>:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Binn` |
-| [ssms](../ssms/ssms-utility.md) | Used to start [!INCLUDE [ssManStudioFull](../includes/ssmanstudiofull-md.md)] from a command prompt. | `<drive>:\Program Files\Microsoft SQL Server\<nnn>\Tools\Binn\VSShell\Common7\IDE` |
+| [ssms](/ssms/ssms-utility) | Used to start [!INCLUDE [ssManStudioFull](../includes/ssmanstudiofull-md.md)] from a command prompt. | `<drive>:\Program Files\Microsoft SQL Server\<nnn>\Tools\Binn\VSShell\Common7\IDE` |
 | [tablediff](tablediff-utility.md) | Used to compare the data in two tables for nonconvergence, which is useful when troubleshooting a replication topology. | `<drive>:\Program Files\Microsoft SQL Server\<nnn>\COM` |
 
 ## Command-line utilities syntax conventions
