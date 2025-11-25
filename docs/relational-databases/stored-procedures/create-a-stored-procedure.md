@@ -40,7 +40,7 @@ To create a stored procedure in SSMS:
 
    For more information, see the following quickstarts:
 
-   - [Connect and query a SQL Server instance using SSMS](../../ssms/quickstarts/ssms-connect-query-sql-server.md)
+   - [Connect and query a SQL Server instance using SSMS](/ssms/quickstarts/ssms-connect-query-sql-server)
    - [Connect to and query Azure SQL Database or Azure SQL Managed Instance using SSMS](/azure/azure-sql/database/connect-query-ssms)
 
 1. Expand the instance, and then expand **Databases**.

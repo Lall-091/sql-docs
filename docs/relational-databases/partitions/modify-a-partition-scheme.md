@@ -15,7 +15,7 @@ monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-20
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
-You can modify a partition scheme by designating a filegroup to hold the next partition that is added to a partitioned table using [SQL Server Management Studio (SSMS)](../../ssms/sql-server-management-studio-ssms.md) or [!INCLUDE[tsql](../../includes/tsql-md.md)]. You do this by assigning the NEXT USED property to a filegroup. 
+You can modify a partition scheme by designating a filegroup to hold the next partition that is added to a partitioned table using [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) or [!INCLUDE[tsql](../../includes/tsql-md.md)]. You do this by assigning the NEXT USED property to a filegroup. 
 
 You can assign the NEXT USED property to an empty filegroup or to one that already holds a partition. In other words, a filegroup can hold more than one partition. Learn more about filegroups and  partitioning strategies in the [Filegroups](partitioned-tables-and-indexes.md#filegroups).
 

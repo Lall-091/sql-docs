@@ -66,7 +66,7 @@ You should not code [!INCLUDE[tsql](../../includes/tsql-md.md)] statements that 
 
 - [Back Up and Restore of System Databases &#40;SQL Server&#41;](../../relational-databases/backup-restore/back-up-and-restore-of-system-databases-sql-server.md)  
   
-- [Hide System Objects in Object Explorer](../../ssms/object/hide-system-objects-in-object-explorer.md)  
+- [Hide System Objects in Object Explorer](/ssms/object/hide-system-objects-in-object-explorer)  
   
 ## Related Content  
 

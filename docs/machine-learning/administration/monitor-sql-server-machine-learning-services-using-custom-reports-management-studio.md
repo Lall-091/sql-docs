@@ -24,7 +24,7 @@ In these reports, you can view details such as:
 
 This article explains how to install and use the custom reports provided for SQL Server Machine Learning Services.
 
-For more information on reports in SQL Server Management Studio, see [Custom reports in Management Studio](../../ssms/object/custom-reports-in-management-studio.md).
+For more information on reports in SQL Server Management Studio, see [Custom reports in Management Studio](/ssms/object/custom-reports-in-management-studio).
 
 ## How to install the reports
 

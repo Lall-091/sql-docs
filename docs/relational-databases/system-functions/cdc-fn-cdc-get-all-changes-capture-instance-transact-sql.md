@@ -98,7 +98,7 @@ This error should be handled by the developer.
 
 ## Examples
 
-Several [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] templates are available that show how to use the change data capture query functions. These templates are available on the **View** menu in [!INCLUDE [ssManStudio](../../includes/ssmanstudio-md.md)]. For more information, see [Template Explorer](../../ssms/template/template-explorer.md).
+Several [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] templates are available that show how to use the change data capture query functions. These templates are available on the **View** menu in [!INCLUDE [ssManStudio](../../includes/ssmanstudio-md.md)]. For more information, see [Template Explorer](/ssms/template/template-explorer).
 
 This example shows the `Enumerate All Changes for Valid Range Template`. It uses the function `cdc.fn_cdc_get_all_changes_HR_Department` to report all the currently available changes for the capture instance `HR_Department`, which is defined for the source table `HumanResources.Department` in the [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)] database.
 

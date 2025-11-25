@@ -132,7 +132,7 @@ The following table contains information about [!INCLUDE [ssNoVersion](../../inc
 
 |For information about|See|
 |---------------------------|---------|
-|Connecting to, configuring, and controlling [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]|[Use SQL Server Management Studio](../../ssms/sql-server-management-studio-ssms.md)|
+|Connecting to, configuring, and controlling [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]|[Use SQL Server Management Studio](/ssms/sql-server-management-studio-ssms)|
 |Connecting to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] and running queries at the command prompt|[Sqlcmd Utility](../../tools/sqlcmd/sqlcmd-utility.md)|
 |Network configuration and control for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]|[SQL Server Configuration Manager](../../relational-databases/sql-server-configuration-manager.md)|
 |Enabling and disabling features by using Policy-Based Management|[Administer Servers by Using Policy-Based Management](../policy-based-management/administer-servers-by-using-policy-based-management.md)|

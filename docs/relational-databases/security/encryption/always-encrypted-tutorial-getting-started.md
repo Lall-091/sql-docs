@@ -45,7 +45,7 @@ In this step, you'll create the **HR** schema and the **Employees** table. Then,
 
 # [SSMS](#tab/ssms)
 
-1. Connect to your database. For instructions on how to connect to a database from SSMS, see [Quickstart: Connect and query an Azure SQL Database or an Azure SQL Managed Instance using SQL Server Management Studio (SSMS)](../../../ssms/quickstarts/ssms-connect-query-azure-sql.md) or [Quickstart: Connect and query a SQL Server instance using SQL Server Management Studio (SSMS)](../../../ssms/quickstarts/ssms-connect-query-sql-server.md).
+1. Connect to your database. For instructions on how to connect to a database from SSMS, see [Quickstart: Connect and query an Azure SQL Database or an Azure SQL Managed Instance using SQL Server Management Studio (SSMS)](/ssms/quickstarts/ssms-connect-query-azure-sql) or [Quickstart: Connect and query a SQL Server instance using SQL Server Management Studio (SSMS)](/ssms/quickstarts/ssms-connect-query-sql-server).
 1. Open a new query window for the **ContosoHR** database.
 1. Paste in and execute the below statements to create a new table, named **Employees**.
 

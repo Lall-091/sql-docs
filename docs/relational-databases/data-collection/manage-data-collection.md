@@ -50,7 +50,7 @@ You can use the stored procedures, functions, and views that are provided to cre
 > [!IMPORTANT]  
 > Unlike regular stored procedures, the data collector stored procedures use strictly typed parameters and don't support automatic data type conversion. If these parameters aren't called with the correct input parameter data types, as specified in the argument description, the stored procedure returns an error.
 
-Use [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] to create and execute the provided code samples. For more information, see [Object Explorer](../../ssms/object/object-explorer.md). As an alternative, you can create the query in any editor and save it in a text file that has a `.sql` file name extension. You can execute the query from the Windows command prompt using the **sqlcmd** utility. For more information, see [sqlcmd - use the utility](../../tools/sqlcmd/sqlcmd-use-utility.md).
+Use [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] to create and execute the provided code samples. For more information, see [Object Explorer](/ssms/object/object-explorer). As an alternative, you can create the query in any editor and save it in a text file that has a `.sql` file name extension. You can execute the query from the Windows command prompt using the **sqlcmd** utility. For more information, see [sqlcmd - use the utility](../../tools/sqlcmd/sqlcmd-use-utility.md).
 
 ### Stored procedures and views
 
@@ -164,5 +164,5 @@ The following table describes the functions that you can use to obtain execution
 ## Related content
 
 - [Execute a stored procedure](../stored-procedures/execute-a-stored-procedure.md)
-- [What is SQL Server Management Studio (SSMS)?](../../ssms/sql-server-management-studio-ssms.md)
+- [What is SQL Server Management Studio (SSMS)?](/ssms/sql-server-management-studio-ssms)
 - [Data collection](data-collection.md)

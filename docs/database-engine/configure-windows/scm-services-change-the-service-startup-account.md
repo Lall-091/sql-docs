@@ -61,4 +61,4 @@ This article describes how to use SQL Server Configuration Manager to change the
 ## Related content
 
 - [Start, stop, pause, resume, and restart SQL Server services](start-stop-pause-resume-restart-sql-server-services.md)
-- [Configure WMI to Show Server Status in SQL Server Tools](../../ssms/configure-wmi-to-show-server-status-in-sql-server-tools.md)
+- [Configure WMI to Show Server Status in SQL Server Tools](/ssms/configure-wmi-to-show-server-status-in-sql-server-tools)

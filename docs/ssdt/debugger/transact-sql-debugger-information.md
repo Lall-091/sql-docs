@@ -48,7 +48,7 @@ To add an expression to a **Watch** window, enter the name of the expression in 
 
 You can set the data values for variables in the **Locals**, **Watch**, or **QuickWatch** windows by right-clicking the row and then selecting **Edit Value**. The **Value** columns in the **Locals** window, **Watch** window, and **QuickWatch** dialog box all support text, XML, and HTML data visualizers. The visualizers are represented by a magnifying glass data tip on the right side end of the **Values** column. You can use the visualizers to view text, XML, or HTML data values in displays that match the data types, for example, viewing XML files in a browser window.
 
-In debug mode, when you move the mouse pointer over an identifier, a **Quick Info** pop up is displayed with the name of the expression and its current value. For more information, see [Quick Info (IntelliSense)](../../ssms/scripting/quick-info-intellisense.md).
+In debug mode, when you move the mouse pointer over an identifier, a **Quick Info** pop up is displayed with the name of the expression and its current value. For more information, see [Quick Info (IntelliSense)](/ssms/scripting/quick-info-intellisense).
 
 ## Breakpoints
 

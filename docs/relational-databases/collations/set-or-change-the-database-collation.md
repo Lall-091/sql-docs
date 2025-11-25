@@ -18,7 +18,7 @@ monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-cu
 
 [!INCLUDE [SQL Server Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdbmi.md)]
 
-This article describes how to set or change the database [collation](collation-and-unicode-support.md) by using [SQL Server Management Studio (SSMS)](../../ssms/sql-server-management-studio-ssms.md) or [!INCLUDE [tsql](../../includes/tsql-md.md)]. 
+This article describes how to set or change the database [collation](collation-and-unicode-support.md) by using [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) or [!INCLUDE [tsql](../../includes/tsql-md.md)]. 
 
 If no database collation is specified, the [server collation](set-or-change-the-server-collation.md) is used.
 

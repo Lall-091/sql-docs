@@ -64,4 +64,4 @@ To perform tracing with [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-m
 ## Related content
 
 - [SQL Server Profiler](sql-server-profiler.md)
-- [Use SQL Server Management Studio](../../ssms/sql-server-management-studio-ssms.md)
+- [Use SQL Server Management Studio](/ssms/sql-server-management-studio-ssms)

@@ -70,7 +70,7 @@ Additional considerations might be needed based on the complexity of your data a
 
 - [Troubleshoot orphaned users (SQL Server)](../../failover-clusters/troubleshoot-orphaned-users-sql-server.md)
 - [Migrating Triggers](../../../relational-databases/in-memory-oltp/migrating-triggers.md)
-- [Generate and Publish Scripts Wizard](../../../ssms/scripting/generate-and-publish-scripts-wizard.md)
+- [Generate and Publish Scripts Wizard](/ssms/scripting/generate-and-publish-scripts-wizard)
 - [Mirrored Backup Media Sets (SQL Server)](../../../relational-databases/backup-restore/mirrored-backup-media-sets-sql-server.md)
 - [Backup overview (SQL Server)](../../../relational-databases/backup-restore/backup-overview-sql-server.md)
 - [Editions and supported features of SQL Server 2022](../../editions-and-components-of-sql-server-2022.md)

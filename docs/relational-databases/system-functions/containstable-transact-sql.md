@@ -296,7 +296,7 @@ GO
 
 - [Limit search results with RANK](../search/limit-search-results-with-rank.md)
 - [Query with Full-Text Search](../search/query-with-full-text-search.md)
-- [Create Full-Text Search Queries (Visual Database Tools)](../../ssms/visual-db-tools/create-full-text-search-queries-visual-database-tools.md)
+- [Create Full-Text Search Queries (Visual Database Tools)](/ssms/visual-db-tools/create-full-text-search-queries-visual-database-tools)
 - [CONTAINS (Transact-SQL)](../../t-sql/queries/contains-transact-sql.md)
 - [SELECT (Transact-SQL)](../../t-sql/queries/select-transact-sql.md)
 - [FROM clause plus JOIN, APPLY, PIVOT (Transact-SQL)](../../t-sql/queries/from-transact-sql.md)

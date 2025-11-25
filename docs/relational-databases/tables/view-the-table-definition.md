@@ -35,7 +35,7 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 
 #### <a id="to-generate-the-create-table-script-for-an-existing-table"></a> Generate the CREATE TABLE script for an existing table
   
-You can script out existing objects from the Object Explorer in SSMS. For more information, see [Generate Scripts](../../ssms/scripting/generate-scripts-sql-server-management-studio.md#ScriptSingleObject).
+You can script out existing objects from the Object Explorer in SSMS. For more information, see [Generate Scripts](/ssms/scripting/generate-scripts-sql-server-management-studio#ScriptSingleObject).
 
 <a id="to-show-table-properties"></a> 
 
@@ -54,7 +54,7 @@ EXEC sp_help 'dbo.mytable';
 ```  
  
 > [!TIP]
-> By default, SSMS maps a keyboard shortcut for `sp_help` to the `Alt-F1`. Highlight the name of the object in a script you want to see, for example `dbo.mytable`, and hit `Alt-F1` to execute the previous script sample. For more information, see [SSMS keyboard shortcuts](../../ssms/sql-server-management-studio-keyboard-shortcuts.md).
+> By default, SSMS maps a keyboard shortcut for `sp_help` to the `Alt-F1`. Highlight the name of the object in a script you want to see, for example `dbo.mytable`, and hit `Alt-F1` to execute the previous script sample. For more information, see [SSMS keyboard shortcuts](/ssms/sql-server-management-studio-keyboard-shortcuts).
 
 ### Use system catalog views
 
@@ -72,5 +72,5 @@ WHERE t.name = 'mytable' AND s.name = 'dbo';
 - [sys.columns (Transact-SQL)](../../relational-databases/system-catalog-views/sys-columns-transact-sql.md)
 - [sys.tables (Transact-SQL)](../../relational-databases/system-catalog-views/sys-tables-transact-sql.md)
 - [sys.schemas (Transact-SQL)](../../relational-databases/system-catalog-views/schemas-catalog-views-sys-schemas.md)
-- [Generate Scripts (SQL Server Management Studio)](../../ssms/scripting/generate-scripts-sql-server-management-studio.md)
-- [SSMS keyboard shortcuts](../../ssms/sql-server-management-studio-keyboard-shortcuts.md)
+- [Generate Scripts (SQL Server Management Studio)](/ssms/scripting/generate-scripts-sql-server-management-studio)
+- [SSMS keyboard shortcuts](/ssms/sql-server-management-studio-keyboard-shortcuts)

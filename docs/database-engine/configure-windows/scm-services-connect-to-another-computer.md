@@ -68,4 +68,4 @@ To start, stop, pause, or resume services on another computer, you can also conn
 
 ## Related content
 
-- [Configure WMI to Show Server Status in SQL Server Tools](../../ssms/configure-wmi-to-show-server-status-in-sql-server-tools.md)
+- [Configure WMI to Show Server Status in SQL Server Tools](/ssms/configure-wmi-to-show-server-status-in-sql-server-tools)

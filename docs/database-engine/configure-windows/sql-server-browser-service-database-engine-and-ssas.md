@@ -80,7 +80,7 @@ However, if the SQL Server Browser service isn't running, the following connecti
 
 - The Online Analytical Processing (OLAP) redirector service.
 
-- Enumerating servers in [SQL Server Management Studio](../../ssms/menu-help/about-sql-server-management-studio.md).
+- Enumerating servers in [SQL Server Management Studio](/ssms/menu-help/about-sql-server-management-studio).
 
 Suppose you're using [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] in a client-server scenario (for example, when your application is accessing [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] across a network). If you stop or disable the SQL Server Browser service, you must assign a specific port number to each instance and configure your client application code to use that port number. This approach has the following problems:
 

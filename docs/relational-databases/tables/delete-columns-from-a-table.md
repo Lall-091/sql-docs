@@ -22,7 +22,7 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 
 [!INCLUDE [sqlserver2016-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
-This article describes how to delete table columns in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] using [SQL Server Management Studio](../../ssms/sql-server-management-studio-ssms.md) (SSMS) or [!INCLUDE [tsql](../../includes/tsql-md.md)].
+This article describes how to delete table columns in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] using [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms) (SSMS) or [!INCLUDE [tsql](../../includes/tsql-md.md)].
 
 > [!CAUTION]  
 > When you delete a column from a table, the column and all the data it contains are deleted.
@@ -31,7 +31,7 @@ This article describes how to delete table columns in [!INCLUDE [ssnoversion](..
 
 You can't delete a column that has a `CHECK` constraint. You must first delete the constraint.
 
-You can't delete a column that has `PRIMARY KEY` or `FOREIGN KEY` constraints or other dependencies except when using the [Table Designer](../../ssms/visual-db-tools/visual-database-tool-designers.md#table-designer) in SSMS. When using [Object Explorer](../../ssms/object/object-explorer.md) in SSMS or [!INCLUDE [tsql](../../includes/tsql-md.md)], you must first remove all dependencies on the column.
+You can't delete a column that has `PRIMARY KEY` or `FOREIGN KEY` constraints or other dependencies except when using the [Table Designer](/ssms/visual-db-tools/visual-database-tool-designers#table-designer) in SSMS. When using [Object Explorer](/ssms/object/object-explorer) in SSMS or [!INCLUDE [tsql](../../includes/tsql-md.md)], you must first remove all dependencies on the column.
 
 ## Permissions
 
@@ -83,7 +83,7 @@ For more examples, see [ALTER TABLE](../../t-sql/statements/alter-table-transact
 ## Related content
 
 - [ALTER TABLE (Transact-SQL)](../../t-sql/statements/alter-table-transact-sql.md)
-- [What is SQL Server Management Studio (SSMS)?](../../ssms/sql-server-management-studio-ssms.md)
+- [What is SQL Server Management Studio (SSMS)?](/ssms/sql-server-management-studio-ssms)
 - [Azure Data Studio](/azure-data-studio/what-is-azure-data-studio)
-- [Object Explorer](../../ssms/object/object-explorer.md)
-- [Table Designer](../../ssms/visual-db-tools/visual-database-tool-designers.md#table-designer)
+- [Object Explorer](/ssms/object/object-explorer)
+- [Table Designer](/ssms/visual-db-tools/visual-database-tool-designers#table-designer)

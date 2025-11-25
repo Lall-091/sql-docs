@@ -18,7 +18,7 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Azure Synapse Analytics PDW FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
-The [sqlcmd utility](sqlcmd-utility.md) lets you enter Transact-SQL statements, system procedures, and script files at the command prompt, in [Edit SQLCMD Scripts with Query Editor](edit-sqlcmd-scripts-query-editor.md) in [About SQL Server Management Studio](../../ssms/menu-help/about-sql-server-management-studio.md), and in a Windows script file or in [an operating system (Cmd.exe) job step](/ssms/agent/create-a-cmdexec-job-step) of a SQL Server Agent job.
+The [sqlcmd utility](sqlcmd-utility.md) lets you enter Transact-SQL statements, system procedures, and script files at the command prompt, in [Edit SQLCMD Scripts with Query Editor](edit-sqlcmd-scripts-query-editor.md) in [About SQL Server Management Studio](/ssms/menu-help/about-sql-server-management-studio), and in a Windows script file or in [an operating system (Cmd.exe) job step](/ssms/agent/create-a-cmdexec-job-step) of a SQL Server Agent job.
 
 > [!NOTE]  
 > Windows Authentication is the default authentication mode for **sqlcmd**. To use SQL Server Authentication, you must specify a user name and password by using the `-U` and `-P` options.

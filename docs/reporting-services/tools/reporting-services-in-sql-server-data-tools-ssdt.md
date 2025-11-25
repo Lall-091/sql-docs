@@ -339,6 +339,6 @@ You can use keyboard shortcuts to:
 
 ## Related content
 
-- [Solution Explorer](../../ssms/solution/solution-explorer.md)
+- [Solution Explorer](/ssms/solution/solution-explorer)
 - [Reporting Services reports (SSRS)](../../reporting-services/reports/reporting-services-reports-ssrs.md)
 - [Report Definition Language (SSRS)](../../reporting-services/reports/report-definition-language-ssrs.md)
