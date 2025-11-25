@@ -85,7 +85,7 @@ None.
 
 After an operation is posted, it appears in the `sysdownloadlist` table. After a job is created and posted, subsequent changes to that job must also be communicated to the target servers (TSX). This step is also accomplished using the download list.
 
-We highly recommend that you manage the download list in SQL Server Management Studio. For more information, see [View or Modify Jobs](../../ssms/agent/view-or-modify-jobs.md).
+We highly recommend that you manage the download list in SQL Server Management Studio. For more information, see [View or Modify Jobs](/ssms/agent/view-or-modify-jobs).
 
 ## Permissions
 

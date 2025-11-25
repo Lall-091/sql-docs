@@ -84,7 +84,7 @@ Other users must be granted one of the following [!INCLUDE [ssNoVersion](../../i
 
 The job owner can attach a job to a schedule and detach a job from a schedule without also having to be the schedule owner. However, a schedule can't be deleted if the detach would leave it with no jobs, unless the caller is the schedule owner.
 
-For details about the permissions of these roles, see [SQL Server Agent Fixed Database Roles](../../ssms/agent/sql-server-agent-fixed-database-roles.md).
+For details about the permissions of these roles, see [SQL Server Agent Fixed Database Roles](/ssms/agent/sql-server-agent-fixed-database-roles).
 
 Only members of the **sysadmin** role can delete a job schedule that is owned by another user.
 
@@ -118,5 +118,5 @@ GO
 
 ## Related content
 
-- [Implement Jobs](../../ssms/agent/implement-jobs.md)
+- [Implement Jobs](/ssms/agent/implement-jobs)
 - [sp_add_schedule (Transact-SQL)](sp-add-schedule-transact-sql.md)

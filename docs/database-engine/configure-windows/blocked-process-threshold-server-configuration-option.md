@@ -19,7 +19,7 @@ Use the `blocked process threshold` option to specify the threshold, in seconds,
 
 By default, no blocked process reports are produced. This event isn't generated for system tasks or for tasks that are waiting on resources that don't generate detectable deadlocks.
 
-You can define an [alert](../../ssms/agent/alerts.md) to be executed when this event is generated. So for example, you can choose to page the administrator to take appropriate action to handle the blocking situation.
+You can define an [alert](/ssms/agent/alerts) to be executed when this event is generated. So for example, you can choose to page the administrator to take appropriate action to handle the blocking situation.
 
 Blocked process threshold uses the deadlock monitor background thread to walk through the list of tasks waiting for a time greater than or multiples of the configured threshold. The event is generated once per reporting interval for each of the blocked tasks.
 

@@ -81,5 +81,5 @@ Configuring server startup options is restricted to users who can change the rel
 
 - [Single-user mode for SQL Server](start-sql-server-in-single-user-mode.md)
 - [Connect to SQL Server when system administrators are locked out](connect-to-sql-server-when-system-administrators-are-locked-out.md)
-- [Start, stop, or pause the SQL Server Agent service](../../ssms/agent/start-stop-or-pause-the-sql-server-agent-service.md)
+- [Start, stop, or pause the SQL Server Agent service](/ssms/agent/start-stop-or-pause-the-sql-server-agent-service)
 - [Database Engine Service startup options](database-engine-service-startup-options.md)

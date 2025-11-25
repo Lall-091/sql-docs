@@ -31,4 +31,4 @@ To open this dialog, select **View refresh settings**, in the **Status** section
 
 ## See also
 
-- [Monitor Job Activity](../../ssms/agent/monitor-job-activity.md)
+- [Monitor Job Activity](/ssms/agent/monitor-job-activity)

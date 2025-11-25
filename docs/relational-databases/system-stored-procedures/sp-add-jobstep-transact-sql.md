@@ -105,7 +105,7 @@ The commands to be executed by the [!INCLUDE [ssnoversion-md](../../includes/ssn
 
 An escape macro must accompany all tokens used in job steps, or else those job steps fail. In addition, you must now enclose token names in parentheses and place a dollar sign (`$`) at the beginning of the token syntax. For example: `$(ESCAPE_<macro name>(DATE))`.
 
-For more information about these tokens and updating your job steps to use the new token syntax, see [Use Tokens in Job Steps](../../ssms/agent/use-tokens-in-job-steps.md).
+For more information about these tokens and updating your job steps to use the new token syntax, see [Use Tokens in Job Steps](/ssms/agent/use-tokens-in-job-steps).
 
 Any Windows user with write permissions on the Windows Event Log can access job steps that are activated by [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent alerts or WMI alerts. To avoid this security risk, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent tokens that can be used in jobs activated by alerts are disabled by default. These tokens are: `A-DBN`, `A-SVR`, `A-ERR`, `A-SEV`, `A-MSG`, and `WMI(<property>)`. In this release, use of tokens is extended to all alerting.
 
@@ -233,7 +233,7 @@ Other users must be granted one of the following [!INCLUDE [ssNoVersion](../../i
 - **SQLAgentReaderRole**
 - **SQLAgentOperatorRole**
 
-For details about the permissions of these roles, see [SQL Server Agent Fixed Database Roles](../../ssms/agent/sql-server-agent-fixed-database-roles.md).
+For details about the permissions of these roles, see [SQL Server Agent Fixed Database Roles](/ssms/agent/sql-server-agent-fixed-database-roles).
 
 The creator of the job step must have access to the proxy for the job step. Members of the **sysadmin** fixed server role have access to all proxies. Other users must be explicitly granted access to a proxy.
 
@@ -260,7 +260,7 @@ GO
 
 ## Related content
 
-- [View or Modify Jobs](../../ssms/agent/view-or-modify-jobs.md)
+- [View or Modify Jobs](/ssms/agent/view-or-modify-jobs)
 - [sp_add_job (Transact-SQL)](sp-add-job-transact-sql.md)
 - [sp_add_schedule (Transact-SQL)](sp-add-schedule-transact-sql.md)
 - [sp_delete_jobstep (Transact-SQL)](sp-delete-jobstep-transact-sql.md)

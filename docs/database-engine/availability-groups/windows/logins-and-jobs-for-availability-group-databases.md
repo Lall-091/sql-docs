@@ -56,11 +56,11 @@ For more information, see [Orphaned Users with Database Mirroring and Log Shippi
 
 - [Create a Login](../../../relational-databases/security/authentication-access/create-a-login.md)
 - [Create a database user](../../../relational-databases/security/authentication-access/create-a-database-user.md)
-- [Create a Job](../../../ssms/agent/create-a-job.md)
+- [Create a Job](/ssms/agent/create-a-job)
 - [Manage Metadata When Making a Database Available on Another Server](../../../relational-databases/databases/manage-metadata-when-making-a-database-available-on-another-server.md)
 
 ## Related content
 
 - [What is an Always On availability group?](overview-of-always-on-availability-groups-sql-server.md)
 - [Contained Databases](../../../relational-databases/databases/contained-databases.md)
-- [Create Jobs](../../../ssms/agent/create-jobs.md)
+- [Create Jobs](/ssms/agent/create-jobs)

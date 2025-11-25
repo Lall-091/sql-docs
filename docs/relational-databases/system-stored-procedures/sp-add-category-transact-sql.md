@@ -20,7 +20,7 @@ dev_langs:
 
 [!INCLUDE [SQL Server - ASDBMI](../../includes/applies-to-version/sql-asdbmi.md)]
 
-Adds the specified category of jobs, alerts, or operators to the server. For alternative method, see [Create a Job Category](../../ssms/agent/create-a-job-category.md).
+Adds the specified category of jobs, alerts, or operators to the server. For alternative method, see [Create a Job Category](/ssms/agent/create-a-job-category).
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 

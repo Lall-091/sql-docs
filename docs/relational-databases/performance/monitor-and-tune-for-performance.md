@@ -84,6 +84,6 @@ As the number of users increases, so does the competition for a server's resourc
 
 ## Related content
 
-- [Automated Administration Across an Enterprise](../../ssms/agent/automated-administration-across-an-enterprise.md)
+- [Automated Administration Across an Enterprise](/ssms/agent/automated-administration-across-an-enterprise)
 - [Compare and Analyze Execution Plans](compare-and-analyze-execution-plans.md)
 - [Display and save execution plans](display-and-save-execution-plans.md)

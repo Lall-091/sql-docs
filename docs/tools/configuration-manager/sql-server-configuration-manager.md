@@ -97,6 +97,6 @@ The SQL Server Configuration Manager also allows you to view information about f
 
 - [SQL Server Configuration Manager: Connect to another computer](../../database-engine/configure-windows/scm-services-connect-to-another-computer.md)
 - [Start, stop, pause, resume, and restart SQL Server services](../../database-engine/configure-windows/start-stop-pause-resume-restart-sql-server-services.md)
-- [Start, stop, or pause the SQL Server Agent service](../../ssms/agent/start-stop-or-pause-the-sql-server-agent-service.md)
+- [Start, stop, or pause the SQL Server Agent service](/ssms/agent/start-stop-or-pause-the-sql-server-agent-service)
 - [SQL Server Configuration Manager: Set an instance to start automatically](../../database-engine/configure-windows/scm-services-set-an-instance-to-start-automatically.md)
 - [SQL Server Configuration Manager: Prevent automatic startup of an instance](../../database-engine/configure-windows/scm-services-prevent-automatic-startup-of-an-instance.md)

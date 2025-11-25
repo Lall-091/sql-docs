@@ -50,4 +50,4 @@ After it displays a copyright message, **sqlagent** displays output in the comma
 
 ## Related content
 
-- [Automated Administration Tasks (SQL Server Agent)](../ssms/agent/automated-administration-tasks-sql-server-agent.md)
+- [Automated Administration Tasks (SQL Server Agent)](/ssms/agent/automated-administration-tasks-sql-server-agent)

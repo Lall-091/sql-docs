@@ -73,7 +73,7 @@ By default, only members of the **sysadmin** fixed server role or the **SQLAgent
 
 Other users, including members of **SQLAgentUserRole** and members of **SQLAgentReaderRole**, must explicitly be granted the EXECUTE permission on `sp_purge_jobhistory`. After being granted EXECUTE permission on this stored procedure, these users can only purge the history for jobs that they own.
 
-The **SQLAgentUserRole**, **SQLAgentReaderRole**, and **SQLAgentOperatorRole** fixed database roles are in the `msdb` database. For details about their permissions, see [SQL Server Agent Fixed Database Roles](../../ssms/agent/sql-server-agent-fixed-database-roles.md).
+The **SQLAgentUserRole**, **SQLAgentReaderRole**, and **SQLAgentOperatorRole** fixed database roles are in the `msdb` database. For details about their permissions, see [SQL Server Agent Fixed Database Roles](/ssms/agent/sql-server-agent-fixed-database-roles).
 
 ## Examples
 

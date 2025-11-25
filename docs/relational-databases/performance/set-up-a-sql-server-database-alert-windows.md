@@ -17,7 +17,7 @@ helpviewer_keywords:
 
 You can use Performance Monitor to create an alert that is raised when a Performance Monitor counter reaches a threshold value. In response to the alert, Performance Monitor can launch an application, such as a custom application written to handle the alert condition. For example, you can create an alert that is raised when the number of deadlocks exceeds a specific value.
 
-Alerts also can be defined by using [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] and [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent. For more information, see [Alerts](../../ssms/agent/alerts.md).
+Alerts also can be defined by using [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] and [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent. For more information, see [Alerts](/ssms/agent/alerts).
 
 ## Create a data collector set for a performance counter alert
 

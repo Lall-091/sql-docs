@@ -86,7 +86,7 @@ Other users must be granted one of the following [!INCLUDE [ssNoVersion](../../i
 
 The job owner can attach a job to a schedule and detach a job from a schedule without also having to be the schedule owner. However, a schedule can't be deleted if the detach would leave it with no jobs, unless the caller is the schedule owner.
 
-For details about the permissions of these roles, see [SQL Server Agent Fixed Database Roles](../../ssms/agent/sql-server-agent-fixed-database-roles.md).
+For details about the permissions of these roles, see [SQL Server Agent Fixed Database Roles](/ssms/agent/sql-server-agent-fixed-database-roles).
 
 [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] checks if the user owns both the job and the schedule.
 

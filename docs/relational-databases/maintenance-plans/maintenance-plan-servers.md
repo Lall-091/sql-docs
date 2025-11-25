@@ -22,7 +22,7 @@ A multiserver environment containing one master server and one or more target se
 
 ## See also
 
-- [Maintenance Plans](maintenance-plans.md)
-- [Create a Multiserver Environment](../../ssms/agent/create-a-multiserver-environment.md)
-- [Make a Master Server](../../ssms/agent/make-a-master-server.md)
-- [Make a Target Server](../../ssms/agent/make-a-target-server.md)
+- [Maintenance plans](maintenance-plans.md)
+- [Create a Multiserver Environment](/ssms/agent/create-a-multiserver-environment)
+- [Make a Master Server](/ssms/agent/make-a-master-server)
+- [Make a Target Server](/ssms/agent/make-a-target-server)

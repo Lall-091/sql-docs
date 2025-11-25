@@ -81,7 +81,7 @@ Performing backups on a secondary replica to offload the backup workload from th
 - [Configure backups on secondary replicas of an Always On availability group](configure-backup-on-availability-replicas-sql-server.md)
 - [sys.fn_hadr_backup_is_preferred_replica](../../../relational-databases/system-functions/sys-fn-hadr-backup-is-preferred-replica-transact-sql.md)
 - [Use the Maintenance Plan Wizard](../../../relational-databases/maintenance-plans/use-the-maintenance-plan-wizard.md)
-- [Implement Jobs](../../../ssms/agent/implement-jobs.md)
+- [Implement Jobs](/ssms/agent/implement-jobs)
 - [What is an Always On availability group?](overview-of-always-on-availability-groups-sql-server.md)
 - [Copy-only backups](../../../relational-databases/backup-restore/copy-only-backups-sql-server.md)
 - [CREATE AVAILABILITY GROUP (Transact-SQL)](../../../t-sql/statements/create-availability-group-transact-sql.md)

@@ -91,7 +91,7 @@ To get around the problem use the following procedure:
 ## Related content
 
 - [Restore the master database on Linux in single-user mode](../../linux/sql-server-linux-restore-master-database-in-single-user-mode.md)
-- [Start, Stop, or Pause the SQL Server Agent Service](../../ssms/agent/start-stop-or-pause-the-sql-server-agent-service.md)
+- [Start, Stop, or Pause the SQL Server Agent Service](/ssms/agent/start-stop-or-pause-the-sql-server-agent-service)
 - [Diagnostic connection for database administrators](diagnostic-connection-for-database-administrators.md)
 - [sqlcmd Utility](../../tools/sqlcmd/sqlcmd-utility.md)
 - [CHECKPOINT (Transact-SQL)](../../t-sql/language-elements/checkpoint-transact-sql.md)

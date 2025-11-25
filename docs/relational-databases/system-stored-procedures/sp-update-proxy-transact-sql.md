@@ -102,7 +102,7 @@ GO
 ## Related content
 
 - [SQL Server Agent stored procedures (Transact-SQL)](sql-server-agent-stored-procedures-transact-sql.md)
-- [Implement SQL Server Agent Security](../../ssms/agent/implement-sql-server-agent-security.md)
+- [Implement SQL Server Agent Security](/ssms/agent/implement-sql-server-agent-security)
 - [sp_add_proxy (Transact-SQL)](sp-add-proxy-transact-sql.md)
 - [sp_delete_proxy (Transact-SQL)](sp-delete-proxy-transact-sql.md)
 - [sp_grant_login_to_proxy (Transact-SQL)](sp-grant-login-to-proxy-transact-sql.md)

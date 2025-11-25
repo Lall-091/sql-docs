@@ -135,7 +135,7 @@ GO
 
 ## Related content
 
-- [Implement SQL Server Agent Security](../../ssms/agent/implement-sql-server-agent-security.md)
+- [Implement SQL Server Agent Security](/ssms/agent/implement-sql-server-agent-security)
 - [sp_revoke_proxy_from_subsystem (Transact-SQL)](sp-revoke-proxy-from-subsystem-transact-sql.md)
 - [sp_add_proxy (Transact-SQL)](sp-add-proxy-transact-sql.md)
 - [sp_delete_proxy (Transact-SQL)](sp-delete-proxy-transact-sql.md)

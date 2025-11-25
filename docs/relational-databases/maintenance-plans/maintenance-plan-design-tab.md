@@ -52,7 +52,7 @@ Display the **Reporting and Logging** dialog box, used to manage reports concern
 
 #### Servers
 
-Display the **Servers** dialog box, which is used to select the servers where the subplan tasks will run. This option is enabled only on master servers in multiserver environments. For more information, see [Create a Multiserver Environment](../../ssms/agent/create-a-multiserver-environment.md).
+Display the **Servers** dialog box, which is used to select the servers where the subplan tasks will run. This option is enabled only on master servers in multiserver environments. For more information, see [Create a Multiserver Environment](/ssms/agent/create-a-multiserver-environment).
 
 #### Name
 
