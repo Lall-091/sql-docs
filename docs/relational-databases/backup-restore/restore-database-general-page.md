@@ -15,7 +15,7 @@ f1_keywords:
 
 [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
-This article describes the various options found on the **General** page of the **Restore database** wizard in [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)]. The **General** page is used to specify information about the target and source databases for a database restore operation when you [restore a full database backup using SQL Server Management Studio](restore-a-database-backup-using-ssms.md) (SSMS). 
+This article describes the various options found on the **General** page of the **Restore database** wizard in [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)]. The **General** page is used to specify information about the target and source databases for a database restore operation when you [restore a full database backup using SQL Server Management Studio (SSMS)](restore-a-database-backup-using-ssms.md). 
 
 > [!NOTE]  
 > When you specify a restore task by using [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)], you can generate the corresponding [!INCLUDE [tsql](../../includes/tsql-md.md)] [RESTORE](../../t-sql/statements/restore-statements-transact-sql.md) script by selecting **Script** and then selecting a destination for the script.

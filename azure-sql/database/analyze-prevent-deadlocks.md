@@ -118,7 +118,7 @@ Learn more about each of these approaches in the [Prevent a deadlock from reoccu
 
 In this article, we use the `AdventureWorksLT` sample database to set up alerts for deadlocks, cause an example deadlock, analyze the deadlock graph for the example deadlock, and test changes to prevent the deadlock from reoccurring.
 
-We use the [SQL Server Management Studio](/ssms/install/install) (SSMS) client in this article, as it contains functionality to display deadlock graphs in an interactive visual mode. You can use other clients such as the [MSSQL extension for Visual Studio Code](/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code), [sqlcmd](/sql/tools/sqlcmd/sqlcmd-utility), or your favorite Transact-SQL querying tool to follow along with the examples, but you might only be able to view deadlock graphs as XML.
+We use the [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) client in this article, as it contains functionality to display deadlock graphs in an interactive visual mode. You can use other clients such as the [MSSQL extension for Visual Studio Code](/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code), [sqlcmd](/sql/tools/sqlcmd/sqlcmd-utility), or your favorite Transact-SQL querying tool to follow along with the examples, but you might only be able to view deadlock graphs as XML.
 
 ### Create the AdventureWorksLT database
 

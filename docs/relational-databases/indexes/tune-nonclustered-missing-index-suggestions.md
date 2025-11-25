@@ -50,7 +50,7 @@ The missing indexes feature consists of two components:
 
 [Execution plan overview](../performance/execution-plans.md) can be generated or obtained in multiple ways:
 
-- When writing or tuning a query, you can use [SQL Server Management Studio](/ssms/menu-help/about-sql-server-management-studio) (SSMS) to [display the estimated execution plan](../performance/display-the-estimated-execution-plan.md) without running the query, or execute the query and [display an actual execution plan](../performance/display-an-actual-execution-plan.md).
+- When writing or tuning a query, you can use [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) to [display the estimated execution plan](../performance/display-the-estimated-execution-plan.md) without running the query, or execute the query and [display an actual execution plan](../performance/display-an-actual-execution-plan.md).
 - [Monitor performance by using the Query Store](../performance/monitoring-performance-by-using-the-query-store.md), when enabled, collects execution plans.
 - You can identify cached execution plans by querying DMVs such as [sys.dm_exec_text_query_plan](../system-dynamic-management-views/sys-dm-exec-text-query-plan-transact-sql.md).
 

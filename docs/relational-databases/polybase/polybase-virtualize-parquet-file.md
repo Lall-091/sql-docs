@@ -25,7 +25,7 @@ For more information on data virtualization, see [Introducing data virtualizatio
 To use the S3-compatible object storage integration features, you need the following tools and resources:
 
 * Install the PolyBase feature for SQL Server.
-* [Install SQL Server Management Studio](/ssms/install/install) (SSMS).
+* Install [SQL Server Management Studio (SSMS)](/ssms/install/install).
 * S3-compatible storage.
 * An S3 bucket created. Buckets cannot be created or configured from SQL Server.
 * A user (`Access Key ID`) and the secret (`Secret Key ID`) and that user is known to you. You will need both to authenticate against the S3 object storage endpoint.

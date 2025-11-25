@@ -12,7 +12,7 @@ Some Transact-SQL code examples written for SQL Server need small changes to run
 - `server_` - *prefix for SQL Server and Azure SQL Managed Instance*
 - `database_` - *prefix for Azure SQL Database, SQL database in Fabric, and SQL Managed Instance*
 
-Azure SQL Database and SQL database in Fabric support only database-scoped event sessions. [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms) (SSMS) supports database-scoped event sessions for Azure SQL Database: an **Extended Events** node containing database-scoped sessions appears under each database in [Object Explorer](/ssms/object/object-explorer).
+Azure SQL Database and SQL database in Fabric support only database-scoped event sessions. [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) supports database-scoped event sessions for Azure SQL Database: an **Extended Events** node containing database-scoped sessions appears under each database in [Object Explorer](/ssms/object/object-explorer).
 
 Azure SQL Managed Instance supports both database-scoped sessions and server-scoped sessions. SSMS fully supports server-scoped sessions for SQL Managed Instance: an **Extended Events** node containing all server-scoped sessions appears under the **Management** folder for each managed instance in Object Explorer.
 

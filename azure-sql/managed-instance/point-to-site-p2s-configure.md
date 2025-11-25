@@ -17,7 +17,7 @@ ms.custom:
 
 [!INCLUDE [appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-This quickstart teaches you how to connect to Azure SQL Managed Instance by using [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS) from an on-premises client computer over a point-to-site connection. For information about point-to-site connections, see [About Point-to-Site VPN](/azure/vpn-gateway/point-to-site-about).
+This quickstart teaches you how to connect to Azure SQL Managed Instance by using [SQL Server Management Studio (SSMS)](/sql/ssms/sql-server-management-studio-ssms) from an on-premises client computer over a point-to-site connection. For information about point-to-site connections, see [About Point-to-Site VPN](/azure/vpn-gateway/point-to-site-about).
 
 ## Considerations
 

@@ -22,7 +22,7 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 
 [!INCLUDE [sqlserver2016-asdb-asdbmi-asa-pdw-fabricsqldb](../../includes/applies-to-version/sqlserver2016-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
-This article describes how to delete table columns in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] using [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms) (SSMS) or [!INCLUDE [tsql](../../includes/tsql-md.md)].
+This article describes how to delete table columns in [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] using [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-ssms) or [!INCLUDE [tsql](../../includes/tsql-md.md)].
 
 > [!CAUTION]  
 > When you delete a column from a table, the column and all the data it contains are deleted.
