@@ -44,6 +44,7 @@ The following table describes versions for the paths. \{nn} is the version value
 
 | Version | *nnn* | {nn} |
 | --- | --- | --- |
+| [!INCLUDE [ssqlv25](../../includes/sssql25-md.md)] | 170 | 17 |
 | [!INCLUDE [ssqlv22](../../includes/sssql22-md.md)] | 160 | 16 |
 | [!INCLUDE [ssqlv15](../../includes/sssql19-md.md)] | 150 | 15 |
 | [!INCLUDE [ssqlv14](../../includes/sssql17-md.md)] | 140 | 14 |
