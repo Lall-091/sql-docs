@@ -102,7 +102,7 @@ To grant a user the *Read* permission for a certificate stored in the local mach
 
 ## Creating Column Master Keys in Azure Key Vault
 
-Azure Key Vault helps safeguard cryptographic keys and secrets, and it is a convenient option for storing column master keys for Always Encrypted, especially if your applications are hosted in Azure. To create a key in [Azure Key Vault](/azure/key-vault/general/overview), you need an [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount) and an Azure Key Vault. A key can be stored in a key vault or in a [managed HSM](/azure/key-vault/managed-hsm/overview). To be a valid column master key, the key managed in Azure Key Vault must be an RSA key.
+Azure Key Vault helps safeguard cryptographic keys and secrets, and it is a convenient option for storing column master keys for Always Encrypted, especially if your applications are hosted in Azure. To create a key in [Azure Key Vault](/azure/key-vault/general/overview), you need an [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) and an Azure Key Vault. A key can be stored in a key vault or in a [managed HSM](/azure/key-vault/managed-hsm/overview). To be a valid column master key, the key managed in Azure Key Vault must be an RSA key.
 
 ### Using Azure CLI, Portal or PowerShell
 

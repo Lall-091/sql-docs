@@ -23,7 +23,7 @@ AKS is a managed Kubernetes service for deploying and managing container cluster
 
 ## Prerequisites
 
-- An Azure subscription. If you don't have an Azure subscription, you can create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount?WT.mc_id=A261C142F).
+- An Azure subscription. If you don't have an Azure subscription, you can create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 - [Create an AKS cluster](/azure/aks/kubernetes-walkthrough#create-aks-cluster).
 

@@ -79,7 +79,7 @@ Select the **Copilot** icon on the **Database migration** pane to open the Copil
 
 To use SQL Server migration in Azure Arc, you need the following prerequisites:
 
-- An active Azure subscription. If you don't have one, you can [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
+- An active Azure subscription. If you don't have one, you can [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - Your SQL Server instance must be [enabled by Azure Arc](overview.md) with the Azure extension for SQL Server version `1.1.3211.337` or later. You can upgrade your extension by using the [Azure portal](/azure/azure-arc/servers/manage-vm-extensions-portal#upgrade-extensions) or the [Azure CLI](/azure/azure-arc/servers/manage-vm-extensions-cli#upgrade-extensions).
 
 Before you start the migration process, make sure that you've prepared your environment for your [chosen migration method](#integrated-migration-methods): 

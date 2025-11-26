@@ -40,7 +40,7 @@ To complete this quickstart, you must have:
   - **Azure SQL Managed Instance:** If you need a fully managed SQL Server instance, create an Azure SQL Managed Instance. For more information, see [Quickstart: Create Azure SQL Managed Instance](/azure/azure-sql/managed-instance/instance-create-quickstart).
 
 > [!NOTE]  
-> If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
+> If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 ## Connect to a database instance
 
