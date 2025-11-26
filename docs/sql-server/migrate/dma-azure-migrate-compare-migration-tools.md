@@ -5,10 +5,10 @@ description: Compare SQL data migration tools to determine which tool best suits
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: randolphwest, maghan
-ms.date: 10/01/2025
+ms.date: 11/26/2025
 ms.service: sql
-ms.subservice: dma
-ms.topic: conceptual
+ms.subservice: migration-guide
+ms.topic: article
 helpviewer_keywords:
   - "migration, on-premises SQL Server"
 ---
