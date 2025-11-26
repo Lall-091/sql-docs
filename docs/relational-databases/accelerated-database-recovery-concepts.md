@@ -4,10 +4,10 @@ description: "Learn about accelerated database recovery (ADR), which redesigned 
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: wiassaf, derekw, randolphwest, dfurman
-ms.date: 05/01/2025
+ms.date: 11/26/2025
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: article
 ms.custom:
   - ignite-2025
 helpviewer_keywords:
@@ -145,11 +145,15 @@ The four key components of ADR are:
 
 ## Workloads that benefit from ADR
 
-ADR benefits most workloads, and is particularly beneficial for workloads that have: 
+ADR benefits most workloads by improving database availability, and is particularly beneficial for workloads that have:
 
 - Long-running transactions.
 - Active transactions that cause the transaction log to grow significantly.
 - Long periods of database unavailability due to long running recovery (such as from unexpected service restart or manual transaction rollback).
+
+The benefits of ADR require version storage and extra processing, which might introduce a performance overhead for certain workloads. For example, with write-intensive workloads generating many row versions, data pages might be split more often to accommodate the [in-row](sql-server-transaction-locking-and-row-versioning-guide.md#space-used-by-the-persistent-version-store-pvs) versions. Because all row versions are logged, the amount of generated transaction log can increase as well.
+
+For most workloads, the performance overhead of ADR ranges from not detectable to minor. In an optimal database management strategy, you balance the certain benefits of ADR against the potential performance overhead.
 
 ADR isn't supported in databases using [database mirroring](../database-engine/database-mirroring/database-mirroring-sql-server.md), an older and deprecated high availability feature.
 
@@ -158,8 +162,8 @@ ADR isn't supported in databases using [database mirroring](../database-engine/d
 - Avoid unnecessary long-running transactions. Though ADR speeds up database recovery even with long-running transactions, such transactions can delay version cleanup and increase PVS size.
 
 - Avoid large transactions that include DDL operations. ADR uses the secondary log stream (SLOG) mechanism to track DDL operations used in recovery. SLOG is only used while the transaction is active. SLOG is checkpointed, so avoiding large transactions that use SLOG can help the overall performance. These scenarios can cause the SLOG to take up more space:
-   - Many DDLs are executed in one transaction. For example, in one transaction, rapidly creating and dropping temp tables.
-   - A table has very large number of partitions/indexes that are modified. For example, a `DROP TABLE` operation on such table would require a large reservation of SLOG memory, which would delay truncation of the transaction log and delay undo/redo operations. As a workaround, drop the indexes individually and gradually, then drop the table.
+  - Many DDLs are executed in one transaction. For example, in one transaction, rapidly creating and dropping temp tables.
+  - A table has very large number of partitions/indexes that are modified. For example, a `DROP TABLE` operation on such table would require a large reservation of SLOG memory, which would delay truncation of the transaction log and delay undo/redo operations. As a workaround, drop the indexes individually and gradually, then drop the table.
 
    For more information about SLOG, see [ADR recovery components](#adr-recovery-components).
 
