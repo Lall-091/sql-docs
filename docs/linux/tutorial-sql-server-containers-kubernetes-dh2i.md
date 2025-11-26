@@ -240,7 +240,7 @@ For more information about DxEnterprise, see [DH2i DxEnterprise](https://dh2i.co
 
 ## Prerequisites
 
-- To deploy Azure Kubernetes Service, you must have an [Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount). A two-node cluster is a good starting point for this tutorial.
+- To deploy Azure Kubernetes Service, you must have an [Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn). A two-node cluster is a good starting point for this tutorial.
 
 - [Create an Azure container registry using the Azure portal](/azure/container-registry/container-registry-get-started-portal). This registry is used in our deployment scripts to retrieve the custom image and deploy the containers to Azure Kubernetes. Instead of Azure Container Registry (ACR), you could use your preferred container registry to push the custom container images.
 

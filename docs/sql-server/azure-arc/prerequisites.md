@@ -21,7 +21,7 @@ If your SQL Server virtual machines are on VMware clusters, review [Support on V
 
 Before you can Arc-enable an instance of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)], you need to:
 
-- Have an Azure account with an active subscription. If needed, [create a free Azure Account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
+- Have an Azure account with an active subscription. If needed, [create a free Azure Account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - Verify [Arc connected machine agent prerequisites](/azure/azure-arc/servers/prerequisites).  The Arc agent must be running in the typical 'full' mode.
 - Verify [Arc connected machine agent network requirements](/azure/azure-arc/servers/network-requirements).
 - Open firewall to [Azure Arc data processing service](#connect-to-azure-arc-data-processing-service).

@@ -30,7 +30,7 @@ This quickstart uses the following command line tools to manage the cluster.
 
 ### [Kubernetes](#tab/kubectl)
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount?WT.mc_id=A261C142F).
+- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 - A Kubernetes cluster. For more information on creating and connecting to a Kubernetes cluster in AKS with `kubectl`, see [Deploy an Azure Kubernetes Service (AKS) cluster](/azure/aks/tutorial-kubernetes-deploy-cluster).
 
@@ -41,7 +41,7 @@ This quickstart uses the following command line tools to manage the cluster.
 
 ### [OpenShift](#tab/oc)
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount?WT.mc_id=A261C142F).
+- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 - An OpenShift cluster. For more information on creating and connecting to an Azure Red Hat OpenShift cluster with `oc`, see [Tutorial: Create an Azure Red Hat OpenShift 4 cluster](/azure/openshift/tutorial-create-cluster).
 

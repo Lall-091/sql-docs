@@ -20,7 +20,7 @@ In this article, you'll verify the integrity of the data in your ledger tables. 
 
 ## Prerequisites
 
-- Have an active Azure subscription if you're using Azure SQL Database or Azure SQL Managed Instance. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
+- Have an active Azure subscription if you're using Azure SQL Database or Azure SQL Managed Instance. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - [Create and use updatable ledger tables](ledger-how-to-updatable-ledger-tables.md) or [create and use append-only ledger tables](ledger-how-to-append-only-ledger-tables.md).
 - [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms).
 - The database option [ALLOW_SNAPSHOT_ISOLATION](../../../t-sql/statements/alter-database-transact-sql-set-options.md) has to be enabled on the database before you can run the verification stored procedures.

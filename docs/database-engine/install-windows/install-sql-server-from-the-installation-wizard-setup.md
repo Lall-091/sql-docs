@@ -1013,7 +1013,7 @@ To authenticate the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] i
 If you don't already have an Azure account, select the **Start free** button to begin the Azure sign-up experience. This option takes you to the <https://azure.microsoft.com/free> page, where you can register for a free account and receive credits, if eligible, to explore and use a wide range of Azure services, including capabilities such as [Azure Arc enabling SQL Server](https://aka.ms/arc-sql-server).
 
 > [!NOTE]  
-> For more information on Azure account types, and guidance on selecting the best option for your needs, visit the [Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account) page. This resource will help you get started with creating, deploying, and managing applications across multiple clouds, on-premises, and at the edge using scalable and cost-effective Azure services.
+> For more information on Azure account types, and guidance on selecting the best option for your needs, visit the [Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) page. This resource will help you get started with creating, deploying, and managing applications across multiple clouds, on-premises, and at the edge using scalable and cost-effective Azure services.
 
 To sign in with your Azure account, select **Use Azure Login**. Windows might prompt you to add one or more sites to the Trusted sites zone. Follow your organization's security requirements. After you sign in to Azure, proceed to provide the additional registration information.
 

@@ -26,7 +26,7 @@ With LRS, you can migrate your SQL Server databases to Azure SQL Managed Instanc
 
 To migrate your SQL Server databases to Azure SQL Managed Instance through the Azure portal, you need the following prerequisites:
 
-- An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
+- An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - A [supported](#supported-sql-server-versions) instance of SQL Server [enabled by Azure Arc](overview.md) with the Azure extension for SQL Server version `1.1.3211.337` or later. You can upgrade your extension by using the [Azure portal](/azure/azure-arc/servers/manage-vm-extensions-portal#upgrade-extensions) or the [Azure CLI](/azure/azure-arc/servers/manage-vm-extensions-cli#upgrade-extensions).
 
 ## Supported SQL Server versions
