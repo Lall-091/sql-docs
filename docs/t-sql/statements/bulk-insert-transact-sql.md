@@ -4,7 +4,7 @@ description: Transact-SQL reference for the BULK INSERT statement.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest, wiassaf
-ms.date: 09/22/2025
+ms.date: 11/26/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -24,7 +24,7 @@ helpviewer_keywords:
   - "file importing [SQL Server]"
 dev_langs:
   - "TSQL"
-monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
+monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric"
 ---
 # BULK INSERT (Transact-SQL)
 
@@ -36,6 +36,8 @@ Imports a data file into a database table or view in a user-specified format in 
 
 ## Syntax
 
+::: moniker range="=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+
 ```syntaxsql
 BULK INSERT
    { database_name.schema_name.table_or_view_name | schema_name.table_or_view_name | table_or_view_name }
@@ -46,7 +48,7 @@ BULK INSERT
 
    -- text formatting options
    [ [ , ] CODEPAGE = { 'RAW' | 'code_page' | 'ACP' | 'OEM' } ]
-   [ [ , ] DATAFILETYPE = { 'char' | 'native' | 'widechar' | 'widenative' } ]
+   [ [ , ] DATAFILETYPE = { 'char' | 'widechar' | 'native' | 'widenative' } ]
    [ [ , ] ROWTERMINATOR = 'row_terminator' ]
    [ [ , ] FIELDTERMINATOR = 'field_terminator' ]
    [ [ , ] FORMAT = 'CSV' ]
@@ -74,11 +76,47 @@ BULK INSERT
    -- source options
    [ [ , ] ORDER ( { column [ ASC | DESC ] } [ , ...n ] ) ]
    [ [ , ] ROWS_PER_BATCH = rows_per_batch ]
-   [ [ , ] KILOBYTES_PER_BATCH = kilobytes_per_batch
+   [ [ , ] KILOBYTES_PER_BATCH = kilobytes_per_batch ]
    [ [ , ] BATCHSIZE = batch_size ]
 
     ) ]
 ```
+
+::: moniker-end
+::: moniker range="=fabric"
+
+```syntaxsql
+BULK INSERT
+   { database_name.schema_name.table_or_view_name | schema_name.table_or_view_name | table_or_view_name }
+      FROM 'data_file'
+     [ WITH
+    (
+   [ [ , ] DATA_SOURCE = 'data_source_name' ]
+
+   -- text formatting options
+   [ [ , ] CODEPAGE = { 'code_page' | 'ACP' } ]
+   [ [ , ] DATAFILETYPE = { 'char' | 'widechar' } ]
+   [ [ , ] ROWTERMINATOR = 'row_terminator' ]
+   [ [ , ] FIELDTERMINATOR = 'field_terminator' ]
+   [ [ , ] FORMAT = { 'CSV' | 'PARQUET' } ]
+   [ [ , ] FIELDQUOTE = 'quote_characters' ]
+
+   [ [ , ] FIRSTROW = first_row ]
+   [ [ , ] LASTROW = last_row ]
+
+   -- input file format options
+   [ [ , ] FORMATFILE = 'format_file_path' ]
+   [ [ , ] FORMATFILE_DATA_SOURCE = 'data_source_name' ]
+
+   -- error handling options
+   [ [ , ] MAXERRORS = max_errors ]
+   [ [ , ] ERRORFILE = 'file_name' ]
+   [ [ , ] ERRORFILE_DATA_SOURCE = 'errorfile_data_source_name' ]
+
+    ) ]
+```
+
+::: moniker-end
 
 ## Arguments
 
@@ -86,7 +124,7 @@ The `BULK INSERT` statement has different arguments and options in different pla
 
 | Feature | SQL Server | Azure SQL Database and Azure SQL Managed Instance | Fabric Data Warehouse |
 | --- | --- |
-| Data source | Local path, Network path (UNC), or Azure Storage | Azure Storage | Azure Storage |
+| Data source | Local path, Network path (UNC), or Azure Storage | Azure Storage | Azure Storage, One Lake |
 | Source authentication | Windows authentication, SAS | Microsoft Entra ID, SAS token, managed identity | Microsoft Entra ID |
 | Unsupported options | `*` wildcards in path | `*` wildcards in path | `DATA_SOURCE`, `FORMATFILE_DATA_SOURCE`, `ERRORFILE`, `ERRORFILE_DATA_SOURCE` |
 | Enabled options but without effect | | | `KEEPIDENTITY`, `FIRE_TRIGGERS`, `CHECK_CONSTRAINTS`, `TABLOCK`, `ORDER`, `ROWS_PER_BATCH`, `KILOBYTES_PER_BATCH`, and `BATCHSIZE` aren't applicable. They don't throw a syntax error, but they don't have any effect |
@@ -138,23 +176,6 @@ FROM 'https://<data-lake>.blob.core.windows.net/public/curated/covid-19/bing_cov
 > [!NOTE]  
 > Replace `<data-lake>.blob.core.windows.net` with an appropriate URL.
 
-#### BATCHSIZE = *batch_size*
-
-Specifies the number of rows in a batch. Each batch is copied to the server as one transaction. If this fails, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] commits or rolls back the transaction for every batch. By default, all data in the specified data file is one batch. For information about performance considerations, see [Performance considerations](#performance-considerations) later in this article.
-
-#### CHECK_CONSTRAINTS
-
-Specifies that all constraints on the target table or view must be checked during the bulk-import operation. Without the `CHECK_CONSTRAINTS` option, any `CHECK` and `FOREIGN KEY` constraints are ignored, and after the operation, the constraint on the table is marked as not-trusted.
-
-`UNIQUE` and `PRIMARY KEY` constraints are always enforced. When importing into a character column that is defined with a `NOT NULL` constraint, `BULK INSERT` inserts a blank string when there's no value in the text file.
-
-At some point, you must examine the constraints on the whole table. If the table was non-empty before the bulk-import operation, the cost of revalidating the constraint might exceed the cost of applying `CHECK` constraints to the incremental data.
-
-A situation in which you might want constraints disabled (the default behavior) is if the input data contains rows that violate constraints. With `CHECK` constraints disabled, you can import the data and then use [!INCLUDE [tsql](../../includes/tsql-md.md)] statements to remove the invalid data.
-
-> [!NOTE]  
-> The `MAXERRORS` option doesn't apply to constraint checking.
-
 #### CODEPAGE = { 'ACP' | 'OEM' | 'RAW' | '*code_page*' }
 
 Specifies the code page of the data in the data file. `CODEPAGE` is relevant only if the data contains **char**, **varchar**, or **text** columns with character values greater than `127` or less than `32`. For an example, see [Specify a code page](#d-specify-a-code-page).
@@ -179,7 +200,7 @@ You should specify a collation name for each column in a [format file](../../rel
 | `RAW` | No conversion from one code page to another occurs. `RAW` is the fastest option. |
 | *code_page* | Specific code page number, for example, 850.<br /><br />Versions before [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] don't support code page 65001 (UTF-8 encoding). |
 
-#### DATAFILETYPE = { 'char' | 'native' | 'widechar' | 'widenative' }
+#### DATAFILETYPE = { 'char' | 'widechar' | 'native' | 'widenative' }
 
 Specifies that `BULK INSERT` performs the import operation using the specified data-file type value.
 
@@ -192,12 +213,24 @@ WITH (DATAFILETYPE = 'char', FIRSTROW = 2);
 > [!NOTE]  
 > Replace `<data-lake>.blob.core.windows.net` with an appropriate URL.
 
+::: moniker range="=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+
 | `DATAFILETYPE` value | All data represented in |
 | --- | --- |
-| `char` (default) | Character format.<br /><br />For more information, see [Use character format to import or export data (SQL Server)](../../relational-databases/import-export/use-character-format-to-import-or-export-data-sql-server.md). |
-| `native` | Native (database) data types. Create the native data file by bulk importing data from [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] using the **bcp** utility.<br /><br />The native value offers a higher performance alternative to the char value. Native format is recommended when you bulk transfer data between multiple instances of SQL Server using a data file that doesn't contain any extended/double-byte character set (DBCS) characters.<br /><br />For more information, see [Use native format to import or export data (SQL Server)](../../relational-databases/import-export/use-native-format-to-import-or-export-data-sql-server.md). |
-| `widechar` | Unicode characters.<br /><br />For more information, see [Use Unicode character format to import or export data (SQL Server)](../../relational-databases/import-export/use-unicode-character-format-to-import-or-export-data-sql-server.md). |
-| `widenative` | Native (database) data types, except in **char**, **varchar**, and **text** columns, in which data is stored as Unicode. Create the `widenative` data file by bulk importing data from [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] using the **bcp** utility.<br /><br />The `widenative` value offers a higher performance alternative to `widechar`. If the data file contains [!INCLUDE [vcpransi](../../includes/vcpransi-md.md)] extended characters, specify `widenative`.<br /><br />For more information, see [Use Unicode Native Format to Import or Export Data (SQL Server)](../../relational-databases/import-export/use-unicode-native-format-to-import-or-export-data-sql-server.md). |
+| `char` (default) | Character format.<br /><br />For more information, see [Use character format to import or export data](../../relational-databases/import-export/use-character-format-to-import-or-export-data-sql-server.md). |
+| `widechar` | Unicode characters.<br /><br />For more information, see [Use Unicode character format to import or export data](../../relational-databases/import-export/use-unicode-character-format-to-import-or-export-data-sql-server.md). |
+| `native` | Native (database) data types. Create the native data file by bulk importing data from [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] using the **bcp** utility.<br /><br />The native value offers a higher performance alternative to the char value. Native format is recommended when you bulk transfer data between multiple instances of SQL Server using a data file that doesn't contain any extended/double-byte character set (DBCS) characters.<br /><br />For more information, see [Use native format to import or export data](../../relational-databases/import-export/use-native-format-to-import-or-export-data-sql-server.md). |
+| `widenative` | Native (database) data types, except in **char**, **varchar**, and **text** columns, in which data is stored as Unicode. Create the `widenative` data file by bulk importing data from [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] using the **bcp** utility.<br /><br />The `widenative` value offers a higher performance alternative to `widechar`. If the data file contains [!INCLUDE [vcpransi](../../includes/vcpransi-md.md)] extended characters, specify `widenative`.<br /><br />For more information, see [Use Unicode Native Format to Import or Export Data](../../relational-databases/import-export/use-unicode-native-format-to-import-or-export-data-sql-server.md). |
+
+::: moniker-end
+::: moniker range="=fabric"
+
+| `DATAFILETYPE` value | All data represented in |
+| --- | --- |
+| `char` (default) | Character format.<br /><br />For more information, see [Use character format to import or export data](../../relational-databases/import-export/use-character-format-to-import-or-export-data-sql-server.md). |
+| `widechar` | Unicode characters.<br /><br />For more information, see [Use Unicode character format to import or export data](../../relational-databases/import-export/use-unicode-character-format-to-import-or-export-data-sql-server.md). |
+
+::: moniker-end
 
 #### DATA_SOURCE = '*data_source_name*'
 
@@ -220,6 +253,12 @@ BULK INSERT bing_covid_19_data
 FROM 'curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.csv'
 WITH (DATA_SOURCE = '<data-lake>', FIRSTROW = 2, LASTROW = 100, FIELDTERMINATOR = ',');
 ```
+
+#### MAXERRORS = *max_errors*
+
+Specifies the maximum number of syntax errors allowed in the data before the bulk-import operation is canceled. Each row that can't be imported by the bulk-import operation is ignored and counted as one error. If *max_errors* isn't specified, the default is 10.
+
+The `MAX_ERRORS` option doesn't apply to constraint checks or to converting **money** and **bigint** data types.
 
 #### ERRORFILE = '*error_file_path*'
 
@@ -250,41 +289,53 @@ WITH (FIRSTROW = 2);
 
 The `FIRSTROW` attribute isn't intended to skip column headers. The `BULK INSERT` statement doesn't support skipping headers. If you choose to skip rows, the [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)] looks only at the field terminators, and doesn't validate the data in the fields of skipped rows.
 
-#### FIRE_TRIGGERS
+#### LASTROW = *last_row*
 
-Specifies that any insert triggers defined on the destination table execute during the bulk-import operation. If triggers are defined for `INSERT` operations on the target table, they're fired for every completed batch.
-
-If `FIRE_TRIGGERS` isn't specified, no insert triggers execute.
+Specifies the number of the last row to load. The default is 0, which indicates the last row in the specified data file.
 
 #### FORMATFILE_DATA_SOURCE = '*data_source_name*'
 
 **Applies to:** [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and later versions.
 
 Specifies a named external data source pointing to the Azure Blob Storage location of the format file to define the schema of imported data. The external data source must be created using the `TYPE = BLOB_STORAGE` option added in [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)]. For more information, see [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md).
+::: moniker range="=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
+
+#### BATCHSIZE = *batch_size*
+
+Specifies the number of rows in a batch. Each batch is copied to the server as one transaction. If this fails, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] commits or rolls back the transaction for every batch. By default, all data in the specified data file is one batch. For information about performance considerations, see [Performance considerations](#performance-considerations) later in this article.
+
+#### CHECK_CONSTRAINTS
+
+Specifies that all constraints on the target table or view must be checked during the bulk-import operation. Without the `CHECK_CONSTRAINTS` option, any `CHECK` and `FOREIGN KEY` constraints are ignored, and after the operation, the constraint on the table is marked as not-trusted.
+
+`UNIQUE` and `PRIMARY KEY` constraints are always enforced. When importing into a character column that is defined with a `NOT NULL` constraint, `BULK INSERT` inserts a blank string when there's no value in the text file.
+
+At some point, you must examine the constraints on the whole table. If the table was non-empty before the bulk-import operation, the cost of revalidating the constraint might exceed the cost of applying `CHECK` constraints to the incremental data.
+
+A situation in which you might want constraints disabled (the default behavior) is if the input data contains rows that violate constraints. With `CHECK` constraints disabled, you can import the data and then use [!INCLUDE [tsql](../../includes/tsql-md.md)] statements to remove the invalid data.
+
+> [!NOTE]  
+> The `MAXERRORS` option doesn't apply to constraint checking.
+
+#### FIRE_TRIGGERS
+
+Specifies that any insert triggers defined on the destination table execute during the bulk-import operation. If triggers are defined for `INSERT` operations on the target table, they're fired for every completed batch.
+
+If `FIRE_TRIGGERS` isn't specified, no insert triggers execute.
 
 #### KEEPIDENTITY
 
 Specifies that identity value or values in the imported data file are to be used for the identity column. If `KEEPIDENTITY` isn't specified, the identity values for this column are verified but not imported and [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] automatically assigns unique values based on the seed and increment values specified during table creation. If the data file doesn't contain values for the identity column in the table or view, use a format file to specify that the identity column in the table or view is to be skipped when importing data; [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] automatically assigns unique values for the column. For more information, see [DBCC CHECKIDENT](../database-console-commands/dbcc-checkident-transact-sql.md).
 
-For more information, see about keeping identify values see [Keep identity values when bulk importing data (SQL Server)](../../relational-databases/import-export/keep-identity-values-when-bulk-importing-data-sql-server.md).
+For more information, see about keeping identify values see [Keep identity values when bulk importing data](../../relational-databases/import-export/keep-identity-values-when-bulk-importing-data-sql-server.md).
 
 #### KEEPNULLS
 
-Specifies that empty columns should retain a null value during the bulk-import operation, instead of having any default values for the columns inserted. For more information, see [Keep nulls or default values during bulk import (SQL Server)](../../relational-databases/import-export/keep-nulls-or-use-default-values-during-bulk-import-sql-server.md).
+Specifies that empty columns should retain a null value during the bulk-import operation, instead of having any default values for the columns inserted. For more information, see [Keep nulls or default values during bulk import](../../relational-databases/import-export/keep-nulls-or-use-default-values-during-bulk-import-sql-server.md).
 
 #### KILOBYTES_PER_BATCH = *kilobytes_per_batch*
 
 Specifies the approximate number of kilobytes (KB) of data per batch as *kilobytes_per_batch*. By default, `KILOBYTES_PER_BATCH` is unknown. For information about performance considerations, see [Performance considerations](#performance-considerations) later in this article.
-
-#### LASTROW = *last_row*
-
-Specifies the number of the last row to load. The default is 0, which indicates the last row in the specified data file.
-
-#### MAXERRORS = *max_errors*
-
-Specifies the maximum number of syntax errors allowed in the data before the bulk-import operation is canceled. Each row that can't be imported by the bulk-import operation is ignored and counted as one error. If *max_errors* isn't specified, the default is 10.
-
-The MAX_ERRORS option doesn't apply to constraint checks or to converting **money** and **bigint** data types.
 
 #### ORDER ( { *column* [ ASC | DESC ] } [ ,... *n* ] )
 
@@ -303,6 +354,8 @@ By default, all the data in the data file is sent to the server as a single tran
 Specifies that a table-level lock is acquired for the duration of the bulk-import operation. A table can be loaded concurrently by multiple clients if the table has no indexes and `TABLOCK` is specified. By default, locking behavior is determined by the table option **table lock on bulk load**. Holding a lock for the duration of the bulk-import operation reduces lock contention on the table, in some cases can significantly improve performance. For information about performance considerations, see [Performance considerations](#performance-considerations) later in this article.
 
 For a columnstore index, the locking behavior is different because it's internally divided into multiple rowsets. Each thread loads data exclusively into each rowset by taking an exclusive (X) lock on the rowset allowing parallel data load with concurrent data load sessions. The use of `TABLOCK` option causes the thread to take an exclusive lock on the table (unlike the bulk update (BU) lock for traditional rowsets) which prevents other concurrent threads from loading data concurrently.
+
+::: moniker-end
 
 ### Input file format options
 
@@ -331,13 +384,13 @@ Specifies the full path of a format file. A format file describes the data file 
 - The data file contains greater or fewer columns than the table or view.
 - The columns are in a different order.
 - The column delimiters vary.
-- There are other changes in the data format. Format files are typically created by using the **bcp** utility and modified with a text editor as needed. For more information, see [bcp Utility](../../tools/bcp-utility.md) and [Create a format file with bcp (SQL Server)](../../relational-databases/import-export/create-a-format-file-sql-server.md).
+- There are other changes in the data format. Format files are typically created by using the **bcp** utility and modified with a text editor as needed. For more information, see [bcp Utility](../../tools/bcp-utility.md) and [Create a format file with bcp](../../relational-databases/import-export/create-a-format-file-sql-server.md).
 
 Beginning with [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)], and in Azure SQL Database, `format_file_path` can be in Azure Blob Storage.
 
 #### FIELDTERMINATOR = '*field_terminator*'
 
-Specifies the field terminator to be used for **char** and **widechar** data files. The default field terminator is `\t` (tab character). For more information, see [Specify field and row terminators (SQL Server)](../../relational-databases/import-export/specify-field-and-row-terminators-sql-server.md).
+Specifies the field terminator to be used for **char** and **widechar** data files. The default field terminator is `\t` (tab character). For more information, see [Specify field and row terminators](../../relational-databases/import-export/specify-field-and-row-terminators-sql-server.md).
 
 ```sql
 BULK INSERT bing_covid_19_data
@@ -350,7 +403,7 @@ WITH (FIELDTERMINATOR = ',', FIRSTROW = 2);
 
 #### ROWTERMINATOR = '*row_terminator*'
 
-Specifies the row terminator to be used for **char** and **widechar** data files. The default row terminator is `\r\n` (newline character). For more information, see [Specify field and row terminators (SQL Server)](../../relational-databases/import-export/specify-field-and-row-terminators-sql-server.md).
+Specifies the row terminator to be used for **char** and **widechar** data files. The default row terminator is `\r\n` (newline character). For more information, see [Specify field and row terminators](../../relational-databases/import-export/specify-field-and-row-terminators-sql-server.md).
 
 ## Compatibility
 
@@ -367,7 +420,7 @@ The string-to-decimal data type conversions used in `BULK INSERT` follow the sam
 
 To work around this behavior, use a format file to bulk import scientific notation **float** data into a decimal column. In the format file, explicitly describe the column as **real** or **float** data. For more information about these data types, see [float and real](../data-types/float-and-real-transact-sql.md).
 
-Format files represent **real** data as the **SQLFLT4** data type and **float** data as the **SQLFLT8** data type. For information about non-XML format files, see [Specify file storage type using bcp (SQL Server)](../../relational-databases/import-export/specify-file-storage-type-by-using-bcp-sql-server.md).
+Format files represent **real** data as the **SQLFLT4** data type and **float** data as the **SQLFLT8** data type. For information about non-XML format files, see [Specify file storage type using bcp](../../relational-databases/import-export/specify-file-storage-type-by-using-bcp-sql-server.md).
 
 #### Example of importing a numeric value that uses scientific notation
 
@@ -430,7 +483,7 @@ To bulk export or import SQLXML data, use one of the following data types in you
 
 ## Remarks
 
-For a comparison of the `BULK INSERT` statement, the `INSERT ... SELECT * FROM OPENROWSET(BULK...)` statement, and the `bcp` command, see [Bulk Import and Export of Data (SQL Server)](../../relational-databases/import-export/bulk-import-and-export-of-data-sql-server.md).
+For a comparison of the `BULK INSERT` statement, the `INSERT ... SELECT * FROM OPENROWSET(BULK...)` statement, and the `bcp` command, see [Bulk Import and Export of Data](../../relational-databases/import-export/bulk-import-and-export-of-data-sql-server.md).
 
 For information about preparing data for bulk import, see [Prepare data for bulk export or import](../../relational-databases/import-export/prepare-data-for-bulk-export-or-import-sql-server.md).
 
@@ -474,7 +527,7 @@ To resolve this error, use [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md
 
 For more information about this and other security considerations for using `BULK INSERT`, see [Use BULK INSERT or OPENROWSET(BULK...) to import data to SQL Server](../../relational-databases/import-export/import-bulk-data-by-using-bulk-insert-or-openrowset-bulk-sql-server.md).
 
-When importing from Azure Blob Storage and the data isn't public (anonymous access), create a [DATABASE SCOPED CREDENTIAL](create-database-scoped-credential-transact-sql.md) based on a SAS key encrypted with a [MASTER KEY](create-master-key-transact-sql.md), and then create an [external database source](create-external-data-source-transact-sql.md) for use in your `BULK INSERT` command.
+When importing from Azure Blob Storage and the data isn't public (anonymous access), create a [DATABASE SCOPED CREDENTIAL](create-database-scoped-credential-transact-sql.md) based on a SAS key encrypted with a [database master key](create-master-key-transact-sql.md) (DMK), and then create an [external database source](create-external-data-source-transact-sql.md) for use in your `BULK INSERT` command.
 
 Alternatively, create a [DATABASE SCOPED CREDENTIAL](create-database-scoped-credential-transact-sql.md) based on `MANAGED IDENTITY` to authorize requests for data access in non-public storage accounts. When using `MANAGED IDENTITY`, Azure storage must grant permissions to the managed identity of the instance by adding the **Storage Blob Data Contributor** built-in Azure role-based access control (RBAC) role that provides read/write access to the managed identity for the necessary Azure Blob Storage containers. Azure SQL Managed Instance have a system assigned managed identity, and can also have one or more user-assigned managed identities. You can use either system-assigned managed identities or user-assigned managed identities to authorize the requests. For authorization, the `default` identity of the managed instance would be used (that is, the primary user-assigned managed identity, or system-assigned managed identity if user-assigned managed identity isn't specified). For an example, see [Import data from a file in Azure Blob Storage](#f-import-data-from-a-file-in-azure-blob-storage).
 
@@ -586,19 +639,22 @@ WITH (
 
 ### F. Import data from a file in Azure Blob Storage
 
-The following example shows how to load data from a CSV file in an Azure Blob Storage location on which you've created a Shared Access Signature (SAS). The Azure Blob Storage location is configured as an external data source, which requires a database scoped credential using a SAS key that's encrypted using a master key in the user database.
+The following example shows how to load data from a CSV file in an Azure Blob Storage location on which you've created a Shared Access Signature (SAS). The Azure Blob Storage location is configured as an external data source, which requires a database scoped credential using a SAS key that's encrypted using a DMK in the user database.
+
+> [!NOTE]  
+> Make sure that you don't have a leading `?` in the SAS token, and that you have at least read permission on the object that should be loaded `srt=o&sp=r`, and that expiration period is valid (all dates are in UTC time).
 
 ```sql
---> Optional - a MASTER KEY is not required if a DATABASE SCOPED CREDENTIAL is not required because the blob is configured for public (anonymous) access!
+--> Optional - a DMK is not required if a DATABASE SCOPED CREDENTIAL is not required because the blob is configured for public (anonymous) access!
 CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>';
 GO
 
 --> Optional - a DATABASE SCOPED CREDENTIAL is not required because the blob is configured for public (anonymous) access!
 CREATE DATABASE SCOPED CREDENTIAL MyAzureBlobStorageCredential
     WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = '******srt=sco&sp=rwac&se=2017-02-01T00:55:34Z&st=2016-12-29T16:55:34Z***************';
--- NOTE: Make sure that you don't have a leading ? in SAS token, and
+-- NOTE: Make sure that you don't have a leading `?` in the SAS token, and
 -- that you have at least read permission on the object that should be loaded srt=o&sp=r, and
--- that expiration period is valid (all dates are in UTC time)
+-- that expiration period is valid (all dates are in UTC time).
 
 CREATE EXTERNAL DATA SOURCE MyAzureBlobStorage
 WITH (
@@ -624,7 +680,7 @@ GO
 CREATE DATABASE SCOPED CREDENTIAL MyAzureBlobStorageCredential
     WITH IDENTITY = 'Managed Identity';
 
--- NOTE: Make sure you have granted Storage Bob Data Contributor RBAC on storage to provides read/write access to the managed identity for the necessary Azure Blob Storage containers.
+-- NOTE: Make sure you grant Storage Blob Data Contributor RBAC on storage to provide read/write access to the managed identity for the necessary Azure Blob Storage containers.
 CREATE EXTERNAL DATA SOURCE MyAzureBlobStorage
 WITH (
     TYPE = BLOB_STORAGE,
@@ -643,7 +699,7 @@ WITH (DATA_SOURCE = 'MyAzureBlobStorage');
 
 ### G. Import data from a file in Azure Blob Storage and specify an error file
 
-The following example shows how to load data from a CSV file in an Azure Blob Storage location, which is configured as an external data source, and also specifying an error file. You need a database scoped credential using a shared access signature. If running on Azure SQL Database, `ERRORFILE` option should be accompanied by `ERRORFILE_DATA_SOURCE` otherwise the import might fail with permissions error. The file specified in `ERRORFILE` shouldn't exist in the container.
+The following example shows how to load data from a CSV file in an Azure Blob Storage location, which is configured as an external data source, and also specifying an error file. You need a database scoped credential using a shared access signature. If running on Azure SQL Database, `ERRORFILE` option should be accompanied by `ERRORFILE_DATA_SOURCE`, otherwise the import might fail with permissions error. The file specified in `ERRORFILE` shouldn't exist in the container.
 
 ```sql
 BULK INSERT Sales.Invoices
@@ -662,17 +718,17 @@ For complete `BULK INSERT` examples including configuring the credential and ext
 
 Other `BULK INSERT` examples are provided in the following articles:
 
-- [Examples of bulk import and export of XML documents (SQL Server)](../../relational-databases/import-export/examples-of-bulk-import-and-export-of-xml-documents-sql-server.md)
-- [Keep identity values when bulk importing data (SQL Server)](../../relational-databases/import-export/keep-identity-values-when-bulk-importing-data-sql-server.md)
-- [Keep nulls or default values during bulk import (SQL Server)](../../relational-databases/import-export/keep-nulls-or-use-default-values-during-bulk-import-sql-server.md)
-- [Specify field and row terminators (SQL Server)](../../relational-databases/import-export/specify-field-and-row-terminators-sql-server.md)
-- [Use a format file to bulk import data (SQL Server)](../../relational-databases/import-export/use-a-format-file-to-bulk-import-data-sql-server.md)
-- [Use character format to import or export data (SQL Server)](../../relational-databases/import-export/use-character-format-to-import-or-export-data-sql-server.md)
-- [Use native format to import or export data (SQL Server)](../../relational-databases/import-export/use-native-format-to-import-or-export-data-sql-server.md)
-- [Use Unicode character format to import or export data (SQL Server)](../../relational-databases/import-export/use-unicode-character-format-to-import-or-export-data-sql-server.md)
-- [Use Unicode Native Format to Import or Export Data (SQL Server)](../../relational-databases/import-export/use-unicode-native-format-to-import-or-export-data-sql-server.md)
-- [Use a format file to skip a table column (SQL Server)](../../relational-databases/import-export/use-a-format-file-to-skip-a-table-column-sql-server.md)
-- [Use a format file to map table columns to data-file fields (SQL Server)](../../relational-databases/import-export/use-a-format-file-to-map-table-columns-to-data-file-fields-sql-server.md)
+- [Examples of bulk import and export of XML documents](../../relational-databases/import-export/examples-of-bulk-import-and-export-of-xml-documents-sql-server.md)
+- [Keep identity values when bulk importing data](../../relational-databases/import-export/keep-identity-values-when-bulk-importing-data-sql-server.md)
+- [Keep nulls or default values during bulk import](../../relational-databases/import-export/keep-nulls-or-use-default-values-during-bulk-import-sql-server.md)
+- [Specify field and row terminators](../../relational-databases/import-export/specify-field-and-row-terminators-sql-server.md)
+- [Use a format file to bulk import data](../../relational-databases/import-export/use-a-format-file-to-bulk-import-data-sql-server.md)
+- [Use character format to import or export data](../../relational-databases/import-export/use-character-format-to-import-or-export-data-sql-server.md)
+- [Use native format to import or export data](../../relational-databases/import-export/use-native-format-to-import-or-export-data-sql-server.md)
+- [Use Unicode character format to import or export data](../../relational-databases/import-export/use-unicode-character-format-to-import-or-export-data-sql-server.md)
+- [Use Unicode Native Format to Import or Export Data](../../relational-databases/import-export/use-unicode-native-format-to-import-or-export-data-sql-server.md)
+- [Use a format file to skip a table column](../../relational-databases/import-export/use-a-format-file-to-skip-a-table-column-sql-server.md)
+- [Use a format file to map table columns to data-file fields](../../relational-databases/import-export/use-a-format-file-to-map-table-columns-to-data-file-fields-sql-server.md)
 
 ## Related content
 
