@@ -4,7 +4,7 @@ description: This article provides performance best practices and guidelines for
 author: tejasaks
 ms.author: tejasaks
 ms.reviewer: vanto, randolphwest
-ms.date: 09/05/2025
+ms.date: 11/26/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: best-practice
@@ -29,11 +29,11 @@ The storage subsystem hosting data, transaction logs, and other associated files
 
 ### Use storage subsystem with appropriate IOPS, throughput, and redundancy
 
-Normally, in on-premises environments, the storage vendor supports appropriate hardware RAID configuration with striping across multiple disks to ensure appropriate IOPS, throughput, and redundancy. Though, this can differ across different storage vendors and different storage offerings with varying architectures.
+In on-premises environments, the storage vendor normally supports appropriate hardware RAID configuration with striping across multiple disks to ensure appropriate IOPS, throughput, and redundancy. However, this support can differ across different storage vendors and different storage offerings with varying architectures.
 
-For [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux deployed on Azure Virtual Machines, consider using software RAID to ensure appropriate IOPS and throughput requirements are achieved. When configuring [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Azure virtual machines with similar storage considerations, see [Configure storage for SQL Server on Azure VMs](/azure/azure-sql/virtual-machines/windows/storage-configuration).
+For [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux deployed on Azure Virtual Machines, consider using software RAID to ensure appropriate IOPS and throughput requirements. When configuring [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Azure virtual machines with similar storage considerations, see [Configure storage for SQL Server on Azure VMs](/azure/azure-sql/virtual-machines/windows/storage-configuration).
 
-The following example shows how to create software RAID in Linux on Azure Virtual Machines. Keep in mind that you should use the appropriate number of data disks for the required throughput and IOPS for volumes based on the data, transaction log, and `tempdb` I/O requirements. In the following example, eight data disks were attached to the Azure Virtual Machine; 4 to host data files, 2 for transaction logs, and 2 for `tempdb` workload.
+The following example shows how to create software RAID in Linux on an Azure Virtual Machine. Keep in mind that you should use the appropriate number of data disks for the required throughput and IOPS for volumes based on the data, transaction log, and `tempdb` I/O requirements. In the following example, eight data disks were attached to the VM; four to host data files, two for transaction logs, and two for `tempdb` workload.
 
 To locate the devices (for example /dev/sdc) for RAID creation, use the `lsblk` command.
 
@@ -50,7 +50,7 @@ mdadm --create --verbose /dev/md2 --level=raid0 --chunk=64K --raid-devices=2 /de
 
 ### Disk partitioning and configuration recommendations
 
-For [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], you should use a RAID configuration. The deployed filesystem stripe unit (`sunit`) and stripe width should match the RAID geometry. For example, this is an XFS-based example for a log volume.
+For [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], use a RAID configuration. The deployed filesystem stripe unit (`sunit`) and stripe width match the RAID geometry. For example, the following example shows an XFS-based configuration for a log volume.
 
 ```bash
 # Creating a log volume, using 6 devices, in RAID 10 configuration with 64KB stripes
@@ -69,14 +69,14 @@ log      =internal log           bsize=4096   blocks=285744, version=2
 realtime =none                   extsz=4096   blocks=0, rtextents=0
 ```
 
-The log array is a 6-drive RAID-10 with a 64-KB stripe. As you can see:
+The log array is a six-drive RAID-10 with a 64-KB stripe. As you can see:
 
 - For `sunit=16 blks`, 16 * 4096 block size = 64 KB, matches the stripe size.
 - For `swidth=48 blks`, `swidth` / `sunit` = 3, which is the number of data drives in the array, excluding parity drives.
 
-### filesystem configuration recommendation
+### Recommended file system configuration
 
-[!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] supports both ext4 and XFS filesystems to host the database, transaction logs, and additional files such as checkpoint files for in-memory OLTP in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. Microsoft recommends using XFS filesystem for hosting the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] data and transaction log files.
+[!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] supports both ext4 and XFS filesystems to host the database, transaction logs, and other files such as checkpoint files for in-memory OLTP in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. Use the XFS filesystem for hosting the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] data and transaction log files.
 
 Format the volume with the XFS filesystem:
 
@@ -86,9 +86,9 @@ mkfs.xfs /dev/md1 -f -L logvolume
 mkfs.xfs /dev/md2 -f -L tempdb
 ```
 
-It's possible to configure the XFS filesystem to be case insensitive when creating and formatting the XFS volume. It isn't the frequently used configuration in the Linux ecosystem, but can be used for compatibility reasons.
+You can configure the XFS filesystem to be case insensitive when creating and formatting the XFS volume. This configuration isn't frequently used in the Linux ecosystem but can be used for compatibility reasons.
 
-For example, you can run the following command. `-n version=ci` is used to configure the XFS filesystem to be case insensitive.
+For example, you can run the following command. Use `-n version=ci` to configure the XFS filesystem to be case insensitive.
 
 ```bash
 mkfs.xfs /dev/md0 -f -n version=ci -L datavolume
@@ -96,24 +96,24 @@ mkfs.xfs /dev/md0 -f -n version=ci -L datavolume
 
 #### Persistent memory filesystem recommendation
 
-For the filesystem configuration on Persistent Memory devices, the block allocation for the underlying filesystem should be 2 MB. For more information on this article, review the article [Technical considerations](sql-server-linux-configure-pmem.md#technical-considerations).
+For the filesystem configuration on Persistent Memory devices, set the block allocation for the underlying filesystem to 2 MB. For more information, see [Technical considerations](sql-server-linux-configure-pmem.md#technical-considerations).
 
 #### Open file limitation
 
-Your production environment might require more connections than the default open file limit of 1,024. You can set soft and hard limits of 1,048,576. For example, in [RHEL](https://access.redhat.com/solutions/61334), edit the `/etc/security/limits.d/99-mssql-server.conf` file to have the following values:
+Your production environment might require more connections than the default open file limit of 1,024. You can set soft and hard limits to 1,048,576. For example, in [RHEL](https://access.redhat.com/solutions/61334), edit the `/etc/security/limits.d/99-mssql-server.conf` file to have the following values:
 
 ```ini
 mssql - nofile 1048576
 ```
 
 > [!NOTE]  
-> This setting doesn't apply to SQL Server services started by `systemd`. For more information, see [How to set limits for services in RHEL and systemd](https://access.redhat.com/solutions/1257953).
+> This setting doesn't apply to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] services started by `systemd`. For more information, see [How to set limits for services in RHEL and systemd](https://access.redhat.com/solutions/1257953).
 
-### Disable last accessed date/time on filesystems for SQL Server data and log files
+### Disable last accessed date and time on filesystems for SQL Server data and log files
 
-To ensure that the drive(s) attached to the system remount automatically after a restart, add them to the `/etc/fstab` file. You should also use the UUID (Universally Unique Identifier) in `/etc/fstab` to refer to the drive, rather than just the device name (such as `/dev/sdc1`).
+To ensure that the drives attached to the system remount automatically after a restart, add them to the `/etc/fstab` file. Use the UUID (Universally Unique Identifier) in `/etc/fstab` to refer to the drive, rather than just the device name (such as `/dev/sdc1`).
 
-Use the `noatime` attribute with any filesystem that stores [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] data and log files. Refer to your Linux documentation on how to set this attribute. An example of how to enable `noatime` option for a volume mounted in Azure Virtual Machine follows.
+Use the `noatime` attribute with any filesystem that stores [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] data and log files. Refer to your Linux documentation on how to set this attribute. The following example shows how to enable the `noatime` option for a volume mounted in an Azure Virtual Machine.
 
 The mount point entry in `/etc/fstab`:
 
@@ -133,13 +133,13 @@ The following section describes the recommended Linux OS settings related to hig
 
 ### Use *TuneD* to configure kernel settings
 
-For Red Hat Enterprise Linux (RHEL) users, the [TuneD](https://tuned-project.org) throughput-performance profile configures some kernel and CPU settings automatically (except for C-States). Starting with RHEL 8.0, a TuneD profile named `mssql` was codeveloped with Red Hat and offers finer Linux performance-related tunings for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] workloads. This profile includes the RHEL throughput-performance profile, and we present its definitions in this article for your review with other Linux distributions and RHEL releases without this profile.
+For Red Hat Enterprise Linux (RHEL) users, the [TuneD](https://tuned-project.org) throughput-performance profile automatically configures some kernel and CPU settings (except for C-States). Starting with RHEL 8.0, a TuneD profile named `mssql` was codeveloped with Red Hat and offers finer Linux performance-related tunings for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] workloads. This profile includes the RHEL throughput-performance profile, and we present its definitions in this article for your review with other Linux distributions and RHEL releases without this profile.
 
-For SUSE Linux Enterprise Server 12 SP5, Ubuntu 18.04, and Red Hat Enterprise Linux 7.x, the `tuned` package can be installed manually. It can be used to create and configure the `mssql` profile as described in the following section.
+For SUSE Linux Enterprise Server 12 SP5, Ubuntu 18.04, and Red Hat Enterprise Linux 7.x, you can manually install the `tuned` package. Use it to create and configure the `mssql` profile as described in the following section.
 
 #### Proposed Linux settings using a TuneD `mssql` profile
 
-The following example provides a TuneD configuration for SQL Server on Linux.
+The following example provides a TuneD configuration for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux.
 
 ```ini
 [main]
@@ -205,7 +205,7 @@ The following table provides recommendations for CPU settings:
 | min_perf_pct | 100 | See your documentation on Intel p-state |
 | C-States | C1 only | See your Linux or system documentation on how to ensure C-States is set to C1 only |
 
-Using TuneD as described earlier automatically configures CPU frequency governor, `ENERGY_PERF_BIAS`, and `min_perf_pct` settings appropriately due to the throughput-performance profile being used as base for the `mssql` profile. C-States parameter must be configured manually according to the documentation provided by Linux or the system distributor.
+When you use TuneD as described, it automatically configures the CPU frequency governor, `ENERGY_PERF_BIAS`, and `min_perf_pct` settings. It uses the throughput-performance profile as the base for the `mssql` profile. You must manually configure the C-States parameter according to the documentation provided by Linux or your system distributor.
 
 ### Disk settings recommendations
 
@@ -218,19 +218,19 @@ The following table provides recommendations for disk settings:
 
 #### Description
 
-- `vm.swappiness`: This parameter controls relative weight given to swapping out runtime process memory as compared to filesystem cache. The default value for this parameter is 60, which indicates swapping runtime process memory pages as compared to removing filesystem cache pages at ratio of 60:140. Setting the value 1 indicates strong preference for keeping runtime process memory in physical memory at expense of filesystem cache. Since [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] uses buffer pool as a data page cache and strongly prefers to write through to physical hardware bypassing filesystem cache for reliable recovery, aggressive swappiness configuration can be beneficial for high performing and dedicated [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
+- `vm.swappiness`: This parameter controls the relative weight given to swapping out runtime process memory compared to the filesystem cache. The default value for this parameter is 60, which indicates swapping runtime process memory pages compared to removing filesystem cache pages at a ratio of 60:140. Setting the value to 1 indicates a strong preference for keeping runtime process memory in physical memory at the expense of the filesystem cache. Since [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] uses the buffer pool as a data page cache and strongly prefers to write through to physical hardware bypassing the filesystem cache for reliable recovery, an aggressive swappiness configuration can be beneficial for high-performing and dedicated [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 
   You can find additional information at [Documentation for /proc/sys/vm/ - #swappiness](https://www.kernel.org/doc/html/latest/admin-guide/sysctl/vm.html#swappiness)
 
 - `vm.dirty_*`: [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] file write accesses are uncached, satisfying its data integrity requirements. These parameters allow efficient asynchronous write performance and lower the storage I/O effect of Linux caching writes by allowing large enough caching while throttling flushing.
 
-- `kernel.sched_*`: These parameter values represent the current recommendation for tweaking the Completely Fair Scheduling (CFS) algorithm in the Linux Kernel, to improve throughput of network and storage I/O calls with respect to inter-process preemption and resumption of threads.
+- `kernel.sched_*`: These parameter values represent the current recommendation for tweaking the Completely Fair Scheduling (CFS) algorithm in the Linux kernel. They improve throughput of network and storage I/O calls with respect to inter-process preemption and resumption of threads.
 
-Using the `mssql` TuneD profile configures the `vm.swappiness`, `vm.dirty_*` and `kernel.sched_*` settings. The disk `readahead` configuration using `blockdev` command is per device and must be performed manually.
+Using the `mssql` TuneD profile configures the `vm.swappiness`, `vm.dirty_*`, and `kernel.sched_*` settings. You must manually configure the disk `readahead` setting by using the `blockdev` command for each device.
 
-### Kernel setting auto NUMA balancing for multi-node NUMA systems
+### Kernel setting auto NUMA balancing for multinode NUMA systems
 
-If you install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on a multi-node NUMA system, the following `kernel.numa_balancing` kernel setting is enabled by default. To allow [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] to operate at maximum efficiency on a NUMA system, disable auto NUMA balancing on a multi-node NUMA system:
+If you install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on a multinode NUMA system, the following `kernel.numa_balancing` kernel setting is enabled by default. To allow [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] to operate at maximum efficiency on a NUMA system, disable auto NUMA balancing on a multinode NUMA system:
 
 ```bash
 sysctl -w kernel.numa_balancing=0
@@ -250,7 +250,7 @@ Using the `mssql` TuneD profile configures the `vm.max_map_count` option.
 
 ### Leave Transparent Huge Pages (THP) enabled
 
-Most Linux installations should have this option on by default. We recommend for the most consistent performance experience to leave this configuration option enabled. However, if there's high memory paging activity in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] deployments with multiple instances, for example, or [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] execution with other memory demanding applications on the server, we suggest testing your applications performance after executing the following command:
+Most Linux installations have this option on by default. For the most consistent performance experience, leave this configuration option enabled. However, if there's high memory paging activity in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] deployments with multiple instances, or [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] execution with other memory demanding applications on the server, test your application's performance after executing the following command:
 
 ```bash
 echo madvise > /sys/kernel/mm/transparent_hugepage/enabled
@@ -262,7 +262,7 @@ Or modify the `mssql` TuneD profile with the line:
 vm.transparent_hugepages=madvise
 ```
 
-And make the `mssql` profile is active after the modification:
+And make sure the `mssql` profile is active after the modification:
 
 ```bash
 tuned-adm off
@@ -273,11 +273,11 @@ Using the `mssql` TuneD profile configures the `transparent_hugepage` option.
 
 ### Network setting recommendations
 
-Like there are storage and CPU recommendations, there are Network specific recommendations as well listed below for reference. Not all settings in the following examples are available across different NICs. Refer and consult with NIC vendors for guidance for each of these options. Test and configure this on development environments before applying them on production environments. The following options are explained with examples, and the commands used are specific to NIC type and vendor.
+Along with storage and CPU recommendations, you have network specific recommendations as well. The following recommendations are listed for reference. Not all settings in the following examples are available across different NICs. Refer and consult with NIC vendors for guidance for each of these options. Test and configure this on development environments before applying them on production environments. The following options are explained with examples, and the commands used are specific to NIC type and vendor.
 
-1. **Configuring network port buffer size**. In the example below, the NIC is named `eth0`, which is an Intel-based NIC. For Intel based NIC, the recommended buffer size is 4 KB (4096). Verify the preset maximums and then configure it using the following example:
+1. **Configuring network port buffer size**. In the example, the NIC is named `eth0`, which is an Intel-based NIC. For Intel based NIC, the recommended buffer size is 4 KB (4096). Verify the preset maximums and then configure it using the following example:
 
-   Check the pre-set maximums with the following command. Replace `eth0` with your NIC name:
+   Check the preset maximums with the following command. Replace `eth0` with your NIC name:
 
    ```bash
    ethtool -g eth0
@@ -295,7 +295,7 @@ Like there are storage and CPU recommendations, there are Network specific recom
    ethtool -g eth0
    ```
 
-1. **Enable jumbo frames**. Before enabling jumbo frames, verify that all the network switches, routers, and anything else essential in the network packet path between the clients and the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] support jumbo frames. Only then, enabling jumbo frames can improve performance. After jumbo frames are enabled, connect to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] and change the network packet size to 8060 using `sp_configure` as shown below:
+1. **Enable jumbo frames**. Before enabling jumbo frames, verify that all the network switches, routers, and anything else essential in the network packet path between the clients and the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] support jumbo frames. Only then can enabling jumbo frames improve performance. After jumbo frames are enabled, connect to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] and change the network packet size to 8060 using `sp_configure`, as shown in the following example:
 
    ```bash
    # command to set jumbo frame to 9014 for a Intel NIC named eth0 is
@@ -312,7 +312,7 @@ Like there are storage and CPU recommendations, there are Network specific recom
    GO
    ```
 
-1. By default, we recommend setting the port for adaptive RX/TX IRQ coalescing, meaning interrupt delivery is adjusted to improve latency when packet rate is low and improve throughput when packet rate is high. This setting might not be available across all the different network infrastructure, so review the existing network infrastructure and confirm that this is supported. The example below is for the NIC named `eth0`, which is an Intel-based NIC:
+1. By default, set the port for adaptive RX/TX IRQ coalescing, meaning interrupt delivery is adjusted to improve latency when packet rate is low and improve throughput when packet rate is high. This setting might not be available across your network infrastructure, so review the existing network infrastructure and confirm that this setting is supported. The example is for the NIC named `eth0`, which is an Intel-based NIC:
 
    1. Set the port for adaptive RX/TX IRQ coalescing:
 
@@ -328,7 +328,7 @@ Like there are storage and CPU recommendations, there are Network specific recom
       ```
 
    > [!NOTE]  
-   > For a predictable behavior for high-performance environments, like environments for benchmarking, disable the adaptive RX/TX IRQ coalescing and then set specifically the RX/TX interrupt coalescing. See the example commands to disable the RX/TX IRQ coalescing and then specifically set the values:
+   > For predictable behavior in high-performance environments, like environments for benchmarking, disable the adaptive RX/TX IRQ coalescing and then set specifically the RX/TX interrupt coalescing. See the example commands to disable the RX/TX IRQ coalescing and then specifically set the values:
 
    Disable adaptive RX/TX IRQ coalescing:
 
@@ -343,7 +343,7 @@ Like there are storage and CPU recommendations, there are Network specific recom
    ethtool -c eth0
    ```
 
-   Set the `rx-usecs` and `irq` parameters. `rx-usecs` specifies how many microseconds after at least 1 packet is received before generating an interrupt. The `irq` parameter specifies the corresponding delays in updating the status when the interrupt is disabled. For Intel bases NICs, you can use the following settings:
+   Set the `rx-usecs` and `irq` parameters. `rx-usecs` specifies how many microseconds after at least one packet is received before generating an interrupt. The `irq` parameter specifies the corresponding delays in updating the status when the interrupt is disabled. For Intel bases NICs, you can use the following settings:
 
    ```bash
    ethtool -C eth0 rx-usecs 100 tx-frames-irq 512
@@ -355,7 +355,7 @@ Like there are storage and CPU recommendations, there are Network specific recom
    ethtool -c eth0
    ```
 
-1. We also recommend receive-side scaling (RSS) enabled and by default, combining the RX and TX side of RSS queues. There have been specific scenarios, when working with Microsoft Support, where disabling RSS has improved the performance as well. Test this setting in test environments before applying it on production environments. The following example is for Intel NICs.
+1. Enable receive-side scaling (RSS) and by default, combine the RX and TX side of RSS queues. There are specific scenarios, when working with Microsoft Support, where disabling RSS improves the performance as well. Test this setting in test environments before applying it on production environments. The following example is for Intel NICs.
 
    Get the preset maximum values:
 
@@ -375,7 +375,7 @@ Like there are storage and CPU recommendations, there are Network specific recom
    ethtool -l eth0
    ```
 
-1. Working with NIC port IRQ affinity. To achieve expected performance by tweaking the IRQ affinity, consider few important parameters like Linux handling of the server topology, NIC driver stack, default settings, and irqbalance setting. Optimizations of the NIC port IRQ affinities settings are done with the knowledge of server topology, disabling the irqbalance, and using the NIC vendor-specific settings.
+1. Work with NIC port IRQ affinity. To achieve expected performance by tweaking the IRQ affinity, consider few important parameters like Linux handling of the server topology, NIC driver stack, default settings, and `irqbalance` setting. Optimizations of the NIC port IRQ affinities settings are done with the knowledge of server topology, disabling the `irqbalance`, and using the NIC vendor-specific settings.
 
    The following example of Mellanox specific network infrastructure helps to explain the configuration. For more information, and to download the Mellanox **mlnx** tools, see [​​Performance Tuning tools for Mellanox Network Adapters](https://enterprise-support.nvidia.com/s/article/MLNX2-117-2523kn). The commands change based on the environment. Contact the NIC vendor for further guidance.
 
@@ -435,7 +435,7 @@ Like there are storage and CPU recommendations, there are Network specific recom
    ethtool -c eth0
    ```
 
-1. After the above changes are done, verify the speed of the NIC to ensure it matches the expectation using the following command:
+1. After you make the preceding changes, verify the speed of the NIC to ensure it matches your expectations by using the following command:
 
    ```bash
    ethtool eth0 | grep -i Speed
@@ -443,9 +443,9 @@ Like there are storage and CPU recommendations, there are Network specific recom
 
 ### Advanced kernel and OS configuration
 
-- For best storage I/O performance, use Linux multiqueue scheduling for block devices, which enables the block layer performance to scale well with fast solid-state drives (SSDs) and multi-core systems. Check the documentation if it's enabled by default in your Linux distribution. In most other cases, booting the kernel with `scsi_mod.use_blk_mq=y` enables it, though documentation of the Linux distribution in use might have further guidance on it. This is consistent with the upstream Linux kernel.
+- For the best storage I/O performance, use Linux multiqueue scheduling for block devices. This scheduling method enables the block layer performance to scale well with fast solid-state drives (SSDs) and multicore systems. Check the documentation to see if your Linux distribution enables it by default. In most other cases, you can boot the kernel with `scsi_mod.use_blk_mq=y` to enable it. The documentation for your Linux distribution might have further guidance on this setting. This setting is consistent with the upstream Linux kernel.
 
-- As multipath I/O is often used for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] deployments, configure the device mapper (DM) multi-queue target to use the `blk-mq` infrastructure, by enabling the `dm_mod.use_blk_mq=y` kernel boot option. The default value is `n` (disabled). This setting, when the underlying SCSI devices are using `blk-mq`, reduces locking overhead at the DM layer. For more information on how to configure multipath I/O, refer to your Linux distribution's documentation.
+- Because multipath I/O is often used for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] deployments, configure the device mapper (DM) multiqueue target to use the `blk-mq` infrastructure, by enabling the `dm_mod.use_blk_mq=y` kernel boot option. The default value is `n` (disabled). This setting reduces locking overhead at the DM layer when the underlying SCSI devices use `blk-mq`. For more information on how to configure multipath I/O, refer to your Linux distribution's documentation.
 
 ### Configure swapfile
 
@@ -457,13 +457,13 @@ If you're running [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on 
 
 ## SQL Server configuration
 
-Perform the following configuration tasks after you install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux to achieve best performance for your application.
+Perform the following configuration tasks after you install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux to achieve the best performance for your application.
 
 ### Best practices
 
 #### Use PROCESS AFFINITY for node and/or CPUs
 
-Use `ALTER SERVER CONFIGURATION` to set `PROCESS AFFINITY` for all the `NUMANODE`s and/or CPUs you're using for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] (which is typically for all NODEs and CPUs) on a Linux OS. Processor affinity helps maintain efficient Linux and SQL Scheduling behavior. Using the `NUMANODE` option is the simplest method. Use `PROCESS AFFINITY` even if you have only a single NUMA Node on your computer. For more information on how to set `PROCESS AFFINITY`, see the [ALTER SERVER CONFIGURATION](../t-sql/statements/alter-server-configuration-transact-sql.md) article.
+Use `ALTER SERVER CONFIGURATION` to set `PROCESS AFFINITY` for all the `NUMANODE`s and CPUs you're using for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] (which is typically for all NODEs and CPUs) on a Linux OS. Processor affinity helps maintain efficient Linux and SQL Scheduling behavior. Using the `NUMANODE` option is the simplest method. Use `PROCESS AFFINITY` even if you have only a single NUMA Node on your computer. For more information on how to set `PROCESS AFFINITY`, see the [ALTER SERVER CONFIGURATION](../t-sql/statements/alter-server-configuration-transact-sql.md) article.
 
 #### Configure multiple `tempdb` data files
 
@@ -475,13 +475,34 @@ The following recommendations are optional configuration settings that you might
 
 #### Set a memory limit with mssql-conf
 
-In order to ensure There's enough free physical memory for the Linux OS, the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] process uses only 80% of the physical RAM by default. For some systems with large amount of physical RAM, 20% might be a significant number. For example, on a system with 1 TB of RAM, the default setting would leave around 200 GB of RAM unused. In this situation, you might want to configure the memory limit to a higher value. See the documentation on the **mssql-conf** tool and the [memory.memorylimitmb](sql-server-linux-configure-mssql-conf.md#memorylimit) setting that controls the memory visible to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] (in units of MB).
+To ensure there's enough free physical memory for the Linux operating system, the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] process uses only 80% of the physical RAM by default. For some systems with large amounts of physical RAM, 20% might be a significant number.
+
+For example, on a system with 1 TB of RAM, the default setting would leave around 200 GB of RAM unused. In this situation, you might want to configure the memory limit to a higher value. You can adjust this value with the **mssql-conf** tool. For more information, see the [memory.memorylimitmb](sql-server-linux-configure-mssql-conf.md#memorylimit) setting that controls the memory visible to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] (in units of MB).
+
+  > [!NOTE]  
+  > You can also configure a memory limit using the `MSSQL_MEMORY_LIMIT_MB` environment variable. This method is commonly used when deploying containers, or automating [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] container or package-based deployments. The `MSSQL_MEMORY_LIMIT_MB` environment variable takes precedence over the `memory.memorylimitmb` setting.
 
 When changing this setting, be careful not to set this value too high. If you don't leave enough memory, you could experience problems with the Linux OS and other Linux applications.
 
 ## Configure memory limits with control group (cgroup) v2
 
 [!INCLUDE [cgroup-support](includes/cgroup-support.md)]
+
+## Guidelines for setting memory limits
+
+When setting memory limits for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux, consider the following guidelines:
+
+- Use `cgroup` to limit the overall memory available to the container. This setting establishes the upper bound for all processes inside the container.
+
+- The memory limit (whether set by `memorylimitmb` or the `MSSQL_MEMORY_LIMIT_MB` environment variable) controls the total memory that [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux can allocate across all its components, such as the buffer pool, SQLPAL, SQL Server Agent, LibOS, PolyBase, Full-Text Search, and any other process loaded in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux.
+
+- The `MSSQL_MEMORY_LIMIT_MB` environment variable takes precedence over `memorylimitmb` defined in `mssql.conf`.
+
+- `memorylimitmb` can't exceed the actual physical memory of the host system.
+
+- Set `memorylimitmb` lower than the host system memory and the cgroup limit (if present), to ensure there's enough free physical memory for the Linux operating system. If you don't explicitly set `memorylimitmb`, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] uses 80% of the lesser value between total system memory and the cgroup limit (if present).
+
+- The [max_server_memory](../database-engine/configure-windows/server-memory-server-configuration-options.md) server configuration option limits only the size of the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] buffer pool, and doesn't govern overall memory usage for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. Always set this value lower than `memorylimitmb` to ensure sufficient memory remains for other components, such as SQLPAL, SQL Server Agent, LibOS, PolyBase, Full-Text Search, and any other process loaded in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux.
 
 ## Related content
 

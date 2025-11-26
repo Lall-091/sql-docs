@@ -4,18 +4,18 @@ description: "Explains the SQL Server instance configuration setting for ADR cle
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest, dfurman
-ms.date: 08/26/2025
+ms.date: 11/25/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: article
 helpviewer_keywords:
   - "ADR cleaner thread count"
 ---
 # Server configuration: ADR Cleaner Thread Count
 
-[!INCLUDE [sqlserver2022-and-later](../../includes/applies-to-version/sqlserver2022-and-later.md)]
+[!INCLUDE [sqlserver2022-asmi](../../includes/applies-to-version/sqlserver2022-asmi.md)]
 
-This configuration setting is used for [accelerated database recovery](../../relational-databases/accelerated-database-recovery-concepts.md) (ADR). The cleaner is an asynchronous process that wakes up periodically and cleans page versions that aren't needed.
+Starting in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], and in [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], this configuration setting is used for [accelerated database recovery](../../relational-databases/accelerated-database-recovery-concepts.md) (ADR). The cleaner is an asynchronous process that wakes up periodically and cleans page versions that aren't needed.
 
 By default, this configuration setting is set to `1`. This means that the cleaner uses a single thread to clean persistent version store (PVS) in all databases on the database engine instance.
 

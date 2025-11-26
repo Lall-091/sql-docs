@@ -4,19 +4,18 @@ description: "Explains the SQL Server instance configuration setting for ADR pre
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest, dfurman
-ms.date: 08/26/2025
+ms.date: 11/25/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: article
 helpviewer_keywords:
   - "ADR Preallocation Factor"
 ---
-
 # Server configuration: ADR Preallocation Factor
 
-[!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
+[!INCLUDE [sqlserver2019-asdbmi](../../includes/applies-to-version/sqlserver2019-asdbmi.md)]
 
-[!INCLUDE [sssql19-starting-md](../../includes/sssql19-starting-md.md)], this configuration setting is used by [accelerated database recovery](../../relational-databases/accelerated-database-recovery-concepts.md).
+Starting in [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], and in [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], this configuration setting is used by [accelerated database recovery](../../relational-databases/accelerated-database-recovery-concepts.md).
 
 Accelerated database recovery (ADR) uses row versions for transaction management and database recovery purposes. These versions are generated as part of various data manipulation language (DML) operations. Versions are stored either in-row, or off-row in an internal table called the persistent version store (PVS).
 
