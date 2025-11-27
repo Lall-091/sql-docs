@@ -159,7 +159,7 @@ GO
     -   [SUSER_SNAME &#40;Transact-SQL&#41;](../../t-sql/functions/suser-sname-transact-sql.md)  
   
         > [!IMPORTANT]  
-        >  SUSER_NAME is just one of several system functions that can be used in a classifier function. For more information, see [Create and Test a Classifier User-Defined Function](../../relational-databases/resource-governor/create-and-test-a-classifier-user-defined-function.md).  
+        >  SUSER_NAME is just one of several system functions that can be used in a classifier function. For more information, see [Create and Test a Classifier User-Defined Function](../resource-governor/resource-governor-walkthrough.md).  
   
     -   [SET @local_variable &#40;Transact-SQL&#41;](../../t-sql/language-elements/set-local-variable-transact-sql.md).  
       
@@ -271,7 +271,7 @@ GO
  [&#91;Top&#93;](#Top)  
   
 ## See Also  
- [Create and Test a Classifier User-Defined Function](../../relational-databases/resource-governor/create-and-test-a-classifier-user-defined-function.md)   
+ [Create and Test a Classifier User-Defined Function](../resource-governor/resource-governor-walkthrough.md)   
  [Resource Governor](../../relational-databases/resource-governor/resource-governor.md)  
   
   

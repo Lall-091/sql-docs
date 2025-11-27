@@ -82,7 +82,7 @@ Use the following steps to create a sample database named `SampleDB`. This datab
 The following steps create a SQL Server Agent job on Linux with Transact-SQL commands. The job runs a daily backup of the sample database, `SampleDB`.
 
 > [!TIP]  
-> You can use any T-SQL client to run these commands. For example, on Linux you can use [Install the sqlcmd and bcp SQL Server command-line tools on Linux](sql-server-linux-setup-tools.md) or [SQL Server extension for Visual Studio Code](../tools/visual-studio-code/sql-server-develop-use-vscode.md). From a remote Windows Server, you can also run queries in SQL Server Management Studio (SSMS) or use the UI interface for job management, which is described in the next section.
+> You can use any T-SQL client to run these commands. For example, on Linux you can use [Install the sqlcmd and bcp SQL Server command-line tools on Linux](sql-server-linux-setup-tools.md) or [SQL Server extension for Visual Studio Code](../tools/visual-studio-code-extensions/mssql/connect-database-visual-studio-code.md). From a remote Windows Server, you can also run queries in SQL Server Management Studio (SSMS) or use the UI interface for job management, which is described in the next section.
 
 1. Use [sp_add_job](../relational-databases/system-stored-procedures/sp-add-job-transact-sql.md) to create a job named `Daily SampleDB Backup`.
 

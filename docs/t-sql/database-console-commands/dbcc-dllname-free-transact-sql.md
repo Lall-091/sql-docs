@@ -75,8 +75,8 @@ DBCC xp_sample (FREE);
 ## See also
 
 - [DBCC (Transact-SQL)](../../t-sql/database-console-commands/dbcc-transact-sql.md)
-- [Execution Characteristics of Extended Stored Procedures](../../relational-databases/extended-stored-procedures-programming/execution-characteristics-of-extended-stored-procedures.md)
+- [Execution Characteristics of Extended Stored Procedures](../../relational-databases/extended-stored-procedures-programming/database-engine-extended-stored-procedures-programming.md)
 - [sp_addextendedproc (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-addextendedproc-transact-sql.md)
 - [sp_dropextendedproc (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-dropextendedproc-transact-sql.md)
 - [sp_helpextendedproc (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-helpextendedproc-transact-sql.md)
-- [Unloading an Extended Stored Procedure DLL](../../relational-databases/extended-stored-procedures-programming/unloading-an-extended-stored-procedure-dll.md)
+- [Unloading an Extended Stored Procedure DLL](../../relational-databases/extended-stored-procedures-programming/database-engine-extended-stored-procedures-programming.md)

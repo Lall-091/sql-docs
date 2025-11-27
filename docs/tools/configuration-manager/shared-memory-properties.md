@@ -30,4 +30,4 @@ Possible values are **Yes** and **No**. The shared memory protocol is enabled by
 ## Related content
 
 - [Choosing a Network Protocol](/previous-versions/sql/sql-server-2016/ms187892(v=sql.130))
-- [Creating a Valid Connection String Using Shared Memory Protocol](../../tools/configuration-manager/creating-a-valid-connection-string-using-shared-memory-protocol.md)
+- [Creating a Valid Connection String Using Shared Memory Protocol](aliases-sql-server-configuration-manager.md)

@@ -18,7 +18,7 @@ The Transact-SQL Editor provides you with a rich editing and debugging experienc
 
 If you aren't connected to a database, but want to execute a query against it, you can also use the **New Query Connection** dialog box in the **SQL** > **Transact-SQL Editor** menu option to connect to a database and launch the Transact-SQL Editor.
 
-The Transact-SQL Editor contains a main **T-SQL** pane where you can write and edit Transact-SQL scripts. The editor supports IntelliSense and color coding of syntax to improve the readability of complex statements. It also supports find and replace, bulk commenting, custom fonts and colors, and line numbering. You can also change the database which the script in the editor is executed against. For more information, see [How to: Clone an Existing Database](../ssdt/how-to-clone-an-existing-database.md). The **Results** pane displays query results in a grid or text. You can also redirect these query results to a file. The **Message** pane displays errors, warnings, and informational messages returned when a script is run. When client statistics is enabled, the **Statistics** pane displays information about the query execution grouped into categories. The **Execution Plan** pane displays the data retrieval methods chosen by SQL Server, and shows the execution cost of specific statements and queries.
+The Transact-SQL Editor contains a main **T-SQL** pane where you can write and edit Transact-SQL scripts. The editor supports IntelliSense and color coding of syntax to improve the readability of complex statements. It also supports find and replace, bulk commenting, custom fonts and colors, and line numbering. You can also change the database which the script in the editor is executed against. For more information, see [How to: Clone an Existing Database](../t-sql/statements/create-table-as-clone-of-transact-sql.md). The **Results** pane displays query results in a grid or text. You can also redirect these query results to a file. The **Message** pane displays errors, warnings, and informational messages returned when a script is run. When client statistics is enabled, the **Statistics** pane displays information about the query execution grouped into categories. The **Execution Plan** pane displays the data retrieval methods chosen by SQL Server, and shows the execution cost of specific statements and queries.
 
 ## In this section
 
@@ -28,7 +28,7 @@ The Transact-SQL Editor contains a main **T-SQL** pane where you can write and e
 | [How to: Navigate Between Scripts](how-to-navigate-between-scripts.md) | Use Go-To-Definition and Find All Reference to navigate between scripts. |
 | [How to: Use rename and refactoring to make changes to your database objects](how-to-use-rename-and-refactoring-to-make-changes-to-your-database-objects.md) | Rename an object across all scripts and preview any changes. |
 | [How to: Execute a Partial Query](how-to-execute-a-partial-query.md) | Highlight a specific segment of the script and execute it as a single query. |
-| [How to: Debug Stored Procedures](../ssdt/how-to-debug-stored-procedures.md) | Create and debug a Transact-SQL stored procedure by stepping into it. |
+| [How to: Debug Stored Procedures](debugger/debug-stored-procedures.md) | Create and debug a Transact-SQL stored procedure by stepping into it. |
 | [Analyze script performance](analyze-script-performance.md) | Use execution plans, client statistics, and code analysis to determine whether you can improve performance of your query, stored procedures, or scripts. |
 
 ## Related content

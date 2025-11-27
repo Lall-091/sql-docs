@@ -69,5 +69,5 @@ SQL Server Configuration Manager displays the IP addresses that were available a
 ## Related content
 
 - [Enable or disable a server network protocol](../../database-engine/configure-windows/enable-or-disable-a-server-network-protocol.md)
-- [Creating a Valid Connection String Using TCP IP](creating-a-valid-connection-string-using-tcp-ip.md)
+- [Creating a Valid Connection String Using TCP IP](aliases-sql-server-configuration-manager.md)
 - [SQL Server Browser service (Database Engine and SSAS)](../../database-engine/configure-windows/sql-server-browser-service-database-engine-and-ssas.md)

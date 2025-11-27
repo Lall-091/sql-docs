@@ -197,8 +197,8 @@ For more information about running T-SQL queries in client tools, see:
 
 ## Get help
 
-- [Create a valid connection string using the shared memory protocol](../tools/configuration-manager/creating-a-valid-connection-string-using-shared-memory-protocol.md)
-- [Create a valid connection string using TCP/IP](../tools/configuration-manager/creating-a-valid-connection-string-using-tcp-ip.md)
+- [Create a valid connection string using the shared memory protocol](../tools/configuration-manager/aliases-sql-server-configuration-manager.md)
+- [Create a valid connection string using TCP/IP](../tools/configuration-manager/aliases-sql-server-configuration-manager.md)
 - [Troubleshoot connectivity issues in SQL Server](/troubleshoot/sql/database-engine/connect/resolve-connectivity-errors-overview)
 - [Trace the network authentication process to the Database Engine](../relational-databases/database-engine-connection-open-network-trace.md)
 

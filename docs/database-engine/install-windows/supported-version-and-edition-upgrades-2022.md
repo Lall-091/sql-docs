@@ -129,7 +129,7 @@ The following tips and tools can help you plan and implement your migration.
 
 The following table lists the supported edition upgrade scenarios in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)].
 
-For step-by-step instructions on how to perform an edition upgrade, see [Upgrade to a different edition of SQL Server (Setup)](upgrade-to-a-different-edition-of-sql-server-setup.md).
+For step-by-step instructions on how to perform an edition upgrade, see [Upgrade to a different edition of SQL Server (Setup)](upgrade-downgrade-sql-server-edition-setup.md).
 
 | Upgrade from | Upgrade to |
 | --- | --- |
@@ -162,4 +162,4 @@ Additionally you can also perform an edition upgrade between [!INCLUDE [sssql22-
 - [Hardware and software requirements for SQL Server 2022](../../sql-server/install/hardware-and-software-requirements-for-installing-sql-server-2022.md)
 - [Upgrade SQL Server](upgrade-sql-server.md)
 - [Upgrade the Database Engine](upgrade-database-engine.md)
-- [Upgrade to a different edition of SQL Server (Setup)](upgrade-to-a-different-edition-of-sql-server-setup.md)
+- [Upgrade to a different edition of SQL Server (Setup)](upgrade-downgrade-sql-server-edition-setup.md)

@@ -687,6 +687,6 @@ GO
 ## Related content
 
 - [Deploy availability groups on Kubernetes with DH2i DxOperator on Azure Kubernetes Service](tutorial-sql-server-containers-kubernetes-dxoperator.md)
-- [Deploy SQL Server containers on Azure Kubernetes Service](quickstart-sql-server-containers-kubernetes.md)
+- [Deploy SQL Server containers on Azure Kubernetes Service](quickstart-sql-server-containers-azure.md)
 - [Deploy SQL Server Linux containers on Kubernetes with StatefulSets](sql-server-linux-kubernetes-best-practices-statefulsets.md)
 - [Tutorial: Configure Active Directory authentication with SQL Server on Linux containers](sql-server-linux-containers-ad-auth-adutil-tutorial.md)

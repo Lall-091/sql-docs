@@ -195,7 +195,7 @@ If you're interested in making changes to the installation of [!INCLUDE[ssnovers
 
         ![mds_2016ConfigManager_WebConfig_CreateWebApplication](../master-data-services/media/mds-2016configmanager-webconfig-createwebapplication.png)   
   
-     For more information about the **Create Web Application** dialog box, see [Create Web Application Dialog Box &#40;Master Data Services Configuration Manager&#41;](../master-data-services/create-web-application-dialog-box-master-data-services-configuration-manager.md).  
+     For more information about the **Create Web Application** dialog box, see [Create Web Application Dialog Box &#40;Master Data Services Configuration Manager&#41;](master-data-services-overview-mds.md).  
 
     > [!NOTE] 
     >  If your domain implemented [2020 LDAP channel binding and LDAP signing requirements for Windows](https://support.microsoft.com/help/4520412/2020-ldap-channel-binding-and-ldap-signing-requirements-for-windows), you'll see the error message "The credentials could not be verified in Active Directory" when you use the domain account to create an Application Pool. For a resolution, instead of the domain user, use a *local machine user*. This bypasses the credential checking with Active Directory. After you create the web application, you can change the identity to the domain user in Internet Information Services (IIS) Manager.

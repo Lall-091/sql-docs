@@ -32,7 +32,7 @@ f1_keywords:
   
 -   [Stored Procedures &#40;Integration Services Catalog&#41;](../integration-services/system-stored-procedures/stored-procedures-integration-services-catalog.md)  
   
--   [Configure Dialog Box](./catalog/configure-dialog-box.md)  
+-   [Configure Dialog Box](catalog/ssis-catalog.md)  
   
 -   [Execute Package Dialog Box](../integration-services/packages/run-integration-services-ssis-packages.md#execute_package_dialog)  
   
@@ -85,7 +85,7 @@ f1_keywords:
 ### Parameter Validation  
  If parameter values cannot be resolved, the corresponding package execution will fail. To help avoid failures, you can validate projects and packages by using the **Validate** dialog box in [!INCLUDE[ssBIDevStudioFull](../includes/ssbidevstudiofull-md.md)]. Validation allows you to confirm that all parameters have the necessary values or can resolve the necessary values with specific environment references. Validation also checks for other common package issues.  
   
- For more information, see [Validate Dialog Box](./catalog/validate-dialog-box.md).  
+ For more information, see [Validate Dialog Box](catalog/ssis-catalog.md).  
   
 ### Parameter Example  
  This example describes a parameter named **pkgOptions** that is used to specify options for the package in which it resides.  

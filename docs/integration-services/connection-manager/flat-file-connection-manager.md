@@ -267,7 +267,7 @@ ms.custom: sfi-ropc-nochange
  Select a column, and then remove it by clicking **Delete**.  
   
  **Suggest Types**  
- Use the **Suggest Column Types** dialog box to evaluate sample data in the file and to obtain suggestions for the data type and length of each column. For more information, see [Suggest Column Types Dialog Box UI Reference](../../integration-services/connection-manager/suggest-column-types-dialog-box-ui-reference.md).  
+ Use the **Suggest Column Types** dialog box to evaluate sample data in the file and to obtain suggestions for the data type and length of each column. For more information, see [Suggest Column Types Dialog Box UI Reference](file-connection-manager.md).  
 ## Flat File Connection Manager Editor (Preview Page)
   Use the **Preview** node of the **Flat File Connection Manager Editor** dialog box to view the contents of the source file in a tabular format.  
   

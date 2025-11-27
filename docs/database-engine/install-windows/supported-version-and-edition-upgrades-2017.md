@@ -140,7 +140,7 @@ Any scenarios not specified in the previous list aren't supported, including but
 
 The following table lists the supported edition upgrade scenarios in [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)].
 
-For step-by-step instructions on how to perform an edition upgrade, see [Upgrade to a different edition of SQL Server (Setup)](upgrade-to-a-different-edition-of-sql-server-setup.md).
+For step-by-step instructions on how to perform an edition upgrade, see [Upgrade to a different edition of SQL Server (Setup)](upgrade-downgrade-sql-server-edition-setup.md).
 
 | Upgrade from | Upgrade to |
 | --- | --- |

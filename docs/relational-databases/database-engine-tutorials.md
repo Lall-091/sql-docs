@@ -42,7 +42,7 @@ This tutorial teaches how to create policies that enforce site administration st
 [Tutorial: SQL Server Backup and Restore to Azure Blob Storage](~/relational-databases/tutorial-sql-server-backup-and-restore-to-azure-blob-storage-service.md)  
 This tutorial illustrates how to do a SQL Server backup and restore to Azure Blob Storage.  
   
-[Tutorial: Use Azure Blob Storage with SQL Server databases](tutorial-use-azure-blob-storage-service-with-sql-server-2016.md)  
+[Tutorial: Use Azure Blob Storage with SQL Server databases](tutorial-use-azure-blob-storage-service-with-sql-server.md)  
 This tutorial helps you understand how to store SQL Server data files in Azure Blob Storage directly.  
   
 ## Next steps

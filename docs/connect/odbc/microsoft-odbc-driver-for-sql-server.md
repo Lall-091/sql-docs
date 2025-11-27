@@ -49,7 +49,7 @@ The following sample demonstrates how to use the ODBC APIs to connect to and acc
 - [Installing the driver on Linux](linux-mac/installing-the-microsoft-odbc-driver-for-sql-server.md)
 - [Installing the driver on macOS](linux-mac/install-microsoft-odbc-driver-sql-server-macos.md)
 - [Connecting to SQL Server](linux-mac/connection-string-keywords-and-data-source-names-dsns.md)
-- [Connecting with **bcp**](linux-mac/connecting-with-bcp.md)
+- [Connecting with **bcp**](../../tools/bcp-utility.md)
 - [Connecting with **sqlcmd**](linux-mac/connecting-with-sqlcmd.md)
 - [Data Access Tracing](linux-mac/data-access-tracing-with-the-odbc-driver-on-linux.md)
 - [Frequently Asked Questions](linux-mac/frequently-asked-questions-faq-for-odbc-linux.yml)

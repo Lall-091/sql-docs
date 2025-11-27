@@ -35,7 +35,7 @@ ms.topic: conceptual
 >  After the initial full backup that is required to establish the transaction log backup chain (which can be a file-snapshot backup), you only need to perform transaction log backups because each transaction log file-snapshot backup set contains file-snapshots of all database files and can be used to perform a database restore or a log restore. After the initial full database backup, you do not need additional full or differential backups because Azure Blob Storage handles the differences between each file-snapshot and the current state of the base blob for each database file.  
 
 > [!NOTE]  
->  For a tutorial on using SQL Server with Microsoft Azure Blob Storage, see [Tutorial: Use Microsoft Azure Blob Storage with SQL Server databases](../tutorial-use-azure-blob-storage-service-with-sql-server-2016.md)  
+>  For a tutorial on using SQL Server with Microsoft Azure Blob Storage, see [Tutorial: Use Microsoft Azure Blob Storage with SQL Server databases](../tutorial-use-azure-blob-storage-service-with-sql-server.md)  
 
 ### Restore using file-snapshot backups
 
@@ -173,4 +173,4 @@ GO
 
 ## Next steps
 
-- [Tutorial: Use Microsoft Azure Blob Storage with SQL Server databases](../tutorial-use-azure-blob-storage-service-with-sql-server-2016.md)
+- [Tutorial: Use Microsoft Azure Blob Storage with SQL Server databases](../tutorial-use-azure-blob-storage-service-with-sql-server.md)

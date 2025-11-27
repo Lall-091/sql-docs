@@ -57,7 +57,7 @@ This article lists and describes what's new in the versioned releases of the [!I
 | :------- | :------ |
 | Sqlcmd Bugfix | Fixed extraneous trailing bytes after encoding conversion. |
 | TDS 8.0 | Add support for TDS 8.0 strict encryption |
-| Secure by default | Following the change in Microsoft ODBC Driver 18 for SQL Server to default Encrypt to `yes`, sqlcmd and bcp both require encryption and validate certificates, by default. In sqlcmd, use `-No` to connect with optional encryption. In bcp, use `-Yo` to connect with optional encryption. For more information, see [Connecting with sqlcmd](connecting-with-sqlcmd.md) and [Connecting with bcp](connecting-with-bcp.md). |
+| Secure by default | Following the change in Microsoft ODBC Driver 18 for SQL Server to default Encrypt to `yes`, sqlcmd and bcp both require encryption and validate certificates, by default. In sqlcmd, use `-No` to connect with optional encryption. In bcp, use `-Yo` to connect with optional encryption. For more information, see [Connecting with sqlcmd](connecting-with-sqlcmd.md) and [Connecting with bcp](../../../tools/bcp-utility.md). |
 
 ## 17.9.1.1, February 2022
 
@@ -76,7 +76,7 @@ This article lists and describes what's new in the versioned releases of the [!I
 | Feature added | Details |
 | :------------ | :------ |
 | Sqlcmd Token Authentication | Now supported. See [Connecting with sqlcmd](connecting-with-sqlcmd.md) |
-| BCP Token Authentication | Now supported. See [Connecting with bcp](connecting-with-bcp.md) |
+| BCP Token Authentication | Now supported. See [Connecting with bcp](../../../tools/bcp-utility.md) |
 
 ## 17.7.1.1, January 2021
 
@@ -98,4 +98,4 @@ This article lists and describes what's new in the versioned releases of the [!I
 
 ## Next steps
 
-Learn more about connecting with [BCP](connecting-with-bcp.md) and [SQLCMD](connecting-with-sqlcmd.md)!
+Learn more about connecting with [BCP](../../../tools/bcp-utility.md) and [SQLCMD](connecting-with-sqlcmd.md)!

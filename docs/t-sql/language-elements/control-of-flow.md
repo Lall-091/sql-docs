@@ -36,7 +36,7 @@ dev_langs:
 :::row-end:::  
 :::row:::
     :::column:::
-        [CONTINUE](../../t-sql/language-elements/continue-transact-sql.md)
+        [CONTINUE](while-transact-sql.md)
     :::column-end:::
     :::column:::
         [TRY...CATCH](../../t-sql/language-elements/try-catch-transact-sql.md)

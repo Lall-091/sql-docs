@@ -246,7 +246,7 @@ helpviewer_keywords:
  **Connection**  
  Select an [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] project or an [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] connection manager in the list, or click \<**New connection...**> and use the **Add Analysis Services Connection Manager** dialog box to create a new connection.  
   
- **Related Topics:** [Add Analysis Services Connection Manager Dialog Box UI Reference](../../integration-services/connection-manager/add-analysis-services-connection-manager-dialog-box-ui-reference.md), [Analysis Services Connection Manager](../../integration-services/connection-manager/analysis-services-connection-manager.md)  
+ **Related Topics:** [Add Analysis Services Connection Manager Dialog Box UI Reference](../connection-manager/analysis-services-connection-manager.md), [Analysis Services Connection Manager](../../integration-services/connection-manager/analysis-services-connection-manager.md)  
   
  **SourceType**  
  Specify the source type of the DDL statements. This property has the options listed in the following table:  

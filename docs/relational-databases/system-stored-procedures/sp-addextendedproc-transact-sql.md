@@ -56,7 +56,7 @@ None.
 
 ## Remarks
 
-After an extended stored procedure is created, it must be added to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] by using `sp_addextendedproc`. For more information, see [Adding an Extended Stored Procedure to SQL Server](../extended-stored-procedures-programming/adding-an-extended-stored-procedure-to-sql-server.md).
+After an extended stored procedure is created, it must be added to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] by using `sp_addextendedproc`. For more information, see [Adding an Extended Stored Procedure to SQL Server](../extended-stored-procedures-programming/database-engine-extended-stored-procedures-programming.md).
 
 This procedure can be run only in the `master` database. To execute an extended stored procedure from a database other than `master`, qualify the name of the extended stored procedure with `master`.
 

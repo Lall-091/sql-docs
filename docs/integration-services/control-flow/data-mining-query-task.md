@@ -85,7 +85,7 @@ helpviewer_keywords:
  **New**  
  Create a new [!INCLUDE[ssASnoversion](../../includes/ssasnoversion-md.md)] connection manager.  
   
- **Related Topics:** [Add Analysis Services Connection Manager Dialog Box UI Reference](../../integration-services/connection-manager/add-analysis-services-connection-manager-dialog-box-ui-reference.md)  
+ **Related Topics:** [Add Analysis Services Connection Manager Dialog Box UI Reference](../connection-manager/analysis-services-connection-manager.md)  
   
  **Mining structure**  
  Select a mining structure in the list.  

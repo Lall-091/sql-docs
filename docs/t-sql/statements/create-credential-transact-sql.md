@@ -78,7 +78,7 @@ Specifies the name of the account to be used when connecting outside the server.
 
 Specifies the secret required for outgoing authentication.
 
-When the credential is used to access Azure Key Vault, the **SECRET** argument must be formatted as a service principal's *\<client ID>* (without hyphens) and *\<secret>*, passed together without a space between them. See example C below. When the credential is using a shared access signature, the **SECRET** is the shared access signature token. See example D below. For information about creating a stored access policy and a shared access signature on an Azure container, see [Lesson 1: Create a stored access policy and a shared access signature on an Azure container](../../relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016.md#1---create-stored-access-policy-and-shared-access-storage).
+When the credential is used to access Azure Key Vault, the **SECRET** argument must be formatted as a service principal's *\<client ID>* (without hyphens) and *\<secret>*, passed together without a space between them. See example C below. When the credential is using a shared access signature, the **SECRET** is the shared access signature token. See example D below. For information about creating a stored access policy and a shared access signature on an Azure container, see [Lesson 1: Create a stored access policy and a shared access signature on an Azure container](../../relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server.md#1---create-stored-access-policy-and-shared-access-storage).
 
 #### FOR CRYPTOGRAPHIC PROVIDER *cryptographic_provider_name*
 
@@ -161,7 +161,7 @@ EXEC ('CREATE CREDENTIAL Azure_EKM_TDE_cred
 
 **Applies to**: [!INCLUDE[ssSQL14](../../includes/sssql14-md.md)] through [current version](/troubleshoot/sql/general/determine-version-edition-update-level) and Azure SQL Managed Instance.
 
-The following example creates a shared access signature credential using a SAS token. For a tutorial on creating a stored access policy and a shared access signature on an Azure container, and then creating a credential using the shared access signature, see [Tutorial: Use Microsoft Azure Blob Storage with SQL Server databases](../../relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016.md).
+The following example creates a shared access signature credential using a SAS token. For a tutorial on creating a stored access policy and a shared access signature on an Azure container, and then creating a credential using the shared access signature, see [Tutorial: Use Microsoft Azure Blob Storage with SQL Server databases](../../relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server.md).
 
 > [!IMPORTANT]
 > THE **CREDENTIAL NAME** argument requires that the name match the container path, start with https and not contain a trailing forward slash. The **IDENTITY** argument requires the name, *SHARED ACCESS SIGNATURE*. The **SECRET** argument requires the shared access signature token.
@@ -340,5 +340,5 @@ CREATE CREDENTIAL [contoso.managedhsm.azure.net] -- for Azure Key Vault Managed 
 - [CREATE LOGIN &#40;Transact-SQL&#41;](../../t-sql/statements/create-login-transact-sql.md)
 - [ALTER LOGIN &#40;Transact-SQL&#41;](../../t-sql/statements/alter-login-transact-sql.md)
 - [sys.credentials &#40;Transact-SQL&#41;](../../relational-databases/system-catalog-views/sys-credentials-transact-sql.md)
-- [Lesson 2: Create a SQL Server credential using a shared access signature](../../relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016.md#2---create-a-sql-server-credential-using-a-shared-access-signature)
+- [Lesson 2: Create a SQL Server credential using a shared access signature](../../relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server.md#2---create-a-sql-server-credential-using-a-shared-access-signature)
 - [Shared Access Signatures](/azure/storage/common/storage-sas-overview)

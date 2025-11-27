@@ -86,4 +86,4 @@ These uncommitted data blocks persist in the S3-compatible object storage in the
 - [SQL Server back up to URL for Microsoft Azure Blob Storage best practices and troubleshooting](sql-server-backup-to-url-best-practices-and-troubleshooting.md)
 - [SQL Server backup to URL for Microsoft Azure Blob Storage](sql-server-backup-to-url.md)
 - [Back up and restore: System databases (SQL Server)](back-up-and-restore-of-system-databases-sql-server.md)
-- [Tutorial: Use Azure Blob Storage with SQL Server](../tutorial-use-azure-blob-storage-service-with-sql-server-2016.md)
+- [Tutorial: Use Azure Blob Storage with SQL Server](../tutorial-use-azure-blob-storage-service-with-sql-server.md)

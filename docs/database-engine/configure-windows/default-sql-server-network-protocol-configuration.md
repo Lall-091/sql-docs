@@ -43,8 +43,8 @@ If the instance is running on a [!INCLUDE [ssNoVersion_md](../../includes/ssnove
 
 See the following articles for samples of connection strings:
 
-- [Creating a Valid Connection String Using Shared Memory Protocol](../../tools/configuration-manager/creating-a-valid-connection-string-using-shared-memory-protocol.md)
-- [Creating a Valid Connection String Using TCP IP](../../tools/configuration-manager/creating-a-valid-connection-string-using-tcp-ip.md)
+- [Creating a Valid Connection String Using Shared Memory Protocol](../../tools/configuration-manager/aliases-sql-server-configuration-manager.md)
+- [Creating a Valid Connection String Using TCP IP](../../tools/configuration-manager/aliases-sql-server-configuration-manager.md)
 
 ## SQL Server Browser settings
 

@@ -45,7 +45,7 @@ If the upgrade operation triggers a data encryption operation, you also need key
  
 ## Next steps
 - [Develop applications using Always Encrypted with secure enclaves](always-encrypted-enclaves-client-development.md)
-- [Run Transact-SQL statements using secure enclaves](always-encrypted-enclaves-query-columns-ssms.md)
+- [Run Transact-SQL statements using secure enclaves](always-encrypted-enclaves-query-columns.md)
 
 ## See also  
  - [Always Encrypted with secure enclaves](../../../relational-databases/security/encryption/always-encrypted-enclaves.md)

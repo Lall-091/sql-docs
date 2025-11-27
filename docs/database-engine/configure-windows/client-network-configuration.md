@@ -63,7 +63,7 @@ The [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Native Client DLL
 - [Create or delete a server alias for use by a client](create-or-delete-a-server-alias-for-use-by-a-client.md)
 - [Sign in to SQL Server](logging-in-to-sql-server.md)
 - [Open and use ODBC Data Source Administrator](open-the-odbc-data-source-administrator.md)
-- [Check the ODBC SQL Server Driver Version (Windows)](../../database-engine/configure-windows/check-the-odbc-sql-server-driver-version-windows.md)
+- [Check the ODBC SQL Server Driver Version (Windows)](open-the-odbc-data-source-administrator.md)
 
 ## Related content
 

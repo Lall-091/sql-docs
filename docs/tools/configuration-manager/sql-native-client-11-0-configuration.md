@@ -41,13 +41,13 @@ These settings do not affect clients connecting to previous versions of [!INCLUD
   
 -   [Aliases (SQL Server Configuration Manager)](../../tools/configuration-manager/aliases-sql-server-configuration-manager.md)  
   
-    -   [New Alias (Alias Tab)](../../tools/configuration-manager/new-alias-alias-tab.md)  
+    -   [New Alias (Alias Tab)](aliases-sql-server-configuration-manager.md)  
   
-    -   [&#60;Alias&#62; Properties (Alias Tab)](../../tools/configuration-manager/alias-properties-alias-tab.md)  
+    -   [&#60;Alias&#62; Properties (Alias Tab)](aliases-sql-server-configuration-manager.md)  
   
-    -   [Creating a Valid Connection String Using Shared Memory Protocol](../../tools/configuration-manager/creating-a-valid-connection-string-using-shared-memory-protocol.md)  
+    -   [Creating a Valid Connection String Using Shared Memory Protocol](aliases-sql-server-configuration-manager.md)  
   
-    -   [Creating a Valid Connection String Using TCP IP](../../tools/configuration-manager/creating-a-valid-connection-string-using-tcp-ip.md)  
+    -   [Creating a Valid Connection String Using TCP IP](aliases-sql-server-configuration-manager.md)  
   
     -   [Creating a Valid Connection String Using Named Pipes](/previous-versions/sql/sql-server-2016/ms189307(v=sql.130))  
   

@@ -202,9 +202,9 @@ To run the **SSIS Server Maintenance Job**, SSIS creates the SQL Server login **
   
  To manage permissions using the [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] UI, use the following dialog boxes: 
   
--   For a folder, use the **Permissions** page of the [Folder Properties Dialog Box](../../integration-services/catalog/folder-properties-dialog-box.md).  
+-   For a folder, use the **Permissions** page of the [Folder Properties Dialog Box](ssis-catalog.md).  
   
--   For a project, use the **Permissions** page in the [Project Properties Dialog Box](../../integration-services/catalog/project-properties-dialog-box.md).  
+-   For a project, use the **Permissions** page in the [Project Properties Dialog Box](ssis-catalog.md).  
 
  To manage permissions using Transact-SQL, call [catalog.grant_permission &#40;SSISDB Database&#41;](../../integration-services/system-stored-procedures/catalog-grant-permission-ssisdb-database.md), [catalog.deny_permission &#40;SSISDB Database&#41;](../../integration-services/system-stored-procedures/catalog-deny-permission-ssisdb-database.md), and [catalog.revoke_permission &#40;SSISDB Database&#41;](../../integration-services/system-stored-procedures/catalog-revoke-permission-ssisdb-database.md). To view effective permissions for the current principal for all objects, query [catalog.effective_object_permissions &#40;SSISDB Database&#41;](../../integration-services/system-views/catalog-effective-object-permissions-ssisdb-database.md). This topic provides descriptions of the different types of permissions. To view permissions that have been explicitly assigned to the user, query [catalog.explicit_object_permissions &#40;SSISDB Database&#41;](../../integration-services/system-views/catalog-explicit-object-permissions-ssisdb-database.md).  
   
@@ -222,7 +222,7 @@ To run the **SSIS Server Maintenance Job**, SSIS creates the SQL Server login **
   
 ## Projects and Packages
 
- Each project can contain multiple packages. Both projects and packages can contain parameters and references to environments. You can access the parameters and environment references by using the [Configure Dialog Box](../../integration-services/catalog/configure-dialog-box.md).  
+ Each project can contain multiple packages. Both projects and packages can contain parameters and references to environments. You can access the parameters and environment references by using the [Configure Dialog Box](ssis-catalog.md).  
   
  You can carry out other project tasks by calling the following stored procedures: 
   

@@ -27,7 +27,7 @@ ms.custom:
   
 2.  In the **System Settings** section, click **Create Profile**.  
   
-3.  Complete all required fields. For more information, see [Create Database Mail Profile and Account Dialog Box &#40;Master Data Services Configuration Manager&#41;](../master-data-services/create-database-mail-profile-and-account-dialog-box.md).  
+3.  Complete all required fields. For more information, see [Create Database Mail Profile and Account Dialog Box &#40;Master Data Services Configuration Manager&#41;](master-data-services-overview-mds.md).  
   
 4.  Click **OK**.  
   

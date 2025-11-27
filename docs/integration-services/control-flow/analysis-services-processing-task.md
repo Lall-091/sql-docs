@@ -109,7 +109,7 @@ helpviewer_keywords:
  **New**  
  Create a new Analysis Services connection manager.  
   
- **Related Topics:** [Analysis Services Connection Manager](../../integration-services/connection-manager/analysis-services-connection-manager.md), [Add Analysis Services Connection Manager Dialog Box UI Reference](../../integration-services/connection-manager/add-analysis-services-connection-manager-dialog-box-ui-reference.md)  
+ **Related Topics:** [Analysis Services Connection Manager](../../integration-services/connection-manager/analysis-services-connection-manager.md), [Add Analysis Services Connection Manager Dialog Box UI Reference](../connection-manager/analysis-services-connection-manager.md)  
   
  **Object list**  
  

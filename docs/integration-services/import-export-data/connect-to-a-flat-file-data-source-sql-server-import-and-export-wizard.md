@@ -233,7 +233,7 @@ The following screen shot shows that, after you click **Suggest types**, the wiz
 
 ![Flat file connection advanced after](../../integration-services/import-export-data/media/flat-file-connection-advanced-after.png)
 
-For more info, see [Suggest Column Types Dialog Box UI Reference](../../integration-services/connection-manager/suggest-column-types-dialog-box-ui-reference.md).
+For more info, see [Suggest Column Types Dialog Box UI Reference](../connection-manager/file-connection-manager.md).
 
 ## Preview page (source)
 

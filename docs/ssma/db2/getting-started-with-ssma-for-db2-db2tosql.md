@@ -21,7 +21,7 @@ This article introduces the installation process, and then helps familiarize you
 
 ## Install SSMA
 
-To use SSMA, you first must install the SSMA client program on a computer that can access both the source Db2 database and the target instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. Db2 OLEDB providers on the computer that is running [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. These components support data migration and the emulation of Db2 system functions. For installation instructions, see [Install SSMA for Db2](installing-ssma-for-db2-db2tosql.md).
+To use SSMA, you first must install the SSMA client program on a computer that can access both the source Db2 database and the target instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. Db2 OLEDB providers on the computer that is running [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. These components support data migration and the emulation of Db2 system functions. For installation instructions, see [Install SSMA for Db2](installing-ssma-for-db2-client-db2tosql.md).
 
 To start SSMA, open the **Start** menu and navigate to **All Programs** > **SQL Server Migration Assistant for Db2**, and then select **SQL Server Migration Assistant for Db2**.
 

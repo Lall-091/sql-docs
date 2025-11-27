@@ -50,7 +50,7 @@ The following articles help you upgrade components of SQL Server:
 - [Upgrade and migrate Reporting Services](../../reporting-services/install-windows/upgrade-and-migrate-reporting-services.md) <sup>1</sup>
 - [Upgrade SQL Server Management Tools](upgrade-sql-server-management-tools.md)
 - [Upgrade SQL Server Using the Installation Wizard (Setup)](upgrade-sql-server-using-the-installation-wizard-setup.md)
-- [Upgrade to a different edition of SQL Server (Setup)](upgrade-to-a-different-edition-of-sql-server-setup.md)
+- [Upgrade to a different edition of SQL Server (Setup)](upgrade-downgrade-sql-server-edition-setup.md)
 - [SQL Server end of support options](../../sql-server/end-of-support/sql-server-end-of-support-overview.md)
 
 <sup>1</sup> DQS, MDS, and Reporting Services upgrades aren't supported on [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
@@ -65,4 +65,4 @@ The following articles help you upgrade components of SQL Server:
 - [Upgrade Master Data Services](upgrade-master-data-services.md)
 - [SQL Server 2008 R2 Best Practices Analyzer](https://www.microsoft.com/download/details.aspx?id=436)
 - [Discontinued Database Engine functionality in SQL Server](../discontinued-database-engine-functionality-in-sql-server.md)
-- [Upgrade to a different edition of SQL Server (Setup)](upgrade-to-a-different-edition-of-sql-server-setup.md)
+- [Upgrade to a different edition of SQL Server (Setup)](upgrade-downgrade-sql-server-edition-setup.md)

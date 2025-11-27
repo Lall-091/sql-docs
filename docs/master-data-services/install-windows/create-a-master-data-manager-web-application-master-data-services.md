@@ -48,7 +48,7 @@ ms.custom:
   
 3.  On the **Web Configuration** page, in the Website list, select **Create new website**.  
   
-4.  On the **Create Website** dialog box, specify information for a new website. For more information about the user interface (UI) options in the dialog box, see [Create Website Dialog Box &#40;Master Data Services Configuration Manager&#41;](../../master-data-services/create-website-dialog-box-master-data-services-configuration-manager.md).  
+4.  On the **Create Website** dialog box, specify information for a new website. For more information about the user interface (UI) options in the dialog box, see [Create Website Dialog Box &#40;Master Data Services Configuration Manager&#41;](../master-data-services-overview-mds.md).  
   
 5.  Click **OK**.  
   
@@ -65,7 +65,7 @@ ms.custom:
   
 4.  Click **Create Application**.  
   
-5.  On the **Create Web Application** dialog box, specify information for a new web application. For more information about the user interface (UI) options in the dialog box, see [Create Web Application Dialog Box &#40;Master Data Services Configuration Manager&#41;](../../master-data-services/create-web-application-dialog-box-master-data-services-configuration-manager.md).  
+5.  On the **Create Web Application** dialog box, specify information for a new web application. For more information about the user interface (UI) options in the dialog box, see [Create Web Application Dialog Box &#40;Master Data Services Configuration Manager&#41;](../master-data-services-overview-mds.md).  
   
 6.  Click **OK**.  
   

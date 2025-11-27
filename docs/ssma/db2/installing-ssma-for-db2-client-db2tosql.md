@@ -72,5 +72,5 @@ The default installation location is `C:\Program Files\Microsoft SQL Server Migr
 
 ## Related content
 
-- [Install SSMA Components on SQL Server (Db2ToSQL)](installing-ssma-components-on-sql-server-db2tosql.md)
+- [Install SSMA Components on SQL Server (Db2ToSQL)](installing-ssma-for-db2-client-db2tosql.md)
 - [Migrate Db2 Databases to SQL Server (Db2ToSQL)](migrating-db2-databases-to-sql-server-db2tosql.md)

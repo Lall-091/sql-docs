@@ -332,4 +332,4 @@ The ODBC driver on Linux supports [!INCLUDE[ssHADR](../../../includes/sshadr-md.
 
 The ODBC driver on Linux supports connections to Azure SQL Database.
 
-The `-l` option (login time out) has been added to `bcp`. For more information, see [Connecting with **bcp**](connecting-with-bcp.md).
+The `-l` option (login time out) has been added to `bcp`. For more information, see [Connecting with **bcp**](../../../tools/bcp-utility.md).

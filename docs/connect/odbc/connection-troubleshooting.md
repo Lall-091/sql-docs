@@ -35,4 +35,4 @@ For more information, see [DSN and Connection String Keywords and Attributes](ds
 ## Related content
 
 - [DSN and Connection String Keywords and Attributes](dsn-connection-string-attribute.md)
-- [Data Source Wizard Screen 4](windows/dsn-wizard-4.md)
+- [Data Source Wizard Screen 4](windows/odbc-administrator-dsn-creation.md)

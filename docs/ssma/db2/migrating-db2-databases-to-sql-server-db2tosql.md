@@ -51,5 +51,5 @@ To successfully migrate objects and data from Db2 databases to [!INCLUDE [ssNoVe
 
 ## Related content
 
-- [Install SSMA for Db2 (Db2ToSQL)](installing-ssma-for-db2-db2tosql.md)
+- [Install SSMA for Db2 (Db2ToSQL)](installing-ssma-for-db2-client-db2tosql.md)
 - [Get Started with SSMA for Db2 (Db2ToSQL)](getting-started-with-ssma-for-db2-db2tosql.md)
