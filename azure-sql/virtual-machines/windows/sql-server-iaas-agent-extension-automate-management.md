@@ -23,7 +23,7 @@ This article provides an overview of the extension. To install the SQL Server Ia
 
 To learn more about the SQL Server on Azure VM deployment and management experience, watch the following Data Exposed videos:
 
-- [Automate Management with the SQL Server IaaS Agent extension ](/shows/data-exposed/azure-sql-vm-automate-management-with-the-sql-server-iaas-agent-extension-ep-2?WT.mc_id=dataexposed-c9-niner-mighub)
+- [Automate Management with the SQL Server IaaS Agent extension](/shows/data-exposed/azure-sql-vm-automate-management-with-the-sql-server-iaas-agent-extension-ep-2?WT.mc_id=dataexposed-c9-niner-mighub)
 - [New and Improved SQL on Azure VM deployment and management experience](/shows/data-exposed/new-and-improved-sql-on-azure-vm-deployment-and-management-experience?WT.mc_id=dataexposed-c9-niner-mighub).
 
 [!INCLUDE [sql-vm-deployment-failure](../../includes/sql-vm-deployment-failure.md)]

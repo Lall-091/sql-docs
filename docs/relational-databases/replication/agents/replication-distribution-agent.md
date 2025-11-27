@@ -352,7 +352,7 @@ In [!INCLUDE [sssql17-md](../../../includes/sssql17-md.md)] CU 22 and later vers
 
 Before [!INCLUDE [sssql17-md](../../../includes/sssql17-md.md)] CU 22, `UseOledbStreaming` writes to the `C:\Program Files\Microsoft SQL Server\<version>\COM` folder.
 
-In [!INCLUDE [sssql19-md](../../../includes/sssql19-md.md)] CU 29, [!INCLUDE [ssSQL22](../../../includes/sssql22-md.md)] CU 16, and later versions, you can disable OLE DB streaming by updating `-UseOledbStreaming` to `0` to avoid the error mentioned in [Error message when you run the Distribution Agent in SQL Server]( /troubleshoot/sql/database-engine/replication/error-run-distribution-agent).
+In [!INCLUDE [sssql19-md](../../../includes/sssql19-md.md)] CU 29, [!INCLUDE [ssSQL22](../../../includes/sssql22-md.md)] CU 16, and later versions, you can disable OLE DB streaming by updating `-UseOledbStreaming` to `0` to avoid the error mentioned in [Error message when you run the Distribution Agent in SQL Server](/troubleshoot/sql/database-engine/replication/error-run-distribution-agent).
 
 ## Remarks
 

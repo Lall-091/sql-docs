@@ -89,7 +89,7 @@ For more information, see [The Always On Health Model Part 2--Extending the Heal
 
 - [Use Always On Policies to View the Health of an availability group](../../../database-engine/availability-groups/windows/use-always-on-policies-to-view-the-health-of-an-availability-group-sql-server.md)
 
-- [Use the availability group dashboard in SSMS ](../../../database-engine/availability-groups/windows/use-the-always-on-dashboard-sql-server-management-studio.md)
+- [Use the availability group dashboard in SSMS](../../../database-engine/availability-groups/windows/use-the-always-on-dashboard-sql-server-management-studio.md)
 
 - [WSFC Disaster Recovery through Forced Quorum](../../../sql-server/failover-clusters/windows/wsfc-disaster-recovery-through-forced-quorum-sql-server.md)
 

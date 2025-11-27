@@ -179,5 +179,5 @@ Choosing a [maintenance window](maintenance-window.md) for Azure SQL Managed Ins
 
 - [What's new in Azure SQL Managed Instance?](doc-changes-updates-release-notes-whats-new.md?view=azuresql-db&preserve-view=true)
 - [Azure products by region](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/)
-- [Move resources to new region ](move-resources-across-regions.md?view=azuresql-db&preserve-view=true)
+- [Move resources to new region](move-resources-across-regions.md?view=azuresql-db&preserve-view=true)
 - [Disaster recovery guidance](disaster-recovery-guidance.md)

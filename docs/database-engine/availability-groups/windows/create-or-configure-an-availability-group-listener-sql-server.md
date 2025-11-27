@@ -26,7 +26,7 @@ This article describes how to create or configure a single *availability group l
 
 **To determine whether a listener already exists for the availability group**
 
-- [View availability group Listener Properties ](view-availability-group-listener-properties-sql-server.md)
+- [View availability group Listener Properties](view-availability-group-listener-properties-sql-server.md)
 
 > [!NOTE]  
 > If a listener already exists and you want to create an additional listener, see [create an additional listener for an availability group](#CreateAdditionalListener), later in this article.
@@ -128,7 +128,7 @@ Displays the identifier of each subnet that you add to the availability group li
 Displays the IP address of a given subnet. For a given subnet, the IP address is either an IPv4 address or an IPv6 address.
 
 **Add**  
-Select to add a static IP address to a selected subnet or to another subnet for this listener. This opens the **Add IP Address** dialog box. For more information, see the [Add IP address dialog Box ](../../../database-engine/availability-groups/windows/add-ip-address-dialog-box-sql-server-management-studio.md) help article.
+Select to add a static IP address to a selected subnet or to another subnet for this listener. This opens the **Add IP Address** dialog box. For more information, see the [Add IP address dialog box](../../../database-engine/availability-groups/windows/add-ip-address-dialog-box-sql-server-management-studio.md) help article.
 
 **Remove**  
 Select to remove the selected subnet from this listener.
@@ -248,9 +248,9 @@ When you use [!INCLUDE [ssManStudioFull](../../../includes/ssmanstudiofull-md.md
 
 - Connection strings that set **MultiSubnetFailover** to true
 
-     [!INCLUDE [ssHADR](../../../includes/sshadr-md.md)] sets the **RegisterAllProvidersIP** property to 1 in order to reduce reconnection time after a failover for clients whose client connection strings specify `MultiSubnetFailover = True`, as recommended. To take advantage of the listener multi-subnet feature, your clients might require a data provider that supports the **MultiSubnetFailover** keyword. For information about driver support for multi-subnet failover, see [Always On Client Connectivity ](always-on-client-connectivity-sql-server.md).
+     [!INCLUDE [ssHADR](../../../includes/sshadr-md.md)] sets the **RegisterAllProvidersIP** property to 1 in order to reduce reconnection time after a failover for clients whose client connection strings specify `MultiSubnetFailover = True`, as recommended. To take advantage of the listener multi-subnet feature, your clients might require a data provider that supports the **MultiSubnetFailover** keyword. For information about driver support for multi-subnet failover, see [Always On Client Connectivity](always-on-client-connectivity-sql-server.md).
 
-     For information about multi-subnet clustering, see [SQL Server Multi-Subnet Clustering ](../../../sql-server/failover-clusters/windows/sql-server-multi-subnet-clustering-sql-server.md).
+     For information about multi-subnet clustering, see [SQL Server Multi-Subnet Clustering](../../../sql-server/failover-clusters/windows/sql-server-multi-subnet-clustering-sql-server.md).
 
     > [!TIP]  
     > When `RegisterAllProvidersIP = 1`, if you run the WSFC Validate a Configuration Wizard on the WSFC cluster, the wizard generates the following warning message:  
@@ -293,7 +293,7 @@ After you create an availability group listener:
 
 - Give the listener's DNS host name to application developers to use in connection strings when requesting client connections to this availability group.
 
-- Encourage developers to update client connection strings to specify `MultiSubnetFailover = True`, if possible. For information about driver support for multi-subnet failover, see [Always On Client Connectivity ](always-on-client-connectivity-sql-server.md).
+- Encourage developers to update client connection strings to specify `MultiSubnetFailover = True`, if possible. For information about driver support for multi-subnet failover, see [Always On Client Connectivity](always-on-client-connectivity-sql-server.md).
 
 ## <a name="CreateAdditionalListener"></a> Create an additional listener for an availability group (optional)
 

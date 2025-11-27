@@ -35,7 +35,7 @@ In this quickstart, you install [!INCLUDE [ssnoversion-md](../includes/ssnoversi
    - [Ubuntu](quickstart-install-connect-ubuntu.md)
    - [Windows Subsystem for Linux (WSL 2)](quickstart-install-connect-wsl-2.md)
 1. Configure for remote connections:
-   - Open the [Amazon EC2 console]( https://console.aws.amazon.com/ec2/)
+   - Open the [Amazon EC2 console](https://console.aws.amazon.com/ec2/)
    - In the navigation pane, choose **Security Groups**.
    - Choose **Inbound, Edit, Add Rule**
    - Add an inbound rule to allow traffic on the port on which [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] listens (default TCP port 1433)
