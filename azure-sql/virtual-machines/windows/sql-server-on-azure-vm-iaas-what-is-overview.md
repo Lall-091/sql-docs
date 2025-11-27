@@ -61,7 +61,7 @@ For videos about the latest features to optimize SQL Server VM performance and a
 
 - [Caching and Storage Capping](/shows/data-exposed/azure-sql-vm-caching-and-storage-capping-ep-1-data-exposed)
 - [Automate Management with the SQL Server IaaS Agent extension](/shows/data-exposed/azure-sql-vm-automate-management-with-the-sql-server-iaas-agent-extension-ep-2)
-- [Use Azure Monitor Metrics to Track VM Cache Health ](/shows/data-exposed/azure-sql-vm-use-azure-monitor-metrics-to-track-vm-cache-health-ep-3)
+- [Use Azure Monitor Metrics to Track VM Cache Health](/shows/data-exposed/azure-sql-vm-use-azure-monitor-metrics-to-track-vm-cache-health-ep-3)
 - [Get the best price-performance for your SQL Server workloads on Azure VM](/shows/data-exposed/azure-sql-vm-get-the-best-price-performance-for-your-sql-server-workloads-on-azure-vm)
 - [Using PerfInsights to Evaluate Resource Health and Troubleshoot](/shows/data-exposed/azure-sql-vm-using-perfinsights-to-evaluate-resource-health-and-troubleshoot-ep-5)
 - [Best Price-Performance with Ebdsv5 Series](/shows/data-exposed/azure-sql-vm-best-price-performance-with-ebdsv5-series)

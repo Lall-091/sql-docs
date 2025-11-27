@@ -26,7 +26,7 @@ If you prefer, you can [manually configure an availability group](availability-g
 
 View related articles:
 
-- [Configure Always On availability groups in Azure VM ](availability-group-manually-configure-tutorial-single-subnet.md)
+- [Configure Always On availability groups in Azure VM](availability-group-manually-configure-tutorial-single-subnet.md)
 - [Configure a VNet-to-VNet connection by using Azure Resource Manager and PowerShell](/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps)
 
 By walking through this article, you create and configure a load balancer in the Azure portal. After the process is complete, you configure the cluster to use the IP address from the load balancer for the availability group listener.

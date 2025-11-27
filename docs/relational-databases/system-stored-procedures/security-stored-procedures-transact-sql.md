@@ -26,7 +26,7 @@ monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-20
 
 :::row:::
     :::column:::
-        [sys.sp_add_trusted_assembly]( sys-sp-add-trusted-assembly-transact-sql.md)  
+        [sys.sp_add_trusted_assembly](sys-sp-add-trusted-assembly-transact-sql.md)  
     :::column-end:::
     :::column:::
         [sp_addapprole](sp-addapprole-transact-sql.md) (Deprecated)
@@ -122,7 +122,7 @@ monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-20
 :::row-end:::
 :::row:::
     :::column:::
-        [sys.sp_drop_trusted_assembly]( sys-sp-drop-trusted-assembly-transact-sql.md)  
+        [sys.sp_drop_trusted_assembly](sys-sp-drop-trusted-assembly-transact-sql.md)  
     :::column-end:::
     :::column:::
         [sp_dropapprole](sp-dropapprole-transact-sql.md) (Deprecated)  

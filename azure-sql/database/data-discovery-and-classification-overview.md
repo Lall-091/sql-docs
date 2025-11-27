@@ -283,7 +283,7 @@ You can use the REST API to programmatically manage classifications and recommen
 - [Delete](/rest/api/sql/sensitivity-labels/delete): Deletes the sensitivity label of the specified column.
 - [Disable Recommendation](/rest/api/sql/sensitivity-labels/disable-recommendation): Disables sensitivity recommendations on the specified column.
 - [Enable Recommendation](/rest/api/sql/sensitivity-labels/enable-recommendation): Enables sensitivity recommendations on the specified column. (Recommendations are enabled by default on all columns.)
-- [Get]( /rest/api/sql/sensitivity-labels/get): Gets the sensitivity label of the specified column.
+- [Get](/rest/api/sql/sensitivity-labels/get): Gets the sensitivity label of the specified column.
 - [List Current By Database](/rest/api/sql/sensitivity-labels/list-current-by-database): Gets the current sensitivity labels of the specified database.
 - [List Recommended By Database](/rest/api/sql/sensitivity-labels/list-recommended-by-database): Gets the recommended sensitivity labels of the specified database.
 

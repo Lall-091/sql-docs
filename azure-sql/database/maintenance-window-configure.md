@@ -155,8 +155,7 @@ When setting the maintenance window, each region has its own maintenance window 
 
 #### Discover SQL Database and elastic pool maintenance windows
 
-The following example returns the available maintenance windows for the *eastus2* region using the [az maintenance public-configuration list
-](/cli/azure/maintenance/public-configuration#az-maintenance-public-configuration-list) command. For databases and elastic pools, set `maintenanceScope` to `SQLDB`.
+The following example returns the available maintenance windows for the *eastus2* region using the [az maintenance public-configuration list](/cli/azure/maintenance/public-configuration#az-maintenance-public-configuration-list) command. For databases and elastic pools, set `maintenanceScope` to `SQLDB`.
 
    ```azurecli
    location="eastus2"

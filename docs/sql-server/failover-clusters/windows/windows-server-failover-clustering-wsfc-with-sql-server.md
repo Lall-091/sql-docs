@@ -137,7 +137,7 @@ A *quorum mode* is configured in the WSFC that dictates the methodology used for
 > [!TIP]  
 > It is a best practice to always have an odd number of quorum votes in a WSFC. For the purposes of quorum voting, [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] does not have to be installed on all nodes in the cluster. An additional server can act as a quorum member, or the WSFC quorum model can be configured to use a remote file share as a tie-breaker.  
 >  
-> For more information, see: [WSFC Quorum Modes and Voting Configuration ](wsfc-quorum-modes-and-voting-configuration-sql-server.md).
+> For more information, see: [WSFC Quorum Modes and Voting Configuration](wsfc-quorum-modes-and-voting-configuration-sql-server.md).
 
 ### Disaster recovery through forcing quorum
 
@@ -147,7 +147,7 @@ If the WSFC goes offline because of an unplanned disaster, or due to a persisten
 
 Afterwards, a series of steps must also be taken to reconfigure the WSFC, recover the affected database replicas, and to re-establish a new quorum.
 
-For more information, see: [WSFC Disaster Recovery through Forced Quorum ](wsfc-disaster-recovery-through-forced-quorum-sql-server.md).
+For more information, see: [WSFC Disaster Recovery through Forced Quorum](wsfc-disaster-recovery-through-forced-quorum-sql-server.md).
 
 ## <a name="AlwaysOnWsfcRelationship"></a> Relationship of SQL Server Always On components to WSFC
 
@@ -167,7 +167,7 @@ The WSFC mechanisms propagate changes to WSFC configuration metadata and status 
 
 [!INCLUDE [ssHADR](../../../includes/sshadr-md.md)] registry keys are subkeys of the WSFC cluster.
 
-If you delete and re-create a WSFC, you must disable and re-enable the [!INCLUDE [ssHADR](../../../includes/sshadr-md.md)] feature on each server instance that was enabled for [!INCLUDE [ssHADR](../../../includes/sshadr-md.md)] on the original WSFC. For more information, see [Enable and Disable Always On availability groups ](../../../database-engine/availability-groups/windows/enable-and-disable-always-on-availability-groups-sql-server.md).
+If you delete and re-create a WSFC, you must disable and re-enable the [!INCLUDE [ssHADR](../../../includes/sshadr-md.md)] feature on each server instance that was enabled for [!INCLUDE [ssHADR](../../../includes/sshadr-md.md)] on the original WSFC. For more information, see [Enable and Disable Always On availability groups](../../../database-engine/availability-groups/windows/enable-and-disable-always-on-availability-groups-sql-server.md).
 
 :::image type="content" source="media/windows-server-failover-clustering-wsfc-with-sql-server/always-on-component-context-diagram.gif" alt-text="Screenshot of Windows Server failover cluster." lightbox="media/windows-server-failover-clustering-wsfc-with-sql-server/always-on-component-context-diagram.gif":::
 

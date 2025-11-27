@@ -115,8 +115,7 @@ When setting the maintenance window, each region has its own maintenance window 
 
 #### Discover SQL Managed Instance maintenance windows
 
-The following example returns the available maintenance windows for the *eastus2* region using the [az maintenance public-configuration list
-](/cli/azure/maintenance/public-configuration#az-maintenance-public-configuration-list) command. For managed instances, set `maintenanceScope` to `SQLManagedInstance`.
+The following example returns the available maintenance windows for the *eastus2* region using the [az maintenance public-configuration list](/cli/azure/maintenance/public-configuration#az-maintenance-public-configuration-list) command. For managed instances, set `maintenanceScope` to `SQLManagedInstance`.
 
 ```azurecli
 az maintenance public-configuration list --query "[?location=='eastus2'&&contains(maintenanceScope,'SQLManagedInstance')]"

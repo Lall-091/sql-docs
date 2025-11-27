@@ -15,7 +15,7 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 [!INCLUDE [sql-asdb-asa](../includes/applies-to-version/sql-asdb-asa.md)]
 
 > [!IMPORTANT]  
-> You can download the [SQL Server Integration Services (SSIS)](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) extension from the [Visual Studio Marketplace](<https://marketplace.visualstudio.com/>).
+> You can download the [SQL Server Integration Services (SSIS)](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) extension from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
 
 Visit the [SQL Server Integration Services (SSIS) Blog](https://techcommunity.microsoft.com/category/sql-server/blog/ssis) for the latest information, tips, news, and announcements about SSIS directly from the product team. Integration Services (SSIS) extension release notes are listed on the [extension marketplace](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects).
 

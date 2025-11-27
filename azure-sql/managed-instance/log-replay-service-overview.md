@@ -127,7 +127,7 @@ Use continuous mode migration when you don't have the entire backup chain in adv
 If you're migrating large databases of several terabytes in size, consider the following points:
 
 - A single LRS job can run for a maximum of 30 days. When this period expires, the job is automatically canceled.
-- For long-running jobs, system updates can interrupt and prolong migration jobs. We highly recommend that you use a [maintenance window]( maintenance-window.md) to schedule planned system updates. Plan your migration around the scheduled maintenance window.
+- For long-running jobs, system updates can interrupt and prolong migration jobs. We highly recommend that you use a [maintenance window](maintenance-window.md) to schedule planned system updates. Plan your migration around the scheduled maintenance window.
 - Migration jobs that are interrupted by system updates automatically suspend and resume for **General Purpose** SQL managed instances, and they restart for **Business Critical** SQL managed instances. These updates affect the timeframe of your migration.
 - To increase the upload speed of your SQL Server backup files to the Blob Storage account, if your infrastructure has sufficient network bandwidth, consider using parallelization with multiple threads.
 
