@@ -88,7 +88,7 @@ Page|Recommendation  |Type
  Specify whether the first row (after any skipped rows) contains column names.
 
 ## Columns page - Format = Delimited (source)
- On the **Columns** page, verify the list of columns and the delimiters that the wizard has identified. The following screen shot shows the page when you've selected **Delimited** as the flat file format.
+ On the **Columns** page, verify the list of columns and the delimiters that the wizard has identified. The following screenshot shows the page when you've selected **Delimited** as the flat file format.
  
 ![Flat file, delimited, Columns page](../../integration-services/import-export-data/media/flat-file-delimited-columns-page.jpg)
 
@@ -132,7 +132,7 @@ Page|Recommendation  |Type
  Restore the original columns.  
 
 ## Columns page - Format = Fixed Width (source)
-On the **Columns** page, verify the list of columns and the delimiters that the wizard has identified. The following screen shot shows the page when you've selected **Fixed Width** as the flat file format.
+On the **Columns** page, verify the list of columns and the delimiters that the wizard has identified. The following screenshot shows the page when you've selected **Fixed Width** as the flat file format.
   
 ![Flat file, fixed width, Columns page](../../integration-services/import-export-data/media/flat-file-fixed-width-columns-page.jpg)
 
@@ -151,7 +151,7 @@ On the **Columns** page, verify the list of columns and the delimiters that the 
  Restore the original columns.  
   
 ## Columns page - Format = Ragged Right (source)
-On the **Columns** page, verify the list of columns and the delimiters that the wizard has identified. The following screen shot shows the page when you've selected **Ragged Right** as the flat file format.
+On the **Columns** page, verify the list of columns and the delimiters that the wizard has identified. The following screenshot shows the page when you've selected **Ragged Right** as the flat file format.
 
 > [!NOTE]
 > Ragged right files are files in which every column has a fixed width, except for the last column, which is delimited by the row delimiter.  
@@ -184,11 +184,11 @@ On the **Columns** page, verify the list of columns and the delimiters that the 
  Restore the original columns.  
 
 ## Advanced page (source)
-The **Advanced** page shows detailed info about each column in the data source, including its data type and size. The following screen shot shows the **Advanced** page for the first column in a delimited flat file.
+The **Advanced** page shows detailed info about each column in the data source, including its data type and size. The following screenshot shows the **Advanced** page for the first column in a delimited flat file.
 
 ![Flat file, delimited, Advanced page](../../integration-services/import-export-data/media/flat-file-delimited-advanced-page.jpg)
 
-In the screen shot, notice that the **id** column, which contains numbers, initially has a data type of string.
+In the screenshot, notice that the **id** column, which contains numbers, initially has a data type of string.
 
 ### Options to specify (**Advanced** page)
 
@@ -228,7 +228,7 @@ Click **Suggest types** to display the **Suggest Column Types** dialog box.
 
 After you choose options in the **Suggest Column Types** dialog box and click **OK**, the wizard may change the data types of some of the columns.
 
-The following screen shot shows that, after you click **Suggest types**, the wizard has recognized that the **id** column in the data source is in fact a number and not a text string, and has changed the data type of the column from a string to an integer.
+The following screenshot shows that, after you click **Suggest types**, the wizard has recognized that the **id** column in the data source is in fact a number and not a text string, and has changed the data type of the column from a string to an integer.
 
 ![Flat file connection advanced after](../../integration-services/import-export-data/media/flat-file-connection-advanced-after.png)
 
@@ -254,7 +254,7 @@ On the **Preview** page, verify that the list of columns and the sample data are
 For more info about the **Preview** page, see the following Integration Services reference page - [Flat File Connection Manager Editor &#40;Preview Page&#41;](../connection-manager/flat-file-connection-manager.md).
 
 ## Connect to a flat file destination
-For a flat file destination, there's only a single page of options, as shown in the following screen shot. Browse to select the file, then verify the settings in the **Format** section.
+For a flat file destination, there's only a single page of options, as shown in the following screenshot. Browse to select the file, then verify the settings in the **Format** section.
 
 ![Connect to flat file destination](../../integration-services/import-export-data/media/connect-to-flat-file-destination.jpg)
 
