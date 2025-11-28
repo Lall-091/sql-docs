@@ -1,13 +1,13 @@
 ---
-title: Replication subscribers and Always On availability groups (SQL Server)
+title: "Replication Subscribers and Always on Availability Groups (SQL Server)"
 description: Learn what happens if an Always On availability group containing a database that is a replication subscriber fails over in SQL Server.
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: randolphwest
-ms.date: 03/13/2023
+ms.reviewer: mlandzic, randolphwest
+ms.date: 11/28/2025
 ms.service: sql
 ms.subservice: availability-groups
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "failover subscribers with AlwaysOn"
   - "failover subscribers with Always On"
@@ -23,7 +23,7 @@ When an Always On availability group (AG) fails over, containing a database that
 
 ## What is supported
 
-[!INCLUDE[ssNoVersion](../../../includes/ssnoversion-md.md)] replication supports the automatic failover of the publisher and the automatic failover of transactional subscribers. Merge subscribers can be part of an AG, however manual actions are required to configure the new subscriber after a failover. AGs can't be combined with WebSync and SQL Server Compact scenarios.
+[!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] replication supports the automatic failover of the publisher and the automatic failover of transactional subscribers. Merge subscribers can be part of an AG. However, manual actions are required to configure the new subscriber after a failover. AGs can't be combined with WebSync and SQL Server Compact scenarios.
 
 ## Create a transactional subscription in an availability group
 
@@ -33,10 +33,10 @@ For transactional replication, use the following steps to configure and fail ove
 
 1. Add the subscriber's AG listener as a linked server to all nodes of the AG. This step ensures that all potential failover partners are aware of and can connect to the listener.
 
-1. Using the script in the [Create a transactional replication push subscription](#create-a-transactional-replication-push-subscription) section, create the subscription using the name of the AG listener of the subscriber. After a failover, the listener name will always remain valid, whereas the actual server name of the subscriber will depend on the actual node that became the new primary.
+1. Using the script in the [Create a transactional replication push subscription](#create-a-transactional-replication-push-subscription) section, create the subscription using the name of the AG listener of the subscriber. After a failover, the listener name always remains valid, whereas the actual server name of the subscriber depends on the actual node that became the new primary.
 
    > [!NOTE]  
-   > The subscription must be created by using a [!INCLUDE[tsql](../../../includes/tsql-md.md)] script and cannot be created using [!INCLUDE[ssManStudio](../../../includes/ssmanstudio-md.md)].
+   > You must use a [!INCLUDE [tsql](../../../includes/tsql-md.md)] script to create the subscription. You can't use [!INCLUDE [ssManStudio](../../../includes/ssmanstudio-md.md)].
 
 1. To create a pull subscription:
 
@@ -44,7 +44,7 @@ For transactional replication, use the following steps to configure and fail ove
 
    1. After a failover, create the distribution agent job on the new primary replica using the `sp_addpullsubscription_agent` stored procedure.
 
-When you create a pull subscription, with the subscription database in an AG, after every failover, it is recommended to disable the distribution agent job on the old primary replica and enable the job on the new primary replica.
+When you create a pull subscription with the subscription database in an AG, after every failover, you should disable the distribution agent job on the old primary replica and enable the job on the new primary replica.
 
 ## Create a transactional replication push subscription
 
@@ -62,7 +62,7 @@ EXEC sp_addsubscription @publication = N'<publication name>',
     @update_mode = N'read only',
     @subscriber_type = 0;
 GO
-  
+
 EXEC sp_addpushsubscription_agent @publication = N'<publication name>',
     @subscriber = N'<AG listener name>',
     @subscriber_db = N'<subscriber database name>',
@@ -86,7 +86,7 @@ EXEC sp_addpullsubscription @publisher = N'<publisher name>',
 GO
 
 EXEC sp_addpullsubscription_agent @publisher = N'<publisher name>',
-    @subscriber = N'<AG listener name>',
+    @subscriber = N'<AG listener name or alias>',
     @distributor = N'<distributor AG listener name>', -- this parameter should only be used if the distribution database is part of an AG.
     @publisher_db = N'<publisher database name>',
     @publication = N'<publication name>',
@@ -96,8 +96,11 @@ EXEC sp_addpullsubscription_agent @publisher = N'<publisher name>',
 GO
 ```
 
-> [!NOTE]  
-> When running [sp_addpullsubscription_agent](../../../relational-databases/system-stored-procedures/sp-addpullsubscription-agent-transact-sql.md) for a subscriber that is part of an AG, you must pass the `@Subscriber` parameter value to the stored procedure as the AG listener name. If you are running [!INCLUDE[sssql15-md](../../../includes/sssql16-md.md)] and earlier versions, or [!INCLUDE[sssql17-md](../../../includes/sssql17-md.md)] prior to CU 16, the stored procedure will not reference the AG listener name; it will be created with the subscriber server name on which the command is executed. To resolve this issue, manually update the `@Subscriber` parameter on the [Distribution Agent job](../../../relational-databases/replication/agents/replication-distribution-agent.md) with the AG listener name value.
+### Availability group listener requirement
+
+When you run [sp_addpullsubscription_agent](../../../relational-databases/system-stored-procedures/sp-addpullsubscription-agent-transact-sql.md) for a subscriber that's part of an AG, you must pass the `@subscriber` parameter value to the stored procedure as the AG listener name. If you run [!INCLUDE [sssql16-md](../../../includes/sssql16-md.md)] and earlier versions, or [!INCLUDE [sssql17-md](../../../includes/sssql17-md.md)] before CU 16, the stored procedure doesn't reference the AG listener name. It creates the subscription with the subscriber server name on which the command is executed. To resolve this issue, manually update the `@subscriber` parameter on the [Replication Distribution Agent](../../../relational-databases/replication/agents/replication-distribution-agent.md) with the AG listener name value.
+
+If the subscriber AG listener uses a non-default port, providing port number as part of the AG listener name in the `@subscriber` parameter isn't supported on Windows. As a workaround, you can create an alias for the listener and port on publisher, distributor, and subscriber server using [Aliases (SQL Server Configuration Manager)](../../../tools/configuration-manager/aliases-sql-server-configuration-manager.md) or the [SQL Server Client Network Utility tool (cliconfg)](/previous-versions/windows/desktop/odbc/dn170508(v=vs.85)) for [!INCLUDE [sssql22-md](../../../includes/sssql22-md.md)] and later versions, and pass the alias as the `@subscriber` parameter value.
 
 ## Resume the merge agents after the availability group of the subscriber fails over
 
@@ -108,10 +111,10 @@ For merge replication, a replication administrator must manually reconfigure the
 1. Recreate the subscription by creating a new subscription, beginning with a new snapshot.
 
 > [!NOTE]  
-> The current process is inconvenient for merge replication subscribers, however the main scenario for merge replication is disconnected users (desktops, laptops, handset devices) which will not use AGs on the subscriber.
+> This process is inconvenient for merge replication subscribers. However, the main scenario for merge replication is disconnected users (desktops, laptops, handset devices), which don't use AGs on the subscriber.
 
-## See also
+## Related content
 
-- [Replication subscribers](../../../relational-databases/replication/subscribers.md)
+- [Subscribers](../../../relational-databases/replication/subscribers.md)
 - [Replication tutorials](../../../relational-databases/replication/replication-tutorials.md)
-- [Distribution database](../../../relational-databases/replication/distribution-database.md)
+- [Distribution Database](../../../relational-databases/replication/distribution-database.md)
