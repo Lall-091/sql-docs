@@ -3,7 +3,7 @@ title: "sys.columns (Transact-SQL)"
 description: sys.columns (Transact-SQL)
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 05/01/2025
+ms.date: 11/28/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -56,8 +56,8 @@ Returns a row for each column of an object that has columns, such as views or ta
 | `is_dts_replicated` | **bit** | `1` = Column is replicated by using [!INCLUDE [ssIS](../../includes/ssis-md.md)] |
 | `is_xml_document` | **bit** | `1` = Content is a complete XML document<br /><br />`0` = Content is a document fragment, or the column data type isn't **xml** |
 | `xml_collection_id` | **int** | Nonzero if the data type of the column is **xml** and the XML is typed. The value is the ID of the collection containing the validating XML schema namespace of the column<br /><br />`0` = No XML schema collection |
-| `default_object_id` | **int** | ID of the default object, regardless of whether it's a stand-alone object [sp_bindefault](../system-stored-procedures/sp-bindefault-transact-sql.md), or an inline, column-level `DEFAULT` constraint. The parent_object_id column of an inline column-level default object is a reference back to the table itself.<br /><br />`0` = No default |
-| `rule_object_id` | **int** | ID of the stand-alone rule bound to the column by using `sys.sp_bindrule.`<br /><br />`0` = No stand-alone rule. For column-level `CHECK` constraints, see [sys.check_constraints](sys-check-constraints-transact-sql.md). |
+| `default_object_id` | **int** | ID of the default object, regardless of whether it's a stand-alone object [sp_bindefault](../system-stored-procedures/sp-bindefault-transact-sql.md), or an inline, column-level `DEFAULT` constraint. The `parent_object_id` column of an inline column-level default object is a reference back to the table itself.<br /><br />`0` = No default |
+| `rule_object_id` | **int** | ID of the stand-alone rule bound to the column by using `sys.sp_bindrule`.<br /><br />`0` = No stand-alone rule. For column-level `CHECK` constraints, see [sys.check_constraints](sys-check-constraints-transact-sql.md). |
 | `is_sparse` | **bit** | `1` = Column is a sparse column. For more information, see [Use sparse columns](../tables/use-sparse-columns.md). |
 | `is_column_set` | **bit** | `1` = Column is a column set. For more information, see [Use sparse columns](../tables/use-sparse-columns.md). |
 | `generated_always_type` | **tinyint** | Identifies when the column value is generated (is always `0` for columns in system tables).<br /><br />**Applies to**: [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] and later versions, and [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)].<br /><br />`0` = `NOT_APPLICABLE`<br />`1` = `AS_ROW_START`<br />`2` = `AS_ROW_END`<br /><br />**Applies to**: [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, and [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)].<br /><br />`5` = `AS_TRANSACTION_ID_START`<br />`6` = `AS_TRANSACTION_ID_END`<br />`7` = `AS_SEQUENCE_NUMBER_START`<br />`8` = `AS_SEQUENCE_NUMBER_END`<br /><br />For more information, see [Temporal tables](../tables/temporal-tables.md). |
@@ -75,43 +75,45 @@ Returns a row for each column of an object that has columns, such as views or ta
 | `ledger_view_column_type` | **int** | If not `NULL`, indicates the type of a column in a ledger view:<br /><br />`1` = `TRANSACTION_ID`<br />`2` = `SEQUENCE_NUMBER`<br />`3` = `OPERATION_TYPE`<br />`4` = `OPERATION_TYPE_DESC`<br /><br />For more information, see [Ledger overview](/azure/azure-sql/database/ledger-overview).<br /><br />**Applies to**: [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, and [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)] |
 | `ledger_view_column_type_desc` | **nvarchar(60)** | If not `NULL`, contains a textual description of the type of a column in a ledger view:<br /><br />`TRANSACTION_ID`<br />`SEQUENCE_NUMBER`<br />`OPERATION_TYPE`<br />`OPERATION_TYPE_DESC`<br /><br />**Applies to**: [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, and [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)] |
 | `is_dropped_ledger_column` | **bit** | Indicates a ledger table column that was dropped.<br /><br />**Applies to**: [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, and [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)] |
-| `vector_dimensions` | **int** | Indicates how many dimensions the vector has<br /><br />**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, and [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)] |
-| `vector_base_type` | **int** | Indicates the data type used to store vector dimensions values.<br />`0` = 32-bits (single-precision) float <br />`1` = 16-bit ([half-precision](https://en.wikipedia.org/wiki/Half-precision_floating-point_format)) float<br /><br />**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, and [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)] |
-| `vector_base_type_desc` | **int** | Contains the textual description of the data type used to store vector dimensions values.<br /><br />**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, and [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)] |
+| `vector_dimensions` | **int** | Indicates how many dimensions the vector has.<br /><br />**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, and [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)] |
+| `vector_base_type` | **tinyint** | Indicates the data type used to store vector dimensions values.<br /><br />`0` = 32-bit (single-precision) float<br />`1` = 16-bit (half-precision) float <sup>1</sup><br /><br />**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, and [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)] |
+| `vector_base_type_desc` | **nvarchar(10)** | Contains the textual description of the data type used to store vector dimensions values.<br /><br />**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, and [!INCLUDE [ssSDS_md](../../includes/sssds-md.md)] |
+
+<sup>1</sup> For more information, see [Half-precision floating-point format](https://wikipedia.org/wiki/Half-precision_floating-point_format).
 
 ## Permissions
 
-[!INCLUDE [ssCatViewPerm](../../includes/sscatviewperm-md.md)] For more information, see [Metadata Visibility Configuration](../security/metadata-visibility-configuration.md).
+[!INCLUDE [ssCatViewPerm](../../includes/sscatviewperm-md.md)] For more information, see [Metadata visibility configuration](../security/metadata-visibility-configuration.md).
 
 ## Usage examples
 
 ### Get column details for a table
 
-To get metadata for columns in a table you can use the following code:
+To get metadata for columns in a table, use the following code:
 
 ```sql
-CREATE TABLE dbo.[sample] (
-    id INT NOT NULL
-    ,col1 VARBINARY(10) NULL
-    )
-GO
+CREATE TABLE dbo.[sample]
+(
+    id INT NOT NULL,
+    col1 VARBINARY (10) NULL
+);
 
-SELECT c.[name] AS column_name
-    ,t.[name] AS [type_name]
-    ,c.[max_length]
-    ,c.[precision]
-    ,c.[scale]
-FROM sys.columns c
-INNER JOIN sys.types t ON c.user_type_id = t.user_type_id
+SELECT c.[name] AS column_name,
+       t.[name] AS [type_name],
+       c.[max_length],
+       c.[precision],
+       c.[scale]
+FROM sys.columns AS c
+     INNER JOIN sys.types AS t
+         ON c.user_type_id = t.user_type_id
 WHERE object_id = object_id('dbo.sample');
 ```
 
 ## Related content
 
-- [Object Catalog Views (Transact-SQL)](object-catalog-views-transact-sql.md)
+- [Object catalog views (Transact-SQL)](object-catalog-views-transact-sql.md)
 - [System catalog views (Transact-SQL)](catalog-views-transact-sql.md)
 - [Querying the SQL Server System Catalog FAQ](querying-the-sql-server-system-catalog-faq.yml)
 - [sys.all_columns (Transact-SQL)](sys-all-columns-transact-sql.md)
 - [sys.system_columns (Transact-SQL)](sys-system-columns-transact-sql.md)
 - [sys.types (Transact-SQL)](sys-types-transact-sql.md)
-
