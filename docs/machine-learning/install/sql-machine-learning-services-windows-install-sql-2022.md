@@ -158,7 +158,7 @@ Beginning with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], runtimes f
 
     ```cmd
     cd "C:\Program Files\Python310\"
-    python -m pip install -t "C:\Program Files\Python310\Lib\site-packages" dill numpy==1.22.0 pandas patsy python-dateutil
+    python -m pip install -t "C:\Program Files\Python310\Lib\site-packages" dill numpy==1.22.0 pandas patsy python-dateutil packaging
     python -m pip install -t "C:\Program Files\Python310\Lib\site-packages" https://aka.ms/sqlml/python3.10/windows/revoscalepy-10.0.1-py3-none-any.whl
     ```
 

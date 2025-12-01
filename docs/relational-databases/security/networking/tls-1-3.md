@@ -3,10 +3,10 @@ title: TLS 1.3 support
 description: This article discusses TLS 1.3 support with SQL Server 2022 and Azure SQL Database.
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.date: 11/18/2025
+ms.date: 11/24/2025
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 monikerRange: ">=sql-server-ver16 || =azuresqldb-mi-current || =azuresqldb-current || >=sql-server-linux-ver16 || =fabric-sqldb"
@@ -61,6 +61,7 @@ Currently, the following operating systems support TLS 1.3:
 - [Merge replication](../../replication/merge/merge-replication.md#configure-tls-13-encryption)
 - [Snapshot replication](../../replication/snapshot-replication.md#configure-tls-13-encryption)
 - [Log shipping](../../../database-engine/log-shipping/about-log-shipping-sql-server.md#enforce-tls-13-encryption)
+- [Database Mail](../../database-mail/database-mail.md)
 
 ### Setup limitations
 
@@ -93,6 +94,8 @@ SQL Server 2025 introduces secure-by-default configurations for several features
 - **Log shipping**: Uses Microsoft OLE DB Driver for SQL Server version 19 with `Encrypt=Mandatory` and requires valid server certificates. When performing an in-place upgrade from a lower version, which doesn't support the latest security configurations, if encryption settings aren't explicitly overridden with a more secure option, log shipping will use `TrustServerCertificate=True` to allow for backwards compatibility. To enforce TLS 1.3 and `Encrypt=Strict` with TDS 8.0 after upgrading, drop and recreate the topology with the updated parameters in the log shipping stored procedures.
 
 - **Replication**: (Transactional, Snapshot, Merge) Uses Microsoft OLE DB Driver for SQL Server version 19 with `Encrypt=Mandatory` and requires valid certificates with `TrustServerCertificate=False`.
+
+- **Database Mail**: The default settings are `Encrypt=Optional` and `TrustServerCertificate=True`. When TLS 1.3 is enforced, these values change to `Encrypt=Strict` and `TrustServerCertificate=False`. By default, Azure SQL Managed Instance uses the TLS 1.3 protocol.
 
 - **PolyBase**: Uses ODBC Driver for SQL Server version 18 with `Encrypt=Yes` (`Mandatory`). PolyBase allows `TrustServerCertificate=True` for self-signed scenarios.
 
