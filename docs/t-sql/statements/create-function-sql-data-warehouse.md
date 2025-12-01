@@ -4,7 +4,7 @@ description: User-defined functions accept parameters, perform an action, such a
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: jovanpop, srdjanmatin
-ms.date: 11/03/2025
+ms.date: 12/01/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -651,7 +651,7 @@ In an inline table-valued function (preview), only a single select statement is 
 
  User-defined functions cannot be used to perform actions that modify the database state.  
 
- User-defined functions can be nested; that is, one user-defined function can call another. The nesting level is incremented when the called function starts execution, and decremented when the called function finishes execution. Exceeding the maximum levels of nesting causes the whole calling function chain to fail. In Microsoft Fabric Data Warehouse, user-defined functions can be nested up to five levels.
+ User-defined functions can be nested; that is, one user-defined function can call another. The nesting level is incremented when the called function starts execution, and decremented when the called function finishes execution. Exceeding the maximum levels of nesting causes the whole calling function chain to fail.
 
  Objects, including functions, cannot be created in the `master` database of your serverless SQL pool in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)].
 
