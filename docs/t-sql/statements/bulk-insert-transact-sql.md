@@ -4,7 +4,7 @@ description: Transact-SQL reference for the BULK INSERT statement.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest, wiassaf
-ms.date: 11/26/2025
+ms.date: 12/01/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -126,7 +126,7 @@ The `BULK INSERT` statement has different arguments and options in different pla
 | --- | --- |
 | Data source | Local path, Network path (UNC), or Azure Storage | Azure Storage | Azure Storage, One Lake |
 | Source authentication | Windows authentication, SAS | Microsoft Entra ID, SAS token, managed identity | Microsoft Entra ID |
-| Unsupported options | `*` wildcards in path | `*` wildcards in path | `DATA_SOURCE`, `FORMATFILE_DATA_SOURCE`, `ERRORFILE`, `ERRORFILE_DATA_SOURCE` |
+| Unsupported options | `*` wildcards in path | `*` wildcards in path | `DATAFILETYPE = {'native' | 'widenative'}` |
 | Enabled options but without effect | | | `KEEPIDENTITY`, `FIRE_TRIGGERS`, `CHECK_CONSTRAINTS`, `TABLOCK`, `ORDER`, `ROWS_PER_BATCH`, `KILOBYTES_PER_BATCH`, and `BATCHSIZE` aren't applicable. They don't throw a syntax error, but they don't have any effect |
 
 #### *database_name*
@@ -176,7 +176,7 @@ FROM 'https://<data-lake>.blob.core.windows.net/public/curated/covid-19/bing_cov
 > [!NOTE]  
 > Replace `<data-lake>.blob.core.windows.net` with an appropriate URL.
 
-#### CODEPAGE = { 'ACP' | 'OEM' | 'RAW' | '*code_page*' }
+#### CODEPAGE
 
 Specifies the code page of the data in the data file. `CODEPAGE` is relevant only if the data contains **char**, **varchar**, or **text** columns with character values greater than `127` or less than `32`. For an example, see [Specify a code page](#d-specify-a-code-page).
 
@@ -200,7 +200,7 @@ You should specify a collation name for each column in a [format file](../../rel
 | `RAW` | No conversion from one code page to another occurs. `RAW` is the fastest option. |
 | *code_page* | Specific code page number, for example, 850.<br /><br />Versions before [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] don't support code page 65001 (UTF-8 encoding). |
 
-#### DATAFILETYPE = { 'char' | 'widechar' | 'native' | 'widenative' }
+#### DATAFILETYPE
 
 Specifies that `BULK INSERT` performs the import operation using the specified data-file type value.
 
@@ -232,7 +232,7 @@ WITH (DATAFILETYPE = 'char', FIRSTROW = 2);
 
 ::: moniker-end
 
-#### DATA_SOURCE = '*data_source_name*'
+#### DATA_SOURCE
 
 **Applies to:** [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and later versions, and Azure SQL Database.
 
@@ -254,13 +254,13 @@ FROM 'curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.csv'
 WITH (DATA_SOURCE = '<data-lake>', FIRSTROW = 2, LASTROW = 100, FIELDTERMINATOR = ',');
 ```
 
-#### MAXERRORS = *max_errors*
+#### MAXERRORS
 
 Specifies the maximum number of syntax errors allowed in the data before the bulk-import operation is canceled. Each row that can't be imported by the bulk-import operation is ignored and counted as one error. If *max_errors* isn't specified, the default is 10.
 
 The `MAX_ERRORS` option doesn't apply to constraint checks or to converting **money** and **bigint** data types.
 
-#### ERRORFILE = '*error_file_path*'
+#### ERRORFILE
 
 Specifies the file used to collect rows that have formatting errors and can't be converted to an OLE DB rowset. These rows are copied into this error file from the data file "as is."
 
@@ -268,13 +268,13 @@ The error file is created when the command is executed. An error occurs if the f
 
 Beginning with [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)], the *error_file_path* can be in Azure Blob Storage.
 
-#### ERRORFILE_DATA_SOURCE = '*errorfile_data_source_name*'
+#### ERRORFILE_DATA_SOURCE
 
 **Applies to:** [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and later versions.
 
 Specifies a named external data source pointing to the Azure Blob Storage location of the error file to keep track of errors found during the import. The external data source must be created using the `TYPE = BLOB_STORAGE` option added in [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)]. For more information, see [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md).
 
-#### FIRSTROW = *first_row*
+#### FIRSTROW
 
 Specifies the number of the first row to load. The default is the first row in the specified data file. `FIRSTROW` is 1-based.
 
@@ -289,18 +289,18 @@ WITH (FIRSTROW = 2);
 
 The `FIRSTROW` attribute isn't intended to skip column headers. The `BULK INSERT` statement doesn't support skipping headers. If you choose to skip rows, the [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)] looks only at the field terminators, and doesn't validate the data in the fields of skipped rows.
 
-#### LASTROW = *last_row*
+#### LASTROW
 
 Specifies the number of the last row to load. The default is 0, which indicates the last row in the specified data file.
 
-#### FORMATFILE_DATA_SOURCE = '*data_source_name*'
+#### FORMATFILE_DATA_SOURCE
 
 **Applies to:** [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and later versions.
 
 Specifies a named external data source pointing to the Azure Blob Storage location of the format file to define the schema of imported data. The external data source must be created using the `TYPE = BLOB_STORAGE` option added in [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)]. For more information, see [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md).
 ::: moniker range="=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 
-#### BATCHSIZE = *batch_size*
+#### BATCHSIZE
 
 Specifies the number of rows in a batch. Each batch is copied to the server as one transaction. If this fails, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] commits or rolls back the transaction for every batch. By default, all data in the specified data file is one batch. For information about performance considerations, see [Performance considerations](#performance-considerations) later in this article.
 
@@ -333,17 +333,17 @@ For more information, see about keeping identify values see [Keep identity value
 
 Specifies that empty columns should retain a null value during the bulk-import operation, instead of having any default values for the columns inserted. For more information, see [Keep nulls or default values during bulk import](../../relational-databases/import-export/keep-nulls-or-use-default-values-during-bulk-import-sql-server.md).
 
-#### KILOBYTES_PER_BATCH = *kilobytes_per_batch*
+#### KILOBYTES_PER_BATCH
 
 Specifies the approximate number of kilobytes (KB) of data per batch as *kilobytes_per_batch*. By default, `KILOBYTES_PER_BATCH` is unknown. For information about performance considerations, see [Performance considerations](#performance-considerations) later in this article.
 
-#### ORDER ( { *column* [ ASC | DESC ] } [ ,... *n* ] )
+#### ORDER
 
 Specifies how the data in the data file is sorted. Bulk import performance is improved if the data being imported is sorted according to the clustered index on the table, if any. If the data file is sorted in an order other than the order of a clustered index key, or if there's no clustered index on the table, the `ORDER` clause is ignored. The column names supplied must be valid column names in the destination table. By default, the bulk insert operation assumes the data file is unordered. For optimized bulk import, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] also validates that the imported data is sorted.
 
 *n* is a placeholder that indicates that multiple columns can be specified.
 
-#### ROWS_PER_BATCH = *rows_per_batch*
+#### ROWS_PER_BATCH
 
 Indicates the approximate number of rows of data in the data file.
 
@@ -359,7 +359,7 @@ For a columnstore index, the locking behavior is different because it's internal
 
 ### Input file format options
 
-#### FORMAT = 'CSV'
+#### FORMAT
 
 **Applies to:** [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and later versions.
 
@@ -370,14 +370,17 @@ BULK INSERT Sales.Orders
 FROM '\\SystemX\DiskZ\Sales\data\orders.csv'
 WITH (FORMAT = 'CSV');
 ```
+::: moniker range="=fabric"
+In Fabric Data Warehouse, the `BULK INSERT` statement supports the same formats as the `COPY INTO` statement, so `FORMAT='PARQUET'` is also supported.
+::: moniker-end
 
-#### FIELDQUOTE = '*field_quote*'
+#### FIELDQUOTE
 
 **Applies to:** [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and later versions.
 
 Specifies a character to use as the quote character in the CSV file. If not specified, the quote character (`"`) is used as the quote character, as defined in the [RFC 4180](https://tools.ietf.org/html/rfc4180) standard.
 
-#### FORMATFILE = '*format_file_path*'
+#### FORMATFILE
 
 Specifies the full path of a format file. A format file describes the data file that contains stored responses created by using the **bcp** utility on the same table or view. The format file should be used if:
 
@@ -388,7 +391,7 @@ Specifies the full path of a format file. A format file describes the data file 
 
 Beginning with [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)], and in Azure SQL Database, `format_file_path` can be in Azure Blob Storage.
 
-#### FIELDTERMINATOR = '*field_terminator*'
+#### FIELDTERMINATOR
 
 Specifies the field terminator to be used for **char** and **widechar** data files. The default field terminator is `\t` (tab character). For more information, see [Specify field and row terminators](../../relational-databases/import-export/specify-field-and-row-terminators-sql-server.md).
 
@@ -401,7 +404,7 @@ WITH (FIELDTERMINATOR = ',', FIRSTROW = 2);
 > [!NOTE]  
 > Replace `<data-lake>.blob.core.windows.net` with an appropriate URL.
 
-#### ROWTERMINATOR = '*row_terminator*'
+#### ROWTERMINATOR
 
 Specifies the row terminator to be used for **char** and **widechar** data files. The default row terminator is `\r\n` (newline character). For more information, see [Specify field and row terminators](../../relational-databases/import-export/specify-field-and-row-terminators-sql-server.md).
 
