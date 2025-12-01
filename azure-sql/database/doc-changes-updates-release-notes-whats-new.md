@@ -53,7 +53,6 @@ The following table lists the features of Azure SQL Database that are currently 
 | **Multiple geo-replicas for Hyperscale** | The ability to create up to four geo-replicas for Azure SQL Hyperscale is in preview.  Learn more about [multiple geo-replicas for Hyperscale](https://aka.ms/sqlhs-multi-geo-announcement). |
 | **Network Security Perimeter** | [Azure Network Security Perimeter](network-security-perimeter.md) allows organizations to define a logical network isolation boundary for PaaS resources (for example, Azure Storage and SQL Database) that are deployed outside your organization's virtual networks. It restricts public network access to PaaS resources outside of the perimeter, and access can be exempted by using explicit access rules for public inbound and outbound. |
 | **Query editor in the Azure portal** | The [query editor in the Azure portal](query-editor.md) allows you to run queries against your Azure SQL Database directly from a web browser. |
-| **Regular expression functions** | Regular expression (REGEX) functions return text based on values in a search pattern. [Regular expressions](/sql/relational-databases/regular-expressions/overview). |
 | **Restart database in the Azure portal** | You can [restart your SQL database or elastic pool](restart-database.md) from the Azure portal. |
 
 ## General availability (GA)
@@ -62,6 +61,7 @@ The following table lists features of Azure SQL Database that have been made gen
 
 | Feature | GA Month | Details |
 | --- | --- | --- |
+| **Regular expression functions** | November 2025 | Regular expression (REGEX) functions return text based on values in a search pattern. [Regular expressions](/sql/relational-databases/regular-expressions/overview). |
 | **Immutable LTR backups** | November 2025 | You can [configure long-term retention backups of Azure SQL Database as immutable](backup-immutability.md) with time-based immutability. | 
 | **Convert to Hyperscale with geo-replicas** | October 2025 | The ability to [convert a geo-replicated database non-Hyperscale database to Hyperscale](convert-to-hyperscale.md) using T-SQL, REST API, PowerShell, or Azure CLI is now generally available. For more information, see [Blog: Hyperscale conversion support for geo-replicas](https://aka.ms/hs-conversion-geodr-ga). |
 | **ABORT_QUERY_EXECUTION** | October 2025 | The `ABORT_QUERY_EXECUTION` [query hint](/sql/t-sql/queries/hints-transact-sql-query?view=azuresqldb-current&preserve-view=true#use_hint_abort_query_execution) can block future execution of known problematic queries, for example nonessential queries causing high resource consumption and impacting critical application workloads. For more information, see [Query Store hints: Block future execution of problematic queries](/sql/relational-databases/performance/query-store-hints-best-practices?view=azuresqldb-current&preserve-view=true#block-future-execution-of-problematic-queries). |
@@ -99,6 +99,7 @@ Learn about significant changes to the Azure SQL Database documentation. For pre
 
 | Changes | Details |
 | --- | --- |
+| **Regular expression functions preview** | Regular expression (REGEX) functions return text based on values in a search pattern.  Regular expression (REGEX) functions are now generally available for Azure SQL Database. For more information, see [Regular expressions](/sql/relational-databases/regular-expressions/overview) or [General Availability Announcement: Regex Support in SQL Server 2025 & Azure SQL](https://devblogs.microsoft.com/azure-sql/general-availability-announcement-regex-support-in-sql-server-2025-azure-sql/). |
 | **Change event streaming preview** | Capture and publish incremental DML changes of data (such as updates, inserts, and deletes) in near real-time. Change event streaming sends details of data changes such as the schema, previous values, and new values to Azure Event Hubs in a simple CloudEvent, serialized as either native JSON or Avro Binary. This feature is now in preview. To learn more, review [Change event streaming](/sql/relational-databases/track-changes/change-event-streaming/overview). |
 
 ### October 2025
