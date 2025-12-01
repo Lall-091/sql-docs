@@ -82,8 +82,8 @@ The following example calls `sp_help_spatial_geography_histogram` on the `Person
 
 ```sql
 EXECUTE sp_help_spatial_geography_histogram
-    @tabname = Person.Address,
-    @colname = SpatialLocation,
+    @tabname = N'Person.Address',
+    @colname = N'SpatialLocation',
     @resolution = 64,
     @sample = 30;
 ```
