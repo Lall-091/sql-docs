@@ -4,7 +4,7 @@ description: "OPENROWSET BULK function reads data from an external data source."
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest, hudequei, wiassaf, jovanpop, fresantos
-ms.date: 09/08/2025
+ms.date: 12/01/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -416,7 +416,7 @@ FROM OPENROWSET(
 )
 ```
 
-CSV parser version 1.0 is default and feature rich. Version 2.0 is built for performance and doesn't support all options and encodings. 
+CSV parser version 2.0 is the default implementation optimized for performance, but it does not support all legacy options and encodings available in version 1.0. When using OPENROWSET, Fabric Data Warehouse automatically falls back to version 1.0 if you use the options supported only in that version, even when the version is not explicitly specified. In some cases, you may need to explictly specify the version 1.0 to resolve errors caused by unsupported features reported by parser version 2.0.
 
 CSV parser version 1.0 specifics:
 
