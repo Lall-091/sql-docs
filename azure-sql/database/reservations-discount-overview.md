@@ -5,7 +5,7 @@ description: Learn how to buy Azure SQL Database and SQL Managed Instance reserv
 author: rajeshsetlem
 ms.author: rsetlem
 ms.reviewer: wiassaf, mathoma
-ms.date: 06/19/2025
+ms.date: 12/01/2025
 ms.service: azure-sql
 ms.subservice: service-overview
 ms.topic: how-to
@@ -65,10 +65,7 @@ When you enable zone-redundancy, resources are made available in multiple availa
 
 Compute costs for the following zone-redundant resources include an extra charge for the zone-redundancy add-on, which is billed separately from standard compute: 
 - [Azure SQL Database](high-availability-sla-local-zone-redundancy.md#general-purpose-service-tier): Databases and elastic pools in the General Purpose service tier. 
-- [Azure SQL Managed Instance](../managed-instance/high-availability-sla-local-zone-redundancy.md#business-critical-service-tier-1): Instances in the Business Critical service tier. 
-
-> [!NOTE]
-> June 2025 introduces a discount for the zone redundancy add-on for Azure SQL Managed Instance. 
+- [Azure SQL Managed Instance](../managed-instance/high-availability-sla-local-zone-redundancy.md#high-availability-through-zone-redundancy): Instances in the General Purpose and Business Critical service tiers. 
 
 
 Reservations can cover compute costs for both standard compute and the zone-redundancy add-on, but they need to be purchased as two separate reservation types:
@@ -105,7 +102,7 @@ Carefully evaluate your compute needs and reservation strategy to optimize costs
     |Region      |The Azure region that's covered by the reservation.|
     |Deployment Type|The SQL resource type that you want to buy the reservation for.|
     |Performance Tier|The service tier for the databases or managed instances. |
-    |Type| The reservation type. Select **vCore** for standard compute or **vCore ZR** for the [zone redundancy add-on](#reservations-for-zone-redundant-resources). The **vCore ZR** reservation type is currently only available for the Azure SQL Database General Purpose service tier and Azure SQL Managed Instance Business Critical service tier. |
+    |Type| The reservation type. Select **vCore** for standard compute or **vCore ZR** for the [zone redundancy add-on](#reservations-for-zone-redundant-resources). The **vCore ZR** reservation type is currently only available for the Azure SQL Database General Purpose service tier and both Azure SQL Managed Instance General Purpose and Business Critical service tiers. |
     |Term        |One year or three years.|
     |Quantity    |The number of vCores in the selected Azure region and service tier covered by the reservation. For example, if you run, or plan to run, multiple databases with a total compute capacity of standard-series (Gen5) 16 vCores in the East US region, then specify the quantity as 16 vCores to maximize the benefit for all the databases. |
 

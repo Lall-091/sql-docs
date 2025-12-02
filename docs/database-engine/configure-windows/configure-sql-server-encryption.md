@@ -4,7 +4,7 @@ description: This article describes how to configure a SQL Server instance to en
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: sureshka, randolphwest
-ms.date: 08/26/2025
+ms.date: 11/20/2025
 ms.service: sql
 ms.subservice: configuration
 ms.topic: how-to
@@ -192,7 +192,9 @@ The SQL Server service loads the server certificate in the following order of pr
 To learn more, see [Certificate requirements for SQL Server](certificate-requirements.md).
 
 > [!NOTE]  
-> SQL Server Configuration Manager only displays certificates imported through the registry if the thumbprint in the registry is an exact match for the thumbprint of the certificate, including case sensitivity. If the thumbprint doesn't match the case exactly, the certificate isn't displayed in SQL Server Configuration Manager, but the certificate is still loaded and used by SQL Server.
+> Starting with SQL Server 2022 CU22 and SQL Server 2025, the thumbprint of the certificate is no longer case sensitive. In versions prior to SQL Server 2022 CU22 and SQL Server 2025, SQL Server Configuration Manager only displays certificates imported through the registry if the thumbprint in the registry is an exact match for the thumbprint, including case sensitivity. If the thumbprint doesn't match the case exactly, the certificate isn't displayed in SQL Server Configuration Manager, but the certificate is still loaded and used by SQL Server. 
+
+
 
 ## Next step
 
