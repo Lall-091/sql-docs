@@ -4,7 +4,7 @@ description: "Creates an operator (notification recipient) for use with alerts a
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest
-ms.date: 06/23/2025
+ms.date: 12/01/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,8 +27,8 @@ Creates an operator (notification recipient) for use with alerts and jobs.
 ## Syntax
 
 ```syntaxsql
-sp_add_operator
-    [ @name = ] 'name'
+dbo.sp_add_operator
+    [ @name = ] N'name'
     [ , [ @enabled = ] enabled ]
     [ , [ @email_address = ] N'email_address' ]
     [ , [ @pager_address = ] N'pager_address' ]
@@ -40,13 +40,13 @@ sp_add_operator
     [ , [ @sunday_pager_end_time = ] sunday_pager_end_time ]
     [ , [ @pager_days = ] pager_days ]
     [ , [ @netsend_address = ] N'netsend_address' ]
-    [ , [ @category_name = ] 'category' ]
+    [ , [ @category_name = ] N'category_name' ]
 [ ; ]
 ```
 
 ## Arguments
 
-#### [ @name = ] '*name*'
+#### [ @name = ] N'*name*'
 
 The name of an operator (notification recipient). This name must be unique and can't contain the percent (`%`) character. *@name* is **sysname**, with no default.
 
@@ -71,31 +71,33 @@ The pager address of the operator. This string is passed directly to the e-mail 
 
 #### [ @weekday_pager_start_time = ] *weekday_pager_start_time*
 
-The time after which [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent sends pager notification to the specified operator on the weekdays, from Monday through Friday. *@weekday_pager_start_time* is **int**, with a default of `090000`, which indicates 9:00 A.M. on a 24-hour clock, and must be entered using the form `HHmmss`.
+The start time when the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Agent service sends pager notifications to the operator, from Monday through Friday. *@weekday_pager_start_time* is **int**, with a default of `090000`, which indicates 9:00 A.M. on a 24-hour clock, and must be entered using the form `HHmmss`.
 
 #### [ @weekday_pager_end_time = ] *weekday_pager_end_time*
 
-The time after which [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Agent service no longer sends pager notification to the specified operator on the weekdays, from Monday through Friday. *weekday_pager_end_time* is **int**, with a default of `180000`, which indicates 6:00 P.M. on a 24-hour clock, and must be entered using the form `HHmmss`.
+The end time when the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Agent service no longer sends pager notifications to the operator, from Monday through Friday. *@weekday_pager_end_time* is **int**, with a default of `180000`, which indicates 6:00 P.M. on a 24-hour clock, and must be entered using the form `HHmmss`.
 
 #### [ @saturday_pager_start_time = ] *saturday_pager_start_time*
 
-The time after which [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Agent service sends pager notification to the specified operator on Saturdays. *saturday_pager_start_time* is **int**, with a default of `090000`, which indicates 9:00 A.M. on a 24-hour clock, and must be entered using the form `HHmmss`.
+The start time on Saturdays when the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Agent service sends pager notifications to the operator. *@saturday_pager_start_time* is **int**, with a default of `090000`, which indicates 9:00 A.M. on a 24-hour clock, and must be entered using the form `HHmmss`.
 
 #### [ @saturday_pager_end_time = ] *saturday_pager_end_time*
 
-The time after which [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Agent service no longer sends pager notification to the specified operator on Saturdays. *@saturday_pager_end_time* is **int**, with a default of `180000`, which indicates 6:00 P.M. on a 24-hour clock, and must be entered using the form `HHmmss`.
+The end time on Saturdays when the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Agent service no longer sends pager notifications to the operator. *@saturday_pager_end_time* is **int**, with a default of `180000`, which indicates 6:00 P.M. on a 24-hour clock, and must be entered using the form `HHmmss`.
 
 #### [ @sunday_pager_start_time = ] *sunday_pager_start_time*
 
-The time after which [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Agent service sends pager notification to the specified operator on Sundays. *@sunday_pager_start_time* is **int**, with a default of `090000`, which indicates 9:00 A.M. on a 24-hour clock, and must be entered using the form `HHmmss`.
+The start time on Sundays when the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Agent service sends pager notifications to the operator. *@sunday_pager_start_time* is **int**, with a default of `090000`, which indicates 9:00 A.M. on a 24-hour clock, and must be entered using the form `HHmmss`.
 
 #### [ @sunday_pager_end_time = ] *sunday_pager_end_time*
 
-The time after which [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Agent service no longer sends pager notification to the specified operator on Sundays. *@sunday_pager_end_time* is **int**, with a default of `180000`, which indicates 6:00 P.M. on a 24-hour clock, and must be entered using the form `HHmmss`.
+The end time on Sundays when the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Agent service no longer sends pager notifications to the operator. *@sunday_pager_end_time* is **int**, with a default of `180000`, which indicates 6:00 P.M. on a 24-hour clock, and must be entered using the form `HHmmss`.
 
 #### [ @pager_days = ] *pager_days*
 
-A number that indicates the days that the operator is available for pages (subject to the specified start/end times). *@pager_days* is **tinyint**, with a default of `0` indicating the operator is never available to receive a page. Valid values are from `0` through `127`. *@pager_days* is calculated by adding the individual values for the required days. For example, from Monday through Friday is `2 + 4 + 8 + 16 + 32 = 62`. The following table lists the value for each day of the week.
+A number that indicates the days that the operator is available for pages (subject to the specified start/end times). *@pager_days* is **tinyint**, with a default of `0`, indicating the operator is never available to receive a page. Valid values are from `0` through `127`. *@pager_days* is calculated by adding the individual values for the required days. For example, from Monday through Friday is `2 + 4 + 8 + 16 + 32 = 62`.
+
+The following table lists the value for each day of the week.
 
 | Value | Description |
 | --- | --- |
@@ -111,9 +113,16 @@ A number that indicates the days that the operator is available for pages (subje
 
 The network address of the operator to whom the network message is sent. *@netsend_address* is **nvarchar(100)**, with a default of `NULL`.
 
-#### [ @category_name = ] '*category*'
+#### [ @category_name = ] N'*category_name*'
 
 The name of the category for this operator. *@category_name* is **sysname**, with a default of `NULL`.
+
+If this value is `NULL`, the operator is added with a default category of `[Uncategorized]`. You can also choose from an existing category, by querying the `syscategories` table in the `msdb` database:
+
+```sql
+SELECT name
+FROM msdb.dbo.syscategories;
+```
 
 ## Return code values
 
