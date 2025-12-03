@@ -93,7 +93,7 @@ SET Details =
 
  The following example shows how to retrieve the JSON output of a query into a StringBuilder object in a C# client app. Assume that the variable `queryWithForJson` contains the text of a `SELECT` statement with a `FOR JSON` clause.  
 
-```sql
+```csharp
 var queryWithForJson = "SELECT ... FOR JSON";
 using(var conn = new SqlConnection("<connection string>"))
 {
