@@ -4,7 +4,7 @@ description: "Learn about SQL Server Data Tools (SSDT). See how to install this 
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: randolphwest
-ms.date: 09/09/2025
+ms.date: 12/03/2025
 ms.service: sql
 ms.subservice: ssdt
 ms.topic: install-set-up-deploy
@@ -23,7 +23,7 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 
 **SQL Server Data Tools (SSDT)** is a set of development tooling for building SQL Server databases, Azure SQL databases, Analysis Services (AS) data models, Integration Services (IS) packages, and Reporting Services (RS) reports. With SSDT, you can design and deploy SQL objects with the same project concept as other application development tools. The **SQL projects** capability extends to CI/CD pipelines, enabling you to automate the build and deployment of your database projects with the [SqlPackage CLI](../tools/sqlpackage/sqlpackage.md).
 
-The release notes for SSDT and its components are available for [Visual Studio 2017, 2019, and 2022](sql-server-data-tools.md#release-notes). An overview of the core SSDT functionality is provided in the [SSDT Overview](sql-server-data-tools.md#core-sql-server-data-tools).
+The release notes for SSDT and its components are available for [Visual Studio 2017, 2019, 2022, and 2026](sql-server-data-tools.md#release-notes). An overview of the core SSDT functionality is provided in the [SSDT Overview](sql-server-data-tools.md#core-sql-server-data-tools).
 
 :::image type="content" source="media/download-sql-server-data-tools-ssdt/install-layout.png" alt-text="Screenshot of graphic with SQL Server Data Tools component and three extensions.":::
 
@@ -34,7 +34,7 @@ SSDT is installed as a Visual Studio component, both for [online installation](#
 
 ## Install SSDT with Visual Studio
 
-If [Visual Studio 2022](/visualstudio/install/install-visual-studio?preserve-view=true&view=vs-2022) or [Visual Studio 2019](/visualstudio/install/install-visual-studio?preserve-view=true&view=vs-2019) is already installed, you can edit the list of workloads to include SSDT. If you don't have Visual Studio 2019/2022 installed, then you can download and install [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/).
+If [Visual Studio 2026](/visualstudio/install/install-visual-studio?preserve-view=true&view=vs-2026) or [Visual Studio 2022](/visualstudio/install/install-visual-studio?preserve-view=true&view=vs-2022) is already installed, you can edit the list of workloads to include SSDT. If you don't have Visual Studio 2022 or 2026 installed, then you can download and install [Visual Studio 2026](https://visualstudio.microsoft.com/downloads/).
 
 To modify the installed Visual Studio workloads to include SSDT, use the Visual Studio Installer.
 
@@ -48,9 +48,15 @@ To modify the installed Visual Studio workloads to include SSDT, use the Visual 
 
 ### Visual Studio for Arm64
 
-Visual Studio is available as a [native Arm64 application](/visualstudio/install/visual-studio-on-arm-devices) on Windows 11 Arm64. In Visual Studio 17.10 and later, SSDT is available for Arm64 with [some limitations](https://techcommunity.microsoft.com/blog/azuresqlblog/announcing-sql-server-data-tools-ssdt-for-arm64-architecture-in-visual-studio-17/4103928). To install or configure Visual Studio to include SSDT on an Arm64 device:
+Visual Studio is available as a [native Arm64 application](/visualstudio/install/visual-studio-on-arm-devices) on Windows 11 Arm64. In Visual Studio 2026, SSDT is available for Arm64 with some limitations:
 
-1. Install Visual Studio 17.10 or later on your Arm64 device.
+- IntelliSense and code completion aren't available for T-SQL files in SQL projects
+- The T-SQL debugger isn't available
+- Visual Studio can't connect to LocalDB
+
+To install or configure Visual Studio to include SSDT on an Arm64 device:
+
+1. Install Visual Studio 2026 or later on your Arm64 device.
 
 1. In the installer, select the **Individual components** tab and search for **SQL Server Data Tools**.
 
@@ -62,9 +68,17 @@ Visual Studio is available as a [native Arm64 application](/visualstudio/install
 
 For Analysis Services (SSAS), Integration Services (SSIS), or Reporting Services (SSRS) projects, you can install the appropriate [extensions](/visualstudio/ide/finding-and-using-visual-studio-extensions) from within Visual Studio with **Extensions** > **Manage Extensions** or from the [Marketplace](https://marketplace.visualstudio.com/search?term=services&target=VS&category=All%20categories&vsVersion=&sortBy=Relevance).
 
+### [Visual Studio 2026 extensions](#tab/vs2026)
+
+The extensions for Visual Studio 2022 and 2026 are shared:
+
+- [Analysis Services](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects2022)
+- [Integration Services](https://marketplace.visualstudio.com/items?itemName=SSIS.MicrosoftDataToolsIntegrationServices)
+- [Reporting Services](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftReportProjectsforVisualStudio2022)
+
 ### [Visual Studio 2022 extensions](#tab/vs2022)
 
-Extensions for Visual Studio 2022:
+The extensions for Visual Studio 2022 and 2026 are shared:
 
 - [Analysis Services](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects2022)
 - [Integration Services](https://marketplace.visualstudio.com/items?itemName=SSIS.MicrosoftDataToolsIntegrationServices)
@@ -82,15 +96,25 @@ Extensions for Visual Studio 2019:
 
 ## Supported SQL versions
 
+### [Supported SQL versions in Visual Studio 2026](#tab/vs2026)
+
+Supported SQL versions in Visual Studio 2026:
+
+| Project templates | SQL platforms supported |
+| --- | --- |
+| Relational databases | [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] - [!INCLUDE [sssql22-md](../includes/sssql25-md.md)]<br /><br />Azure SQL Database, Azure SQL Managed Instance<br /><br />Azure Synapse Analytics Dedicated Pools<br />Azure Synapse Analytics Serverless Pools<br /><br />Warehouse in Microsoft Fabric<br />SQL database in Microsoft Fabric |
+| Analysis Services models<br /><br />Reporting Services reports | [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] - [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] |
+| Integration Services packages | [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] - [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] |
+
 ### [Supported SQL versions in Visual Studio 2022](#tab/vs2022)
 
 Supported SQL versions in Visual Studio 2022:
 
 | Project templates | SQL platforms supported |
 | --- | --- |
-| Relational databases | [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] - [!INCLUDE [sssql22-md](../includes/sssql22-md.md)]<br /><br />Azure SQL Database, Azure SQL Managed Instance<br /><br />Azure Synapse Analytics Dedicated Pools<br />Azure Synapse Analytics Serverless Pools (requires VS2022 17.7 see [the release notes](/visualstudio/releases/2022/release-notes-v17.7#support-for-serverless-sql-pool-in-ssdt))<br /><br />Warehouse in Microsoft Fabric (requires VS2022 17.12)<br />SQL database in Microsoft Fabric (requires VS2022 17.12) |
-| Analysis Services models<br /><br />Reporting Services reports` | SQL Server 2016 - SQL Server 2022 |
-| Integration Services packages | SQL Server 2019 - SQL Server 2022 |
+| Relational databases | [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] - [!INCLUDE [sssql22-md](../includes/sssql22-md.md)]<br /><br />Azure SQL Database, Azure SQL Managed Instance<br /><br />Azure Synapse Analytics Dedicated Pools<br />Azure Synapse Analytics Serverless Pools (requires VS2022 17.7) |
+| Analysis Services models<br /><br />Reporting Services reports | [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] - [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] |
+| Integration Services packages | [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] - [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] |
 
 ### [Supported SQL versions in Visual Studio 2019](#tab/vs2019)
 
@@ -98,9 +122,9 @@ Supported SQL versions in Visual Studio 2019:
 
 | Project templates | SQL platforms supported |
 | --- | --- |
-| Relational databases | SQL Server 2012 - SQL Server 2019<br /><br />Azure SQL Database, Azure SQL Managed Instance<br /><br />Azure Synapse Analytics (dedicated pools only) |
-| Analysis Services models<br /><br />Reporting Services reports | SQL Server 2008 - SQL Server 2019 |
-| Integration Services packages | SQL Server 2012 - SQL Server 2022 |
+| Relational databases | [!INCLUDE [sssql11-md](../includes/sssql11-md.md)] - [!INCLUDE [sssql19-md](../includes/sssql19-md.md)]<br /><br />Azure SQL Database, Azure SQL Managed Instance<br /><br />Azure Synapse Analytics (dedicated pools only) |
+| Analysis Services models<br /><br />Reporting Services reports | [!INCLUDE [sql2008-md](../includes/sql2008-md.md)] - [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] |
+| Integration Services packages | [!INCLUDE [sssql11-md](../includes/sssql11-md.md)] - [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] |
 
 ---
 

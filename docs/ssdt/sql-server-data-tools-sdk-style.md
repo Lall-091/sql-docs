@@ -4,10 +4,10 @@ description: SDK-style SQL projects in Visual Studio enable the next generation 
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: randolphwest
-ms.date: 10/14/2025
+ms.date: 12/03/2025
 ms.service: sql
 ms.subservice: ssdt
-ms.topic: conceptual
+ms.topic: article
 ---
 
 # SQL Server Data Tools, SDK-style (preview)
@@ -22,7 +22,7 @@ The original SQL project format is based on MSBuild (.NET Framework) and is the 
 - NuGet [package references](../tools/sql-database-projects/concepts/package-references.md) for database references
 - Default globbing pattern for `.sql` files in the project
 
-New development work should consider using the SDK-style project format, as it's the format that is supported in the future. SDK-style projects have a superset of functionality from original SQL projects and existing SQL projects can be converted to SDK-style projects through [modification of the project file](../tools/sql-database-projects/howto/convert-original-sql-project.md). The exception to the functionality coverage is support for SQLCLR objects, which require .NET Framework and aren't supported in SDK-style projects.
+Visual Studio 2026 doesn't support SDK-style SQL projects, and the original SQL projects are the only SQL project format available in that version of Visual Studio. Visual Studio 2022 is the only version of Visual Studio that contains SDK-style SQL projects in the **SQL Server Data Tools, SDK-style (preview)** component.
 
 For more information about SQL projects, see [What are SQL database projects?](../tools/sql-database-projects/sql-database-projects.md). The Microsoft.Build.Sql SDK is available on [GitHub](https://github.com/microsoft/DacFx) and on [NuGet.org](https://www.nuget.org/packages/Microsoft.build.sql).
 
@@ -39,9 +39,9 @@ To install the SDK-style SQL projects in Visual Studio 2022, follow these steps:
 
 1. Search for ".NET SDK" in the **Individual components** tab and select the ".NET SDK" component. Selecting this item automatically selects required dependencies, including supported .NET runtimes. The .NET SDK component enables support for additional versions of the Microsoft.Build.Sql SDK in Visual Studio, which are available through [NuGet.org](https://www.nuget.org/packages/Microsoft.build.sql#versions-body-tab).
 
-:::image type="content" source="media/sql-server-data-tools-sdk-style/installer-individual-component.png" alt-text="Screenshot of the Visual Studio installer with the individual components tab open." lightbox="media/sql-server-data-tools-sdk-style/installer-individual-component.png":::
+   :::image type="content" source="media/sql-server-data-tools-sdk-style/installer-individual-component.png" alt-text="Screenshot of the Visual Studio installer with the individual components tab open." lightbox="media/sql-server-data-tools-sdk-style/installer-individual-component.png":::
 
-4. Continue the install without selecting workloads or extra features.
+1. Continue the install without selecting workloads or extra features.
 
 The Visual Studio [documentation](/visualstudio/install/modify-visual-studio#change-workloads-or-individual-components) provides additional information on modifying Visual Studio installations to select individual components.
 
