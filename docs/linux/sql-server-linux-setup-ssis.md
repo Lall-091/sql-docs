@@ -17,12 +17,7 @@ ms.custom:
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
-Follow the steps in this article to install SQL Server Integration Services (**mssql-server-is**) on Linux. For more information about the features that are supported in Integration Services for Linux, see:
-
-- [Release notes for SQL Server 2025 on Linux](sql-server-linux-release-notes-2025.md)
-- [Release notes for SQL Server 2022 on Linux](sql-server-linux-release-notes-2022.md)
-- [Release notes for SQL Server 2019 on Linux](sql-server-linux-release-notes-2019.md)
-- [Release notes for SQL Server 2017 on Linux](sql-server-linux-release-notes-2017.md)
+Follow the steps in this article to install SQL Server Integration Services (**mssql-server-is**) on Linux. For more information about the features that are supported in Integration Services for Linux, see [Limitations and known issues for SSIS on Linux](sql-server-linux-ssis-known-issues.md).
 
 You can install SQL Server Integration Services (SSIS) on Red Hat Enterprise Linux (RHEL) and Ubuntu. SUSE Linux Enterprise Server (SLES) isn't supported. Installing SSIS on containers is also not supported.
 
