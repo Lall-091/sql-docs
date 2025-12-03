@@ -4,7 +4,7 @@ description: "This overview reviews the tooling for SQL database projects."
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: randolphwest
-ms.date: 02/19/2025
+ms.date: 12/03/2025
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: overview
@@ -14,13 +14,13 @@ ms.collection:
 
 # SQL projects tools
 
-Tooling for SQL projects is available in several development environments and command line interfaces. The primary tools for SQL projects are the **SqlPackage** command line utility, **SQL Server Data Tools** (SSDT) in Visual Studio, and the **SQL Database Projects extension** for Azure Data Studio and Visual Studio Code.
+Tooling for SQL projects is available in several development environments and command line interfaces. The primary tools for SQL projects are the **SqlPackage** command line utility, **SQL Server Data Tools** (SSDT) in Visual Studio, and the **SQL Database Projects extension** for Visual Studio Code.
 
 Tools included in this article:
 
 - [Graphical tools](#graphical-tools)
+  - [SQL Database Projects extension](../visual-studio-code-extensions/sql-database-projects/sql-database-projects-extension.md)
   - [SQL Server Data Tools](../../ssdt/sql-server-data-tools.md)
-  - [SQL Database Projects extension](https://aka.ms/azuredatastudio-sqlprojects)
 - [Command line tools](#command-line-tools)
   - [SqlPackage](../sqlpackage/sqlpackage.md)
 
@@ -28,49 +28,45 @@ Tools included in this article:
 
 These tools provide a graphical interface for SQL projects, a T-SQL editor, and a build and publish process.
 
-[SQL Server Data Tools](../../ssdt/sql-server-data-tools.md) (SSDT) is a **Visual Studio** component that provides a graphical interface for SQL projects. SSDT provides a visual designer for tables, a T-SQL editor, and a build and publish process.
+[SQL Database Projects extension](../visual-studio-code-extensions/sql-database-projects/sql-database-projects-extension.md) is an extension for **VS Code**. This extension provides a graphical interface for SQL projects, a T-SQL editor, and a build and publish process. The extension is also available in **Azure Data Studio** with the same functionality.
 
-[SQL Database Projects extension](https://aka.ms/azuredatastudio-sqlprojects) is an extension for **Azure Data Studio (ADS)** and **VS Code**. This extension provides a graphical interface for SQL projects, a T-SQL editor, and a build and publish process.
+[SQL Server Data Tools](../../ssdt/sql-server-data-tools.md) (SSDT) is a **Visual Studio** component that provides a graphical interface for SQL projects. SSDT provides a visual designer for tables, a T-SQL editor, and a build and publish process.
 
 ### Feature set comparison
 
-| Feature | SDK-style SSDT | SSDT | ADS | VS Code |
-| --- | --- | --- | --- | --- |
-| [Create new empty project](get-started.md) | X | X | X | X |
-| [Create new project from existing database](tutorials/start-from-existing-database.md) | | X | X | X |
-| Open existing Microsoft.Build.Sql projects | X | | X | X |
-| Solution management and operations | X | X | | |
-| Project run build | X | X | X | X |
-| Publish project to existing server | X | X | X | X |
-| Publish project to a local development instance | X<sup>1</sup> | X<sup>1</sup> | X<sup>2</sup> | X<sup>2</sup> |
-| Publish options/properties | X | X | X | |
-| [Target platform](concepts/target-platform.md) can be updated | X | X | X | X |
-| [SQLCMD variables](concepts/sqlcmd-variables.md) | X | X | X | X |
-| [Project references](concepts/database-references.md) | | X | X | |
-| [Dacpac references](concepts/database-references.md) | | X | X | X |
-| [Package references](concepts/package-references.md) | | | X | |
-| Publish profile creation | X | X | X | |
-| SQL files can be added by placing in project folder | X | | X | X |
-| SQL files can be excluded from build | X | X | | |
-| [Pre/post deployment scripts](concepts/pre-post-deployment-scripts.md) | X | X | X | X |
-| New object templates | X<sup>3</sup> | X | X<sup>3</sup> | X<sup>3</sup> |
-| Project files can be organized into folders | X | X | X | X |
-| [Schema comparison](concepts/schema-comparison.md) project to database | | X | X | |
-| [Schema comparison](concepts/schema-comparison.md) database to project | | X | X | |
-| Graphical table designer | | X | X | |
-| [Code analysis](concepts/sql-code-analysis/sql-code-analysis.md) – enable/disable rules | | X | | |
-| Project properties – build output settings | X | X | | |
-| Project properties – default schema | | X | | |
-| Project properties – database settings | | X | | |
-| Project run [code analysis](concepts/sql-code-analysis/sql-code-analysis.md) standalone | | X | | |
-| Object renaming and refactoring | | X | | |
-| Intellisense provided in database files from project model | | X | | |
-| SQL Server object explorer connectivity/view objects | X | X | X | X |
-| SQL Server object explorer context menu items | | X | X | X |
-| SQL Server query editor connectivity | | X | X | X |
+| Feature | VS Code | SSDT (VS2022-2026) | SDK-style SSDT, preview (VS2022) |
+| --- | --- | --- | --- |
+| [Create new empty project](get-started.md) | Yes | Yes | Yes |
+| [Create new project from existing database](tutorials/start-from-existing-database.md) | Yes | Yes | Yes |
+| Open existing Microsoft.Build.Sql projects | Yes | No | Yes |
+| Solution management and operations | No | Yes | Yes |
+| Project run build | Yes | Yes | Yes |
+| Publish project to existing server | Yes | Yes | Yes |
+| Publish project to a local development instance | Yes<sup>1</sup> | Yes<sup>2</sup> | Yes<sup>2</sup> |
+| Publish options/properties | Yes | Yes | Yes |
+| [Target platform](concepts/target-platform.md) can be updated | Yes | Yes | Yes |
+| [SQLCMD variables](concepts/sqlcmd-variables.md) | Yes | Yes | Yes |
+| [Project references](concepts/database-references.md) | Yes | Yes | Yes |
+| [Dacpac references](concepts/database-references.md) | Yes | Yes | Yes |
+| [Package references](concepts/package-references.md) | Yes | No | No |
+| Publish profile creation | Yes | Yes | Yes |
+| SQL files can be added by placing in project folder | Yes | No | Yes |
+| SQL files can be excluded from build | Yes | Yes | No |
+| [Pre/post deployment scripts](concepts/pre-post-deployment-scripts.md) | Yes | Yes | Yes |
+| New object templates | Yes<sup>3</sup> | Yes | Yes<sup>3</sup> |
+| Project files can be organized into folders | Yes | Yes | Yes |
+| [Schema comparison](concepts/schema-comparison.md) project to database | Yes | Yes | Yes |
+| [Schema comparison](concepts/schema-comparison.md) database to project | Yes | Yes | No |
+| Graphical table designer | No | Yes | Yes |
+| [Code analysis](concepts/sql-code-analysis/sql-code-analysis.md) – enable/disable rules GUI | No | Yes | No |
+| Project properties – build output settings | No | Yes | Yes |
+| Project properties – database settings GUI | No | Yes | No |
+| Project run [code analysis](concepts/sql-code-analysis/sql-code-analysis.md) | Yes | Yes | No |
+| Object renaming and refactoring | No | Yes | No |
+| Intellisense provided in database files from project model | No | Yes | No |
 
-1. Local development instance is a SQL Server LocalDB instance.
 1. Local development instance is a SQL Server container.
+1. Local development instance is a SQL Server LocalDB instance.
 1. Limited subset of templates available
 
 ## Command line tools
@@ -91,7 +87,7 @@ Multiple SQL projects (and other projects) can be logically grouped together in 
 
 ## Third-party tools
 
-There are third-party tools available that provide functionality related to SQL projects and database deployment. Some tools are open source, such as [dbatools](https://docs.dbatools.io/Publish-DbaDacPackage.html).
+There are third-party tools available that provide functionality related to SQL projects and database deployment. Some tools are open source, such as [dbatools](https://dbatools.io/Publish-DbaDacPackage).
 
 Developers have shared their projects utilizing extensibility points around SQL projects, including [code analysis](concepts/sql-code-analysis/sql-code-analysis.md) rules and customizing deployment plans. Some of these projects are:
 

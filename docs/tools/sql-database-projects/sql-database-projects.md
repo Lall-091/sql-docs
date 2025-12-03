@@ -4,7 +4,7 @@ description: "This overview introduces SQL database projects, which enable datab
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: maghan, randolphwest
-ms.date: 03/11/2025
+ms.date: 12/03/2025
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: overview
@@ -82,17 +82,20 @@ SQL database projects support the SQL Server and Azure SQL family of databases, 
 
 ## Original projects vs SDK-style projects
 
-The Microsoft.Build.Sql SDK-style project format is based on the new SDK-style projects introduced in .NET Core and is the format used by the SQL Database Projects extension for Azure Data Studio and VS Code. Microsoft.Build.Sql projects are replacing the original SQL project format based on MSBuild (.NET Framework). Support for SDK-style SQL projects in Visual Studio is currently in preview and under active development, with both the original and SDK-style project formats available in Visual Studio.
+The Microsoft.Build.Sql SDK-style project format is based on the new SDK-style projects introduced in .NET Core and is the format used by the SQL Database Projects extension for VS Code and with the SQL database in Fabric integrated source control. Microsoft.Build.Sql projects are replacing the original SQL project format based on MSBuild (.NET Framework).
+
+> [!NOTE]  
+> Visual Studio 2026 only supports the original SQL project format. SDK-style SQL projects are in preview in Visual Studio 2022 and generally available in VS Code. Learn more about [SQL projects tools](sql-projects-tools.md).
 
 New development work should consider using Microsoft.Build.Sql projects, as SDK-style projects are the format that will be supported in the future. The SDK-style project format is more flexible and contains new features not available with the original SQL projects:
 
-- .NET 8 support (cross platform)
+- .NET 8+ support (cross platform)
 - NuGet [package references](concepts/package-references.md) for database references
 - Default globbing pattern for .sql files in the project
 
 SDK-style projects have a superset of functionality from original SQL projects and existing SQL projects can be converted to SDK-style projects through [modification of the project file](howto/convert-original-sql-project.md).
 
-The exception to the functionality coverage is support for SQLCLR objects, which require .NET Framework. A project that contains SQLCLR objects can be converted to an SDK-style project, but the project requires .NET Framework and must be built in Visual Studio on Windows. Once the project with the SQLCLR object is built, the `.dacpac` can be deployed with SqlPackage on .NET and .NET Framework and can be used as a `.dacpac` reference in a project (both same database or same server different database).
+The exception to the functionality coverage is support for SQLCLR objects, which are supported in both original and SDK-style SQL projects but require .NET Framework. An original SQL project that contains SQLCLR objects can be converted to an SDK-style project, but the project requires .NET Framework instead of .NET for the project build. Once the project with the SQLCLR object is built, the `.dacpac` can be deployed with SqlPackage on .NET and .NET Framework and can be used as a `.dacpac` reference in a project (both same database or same server different database).
 
 ## Related content
 

@@ -4,10 +4,10 @@ description: View resources on database development tasks that you can accomplis
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: randolphwest
-ms.date: 09/09/2025
+ms.date: 12/03/2025
 ms.service: sql
 ms.subservice: ssdt
-ms.topic: conceptual
+ms.topic: article
 f1_keywords:
   - "sql.data.tools.errortask.generichelp"
   - "sql.data.tools.sqlserverobjectexplorer"
@@ -27,9 +27,9 @@ The core of SQL Server Data Tools functionality is available as a workload compo
 
 ## Release notes
 
-The latest release notes for SQL Server Data Tools with Visual Studio 2022 can be found in the following locations:
+The latest release notes for SQL Server Data Tools with Visual Studio 2022 and Visual Studio 2026 can be found in the following locations:
 
-- SQL Server Data Tools (SSDT) release notes are listed with the [release notes for Visual Studio 2022](/visualstudio/releases/2022/release-notes)
+- SQL Server Data Tools (SSDT) release notes are listed with the release notes for [Visual Studio 2022](/visualstudio/releases/2022/release-notes) and [Visual Studio 2026](/visualstudio/releases/2026/release-notes).
 - Analysis Services (SSAS) extension release notes are listed on the [extension marketplace](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects2022)
 - Integration Services (SSIS) extension release notes are listed on the [extension marketplace](https://marketplace.visualstudio.com/items?itemName=SSIS.MicrosoftDataToolsIntegrationServices)
 - Reporting Services (SSRS) extension release notes are listed on the [extension marketplace](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftReportProjectsforVisualStudio2022)
@@ -55,7 +55,7 @@ For more information about SQL projects and database development tasks that you 
 
 ## SDK-style SQL projects (preview)
 
-Support for the Microsoft.Build.Sql project SDK is available in preview in Visual Studio as the next generation of SQL projects. The SDK-style SQL projects are based on the .NET SDK-style project format and are designed to be more flexible and extensible than the original SQL projects. The SDK-style SQL projects are recommended for new development and are available in Visual Studio 2022 as an optional component "SQL Server Data Tools, SDK-style (preview)." For more information about the SDK-style SQL projects and Visual Studio, see [SQL Server Data Tools, SDK-style (preview)](sql-server-data-tools-sdk-style.md).
+Support for the Microsoft.Build.Sql project SDK is available in preview in Visual Studio 2022 as the next generation of SQL projects. The SDK-style SQL projects are based on the .NET SDK-style project format and are designed to be more flexible and extensible than the original SQL projects. The SDK-style SQL projects are available in Visual Studio 2022 as an optional component "SQL Server Data Tools, SDK-style (preview)" and aren't available in Visual Studio 2026. For more information about the SDK-style SQL projects and Visual Studio, see [SQL Server Data Tools, SDK-style (preview)](sql-server-data-tools-sdk-style.md).
 
 ## Related content
 
