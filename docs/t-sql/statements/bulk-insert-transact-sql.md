@@ -4,7 +4,7 @@ description: Transact-SQL reference for the BULK INSERT statement.
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest, wiassaf
-ms.date: 12/01/2025
+ms.date: 12/02/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -53,7 +53,6 @@ BULK INSERT
    [ [ , ] FIELDTERMINATOR = 'field_terminator' ]
    [ [ , ] FORMAT = 'CSV' ]
    [ [ , ] FIELDQUOTE = 'quote_characters' ]
-
    [ [ , ] FIRSTROW = first_row ]
    [ [ , ] LASTROW = last_row ]
 
@@ -100,7 +99,6 @@ BULK INSERT
    [ [ , ] FIELDTERMINATOR = 'field_terminator' ]
    [ [ , ] FORMAT = { 'CSV' | 'PARQUET' } ]
    [ [ , ] FIELDQUOTE = 'quote_characters' ]
-
    [ [ , ] FIRSTROW = first_row ]
    [ [ , ] LASTROW = last_row ]
 
@@ -126,7 +124,7 @@ The `BULK INSERT` statement has different arguments and options in different pla
 | --- | --- |
 | Data source | Local path, Network path (UNC), or Azure Storage | Azure Storage | Azure Storage, One Lake |
 | Source authentication | Windows authentication, SAS | Microsoft Entra ID, SAS token, managed identity | Microsoft Entra ID |
-| Unsupported options | `*` wildcards in path | `*` wildcards in path | `DATAFILETYPE = {'native' | 'widenative'}` |
+| Unsupported options | `*` wildcards in path, `FORMAT = 'PARQUET'` | `*` wildcards in path, `FORMAT = 'PARQUET'` | `DATAFILETYPE = {'native' | 'widenative'}` |
 | Enabled options but without effect | | | `KEEPIDENTITY`, `FIRE_TRIGGERS`, `CHECK_CONSTRAINTS`, `TABLOCK`, `ORDER`, `ROWS_PER_BATCH`, `KILOBYTES_PER_BATCH`, and `BATCHSIZE` aren't applicable. They don't throw a syntax error, but they don't have any effect |
 
 #### *database_name*
@@ -143,7 +141,11 @@ Specifies the name of the table or view to bulk import data into. Only views in 
 
 #### FROM '*data_file*'
 
-Specifies the full path of the data file that contains data to import into the specified table or view. `BULK INSERT` can import data from a disk or Azure Blob Storage (including network, floppy disk, hard disk, and so on).
+Specifies the full path of the data file that contains data to import into the specified table or view.
+
+::: moniker range=">=sql-server-2016 || >=sql-server-linux-2017"
+
+`BULK INSERT` can import data from a disk or Azure Storage (including network, floppy disk, hard disk, and so on).
 
 ```sql
 BULK INSERT bing_covid_19_data
@@ -157,24 +159,62 @@ BULK INSERT bing_covid_19_data
 FROM '\\ShareX\bing_covid-19_data\public\curated\covid-19\latest\bing_covid-19_data.csv';
 ```
 
-Azure SQL Database and Fabric Warehouse support only reading from Azure Blob Storage.
+::: moniker-end
 
-Beginning with [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)], the *data_file* can be in Azure Blob Storage. In that case, you need to specify `data_source_name` option as well. For an example, see [Import data from a file in Azure Blob Storage](#f-import-data-from-a-file-in-azure-blob-storage).
+Azure SQL Database and Fabric Data Warehouse support reading data from URI, but they don't support on-premises file paths.
 
-Fabric Warehouse supports two different path styles for specifying source path:
+```sql
+BULK INSERT bing_covid_19_data
+FROM 'https://<data-lake>.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.csv';
+```
+
+Beginning with [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)], the *data_file* can be in Azure Storage. In that case, you need to specify `data_source_name` option as well. For an example, see [Import data from a file in Azure Storage](#f-import-data-from-a-file-in-azure-storage).
+
+::: moniker range="=fabric"
+
+Fabric Data Warehouse supports two different path styles for specifying source path:
 
 - `https://<storage account>.blob.core.windows.net/<container name>/<path to file>`
 - `abfss://<container name>@<storage account>.dfs.core.windows.net/<path to file>`
 
-Fabric Warehouse supports `*` wildcards that can match any character in the URI, and enable you to define a URI pattern for the files that should be imported. For example:
+Fabric Data Warehouse supports `*` wildcards that can match any character in the URI, and enable you to define a URI pattern for the files that should be imported. For example:
 
 ```sql
 BULK INSERT bing_covid_19_data
 FROM 'https://<data-lake>.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/*.csv';
 ```
 
+::: moniker-end
+
 > [!NOTE]  
 > Replace `<data-lake>.blob.core.windows.net` with an appropriate URL.
+
+#### DATA_SOURCE
+
+**Applies to**: [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)].
+
+Specifies a named external data source that points to an Azure Storage root location for the file import.
+
+```sql
+CREATE EXTERNAL DATA SOURCE pandemicdatalake
+WITH (LOCATION = 'https://<data-lake>.blob.core.windows.net/public/');
+```
+
+> [!NOTE]  
+> Replace `<data-lake>.blob.core.windows.net` with an appropriate URL.
+
+For more information, see [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md).
+
+The file path in the `FROM` clause must be a relative path, which will be appended to the root location defined in the external data source.
+
+```sql
+BULK INSERT bing_covid_19_data
+FROM 'curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.csv'
+WITH (DATA_SOURCE = 'pandemicdatalake', FIRSTROW = 2, LASTROW = 100, FIELDTERMINATOR = ',');
+```
+
+> [!NOTE]  
+> For simplicity, the following examples use relative paths and predefined external data sources..
 
 #### CODEPAGE
 
@@ -182,16 +222,15 @@ Specifies the code page of the data in the data file. `CODEPAGE` is relevant onl
 
 ```sql
 BULK INSERT bing_covid_19_data
-FROM 'https://<data-lake>.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.csv'
-WITH (CODEPAGE = '65001', FIRSTROW = 2);
+FROM '/curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.csv'
+WITH (DATA_SOURCE = 'pandemicdatalake', FIRSTROW = 2, CODEPAGE = '65001');
 ```
-
-> [!NOTE]  
-> Replace `<data-lake>.blob.core.windows.net` with an appropriate URL.
 
 `CODEPAGE` isn't a supported option on Linux for [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)]. For [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], only the `'RAW'` option is allowed for `CODEPAGE`.
 
 You should specify a collation name for each column in a [format file](../../relational-databases/import-export/use-a-format-file-to-bulk-import-data-sql-server.md).
+
+::: moniker range="=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 
 | `CODEPAGE` value | Description |
 | --- | --- |
@@ -200,14 +239,24 @@ You should specify a collation name for each column in a [format file](../../rel
 | `RAW` | No conversion from one code page to another occurs. `RAW` is the fastest option. |
 | *code_page* | Specific code page number, for example, 850.<br /><br />Versions before [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] don't support code page 65001 (UTF-8 encoding). |
 
+::: moniker-end
+::: moniker range="=fabric"
+
+| `CODEPAGE` value | Description |
+| --- | --- |
+| `ACP` | Columns of **char**, **varchar**, or **text** data type are converted from the [!INCLUDE [vcpransi](../../includes/vcpransi-md.md)]/[!INCLUDE [msCoName](../../includes/msconame-md.md)] Windows code page (ISO 1252) to the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] code page. |
+| *code_page* | Specific code page number, for example, 850.<br /><br />Versions before [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] don't support code page 65001 (UTF-8 encoding). |
+
+::: moniker-end
+
 #### DATAFILETYPE
 
 Specifies that `BULK INSERT` performs the import operation using the specified data-file type value.
 
 ```sql
 BULK INSERT bing_covid_19_data
-FROM 'https://<data-lake>.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.csv'
-WITH (DATAFILETYPE = 'char', FIRSTROW = 2);
+FROM 'curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.csv'
+WITH (DATA_SOURCE = 'pandemicdatalake', FIRSTROW = 2, DATAFILETYPE = 'char');
 ```
 
 > [!NOTE]  
@@ -232,31 +281,15 @@ WITH (DATAFILETYPE = 'char', FIRSTROW = 2);
 
 ::: moniker-end
 
-#### DATA_SOURCE
-
-**Applies to:** [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and later versions, and Azure SQL Database.
-
-Specifies a named external data source pointing to the Azure Blob Storage location of the file that will be imported. The external data source must be created using the `TYPE = BLOB_STORAGE` option added in [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)]. For more information, see [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md). For an example, see [Import data from a file in Azure Blob Storage](#f-import-data-from-a-file-in-azure-blob-storage).
-
-> [!NOTE]  
-> Replace `<data-lake>.blob.core.windows.net` with an appropriate URL.
-
-```sql
-CREATE EXTERNAL DATA SOURCE pandemicdatalake
-WITH (
-    TYPE = BLOB_STORAGE,
-    LOCATION = 'https://<data-lake>.blob.core.windows.net/public/'
-);
-GO
-
-BULK INSERT bing_covid_19_data
-FROM 'curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.csv'
-WITH (DATA_SOURCE = '<data-lake>', FIRSTROW = 2, LASTROW = 100, FIELDTERMINATOR = ',');
-```
-
 #### MAXERRORS
 
 Specifies the maximum number of syntax errors allowed in the data before the bulk-import operation is canceled. Each row that can't be imported by the bulk-import operation is ignored and counted as one error. If *max_errors* isn't specified, the default is 10.
+
+```sql
+BULK INSERT bing_covid_19_data
+FROM 'curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.csv'
+WITH (DATA_SOURCE = 'pandemicdatalake', MAXERRORS = 0);
+```
 
 The `MAX_ERRORS` option doesn't apply to constraint checks or to converting **money** and **bigint** data types.
 
@@ -264,15 +297,37 @@ The `MAX_ERRORS` option doesn't apply to constraint checks or to converting **mo
 
 Specifies the file used to collect rows that have formatting errors and can't be converted to an OLE DB rowset. These rows are copied into this error file from the data file "as is."
 
+```sql
+BULK INSERT bing_covid_19_data
+FROM 'curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.csv'
+WITH (DATA_SOURCE = 'pandemicdatalake',
+      ERRORFILE = 'https://<data-lake>.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/errors');
+```
+
+> [!NOTE]  
+> Replace `<data-lake>.blob.core.windows.net` with an appropriate URL.
+
 The error file is created when the command is executed. An error occurs if the file already exists. Additionally, a control file with the extension `.ERROR.txt` is created, which references each row in the error file and provides error diagnostics. As soon as the errors have been corrected, the data can be loaded.
 
-Beginning with [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)], the *error_file_path* can be in Azure Blob Storage.
+Beginning with [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)], the *error_file_path* can be in Azure Storage.
 
 #### ERRORFILE_DATA_SOURCE
 
-**Applies to:** [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and later versions.
+**Applies to**: [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and later versions.
 
-Specifies a named external data source pointing to the Azure Blob Storage location of the error file to keep track of errors found during the import. The external data source must be created using the `TYPE = BLOB_STORAGE` option added in [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)]. For more information, see [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md).
+Specifies a named external data source pointing to the Azure Storage location of the error file to keep track of errors found during the import.
+
+```sql
+BULK INSERT bing_covid_19_data
+FROM 'curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.csv'
+WITH (
+    DATA_SOURCE = 'pandemicdatalake',
+    ERRORFILE = 'curated/covid-19/bing_covid-19_data/latest/errors',
+    ERRORFILE_DATA_SOURCE = 'pandemicdatalake'
+);
+```
+
+For more details on creating external data sources, see [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md).
 
 #### FIRSTROW
 
@@ -280,12 +335,9 @@ Specifies the number of the first row to load. The default is the first row in t
 
 ```sql
 BULK INSERT bing_covid_19_data
-FROM 'https://<data-lake>.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.csv'
-WITH (FIRSTROW = 2);
+FROM 'curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.csv'
+WITH (DATA_SOURCE = 'pandemicdatalake', FIRSTROW = 2);
 ```
-
-> [!NOTE]  
-> Replace `<data-lake>.blob.core.windows.net` with an appropriate URL.
 
 The `FIRSTROW` attribute isn't intended to skip column headers. The `BULK INSERT` statement doesn't support skipping headers. If you choose to skip rows, the [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)] looks only at the field terminators, and doesn't validate the data in the fields of skipped rows.
 
@@ -293,11 +345,6 @@ The `FIRSTROW` attribute isn't intended to skip column headers. The `BULK INSERT
 
 Specifies the number of the last row to load. The default is 0, which indicates the last row in the specified data file.
 
-#### FORMATFILE_DATA_SOURCE
-
-**Applies to:** [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and later versions.
-
-Specifies a named external data source pointing to the Azure Blob Storage location of the format file to define the schema of imported data. The external data source must be created using the `TYPE = BLOB_STORAGE` option added in [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)]. For more information, see [CREATE EXTERNAL DATA SOURCE](create-external-data-source-transact-sql.md).
 ::: moniker range="=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 
 #### BATCHSIZE
@@ -361,52 +408,88 @@ For a columnstore index, the locking behavior is different because it's internal
 
 #### FORMAT
 
-**Applies to:** [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and later versions.
+**Applies to**: [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and later versions.
 
 Specifies a comma-separated values file compliant to the [RFC 4180](https://tools.ietf.org/html/rfc4180) standard.
 
 ```sql
-BULK INSERT Sales.Orders
-FROM '\\SystemX\DiskZ\Sales\data\orders.csv'
-WITH (FORMAT = 'CSV');
+BULK INSERT bing_covid_19_data
+FROM 'curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.csv'
+WITH (DATA_SOURCE = 'pandemicdatalake', FORMAT = 'CSV');
 ```
+
 ::: moniker range="=fabric"
-In Fabric Data Warehouse, the `BULK INSERT` statement supports the same formats as the `COPY INTO` statement, so `FORMAT='PARQUET'` is also supported.
+
+In Fabric Data Warehouse, the `BULK INSERT` statement supports the same formats as the `COPY INTO` statement, so `FORMAT = 'PARQUET'` is also supported.
+
 ::: moniker-end
 
 #### FIELDQUOTE
 
-**Applies to:** [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and later versions.
+**Applies to**: [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and later versions.
 
 Specifies a character to use as the quote character in the CSV file. If not specified, the quote character (`"`) is used as the quote character, as defined in the [RFC 4180](https://tools.ietf.org/html/rfc4180) standard.
 
 #### FORMATFILE
 
-Specifies the full path of a format file. A format file describes the data file that contains stored responses created by using the **bcp** utility on the same table or view. The format file should be used if:
+Specifies the full path of a format file. A format file describes the data file that contains stored responses created by using the **bcp** utility on the same table or view.
+
+```sql
+BULK INSERT bing_covid_19_data
+FROM 'curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.csv'
+WITH (DATA_SOURCE = 'pandemicdatalake',
+      FORMATFILE = 'https://<data-lake>.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.fmt');
+```
+
+> [!NOTE]  
+> Replace `<data-lake>.blob.core.windows.net` with an appropriate URL.
+
+The format file should be used if:
 
 - The data file contains greater or fewer columns than the table or view.
 - The columns are in a different order.
 - The column delimiters vary.
 - There are other changes in the data format. Format files are typically created by using the **bcp** utility and modified with a text editor as needed. For more information, see [bcp Utility](../../tools/bcp-utility.md) and [Create a format file with bcp](../../relational-databases/import-export/create-a-format-file-sql-server.md).
 
-Beginning with [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)], and in Azure SQL Database, `format_file_path` can be in Azure Blob Storage.
+Beginning with [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)], and in Azure SQL Database, `format_file_path` can be in Azure Storage.
 
-#### FIELDTERMINATOR
+#### FORMATFILE_DATA_SOURCE
 
-Specifies the field terminator to be used for **char** and **widechar** data files. The default field terminator is `\t` (tab character). For more information, see [Specify field and row terminators](../../relational-databases/import-export/specify-field-and-row-terminators-sql-server.md).
+**Applies to**: [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and later versions.
+
+Specifies a named external data source pointing to the Azure Storage location of the format file to define the schema of imported data.
 
 ```sql
 BULK INSERT bing_covid_19_data
-FROM 'https://<data-lake>.blob.core.windows.net/public/curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.csv'
-WITH (FIELDTERMINATOR = ',', FIRSTROW = 2);
+FROM 'curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.csv'
+WITH (
+    DATA_SOURCE = 'pandemicdatalake',
+    FORMATFILE = 'curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.fmt',
+    FORMATFILE_DATA_SOURCE = 'pandemicdatalake'
+);
 ```
 
-> [!NOTE]  
-> Replace `<data-lake>.blob.core.windows.net` with an appropriate URL.
+#### FIELDTERMINATOR
+
+Specifies the field terminator to be used for `char` and `widechar` data files. The default field terminator is `\t` (tab character). For more information, see [Specify field and row terminators](../../relational-databases/import-export/specify-field-and-row-terminators-sql-server.md).
+
+```sql
+BULK INSERT bing_covid_19_data
+FROM '/curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.csv'
+WITH (DATA_SOURCE = 'pandemicdatalake', FIELDTERMINATOR = ',', FIRSTROW = 2);
+```
 
 #### ROWTERMINATOR
 
-Specifies the row terminator to be used for **char** and **widechar** data files. The default row terminator is `\r\n` (newline character). For more information, see [Specify field and row terminators](../../relational-databases/import-export/specify-field-and-row-terminators-sql-server.md).
+Specifies the row terminator to be used for `char` and `widechar` data files.
+
+```sql
+BULK INSERT bing_covid_19_data
+FROM '/curated/covid-19/bing_covid-19_data/latest/bing_covid-19_data.csv'
+WITH (DATA_SOURCE = 'pandemicdatalake', ROWTERMINATOR = '\r\n', FIRSTROW = 2);
+```
+
+The default row terminator is `\r\n` (carriage return and newline character). For more information, see [Specify field and row terminators](../../relational-databases/import-export/specify-field-and-row-terminators-sql-server.md).
 
 ## Compatibility
 
@@ -472,7 +555,7 @@ WITH (FORMATFILE = 'C:\t_floatformat-c-xml.xml');
 ```
 
 > [!IMPORTANT]  
-> Azure SQL Database and Fabric Warehouse support only reading from Azure Blob Storage.
+> Azure SQL Database and Fabric Data Warehouse support only reading from URI (for example, Azure Storage).
 
 ### Data types for bulk exporting or importing SQLXML documents
 
@@ -530,9 +613,9 @@ To resolve this error, use [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md
 
 For more information about this and other security considerations for using `BULK INSERT`, see [Use BULK INSERT or OPENROWSET(BULK...) to import data to SQL Server](../../relational-databases/import-export/import-bulk-data-by-using-bulk-insert-or-openrowset-bulk-sql-server.md).
 
-When importing from Azure Blob Storage and the data isn't public (anonymous access), create a [DATABASE SCOPED CREDENTIAL](create-database-scoped-credential-transact-sql.md) based on a SAS key encrypted with a [database master key](create-master-key-transact-sql.md) (DMK), and then create an [external database source](create-external-data-source-transact-sql.md) for use in your `BULK INSERT` command.
+When importing from Azure Storage and the data isn't public (anonymous access), create a [DATABASE SCOPED CREDENTIAL](create-database-scoped-credential-transact-sql.md) based on a SAS key encrypted with a [database master key](create-master-key-transact-sql.md) (DMK), and then create an [external database source](create-external-data-source-transact-sql.md) for use in your `BULK INSERT` command.
 
-Alternatively, create a [DATABASE SCOPED CREDENTIAL](create-database-scoped-credential-transact-sql.md) based on `MANAGED IDENTITY` to authorize requests for data access in non-public storage accounts. When using `MANAGED IDENTITY`, Azure storage must grant permissions to the managed identity of the instance by adding the **Storage Blob Data Contributor** built-in Azure role-based access control (RBAC) role that provides read/write access to the managed identity for the necessary Azure Blob Storage containers. Azure SQL Managed Instance have a system assigned managed identity, and can also have one or more user-assigned managed identities. You can use either system-assigned managed identities or user-assigned managed identities to authorize the requests. For authorization, the `default` identity of the managed instance would be used (that is, the primary user-assigned managed identity, or system-assigned managed identity if user-assigned managed identity isn't specified). For an example, see [Import data from a file in Azure Blob Storage](#f-import-data-from-a-file-in-azure-blob-storage).
+Alternatively, create a [DATABASE SCOPED CREDENTIAL](create-database-scoped-credential-transact-sql.md) based on `MANAGED IDENTITY` to authorize requests for data access in non-public storage accounts. When using `MANAGED IDENTITY`, Azure Storage must grant permissions to the managed identity of the instance by adding the **Storage Blob Data Contributor** built-in Azure role-based access control (RBAC) role that provides read/write access to the managed identity for the necessary Azure Storage containers. Azure SQL Managed Instance have a system assigned managed identity, and can also have one or more user-assigned managed identities. You can use either system-assigned managed identities or user-assigned managed identities to authorize the requests. For authorization, the `default` identity of the managed instance would be used (that is, the primary user-assigned managed identity, or system-assigned managed identity if user-assigned managed identity isn't specified). For an example, see [Import data from a file in Azure Storage](#f-import-data-from-a-file-in-azure-storage).
 
 > [!IMPORTANT]  
 > Managed Identity applies to Azure SQL, and [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions.
@@ -560,7 +643,7 @@ Additionally, `ALTER TABLE` permission is required if one or more of the followi
 [!INCLUDE [article-uses-adventureworks](../../includes/article-uses-adventureworks.md)]
 
 > [!IMPORTANT]  
-> Azure SQL Database and Fabric Warehouse support only reading from Azure Blob Storage.
+> Azure SQL Database and Fabric Warehouse support only reading from Azure Storage.
 
 ### A. Use pipes to import data from a file
 
@@ -640,31 +723,42 @@ WITH (
 );
 ```
 
-### F. Import data from a file in Azure Blob Storage
+<a id="f-import-data-from-a-file-in-azure-blob-storage"></a>
 
-The following example shows how to load data from a CSV file in an Azure Blob Storage location on which you've created a Shared Access Signature (SAS). The Azure Blob Storage location is configured as an external data source, which requires a database scoped credential using a SAS key that's encrypted using a DMK in the user database.
+### F. Import data from a file in Azure Storage
+
+#### Load data from a CSV in Azure Storage with SAS token
+
+The following example shows how to load data from a CSV file in an Azure Storage location on which you've created a Shared Access Signature (SAS). The Azure Storage location is configured as an external data source, which requires a database scoped credential using a SAS key that's encrypted using a DMK in the user database.
 
 > [!NOTE]  
 > Make sure that you don't have a leading `?` in the SAS token, and that you have at least read permission on the object that should be loaded `srt=o&sp=r`, and that expiration period is valid (all dates are in UTC time).
 
+(Optional) A DMK isn't required if a `DATABASE SCOPED CREDENTIAL` isn't required, because the blob is configured for public (anonymous) access.
+
 ```sql
---> Optional - a DMK is not required if a DATABASE SCOPED CREDENTIAL is not required because the blob is configured for public (anonymous) access!
 CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>';
-GO
+```
 
---> Optional - a DATABASE SCOPED CREDENTIAL is not required because the blob is configured for public (anonymous) access!
+(Optional) A `DATABASE SCOPED CREDENTIAL` isn't required because the blob is configured for public (anonymous) access.
+
+Don't include a leading `?` in the SAS token. Make sure that you have at least read permission on the object that should be loaded (`srt=o&sp=r`), and that the expiration period is valid (all dates are in UTC time).
+
+```sql
 CREATE DATABASE SCOPED CREDENTIAL MyAzureBlobStorageCredential
-    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = '******srt=sco&sp=rwac&se=2017-02-01T00:55:34Z&st=2016-12-29T16:55:34Z***************';
--- NOTE: Make sure that you don't have a leading `?` in the SAS token, and
--- that you have at least read permission on the object that should be loaded srt=o&sp=r, and
--- that expiration period is valid (all dates are in UTC time).
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+     SECRET = '******srt = sco&sp = rwac&se = 2017-02-01T00:55:34Z&st = 2016-12-29T16:55:34Z***************';
+```
 
+> [!NOTE]  
+> `CREDENTIAL` isn't required if a blob is configured for public (anonymous) access.
+
+```sql
 CREATE EXTERNAL DATA SOURCE MyAzureBlobStorage
 WITH (
     TYPE = BLOB_STORAGE,
     LOCATION = 'https://****************.blob.core.windows.net/invoices',
     CREDENTIAL = MyAzureBlobStorageCredential
---> CREDENTIAL is not required if a blob is configured for public (anonymous) access!
 );
 
 BULK INSERT Sales.Invoices
@@ -672,24 +766,34 @@ FROM 'inv-2017-12-08.csv'
 WITH (DATA_SOURCE = 'MyAzureBlobStorage');
 ```
 
-The following example shows how to use the `BULK INSERT` command to load data from a csv file in an Azure Blob storage location using Managed Identity. The Azure Blob storage location is configured as an external data source.
+#### Load data from a CSV in Azure Storage with a managed identity
+
+The following example shows how to use the `BULK INSERT` command to load data from a CSV file in an Azure Storage location using Managed Identity. The Azure Storage location is configured as an external data source.
+
+(Optional) A DMK isn't required if a `DATABASE SCOPED CREDENTIAL` isn't required, because the blob is configured for public (anonymous) access.
 
 ```sql
---> Optional - a MASTER KEY is not required if a DATABASE SCOPED CREDENTIAL is not required because the blob is configured for public (anonymous) access!
 CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>';
-GO
+```
 
---> Optional - a DATABASE SCOPED CREDENTIAL is not required because the blob is configured for public (anonymous) access!
+(Optional) A `DATABASE SCOPED CREDENTIAL` isn't required, because the blob is configured for public (anonymous) access:
+
+```sql
 CREATE DATABASE SCOPED CREDENTIAL MyAzureBlobStorageCredential
-    WITH IDENTITY = 'Managed Identity';
+WITH IDENTITY = 'Managed Identity';
+```
 
--- NOTE: Make sure you grant Storage Blob Data Contributor RBAC on storage to provide read/write access to the managed identity for the necessary Azure Blob Storage containers.
+Grant the Storage Blob Data Contributor role, to provide read/write access to the managed identity for the necessary Azure Storage containers.
+
+> [!NOTE]  
+> `CREDENTIAL` isn't required if a blob is configured for public (anonymous) access.
+
+```sql
 CREATE EXTERNAL DATA SOURCE MyAzureBlobStorage
 WITH (
     TYPE = BLOB_STORAGE,
     LOCATION = 'https://****************.blob.core.windows.net/invoices',
     CREDENTIAL = MyAzureBlobStorageCredential
---> CREDENTIAL is not required if a blob is configured for public (anonymous) access!
 );
 
 BULK INSERT Sales.Invoices
@@ -698,11 +802,11 @@ WITH (DATA_SOURCE = 'MyAzureBlobStorage');
 ```
 
 > [!IMPORTANT]  
-> Managed Identity applies to Azure SQL, and [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions.
+> Managed identity applies to [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, and Azure SQL.
 
-### G. Import data from a file in Azure Blob Storage and specify an error file
+### G. Import data from a file in Azure Storage and specify an error file
 
-The following example shows how to load data from a CSV file in an Azure Blob Storage location, which is configured as an external data source, and also specifying an error file. You need a database scoped credential using a shared access signature. If running on Azure SQL Database, `ERRORFILE` option should be accompanied by `ERRORFILE_DATA_SOURCE`, otherwise the import might fail with permissions error. The file specified in `ERRORFILE` shouldn't exist in the container.
+The following example shows how to load data from a CSV file in an Azure Storage location, which is configured as an external data source, and also specifying an error file. You need a database scoped credential using a shared access signature. If running on Azure SQL Database, `ERRORFILE` option should be accompanied by `ERRORFILE_DATA_SOURCE`, otherwise the import might fail with permissions error. The file specified in `ERRORFILE` shouldn't exist in the container.
 
 ```sql
 BULK INSERT Sales.Invoices
@@ -715,7 +819,7 @@ WITH (
 );
 ```
 
-For complete `BULK INSERT` examples including configuring the credential and external data source, see [Examples of bulk access to data in Azure Blob Storage](../../relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage.md).
+For complete `BULK INSERT` examples including configuring the credential and external data source, see [Examples of bulk access to data in Azure Storage](../../relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage.md).
 
 ### More examples
 
