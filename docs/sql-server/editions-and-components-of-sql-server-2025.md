@@ -259,7 +259,7 @@ For features supported by Enterprise Developer and Evaluation editions, see feat
 | Create new endpoints | Yes | Yes | No |
 | SysPrep support <sup>2</sup> | Yes | Yes | Yes |
 | PowerShell scripting support <sup>3</sup> | Yes | Yes | Yes |
-| Support for data-tier application component operations - extract, deploy, upgrade, delete | Yes | Yes | Yes |
+| Support for data-tier application component operations (extract, deploy, upgrade, delete) | Yes | Yes | Yes |
 | Policy automation (check on schedule and change) | Yes | Yes | No |
 | Performance data collector | Yes | Yes | No |
 | Able to enroll as a managed instance in multi-instance management | Yes | Yes | No |
@@ -295,6 +295,7 @@ For features supported by Enterprise Developer and Evaluation editions, see feat
 | Native XML support | Yes | Yes | Yes |
 | XML indexing | Yes | Yes | Yes |
 | XML compression | Yes | Yes | Yes |
+| `MERGE` and upsert capabilities | Yes | Yes | Yes |
 | UTF-8 and UTF-16 support | Yes | Yes | Yes |
 | Graph tables | Yes | Yes | Yes |
 | Temporal tables | Yes | Yes | Yes |
