@@ -31,4 +31,4 @@ SQL Server features and capabilities provide methods of securing data at the dat
 - Use [Azure Policy](/azure/governance/policy/overview) to create business rules that can be applied to your environment. Azure Policies evaluate Azure resources by comparing the properties of those resources against rules defined in JSON format.
 - Azure Blueprints enables cloud architects and central information technology groups to define a repeatable set of Azure resources that implements and adheres to an organization's standards, patterns, and requirements. Azure Blueprints are [different than Azure Policies](/azure/governance/blueprints/overview#how-its-different-from-azure-policy).
 - Use Windows Server 2019 or Windows Server 2022 to be [FIPS](../virtual-machines/windows/security-considerations-best-practices.md#fips-compliance) compliant with SQL Server on Azure VMs. 
-
+- Treat restoring backups as a high-risk operation and [never restore a backup from an untrusted source](../virtual-machines/windows/security-considerations-best-practices.md#security-risk-of-restoring-backups-from-untrusted-sources). 

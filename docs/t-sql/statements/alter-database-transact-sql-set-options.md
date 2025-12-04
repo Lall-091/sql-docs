@@ -624,6 +624,9 @@ Controls the date_correlation_optimization option.
 
   [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] maintains correlation statistics where a FOREIGN KEY constraint links any two tables in the database and the tables have **datetime** columns.
 
+  Enabling `DATE_CORRELATION_OPTIMIZATION` increases the attack surface area when restoring [untrusted backup](../../relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases.md#security-risk-of-restoring-backups-from-untrusted-sources) as the optimizer executes those objects with elevated privileges.
+
+
 - OFF
 
   Correlation statistics aren't maintained.

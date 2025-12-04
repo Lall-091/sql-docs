@@ -5,7 +5,7 @@ description: Learn about point-in-time restore, which enables you to roll back a
 author: dinethi
 ms.author: dinethi
 ms.reviewer: wiassaf, mathoma, strrodic, mlandzic
-ms.date: 07/10/2025
+ms.date: 12/05/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: backup-restore
 ms.topic: how-to
@@ -210,6 +210,10 @@ Geo-restore is the most basic disaster-recovery solution available in Azure SQL 
 It's essential to acknowledge that geo-restore serves as an appropriate disaster-recovery solution for applications with relatively small databases that aren't critical to the business. For business-critical applications that require large databases and must ensure business continuity, use [failover groups](failover-group-sql-mi.md). That feature offers a much lower RPO and RTO, and the capacity is always guaranteed.
 
 For more information about business continuity choices, see [Overview of business continuity](../database/business-continuity-high-availability-disaster-recover-hadr-overview.md).
+
+## Security risk of restoring backups from untrusted sources
+
+[!INCLUDE [backup-restore-security-risk](../../docs/includes/backup-restore-security-risk.md)]
 
 ## Limitations
 
