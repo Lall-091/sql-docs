@@ -4,10 +4,10 @@ description: Describes backup and restore considerations for SQL Server database
 author: AbdullahMSFT
 ms.author: amamun
 ms.reviewer: mathoma, randolphwest
-ms.date: 09/17/2025
+ms.date: 12/05/2025
 ms.service: azure-vm-sql-server
 ms.subservice: backup
-ms.topic: conceptual
+ms.topic: article
 tags: azure-resource-management
 ---
 # Backup and restore for SQL Server on Azure VMs
@@ -136,6 +136,10 @@ The following table summarizes the capabilities of each backup and restore optio
 | Customize monitoring based on Azure Monitor logs | No | Yes | No |
 | Monitor backup jobs with SSMS or Transact-SQL scripts | Yes | Yes | Yes |
 | Restore databases with SSMS or Transact-SQL scripts | Yes | No | Yes |
+
+## Security risk of restoring backups from untrusted sources
+
+[!INCLUDE [backup-restore-security-risk](../../../docs/includes/backup-restore-security-risk.md)]
 
 ## Related content
 

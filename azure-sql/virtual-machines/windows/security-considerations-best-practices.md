@@ -4,7 +4,7 @@ description: This article provides general guidance for securing SQL Server runn
 author: dplessMSFT
 ms.author: dpless
 ms.reviewer: mathoma, randolphwest
-ms.date: 09/16/2025
+ms.date: 12/05/2025
 ms.service: azure-vm-sql-server
 ms.subservice: security
 ms.topic: best-practice
@@ -204,6 +204,10 @@ SQL Server is capable of being FIPS compliant in [SQL Server 2016 and later](/tr
 To be FIPS compliant with SQL Server on Azure VMs, you should be on Windows Server 2022, which has FIPS enabled by default. Windows Server 2019 can also be FIPS compliant if FIPS is manually enabled using the policy specified in Security Technical Implementation Guide (STIG) finding V-93511.
 
 SQL Server isn't currently FIPS compliant on Linux Azure VMs.
+
+## Security risk of restoring backups from untrusted sources
+
+[!INCLUDE [backup-restore-security-risk](../../../docs/includes/backup-restore-security-risk.md)]
 
 ## Related content
 

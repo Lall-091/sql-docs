@@ -3,10 +3,10 @@ title: "Back up and Restore of SQL Server Databases"
 description: This article describes the benefits of backing up SQL Server databases and introduces backup and restore strategies and security considerations.
 author: MashaMSFT
 ms.author: mathoma
-ms.date: 08/25/2025
+ms.date: 12/05/2025
 ms.service: sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: article
 ms.update-cycle: 1825-days
 helpviewer_keywords:
   - "disaster recovery [SQL Server], see restoring [SQL Server]"
@@ -172,6 +172,10 @@ Use advanced features like `BACKUP CHECKSUM` to detect problems with the backup 
 
 We recommend that you document your backup and restore procedures and keep a copy of the documentation in your run book.
 We also recommend that you maintain an operations manual for each database. This operations manual should document the location of the backups, backup device names (if any), and the amount of time that is required to restore the test backups.
+
+## Security risk of restoring backups from untrusted sources
+
+[!INCLUDE [backup-restore-security-risk](../../includes/backup-restore-security-risk.md)]
 
 ## Monitor progress with XEvent
 
