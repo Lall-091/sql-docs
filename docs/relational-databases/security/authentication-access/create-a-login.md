@@ -297,6 +297,12 @@ The login can connect to [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-m
 
 - To grant a permission to a login, see [Grant a Permission to a Principal](grant-a-permission-to-a-principal.md).
 
+> [!NOTE]
+> When connecting to SQL Server through a Windows or Active Directory (AD) group, certain operations can result in the creation of a login that is a member of the group without the execution of a create login statement. This *implicit* login creation is by design and is intended to maintain referential integrity of the system metadata within SQL Server. The implicit login does not have explicit connect permission to the database so if the login is removed from the group, that login cannot connect by itself.
+> Customers may observe such logins being created automatically when performing certain operations as a member of a Windows group. Examples are, *exec sp_defaultdb* and *exe sp_defaultLanguage*, where this could happen. 
+>
+> This behavior is by design and will not be changed. If additional monitoring is required, administrators can implement triggers to detect login creation attempts.
+
 ## Related content
 
 - [Security for SQL Server Database Engine and Azure SQL Database](../security-center-for-sql-server-database-engine-and-azure-sql-database.md)
