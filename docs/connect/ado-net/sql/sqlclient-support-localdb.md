@@ -38,7 +38,7 @@ You can download LocalDB from [Microsoft SQL Server 2012 Feature Pack](https://w
   
 ## Programmatically create a named instance
 
-[!INCLUDE [appliesto-netfx-xxxx-xxxx-md](../../../includes/appliesto-netfx-xxxx-xxxx-md.md)]
+[!INCLUDE [dotnet-framework-only](../../../includes/products/applies-plain/dotnet-framework-only.md)]
 
 An application can create a named instance and specify a database as follows:  
   

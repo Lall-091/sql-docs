@@ -12,7 +12,7 @@ ms.custom: sfi-ropc-nochange
 
 # Using Always Encrypted with the Microsoft .NET Data Provider for SQL Server
 
-[!INCLUDE[appliesto-netfx-netcore-xxxx-md](../../../includes/appliesto-netfx-netcore-netst-md.md)]
+[!INCLUDE [dotnet-all](../../../includes/products/applies-full/dotnet-all.md)]
 
 This article provides information on how to develop .NET applications using [Always Encrypted](../../../relational-databases/security/encryption/always-encrypted-database-engine.md) or [Always Encrypted with secure enclaves](../../../relational-databases/security/encryption/always-encrypted-enclaves.md) and the [**Microsoft .NET Data Provider for SQL Server**](../microsoft-ado-net-sql-server.md).
 

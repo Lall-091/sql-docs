@@ -13,7 +13,7 @@ dev_langs:
 ---
 # Event counters in SqlClient
 
-[!INCLUDE[appliesto-xxxx-netcore-netst-md](../../includes/appliesto-xxxx-netcore-netst-md.md)]
+[!INCLUDE [dotnet-modern](../../includes/products/applies-full/dotnet-modern.md)]
 
 [!INCLUDE[Driver_ADONET_Download](../../includes/driver_adonet_download.md)]
 

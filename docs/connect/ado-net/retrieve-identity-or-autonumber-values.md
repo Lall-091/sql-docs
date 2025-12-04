@@ -13,7 +13,7 @@ dev_langs:
 ---
 # Retrieve identity or autonumber values
 
-[!INCLUDE[appliesto-netfx-netcore-netst-md](../../includes/appliesto-netfx-netcore-netst-md.md)]
+[!INCLUDE [dotnet-all](../../includes/products/applies-full/dotnet-all.md)]
 
 [!INCLUDE[Driver_ADONET_Download](../../includes/driver_adonet_download.md)]
 

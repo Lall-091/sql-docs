@@ -13,7 +13,7 @@ dev_langs:
 ---
 # Performance counters in SqlClient
 
-[!INCLUDE[appliesto-netfx-xxxx-xxxx-md](../../includes/appliesto-netfx-xxxx-xxxx-md.md)]
+[!INCLUDE [dotnet-framework-only](../../includes/products/applies-full/dotnet-framework-only.md)]
 
 [!INCLUDE[Driver_ADONET_Download](../../includes/driver_adonet_download.md)]
 

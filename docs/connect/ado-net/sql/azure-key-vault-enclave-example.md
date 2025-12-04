@@ -13,8 +13,6 @@ ms.topic: tutorial
 
 [!INCLUDE [sqlserver2019-windows-only-asdb](../../../includes/applies-to-version/sqlserver2019-windows-only-asdb.md)]
 
-[!INCLUDE [appliesto-netfx-netcore-netst-md](../../../includes/appliesto-netfx-netcore-netst-md.md)]
-
 This example shows you how you can use the Azure Key Vault provider with Always Encrypted with secure enclaves. The script will create a column master key in the database based on the Azure Key Vault URL.
 Secondly, a column encryption key is created. Once the keys are created, a table with encrypted columns will be created, a few records will be inserted and read again from the table.
 

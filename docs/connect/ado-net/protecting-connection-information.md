@@ -11,7 +11,7 @@ ms.topic: conceptual
 ---
 # Protecting connection information
 
-[!INCLUDE[appliesto-netfx-netcore-netst-md](../../includes/appliesto-netfx-netcore-netst-md.md)]
+[!INCLUDE [dotnet-all](../../includes/products/applies-full/dotnet-all.md)]
 
 [!INCLUDE[Driver_ADONET_Download](../../includes/driver_adonet_download.md)]
 
@@ -43,7 +43,7 @@ The default value for `Persist Security Info` is false; we recommend using this 
 
 ## Encrypt configuration files
 
-[!INCLUDE[appliesto-netfx-netcore-xxxx-md](../../includes/appliesto-netfx-netcore-xxxx-md.md)]
+[!INCLUDE [dotnet-framework-dotnet-core](../../includes/products/applies-plain/dotnet-framework-dotnet-core.md)]
 
 You can also store connection strings in configuration files, which eliminates the need to embed them in your application's code. Configuration files are standard XML files for which the .NET Framework has defined a common set of elements. Connection strings in configuration files are typically stored inside the **\<connectionStrings>** element in the **app.config** for a Windows application, or the **web.config** file for an ASP.NET application. For more information on the basics of storing, retrieving, and encrypting connection strings from configuration files, see [Connection Strings and Configuration Files](connection-strings-and-configuration-files.md).
 

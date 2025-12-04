@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 05/26/2025
 ms.service: sql
 ms.subservice: release-landing
-ms.topic: conceptual
+ms.topic: article
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017"
 ---
 # SQL Server include files for versioning and applies-to
@@ -49,7 +49,6 @@ These applies-to include files omit the version of SQL Server.
 | applies-to-version/sql-asdbmi.md | `[!INCLUDE [applies-to-version/sql-asdbmi.md](../includes/applies-to-version/sql-asdbmi.md)]` | [!INCLUDE [applies-to-version/sql-asdbmi.md](../includes/applies-to-version/sql-asdbmi.md)] |
 | appliesto-ss-xxxx-asdw-pdw-md.md | `[!INCLUDE [appliesto-ss-xxxx-asdw-pdw-md.md](../includes/appliesto-ss-xxxx-asdw-pdw-md.md)]` | [!INCLUDE [appliesto-ss-xxxx-asdw-pdw-md.md](../includes/appliesto-ss-xxxx-asdw-pdw-md.md)] |
 | appliesto-ss-xxxx-xxxx-pdw-md.md | `[!INCLUDE [appliesto-ss-xxxx-xxxx-pdw-md.md](../includes/appliesto-ss-xxxx-xxxx-pdw-md.md)]` | [!INCLUDE [appliesto-ss-xxxx-xxxx-pdw-md.md](../includes/appliesto-ss-xxxx-xxxx-pdw-md.md)] |
-| appliesto-ss-xxxx-xxxx-xxx-md-winonly.md | `[!INCLUDE [appliesto-ss-xxxx-xxxx-xxx-md-winonly.md](../includes/appliesto-ss-xxxx-xxxx-xxx-md-winonly.md)]` | [!INCLUDE [appliesto-ss-xxxx-xxxx-xxx-md-winonly.md](../includes/appliesto-ss-xxxx-xxxx-xxx-md-winonly.md)] |
 | applies-to-version/_ssnoversion.md | `[!INCLUDE [applies-to-version/_ssnoversion.md](../includes/applies-to-version/sqlserver.md)]` | [!INCLUDE [applies-to-version/_ssnoversion.md](../includes/applies-to-version/sqlserver.md)] |
 | appliesto-xx-asdb-asdw-xxx-md.md | `[!INCLUDE [appliesto-xx-asdb-asdw-xxx-md.md](../includes/appliesto-xx-asdb-asdw-xxx-md.md)]` | [!INCLUDE [appliesto-xx-asdb-asdw-xxx-md.md](../includes/appliesto-xx-asdb-asdw-xxx-md.md)] |
 | appliesto-xx-asdb-xxxx-xxx-md.md | `[!INCLUDE [appliesto-xx-asdb-xxxx-xxx-md.md](../includes/appliesto-xx-asdb-xxxx-xxx-md.md)]` | [!INCLUDE [appliesto-xx-asdb-xxxx-xxx-md.md](../includes/appliesto-xx-asdb-xxxx-xxx-md.md)] |

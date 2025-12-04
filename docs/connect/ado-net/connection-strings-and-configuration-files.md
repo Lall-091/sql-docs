@@ -13,7 +13,7 @@ ms.custom: sfi-ropc-nochange
 ---
 # Connection strings and configuration files
 
-[!INCLUDE[appliesto-netfx-netcore-xxxx-md](../../includes/appliesto-netfx-netcore-xxxx-md.md)]
+[!INCLUDE [dotnet-framework-dotnet-core](../../includes/products/applies-full/dotnet-framework-dotnet-core.md)]
 
 [!INCLUDE[Driver_ADONET_Download](../../includes/driver_adonet_download.md)]
 

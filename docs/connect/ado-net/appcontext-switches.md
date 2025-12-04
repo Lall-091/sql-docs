@@ -11,7 +11,9 @@ dev_langs:
   - "csharp"
 ms.custom: sfi-ropc-nochange
 ---
-# AppContext switches in Sqlclient
+# AppContext switches in SqlClient
+
+[!INCLUDE [dotnet-all](../../includes/products/applies-full/dotnet-all.md)]
 
 [!INCLUDE [Driver_ADONET_Download](../../includes/driver_adonet_download.md)]
 
@@ -19,7 +21,7 @@ The AppContext class allows SqlClient to provide new functionality while continu
 
 ## Enabling decimal truncation behavior
 
-[!INCLUDE [appliesto-netfx-netcore-netst-md](../../includes/appliesto-netfx-netcore-netst-md.md)]
+[!INCLUDE [dotnet-all](../../includes/products/applies-plain/dotnet-all.md)]
 
 Starting with Microsoft.Data.SqlClient 2.0, decimal data is rounded by default, as is done by SQL Server. To enable the previous behavior of truncation, you can set the AppContext switch **"Switch.Microsoft.Data.SqlClient.TruncateScaledDecimal"** to `true` at application startup:
 
@@ -29,7 +31,7 @@ AppContext.SetSwitch("Switch.Microsoft.Data.SqlClient.TruncateScaledDecimal", tr
 
 ## Enabling managed networking on Windows
 
-[!INCLUDE [appliesto-xxxx-netcore-netst-md](../../includes/appliesto-xxxx-netcore-netst-md.md)]
+[!INCLUDE [dotnet-modern](../../includes/products/applies-plain/dotnet-modern.md)]
 
 (Available starting with version 2.0)
 
@@ -46,7 +48,7 @@ This switch toggles the driver's behavior to use a managed networking implementa
 
 ## Disabling Transparent Network IP Resolution
 
-[!INCLUDE [appliesto-netfx-xxxx-xxxx-md](../../includes/appliesto-netfx-xxxx-xxxx-md.md)]
+[!INCLUDE [dotnet-framework-only](../../includes/products/applies-plain/dotnet-framework-only.md)]
 
 Transparent Network IP Resolution (TNIR) is a revision of the existing MultiSubnetFailover feature. TNIR affects the connection sequence of the driver in the case where the first resolved IP of the hostname doesn't respond and there are multiple IPs associated with the hostname. TNIR interacts with MultiSubnetFailover to provide the following three connection sequences:
 
@@ -71,7 +73,7 @@ For more information about setting these properties, see the documentation for [
 
 ## Enable a minimum timeout during login
 
-[!INCLUDE [appliesto-netfx-netcore-netst-md](../../includes/appliesto-netfx-netcore-netst-md.md)]
+[!INCLUDE [dotnet-all](../../includes/products/applies-plain/dotnet-all.md)]
 
 To prevent a login attempt from waiting indefinitely, you can set the AppContext switch **Switch.Microsoft.Data.SqlClient.UseOneSecFloorInTimeoutCalculationDuringLogin** to `true` at application startup:
 
@@ -81,7 +83,7 @@ AppContext.SetSwitch("Switch.Microsoft.Data.SqlClient.UseOneSecFloorInTimeoutCal
 
 ## Disable blocking behavior of ReadAsync
 
-[!INCLUDE [appliesto-netfx-netcore-netst-md](../../includes/appliesto-netfx-netcore-netst-md.md)]
+[!INCLUDE [dotnet-all](../../includes/products/applies-plain/dotnet-all.md)]
 
 Starting in version 3.0, ReadAsync runs asynchronously. Previous versions run ReadAsync synchronously and block the calling thread on .NET Framework. To control this blocking behavior, you can set the AppContext switch **Switch.Microsoft.Data.SqlClient.MakeReadAsyncBlocking** to `true` or `false` at application startup:
 
@@ -91,7 +93,8 @@ AppContext.SetSwitch("Switch.Microsoft.Data.SqlClient.MakeReadAsyncBlocking", fa
 
 ## Enabling rowversion null behavior
 
-[!INCLUDE [appliesto-netfx-netcore-netst-md](../../includes/appliesto-netfx-netcore-netst-md.md)]
+[!INCLUDE [dotnet-all](../../includes/products/applies-plain/dotnet-all.md)]
+
 Starting in version 3.0, when a rowversion has a value of null, `SqlDataReader` returns a `DBNull` value instead of an empty `byte[]`. To enable the legacy behavior of returning an empty `byte[]`, enable the AppContext switch **Switch.Microsoft.Data.SqlClient.LegacyRowVersionNullBehavior** on application startup.
 
 ```csharp
@@ -100,7 +103,7 @@ AppContext.SetSwitch("Switch.Microsoft.Data.SqlClient.LegacyRowVersionNullBehavi
 
 ## Suppress insecure TLS warning
 
-[!INCLUDE [appliesto-netfx-netcore-netst-md](../../includes/appliesto-netfx-netcore-netst-md.md)]
+[!INCLUDE [dotnet-all](../../includes/products/applies-plain/dotnet-all.md)]
 
 (Available starting with version 4.0.1)
 
@@ -111,7 +114,8 @@ AppContext.SetSwitch("Switch.Microsoft.Data.SqlClient.SuppressInsecureTLSWarning
 ```
 
 ## Ignore Server Provided Failover Partner
-[!INCLUDE [appliesto-netfx-netcore-netst-md](../../includes/appliesto-netfx-netcore-netst-md.md)]
+
+[!INCLUDE [dotnet-all](../../includes/products/applies-plain/dotnet-all.md)]
 
 (Available starting with versions 5.1.8, 6.0.4, and 6.1.3)
 

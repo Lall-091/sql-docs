@@ -13,8 +13,6 @@ ms.topic: tutorial
 
 [!INCLUDE [sqlserver2019-windows-only](../../../includes/applies-to-version/sqlserver2019-windows-only.md)]
 
-[!INCLUDE [appliesto-netfx-netcore-netst-md](../../../includes/appliesto-netfx-netcore-netst-md.md)]
-
 This example demonstrates use of Azure Key Vault Provider when accessing encrypted columns.
 
 ## AzureKeyVaultProvider v2.0+
