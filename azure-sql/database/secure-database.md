@@ -97,7 +97,7 @@ Reliable backup and recovery processes protect your data from loss due to failur
 
 - **Verify automated backup configuration**: Ensure automated backups are properly configured and retention periods meet your business requirements. Azure SQL Database provides automated backups by default with configurable retention periods from 1 to 35 days. For more information, see [Automated backups](automated-backups-overview.md).
 
-- **Configure backup storage redundancy**: Choose the appropriate backup storage redundancy option based on your availability and disaster recovery requirements. Options include locally redundant (LRS), zone-redundant (ZRS), and geo-redundant (GRS) storage. For more information, see [Backup storage redundancy](automated-backups-overview.md#backup-storage-redundancy).
+- **Configure backup storage redundancy**: Choose the appropriate backup storage redundancy option based on your availability and disaster recovery requirements. Options include locally redundant (LRS), zone-redundant (ZRS), geo-redundant (GRS), and geo-zone redundant (GZRS) storage. For more information, see [Backup storage redundancy](automated-backups-overview.md#backup-storage-redundancy).
 
 - **Use long-term retention for compliance**: Configure long-term backup retention (LTR) for compliance requirements that exceed the default retention period. LTR allows you to store full backups for up to 10 years. For more information, see [Long-term retention](long-term-retention-overview.md).
 
