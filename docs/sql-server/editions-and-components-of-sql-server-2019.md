@@ -263,7 +263,7 @@ The Developer edition continues to support only 1 client for [SQL Server Distrib
 | Create new endpoints | Yes | Yes | Yes | No | No |
 | SysPrep support <sup>2</sup> | Yes | Yes | Yes | Yes | Yes |
 | PowerShell scripting support <sup>3</sup> | Yes | Yes | Yes | Yes | Yes |
-| Support for data-tier application component operations - extract, deploy, upgrade, delete | Yes | Yes | Yes | Yes | Yes |
+| Support for data-tier application component operations (extract, deploy, upgrade, delete) | Yes | Yes | Yes | Yes | Yes |
 | Policy automation (check on schedule and change) | Yes | Yes | Yes | No | No |
 | Performance data collector | Yes | Yes | Yes | No | No |
 | Able to enroll as a managed instance in multi-instance management | Yes | Yes | Yes | No | No |
