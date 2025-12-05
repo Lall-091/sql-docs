@@ -20,7 +20,8 @@ helpviewer_keywords:
   - "ISSCommandWithParameters interface"
 ---
 # Using User-Defined Types in SQL Server Native Client
-[!INCLUDE[appliesto-ss-asdb-xxxx-pdw-md](../../../includes/appliesto-ss-asdb-xxxx-pdw-md.md)]
+
+[!INCLUDE [sql-asdb-pdw](../../../includes/applies-to-version/sql-asdb-pdw.md)]
 
 > [!IMPORTANT] 
 > [!INCLUDE[snac-removed-oledb-and-odbc](../../../includes/snac-removed-oledb-and-odbc.md)]

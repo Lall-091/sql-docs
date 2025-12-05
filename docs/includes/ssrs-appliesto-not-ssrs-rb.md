@@ -6,4 +6,4 @@ ms.date: 05/01/2024
 ms.service: reporting-services
 ms.topic: include
 ---
-❌&nbsp;Microsoft Report Builder (SSRS)
+:::image type="content" source="media/no-icon.svg" border="false" alt-text="Not supported"::: Microsoft Report Builder (SSRS)

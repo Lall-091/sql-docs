@@ -22,7 +22,7 @@ monikerRange: "=azuresqldb-current || =fabric-sqldb"
 ---
 # sys.dm_db_wait_stats
 
-[!INCLUDE[Azure SQL Database Azure SQL Managed Instance Fabric SQL Database](../../includes/applies-to-version/asdb-asdbmi-fabricsqldb.md)]
+[!INCLUDE[Azure SQL Database Azure SQL Managed Instance Fabric SQL Database](../../includes/applies-to-version/asdb-asmi-fabricsqldb.md)]
 
 Returns information about all the waits encountered by threads that executed during operation. You can use this aggregated view to diagnose performance issues and also with specific queries and batches.  
 

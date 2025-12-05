@@ -19,7 +19,7 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-mi-current || >=sql-server-2016 || 
 ---
 # sp_configure (Transact-SQL)
 
-[!INCLUDE [tsql-appliesto-ss2008-xxxx-xxxx-pdw-md](../../includes/tsql-appliesto-ss2008-asdbmi-xxxx-pdw-md.md)]
+[!INCLUDE [sql-asdbmi-pdw](../../includes/applies-to-version/sql-asdbmi-pdw.md)]
 
 Displays or changes global configuration settings for the current server.
 

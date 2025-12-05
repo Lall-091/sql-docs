@@ -10,7 +10,9 @@ ms.topic: concept-article
 monikerRange: ">=sql-server-2016||>=sql-server-linux-2017||=azure-sqldw-latest||>=aps-pdw-2016||=azuresqldb-mi-current"
 ---
 # WideWorldImportersDW use of SQL Server features and capabilities
-[!INCLUDE[appliesto-ss-xxxx-asdw-pdw-md](../includes/appliesto-ss-xxxx-asdw-pdw-md.md)]
+
+[!INCLUDE [sql-asa-pdw](../includes/applies-to-version/sql-asa-pdw.md)]
+
 WideWorldImportersDW is designed to showcase many of the key features of SQL Server that are suitable for data warehousing and analytics. The following is a list of SQL Server features and capabilities, and a description of how they are used in WideWorldImportersDW.
 
 ## PolyBase

@@ -24,7 +24,7 @@ monikerRange: "=azuresqldb-current || =fabric-sqldb"
 ---
 # sys.dm_db_objects_impacted_on_version_change
 
-[!INCLUDE[Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/asdb-asdbmi-fabricsqldb.md)]
+[!INCLUDE[Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/asdb-asmi-fabricsqldb.md)]
 
   The `sys.dm_db_objects_impacted_on_version_change` DMV provides an early warning system to determine objects that will be impacted by a major release upgrade in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]. You can use the view either before or after the upgrade to get a full enumeration of affected objects. You will need to query this view in each database to get a full accounting across the entire server.
 

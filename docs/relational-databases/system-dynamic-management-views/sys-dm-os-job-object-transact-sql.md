@@ -21,7 +21,7 @@ dev_langs:
 monikerRange: "=azuresqldb-current || =fabric-sqldb"
 ---
 # sys.dm_os_job_object (Azure SQL Database)
-[!INCLUDE[Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/asdb-asdbmi-fabricsqldb.md)]
+[!INCLUDE[Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/asdb-asmi-fabricsqldb.md)]
 
 Returns a single row describing the configuration of the job object that manages the SQL Server process, as well as certain resource consumption statistics at the job object level. Returns an empty set if SQL Server is not running in a job object.
 

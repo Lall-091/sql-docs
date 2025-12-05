@@ -20,7 +20,7 @@ monikerRange: "=azuresqldb-current"
 ---
 # sys.dm_user_db_resource_governance (Transact-SQL)
 
-[!INCLUDE[appliesto-xx-asdb-xxxx-xxx-md](../../includes/appliesto-xx-asdb-xxxx-xxx-md.md)]
+[!INCLUDE [asdb](../../includes/applies-to-version/asdb.md)]
 
 Returns the actual configuration and capacity settings used by resource governance mechanisms in the current database or elastic pool.
 
