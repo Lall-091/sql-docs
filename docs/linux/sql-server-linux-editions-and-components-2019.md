@@ -164,7 +164,7 @@ The Developer edition continues to support only one client for [SQL Server Distr
 | --- | :---: | :---: | :---: | :---: |
 | Dedicated admin connection | Yes | Yes | Yes | Yes <sup>1</sup> |
 | PowerShell scripting support | Yes | Yes | Yes | Yes |
-| Support for data-tier application component operations - extract, deploy, upgrade, delete | Yes | Yes | Yes | Yes |
+| Support for data-tier application component operations (extract, deploy, upgrade, delete) | Yes | Yes | Yes | Yes |
 | Policy automation (check on schedule and change) | Yes | Yes | Yes | No |
 | Performance data collector | Yes | Yes | Yes | No |
 | Standard performance reports | Yes | Yes | Yes | No |

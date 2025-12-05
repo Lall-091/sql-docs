@@ -334,6 +334,8 @@
         href: database/active-geo-replication-configure-portal.md
     - name: Security
       items:
+      - name: Secure Azure SQL Database
+        href: database/secure-database.md
       - name: Always Encrypted with secure enclaves
         href: database/always-encrypted-enclaves-getting-started.md
         items:
@@ -1089,6 +1091,8 @@
         href: managed-instance/resource-limits.md
       - name: Virtual cluster architecture
         href: managed-instance/virtual-cluster-architecture.md
+      - name: Traffic management
+        href: managed-instance/traffic-management-overview.md
       - name: Connectivity architecture
         href: managed-instance/connectivity-architecture-overview.md
 

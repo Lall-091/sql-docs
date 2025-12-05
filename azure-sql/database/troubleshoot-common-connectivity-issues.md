@@ -3,8 +3,8 @@ title: Working with Transient Errors
 description: Learn how to troubleshoot, diagnose, and prevent a SQL connection error or transient error when connecting to Azure SQL Database, SQL database in Fabric, Azure SQL Managed Instance, and Azure Synapse Analytics.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: sureshka, mathoma, vanto
-ms.date: 06/16/2025
+ms.reviewer: sureshka, davidengel, mathoma, vanto
+ms.date: 12/04/2025
 ms.service: azure-sql-database
 ms.subservice: development
 ms.topic: troubleshooting
@@ -138,7 +138,6 @@ When you build the [connection string](/dotnet/api/system.data.sqlclient.sqlconn
 - **ConnectRetryCount**:&nbsp;&nbsp;Default is **1**. The range is **0** through **255**.
 - **ConnectRetryInterval**:&nbsp;&nbsp;Default is **10** seconds. The range is **1** through **60**.
 - **Connection Timeout**:&nbsp;&nbsp;Default is **15** seconds. The range is **0** through **2147483647**.
-- **Command Timeout**:&nbsp;&nbsp;Default is **30** seconds. The range is **0** through **2147483647**.
 
 The connection retry settings (**ConnectRetryCount** and **ConnectRetryInterval**) apply to connection resiliency. Connection resiliency includes the following distinct types:
 
@@ -186,7 +185,7 @@ For example, if the count is 3 and the interval is 10 seconds, a timeout of only
 
 4:10:20 - Retry 3
 
-This isn't the initial connection. Therefore, **Connection Timeout** doesn't apply. However, because the connection recovery occurs during command execution, the **Command Timeout** setting does apply. The **Command Timeout** default is 30 seconds. Although, connection recovery is fast in typical circumstances, an intermittent outage, could cause the recovery to take some of the command execution time.
+This isn't the initial connection. Therefore, **Connection Timeout** doesn't apply. However, because the connection recovery occurs during command execution, the **Command Timeout** property of the [SqlCommand](/dotnet/api/system.data.sqlclient.sqlcommand.commandtimeout) executing the statement does apply. The **Command Timeout** default is 30 seconds. Although, connection recovery is fast in typical circumstances, an intermittent outage, could cause the recovery to take some of the command execution time.
 
 For this scenario, if you want to take full advantage of idle connection recovery retries, your chosen values should satisfy the following condition:  
 `Command Timeout > (ConnectRetryCount - 1) * ConnectionRetryInterval`
@@ -205,7 +204,7 @@ Also, consider that the command itself requires time to execute after the connec
 The **ConnectRetryCount** and **ConnectRetryInterval** parameters let your **SqlConnection** object retry the connect operation without telling or bothering your program, such as returning control to your program. The retries can occur in the following situations:
 
 - SqlConnection.Open method call
-- SqlConnection.Execute method call
+- SqlCommand.Execute* method calls
 
 There is a subtlety. If a transient error occurs while your *query* is being executed, your **SqlConnection** object doesn't retry the connect operation. It certainly doesn't retry your query. However, **SqlConnection** very quickly checks the connection before sending your query for execution. If the quick check detects a connection problem, **SqlConnection** retries the connect operation. If the retry succeeds, your query is sent for execution.
 

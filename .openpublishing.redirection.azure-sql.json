@@ -111,6 +111,11 @@
       "redirect_document_id": true
     },
     {
+      "source_path_from_root": "/azure-sql/database/gateway-migration.md",
+      "redirect_url": "/azure/azure-sql/database/connectivity-architecture#gateway-ip-addresses",
+      "redirect_document_id": true
+    },
+    {
       "source_path_from_root": "/azure-sql/managed-instance/ai-artificial-intelligence-intelligent-applications.md",
       "redirect_url": "/sql/sql-server/ai-artificial-intelligence-intelligent-applications",
       "redirect_document_id": false

@@ -186,7 +186,7 @@ When you migrate from previous editions of SQL Server to [!INCLUDE[sssql25-md](.
 
 Alternatively, you can recreate the linked server and include `Encrypt=Optional` in the connection string. If you can't modify the linked server configuration, enable trace flag `17600` to maintain OLE DB 18 behavior and defaults.
 
-In the SQL Server Managed Studio (SSMS) Linked Server Creation Wizard, the option **Other Data Sources** must be used to manually configure the linked server Encryption options.
+In the SQL Server Management Studio (SSMS) Linked Server Creation Wizard, the option **Other Data Sources** must be used to manually configure the linked server Encryption options.
 
 For more information about OLE DB 19 and encryption, certificate and Trust Server Certificate behavior for OLE DB 19, see [Encryption and certificate validation in OLE DB](../../connect/oledb/features/encryption-and-certificate-validation.md).
 
