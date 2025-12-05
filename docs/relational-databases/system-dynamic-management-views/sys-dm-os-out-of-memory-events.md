@@ -22,7 +22,7 @@ monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # sys.dm_os_out_of_memory_events
 
-[!INCLUDE [Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/asdb-asdbmi-fabricsqldb.md)]
+[!INCLUDE [Azure SQL Database Azure SQL Managed Instance FabricSQLDB](../../includes/applies-to-version/asdb-asmi-fabricsqldb.md)]
 
 Returns a set of recent out of memory (OOM) events.
 

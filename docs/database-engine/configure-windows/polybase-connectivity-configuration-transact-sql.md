@@ -14,7 +14,7 @@ monikerRange: ">=aps-pdw-2016 || >=sql-server-2016 || >=sql-server-linux-2017"
 ---
 # PolyBase connectivity configuration (Transact-SQL)
 
-[!INCLUDE [appliesto-ss-xxxx-xxxx-pdw-md](../../includes/appliesto-ss-xxxx-xxxx-pdw-md.md)]
+[!INCLUDE [sql-pdw](../../includes/applies-to-version/sql-pdw.md)]
 
 Displays or changes global configuration settings for PolyBase Hadoop and Microsoft Azure Blob Storage connectivity.
 

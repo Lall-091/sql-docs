@@ -43,15 +43,8 @@ These applies-to include files omit the version of SQL Server.
 
 | File name | Markdown example | Image |
 | --- | --- | --- |
-| appliesto-ss-asdb-asdw-xxx-md.md | `[!INCLUDE [SQL Server ASDB, ASDBMI, ASDW](../includes/applies-to-version/sql-asdb-asdbmi-asa.md)]` | [!INCLUDE [SQL Server ASDB, ASDBMI, ASDW](../includes/applies-to-version/sql-asdb-asdbmi-asa.md)] |
-| appliesto-ss-asdb-xxxx-pdw-md.md | `[!INCLUDE [appliesto-ss-asdb-xxxx-pdw-md.md](../includes/appliesto-ss-asdb-xxxx-pdw-md.md)]` | [!INCLUDE [appliesto-ss-asdb-xxxx-pdw-md.md](../includes/appliesto-ss-asdb-xxxx-pdw-md.md)] |
-| appliesto-ss-asdb-xxxx-xxx-md.md | `[!INCLUDE [appliesto-ss-asdb-xxxx-xxx-md.md](../includes/applies-to-version/sql-asdb.md)]` | [!INCLUDE [appliesto-ss-asdb-xxxx-xxx-md.md](../includes/applies-to-version/sql-asdb.md)] |
 | applies-to-version/sql-asdbmi.md | `[!INCLUDE [applies-to-version/sql-asdbmi.md](../includes/applies-to-version/sql-asdbmi.md)]` | [!INCLUDE [applies-to-version/sql-asdbmi.md](../includes/applies-to-version/sql-asdbmi.md)] |
-| appliesto-ss-xxxx-asdw-pdw-md.md | `[!INCLUDE [appliesto-ss-xxxx-asdw-pdw-md.md](../includes/appliesto-ss-xxxx-asdw-pdw-md.md)]` | [!INCLUDE [appliesto-ss-xxxx-asdw-pdw-md.md](../includes/appliesto-ss-xxxx-asdw-pdw-md.md)] |
-| appliesto-ss-xxxx-xxxx-pdw-md.md | `[!INCLUDE [appliesto-ss-xxxx-xxxx-pdw-md.md](../includes/appliesto-ss-xxxx-xxxx-pdw-md.md)]` | [!INCLUDE [appliesto-ss-xxxx-xxxx-pdw-md.md](../includes/appliesto-ss-xxxx-xxxx-pdw-md.md)] |
 | applies-to-version/_ssnoversion.md | `[!INCLUDE [applies-to-version/_ssnoversion.md](../includes/applies-to-version/sqlserver.md)]` | [!INCLUDE [applies-to-version/_ssnoversion.md](../includes/applies-to-version/sqlserver.md)] |
-| appliesto-xx-asdb-asdw-xxx-md.md | `[!INCLUDE [appliesto-xx-asdb-asdw-xxx-md.md](../includes/appliesto-xx-asdb-asdw-xxx-md.md)]` | [!INCLUDE [appliesto-xx-asdb-asdw-xxx-md.md](../includes/appliesto-xx-asdb-asdw-xxx-md.md)] |
-| appliesto-xx-asdb-xxxx-xxx-md.md | `[!INCLUDE [appliesto-xx-asdb-xxxx-xxx-md.md](../includes/appliesto-xx-asdb-xxxx-xxx-md.md)]` | [!INCLUDE [appliesto-xx-asdb-xxxx-xxx-md.md](../includes/appliesto-xx-asdb-xxxx-xxx-md.md)] |
 
 ## SQL Server applies-to (version-specific)
 
@@ -60,53 +53,15 @@ These applies-to include files specify which versions of SQL the documentation a
 | File name | Markdown example | Image |
 | --- | --- | --- |
 | applies-to-version/asa-pdw.md | `[!INCLUDE [applies-to-version/asa-pdw.md](../includes/applies-to-version/asa-pdw.md)]` | [!INCLUDE [applies-to-version/asa-pdw.md](../includes/applies-to-version/asa-pdw.md)] |
-| appliesto-ss-asdb-asdw-xxx-md.md | `[!INCLUDE [appliesto-ss-asdb-asdw-xxx-md.md](../includes/appliesto-ss-asdb-asdw-xxx-md.md)]` | [!INCLUDE [appliesto-ss-asdb-asdw-xxx-md.md](../includes/appliesto-ss-asdb-asdw-xxx-md.md)] |
-| appliesto-ss-asdb-xxxx-pdw-md.md | `[!INCLUDE [appliesto-ss-asdb-xxxx-pdw-md.md](../includes/appliesto-ss-asdb-xxxx-pdw-md.md)]` | [!INCLUDE [appliesto-ss-asdb-xxxx-pdw-md.md](../includes/appliesto-ss-asdb-xxxx-pdw-md.md)] |
-| appliesto-ss-asdb-xxxx-xxx-md.md | `[!INCLUDE [appliesto-ss-asdb-xxxx-xxx-md.md](../includes/appliesto-ss-asdb-xxxx-xxx-md.md)]` | [!INCLUDE [appliesto-ss-asdb-xxxx-xxx-md.md](../includes/appliesto-ss-asdb-xxxx-xxx-md.md)] |
-| appliesto-ss-xxxx-asdw-pdw-md.md | `[!INCLUDE [appliesto-ss-xxxx-asdw-pdw-md.md](../includes/appliesto-ss-xxxx-asdw-pdw-md.md)]` | [!INCLUDE [appliesto-ss-xxxx-asdw-pdw-md.md](../includes/appliesto-ss-xxxx-asdw-pdw-md.md)] |
-| appliesto-ss-xxxx-xxxx-pdw-md.md | `[!INCLUDE [appliesto-ss-xxxx-xxxx-pdw-md.md](../includes/appliesto-ss-xxxx-xxxx-pdw-md.md)]` | [!INCLUDE [appliesto-ss-xxxx-xxxx-pdw-md.md](../includes/appliesto-ss-xxxx-xxxx-pdw-md.md)] |
 | appliesto-ss2016-asdb-asdw-pdw-md.md | `[!INCLUDE [appliesto-ss2016-asdb-asdw-pdw-md.md](appliesto-ss2016-asdb-asdw-pdw-md.md)]` | [!INCLUDE [appliesto-ss2016-asdb-asdw-pdw-md.md](../includes/appliesto-ss2016-asdb-asdw-pdw-md.md)] |
-| appliesto-xx-asdb-asdw-xxx-md.md | `[!INCLUDE [appliesto-xx-asdb-asdw-xxx-md.md](../includes/appliesto-xx-asdb-asdw-xxx-md.md)]` | [!INCLUDE [appliesto-xx-asdb-asdw-xxx-md.md](../includes/appliesto-xx-asdb-asdw-xxx-md.md)] |
-| appliesto-xx-asdb-xxxx-xxx-md.md | `[!INCLUDE [appliesto-xx-asdb-xxxx-xxx-md.md](../includes/appliesto-xx-asdb-xxxx-xxx-md.md)]` | [!INCLUDE [appliesto-xx-asdb-xxxx-xxx-md.md](../includes/appliesto-xx-asdb-xxxx-xxx-md.md)] |
 | sqlserver2017-asdb.md | `[!INCLUDE [sqlserver2017-asdb.md](../includes/applies-to-version/sqlserver2017-asdb.md)]` | [!INCLUDE [sqlserver2017-asdb.md](../includes/applies-to-version/sqlserver2017-asdb.md)] |
 | tsql-appliesto-2014sp2-asdb-xxxx-xxx-md.md | `[!INCLUDE [tsql-appliesto-2014sp2-asdb-xxxx-xxx-md.md](../includes/tsql-appliesto-2014sp2-asdb-xxxx-xxx-md.md)]` | [!INCLUDE [tsql-appliesto-2014sp2-asdb-xxxx-xxx-md.md](../includes/tsql-appliesto-2014sp2-asdb-xxxx-xxx-md.md)] |
 | tsql-appliesto-2016sp2-asdb-xxxx-xxx-md.md | `[!INCLUDE [tsql-appliesto-2016sp2-asdb-xxxx-xxx-md.md](../includes/tsql-appliesto-2016sp2-asdb-xxxx-xxx-md.md)]` | [!INCLUDE [tsql-appliesto-2016sp2-asdb-xxxx-xxx-md.md](../includes/tsql-appliesto-2016sp2-asdb-xxxx-xxx-md.md)] |
-| tsql-appliesto-ss2008-asdbmi-xxxx-pdw-md.md | `[!INCLUDE [tsql-appliesto-ss2008-asdbmi-xxxx-pdw-md.md](../includes/tsql-appliesto-ss2008-asdbmi-xxxx-pdw-md.md)]` | [!INCLUDE [tsql-appliesto-ss2008-asdbmi-xxxx-pdw-md.md](../includes/tsql-appliesto-ss2008-asdbmi-xxxx-pdw-md.md)] |
 | tsql-appliesto-ss2008-xxxx-xxxx-xxx-md.md | `[!INCLUDE [tsql-appliesto-ss2008-xxxx-xxxx-xxx-md.md](../includes/applies-to-version/sqlserver.md)]` | [!INCLUDE [tsql-appliesto-ss2008-xxxx-xxxx-xxx-md.md](../includes/applies-to-version/sqlserver.md)] |
 | tsql-appliesto-ss2016-asdb-asdw-xxx-md.md | `[!INCLUDE [tsql-appliesto-ss2016-asdb-asdw-xxx-md.md](../includes/tsql-appliesto-ss2016-asdb-asdw-xxx-md.md)]` | [!INCLUDE [tsql-appliesto-ss2016-asdb-asdw-xxx-md.md](../includes/tsql-appliesto-ss2016-asdb-asdw-xxx-md.md)] |
-| tsql-appliesto-ss2016-asdb-xxxx-xxx-md.md | `[!INCLUDE [tsql-appliesto-ss2016-asdb-xxxx-xxx-md.md](../includes/tsql-appliesto-ss2016-asdb-xxxx-xxx-md.md)]` | [!INCLUDE [tsql-appliesto-ss2016-asdb-xxxx-xxx-md.md](../includes/tsql-appliesto-ss2016-asdb-xxxx-xxx-md.md)] |
 | tsql-appliesto-ss2016-xxxx-asdw-pdw-md.md | `[!INCLUDE [tsql-appliesto-ss2016-xxxx-asdw-pdw-md.md](../includes/tsql-appliesto-ss2016-xxxx-asdw-pdw-md.md)]` | [!INCLUDE [tsql-appliesto-ss2016-xxxx-asdw-pdw-md.md](../includes/tsql-appliesto-ss2016-xxxx-asdw-pdw-md.md)] |
 | tsql-appliesto-ss2016-xxxx-asdw-xxx-md.md | `[!INCLUDE [tsql-appliesto-ss2016-xxxx-asdw-xxx-md.md](../includes/tsql-appliesto-ss2016-xxxx-asdw-xxx-md.md)]` | [!INCLUDE [tsql-appliesto-ss2016-xxxx-asdw-xxx-md.md](../includes/tsql-appliesto-ss2016-xxxx-asdw-xxx-md.md)] |
-| tsql-appliesto-ss2016-xxxx-xxxx-xxx-md.md | `[!INCLUDE [tsql-appliesto-ss2016-xxxx-xxxx-xxx-md.md](../includes/tsql-appliesto-ss2016-xxxx-xxxx-xxx-md.md)]` | [!INCLUDE [tsql-appliesto-ss2016-xxxx-xxxx-xxx-md.md](../includes/tsql-appliesto-ss2016-xxxx-xxxx-xxx-md.md)] |
 | tsql-appliesto-ss2017-xxxx-xxxx-xxx-md.md | `[!INCLUDE [tsql-appliesto-ss2017-xxxx-xxxx-xxx-md.md](../includes/applies-to-version/sqlserver2017.md)]` | [!INCLUDE [tsql-appliesto-ss2017-xxxx-xxxx-xxx-md.md](../includes/applies-to-version/sqlserver2017.md)] |
-
-## Analysis Services applies-to
-
-These applies-to include files are used with Analysis Services documentation.
-
-| File name | Markdown example | Image |
-| --- | --- | --- |
-| ssas-appliesto-sql2016.md | `[!INCLUDE [ssas-appliesto-sql2016.md](../includes/ssas-appliesto-sql2016.md)]` | [!INCLUDE [ssas-appliesto-sql2016.md](../includes/ssas-appliesto-sql2016.md)] |
-| ssas-appliesto-sql2016-later.md | `[!INCLUDE [ssas-appliesto-sql2016-later.md](../includes/ssas-appliesto-sql2016-later.md)]` | [!INCLUDE [ssas-appliesto-sql2016-later.md](../includes/ssas-appliesto-sql2016-later.md)] |
-| ssas-appliesto-sql2016-later-aas.md | `[!INCLUDE [ssas-appliesto-sql2016-later-aas.md](../includes/ssas-appliesto-sql2016-later-aas.md)]` | [!INCLUDE [ssas-appliesto-sql2016-later-aas.md](../includes/ssas-appliesto-sql2016-later-aas.md)] |
-| ssas-appliesto-sql2017.md | `[!INCLUDE [ssas-appliesto-sql2017.md](../includes/ssas-appliesto-sql2017.md)]` | [!INCLUDE [ssas-appliesto-sql2017.md](../includes/ssas-appliesto-sql2017.md)] |
-| ssas-appliesto-sql2017-later-aas.md | `[!INCLUDE [ssas-appliesto-sql2017-later-aas.md](../includes/ssas-appliesto-sql2017-later-aas.md)]` | [!INCLUDE [ssas-appliesto-sql2017-later-aas.md](../includes/ssas-appliesto-sql2017-later-aas.md)] |
-| ssas.md | `[!INCLUDE [ssas.md](../includes/applies-to-version/ssas.md)]` | [!INCLUDE [ssas.md](../includes/applies-to-version/ssas.md)] |
-| ssas-appliesto-sqlas-all-aas.md | `[!INCLUDE [ssas-aas.md](../includes/ssas-appliesto-sqlas-all-aas.md)]` | [!INCLUDE [ssas-appliesto-sqlas-all-aas.md](../includes/ssas-appliesto-sqlas-all-aas.md)] |
-| ssas-appliesto-sqlas-all.md | `[!INCLUDE [ssas-all.md](../includes/ssas-appliesto-sqlas-all.md)]` | [!INCLUDE [ssas-appliesto-sqlas-all.md](../includes/ssas-appliesto-sqlas-all.md)] |
-| ssas-appliesto-sqlas-all-aas.md | `[!INCLUDE [ssas-all-aas.md](../includes/ssas-appliesto-sqlas-all-aas.md)]` | [!INCLUDE [ssas-appliesto-sqlas-all-aas.md](../includes/ssas-appliesto-sqlas-all-aas.md)] |
-
-## Reporting Services applies-to
-
-These applies-to include files are used with Reporting Services documentation.
-
-| File name | Markdown example | Image |
-| --- | --- | --- |
-| ssrs-appliesto-2017-and-later.md | `[!INCLUDE [ssrs-appliesto-2017-and-later.md](../includes/ssrs-appliesto-2017-and-later.md)]` | [!INCLUDE [ssrs-appliesto-2017-and-later.md](../includes/ssrs-appliesto-2017-and-later.md)] |
-| ssrs-appliesto-not-pbirs.md | `[!INCLUDE [ssrs-appliesto-not-pbirs.md](../includes/ssrs-appliesto-not-pbirs.md)]` | [!INCLUDE [ssrs-appliesto-not-pbirs.md](../includes/ssrs-appliesto-not-pbirs.md)] |
-| ssrs-appliesto-pbirs.md | `[!INCLUDE [ssrs-appliesto-pbirs.md](../includes/ssrs-appliesto-pbirs.md)]` | [!INCLUDE [ssrs-appliesto-pbirs.md](../includes/ssrs-appliesto-pbirs.md)] |
-| ssrs-appliesto-sharepoint-2013-2016.md | `[!INCLUDE [ssrs-appliesto-sharepoint-2013-2016.md](../includes/ssrs-appliesto-sharepoint-2013-2016.md)]` | [!INCLUDE [ssrs-appliesto-sharepoint-2013-2016.md](../includes/ssrs-appliesto-sharepoint-2013-2016.md)] |
-| ssrs-appliesto-sql2016-preview.md | `[!INCLUDE [ssrs-appliesto-sql2016-preview.md](../includes/ssrs-appliesto-sql2016-preview.md)]` | [!INCLUDE [ssrs-appliesto-sql2016-preview.md](../includes/ssrs-appliesto-sql2016-preview.md)] |
 
 ## Related content
 

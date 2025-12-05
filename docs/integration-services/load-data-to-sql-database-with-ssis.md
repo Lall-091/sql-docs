@@ -14,7 +14,7 @@ ms.custom:
 ---
 # Load data into SQL Server or Azure SQL Database with SQL Server Integration Services (SSIS)
 
-[!INCLUDE [sqlserver-ssis](../includes/ssis-appliesto-ssvrpluslinux-asdb-xxxx-xxx.md)]
+[!INCLUDE [sqlserver-ssis](../includes/applies-to-version/sqlserver-ssis.md)]
 
 Create a SQL Server Integration Services (SSIS) package to load data into SQL Server or [Azure SQL Database](/azure/sql-database/). You can optionally restructure, transform, and cleanse the data as it passes through the SSIS data flow.
 

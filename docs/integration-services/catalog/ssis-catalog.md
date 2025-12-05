@@ -403,7 +403,8 @@ To run the **SSIS Server Maintenance Job**, SSIS creates the SQL Server login **
 |Retention Period (days)|RETENTION_WINDOW|Specify the maximum age of allowable operations data (in days). Data that is older than the specified number of days are removed by the SQL Agent job, operations cleanup.|  
 
 ## Back up, Restore, and Move the SSIS Catalog
-[!INCLUDE[tsql-appliesto-ss2016-xxxx-xxxx-xxx_md](../../includes/tsql-appliesto-ss2016-xxxx-xxxx-xxx-md.md)]
+
+**Applies to**: [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] and later versions
 
   [!INCLUDE[ssISCurrent](../../includes/ssiscurrent-md.md)] includes the SSISDB database. You query views in the SSISDB database to inspect objects, settings, and operational data that are stored in the **SSISDB** catalog. This topic provides instructions for backing up and restoring the database.  
   

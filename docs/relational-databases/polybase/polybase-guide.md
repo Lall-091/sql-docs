@@ -26,7 +26,7 @@ monikerRange: ">=sql-server-2016 || >=sql-server-linux-ver15 || >=aps-pdw-2016 |
 
 # Data virtualization with PolyBase in SQL Server
 
-[!INCLUDE [appliesto-ss-xxxx-asdw-pdw-md](../../includes/appliesto-ss-xxxx-asdw-pdw-md.md)]
+[!INCLUDE [sql-asa-pdw](../../includes/applies-to-version/sql-asa-pdw.md)]
 
 PolyBase enables data virtualization for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 
