@@ -3,7 +3,7 @@ title: "DBCC SQLPERF (Transact-SQL)"
 description: DBCC SQLPERF provides transaction log space usage statistics for all databases.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 12/05/2022
+ms.date: 12/05/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -24,9 +24,7 @@ dev_langs:
 
 [!INCLUDE [SQL Server SQL Database Azure SQL Managed Instance](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
 
-Provides transaction log space usage statistics for all databases. In [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], it can also be used to reset wait and latch statistics.
-
-**Applies to**: [!INCLUDE[sql2008-md](../../includes/sql2008-md.md)] and later versions, and [!INCLUDE[sssds](../../includes/sssds-md.md)] ([Preview in some regions](/azure/azure-sql/database/features-comparison?WT.mc_id=TSQL_GetItTag))
+Provides transaction log space usage statistics for all databases. Can also be used to reset wait and latch statistics.
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
@@ -49,55 +47,55 @@ DBCC SQLPERF
 Returns the current size of the transaction log and the percentage of log space used for each database. Use this information to monitor the amount of space used in a transaction log.
 
 > [!IMPORTANT]  
-> For more information about space usage information for the transaction log starting with [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)], see the [Remarks](#remarks) section in this topic.
+> For more information about space usage information for the transaction log starting with [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)], see the [Remarks](#remarks) section in this article.
 
 #### "sys.dm_os_latch_stats", CLEAR
 
-Resets the latch statistics. For more information, see [sys.dm_os_latch_stats (Transact-SQL)](../../relational-databases/system-dynamic-management-views/sys-dm-os-latch-stats-transact-sql.md). This option isn't available in [!INCLUDE[ssSDS](../../includes/sssds-md.md)].
+Resets the latch statistics. For more information, see [sys.dm_os_latch_stats](../../relational-databases/system-dynamic-management-views/sys-dm-os-latch-stats-transact-sql.md).
 
 #### "sys.dm_os_wait_stats", CLEAR
 
-Resets the wait statistics. For more information, see [sys.dm_os_wait_stats (Transact-SQL)](../../relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql.md). This option isn't available in [!INCLUDE[ssSDS](../../includes/sssds-md.md)].
+Resets the wait statistics. For more information, see [sys.dm_os_wait_stats](../../relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql.md).
 
 #### WITH NO_INFOMSGS
 
 Suppresses all informational messages that have severity levels from 0 through 10.
 
-## Result sets
+## Result set
 
 The following table describes the columns in the result set.
 
 | Column name | Definition |
 | --- | --- |
 | **Database Name** | Name of the database for the log statistics displayed. |
-| **Log Size (MB)** | Current size allocated to the log. This value is always smaller than the amount originally allocated for log space because the [!INCLUDE[ssDE](../../includes/ssde-md.md)] reserves a small amount of disk space for internal header information. |
+| **Log Size (MB)** | Current size allocated to the log. This value is always smaller than the amount originally allocated for log space because the [!INCLUDE [ssDE](../../includes/ssde-md.md)] reserves a small amount of disk space for internal header information. |
 | **Log Space Used (%)** | Percentage of the log file currently in use to store transaction log information. |
 | **Status** | Status of the log file. Always 0. |
 
 ## Remarks
 
-Starting with [!INCLUDE[ssSQL11](../../includes/sssql11-md.md)], use the [sys.dm_db_log_space_usage](../../relational-databases/system-dynamic-management-views/sys-dm-db-log-space-usage-transact-sql.md) DMV instead of `DBCC SQLPERF(LOGSPACE)`, to return space usage information for the transaction log per database.
+Starting with [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)], use the [sys.dm_db_log_space_usage](../../relational-databases/system-dynamic-management-views/sys-dm-db-log-space-usage-transact-sql.md) DMV instead of `DBCC SQLPERF(LOGSPACE)`, to return space usage information for the transaction log per database.
 
-The transaction log records each transaction made in a database. For more information, see [The Transaction Log (SQL Server)](../../relational-databases/logs/the-transaction-log-sql-server.md) and [SQL Server Transaction Log Architecture and Management Guide](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md).
+The transaction log records each transaction made in a database. For more information, see [The transaction log](../../relational-databases/logs/the-transaction-log-sql-server.md) and [SQL Server transaction log architecture and management guide](../../relational-databases/sql-server-transaction-log-architecture-and-management-guide.md).
 
 ## Permissions
 
-[!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] requires **VIEW SERVER STATE** permission on the server to run `DBCC SQLPERF(LOGSPACE)`. To reset wait and latch statistics requires `ALTER SERVER STATE` permission on the server.
+[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] requires `VIEW SERVER STATE` permission on the server to run `DBCC SQLPERF(LOGSPACE)`. To reset wait and latch statistics requires `ALTER SERVER STATE` permission on the server.
 
-[!INCLUDE[ssSDS](../../includes/sssds-md.md)] Premium and Business Critical tiers require the **VIEW DATABASE STATE** permission in the database. [!INCLUDE[ssSDS](../../includes/sssds-md.md)] Standard, Basic, and General Purpose tiers require the [!INCLUDE[ssSDS](../../includes/sssds-md.md)] admin account. Reset wait and latch statistics aren't supported.
+[!INCLUDE [ssSDS](../../includes/sssds-md.md)] Premium and Business Critical tiers require the `VIEW DATABASE STATE` permission in the database. [!INCLUDE [ssSDS](../../includes/sssds-md.md)] Standard, Basic, and General Purpose tiers require the [!INCLUDE [ssSDS](../../includes/sssds-md.md)] admin account.
 
 ## Examples
 
 ### A. Display log space information for all databases
 
-The following example displays `LOGSPACE` information for all databases contained in the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+The following example displays `LOGSPACE` information for all databases contained in the instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 
 ```sql
 DBCC SQLPERF (LOGSPACE);
 GO
 ```
 
-[!INCLUDE[ssResult](../../includes/ssresult-md.md)]
+[!INCLUDE [ssResult](../../includes/ssresult-md.md)]
 
 ```output
 Database Name Log Size (MB) Log Space Used (%) Status
@@ -111,15 +109,15 @@ AdventureWorks 19.554688    17.748701          0
 
 ### B. Reset wait statistics
 
-The following example resets the wait statistics for the instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+The following example resets the wait statistics for the instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 
 ```sql
 DBCC SQLPERF ("sys.dm_os_wait_stats", CLEAR);
 ```
 
-## See also
+## Related content
 
-- [DBCC (Transact-SQL)](../../t-sql/database-console-commands/dbcc-transact-sql.md)
+- [DBCC (Transact-SQL)](dbcc-transact-sql.md)
 - [sys.dm_os_latch_stats (Transact-SQL)](../../relational-databases/system-dynamic-management-views/sys-dm-os-latch-stats-transact-sql.md)
 - [sys.dm_os_wait_stats (Transact-SQL)](../../relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql.md)
 - [sp_spaceused (Transact-SQL)](../../relational-databases/system-stored-procedures/sp-spaceused-transact-sql.md)
