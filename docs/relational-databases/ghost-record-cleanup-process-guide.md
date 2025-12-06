@@ -3,7 +3,8 @@ title: "Ghost cleanup process guide"
 description: Learn about the ghost cleanup process, a background process that deletes records off of pages that have been marked for deletion in SQL Server.
 author: MashaMSFT
 ms.author: mathoma
-ms.date: "05/02/2018"
+ms.reviewer: dfurman
+ms.date: 12/07/2025
 ms.service: sql
 ms.subservice: supportability
 ms.topic: conceptual
@@ -12,44 +13,44 @@ helpviewer_keywords:
   - "ghost records"
   - "ghost clean up process"
 ---
+
 # Ghost cleanup process guide
 
-The ghost cleanup process is a single-threaded background process that deletes records off of pages that have been marked for deletion. The following article provides an overview of this process.
+The ghost cleanup process is a single-threaded background process that deletes records marked for deletion in data pages. The following article provides an overview of this process.
 
 ## Ghost records
 
-Records that are deleted from a leaf level of an index page aren't physically removed from the page - instead, the record is marked as 'to be deleted', or *ghosted*. This means that the row stays on the page but a bit is changed in the row header to indicate that the row is really a ghost. This is to optimize performance during a delete operation. Ghosts are necessary for row-level locking, but are also necessary for snapshot isolation where we need to maintain the older versions of rows.
+Records that are deleted from the leaf level of an index page aren't physically removed from the page. Instead, the record is marked as 'to be deleted', or *ghosted*. This means that the row stays on the page but a bit is changed in the row header to indicate that the row is a ghost. This is to optimize performance during a delete operation. Ghosts are necessary for row-level locking, but are also necessary for snapshot isolation where the database engine must maintain older row versions.
 
 ## Ghost record cleanup task
 
-Records that are marked for deletion, or *ghosted*, are cleaned up by the background ghost cleanup process. This background process runs sometime after the delete transaction is committed, and physically removes ghosted records from pages. The ghost cleanup process runs automatically on an interval (every 5 seconds for SQL Server 2012+, every 10 seconds for SQL Server 2008/2008R2) and checks to see if any pages have been marked with ghost records. If it finds any, then it goes and deletes the records that are marked for deletion, or *ghosted*, touching at most 10 pages with each execution.
+Records that are marked for deletion, or *ghosted*, are cleaned up by the background ghost cleanup process when they are no longer required. This background process runs after the delete transaction is committed and all row versions are no longer required, and physically removes ghosted records from pages. The ghost cleanup process runs periodically and checks to see if any pages have ghost records. If it finds any, it physically removes the records that are marked for deletion, or *ghosted*, touching at most 10 pages with each execution.
 
-When a record is ghosted, the database is marked as having ghosted entries, and the ghost cleanup process will only scan those databases. The ghost cleanup process will also mark the database as 'having no ghosted records' once all ghosted records have been deleted, and it will skip this database the next time it runs. The process will also skip any databases it is unable to take a shared lock on, and will try again the next time it runs.
+When a record is ghosted, the database is marked as having ghosted entries, and the ghost cleanup process only scans such databases. The ghost cleanup process also marks the database as having no ghosted records once all ghosted records have been removed, and skips this database the next time it runs. The process also skips any database if it can't acquire a shared lock on on the database. It retries acquiring the lock the next time it runs.
 
-The below query can identify how many ghosted records exist in a single database. 
+The below query returns an approximate number of ghosted records in a database.
 
  ```sql
- SELECT sum(ghost_record_count) total_ghost_records, db_name(database_id) 
- FROM sys.dm_db_index_physical_stats (NULL, NULL, NULL, NULL, 'SAMPLED')
- group by database_id
- order by total_ghost_records desc
+SELECT SUM(ghost_record_count) AS total_ghost_records,
+       DB_NAME(database_id) AS database_name
+FROM sys.dm_db_index_physical_stats (NULL, NULL, NULL, NULL, 'SAMPLED')
+GROUP BY database_id
+ORDER BY total_ghost_records DESC;
 ```
 
 ## Disable the ghost cleanup
 
-On high-load systems with many deletes, the ghost cleanup process can cause a performance issue from keeping pages in the buffer pool and generating IO. As such, it is possible to disable this process with the use of [trace flag 661](../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md). However, there are performance implications from disabling the process.
+In rare cases in high-load systems with many deletes, the ghost cleanup process can cause a performance issue because it can replace the frequently accessed pages in the buffer pool with pages that have ghosted records, and generate extra IO load. If this occurs, you can temporarily disable this process with the use of [trace flag 661](../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md#tf661).
 
-Disabling the ghost cleanup process can cause your database to grow unnecessarily large and can lead to performance issues. Since the ghost cleanup process removes records that are marked as ghosts, disabling the process will leave these records on the page, preventing SQL Server from reusing this space. This forces SQL Server to add data to new pages instead, leading to bloated database files, and can also cause [page splits](indexes/specify-fill-factor-for-an-index.md). Page splits lead to performance issues when creating execution plans, and when doing scan operations. 
+Disabling ghost cleanup permanently is not recommended. Without ghost cleanup, your database can grow unnecessarily large, which can lead to performance issues. Since the ghost cleanup process removes records that are marked as ghosts, disabling the process leaves these records on the page, preventing the database engine from reusing this space. This forces the database engine to add data to new pages instead, leading to bloated database files, and can also cause [page splits](indexes/specify-fill-factor-for-an-index.md). Page splits lead increase disk IO which can reduce query performance.
 
-Once the ghost cleanup process is disabled, some action needs to be taken to remove the ghosted records. One option is to execute an index rebuild, which will move data around on pages. Another option is to manually run [sp_clean_db_free_space](system-stored-procedures/sp-clean-db-free-space-transact-sql.md) (to clean all database data files) or [sp_clean_db_file_free_space](system-stored-procedures/sp-clean-db-file-free-space-transact-sql.md) (to clean a single database datafile), which will delete ghosted records.
+Once the ghost cleanup process is disabled, some action needs to be taken to remove the ghosted records. For example, you can rebuild indexes, which creates new pages from existing data, omitting ghosted records.
 
- >[!warning]
- > Disabling the ghost cleanup process is not generally recommended. Doing so should be tested thoroughly in a controlled environment before being implemented permanently in a production environment.
+ > [!WARNING]
+ > Disabling the ghost cleanup process is not recommended.
 
+## Related content
 
-## Related content 
-
-- [Remove ghost records from a single database file](system-stored-procedures/sp-clean-db-file-free-space-transact-sql.md)
-- [Remove ghost records from all database data files](system-stored-procedures/sp-clean-db-free-space-transact-sql.md)
+- [Pages and extents architecture guide](pages-and-extents-architecture-guide.md)
 
 
