@@ -20,34 +20,34 @@ The ghost cleanup process is a single-threaded background process that deletes r
 
 ## Ghost records
 
-Records that are deleted from the leaf level of an index page aren't physically removed from the page. Instead, the record is marked as 'to be deleted', or *ghosted*. This means that the row stays on the page but a bit is changed in the row header to indicate that the row is a ghost. This is to optimize performance during a delete operation. Ghosts are necessary for row-level locking, but are also necessary for snapshot isolation where the database engine must maintain older row versions.
+Records that are deleted from the leaf level pages of an index aren't physically removed from the page. Instead, the record is marked as 'to be deleted', or *ghosted*. This means that the row stays on the page but a bit is changed in the row header to indicate that the row is a ghost. This is to optimize performance during a delete operation. Ghosts are necessary for row-level locking, but are also necessary for snapshot isolation transactions where the database engine must maintain older row versions.
 
 ## Ghost record cleanup task
 
-Records that are marked for deletion, or *ghosted*, are cleaned up by the background ghost cleanup process when they are no longer required. This background process runs after the delete transaction is committed and all row versions are no longer required, and physically removes ghosted records from pages. The ghost cleanup process runs periodically and checks to see if any pages have ghost records. If it finds any, it physically removes the records that are marked for deletion, or *ghosted*, touching at most 10 pages with each execution.
+Records that are marked for deletion, or *ghosted*, are cleaned up by the background ghost cleanup process when they are no longer required. The ghost cleanup process runs periodically and checks to see if any pages have ghost records. If it finds any, it physically removes the records that are marked for deletion, or *ghosted*.
 
-When a record is ghosted, the database is marked as having ghosted entries, and the ghost cleanup process only scans such databases. The ghost cleanup process also marks the database as having no ghosted records once all ghosted records have been removed, and skips this database the next time it runs. The process also skips any database if it can't acquire a shared lock on on the database. It retries acquiring the lock the next time it runs.
+When a record is ghosted, the database is marked as having ghosted entries. The ghost cleanup process only scans such databases. The ghost cleanup process also marks the database as having no ghosted records once all ghosted records have been removed, and skips this database the next time it runs. The process also skips any database if it can't acquire a shared lock on the database. It retries lock acquisition on the database the next time it runs.
 
-The below query returns an approximate number of ghosted records in a database.
+The follwoing query returns an approximate number of ghosted records in a database.
 
- ```sql
+```sql
 SELECT SUM(ghost_record_count) AS total_ghost_records,
        DB_NAME(database_id) AS database_name
-FROM sys.dm_db_index_physical_stats (NULL, NULL, NULL, NULL, 'SAMPLED')
+FROM sys.dm_db_index_physical_stats(NULL, NULL, NULL, NULL, 'SAMPLED')
 GROUP BY database_id
 ORDER BY total_ghost_records DESC;
 ```
 
-## Disable the ghost cleanup
+## Disable ghost cleanup
 
-In rare cases in high-load systems with many deletes, the ghost cleanup process can cause a performance issue because it can replace the frequently accessed pages in the buffer pool with pages that have ghosted records, and generate extra IO load. If this occurs, you can temporarily disable this process with the use of [trace flag 661](../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md#tf661).
+In high-load systems with many deletes, the ghost cleanup process might cause a performance issue because it replaces the frequently accessed pages in the buffer pool with pages that have ghosted records. As a result, the frequently accessed pages must be re-read from disk, generating extra disk IO and increasing query latency. If this occurs, you can disable ghost cleanup using [trace flag 661](../t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql.md#tf661).
 
-Disabling ghost cleanup permanently is not recommended. Without ghost cleanup, your database can grow unnecessarily large, which can lead to performance issues. Since the ghost cleanup process removes records that are marked as ghosts, disabling the process leaves these records on the page, preventing the database engine from reusing this space. This forces the database engine to add data to new pages instead, leading to bloated database files, and can also cause [page splits](indexes/specify-fill-factor-for-an-index.md). Page splits lead increase disk IO which can reduce query performance.
+Without ghost cleanup, your database can grow unnecessarily large, which can lead to performance issues. Since the ghost cleanup process removes records that are marked as ghosts, disabling the process leaves these records on the page, preventing the database engine from reusing this space. This forces the database engine to add data to new pages instead, leading to bloated database files, and can also cause [page splits](indexes/specify-fill-factor-for-an-index.md). Page splits increase disk IO which can reduce query performance.
 
-Once the ghost cleanup process is disabled, some action needs to be taken to remove the ghosted records. For example, you can rebuild indexes, which creates new pages from existing data, omitting ghosted records.
+If ghost cleanup is disabled, the only action that removes the ghosted records is an index rebuild. Rebuilding an index creates new pages from existing data, omitting ghosted records in the process.
 
- > [!WARNING]
- > Disabling the ghost cleanup process is not recommended.
+> [!WARNING]
+> Disabling the ghost cleanup process permanently is not recommended.
 
 ## Related content
 
