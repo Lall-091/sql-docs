@@ -67635,6 +67635,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "docs/relational-databases/ghost-record-cleanup-process-guide.md",
+      "redirect_url": "/sql/relational-databases/ghost-row-cleanup-process-guide",
+      "redirect_document_id": true
+    },
+    {
       "source_path": "docs/database-engine/install-windows/upgrade-to-a-different-edition-of-sql-server-setup.md",
       "redirect_url": "/sql/database-engine/install-windows/upgrade-downgrade-sql-server-edition-setup",
       "redirect_document_id": true

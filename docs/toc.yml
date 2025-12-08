@@ -4277,11 +4277,11 @@ items:
   items:
   - name: Overview
     href: relational-databases/sql-server-guides.md
-  - name: Ghost record cleanup process
-    href: relational-databases/ghost-record-cleanup-process-guide.md
-  - name: Index architecture & design
+  - name: Ghost row cleanup process
+    href: relational-databases/ghost-row-cleanup-process-guide.md
+  - name: Index architecture and design
     href: relational-databases/sql-server-index-design-guide.md
-  - name: Pages & extents architecture
+  - name: Pages and extents architecture
     items:
     - name: Overview
       href: relational-databases/pages-and-extents-architecture-guide.md
