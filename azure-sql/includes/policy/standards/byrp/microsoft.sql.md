@@ -708,7 +708,7 @@ To review how the available Azure Policy built-ins for all Azure services map to
 standard, see
 [Azure Policy Regulatory Compliance details for PCI DSS v4.0](/azure/governance/policy/samples/pci-dss-4-0).
 For more information about this compliance standard, see
-[PCI DSS v4.0](https://docs-prv.pcisecuritystandards.org/PCI%20DSS/Standard/PCI-DSS-v4_0.pdf).
+[PCI DSS v4.0 in the PCI Document Library](https://www.pcisecuritystandards.org/document_library/).
 
 |Domain |Control ID |Control title |Policy<br /><sub>(Azure portal)</sub> |Policy version<br /><sub>(GitHub)</sub>  |
 |---|---|---|---|---|

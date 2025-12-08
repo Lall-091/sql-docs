@@ -4,7 +4,7 @@ description: Introduces dimension type of half-precision floating point for vect
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: damauri, pookam, mikeray, randolphwest
-ms.date: 11/18/2025
+ms.date: 12/08/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: quickstart
@@ -63,7 +63,7 @@ column_name VECTOR ( <dimensions> [, <base_type>] ) [ NOT NULL | NULL ]
 
 ### Feature availability
 
-`float16` vector is currently available for preview. To test, enable the `PREVIEW_FEATURES` database scoped configuration option. For details, review [PREVIEW_FEATURES = { ON | OFF }](../statements/alter-database-scoped-configuration-transact-sql.md#preview_features---on--off-).
+`float16` vector is currently available for preview. To test, enable the `PREVIEW_FEATURES` database scoped configuration option. For details, review [PREVIEW_FEATURES = { ON | OFF }](../statements/alter-database-scoped-configuration-transact-sql.md#preview_features---on--off-). `float16` vectors are currently transmitted as **varchar(max)** (JSON array) over TDS. Binary transport support for `float16` isn't currently available.
 
 ```sql
 ALTER DATABASE SCOPED CONFIGURATION SET PREVIEW_FEATURES = ON;

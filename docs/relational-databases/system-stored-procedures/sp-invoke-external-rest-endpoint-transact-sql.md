@@ -4,7 +4,7 @@ description: The sp_invoke_external_rest_endpoint stored procedure invokes an HT
 author: jettermctedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 07/31/2025
+ms.date: 12/08/2025
 ms.service: sql
 ms.topic: "reference"
 ms.custom:
@@ -25,9 +25,6 @@ monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-curre
 [!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
 The `sp_invoke_external_rest_endpoint` stored procedure invokes an HTTPS REST endpoint provided as an input argument to the procedure.
-
-> [!NOTE]  
-> The `sp_invoke_external_rest_endpoint` stored procedure is in preview for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
 
 ## Ways to mitigate risk of unauthorized access or transfer of data
 
@@ -55,7 +52,7 @@ EXECUTE @returnValue = sp_invoke_external_rest_endpoint
   [ , [ @timeout = ] seconds ]
   [ , [ @credential = ] credential ]
   [ , @response OUTPUT ]
-  [ , [ @retry_count = ] # of retries if there are errors ] 
+  [ , [ @retry_count = ] # of retries if there are errors ]
 ```
 
 ## Arguments
@@ -114,16 +111,12 @@ GRANT EXECUTE ANY EXTERNAL ENDPOINT TO [<PRINCIPAL>];
 
 ### Enable in SQL Server 2025 and Azure SQL Managed Instance
 
-> [!NOTE]  
-> The `sp_invoke_external_rest_endpoint` stored procedure is in preview for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
-
 The `sp_invoke_external_rest_endpoint` stored procedure is available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and Azure SQL Managed Instance with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy) and is disabled by default.
 
 To enable the `sp_invoke_external_rest_endpoint` stored procedure in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and Azure SQL Managed Instance, run the following T-SQL code:
 
 ```sql
 EXECUTE sp_configure 'external rest endpoint enabled', 1;
-
 RECONFIGURE WITH OVERRIDE;
 ```
 
@@ -360,7 +353,7 @@ Both system-assigned and user-assigned managed identities are supported:
 
 #### Managed Identity and SQL Server 2025
 
-To use [Managed Identity](/entra/identity/managed-identities-azure-resources/overview) for authentication on SQL Server 2025, you must enable the option by using `sp_configure` with a user that is [granted the ALTER SETTINGS server-level permission](../../relational-databases/system-stored-procedures/sp-configure-transact-sql.md#permissions).
+To use [Managed Identity](/entra/identity/managed-identities-azure-resources/overview) for authentication on [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], you must enable the option by using `sp_configure` with a user that is [granted the ALTER SETTINGS server-level permission](sp-configure-transact-sql.md#permissions).
 
 ```sql
 EXECUTE sp_configure 'allow server scoped db credentials', 1;
@@ -456,8 +449,8 @@ If setting the *@retry_count* parameter, the request will be retried when the fo
 
 | HTTP Status Code | Error | Description |
 |-------------|------------|-------------|
-| 408 | Request Timeout | The client didn't produce a request within the server’s time limit or the server timed out waiting. |
-| 429 | Too Many Requests | The client is being rate-limited. Retry time based on the “Retry-After” header value if provided. |
+| 408 | Request Timeout | The client didn't produce a request within the server's time limit or the server timed out waiting. |
+| 429 | Too Many Requests | The client is being rate-limited. Retry time based on the "Retry-After" header value if provided. |
 | 500 | Internal Server Error | Generic server error. |
 | 502 | Bad Gateway | The server received an invalid response from a backend. |
 | 503 | Service Unavailable | Indicates a temporary overload or downtime. |
