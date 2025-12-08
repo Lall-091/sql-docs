@@ -53,14 +53,7 @@ These applies-to include files specify which versions of SQL the documentation a
 | File name | Markdown example | Image |
 | --- | --- | --- |
 | applies-to-version/asa-pdw.md | `[!INCLUDE [applies-to-version/asa-pdw.md](../includes/applies-to-version/asa-pdw.md)]` | [!INCLUDE [applies-to-version/asa-pdw.md](../includes/applies-to-version/asa-pdw.md)] |
-| appliesto-ss2016-asdb-asdw-pdw-md.md | `[!INCLUDE [appliesto-ss2016-asdb-asdw-pdw-md.md](appliesto-ss2016-asdb-asdw-pdw-md.md)]` | [!INCLUDE [appliesto-ss2016-asdb-asdw-pdw-md.md](../includes/appliesto-ss2016-asdb-asdw-pdw-md.md)] |
-| sqlserver2017-asdb.md | `[!INCLUDE [sqlserver2017-asdb.md](../includes/applies-to-version/sqlserver2017-asdb.md)]` | [!INCLUDE [sqlserver2017-asdb.md](../includes/applies-to-version/sqlserver2017-asdb.md)] |
-| tsql-appliesto-2014sp2-asdb-xxxx-xxx-md.md | `[!INCLUDE [tsql-appliesto-2014sp2-asdb-xxxx-xxx-md.md](../includes/tsql-appliesto-2014sp2-asdb-xxxx-xxx-md.md)]` | [!INCLUDE [tsql-appliesto-2014sp2-asdb-xxxx-xxx-md.md](../includes/tsql-appliesto-2014sp2-asdb-xxxx-xxx-md.md)] |
-| tsql-appliesto-2016sp2-asdb-xxxx-xxx-md.md | `[!INCLUDE [tsql-appliesto-2016sp2-asdb-xxxx-xxx-md.md](../includes/tsql-appliesto-2016sp2-asdb-xxxx-xxx-md.md)]` | [!INCLUDE [tsql-appliesto-2016sp2-asdb-xxxx-xxx-md.md](../includes/tsql-appliesto-2016sp2-asdb-xxxx-xxx-md.md)] |
 | tsql-appliesto-ss2008-xxxx-xxxx-xxx-md.md | `[!INCLUDE [tsql-appliesto-ss2008-xxxx-xxxx-xxx-md.md](../includes/applies-to-version/sqlserver.md)]` | [!INCLUDE [tsql-appliesto-ss2008-xxxx-xxxx-xxx-md.md](../includes/applies-to-version/sqlserver.md)] |
-| tsql-appliesto-ss2016-asdb-asdw-xxx-md.md | `[!INCLUDE [tsql-appliesto-ss2016-asdb-asdw-xxx-md.md](../includes/tsql-appliesto-ss2016-asdb-asdw-xxx-md.md)]` | [!INCLUDE [tsql-appliesto-ss2016-asdb-asdw-xxx-md.md](../includes/tsql-appliesto-ss2016-asdb-asdw-xxx-md.md)] |
-| tsql-appliesto-ss2016-xxxx-asdw-pdw-md.md | `[!INCLUDE [tsql-appliesto-ss2016-xxxx-asdw-pdw-md.md](../includes/tsql-appliesto-ss2016-xxxx-asdw-pdw-md.md)]` | [!INCLUDE [tsql-appliesto-ss2016-xxxx-asdw-pdw-md.md](../includes/tsql-appliesto-ss2016-xxxx-asdw-pdw-md.md)] |
-| tsql-appliesto-ss2016-xxxx-asdw-xxx-md.md | `[!INCLUDE [tsql-appliesto-ss2016-xxxx-asdw-xxx-md.md](../includes/tsql-appliesto-ss2016-xxxx-asdw-xxx-md.md)]` | [!INCLUDE [tsql-appliesto-ss2016-xxxx-asdw-xxx-md.md](../includes/tsql-appliesto-ss2016-xxxx-asdw-xxx-md.md)] |
 | tsql-appliesto-ss2017-xxxx-xxxx-xxx-md.md | `[!INCLUDE [tsql-appliesto-ss2017-xxxx-xxxx-xxx-md.md](../includes/applies-to-version/sqlserver2017.md)]` | [!INCLUDE [tsql-appliesto-ss2017-xxxx-xxxx-xxx-md.md](../includes/applies-to-version/sqlserver2017.md)] |
 
 ## Related content

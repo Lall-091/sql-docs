@@ -174,7 +174,7 @@ This example uses `AI_GENERATE_EMBEDDINGS` with `AI_GENERATE_CHUNKS` to create e
 ```sql
 INSERT INTO my_embeddings (chunked_text, vector_embeddings)
 SELECT c.chunk,
-       AI_GENERATE_EMBEDDINGS(c.chunk USE MODEL MyAzureOpenAiModel)
+       AI_GENERATE_EMBEDDINGS(c.chunk USE MODEL MyAzureOpenAIModel)
 FROM table_with_text AS t
 CROSS APPLY
     AI_GENERATE_CHUNKS (SOURCE = t.text_to_chunk, CHUNK_TYPE = FIXED, CHUNK_SIZE = 100) AS c;

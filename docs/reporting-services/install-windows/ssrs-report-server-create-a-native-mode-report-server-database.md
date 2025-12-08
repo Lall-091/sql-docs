@@ -14,7 +14,7 @@ helpviewer_keywords:
 
 # Create a Native Mode Report Server Database (Report Server Configuration Manager)
 
-[!INCLUDE[ssrs-appliesto-sql2016-preview](../../includes/ssrs-appliesto-sql2016-preview.md)]
+[!INCLUDE [sqlserver2016-pbirs](../../includes/applies-to-version/sqlserver2016-pbirs.md)]
 
 Native mode [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] uses a [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] database for internal storage. The database is required and it is used to store published reports, models, shared data sources, session data, resources, and server metadata.  
 

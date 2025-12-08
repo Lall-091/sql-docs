@@ -1,10 +1,11 @@
 ---
-author: rothja
-ms.author: jroth
-ms.date: 08/12/2020
+author: rwestMSFT
+ms.author: randolphwest
+ms.date: 12/07/2025
 ms.service: sql
-ms.custom: linux-related-content
 ms.topic: include
+ms.custom:
+  - linux-related-content
 ---
 
-[!INCLUDE [Applies to](../../includes/applies-md.md)] [!INCLUDE [SQL Server 2019](_ss2019.md)] - Linux
+[!INCLUDE [Applies to](../../includes/applies-md.md)] [!INCLUDE [SQL Server 2019](_ss2019.md)] on Linux

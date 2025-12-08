@@ -1,9 +1,0 @@
----
-author: kfollis
-ms.author: kfollis
-ms.date: 01/29/2024
-ms.service: analysis-services
-ms.topic: include
----
-
-[!INCLUDE [applies-md](applies-md.md)] :::image type="icon" source="media/yes-icon.svg" border="false"::: SQL Server Analysis Services

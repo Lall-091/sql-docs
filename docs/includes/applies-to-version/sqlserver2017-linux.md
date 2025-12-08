@@ -1,10 +1,11 @@
 ---
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 09/01/2022
+ms.date: 12/07/2025
 ms.service: sql
-ms.custom: linux-related-content
 ms.topic: include
+ms.custom:
+  - linux-related-content
 ---
 
-[!INCLUDE [Applies to](../../includes/applies-md.md)] [!INCLUDE [SQL Server 2017](_ss2017.md)] - Linux
+[!INCLUDE [Applies to](../../includes/applies-md.md)] [!INCLUDE [SQL Server 2017](_ss2017.md)] on Linux

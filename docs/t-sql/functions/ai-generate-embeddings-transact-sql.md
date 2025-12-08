@@ -4,7 +4,7 @@ description: The AI_GENERATE_EMBEDDINGS function creates vector arrays for data.
 author: jettermctedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 11/17/2025
+ms.date: 12/04/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -132,7 +132,11 @@ SELECT id,
        large_text,
        AI_GENERATE_EMBEDDINGS(c.chunk_text USE MODEL MyAzureOpenAIModel)
 FROM myTable
-CROSS APPLY AI_GENERATE_CHUNKS (SOURCE = large_text, CHUNK_TYPE = FIXED, CHUNK_SIZE = 10) AS c;
+CROSS APPLY AI_GENERATE_CHUNKS (
+    SOURCE = large_text,
+    CHUNK_TYPE = FIXED,
+    CHUNK_SIZE = 10
+) AS c;
 ```
 
 ### C. Create embeddings with a table update
@@ -170,9 +174,11 @@ SELECT id,
 FROM myTable;
 ```
 
-### F. A full example with chunking, AI_GENERATE_EMBEDDINGS, and model creation
+### F. A full example with model creation, chunking and embedding generation
 
-The following example demonstrates an end-to-end process for making your data AI-ready:
+### [Azure OpenAI API Key](#tab/request-headers)
+
+The following example demonstrates an end-to-end process for making your data AI-ready using Azure OpenAI API Key:
 
 1. Use [CREATE EXTERNAL MODEL](../statements/create-external-model-transact-sql.md) to register and make your embedding model accessible.
 
@@ -185,13 +191,17 @@ The following example demonstrates an end-to-end process for making your data AI
 > [!NOTE]  
 > Replace `<password>` with a valid password.
 
+Enable the external REST endpoint invocation on the database server:
+
 ```sql
--- Enable the external REST endpoint invocation on the database server
 EXECUTE sp_configure 'external rest endpoint enabled', 1;
 RECONFIGURE WITH OVERRIDE;
 GO
+```
 
--- Create a master key for the database
+Create a database master key:
+
+```sql
 IF NOT EXISTS (SELECT *
                FROM sys.symmetric_keys
                WHERE [name] = '##MS_DatabaseMasterKey##')
@@ -199,23 +209,32 @@ IF NOT EXISTS (SELECT *
         CREATE MASTER KEY ENCRYPTION BY PASSWORD = N'<password>';
     END
 GO
+```
 
--- Create access credentials to Azure OpenAI using a key:
-CREATE DATABASE SCOPED CREDENTIAL [https://my-azure-openai-endpoint.openai.azure.com/]
+Create access credentials to Azure OpenAI using a key:
+
+```sql
+CREATE DATABASE SCOPED CREDENTIAL [https://my-azure-openai-endpoint.cognitiveservices.azure.com/]
     WITH IDENTITY = 'HTTPEndpointHeaders', secret = '{"api-key":"YOUR_AZURE_OPENAI_KEY"}';
 GO
+```
 
--- Create an external model to call the Azure OpenAI embeddings REST endpoint
+Create an external model to call the Azure OpenAI embeddings REST endpoint:
+
+```sql
 CREATE EXTERNAL MODEL MyAzureOpenAIModel
 WITH (
-      LOCATION = 'https://my-azure-openai-endpoint.openai.azure.com/openai/deployments/text-embedding-ada-002/embeddings?api-version=2023-05-15',
+      LOCATION = 'https://my-azure-openai-endpoint.cognitiveservices.azure.com/openai/deployments/text-embedding-ada-002/embeddings?api-version=2023-05-15',
       API_FORMAT = 'Azure OpenAI',
       MODEL_TYPE = EMBEDDINGS,
       MODEL = 'text-embedding-ada-002',
-      CREDENTIAL = [https://my-azure-openai-endpoint.openai.azure.com/]
+      CREDENTIAL = [https://my-azure-openai-endpoint.cognitiveservices.azure.com/]
 );
+```
 
--- Create a table with text to chunk and insert data
+Create a table with text to chunk and insert data:
+
+```sql
 CREATE TABLE textchunk
 (
     text_id INT IDENTITY (1, 1) PRIMARY KEY,
@@ -224,29 +243,157 @@ CREATE TABLE textchunk
 GO
 
 INSERT INTO textchunk (text_to_chunk)
-VALUES
-('All day long we seemed to dawdle through a country which was full of beauty of every kind. Sometimes we saw little towns or castles on the top of steep hills such as we see in old missals; sometimes we ran by rivers and streams which seemed from the wide stony margin on each side of them to be subject to great floods.'),
-('My Friend, Welcome to the Carpathians. I am anxiously expecting you. Sleep well to-night. At three to-morrow the diligence will start for Bukovina; a place on it is kept for you. At the Borgo Pass my carriage will await you and will bring you to me. I trust that your journey from London has been a happy one, and that you will enjoy your stay in my beautiful land. Your friend, DRACULA')
+VALUES ('All day long we seemed to dawdle through a land which was full of beauty of every kind. Sometimes we saw little towns or castles on the top of steep hills such as we see in old missals; sometimes we ran by rivers and streams which seemed from the wide stony margin on each side of them to be subject to great floods.'),
+       ('My Friend, Welcome to the Carpathians. I am anxiously expecting you. Sleep well to-night. At three to-morrow the diligence will start for Bukovina; a place on it is kept for you. At the Borgo Pass my carriage will await you and will bring you to me. I trust that your journey from London has been a happy one, and that you will enjoy your stay in my beautiful land. Your friend, DRACULA')
 GO
+```
 
--- Create a new table to hold the chunked text and vector embeddings
+Create a new table to hold the chunked text and vector embeddings:
+
+```sql
 CREATE TABLE text_embeddings
 (
     embeddings_id INT IDENTITY (1, 1) PRIMARY KEY,
     chunked_text NVARCHAR (MAX),
     vector_embeddings VECTOR(1536)
 );
-
--- Insert the chunked text and vector embeddings into the text_embeddings table using AI_GENERATE_CHUNKS and AI_GENERATE_EMBEDDINGS
-INSERT INTO text_embeddings (chunked_text, vector_embeddings)
-SELECT c.chunk, AI_GENERATE_EMBEDDINGS(c.chunk USE MODEL MyAzureOpenAIModel)
-FROM textchunk t
-CROSS APPLY
-    AI_GENERATE_CHUNKS(source = t.text_to_chunk, chunk_type = FIXED, chunk_size = 100) c;
-
--- View the results
-SELECT * FROM text_embeddings;
 ```
+
+Insert the chunked text and vector embeddings into the text_embeddings table using `AI_GENERATE_CHUNKS` and `AI_GENERATE_EMBEDDINGS`:
+
+```sql
+INSERT INTO text_embeddings (chunked_text, vector_embeddings)
+SELECT c.chunk,
+       AI_GENERATE_EMBEDDINGS(c.chunk USE MODEL MyAzureOpenAIModel)
+FROM textchunk AS t
+CROSS APPLY AI_GENERATE_CHUNKS (
+    SOURCE = t.text_to_chunk,
+    CHUNK_TYPE = FIXED,
+    CHUNK_SIZE = 100
+) AS c;
+```
+
+View the results
+
+```sql
+SELECT *
+FROM text_embeddings;
+```
+
+### [Managed Identity](#tab/managed-identity)
+
+The following example demonstrates an end-to-end process for making your data AI-ready using Managed Identity:
+
+1. Enable [Managed Identity](../statements/create-external-model-transact-sql.md#managed-identity). This option applies to SQL Server Azure Arc / Azure Virtual Machine (VM) based deployments.
+
+1. Use [CREATE EXTERNAL MODEL with Azure OpenAI using Managed Identity](../statements/create-external-model-transact-sql.md#create-an-external-model-with-azure-openai-using-managed-identity) to register and make your embedding model accessible using Managed Identity.
+
+1. Split the dataset into smaller chunks with [AI_GENERATE_CHUNKS](ai-generate-chunks-transact-sql.md), so the data fits within the model's context window and improves retrieval accuracy.
+
+1. Generate embeddings using `AI_GENERATE_EMBEDDINGS`.
+
+1. Insert the results into a table with a [vector data type](../data-types/vector-data-type.md).
+
+> [!NOTE]  
+> Replace `<password>` with a [valid password](../statements/create-master-key-transact-sql.md#password-password).
+
+Enable managed identity for authentication:
+
+```sql
+EXECUTE sp_configure 'allow server scoped db credentials', 1;
+RECONFIGURE WITH OVERRIDE;
+```
+
+Enable the external REST endpoint invocation on the database server:
+
+```sql
+EXECUTE sp_configure 'external rest endpoint enabled', 1;
+RECONFIGURE WITH OVERRIDE;
+GO
+```
+
+Create a database master key:
+
+```sql
+IF NOT EXISTS (SELECT *
+               FROM sys.symmetric_keys
+               WHERE [name] = '##MS_DatabaseMasterKey##')
+    BEGIN
+        CREATE MASTER KEY ENCRYPTION BY PASSWORD = N'<password>';
+    END
+GO
+```
+
+Create access credentials to Azure OpenAI using a key:
+
+```sql
+CREATE DATABASE SCOPED CREDENTIAL [https://my-azure-openai-endpoint.cognitiveservices.azure.com/]
+    WITH IDENTITY = 'Managed Identity', secret = '{"resourceid":"https://cognitiveservices.azure.com"}';
+GO
+```
+
+Create an external model to call the Azure OpenAI embeddings REST endpoint:
+
+```sql
+CREATE EXTERNAL MODEL MyAzureOpenAIModel
+WITH (
+      LOCATION = 'https://my-azure-openai-endpoint.cognitiveservices.azure.com/openai/deployments/text-embedding-ada-002/embeddings?api-version=2023-05-15',
+      API_FORMAT = 'Azure OpenAI',
+      MODEL_TYPE = EMBEDDINGS,
+      MODEL = 'text-embedding-ada-002',
+      CREDENTIAL = [https://my-azure-openai-endpoint.cognitiveservices.azure.com/]
+);
+```
+
+Create a table with text to chunk and insert data:
+
+```sql
+CREATE TABLE textchunk
+(
+    text_id INT IDENTITY (1, 1) PRIMARY KEY,
+    text_to_chunk NVARCHAR (MAX)
+);
+GO
+
+INSERT INTO textchunk (text_to_chunk)
+VALUES ('All day long we seemed to dawdle through a land which was full of beauty of every kind. Sometimes we saw little towns or castles on the top of steep hills such as we see in old missals; sometimes we ran by rivers and streams which seemed from the wide stony margin on each side of them to be subject to great floods.'),
+       ('My Friend, Welcome to the Carpathians. I am anxiously expecting you. Sleep well to-night. At three to-morrow the diligence will start for Bukovina; a place on it is kept for you. At the Borgo Pass my carriage will await you and will bring you to me. I trust that your journey from London has been a happy one, and that you will enjoy your stay in my beautiful land. Your friend, DRACULA')
+GO
+```
+
+Create a new table to hold the chunked text and vector embeddings:
+
+```sql
+CREATE TABLE text_embeddings
+(
+    embeddings_id INT IDENTITY (1, 1) PRIMARY KEY,
+    chunked_text NVARCHAR (MAX),
+    vector_embeddings VECTOR(1536)
+);
+```
+
+Insert the chunked text and vector embeddings into the text_embeddings table using `AI_GENERATE_CHUNKS` and `AI_GENERATE_EMBEDDINGS`:
+
+```sql
+INSERT INTO text_embeddings (chunked_text, vector_embeddings)
+SELECT c.chunk,
+       AI_GENERATE_EMBEDDINGS(c.chunk USE MODEL MyAzureOpenAIModel)
+FROM textchunk AS t
+CROSS APPLY AI_GENERATE_CHUNKS (
+    SOURCE = t.text_to_chunk,
+    CHUNK_TYPE = FIXED,
+    CHUNK_SIZE = 100
+) AS c;
+```
+
+View the results:
+
+```sql
+SELECT *
+FROM text_embeddings;
+```
+
+---
 
 ## Related content
 
@@ -256,3 +403,4 @@ SELECT * FROM text_embeddings;
 - [AI_GENERATE_CHUNKS (Transact-SQL)](ai-generate-chunks-transact-sql.md)
 - [sp_invoke_external_rest_endpoint](../../relational-databases/system-stored-procedures/sp-invoke-external-rest-endpoint-transact-sql.md)
 - [Create and deploy an Azure OpenAI in Azure AI Foundry Models resource](/azure/ai-services/openai/how-to/create-resource)
+- [Connect your SQL Server to Azure Arc](../../sql-server/azure-arc/connect.md#connect-your-sql-server-to-azure-arc)

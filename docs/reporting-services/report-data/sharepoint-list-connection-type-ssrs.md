@@ -10,7 +10,7 @@ ms.custom:
 ---
 # SharePoint List Connection Type (SSRS)
 
-[!INCLUDE[ssrs-appliesto-sql2016-preview](../../includes/ssrs-appliesto-sql2016-preview.md)] [!INCLUDE [ssrs-appliesto-sharepoint-2013-2016](../../includes/ssrs-appliesto-sharepoint-2013-2016.md)]
+[!INCLUDE [sqlserver2016-pbirs-sharepoint](../../includes/applies-to-version/sqlserver2016-pbirs-sharepoint.md)]
 
 To include data from a Microsoft SharePoint list in your report, you must add or create a dataset that is based on a report data source of type Microsoft SharePoint List. This is a built-in data source type based on the Microsoft SQL Server Reporting Services SharePoint List data extension. Use this data source type to connect to and retrieve list data from SharePoint 2013 and later.
 

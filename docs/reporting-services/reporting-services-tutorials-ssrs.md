@@ -14,7 +14,7 @@ helpviewer_keywords:
 
 # Reporting Services tutorials (SSRS)
 
-[!INCLUDE[ssrs-appliesto-sql2016-preview](../includes/ssrs-appliesto-sql2016-preview.md)]
+[!INCLUDE [sqlserver2016-pbirs](../includes/applies-to-version/sqlserver2016-pbirs.md)]
 
 The Reporting Services tutorials allow you to explore the capabilities of [!INCLUDE[ssRSCurrent_md](../includes/ssrscurrent-md.md)], [!INCLUDE[ssBIDevStudioFull](../includes/ssbidevstudiofull-md.md)], and Report Builder by using guided assistance and sample data.
 

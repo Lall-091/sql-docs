@@ -20,7 +20,7 @@ helpviewer_keywords:
 
 # Upgrade Reports (SSRS)
 
-[!INCLUDE[ssrs-appliesto-sql2016-preview](../../includes/ssrs-appliesto-sql2016-preview.md)]
+[!INCLUDE [sqlserver2016-pbirs](../../includes/applies-to-version/sqlserver2016-pbirs.md)]
 
 Report definition (.rdl) files are automatically upgraded in the following ways:  
   

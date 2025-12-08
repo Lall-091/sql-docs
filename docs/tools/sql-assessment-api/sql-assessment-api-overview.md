@@ -14,7 +14,7 @@ ms.custom:
 ---
 # SQL Assessment API
 
-[!INCLUDE [SQL Server 2012, ASMI, SQL Server on Azure VM, SQL on Linux](../../includes/applies-to-version/sql-asmi-sqlavm-sql-linux.md)]
+[!INCLUDE [sql-asdbmi](../../includes/applies-to-version/sql-asdbmi.md)]
 
 The SQL Assessment API provides a mechanism to evaluate the configuration of your SQL Server for best practices. The API is delivered with a ruleset containing best practice rules suggested by the SQL Server team. This ruleset is enhanced with the release of new versions, but at the same time, the API is built to give a highly customizable and extensible solution. Users can tune the default rules and create their own.
 
