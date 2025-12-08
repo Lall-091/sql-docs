@@ -63,7 +63,7 @@ column_name VECTOR ( <dimensions> [, <base_type>] ) [ NOT NULL | NULL ]
 
 ### Feature availability
 
-`float16` vector is currently available for preview. To test, enable the `PREVIEW_FEATURES` database scoped configuration option. For details, review [PREVIEW_FEATURES = { ON | OFF }](../statements/alter-database-scoped-configuration-transact-sql.md#preview_features---on--off-).
+`float16` vector is currently available for preview. To test, enable the `PREVIEW_FEATURES` database scoped configuration option. For details, review [PREVIEW_FEATURES = { ON | OFF }](../statements/alter-database-scoped-configuration-transact-sql.md#preview_features---on--off-). `float16` vectors are currently transmitted as **varchar(max)** (JSON array) over TDS. Binary transport support for `float16` isn't yet available.
 
 ```sql
 ALTER DATABASE SCOPED CONFIGURATION SET PREVIEW_FEATURES = ON;
