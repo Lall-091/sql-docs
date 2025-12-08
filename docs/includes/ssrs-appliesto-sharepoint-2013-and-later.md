@@ -1,9 +1,8 @@
 ---
 author: kfollis
 ms.author: kfollis
-ms.reviewer: randolphwest
-ms.date: 05/01/2024
+ms.date: 12/07/2025
 ms.service: reporting-services
 ms.topic: include
 ---
-:::image type="icon" source="media/yes-icon.svg" border="false":::&nbsp;SharePoint&nbsp;2013 and later
+:::image type="icon" source="media/yes-icon.svg" border="false"::: SharePoint 2013 and later versions

@@ -1,9 +1,9 @@
 ---
-author: rothja
-ms.author: jroth
-ms.date: 07/07/2020
+author: rwestMSFT
+ms.author: randolphwest
+ms.date: 12/07/2025
 ms.service: sql
 ms.topic: include
 ---
 
-[!INCLUDE [Applies to](../../includes/applies-md.md)] [!INCLUDE [SQL Server 2016](_ss2016.md)] only
+[!INCLUDE [Applies to](../../includes/applies-md.md)] [!INCLUDE [SQL Server 2016](_ss2016.md)]

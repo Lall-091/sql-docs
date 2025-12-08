@@ -1,10 +1,11 @@
 ---
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.date: 05/24/2022
+ms.date: 12/07/2025
 ms.service: sql
-ms.custom: linux-related-content
 ms.topic: include
+ms.custom:
+  - linux-related-content
 ---
 
-[!INCLUDE [Applies to](../../includes/applies-md.md)] [!INCLUDE [SQL Server 2022](_ss2022.md)] - Linux
+[!INCLUDE [Applies to](../../includes/applies-md.md)] [!INCLUDE [SQL Server 2022](_ss2022.md)] on Linux
