@@ -1,10 +1,10 @@
 ---
 title: "TRY_CONVERT (Transact-SQL)"
-description: Returns a value cast to the specified data type if the cast succeeds; otherwise, returns NULL.
+description: TRY_CONVERT returns a value cast to the specified data type if the cast succeeds; otherwise, returns NULL.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 05/23/2024
+ms.date: 12/08/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -71,40 +71,28 @@ This function is capable of being remoted to servers that have [!INCLUDE [ssSQL1
 
 ### A. TRY_CONVERT returns NULL
 
-The following example demonstrates that `TRY_CONVERT` returns `NULL` when the cast fails.
+- The following example demonstrates that `TRY_CONVERT` returns `NULL` when the cast fails.
 
-```sql
-SELECT
-    CASE WHEN TRY_CONVERT(FLOAT, 'test') IS NULL
-    THEN 'Cast failed'
-    ELSE 'Cast succeeded'
-END AS Result;
-GO
-```
+  ```sql
+  SELECT
+      CASE WHEN TRY_CONVERT(FLOAT, 'test') IS NULL
+      THEN 'Cast failed'
+      ELSE 'Cast succeeded'
+  END AS Result;
+  GO
+  ```
 
-[!INCLUDE [ssResult](../../includes/ssresult-md.md)]
+  This query returns a result of `Cast failed`.
 
-```output
-Result  
-------------  
-Cast failed
-```
+- The following example demonstrates that the expression must be in the expected format.
 
-The following example demonstrates that the expression must be in the expected format.
+  ```sql
+  SET DATEFORMAT dmy;
+  SELECT TRY_CONVERT(DATETIME2, '12/31/2022') AS Result;
+  GO
+  ```
 
-```sql
-SET DATEFORMAT dmy;
-SELECT TRY_CONVERT(DATETIME2, '12/31/2022') AS Result;
-GO
-```
-
-[!INCLUDE [ssResult](../../includes/ssresult-md.md)]
-
-```output
-Result  
-----------------------  
-NULL
-```
+  This query returns a result of `NULL`.
 
 ### B. TRY_CONVERT fails with an error
 
@@ -115,7 +103,7 @@ SELECT TRY_CONVERT(XML, 4) AS Result;
 GO
 ```
 
-The result of this statement is an error, because an integer can't be cast into an **xml** data type.
+The result of this statement is an error, because an integer can't be cast into the **xml** data type.
 
 ```output
 Explicit conversion from data type int to xml is not allowed.
@@ -131,15 +119,8 @@ SELECT TRY_CONVERT(DATETIME2, '12/31/2022') AS Result;
 GO
 ```
 
-[!INCLUDE [ssResult](../../includes/ssresult-md.md)]
-
-```output
-Result
-----------------------------------
-2022-12-31 00:00:00.0000000
-```
+This query returns a result of `2022-12-31 00:00:00.0000000`.
 
 ## Related content
 
 - [CAST and CONVERT (Transact-SQL)](cast-and-convert-transact-sql.md)
-

@@ -29,21 +29,21 @@ monikerRange: "=fabric || =sql-server-ver17 || =sql-server-linux-ver17"
 
 # PRODUCT (Transact-SQL)
 
-**Applies to:** [!INCLUDE [sqlserver2025-asdb-asa-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asa-fabricsqldb.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-asa-fabricdw-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-asa-fabricdw-fabricsqldb.md)]
 
-Returns the PRODUCT of all the values, or only the DISTINCT values, in the expression. Use with numeric columns only. Null values are ignored.
+The `PRODUCT` function returns the product of all the values, or only the `DISTINCT` values, in an expression. Use with numeric columns only. Null values are ignored.
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ## Syntax
 
-Aggregate function syntax.
+Aggregate function syntax:
 
 ```syntaxsql
 PRODUCT ( [ ALL | DISTINCT ] expression )
 ```
 
-Analytic function syntax.
+Analytic function syntax:
 
 ```syntaxsql
 PRODUCT ( [ ALL ] expression) OVER ( [ partition_by_clause ] [ order_by_clause ] )
@@ -51,13 +51,13 @@ PRODUCT ( [ ALL ] expression) OVER ( [ partition_by_clause ] [ order_by_clause ]
 
 ## Arguments
 
-#### *ALL*
+#### ALL
 
-Applies the aggregate function to all values. ALL is the default.
+Applies the aggregate function to all values. `ALL` is the default.
 
-#### *DISTINCT*
+#### DISTINCT
 
-Specifies that PRODUCT returns the PRODUCT of unique values.
+Specifies that `PRODUCT` returns the product of unique values.
 
 #### *expression*
 
@@ -81,11 +81,13 @@ Returns the product of all *expression* values in the most precise *expression* 
 | **smallint** | **int** |
 | **int** | **int** |
 | **bigint** | **bigint** |
-| **decimal** category (p, s) | If (s == 0): **decimal(38, 0)** Else: **decimal(38, 6)** |
+| **decimal** category (*p*, *s*) | If *s* is `0`, **decimal(38, 0)**, otherwise **decimal(38, 6)** |
 | **money** and **smallmoney** category | **money** |
 | **float** and **real** category | **float** |
 
 ## Remarks
+
+Support for `PRODUCT` in [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] is limited to [!INCLUDE [ssazure-sqlmi-autd](../../includes/ssazure-sqlmi-autd.md)].
 
 `PRODUCT` is a deterministic function when used without the `OVER` and `ORDER BY` clauses. It's nondeterministic when specified with the `OVER` and `ORDER BY` clauses. For more information, see [Deterministic and nondeterministic functions](../../relational-databases/user-defined-functions/deterministic-and-nondeterministic-functions.md).
 
@@ -95,16 +97,16 @@ Returns the product of all *expression* values in the most precise *expression* 
 
 ### A. Multiply rows together
 
-The following examples show using the PRODUCT function
+The following example uses the `PRODUCT` function:
 
 ```sql
 SELECT PRODUCT(UnitPrice) AS ProductOfPrices
 FROM Purchasing.PurchaseOrderDetail
-WHERE ModifiedDate <= '2002-05-24'
+WHERE ModifiedDate <= '2023-05-24'
 GROUP BY ProductId;
 ```
 
-Here's a partial result set.
+[!INCLUDE [ssresult-md](../../includes/ssresult-md.md)]
 
 ```output
 ProductOfPrices
@@ -112,16 +114,18 @@ ProductOfPrices
 2526.2435
 41.916
 3251.9077
-21656.2655
-40703.3993
-4785336.3939
-11432159532.8367
-5898056095.7678
+640559.8491
+1469352.0378
+222137708.073
+11432159376.271
+5898056028.2633
+14030141.2883
+2526.4194
 ```
 
 ### B. Use the OVER clause
 
-The following example uses the PRODUCT function with the OVER clause to provide a rate of return on hypothetical financial instruments. The data is partitioned by `finInstrument`.
+The following example uses the `PRODUCT` function with the `OVER` clause to provide a rate of return on hypothetical financial instruments. The data is partitioned by `finInstrument`.
 
 ```sql
 SELECT finInstrument,

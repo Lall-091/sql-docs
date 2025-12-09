@@ -1,8 +1,8 @@
 ---
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.date: 10/21/2025
+ms.date: 12/08/2025
 ms.service: sql
 ms.topic: include
 ---
-SQL database in [!INCLUDE [fabric](fabric.md)]
+SQL database in Microsoft Fabric

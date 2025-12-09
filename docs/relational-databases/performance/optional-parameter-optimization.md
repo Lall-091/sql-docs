@@ -4,7 +4,7 @@ description: Optional parameter plan optimization improvement.
 author: thesqlsith
 ms.author: derekw
 ms.reviewer: randolphwest
-ms.date: 08/19/2025
+ms.date: 12/08/2025
 ms.service: sql
 ms.topic: concept-article
 ms.custom:
@@ -15,7 +15,7 @@ monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17"
 
 # Optional parameter plan optimization (OPPO)
 
-**Applies to:** [!INCLUDE [sqlserver2025-asdb-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-fabricsqldb.md)]
+[!INCLUDE [sqlserver2025-asdb-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-fabricsqldb.md)]
 
 The term *optional parameters* refers to a specific variation of the [parameter-sensitive plan](../query-processing-architecture-guide.md#parameter-sensitivity) (PSP) problem in which the sensitive, parameter value that exists during query execution, controls whether we need to perform a seek into or scan a table. A simple example would be something like:
 
@@ -24,7 +24,7 @@ SELECT column1,
        column2
 FROM Table1
 WHERE (column1 = @p
-      OR @p IS NULL);
+       OR @p IS NULL);
 ```
 
 In this example, SQL Server always chooses a plan that scans table `Table1`, even if there's an index on `Table1(col1)`. A seek plan might not be possible with NULLs. Query hinting techniques, like `OPTIMIZE FOR`, might not be useful for this type of PSP problem because there isn't currently an operator that dynamically changes an index seek into a scan during execution. This kind of seek->scan combination at runtime might also not be effective, because the cardinality estimates on top of that operator would likely be inaccurate. The result is inefficient plan choices and excessive memory grants for more complex queries with similar query patterns.
@@ -60,7 +60,8 @@ As part of the adaptive plan optimization feature family which includes [Paramet
 As an example, consider an application web form for a realty company that allows for optional filtering on the number of bedrooms for a particular listing. A common antipattern could be to express the optional filter as:
 
 ```sql
-SELECT * FROM Properties
+SELECT *
+FROM Properties
 WHERE bedrooms = @bedrooms
       OR @bedrooms IS NULL;
 ```
@@ -71,9 +72,11 @@ Imagine if this could be rewritten as two separate statements. Depending on the 
 
 ```sql
 IF @bedrooms IS NULL
-    SELECT * FROM Properties;
+    SELECT *
+    FROM Properties;
 ELSE
-    SELECT * FROM Properties
+    SELECT *
+    FROM Properties
     WHERE bedrooms = @bedrooms;
 ```
 
@@ -84,7 +87,8 @@ Similar to the [predicate cardinality range](parameter-sensitive-plan-optimizati
 Continuing with the previous example,
 
 ```sql
-SELECT * FROM Properties
+SELECT *
+FROM Properties
 WHERE bedrooms = @bedrooms
       OR @bedrooms IS NULL;
 ```
@@ -111,14 +115,18 @@ The `OPTIONAL_PARAMETER_OPTIMIZATION` database-scoped configuration is enabled b
 You can ensure that a database uses OPPO in SQL Server 2025 by executing the following statements:
 
 ```sql
-ALTER DATABASE [<database-name-placeholder>] SET COMPATIBILITY_LEVEL = 170;
-ALTER DATABASE SCOPED CONFIGURATION SET OPTIONAL_PARAMETER_OPTIMIZATION = ON;
+ALTER DATABASE [<database-name-placeholder>]
+SET COMPATIBILITY_LEVEL = 170;
+
+ALTER DATABASE SCOPED CONFIGURATION
+SET OPTIONAL_PARAMETER_OPTIMIZATION = ON;
 ```
 
 To disable optional parameter plan optimization for a database, disable the `OPTIONAL_PARAMETER_OPTIMIZATION` database-scoped configuration:
 
 ```sql
-ALTER DATABASE SCOPED CONFIGURATION SET OPTIONAL_PARAMETER_OPTIMIZATION = OFF;
+ALTER DATABASE SCOPED CONFIGURATION
+SET OPTIONAL_PARAMETER_OPTIMIZATION = OFF;
 ```
 
 #### Use optional parameter plan optimization via query hints

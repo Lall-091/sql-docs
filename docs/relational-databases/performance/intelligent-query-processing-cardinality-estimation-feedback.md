@@ -1,22 +1,22 @@
 ---
-title: Cardinality estimation feedback
+title: Cardinality Estimation Feedback
 description: Learn about query processing feedback features, part of the Intelligent Query Processing (IQP) feature set.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: derekw, randolphwest, wiassaf
-ms.date: 06/07/2024
+ms.date: 12/08/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "cardinality estimation feedback"
 helpviewer_keywords:
   - "cardinality estimation feedback"
-monikerRange: "=azuresqldb-current || >=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current "
+monikerRange: "=azuresqldb-current || >=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current"
 ---
 # Cardinality estimation (CE) feedback
 
-**Applies to:** [!INCLUDE [sqlserver2022-and-later](../../includes/applies-to-version/sqlserver2022-and-later.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)].
+[!INCLUDE [sqlserver2022-asdb-asmi](../../includes/applies-to-version/sqlserver2022-asdb-asmi.md)]
 
 Starting with [!INCLUDE [sql-server-2022](../../includes/sssql22-md.md)], the Cardinality Estimation (CE) feedback is part of the [intelligent query processing family of features](intelligent-query-processing.md) and addresses suboptimal query execution plans for repeating queries when these issues result from incorrect CE model assumptions. This scenario helps with reducing regression risks related to the default CE when upgrading from older versions of the Database Engine.
 
@@ -38,7 +38,7 @@ Cardinality estimation (CE) feedback learns which CE model assumptions are optim
 
 1. If an assumption looks incorrect, a subsequent execution of the same query is tested with a query plan that adjusts the impactful CE model assumption and **verifies** if it helps. We identify incorrectness by looking at actual vs. estimated rows from plan operators. Not all errors can be corrected by model variants available in CE feedback.
 
-1. If it improves plan quality, the old query plan is **replaced** with a query plan that uses the appropriate [USE HINT query hint](../../t-sql/queries/hints-transact-sql-query.md#l-use-use-hint) that adjusts the estimation model, implemented through the [Query Store hint](query-store-hints.md) mechanism.
+1. If it improves plan quality, the old query plan is **replaced** with a query plan that uses the appropriate [USE HINT query hint](../../t-sql/queries/hints-transact-sql-query.md#l-use-use-hint) that adjusts the estimation model, implemented through the [Query Store hints](query-store-hints.md) mechanism.
 
 Only verified feedback is persisted. CE feedback isn't used for that query if the adjusted model assumption results in a performance regression. In this context, a user canceled query is also perceived as a regression.
 
@@ -118,9 +118,10 @@ In the execution plan, there's no attribute specific to CE feedback, but there's
 
 - To disable CE feedback at the database level, use the `CE_FEEDBACK` [database scoped configuration](../../t-sql/statements/alter-database-scoped-configuration-transact-sql.md#ce_feedback---on--off-). For example, in the user database:
 
-   ```sql
-   ALTER DATABASE SCOPED CONFIGURATION SET CE_FEEDBACK = OFF;
-   ```
+  ```sql
+  ALTER DATABASE SCOPED CONFIGURATION
+  SET CE_FEEDBACK = OFF;
+  ```
 
 - To disable CE feedback at the query level, use the `DISABLE_CE_FEEDBACK` query hint.
 
@@ -132,14 +133,13 @@ Feedback information can be tracked using the [sys.query_store_plan_feedback](..
 
 If a query has a query plan forced through Query Store, CE feedback isn't used for that query.
 
-If a query uses hard-coded query hints or is using Query Store hints set by the user, CE feedback isn't used for that query. For more information, see [Query hints](../../t-sql/queries/hints-transact-sql-query.md) and [Query Store hint](query-store-hints.md).
+If a query uses hard-coded query hints or is using Query Store hints set by the user, CE feedback isn't used for that query. For more information, see [Query hints](../../t-sql/queries/hints-transact-sql-query.md) and [Query Store hints](query-store-hints.md).
 
-Starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], when Query Store for secondary replicas is enabled, CE feedback isn't replica-aware for secondary replicas in availability groups. CE feedback currently only benefits primary replicas. On failover, feedback applied to primary or secondary replicas is lost. The Query Store is available on secondary availability group replicas starting in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. For more information, see [Query Store for secondary replicas](query-store-for-secondary-replicas.md).
+Starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], when Query Store for secondary replicas is enabled, CE feedback isn't replica-aware for secondary replicas in availability groups. CE feedback currently only benefits primary replicas. On failover, feedback applied to primary or secondary replicas is lost. The Query Store is available on secondary availability group replicas starting in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. For more information, see [Query Store for readable secondaries](query-store-for-secondary-replicas.md).
 
 ## Persistence for cardinality estimation (CE) feedback
 
-**Applies to:** [!INCLUDE [sqlserver2022-and-later](../../includes/applies-to-version/sqlserver2022-and-later.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)].
-<!-- [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] (Starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]) -->
+**Applies to**: [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)].
 
 Cardinality estimation (CE) feedback can detect scenarios when the row goal optimization should be persisted, and keep this change by persisting it in the Query Store in the form of a Query Store hint. The new optimization is used for future executions of the query. CE feedback persists other scenarios outside of row goal optimization query patterns, as detailed in [feedback scenarios](#cardinality-estimation-ce-feedback-scenarios). CE feedback currently handles predicate selectivity scenarios that are used by the CE's correlation model, and join predicate scenarios that are handled by the CE's containment model.
 
@@ -164,89 +164,76 @@ This issue doesn't affect all workloads, and depends on the number of different 
 To monitor the number of plan cache entries that your system is using, the following examples can be used as a point in time view of the number of plan cache entries that exist. As an example, watching the number of plan cache entries that are marked as dirty, periodically over time is one way to monitor for this phenomenon.
 
 ```sql
-SELECT
-  CASE
-    WHEN mce.[name] LIKE 'SQL Plan%' THEN 'SQL Plans'
-    WHEN mce.[name] LIKE 'Object Plan%' THEN 'Object Plans'
-    ELSE '[All other cache stores]'
-  END AS PlanType,
-  COUNT(*) AS [Number of plans marked to be removed]
+SELECT CASE WHEN mce.[name] LIKE 'SQL Plan%' THEN 'SQL Plans'
+            WHEN mce.[name] LIKE 'Object Plan%' THEN 'Object Plans'
+            ELSE '[All other cache stores]'
+       END AS PlanType,
+       COUNT(*) AS [Number of plans marked to be removed]
 FROM sys.dm_os_memory_cache_entries AS mce
-LEFT OUTER JOIN sys.dm_exec_cached_plans AS ecp
-  ON mce.memory_object_address = ecp.memory_object_address
+     LEFT OUTER JOIN sys.dm_exec_cached_plans AS ecp
+         ON mce.memory_object_address = ecp.memory_object_address
 WHERE mce.is_dirty = 1
-AND ecp.bucketid is NULL
-GROUP BY
-  CASE
-    WHEN mce.[name] LIKE 'SQL Plan%' THEN 'SQL Plans'
-    WHEN mce.[name] LIKE 'Object Plan%' THEN 'Object Plans'
-    ELSE '[All other cache stores]'
-  END;
+      AND ecp.bucketid IS NULL
+GROUP BY CASE WHEN mce.[name] LIKE 'SQL Plan%' THEN 'SQL Plans'
+              WHEN mce.[name] LIKE 'Object Plan%' THEN 'Object Plans'
+              ELSE '[All other cache stores]'
+         END;
 ```
 
 Another set of queries that also provide the same information as the previous example while also allowing you to observe additional performance metrics. Plan Cache hit ratios decrease, as well as the number of compilations in relation to the number of batch requests/sec. The following queries can be used to monitor your system over time. Keeping an eye on the **Cache Hit Ratio** (unanticipated dips), the **Cache Objects in use** (increases in the count to levels approaching 50,000 without decreasing) and a lower than expected **Batch Requests/sec** ratio as compared to a rise in **Compilations/sec**.
 
 ```sql
 --SQL Plan (Adhoc and Prepared plans)
-SELECT
-    CASE
-        WHEN [counter_name] = 'Cache Hit Ratio' THEN 'Cache Hit Ratio'
-        WHEN [counter_name] = 'Cache Object Counts' THEN 'Cache Object Counts'
-        WHEN [counter_name] = 'Cache Objects in use' THEN 'Cache Objects in use'
-        WHEN [counter_name] = 'Cache Pages' THEN 'Cache Pages'
-    END AS [SQLServer:Plan Cache (SQL Plans)],
-    CASE
-        WHEN [counter_name] = 'Cache Hit Ratio' THEN NULL
-        ELSE FORMAT(cntr_value, '#,###')
-    END AS [Counter Value],
-    CASE
-        WHEN [counter_name] = 'Cache Hit Ratio' THEN
-            FORMAT(TRY_CONVERT(DECIMAL(5, 2), (cntr_value * 1.0 / NULLIF((SELECT cntr_value
-        FROM sys.dm_os_performance_counters WHERE
-        [object_name] LIKE '%:Plan Cache%' AND [counter_name] = 'Cache Hit Ratio Base'
-        AND instance_name LIKE 'SQL Plan%'), 0))), '0.00%')
-    END AS [SQL Plan Cache Hit Ratio]
+SELECT CASE WHEN [counter_name] = 'Cache Hit Ratio' THEN 'Cache Hit Ratio'
+            WHEN [counter_name] = 'Cache Object Counts' THEN 'Cache Object Counts'
+            WHEN [counter_name] = 'Cache Objects in use' THEN 'Cache Objects in use'
+            WHEN [counter_name] = 'Cache Pages' THEN 'Cache Pages'
+       END AS [SQLServer:Plan Cache (SQL Plans)],
+       CASE WHEN [counter_name] = 'Cache Hit Ratio' THEN NULL
+            ELSE FORMAT(cntr_value, '#,###')
+       END AS [Counter Value],
+       CASE WHEN [counter_name] = 'Cache Hit Ratio' THEN
+                 FORMAT(TRY_CONVERT (DECIMAL (5, 2), (cntr_value * 1.0 / NULLIF ((SELECT cntr_value
+                     FROM sys.dm_os_performance_counters
+                     WHERE [object_name] LIKE '%:Plan Cache%'
+                           AND [counter_name] = 'Cache Hit Ratio Base'
+                           AND instance_name LIKE 'SQL Plan%'), 0))), '0.00%')
+       END AS [SQL Plan Cache Hit Ratio]
 FROM sys.dm_os_performance_counters
 WHERE [object_name] LIKE '%:Plan Cache%'
-    AND [counter_name] IN ('Cache Hit Ratio', 'Cache Object Counts', 'Cache Objects in use', 'Cache Pages')
-    AND instance_name LIKE 'SQL Plan%'
+      AND [counter_name] IN ('Cache Hit Ratio', 'Cache Object Counts', 'Cache Objects in use', 'Cache Pages')
+      AND instance_name LIKE 'SQL Plan%'
 ORDER BY [counter_name];
 
 --Module/Stored procedure based plans
-SELECT
-    CASE
-        WHEN [counter_name] = 'Cache Hit Ratio' THEN 'Cache Hit Ratio'
-        WHEN [counter_name] = 'Cache Object Counts' THEN 'Cache Object Counts'
-        WHEN [counter_name] = 'Cache Objects in use' THEN 'Cache Objects in use'
-        WHEN [counter_name] = 'Cache Pages' THEN 'Cache Pages'
-    END AS [SQLServer:Plan Cache (Object Plans)],
-    CASE
-        WHEN [counter_name] = 'Cache Hit Ratio' THEN NULL
-        ELSE FORMAT(cntr_value, '#,###')
-    END AS [Counter Value],
-    CASE
-        WHEN [counter_name] = 'Cache Hit Ratio' THEN
-            FORMAT(TRY_CONVERT(DECIMAL(5, 2), (cntr_value * 1.0 / NULLIF((SELECT cntr_value
-        FROM sys.dm_os_performance_counters WHERE
-        [object_name] LIKE '%:Plan Cache%' AND [counter_name] = 'Cache Hit Ratio Base'
-        AND instance_name LIKE 'Object Plan%'), 0))), '0.00%')
-    END AS [SQL Plan Cache Hit Ratio]
+SELECT CASE WHEN [counter_name] = 'Cache Hit Ratio' THEN 'Cache Hit Ratio'
+            WHEN [counter_name] = 'Cache Object Counts' THEN 'Cache Object Counts'
+            WHEN [counter_name] = 'Cache Objects in use' THEN 'Cache Objects in use'
+            WHEN [counter_name] = 'Cache Pages' THEN 'Cache Pages'
+       END AS [SQLServer:Plan Cache (Object Plans)],
+       CASE WHEN [counter_name] = 'Cache Hit Ratio' THEN NULL
+            ELSE FORMAT(cntr_value, '#,###')
+       END AS [Counter Value],
+       CASE WHEN [counter_name] = 'Cache Hit Ratio' THEN
+                 FORMAT(TRY_CONVERT (DECIMAL (5, 2), (cntr_value * 1.0 / NULLIF ((SELECT cntr_value
+                     FROM sys.dm_os_performance_counters
+                     WHERE [object_name] LIKE '%:Plan Cache%'
+                           AND [counter_name] = 'Cache Hit Ratio Base'
+                           AND instance_name LIKE 'Object Plan%'), 0))), '0.00%')
+       END AS [SQL Plan Cache Hit Ratio]
 FROM sys.dm_os_performance_counters
 WHERE [object_name] LIKE '%:Plan Cache%'
-    AND [counter_name] IN ('Cache Hit Ratio', 'Cache Object Counts', 'Cache Objects in use', 'Cache Pages')
-    AND instance_name LIKE 'Object Plan%'
+      AND [counter_name] IN ('Cache Hit Ratio', 'Cache Object Counts', 'Cache Objects in use', 'Cache Pages')
+      AND instance_name LIKE 'Object Plan%'
 ORDER BY [counter_name];
 
-SELECT
-    CASE
-        WHEN [counter_name] = 'Batch Requests/sec' THEN 'Batch Requests/sec'
-        WHEN [counter_name] = 'SQL Compilations/sec' THEN 'SQL Compilations/sec'
-    END AS [SQLServer:SQL Statistics],
-    FORMAT(cntr_value, '#,###') AS [Counter Value]
+SELECT CASE WHEN [counter_name] = 'Batch Requests/sec' THEN 'Batch Requests/sec'
+            WHEN [counter_name] = 'SQL Compilations/sec' THEN 'SQL Compilations/sec'
+       END AS [SQLServer:SQL Statistics],
+       FORMAT(cntr_value, '#,###') AS [Counter Value]
 FROM sys.dm_os_performance_counters
 WHERE [object_name] LIKE '%:SQL Statistics%'
-AND counter_name IN ('Batch Requests/sec', 'SQL Compilations/sec'
-);
+      AND counter_name IN ('Batch Requests/sec', 'SQL Compilations/sec');
 ```
 
 #### Workaround
@@ -256,7 +243,8 @@ If your system continues to experience the symptoms that were described previous
 To reclaim the plan cache memory taken up by this issue, a restart of the SQL Server instance is required. This restart action can be taken after the CE feedback feature is disabled. To disable CE feedback at the database level, use the `CE_FEEDBACK` [database scoped configuration](../../t-sql/statements/alter-database-scoped-configuration-transact-sql.md#ce_feedback---on--off-). For example, in the user database:
 
 ```sql
-ALTER DATABASE SCOPED CONFIGURATION SET CE_FEEDBACK = OFF;
+ALTER DATABASE SCOPED CONFIGURATION
+SET CE_FEEDBACK = OFF;
 ```
 
 ## Feedback and reporting issues
@@ -265,7 +253,7 @@ For feedback or questions, email [CEFfeedback@microsoft.com](mailto:CEFfeedback@
 
 ## Related content
 
-- [Cardinality Estimation Feedback in SQL Server 2022](https://www.microsoft.com/en-us/sql-server/blog/2022/12/01/cardinality-estimation-feedback-in-sql-server-2022)
+- [Cardinality Estimation Feedback in SQL Server 2022](https://www.microsoft.com/sql-server/blog/2022/12/01/cardinality-estimation-feedback-in-sql-server-2022)
 - [Intelligent query processing in SQL databases](intelligent-query-processing.md)
 - [Intelligent query processing features in detail](intelligent-query-processing-details.md)
 - [Cardinality Estimation (SQL Server)](cardinality-estimation-sql-server.md)

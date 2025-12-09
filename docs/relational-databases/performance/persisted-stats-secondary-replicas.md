@@ -4,7 +4,7 @@ description: Describes functions of auto created statistics on readable secondar
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 11/18/2025
+ms.date: 12/08/2025
 ms.service: sql
 ms.topic: concept-article
 ms.custom:
@@ -15,9 +15,9 @@ monikerRange: "=azuresqldb-current || >=sql-server-ver17 || >=sql-server-linux-v
 
 # Persisted statistics for readable secondaries
 
-**Applies to:** [!INCLUDE [sqlserver2025-asdb](../../includes/applies-to-version/sqlserver2025-asdb.md)]
+[!INCLUDE [sqlserver2025-asdb](../../includes/applies-to-version/sqlserver2025-asdb.md)]
 
-[Query Store for readable secondaries](query-store-for-secondary-replicas.md) is available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and Azure SQL Database, and the persisted statistics for readable secondaries feature uses the infrastructure that Query Store has in place for readable secondaries. 
+[Query Store for readable secondaries](query-store-for-secondary-replicas.md) is available in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and Azure SQL Database, and the persisted statistics for readable secondaries feature uses the infrastructure that Query Store has in place for readable secondaries.
 
 Query Store for readable secondaries is **on** by default in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and Azure SQL Database.
 
@@ -83,7 +83,7 @@ SELECT sch.[name] AS SchemaName,
                  AND s.stats_id >= 2
                  AND s.auto_created = 1
                  THEN 'PRIMARY'
-                 ELSE s.replica_name
+            ELSE s.replica_name
        END AS replica_name,
        s.replica_role_id,
        s.replica_role_desc
