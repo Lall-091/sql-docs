@@ -56,7 +56,7 @@ landingContent:
             url: sql-server-linux-configure-mssql-conf.md#tcpport
           - text: Change default paths
             url: sql-server-linux-configure-mssql-conf.md#datadir
-          - text: Set traceflags
+          - text: Set trace flags
             url: sql-server-linux-configure-mssql-conf.md#traceflags
           - text: Join domain
             url: sql-server-linux-active-directory-authentication.md

@@ -119,7 +119,7 @@ sudo ufw reload
 # Optional example of post-installation configuration.
 # Trace flags 1204 and 1222 are for deadlock tracing.
 # echo Setting trace flags...
-# sudo /opt/mssql/bin/mssql-conf traceflag 1204 1222 on
+# sudo /opt/mssql/bin/mssql-conf trace flag 1204 1222 on
 
 # Restart SQL Server after installing:
 echo Restarting SQL Server...

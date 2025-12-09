@@ -119,7 +119,7 @@ sudo SuSEfirewall2 start
 # Example of setting post-installation configuration options
 # Set trace flags 1204 and 1222 for deadlock tracing:
 # echo Setting trace flags...
-# sudo /opt/mssql/bin/mssql-conf traceflag 1204 1222 on
+# sudo /opt/mssql/bin/mssql-conf trace flag 1204 1222 on
 
 # Restart SQL Server after making configuration changes:
 echo Restarting SQL Server...
