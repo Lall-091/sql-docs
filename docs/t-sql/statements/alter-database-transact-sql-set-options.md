@@ -4074,12 +4074,11 @@ Updates the timestamp for an existing warehouse snapshot in Fabric Data Warehous
 
 #### RESULT_SET_CACHING
 
-Enables or disables result set caching (preview) for the target item. For more information, see [Result set caching](/fabric/data-warehouse/result-set-caching). During Preview, the default setting of this feature is OFF.
+Enables or disables result set caching (preview) for the target item. During Preview, the default setting of this feature is OFF. For more information, see [Result set caching](/fabric/data-warehouse/result-set-caching).
 
 #### PROACTIVE_STATISTICS_REFRESH
 
-Enables or disables Proactive Statistics Refresh for the target item. For more information, see [Statistics](/fabric/data-warehouse/statistics).
-The default is ON. We recommend that you use the default setting for most items.
+Enables or disables Proactive Statistics Refresh for the target item. The default is ON. We recommend that you use the default setting for most items. For more information, see [Statistics](/fabric/data-warehouse/statistics).
 
 ## Permissions
 
