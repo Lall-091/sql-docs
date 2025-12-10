@@ -4,7 +4,7 @@ description: Learn how to install SQL Server 2022 Machine Learning Services on W
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: arunguru-msft
-ms.date: 06/30/2025
+ms.date: 12/10/2025
 ms.service: sql
 ms.subservice: machine-learning-services
 ms.topic: how-to
@@ -16,7 +16,7 @@ monikerRange: ">=sql-server-ver16"
 
 [!INCLUDE [SQL Server 2022](../../includes/applies-to-version/sqlserver2022.md)]
 
-This article shows you how to install [SQL Server Machine Learning Services with Python and R](../sql-server-machine-learning-services.md) on Windows. You can use Machine Learning Services to run Python and R scripts in-database.
+This article shows you how to install [SQL Server Machine Learning Services with Python and R](../sql-server-machine-learning-services.md) on Windows. With Machine Learning Services, you can run Python and R scripts in-database.
 
 > [!NOTE]  
 > These instructions are specific to [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] on Windows. To install SQL Server Machine Learning Services on Windows for [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)], [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)], or [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)], see [Install SQL Server Machine Learning Services (Python and R) on Windows](sql-machine-learning-services-windows-install.md).  
@@ -145,7 +145,7 @@ Beginning with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], runtimes f
 
 #### Install Python runtime
 
-1. Download the most recent version of [Python 3.10 for Windows](https://www.python.org/downloads/). Install it by using the following options:
+1. Download the most recent version of [Python 3.10 for Windows](https://aka.ms/Python3_10). Install it by using the following options:
 
     1. Open the Python Setup application and select **Customize installation**.
     1. Verify that the **Install launcher for all users (recommended)** checkbox is selected.
@@ -154,15 +154,24 @@ Beginning with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], runtimes f
 
        We recommend using a Python installation path that all users can access (such as `C:\Program Files\Python310`), and not one that's specific to a single user.
 
-1. Download and install the latest version of the `revoscalepy` package and its dependencies from a new elevated command prompt:
+1. Create a text file with the following contents, and save it as `C:\Program Files\Python310\constraints.txt`:
+
+    ```text
+    dill==0.3.4
+    numpy==1.22.0
+    pandas==1.3.5
+    patsy==0.5.2
+    python-dateutil==2.8.2
+    ```
+
+1. Download and install the latest version of the `revoscalepy` package and its dependencies from a new elevated command prompt. Pass the `constraints.txt` file created in the previous step:
 
     ```cmd
     cd "C:\Program Files\Python310\"
-    python -m pip install -t "C:\Program Files\Python310\Lib\site-packages" dill numpy==1.22.0 pandas patsy python-dateutil packaging
-    python -m pip install -t "C:\Program Files\Python310\Lib\site-packages" https://aka.ms/sqlml/python3.10/windows/revoscalepy-10.0.1-py3-none-any.whl
+    python -m pip install -t "C:\Program Files\Python310\Lib\site-packages" -c "C:\Program Files\Python310\constraints.txt" dill numpy pandas patsy python-dateutil packaging https://aka.ms/sqlml/python3.10/windows/revoscalepy-10.0.1-py3-none-any.whl
     ```
 
-    Run the following **icacls** commands to grant **READ** and **EXECUTE** access to the installed libraries to **SQL Server Launchpad Service** and SID **S-1-15-2-1 (ALL_APPLICATION_PACKAGES)**. You need to grant permissions to the service account associated with the Launchpad service, check in [SQL Server Configuration Manager](../../relational-databases/sql-server-configuration-manager.md).
+1. Run the following **icacls** commands to grant **READ** and **EXECUTE** access to the installed libraries to **SQL Server Launchpad Service** and SID **S-1-15-2-1 (ALL_APPLICATION_PACKAGES)**. You need to grant permissions to the service account associated with the Launchpad service. Check in [SQL Server Configuration Manager](../../relational-databases/sql-server-configuration-manager.md).
 
     ```cmd
     icacls "C:\Program Files\Python310\Lib\site-packages" /grant "NT Service\MSSQLLAUNCHPAD":(OI)(CI)RX /T

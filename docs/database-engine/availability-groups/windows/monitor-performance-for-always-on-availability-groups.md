@@ -40,7 +40,7 @@ After the logs have been captured on the primary replica, they are subject to tw
 
 In addition to the flow control gates, there's another factor that can prevent the log messages from being sent. The synchronization of replicas ensures that the messages are sent and applied in the order of the log sequence numbers (LSN). Before a log message is sent, its LSN also checked against the lowest acknowledged LSN number to make sure that it's less than one of thresholds (depending on the message type). If the gap between the two LSN numbers is larger than the threshold, the messages aren't sent. Once the gap is below the threshold again, the messages are sent.
 
-[!INCLUDE [sssql22-md](../../../includes/sssql22-md.md)] increases the limits to the number of messages that each gate allows. By using trace flag 12310, the increased limit is also available to the following versions of SQL Server: [!INCLUDE [sssql19-md](../../../includes/sssql19-md.md)] CU9, [!INCLUDE [sssql17-md](../../../includes/sssql17-md.md)] CU18, [!INCLUDE [sssql16-md](../../../includes/sssql16-md.md)] SP1 CU16.
+[!INCLUDE [sssql22-md](../../../includes/sssql22-md.md)] increases the limits to the number of messages that each gate allows. Starting with the following releases, use trace flag 12310 [at startup](../../configure-windows/database-engine-service-startup-options.md) to increase the limit: [!INCLUDE [sssql19-md](../../../includes/sssql19-md.md)] CU9, [!INCLUDE [sssql17-md](../../../includes/sssql17-md.md)] CU18, and [!INCLUDE [sssql16-md](../../../includes/sssql16-md.md)] SP1 CU16. This trace flag can't be used with `DBCC TRACEON`.
 
 The following table compares message limits:
 
