@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 07/31/2025
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 f1_keywords:
@@ -118,7 +118,7 @@ The `msdb` database contains the special-purpose roles that are shown in the fol
 | --- | --- |
 | **db_ssisadmin**<br />**db_ssisoperator**<br />**db_ssisltduser** | Members of these database roles can administer and use [!INCLUDE [ssIS](../../../includes/ssis-md.md)]. Instances of [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] that are upgraded from an earlier version might contain an older version of the role that was named using Data Transformation Services (DTS) instead of [!INCLUDE [ssIS](../../../includes/ssis-md.md)]. For more information, see [Integration Services Roles (SSIS Service)](../../../integration-services/security/integration-services-roles-ssis-service.md). |
 | **dc_admin**<br />**dc_operator**<br />**dc_proxy** | Members of these database roles can administer and use the data collector. For more information, see [Data collection](../../data-collection/data-collection.md). |
-| **PolicyAdministratorRole** | Members of the **db_ PolicyAdministratorRole** database role can perform all configuration and maintenance activities on Policy-Based Management policies and conditions. For more information, see [Administer Servers by Using Policy-Based Management](../../policy-based-management/administer-servers-by-using-policy-based-management.md). |
+| **PolicyAdministratorRole** | Members of the **db_PolicyAdministratorRole** database role can perform all configuration and maintenance activities on Policy-Based Management policies and conditions. For more information, see [Administer Servers by Using Policy-Based Management](../../policy-based-management/administer-servers-by-using-policy-based-management.md). |
 | **ServerGroupAdministratorRole**<br />**ServerGroupReaderRole** | Members of these database roles can administer and use registered server groups. |
 | **dbm_monitor** | Created in the `msdb` database when the first database is registered in Database Mirroring Monitor. The **dbm_monitor** role has no members until a system administrator assigns users to the role. |
 

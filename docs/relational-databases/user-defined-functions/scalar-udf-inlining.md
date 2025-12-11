@@ -4,9 +4,9 @@ description: The scalar UDF inlining feature improves performance of queries tha
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: karam, wiassaf, srdjanmatin
-ms.date: 05/27/2025
+ms.date: 12/10/2025
 ms.service: sql
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 monikerRange: "=azuresqldb-current || >=sql-server-ver15 || >=sql-server-linux-ver15 || =fabric || =fabric-sqldb"
@@ -92,9 +92,9 @@ ORDER BY L_SHIPDATE;
 
 The query with the UDF performs poorly, due to the reasons outlined previously. With scalar UDF inlining, the scalar expression in the body of the UDF is substituted directly in the query. The results of running this query are shown in the following table:
 
-| Query: | Query without UDF | Query with UDF (without inlining) | Query with scalar UDF inlining |
+| Query | Query without UDF | Query with UDF (without inlining) | Query with scalar UDF inlining |
 | --- | --- | --- | --- |
-| `Execution time:` | 1.6 seconds | 29 minutes 11 seconds | 1.6 seconds |
+| `Execution time` | 1.6 seconds | 29 minutes 11 seconds | 1.6 seconds |
 
 These numbers are based on a 10-GB CCI database (using the TPC-H schema), running on a machine with dual processor (12 core), 96-GB RAM, backed by SSD. The numbers include compilation and execution time with a cold procedure cache and buffer pool. The default configuration was used, and no other indexes were created.
 
@@ -360,4 +360,3 @@ As described in this article, scalar UDF inlining transforms a query with scalar
 - [Joins (SQL Server)](../performance/joins.md)
 - [Demonstrating Intelligent Query Processing](https://aka.ms/IQPDemos)
 - [FIX: scalar UDF inlining issues in SQL Server 2019](https://support.microsoft.com/help/4538581)
-

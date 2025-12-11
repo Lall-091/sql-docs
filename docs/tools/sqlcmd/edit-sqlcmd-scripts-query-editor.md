@@ -51,7 +51,7 @@ To turn on SQLCMD scripting for an active Database Engine Query Editor window, u
 
 1. On the **Query** menu, select **SQLCMD Mode**.
 
-     The Query Editor executes SQLCMD statements in the context of the Query Editor.
+   The Query Editor executes SQLCMD statements in the context of the Query Editor.
 
 1. On the **SQL Editor** toolbar, in the **Available Databases** list, select [!INCLUDE [ssSampleDBobject](../../includes/sssampledbobject-md.md)].
 
@@ -103,7 +103,7 @@ After enabling scripting mode, you can write SQLCMD commands and Transact-SQL st
 
 - To make a clear distinction between SQLCMD commands and Transact-SQL, all SQLCMD commands need to be prefixed with a colon (`:`).
 
-- The `GO` command can be used without preface or preceded by `!!:`
+- The `GO` command can be used without preface or preceded by `!!:`.
 
 - The Database Engine Query Editor supports environment variables and variables that are defined as part of a SQLCMD script, but doesn't support built-in SQLCMD or **osql** variables. SQLCMD processing by SQL Server Management Studio is case sensitive for variables. For example, PRINT '$(COMPUTERNAME)' produces the correct result, but PRINT '$(ComputerName)' returns an error.
 
