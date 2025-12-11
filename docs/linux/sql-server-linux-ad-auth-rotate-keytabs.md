@@ -4,7 +4,7 @@ description: Recommendations on rotating keytabs for SQL Server on Linux using a
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: vanto, randolphwest
-ms.date: 05/02/2025
+ms.date: 12/11/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -125,13 +125,12 @@ adutil keytab createauto -k /var/opt/mssql/secrets/mssql.keytab -p 1433 -H mssql
 adutil keytab create -k /var/opt/mssql/secrets/mssql.keytab -p sqluser --password '<newpassword>' --kvno 3
 ```
 
-`-k:` is the path to the current keytab that is being used by [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] and set using the option `network.kerberoskeytabfile` in the `mssql.conf` file.
-
-`-H:` is the fully qualified domain name of the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] host.
-
-`-p:` is the port that [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] service is configured to listen on in the first command. In the second command, `-p` represents the `network.privilegedadaccount` that you're going to update the password for.
-
-`kvno:` value needs to be the current kvno + 1. The current **kvno** value is obtained from step 3.
+| Parameter | Description |
+| --- | --- |
+| `-k` | The path to the current keytab that is being used by [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] and set using the option `network.kerberoskeytabfile` in the `mssql.conf` file. |
+| `-H` | The fully qualified domain name of the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] host. |
+| `-p` | The port that [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] service is configured to listen on in the first command. In the second command, `-p` represents the `network.privilegedadaccount` that you're going to update the password for. |
+| `kvno` | Value needs to be the current kvno + 1. The current **kvno** value is obtained from step 3. |
 
 Once you run the above commands, you must provide your choice of encryption type for the keytab entries. Ensure you choose the right one for your environment.
 
