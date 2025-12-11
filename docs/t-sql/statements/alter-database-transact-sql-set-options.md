@@ -4,7 +4,7 @@ description: Learn how to set database options such as Automatic tuning, encrypt
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest, wiassaf
-ms.date: 06/11/2025
+ms.date: 12/10/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -4028,6 +4028,7 @@ SET
   | <vorder>
   | <timestamp>
   | <result_set_caching>
+  | <proactive_statistics_refresh>
 }
 ;
 
@@ -4046,10 +4047,14 @@ SET
     TIMESTAMP = {CURRENT_TIMESTAMP | 'YYYY-MM-DDTHH:MM:SS.SS' }  
 }
 
-
 <result_set_caching> ::=
 {    
     RESULT_SET_CACHING { ON | OFF } 
+}
+
+<proactive_statistics_refresh> ::=
+{    
+    PROACTIVE_STATISTICS_REFRESH = { ON | OFF } 
 }
 ```
 
@@ -4069,7 +4074,13 @@ Updates the timestamp for an existing warehouse snapshot in Fabric Data Warehous
 
 #### RESULT_SET_CACHING
 
-Enables or disables result set caching (preview) for the current item. For more information, see [Result set caching](/fabric/data-warehouse/result-set-caching).
+Enables or disables result set caching (preview) for the target item. During preview, the default setting of this feature is `OFF`. For more information, see [Result set caching](/fabric/data-warehouse/result-set-caching).
+
+#### PROACTIVE_STATISTICS_REFRESH
+
+**Applies to**: [!INCLUDE [fabric](../../includes/fabric.md)] [!INCLUDE [fabric](../../includes/fabric-dw.md)].
+
+Enables or disables proactive statistics refresh for the target item. The default is `ON`. You should use the default setting for most items. For more information, see [Statistics](/fabric/data-warehouse/statistics).
 
 ## Permissions
 
