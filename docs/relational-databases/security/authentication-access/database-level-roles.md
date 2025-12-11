@@ -1,10 +1,10 @@
 ---
-title: "Database-level roles"
+title: "Database-Level Roles"
 description: SQL Server provides several roles that are security principals that group other principals to manage the permissions in your databases.
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 07/31/2025
+ms.date: 12/11/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: concept-article
@@ -66,7 +66,7 @@ The following table shows the fixed database roles and their capabilities. These
 
 | Fixed database role name | Description |
 | --- | --- |
-| **db_owner** | Members of the **db_owner** fixed database role can perform all configuration and maintenance activities on the database, and can also `DROP` the database in [!INCLUDE [ssNoVersion_md](../../../includes/ssnoversion-md.md)]. (In [!INCLUDE [ssSDS_md](../../../includes/sssds-md.md)] and Azure Synapse, some maintenance activities require server-level permissions and can't be performed by **db_owners**.) |
+| **db_owner** | Members of the **db_owner** fixed database role can perform all configuration and maintenance activities on the database, and can also `DROP` the database in [!INCLUDE [ssNoVersion_md](../../../includes/ssnoversion-md.md)]. (In [!INCLUDE [ssSDS_md](../../../includes/sssds-md.md)] and Azure Synapse, some maintenance activities require server-level permissions and can't be performed by members of **db_owner**.) |
 | **db_securityadmin** | Members of the **db_securityadmin** fixed database role can modify role membership for custom roles only and manage permissions. Members of this role can potentially elevate their privileges and their actions should be monitored. |
 | **db_accessadmin** | Members of the **db_accessadmin** fixed database role can add or remove access to the database for Windows logins, Windows groups, and [!INCLUDE [ssNoVersion](../../../includes/ssnoversion-md.md)] logins. |
 | **db_backupoperator** | Members of the **db_backupoperator** fixed database role can back up the database. |
@@ -76,20 +76,20 @@ The following table shows the fixed database roles and their capabilities. These
 | **db_denydatawriter** | Members of the **db_denydatawriter** fixed database role can't add, modify, or delete any data in the user tables within a database. |
 | **db_denydatareader** | Members of the **db_denydatareader** fixed database role can't read any data from the user tables and views within a database. Members of this role also can't read metadata about the database and its objects, such as viewing system views. |
 
-The permissions assigned to the fixed database roles can't be changed. All roles (including the `public` role) have the CONNECT permissions. The following figure shows the permissions assigned to the fixed database roles:
+The permissions assigned to the fixed database roles can't be changed. All roles (including the `public` role) have the `CONNECT` permissions. The following figure shows the permissions assigned to the fixed database roles:
 
 | Role name | Permissions |
 | --- | --- |
-| **db_owner** | CONTROL DATABASE: Has all permissions in the database. |
-| **db_securityadmin** | ALTER ANY APPLICATION ROLE<br />CREATE SCHEMA<br />ALTER ANY ROLE<br />VIEW DEFINITION |
-| **db_accessadmin** | ALTER ANY USER<br />CREATE SCHEMA<br />CREATE USER |
-| **db_backupoperator** | BACKUP DATABASE<br />BACKUP LOG<br />CHECKPOINT |
-| **db_ddladmin** | ALTER ANY ASSEMBLY <br /> ALTER ANY ASYMMETRIC KEY<br /> ALTER ANY CERTIFICATE<br /> ALTER ANY CONTRACT<br />ALTER ANY DATABASE DDL TRIGGER<br />ALTER ANY DATABASE EVENT NOTIFICATION<br />ALTER ANY DATASPACE<br />ALTER ANY EXTERNAL LIBRARY<br />ALTER ANY FULLTEXT CATALOG<br />ALTER ANY MESSAGE TYPE<br />ALTER ANY REMOTE SERVICE BINDING<br />ALTER ANY ROUTE<br />ALTER ANY SCHEMA<br />ALTER ANY SERVICE<br />ALTER ANY SYMMETRIC KEY<br />CHECKPOINT<br />CREATE AGGREGATE<br />CREATE ASSEMBLY<br />CREATE ASYMMETRIC KEY<br />CREATE CERTIFICATE<br />CREATE CONTRACT<br />CREATE DATABASE DDL EVENT NOTIFICATION<br />CREATE DEFAULT<br />CREATE EXTERNAL LIBRARY<br />CREATE FULLTEXT CATALOG<br />CREATE FUNCTION<br />CREATE MESSAGE TYPE<br />CREATE PROCEDURE<br />CREATE QUEUE<br />CREATE REMOTE SERVICE BINDING<br />CREATE ROUTE<br />CREATE RULE<br />CREATE SCHEMA<br />CREATE SERVICE<br />CREATE SYMMETRIC KEY<br />CREATE SYNONYM<br />CREATE TABLE<br />CREATE TYPE<br />CREATE VIEW<br />CREATE XML SCHEMA COLLECTION<br />REFERENCES <br /><br />**Applies to:** SQL Server 2019 and later <br />ALTER ANY EXTERNAL LANGUAGE<br />CREATE EXTERNAL LANGUAGE <br /><br />**Applies to:** SQL Server 2022 and later <br /> ALTER ANY EXTERNAL DATA SOURCE<br />ALTER ANY EXTERNAL FILE FORMAT<br />ALTER ANY EXTERNAL JOB<br />ALTER ANY EXTERNAL STREAM<br />ALTER LEDGER<br />ENABLE LEDGER |
-| **db_datareader** | GRANT SELECT ON DATABASE::`<database-name>` |
-| **db_denydatareader** | DENY SELECT ON DATABASE::`<database-name>` |
-| **db_datawriter** | GRANT INSERT ON DATABASE::`<database-name>`<br />GRANT UPDATE ON DATABASE::`<database-name>`<br />GRANT DELETE ON DATABASE::`<database-name>` |
-| **db_denydatawriter** | DENY INSERT ON DATABASE::`<database-name>`<br />DENY UPDATE ON DATABASE::`<database-name>`<br />DENY DELETE ON DATABASE::`<database-name>` |
-| **public** | There are no database-level permissions inherent in the public database role. However, some database permissions are present by default. Specifically, VIEW ANY COLUMN ENCRYPTION KEY DEFINITION, VIEW ANY COLUMN MASTER KEY DEFINITION, and SELECT permission on many individual system tables. These permissions can be revoked. |
+| **db_owner** | `CONTROL DATABASE`: Has all permissions in the database. |
+| **db_securityadmin** | `ALTER ANY APPLICATION ROLE`<br />`CREATE SCHEMA`<br />`ALTER ANY ROLE`<br />`VIEW DEFINITION` |
+| **db_accessadmin** | `ALTER ANY USER`<br />`CREATE SCHEMA`<br />`CREATE USER` |
+| **db_backupoperator** | `BACKUP DATABASE`<br />`BACKUP LOG`<br />`CHECKPOINT` |
+| **db_ddladmin** | `ALTER ANY ASSEMBLY`<br />`ALTER ANY ASYMMETRIC KEY`<br />`ALTER ANY CERTIFICATE`<br />`ALTER ANY CONTRACT`<br />`ALTER ANY DATABASE DDL TRIGGER`<br />`ALTER ANY DATABASE EVENT NOTIFICATION`<br />`ALTER ANY DATASPACE`<br />`ALTER ANY EXTERNAL LIBRARY`<br />`ALTER ANY FULLTEXT CATALOG`<br />`ALTER ANY MESSAGE TYPE`<br />`ALTER ANY REMOTE SERVICE BINDING`<br />`ALTER ANY ROUTE`<br />`ALTER ANY SCHEMA`<br />`ALTER ANY SERVICE`<br />`ALTER ANY SYMMETRIC KEY`<br />`CHECKPOINT`<br />`CREATE AGGREGATE`<br />`CREATE ASSEMBLY`<br />`CREATE ASYMMETRIC KEY`<br />`CREATE CERTIFICATE`<br />`CREATE CONTRACT`<br />`CREATE DATABASE DDL EVENT NOTIFICATION`<br />`CREATE DEFAULT`<br />`CREATE EXTERNAL LIBRARY`<br />`CREATE FULLTEXT CATALOG`<br />`CREATE FUNCTION`<br />`CREATE MESSAGE TYPE`<br />`CREATE PROCEDURE`<br />`CREATE QUEUE`<br />`CREATE REMOTE SERVICE BINDING`<br />`CREATE ROUTE`<br />`CREATE RULE`<br />`CREATE SCHEMA`<br />`CREATE SERVICE`<br />`CREATE SYMMETRIC KEY`<br />`CREATE SYNONYM`<br />`CREATE TABLE`<br />`CREATE TYPE`<br />`CREATE VIEW`<br />`CREATE XML SCHEMA COLLECTION`<br />`REFERENCES`<br /><br />**Applies to**: [!INCLUDE [sssql19-md](../../../includes/sssql19-md.md)] and later versions:<br />`ALTER ANY EXTERNAL LANGUAGE`<br />`CREATE EXTERNAL LANGUAGE`<br /><br />**Applies to**: [!INCLUDE [sssql22-md](../../../includes/sssql22-md.md)] and later versions:<br />`ALTER ANY EXTERNAL DATA SOURCE`<br />`ALTER ANY EXTERNAL FILE FORMAT`<br />`ALTER ANY EXTERNAL JOB`<br />`ALTER ANY EXTERNAL STREAM`<br />`ALTER LEDGER`<br />`ENABLE LEDGER` |
+| **db_datareader** | `GRANT SELECT ON DATABASE::<database-name>` |
+| **db_denydatareader** | `DENY SELECT ON DATABASE::<database-name>` |
+| **db_datawriter** | `GRANT INSERT ON DATABASE::<database-name>`<br />`GRANT UPDATE ON DATABASE::<database-name>`<br />`GRANT DELETE ON DATABASE::<database-name>` |
+| **db_denydatawriter** | `DENY INSERT ON DATABASE::<database-name>`<br />`DENY UPDATE ON DATABASE::<database-name>`<br />`DENY DELETE ON DATABASE::<database-name>` |
+| **public** | There are no database-level permissions inherent in the public database role. However, some database permissions are present by default. Specifically, `VIEW ANY COLUMN ENCRYPTION KEY DEFINITION`, `VIEW ANY COLUMN MASTER KEY DEFINITION`, and `SELECT` permission on many individual system tables. These permissions can be revoked. |
 
 ## Special roles for Azure SQL Database and Azure Synapse
 
@@ -98,7 +98,7 @@ These database roles exist only in the virtual `master` database. Their permissi
 | Role name | Description |
 | --- | --- |
 | **dbmanager** | Can create and delete databases. A member of the **dbmanager** role that creates a database, becomes the owner of that database, which allows that user to connect to that database as the dbo user. The dbo user has all database permissions in the database. Members of the **dbmanager** role don't necessarily have permission to access databases that they don't own. |
-| **db_exporter** | Members of the **db_exporter** fixed database role can perform all data export activities. Permissions granted via this role are `CREATE TABLE`, `ALTER ANY SCHEMA`, `ALTER ANY EXTERNAL DATA SOURCE`, `ALTER ANY EXTERNAL FILE FORMAT`.<br /><br />**Applies to:** Azure Synapse Analytics dedicated SQL pools (formerly SQL DW) |
+| **db_exporter** | Members of the **db_exporter** fixed database role can perform all data export activities. Permissions granted via this role are `CREATE TABLE`, `ALTER ANY SCHEMA`, `ALTER ANY EXTERNAL DATA SOURCE`, `ALTER ANY EXTERNAL FILE FORMAT`.<br /><br />**Applies to**: Azure Synapse Analytics dedicated SQL pools (formerly SQL DW) |
 | **loginmanager** | Can create and delete logins in the virtual `master` database. |
 
 > [!NOTE]  

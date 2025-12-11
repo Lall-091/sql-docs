@@ -3,7 +3,7 @@ title: "Quickstart: Deploy a SQL Server Container Cluster on Azure Kubernetes Se
 description: This tutorial shows how to deploy a SQL Server high availability solution with Azure Kubernetes Service or Azure Red Hat OpenShift.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/20/2025
+ms.date: 12/11/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: quickstart
@@ -334,24 +334,24 @@ You create a manifest to describe the container, based on the SQL Server [mssql-
 
    Copy the preceding code into a new file, named `sqldeployment.yaml`. Update the following values:
 
-   - MSSQL_PID `value: "Developer"`: Sets the container to run SQL Server Developer edition. Developer edition isn't licensed for production data. If the deployment is for production use, set the appropriate edition (`Enterprise`, `Standard`, or `Express`). For more information, see [How to license SQL Server](https://www.microsoft.com/sql-server/sql-server-2022-pricing).
+   | Parameter | Value | Description |
+   | --- | --- | --- |
+   | `MSSQL_PID` | `Developer` | Sets the container to run [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] Developer edition. Developer edition isn't licensed for production data. If the deployment is for production use, set the appropriate edition (`Enterprise`, `Standard`, or `Express`). For more information, see [How to license SQL Server](https://www.microsoft.com/sql-server/sql-server-2022-pricing). |
+   | `persistentVolumeClaim` | `mssql-data` | This value requires an entry for `claimName` that maps to the name used for the persistent volume claim. This tutorial uses `mssql-data`. |
+   | `name` | `MSSQL_SA_PASSWORD` | Configures the container image to set the `sa` password, as defined in this section. |
 
-     [!INCLUDE [editions-sql-server-developer](includes/editions-sql-server-developer.md)]
+   ```yaml
+   valueFrom:
+     secretKeyRef:
+       name: mssql
+       key: MSSQL_SA_PASSWORD
+   ```
 
-   - `persistentVolumeClaim`: This value requires an entry for `claimName:` that maps to the name used for the persistent volume claim. This tutorial uses `mssql-data`.
+   When Kubernetes deploys the container, it refers to the secret named `mssql` to get the value for the password.
 
-   - `name: MSSQL_SA_PASSWORD`: Configures the container image to set the `sa` password, as defined in this section.
-
-     ```yaml
-     valueFrom:
-       secretKeyRef:
-         name: mssql
-         key: MSSQL_SA_PASSWORD
-     ```
-
-     When Kubernetes deploys the container, it refers to the secret named `mssql` to get the value for the password.
-
-   - `securityContext`: Defines privilege and access control settings for a pod or container. In this case, it's specified at the pod level, so all containers adhere to that security context. In the security context, we define the `fsGroup` with the value `10001`, which is the Group ID (GID) for the `mssql` group. This value means that all processes of the container are also part of the supplementary GID `10001` (`mssql`). The owner for volume `/var/opt/mssql` and any files created in that volume will be GID `10001` (the `mssql` group).
+   | Parameter | Description |
+   | --- | --- |
+   | `securityContext` | Defines privilege and access control settings for a pod or container. In this case, it's specified at the pod level, so all containers adhere to that security context. In the security context, we define the `fsGroup` with the value `10001`, which is the Group ID (GID) for the `mssql` group. This value means that all processes of the container are also part of the supplementary GID `10001` (`mssql`). The owner for volume `/var/opt/mssql` and any files created in that volume will be GID `10001` (the `mssql` group). |
 
    > [!WARNING]  
    > By using the `LoadBalancer` service type, the SQL Server instance is accessible remotely (via the Internet) at port 1433.
@@ -495,22 +495,24 @@ You create a manifest to describe the container, based on the SQL Server [mssql-
 
    Copy the preceding code into a new file, named `sqldeployment.yaml`. Update the following values:
 
-   - MSSQL_PID `value: "Developer"`: Sets the container to run SQL Server Developer edition. Developer edition isn't licensed for production data. If the deployment is for production use, set the appropriate edition (`Enterprise`, `Standard`, or `Express`). For more information, see [How to license SQL Server](https://www.microsoft.com/sql-server/sql-server-2022-pricing).
+   | Parameter | Value | Description |
+   | --- | --- | --- |
+   | `MSSQL_PID` | `Developer` | Sets the container to run [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] Developer edition. Developer edition isn't licensed for production data. If the deployment is for production use, set the appropriate edition (`Enterprise`, `Standard`, or `Express`). For more information, see [How to license SQL Server](https://www.microsoft.com/sql-server/sql-server-2022-pricing). |
+   | `persistentVolumeClaim` | `mssql-data` | This value requires an entry for `claimName` that maps to the name used for the persistent volume claim. This tutorial uses `mssql-data`. |
+   | `name` | `MSSQL_SA_PASSWORD` | Configures the container image to set the `sa` password, as defined in this section. |
 
-   - `persistentVolumeClaim`: This value requires an entry for `claimName:` that maps to the name used for the persistent volume claim. This tutorial uses `mssql-data`.
+   ```yaml
+   valueFrom:
+     secretKeyRef:
+       name: mssql
+       key: MSSQL_SA_PASSWORD
+   ```
 
-   - `name: MSSQL_SA_PASSWORD`: Configures the container image to set the `sa` password, as defined in this section.
+   When OpenShift deploys the container, it refers to the secret named `mssql` to get the value for the password.
 
-     ```yaml
-     valueFrom:
-       secretKeyRef:
-         name: mssql
-         key: MSSQL_SA_PASSWORD
-     ```
-
-     When OpenShift deploys the container, it refers to the secret named `mssql` to get the value for the password.
-
-   - `securityContext`: Defines privilege and access control settings for a pod or container. There are settings applied at both the pod and container level. At the pod level, this option defines the `fsGroupChangePolicy` with the value `OnRootMismatch`. This ensures that the `fsGroup` selected by OpenShift is used for all the files in the `/var/opt/mssql` volume. At the container level, this option permits the `NET_BIND_SERVICE` capability, which allows the container to bind to ports lower than 1024.
+   | Parameter | Description |
+   | --- | --- |
+   | `securityContext` | Defines privilege and access control settings for a pod or container. There are settings applied at both the pod and container level. At the pod level, this option defines the `fsGroupChangePolicy` with the value `OnRootMismatch`. This ensures that the `fsGroup` selected by OpenShift is used for all the files in the `/var/opt/mssql` volume. At the container level, this option permits the `NET_BIND_SERVICE` capability, which allows the container to bind to ports lower than 1024. |
 
    > [!WARNING]  
    > By using the `LoadBalancer` service type, the SQL Server instance is accessible remotely (via the Internet) at port 1433.
@@ -584,7 +586,7 @@ You can use the following applications to connect to the SQL Server instance.
 
 To connect with `sqlcmd`, run the following command.
 
-```cmd
+```console
 sqlcmd -S <External IP address> -U sa -P "<password>"
 ```
 
