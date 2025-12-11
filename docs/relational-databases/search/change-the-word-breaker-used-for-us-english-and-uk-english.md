@@ -1,125 +1,140 @@
 ---
-title: "Change the Word Breaker Used for US English and UK English"
-description: "Change the Word Breaker Used for US English and UK English"
+title: Change the Word Breaker and Filter in SQL Server 2025
+titleSuffix: SQL Server Full-Text Search
+description: Change the word breaker used for US English and UK English in SQL Server 2025.
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray
-ms.date: 05/27/2025
+ms.date: 12/08/2025
 ms.service: sql
 ms.subservice: search
 ms.topic: how-to
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"
 ---
-# Change the Word Breaker Used for US English and UK English
+# Change the word breaker and filter in SQL Server 2025 (SQL Server Search)
 
-[!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb.md)]
+[!INCLUDE [sssql25-md](../../includes/applies-to-version/sqlserver2025.md)]
 
-Starting with [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)], setup installs an updated version of the word breaker and stemmer for the English language, replacing the previous version of these components. For information about the changed behavior of the updated components, see [Behavior Changes to Full-Text Search](/previous-versions/sql/2014/database-engine/behavior-changes-to-full-text-search#behavior-changes-in-full-text-search-in--1). This topic describes how to switch from the updated version of these components to the previous version, or to switch back from the previous version to the updated version. For cluster installations, these changes should be made on all nodes.
+[!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] installs new word breakers and filters, replacing all the previous versions of these components. Binaries installed with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] are called **version 2**, and binaries installed with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions are called **version 1**. This article describes how to switch between version 2 and version 1 components.
 
-Some previous versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] used different word breakers represented by different CLSIDs for US English (LCID 1033) and UK English (LCID 2057). Starting with [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)], both LCIDs use the same components with the same CLSIDs, as shown in the following table:
+## Switch from version 2 to version 1 component
 
-| LCID | Word breaker installed by previous versions<br /><br />version 12.0.6828.0 | Stemmer installed by previous versions | Word breaker installed with [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)] and higher versions<br />version 14.0.4999.1038 | Stemmer installed with [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)] and higher versions |
+> [!NOTE]  
+> Use the default version 2 word breakers and filters installed with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. They're enhanced, more secure, and compliant with security scans.
+
+The default database scoped configuration for full-text indexes is version 2. Change it to version 1.
+
+   ```sql
+   ALTER DATABASE SCOPED CONFIGURATION SET FULLTEXT_INDEX_VERSION = 1;
+   ```
+
+Legacy version 1 word breakers and filters are removed from [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. You must copy these binaries from [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] or previous instance's `C:\Program Files\Microsoft SQL Server\MSSQL16.<instance-name>\MSSQL\Binn` directory.
+
+For existing indexes, verify the version by using the [sys.fulltext_indexes](../system-catalog-views/sys-fulltext-indexes-transact-sql.md) catalog view. If the index is already version 1, you don't need to rebuild it. For a version 2 index, rebuild the catalog to switch back to version 1.
+
+## Switch from version 1 to version 2 component
+
+For instances upgraded from [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] to [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], you must rebuild full-text indexes with version 1 components using version 2 components.
+
+```sql
+ALTER FULLTEXT CATALOG [FtCatalog] REBUILD;
+```
+
+> [!NOTE]  
+> A catalog rebuild operation rebuilds all full-text indexes. If you want to control the order of the index build, or reduce resource requirements, [drop and recreate](../../t-sql/statements/drop-fulltext-index-transact-sql.md) the full-text indexes individually.
+
+## Change the word breaker used for US English and UK English
+
+**Applies to**: [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions, and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]
+
+[!INCLUDE [sssql11-md](../../includes/sssql11-md.md)] installs an updated version of the word breaker and stemmer for the English language, replacing the previous version of these components. For information about the changed behavior of the updated components, see [Behavior Changes to Full-Text Search](/previous-versions/sql/2014/database-engine/behavior-changes-to-full-text-search#behavior-changes-in-full-text-search-in--1).
+
+This article describes how to switch from the updated version of these components to the previous version, or to switch back from the previous version to the updated version. For cluster installations, make these changes on all nodes.
+
+Some previous versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] used different word breakers represented by different CLSIDs for US English (LCID 1033) and UK English (LCID 2057). In [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)] and later versions, both locale identifiers (LCIDs) use the same components with the same CLSIDs, as shown in the following table:
+
+| LCID | Word breaker installed by previous versions (version 12.0.6828.0) | Stemmer installed by previous versions | Word breaker installed with SQL Server 2012 and higher versions (version 14.0.4999.1038) | Stemmer installed with SQL Server 2012 and higher versions |
 | --- | --- | --- | --- | --- |
-| 1033<br />(US English) | 188D6CC5-CB03-4C01-912E-47D21295D77E | EEED4C20-7F1B-11CE-BE57-00AA0051FE20 | 9FAED859-0B30-4434-AE65-412E14A16FB8 | E1E5EF84-C4A6-4E50-8188-99AEF3DE2659 |
-| 2057<br />(UK English) | 173C97E2-AEBE-437C-9445-01B237ABF2F6 | D99F7670-7F1A-11CE-BE57-00AA0051FE20 | 9FAED859-0B30-4434-AE65-412E14A16FB8 | E1E5EF84-C4A6-4E50-8188-99AEF3DE2659 |
+| `1033` (US English) | `188d6cc5-cb03-4c01-912e-47d21295d77e` | `eeed4c20-7f1b-11ce-be57-00aa0051fe20` | `9faed859-0b30-4434-ae65-412e14a16fb8` | `e1e5ef84-c4a6-4e50-8188-99aef3de2659` |
+| `2057` (UK English) | `173c97e2-aebe-437c-9445-01b237abf2f6` | `d99f7670-7f1a-11ce-be57-00aa0051fe20` | `9faed859-0b30-4434-ae65-412e14a16fb8` | `e1e5ef84-c4a6-4e50-8188-99aef3de2659` |
 
-The components described in this topic are DLL files that are installed in the `MSSQL\Binn` folder for the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance. The full path is typically `C:\Program Files\Microsoft SQL Server\<instance>\MSSQL\Binn`.
+The components described in this article are DLL files that are installed in the `MSSQL\Binn` folder for the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance. The full path is typically `C:\Program Files\Microsoft SQL Server\<instance>\MSSQL\Binn`.
 
 For more information about word breakers and stemmers, see [Configure and manage word breakers and stemmers for search (SQL Server)](configure-and-manage-word-breakers-and-stemmers-for-search.md).
 
 ## Switch from the current English word breaker to the previous English word breakers
 
-#### Switch from the current version of the US English word breaker to the previous version
+This example uses `MSSQL17.MSSQLSERVER` for the `<InstanceRoot>` value, which is the default instance for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. Adjust this value to match your environment.
 
-1. In the registry, navigate to the following node: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\\<InstanceRoot\>\MSSearch\CLSID**.
+### [Switch from current version of US English](#tab/en-us)
 
-1. Use the following steps to add new keyS for the COM ClassIDs for the previous US English word breaker and stemmer interfaces for LCID 1033:
+The following commands add or update keys in the Windows registry, to set the COM ClassIDs for the previous US English word breaker and stemmer interfaces for LCID 1033 (`enu`).
 
-    1. Add a new key with the value **{188D6CC5-CB03-4C01-912E-47D21295D77E}** for the previous word breaker.
+Run these commands from an elevated command prompt:
 
-    1. Update the (Default) data of that key value to **langwrbk.dll**.
+```console
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSearch\CLSID\{188D6CC5-CB03-4C01-912E-47D21295D77E}" /ve /t REG_SZ /d "langwrbk.dll"
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSearch\CLSID\{EEED4C20-7F1B-11CE-BE57-00AA0051FE20}" /ve /t REG_SZ /d "infosoft.dll"
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSearch\Language\enu" /v "WBreakerClass" /t REG_SZ /d "{188D6CC5-CB03-4C01-912E-47D21295D77E}" /f
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSearch\Language\enu" /v "StemmerClass" /t REG_SZ /d "{EEED4C20-7F1B-11CE-BE57-00AA0051FE20}" /f
+```
 
-    1. Add a new key with the value **{EEED4C20-7F1B-11CE-BE57-00AA0051FE20}** for the previous stemmer.
+Restart [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to use these word breaker settings.
 
-    1. Update the (Default) data of that key value to **infosoft.dll**.
+### [Switch from current version of UK English](#tab/en-uk)
 
-1. In the registry, navigate to the following node: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\\<InstanceRoot\>\MSSearch\Language\enu**.
+The following commands add or update keys in the Windows registry, to set the COM ClassIDs for the previous UK English word breaker and stemmer interfaces for LCID 2057 (`eng`).
 
-1. Update the **WBreakerClass** key value to **{188D6CC5-CB03-4C01-912E-47D21295D77E}**.
+Run these commands from an elevated command prompt:
 
-1. Update the **StemmerClass** key value to **{EEED4C20-7F1B-11CE-BE57-00AA0051FE20}**.
+```console
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSearch\CLSID\{173C97E2-AEBE-437C-9445-01B237ABF2F6}" /ve /t REG_SZ /d "langwrbk.dll"
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSearch\CLSID\{D99F7670-7F1A-11CE-BE57-00AA0051FE20}" /ve /t REG_SZ /d "infosoft.dll"
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSearch\Language\eng" /v "WBreakerClass" /t REG_SZ /d "{173C97E2-AEBE-437C-9445-01B237ABF2F6}" /f
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSearch\Language\eng" /v "StemmerClass" /t REG_SZ /d "{D99F7670-7F1A-11CE-BE57-00AA0051FE20}" /f
+```
 
-1. Restart [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
+Restart [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to use these word breaker settings.
 
-#### Switch from the current version of the UK English word breaker to the previous version
-
-1. In the registry, navigate to the following node: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\\<InstanceRoot\>\MSSearch\CLSID**.
-
-1. Use the following steps to add a new key for the COM ClassIDs for the previous UK English word breaker and stemmer interfaces for LCID 2057:
-
-    1. Add a new key with the value **{173C97E2-AEBE-437C-9445-01B237ABF2F6}** for the previous word breaker.
-
-    1. Update the (Default) data of that key value to **langwrbk.dll**.
-
-    1. Add a new key with the value **{D99F7670-7F1A-11CE-BE57-00AA0051FE20}** for the previous stemmer.
-
-    1. Update the (Default) data of that key value to **infosoft.dll**.
-
-1. In the registry, navigate to the following node: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\\<InstanceRoot\>\MSSearch\Language\eng**.
-
-1. Update the **WBreakerClass** key value to **{173C97E2-AEBE-437C-9445-01B237ABF2F6}**.
-
-1. Update the **StemmerClass** key value to **{D99F7670-7F1A-11CE-BE57-00AA0051FE20}**.
-
-1. Restart [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
+---
 
 ## Switch back from the previous English word breakers to the current English word breaker
 
-#### Switch back from the previous version of the US English word breaker to the current version
+This example uses `MSSQL17.MSSQLSERVER` for the `<InstanceRoot>` value, which is the default instance for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. Adjust this value to match your environment.
 
-1. In the registry, navigate to the following node: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\\<InstanceRoot\>\MSSearch\CLSID**.
+### [Switch back from US English](#tab/en-us)
 
-1. If the following keys don't exist, then use the following steps to add a new key for the COM ClassIDs for the current US English word breaker and stemmer interfaces for LCID 1033:
+The following commands add or update keys in the Windows registry, to set the COM ClassIDs back from US English for LCID 1033 (`enu`).
 
-    1. Add a new key with the value **{9faed859-0b30-4434-ae65-412e14a16fb8}** for the current word breaker.
+Run these commands from an elevated command prompt:
 
-    1. Update the (Default) data of that key value to **MsWb7.dll**.
+```console
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSearch\CLSID\{9FAED859-0B30-4434-AE65-412E14A16FB8}" /ve /t REG_SZ /d "MsWb7.dll"
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSearch\CLSID\{E1E5EF84-C4A6-4E50-8188-99AEF3DE2659}" /ve /t REG_SZ /d "MsWb7.dll"
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSearch\Language\enu" /v "WBreakerClass" /t REG_SZ /d "{9FAED859-0B30-4434-AE65-412E14A16FB8}" /f
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSearch\Language\enu" /v "StemmerClass" /t REG_SZ /d "{E1E5EF84-C4A6-4E50-8188-99AEF3DE2659}" /f
+```
 
-    1. Add a new key with the value **{e1e5ef84-c4a6-4e50-8188-99aef3de2659}** for the current stemmer.
+Restart [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to use these word breaker settings.
 
-    1. Update the (Default) data of that key value to **MsWb7.dll**.
+### [Switch back from UK English](#tab/en-uk)
 
-1. In the registry, navigate to the following node: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\\<InstanceRoot\>\MSSearch\Language\eng**.
+The following commands add or update keys in the Windows registry, to set the COM ClassIDs back from UK English for LCID 2057 (`eng`).
 
-1. Update the **WBreakerClass** key value to **{9faed859-0b30-4434-ae65-412e14a16fb8}**.
+Run these commands from an elevated command prompt:
 
-1. Update the **StemmerClass** key value to **{e1e5ef84-c4a6-4e50-8188-99aef3de2659}**.
+```console
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSearch\CLSID\{9FAED859-0B30-4434-AE65-412E14A16FB8}" /ve /t REG_SZ /d "MsWb7.dll"
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSearch\CLSID\{E1E5EF84-C4A6-4E50-8188-99AEF3DE2659}" /ve /t REG_SZ /d "MsWb7.dll"
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSearch\Language\eng" /v "WBreakerClass" /t REG_SZ /d "{9FAED859-0B30-4434-AE65-412E14A16FB8}" /f
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSearch\Language\eng" /v "StemmerClass" /t REG_SZ /d "{E1E5EF84-C4A6-4E50-8188-99AEF3DE2659}" /f
+```
 
-1. Restart [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
+Restart [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to use these word breaker settings.
 
-#### Switch back from the previous version of the UK English word breaker to the current version
-
-1. In the registry, navigate to the following node: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\\<InstanceRoot\>\MSSearch\CLSID**.
-
-1. If the following keys don't exist, then use the following steps to add a new key for the COM ClassIDs for the current UK English word breaker and stemmer interfaces for LCID 2057:
-
-    1. Add a new key with the value **{9faed859-0b30-4434-ae65-412e14a16fb8}** for the current word breaker.
-
-    1. Update the (Default) data of that key value to **MsWb7.dll**.
-
-    1. Add a new key with the value **{e1e5ef84-c4a6-4e50-8188-99aef3de2659}** for the current stemmer.
-
-    1. Update the (Default) data of that key value to **MsWb7.dll**.
-
-1. In the registry, navigate to the following node: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\\<InstanceRoot\>\MSSearch\Language\eng**.
-
-1. Update the **WBreakerClass** key value to **{9faed859-0b30-4434-ae65-412e14a16fb8}**.
-
-1. Update the **StemmerClass** key value to **{e1e5ef84-c4a6-4e50-8188-99aef3de2659}**.
-
-1. Restart [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
+---
 
 ## Related content
 
-- [Revert word breakers used by Search to previous version (SQL Server Search)](revert-the-word-breakers-used-by-search-to-the-previous-version.md)
+- [Revert word breakers used by Full-Text Search to previous version](revert-the-word-breakers-used-by-search-to-the-previous-version.md)
 - [Full-Text Search](full-text-search.md)

@@ -1,0 +1,9 @@
+{
+  "redirections": [
+    {
+      "source_path": "data-migration/sql-server/virtual-machines/database-migration-service.md",
+      "redirect_url": "/data-migration/sql-server/virtual-machines/database-migration-service-offline",
+      "redirect_document_id": false
+    }
+  ]
+}

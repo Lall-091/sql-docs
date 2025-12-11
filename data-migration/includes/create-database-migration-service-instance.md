@@ -9,8 +9,6 @@ ms.collection:
 ms.custom: sfi-image-nochange
 ---
 
-### Create a Database Migration Service instance
-
 **Step 1:** In the [Azure portal](https://portal.azure.com/#browse/Microsoft.DataMigration%2Fservices), navigate to the **Azure Database Migration Service** page. Create a new instance of Azure Database Migration Service, or reuse an existing instance that you created earlier.
 
 #### Use an existing instance of Database Migration Service

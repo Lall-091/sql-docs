@@ -1,9 +1,10 @@
 ---
 title: "sys.databases (Transact-SQL)"
-description: sys.databases (Transact-SQL)
+description: The sys.databases system catalog view contains one row per database.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 08/20/2025
+ms.reviewer: wiassaf
+ms.date: 12/10/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -123,6 +124,7 @@ If a database isn't `ONLINE`, or `AUTO_CLOSE` is set to `ON` and the database is
 | `is_event_stream_enabled` | **bit** | Indicates whether the current database has [Change event streaming (preview)](../track-changes/change-event-streaming/overview.md) enabled.<br /><br />**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions. |
 | `is_vorder_enabled` | **bit** | Indicates whether [V-Order](/fabric/data-warehouse/v-order) is enabled for each [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)].<br /><br />**Applies to**: [!INCLUDE [fabric](../../includes/fabric.md)] only.|
 | `is_optimized_locking_on` | **bit** | Indicates whether optimized locking is enabled.<br />`1` = Optimized locking is enabled<br />`0` = Optimized locking is disabled<br /><br />**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]. |
+| `is_proactive_statistics_refresh_on` | **bit** | Indicates whether [proactive statistics refresh](/fabric/data-warehouse/statistics) is enabled.<br /><br />**Applies to**: [!INCLUDE [fabric](../../includes/fabric.md)] [!INCLUDE [fabric](../../includes/fabric-dw.md)].|
 
 <sup>1</sup> For a full list of compatibility levels, see [ALTER DATABASE compatibility level](../../t-sql/statements/alter-database-transact-sql-compatibility-level.md)
 

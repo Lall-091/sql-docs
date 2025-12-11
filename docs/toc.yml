@@ -7200,21 +7200,21 @@ items:
         href: relational-databases/search/back-up-and-restore-full-text-catalogs-and-indexes.md
     - name: Search
       items:
-      - name: Filters for Search
+      - name: Filters for search
         href: relational-databases/search/configure-and-manage-filters-for-search.md
-      - name: Word Breakers & Stemmers for Search
+      - name: Word breakers and stemmers for search
         href: relational-databases/search/configure-and-manage-word-breakers-and-stemmers-for-search.md
-      - name: Registered Filters & Word Breakers
+      - name: Registered filters and word breakers
         href: relational-databases/search/view-or-change-registered-filters-and-word-breakers.md
-      - name: Change the Word Breaker
+      - name: Change the word breaker
         href: relational-databases/search/change-the-word-breaker-used-for-us-english-and-uk-english.md
-      - name: Revert Word Breakers the Previous Version
+      - name: Revert word breakers to the previous version
         href: relational-databases/search/revert-the-word-breakers-used-by-search-to-the-previous-version.md
-      - name: Word Breakers with a Custom Dictionary
+      - name: Word breakers with a custom dictionary
         href: relational-databases/search/customize-the-behavior-of-word-breakers-with-a-custom-dictionary.md
-      - name: Stopwords & Stoplists
+      - name: Stopwords and stoplists
         href: relational-databases/search/configure-and-manage-stopwords-and-stoplists-for-full-text-search.md
-      - name: Thesaurus Files
+      - name: Thesaurus files
         href: relational-databases/search/configure-and-manage-thesaurus-files-for-full-text-search.md
     - name: Manage & Monitor
       href: relational-databases/search/manage-and-monitor-full-text-search-for-a-server-instance.md

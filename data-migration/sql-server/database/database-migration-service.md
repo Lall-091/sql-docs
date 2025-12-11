@@ -384,6 +384,8 @@ Now, you can migrate both the database schema and data using Database Migration 
 > [!NOTE]  
 > If no tables exist on the Azure SQL Database target, or no tables are selected before starting the migration, the **Next** button isn't available to initiate the migration. If no table exists on the target, then you must select the schema migration option to move forward.
 
+### Create a Database Migration Service instance
+
 [!INCLUDE [create-database-migration-service-instance](../../includes/create-database-migration-service-instance.md)]
 
 ### Start a new migration

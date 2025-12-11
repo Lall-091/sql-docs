@@ -9,7 +9,7 @@ ms.service: azure-vm-sql-server
 ms.subservice: security
 ms.topic: how-to
 ms.custom:
-  - has-azure-ad-ps-ref
+  - no-azure-ad-ps-ref
   - devx-track-azurecli
   - ignite-2025
 ---
@@ -98,8 +98,6 @@ To grant your managed identity the **Directory Readers** role, follow these step
 ### Add app role permissions
 
 You can use [Azure PowerShell](/powershell/azure/install-azure-powershell) to grant app roles to a managed identity. To do so, follow these steps:
-
-[!INCLUDE [Azure AD PowerShell deprecation note](~/../azure-sql/reusable-content/msgraph-powershell/includes/aad-powershell-deprecation-note.md)]
 
 1. Connect to Microsoft Graph
 

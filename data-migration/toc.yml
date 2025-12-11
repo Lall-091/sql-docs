@@ -30,8 +30,10 @@
       href: sql-server/virtual-machines/custom-roles.md
     - name: Migration guide
       href: sql-server/virtual-machines/guide.md
-    - name: Migration tutorial
-      href: sql-server/virtual-machines/database-migration-service.md
+    - name: Migration tutorial (offline)
+      href: sql-server/virtual-machines/database-migration-service-offline.md
+    - name: Migration tutorial (online)
+      href: sql-server/virtual-machines/database-migration-service-online.md
     - name: Migrate with distributed availability group
       items:
       - name: Prerequisites
