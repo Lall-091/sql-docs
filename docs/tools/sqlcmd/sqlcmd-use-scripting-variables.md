@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 07/02/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: how-to
 ms.collection:
   - data-tools
 ms.custom:
@@ -110,7 +110,7 @@ Consider the following guidelines when you name scripting variables:
 Consider the following guidelines when you specify values for scripting variables:
 
 - Variable values that are defined by using `setvar` or the `-v` option must be enclosed by quotation marks if the string value contains spaces.
-- If quotation marks are part of the variable value, they must be escaped. For example: :`setvar MyVar "spac""e"`.
+- If quotation marks are part of the variable value, they must be escaped. For example: `:setvar MyVar "spac""e"`.
 
 ## Guidelines for cmd.exe SET variable values and names
 

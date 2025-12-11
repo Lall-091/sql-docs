@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: 07/19/2024
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "databases [SQL Server], files"
   - "filegroups [SQL Server]"
@@ -53,9 +53,9 @@ helpviewer_keywords:
 
 [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] files have two file name types:
 
-- `logical_file_name:`  The `logical_file_name` is the name used to refer to the physical file in all Transact-SQL statements. The logical file name must comply with the rules for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] identifiers and must be unique among logical file names in the database.
+- `logical_file_name`: The name used to refer to the physical file in all Transact-SQL statements. The logical file name must comply with the rules for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] identifiers and must be unique among logical file names in the database.
 
-- `os_file_name:` The `os_file_name` is the name of the physical file including the directory path. It must follow the rules for the operating system file names.
+- `os_file_name`: The name of the physical file including the directory path. It must follow the rules for the operating system file names.
 
  For more information on the `NAME` and  `FILENAME` argument, see [ALTER DATABASE File and Filegroup Options (Transact-SQL)](../../t-sql/statements/alter-database-transact-sql-file-and-filegroup-options.md).
 

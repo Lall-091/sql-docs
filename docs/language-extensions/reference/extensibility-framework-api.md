@@ -4,7 +4,7 @@ titleSuffix: SQL Server Language Extensions
 description: You can use the extensibility framework to write programming language extensions for SQL Server. The Extensibility Framework API for Microsoft SQL Server is an API that can be used by a language extension to interact with and exchange data with SQL Server.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 04/29/2024
+ms.date: 12/10/2025
 ms.service: sql
 ms.subservice: language-extensions
 ms.topic: reference
@@ -405,7 +405,7 @@ SQLRETURN InstallExternalLibrary(
 | `LibraryNameLength` | Input | The length of the library name |
 | `LibraryFile` | Input | The path (as a string) to the library file containing the binary content specified by [CREATE EXTERNAL LIBRARY](../../t-sql/statements/create-external-library-transact-sql.md) |
 | `LibraryFileLength` | Input | The length of the `LibraryFile` string |
-| `LibraryInstallDirectory:` | Input | The root directory to install the library |
+| `LibraryInstallDirectory` | Input | The root directory to install the library |
 | `LibraryInstallDirectoryLength` | Input | The length of the `LibraryInstallDirectory` string |
 | `LibraryError` | Output | An optional output parameter. If there's an error during the installation of the library, `LibraryError` points to a string describing the error |
 | `LibraryErrorLength` | Output | The length of the `LibraryError` string |
