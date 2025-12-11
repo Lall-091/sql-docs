@@ -4,12 +4,12 @@ description: "The SQL Server Login dialog may appear when an application makes a
 author: David-Engel
 ms.author: davidengel
 ms.reviewer: v-davidengel
-ms.date: "03/29/2024"
+ms.date: 12/11/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
-# SQL Server Login Dialog Box (ODBC)
+# SQL Server Login dialog box (ODBC)
 
 When you call an ODBC connection without specifying enough information for the driver to connect to a SQL Server, the ODBC driver displays the **SQL Server Login** dialog box.
 
@@ -17,28 +17,27 @@ When you call an ODBC connection without specifying enough information for the d
 
 ### Server
 
-The name of an instance of SQL Server on your network. Select a server\instance name from the list, or type the server\instance name in the **Server** box. Optionally, you can create a server alias on the client computer using **SQL Server Configuration Manager**, and type that name in the **Server** box.
+The name of an instance of SQL Server on your network. Select a server\instance name from the list, or type the `<server>\<instance>` name in the **Server** box. Optionally, you can create a server alias on the client computer using **SQL Server Configuration Manager**, and type that name in the **Server** box.
 
-You can enter "(local)" when you are using the same computer as SQL Server. You can then connect to a local instance of SQL Server, even when running a non-networked version of SQL Server.
+You can enter `(local)` when you're using the same computer as SQL Server. You can then connect to a local instance of SQL Server, even when running a non-networked version of SQL Server.
 
 For more information about server names for different types of networks, see the SQL Server installation documentation in SQL Server Books Online.
 
 ### Authentication Mode
 
-Selects the authentication mode from one of the following:
+You can select the following authentication options from the dropdown list:
 
-- **SQL Server** with login ID and password
-- **Windows Integrated** authentication using the currently logged-in user's account
-- **Active Directory Password** with login ID and password
-- **Active Directory Integrated** authentication using the currently logged-in Microsoft Entra user's account
+| Value | Description |
+| --- | --- |
+| **SQL Server** | Authenticate using SQL username and password. |
+| **Windows Integrated** | Authenticate to SQL Server using the currently logged-in user's Windows account credentials. |
+| **Active Directory Password** | Username and password authentication with a Microsoft Entra identity. |
+| **Active Directory Integrated** | Integrated Windows authentication through Microsoft Entra ID. This mode is used for Windows authentication in Active Directory environments federated with Microsoft Entra ID. |
+| **Active Directory Interactive** | Interactive authentication with a Microsoft Entra identity. This mode supports Microsoft Entra multifactor authentication. |
+| **Managed Service Identity** | Authenticate with a Microsoft Entra managed identity. |
+| **Active Directory Service Principal** | Authentication with a Microsoft Entra service principal. **Login ID** should be set to the application (client) ID. **Password** should be set to the application (client) secret. |
 
-- **Active Directory Interactive** authentication with a Microsoft Entra login ID
-
-- **Managed Service Identity** authentication with Microsoft Entra managed identity
-
-- **Active Directory Service Principal** authentication with a Microsoft Entra service principal
-
-See [ODBC Data Source Administrator DSN options](odbc-administrator-dsn-creation.md) for more information on the authentication modes.
+For more information about authentication modes, see [ODBC Data Source Administrator DSN options](odbc-administrator-dsn-creation.md).
 
 ### Server SPN
 
@@ -86,11 +85,11 @@ Specifies the national language to use for SQL Server system messages. The compu
 
 ### Application Name
 
-(Optional) Specifies the application name to be stored in the **program_name** column in the row for this connection in **sys.sysprocesses**.
+(Optional) Specifies the application name to be stored in the `program_name` column in the row for this connection in `sys.sysprocesses`.
 
 ### Workstation ID
 
-(Optional) Specifies the workstation ID to be stored in the **hostname** column in the row for this connection in **sys.sysprocesses**.
+(Optional) Specifies the workstation ID to be stored in the `hostname` column in the row for this connection in `sys.sysprocesses`.
 
 ### Use strong encryption for data
 
@@ -102,7 +101,9 @@ Declares the connection encryption mode to be used. Selecting the **Optional** o
 
 ### Server certificate (optional)
 
-Specifies the server certificate (PEM, DER, or CER format) to match against the certificate returned by the server during encryption negotiation. When specified, certificate validation is done by checking if the server's certificate is an exact match against the certificate specified. The **Hostname in certificate** option is ignored when a server certificate is specified. This option is applicable only when **Connection Encryption** is set to **Strict** and is available in ODBC Driver 18.1 and newer.
+Specifies the server certificate (PEM, DER, or CER format) to match against the certificate returned by the server during encryption negotiation. When specified, certificate validation is done by checking if the server's certificate is an exact match against the certificate specified.
+
+The **Hostname in certificate** option is ignored when a server certificate is specified. This option is applicable only when **Connection Encryption** is set to **Strict** and is available in ODBC Driver 18.1 and newer.
 
 ### Hostname in certificate (optional)
 
@@ -110,8 +111,10 @@ Specifies the hostname to be used when validating the server's certificate. When
 
 ### Trust server certificate
 
-This option is applicable only when **Use strong encryption for data** is enabled (ODBC Driver 17 and older), or when **Connection Encryption** is set to **Optional** or **Mandatory** (ODBC Driver 18 and newer). When selected, the server's certificate won't be validated to have the correct hostname of the server and be issued by a trusted certificate authority. The server's certificate will always be validated when using the **Strict** encryption mode.
+This option is applicable only when **Use strong encryption for data** is enabled (ODBC Driver 17 and older), or when **Connection Encryption** is set to **Optional** or **Mandatory** (ODBC Driver 18 and newer).
+
+When selected, the server's certificate won't be validated to have the correct hostname of the server and be issued by a trusted certificate authority. The server's certificate will always be validated when using the **Strict** encryption mode.
 
 ## Related content
 
-[Microsoft ODBC Driver for SQL Server on Windows](../../../connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows.md)
+- [Microsoft ODBC Driver for SQL Server on Windows](microsoft-odbc-driver-for-sql-server-on-windows.md)
