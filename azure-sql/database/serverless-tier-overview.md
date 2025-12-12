@@ -4,7 +4,7 @@ description: This article describes the new serverless compute tier and compares
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: moslake, mathoma, dfurman, blakhani
-ms.date: 10/17/2025
+ms.date: 12/12/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: conceptual
@@ -30,7 +30,7 @@ A compute autoscaling range and an auto-pause delay are important parameters for
 ### Performance configuration
 
 - The **minimum vCores** and **maximum vCores** are configurable parameters that define the range of compute capacity available for the database. Memory and IO limits are proportional to the vCore range specified.  
-- The **auto-pause delay** is a configurable parameter that defines the period of time the database must be inactive before it is automatically paused. The database is automatically resumed when the next sign in or other activity occurs. Alternatively, automatic pausing can be disabled.
+- The **auto-pause delay** is a configurable parameter that defines the period of time the database must be inactive before it is automatically paused. The database is automatically resumed when the next login or other activity occurs. Alternatively, automatic pausing can be disabled.
 
 ### Cost
 
@@ -209,7 +209,7 @@ Monitoring, management, or other solutions performing any of these operations tr
 
 ### Connectivity
 
-If a serverless database is paused, the first connection attempt resumes the database and returns an error stating that the database is unavailable with error code 40613. Once the database is resumed, re-try the sign-in to establish connectivity. Database clients following [connection retry logic recommendations](/azure/architecture/patterns/retry) should not need to be modified. For connection retry logic options and recommendations, see:
+If a serverless database is paused, the first connection attempt resumes the database and returns an error stating that the database is unavailable with error code 40613. Once the database is resumed, retry the connection. Database clients following [connection retry logic recommendations](/azure/architecture/patterns/retry) should not need to be modified. For connection retry logic options and recommendations, see:
 
 - [Connection retry logic in SqlClient](/sql/connect/ado-net/configurable-retry-logic)
 - [Connection retry logic in SQL Database using Entity Framework Core](/azure/architecture/best-practices/retry-service-specific#sql-database-using-entity-framework-core)
@@ -218,7 +218,7 @@ If a serverless database is paused, the first connection attempt resumes the dat
 
 ### Latency
 
-The latency to auto-resume and auto-pause a serverless database is generally order of 1 minute to auto-resume and 1-10 minutes after the expiration of the delay period to auto-pause.
+The latency to auto-resume and auto-pause a serverless database is generally around one minute, but can be under five seconds. The latency to auto-pause is generally around 1-10 minutes.
 
 ### Customer managed transparent data encryption (BYOK)
 
