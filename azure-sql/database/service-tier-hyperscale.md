@@ -4,10 +4,10 @@ description: This article describes the Hyperscale service tier in the vCore-bas
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: dfurman, mathoma, oslake, randolphwest, blakhani, adbadram
-ms.date: 06/30/2025
+ms.date: 12/12/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
-ms.topic: concept-article
+ms.topic: article
 ms.custom:
   - sqldbrb=1
   - build-2025
@@ -139,12 +139,12 @@ The vCore-based service tiers are differentiated based on database availability,
 | **Compute size** | 2 to 128 vCores | 2 to 128 vCores | 2 to 128 vCores |
 | **Storage type** | Premium remote storage (per instance) | Super-fast local SSD storage (per instance) | Decoupled storage with local SSD cache (per compute replica) |
 | **Storage size** | 1 GB – 4 TB | 1 GB – 4 TB | 10 GB – 128 TB |
-| **IOPS** | 320 IOPS per vCore with 16,000 maximum IOPS | 4,000 IOPS per vCore with 327,680 maximum IOPS | 327,680 IOPS with max local SSD<br />Hyperscale is a multi-tiered architecture with caching at multiple levels. Effective IOPS depends on the workload. |
+| **Max IOPS** | 320 IOPS per vCore with 16,000 maximum IOPS | 4,000 IOPS per vCore with 327,680 maximum IOPS | 5,500 IOPS per vCore with 544,000 maximum local SSD IOPS.<br />Hyperscale is a multi-tiered architecture with caching at multiple levels. Effective IOPS depend on the workload. |
 | **Memory/vCore** | 5.1 GB | 5.1 GB | 5.1 GB or 10.2 GB |
 | **Availability** | One replica, no read scale-out, zone-redundant HA | Three replicas, one read scale-out, zone-redundant HA | Multiple replicas, up to four read scale-out, zone-redundant HA |
 | **Backups** | A choice of locally redundant (LRS), zone-redundant (ZRS), or geo-redundant (GRS) storage<br />1-35 days (seven days by default) retention, with up to 10 years of long-term retention available | A choice of locally redundant (LRS), zone-redundant (ZRS), or geo-redundant (GRS) storage<br />1-35 days (seven days by default) retention, with up to 10 years of long-term retention available | A choice of locally redundant (LRS), zone-redundant (ZRS), or geo-redundant (GRS) storage<br />1-35 days (seven days by default) retention, with up to 10 years of long-term retention available |
 | **Pricing/billing** | [vCore, reserved storage, and backup storage](https://azure.microsoft.com/pricing/details/sql-database/single/) are charged.<br />IOPS aren't charged. | [vCore, reserved storage, and backup storage](https://azure.microsoft.com/pricing/details/sql-database/single/) are charged.<br />IOPS aren't charged. | [vCore for each replica, allocated data storage, and backup storage](https://azure.microsoft.com/pricing/details/sql-database/single/) are charged.<br />IOPS aren't charged. |
-| **Discount models**<sup>1</sup>| [Reserved instances](reservations-discount-overview.md)<br/>[Azure Hybrid Benefit](../azure-hybrid-benefit.md)<sup>2</sup><br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) and [Pay-As-You-Go Dev/Test offer](https://azure.microsoft.com/offers/ms-azr-0023p/) subscriptions|[Reserved instances](reservations-discount-overview.md)<br/>[Azure Hybrid Benefit](../azure-hybrid-benefit.md)<sup>2</sup><br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) and [Pay-As-You-Go Dev/Test offer](https://azure.microsoft.com/offers/ms-azr-0023p/) subscriptions | [Reserved instances](reservations-discount-overview.md)<br/>[Azure Hybrid Benefit](../azure-hybrid-benefit.md)<sup>2</sup><br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) and [Pay-As-You-Go Dev/Test offer](https://azure.microsoft.com/offers/ms-azr-0023p/) subscriptions |
+| **Discount models**<sup>1</sup>| [Reserved instances](reservations-discount-overview.md)<br />[Azure Hybrid Benefit](../azure-hybrid-benefit.md)<sup>2</sup><br />[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) and [Pay-As-You-Go Dev/Test offer](https://azure.microsoft.com/offers/ms-azr-0023p/) subscriptions|[Reserved instances](reservations-discount-overview.md)<br />[Azure Hybrid Benefit](../azure-hybrid-benefit.md)<sup>2</sup><br />[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) and [Pay-As-You-Go Dev/Test offer](https://azure.microsoft.com/offers/ms-azr-0023p/) subscriptions | [Reserved instances](reservations-discount-overview.md)<br />[Azure Hybrid Benefit](../azure-hybrid-benefit.md)<sup>2</sup><br />[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) and [Pay-As-You-Go Dev/Test offer](https://azure.microsoft.com/offers/ms-azr-0023p/) subscriptions |
 
 <sup>1</sup> Simplified pricing for SQL Database Hyperscale arrived in December 2023. Review the [Hyperscale pricing blog](https://aka.ms/hsignite2023) for details.
 
