@@ -5,7 +5,7 @@ author: MikeRayMSFT
 ms.author: sashan
 ms.reviewer: randolphwest, maghan
 ms.date: 11/18/2025
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - references_regions
   - ignite-2025
@@ -242,9 +242,9 @@ To properly manage this transition, use the following sequence of best practices
 
 ## Manage the transition from an ESU license purchased through Volume Licensing to an ESU subscription
 
-The [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] ESU subscription requires you to purchase a Year 1 and Year 2 Volume Licensing ESU offer before you can activate it. That is, the transition from a Year 1 and Year 2 Volume Licensing ESU offer to an ESU subscription is the default pattern, and the bill-back charges reflect it. For details about the bill-back charges, see [Billing for SQL Server 2012 ESUs](#2012-esu-billing) later in this article.
+When you enable an ESU subscription, bill-back charges start from the beginning of the current ESU year. You must have purchased the previous years to proceed. In that scenario, the transition happens automatically.
 
-If you want to purchase a Year 1 or Year 2 ESU offer through Azure because you haven't previously purchased Year 1 or Year 2 through Volume Licensing, you must take additional steps to ensure that the bill-back is adjusted accordingly. Before you activate the ESU subscription on the machines, you must open a support ticket by using the subcategory `Issues with SQL Server Extended Security Updates`.
+If you want to enable an ESU subscription during an ESU year for which you have already purchased an ESU license through Volume Licensing, you must take additional steps to ensure that the bill-back is adjusted accordingly. Before activating the ESU subscription in this case, open a support ticket using the subcategory `Issues with SQL Server Extended Security Updates`.
 
 <a id="esu-usage-metering"></a>
 
@@ -264,15 +264,9 @@ The following table shows the ESU subscription meters (also called *SKUs*) that 
 
 | Projected edition <sup>1</sup> | SQL Server version | Failover replica | Use p-core license | Meter SKU |
 | --- | --- | --- | --- | --- |
-| Enterprise | 2012 | No | No | `Ent edition - ESU`<br />`Ent edition - ESU back billing` |
-| Enterprise | 2012 | No | Yes | None |
-| Enterprise | 2012 | Yes | Yes or no | None |
 | Enterprise | 2014 | No | No | `Ent edition - ESU 2014`<br />`Ent edition - ESU 2014 back billing` |
 | Enterprise | 2014 | No | Yes | None |
 | Enterprise | 2014 | Yes | Yes or no | None |
-| Standard | 2012 | No | No | `Std edition - ESU`<br />`Std edition - ESU back billing` |
-| Standard | 2012 | No | Yes | None |
-| Standard | 2012 | Yes | Yes or no | None |
 | Standard | 2014 | No | No | `Std edition - ESU 2014`<br />`Std edition - ESU 2014 back billing` |
 | Standard | 2014 | No | Yes | None |
 | Standard | 2014 | Yes | Yes or no | None |
@@ -289,7 +283,6 @@ The next table shows the meter SKUs that are used for metering and billing for a
 
 | Azure resource | SQL Server version | Meter SKU |
 | --- | --- | --- |
-| P-core ESU license | 2012 | `Ent edition - ESU`<br />`Ent edition - ESU back billing` |
 | P-core ESU license | 2014 | `Ent edition - ESU 2014`<br />`Ent edition - ESU 2014 back billing` |
 
 ## Understand ESU subscription billing
@@ -297,22 +290,6 @@ The next table shows the meter SKUs that are used for metering and billing for a
 The ESU subscription extends support for critical updates for up to three years. If you start the subscription after the end-of-support date, you must purchase the Volume Licensing offer or ESU subscription to cover any previous years. With an ESU subscription, you have the additional benefit of canceling the subscription and all future charges without penalty at any time.
 
 <a id="2012-esu-billing"></a>
-
-### Billing for SQL Server 2012 ESUs
-
-To use the ESU subscription option, you must have purchased the Year 1 and Year 2 Volume Licensing ESU offer before signing up for the ESU subscription in Year 3. You can sign up for the ESU subscription at any time within Year 3, and your bill reflects the cost of continuous ESU coverage.
-
-After you sign up for the ESU subscription, your next monthly bill includes a one-time bill-back charge for each machine that hosted a [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] instance or instances with an active ESU subscription from the beginning of the current ESU year, based on the timestamp when ESU was enabled, or when p-core ESU license got activated. From this point, you're billed for each machine on an hourly basis.
-
-Both bill-back and regular hourly charges use the hourly rate from this formula: *(Core count) x (100% of Year 3 ESU license price) / 730*. So, the size of the bill-back charge depends on how much time passes from July 10, 2024, to the activation time.
-
-The following billing rules apply:
-
-- If you install a [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] instance or instances on a virtual machine, and you don't use the unlimited virtualization benefit, you're billed for the total number of virtual cores of the machine, with a minimum of four cores. If the virtual machine is eligible to receive failover rights, the virtual cores of that machine aren't billable.
-
-- If you install a [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] instance or instances on a physical server without using virtual machines, you're billed for all physical cores of the machine, with a minimum of four cores. If the physical server is eligible to receive failover rights, the physical cores of that server aren't billable. For more information, see the [service-specific terms](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzure/eaeas#ServiceSpecificTerms).
-
-For more information about [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] ESU pricing, see [Plan your Windows Server and SQL Server end of support](https://www.microsoft.com/windows-server/extended-security-updates).
 
 <a id="2014-esu-billing"></a>
 
@@ -326,7 +303,7 @@ The following billing rules apply:
 
 - If you install a [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] instance or instances on a physical server without using virtual machines, you're billed for all physical cores of the machine, with a minimum of four cores. If the physical server is eligible to receive failover rights, the physical cores of that server aren't billable. For more information, see the [service-specific terms](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzure/eaeas#ServiceSpecificTerms).
 
-- If you install both instances of [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] and [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] on the same physical or virtual machine, you're billed for the total number of physical or virtual cores of the machine, for both [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] and [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] ESU subscriptions, with a minimum of four cores. The billing for each version is based on the ESU price for that version. If the virtual machine is eligible to receive failover rights, the virtual cores of that machine aren't billable.
+- If you install two or more [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instances on the same physical or virtual machine, you're billed for the total number of physical or virtual cores of the machine, for each version's ESU subscription. The minimum is four cores. The billing for each version is based on the ESU price for that version. If the virtual machine is eligible to receive failover rights, the virtual cores of that machine aren't billable.
 
 For more information about [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] ESU pricing, see [Azure Arc pricing](https://azure.microsoft.com/pricing/details/azure-arc/core-control-plane/).
 
@@ -336,21 +313,16 @@ For more information about [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] ES
 
 If your Azure Extension for [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] loses connectivity, the billing stops, and the subscription is suspended.
 
-To make sure that intermittent disconnection doesn't negatively affect your ESU coverage, we automatically reactivate it without penalty if the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instance reconnects within 30 days. In that case, you see an additional bill-back charge for the days since the last day that your server was connected.
+If you manually terminate the ESU subscription and then reactivate it, the ESU subscription resumes as long as your machine's connection to Azure Arc is in a healthy state. Your bill includes an additional charge for the time since you canceled the subscription.
 
-If you manually terminate the ESU subscription and then reactivate it within 30 days, there's also no penalty. Your bill includes an additional charge for the time since you canceled the subscription. If the server reconnects after 30 days of disconnection, the subscription is terminated. To resume the ESU coverage, you need to activate a new ESU subscription and pay all the associated bill-back charges.
+If in the meantime the server permanently lost connectivity due to certificate expiration, the subscription is terminated. After the machine is reonboarded to Azure Arc, you must activate a new ESU subscription to resume coverage, and pay all the associated bill-back charges. For information about the server certificate lifecycle, review [Agent Status](/azure/azure-arc/servers/overview#agent-status).
 
-If the Arc enabled machine goes offline and reconnects to Azure in a different subscription, in a different resource group, or with a different name, it will be treated as the same machine as long as the VMID property remains unchanged and the machine resource is in the same Azure location as the original machine resource.
+If the Arc enabled machine goes offline and reconnects to Azure in a different subscription, in a different resource group, or with a different name, it will be treated as the same machine as long as the [Virtual Machine ID property](/azure/azure-arc/servers/agent-overview#instance-metadata) remains unchanged and the machine resource is in the same Azure location as the original machine resource.
 
-> [!IMPORTANT]  
-> The bill-back charges are recorded within the first hour of the ESU subscription and look like single hourly charges for the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instances that have the ESU subscriptions enabled. Because the amount reflects the accumulated costs since one of the following dates, it's much higher than the regular hourly ESU charges:
->
-> - July 10, 2024, for [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] (prior to the October, 2024 release this date was July, 2023)
-> - July 10, 2024, for [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)]
->
-> This difference is expected, and it should be a one-time charge.
->
-> In following billing periods, you should see only the regular hourly charges. Additional bill-back charges could be added in cases of connectivity disruptions, but they're typically much smaller amounts.
+ESU subscriptions are pinned to a specific Azure location. If the Arc enabled machine with an active ESU subscription is moved to a different Azure location, the subscription is terminated. To resume ESU coverage, you must activate a new ESU subscription and pay all the associated bill-back charges.
+
+[!IMPORTANT]
+> The bill-back charge for the disconnected time is recorded within the first hour after the connectivity is restored, and is associated with the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instance that is eligible for ESU coverage. The amount of the charge reflects the time since the previous heartbeat was registered.
 
 ## Related content
 

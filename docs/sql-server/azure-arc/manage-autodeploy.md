@@ -21,7 +21,7 @@ This article details how the streamlined process of connecting SQL Server to Azu
 
 ## Prerequisites
 
- 1. Complete the [Prerequisites - SQL Server enabled by Azure Arc](prerequisites.md).
+1. Complete the [Prerequisites - SQL Server enabled by Azure Arc](prerequisites.md).
  1. For Always On availability groups, complete the steps on all nodes. 
 
 ## Specify license type
@@ -38,9 +38,7 @@ Add one of the following tags and values to your subscription, resource groups, 
 | --- | --- |
 | `ArcSQLServerExtensionDeployment` | `Paid` |
 | `ArcSQLServerExtensionDeployment` | `PAYG` |
-| `ArcSQLServerExtensionDeployment` | `LicenseOnly` <sup>1</sup> |
-
-<sup>1</sup> This is the default value when the automatic connecting workflow deploys the SQL Server extension.
+| `ArcSQLServerExtensionDeployment` | `LicenseOnly` |
 
 > [!IMPORTANT]  
 > To maximize the value of Azure Arc for SQL Server customers, Microsoft uses an automated process of determining the license type value if you haven't set the default value using the `ArcSQLServerExtensionDeployment` tag. If your SQL Server is covered by Software Assurance (SA) or Subscription and Support, and the number of licenses you have purchased is greater than the number of licenses you already committed to Azure to use Azure Hybrid Benefit, this process sets the license type value to **Paid** for the onboarded SQL Server instances on a first-come-first-serve basis. As a result, you automatically have access to valuable management features provided to SA customers.
@@ -86,10 +84,10 @@ resources
 | project id, licenseType
 ```
 
-The value 'Configuration needed' indicates that the onboarding process didn't have enough information to configure the license type automatically. For details how to set the missing value, or change a value automatically configured, visit [Configure SQL Server enabled by Azure Arc](manage-configuration.md).
+The value `Configuration needed` indicates that the onboarding process didn't have enough information to configure the license type automatically. For details how to set the missing value, or change a value automatically configured, visit [Configure SQL Server enabled by Azure Arc](manage-configuration.md).
 
 > [!NOTE]  
-> Setting license type to **Paid** or **PAYG** will unlock to valuable management features provided to SA customers.
+> When the license type is **Paid** or **PAYG**, additional management features are available for instances covered by Software Assurance or pay-as-you-go licenses.
 
 ## Opt out of automatic connecting
 
