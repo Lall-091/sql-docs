@@ -49,7 +49,7 @@ You can configure and get information about alert rules using:
 - [PowerShell](/azure/azure-monitor/alerts/alerts-create-rule-cli-powershell-arm#create-a-new-alert-rule-using-powershell)
 - [Command-line interface (CLI)](/azure/azure-monitor/alerts/alerts-create-rule-cli-powershell-arm#create-a-new-alert-rule-using-the-cli)
 - [ARM template](/azure/azure-monitor/alerts/alerts-create-rule-cli-powershell-arm#create-a-new-alert-rule-using-an-arm-template)
-- [Azure Monitor REST API](/rest/api/monitor/alertsmanagement/alert-processing-rules)
+- [Azure Monitor REST API](/azure/azure-monitor/fundamentals/azure-monitor-rest-api-index)
 
 ## Get started with a new alert rule in the Azure portal
 
