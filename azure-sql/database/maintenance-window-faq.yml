@@ -8,9 +8,9 @@ metadata:
   ms.topic: faq
   author: WilliamDAssafMSFT
   ms.author: wiassaf
-  ms.reviewer: scottkim, mathoma
+  ms.reviewer: scottkim, mathoma, shrtiwar
   ms.custom: azure-sql-split
-  ms.date: 04/22/2024
+  ms.date: 12/11/2025
   monikerRange: "=azuresql||=azuresql-db"
 
 title: Maintenance window FAQ in Azure SQL Database
@@ -119,7 +119,11 @@ sections:
 
       - question: How many reconfigurations can I expect during a maintenance event?
         answer: |
-          If the maintenance update requires a reconfiguration, typically one to two reconfigurations happen during the window.  
+          If the maintenance update requires a reconfiguration, typically one to two reconfigurations happen during the window.
+          
+      - question: Can my configured maintenance window ever be overridden?
+        answer: |
+          In very rare circumstances where any postponement of action could cause serious impact, like applying critical security patch, configured maintenance window might be temporarily overridden.
 
   - name: Prerequisites and preparation for a maintenance window
     questions:
