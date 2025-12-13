@@ -4,7 +4,7 @@ description: This page describes common vCore resource limits for a single datab
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: wiassaf, mathoma
-ms.date: 04/28/2025
+ms.date: 12/12/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: reference
@@ -12,7 +12,9 @@ ms.custom:
   - sqldbrb=1
   - build-2025
 ---
+
 # Resource limits for single databases using the vCore purchasing model
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!div class="op_single_selector"]
@@ -429,7 +431,7 @@ The following table covers these SLOs: `HS_PRMS_2`, `HS_PRMS_4`, `HS_PRMS_6`, `H
 | Max data size (TB) | 128 | 128 | 128 | 128 | 128 |
 | Max log size (TB) | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited |
 | Tempdb max data size (GB) | 64 | 128 | 192 | 256 | 320 |
-| Max local SSD IOPS <sup>1</sup> | 8,000 | 16,000 | 24,000 | 32,000 | 40,000 |
+| Max local SSD IOPS <sup>1</sup> | 8,500 | 17,000 | 25,500 | 34,000 | 42,500 |
 | Max log rate (MiB/s) | 150 | 150 | 150 | 150 | 150 |
 | Local read IO latency <sup>2</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms |
 | Remote read IO latency <sup>2</sup> | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms |
@@ -467,7 +469,7 @@ The following table covers these SLOs: `HS_PRMS_12`, `HS_PRMS_14`, `HS_PRMS_16`,
 | Max data size (TB) | 128 | 128 | 128 | 128 | 128 |
 | Max log size (TB) | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited |
 | Tempdb max data size (GB) | 384 | 448 | 512 | 576 | 640 |
-| Max local SSD IOPS <sup>1</sup> | 48,000 | 56,000 | 64,000 | 72,000 | 80,000 |
+| Max local SSD IOPS <sup>1</sup> | 51,000 | 59,500 | 68,000 | 76,500 | 85,000 |
 | Max log rate (MiB/s) | 150 | 150 | 150 | 150 | 150 |
 | Local read IO latency <sup>2</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms |
 | Remote read IO latency <sup>2</sup> | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms |
@@ -505,7 +507,7 @@ The following table covers these SLOs: `HS_PRMS_24`, `HS_PRMS_32`, `HS_PRMS_40`,
 | Max data size (TB) | 128 | 128 | 128 | 128 | 128 | 128 |
 | Max log size (TB) | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited |
 | Tempdb max data size (GB) | 768 | 1,024 | 1,280 | 2,048 | 2,560 | 4,096 |
-| Max local SSD IOPS <sup>1</sup> | 96,000 | 128,000 | 160,000 | 256,000 | 320,000 | 327,680 |
+| Max local SSD IOPS <sup>1</sup> | 102,000 | 136,000 | 170,000 | 272,000 | 340,000 | 544,000 |
 | Max log rate (MiB/s) | 150 | 150 | 150 | 150 | 150 | 150 |
 | Local read IO latency <sup>2</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms |
 | Remote read IO latency <sup>2</sup> | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms |
@@ -545,7 +547,7 @@ The following table covers these SLOs: `HS_MOPRMS_2`, `HS_MOPRMS_4`, `HS_MOPRMS_
 | Max data size (TB) | 128 | 128 | 128 | 128 | 128 |
 | Max log size (TB) | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited |
 | Tempdb max data size (GB) | 64 | 128 | 192 | 256 | 320 |
-| Max local SSD IOPS <sup>1</sup> | 10,240 | 20,480 | 30,720 | 40,960 | 51,200 |
+| Max local SSD IOPS <sup>1</sup> | 11,000 | 22,000 | 33,000 | 44,000 | 55,000 |
 | Max log rate (MiB/s) | 150 | 150 | 150 | 150 | 150 |
 | Local read IO latency <sup>2</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms |
 | Remote read IO latency <sup>2</sup> | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms |
@@ -583,7 +585,7 @@ The following table covers these SLOs: `HS_MOPRMS_12`, `HS_MOPRMS_14`, `HS_MOPRM
 | Max data size (TB) | 128 | 128 | 128 | 128 | 128 |
 | Max log size (TB) | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited |
 | Tempdb max data size (GB) | 384 | 448 | 512 | 576 | 640 |
-| Max local SSD IOPS <sup>1</sup> | 61,440 | 71,680 | 81,920 | 92,160 | 102,400 |
+| Max local SSD IOPS <sup>1</sup> | 66,000 | 77,000 | 88,000 | 99,000 | 111,000 |
 | Max log rate (MiB/s) | 150 | 150 | 150 | 150 | 150 |
 | Local read IO latency <sup>2</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms |
 | Remote read IO latency <sup>2</sup> | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms |
@@ -621,7 +623,7 @@ The following table covers these SLOs: `HS_MOPRMS_24`, `HS_MOPRMS_32`, `HS_MOPRM
 | Max data size (TB) | 128 | 128 | 128 | 128 | 128 |
 | Max log size (TB) | Unlimited | Unlimited | Unlimited | Unlimited | Unlimited |
 | Tempdb max data size (GB) | 768 | 1,024 | 1,280 | 2,048 | 2,560 |
-| Max local SSD IOPS <sup>1</sup> | 122,880 | 163,840 | 204,800 | 327,680 | 327,680 |
+| Max local SSD IOPS <sup>1</sup> | 132,000 | 176,000 | 222,000 | 352,000 | 440,000 |
 | Max log rate (MiB/s) | 150 | 150 | 150 | 150 | 150 |
 | Local read IO latency <sup>2</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms |
 | Remote read IO latency <sup>2</sup> | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms | 1-4 ms |

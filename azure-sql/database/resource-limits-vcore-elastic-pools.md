@@ -4,13 +4,14 @@ description: This page describes some common vCore resource limits for elastic p
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: wiassaf, mathoma
-ms.date: 06/24/2025
+ms.date: 12/12/2025
 ms.service: azure-sql-database
 ms.subservice: elastic-pools
 ms.topic: reference
 ms.custom:
   - build-2025
 ---
+
 # Resource limits for elastic pools using the vCore purchasing model
 
 [!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -722,7 +723,7 @@ The following table covers these SLOs: `HS_PRMS_4`, `HS_PRMS_6`, `HS_PRMS_8`, `H
 | In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A | N/A |
 | Max data size per pool (TB) | 100 | 100 | 100 | 100 | 100 | 100 |
 | `tempdb` max data size (GB) | 128 | 192 | 256 | 320 | 384 | 448 |
-| Max local SSD IOPS per pool <sup>2</sup> | 18,000 | 27,000 | 36,000 | 45,000 | 54,000 | 63,000 |
+| Max local SSD IOPS per pool <sup>2</sup> | 20,000 | 30,000 | 40,000 | 50,000 | 60,000 | 70,000 |
 | Max log rate per pool (MiB/s) | 150 | 150 | 150 | 150 | 150 | 150 |
 | Local read IO latency <sup>3</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms |
 | Remote read IO latency <sup>3</sup> | 1-5 ms | 1-5 ms | 1-5 ms | 1-5 ms | 1-5 ms | 1-5 ms |
@@ -763,7 +764,7 @@ The following table covers these SLOs: `HS_PRMS_16`, `HS_PRMS_18`, `HS_PRMS_20`,
 | In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A | N/A | 
 | Max data size per pool (TB) | 100 | 100 | 100 | 100 | 100 | 100 | 
 | `tempdb` max data size (GB) | 512 | 576 | 640 | 768 | 1024 | 1280 | 
-| Max local SSD IOPS per pool <sup>2</sup> | 72,000 | 81,000 | 90,000 | 108,000 | 144,000 | 180,000 | 
+| Max local SSD IOPS per pool <sup>2</sup> | 80,000 | 90,000 | 100,000 | 120,000 | 160,000 | 200,000 | 
 | Max log rate per pool (MiB/s) | 150 | 150 | 150 | 150 | 150 | 150 | 
 | Local read IO latency <sup>3</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 
 | Remote read IO latency <sup>3</sup> | 1-5 ms | 1-5 ms | 1-5 ms | 1-5 ms | 1-5 ms | 1-5 ms | 
@@ -804,7 +805,7 @@ The following table covers these SLOs: `HS_PRMS_64`, `HS_PRMS_80`, `HS_PRMS_128`
 | In-memory OLTP storage (GB) | N/A | N/A |
 | Max data size per pool (TB) | 100 | 100 | 100 | 
 | `tempdb` max data size (GB) | 2,048 | 2,560 | 4,096 |
-| Max local SSD IOPS per pool <sup>2</sup> | 288,000 | 360,000 | 409,600 |
+| Max local SSD IOPS per pool <sup>2</sup> | 320,000 | 400,000 | 640,000 |
 | Max log rate per pool (MiB/s) | 150 | 150 | 150 | 
 | Local read IO latency <sup>3</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 
 | Remote read IO latency <sup>3</sup> | 1-5 ms | 1-5 ms | 1-5 ms |
@@ -847,7 +848,7 @@ The following table covers these SLOs: `HS_MOPRMS_4`, `HS_MOPRMS_6`, `HS_MOPRMS_
 | In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A | N/A |
 | Max data size per pool (TB) | 100 | 100 | 100 | 100 | 100 | 100 |
 | `tempdb` max data size (GB) | 128 | 192 | 256 | 320 | 384 | 448 |
-| Max local SSD IOPS per pool <sup>2</sup> | 23,040 | 34,560 | 46,080 | 57,600 | 69,120 | 80,640 |
+| Max local SSD IOPS per pool <sup>2</sup> | 26,000 | 39,000 | 52,000 | 65,000 | 78,000 | 91,000 |
 | Max log rate per pool (MiB/s) | 150 | 150 | 150 | 150 | 150 | 150 |
 | Local read IO latency <sup>3</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms |
 | Remote read IO latency <sup>3</sup> | 1-5 ms | 1-5 ms | 1-5 ms | 1-5 ms | 1-5 ms | 1-5 ms |
@@ -888,7 +889,7 @@ The following table covers these SLOs: `HS_MOPRMS_16`, `HS_MOPRMS_18`, `HS_MOPRM
 | In-memory OLTP storage (GB) | N/A | N/A | N/A | N/A | N/A | N/A | 
 | Max data size per pool (TB) | 100 | 100 | 100 | 100 | 100 | 100 | 
 | `tempdb` max data size (GB) | 512 | 576 | 640 | 768 | 1024 | 1280 | 
-| Max local SSD IOPS per pool <sup>2</sup> | 92,160 | 103,680 | 115,200 | 138,240 | 184,320 | 230,400 | 
+| Max local SSD IOPS per pool <sup>2</sup> | 104,000 | 117,000 | 130,000 | 156,000 | 208,000 | 260,000 | 
 | Max log rate per pool (MiB/s) | 150 | 150 | 150 | 150 | 150 | 150 |
 | Local read IO latency <sup>3</sup> | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 1-2 ms | 
 | Remote read IO latency <sup>3</sup> | 1-5 ms | 1-5 ms | 1-5 ms | 1-5 ms | 1-5 ms | 1-5 ms | 
@@ -929,7 +930,7 @@ The following table covers these SLOs: `HS_MOPRMS_64` and `HS_MOPRMS_80`:
 | In-memory OLTP storage (GB) | N/A | N/A |
 | Max data size per pool (TB) | 100 | 100 |
 | `tempdb` max data size (GB) | 2,048 | 2,560 | 
-| Max local SSD IOPS per pool <sup>2</sup> | 368,640 | 409,600 |
+| Max local SSD IOPS per pool <sup>2</sup> | 416,000 | 520,000 |
 | Max log rate per pool (MiB/s) | 150 | 150 |
 | Local read IO latency <sup>3</sup> | 1-2 ms | 1-2 ms | 
 | Remote read IO latency <sup>3</sup> | 1-5 ms | 1-5 ms | 
