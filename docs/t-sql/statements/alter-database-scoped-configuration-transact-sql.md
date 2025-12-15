@@ -67,7 +67,7 @@ This setting is only available in [!INCLUDE [ssazuresynapse-md](../../includes/s
 
 ## Syntax
 
-Syntax for SQL Server, Azure SQL Database, and Azure SQL Managed Instance:
+Syntax for SQL Server, Azure SQL Database, SQL database in Fabric, and Azure SQL Managed Instance:
 
 ```syntaxsql
 ALTER DATABASE SCOPED CONFIGURATION
