@@ -4,26 +4,26 @@ description: Learn how to create a SQL Server Always On Availability Group (AG) 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: vanto
-ms.date: 07/03/2025
+ms.date: 12/15/2025
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
-monikerRange: ">=sql-server-2017"
 ms.custom:
   - linux-related-content
   - sfi-image-nochange
+monikerRange: ">=sql-server-2017"
 ---
 # Configure SQL Server Always On availability group on Windows and Linux (cross-platform)
 
-[!INCLUDE [tsql-appliesto-sslinux-only](../includes/applies-to-version/sqlserver2017.md)]
+[!INCLUDE [sqlserver2017](../includes/applies-to-version/sqlserver2017.md)]
 
 This article explains the steps to create an Always On availability group (AG) with one replica on a Windows server and the other replica on a Linux server.
 
 > [!IMPORTANT]  
 > [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] cross-platform availability groups, which include heterogeneous replicas with complete high-availability and disaster recovery support, is available with DH2i DxEnterprise. For more information, see [SQL Server Availability Groups with Mixed Operating Systems](https://support.dh2i.com/docs/guides/dxenterprise/sql_server/mssql-ag-mixed-os-qsg).
->  
+>
 > View the following video to find out about cross-platform availability groups with DH2i.
->  
+>
 > [!VIDEO https://learn-video.azurefd.net/vod/player?show=data-exposed&ep=get-started-with-sql-server-ags-across-windows-linux-and-container-replicas]
 
 This configuration is cross-platform because the replicas are on different operating systems. Use this configuration for migration from one platform to the other or disaster recovery (DR). This configuration doesn't support high availability.
@@ -190,9 +190,9 @@ For the scripts in this article, angle brackets `<` and `>` identify values that
 
    > [!NOTE]  
    > When the Windows instance of SQL Server uses different paths for data and log files, automatic seeding fails to the Linux instance of SQL Server, because these paths don't exist on the secondary replica. To use the following script for a cross-platform AG, the database requires the same path for the data and log files on the Windows server. Alternatively you can update the script to set `SEEDING_MODE = MANUAL` and then back up and restore the database with `NORECOVERY` to seed the database.  
-   >  
+   >
    > This behavior applies to Azure Marketplace images.
-   >  
+   >
    > For more information about automatic seeding, see [Automatic Seeding - Disk Layout](../database-engine/availability-groups/windows/automatic-seeding-secondary-replicas.md#disklayout).
 
    Before you run the script, update the values for your AGs.

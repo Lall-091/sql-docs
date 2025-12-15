@@ -4,7 +4,7 @@ description: "How to contribute to SQL Server Documentation"
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 05/26/2025
+ms.date: 12/15/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: how-to
@@ -39,10 +39,10 @@ The following steps summarize the process:
 1. On the page you have feedback about, select the **Pencil** icon at the top right.
 1. On the next page, select the **Pencil** icon at the top right. If this icon doesn't appear, you might need to sign in to your GitHub account first.
 1. On the next page, in the **Edit file** text window, make your edits directly to the text you want to change.
-    If you need help with formatting the new or changed text, see the [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+   If you need help with formatting the new or changed text, see the [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
 1. After you make your edits, under **Commit changes**:
-    1. In the first text box, enter a brief description of the change you make.
-    1. In the **Add an optional extended description** box, provide a brief explanation of your change.
+   1. In the first text box, enter a brief description of the change you make.
+   1. In the **Add an optional extended description** box, provide a brief explanation of your change.
 1. Select **Propose file change**.
 1. On the **Comparing changes** page, select **Create pull request**.
 1. On the **Open a pull request** page, select **Create pull request**.
@@ -111,8 +111,7 @@ To find the correct applies-to include file for your article, use the following 
 - For a list of commonly used includes, see [SQL Server include files for versioning and applies-to](applies-to-includes.md).
 - Look at other articles that cover the same feature or a related task. If you edit that article, you can copy the Markdown for the applies-to include link (you can cancel the edit without submitting it).
 - Search the [docs/includes](https://github.com/MicrosoftDocs/sql-docs/tree/live/docs/includes) directory for files containing the text `applies-to`. You can use the **Find** button in GitHub to quickly filter. Select the file to see how it renders.
-- Pay attention to the naming convention. If the name contains multiple `x` characters in the string, they're usually placeholders indicating the lack of support for a service. For example, `appliesto-xx-xxxx-asdw-xxx-md.md` indicates support for only Azure Synapse Analytics, because only `asdw` is spelled out, whereas the other fields are filled with the `x` character.
-- Some includes specify a version number, such as `tsql-appliesto-ss2017-xxxx-xxxx-xxx-md.md`. Only use these include files when you know the feature was introduced with a specific version of SQL Server.
+- Some includes specify a version number, such as `sql-asdbmi-asa-pdw.md`. Only use this kind of include file when you know the feature was introduced with a specific version of SQL Server.
 
 ## Contributor resources
 
@@ -123,7 +122,7 @@ To find the correct applies-to include file for your article, use the following 
 > [!TIP]  
 > If you have product feedback rather than documentation feedback, [provide feedback](https://feedback.azure.com/forums/908035-sql-server).
 
-## Related content
+## Next step
 
 Explore the [sql-docs repository](https://github.com/MicrosoftDocs/sql-docs) on GitHub.
 

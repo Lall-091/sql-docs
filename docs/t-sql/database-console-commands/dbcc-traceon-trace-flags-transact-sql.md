@@ -24,7 +24,7 @@ dev_langs:
 
 # Set trace flags with DBCC TRACEON (Transact-SQL)
 
-[!INCLUDE [tsql-appliesto-ss-asdmi-md](../../includes/applies-to-version/sql-asdbmi.md)]
+[!INCLUDE [sql-asdbmi](../../includes/applies-to-version/sql-asdbmi.md)]
 
 Trace flags are used to set specific server characteristics or to alter a particular behavior. For example, trace flag 3226 is a commonly used startup trace flag that suppresses successful backup messages in the error log. Trace flags might be used to diagnose or mitigate performance issues, but they might also be recommended by Microsoft to address behavior that is negatively affecting a specific workload. Conversely, Microsoft might recommend that you remove a trace flag if it causes or contributes to a problem affecting your workload.
 
