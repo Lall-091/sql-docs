@@ -4,7 +4,7 @@ description: Explanation of SQL Server includes files for versioning and applies
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: randolphwest
-ms.date: 05/26/2025
+ms.date: 12/15/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: article
@@ -18,7 +18,7 @@ This article is meant to be used as a reference point for just the first two typ
 
 ## SQL Server version include files
 
-SQL Content writers frequently need to include the name of the product and version of SQL Server. This way, if something changes in the name, the include file is updated instead of manually updating the value in every single article. These include files are used as placeholders for product names but haven't been consistently used in all SQL documentation. SQL Server vNext refers to a future release of SQL that doesn't yet have a version number and is the exception to this.
+SQL Content writers frequently need to include the name of the product and version of SQL Server. This way, if something changes in the name, the include file is updated instead of manually updating the value in every single article. These include files are used as placeholders for product names but aren't consistently used in all SQL documentation. SQL Server vNext refers to a future release of SQL Server that doesn't yet have a version number, and is the exception to this rule.
 
 | SQL Server version | File name | Markdown example | Text |
 | --- | --- | --- | --- |
@@ -34,7 +34,7 @@ SQL Content writers frequently need to include the name of the product and versi
 | SQL Server 2017 | sssql17-md.md | `[!INCLUDE [sssql17-md](../includes/sssql17-md.md)]` | [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] |
 | SQL Server 2019 | sssql19-md.md | `[!INCLUDE [sssql19-md](../includes/sssql19-md.md)]` | [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] |
 | SQL Server 2022 | sssql22-md.md | `[!INCLUDE [sssql22-md](../includes/sssql22-md.md)]` | [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] |
-| SQL Server 2025 | sssql22-md.md | `[!INCLUDE [sssql25-md](../includes/sssql25-md.md)]` | [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] |
+| SQL Server 2025 | sssql25-md.md | `[!INCLUDE [sssql25-md](../includes/sssql25-md.md)]` | [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] |
 | SQL Server vNext | sssql22-md.md | `[!INCLUDE [sssql22-md](../includes/sssql22-md.md)]` | [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] |
 
 ## SQL Server applies-to (non-version-specific)
@@ -53,8 +53,6 @@ These applies-to include files specify which versions of SQL the documentation a
 | File name | Markdown example | Image |
 | --- | --- | --- |
 | applies-to-version/asa-pdw.md | `[!INCLUDE [applies-to-version/asa-pdw.md](../includes/applies-to-version/asa-pdw.md)]` | [!INCLUDE [applies-to-version/asa-pdw.md](../includes/applies-to-version/asa-pdw.md)] |
-| tsql-appliesto-ss2008-xxxx-xxxx-xxx-md.md | `[!INCLUDE [tsql-appliesto-ss2008-xxxx-xxxx-xxx-md.md](../includes/applies-to-version/sqlserver.md)]` | [!INCLUDE [tsql-appliesto-ss2008-xxxx-xxxx-xxx-md.md](../includes/applies-to-version/sqlserver.md)] |
-| tsql-appliesto-ss2017-xxxx-xxxx-xxx-md.md | `[!INCLUDE [tsql-appliesto-ss2017-xxxx-xxxx-xxx-md.md](../includes/applies-to-version/sqlserver2017.md)]` | [!INCLUDE [tsql-appliesto-ss2017-xxxx-xxxx-xxx-md.md](../includes/applies-to-version/sqlserver2017.md)] |
 
 ## Related content
 
