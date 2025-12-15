@@ -50822,7 +50822,12 @@
     },
     {
       "source_path": "docs/advanced-analytics/install/sql-machine-learning-azure-data-studio.md",
-      "redirect_url": "/sql/machine-learning/install/sql-machine-learning-azure-data-studio",
+      "redirect_url": "/sql/machine-learning/install/sql-machine-learning-visual-studio-code",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/machine-learning/install/sql-machine-learning-azure-data-studio.md",
+      "redirect_url": "/sql/machine-learning/install/sql-machine-learning-visual-studio-code",
       "redirect_document_id": true
     },
     {
