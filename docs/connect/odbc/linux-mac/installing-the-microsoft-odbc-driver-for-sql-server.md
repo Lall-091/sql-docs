@@ -3,10 +3,10 @@ title: Install the Microsoft ODBC driver for SQL Server (Linux)
 description: Learn how to install the Microsoft ODBC Driver for SQL Server on Linux clients to enable database connectivity.
 author: David-Engel
 ms.author: davidengel
-ms.date:  07/30/2025
+ms.date:  12/17/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - intro-installation
   - linux-related-content
@@ -22,7 +22,7 @@ This article provides commands for installing the ODBC driver from the bash shel
 
 ## <a id="18"></a> Microsoft ODBC 18
 
-The following sections explain how to install the Microsoft ODBC driver 18 from the bash shell for different Linux distributions. Supported distributions are Alpine Linux, Debian, Red Hat Enterprise Linux (RHEL), Oracle Linux, SUSE Linux Enterprise Server (SLES), and Ubuntu. Starting with version 18.4, to accept the EULA automatically when installing the non-Alpine Linux (.deb or .rpm) driver, you can create the file '/opt/microsoft/msodbcsql18/ACCEPT_EULA'.
+The following sections explain how to install the Microsoft ODBC driver 18 from the bash shell for different Linux distributions. Supported distributions are Alpine Linux, Debian, Red Hat Enterprise Linux (RHEL), Oracle Linux, SUSE Linux Enterprise Server (SLES), Ubuntu, and Azure Linux. Starting with version 18.4, to accept the EULA automatically when installing the non-Alpine Linux (`.deb`or `.rpm`) driver, you can create the file `/opt/microsoft/msodbcsql18/ACCEPT_EULA`.
 
 ### [Alpine](#tab/alpine18-install)
 
@@ -39,20 +39,20 @@ then
 fi
 
 #Download the desired package(s)
-curl -O https://download.microsoft.com/download/fae28b9a-d880-42fd-9b98-d779f0fdd77f/msodbcsql18_18.5.1.1-1_$architecture.apk
-curl -O https://download.microsoft.com/download/7/6/d/76de322a-d860-4894-9945-f0cc5d6a45f8/mssql-tools18_18.4.1.1-1_$architecture.apk
+curl -O https://download.microsoft.com/download/9dcab408-e0d4-4571-a81a-5a0951e3445f/msodbcsql18_18.6.1.1-1_$architecture.apk
+curl -O https://download.microsoft.com/download/b60bb8b6-d398-4819-9950-2e30cf725fb0/mssql-tools18_18.6.1.1-1_$architecture.apk
 
 #(Optional) Verify signature, if 'gpg' is missing install it using 'apk add gnupg':
-curl -O https://download.microsoft.com/download/fae28b9a-d880-42fd-9b98-d779f0fdd77f/msodbcsql18_18.5.1.1-1_$architecture.sig
-curl -O https://download.microsoft.com/download/7/6/d/76de322a-d860-4894-9945-f0cc5d6a45f8/mssql-tools18_18.4.1.1-1_$architecture.sig
+curl -O https://download.microsoft.com/download/9dcab408-e0d4-4571-a81a-5a0951e3445f/msodbcsql18_18.6.1.1-1_$architecture.sig
+curl -O https://download.microsoft.com/download/b60bb8b6-d398-4819-9950-2e30cf725fb0/mssql-tools18_18.6.1.1-1_$architecture.sig
 
 curl https://packages.microsoft.com/keys/microsoft.asc  | gpg --import -
-gpg --verify msodbcsql18_18.5.1.1-1_$architecture.sig msodbcsql18_18.5.1.1-1_$architecture.apk
-gpg --verify mssql-tools18_18.4.1.1-1_$architecture.sig mssql-tools18_18.4.1.1-1_$architecture.apk
+gpg --verify msodbcsql18_18.6.1.1-1_$architecture.sig msodbcsql18_18.6.1.1-1_$architecture.apk
+gpg --verify mssql-tools18_18.6.1.1-1_$architecture.sig mssql-tools18_18.6.1.1-1_$architecture.apk
 
 #Install the package(s)
-sudo apk add --allow-untrusted msodbcsql18_18.5.1.1-1_$architecture.apk
-sudo apk add --allow-untrusted mssql-tools18_18.4.1.1-1_$architecture.apk
+sudo apk add --allow-untrusted msodbcsql18_18.6.1.1-1_$architecture.apk
+sudo apk add --allow-untrusted mssql-tools18_18.6.1.1-1_$architecture.apk
 ```
 
 > [!NOTE]  
@@ -61,7 +61,7 @@ sudo apk add --allow-untrusted mssql-tools18_18.4.1.1-1_$architecture.apk
 ### [Debian](#tab/debian18-install)
 
 ```bash
-if ! [[ "9 10 11 12" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)"* ]];
+if ! [[ "9 10 11 12 13" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)"* ]];
 then
     echo "Debian $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1) is not currently supported.";
     exit;
@@ -92,7 +92,7 @@ sudo apt-get install -y libgssapi-krb5-2
 ### [RHEL and Oracle Linux](#tab/redhat18-install)
 
 ```bash
-if ! [[ "7 8 9" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)"* ]];
+if ! [[ "7 8 9 10" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1)"* ]];
 then
     echo "RHEL $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2 | cut -d '.' -f 1) is not currently supported.";
     exit;
@@ -146,7 +146,7 @@ sudo zypper install -y unixODBC-devel
 ### [Ubuntu](#tab/ubuntu18-install)
 
 ```bash
-if ! [[ "18.04 20.04 22.04 24.04 24.10" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2)"* ]];
+if ! [[ "18.04 20.04 22.04 24.04 25.10" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2)"* ]];
 then
     echo "Ubuntu $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2) is not currently supported.";
     exit;
@@ -173,6 +173,27 @@ sudo apt-get install -y unixodbc-dev
 > [!NOTE]  
 > You can substitute setting the environment variable 'ACCEPT_EULA' with setting the debconf variable 'msodbcsql/ACCEPT_EULA' instead: `echo msodbcsql18 msodbcsql/ACCEPT_EULA boolean true | sudo debconf-set-selections`
 
+### [Azure Linux](#tab/azure18-install)
+
+```bash
+if ! [[ "3.0" == *"$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2)"* ]];
+then
+    echo "Azure Linux $(grep VERSION_ID /etc/os-release | cut -d '"' -f 2) is not currently supported.";
+    exit;
+fi
+
+sudo ACCEPT_EULA=Y tdnf install -y msodbcsql18
+# optional: for bcp and sqlcmd
+sudo ACCEPT_EULA=Y tdnf install -y mssql-tools18
+echo 'export PATH="$PATH:/opt/mssql-tools18/bin"' >> ~/.bashrc
+source ~/.bashrc
+# optional: for unixODBC development headers
+sudo tdnf install -y unixODBC-devel
+```
+
+> [!NOTE]  
+> If you don't set the `ACCEPT_EULA` environment variable, the installation still continues. However, you then need to manually run `/opt/microsoft/msodbcsql18/accept-eula.sh` and `/opt/mssql-tools18/bin/accept-eula.sh` to agree to the license terms. To automatically accept the EULA during installation, you can create the files `/opt/microsoft/msodbcsql18/ACCEPT_EULA` and `/opt/mssql-tools18/ACCEPT_EULA`.
+
 ---
 
 ## Previous versions
@@ -189,7 +210,7 @@ The following sections provide instructions for installing previous versions of 
 The following sections explain how to install the Microsoft ODBC driver 17 from the bash shell for different Linux distributions.
 
 > [!IMPORTANT]  
-> If you installed the v17 `msodbcsql` package that was briefly available, you should remove it before installing the `msodbcsql17` package. This will avoid conflicts. The `msodbcsql17` package can be installed side by side with the `msodbcsql` v13 package.
+> If you installed the v17 `msodbcsql` package that was briefly available, you should remove it before installing the `msodbcsql17` package to avoid conflicts. The `msodbcsql17` package can be installed side by side with the `msodbcsql` v13 package.
 
 ### [Alpine](#tab/alpine17-install)
 

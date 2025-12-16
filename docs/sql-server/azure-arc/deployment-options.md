@@ -5,7 +5,7 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest
 ms.date: 07/03/2025
-ms.topic: conceptual
+ms.topic: article
 ---
 
 # Deployment options for SQL Server enabled by Azure Arc
@@ -35,6 +35,8 @@ The following table highlights each method so that you can determine which works
 | At scale | [Connect machines at scale with a Configuration Manager custom task sequence](/azure/azure-arc/servers/onboard-configuration-manager-custom-task) |
 
 Be sure to review the basic [prerequisites](prerequisites.md) before you deploy the agent, as well as any specific requirements listed in the steps for the onboarding method you choose.
+
+## Upgrade the extension
 
 [!INCLUDE [manage-extension](includes/manage-extension.md)]
 

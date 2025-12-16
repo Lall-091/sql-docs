@@ -88,11 +88,14 @@ After you've cut over to the SQL managed instance target, monitor your applicati
 
 For details, review [post-migration](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md#post-migration). 
 
-## Reverse migrate (SQL Server 2022)
+## Reverse a migration
 
-Starting with SQL Server 2022 CU10, you can configure a link with Azure SQL Managed Instance as the initial primary and SQL Server as the secondary. This capability allows you to reverse migrate from Azure SQL Managed Instance to SQL Server 2022.
+Reverse migration back to SQL Server from Azure SQL Managed Instance might be supported depending on the [update policy](/azure/azure-sql/managed-instance/update-policy) of your SQL managed instance. For example: 
+- [SQL Server 2022 update policy](/azure/azure-sql/managed-instance/update-policy#sql-server-2022-update-policy): Databases from instances configured with the **SQL Server 2022** update policy can be restored back to SQL Server 2022 instances.
+- [SQL Server 2025 update policy](/azure/azure-sql/managed-instance/update-policy#sql-server-2025-update-policy): Databases from instances configured with the **SQL Server 2025** update policy can be restored back to SQL Server 2025 instances.
+- [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy): Databases from instances configured with the **Always-up-to-date** update policy can't be restored back to SQL Server.
 
-To reverse a migration, follow the same steps to configure the link, but start the process with the SQL Managed Instance as your migration source, and the SQL Server 2022 instance as the migration target. 
+If your source SQL Server version is earlier than SQL Server 2022, reverse migration isn't possible. When your database is migrated to SQL Managed Instance, it undergoes an internal upgrade to a newer database version that isn't compatible with earlier SQL Server versions. Reverse migration database compatibility is only available when SQL Managed instance is configured with the corresponding update policy.
 
 ## Related content
 

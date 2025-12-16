@@ -73,7 +73,22 @@ To manage automatic updates programmatically or by policy, review the informatio
 - [Enable Microsoft updates (to enable SQL Server updates)](/azure/update-manager/configure-wu-agent#enable-updates-for-other-microsoft-products)
 - [Enable Azure Update Manager via Azure policy](/azure/update-manager/tutorial-assessment-deployment-using-policy)
 
-[!INCLUDE [manage-extension](includes/manage-extension.md)]
+## Check automatic extension upgrade history 
+
+You can use the Azure activity log to identify when automatic updates were applied to an Azure Arc-enabled SQL Server instance. To view the activity log, follow these steps:
+
+1. Go to your [SQL Server instance enabled by Azure Arc resource](https://portal.azure.com/#view/Microsoft_Azure_ArcCenterUX/ArcCenterMenuBlade/~/sqlServerInstances) in the Azure portal.
+1. Select **Activity log** from the resource menu:
+
+   :::image type="content" source="media/migrate-to-azure-sql-managed-instance-troubleshoot/activity-log.png" alt-text="Screenshot of the activity log highlighted for a SQL Server instance resource in the Azure portal.":::
+
+1. Use **+ Add filter** to add a filter for the **Operation** of `Upgrade Extensions on Azure Arc machines` to identify when the extension was automatically updated.
+
+You can also access the subscription-level activity log for a broader view of events across all resources in your subscription by selecting the notification bell icon of the top navigation bar and then selecting **More events in the activity log**:
+
+:::image type="content" source="media/migrate-to-azure-sql-managed-instance-troubleshoot/notification-bell.png" alt-text="Screenshot of the notification bell icon highlighted in the Azure portal.":::
+
+Filter by the `Upgrade Extensions on Azure Arc machines` **Operation** to identify when the extension was automatically updated across all resources in your subscription.
 
 ## Related content
 

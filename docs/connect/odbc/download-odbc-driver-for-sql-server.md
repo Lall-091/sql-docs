@@ -3,10 +3,10 @@ title: Download ODBC Driver for SQL Server
 description: Download the Microsoft ODBC Driver for SQL Server to develop native-code applications that connect to SQL Server and Azure SQL Database.
 author: David-Engel
 ms.author: davidengel
-ms.date: 09/26/2025
+ms.date: 12/17/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - linux-related-content
   - ignite-2024
@@ -22,19 +22,19 @@ Microsoft ODBC Driver for SQL Server is a single dynamic-link library (DLL) cont
 
 The redistributable installer for Microsoft ODBC Driver 18 for SQL Server installs the client components, which are required during run time to take advantage of newer SQL Server features. It optionally installs the header files needed to develop an application that uses the ODBC API. Starting with version 17.4.2, the installer also includes and installs the Microsoft Active Directory Authentication Library (ADAL.dll).
 
-Version 18.5.2.1 is the latest general availability (GA) version. If you have a previous version of Microsoft ODBC Driver 18 for SQL Server installed, installing 18.5.2.1 upgrades it to 18.5.2.1. The Microsoft ODBC Driver 18 for SQL Server can be installed side by side with Microsoft ODBC Driver 17 for SQL Server.
+Version 18.6.1.1 is the latest general availability (GA) version. If you have a previous version of Microsoft ODBC Driver 18 for SQL Server installed, installing 18.6.1.1 upgrades it to 18.6.1.1. The Microsoft ODBC Driver 18 for SQL Server can be installed side by side with Microsoft ODBC Driver 17 for SQL Server.
 
-:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft ODBC Driver 18 for SQL Server (x64)](https://go.microsoft.com/fwlink/?linkid=2335671)**  
-:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft ODBC Driver 18 for SQL Server (x86)](https://go.microsoft.com/fwlink/?linkid=2335863)**  
-:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft ODBC Driver 18 for SQL Server (ARM64)](https://go.microsoft.com/fwlink/?linkid=2335756)**  
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft ODBC Driver 18 for SQL Server (x64)](https://go.microsoft.com/fwlink/?linkid=2345415)**  
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft ODBC Driver 18 for SQL Server (x86)](https://go.microsoft.com/fwlink/?linkid=2346006)**  
+:::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Microsoft ODBC Driver 18 for SQL Server (ARM64)](https://go.microsoft.com/fwlink/?linkid=2345416)**  
 
 > [!NOTE]
-> Use the x86 installer for 32-bit machines, or the x64 installer to install both 64-bit and 32-bit drivers on a 64-bit machine.
+> Use the x86 installer for 32-bit machines, or the x64 installer to install both 64-bit and 32-bit drivers on an x64 machine, or the arm64 installer to install both 64-bit and 32-bit drivers on an ARM64 machine.
 
 ### Version information
 
-- Release number: 18.5.2.1
-- Released: September 26, 2025
+- Release number: 18.6.1.1
+- Released: December 17, 2025
 
 > [!NOTE]
 > If you're accessing this page from a non-English language version, and want to see the most up-to-date content, select **Read in English** at the top of this page. You can download different languages from the US-English version site by selecting [available languages](#available-languages).
@@ -43,14 +43,14 @@ Version 18.5.2.1 is the latest general availability (GA) version. If you have a 
 
 This release of Microsoft ODBC Driver for SQL Server can be installed in the following languages:
 
-Microsoft ODBC Driver 18.5.2.1 for SQL Server (x64):
-[Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x404) | [Czech](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x405) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x412) | [Polish](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x415) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x40a) | [Turkish](https://go.microsoft.com/fwlink/?linkid=2335671&clcid=0x41f)
+Microsoft ODBC Driver 18.6.1.1 for SQL Server (x64):
+[Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2345415&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2345415&clcid=0x404) | [Czech](https://go.microsoft.com/fwlink/?linkid=2345415&clcid=0x405) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2345415&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2345415&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2345415&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2345415&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2345415&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2345415&clcid=0x412) | [Polish](https://go.microsoft.com/fwlink/?linkid=2345415&clcid=0x415) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2345415&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2345415&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2345415&clcid=0x40a) | [Turkish](https://go.microsoft.com/fwlink/?linkid=2345415&clcid=0x41f)
 
-Microsoft ODBC Driver 18.5.2.1 for SQL Server (x86):
-[Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x404) | [Czech](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x405) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x412) | [Polish](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x415) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x40a) | [Turkish](https://go.microsoft.com/fwlink/?linkid=2335863&clcid=0x41f)
+Microsoft ODBC Driver 18.6.1.1 for SQL Server (x86):
+[Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2346006&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2346006&clcid=0x404) | [Czech](https://go.microsoft.com/fwlink/?linkid=2346006&clcid=0x405) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2346006&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2346006&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2346006&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2346006&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2346006&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2346006&clcid=0x412) | [Polish](https://go.microsoft.com/fwlink/?linkid=2346006&clcid=0x415) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2346006&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2346006&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2346006&clcid=0x40a) | [Turkish](https://go.microsoft.com/fwlink/?linkid=2346006&clcid=0x41f)
 
-Microsoft ODBC Driver 18.5.2.1 for SQL Server (ARM64):
-[Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x404) | [Czech](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x405) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x412) | [Polish](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x415) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x40a) | [Turkish](https://go.microsoft.com/fwlink/?linkid=2335756&clcid=0x41f)
+Microsoft ODBC Driver 18.6.1.1 for SQL Server (ARM64):
+[Chinese (Simplified)](https://go.microsoft.com/fwlink/?linkid=2345416&clcid=0x804) | [Chinese (Traditional)](https://go.microsoft.com/fwlink/?linkid=2345416&clcid=0x404) | [Czech](https://go.microsoft.com/fwlink/?linkid=2345416&clcid=0x405) | [English (United States)](https://go.microsoft.com/fwlink/?linkid=2345416&clcid=0x409) | [French](https://go.microsoft.com/fwlink/?linkid=2345416&clcid=0x40c) | [German](https://go.microsoft.com/fwlink/?linkid=2345416&clcid=0x407) | [Italian](https://go.microsoft.com/fwlink/?linkid=2345416&clcid=0x410) | [Japanese](https://go.microsoft.com/fwlink/?linkid=2345416&clcid=0x411) | [Korean](https://go.microsoft.com/fwlink/?linkid=2345416&clcid=0x412) | [Polish](https://go.microsoft.com/fwlink/?linkid=2345416&clcid=0x415) | [Portuguese (Brazil)](https://go.microsoft.com/fwlink/?linkid=2345416&clcid=0x416) | [Russian](https://go.microsoft.com/fwlink/?linkid=2345416&clcid=0x419) | [Spanish](https://go.microsoft.com/fwlink/?linkid=2345416&clcid=0x40a) | [Turkish](https://go.microsoft.com/fwlink/?linkid=2345416&clcid=0x41f)
 
 ## Version 17
 
@@ -91,16 +91,20 @@ If you need to download the packages for offline installation, all versions are 
 
 ### Alpine
 
+- [18.6.1.1 Alpine driver ARM package](https://download.microsoft.com/download/9dcab408-e0d4-4571-a81a-5a0951e3445f/msodbcsql18_18.6.1.1-1_arm64.apk) ([PGP Signature](https://download.microsoft.com/download/9dcab408-e0d4-4571-a81a-5a0951e3445f/msodbcsql18_18.6.1.1-1_arm64.sig))
+- [18.6.1.1 Alpine driver package](https://download.microsoft.com/download/9dcab408-e0d4-4571-a81a-5a0951e3445f/msodbcsql18_18.6.1.1-1_amd64.apk) ([PGP Signature](https://download.microsoft.com/download/9dcab408-e0d4-4571-a81a-5a0951e3445f/msodbcsql18_18.6.1.1-1_amd64.sig))
+- [18.6.1.1 Alpine tools ARM package](https://download.microsoft.com/download/b60bb8b6-d398-4819-9950-2e30cf725fb0/mssql-tools18_18.6.1.1-1_arm64.apk) ([PGP Signature](https://download.microsoft.com/download/b60bb8b6-d398-4819-9950-2e30cf725fb0/mssql-tools18_18.6.1.1-1_arm64.sig))
+- [18.6.1.1 Alpine tools package](https://download.microsoft.com/download/b60bb8b6-d398-4819-9950-2e30cf725fb0/mssql-tools18_18.6.1.1-1_amd64.apk) ([PGP Signature](https://download.microsoft.com/download/b60bb8b6-d398-4819-9950-2e30cf725fb0/mssql-tools18_18.6.1.1-1_amd64.sig))
 - [18.5.1.1 Alpine ARM package](https://download.microsoft.com/download/fae28b9a-d880-42fd-9b98-d779f0fdd77f/msodbcsql18_18.5.1.1-1_arm64.apk) ([PGP Signature](https://download.microsoft.com/download/fae28b9a-d880-42fd-9b98-d779f0fdd77f/msodbcsql18_18.5.1.1-1_arm64.sig))
 - [18.5.1.1 Alpine package](https://download.microsoft.com/download/fae28b9a-d880-42fd-9b98-d779f0fdd77f/msodbcsql18_18.5.1.1-1_amd64.apk) ([PGP Signature](https://download.microsoft.com/download/fae28b9a-d880-42fd-9b98-d779f0fdd77f/msodbcsql18_18.5.1.1-1_amd64.sig))
 - [18.4.1.1 Alpine ARM package](https://download.microsoft.com/download/7/6/d/76de322a-d860-4894-9945-f0cc5d6a45f8/msodbcsql18_18.4.1.1-1_arm64.apk) ([PGP Signature](https://download.microsoft.com/download/7/6/d/76de322a-d860-4894-9945-f0cc5d6a45f8/msodbcsql18_18.4.1.1-1_arm64.sig))
 - [18.4.1.1 Alpine package](https://download.microsoft.com/download/7/6/d/76de322a-d860-4894-9945-f0cc5d6a45f8/msodbcsql18_18.4.1.1-1_amd64.apk) ([PGP Signature](https://download.microsoft.com/download/7/6/d/76de322a-d860-4894-9945-f0cc5d6a45f8/msodbcsql18_18.4.1.1-1_amd64.sig))
 - [18.3.3.1 Alpine ARM package](https://download.microsoft.com/download/3/5/5/355d7943-a338-41a7-858d-53b259ea33f5/msodbcsql18_18.3.3.1-1_arm64.apk) ([PGP Signature](https://download.microsoft.com/download/3/5/5/355d7943-a338-41a7-858d-53b259ea33f5/msodbcsql18_18.3.3.1-1_arm64.sig))
 - [18.3.3.1 Alpine package](https://download.microsoft.com/download/3/5/5/355d7943-a338-41a7-858d-53b259ea33f5/msodbcsql18_18.3.3.1-1_amd64.apk) ([PGP Signature](https://download.microsoft.com/download/3/5/5/355d7943-a338-41a7-858d-53b259ea33f5/msodbcsql18_18.3.3.1-1_amd64.sig))
+- [18.3.2.1 Alpine ARM package](https://download.microsoft.com/download/3/5/5/355d7943-a338-41a7-858d-53b259ea33f5/msodbcsql18_18.3.2.1-1_arm64.apk) ([PGP Signature](https://download.microsoft.com/download/3/5/5/355d7943-a338-41a7-858d-53b259ea33f5/msodbcsql18_18.3.2.1-1_arm64.sig))
 - [18.3.2.1 Alpine package](https://download.microsoft.com/download/3/5/5/355d7943-a338-41a7-858d-53b259ea33f5/msodbcsql18_18.3.2.1-1_amd64.apk) ([PGP Signature](https://download.microsoft.com/download/3/5/5/355d7943-a338-41a7-858d-53b259ea33f5/msodbcsql18_18.3.2.1-1_amd64.sig))
-- [18.3.2.1 Alpine package (ARM)](https://download.microsoft.com/download/3/5/5/355d7943-a338-41a7-858d-53b259ea33f5/msodbcsql18_18.3.2.1-1_arm64.apk) ([PGP Signature](https://download.microsoft.com/download/3/5/5/355d7943-a338-41a7-858d-53b259ea33f5/msodbcsql18_18.3.2.1-1_arm64.sig))
+- [18.3.1.1 Alpine ARM package](https://download.microsoft.com/download/3/5/5/355d7943-a338-41a7-858d-53b259ea33f5/msodbcsql18_18.3.1.1-1_arm64.apk) ([PGP Signature](https://download.microsoft.com/download/3/5/5/355d7943-a338-41a7-858d-53b259ea33f5/msodbcsql18_18.3.1.1-1_arm64.sig))
 - [18.3.1.1 Alpine package](https://download.microsoft.com/download/3/5/5/355d7943-a338-41a7-858d-53b259ea33f5/msodbcsql18_18.3.1.1-1_amd64.apk) ([PGP Signature](https://download.microsoft.com/download/3/5/5/355d7943-a338-41a7-858d-53b259ea33f5/msodbcsql18_18.3.1.1-1_amd64.sig))
-- [18.3.1.1 Alpine package (ARM)](https://download.microsoft.com/download/3/5/5/355d7943-a338-41a7-858d-53b259ea33f5/msodbcsql18_18.3.1.1-1_arm64.apk) ([PGP Signature](https://download.microsoft.com/download/3/5/5/355d7943-a338-41a7-858d-53b259ea33f5/msodbcsql18_18.3.1.1-1_arm64.sig))
 - [18.2.1.1 Alpine package](https://download.microsoft.com/download/1/f/f/1fffb537-26ab-4947-a46a-7a45c27f6f77/msodbcsql18_18.2.1.1-1_amd64.apk) ([PGP Signature](https://download.microsoft.com/download/1/f/f/1fffb537-26ab-4947-a46a-7a45c27f6f77/msodbcsql18_18.2.1.1-1_amd64.sig))
 - [18.1.2.1 Alpine package](https://download.microsoft.com/download/8/6/8/868e5fc4-7bfe-494d-8f9d-115cbcdb52ae/msodbcsql18_18.1.2.1-1_amd64.apk) ([PGP Signature](https://download.microsoft.com/download/8/6/8/868e5fc4-7bfe-494d-8f9d-115cbcdb52ae/msodbcsql18_18.1.2.1-1_amd64.sig))
 - [18.1.1.1 Alpine package](https://download.microsoft.com/download/8/6/8/868e5fc4-7bfe-494d-8f9d-115cbcdb52ae/msodbcsql18_18.1.1.1-1_amd64.apk) ([PGP Signature](https://download.microsoft.com/download/8/6/8/868e5fc4-7bfe-494d-8f9d-115cbcdb52ae/msodbcsql18_18.1.1.1-1_amd64.sig))
@@ -116,6 +120,7 @@ If you need to download the packages for offline installation, all versions are 
 
 ### Debian
 
+- Debian 13 .deb packages: [v18](https://packages.microsoft.com/debian/13/prod/pool/main/m/msodbcsql18/)
 - Debian 12 .deb packages: [v17](https://packages.microsoft.com/debian/12/prod/pool/main/m/msodbcsql17/) [v18](https://packages.microsoft.com/debian/12/prod/pool/main/m/msodbcsql18/)
 - Debian 11 .deb packages: [v17](https://packages.microsoft.com/debian/11/prod/pool/main/m/msodbcsql17/) [v18](https://packages.microsoft.com/debian/11/prod/pool/main/m/msodbcsql18/)
 - Debian 10 .deb packages: [v17](https://packages.microsoft.com/debian/10/prod/pool/main/m/msodbcsql17/) [v18](https://packages.microsoft.com/debian/10/prod/pool/main/m/msodbcsql18/)
@@ -124,26 +129,26 @@ If you need to download the packages for offline installation, all versions are 
 
 ### Azure Linux
 
-- [Azure Linux 3 .rpm packages](https://packages.microsoft.com/azurelinux/3.0/prod/)
+- [Azure Linux 3.0 .rpm packages](https://packages.microsoft.com/azurelinux/3.0/prod/)
 
 ### Red Hat
 
-- [Red Hat 9 .rpm packages](https://packages.microsoft.com/rhel/9/prod/)
-- [Red Hat 8 .rpm packages](https://packages.microsoft.com/rhel/8/prod/)
-- [Red Hat 7 .rpm packages](https://packages.microsoft.com/rhel/7/prod/)
-- [Red Hat 6 .rpm packages](https://packages.microsoft.com/rhel/6/prod/)
+- [Red Hat 10 .rpm packages](https://packages.microsoft.com/rhel/10/prod/Packages/m/)
+- [Red Hat 9 .rpm packages](https://packages.microsoft.com/rhel/9/prod/Packages/m/)
+- [Red Hat 8 .rpm packages](https://packages.microsoft.com/rhel/8/prod/Packages/m/)
+- [Red Hat 7 .rpm packages](https://packages.microsoft.com/rhel/7/prod/Packages/m/)
+- [Red Hat 6 .rpm packages](https://packages.microsoft.com/rhel/6/prod/Packages/m/)
 
 ### SUSE
 
-- [SUSE 15 .rpm packages](https://packages.microsoft.com/sles/15/prod/)
-- [SUSE 12 .rpm packages](https://packages.microsoft.com/sles/12/prod/)
-- [SUSE 11 .rpm packages](https://packages.microsoft.com/sles/11/prod/)
+- [SUSE 15 .rpm packages](https://packages.microsoft.com/sles/15/prod/Packages/m/)
+- [SUSE 12 .rpm packages](https://packages.microsoft.com/sles/12/prod/Packages/m/)
+- [SUSE 11 .rpm packages](https://packages.microsoft.com/sles/11/prod/Packages/m/)
 
 ### Ubuntu
-- Ubuntu 24.10 .deb packages: [v18](https://packages.microsoft.com/ubuntu/24.10/prod/pool/main/m/msodbcsql18/)
+- Ubuntu 25.10 .deb packages: [v18](https://packages.microsoft.com/ubuntu/25.10/prod/pool/main/m/msodbcsql18/)
 - Ubuntu 24.04 .deb packages: [v18](https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/msodbcsql18/)
 - Ubuntu 22.04 .deb packages: [v17](https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/msodbcsql17/) [v18](https://packages.microsoft.com/ubuntu/22.04/prod/pool/main/m/msodbcsql18/)
-[v18](https://packages.microsoft.com/ubuntu/21.10/prod/pool/main/m/msodbcsql18/)
 - Ubuntu 20.04 .deb packages: [v17](https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/msodbcsql17/) [v18](https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/msodbcsql18/)
 - Ubuntu 18.04 .deb packages: [v17](https://packages.microsoft.com/ubuntu/18.04/prod/pool/main/m/msodbcsql17/) [v18](https://packages.microsoft.com/ubuntu/18.04/prod/pool/main/m/msodbcsql18/)
 - Ubuntu 16.04 .deb packages: [v13](https://packages.microsoft.com/ubuntu/16.04/prod/pool/main/m/msodbcsql/) [v17](https://packages.microsoft.com/ubuntu/16.04/prod/pool/main/m/msodbcsql17/)

@@ -3,16 +3,20 @@ title: List of bugs fixed
 description: This page contains a listing of bugs fixed in each release, starting with Microsoft ODBC Driver 17 for SQL Server.
 author: David-Engel
 ms.author: davidengel
-ms.date: 03/17/2025
+ms.date: 12/17/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: release-notes
 helpviewer_keywords:
   - "driver"
 ---
 # List of bugs fixed
 
 This page contains a listing of bugs fixed in each release, starting with [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 17 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].
+
+### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 18.6.1.1 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
+
+- Fix TDS packet size in BID trace
 
 ### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 18.5.1.1 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
 
@@ -77,7 +81,7 @@ This page contains a listing of bugs fixed in each release, starting with [!INCL
 ### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 18.2 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
 
 - Fix VBS-NONE enclave attestation protocol
-- Fix error when retrieving numeric column with Regional=Yes
+- Fix an error when retrieving numeric column with Regional=Yes
 - Fix intermittent lack of error when server is stopped during bcp out operation
 - Fix error when stored procedure call contains unquoted string parameter
 - Fix a memory leak upon reconnect
@@ -106,7 +110,7 @@ This page contains a listing of bugs fixed in each release, starting with [!INCL
 ### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 18.0 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
 
 - Fix UI issues where text was cut off and position of items was off.
-- Fix issue with Active Directory Interactive login where attempting to log in after closing the window of the first failure would automatically succeed if cached credentials were available.
+- Fix issue with Active Directory Interactive login where attempting to sign in after closing the window of the first failure would automatically succeed if cached credentials were available.
 - Fix use of XADTC with Azure SQL Managed Instance.
 - Fix loss of Microsoft Entra authentication mode when reconnecting an idle connection.
 - Fix an issue with federated authentication when using PingFed.
@@ -128,7 +132,7 @@ This page contains a listing of bugs fixed in each release, starting with [!INCL
 ### Bug fixes in the [!INCLUDE[msCoName](../../includes/msconame-md.md)] ODBC Driver 17.9 for [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)]
 
 - Fix UI issues where text was cut off and position of items was off.
-- Fix issue with Active Directory Interactive login where attempting to log in after closing the window of the first failure would automatically succeed if cached credentials were available.
+- Fix issue with Active Directory Interactive login where attempting to sign in after closing the window of the first failure would automatically succeed if cached credentials were available.
 - Fix use of XADTC with Azure SQL Managed Instance.
 - Fix loss of Microsoft Entra authentication mode when reconnecting an idle connection.
 - Fix an issue with federated authentication when using PingFed.
@@ -213,7 +217,7 @@ This page contains a listing of bugs fixed in each release, starting with [!INCL
 - Fixed detection of connection liveness
 - Fixed incorrect detection of closed sockets
 - Fixed an infinite wait when attempting to release a statement handle during failed recovery
-- Fixed incorrect uninstallation behavior when both version 13 and 17 are installed on Windows
+- Fixed incorrect uninstallation behavior when both versions 13 and 17 are installed on Windows
 - Fixed decryption behavior on older Windows platform (Windows 7, 8 and Server 2012)
 - Fixed a cache issue when using ADAL Authentication on Windows
 - Fixed an issue that was locking and overwriting trace logs on Windows

@@ -4,7 +4,7 @@ description: This article describes the new serverless compute tier and compares
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: moslake, mathoma, dfurman, blakhani
-ms.date: 12/15/2025
+ms.date: 12/16/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: conceptual
@@ -207,9 +207,9 @@ Auto-resuming is triggered if any of the following conditions are true at any ti
 
 Monitoring, management, or other solutions performing any of these operations trigger auto-resuming. Auto-resuming is also triggered during the deployment of some service updates that require the database be online.
 
-#### Auto-resume trigger indentification
+#### Auto-resume trigger identification
 
-Auto-resume triggers are exposed in the Azure Monitor activity log for **Resume Databases** operations under the `Caller` property in the JSON of the **Succeeded** event.
+Auto-resume triggers are exposed in the [Azure Monitor activity log](/azure/azure-monitor/platform/activity-log?tabs=log-analytics) for **Resume Databases** operations under the `Caller` property in the JSON of the **Succeeded** event.
 
 ### Connectivity
 

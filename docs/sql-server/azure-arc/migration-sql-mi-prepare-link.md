@@ -5,7 +5,7 @@ description: Prepare your SQL Server instance enabled by Azure Arc for migration
 author: danimir
 ms.author: danil
 ms.reviewer: mikeray, randolphwest, mathoma
-ms.date: 11/18/2025
+ms.date: 12/12/2025
 ms.topic: how-to
 ---
 
@@ -20,14 +20,14 @@ With the link, you can migrate your SQL Server databases to Azure SQL Managed In
 :::image type="content" source="media/migrate-to-azure-sql-managed-instance/mi-link-migration-method.png" alt-text="Diagram showing Managed Instance link migration.":::
 
 > [!NOTE]  
-> You can provide feedback on your migration experience [directly to the product group](https://aka.ms/arc-migrations-feedback).
+> You can provide feedback about your migration experience [directly to the product group](https://aka.ms/arc-migrations-feedback).
 
 ## Prerequisites
 
 To migrate your SQL Server databases to Azure SQL Managed Instance through the Azure portal, you need the following prerequisites:
 
 - An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- A [supported](#supported-sql-server-versions) instance of SQL Server [enabled by Azure Arc](overview.md) with the Azure extension for SQL Server version `1.1.3211.337` or later. You can upgrade your extension by using the [Azure portal](/azure/azure-arc/servers/manage-vm-extensions-portal#upgrade-extensions) or the [Azure CLI](/azure/azure-arc/servers/manage-vm-extensions-cli#upgrade-extensions).
+- A [supported](#supported-sql-server-versions) instance of SQL Server [enabled by Azure Arc](overview.md) with the Azure extension for SQL Server version `1.1.3238.349` or later. You can upgrade your extension by using the [Azure portal](/azure/azure-arc/servers/manage-vm-extensions-portal#upgrade-extensions) or the [Azure CLI](/azure/azure-arc/servers/manage-vm-extensions-cli#upgrade-extensions).
 
 ## Supported SQL Server versions
 
@@ -37,8 +37,8 @@ The following table lists the minimum supported SQL Server versions for the link
 
 | SQL Server version | Minimum required servicing update |
 | --- | --- |
-| SQL Server 2025 (17.x) |  [SQL Server 2025 RTM (17.0.1000.7)](../sql-server-2025-release-notes.md) |
-| SQL Server 2022 (16.x) |  [SQL Server 2022 RTM (16.0.1000.6)](../sql-server-2022-release-notes.md) | 
+| SQL Server 2025 (17.x) | [SQL Server 2025 RTM (17.0.1000.7)](../sql-server-2025-release-notes.md) |
+| SQL Server 2022 (16.x) | [SQL Server 2022 RTM (16.0.1000.6)](../sql-server-2022-release-notes.md) | 
 | SQL Server 2019 (15.x) | [SQL Server 2019 CU20 (15.0.4312.2)](https://support.microsoft.com/topic/kb5024276-cumulative-update-20-for-sql-server-2019-4b282be9-b559-46ac-9b6a-badbd44785d2) |
 | SQL Server 2017 (14.x) | [SQL Server 2017 CU31 (14.0.3456.2)](/troubleshoot/sql/releases/sqlserver-2017/cumulativeupdate31) or later and the matching [SQL Server 2017 Azure Connect pack (14.0.3490.10)](/troubleshoot/sql/releases/sqlserver-2017/azureconnect) build | 
 | SQL Server 2016 (13.x) | [SQL Server 2016 SP3 (13.0.6300.2)](/troubleshoot/sql/releases/sqlserver-2016/build-versions#sql-server-2016-service-pack-3-sp3-cumulative-update-cu-builds) and the matching [SQL Server 2016 Azure Connect pack (13.0.7000.253)](/troubleshoot/sql/releases/sqlserver-2016/build-versions#sql-server-2016-service-pack-3-sp3-azure-connect-pack-builds) build |
@@ -53,7 +53,7 @@ This section describes the permissions that you need to migrate your SQL Server 
 On the source SQL Server instance, you need the following permissions:
 
 - If you enable [least privilege](configure-least-privilege.md), necessary permissions such as **sysadmin** are [granted](configure-windows-accounts-agent.md#database-migration) as needed during the database migration process.
-- If you can't use least privilege, you need **sysadmin** permissions on the source SQL Server instance.
+- If you can't use least privilege, the person performing the migration needs **sysadmin** permissions on the source SQL Server instance. Additionally, if you need to cancel a migration, also manually assign **sysadmin** permissions to the `NT AUTHORITY\SYSTEM` account. 
 
 To migrate with the Managed Instance link, you need one of the following permissions on the SQL Managed Instance target:
 
@@ -303,10 +303,14 @@ The Network Security Group (NSG) rules on the subnet that hosts SQL Managed Inst
 - Inbound port 5022 and port range 11000-11999 to receive traffic from the source SQL Server IP address
 - Outbound port 5022 to send traffic to the destination SQL Server IP address
 
+The 5022 port can't be changed on SQL Managed Instance.
+
 All firewalls on the network that hosts SQL Server, and the host OS must allow:
 
 - Inbound port 5022 opened to receive traffic from the source IP range of the MI subnet /24 (for example 10.0.0.0/24)
 - Outbound ports 5022, and the port range 11000-11999 opened to send traffic to the destination IP range of MI subnet (example 10.0.0.0/24)
+
+The 5022 port can be customized on the SQL Server side, but the port range 11000-11999 must be opened as is.
 
 :::image type="content" source="media/migration-sql-mi-prepare-link/link-networking-requirements.png" alt-text="Diagram showing network requirements to set up the link between SQL Server and SQL managed instance." lightbox="media/migration-sql-mi-prepare-link/link-networking-requirements.png":::
 
@@ -376,13 +380,15 @@ Consider the following points:
 
 ## Limitations
 
-The limitations of the [Managed Instance link](/azure/azure-sql/managed-instance/managed-instance-link-feature-overview#limitations) apply to migrations through the Azure portal.
+Consider the following limitations: 
+- The limitations of the [Managed Instance link](/azure/azure-sql/managed-instance/managed-instance-link-feature-overview#limitations) apply to migrations through the Azure portal.
+- Cancelling a migration requires **sysadmin** permissions on the source SQL Server instance. If your SQL Server instance isn't using least privilege, manually assign **sysadmin** permissions to the `NT AUTHORITY\SYSTEM` account. 
+- Configuring a link through the Azure portal for the purpose of migration isn't compatible with links created manually, either through SQL Server Management Studio (SSMS), or Transact-SQL (T-SQL). Review the [known issue](migrate-to-azure-sql-managed-instance-troubleshoot.md#known-interoperability-issue-with-existing-links) to learn more. 
+- Monitoring the migration through the Azure portal is available only to SQL Server instances that meet monitoring [licensing requirements](sql-monitoring.md#prerequisites).
 
-Configuring a link through the Azure portal for the purpose of migration isn't compatible with links you create manually. If a link already exists, you need to [drop all certificates](../../t-sql/statements/drop-certificate-transact-sql.md) and [endpoints](../../t-sql/statements/drop-endpoint-transact-sql.md) related to the existing link from your source SQL Server instance before you can create a new link through the Azure portal. You can list all existing certificates with `SELECT * FROM sys.certificates` and all existing endpoints with `SELECT * FROM sys.endpoints`.
+## Troubleshoot common issues
 
-Then remove the certificates from Azure SQL Managed Instance by running the following PowerShell commands in an Azure Cloud Shell or a local machine signed in with an Azure context: [Get-AzSqlInstanceServerTrustCertificate](/powershell/module/az.sql/get-azsqlinstanceservertrustcertificate) and [Remove-AzSqlInstanceServerTrustCertificate](/powershell/module/az.sql/remove-azsqlinstanceservertrustcertificate).
-
-Monitoring the migration through the Azure portal is available only to SQL Server instances that meet monitoring [licensing requirements](sql-monitoring.md#prerequisites).
+To troubleshoot common issues when migrating to Azure SQL Managed Instance, see [Troubleshoot migration issues](migrate-to-azure-sql-managed-instance-troubleshoot.md).
 
 ## Related content
 

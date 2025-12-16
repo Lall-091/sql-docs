@@ -3,17 +3,25 @@ title: Release notes for mssql-tools on Linux and macOS
 description: "Learn what's new and changed in released versions of the Microsoft SQL Server Tools."
 author: David-Engel
 ms.author: davidengel
-ms.date: 07/31/2024
+ms.date: 12/17/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.custom: linux-related-content
-ms.topic: conceptual
+ms.topic: release-notes
 ---
 # Release notes for the Microsoft SQL Server tools on Linux and macOS
 
 [!INCLUDE[Driver_ODBC_Download](../../../includes/driver_odbc_download.md)]
 
 This article lists and describes what's new in the versioned releases of the [!INCLUDE[msCoName](../../../includes/msconame-md.md)] SQL Server Tools on Linux and macOS.
+
+## 18.6.1.1, December 2025
+
+| New item | Details |
+| :------- | :------ |
+| Sqlcmd command line | Added ServerCertificate option on Sqlcmd command line. |
+| BCP command line | Added ServerCertificate and Code Page options on BCP command line. |
+| Azure Linux License | Changed License Acceptance Process for Azure Linux. |
 
 ## 18.4.1.1, July 2024
 
@@ -83,7 +91,7 @@ This article lists and describes what's new in the versioned releases of the [!I
 | Feature added | Details |
 | :------------ | :------ |
 | Sqlcmd Bugfix | Fixed input redirection bug and empty lines leading to repeated execution. |
-| Sqlcmd Bugfix | Fixed mistaken error reporting for r, p, X and k options under certain formatting. |
+| Sqlcmd Bugfix | Fixed mistaken error reporting for r, p, X, and k options under certain formatting. |
 | Sqlcmd -z/-Z "Password" Option | Now supported. |
 
 ## 17.6.1.1, July 2020

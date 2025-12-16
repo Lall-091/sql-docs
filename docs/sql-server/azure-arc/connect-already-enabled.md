@@ -89,6 +89,8 @@ Go to **Azure Arc > SQL Server** and open the newly registered Arc-enabled SQL S
 
 :::image type="content" source="media/join/validate-sql-server-azure-arc.png" alt-text="Screenshot of validating a connected SQL Server." lightbox="media/join/validate-sql-server-azure-arc.png":::
 
+## Upgrade the extension
+
 [!INCLUDE [manage-extension](includes/manage-extension.md)]
 
 ## Related content

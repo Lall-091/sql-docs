@@ -5,7 +5,7 @@ description: Prepare your SQL Server instance enabled by Azure Arc for migration
 author: danimir
 ms.author: danil
 ms.reviewer: mikeray, randolphwest, mathoma
-ms.date: 11/18/2025
+ms.date: 12/12/2025
 ms.topic: how-to
 ---
 
@@ -20,14 +20,14 @@ With LRS, you can migrate your SQL Server databases to Azure SQL Managed Instanc
 :::image type="content" source="media/migrate-to-azure-sql-managed-instance/lrs-migration-method.png" alt-text="Diagram showing Log Replay Service migration.":::
 
 > [!NOTE]  
-> You can provide feedback on your migration experience [directly to the product group](https://aka.ms/arc-migrations-feedback).
+> You can provide feedback about your migration experience [directly to the product group](https://aka.ms/arc-migrations-feedback).
 
 ## Prerequisites
 
 To migrate your SQL Server databases to Azure SQL Managed Instance through the Azure portal, you need the following prerequisites:
 
 - An active Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- A [supported](#supported-sql-server-versions) instance of SQL Server [enabled by Azure Arc](overview.md) with the Azure extension for SQL Server version `1.1.3211.337` or later. You can upgrade your extension by using the [Azure portal](/azure/azure-arc/servers/manage-vm-extensions-portal#upgrade-extensions) or the [Azure CLI](/azure/azure-arc/servers/manage-vm-extensions-cli#upgrade-extensions).
+- A [supported](#supported-sql-server-versions) instance of SQL Server [enabled by Azure Arc](overview.md) with the Azure extension for SQL Server version `1.1.3238.349` or later. You can upgrade your extension by using the [Azure portal](/azure/azure-arc/servers/manage-vm-extensions-portal#upgrade-extensions) or the [Azure CLI](/azure/azure-arc/servers/manage-vm-extensions-cli#upgrade-extensions).
 
 ## Supported SQL Server versions
 
@@ -254,6 +254,10 @@ If it's important that databases are available as soon as cutover completes, con
 - Use the [Managed Instance link](migration-sql-mi-prepare-link.md) for an online migration to a **Business Critical** instance without having to wait for databases to be available after the cutover.
 
 Monitoring the migration through the Azure portal is available only to SQL Server instances that meet monitoring [licensing requirements](sql-monitoring.md#prerequisites).
+
+## Troubleshoot common issues
+
+To troubleshoot common issues when migrating to Azure SQL Managed Instance, see [Troubleshoot migration issues](migrate-to-azure-sql-managed-instance-troubleshoot.md).
 
 ## Related content
 
