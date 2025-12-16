@@ -67635,6 +67635,31 @@
       "redirect_document_id": true
     },
     {
+      "source_path": "docs/tools/configuration-manager/notification-services-sql-server-configuration-manager.md",
+      "redirect_url": "/sql/tools/configuration-manager/sql-server-configuration-manager-help",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/tools/configuration-manager/ns-service-name-properties-advanced-tab.md",
+      "redirect_url": "/sql/tools/configuration-manager/sql-server-configuration-manager-help",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/tools/configuration-manager/ns-service-name-properties-log-on-tab.md",
+      "redirect_url": "/sql/tools/configuration-manager/sql-server-configuration-manager-help",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/tools/configuration-manager/ns-service-name-properties-service-tab.md",
+      "redirect_url": "/sql/tools/configuration-manager/sql-server-configuration-manager-help",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/tools/configuration-manager/sql-server-network-configuration.md",
+      "redirect_url": "/sql/tools/configuration-manager/sql-server-configuration-manager-help",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "docs/relational-databases/system-dynamic-management-views/sys-dm-hs-database-log-rate.md",
       "redirect_url": "/sql/relational-databases/system-functions/sys-dm-hs-database-log-rate",
       "redirect_document_id": false

@@ -3,10 +3,10 @@ title: "Aliases (SQL Server Configuration Manager)"
 description: Learn how to create an alias in SQL Server Configuration Manager so that you can use an alternate name when connecting to an instance of SQL Server.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: "09/10/2024"
+ms.date: 12/15/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection:
   - data-tools
 monikerRange: ">=sql-server-2016"
@@ -15,42 +15,42 @@ monikerRange: ">=sql-server-2016"
 
 [!INCLUDE [SQL Server Windows Only](../../includes/applies-to-version/sql-windows-only.md)]
 
-An alias is an alternate name that can be used to make a connection. The alias encapsulates the required elements of a connection string, and exposes them with a name chosen by the user. To create an alias for the [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] clients on this computer, right-click **Aliases** in the console pane, and then select **New Alias**. To configure an existing alias for the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] clients on this computer, select **Aliases** in the console pane, right-click the desired existing alias in the details pane, and then select **Properties**.  
-  
-> [!NOTE]
-> Aliases for SQL Server are a client side configuration. Each client computer that uses the alias must have an identical alias configuration, and SQL Server Configuration Manager is not the only tool that can be used to create or manage aliases.
+An alias is an alternate name that can be used to make a connection. The alias encapsulates the required elements of a connection string, and exposes them with a name chosen by the user. To create an alias for the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] clients on this computer, right-click **Aliases** in the console pane, and then select **New Alias**. To configure an existing alias for the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] clients on this computer, select **Aliases** in the console pane, right-click the desired existing alias in the details pane, and then select **Properties**.
+
+> [!NOTE]  
+> Aliases for SQL Server are a client side configuration. Each client computer that uses the alias must have an identical alias configuration, and SQL Server Configuration Manager isn't the only tool that can be used to create or manage aliases.
 >
-> SQL Server 2022 and later versions do not support creating aliases using SQL Server Configuration Manager. To create an alias for SQL Server 2022 and later versions, use the [SQL Server Client Network Utility tool](/previous-versions/windows/desktop/odbc/dn170508(v=vs.85)).
+> [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and later versions don't support creating aliases using SQL Server Configuration Manager. To create an alias for SQL Server 2022 and later versions, use the [SQL Server Client Network Utility tool](/previous-versions/windows/desktop/odbc/dn170508(v=vs.85)).
 
 ## When to use an alias
 
-By default, [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] connects to a local instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] using the **Shared Memory** protocol, and to an instance of [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] on another computer using either **TCP/IP** or **Named Pipes**. Create an alias when you're using TCP/IP or named pipes, and you want to provide a customized connection string, or when you want to use a name other than the server name for the connection.  
-  
-### Examples  
-  
-- [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] isn't listening on the default TCP/IP port of 1433 so you want to provide a connection string with a different port number.  
-  
-- [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] isn't listening on the default named pipe so you want to provide a connection string with a different pipe name.  
-  
-- An application expects to connect to a database on the server named `ACCT`, but that database has been consolidated as an instance named `ACCT` on a server named `CENTRAL`. The application can't easily be changed. Create an alias named `ACCT`, with a connection string pointing to `CENTRAL\ACCT`.  
+By default, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] connects to a local instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] using the **Shared Memory** protocol, and to an instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on another computer using either **TCP/IP** or **Named Pipes**. Create an alias when you're using TCP/IP or named pipes, and you want to provide a customized connection string, or when you want to use a name other than the server name for the connection.
 
-### Alias properties  
-  
+### Examples
+
+- [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] isn't listening on the default TCP/IP port of 1433 so you want to provide a connection string with a different port number.
+
+- [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] isn't listening on the default named pipe so you want to provide a connection string with a different pipe name.
+
+- An application expects to connect to a database on the server named `ACCT`, but that database has been consolidated as an instance named `ACCT` on a server named `CENTRAL`. The application can't easily be changed. Create an alias named `ACCT`, with a connection string pointing to `CENTRAL\ACCT`.
+
+### Alias properties
+
 #### Alias Name
 
-The name (alias) that you want to use to refer to this connection.  
-  
+The name (alias) that you want to use to refer to this connection.
+
 #### Pipe Name or Port Number
 
-Additional elements of the connection string. The name of this box varies with the selected protocol.  
-  
+Additional elements of the connection string. The name of this box varies with the selected protocol.
+
 #### Protocol
 
-The protocol used for the connection.  
-  
+The protocol used for the connection.
+
 #### Server
 
-The name of the [!INCLUDE[msCoName](../../includes/msconame-md.md)] [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] instance being connected to.
+The name of the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instance being connected to.
 
 ## Shared memory connections
 
@@ -91,39 +91,39 @@ To connect to the SQL Server using an alias with TCP/IP, you must:
 At the time of connection, the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Native Client component reads the server, protocol, and port values from the registry for the specified alias name, and creates a connection string in the format `tcp:<servername>[\<instancename>],<port>` or `tcp:<IPAddress>[\<instancename>],<port>`.
 
 > [!NOTE]  
-> The Windows Firewall closes port 1433 by default. Because [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] communicates over port 1433, you must reopen the port if [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] is configured to listen for incoming client connections using TCP/IP. For information on configuring a firewall, see "How to: Configure a Firewall for SQL Server Access" in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Books Online or review your firewall documentation.
+> The Windows Firewall closes port 1433 by default. Because [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] communicates over port 1433, you must reopen the port if [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] is configured to listen for incoming client connections using TCP/IP. For information on configuring a firewall, see [Configure the Windows Firewall to allow SQL Server access](../../sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access.md), or review your firewall documentation.
 
 [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] and [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Native Client fully support both Internet Protocol version 4 (IPv4) and Internet Protocol version 6 (IPv6). [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Configuration Manager accepts both IPv4 and IPv6 formats for IP addresses.
 
 ### Examples of TCP/IP alias settings
 
-#### Connecting by server name
+#### Connect by server name
 
-**Alias Name:** `<serveralias>`</br>
-**Port No:** `<blank>`</br>
-**Protocol:** `TCP/IP`</br>
-**Server:** `<servername>`
+- **Alias Name**: `<serveralias>`
+- **Port No**: `<blank>`
+- **Protocol**: `TCP/IP`
+- **Server**: `<servername>`
 
-#### Connecting by server name to a named instance
+#### Connect by server name to a named instance
 
-**Alias Name:** `<serveralias>`</br>
-**Port No:** `<blank>`</br>
-**Protocol:** `TCP/IP`</br>
-**Server:** `<servername>\<instancename>`
+- **Alias Name**: `<serveralias>`
+- **Port No**: `<blank>`
+- **Protocol**: `TCP/IP`
+- **Server**: `<servername>\<instancename>`
 
-#### Connecting by server name to a specified port
+#### Connect by server name to a specified port
 
-**Alias Name:** `<serveralias>`</br>
-**Port No:** `<port number>`</br>
-**Protocol:** `TCP/IP`</br>
-**Server:** `<servername>`
+- **Alias Name**: `<serveralias>`
+- **Port No**: `<port number>`
+- **Protocol**: `TCP/IP`
+- **Server**: `<servername>`
 
-#### Connecting by IP address
+#### Connect by ip address
 
-**Alias Name:** `<serveralias>`</br>
-**Port No:** `<blank>`</br>
-**Protocol:** `TCP/IP`</br>
-**Server:** `<IPAddress>`
+- **Alias Name**: `<serveralias>`
+- **Port No**: `<blank>`
+- **Protocol**: `TCP/IP`
+- **Server**: `<IPAddress>`
 
 > [!NOTE]  
 > For information on specifying the network protocol as a **sqlcmd** parameter, see [sqlcmd - Connect to the database engine](../sqlcmd/sqlcmd-connect-database-engine.md).
@@ -144,38 +144,38 @@ To connect to the SQL Server using an alias with named pipes, you must:
 
 At the time of connection, the SQL Server Native Client component reads the server, protocol, and pipe name values from the registry for the specified alias name, and creates a pipe name in the format `np:\\<computer_name>\pipe\<pipename>` or `np:\\<IPAddress>\pipe\<pipename>`. For a named instance, the default pipe name is `\\<computer_name>\pipe\MSSQL$<instance_name>\sql\query`.
 
-> [!NOTE]
+> [!NOTE]  
 > The Microsoft Windows Firewall closes port 445 by default. Because Microsoft SQL Server communicates over port 445, you must reopen the port if SQL Server is configured to listen for incoming client connections using named pipes.
 
 ### Examples of Named Pipes alias settings
 
-#### Connecting by server name to the default pipe
+#### Connect by server name to the default pipe
 
-**Alias Name:** `<serveralias>`</br>
-**Pipe Name:** `<blank>`</br>
-**Protocol:** `Named Pipes`</br>
-**Server:** `<servername>`
+- **Alias Name**: `<serveralias>`
+- **Pipe Name**: `<blank>`
+- **Protocol**: `Named Pipes`
+- **Server**: `<servername>`
 
-#### Connecting by IP Address to the default pipe
+#### Connect by ip address to the default pipe
 
-**Alias Name:** `<serveralias>`</br>
-**Pipe Name:** `<blank>`</br>
-**Protocol:** `Named Pipes`</br>
-**Server:** `<IPAddress>`
+- **Alias Name**: `<serveralias>`
+- **Pipe Name**: `<blank>`
+- **Protocol**: `Named Pipes`
+- **Server**: `<IPAddress>`
 
-#### Connecting by server name to a nondefault pipe
+#### Connect by server name to a nondefault pipe
 
-**Alias Name:** `<serveralias>`</br>
-**Pipe Name:** `\\<servername>\pipe\unit\app`</br>
-**Protocol:** `Named Pipes`</br>
-**Server:** `<servername>`
+- **Alias Name**: `<serveralias>`
+- **Pipe Name**: `\\<servername>\pipe\unit\app`
+- **Protocol**: `Named Pipes`
+- **Server**: `<servername>`
 
-#### Connecting by server name to a named instance
+#### Connect by server name to a named instance
 
-**Alias Name:** `<serveralias>`</br>
-**Pipe Name:** `\\<servername>\pipe\MSSQL$<instancename>\SQL\query`</br>
-**Protocol:** `Named Pipes`</br>
-**Server:** `<servername>`
+- **Alias Name**: `<serveralias>`
+- **Pipe Name**: `\\<servername>\pipe\MSSQL$<instancename>\SQL\query`
+- **Protocol**: `Named Pipes`
+- **Server**: `<servername>`
 
 ## Verify your connection protocol
 
@@ -189,4 +189,4 @@ WHERE session_id = @@SPID;
 
 ## Related content
 
-[Network Protocols and Network Libraries](../../sql-server/install/network-protocols-and-network-libraries.md)
+- [Network protocols and network libraries](../../sql-server/install/network-protocols-and-network-libraries.md)

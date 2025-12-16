@@ -8402,7 +8402,6 @@ items:
       - name: Log On Tab
         href: tools/configuration-manager/unknown-service-log-on-tab.md
     - name: SQL Server Network Configuration
-      href: tools/configuration-manager/sql-server-network-configuration.md
       items:
       - name: Protocols for <server>
         href: tools/configuration-manager/protocols-for-server-sql-server-configuration-manager.md
