@@ -4,7 +4,7 @@ description: "sp_addlinkedserver (Transact-SQL)"
 author: markingmyname
 ms.author: maghan
 ms.reviewer: wiassaf, randolphwest, mikeray
-ms.date: 08/21/2025
+ms.date: 12/15/2025
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -61,7 +61,7 @@ The unique programmatic identifier (PROGID) of the OLE DB provider that correspo
 
 - Starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], `MSOLEDBSQL` uses Microsoft OLE DB Driver version 19, which adds support for [TDS 8.0](../security/networking/tds-8.md). However, this driver introduces a breaking change. You must now specify the `encrypt` parameter. Use `encrypt` to define whether or not encryption is mandatory. You must provide a valid CA-signed certificate to encrypt your connection to another SQL Server instance, or assign `encrypt=optional` in the *@provstr* argument. If you can't modify the linked server configuration, enable trace flag 17600 to maintain OLE DB version 18 behavior and defaults.
 
-   For details about encryption properties, review [Major version differences](../../connect/oledb/major-version-differences.md).
+  For details about encryption properties, review [Major version differences](../../connect/oledb/major-version-differences.md).
 
 > [!IMPORTANT]  
 > [!INCLUDE [snac-removed-oledb-only](../../includes/snac-removed-oledb-only.md)]
@@ -132,13 +132,13 @@ The following table shows the ways that a linked server can be set up for data s
 | [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] | [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Native Client OLE DB Provider | [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] <sup>1</sup> (default) | | | | | |
 | [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] | [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Native Client OLE DB Provider | | `SQLNCLI` | Network name of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] (for default instance) | | | Database name (optional) |
 | [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] | [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Native Client OLE DB Provider | | `SQLNCLI` | *servername*\\*instancename* (for specific instance) | | | Database name (optional) |
-| Oracle, version 8 and later | Oracle Provider for OLE DB | Any | `OraOLEDB.Oracle` | Alias for the Oracle database | | | |
-| Access/Jet | Microsoft OLE DB Provider for Jet | Any | `Microsoft.Jet.OLEDB.4.0` | Full path of Jet database file | | | |
-| ODBC data source | Microsoft OLE DB Provider for ODBC | Any | `MSDASQL` | System DSN of ODBC data source | | | |
-| ODBC data source | [!INCLUDE [msCoName](../../includes/msconame-md.md)] OLE DB Provider for ODBC | Any | `MSDASQL` | | | ODBC connection string | |
-| File system | [!INCLUDE [msCoName](../../includes/msconame-md.md)] OLE DB Provider for Indexing Service | Any | `MSIDXS` | Indexing Service catalog name | | | |
-| [!INCLUDE [msCoName](../../includes/msconame-md.md)] Excel Spreadsheet | [!INCLUDE [msCoName](../../includes/msconame-md.md)] OLE DB Provider for Jet | Any | `Microsoft.Jet.OLEDB.4.0` | Full path of Excel file | | Excel 5.0 | |
-| IBM Db2 Database | [!INCLUDE [msCoName](../../includes/msconame-md.md)] OLE DB Provider for DB2 | Any | `DB2OLEDB` | | | See [!INCLUDE [msCoName](../../includes/msconame-md.md)] OLE DB Provider for DB2 documentation. | Catalog name of DB2 database |
+| Oracle, version 8 and later | Oracle Provider for OLE DB | Any <sup>2</sup> | `OraOLEDB.Oracle` | Alias for the Oracle database | | | |
+| Access/Jet | Microsoft OLE DB Provider for Jet | Any <sup>2</sup> | `Microsoft.Jet.OLEDB.4.0` | Full path of Jet database file | | | |
+| ODBC data source | Microsoft OLE DB Provider for ODBC | Any <sup>2</sup> | `MSDASQL` | System DSN of ODBC data source | | | |
+| ODBC data source | [!INCLUDE [msCoName](../../includes/msconame-md.md)] OLE DB Provider for ODBC | Any <sup>2</sup> | `MSDASQL` | | | ODBC connection string | |
+| File system | [!INCLUDE [msCoName](../../includes/msconame-md.md)] OLE DB Provider for Indexing Service | Any <sup>2</sup> | `MSIDXS` | Indexing Service catalog name | | | |
+| [!INCLUDE [msCoName](../../includes/msconame-md.md)] Excel Spreadsheet | [!INCLUDE [msCoName](../../includes/msconame-md.md)] OLE DB Provider for Jet | Any <sup>2</sup> | `Microsoft.Jet.OLEDB.4.0` | Full path of Excel file | | Excel 5.0 | |
+| IBM Db2 Database | [!INCLUDE [msCoName](../../includes/msconame-md.md)] OLE DB Provider for DB2 | Any <sup>2</sup> | `DB2OLEDB` | | | See [!INCLUDE [msCoName](../../includes/msconame-md.md)] OLE DB Provider for DB2 documentation. | Catalog name of DB2 database |
 
 <sup>1</sup> This way of setting up a linked server forces the name of the linked server to be the same as the network name of the remote instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. Use *@datasrc* to specify the server.
 
@@ -157,6 +157,21 @@ The stored procedure `sp_addlinkedserver` can't be executed within a user-define
 
 > [!IMPORTANT]  
 > When a linked server is created by using `sp_addlinkedserver`, a default self-mapping is added for all local logins. For non-[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] providers, [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Authenticated logins might be able to gain access to the provider under the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] service account. Administrators should consider using `sp_droplinkedsrvlogin <linkedserver_name>, NULL` to remove the global mapping.
+
+## Managed identity authentication for SQL Server 2025
+
+**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions
+
+[!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] introduces support for managed identity authentication when creating linked servers between SQL Server instances. This feature allows SQL Server instances running on Azure Virtual Machines or Azure Arc-enabled servers to use managed identities for secure, credential-free authentication to other SQL Server instances.
+
+Managed identity authentication is supported when the following requirements are met:
+
+- The source SQL Server instance is running on an Azure Virtual Machine with a system-assigned or user-assigned managed identity enabled, or on an Azure Arc-enabled server with a system-assigned managed identity configured.
+- The destination is another SQL Server instance with Microsoft Entra authentication configured.
+- A login matching the source server's name has been created on the destination SQL Server instance from an external provider.
+- The connection uses the Microsoft OLE DB Driver for SQL Server (MSOLEDBSQL) with `Authentication=ActiveDirectoryMSI` in the provider string.
+
+For detailed configuration steps, see [Configure managed identity for linked servers](../../sql-server/azure-arc/managed-identity-support-linked-server.md).
 
 ## Permissions
 
@@ -186,7 +201,7 @@ EXECUTE sp_addlinkedserver
     @datasrc = N'S1\instance1';
 ```
 
-The following example creates the linked server `S1_instance1` but uses the Microsoft OLE DB Driver Version 19 in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], with the `encrypt=optional` parameter: 
+The following example creates the linked server `S1_instance1` but uses the Microsoft OLE DB Driver Version 19 in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], with the `encrypt=optional` parameter:
 
 ```sql
 EXECUTE sp_addlinkedserver
@@ -197,7 +212,7 @@ EXECUTE sp_addlinkedserver
     @datasrc = N'S1\instance1';
 ```
 
-The following example creates the linked server `S1_instance1` using the Microsoft OLE DB Driver Version 19 in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], with the `encrypt=mandatory` parameter. This option requires a valid certificate, the self-signed certificate is not accepted.
+The following example creates the linked server `S1_instance1` using the Microsoft OLE DB Driver Version 19 in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], with the `encrypt=mandatory` parameter. This option requires a valid certificate. The self-signed certificate isn't accepted.
 
 ```sql
 EXECUTE sp_addlinkedserver
@@ -208,7 +223,7 @@ EXECUTE sp_addlinkedserver
     @datasrc = N'S1\instance1';
 ```
 
-The following example creates the linked server `S1_instance1` using the Microsoft OLE DB Driver Version 19 in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], with `encrypt=mandatory` and `trustservercertificate=yes`. Because  **Trust Server Certificate** is set to `yes`, self-signed certificates are accepted.
+The following example creates the linked server `S1_instance1` using the Microsoft OLE DB Driver Version 19 in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], with `encrypt=mandatory` and `trustservercertificate=yes`. Because **Trust Server Certificate** is set to `yes`, self-signed certificates are accepted.
 
 ```sql
 EXECUTE sp_addlinkedserver
@@ -475,6 +490,66 @@ EXECUTE sp_addlinkedserver
 ```
 
 For more information, see [Microsoft OLE DB Driver for SQL Server (MSOLEDBSQL) (recommended)](../../connect/oledb/oledb-driver-for-sql-server.md#1-microsoft-ole-db-driver-for-sql-server-msoledbsql-recommended).
+
+### K. Create a linked server with managed identity authentication for SQL Server 2025
+
+**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions
+
+The following example creates a linked server from a source [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] instance to a destination SQL Server instance using managed identity authentication. This scenario requires that the source SQL Server instance is running on an Azure Virtual Machine or Azure Arc-enabled server with a managed identity enabled, and that the destination SQL Server has Microsoft Entra authentication configured.
+
+Before creating the linked server on the source, you must create a login on the destination SQL Server that matches the source server's name:
+
+```sql
+-- Run on the destination SQL Server instance
+USE [master];
+GO
+
+CREATE LOGIN [SourceServerName]
+FROM EXTERNAL PROVIDER;
+GO
+
+ALTER SERVER ROLE [sysadmin] ADD MEMBER [SourceServerName];
+GO
+```
+
+On the source SQL Server, create the linked server using the Microsoft OLE DB Driver for SQL Server with `ActiveDirectoryMSI` authentication:
+
+```sql
+-- Run on the source SQL Server instance
+EXECUTE master.dbo.sp_addlinkedserver
+    @server = N'DestinationSQLServer',
+    @srvproduct = N'',
+    @provider = N'MSOLEDBSQL',
+    @datasrc = N'DestinationSQLServer',
+    @provstr = N'Authentication=ActiveDirectoryMSI';
+GO
+```
+
+Configure the linked server login mapping:
+
+```sql
+EXECUTE master.dbo.sp_addlinkedsrvlogin
+    @rmtsrvname = N'DestinationSQLServer',
+    @useself = N'False',
+    @locallogin = NULL,
+    @rmtuser = NULL,
+    @rmtpassword = NULL;
+GO
+```
+
+Test the linked server connection:
+
+```sql
+-- Test the connection
+EXECUTE master.dbo.sp_testlinkedserver DestinationSQLServer;
+GO
+
+-- Query the remote server
+SELECT * FROM [DestinationSQLServer].[master].[sys].[databases];
+GO
+```
+
+For complete configuration details including managed identity setup, Microsoft Entra authentication configuration, and permissions, see [Configure managed identity for linked servers](../../sql-server/azure-arc/managed-identity-support-linked-server.md).
 
 ## Related content
 
