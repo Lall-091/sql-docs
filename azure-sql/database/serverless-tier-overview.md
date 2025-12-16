@@ -209,7 +209,7 @@ Monitoring, management, or other solutions performing any of these operations tr
 
 #### Auto-resume trigger indentification
 
-Auto-resume triggers are exposed in the Azure Monitor activity log for "Resume Databases" operations under the "Caller" property in the JSON of the "Succeeded" event.
+Auto-resume triggers are exposed in the Azure Monitor activity log for **Resume Databases** operations under the `Caller` property in the JSON of the **Succeeded** event.
 
 ### Connectivity
 
