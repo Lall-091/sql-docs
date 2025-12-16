@@ -4,10 +4,10 @@ description: The sqlcmd utility lets you enter Transact-SQL statements, system p
 author: dlevy-msft
 ms.author: dlevy
 ms.reviewer: randolphwest
-ms.date: 11/18/2025
+ms.date: 12/16/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection:
   - data-tools
 ms.custom:
@@ -271,7 +271,7 @@ The following table lists the command-line options available in **sqlcmd**, and 
 
 #### -A
 
-**Applies to:** Windows only. Linux and macOS aren't supported.
+**Applies to**: Windows only. Linux and macOS aren't supported.
 
 Signs in to [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] with a dedicated administrator connection (DAC). This kind of connection is used to troubleshoot a server. This connection works only with server computers that support DAC. If DAC isn't available, **sqlcmd** generates an error message, and then exits. For more information about DAC, see [Diagnostic connection for database administrators](../../database-engine/configure-windows/diagnostic-connection-for-database-administrators.md). The `-A` option isn't supported with the `-G` option. When connecting to Azure SQL Database using `-A`, you must be an administrator on the logical SQL server. DAC isn't available for a Microsoft Entra administrator.
 
@@ -357,7 +357,7 @@ For more information, see:
 
 - [Connect to an Always On availability group listener](../../database-engine/availability-groups/windows/listeners-client-connectivity-application-failover.md)
 - [Reference for the creation and configuration of Always On availability groups](../../database-engine/availability-groups/windows/creation-and-configuration-of-availability-groups-sql-server.md)
-- [Failover Clustering and Always On Availability Groups (SQL Server)](../../database-engine/availability-groups/windows/failover-clustering-and-always-on-availability-groups-sql-server.md)
+- [Failover Clustering and Always On availability groups (SQL Server)](../../database-engine/availability-groups/windows/failover-clustering-and-always-on-availability-groups-sql-server.md)
 - [Offload read-only workload to secondary replica of an Always On availability group](../../database-engine/availability-groups/windows/active-secondaries-readable-secondary-replicas-always-on-availability-groups.md)
 
 > [!NOTE]  
@@ -395,7 +395,7 @@ A user-specified password. Passwords are case-sensitive. If the `-U` option is u
 > [!IMPORTANT]  
 > Using `-P` should be considered insecure. Avoid giving the password on the command line. Alternatively, use the `SQLCMDPASSWORD` environment variable, or interactively input the password by omitting the `-P` option.
 
-We recommend that you use a [strong password](../../relational-databases/security/strong-passwords.md).
+Use a [strong password](../../relational-databases/security/strong-passwords.md).
 
 The password prompt is displayed by printing the password prompt to the console, as follows: `Password:`
 
@@ -628,7 +628,7 @@ Redirects the error message output to the screen (`stderr`). If you don't specif
 
 #### -R
 
-**Applies to:** ODBC **sqlcmd** only.
+**Applies to**: ODBC **sqlcmd** only.
 
 Causes **sqlcmd** to localize numeric, currency, date, and time columns retrieved from [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] based on the client's locale. By default, these columns are displayed using the server's regional settings.
 
@@ -652,7 +652,7 @@ Writes input scripts to the standard output device (`stdout`).
 
 #### -I
 
-**Applies to:** ODBC **sqlcmd** only.
+**Applies to**: ODBC **sqlcmd** only.
 
 Sets the `SET QUOTED_IDENTIFIER` connection option to `ON`. The default setting is `OFF`. For more information, see [SET QUOTED_IDENTIFIER](../../t-sql/statements/set-quoted-identifier-transact-sql.md).
 
@@ -748,7 +748,7 @@ Specifies the number of seconds before a command (or Transact-SQL statement) tim
 
 #### -v var = *value* [ var = *value*... ]
 
-**Applies to:** Windows only. Linux and macOS aren't supported.
+**Applies to**: Windows only. Linux and macOS aren't supported.
 
 Creates a **sqlcmd** scripting variable that can be used in a **sqlcmd** script.
 
@@ -902,7 +902,7 @@ Specifies the batch terminator. By default, commands are terminated and sent to 
 
 #### -L[c]
 
-**Applies to:** Windows only. Linux and macOS aren't supported.
+**Applies to**: Windows only. Linux and macOS aren't supported.
 
 Lists the locally configured server computers, and the names of the server computers that are broadcasting on the network. This parameter can't be used in combination with other parameters. The maximum number of server computers that can be listed is 3000. If the server list is truncated because of the size of the buffer a warning message is displayed.
 

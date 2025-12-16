@@ -4,10 +4,10 @@ description: Use the SQLdiag utility to collect logs and data files from SQL Ser
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: jopilov
-ms.date: 04/08/2025
+ms.date: 12/16/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection:
   - data-tools
 helpviewer_keywords:
@@ -95,7 +95,7 @@ Redirects **SQLdiag** output to the specified folder. If the `/O` option isn't s
 
 Sets the support folder path. By default, `/P` is set to the folder where the **SQLdiag** executable resides. The support folder contains **SQLdiag** support files, such as the XML configuration file, Transact-SQL scripts, and other files that the utility uses during diagnostics collection. If you use this option to specify an alternate support files path, **SQLdiag** automatically copies the support files it requires to the specified folder if they don't already exist.
 
-To set your current folder as the support path, specify `%cd%` on the command line as follows:  
+To set your current folder as the support path, specify `%cd%` on the command line as follows:
 
 ```console
 sqldiag /P %cd%

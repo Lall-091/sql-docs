@@ -3,10 +3,10 @@ title: Banner Element
 description: "Banner Element (ssbdiagnose)"
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 03/01/2017
+ms.date: 12/16/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: reference
 ms.collection:
   - data-tools
 helpviewer_keywords:
@@ -16,54 +16,52 @@ helpviewer_keywords:
 diagnose: In SQL Server, the Banner element identifies which utility generated the ssbdiagnose output XML file.
 ---
 
-# Banner Element (ssbdiagnose)
+# Banner element (ssbdiagnose)
 
+[!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
 
- [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]
+Identifies which utility generated the **ssbdiagnose** output XML file.
 
-Identifies which utility generated the **ssbdiagnose** output XML file.  
-  
-## Syntax  
-  
-```  
-  
-<Banner  
-    title="..."   
-    product="..."   
-    version="..." />  
-```  
-  
-## Element Attributes  
-  
-|Attribute|Description|  
-|---------------|-----------------|  
-|**title**|Identifies the utility that generated the **ssbdiagnose** XML output file.|  
-|**product**|Identifies the product that generated the **ssbdiagnose** XML output file.|  
-|**version**|Identifies which version of the utility generated the XML output file.|  
-  
-## Element Characteristics  
-  
-|Characteristic|Description|  
-|--------------------|-----------------|  
-|**Data type and length**|None.|  
-|**Default value**|None.|  
-|**Occurrence**|Occurs once per **ssbdiagnose** output XML file.|  
-  
-## Element Relationships  
-  
-|Relationship|Elements|  
-|------------------|--------------|  
-|**Parent element**|[DiagnosticInformation Element &#40;ssbdiagnose&#41;](../../tools/ssbdiagnose/diagnosticinformation-element-ssbdiagnose.md)|  
-|**Child elements**|None.|  
-  
-## Example  
- This is an example of a banner element.  
-  
-```  
-<Banner title="Service Broker Diagnostics Utility" product="Microsoft SQL Server" version="10.0.1073.0" />  
-```  
-  
-## See Also  
- [ssbdiagnose Utility &#40;Service Broker&#41;](../../tools/ssbdiagnose/ssbdiagnose-utility-service-broker.md)  
-  
-  
+## Syntax
+
+```xml
+<Banner
+    title = "..."
+    product = "..."
+    version = "..." />
+```
+
+## Element attributes
+
+| Attribute | Description |
+| --- | --- |
+| **title** | Identifies the utility that generated the **ssbdiagnose** XML output file. |
+| **product** | Identifies the product that generated the **ssbdiagnose** XML output file. |
+| **version** | Identifies which version of the utility generated the XML output file. |
+
+## Element characteristics
+
+| Characteristic | Description |
+| --- | --- |
+| **Data type and length** | None. |
+| **Default value** | None. |
+| **Occurrence** | Occurs once per **ssbdiagnose** output XML file. |
+
+## Element relationships
+
+| Relationship | Elements |
+| --- | --- |
+| **Parent element** | [DiagnosticInformation element (ssbdiagnose)](diagnosticinformation-element-ssbdiagnose.md) |
+| **Child elements** | None. |
+
+## Examples
+
+This is an example of a banner element.
+
+```xml
+<Banner title="Service Broker Diagnostics Utility" product="Microsoft SQL Server" version="10.0.1073.0" />
+```
+
+## Related content
+
+- [ssbdiagnose utility (Service Broker)](ssbdiagnose-utility-service-broker.md)

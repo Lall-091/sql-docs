@@ -4,7 +4,7 @@ description: You use SQLCMD scripts when you have to process Windows System comm
 author: dlevy-msft
 ms.author: dlevy
 ms.reviewer: maghan, randolphwest
-ms.date: 07/02/2025
+ms.date: 12/16/2025
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: how-to
@@ -108,7 +108,7 @@ After enabling scripting mode, you can write SQLCMD commands and Transact-SQL st
 - The Database Engine Query Editor supports environment variables and variables that are defined as part of a SQLCMD script, but doesn't support built-in SQLCMD or **osql** variables. SQLCMD processing by SQL Server Management Studio is case sensitive for variables. For example, PRINT '$(COMPUTERNAME)' produces the correct result, but PRINT '$(ComputerName)' returns an error.
 
 > [!CAUTION]  
-> SQL Server Management Studio uses [!INCLUDE [msCoName](../../includes/msconame-md.md)] [!INCLUDE [dnprdnshort](../../includes/dnprdnshort-md.md)] SqlClient for execution in regular and SQLCMD mode. When run from the command line, SQLCMD uses the OLE DB provider. Because different default options could apply, you can get different behavior while executing the same query in SQL Server Management Studio SQLCMD mode and in the **sqlcmd** utility.
+> SQL Server Management Studio uses [!INCLUDE [dnprdnshort](../../includes/dnprdnshort-md.md)] SqlClient for execution in regular and SQLCMD mode. When run from the command line, SQLCMD uses the OLE DB provider. Because different default options could apply, you can get different behavior while executing the same query in SQL Server Management Studio SQLCMD mode and in the **sqlcmd** utility.
 
 ## Supported SQLCMD syntax
 

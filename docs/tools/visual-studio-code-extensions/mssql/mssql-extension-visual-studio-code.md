@@ -4,7 +4,7 @@ description: Enhancing your developer experience with the MSSQL extension for Vi
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: randolphwest
-ms.date: 11/18/2025
+ms.date: 12/16/2025
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -188,7 +188,7 @@ Currently, this extension supports the following operating systems:
 
 ## Offline installation
 
-The extension can download and install a required SqlToolsService package during activation. You can still use the extension for machines with no Internet access by choosing the Install from VSIX... option in the Extension view and installing a bundled release from our Releases page. Each operating system has a .vsix file with the required service included. Pick the file for your OS, download, and install it to get started. We recommend you choose a full release and ignore any alpha or beta releases, as these are our daily builds used in testing.
+The extension can download and install a required SqlToolsService package during activation. You can still use the extension for machines with no Internet access by choosing the Install from VSIX... option in the Extension view and installing a bundled release from our Releases page. Each operating system has a .vsix file with the required service included. Pick the file for your OS, download, and install it to get started. Choose a full release and ignore any alpha or beta releases, as these are our daily builds used in testing.
 
 ## Feedback and support
 

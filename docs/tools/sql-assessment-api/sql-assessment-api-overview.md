@@ -3,10 +3,10 @@ title: SQL Server Assessment API
 description: Learn about the SQL Assessment API that provides a mechanism to evaluate the configuration of your SQL Server for best practices.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 09/07/2025
+ms.date: 12/15/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection:
   - data-tools
 ms.custom:
@@ -28,7 +28,7 @@ The API can be used to assess:
 - SQL Server on [Linux-based systems and containers](../../linux/sql-server-linux-sql-assessment-api.md)
 
 > [!NOTE]  
-> The SQL Assessment API provides assessment on a variety of areas, but it doesn't go deeply into security. We recommend you use the [Vulnerability assessment for SQL Server](../../relational-databases/security/sql-vulnerability-assessment.md) to proactively improve your database security.
+> The SQL Assessment API provides assessment on a variety of areas, but it doesn't go deeply into security. Use the [Vulnerability assessment for SQL Server](../../relational-databases/security/sql-vulnerability-assessment.md) to proactively improve your database security.
 
 ## Rules
 

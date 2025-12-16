@@ -1,12 +1,12 @@
 ---
-title: "sqllogship Application"
+title: "Sqllogship Application"
 description: The sqllogship application performs a backup, copy, or restore operation and clean-up tasks for a log shipping configuration on a SQL Server database.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 08/28/2025
+ms.date: 12/16/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection:
   - data-tools
 helpviewer_keywords:
@@ -16,19 +16,19 @@ helpviewer_keywords:
 
 [!INCLUDE [sqlserver](../includes/applies-to-version/sqlserver.md)]
 
-The **sqllogship** application performs a backup, copy, or restore operation and associated clean-up tasks for a log shipping configuration. The operation is performed on a specific instance of [!INCLUDE [msCoName](../includes/msconame-md.md)] [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] for a specific database.
+The **sqllogship** application performs a backup, copy, or restore operation and associated clean-up tasks for a log shipping configuration. The operation is performed on a specific instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] for a specific database.
 
 :::image type="icon" source="../includes/media/topic-link-icon.svg" border="false"::: For the syntax conventions, see [SQL command-line utilities (Database Engine)](command-prompt-utility-reference-database-engine.md).
 
 ## Syntax
 
-```syntax
+```console
 sqllogship
 -server instance_name { -backup primary_id | -copy secondary_id | -restore secondary_id }
 [ -verboselevel level ]
 [ -logintimeout timeout_value ]
 [ -querytimeout timeout_value ]
-[ -connectionoptions "<key_value_pairs>; [ ... ]"]
+[ -connectionoptions "<key_value_pairs>; [ ... ]" ]
 ```
 
 ## Arguments
@@ -75,7 +75,7 @@ Specifies the amount of time allotted for attempting to sign in to the server in
 
 Specifies the amount of time allotted for starting the specified operation before the attempt times out. The default is no timeout period. *timeout_value* is **int**.
 
-#### -connectionoptions "*<key_value_pairs>*; [ ...*n* ]"
+#### -connectionoptions "*<key_value_pairs>*; [ ...*n* ] "
 
 **Applies to**: [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and later versions.
 
@@ -92,7 +92,7 @@ The following table lists the available connectivity options:
 
 ## Remarks
 
-We recommend that you use the backup, copy, and restore jobs to perform the backup, copy, and restore when possible. To start these jobs from a batch operation or other application, call the [sp_start_job](../relational-databases/system-stored-procedures/sp-start-job-transact-sql.md) stored procedure.
+Use the backup, copy, and restore jobs to perform the backup, copy, and restore when possible. To start these jobs from a batch operation or other application, call the [sp_start_job](../relational-databases/system-stored-procedures/sp-start-job-transact-sql.md) stored procedure.
 
 The log shipping history created by **sqllogship** is interspersed with the history created by log shipping backup, copy, and restore jobs. If you plan to use **sqllogship** repeatedly to perform backup, copy, or restore operations for a log shipping configuration, consider disabling the corresponding log shipping job or jobs. For more information, see [Disable or Enable a Job](/ssms/agent/disable-or-enable-a-job).
 

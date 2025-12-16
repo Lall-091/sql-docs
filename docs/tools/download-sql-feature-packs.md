@@ -4,10 +4,10 @@ description: This article provides a brief explanation of the various downloads 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray
-ms.date: 04/08/2025
+ms.date: 12/16/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.collection:
   - data-tools
 keywords: feature pack

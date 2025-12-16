@@ -1,12 +1,12 @@
 ---
-title: "ssbdiagnose Utility (Service Broker)"
+title: "Ssbdiagnose Utility (Service Broker)"
 description: The ssbdiagnose utility reports issues in Service Broker conversations or the configuration of Service Broker services.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 09/07/2025
+ms.date: 12/16/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection:
   - data-tools
 helpviewer_keywords:
@@ -185,7 +185,6 @@ By default, runtime errors aren't included in the output report, only the result
 Specifies that **ssbdiagnose** report [!INCLUDE [ssSqlProfiler](../../includes/sssqlprofiler-md.md)] events during a `RUNTIME` report. Only events that are considered error conditions are reported. By default, **ssbdiagnose** only monitors error events; it doesn't report them in the output.
 
 - `-NEW`: Requests runtime monitoring of the first conversation that begins after **ssbdiagnose** starts running.
-
 - `-ID`: Requests runtime monitoring of the specified conversation elements. You can specify `-ID` multiple times.
 
 If you specify a conversation handle, only events associated with the associated conversation endpoint are reported. If you specify a conversation ID, all events for that conversation and its initiator and target endpoints are reported. If a conversation group ID is specified, all events for all conversations and endpoints in the conversation group are reported.
@@ -248,7 +247,7 @@ Specifies the password for the `-U` login ID. Passwords are case sensitive. If t
 If the `-P` option is specified without a password, **ssbdiagnose** uses the default password (`NULL`).
 
 > [!IMPORTANT]  
-> [!INCLUDE [ssNoteStrongPass](../../includes/ssnotestrongpass-md.md)] For more information, see [Strong Passwords](../../relational-databases/security/strong-passwords.md).
+> [!INCLUDE [ssNoteStrongPass](../../includes/ssnotestrongpass-md.md)] For more information, see [Strong passwords](../../relational-databases/security/strong-passwords.md).
 
 The password prompt is displayed by printing the password prompt to the console, as follows: `Password:`
 
@@ -258,7 +257,7 @@ If the `-P` option is used with the `-E` option, an error message is generated.
 
 If the `-P` option is followed by more than one argument, an error message is generated.
 
-#### -S *server_name* [ \\*instance_name* ]
+#### -S *server_name*[\\*instance_name*]
 
 Specifies the instance of the [!INCLUDE [ssDE](../../includes/ssde-md.md)] that holds the [!INCLUDE [ssSB](../../includes/sssb-md.md)] services to be analyzed.
 
@@ -368,7 +367,7 @@ The following example shows how to request a configuration report when the follo
 
 The **ssbdiagnose** utility reports the configuration that uses the `DEFAULT` contract because `ON CONTRACT` isn't specified.
 
-```cmd
+```console
 ssbdiagnose -E -d MyDatabase CONFIGURATION FROM SERVICE /test/initiator TO SERVICE /test/target
 ```
 
@@ -376,7 +375,7 @@ ssbdiagnose -E -d MyDatabase CONFIGURATION FROM SERVICE /test/initiator TO SERVI
 
 The following example shows how to request a configuration report when the initiator and target service are on separate computers, but can be accessed by using the same Windows Authentication login.
 
-```cmd
+```console
 ssbdiagnose -E CONFIGURATION FROM SERVICE /text/initiator -S InitiatorComputer -d InitiatorDatabase TO SERVICE /test/target -S TargetComputer -d TargetDatabase ON CONTRACT TestContract
 ```
 
@@ -384,7 +383,7 @@ ssbdiagnose -E CONFIGURATION FROM SERVICE /text/initiator -S InitiatorComputer -
 
 The following example shows how to request a configuration report when the initiator and target service are on separate computers, and separate [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Authentication logins are required for each instance of the [!INCLUDE [ssDE](../../includes/ssde-md.md)].
 
-```cmd
+```console
 ssbdiagnose CONFIGURATION FROM SERVICE /text/initiator
 -S InitiatorComputer -U InitiatorLogin -p !wEx23Dvb
 -d InitiatorDatabase TO SERVICE /test/target -S TargetComputer
@@ -395,7 +394,7 @@ ssbdiagnose CONFIGURATION FROM SERVICE /text/initiator
 
 The following example shows how to request a configuration report when the initiator and target service are on separate computers, and the initiator is mirrored to a named instance. The report also verifies that the services are configured to use anonymous encryption.
 
-```cmd
+```console
 ssbdiagnose -E CONFIGURATION FROM SERVICE /text/initiator
 -S InitiatorComputer -d InitiatorDatabase MIRROR
 -S MirrorComputer/MirrorInstance TO SERVICE /test/target
@@ -414,7 +413,7 @@ The following example shows how to build a command file that requests configurat
 
 Each time **ssbdiagnose** is run it reports the configuration for a different contract between the same services.
 
-```cmd
+```console
 ssbdiagnose -E -d MyDatabase CONFIGURATION FROM SERVICE
 /test/initiator TO SERVICE /test/target ON CONTRACT PayRaiseContract
 ssbdiagnose -E -d MyDatabase CONFIGURATION FROM SERVICE /test/initiator
@@ -425,7 +424,7 @@ TO SERVICE /test/target ON CONTRACT PromotionContract
 
 The following example shows how to monitor a specific conversation where the initiator and target services are in the same database in the default instance of the same computer that is running **ssbdiagnose**. The time-out interval is set to 20 seconds.
 
-```cmd
+```console
 ssbdiagnose -E -d TestDatabase RUNTIME -ID D68D77A9-B1CF-41BF-A5CE-279ABCAB140D -TIMEOUT 20
 ```
 
@@ -433,7 +432,7 @@ ssbdiagnose -E -d TestDatabase RUNTIME -ID D68D77A9-B1CF-41BF-A5CE-279ABCAB140D 
 
 The following example shows how to monitor a specific conversation where the initiator and target services are on separate computers.
 
-```cmd
+```console
 ssbdiagnose RUNTIME -ID D68D77A9-B1CF-41BF-A5CE-279ABCAB140D
 -TIMEOUT 10 CONNECT TO -E -S InitiatorComputer/InitiatorInstance
 -d InitiatorDatabase CONNECT TO -E -S TargetComputer/TargetInstance
@@ -444,7 +443,7 @@ ssbdiagnose RUNTIME -ID D68D77A9-B1CF-41BF-A5CE-279ABCAB140D
 
 The following example shows how to monitor a specific conversation where the initiator and target services are in separate databases in the same instance of the [!INCLUDE [ssDE](../../includes/ssde-md.md)]. The example uses the `baseconnectionoptions` to specify the instance and login information, and two `CONNECT TO` clauses to specify the databases. `-SHOWEVENTS` is specified so that all runtime events are included in the report output.
 
-```cmd
+```console
 ssbdiagnose -E -S TestComputer/DevTestInstance RUNTIME -SHOWEVENTS
 -ID 5094d4a7-e38c-4c37-da37-1d58b1cb8455 -TIMEOUT 10 CONNECT TO
 -d InitiatorDatabase CONNECT TO -d TargetDatabase
@@ -454,7 +453,7 @@ ssbdiagnose -E -S TestComputer/DevTestInstance RUNTIME -SHOWEVENTS
 
 The following example shows how to monitor two conversations where the initiator and target services are in separate databases in the same instance of the [!INCLUDE [ssDE](../../includes/ssde-md.md)]. The example uses the `baseconnectionoptions` to specify the instance and login information, and two `CONNECT TO` clauses to specify the databases.
 
-```cmd
+```console
 ssbdiagnose -E -S TestComputer/DevTestInstance RUNTIME
 -ID 5094d4a7-e38c-4c37-da37-1d58b1cb8455
 -ID 9b293be9-226b-4e22-e169-1d2c2c15be86 -TIMEOUT 10 CONNECT TO
@@ -465,7 +464,7 @@ ssbdiagnose -E -S TestComputer/DevTestInstance RUNTIME
 
 The following example shows how to monitor all the conversation between two databases in the same instance of the [!INCLUDE [ssDE](../../includes/ssde-md.md)]. The example uses the `baseconnectionoptions` to specify the instance and login information, and two `CONNECT TO` clauses to specify the databases.
 
-```cmd
+```console
 ssbdiagnose -E -S TestComputer/DevTestInstance RUNTIME
 -TIMEOUT 10 CONNECT TO -d InitiatorDatabase CONNECT TO
 -d TargetDatabase
@@ -475,7 +474,7 @@ ssbdiagnose -E -S TestComputer/DevTestInstance RUNTIME
 
 The following example shows how to ignore known errors (303 and 304) in how activation is currently configured in a test system.
 
-```cmd
+```console
 ssbdiagnose -IGNORE 303 -IGNORE 304 -E -d TestDatabase
 CONFIGURATION FROM SERVICE /test/initiator TO SERVICE /test/target
 ON CONTRACT TextContract
@@ -494,7 +493,7 @@ ssbdiagnose -XML -E -d MyDatabase CONFIGURATION FROM SERVICE
 
 The following example first sets the `SQLCMDSERVER` environment variable to hold the server name, and then runs **ssbdiagnose** without specifying `-S`.
 
-```cmd
+```console
 SET SQLCMDSERVER=MyComputer
 ssbdiagnose -XML -E -d MyDatabase CONFIGURATION FROM SERVICE
 /test/initiator TO SERVICE /test/target
