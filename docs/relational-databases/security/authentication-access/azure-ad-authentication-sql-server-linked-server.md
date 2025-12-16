@@ -1,25 +1,29 @@
 ---
-title: "Linked server for SQL Server with Microsoft Entra authentication"
+title: "Linked Server for SQL Server with Microsoft Entra Authentication"
 description: Learn about how to use linked server for SQL Server with Microsoft Entra authentication
 author: PratimDasgupta
 ms.author: prdasgu
 ms.reviewer: vanto, randolphwest
-ms.date: 07/25/2022
+ms.date: 12/15/2025
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
-monikerRange: ">=sql-server-ver15||>= sql-server-linux-ver16"
-ms.custom: sfi-image-nochange
+ms.topic: article
+ms.custom:
+  - sfi-image-nochange
+monikerRange: ">=sql-server-ver15 || >=sql-server-linux-ver16"
 ---
 
 # Linked server for SQL Server with Microsoft Entra authentication
 
-[!INCLUDE [SQL Server 2022](../../../includes/applies-to-version/sqlserver2022.md)]
+[!INCLUDE [SQL Server 2022 and later](../../../includes/applies-to-version/sqlserver2022-and-later.md)]
 
-[Linked servers](../../linked-servers/linked-servers-database-engine.md) can now be configured using [authentication](azure-ad-authentication-sql-server-overview.md) with Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)), and it supports two mechanisms for providing credentials:
+[Linked servers](../../linked-servers/linked-servers-database-engine.md) can now be configured using [authentication](azure-ad-authentication-sql-server-overview.md) with Microsoft Entra ID ([formerly Azure Active Directory](/entra/fundamentals/new-name)), and it supports three mechanisms for providing credentials:
 
 - Password
 - Access token
+- Managed identity (SQL Server 2025 and later)
+
+This article covers password and access token authentication. For SQL Server 2025 and later, you can also use managed identity authentication for linked servers. For more information, see [Configure managed identity for linked servers](../../../sql-server/azure-arc/managed-identity-support-linked-server.md).
 
 This article assumes there are two SQL Server instances (`S1` and `S2`). Both have been configured to support Microsoft Entra authentication, and they trust each other's SSL/TLS certificate. The examples in this article are executed on server `S1` to create a linked server to server `S2`.
 
@@ -28,10 +32,10 @@ This article assumes there are two SQL Server instances (`S1` and `S2`). Both ha
 - Fully operational Microsoft Entra authentication for SQL Server. For more information, see [Microsoft Entra authentication for SQL Server](azure-ad-authentication-sql-server-overview.md) and [Tutorial: Set up Microsoft Entra authentication for SQL Server](azure-ad-authentication-sql-server-setup-tutorial.md).
 - [SQL Server Management Studio (SSMS)](/ssms/install/install) version 18.0 or higher.
 
-> [!NOTE]
+> [!NOTE]  
 > The subject name of the SSL/TLS certificate used by `S2` must match the server name provided in the [`provstr`](../../system-stored-procedures/sp-addlinkedserver-transact-sql.md) attribute. This should either be the Fully Qualified Domain Name (**FQDN**) or **hostname** of `S2`.
 
-<a name='linked-server-configurations-for-azure-ad-authentication'></a>
+<a id="linked-server-configurations-for-azure-ad-authentication"></a>
 
 ## Linked server configurations for Microsoft Entra authentication
 
@@ -54,7 +58,7 @@ For password authentication, using `Authentication=ActiveDirectoryPassword` in t
    - **Provider string**: `Server=<fqdn of S2>;Authentication=ActiveDirectoryPassword`.
    - **Catalog**: leave empty.
 
-   :::image type="content" source="media/create-linked-server-with-password-authentication.png" alt-text="Screenshot of creating linked server with password authentication":::
+   :::image type="content" source="media/create-linked-server-with-password-authentication.png" alt-text="Screenshot of creating linked server with password authentication." lightbox="media/create-linked-server-with-password-authentication.png":::
 
 1. Select the **Security** tab.
 1. Select **Add**.
@@ -65,13 +69,13 @@ For password authentication, using `Authentication=ActiveDirectoryPassword` in t
    - **For a login not defined in the list above, connections will**: `Not be made`
 1. Select **OK**.
 
-   :::image type="content" source="media/linked-server-add-security.png" alt-text="Screenshot of setting security for linked server":::
+   :::image type="content" source="media/linked-server-add-security.png" alt-text="Screenshot of setting security for linked server." lightbox="media/linked-server-add-security.png":::
 
 ### Linked server configuration using access token authentication
 
 For access token authentication, the linked server is created with `AccessToken=%s` in the **Provider string**. A linked server login is created to map each login in `S1` to a [Microsoft Entra application](/azure/azure-sql/database/authentication-aad-service-principal), which has been granted login permissions to `S2`. The application must have a secret assigned to it, which will be used by `S1` to generate the access token. A secret can be created by navigating to the [Azure portal](https://portal.azure.com) > **Microsoft Entra ID** > **App registrations** > `YourApplication` > **Certificates & secrets** > **New client secret**.
 
-:::image type="content" source="media/application-new-client-secret.png" alt-text="Screenshot of creating a new client secret for an application in the Azure portal":::
+:::image type="content" source="media/application-new-client-secret.png" alt-text="Screenshot of creating a new client secret for an application in the Azure portal." lightbox="media/application-new-client-secret.png":::
 
 1. In SSMS, connect to `S1` and expand **Server Objects** in the **Object Explorer** window.
 1. Right-click **Linked Servers** and select **New Linked Server**.
@@ -84,7 +88,7 @@ For access token authentication, the linked server is created with `AccessToken=
    - **Provider string**: `Server=<fqdn of S2>;AccessToken=%s`.
    - **Catalog**: leave empty.
 
-   :::image type="content" source="media/create-linked-server-with-access-token-authentication.png" alt-text="Screenshot of creating linked server with access token authentication":::
+   :::image type="content" source="media/create-linked-server-with-access-token-authentication.png" alt-text="Screenshot of creating linked server with access token authentication." lightbox="media/create-linked-server-with-access-token-authentication.png":::
 
 1. Select the **Security** tab.
 1. Select **Add**.
@@ -95,8 +99,9 @@ For access token authentication, the linked server is created with `AccessToken=
    - **For a login not defined in the list above, connections will**: `Not be made`
 1. Select **OK**.
 
-## See also
+## Related content
 
-- [Connect SQL Server to Azure Arc](../../../sql-server/azure-arc/connect.md)
+- [Configure managed identity for linked servers](../../../sql-server/azure-arc/managed-identity-support-linked-server.md)
+- [Connect your SQL Server to Azure Arc](../../../sql-server/azure-arc/connect.md)
 - [Microsoft Entra authentication for SQL Server](azure-ad-authentication-sql-server-overview.md)
-- [Tutorial: Set up Microsoft Entra authentication for SQL Server](azure-ad-authentication-sql-server-setup-tutorial.md)
+- [Tutorial: Set up Microsoft Entra authentication for SQL Server with app registration](azure-ad-authentication-sql-server-setup-tutorial.md)

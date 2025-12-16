@@ -4,7 +4,7 @@ description: This article describes the new serverless compute tier and compares
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: moslake, mathoma, dfurman, blakhani
-ms.date: 12/12/2025
+ms.date: 12/15/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: conceptual
@@ -206,6 +206,10 @@ Auto-resuming is triggered if any of the following conditions are true at any ti
 |SQL Server Management Studio (SSMS)|When using SSMS versions earlier than 18.1 and opening a new query window for any database in the server, any auto-paused database in the same server is resumed. This behavior does not occur if using SSMS version 18.1 or later.|
 
 Monitoring, management, or other solutions performing any of these operations trigger auto-resuming. Auto-resuming is also triggered during the deployment of some service updates that require the database be online.
+
+#### Auto-resume trigger indentification
+
+Auto-resume triggers are exposed in the Azure Monitor activity log for **Resume Databases** operations under the `Caller` property in the JSON of the **Succeeded** event.
 
 ### Connectivity
 
