@@ -6389,8 +6389,6 @@ items:
         items:
         - name: Change the Target Recovery Time of a Database
           href: relational-databases/logs/change-the-target-recovery-time-of-a-database-sql-server.md
-    - name: SQL Assessment API
-      href: tools/sql-assessment-api/sql-assessment-api-overview.md
   - name: Monitor
     href: relational-databases/performance/monitor-and-tune-for-performance.md
     items:
@@ -9027,6 +9025,14 @@ items:
     href: linux/sql-server-linux-overview.md
   - name: Overview
     items:
+    - name: New to SQL Server on Linux
+      items:
+      - name: New to SQL Server docs
+        href: linux/new-to-sql-learning-resources.yml
+      - name: New to Linux docs
+        href: linux/new-to-linux-learning-resources.yml
+      - name: New to Linux resources
+        href: linux/new-to-linux-resources.md
     - name: What's new?
       items:
       - name: SQL Server 2025
@@ -9037,26 +9043,6 @@ items:
         href: linux/sql-server-linux-whats-new-2019.md
       - name: SQL Server 2017
         href: linux/sql-server-linux-whats-new.md
-    - name: Release notes
-      items:
-      - name: SQL Server 2025
-        href: linux/sql-server-linux-release-notes-2025.md
-      - name: SQL Server 2022
-        href: linux/sql-server-linux-release-notes-2022.md
-      - name: SQL Server 2019
-        href: linux/sql-server-linux-release-notes-2019.md
-      - name: SQL Server 2017
-        href: linux/sql-server-linux-release-notes-2017.md
-    - name: Release history
-      items:
-      - name: SQL Server 2025 >
-        href: /troubleshoot/sql/releases/linux/release-history-2025?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
-      - name: SQL Server 2022 >
-        href: /troubleshoot/sql/releases/linux/release-history-2022?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
-      - name: SQL Server 2019 >
-        href: /troubleshoot/sql/releases/linux/release-history-2019?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
-      - name: SQL Server 2017 >
-        href: /troubleshoot/sql/releases/linux/release-history-2017?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
     - name: Editions and features
       items:
       - name: SQL Server 2025
@@ -9067,74 +9053,50 @@ items:
         href: linux/sql-server-linux-editions-and-components-2019.md
       - name: SQL Server 2017
         href: linux/sql-server-linux-editions-and-components-2017.md
+    - name: Release notes
+      items:
+      - name: SQL Server 2025
+        href: linux/sql-server-linux-release-notes-2025.md
+      - name: SQL Server 2022
+        href: linux/sql-server-linux-release-notes-2022.md
+      - name: SQL Server 2019
+        href: linux/sql-server-linux-release-notes-2019.md
+      - name: SQL Server 2017
+        href: linux/sql-server-linux-release-notes-2017.md
+      - name: Known issues
+        href: linux/sql-server-linux-known-issues.md
+    - name: Release history
+      items:
+      - name: SQL Server 2025 >
+        href: /troubleshoot/sql/releases/linux/release-history-2025?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
+      - name: SQL Server 2022 >
+        href: /troubleshoot/sql/releases/linux/release-history-2022?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
+      - name: SQL Server 2019 >
+        href: /troubleshoot/sql/releases/linux/release-history-2019?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
+      - name: SQL Server 2017 >
+        href: /troubleshoot/sql/releases/linux/release-history-2017?toc=/sql/toc.json&bc=/sql/breadcrumb/toc.json
     - name: Linux FAQ
       href: linux/sql-server-linux-faq.yml
-    - name: Known issues
-      href: linux/sql-server-linux-known-issues.md
-  - name: Quickstarts
-    items:
-    - name: Install and connect (Red Hat)
-      href: linux/quickstart-install-connect-red-hat.md
-    - name: Install and connect (SUSE)
-      href: linux/quickstart-install-connect-suse.md
-    - name: Install and connect (Ubuntu)
-      href: linux/quickstart-install-connect-ubuntu.md
-    - name: Install and connect (WSL2)
-      href: linux/quickstart-install-connect-wsl-2.md
-    - name: Run and connect (containers)
-      href: linux/quickstart-install-connect-docker.md
-    - name: Deploy SQL Server container cluster
-      href: linux/quickstart-sql-server-containers-azure.md
-    - name: Deploy to Azure VMs with Ansible playbook
-      href: linux/sql-server-linux-deploy-ansible.md
-    - name: Provision a SQL Server VM in Azure >
-      href: /azure/azure-sql/virtual-machines/linux/sql-vm-create-portal-quickstart
-    - name: Run and connect - Cloud
-      href: linux/quickstart-install-connect-clouds.md
-  - name: Tutorials
-    items:
-    - name: New to SQL Server docs
-      href: linux/new-to-sql-learning-resources.yml
-    - name: New to Linux docs
-      href: linux/new-to-linux-learning-resources.yml
-    - name: New to Linux resources
-      href: linux/new-to-linux-resources.md
-    - name: Migrate from Windows
-      href: linux/sql-server-linux-migrate-restore-database.md
-    - name: Migrate to Docker
-      href: linux/tutorial-restore-backup-in-sql-server-container.md
-    - name: Create a job
-      href: linux/sql-server-linux-run-sql-server-agent-job.md
-    - name: Set up AD Authentication
-      items:
-      - name: Use adutil to set up AD Authentication
-        href: linux/sql-server-linux-ad-auth-adutil-tutorial.md
-      - name: Set up AD Authentication
-        href: linux/sql-server-linux-active-directory-authentication.md
-    - name: Create failover cluster instance
-      items:
-      - name: Overview
-        href: linux/sql-server-linux-shared-disk-cluster-configure.md
-      - name: iSCSI
-        href: linux/sql-server-linux-shared-disk-cluster-configure-iscsi.md
-      - name: NFS
-        href: linux/sql-server-linux-shared-disk-cluster-configure-nfs.md
-      - name: SMB
-        href: linux/sql-server-linux-shared-disk-cluster-configure-smb.md
-    - name: Operate failover cluster instances
-      href: linux/sql-server-linux-shared-disk-cluster-operate.md
-    - name: Deploy a Pacemaker cluster
-      href: linux/sql-server-linux-deploy-pacemaker-cluster.md
-    - name: Create and configure availability groups
-      href: linux/sql-server-linux-create-availability-group.md
-    - name: Configure replication
-      href: linux/sql-server-linux-replication-tutorial-tsql.md
-  - name: Concepts
+  - name: Getting started and deployment
     items:
     - name: Install
       items:
-      - name: Install SQL Server
+      - name: Overview
         href: linux/sql-server-linux-setup.md
+      - name: Install Database Engine
+        items:
+        - name: Install and connect (Red Hat)
+          href: linux/quickstart-install-connect-red-hat.md
+        - name: Install and connect (SUSE)
+          href: linux/quickstart-install-connect-suse.md
+        - name: Install and connect (Ubuntu)
+          href: linux/quickstart-install-connect-ubuntu.md
+        - name: Install and connect (WSL2)
+          href: linux/quickstart-install-connect-wsl-2.md
+        - name: Run and connect (containers)
+          href: linux/quickstart-install-connect-docker.md
+        - name: Run and connect - Cloud
+          href: linux/quickstart-install-connect-clouds.md
       - name: Install SQL Server tools
         href: linux/sql-server-linux-setup-tools.md
       - name: Install SQL Server Agent
@@ -9153,7 +9115,25 @@ items:
         href: linux/sql-server-linux-change-repo.md
       - name: Configure repositories (SQL Server 2025 and later)
         href: linux/sql-server-linux-change-repo-2025.md
-    - name: Configure
+    - name: Quickstarts
+      items:
+      - name: Deploy SQL Server container cluster
+        href: linux/quickstart-sql-server-containers-azure.md
+      - name: Deploy to Azure VMs with Ansible playbook
+        href: linux/sql-server-linux-deploy-ansible.md
+      - name: Provision a SQL Server VM in Azure >
+        href: /azure/azure-sql/virtual-machines/linux/sql-vm-create-portal-quickstart
+    - name: Unattended install
+      items:
+      - name: Red Hat Enterprise Linux (RHEL)
+        href: linux/sample-unattended-install-redhat.md
+      - name: SUSE Linux Enterprise Server (SLES)
+        href: linux/sample-unattended-install-suse.md
+      - name: Ubuntu
+        href: linux/sample-unattended-install-ubuntu.md
+  - name: Configuration and operations
+    items:
+    - name: System configuration
       items:
       - name: Configure with mssql-conf
         href: linux/sql-server-linux-configure-mssql-conf.md
@@ -9183,17 +9163,19 @@ items:
         href: linux/sql-server-linux-docker-container-configure.md
       - name: Container security
         href: linux/sql-server-linux-docker-container-security.md
-      - name: Guidance for deploying to Kubernetes
-        href: linux/sql-server-linux-kubernetes-best-practices-statefulsets.md
       - name: Use MSDTC with containers
         href: linux/sql-server-linux-configure-msdtc-docker.md
       - name: Troubleshoot containers
         href: linux/sql-server-linux-docker-container-troubleshooting.md
       - name: Setup AD Authentication using adutil
         href: linux/sql-server-linux-containers-ad-auth-adutil-tutorial.md
+    - name: Kubernetes
+      items:
+      - name: Guidance for deploying to Kubernetes
+        href: linux/sql-server-linux-kubernetes-best-practices-statefulsets.md
       - name: Deploy to AKS with Helm charts
         href: linux/sql-server-linux-containers-deploy-helm-charts-kubernetes.md
-    - name: Develop
+    - name: Development
       items:
       - name: Overview
         href: linux/sql-server-linux-develop-overview.md
@@ -9203,7 +9185,7 @@ items:
         href: tools/visual-studio-code-extensions/mssql/connect-database-visual-studio-code.md
       - name: Use SSDT
         href: linux/sql-server-linux-develop-use-ssdt.md
-    - name: Manage
+    - name: Administration and management
       items:
       - name: Overview
         href: linux/sql-server-linux-management-overview.md
@@ -9221,17 +9203,153 @@ items:
         href: linux/sql-server-linux-db-mail-sql-agent.md
       - name: Data virtualization (PolyBase)
         href: linux/sql-server-linux-polybase.md
-    - name: Migrate
+      - name: Create a SQL Server Agent job
+        href: linux/sql-server-linux-run-sql-server-agent-job.md
+      - name: SQL Assessment API
+        href: tools/sql-assessment-api/sql-assessment-api-overview.md
+  - name: Security
+    items:
+    - name: Overview
+      href: linux/sql-server-linux-security-overview.md
+    - name: Get started with security features
+      href: linux/sql-server-linux-security-get-started.md
+    - name: Security and permissions guide
+      href: linux/sql-server-linux-security-permissions-guide.md
+    - name: Get started with SQL Server on SELinux
+      href: linux/sql-server-linux-security-selinux.md
+    - name: Encrypt connections
+      href: linux/sql-server-linux-encrypted-connections.md
+    - name: Authentication
+      items:
+      - name: Active Directory authentication
+        href: linux/sql-server-linux-active-directory-auth-overview.md
+      - name: Introduction to adutil
+        href: linux/sql-server-linux-ad-auth-adutil-introduction.md
+      - name: Set up Active Directory authentication
+        items:
+        - name: Use AD authentication
+          href: linux/sql-server-linux-active-directory-authentication.md
+        - name: Use adutil to set up AD Authentication
+          href: linux/sql-server-linux-ad-auth-adutil-tutorial.md
+      - name: Join an Active Directory domain
+        href: linux/sql-server-linux-active-directory-join-domain.md
+      - name: Understand AD Authentication
+        href: linux/sql-server-linux-ad-auth-understanding.md
+      - name: Troubleshoot AD Authentication
+        href: linux/sql-server-linux-ad-auth-troubleshooting.md
+      - name: Rotate SQL Server on Linux keytabs
+        href: linux/sql-server-linux-ad-auth-rotate-keytabs.md
+      - name: Set password policy
+        href: linux/sql-server-linux-custom-password-policy.md
+      - name: Enable Microsoft Entra manually for containers
+        href: linux/authentication/container-kubernetes-microsoft-entra-deployment.md
+  - name: High availability and disaster recovery
+    items:
+    - name: Overview
+      href: linux/sql-server-linux-business-continuity-dr.md
+    - name: Availability basics
+      href: linux/sql-server-linux-ha-basics.md
+    - name: Backup and restore
       items:
       - name: Overview
-        href: linux/sql-server-linux-migrate-overview.md
-      - name: Export and import a BACPAC from Windows
-        href: linux/sql-server-linux-migrate-ssms.md
+        href: linux/sql-server-linux-backup-and-restore-database.md
+      - name: Restore the master database
+        href: linux/sql-server-linux-restore-master-database-in-single-user-mode.md
+      - name: Virtual Device Interface specification (Linux)
+        href: linux/sql-server-linux-backup-vdi-specification.md
+    - name: Failover clustering
+      items:
+      - name: Failover cluster concepts
+        href: linux/sql-server-linux-shared-disk-cluster-concepts.md
+      - name: Configure failover cluster instance
+        items:
+        - name: Overview
+          href: linux/sql-server-linux-shared-disk-cluster-configure.md
+        - name: iSCSI
+          href: linux/sql-server-linux-shared-disk-cluster-configure-iscsi.md
+        - name: NFS
+          href: linux/sql-server-linux-shared-disk-cluster-configure-nfs.md
+        - name: SMB
+          href: linux/sql-server-linux-shared-disk-cluster-configure-smb.md
+      - name: Operate failover cluster instances
+        href: linux/sql-server-linux-shared-disk-cluster-operate.md
+      - name: Red Hat Enterprise Linux (RHEL)
+        items:
+        - name: Configure (HA add-on)
+          href: linux/sql-server-linux-shared-disk-cluster-red-hat-7-configure.md
+        - name: Operate (HA add-on)
+          href: linux/sql-server-linux-shared-disk-cluster-red-hat-7-operate.md
+      - name: SUSE Linux Enterprise Server (SLES)
+        items:
+        - name: Configure (HA add-on)
+          href: linux/sql-server-linux-shared-disk-cluster-sles-configure.md
+      - name: Deploy a Pacemaker cluster
+        href: linux/sql-server-linux-deploy-pacemaker-cluster.md
+    - name: Availability groups
+      items:
+      - name: Overview
+        href: linux/sql-server-linux-availability-group-overview.md
+      - name: Create and configure availability groups
+        href: linux/sql-server-linux-create-availability-group.md
+      - name: Configure machine key for contained AG
+        href: linux/sql-server-linux-availability-group-prepare-machine-key.md
+      - name: High availability
+        items:
+        - name: Create for high availability
+          href: linux/sql-server-linux-availability-group-ha.md
+        - name: Configure with DH2i
+          href: /azure/azure-sql/virtual-machines/linux/dh2i-high-availability-tutorial
+        - name: Configure with HPE Serviceguard
+          href: linux/sql-server-availability-group-ha-hpe.md
+        - name: Configure with Pacemaker
+          items:
+          - name: Pacemaker basics
+            href: linux/sql-server-linux-pacemaker-basics.md
+          - name: Configure an AG
+            href: linux/sql-server-linux-availability-group-configure-ha.md
+          - name: Configure on RHEL, SLES, and Ubuntu
+            href: linux/sql-server-linux-availability-group-cluster-pacemaker.md
+          - name: Configure failover
+            href: linux/sql-server-linux-availability-group-failover-ha.md
+          - name: Operate an AG
+            href: linux/sql-server-linux-availability-group-operate-ha.md
+          - name: Configure multiple subnets for availability
+            href: linux/sql-server-linux-configure-multiple-subnet.md
+      - name: Configure AG for read-scale only
+        href: linux/sql-server-linux-availability-group-configure-rs.md
+      - name: Configure cross-platform (Windows and Linux)
+        href: linux/sql-server-linux-availability-group-cross-platform.md
+    - name: High availability for containers
+      items:
+      - name: Overview
+        href: linux/sql-server-linux-container-ha-overview.md
+      - name: Configure a Kubernetes cluster
+        href: linux/quickstart-sql-server-containers-azure.md
+      - name: Deploy AGs with DH2i DxEnterprise
+        href: linux/tutorial-sql-server-containers-kubernetes-dh2i.md
+      - name: Deploy AGs with DH2i DxOperator
+        href: linux/tutorial-sql-server-containers-kubernetes-dxoperator.md
+      - name: Deploy AGs with Rancher Prime and DH2i DxOperator
+        href: linux/tutorial-sql-server-containers-kubernetes-dxoperator-rancher-suse.md
+  - name: Migration and data movement
+    items:
+    - name: Overview
+      href: linux/sql-server-linux-migrate-overview.md
+    - name: Platform migration
+      items:
+      - name: Migrate from Windows
+        href: linux/sql-server-linux-migrate-restore-database.md
+      - name: Migrate to Docker
+        href: linux/tutorial-restore-backup-in-sql-server-container.md
       - name: Migrate with SQL Server Migration Assistant
         href: linux/sql-server-linux-migrate-ssma.md
+    - name: Data transfer
+      items:
+      - name: Export and import a BACPAC from Windows
+        href: linux/sql-server-linux-migrate-ssms.md
       - name: Bulk copy with bcp
         href: linux/sql-server-linux-migrate-bcp.md
-    - name: Extract, transform, load
+    - name: ETL and integration
       items:
       - name: Overview
         href: linux/sql-server-linux-migrate-ssis.md
@@ -9241,136 +9359,29 @@ items:
         href: linux/sql-server-linux-configure-ssis.md
       - name: Schedule SSIS packages
         href: linux/sql-server-linux-schedule-ssis-packages.md
-    - name: Configure business continuity
-      items:
-      - name: Overview
-        href: linux/sql-server-linux-business-continuity-dr.md
-      - name: Availability basics
-        href: linux/sql-server-linux-ha-basics.md
-      - name: Backup and restore
-        href: linux/sql-server-linux-backup-and-restore-database.md
-        items:
-        - name: Virtual Device Interface - Linux
-          href: linux/sql-server-linux-backup-vdi-specification.md
-      - name: Failover cluster instance
-        href: linux/sql-server-linux-shared-disk-cluster-concepts.md
-        items:
-        - name: Red Hat Enterprise Linux (RHEL)
-          items:
-          - name: Configure (HA add-on)
-            href: linux/sql-server-linux-shared-disk-cluster-red-hat-7-configure.md
-          - name: Operate (HA add-on)
-            href: linux/sql-server-linux-shared-disk-cluster-red-hat-7-operate.md
-        - name: SUSE Linux Enterprise Server (SLES)
-          items:
-          - name: Configure (HA add-on)
-            href: linux/sql-server-linux-shared-disk-cluster-sles-configure.md
-      - name: Availability groups
-        href: linux/sql-server-linux-availability-group-overview.md
-        items:
-        - name: Configure machine key for contained AG
-          href: linux/sql-server-linux-availability-group-prepare-machine-key.md
-        - name: High availability
-          items:
-          - name: Create for high availability
-            href: linux/sql-server-linux-availability-group-ha.md
-          - name: Configure with DH2i
-            href: /azure/azure-sql/virtual-machines/linux/dh2i-high-availability-tutorial
-          - name: Configure with HPE Serviceguard
-            href: linux/sql-server-availability-group-ha-hpe.md
-          - name: Configure with Pacemaker
-            items:
-            - name: Pacemaker basics
-              href: linux/sql-server-linux-pacemaker-basics.md
-            - name: Configure an AG
-              href: linux/sql-server-linux-availability-group-configure-ha.md
-            - name: Configure on RHEL, SLES, and Ubuntu
-              href: linux/sql-server-linux-availability-group-cluster-pacemaker.md
-            - name: Configure failover
-              href: linux/sql-server-linux-availability-group-failover-ha.md
-            - name: Operate an AG
-              href: linux/sql-server-linux-availability-group-operate-ha.md
-            - name: Configure multiple subnets for availability
-              href: linux/sql-server-linux-configure-multiple-subnet.md
-        - name: Create for read-scale only
-          items:
-          - name: Configure an AG
-            href: linux/sql-server-linux-availability-group-configure-rs.md
-        - name: Configure cross-platform (Windows and Linux)
-          href: linux/sql-server-linux-availability-group-cross-platform.md
-      - name: High availability for containers
-        items:
-        - name: Overview
-          href: linux/sql-server-linux-container-ha-overview.md
-        - name: Configure a Kubernetes cluster
-          href: linux/quickstart-sql-server-containers-azure.md
-        - name: Deploy AGs with DH2i DxEnterprise
-          href: linux/tutorial-sql-server-containers-kubernetes-dh2i.md
-        - name: Deploy AGs with DH2i DxOperator
-          href: linux/tutorial-sql-server-containers-kubernetes-dxoperator.md
-        - name: Deploy AGs with Rancher Prime and DH2i DxOperator
-          href: linux/tutorial-sql-server-containers-kubernetes-dxoperator-rancher-suse.md
-    - name: Security
-      items:
-      - name: Overview
-        href: linux/sql-server-linux-security-overview.md
-      - name: Get started with security features
-        href: linux/sql-server-linux-security-get-started.md
-      - name: Security and permissions guide
-        href: linux/sql-server-linux-security-permissions-guide.md
-      - name: Get started with SQL Server on SELinux
-        href: linux/sql-server-linux-security-selinux.md
-      - name: Active Directory authentication
-        href: linux/sql-server-linux-active-directory-auth-overview.md
-      - name: Join an AD domain
-        href: linux/sql-server-linux-active-directory-join-domain.md
-      - name: Encrypt connections
-        href: linux/sql-server-linux-encrypted-connections.md
-      - name: Introduction to adutil
-        href: linux/sql-server-linux-ad-auth-adutil-introduction.md
-      - name: Understand AD Authentication
-        href: linux/sql-server-linux-ad-auth-understanding.md
-      - name: Troubleshoot AD Authentication
-        href: linux/sql-server-linux-ad-auth-troubleshooting.md
-      - name: Rotate SQL Server on Linux keytabs
-        href: linux/sql-server-linux-ad-auth-rotate-keytabs.md
-      - name: Set password policy
-        href: linux/sql-server-linux-custom-password-policy.md
-    - name: Performance
-      items:
-      - name: Best practices
-        href: linux/sql-server-linux-performance-best-practices.md
-      - name: Get started with performance features
-        href: linux/sql-server-linux-performance-get-started.md
-    - name: Replication
-      items:
-      - name: Overview
-        href: linux/sql-server-linux-replication.md
-      - name: Configure
-        href: linux/sql-server-linux-replication-configure.md
-      - name: Snapshot folder
-        href: linux/sql-server-linux-replication-snapshot-shares.md
-      - name: Non-default ports
-        href: linux/sql-server-linux-replication-non-default-ports.md
-  - name: Samples
+  - name: Performance tuning
     items:
-    - name: Unattended install
-      items:
-      - name: Red Hat Enterprise Linux (RHEL)
-        href: linux/sample-unattended-install-redhat.md
-      - name: SUSE Linux Enterprise Server (SLES)
-        href: linux/sample-unattended-install-suse.md
-      - name: Ubuntu
-        href: linux/sample-unattended-install-ubuntu.md
-    - name: SQL Assessment API
-      href: linux/sql-server-linux-sql-assessment-api.md
-  - name: Resources
+    - name: Best practices
+      href: linux/sql-server-linux-performance-best-practices.md
+    - name: Get started with performance features
+      href: linux/sql-server-linux-performance-get-started.md
+  - name: Replication
+    items:
+    - name: Overview
+      href: linux/sql-server-linux-replication.md
+    - name: Configure replication
+      href: linux/sql-server-linux-replication-tutorial-tsql.md
+    - name: Configure
+      href: linux/sql-server-linux-replication-configure.md
+    - name: Snapshot folder
+      href: linux/sql-server-linux-replication-snapshot-shares.md
+    - name: Non-default ports
+      href: linux/sql-server-linux-replication-non-default-ports.md
+  - name: Support and community
     items:
     - name: Troubleshooting guide
       href: linux/sql-server-linux-troubleshooting-guide.md
-    - name: Restore the master database
-      href: linux/sql-server-linux-restore-master-database-in-single-user-mode.md
-    - name: How to License >>
+    - name: How to license >>
       href: https://www.microsoft.com/sql-server/sql-server-2022-pricing
     - name: DBA Stack Exchange >>
       href: https://dba.stackexchange.com/questions/tagged/sql-server
