@@ -9508,6 +9508,8 @@ items:
           href: sql-server/azure-arc/migration-sql-mi-prepare-link.md
         - name: Prepare LRS migration 
           href: sql-server/azure-arc/migration-sql-mi-prepare-log-replay-service.md
+        - name: Troubleshoot common issues 
+          href: sql-server/azure-arc/migrate-to-azure-sql-managed-instance-troubleshoot.md
     - name: SQL Server enabled by Azure Arc FAQ
       href: sql-server/azure-arc/faq.yml
     - name: Data collection & reporting

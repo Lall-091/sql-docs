@@ -5,7 +5,7 @@ description: SQL Server migration in Azure Arc to Azure SQL Managed Instance in 
 author: danimir
 ms.author: danil
 ms.reviewer: mikeray, randolphwest, mathoma
-ms.date: 11/18/2025
+ms.date: 12/12/2025
 ms.topic: how-to
 ---
 
@@ -18,7 +18,7 @@ This article shows you how to perform a SQL Server migration in Azure Arc to [Az
 You can try Azure SQL Managed Instance [for free](/azure/azure-sql/managed-instance/free-offer) for up to a year.
 
 > [!NOTE]  
-> You can provide feedback on your migration experience [directly to the product group](https://aka.ms/arc-migrations-feedback).
+> You can provide feedback about your migration experience [directly to the product group](https://aka.ms/arc-migrations-feedback).
 
 ## Overview
 
@@ -80,7 +80,7 @@ Select the **Copilot** icon on the **Database migration** pane to open the Copil
 To use SQL Server migration in Azure Arc, you need the following prerequisites:
 
 - An active Azure subscription. If you don't have one, you can [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- Your SQL Server instance must be [enabled by Azure Arc](overview.md) with the Azure extension for SQL Server version `1.1.3211.337` or later. You can upgrade your extension by using the [Azure portal](/azure/azure-arc/servers/manage-vm-extensions-portal#upgrade-extensions) or the [Azure CLI](/azure/azure-arc/servers/manage-vm-extensions-cli#upgrade-extensions).
+- Your SQL Server instance must be [enabled by Azure Arc](overview.md) with the Azure extension for SQL Server version `1.1.3238.349` or later. You can upgrade your extension by using the [Azure portal](/azure/azure-arc/servers/manage-vm-extensions-portal#upgrade-extensions) or the [Azure CLI](/azure/azure-arc/servers/manage-vm-extensions-cli#upgrade-extensions).
 
 Before you start the migration process, make sure that you've prepared your environment for your [chosen migration method](#integrated-migration-methods): 
 - Prepare for [Managed Instance link migration](migration-sql-mi-prepare-link.md).
@@ -210,11 +210,27 @@ Select a database and then use **Cutover** to open the **Cutover** pane and see 
 > [!NOTE]  
 > [Completing the cutover](configure-windows-accounts-agent.md#complete-cutover-of-managed-instance-link-migration) or [canceling the migration](configure-windows-accounts-agent.md#cancel-managed-instance-link-migration) when you migrate with the Managed Instance link grants [just-in-time permissions](configure-windows-accounts-agent.md#create-managed-instance-link-migration) until the link is removed or the migration is canceled.
 
+## Reverse a migration
+
+Reverse migration back to SQL Server from Azure SQL Managed Instance might be supported depending on the [update policy](/azure/azure-sql/managed-instance/update-policy) of your SQL managed instance. For example: 
+- [SQL Server 2022 update policy](/azure/azure-sql/managed-instance/update-policy#sql-server-2022-update-policy): Databases from instances configured with the **SQL Server 2022** update policy can be restored back to SQL Server 2022 instances.
+- [SQL Server 2025 update policy](/azure/azure-sql/managed-instance/update-policy#sql-server-2025-update-policy): Databases from instances configured with the **SQL Server 2025** update policy can be restored back to SQL Server 2025 instances.
+- [Always-up-to-date update policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy): Databases from instances configured with the **Always-up-to-date** update policy can't be restored back to SQL Server.
+
+If your source SQL Server version is earlier than SQL Server 2022, reverse migration isn't possible. When your database is migrated to SQL Managed Instance, it undergoes an internal upgrade to a newer database version that isn't compatible with earlier SQL Server versions. Reverse migration database compatibility is only available when SQL Managed instance is configured with the corresponding update policy.
+
+Reverse migration isn't available through the SQL Server migration in Azure Arc experience. You can manually reverse a migration through other tools such as [native backup and restore](/azure/azure-sql/managed-instance/restore-database-to-sql-server), or [manually configuring a link in SSMS](/azure/azure-sql/managed-instance/managed-instance-link-configure-how-to-ssms).
+
+
 ## Limitations
 
 The limitations of the [Managed Instance link](/azure/azure-sql/managed-instance/managed-instance-link-feature-overview#limitations) and [LRS](/azure/azure-sql/managed-instance/log-replay-service-migrate#limitations) apply to migrations through the Azure portal.
 
 Monitoring the migration through the Azure portal is available only to SQL Server instances that meet monitoring [licensing requirements](sql-monitoring.md#prerequisites).
+
+## Troubleshoot common issues
+
+To troubleshoot common issues when migrating to Azure SQL Managed Instance, see [Troubleshoot migration issues](migrate-to-azure-sql-managed-instance-troubleshoot.md).
 
 ## Related content
 

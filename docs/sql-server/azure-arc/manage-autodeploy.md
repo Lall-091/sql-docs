@@ -127,6 +127,8 @@ resources
 | project id, subscriptionId, tenantId
 ```
 
+## Upgrade the extension
+
 [!INCLUDE [manage-extension](includes/manage-extension.md)]
 
 ## Related content

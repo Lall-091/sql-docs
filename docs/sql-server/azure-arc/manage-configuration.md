@@ -731,6 +731,8 @@ resources
         |order by name asc
 ```
 
+## Upgrade the extension
+
 [!INCLUDE [manage-extension](includes/manage-extension.md)]
 
 ## Related content

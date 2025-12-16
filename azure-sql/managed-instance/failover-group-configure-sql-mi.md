@@ -478,7 +478,7 @@ To avoid problems from a lower service tier or under-resourced geo-secondary get
 - You can scale the primary and secondary instance up or down to a different compute size within the same service tier or to a different service tier. 
 - When scaling up within the same service tier, scale up the geo-secondary first, and then scale up the primary.
 - When scaling down within the same service tier, reverse the order: scale down the primary first, and then scale down the secondary. 
-- Follow the same sequence when you change the configuration of your instance. If you're scaling resources up, do so on the secondary first. If you're scaling down, do so the primary first. This applies to the following instance configuration changes: 
+- Follow the same sequence when you change the configuration of your instance. If you're scaling resources up, do so on the secondary first. If you're scaling down, do so on the primary first. This applies to the following instance configuration changes: 
   - Upgrading or downgrading the service tier. 
   - Changing the number of vCores.
   - Scaling the storage size.

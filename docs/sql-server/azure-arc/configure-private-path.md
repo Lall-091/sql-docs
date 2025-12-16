@@ -128,7 +128,6 @@ To delete the resources from Azure portal:
 1. Select **Delete resource group**.
 1. Confirm the resource group name at **Type the resource group name**, and select Delete.
 
-[!INCLUDE [manage-extension](includes/manage-extension.md)]
 
 ## Related content
 

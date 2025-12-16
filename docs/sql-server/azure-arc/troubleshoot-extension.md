@@ -230,4 +230,6 @@ resources
 | order by numExtensions desc
 ```
 
+## Upgrade the extension
+
 [!INCLUDE [manage-extension](includes/manage-extension.md)]
