@@ -3,11 +3,11 @@ title: Release Notes ODBC Driver for SQL Server on Linux and macOS
 description: "Learn what's new and changed in released versions of the Microsoft ODBC Driver for SQL Server."
 author: David-Engel
 ms.author: davidengel
-ms.date: 03/17/2025
+ms.date: 12/17/2025
 ms.service: sql
 ms.subservice: connectivity
 ms.custom: linux-related-content
-ms.topic: conceptual
+ms.topic: release-notes
 ---
 # Release Notes for the Microsoft ODBC Driver for SQL Server on Linux and macOS
 
@@ -28,6 +28,16 @@ Thank you.
 GeneMi.  2019/04/03.
 -->
 
+## 18.6.1, December 2025
+
+| New item | Details |
+| :------- | :------ |
+| New data type | Added support for new Vector data type (float32). |
+| ConcatNullYieldsNull property | Added support for ConcatNullYieldsNull as a connection string property. |
+| New distributions supported. | Azure Linux 3.0 ARM, Debian Linux 13, RedHat Linux 10, Ubuntu Linux 25.10 |
+| Azure Linux License | Changed License Acceptance Process for Azure Linux. |
+| Bug fixes. | [Bug fixes](../bug-fixes.md). |
+
 ## 18.5.1, March 2025
 
 | New item | Details |
@@ -42,7 +52,7 @@ GeneMi.  2019/04/03.
 | :------- | :------ |
 | New distributions supported. | macOS 14, Ubuntu 24.04, Alpine 3.19  |
 | Accept EULA by file presence. | Added the ability to accept the EULA for DEB and RPM packages by the presence of a file. |
-| Microsoft Entra ID | Renamed all occurrences of "Azure Active Directory" to "Microsoft Entra ID". See [New name for Azure Active Directory](/entra/fundamentals/new-name) for more information. |
+| Microsoft Entra ID | Renamed all occurrences of "Azure Active Directory" to "Microsoft Entra ID". For more information, see [New name for Azure Active Directory](/entra/fundamentals/new-name). |
 | Bug fixes. | [Bug fixes](../bug-fixes.md). |
 
 ## 18.3.3, April 2024
@@ -124,7 +134,7 @@ GeneMi.  2019/04/03.
 | VBS-NONE enclave attestation protocol | New enclave attestation option to not attest the enclave. See [Using Always Encrypted](../using-always-encrypted-with-the-odbc-driver.md) |
 | Wildcard matching of HostnameInCertificate | Now able to use wildcard for specifying hostname, if different from default value found in Addr/Address/Server. |
 | ServerCertificate option | See [DSN and Connection String Attributes and Keywords](../dsn-connection-string-attribute.md). |
-| TrustedConnection_UseAAD option | Now only Kerberos integrated authentication is enabled when specifying Trusted_Connection=yes. Use the TrustedConnection_UseAAD option to enable the previous behavior of using either Kerberos or Azure Active Directory integrated. See [Using Azure Active Directory](../using-azure-active-directory.md) for more information. |
+| TrustedConnection_UseAAD option | Now only Kerberos integrated authentication is enabled when specifying Trusted_Connection=yes. Use the TrustedConnection_UseAAD option to enable the previous behavior of using either Kerberos or Azure Active Directory integrated. For more information, see [Using Azure Active Directory](../using-azure-active-directory.md). |
 | Bug fixes. | [Bug fixes](../bug-fixes.md). |
 
 ## 17.10, June 2022
@@ -285,7 +295,7 @@ New connection string attribute UseFMTOnly causes driver to use legacy metadata 
 Support for Azure SQL Managed Instance.
 
 > [!NOTE]
-> There are a number of differences when using Managed Instance:
+> There are many differences when using Managed Instance:
 >
 > - FILESTREAM isn't supported
 > - Local filesystem access isn't supported, but required for things like tracefiles
@@ -294,7 +304,7 @@ Support for Azure SQL Managed Instance.
 > - DTC isn't supported
 > - 'sa' account isn't present (default account is called 'cloudSA')
 > - TDS token ERROR (0xAA) returns incorrect server name
-> - Special characters in database name are not supported
+> - Special characters in database name aren't supported
 > - ALTER DATABASE [dbname1] MODIFY NAME = [dbname2] isn't supported
 > - The error messages are always shown in English, regardless of language settings (same as Azure)
 
@@ -316,7 +326,7 @@ With Microsoft ODBC Driver 13.0 for SQL Server, SQL Server 2014 and SQL Server 2
 
 **New distributions supported**:
 
-Ubuntu is now supported, along with Red Hat and SUSE. Each platform has a platform-relevant package (RPM or DEB) to ease installation and configuration.  See [Installing the Driver](installing-the-microsoft-odbc-driver-for-sql-server.md) for installation instructions.
+Ubuntu is now supported, along with Red Hat and SUSE. Each platform has a platform-relevant package (RPM or DEB) to ease installation and configuration. See [Installing the Driver](installing-the-microsoft-odbc-driver-for-sql-server.md) for installation instructions.
 
 **unixODBC Driver Manager 2.3.1 Support**: In addition to a newer driver manager, there's also a package for installing this dependency that eases installation and configuration.  
 
@@ -332,4 +342,4 @@ The ODBC driver on Linux supports [!INCLUDE[ssHADR](../../../includes/sshadr-md.
 
 The ODBC driver on Linux supports connections to Azure SQL Database.
 
-The `-l` option (login time out) has been added to `bcp`. For more information, see [Connecting with **bcp**](../../../tools/bcp-utility.md).
+The `-l` option (login timeout) was added to `bcp`. For more information, see [Connecting with **bcp**](../../../tools/bcp-utility.md).

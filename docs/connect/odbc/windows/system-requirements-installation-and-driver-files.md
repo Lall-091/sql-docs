@@ -3,10 +3,10 @@ title: System Requirements, Installation, and Driver Files
 description: This article describes the system requirements for the Microsoft ODBC Driver for SQL Server.
 author: David-Engel
 ms.author: davidengel
-ms.date: 09/26/2025
+ms.date: 12/17/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2024
 ---
@@ -23,6 +23,7 @@ Compatibility indicates that a driver was tested for compatibility against exist
 
 | Database version&nbsp;&#8594;<br />&#8595; Driver Version | SQL database in Microsoft Fabric | Azure SQL Database | Azure Synapse Analytics | Azure SQL Managed Instance | SQL Server 2025 | SQL Server 2022 | SQL Server 2019 | SQL Server 2017 | SQL Server 2016 | SQL Server 2014 | SQL Server 2012 | SQL Server 2008 R2 | SQL Server 2008 | SQL Server 2005 |
 | ---| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 18.6 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | | | | |
 | 18.5 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | | | | |
 | 18.4 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | | | | |
 | 18.3 | | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | | | | |
@@ -59,6 +60,7 @@ The following matrix indicates driver version support for Windows operating syst
 
 | Operating system&nbsp;&#8594;<br />&#8595; Driver version | Windows Server 2025 | Windows Server 2022 | Windows Server 2019 | Windows Server 2016 | Windows Server 2012 R2 | Windows Server 2012 | Windows Server 2008 R2 | Windows 11 | Windows 10 | Windows 8.1 | Windows 7 | Windows Vista SP2 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 18.6 | Yes | Yes | Yes | Yes | | | | Yes | Yes | | | |
 | 18.5 | Yes | Yes | Yes | Yes | | | | Yes | Yes | | | |
 | 18.4 | | Yes | Yes | Yes | | | | Yes | Yes | | | |
 | 18.3 | | Yes | Yes | Yes | Yes | | | Yes | Yes | | | |
@@ -85,7 +87,7 @@ The following matrix indicates driver version support for Windows operating syst
 The driver is installed when you run `msodbcsql.msi` from one of the [Downloads for Windows](../download-odbc-driver-for-sql-server.md#download-for-windows).
 
 > [!NOTE]  
-> For those who have Driver 17.1.0.1 or below installed, it is recommended that it be uninstalled manually prior to installing the newer version of the Driver.
+> Users with Driver version 17.1.0.1 or earlier are advised to manually uninstall the existing driver before proceeding with the installation of the updated version.
 
 ### Side-by-side with Native Client
 
