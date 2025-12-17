@@ -1021,5 +1021,5 @@ Using `-V 16` in combination with checking the exit code and `DOS ERRORLEVEL` ca
 - [Execute T-SQL from a script file with sqlcmd](sqlcmd-run-transact-sql-script-files.md)
 - [Use sqlcmd](sqlcmd-use-utility.md)
 - [Connect to SQL Server with sqlcmd](sqlcmd-connect-database-engine.md)
-- [Edit SQLCMD Scripts with Query Editor](edit-sqlcmd-scripts-query-editor.md)
+- [Edit SQLCMD scripts with Query Editor](/ssms/scripting/sqlcmd-scripts-query-editor)
 - [Create a CmdExec Job Step](/ssms/agent/create-a-cmdexec-job-step)

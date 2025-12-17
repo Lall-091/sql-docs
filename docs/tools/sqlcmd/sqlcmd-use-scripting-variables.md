@@ -356,6 +356,6 @@ These statements return the row.
 - [use the utility](sqlcmd-use-utility.md)
 - [Use sqlcmd with scripting variables](sqlcmd-use-scripting-variables.md)
 - [Connect to SQL Server with sqlcmd](sqlcmd-connect-database-engine.md)
-- [Edit SQLCMD Scripts with Query Editor](edit-sqlcmd-scripts-query-editor.md)
+- [Edit SQLCMD scripts with Query Editor](/ssms/scripting/sqlcmd-scripts-query-editor)
 - [Manage Job Steps](/ssms/agent/manage-job-steps)
 - [Create a CmdExec Job Step](/ssms/agent/create-a-cmdexec-job-step)

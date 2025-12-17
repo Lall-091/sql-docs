@@ -31,7 +31,7 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 
 - Submit a **sqlcmd** job either by specifying a single T-SQL statement to execute, or by pointing the utility to a text file that contains T-SQL statements to execute. The output is directed to a text file, but can also be displayed at the command prompt.
 
-- [SQLCMD mode](edit-sqlcmd-scripts-query-editor.md) in SQL Server Management Studio (SSMS) Query Editor.
+- [SQLCMD mode](/ssms/scripting/sqlcmd-scripts-query-editor) in SQL Server Management Studio (SSMS).
 - SQL Server Management Objects (SMO).
 - SQL Server Agent CmdExec jobs.
 
@@ -560,6 +560,6 @@ If the provider specifies `ForceProtocolEncryption = True`, then encryption is e
 
 - [sqlcmd utility](sqlcmd-utility.md)
 - [Use sqlcmd with scripting variables](sqlcmd-use-scripting-variables.md)
-- [Edit SQLCMD Scripts with Query Editor](edit-sqlcmd-scripts-query-editor.md)
+- [Edit SQLCMD scripts with Query Editor](/ssms/scripting/sqlcmd-scripts-query-editor)
 - [Manage Job Steps](/ssms/agent/manage-job-steps)
 - [Create a CmdExec Job Step](/ssms/agent/create-a-cmdexec-job-step)

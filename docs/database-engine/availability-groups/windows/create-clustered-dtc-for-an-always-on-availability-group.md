@@ -18,7 +18,7 @@ This article walks you through a complete configuration of a clustered DTC resou
 
 The walkthrough creates a clustered DTC resource and the [!INCLUDE [ssnoversion-md](../../../includes/ssnoversion-md.md)] AGs to align with the requirements at [How to cluster the DTC service for an Always On availability group](cluster-dtc-for-sql-server-2016-availability-groups.md).
 
-The walkthrough uses PowerShell and Transact-SQL (T-SQL) scripts. Many of the T-SQL scripts require **SQLCMD Mode** to be enabled. For more information on **SQLCMD Mode**, see [Edit SQLCMD Scripts with Query Editor](../../../tools/sqlcmd/edit-sqlcmd-scripts-query-editor.md). The PowerShell module `FailoverClusters` must be imported. For more information about importing a PowerShell module, see [Importing a PowerShell Module](/powershell/scripting/developer/module/importing-a-powershell-module). This walkthrough is based on the following configuration options:
+The walkthrough uses PowerShell and Transact-SQL (T-SQL) scripts. Many of the T-SQL scripts require **SQLCMD Mode** to be enabled. For more information on **SQLCMD Mode**, see [Edit SQLCMD scripts with Query Editor](/ssms/scripting/sqlcmd-scripts-query-editor). The PowerShell module `FailoverClusters` must be imported. For more information about importing a PowerShell module, see [Importing a PowerShell Module](/powershell/scripting/developer/module/importing-a-powershell-module). This walkthrough is based on the following configuration options:
 
 - All requirements from [Prerequisites, restrictions, and recommendations for Always On availability groups](prereqs-restrictions-recommendations-always-on-availability.md) are met.
 - The domain is `contoso.lab`.
