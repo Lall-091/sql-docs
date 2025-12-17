@@ -3,10 +3,10 @@ title: "SQL Native Client 11.0 Configuration"
 description: Find out about the settings that are configured in the SQL Server Native Client Configuration dialog boxes in Microsoft SQL Server Configuration Manager.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/09/2024
+ms.date: 12/15/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: article
 ms.collection:
   - data-tools
 helpviewer_keywords:
@@ -14,40 +14,20 @@ helpviewer_keywords:
 monikerRange: ">=sql-server-2016"
 ---
 # SQL Native Client 11.0 Configuration
+
 [!INCLUDE [SQL Server Windows Only](../../includes/applies-to-version/sql-windows-only.md)]
 
-This section contains the F1 Help articles for the **SQL Server Native Client Configuration** dialogs in [!INCLUDE [msCoName](../../includes/msconame-md.md)] [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Configuration Manager. [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Native Client is the network library that client computers use to connect to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], starting with [!INCLUDE [msCoName](../../includes/msconame-md.md)] [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].  
+This section contains the F1 Help articles for the **SQL Server Native Client Configuration** dialogs in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Configuration Manager. [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Native Client is the network library that client computers use to connect to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], starting with [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 
-The settings configured in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Native Client Configuration are used on the computer running the client program. When configured on the computer running [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], they affect only those client programs running on the server.  
-  
-These settings do not affect clients connecting to previous versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], unless they are using the client tools starting with [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], such as [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)].  
-  
+The settings configured in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Native Client Configuration are used on the computer running the client program. When configured on the computer running [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], they affect only those client programs running on the server.
+
+These settings don't affect clients connecting to previous versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], unless they are using the client tools starting with [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], such as [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)].
+
 > [!IMPORTANT]  
 > [!INCLUDE [snac-removed-oledb-and-odbc](../../includes/snac-removed-oledb-and-odbc.md)]
 
-## In this Section
-  
--   [SQL Server Native Client Configuration Properties (Flags Tab)](../../tools/configuration-manager/sql-server-native-client-configuration-properties-flags-tab.md)  
-  
--   [Client Protocols (SQL Server Configuration Manager)](../../tools/configuration-manager/client-protocols-sql-server-configuration-manager.md)  
-  
-    -   [Client Protocols Properties (Order Tab)](../../tools/configuration-manager/client-protocols-properties-order-tab.md)  
-  
-    -   [Client Protocols - Shared Memory Properties (Protocol Tab)](../../tools/configuration-manager/client-protocols-shared-memory-properties-protocol-tab.md)  
-  
-    -   [Client Protocols - TCP IP Properties (Protocol Tab)](../../tools/configuration-manager/client-protocols-tcp-ip-properties-protocol-tab.md)  
-  
-    -   [Client Protocols - Named Pipes Properties (Protocol Tab)](../../tools/configuration-manager/client-protocols-named-pipes-properties-protocol-tab.md)  
-  
--   [Aliases (SQL Server Configuration Manager)](../../tools/configuration-manager/aliases-sql-server-configuration-manager.md)  
-  
-    -   [New Alias (Alias Tab)](aliases-sql-server-configuration-manager.md)  
-  
-    -   [&#60;Alias&#62; Properties (Alias Tab)](aliases-sql-server-configuration-manager.md)  
-  
-    -   [Creating a Valid Connection String Using Shared Memory Protocol](aliases-sql-server-configuration-manager.md)  
-  
-    -   [Creating a Valid Connection String Using TCP IP](aliases-sql-server-configuration-manager.md)  
-  
-    -   [Creating a Valid Connection String Using Named Pipes](/previous-versions/sql/sql-server-2016/ms189307(v=sql.130))  
-  
+## In this section
+
+- [SQL Server Native Client Configuration Properties (Flags Tab)](sql-server-native-client-configuration-properties-flags-tab.md)
+- [Client Protocols (SQL Server Configuration Manager)](client-protocols-sql-server-configuration-manager.md)
+- [Aliases (SQL Server Configuration Manager)](aliases-sql-server-configuration-manager.md)

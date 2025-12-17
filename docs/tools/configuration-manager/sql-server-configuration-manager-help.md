@@ -3,11 +3,10 @@ title: "SQL Server Configuration Manager Help"
 description: Get acquainted with SQL Server Configuration Manager. Learn how to use it to manage SQL Server services and configure network connectivity.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: randolphwest
-ms.date: 07/26/2024
+ms.date: 12/15/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection:
   - data-tools
 helpviewer_keywords:
@@ -19,7 +18,9 @@ monikerRange: ">=sql-server-2016"
 
 [!INCLUDE [SQL Server Windows Only](../../includes/applies-to-version/sql-windows-only.md)]
 
-Use [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Configuration Manager to configure [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] services and configure network connectivity. To create or manage database objects, configure security, and write [!INCLUDE [tsql](../../includes/tsql-md.md)] queries, use [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)]. For more information about [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)], see [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Books Online.
+Use [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Configuration Manager to configure [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] services and configure network connectivity.
+
+To create or manage database objects, configure security, and write [!INCLUDE [tsql](../../includes/tsql-md.md)] queries, use [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)]. For more information, see [What is SQL Server Management Studio (SSMS)?](/ssms/sql-server-management-studio-ssms)
 
 > [!TIP]  
 > If you need to configure [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on Linux, use the **mssql-conf** tool. For more information, see [Configure SQL Server on Linux with the mssql-conf tool](../../linux/sql-server-linux-configure-mssql-conf.md).
@@ -49,7 +50,7 @@ Use [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Configuration Man
 - Configure a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] network protocol
 
 > [!NOTE]  
-> For a short tutorial about how to configure protocols and connect to the [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)], see [Tutorial: Getting Started with the Database Engine](../../relational-databases/tutorial-getting-started-with-the-database-engine.md).
+> For a short tutorial about how to configure protocols and connect to the [!INCLUDE [ssDEnoversion](../../includes/ssdenoversion-md.md)], see [Tutorial: Get started with the Database Engine](../../relational-databases/tutorial-getting-started-with-the-database-engine.md).
 
 ## SQL Server Native Client configuration
 
@@ -68,14 +69,9 @@ For more information about each of these tasks, see F1 help for each task.
 
 ## Open SQL Server Configuration Manager
 
-On the **Start** menu, point to **All Programs**, point to **Microsoft SQL Server** (version), point to **Configuration Tools**, and then select **SQL Server Configuration Manager**.
+Because SQL Server Configuration Manager is a snap-in for the [!INCLUDE [msconame-md](../../includes/msconame-md.md)] Management Console program and not a stand-alone program, SQL Server Configuration Manager doesn't always appear as an application in some versions of Windows.
 
-Because SQL Server Configuration Manager is a snap-in for the [!INCLUDE [msconame-md](../../includes/msconame-md.md)] Management Console program and not a stand-alone program, SQL Server Configuration Manager doesn't appear as an application in newer versions of Windows.
-
-| Operating system | Details |
-| --- | --- |
-| **Windows 10 and Windows 11** | To open SQL Server Configuration Manager, on the **Start Page**, type `SQLServerManager16.msc` (for [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]). For other versions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], replace `16` with the appropriate number. Selecting `SQLServerManager16.msc` opens the Configuration Manager. To pin the Configuration Manager to the Start Page or Task Bar, right-click `SQLServerManager16.msc`, and then select **Open file location**. In the Windows File Explorer, right-click `SQLServerManager16.msc`, and then select **Pin to Start** or **Pin to taskbar**. |
-| **Windows 8** | To open SQL Server Configuration Manager, in the **Search** charm, under **Apps**, type `SQLServerManager<version>.msc`, such as `SQLServerManager16.msc`, and then press **Enter**. |
+To open SQL Server Configuration Manager, type `SQLServerManager17.msc` (for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]) from the **Start** menu. For other versions, replace `17` with the appropriate number. You can pin SQL Server Configuration Manager to the Start menu or Task Bar by right-clicking `SQLServerManager17.msc` and selecting **Open file location**. Then, right-click the file and select **Pin to Start** or **Pin to Taskbar**.
 
 ## Related content
 

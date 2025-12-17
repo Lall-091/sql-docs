@@ -3,17 +3,17 @@ title: "TCP/IP Properties (IP Addresses Tab)"
 description: Learn how to use the IP Addresses tab of the TCP/IP Properties dialog box to configure the TCP/IP protocol options for a specific IP address in SQL Server.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/04/2025
+ms.date: 12/15/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: ui-reference
 ms.collection:
   - data-tools
 helpviewer_keywords:
   - "ports [SQL Server], listening on"
   - "listening [SQL Server], on ports"
 ---
-# TCP/IP Properties (IP Addresses Tab)
+# TCP/IP Properties (IP Addresses tab)
 
 [!INCLUDE [SQL Server Windows Only](../../includes/applies-to-version/sql-windows-only.md)]
 
@@ -23,7 +23,7 @@ Changes take effect when SQL Server is restarted. For information about starting
 
 ## Static vs. Dynamic Ports
 
-The default instance of SQL Server listens for incoming connections on port 1433. The port can be changed for security reasons or because of a client application requirement. By default, named instances (including SQL Server Express) are configured to listen on dynamic ports. To configure a static port, leave the **TCP Dynamic Ports** box blank and provide an available port number in the **TCP Port** box. For more information about opening ports in the firewall, see Configuring the Windows Firewall to Allow SQL Server Access in Books Online.
+The default instance of SQL Server listens for incoming connections on port 1433. The port can be changed for security reasons or because of a client application requirement. By default, named instances (including SQL Server Express) are configured to listen on dynamic ports. To configure a static port, leave the **TCP Dynamic Ports** box blank and provide an available port number in the **TCP Port** box. For more information about opening ports in the firewall, see [Configure the Windows Firewall to allow SQL Server access](../../sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access.md).
 
 ## Dynamic Ports
 
@@ -53,9 +53,9 @@ For **IPAll**, displays the port number of the dynamic port used.
 
 View or change the port on which SQL Server listens. By default, the default instance of SQL Server listens on port 1433.
 
-The database engine can listen on multiple ports on the same IP address, list the ports, separated by commas, in the format 1433,1500,1501. This field is limited to 2047 characters.
+The database engine can listen on multiple ports on the same IP address, list the ports, separated by commas, in the format `1433,1500,1501`. This field is limited to 2,047 characters.
 
-To configure a single IP address to listen on multiple ports, the **Listen All** parameter must also be set to **No**, on the **Protocols Tab** of the **TCP/IP Properties** dialog box. For more information, see "How to: Configure the Database Engine to Listen on Multiple TCP Ports" in SQL Server Books Online.
+To configure a single IP address to listen on multiple ports, the **Listen All** parameter must also be set to **No**, on the **Protocols Tab** of the **TCP/IP Properties** dialog box. For more information, see [Configure the Database Engine to listen on multiple TCP ports](../../database-engine/configure-windows/configure-the-database-engine-to-listen-on-multiple-tcp-ports.md).
 
 ## Add or remove IP addresses
 
@@ -69,5 +69,5 @@ SQL Server Configuration Manager displays the IP addresses that were available a
 ## Related content
 
 - [Enable or disable a server network protocol](../../database-engine/configure-windows/enable-or-disable-a-server-network-protocol.md)
-- [Creating a Valid Connection String Using TCP IP](aliases-sql-server-configuration-manager.md)
+- [Aliases (SQL Server Configuration Manager)](aliases-sql-server-configuration-manager.md)
 - [SQL Server Browser service (Database Engine and SSAS)](../../database-engine/configure-windows/sql-server-browser-service-database-engine-and-ssas.md)
