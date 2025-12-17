@@ -4,7 +4,7 @@ description: "The sys.sp_MSchange_feed_ddl_event internal system stored procedur
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: imotiwala, ajayj, randolphwest
-ms.date: 06/23/2025
+ms.date: 12/17/2025
 ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,8 +27,7 @@ monikerRange: ">=sql-server-ver16 || =azuresqldb-current || =azuresqldb-mi-curre
 
 Internal procedure that handles data definition language events.
 
-> [!NOTE]  
-> This internal system stored procedure is used internally and isn't recommended for direct administrative use. Use Synapse Studio or the Fabric portal instead. Using this procedure could introduce inconsistency.
+[!INCLUDE [fabric-internal-use](includes/fabric-internal-use.md)]
 
 This system stored procedure is used for:
 
@@ -41,15 +40,15 @@ This system stored procedure is used for:
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ```syntaxsql
-sys.sp_MSchange_feed_ddl_event
-    @EventData xml
+sys.sp_MSchange_feed_ddl_event [ @EventData = ] N'EventData'
+[ ; ]
 ```
 
 ## Arguments
 
-#### EventData
+#### [ @EventData = ] N'*EventData*'
 
-Internal use only.
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
 
 ## Result set
 
@@ -57,7 +56,7 @@ Internal use only.
 
 ## Permissions
 
-A user with [CONTROL database permissions](../security/permissions-database-engine.md), **db_owner** database role membership, or **sysadmin** server role membership can execute this procedure.
+A user with `CONTROL` database permissions, **db_owner** database role membership, or **sysadmin** server role membership can execute this procedure.
 
 ## Related content
 

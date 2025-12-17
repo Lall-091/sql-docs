@@ -4,7 +4,7 @@ description: "The sys.sp_change_feed_enable_db system stored procedure enables t
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: imotiwala, randolphwest, ajayj
-ms.date: 06/23/2025
+ms.date: 12/17/2025
 ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -31,8 +31,7 @@ Enables current database for:
 - [Microsoft Fabric mirrored databases](/fabric/database/mirrored-database/overview)
 - [Azure Synapse Link](../../sql-server/synapse-link/synapse-link-sql-server-change-feed-manage.md)
 
-> [!CAUTION]  
-> This system stored procedure is used internally and isn't recommended for direct administrative use. Use Synapse Studio or the Fabric portal instead. Using this procedure could introduce inconsistency.
+[!INCLUDE [fabric-internal-use](includes/fabric-internal-use.md)]
 
 ## Syntax
 
@@ -64,20 +63,20 @@ Data type is **int**. Describes the frequency, or polling interval, that the log
 
 #### @destination_type
 
-**Applies to:** Fabric database mirroring only. For Synapse Link, do not specify.
+**Applies to**: Fabric database mirroring only. For Synapse Link, don't specify.
 
 Data type is **int**. Default is `0`, for Azure Synapse Link. `2` = Fabric database mirroring.
 
 ## Permissions
 
-A user with [CONTROL database permissions](../security/permissions-database-engine.md), **db_owner** database role membership, or **sysadmin** server role membership can execute this procedure.
+A user with `CONTROL` database permissions, **db_owner** database role membership, or **sysadmin** server role membership can execute this procedure.
 
 ## Examples
 
 The following sample enables the change feed.
 
 ```sql
-EXECUTE sys.sp_change_feed_enable_db;
+EXECUTE sys.sp_change_feed_enable_db ;
 ```
 
 Verify the database is enabled.

@@ -4,7 +4,7 @@ description: "The internal sys.sp_change_feed_disable_table system stored proced
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest, ajayj, imotiwala
-ms.date: 06/23/2025
+ms.date: 12/17/2025
 ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,8 +27,7 @@ monikerRange: ">=sql-server-ver16 || =azuresqldb-current || =azuresqldb-mi-curre
 
 Removes a table from the change feed.
 
-> [!CAUTION]  
-> This system stored procedure is used internally and isn't recommended for direct administrative use. Use Synapse Studio or the Fabric portal instead. Using this procedure could introduce inconsistency.
+[!INCLUDE [fabric-internal-use](includes/fabric-internal-use.md)]
 
 This system stored procedure is used for:
 
@@ -67,7 +66,7 @@ The last changes published and synchronized to Azure Synapse can't be guaranteed
 
 ## Permissions
 
-A user with [CONTROL database permissions](../security/permissions-database-engine.md), **db_owner** database role membership, or **sysadmin** server role membership can execute this procedure.
+A user with `CONTROL` database permissions, **db_owner** database role membership, or **sysadmin** server role membership can execute this procedure.
 
 ## Related content
 

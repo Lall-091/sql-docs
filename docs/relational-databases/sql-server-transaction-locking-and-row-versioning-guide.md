@@ -3,11 +3,11 @@ title: "Transaction locking and row versioning guide"
 description: "Transaction locking and row versioning guide"
 author: MikeRayMSFT
 ms.author: mikeray
-ms.reviewer: randolphwest, wiassaf
-ms.date: 06/20/2025
+ms.reviewer: randolphwest, wiassaf, dfurman
+ms.date: 12/16/2025
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 helpviewer_keywords:
@@ -1766,11 +1766,11 @@ The granularity of locking used on an index can be set using the `CREATE INDEX` 
 
 ## <a id="Advanced"></a> Advanced transaction information
 
-### <a id="nesting-transactions"></a> Nest transactions
+### <a id="nesting-transactions"></a> Outer and inner transactions
 
-Explicit transactions can be nested. This is primarily intended to support transactions in stored procedures that can be called either from a process already in a transaction or from processes that have no active transaction.
+An explicit inner transaction can be started within an explicit outer transaction. This is primarily intended to support transactions in stored procedures that can be called either from a process already in a transaction or from processes that have no active transaction.
 
-The following example shows the use of nested transactions. If `TransProc` is called when a transaction is active, the outcome of the nested transaction in `TransProc` is controlled by the outer transaction, and its `INSERT` statements are committed or rolled back based on the commit or roll back of the outer transaction. If `TransProc` is executed by a process that doesn't have an outstanding transaction, the `COMMIT TRANSACTION` at the end of the procedure commits the `INSERT` statements.
+The following example shows the use of outer and inner transactions. If `TransProc` is called when a transaction is active, the outcome of the inner transaction in `TransProc` is controlled by the outer transaction, and its `INSERT` statements are committed or rolled back based on the commit or roll back of the outer transaction. If `TransProc` is executed by a process that doesn't have an outstanding transaction, the `COMMIT TRANSACTION` at the end of the procedure commits the `INSERT` statements.
 
 ```sql
 SET QUOTED_IDENTIFIER OFF;
@@ -1805,7 +1805,7 @@ EXEC TransProc 1, 'aaa';
 GO
 
 /* Roll back the outer transaction, this will
-   roll back TransProc's nested transaction. */
+   roll back TransProc's inner transaction. */
 ROLLBACK TRANSACTION OutOfProc;
 GO
 
@@ -1824,13 +1824,16 @@ FROM TestTrans;
 GO
 ```
 
-Committing inner transactions is ignored by the [!INCLUDE [Database Engine](../includes/ssde-md.md)] when an outer transaction is active. The transaction is either committed or rolled back based on the commit or roll back at the end of the outermost transaction. If the outer transaction is committed, the inner nested transactions are also committed. If the outer transaction is rolled back, then all inner transactions are also rolled back, regardless of whether or not the inner transactions were individually committed.
+Committing inner transactions is ignored by the [!INCLUDE [Database Engine](../includes/ssde-md.md)] when an outer transaction is active. The transaction is either committed or rolled back based on the commit or roll back at the end of the outermost transaction. If the outer transaction is committed, the inner transactions are also committed. If the outer transaction is rolled back, then all inner transactions are also rolled back, regardless of whether or not the inner transactions were individually committed.
 
-Each call to `COMMIT TRANSACTION` or `COMMIT WORK` applies to the last executed `BEGIN TRANSACTION`. If the `BEGIN TRANSACTION` statements are nested, then a `COMMIT` statement applies only to the last nested transaction, which is the innermost transaction. Even if a `COMMIT TRANSACTION transaction_name` statement within a nested transaction refers to the transaction name of the outer transaction, the commit applies only to the innermost transaction.
+Each call to `COMMIT TRANSACTION` or `COMMIT WORK` applies to the last executed `BEGIN TRANSACTION`. If there are multiple `BEGIN TRANSACTION` statements, then a `COMMIT` statement applies only to the last statement, in other words to the innermost transaction. Even if a `COMMIT TRANSACTION transaction_name` statement within an inner transaction refers to the transaction name of the outer transaction, the commit applies only to the innermost transaction.
 
-It isn't allowed for the `transaction_name` parameter of a `ROLLBACK TRANSACTION` statement to refer to the inner transaction in a set of named nested transactions. `transaction_name` can refer only to the transaction name of the outermost transaction. If a `ROLLBACK TRANSACTION transaction_name` statement using the name of the outer transaction is executed at any level of a set of nested transactions, all of the nested transactions are rolled back. If a `ROLLBACK WORK` or `ROLLBACK TRANSACTION` statement without a `transaction_name` parameter is executed at any level of a set of nested transaction, it rolls back all of the nested transactions, including the outermost transaction.
+It isn't allowed for the `transaction_name` parameter of a `ROLLBACK TRANSACTION` statement to refer to the inner transaction in a set of named transactions. `transaction_name` can refer only to the transaction name of the outermost transaction.
 
-The `@@TRANCOUNT` function records the current transaction nesting level. Each `BEGIN TRANSACTION` statement increments `@@TRANCOUNT` by one. Each `COMMIT TRANSACTION` or `COMMIT WORK` statement decrements `@@TRANCOUNT` by one. A `ROLLBACK WORK` or a `ROLLBACK TRANSACTION` statement that doesn't have a transaction name rolls back all nested transactions and decrements `@@TRANCOUNT` to 0. A `ROLLBACK TRANSACTION` that uses the transaction name of the outermost transaction in a set of nested transactions rolls back all of the nested transactions and decrements `@@TRANCOUNT` to 0. To determine if you are already in a transaction, `SELECT @@TRANCOUNT` to see if it is 1 or more. If `@@TRANCOUNT` is 0, you are not in a transaction.
+The `@@TRANCOUNT` function records the current transaction nesting level. Each `BEGIN TRANSACTION` statement increments `@@TRANCOUNT` by one. Each `COMMIT TRANSACTION` or `COMMIT WORK` statement decrements `@@TRANCOUNT` by one. A `ROLLBACK WORK` or a `ROLLBACK TRANSACTION` statement that doesn't have a transaction name rolls back the outer and all inner transactions and decrements `@@TRANCOUNT` to 0. Similarly, a `ROLLBACK TRANSACTION` that uses the transaction name of the outermost transaction rolls back the outer and all inner transactions and decrements `@@TRANCOUNT` to 0. To determine if you are already in a transaction, `SELECT @@TRANCOUNT` to see if it is 1 or more. If `@@TRANCOUNT` is 0, you are not in a transaction.
+
+> [!NOTE]  
+> The [!INCLUDE [ssde-md](../includes/ssde-md.md)] doesn't support independently manageable nested transactions. A commit of an inner transaction decrements `@@TRANCOUNT` but has no other effects. A rollback of an inner transaction always rolls back the outer transaction, unless a [savepoint](../t-sql/language-elements/save-transaction-transact-sql.md) exists and is specified in the `ROLLBACK` statement.
 
 ### <a id="using-bound-sessions"></a> Use bound sessions
 

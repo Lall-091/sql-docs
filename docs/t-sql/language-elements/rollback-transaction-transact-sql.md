@@ -3,7 +3,8 @@ title: "ROLLBACK TRANSACTION (Transact-SQL)"
 description: This statement rolls back an explicit or implicit transaction to the beginning of the transaction, or to a savepoint inside the transaction.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/27/2025
+ms.reviewer: dfurman
+ms.date: 12/17/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -25,19 +26,20 @@ dev_langs:
   - "TSQL"
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
 ---
+
 # ROLLBACK TRANSACTION (Transact-SQL)
 
 [!INCLUDE [sql-asdb-asdbmi-asa-pdw-fabricdw-fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricdw-fabricsqldb.md)]
 
-This statement rolls back an explicit or implicit transaction to the beginning of the transaction, or to a savepoint inside the transaction. You can use `ROLLBACK TRANSACTION` to erase all data modifications made from the start of the transaction or to a savepoint. It also frees resources held by the transaction.
+This statement rolls back an explicit or implicit transaction to the beginning of the transaction, or to a savepoint inside the transaction. You use `ROLLBACK TRANSACTION` to erase all data modifications made from the start of the transaction or from a savepoint. `ROLLBACK TRANSACTION` also frees the resources held by the transaction.
 
-Rolling back a transaction doesn't include changes made to local variables or table variables. These changes aren't erased by this statement.
+Changes made to local variables or table variables aren't erased by this statement.
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
 ## Syntax
 
-Syntax for SQL Server, Azure SQL Database, and Fabric SQL database.
+Syntax for [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)].
 
 ```syntaxsql
 ROLLBACK { TRAN | TRANSACTION }
@@ -57,15 +59,19 @@ ROLLBACK { TRAN | TRANSACTION }
 
 #### *transaction_name*
 
-The name assigned to the transaction on `BEGIN TRANSACTION`. *transaction_name* must conform to the rules for identifiers, but only the first 32 characters of the transaction name are used. When you nest transactions, *transaction_name* must be the name from the outermost `BEGIN TRANSACTION` statement. *transaction_name* is always case-sensitive, even when the instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] isn't case-sensitive.
+**Applies to**: [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)].
+
+The name assigned to the transaction with `BEGIN TRANSACTION`. *transaction_name* must conform to the rules for identifiers, but only the first 32 characters of the transaction name are used. When there are inner transactions, *transaction_name* must be the name from the outermost `BEGIN TRANSACTION` statement. *transaction_name* is always case sensitive, even when the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] instance isn't case sensitive.
 
 #### *@tran_name_variable*
+
+**Applies to**: [!INCLUDE [sql2008-md](../../includes/sql2008-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)].
 
 The name of a user-defined variable containing a valid transaction name. The variable must be declared with a **char**, **varchar**, **nchar**, or **nvarchar** data type.
 
 #### *savepoint_name*
 
-*savepoint_name* from a `SAVE TRANSACTION` statement. *savepoint_name* must conform to the rules for identifiers. Use *savepoint_name* when a conditional rollback should affect only part of the transaction.
+*savepoint_name* from a `SAVE TRANSACTION` statement. *savepoint_name* must conform to the rules for identifiers. Use *savepoint_name* when a rollback should affect only the part of the transaction after the savepoint.
 
 #### *@savepoint_variable*
 
@@ -73,21 +79,24 @@ The name of a user-defined variable containing a valid savepoint name. The varia
 
 ## Error handling
 
-A `ROLLBACK TRANSACTION` statement doesn't produce any messages to the user. If warnings are needed in stored procedures or triggers, use the `RAISERROR` or `PRINT` statements. `RAISERROR` is the preferred statement for indicating errors.
+A `ROLLBACK TRANSACTION` statement doesn't produce any messages to the user. If warnings are needed in stored procedures or triggers, use the `RAISERROR` or `PRINT` statements.
 
 ## Remarks
 
-`ROLLBACK TRANSACTION` without a *savepoint_name* or *transaction_name* rolls back to the beginning of the transaction. When you nest transactions, this same statement rolls back all inner transactions to the outermost `BEGIN TRANSACTION` statement. In both cases, `ROLLBACK TRANSACTION` decrements the `@@TRANCOUNT` system function to 0. `ROLLBACK TRANSACTION <savepoint_name>` doesn't decrement `@@TRANCOUNT`.
+`ROLLBACK TRANSACTION` without a *savepoint_name* or *transaction_name* rolls back to the beginning of the transaction. When there are inner transactions, this same statement rolls back all inner transactions to the outermost `BEGIN TRANSACTION` statement. In both cases, `ROLLBACK TRANSACTION` decrements the `@@TRANCOUNT` system function to 0. `ROLLBACK TRANSACTION savepoint_name` doesn't decrement `@@TRANCOUNT`.
 
-`ROLLBACK TRANSACTION` can't reference a *savepoint_name* in distributed transactions started either explicitly with `BEGIN DISTRIBUTED TRANSACTION` or escalated from a local transaction.
+`ROLLBACK TRANSACTION` can't reference a *savepoint_name* in distributed transactions started either explicitly with `BEGIN DISTRIBUTED TRANSACTION` or promoted from a local transaction.
 
-A transaction can't be rolled back after a `COMMIT TRANSACTION` statement is executed, except when the `COMMIT TRANSACTION` is associated with a nested transaction that is contained within the transaction being rolled back. In this instance, the nested transaction is rolled back, even if you issued a `COMMIT TRANSACTION` for it.
+A transaction can't be rolled back after a `COMMIT TRANSACTION` statement is executed, except when the `COMMIT TRANSACTION` is associated with an inner transaction that is contained within the transaction being rolled back. In this instance, the inner transaction is rolled back, even if you issued a `COMMIT TRANSACTION` for it.
 
 Within a transaction, duplicate savepoint names are allowed, but a `ROLLBACK TRANSACTION` using the duplicate savepoint name rolls back only to the most recent `SAVE TRANSACTION` using that savepoint name.
 
+> [!NOTE]  
+> The [!INCLUDE [ssde-md](../../includes/ssde-md.md)] doesn't support independently manageable nested transactions. A commit of an inner transaction decrements `@@TRANCOUNT` but has no other effects. A rollback of an inner transaction always rolls back the outer transaction, unless a [savepoint](save-transaction-transact-sql.md) exists and is specified in the `ROLLBACK` statement.
+
 ## Interoperability
 
-In stored procedures, `ROLLBACK TRANSACTION` statements without a *savepoint_name* or *transaction_name* roll back all statements to the outermost `BEGIN TRANSACTION`. A `ROLLBACK TRANSACTION` statement in a stored procedure that causes `@@TRANCOUNT` to have a different value when the stored procedure completes than the `@@TRANCOUNT` value when the stored procedure was called produces an informational message. This message doesn't affect subsequent processing.
+In stored procedures, a `ROLLBACK TRANSACTION` statement without a *savepoint_name* or *transaction_name* rolls back all statements to the outermost `BEGIN TRANSACTION`. A `ROLLBACK TRANSACTION` statement in a stored procedure that causes `@@TRANCOUNT` to have a different value at procedure completion than the value at procedure start produces an informational message. This message doesn't affect subsequent processing.
 
 If a `ROLLBACK TRANSACTION` is issued in a trigger:
 
@@ -97,25 +106,29 @@ If a `ROLLBACK TRANSACTION` is issued in a trigger:
 
 - The statements in the batch after the statement that fired the trigger aren't executed.
 
-`@@TRANCOUNT` is incremented by one when entering a trigger, even when in autocommit mode. (The system treats a trigger as an implied nested transaction.)
+`@@TRANCOUNT` is incremented by one when entering a trigger, even when in autocommit mode. The system treats a trigger as an implied inner transaction.
 
-`ROLLBACK TRANSACTION` statements in stored procedures don't affect subsequent statements in the batch that called the procedure; subsequent statements in the batch are executed. `ROLLBACK TRANSACTION` statements in triggers terminate the batch containing the statement that fired the trigger; subsequent statements in the batch aren't executed.
+A `ROLLBACK TRANSACTION` statement in a stored procedure doesn't affect subsequent statements in the batch that called the procedure. Subsequent statements in the batch are executed.
 
-The effect of a `ROLLBACK` on cursors is defined by these three rules:
+A `ROLLBACK TRANSACTION` statement in a trigger terminates the batch containing the statement that fired the trigger. Subsequent statements in the batch aren't executed.
 
-- With `CURSOR_CLOSE_ON_COMMIT` set `ON`, `ROLLBACK` closes, but doesn't deallocate all open cursors.
+The effect of a `ROLLBACK` on cursors is defined by the following rules:
 
-- With `CURSOR_CLOSE_ON_COMMIT` set `OFF`, `ROLLBACK` doesn't affect any open synchronous `STATIC` or `INSENSITIVE` cursors or asynchronous `STATIC` cursors that were fully populated. Open cursors of any other type are closed but not deallocated.
+- With `CURSOR_CLOSE_ON_COMMIT` set to `ON`, `ROLLBACK` closes but doesn't deallocate all open cursors.
 
-- An error that terminates a batch and generates an internal rollback deallocates all cursors that were declared in the batch containing the error statement. All cursors are deallocated regardless of their type or the setting of `CURSOR_CLOSE_ON_COMMIT`. This includes cursors declared in stored procedures called by the error batch. Cursors declared in a batch before the error batch are subject to the first two rules. A deadlock error is an example of this type of error. A `ROLLBACK` statement issued in a trigger also automatically generates this type of error.
+- With `CURSOR_CLOSE_ON_COMMIT` set to `OFF`, `ROLLBACK` doesn't affect any open synchronous `STATIC` or `INSENSITIVE` cursors or asynchronous `STATIC` cursors that are fully populated. Open cursors of any other type are closed but not deallocated.
+
+- An error that terminates a batch and rolls back the transaction deallocates all cursors that were declared in the batch containing the statement producing the error. All cursors are deallocated regardless of their type or the setting of `CURSOR_CLOSE_ON_COMMIT`. This includes cursors declared in stored procedures called by the batch producing the error. Cursors declared in a batch before the batch producing the error are subject to the previous two rules.
+
+  A deadlock is an example of this type of error. A `ROLLBACK` statement issued in a trigger also results in this behavior.
 
 ## Locking behavior
 
-A `ROLLBACK TRANSACTION` statement specifying a *savepoint_name* releases any locks that are acquired beyond the savepoint, except for escalations and conversions. These locks aren't released, and they aren't converted back to their previous lock mode.
+A `ROLLBACK TRANSACTION` statement specifying a *savepoint_name* releases any locks that are acquired beyond the savepoint, except for escalated and converted locks. These locks aren't released, and they aren't converted back to their previous lock mode.
 
 ## Permissions
 
-Requires membership in the **public** role.
+Requires membership in the `public` role.
 
 ## Examples
 
@@ -123,14 +136,14 @@ The following example shows the effect of rolling back a named transaction. Afte
 
 ```sql
 USE tempdb;
-GO
+CREATE TABLE ValueTable
+(
+    value INT
+);
 
-CREATE TABLE ValueTable ([value] INT);
-GO
+DECLARE @TransactionName AS VARCHAR (20) = 'Transaction1';
 
-DECLARE @TransactionName VARCHAR(20) = 'Transaction1';
-
-BEGIN TRANSACTION @TransactionName
+BEGIN TRANSACTION @TransactionName;
 
 INSERT INTO ValueTable
 VALUES (1), (2);
@@ -163,3 +176,4 @@ value
 - [COMMIT WORK (Transact-SQL)](commit-work-transact-sql.md)
 - [ROLLBACK WORK (Transact-SQL)](rollback-work-transact-sql.md)
 - [SAVE TRANSACTION (Transact-SQL)](save-transaction-transact-sql.md)
+- [Transaction locking and row versioning guide](../../relational-databases/sql-server-transaction-locking-and-row-versioning-guide.md)

@@ -4,7 +4,7 @@ description: "The sys.sp_change_feed_enable_table system stored procedure enable
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: imotiwala, ajayj, randolphwest
-ms.date: 06/23/2025
+ms.date: 12/17/2025
 ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,8 +27,7 @@ monikerRange: ">=sql-server-ver16 || =azuresqldb-current || =azuresqldb-mi-curre
 
 Stored procedure to enable the creation of a new table to an existing table group.
 
-> [!CAUTION]  
-> This system stored procedure is used internally and isn't recommended for direct administrative use. Use Synapse Studio or the Fabric portal instead. Using this procedure could introduce inconsistency.
+[!INCLUDE [fabric-internal-use](includes/fabric-internal-use.md)]
 
 This system stored procedure is used for:
 
@@ -69,7 +68,7 @@ The source table name.
 
 ## Permissions
 
-A user with [CONTROL database permissions](../security/permissions-database-engine.md), **db_owner** database role membership, or **sysadmin** server role membership can execute this procedure.
+A user with `CONTROL` database permissions, **db_owner** database role membership, or **sysadmin** server role membership can execute this procedure.
 
 ## Related content
 

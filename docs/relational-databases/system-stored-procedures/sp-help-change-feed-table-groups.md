@@ -4,7 +4,7 @@ description: "The sys.sp_help_change_feed_table_groups_groups system stored proc
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: imotiwala, ajayj, randolphwest
-ms.date: 06/23/2025
+ms.date: 12/17/2025
 ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -32,14 +32,15 @@ This system stored procedure is used for:
 - [SQL database in Microsoft Fabric](/fabric/database/sql/overview)
 - [Microsoft Fabric mirrored databases](/fabric/database/mirrored-database/overview)
 - [Azure Synapse Link](../../sql-server/synapse-link/synapse-link-sql-server-change-feed-manage.md)
-- [Change event streaming (preview)](../track-changes/change-event-streaming/overview.md) introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and Azure SQL Database. 
-
-## Syntax
+- [What is change event streaming (preview)?](../track-changes/change-event-streaming/overview.md) introduced in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and Azure SQL Database.
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
+## Syntax
+
 ```syntaxsql
-EXECUTE sys.sp_help_change_feed_table_groups;
+sys.sp_help_change_feed_table_groups
+[ ; ]
 ```
 
 ## Arguments
@@ -56,12 +57,12 @@ None.
 | `destination_credential` | **sysname** | The credential name to access the landing zone. |
 | `workspace_id` | **nvarchar(247)** | The related workspace Azure resource ID. |
 | `synapse_workgroup_name` | **nvarchar(50)** | The related workspace name. |
-| `enabled` | **bit** | Tracks if the table group is enabled for change feed. `1` - Yes, `0` - No. |
-| `destination_type` | **int** | `0` = Azure Synapse Link. `2` = Fabric mirroring. |
+| `enabled` | **bit** | Tracks if the table group is enabled for change feed.<br /><br />`1` = Yes<br />`0` = No. |
+| `destination_type` | **int** | `0` = Azure Synapse Link<br />`2` = Fabric mirroring. |
 
 ## Permissions
 
-A user with [CONTROL database permissions](../security/permissions-database-engine.md), **db_owner** database role membership, or **sysadmin** server role membership can execute this procedure.
+A user with `CONTROL` database permissions, **db_owner** database role membership, or **sysadmin** server role membership can execute this procedure.
 
 ## Related content
 

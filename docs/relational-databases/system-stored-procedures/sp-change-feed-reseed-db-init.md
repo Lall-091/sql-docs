@@ -4,7 +4,7 @@ description: "The sys.sp_change_feed_reseed_db_init system internal stored proce
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: imotiwala, ajayj, randolphwest
-ms.date: 08/18/2025
+ms.date: 12/17/2025
 ms.service: fabric
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -27,25 +27,30 @@ monikerRange: ">=sql-server-ver17 || =azuresqldb-current || =azuresqldb-mi-curre
 
 Executes a database reseed.
 
-> [!CAUTION]  
-> This system stored procedure is used internally and isn't recommended for direct administrative use. Use the Fabric portal instead. Using this procedure could introduce inconsistency.
+[!INCLUDE [fabric-internal-use](includes/fabric-internal-use.md)]
 
 This system stored procedure is used for [Microsoft Fabric mirrored databases](/fabric/database/mirrored-database/overview) and [SQL database in Microsoft Fabric](/fabric/database/sql/overview).
 
-## Syntax
-
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
+
+## Syntax
 
 ```syntaxsql
 sys.sp_change_feed_reseed_db_init
-    @is_init_needed tinyint
+    [ [ @is_init_needed = ] is_init_needed ]
+    [ , [ @is_called_from = ] is_called_from ]
+[ ; ]
 ```
 
 ## Arguments
 
-#### is_init_needed
+#### [ @is_init_needed = ] *is_init_needed*
 
-Internal use only.
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
+
+#### [ @is_called_from = ] *is_called_from*
+
+[!INCLUDE [ssinternalonly-md](../../includes/ssinternalonly-md.md)]
 
 ## Returns
 
@@ -53,11 +58,11 @@ Internal use only.
 
 ## Remarks
 
-A reseed stops the current mirrored database and reinitializes the mirroring. This involves generating a new initial snapshot of the tables configured for mirroring and then incremental changes are replicated. During reseed, the old mirrored database item in Microsoft Fabric is still available but does not receive incremental changes. 
+A reseed stops the current mirrored database and reinitializes the mirroring. This involves generating a new initial snapshot of the tables configured for mirroring and then incremental changes are replicated. During reseed, the old mirrored database item in Microsoft Fabric is still available but doesn't receive incremental changes.
 
 ## Permissions
 
-A user with [CONTROL database permissions](../security/permissions-database-engine.md), **db_owner** database role membership, or **sysadmin** server role membership can execute this procedure.
+A user with `CONTROL` database permissions, **db_owner** database role membership, or **sysadmin** server role membership can execute this procedure.
 
 ## Examples
 

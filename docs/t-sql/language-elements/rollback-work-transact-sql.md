@@ -3,7 +3,8 @@ title: ROLLBACK WORK (Transact-SQL)
 description: "ROLLBACK WORK (Transact-SQL)"
 author: markingmyname
 ms.author: maghan
-ms.date: "06/10/2016"
+ms.reviewer: dfurman, randolphwest
+ms.date: 12/17/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -23,35 +24,38 @@ dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
+
 # ROLLBACK WORK (Transact-SQL)
+
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Fabricsqldb](../../includes/applies-to-version/sql-asdb-asdbmi-fabricsqldb.md)]
 
-  Rolls back a user-specified transaction to the beginning of the transaction.  
-  
- 
- :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)  
-  
-## Syntax  
-  
-```syntaxsql
-ROLLBACK [ WORK ]  
-[ ; ]  
-```  
+Rolls back a user-specified transaction to the beginning of the transaction.
 
-## Remarks  
- This statement functions identically to ROLLBACK TRANSACTION except that ROLLBACK TRANSACTION accepts a user-defined transaction name. With or without specifying the optional WORK keyword, this ROLLBACK syntax is ISO-compatible.  
-  
- When nesting transactions, ROLLBACK WORK always rolls back to the outermost BEGIN TRANSACTION statement and decrements the @@TRANCOUNT system function to 0.  
-  
-## Permissions  
- ROLLBACK WORK permissions default to any valid user.  
-  
-## See Also  
- [BEGIN DISTRIBUTED TRANSACTION &#40;Transact-SQL&#41;](../../t-sql/language-elements/begin-distributed-transaction-transact-sql.md)   
- [BEGIN TRANSACTION &#40;Transact-SQL&#41;](../../t-sql/language-elements/begin-transaction-transact-sql.md)   
- [COMMIT TRANSACTION &#40;Transact-SQL&#41;](../../t-sql/language-elements/commit-transaction-transact-sql.md)   
- [COMMIT WORK &#40;Transact-SQL&#41;](../../t-sql/language-elements/commit-work-transact-sql.md)   
- [ROLLBACK TRANSACTION &#40;Transact-SQL&#41;](../../t-sql/language-elements/rollback-transaction-transact-sql.md)   
- [SAVE TRANSACTION &#40;Transact-SQL&#41;](../../t-sql/language-elements/save-transaction-transact-sql.md)  
-  
-  
+:::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
+
+## Syntax
+
+```syntaxsql
+ROLLBACK [ WORK ]
+[ ; ]
+```
+
+## Remarks
+
+This statement functions identically to `ROLLBACK TRANSACTION` except that `ROLLBACK TRANSACTION` accepts a user-defined transaction name. With or without specifying the optional `WORK` keyword, this `ROLLBACK` syntax is ISO-compatible.
+
+When there are inner transactions, `ROLLBACK WORK` always rolls back to the outermost `BEGIN TRANSACTION` statement and decrements the `@@TRANCOUNT` system function to 0.
+
+## Permissions
+
+Requires membership in the `public` role.
+
+## Related content
+
+- [BEGIN DISTRIBUTED TRANSACTION (Transact-SQL)](begin-distributed-transaction-transact-sql.md)
+- [BEGIN TRANSACTION (Transact-SQL)](begin-transaction-transact-sql.md)
+- [COMMIT TRANSACTION (Transact-SQL)](commit-transaction-transact-sql.md)
+- [COMMIT WORK (Transact-SQL)](commit-work-transact-sql.md)
+- [ROLLBACK TRANSACTION (Transact-SQL)](rollback-transaction-transact-sql.md)
+- [SAVE TRANSACTION (Transact-SQL)](save-transaction-transact-sql.md)
+- [Transaction locking and row versioning guide](../../relational-databases/sql-server-transaction-locking-and-row-versioning-guide.md)
