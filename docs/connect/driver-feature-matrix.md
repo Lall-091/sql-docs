@@ -1,14 +1,14 @@
 ---
-title: Driver feature support matrix
+title: Driver Feature Support Matrix
 description: Learn which SQL Server features are supported in the drivers for .NET, ODBC, OLE DB, JDBC, Node.js, JavaScript, and Python.
 author: David-Engel
 ms.author: davidengel
-ms.reviewer: davidengel
-ms.date: 09/11/2025
+ms.date: 12/15/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
-ms.custom: sfi-ropc-nochange
+ms.topic: article
+ms.custom:
+  - sfi-ropc-nochange
 ---
 # Driver feature support matrix for Microsoft SQL Server
 
@@ -30,8 +30,10 @@ We wish all drivers supported every feature and spend effort to ensure feature p
 - [PHP](#table3)
 - [Python](#table3)
 
-| <a id="table1"></a>Feature | [Microsoft.<wbr>Data.<wbr>SqlClient (.NET Core)](ado-net/microsoft-ado-net-sql-server.md) | [Microsoft.<wbr>Data.<wbr>SqlClient (.NET Framework)](ado-net/microsoft-ado-net-sql-server.md) | System.<wbr>Data.<wbr>SqlClient (.NET Core) | [System.<wbr>Data.<wbr>SqlClient (.NET Framework)](/dotnet/framework/data/adonet/sql/) |
-| :-- | :-- | :-- | :-- | :-- |
+<a id="table1"></a>
+
+| Feature | [Microsoft.Data.SqlClient (.NET Core)](ado-net/microsoft-ado-net-sql-server.md) | [Microsoft.Data.SqlClient (.NET Framework)](ado-net/microsoft-ado-net-sql-server.md) | System.Data.SqlClient (.NET Core) | [System.Data.SqlClient (.NET Framework)](/dotnet/framework/data/adonet/sql/) |
+| --- | --- | --- | --- | --- |
 | [Always Encrypted](../relational-databases/security/encryption/always-encrypted-database-engine.md) | [Yes](ado-net/sql/sqlclient-support-always-encrypted.md) | [Yes](ado-net/sql/sqlclient-support-always-encrypted.md) | | [Yes](ado-net/sql/sqlclient-support-always-encrypted.md) (v4.6+) |
 | [Always Encrypted with secure enclaves](../relational-databases/security/encryption/always-encrypted-enclaves.md) | [Yes](ado-net/sql/sqlclient-support-always-encrypted.md#enabling-always-encrypted-with-secure-enclaves) (v1.1+) | [Yes](ado-net/sql/sqlclient-support-always-encrypted.md#enabling-always-encrypted-with-secure-enclaves) (v1.1+) | | [Yes](ado-net/sql/sqlclient-support-always-encrypted.md#enabling-always-encrypted-with-secure-enclaves) (v4.7.2+) |
 | [Microsoft Entra access token authentication](/azure/active-directory/develop/access-tokens) | [Yes](/dotnet/api/system.data.sqlclient.sqlconnection.accesstoken) | [Yes](/dotnet/api/microsoft.data.sqlclient.sqlconnection.accesstoken) | [Yes](/dotnet/api/microsoft.data.sqlclient.sqlconnection.accesstoken) (v4.6+) | [Yes](/dotnet/api/microsoft.data.sqlclient.sqlconnection.accesstoken) (v4.6+) |
@@ -54,12 +56,14 @@ We wish all drivers supported every feature and spend effort to ensure feature p
 | [JSON data type](../relational-databases/json/json-data-sql-server.md) | Yes (v6.0+) | Yes (v6.0+) | | |
 | [Vector (float32) data type](../t-sql/data-types/vector-data-type.md) | Yes (v6.1+) | Yes (v6.1+) | | |
 
-| <a id="table2"></a>Feature | [ODBC Driver for SQL Server on Windows](odbc/microsoft-odbc-driver-for-sql-server.md) | [ODBC Driver for SQL Server on Linux and macOS](odbc/microsoft-odbc-driver-for-sql-server.md) | [JDBC Driver for SQL Server](jdbc/microsoft-jdbc-driver-for-sql-server.md) | [OLE DB Driver for SQL Server](oledb/oledb-driver-for-sql-server.md) |
+<a id="table2"></a>
+
+| Feature | [ODBC Driver for SQL Server on Windows](odbc/microsoft-odbc-driver-for-sql-server.md) | [ODBC Driver for SQL Server on Linux and macOS](odbc/microsoft-odbc-driver-for-sql-server.md) | [JDBC Driver for SQL Server](jdbc/microsoft-jdbc-driver-for-sql-server.md) | [OLE DB Driver for SQL Server](oledb/oledb-driver-for-sql-server.md) |
 | :-- | :-- | :-- | :-- | :-- |
 | [Always Encrypted](../relational-databases/security/encryption/always-encrypted-database-engine.md) | [Yes](odbc/using-always-encrypted-with-the-odbc-driver.md) (v13.1+) | [Yes](odbc/using-always-encrypted-with-the-odbc-driver.md) (v13.1+) | [Yes](jdbc/using-always-encrypted-with-the-jdbc-driver.md) (v6.0+) |
 | [Always Encrypted with secure enclaves](../relational-databases/security/encryption/always-encrypted-enclaves.md) | [Yes](odbc/using-always-encrypted-with-the-odbc-driver.md#enabling-always-encrypted-with-secure-enclaves) (v17.4+) | [Yes](odbc/using-always-encrypted-with-the-odbc-driver.md#enabling-always-encrypted-with-secure-enclaves) (v17.4+) | [Yes](jdbc/using-always-encrypted-with-the-jdbc-driver.md) (v8.2+) | |
 | [Microsoft Entra access token authentication](/azure/active-directory/develop/access-tokens) | [Yes](odbc/using-azure-active-directory.md#authenticating-with-an-access-token) (v13.1+) | [Yes](odbc/using-azure-active-directory.md#authenticating-with-an-access-token) (v13.1+) | [Yes](jdbc/connecting-using-azure-active-directory-authentication.md#connect-using-access-token) (v6.0+) | [Yes](oledb/features/using-azure-active-directory.md) (v18.2+) |
-| [Microsoft Entra password authentication](/azure/sql-database/sql-database-aad-authentication) |  [Yes](odbc/using-azure-active-directory.md) (v13.1+) | [Yes](odbc/using-azure-active-directory.md) (v13.1+) | [Yes](jdbc/connecting-using-azure-active-directory-authentication.md) (v6.0+) | [Yes](oledb/features/using-azure-active-directory.md) (v18.2+) |
+| [Microsoft Entra password authentication](/azure/sql-database/sql-database-aad-authentication) | [Yes](odbc/using-azure-active-directory.md) (v13.1+) | [Yes](odbc/using-azure-active-directory.md) (v13.1+) | [Yes](jdbc/connecting-using-azure-active-directory-authentication.md) (v6.0+) | [Yes](oledb/features/using-azure-active-directory.md) (v18.2+) |
 | [Microsoft Entra integrated authentication](/azure/sql-database/sql-database-aad-authentication) | [Yes](odbc/using-azure-active-directory.md) (v13.1+) | [Yes](odbc/using-azure-active-directory.md) (v17.6+) | [Yes](jdbc/connecting-using-azure-active-directory-authentication.md) (v6.0+) | [Yes](oledb/features/using-azure-active-directory.md) (v18.2+) |
 | [Microsoft Entra Interactive (MFA) authentication](/azure/sql-database/sql-database-aad-authentication) | [Yes](odbc/using-azure-active-directory.md) (v17.1+) | | [Yes](jdbc/connecting-using-azure-active-directory-authentication.md) (v9.2+) | [Yes](oledb/features/using-azure-active-directory.md) (v18.3+) |
 | [Microsoft Entra managed identity authentication](/azure/active-directory/managed-identities-azure-resources/overview) | [Yes](odbc/using-azure-active-directory.md) (v17.3+) | [Yes](odbc/using-azure-active-directory.md) (v17.3+) | [Yes](jdbc/connecting-using-azure-active-directory-authentication.md) (v7.2+) | [Yes](oledb/features/using-azure-active-directory.md) (v18.3+) |
@@ -78,32 +82,32 @@ We wish all drivers supported every feature and spend effort to ensure feature p
 | [JSON data type](../relational-databases/json/json-data-sql-server.md) | | | [Yes](jdbc/use-json-data-type.md) (v13.2+) | |
 | [Vector (float32) data type](../t-sql/data-types/vector-data-type.md) | | | [Yes](jdbc/use-vector-data-type.md) (v13.2+) | |
 
-| <a id="table3"></a>Feature | [Drivers for PHP for SQL Server on Windows](php/microsoft-php-driver-for-sql-server.md)<sup>[1](#note1)</sup> | [Drivers for PHP for SQL Server on Linux and macOS](php/microsoft-php-driver-for-sql-server.md)<sup>[1](#note1)</sup> | [Tedious (Node.js)](node-js/node-js-driver-for-sql-server.md) | [pyODBC (Python)](python/pyodbc/python-sql-driver-pyodbc.md)<sup>[1](#note1)</sup> | [Go (go-lang)](https://aka.ms/go-mssqldb) |
+<a id="table3"></a>
+
+| Feature | [Drivers for PHP for SQL Server on Windows](php/microsoft-php-driver-for-sql-server.md)<sup>1</sup> | [Drivers for PHP for SQL Server on Linux and macOS](php/microsoft-php-driver-for-sql-server.md)<sup>1</sup> | [Tedious (Node.js)](node-js/node-js-driver-for-sql-server.md) | [mssql-python (Python)](python/mssql-python/python-sql-driver-mssql-python.md) | [Go (go-lang)](https://aka.ms/go-mssqldb) |
 | :-- | :-- | :-- | :-- | :-- | :-- |
-| [Always Encrypted](../relational-databases/security/encryption/always-encrypted-database-engine.md) | [Yes](php/using-always-encrypted-php-drivers.md) (v5.2+) | [Yes](php/using-always-encrypted-php-drivers.md) (v5.2+) | | Yes | Yes |
-| [Always Encrypted with secure enclaves](../relational-databases/security/encryption/always-encrypted-enclaves.md) | [Yes](php/always-encrypted-secure-enclaves.md) (v5.8+) | [Yes](php/always-encrypted-secure-enclaves.md) (v5.8+) | | Yes | |
-| [Microsoft Entra access token authentication](/azure/active-directory/develop/access-tokens) | [Yes](php/azure-active-directory.md) (v4.3+) | [Yes](php/azure-active-directory.md) (v4.3+) | [Yes](https://tediousjs.github.io/tedious/api-connection.html#function_newConnection) | [Yes](https://github.com/mkleehammer/pyodbc/wiki/Connecting-to-SQL-Server-from-Linux#connecting-to-servers-with-access-tokens) | Yes |
+| [Always Encrypted](../relational-databases/security/encryption/always-encrypted-database-engine.md) | [Yes](php/using-always-encrypted-php-drivers.md) (v5.2+) | [Yes](php/using-always-encrypted-php-drivers.md) (v5.2+) | | | Yes |
+| [Always Encrypted with secure enclaves](../relational-databases/security/encryption/always-encrypted-enclaves.md) | [Yes](php/always-encrypted-secure-enclaves.md) (v5.8+) | [Yes](php/always-encrypted-secure-enclaves.md) (v5.8+) | | | |
+| [Microsoft Entra access token authentication](/azure/active-directory/develop/access-tokens) | [Yes](php/azure-active-directory.md) (v4.3+) | [Yes](php/azure-active-directory.md) (v4.3+) | [Yes](https://tediousjs.github.io/tedious/api-connection.html#function_newConnection) | Yes| Yes |
 | [Microsoft Entra password authentication](/azure/sql-database/sql-database-aad-authentication) | [Yes](php/azure-active-directory.md) (v4.3+) | [Yes](php/azure-active-directory.md) (v4.3+) | [Yes](https://tediousjs.github.io/tedious/api-connection.html#function_newConnection) | Yes | Yes |
-| [Microsoft Entra integrated authentication](/azure/sql-database/sql-database-aad-authentication) | [Yes](php/azure-active-directory.md) (v4.3+) | [Yes](php/azure-active-directory.md) (v4.3+) | | Yes |  |
-| [Microsoft Entra Interactive (MFA) authentication](/azure/sql-database/sql-database-aad-authentication) | | | | Yes<sup>[2](#note2)</sup> | Yes |
+| [Microsoft Entra integrated authentication](/azure/sql-database/sql-database-aad-authentication) | [Yes](php/azure-active-directory.md) (v4.3+) | [Yes](php/azure-active-directory.md) (v4.3+) | | Yes | |
+| [Microsoft Entra Interactive (MFA) authentication](/azure/sql-database/sql-database-aad-authentication) | | | | Yes | Yes |
 | [Microsoft Entra managed identity authentication](/azure/active-directory/managed-identities-azure-resources/overview) | [Yes](php/azure-active-directory.md) (v5.6+) | [Yes](php/azure-active-directory.md) (v5.6+) | [Yes](https://tediousjs.github.io/tedious/api-connection.html#function_newConnection) | Yes | Yes |
 | [Microsoft Entra service principal authentication](/azure/active-directory/develop/app-objects-and-service-principals) | [Yes](php/azure-active-directory.md) (v5.9+) | [Yes](php/azure-active-directory.md) (v5.9+) | [Yes](https://tediousjs.github.io/tedious/api-connection.html#function_newConnection) | Yes | Yes |
 | [Microsoft Entra service principal certificate authentication](/azure/active-directory/develop/app-objects-and-service-principals) | | | | | Yes |
-| [Microsoft Entra default Azure authentication](/azure/developer/intro/passwordless-overview#introducing-defaultazurecredential) | | | | | Yes |
+| [Microsoft Entra default Azure authentication](/azure/developer/intro/passwordless-overview#introducing-defaultazurecredential) | | | | Yes | Yes |
 | [Windows-Integrated authentication](/windows-server/security/windows-authentication/windows-authentication-overview) | [Yes](php/how-to-connect-using-windows-authentication.md) | [Yes](odbc/linux-mac/using-integrated-authentication.md) | | Yes | Yes |
 | [Bulk Copy](../relational-databases/import-export/bulk-import-and-export-of-data-sql-server.md) | | | [Yes](https://tediousjs.github.io/tedious/bulk-load.html) | | Yes |
-| [Data Discovery and Classification metadata](../relational-databases/security/sql-data-discovery-and-classification.md) | Yes (v5.8+) | Yes (v5.8+) | | | 
+| [Data Discovery and Classification metadata](../relational-databases/security/sql-data-discovery-and-classification.md) | Yes (v5.8+) | Yes (v5.8+) | | | |
 | [Multiple Active Result Sets (MARS)](../relational-databases/native-client/features/using-multiple-active-result-sets-mars.md) | [Yes](php/how-to-disable-multiple-active-resultsets-mars.md) | [Yes](php/how-to-disable-multiple-active-resultsets-mars.md) | | Yes | |
 | [Spatial Data Types](../relational-databases/spatial/spatial-data-sql-server.md) | | | | | |
-| [Table-Valued Parameters (TVP)](../relational-databases/tables/use-table-valued-parameters-database-engine.md) | [Yes](php/use-table-valued-parameters.md) (v5.10+) | [Yes](php/use-table-valued-parameters.md) (v5.10+) | [Yes](https://tediousjs.github.io/tedious/parameters.html) | Yes | Yes |
+| [Table-Valued Parameters (TVP)](../relational-databases/tables/use-table-valued-parameters-database-engine.md) | [Yes](php/use-table-valued-parameters.md) (v5.10+) | [Yes](php/use-table-valued-parameters.md) (v5.10+) | [Yes](https://tediousjs.github.io/tedious/parameters.html) | | Yes |
 | [MultiSubnetFailover](../relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery.md#connecting-with-multisubnetfailover) | [Yes](php/php-driver-for-sql-server-support-for-high-availability-disaster-recovery.md) | [Yes](php/php-driver-for-sql-server-support-for-high-availability-disaster-recovery.md) | | [Yes](../relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery.md#connecting-with-multisubnetfailover) | Yes (always / not optional) |
 | [Transparent Network IP Resolution](odbc/using-transparent-network-ip-resolution.md) | [Yes](php/php-driver-for-sql-server-support-for-high-availability-disaster-recovery.md) | [Yes](php/php-driver-for-sql-server-support-for-high-availability-disaster-recovery.md) | | [Yes](odbc/using-transparent-network-ip-resolution.md) | Yes |
 | [TDS 8.0 (strict encryption) and TLS 1.3](../relational-databases/security/networking/tds-8.md) | Yes (v5.10+) | Yes (v5.10+) | Yes (v16.3+) | Yes | Yes |
-| [JSON data type](../relational-databases/json/json-data-sql-server.md) | | | | |
-| [Vector (float32) data type](../t-sql/data-types/vector-data-type.md) | | | | |
+| [JSON data type](../relational-databases/json/json-data-sql-server.md) | | | | | |
+| [Vector (float32) data type](../t-sql/data-types/vector-data-type.md) | | | | | |
 
-<a id="note1"></a><sup>1</sup> Since these drivers rely on the Microsoft ODBC Driver for SQL Server, a version of that driver that supports the feature must also be used.
+<sup>1</sup> Since these drivers rely on the Microsoft ODBC Driver for SQL Server, a version of that driver that supports the feature must also be used.
 
-<a id="note2"></a><sup>2</sup> Only on Windows.
-
-[!INCLUDE[get-help-options](../includes/paragraph-content/get-help-options.md)]
+[!INCLUDE [get-help-options](../includes/paragraph-content/get-help-options.md)]

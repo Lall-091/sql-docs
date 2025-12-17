@@ -67673,6 +67673,31 @@
       "source_path": "docs/database-engine/install-windows/upgrade-to-a-different-edition-of-sql-server-setup.md",
       "redirect_url": "/sql/database-engine/install-windows/upgrade-downgrade-sql-server-edition-setup",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "docs/connect/python/python-driver-for-sql-server.md",
+      "redirect_url": "/sql/connect/python/mssql-python/python-sql-driver-mssql-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/connect/python/pyodbc/python-sql-driver-pyodbc.md",
+      "redirect_url": "/sql/connect/python/mssql-python/python-sql-driver-mssql-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/connect/python/pyodbc/python-sql-driver-pyodbc-quickstart.md",
+      "redirect_url": "/sql/connect/python/mssql-python/python-sql-driver-mssql-python-quickstart",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/connect/python/pymssql/python-sql-driver-pymssql.md",
+      "redirect_url": "/sql/connect/python/mssql-python/python-sql-driver-mssql-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/connect/python/pymssql/python-sql-driver-pymssql-quickstart.md",
+      "redirect_url": "/sql/connect/python/mssql-python/python-sql-driver-mssql-python-quickstart",
+      "redirect_document_id": false
     }
   ]
 }

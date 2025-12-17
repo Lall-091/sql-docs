@@ -5904,8 +5904,6 @@
       href: ../connect/php/example-application-sqlsrv-driver.md
 - name: Python
   items:
-  - name: Python drivers for SQL Server
-    href: ../connect/python/python-driver-for-sql-server.md
   - name: Microsoft Python Driver for SQL Server - mssql-python
     href: ../connect/python/mssql-python/python-sql-driver-mssql-python.md
     items:
@@ -5917,16 +5915,6 @@
       href: ../connect/python/mssql-python/python-sql-driver-mssql-python-repeatable-deployments-quickstart.md
     - name: 'Quickstart: Rapid prototyping with the Python driver for SQL Server'
       href: ../connect/python/mssql-python/python-sql-driver-mssql-python-rapid-prototyping-quickstart.md
-  - name: Python SQL driver - pyodbc
-    href: ../connect/python/pyodbc/python-sql-driver-pyodbc.md
-    items:
-    - name: 'Quickstart: pyodbc driver for Python'
-      href: ../connect/python/pyodbc/python-sql-driver-pyodbc-quickstart.md
-  - name: Python SQL driver - pymssql
-    href: ../connect/python/pymssql/python-sql-driver-pymssql.md
-    items:
-    - name: 'Quickstart: pymssql driver for Python'
-      href: ../connect/python/pymssql/python-sql-driver-pymssql-quickstart.md
 - name: Ruby
   items:
   - name: Ruby Driver for SQL Server
