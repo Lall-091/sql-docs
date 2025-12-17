@@ -3,10 +3,10 @@ title: "SQL Server Properties (Advanced Tab)"
 description: Learn about the options on the Advanced tab in the SQL Server Properties dialog box, such as the data path, the instance ID, and custom properties.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/31/2025
+ms.date: 12/15/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: ui-reference
 ms.collection:
   - data-tools
 monikerRange: ">=sql-server-2016"
@@ -25,9 +25,7 @@ Indicates if this service is installed as a resource of a clustered server.
 
 #### Customer Feedback Reporting
 
-Indicates whether Service Quality Monitoring is enabled on this service. For more information, see [Configure usage and diagnostic data collection for SQL Server](../../sql-server/usage-and-diagnostic-data-configuration-for-sql-server.md).
-
-
+Indicates whether Service Quality Monitoring is enabled on this service. For more information, see [Configure usage and diagnostic data collection for SQL Server (CEIP)](../../sql-server/usage-and-diagnostic-data-configuration-for-sql-server.md).
 
 #### Data Path
 
@@ -39,7 +37,7 @@ Displays the location where memory dumps are placed in case of an error.
 
 #### Error Reporting
 
-When set to **Yes**, the Dr. Watson program forwards information to either [!INCLUDE [msCoName](../../includes/msconame-md.md)] or your error server if a serious failure occurs. For more information on Error Reporting, see [Configure usage and diagnostic data collection for SQL Server](../../sql-server/usage-and-diagnostic-data-configuration-for-sql-server.md).
+When set to **Yes**, the Dr. Watson program sends information to either [!INCLUDE [msCoName](../../includes/msconame-md.md)] or your error server if a serious failure occurs. For more information on Error Reporting, see [Configure usage and diagnostic data collection for SQL Server (CEIP)](../../sql-server/usage-and-diagnostic-data-configuration-for-sql-server.md).
 
 To change this value, in [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] Object Explorer, right-click your server, select **Properties**, and then select the **Misc. Server Settings** page. The options are presented in the **Information Reporting** area.
 
@@ -61,7 +59,7 @@ Displays the default language for server messages.
 
 #### Lock Pages In Memory
 
-**Applies to**: [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and later versions. 
+**Applies to**: [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and later versions.
 
 Grants the [Lock pages in memory](../../database-engine/configure-windows/enable-the-lock-pages-in-memory-option-windows.md) privilege to the [!INCLUDE [ssdenoversion-md](../../includes/ssdenoversion-md.md)] service account.
 

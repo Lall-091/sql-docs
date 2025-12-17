@@ -4,15 +4,15 @@ description: sys.dm_audit_class_type_map returns a table that lists securable cl
 author: sravanisaluru
 ms.author: srsaluru
 ms.reviewer: randolphwest
-ms.date: 11/25/2024
+ms.date: 12/16/2025
 ms.service: sql
 ms.subservice: system-objects
-ms.topic: "reference"
+ms.topic: reference
 f1_keywords:
-  - "sys.dm_audit_class_type_map"
   - "sys.dm_audit_class_type_map_TSQL"
-  - "dm_audit_class_type_map"
+  - "sys.dm_audit_class_type_map"
   - "dm_audit_class_type_map_TSQL"
+  - "dm_audit_class_type_map"
 helpviewer_keywords:
   - "sys.dm_audit_class_type_map dynamic management view"
 dev_langs:
@@ -25,11 +25,11 @@ monikerRange: "=azuresqldb-current || >=sql-server-2016 || =azuresqldb-mi-curren
 
 Returns a table that lists securable classes that can be mapped to the `class_type` column in the audit log. For more information about [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Audit, see [SQL Server Audit (Database Engine)](../security/auditing/sql-server-audit-database-engine.md).
 
-| Column name | Data type | Description |
-| --- | --- | --- |
-| `class_type` | **char(2)** | The class type of the entity that was audited. Maps to the `class_type` written to the audit log returned by the **get_audit_file()** function. Isn't nullable. |
-| `class_type_desc` | **nvarchar(120)** | The name of the class of the object that was audited. Isn't nullable. |
-| `securable_class_desc` | **nvarchar(120)** | The securable class that maps to the `class_type` being audited. `NULL` if the `class_type` doesn't map to a securable object. Can be joined with `class_desc` in `sys.dm_audit_actions.` |
+| Column name | Data type | Nullable | Description |
+| --- | --- | --- | --- |
+| `class_type` | **varchar(2)** | No | The class type of the entity that was audited. Maps to the `class_type` written to the audit log returned by the `get_audit_file()` function. |
+| `class_type_desc` | **nvarchar(35)** | No | The name of the class of the object that was audited. |
+| `securable_class_desc` | **nvarchar(35)** | Yes | The securable class that maps to the `class_type` being audited. Can be `NULL` if the `class_type` doesn't map to a securable object. Can be joined with `class_desc` in `sys.dm_audit_actions.` |
 
 ## Permissions
 

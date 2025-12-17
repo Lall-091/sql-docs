@@ -3,10 +3,10 @@ title: "SQL Full-Text Filter Daemon Launcher (SQL Server Configuration Manager)"
 description: Learn about the SQL Full-text Filter Daemon Launcher, a service that SQL Server uses to start a process that it requires for full-text search.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/20/2025
+ms.date: 12/15/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: ui-reference
 ms.collection:
   - data-tools
 monikerRange: ">=sql-server-2016"
@@ -37,6 +37,10 @@ When you change the account name used by a service on a clustered instance, the 
 
 For more information about selecting an account to run the service, see [Configure Windows service accounts and permissions](../../database-engine/configure-windows/configure-windows-service-accounts-and-permissions.md).
 
+## Remarks
+
+By default, only members of the local administrators group can start, stop, pause, resume or restart a service. To grant non-administrators the ability to manage services, see [How to grant users rights to manage services](/troubleshoot/windows-server/windows-security/grant-users-rights-manage-services).
+
 ### Options
 
 #### Built-in account
@@ -52,19 +56,14 @@ For more information about selecting an account to run the service, see [Configu
 Specify a local or domain user account that uses Microsoft Windows Authentication. Use a domain user account that has minimal rights for services.
 
 - **Account Name**: Specify the local or domain user account name.
-
 - **Password**: Type the password of the account.
-
 - **Confirm password**: Type the password of the account again.
 
 #### Service status
 
 - **Start**: Select this button to start the service.
-
 - **Stop**: Select this button to stop the service.
-
 - **Pause**: Select this button to pause the service. This option isn't available for the SQL Full-text Filter Daemon Launcher service.
-
 - **Resume**: Resume a paused service.
 
 ## Advanced tab
@@ -77,44 +76,10 @@ Use the **Service** tab to view or specify the following options.
 
 ### Options
 
-#### Binary Path
-
-Lists the location of the program files used by this service.
-
-#### Error Control
-
-`1` indicates `SERVICE_ERROR_NORMAL`. If the service fails to start during computer startup, the startup program logs the error and displays a pop-up message box but continues the startup operation. You can't change this value.
-
-#### Exit Code
-
-When an error occurs, the error number appears in this box. Use this number to troubleshoot failures by searching for the number in the [!INCLUDE [msCoName](../../includes/msconame-md.md)] Knowledge Base or provide the number to your technical support staff.
+[!INCLUDE [service-tab-1](../includes/configuration-manager/service-tab-1.md)]
 
 #### Host Name
 
-Displays the name of the computer or cluster running the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] service.
+Displays the name of the computer or cluster running the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Full-Text service.
 
-#### Name
-
-Indicates the display name of the service.
-
-#### Process ID
-
-Displays the Windows process ID.
-
-#### SQL Service Type
-
-Displays the type of service provided to calling processes. [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] installs several services.
-
-#### Start Mode
-
-Set this service to one of the following options:
-
-- **Manual**: This service doesn't automatically start when the computer starts. You must start the service using [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Configuration Manager, or some other tool.
-
-- **Automatic**: This service attempts to start when this computer starts.
-
-- **Disabled**: This service can't be started.
-
-#### State
-
-Indicates whether this service is running, stopped, or disabled. "**...**" indicates a state change is pending.
+[!INCLUDE [service-tab-2](../includes/configuration-manager/service-tab-2.md)]

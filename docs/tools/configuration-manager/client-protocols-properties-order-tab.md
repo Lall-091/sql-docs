@@ -3,10 +3,10 @@ title: "Client Protocols Properties (Order Tab)"
 description: Discover how to enable or disable client protocols. See how to rearrange the order in which protocols are used when clients try to connect to SQL Server.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 06/05/2025
+ms.date: 12/15/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: ui-reference
 ms.collection:
   - data-tools
 helpviewer_keywords:
@@ -24,7 +24,7 @@ Select a protocol, and then select **Enable** or **Disable** to move the selecte
 Protocols are tried in the order listed, attempting to connect using the top protocol first, and then the second listed protocol, etc. Move protocols up or down the **Enabled Protocols** list, by selecting the up arrow and down arrow buttons. When connecting to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] from a client on that computer, the **Shared Memory** protocol is always tried first, if enabled.
 
 > [!NOTE]  
-> These settings aren't used by [!INCLUDE [msCoName](../../includes/msconame-md.md)] .NET SqlClient. The protocol order for .NET SqlClient is first TCP, and then named pipes, which can't be changed.
+> These settings aren't used by .NET SqlClient. The protocol order for .NET SqlClient is first TCP, and then named pipes, which can't be changed.
 
 ## Options
 
@@ -62,5 +62,5 @@ If the protocol is specified through a prefix or as part of the connection strin
 
 - [Connect to the Database Engine](../../sql-server/connect-to-database-engine.md)
 - [Enable or disable a server network protocol](../../database-engine/configure-windows/enable-or-disable-a-server-network-protocol.md)
-- [Network Protocols and Network Libraries](../../sql-server/install/network-protocols-and-network-libraries.md)
+- [Network protocols and network libraries](../../sql-server/install/network-protocols-and-network-libraries.md)
 - [Choosing a Network Protocol](/previous-versions/sql/sql-server-2016/ms187892(v=sql.130))

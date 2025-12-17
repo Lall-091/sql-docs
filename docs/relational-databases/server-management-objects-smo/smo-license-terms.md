@@ -3,18 +3,21 @@ title: SQL Server Shared Management Objects (SMO) License Terms
 description: "SQL Server Shared Management Objects (SMO) License Terms"
 author: "markingmyname"
 ms.author: "maghan"
-ms.date: 12/15/2019
+ms.reviewer: randolphwest
+ms.date: 12/15/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: legal
 ms.custom:
   - ignite-2025
 monikerRange: "=azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 # SQL Server Shared Management Objects (SMO) License Terms
+
 [!INCLUDE [SQL Server Azure SQL Database Azure SQL Managed Instance Synapse Analytics FabricSQLDB](../../includes/applies-to-version/sql-asdb-asdbmi-asa-fabricsqldb.md)]
 
 ## MICROSOFT SOFTWARE LICENSE TERMS
+
 **MICROSOFT SQL SERVER 2017 SHARED MANAGEMENT OBJECTS**
 
 ---
@@ -97,5 +100,5 @@ This limitation applies to
 
 It also applies even if Microsoft knew or should have known about the possibility of the damages. The above limitation or exclusion may not apply to you because your country may not allow the exclusion or limitation of incidental, consequential or other damages.
 
-> [!NOTE]
+> [!NOTE]  
 > Section 3 was updated on August 8, 2018.

@@ -4,10 +4,10 @@ description: Command prompt utilities enable you to script SQL Server operations
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan
-ms.date: 07/10/2025
+ms.date: 12/16/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection:
   - data-tools
 helpviewer_keywords:

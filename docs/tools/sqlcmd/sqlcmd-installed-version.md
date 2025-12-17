@@ -4,10 +4,10 @@ description: Learn how to identify which variant of sqlcmd utility is installed 
 author: dlevy-msft
 ms.author: dlevy
 ms.reviewer: randolphwest
-ms.date: 07/02/2025
+ms.date: 12/16/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.collection:
   - data-tools
 ms.custom:

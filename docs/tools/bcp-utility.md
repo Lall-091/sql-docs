@@ -4,7 +4,7 @@ description: The bulk copy program (bcp) utility bulk copies data between an ins
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: davidengel, markingmyname
-ms.date: 08/27/2025
+ms.date: 12/16/2025
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: how-to
@@ -35,7 +35,7 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 
 [!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW FabricSQLDB](../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
 
-The bulk copy program utility (**bcp**) bulk copies data between an instance of [!INCLUDE [msCoName](../includes/msconame-md.md)] [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] and a data file in a user-specified format.
+The bulk copy program utility (**bcp**) bulk copies data between an instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] and a data file in a user-specified format.
 
 For using **bcp** on Linux, see [Install the sqlcmd and bcp SQL Server command-line tools on Linux](../linux/sql-server-linux-setup-tools.md). For detailed information about using **bcp** with Azure Synapse Analytics, see [Load data with bcp](/azure/sql-data-warehouse/sql-data-warehouse-load-with-bcp).
 
@@ -270,7 +270,7 @@ For more information, see [Use character format to import or export data (SQL Se
 
 #### -C { ACP | OEM | RAW | *code_page* }
 
-**Applies to:** Windows only. Not supported on Linux and macOS.
+**Applies to**: Windows only. Not supported on Linux and macOS.
 
 Specifies the code page of the data in the data file. *code_page* is relevant only if the data contains **char**, **varchar**, or **text** columns with character values greater than 127 or less than 32.
 
@@ -334,7 +334,7 @@ Specifies the number of the first row to export from a table or import from a da
 
 #### -G
 
-**Applies to:** Azure SQL Database, [!INCLUDE [fabric-sqldb](../includes/fabric-sqldb.md)], and Azure Synapse Analytics only.
+**Applies to**: Azure SQL Database, [!INCLUDE [fabric-sqldb](../includes/fabric-sqldb.md)], and Azure Synapse Analytics only.
 
 This switch is used by the client to specify that the user is authenticated with Microsoft Entra ID. The `-G` switch requires [version 14.0.3008.27](https://go.microsoft.com/fwlink/?LinkID=825643) or later versions. To determine your version, execute `bcp -v`. For more information, see [Use Microsoft Entra authentication with SQL Database or Azure Synapse Analytics](/azure/sql-database/sql-database-aad-authentication) or [Authentication in SQL database in Microsoft Fabric](/fabric/database/sql/authentication).
 
@@ -440,7 +440,7 @@ To check if your version of **bcp** includes support for Microsoft Entra authent
 
 - **Microsoft Entra ID access token**
 
-  **Applies to:** Linux and macOS only. Windows isn't supported.
+  **Applies to**: Linux and macOS only. Windows isn't supported.
 
   Users of **bcp** 17.8 and later versions, on Linux and macOS, can also authenticate with a token. The following examples use [PowerShell on Linux](/powershell/scripting/install/installing-powershell-on-linux) to retrieve an access token.
 
@@ -462,7 +462,7 @@ To check if your version of **bcp** includes support for Microsoft Entra authent
 
 - **Microsoft Entra interactive**
 
-  **Applies to:** Windows only. Linux and macOS aren't supported.
+  **Applies to**: Windows only. Linux and macOS aren't supported.
 
   Microsoft Entra interactive authentication, available for all Azure SQL, and [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] and later versions, allows you to use an interactive dialog to authenticate, which also supports multifactor authentication.
 
@@ -488,7 +488,7 @@ To check if your version of **bcp** includes support for Microsoft Entra authent
 
 #### -h "*hints* [, ... *n*]"
 
-**Applies to:** Windows only. Not supported on Linux and macOS.
+**Applies to**: Windows only. Not supported on Linux and macOS.
 
 Specifies the hint or hints to be used during a bulk import of data into a table or view.
 
@@ -533,7 +533,7 @@ Specifies the hint or hints to be used during a bulk import of data into a table
 
 #### -i *input_file*
 
-**Applies to:** Windows only. Not supported on Linux and macOS.
+**Applies to**: Windows only. Not supported on Linux and macOS.
 
 Specifies the name of a response file, containing the responses to the command prompt questions for each data field when a bulk copy is being performed using interactive mode (`-n`, `-c`, `-w`, or `-N` not specified).
 
@@ -578,7 +578,7 @@ For more information, see [Use native format to import or export data (SQL Serve
 
 #### -N
 
-**Applies to:** Windows only. Not supported on Linux and macOS.
+**Applies to**: Windows only. Not supported on Linux and macOS.
 
 Performs the bulk-copy operation using the native (database) data types of the data for noncharacter data, and Unicode characters for character data. This option offers a higher performance alternative to the `-w` option, and is intended for transferring data from one instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] to another using a data file. It doesn't prompt for each field. Use this option when you're transferring data that contains ANSI extended characters and you want to take advantage of the performance of native mode.
 
@@ -590,7 +590,7 @@ The warning can be ignored. One way to resolve this warning is to use `-n` inste
 
 #### -o *output_file*
 
-**Applies to:** Windows only. Not supported on Linux and macOS.
+**Applies to**: Windows only. Not supported on Linux and macOS.
 
 Specifies the name of a file that receives output redirected from the command prompt.
 
@@ -605,19 +605,19 @@ Specifies the password for the login ID. If this option isn't used, the **bcp** 
 
 ### [Windows](#tab/windows)
 
-To mask your password, don't specify the `-P` option along with the `-U` option. Instead, after specifying **bcp** along with the `-U` option and other switches (don't specify `-P`), press the **Enter** key, and the command will prompt you for a password. This method ensures that your password is masked when it's entered.
+To mask your password, don't specify the `-P` option along with the `-U` option. Instead, after specifying **bcp** along with the `-U` option and other switches (don't specify `-P`), press the **Enter** key, and the command prompts you for a password. This method ensures that your password is masked when it's entered.
 
 If *password* begins with a hyphen (`-`) or a forward slash (`/`), don't add a space between `-P` and the *password* value.
 
 ### [Linux and macOS](#tab/linux)
 
-To mask your password, don't specify the `-P` option along with the `-U` option. Instead, after specifying **bcp** along with the `-U` option and other switches (don't specify `-P`), press the **Enter** key, and the command will prompt you for a password. This method ensures that your password is masked when it's entered.
+To mask your password, don't specify the `-P` option along with the `-U` option. Instead, after specifying **bcp** along with the `-U` option and other switches (don't specify `-P`), press the **Enter** key, and the command prompts you for a password. This method ensures that your password is masked when it's entered.
 
 If *password* begins with a hyphen (`-`) or a forward slash (`/`), don't add a space between `-P` and the *password* value.
 
 When used with the `-G` option without `-U`, specifies a file that contains an access token (v17.8+). The token file should be in UTF-16LE (no BOM) format.
 
-Access tokens can be obtained via various methods. It's important to ensure the access token is correct byte-for-byte, because it is sent as-is. Following is an example command that obtains an access token. The command uses the Azure CLI and Linux commands and saves it to a file in the proper format. If your system or terminal's default encoding isn't ASCII or UTF-8, you might need to adjust the `iconv` options. Be sure to carefully secure the resulting file and delete it when it's no longer required.
+Access tokens can be obtained via various methods. It's important to ensure the access token is correct byte-for-byte, because it's sent as-is. Following is an example command that obtains an access token. The command uses the Azure CLI and Linux commands and saves it to a file in the proper format. If your system or terminal's default encoding isn't ASCII or UTF-8, you might need to adjust the `iconv` options. Be sure to carefully secure the resulting file and delete it when it's no longer required.
 
 ```azurecli
 az account get-access-token --resource https://database.windows.net --output tsv | cut -f 1 | tr -d '\n' | iconv -f ascii -t UTF-16LE > /tmp/tokenFile
@@ -674,7 +674,7 @@ Specifies the login ID used to connect to [!INCLUDE [ssNoVersion](../includes/ss
 
 #### -u
 
-**Applies to:** **bcp** version 18 and later versions.
+**Applies to**: **bcp** version 18 and later versions.
 
 Trust server certificate. When used with the Encrypt option for the connection, enables encryption using a self-signed server certificate.
 
@@ -684,7 +684,7 @@ Reports the **bcp** utility version number and copyright.
 
 #### -V { 80 | 90 | 100 | 110 | 120 | 130 | 140 | 150 | 160 | 170 }
 
-**Applies to:** Windows only. Not supported on Linux and macOS.
+**Applies to**: Windows only. Not supported on Linux and macOS.
 
 Performs the bulk-copy operation using data types from an earlier version of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]. This option doesn't prompt for each field; it uses the default values.
 
@@ -711,25 +711,25 @@ For more information, see [Use Unicode character format to import or export data
 
 #### -x
 
-**Applies to:** Windows only. Not supported on Linux and macOS.
+**Applies to**: Windows only. Not supported on Linux and macOS.
 
 This option is used with the `format` and `-f` *format_file* options, and generates an XML-based format file instead of the default non-XML format file. The `-x` doesn't work when importing or exporting data. It generates an error if used without both `format` and `-f` *format_file*.
 
 #### -Y[s|m|o]
 
-**Applies to:** **bcp** version 18 and later versions.
+**Applies to**: **bcp** version 18 and later versions.
 
 Specifies whether connections use TLS encryption over the network. `-Y` can be `o` (for `optional`), `m` (for `mandatory`, the default), or `s` (for `strict`). If you don't include `-Y`, `-Ym` (for `mandatory`) is the default.
 
 ## Remarks
 
-- The **bcp** 13.0 client is installed when you install [!INCLUDE [msCoName](../includes/msconame-md.md)] [!INCLUDE [sssql19-md.md](../includes/sssql19-md.md)] tools. If tools are installed for multiple versions of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)], depending on the order of values of the `PATH` environment variable, you might be using the earlier **bcp** client instead of the **bcp** 13.0 client. This environment variable defines the set of directories used by Windows to search for executable files. To discover which version you're using, run the `bcp -v` command at the Windows Command Prompt. For information about how to set the command path in the `PATH` environment variable, see [Environment Variables](/windows/win32/shell/user-environment-variables) or search for Environment Variables in Windows Help.
+- The **bcp** 13.0 client is installed when you install [!INCLUDE [sssql19-md.md](../includes/sssql19-md.md)] tools. If tools are installed for multiple versions of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)], depending on the order of values of the `PATH` environment variable, you might be using the earlier **bcp** client instead of the **bcp** 13.0 client. This environment variable defines the set of directories used by Windows to search for executable files. To discover which version you're using, run the `bcp -v` command at the Windows Command Prompt. For information about how to set the command path in the `PATH` environment variable, see [Environment Variables](/windows/win32/shell/user-environment-variables) or search for Environment Variables in Windows Help.
 
   To make sure the newest version of the **bcp** utility is running, you need to remove any older versions of the **bcp** utility.
 
   To determine where all versions of the **bcp** utility are installed, type in the command prompt:
 
-  ```cmd
+  ```console
   where bcp.exe
   ```
 
@@ -820,7 +820,7 @@ A `bcp in` operation minimally requires `SELECT`/`INSERT` permissions on the tar
 
 This section has recommendations for character mode (`-c`) and native mode (`-n`).
 
-- (Administrator/User) When possible, use native format (`-n`) to avoid the separator issue. Use the native format to export and import using [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]. Export data from [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] using the `-c` or `-w` option if the data will be imported to a non-[!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] database.
+- (Administrator/User) When possible, use native format (`-n`) to avoid the separator issue. Use the native format to export and import using [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]. Export data from [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] using the `-c` or `-w` option if you plan to export the data to a non-[!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] database.
 
 - (Administrator) Verify data when using `bcp out`. For example, when you use `bcp out`, `bcp in`, and then `bcp out` verify that the data is properly exported and the terminator values aren't used as part of some data value. Consider overriding the default terminators (using `-t` and `-r` options) with random hexadecimal values to avoid conflicts between terminator values and data values.
 
@@ -867,7 +867,7 @@ TRUNCATE TABLE WideWorldImporters.Warehouse.StockItemTransactions_bcp;
 
 At a command prompt, enter the following command:
 
-```cmd
+```console
 bcp -v
 ```
 
@@ -905,7 +905,7 @@ The example assumes that you use mixed-mode authentication, and you must use the
 
 At a command prompt, enter the following command: (The system prompts you for your password.)
 
-```cmd
+```console
 bcp WideWorldImporters.Warehouse.StockItemTransactions out D:\bcp\StockItemTransactions_character.bcp -c -U<login_id> -S<server_name\instance_name>
 ```
 
@@ -941,7 +941,7 @@ To copy a specific column, you can use the `queryout` option. The following exam
 
 At a command prompt, enter the following command:
 
-```cmd
+```console
 bcp "SELECT StockItemTransactionID FROM WideWorldImporters.Warehouse.StockItemTransactions WITH (NOLOCK)" queryout D:\bcp\StockItemTransactionID_c.bcp -c -T
 ```
 
@@ -954,7 +954,7 @@ To copy a specific row, you can use the `queryout` option. The following example
 
 At a command prompt, enter the following command:
 
-```cmd
+```console
 bcp "SELECT * from Application.People WHERE FullName = 'Amy Trefl'" queryout D:\bcp\Amy_Trefl_c.bcp -d WideWorldImporters -c -T
 ```
 
@@ -967,7 +967,7 @@ To copy the result set from a Transact-SQL statement to a data file, use the `qu
 
 At a command prompt, enter the following command:
 
-```cmd
+```console
 bcp "SELECT FullName, PreferredName FROM WideWorldImporters.Application.People ORDER BY FullName" queryout D:\bcp\People.txt -t, -c -T
 ```
 
@@ -977,7 +977,7 @@ The following example creates three different format files for the `Warehouse.St
 
 At a command prompt, enter the following commands:
 
-```cmd
+```console
 REM non-XML character format
 bcp WideWorldImporters.Warehouse.StockItemTransactions format nul -f D:\bcp\StockItemTransactions_c.fmt -c -T
 
@@ -991,7 +991,7 @@ bcp WideWorldImporters.Warehouse.StockItemTransactions format nul -f D:\bcp\Stoc
 > [!NOTE]  
 > To use the `-x` switch, you must be using a **bcp** 9.0 client. For information about how to use the **bcp** 9.0 client, see the [Remarks](#remarks) section.
 
-For more information, see [Use Non-XML format files (SQL Server)](../relational-databases/import-export/non-xml-format-files-sql-server.md) and [XML format files (SQL Server)](../relational-databases/import-export/xml-format-files-sql-server.md).
+For more information, see [Use non-XML format files (SQL Server)](../relational-databases/import-export/non-xml-format-files-sql-server.md) and [XML format files (SQL Server)](../relational-databases/import-export/xml-format-files-sql-server.md).
 
 ### I. Use a format file to bulk import with bcp
 
@@ -1002,7 +1002,7 @@ To use a previously created format file when importing data into an instance of 
 
 At a command prompt, enter the following command:
 
-```cmd
+```console
 bcp WideWorldImporters.Warehouse.StockItemTransactions_bcp in D:\bcp\StockItemTransactions_character.bcp -L 100 -f D:\bcp\StockItemTransactions_c.xml -T
 ```
 
@@ -1013,7 +1013,7 @@ bcp WideWorldImporters.Warehouse.StockItemTransactions_bcp in D:\bcp\StockItemTr
 
 The following partial code example shows **bcp** import while specifying a code page 65001:
 
-```cmd
+```console
 bcp MyTable in "D:\data.csv" -T -c -C 65001 -t , ...
 ```
 
@@ -1090,7 +1090,7 @@ The following articles contain examples of using **bcp**:
 
   - [Create a format file with bcp (SQL Server)](../relational-databases/import-export/create-a-format-file-sql-server.md)
   - [Use a format file to bulk import data (SQL Server)](../relational-databases/import-export/use-a-format-file-to-bulk-import-data-sql-server.md)
-  - [Use a Format File to Skip a Table Column (SQL Server)](../relational-databases/import-export/use-a-format-file-to-skip-a-table-column-sql-server.md)
+  - [Use a format file to skip a table column (SQL Server)](../relational-databases/import-export/use-a-format-file-to-skip-a-table-column-sql-server.md)
   - [Use a format file to skip a data field (SQL Server)](../relational-databases/import-export/use-a-format-file-to-skip-a-data-field-sql-server.md)
   - [Use a format file to map table columns to data-file fields (SQL Server)](../relational-databases/import-export/use-a-format-file-to-map-table-columns-to-data-file-fields-sql-server.md)
 

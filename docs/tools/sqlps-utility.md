@@ -3,10 +3,10 @@ title: "sqlps Utility"
 description: The sqlps utility starts a Windows PowerShell session with the SQL Server PowerShell provider and cmdlets loaded and registered.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 09/07/2025
+ms.date: 12/16/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection:
   - data-tools
 ms.custom:
@@ -19,7 +19,6 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 # sqlps utility
 
 [!INCLUDE [SQL Server Azure SQL Database Synapse Analytics PDW FabricSQLDB](../includes/applies-to-version/sql-asdb-asdbmi-asa-pdw-fabricsqldb.md)]
-
 
 The **sqlps** utility starts a Windows PowerShell session with the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] PowerShell provider and cmdlets loaded and registered. You can enter PowerShell commands or scripts that use the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] PowerShell components to work with instances of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] and their objects.
 
@@ -132,4 +131,3 @@ sqlps -NoExit -Command "&{.\MyFolder.MyScript.ps1}"
 
 - [Enable or disable a server network protocol](../database-engine/configure-windows/enable-or-disable-a-server-network-protocol.md)
 - [SQL Server PowerShell](/powershell/sql-server/sql-server-powershell)
-

@@ -3,10 +3,10 @@ title: "Sqlagent Application"
 description: The sqlagent application starts SQL Server Agent from the command prompt. Use it when diagnosing SQL Server Agent or when directed by your support provider.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/10/2025
+ms.date: 12/16/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection:
   - data-tools
 helpviewer_keywords:

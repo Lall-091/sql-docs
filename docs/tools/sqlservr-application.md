@@ -3,10 +3,10 @@ title: "Sqlservr Application"
 description: The sqlservr application starts, stops, pauses, and continues an instance of SQL Server from a command prompt.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 09/07/2025
+ms.date: 12/16/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection:
   - data-tools
 helpviewer_keywords:
@@ -94,7 +94,7 @@ Disables the keeping of CPU time and cache-hit ratio statistics. Allows maximum 
 
 ## Remarks
 
-You should use the methods described in [Database Engine Service startup options](../database-engine/configure-windows/database-engine-service-startup-options.md) instead of using the sqlservr.exe program to start [!INCLUDE [msCoName](../includes/msconame-md.md)] [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]. In most cases, the sqlservr.exe program is only used for advanced troubleshooting or major maintenance. When [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] is started from the command prompt with sqlservr.exe, [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] doesn't start as a service, so you can't stop [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] using **net** commands. Users can connect to [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)], but [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] tools show the status of the service, so [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Configuration Manager correctly indicates that the service is stopped. [!INCLUDE [ssManStudioFull](../includes/ssmanstudiofull-md.md)] can connect to the server, but it also indicates that the service is stopped.
+You should use the methods described in [Database Engine Service startup options](../database-engine/configure-windows/database-engine-service-startup-options.md) instead of using the sqlservr.exe program to start [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]. In most cases, the sqlservr.exe program is only used for advanced troubleshooting or major maintenance. When [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] is started from the command prompt with sqlservr.exe, [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] doesn't start as a service, so you can't stop [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] using **net** commands. Users can connect to [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)], but [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] tools show the status of the service, so [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Configuration Manager correctly indicates that the service is stopped. [!INCLUDE [ssManStudioFull](../includes/ssmanstudiofull-md.md)] can connect to the server, but it also indicates that the service is stopped.
 
 ## Compatibility support
 

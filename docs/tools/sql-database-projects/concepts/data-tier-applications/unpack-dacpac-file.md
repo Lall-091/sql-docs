@@ -4,7 +4,7 @@ description: "Unpack a DACPAC file to review or examine the contents."
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: randolphwest, maghan
-ms.date: 03/11/2025
+ms.date: 12/16/2025
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: how-to
@@ -21,7 +21,7 @@ helpviewer_keywords:
 A data-tier application (DAC) is a self-contained unit of the entire database model and is portable in an artifact known as a DAC package, or `.dacpac`. It's a good practice to review the contents of a `.dacpac` before deploying it in production, and to validate the upgrade actions before upgrading an existing DAC. Validation of the `.dacpac` contents is especially important when deploying packages that weren't developed in your organization. This article describes several ways to unpack the database model from a `.dacpac` for Windows, macOS, and Linux.
 
 > [!WARNING]  
-> We recommend that you don't deploy a `.dacpac` from unknown or untrusted sources. Such DACs could contain malicious code that might execute unintended code or cause errors by modifying the schema. Before you use a DAC from an unknown or untrusted source, deploy it on an isolated test instance of the [!INCLUDE [ssDE](../../../../includes/ssde-md.md)], unpack the DAC and examine the code, such as stored procedures or other user-defined code.
+> Don't deploy a `.dacpac` from unknown or untrusted sources. Such DACs could contain malicious code that might execute unintended code or cause errors by modifying the schema. Before you use a DAC from an unknown or untrusted source, deploy it on an isolated test instance of the [!INCLUDE [ssDE](../../../../includes/ssde-md.md)], unpack the DAC and examine the code, such as stored procedures or other user-defined code.
 
 Options for examining the content of a `.dacpac` include:
 
@@ -48,9 +48,9 @@ Decompressing the `.dacpac` file results in the raw XML contents being available
 
 1. Unzip the .zip file using the utility provided by your OS. To unzip a file from the command line:
 
-    ```bash
-    unzip AdventureWorks.dacpac
-    ```
+   ```bash
+   unzip AdventureWorks.dacpac
+   ```
 
 1. The resulting contents include `DacMetadata.xml`, `Origin.xml`, and `model.xml`.
 

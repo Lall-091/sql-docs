@@ -3,10 +3,10 @@ title: Database Engine Tuning Advisor (DTA) Command-Line Utility
 description: The dta utility is a command prompt version of Database Engine Tuning Advisor that allows you to use functionality in applications and scripts.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/18/2025
+ms.date: 12/15/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection:
   - data-tools
 helpviewer_keywords:
@@ -113,13 +113,13 @@ Specifies the maximum number of key columns in indexes that **dta** proposes. Th
 
 #### -ce *connection_encrypt_option*
 
-**Applies to:** [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions
+**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions
 
 Specifies that the connection is encrypted between the server and the client. Possible values: `yes`, `no`, and `strict`. The default option is `yes`. For more information, see [TDS 8.0](../../relational-databases/security/networking/tds-8.md#strict-connection-encryption).
 
 #### -tc
 
-**Applies to:** [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions
+**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions
 
 Specifies whether to trust the server certificate. This parameter is optional, similar to `HostnameInCertificate` used in other tools and connection strings.
 
@@ -127,7 +127,7 @@ For more information, see [TDS 8.0](../../relational-databases/security/networki
 
 #### -hc *hostname_in_certificate*
 
-**Applies to:** [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions
+**Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions
 
 Specifies a different, expected CN or SAN in the server certificate to use during server certificate validation. For more information, see [TDS 8.0](../../relational-databases/security/networking/tds-8.md#additional-changes-to-connection-string-encryption-properties).
 

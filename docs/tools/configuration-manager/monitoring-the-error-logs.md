@@ -3,10 +3,10 @@ title: "Monitoring the Error Logs"
 description: Use the SQL Server error log, the Windows application log, and the SQL Server Management Studio Log File Viewer to troubleshoot problems related to SQL Server.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: "03/14/2017"
+ms.date: 12/15/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: how-to
 ms.collection:
   - data-tools
 helpviewer_keywords:
@@ -25,20 +25,23 @@ helpviewer_keywords:
   - "logs [SQL Server], Windows application logs"
 monikerRange: ">=sql-server-2016"
 ---
-# Monitoring the Error Logs
+# Monitor the error logs
+
 [!INCLUDE [SQL Server Windows Only](../../includes/applies-to-version/sql-windows-only.md)]
-  [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] logs certain system events and user-defined events to the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] error log and the [!INCLUDE[msCoName](../../includes/msconame-md.md)] Windows application log. Both logs automatically timestamp all recorded events. Use the information in the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] error log to troubleshoot problems related to [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)].  
-  
- The Windows application log provides an overall picture of events that occur on the Windows operating system, as well as events in [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] and [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Agent. Use the Windows Event Viewer to view the Windows application log and to filter the information. For example, you can filter events, such as information, warning, error, success audit, and failure audit.  
-  
-## Comparing Error and Application Log Output  
- You can use both the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] error log and the Windows application log to identify the cause of problems. For example, while monitoring the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] error log, you may encounter error messages that do not contain cause information. By comparing the dates and times for events between these logs, you can narrow the list of probable causes. The [!INCLUDE[ssManStudioFull](../../includes/ssmanstudiofull-md.md)] Log File Viewer lets you integrate [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)], [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] Agent, and the Windows logs into a single list, making it easy to understand related server events and [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] events. For more information, see the topic "Log File Viewer" in SQL Server Books Online.  
-  
-## In This Section  
-  
-|Topic|Description|  
-|-----------|-----------------|  
-|[Viewing the SQL Server Error Log](../../tools/configuration-manager/viewing-the-sql-server-error-log.md)|Contains information about the [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] error log and how to view it.|  
-|[Viewing the Windows Application Log](../../tools/configuration-manager/viewing-the-windows-application-log.md)|Contains information about the Windows application log and how to view it.|  
-  
-  
+
+[!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] logs certain system events and user-defined events to the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] error log and the Windows application log. Both logs automatically timestamp all recorded events. Use the information in the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] error log to troubleshoot problems related to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
+
+The Windows application log provides an overall picture of events that occur on the Windows operating system, as well as events in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] and [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent. Use the Windows Event Viewer to view the Windows application log and to filter the information. For example, you can filter events, such as information, warning, error, success audit, and failure audit.
+
+## Compare error and application log output
+
+You can use both the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] error log and the Windows application log to identify the cause of problems. For example, while monitoring the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] error log, you might encounter error messages that don't contain cause information. By comparing the dates and times for events between these logs, you can narrow the list of probable causes.
+
+The [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] Log File Viewer lets you integrate [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Agent, and the Windows logs into a single list, making it easy to understand related server events and [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] events. For more information, see [View the SQL Server error log in SQL Server Management Studio (SSMS)](../../relational-databases/performance/view-the-sql-server-error-log-sql-server-management-studio.md).
+
+## In this section
+
+| Article | Description |
+| --- | --- |
+| [View the SQL Server error log](viewing-the-sql-server-error-log.md) | Contains information about the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] error log and how to view it. |
+| [View the Windows Application log to troubleshoot SQL Server](viewing-the-windows-application-log.md) | Contains information about the Windows application log and how to view it. |

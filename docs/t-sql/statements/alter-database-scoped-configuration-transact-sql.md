@@ -5,7 +5,7 @@ description: Enable several database configuration settings at the individual da
 author: markingmyname
 ms.author: maghan
 ms.reviewer: derekw, jovanpop, wiassaf, mariyaali, randolphwest
-ms.date: 12/01/2025
+ms.date: 12/17/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -114,7 +114,7 @@ ALTER DATABASE SCOPED CONFIGURATION
     | PARAMETER_SENSITIVE_PLAN_OPTIMIZATION = { ON | OFF }
     | LEDGER_DIGEST_STORAGE_ENDPOINT = { <endpoint URL string> | OFF }
     | OPTIMIZED_SP_EXECUTESQL = { ON | OFF }
-    | OPTIONAL_PARAMETER_PLAN_OPTIMIZATION = { ON | OFF }
+    | OPTIONAL_PARAMETER_OPTIMIZATION = { ON | OFF }
     | ALLOW_STALE_VECTOR_INDEX = { ON | OFF }
     | PREVIEW_FEATURES = { ON | OFF }
     | FULLTEXT_INDEX_VERSION = <version>
@@ -511,9 +511,9 @@ Enables or disables the compilation serialization behavior of `sp_executesql` wh
 
 When `OPTIMIZED_SP_EXECUTESQL` is `ON`, the first execution of sp_executesql compiles and inserts its compiled plan into the plan cache. Other sessions abort waiting on the compile lock and reuse the plan once it becomes available. This allows `sp_executesql` to behave like objects such as stored procedures and triggers from a compilation perspective.
 
-#### OPTIONAL_PARAMETER_PLAN_OPTIMIZATION = { ON | OFF }
+#### OPTIONAL_PARAMETER_OPTIMIZATION = { ON | OFF }
 
-**Applies to**: [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)]
+**Applies to**: [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)], [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)]
 
 Enables or disables the [Optional parameter plan optimization (OPPO)](../../relational-databases/performance/optional-parameter-optimization.md) feature. The default is `ON`.
 

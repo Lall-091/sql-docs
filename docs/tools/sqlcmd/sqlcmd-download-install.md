@@ -4,10 +4,10 @@ description: Learn how to download, install, or find the sqlcmd utility preinsta
 author: dlevy-msft
 ms.author: dlevy
 ms.reviewer: randolphwest
-ms.date: 08/27/2025
+ms.date: 12/16/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.collection:
   - data-tools
 ms.custom:
@@ -86,15 +86,15 @@ Choose one of the following options to install **sqlcmd** (Go) on macOS.
 
 1. Install Homebrew if you need to.
 
-    ```bash
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    ```
+   ```bash
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
 
 1. Install **sqlcmd** with Homebrew.
 
-    ```bash
-    brew install sqlcmd
-    ```
+   ```bash
+   brew install sqlcmd
+   ```
 
 #### Direct download
 
