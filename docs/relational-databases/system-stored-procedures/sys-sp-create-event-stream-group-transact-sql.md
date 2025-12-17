@@ -71,7 +71,7 @@ Specifies database scoped credential name to be used. *@destination_credential* 
 
 #### [ @max_message_size_kb = ] *max_message_size_kb*
 
-If specified, defines the max CES message size in kilobyes. *@max_message_size_kb* is **int**, and can't be `NULL`. The message is split if it exceeds the specified max size. This parameter is optional.
+If specified, defines the max CES message size in kilobytes. *@max_message_size_kb* is **int**, and can't be `NULL`. The message is split if it exceeds the specified max size. This parameter is optional.
 
 *@max_message_size_kb* has the following characteristics:
 
