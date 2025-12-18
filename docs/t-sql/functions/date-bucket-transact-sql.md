@@ -1,10 +1,10 @@
 ---
 title: "DATE_BUCKET (Transact-SQL)"
 description: DATE_BUCKET returns the date-time value corresponding to the start of each date-time bucket from a defined origin timestamp.
-author: kendalvandyke
-ms.author: kendalv
-ms.reviewer: randolphwest
-ms.date: 11/03/2025
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: kendalv, jovanpop
+ms.date: 12/17/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -18,10 +18,11 @@ helpviewer_keywords:
   - "analytic functions, DATE_BUCKET"
 dev_langs:
   - TSQL
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-ver16 || >=sql-server-linux-ver16 || =fabric || =fabric-sqldb"
 ---
 # DATE_BUCKET (Transact-SQL)
 
-[!INCLUDE [sqlserver2022-asde-fabricsqldb](../../includes/applies-to-version/sqlserver2022-asdb-asmi-asde-fabricsqldb.md)]
+[!INCLUDE [sqlserver2022-asdb-asmi-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sqlserver2022-asdb-asmi-fabricse-fabricdw-fabricsqldb.md)]
 
 This function returns the date-time value corresponding to the start of each date-time bucket from the timestamp defined by the *origin* parameter, or the default origin value of `1900-01-01 00:00:00.000` if the origin parameter isn't specified.
 
