@@ -4,7 +4,7 @@ description: Known issues, causes, and workarounds for SQL Server 2025 (17.x), c
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 11/18/2025
+ms.date: 12/17/2025
 ms.service: sql
 ms.subservice: release-landing
 ms.topic: troubleshooting-known-issue
@@ -19,7 +19,7 @@ monikerRange: ">=sql-server-2016"
 
 This article describes known issues for [!INCLUDE [sssql25-md](../includes/sssql25-md.md)].
 
-[!INCLUDE [sssql25-md](../includes/sssql25-md.md)] has currently identified the following known issues:
+The following issues are currently identified:
 
 - [Installation fails when TLS 1.2 is disabled](#sql-server-2025-installation-fails-when-tls-12-is-disabled)
 - [Windows Arm64 not supported](#windows-arm64-not-supported)
@@ -36,6 +36,7 @@ This article describes known issues for [!INCLUDE [sssql25-md](../includes/sssql
 - [SQL Server audit events don't write to the Security log](#sql-server-audit-events-dont-write-to-the-security-log)
 - [Upgrade fails if Data Quality Services is installed](#upgrade-fails-if-data-quality-services-is-installed)
 - [Full-Text Search fails to index plaintext documents larger than 25 MB](#full-text-search-fails-to-index-plaintext-documents-larger-than-25-mb)
+- [Incorrect license agreement for LocalDB installer](#incorrect-license-agreement-for-localdb-installer)
 
 ## SQL Server 2025 installation fails when TLS 1.2 is disabled
 
@@ -137,13 +138,13 @@ ALTER DATABASE [Database_Name]
     (OPERATION_MODE = READ_WRITE);
 ```
 
-Queries that meet the following conditions could experience an access violation when a PSP [query variant](../relational-databases/performance/parameter-sensitive-plan-optimization.md#query-variant) can't determine the persisted state of its parent dispatcher statement:
+Queries that meet the following conditions might experience an access violation when a PSP [query variant](../relational-databases/performance/parameter-sensitive-plan-optimization.md#query-variant) can't determine the persisted state of its parent dispatcher statement:
 
 - Executed on a secondary replica
 - Sensitive to parameter sniffing
 - Eligible for parameter sensitive plan (PSP) optimization
 
-A fix has been identified and will be part of a future release of [!INCLUDE [sssql25-md](../includes/sssql25-md.md)].
+We have identified a fix for a future release of [!INCLUDE [sssql25-md](../includes/sssql25-md.md)].
 
 **Workaround**: Disable PSP on secondaries for each database that was onboarded to use the Query Store for readable secondaries feature. From within the context of a specific database, issue the following Transact-SQL statement:
 
@@ -154,14 +155,14 @@ ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY
 
 ## SQL Server audit events don't write to the Security log
 
-Assume that you configured multiple [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] audit events to write to the Security log in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)]. In this scenario, you notice that all server audits, except the first server audit, don't write. Additionally, when you add the second server audit, you might receive an error that resembles the following message in the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] error log:
+Assume that you configured multiple [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] audit events to write to the [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] Security log. In this scenario, you notice that all server audits, except the first server audit, don't write. Additionally, when you add the second server audit, you might receive an error that resembles the following message in the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] error log:
 
 ```output
 Error: 33204, Severity: 17, State: 1.
 SQL Server Audit could not write to the security log.
 ```
 
-A fix has been identified and will be part of a future release of [!INCLUDE [sssql25-md](../includes/sssql25-md.md)].
+We have identified a fix for a future release of [!INCLUDE [sssql25-md](../includes/sssql25-md.md)].
 
 **Workaround**: Use one of the following methods:
 
@@ -226,7 +227,15 @@ Edit the DWORD value `MaxTextFilterBytes`, which is located in `HKEY_LOCAL_MACHI
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\ContentIndex" /v MaxTextFilterBytes /t REG_DWORD /d ffffffff
 ```
 
-After updating the registry value, re-issue the Full-Text crawl.
+After updating the registry value, reissue the Full-Text crawl.
+
+## Incorrect license agreement for LocalDB installer
+
+**Issue**: The LocalDB installer points to a preview version of the end-user license agreement (EULA).
+
+To work around this issue, you must download the Express edition installer instead, and choose the **LocalDB** option from the package selection screen.
+
+We have identified a fix for a future release of [!INCLUDE [sssql25-md](../includes/sssql25-md.md)].
 
 ## Related content
 
