@@ -4,7 +4,7 @@ description: Tutorial on how to set up Microsoft Entra authentication for SQL Se
 author: PratimDasgupta
 ms.author: prdasgu
 ms.reviewer: vanto, randolphwest, mikeray
-ms.date: 08/28/2025
+ms.date: 12/18/2025
 ms.service: sql
 ms.subservice: security
 ms.topic: tutorial
