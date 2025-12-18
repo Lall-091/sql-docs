@@ -7,7 +7,7 @@ ms.reviewer: randolphwest, jopilov, rdorr
 ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: release-landing
-ms.topic: conceptual
+ms.topic: article
 ms.custom:
   - ignite-2025
 helpviewer_keywords:
@@ -222,7 +222,7 @@ For security reasons, we recommend that you don't install [!INCLUDE [ssnoversion
 
 You can get relevant installation media from the following locations:
 
-- [SQL Server evaluation center](https://www.microsoft.com/evalcenter/evaluate-sql-server-2022)
+- [SQL Server evaluation center](https://www.microsoft.com/evalcenter/evaluate-sql-server-2025)
 - [Most recent cumulative updates](/troubleshoot/sql/releases/download-and-install-latest-updates?bc=%2fsql%2fbreadcrumb%2ftoc.json&toc=%2fsql%2ftoc.json)
 
 Alternatively, you can create an [Azure virtual machine already running SQL Server](/azure/azure-sql/virtual-machines/windows/sql-vm-create-portal-quickstart) though [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] on a virtual machine can be slower than running natively because of the overhead of virtualization.
