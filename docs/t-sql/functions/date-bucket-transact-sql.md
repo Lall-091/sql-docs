@@ -18,6 +18,7 @@ helpviewer_keywords:
   - "analytic functions, DATE_BUCKET"
 dev_langs:
   - TSQL
+monikerRange: "=azuresqldb-current || =azuresqldb-mi-current || >=sql-server-ver16 || >=sql-server-linux-ver16 || =fabric || =fabric-sqldb"
 ---
 # DATE_BUCKET (Transact-SQL)
 
