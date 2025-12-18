@@ -8468,7 +8468,7 @@ items:
     - name: Use with scripting variables
       href: tools/sqlcmd/sqlcmd-use-scripting-variables.md
     - name: Edit SQLCMD scripts with Query Editor
-      href: tools/sqlcmd/edit-sqlcmd-scripts-query-editor.md
+      href: /ssms/scripting/sqlcmd-scripts-query-editor
     - name: Create new local database in a container with sqlcmd
       href: tools/sqlcmd/quickstart-sqlcmd-create-container.md
   - name: SSB Diagnose

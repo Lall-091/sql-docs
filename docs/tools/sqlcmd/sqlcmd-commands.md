@@ -239,20 +239,34 @@ The file will be read and executed after a batch terminator is encountered. You 
 
 Lists the locally configured servers and the names of the servers broadcasting on the network.
 
-#### :Connect *server_name*[\\*instance_name*] [-l *timeout*] [-U *user_name* [-P *password*]]
+#### :Connect *server_name*[\\*instance_name*] [-l *timeout*] [-U *user_name* [-P *password*]] [-N[s|m|o]] [-F hostname_in_certificate]
 
 Connects to an instance of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)]. Also closes the current connection.
 
-Timeout options:
+- Encryption options (`-N[s|m|o]`):
 
-| Value | Behavior |
-| --- | --- |
-| `0` | Wait forever |
-| `n>0` | Wait for *n* seconds |
+  This option is used by the client to request an encrypted connection. If you don't include `-N`, `-Nm` (for `mandatory`) is the default. This is a breaking change from [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions, where `-No` (for `optional`) is the default.
 
-The `SQLCMDSERVER` scripting variable reflects the current active connection.
+  | Value | Description |
+  | --- | --- |
+  | `-Ns` | Strict |
+  | `-Nm` (default) | Mandatory |
+  | `-No` | Optional |
 
-If *timeout* isn't specified, the value of the `SQLCMDLOGINTIMEOUT` variable is the default.
+- Hostname in certificate (`-F hostname_in_certificate`)
+
+  Specifies a different, expected Common Name (CN) or Subject Alternate Name (SAN) in the server certificate to use during server certificate validation. Without this option, certificate validation ensures that the CN or SAN in the certificate matches the server name to which you're connecting. This parameter can be populated when the server name doesn't match the CN or SAN, for example, when using DNS aliases.
+
+- Timeout options:
+
+  | Value | Behavior |
+  | --- | --- |
+  | `0` | Wait forever |
+  | `n>0` | Wait for *n* seconds |
+
+  The `SQLCMDSERVER` scripting variable reflects the current active connection.
+
+  If *timeout* isn't specified, the value of the `SQLCMDLOGINTIMEOUT` variable is the default.
 
 If only *user_name* is specified (either as an option, or as an environment variable), the user is prompted to enter a password. Users aren't prompted if the `SQLCMDUSER` or `SQLCMDPASSWORD` environment variables are set. If you don't provide options or environment variables, Windows Authentication mode is used to sign in. For example, to connect to an instance, `instance1`, of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)], `myserver`, by using integrated security you would use the following command:
 

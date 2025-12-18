@@ -6189,6 +6189,11 @@
       "source_path": "docs/ssms/visual-db-tools/work-with-tables-in-database-diagram-visual-database-tools.md",
       "redirect_url": "/ssms/visual-db-tools/work-with-tables-in-database-diagram-visual-database-tools",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "docs/tools/sqlcmd/edit-sqlcmd-scripts-query-editor.md",
+      "redirect_url": "/ssms/scripting/sqlcmd-scripts-query-editor",
+      "redirect_document_id": false
     }
   ]
 }

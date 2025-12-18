@@ -41,7 +41,7 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
 The **sqlcmd** utility lets you enter Transact-SQL statements, system procedures, and script files through various modes:
 
 - At the command prompt.
-- In **Query Editor** in SQLCMD mode.
+- In **Query Editor** in [SQLCMD mode](/ssms/scripting/sqlcmd-scripts-query-editor).
 - In a Windows script file.
 - In an operating system (`cmd.exe`) job step of a [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] Agent job.
 
