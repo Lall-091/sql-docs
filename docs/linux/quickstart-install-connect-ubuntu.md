@@ -102,7 +102,8 @@ If you previously installed a preview version of [!INCLUDE [ssnoversion-md](../i
 
 ::: moniker-end
 
-The [Windows Subsystem for Linux](/windows/wsl/about) isn't supported as an installation target for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
+> [!NOTE]
+> [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Windows Subsystem for Linux (WSL) is supported for development purposes only. For instructions on installing SQL Server on WSL, see [Quickstart: Install SQL Server and create a database on Windows Subsystem for Linux (WSL 2)](quickstart-install-connect-wsl-2.md).
 
 For other system requirements, see [System requirements for SQL Server on Linux](sql-server-linux-setup.md#system).
 
