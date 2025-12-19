@@ -28,12 +28,18 @@ Use the following instructions to manually deploy the solution package that adds
 >
 
 **Support SharePoint Server versions:**
-* SharePoint Server 2019
 * SharePoint Server 2016
 * SharePoint Server 2013
 
 **Support Reporting Services versions:**  
-* SQL Server 2008 Reporting Services (Native mode) and later
+* SQL Server 2022 Reporting Services
+* SQL Server 2019 Reporting Services
+* SQL Server 2017 Reporting Services
+* SQL Server 2016 Reporting Services
+* SQL Server 2014 Reporting Services
+* SQL Server 2012 Reporting Services
+* SQL Server 2008 R2 Reporting Services
+* SQL Server 2008 Reporting Services
 * Power BI Report Server
 
 ## Download the Report Viewer web part solution package
