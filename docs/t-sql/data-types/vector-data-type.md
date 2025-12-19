@@ -46,7 +46,7 @@ GO
 For limitations, review [Limitations](#limitations) and [Known issues](#known-issues).
 
 > [!NOTE]  
-> Vector features are available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/ update-policy#always-up-to-date-update-policy) policy.
+> Vector features are available in Azure SQL Managed Instance configured with the [Always-up-to-date](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy) policy.
 
 For more information on working with vector data, see:
 
