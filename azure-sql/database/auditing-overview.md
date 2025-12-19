@@ -2,10 +2,10 @@
 title: Auditing
 titleSuffix: Azure SQL Database and Azure Synapse Analytics
 description: SQL Auditing for Azure SQL Database and Azure Synapse Analytics tracks database events and writes them to an audit log in your Azure storage account, Log Analytics workspace, or Event Hubs.
-author: sravanisaluru
-ms.author: srsaluru
-ms.reviewer: wiassaf, vanto, mathoma
-ms.date: 09/04/2025
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: srsaluru, vanto, mathoma
+ms.date: 12/19/2025
 ms.service: azure-sql-database
 ms.subservice: security
 ms.topic: conceptual
@@ -54,6 +54,13 @@ You can use SQL Database auditing to:
 - Permissions required to view Audit logs:
   - `VIEW DATABASE SECURITY AUDIT` permission in user database
 
+### Recommended auditing approach for large OLTP workloads
+
+For environments with many databases running heavy OLTP workloads, using server‑level auditing with default settings can lead to very large audit volumes across the logical server. Since all events from all databases are written into the same audit folder, querying audit logs for a single database becomes slow and operationally expensive. To improve performance and reduce noise:
+
+   - **Switch to database‑level auditing**. Each database writes to its own audit log folder, reducing the total volume scanned and making retrieval faster.
+   - **Review the audit configuration**. Determine whether capturing all batch‑completed events is necessary, or if a custom filtered configuration can meet your security and compliance requirements.
+    
 ## Auditing limitations
 
 - Enabling auditing on a paused **Azure Synapse SQL pool** isn't supported. To enable auditing, resume the **Synapse SQL pool**.
