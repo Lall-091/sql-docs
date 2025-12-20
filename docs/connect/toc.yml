@@ -2714,6 +2714,8 @@
       href: ../connect/jdbc/sparse-columns.md
     - name: Prepared statement metadata caching
       href: ../connect/jdbc/prepared-statement-metadata-caching-for-the-jdbc-driver.md
+    - name: Prepared statement parameter performance
+      href: ../connect/jdbc/prepared-statement-parameter-performance.md
   - name: Diagnosing problems
     href: ../connect/jdbc/diagnosing-problems-with-the-jdbc-driver.md
     items:
