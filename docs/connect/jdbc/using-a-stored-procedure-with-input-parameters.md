@@ -3,10 +3,10 @@ title: "Using a stored procedure with input parameters"
 description: "Learn how to use input parameters with a stored procedure with the JDBC Driver for SQL Server."
 author: David-Engel
 ms.author: davidengel
-ms.date: "08/12/2019"
+ms.date: 12/18/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: article
 ---
 
 # Using a stored procedure with input parameters
@@ -22,9 +22,9 @@ When you use the JDBC driver to call a stored procedure with IN parameters, you 
 > [!NOTE]  
 > For more information about the SQL escape sequences, see [Using SQL escape sequences](../../connect/jdbc/using-sql-escape-sequences.md).
 
-When you construct the `call` escape sequence, specify the IN parameters by using the ? (question mark) character. This character acts as a placeholder for the parameter values that will be passed into the stored procedure. To specify a value for a parameter, you can use one of the setter methods of the SQLServerPreparedStatement class. The setter method that you can use is determined by the data type of the IN parameter.
+When you construct the `call` escape sequence, specify the IN parameters by using the `?` (question mark) character. This character acts as a placeholder for the parameter values passed into the stored procedure. To specify a value for a parameter, you can use one of the setter methods of the SQLServerPreparedStatement class. The data type of the IN parameter determines the setter method that you can use.
 
-When you pass a value to the setter method, you must specify not only the actual value that will be used in the parameter, but also the ordinal placement of the parameter in the stored procedure. For example, if your stored procedure contains a single IN parameter, its ordinal value will be 1. If the stored procedure contains two parameters, the first ordinal value will be 1, and the second ordinal value will be 2.
+When you pass a value to the setter method, you must specify not only the actual value that is used in the parameter, but also the ordinal placement of the parameter in the stored procedure. For example, if your stored procedure contains a single IN parameter, its ordinal value is 1. If the stored procedure contains two parameters, the first ordinal value is 1, and the second ordinal value is 2.
 
 As an example of how to call a stored procedure that contains an IN parameter, use the uspGetEmployeeManagers stored procedure in the [!INCLUDE[ssSampleDBnormal](../../includes/sssampledbnormal-md.md)] sample database. This stored procedure accepts a single input parameter named EmployeeID, which is an integer value, and it returns a recursive list of employees and their managers based on the specified EmployeeID. The Java code for calling this stored procedure is as follows:
 
@@ -49,3 +49,4 @@ public static void executeSprocInParams(Connection con) throws SQLException {
 ## See also
 
 [Using statements with stored procedures](../../connect/jdbc/using-statements-with-stored-procedures.md)
+[Prepared statement parameter performance](prepared-statement-parameter-performance.md)
