@@ -76,8 +76,8 @@ For more information about support periods for SUSE versions, see [https://www.s
 
 If you previously installed a preview version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], you must first remove the old repository before following these steps. For more information, see [Configure repositories for installing and upgrading SQL Server on Linux](sql-server-linux-change-repo.md).
 
-> [!NOTE]  
-> At this time, the [Windows Subsystem for Linux](/windows/wsl/about) for Windows 10 or Windows 11 isn't supported as an installation target.
+> [!NOTE]
+> [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Windows Subsystem for Linux (WSL) is supported for development purposes only. For instructions on installing SQL Server on WSL, see [Quickstart: Install SQL Server and create a database on Windows Subsystem for Linux (WSL 2)](quickstart-install-connect-wsl-2.md).
 
 For other system requirements, see [System requirements for SQL Server on Linux](sql-server-linux-setup.md#system).
 
