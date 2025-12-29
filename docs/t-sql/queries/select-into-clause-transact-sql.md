@@ -78,7 +78,7 @@ If any one of these conditions is true, the column is created NOT NULL instead o
 ## Remarks  
 The `SELECT...INTO` statement operates in two parts - the new table is created, and then rows are inserted.  This means that if the inserts fail, they will all be rolled back, but the new (empty) table will remain.  If you need the entire operation to succeed or fail as a whole, use an [explicit transaction](../language-elements/begin-transaction-transact-sql.md).
 
-[!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)] doesn't support filegroups. References and examples in this article to filegroups don't apply to [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)].
+[!INCLUDE [fabricdw](../../includes/fabric-dw.md)] doesn't support filegroups. References and examples in this article to filegroups don't apply to [!INCLUDE [fabricdw](../../includes/fabric-dw.md)].
   
 ## Limitations and Restrictions  
  You cannot specify a table variable or table-valued parameter as the new table.  

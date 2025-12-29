@@ -26,7 +26,7 @@ There are many types of statements. Perhaps the most important is the [SELECT](.
 
 ::: moniker range="=fabric"
 
-For information on T-SQL support in a [!INCLUDE [fabricse](../../includes/fabric-se.md)] or [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], see [T-SQL surface area in Microsoft Fabric](/fabric/data-warehouse/tsql-surface-area).
+For information on T-SQL support in a [!INCLUDE [fabricse](../../includes/fabric-se.md)] or [!INCLUDE [fabricdw](../../includes/fabric-dw.md)], see [T-SQL surface area in Microsoft Fabric](/fabric/data-warehouse/tsql-surface-area).
 
 ::: moniker-end
 

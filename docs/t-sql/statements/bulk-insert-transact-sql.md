@@ -191,7 +191,7 @@ FROM 'https://<data-lake>.blob.core.windows.net/public/curated/covid-19/bing_cov
 
 #### DATA_SOURCE
 
-**Applies to**: [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)].
+**Applies to**: [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)].
 
 Specifies a named external data source that points to an Azure Storage root location for the file import.
 

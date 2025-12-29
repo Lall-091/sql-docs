@@ -29,7 +29,7 @@ monikerRange: "=azure-sqldw-latest || =fabric"
 This article explains how to use the `COPY` statement in [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] for loading from external storage accounts. The `COPY` statement provides the most flexibility for high-throughput data ingestion into [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)].
 
 > [!NOTE]  
-> For [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], visit [COPY INTO](copy-into-transact-sql.md?view=fabric&preserve-view=true).
+> For [!INCLUDE [fabricdw](../../includes/fabric-dw.md)], visit [COPY INTO](copy-into-transact-sql.md?view=fabric&preserve-view=true).
 
 Use COPY for the following capabilities:
 
@@ -551,11 +551,11 @@ Follow these steps to work around this issue by re-registering the workspace's m
 
 [!INCLUDE [fabricdw](../../includes/applies-to-version/fabric-dw.md)]
 
-This article explains how to use the COPY statement in [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)] for loading from external storage accounts. The COPY statement provides the most flexibility for high-throughput data ingestion into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)], and is as strategy to [Ingest data into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)]](/fabric/data-warehouse/ingest-data).
+This article explains how to use the COPY statement in [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] for loading from external storage accounts. The COPY statement provides the most flexibility for high-throughput data ingestion into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)], and is as strategy to [Ingest data into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)]](/fabric/data-warehouse/ingest-data).
 
 In [!INCLUDE [fabric](../../includes/fabric.md)], the [COPY (Transact-SQL)](/sql/t-sql/statements/copy-into-transact-sql?view=fabric&preserve-view=true) statement currently supports the PARQUET and CSV file formats. For data sources, Azure Data Lake Storage Gen2 accounts, and OneLake sources are supported.
 
-For more information on using `COPY INTO` on your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], see [Ingest data into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] using the COPY statement](/fabric/data-warehouse/ingest-data-copy).
+For more information on using `COPY INTO` on your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)], see [Ingest data into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] using the COPY statement](/fabric/data-warehouse/ingest-data-copy).
 
 By default, `COPY INTO` authenticates as the executing Entra ID user.
 
@@ -626,7 +626,7 @@ An optional list of one or more columns used to map source data fields to target
 When *column_list* isn't specified, `COPY` maps columns based on the source and target order: Input field 1 goes to target column 1, field 2 goes to column 2, etc.
 
 > [!NOTE]  
-> When working with Parquet files on [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], column names must match exactly in the source and destination. If the name of the column in target table is different than that of the column name in the parquet file, the target table column is filled with NULL.
+> When working with Parquet files on [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)], column names must match exactly in the source and destination. If the name of the column in target table is different than that of the column name in the parquet file, the target table column is filled with NULL.
 
 When a column list isn't specified, `COPY` maps columns based on the source and target order: Input field 1 goes to target column 1, field 2 goes to column 2, etc.
 
@@ -711,7 +711,7 @@ When using a firewall protected Azure Storage Account, the error file is created
 
 #### *ERRORFILE_CREDENTIAL = (IDENTITY= '', SECRET = '')*
 
-*ERRORFILE_CREDENTIAL* only applies to CSV files. On [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], the only supported authentication mechanism is Shared Access Signature (SAS).
+*ERRORFILE_CREDENTIAL* only applies to CSV files. On [!INCLUDE [fabricdw](../../includes/fabric-dw.md)], the only supported authentication mechanism is Shared Access Signature (SAS).
 
 - Authenticating with Shared Access Signatures (SAS)
   - *IDENTITY: A constant with a value of 'Shared Access Signature'*
@@ -876,7 +876,7 @@ Fabric OneLake storage as a source for both `COPY INTO` and `OPENROWSET(BULK)` i
 
 ## Examples
 
-For more information on using `COPY INTO` on your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], see [Ingest data into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] using the COPY statement](/fabric/data-warehouse/ingest-data-copy).
+For more information on using `COPY INTO` on your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)], see [Ingest data into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] using the COPY statement](/fabric/data-warehouse/ingest-data-copy).
 
 ### A. Load from a public storage account
 

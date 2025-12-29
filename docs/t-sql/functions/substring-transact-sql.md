@@ -246,7 +246,7 @@ NULL
 
 ### E. Use SUBSTRING with optional length argument
 
-**Applies to:** [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], [!INCLUDE [ssazurepdw_md](../../includes/ssazurepdw_md.md)], and [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] and [!INCLUDE [fabric-se](../../includes/fabric-se.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]
+**Applies to:** [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], [!INCLUDE [ssazurepdw_md](../../includes/ssazurepdw_md.md)], and [!INCLUDE [fabric-se-short](../../includes/fabric-se-short.md)] and [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)]
 
 The following example shows how to return only a part of a character string from a given start position. Since the *length* argument isn't provided, the length defaults to return the remaining characters in the string.
 

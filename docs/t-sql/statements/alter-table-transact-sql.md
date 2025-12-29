@@ -71,7 +71,7 @@ Modifies a table definition by altering, adding, or dropping columns and constra
 ::: moniker range="=fabric"
 
 > [!NOTE]  
-> Currently, `ALTER TABLE` in Fabric Warehouse is only supported for constraints and adding nullable columns. See [Syntax for [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]](#syntax-for-warehouse-in-fabric).
+> Currently, `ALTER TABLE` in Fabric Warehouse is only supported for constraints and adding nullable columns. See [Syntax for Warehouse in Fabric](#syntax-for-warehouse-in-fabric).
 > Currently, memory-optimized tables aren't available in [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)].
 
 ::: moniker-end
@@ -1211,7 +1211,7 @@ You can change the length, precision, or scale of a column by specifying a new s
 
 Changes you specify in `ALTER TABLE` implement immediately. If the changes require modifications of the rows in the table, `ALTER TABLE` updates the rows. `ALTER TABLE` acquires a schema modify (Sch-M) lock on the table to make sure that no other connections reference even the metadata for the table during the change, except online index operations that require a short Sch-M lock at the end. In an `ALTER TABLE...SWITCH` operation, the lock is acquired on both the source and target tables. The modifications made to the table are logged and fully recoverable. Changes that affect all the rows in large tables, such as dropping a column or, on some editions of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], adding a `NOT NULL` column with a default value, can take a long time to complete and generate many log records. Run these `ALTER TABLE` statements with the same care as any `INSERT`, `UPDATE`, or `DELETE` statement that affects many rows.
 
-**Applies to** [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)].
+**Applies to**: [!INCLUDE [fabricdw](../../includes/fabric-dw.md)]
 
 `ALTER TABLE` can't be part of an explicit transaction.
 
