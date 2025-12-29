@@ -3,8 +3,8 @@ title: CREATE TABLE
 description: "CREATE TABLE creates a new table in Azure Synapse Analytics, Analytics Platform System (PDW), and Microsoft Fabric Data Warehouse."
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: vanto, xiaoyul, mariyaali, maghan, periclesrocha
-ms.date: 11/03/2025
+ms.reviewer: vanto, xiaoyul, mariyaali, maghan, periclesrocha, randolphwest
+ms.date: 12/29/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -52,7 +52,7 @@ CREATE TABLE { database_name.schema_name.table_name | schema_name.table_name | t
 <column_options> ::=
     [ COLLATE Windows_collation_name ]
     [ NULL | NOT NULL ] -- default is NULL
-    [ IDENTITY [ ( seed, increment ) ]
+    [ IDENTITY [ ( seed, increment ) ] ]
     [ <column_constraint> ]
 
 <column_constraint>::=
@@ -98,7 +98,7 @@ CREATE TABLE { database_name.schema_name.table_name | schema_name.table_name | t
     | bit  
     | nvarchar [ ( n | max ) ]  -- max applies only to Azure Synapse Analytics 
     | nchar [ ( n ) ]  
-    | varchar [ ( n | max )  ] -- max applies only to Azure Synapse Analytics 
+    | varchar [ ( n | max ) ] -- max applies only to Azure Synapse Analytics 
     | char [ ( n ) ]  
     | varbinary [ ( n | max ) ] -- max applies only to Azure Synapse Analytics 
     | binary [ ( n ) ]  
@@ -125,7 +125,7 @@ CREATE TABLE { database_name.schema_name.table_name | schema_name.table_name | t
 
  `COLLATE` *Windows_collation_name*  
 
- Specifies the collation for the expression. The collation must be one of the Windows collations supported by [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. For a list of Windows collations supported by [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], see [Windows collation name (Transact-SQL)](windows-collation-name-transact-sql.md)).  
+ Specifies the collation for the expression. The collation must be one of the Windows collations supported by [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. For a list of Windows collations supported by [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], see [Windows collation name](windows-collation-name-transact-sql.md)).  
   
  `NULL` | `NOT NULL`  
 
@@ -220,9 +220,9 @@ Check [Performance tuning with ordered clustered columnstore index](/azure/sql-d
 [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] supports the most commonly used data types. To better understand data types and how to use them, see [Data types for tables in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)]](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types).
 
 >[!NOTE]
->Similar to SQL Server, there is an 8,060 byte per row limit. This might become a blocking issue for tables that have many columns, or columns with large data types, such as **nvarchar(max)** or **varbinary(max)**. Inserts or updates that violate the 8,060 byte limit will result in error codes 511 or 611. For more information, see [Pages and Extents Architecture Guide](../../relational-databases/pages-and-extents-architecture-guide.md?view=azure-sqldw-latest&preserve-view=true#row-overflow-considerations).
+>Similar to SQL Server, there is an 8,060 byte per row limit. This might become a blocking issue for tables that have many columns, or columns with large data types, such as **nvarchar(max)** or **varbinary(max)**. Inserts or updates that violate the 8,060 byte limit will result in error codes 511 or 611. For more information, see [Pages and Extents Architecture Guide](../../relational-databases/pages-and-extents-architecture-guide.md?view=azure-sqldw-latest&preserve-view=true#large-row-support).
 
-For a table of data type conversions, see the Implicit Conversions section of [CAST and CONVERT (Transact-SQL)](../functions/cast-and-convert-transact-sql.md). For more information, see [Date and time data types and functions (Transact-SQL)](../functions/date-and-time-data-types-and-functions-transact-sql.md).
+For a table of data type conversions, see the Implicit Conversions section of [CAST and CONVERT](../functions/cast-and-convert-transact-sql.md). For more information, see [Date and time data types and functions](../functions/date-and-time-data-types-and-functions-transact-sql.md).
 
 The following list of supported data types includes their details and storage bytes:
 
@@ -363,12 +363,12 @@ A rowstore table is a table stored in row-by-row order. It's a heap or clustered
 
 A columnstore table is a table stored in column-by-column order. The columnstore index is the technology that manages data stored in a columnstore table. The clustered columnstore index doesn't affect how data is distributed. Rather, it affects how the data is stored within each distribution.
 
-To change a rowstore table to a columnstore table, drop all existing indexes on the table and create a clustered columnstore index. For an example, see [CREATE COLUMNSTORE INDEX (Transact-SQL)](create-columnstore-index-transact-sql.md).
+To change a rowstore table to a columnstore table, drop all existing indexes on the table and create a clustered columnstore index. For an example, see [CREATE COLUMNSTORE INDEX](create-columnstore-index-transact-sql.md).
 
 For more information, see these articles:
 - [What's new in columnstore indexes](../../relational-databases/indexes/columnstore-indexes-what-s-new.md)
-- [Indexing tables in [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)]](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-index)
-- [Columnstore indexes: Overview](../../relational-databases/indexes/columnstore-indexes-overview.md) 
+- [Indexing tables in [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)]](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-index)
+- [Columnstore indexes: overview](../../relational-databases/indexes/columnstore-indexes-overview.md) 
 
 <a id="LimitationsRestrictions"></a><a id="LimitationsandRestrictions"></a>
 
@@ -677,12 +677,12 @@ WITH
 
  Creates a new table in a [!INCLUDE [fabric-data-warehouse](../../includes/fabric-dw.md)] in [!INCLUDE [microsoft-fabric](../../includes/fabric.md)].
 
- For more information, see [Create tables on [!INCLUDE [fabric-data-warehouse](../../includes/fabric-dw.md)] in [!INCLUDE [microsoft-fabric](../../includes/fabric.md)]](/fabric/data-warehouse/create-table).
+ For more information, see [Create tables in Fabric Data Warehouse](/fabric/data-warehouse/create-table).
 
 > [!NOTE]
 > For [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], see [CREATE TABLE](create-table-transact-sql.md?view=fabric&preserve-view=true).
 > For SQL Server and Azure SQL platforms, visit [CREATE TABLE](create-table-transact-sql.md?view=azuresqldb-current&preserve-view=true) and select your desired product version from the version dropdown list.
-> For reference to [!INCLUDE[ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE[ssPDW](../../includes/sspdw-md.md)], visit [CREATE TABLE (Azure Synapse Analytics)](create-table-azure-sql-data-warehouse.md?view=azure-sqldw-latest&preserve-view=true).
+> For reference to [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE [ssPDW](../../includes/sspdw-md.md)], visit [CREATE TABLE (Azure Synapse Analytics)](create-table-azure-sql-data-warehouse.md?view=azure-sqldw-latest&preserve-view=true).
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)  
 
@@ -758,12 +758,12 @@ For more information, see [Data clustering in Fabric Data Warehouse](/fabric/dat
 
 ### Data type
 
-[!INCLUDE [fabric](../../includes/fabric.md)] supports the most commonly used data types. For more information, see [Data types in Microsoft Fabric](/fabric/data-warehouse/data-types).
+[!INCLUDE [fabric](../../includes/fabric.md)] supports the most commonly used data types. For more information, see [Data types in Fabric Data Warehouse](/fabric/data-warehouse/data-types).
 
 > [!NOTE]
-> Similar to SQL Server, there's an 8,060 byte per row limit. This might become a blocking issue for tables that have many columns, or columns with large data types, such as `varchar(8000)` or `varbinary(8000)`. Inserts or updates that violate the 8,060 byte limit result in error codes 511 or 611. For more information, see [Pages and Extents Architecture Guide](../../relational-databases/pages-and-extents-architecture-guide.md?view=azure-sqldw-latest&preserve-view=true#row-overflow-considerations).
+> Similar to SQL Server, there's an 8,060 byte per row limit. This might become a blocking issue for tables that have many columns, or columns with large data types, such as `varchar(8000)` or `varbinary(8000)`. Inserts or updates that violate the 8,060 byte limit result in error codes 511 or 611. For more information, see [Pages and Extents Architecture Guide](../../relational-databases/pages-and-extents-architecture-guide.md?view=azure-sqldw-latest&preserve-view=true#large-row-support).
 
-For a table of data type conversions, see the Implicit Conversions section of [CAST and CONVERT (Transact-SQL)](../functions/cast-and-convert-transact-sql.md). For more information, see [Date and time data types and functions (Transact-SQL)](../functions/date-and-time-data-types-and-functions-transact-sql.md).
+For a table of data type conversions, see the Implicit Conversions section of [CAST and CONVERT](../functions/cast-and-convert-transact-sql.md). For more information, see [Date and time data types and functions](../functions/date-and-time-data-types-and-functions-transact-sql.md).
 
 The following list of supported data types includes their details and storage bytes. 
 
@@ -841,7 +841,7 @@ Stores date and time of day with 19 to 26 characters according to the Gregorian 
  Variable-length, Unicode character data with a length of *n* bytes. *n* must be a value from `1` to `8000`. The storage size is the actual length of data entered + 2 bytes. The default for *n* is `1`. The `varchar(MAX)` column can store up to 1 MB of text in [!INCLUDE [fabricdw](../../includes/fabric-dw.md)].
 
 > [!NOTE]
-> `varchar(MAX)` is in preview in [!INCLUDE [fabricdw](../../includes/fabric-dw.md)]. For more information, see [Data types in Microsoft Fabric](/fabric/data-warehouse/data-types).
+> `varchar(MAX)` is in preview in [!INCLUDE [fabricdw](../../includes/fabric-dw.md)]. For more information, see [Data types in Fabric Data Warehouse](/fabric/data-warehouse/data-types).
 
  `char` [ ( *n* ) ]  
  Fixed-length, Unicode character data with a length of *n* bytes. *n* must be a value from `1` to `8000`. The storage size is *n* bytes. The default for *n* is `1`. 
@@ -851,7 +851,7 @@ Stores date and time of day with 19 to 26 characters according to the Gregorian 
  The `varbinary(MAX)` column can store up to 1 MB of data in [!INCLUDE [fabricdw](../../includes/fabric-dw.md)].
 
 > [!NOTE]
-> `varbinary(MAX)` is in preview in [!INCLUDE [fabricdw](../../includes/fabric-dw.md)]. For more information, see [Data types in Microsoft Fabric](/fabric/data-warehouse/data-types).
+> `varbinary(MAX)` is in preview in [!INCLUDE [fabricdw](../../includes/fabric-dw.md)]. For more information, see [Data types in Fabric Data Warehouse](/fabric/data-warehouse/data-types).
   
  `uniqueidentifier`  
  Is a 16-byte GUID.
@@ -874,7 +874,7 @@ The user needs to be a member of the Admin, Member, or Contributor roles in the 
 
 ## Remarks
 
-There is limited Transact-SQL functionality in [!INCLUDE [fabricdw](../../includes/fabric-dw.md)]. For more information, see [T-SQL Surface Area in [!INCLUDE [fabric](../../includes/fabric.md)]](/fabric/data-warehouse/tsql-surface-area).
+There is limited Transact-SQL functionality in [!INCLUDE [fabricdw](../../includes/fabric-dw.md)]. For more information, see [T-SQL surface area in Fabric Data Warehouse](/fabric/data-warehouse/tsql-surface-area).
 
 <a id="LockingBehavior"></a>
 
@@ -898,7 +898,7 @@ CREATE TABLE Sales (
 
 ## Related content
 
-- [Create tables on [!INCLUDE [fabric-data-warehouse](../../includes/fabric-dw.md)] in [!INCLUDE [microsoft-fabric](../../includes/fabric.md)]](/fabric/data-warehouse/create-table)
-- [What is data warehousing in [!INCLUDE [fabric](../../includes/fabric.md)]?](/fabric/data-warehouse/data-warehousing)
+- [Create tables in the Warehouse in Microsoft Fabric](/fabric/data-warehouse/create-table)
+- [What is data warehousing in Microsoft Fabric?](/fabric/data-warehouse/data-warehousing)
 
 ::: moniker-end
