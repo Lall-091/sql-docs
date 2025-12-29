@@ -32,9 +32,9 @@ For example, use CTAS to:
 > [!NOTE]  
 > Since `CREATE TABLE AS SELECT` (CTAS) adds to the capabilities of creating a table, this topic tries not to repeat the `CREATE TABLE` topic. Instead, it describes the differences between the CTAS and [CREATE TABLE](create-table-azure-sql-data-warehouse.md).
   
-- CTAS is supported in the [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]. View [the Fabric version of the CREATE TABLE AS SELECT article](create-table-as-select-azure-sql-data-warehouse.md?view=fabric&preserve-view=true).
+- CTAS is supported in the [!INCLUDE [fabricdw](../../includes/fabric-dw.md)]. View [the Fabric version of the CREATE TABLE AS SELECT article](create-table-as-select-azure-sql-data-warehouse.md?view=fabric&preserve-view=true).
 - [!INCLUDE[synapse-analytics-od-unsupported-syntax](../../includes/synapse-analytics-od-unsupported-syntax.md)]
-- `CREATE TABLE AS SELECT` (CTAS) is supported in the [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]. For more information, see the [Fabric Data Warehouse version of this article](create-table-as-select-azure-sql-data-warehouse.md?view=fabric&preserve-view=true).
+- `CREATE TABLE AS SELECT` (CTAS) is supported in the [!INCLUDE [fabricdw](../../includes/fabric-dw.md)]. For more information, see the [Fabric Data Warehouse version of this article](create-table-as-select-azure-sql-data-warehouse.md?view=fabric&preserve-view=true).
 
  :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../language-elements/transact-sql-syntax-conventions-transact-sql.md)  
   
@@ -830,12 +830,12 @@ OPTION (MAXDOP 1);
 
 `CREATE TABLE AS SELECT` (CTAS) is one of the most important T-SQL features available. It's a fully parallelized operation that creates a new table based on the output of a SELECT statement. CTAS is the simplest and fastest way to create a copy of a table.
  
-For example, use CTAS in [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)] to:  
+For example, use CTAS in [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] to:  
   
 - Create a copy of a table with some of the columns of the source table.  
 - Create a table that is the result of a query that joins other tables.
 
-For more information on using CTAS on your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], see [Ingest data into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] using Transact-SQL](/fabric/data-warehouse/ingest-data-tsql).
+For more information on using CTAS on your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)], see [Ingest data into your Warehouse using Transact-SQL](/fabric/data-warehouse/ingest-data-tsql).
 
 > [!NOTE]  
 > Since `CREATE TABLE AS SELECT` (CTAS) adds to the capabilities of creating a table, this topic tries not to repeat the CREATE TABLE topic. Instead, it describes the differences between the CTAS and [CREATE TABLE](create-table-azure-sql-data-warehouse.md?version=fabric&preserve-view=true). 
@@ -913,7 +913,7 @@ For details, see [Limitations and Restrictions](create-table-azure-sql-data-ware
 
 ## Examples for copying a table
 
-For more information on using CTAS on your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], see [Ingest data into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] using Transact-SQL](/fabric/data-warehouse/ingest-data-tsql).
+For more information on using CTAS on your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)], see [Ingest data into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] using Transact-SQL](/fabric/data-warehouse/ingest-data-tsql).
 
 <a name="ctas-copy-table-bk"></a>
 
@@ -1034,8 +1034,8 @@ For more information, see [Data clustering in Fabric Data Warehouse](/fabric/dat
 
 ## Related content
 
-- [Create tables on [!INCLUDE[fabric-data-warehouse](../../includes/fabric-dw.md)] in [!INCLUDE[microsoft-fabric](../../includes/fabric.md)]](/fabric/data-warehouse/create-table)
-- [What is data warehousing in [!INCLUDE [fabric](../../includes/fabric.md)]?](/fabric/data-warehouse/data-warehousing)
-- [Ingest data into your [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] using Transact-SQL](/fabric/data-warehouse/ingest-data-tsql)
+- [Create tables in the Warehouse in Microsoft Fabric](/fabric/data-warehouse/create-table)
+- [What is data warehousing in Microsoft Fabric?](/fabric/data-warehouse/data-warehousing)
+- [Ingest data into your Warehouse using Transact-SQL](/fabric/data-warehouse/ingest-data-tsql)
 
 ::: moniker-end

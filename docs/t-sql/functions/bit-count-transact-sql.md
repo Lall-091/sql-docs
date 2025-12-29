@@ -4,7 +4,7 @@ description: "Transact-SQL reference for the BIT_COUNT function."
 author: thesqlsith
 ms.author: derekw
 ms.reviewer: randolphwest
-ms.date: 02/03/2025
+ms.date: 12/29/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -53,7 +53,7 @@ For example, `SELECT BIT_COUNT (CAST (-1 AS SMALLINT))` and `SELECT BIT_COUNT (C
 
 Distributed Query functionality for the bit manipulation functions within linked server or ad hoc queries (`OPENQUERY`) aren't supported.
 
-Large object (LOB) data types in the Database Engine can store data that exceeds 8,000 bytes. These data types store data on a [row-overflow](../../relational-databases/pages-and-extents-architecture-guide.md#row-overflow-considerations) data page. A LOB also encompasses data types that store data on dedicated LOB page structures, which use a text or an image pointer of in-row references to LOB data pages. For more information about data storage, see the [Pages and extents architecture guide](../../relational-databases/pages-and-extents-architecture-guide.md).
+Large object (LOB) data types in the Database Engine can store data that exceeds 8,000 bytes. These data types store data on a [row-overflow](../../relational-databases/pages-and-extents-architecture-guide.md#large-row-support) data page. A LOB also encompasses data types that store data on dedicated LOB page structures, which use a text or an image pointer of in-row references to LOB data pages. For more information about data storage, see the [Page and extent architecture guide](../../relational-databases/pages-and-extents-architecture-guide.md).
 
 The bit manipulation functions operate on the **tinyint**, **smallint**, **int**, **bigint**, **binary(*n*)**, and **varbinary(*n*)** data types. Large object (LOB) data types, such as **varchar(max)**, **nvarchar(max)**, **varbinary(max)**, **image**, **ntext**, **text**, **xml**, and common language runtime (CLR) BLOB types, aren't supported.
 
@@ -86,4 +86,3 @@ The result is `2`. This is because `17` in binary is `0001 0001`, and there are 
 - [SET_BIT (Transact SQL)](set-bit-transact-sql.md)
 - [GET_BIT (Transact SQL)](get-bit-transact-sql.md)
 - [Bit manipulation functions](bit-manipulation-functions-overview.md)
-

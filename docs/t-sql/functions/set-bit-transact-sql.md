@@ -4,7 +4,7 @@ description: "Transact-SQL reference for the SET_BIT function."
 author: thesqlsith
 ms.author: derekw
 ms.reviewer: randolphwest
-ms.date: 02/03/2025
+ms.date: 12/29/2025
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -32,8 +32,8 @@ monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-
 ## Syntax
 
 ```syntaxsql
-SET_BIT ( expression_value, bit_offset ) 
-SET_BIT ( expression_value, bit_offset, bit_value )
+SET_BIT ( expression_value , bit_offset )
+SET_BIT ( expression_value , bit_offset , bit_value )
 ```
 
 ## Arguments
@@ -60,7 +60,7 @@ SET_BIT will throw an error if *bit_offset* is negative or greater than the last
 
 Distributed Query functionality for the bit manipulation functions within linked server or ad hoc queries (`OPENQUERY`) aren't supported.
 
-Large object (LOB) data types in the Database Engine can store data that exceeds 8,000 bytes. These data types store data on a [row-overflow](../../relational-databases/pages-and-extents-architecture-guide.md#row-overflow-considerations) data page. A LOB also encompasses data types that store data on dedicated LOB page structures, which use a text or an image pointer of in-row references to LOB data pages. For more information about data storage, see the [Pages and extents architecture guide](../../relational-databases/pages-and-extents-architecture-guide.md).
+Large object (LOB) data types in the Database Engine can store data that exceeds 8,000 bytes. These data types store data on a [row-overflow](../../relational-databases/pages-and-extents-architecture-guide.md#large-row-support) data page. A LOB also encompasses data types that store data on dedicated LOB page structures, which use a text or an image pointer of in-row references to LOB data pages. For more information about data storage, see the [Page and extent architecture guide](../../relational-databases/pages-and-extents-architecture-guide.md).
 
 The bit manipulation functions operate on the **tinyint**, **smallint**, **int**, **bigint**, **binary(*n*)**, and **varbinary(*n*)** data types. Large object (LOB) data types, such as **varchar(max)**, **nvarchar(max)**, **varbinary(max)**, **image**, **ntext**, **text**, **xml**, and common language runtime (CLR) BLOB types, aren't supported.
 
@@ -71,7 +71,7 @@ The bit manipulation functions operate on the **tinyint**, **smallint**, **int**
 In this example, the third bit (at offset 2, zero-based index) is being set to `1`.
 
 ```sql
-SELECT SET_BIT ( 0x00, 2 ) as VARBIN1;
+SELECT SET_BIT(0x00, 2) AS VARBIN1;
 ```
 
 The result is `0x04`. This is because the *expression_value* of `0x00` is converted to `0000`. SET_BIT changes its third bit (offset 2) to 1, making it `0100`. This binary value is then returned as `4` in hexadecimal representation.
@@ -81,16 +81,15 @@ The result is `0x04`. This is because the *expression_value* of `0x00` is conver
 In this example, the *bit_value* is being set to 0 instead of the default of 1.
 
 ```sql
-SELECT SET_BIT ( 0xabcdef, 0, 0 ) as VARBIN2;
+SELECT SET_BIT(0xabcdef, 0, 0) AS VARBIN2;
 ```
 
 The result is `0xABCDEE`. The *expression_value* is converted to binary, which is `1010 1011 1100 1101 1110 1111`. SET_BIT changes the first bit to a 0, and the result is returned in hexadecimal format.
 
-## Related Content
+## Related content
 
 - [LEFT_SHIFT (Transact SQL)](left-shift-transact-sql.md)
 - [RIGHT_SHIFT (Transact SQL)](right-shift-transact-sql.md)
 - [BIT_COUNT (Transact SQL)](bit-count-transact-sql.md)
 - [GET_BIT (Transact SQL)](get-bit-transact-sql.md)
 - [Bit manipulation functions](bit-manipulation-functions-overview.md)
-

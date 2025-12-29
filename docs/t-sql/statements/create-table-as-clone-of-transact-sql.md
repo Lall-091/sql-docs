@@ -17,7 +17,7 @@ monikerRange: "=fabric"
 
 [!INCLUDE [applies-to-version/fabric-dw](../../includes/applies-to-version/fabric-dw.md)]
 
-Creates a new table as a [zero-copy clone of another table](/fabric/data-warehouse/clone-table) in [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]. Only the metadata of the table is copied. The underlying data of the table, stored as parquet files, is not copied.
+Creates a new table as a [zero-copy clone of another table](/fabric/data-warehouse/clone-table) in [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)]. Only the metadata of the table is copied. The underlying data of the table, stored as parquet files, is not copied.
 
 For more information on cloning a table in [!INCLUDE [fabric](../../includes/fabric.md)], see [Clone table with TSQL in Microsoft Fabric](/fabric/data-warehouse/tutorial-clone-table). You can also clone tables in [!INCLUDE [fabric](../../includes/fabric.md)] via the Fabric portal, for examples see [Clone tables in the Fabric portal](/fabric/data-warehouse/tutorial-clone-table-portal).
 
@@ -104,7 +104,7 @@ CREATE TABLE dbo.Employee AS CLONE OF dbo1.EmployeeUSA AT '2023-05-23T14:24:10';
 ## Related content
 
 - [Clone table in Microsoft Fabric](/fabric/data-warehouse/clone-table)
-- [Create a table on [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]](/fabric/data-warehouse/create-table)
-- [[!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]](/fabric/data-warehouse/data-warehousing)
-- [Clone table in [!INCLUDE [fabric](../../includes/fabric.md)]](/fabric/data-warehouse/tutorial-clone-table)
+- [Create tables in the Warehouse in Microsoft Fabric](/fabric/data-warehouse/create-table)
+- [What is data warehousing in Microsoft Fabric?](/fabric/data-warehouse/data-warehousing)
+- [Clone a table with T-SQL in a Warehouse](/fabric/data-warehouse/tutorial-clone-table)
 - [Clone tables in the Fabric portal](/fabric/data-warehouse/tutorial-clone-table-portal)

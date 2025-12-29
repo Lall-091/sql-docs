@@ -1,8 +1,8 @@
 ---
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.date: 05/10/2023
+ms.date: 12/29/2025
 ms.service: sql
 ms.topic: include
 ---
-Warehouse
+[!INCLUDE [fabric-dw-short](fabric-dw-short.md)] in [!INCLUDE [fabric](fabric.md)]

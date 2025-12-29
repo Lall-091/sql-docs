@@ -1,8 +1,8 @@
 ---
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.date: 09/11/2025
+ms.date: 12/29/2025
 ms.service: sql
 ms.topic: include
 ---
-[[!INCLUDE [SQL analytics endpoint](../fabric-se.md)] and [!INCLUDE [Warehouse](../fabric-dw.md)] in [!INCLUDE [Microsoft Fabric](../fabric.md)]](../../sql-server/sql-docs-navigation-guide.md#applies-to)
+[[!INCLUDE [SQL analytics endpoint](../fabric-se.md)] and [!INCLUDE [fabric-dw](../fabric-dw.md)]](../../sql-server/sql-docs-navigation-guide.md#applies-to)

@@ -710,9 +710,9 @@ DROP SCHEMA Sample;
 
 ### E. Row-level security scenario in Microsoft Fabric
 
-We can demonstrate row-level security [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] and [!INCLUDE [fabricse](../../includes/fabric-se.md)] in [!INCLUDE [fabric](../../includes/fabric.md)].
+We can demonstrate row-level security in [!INCLUDE [fabric-dw-short](../../includes/fabric-dw-short.md)] and [!INCLUDE [fabricse](../../includes/fabric-se.md)].
 
-The following example creates sample tables that will work with [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], but in [!INCLUDE [fabricse](../../includes/fabric-se.md)] use existing tables. In the [!INCLUDE [fabricse](../../includes/fabric-se.md)], you can't use `CREATE TABLE`, but you can use `CREATE SCHEMA`, `CREATE FUNCTION`, and `CREATE SECURITY POLICY`.
+The following example creates sample tables that work with [!INCLUDE [fabricdw](../../includes/fabric-dw.md)]. Use existing tables in [!INCLUDE [fabricse](../../includes/fabric-se.md)]. In the [!INCLUDE [fabricse](../../includes/fabric-se.md)], you can't use `CREATE TABLE`, but you can use `CREATE SCHEMA`, `CREATE FUNCTION`, and `CREATE SECURITY POLICY`.
 
 In this example, first create a schema `sales`, a table `sales.Orders`.
 

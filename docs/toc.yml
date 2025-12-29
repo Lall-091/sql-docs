@@ -4281,7 +4281,7 @@ items:
     href: relational-databases/ghost-row-cleanup-process-guide.md
   - name: Index architecture and design
     href: relational-databases/sql-server-index-design-guide.md
-  - name: Pages and extents architecture
+  - name: Page and extent architecture
     items:
     - name: Overview
       href: relational-databases/pages-and-extents-architecture-guide.md

@@ -400,7 +400,7 @@ Table hints other than `INDEX`, `FORCESCAN`, and `FORCESEEK` are disallowed as q
 
 #### FOR TIMESTAMP AS OF '*point_in_time*'
 
-**Applies to**: [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]
+**Applies to**: [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)]
 
 Use the `TIMESTAMP` syntax in the `OPTION` clause to query data as it existed in the past, part of the time travel feature in Microsoft Fabric Data Warehouse.
 
@@ -412,7 +412,7 @@ Session-scoped temp tables (`#temp_table`) are unaffected by `FOR TIMESTAMP AS O
 
 #### FORCE [ SINGLE NODE | DISTRIBUTED ] PLAN
 
-**Applies to**: [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]
+**Applies to**: [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)]
 
 Allows user to choose whether to force a single node plan or a distributed plan for query's execution.
 
@@ -765,7 +765,7 @@ EXECUTE sys.sp_query_store_set_hints
 
 ### O. Query data as of a point in time
 
-**Applies to**: [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]
+**Applies to**: [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)]
 
 Use the `TIMESTAMP` syntax in the `OPTION` clause to query data as it existed in the past, in Fabric Data Warehouse. The following sample query returns data as it appeared on March 13, 2024 at 7:39:35.28 PM UTC. The time zone is always in UTC.
 
@@ -779,7 +779,7 @@ OPTION (FOR TIMESTAMP AS OF '2024-03-13T19:39:35.28');--March 13, 2024 at 7:39:3
 
 ### P. Query force a single node or distributed query
 
-**Applies to**: [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]
+**Applies to**: [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)]
 
 To force a query in Fabric Data Warehouse to use a single node, use the [FORCE [ SINGLE NODE | DISTRIBUTED ] PLAN](#force--single-node--distributed--plan) hint.
 

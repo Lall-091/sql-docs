@@ -72,7 +72,7 @@ The new name for the specified object. *new_name* must be a one-part name and mu
 
 Trigger names can't start with # or ##.
 
-**Applies to** [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]:
+**Applies to** [!INCLUDE [fabricdw](../../includes/fabric-dw.md)]:
 
 - Schema names can't contain `/` or `\` or end with a `.`.
 - Table names can't contain `/` or `\` or end with a `.`.
@@ -96,8 +96,8 @@ The type of object being renamed. *object_type* is **varchar(13)**, with a defau
 
 **Applies to**: [!INCLUDE [fabric](../../includes/fabric.md)]
 
-- In `sp_rename` for the [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], `OBJECT` is the only supported value for *@objtype*.
-- In `sp_rename` for the [!INCLUDE [fabricse](../../includes/fabric-se.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], `OBJECT` is the only supported value for *@objtype*. Tables and columns can't be renamed.
+- In `sp_rename` for the [!INCLUDE [fabricdw](../../includes/fabric-dw.md)], `OBJECT` is the only supported value for *@objtype*.
+- In `sp_rename` for the [!INCLUDE [fabricse](../../includes/fabric-se.md)], `OBJECT` is the only supported value for *@objtype*. Tables and columns can't be renamed.
 
 ## Return code values
 
