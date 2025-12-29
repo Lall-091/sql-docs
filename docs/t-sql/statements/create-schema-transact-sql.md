@@ -132,7 +132,7 @@ The implicit creation of a Microsoft Entra user isn't possible on [!INCLUDE [ssS
 
 Attempts to create or alter schemas result in the error 15151: `Cannot find the user '', because it does not exist or you do not have permission.`, also followed by error 2759. To work around these errors, either create the Microsoft Entra user from an external provider, or alter the Microsoft Entra group to assign a default schema. Then rerun the statement creating the object.
 
-In [!INCLUDE [fabricse](../../includes/fabric-se.md)] and [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)], schema names can't contain `/` or `\` or end with a `.`.
+In [!INCLUDE [fabricse](../../includes/fabric-se.md)] and [!INCLUDE [fabricdw](../../includes/fabric-dw.md)], schema names can't contain `/` or `\` or end with a `.`.
 
 ## Deprecation notice
 

@@ -40,7 +40,7 @@ Syntax for [!INCLUDE [ssnoversion-md.md](../../includes/ssnoversion-md.md)], [!I
 [ OPTION ( <query_hint> [ , ...n ] ) ]
 ```
 
-Syntax for [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]:
+Syntax for [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)]:
 
 ```syntaxsql
 OPTION ( <query_option> [ , ...n ] )
@@ -58,7 +58,7 @@ OPTION ( <query_option> [ , ...n ] )
     | FOR TIMESTAMP AS OF '<point_in_time>'
 ```
 
-Syntax for [!INCLUDE [ssazuresynapse-md.md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE [sspdw-md.md](../../includes/sspdw-md.md)] and [!INCLUDE [fabric-dw](../../includes/fabric-se.md)] in [!INCLUDE [fabric](../../includes/fabric.md)]:
+Syntax for [!INCLUDE [ssazuresynapse-md.md](../../includes/ssazuresynapse-md.md)] and [!INCLUDE [sspdw-md.md](../../includes/sspdw-md.md)] and [!INCLUDE [fabric-se](../../includes/fabric-se.md)]:
 
 ```syntaxsql
 OPTION ( <query_option> [ , ...n ] )

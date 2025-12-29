@@ -32,7 +32,7 @@ monikerRange: ">=aps-pdw-2016 || =azure-sqldw-latest || =fabric"
 > [!NOTE]
 > For SQL Server and Azure SQL platforms, visit [CREATE TABLE](create-table-transact-sql.md?view=azuresqldb-current&preserve-view=true) and select your desired product version.
 > For [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], see [CREATE TABLE](create-table-transact-sql.md?view=fabric&preserve-view=true).
-> For reference to [!INCLUDE [fabric-data-warehouse](../../includes/fabric-dw.md)] in [!INCLUDE [microsoft-fabric](../../includes/fabric.md)], visit [CREATE TABLE (Fabric)](create-table-azure-sql-data-warehouse.md?view=fabric&preserve-view=true).
+> For reference to [!INCLUDE [fabric-data-warehouse](../../includes/fabric-dw.md)], visit [CREATE TABLE (Fabric)](create-table-azure-sql-data-warehouse.md?view=fabric&preserve-view=true).
 
 [!INCLUDE [synapse-analytics-od-supported-tables](../../includes/synapse-analytics-od-supported-tables.md)]
 
@@ -675,9 +675,9 @@ WITH
 
 ## CREATE TABLE (Fabric Data Warehouse)
 
- Creates a new table in a [!INCLUDE [fabric-data-warehouse](../../includes/fabric-dw.md)] in [!INCLUDE [microsoft-fabric](../../includes/fabric.md)].
+ Creates a new table in a [!INCLUDE [fabric-data-warehouse](../../includes/fabric-dw.md)].
 
- For more information, see [Create tables in Fabric Data Warehouse](/fabric/data-warehouse/create-table).
+ For more information, see [Create tables in the Warehouse in Microsoft Fabric](/fabric/data-warehouse/create-table).
 
 > [!NOTE]
 > For [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], see [CREATE TABLE](create-table-transact-sql.md?view=fabric&preserve-view=true).
@@ -838,7 +838,7 @@ Stores date and time of day with 19 to 26 characters according to the Gregorian 
  An integer data type that can take the value of `1`, `0`, or `NULL. [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)] optimizes storage of bit columns. If there are 8 or fewer bit columns in a table, the columns are stored as 1 byte. If there are from 9-16 bit columns, the columns are stored as 2 bytes, and so on. 
   
  `varchar` [ ( *n* | `MAX` ) ]
- Variable-length, Unicode character data with a length of *n* bytes. *n* must be a value from `1` to `8000`. The storage size is the actual length of data entered + 2 bytes. The default for *n* is `1`. The `varchar(MAX)` column can store up to 1 MB of text in [!INCLUDE [fabricdw](../../includes/fabric-dw.md)].
+ Variable-length, Unicode character data with a length of *n* bytes. *n* must be a value from `1` to `8000`. The storage size is the actual length of data entered + 2 bytes. The default for *n* is `1`. The `varchar(MAX)` column can store up to 1 MB of text in [!INCLUDE [fabric-dw-short](../../includes/fabric-dw-short.md)].
 
 > [!NOTE]
 > `varchar(MAX)` is in preview in [!INCLUDE [fabricdw](../../includes/fabric-dw.md)]. For more information, see [Data types in Fabric Data Warehouse](/fabric/data-warehouse/data-types).
@@ -848,7 +848,7 @@ Stores date and time of day with 19 to 26 characters according to the Gregorian 
   
  `varbinary` [ ( *n*  | `MAX` ) ] 
  Variable-length binary data. *n* can be a value from `1` to `8000`. The storage size is the actual length of data entered + 2 bytes. The default value for *n* is 7. 
- The `varbinary(MAX)` column can store up to 1 MB of data in [!INCLUDE [fabricdw](../../includes/fabric-dw.md)].
+ The `varbinary(MAX)` column can store up to 1 MB of data in [!INCLUDE [fabric-dw-short](../../includes/fabric-dw-short.md)].
 
 > [!NOTE]
 > `varbinary(MAX)` is in preview in [!INCLUDE [fabricdw](../../includes/fabric-dw.md)]. For more information, see [Data types in Fabric Data Warehouse](/fabric/data-warehouse/data-types).
@@ -867,10 +867,10 @@ The user needs to be a member of the Admin, Member, or Contributor roles in the 
 ## Limitations
 
 - Table names can't be greater than 128 characters.
-- Table names in [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] in [!INCLUDE [fabric](../../includes/fabric.md)] cannot include the characters `/` or `\` or end with a `.`.
+- Table names in [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] cannot include the characters `/` or `\` or end with a `.`.
 - Column names can't be greater than 128 characters.
 - Tables have a maximum of 1,024 columns per table.
-- The default collation supported in [!INCLUDE [fabricdw](../../includes/fabric-dw.md)] is `Latin1_General_100_BIN2_UTF8`. You can also [create warehouses with case-insensitive (CI) collation - Latin1_General_100_CI_AS_KS_WS_SC_UTF8](/fabric/data-warehouse/collation).
+- The default collation supported in [!INCLUDE [fabricdw-short](../../includes/fabric-dw-short.md)] is `Latin1_General_100_BIN2_UTF8`. You can also [create warehouses with case-insensitive (CI) collation - Latin1_General_100_CI_AS_KS_WS_SC_UTF8](/fabric/data-warehouse/collation).
 
 ## Remarks
 
