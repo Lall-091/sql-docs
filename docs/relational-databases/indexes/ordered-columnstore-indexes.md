@@ -21,6 +21,8 @@ Ordered columnstore indexes can provide faster performance by skipping large amo
 
 When a query reads a columnstore index, the [!INCLUDE [ssDE](../../includes/ssde-md.md)] checks the minimum and maximum values stored in each column segment. The process eliminates segments that fall outside the bounds of the query predicate. In other words, it skips these segments when reading data from disk or memory. A query finishes faster if the number of segments to read and their total size is significantly smaller.
 
+With certain data load patterns, data in a columnstore index might already be ordered. For example, if data loads occur every day, then the data might be ordered by a `load_date` column. In this case, query performance can already benefit from this implicit order. Ordering the columnstore index by the same `load_date` column explicitly isn't likely to provide an extra performance benefit.
+
 For ordered columnstore index availability in various SQL platforms and SQL Server versions, see [Ordered columnstore index availability](columnstore-indexes-overview.md#ordered-columnstore-index-availability).
 
 For more information about recently added features for columnstore indexes, see [What's new in columnstore indexes](columnstore-indexes-what-s-new.md).
@@ -37,7 +39,7 @@ When you create an ordered columnstore index, the [!INCLUDE [ssDE](../../include
 
 When you build an ordered columnstore index, the [!INCLUDE [ssDE](../../includes/ssde-md.md)] sorts the data on a best-effort basis. Depending on the available memory, the data size, the degree of parallelism, the index type (clustered vs. nonclustered), and the type of index build (offline vs. online), the sort for ordered columnstore indexes might be full with no segment overlap, or partial with some segment overlap.
 
-The following table describes the resulting sort type when you create or rebuild an ordered columnstore index, depending on index build options.
+The following table describes the resulting sort type when you create or rebuild an ordered columnstore index, depending on the index build options.
 
 | Prerequisites | Sort type |
 | --- | --- |
@@ -45,7 +47,7 @@ The following table describes the resulting sort type when you create or rebuild
 | `ONLINE = OFF`, `MAXDOP = 1`, and the data to sort fully fits in the query workspace memory | Full |
 | All other cases | Partial |
 
-In the first case when both `ONLINE = ON` and `MAXDOP = 1`, the sort isn't limited by the query workspace memory because it uses the `tempdb` database to spill the data that doesn't fit in memory. This approach can make the index build process slower due to the additional `tempdb` I/O. However, because the index build is performed online, queries can continue using the existing index while the new ordered index is being built.
+In the first case when both `ONLINE = ON` and `MAXDOP = 1`, the sort isn't limited by the query workspace memory because an online build of an ordered columnstore index uses the `tempdb` database to spill the data that doesn't fit in memory. This approach can make the index build process slower due to the additional `tempdb` I/O. However, because the index build is performed online, queries can continue using the existing index while the new ordered index is being built.
 
 Similarly, with an offline rebuild of a partitioned columnstore index, the rebuild is done one partition at a time. Other partitions remain available for queries.
 
@@ -54,13 +56,15 @@ When `MAXDOP` is greater than 1, each thread used for ordered columnstore index 
 > [!TIP]  
 > Even if the sort in an ordered columnstore index is partial, segments can still be eliminated (skipped). A full sort isn't required to gain query performance benefits if a partial sort avoids many segment overlaps.
 >
-> To find the number of non-overlapping segments in an ordered columnstore index, see the [Determine the sort quality for an ordered columnstore index](#determine-the-sort-quality-for-an-ordered-columnstore-index) example.
+> To find the number of overlapping and non-overlapping segments in an ordered columnstore index, see the [Determine the sort quality for an ordered columnstore index](#determine-the-sort-quality-for-an-ordered-columnstore-index) example.
 
-You can create or rebuild ordered columnstore indexes online only in [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], in [!INCLUDE [ssazure-sqlmi-autd](../../includes/ssazure-sqlmi-autd.md)], and starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. In SQL Server, online index operations aren't available in all editions. For more information, see [Editions and supported features of SQL Server 2025](../../sql-server/editions-and-components-of-sql-server-2025.md) and [Perform index operations online](perform-index-operations-online.md).
+You can create or rebuild ordered columnstore indexes online only in some SQL platforms and SQL Server versions. For more information, see [Feature summary for product releases](columnstore-indexes-what-s-new.md#feature-summary-for-product-releases).
+
+In SQL Server, online index operations aren't available in all editions. For more information, see [Editions and supported features of SQL Server 2025](../../sql-server/editions-and-components-of-sql-server-2025.md) and [Perform index operations online](perform-index-operations-online.md).
 
 ### Add new data or update existing data
 
-The new data resulting from a DML batch or a bulk load operation on an ordered columnstore index is sorted within that batch only. There's no global sorting that includes existing data in the table. To reduce segment overlaps after inserting the new data or updating existing data, rebuild the index.
+The new data resulting from a DML batch or a bulk load operation on an ordered columnstore index is sorted within that batch only. There's no global sorting that includes existing data in the table. To reduce segment overlaps after inserting new data or updating existing data, rebuild the index.
 
 ## Query performance
 
