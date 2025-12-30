@@ -3,10 +3,11 @@ title: "Project Settings (Type Mapping) (AccessToSQL)"
 description: "Project Settings (Type Mapping) (AccessToSQL)"
 author: nilabjaball
 ms.author: niball
-ms.date: "01/19/2017"
+ms.reviewer: randolphwest
+ms.date: 12/30/2025
 ms.service: sql
 ms.subservice: ssma
-ms.topic: conceptual
+ms.topic: article
 ms.collection:
   - sql-migration-content
 f1_keywords:
@@ -20,54 +21,63 @@ helpviewer_keywords:
   - "Type Mapping settings"
 ---
 # Project Settings (Type Mapping) (AccessToSQL)
-The Type Mapping project settings let you set default type mappings for the SSMA project. You can also specify type mappings for individual database objects. For more information, see [Mapping Source and Target Data Types](mapping-source-and-target-data-types-accesstosql.md).  
-  
-Type mapping is available in the **Project Settings** and **Default Project Settings** dialog boxes:  
-  
--   Use the **Project Settings** dialog box to set configuration options for the current project. To access the type mapping settings, on the **Tools** menu, select **Project Settings**, and then click **Type Mapping** in the left pane.  
-  
--   Use the **Default Project Settings** dialog box to set configuration options for all projects. To access the type mapping settings, on the **Tools** menu, select **Default Project Settings**, select migration project type for which settings are required to be viewed /changed from **Migration Target Version** drop down and then click **Type Mapping** in the left pane.  
-  
-## Options  
-**Source Type**  
-The Access data type to map.  
-  
-**Target Type**  
-The target [!INCLUDE[ssNoVersion](../../includes/ssnoversion-md.md)] or SQL Azure data type for the specified Access data type.  
-  
-The following table shows the default mapping between source and target data types.  
-  
-|Access Data Type|SQL Server Data Type|  
-|--------------------|------------------------|  
-|**binary[\*..\*]**|**varbinary[\*]**|  
-|**boolean**|**bit**|  
-|**byte**|**tinyint**|  
-|**currency**|**money**|  
-|**date**|**datetime**|  
-|**decimal**|**float**|  
-|**double**|**float**|  
-|**guid**|**uniqueidentifier**|  
-|**integer**|**smallint**|  
-|**long**|**int**|  
-|**longbinary**|**varbinary(max)**|  
-|**memo**|**nvarchar(max)**|  
-|**memo** - for Access 97|**varchar(max)**|  
-|**single**|**real**|  
-|**text[\*..\*]**|**nvarchar[\*]**|  
-|**text[\*..\*]** - for Access 97|**varchar[\*]**|  
-  
-**Add**  
-Click to add a data type to the mapping list.  
-  
-**Edit**  
-Click to edit a data type in the mapping list.  
-  
-**Remove**  
-Click to remove the selected data type mapping from the mapping list.  
-  
-**Reset to Default**  
-Click to reset all data type mappings to the SSMA defaults.  
-  
-## See Also  
-[Mapping Source and Target Data Types](mapping-source-and-target-data-types-accesstosql.md)  
-[User Interface Reference(Access)](./user-interface-reference-accesstosql.md)  
+
+The SQL Server Migration Assistant (SSMA) Type Mapping project settings let you set default type mappings for the SSMA project. You can also specify type mappings for individual database objects. For more information, see [Map source and target data types](mapping-source-and-target-data-types-accesstosql.md).
+
+You can set type mapping in the **Project Settings** and **Default Project Settings** dialog boxes:
+
+- Use the **Project Settings** dialog box to set configuration options for the current project. To access the type mapping settings, on the **Tools** menu, select **Project Settings**, and then select **Type Mapping** in the left pane.
+
+- Use the **Default Project Settings** dialog box to set configuration options for all projects. To access the type mapping settings, on the **Tools** menu, select **Default Project Settings**. Select the migration project type from the **Migration Target Version** dropdown list. Then, select **Type Mapping** in the left pane.
+
+## Options
+
+#### Source Type
+
+The Access data type to map.
+
+#### Target Type
+
+The target [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] or Azure SQL data type for the specified Access data type.
+
+The following table shows the default mapping between source and target data types.
+
+| Access data type | SQL Server data type |
+| --- | --- |
+| **binary[\*..\*]** | **varbinary(*n*)** |
+| **boolean** | **bit** |
+| **byte** | **tinyint** |
+| **currency** | **money** |
+| **date** | **datetime** |
+| **decimal** | **float** |
+| **double** | **float** |
+| **guid** | **uniqueidentifier** |
+| **integer** | **smallint** |
+| **long** | **int** |
+| **longbinary** | **varbinary(max)** |
+| **memo** | **nvarchar(max)** |
+| **memo** - for Access 97 | **varchar(max)** |
+| **single** | **real** |
+| **text[\*..\*]** | **nvarchar(*n*)** |
+| **text[\*..\*]** - for Access 97 | **varchar(*n*)** |
+
+#### Add
+
+Select to add a data type to the mapping list.
+
+#### Edit
+
+Select to edit a data type in the mapping list.
+
+#### Remove
+
+Select to remove the selected data type mapping from the mapping list.
+
+#### Reset to Default
+
+Select to reset all data type mappings to the SSMA defaults.
+
+## Related content
+
+- [Map source and target data types](mapping-source-and-target-data-types-accesstosql.md)
+- [User interface reference](user-interface-reference-accesstosql.md)

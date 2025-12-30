@@ -1,187 +1,191 @@
 ---
-title: "Menu commands and other shortcut keys (AccessToSQL)"
+title: "Menu Commands and Other Shortcut Keys (AccessToSQL)"
 description: "Menu commands and other shortcut keys (AccessToSQL)"
 author: nilabjaball
 ms.author: niball
-ms.date: "01/19/2017"
+ms.reviewer: randolphwest
+ms.date: 12/30/2025
 ms.service: sql
 ms.subservice: ssma
-ms.topic: conceptual
+ms.topic: article
 ms.collection:
   - sql-migration-content
 ---
 # Menu commands and other shortcut keys (AccessToSQL)
-The following sections describe the keyboard shortcuts to access menu commands and other shortcut keys used in various dialog boxes of SSMA for Access application.  
-  
-## File menu commands  
-To access File menu, the keyboard shortcut used is ALT + F. The following table describes the keyboard shortcuts used to access menu items under File menu.  
-  
-|TO DO THIS|PRESS|  
-|--------------|---------|  
-|Display the new project dialog box.|ALT + F + N|  
-|Display the open project dialog box.|ALT + F + O|  
-|Close the current project.|ALT + F + C|  
-|Display the save project dialog box.|ALT + F + S|  
-|Display the connect or reconnect to SQL Server or SQL Azure dialog box.|ALT + F + Q|  
-|Access recent projects.|ALT + F + P|  
-|Display the migration wizard dialog box.|ALT + F + W|  
-|Add databases.|ALT + F + A|  
-|Remove database.|ALT + F + R|  
-|Display the find databases wizard dialog box.|ALT + F + F|  
-|Exit SSMA application.|ALT + F + X|  
-  
-## Edit menu commands  
-To access Edit menu, the keyboard shortcut used is ALT + E. The following table describes the keyboard shortcuts used to access menu items under Edit menu.  
-  
-|TO DO THIS|PRESS|  
-|--------------|---------|  
-|Cut selected text to the clipboard.|ALT + E + T or CTRL + X|  
-|Copy selected text to the clipboard.|ALT + E + C or CTRL + C|  
-|Paste the most recently added text from the clipboard.|ALT + E + P or CTRL + V|  
-|Undo the last action.|ALT + E + U or CTRL + Z|  
-|Redo or repeat an action.|ALT + E + R or CTRL + Y|  
-|Display the manage bookmarks dialog box.|ALT + E + B or CTRL + X|  
-|Go to line|ALT + E + G or CTRL + G|  
-|Save the changes done to statement.|ALT + E + S or CTRL + S|  
-|Access find submenu.|ALT + E + F|  
-|Find or quick find.|ALT + E + F + F or CTRL + F|  
-|Display the advanced search dialog box.|ALT + E + F + A or ALT + F12|  
-|Launch quick info.|ALT + E + F + I or CTRL + SHIFT + SPACE|  
-|Go to declaration.|ALT + E + F + G or F12|  
-|Find previous.|ALT + E + F + P or CTRL + SHIFT + F3|  
-|Find next|ALT + E + F + N or CTRL + F3|  
-  
-## View menu commands  
-To access View menu, the keyboard shortcut used is ALT + V. The following table describes the keyboard shortcuts used to access menu items under View menu.  
-  
-|TO DO THIS|PRESS|  
-|--------------|---------|  
-|Synchronize metadata explorers|ALT + V + Z|  
-|Show tree|ALT + V + H or CTRL + T|  
-|Show source part|ALT + V + S|  
-|Show target part|ALT + V + T|  
-|Show error list pane.|ALT + V + E or CTRL + E|  
-|Show output pane.|ALT + V + O or CTRL + O|  
-|Access layouts submenu.|ALT + V + L|  
-|Add current layout|ALT + V + L + A|  
-|Select default layout|ALT + V + L + D or CTRL + ALT + 1|  
-|Select without explorers layout|Alt + V + L + W or CTRL + ALT + 2|  
-|Display the manage layouts dialog box.|Alt + V + L + M|  
-  
-## Tools menu commands  
-To access Tools menu, the keyboard shortcut used is ALT + T. The following table describes the keyboard shortcuts used to access menu items under Tools menu.  
-  
-|TO DO THIS|PRESS|  
-|--------------|---------|  
-|Create report.|ALT + T + C|  
-|Convert schema.|ALT + T + N or CTRL + R|  
-|Refresh from access database.|ALT + T + R|  
-|Synchronize with SQL Server or Azure SQL Database.|ALT + T + S|  
-|Save as script.|ALT + T + A|  
-|Migrate data.|ALT + T + M|  
-|Stop the current operation.|ALT + T + O|  
-|Display the global settings dialog box.|ALT + T + G|  
-|Display the project settings dialog box.|ALT + T + P|  
-|Display the default project settings dialog box.|ALT + T + J|  
-|Display the find databases wizard dialog box.|ALT + T + F|  
-|Display the convert, load and migrate wizard dialog box.|ALT + T + V|  
-|Link tables or link a table.|ALT + T + L|  
-|Unlink tables or unlink a table.|ALT + T + U|  
-|Export schema.|ALT + T + E|  
-|Delete locally.|ALT + T + D|  
-  
-## Help menu commands  
-To access Help menu, the keyboard shortcut used is ALT + H. The following table describes the keyboard shortcuts used to access menu items under Help menu.  
-  
-|TO DO THIS|PRESS|  
-|--------------|---------|  
-|Display about SSMA for access dialog box.|ALT + H + A|  
-|Display customer feedback options dialog box.|ALT + H + C|  
-|Display help window.|ALT + H + H or F1|  
-  
-## Context menu commands  
-To access Context menu for the selected object in object explorer, the keyboard shortcut used is SHIFT + F10 or Apps key.  
-  
-## Global settings dialog box  
-  
-|TO DO THIS|PRESS|  
-|--------------|---------|  
-|Access GUI tab.|ALT + U|  
-|Access logging tab.|ALT + L|  
-  
-## Project settings dialog box  
-  
-|TO DO THIS|PRESS|  
-|--------------|---------|  
-|Access project information tab.|ALT + P|  
-|Access general tab.|ALT + G|  
-|Access synchronization tab.|ALT + S|  
-|Access GUI tab.|ALT + U|  
-|Access type mappings tab.|ALT + T|  
-  
-## Default project settings dialog box  
-  
-|TO DO THIS|PRESS|  
-|--------------|---------|  
-|Access general tab.|ALT + G|  
-|Access synchronization tab.|ALT + S|  
-|Access GUI tab.|ALT + U|  
-|Access type mappings tab.|ALT + T|  
-  
-## End-user license agreement dialog box  
-  
-|TO DO THIS|PRESS|  
-|--------------|---------|  
-|Select the entire EULA text.|CTRL + A|  
-|Copy the entire EULA text to the clipboard.|CTRL + C|  
-|Print EULA.|ALT + P|  
-  
-## Advanced search dialog box  
-  
-|TO DO THIS|PRESS|  
-|--------------|---------|  
-|Move one search result to up or down.|Up and down arrow keys|  
-|Move to begin or end of the visible search results in the grid.|Page up or page down keys|  
-|View the selected search result.|ENTER key|  
-  
-## Quick info dialog box  
-  
-|TO DO THIS|PRESS|  
-|--------------|---------|  
-|Move one item to up or down.|Up and down arrow keys|  
-|Move to begin or end of the quick info window.|Page up or page down keys|  
-|Close the dialog box.|ESC key|  
-  
-## Output pane  
-  
-|TO DO THIS|PRESS|  
-|--------------|---------|  
-|Open the pop up menu.|SHIFT + F10|  
-|Cut selected text to the clipboard.|CTRL + X|  
-|Copy selected text to the clipboard.|CTRL + C|  
-|Paste the most recently added text from the clipboard.|CTRL + V|  
-|Select all the text.|CTRL + A|  
-  
-## Error list pane  
-  
-|TO DO THIS|PRESS|  
-|--------------|---------|  
-|Copy selected items.|CTRL + C|  
-|Select all the items.|CTRL + A|  
-|Move one item to up or down.|Up and down arrow keys|  
-  
-## SQL tab page  
-  
-|TO DO THIS|PRESS|  
-|--------------|---------|  
-|Convert schema.|CTRL + R|  
-|Cut selected text to the clipboard.|CTRL + X|  
-|Copy selected text to the clipboard.|CTRL + C|  
-|Paste the most recently added text from the clipboard.|CTRL + V|  
-|Launch quick find|CTRL + F|  
-|Launch quick info.|CTRL + SHIFT + SPACE|  
-|Go to declaration.|F12|  
-  
-## See Also  
-[Shortcut Keys &#40;AccessToSQL&#41;](../../ssma/access/shortcut-keys-accesstosql.md)  
-  
+
+The following sections describe the keyboard shortcuts to access menu commands and other shortcut keys used in various dialog boxes in SQL Server Migration Assistant (SSMA) for Access.
+
+## File menu commands
+
+To access the **File** menu, use the keyboard shortcut <kbd>Alt</kbd>+<kbd>F</kbd>. The following table describes the keyboard shortcuts used to access menu items under the **File** menu.
+
+| To do this action | Press |
+| --- | --- |
+| Display the new project dialog box | <kbd>Alt</kbd>+<kbd>F</kbd>+<kbd>N</kbd> |
+| Display the open project dialog box | <kbd>Alt</kbd>+<kbd>F</kbd>+<kbd>O</kbd> |
+| Close the current project | <kbd>Alt</kbd>+<kbd>F</kbd>+<kbd>C</kbd> |
+| Display the save project dialog box | <kbd>Alt</kbd>+<kbd>F</kbd>+<kbd>S</kbd> |
+| Display the connect or reconnect to SQL Server or Azure SQL dialog box | <kbd>Alt</kbd>+<kbd>F</kbd>+<kbd>Q</kbd> |
+| Access recent projects | <kbd>Alt</kbd>+<kbd>F</kbd>+<kbd>P</kbd> |
+| Display the migration wizard dialog box | <kbd>Alt</kbd>+<kbd>F</kbd>+<kbd>W</kbd> |
+| Add databases | <kbd>Alt</kbd>+<kbd>F</kbd>+<kbd>A</kbd> |
+| Remove database | <kbd>Alt</kbd>+<kbd>F</kbd>+<kbd>R</kbd> |
+| Display the find databases wizard dialog box | <kbd>Alt</kbd>+<kbd>F</kbd>+<kbd>F</kbd> |
+| Exit SSMA application | <kbd>Alt</kbd>+<kbd>F</kbd>+<kbd>X</kbd> |
+
+## Edit menu commands
+
+To access the **Edit** menu, use the keyboard shortcut <kbd>Alt</kbd>+<kbd>E</kbd>. The following table describes the keyboard shortcuts you can use to access menu items under the **Edit** menu.
+
+| To do this action | Press |
+| --- | --- |
+| Cut selected text to the clipboard | <kbd>Alt</kbd>+<kbd>E</kbd>+<kbd>T</kbd> or <kbd>Ctrl</kbd>+<kbd>X</kbd> |
+| Copy selected text to the clipboard | <kbd>Alt</kbd>+<kbd>E</kbd>+<kbd>C</kbd> or <kbd>Ctrl</kbd>+<kbd>C</kbd> |
+| Paste the most recently added text from the clipboard | <kbd>Alt</kbd>+<kbd>E</kbd>+<kbd>P</kbd> or <kbd>Ctrl</kbd>+<kbd>V</kbd> |
+| Undo the last action | <kbd>Alt</kbd>+<kbd>E</kbd>+<kbd>U</kbd> or <kbd>Ctrl</kbd>+<kbd>Z</kbd> |
+| Redo or repeat an action | <kbd>Alt</kbd>+<kbd>E</kbd>+<kbd>R</kbd> or <kbd>Ctrl</kbd>+<kbd>Y</kbd> |
+| Display the manage bookmarks dialog box | <kbd>Alt</kbd>+<kbd>E</kbd>+<kbd>B</kbd> or <kbd>Ctrl</kbd>+<kbd>X</kbd> |
+| Go to line | <kbd>Alt</kbd>+<kbd>E</kbd>+<kbd>G</kbd> or <kbd>Ctrl</kbd>+<kbd>G</kbd> |
+| Save the changes done to statement | <kbd>Alt</kbd>+<kbd>E</kbd>+<kbd>S</kbd> or <kbd>Ctrl</kbd>+<kbd>S</kbd> |
+| Access find submenu | <kbd>Alt</kbd>+<kbd>E</kbd>+<kbd>F</kbd> |
+| Find or quick find | <kbd>Alt</kbd>+<kbd>E</kbd>+<kbd>F</kbd>+<kbd>F</kbd> or <kbd>Ctrl</kbd>+<kbd>F</kbd> |
+| Display the advanced search dialog box | <kbd>Alt</kbd>+<kbd>E</kbd>+<kbd>F</kbd>+<kbd>A</kbd> or <kbd>Alt</kbd>+<kbd>F12</kbd> |
+| Launch quick info | <kbd>Alt</kbd>+<kbd>E</kbd>+<kbd>F</kbd>+<kbd>I</kbd> or <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd> |
+| Go to declaration | <kbd>Alt</kbd>+<kbd>E</kbd>+<kbd>F</kbd>+<kbd>G</kbd> or <kbd>F12</kbd> |
+| Find previous | <kbd>Alt</kbd>+<kbd>E</kbd>+<kbd>F</kbd>+<kbd>P</kbd> or <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F3</kbd> |
+| Find next | <kbd>Alt</kbd>+<kbd>E</kbd>+<kbd>F</kbd>+<kbd>N</kbd> or <kbd>Ctrl</kbd>+<kbd>F3</kbd> |
+
+## View menu commands
+
+To access the **View** menu, use the keyboard shortcut <kbd>Alt</kbd>+<kbd>V</kbd>. The following table describes the keyboard shortcuts you can use to access menu items under the **View** menu.
+
+| To do this action | Press |
+| --- | --- |
+| Synchronize metadata explorers | <kbd>Alt</kbd>+<kbd>V</kbd>+<kbd>Z</kbd> |
+| Show tree | <kbd>Alt</kbd>+<kbd>V</kbd>+<kbd>H</kbd> or <kbd>Ctrl</kbd>+<kbd>T</kbd> |
+| Show source part | <kbd>Alt</kbd>+<kbd>V</kbd>+<kbd>S</kbd> |
+| Show target part | <kbd>Alt</kbd>+<kbd>V</kbd>+<kbd>T</kbd> |
+| Show error list pane | <kbd>Alt</kbd>+<kbd>V</kbd>+<kbd>E</kbd> or <kbd>Ctrl</kbd>+<kbd>E</kbd> |
+| Show output pane | <kbd>Alt</kbd>+<kbd>V</kbd>+<kbd>O</kbd> or <kbd>Ctrl</kbd>+<kbd>O</kbd> |
+| Access layouts submenu | <kbd>Alt</kbd>+<kbd>V</kbd>+<kbd>L</kbd> |
+| Add current layout | <kbd>Alt</kbd>+<kbd>V</kbd>+<kbd>L</kbd>+<kbd>A</kbd> |
+| Select default layout | <kbd>Alt</kbd>+<kbd>V</kbd>+<kbd>L</kbd>+<kbd>D</kbd> or <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>1</kbd> |
+| Select without explorers layout | <kbd>Alt</kbd>+<kbd>V</kbd>+<kbd>L</kbd>+<kbd>W</kbd> or <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>2</kbd> |
+| Display the manage layouts dialog box | <kbd>Alt</kbd>+<kbd>V</kbd>+<kbd>L</kbd>+<kbd>M</kbd> |
+
+## Tools menu commands
+
+To access the **Tools** menu, use the keyboard shortcut <kbd>Alt</kbd>+<kbd>T</kbd>. The following table describes the keyboard shortcuts you can use to access menu items under the **Tools** menu.
+
+| To do this action | Press |
+| --- | --- |
+| Create report | <kbd>Alt</kbd>+<kbd>T</kbd>+<kbd>C</kbd> |
+| Convert schema | <kbd>Alt</kbd>+<kbd>T</kbd>+<kbd>N</kbd> or <kbd>Ctrl</kbd>+<kbd>R</kbd> |
+| Refresh from access database | <kbd>Alt</kbd>+<kbd>T</kbd>+<kbd>R</kbd> |
+| Synchronize with SQL Server or Azure SQL Database | <kbd>Alt</kbd>+<kbd>T</kbd>+<kbd>S</kbd> |
+| Save as script | <kbd>Alt</kbd>+<kbd>T</kbd>+<kbd>A</kbd> |
+| Migrate data | <kbd>Alt</kbd>+<kbd>T</kbd>+<kbd>M</kbd> |
+| Stop the current operation | <kbd>Alt</kbd>+<kbd>T</kbd>+<kbd>O</kbd> |
+| Display the global settings dialog box | <kbd>Alt</kbd>+<kbd>T</kbd>+<kbd>G</kbd> |
+| Display the project settings dialog box | <kbd>Alt</kbd>+<kbd>T</kbd>+<kbd>P</kbd> |
+| Display the default project settings dialog box | <kbd>Alt</kbd>+<kbd>T</kbd>+<kbd>J</kbd> |
+| Display the find databases wizard dialog box | <kbd>Alt</kbd>+<kbd>T</kbd>+<kbd>F</kbd> |
+| Display the convert, load, and migrate wizard dialog box | <kbd>Alt</kbd>+<kbd>T</kbd>+<kbd>V</kbd> |
+| Link tables or link a table | <kbd>Alt</kbd>+<kbd>T</kbd>+<kbd>L</kbd> |
+| Unlink tables or unlink a table | <kbd>Alt</kbd>+<kbd>T</kbd>+<kbd>U</kbd> |
+| Export schema | <kbd>Alt</kbd>+<kbd>T</kbd>+<kbd>E</kbd> |
+| Delete locally | <kbd>Alt</kbd>+<kbd>T</kbd>+<kbd>D</kbd> |
+
+## Help menu commands
+
+To access the **Help** menu, use the keyboard shortcut <kbd>Alt</kbd>+<kbd>H</kbd>. The following table describes the keyboard shortcuts you can use to access menu items under the **Help** menu.
+
+| To do this action | Press |
+| --- | --- |
+| Display the **About SSMA for Access** dialog box | <kbd>Alt</kbd>+<kbd>H</kbd>+<kbd>A</kbd> |
+| Display the customer feedback options dialog box | <kbd>Alt</kbd>+<kbd>H</kbd>+<kbd>C</kbd> |
+| Display the help window | <kbd>Alt</kbd>+<kbd>H</kbd>+<kbd>H</kbd> or <kbd>F1</kbd> |
+
+## Context menu commands
+
+To access the context menu for the selected object in Object Explorer, use the keyboard shortcut <kbd>Shift</kbd>+<kbd>F10</kbd> or the Apps key.
+
+## Global settings dialog box
+
+| To do this action | Press |
+| --- | --- |
+| Access the GUI tab | <kbd>Alt</kbd>+<kbd>U</kbd> |
+| Access the logging tab | <kbd>Alt</kbd>+<kbd>L</kbd> |
+
+## Project Settings dialog box
+
+| To do this action | Press |
+| --- | --- |
+| Access project information tab | <kbd>Alt</kbd>+<kbd>P</kbd> |
+| Access general tab | <kbd>Alt</kbd>+<kbd>G</kbd> |
+| Access synchronization tab | <kbd>Alt</kbd>+<kbd>S</kbd> |
+| Access the GUI tab | <kbd>Alt</kbd>+<kbd>U</kbd> |
+| Access type mappings tab | <kbd>Alt</kbd>+<kbd>T</kbd> |
+
+## Default project settings dialog box
+
+| To do this action | Press |
+| --- | --- |
+| Access general tab | <kbd>Alt</kbd>+<kbd>G</kbd> |
+| Access synchronization tab | <kbd>Alt</kbd>+<kbd>S</kbd> |
+| Access the GUI tab | <kbd>Alt</kbd>+<kbd>U</kbd> |
+| Access type mappings tab | <kbd>Alt</kbd>+<kbd>T</kbd> |
+
+## End-user license agreement dialog box
+
+| To do this action | Press |
+| --- | --- |
+| Select the entire end-user license agreement (EULA) text | <kbd>Ctrl</kbd>+<kbd>A</kbd> |
+| Copy the entire EULA text to the clipboard | <kbd>Ctrl</kbd>+<kbd>C</kbd> |
+| Print EULA | <kbd>Alt</kbd>+<kbd>P</kbd> |
+
+## Advanced search dialog box
+
+| To do this action | Press |
+| --- | --- |
+| Move one search result up or down | Up and down arrow keys |
+| Move to the beginning or end of the visible search results in the grid | <kbd>Page Up</kbd> or <kbd>Page Down</kbd> |
+| View the selected search result | <kbd>Enter</kbd> |
+
+## Quick info dialog box
+
+| To do this action | Press |
+| --- | --- |
+| Move one item up or down | Up and down arrow keys |
+| Move to the beginning or end of the quick info window | <kbd>Page Up</kbd> or <kbd>Page Down</kbd> |
+| Close the dialog box | <kbd>Esc</kbd> |
+
+## Output pane
+
+| To do this action | Press |
+| --- | --- |
+| Open the pop-up menu | <kbd>Shift</kbd>+<kbd>F10</kbd> |
+| Cut selected text to the clipboard | <kbd>Ctrl</kbd>+<kbd>X</kbd> |
+| Copy selected text to the clipboard | <kbd>Ctrl</kbd>+<kbd>C</kbd> |
+| Paste the most recently added text from the clipboard | <kbd>Ctrl</kbd>+<kbd>V</kbd> |
+| Select all the text | <kbd>Ctrl</kbd>+<kbd>A |
+
+## Error list pane
+
+| To do this action | Press |
+| --- | --- |
+| Copy selected items | <kbd>Ctrl</kbd>+<kbd>C</kbd> |
+| Select all the items | <kbd>Ctrl</kbd>+<kbd>A</kbd> |
+| Move one item up or down | Up and down arrow keys |
+
+## SQL tab page
+
+| To do this action | Press |
+| --- | --- |
+| Convert schema | <kbd>Ctrl</kbd>+<kbd>R</kbd> |
+| Cut selected text to the clipboard | <kbd>Ctrl</kbd>+<kbd>X</kbd> |
+| Copy selected text to the clipboard | <kbd>Ctrl</kbd>+<kbd>C</kbd> |
+| Paste the most recently added text from the clipboard | <kbd>Ctrl</kbd>+<kbd>V</kbd> |
+| Launch quick find | <kbd>Ctrl</kbd>+<kbd>F</kbd> |
+| Launch quick info | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd> |
+| Go to declaration | <kbd>F12</kbd> |

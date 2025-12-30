@@ -4,10 +4,10 @@ description: New Project (SSMA) (AccessToSQL)
 author: nilabjaball
 ms.author: niball
 ms.reviewer: randolphwest
-ms.date: 11/12/2025
+ms.date: 12/30/2025
 ms.service: sql
 ms.subservice: ssma
-ms.topic: conceptual
+ms.topic: article
 ms.collection:
   - sql-migration-content
 helpviewer_keywords:
@@ -15,7 +15,7 @@ helpviewer_keywords:
 ---
 # New Project (SSMA) (AccessToSQL)
 
-Use the **New Project** dialog box to create a new SSMA project. To access the **New Project** dialog box, on the **File** menu, select **New Project**.
+Use the **New Project** dialog box to create a new SQL Server Migration Assistant (SSMA) project. To access the **New Project** dialog box, select **New Project** on the **File** menu.
 
 ## Options
 

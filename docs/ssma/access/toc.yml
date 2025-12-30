@@ -50,12 +50,8 @@
       href: linking-access-applications-to-sql-server-azure-sql-db-accesstosql.md
     - name: Exporting an Access inventory
       href: exporting-an-access-inventory-accesstosql.md
-    - name: Find Databases Wizard (Select Files)
-      href: find-databases-wizard-select-files-accesstosql.md
-    - name: Find Databases Wizard (Select Locations)
-      href: find-databases-wizard-select-locations-accesstosql.md
-    - name: Find Databases Wizard (Verify Selection)
-      href: find-databases-wizard-verify-selection-accesstosql.md
+    - name: Find Databases Wizard
+      href: find-databases-wizard-accesstosql.md
     - name: Migration Wizard
       href: migration-wizard-accesstosql.md
 - name: SSMA for Access console
@@ -64,7 +60,7 @@
       href: working-with-ssma-for-access-console-accesstosql.md
     - name: Getting Started with SSMA for Access console
       href: getting-started-with-ssma-for-access-console-accesstosql.md
-    - name: Command-line options in SSMA console
+    - name: Command-line options in SSMA Console
       href: command-line-options-in-ssma-console-accesstosql.md
     - name: Creating script files
       href: creating-script-files-accesstosql.md
@@ -72,7 +68,7 @@
       href: creating-variable-value-files-accesstosql.md
     - name: Creating the server connection files
       href: creating-the-server-connection-files-accesstosql.md
-    - name: Executing the SSMA console
+    - name: Executing the SSMA Console
       href: executing-the-ssma-console-accesstosql.md
     - name: Working with the sample console script files
       href: working-sample-console-script-filesexecuting-ssma-console-accesstosql.md
@@ -104,8 +100,8 @@
           href: edit-type-mapping-accesstosql.md
         - name: Global settings
           items:
-            - name: Shortcut keys
-              href: shortcut-keys-accesstosql.md
+            - name: Menu commands and other shortcut keys
+              href: menu-commands-and-other-shortcut-keys-accesstosql.md
             - name: Editor
               href: global-settings-editor-accesstosql.md
             - name: Logging
@@ -134,5 +130,3 @@
           href: refresh-from-database-accesstosql.md
         - name: Save metadata
           href: save-metadata-accesstosql.md
-    - name: Menu commands & other shortcut keys
-      href: menu-commands-and-other-shortcut-keys-accesstosql.md
