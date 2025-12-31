@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: 04/04/2025
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: article
 ms.custom:
   - ignite-2025
 monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
@@ -152,7 +152,7 @@ FROM FactResellerSalesXL_CCI;
 When designing a data warehouse schema, the recommended schema modeling is to use star-schema or snowflake schema consisting of one or more fact tables and many dimension tables. 
 
 > [!TIP]
-> The [fact table](https://en.wikipedia.org/wiki/Fact_table) stores the business measurements or transactions and [dimension table](https://en.wikipedia.org/wiki/Dimension_table) store the dimensions across which facts need to be analyzed. For more information on dimensional modeling, see [Dimensional modeling in Microsoft Fabric](/fabric/data-warehouse/dimensional-modeling-overview).
+> The [fact table](https://wikipedia.org/wiki/Fact_table) stores the business measurements or transactions and [dimension table](https://wikipedia.org/wiki/Dimension_table) store the dimensions across which facts need to be analyzed. For more information on dimensional modeling, see [Dimensional modeling in Microsoft Fabric](/fabric/data-warehouse/dimensional-modeling-overview).
 
 For example, a fact can be a record representing a sale of a particular product in a specific region while the dimension represents a set of regions, products and so on. The fact and dimension tables are connected through a primary/foreign key relationship. Most commonly used analytics queries join one or more dimension tables with the fact table.
 

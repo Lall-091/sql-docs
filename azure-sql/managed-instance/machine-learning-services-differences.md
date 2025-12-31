@@ -48,7 +48,7 @@ You can install binary packages with `sqlmlutils`, if you can build locally to p
 
 In SQL Managed Instance, it's not possible to limit R resources through [Resource Governor](/sql/relational-databases/resource-governor/resource-governor?view=azuresqldb-mi-current&preserve-view=true), and external resource pools are not supported.
 
-By default, R resources are set to a maximum of 20% of the available SQL Managed Instance resources when extensibility is enabled. To change this default percentage, create an Azure support ticket at [https://azure.microsoft.com/support/create-ticket/](https://azure.microsoft.com/support/create-ticket/).
+By default, R resources are set to a maximum of 20% of the available SQL Managed Instance resources when extensibility is enabled. To change this default percentage, create an [Azure support ticket](https://azure.microsoft.com/support/create-ticket/).
 
 Extensibility is enabled with the following SQL commands (SQL Managed Instance will restart and be unavailable for a few seconds):
 

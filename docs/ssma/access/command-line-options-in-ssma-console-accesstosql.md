@@ -195,6 +195,6 @@ SSMAforAccessConsole.exe -securepassword -?
 
 ### Related content
 
-- [Managing Passwords](managing-passwords-accesstosql.md)
+- [Manage passwords](managing-passwords-accesstosql.md)
 - [Generate reports](generating-reports-accesstosql.md)
 - [Troubleshooting](troubleshooting-accesstosql.md)

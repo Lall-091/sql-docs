@@ -673,7 +673,7 @@ For more information about the issues, and information about how to perform the 
 
 ### 7.2 Microsoft Silverlight 5 required
 
-To work in the Master Data Manager web application, Silverlight 5.0 must be installed on the client computer. If you don't have the required version of Silverlight, you'll be prompted to install it when you navigate to an area of the web application that requires it. You can install Silverlight 5 from [https://go.microsoft.com/fwlink/?LinkId=243096](https://go.microsoft.com/fwlink/?LinkId=243096).
+To work in the Master Data Manager web application, Silverlight 5.0 must be installed on the client computer. If you don't have the required version of Silverlight, you'll be prompted to install it when you navigate to an area of the web application that requires it.
 
 <a id="RS"></a>
 

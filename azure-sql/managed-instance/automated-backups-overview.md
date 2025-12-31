@@ -8,7 +8,7 @@ ms.reviewer: mathoma, wiassaf, mlandzic, strrodic, danil, randolphwest
 ms.date: 06/26/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: article
 ms.custom:
   - azure-sql-split
   - build-2024
@@ -117,7 +117,7 @@ This table summarizes the capabilities and features of [point-in-time restore](r
 | **Recovery point objective (RPO)** | Approximately 10 minutes, based on compute size and amount of database activity. | Up to 1 hour, based on geo-replication. <sup>1</sup> | One week (or user's policy). |
 | **Recovery time objective (RTO)** | Restore usually takes less than 12 hours but could take longer, depending on size and activity. See [Recovery](recovery-using-backups.md#recovery-time). | Restore usually takes less than 12 hours but could take longer, depending on size and activity. See [Recovery](recovery-using-backups.md#recovery-time). | Restore usually takes less than 12 hours but could take longer, depending on size and activity. See [Recovery](recovery-using-backups.md#recovery-time). |
 | **Retention** | 1 to 35 days. | Enabled by default, same as source. <sup>2</sup> | Not enabled by default. Retention is up to 10 years. |
-| **Azure storage** | Geo-redundant by default. You can optionally configure zone-redundant or locally redundant storage. | Available when PITR backup storage redundancy is set to geo-redundant. Not available when PITR backup storage is zone-redundant or locally redundant. | Geo-redundant by default. You can configure zone-redundant or locally redundant storage. |
+| **Azure storage** | Geo-redundant by default. You can optionally configure zone-redundant or locally redundant storage. | Available when PITR backup storage redundancy is set to geo-redundant or geo-zone redundant (GZRS). Not available when PITR backup storage is zone-redundant or locally redundant. | Geo-redundant by default. You can configure zone-redundant or locally redundant storage. |
 | **Configure backups as [immutable](/azure/storage/blobs/immutable-storage-overview)** | Not supported | Not supported | Not supported |
 | **Update policy** <sup>3</sup> | Must match, or upgrade | Must match, or upgrade | Must match, or upgrade |
 | **Restoring a new database in the same region** | Supported | Supported | Supported |

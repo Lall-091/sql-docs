@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: 10/30/2019
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: article
 helpviewer_keywords:
   - "Always Encrypted, cryptography system"
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
@@ -31,9 +31,9 @@ Always Encrypted internally uses FIPS 140-2 validated cryptographic modules.
 ## Data Encryption Algorithm  
  Always Encrypted uses the **AEAD_AES_256_CBC_HMAC_SHA_256** algorithm to encrypt data in the database.  
   
- **AEAD_AES_256_CBC_HMAC_SHA_256** is derived from the specification draft at [https://tools.ietf.org/html/draft-mcgrew-aead-aes-cbc-hmac-sha2-05](https://tools.ietf.org/html/draft-mcgrew-aead-aes-cbc-hmac-sha2-05). It uses an Authenticated Encryption scheme with Associated Data, following an Encrypt-then-MAC approach. That is, the plaintext is first encrypted, and the MAC is produced based on the resulting ciphertext.  
+ **AEAD_AES_256_CBC_HMAC_SHA_256** is derived from the [IETF specification draft](https://tools.ietf.org/html/draft-mcgrew-aead-aes-cbc-hmac-sha2-05). It uses an Authenticated Encryption scheme with Associated Data, following an Encrypt-then-MAC approach. That is, the plaintext is first encrypted, and the MAC is produced based on the resulting ciphertext.  
   
- In order to conceal patterns, **AEAD_AES_256_CBC_HMAC_SHA_256** uses the Cipher Block Chaining (CBC) mode of operation, where an initial value is fed into the system named the initialization vector (IV). The full description of the CBC mode can be found at [https://csrc.nist.gov/publications/nistpubs/800-38a/sp800-38a.pdf](https://csrc.nist.gov/publications/nistpubs/800-38a/sp800-38a.pdf).  
+ In order to conceal patterns, **AEAD_AES_256_CBC_HMAC_SHA_256** uses the Cipher Block Chaining (CBC) mode of operation, where an initial value is fed into the system named the initialization vector (IV). The full description of the CBC mode can be found at the [US National Institute of Standards and Technology (NIST)](https://csrc.nist.gov/publications/nistpubs/800-38a/sp800-38a.pdf).  
   
  **AEAD_AES_256_CBC_HMAC_SHA_256** computes a ciphertext value for a given plaintext value using the following steps.  
   

@@ -47,7 +47,7 @@ The documentation of this sample is structured as follows:
 
 Follow these steps to install the sample:
 
-1. Download `AdventureWorks2016_EXT.bak` and `SQLServer2016Samples.zip` from: [https://github.com/microsoft/sql-server-samples/releases/tag/adventureworks](https://github.com/microsoft/sql-server-samples/releases/tag/adventureworks) to a local folder, for example `C:\Temp`.
+1. Download `AdventureWorks2016_EXT.bak` and `SQLServer2016Samples.zip` from <https://github.com/microsoft/sql-server-samples/releases/tag/adventureworks> to a local folder, for example `C:\Temp`.
 
 1. Restore the database backup using [!INCLUDE [tsql](../../includes/tsql-md.md)] or [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)]:
 

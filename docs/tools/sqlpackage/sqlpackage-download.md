@@ -220,10 +220,10 @@ If you installed SqlPackage with a .zip or other archive, then delete the files.
 
 Evergreen links are available for downloading the latest Sqlpackage versions:
 
-- Linux ([https://aka.ms/sqlpackage-linux](https://aka.ms/sqlpackage-linux))
-- macOS ([https://aka.ms/sqlpackage-macos](https://aka.ms/sqlpackage-macos))
-- Windows ([https://aka.ms/sqlpackage-windows](https://aka.ms/sqlpackage-windows))
-- Windows, .NET Framework ([https://aka.ms/dacfx-msi](https://aka.ms/dacfx-msi))
+- Linux (<https://aka.ms/sqlpackage-linux>)
+- macOS (<https://aka.ms/sqlpackage-macos>)
+- Windows (<https://aka.ms/sqlpackage-windows>)
+- Windows, .NET Framework (<https://aka.ms/dacfx-msi>)
 
 ## DacFx
 

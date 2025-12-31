@@ -7,7 +7,7 @@ ms.reviewer: mathoma
 ms.date: 08/07/2025
 ms.service: azure-sql-database
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: article
 ms.custom:
   - ignite-2023
 monikerRange: "=azuresqldb-current || >=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current"
@@ -62,7 +62,7 @@ Typical patterns for solving this problem involve replicating data from the bloc
 
 Any rows modified by a transaction in a ledger table are cryptographically SHA-256 hashed using a Merkle tree data structure that creates a root hash representing all rows in the transaction. The transactions that the database processes are then also SHA-256 hashed together through a Merkle tree data structure. The result is a root hash that forms a block. The block is then SHA-256 hashed through the root hash of the block, along with the root hash of the previous block as input to the hash function. That hashing forms a blockchain.
 
-The root hashes in the [database ledger](ledger-database-ledger.md), also called [Database digests](#database-digests), contain the cryptographically hashed transactions and represent the state of the database. They can be periodically generated and stored outside the database in tamper-proof storage, such as [Azure Blob Storage configured with immutability policies](/azure/storage/blobs/immutable-storage-overview), [Azure Confidential Ledger](/azure/confidential-ledger/index) or on-premises [Write Once Read Many (WORM) storage devices](https://en.wikipedia.org/wiki/Write_once_read_many). Database digests are later used to verify the integrity of the database by comparing the value of the hash in the digest against the calculated hashes in database. 
+The root hashes in the [database ledger](ledger-database-ledger.md), also called [Database digests](#database-digests), contain the cryptographically hashed transactions and represent the state of the database. They can be periodically generated and stored outside the database in tamper-proof storage, such as [Azure Blob Storage configured with immutability policies](/azure/storage/blobs/immutable-storage-overview), [Azure Confidential Ledger](/azure/confidential-ledger/index) or on-premises [Write Once Read Many (WORM) storage devices](https://wikipedia.org/wiki/Write_once_read_many). Database digests are later used to verify the integrity of the database by comparing the value of the hash in the digest against the calculated hashes in database. 
 
 Ledger functionality is introduced to tables in two forms:
 

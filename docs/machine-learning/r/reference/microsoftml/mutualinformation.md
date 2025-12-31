@@ -84,7 +84,7 @@ Microsoft Corporation [`Microsoft Technical Support`](https://go.microsoft.com/f
 
  ## References
 
-[`Wikipedia: Mutual Information`](https://en.wikipedia.org/wiki/Mutual_information)
+[`Wikipedia: Mutual Information`](https://wikipedia.org/wiki/Mutual_information)
 
 
 

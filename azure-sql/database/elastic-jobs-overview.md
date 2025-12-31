@@ -303,7 +303,7 @@ Set the number of concurrent databases a job runs on by setting the `sp_add_jobs
 
 ### Idempotent scripts
 
-An elastic job's T-SQL scripts must be [idempotent](https://en.wikipedia.org/wiki/Idempotence). **Idempotent** means that if the script succeeds, and it's run again, the same result occurs. A script can fail due to transient network issues. In that case, the job will automatically retry running the script a preset number of times before desisting. An idempotent script has the same result even if it's been successfully run twice (or more).
+An elastic job's T-SQL scripts must be [idempotent](https://wikipedia.org/wiki/Idempotence). **Idempotent** means that if the script succeeds, and it's run again, the same result occurs. A script can fail due to transient network issues. In that case, the job will automatically retry running the script a preset number of times before desisting. An idempotent script has the same result even if it's been successfully run twice (or more).
 
 A simple tactic is to test for the existence of an object before creating it. The following is a hypothetical example:
 

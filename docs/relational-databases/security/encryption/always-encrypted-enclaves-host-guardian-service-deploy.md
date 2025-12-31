@@ -159,7 +159,7 @@ If your SQL Server computers are virtualized, you'll need to contact your cloud 
 
 To download the trusted TPM root certificates package from Microsoft for physical TPMs, complete the following steps:
 
-1. On a computer with internet access, download the latest TPM root certificates package from [https://go.microsoft.com/fwlink/?linkid=2097925](https://go.microsoft.com/fwlink/?linkid=2097925)
+1. On a computer with internet access, [download the latest TPM root certificates package](https://go.microsoft.com/fwlink/?linkid=2097925).
 
 1. Verify the signature of the cab file to ensure it's authentic.
 

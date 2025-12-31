@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.reviewer: randolphwest
 ms.date: 11/10/2025
 ms.service: sql
-ms.topic: conceptual
+ms.topic: article
 ms.custom:
   - ignite-2025
 helpviewer_keywords:
@@ -66,7 +66,7 @@ A collation specifies the bit patterns that represent each character in a datase
 
 [!INCLUDE [tsql](../../includes/tsql-md.md)] statement results can vary when the statement is run in the context of different databases that have different collation settings. If possible, use a standardized collation for your organization. This way, you don't have to specify the collation in every character or Unicode expression. If you must work with objects that have different collation and code page settings, code your queries to consider the rules of collation precedence. For more information, see [Collation precedence](../../t-sql/statements/collation-precedence-transact-sql.md).
 
-The options associated with a collation are case sensitivity, accent sensitivity, kana sensitivity, width sensitivity, and variation-selector sensitivity. [!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)] introduces an additional option for [UTF-8](https://www.wikipedia.org/wiki/UTF-8) encoding.
+The options associated with a collation are case sensitivity, accent sensitivity, kana sensitivity, width sensitivity, and variation-selector sensitivity. [!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)] introduces an additional option for [UTF-8](https://wikipedia.org/wiki/UTF-8) encoding.
 
 You can specify these options by appending them to the collation name. For example, the collation `Japanese_Bushu_Kakusu_100_CS_AS_KS_WS_SC_UTF8` is case-sensitive, accent-sensitive, kana-sensitive, width-sensitive, and UTF-8 encoded. As another example, the collation `Japanese_Bushu_Kakusu_140_CI_AI_KS_WS_VSS` is case-insensitive, accent-insensitive, kana-sensitive, width-sensitive, variation-selector-sensitive, and it uses a legacy code page for **varchar**.
 

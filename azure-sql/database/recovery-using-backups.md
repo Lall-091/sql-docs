@@ -1,5 +1,5 @@
 ---
-title: Restore a database from a backup
+title: Restore a Database from a Backup
 titleSuffix: Azure SQL Database
 description: Learn about point-in-time restore, which enables you to roll back a database in Azure SQL Database up to 35 days.
 author: dnethi
@@ -9,10 +9,10 @@ ms.date: 05/14/2025
 ms.service: azure-sql-database
 ms.subservice: backup-restore
 ms.topic: how-to
-monikerRange: "=azuresql || =azuresql-db"
 ms.custom:
   - azure-sql-split
   - sfi-image-nochange
+monikerRange: "=azuresql || =azuresql-db"
 ---
 # Restore a database from a backup in Azure SQL Database
 
@@ -233,7 +233,7 @@ To restore a deleted database by using the REST API:
 Geo-restore uses geo-replicated backups as the source. You can restore a database on any [logical server](logical-servers.md) in any Azure region from the most recent geo-replicated backups. You can request a geo-restore even if an outage has made the database or the entire region inaccessible.
 
 > [!IMPORTANT]  
-> - Geo-restore is available only for databases configured with geo-redundant [backup storage](automated-backups-overview.md#backup-storage-redundancy). If you're not currently using geo-replicated backups for a database, you can change this by [configuring backup storage redundancy](automated-backups-change-settings.md#configure-backup-storage-redundancy).
+> - Geo-restore is available only for databases configured with geo-redundant or geo-zone redundant (GZRS) [backup storage](automated-backups-overview.md#backup-storage-redundancy). If you're not currently using geo-replicated backups for a database, you can change this by [configuring backup storage redundancy](automated-backups-change-settings.md#configure-backup-storage-redundancy).
 > - You can perform geo-restore only on databases that reside in the same subscription.
 
 Geo-restore is the default recovery option when your database is unavailable because of an incident in the hosting region. You can restore the database to a server in any other region.

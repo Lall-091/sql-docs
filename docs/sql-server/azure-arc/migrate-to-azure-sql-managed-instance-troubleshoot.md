@@ -185,7 +185,7 @@ You can contact Microsoft to open a support ticket with an issue you're having o
 
 ### Contact support
 
-Use [https://aka.ms/azure-support](https://aka.ms/azure-support) to go to the **Help + support** page in the Azure portal, and then follow these steps to open a migration-related support ticket:
+Use <https://aka.ms/azure-support> to go to the **Help + support** page in the Azure portal, and then follow these steps to open a migration-related support ticket:
 
 1. Select **Create a support request** to open the **Support + troubleshooting** pane.
 1. Type `migration` into the text field, then select **None of the above** under **Which service are you having an issue with?**

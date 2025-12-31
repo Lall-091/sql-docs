@@ -828,7 +828,7 @@ This section has recommendations for character mode (`-c`) and native mode (`-n`
 
 ## Examples
 
-The examples in this section make use of the `WideWorldImporters` sample database for [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] and later versions, Azure SQL Database, and Azure SQL Managed Instance. `WideWorldImporters` can be downloaded from [https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0). See [RESTORE Statements](../t-sql/statements/restore-statements-transact-sql.md) for the syntax to restore the sample database.
+The examples in this section make use of the `WideWorldImporters` sample database for [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] and later versions, Azure SQL Database, and Azure SQL Managed Instance. `WideWorldImporters` can be downloaded from <https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0>. See [RESTORE Statements](../t-sql/statements/restore-statements-transact-sql.md) for the syntax to restore the sample database.
 
 ### Example test conditions
 

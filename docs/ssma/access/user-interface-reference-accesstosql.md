@@ -24,8 +24,8 @@ This section includes Help articles for [!INCLUDE [ssNoVersion](../../includes/s
 | --- | --- |
 | [Advanced Object Selection](advanced-object-selection-accesstosql.md) | Use the **Advanced Object Select** dialog box to find database objects by using filter criteria, and then select or clear those objects. |
 | [Assessment Report](assessment-report-accesstosql.md) | Use the **Assessment Report** dialog box to analyze the conversion of Access database objects and to estimate how long the migration should take. |
-| [Connect to SQL Server](connect-to-sql-server-accesstosql.md) | Use the **Connect to SQL Server** dialog box to connect to the instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to which you want to migrate. |
-| [Connect to Azure SQL](connect-to-azure-sql-db-accesstosql.md) | Use the **Connect to Azure SQL** dialog box to connect to the instance of Azure SQL to which you want to migrate. |
+| [Connect to SQL Server (GUI)](connect-to-sql-server-accesstosql.md) | Use the **Connect to SQL Server** dialog box to connect to the instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to which you want to migrate. |
+| [Connect to Azure SQL (GUI)](connect-to-azure-sql-db-accesstosql.md) | Use the **Connect to Azure SQL** dialog box to connect to the instance of Azure SQL to which you want to migrate. |
 | [Convert, Load, and Migrate](convert-load-and-migrate-accesstosql.md) | The **Convert, Load, and Migrate** dialog is part of the Migration Wizard and also appears when you use the **Convert, Load, and Migrate** command. |
 | [Data Migration Report](data-migration-report-accesstosql.md) | Appears after data migration and reports migration successes and failures for each table. |
 | [Edit Type Mapping](edit-type-mapping-accesstosql.md) | Use the **Edit Type Mapping** dialog box to create or edit the mapping of data types between the source and target databases and database objects. |

@@ -222,7 +222,7 @@ For a more detailed sample script, see the following examples:
 
 ## Offline install
 
-If your Linux machine doesn't have access to the online repositories used in the [quick starts](#platforms), you can download the package files directly. These packages are located in the Microsoft repository, at [https://packages.microsoft.com](https://packages.microsoft.com).
+If your Linux machine doesn't have access to the online repositories used in the [quick starts](#platforms), you can download the package files directly. These packages are located at <https://packages.microsoft.com>.
 
 > [!TIP]  
 > If you successfully installed with the steps in the quick starts, you don't need to download or manually install the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] package(s). This section is only for the offline scenario.

@@ -6,15 +6,13 @@ ms.author: davidengel
 ms.date: "07/23/2019"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: article
 ---
 # Step 3: Proof of concept connecting to SQL using Node.js
 
 :::image type="icon" source="../../includes/media/download.svg" border="false"::: **[Download Node.js SQL driver](../sql-connection-libraries.md#anchor-20-drivers-relational-access)**
 
-This example should be considered a proof of concept only.  The sample code is simplified for clarity, and does not necessarily represent best practices recommended by Microsoft. Other examples, which use the same crucial functions are available on GitHub:
-
-- [https://github.com/tediousjs/tedious/blob/master/examples/](https://github.com/tediousjs/tedious/blob/master/examples/)
+This example should be considered a proof of concept only. The sample code is simplified for clarity, and does not necessarily represent best practices recommended by Microsoft. Other examples, which use the same crucial functions are available in the [GitHub sample repository](https://github.com/tediousjs/tedious/blob/master/examples/).
   
 ## Step 1: Connect  
   

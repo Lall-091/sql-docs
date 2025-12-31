@@ -167,7 +167,7 @@ swagger()
 
 
 
-Retrieves the *swagger.json* for this service (see [http://swagger.io/](http://swagger.io/)).
+Retrieves the *swagger.json* for this service (see <http://swagger.io/>).
 
 
 ### Returns

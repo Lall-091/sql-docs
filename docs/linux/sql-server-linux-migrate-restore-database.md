@@ -73,8 +73,8 @@ To restore the database, you must first transfer the backup file from the Window
 
 1. Install a bash shell on your Windows machine that supports the **scp** (secure copy) and **ssh** (remote sign in) commands. Two examples include:
 
-   - The [Windows Subsystem for Linux](/windows/wsl/about) (Windows 10)
-   - The Git bash shell ([https://git-scm.com/downloads](https://git-scm.com/downloads))
+   - The [Windows Subsystem for Linux](/windows/wsl/about)
+   - The [Git bash shell](https://git-scm.com/install/windows)
 
 1. Open a bash session on Windows.
 

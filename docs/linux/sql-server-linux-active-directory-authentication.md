@@ -53,7 +53,7 @@ Join your [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Linux host 
 ## Create Active Directory user for SQL Server and set SPN
 
 > [!NOTE]  
-> The following steps use your [fully qualified domain name](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN). If you're on Azure, you must **[create a FQDN](/azure/virtual-machines/linux/portal-create-fqdn)** before you proceed.
+> The following steps use your [fully qualified domain name](https://wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN). If you're on Azure, you must **[create a FQDN](/azure/virtual-machines/linux/portal-create-fqdn)** before you proceed.
 
 1. On your domain controller, run the [New-ADUser](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee617253(v=technet.10)) PowerShell command to create a new Active Directory user with a password that never expires. The following example names the account `sqlsvc`, but the account name can be anything you like. You'll be prompted to enter a new password for the account.
 

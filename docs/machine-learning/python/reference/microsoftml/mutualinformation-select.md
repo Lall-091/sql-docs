@@ -103,4 +103,4 @@ An object defining the transform.
 
 ## References
 
-[Wikipedia: Mutual Information](https://en.wikipedia.org/wiki/Mutual_information)
+[Wikipedia: Mutual Information](https://wikipedia.org/wiki/Mutual_information)

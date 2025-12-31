@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: "10/06/2020"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: article
 ---
 # Node.js Driver for SQL Server
 
@@ -28,7 +28,7 @@ You can connect to a SQL Database using Node.js on Windows, Linux, or macOS.
 
 ## Support
 
-`Tedious` for Node.js is community-supported software. Microsoft contributes to the `tedious` open-source community and is an active participant in the repository at [https://github.com/tediousjs/tedious](https://github.com/tediousjs/tedious). However, this software doesn't come with Microsoft support.
+`Tedious` for Node.js is community-supported software. Microsoft contributes to the `tedious` open-source community and is an active participant in the [GitHub repository](https://github.com/tediousjs/tedious). However, this software doesn't come with Microsoft support.
 
 To get help, file an [issue in the tedious GitHub repository](https://github.com/tediousjs/tedious/issues) or visit other Node.js community resources.
 

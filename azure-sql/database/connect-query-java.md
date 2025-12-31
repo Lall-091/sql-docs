@@ -20,7 +20,7 @@ monikerRange: "=azuresql || =azuresql-db"
 
 [!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-This article demonstrates creating a sample application that uses Java and [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) to store and retrieve information in [Azure SQL Database](/azure/sql-database/).
+This article demonstrates creating a sample application that uses Java and [JDBC](https://wikipedia.org/wiki/Java_Database_Connectivity) to store and retrieve information in [Azure SQL Database](/azure/sql-database/).
 
 JDBC is the standard Java API to connect to traditional relational databases.
 

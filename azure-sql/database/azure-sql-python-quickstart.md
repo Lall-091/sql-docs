@@ -226,7 +226,7 @@ The app is ready to be tested locally.
     uvicorn app:app --reload
     ```
 
-1. On the Swagger UI page for the app [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs), expand the POST method and select **Try it out**.
+1. On the Swagger UI page for the app `http://127.0.0.1:8000/docs`, expand the POST method and select **Try it out**.
 
     You can also use try `/redoc` to see another form of generated documentation for the API.
 

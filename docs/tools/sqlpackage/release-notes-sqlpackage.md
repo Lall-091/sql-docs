@@ -477,7 +477,7 @@ dotnet tool install -g microsoft.sqlpackage --version 162.1.172
 |Linux .NET 6 |[.zip file](https://go.microsoft.com/fwlink/?linkid=2225105)|161.8089.0|16.1.8089.0|
 
 > [!IMPORTANT]
-> Version 161 of SqlPackage encrypts database connections by default. Previously successful connections with self-signed certificates or without encryption may not connect with v161 without updating the SqlPackage parameters. For more information, see [https://aka.ms/dacfx-connection](https://aka.ms/dacfx-connection).
+> Version 161 of SqlPackage encrypts database connections by default. Previously successful connections with self-signed certificates or without encryption may not connect with v161 without updating the SqlPackage parameters. For more information, see <https://aka.ms/dacfx-connection>.
 
 
 ### Features
@@ -519,7 +519,7 @@ dotnet tool install -g microsoft.sqlpackage --version 162.1.172
 |Linux .NET 6 |[.zip file](https://go.microsoft.com/fwlink/?linkid=2215501)|161.6374.0|16.1.6374.0|
 
 > [!IMPORTANT]
-> Version 161 of SqlPackage encrypts database connections by default. Previously successful connections with self-signed certificates or without encryption may not connect with v161 without updating the SqlPackage parameters. For more information, see [https://aka.ms/dacfx-connection](https://aka.ms/dacfx-connection).
+> Version 161 of SqlPackage encrypts database connections by default. Previously successful connections with self-signed certificates or without encryption may not connect with v161 without updating the SqlPackage parameters. For more information, see <https://aka.ms/dacfx-connection>.
 
 ### Features
 | Feature | Details |

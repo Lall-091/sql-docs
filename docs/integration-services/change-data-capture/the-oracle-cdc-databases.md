@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: article
 ---
 # The Oracle CDC Databases
 
@@ -90,7 +90,7 @@ ms.topic: conceptual
 |Item|Description|  
 |----------|-----------------|  
 |version|This keeps track of the version of the CDC instance configuration. It is updated each time that the table is updated and each time a new capture instance is added or an existing capture instance is removed.|  
-|connect_string|An Oracle connection string. A basic example is:<br /><br /> `<server>:<port>/<instance>` (for example, `erp.contoso.com:1521/orcl`).<br /><br /> The connection string can also specify an Oracle Net connect descriptor, for example, `(DESCRIPTION=(ADDRESS=(PROTOCOL=tcp) (HOST=erp.contoso.com) (PORT=1521)) (CONNECT_DATA=(SERVICE_NAME=orcl)))`.<br /><br /> If using a directory server or tnsnames, the connect string can be the name of the connection.<br /><br /> For more information about Oracle connection strings, see [https://go.microsoft.com/fwlink/?LinkId=231153](https://go.microsoft.com/fwlink/?LinkId=231153) for detailed information on Oracle database connection strings for the Oracle Instant Client that is used by the Oracle CDC Service.|  
+|connect_string|An Oracle connection string. A basic example is:<br /><br /> `<server>:<port>/<instance>` (for example, `erp.contoso.com:1521/orcl`).<br /><br /> The connection string can also specify an Oracle Net connect descriptor, for example, `(DESCRIPTION=(ADDRESS=(PROTOCOL=tcp) (HOST=erp.contoso.com) (PORT=1521)) (CONNECT_DATA=(SERVICE_NAME=orcl)))`.<br /><br /> If using a directory server or tnsnames, the connect string can be the name of the connection.<br /><br /> To learn about Oracle connection strings, see [Call Interface Programmer's Guide](https://go.microsoft.com/fwlink/?LinkId=231153), which provides for detailed information on Oracle database connection strings for the Oracle Instant Client that is used by the Oracle CDC Service.|  
 |use_windows_authentication|A Boolean value that can be:<br /><br /> **0**: An Oracle user name and password are provided for authentication (the default)<br /><br /> **1**: Windows authentication is used to connect to the Oracle database. You can use this option only if the Oracle database is configured to work with Windows authentication.|  
 |username|The name of the log-mining Oracle database user. This is mandatory only **if use_windows_authentication = 0**.|  
 |password|The password for the log-mining Oracle database user. This is mandatory only if **use_windows_authentication = 0**.|  

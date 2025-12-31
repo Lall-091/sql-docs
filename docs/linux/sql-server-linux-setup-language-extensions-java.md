@@ -243,15 +243,15 @@ Follow the [Offline installation](sql-server-linux-setup.md#offline) instruction
 
 #### Download site
 
-You can download the packages from [https://packages.microsoft.com/](https://packages.microsoft.com/). All of the packages for Java are colocated with the [!INCLUDE [ssde-md](../includes/ssde-md.md)] package.
+You can download the packages from <https://packages.microsoft.com/>. All of the packages for Java are colocated with the [!INCLUDE [ssde-md](../includes/ssde-md.md)] package.
 
 #### Download paths
 
 | Package | Distribution | Download location |
 | --- | --- | --- |
-| `mssql/extensibility-java packages` | Red Hat 8 | [https://packages.microsoft.com/rhel/8/mssql-server-2019/](https://packages.microsoft.com/rhel/8/mssql-server-2019/) |
-| `mssql/extensibility-java packages` | SUSE v15 | [https://packages.microsoft.com/sles/15/mssql-server-2019/](https://packages.microsoft.com/sles/15/mssql-server-2019/) |
-| `mssql/extensibility-java packages` | Ubuntu 20.04 | [https://packages.microsoft.com/ubuntu/20.04/mssql-server-2019/pool/main/m/](https://packages.microsoft.com/ubuntu/20.04/mssql-server-2019/pool/main/m/) |
+| `mssql/extensibility-java packages` | Red Hat 8 | <https://packages.microsoft.com/rhel/8/mssql-server-2019/> |
+| `mssql/extensibility-java packages` | SUSE v15 | <https://packages.microsoft.com/sles/15/mssql-server-2019/> |
+| `mssql/extensibility-java packages` | Ubuntu 20.04 | <https://packages.microsoft.com/ubuntu/20.04/mssql-server-2019/pool/main/m/> |
 
 #### Package list
 

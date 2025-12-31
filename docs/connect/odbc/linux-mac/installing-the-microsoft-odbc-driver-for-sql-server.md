@@ -560,7 +560,7 @@ It's also common to manually download all the dependent packages and place them 
 
 #### [RHEL 7 (ODBC 13 offline)](#tab/rhel7-offline)
 
-- Download the latest `msodbcsql` `.rpm` from [https://packages.microsoft.com/rhel/7/prod/](https://packages.microsoft.com/rhel/7/prod/).
+- Download the latest `msodbcsql` package from <https://packages.microsoft.com/rhel/7/prod/>.
 - Install dependencies and the driver.
 
 ```bash
@@ -570,7 +570,7 @@ sudo rpm -i  msodbcsql-13.1.X.X-X.x86_64.rpm #install the Driver
 
 #### [SLES 12 (ODBC 13 offline)](#tab/sles-offline)
 
-- Download the latest `msodbcsql` `.rpm` from [https://packages.microsoft.com/sles/12/prod/](https://packages.microsoft.com/sles/12/prod/).
+- Download the latest `msodbcsql` package from <https://packages.microsoft.com/sles/12/prod/>.
 - Install the dependencies and the driver.
 
 ```bash
@@ -586,7 +586,7 @@ ldd /opt/microsoft/msodbcsql/lib64/libmsodbcsql-*
 
 #### [Ubuntu 16.04 (ODBC 13 offline)](#tab/ubuntu-offline)
 
-- Download the latest `msodbcsql` `.deb` from [https://packages.microsoft.com/ubuntu/16.04/prod/pool/main/m/msodbcsql/](https://packages.microsoft.com/ubuntu/16.04/prod/pool/main/m/msodbcsql/).
+- Download the latest `msodbcsql` package from <https://packages.microsoft.com/ubuntu/16.04/prod/pool/main/m/msodbcsql/>.
 - Install dependencies and the driver.
 
 ```bash

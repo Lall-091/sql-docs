@@ -4,10 +4,10 @@ description: Learn about SQL Server Migration Assistant, a tool that automates d
 author: nilabjaball
 ms.author: niball
 ms.reviewer: randolphwest
-ms.date: 11/12/2025
+ms.date: 12/31/2025
 ms.service: sql
 ms.subservice: ssma
-ms.topic: conceptual
+ms.topic: article
 ms.collection:
   - sql-migration-content
 ---
@@ -50,7 +50,7 @@ The following target versions are supported for SSMA.
 
 ## Get SSMA support
 
-**Help and support for Microsoft SQL Server Migration Assistant (SSMA):**
+**Help and support for Microsoft SQL Server Migration Assistant (SSMA)**:
 
 - **Product help**: To access product support, launch SSMA, and select the Help menu or press the F1 key.
 

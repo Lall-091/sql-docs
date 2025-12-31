@@ -35,7 +35,7 @@ File size is approximately 90 MB.
 
 ::: moniker range=">=azuresqldb-mi-current"
 >[!NOTE]
->To restore the sample database on [Machine Learning Services in Azure SQL Managed Instance](/azure/azure-sql/managed-instance/machine-learning-services-overview), follow the instructions in [Quickstart: Restore a database to Azure SQL Managed Instance](/azure/azure-sql/managed-instance/restore-sample-database-quickstart) using the NYC Taxi demo database .bak file: [https://aka.ms/sqlmldocument/NYCTaxi_Sample.bak](https://aka.ms/sqlmldocument/NYCTaxi_Sample.bak).
+>To restore the sample database on [Machine Learning Services in Azure SQL Managed Instance](/azure/azure-sql/managed-instance/machine-learning-services-overview), follow the instructions in [Quickstart: Restore a database to Azure SQL Managed Instance](/azure/azure-sql/managed-instance/restore-sample-database-quickstart) using the [NYC Taxi demo database .bak file](https://aka.ms/sqlmldocument/NYCTaxi_Sample.bak).
 ::: moniker-end
 
 1. Download the [NYCTaxi_Sample.bak](https://aka.ms/sqlmldocument/NYCTaxi_Sample.bak) database backup file.
