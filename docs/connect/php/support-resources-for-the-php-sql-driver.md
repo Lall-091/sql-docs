@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 05/06/2020
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: article
 helpviewer_keywords:
   - "support"
 ---
@@ -40,11 +40,11 @@ For peer-to-peer support, visit the [IIS Forums](https://forums.iis.net/).
 
 ## PHP support resources
 
-[PHP for Windows Documentation](https://windows.php.net/)
+[PHP For Windows](https://windows.php.net) documentation.
 
-For the latest information about PHP, visit [http://www.php.net/](http://www.php.net).
+For the latest information about PHP, visit the [official site](http://www.php.net/).
 
-For PHP documentation, visit [http://www.php.net/docs.php](http://www.php.net/docs.php).
+For PHP documentation, see the [PHP Manual](https://www.php.net/docs.php).
 
 ## Microsoft customer support
 

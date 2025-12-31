@@ -38,7 +38,7 @@ Contains a row per vector index.
 
 ## Examples
 
-The following example returns all indexes for the table `[dbo].[wikipedia_articles_embeddings]` used in the [DiskANN sample](https://github.com/Azure-Samples/azure-sql-db-vector-search/tree/main/DiskANN/Wikipedia) available in the [https://github.com/Azure-Samples/azure-sql-db-vector-search](https://github.com/Azure-Samples/azure-sql-db-vector-search) GitHub sample repo.
+The following example returns all indexes for the table `[dbo].[wikipedia_articles_embeddings]` used in the [DiskANN sample](https://github.com/Azure-Samples/azure-sql-db-vector-search/tree/main/DiskANN/Wikipedia) available in the [GitHub sample repo](https://github.com/Azure-Samples/azure-sql-db-vector-search).
 
 ```sql
 SELECT

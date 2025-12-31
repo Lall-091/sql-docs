@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 01/28/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: article
 ---
 # Buffer pool extension
 
@@ -42,7 +42,7 @@ The following terms are applicable to the buffer pool extension feature.
 
 | Term | Description |
 | --- | --- |
-| **Solid-state drive (SSD)** | Solid-state drives store data in memory (RAM) in a persistent manner. For more information, see [the Wikipedia definition](https://en.wikipedia.org/wiki/Solid-state_drive). |
+| **Solid-state drive (SSD)** | Solid-state drives store data in memory (RAM) in a persistent manner. For more information, see [the Wikipedia definition](https://wikipedia.org/wiki/Solid-state_drive). |
 | **Buffer** | In [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], a buffer is an 8-KB page in memory, the same size as a data or index page. Thus, the buffer cache is divided into 8-KB pages. A page remains in the buffer cache until the buffer manager needs the buffer area to read in more data. Data is written back to disk only if it's modified. These in-memory modified pages are known as dirty pages. A page is clean when it's equivalent to its database image on disk. Data in the buffer cache can be modified multiple times before being written back to disk. |
 | **Buffer pool** | Also called *buffer cache*. The buffer pool is a global resource shared by all databases for their cached data pages. The maximum and minimum size of the buffer pool cache is determined during startup or when the instance of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] is dynamically reconfigured with [sp_configure](../../relational-databases/system-stored-procedures/sp-configure-transact-sql.md). This size determines the maximum number of pages that can be cached in the buffer pool at any time in the running instance.<br /><br />The maximum memory that can be committed by buffer pool extension can be limited by the other applications running on the machine, in case those applications create significant memory pressure. |
 | **Checkpoint** | A checkpoint creates a known good point from which the [!INCLUDE [ssDE](../../includes/ssde-md.md)] can start applying changes contained in the transaction log during recovery after an unexpected shutdown or crash. A checkpoint writes the dirty pages and transaction log information from memory to disk and, also, records information about the transaction log. For more information, see [Database checkpoints (SQL Server)](../../relational-databases/logs/database-checkpoints-sql-server.md). |

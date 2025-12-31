@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: mobile-reports
-ms.topic: conceptual
+ms.topic: article
 ms.custom:
   - updatefrequency5
 ---
@@ -25,22 +25,22 @@ Designed by a private company, this format is now a widespread semi-open format 
 
 The base files names must match, for example, `canada.shp` and `canada.dbf`. The metadata must include the field **NAME** with the value of the corresponding shape's name, or key, to be used when populating the map with data.
 
-The two map files together, the SHP and the DBF, can be no bigger than 512 KB. If your map files are too large, use a tool like [https://mapshaper.org/](https://mapshaper.org/) to reduce their size.
+The two map files together, the SHP and the DBF, can be no bigger than 512 KB. If your map files are too large, use a tool like [**mapshaper**](https://mapshaper.org/) to reduce their size.
 
 See how to [add custom maps to mobile reports](add-a-custom-map-to-a-reporting-services-mobile-report.md).
 
 ## Technical information
 
-- The official specification: [https://www.esri.com/library/whitepapers/pdfs/shapefile.pdf](https://www.esri.com/content/dam/esrisites/sitecore-archive/Files/Pdfs/library/whitepapers/pdfs/shapefile.pdf)
-- The Wikipedia shapefile article: [https://en.wikipedia.org/wiki/Shapefile](https://en.wikipedia.org/wiki/Shapefile)
+- The [official shapefile specification](https://www.esri.com/content/dam/esrisites/sitecore-archive/Files/Pdfs/library/whitepapers/pdfs/shapefile.pdf)
+- The [Wikipedia shapefile article](https://wikipedia.org/wiki/Shapefile)
 
 ## Create and edit map geometry
 
 Creating and editing shapefiles is a complex process that is beyond the scope of this document. Here are some resources and applications to help you get started:
 
-- ArcGIS: [https://www.arcgis.com/](https://www.arcgis.com/index.html)
-- MAPublisher plug-in for Adobe Illustrator: [https://www.avenza.com/mapublisher](https://www.avenza.com/mapublisher)
-- QuantumGIS (free): [https://www.qgis.org/](https://www.qgis.org/en/site)
+- [ArcGIS](https://www.arcgis.com/index.html)
+- [MAPublisher](https://www.avenza.com/mapublisher) plug-in for Adobe Illustrator
+- [QuantumGIS](https://www.qgis.org/en/site) (free)
 
 ## Related content
 

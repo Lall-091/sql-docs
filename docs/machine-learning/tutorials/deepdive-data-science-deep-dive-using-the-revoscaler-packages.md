@@ -44,7 +44,7 @@ R developers typically use IDEs for writing and debugging R code. Here are some 
 
 - **R Tools for Visual Studio** (RTVS) is a free plug-in that provides Intellisense, debugging, and support for Microsoft R. You can use it with SQL Server Machine Learning Services. To download, see [R Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019).
 
-- **RStudio** is one of the more popular environments for R development. For more information, see [https://www.rstudio.com/products/RStudio/](https://www.rstudio.com/products/RStudio/).
+- **RStudio** is one of the more popular environments for R development. For more information, see [RStudio](https://www.rstudio.com/products/RStudio/).
 
 - Basic R tools (R.exe, RTerm.exe, RScripts.exe) are also installed by default when you install R in SQL Server or R Client. If you do not wish to install an IDE, you can use built-in R tools to execute the code in this tutorial.
 

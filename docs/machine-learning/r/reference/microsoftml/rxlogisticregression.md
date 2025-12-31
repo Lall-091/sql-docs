@@ -277,10 +277,10 @@ Microsoft Corporation [`Microsoft Technical Support`](https://go.microsoft.com/f
 
  ## References
 
-[` Wikipedia: L-BFGS`](https://en.wikipedia.org/wiki/L-BFGS)
+[` Wikipedia: L-BFGS`](https://wikipedia.org/wiki/L-BFGS)
 
 
-[`regression`](https://en.wikipedia.org/wiki/Logistic_regression)
+[`regression`](https://wikipedia.org/wiki/Logistic_regression)
 
 
 [`Training of L1-Regularized Log-Linear Models`](https://research.microsoft.com/apps/pubs/default.aspx?id=78900)

@@ -23,7 +23,7 @@ This article shows you how to implement [dynamic data masking](dynamic-data-mask
 
 ## Enable dynamic data masking
 
-1. Launch the Azure portal at [https://portal.azure.com](https://portal.azure.com).
+1. Launch the [Azure portal](https://portal.azure.com).
 1. Go to your database resource in the Azure portal. 
 1. Under the **Security** section, select **Dynamic Data Masking**. 
 1. In the **Dynamic Data Masking** configuration page, you might see some database columns that the recommendations engine has flagged for masking. In order to accept the recommendations, select **Add Mask** for one or more columns, and a mask is created based on the default type for this column. You can change the masking function by selecting on the masking rule and editing the masking field format to a different format of your choice. Select **Save** to save your settings. In the following screenshot, you can see recommended dynamic data masks for the sample `AdventureWorksLT` database.

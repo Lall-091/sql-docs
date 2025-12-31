@@ -53,7 +53,7 @@ An integer from 0 through 255. `CHAR` returns a `NULL` value for integer express
 Many common character sets share ASCII as a subset and returns the same character for integer values in the range 0 through 127.
 
 > [!NOTE]  
-> Some character sets, such as [Unicode](https://en.wikipedia.org/wiki/Unicode#Mapping_and_encodings) and [Shift Japanese Industrial Standards](https://en.wikipedia.org/wiki/Shift_JIS), include characters that can be represented in a single-byte coding scheme, but require multibyte encoding. For more information on character sets, see [Single-Byte and Multibyte Character Sets](/cpp/c-runtime-library/single-byte-and-multibyte-character-sets).
+> Some character sets, such as [Unicode](https://wikipedia.org/wiki/Unicode#Mapping_and_encodings) and [Shift Japanese Industrial Standards](https://wikipedia.org/wiki/Shift_JIS), include characters that can be represented in a single-byte coding scheme, but require multibyte encoding. For more information on character sets, see [Single-Byte and Multibyte Character Sets](/cpp/c-runtime-library/single-byte-and-multibyte-character-sets).
 
 ## Return types
 

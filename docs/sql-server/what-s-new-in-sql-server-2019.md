@@ -89,7 +89,7 @@ Monitoring improvements unlock performance insights over any database workload, 
 | --- | --- |
 | `WAIT_ON_SYNC_STATISTICS_REFRESH` | A new wait type in `sys.dm_os_wait_stats` dynamic management view. It shows the accumulated instance-level time spent on synchronous statistics refresh operations. See [sys.dm_os_wait_stats](../relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql.md). |
 | Custom capture policy for Query Store | When this policy is enabled, additional Query Store configurations are available under a new Query Store Capture Policy setting, to fine-tune data collection in a specific server. See [ALTER DATABASE SET options](../t-sql/statements/alter-database-transact-sql-set-options.md). |
-| `LIGHTWEIGHT_QUERY_PROFILING` | A new database scoped configuration. See [`LIGHTWEIGHT_QUERY_PROFILING`](../t-sql/statements/alter-database-scoped-configuration-transact-sql.md#lqp). |
+| `LIGHTWEIGHT_QUERY_PROFILING` | A new database scoped configuration. See [LIGHTWEIGHT_QUERY_PROFILING](../t-sql/statements/alter-database-scoped-configuration-transact-sql.md#lqp). |
 | `sys.dm_exec_requests` column `command` | Shows `SELECT (STATMAN)` if a `SELECT` is waiting for a synchronous statistics update operation to finish before it continues the query execution. See [sys.dm_exec_requests](../relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql.md). |
 | `sys.dm_exec_query_plan_stats` | A new dynamic management function (DMF) that returns the equivalent of the last known actual execution plan for all queries. See [sys.dm_exec_query_plan_stats](../relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql.md). |
 | `LAST_QUERY_PLAN_STATS` | A new database-scoped configuration that enables `sys.dm_exec_query_plan_stats`. See [ALTER DATABASE SCOPED CONFIGURATION](../t-sql/statements/alter-database-scoped-configuration-transact-sql.md). |
@@ -260,7 +260,7 @@ This release of SQL Server Reporting Services features support for Azure SQL Man
 
 ## Related content
 
-- [`SqlServer` PowerShell module](https://www.powershellgallery.com/packages/Sqlserver/22.4.5.1)
+- [SqlServer PowerShell module](https://www.powershellgallery.com/packages/Sqlserver/22.4.5.1)
 - [SQL Server PowerShell documentation](/powershell/sql-server/sql-server-powershell)
 - [SQL Server Workshops](https://aka.ms/sqlworkshops)
 - [SQL Server 2019 release notes](sql-server-2019-release-notes.md)

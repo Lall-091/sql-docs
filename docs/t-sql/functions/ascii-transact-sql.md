@@ -42,7 +42,7 @@ An [expression](../../t-sql/language-elements/expressions-transact-sql.md) of ty
  **int**  
   
 ## Remarks
-ASCII stands for **A**merican **S**tandard **C**ode for **I**nformation **I**nterchange. It serves as a character encoding standard for modern computers. See the **Printable characters** section of [ASCII](https://www.wikipedia.org/wiki/ASCII) for a list of ASCII characters.
+ASCII stands for **A**merican **S**tandard **C**ode for **I**nformation **I**nterchange. It serves as a character encoding standard for modern computers. See the **Printable characters** section of [ASCII](https://wikipedia.org/wiki/ASCII) for a list of ASCII characters.
 
 ASCII is a 7-bit character set. Extended ASCII or High ASCII is an 8-bit character set that is not handled by the `ASCII` function. 
 

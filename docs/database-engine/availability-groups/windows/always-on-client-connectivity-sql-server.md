@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 07/29/2022
 ms.service: sql
 ms.subservice: availability-groups
-ms.topic: conceptual
+ms.topic: article
 helpviewer_keywords:
   - "Availability Groups [SQL Server], listeners"
   - "Availability Groups [SQL Server], prerequisites and restrictions"
@@ -37,11 +37,11 @@ The following table summarizes driver support for [!INCLUDE[ssHADR](../../../inc
 |[Microsoft JDBC Driver 4.0+ for SQL Server](../../../connect/jdbc/microsoft-jdbc-driver-for-sql-server.md)|Yes|Yes|Yes|Yes|Yes|  
 |[Microsoft OLE DB Driver for SQL Server](../../../connect/oledb/oledb-driver-for-sql-server.md) <sup>3</sup>|Yes|Yes|Yes|Yes|Yes|
 
-<sup>1</sup> Download the connectivity patch for ADO .NET with .NET Framework 4.0: [https://support.microsoft.com/kb/2600211](https://support.microsoft.com/kb/2600211).
+<sup>1</sup> Download the [connectivity patch for ADO .NET with .NET Framework 4.0](https://support.microsoft.com/kb/2600211).
 
-<sup>2</sup> Download the connectivity patch for ADO.NET with .NET Framework 3.5 SP1: [https://support.microsoft.com/kb/2654347](https://support.microsoft.com/kb/2654347).
+<sup>2</sup> Download the [connectivity patch for ADO.NET with .NET Framework 3.5 SP1](https://support.microsoft.com/kb/2654347).
 
-<sup>3</sup> Download Microsoft OLE DB Driver for SQL Server: [https://aka.ms/downloadmsoledbsql](../../../connect/oledb/download-oledb-driver-for-sql-server.md).
+<sup>3</sup> Download the [Microsoft OLE DB Driver for SQL Server](../../../connect/oledb/download-oledb-driver-for-sql-server.md).
 
 > [!IMPORTANT]  
 > To connect to an availability group listener, a client must use a TCP connection string.

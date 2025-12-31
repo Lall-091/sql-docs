@@ -39,7 +39,7 @@ The `mssql-python` driver doesn't require any external dependencies on Windows m
 
 - [(Optional) Azure Command-Line Interface (CLI)](/cli/azure/install-azure-cli)
 
-- If you don't already have `uv`, install `uv` by following the instructions from [https://docs.astral.sh/uv/getting-started/installation/](https://docs.astral.sh/uv/getting-started/installation/).
+- If you don't already have `uv`, follow the [installation instructions](https://docs.astral.sh/uv/getting-started/installation/).
 - A database on SQL Server, Azure SQL Database, or SQL database in Fabric with the [!INCLUDE [sssampledbobject-md](../../../includes/sssampledbobject-md.md)] sample schema and a valid connection string.
 - Install one-time operating system specific prerequisites.
 

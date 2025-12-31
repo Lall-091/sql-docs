@@ -133,7 +133,7 @@ On a computer with Internet access:
     , @script = N'print(R.version)'
    ```
 
-1. Download the latest **sqlmlutils** file (`.zip` for Windows, `.tar.gz` for Linux) from [https://github.com/microsoft/sqlmlutils/releases](https://github.com/microsoft/sqlmlutils/releases). Don't expand the file.
+1. Download the latest **sqlmlutils** file (`.zip` for Windows, `.tar.gz` for Linux) from the [GitHub repository](https://github.com/microsoft/sqlmlutils/releases). Don't expand the file.
 
 1. Copy the entire **odbc** repository folder and the **sqlmlutils** file to the client computer.
 

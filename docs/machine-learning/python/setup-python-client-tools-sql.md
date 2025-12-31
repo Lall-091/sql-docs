@@ -53,9 +53,9 @@ An installation script adds three Microsoft-specific libraries to the Python cli
 
 1. Download an installation script. On the appropriate following GitHub page, select **Download raw file**.
 
-   + [https://aka.ms/mls-py](https://aka.ms/mls-py) installs version 9.2.1 of the Microsoft Python packages. This version corresponds to a default SQL Server instance. 
+   + [Install-PyForMLS.ps1](https://aka.ms/mls-py) installs version 9.2.1 of the Microsoft Python packages. This version corresponds to a default SQL Server instance. 
 
-   + [https://aka.ms/mls93-py](https://aka.ms/mls93-py) installs version 9.3 of the Microsoft Python packages.
+   + [Install-PyForMLS.ps1](https://aka.ms/mls93-py) installs version 9.3 of the Microsoft Python packages.
 
 1. Open a PowerShell window with elevated administrator permissions (right-click **Run as administrator**).
 

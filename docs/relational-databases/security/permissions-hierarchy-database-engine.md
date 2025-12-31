@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: "03/23/2016"
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: article
 ms.custom:
   - sfi-image-nochange
   - ignite-2025
@@ -33,7 +33,7 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
  ![Diagram of Database Engine permissions hierarchies](../../relational-databases/security/media/wj-security-layers.gif "Diagram of Database Engine permissions hierarchies")  
   
 ## Chart of SQL Server Permissions  
- For a poster sized chart of all [!INCLUDE[ssDE](../../includes/ssde-md.md)] permissions in pdf format, see [https://aka.ms/sql-permissions-poster](https://aka.ms/sql-permissions-poster).  
+ For a poster sized chart of all [!INCLUDE [ssDE](../../includes/ssde-md.md)] permissions in PDF format, see <https://aka.ms/sql-permissions-poster>.
   
 ## Working with Permissions  
  Permissions can be manipulated with the familiar [!INCLUDE[tsql](../../includes/tsql-md.md)] queries GRANT, DENY, and REVOKE. Information about permissions is visible in the [sys.server_permissions](../../relational-databases/system-catalog-views/sys-server-permissions-transact-sql.md) and [sys.database_permissions](../../relational-databases/system-catalog-views/sys-database-permissions-transact-sql.md) catalog views. There is also support for querying permissions information by using built-in functions.  

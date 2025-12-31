@@ -325,7 +325,7 @@ memory.
 
 ## References
 
-[Wikipedia: Random forest](https://en.wikipedia.org/wiki/Random_forest)
+[Wikipedia: Random forest](https://wikipedia.org/wiki/Random_forest)
 
 [Quantile regression forest](http://jmlr.org/papers/volume7/meinshausen06a/meinshausen06a.pdf)
 

@@ -8,7 +8,7 @@ ms.reviewer: scoriani, mathoma
 ms.date: 06/13/2025
 ms.service: azure-sql
 ms.subservice: scale-out
-ms.topic: conceptual
+ms.topic: article
 monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
 ms.custom:
   - sqldbrb=1
@@ -269,13 +269,13 @@ These DMVs are particularly useful:
 
 The following limitations currently apply to elastic database transactions in *Azure SQL Database*:
 
-- Only transactions across databases in SQL Database are supported. Other [X/Open XA](https://en.wikipedia.org/wiki/X/Open_XA) resource providers and databases outside of SQL Database can't participate in elastic database transactions. That means that elastic database transactions can't stretch across on-premises SQL Server and Azure SQL Database. For distributed transactions on premises, continue to use MSDTC.
+- Only transactions across databases in SQL Database are supported. Other [X/Open XA](https://wikipedia.org/wiki/X/Open_XA) resource providers and databases outside of SQL Database can't participate in elastic database transactions. That means that elastic database transactions can't stretch across on-premises SQL Server and Azure SQL Database. For distributed transactions on premises, continue to use MSDTC.
 - Only client-coordinated transactions from a .NET application are supported. Server-side support for T-SQL such as `BEGIN DISTRIBUTED TRANSACTION` is planned, but not yet available.
 - Transactions across WCF services aren't supported. For example, you have a WCF service method that executes a transaction. Enclosing the call within a transaction scope will fail as a [System.ServiceModel.ProtocolException](/dotnet/api/system.servicemodel.protocolexception).
 
 The following limitations currently apply to distributed transactions (also known as elastic transactions or natively supported distributed transactions) in *Azure SQL Managed Instance*:
 
-- With this technology, only transactions across databases in managed instances are supported. For all other scenarios that might include [X/Open XA](https://en.wikipedia.org/wiki/X/Open_XA) resource providers and databases outside of Azure SQL Managed Instance you should configure [Distributed Transaction Coordinator (DTC) for Azure SQL Managed Instance](../managed-instance/distributed-transaction-coordinator-dtc.md).
+- With this technology, only transactions across databases in managed instances are supported. For all other scenarios that might include [X/Open XA](https://wikipedia.org/wiki/X/Open_XA) resource providers and databases outside of Azure SQL Managed Instance you should configure [Distributed Transaction Coordinator (DTC) for Azure SQL Managed Instance](../managed-instance/distributed-transaction-coordinator-dtc.md).
 - Transactions across WCF services aren't supported. For example, you have a WCF service method that executes a transaction. Enclosing the call within a transaction scope will fail as a [System.ServiceModel.ProtocolException](/dotnet/api/system.servicemodel.protocolexception).
 - Azure SQL Managed Instance must be part of a [Set up trust between instances with server trust group (Azure SQL Managed Instance)](../managed-instance/server-trust-group-overview.md) in order to participate in distributed transaction.
 - Limitations of [Set up trust between instances with server trust group (Azure SQL Managed Instance)](../managed-instance/server-trust-group-overview.md) affect distributed transactions.

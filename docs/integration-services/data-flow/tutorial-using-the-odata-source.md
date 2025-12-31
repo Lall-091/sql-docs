@@ -39,7 +39,7 @@ ms.topic: how-to
   
 5.  Click **New...** to add a new OData Connection Manager.  
   
-6.  Enter the OData service URL for **Service document location**. This URL can be the URL to the service document, or to a specific feed or entity. For the purpose of this tutorial, enter the URL to the service document: [https://services.odata.org/V3/Northwind/Northwind.svc/](https://services.odata.org/V3/Northwind/Northwind.svc/).  
+6.  Enter the OData service URL for **Service document location**. This URL can be the URL to the service document, or to a specific feed or entity. For the purpose of this tutorial, enter the URL to the service document: <https://services.odata.org/V3/Northwind/Northwind.svc/>.  
   
 7.  Confirm that **Windows Authentication** is selected for the **authentication** to use to access the OData Service. **Windows Authentication** is selected by default.  
   

@@ -7,7 +7,7 @@ ms.reviewer: derekw, randolphwest
 ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: article
 ms.custom:
   - ignite-2025
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current || =fabric-sqldb"
@@ -27,7 +27,7 @@ Watch this video for an overview of intelligent query processing:
 
 > [!VIDEO https://learn-video.azurefd.net/vod/player?show=data-exposed&ep=how-sql-is-getting-smarter-intelligent-query-processing-2017-to-today-data-exposed]
 
-For demos and sample code of intelligent query processing (IQP) features on GitHub, visit [https://aka.ms/IQPDemos](https://aka.ms/IQPDemos).
+For demos and sample code of intelligent query processing (IQP) features, see the [GitHub sample repository](https://aka.ms/IQPDemos).
 
 You can make workloads automatically eligible for intelligent query processing by enabling the applicable database compatibility level for the database. You can set this using [!INCLUDE [tsql](../../includes/tsql-md.md)]. For example:
 

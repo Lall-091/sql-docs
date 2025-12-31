@@ -21,7 +21,7 @@ This article describes the API, along with an overview of OLAP and MDX for R use
 
 ## What is an OLAP cube?
 
-OLAP is short for Online Analytical Processing. OLAP solutions are widely used for capturing and storing critical business data over time. OLAP data is consumed for business analytics by a variety of tools, dashboards, and visualizations. For more information, see [Online analytical processing](https://en.wikipedia.org/wiki/Online_analytical_processing).
+OLAP is short for Online Analytical Processing. OLAP solutions are widely used for capturing and storing critical business data over time. OLAP data is consumed for business analytics by a variety of tools, dashboards, and visualizations. For more information, see [Online analytical processing](https://wikipedia.org/wiki/Online_analytical_processing).
 
 Microsoft provides [Analysis Services](/analysis-services/analysis-services-overview), which lets you design, deploy, and query OLAP data in the form of _cubes_ or _tabular models_. A cube is a multi-dimensional database. _Dimensions_ are like facets of the data, or factors in R: you use dimensions to identify some particular subset of data that you want to summarize or analyze. For example, time is an important dimension, so much so that many OLAP solutions include multiple calendars defined by default, to use when slicing and summarizing data. 
 
@@ -116,5 +116,5 @@ An SSAS administrator can prevent locking issues by identifying and terminating 
 
 If you are new to OLAP or to MDX queries, see these Wikipedia articles: 
 
-+ [OLAP cubes](https://en.wikipedia.org/wiki/OLAP_cube)
-+ [MDX queries](https://en.wikipedia.org/wiki/MultiDimensional_eXpressions)
++ [OLAP cubes](https://wikipedia.org/wiki/OLAP_cube)
++ [MDX queries](https://wikipedia.org/wiki/MultiDimensional_eXpressions)
