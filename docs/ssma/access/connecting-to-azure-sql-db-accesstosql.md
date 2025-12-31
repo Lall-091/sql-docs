@@ -1,13 +1,13 @@
 ---
-title: "Connecting to Azure SQL Database (AccessToSQL)"
+title: "Connecting to Azure SQL (AccessToSQL)"
 description: Learn how to connect to a target instance of Azure SQL Database to migrate Access databases. SSMA obtains metadata about databases in Azure SQL Database.
 author: nilabjaball
 ms.author: niball
 ms.reviewer: randolphwest
-ms.date: 11/19/2024
+ms.date: 12/30/2025
 ms.service: sql
 ms.subservice: ssma
-ms.topic: conceptual
+ms.topic: article
 ms.collection:
   - sql-migration-content
 helpviewer_keywords:
@@ -20,7 +20,7 @@ helpviewer_keywords:
   - "Azure SQL, reconnecting"
   - "Azure SQL, synchronizing metadata"
 ---
-# Connecting to Azure SQL Database (AccessToSQL)
+# Connect to Azure SQL (AccessToSQL)
 
 To migrate Access databases to [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], you must connect to the target instance of [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]. When you connect, SQL Server Migration Assistant (SSMA) obtains metadata about all the databases in the instance of [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] and displays database metadata in the **Azure SQL Database Metadata Explorer**. SSMA stores information about which instance of [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] you're connected to, but doesn't store passwords.
 
@@ -42,16 +42,16 @@ The account that is used to connect to [!INCLUDE [ssazure-sqldb](../../includes/
 
 Before you convert Access database objects to [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] syntax, you must establish a connection to the instance of [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] where you want to migrate the Access database or databases.
 
-When you define the connection properties, you also specify the database where objects and data will be migrated. You can customize this mapping at the Access schema level after you connect to [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]. For more information, see [Mapping Source and Target Databases (AccessToSQL)](mapping-source-and-target-databases-accesstosql.md).
+When you define the connection properties, you also specify the database where objects and data are migrated. You can customize this mapping at the Access schema level after you connect to [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]. For more information, see [Map source and target databases](mapping-source-and-target-databases-accesstosql.md).
 
 > [!IMPORTANT]  
 > Before you try to connect to [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], make sure that your IP address is allowed through the [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] firewall.
 
 To connect to [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]:
 
-1. On the **File** menu, select **Connect to SQL Azure** (this option is enabled after the creation of a project).
+1. On the **File** menu, select **Connect to Azure SQL** (this option is enabled after the creation of a project).
 
-   If you previously connected to [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], the command name is **Reconnect to SQL Azure**.
+   If you previously connected to [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], the command name is **Reconnect to Azure SQL**.
 
 1. In the connection dialog box, enter or select the server name of [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)].
 
@@ -94,8 +94,8 @@ The procedure for reconnecting to [!INCLUDE [ssazure-sqldb](../../includes/ssazu
 
 ## Related content
 
-- [Migrating Access databases to SQL Server - Azure SQL Database (AccessToSQL)](migrating-access-databases-to-sql-server-azure-sql-db-accesstosql.md)
-- [Mapping Source and Target Databases (AccessToSQL)](mapping-source-and-target-databases-accesstosql.md)
-- [Setting Conversion and Migration Options (AccessToSQL)](setting-conversion-and-migration-options-accesstosql.md)
-- [Mapping Source and Target Data Types (AccessToSQL)](mapping-source-and-target-data-types-accesstosql.md)
-- [Converting Access Database Objects (AccessToSQL)](converting-access-database-objects-accesstosql.md)
+- [Migrate Access databases to SQL Server and Azure SQL](migrating-access-databases-to-sql-server-azure-sql-db-accesstosql.md)
+- [Map source and target databases](mapping-source-and-target-databases-accesstosql.md)
+- [Set conversion and migration options](setting-conversion-and-migration-options-accesstosql.md)
+- [Map source and target data types](mapping-source-and-target-data-types-accesstosql.md)
+- [Convert Access database objects](converting-access-database-objects-accesstosql.md)

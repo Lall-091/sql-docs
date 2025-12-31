@@ -1,13 +1,13 @@
 ---
 title: "Creating and Managing Projects (AccessToSQL)"
-description: Creating and Managing Projects (AccessToSQL)
+description: "Creating and Managing Projects (AccessToSQL)"
 author: nilabjaball
 ms.author: niball
 ms.reviewer: randolphwest
-ms.date: 11/12/2025
+ms.date: 12/30/2025
 ms.service: sql
 ms.subservice: ssma
-ms.topic: conceptual
+ms.topic: article
 ms.collection:
   - sql-migration-content
 f1_keywords:
@@ -43,11 +43,11 @@ SSMA contains several options for converting and synchronizing database objects 
 
    - For information about migration options, see [Project Settings (Migration)](project-settings-migration-accesstosql.md).
 
-   - For information about user interface options, see [Project Settings (GUI)](../sybase/project-settings-gui-sybasetosql.md).
+   - For information about user interface options, see [Project Settings (GUI)](project-settings-gui-accesstosql.md).
 
    - For more information about data type mapping settings, see [Project Settings (Type Mapping)](project-settings-type-mapping-accesstosql.md).
 
-   - For information about Azure SQL settings, see [Project Settings (Azure SQL Database)](project-settings-azure-sql-db-accesstosql.md).
+   - For information about Azure SQL settings, see [Project Settings (Azure SQL)](project-settings-azure-sql-db-accesstosql.md).
 
 > [!NOTE]  
 > Azure SQL settings are available only when you select **Migration to Azure SQL** while creating a project.
@@ -78,9 +78,9 @@ SSMA creates the project file. You can now perform the next step of [adding one 
 
 ## Customize project settings
 
-In addition to defining default project settings, which apply to all new SSMA projects, you can also customize the settings for each project. For more information, see [Setting Conversion and Migration Options](setting-conversion-and-migration-options-accesstosql.md).
+In addition to defining default project settings, which apply to all new SSMA projects, you can also customize the settings for each project. For more information, see [Set conversion and migration options](setting-conversion-and-migration-options-accesstosql.md).
 
-When you customize data type mappings between source and target databases, you can define mappings at the project, database, or object level. For more information about type mapping, see [Mapping Source and Target Data Types](mapping-source-and-target-data-types-accesstosql.md).
+When you customize data type mappings between source and target databases, you can define mappings at the project, database, or object level. For more information about type mapping, see [Map source and target data types](mapping-source-and-target-data-types-accesstosql.md).
 
 ## Save projects
 
@@ -110,9 +110,9 @@ When you open a project, it's disconnected from [!INCLUDE [ssNoVersion](../../in
 
 1. To reconnect to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], on the **File** menu, select **Reconnect to SQL Server**.
 
-1. To reconnect to Azure SQL, on the **File** menu, select **Reconnect to SQL Azure**.
+1. To reconnect to Azure SQL, on the **File** menu, select **Reconnect to Azure SQL**.
 
 ## Related content
 
-- [Migrating Access databases to SQL Server - Azure SQL Database](migrating-access-databases-to-sql-server-azure-sql-db-accesstosql.md)
-- [Adding and Removing Access Database Files](adding-and-removing-access-database-files-accesstosql.md)
+- [Migrate Access databases to SQL Server and Azure SQL](migrating-access-databases-to-sql-server-azure-sql-db-accesstosql.md)
+- [Add and remove Access database files](adding-and-removing-access-database-files-accesstosql.md)

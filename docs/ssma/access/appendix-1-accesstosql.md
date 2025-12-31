@@ -3,26 +3,101 @@ title: "Appendix - 1 (AccessToSQL)"
 description: "Appendix - 1 (AccessToSQL)"
 author: nilabjaball
 ms.author: niball
-ms.date: "01/19/2017"
+ms.reviewer: randolphwest
+ms.date: 12/30/2025
 ms.service: sql
 ms.subservice: ssma
-ms.topic: conceptual
-ms.collection:
-  - sql-migration-content
+ms.topic: article
+ai-usage: ai-assisted
 ---
 # Appendix - 1 (AccessToSQL)
-Quick view of the SSMA Console command line options:  
-  
-|Sl. No.|Switch|Required?|Switch Argument|Permitted Values|  
-|-----------|----------|-------------|-------------------|--------------------|  
-|1|-s/script|Yes|scriptfile|Valid XML file name.<br /><br />Console Script definition file.|  
-|2|-v/variable|No|variablevaluefile|Valid XML file name. If variables are used in script file, then this file must be specified.|  
-|3|-c/serverconnection|No|serverconnectionfile|Valid XML file name. This file contains server connection information.|  
-|4|-x/xmloutput|No|xmloutputfile|This option indicates console output in the XML format. If this option is not specified, the default output is in TEXT format.<br /><br />If xmloutputfile is not specified, XML output is directed to STDOUT.<br /><br />Xmloutputfile is the name of the file to which the console output is written in the XML format.|  
-|5|-l/log|No|logfile|Valid file name.|  
-|6|-e/projectenvironment|No|projectenvironmentfolder|Valid folder name containing SSMA project environment files.|  
-|7|-p/securepassword|No|-a/add {<server_id> [,...n] &#124; all} -c&#124;serverconnection  \<server-connection-file\> [-v&#124;variable \<variable-value-file\>] [-o/overwrite]<br /><br />or<br /><br />-a/add {<server_id> [,...n] &#124; all} -s&#124;script \<script-file\> [-v&#124;variable \<variable-value-file\>] [-o/overwrite]<br /><br />-r/remove {<server_id> [, ...n] &#124; all}<br /><br />-l/list<br /><br />-e/export {\<server-id\> [, ...n] &#124; all} <encrypted-password -file><br /><br />-i/import {\<server-id\> [, ...n] &#124; all} \<encrypted-password-file\>|If specified, this option must not be combined with any other options.<br /><br />server-id: A unique ID provided for a server {string}<br /><br />server-connection-file: server definition file (serverconnectionfile or scriptfile).<br /><br />variable-value-file: It is a variable definition file and used in server-connection-file.<br /><br />encrypted-password-file: It is a server passwords file encrypted using a user-specified pass-phrase.|  
-|8|-?|No|Not Applicable|Not Applicable|  
-  
-## See Also  
-[Executing the SSMA Console (Access)](./executing-the-ssma-console-accesstosql.md)  
+
+This article provides an overview of the SQL Server Migration Assistant (SSMA) Console command-line options.
+
+## Arguments
+
+#### `-s` or `script`
+
+- **Required**: Yes
+
+- **Switch argument**: *scriptfile*
+
+- **Permitted values**: Valid XML file name. Console script definition file.
+
+#### `-v` or `variable`
+
+- **Required**: No
+
+- **Switch argument**: *variablevaluefile*
+
+- **Permitted values**: Valid XML file name. If the script file uses variables, you must specify this file.
+
+#### `-c` or `serverconnection`
+
+- **Required**: No
+
+- **Switch argument**: *serverconnectionfile*
+
+- **Permitted values**: Valid XML file name. This file contains server connection information.
+
+#### `-x` or `xmloutput`
+
+- **Required**: No
+
+- **Switch argument**: *xmloutputfile*
+
+- **Permitted values**: Indicates console output in XML format. If you don't specify this option, the default output is in text format. If you don't specify *xmloutputfile*, XML output goes to `stdout`. *xmloutputfile* is the name of the file to which the console output is written in the XML format.
+
+#### `-l` or `log`
+
+- **Required**: No
+
+- **Switch argument**: *logfile*
+
+- **Permitted values**: Valid file name.
+
+#### `-e` or `projectenvironment`
+
+- **Required**: No
+
+- **Switch argument**: *projectenvironmentfolder*
+
+- **Permitted values**: Valid folder name containing SSMA project environment files.
+
+#### `-p` or `securepassword`
+
+- **Required**: No
+
+- **Switch arguments and forms**:
+
+  - `-a|add {<server_id> [,...n] | all} -c|serverconnection <server-connection-file> [-v|variable <variable-value-file>] [-o|overwrite]`
+
+  - `-a|add {<server_id> [,...n] | all} -s|script <script-file> [-v|variable <variable-value-file>] [-o|overwrite]`
+
+  - `-r|remove {<server_id> [, ...n] | all}`
+
+  - `-l|list`
+
+  - `-e|export {<server-id> [, ...n] | all} <encrypted-password-file>`
+
+  - `-i|import {<server-id> [, ...n] | all} <encrypted-password-file>`
+
+- **Notes**:
+
+  - Don't combine this option with other options.
+  - `server-id`: A unique ID you provide for a server (`string`).
+  - `server-connection-file`: Server definition file (*serverconnectionfile* or *scriptfile*).
+  - `variable-value-file`: A variable definition file used in `server-connection-file`.
+  - `encrypted-password-file`: A server passwords file encrypted with a user-specified passphrase.
+
+#### `-?`
+
+- **Required**: No
+
+- **Switch argument**: Not applicable
+
+- **Permitted values**: Not applicable
+
+## Related content
+
+- [Execute the SSMA Console](executing-the-ssma-console-accesstosql.md)

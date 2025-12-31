@@ -4,14 +4,14 @@ description: "Executing the SSMA Console (AccessToSQL)"
 author: nilabjaball
 ms.author: niball
 ms.reviewer: randolphwest
-ms.date: 11/12/2025
+ms.date: 12/30/2025
 ms.service: sql
 ms.subservice: ssma
-ms.topic: conceptual
+ms.topic: article
 ms.collection:
   - sql-migration-content
 ---
-# Executing the SSMA console (AccessToSQL)
+# Execute the SSMA Console (AccessToSQL)
 
 Microsoft provides you with a robust set of script file commands and command line options to execute and control SQL Server Migration Assistant (SSMA) activities. The ensuing sections detail the same.
 
@@ -96,9 +96,9 @@ The Database Connection commands help connect to the database.
 
 The **Browse** feature of the UI isn't supported in console.
 
-The `windows-authentication` and `port` parameters aren't applicable when connecting to SQL Azure.
+The `windows-authentication` and `port` parameters aren't applicable when connecting to Azure SQL.
 
-For more information, see [Creating script files](creating-script-files-accesstosql.md).
+For more information, see [Create script files](creating-script-files-accesstosql.md).
 
 ### `connect-source-database`
 
@@ -182,7 +182,7 @@ The `server` definition is retrieved from the name attribute defined for each co
 
 ### `connect-target-database`
 
-Connects to the target SQL Server or SQL Azure Database and loads high-level metadata of the target database but not the metadata entirely.
+Connects to the target SQL Server or Azure SQL Database and loads high-level metadata of the target database but not the metadata entirely.
 
 If the connection to the target can't be established, an error is generated and the console application stops further execution.
 
@@ -451,7 +451,7 @@ If the target database connection isn't performed before executing this command,
 
 - `object-type`: Specifies the type of the object specified in the object-name attribute (if object category is specified then object type is `category`).
 
-- `on-error`: Specifies whether to specify synchronization errors as warnings or error. Available options for on-error:
+- `on-error`: Specifies whether to specify synchronization errors as warnings or error. Available options:
 
   - `report-total-as-warning`
   - `report-each-as-warning`
@@ -503,7 +503,7 @@ Requires one or several metabase nodes as command line parameter.
 
 - `object-type`: Specifies the type of the object specified in the object-name attribute (if object category is specified then object type is `category`).
 
-- `on-error`: Specifies whether to specify refresh errors as warnings or error. Available options for on-error:
+- `on-error`: Specifies whether to specify refresh errors as warnings or error. Available options:
 
   - `report-total-as-warning`
   - `report-each-as-warning`
@@ -590,7 +590,7 @@ Or:
 ## Related content
 
 - [Command-line options in the SSMA Console](command-line-options-in-ssma-console-accesstosql.md)
-- [Working with the Sample Console Script FilesExecuting the SSMA Console](working-sample-console-script-filesexecuting-ssma-console-accesstosql.md)
-- [Managing Passwords](managing-passwords-accesstosql.md)
-- [Generating Reports](generating-reports-accesstosql.md)
+- [Work with sample scripts in the SSMA Console](working-sample-console-script-filesexecuting-ssma-console-accesstosql.md)
+- [Manage passwords](managing-passwords-accesstosql.md)
+- [Generate reports](generating-reports-accesstosql.md)
 - [Troubleshooting](troubleshooting-accesstosql.md)
