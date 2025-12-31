@@ -4,7 +4,7 @@ description: Exporting an Access inventory (AccessToSQL)
 author: nilabjaball
 ms.author: niball
 ms.reviewer: randolphwest
-ms.date: 11/12/2025
+ms.date: 12/30/2025
 ms.service: sql
 ms.subservice: ssma
 ms.topic: how-to
@@ -22,23 +22,23 @@ helpviewer_keywords:
 ---
 # Export an Access inventory (AccessToSQL)
 
-If you have multiple Access databases and you aren't sure which ones to migrate into [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], you can export an inventory of all Access databases in a project. You can then review and query the inventory metadata to determine which databases and objects within those databases to migrate. This inventory lets you quickly find answers to questions, such as the following list:
+If you have multiple Access databases and you're not sure which ones to migrate into [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], export an inventory of all Access databases in a project. You can review and query the inventory metadata to determine which databases and objects within those databases to migrate. This inventory helps you quickly find answers to questions such as the following list:
 
 - What are the largest databases?
 - Who owns most of the databases?
 - Which databases contain the same tables?
-- Which databases haven't been modified in the last six months?
+- Which databases weren't modified in the last six months?
 - Which databases contain private information?
 
-Query examples that are used to answer these questions are provided at the end of this article.
+Query examples that answer these questions are provided at the end of this article.
 
 ## Exported metadata
 
-SQL Server Migration Assistant (SSMA) exports metadata about Access databases, tables, columns, indexes, foreign keys, queries, reports, forms, macros, and modules. Metadata about each of these categories of items is exported to a separate table. For schemas of these tables, see [Access Inventory Schemas](access-inventory-schemas-accesstosql.md).
+SQL Server Migration Assistant (SSMA) exports metadata about Access databases, tables, columns, indexes, foreign keys, queries, reports, forms, macros, and modules. SSMA exports metadata about each of these categories of items to a separate table. For schemas of these tables, see [Access inventory schemas](access-inventory-schemas-accesstosql.md).
 
-## Export Inventory Data
+## Export inventory data
 
-To export an Access inventory, you must first open or create an SSMA project, and then add the Access database that you want to analyze. After you add databases to an SSMA project, you export metadata about those databases to a specified [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] database and schema. If necessary, SSMA creates tables to store the metadata. SSMA then adds the metadata about the Access databases to the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] database.
+To export an Access inventory, first open or create an SSMA project. Then add the Access database that you want to analyze. After you add databases to an SSMA project, you export metadata about those databases to a specified [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] database and schema. If necessary, SSMA creates tables to store the metadata. SSMA then adds the metadata about the Access databases to the [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] database.
 
 > [!NOTE]  
 > An Access database can be split into multiple files: a back-end database that contains tables and front-end databases that contain queries, forms, reports, macros, modules, and shortcuts. If you want to migrate a split database to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], add the front-end database to SSMA.
@@ -78,17 +78,17 @@ For more information about creating projects, see [Create and manage projects](c
 
 1. Select **Scan**.
 
-   The Scan page appears. This shows the databases that have been found and the search progress. To stop the search, select **Stop**.
+   The **Scan** page appears. This page shows the databases that the tool found and the search progress. To stop the search, select **Stop**.
 
-1. On the Select Files page, select each database that you want to add to the project.
+1. On the **Select Files** page, select each database that you want to add to the project.
 
-   You can use the **Select All** and **Clear All** buttons at the top of the list to select or clear all databases. You can also hold the CTRL key down to select multiple rows, or hold the SHIFT key down to select a range of rows.
+   You can use the **Select All** and **Clear All** buttons at the top of the list to select or clear all databases. You can also hold the <kbd>Ctrl</kbd> key down to select multiple rows, or hold the <kbd>Shift</kbd> key down to select a range of rows.
 
 1. Select **Next**.
 
-1. On the Verify page, select **Finish**.
+1. On the **Verify** page, select **Finish**.
 
-For more information about adding databases to projects, see [Adding and Removing Access Database Files](adding-and-removing-access-database-files-accesstosql.md).
+For more information about adding databases to projects, see [Add and remove Access database files](adding-and-removing-access-database-files-accesstosql.md).
 
 #### Connect to SQL Server
 
@@ -96,11 +96,11 @@ For more information about adding databases to projects, see [Adding and Removin
 
 1. In the connection dialog box, enter or select the name of the instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 
-   - If you're connecting to the default instance on the local computer, you can enter `localhost` or a dot (`.`).
+   - If you connect to the default instance on the local computer, enter `localhost` or a dot (`.`).
 
-   - If you're connecting to the default instance on another computer, enter the name of the computer.
+   - If you connect to the default instance on another computer, enter the name of the computer.
 
-   - If you're connecting to a named instance, enter the computer name, a backslash, and the instance name. For example: `MyServer\MyInstance`.
+   - If you connect to a named instance, enter the computer name, a backslash, and the instance name. For example: `MyServer\MyInstance`.
 
 1. In the **Database** box, enter the name of the target database for exported metadata.
 
@@ -108,7 +108,7 @@ For more information about adding databases to projects, see [Adding and Removin
 
 1. In the **Authentication** dropdown list, select the authentication type to use for the connection. To use the current Windows account, select **Windows Authentication**. To use a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] login, select **SQL Server Authentication**, and then provide a user name and password.
 
-For more information about connecting to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], see [Connecting to SQL Server](connecting-to-sql-server-accesstosql.md).
+For more information about connecting to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], see [Connect to SQL Server](connecting-to-sql-server-accesstosql.md).
 
 #### Export inventory information
 
@@ -126,11 +126,11 @@ Each time you export metadata, SSMA appends the data to the inventory. Existing 
 
 ## Query the exported metadata
 
-After you export metadata about Access databases, you can query the metadata. The following instructions describe to use the Query Editor window in [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] to run queries.
+After you export metadata about Access databases, you can query the metadata. The following instructions describe how to use the Query Editor window in [!INCLUDE [ssManStudioFull](../../includes/ssmanstudiofull-md.md)] to run queries.
 
 #### Query metadata
 
-1. Navigate to **SQL Server Management Studio** from the **Start** menu.
+1. Go to **SQL Server Management Studio** from the **Start** menu.
 
 1. In the **Connect to Server** dialog box, verify the settings, and then select **Connect**.
 
@@ -138,11 +138,11 @@ After you export metadata about Access databases, you can query the metadata. Th
 
 1. In the Query Editor window, enter a query. Some examples are shown in the following section.
 
-1. Press the F5 key to run the query.
+1. Press the <kbd>F5</kbd> key to run the query.
 
 ## Query examples
 
-Before you run any of the following queries, you should run a USE *database_name* query to make sure the queries are run against the database that contains the exported metadata. For example, if you exported metadata to a database named MyAccessMetadata, you would add the following statement at the beginning of the [!INCLUDE [tsql](../../includes/tsql-md.md)] code:
+Before you run any of the following queries, run a `USE database_name` query to make sure the queries run against the database that contains the exported metadata. For example, if you exported metadata to a database named `MyAccessMetadata`, you would add the following statement at the beginning of the [!INCLUDE [tsql](../../includes/tsql-md.md)] code:
 
 ```sql
 USE MyAccessMetadata;
@@ -179,7 +179,7 @@ FROM dbo.SSMA_Access_InventoryDatabases
 ORDER BY FileSize DESC;
 ```
 
-### Who is the owner of most of the databases?
+### Who owns most of the databases?
 
 The following query returns the database name and owner of each Access database, sorted by owner.
 
@@ -192,7 +192,7 @@ ORDER BY FileOwner;
 
 ### Which databases contain the same tables?
 
-The following query uses a subquery to find all table names that appear more than once in the list of tables, and then uses this list of tables to get the database name. The results are returned as the database name and then the table name, and are sorted by table name.
+The following query uses a subquery to find all table names that appear more than once in the list of tables. It then uses this list of tables to get the database name. The results are returned as the database name and then the table name, and are sorted by table name.
 
 ```sql
 SELECT DatabaseName,
@@ -221,7 +221,7 @@ ORDER BY DateModified;
 
 ### Which databases contain private information?
 
-Your Access databases might contain sensitive or personal information. You might want to move these databases to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to take advantage of its security features. If you know that columns containing sensitive data have a specific name, or contain specific characters, you can use a query to find all columns that contain that information. For example, you can find all columns that include the string `salary`. The query then returns the database name, table name, and column name.
+Your Access databases might contain sensitive or personal information. You might want to move these databases to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to take advantage of its security features. If you know that columns containing sensitive data have a specific name, or contain specific characters, use a query to find all columns that contain that information. For example, you can find all columns that include the string `salary`. The query then returns the database name, table name, and column name.
 
 ```sql
 SELECT DatabaseName,
@@ -235,8 +235,8 @@ FROM dbo.SSMA_Access_InventoryColumns AS C
 WHERE ColumnName LIKE '%salary%';
 ```
 
-If you don't know the column name, you can write a query to return all columns. To do this, remove the WHERE clause from the previous query.
+If you don't know the column name, write a query to return all columns by removing the `WHERE` clause from this query.
 
 ## Related content
 
-- [Preparing Access databases for migration](preparing-access-databases-for-migration-accesstosql.md)
+- [Prepare Access databases for migration](preparing-access-databases-for-migration-accesstosql.md)
