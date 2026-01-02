@@ -3,15 +3,13 @@ title: Availability Groups for SQL Server on Linux
 description: Learn about the characteristics of availability groups for SQL Server on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: vanto
-ms.date: 10/20/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: article
 ms.custom:
   - linux-related-content
 ---
-
 # Availability groups for SQL Server on Linux
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
@@ -79,6 +77,9 @@ sudo pcs resource update <AGResourceName> required_synchronized_secondaries_to_c
 ```bash
 sudo crm resource param ms-<AGResourceName> set required_synchronized_secondaries_to_commit <value>
 ```
+
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
 
 In this example, `<AGResourceName>` is the name of the resource configured for the AG, and `<value>` is 0, 1, or 2. To set it back to the default of Pacemaker managing the parameter, execute the same statement with no value.
 

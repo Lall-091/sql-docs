@@ -4,10 +4,10 @@ titleSuffix: SQL Server
 description: Resources and guidance for SQL Server users who are new to Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/21/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: article
 ms.custom:
   - linux-related-content
 ---
@@ -15,9 +15,9 @@ ms.custom:
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
-This article is intended to provide a learning path through an introduction of Linux concepts. Use the sections in the article as a guided learning path to familiarize yourself with the Linux environment.
+This article provides a learning path through an introduction to Linux concepts. Use the sections in the article as a guided learning path to familiarize yourself with the Linux environment.
 
-This isn't intended to be a comprehensive list but instead provides the bare minimum you need to help you administer and navigate your [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux environment. See the [full list of tutorials](https://www.linux.org/forums/linux-beginner-tutorials.123/) to learn more.
+This list isn't comprehensive but instead provides the bare minimum you need to help you administer and navigate your [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux environment. See the [full list of tutorials](https://www.linux.org/forums/linux-beginner-tutorials.123/) to learn more.
 
 ## What is Linux?
 
@@ -25,13 +25,17 @@ The [What is Linux](https://www.linux.org/threads/what-is-linux.4106/) module in
 
 ## Select a distribution
 
-After you know the history of Linux, decide which [distribution of Linux](https://www.linux.org/threads/selecting-a-linux-distribution.4117/) best suits your business needs. [SQL Server is supported](sql-server-linux-release-notes-2019.md#supported-platforms) on various distributions such as Red Hat Enterprise Linux (RHEL), SUSE Linux Enterprise Server (SLES), and Ubuntu.
+After you know the history of Linux, decide which [distribution of Linux](https://www.linux.org/threads/selecting-a-linux-distribution.4117/) best suits your business needs.
+
+[!INCLUDE [sssql25-md](../includes/sssql25-md.md)] is [supported](sql-server-linux-release-notes-2025.md#supported-platforms) on Red Hat Enterprise Linux (RHEL) and Ubuntu.
+
+[!INCLUDE [sssql22-md](../includes/sssql22-md.md)] and earlier versions are [also supported](sql-server-linux-release-notes-2022.md#supported-platforms) on SUSE Linux Enterprise Server (SLES).
 
 ## Get around directories
 
-After you have chosen the appropriate distribution of Linux, familiarize yourself with [getting around Linux directories](https://www.linux.org/threads/getting-around-in-linux-directories.4120/).
+After you choose the appropriate distribution of Linux, familiarize yourself with [getting around Linux directories](https://www.linux.org/threads/getting-around-in-linux-directories.4120/).
 
-This module will help you answer the following questions:
+This module helps you answer the following questions:
 
 - How to navigate between different files
 - How to identify a file from a directory
@@ -39,11 +43,11 @@ This module will help you answer the following questions:
 
 ## Install new software
 
-Next, learn how to [install new software](https://www.linux.org/threads/installing-new-software-debian-red-hat-slackware.4119/) on your new Linux operating system. This module details installing new software to the Debian and Red Hat Linux operating systems.
+Next, learn how to [install new software](https://www.linux.org/threads/installing-new-software-debian-red-hat-slackware.4119/) on your new Linux operating system. This module covers installing new software on the Debian and Red Hat Linux operating systems.
 
 ## Root versus system user
 
-Understand user permissions, and the difference between a [root user and a system user](https://www.linux.org/threads/when-to-work-as-root-when-to-work-as-a-system-user.4136/). This module helps you decide which user permissions are appropriate to use for which scenario.
+Understand user permissions, and the difference between a [root user and a system user](https://www.linux.org/threads/when-to-work-as-root-when-to-work-as-a-system-user.4136/). This module helps you decide which user permissions are appropriate for each scenario.
 
 ## File system and permissions
 
@@ -51,7 +55,7 @@ After you're familiar with recognizing different users and groups in Linux, lear
 
 ## Commands for system administration
 
-Introduce yourself to the [frequently used commands](https://www.linux.org/threads/commands-for-system-administration.4126/) system administrators rely on to control their Linux operating systems. These commands include: `df`, `du`, `TOP`, `ps`, `mkdir`, `rmdir`, `rm`, and `mv`.
+Introduce yourself to the [frequently used commands](https://www.linux.org/threads/commands-for-system-administration.4126/) that system administrators rely on to control their Linux operating systems. These commands include: `df`, `du`, `TOP`, `ps`, `mkdir`, `rmdir`, `rm`, and `mv`.
 
 ## Related content
 

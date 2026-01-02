@@ -4,7 +4,7 @@ description: Set up an availability group in SQL Server on Kubernetes using DH2i
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: randolphwest
-ms.date: 08/11/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: tutorial
@@ -21,7 +21,7 @@ This tutorial explains how to configure [!INCLUDE [ssnoversion-md](../includes/s
 
 - Microsoft supports data movement, AG, and [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] components. DH2i is responsible for support of the DxEnterprise product, which includes cluster and quorum management.
 
-- DxOperator is a software extension to Kubernetes that uses custom resource definitions to automate the deployment of DxEnterprise clusters. DxEnterprise then provides all of the instrumentation to create, configure, manage and provide automatic failover for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] AG workloads in Kubernetes. You can register for a [free DxEnterprise software license](https://dh2i.com/dxoperator-for-sql-server-kubernetes-deployments/). For more information, see the [DxOperator Quick Start Guide](https://support.dh2i.com/docs/guides/dxoperator/dxoperator-qsg/).
+- DxOperator is a software extension to Kubernetes that uses custom resource definitions to automate the deployment of DxEnterprise clusters. DxEnterprise then provides all of the instrumentation to create, configure, manage and provide automatic failover for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] AG workloads in Kubernetes. You can register for a [free DxEnterprise software license](https://dh2i.com/dxoperator-for-sql-server-kubernetes-deployments/). For more information, see the [DxOperator Quick Start Guide](https://support.dh2i.com/dxoperator/guides/dxoperator-qsg).
 
 Using the steps mentioned in this article, learn how to deploy a StatefulSet and use the DH2i DxOperator to create and configure an AG with three replicas, hosted on AKS.
 
@@ -89,7 +89,7 @@ To install DxOperator, you must download the DxOperator YAML file using the foll
 
    ```bash
    curl -L https://dxoperator.dh2i.com/dxesqlag/files/v1.yaml -o DxOperator.yaml
-   kubectl apply –f DxOperator.yaml
+   kubectl apply -f DxOperator.yaml
    ```
 
 1. After you install the operator you can deploy [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] containers, configure the availability group, define replicas, deploy and configure the DxEnterprise cluster. Here is a sample deployment YAML file called `DxEnterpriseSqlAg.yaml`, which you can change to suit your requirements.
@@ -126,7 +126,7 @@ To install DxOperator, you must download the DxOperator YAML file using the foll
            clusterSecret: dxe
            vhostName: VHOST1
            joinExistingCluster: false
-           # QoS – guaranteed (uncomment to apply)
+           # QoS - guaranteed (uncomment to apply)
            #resources:
              #limits:
                #memory: 1Gi
@@ -144,7 +144,7 @@ To install DxOperator, you must download the DxOperator YAML file using the foll
            acceptEula: true
            mssqlPID: Developer
            mssqlConfigMap: mssql-config
-           # QoS – guaranteed (uncomment to apply)
+           # QoS - guaranteed (uncomment to apply)
            #resources:
              #limits:
                #memory: 2Gi
@@ -204,7 +204,7 @@ kubectl get pods
 kubectl get services
 ```
 
-You should see output similar to the following example.
+The output looks similar to the following example:
 
 ```output
 NAME                     TYPE           CLUSTER-IP   EXTERNAL-IP     PORT(S)                                         AGE
@@ -226,7 +226,7 @@ contoso-sql-2   2/2     Running   0          74m
 
 ## Related content
 
-- [Deploy availability groups on Kubernetes with DH2i DxOperator on Azure Kubernetes Service and Rancher by SUSE](tutorial-sql-server-containers-kubernetes-dxoperator-rancher-suse.md)
+- [Deploy SQL Server containers and availability group with DH2i DxOperator on Azure Kubernetes Service via Rancher](tutorial-sql-server-containers-kubernetes-dxoperator-rancher-suse.md)
 - [Deploy availability groups with DH2i DxEnterprise on Kubernetes](tutorial-sql-server-containers-kubernetes-dh2i.md)
-- [Deploy SQL Server containers on Azure Kubernetes Service](quickstart-sql-server-containers-azure.md)
+- [Quickstart: Deploy a SQL Server container cluster on Azure or Red Hat OpenShift](quickstart-sql-server-containers-azure.md)
 - [Deploy SQL Server Linux containers on Kubernetes with StatefulSets](sql-server-linux-kubernetes-best-practices-statefulsets.md)

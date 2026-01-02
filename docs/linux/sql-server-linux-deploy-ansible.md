@@ -4,7 +4,7 @@ description: Learn how to deploy SQL Server on Linux to several managed nodes us
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh
-ms.date: 07/03/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: quickstart
@@ -17,9 +17,9 @@ ms.custom:
 
 This quickstart takes you through the steps to automate a SQL Server on Linux deployment on Azure Virtual Machines, using an [Ansible](/azure/developer/ansible/overview) playbook.
 
-[Ansible](https://www.ansible.com/) is an open-source product that automates cloud provisioning, configuration management, and application deployments.
+[Ansible](https://www.redhat.com/ansible-collaborative) is an open-source product that automates cloud provisioning, configuration management, and application deployments.
 
-[Ansible playbooks](https://docs.ansible.com/ansible/latest/playbooks.html) allow you to direct Ansible to configure your environment. Playbooks are coded using YAML so as to be human-readable.
+[Ansible playbooks](https://docs.ansible.com/projects/ansible/latest/playbooks.html) allow you to direct Ansible to configure your environment. Playbooks are coded using YAML so as to be human-readable.
 
 ## Prerequisites
 
@@ -53,7 +53,7 @@ You can check that the installation was successful with the following command:
 ansible --version
 ```
 
-You see output similar to the following example:
+The output looks similar to the following example:
 
 ```output
 ansible [core 2.12.2]
@@ -69,7 +69,7 @@ ansible [core 2.12.2]
 
 ## Edit `hosts` file on controller node
 
-Ansible creates a `hosts` file is in the `/etc/ansible` directory. Edit this file using your favorite editor to add the managed node details, either as a group entry, or as ungrouped entries. For information on how to create your own inventory, see [How to build your inventory](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html).
+Ansible creates a `hosts` file is in the `/etc/ansible` directory. Edit this file using your favorite editor to add the managed node details, either as a group entry, or as ungrouped entries. For information on how to create your own inventory, see [How to build your inventory](https://docs.ansible.com/projects/ansible/latest/user_guide/intro_inventory.html).
 
 In this example using the `hosts` file, the IP address for the first managed node is 10.0.0.12, and the IP address for the second managed node is 10.0.0.14.
 

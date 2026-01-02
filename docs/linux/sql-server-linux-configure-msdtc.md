@@ -3,7 +3,7 @@ title: How to Configure MSDTC on Linux
 description: In this article, learn how to configure the Microsoft Distributed Transaction Coordinator (MSDTC) on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/24/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -109,6 +109,9 @@ It's important to configure the firewall before configuring port routing in the 
 
 Configure the Linux server routing table so that RPC communication on port 135 is redirected to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance's `network.rpcport`. The configuration mechanism for port forwarding might differ on different distributions. The following sections provide guidance for Ubuntu, SUSE Enterprise Linux (SLES), and Red Hat Enterprise Linux (RHEL).
 
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
+
 ### [Port routing in Ubuntu and SLES](#tab/ubuntu)
 
 Ubuntu and SLES don't use the **firewalld** service, so **iptables** rules are an efficient mechanism to achieve port routing. The **iptables** rules might not persist during restarts, so the following commands also provide instructions for restoring the rules after a restart.
@@ -172,7 +175,7 @@ At this point, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] should
 sudo netstat -tulpn | grep sqlservr
 ```
 
-You should see output similar to the following example:
+The output looks similar to the following example:
 
 ```output
 tcp 0 0 0.0.0.0:1433 0.0.0.0:* LISTEN 13911/sqlservr

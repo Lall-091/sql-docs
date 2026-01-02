@@ -3,7 +3,7 @@ title: Security Considerations for SQL Server on Linux
 description: Learn about SQL Server on Linux security overview, security best practices, restrictions, including how using keys stored in Azure Key Vault and extensible Key Management aren't supported.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/24/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: article
@@ -22,7 +22,7 @@ This article assumes that you deployed [!INCLUDE [ssnoversion-md](../includes/ss
 
 Security practices vary based on the Linux distribution you're using. For detailed guidance, contact your distribution provider and review their recommended best practices. You can also refer to documentation such as:
 
-- [Red Hat Enterprise Linux security hardening](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/security_hardening/index)
+- [Red Hat Enterprise Linux security hardening](https://docs.redhat.com/documentation/red_hat_enterprise_linux/9/html/security_hardening/index)
 - [Ubuntu: Security suggestions](https://documentation.ubuntu.com/server/explanation/security/security_suggestions/)
 
 Always validate your chosen platform and configuration in a controlled test environment before deploying to production.

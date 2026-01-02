@@ -3,11 +3,11 @@ title: Pacemaker for Availability Groups and Failover Cluster Instances on Linux
 description: Learn about using Pacemaker for high availability options for SQL Server on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: vanto, amitkh-msft
-ms.date: 07/03/2025
+ms.reviewer: amitkh-msft
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: article
 ms.custom:
   - linux-related-content
 ---
@@ -41,6 +41,9 @@ For full documentation on Pacemaker, including a more in-depth explanation of wh
 - [RHEL](https://docs.redhat.com/documentation/red_hat_enterprise_linux/9/html/configuring_and_managing_high_availability_clusters/index)
 - [SLES](https://documentation.suse.com/sle-ha/15-SP2/html/SLE-HA-all/book-sleha-guide.html)
 - [Ubuntu](https://documentation.ubuntu.com/server/explanation/intro-to/high-availability/)
+
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
 
 For more information about the whole stack, also see the official [Pacemaker documentation page](https://clusterlabs.org/projects/pacemaker/) on the ClusterLabs site.
 

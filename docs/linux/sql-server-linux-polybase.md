@@ -4,10 +4,10 @@ description: Learn how to connect to ODBC data sources with PolyBase on SQL Serv
 author: HugoMSFT
 ms.author: hudequei
 ms.reviewer: mikeray, randolphwest
-ms.date: 07/15/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: article
 ms.custom:
   - build-2025
   - linux-related-content
@@ -46,7 +46,7 @@ The following example demonstrates the SQL ODBC driver on Ubuntu.
       curl https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list
       ```
 
-1. Update the package list
+1. Update the package list:
 
    ```bash
    sudo apt update

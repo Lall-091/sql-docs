@@ -3,7 +3,7 @@ title: Configure Log Shipping for SQL Server on Linux
 description: This tutorial shows a basic example of how to replicate a SQL Server instance on Linux to a secondary instance using log shipping.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/03/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -107,7 +107,7 @@ As described in the previous diagram, a log shipping session involves the follow
    password=<password>
    ```
 
-1. Run the following commands to create an empty directory for mounting and set permission and ownership correctly
+1. Run the following commands to create an empty directory for mounting and set permission and ownership correctly:
 
    ```bash
    mkdir /var/opt/mssql/tlogs

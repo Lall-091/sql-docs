@@ -3,7 +3,7 @@ title: Install SQL Server Full-Text Search on Linux
 description: Learn how to install SQL Server Full-Text Search on Linux. Full-Text Search enables you to run full-text queries against character-based data in SQL Server tables.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 12/04/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -42,6 +42,9 @@ sudo yum update mssql-server-fts
 If you need an offline installation, locate the Full-text Search package download in the [Release notes for SQL Server 2022 on Linux](sql-server-linux-release-notes-2022.md). Then use the same offline installation steps described in the article [Install SQL Server](sql-server-linux-setup.md#offline).
 
 ## [SUSE Linux Enterprise Server](#tab/sles)
+
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
 
 Use the following commands to install the **mssql-server-fts** on SUSE Linux Enterprise Server.
 

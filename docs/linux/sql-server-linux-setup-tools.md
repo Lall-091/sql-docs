@@ -4,7 +4,7 @@ titleSuffix: SQL Server
 description: Learn how to install the SQL Server command-line tools, Microsoft ODBC drivers, and their dependencies on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 08/12/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -113,6 +113,9 @@ sudo ACCEPT_EULA=Y apt-get install mssql-tools18 unixodbc-dev
 
 ### [SUSE Linux Enterprise Server](#tab/sles-install)
 
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
+
 1. First, locate and copy the **mssql-tools18** package for your Linux distribution. For SLES 15, this package is located at <https://packages.microsoft.com/sles/15/prod>.
 
 1. Also locate and copy the **msodbcsql18** package, which is a dependency. The **msodbcsql18** package also has a dependency on **unixODBC-devel**. For SLES, the **msodbcsql18** package is located at <https://packages.microsoft.com/sles/15/prod>.
@@ -171,7 +174,7 @@ sudo ACCEPT_EULA=Y apt-get install mssql-tools18 unixodbc-dev
 
 ## Related content
 
-- [Quickstart: Install SQL Server and create a database on Red Hat](quickstart-install-connect-red-hat.md)
+- [Quickstart: Install SQL Server and create a database on Red Hat Enterprise Linux](quickstart-install-connect-red-hat.md)
 - [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](quickstart-install-connect-suse.md)
 - [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md)
 - [Quickstart: Run SQL Server Linux container images with Docker](quickstart-install-connect-docker.md)

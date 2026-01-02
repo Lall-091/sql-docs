@@ -1,7 +1,7 @@
 ---
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 06/16/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.topic: include
 ms.custom:
@@ -9,7 +9,10 @@ ms.custom:
 ---
 <a id="SLES"></a>
 
-Use the following steps to install the **mssql-tools18** on SUSE Linux Enterprise Server.
+Use the following steps to install **mssql-tools18** on SUSE Linux Enterprise Server.
+
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
 
 1. Import the Microsoft package signing key.
 
@@ -62,7 +65,7 @@ Use the following steps to install the **mssql-tools18** on SUSE Linux Enterpris
    source ~/.bash_profile
    ```
 
-   To make **sqlcmd** or **bcp** accessible from the bash shell for interactive/non-login sessions, modify the `PATH` in the `~/.bashrc` file with the following command:
+   To make **sqlcmd** or **bcp** accessible from the bash shell for interactive and non-login sessions, modify the `PATH` in the `~/.bashrc` file with the following command:
 
    ```bash
    echo 'export PATH="$PATH:/opt/mssql-tools18/bin"' >> ~/.bashrc

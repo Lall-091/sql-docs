@@ -3,17 +3,16 @@ title: Configure Active Directory Authentication with SQL Server on Linux Using 
 description: Step by step on how to configure Active Directory authentication with SQL Server on Linux using adutil
 author: amitkh-msft
 ms.author: amitkh
-ms.reviewer: vanto, randolphwest
-ms.date: 07/03/2025
+ms.reviewer: randolphwest
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: tutorial
-monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017 || =sqlallproducts-allversions"
 ms.custom:
   - linux-related-content
   - sfi-image-nochange
+monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017 || =sqlallproducts-allversions"
 ---
-
 # Tutorial: Use adutil to configure Active Directory authentication with SQL Server on Linux
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
@@ -170,7 +169,7 @@ Once you [create the user and SPNs](#adutil-spn), you can create the keytab usin
    /opt/mssql/bin/mssql-conf validate-ad-config /var/opt/mssql/secrets/mssql.keytab
    ```
 
-   You should see output similar to the following example:
+   The output looks similar to the following example:
 
    ```output
    Detected Configuration:

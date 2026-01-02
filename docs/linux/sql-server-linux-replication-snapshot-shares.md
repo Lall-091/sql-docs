@@ -4,8 +4,7 @@ titleSuffix: SQL Server on Linux
 description: Learn to configure snapshot folder shares SQL Server replication on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: vanto
-ms.date: 01/21/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -56,6 +55,9 @@ sudo service smb start
 sudo service smb status
 ```
 
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
+
 ### [Ubuntu](#tab/ubuntu)
 
 ```bash
@@ -73,7 +75,7 @@ sudo service smbd restart
    sudo smbpasswd -a mssql
    ```
 
-1. Edit the `/etc/samba/smb.conf` to include the following entry and fill in the *share_name* and *path* fields
+1. Edit the `/etc/samba/smb.conf` to include the following entry and fill in the *share_name* and *path* fields:
 
    ```output
    <[share_name]>

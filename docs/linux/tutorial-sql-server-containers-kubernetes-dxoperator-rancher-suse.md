@@ -4,7 +4,7 @@ description: Set up an availability group in SQL Server on Kubernetes using DH2i
 author: amitkh-msft
 ms.author: amitkh
 ms.reviewer: randolphwest
-ms.date: 08/11/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: tutorial
@@ -17,6 +17,9 @@ ms.custom:
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
 This tutorial provides instructions on setting up [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] configured with Always On availability groups (AGs) in an Azure Kubernetes Service (AKS) cluster. It utilizes the DH2i DxOperator and Rancher Prime from SUSE for deployment.
+
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
 
 Microsoft supports data movement, AG, and [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] components. DH2i is responsible for support of the DxEnterprise product, which includes cluster and quorum management.
 
@@ -140,5 +143,5 @@ Fetch the external IP address of the secondary pod.
 
 - [Deploy availability groups on Kubernetes with DH2i DxOperator on Azure Kubernetes Service](tutorial-sql-server-containers-kubernetes-dxoperator.md)
 - [Deploy availability groups with DH2i DxEnterprise on Kubernetes](tutorial-sql-server-containers-kubernetes-dh2i.md)
-- [Deploy SQL Server containers on Azure Kubernetes Service](quickstart-sql-server-containers-azure.md)
+- [Quickstart: Deploy a SQL Server container cluster on Azure or Red Hat OpenShift](quickstart-sql-server-containers-azure.md)
 - [Deploy SQL Server Linux containers on Kubernetes with StatefulSets](sql-server-linux-kubernetes-best-practices-statefulsets.md)

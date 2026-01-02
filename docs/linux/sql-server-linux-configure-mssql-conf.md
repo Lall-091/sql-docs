@@ -3,7 +3,7 @@ title: Configure SQL Server Settings on Linux
 description: This article describes how to use the mssql-conf tool to configure SQL Server settings on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 12/04/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -19,6 +19,9 @@ ms.custom:
 **mssql-conf** is a configuration script that installs with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] for Red Hat Enterprise Linux, SUSE Linux Enterprise Server, and Ubuntu. It modifies the [mssql.conf file](#mssql-conf-format) where configuration values are stored.
 
 **mssql-conf** is a configuration script that installs with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. You can use this utility to set the following parameters:
+
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
 
 <!--SQL Server 2017 on Linux-->
 ::: moniker range="=sql-server-linux-2017 || =sql-server-2017"

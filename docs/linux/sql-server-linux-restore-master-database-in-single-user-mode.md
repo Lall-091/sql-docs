@@ -3,7 +3,7 @@ title: Restore master Database on SQL Server in Single-User Mode on Linux
 description: "Learn how to restore the master database using single-user mode in SQL Server on Linux."
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/18/2024
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: configuration
 ms.topic: how-to
@@ -101,7 +101,7 @@ When you start an instance of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md
 
    In the previous example, the path to the `master` database backup file is `/var/opt/mssql/data/master.bak`. You must replace this value with the correct path to your `master` database backup file.
 
-1. You should see output similar to the following example, if the restore is successful.
+1. The output looks similar to the following example, if the restore is successful.
 
    ```output
    Processed 456 pages for database 'master', file 'master' on file 1.

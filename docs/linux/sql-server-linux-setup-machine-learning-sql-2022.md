@@ -5,7 +5,7 @@ description: "Learn how to install SQL Server 2022 Machine Learning Services on 
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: arunguru-msft, randolphwest
-ms.date: 07/11/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: machine-learning-services
 ms.topic: how-to
@@ -20,7 +20,7 @@ monikerRange: ">=sql-server-ver16 || >=sql-server-linux-ver16"
 
 This article guides you in the installation of [SQL Server Machine Learning Services](../machine-learning/sql-server-machine-learning-services.md) on Linux. Python and R scripts can be executed in-database using Machine Learning Services.
 
-You can install Machine Learning Services on Ubuntu and Red Hat Enterprise Linux (RHEL). Currently, SUSE Linux Enterprise Server (SLES) is unsupported.
+You can install Machine Learning Services on Ubuntu and Red Hat Enterprise Linux (RHEL). SUSE Linux Enterprise Server (SLES) isn't supported.
 
 You can install ML Services on a Docker container running a Linux distribution. Inside the Docker container, the steps would be the same as below.
 

@@ -3,7 +3,7 @@ title: Create and Run Jobs for SQL Server on Linux
 description: Learn how to create a SQL Server Agent job on Linux using both Transact-SQL and SQL Server Management Studio (SSMS).
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/03/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -31,9 +31,12 @@ The following prerequisites are required to complete this tutorial:
 
 - Linux machine with the following prerequisites:
 
-  - [Quickstart: Install SQL Server and create a database on Red Hat](quickstart-install-connect-red-hat.md)
+  - [Quickstart: Install SQL Server and create a database on Red Hat Enterprise Linux](quickstart-install-connect-red-hat.md)
   - [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](quickstart-install-connect-suse.md)
   - [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md) with command-line tools.
+
+  > [!NOTE]  
+  > Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
 
 The following prerequisites are optional:
 

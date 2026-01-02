@@ -4,8 +4,8 @@ titleSuffix: SQL Server
 description: This tutorial provides the configuration steps for Active Directory authentication for SQL Server on Linux.
 author: amitkh-msft
 ms.author: amitkh
-ms.reviewer: vanto, randolphwest
-ms.date: 07/03/2025
+ms.reviewer: randolphwest
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: tutorial
@@ -38,9 +38,12 @@ Before you configure Active Directory Authentication, you need to:
 
 - Set up an Active Directory Domain Controller (Windows) on your network
 - Install [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)]
-  - [Quickstart: Install SQL Server and create a database on Red Hat](quickstart-install-connect-red-hat.md)
+  - [Quickstart: Install SQL Server and create a database on Red Hat Enterprise Linux](quickstart-install-connect-red-hat.md)
   - [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](quickstart-install-connect-suse.md)
   - [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md)
+
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
 
 <a id="join"></a>
 
@@ -77,7 +80,7 @@ Join your [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Linux host 
 
    > [!NOTE]  
    > If you receive an error, `Insufficient access rights`, check with your domain administrator that you have sufficient permissions to set an SPN on this account. The account that is used to register an SPN will need the `Write servicePrincipalName` permissions. For more information, see [Register a Service Principal Name for Kerberos connections](../database-engine/configure-windows/register-a-service-principal-name-for-kerberos-connections.md).
-   >  
+   >
    > If you change the TCP port in the future, you must run the **setspn** command again with the new port number. You also need to add the new SPN to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] service keytab by following the steps in the next section.
 
 For more information, see [Register a Service Principal Name for Kerberos connections](../database-engine/configure-windows/register-a-service-principal-name-for-kerberos-connections.md).
@@ -278,7 +281,7 @@ While it's not recommended, it's possible to use utilities, such as **realmd**, 
 
 > [!NOTE]  
 > [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] login by using an FQDN (for example, `CONTOSO.COM\Username`) isn't supported. Use the `CONTOSO\Username` format.
->  
+>
 > [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] logins from Domain Local groups aren't supported. Use Global Security Domain groups instead.
 
 ## Related content

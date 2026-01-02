@@ -3,8 +3,8 @@ title: Performance Best Practices for SQL Server on Linux
 description: This article provides performance best practices and guidelines for running SQL Server on Linux.
 author: tejasaks
 ms.author: tejasaks
-ms.reviewer: vanto, randolphwest
-ms.date: 11/26/2025
+ms.reviewer: randolphwest
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: best-practice
@@ -136,6 +136,9 @@ The following section describes the recommended Linux OS settings related to hig
 For Red Hat Enterprise Linux (RHEL) users, the [TuneD](https://tuned-project.org) throughput-performance profile automatically configures some kernel and CPU settings (except for C-States). Starting with RHEL 8.0, a TuneD profile named `mssql` was codeveloped with Red Hat and offers finer Linux performance-related tunings for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] workloads. This profile includes the RHEL throughput-performance profile, and we present its definitions in this article for your review with other Linux distributions and RHEL releases without this profile.
 
 For SUSE Linux Enterprise Server 12 SP5, Ubuntu 18.04, and Red Hat Enterprise Linux 7.x, you can manually install the `tuned` package. Use it to create and configure the `mssql` profile as described in the following section.
+
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
 
 #### Proposed Linux settings using a TuneD `mssql` profile
 
@@ -421,7 +424,7 @@ Along with storage and CPU recommendations, you have network specific recommenda
    ./show_irq_affinity.sh eth0
    ```
 
-   Add IRQ coalescing optimizations
+   Add IRQ coalescing optimizations:
 
    ```bash
    ethtool -C eth0 adaptive-rx off

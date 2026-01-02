@@ -3,7 +3,7 @@ title: Troubleshoot SQL Server on Linux
 description: Troubleshoot SQL Server running on Linux or in a Linux container. Learn where to find information about supported features and known limitations.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/03/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: troubleshooting
@@ -176,7 +176,7 @@ Only use these steps if you understand the implications.
    sudo systemctl stop mssql-server
    ```
 
-1. Run **sqlservr** with the `force-setup` parameter
+1. Run `sqlservr` with the `force-setup` parameter:
 
    ```bash
    sudo -u mssql /opt/mssql/bin/sqlservr --force-setup

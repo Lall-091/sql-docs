@@ -3,8 +3,7 @@ title: Manually Fail an FCI over - SQL Server on Linux
 description: Learn to manually fail a failover cluster instance (FCI) on SQL Server on Linux, specifically Red Hat Linux Enterprise, Ubuntu, and SUSE Linux Enterprise Server.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: vanto
-ms.date: 01/21/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -61,6 +60,9 @@ crm resource migrate <FCIResourceName> <NewHostNode>
 \<FCIResourceName> is the resource name for the failover cluster instance.
 
 \<NewHostNode> is the name of the new destination host.
+
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
 
 ## Related content
 

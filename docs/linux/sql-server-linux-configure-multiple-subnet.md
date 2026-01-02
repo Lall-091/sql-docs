@@ -3,8 +3,8 @@ title: "Configure Multiple-Subnet Availability Group and FCI (Linux)"
 description: Learn to configure multiple-subnet Always On availability groups and failover cluster instances (FCI) for SQL Server on Linux.
 author: MikeRayMSFT
 ms.author: mikeray
-ms.reviewer: vanto, randolphwest
-ms.date: 07/03/2025
+ms.reviewer: randolphwest
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -12,7 +12,6 @@ ms.custom:
   - linux-related-content
   - sfi-image-nochange
 ---
-
 # Configure multiple-subnet Always On availability groups and failover cluster instances
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
@@ -50,7 +49,7 @@ On Windows, a Windows Server Failover Cluster (WSFC) natively supports multiple 
    sudo pcs cluster cib <filename>
    ```
 
-   Where `<filename>` is the name you want to call the CIB.
+   In this example, `<filename>` is the name you want to call the CIB.
 
 1. Edit the file that was generated. Look for the `<resources>` section. You see the various resources that were created for the AG or FCI. Find the one associated with the IP address. Add a `<instance_attributes>` section with the information for the second IP address either before or after the existing one, but before `<operations>`. It's similar to the following syntax:
 
@@ -60,7 +59,7 @@ On Windows, a Windows Server Failover Cluster (WSFC) natively supports multiple 
    </instance_attributes>
    ```
 
-   where `<NameForAttribute>` is the unique name for this attribute, `<NameForIP>` is the name associated with the IP address, `<IPAddress>` is the IP address for the second subnet.
+   In this example, `<NameForAttribute>` is the unique name for this attribute, `<NameForIP>` is the name associated with the IP address, `<IPAddress>` is the IP address for the second subnet.
 
    The following shows an example.
 
@@ -98,9 +97,12 @@ On Windows, a Windows Server Failover Cluster (WSFC) natively supports multiple 
    sudo pcs cluster cib-push <filename>
    ```
 
-   Where `<filename>` is the name of the CIB file with the modified IP address information.
+   In this example, `<filename>` is the name of the CIB file with the modified IP address information.
 
 ##### [SUSE Linux Enterprise Server (SLES)](#tab/sles)
+
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
 
 1. Export the CIB.
 
@@ -108,7 +110,7 @@ On Windows, a Windows Server Failover Cluster (WSFC) natively supports multiple 
    sudo cibadmin -Q > <filename>
    ```
 
-   Where `<filename>` is the name you want to call the CIB.
+   In this example, `<filename>` is the name you want to call the CIB.
 
 1. Edit the file that was generated. Look for the `<resources>` section. You see the various resources that were created for the AG or FCI. Find the one associated with the IP address. Add a `<instance_attributes>` section with the information for the second IP address either before or after the existing one, but before `<operations>`. It's similar to the following syntax:
 
@@ -118,7 +120,7 @@ On Windows, a Windows Server Failover Cluster (WSFC) natively supports multiple 
    </instance_attributes>
    ```
 
-   where `<NameForAttribute>` is the unique name for this attribute, `<NameForIP>` is the name associated with the IP address, `<IPAddress>` is the IP address for the second subnet.
+   In this example, `<NameForAttribute>` is the unique name for this attribute, `<NameForIP>` is the name associated with the IP address, `<IPAddress>` is the IP address for the second subnet.
 
    The following shows an example.
 
@@ -156,7 +158,7 @@ On Windows, a Windows Server Failover Cluster (WSFC) natively supports multiple 
    sudo cibadmin -R -x <filename>
    ```
 
-   Where `<filename>` is the name of the CIB file with the modified IP address information.
+   In this example, `<filename>` is the name of the CIB file with the modified IP address information.
 
 ##### [Ubuntu](#tab/ubuntu)
 
@@ -166,7 +168,7 @@ On Windows, a Windows Server Failover Cluster (WSFC) natively supports multiple 
    sudo pcs cluster cib <filename>
    ```
 
-   Where `<filename>` is the name you want to call the CIB.
+   In this example, `<filename>` is the name you want to call the CIB.
 
 1. Edit the file that was generated. Look for the `<resources>` section. You see the various resources that were created for the AG or FCI. Find the one associated with the IP address. Add a `<instance_attributes>` section with the information for the second IP address either before or after the existing one, but before `<operations>`. It's similar to the following syntax:
 
@@ -176,7 +178,7 @@ On Windows, a Windows Server Failover Cluster (WSFC) natively supports multiple 
    </instance_attributes>
    ```
 
-   where `<NameForAttribute>` is the unique name for this attribute, `<NameForIP>` is the name associated with the IP address, `<IPAddress>` is the IP address for the second subnet.
+   In this example, `<NameForAttribute>` is the unique name for this attribute, `<NameForIP>` is the name associated with the IP address, `<IPAddress>` is the IP address for the second subnet.
 
    The following shows an example.
 
@@ -214,7 +216,7 @@ On Windows, a Windows Server Failover Cluster (WSFC) natively supports multiple 
    sudo pcs cluster cib-push <filename>
    ```
 
-   Where `<filename>` is the name of the CIB file with the modified IP address information.
+   In this example, `<filename>` is the name of the CIB file with the modified IP address information.
 
 ---
 

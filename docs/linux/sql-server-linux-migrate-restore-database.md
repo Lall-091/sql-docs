@@ -3,8 +3,7 @@ title: Migrate SQL Server Database from Windows to Linux
 description: This tutorial shows how to take a SQL Server database backup on Windows and restore it to a Linux machine running SQL Server.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: vanto
-ms.date: 07/03/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: upgrade-and-migration-article
@@ -39,6 +38,9 @@ The following prerequisites are required to complete this tutorial:
 
 - On a Linux machine:
   - [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] ([Red Hat Enterprise Linux](quickstart-install-connect-red-hat.md), [SUSE Linux Enterprise Server](quickstart-install-connect-suse.md), or [Ubuntu](quickstart-install-connect-ubuntu.md)) with command-line tools.
+
+  > [!NOTE]  
+  > Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
 
 ## Create a backup on Windows
 

@@ -4,7 +4,7 @@ description: Learn to create a three-node cluster on Red Hat, SUSE, or Ubuntu, a
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh-msft
-ms.date: 11/24/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -298,6 +298,9 @@ The clustering layer is based on SUSE [High Availability Extension (HAE)](https:
 
 For more information on cluster configuration, resource agent options, management, best practices, and recommendations, see [SUSE Linux Enterprise High Availability Extension](https://documentation.suse.com/sle-ha/12-SP5/).
 
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
+
 ### Roadmap
 
 The procedure for creating an availability group for high availability differs between Linux servers and a Windows Server failover cluster. The following list describes the high-level steps:
@@ -447,7 +450,7 @@ If you have configured the existing cluster nodes with the `YaST` cluster module
    sudo crm status
    ```
 
-   You see output similar to the following example.
+   The output looks similar to the following example:
 
    ```output
    3 nodes configured
@@ -701,7 +704,7 @@ The steps to create an availability group on Linux servers for high availability
    sudo vim /etc/corosync/corosync.conf
    ```
 
-   The `corosync.conf` file should look similar to the following example:
+   The `corosync.conf` file looks similar to the following example:
 
    ```text
    totem {
