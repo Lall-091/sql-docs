@@ -3,10 +3,10 @@ title: SQL Server High Availability for Linux Deployments
 description: Learn about the high availability options for SQL Server on Linux, such as availability groups, failover cluster instances (FCI), and log shipping.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/03/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: article
 ms.custom:
   - linux-related-content
 ---
@@ -14,7 +14,9 @@ ms.custom:
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
-Starting with [!INCLUDE [sssql17-md](../includes/sssql17-md.md)], [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is supported on both Linux and Windows. Like Windows-based [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] deployments, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] databases and instances need to be highly available under Linux. This article covers the technical aspects of planning and deploying highly available Linux-based [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] databases and instances, as well as some of the differences from Windows-based installations. Because [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] might be new for Linux professionals, and Linux might be new for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] professionals, the article at times introduces concepts that might be familiar to some and unfamiliar to others.
+Starting with [!INCLUDE [sssql17-md](../includes/sssql17-md.md)], [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is supported on both Linux and Windows. Like Windows-based [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] deployments, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] databases and instances need to be highly available under Linux.
+
+This article covers the technical aspects of planning and deploying highly available Linux-based [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instances and databases, and highlights key differences from Windows-based installations. Because either [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] or Linux might be new to you, this article discusses concepts that might already be familiar to you.
 
 ## SQL Server availability options for Linux deployments
 
@@ -28,15 +30,15 @@ On Windows, FCIs always require an underlying Windows Server failover cluster (W
 
 ## A quick Linux primer
 
-While some Linux installations might be installed with an interface, most aren't, meaning that nearly everything at the operating system layer is done via command line. The common term for this command line in the Linux world is a *bash shell*.
+While some Linux installations include an interface, most don't. You use the command line for nearly everything at the operating system layer. The common term for this command line in the Linux world is a *shell*, the most common being `bash`.
 
-In Linux, many commands need to be executed with elevated privileges, much like many things need to be done in Windows Server as an administrator. There are two main methods to execute with elevated privileges:
+In Linux, you need elevated privileges to run many commands, similar to needing administrator privileges in Windows Server. You can run commands with elevated privileges in two ways:
 
-1. Run in the context of the proper user. To change to a different user, use the command `su`. If `su` is executed on its own without a username, as long as you know the password, you're in a shell as `root`.
+1. Run the command as the proper user. To change to a different user, use the `su` command. If you run `su` without a username, you enter a shell as `root` if you know the password.
 
-1. The more common and security conscious way to run things is to use `sudo` before executing anything. Many of the examples in this article use `sudo`.
+1. Use `sudo` before the command. This method is more common and more secure. Many examples in this article use `sudo`.
 
-Some common commands, each of which have various switches and options that can be researched online:
+Here are some common commands. Each command has various switches and options that you can research online:
 
 - `cd` - change the directory
 - `chmod` - change the permissions of a file or directory
@@ -54,23 +56,28 @@ Some common commands, each of which have various switches and options that can b
 
 This section covers tasks that are common to all Linux-based [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] deployments.
 
-### Ensure that files can be copied
+### Ensure that you can copy files
 
-Copying files from one server to another is a task that anyone using [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux should be able to do. This task is very important for AG configurations.
+Anyone administering [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux should be able to copy files from one server to another. This task is essential for AG configurations.
 
-Things like permission issues can exist on Linux and on Windows-based installations. However, those familiar with how to copy from server to server on Windows might not be familiar with how it's done on Linux. A common method is to use the command-line utility `scp`, which stands for secure copy. Behind the scenes, `scp` uses OpenSSH. SSH stands for secure shell. Depending on the Linux distribution, OpenSSH itself might not be installed. If it isn't, OpenSSH needs to be installed first. For more information on configuring OpenSSH, see the information at the following links for each distribution:
+Permission problems can exist on both Linux and Windows-based installations. However, Windows users familiar with how to copy files from server to server, might not be familiar with how it's done on Linux. A common method is to use the command-line utility `scp`, which stands for *secure copy*. Behind the scenes, `scp` uses OpenSSH. SSH stands for *secure shell*. Depending on the Linux distribution, OpenSSH itself might not be installed. If it isn't, you need to install OpenSSH.
+
+For more information on configuring OpenSSH for your Linux distribution, see:
 
 - [Red Hat Enterprise Linux (RHEL)](https://docs.redhat.com/documentation/red_hat_enterprise_linux/6/html/deployment_guide/ch-openssh)
 - [SUSE Linux Enterprise Server (SLES)](https://en.opensuse.org/SDB:Configure_openSSH)
 - [Ubuntu](https://help.ubuntu.com/community/SSH/OpenSSH/Configuring)
 
-When using `scp`, you must provide the credentials of the server if it isn't the source or destination. For example, using
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
+
+When you use `scp`, you must provide the credentials of the server if it isn't the source or destination. For example, the following command copies the file `MyAGCert.cer` to the folder specified on the other server:
 
 ```bash
 scp MyAGCert.cer username@servername:/folder/subfolder
 ```
 
-copies the file MyAGCert.cer to the folder specified on the other server. You must have permissions - and possibly ownership - of the file to copy it, so `chown` might also need to be employed before copying. Similarly, on the receiving side, the right user needs access to manipulate the file. For example, to restore that certificate file, the `mssql` user must be able to access it.
+You must have permissions, and possibly ownership, of the file to copy it, so you might need to use `chown` before copying. Similarly, on the receiving side, the right user needs access to manipulate the file. For example, to restore that certificate file, the `mssql` user must be able to access it.
 
 Samba, which is the Linux variant of server message block (SMB), can also be used to create shares accessed by UNC paths such as `\\SERVERNAME\SHARE`. For more information on configuring Samba, see the information at the following links for each distribution:
 
@@ -78,15 +85,18 @@ Samba, which is the Linux variant of server message block (SMB), can also be use
 - [SLES](https://documentation.suse.com/sles/15-SP5/html/SLES-all/cha-samba.html)
 - [Ubuntu](https://help.ubuntu.com/community/Samba)
 
-Windows-based SMB shares can also be used; SMB shares don't need to be Linux-based, as long as the client portion of Samba is configured properly on the Linux server hosting [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] and the share has the right access. For those in a mixed environment, this would be one way to use existing infrastructure for Linux-based [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] deployments.
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
 
-One thing that is important is that the version of Samba deployed should be SMB 3.0 compliant. When SMB support was added in [!INCLUDE [sssql11-md](../includes/sssql11-md.md)], it required all shares to support SMB 3.0. If using Samba for the share and not Windows Server, the Samba-based share should be using Samba 4.0 or later, and ideally 4.3 or later, which supports SMB 3.1.1. A good source of information on SMB and Linux is [SMB3 in Samba](https://events.static.linuxfound.org/sites/events/files/slides/smb3-in-samba.pr__0.pdf).
+You can also use Windows-based SMB shares. SMB shares don't need to be Linux-based, as long as the client portion of Samba is configured properly on the Linux server hosting [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] and the share has the right access. For customers in a mixed environment, this approach lets you use existing infrastructure for Linux-based [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] deployments.
 
-Finally, using a network file system (NFS) share is an option. Using NFS isn't an option on Windows-based deployments of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], and can only be used for Linux-based deployments.
+The version of Samba you deploy should be SMB 3.0 compliant. When SMB support was added in [!INCLUDE [sssql11-md](../includes/sssql11-md.md)], it required all shares to support SMB 3.0. If you use Samba for the share and not Windows Server, the Samba-based share should use Samba 4.0 or later, and ideally 4.3 or later, which supports SMB 3.1.1. A good source of information on SMB and Linux is [SMB3 in Samba](https://events.static.linuxfound.org/sites/events/files/slides/smb3-in-samba.pr__0.pdf).
+
+Finally, using a network file system (NFS) share is an option. You can't use NFS on Windows-based deployments of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], and it can only be used for Linux-based deployments.
 
 ### Configure the firewall
 
-Similar to Windows, Linux distributions have a built-in firewall. If your company is using an external firewall to the servers, disabling the firewalls in Linux might be acceptable. However, regardless of where the firewall is enabled, ports need to be opened. The following table documents the common ports needed for highly available [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] deployments on Linux.
+Similar to Windows, Linux distributions have a built-in firewall. If your organization uses an external firewall for the servers, you might be able to disable the firewalls in Linux. However, regardless of where you enable the firewall, you need to open ports. The following table lists the common ports needed for highly available [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] deployments on Linux.
 
 | Port Number | Type | Description |
 | --- | --- | --- |
@@ -112,9 +122,9 @@ Similar to Windows, Linux distributions have a built-in firewall. If your compan
 | Variable | TCP/UDP | NFS - port for `MOUNTD_PORT` (found in `/etc/sysconfig/nfs` on RHEL) |
 | Variable | TCP/UDP | NFS - port for `STATD_PORT` (found in `/etc/sysconfig/nfs` on RHEL) |
 
-For additional ports that might be used by Samba,see [Samba Port Usage](https://wiki.samba.org/index.php/Samba_Port_Usage).
+For other ports that Samba uses, see [Samba Port Usage](https://wiki.samba.org/index.php/Samba_Port_Usage).
 
-Conversely, the name of the service under Linux can also be added as an exception instead of the port; for example, `high-availability` for Pacemaker. Refer to your distribution for the names if this is the direction you wish to pursue. For example, on RHEL the command to add in Pacemaker is
+Conversely, you can add the name of the service under Linux as an exception instead of the port. For example, use `high-availability` for Pacemaker. Refer to your distribution for the appropriate names. On RHEL, for example, the command to add in Pacemaker is:
 
 ```bash
 sudo firewall-cmd --permanent --add-service=high-availability
@@ -126,6 +136,9 @@ sudo firewall-cmd --permanent --add-service=high-availability
 - [SLES](https://documentation.suse.com/sles/15-SP5/html/SLES-all/cha-security-firewall.html)
 - [Ubuntu](https://help.ubuntu.com/community/Firewall)
 
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
+
 ### Install SQL Server packages for availability
 
 On a Windows-based [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] installation, some components are installed even in a basic engine install, while others aren't. Under Linux, only the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] engine is installed as part of the installation process. Everything else is optional. For highly available [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instances under Linux, two packages should be installed with [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]:
@@ -133,16 +146,18 @@ On a Windows-based [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] in
 - [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Agent (`mssql-server-agent`)
 - the high availability (HA) package (`mssql-server-ha`)
 
-While [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Agent is technically optional, it's the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] scheduler for jobs and is required by log shipping, so installation is recommended.
+While [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Agent is technically optional, it's the default scheduler for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] jobs, and is required by log shipping, so installation is recommended.
 
 On [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] with CU 4 and later versions, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Agent is included in the Database Engine package, but you still need to [enable it](sql-server-linux-setup-sql-agent.md). On Windows-based installations, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Agent isn't optional.
 
 > [!NOTE]  
-> For those new to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Agent is [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]'s built-in job scheduler. You can schedule things like backups and other [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] maintenance. Unlike a Windows-based installation of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] where [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Agent is a completely different service, on Linux, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Agent runs in context of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] itself.
+> [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Agent is the built-in job scheduler for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. It's used to schedule tasks such as backups and routine maintenance. On Windows, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Agent runs as a separate service. On Linux, it runs in the context of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] itself.
 
-When AGs or FCIs are configured on a Windows-based configuration, they are cluster-aware. Cluster awareness means that [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] has specific resource DLLs that a WSFC knows about (`sqagtres.dll` and `sqsrvres.dll` for FCIs, `hadrres.dll` for AGs) and are used by the WSFC to ensure that the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] clustered functionality is up, running, and functioning properly. Because clustering is external not only to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] but Linux itself, Microsoft had to code the equivalent of a resource DLL for Linux-based AG and FCI deployments. This is the `mssql-server-ha` package, also known as the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] resource agent for Pacemaker. To install the `mssql-server-ha` package, see [Deploy a Pacemaker cluster for SQL Server on Linux](sql-server-linux-deploy-pacemaker-cluster.md).
+When you configure AGs or FCIs on a Windows-based configuration, they're cluster-aware. Cluster awareness means that [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] has specific resource DLLs that a WSFC knows about (`sqagtres.dll` and `sqsrvres.dll` for FCIs, `hadrres.dll` for AGs) and are used by the WSFC to ensure that the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] clustered functionality is up, running, and functioning properly.
 
-The other optional packages for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Full-Text Search (`mssql-server-fts`) and [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Integration Services (`mssql-server-is`), aren't required for high availability, either for an FCI or an AG.
+Because clustering is external not only to [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] but Linux itself, Microsoft had to code the equivalent of a resource DLL for Linux-based AG and FCI deployments. This resource is the `mssql-server-ha` package, also known as the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] resource agent for Pacemaker. To install the `mssql-server-ha` package, see [Deploy a Pacemaker cluster for SQL Server on Linux](sql-server-linux-deploy-pacemaker-cluster.md).
+
+On Linux, Full-Text Search (`mssql-server-fts`) and Integration Services (`mssql-server-is`) are optional [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] packages, and aren't required for an FCI or AG.
 
 ## SQL Server high availability and disaster recovery partners
 
@@ -150,8 +165,8 @@ To provide high availability and disaster recovery for your [!INCLUDE [ssnoversi
 
 | Partner | Description |
 | --- | --- |
-| **[DH2i](https://dh2i.com)** | DxEnterprise is Smart Availability software for Windows, Linux & Docker that helps you achieve the nearest-to-zero planned and unplanned downtime, unlocks huge cost savings, drastically simplifies management, and gets you both physical and logical consolidation.<br /><br />- [Deploy availability groups with DH2i DxEnterprise on Kubernetes](tutorial-sql-server-containers-kubernetes-dh2i.md)<br />- [Tutorial: Set up a three node Always On availability group with DH2i DxEnterprise](/azure/azure-sql/virtual-machines/linux/dh2i-high-availability-tutorial) |
-| **[HPE Serviceguard](https://buy.hpe.com/us/en/software/high-availability-disaster-recovery-software/serviceguard-software/serviceguard-for-linux/hpe-serviceguard-for-linux/p/376220)** | HPE SGLX offers context-sensitive monitoring and recovery options for Failover Cluster Instance and Always On Availability Groups. Maximize uptime with HPE SGLX without compromising data integrity and performance.<br /><br />- [Tutorial: Set up a three node Always On availability group with HPE Serviceguard for Linux](sql-server-availability-group-ha-hpe.md). |
+| **[DH2i](https://dh2i.com)** | DxEnterprise is an availability management solution for Windows, Linux, and container environments. It supports high availability, reduces planned and unplanned downtime, and simplifies the management of physical and logical resources.<br /><br />- [Deploy availability groups with DH2i DxEnterprise on Kubernetes](tutorial-sql-server-containers-kubernetes-dh2i.md)<br />- [Tutorial: Set up a three node Always On availability group with DH2i DxEnterprise](/azure/azure-sql/virtual-machines/linux/dh2i-high-availability-tutorial) |
+| **[HPE Serviceguard](https://buy.hpe.com/us/en/software/high-availability-disaster-recovery-software/serviceguard-software/hpe-serviceguard-for-linux/p/376220)** | HPE SGLX offers context-sensitive monitoring and recovery options for Failover Cluster Instance and Always On Availability Groups. Maximize uptime with HPE SGLX without compromising data integrity and performance.<br /><br />- [Tutorial: Set up a three node Always On availability group with HPE Serviceguard for Linux](sql-server-availability-group-ha-hpe.md). |
 | **[Pacemaker](https://www.clusterlabs.org/projects/pacemaker)** | Pacemaker is an open source high-availability cluster resource manager. With Corosync, an open source group communication system, Pacemaker can detect component failures and orchestrate necessary failover procedures to minimize interruptions to applications.<br /><br />- [Pacemaker for availability groups and failover cluster instances on Linux](sql-server-linux-pacemaker-basics.md)<br />- [Deploy a Pacemaker cluster for SQL Server on Linux](sql-server-linux-deploy-pacemaker-cluster.md) |
 
 ## Related content

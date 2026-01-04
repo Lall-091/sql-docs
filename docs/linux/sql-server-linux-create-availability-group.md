@@ -3,8 +3,7 @@ title: Create and Configure an Availability Group for SQL Server on Linux
 description: This tutorial shows how to create and configure availability groups for SQL Server on Linux, as well as create availability group endpoints and certificates.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: vanto
-ms.date: 08/28/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -17,7 +16,7 @@ ms.custom:
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
-This tutorial covers how to create and configure an availability group (AG) for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. Unlike [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] and earlier on Windows, you can enable an AG with or without creating the underlying Pacemaker cluster first. Integration with the cluster, if needed, isn't done until later.
+This tutorial shows how to create and configure an availability group (AG) for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. Unlike [!INCLUDE [sssql16-md](../includes/sssql16-md.md)] and earlier versions on Windows, you can enable an AG with or without creating the underlying Pacemaker cluster first. Integration with the cluster, if needed, happens later.
 
 The tutorial includes the following tasks:
 
@@ -34,14 +33,14 @@ Deploy the Pacemaker high availability cluster as described in [Deploy a Pacemak
 
 ## Enable the availability groups feature
 
-Unlike on Windows, you can't use PowerShell or [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Configuration Manager to enable the availability groups (AG) feature. Under Linux, you must use `mssql-conf` to enable the feature. There are two ways to enable the availability groups feature: use the `mssql-conf` utility, or edit the `mssql.conf` file manually.
+Unlike on Windows, you can't use PowerShell or [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Configuration Manager to enable the availability groups (AG) feature. On Linux, you can enable the availability groups feature in two ways: use the **mssql-conf** utility, or edit the `mssql.conf` file manually.
 
 > [!IMPORTANT]  
-> The AG feature must be enabled for configuration-only replicas, even on [!INCLUDE [ssexpress-md](../includes/ssexpress-md.md)].
+> You must enable the AG feature for configuration-only replicas, even on [!INCLUDE [ssexpress-md](../includes/ssexpress-md.md)].
 
 ### Use the mssql-conf utility
 
-At a prompt, issue the following command:
+At a prompt, run the following command:
 
 ```bash
 sudo /opt/mssql/bin/mssql-conf set hadr.hadrenabled 1
@@ -49,7 +48,7 @@ sudo /opt/mssql/bin/mssql-conf set hadr.hadrenabled 1
 
 ### Edit the mssql.conf file
 
-You can also modify the `mssql.conf` file, located under the `/var/opt/mssql` folder, to add the following lines:
+You can also modify the `mssql.conf` file, located under the `/var/opt/mssql` folder. Add the following lines:
 
 ```ini
 [hadr]
@@ -59,7 +58,7 @@ hadr.hadrenabled = 1
 
 ### Restart SQL Server
 
-After enabling availability groups, as on Windows, you must restart [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], using the following command:
+After enabling availability groups, you must restart [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. Use the following command:
 
 ```bash
 sudo systemctl restart mssql-server
@@ -67,9 +66,9 @@ sudo systemctl restart mssql-server
 
 ## Create the availability group endpoints and certificates
 
-An availability group uses TCP endpoints for communication. Under Linux, endpoints for an AG are only supported if certificates are used for authentication. You must restore the certificate from one instance on all other instances that will participate as replicas in the same AG. The certificate process is required even for a configuration-only replica.
+An availability group uses TCP endpoints for communication. Under Linux, endpoints for an AG are only supported if certificates are used for authentication. You must restore the certificate from one instance on all other instances that participate as replicas in the same AG. The certificate process is required even for a configuration-only replica.
 
-Creating endpoints and restoring certificates can only be done via Transact-SQL. You can use non-[!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]-generated certificates as well. You also need a process to manage and replace any certificates that expire.
+You can only create endpoints and restore certificates using Transact-SQL. You can also use non-[!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]-generated certificates. You also need a process to manage and replace any certificates that expire.
 
 > [!IMPORTANT]  
 > If you plan to use the [!INCLUDE [ssmanstudiofull-md](../includes/ssmanstudiofull-md.md)] wizard to create the AG, you still need to create and restore the certificates by using Transact-SQL on Linux.
@@ -92,23 +91,24 @@ This example creates certificates for a three-node configuration. The instance n
    GO
 
    CREATE CERTIFICATE LinAGN1_Cert
-       WITH SUBJECT = 'LinAGN1 AG Certificate';
+   WITH SUBJECT = 'LinAGN1 AG Certificate';
    GO
 
-   BACKUP CERTIFICATE LinAGN1_Cert TO FILE = '/var/opt/mssql/data/LinAGN1_Cert.cer';
+   BACKUP CERTIFICATE LinAGN1_Cert
+   TO FILE = '/var/opt/mssql/data/LinAGN1_Cert.cer';
    GO
 
    CREATE ENDPOINT AGEP
-       STATE = STARTED
-       AS TCP
+   STATE = STARTED
+   AS TCP
    (
-               LISTENER_PORT = 5022,
-               LISTENER_IP = ALL
+       LISTENER_PORT = 5022,
+       LISTENER_IP = ALL
    )
-       FOR DATABASE_MIRRORING
+   FOR DATABASE_MIRRORING
    (
-               AUTHENTICATION = CERTIFICATE LinAGN1_Cert,
-               ROLE = ALL
+       AUTHENTICATION = CERTIFICATE LinAGN1_Cert,
+       ROLE = ALL
    );
    GO
    ```
@@ -120,23 +120,24 @@ This example creates certificates for a three-node configuration. The instance n
    GO
 
    CREATE CERTIFICATE LinAGN2_Cert
-       WITH SUBJECT = 'LinAGN2 AG Certificate';
+   WITH SUBJECT = 'LinAGN2 AG Certificate';
    GO
 
-   BACKUP CERTIFICATE LinAGN2_Cert TO FILE = '/var/opt/mssql/data/LinAGN2_Cert.cer';
+   BACKUP CERTIFICATE LinAGN2_Cert
+   TO FILE = '/var/opt/mssql/data/LinAGN2_Cert.cer';
    GO
 
    CREATE ENDPOINT AGEP
-       STATE = STARTED
-       AS TCP
+   STATE = STARTED
+   AS TCP
    (
-               LISTENER_PORT = 5022,
-               LISTENER_IP = ALL
+       LISTENER_PORT = 5022,
+       LISTENER_IP = ALL
    )
-       FOR DATABASE_MIRRORING
+   FOR DATABASE_MIRRORING
    (
-               AUTHENTICATION = CERTIFICATE LinAGN2_Cert,
-               ROLE = ALL
+       AUTHENTICATION = CERTIFICATE LinAGN2_Cert,
+       ROLE = ALL
    );
    GO
    ```
@@ -148,23 +149,24 @@ This example creates certificates for a three-node configuration. The instance n
    GO
 
    CREATE CERTIFICATE LinAGN3_Cert
-       WITH SUBJECT = 'LinAGN3 AG Certificate';
+   WITH SUBJECT = 'LinAGN3 AG Certificate';
    GO
 
-   BACKUP CERTIFICATE LinAGN3_Cert TO FILE = '/var/opt/mssql/data/LinAGN3_Cert.cer';
+   BACKUP CERTIFICATE LinAGN3_Cert
+   TO FILE = '/var/opt/mssql/data/LinAGN3_Cert.cer';
    GO
 
    CREATE ENDPOINT AGEP
-       STATE = STARTED
-       AS TCP
+   STATE = STARTED
+   AS TCP
    (
-               LISTENER_PORT = 5022,
-               LISTENER_IP = ALL
+       LISTENER_PORT = 5022,
+       LISTENER_IP = ALL
    )
-       FOR DATABASE_MIRRORING
+   FOR DATABASE_MIRRORING
    (
-               AUTHENTICATION = CERTIFICATE LinAGN3_Cert,
-               ROLE = ALL
+       AUTHENTICATION = CERTIFICATE LinAGN3_Cert,
+       ROLE = ALL
    );
    GO
    ```
@@ -187,15 +189,17 @@ This example creates certificates for a three-node configuration. The instance n
 
    ```sql
    CREATE LOGIN LinAGN2_Login
-       WITH PASSWORD = '<password>';
+   WITH PASSWORD = '<password>';
 
-   CREATE USER LinAGN2_User FOR LOGIN LinAGN2_Login;
+   CREATE USER LinAGN2_User
+   FOR LOGIN LinAGN2_Login;
    GO
 
    CREATE LOGIN LinAGN3_Login
-       WITH PASSWORD = '<password>';
+   WITH PASSWORD = '<password>';
 
-   CREATE USER LinAGN3_User FOR LOGIN LinAGN3_Login;
+   CREATE USER LinAGN3_User
+   FOR LOGIN LinAGN3_Login;
    GO
    ```
 
@@ -216,31 +220,28 @@ This example creates certificates for a three-node configuration. The instance n
    GO
    ```
 
-1. Grant the logins associated with `LinAG2` and `LinAGN3` permission to connect to the endpoint on `LinAGN1`.
+1. Grant the logins associated with `LinAGN2` and `LinAGN3` permission to connect to the endpoint on `LinAGN1`.
 
    ```sql
-   GRANT CONNECT
-       ON ENDPOINT::AGEP TO LinAGN2_Login;
-   GO
-
-   GRANT CONNECT
-       ON ENDPOINT::AGEP TO LinAGN3_Login;
-   GO
+   GRANT CONNECT ON ENDPOINT::AGEP TO LinAGN2_Login;
+   GRANT CONNECT ON ENDPOINT::AGEP TO LinAGN3_Login;
    ```
 
 1. Create the instance-level logins and users associated with `LinAGN1` and `LinAGN3` on `LinAGN2`.
 
    ```sql
    CREATE LOGIN LinAGN1_Login
-       WITH PASSWORD = '<password>';
+   WITH PASSWORD = '<password>';
 
-   CREATE USER LinAGN1_User FOR LOGIN LinAGN1_Login;
+   CREATE USER LinAGN1_User
+   FOR LOGIN LinAGN1_Login;
    GO
 
    CREATE LOGIN LinAGN3_Login
-       WITH PASSWORD = '<password>';
+   WITH PASSWORD = '<password>';
 
-   CREATE USER LinAGN3_User FOR LOGIN LinAGN3_Login;
+   CREATE USER LinAGN3_User
+   FOR LOGIN LinAGN3_Login;
    GO
    ```
 
@@ -258,15 +259,11 @@ This example creates certificates for a three-node configuration. The instance n
    GO
    ```
 
-1. Grant the logins associated with `LinAG1` and `LinAGN3` permission to connect to the endpoint on `LinAGN2`.
+1. Grant the logins associated with `LinAGN1` and `LinAGN3` permission to connect to the endpoint on `LinAGN2`.
 
    ```sql
-   GRANT CONNECT
-       ON ENDPOINT::AGEP TO LinAGN1_Login;
-   GO
-
-   GRANT CONNECT
-       ON ENDPOINT::AGEP TO LinAGN3_Login;
+   GRANT CONNECT ON ENDPOINT::AGEP TO LinAGN1_Login;
+   GRANT CONNECT ON ENDPOINT::AGEP TO LinAGN3_Login;
    GO
    ```
 
@@ -274,15 +271,17 @@ This example creates certificates for a three-node configuration. The instance n
 
    ```sql
    CREATE LOGIN LinAGN1_Login
-       WITH PASSWORD = '<password>';
+   WITH PASSWORD = '<password>';
 
-   CREATE USER LinAGN1_User FOR LOGIN LinAGN1_Login;
+   CREATE USER LinAGN1_User
+   FOR LOGIN LinAGN1_Login;
    GO
 
    CREATE LOGIN LinAGN2_Login
-       WITH PASSWORD = '<password>';
+   WITH PASSWORD = '<password>';
 
-   CREATE USER LinAGN2_User FOR LOGIN LinAGN2_Login;
+   CREATE USER LinAGN2_User
+   FOR LOGIN LinAGN2_Login;
    GO
    ```
 
@@ -303,18 +302,14 @@ This example creates certificates for a three-node configuration. The instance n
 1. Grant the logins associated with `LinAG1` and `LinAGN2` permission to connect to the endpoint on `LinAGN3`.
 
    ```sql
-   GRANT CONNECT
-       ON ENDPOINT::AGEP TO LinAGN1_Login;
-   GO
-
-   GRANT CONNECT
-       ON ENDPOINT::AGEP TO LinAGN2_Login;
+   GRANT CONNECT ON ENDPOINT::AGEP TO LinAGN1_Login;
+   GRANT CONNECT ON ENDPOINT::AGEP TO LinAGN2_Login;
    GO
    ```
 
 ## Create the availability group
 
-This section covers how to use [!INCLUDE [ssmanstudiofull-md](../includes/ssmanstudiofull-md.md)] (SSMS) or Transact-SQL to create the availability group for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
+This section shows how to use [!INCLUDE [ssmanstudiofull-md](../includes/ssmanstudiofull-md.md)] (SSMS) or Transact-SQL to create the availability group for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 
 ### Use SQL Server Management Studio
 
@@ -324,11 +319,11 @@ This section shows how to create an AG with a cluster type of External using SSM
 
 1. On the Introduction dialog, select **Next**.
 
-1. In the Specify Availability Group Options dialog, enter a name for the availability group, and select a cluster type of `EXTERNAL` or `NONE` in the dropdown list. External should be used when Pacemaker will be deployed. None is for specialized scenarios, such as read scale-out. Selecting the option for database level health detection is optional. For more information on this option, see [Availability group database level health detection failover option](../database-engine/availability-groups/windows/sql-server-always-on-database-health-detection-failover-option.md). Select **Next**.
+1. In the Specify Availability Group Options dialog, enter a name for the availability group, and select a cluster type of `EXTERNAL` or `NONE` in the dropdown list. Use `EXTERNAL` when you deploy Pacemaker. Use `NONE` for specialized scenarios, such as read scale-out. Selecting the option for database level health detection is optional. For more information on this option, see [Availability group database level health detection failover option](../database-engine/availability-groups/windows/sql-server-always-on-database-health-detection-failover-option.md). Select **Next**.
 
    :::image type="content" source="media/sql-server-linux-create-availability-group/image3.png" alt-text="Screenshot of Create Availability Group showing cluster type." lightbox="media/sql-server-linux-create-availability-group/image3.png":::
 
-1. In the Select Databases dialog, select the databases that will participate in the AG. Each database must have a full backup before it can be added to an AG. Select **Next**.
+1. In the Select Databases dialog, select the databases that will participate in the AG. Each database must have a full backup before you can add it to an AG. Select **Next**.
 
 1. In the Specify Replicas dialog, select **Add Replica**.
 
@@ -336,7 +331,7 @@ This section shows how to create an AG with a cluster type of External using SSM
 
 1. Repeat the previous two steps for the instance that will contain a configuration-only replica or another secondary replica.
 
-1. All three instances should now be listed on the Specify Replicas dialog. If using a cluster type of External, for the secondary replica that will be a true secondary, make sure the Availability Mode matches that of the primary replica and failover mode is set to External. For the configuration-only replica, select an availability mode of Configuration only.
+1. All three instances appear on the Specify Replicas dialog. If you use a cluster type of External, for the secondary replica that will be a true secondary, make sure the Availability Mode matches that of the primary replica and failover mode is set to External. For the configuration-only replica, select an availability mode of Configuration only.
 
    The following example shows an AG with two replicas, a cluster type of External, and a configuration-only replica.
 
@@ -348,11 +343,11 @@ This section shows how to create an AG with a cluster type of External using SSM
 
 1. If you want to alter the backup preferences, select the Backup Preferences tab. For more information on backup preferences with AGs, see [Configure backups on secondary replicas of an Always On availability group](../database-engine/availability-groups/windows/configure-backup-on-availability-replicas-sql-server.md).
 
-1. If using readable secondaries or creating an AG with a cluster type of None for read-scale, you can create a listener by selecting the Listener tab. A listener can also be added later. To create a listener, choose the option **Create an availability group listener** and enter a name, a TCP/IP port, and whether to use a static or automatically assigned DHCP IP address. Remember that for an AG with a cluster type of None, the IP should be static and set to the primary's IP address.
+1. If you use readable secondaries or create an AG with a cluster type of None for read-scale, you can create a listener by selecting the **Listener** tab. You can also add a listener later. To create a listener, choose the **Create an availability group listener** option and enter a name, a TCP/IP port, and whether to use a static or automatically assigned DHCP IP address. For an AG with a cluster type of None, the IP should be static and set to the primary's IP address.
 
    :::image type="content" source="media/sql-server-linux-create-availability-group/image6.png" alt-text="Screenshot of Create Availability Group showing the listener option." lightbox="media/sql-server-linux-create-availability-group/image6.png":::
 
-1. If a listener is created for readable scenarios, SSMS 17.3 or later allows the creation of the read-only routing in the wizard. It can also be added later via SSMS or Transact-SQL. To add read-only routing now:
+1. If you create a listener for readable scenarios, SSMS allows the creation of the read-only routing in the wizard. You can also add it later via SSMS or Transact-SQL. To add read-only routing now:
 
    1. Select the Read-Only Routing tab.
 
@@ -362,7 +357,7 @@ This section shows how to create an AG with a cluster type of External using SSM
 
 1. Select **Next**.
 
-1. Choose how the secondary replicas will be initialized. The default is to use [automatic seeding](../database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group.md), which requires the same path on all servers participating in the AG. You can also have the wizard do a backup, copy, and restore (the second option); have it join if you have manually backed up, copied, and restored the database on the replicas (third option); or add the database later (last option). As with certificates, if you're manually making backups and copying them, permissions on the backup files needs to be set on the other replicas. Select **Next**.
+1. Choose how the secondary replicas are initialized. The default is to use [automatic seeding](../database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group.md), which requires the same path on all servers participating in the AG. You can also have the wizard do a backup, copy, and restore (the second option); have it join if you have manually backed up, copied, and restored the database on the replicas (third option); or add the database later (last option). As with certificates, if you're manually making backups and copying them, set permissions on the backup files on the other replicas. Select **Next**.
 
 1. On the Validation dialog, if everything doesn't come back as Success, investigate. Some warnings are acceptable and not fatal, such as if you don't create a listener. Select **Next**.
 
@@ -372,7 +367,7 @@ This section shows how to create an AG with a cluster type of External using SSM
 
 ### Use Transact-SQL
 
-This section shows examples of creating an AG using Transact-SQL. The listener and read-only routing can be configured after the AG is created. The AG itself can be modified with `ALTER AVAILABILITY GROUP`, but changing the cluster type can't be done in [!INCLUDE [sssql17-md](../includes/sssql17-md.md)]. If you didn't mean to create an AG with a cluster type of External, you must delete it and recreate it with a cluster type of None. More information and other options can be found at the following links:
+This section shows examples of creating an AG using Transact-SQL. You can configure the listener and read-only routing after creating the AG. You can modify the AG itself by using `ALTER AVAILABILITY GROUP`, but you can't change the cluster type in [!INCLUDE [sssql17-md](../includes/sssql17-md.md)]. If you didn't mean to create an AG with a cluster type of External, you must delete it and recreate it with a cluster type of None. For more information and other options, see the following links:
 
 - [CREATE AVAILABILITY GROUP (Transact-SQL)](../t-sql/statements/create-availability-group-transact-sql.md)
 - [ALTER AVAILABILITY GROUP (Transact-SQL)](../t-sql/statements/alter-availability-group-transact-sql.md)
@@ -383,49 +378,56 @@ This section shows examples of creating an AG using Transact-SQL. The listener a
 
 This example shows how to create a two-replica AG that uses a configuration-only replica.
 
-1. Execute on the node that will be the primary replica containing the fully read/write copy of the databases. This example uses automatic seeding.
+1. Execute the following statement on the node that will act as the primary replica, and contains the fully read/write copy of the databases. This example uses automatic seeding.
 
    ```sql
    CREATE AVAILABILITY GROUP [<AGName>]
    WITH (CLUSTER_TYPE = EXTERNAL)
    FOR DATABASE <DBName>
-   REPLICA ON N'LinAGN1' WITH (
+   REPLICA ON
+   N'LinAGN1' WITH (
       ENDPOINT_URL = N' TCP://LinAGN1.FullyQualified.Name:5022',
       FAILOVER_MODE = EXTERNAL,
-      AVAILABILITY_MODE = SYNCHRONOUS_COMMIT),
+      AVAILABILITY_MODE = SYNCHRONOUS_COMMIT
+   ),
    N'LinAGN2' WITH (
       ENDPOINT_URL = N'TCP://LinAGN2.FullyQualified.Name:5022',
       FAILOVER_MODE = EXTERNAL,
       AVAILABILITY_MODE = SYNCHRONOUS_COMMIT,
-      SEEDING_MODE = AUTOMATIC),
+      SEEDING_MODE = AUTOMATIC
+   ),
    N'LinAGN3' WITH (
       ENDPOINT_URL = N'TCP://LinAGN3.FullyQualified.Name:5022',
-      AVAILABILITY_MODE = CONFIGURATION_ONLY);
+      AVAILABILITY_MODE = CONFIGURATION_ONLY
+   );
    GO
    ```
 
-1. In a query window connected to the other replica, execute the following to join the replica to the AG and initiate the seeding process from the primary to the secondary replica.
+1. In a query window connected to the other replica, execute the following statement to join the replica to the AG and initiate the seeding process from the primary to the secondary replica.
 
    ```sql
-   ALTER AVAILABILITY GROUP [<AGName>] JOIN WITH (CLUSTER_TYPE = EXTERNAL);
+   ALTER AVAILABILITY GROUP [<AGName>]
+   JOIN WITH (CLUSTER_TYPE = EXTERNAL);
    GO
 
-   ALTER AVAILABILITY GROUP [<AGName>] GRANT CREATE ANY DATABASE;
+   ALTER AVAILABILITY GROUP [<AGName>]
+   GRANT CREATE ANY DATABASE;
    GO
    ```
 
-1. In a query window connected to the configuration only replica, join it to the AG.
+1. In a query window connected to the configuration only replica, run the following statement to join it to the AG.
 
    ```sql
-   ALTER AVAILABILITY GROUP [<AGName>] JOIN WITH (CLUSTER_TYPE = EXTERNAL);
+   ALTER AVAILABILITY GROUP [<AGName>]
+   JOIN WITH (CLUSTER_TYPE = EXTERNAL);
    GO
    ```
 
 #### Example B: Three replicas with read-only routing (External cluster type)
 
-This example shows three full replicas and how read-only routing can be configured as part of the initial AG creation.
+This example shows three full replicas and how you can configure read-only routing as part of the initial AG creation.
 
-1. Execute on the node that will be the primary replica containing the fully read/write copy of the databases. This example uses automatic seeding.
+1. Execute the following statement on the node that will act as the primary replica, and contains the fully read/write copy of the databases. This example uses automatic seeding.
 
    ```sql
    CREATE AVAILABILITY GROUP [<AGName>] WITH (CLUSTER_TYPE = EXTERNAL)
@@ -477,18 +479,20 @@ This example shows three full replicas and how read-only routing can be configur
    A few things to note about this configuration:
 
    - `AGName` is the name of the availability group.
-   - `DBName` is the name of the database that is used with the availability group. It can also be a list of names separated by commas.
-   - `ListenerName` is a name that is different than any of the underlying servers/nodes. It will be registered in DNS along with `IPAddress`.
-   - `IPAddress` is an IP address that is associated with `ListenerName`. It's also unique and not the same as any of the servers/nodes. Applications and end users use either `ListenerName` or `IPAddress` to connect to the AG.
-   - `SubnetMask` is the subnet mask of `IPAddress`. In [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] and previous versions, this is `255.255.255.255`. In [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] and later versions, this is `0.0.0.0`.
+   - `DBName` is the name of the database that you use with the availability group. It can also be a list of names separated by commas.
+   - `ListenerName` is a name that's different from any of the underlying servers or nodes. It's registered in DNS along with `IPAddress`.
+   - `IPAddress` is an IP address that's associated with `ListenerName`. It's also unique and not the same as any of the servers or nodes. Applications and end users use either `ListenerName` or `IPAddress` to connect to the AG.
+      - `SubnetMask` is the subnet mask of `IPAddress`. In [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] and previous versions, this value is `255.255.255.255`. In [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] and later versions, this value is `0.0.0.0`.
 
-1. In a query window connected to the other replica, execute the following to join the replica to the AG and initiate the seeding process from the primary to the secondary replica.
+1. In a query window connected to the other replica, execute the following statement to join the replica to the AG and initiate the seeding process from the primary to the secondary replica.
 
    ```sql
-   ALTER AVAILABILITY GROUP [<AGName>] JOIN WITH (CLUSTER_TYPE = EXTERNAL);
+   ALTER AVAILABILITY GROUP [<AGName>]
+   JOIN WITH (CLUSTER_TYPE = EXTERNAL);
    GO
 
-   ALTER AVAILABILITY GROUP [<AGName>] GRANT CREATE ANY DATABASE;
+   ALTER AVAILABILITY GROUP [<AGName>]
+   GRANT CREATE ANY DATABASE;
    GO
    ```
 
@@ -496,13 +500,12 @@ This example shows three full replicas and how read-only routing can be configur
 
 #### Example C: Two replicas with read-only routing (None cluster type)
 
-This example shows the creation of a two-replica configuration using a cluster type of None. It's used for the read scale scenario where no failover is expected. This creates the listener that is actually the primary replica, and the read-only routing, using the round robin functionality.
+This example shows the creation of a two-replica configuration using a cluster type of None. Use this configuration for the read scale scenario where no failover is expected. This step creates the listener that is actually the primary replica, and the read-only routing, using the round robin functionality.
 
-1. Execute on the node that will be the primary replica containing the fully read/write copy of the databases. This example uses automatic seeding.
+1. Execute the following statement on the node that will act as the primary replica, and contains the fully read/write copy of the databases. This example uses automatic seeding.
 
    ```sql
-   CREATE AVAILABILITY
-   GROUP [<AGName>]
+   CREATE AVAILABILITY GROUP [<AGName>]
    WITH (CLUSTER_TYPE = NONE)
    FOR DATABASE <DBName> REPLICA ON
        N'LinAGN1' WITH (
@@ -537,29 +540,31 @@ This example shows the creation of a two-replica configuration using a cluster t
    GO
    ```
 
-   Where:
+   In this example:
 
    - `AGName` is the name of the availability group.
-   - `DBName` is the name of the database that will be used with the availability group. It can also be a list of names separated by commas.
-   - `PortOfEndpoint` is the port number used by the endpoint created.
-   - `PortOfInstance` is the port number used by the instance of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
-   - `ListenerName` is a name that is different than any of the underlying replicas but isn't actually used.
+   - `DBName` is the name of the database that you use with the availability group. It can also be a list of names separated by commas.
+   - `PortOfEndpoint` is the port number used by the endpoint you create.
+      - `PortOfInstance` is the port number used by the instance of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
+   - `ListenerName` is a name that's different from any of the underlying replicas but isn't actually used.
    - `PrimaryReplicaIPAddress` is the IP address of the primary replica.
-   - `SubnetMask` is the subnet mask of `IPAddress`. In [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] and previous versions, this is `255.255.255.255`. In [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] and later versions, this is `0.0.0.0`.
+      - `SubnetMask` is the subnet mask of `IPAddress`. In [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] and previous versions, this value is `255.255.255.255`. In [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] and later versions, this value is `0.0.0.0`.
 
 1. Join the secondary replica to the AG and initiate automatic seeding.
 
    ```sql
-   ALTER AVAILABILITY GROUP [<AGName>] JOIN WITH (CLUSTER_TYPE = NONE);
+   ALTER AVAILABILITY GROUP [<AGName>]
+   JOIN WITH (CLUSTER_TYPE = NONE);
    GO
 
-   ALTER AVAILABILITY GROUP [<AGName>] GRANT CREATE ANY DATABASE;
+   ALTER AVAILABILITY GROUP [<AGName>]
+   GRANT CREATE ANY DATABASE;
    GO
    ```
 
 ## Create the SQL Server login and permissions for Pacemaker
 
-A Pacemaker high availability cluster underlying [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux needs access to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance, and permissions on the availability group itself. These steps create the login and the associated permissions, along with a file that tells Pacemaker how to log into [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
+A Pacemaker high availability cluster that uses [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux needs access to the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] instance, and permissions on the availability group itself. These steps create the login and the associated permissions, along with a file that tells Pacemaker how to log into [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 
 1. In a query window connected to the first replica, execute the following script:
 
@@ -570,17 +575,18 @@ A Pacemaker high availability cluster underlying [!INCLUDE [ssnoversion-md](../i
    GRANT VIEW SERVER STATE TO PMLogin;
    GO
 
-   GRANT ALTER, CONTROL, VIEW DEFINITION ON AVAILABILITY GROUP::<AGThatWasCreated> TO PMLogin;
+   GRANT ALTER, CONTROL, VIEW DEFINITION
+   ON AVAILABILITY GROUP::<AGThatWasCreated> TO PMLogin;
    GO
    ```
 
-1. On Node 1, enter the command
+1. On Node 1, enter the command:
 
    ```bash
    sudo emacs /var/opt/mssql/secrets/passwd
    ```
 
-   This opens the Emacs editor.
+   This command opens the Emacs editor.
 
 1. Enter the following two lines into the editor:
 
@@ -592,7 +598,7 @@ A Pacemaker high availability cluster underlying [!INCLUDE [ssnoversion-md](../i
 
 1. Hold down the `Ctrl` key, then press `X`, then `C`, to exit and save the file.
 
-1. Execute
+1. Execute:
 
    ```bash
    sudo chmod 400 /var/opt/mssql/secrets/passwd
@@ -600,13 +606,13 @@ A Pacemaker high availability cluster underlying [!INCLUDE [ssnoversion-md](../i
 
    to lock down the file.
 
-1. Repeat Steps 1-5 on the other servers that will serve as replicas.
+1. Repeat Steps 1-5 on the other servers that serve as replicas.
 
 ## Create the availability group resources in the Pacemaker cluster (External only)
 
-After an availability group is created in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], the corresponding resources must be created in Pacemaker, when a cluster type of External is specified. There are two resources associated with an AG: the AG itself and an IP address. Configuring the IP address resource is optional if you aren't using the listener functionality, but is recommended.
+After you create an availability group in [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], you must create the corresponding resources in Pacemaker when you specify a cluster type of External. Two resources are associated with an availability group: the availability group itself, and an IP address. Configuring the IP address resource is optional if you aren't using the listener functionality, but it's recommended.
 
-The AG resource you created is a type of resource called a *clone*. The AG resource essentially has copies on each node, and there's one controlling resource called the *master*. The master is associated with the server hosting the primary replica. The other resources host secondary replicas (regular or configuration-only) and can be promoted to master in a failover.
+The AG resource you create is a type of resource called a *clone*. The AG resource has copies on each node, and one controlling resource called the *master*. The master is associated with the server hosting the primary replica. The other resources host secondary replicas (regular or configuration-only) and can be promoted to master in a failover.
 
 ### [Red Hat Enterprise Linux (RHEL) and Ubuntu](#tab/ru)
 
@@ -616,33 +622,36 @@ The AG resource you created is a type of resource called a *clone*. The AG resou
    sudo pcs resource create <NameForAGResource> ocf:mssql:ag ag_name=<AGName> meta failure-timeout=30s promotable notify=true
    ```
 
-   Where `NameForAGResource` is the unique name given to this cluster resource for the AG, and `AGName` is the name of the AG that was created.
+   In this example, `NameForAGResource` is the unique name you give to this cluster resource for the AG, and `AGName` is the name of the AG that you created.
 
-1. Create the IP address resource for the AG that will be associated with the listener functionality.
+1. Create the IP address resource for the AG that you associate with the listener functionality.
 
    ```bash
    sudo pcs resource create <NameForIPResource> ocf:heartbeat:IPaddr2 ip=<IPAddress> cidr_netmask=<Netmask>
    ```
 
-   Where `NameForIPResource` is the unique name for the IP resource, and `IPAddress` is the static IP address assigned to the resource.
+   In this example, `NameForIPResource` is the unique name for the IP resource, and `IPAddress` is the static IP address you assign to the resource.
 
-1. To ensure that the IP address and the AG resource are running on the same node, a colocation constraint must be configured.
+1. To ensure that the IP address and the AG resource run on the same node, configure a colocation constraint.
 
    ```bash
    sudo pcs constraint colocation add <NameForIPResource> with promoted <NameForAGResource>-clone INFINITY
    ```
 
-   Where `NameForIPResource` is the name for the IP resource, and `NameForAGResource` is the name for the AG resource.
+   In this example, `NameForIPResource` is the name for the IP resource, and `NameForAGResource` is the name for the AG resource.
 
-1. Create an ordering constraint to ensure that the AG resource is up and running before the IP address. While the colocation constraint implies an ordering constraint, this enforces it.
+1. Create an ordering constraint to ensure that the AG resource is up and running before the IP address. While the colocation constraint implies an ordering constraint, this step enforces it.
 
    ```bash
    sudo pcs constraint order promote <NameForAGResource>-clone then start <NameForIPResource>
    ```
 
-   Where `NameForIPResource` is the name for the IP resource, and `NameForAGResource` is the name for the AG resource.
+   In this example, `NameForIPResource` is the name for the IP resource, and `NameForAGResource` is the name for the AG resource.
 
 ### [SUSE Linux Enterprise Server (SLES)](#tab/sles)
+
+> [!NOTE]  
+> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
 
 1. Create the AG resource with the following syntax:
 
@@ -664,9 +673,9 @@ The AG resource you created is a type of resource called a *clone*. The AG resou
    commit
    ```
 
-   Where `NameForAGResource` is the unique name given to this cluster resource for the AG, and `AGName` is the name of the AG that was created.
+   In this example, `NameForAGResource` is the unique name you give to this cluster resource for the AG, and `AGName` is the name of the AG that you created.
 
-1. Create the IP address resource for the AG that will be associated with the listener functionality.
+1. Create the IP address resource for the AG that you associate with the listener functionality.
 
    ```bash
    crm configure \
@@ -676,9 +685,9 @@ The AG resource you created is a type of resource called a *clone*. The AG resou
          cidr_netmask=<Netmask>
    ```
 
-   Where `NameForIPResource` is the unique name for the IP resource, and `IPAddress` is the static IP address assigned to the resource. On SLES, you also need to provide the netmask. For example, 255.255.255.0 would have a value of 24 for `Netmask`.
+   In this example, `NameForIPResource` is the unique name for the IP resource, and `IPAddress` is the static IP address you assign to the resource. On SLES, you also need to provide the netmask. For example, 255.255.255.0 has a value of 24 for `Netmask`.
 
-1. To ensure that the IP address and the AG resource are running on the same node, a colocation constraint must be configured.
+1. To ensure that the IP address and the AG resource run on the same node, configure a colocation constraint.
 
    ```bash
    crm configure <NameForConstraint> inf: \
@@ -686,9 +695,9 @@ The AG resource you created is a type of resource called a *clone*. The AG resou
    commit
    ```
 
-   Where `NameForIPResource` is the name for the IP resource, `NameForAGResource` is the name for the AG resource, and `NameForConstraint` is the name for the constraint.
+   In this example, `NameForIPResource` is the name for the IP resource, `NameForAGResource` is the name for the AG resource, and `NameForConstraint` is the name for the constraint.
 
-1. Create an ordering constraint to ensure that the AG resource is up and running before the IP address. While the colocation constraint implies an ordering constraint, this enforces it.
+1. Create an ordering constraint to ensure that the AG resource is up and running before the IP address. While the colocation constraint implies an ordering constraint, this step enforces it.
 
    ```bash
    crm configure \
@@ -696,13 +705,14 @@ The AG resource you created is a type of resource called a *clone*. The AG resou
    commit
    ```
 
-   Where `NameForIPResource` is the name for the IP resource, `NameForAGResource` is the name for the AG resource, and `NameForConstraint` is the name for the constraint.
+   In this example, `NameForIPResource` is the name for the IP resource, `NameForAGResource` is the name for the AG resource, and `NameForConstraint` is the name for the constraint.
 
 ---
 
 ## Next step
 
 In this tutorial, you learned how to create and configure an availability group for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. You learned how to:
+
 > [!div class="checklist"]
 > - Enable availability groups.
 > - Create AG endpoints and certificates.
@@ -713,4 +723,4 @@ In this tutorial, you learned how to create and configure an availability group 
 For most AG administration tasks, including upgrades and failing over, see:
 
 > [!div class="nextstepaction"]
-> [Operate HA availability group for SQL Server on Linux](sql-server-linux-availability-group-failover-ha.md)
+> [Always On availability group failover on Linux](sql-server-linux-availability-group-failover-ha.md)

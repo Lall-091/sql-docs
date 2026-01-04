@@ -3,8 +3,7 @@ title: Configure SQL Server Always on Availability Group on Windows and Linux
 description: Learn how to create a SQL Server Always On Availability Group (AG) with one replica on a Windows server and the other replica on a Linux server.
 author: rwestMSFT
 ms.author: randolphwest
-ms.reviewer: vanto
-ms.date: 12/15/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: how-to
@@ -161,23 +160,23 @@ For the scripts in this article, angle brackets `<` and `>` identify values that
 
    ```sql
    CREATE ENDPOINT [Hadr_endpoint]
-       AS TCP
+   AS TCP
    (
-               LISTENER_IP = (0.0.0.0),
-               LISTENER_PORT = 5022
+       LISTENER_IP = (0.0.0.0),
+       LISTENER_PORT = 5022
    )
-       FOR DATABASE_MIRRORING
+   FOR DATABASE_MIRRORING
    (
-               ROLE = ALL,
-               AUTHENTICATION = CERTIFICATE dbm_certificate,
-               ENCRYPTION = REQUIRED ALGORITHM AES
+       ROLE = ALL,
+       AUTHENTICATION = CERTIFICATE dbm_certificate,
+       ENCRYPTION = REQUIRED ALGORITHM AES
    );
 
    ALTER ENDPOINT [Hadr_endpoint]
-       STATE = STARTED;
+   STATE = STARTED;
 
    GRANT CONNECT
-       ON ENDPOINT::[Hadr_endpoint] TO [dbm_login];
+   ON ENDPOINT::[Hadr_endpoint] TO [dbm_login];
    GO
    ```
 
@@ -204,27 +203,23 @@ For the scripts in this article, angle brackets `<` and `>` identify values that
    To create the AG, update the values and run the script on the primary replica.
 
    ```sql
-   CREATE AVAILABILITY
-   GROUP [ag1]
+   CREATE AVAILABILITY GROUP [ag1]
    WITH (CLUSTER_TYPE = NONE)
-   FOR REPLICA
-       ON N'<WinSQLInstance>'
-   WITH (
+   FOR REPLICA ON
+   N'<WinSQLInstance>' WITH (
        ENDPOINT_URL = N'tcp://<WinSQLInstance>:5022',
        AVAILABILITY_MODE = ASYNCHRONOUS_COMMIT,
        SEEDING_MODE = AUTOMATIC,
        FAILOVER_MODE = MANUAL,
        SECONDARY_ROLE(ALLOW_CONNECTIONS = ALL)
-       ),
-       N'<LinuxSQLInstance>'
-   WITH (
+   ),
+   N'<LinuxSQLInstance>' WITH (
        ENDPOINT_URL = N'tcp://<LinuxSQLInstance>:5022',
        AVAILABILITY_MODE = ASYNCHRONOUS_COMMIT,
        SEEDING_MODE = AUTOMATIC,
        FAILOVER_MODE = MANUAL,
        SECONDARY_ROLE(ALLOW_CONNECTIONS = ALL);
-       )
-   GO
+   );
    ```
 
    For more information, see [CREATE AVAILABILITY GROUP](../t-sql/statements/create-availability-group-transact-sql.md).
@@ -251,8 +246,8 @@ For the scripts in this article, angle brackets `<` and `>` identify values that
 
    ```sql
    CREATE DATABASE [TestDB] CONTAINMENT = NONE
-       ON
-       PRIMARY(NAME = N'TestDB', FILENAME = N'<F:\Path>\TestDB.mdf')
+   ON
+       PRIMARY (NAME = N'TestDB', FILENAME = N'<F:\Path>\TestDB.mdf')
        LOG ON (NAME = N'TestDB_log', FILENAME = N'<F:\Path>\TestDB_log.ldf');
    GO
    ```

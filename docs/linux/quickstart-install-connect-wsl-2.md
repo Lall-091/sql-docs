@@ -3,7 +3,7 @@ title: "WSL 2: Install SQL Server on Windows Subsystem for Linux"
 description: This quickstart shows how to install SQL Server on Windows Subsystem for Linux (WSL 2) and then create and query a database with sqlcmd.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 07/10/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: quickstart
@@ -16,11 +16,11 @@ ms.custom:
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
-Windows Subsystem for Linux (WSL) is a feature in Windows that allows you to run a Linux environment directly on your Windows machine, without the need for a virtual machine or dual booting. WSL provides a seamless and productive experience for developers who want to use both Windows and Linux simultaneously. For more information, see [What is the Windows Subsystem for Linux?](/windows/wsl/about)
+Use the Windows Subsystem for Linux (WSL) to run a Linux environment directly on your Windows machine, without the need for a virtual machine or dual booting. WSL provides a seamless and productive experience for developers who want to use both Windows and Linux simultaneously. For more information, see [What is the Windows Subsystem for Linux?](/windows/wsl/about)
 
 ## SQL Server on WSL is for development use only
 
-SQL Server on WSL 2 is intended for development purposes only, and is **not** supported for production workloads. We recommend running SQL Server in WSL environments on one of the [Supported platforms](sql-server-linux-release-notes-2022.md#supported-platforms) as documented, for the version of SQL Server you intend to run.
+SQL Server on WSL 2 is intended for development purposes only, and is **not** supported for production workloads. Run SQL Server in WSL environments on one of the [supported platforms](sql-server-linux-release-notes-2022.md#supported-platforms), for the version of SQL Server you intend to run.
 
 For any support related issues, you can [obtain support from Microsoft](/troubleshoot/sql/database-engine/install/windows/support-policy-sql-server#obtain-support-from-microsoft).
 
@@ -28,7 +28,7 @@ For any support related issues, you can [obtain support from Microsoft](/trouble
 
 There are two ways to get started with SQL Server on WSL 2:
 
-- Install SQL Server as a `systemd` service, which can be managed using `systemctl` commands. Make sure that you enable `systemd` on WSL. For more information, see [How to enable systemd](/windows/wsl/systemd#how-to-enable-systemd).
+- Install SQL Server as a `systemd` service, which you can then manage with `systemctl` commands. Make sure that you enable `systemd` on WSL. For more information, see [How to enable systemd](/windows/wsl/systemd#how-to-enable-systemd).
 
 - Deploy SQL Server containers in WSL. For this option, you need to install a Linux container engine in WSL, such as Docker or Podman, and then deploy SQL Server containers.
 
@@ -44,13 +44,13 @@ This section describes the steps to set up a Linux distribution in WSL, and how 
 
 ### Choose Linux distribution
 
-You can list all the valid distributions that can be installed in WSL using the following command:
+List all the valid distributions that you can install in WSL:
 
 ```console
 wsl -l -o
 ```
 
-The output looks similar to the following example.
+The output looks similar to the following example:
 
 ```output
 The following is a list of valid distributions that can be installed.
@@ -73,7 +73,7 @@ SUSE-Linux-Enterprise-15-SP6    SUSE Linux Enterprise 15 SP6
 openSUSE-Tumbleweed             openSUSE Tumbleweed
 ```
 
-For this quickstart, install Ubuntu 22.04, and then install SQL Server 2022 into that distribution.
+For this quickstart, install Ubuntu 22.04, and then install [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] into that distribution.
 
 To install Ubuntu 22.04, run the following command. Make a note of the UNIX user account and password. In this example, use `wsluser` as the username.
 
@@ -81,7 +81,7 @@ To install Ubuntu 22.04, run the following command. Make a note of the UNIX user
 wsl --install -d Ubuntu-22.04
 ```
 
-You should see output similar to the following example. At the end, it should show that you're logged into the Ubuntu 22.04 bash shell.
+The output looks similar to the following example. At the end, it shows that you're logged into the Ubuntu 22.04 bash shell.
 
 ```output
 Installing: Ubuntu 22.04 LTS
@@ -117,19 +117,21 @@ This message is shown once a day. To disable it please create the
 
 ### Install SQL Server
 
-Once you're logged into the Ubuntu 22.04 bash shell, you can follow the steps outlined in [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md?view=sql-server-ver16&preserve-view=true&tabs=ubuntu2204#install-sql-server) to install SQL Server 2022.
+After you sign in to the Ubuntu 22.04 bash shell, follow the steps outlined in [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md?view=sql-server-ver16&preserve-view=true&tabs=ubuntu2204#install-sql-server) to install [!INCLUDE [sssql22-md](../includes/sssql22-md.md)].
 
-You should [install the SQL Server command-line tools](quickstart-install-connect-ubuntu.md?view=sql-server-ver16&preserve-view=true&tabs=ubuntu2204#install-the-sql-server-command-line-tools) as well.
+You should also [install the SQL Server command-line tools](quickstart-install-connect-ubuntu.md?view=sql-server-ver16&preserve-view=true&tabs=ubuntu2204#install-the-sql-server-command-line-tools).
 
 ### Get IP address
 
-To identify the IP address to connect to using SQL Server Management Studio (SSMS), run the `ifconfig` command as follows:
+[!INCLUDE [connect-instance-client](../includes/connect-instance-client.md)]
+
+To find the IP address, run the `ifconfig` command:
 
 ```bash
 ifconfig
 ```
 
-You should see output similar to the following example.
+The output looks similar to the following example:
 
 ```output
 eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
@@ -153,7 +155,7 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
 
 ## Deploy SQL Server containers in WSL
 
-To deploy containers in WSL, you first need to install a Linux container engine, such as Docker. For more information, see [Get started with Docker remote containers on WSL](/windows/wsl/tutorials/wsl-containers). Once you have the Docker engine installed, deploy the SQL Server container image as follows.
+To deploy containers in WSL, you first need to install a Linux container engine, such as Docker. For more information, see [Get started with Docker remote containers on WSL](/windows/wsl/tutorials/wsl-containers). After you install the Docker engine, deploy the SQL Server container image as follows.
 
 ```bash
 docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" \
@@ -169,7 +171,7 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" \
 
 ### Add persistent storage with WSL for SQL Server containers
 
-You can create data volumes as described in [Mount a host directory as data volume](sql-server-linux-docker-container-configure.md?pivots=cs1-bash#mount-a-host-directory-as-data-volume).
+Create data volumes as described in [Mount a host directory as data volume](sql-server-linux-docker-container-configure.md?pivots=cs1-bash#mount-a-host-directory-as-data-volume).
 
 For example, run the following command to set up a volume called `sql_volume` located at `/var/opt/mssql/`.
 
@@ -183,9 +185,9 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" \
 
 [!INCLUDE [editions-sql-server-developer](includes/editions-sql-server-developer.md)]
 
-Even if you run the `wsl --terminate` command, the data isn't lost. When you start up WSL again and run the `docker run` command to deploy using the `sql_volume` volume, it still has all the data intact.
+Even if you run the `wsl --terminate` command, you don't lose the data. When you start up WSL again and run the `docker run` command to deploy using the `sql_volume` volume, it still has all the data intact.
 
-If you want to delete the persisted volume, make sure that the container using the volume is stopped and removed, and run the following command.
+If you want to delete the persisted volume, make sure that you stop and remove the container that uses the volume, and then run the following command.
 
 ```bash
 docker volume rm sql_volume
@@ -193,7 +195,7 @@ docker volume rm sql_volume
 
 ## Remarks
 
-You should be able to configure most of the features supported for SQL Server on Linux for development purposes, except the business continuity features that are dependent on clustering stacks. These features, such as Pacemaker or HPE Serviceguard, aren't supported on WSL.
+You can configure most of the features supported for SQL Server on Linux for development purposes, except the business continuity features that depend on clustering stacks. These features, such as Pacemaker or HPE Serviceguard, aren't supported on WSL.
 
 For a full list of unsupported features for SQL Server on Linux, see [Editions and supported features of SQL Server 2022 on Linux](sql-server-linux-editions-and-components-2022.md).
 

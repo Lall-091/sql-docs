@@ -3,7 +3,7 @@ title: Installation Guidance for SQL Server on Linux
 description: Install, update, and uninstall SQL Server on Linux. This article covers online, offline, and unattended scenarios.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 12/05/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: article
@@ -17,7 +17,7 @@ ms.custom:
 
 [!INCLUDE [SQL Server - Linux](../includes/applies-to-version/sql-linux.md)]
 
-This article provides guidance for installing, updating, and uninstalling [!INCLUDE [sssql17-md](../includes/sssql17-md.md)], [!INCLUDE [sssql19-md](../includes/sssql19-md.md)], [!INCLUDE [sssql22-md](../includes/sssql22-md.md)], and [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] on Linux.
+This article provides guidance for installing, updating, and uninstalling [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] and later versions on Linux.
 
 For other deployment scenarios, see:
 
@@ -27,7 +27,7 @@ For other deployment scenarios, see:
 
 This guide covers several deployment scenarios. If you only need step-by-step installation instructions, jump to one of the quickstarts:
 
-- [Quickstart: Install SQL Server and create a database on Red Hat](quickstart-install-connect-red-hat.md)
+- [Quickstart: Install SQL Server and create a database on Red Hat Enterprise Linux](quickstart-install-connect-red-hat.md)
 - [Quickstart: Install SQL Server and create a database on SUSE Linux Enterprise Server](quickstart-install-connect-suse.md)
 - [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md)
 - [Quickstart: Run SQL Server Linux container images with Docker](quickstart-install-connect-docker.md)
@@ -40,10 +40,10 @@ For answers to frequently asked questions, see the [SQL Server on Linux FAQ](sql
 
 ## Supported platforms
 
-[!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is supported on Red Hat Enterprise Linux (RHEL), SUSE Linux Enterprise Server (SLES), and Ubuntu. It's also supported as a container image, which can run on Kubernetes, OpenShift, and Docker Engine on Linux.
-
 <!--SQL Server 2017 on Linux-->
 ::: moniker range="=sql-server-linux-2017 || =sql-server-2017"
+
+[!INCLUDE [sssql17-md](../includes/sssql17-md.md)] is supported on Red Hat Enterprise Linux (RHEL), SUSE Linux Enterprise Server (SLES), and Ubuntu. It's supported as a container image, which can run on Kubernetes, OpenShift, and Docker Engine on Linux.
 
 [!INCLUDE [linux-supported-platforms-2017](includes/linux-supported-platforms-2017.md)]
 
@@ -52,6 +52,8 @@ For answers to frequently asked questions, see the [SQL Server on Linux FAQ](sql
 <!--SQL Server 2019 on Linux-->
 ::: moniker range="=sql-server-linux-ver15 || =sql-server-ver15"
 
+[!INCLUDE [sssql19-md](../includes/sssql19-md.md)] is supported on Red Hat Enterprise Linux (RHEL), SUSE Linux Enterprise Server (SLES), and Ubuntu. It's supported as a container image, which can run on Kubernetes, OpenShift, and Docker Engine on Linux.
+
 [!INCLUDE [linux-supported-platforms-2019](includes/linux-supported-platforms-2019.md)]
 
 ::: moniker-end
@@ -59,12 +61,16 @@ For answers to frequently asked questions, see the [SQL Server on Linux FAQ](sql
 <!--SQL Server 2022 on Linux-->
 ::: moniker range="=sql-server-linux-ver16 || =sql-server-ver16"
 
+[!INCLUDE [sssql22-md](../includes/sssql22-md.md)] is supported on Red Hat Enterprise Linux (RHEL), SUSE Linux Enterprise Server (SLES), and Ubuntu. It's supported as a container image, which can run on Kubernetes, OpenShift, and Docker Engine on Linux.
+
 [!INCLUDE [linux-supported-platforms-2022](includes/linux-supported-platforms-2022.md)]
 
 ::: moniker-end
 
 <!--SQL Server 2025 on Linux-->
 ::: moniker range=">=sql-server-linux-ver17 || >=sql-server-ver17"
+
+[!INCLUDE [sssql25-md](../includes/sssql25-md.md)] is supported on Red Hat Enterprise Linux (RHEL) and Ubuntu. It's supported as a container image, which can run on Kubernetes, OpenShift, and Docker Engine on Linux.
 
 [!INCLUDE [linux-supported-platforms-2025](includes/linux-supported-platforms-2025.md)]
 
@@ -121,9 +127,11 @@ You can install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Li
 | Platform | Installation quickstarts |
 | --- | --- |
 | Red Hat Enterprise Linux (RHEL) | [2017](quickstart-install-connect-red-hat.md?view=sql-server-2017&preserve-view=true) \| [2019](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver15&preserve-view=true) \| [2022](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver16&preserve-view=true) \| [2025](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver17&preserve-view=true) |
-| SUSE Linux Enterprise Server (SLES) | [2017](quickstart-install-connect-suse.md?view=sql-server-2017&preserve-view=true) \| [2019](quickstart-install-connect-suse.md?view=sql-server-linux-ver15&preserve-view=true) \| [2022](quickstart-install-connect-suse.md?view=sql-server-linux-ver16&preserve-view=true) \| [2025](quickstart-install-connect-suse.md?view=sql-server-linux-ver17&preserve-view=true) |
+| SUSE Linux Enterprise Server (SLES) <sup>1</sup> | [2017](quickstart-install-connect-suse.md?view=sql-server-2017&preserve-view=true) \| [2019](quickstart-install-connect-suse.md?view=sql-server-linux-ver15&preserve-view=true) \| [2022](quickstart-install-connect-suse.md?view=sql-server-linux-ver16&preserve-view=true) |
 | Ubuntu | [2017](quickstart-install-connect-ubuntu.md?view=sql-server-2017&preserve-view=true) \| [2019](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver15&preserve-view=true) \| [2022](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver16&preserve-view=true) \| [2025](quickstart-install-connect-ubuntu.md?view=sql-server-linux-ver17&preserve-view=true) |
 | Docker | [2017](quickstart-install-connect-docker.md?view=sql-server-2017&preserve-view=true) \| [2019](quickstart-install-connect-docker.md?view=sql-server-linux-ver15&preserve-view=true) \| [2022](quickstart-install-connect-docker.md?view=sql-server-linux-ver16&preserve-view=true) \| [2025](quickstart-install-connect-docker.md?view=sql-server-linux-ver17&preserve-view=true) |
+
+<sup>1</sup> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], SUSE Linux Enterprise Server (SLES) isn't supported.
 
 You can also run [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux in an Azure virtual machine. For more information, see [Provision a SQL VM in Azure](/azure/azure-sql/virtual-machines/linux/sql-vm-create-portal-quickstart?toc=/sql/toc/toc.json).
 
@@ -141,7 +149,7 @@ To update the `mssql-server` package to the latest release, use one of the follo
 | SLES | `sudo zypper update mssql-server` |
 | Ubuntu | `sudo apt-get update`<br />`sudo apt-get install mssql-server` |
 
-These commands download the newest package and replace the binaries located under `/opt/mssql/`. The user generated databases and system databases aren't affected by this operation.
+These commands download the newest package and replace the binaries located under `/opt/mssql/`. This operation doesn't affect the user-generated databases or system databases.
 
 ::: moniker range="<=sql-server-linux-ver16 || <=sql-server-ver16"
 
@@ -166,7 +174,7 @@ To upgrade [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], first [ch
 
 To verify your current version and edition of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux, use the following procedure:
 
-1. If not already installed, see [Install the sqlcmd and bcp SQL Server command-line tools on Linux](sql-server-linux-setup-tools.md).
+1. If you don't already have **sqlcmd** installed, see [Install the sqlcmd and bcp SQL Server command-line tools on Linux](sql-server-linux-setup-tools.md).
 
 1. Use **sqlcmd** to run a Transact-SQL command that displays your [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] version and edition.
 
@@ -201,7 +209,7 @@ You can perform an unattended installation in the following way:
 - Follow the initial steps in the [quickstarts](#platforms) to register the repositories and install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)].
 - When you run `mssql-conf setup`, set [environment variables](sql-server-linux-configure-environment-variables.md) and use the `-n` (no prompt) option.
 
-The following example configures [!INCLUDE [ssdeveloper-md](../includes/ssdeveloper-md.md)] edition with the `MSSQL_PID` environment variable. It also accepts the EULA (`ACCEPT_EULA`) and sets the `sa` password (`MSSQL_SA_PASSWORD`). The `-n` parameter performs an unprompted installation where the configuration values are pulled from the environment variables.
+The following example configures [!INCLUDE [ssdeveloper-md](../includes/ssdeveloper-md.md)] edition with the `MSSQL_PID` environment variable. It also accepts the EULA (`ACCEPT_EULA`) and sets the `sa` password (`MSSQL_SA_PASSWORD`). The `-n` parameter performs an unprompted installation where the configuration values come from the environment variables.
 
 ```bash
 sudo MSSQL_PID=Developer ACCEPT_EULA=Y MSSQL_SA_PASSWORD='<password>' /opt/mssql/bin/mssql-conf -n setup
@@ -222,10 +230,10 @@ For a more detailed sample script, see the following examples:
 
 ## Offline install
 
-If your Linux machine doesn't have access to the online repositories used in the [quick starts](#platforms), you can download the package files directly. These packages are located at <https://packages.microsoft.com>.
+If your Linux machine can't access the online repositories used in the [quick starts](#platforms), you can download the package files directly. These packages are located at <https://packages.microsoft.com>.
 
 > [!TIP]  
-> If you successfully installed with the steps in the quick starts, you don't need to download or manually install the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] package(s). This section is only for the offline scenario.
+> If you followed a quickstart guide to install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], you don't need to download or manually install the [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] packages. This section is only for the offline scenario.
 
 1. **Download the database engine package for your platform**. Find package download links in the package details section of the [Release notes for SQL Server 2022 on Linux](sql-server-linux-release-notes-2022.md).
 
