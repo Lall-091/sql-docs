@@ -4,7 +4,7 @@ description: Describes how to configure change event streaming.
 author: nzagorac-ms
 ms.author: nzagorac
 ms.reviewer: mathoma, mikeray, randolphwest
-ms.date: 11/18/2025
+ms.date: 01/07/2026
 ms.service: sql
 ms.topic: how-to
 ms.custom:
@@ -535,7 +535,6 @@ The following limitations apply when using CES with Azure SQL Database:
 - CES emits events only for data changes from `INSERT`, `UPDATE`, and `DELETE` DML statements.
 - CES doesn't handle schema changes (DDL operations), which means it doesn't emit events for DDL operations. However, DDL operations aren't blocked, so if you execute them, the schema of subsequent DML events reflects the updated table structure. You're expected to gracefully handle events with the updated schema.
 - Currently, CES doesn't stream data that exists in a table before CES is enabled. Existing data isn't seeded, or sent as a snapshot, when CES is enabled.
-- When JSON is the specified output format, large event messages might be split at approximately 25% of the configured maximum message size per stream group. This limitation doesn't apply to the binary output type.
 - If a message exceeds the Azure Event Hubs message size limit, the failure is currently only observable through Extended Events. CES xEvents are currently only available in SQL Server 2025, and not Azure SQL Database.
 - Renaming tables and columns configuired for CES isn't supported. Renaming a table or column fails. Database renames **are allowed**.
 - Microsoft Entra authentication for CES isn't currently available in SQL Server 2025.

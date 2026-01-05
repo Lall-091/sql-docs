@@ -4,7 +4,7 @@ description: sys.sp_add_object_to_event_stream_group adds an object to a stream 
 author: nzagorac-ms
 ms.author: nzagorac
 ms.reviewer: mathoma, mikeray, randolphwest
-ms.date: 12/17/2025
+ms.date: 01/07/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -50,6 +50,9 @@ Specifies the name of the event stream group you want to add the table to. *@str
 #### [ @object_name = ] N'*schema_name_dot_object_name*'
 
 Specifies the name of the table you want to stream as part of the specified stream group. *@object_name* is **nvarchar(512)**, with no default, and can't be `NULL`.
+
+> [!NOTE]
+> Only tables are currently supported. Configuring CES on views results in an error.
 
 Use a two-part name for the column that includes both the schema name and column name. For example, a valid value is `dbo.Addresses`.
 
