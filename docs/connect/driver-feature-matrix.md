@@ -3,7 +3,7 @@ title: Driver Feature Support Matrix
 description: Learn which SQL Server features are supported in the drivers for .NET, ODBC, OLE DB, JDBC, Node.js, JavaScript, and Python.
 author: David-Engel
 ms.author: davidengel
-ms.date: 12/15/2025
+ms.date: 01/05/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: article
@@ -80,7 +80,7 @@ We wish all drivers supported every feature and spend effort to ensure feature p
 | [Transparent Network IP Resolution](odbc/using-transparent-network-ip-resolution.md) | [Yes](odbc/using-transparent-network-ip-resolution.md) (v13.0+) | [Yes](odbc/using-transparent-network-ip-resolution.md) (v13.1+) | [Yes](jdbc/setting-the-connection-properties.md) (v6.0+) | [Yes](oledb/features/using-transparent-network-ip-resolution.md) (v18.4+) |
 | [TDS 8.0 (strict encryption) and TLS 1.3](../relational-databases/security/networking/tds-8.md) | Yes (v18.0+) | Yes (v18.0+) | Yes (v11.2+) | Yes (v19.2+) |
 | [JSON data type](../relational-databases/json/json-data-sql-server.md) | | | [Yes](jdbc/use-json-data-type.md) (v13.2+) | |
-| [Vector (float32) data type](../t-sql/data-types/vector-data-type.md) | | | [Yes](jdbc/use-vector-data-type.md) (v13.2+) | |
+| [Vector (float32) data type](../t-sql/data-types/vector-data-type.md) | Yes (v18.6+) | Yes (v18.6+) | [Yes](jdbc/use-vector-data-type.md) (v13.2+) | |
 
 <a id="table3"></a>
 
