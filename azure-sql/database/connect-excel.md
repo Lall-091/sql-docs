@@ -38,7 +38,11 @@ You'll also need a copy of Excel. This article uses [Microsoft Excel 2016](https
 
    :::image type="content" source="media/connect-excel/excel-data-source.png" alt-text="Screenshot of the screen to Select data source: Connect Excel to SQL Database.":::
 
-1. In the **SQL Server database** dialog box, type the **Server name** you want to connect to in the form `<servername>.database.windows.net`. Optionally, enter in the name of your database. Select **OK** to open the credentials window.
+1. In the **SQL Server database** dialog box, type the **Server name** you want to connect to.
+    - In Azure SQL Database, this looks like: `<servername>.database.windows.net`. 
+    - In Azure SQL Managed Instance, this looks like: `<your-instance-name>.<unique-dns-prefix>.database.windows.net`.
+    - In SQL database in Fabric, this looks like: `<server-unique-identifier>.<tenant>.fabric.microsoft.com`.
+1. Optionally, enter in the name of your database. Select **OK** to open the credentials window.
 1. In the **SQL Server database** dialog box, select **Database** on the left side, and then enter in your **User Name** and **Password** for the server you want to connect to. Select **Connect** to open the **Navigator**.
 
    > [!TIP]
