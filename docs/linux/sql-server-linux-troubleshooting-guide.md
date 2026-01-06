@@ -16,6 +16,7 @@ ms.custom:
 
 This article describes how to troubleshoot [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] running on Linux or in a Linux container. When troubleshooting [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on Linux, remember to review the supported features and known limitations:
 
+- [Release notes for SQL Server 2025 on Linux](sql-server-linux-release-notes-2025.md)
 - [Release notes for SQL Server 2022 on Linux](sql-server-linux-release-notes-2022.md)
 - [Release notes for SQL Server 2019 on Linux](sql-server-linux-release-notes-2019.md)
 - [Release notes for SQL Server 2017 on Linux](sql-server-linux-release-notes-2017.md)
@@ -81,20 +82,20 @@ You can stop or restart the [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.m
 
 ## Access the log files
 
-The [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] [!INCLUDE [ssDE](../includes/ssde-md.md)] logs to the `/var/opt/mssql/log/errorlog` file in both the Linux and container installations. You need to be in **superuser** mode to browse this directory.
+The [!INCLUDE [ssdenoversion-md](../includes/ssdenoversion-md.md)] logs to the `/var/opt/mssql/log/errorlog` file in both the Linux and container installations. You need to be in **superuser** mode to browse this directory.
 
-The installer logs here: `/var/opt/mssql/setup-<time stamp representing time of install>`
-You can browse the `errorlog` files with any UTF-16 compatible tool like **vim** or **cat** like this:
+The installer logs to: `/var/opt/mssql/setup-<time stamp representing time of install>`
+You can browse the `errorlog` files with any UTF-16 compatible tool like **vim** or **cat** as follows:
 
-   ```bash
-   sudo cat errorlog
-   ```
+```bash
+sudo cat errorlog
+```
 
 If you prefer, you can also convert the files to UTF-8 to read them with **more** or **less** with the following command:
 
-   ```bash
-   sudo iconv -f UTF-16LE -t UTF-8 <errorlog> -o <output errorlog file>
-   ```
+```bash
+sudo iconv -f UTF-16LE -t UTF-8 <errorlog> -o <output errorlog file>
+```
 
 ## Extended events
 
@@ -106,15 +107,15 @@ Look for dumps in the log directory in Linux. Check under the `/var/opt/mssql/lo
 
 For example, to view core dumps:
 
-   ```bash
-   sudo ls /var/opt/mssql/log | grep .tar.gz2
-   ```
+```bash
+sudo ls /var/opt/mssql/log | grep .tar.gz2
+```
 
 For SQL dumps, use this script:
 
-   ```bash
-   sudo ls /var/opt/mssql/log | grep .mdmp
-   ```
+```bash
+sudo ls /var/opt/mssql/log | grep .mdmp
+```
 
 ## Start SQL Server in minimal configuration or in single user mode
 

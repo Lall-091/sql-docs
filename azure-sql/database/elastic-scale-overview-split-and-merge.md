@@ -1,21 +1,22 @@
 ---
-title: Moving data between scaled-out cloud databases
+title: Moving Data Between Scaled-Out Cloud Databases
 description: Explains how to manipulate shards and move data via a self-hosted service using elastic database APIs.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: bgavrilovic, mathoma, drskwier
-ms.date: 01/21/2025
+ms.reviewer: bgavrilovic, mathoma, drskwier, randolphwest
+ms.date: 01/02/2026
 ms.service: azure-sql-database
 ms.subservice: scale-out
-ms.topic: conceptual
+ms.topic: article
 ms.custom:
   - sqldbrb=1
   - devx-track-azurepowershell
 ---
 # Moving data between scaled-out cloud databases
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-If you are a Software as a Service developer, and suddenly your app undergoes tremendous demand, you need to accommodate the growth. So you add more databases (shards). How do you redistribute the data to the new databases without disrupting the data integrity? Use the **split-merge tool** to move data from constrained databases to the new databases.  
+[!INCLUDE [appliesto-sqldb](../includes/appliesto-sqldb.md)]
+
+If you're a Software as a Service developer, and suddenly your app undergoes tremendous demand, you need to accommodate the growth. So you add more databases (shards). How do you redistribute the data to the new databases without disrupting the data integrity? Use the **split-merge tool** to move data from constrained databases to the new databases.
 
 The split-merge tool runs as an Azure web service. An administrator or developer uses the tool to move shardlets (data from a shard) between different databases (shards). The tool uses shard map management to maintain the service metadata database, and ensure consistent mappings.
 
@@ -27,13 +28,12 @@ The split-merge tool runs as an Azure web service. An administrator or developer
 
 ## Documentation
 
-1. [Elastic database split-merge tool tutorial](elastic-scale-configure-deploy-split-and-merge.md)
-2. [Split-merge security configuration](elastic-scale-split-merge-security-configuration.md)
-3. [Split-merge security considerations](elastic-scale-split-merge-security-configuration.md)
-4. [Shard map management](elastic-scale-shard-map-management.md)
-5. [Migrate existing databases to scale-out](elastic-convert-to-use-elastic-tools.md)
-6. [Elastic database tools](elastic-scale-introduction.md)
-7. [Elastic database tools glossary](elastic-scale-glossary.md)
+1. [Deploy a split-merge service to move data between sharded databases](elastic-scale-configure-deploy-split-and-merge.md)
+1. [Split-merge security configuration](elastic-scale-split-merge-security-configuration.md)
+1. [Scale out databases with the shard map manager](elastic-scale-shard-map-management.md)
+1. [Migrate existing databases to scale out](elastic-convert-to-use-elastic-tools.md)
+1. [Scale out with Azure SQL Database](elastic-scale-introduction.md)
+1. [Elastic Database tools glossary](elastic-scale-glossary.md)
 
 ## Why use the split-merge tool
 
@@ -59,7 +59,7 @@ The split-merge tool runs as an Azure web service. An administrator or developer
 
   The split-merge is delivered as a customer-hosted service. You must deploy and host the service in your Microsoft Azure subscription. The package you download from NuGet contains a configuration template to complete with the information for your specific deployment. See the [split-merge tutorial](elastic-scale-configure-deploy-split-and-merge.md) for details. Since the service runs in your Azure subscription, you can control and configure most security aspects of the service. The default template includes the options to configure TLS, certificate-based client authentication, encryption for stored credentials, denial of service (DoS) guarding and IP restrictions. You can find more information on the security aspects in the following document [split-merge security configuration](elastic-scale-split-merge-security-configuration.md).
 
-  The default deployed service runs with one worker and one web role. Each uses the A1 VM size in Azure Cloud Services. While you cannot modify these settings when deploying the package, you could change them after a successful deployment in the running cloud service through the Azure portal. The worker role must not be configured for more than a single instance.
+  The default deployed service runs with one worker and one web role. Each uses the A1 VM size in Azure Cloud Services. While you can't modify these settings when deploying the package, you could change them after a successful deployment in the running cloud service through the Azure portal. The worker role must not be configured for more than a single instance.
 
 - **Shard map integration**
 
@@ -67,7 +67,7 @@ The split-merge tool runs as an Azure web service. An administrator or developer
 
 - **Consistent shardlet connections**
 
-  When data movement starts for a new batch of shardlets, any shard-map provided data-dependent routing connections to the shard storing the shardlet are killed and subsequent connections from the shard map APIs to the shardlets are blocked while the data movement is in progress in order to avoid inconsistencies. Connections to other shardlets on the same shard will also get killed, but will succeed again immediately on retry. Once the batch is moved, the shardlets are marked online again for the target shard and the source data is removed from the source shard. The service goes through these steps for every batch until all shardlets have been moved. This will lead to several connection kill operations during the split/merge/move operation.  
+  When data movement starts for a new batch of shardlets, any shard-map provided data-dependent routing connections to the shard storing the shardlet are killed and subsequent connections from the shard map APIs to the shardlets are blocked while the data movement is in progress in order to avoid inconsistencies. Connections to other shardlets on the same shard will also get killed, but will succeed again immediately on retry. Once the batch is moved, the shardlets are marked online again for the target shard and the source data is removed from the source shard. The service goes through these steps for every batch until all shardlets have been moved. This will lead to several connection kill operations during the split/merge/move operation.
 
 - **Managing shardlet availability**
 
@@ -135,7 +135,7 @@ The split-merge service package includes a worker role and a web role. The web r
 
 - **Source range (split and merge)**
 
-  A split and merge operation processes a range using its low and high key. To specify an operation with an unbounded high key value, check the "High key is max" check box and leave the high key field empty. The range key values that you specify do not need to precisely match a mapping and its boundaries in your shard map. If you do not specify any range boundaries, the service infers the closest range for you automatically. You can use the GetMappings.ps1 PowerShell script to retrieve the current mappings in a given shard map.
+  A split and merge operation processes a range using its low and high key. To specify an operation with an unbounded high key value, check the "High key is max" check box and leave the high key field empty. The range key values that you specify don't need to precisely match a mapping and its boundaries in your shard map. If you don't specify any range boundaries, the service infers the closest range for you automatically. You can use the GetMappings.ps1 PowerShell script to retrieve the current mappings in a given shard map.
 
 - **Split source behavior (split)**
 
@@ -143,7 +143,7 @@ The split-merge service package includes a worker role and a web role. The web r
 
 - **Source shardlet (move)**
 
-  Move operations are different from split or merge operations as they do not require a range to describe the source. A source for move is simply identified by the sharding key value that you plan to move.
+  Move operations are different from split or merge operations as they don't require a range to describe the source. A source for move is simply identified by the sharding key value that you plan to move.
 
 - **Target shard (split)**
 
@@ -155,7 +155,7 @@ The split-merge service package includes a worker role and a web role. The web r
 
 - **Batch size**
 
-  The batch size controls the number of shardlets that will go offline at a time during the data movement. This is an integer value where you can use smaller values when you are sensitive to long periods of downtime for shardlets. Larger values will increase the time that a given shardlet is offline but might improve performance.
+  The batch size controls the number of shardlets that will go offline at a time during the data movement. This is an integer value where you can use smaller values when you're sensitive to long periods of downtime for shardlets. Larger values will increase the time that a given shardlet is offline but might improve performance.
 
 - **Operation ID (cancel)**
 
@@ -166,9 +166,9 @@ The split-merge service package includes a worker role and a web role. The web r
 The current implementation of the split-merge service is subject to the following requirements and limitations:
 
 - The shards need to exist and be registered in the shard map before a split-merge operation on these shards can be performed.
-- The service does not create tables or any other database objects automatically as part of its operations. This means that the schema for all sharded tables and reference tables needs to exist on the target shard prior to any split/merge/move operation. Sharded tables in particular are required to be empty in the range where new shardlets are to be added by a split/merge/move operation. Otherwise, the operation will fail the initial consistency check on the target shard. Also note that reference data is only copied if the reference table is empty and that there are no consistency guarantees with regard to other concurrent write operations on the reference tables. We recommend this: when running split/merge operations, no other write operations make changes to the reference tables.
+- The service doesn't create tables or any other database objects automatically as part of its operations. This means that the schema for all sharded tables and reference tables needs to exist on the target shard prior to any split/merge/move operation. Sharded tables in particular are required to be empty in the range where new shardlets are to be added by a split/merge/move operation. Otherwise, the operation will fail the initial consistency check on the target shard. Also note that reference data is only copied if the reference table is empty and that there are no consistency guarantees with regard to other concurrent write operations on the reference tables. We recommend this: when running split/merge operations, no other write operations make changes to the reference tables.
 - The service relies on row identity established by a unique index or key that includes the sharding key to improve performance and reliability for large shardlets. This allows the service to move data at an even finer granularity than just the sharding key value. This helps to reduce the maximum amount of log space and locks that are required during the operation. Consider creating a unique index or a primary key including the sharding key on a given table if you want to use that table with split/merge/move requests. For performance reasons, the sharding key should be the leading column in the key or the index.
-- During the course of request processing, some shardlet data can be present both on the source and the target shard. This is necessary to protect against failures during the shardlet movement. The integration of split-merge with the shard map ensures that connections through the data-dependent routing APIs using the **OpenConnectionForKey** method on the shard map do not see any inconsistent intermediate states. However, when connecting to the source or the target shards without using the **OpenConnectionForKey** method, inconsistent intermediate states might be visible when split/merge/move requests are going on. These connections might show partial or duplicate results depending on the timing or the shard underlying the connection. This limitation currently includes the connections made by Elastic Scale Multi-Shard-Queries.
+- During the course of request processing, some shardlet data can be present both on the source and the target shard. This is necessary to protect against failures during the shardlet movement. The integration of split-merge with the shard map ensures that connections through the data-dependent routing APIs using the **OpenConnectionForKey** method on the shard map don't see any inconsistent intermediate states. However, when connecting to the source or the target shards without using the **OpenConnectionForKey** method, inconsistent intermediate states might be visible when split/merge/move requests are going on. These connections might show partial or duplicate results depending on the timing or the shard underlying the connection. This limitation currently includes the connections made by Elastic Scale Multi-Shard-Queries.
 - The metadata database for the split-merge service must not be shared between different roles. For example, a role of the split-merge service running in staging needs to point to a different metadata database than the production role.
 
 ## Billing
@@ -187,7 +187,7 @@ The split-merge Service provides the **RequestStatus** table in the metadata sto
 
 - **OperationId**
 
-  A GUID that uniquely identifies the request. This request can also be used to cancel the operation while it is still ongoing.
+  A GUID that uniquely identifies the request. This request can also be used to cancel the operation while it's still ongoing.
 
 - **Status**
 
@@ -207,13 +207,13 @@ The split-merge Service provides the **RequestStatus** table in the metadata sto
 
 ### Azure Diagnostics
 
-The split-merge service uses Azure Diagnostics based on Azure SDK 2.5 for monitoring and diagnostics. You control the diagnostics configuration as explained here: [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](/azure/cloud-services/cloud-services-dotnet-diagnostics). The download package includes two diagnostics configurations - one for the web role and one for the worker role. It includes the definitions to log Performance Counters, IIS logs, Windows Event Logs, and split-merge application event logs.
+The split-merge service uses Azure Diagnostics based on Azure SDK 2.5 for monitoring and diagnostics. To control the diagnostics configuration, see [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](/azure/cloud-services/cloud-services-dotnet-diagnostics). The download package includes two diagnostics configurations - one for the web role and one for the worker role. It includes the definitions to log Performance Counters, IIS logs, Windows Event Logs, and split-merge application event logs.
 
 ## Deploy Diagnostics
 
 [!INCLUDE [updated-for-az](../includes/updated-for-az.md)]
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > The PowerShell Azure Resource Manager (AzureRM) module was deprecated on February 29, 2024. All future development should use the Az.Sql module. Users are advised to migrate from AzureRM to the Az PowerShell module to ensure continued support and updates. The AzureRM module is no longer maintained or supported. The arguments for the commands in the Az PowerShell module and in the AzureRM modules are substantially identical. For more about their compatibility, see [Introducing the new Az PowerShell module](/powershell/azure/new-azureps-module-az).
 
 To enable monitoring and diagnostics using the diagnostic configuration for the web and worker roles provided by the NuGet package, run the following commands using Azure PowerShell:
@@ -234,21 +234,21 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext `
     -Slot Production -Role "SplitMergeWorker"
 ```
 
-You can find more information on how to configure and deploy diagnostics settings here: [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](/azure/cloud-services/cloud-services-dotnet-diagnostics).
+For more information on how to configure and deploy diagnostics settings, see [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](/azure/cloud-services/cloud-services-dotnet-diagnostics).
 
 ## Retrieve diagnostics
 
-You can easily access your diagnostics from the Visual Studio Server Explorer in the Azure part of the Server Explorer tree. 
+You can easily access your diagnostics from the Visual Studio Server Explorer in the Azure part of the Server Explorer tree.
 
-1. Open a Visual Studio instance, and in the menu bar, select **View**, and **Server Explorer**. 
-1. Select the Azure icon to connect to your Azure subscription. 
-1. Navigate to Azure -> **Storage** -> `<your storage account>` -> Tables -> `WADLogsTable`. 
+1. Open a Visual Studio instance, and in the menu bar, select **View**, and **Server Explorer**.
+1. Select the Azure icon to connect to your Azure subscription.
+1. Navigate to Azure -> **Storage** -> `<your storage account>` -> Tables -> `WADLogsTable`.
 
 For more information, see [Server Explorer](/previous-versions/x603htbk(v=vs.140)).
 
 ![WADLogsTable][2]
 
-The WADLogsTable highlighted in the figure above contains the detailed events from the split-merge service's application log. Note that the default configuration of the downloaded package is geared towards a production deployment. Therefore the interval at which logs and counters are pulled from the service instances is large (5 minutes). For test and development, lower the interval by adjusting the diagnostics settings of the web or the worker role to your needs. Right-click on the role in the Visual Studio Server Explorer (see above) and then adjust the Transfer Period in the dialog for the Diagnostics configuration settings:
+The WADLogsTable highlighted in the figure above contains the detailed events from the split-merge service's application log. The default configuration of the downloaded package is geared toward a production deployment. Therefore the interval at which logs and counters are pulled from the service instances is large (5 minutes). For test and development, lower the interval by adjusting the diagnostics settings of the web or the worker role to your needs. Right-click on the role in the Visual Studio Server Explorer (see above) and then adjust the Transfer Period in the dialog for the Diagnostics configuration settings:
 
 ![Configuration][3]
 
@@ -262,17 +262,17 @@ In addition, a uniqueness property with the sharding key as the leading column w
 
 ## How to upgrade
 
-1. Follow the steps in [Deploy a split-merge service](elastic-scale-configure-deploy-split-and-merge.md).
-2. Change your cloud service configuration file for your split-merge deployment to reflect the new configuration parameters. A new required parameter is the information about the certificate used for encryption. An easy way to do this is to compare the new configuration template file from the download against your existing configuration. Make sure you add the settings for `DataEncryptionPrimaryCertificateThumbprint` and `DataEncryptionPrimary` for both the web and the worker role.
-3. Before deploying the update to Azure, ensure that all currently running split-merge operations have finished. You can easily do this by querying the RequestStatus and PendingWorkflows tables in the split-merge metadata database for ongoing requests.
-4. Update your existing cloud service deployment for split-merge in your Azure subscription with the new package and your updated service configuration file.
+1. Follow the steps in [Deploy a split-merge service to move data between sharded databases](elastic-scale-configure-deploy-split-and-merge.md).
+1. Change your cloud service configuration file for your split-merge deployment to reflect the new configuration parameters. A new required parameter is the information about the certificate used for encryption. An easy way to do this is to compare the new configuration template file from the download against your existing configuration. Make sure you add the settings for `DataEncryptionPrimaryCertificateThumbprint` and `DataEncryptionPrimary` for both the web and the worker role.
+1. Before deploying the update to Azure, ensure that all currently running split-merge operations have finished. You can easily do this by querying the RequestStatus and PendingWorkflows tables in the split-merge metadata database for ongoing requests.
+1. Update your existing cloud service deployment for split-merge in your Azure subscription with the new package and your updated service configuration file.
 
-You do not need to provision a new metadata database for split-merge to upgrade. The new version will automatically upgrade your existing metadata database to the new version.
+You don't need to provision a new metadata database for split-merge to upgrade. The new version will automatically upgrade your existing metadata database to the new version.
 
 ## Best practices & troubleshooting
 
-- Define a test tenant and exercise your most important split/merge/move operations with the test tenant across several shards. Ensure that all metadata is defined correctly in your shard map and that the operations do not violate constraints or foreign keys.
-- Keep the test tenant data size above the maximum data size of your largest tenant to ensure you are not encountering data size related issues. This helps you assess an upper bound on the time it takes to move a single tenant around.
+- Define a test tenant and exercise your most important split/merge/move operations with the test tenant across several shards. Ensure that all metadata is defined correctly in your shard map and that the operations don't violate constraints or foreign keys.
+- Keep the test tenant data size above the maximum data size of your largest tenant to ensure you aren't encountering data size related issues. This helps you assess an upper bound on the time it takes to move a single tenant around.
 - Make sure that your schema allows deletions. The split-merge service requires the ability to remove data from the source shard once the data has been successfully copied to the target. For example, **delete triggers** can prevent the service from deleting the data on the source and can cause operations to fail.
 - The sharding key should be the leading column in your primary key or unique index definition. That ensures the best performance for the split or merge validation queries, and for the actual data movement and deletion operations which always operate on sharding key ranges.
 - Collocate your split-merge service in the region and data center where your databases reside.

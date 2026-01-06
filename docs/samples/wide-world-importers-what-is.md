@@ -3,7 +3,8 @@ title: "Wide World Importers - Sample Database for SQL"
 description: Learn how the WideWorldImporters sample databases support the workflows of the fictitious Wide World Importers company.
 author: MashaMSFT
 ms.author: mathoma
-ms.date: 08/25/2025
+ms.reviewer: randolphwest
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: samples
 ms.topic: concept-article
@@ -25,6 +26,7 @@ WWI recently started to sell various food items, like chilly chocolates. The com
 ## Workflow for warehouse stock items
 
 This is the typical flow for stocking and distributing items:
+
 - WWI creates purchase orders and submits the orders to the suppliers.
 - Suppliers send the items. WWI receives them and stocks them in their warehouse.
 - Customers order items from WWI.
@@ -38,13 +40,14 @@ This is the typical flow for stocking and distributing items:
 
 ## Data warehouse and analysis workflow
 
-Although the team at WWI uses SQL Server Reporting Services to generate operational reports from the WideWorldImporters database, they also need to perform analytics on their data and  generate strategic reports. The team created a dimensional data model in a WideWorldImportersDW database. This database is populated by an Integration Services package.
+Although the team at WWI uses SQL Server Reporting Services to generate operational reports from the WideWorldImporters database, they also need to perform analytics on their data and generate strategic reports. The team created a dimensional data model in a WideWorldImportersDW database. This database is populated by an Integration Services package.
 
 SQL Server Analysis Services is used to create analytic data models from the data in the dimensional data model. SQL Server Reporting Services is used to generate strategic reports directly from the dimensional data model, and also from the analytic model. Power BI is used to create dashboards from the same data. The dashboards are used on websites, and on phones and tablets. *Note: These data models and reports aren't yet available.*
 
 ## Additional workflows
 
 These are additional workflows:
+
 - WWI issues credit notes when a customer doesn't receive goods for some reason, or when goods are faulty. These notes are treated as negative invoices.
 - WWI periodically counts the on-hand quantities of stock items to ensure that the stock quantities shown as available in their system are accurate. (This process is called a *stocktake*.)
 - Perishable goods are stored in refrigerated rooms. Sensor data from these rooms is ingested into the database for monitoring and analytics.
@@ -56,6 +59,6 @@ The company operates with a financial year that starts on November 1.
 
 ## Terms of use
 
-The license for the sample database and the sample code is described here: [license.txt](https://github.com/Microsoft/sql-server-samples/blob/master/license.txt).
+View the [license](https://github.com/Microsoft/sql-server-samples/blob/master/license.txt) for the sample database and the sample code.
 
 The sample database includes public data that's been loaded from data.gov and Natural Earth data. For more information, view the [Natural Earth Terms of Use](https://www.naturalearthdata.com/about/terms-of-use/).

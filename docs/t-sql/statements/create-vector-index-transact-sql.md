@@ -4,7 +4,7 @@ description: CREATE VECTOR INDEX creates an index on vector data to allow approx
 author: yorek
 ms.author: damauri
 ms.reviewer: mikeray, randolphwest
-ms.date: 11/18/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -138,7 +138,7 @@ The user must have `ALTER` permission on the table.
 
 ## Examples
 
-Details of the database used in the sample can be found here: [Download and import the Wikipedia Article with Vector Embeddings](https://github.com/Azure-Samples/azure-sql-db-openai?tab=readme-ov-file#download-and-import-the-wikipedia-article-with-vector-embeddings).
+Download and import the [Wikipedia article with vector embeddings](https://github.com/Azure-Samples/azure-sql-db-openai?tab=readme-ov-file#download-and-import-the-wikipedia-article-with-vector-embeddings) sample.
 
 Examples assume the existence of a table named `wikipedia_articles` with a column `title_vector` of type `vector` that stores title's embeddings of Wikipedia articles. `title_vector` is assumed to be an embedding generated with an embedding model like *text-embedding-ada-002* or *text-embedding-3-small*, which returns vectors with 1,536 dimensions.
 

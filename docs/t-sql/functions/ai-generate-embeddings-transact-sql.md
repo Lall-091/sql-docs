@@ -4,7 +4,7 @@ description: The AI_GENERATE_EMBEDDINGS function creates vector arrays for data.
 author: jettermctedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 12/04/2025
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -98,7 +98,13 @@ You must meet the following prerequisites to use `AI_GENERATE_EMBEDDINGS`:
 
 The parameter `optional_json_request_body_parameters` in `AI_GENERATE_EMBEDDINGS` is used when an endpoint parameter needs to be added to the body of the embeddings request message. Adding an optional parameter overrides the value at runtime if that parameter is defined in the model definition.
 
-For example, if the [external model](../statements/create-external-model-transact-sql.md) contains the parameter for `dimensions` set to 1536, by passing that parameter in the `optional_json_request_body_parameters` at runtime with a new value as seen here: `json_object("dimensions":755)`, the `dimensions` parameter on the model is overridden.
+For example, if the [external model](../statements/create-external-model-transact-sql.md) contains the parameter for `dimensions` set to 1536, by passing that parameter in the `optional_json_request_body_parameters` at runtime with a new value.
+
+In the following example, the `dimensions` parameter on the model is overridden:
+
+```sql
+json_object("dimensions":755)
+```
 
 The value passed into `optional_json_request_body_parameters` must be valid JSON.
 

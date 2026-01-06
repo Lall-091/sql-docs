@@ -1,13 +1,13 @@
 ---
-title: "Lesson 2: Create and manage data in a hierarchical table"
-description: "Lesson 2: Create and manage data in a hierarchical table."
+title: "Lesson 2: Create and Manage Data in a Hierarchical Table"
+description: Learn how to create and manage data in a hierarchical table.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: randolphwest
-ms.date: 07/26/2024
+ms.date: 01/05/2026
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: article
 ms.custom:
   - ignite-2025
 helpviewer_keywords:
@@ -26,16 +26,16 @@ To complete this tutorial, you need SQL Server Management Studio, access to a se
 
 - Install [SQL Server Management Studio (SSMS)](/ssms/install/install).
 - Install [SQL Server 2022 Developer Edition](https://www.microsoft.com/sql-server/sql-server-downloads).
-- Download [AdventureWorks sample database](../../samples/adventureworks-install-configure.md).
+- Download [AdventureWorks sample databases](../../samples/adventureworks-install-configure.md).
 
-Instructions for restoring databases in SSMS are here: [Restore a Database Backup Using SSMS](../backup-restore/restore-a-database-backup-using-ssms.md).
+For instructions on restoring databases in SSMS, see [Restore a Database Backup Using SSMS](../backup-restore/restore-a-database-backup-using-ssms.md).
 
 ## Create a table using the hierarchyid data type
 
 The following example creates a table named `EmployeeOrg`, which includes employee data together with their reporting hierarchy. The example creates the table in the [!INCLUDE [sssampledbobject-md](../../includes/sssampledbobject-md.md)] database, but that is optional. To keep the example simple, this table includes only five columns:
 
 - `OrgNode` is a **hierarchyid** column that stores the hierarchical relationship.
-- `OrgLevel` is a computed column, based on the `OrgNode` column that stores each nodes level in the hierarchy. It is used for a breadth-first index.
+- `OrgLevel` is a computed column, based on the `OrgNode` column that stores each nodes level in the hierarchy. It's used for a breadth-first index.
 - `EmployeeID` contains the typical employee identification number that is used for applications such as payroll. In new application development, applications can use the `OrgNode` column and this separate `EmployeeID` column isn't needed.
 - `EmpName` contains the name of the employee.
 - `Title` contains the title of the employee.
@@ -47,26 +47,26 @@ The following example creates a table named `EmployeeOrg`, which includes employ
    ```sql
    USE AdventureWorks2022;
    GO
-   
+
    IF OBJECT_ID('HumanResources.EmployeeOrg') IS NOT NULL
-       DROP TABLE HumanResources.EmployeeOrg
-   
-   CREATE TABLE HumanResources.EmployeeOrg (
-       OrgNode HIERARCHYID PRIMARY KEY CLUSTERED,
+       DROP TABLE HumanResources.EmployeeOrg;
+   GO
+
+   CREATE TABLE HumanResources.EmployeeOrg
+   (
+       OrgNode hierarchyid PRIMARY KEY CLUSTERED,
        OrgLevel AS OrgNode.GetLevel(),
        EmployeeID INT UNIQUE NOT NULL,
-       EmpName VARCHAR(20) NOT NULL,
-       Title VARCHAR(20) NULL
+       EmpName VARCHAR (20) NOT NULL,
+       Title VARCHAR (20) NULL
    );
-   GO
    ```
 
 1. Run the following code to create a composite index on the `OrgLevel` and `OrgNode` columns to support efficient breadth-first searches:
 
    ```sql
    CREATE UNIQUE INDEX EmployeeOrgNc1
-   ON HumanResources.EmployeeOrg(OrgLevel, OrgNode);
-   GO
+       ON HumanResources.EmployeeOrg(OrgLevel, OrgNode);
    ```
 
 The table is now ready for data. The next task will populate the table by using hierarchical methods.
@@ -88,16 +88,19 @@ Marketing Assistant `Wanida` (`EmployeeID` 269), reports to `Sariya`, and Market
 1. The following example inserts `David` the Marketing Manager into the table at the root of the hierarchy. The `OrdLevel` column is a computed column. Therefore, it's not part of the `INSERT` statement. This first record uses the [GetRoot (Database Engine)](../../t-sql/data-types/getroot-database-engine.md) method to populate this first record as the root of the hierarchy.
 
    ```sql
-   INSERT HumanResources.EmployeeOrg (OrgNode, EmployeeID, EmpName, Title)
+   INSERT INTO HumanResources.EmployeeOrg (OrgNode, EmployeeID, EmpName, Title)
    VALUES (hierarchyid::GetRoot(), 6, 'David', 'Marketing Manager');
-   GO
    ```
 
 1. Execute the following code to examine initial row in the table:
 
    ```sql
    SELECT OrgNode.ToString() AS Text_OrgNode,
-   OrgNode, OrgLevel, EmployeeID, EmpName, Title
+          OrgNode,
+          OrgLevel,
+          EmployeeID,
+          EmpName,
+          Title
    FROM HumanResources.EmployeeOrg;
    ```
 
@@ -124,20 +127,24 @@ As in the previous lesson, we use the `ToString()` method to convert the **hiera
    The following code uses the `(NULL, NULL)` arguments of the root parent because there aren't yet any rows in the table except the root. Execute the following code to insert `Sariya`:
 
    ```sql
-   DECLARE @Manager HIERARCHYID
-   SELECT @Manager = HIERARCHYID::GetRoot()
+   DECLARE @Manager AS hierarchyid;
+
+   SELECT @Manager = hierarchyid::GetRoot()
    FROM HumanResources.EmployeeOrg;
 
    INSERT HumanResources.EmployeeOrg (OrgNode, EmployeeID, EmpName, Title)
-   VALUES
-   (@Manager.GetDescendant(NULL, NULL), 46, 'Sariya', 'Marketing Specialist');
+   VALUES (@Manager.GetDescendant(NULL, NULL), 46, 'Sariya', 'Marketing Specialist');
    ```
 
 1. Repeat the query from the first procedure to query the table and see how the entries appear:
 
    ```sql
    SELECT OrgNode.ToString() AS Text_OrgNode,
-   OrgNode, OrgLevel, EmployeeID, EmpName, Title
+          OrgNode,
+          OrgLevel,
+          EmployeeID,
+          EmpName,
+          Title
    FROM HumanResources.EmployeeOrg;
    ```
 
@@ -163,44 +170,47 @@ As in the previous lesson, we use the `ToString()` method to convert the **hiera
    )
    AS
    BEGIN
-       DECLARE @mOrgNode HIERARCHYID, @lc HIERARCHYID;
-   
+       DECLARE @mOrgNode hierarchyid,
+               @lc hierarchyid;
+
        SELECT @mOrgNode = OrgNode
        FROM HumanResources.EmployeeOrg
        WHERE EmployeeID = @mgrid;
-   
+
        SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
-   
+
        BEGIN TRANSACTION;
-   
+
        SELECT @lc = max(OrgNode)
        FROM HumanResources.EmployeeOrg
        WHERE OrgNode.GetAncestor(1) = @mOrgNode;
-   
+
        INSERT HumanResources.EmployeeOrg (OrgNode, EmployeeID, EmpName, Title)
        VALUES (@mOrgNode.GetDescendant(@lc, NULL), @empid, @e_name, @title);
-   
+
        COMMIT;
    END;
-   GO
    ```
 
 1. The following example adds the remaining four employees that report directly or indirectly to `David`.
 
    ```sql
-   EXEC AddEmp 6, 271, 'John', 'Marketing Specialist';
-   EXEC AddEmp 6, 119, 'Jill', 'Marketing Specialist';
-   EXEC AddEmp 46, 269, 'Wanida', 'Marketing Assistant';
-   EXEC AddEmp 271, 272, 'Mary', 'Marketing Assistant';
+   EXECUTE AddEmp 6, 271, 'John', 'Marketing Specialist';
+   EXECUTE AddEmp 6, 119, 'Jill', 'Marketing Specialist';
+   EXECUTE AddEmp 46, 269, 'Wanida', 'Marketing Assistant';
+   EXECUTE AddEmp 271, 272, 'Mary', 'Marketing Assistant';
    ```
 
 1. Again, execute the following query examine the rows in the `EmployeeOrg` table:
 
    ```sql
    SELECT OrgNode.ToString() AS Text_OrgNode,
-   OrgNode, OrgLevel, EmployeeID, EmpName, Title
+          OrgNode,
+          OrgLevel,
+          EmployeeID,
+          EmpName,
+          Title
    FROM HumanResources.EmployeeOrg;
-   GO
    ```
 
    [!INCLUDE [ssResult](../../includes/ssresult-md.md)]
@@ -220,14 +230,14 @@ The table is now fully populated with the Marketing organization.
 
 ## Query a hierarchical table using hierarchy methods
 
-Now that the HumanResources.EmployeeOrg table is fully populated, this task shows you how to query the hierarchy using some of the hierarchical methods.
+Now that the `HumanResources.EmployeeOrg` table is fully populated, this task shows you how to query the hierarchy using some of the hierarchical methods.
 
 ### Find subordinate nodes
 
 1. Sariya has one subordinate employee. To query for Sariya's subordinates, execute the following query that uses the [IsDescendantOf (Database Engine)](../../t-sql/data-types/isdescendantof-database-engine.md) method:
 
    ```sql
-   DECLARE @CurrentEmployee HIERARCHYID
+   DECLARE @CurrentEmployee AS hierarchyid;
 
    SELECT @CurrentEmployee = OrgNode
    FROM HumanResources.EmployeeOrg
@@ -235,7 +245,7 @@ Now that the HumanResources.EmployeeOrg table is fully populated, this task show
 
    SELECT *
    FROM HumanResources.EmployeeOrg
-   WHERE OrgNode.IsDescendantOf(@CurrentEmployee ) = 1;
+   WHERE OrgNode.IsDescendantOf(@CurrentEmployee) = 1;
    ```
 
    The result lists both `Sariya` and `Wanida`. `Sariya` is listed because that value is the descendant at the `0` level. `Wanida` is the descendant at the `1` level.
@@ -243,15 +253,16 @@ Now that the HumanResources.EmployeeOrg table is fully populated, this task show
 1. You can also query for this information by using the [GetAncestor (Database Engine)](../../t-sql/data-types/getancestor-database-engine.md) method. `GetAncestor` takes an argument for the level that you're trying to return. Since Wanida is one level underneath Sariya, use `GetAncestor(1)` as demonstrated in the following code:
 
    ```sql
-   DECLARE @CurrentEmployee HIERARCHYID
+   DECLARE @CurrentEmployee AS hierarchyid;
 
    SELECT @CurrentEmployee = OrgNode
    FROM HumanResources.EmployeeOrg
    WHERE EmployeeID = 46;
 
-   SELECT OrgNode.ToString() AS Text_OrgNode, *
+   SELECT OrgNode.ToString() AS Text_OrgNode,
+          *
    FROM HumanResources.EmployeeOrg
-   WHERE OrgNode.GetAncestor(1) = @CurrentEmployee
+   WHERE OrgNode.GetAncestor(1) = @CurrentEmployee;
    ```
 
    This time the result lists only Wanida.
@@ -259,18 +270,19 @@ Now that the HumanResources.EmployeeOrg table is fully populated, this task show
 1. Now change the `@CurrentEmployee` to David (EmployeeID 6) and the level to 2. Execute the following to also return Wanida:
 
    ```sql
-   DECLARE @CurrentEmployee HIERARCHYID
+   DECLARE @CurrentEmployee AS hierarchyid;
 
    SELECT @CurrentEmployee = OrgNode
    FROM HumanResources.EmployeeOrg
    WHERE EmployeeID = 6;
 
-   SELECT OrgNode.ToString() AS Text_OrgNode, *
+   SELECT OrgNode.ToString() AS Text_OrgNode,
+          *
    FROM HumanResources.EmployeeOrg
-   WHERE OrgNode.GetAncestor(2) = @CurrentEmployee
+   WHERE OrgNode.GetAncestor(2) = @CurrentEmployee;
    ```
 
-    This time, you also receive Mary who also reports to David, two levels down.
+   This time, you also receive Mary who also reports to David, two levels down.
 
 ## Use GetRoot, and GetLevel
 
@@ -278,23 +290,23 @@ Now that the HumanResources.EmployeeOrg table is fully populated, this task show
 
    ```sql
    SELECT OrgNode.ToString() AS Text_OrgNode,
-   OrgNode.GetLevel() AS EmpLevel, *
+          OrgNode.GetLevel() AS EmpLevel,
+          *
    FROM HumanResources.EmployeeOrg;
-   GO
    ```
 
 1. Use the [GetRoot (Database Engine)](../../t-sql/data-types/getroot-database-engine.md) method to find the root node in the hierarchy. The following code returns the single row, which is the root:
 
    ```sql
-   SELECT OrgNode.ToString() AS Text_OrgNode, *
+   SELECT OrgNode.ToString() AS Text_OrgNode,
+          *
    FROM HumanResources.EmployeeOrg
-   WHERE OrgNode = HIERARCHYID::GetRoot();
-   GO
+   WHERE OrgNode = hierarchyid::GetRoot();
    ```
 
 ## Reorder data in a hierarchical table using hierarchical methods
 
-**Applies to:** [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)]
+**Applies to**: [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)]
 
 Reorganizing a hierarchy is a common maintenance task. In this task, we use an `UPDATE` statement with the [GetReparentedValue (Database Engine)](../../t-sql/data-types/getreparentedvalue-database-engine.md) method to first move a single row to a new location in the hierarchy. Then we move an entire subtree to a new location.
 
@@ -305,35 +317,37 @@ The `GetReparentedValue` method takes two arguments. The first argument describe
 1. Currently Wanida reports to Sariya. In this procedure, you move Wanida from the current node `/1/1/`, so that this person reports to Jill. The new node becomes `/3/1/` so `/1/` is the first argument and `/3/` is the second. These correspond to the `OrgNode` values of Sariya and Jill. Execute the following code to move Wanida from Sariya's organization to Jill's:
 
    ```sql
-   DECLARE @CurrentEmployee HIERARCHYID,
-       @OldParent HIERARCHYID,
-       @NewParent HIERARCHYID;
-   
+   DECLARE @CurrentEmployee AS hierarchyid,
+           @OldParent AS hierarchyid,
+           @NewParent AS hierarchyid;
+
    SELECT @CurrentEmployee = OrgNode
    FROM HumanResources.EmployeeOrg
    WHERE EmployeeID = 269;
-   
+
    SELECT @OldParent = OrgNode
    FROM HumanResources.EmployeeOrg
    WHERE EmployeeID = 46;
-   
+
    SELECT @NewParent = OrgNode
    FROM HumanResources.EmployeeOrg
    WHERE EmployeeID = 119;
-   
+
    UPDATE HumanResources.EmployeeOrg
    SET OrgNode = @CurrentEmployee.GetReparentedValue(@OldParent, @NewParent)
    WHERE OrgNode = @CurrentEmployee;
-   GO
    ```
 
 1. Execute the following code to see the result:
 
    ```sql
    SELECT OrgNode.ToString() AS Text_OrgNode,
-   OrgNode, OrgLevel, EmployeeID, EmpName, Title
+          OrgNode,
+          OrgLevel,
+          EmployeeID,
+          EmpName,
+          Title
    FROM HumanResources.EmployeeOrg;
-   GO
    ```
 
    Wanida is now at node `/3/1/`.
@@ -343,62 +357,55 @@ The `GetReparentedValue` method takes two arguments. The first argument describe
 1. To demonstrate how to move a larger number of people at the same time, first execute the following code to add an intern reporting to Wanida:
 
    ```sql
-   EXEC AddEmp 269, 291, 'Kevin', 'Marketing Intern';
-   GO
+   EXECUTE AddEmp 269, 291, 'Kevin', 'Marketing Intern';
    ```
 
 1. Now Kevin reports to Wanida, who reports to Jill, who reports to David. That means that Kevin is at level `/3/1/1/`. To move all of Jill's subordinates to a new manager, we update all nodes that have `/3/` as their `OrgNode` to a new value. Execute the following code to update Wanida to report to Sariya, but keep Kevin reporting to Wanida:
 
    ```sql
-   DECLARE @OldParent HIERARCHYID,
-       @NewParent HIERARCHYID
-   
+   DECLARE @OldParent AS hierarchyid,
+           @NewParent AS hierarchyid;
+
    SELECT @OldParent = OrgNode
    FROM HumanResources.EmployeeOrg
-   WHERE EmployeeID = 119;-- Jill
-   
+   WHERE EmployeeID = 119; -- Jill
+
    SELECT @NewParent = OrgNode
    FROM HumanResources.EmployeeOrg
-   WHERE EmployeeID = 46;-- Sariya
-   
+   WHERE EmployeeID = 46; -- Sariya
+
    DECLARE children_cursor CURSOR
-   FOR
-   SELECT OrgNode
-   FROM HumanResources.EmployeeOrg
-   WHERE OrgNode.GetAncestor(1) = @OldParent;
-   
-   DECLARE @ChildId HIERARCHYID;
-   
-   OPEN children_cursor
-   
-   FETCH NEXT
-   FROM children_cursor
-   INTO @ChildId;
-   
+       FOR SELECT OrgNode
+           FROM HumanResources.EmployeeOrg
+           WHERE OrgNode.GetAncestor(1) = @OldParent;
+
+   DECLARE @ChildId AS hierarchyid;
+
+   OPEN children_cursor;
+
+   FETCH NEXT FROM children_cursor INTO @ChildId;
+
    WHILE @@FETCH_STATUS = 0
-   BEGIN
-       START:
-   
-       DECLARE @NewId HIERARCHYID;
-   
-       SELECT @NewId = @NewParent.GetDescendant(MAX(OrgNode), NULL)
-       FROM HumanResources.EmployeeOrg
-       WHERE OrgNode.GetAncestor(1) = @NewParent;
-   
-       UPDATE HumanResources.EmployeeOrg
-       SET OrgNode = OrgNode.GetReparentedValue(@ChildId, @NewId)
-       WHERE OrgNode.IsDescendantOf(@ChildId) = 1;
-   
-       IF @@error <> 0
-           GOTO START -- On error, retry
-   
-       FETCH NEXT
-       FROM children_cursor
-       INTO @ChildId;
-   END
-   
+       BEGIN
+           START:
+           DECLARE @NewId AS hierarchyid;
+
+           SELECT @NewId = @NewParent.GetDescendant(MAX(OrgNode), NULL)
+           FROM HumanResources.EmployeeOrg
+           WHERE OrgNode.GetAncestor(1) = @NewParent;
+
+           UPDATE HumanResources.EmployeeOrg
+           SET OrgNode = OrgNode.GetReparentedValue(@ChildId, @NewId)
+           WHERE OrgNode.IsDescendantOf(@ChildId) = 1;
+
+           IF @@error <> 0
+               GOTO START; -- On error, retry
+
+           FETCH NEXT FROM children_cursor INTO @ChildId;
+       END
+
    CLOSE children_cursor;
-   
+
    DEALLOCATE children_cursor;
    ```
 
@@ -406,9 +413,12 @@ The `GetReparentedValue` method takes two arguments. The first argument describe
 
    ```sql
    SELECT OrgNode.ToString() AS Text_OrgNode,
-   OrgNode, OrgLevel, EmployeeID, EmpName, Title
+          OrgNode,
+          OrgLevel,
+          EmployeeID,
+          EmpName,
+          Title
    FROM HumanResources.EmployeeOrg;
-   GO
    ```
 
 [!INCLUDE [ssResult](../../includes/ssresult-md.md)]
@@ -427,4 +437,4 @@ Text_OrgNode OrgNode OrgLevel EmployeeID EmpName Title
 
 The entire organizational tree that reported to Jill (both Wanida and Kevin), now reports to Sariya.
 
-For a stored procedure to reorganize a section of a hierarchy, see the [Move subtrees](../../relational-databases/hierarchical-data-sql-server.md#move-subtrees) section of [Hierarchical data (SQL Server)](../hierarchical-data-sql-server.md).
+For a stored procedure to reorganize a section of a hierarchy, see the [Move subtrees](../hierarchical-data-sql-server.md#move-subtrees) section of [Hierarchical data (SQL Server)](../hierarchical-data-sql-server.md).

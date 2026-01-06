@@ -64,7 +64,7 @@ For more information on supported platforms, see [Release notes for SQL Server 2
 
 You need a machine running RHEL 8.x with **at least 2 GB** of memory.
 
-To install Red Hat Enterprise Linux on your own machine, visit [Red Hat product trial center](https://www.redhat.com/en/products/trials). You can also create RHEL virtual machines in Azure. See [Create and Manage Linux VMs with the Azure CLI](/azure/virtual-machines/linux/tutorial-manage-vm), and use `--image RHEL` in the call to `az vm create`.
+To install Red Hat Enterprise Linux on your own machine, go to [https://access.redhat.com/products/red-hat-enterprise-linux/evaluation](https://access.redhat.com/products/red-hat-enterprise-linux/evaluation). You can also create RHEL virtual machines in Azure. See [Create and Manage Linux VMs with the Azure CLI](/azure/virtual-machines/linux/tutorial-manage-vm), and use `--image RHEL` in the call to `az vm create`.
 
 ::: moniker range="<=sql-server-linux-ver16 || <=sql-server-ver16"
 

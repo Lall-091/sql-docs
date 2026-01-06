@@ -1,21 +1,25 @@
 ---
-title: "Step 1: Configure environment for Java"
+title: "Step 1: Configure Environment for Java"
 description: Step 1 of this getting started guide involves installing Java, the Microsoft JDBC Driver for SQL Server, and configuring your development environment.
 author: David-Engel
 ms.author: davidengel
-ms.date: 08/09/2023
+ms.reviewer: randolphwest
+ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: article
 ---
 # Step 1: Configure development environment for Java development
-  
-## Windows  
-  
-- Identify which version of the JDBC driver you're using based on your environment, as noted here:  [System Requirements for the JDBC Driver](system-requirements-for-the-jdbc-driver.md).
-- Download and install applicable JDBC Driver here:  [Download Microsoft JDBC Driver for SQL Server](download-microsoft-jdbc-driver-for-sql-server.md).
-- Set class path based on the driver version, as noted here:  [Using the JDBC Driver](using-the-jdbc-driver.md).
 
-## Next steps
+## Windows
 
-- [Step 2: Create a database on SQL Server or Azure SQL Database for Java development](step-2-create-a-sql-database-for-java-development.md)
+1. Identify which version of the JDBC driver you're using based on your environment. For more information, see [System requirements for the JDBC driver](system-requirements-for-the-jdbc-driver.md).
+
+1. Download and install the [Microsoft JDBC Driver for SQL Server](download-microsoft-jdbc-driver-for-sql-server.md).
+
+1. Set the class path based on the [driver version](using-the-jdbc-driver.md).
+
+## Next step
+
+> [!div class="nextstepaction"]
+> [Step 2: Create a SQL database for Java development](step-2-create-a-sql-database-for-java-development.md)
