@@ -3,8 +3,8 @@ title: "CREATE COLUMNSTORE INDEX (Transact-SQL)"
 description: CREATE COLUMNSTORE INDEX converts a rowstore table to a clustered columnstore index, or creates a nonclustered columnstore index.
 author: markingmyname
 ms.author: maghan
-ms.reviewer: randolphwest
-ms.date: 10/01/2025
+ms.reviewer: dfurman, randolphwest
+ms.date: 01/06/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -143,11 +143,11 @@ Some of the options aren't available in all database engine versions. The follow
 
 | Option | CLUSTERED | NONCLUSTERED |
 | --- | --- | --- |
-| COMPRESSION_DELAY | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] |
-| DATA_COMPRESSION | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] |
-| ONLINE | [!INCLUDE [ssSQLv15_md](../../includes/sssql19-md.md)] | [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] |
-| WHERE clause | N/A | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] |
-| ORDER clause | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] | [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)] |
+| `COMPRESSION_DELAY` | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] |
+| `DATA_COMPRESSION` | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] |
+| `ONLINE` | [!INCLUDE [ssSQLv15_md](../../includes/sssql19-md.md)] | [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] |
+| `WHERE` clause | N/A | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] |
+| `ORDER` clause | [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)] | [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)] |
 
 All options are available in Azure SQL Database and [!INCLUDE [ssazure-sqlmi-autd](../../includes/ssazure-sqlmi-autd.md)].
 
@@ -178,13 +178,15 @@ Specifies the one-, two-, or three-part name of the table to be stored as a clus
 
 #### ORDER for clustered columnstore
 
-Use the `column_store_order_ordinal` column in [sys.index_columns](../../relational-databases/system-catalog-views/sys-index-columns-transact-sql.md) to determine the order of the columns for a clustered columnstore index. Columnstore ordering aids with [segment elimination](../../relational-databases/indexes/columnstore-indexes-query-performance.md#segment-elimination), especially with string data. For more information, see [Performance tuning with ordered columnstore indexes](../../relational-databases/indexes/ordered-columnstore-indexes.md) and [Columnstore indexes - design guidance](../../relational-databases/indexes/columnstore-indexes-design-guidance.md).
+Introduces order for segments of the specified columns. Columnstore order aids with [segment elimination](../../relational-databases/indexes/columnstore-indexes-query-performance.md#segment-elimination), especially with string data. For more information, see [Performance tuning with ordered columnstore indexes](../../relational-databases/indexes/ordered-columnstore-indexes.md) and [Columnstore indexes - design guidance](../../relational-databases/indexes/columnstore-indexes-design-guidance.md).
 
-To convert to an ordered clustered columnstore index, the existing index must be a clustered columnstore index. Use the `DROP_EXISTING` option.
+Use the `column_store_order_ordinal` column in [sys.index_columns](../../relational-databases/system-catalog-views/sys-index-columns-transact-sql.md) to determine which columns in a clustered columnstore index have ordered segments. The first column in the `ORDER` clause has `column_store_order_ordinal` set to 1, etc.
 
-LOB data types (the (max) length data types) can't be the key of an ordered clustered columnstore index.
+To convert an existing clustered columnstore index to an ordered index, use the `DROP_EXISTING` option.
 
-When creating an ordered clustered columnstore index, use the `MAXDOP = 1` option for the highest quality sorting, in exchange for a significantly longer duration of the `CREATE INDEX` statement. To create the index as fast as possible, don't limit MAXDOP. The highest quality of compression and sorting could aid queries on the columnstore index.
+Columns using the LOB data types (for example, the `(max)` length data types) can't be specified in the `ORDER` clause.
+
+When creating an ordered clustered columnstore index, use the `MAXDOP = 1` option for the highest quality sorting, in exchange for a significantly longer duration of the `CREATE INDEX` statement. To create the index as fast as possible, don't limit `MAXDOP`. The highest quality of compression and sorting could aid queries on the columnstore index.
 
 For ordered columnstore index availability, see [Columnstore indexes: Overview](../../relational-databases/indexes/columnstore-indexes-overview.md#ordered-columnstore-index-availability).
 
@@ -287,13 +289,15 @@ Specifies the one-, two-, or three-part name of the table that contains the inde
 
 #### ORDER for nonclustered columnstore
 
-The columns specified in the `ORDER` clause for a nonclustered columnstore index must be a subset of the key columns for the index.
+The columns specified in the `ORDER` clause for a nonclustered columnstore index must be a subset of the index columns.
 
-Use the `column_store_order_ordinal` column in [sys.index_columns](../../relational-databases/system-catalog-views/sys-index-columns-transact-sql.md) to determine the order of the columns for a nonclustered columnstore index. Columnstore ordering aids with [segment elimination](../../relational-databases/indexes/columnstore-indexes-query-performance.md#segment-elimination), especially with string data. For more information, see [Performance tuning with ordered columnstore indexes](../../relational-databases/indexes/ordered-columnstore-indexes.md) and [Columnstore indexes - design guidance](../../relational-databases/indexes/columnstore-indexes-design-guidance.md). Design and performance considerations in these articles generally apply to both clustered and nonclustered columnstore indexes.
+Introduces order for segments of the specified columns. Columnstore order aids with [segment elimination](../../relational-databases/indexes/columnstore-indexes-query-performance.md#segment-elimination), especially with string data. For more information, see [Performance tuning with ordered columnstore indexes](../../relational-databases/indexes/ordered-columnstore-indexes.md) and [Columnstore indexes - design guidance](../../relational-databases/indexes/columnstore-indexes-design-guidance.md). Design and performance considerations in these articles generally apply to both clustered and nonclustered columnstore indexes.
 
-LOB data types (the (max) length data types) can't be the key of an ordered nonclustered columnstore index.
+Use the `column_store_order_ordinal` column in [sys.index_columns](../../relational-databases/system-catalog-views/sys-index-columns-transact-sql.md) to determine which columns in a nonclustered columnstore index have ordered segments. The first column in the `ORDER` clause has `column_store_order_ordinal` set to 1, etc.
 
-When creating an ordered nonclustered columnstore index, use the `MAXDOP = 1` options for the highest quality sorting, in exchange for a significantly longer duration of the `CREATE INDEX` statement. To create the index as fast as possible, don't limit `MAXDOP`. The highest quality of compression and sorting could aid queries on the columnstore index.
+Columns using the LOB data types (for example, the `(max)` length data types) can't be specified in the `ORDER` clause.
+
+When creating an ordered nonclustered columnstore index, use the `MAXDOP = 1` option for the highest quality sorting, in exchange for a significantly longer duration of the `CREATE INDEX` statement. To create the index as fast as possible, don't limit `MAXDOP`. The highest quality of compression and sorting could aid queries on the columnstore index.
 
 For ordered columnstore index availability, see [Ordered column index availability](../../relational-databases/indexes/columnstore-indexes-overview.md#ordered-columnstore-index-availability).
 
@@ -405,10 +409,10 @@ A *filtered index* is an optimized, nonclustered index, suited for queries that 
 
 ### Required SET options for filtered indexes
 
-The SET options in the required value column are required whenever any of the following conditions occur:
+The `SET` options in the required value column are required whenever any of the following conditions occur:
 
 - You create a filtered index.
-- An INSERT, UPDATE, DELETE, or MERGE operation modifies the data in a filtered index.
+- An `INSERT`, `UPDATE`, `DELETE`, or `MERGE` operation modifies the data in a filtered index.
 - The query optimizer uses the filtered index to produce the query plan.
 
 | SET options | Required value | Default server value | Default OLE DB and ODBC value | Default DB-Library value |
@@ -421,9 +425,9 @@ The SET options in the required value column are required whenever any of the fo
 | `NUMERIC_ROUNDABORT` | OFF | OFF | OFF | OFF |
 | `QUOTED_IDENTIFIER` | ON | ON | ON | OFF |
 
-<sup>1</sup> Setting ANSI_WARNINGS to ON implicitly sets ARITHABORT to ON when the database compatibility level is set to 90 or later. If the database compatibility level is set to 80 or earlier, you must explicitly set the ARITHABORT option to ON.
+<sup>1</sup> Setting `ANSI_WARNINGS` to ON implicitly sets `ARITHABORT` to ON when the database compatibility level is set to 90 or higher levels. If the database compatibility level is set to 80 or earlier, you must explicitly set the `ARITHABORT` option to ON.
 
-If the SET options are incorrect, the following conditions can occur:
+If the `SET` options are incorrect, the following conditions can occur:
 
 - The filtered index isn't created.
 
@@ -496,8 +500,8 @@ Columns that use any of the following data types can't be included in a columnst
 - Can't have more than 1,024 columns.
 - Can't be created as a constraint-based index. It's possible to have unique constraints, primary key constraints, and foreign key constraints on a table with a columnstore index. Constraints are always enforced with a row-store index. Constraints can't be enforced with a columnstore (clustered or nonclustered) index.
 - Can't include a sparse column.
-- Can't be changed by using the ALTER INDEX statement. To change the nonclustered index, you must drop and re-create the columnstore index instead. You can use ALTER INDEX to disable and rebuild a columnstore index.
-- Can't be created by using the INCLUDE keyword.
+- Can't be changed by using the `ALTER INDEX` statement. To change the nonclustered index, you must drop and re-create the columnstore index instead. You can use `ALTER INDEX` to disable and rebuild a columnstore index.
+- Can't be created by using the `INCLUDE` keyword.
 - Can't specify the `ASC` or `DESC` keywords in the list of index columns. Columnstore indexes are ordered according to the compression algorithms.
 - In [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], [!INCLUDE [ssazure-sqlmi-autd](../../includes/ssazure-sqlmi-autd.md)], and [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)] can be ordered by including the `ORDER` clause. For more information, see [Performance tuning with ordered columnstore indexes](../../relational-databases/indexes/ordered-columnstore-indexes.md).
 - Can't include LOB columns of type **nvarchar(max)**, **varchar(max)**, and **varbinary(max)** in nonclustered columnstore indexes. Only clustered columnstore indexes support LOB types, beginning in the [!INCLUDE [sssql17-md](../../includes/sssql17-md.md)] version, Azure SQL Database (configured at Premium tier, Standard tier (S3 and above), and all vCore offerings tiers). Prior versions don't support LOB types in clustered and nonclustered columnstore indexes.
@@ -688,7 +692,7 @@ This example explains how to convert a large fact table from a rowstore table to
 
 ### E. Convert a columnstore table to a rowstore table with a clustered index
 
-To convert a columnstore table to a rowstore table with a clustered index, use the CREATE INDEX statement with the DROP_EXISTING option.
+To convert a columnstore table to a rowstore table with a clustered index, use the `CREATE INDEX` statement with the `DROP_EXISTING` option.
 
 ```sql
 CREATE CLUSTERED INDEX [IDX_CL_MyFactTable]
@@ -708,7 +712,10 @@ DROP INDEX [IDX_CL_MyFactTable]
 
 ### G. Defragment by reorganizing the columnstore index
 
-There are two ways to maintain the clustered columnstore index. Starting with [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)], use `ALTER INDEX...REORGANIZE` instead of REBUILD. For more information, see [Columnstore index rowgroup](../../relational-databases/indexes/columnstore-indexes-overview.md#rowgroup). In previous versions of SQL Server, you can use CREATE CLUSTERED COLUMNSTORE INDEX with DROP_EXISTING=ON, or [ALTER INDEX](alter-index-transact-sql.md) and the REBUILD option. Both methods achieved the same results.
+There are two ways to maintain the clustered columnstore index, and both methods achieved the same results: 
+
+- Starting with [!INCLUDE [sssql16-md](../../includes/sssql16-md.md)], use `ALTER INDEX...REORGANIZE` instead of `REBUILD`. For more information, see [Columnstore index rowgroup](../../relational-databases/indexes/columnstore-indexes-overview.md#rowgroup).
+- In previous versions of SQL Server, you can use `CREATE CLUSTERED COLUMNSTORE INDEX` with `DROP_EXISTING=ON`, or [ALTER INDEX](alter-index-transact-sql.md) and the `REBUILD` option.
 
 Start by determining the clustered columnstore index name in `MyFactTable`.
 
@@ -815,13 +822,13 @@ In [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)] and earlier versions, a
 
 ### A. Change a clustered index to a clustered columnstore index
 
-By using the CREATE CLUSTERED COLUMNSTORE INDEX statement with DROP_EXISTING = ON, you can:
+By using the `CREATE CLUSTERED COLUMNSTORE INDEX` statement with `DROP_EXISTING = ON`, you can:
 
 - Change a clustered index into a clustered columnstore index.
 
 - Rebuild a clustered columnstore index.
 
-This example creates the `xDimProduct` table as a rowstore table with a clustered index. Then the example uses CREATE CLUSTERED COLUMNSTORE INDEX to change the table from a rowstore table to a columnstore table.
+This example creates the `xDimProduct` table as a rowstore table with a clustered index. Then the example uses `CREATE CLUSTERED COLUMNSTORE INDEX` to change the table from a rowstore table to a columnstore table.
 
 ```sql
 -- Uses AdventureWorks
@@ -886,7 +893,7 @@ GO
 
 ### B. Rebuild a clustered columnstore index
 
-Building on the previous example, this example uses CREATE CLUSTERED COLUMNSTORE INDEX to rebuild the existing clustered columnstore index, called `cci_xDimProduct`.
+Building on the previous example, this example uses `CREATE CLUSTERED COLUMNSTORE INDEX` to rebuild the existing clustered columnstore index, called `cci_xDimProduct`.
 
 ```sql
 --Rebuild the existing clustered columnstore index.
@@ -937,7 +944,7 @@ DROP INDEX cci_xdimProduct
 
 ### F. Create an ordered clustered columnstore index on a table with no index
 
-An unordered columnstore index covers all columns by default, without needing to specify a column list. An ordered columnstore index allows you to specify the order of the columns. The list doesn't need to include all columns.
+An unordered columnstore index covers all columns by default, without needing to specify a column list. An ordered columnstore index allows you to specify the order of the column segments. The list doesn't need to include all columns.
 
 For more information, see [Performance tuning with ordered columnstore indexes](../../relational-databases/indexes/ordered-columnstore-indexes.md).
 
@@ -953,31 +960,15 @@ CREATE CLUSTERED COLUMNSTORE INDEX cci
     ON Sales.OrderLines ORDER(SHIPDATE) WITH (DROP_EXISTING = ON);
 ```
 
-### H. Add a column to the ordering of an ordered clustered columnstore index
+<a id="h-add-a-column-to-the-ordering-of-an-ordered-clustered-columnstore-index"></a>
 
-You can specify an order for the columns in a columnstore index. The original ordered, clustered columnstore index was ordered on the `SHIPDATE` column only. The following example adds the `PRODUCTKEY` column to the ordering. For ordered columnstore index availability, see [Columnstore indexes: Overview](../../relational-databases/indexes/columnstore-indexes-overview.md#ordered-columnstore-index-availability).
+### H. Add an ordered column to an ordered clustered columnstore index
+
+You can specify a segment order for the columns in a columnstore index. The original ordered, clustered columnstore index was ordered on the `SHIPDATE` column only. The following example adds order for the segments of the `PRODUCTKEY` column. For ordered columnstore index availability, see [Columnstore indexes: Overview](../../relational-databases/indexes/columnstore-indexes-overview.md#ordered-columnstore-index-availability).
 
 ```sql
 CREATE CLUSTERED COLUMNSTORE INDEX cci
     ON Sales.OrderLines ORDER(SHIPDATE, PRODUCTKEY) WITH (DROP_EXISTING = ON);
-```
-
-### I. Change the ordinal of ordered columns
-
-The original ordered, clustered columnstore index was ordered on `SHIPDATE`, `PRODUCTKEY`. The following example changes the ordering to `PRODUCTKEY`, `SHIPDATE`. For ordered columnstore index availability, see [Columnstore indexes: Overview](../../relational-databases/indexes/columnstore-indexes-overview.md#ordered-columnstore-index-availability).
-
-```sql
-CREATE CLUSTERED COLUMNSTORE INDEX cci
-    ON Sales.OrderLines ORDER(PRODUCTKEY, SHIPDATE) WITH (DROP_EXISTING = ON);
-```
-
-### J. Create an ordered clustered columnstore index
-
-You can create a clustered columnstore index with ordering keys. When creating an ordered clustered columnstore index, you should apply the query hint `MAXDOP = 1` for maximum quality of sorting and shortest duration. For ordered columnstore index availability, see [Columnstore indexes: Overview](../../relational-databases/indexes/columnstore-indexes-overview.md#ordered-columnstore-index-availability).
-
-```sql
-CREATE CLUSTERED COLUMNSTORE INDEX [OrderedCCI]
-    ON dbo.FactResellerSalesPartCategoryFull ORDER(EnglishProductSubcategoryName, EnglishProductName) WITH (MAXDOP = 1, DROP_EXISTING = ON);
 ```
 
 ## Related content

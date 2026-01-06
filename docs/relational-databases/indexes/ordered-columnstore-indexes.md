@@ -3,8 +3,8 @@ title: "Performance Tuning with Ordered Columnstore Indexes"
 description: "Learn more about how ordered columnstore indexes can benefit query performance."
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: nibruno; xiaoyul, randolphwest, dfurman
-ms.date: 12/29/2025
+ms.reviewer: nibruno, xiaoyul, randolphwest, dfurman
+ms.date: 01/06/2026
 ms.service: sql
 ms.subservice: performance
 ms.topic: article
@@ -21,7 +21,7 @@ Ordered columnstore indexes can provide faster performance by skipping large amo
 
 When a query reads a columnstore index, the [!INCLUDE [ssDE](../../includes/ssde-md.md)] checks the minimum and maximum values stored in each column segment. The process eliminates segments that fall outside the bounds of the query predicate. In other words, it skips these segments when reading data from disk or memory. A query finishes faster if the number of segments to read and their total size is significantly smaller.
 
-With certain data load patterns, data in a columnstore index might already be ordered. For example, if data loads occur every day, then the data might be ordered by a `load_date` column. In this case, query performance can already benefit from this implicit order. Ordering the columnstore index by the same `load_date` column explicitly isn't likely to provide an extra performance benefit.
+With certain data load patterns, data in a columnstore index might be ordered implicitly without specifying the `ORDER` clause. For example, if data loads occur every day, then the data might be ordered by a `load_date` column. In this case, query performance can already benefit from this implicit order. Ordering the columnstore index by the same `load_date` column explicitly in the `ORDER` clause isn't likely to provide an extra performance benefit.
 
 For ordered columnstore index availability in various SQL platforms and SQL Server versions, see [Ordered columnstore index availability](columnstore-indexes-overview.md#ordered-columnstore-index-availability).
 
@@ -33,57 +33,53 @@ In a columnstore index, the data in each column of each rowgroup is compressed i
 
 When a columnstore index isn't ordered, the index builder doesn't sort the data before compressing it into segments. That means that segments with overlapping value ranges can occur, causing queries to read more segments to obtain the required data. As a result, queries can take longer to finish.
 
-When you create an ordered columnstore index, the [!INCLUDE [ssDE](../../includes/ssde-md.md)] sorts the existing data by the order keys you specify before the index builder compresses them into segments. With sorted data, segment overlapping is reduced or eliminated, allowing queries to use a more efficient segment elimination and thus faster performance because there are fewer segments and less data to read.
+When you create an ordered columnstore index by specifying the `ORDER` clause in the [CREATE COLUMNSTORE INDEX](../../t-sql/statements/create-columnstore-index-transact-sql.md) statement, the [!INCLUDE [ssDE](../../includes/ssde-md.md)] sorts the data in each segment of each order column before the index builder compresses the data into segments. With sorted data, segment overlapping is reduced or eliminated, allowing queries to use a more efficient segment elimination and thus faster performance because there are fewer segments and less data to read.
 
-## Reduce segment overlap
+<a id="reduce-segment-overlap"></a>
 
-When you build an ordered columnstore index, the [!INCLUDE [ssDE](../../includes/ssde-md.md)] sorts the data on a best-effort basis. Depending on the available memory, the data size, the degree of parallelism, the index type (clustered vs. nonclustered), and the type of index build (offline vs. online), the sort for ordered columnstore indexes might be full with no segment overlap, or partial with some segment overlap.
+## Reduce segment overlap and improve query performance
 
-The following table describes the resulting sort type when you create or rebuild an ordered columnstore index, depending on the index build options.
+When you build an ordered columnstore index, the [!INCLUDE [ssDE](../../includes/ssde-md.md)] sorts the data on a best-effort basis. Depending on the available memory, the data size, the degree of parallelism, the index type (clustered vs. nonclustered), and the type of index build (offline vs. online), the order a column in a columnstore index might be full with no segment overlap, or partial with some segment overlap. When there are fewer overlapping segments, a query that can take advantage of column order runs faster.
 
-| Prerequisites | Sort type |
+> [!TIP]  
+> Even if the order in a column of a columnstore index is partial, segments can still be eliminated (skipped). A full order isn't required to gain performance benefits if a partial order avoids many segment overlaps.
+
+The following table describes the resulting order type when you create or rebuild an ordered columnstore index, depending on the index build options.
+
+| Prerequisites | Order type |
 | --- | --- |
 | `ONLINE = ON` and `MAXDOP = 1` | Full |
 | `ONLINE = OFF`, `MAXDOP = 1`, and the data to sort fully fits in the query workspace memory | Full |
 | All other cases | Partial |
 
-In the first case when both `ONLINE = ON` and `MAXDOP = 1`, the sort isn't limited by the query workspace memory because an online build of an ordered columnstore index uses the `tempdb` database to spill the data that doesn't fit in memory. This approach can make the index build process slower due to the additional `tempdb` I/O. However, because the index build is performed online, queries can continue using the existing index while the new ordered index is being built.
+In the first case when both `ONLINE = ON` and `MAXDOP = 1`, the sort isn't limited by the query workspace memory because an online build of an ordered columnstore index uses the `tempdb` database to spill the data that doesn't fit in memory. This approach can make the index build process slower due to the additional `tempdb` I/O, and requires sufficient free space in `tempdb`. However, because the index build is performed online, queries can continue using the existing index while the new ordered index is being built.
 
 Similarly, with an offline rebuild of a partitioned columnstore index, the rebuild is done one partition at a time. Other partitions remain available for queries.
 
 When `MAXDOP` is greater than 1, each thread used for ordered columnstore index build works on a subset of data and sorts it locally. There's no global sorting across data sorted by different threads. Using parallel threads can reduce the time to create the index, but it results in more overlapping segments than when using a single thread.
 
-> [!TIP]  
-> Even if the sort in an ordered columnstore index is partial, segments can still be eliminated (skipped). A full sort isn't required to gain query performance benefits if a partial sort avoids many segment overlaps.
->
-> To find the number of overlapping and non-overlapping segments in an ordered columnstore index, see the [Determine the sort quality for an ordered columnstore index](#determine-the-sort-quality-for-an-ordered-columnstore-index) example.
-
 You can create or rebuild ordered columnstore indexes online only in some SQL platforms and SQL Server versions. For more information, see [Feature summary for product releases](columnstore-indexes-what-s-new.md#feature-summary-for-product-releases).
 
 In SQL Server, online index operations aren't available in all editions. For more information, see [Editions and supported features of SQL Server 2025](../../sql-server/editions-and-components-of-sql-server-2025.md) and [Perform index operations online](perform-index-operations-online.md).
 
-### Add new data or update existing data
-
-The new data resulting from a DML batch or a bulk load operation on an ordered columnstore index is sorted within that batch only. There's no global sorting that includes existing data in the table. To reduce segment overlaps after inserting new data or updating existing data, rebuild the index.
-
 ## Query performance
 
-The performance gain from an ordered columnstore index depends on the query patterns, the size of data, the sort quality, and the compute resources available for query execution.
+The performance gain from an ordered columnstore index depends on the query patterns, the size of data, the number of overlapping segments, and the compute resources available for query execution.
 
 Queries with the following patterns typically run faster with ordered columnstore indexes:
 
 - Queries that have equality, inequality, or range predicates.
 - Queries where the predicate columns and the ordered CCI columns are the same.
 
-In this example, table `T1` has a clustered columnstore index ordered in the sequence of `Col_C`, `Col_B`, and `Col_A`.
+In the following example, table `T1` has a clustered columnstore index with `Col_C`, `Col_B`, and `Col_A` as ordered columns.
 
 ```sql
-CREATE CLUSTERED COLUMNSTORE INDEX MyOrderedCCI
+CREATE CLUSTERED COLUMNSTORE INDEX OrderedCCI
 ON T1
-ORDER(Col_C, Col_B, Col_A);
+ORDER (Col_C, Col_B, Col_A);
 ```
 
-The performance of query 1 and 2 can benefit from ordered columnstore index more than query 3 and 4, because they reference all the ordered columns.
+Query 1 benefits from the ordered columnstore index more than queries 2 and 3, because query 1 references all the ordered columns in its predicate.
 
 ```sql
 -- query 1
@@ -97,16 +93,9 @@ WHERE Col_C = 'c'
 SELECT *
 FROM T1
 WHERE Col_B = 'b'
-      AND Col_C = 'c'
       AND Col_A = 'a';
 
 -- query 3
-SELECT *
-FROM T1
-WHERE Col_B = 'b'
-      AND Col_A = 'a';
-
--- query 4
 SELECT *
 FROM T1
 WHERE Col_A = 'a'
@@ -116,6 +105,12 @@ WHERE Col_A = 'a'
 ## Data load performance
 
 The performance of a data load into a table with an ordered columnstore index is similar to a partitioned table. Loading data can take longer than with a non-ordered columnstore index because of the data sorting operation, but queries can run faster afterwards.
+
+### Add new data or update existing data
+
+The new data resulting from a DML batch or a bulk load operation on a table with an ordered columnstore index is sorted within that batch only. There's no global sorting that includes existing data in the table because compressed rowgroups in a columnstore index are immutable.
+
+To reduce segment overlap after inserting new data or updating existing data, rebuild the columnstore index.
 
 ## Examples
 
@@ -171,7 +166,9 @@ ORDER(Column1, Column2)
 WITH (DROP_EXISTING = ON);
 ```
 
-### Create an ordered clustered columnstore index online with full sort on a heap table
+<a id="create-an-ordered-clustered-columnstore-index-online-with-full-sort-on-a-heap-table"></a>
+
+### Create an ordered clustered columnstore index online with full order on a heap table
 
 ```sql
 CREATE CLUSTERED COLUMNSTORE INDEX OCCI
@@ -180,63 +177,15 @@ ORDER(Column1)
 WITH (ONLINE = ON, MAXDOP = 1);
 ```
 
-### Rebuild an ordered clustered columnstore index online with full sort
+<a id="rebuild-an-ordered-clustered-columnstore-index-online-with-full-sort"></a>
+
+### Rebuild an ordered clustered columnstore index online with full order
 
 ```sql
 CREATE CLUSTERED COLUMNSTORE INDEX OCCI
 ON dbo.Table1
 ORDER(Column1)
 WITH (DROP_EXISTING = ON, ONLINE = ON, MAXDOP = 1);
-```
-
-### Determine the sort quality for an ordered columnstore index
-
-This example determines the sort quality for all ordered columnstore indexes in the database. In this example, sort quality is defined as a ratio of non-overlapping segments to all segments for each order column, expressed as a percentage.
-
-```sql
-WITH ordered_column_segment
-AS (SELECT p.object_id,
-           i.name AS index_name,
-           ic.column_store_order_ordinal,
-           cls.row_count,
-           cls.column_id,
-           cls.min_data_id,
-           cls.max_data_id,
-           LAG(max_data_id) OVER (
-               PARTITION BY cls.partition_id, ic.column_store_order_ordinal
-               ORDER BY cls.min_data_id
-           ) AS prev_max_data_id,
-           LEAD(min_data_id) OVER (
-               PARTITION BY cls.partition_id, ic.column_store_order_ordinal
-               ORDER BY cls.min_data_id
-           ) AS next_min_data_id
-    FROM sys.partitions AS p
-         INNER JOIN sys.indexes AS i
-             ON p.object_id = i.object_id
-            AND p.index_id = i.index_id
-         INNER JOIN sys.column_store_segments AS cls
-             ON p.partition_id = cls.partition_id
-         INNER JOIN sys.index_columns AS ic
-             ON ic.object_id = p.object_id
-            AND ic.index_id = p.index_id
-            AND ic.column_id = cls.column_id
-    WHERE ic.column_store_order_ordinal > 0)
-SELECT OBJECT_SCHEMA_NAME(object_id) AS schema_name,
-       OBJECT_NAME(object_id) AS object_name,
-       index_name,
-       INDEXPROPERTY(object_id, index_name, 'IsClustered') AS is_clustered_column_store,
-       COL_NAME(object_id, column_id) AS order_column_name,
-       column_store_order_ordinal,
-       SUM(row_count) AS row_count,
-       SUM(is_overlapping_segment) AS overlapping_segments,
-       COUNT(1) AS total_segments,
-       (1 - SUM(is_overlapping_segment) / COUNT(1)) * 100 AS order_quality_percent
-FROM ordered_column_segment
-CROSS APPLY (SELECT CAST (IIF (prev_max_data_id > min_data_id
-                 OR next_min_data_id < max_data_id, 1, 0) AS FLOAT) AS is_overlapping_segment
-            ) AS ios
-GROUP BY object_id, index_name, column_id, column_store_order_ordinal
-ORDER BY schema_name, object_name, index_name, column_store_order_ordinal;
 ```
 
 ## Related content

@@ -74,7 +74,7 @@ For feature availability in Azure SQL Managed Instance with a SQL Server [update
 
   In [!INCLUDE [sql-server-2025](../../includes/sssql25-md.md)], when an ordered clustered columnstore index is built online, the sort algorithm uses `tempdb` instead of sorting the data in memory. If `MAXDOP` for the index build is 1, the build produces a fully ordered clustered columnstore index that doesn't have overlapping segments. This can improve performance of queries using the index. However, index build might take longer because of the additional I/O required for spills to `tempdb`. If a clustered columnstore index already exists, queries can continue using it while the fully ordered online index rebuild is in progress.
 
-  For more information, see [Reduce segment overlap](ordered-columnstore-indexes.md#reduce-segment-overlap).
+  For more information, see [Reduce segment overlap and improve query performance](ordered-columnstore-indexes.md#reduce-segment-overlap-and-improve-query-performance).
 
 - Improved database and file shrink operations.
 

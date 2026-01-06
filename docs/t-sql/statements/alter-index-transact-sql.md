@@ -4,7 +4,7 @@ description: Modifies an existing table or view index (rowstore, columnstore, or
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: wiassaf, randolphwest, dfurman
-ms.date: 04/14/2025
+ms.date: 01/06/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -207,7 +207,7 @@ The name of the schema to which the table or view belongs.
 
 The name of the table or view associated with the index. To view index details for a table or view, use the [sys.indexes](../../relational-databases/system-catalog-views/sys-indexes-transact-sql.md) catalog view.
 
-[!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] supports the three-part name format `<database_name>.<schema_name>.<object_name>` when `<database_name>` is the current database name, or `<database_name>` is `tempdb` and `<object_name>` starts with `#` or `##`.  If the schema name is `dbo`, `<schema_name>` can be omitted.
+[!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] supports the three-part name format `<database_name>.<schema_name>.<object_name>` when `<database_name>` is the current database name, or `<database_name>` is `tempdb` and `<object_name>` starts with `#` or `##`. If the schema name is `dbo`, `<schema_name>` can be omitted.
 
 #### REBUILD [ WITH ( \<rebuild_index_option> [ ,... *n* ] ) ]
 
@@ -224,9 +224,9 @@ When you rebuild a primary XML index, the underlying user table is unavailable f
 For columnstore indexes, the rebuild operation:
 
 - Recompresses all data into the columnstore. Two copies of the columnstore index exist while the rebuild operation is in progress. When the rebuild is finished, [!INCLUDE [ssDE](../../includes/ssde-md.md)] deletes the original columnstore index.
-- Doesn't preserve the sort order, if any. To rebuild a columnstore index and preserve or introduce a sort order, use the `CREATE [CLUSTERED] COLUMNSTORE INDEX ... ORDER (...) ... WITH (DROP_EXISTING = ON)` statement.
+- Doesn't preserve the column segment order introduced by the `ORDER` clause when creating the index. To rebuild a columnstore index and preserve or introduce a column segment order, use the `CREATE [CLUSTERED] COLUMNSTORE INDEX ... ORDER (...) ... WITH (DROP_EXISTING = ON)` statement. For more information, see [CREATE COLUMNSTORE INDEX](create-columnstore-index-transact-sql.md) and [Performance tuning with ordered columnstore indexes](../../relational-databases/indexes/ordered-columnstore-indexes.md).
 
-For more information, see [Optimize index maintenance to improve query performance and reduce resource consumption](../../relational-databases/indexes/reorganize-and-rebuild-indexes.md).
+For more information about index maintenance, see [Optimize index maintenance to improve query performance and reduce resource consumption](../../relational-databases/indexes/reorganize-and-rebuild-indexes.md).
 
 #### PARTITION
 
@@ -495,11 +495,11 @@ Specifies whether page locks are allowed. The default is `ON`.
 
 **Applies to**: [!INCLUDE [sql-server-2019](../../includes/sssql19-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi-md.md](../../includes/ssazuremi-md.md)]
 
-Specifies whether or not to optimize to avoid last-page insert contention. The default is `OFF`. For more information, see [Sequential keys](./create-index-transact-sql.md#sequential-keys).
+Specifies whether or not to optimize to avoid last-page insert contention. The default is `OFF`. For more information, see [Sequential keys](create-index-transact-sql.md#sequential-keys).
 
 #### MAXDOP = max_degree_of_parallelism
 
-Overrides the **max degree of parallelism** configuration option for the index operation. For more information, see [Configure the max degree of parallelism Server Configuration Option](../../database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md). Use `MAXDOP` to limit the degree of parallelism and the resulting resource consumption for an index build operation.
+Overrides the **max degree of parallelism** configuration option for the index operation. For more information, see [Server configuration: max degree of parallelism](../../database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option.md). Use `MAXDOP` to limit the degree of parallelism and the resulting resource consumption for an index build operation.
 
 Although the `MAXDOP` option is syntactically supported for all XML indexes and spatial indexes, `ALTER INDEX` currently uses only a single processor.
 
@@ -530,7 +530,7 @@ For a disk-based table with a columnstore index, specifies the minimum number of
 
 The default is 0 minutes.
 
-For recommendations on when to use `COMPRESSION_DELAY`, see [Get started with columnstore for real-time operational analytics](../../relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics.md).
+For recommendations on when to use `COMPRESSION_DELAY`, see [Get started with columnstore indexes for real-time operational analytics](../../relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics.md).
 
 #### DATA_COMPRESSION
 
@@ -648,13 +648,17 @@ On multiprocessor computers, just like other queries do, `ALTER INDEX REBUILD` a
 
 In [!INCLUDE [fabric-sqldb](../../includes/fabric-sqldb.md)], `ALTER INDEX ALL` is not supported, but `ALTER INDEX <index name>` is.
 
-## <a id="rebuilding-indexes"></a> Rebuild indexes
+<a id="rebuilding-indexes"></a>
+
+## Rebuild indexes
 
 Rebuilding an index drops and re-creates the index. This removes fragmentation, reclaims disk space by compacting the pages based on the specified or existing fill factor setting, and reorders the index rows in contiguous pages. When `ALL` is specified, all indexes on the table are dropped and rebuilt in a single transaction. Foreign key constraints don't have to be dropped in advance. When indexes with 128 extents or more are rebuilt, the [!INCLUDE [ssDE](../../includes/ssde-md.md)] defers the actual page deallocations, and their associated locks, until after the transaction commits. For more information, see [Deferred deallocation](drop-index-transact-sql.md#deferred-deallocation).
 
 For more information, see [Optimize index maintenance to improve query performance and reduce resource consumption](../../relational-databases/indexes/reorganize-and-rebuild-indexes.md).
 
-## <a id="reorganizing-indexes"></a> Reorganize indexes
+<a id="reorganizing-indexes"></a>
+
+## Reorganize indexes
 
 Reorganizing an index uses minimal system resources. It defragments the leaf level of clustered and nonclustered indexes on tables and views by physically reordering the leaf-level pages to match the logical, left to right, order of the leaf nodes. Reorganizing also compacts the index pages. Compaction is based on the existing fill factor value.
 
@@ -665,19 +669,23 @@ For more information, see [Optimize index maintenance to improve query performan
 > [!NOTE]  
 > For a table with an ordered columnstore index, `ALTER INDEX REORGANIZE` doesn't re-sort the data. To resort the data use `CREATE [CLUSTERED] COLUMNSTORE INDEX ... ORDER (...) ... WITH (DROP_EXISTING = ON)`.
 
-## <a id="disabling-indexes"></a> Disable indexes
+<a id="disabling-indexes"></a>
+
+## Disable indexes
 
 Disabling an index prevents user access to the index, and for clustered indexes, to the underlying table data. The index definition remains in the system catalog. Disabling a nonclustered index or clustered index on a view physically deletes the index data. Disabling a clustered index prevents access to the data, but the data remains unmaintained in the B-tree until the index is dropped or rebuilt. To see if an index is disabled, use the `is_disabled` column in the `sys.indexes` catalog view.
 
 [!INCLUDE [sql-b-tree](../../includes/sql-b-tree.md)]
 
-If a table is in a transactional replication publication, you can't disable an index that is associated with a primary key constraint. These indexes are required by replication. To disable such an index, you must first drop the table from the publication. For more information, see [Publish data and database objects](../../relational-databases/replication/publish/publish-data-and-database-objects.md).
+If a table is in a transactional replication publication, you can't disable an index that is associated with a primary key constraint. These indexes are required by replication. To disable such an index, you must first drop the table from the publication. For more information, see [Publish Data and Database Objects](../../relational-databases/replication/publish/publish-data-and-database-objects.md).
 
 Use the `ALTER INDEX REBUILD` statement or the `CREATE INDEX WITH DROP_EXISTING` statement to enable the index. Rebuilding a disabled clustered index can't be performed with the `ONLINE` option set to `ON`. For more information, see [Disable indexes and constraints](../../relational-databases/indexes/disable-indexes-and-constraints.md).
 
-## <a id="setting-options"></a> Set options
+<a id="setting-options"></a>
 
-You can set the options `ALLOW_ROW_LOCKS`, `ALLOW_PAGE_LOCKS`, `OPTIMIZE_FOR_SEQUENTIAL_KEY`, `IGNORE_DUP_KEY`, and `STATISTICS_NORECOMPUTE` for a specified index without rebuilding or reorganizing that index. The modified values are immediately applied to the index. To view these settings, use `sys.indexes`. For more information, see [Set index options](../../relational-databases/indexes/set-index-options.md).
+## Set options
+
+You can set the options `ALLOW_ROW_LOCKS`, `ALLOW_PAGE_LOCKS`, `OPTIMIZE_FOR_SEQUENTIAL_KEY`, `IGNORE_DUP_KEY`, and `STATISTICS_NORECOMPUTE` for a specified index without rebuilding or reorganizing that index. The modified values are immediately applied to the index. To view these settings, use `sys.indexes`. For more information, see [Set Index Options](../../relational-databases/indexes/set-index-options.md).
 
 ### Row and page locks options
 
@@ -696,7 +704,9 @@ If `ALL` is specified when the row or page lock options are set, the settings ar
 > [!WARNING]
 > It is not recommended to disable row or page locks on an index. Concurrency-related problems might occur, and certain functionality might be unavailable. For example, an index can't be reorganized when `ALLOW_PAGE_LOCKS` is set to `OFF`.
 
-## <a id="online-index-operations"></a> Online index operations
+<a id="online-index-operations"></a>
+
+## Online index operations
 
 When rebuilding an index and the `ONLINE` option is set to `ON`, data in the index, its associated table, and other indexes on the same table is available for queries and modification. You can also rebuild online a portion of an index residing on a single partition. Exclusive table locks are held only for a short amount of time at the end of the index rebuild.
 
@@ -712,7 +722,9 @@ All other online index operations performed at the same time fail. For example, 
 
 For more information, see [Perform index operations online](../../relational-databases/indexes/perform-index-operations-online.md).
 
-### <a id="resumable-indexes"></a> Resumable index operations
+<a id="resumable-indexes"></a>
+
+### Resumable index operations
 
 **Applies to**: [!INCLUDE [ssSQL17](../../includes/sssql17-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE [ssazuremi](../../includes/ssazuremi-md.md)]
 
@@ -760,7 +772,9 @@ Resumable index rebuild operations have the following limitations:
   - Filtered indexes
   - Disabled indexes
 
-### <a id="wait-at-low-priority"></a> WAIT_AT_LOW_PRIORITY with online index operations
+<a id="wait-at-low-priority"></a>
+
+### WAIT_AT_LOW_PRIORITY with online index operations
 
 **Applies to**: [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], and [!INCLUDE[ssazuremi-md](../../includes/ssazuremi-md.md)]
 
@@ -1270,7 +1284,7 @@ ALTER INDEX test_idx on test_table ABORT;
 
 ## Related content
 
-- [SQL Server and Azure SQL index architecture and design guide](../../relational-databases/sql-server-index-design-guide.md)
+- [Index architecture and design guide](../../relational-databases/sql-server-index-design-guide.md)
 - [Perform index operations online](../../relational-databases/indexes/perform-index-operations-online.md)
 - [CREATE INDEX (Transact-SQL)](create-index-transact-sql.md)
 - [CREATE SPATIAL INDEX (Transact-SQL)](create-spatial-index-transact-sql.md)
