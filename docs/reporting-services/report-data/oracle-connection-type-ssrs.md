@@ -62,7 +62,7 @@ Register Unmanaged ODP.NET:
     C:\oracle64\product\18.0.0\client_1\odp.net\bin\4\OraProvCfg.exe /action:config /force /product:odp /frameworkversion:v4.0.30319 /providerpath:C:\oracle64\product\18.0.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll
     ```
 
-## 32-bit drivers for Microsoft Report Builder
+## 32-bit drivers for Report Builder
 
 [Microsoft Report Builder](https://www.microsoft.com/download/details.aspx?id=53613) uses Managed ODP.NET for authoring paginated (RDL) reports. You only need the following steps for Oracle ODAC drivers 12.2 and later. Otherwise, they install by default to a non-machine-wide configuration for a new Oracle home installation.
 
@@ -83,10 +83,10 @@ Register Managed ODP.NET:
     C:\oracle32\product\18.0.0\client_1\odp.net\bin\4\OraProvCfg.exe /action:config /force /product:odpm /frameworkversion:v4.0.30319 /providerpath:C:\oracle32\product\18.0.0\client_1\odp.net\managed\common\Oracle.ManagedDataAccess.dll
     ```
 
-## 64-bit drivers for Power BI Report Builder
+## 64-bit drivers for Report Builder
 
 > [!NOTE]
-> The following instructions apply to Power BI Report Builder version 15.7.01678.0001 and later. For versions before 15.7.01678.0001, follow the **32-bit drivers for Microsoft Report Builder** instructions.
+> The following instructions apply to Power BI Report Builder version 15.7.01678.0001 and later as well as Microsoft Report Builder version 15.1.20318.47 and later. For previous versions, follow the **32-bit drivers for Report Builder** instructions.
 
 [Power BI Report Builder](https://www.microsoft.com/download/details.aspx?id=105942) uses Managed ODP.NET for authoring paginated (RDL) reports. You only need the following steps for Oracle ODAC drivers 12.2 and later. Otherwise, they install by default to a non-machine-wide configuration for a new Oracle home installation.
 
