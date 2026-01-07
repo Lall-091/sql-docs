@@ -5,10 +5,10 @@ description: Breaking changes to database engine features in SQL Server 2025.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest, mathoma
-ms.date: 11/18/2025
+ms.date: 01/08/2026
 ms.service: sql
 ms.subservice: release-landing
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 helpviewer_keywords:
@@ -117,7 +117,7 @@ For information about how to connect securely to [!INCLUDE [sssql25-md](../inclu
 
 ## Full-Text queries and populations fail after upgrade
 
-[!INCLUDE [sssql25-md](../includes/sssql25-md.md)] removes all legacy word breaker and filter binaries used by [Full-Text Search](../relational-databases/search/full-text-search.md). These components are rebuilt with a modern toolset and offer expanded support for more languages and document types. Existing indexes after upgrade are designated with `index_version = 1` as per `sys.fulltext_indexes`. Newly created indexes are designated version 2 and use the new components, unless otherwise specified using the `FULLTEXT_INDEX_VERSION` database scoped configuration.
+[!INCLUDE [sssql25-md](../includes/sssql25-md.md)] removes all legacy word breaker and filter binaries used by [Full-Text Search](../relational-databases/search/full-text-search.md). These components are rebuilt with a modern toolset and offer expanded support for more languages and document types. Existing indexes after upgrade are designated with `index_version = 1` as per [sys.fulltext_indexes](../relational-databases/system-catalog-views/sys-fulltext-indexes-transact-sql.md). Newly created indexes are version 2 and use the new components, unless you specify otherwise by using the [FULLTEXT_INDEX_VERSION](../t-sql/statements/alter-database-scoped-configuration-transact-sql.md#fulltext_index_version) database scoped configuration.
 
 Any Full-Text query on a version 1 index fails to find the word breaker binaries on disk immediately after upgrade:
 
@@ -126,7 +126,7 @@ Msg 30010, Level 16, State 2, Line 8
 An error has occurred during the full-text query. Common causes include: word-breaking errors or timeout, FDHOST permissions/ACL issues, service account missing privileges, malfunctioning IFilters, communication channel issues with FDHost and sqlservr.exe, etc. If recently performed in-place upgrade to SQL2025, For help please see https://aka.ms/sqlfulltext.
 ```
 
-Similarly, any Full-Text population issued on a version 1 index fails to find the filter binaries on disk after upgrade:
+Similarly, any Full-Text population on a version 1 index fails to find the filter binaries on disk after upgrade:
 
 ```output
 Warning: No appropriate filter was found during full-text index population for table or indexed view '[db].[dbo].[table_name]' (table or indexed view ID '901578250', database ID '5'), full-text key value '1'. Some columns of the row were not indexed.
@@ -134,7 +134,7 @@ Warning: No appropriate filter was found during full-text index population for t
 
 ### Rebuild existing indexes with new version
 
-The recommended way to continue using your indexes is to rebuild them with the newer version 2 components.
+Rebuild your indexes to use version 2 components.
 
 ```sql
 -- Verify value = 2
@@ -146,18 +146,21 @@ WHERE [name] = 'FULLTEXT_INDEX_VERSION';
 ALTER FULLTEXT CATALOG [FtCatalog] REBUILD;
 ```
 
-The only method to upgrade individual indexes without rebuilding the entire catalog is to drop and recreate them.
+To upgrade individual indexes without rebuilding the entire catalog, drop and recreate the indexes.
 
 ### Keep using version 1
 
-If it's necessary to remain on version 1 for application compatibility, first ensure you set `FULLTEXT_INDEX_VERSION` = 1 to avoid an unintended upgrade on rebuild.
+> [!IMPORTANT]  
+> Version 1 is deprecated for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. In [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and later versions, the `mssql-server-fts` package doesn't include version 1 binaries. Attempting to install mismatched versions of the `mssql-server-fts` and `mssql-server` packages is unsupported, and results in full-text failures.
+
+If you need to use version 1 for application compatibility, first set `FULLTEXT_INDEX_VERSION = 1` to avoid an unintended upgrade on rebuild.
 
 ```sql
 ALTER DATABASE SCOPED CONFIGURATION
     SET FULLTEXT_INDEX_VERSION = 1;
 ```
 
-You must then copy the legacy word breaker and filter binaries from an older instance to the target instance's `binn` folder.
+Next, copy the legacy word breaker and filter binaries from an older instance to the target instance's `binn` folder.
 
 ## Related content
 
