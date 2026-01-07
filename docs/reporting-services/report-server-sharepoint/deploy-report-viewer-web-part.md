@@ -12,7 +12,7 @@ ms.custom:
 
 # Deploy the SQL Server Reporting Services Report Viewer web part on a SharePoint site
 
-[!INCLUDE[ssrs-appliesto](../../includes/ssrs-appliesto.md)] [!INCLUDE[ssrs-appliesto-2016-and-later](../../includes/ssrs-appliesto-2016-and-later.md)]  [!INCLUDE[ssrs-appliesto-pbirsi](../../includes/ssrs-appliesto-pbirs.md)] [!INCLUDE[ssrs-appliesto-sharepoint-2013-and-later](../../includes/ssrs-appliesto-sharepoint-2013-and-later.md)] [!INCLUDE[ssrs-appliesto-not-sharepoint-online](../../includes/ssrs-appliesto-not-sharepoint-online.md)]
+[!INCLUDE[ssrs-appliesto](../../includes/ssrs-appliesto.md)] [!INCLUDE[ssrs-appliesto-2008r2-and-later](../../includes/ssrs-appliesto-2008r2-and-later.md)]  [!INCLUDE[ssrs-appliesto-pbirsi](../../includes/ssrs-appliesto-pbirs.md)] [!INCLUDE[ssrs-appliesto-sharepoint-2013-2016](../../includes/ssrs-appliesto-sharepoint-2013-2016.md)] [!INCLUDE[ssrs-appliesto-not-sharepoint-online](../../includes/ssrs-appliesto-not-sharepoint-online.md)]
 
 The Report Viewer web part is a custom web part that can be used to view SQL Server Reporting Services (native mode) reports within your SharePoint site. You can use the web part to view, navigate, print, and export reports on a report server. The Report Viewer web part is associated with report definition (.rdl) files that a SQL Server Reporting Services report server or a Power BI Report Server processes. This Report Viewer web part can't be used with Power BI reports hosted in Power BI Report Server.
 
@@ -28,12 +28,18 @@ Use the following instructions to manually deploy the solution package that adds
 >
 
 **Support SharePoint Server versions:**
-* SharePoint Server 2019
 * SharePoint Server 2016
 * SharePoint Server 2013
 
 **Support Reporting Services versions:**  
-* SQL Server 2008 Reporting Services (Native mode) and later
+* SQL Server 2022 Reporting Services
+* SQL Server 2019 Reporting Services
+* SQL Server 2017 Reporting Services
+* SQL Server 2016 Reporting Services
+* SQL Server 2014 Reporting Services
+* SQL Server 2012 Reporting Services
+* SQL Server 2008 R2 Reporting Services
+* SQL Server 2008 Reporting Services
 * Power BI Report Server
 
 ## Download the Report Viewer web part solution package
