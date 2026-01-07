@@ -4,7 +4,7 @@ description: CREATE EXTERNAL MODEL (Transact-SQL) for creating an external model
 author: jettermctedder
 ms.author: bspendolini
 ms.reviewer: randolphwest
-ms.date: 12/04/2025
+ms.date: 01/06/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -22,14 +22,17 @@ helpviewer_keywords:
 dev_langs:
   - TSQL
 ai-usage: ai-assisted
-monikerRange: "=azuresqldb-current || >=sql-server-ver17 || >=sql-server-linux-ver17 || =fabric-sqldb"
+monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-current || =azuresqldb-mi-current || =fabric-sqldb"
 ---
 
 # CREATE EXTERNAL MODEL (Transact-SQL)
 
-[!INCLUDE [sqlserver2025-asdb-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-fabricsqldb.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricsqldb.md)]
 
 Creates an external model object that contains the location, authentication method, and purpose of an AI model inference endpoint.
+
+> [!NOTE]  
+> `CREATE EXTERNAL MODEL` is available in [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] with the **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).
 
 ## Syntax
 
@@ -39,7 +42,7 @@ Creates an external model object that contains the location, authentication meth
 CREATE EXTERNAL MODEL external_model_object_name
 [ AUTHORIZATION owner_name ]
 WITH
-  (   LOCATION = '<prefix>://<path>[:<port>]'
+  ( LOCATION = '<prefix>://<path>[:<port>]'
     , API_FORMAT = '<OpenAI, Azure OpenAI, etc>'
     , MODEL_TYPE = EMBEDDINGS
     , MODEL = 'text-embedding-model-name'
@@ -51,11 +54,11 @@ WITH
 
 ## Arguments
 
-### external_model_object_name
+### *external_model_object_name*
 
 Specifies the user-defined name for the external model. The name must be unique within the database.
 
-### owner_name
+### *owner_name*
 
 Specifies the name of the user or role that owns the external model. If you don't specify this argument, the current user becomes the owner. Depending on permissions and roles, you might need to grant explicit permission to users to use specific external models.
 
@@ -402,7 +405,7 @@ Use the following PowerShell script to provide the MSSQLLaunchpad user access to
 ```powershell
 $AIExtPath = "C:\onnx_runtime";
 $Acl = Get-Acl -Path $AIExtPath
-$AccessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("MSSQLLaunchpad", "FullControl", "ContainerInherit,ObjectInherit", "None","Allow")
+$AccessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("MSSQLLaunchpad", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")
 $Acl.AddAccessRule($AccessRule)
 Set-Acl -Path $AIExtPath -AclObject $Acl
 ```
@@ -456,7 +459,13 @@ ADD EVENT ai_generate_embeddings_airuntime_trace
     ACTION (sqlserver.sql_text, sqlserver.session_id)
 )
 ADD TARGET package0.ring_buffer
-WITH (MAX_MEMORY = 4096 KB, EVENT_RETENTION_MODE = ALLOW_SINGLE_EVENT_LOSS, MAX_DISPATCH_LATENCY = 30 SECONDS, TRACK_CAUSALITY = ON, STARTUP_STATE = OFF);
+WITH (
+    MAX_MEMORY = 4096 KB,
+    EVENT_RETENTION_MODE = ALLOW_SINGLE_EVENT_LOSS,
+    MAX_DISPATCH_LATENCY = 30 SECONDS,
+    TRACK_CAUSALITY = ON,
+    STARTUP_STATE = OFF
+);
 GO
 
 ALTER EVENT SESSION newevt ON SERVER STATE = START;

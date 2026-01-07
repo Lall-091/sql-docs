@@ -4,7 +4,7 @@ description: Vector functions perform operations on vector type allowing applica
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: damauri, pookam, randolphwest
-ms.date: 11/18/2025
+ms.date: 01/06/2026
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: reference
@@ -27,10 +27,9 @@ monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17 || =azuresqldb-curre
 The following scalar functions perform operations on [vectors](../../sql-server/ai/vectors.md) in binary format, allowing applications to store and manipulate vectors in the SQL Database Engine.
 
 > [!NOTE]  
->
-> Vector features are available in Azure SQL Managed Instance with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).
+> Vector features are available in [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)] with the **SQL Server 2025** or **Always-up-to-date** [update policy](/azure/azure-sql/managed-instance/update-policy).
 
-All Vector functions support the [Vector data type](../data-types/vector-data-type.md).
+All vector functions support the [**vector** data type](../data-types/vector-data-type.md).
 
 | Function | Description |
 | --- | --- |
