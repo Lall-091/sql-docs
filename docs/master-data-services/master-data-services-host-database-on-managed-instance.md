@@ -215,7 +215,7 @@ To fix this issue, you need upgrade the database version:
 
    ![Screenshot of the Connect to a Master Data Service Database dialog box.](../master-data-services/media/mds-sqlserver2019-config-mi-connectdbname.png "mds-SQLServer2019-Config-MI_ConnectDBName")
 
-1. Select **Upgrade Database…** .
+1. Select **Upgrade Database...** .
 
    ![Screenshot of the Upgrade Database option.](../master-data-services/media/mds-sqlserver2019-config-mi-selectupgradedb.png "mds-SQLServer2019-Config-MI_SelectUpgradeDB")
 

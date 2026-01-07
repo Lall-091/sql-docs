@@ -59,7 +59,7 @@ Sure, you can find end-to-end samples for RAG using Azure SQL and Fabric SQL her
 
 If you need to work with structured data, you can still leverage RAG by combining it with other techniques, such as using embeddings to represent your structured data in a way that can be understood by the AI model. This allows you to perform retrieval and generation tasks on structured data while still benefiting from the capabilities of RAG.
 
-- [Improve the “R” in RAG and embrace Agentic RAG in Azure SQL](https://devblogs.microsoft.com/azure-sql/improve-the-r-in-rag-and-embrace-agentic-rag-in-azure-sql/)
+- [Improve the "R" in RAG and embrace Agentic RAG in Azure SQL](https://devblogs.microsoft.com/azure-sql/improve-the-r-in-rag-and-embrace-agentic-rag-in-azure-sql/)
 
 ## Why does sending a full, complex schema to an LLM lead to poor SQL generation—and how can I fix it?
 

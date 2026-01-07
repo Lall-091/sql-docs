@@ -107,7 +107,7 @@ Moving to a different subscription requires manual reconfiguration with the prec
 
 ### SQL Server physical core license
 
-Moving the SQL Server instance physical core (p-core) license automatically to a new subscription, resource group, or location isn’t supported. To manually move an instance covered by a p-core license, follow these steps:
+Moving the SQL Server instance physical core (p-core) license automatically to a new subscription, resource group, or location isn't supported. To manually move an instance covered by a p-core license, follow these steps:
 
 1. Create and activate a p-core license with the same configuration in the new subscription, resource group, or location.
 1. Move the virtual machines and SQL Server resources covered by the original license to the new scope.

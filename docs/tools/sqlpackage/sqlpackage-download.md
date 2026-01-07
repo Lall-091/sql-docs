@@ -218,7 +218,7 @@ If you installed SqlPackage with a .zip or other archive, then delete the files.
 
 ### Automated environments
 
-Evergreen links are available for downloading the latest Sqlpackage versions:
+Evergreen links are available for downloading the latest SqlPackage versions:
 
 - Linux (<https://aka.ms/sqlpackage-linux>)
 - macOS (<https://aka.ms/sqlpackage-macos>)

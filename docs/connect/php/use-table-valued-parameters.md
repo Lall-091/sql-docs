@@ -130,7 +130,7 @@ sqlsrv_next_result($stmt);
 
 ### Use the PDO_SQLSRV driver
 
-This is an equivalent example when using the PDO_SQLSRV driver. You can use prepare/execute with [bindParam](../../connect/php/pdostatement-bindparam.md) and specify the TVP input as a `PDO::PARAM_LOB`. If not, you'll get this error: `Operand type clash: nvarchar is incompatible with …`.
+This is an equivalent example when using the PDO_SQLSRV driver. You can use prepare/execute with [bindParam](../../connect/php/pdostatement-bindparam.md) and specify the TVP input as a `PDO::PARAM_LOB`. If not, you'll get this error: `Operand type clash: nvarchar is incompatible with ...`.
 
 ```php
 try {

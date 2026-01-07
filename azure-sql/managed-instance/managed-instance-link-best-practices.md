@@ -121,7 +121,7 @@ EXEC sp_validate_certificate_ca_chain <certificate_id>
 GO 
 ```
 
-A response of `Commands completed successfully. Completion time: …` indicates the MI endpoint certificate has been successfully validated. 
+A response of `Commands completed successfully. Completion time: ...` indicates the MI endpoint certificate has been successfully validated. 
 
 > [!IMPORTANT]
 > The stored procedure `sp_validate_certificate_ca_chain` relies on host OS services to perform certificate validation, which might involve an online certificate revocation check. If the host OS is not configured to access the internet, the execution fails even if the certificate chain is valid. 

@@ -22,7 +22,7 @@ The **BulkCopyDemoMatchingColumns** and **BulkCopyDemoDifferentColumns** tables 
 A few of the code samples demonstrate how to use one <xref:Microsoft.Data.SqlClient.SqlBulkCopy> class to write to multiple tables. For these samples, the **BulkCopyDemoOrderHeader** and **BulkCopyDemoOrderDetail** tables are used as the destination tables. These tables are based on the **Sales.SalesOrderHeader** and **Sales.SalesOrderDetail** tables in **AdventureWorks**.  
   
 > [!NOTE]
->  The **SqlBulkCopy** code samples are provided to demonstrate the syntax for using **SqlBulkCopy** only. If the source and destination tables are located in the same SQL Server instance, it is easier and faster to use a Transact-SQL `INSERT … SELECT` statement to copy the data.  
+>  The **SqlBulkCopy** code samples are provided to demonstrate the syntax for using **SqlBulkCopy** only. If the source and destination tables are located in the same SQL Server instance, it is easier and faster to use a Transact-SQL `INSERT ... SELECT` statement to copy the data.  
   
 ## Table setup  
 To create the tables necessary for the code samples to run correctly, you must run the following Transact-SQL statements in a SQL Server database.  

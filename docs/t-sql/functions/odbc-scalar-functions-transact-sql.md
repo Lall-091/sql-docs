@@ -59,7 +59,7 @@ monikerRange: ">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >
   
 ## Usage  
  ```syntaxsql
- SELECT {fn <function_name> [ (<argument>,....n) ] }
+ SELECT {fn <function_name> [ (<argument>, ...n) ] }
  ```
   
 ## Functions  

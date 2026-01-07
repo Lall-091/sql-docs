@@ -94,12 +94,12 @@ Because the current Windows Server implementation enforces a fixed 30-day discon
 
 The following timeline illustrates the billing behavior for both SQL Server and Windows Server, comparing scenarios where the machine reconnects within 30 days versus after 30 days.
 
-| Timeline | Event | Service’s actions |
+| Timeline | Event | Service's actions |
 |----------|-------|-------------------|
 | Day 1 | Sets up Arc + Arc SQL using pay-as-you-go on a Windows Server. | - Billing starts based on current configuration and actual usage.<br>- Usage is uploaded and processed every 12 hours. |
 | Day 2 | Azure detects disconnection due to agent failure or blocked connectivity. | Connected machine state changes to **Disconnected**.<br>- Azure extension for SQL Server continues collecting and storing usage data locally.<br>- Warnings appear in the Arc machine Activity Log, SQL Server Configuration page, and SQL Server Overview blade.<br>- No hourly meters are emitted. |
 | Day 3+ | Continued disconnection | Daily reminders are emitted, warning that recurring billing will begin after 30 days. |
-| Day 30 | Still no usage records or heartbeat. | Connected machine agent’s certificate expires.<br>- Connected machine state changes to Expired.<br>- SQL switches to recurring billing based on the last known configuration (edition, cores, HA setup, etc.).<br>- Charges are backfilled for the past 30 days.<br>- Hourly billing resumes using recurring meters. |
+| Day 30 | Still no usage records or heartbeat. | Connected machine agent's certificate expires.<br>- Connected machine state changes to Expired.<br>- SQL switches to recurring billing based on the last known configuration (edition, cores, HA setup, etc.).<br>- Charges are backfilled for the past 30 days.<br>- Hourly billing resumes using recurring meters. |
 | Day 31+ | Continued disconnection. | Hourly billing continues indefinitely using the last known configuration. |
 | Day 40 | Connectivity is restored | Hourly billing switches to regular pay-as-you-go meters and continues. |
 
