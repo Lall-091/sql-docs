@@ -4,7 +4,7 @@ description: Query Store can be configured to monitor and tuning workloads on se
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest, wiassaf
-ms.date: 11/20/2025
+ms.date: 01/07/2026
 ms.service: sql
 ms.subservice: performance
 ms.topic: concept-article
@@ -16,7 +16,7 @@ monikerRange: ">=sql-server-ver16 || =azuresqldb-current"
 ---
 # Query Store for readable secondaries
 
-[!INCLUDE [sqlserver2025-asdb](../../includes/applies-to-version/sqlserver2025-asdb.md)]
+[!INCLUDE [sqlserver2022-asdb-asmi](../../includes/applies-to-version/sqlserver2022-asdb-asmi.md)]
 
 Query Store for readable secondaries enables Query Store insights for workloads that run on secondary replicas. When enabled, secondary replicas stream query execution information (such as runtime and wait statistics) to the primary replica, where the data is persisted in Query Store and made visible across all replicas.
 
@@ -24,21 +24,22 @@ Query Store for readable secondaries enables Query Store insights for workloads 
 
 Currently, the Query Store for readable secondaries feature is available and supported in production on [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], and in Azure SQL Database. Beginning with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], and in Azure SQL Database, Query Store for readable secondaries is enabled by default. 
 
-In [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], Query Store for readable secondaries remains in preview, and is therefore not supported in production, and is disabled by default. To enable Query Store for readable secondaries in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] only, a trace flag 12606 is required to be enabled to the primary and all readable secondary replicas. Trace flag 12606 is not intended for production deployments that are based on [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]. For more information, see [SQL Server 2022 release notes](../../sql-server/sql-server-2022-release-notes.md). For [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], the Query Store on readable secondaries feature is **on** by default.
+In [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)], Query Store for readable secondaries remains in preview, and is therefore **not** supported in production, and is disabled by default. To enable Query Store for readable secondaries in [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] only, a trace flag 12606 is required to be enabled to the primary and all readable secondary replicas. Trace flag 12606 **is not** intended for production deployments that are based on [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)]. For more information, see [SQL Server 2022 release notes](../../sql-server/sql-server-2022-release-notes.md). For [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], the Query Store on readable secondaries feature is **on** by default.
 
 [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], all databases are automatically enrolled and enabled to support the Query Store for readable secondaries feature, on [supported service tiers and high availability scenarios](#supported-high-availability-scenarios). Currently, this feature is not supported in Azure SQL Database Hyperscale.
-
-Currently, this feature is not supported in Azure SQL Managed Instance or SQL database in Microsoft Fabric.
 
 ## Supported high availability scenarios
 
 - Before you use Query Store for readable secondaries on a [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] instance, an [Always On availability group](../../database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server.md) must be configured.
 
 - For Azure SQL Database, Query Store for readable secondaries supports the following service tiers:
-
-    - General purpose with [active geo-replication](/azure/azure-sql/database/active-geo-replication-overview) (no built-in high availability replicas; requires geo-replication configuration for secondary support)
-    - Premium (includes built-in high availability replicas; active geo-replication also supported)
-    - Business critical (includes built-in high availability replicas; active geo-replication also supported)
+    - General purpose with [active geo-replication](/azure/azure-sql/database/active-geo-replication-overview) or a [failover group](/azure//azure-sql/database/failover-group-sql-db) configuration (no built-in high availability replicas; requires geo-replication or failover group configuration for secondary support)
+    - Premium (includes built-in high availability replicas; active geo-replication or failover groups also supported)
+    - Business critical (includes built-in high availability replicas; active geo-replication or failover groups also supported)
+      
+- For [Azure SQL Managed Instance with the Always-up-to-date policy](/azure/azure-sql/managed-instance/update-policy#always-up-to-date-update-policy), Query Store for readable secondaries supports the following service tiers:
+    - General purpose with a [failover group](/azure/azure-sql/managed-instance/failover-group-sql-mi) (no built-in high availability replicas; requires a failover group configuration for secondary support)
+    - Business critical (includes built-in high availability replicas)
 
 ## Enable Query Store for readable secondaries
 

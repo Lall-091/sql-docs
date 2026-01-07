@@ -4,7 +4,7 @@ description: Optional parameter plan optimization improvement.
 author: thesqlsith
 ms.author: derekw
 ms.reviewer: randolphwest
-ms.date: 12/08/2025
+ms.date: 01/07/2026
 ms.service: sql
 ms.topic: concept-article
 ms.custom:
@@ -17,7 +17,11 @@ monikerRange: "=sql-server-ver17 || =sql-server-linux-ver17"
 
 [!INCLUDE [sqlserver2025-asdb-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-fabricsqldb.md)]
 
-The term *optional parameters* refers to a specific variation of the [parameter-sensitive plan](../query-processing-architecture-guide.md#parameter-sensitivity) (PSP) problem in which the sensitive, parameter value that exists during query execution, controls whether we need to perform a seek into or scan a table. A simple example would be something like:
+Optional parameter plan optimization (OPPO) improves query plan quality for queries that include optional parameters. In these queries, the optimal execution plan depends on whether a parameter value is `NULL` at execution time. The term *optional parameters* refers to a specific variation of the [parameter-sensitive plan](../query-processing-architecture-guide.md#parameter-sensitivity) (PSP) problem, in which the parameter value at execution time determines whether the query requires a seek or a scan.
+
+## Overview
+
+Queries that use optional parameters often include predicates that conditionally apply filters based on whether a parameter value is provided. A common pattern is as follows:
 
 ```sql
 SELECT column1,
@@ -27,37 +31,48 @@ WHERE (column1 = @p
        OR @p IS NULL);
 ```
 
-In this example, SQL Server always chooses a plan that scans table `Table1`, even if there's an index on `Table1(col1)`. A seek plan might not be possible with NULLs. Query hinting techniques, like `OPTIMIZE FOR`, might not be useful for this type of PSP problem because there isn't currently an operator that dynamically changes an index seek into a scan during execution. This kind of seek->scan combination at runtime might also not be effective, because the cardinality estimates on top of that operator would likely be inaccurate. The result is inefficient plan choices and excessive memory grants for more complex queries with similar query patterns.
+When `@p IS NOT NULL`, an index seek on `col1` is often the most efficient execution plan. When `@p IS NULL`, the predicate evaluates to `TRUE`, and a scan might be more appropriate. Without OPPO, the [!INCLUDE [ssdenoversion-md](../../includes/ssdenoversion-md.md)] must compile and cache a single execution plan that's valid for both cases. Because a seek-based plan isn't valid when `@p IS NULL`, the optimizer often chooses a conservative scan-based plan for all executions. This choice can result in inefficient plan choices and excessive resource usage for selective executions.
 
-The Optional Parameter Plan optimization (OPPO) feature uses the adaptive plan optimization (Multiplan) infrastructure that was introduced with the Parameter Sensitive Plan optimization improvement, which generates multiple plans from a single statement. This allows the feature to make different assumptions depending on the parameter values used in the query. During query execution time, OPPO selects the appropriate plan:
+Traditional hinting techniques such as `OPTIMIZE FOR` aren't effective in this scenario, because the plan must remain correct for both parameter states.
 
-- where the parameter value `IS NOT NULL`, it uses a seek plan or something more optimal than a full scan plan.
-- where the parameter value is `NULL`, it uses a scan plan.
-
-As part of the adaptive plan optimization feature family which includes [Parameter Sensitive Plan optimization](parameter-sensitive-plan-optimization.md), OPPO provides a solution to the second component of the Multiplan feature set, which covers dynamic search capabilities.
-
-- Equality predicates
-
-  ```sql
-  WHERE column1 = @p
-  ```
-
-- Dynamic search
-
-  ```sql
-  WHERE (column1 = @p1 OR @p1 IS NULL)
-    AND (column2 = @p2 OR @p2 IS NOT NULL)
-  ```
+OPPO uses the adaptive plan optimization (Multiplan) infrastructure introduced with Parameter Sensitive Plan (PSP) optimization. This infrastructure generates and caches multiple execution plans for a single statement, which allows OPPO to make different assumptions based on the parameter values used in the query.
 
 ## Terminology and how it works
 
-| Term | Description |
-| --- | --- |
-| **Dispatcher expression** | This expression evaluates cardinality of predicates based on runtime parameter values, and routes execution to different query variants. |
-| **Dispatcher plan** | A plan containing the dispatcher expression is cached for the original query. The dispatcher plan is essentially a collection of the predicates that were selected by the feature, with a few extra details. For each predicate that is selected some of the details that are included in the dispatcher plan are the *high* and *low* boundary values. These values are used to divide parameter values into different buckets or ranges. The dispatcher plan also contains the statistics that were used to calculate the boundary values. |
-| **Query variant** | As dispatcher plan evaluates the cardinality of predicates based on runtime parameter values, it *bucketizes* them and generates separate child queries to run. These child queries are called query variants. Query variants have their own plans in the plan cache and the Query Store. In other words, by using different query variants, we achieve the goal of multiple plans for a single query. |
+OPPO builds on the adaptive plan optimization (Multiplan) framework, which is also used by [Parameter Sensitive Plan optimization](parameter-sensitive-plan-optimization.md). By using Multiplan, the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] can generate and cache multiple execution plans for a single query.
 
-As an example, consider an application web form for a realty company that allows for optional filtering on the number of bedrooms for a particular listing. A common antipattern could be to express the optional filter as:
+When the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] detects an eligible optional parameter pattern, it creates:
+
+- A dispatcher plan
+- One or more query variants, each optimized for a specific parameter value state
+
+At execution time:
+
+- The [!INCLUDE [ssde-md](../../includes/ssde-md.md)] evaluates the parameter value.
+- The Multiplan dispatcher selects the appropriate query variant.
+- The selected query variant executes.
+
+After the [!INCLUDE [ssde-md](../../includes/ssde-md.md)] selects a query variant, it simplifies predicates based on the actual parameter value. Consider the following expression:
+
+```sql
+@p1 IS NULL
+```
+
+In this example, the expression is simplified to a [constant result](../query-processing-architecture-guide.md#constant-folding-and-expression-evaluation) for the selected variant. This constant result folding allows the optimizer to generate execution plans that aren't valid in a single reusable plan.
+
+By selecting plans in this way, OPPO enables efficient execution for different parameter states without requiring query rewrites or manual query hints.
+
+OPPO and PSP optimization address different variations of parameter-related plan issues:
+
+- PSP optimization selects plans based on estimated cardinality differences for equality or range predicates.
+
+- OPPO selects plans based on whether a parameter value is `NULL`.
+
+A single query might benefit from both or either feature depending on the predicates involved.
+
+### Supported query patterns
+
+Optional parameter plan optimization applies to queries where `NULL` checks on parameters affect execution plan validity. As an example, consider an application web form for a realty company that allows for optional filtering on the number of bedrooms for a particular listing. OPPO applies to disjunctive optional parameter predicates such as:
 
 ```sql
 SELECT *
@@ -66,9 +81,9 @@ WHERE bedrooms = @bedrooms
       OR @bedrooms IS NULL;
 ```
 
-Even if parameter `@bedrooms = 10` is sniffed by the use of [parameter markers](../query-processing-architecture-guide.md#parameters-and-execution-plan-reuse), and we know that the cardinality for the number of bedrooms is likely to be very low, the optimizer doesn't produce a plan that seeks on an index which exists on the bedroom column because that isn't a valid plan for the case where `@bedrooms` is `NULL`. The generated plan doesn't include a scan of the index.
+Even if [parameter markers](../query-processing-architecture-guide.md#parameters-and-execution-plan-reuse) can sniff the `@bedrooms = 10` parameter, and you know that the cardinality for the number of bedrooms is likely to be very low, the optimizer doesn't produce a plan that seeks on an index that exists on the bedroom column, because that isn't a valid plan for the case where `@bedrooms` is `NULL`. The generated plan doesn't include a scan of the index.
 
-Imagine if this could be rewritten as two separate statements. Depending on the runtime value of the parameter, we could evaluate something like this:
+Imagine if you could rewrite this query as two separate statements. Depending on the runtime value of the parameter, you could evaluate the following example:
 
 ```sql
 IF @bedrooms IS NULL
@@ -80,9 +95,9 @@ ELSE
     WHERE bedrooms = @bedrooms;
 ```
 
-We can achieve this by using the adaptive plan optimization infrastructure, which allows a creation of a dispatcher plan that dispatches two query variants.
+The feature can achieve this by using the Multiplan infrastructure, which allows a creation of a [dispatcher plan](parameter-sensitive-plan-optimization.md#dispatcher-plan) that dispatches a [query variant](parameter-sensitive-plan-optimization.md#query-variant).
 
-Similar to the [predicate cardinality range](parameter-sensitive-plan-optimization.md#predicate-cardinality-range) that PSP optimization uses, OPPO embeds a system usable query hint with the query text of the plan. This hint isn't valid for use by an application or if you attempt to use it yourself.
+OPPO embeds a system-generated `PLAN PER VALUE` query hint (`optional_predicate`) in the plan metadata to associate each query variant with its parameter state. This hint is system generated and embedded within the query text of the plan. This hint isn't valid for use by an application or to be applied manually.
 
 Continuing with the previous example,
 
@@ -95,7 +110,7 @@ WHERE bedrooms = @bedrooms
 
 OPPO can generate two query variants that might have the following attributes added to them within the Showplan XML:
 
-- `@bedrooms` is `NULL`. The query variant *folded* the original query to achieve a scan plan.
+- `@bedrooms` is `NULL`. The query variant *folds* predicates based on the parameter value, allowing a scan-based plan to be generated.
 
   SELECT * FROM Properties PLAN PER VALUE(ObjectID = 1234, QueryVariantID = *1*, *optional_predicate*(@bedrooms is NULL))
 
@@ -110,9 +125,9 @@ To enable OPPO for a database, the following prerequisites are required:
 - The database must use compatibility level 170.
 - The `OPTIONAL_PARAMETER_OPTIMIZATION` database-scoped configuration must be enabled.
 
-The `OPTIONAL_PARAMETER_OPTIMIZATION` database-scoped configuration is enabled by default. This means that a database using compatibility level 170 (the default in SQL Server 2025) uses OPPO by default.
+The `OPTIONAL_PARAMETER_OPTIMIZATION` database-scoped configuration is enabled by default, so a database using compatibility level 170 (the default in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]) uses OPPO by default.
 
-You can ensure that a database uses OPPO in SQL Server 2025 by executing the following statements:
+You can ensure that a database uses OPPO in [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] by executing the following statements:
 
 ```sql
 ALTER DATABASE [<database-name-placeholder>]
@@ -122,24 +137,26 @@ ALTER DATABASE SCOPED CONFIGURATION
 SET OPTIONAL_PARAMETER_OPTIMIZATION = ON;
 ```
 
-To disable optional parameter plan optimization for a database, disable the `OPTIONAL_PARAMETER_OPTIMIZATION` database-scoped configuration:
+To disable OPPO for a database, disable the `OPTIONAL_PARAMETER_OPTIMIZATION` database-scoped configuration:
 
 ```sql
 ALTER DATABASE SCOPED CONFIGURATION
 SET OPTIONAL_PARAMETER_OPTIMIZATION = OFF;
 ```
 
-#### Use optional parameter plan optimization via query hints
+### Use optional parameter plan optimization via query hinting
 
-You can use the `DISABLE_OPTIONAL_PARAMETER_OPTIMIZATION` query hint to disable optional parameter plan optimization for a given query. The hints must be specified via the `USE HINT` clause. For more information, see [Query hints](../../t-sql/queries/hints-transact-sql-query.md#use_hint).
+Use the `DISABLE_OPTIONAL_PARAMETER_OPTIMIZATION` query hint to disable OPPO for a given query. Specify the hint via the `USE HINT` clause. For more information, see [Query hints](../../t-sql/queries/hints-transact-sql-query.md#use_hint).
 
-The hints work under any compatibility level, and override the `OPTIONAL_PARAMETER_OPTIMIZATION` database-scoped configuration.
+This hint works under any compatibility level, and overrides the `OPTIONAL_PARAMETER_OPTIMIZATION` database-scoped configuration.
 
-The `DISABLE_OPTIONAL_PARAMETER_OPTIMIZATION` query hint can be specified directly in the query, or via [Query Store hints](query-store-hints.md).
+Specify the `DISABLE_OPTIONAL_PARAMETER_OPTIMIZATION` query hint directly in the query or via [Query Store hints](query-store-hints.md).
 
 ### Extended Events
 
-- `optional_parameter_optimization_skipped_reason`: Occurs when OPPO decides that a query isn't eligible for optimization. This extended event follows the same pattern as the parameter_sensitive_plan_optimization_skipped_reason event that is used by PSP optimization. Since a query can generate both PSP optimization and OPPO query variants, you should check both events to understand why one or neither feature engaged.
+Use the following extended events for troubleshooting and diagnostics. These events are **not** required to use the feature.
+
+- `optional_parameter_optimization_skipped_reason`: Occurs when OPPO decides that a query isn't eligible for optimization. This extended event follows the same pattern as the `parameter_sensitive_plan_optimization_skipped_reason` event that PSP optimization uses. Since a query can generate both PSP optimization and OPPO query variants, check both events to understand why one or neither feature engaged.
 
   The following query shows all of the possible reasons why PSP was skipped:
 
@@ -150,11 +167,17 @@ The `DISABLE_OPTIONAL_PARAMETER_OPTIMIZATION` query hint can be specified direct
   ORDER BY map_key;
   ```
 
-- `query_with_optional_parameter_predicate`: The extended event follows the same pattern as the query_with_parameter_sensitivity event that is used by PSP optimization. It includes the additional fields that are available in the improvements for PSP optimization which consist of displaying the number of predicates that the feature found interesting, more details in json format regarding the interesting predicates, as well as if OPPO is supported for the predicate or predicates.
+- `query_with_optional_parameter_predicate`: This extended event follows the same pattern as the `query_with_parameter_sensitivity` event that PSP optimization uses. It includes the additional fields that are available in the improvements for PSP optimization.
+
+  These fields display:
+
+  - the number of predicates that the feature found interesting,
+  - more details in JSON format regarding the interesting predicates, and
+  - whether OPPO is supported for the predicate or predicates.
 
 ## Remarks
 
-- The ShowPlan XML for a query variant would look similar to the following example, where the predicates that were selected have their respective information added to the PLAN PER VALUE, optional_predicate hint.
+- The ShowPlan XML for a query variant looks similar to the following example. The predicates that the feature selects have their respective information added to the `PLAN PER VALUE` (`optional_predicate`) hint.
 
 ```xml
 <Batch>
@@ -214,14 +237,23 @@ The `DISABLE_OPTIONAL_PARAMETER_OPTIMIZATION` query hint can be specified direct
       <QueryPlan DegreeOfParallelism="1" CachedPlanSize="40" CompileTime="1" CompileCPU="1" CompileMemory="376" QueryVariantID="7">
 ```
 
-- Example output from the `query_with_optional_parameter_predicate` extended event
+- Example output from the `query_with_optional_parameter_predicate` extended event:
 
-| Field | Value |
-| --- | --- |
-| optional_parameter_optimization_supported | True |
-| optional_parameter_predicate_count | 3 |
-| predicate_details | {"Predicates":[{"Skewness":1005.53},{"Skewness":1989.00},{"Skewness":1989.00}]} |
-| query_type | 193 |
+  | Field | Value |
+  | --- | --- |
+  | `optional_parameter_optimization_supported` | True |
+  | `optional_parameter_predicate_count` | 3 |
+  | `predicate_details` | `{"Predicates":[{"Skewness":1005.53},{"Skewness":1989.00},{"Skewness":1989.00}]}` |
+  | `query_type` | 193 |
+
+## Query eligibility and limitations
+
+OPPO applies only to queries that are eligible for Multiplan optimization. The feature isn't applied in scenarios that include:
+
+- Queries that use local variables instead of parameters
+- Queries compiled with `OPTION (RECOMPILE)`
+- Queries executed with `SET ANSI_NULLS OFF`
+- Auto-parameterized statements
 
 ## Related content
 
