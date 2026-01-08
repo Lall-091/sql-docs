@@ -5,7 +5,7 @@ description: This article describes editions, features, and components supported
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh, vanto
-ms.date: 11/27/2025
+ms.date: 01/08/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: concept-article
@@ -90,6 +90,18 @@ The Developer editions continue to support only one client for [SQL Server Distr
 
 <a id="rdbms-high-availability"></a>
 
+## Azure connected services
+
+| Feature | Enterprise | Standard | Express |
+| --- | :---: | :---: | :---: |
+| Azure extension for SQL Server | Yes | Yes | No |
+| Link feature for SQL Managed Instance <sup>1</sup> | Yes | Yes | No |
+| Failover servers for disaster recovery in Azure | Yes | Yes | No |
+| Microsoft Entra integration | Yes | Yes | Yes |
+| Pay-as-you-go billing | Yes | Yes | No |
+
+<sup>1</sup> These features are governed by their respective [Lifecycle Policies](/lifecycle/products/sql-server-2025).
+
 ## High availability
 
 | Feature | Enterprise | Standard | Express |
@@ -135,6 +147,7 @@ The Developer editions continue to support only one client for [SQL Server Distr
 | I/O resource governance | Yes | No | No |
 | Delayed durability | Yes | Yes | Yes |
 | Bulk insert improvements | Yes | Yes | Yes |
+| `tempdb` database files on **tmpfs** filesystem | Yes | Yes | Yes |
 
 <sup>1</sup> In-Memory OLTP data size and columnstore segment cache are limited to the amount of memory specified by edition in the [Scale limits](#scale-limits) section. The max degree of parallelism is limited. The degree of process parallelism (DOP) for an index build is limited to 2 DOP for the Standard edition and 1 DOP for Express edition. This refers to columnstore indexes created over disk-based tables and memory-optimized tables.
 
@@ -142,10 +155,26 @@ The Developer editions continue to support only one client for [SQL Server Distr
 
 | Feature | Enterprise | Standard | Express |
 | --- | :---: | :---: | :---: |
+| Approximate count distinct | Yes | Yes | Yes |
+| Approximate percentile | Yes | Yes | Yes |
 | Automatic tuning | Yes | No | No |
+| Batch mode on row store <sup>1</sup> | Yes | No | No |
 | Batch mode adaptive joins | Yes | No | No |
 | Batch mode memory grant feedback | Yes | No | No |
+| Cardinality estimate feedback | Yes | No | No |
+| Cardinality estimation feedback for expressions | Yes | No | No |
+| Degree of parallelism feedback | Yes | No | No |
 | Interleaved execution for multi-statement table valued functions | Yes | Yes | Yes |
+| Memory grant feedback persistence and percentile | Yes | No | No |
+| Optimized plan forcing | Yes | Yes | Yes |
+| Optional parameter plan optimization | Yes | Yes | Yes |
+| Optimized `sp_executesql` | Yes | Yes | Yes |
+| Parameter sensitive plan optimization | Yes | Yes | Yes |
+| Row mode memory grant feedback | Yes | No | No |
+| Scalar UDF inlining | Yes | Yes | Yes |
+| Table variable deferred compilation | Yes | Yes | Yes |
+
+<sup>1</sup> Batch mode on rowstore only supports disk-based heaps and [B+ tree indexes](../relational-databases/sql-server-index-design-guide.md#index-basics). It doesn't support In-Memory OLTP tables, XML columns, or sparse column sets. The degree of parallelism (DOP) for [batch mode](../relational-databases/query-processing-architecture-guide.md#batch-mode-execution) operations is limited to `2` for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Standard edition, and `1` for [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] Express edition.
 
 ## Security
 
@@ -227,6 +256,20 @@ The Developer editions continue to support only one client for [SQL Server Distr
 <sup>4</sup> Requires [PREVIEW_FEATURES database scoped configuration](../t-sql/statements/alter-database-scoped-configuration-transact-sql.md#preview-features).
 
 <sup>5</sup> Using SQL Server authentication for SQL Server linked servers as target and source only.
+
+## AI features
+
+| Feature | Enterprise | Standard | Express |
+| --- | :---: | :---: | :---: |
+| Native vector data type | Yes | Yes | Yes |
+| DiskANN-based vector indexing <sup>1</sup> | Yes | Yes | Yes |
+| External models support | Yes | Yes | Yes |
+| Local ONNX models support <sup>1</sup> | Yes | Yes | Yes |
+| Embedding generation support | Yes | Yes | Yes |
+| Chunking support | Yes | Yes | Yes |
+
+<sup>1</sup> Requires [PREVIEW_FEATURES database scoped configuration](../t-sql/statements/alter-database-scoped-configuration-transact-sql.md#preview-features).
+
 
 ## Integration Services
 
