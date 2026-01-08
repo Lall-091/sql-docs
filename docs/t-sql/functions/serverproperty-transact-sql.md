@@ -4,7 +4,7 @@ description: SERVERPROPERTY returns property information about the server instan
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest, amitkh-msft
-ms.date: 11/18/2025
+ms.date: 01/08/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -117,7 +117,7 @@ The following table lists possible values for `EditionID` and `Edition`.
 | `610778273` | Enterprise Evaluation |
 | `284895786` | Business Intelligence |
 | `-2117995310` | Developer <sup>1</sup>, or Developer Enterprise <sup>2</sup> |
-| `-2509700633` | Developer Standard <sup>2</sup> |
+| `-1785266663` | Developer Standard <sup>2</sup> |
 | `-1592396055` | Express |
 | `-133711905` | Express with Advanced Services |
 | `-1534726760` | Standard |
@@ -128,8 +128,8 @@ The following table lists possible values for `EditionID` and `Edition`.
 
 <sup>1</sup> **Applies to**: [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions.  
 <sup>2</sup> **Applies to**: [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions.  
-<sup>3</sup> Indicates the development only edition for Azure SQL Edge.  
-<sup>4</sup> Indicates the paid edition for Azure SQL Edge.
+<sup>3</sup> **Applies to**: Azure SQL Edge (development edition).  
+<sup>4</sup> **Applies to**: Azure SQL Edge (paid edition).
 
 ## Return types
 
