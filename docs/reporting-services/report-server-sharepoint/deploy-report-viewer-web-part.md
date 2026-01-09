@@ -16,6 +16,9 @@ ms.custom:
 
 The Report Viewer web part is a custom web part that can be used to view SQL Server Reporting Services (native mode) reports within your SharePoint site. You can use the web part to view, navigate, print, and export reports on a report server. The Report Viewer web part is associated with report definition (.rdl) files that a SQL Server Reporting Services report server or a Power BI Report Server processes. This Report Viewer web part can't be used with Power BI reports hosted in Power BI Report Server.
 
+> [!IMPORTANT]
+> Support for the SQL Server Reporting Services Report Viewer SharePoint web part ends on April 13, 2026. Although no immediate action is required, we recommend transitioning to the alternative approach of using URL parameters to embed your reports. Learn more about [embedding with URL parameters](../url-access-parameter-reference.md?view=sql-server-ver17&viewFallbackFrom=sql-server-ver17s?preserve-view=true).
+
 Use the following instructions to manually deploy the solution package that adds the Report Viewer web part to a SharePoint Server 2013, SharePoint Server 2016, or SharePoint Server 2019 environment. Deploying the solution is a required step for configuring the web part.
 
 **The Report Viewer web part is a standalone solution package and is not associated with SharePoint integrated mode for SQL Server Reporting Services.**
@@ -25,13 +28,14 @@ Use the following instructions to manually deploy the solution package that adds
 > [!IMPORTANT]
 > Starting with version "15.X.X.X" you can install the ```ReportViewerWebPart``` side by side with your existing Reporting Services SharePoint integrated mode shared service applications.
 > With this update of the .wsp solution we introduced new files and the previous solution must be retracted and the new .wsp redeployed by using the ```Uninstall-SPSolution``` and ```Install-SPSolution``` cmdlets, respectively.
->
 
 **Support SharePoint Server versions:**
+
 * SharePoint Server 2016
 * SharePoint Server 2013
 
-**Support Reporting Services versions:**  
+**Support Reporting Services versions:** 
+
 * SQL Server 2022 Reporting Services
 * SQL Server 2019 Reporting Services
 * SQL Server 2017 Reporting Services
