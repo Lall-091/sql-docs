@@ -30,7 +30,7 @@ It's important to use the latest available version of SqlPackage as performance 
 
 ### Substitute SqlPackage for the Import/Export Service
 
-If you attempted to use the Import/Export Service to import or export your database, you can use SqlPackage to perform the same operation with more control on optional parameters and properties.
+If you attempted to use the Import/Export Service to import or export your database, you can use SqlPackage to perform the same operation with more control on optional parameters and properties. The blog post [Optimizing BACPAC Imports - SqlPackage Done Right!](https://techcommunity.microsoft.com/blog/azuredbsupport/azure-sql-optimizing-bacpac-imports---sqlpackage-done-right/4472021) walks through the steps to use SqlPackage instead of the Import/Export Service for a `.bacpac` import.
 
 For Import, an example command is:
 
@@ -153,13 +153,17 @@ For imports that contain large tables or tables with many indexes, the use of `/
 
 For an export to be transactionally consistent, you must ensure either that no write activity is occurring during the export, or that you're exporting from a [transactionally consistent copy](/azure/azure-sql/database/database-copy) of your database. Receiving errors about foreign key constraints during an import can indicate that the export was not transactionally consistent due to inserted or updated records during the export process.
 
-A common cause of performance degradation during export is unresolved object references, which causes SqlPackage to attempt to resolve the object multiple times. For example, a view is defined that references a table and the table no longer exists in the database. If unresolved references appear in the export log, consider correcting the schema of the database to improve the export performance.
+### Performance during export
 
-In scenarios where the OS disk space is limited and runs out during the export, the use of `/p:TempDirectoryForTableData` allows the data for export to be buffered on an alternative disk. The space required for this action might be large and is relative to the full size of the database. That and other properties are available to tune the [SqlPackage Export](sqlpackage-export.md) operation.
+A common cause of performance degradation during export is unresolved object references, which causes SqlPackage to attempt to resolve the object multiple times. For example, a view is defined that references a table and the table no longer exists in the database. If unresolved references appear in the export log, consider correcting the schema of the database to improve the export performance.
 
 During an export process, the table data is compressed in the bacpac file. The use of `/p:CompressionOption` set to `Fast`, `SuperFast`, or `NotCompressed` might improve the export process speed while compressing the output bacpac file less.
 
 To obtain the database schema and data while skipping the schema validation, perform an [Export](sqlpackage-export.md) with the property `/p:VerifyExtraction=False`. An invalid export might be produced that can't be imported.
+
+### Disk space during export
+
+In scenarios where the OS disk space is limited and runs out during the export, the use of `/p:TempDirectoryForTableData` allows the data for export to be buffered on an alternative disk. The space required for this action might be large and is relative to the full size of the database. That and other properties are available to tune the [SqlPackage Export](sqlpackage-export.md) operation.
 
 ## Azure SQL Database
 
@@ -179,6 +183,10 @@ The [Azure Database Support Blog](https://techcommunity.microsoft.com/t5/azure-d
 
 Some of the most relevant articles include:
 
+- [Optimizing BACPAC Imports - SqlPackage Done Right!](https://techcommunity.microsoft.com/t5/azure-database-support-blog/optimizing-bacpac-imports-sqlpackage-done-right/ba-p/4472021)
+- [Lessons Learned #535: BACPAC Import Failures in Azure SQL Database due to Incompatible Users](https://techcommunity.microsoft.com/blog/azuredbsupport/lessons-learned-535-bacpac-import-failures-in-azure-sql-database-due-to-incompat/4455456)
+- [Lesson Learned #523: Measuring Import Time -Parsing SqlPackage Logs with PowerShell](https://techcommunity.microsoft.com/blog/azuredbsupport/lesson-learned-523-measuring-import-time--parsing-sqlpackage-logs-with-powershel/4422436)
+- [How to skip external data source references while doing export/Restore of an Azure SQL DB](https://techcommunity.microsoft.com/blog/azuredbsupport/how-to-skip-external-data-source-references-while-doing-exportrestore-of-an-azur/4377910)
 - [Migrating an Azure SQL DB to a SQL MI by utilizing SqlPackage/ADF](https://techcommunity.microsoft.com/t5/azure-database-support-blog/migrating-an-azure-sql-db-to-a-sql-mi-by-utilizing-sqlpackage/ba-p/4061633)
 - [Lesson Learned #446: Simplifying SQLPackage Log Debugging with PowerShell](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-446-simplifying-sqlpackage-log-debugging-with/ba-p/3960502)
 - [How to use Sqlpackage with Managed Identity](https://techcommunity.microsoft.com/t5/azure-database-support-blog/how-to-use-sqlpackage-with-managed-identity/ba-p/3642942)
