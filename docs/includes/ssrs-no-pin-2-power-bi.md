@@ -1,13 +1,12 @@
 ---
-title: include file
-description: include file
+description: Include file
 author: kfollis
 ms.author: kfollis
-ms.date: 10/18/2022
-ms.service:
+ms.reviewer: randolphwest
+ms.date: 01/07/2026
+ms.service: reporting-services
 ms.topic: include
-ms.custom: include file
 ---
 
->[!NOTE]
->Pinning paginated reports to Power BI dashboards is deprecated and discontinued for all releases of SQL Server Reporting Services and Power BI Report Server.
+> [!NOTE]  
+> The ability to pin paginated reports to Power BI dashboards is deprecated and discontinued for all releases of SQL Server Reporting Services and Power BI Report Server.
