@@ -29,7 +29,7 @@ The following table lists the available keywords and the attributes for each pla
 | [ClientCertificate](dsn-connection-string-attribute.md#clientcertificate) | | LMW |
 | [ClientKey](dsn-connection-string-attribute.md#clientkey) | | LMW |
 | [ColumnEncryption](dsn-connection-string-attribute.md#columnencryption---sql_copt_ss_column_encryption) | [SQL_COPT_SS_COLUMN_ENCRYPTION](dsn-connection-string-attribute.md#columnencryption---sql_copt_ss_column_encryption) | LMW |
-| [ConcatNullYieldsNull](dsn-connection-string-attribute.md#concatnullyieldsnull---sql_copt_ss_concat_null) | [SQL_COPT_SS_CONCAT_NULL](dsn-connection-string-attribute.md#concatnullyieldsnull---sql_copt_ss_concat_null) | LMW |
+| [ConcatNullYieldsNull](#concatnullyieldsnull---sql_copt_ss_concat_null) | [SQL_COPT_SS_CONCAT_NULL](#concatnullyieldsnull---sql_copt_ss_concat_null) | LMW |
 | [ConnectRetryCount](connection-resiliency.md) | [SQL_COPT_SS_CONNECT_RETRY_COUNT](connection-resiliency.md) | LMW |
 | [ConnectRetryInterval](connection-resiliency.md) | [SQL_COPT_SS_CONNECT_RETRY_INTERVAL](connection-resiliency.md) | LMW |
 | [Database](../../relational-databases/native-client/applications/using-connection-string-keywords-with-sql-server-native-client.md) | [SQL_ATTR_CURRENT_CATALOG](../../odbc/reference/syntax/sqlsetconnectattr-function.md) | LMW |
