@@ -2677,7 +2677,7 @@
     },
     {
       "source_path": "docs/ssms/release-notes-ssms-19.md",
-      "redirect_url": "/ssms/release-notes-ssms",
+      "redirect_url": "/ssms/release-notes-19",
       "redirect_document_id": false
     },
     {
@@ -3252,7 +3252,7 @@
     },
     {
       "source_path": "docs/ssms/sql-server-management-studio-changelog-ssms.md",
-      "redirect_url": "/ssms/release-notes-ssms",
+      "redirect_url": "/ssms/release-notes",
       "redirect_document_id": false
     },
     {
@@ -3337,17 +3337,17 @@
     },
     {
       "source_path": "docs/relational-databases/manage/run-utility-and-non-utility-collection-sets-on-same-sql-instance.md",
-      "redirect_url": "/ssms/release-notes-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
       "source_path": "docs/relational-databases/manage/create-a-sql-server-utility-control-point-sql-server-utility.md",
-      "redirect_url": "/ssms/release-notes-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
       "source_path": "docs/relational-databases/manage/connect-to-a-sql-server-utility.md",
-      "redirect_url": "/ssms/release-notes-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
@@ -3357,7 +3357,7 @@
     },
     {
       "source_path": "docs/relational-databases/manage/enroll-an-instance-of-sql-server-sql-server-utility.md",
-      "redirect_url": "/ssms/release-notes-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
@@ -3472,17 +3472,17 @@
     },
     {
       "source_path": "docs/relational-databases/manage/monitor-instances-of-sql-server-in-the-sql-server-utility.md",
-      "redirect_url": "/ssms/release-notes-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
       "source_path": "docs/relational-databases/manage/view-resource-health-policy-results-sql-server-utility.md",
-      "redirect_url": "/ssms/release-notes-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
       "source_path": "docs/relational-databases/manage/troubleshoot-sql-server-resource-health-sql-server-utility.md",
-      "redirect_url": "/ssms/release-notes-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
@@ -3532,7 +3532,7 @@
     },
     {
       "source_path": "docs/ssms/object/filter-settings-object-explorer-and-utility-explorer.md",
-      "redirect_url": "/ssms/release-notes-ssms",
+      "redirect_url": "/ssms/object/object-explorer-details-pane",
       "redirect_document_id": false
     },
     {
@@ -3577,7 +3577,7 @@
     },
     {
       "source_path": "docs/ssms/previous-sql-server-management-studio-releases.md",
-      "redirect_url": "/ssms/release-notes-ssms",
+      "redirect_url": "/ssms/release-history",
       "redirect_document_id": false
     },
     {
@@ -3602,42 +3602,42 @@
     },
     {
       "source_path": "docs/relational-databases/manage/modify-a-resource-health-policy-definition-sql-server-utility.md",
-      "redirect_url": "/ssms/release-notes-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
       "source_path": "docs/relational-databases/manage/change-proxy-account-for-utility-collection-on-managed-sql-server.md",
-      "redirect_url": "/ssms/release-notes-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
       "source_path": "docs/relational-databases/manage/remove-a-utility-control-point-sql-server-utility.md",
-      "redirect_url": "/ssms/release-notes-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
       "source_path": "docs/relational-databases/manage/configure-health-policies-sql-server-utility.md",
-      "redirect_url": "/ssms/release-notes-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
       "source_path": "docs/relational-databases/manage/reduce-noise-in-cpu-utilization-policies-sql-server-utility.md",
-      "redirect_url": "/ssms/release-notes-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
       "source_path": "docs/relational-databases/manage/remove-an-instance-of-sql-server-from-the-sql-server-utility.md",
-      "redirect_url": "/ssms/release-notes-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
       "source_path": "docs/relational-databases/manage/move-a-ucp-from-one-instance-of-sql-server-to-another-sql-server-utility.md",
-      "redirect_url": "/ssms/release-notes-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
       "source_path": "docs/relational-databases/manage/sql-server-utility-features-and-tasks.md",
-      "redirect_url": "/ssms/release-notes-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
@@ -3647,7 +3647,7 @@
     },
     {
       "source_path": "docs/ssms/sql-server-management-studio-release-notes.md",
-      "redirect_url": "/ssms/release-notes-22",
+      "redirect_url": "/ssms/release-notes",
       "redirect_document_id": false
     },
     {
@@ -3657,22 +3657,22 @@
     },
     {
       "source_path": "docs/relational-databases/manage/configure-your-utility-control-point-data-warehouse-sql-server-utility.md",
-      "redirect_url": "/ssms/release-notes-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
       "source_path": "docs/relational-databases/data-tier-applications/monitor-data-tier-applications.md",
-      "redirect_url": "/ssms/release-notes-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
       "source_path": "docs/relational-databases/manage/utility-explorer-f1-help.md",
-      "redirect_url": "/ssms/release-notes-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
       "source_path": "docs/relational-databases/manage/use-utility-explorer-to-manage-the-sql-server-utility.md",
-      "redirect_url": "/ssms/release-notes-ssms",
+      "redirect_url": "/ssms/sql-server-management-studio-ssms",
       "redirect_document_id": false
     },
     {
@@ -3707,7 +3707,7 @@
     },
     {
       "source_path": "docs/ssms/release-notes-ssms-20.md",
-      "redirect_url": "/ssms/release-notes-ssms",
+      "redirect_url": "/ssms/release-notes-20",
       "redirect_document_id": false
     },
     {
@@ -4992,7 +4992,7 @@
     },
     {
       "source_path": "docs/ssms/release-notes-ssms.md",
-      "redirect_url": "/ssms/release-notes-ssms",
+      "redirect_url": "/ssms/release-notes",
       "redirect_document_id": false
     },
     {
