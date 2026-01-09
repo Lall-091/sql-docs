@@ -8,7 +8,7 @@ ms.reviewer: srsaluru, vanto, mathoma
 ms.date: 12/19/2025
 ms.service: azure-sql-database
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - azure-synapse
   - sqldbrb=1

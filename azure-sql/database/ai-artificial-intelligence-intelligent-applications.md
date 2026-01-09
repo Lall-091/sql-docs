@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.reviewer: damauri, randolphwest, mathoma
 ms.date: 10/17/2025
 ms.service: azure-sql-database
-ms.topic: conceptual
+ms.topic: overview
 ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days

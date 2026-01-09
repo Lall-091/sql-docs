@@ -8,7 +8,7 @@ ms.reviewer: mathoma
 ms.date: 06/10/2025
 ms.service: azure-sql-database
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - devx-track-azurepowershell
 ---

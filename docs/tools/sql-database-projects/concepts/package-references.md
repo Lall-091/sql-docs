@@ -91,6 +91,7 @@ The available system database packages are:
 - [SQL Server `msdb` system database](https://www.nuget.org/packages/Microsoft.SqlServer.Dacpacs.Msdb)
 - [Azure SQL Database `master` system database](https://www.nuget.org/packages/Microsoft.SqlServer.Dacpacs.Azure.Master)
 - [SQL database in Fabric system objects](https://www.nuget.org/packages/Microsoft.SqlServer.Dacpacs.DbFabric)
+- [Data warehouse in Fabric `master` system database](https://www.nuget.org/packages/Microsoft.SqlServer.Dacpacs.FabricDw)
 - [Azure Synapse Analytics `master` system database](https://www.nuget.org/packages/Microsoft.SqlServer.Dacpacs.Synapse.Master)
 - [Azure Synapse Analytics serverless pools `master` system database](https://www.nuget.org/packages/Microsoft.SqlServer.Dacpacs.SynapseServerless.Master)
 

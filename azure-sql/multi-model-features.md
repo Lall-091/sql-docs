@@ -7,7 +7,7 @@ ms.reviewer: mathoma, urmilano, damauri
 ms.date: 11/06/2024
 ms.service: azure-sql
 ms.subservice: service-overview
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sqldbrb=2
   - ignite-2024

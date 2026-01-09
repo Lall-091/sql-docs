@@ -8,7 +8,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 09/11/2025
 ms.service: azure-sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 ai-usage: ai-assisted
 monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
 ---

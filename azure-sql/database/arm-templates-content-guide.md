@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 04/30/2024
 ms.service: azure-sql-database
 ms.subservice: deployment-configuration
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: overview-samples, azure-sql-split, devx-track-arm-template
 monikerRange: "= azuresql || = azuresql-db"
 ---

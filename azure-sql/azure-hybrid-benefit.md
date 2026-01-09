@@ -8,7 +8,7 @@ ms.reviewer: sashan
 ms.date: 05/19/2025
 ms.service: azure-sql
 ms.subservice: service-overview
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: sqldbrb=4
 monikerRange: "=azuresql||=azuresql-db||=azuresql-mi"
 ---

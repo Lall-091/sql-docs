@@ -41,7 +41,7 @@ Both **json** aggregate functions `JSON_OBJECTAGG` and `JSON_ARRAYAGG` are:
 ## Syntax
 
 ```syntaxsql
-JSON_OBJECTAGG ( json_key_value [ json_null_clause ] [ RETURNING json ] )
+JSON_OBJECTAGG ( json_key_value [ json_null_clause ] [ RETURNING JSON ] )
 
 json_key_value ::= <json_name> : <value_expression>
 
@@ -60,7 +60,7 @@ Optional. Omits the entire property of an object if the value is `NULL`, or use 
 
 ## Return value
 
-Returns a valid JSON object string of **nvarchar(max)** type. If the `RETURNING json` option is included then the JSON object is returned as **json** type.
+Returns a valid JSON object string of **nvarchar(max)** type. If the `RETURNING JSON` option is included then the JSON object is returned as **json** type.
 
 ## Examples
 

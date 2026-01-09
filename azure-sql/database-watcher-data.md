@@ -8,7 +8,7 @@ ms.reviewer: dfurman
 ms.date: 09/02/2025
 ms.service: azure-sql
 ms.subservice: monitoring
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - subject-monitoring
 monikerRange: "=azuresql||=azuresql-db||=azuresql-mi"

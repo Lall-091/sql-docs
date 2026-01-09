@@ -8,7 +8,7 @@ ms.reviewer: maghan, mathoma
 ms.date: 06/13/2025
 ms.service: azure-sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sqldbrb=2
 monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"

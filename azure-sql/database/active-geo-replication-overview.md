@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma, arvindsh
 ms.date: 08/07/2025
 ms.service: azure-sql-database
 ms.subservice: high-availability
-ms.topic: conceptual
+ms.topic: overview
 ms.custom:
   - sqldbrb=1
   - ignite-2023

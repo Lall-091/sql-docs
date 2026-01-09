@@ -4,7 +4,7 @@ description: The SUBSTRING function returns a portion of a specified character, 
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest
-ms.date: 11/18/2025
+ms.date: 01/08/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -36,11 +36,27 @@ Returns part of a character, binary, text, or image expression in [!INCLUDE [ssN
 
 ## Syntax
 
-Syntax for [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)].
+::: moniker range="<=sql-server-ver16 || <=sql-server-linux-ver16"
+
+Syntax for [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions.
+
+```syntaxsql
+SUBSTRING ( expression , start , length )
+```
+
+::: moniker-end
+::: moniker range=">=aps-pdw-2016 || =azuresqldb-current || =azure-sqldw-latest || >=sql-server-ver17 || >=sql-server-linux-ver17 || =azuresqldb-mi-current || =fabric || =fabric-sqldb"
+
+Syntax for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] and later versions, [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], [!INCLUDE [ssazurepdw_md](../../includes/ssazurepdw_md.md)], and [!INCLUDE [fabric-dw-short](../../includes/fabric-dw-short.md)] and [!INCLUDE [fabric-se-short](../../includes/fabric-se-short.md)] in [!INCLUDE [fabric](../../includes/fabric.md)].
 
 ```syntaxsql
 SUBSTRING ( expression , start [ , length ] )
 ```
+
+> [!NOTE]  
+> In [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions, [*length* is required](?view=sql-server-ver16&preserve-view=true#syntax).
+
+::: moniker-end
 
 ## Arguments
 
@@ -60,7 +76,7 @@ You can use substring with an optional *length* argument. However, if you use `N
 
 ## Return types
 
-Returns character data if *expression* is one of the supported character data types. Returns binary data if *expression* is one of the supported **binary** data types. The returned string is the same type as the specified expression with the exceptions shown in the table.
+Returns character data if *expression* is one of the supported character data types. Returns binary data if *expression* is one of the supported **binary** data types. The returned string is the same type as the specified expression with the exceptions shown in the following table.
 
 | Specified expression | Return type |
 | --- | --- |
@@ -70,7 +86,7 @@ Returns character data if *expression* is one of the supported character data ty
 
 ## Remarks
 
-The values for *start* and *length* must be specified in number of characters for **ntext**, **char**, or **varchar** data types and bytes for **text**, **image**, **binary**, or **varbinary** data types.
+You must specify the values for *start* and *length* in number of characters for **ntext**, **char**, or **varchar** data types. For **text**, **image**, **binary**, or **varbinary** data types, you must specify these values in bytes.
 
 The *expression* must be **varchar(max)** or **varbinary(max)** when the *start* or *length* contains a value larger than 2,147,483,647.
 
@@ -120,7 +136,7 @@ bcd
 > [!NOTE]  
 > To run the following examples, you must install the [**pubs** database](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/northwind-pubs).
 
-The following example shows how to return the first 10 characters from each of a **text** and **image** data column in the `pub_info` table of the `pubs` database. **text** data is returned as **varchar**, and **image** data is returned as **varbinary**.
+The following example shows how to return the first 10 characters from each of a **text** and **image** data column in the `pub_info` table of the `pubs` database. The query returns **text** data as **varchar**, and **image** data as **varbinary**.
 
 ```sql
 USE pubs;
@@ -246,9 +262,9 @@ NULL
 
 ### E. Use SUBSTRING with optional length argument
 
-**Applies to:** [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], [!INCLUDE [ssazurepdw_md](../../includes/ssazurepdw_md.md)], and [!INCLUDE [fabric-se-short](../../includes/fabric-se-short.md)] and [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)]
+**Applies to:** [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)], [!INCLUDE [ssazuremi-md](../../includes/ssazuremi-md.md)], [!INCLUDE [ssazuresynapse-md](../../includes/ssazuresynapse-md.md)], [!INCLUDE [ssazurepdw_md](../../includes/ssazurepdw_md.md)], [!INCLUDE [fabric-se-short](../../includes/fabric-se-short.md)], and [!INCLUDE [fabric-dw](../../includes/fabric-dw.md)]
 
-The following example shows how to return only a part of a character string from a given start position. Since the *length* argument isn't provided, the length defaults to return the remaining characters in the string.
+The following example shows how to return only a part of a character string from a given start position. Since the *length* argument isn't provided, the function returns the remaining characters in the string.
 
 ```sql
 SELECT SUBSTRING('123abc', 4) AS y;
@@ -265,7 +281,7 @@ abc
 ### F. Use SUBSTRING without a length argument to find replacement parts in AdventureWorks2022 inventory
 
 ```sql
-USE AdventureWorks2022;
+USE AdventureWorks2025;
 GO
 
 SELECT [ProductDescriptionID],

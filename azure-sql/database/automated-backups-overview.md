@@ -8,7 +8,7 @@ ms.reviewer: mathoma, danil, dinethi
 ms.date: 09/25/2025
 ms.service: azure-sql-database
 ms.subservice: backup-restore
-ms.topic: article
+ms.topic: concept-article
 ms.custom:
   - azure-sql-split
   - ignite-2025

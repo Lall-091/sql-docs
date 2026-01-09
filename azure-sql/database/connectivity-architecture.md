@@ -8,7 +8,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 03/18/2025
 ms.service: azure-sql-database
 ms.subservice: connect
-ms.topic: article
+ms.topic: concept-article
 ms.custom:
   - fasttrack-edit
   - sqldbrb=1
