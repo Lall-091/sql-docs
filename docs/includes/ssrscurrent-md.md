@@ -1,6 +1,6 @@
 ---
-author: mikeccs
-ms.author: v-hassmi
+author: kfollis
+ms.author: kfollis
 ms.date: 01/29/2024
 ms.service: reporting-services
 ms.topic: include
