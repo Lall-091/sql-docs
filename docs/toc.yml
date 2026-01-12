@@ -7165,10 +7165,12 @@ items:
     items:
     - name: Overview
       items:
-      - name: Get Started
+      - name: Get started
         href: relational-databases/search/get-started-with-full-text-search.md
       - name: Deprecated Features in SQL Server 2016
         href: relational-databases/search/deprecated-full-text-search-features-in-sql-server-2016.md
+      - name: Behavior changes to full-text search
+        href: relational-databases/search/behavior-changes-full-text-search.md
     - name: Query
       href: relational-databases/search/query-with-full-text-search.md
       items:
@@ -7216,6 +7218,8 @@ items:
         href: relational-databases/search/configure-and-manage-stopwords-and-stoplists-for-full-text-search.md
       - name: Thesaurus files
         href: relational-databases/search/configure-and-manage-thesaurus-files-for-full-text-search.md
+      - name: Version 1 filters and word breakers
+        href: relational-databases/search/full-text-index-version-1-binaries.md
     - name: Manage & Monitor
       href: relational-databases/search/manage-and-monitor-full-text-search-for-a-server-instance.md
       items:
