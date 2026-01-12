@@ -163,8 +163,9 @@ FROM myTable AS t;
 The following example shows how to use the `AI_GENERATE_EMBEDDINGS` function with a select statement and passing optional parameters to the endpoint, which returns vector array results.
 
 ```sql
+DECLARE @params JSON = N'{"dimensions":768}'
 SELECT id,
-       AI_GENERATE_EMBEDDINGS(large_text USE MODEL MyAzureOpenAIModel PARAMETERS TRY_CONVERT (JSON, N'{"dimensions":768}'))
+       AI_GENERATE_EMBEDDINGS(large_text USE MODEL MyAzureOpenAIModel PARAMETERS @params)
 FROM myTable;
 ```
 
@@ -178,8 +179,9 @@ To specify the number of retries, add the following JSON to the `PARAMETERS` opt
 > If a `retry_count` value is specified in the `AI_GENERATE_EMBEDDINGS` query, it overrides the `retry_count` (if defined) in the external model's configuration.
 
 ```sql
+DECLARE @params JSON = N'{"sql_rest_options":{"retry_count":10}} '
 SELECT id,
-       AI_GENERATE_EMBEDDINGS(large_text USE MODEL MyAzureOpenAIModel PARAMETERS TRY_CONVERT (JSON, N'{"retry_count":10}'))
+       AI_GENERATE_EMBEDDINGS(large_text USE MODEL MyAzureOpenAIModel PARAMETERS @params)
 FROM myTable;
 ```
 
