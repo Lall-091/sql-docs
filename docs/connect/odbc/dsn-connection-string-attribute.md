@@ -188,7 +188,7 @@ Controls transparent column encryption (Always Encrypted). For more information,
 
 ### ConcatNullYieldsNull - SQL_COPT_SS_CONCAT_NULL
 
-For more information, see [SQL_COPT_SS_CONCAT_NULL](../../relational-databases/native-client-odbc-api/sqlsetconnectattr.md#sql_copt_ss_concat_null).
+Controls the use of ISO handling of NULL when concatenating strings. For more information, see [SET CONCAT_NULL_YIELDS_NULL (Transact-SQL)](../../t-sql/statements/set-concat-null-yields-null-transact-sql.md).
 
 | Keyword Value | Attribute Value | Description |
 |-|-|-|
