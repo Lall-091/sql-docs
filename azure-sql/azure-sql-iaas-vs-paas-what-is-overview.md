@@ -4,7 +4,7 @@ description: "Learn about the different options within the Azure SQL family of s
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
-ms.date: 08/07/2025
+ms.date: 12/18/2025
 ms.service: azure-sql
 ms.subservice: service-overview
 ms.topic: overview
@@ -26,7 +26,8 @@ Azure SQL is a family of managed, secure, and intelligent products that use the 
 
 The three products in the Azure SQL family are:
 
-- **[Azure SQL Database](database/sql-database-paas-overview.md)**: Support modern cloud applications on an intelligent, managed database service that includes serverless compute.
+- **[Azure SQL Database](database/sql-database-paas-overview.md)**: Support modern cloud applications on an intelligent, managed database service that includes serverless compute, elastic pools, and elastic job automation.
+    - **[Azure SQL Database Hyperscale](database/service-tier-hyperscale.md)**: A [different architecture](database/hyperscale-architecture.md) for the Azure SQL Database engine that emphasizes highly scalable and separate storage and compute tiers, suitable for many workloads, and with similar features including Hyperscale elastic pools.
 - **[Azure SQL Managed Instance](managed-instance/sql-managed-instance-paas-overview.md)**: Modernize your existing SQL Server applications at scale with an intelligent fully managed instance as a service, with almost 100% feature parity with the SQL Server database engine. Best for most migrations to the cloud.
 - **[SQL Server on Azure VMs](virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)**: Lift-and-shift your SQL Server workloads with ease and maintain 100% SQL Server compatibility and operating system-level access.
 
@@ -37,6 +38,10 @@ If you're new to Azure SQL, check out the *What is Azure SQL* video from our in-
 <br />
 
 > [!VIDEO https://learn.microsoft.com/shows/Azure-SQL-for-Beginners/What-is-Azure-SQL-3-of-61/player]
+
+> [!TIP]
+> The Azure portal includes a decision tree in the [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub) to help you **Find the right option** for your application architecture in Azure SQL. For an explanation of the decision tree and its choices, see [Azure SQL decision tree](azure-sql-decision-tree.md).
+
 
 ## Overview
 
@@ -107,6 +112,8 @@ Azure SQL Database offers the following deployment options:
 ## Comparison table
 
 Differences between Azure SQL Database, Azure SQL Managed Instance, and SQL Server on Azure VMs are listed in the following table, but *both SQL Database and SQL Managed Instance are optimized to reduce overall management costs to a minimum for provisioning and managing many databases.* Ongoing administration costs are reduced since you don't have to manage any virtual machines, operating system, or database software. You don't have to manage upgrades, high availability, or [backups](database/automated-backups-overview.md).
+
+The Azure portal includes a decision tree in the [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub) to help you **Find the right option** for your application architecture in Azure SQL. For an explanation of the decision tree and its choices, see [Azure SQL decision tree](azure-sql-decision-tree.md).
 
 In general, SQL Database and SQL Managed Instance can dramatically increase the number of databases managed by a single IT or development resource. [Elastic pools for SQL Database](database/elastic-pool-overview.md) also support SaaS multitenant application architectures with features including tenant isolation and the ability to scale to reduce costs by sharing resources across databases. [SQL Managed Instance](managed-instance/sql-managed-instance-paas-overview.md) provides support for instance-scoped features enabling easy migration of existing applications, as well as sharing resources among databases. Whereas [SQL Server on Azure VMs](virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) provide DBAs with an experience most similar to the on-premises environment they're familiar with.
 

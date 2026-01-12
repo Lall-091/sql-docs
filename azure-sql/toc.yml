@@ -20,6 +20,8 @@
     items:
     - name: Feature comparison
       href: database/features-comparison.md
+    - name: Azure SQL decision tree
+      href: azure-sql-decision-tree.md
     - name: Multi-model features
       href: multi-model-features.md
     - name: Temporal tables
