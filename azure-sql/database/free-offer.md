@@ -3,8 +3,8 @@ title: Deploy for Free
 description: Guidance on how to deploy the Azure SQL Database offer for up to 10 free databases.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: amapatil, mathoma
-ms.date: 08/25/2025
+ms.reviewer: ivujic, reneamoso, amapatil, mathoma
+ms.date: 01/02/2026
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: how-to
@@ -16,17 +16,81 @@ monikerRange: "=azuresql || =azuresql-db"
 > * [Azure SQL Database](free-offer.md?view=azuresql-db&preserve-view=true)
 > * [Azure SQL Managed Instance](../managed-instance/free-offer.md?view=azuresql-mi&preserve-view=true)
 
-Try Azure SQL Database at no cost with our free tier offer. Each Azure subscription allows you to create up to 10 General Purpose databases. 
+Try Azure SQL Database at no cost with our free tier offer. For each database, you get 100,000 vCore seconds, 32 GB of data, and 32 GB of backup storage free per month for the lifetime of your subscription. Each Azure subscription allows you to create up to 10 General Purpose databases. 
 
-For each database, you receive a monthly allowance of 100,000 vCore seconds of compute, 32 GB of data storage, and 32 GB of backup storage, free for the lifetime of your subscription.
+To get started and quickly create a new free Azure SQL Database, select the **Try for free** link on the [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
 
-To get started, look for the **Apply offer** banner on the [provisioning page for Azure SQL Database](https://portal.azure.com/#create/Microsoft.SQLDatabase), or select the **Try for free** link on the [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
-
-:::image type="content" source="media/free-offer/azure-sql-database-free-banner.png" alt-text="Screenshot from the Azure portal of the Free Offer banner." lightbox="media/free-offer/azure-sql-database-free-banner.png":::
+   :::image type="content" source="media/free-offer/show-options-create-sql-database.png" alt-text="Screenshot from the Azure portal showing the Azure SQL hub and the Try for free link in the Azure SQL Database pane." lightbox="media/free-offer/show-options-create-sql-database.png":::
 
 You know the offer has been applied when the **Cost summary** card on the right side of the page shows **Estimated Cost/Month** zero cost.
 
-:::image type="content" source="media/free-offer/cost-summary-card.png" alt-text="Screenshot from the Azure portal of the Free Offer Cost summary card. Included in the details are 'First 32 G B of storage free' and 'First 100,000 vCore seconds free'.":::
+:::image type="content" source="media/free-offer/cost-summary-card.png" alt-text="Screenshot from the Azure portal of the Free Offer Cost summary card.":::
+
+## Prerequisites
+
+To create a free Azure SQL Database, you need:
+
+- An Azure account.
+  - If you're evaluating Azure, consider the [Azure free account, with many services available free for 12 months](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
+  - While the [previous offer](free-sql-db-free-account-how-to-deploy.md) required an Azure Free subscription, this new offer is available regardless of your Azure subscription type.
+- An Azure subscription. There's a limit of 10 free offer databases per subscription.
+
+## Create a database
+
+Use the Azure portal to create the new free Azure SQL Database.
+
+To create a free offer database, follow these steps:
+
+1. Select the **Try for free** link on the [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub).
+   - You can also find the **Apply offer** banner on the [provisioning page for Azure SQL Database](https://portal.azure.com/#create/Microsoft.SQLDatabase), and proceed with the steps to [Create a single database in the serverless compute tier](single-database-create-quickstart.md?view=azuresql-db&preserve-view=true&tabs=azure-portal#create-a-single-database).
+    
+1. On the Create SQL Database page, you should see the Free offer banner.
+
+   :::image type="content" source="media/free-offer/create-sql-database-free-offer-advanced-configuration.png" alt-text="Screenshot from the Azure portal of the Free offer applied banner.":::
+
+1. On the **Basics** tab:
+    1. Under **Project details**:
+        - Select your **Subscription**. Your current subscription is already selected.
+        - An existing **Resource Group** is already selected. You can change this or create a new resource group.
+    1. Under **Database details**: 
+        - Use the automatically-created unique **Database name**, or provide a new name.
+        - An existing logical **Server** is already selected. You can change this or create a new logical server.
+    
+    That's all that's needed! The new database will be created with defaults, including the option to pause the database when the free limits are reached. This and other options can be changed in the future.
+
+1. Select **Review + create**.
+1. Review and select **Create**.
+
+## Query the database
+
+Once your database is created, you can use the **Query editor (preview)** in the Azure portal to connect to the database and query data. For more information, see [Query the database](/azure/azure-sql/database/single-database-create-quickstart?tabs=azure-portal#query-the-database).
+
+You can [connect to and query your database](connect-query-content-reference-guide.md) using different tools and languages:
+
+- [Connect and query using SQL Server Management Studio](connect-query-ssms.md)
+- The [mssql extension](https://aka.ms/mssql-marketplace) for [Visual Studio Code](https://code.visualstudio.com/docs)
+- [sqlcmd](/sql/tools/sqlcmd/sqlcmd-utility)
+- [Azure portal query editor for Azure SQL Database](query-editor.md)
+- Review many more [connect and query quickstarts and libraries](connect-query-content-reference-guide.md).
+
+## Monitor and track service usage
+
+You won't be charged for the Azure SQL Database, unless you exceed the free database amount and have selected to continue using for additional charges. To remain within the limit, use the Azure portal to track and monitor your free services usage.
+
+Enjoy Azure SQL Database free of charge with our offer that includes up to 10 General Purpose databases per subscription. Each database comes with a monthly allowance of 100,000 vCore seconds of compute, 32 GB of data storage, and 32 GB of backup storage. 
+
+You will not incur any charges unless you exceed these allowances and you opt to pay for usage beyond the free limits. To monitor vCore consumption, the Azure portal provides metrics to track: 
+
+1. On the database **Overview** tab, you see a **Free monthly vCore amount** entry:
+
+    :::image type="content" source="media/free-offer/free-monthly-vcore-amount-remaining.png" alt-text="Screenshot from the Azure portal of free monthly vCore seconds amount remaining.":::
+
+1. Select the **seconds remaining** amount. The **Metrics** chart launches where you can look at **Free amount remaining** or **Free amount consumed** metrics.
+
+### Tips on managing vCore seconds
+
+- Disconnect querying tools such as [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms), including the object explorer, when you're done using them. Leaving connections open can continue to consume credits by preventing auto-pause.
+- On the **Metrics** tab, [create an alert rule](/azure/azure-monitor/alerts/tutorial-metric-alert) at no cost. Use the **Free amount remaining** metric to send an alert when the amount is less than 10,000 vCore seconds (10% of the monthly limit), so you know when you're running out for the month.
 
 ## Monthly free limits
 
@@ -46,80 +110,9 @@ Regardless, the free amount renews for each free offer database at the start of 
 
 For more information, see the [Azure SQL Database free offer FAQ](free-offer-faq.yml).
 
-## Prerequisites
+### Offer limitations
 
-To create a free Azure SQL Database, you need:
-
-- An Azure account.
-  - If you're evaluating Azure, consider the [Azure free account, with many services available free for 12 months](https://azure.microsoft.com/pricing/purchase-options/azure-account?icid=azurefreeaccount).
-  - While the [previous offer](free-sql-db-free-account-how-to-deploy.md) required an Azure Free subscription, this new offer is available regardless of your Azure subscription type.
-- An Azure subscription. There's a limit of 10 free offer databases per subscription.
-
-## Create a database
-
-Use the Azure portal to create the new free Azure SQL Database.
-
-To create a free offer database, follow these steps:
-
-1. Go to [Azure SQL hub at aka.ms/azuresqlhub](https://aka.ms/azuresqlhub). 
-1. In the pane for **Azure SQL Database**, select **Show options**.
-1. In the **Azure SQL Database options** window, select **Create SQL Database**.
-
-   :::image type="content" source="media/free-offer/show-options-create-sql-database.png" alt-text="Screenshot from the Azure portal showing the Azure SQL hub, the Show options button, and the Create SQL Database button." lightbox="media/free-offer/show-options-create-sql-database.png":::
-
-1. On the **Basics** tab, look for the banner that says "Want to try Azure SQL Database for free?", select the **Apply offer** button.
-1. Under **Project details**, select your Subscription name.
-1. For **Resource group**, select **Create new**, enter `myFreeDBResourceGroup`, and select **OK**.
-1. For **Database name**, enter `myFreeDB`.
-1. For **Server**, select **Create new**, and fill out the **New server** form with the following values:
-   - **Server name**: Enter `myfreesqldbserver`, and add some characters for uniqueness. The name of the Azure SQL logical server must be lowercase.
-   - **Authentication method**: Select **Use both SQL and Microsoft Entra authentication**.
-   - **Server admin login**: Enter a username for the SQL authentication server admin.
-   - **Password**: Enter a password for the SQL authenticated server admin that meets complexity requirements, and enter it again in the **Confirm password** field.
-   - **Location**: Select a location from the dropdown list. 
-1. Select **OK**. Leave other options as default.
-1. Under **Compute + storage**, leave the existing default database as configured "Standard-series (Gen5), 2 vCores, 32-GB storage". You can adjust this setting later if needed.
-1. For the **Behavior when free limit reached** setting, you have two choices to determine what happens when the free monthly offer limits are exhausted for a free offer database.
-    :::image type="content" source="media/free-offer/behavior-when-free-offer-limit-reached.png" alt-text="Screenshot from the Azure portal showing the free Azure SQL Database offer options." lightbox="media/free-offer/behavior-when-free-offer-limit-reached.png":::
-    - If you choose **Auto-pause the database until next month** option, you'll not be charged for that month once the free limits are reached, however the database will become inaccessible for the remainder of the calendar month. Later, you can enable the **Continue using database for additional charges** setting in the **Compute + Storage** page of the SQL database.
-    - To maintain access to the database when limits are reached, which results in charges for any amount above the free offer vCore and storage size limits, select the **Continue using database for additional charges** option. You only pay for any usage over the free offer limits.
-    - You continue to get the free amount renewed at the beginning of each month.
-    > [!IMPORTANT]  
-    > Once you have chosen **Continue using database for additional charges**, it's not possible to go back to the free amount with auto-pause.
-1. Select **Next : Networking**. On the **Networking** tab, for **Firewall rules**, set **Allow Azure services and resources to access this server** set to **Yes**. Set **Add current client IP address** to **Yes**. Leave other options as default.
-1. Select **Next : Security**. Leave these options as defaults.
-1. Select **Next: Additional settings**. On the **Additional settings** tab, in the **Data source** section, for **Use existing data**, you have options to use an existing database:
-    - Choose **Sample** to use the sample `AdventureWorksLT` database.
-    - If you intend to populate with your own data, leave this set to **None**.
-1. Select **Review + create**. If you're starting with the free database offer, you should see a card with no charges on it.
-1. Review and select **Create**.
-
-## Query the database
-
-Once your database is created, you can use the **Query editor (preview)** in the Azure portal to connect to the database and query data. For more information, see [Query the database](/azure/azure-sql/database/single-database-create-quickstart?tabs=azure-portal#query-the-database).
-
-## Monitor and track service usage
-
-You won't be charged for the Azure SQL Database, unless you exceed the free database amount and have selected to continue using for additional charges. To remain within the limit, use the Azure portal to track and monitor your free services usage.
-
-Enjoy Azure SQL Database free of charge with our offer that includes up to 10 General Purpose databases per subscription. Each database comes with a monthly allowance of 100,000 vCore seconds of compute, 32 GB of data storage, and 32 GB of backup storage. 
-
-You will not incur any charges unless you exceed these allowances and you opt to pay for usage beyond the free limits. To monitor vCore consumption, the Azure portal provides metrics to track: 
-
-1. On the database **Overview** tab, you see a **Free monthly vCore amount** entry:
-
-    :::image type="content" source="media/free-offer/free-monthly-vcore-amount-remaining.png" alt-text="Screenshot from the Azure portal of free monthly vCore seconds amount remaining.":::
-
-1. Select the **seconds remaining** amount. The **Metrics** chart launches where you can look at **Free amount remaining** or **Free amount consumed** metrics.
-
-### Tips on managing vCore seconds
-
-1. Disconnect querying tools such as [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms), including the object explorer, when you're done using them. Leaving connections open can continue to consume credits by preventing auto-pause.
-1. On the **Metrics** tab, [create an alert rule](/azure/azure-monitor/alerts/tutorial-metric-alert) at no cost. Use the **Free amount remaining** metric to send an alert when the amount is less than 10,000 vCore seconds (10% of the monthly limit), so you know when you're running out for the month.
-
-## Offer limitations
-
-Compared to a normal General Purpose database, a free offer database has the following limitations.
+You can use the Azure portal, PowerShell, or Azure CLI to create a free offer database. Compared to a normal General Purpose database, a free offer database has the following limitations.
 
 - When the **Auto-pause the database until next month** option is enabled:
   - There is a maximum of 4 vCores and maximum database size of 32 GB.
@@ -132,28 +125,10 @@ Compared to a normal General Purpose database, a free offer database has the fol
 - The ability to restore or convert an existing database to the free offer database, or data sync with other databases, isn't available.
 - Elastic Jobs and DNS Alias aren't available for this free offer.
 - The free offer Azure SQL Database can't be a part of an [elastic pool](elastic-pool-overview.md) or [failover group](failover-group-sql-db.md).
-- You can use the Azure portal, PowerShell, or Azure CLI to create a free offer database.
 - Currently, the Microsoft Azure for Students Starter offer is incompatible with this Azure SQL Database free offer. Instead, consider the [Azure for College Students offer](https://azure.microsoft.com/pricing/offers/ms-azr-0170p/) or the [Azure Free offer](https://azure.microsoft.com/pricing/offers/ms-azr-0044p/). If desired, the **Continue using database for additional charges** option can deduct from the starting credits.
-- For more information, review the [Azure SQL Database free offer FAQ](free-offer-faq.yml).
-- Once a region is selected for a free database under a subscription, the same region applies to all free databases in that subscription, and cannot be changed. 
-- If the free offer banner doesn't appear in the Azure portal as expected, choose the desired logical **Server** in the dropdown list again.
-
-## Clean up resources
-
-When you're finished using these resources, or if you want to start over again with a new free database (limit 10 per subscription), you can delete the resource group you created, which also deletes the Azure SQL Database logical server and single database within it.
-
-To delete `myFreeDBResourceGroup` and all its resources using the Azure portal:
-
-1. In the Azure portal, search for and select **Resource groups**, and then select `myFreeDBResourceGroup` from the list.
-1. On the **Resource group** page, select **Delete resource group**.
-1. Under **Type the resource group name**, enter `myFreeDBResourceGroup`, and then select **Delete**.
+- When setting an **Advanced configuration**, once a region is selected for a free database under a subscription, the same region applies to all free databases in that subscription, and cannot be changed.
+- When setting an **Advanced configuration**, if the free offer banner doesn't appear in the Azure portal as expected, choose the desired logical **Server** in the dropdown list again.
 
 ## Related content
 
 - [Azure SQL Database free offer FAQ](free-offer-faq.yml)
-
-[Connect and query](connect-query-content-reference-guide.md) your database using different tools and languages:
-- [Connect and query using SQL Server Management Studio](connect-query-ssms.md)
-- The [mssql extension](https://aka.ms/mssql-marketplace) for [Visual Studio Code](https://code.visualstudio.com/docs)
-- [sqlcmd](/sql/tools/sqlcmd/sqlcmd-utility)
-- [Azure portal query editor for Azure SQL Database](query-editor.md)
