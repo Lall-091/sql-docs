@@ -3,7 +3,7 @@ title: ODBC DSN and connection string keywords
 description: How to connect using the ODBC driver. Find keywords for connection strings and DSNs, and connection attributes for SQLSetConnectAttr and SQLGetConnectAttr.
 author: David-Engel
 ms.author: davidengel
-ms.date: 09/08/2025
+ms.date: 01/09/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -29,6 +29,7 @@ The following table lists the available keywords and the attributes for each pla
 | [ClientCertificate](dsn-connection-string-attribute.md#clientcertificate) | | LMW |
 | [ClientKey](dsn-connection-string-attribute.md#clientkey) | | LMW |
 | [ColumnEncryption](dsn-connection-string-attribute.md#columnencryption---sql_copt_ss_column_encryption) | [SQL_COPT_SS_COLUMN_ENCRYPTION](dsn-connection-string-attribute.md#columnencryption---sql_copt_ss_column_encryption) | LMW |
+| [ConcatNullYieldsNull](#concatnullyieldsnull---sql_copt_ss_concat_null) (v18.6+) | [SQL_COPT_SS_CONCAT_NULL](#concatnullyieldsnull---sql_copt_ss_concat_null) | LMW |
 | [ConnectRetryCount](connection-resiliency.md) | [SQL_COPT_SS_CONNECT_RETRY_COUNT](connection-resiliency.md) | LMW |
 | [ConnectRetryInterval](connection-resiliency.md) | [SQL_COPT_SS_CONNECT_RETRY_INTERVAL](connection-resiliency.md) | LMW |
 | [Database](../../relational-databases/native-client/applications/using-connection-string-keywords-with-sql-server-native-client.md) | [SQL_ATTR_CURRENT_CATALOG](../../odbc/reference/syntax/sqlsetconnectattr-function.md) | LMW |
@@ -105,7 +106,6 @@ The following table lists the available keywords and the attributes for each pla
 | | [SQL_COPT_SS_CEKEYSTOREDATA](dsn-connection-string-attribute.md#sql_copt_ss_cekeystoredata) | LMW |
 | | [SQL_COPT_SS_CEKEYSTOREPROVIDER](dsn-connection-string-attribute.md#sql_copt_ss_cekeystoreprovider) | LMW |
 | | [SQL_COPT_SS_CLIENT_CONNECTION_ID](../../relational-databases/native-client-odbc-api/sqlgetconnectattr.md) | LMW |
-| | [SQL_COPT_SS_CONCAT_NULL](../../relational-databases/native-client-odbc-api/sqlsetconnectattr.md#sqlcoptssconcatnull) | LMW |
 | | [SQL_COPT_SS_CONNECTION_DEAD](../../relational-databases/native-client-odbc-api/sqlsetconnectattr.md#sqlcoptssconnectiondead) | LMW |
 | | [SQL_COPT_SS_DATACLASSIFICATION_VERSION](data-classification.md) (v17.4.2+) | LMW |
 | | [SQL_COPT_SS_ENLIST_IN_DTC](../../relational-databases/native-client-odbc-api/sqlsetconnectattr.md#sqlcoptssenlistindtc) | W |
@@ -185,6 +185,15 @@ Controls transparent column encryption (Always Encrypted). For more information,
 |Enabled|SQL_CE_ENABLED|Enables Always Encrypted.|
 |Disabled|SQL_CE_DISABLED|(Default) Disables Always Encrypted.|
 | |SQL_CE_RESULTSETONLY|Enables decryption only (results and return values).|
+
+### ConcatNullYieldsNull - SQL_COPT_SS_CONCAT_NULL
+
+Controls the use of ISO handling of NULL when concatenating strings. For more information, see [SET CONCAT_NULL_YIELDS_NULL (Transact-SQL)](../../t-sql/statements/set-concat-null-yields-null-transact-sql.md).
+
+| Keyword Value | Attribute Value | Description |
+|-|-|-|
+|Yes|SQL_CN_ON|(Default) NULL concatenation yields NULL.|
+|No|SQL_CN_OFF|NULL concatenation yields string.|
 
 ### Encrypt
 
