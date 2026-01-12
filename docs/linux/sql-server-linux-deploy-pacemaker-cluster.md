@@ -52,6 +52,13 @@ Use the following syntax to install the packages that make up the high availabil
    sudo subscription-manager list --available
    ```
 
+For RHEL 10, the list command is as follows
+```bash
+   sudo subscription-manager repos --list
+   ```
+
+From the list of available pools, note the pool ID for the high availability subscription.
+
 1. Run the following command to associate RHEL high availability with the subscription.
 
    ```bash
@@ -62,8 +69,21 @@ Use the following syntax to install the packages that make up the high availabil
 
 1. Enable the repository to use the high availability add-on.
 
+RHEL 7
    ```bash
    sudo subscription-manager repos --enable=rhel-ha-for-rhel-7-server-rpms
+   ```
+RHEL 8
+   ```bash
+   sudo subscription-manager repos --enable=rhel-8-for-x86_64-highavailability-rpms
+   ```
+RHEL 9
+   ```bash
+   sudo subscription-manager repos --enable=rhel-9-for-x86_64-highavailability-rpms
+   ```
+RHEL 10
+   ```bash
+   sudo subscription-manager repos --enable=rhel-10-for-x86_64-highavailability-rpms
    ```
 
 1. Install Pacemaker.
@@ -81,8 +101,16 @@ Install the High Availability pattern in YaST, or install it as part of the main
 
 ### [Ubuntu](#tab/ubuntu)
 
+Ubuntu 20.04
+
 ```bash
 sudo apt-get install pacemaker pcs fence-agents resource-agents
+```
+
+Ubuntu 22.04 and later versions
+
+```bash
+sudo apt-get install pacemaker pcs fence-agents resource-agents-base resource-agents-common resource-agents-extra
 ```
 
 ---
@@ -136,19 +164,26 @@ This section describes how to create and configure the cluster for each Linux di
 
 1. Authorize the nodes:
 
+RHEL 7
    ```bash
-   sudo pcs cluster auth <Node1 Node2 ... NodeN> -u hacluster
+    sudo pcs cluster auth <Node1 Node2 ... NodeN> -u hacluster -p <password for hacluster>
+    sudo pcs cluster setup --name <PMClusterName> <node1> <node2> <node3>
+    sudo pcs cluster start --all
+    sudo pcs cluster enable --all
    ```
 
    In this example, *NodeX* is the name of the node.
 
-1. Create the cluster:
-
-   ```bash
-   sudo pcs cluster setup --name <PMClusterName Nodelist> --start --all --enable
+RHEL 8 and later versions
+For RHEL 8 and later versions, you need to authenticate the nodes separately. Manually enter in the username and password for hacluster when prompted.
+```bash
+    sudo pcs host auth <node1> <node2> <node3>
+    sudo pcs cluster setup <PMClusterName> <node1> <node2> <node3>
+    sudo pcs cluster start --all
+    sudo pcs cluster enable --all
    ```
 
-   In this example, `PMClusterName` is the name you assign to the Pacemaker cluster, and `Nodelist` is the list of node names separated by a space.
+   In this example, `PMClusterName` is the name you assign to the Pacemaker cluster.
 
 ### [SUSE Linux Enterprise Server (SLES)](#tab/sles)
 
@@ -218,13 +253,44 @@ Configuring Ubuntu is similar to RHEL. However, there's one major difference: in
 
 1. Create the cluster. In this example, `PMClusterName` is the name you assign to the Pacemaker cluster, and `Nodelist` is the list of node names separated by a space.
 
+Ubuntu 20.04
+
    ```bash
    sudo pcs cluster setup --name <PMClusterName Nodelist> --start --all --enable
    ```
 
+Ubuntu 22.04 and later versions
+
+1. Authorize the nodes:
+   ```bash
+   sudo pcs cluster auth <Node1 Node2 ... NodeN> -u hacluster
+   ```
+In this example, NodeX is the name of the node.
+
+2. Create the cluster:
+```bash
+   sudo pcs cluster setup <PMClusterName Nodelist>
+   ```
+In this example, PMClusterName is the name you assign to the Pacemaker cluster, and Nodelist is the list of node names separated by a space.
+
+3. Start cluster on all nodes
+```bash
+   sudo pcs cluster setup <PMClusterName Nodelist>
+   ```
+
+4. Enable cluster to start on boot
+```bash
+sudo pcs cluster enable --all
+```
+
+5. Verify cluster status
+```bash
+sudo pcs status
+```
+
 ---
 
-## Install the SQL Server HA and SQL Server Agent packages
+## Install the SQL Server HA
 
 Use the following commands to install the SQL Server HA package and [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Agent, if they aren't installed already. If you install the HA package after installing [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], you must restart [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] for the change to take effect. These instructions assume that the repositories for the Microsoft packages are already set up, since [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] should be installed at this point.
 
@@ -235,21 +301,21 @@ Use the following commands to install the SQL Server HA package and [!INCLUDE [s
 ### [Red Hat Enterprise Linux (RHEL)](#tab/rhel)
 
 ```bash
-sudo yum install mssql-server-ha mssql-server-agent
+sudo yum install mssql-server-ha
 sudo systemctl restart mssql-server
 ```
 
 ### [SUSE Linux Enterprise Server (SLES)](#tab/sles)
 
 ```bash
-sudo zypper install mssql-server-ha mssql-server-agent
+sudo zypper install mssql-server-ha
 sudo systemctl restart mssql-server
 ```
 
 ### [Ubuntu](#tab/ubuntu)
 
 ```bash
-sudo apt-get install mssql-server-ha mssql-server-agent
+sudo apt-get install mssql-server-ha
 sudo systemctl restart mssql-server
 ```
 
