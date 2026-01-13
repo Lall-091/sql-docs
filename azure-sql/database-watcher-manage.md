@@ -5,7 +5,7 @@ description: Database watcher setup and configuration details
 author: lcwright
 ms.author: lancewright
 ms.reviewer: wiassaf, dfurman
-ms.date: 05/04/2025
+ms.date: 01/12/2026
 ms.service: azure-sql
 ms.subservice: monitoring
 ms.topic: how-to
@@ -141,7 +141,8 @@ In the Azure portal, you can add or remove targets, create or delete private end
 
 To enable database watcher monitoring for an Azure SQL database, elastic pool, or SQL managed instance, you need to add this resource as a SQL target.
 
-1. To add a target, on the **SQL targets** page, select **Add**.
+1. If there is a read-only [lock](/azure/azure-resource-manager/management/lock-resources) on the watcher, its resource group, or its subscription, remove the lock. You can add the lock again after SQL targets are added successfully.
+1. On the **SQL targets** page, select **Add**.
 1. Find the Azure SQL resource you want to monitor. Select the resource type and subscription, and then select the SQL target from the list of resources. The SQL target can be in any subscription within the same Microsoft Entra ID tenant as the watcher.
 1. To monitor the primary replica and a high availability [secondary replica](./database/read-scale-out.md) of a database, elastic pool, or SQL managed instance, add *two separate SQL targets* for the same resource, and check the **Read intent** box for *one of them*. Similarly, create two separate SQL targets for a geo-replica and its high availability secondary replica, if any.
     - Checking the **Read intent** box configures the SQL target for the high availability secondary replica only.
@@ -151,7 +152,10 @@ By default, a watcher uses Microsoft Entra authentication when connecting to SQL
 
 ### Remove SQL targets from a watcher
 
-To remove one or more targets, open the **SQL targets** page, select the targets you want to remove in the list, and select **Delete**. 
+To stop database watcher monitoring for a SQL target, remove the target from a watcher.
+
+1. If there is a delete or a read-only [lock](/azure/azure-resource-manager/management/lock-resources) on the watcher, its resource group, or its subscription, remove the lock. You can add the locks again after SQL targets are removed successfully.
+1. To remove one or more targets, open the **SQL targets** page, select the targets you want to remove in the list, and select **Delete**. 
 
 Removing a SQL target stops monitoring for an Azure SQL resource once the watcher is restarted, but does not delete the actual resource.
 
