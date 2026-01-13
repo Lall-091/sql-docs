@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 07/31/2024
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: error-reference
 ---
 # Handling errors
 

@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 10/13/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Download Microsoft JDBC Driver for SQL Server
 

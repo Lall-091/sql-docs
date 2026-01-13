@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 03/17/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Feature dependencies of the Microsoft JDBC Driver for SQL Server
 

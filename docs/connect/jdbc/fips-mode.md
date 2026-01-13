@@ -7,7 +7,7 @@ ms.reviewer: mikeray
 ms.date: 03/21/2021
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # FIPS mode
 

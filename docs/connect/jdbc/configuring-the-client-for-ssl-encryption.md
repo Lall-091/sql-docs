@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: 03/31/2021
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Configuring the client for encryption
 

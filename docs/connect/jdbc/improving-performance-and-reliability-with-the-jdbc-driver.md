@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 12/18/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: article
+ms.topic: concept-article
 ---
 
 # Improving performance and reliability (JDBC)

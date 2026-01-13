@@ -9292,6 +9292,8 @@ items:
         href: linux/sql-server-linux-availability-group-overview.md
       - name: Create and configure availability groups
         href: linux/sql-server-linux-create-availability-group.md
+      - name: Configure with custom high availability logic
+        href: linux/business-continuity/high-availability/configure-custom-logic.md
       - name: Configure machine key for contained AG
         href: linux/sql-server-linux-availability-group-prepare-machine-key.md
       - name: High availability

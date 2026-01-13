@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 10/24/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Connection resiliency (JDBC)
 
