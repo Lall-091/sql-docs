@@ -1,6 +1,6 @@
 ---
-author: LeeGWoods
-ms.author: leewoods
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 10/31/2022
 ms.service: sql
 ms.topic: include
