@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: 08/08/2022
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Understanding encryption support
 

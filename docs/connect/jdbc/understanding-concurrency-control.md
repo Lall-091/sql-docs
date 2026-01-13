@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: "12/08/2020"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Understanding concurrency control
 [!INCLUDE[Driver_JDBC_Download](../../includes/driver_jdbc_download.md)]

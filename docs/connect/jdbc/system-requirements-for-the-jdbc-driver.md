@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 03/17/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: limits-and-quotas
 ---
 # System requirements for the JDBC driver
 

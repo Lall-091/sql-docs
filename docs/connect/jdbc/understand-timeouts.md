@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 06/05/2023
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Understanding timeout properties in the JDBC driver

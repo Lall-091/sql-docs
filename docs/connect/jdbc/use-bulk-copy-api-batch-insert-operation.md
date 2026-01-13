@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 08/11/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: sfi-ropc-nochange
 ---
 
