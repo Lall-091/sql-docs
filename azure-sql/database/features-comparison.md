@@ -8,7 +8,7 @@ ms.reviewer: wiassaf, bonova, mathoma, danil, randolphwest
 ms.date: 06/16/2025
 ms.service: azure-sql
 ms.subservice: service-overview
-ms.topic: conceptual
+ms.topic: product-comparison
 ms.custom:
   - ignite-2025
 monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"

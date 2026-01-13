@@ -4,7 +4,7 @@ description: "Learn more about how ordered columnstore indexes can benefit query
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: nibruno, xiaoyul, randolphwest, dfurman
-ms.date: 01/06/2026
+ms.date: 01/12/2026
 ms.service: sql
 ms.subservice: performance
 ms.topic: article
@@ -39,7 +39,7 @@ When you create an ordered columnstore index by specifying the `ORDER` clause in
 
 ## Reduce segment overlap and improve query performance
 
-When you build an ordered columnstore index, the [!INCLUDE [ssDE](../../includes/ssde-md.md)] sorts the data on a best-effort basis. Depending on the available memory, the data size, the degree of parallelism, the index type (clustered vs. nonclustered), and the type of index build (offline vs. online), the order a column in a columnstore index might be full with no segment overlap, or partial with some segment overlap. When there are fewer overlapping segments, a query that can take advantage of column order runs faster.
+When you build an ordered columnstore index, the [!INCLUDE [ssDE](../../includes/ssde-md.md)] sorts the data on a best-effort basis. Depending on the available memory, the data size, the degree of parallelism, the index type (clustered vs. nonclustered), and the type of index build (offline vs. online), the order in a column in a columnstore index might be full with no segment overlap, or partial with some segment overlap. When there are fewer overlapping segments, a query that can take advantage of column order runs faster.
 
 > [!TIP]  
 > Even if the order in a column of a columnstore index is partial, segments can still be eliminated (skipped). A full order isn't required to gain performance benefits if a partial order avoids many segment overlaps.
@@ -61,6 +61,8 @@ When `MAXDOP` is greater than 1, each thread used for ordered columnstore index 
 You can create or rebuild ordered columnstore indexes online only in some SQL platforms and SQL Server versions. For more information, see [Feature summary for product releases](columnstore-indexes-what-s-new.md#feature-summary-for-product-releases).
 
 In SQL Server, online index operations aren't available in all editions. For more information, see [Editions and supported features of SQL Server 2025](../../sql-server/editions-and-components-of-sql-server-2025.md) and [Perform index operations online](perform-index-operations-online.md).
+
+For certain data types and encodings, the [sys.column_store_segments](../system-catalog-views/sys-column-store-segments-transact-sql.md) system view can help you find the number of segment overlaps. A [sample script](https://github.com/microsoft/sql-server-samples/blob/master/samples/features/columnstore/ordered-columnstore/order-quality.sql) based on this view determines the order quality for eligible columns of all columnstore indexes in the current database.
 
 ## Query performance
 

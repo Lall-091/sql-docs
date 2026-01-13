@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma, jackli
 ms.date: 06/13/2025
 ms.service: azure-sql-database
 ms.subservice: elastic-pools
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sqldbrb=1
 ---

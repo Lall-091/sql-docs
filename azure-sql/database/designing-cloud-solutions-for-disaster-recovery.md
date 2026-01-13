@@ -7,7 +7,7 @@ ms.reviewer: amamun, mathoma
 ms.date: 06/13/2025
 ms.service: azure-sql-database
 ms.subservice: development
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sqldbrb=1
 keywords:

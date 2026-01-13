@@ -8,7 +8,7 @@ ms.reviewer: dinethi, mathoma, randolphwest, strrodic
 ms.date: 09/25/2025
 ms.service: azure-sql
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
 ---
 # Long-term retention backups - Azure SQL Database and Azure SQL Managed Instance
@@ -111,7 +111,7 @@ When the original primary database recovers from an outage that caused the failo
 
 ## Configure long-term backup retention
 
-You can configure long-term backup retention using the Azure portal and PowerShell for Azure SQL Database and Azure SQL Managed Instance. To restore a database from the LTR storage, you can select a specific backup based on its timestamp. The database can be restored to any existing server or managed instance under the same subscription as the original database.
+You can configure long-term backup retention using the Azure portal and PowerShell for Azure SQL Database and Azure SQL Managed Instance. To restore a database from the LTR storage, you can select a specific backup based on its timestamp. The database can be restored to any existing server or managed instance **under the same subscription** as the original database. For a complete list of restore capabilities, limitations and features, see [Restore capabilities and features in Azure SQL Managed Instance](../managed-instance/automated-backups-overview.md#restore-capabilities-and-features).
 
 - [Manage Azure SQL Database long-term backup retention](long-term-backup-retention-configure.md?view=azuresql-db&preserve-view=true).
 - [Manage Azure SQL Managed Instance long-term backup retention](../managed-instance/long-term-backup-retention-configure.md?view=azuresql-mi&preserve-view=true).

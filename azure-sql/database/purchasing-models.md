@@ -8,7 +8,7 @@ ms.reviewer: mathoma
 ms.date: 08/07/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
-ms.topic: conceptual
+ms.topic: product-comparison
 ms.custom:
   - sqldbrb=1
   - azure-sql-split

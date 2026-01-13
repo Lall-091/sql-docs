@@ -7,7 +7,7 @@ ms.reviewer: mathoma
 ms.date: 03/25/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # What is a logical server in Azure SQL Database and Azure Synapse?

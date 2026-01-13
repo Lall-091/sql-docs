@@ -1,6 +1,6 @@
 ---
-author: nneugebauer
-ms.author: nneugebauer
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 12/12/2022
 ms.service: sql
 ms.topic: include

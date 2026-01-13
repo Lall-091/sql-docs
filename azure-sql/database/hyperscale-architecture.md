@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma, randolphwest
 ms.date: 04/27/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - build-2023
   - build-2023-dataai

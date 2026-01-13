@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 05/08/2025
 ms.service: azure-sql-database
 ms.subservice: replication
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sqldbrb=1
   - ignite-2024

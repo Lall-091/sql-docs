@@ -435,7 +435,8 @@ Consider the following limitations:
 
 - Database backups taken from instances configured with the [SQL Server 2022 update policy](update-policy.md#sql-server-2022-update-policy) can be restored to instances configured with either the **SQL Server 2022**, **SQL Server 2025**, or **Always-up-to-date** update policy. 
 - Database backups taken from instances configured with the [SQL Server 2025 update policy](update-policy.md#sql-server-2025-update-policy) can be restored to instances configured with either the **SQL Server 2025** or **Always-up-to-date** update policy, but not to instances configured with the **SQL Server 2022** update policy.
-- Database backups taken from instances configured with the **Always-up-to-date** update policy can only be restored to instances also configured with the **Always-up-to-date** update policy. 
+- Database backups taken from instances configured with the **Always-up-to-date** update policy can only be restored to instances also configured with the **Always-up-to-date** update policy.
+- LTR backups from instances can be restored to any existing server or managed instance **under the same subscription** as the original database. For a complete list of restore capabilities, limitations and features, see [Restore capabilities and features in Azure SQL Managed Instance](../managed-instance/automated-backups-overview.md#restore-capabilities-and-features).
 
 ## Related content
 

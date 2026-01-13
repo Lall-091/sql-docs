@@ -8,7 +8,7 @@ ms.reviewer: dinethi, mathoma, danil, randolphwest
 ms.date: 01/07/2026
 ms.service: azure-sql-database
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - azure-sql-split
 monikerRange: "=azuresql || =azuresql-db"

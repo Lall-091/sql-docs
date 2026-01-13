@@ -8,7 +8,7 @@ ms.reviewer: urosmil, scottkim, mathoma
 ms.date: 02/18/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2023
   - azure-sql-split

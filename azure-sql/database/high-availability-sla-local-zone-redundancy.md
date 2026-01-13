@@ -8,7 +8,7 @@ ms.reviewer: rsetlem, mathoma, randolphwest, peskount, mahyon
 ms.date: 10/21/2025
 ms.service: azure-sql-database
 ms.subservice: high-availability
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - azure-sql-split
   - ignite-2024

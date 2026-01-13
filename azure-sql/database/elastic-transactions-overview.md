@@ -8,7 +8,7 @@ ms.reviewer: scoriani, mathoma, randolphwest
 ms.date: 01/02/2026
 ms.service: azure-sql
 ms.subservice: scale-out
-ms.topic: article
+ms.topic: concept-article
 ms.custom:
   - sqldbrb=1
   - sfi-ropc-nochange

@@ -7,7 +7,7 @@ ms.reviewer: scoriani, mathoma
 ms.date: 06/13/2025
 ms.service: azure-sql-database
 ms.subservice: scale-out
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sqldbrb=1
 monikerRange: "=azuresql || =azuresql-db "

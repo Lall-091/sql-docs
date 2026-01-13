@@ -4,13 +4,13 @@ description: This article contains the release notes and supported features for 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh, vanto
-ms.date: 11/13/2025
+ms.date: 01/13/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: release-notes
 ms.custom:
   - linux-related-content
-  - ignite-2025
+  - build-2025
 ---
 # Release notes for SQL Server 2022 on Linux
 
@@ -49,31 +49,31 @@ Owing to a technical issue, the container tag for [!INCLUDE [ssSQL22](../include
 | Distribution | Package name | Package version | Download |
 | --- | --- | --- | --- |
 | **Red Hat Enterprise Linux** | | | |
-| RHEL 9 | Database Engine | 16.0.4225.2-2 | [Database Engine RPM package](https://packages.microsoft.com/rhel/9/mssql-server-2022/Packages/m/mssql-server-16.0.4225.2-2.x86_64.rpm) |
-| RHEL 9 | Extensibility | 16.0.4225.2-2 | [Extensibility RPM package](https://packages.microsoft.com/rhel/9/mssql-server-2022/Packages/m/mssql-server-extensibility-16.0.4225.2-2.x86_64.rpm) |
-| RHEL 9 | Full-Text Search | 16.0.4225.2-2 | [Full-Text Search RPM package](https://packages.microsoft.com/rhel/9/mssql-server-2022/Packages/m/mssql-server-fts-16.0.4225.2-2.x86_64.rpm) |
-| RHEL 9 | High Availability | 16.0.4225.2-2 | [High Availability RPM package](https://packages.microsoft.com/rhel/9/mssql-server-2022/Packages/m/mssql-server-ha-16.0.4225.2-2.x86_64.rpm) |
-| RHEL 9 | PolyBase | 16.0.4225.2-2 | [PolyBase RPM package](https://packages.microsoft.com/rhel/9/mssql-server-2022/Packages/m/mssql-server-polybase-16.0.4225.2-2.x86_64.rpm) |
+| RHEL 9 | Database Engine | 16.0.4230.2-7 | [Database Engine RPM package](https://packages.microsoft.com/rhel/9/mssql-server-2022/Packages/m/mssql-server-16.0.4230.2-7.x86_64.rpm) |
+| RHEL 9 | Extensibility | 16.0.4230.2-7 | [Extensibility RPM package](https://packages.microsoft.com/rhel/9/mssql-server-2022/Packages/m/mssql-server-extensibility-16.0.4230.2-7.x86_64.rpm) |
+| RHEL 9 | Full-Text Search | 16.0.4230.2-7 | [Full-Text Search RPM package](https://packages.microsoft.com/rhel/9/mssql-server-2022/Packages/m/mssql-server-fts-16.0.4230.2-7.x86_64.rpm) |
+| RHEL 9 | High Availability | 16.0.4230.2-7 | [High Availability RPM package](https://packages.microsoft.com/rhel/9/mssql-server-2022/Packages/m/mssql-server-ha-16.0.4230.2-7.x86_64.rpm) |
+| RHEL 9 | PolyBase | 16.0.4230.2-7 | [PolyBase RPM package](https://packages.microsoft.com/rhel/9/mssql-server-2022/Packages/m/mssql-server-polybase-16.0.4230.2-7.x86_64.rpm) |
 | RHEL 9 | SSIS | 16.0.4215.2-3 | [SSIS RPM package](https://packages.microsoft.com/rhel/9/mssql-server-2022/Packages/m/mssql-server-is-16.0.4215.2-3.x86_64.rpm) |
 | **SUSE Linux Enterprise Server** | | | |
-| SLES 15 | Database Engine | 16.0.4225.2-2 | [Database Engine RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-16.0.4225.2-2.x86_64.rpm) |
-| SLES 15 | Extensibility | 16.0.4225.2-2 | [Extensibility RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-extensibility-16.0.4225.2-2.x86_64.rpm) |
-| SLES 15 | Full-Text Search | 16.0.4225.2-2 | [Full-Text Search RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-fts-16.0.4225.2-2.x86_64.rpm) |
-| SLES 15 | High Availability | 16.0.4225.2-2 | [High Availability RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-ha-16.0.4225.2-2.x86_64.rpm) |
-| SLES 15 | PolyBase | 16.0.4225.2-2 | [PolyBase RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-polybase-16.0.4225.2-2.x86_64.rpm) |
+| SLES 15 | Database Engine | 16.0.4230.2-7 | [Database Engine RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-16.0.4230.2-7.x86_64.rpm) |
+| SLES 15 | Extensibility | 16.0.4230.2-7 | [Extensibility RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-extensibility-16.0.4230.2-7.x86_64.rpm) |
+| SLES 15 | Full-Text Search | 16.0.4230.2-7 | [Full-Text Search RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-fts-16.0.4230.2-7.x86_64.rpm) |
+| SLES 15 | High Availability | 16.0.4230.2-7 | [High Availability RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-ha-16.0.4230.2-7.x86_64.rpm) |
+| SLES 15 | PolyBase | 16.0.4230.2-7 | [PolyBase RPM package](https://packages.microsoft.com/sles/15/mssql-server-2022/Packages/m/mssql-server-polybase-16.0.4230.2-7.x86_64.rpm) |
 | **Ubuntu** | | | |
-| Ubuntu 22.04 | Database Engine | 16.0.4225.2-2 | [Database Engine Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server/mssql-server_16.0.4225.2-2_amd64.deb) |
-| Ubuntu 22.04 | Extensibility | 16.0.4225.2-2 | [Extensibility Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-extensibility/mssql-server-extensibility_16.0.4225.2-2_amd64.deb) |
-| Ubuntu 22.04 | Full-Text Search | 16.0.4225.2-2 | [Full-Text Search Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-fts/mssql-server-fts_16.0.4225.2-2_amd64.deb) |
-| Ubuntu 22.04 | High Availability | 16.0.4225.2-2 | [High Availability Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-ha/mssql-server-ha_16.0.4225.2-2_amd64.deb) |
-| Ubuntu 22.04 | PolyBase | 16.0.4225.2-2 | [PolyBase Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-polybase/mssql-server-polybase_16.0.4225.2-2_amd64.deb) |
+| Ubuntu 22.04 | Database Engine | 16.0.4230.2-7 | [Database Engine Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server/mssql-server_16.0.4230.2-7_amd64.deb) |
+| Ubuntu 22.04 | Extensibility | 16.0.4230.2-7 | [Extensibility Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-extensibility/mssql-server-extensibility_16.0.4230.2-7_amd64.deb) |
+| Ubuntu 22.04 | Full-Text Search | 16.0.4230.2-7 | [Full-Text Search Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-fts/mssql-server-fts_16.0.4230.2-7_amd64.deb) |
+| Ubuntu 22.04 | High Availability | 16.0.4230.2-7 | [High Availability Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-ha/mssql-server-ha_16.0.4230.2-7_amd64.deb) |
+| Ubuntu 22.04 | PolyBase | 16.0.4230.2-7 | [PolyBase Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-polybase/mssql-server-polybase_16.0.4230.2-7_amd64.deb) |
 | Ubuntu 22.04 | SSIS | 16.0.4215.2-3 | [SSIS Debian package](https://packages.microsoft.com/ubuntu/22.04/mssql-server-2022/pool/main/m/mssql-server-is/mssql-server-is_16.0.4215.2-3_amd64.deb) |
 
 <a id="cuinstall"></a>
 
 ## How to install updates
 
-When you configure the CU repository (`mssql-server-2022`), you get the latest CU of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] packages when you perform new installations. If you require Docker container images, see official images for [Microsoft SQL Server on Linux for Docker Engine](https://hub.docker.com/_/microsoft-mssql-server). For more information about repository configuration, see [Configure repositories for installing and upgrading SQL Server on Linux](sql-server-linux-change-repo.md).
+When you configure the CU repository (`mssql-server-2022`), you get the latest CU of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] packages when you perform new installations. If you require Docker container images, see official images for [Microsoft SQL Server on Linux for Docker Engine](https://hub.docker.com/r/microsoft/mssql-server). For more information about repository configuration, see [Configure repositories for installing and upgrading SQL Server 2025 on Linux](sql-server-linux-change-repo-2025.md).
 
 If you update existing [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] packages, run the appropriate update command for each package to get the latest CU. For specific update instructions for each package, see the following installation guides:
 

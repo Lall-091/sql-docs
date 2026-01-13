@@ -7,7 +7,7 @@ ms.reviewer: mathoma, rsetlem
 ms.date: 05/07/2024
 ms.service: azure-sql-database
 ms.subservice: high-availability
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: "=azuresql||=azuresql-db"
 ms.custom:
   - build-2024

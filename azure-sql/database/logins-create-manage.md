@@ -8,7 +8,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 06/30/2025
 ms.service: azure-sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 keywords:
   - "sql database security"
   - "database security management"

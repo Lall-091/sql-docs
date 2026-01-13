@@ -7,7 +7,7 @@ ms.reviewer: bgavrilovic, mathoma, drskwier, randolphwest
 ms.date: 01/02/2026
 ms.service: azure-sql-database
 ms.subservice: scale-out
-ms.topic: article
+ms.topic: how-to
 ms.custom:
   - sqldbrb=1
   - devx-track-azurepowershell

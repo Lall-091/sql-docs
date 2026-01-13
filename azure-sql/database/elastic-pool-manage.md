@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 04/04/2024
 ms.service: azure-sql-database
 ms.subservice: elastic-pools
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sqldbrb=1
   - devx-track-azurecli
