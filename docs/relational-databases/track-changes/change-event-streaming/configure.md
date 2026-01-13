@@ -551,7 +551,6 @@ The following limitations apply when using CES with Azure SQL Database:
 - A table can belong to only one streaming group. You can't stream the same table to multiple destinations.
 - You can only configure user tables for CES. CES doesn't support streaming system tables.
 - You can configure up to 4,096 stream groups. Each stream group can include up to 40,000 tables.
-- [Online index operations](../../indexes/perform-index-operations-online.md) are not supported
 - While CES is enabled on a table, you can't add or drop a primary key constraint on that table.
 
 - `ALTER TABLE SWITCH PARTITION` isn't supported on tables configured for CES.
@@ -563,6 +562,9 @@ The following limitations apply when using CES with Azure SQL Database:
   - In-memory OLTP (memory-optimized tables)
   - Graph tables
   - External tables
+
+> [!IMPORTANT]  
+> [Online index operations](../../indexes/perform-index-operations-online.md) can generate substantial amounts of transaction log records. CES must process significantly more data, which can result in increased event latency.
 
 ### Column-level limitations
 
