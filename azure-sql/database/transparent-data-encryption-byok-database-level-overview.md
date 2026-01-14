@@ -8,9 +8,10 @@ ms.reviewer: vanto, mathoma
 ms.date: 06/25/2025
 ms.service: azure-sql-database
 ms.subservice: security
-ms.topic: conceptual
-monikerRange: "= azuresql || = azuresql-db"
-ms.custom: sfi-image-nochange
+ms.topic: concept-article
+ms.custom:
+  - sfi-image-nochange
+monikerRange: "=azuresql || =azuresql-db"
 ---
 
 # Transparent data encryption (TDE) with customer-managed keys at the database level

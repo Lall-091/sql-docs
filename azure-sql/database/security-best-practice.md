@@ -8,7 +8,7 @@ ms.reviewer: wiassaf, mathoma, randolphwest
 ms.date: 06/13/2025
 ms.service: azure-sql
 ms.subservice: security
-ms.topic: article
+ms.topic: best-practice
 ms.custom:
   - sqldbrb=2
 monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"

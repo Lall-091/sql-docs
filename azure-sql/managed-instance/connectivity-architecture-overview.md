@@ -8,7 +8,7 @@ ms.reviewer: mathoma, bonova
 ms.date: 10/22/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - fasttrack-edit
   - build-2023

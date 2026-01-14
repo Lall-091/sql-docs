@@ -8,7 +8,7 @@ ms.reviewer: mathoma, danil
 ms.date: 12/06/2024
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sqldbrb=1
   - ignite-2023

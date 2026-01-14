@@ -8,7 +8,7 @@ ms.reviewer: vanto, mathoma
 ms.date: 10/22/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: connect
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - devx-track-azurepowershell
 ---
