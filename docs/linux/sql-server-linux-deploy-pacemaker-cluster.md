@@ -3,7 +3,8 @@ title: Deploy a Pacemaker Cluster for SQL Server on Linux
 description: Learn to deploy a Linux Pacemaker cluster for a SQL Server Always On availability group (AG) or failover cluster instance (FCI).
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/02/2026
+ms.reviewer: atsingh
+ms.date: 01/15/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -52,18 +53,44 @@ Use the following syntax to install the packages that make up the high availabil
    sudo subscription-manager list --available
    ```
 
-1. Run the following command to associate RHEL high availability with the subscription.
+   For **RHEL 10**, use the following command:
+
+   ```bash
+   sudo subscription-manager repos --list
+   ```
+
+   From the list of available pools, note the pool ID for the high availability subscription.
+
+1. Run the following command to associate RHEL high availability with the subscription. In this example, `<PoolId>` is the pool ID for the high availability subscription from the previous step.
 
    ```bash
    sudo subscription-manager attach --pool=<PoolID>
    ```
 
-   In this example, *PoolId* is the pool ID for the high availability subscription from the previous step.
-
 1. Enable the repository to use the high availability add-on.
+
+   **RHEL 7**
 
    ```bash
    sudo subscription-manager repos --enable=rhel-ha-for-rhel-7-server-rpms
+   ```
+
+   **RHEL 8**
+
+   ```bash
+   sudo subscription-manager repos --enable=rhel-8-for-x86_64-highavailability-rpms
+   ```
+
+   **RHEL 9**
+
+   ```bash
+   sudo subscription-manager repos --enable=rhel-9-for-x86_64-highavailability-rpms
+   ```
+
+   **RHEL 10**
+
+   ```bash
+   sudo subscription-manager repos --enable=rhel-10-for-x86_64-highavailability-rpms
    ```
 
 1. Install Pacemaker.
@@ -81,8 +108,16 @@ Install the High Availability pattern in YaST, or install it as part of the main
 
 ### [Ubuntu](#tab/ubuntu)
 
+**Ubuntu 20.04**
+
 ```bash
 sudo apt-get install pacemaker pcs fence-agents resource-agents
+```
+
+**Ubuntu 22.04** and later versions
+
+```bash
+sudo apt-get install pacemaker pcs fence-agents resource-agents-base resource-agents-common resource-agents-extra
 ```
 
 ---
@@ -97,7 +132,7 @@ Pacemaker uses a user named `hacluster` that you create on the distribution. On 
    sudo passwd hacluster
    ```
 
-1. On each node that will be part of the Pacemaker cluster, enable and start the `pcsd` service with the following commands (RHEL and Ubuntu):
+1. On each node that will be part of the Pacemaker cluster, enable and start the `pcsd` service with the following commands (RHEL and Ubuntu).
 
    ```bash
    sudo systemctl enable pcsd
@@ -116,7 +151,7 @@ Pacemaker uses a user named `hacluster` that you create on the distribution. On 
    sudo systemctl start pacemaker
    ```
 
-   On Ubuntu, you see an error:
+   On Ubuntu, you see the following error.
 
    ```output
    pacemaker Default-Start contains no runlevels, aborting.
@@ -134,21 +169,55 @@ This section describes how to create and configure the cluster for each Linux di
 
 ### [Red Hat Enterprise Linux (RHEL)](#tab/rhel)
 
-1. Authorize the nodes:
+1. Authorize the nodes. In these examples, `<NodeX>` is the name of each node.
+
+   **RHEL 7**
+
+   Replace `<password>` with the password for `hacluster`.
 
    ```bash
-   sudo pcs cluster auth <Node1 Node2 ... NodeN> -u hacluster
+   sudo pcs cluster auth <Node1 Node2 ... NodeN> -u hacluster -p <password>
    ```
 
-   In this example, *NodeX* is the name of the node.
+   **RHEL 8** and later versions
 
-1. Create the cluster:
+   Manually enter the username and password for `hacluster` when prompted.
 
    ```bash
-   sudo pcs cluster setup --name <PMClusterName Nodelist> --start --all --enable
+   sudo pcs host auth <Node1> <Node2> <Node3>
    ```
 
-   In this example, `PMClusterName` is the name you assign to the Pacemaker cluster, and `Nodelist` is the list of node names separated by a space.
+1. Create the cluster. In this example, `PMClusterName` is the name you assign to the Pacemaker cluster.
+
+   **RHEL 7**
+
+   ```bash
+   sudo pcs cluster setup --name <PMClusterName> <Node1> <Node2> <Node3>
+   ```
+
+   **RHEL 8** and later versions
+
+   ```bash
+   sudo pcs cluster setup <PMClusterName> <Node1> <Node2> <Node3>
+   ```
+
+1. Start the cluster on all nodes.
+
+   ```bash
+   sudo pcs cluster start --all
+   ```
+
+1. Enable the cluster to start when the computer starts.
+
+   ```bash
+   sudo pcs cluster enable --all
+   ```
+
+1. Verify the cluster status.
+
+   ```bash
+   sudo pcs status
+   ```
 
 ### [SUSE Linux Enterprise Server (SLES)](#tab/sles)
 
@@ -168,13 +237,13 @@ The process for creating a Pacemaker cluster is different on SLES than it is on 
 
 1. Finally, you're prompted to configure an IP address for administration. This IP address is optional, but functions similar to the IP address for a Windows Server failover cluster (WSFC). It creates an IP address in the cluster to be used for connecting to it via HA Web Konsole (HAWK). This configuration is also optional.
 
-1. Ensure that the cluster is up and running by issuing:
+1. Ensure that the cluster is up and running.
 
    ```bash
    sudo crm status
    ```
 
-1. Change the `hacluster` password with:
+1. Change the `hacluster` password.
 
    ```bash
    sudo passwd hacluster
@@ -184,7 +253,7 @@ The process for creating a Pacemaker cluster is different on SLES than it is on 
 
    :::image type="content" source="media/sql-server-linux-deploy-pacemaker-cluster/image2.png" alt-text="Screenshot of hacluster.":::
 
-1. On another SLES server that will act as a node of the cluster, run:
+1. On another SLES server that will act as a node of the cluster, run the following command:
 
    ```bash
    sudo ha-cluster-join
@@ -192,13 +261,13 @@ The process for creating a Pacemaker cluster is different on SLES than it is on 
 
 1. When prompted, enter the name or IP address of the server that you configured as the first node of the cluster in the previous steps. The server is added as a node to the existing cluster.
 
-1. Verify the node was added:
+1. Verify the node was added.
 
    ```bash
    sudo crm status
    ```
 
-1. Change the `hacluster` password:
+1. Change the `hacluster` password.
 
    ```bash
    sudo passwd hacluster
@@ -208,9 +277,9 @@ The process for creating a Pacemaker cluster is different on SLES than it is on 
 
 ### [Ubuntu](#tab/ubuntu)
 
-Configuring Ubuntu is similar to RHEL. However, there's one major difference: installing the Pacemaker packages creates a base configuration for the cluster, and enables and starts `pcsd`. If you try to configure the Pacemaker cluster by following the RHEL instructions exactly, you get an error. To fix this problem, perform the following steps:
+Configuring Ubuntu is similar to RHEL. However, there's one major difference: installing the Pacemaker packages creates a base configuration for the cluster, and enables and starts `pcsd`. If you try to configure the Pacemaker cluster by following the RHEL instructions exactly, you get an error. To fix this problem, perform the following steps.
 
-1. Remove the default Pacemaker configuration from each node:
+1. Remove the default Pacemaker configuration from each node.
 
    ```bash
    sudo pcs cluster destroy
@@ -218,13 +287,47 @@ Configuring Ubuntu is similar to RHEL. However, there's one major difference: in
 
 1. Create the cluster. In this example, `PMClusterName` is the name you assign to the Pacemaker cluster, and `Nodelist` is the list of node names separated by a space.
 
+   **Ubuntu 20.04**
+
    ```bash
    sudo pcs cluster setup --name <PMClusterName Nodelist> --start --all --enable
    ```
 
+   **Ubuntu 22.04** and later versions
+
+1. Authorize the nodes. In this example, `NodeX` is the name of the node.
+
+   ```bash
+   sudo pcs cluster auth <Node1 Node2 ... NodeN> -u hacluster
+   ```
+
+1. Create the cluster. In this example, `PMClusterName` is the name you assign to the Pacemaker cluster, and `Nodelist` is the list of node names separated by a space.
+
+   ```bash
+   sudo pcs cluster setup <PMClusterName Nodelist>
+   ```
+
+1. Start the cluster on all nodes.
+
+   ```bash
+   sudo pcs cluster setup <PMClusterName Nodelist>
+   ```
+
+1. Enable the cluster to start when the computer starts.
+
+   ```bash
+   sudo pcs cluster enable --all
+   ```
+
+1. Verify the cluster status.
+
+   ```bash
+   sudo pcs status
+   ```
+
 ---
 
-## Install the SQL Server HA and SQL Server Agent packages
+## Install the SQL Server HA
 
 Use the following commands to install the SQL Server HA package and [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] Agent, if they aren't installed already. If you install the HA package after installing [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], you must restart [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] for the change to take effect. These instructions assume that the repositories for the Microsoft packages are already set up, since [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] should be installed at this point.
 
@@ -235,21 +338,21 @@ Use the following commands to install the SQL Server HA package and [!INCLUDE [s
 ### [Red Hat Enterprise Linux (RHEL)](#tab/rhel)
 
 ```bash
-sudo yum install mssql-server-ha mssql-server-agent
+sudo yum install mssql-server-ha
 sudo systemctl restart mssql-server
 ```
 
 ### [SUSE Linux Enterprise Server (SLES)](#tab/sles)
 
 ```bash
-sudo zypper install mssql-server-ha mssql-server-agent
+sudo zypper install mssql-server-ha
 sudo systemctl restart mssql-server
 ```
 
 ### [Ubuntu](#tab/ubuntu)
 
 ```bash
-sudo apt-get install mssql-server-ha mssql-server-agent
+sudo apt-get install mssql-server-ha
 sudo systemctl restart mssql-server
 ```
 
@@ -258,6 +361,7 @@ sudo systemctl restart mssql-server
 ## Next step
 
 In this tutorial, you learned how to deploy a Pacemaker cluster for SQL Server on Linux. You learned how to:
+
 > [!div class="checklist"]
 > - Install the high availability add-on and install Pacemaker.
 > - Prepare the nodes for Pacemaker (RHEL and Ubuntu only).
