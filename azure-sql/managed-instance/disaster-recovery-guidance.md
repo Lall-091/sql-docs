@@ -7,10 +7,10 @@ ms.reviewer: mathoma, rsetlem
 ms.date: 06/25/2024
 ms.service: azure-sql-managed-instance
 ms.subservice: high-availability
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - build-2024
-monikerRange: "=azuresql||=azuresql-mi"
+monikerRange: "=azuresql || =azuresql-mi"
 ---
 # Disaster recovery guidance - Azure SQL Managed Instance
 [!INCLUDE [appliesto-sqldb](../includes/appliesto-sqlmi.md)]

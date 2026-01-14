@@ -7,7 +7,7 @@ ms.reviewer: mathoma
 ms.date: 09/17/2024
 ms.service: azure-sql-database
 ms.subservice: deployment-configuration
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - sqldbrb=1
   - devx-track-azurecli

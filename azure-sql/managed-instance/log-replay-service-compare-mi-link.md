@@ -8,7 +8,7 @@ ms.reviewer: mathoma, randolphwest
 ms.date: 11/18/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: migration
-ms.topic: conceptual
+ms.topic: product-comparison
 ms.custom:
   - ignite-2025
 monikerRange: "=azuresql || =azuresql-mi"

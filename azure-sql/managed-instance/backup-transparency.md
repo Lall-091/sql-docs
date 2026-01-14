@@ -7,7 +7,7 @@ ms.reviewer: mathoma
 ms.date: 11/16/2022
 ms.service: azure-sql-managed-instance
 ms.subservice: backup-restore
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Backup transparency in Azure SQL Managed Instance
 

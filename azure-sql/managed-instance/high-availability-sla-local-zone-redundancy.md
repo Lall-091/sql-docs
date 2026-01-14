@@ -8,7 +8,7 @@ ms.reviewer: mathoma, randolphwest
 ms.date: 07/07/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: high-availability
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - azure-sql-split
   - ignite-2025

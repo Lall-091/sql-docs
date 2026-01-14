@@ -7,7 +7,7 @@ ms.reviewer: moslake, mathoma, dfurman
 ms.date: 12/16/2025
 ms.service: azure-sql-database
 ms.subservice: service-overview
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - "test sqldbrb=1"
   - "devx-track-azurecli"

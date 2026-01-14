@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 05/05/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: high-availability
-ms.topic: conceptual
+ms.topic: best-practice
 ---
 # Performing disaster recovery drills - Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
