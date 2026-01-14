@@ -4,7 +4,7 @@ description: This article contains the known issues for SQL Server running on Li
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh, vanto
-ms.date: 11/18/2025
+ms.date: 01/15/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: troubleshooting-known-issue
@@ -92,7 +92,7 @@ To work around this issue, do one of the following options:
 Although TLS 1.3 is supported on [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] for Windows, you must use TLS 1.2 on Linux.
 
 > [!NOTE]  
-> TLS 1.3 is supported for [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] on Ubuntu 22.04, Ubuntu 24.04 (in preview), and RHEL 9. TLS 1.3 is enabled by default.
+> TLS 1.3 is supported for [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] on Ubuntu 22.04, Ubuntu 24.04, RHEL 9, and RHEL 10. TLS 1.3 is enabled by default.
 
 ### Network File System (NFS)
 

@@ -44,10 +44,10 @@ This 6-minute video provides an introduction into running SQL Server on containe
 
 To pull and run the Docker container images for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], follow the prerequisites and steps in the following quickstart:
 
-- [[!INCLUDE [sssql25-md](../includes/sssql25-md.md)]](quickstart-install-connect-docker.md?view=sql-server-ver17&preserve-view=true)
-- [[!INCLUDE [sssql22-md](../includes/sssql22-md.md)]](quickstart-install-connect-docker.md?view=sql-server-ver16&preserve-view=true)
-- [[!INCLUDE [sssql19-md](../includes/sssql19-md.md)]](quickstart-install-connect-docker.md?view=sql-server-ver15&preserve-view=true)
-- [[!INCLUDE [sssql17-md](../includes/sssql17-md.md)]](quickstart-install-connect-docker.md?view=sql-server-2017&preserve-view=true)
+- [SQL Server 2025](quickstart-install-connect-docker.md?view=sql-server-ver17&preserve-view=true)
+- [SQL Server 2022](quickstart-install-connect-docker.md?view=sql-server-ver16&preserve-view=true)
+- [SQL Server 2019](quickstart-install-connect-docker.md?view=sql-server-ver15&preserve-view=true)
+- [SQL Server 2017](quickstart-install-connect-docker.md?view=sql-server-2017&preserve-view=true)
 
 This configuration article provides additional usage scenarios in the following sections.
 
@@ -385,8 +385,6 @@ docker run --name sqlenterprise ^
 
 > [!IMPORTANT]  
 > By passing the value `Y` to the environment variable `ACCEPT_EULA` and an edition value to `MSSQL_PID`, you express that you have a valid and existing license for the edition and version of SQL Server that you intend to use. You also agree that your use of SQL Server software running in a container image will be governed by the terms of your SQL Server license.
-
-[!INCLUDE [editions-sql-server-developer](includes/editions-sql-server-developer.md)]
 
 For a full list of possible values for `MSSQL_PID`, see [Configure SQL Server settings with environment variables on Linux](sql-server-linux-configure-environment-variables.md).
 

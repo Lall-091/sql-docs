@@ -164,8 +164,6 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" \
 -d mcr.microsoft.com/mssql/server:2022-latest
 ```
 
-[!INCLUDE [editions-sql-server-developer](includes/editions-sql-server-developer.md)]
-
 > [!NOTE]  
 > [!INCLUDE [password-complexity](includes/password-complexity.md)]
 
@@ -182,8 +180,6 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<password>" \
 -v sql_volume:/var/opt/mssql/ \
 -d mcr.microsoft.com/mssql/server:2022-latest
 ```
-
-[!INCLUDE [editions-sql-server-developer](includes/editions-sql-server-developer.md)]
 
 Even if you run the `wsl --terminate` command, you don't lose the data. When you start up WSL again and run the `docker run` command to deploy using the `sql_volume` volume, it still has all the data intact.
 
