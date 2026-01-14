@@ -16,7 +16,7 @@ monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-20
 [!INCLUDE [SQL Server Azure SQL Database](../../includes/applies-to-version/sql-asdb.md)]
 
 > [!NOTE]  
-> In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], the process for reverting word breakers to previous versions has changed. For more information, see [Change the Full-Text Search word breaker and filter in SQL Server 2025](change-the-word-breaker-used-for-us-english-and-uk-english.md#switch-from-version-2-to-version-1-component).
+> In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], the process for reverting word breakers to previous versions has changed. For more information, see [Change the Full-Text Search word breaker and filter in SQL Server 2025](change-the-word-breaker-used-for-us-english-and-uk-english.md#switch-from-version-2-to-version-1-components).
 
 [!INCLUDE [ssnoversion](../../includes/ssnoversion-md.md)] installs and enables a version of the word breakers and stemmers for all languages supported by Full-Text Search, except for Korean. This article describes how to switch from this version of these components to the previous version, or to switch back from the previous version to the new version.
 
