@@ -21,6 +21,9 @@ helpviewer_keywords:
 > [!NOTE]
 > The Report Server web portal shows all times it displays in the client's time zone regardless of the Report Server's clock settings.
 
+> [!NOTE]
+> When a Power BI report that uses the PostgreSQL timestamp data type is refreshed in Power BI Report Server, the time values are converted to UTC rather than the local server or client time.
+
 ## Change the time zone (native mode)  
  If you change the time zone on a computer hosting a report server, you must restart the Report Server service in order for the time zone change to take effect.  
   
