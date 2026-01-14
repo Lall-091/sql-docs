@@ -7,7 +7,7 @@ ms.reviewer: sashan, moslake, mathoma, dfurman, srinia
 ms.date: 12/12/2025
 ms.service: azure-sql-database
 ms.subservice: performance
-ms.topic: article
+ms.topic: concept-article
 ms.custom:
   - azure-sql-split
   - sfi-image-nochange

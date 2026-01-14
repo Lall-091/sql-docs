@@ -5,10 +5,10 @@ description: Breaking changes to database engine features in SQL Server 2025.
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: randolphwest, mathoma
-ms.date: 01/08/2026
+ms.date: 01/12/2026
 ms.service: sql
 ms.subservice: release-landing
-ms.topic: concept-article
+ms.topic: troubleshooting-general
 ms.custom:
   - ignite-2025
 helpviewer_keywords:
@@ -117,7 +117,7 @@ For information about how to connect securely to [!INCLUDE [sssql25-md](../inclu
 
 ## Full-Text queries and populations fail after upgrade
 
-[!INCLUDE [sssql25-md](../includes/sssql25-md.md)] removes all legacy word breaker and filter binaries used by [Full-Text Search](../relational-databases/search/full-text-search.md). These components are rebuilt with a modern toolset and offer expanded support for more languages and document types. Existing indexes after upgrade are designated with `index_version = 1` as per [sys.fulltext_indexes](../relational-databases/system-catalog-views/sys-fulltext-indexes-transact-sql.md). Newly created indexes are version 2 and use the new components, unless you specify otherwise by using the [FULLTEXT_INDEX_VERSION](../t-sql/statements/alter-database-scoped-configuration-transact-sql.md#fulltext_index_version) database scoped configuration.
+[!INCLUDE [sssql25-md](../includes/sssql25-md.md)] removes all legacy word breaker and filter binaries used by [Full-Text Search](../relational-databases/search/full-text-search.md). These components are rebuilt with a modern toolset and offer expanded support for more languages and document types. For more information, see [Behavior changes in Full-Text Search](../relational-databases/search/behavior-changes-full-text-search.md). Existing indexes after upgrade are designated with `index_version = 1` as per [sys.fulltext_indexes](../relational-databases/system-catalog-views/sys-fulltext-indexes-transact-sql.md). Newly created indexes are version 2 and use the new components, unless you specify otherwise by using the [FULLTEXT_INDEX_VERSION](../t-sql/statements/alter-database-scoped-configuration-transact-sql.md#fulltext_index_version) database scoped configuration.
 
 Any Full-Text query on a version 1 index fails to find the word breaker binaries on disk immediately after upgrade:
 
@@ -160,7 +160,7 @@ ALTER DATABASE SCOPED CONFIGURATION
     SET FULLTEXT_INDEX_VERSION = 1;
 ```
 
-Next, copy the legacy word breaker and filter binaries from an older instance to the target instance's `binn` folder.
+Next, copy the legacy word breaker and filter binaries from an older instance to the target instance's `Binn` folder.
 
 ## Related content
 

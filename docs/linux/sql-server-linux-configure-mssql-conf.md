@@ -3,7 +3,7 @@ title: Configure SQL Server Settings on Linux
 description: This article describes how to use the mssql-conf tool to configure SQL Server settings on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/02/2026
+ms.date: 01/13/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: install-set-up-deploy
@@ -33,8 +33,8 @@ ms.custom:
 | [Collation](#collation) | Set a new collation for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. |
 | [Customer feedback](#customerfeedback) | Choose whether or not [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] sends feedback to Microsoft. |
 | [Database Mail Profile](#dbmail) | Set the default database mail profile for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. |
-| [Default data directory](#datadir) | Change the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database data files (.mdf). |
-| [Default log directory](#datadir) | Changes the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database log (.ldf) files. |
+| [Default data directory](#datadir) | Change the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database data files (`.mdf`). |
+| [Default log directory](#datadir) | Changes the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database log files (`.ldf`). |
 | [Default master database directory](#masterdatabasedir) | Changes the default directory for the `master` database and log files. |
 | [Default master database file name](#masterdatabasename) | Changes the name of `master` database files. |
 | [Default dump directory](#dumpdir) | Change the default directory for new memory dumps and other troubleshooting files. |
@@ -63,8 +63,8 @@ ms.custom:
 | [Collation](#collation) | Set a new collation for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. |
 | [Customer feedback](#customerfeedback) | Choose whether or not [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] sends feedback to Microsoft. |
 | [Database Mail Profile](#dbmail) | Set the default database mail profile for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. |
-| [Default data directory](#datadir) | Change the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database data files (.mdf). |
-| [Default log directory](#datadir) | Changes the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database log (.ldf) files. |
+| [Default data directory](#datadir) | Change the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database data files (`.mdf`). |
+| [Default log directory](#datadir) | Changes the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database log files (`.ldf`). |
 | [Default master database file directory](#masterdatabasedir) | Changes the default directory for the `master` database files on existing SQL installation. |
 | [Default master database file name](#masterdatabasename) | Changes the name of `master` database files. |
 | [Default dump directory](#dumpdir) | Change the default directory for new memory dumps and other troubleshooting files. |
@@ -96,8 +96,8 @@ ms.custom:
 | [Collation](#collation) | Set a new collation for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. |
 | [Customer feedback](#customerfeedback) | Choose whether or not [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] sends feedback to Microsoft. |
 | [Database Mail Profile](#dbmail) | Set the default database mail profile for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. |
-| [Default data directory](#datadir) | Change the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database data files (.mdf). |
-| [Default log directory](#datadir) | Changes the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database log (.ldf) files. |
+| [Default data directory](#datadir) | Change the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database data files (`.mdf`). |
+| [Default log directory](#datadir) | Changes the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database log files (`.ldf`). |
 | [Default master database file directory](#masterdatabasedir) | Changes the default directory for the `master` database files on existing SQL installation. |
 | [Default master database file name](#masterdatabasename) | Changes the name of `master` database files. |
 | [Default dump directory](#dumpdir) | Change the default directory for new memory dumps and other troubleshooting files. |
@@ -132,8 +132,8 @@ ms.custom:
 | [Custom password policy](#custom-password-policies) | Password policies enforce complexity, expiration, and password changes. |
 | [Customer feedback](#customerfeedback) | Choose whether or not [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] sends feedback to Microsoft. |
 | [Database Mail Profile](#dbmail) | Set the default database mail profile for [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on Linux. |
-| [Default data directory](#datadir) | Change the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database data files (.mdf). |
-| [Default log directory](#datadir) | Changes the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database log (.ldf) files. |
+| [Default data directory](#datadir) | Change the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database data files (`.mdf`). |
+| [Default log directory](#datadir) | Changes the default directory for new [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] database log files (`.ldf`). |
 | [Default master database file directory](#masterdatabasedir) | Changes the default directory for the `master` database files on existing SQL installation. |
 | [Default master database file name](#masterdatabasename) | Changes the name of `master` database files. |
 | [Default dump directory](#dumpdir) | Change the default directory for new memory dumps and other troubleshooting files. |
@@ -408,7 +408,7 @@ The `filelocation.defaultdatadir` and `filelocation.defaultlogdir` settings chan
    sudo systemctl restart mssql-server
    ```
 
-1. Now all the database files for the new databases created are stored in this new location. If you would like to change the location of the log (.ldf) files of the new databases, you can use the following `set` command:
+1. Now all the database files for the new databases created are stored in this new location. If you would like to change the location of the transaction log files (`.ldf`) of the new databases, you can use the following `set` command:
 
    ```bash
    sudo /opt/mssql/bin/mssql-conf set filelocation.defaultlogdir /tmp/log
@@ -910,6 +910,7 @@ The following options configure TLS for an instance of [!INCLUDE [ssnoversion-md
 | Option | Description |
 | --- | --- |
 | `network.forceencryption` | If 1, then [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] forces all connections to be encrypted. By default, this option is 0. |
+| `network.forcestrict` | If 1, then [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] enforces [strict encryption](../relational-databases/security/networking/tds-8.md#strict-connection-encryption) on all endpoints. By default, this option is 0.<br /><br />**Applies to**: [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and later versions. |
 | `network.tlscert` | The absolute path to the certificate file that [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] uses for TLS. Example: `/etc/ssl/certs/mssql.pem` The certificate file must be accessible by the mssql account. Microsoft recommends restricting access to the file using `chown mssql:mssql <file>; chmod 400 <file>`. |
 | `network.tlskey` | The absolute path to the private key file that [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] uses for TLS. Example: `/etc/ssl/private/mssql.key` The certificate file must be accessible by the mssql account. Microsoft recommends restricting access to the file using `chown mssql:mssql <file>; chmod 400 <file>`. |
 | `network.tlsprotocols` | A comma-separated list of which TLS protocols are allowed by [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]. [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] always attempts to negotiate the strongest allowed protocol. If a client doesn't support any allowed protocol, [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] rejects the connection attempt. For compatibility, all supported protocols are allowed by default (1.2, 1.1, 1.0). If your clients support TLS 1.2, Microsoft recommends allowing only TLS 1.2. |

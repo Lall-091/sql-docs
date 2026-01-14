@@ -6,11 +6,12 @@ ms.author: jroth
 ms.date: 04/30/2018
 ms.service: azure-vm-sql-server
 ms.subservice: security
-ms.devlang: na
-tags: azure-service-management
+ms.topic: include
 ms.custom:
   - include file
   - sfi-image-nochange
+ms.devlang: na
+tags: azure-service-management
 ---
 ## Prepare for Azure Key Vault (AKV) Integration
 To use Azure Key Vault Integration to configure your SQL Server VM, there are several prerequisites: 

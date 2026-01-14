@@ -1,3 +1,10 @@
+---
+author: dbradish-microsoft
+ms.author: dbradish
+ms.date: 01/13/2026
+ms.topic: include
+---
+
 For this script, use Azure CLI locally as it takes too long to run in Cloud Shell. 
 
 ### Sign in to Azure

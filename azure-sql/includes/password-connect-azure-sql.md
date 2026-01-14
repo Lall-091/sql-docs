@@ -1,3 +1,12 @@
+---
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: rotabor, alexwolf
+ms.date: 01/13/2026
+ms.service: azure-sql-database
+ms.topic: include
+---
+
 No additional steps are required to connect the App Service to Azure SQL Database using SQL Authentication. The connection string you configured in the `appsettings.json` file includes the necessary credentials to authenticate.
 
 > [!WARNING]

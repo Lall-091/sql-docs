@@ -1,3 +1,12 @@
+---
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: rotabor, alexwolf
+ms.date: 01/13/2026
+ms.service: azure-sql-database
+ms.topic: include
+---
+
 The following steps are required to connect the App Service instance to Azure SQL Database:
 
 1. Create a managed identity for the App Service.

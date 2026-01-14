@@ -5,7 +5,7 @@ description: Change the word breaker used for US English and UK English in SQL S
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: mikeray
-ms.date: 12/08/2025
+ms.date: 01/12/2026
 ms.service: sql
 ms.subservice: search
 ms.topic: how-to
@@ -15,24 +15,26 @@ monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-20
 
 [!INCLUDE [sssql25-md](../../includes/applies-to-version/sqlserver2025.md)]
 
-[!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] installs new word breakers and filters, replacing all the previous versions of these components. Binaries installed with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] are called **version 2**, and binaries installed with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions are called **version 1**. This article describes how to switch between version 2 and version 1 components.
+[!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] installs new word breakers and filters, replacing all the previous versions of these components. For more information, see [Behavior changes in Full-Text Search](behavior-changes-full-text-search.md).
 
-## Switch from version 2 to version 1 component
+Binaries installed with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] are called **version 2**, and binaries installed with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions are called **version 1**. This article describes how to switch between version 2 and version 1 components.
+
+## Switch from version 2 to version 1 components
 
 > [!NOTE]  
-> Use the default version 2 word breakers and filters installed with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. They're enhanced, more secure, and compliant with security scans.
+> You should use the default version 2 word breakers and filters installed with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. They're enhanced, more secure, and compliant with security scans.
 
-The default database scoped configuration for full-text indexes is version 2. Change it to version 1.
+The default database scoped configuration for full-text indexes is version 2. You can change it to version 1 with the following Transact-SQL statement.
 
    ```sql
    ALTER DATABASE SCOPED CONFIGURATION SET FULLTEXT_INDEX_VERSION = 1;
    ```
 
-Legacy version 1 word breakers and filters are removed from [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. You must copy these binaries from [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] or previous instance's `C:\Program Files\Microsoft SQL Server\MSSQL16.<instance-name>\MSSQL\Binn` directory.
+Legacy version 1 word breakers and filters are removed from [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)]. You must copy these binaries from a previous instance's `C:\Program Files\Microsoft SQL Server\MSSQL<nn>.<instance-name>\MSSQL\Binn` directory, where `<nn>` is the [product version](../../sql-server/install/file-locations-for-default-and-named-instances-of-sql-server.md#shared-files-for-all-instances-of-sql-server). For more information, see [List of version 1 filters and word breakers](full-text-index-version-1-binaries.md).
 
-For existing indexes, verify the version by using the [sys.fulltext_indexes](../system-catalog-views/sys-fulltext-indexes-transact-sql.md) catalog view. If the index is already version 1, you don't need to rebuild it. For a version 2 index, rebuild the catalog to switch back to version 1.
+For existing indexes, verify the version using the [sys.fulltext_indexes](../system-catalog-views/sys-fulltext-indexes-transact-sql.md) catalog view. If the index is already version 1, you don't need to rebuild it. For a version 2 index, rebuild the catalog to switch back to version 1.
 
-## Switch from version 1 to version 2 component
+## Switch from version 1 to version 2 components
 
 For instances upgraded from [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] to [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], you must rebuild full-text indexes with version 1 components using version 2 components.
 
@@ -47,7 +49,7 @@ ALTER FULLTEXT CATALOG [FtCatalog] REBUILD;
 
 **Applies to**: [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] and earlier versions, and [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)]
 
-[!INCLUDE [sssql11-md](../../includes/sssql11-md.md)] installs an updated version of the word breaker and stemmer for the English language, replacing the previous version of these components. For information about the changed behavior of the updated components, see [Behavior Changes to Full-Text Search](/previous-versions/sql/2014/database-engine/behavior-changes-to-full-text-search#behavior-changes-in-full-text-search-in--1).
+[!INCLUDE [sssql11-md](../../includes/sssql11-md.md)] installs an updated version of the word breaker and stemmer for the English language, replacing the previous version of these components. For information about the changed behavior of the updated components, see [Behavior changes in Full-Text Search](/previous-versions/sql/2014/database-engine/behavior-changes-to-full-text-search#behavior-changes-in-full-text-search-in--1).
 
 This article describes how to switch from the updated version of these components to the previous version, or to switch back from the previous version to the updated version. For cluster installations, make these changes on all nodes.
 

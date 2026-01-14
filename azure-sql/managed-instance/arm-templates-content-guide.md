@@ -7,9 +7,12 @@ ms.reviewer: wiassaf, mathoma
 ms.date: 04/30/2024
 ms.service: azure-sql-managed-instance
 ms.subservice: deployment-configuration
-ms.topic: conceptual
-ms.custom: overview-samples, azure-sql-split, devx-track-arm-template
-monikerRange: "= azuresql || = azuresql-mi"
+ms.topic: concept-article
+ms.custom:
+  - overview-samples
+  - azure-sql-split
+  - devx-track-arm-template
+monikerRange: "=azuresql || =azuresql-mi"
 ---
 
 # Azure Resource Manager templates for Azure SQL Managed Instance

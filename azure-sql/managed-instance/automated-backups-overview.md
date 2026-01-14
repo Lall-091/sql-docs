@@ -8,7 +8,7 @@ ms.reviewer: mathoma, wiassaf, mlandzic, strrodic, danil, randolphwest
 ms.date: 06/26/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: backup-restore
-ms.topic: article
+ms.topic: concept-article
 ms.custom:
   - azure-sql-split
   - build-2024
