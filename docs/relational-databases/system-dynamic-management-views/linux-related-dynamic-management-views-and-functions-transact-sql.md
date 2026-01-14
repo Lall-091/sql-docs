@@ -1,0 +1,34 @@
+---
+title: "Linux Related Dynamic Management Views and Functions (Transact-SQL)"
+description: Linux related dynamic management views and functions (Transact-SQL)
+author: rwestMSFT
+ms.author: randolphwest
+ms.date: 01/13/2026
+ms.service: sql
+ms.subservice: system-objects
+ms.topic: "reference"
+helpviewer_keywords:
+  - "Linux dynamic management objects [SQL Server]"
+  - "dynamic management objects [SQL Server], Linux"
+dev_langs:
+  - "TSQL"
+---
+# Linux related dynamic management views and functions (Transact-SQL)
+
+[!INCLUDE [sqlserver2025-linux](../../includes/applies-to-version/sqlserver2025-linux.md)]
+
+The following dynamic management objects return system-level Linux metrics beyond SQL Server, for a comprehensive visibility into overall host performance.
+
+These objects provide detailed CPU statistics, real-time network interface activity (bytes and packets sent and received, errors, drops, and collisions), and disk I/O statistics for each storage device.
+
+## In this section
+
+- [sys.dm_os_linux_cpu_stats](sys-dm-os-linux-cpu-stats-transact-sql.md)
+- [sys.dm_os_linux_disk_stats](sys-dm-os-linux-disk-stats-transact-sql.md)
+- [sys.dm_os_linux_net_stats](sys-dm-os-linux-net-stats-transact-sql.md)
+
+## Related content
+
+- [Performance best practices and configuration guidelines for SQL Server on Linux](../../linux/sql-server-linux-performance-best-practices.md)
+- [System dynamic management views](system-dynamic-management-views.md)
+- [Transact-SQL reference (Database Engine)](../../t-sql/language-reference.md)

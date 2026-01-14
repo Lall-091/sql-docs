@@ -12672,6 +12672,16 @@ items:
         href: relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql.md
       - name: sys.dm_workload_management_workload_groups_stats
         href: relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql.md
+    - name: Linux operating system
+      items:
+      - name: Overview
+        href: relational-databases/system-dynamic-management-views/linux-related-dynamic-management-views-and-functions-transact-sql.md
+      - name: sys.dm_os_linux_cpu_stats
+        href: relational-databases/system-dynamic-management-views/sys-dm-os-linux-cpu-stats-transact-sql.md
+      - name: sys.dm_os_linux_disk_stats
+        href: relational-databases/system-dynamic-management-views/sys-dm-os-linux-disk-stats-transact-sql.md
+      - name: sys.dm_os_linux_net_stats
+        href: relational-databases/system-dynamic-management-views/sys-dm-os-linux-net-stats-transact-sql.md
     - name: SQL Server Operating System
       href: relational-databases/system-dynamic-management-views/sql-server-operating-system-related-dynamic-management-views-transact-sql.md
       items:
