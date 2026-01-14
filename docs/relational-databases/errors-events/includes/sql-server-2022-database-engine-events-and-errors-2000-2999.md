@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan, mikeray
-ms.date: 05/30/2025
+ms.date: 01/15/2026
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -395,3 +395,4 @@ ms.topic: include
 | 2816 | 16 | No | The metadata for object with id %d has changed. Retry the statement. |
 | 2817 | 16 | No | '%.\*ls' is not supported on the '%.\*ls' platform. |
 | 2818 | 16 | No | The stored procedure '%.\*ls' cannot be run since this server has not been enabled for external governance. |
+| 2820 | 16 | No | The feature '%.\*ls' is not enabled on this SQL Server instance. |
