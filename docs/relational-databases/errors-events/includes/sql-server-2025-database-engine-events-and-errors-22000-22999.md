@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan, mikeray
-ms.date: 08/14/2025
+ms.date: 01/15/2026
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -694,7 +694,7 @@ ms.topic: include
 | 22985 | 16 | No | Change data capture has not been enabled for source table '%s.%s'. Specify the name of a table enabled for Change Data Capture. To report on the tables enabled for Change Data Capture, query the is_tracked_by_cdc column in the sys.tables catalog view. |
 | 22986 | 16 | No | Could not allocate memory for Change Data Capture population. Verify that SQL Server has sufficient memory for all operations. Check the physical and virtual memory settings on the server and examine memory usage to see if another application is consuming excessive memory. |
 | 22987 | 16 | No | Change Data Capture population failed writing blob data for one or more large object columns. Verify that SQL Server has sufficient memory for all operations. Check the physical and virtual memory settings on the server and examine memory usage to see if another application is consuming excessive memory. |
-| 22988 | 16 | No | This instance of SQL Server is the %s. Change data capture is only available in the Enterprise, Developer, Enterprise Evaluation, and Standard editions. |
+| 22988 | 16 | No | This instance of SQL Server is the %s. Change data capture is only available in the Enterprise, Enterprise Developer, Enterprise Evaluation, Standard, and Standard Developer editions. |
 | 22989 | 16 | No | Could not enable Change Data Capture for database '%s'. Change data capture is not supported on system databases, or on a distribution database. |
 | 22990 | 16 | No | The value specified for the parameter @pollinginterval must be greater than or equal to 0 and less than 24 hours(Max: 86399 seconds). Specify a polling interval (in seconds) that is less than 24 hours (86,400 seconds). |
 | 22991 | 16 | No | The value specified for the parameter @maxtrans must be greater than 0. |

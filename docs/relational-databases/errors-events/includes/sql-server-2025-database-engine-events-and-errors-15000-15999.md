@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan, mikeray
-ms.date: 08/14/2025
+ms.date: 01/15/2026
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -536,7 +536,7 @@ ms.topic: include
 | 15704 | 16 | Yes | Automatic Tuning option %.\*ls is disabled by system. |
 | 15705 | 16 | Yes | Automatic Tuning option %.\*ls cannot be enabled, because Query Store is not turned on. |
 | 15706 | 16 | Yes | Automatic Tuning option %.\*ls cannot be enabled, because Query Store is in READ_ONLY mode. |
-| 15707 | 16 | Yes | Automatic Tuning is available only in the Enterprise and Developer editions of SQL Server. |
+| 15707 | 16 | Yes | Automatic Tuning is available only in the Enterprise and Enterprise Developer editions of SQL Server. |
 | 15708 | 16 | Yes | Invalid automatic tuning option name. |
 | 15709 | 16 | Yes | Invalid automatic tuning option state. |
 | 15710 | 16 | Yes | Invalid database tuning mode string. |
