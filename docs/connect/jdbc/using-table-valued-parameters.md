@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 04/21/2022
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Using table-valued parameters
 

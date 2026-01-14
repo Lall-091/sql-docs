@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: "07/23/2019"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: article
+ms.topic: install-set-up-deploy
 ---
 # Step 3: Proof of concept connecting to SQL using Node.js
 

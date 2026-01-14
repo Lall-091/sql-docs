@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 11/05/2024
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2024
 ---

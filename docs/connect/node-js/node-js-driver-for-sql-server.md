@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: "10/06/2020"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: article
+ms.topic: concept-article
 ---
 # Node.js Driver for SQL Server
 
