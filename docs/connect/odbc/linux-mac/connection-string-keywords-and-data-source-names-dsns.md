@@ -7,7 +7,7 @@ ms.date: 07/31/2023
 ms.service: sql
 ms.subservice: connectivity
 ms.custom: linux-related-content
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "connect to linux"
   - "configure odbc.ini"

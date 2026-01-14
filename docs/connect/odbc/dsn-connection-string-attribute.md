@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 01/09/2026
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # DSN and Connection String Keywords and Attributes
 

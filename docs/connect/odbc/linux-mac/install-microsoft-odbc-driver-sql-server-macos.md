@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: 09/12/2024
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom:
   - intro-installation
   - linux-related-content

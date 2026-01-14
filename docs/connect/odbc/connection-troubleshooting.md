@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: 09/16/2024
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 ---
 # Connection encryption troubleshooting in the ODBC driver
 

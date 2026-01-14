@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 04/09/2024
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Microsoft ODBC Driver for SQL Server
 
