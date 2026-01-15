@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 05/05/2021
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Step 4: Connect resiliently to SQL with PHP
 

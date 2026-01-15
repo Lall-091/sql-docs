@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 03/26/2018
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Updating data (Microsoft Drivers for PHP for SQL Server)
 

@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 12/12/2019
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Using Always Encrypted with the PHP Drivers for SQL Server
 

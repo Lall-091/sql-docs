@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: article
+ms.topic: how-to
 ms.custom:
   - linux-related-content
 ---

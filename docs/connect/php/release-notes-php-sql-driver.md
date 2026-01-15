@@ -8,7 +8,7 @@ ms.date: 01/31/2024
 ms.service: sql
 ms.subservice: connectivity
 ms.custom: linux-related-content
-ms.topic: conceptual
+ms.topic: release-notes
 helpviewer_keywords:
   - "what's new in version 1.1"
 ---

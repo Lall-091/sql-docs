@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 02/28/2023
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "loading the driver"
 ---

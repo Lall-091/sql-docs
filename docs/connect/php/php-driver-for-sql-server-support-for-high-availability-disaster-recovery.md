@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: "07/31/2018"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: sfi-ropc-nochange
 ---
 # Support for High Availability, Disaster Recovery

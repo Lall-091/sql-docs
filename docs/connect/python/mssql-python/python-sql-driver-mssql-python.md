@@ -7,7 +7,7 @@ ms.reviewer: vanto, randolphwest
 ms.date: 12/15/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: article
+ms.topic: get-started
 ms.custom:
   - ignite-2025
 ---

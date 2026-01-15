@@ -7,7 +7,7 @@ ms.date: "01/19/2017"
 ms.service: sql
 ms.subservice: connectivity
 ms.custom: linux-related-content
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Step 1: Configure development environment for Ruby development
 You will need to configure your development environment with the prerequisites in order to develop an application using the Ruby Driver for SQL Server.    

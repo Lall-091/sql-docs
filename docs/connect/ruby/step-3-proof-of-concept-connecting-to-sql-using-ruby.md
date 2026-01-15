@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 06/22/2020
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Step 3: Proof of concept connecting to SQL using Ruby
 

@@ -7,7 +7,7 @@ ms.reviewer: mikeray
 ms.date: 09/18/2024
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: get-started
 ---
 # Microsoft Drivers for PHP for SQL Server
 
