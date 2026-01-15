@@ -1,10 +1,10 @@
 ---
 title: "BASE64_ENCODE (Transact-SQL)"
-description: "BASE64_ENCODE converts the value of a varbinary into a base64 encoded varchar."
+description: "BASE64_ENCODE converts the value of a varbinary into a Base64 encoded varchar."
 author: abledenthusiast
 ms.author: aaronpitman
 ms.reviewer: wiassaf, randolphwest
-ms.date: 02/28/2025
+ms.date: 01/13/2026
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -14,9 +14,9 @@ f1_keywords:
   - "BASE64_ENCODE"
   - "BASE64_ENCODE_TSQL"
 helpviewer_keywords:
-  - "base64 encode [SQL Server], base64 encode"
+  - "Base64 encode [SQL Server], Base64 encode"
   - "BASE64_ENCODE function"
-  - "base64 encoding [SQL Server]"
+  - "Base64 encoding [SQL Server]"
 dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || =fabric || =fabric-sqldb"
@@ -24,9 +24,9 @@ monikerRange: "=azuresqldb-current || =fabric || =fabric-sqldb"
 
 # BASE64_ENCODE (Transact-SQL)
 
-[!INCLUDE [asdb-Fabric-SE-fabricDW-fabricsqldb](../../includes/applies-to-version/asdb-fabricse-fabricdw-fabricsqldb.md)]
+[!INCLUDE [sqlserver2025-asdb-asmi-fabricse-fabricdw-fabricsqldb](../../includes/applies-to-version/sqlserver2025-asdb-asmi-fabricse-fabricdw-fabricsqldb.md)]
 
-`BASE64_ENCODE` converts the value of a **varbinary** expression into a base64-encoded **varchar** expression.
+`BASE64_ENCODE` converts the value of a **varbinary** expression into a Base64-encoded **varchar** expression.
 
 :::image type="icon" source="../../includes/media/topic-link-icon.svg" border="false"::: [Transact-SQL syntax conventions](../../t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)
 
@@ -55,20 +55,20 @@ Optional integer literal or expression, which specifies whether the output of th
 
 ## Remarks
 
-The encoded string alphabet is that of [RFC 4648 Table 1](https://datatracker.ietf.org/doc/html/rfc4648#section-4) and might add padding. The URL-safe output uses the base64url alphabet of [RFC 4648 Table 2](https://datatracker.ietf.org/doc/html/rfc4648#section-5) and doesn't add padding. This function doesn't add any new line characters.
+The encoded string uses the alphabet from [RFC 4648 Table 1](https://datatracker.ietf.org/doc/html/rfc4648#section-4) and might include padding. The URL-safe output uses the Base64URL alphabet from [RFC 4648 Table 2](https://datatracker.ietf.org/doc/html/rfc4648#section-5) and doesn't include padding. This function doesn't add any new line characters.
 
 In each case, the database default collation is used. For more information on the supported collations in [!INCLUDE [fabric](../../includes/fabric.md)], see [Tables](/fabric/data-warehouse/tables#collation).
 
-If `url_safe` is true, the base64url string that is generated is incompatible with SQL Server's XML and JSON base64 decoders.
+If you set `url_safe` to true, the generated Base64URL string isn't compatible with SQL Server's XML and JSON Base64 decoders.
 
 ## Examples
 
 ### A. Standard BASE64_ENCODE
 
-The following example returns the base64 encoded value for the `&copy;` symbol.
+The following example returns the Base64 encoded value for the `&copy;` symbol.
 
 ```sql
-SELECT Base64_Encode(0xA9) AS "Encoded &copy; symbol";
+SELECT BASE64_ENCODE(0xA9) AS "Encoded &copy; symbol";
 ```
 
 [!INCLUDE [ssResult_md](../../includes/ssresult-md.md)]
@@ -79,7 +79,7 @@ qQ==
 
 ### B. BASE64_ENCODE a string
 
-In the following example, a string is base64 encoded. The string must first be casted to a varbinary.
+In the following example, a string is Base64 encoded. You must first cast the string to a **varbinary**.
 
 ```sql
 SELECT BASE64_ENCODE(CAST ('hello world' AS VARBINARY));
@@ -93,7 +93,7 @@ aGVsbG8gd29ybGQ=
 
 ### C. BASE64_ENCODE default vs url_safe
 
-In the following example, the first select doesn't specify `url_safe`; however, the second select does specify `url_safe`.
+In the following example, the first `SELECT` statement doesn't specify `url_safe`; however, the second `SELECT` statement does specify `url_safe`.
 
 ```sql
 SELECT BASE64_ENCODE(0xCAFECAFE);
@@ -120,4 +120,3 @@ yv7K_g
 ## Related content
 
 - [BASE64_DECODE (Transact-SQL)](base64-decode-transact-sql.md)
-
