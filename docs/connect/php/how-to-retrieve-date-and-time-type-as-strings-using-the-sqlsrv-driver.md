@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: "02/11/2019"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "date and time types, retrieving as strings"
 ---

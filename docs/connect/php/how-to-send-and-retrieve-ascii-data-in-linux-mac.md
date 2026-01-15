@@ -7,7 +7,7 @@ ms.date: "01/16/2018"
 ms.service: sql
 ms.subservice: connectivity
 ms.custom: linux-related-content
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "retrieving data, ASCII data"
   - "sending data"

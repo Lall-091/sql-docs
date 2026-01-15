@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: "08/10/2020"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "multiple active result sets, disabling"
   - "MARS, disabling"
