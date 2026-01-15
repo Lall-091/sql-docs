@@ -7,7 +7,7 @@ ms.reviewer: mathoma
 ms.date: 05/22/2023
 ms.service: azure-vm-sql-server
 ms.subservice: management
-ms.topic: conceptual
+ms.topic: concept-article
 tags: azure-resource-manager
 ms.custom: linux-related-content
 ---

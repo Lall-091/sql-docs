@@ -7,7 +7,7 @@ ms.reviewer: mathoma
 ms.date: 07/10/2023
 ms.service: azure-vm-sql-server
 ms.subservice: management
-ms.topic: conceptual
+ms.topic: concept-article
 tags: azure-resource-manager
 ---
 # Run SQL Server VM on an Azure Dedicated Host 

@@ -7,7 +7,7 @@ ms.reviewer: mathoma, randolphwest
 ms.date: 06/12/2025
 ms.service: azure-vm-sql-server
 ms.subservice: management
-ms.topic: conceptual
+ms.topic: concept-article
 tags: azure-service-management
 ---
 # Extend support for SQL Server with Azure

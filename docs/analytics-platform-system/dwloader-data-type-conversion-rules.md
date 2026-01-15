@@ -7,7 +7,7 @@ ms.reviewer: martinle
 ms.date: 12/04/2023
 ms.service: sql
 ms.subservice: data-warehouse
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Data type conversion rules for dwloader - Analytics Platform Service (PDW)

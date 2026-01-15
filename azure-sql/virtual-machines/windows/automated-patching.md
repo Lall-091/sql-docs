@@ -7,7 +7,7 @@ ms.reviewer: mathoma, randolphwest
 ms.date: 09/15/2025
 ms.service: azure-vm-sql-server
 ms.subservice: management
-ms.topic: article
+ms.topic: concept-article
 tags: azure-resource-manager
 ---
 # Automated Patching for SQL Server on Azure virtual machines

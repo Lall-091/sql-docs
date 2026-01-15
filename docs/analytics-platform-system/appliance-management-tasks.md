@@ -7,7 +7,7 @@ ms.reviewer: martinle
 ms.date: 06/23/2022
 ms.service: sql
 ms.subservice: data-warehouse
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: kr2b-contr-experiment
 ---
 

@@ -7,7 +7,7 @@ ms.reviewer: mathoma, randolphwest
 ms.date: 12/05/2025
 ms.service: azure-vm-sql-server
 ms.subservice: backup
-ms.topic: article
+ms.topic: concept-article
 tags: azure-resource-management
 ---
 # Backup and restore for SQL Server on Azure VMs

@@ -8,7 +8,7 @@ ms.reviewer: mathoma, bonova
 ms.date: 12/03/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: service-overview
-ms.topic: article
+ms.topic: concept-article
 ms.custom:
   - fasttrack-edit
   - sfi-image-nochange

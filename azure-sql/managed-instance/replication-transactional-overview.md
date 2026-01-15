@@ -8,7 +8,7 @@ ms.reviewer: mathoma, randolphwest
 ms.date: 05/30/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: data-movement
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: sqldbrb=1
 ---
 # Transactional replication with Azure SQL Managed Instance

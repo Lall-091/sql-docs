@@ -7,7 +7,7 @@ ms.author: abhishekum
 ms.reviewer: randolphwest
 ms.date: 06/11/2025
 ms.service: azure-database-migration-service
-ms.topic: conceptual
+ms.topic: how-to
 ms.collection:
   - sql-migration-content
 ---

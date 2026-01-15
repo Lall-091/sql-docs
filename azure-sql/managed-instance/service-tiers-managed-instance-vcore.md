@@ -7,7 +7,7 @@ ms.reviewer: sashan, moslake, vladiv, mathoma
 ms.date: 05/19/2025
 ms.service: azure-sql-managed-instance
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sfi-image-nochange
   - ignite-2025

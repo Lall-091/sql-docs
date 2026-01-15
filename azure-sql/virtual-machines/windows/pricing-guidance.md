@@ -7,7 +7,7 @@ ms.reviewer: mathoma
 ms.date: 11/18/2025
 ms.service: azure-vm-sql-server
 ms.subservice: management
-ms.topic: conceptual
+ms.topic: best-practice
 ms.custom:
   - sfi-image-nochange
   - ignite-2025
