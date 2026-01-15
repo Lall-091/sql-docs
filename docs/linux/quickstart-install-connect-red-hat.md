@@ -4,7 +4,7 @@ titleSuffix: SQL Server
 description: This quickstart shows how to install SQL Server on Red Hat Enterprise Linux (RHEL) and then create and query a database with sqlcmd.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 01/02/2026
+ms.date: 01/15/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: quickstart
@@ -46,10 +46,10 @@ For more information on supported platforms, see [Release notes for SQL Server 2
 <!--SQL Server 2025 on Linux-->
 ::: moniker range=">=sql-server-linux-ver17 || >=sql-server-ver17"
 
-In this quickstart, you install [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] on Red Hat Enterprise Linux (RHEL) 9.x. Then you connect by using **sqlcmd** to create your first database and run queries.
+In this quickstart, you install [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] on Red Hat Enterprise Linux (RHEL) 9.x or 10.x. Then you connect by using **sqlcmd** to create your first database and run queries.
 
 > [!NOTE]  
-> Red Hat 9 includes support for [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and TLS 1.3, which is enabled by default.
+> Red Hat 9 includes support for [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and TLS 1.3, which is enabled by default. Starting with [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] CU 1, Red Hat 10 is supported.
 
 If you want to automate your installation using Ansible, see [Quickstart: Deploy SQL Server on Linux using an Ansible playbook](sql-server-linux-deploy-ansible.md).
 
@@ -110,7 +110,7 @@ To configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on RHEL,
    ```
 
    > [!TIP]  
-   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [[!INCLUDE [sssql19-md](../includes/sssql19-md.md)]](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver15&preserve-view=true#install), [[!INCLUDE [sssql22-md](../includes/sssql22-md.md)]](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver16&preserve-view=true#install), or [[!INCLUDE [sssql25-md](../includes/sssql25-md.md)]](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver17&preserve-view=true#install) versions of this article.
+   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [SQL Server 2019](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver15&preserve-view=true#install), [SQL Server 2022](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver16&preserve-view=true#install), or [SQL Server 2025](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver17&preserve-view=true#install) versions of this article.
 
 1. Run the following command to install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]:
 
@@ -168,7 +168,7 @@ To configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on RHEL,
    ```
 
    > [!TIP]  
-   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [[!INCLUDE [sssql17-md](../includes/sssql17-md.md)]](quickstart-install-connect-red-hat.md?view=sql-server-linux-2017&preserve-view=true#install), [[!INCLUDE [sssql22-md](../includes/sssql22-md.md)]](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver16&preserve-view=true#install), or [[!INCLUDE [sssql25-md](../includes/sssql25-md.md)]](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver17&preserve-view=true#install) versions of this article.
+   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [SQL Server 2017](quickstart-install-connect-red-hat.md?view=sql-server-linux-2017&preserve-view=true#install), [SQL Server 2022](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver16&preserve-view=true#install), or [SQL Server 2025](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver17&preserve-view=true#install) versions of this article.
 
 1. Run the following command to install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]:
 
@@ -217,7 +217,7 @@ To configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on RHEL,
    ```
 
    > [!TIP]  
-   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [[!INCLUDE [sssql17-md](../includes/sssql17-md.md)]](quickstart-install-connect-red-hat.md?view=sql-server-linux-2017&preserve-view=true#install) or [[!INCLUDE [sssql19-md](../includes/sssql19-md.md)]](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver15&preserve-view=true#install) versions of this article.
+   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [SQL Server 2017](quickstart-install-connect-red-hat.md?view=sql-server-linux-2017&preserve-view=true#install) or [SQL Server 2019](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver15&preserve-view=true#install) versions of this article.
 
 1. Run the following command to install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]:
 
@@ -277,7 +277,7 @@ To configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on RHEL 
    ```
 
    > [!TIP]  
-   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [[!INCLUDE [sssql17-md](../includes/sssql17-md.md)]](quickstart-install-connect-red-hat.md?view=sql-server-linux-2017&preserve-view=true#install) or [[!INCLUDE [sssql19-md](../includes/sssql19-md.md)]](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver15&preserve-view=true#install) versions of this article.
+   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [SQL Server 2017](quickstart-install-connect-red-hat.md?view=sql-server-linux-2017&preserve-view=true#install) or [SQL Server 2019](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver15&preserve-view=true#install) versions of this article.
 
 1. Run the following command to install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]:
 
@@ -332,7 +332,7 @@ To configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on RHEL 
    ```
 
    > [!TIP]  
-   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [[!INCLUDE [sssql17-md](../includes/sssql17-md.md)]](quickstart-install-connect-red-hat.md?view=sql-server-linux-2017&preserve-view=true#install), [[!INCLUDE [sssql19-md](../includes/sssql19-md.md)]](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver15&preserve-view=true#install), or [[!INCLUDE [sssql22-md](../includes/sssql22-md.md)]](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver16&preserve-view=true#install) versions of this article.
+   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [SQL Server 2017](quickstart-install-connect-red-hat.md?view=sql-server-linux-2017&preserve-view=true#install), [SQL Server 2019](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver15&preserve-view=true#install), or [SQL Server 2022](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver16&preserve-view=true#install) versions of this article.
 
 1. Run the following command to install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]:
 
@@ -370,18 +370,18 @@ To configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on RHEL 
 
 At this point, [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] is running on your RHEL machine and is ready to use.
 
-### [Red Hat 10 (in preview)](#tab/2025rhel10)
+### [Red Hat 10](#tab/2025rhel10)
 
 To configure [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)] on RHEL 10, run the following commands in a terminal to install the `mssql-server` package:
 
 1. Download the [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] Red Hat 10 repository configuration file:
 
    ```bash
-   sudo curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/10/mssql-server-preview.repo
+   sudo curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/10/mssql-server-2025.repo
    ```
 
    > [!TIP]  
-   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [[!INCLUDE [sssql17-md](../includes/sssql17-md.md)]](quickstart-install-connect-red-hat.md?view=sql-server-linux-2017&preserve-view=true#install), [[!INCLUDE [sssql19-md](../includes/sssql19-md.md)]](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver15&preserve-view=true#install), or [[!INCLUDE [sssql22-md](../includes/sssql22-md.md)]](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver16&preserve-view=true#install) versions of this article.
+   > If you want to install a different version of [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)], see the [SQL Server 2017](quickstart-install-connect-red-hat.md?view=sql-server-linux-2017&preserve-view=true#install), [SQL Server 2019](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver15&preserve-view=true#install), or [SQL Server 2022](quickstart-install-connect-red-hat.md?view=sql-server-linux-ver16&preserve-view=true#install) versions of this article.
 
 1. Run the following command to install [!INCLUDE [ssnoversion-md](../includes/ssnoversion-md.md)]:
 

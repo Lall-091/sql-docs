@@ -4,7 +4,7 @@ description: This article contains the release notes and supported features for 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh, vanto
-ms.date: 12/05/2025
+ms.date: 01/15/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: release-notes
@@ -43,7 +43,7 @@ This section lists the latest versions of each package per distribution, for [!I
 | [!INCLUDE [ssSQL25](../includes/sssql25-md.md)] | GA | 2025-11-18 | 17.0.1000.7 | |
 
 > [!NOTE]  
-> **Red Hat 10** and **Ubuntu 24.04** are supported (in preview) on [!INCLUDE [ssSQL25](../includes/sssql25-md.md)], starting with GA.
+> **Red Hat 10** and **Ubuntu 24.04** are supported on [!INCLUDE [ssSQL25](../includes/sssql25-md.md)], starting with CU 1.
 
 - Starting with [!INCLUDE [ssSQL25](../includes/sssql25-md.md)], **SUSE Linux Enterprise Server** (SLES) isn't supported.
 

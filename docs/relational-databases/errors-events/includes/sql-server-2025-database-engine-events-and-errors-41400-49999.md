@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan, mikeray
-ms.date: 09/09/2025
+ms.date: 01/15/2026
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -1147,6 +1147,7 @@ ms.topic: include
 | 45941 | 16 | No | The operation could not be completed as the backup is not configured for immutability. |
 | 45942 | 16 | No | The operation could not be completed as the backup is immutable and locked. |
 | 45943 | 16 | No | The long-term retention backup with the desired legal hold value already exists backup file backup. ErrorOwner: sqldataintegration |
+| 45946 | 16 | No | Cannot change the state of the database to Inaccessible because the operation is not allowed for encryption protector from Key Vault in region '{0}'. |
 | 46501 | 15 | No | External table references '%S_MSG' that does not exist. |
 | 46502 | 15 | No | Type with name '%.\*ls' already exists. |
 | 46503 | 15 | No | Invalid format for option '%S_MSG'. |

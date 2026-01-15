@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan, mikeray
-ms.date: 08/14/2025
+ms.date: 01/15/2026
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -497,6 +497,7 @@ ms.topic: include
 | 17441 | 10 | Yes | This operation requires %.\*ls libraries to be loaded. |
 | 17442 | 10 | Yes | SQL Server detected the following NUMA node configuration (NUMA Node number %d, Processor Group number %d, CPU Mask 0x%0\*I64x). |
 | 17443 | 10 | Yes | SOS Boot failed during stage: %ls. |
+| 17444 | 10 | Yes | SQL Server has been configured for lightweight pooling. Lightweight pooling is deprecated and will be removed in a future SQL Server version. For more information, see [https://go.microsoft.com/fwlink/?linkid=2335386](https://go.microsoft.com/fwlink/?linkid=2335386). |
 | 17550 | 10 | Yes | DBCC TRACEON %d, server process ID (SPID) %d. This is an informational message only; no user action is required. |
 | 17551 | 10 | Yes | DBCC TRACEOFF %d, server process ID (SPID) %d. This is an informational message only; no user action is required. |
 | 17557 | 16 | Yes | DBCC DBRECOVER failed for database ID %d. Restore the database from a backup. |

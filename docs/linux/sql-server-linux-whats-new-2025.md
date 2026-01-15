@@ -3,7 +3,7 @@ title: "What's New for SQL Server 2025 on Linux"
 description: In this article, learn about the major features and services available for SQL Server 2025 running on Linux.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 11/18/2025
+ms.date: 01/15/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: whats-new
@@ -26,11 +26,13 @@ The following updates are available in [!INCLUDE [sssql25-md](../includes/sssql2
 | New feature or update | Details |
 | --- | --- |
 | TLS 1.3 enabled by default | [Encrypt connections to SQL Server on Linux](sql-server-linux-encrypted-connections.md) |
-| Red Hat 10 support in preview | [Quickstart: Install SQL Server and create a database on Red Hat](quickstart-install-connect-red-hat.md?view=sql-server-ver17&tabs=rhel8%2C2025rhel10&preserve-view=true) |
-| Ubuntu 24.04 support in preview | [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md?view=sql-server-ver17&tabs=ubuntu2004%2C2505ubuntu2404%2Codbc-ubuntu-2404&preserve-view=true) |
+| Red Hat 10 support <sup>1</sup> | [Quickstart: Install SQL Server and create a database on Red Hat](quickstart-install-connect-red-hat.md?view=sql-server-ver17&tabs=rhel8%2C2025rhel10&preserve-view=true) |
+| Ubuntu 24.04 support <sup>1</sup> | [Quickstart: Install SQL Server and create a database on Ubuntu](quickstart-install-connect-ubuntu.md?view=sql-server-ver17&tabs=ubuntu2004%2C2505ubuntu2404%2Codbc-ubuntu-2404&preserve-view=true) |
 | Custom password policy | [Set custom password policy for SQL logins in SQL Server on Linux](sql-server-linux-custom-password-policy.md) |
 | tmpfs support for `tempdb` | [Enable and run tempdb on tmpfs for SQL Server 2025 on Linux](sql-server-linux-tmpfs-tempdb.md) |
 | Generic ODBC data source support for PolyBase | [Connect to ODBC data sources with PolyBase on SQL Server on Linux](sql-server-linux-polybase.md) |
+
+<sup>1</sup> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] CU 1.
 
 ## Related content
 

@@ -509,5 +509,6 @@ When setting memory limits for [!INCLUDE [ssnoversion-md](../includes/ssnoversio
 
 ## Related content
 
+- [Linux related dynamic management views and functions (Transact-SQL)](../relational-databases/system-dynamic-management-views/linux-related-dynamic-management-views-and-functions-transact-sql.md)
 - [Walkthrough for the performance features of SQL Server on Linux](sql-server-linux-performance-get-started.md)
 - [What is SQL Server on Linux?](sql-server-linux-overview.md)

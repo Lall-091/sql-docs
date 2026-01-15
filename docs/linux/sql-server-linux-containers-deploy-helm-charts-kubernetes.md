@@ -95,8 +95,6 @@ Deploy SQL Server using the following command. The deployment name is customizab
 helm install mssql-latest-deploy . --set ACCEPT_EULA.value=Y --set MSSQL_PID.value=Developer
 ```
 
-[!INCLUDE [editions-sql-server-developer](includes/editions-sql-server-developer.md)]
-
 In the previous example, the chart and its files are in the current directory, represented by the period (`.`). You can specify the path of the chart if you prefer.
 
 If successful, you see similar output:
