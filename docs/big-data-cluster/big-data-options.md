@@ -8,7 +8,7 @@ ms.reviewer: hudequei, randolphwest, imotiwala
 ms.date: 10/31/2025
 ms.service: sql
 ms.subservice: big-data-cluster
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 1095-days
 ms.custom:
   - ignite-2025
