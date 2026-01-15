@@ -2,7 +2,7 @@
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: maghan, mikeray
-ms.date: 09/11/2025
+ms.date: 01/15/2026
 ms.topic: include
 ---
 | Error | Severity | Event logged | Description |
@@ -123,6 +123,11 @@ ms.topic: include
 | 41678 | 16 | No | Failed to transition to PRIMARY role for physical database '%ls' (ID %d) of Windows Fabric partition '%ls' (partition ID '%ls'). |
 | 41679 | 16 | No | Transition to PRIMARY role for physical database '%ls' (ID %d) of Windows Fabric partition '%ls' (partition ID '%ls') has been aborted. |
 | 41681 | 16 | No | SQL Server cannot generate grip tds redirection url of the replica with ID %ls (Windows Fabric partition ID %ls). |
+| 41685 | 16 | No | Could not start probe listener for '%ls' (URI: '%ls', partition ID '%ls'). Encountered error (error code: 0x%08X). |
+| 41686 | 16 | No | Could not stop probe listener for '%ls' (URI: '%ls', partition ID '%ls'). Encountered error (error code: 0x%08X). |
+| 41687 | 16 | No | Missing probe listener for '%ls' (URI: '%ls', partition ID '%ls'). |
+| 41688 | 16 | No | Invalid probe listener port '%d' for %ls' (URI: '%ls', partition ID '%ls'). |
+| 41689 | 16 | No | Failed to set probe listener endpoint for '%ls' (URI: '%ls', partition ID '%ls'). Encountered error (error code: 0x%08X). |
 | 41700 | 16 | No | System views related to Windows Fabric partitions and replicas are not available at this time, because replica manager has not yet started. Wait for replica manager to start, then retry the system view query. |
 | 41701 | 20 | No | The Activation Context is unavailable at this time. The Windows Fabric Runtime is unavailable at this time, retry later. Wait for the activation context to become available, then retry. |
 | 41702 | 20 | No | The requested Configuration Package is unavailable at this time. The Configuration Package is not a part of the Activation Context. Verify that the requested Configuration Package name exists and is properly formatted. |
@@ -1363,6 +1368,8 @@ ms.topic: include
 | 49516 | 16 | No | Shrink timeout waiting to acquire schema modify lock in WLP mode to process IAM pageID %d:%d on database ID %d |
 | 49517 | 15 | No | %lu is not a valid value for MAX_DURATION; MAX_DURATION must be equal to %lu. |
 | 49518 | 10 | No | %.\*ls: Page %d:%d could not be moved because its marked for defer deallocation. |
+| 49540 | 16 | No | The specified DBCC command is not supported on this platform. |
+| 49541 | 16 | No | The command failed due to an internal error. Check the error log for more details. |
 | 49600 | 22 | No | SQL tiered storage table schema is corrupt. |
 | 49602 | 16 | No | Failure waiting for %ls latch in '%ls'. |
 | 49603 | 16 | No | CREATE FILE encountered operating system error %ls while attempting to copy the physical file '%.\*ls'. |
