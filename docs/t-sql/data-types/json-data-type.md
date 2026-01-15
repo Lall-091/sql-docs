@@ -147,6 +147,8 @@ Currently, the `OPENJSON()` function doesn't accept the **json** data type in so
 
 - In [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)], the `OPENJSON()` function does support **json**. For more information, see [Key JSON capabilities in SQL Server 2025](../../relational-databases/json/json-data-sql-server.md#key-json-capabilities).
 
+The top-level type must be a JSON Object or a JSON Array. Scalars, booleans, and null values are not supported.
+
 ### Size limitations
 
 Size limits of JSON data in storage:
