@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 01/31/2020
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Using Always Encrypted with secure enclaves with the PHP Drivers for SQL Server
 

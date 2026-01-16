@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 12/14/2021
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "azure active directory, authentication, access token"
 ---

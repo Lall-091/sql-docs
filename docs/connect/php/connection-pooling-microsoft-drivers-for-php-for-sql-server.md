@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: "08/01/2020"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "connection pooling support"
 ---

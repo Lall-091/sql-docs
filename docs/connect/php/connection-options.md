@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: "03/02/2022"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Connection Options
 

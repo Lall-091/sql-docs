@@ -7,7 +7,7 @@ ms.reviewer: v-davidengel
 ms.date: "02/18/2022"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "OLE DB Driver for SQL Server, data classification"
 ---

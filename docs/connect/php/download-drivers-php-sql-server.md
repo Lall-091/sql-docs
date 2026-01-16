@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 01/31/2024
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ---
 # Download the Microsoft Drivers for PHP for SQL Server
 
