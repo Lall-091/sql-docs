@@ -7,7 +7,7 @@ ms.reviewer: v-kaywon
 ms.date: "08/15/2019"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: sfi-ropc-nochange
 ---
 # SqlClient support for high availability, disaster recovery
