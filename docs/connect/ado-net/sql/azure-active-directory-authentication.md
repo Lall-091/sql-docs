@@ -7,7 +7,7 @@ ms.reviewer: davidengel
 ms.date: 06/09/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: integration
 dev_langs:
   - "csharp"
 ---
