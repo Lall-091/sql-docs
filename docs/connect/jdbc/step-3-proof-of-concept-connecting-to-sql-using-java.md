@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 08/09/2023
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: tutorial
 ---
 # Step 3: Proof of concept connecting to SQL using Java
 

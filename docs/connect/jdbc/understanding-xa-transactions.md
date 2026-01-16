@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 10/27/2023
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Understanding XA transactions
 
