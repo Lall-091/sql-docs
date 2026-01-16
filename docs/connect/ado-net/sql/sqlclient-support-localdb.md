@@ -7,7 +7,7 @@ ms.reviewer: v-kaywon
 ms.date: "08/28/2023"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # SqlClient support for LocalDB
 

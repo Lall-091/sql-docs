@@ -7,7 +7,7 @@ ms.reviewer:
 ms.date: 10/31/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Vector datatype support in SqlClient
 
