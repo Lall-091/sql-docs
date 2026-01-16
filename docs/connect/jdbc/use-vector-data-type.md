@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 08/15/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Use vector data type with the JDBC driver
 

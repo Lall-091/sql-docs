@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 12/18/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: article
+ms.topic: how-to
 ---
 
 # Using a stored procedure with input parameters

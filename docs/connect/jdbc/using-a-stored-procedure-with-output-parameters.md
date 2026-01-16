@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 08/22/2024
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Using a stored procedure with output parameters
