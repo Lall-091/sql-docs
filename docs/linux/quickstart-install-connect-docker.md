@@ -207,7 +207,7 @@ This quickstart creates [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] conta
 - [SQL Server 2022](quickstart-install-connect-docker.md?view=sql-server-linux-ver16&preserve-view=true#pullandrun2022)
 - [SQL Server 2019](quickstart-install-connect-docker.md?view=sql-server-linux-ver15&preserve-view=true#pullandrun2019)
 
-The previous command pulls the latest [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] Linux container image. To pull a specific image, add a colon and the tag name, such as `mcr.microsoft.com/mssql/server:2017-GA-ubuntu`. To see all available images, see the [Microsoft Artifact Registry](https://mcr.microsoft.com/product/mssql/server/about).
+The previous command pulls the latest [!INCLUDE [sssql17-md](../includes/sssql17-md.md)] Linux container image. To pull a specific image, add a colon and the tag name, such as `mcr.microsoft.com/mssql/server:2017-GA-ubuntu`. For available images, see the [Microsoft Artifact Registry](https://mcr.microsoft.com/product/mssql/server/tags).
 
 ### Run the container
 
@@ -448,7 +448,7 @@ This quickstart creates [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] conta
 - [SQL Server 2022](quickstart-install-connect-docker.md?view=sql-server-linux-ver16&preserve-view=true#pullandrun2022)
 - [SQL Server 2017](quickstart-install-connect-docker.md?view=sql-server-linux-2017&preserve-view=true#pullandrun2017)
 
-The previous command pulls the latest [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] Linux container image. To pull a specific image, add a colon and the tag name, such as `mcr.microsoft.com/mssql/server:2019-GA-ubuntu`. To see all available images, see the [Microsoft Artifact Registry](https://mcr.microsoft.com/product/mssql/server/about).
+The previous command pulls the latest [!INCLUDE [sssql19-md](../includes/sssql19-md.md)] Linux container image. To pull a specific image, add a colon and the tag name, such as `mcr.microsoft.com/mssql/server:2019-GA-ubuntu`. For available images, see the [Microsoft Artifact Registry](https://mcr.microsoft.com/product/mssql/server/tags).
 
 ### Run the container
 
@@ -694,7 +694,7 @@ This quickstart creates [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] conta
 - [SQL Server 2019](quickstart-install-connect-docker.md?view=sql-server-linux-ver15&preserve-view=true#pullandrun2019)
 - [SQL Server 2017](quickstart-install-connect-docker.md?view=sql-server-linux-2017&preserve-view=true#pullandrun2017)
 
-The previous command pulls the latest [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] Linux container image. To pull a specific image, add a colon and the tag name, such as `mcr.microsoft.com/mssql/server:2022-GA-ubuntu`. To see all available images, see the [Microsoft Artifact Registry](https://mcr.microsoft.com/product/mssql/server/about).
+The previous command pulls the latest [!INCLUDE [sssql22-md](../includes/sssql22-md.md)] Linux container image. To pull a specific image, add a colon and the tag name, such as `mcr.microsoft.com/mssql/server:2022-GA-ubuntu`. For available images, see the [Microsoft Artifact Registry](https://mcr.microsoft.com/product/mssql/server/tags).
 
 ### Run the container
 
@@ -1014,7 +1014,7 @@ This quickstart creates [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] conta
 - [SQL Server 2019](quickstart-install-connect-docker.md?view=sql-server-linux-ver15&preserve-view=true#pullandrun2019)
 - [SQL Server 2017](quickstart-install-connect-docker.md?view=sql-server-linux-2017&preserve-view=true#pullandrun2017)
 
-The previous command pulls the latest [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] Linux container image. To pull a specific image, add a colon and the tag name, such as `mcr.microsoft.com/mssql/server:2025-GA-ubuntu`. To see all available images, see the [Microsoft Artifact Registry](https://mcr.microsoft.com/product/mssql/server/about).
+The previous command pulls the latest [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] Linux container image. To pull a specific image, add a colon and the tag name, such as `mcr.microsoft.com/mssql/server:2025-GA-ubuntu`. For available images, see the [Microsoft Artifact Registry](https://mcr.microsoft.com/product/mssql/server/tags).
 
 ### Run the container
 

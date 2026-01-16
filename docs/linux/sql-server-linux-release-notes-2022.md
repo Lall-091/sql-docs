@@ -4,13 +4,13 @@ description: This article contains the release notes and supported features for 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh, vanto
-ms.date: 01/15/2026
+ms.date: 01/16/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: release-notes
 ms.custom:
   - linux-related-content
-  - build-2025
+  - ignite-2025
 ---
 # Release notes for SQL Server 2022 on Linux
 
@@ -34,6 +34,14 @@ These release notes are specifically for [!INCLUDE [ssSQL22](../includes/sssql22
 
 Most existing client tools that target [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] can seamlessly target [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] running on Linux. Some tools might have a specific version requirement to work well with Linux. For a full list of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] tools, see [SQL tools overview](../tools/overview-sql-tools.md).
 
+## Release and container tag guidance
+
+- The **mssql-server-is** package isn't supported on SUSE Linux Enterprise Server (SLES). For more information, see [SQL Server on Linux: Known issues](sql-server-linux-known-issues.md#sql-server-integration-services-ssis).
+
+- Some GDR releases apply only to Windows. These Windows-only GDRs aren't published for Linux, and don't appear in this article.
+
+- Container tags can vary by release. For a list of available tags, see [RHEL](https://mcr.microsoft.com/product/mssql/rhel/server/tags) and [Ubuntu](https://mcr.microsoft.com/product/mssql/server/tags) in the Microsoft Artifact Registry.
+
 ## Latest versions for all packages
 
 This section lists the latest versions of each package per distribution, for [!INCLUDE [ssSQL22](../includes/sssql22-md.md)]. The following table shows the most recent release, which is **CU 23**. For full release history, see [Release history for SQL Server 2022 on Linux](/troubleshoot/sql/releases/linux/release-history-2022).
@@ -41,10 +49,6 @@ This section lists the latest versions of each package per distribution, for [!I
 | Version | Release | Date | Build | KB article |
 | --- | --- | --- | --- | --- |
 | [!INCLUDE [ssSQL22](../includes/sssql22-md.md)] | CU 23 | 2026-01-15 | 16.0.4235.2 | [Support article](/troubleshoot/sql/releases/sqlserver-2022/cumulativeupdate23) |
-
-Owing to a technical issue, the container tag for [!INCLUDE [ssSQL22](../includes/sssql22-md.md)] `CU21-GDR1` isn't available. Use `CU21-GDR2` or a later tag instead.
-
-- The **mssql-server-is** package isn't supported on SUSE in this release. For more information, see [SQL Server on Linux: Known issues](sql-server-linux-known-issues.md#sql-server-integration-services-ssis).
 
 | Distribution | Package name | Package version | Download |
 | --- | --- | --- | --- |
@@ -87,9 +91,6 @@ If you update existing [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] p
 ## Release history
 
 The following table lists the release history for [!INCLUDE [ssSQL22](../includes/sssql22-md.md)].
-
-> [!NOTE]  
-> Any missing GDRs apply to the Windows version only.
 
 | Release | Version | Release date |
 | --- | --- | --- |

@@ -4,7 +4,7 @@ description: This article contains the release notes and supported features for 
 author: rwestMSFT
 ms.author: randolphwest
 ms.reviewer: amitkh, vanto
-ms.date: 01/15/2026
+ms.date: 01/16/2026
 ms.service: sql
 ms.subservice: linux
 ms.topic: release-notes
@@ -34,6 +34,16 @@ These release notes are specifically for [!INCLUDE [ssSQL25](../includes/sssql25
 
 Most existing client tools that target [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] can seamlessly target [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] running on Linux. Some tools might have a specific version requirement to work well with Linux. For a full list of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] tools, see [SQL tools overview](../tools/overview-sql-tools.md).
 
+## Release and container tag guidance
+
+- Starting with [!INCLUDE [ssSQL25](../includes/sssql25-md.md)], **SUSE Linux Enterprise Server** (SLES) isn't supported.
+
+  Customers using earlier versions of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on SLES aren't affected, and there are no changes to your support for existing deployments. For more information about version lifecycle policies, see [SQL Server 2022](/lifecycle/products/sql-server-2022), [SQL Server 2019](/lifecycle/products/sql-server-2019), and [SQL Server 2017](/lifecycle/products/sql-server-2017). To upgrade to [!INCLUDE [ssSQL25](../includes/sssql25-md.md)], [back up your databases and restore them](sql-server-linux-backup-and-restore-database.md) to a [supported distribution](#supported-platforms).
+
+- Some GDR releases apply only to Windows. These Windows-only GDRs aren't published for Linux, and don't appear in this article.
+
+- Container tags can vary by release. For a list of available tags, see [RHEL](https://mcr.microsoft.com/product/mssql/rhel/server/tags) and [Ubuntu](https://mcr.microsoft.com/product/mssql/server/tags) in the Microsoft Artifact Registry.
+
 ## Latest versions for all packages
 
 This section lists the latest versions of each package per distribution, for [!INCLUDE [ssSQL25](../includes/sssql25-md.md)]. The following table shows the most recent release, which is **CU 1**. For full release history, see [Release history for SQL Server 2025 on Linux](/troubleshoot/sql/releases/linux/release-history-2025).
@@ -41,14 +51,9 @@ This section lists the latest versions of each package per distribution, for [!I
 | Version | Release | Date | Build | KB article |
 | --- | --- | --- | --- | --- |
 | [!INCLUDE [ssSQL25](../includes/sssql25-md.md)] | CU 1 | 2026-01-15 | 17.0.4005.7 | [Support article](/troubleshoot/sql/releases/sqlserver-2025/cumulativeupdate1) |
-| [!INCLUDE [ssSQL25](../includes/sssql25-md.md)] | GA | 2025-11-18 | 17.0.1000.7 | |
 
 > [!NOTE]  
 > **Red Hat 10** and **Ubuntu 24.04** are supported on [!INCLUDE [ssSQL25](../includes/sssql25-md.md)], starting with CU 1.
-
-- Starting with [!INCLUDE [ssSQL25](../includes/sssql25-md.md)], **SUSE Linux Enterprise Server** (SLES) isn't supported.
-
-  Customers using earlier versions of [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] on SLES aren't affected, and there are no changes to your support for existing deployments. For more information about version lifecycle policies, see [SQL Server 2022](/lifecycle/products/sql-server-2022), [SQL Server 2019](/lifecycle/products/sql-server-2019), and [SQL Server 2017](/lifecycle/products/sql-server-2017). To upgrade to [!INCLUDE [sssql25-md](../includes/sssql25-md.md)], [back up your databases and restore them](sql-server-linux-backup-and-restore-database.md) to a [supported distribution](#supported-platforms).
 
 | Distribution | Package name | Package version | Download |
 | --- | --- | --- | --- |
@@ -83,9 +88,6 @@ If you update existing [!INCLUDE [ssNoVersion](../includes/ssnoversion-md.md)] p
 ## Release history
 
 The following table lists the release history for [!INCLUDE [ssSQL25](../includes/sssql25-md.md)].
-
-> [!NOTE]  
-> Any missing GDRs apply to the Windows version only.
 
 | Release | Version | Release date |
 | --- | --- | --- |
