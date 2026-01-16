@@ -7,7 +7,7 @@ ms.reviewer: randolphwest, wiassaf, dinethi
 ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 helpviewer_keywords:

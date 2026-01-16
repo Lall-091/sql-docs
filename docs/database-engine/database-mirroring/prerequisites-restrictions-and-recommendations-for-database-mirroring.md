@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "05/17/2016"
 ms.service: sql
 ms.subservice: database-mirroring
-ms.topic: conceptual
+ms.topic: best-practice
 ms.custom:
   - ignite-2025
 helpviewer_keywords:

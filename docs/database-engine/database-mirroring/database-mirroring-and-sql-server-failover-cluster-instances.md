@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "05/17/2016"
 ms.service: sql
 ms.subservice: database-mirroring
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "failover clustering [SQL Server], database mirroring"
   - "database mirroring [SQL Server], failover"

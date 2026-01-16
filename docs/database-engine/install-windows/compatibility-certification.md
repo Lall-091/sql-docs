@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 06/16/2025
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "compatibility [SQL Server], databases"
   - "compatibility levels [SQL Server], after upgrade"

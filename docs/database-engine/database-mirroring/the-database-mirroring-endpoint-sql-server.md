@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 08/28/2025
 ms.service: sql
 ms.subservice: database-mirroring
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "database mirroring [SQL Server], deployment"
   - "database mirroring [SQL Server], endpoint"

@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "03/01/2017"
 ms.service: sql
 ms.subservice: database-mirroring
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "quorum [SQL Server], database mirroring"
   - "running exposed in database mirroring [SQL Server]"

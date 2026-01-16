@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 06/03/2025
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "installing SQL Server, system configuration checks"
   - "failed system configuration checks [SQL Server]"
