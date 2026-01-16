@@ -7,7 +7,7 @@ ms.reviewer: v-kaywon
 ms.date: "08/15/2019"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # SQL Server data types and ADO.NET
 
