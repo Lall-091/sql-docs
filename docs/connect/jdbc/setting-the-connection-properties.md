@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 09/08/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Setting the connection properties

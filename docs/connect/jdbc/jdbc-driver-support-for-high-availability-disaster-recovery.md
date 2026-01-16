@@ -6,7 +6,7 @@ ms.author: davidengel
 ms.date: 01/26/2022
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: article
+ms.topic: concept-article
 ---
 
 # JDBC driver support for High Availability, disaster recovery

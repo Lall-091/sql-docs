@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 11/05/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: feature-availability
 ---
 # Microsoft JDBC Driver for SQL Server support matrix
 
