@@ -3,7 +3,8 @@ title: "Diagnostic Connection for Database Administrators"
 description: "Find out about the dedicated administrator connection (DAC). View its restrictions, instructions on how to establish it, and examples demonstrating its use."
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 08/26/2025
+ms.reviewer: wiassaf, derekw
+ms.date: 01/15/2026
 ms.service: sql
 ms.subservice: configuration
 ms.topic: conceptual
@@ -17,11 +18,11 @@ helpviewer_keywords:
   - "connections [SQL Server], dedicated administrator"
   - "ports [SQL Server]"
   - "dedicated administrator connections [SQL Server]"
-monikerRange: ">=sql-server-2016 || >=sql-server-linux-ver15 || =azuresqldb-mi-current || =azuresqldb-current"
+monikerRange: ">=sql-server-2016 || >=sql-server-linux-ver15 || =azuresqldb-mi-current"
 ---
 # Diagnostic connection for database administrators
 
-[!INCLUDE [sql-asdb-asdbmi](../../includes/applies-to-version/sql-asdb-asdbmi.md)]
+[!INCLUDE [sql-asdbmi](../../includes/applies-to-version/sql-asdbmi.md)]
 
 [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] provides a special diagnostic connection for administrators when standard connections to the server aren't possible. This diagnostic connection allows an administrator to access [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] to execute diagnostic queries and troubleshoot problems even when [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] isn't responding to standard connection requests.
 
@@ -106,7 +107,7 @@ Although you can theoretically run any [!INCLUDE [tsql](../../includes/tsql-md.m
 
 ### Limitation in Azure SQL Database
 
-When connecting to the [!INCLUDE [ssazure-sqldb](../../includes/ssazure-sqldb.md)] with the DAC, you must also specify the database name in the connection string by using the `-d` option.
+The DAC in Azure SQL Database is usually occupied by a backend process and is not user-accessible.
 
 ### Limitation in Azure SQL Managed Instance
 
@@ -121,12 +122,6 @@ sqlcmd -S contoso-server -U sa -P <StrongPassword> -A
 ```
 
 The administrator can now execute queries to diagnose the problem and possibly terminate the unresponsive sessions.
-
-A similar example connecting to [!INCLUDE [ssSDS](../../includes/sssds-md.md)] would use the following command including the `-d` parameter to specify the database:
-
-```powershell
-sqlcmd -S serverName.database.windows.net,1434 -U sa -P <StrongPassword> -d AdventureWorks
-```
 
 ## Related content
 
