@@ -9,7 +9,7 @@ ms.reviewer: v-kaywon
 ms.date: "05/06/2020"
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: get-started
 ---
 # Microsoft ADO.NET for SQL Server and Azure SQL Database
 

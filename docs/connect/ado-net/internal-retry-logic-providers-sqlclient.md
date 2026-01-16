@@ -7,7 +7,7 @@ ms.reviewer: v-deshtehari
 ms.date: 03/22/2021
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Internal retry logic providers in SqlClient
 

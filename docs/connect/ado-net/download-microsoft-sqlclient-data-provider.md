@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 11/21/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: how-to
 dev_langs:
   - "csharp"
 ---

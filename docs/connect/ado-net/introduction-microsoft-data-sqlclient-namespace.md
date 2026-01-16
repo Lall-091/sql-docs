@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: whats-new
 ms.custom:
   - sfi-ropc-nochange
   - ignite-2025

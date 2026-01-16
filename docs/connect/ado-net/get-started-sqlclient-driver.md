@@ -7,7 +7,7 @@ ms.reviewer: v-kaywon
 ms.date: 04/20/2021
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: get-started
 ms.custom: intro-get-started
 ---
 # Getting started with the SqlClient driver

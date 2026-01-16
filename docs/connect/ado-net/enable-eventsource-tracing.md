@@ -7,7 +7,7 @@ ms.reviewer: davidengel
 ms.date: 09/27/2024
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: conceptual
+ms.topic: how-to
 dev_langs:
   - "csharp"
 ms.custom: sfi-ropc-nochange
