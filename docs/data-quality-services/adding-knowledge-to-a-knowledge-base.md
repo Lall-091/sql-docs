@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "06/04/2013"
 ms.service: sql
 ms.subservice: data-quality-services
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - build-2025
 ---

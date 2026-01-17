@@ -7,7 +7,7 @@ ms.reviewer: hudequei, randolphwest
 ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: connectivity
-ms.topic: article
+ms.topic: concept-article
 ---
 
 # Apache Spark connector: SQL Server and Azure SQL
