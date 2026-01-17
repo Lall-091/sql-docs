@@ -61,7 +61,7 @@ This section identifies known issues you might experience with this product.
   > Creating a [bacpac](../relational-databases/data-tier-applications/data-tier-applications.md#bacpac) of a database containing table columns defined as [char and varchar](../t-sql/data-types/char-and-varchar-transact-sql.md) that use more than 4000 bytes will fail.
 
   > [!NOTE]  
-  > There's currently no UI support to choose UTF-8 enabled collations in Azure Data Studio or SQL Server Data Tools (SSDT). The latest [!INCLUDE [ssManStudioFull](../includes/ssmanstudiofull-md.md)] (SSMS) version 18 supports choice of UTF-8 enabled collations in the UI.
+  > There's currently no UI support to choose UTF-8 enabled collations in Visual Studio Code or SQL Server Data Tools (SSDT). The latest [!INCLUDE [ssManStudioFull](../includes/ssmanstudiofull-md.md)] (SSMS) supports choice of UTF-8 enabled collations in the UI.
 
 - **Applies to**: [!INCLUDE [SQL Server 2019](../includes/sssql19-md.md)] RTM
 

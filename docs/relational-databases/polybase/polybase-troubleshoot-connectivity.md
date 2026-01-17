@@ -24,7 +24,7 @@ This article serves as a guide to walk through the debugging process of such iss
 >
 > This tool helps to rule out non-SQL Server issues, to help you concentrate on resolving HDFS Kerberos setup issues, namely identifying issues with username/password misconfigurations, and cluster Kerberos setup misconfigurations.
 >
-> This tool is independent from [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. It's available as a Jupyter Notebook and requires Azure Data Studio.
+> This tool is independent from [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)]. It's available as a Jupyter Notebook.
 
 ## Prerequisites
 

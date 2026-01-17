@@ -69,7 +69,6 @@ You can submit suggestions for improvement and other feedback, including bugs.
 
 - **SQL Server Management Studio feedback**: [Visual Studio Developer Community](https://aka.ms/ssms-feedback)
 - **Ideas for SQL**: [Have suggestions for improving SQL Server?](https://feedback.azure.com/forums/908035-sql-server)
-- **Azure Data Studio issues**: [Azure Data Studio GitHub](https://github.com/microsoft/azuredatastudio/issues)
 
 ### SQL Server documentation
 
