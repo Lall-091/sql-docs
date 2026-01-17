@@ -306,13 +306,7 @@ Configuring Ubuntu is similar to RHEL. However, there's one major difference: in
    ```bash
    sudo pcs cluster setup <PMClusterName Nodelist>
    ```
-
-1. Start the cluster on all nodes.
-
-   ```bash
-   sudo pcs cluster setup <PMClusterName Nodelist>
-   ```
-
+   
 1. Enable the cluster to start when the computer starts.
 
    ```bash
