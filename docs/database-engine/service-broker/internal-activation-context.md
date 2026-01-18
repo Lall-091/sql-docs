@@ -7,7 +7,7 @@ ms.reviewer: mikeray, maghan
 ms.date: 09/03/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Internal activation context
