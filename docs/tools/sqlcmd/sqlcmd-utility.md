@@ -1,10 +1,10 @@
 ---
 title: Run Transact-SQL Commands with the sqlcmd Utility
 description: The sqlcmd utility lets you enter Transact-SQL statements, system procedures, and script files using different modes, using go-mssqldb or ODBC to run T-SQL batches.
-author: dlevy-msft
-ms.author: dlevy
-ms.reviewer: randolphwest
-ms.date: 12/16/2025
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: dlevy
+ms.date: 01/19/2026
 ms.service: sql
 ms.subservice: tools-other
 ms.topic: concept-article
@@ -170,6 +170,7 @@ sqlcmd
    -i input_file
    -I (enable quoted identifiers)
    -j (Print raw error messages)
+   -J server_certificate
    -k[1 | 2] (remove or replace control characters)
    -K application_intent
    -l login_timeout
@@ -219,10 +220,12 @@ The following table lists the command-line options available in **sqlcmd**, and 
 | **[-D](#-d)** | Yes | Yes |
 | **[-l *login_timeout*](#-l-login_timeout)** | Yes | Yes |
 | **[-E](#-e-trusted)** | Yes | Yes |
+| **[-F *hostname_in_certificate*](#-f-hostname_in_certificate)** | Yes | Yes |
 | **[-g](#-g-column)** | Yes | Yes |
 | **[-G](#-g-entra)** | Yes | Yes |
 | **[-H *workstation_name*](#-h-workstation_name)** | Yes | Yes |
 | **[-j](#-j)** | Yes | Yes |
+| **[-J *server_certificate*](#-j-server_certificate)** | No | Yes |
 | **[-K *application_intent*](#-k-application_intent)** | Yes | Yes |
 | **[-M *multisubnet_failover*](#-m-multisubnet_failover)** | Yes | Yes |
 | **[-N\[s\|m\|o\]](#-nsmo)** | Yes | Yes |
@@ -233,7 +236,6 @@ The following table lists the command-line options available in **sqlcmd**, and 
 | **[-Z *new_password*](#-z-exit)** | Yes | Yes |
 | [Input/output options](#inputoutput-options) | | |
 | **[-f *codepage* \| i:*codepage*\[,o:*codepage*\] \| o:*codepage*\[,i:*codepage*\]](#-f-codepage--icodepageocodepage--ocodepageicodepage)** | Yes | Yes |
-| **[-F *hostname_in_certificate*](#-f-hostname_in_certificate)** | Yes | Yes |
 | **[-i *input_file*\[,*input_file2*...\]](#-i-input_fileinput_file2)** | Yes | Yes |
 | **[-o *output_file*](#-o-output_file)** | Yes | Yes |
 | **[-r\[0 \| 1\]](#-r0--1)** | Yes | Yes |
@@ -316,6 +318,19 @@ The `-E` option ignores possible user name and password environment variable set
 
 <a id="-g-column"></a>
 
+#### -F *hostname_in_certificate*
+
+Specifies a different, expected Common Name (CN) or Subject Alternate Name (SAN) in the server certificate to use during server certificate validation. Without this option, certificate validation ensures that the CN or SAN in the certificate matches the server name to which you're connecting. This parameter can be populated when the server name doesn't match the CN or SAN, for example, when using DNS aliases.
+
+For example:
+
+```console
+sqlcmd -S server01 -Q "SELECT TOP 100 * FROM WideWorldImporters.Sales.Orders" -A -Ns -F server01.adventure-works.com
+```
+
+> [!NOTE]
+> This is different to the `-F` switch for **sqlcmd** (Go), which is used to print results using a vertical format.
+
 #### -g
 
 Sets the Column Encryption setting to `Enabled`. For more information, see [Always Encrypted](../../relational-databases/security/encryption/always-encrypted-database-engine.md). Only master keys stored in Windows Certificate Store are supported. The `-g` option requires at least **sqlcmd** version [13.1](https://go.microsoft.com/fwlink/?LinkID=825643). To determine your version, execute `sqlcmd -?`.
@@ -339,6 +354,20 @@ A workstation name. This option sets the **sqlcmd** scripting variable `SQLCMDWO
 #### -j
 
 Prints raw error messages to the screen.
+
+#### -J *server_certificate*
+
+**Applies to**: **sqlcmd** (ODBC), Linux and macOS only. Windows isn't supported.
+
+Specifies the path to a server certificate file. This file is matched against the server's connection encryption certificate. The match is done instead of standard certificate validation (expiry, host name, trust chain, etc.) The accepted certificate formats are PEM, DER, and CER.
+
+Use this option when connecting to servers that use self-signed certificates or certificates issued by a private certificate authority. If encryption is enabled and certificate validation is unsuccessful, the connection fails.
+
+For example:
+
+```console
+sqlcmd -S server01 -Q "SELECT TOP 100 * FROM WideWorldImporters.Sales.Orders" -A -Ns -J /etc/ssl/certs/server_certificate.cer
+```
 
 #### -K *application_intent*
 
@@ -378,15 +407,6 @@ For the **sqlcmd** (Go) utility, `-N` takes a string value that can be one of `t
 - If `-N` is provided but `-C` isn't, **sqlcmd** requires validation of the server certificate. A `false` value for encryption could still lead to the encryption of the login packet.
 
 - If both `-N` and `-C` are provided, **sqlcmd** uses their values for encryption negotiation.
-
-- In **sqlcmd** (ODBC), use `-F` to specify the host name in the certificate. For example:
-
-  ```console
-  sqlcmd -S server01 -Q "SELECT TOP 100 * FROM WideWorldImporters.Sales.Orders" -A -Ns -F server01.adventure-works.com
-  ```
-
-  > [!NOTE]  
-  > This is different to the `-F` switch for **sqlcmd** (Go), which is used to print results using a vertical format.
 
 #### -P *password*
 
@@ -556,10 +576,6 @@ Enter `chcp` at the command prompt to verify the code page of `cmd.exe`.
 > [!NOTE]  
 > On Linux, the codepage number is a numeric value that specifies an installed Linux code page (available since 17.5.1.1).
 
-#### -F *hostname_in_certificate*
-
-Specifies a different, expected Common Name (CN) or Subject Alternate Name (SAN) in the server certificate to use during server certificate validation. Without this option, certificate validation ensures that the CN or SAN in the certificate matches the server name to which you're connecting. This parameter can be populated when the server name doesn't match the CN or SAN, for example, when using DNS aliases.
-
 #### -i *input_file*[,*input_file2*...]
 
 Identifies the file that contains a batch of Transact-SQL statements or stored procedures. Multiple files might be specified that are read and processed in order. Don't use any spaces between file names. **sqlcmd** checks first to see whether all the specified files exist. If one or more files don't exist, **sqlcmd** exits. The `-i` and the `-Q`/`-q` options are mutually exclusive.
@@ -628,7 +644,7 @@ Redirects the error message output to the screen (`stderr`). If you don't specif
 
 #### -R
 
-**Applies to**: ODBC **sqlcmd** only.
+**Applies to**: **sqlcmd** (ODBC) only.
 
 Causes **sqlcmd** to localize numeric, currency, date, and time columns retrieved from [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] based on the client's locale. By default, these columns are displayed using the server's regional settings.
 
@@ -652,7 +668,7 @@ Writes input scripts to the standard output device (`stdout`).
 
 #### -I
 
-**Applies to**: ODBC **sqlcmd** only.
+**Applies to**: **sqlcmd** (ODBC) only.
 
 Sets the `SET QUOTED_IDENTIFIER` connection option to `ON`. The default setting is `OFF`. For more information, see [SET QUOTED_IDENTIFIER](../../t-sql/statements/set-quoted-identifier-transact-sql.md).
 
