@@ -64,7 +64,11 @@ Requires `VIEW SERVER PERFORMANCE STATE` permission on the server.
 
 - **Use with care in multitenant hosts**: High values can originate from non-SQL Server workloads. Correlate with system tools or other DMVs for attribution.
 
-Use this DMV with other Linux-specific DMVs, such as [sys.dm_os_linux_disk_stats](sys-dm-os-linux-disk-stats-transact-sql.md) and [sys.dm_os_linux_net_stats](sys-dm-os-linux-net-stats-transact-sql.md), for holistic monitoring.
+Use this DMV with other Linux-specific DMVs for holistic monitoring:
+
+- [sys.dm_os_linux_cpu_stats](sys-dm-os-linux-cpu-stats-transact-sql.md)
+- [sys.dm_os_linux_net_stats](sys-dm-os-linux-net-stats-transact-sql.md)
+- [sys.dm_os_linux_vm_stats](sys-dm-os-linux-vm-stats-transact-sql.md)
 
 ### Usage scenarios
 
@@ -203,4 +207,5 @@ ORDER BY ios_in_progress DESC,
 
 - [sys.dm_os_linux_cpu_stats (Transact-SQL)](sys-dm-os-linux-cpu-stats-transact-sql.md)
 - [sys.dm_os_linux_net_stats (Transact-SQL)](sys-dm-os-linux-net-stats-transact-sql.md)
+- [sys.dm_os_linux_vm_stats (Transact-SQL)](sys-dm-os-linux-vm-stats-transact-sql.md)
 - [Performance best practices and configuration guidelines for SQL Server on Linux](../../linux/sql-server-linux-performance-best-practices.md)

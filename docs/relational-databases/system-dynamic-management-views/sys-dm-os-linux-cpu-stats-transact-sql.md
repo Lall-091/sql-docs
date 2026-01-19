@@ -53,13 +53,17 @@ Requires `VIEW SERVER PERFORMANCE STATE` permission on the server.
 
 ## Remarks
 
-This DMV provides cumulative statistics since the system was started.
+This DMV provides cumulative statistics since the system started.
 
-Values aren't limited to SQL Server activity; they reflect the entire Linux host.
+Values aren't limited to SQL Server activity. They reflect the entire Linux host.
 
 For more information on interpreting Linux CPU statistics, see the `proc_stat(5)` manual page for your distribution.
 
-Use this DMV with other Linux-specific DMVs, such as [sys.dm_os_linux_disk_stats](sys-dm-os-linux-disk-stats-transact-sql.md) and [sys.dm_os_linux_net_stats](sys-dm-os-linux-net-stats-transact-sql.md), for holistic monitoring.
+Use this DMV with other Linux-specific DMVs for holistic monitoring:
+
+- [sys.dm_os_linux_disk_stats](sys-dm-os-linux-disk-stats-transact-sql.md)
+- [sys.dm_os_linux_net_stats](sys-dm-os-linux-net-stats-transact-sql.md)
+- [sys.dm_os_linux_vm_stats](sys-dm-os-linux-vm-stats-transact-sql.md)
 
 ### Usage scenarios
 
@@ -67,9 +71,9 @@ Use this DMV with other Linux-specific DMVs, such as [sys.dm_os_linux_disk_stats
 
 - **Investigate I/O waits**: High `iowait_time_cs` or `proc_ioblocked_cnt` values could indicate storage bottlenecks.
 
-- **Analyze system responsiveness**: Frequent context switches (`csw_cnt`) or interrupts (`interrupt_cnt`) can signal issues with system scheduling or hardware.
+- **Analyze system responsiveness**: Frequent context switches (`csw_cnt`) or interrupts (`interrupt_cnt`) can signal problems with system scheduling or hardware.
 
-- **Correlate SQL Server performance with system activity**: Since these metrics are system-wide, they help distinguish between SQL Server-specific and broader OS-level issues.
+- **Correlate SQL Server performance with system activity**: Since these metrics are system-wide, they help you distinguish between SQL Server-specific and broader OS-level problems.
 
 ## Examples
 
@@ -128,4 +132,5 @@ WHERE scheduler_id < 255;
 
 - [sys.dm_os_linux_disk_stats (Transact-SQL)](sys-dm-os-linux-disk-stats-transact-sql.md)
 - [sys.dm_os_linux_net_stats (Transact-SQL)](sys-dm-os-linux-net-stats-transact-sql.md)
+- [sys.dm_os_linux_vm_stats (Transact-SQL)](sys-dm-os-linux-vm-stats-transact-sql.md)
 - [Performance best practices and configuration guidelines for SQL Server on Linux](../../linux/sql-server-linux-performance-best-practices.md)

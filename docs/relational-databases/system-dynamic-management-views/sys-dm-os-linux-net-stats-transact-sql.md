@@ -53,7 +53,11 @@ This DMV provides system-level network metrics and isn't limited to SQL Server a
 
 `sys.dm_os_linux_net_stats` is useful for diagnosing network problems that might affect SQL Server connectivity, Always On availability groups, replication, or client/server communication.
 
-Use this DMV with other Linux-specific DMVs, such as [sys.dm_os_linux_cpu_stats](sys-dm-os-linux-cpu-stats-transact-sql.md) and [sys.dm_os_linux_disk_stats](sys-dm-os-linux-disk-stats-transact-sql.md), for holistic monitoring.
+Use this DMV with other Linux-specific DMVs for holistic monitoring:
+
+- [sys.dm_os_linux_cpu_stats](sys-dm-os-linux-cpu-stats-transact-sql.md)
+- [sys.dm_os_linux_disk_stats](sys-dm-os-linux-disk-stats-transact-sql.md)
+- [sys.dm_os_linux_vm_stats](sys-dm-os-linux-vm-stats-transact-sql.md)
 
 ### Usage scenarios
 
@@ -80,7 +84,7 @@ FROM sys.dm_os_linux_net_stats;
 
 ### B. Identify interfaces with packet errors or drops
 
-Use the following query to focus on interfaces experiencing problems, filtering for nonzero error or drop counts.
+Use the following query to focus on interfaces experiencing problems. It filters for nonzero error or drop counts.
 
 ```sql
 SELECT interface,
@@ -99,7 +103,7 @@ WHERE recv_errors > 0
 
 Measure network throughput for each interface over a specific interval. This measurement helps you in capacity planning, and identifies bottlenecks during peak workloads.
 
-The following query tracks network usage trends, periodically samples bytes sent and received, and calculates the delta.
+The following query tracks network usage trends. It periodically samples bytes sent and received, and calculates the delta.
 
 Take a baseline snapshot:
 
@@ -135,7 +139,7 @@ WHERE recv_multicast > 0;
 
 ### E. Correlate network statistics with wait statistics
 
-If you observe high `NETWORK_IO` waits, check for corresponding network errors or drops to pinpoint the root cause of query delays.
+If you see high `NETWORK_IO` waits, check for matching network errors or drops to identify the root cause of query delays.
 
 Combine network stats with wait statistics to diagnose if network problems are causing SQL Server waits:
 
@@ -152,9 +156,9 @@ WHERE w.wait_type LIKE '%NETWORK_IO%';
 
 ### F. Find interfaces with high collision counts
 
-Detect and address network segments with excessive collisions, which might degrade SQL Server performance.
+Detect and fix network segments with excessive collisions, which might slow down SQL Server performance.
 
-Collisions can indicate network congestion or misconfigured hardware:
+Collisions can show network congestion or misconfigured hardware:
 
 ```sql
 SELECT interface,
@@ -165,9 +169,9 @@ WHERE tx_collisions > 0;
 
 ### G. Baseline and alerting example
 
-Integrate with monitoring tools to proactively notify database administrators of potential network problems before they affect SQL Server workloads.
+Integrate with monitoring tools to proactively notify database administrators about potential network problems before they affect SQL Server workloads.
 
-Use this DMV in automated monitoring scripts to alert when error or drop counts increase unexpectedly.
+Use this DMV in automated monitoring scripts to alert when error or drop counts unexpectedly increase.
 
 Alert if any interface has more than 10 errors or drops:
 
@@ -203,4 +207,5 @@ WHERE recv_errors > 10
 
 - [sys.dm_os_linux_cpu_stats (Transact-SQL)](sys-dm-os-linux-cpu-stats-transact-sql.md)
 - [sys.dm_os_linux_disk_stats (Transact-SQL)](sys-dm-os-linux-disk-stats-transact-sql.md)
+- [sys.dm_os_linux_vm_stats (Transact-SQL)](sys-dm-os-linux-vm-stats-transact-sql.md)
 - [Performance best practices and configuration guidelines for SQL Server on Linux](../../linux/sql-server-linux-performance-best-practices.md)

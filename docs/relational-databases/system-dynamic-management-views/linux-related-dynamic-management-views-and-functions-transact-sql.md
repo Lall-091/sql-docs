@@ -17,15 +17,16 @@ dev_langs:
 
 [!INCLUDE [sqlserver2025-linux](../../includes/applies-to-version/sqlserver2025-linux.md)]
 
-The following dynamic management objects return system-level Linux metrics beyond SQL Server, for a comprehensive visibility into overall host performance.
+The following dynamic management objects return system-level Linux metrics beyond SQL Server, so you get comprehensive visibility into overall host performance.
 
-These objects provide detailed CPU statistics, real-time network interface activity (bytes and packets sent and received, errors, drops, and collisions), and disk I/O statistics for each storage device.
+These objects provide detailed CPU statistics, real-time network interface activity (bytes and packets sent and received, errors, drops, and collisions), disk I/O statistics for each storage device, and virtual memory statistics.
 
 ## In this section
 
 - [sys.dm_os_linux_cpu_stats](sys-dm-os-linux-cpu-stats-transact-sql.md)
 - [sys.dm_os_linux_disk_stats](sys-dm-os-linux-disk-stats-transact-sql.md)
 - [sys.dm_os_linux_net_stats](sys-dm-os-linux-net-stats-transact-sql.md)
+- [sys.dm_os_linux_vm_stats](sys-dm-os-linux-vm-stats-transact-sql.md)
 
 ## Related content
 
