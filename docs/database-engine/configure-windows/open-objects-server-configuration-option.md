@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: concept-articleconcept-article
+ms.topic: concept-article
 helpviewer_keywords:
   - "open objects option"
 ---
