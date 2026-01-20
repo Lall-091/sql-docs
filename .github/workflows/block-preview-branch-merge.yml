@@ -1,0 +1,75 @@
+name: Block preview branch merges
+
+permissions:
+  pull-requests: write
+  statuses: write
+  checks: write
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    # Monitor all target branches since preview branches cannot merge to ANY branch
+
+jobs:
+  block-preview:
+    name: Block preview branch merge
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Check head reference restrictions
+        shell: pwsh
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+          BASE_REF: ${{ github.base_ref }}
+          PR_NUMBER: ${{ github.event.number }}
+          REPO_NAME: ${{ github.repository }}
+        run: |
+          Write-Host "Checking merge restrictions for PR #$env:PR_NUMBER"
+          Write-Host "Head reference: $env:HEAD_REF"
+          Write-Host "Base reference: $env:BASE_REF"
+          Write-Host "Repository: $env:REPO_NAME"
+          
+          if ($env:HEAD_REF -like "release-preview-*") {
+            Write-Host "❌ MERGE BLOCKED: Preview branch detected"
+            Write-Host ""
+            Write-Host "This pull request is attempting to merge from a preview branch"
+            Write-Host "to '$env:BASE_REF', which is not permitted."
+            Write-Host ""
+            Write-Host "IMPORTANT: Preview content cannot be merged into other branches directly"
+            Write-Host "from branches named 'release-preview-*'."
+            Write-Host ""
+            Write-Host "To merge such branches:"
+            Write-Host "1. Create a new branch from your target branch"
+            Write-Host "2. Squash the changes to one commit"
+            Write-Host "3. Create a new pull request from the new branch"
+            Write-Host ""
+            Write-Host "This restriction maintains content quality and prevents preview"
+            Write-Host "material from inadvertently entering production branches."
+            
+            # Set job summary for GitHub UI
+            echo "# 🚫 Merge Blocked - Preview Branch" >> $env:GITHUB_STEP_SUMMARY
+            echo "" >> $env:GITHUB_STEP_SUMMARY
+            echo "This pull request cannot be merged because it originates from a **preview branch**." >> $env:GITHUB_STEP_SUMMARY
+            echo "" >> $env:GITHUB_STEP_SUMMARY
+            echo "## Restriction Details" >> $env:GITHUB_STEP_SUMMARY
+            echo "- **Head branch:** $env:HEAD_REF" >> $env:GITHUB_STEP_SUMMARY
+            echo "- **Target branch:** $env:BASE_REF" >> $env:GITHUB_STEP_SUMMARY
+            echo "- **Restriction:** Preview content cannot be merged directly from 'release-preview-*' branches" >> $env:GITHUB_STEP_SUMMARY
+            echo "" >> $env:GITHUB_STEP_SUMMARY
+            echo "## Why This Restriction Exists" >> $env:GITHUB_STEP_SUMMARY
+            echo "This restriction maintains content quality and prevents preview material from inadvertently entering production branches." >> $env:GITHUB_STEP_SUMMARY
+            echo "" >> $env:GITHUB_STEP_SUMMARY
+            echo "## Resolution Steps" >> $env:GITHUB_STEP_SUMMARY
+            echo "1. Create a new branch from **$env:BASE_REF**" >> $env:GITHUB_STEP_SUMMARY
+            echo "2. Squash the changes to one commit" >> $env:GITHUB_STEP_SUMMARY
+            echo "3. Create a new pull request from the new branch" >> $env:GITHUB_STEP_SUMMARY
+            echo "" >> $env:GITHUB_STEP_SUMMARY
+            echo "## Need Help?" >> $env:GITHUB_STEP_SUMMARY
+            echo "Contact the [SQL Docs team](mailto:dbdocsprreviews@microsoft.com) for assistance with this restriction." >> $env:GITHUB_STEP_SUMMARY
+            
+            exit 1
+          } else {
+            Write-Host "✅ Merge allowed: Head reference '$env:HEAD_REF' is permitted"
+            echo "# ✅ Merge Check Passed" >> $env:GITHUB_STEP_SUMMARY
+            echo "Head branch **$env:HEAD_REF** is allowed to merge to **$env:BASE_REF**." >> $env:GITHUB_STEP_SUMMARY
+          }
