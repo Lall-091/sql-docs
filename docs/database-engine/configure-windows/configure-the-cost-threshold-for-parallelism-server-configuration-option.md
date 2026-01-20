@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 08/25/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "cost threshold for parallelism option"
 monikerRange: ">=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"

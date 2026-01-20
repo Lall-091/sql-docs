@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - build-2025
 ---

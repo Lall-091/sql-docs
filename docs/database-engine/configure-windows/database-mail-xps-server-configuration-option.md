@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 05/19/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "Database Mail XPs option"
   - "Database Mail [SQL Server], enabling"

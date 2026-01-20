@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: concept-article
+ms.topic: how-to
 ---
 
 # Server configuration: suppress recovery model errors

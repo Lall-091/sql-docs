@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 07/15/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "single-user mode [SQL Server], startup option"
   - "overriding default startup options"
