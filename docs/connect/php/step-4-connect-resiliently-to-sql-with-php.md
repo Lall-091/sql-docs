@@ -3,7 +3,8 @@ title: "Step 4: Connect resiliently to SQL with PHP"
 description: Step 4 is a demo program designed to showcase how transient errors during an attempt to connect leads to a retry.
 author: David-Engel
 ms.author: davidengel
-ms.date: 05/05/2021
+ms.date: 01/20/2026
+ai-usage: ai-assisted
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: how-to
@@ -12,11 +13,11 @@ ms.topic: how-to
 
 [!INCLUDE[Driver_PHP_Download](../../includes/driver_php_download.md)]
 
-The demo program is designed so that a transient error during an attempt to connect leads to a retry. (Transient error codes start with the prefix '08' as listed in this [appendix](../../odbc/reference/appendixes/appendix-a-odbc-error-codes.md).) But a transient error during query command causes the program to discard the connection and create a new connection, before retrying the query command. We don't recommend or discourage this design choice. The demo program illustrates some of the design flexibility that is available to you.
+The demo program is designed so that a transient error during an attempt to connect leads to a retry. (Transient error codes start with the prefix '08' as listed in this [appendix](../../odbc/reference/appendixes/appendix-a-odbc-error-codes.md).) But a transient error during a query command causes the program to discard the connection and create a new connection, before retrying the query command. We don't recommend or discourage this design choice. The demo program illustrates some of the design flexibility that's available to you.
 
 The length of this code sample is due mostly to the catch exception logic.
 
-The [sqlsrv_query()](sqlsrv-query.md) function can be used to retrieve a result set from a query against SQL Database. This function essentially accepts any query and connection object and returns a result set, which can be iterated over with the use of [sqlsrv_fetch_array()](sqlsrv-fetch-array.md).
+You can use the [sqlsrv_query()](sqlsrv-query.md) function to retrieve a result set from a query against SQL Database. This function accepts any query and connection object and returns a result set, which can be iterated over with the use of [sqlsrv_fetch_array()](sqlsrv-fetch-array.md).
 
 ```php
 
@@ -34,7 +35,7 @@ The [sqlsrv_query()](sqlsrv-query.md) function can be used to retrieve a result 
         for ($cc = 1; $cc <= $maxCountTriesConnectAndQuery; $cc++) {
             // [A.2] Connect, which proceeds to issue a query command.
             $conn = sqlsrv_connect($serverName, $connectionOptions);
-            if ($conn === true) {
+            if ($conn !== false) {
                 echo "Connection was established";
                 echo "<br>";
 
@@ -91,3 +92,8 @@ The [sqlsrv_query()](sqlsrv-query.md) function can be used to retrieve a result 
         }
     ?>
 ```
+
+## Related content
+
+- [Connection resiliency](connection-resiliency.md)
+- [Step 3: Proof of concept connecting to SQL using PHP](step-3-proof-of-concept-connecting-to-sql-using-php.md)

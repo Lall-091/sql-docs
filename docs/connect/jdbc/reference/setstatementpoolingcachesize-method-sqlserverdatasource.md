@@ -3,7 +3,8 @@ title: "setStatementPoolingCacheSize Method (SQLServerDataSource)"
 description: "setStatementPoolingCacheSize Method (SQLServerDataSource)"
 author: David-Engel
 ms.author: davidengel
-ms.date: "01/19/2018"
+ms.date: 01/20/2026
+ai-usage: ai-assisted
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: reference
@@ -17,7 +18,7 @@ ms.topic: reference
   
 ```
 
-public void setStatementPoolingCacheSize(boolean statementPoolingCacheSize);  
+public void setStatementPoolingCacheSize(int statementPoolingCacheSize);  
 ```  
   
 #### Parameters  
@@ -31,7 +32,8 @@ public void setStatementPoolingCacheSize(boolean statementPoolingCacheSize);
 ## Remarks  
  This method is available from JDBC driver version 6.4 and onward.
  
-## See Also  
+## Related content
+
  [SQLServerDataSource Members](../../../connect/jdbc/reference/sqlserverdatasource-members.md)   
  [SQLServerDataSource Class](../../../connect/jdbc/reference/sqlserverdatasource-class.md)  
   

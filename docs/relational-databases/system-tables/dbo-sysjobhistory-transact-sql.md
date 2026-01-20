@@ -4,7 +4,8 @@ description: Contains information about the execution of scheduled jobs by the S
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 03/27/2024
+ms.date: 01/20/2026
+ai-usage: ai-assisted
 ms.service: sql
 ms.subservice: system-objects
 ms.topic: "reference"
@@ -25,7 +26,7 @@ dev_langs:
 Contains information about the execution of scheduled jobs by the [SQL Server Agent](/ssms/agent/sql-server-agent).
 
 > [!NOTE]  
-> In most cases, the data is updated only after the job step completes, and the table typically contains no records for job steps that are currently in progress. In some cases, underlying processes *do* provide information about in progress job steps.
+> In most cases, the data updates only after the job step completes, and the table typically contains no records for job steps that are currently in progress. In some cases, underlying processes *do* provide information about in-progress job steps.
 
 This table is stored in the `msdb` database.
 
@@ -68,8 +69,7 @@ SELECT sj.name AS Name,
                 LEN(CAST(sh.run_duration AS VARCHAR)) - 4) AS INT) % 24 AS VARCHAR), 2)
                     + ':' + STUFF(CAST(RIGHT(CAST(sh.run_duration AS VARCHAR), 4) AS VARCHAR(6)), 3, 0, ':')
         ELSE STUFF(STUFF(RIGHT(REPLICATE('0', 6) + CAST(sh.run_duration AS VARCHAR(6)), 6), 3, 0, ':'), 6, 0, ':')
-        END AS [LastRunDuration (d.HH:MM:SS)],
-    DATEADD(SECOND, shp.LastRunDurationSeconds, shp.LastRunStartDateTime) AS LastRunFinishDateTime
+        END AS [LastRunDuration (d.HH:MM:SS)]
 FROM msdb.dbo.sysjobs sj
 INNER JOIN msdb.dbo.sysjobhistory sh ON sj.job_id = sh.job_id
 CROSS APPLY (SELECT DATETIMEFROMPARTS(sh.run_date / 10000, -- years
