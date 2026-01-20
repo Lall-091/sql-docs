@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "12/11/2018"
 ms.service: sql
 ms.subservice: availability-groups
-ms.topic: article
+ms.topic: concept-article
 helpviewer_keywords:
   - "database mirroring [SQL Server], interoperability"
   - "cross-database transactions [SQL Server]"

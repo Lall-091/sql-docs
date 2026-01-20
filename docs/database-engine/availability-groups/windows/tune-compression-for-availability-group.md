@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 01/25/2024
 ms.service: sql
 ms.subservice: availability-groups
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Tune compression for availability group
 

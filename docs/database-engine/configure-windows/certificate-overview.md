@@ -7,7 +7,7 @@ ms.reviewer: sureshka, randolphwest
 ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Transport Layer Security and digital certificates

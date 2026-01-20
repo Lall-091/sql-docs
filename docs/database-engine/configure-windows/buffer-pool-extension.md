@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 01/28/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: article
+ms.topic: concept-article
 ---
 # Buffer pool extension
 
