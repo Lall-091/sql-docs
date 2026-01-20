@@ -3,8 +3,8 @@ title: "SQL Server Login Dialog Box (OLE DB)"
 description: When you attempt to connect without specifying enough information, the OLE DB Driver for SQL Server prompts you with the SQL Server Login dialog box.
 author: David-Engel
 ms.author: davidengel
-ms.reviewer: v-davidengel, randolphwest
-ms.date: 12/11/2025
+ms.reviewer: randolphwest
+ms.date: 01/16/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: concept-article
@@ -47,7 +47,7 @@ You can select the following authentication options from the dropdown list:
 | **Windows Authentication** | Authenticate to SQL Server using the currently logged-in user's Windows account credentials. |
 | **SQL Server Authentication** | Authenticate using SQL username and password. |
 | **Active Directory - Integrated** | Integrated Windows authentication through Microsoft Entra ID. This mode is used for Windows authentication in Active Directory environments federated with Microsoft Entra ID. |
-| **Active Directory - Password** | Username and password authentication with a Microsoft Entra identity. |
+| **Active Directory - Password** | [DEPRECATED] Username and password authentication with a Microsoft Entra identity. |
 | **Active Directory - Universal with MFA support** | Interactive authentication with a Microsoft Entra identity. This mode supports Microsoft Entra multifactor authentication. |
 | **Active Directory - Service Principal** | Authentication with a Microsoft Entra service principal. **Login ID** should be set to the application (client) ID. **Password** should be set to the application (client) secret. |
 

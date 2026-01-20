@@ -3,8 +3,7 @@ title: Use Microsoft Entra ID
 description: Learn about the Microsoft Entra authentication methods available in the Microsoft OLE DB Driver for SQL Server that enable connecting to databases.
 author: David-Engel
 ms.author: davidengel
-ms.reviewer: v-davidengel
-ms.date: 07/26/2024
+ms.date: 01/16/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -106,6 +105,8 @@ This section shows examples of new and existing connection string keywords to be
 <a name='azure-active-directory-username-and-password-authentication'></a>
 
 ### Microsoft Entra username and password authentication
+
+[!INCLUDE [entra-password-auth-deprecation](../../../includes/entra-password-auth-deprecation.md)]
 
 - Using `IDataInitialize::GetDataSource`:
     > Provider=MSOLEDBSQL19;Data Source=[server];Initial Catalog=[database];**Authentication=ActiveDirectoryPassword**;User ID=[username];Password=[password];Use Encryption for Data=Mandatory

@@ -4,7 +4,7 @@ description: This article describes the options available when creating a new DS
 author: David-Engel
 ms.author: davidengel
 ms.reviewer: randolphwest
-ms.date: 06/05/2025
+ms.date: 01/16/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: concept-article
@@ -64,6 +64,9 @@ Specifies that the driver authenticate to SQL Server using Microsoft Entra ID. W
 Specifies that the driver authenticate to SQL Server using a login ID and password.
 
 ### With Active Directory Password authentication
+
+> [!NOTE]
+> ActiveDirectoryPassword is deprecated. For more information, see [ActiveDirectoryPassword is deprecated](../using-azure-active-directory.md#activedirectorypassword-is-deprecated).
 
 Specifies that the driver authenticate to SQL Server using a Microsoft Entra login ID and password.
 

@@ -3,7 +3,7 @@ title: Connect using Microsoft Entra authentication
 description: Learn how to develop Java applications that use the Microsoft Entra authentication feature with the Microsoft JDBC Driver for SQL Server.
 author: David-Engel
 ms.author: davidengel
-ms.date: 03/17/2025
+ms.date: 01/16/2026
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: integration
@@ -17,7 +17,6 @@ This article provides information on how to develop Java applications that use t
 
 You can use Microsoft Entra authentication, which is a mechanism to connect to Azure SQL Database, Azure SQL Manged Instance, and Azure Synapse Analytics using identities in Microsoft Entra ID. Use Microsoft Entra authentication to centrally manage identities of database users and as an alternative to SQL Server authentication. The JDBC driver allows you to specify your Microsoft Entra credentials in the JDBC connection string to connect to Azure SQL. For information on how to configure Microsoft Entra authentication visit [Connecting to Azure SQL By Using Microsoft Entra authentication](/azure/azure-sql/database/authentication-aad-overview).
 
-
 Connection properties to support Microsoft Entra authentication in the Microsoft JDBC Driver for SQL Server are:
 
 - **authentication**:  Use this property to indicate which SQL authentication method to use for the connection.
@@ -30,9 +29,6 @@ Connection properties to support Microsoft Entra authentication in the Microsoft
   - **ActiveDirectoryIntegrated**
     - Since driver version 6.0, `authentication=ActiveDirectoryIntegrated` can be used to connect to Azure SQL/Synapse Analytics via integrated authentication. To use this authentication mode, you must [federate](/azure/active-directory/hybrid/connect/whatis-fed) the on-premises Active Directory Federation Services (ADFS) with Microsoft Entra ID in the cloud. Once you set it up, you can connect by either adding the native library `mssql-jdbc_auth-<version>-<arch>.dll` to the application class path on Windows, or by setting up a Kerberos ticket for cross-platform authentication support. You're able to access Azure SQL/Azure Synapse Analytics without being prompted for credentials when you're logged in to a domain-joined machine. For more information, see [Connect using ActiveDirectoryIntegrated authentication mode](#connect-using-activedirectoryintegrated-authentication-mode).
 
-  - **ActiveDirectoryPassword**
-    - Since driver version 6.0, `authentication=ActiveDirectoryPassword` can be used to connect to Azure SQL/Synapse Analytics with Microsoft Entra username and password. For more information, see [Connect using ActiveDirectoryPassword authentication mode](#connect-using-activedirectorypassword-authentication-mode).
-
   - **ActiveDirectoryInteractive**
     - Since driver version 9.2, `authentication=ActiveDirectoryInteractive` can be used to connect to an Azure SQL/Synapse Analytics via interactive authentication flow (multifactor authentication). For more information, see [Connect using ActiveDirectoryInteractive authentication mode](#connect-using-activedirectoryinteractive-authentication-mode).
 
@@ -41,10 +37,14 @@ Connection properties to support Microsoft Entra authentication in the Microsoft
 
   - **ActiveDirectoryServicePrincipalCertificate**
     - Since driver version 12.4, `authentication=ActiveDirectoryServicePrincipalCertificate` can be used to connect to an Azure SQL Database/Synapse Analytics by specifying the application/client ID in the userName property and the location of the Service Principal certificate in the `clientCertificate` property. For more information, see [Connect using ActiveDirectoryServicePrincipalCertificate authentication mode](#connect-using-activedirectoryserviceprincipalcertificate-authentication-mode).
+  - **ActiveDirectoryPassword [DEPRECATED]**
+    - ActiveDirectoryPassword is deprecated. For more information, see [Connect using ActiveDirectoryPassword authentication mode](#connect-using-activedirectorypassword-authentication-mode).
+    - Since driver version 6.0, `authentication=ActiveDirectoryPassword` can be used to connect to Azure SQL/Synapse Analytics with Microsoft Entra username and password. For more information, see [Connect using ActiveDirectoryPassword authentication mode](#connect-using-activedirectorypassword-authentication-mode).
+
   - **SqlPassword**
     - Use `authentication=SqlPassword` to connect to a SQL Server using userName/user and password properties.
   - **NotSpecified**
-    - Use `authentication=NotSpecified` or leave it as the default when none of these authentication methods are needed.
+    - The default value when none of these authentication methods are specified.
   - **accessToken**: Use this connection property to connect to a SQL Database with access token. `accessToken` can only be set using the Properties parameter of the `getConnection()` method in the DriverManager class. It can't be used in the connection URL.
 
 For more information, see the authentication property on the [Setting the Connection Properties](setting-the-connection-properties.md) page.
@@ -289,7 +289,7 @@ You have successfully logged on as: <your domain user name>
 
 ### Set Kerberos ticket on Windows, Linux And macOS
 
-You must up a Kerberos ticket to link your current user to a Windows domain account. Following is a summary of the key steps.
+You must set up a Kerberos ticket to link your current user to a Windows domain account. Following is a summary of the key steps.
 
 #### Windows
 
@@ -359,6 +359,8 @@ Access to a Windows domain-joined machine to query your Kerberos Domain Controll
 
 ## Connect using ActiveDirectoryPassword authentication mode
 
+[!INCLUDE [entra-password-auth-deprecation](../../includes/entra-password-auth-deprecation.md)]
+
 The following example shows how to use `authentication=ActiveDirectoryPassword` mode.
 
 To build and run the example:
@@ -414,7 +416,6 @@ If the connection is established, you should see the following message as output
 ```output
 You have successfully logged on as: <your user name>
 ```
-
 
 ## Connect using ActiveDirectoryInteractive authentication mode
 
@@ -612,11 +613,9 @@ If a connection is established, you should see the following message as output:
 You have successfully logged on as: <your app/client ID>
 ```
 
-
 ## Connect using access token
 
 Applications/services can retrieve an access token from Microsoft Entra ID and use that to connect to Azure SQL Database, Azure SQL Managed Instance, and Azure Synapse Analytics.
-
 
 > [!NOTE]
 > `accessToken` can only be set using the Properties parameter of the `getConnection()` method in the DriverManager class. It can't be used in the connection string. Starting with driver version 12.2, users can implement and provide an `accessToken` callback to the driver for token renewal in connection pooling scenarios. Connection pooling scenarios require the connection pool implementation to use the standard [JDBC connection pooling classes](using-connection-pooling.md).
@@ -633,15 +632,14 @@ To build and run the example:
     5. Enter `mytokentest` as a friendly name for the application.
     6. Leave the default selection for supported account types, which can use the application.
     7. Select **Register** at the bottom.
-    6. Don't need SIGN-ON URL. Provide anything: `https://mytokentest`.
-    7. Select `Create` at the bottom.
-    8. Upon selecting **Register**, the app is immediately created, and you're taken to its resource page.
-    9. In the **Essentials** box, find the **Application (client) ID** and copy it. You need this value later to configure your application.
-    10. Select **Certificates & secrets** from the navigation pane. On the **Client secrets (0)** tab, select **New client secret**. Enter a description for the secret and select an expiration (the default is fine). Select **Add** at the bottom. **Important** before leaving this page, copy the generated **Value** for your client secret. This value can't be viewed after leaving the page. This value is the client secret.
-    11. Return to the [App registrations](https://ms.portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/RegisteredApps) pane for Microsoft Entra ID and find the **Endpoints** tab. Copy the URL under `OAuth 2.0 token endpoint`. This URL is your STS URL.
+    8. Don't need SIGN-ON URL. Provide anything: `https://mytokentest`.
+    9. Select `Create` at the bottom.
+    10. Upon selecting **Register**, the app is immediately created, and you're taken to its resource page.
+    11. In the **Essentials** box, find the **Application (client) ID** and copy it. You need this value later to configure your application.
+    12. Select **Certificates & secrets** from the navigation pane. On the **Client secrets (0)** tab, select **New client secret**. Enter a description for the secret and select an expiration (the default is fine). Select **Add** at the bottom. **Important** before leaving this page, copy the generated **Value** for your client secret. This value can't be viewed after leaving the page. This value is the client secret.
+    13. Return to the [App registrations](https://ms.portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/RegisteredApps) pane for Microsoft Entra ID and find the **Endpoints** tab. Copy the URL under `OAuth 2.0 token endpoint`. This URL is your STS URL.
 
 1. Connect to your database as a Microsoft Entra admin and use a T-SQL command to provision a contained database user for your application principal. For more information on how to create a Microsoft Entra admin and a contained database user, see the [Connecting by using Microsoft Entra authentication](/azure/azure-sql/database/authentication-aad-overview).
-
 
     ```sql
     CREATE USER [mytokentest] FROM EXTERNAL PROVIDER
