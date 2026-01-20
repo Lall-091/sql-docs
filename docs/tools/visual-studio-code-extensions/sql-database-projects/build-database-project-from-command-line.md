@@ -4,7 +4,7 @@ description: Build a SQL Server Database Project from the command line
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: randolphwest, maghan
-ms.date: 10/10/2025
+ms.date: 01/19/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: how-to
@@ -12,7 +12,7 @@ ms.collection:
   - data-tools
 ---
 
-# Build a database project from command line
+# Build a database project from the command line
 
 [!INCLUDE [azure-data-studio-deprecation](../../../includes/azure-data-studio-deprecation.md)]
 
@@ -28,7 +28,7 @@ To build an SDK-style SQL project from the command line on Windows, macOS, or Li
 dotnet build
 ```
 
-Optionally, you can specify the project name. Specifying the project name enables building a specific project within a more complex folder structure.
+Optionally, specify the project name. If you specify the project name, you can build a specific project within a more complex folder structure.
 
 ```bash
 dotnet build AdventureWorks/AdventureWorks.sqlproj
@@ -36,7 +36,7 @@ dotnet build AdventureWorks/AdventureWorks.sqlproj
 
 ## Microsoft.Build.Sql with .NET Framework
 
-Starting with Microsoft.Build.Sql 2.0.0-preview.3, SDK-style SQL projects can be built from the command line with .NET Framework and msbuild. For SQLCLR objects, .NET Framework is required to build the SQL project.
+Starting with Microsoft.Build.Sql 2.0.0-preview.3, you can build SDK-style SQL projects from the command line using .NET Framework and msbuild. For SQLCLR objects, .NET Framework is required to build the SQL project.
 
 ```bash
 msbuild AdventureWorks/AdventureWorks.sqlproj

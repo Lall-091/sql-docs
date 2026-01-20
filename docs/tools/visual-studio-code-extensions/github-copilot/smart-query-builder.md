@@ -5,7 +5,7 @@ description: Learn how GitHub Copilot's Query Building Assistant helps construct
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: randolphwest
-ms.date: 11/18/2025
+ms.date: 01/19/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: quickstart
@@ -61,7 +61,7 @@ Create a Sequelize query to fetch `Customers` (`SalesLT.Customers`) along with t
 
 ### Complex relationships
 
-Use these prompts to generate queries that span multiple related tables. Whether you're joining customer data with order details or building revenue aggregations, GitHub Copilot helps navigate complex relationships using schema context to produce accurate joins and conditions.
+Use these prompts to generate queries that span multiple related tables. Whether you're joining customer data with order details or building revenue aggregations, GitHub Copilot helps you navigate complex relationships by using schema context to produce accurate joins and conditions.
 
 #### Return a list of orders above the average total
 
@@ -101,7 +101,7 @@ Write a Django ORM query that retrieves all customers who have made purchases in
 
 ### Business insights
 
-These prompts are designed to surface actionable insights from your data. From identifying churn-risk customers to finding unsold products, GitHub Copilot can help build logic that supports strategic decisions and reporting, tailored to your connected database.
+These prompts provide actionable insights from your data. From identifying churn-risk customers to finding unsold products, GitHub Copilot can help you build logic that supports strategic decisions and reporting, tailored to your connected database.
 
 #### Identify new customers
 

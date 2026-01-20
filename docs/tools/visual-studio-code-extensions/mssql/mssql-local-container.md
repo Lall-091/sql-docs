@@ -4,7 +4,7 @@ description: Learn how to use the MSSQL extension for Visual Studio Code to crea
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: randolphwest
-ms.date: 08/20/2025
+ms.date: 01/19/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -15,7 +15,7 @@ ai-usage: ai-assisted
 
 # Local SQL Server container
 
-The Local SQL Server container feature in the MSSQL extension for Visual Studio Code simplifies local development by allowing developers to spin up fully configured SQL Server containers without writing a single Docker command. You can deploy and manage containers directly from the Connections view. This new capability is perfect for prototyping, developing, or testing workloads using the same database engine available in production environments.
+With the Local SQL Server container feature in the MSSQL extension for Visual Studio Code, you can create and manage SQL Server containers without manually running Docker commands. Containers can be deployed, started, stopped, and removed directly from the **Connections** view, providing a straightforward way to prototype, develop, and test workloads using the same database engine available in production environments.
 
 :::image type="content" source="media/mssql-local-container/local-container-wizard-1.gif" alt-text="Screenshot showing animation of Local Container wizard part one." lightbox="media/mssql-local-container/local-container-wizard-1.gif":::
 
@@ -83,12 +83,12 @@ To create a local SQL Server container:
 
 After you select **Create Container**, the extension handles everything for you:
 
-- Pulls the selected SQL Server image (if not already cached)
-- Creates a SQL Server container with the chosen settings
-- Monitors the logs to verify that all databases are fully recovered and ready
-- Creates a connection profile and connects to your container
+- Pulls the selected SQL Server image (if not already cached).
+- Creates a SQL Server container with the chosen settings.
+- Monitors the logs to verify that all databases are fully recovered and ready.
+- Creates a connection profile and connects to your container.
 
-After deployment completes, the container starts, and the MSSQL extension autoconnects to the new database.
+When deployment finishes, the container starts, and the MSSQL extension autoconnects to the new database.
 
 ## Manage your container
 
@@ -106,25 +106,25 @@ This option shuts down the container while preserving your database state. You c
 
 This option permanently removes the container and its data. You're asked to confirm before proceeding.
 
-   :::image type="content" source="media/mssql-local-container/local-container-stop-delete.png" alt-text="Screenshot showing how to manage container lifecycle in the MSSQL extension." lightbox="media/mssql-local-container/local-container-stop-delete.png":::
+:::image type="content" source="media/mssql-local-container/local-container-stop-delete.png" alt-text="Screenshot showing how to manage container lifecycle in the MSSQL extension." lightbox="media/mssql-local-container/local-container-stop-delete.png":::
 
 > [!IMPORTANT]  
 > Deleting a container also removes its associated connection profile.
 
 ## Automatic reconnect experience
 
-If your container or Docker isn't running when you reconnect, the extension prompts you to start them. There's no need to troubleshoot manually.
+If your container or Docker isn't running when you reconnect, the extension prompts you to start them. You don't need to troubleshoot manually.
 
 ## Supported scenarios
 
-You can use local SQL Server container with all core features of the MSSQL extension:
+You can use a local SQL Server container with all core features of the MSSQL extension:
 
 - Query Editor and IntelliSense
 - Table Designer and Schema Designer
 - GitHub Copilot
 - Object Explorer and connection management
 
-This feature makes local SQL Server container ideal for:
+This feature makes a local SQL Server container ideal for:
 
 - Prototyping new features
 - Testing schema changes
@@ -134,12 +134,12 @@ This feature makes local SQL Server container ideal for:
 ## Limitations
 
 - Requires Docker Desktop (or equivalent) to be installed and running.
-- Only Linux-based SQL Server containers are supported ([!INCLUDE [sssql17-md](../../../includes/sssql17-md.md)] and later versions).
+- Only supports Linux-based SQL Server containers ([!INCLUDE [sssql17-md](../../../includes/sssql17-md.md)] and later versions).
 - No support for Podman.
-- Backup/restore, clustering, script initialization, and Docker Compose aren't supported via the built-in wizard, but you can perform these tasks manually using external tools or commands.
-- Designed strictly for local development—not for production use.
-- Issues with Docker installation, configuration, or runtime must be resolved by the user.
-- Make sure your computer has sufficient resources, or adjust Docker's memory allocation and the container's resource limits via Docker settings to ensure stable performance.
+- The built-in wizard doesn't support backup and restore, clustering, script initialization, or Docker Compose. You can perform these tasks manually using external tools or commands.
+- Designed strictly for local development. Not for production use.
+- You must resolve any issues with Docker installation, configuration, or runtime.
+- Make sure your computer has sufficient resources, or adjust Docker's memory allocation and the container's resource limits through Docker settings to ensure stable performance.
 - Memory requirements:
   - SQL Server needs at least 2 GB of memory to start a Linux-based container.
   - By default, SQL Server on Linux uses approximately 80% of the memory available to the container.

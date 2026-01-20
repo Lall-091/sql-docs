@@ -4,7 +4,7 @@ description: Learn how to use the schema designer in Visual Studio Code with MSS
 author: yoleichen
 ms.author: yoleichen
 ms.reviewer: roblescarlos, randolphwest
-ms.date: 08/20/2025
+ms.date: 01/19/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: overview
@@ -15,7 +15,7 @@ ai-usage: ai-assisted
 
 # Schema Designer
 
-The schema designer in the MSSQL extension for Visual Studio Code simplifies complex schema designs, and provides a more intuitive understanding of your database structures. It integrates database diagram functionality to visualize existing schemas, and allows developers to design and manage databases directly in a graphical environment without needing to write Transact-SQL (T-SQL) statements.
+The schema designer in the MSSQL extension for Visual Studio Code simplifies complex schema designs, providing a more intuitive understanding of your database structures. It integrates database diagram functionality to visualize existing schemas. You can design and manage databases directly in a graphical environment without needing to write Transact-SQL (T-SQL) statements.
 
 :::image type="content" source="media/mssql-schema-designer/schema-designer-overview.png" alt-text="Screenshot of the schema designer overview showing a database schema diagram." lightbox="media/mssql-schema-designer/schema-designer-overview.png":::
 
@@ -32,7 +32,7 @@ Schema designer offers these features:
 
 ## Open schema designer
 
-Right-click on the database in the object explorer and select **Design Schema** from the menu. This opens the schema designer view, which then allows you to see the visual database diagram.
+Right-click on the database in the object explorer and select **Design Schema** from the menu. This action opens the schema designer view, which then allows you to see the visual database diagram.
 
 :::image type="content" source="media/mssql-schema-designer/schema-designer-entry-point.png" alt-text="Screenshot of the entry point to open the schema designer in Visual Studio Code MSSQL extension." lightbox="media/mssql-schema-designer/schema-designer-entry-point.png":::
 
@@ -44,15 +44,15 @@ Once inside the schema designer, you find a canvas with various navigation capab
 
   :::image type="content" source="media/mssql-schema-designer/schema-designer-mini-map.png" alt-text="Screenshot of the mini-map feature in the schema designer for quick navigation.":::
 
-- **Drag and drop**: Rearrange tables and relationships by dragging elements on the canvas. This helps you create a layout that makes sense to you or your team.
+- **Drag and drop**: Rearrange tables and relationships by dragging elements on the canvas. This option helps you create a layout that makes sense to you or your team.
 
 - **Search and filter**: Use the search box (**Ctrl**+**F** or **Cmd**+**F**) to locate specific tables or columns. Apply filters to focus on certain parts of the schema or hide irrelevant elements.
 
-- **Auto-arrange**: The diagram is automatically arranged in a clear and readable layout by default. If you've manually repositioned tables and want to reset the view, select the **Autoarrange** button to reorganize the tables into the default optimized layout.
+- **Auto-arrange**: The diagram is automatically arranged in a clear and readable layout by default. If you manually reposition tables and want to reset the view, select the **Autoarrange** button to reorganize the tables into the default optimized layout.
 
 ## Understand table structure and relationships
 
-Once you enter the schema designer view, you see the visualization of your database tables. Each table displays its schema and table name, columns, data types, and primary keys shown as a key icon.
+When you enter the schema designer view, you see the visualization of your database tables. Each table displays its schema and table name, columns, data types, and primary keys shown as a key icon.
 
 :::image type="content" source="media/mssql-schema-designer/schema-designer-tables.png" alt-text="Screenshot of a table structure showing columns, data types, and primary keys in the schema designer." lightbox="media/mssql-schema-designer/schema-designer-tables.png":::
 
@@ -60,11 +60,11 @@ Foreign key relationships are shown with connecting arrows between columns. For 
 
 ## Add or edit tables
 
-To add a new table, select the **Add Table** button in the top toolbar. To edit an existing table, select the pencil icon on the table you want to modify directly in the diagram.
+Select **Add Table** in the top toolbar to add a new table. Select the pencil icon on a table in the diagram to edit that table.
 
 :::image type="content" source="media/mssql-schema-designer/schema-designer-edit-table.png" alt-text="Screenshot of the table editor panel for adding or modifying table details in the schema designer." lightbox="media/mssql-schema-designer/schema-designer-edit-table.png":::
 
-This action opens the Table tab in the Table Editor in a side panel, where you can:
+This action opens the **Table** tab in the **Table Editor** in a side panel. You can:
 
 - Select or change the schema
 - Define the table name
@@ -72,7 +72,7 @@ This action opens the Table tab in the Table Editor in a side panel, where you c
 - Mark one or more columns as primary keys
 - Delete or update existing columns as needed
 
-Once you've made your changes, select **Save** to apply them. The diagram updates to reflect your changes. For more advanced table editing capabilities, such as creating indexes or setting up constraint rules, use the [Table designer in the MSSQL extension for Visual Studio Code](mssql-extension-visual-studio-code.md#table-designer).
+Select **Save** to apply your changes. The diagram updates to reflect your changes. For more advanced table editing capabilities, such as creating indexes or setting up constraint rules, use the [Table designer in the MSSQL extension for Visual Studio Code](mssql-extension-visual-studio-code.md#table-designer).
 
 ## Add or edit foreign key relationships
 
@@ -80,7 +80,7 @@ To manage foreign key relationships, select the ellipsis (**...**) on a table in
 
 :::image type="content" source="media/mssql-schema-designer/schema-designer-manage-relationships.png" alt-text="Screenshot of relationships management entry point in the schema designer.":::
 
-This option opens the Foreign Keys tab in the Table Editor side panel, where you can:
+This option opens the **Foreign Keys** tab in the **Table Editor** side panel, where you can:
 
 - Add new foreign key relationships by referencing primary keys in other tables
 - Define the foreign key name
@@ -88,7 +88,7 @@ This option opens the Foreign Keys tab in the Table Editor side panel, where you
 
 :::image type="content" source="media/mssql-schema-designer/schema-designer-foreign-key.png" alt-text="Screenshot of the foreign key relationships management panel in the schema designer." lightbox="media/mssql-schema-designer/schema-designer-foreign-key.png":::
 
-Changes are automatically reflected in the visual diagram, with arrows showing the direction of each relationship.
+Changes automatically appear in the visual diagram, with arrows showing the direction of each relationship.
 
 :::image type="content" source="media/mssql-schema-designer/schema-designer-arrows.png" alt-text="Screenshot of arrows representing foreign key relationships between tables in the schema designer." lightbox="media/mssql-schema-designer/schema-designer-arrows.png":::
 
@@ -102,11 +102,11 @@ From the ribbon toolbar, select the **View Code** button to open the bottom pane
 
 ## Review and publish your changes
 
-Once you finish editing tables or relationships, select the **Publish Changes** button in the top toolbar. This generates a change summary report listing all pending modifications to your schema.
+When you finish editing tables or relationships, select **Publish Changes** in the top toolbar. This action generates a change summary report that lists all pending modifications to your schema.
 
 :::image type="content" source="media/mssql-schema-designer/schema-designer-publish.png" alt-text="Screenshot of the publish changes feature in the schema designer summarizing schema modifications." lightbox="media/mssql-schema-designer/schema-designer-publish.png":::
 
-Review the report carefully, and check the confirmation box to acknowledge and accept any potential risks associated with applying the changes. This process is powered by DacFX (Data-tier Application Framework), which ensures your schema updates are deployed smoothly, reliably, and with minimal disruption to your database.
+Review the report carefully. Check the confirmation box to acknowledge and accept any potential risks associated with applying the changes. This process is managed by DacFX (Data-tier Application Framework), which ensures your schema updates are deployed smoothly, reliably, and with minimal disruption to your database.
 
 ## Related content
 

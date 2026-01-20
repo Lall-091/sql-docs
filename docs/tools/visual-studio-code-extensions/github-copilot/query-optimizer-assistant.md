@@ -5,7 +5,7 @@ description: Learn how GitHub Copilot helps developers optimize queries and anal
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: randolphwest
-ms.date: 11/18/2025
+ms.date: 01/19/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: quickstart
@@ -27,9 +27,9 @@ GitHub Copilot helps developers optimize queries and analyze performance bottlen
 
 ## Optimize performance with GitHub Copilot
 
-GitHub Copilot offers multiple ways to help developers write performant, production-ready database code without requiring deep expertise in query tuning or execution plan analysis. Whether you're building new features or investigating a performance issue, GitHub Copilot can surface insights, recommend optimizations, and help restructure queries, all within your existing workflow in Visual Studio Code.
+GitHub Copilot offers multiple ways to help developers write performant, production-ready database code without requiring deep expertise in query tuning or execution plan analysis. Whether you're building new features or investigating a performance issue, GitHub Copilot can provide insights, recommend optimizations, and help restructure queries. You can access all these capabilities within your existing workflow in Visual Studio Code.
 
-Here are common use cases and examples of what you can ask via the chat participant.
+The following sections describe common use cases and examples of what you can ask via the chat participant.
 
 ### Optimize queries
 
@@ -136,7 +136,7 @@ WHERE soh.TotalDue > 500;
 
 ### Query restructuring
 
-Restructuring queries using common table expressions (CTEs) can improve readability and maintainability, especially for complex logic or nested subqueries. GitHub Copilot can help rewrite your existing queries to use CTEs while preserving intent and improving clarity.
+Restructuring queries using common table expressions (CTEs) can make your queries easier to read and maintain. This approach is especially helpful for complex logic or nested subqueries. GitHub Copilot can help you rewrite your existing queries to use CTEs while preserving the original intent and improving clarity.
 
 #### Inner select to CTE example
 
@@ -177,7 +177,7 @@ HAVING AVG(UnitPrice) > 50;
 
 ### Code-first performance scenarios
 
-When you work with ORMs like Entity Framework, Prisma, or Sequelize, performance can degrade if queries aren't optimized. GitHub Copilot helps detect and resolve issues such as missing indexes, inefficient filtering, and N+1 problems in code-first workflows.
+When you work with ORMs like Entity Framework, Prisma, or Sequelize, performance can degrade if you don't optimize your queries. GitHub Copilot helps you detect and resolve problems such as missing indexes, inefficient filtering, and N+1 problems in code-first workflows.
 
 #### Prisma example
 

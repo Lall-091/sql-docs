@@ -5,7 +5,7 @@ description: Learn how GitHub Copilot helps developers understand and work with 
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: randolphwest
-ms.date: 11/18/2025
+ms.date: 01/19/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: quickstart
@@ -19,7 +19,7 @@ ai-usage: ai-assisted
 
 # Quickstart: Use the business logic explainer
 
-In this quickstart, you learn how the business logic explainer helps developers understand and work with complex application logic implemented in SQL, ORM (Object-Relational Mapping) frameworks, or directly in the database. The assistant analyzes SQL code, ORM models, or existing database schemas to explain the underlying business rules and provide actionable documentation.
+In this quickstart, you learn how the business logic explainer helps developers understand and work with complex application logic implemented in SQL, object-relational mapping (ORM) frameworks, or directly in the database. The assistant analyzes SQL code, ORM models, or existing database schemas to explain the underlying business rules and provide actionable documentation.
 
 ## Get started
 

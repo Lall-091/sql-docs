@@ -5,7 +5,7 @@ description: Learn how to use GitHub Copilot's inline suggestions and chat exper
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: randolphwest
-ms.date: 11/18/2025
+ms.date: 01/19/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: quickstart
@@ -115,7 +115,7 @@ Generate a Sequelize migration to add a foreign key from `SalesLT.SalesOrderDeta
 
 ## Use inline suggestions with GitHub Copilot
 
-You can start by typing a T-SQL query in a new editor window, like `SELECT * FROM SalesLT.Customer`, and observe the inline suggestions provided by GitHub Copilot. The suggestions will appear as you type, and you can accept them by pressing `Tab` or `Enter`.
+You can start by typing a T-SQL query in a new editor window, like `SELECT * FROM SalesLT.Customer`, and observe the inline suggestions provided by GitHub Copilot. The suggestions appear as you type, and you can accept them by pressing `Tab` or `Enter`.
 
 Alternatively, you can type the same query, `SELECT * FROM SalesLT.Customer`, directly into the editor. Then, highlight it to reveal the ✨ **smart action** icon, which appears next to the highlighted query. This icon provides quick access to additional GitHub Copilot options, such as `Modify using Copilot` to adjust your query, `/doc` to generate documentation, or the ability to ask GitHub Copilot general questions related to the query.
 
@@ -125,7 +125,7 @@ When you select **Review using GitHub Copilot**, you see an inline recommendatio
 
 :::image type="content" source="media/inline-copilot-suggestions/vscode-inline-recommendation.png" alt-text="Screenshot showing an inline recommendation from GitHub Copilot for optimizing a SQL query in Visual Studio Code." lightbox="media/inline-copilot-suggestions/vscode-inline-recommendation.png":::
 
-You can also invoke GitHub Copilot via a shortcut (`⌘+I` for macOS / `Ctrl+I` for Windows/Linux) and ask questions or request modifications to your query.
+You can also invoke GitHub Copilot using a shortcut (**Cmd**+**I** for macOS, or **Ctrl**+**I** for Windows and Linux) and ask questions or request modifications to your query.
 
 :::image type="content" source="media/inline-copilot-suggestions/vscode-copilot-shortcut.png" alt-text="Screenshot demonstrating how to invoke GitHub Copilot using the keyboard shortcut in Visual Studio Code." lightbox="media/inline-copilot-suggestions/vscode-copilot-shortcut.png":::
 

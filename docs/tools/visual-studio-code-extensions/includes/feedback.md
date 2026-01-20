@@ -1,10 +1,10 @@
 ---
-title: MSSQL extension for Visual Studio Code Feedback
+title: MSSQL Extension for Visual Studio Code Feedback
 description: MSSQL extension for Visual Studio Code feedback.
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: maghan, randolphwest
-ms.date: 05/19/2025
+ms.date: 01/19/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: include
@@ -18,10 +18,10 @@ To help us refine and improve GitHub Copilot for the MSSQL extension, use the fo
 
 When submitting feedback, consider including:
 
-- **Scenarios tested** – Let us know which areas you focused on, for example, schema creation, query generation, security, localization.
+- **Scenarios tested**: Let us know which areas you focused on, for example, schema creation, query generation, security, localization.
 
-- **What worked well** – Describe any experiences that felt smooth, helpful, or exceeded your expectations.
+- **What worked well**: Describe any experiences that felt smooth, helpful, or exceeded your expectations.
 
-- **Issues or bugs** – Include any problems, inconsistencies, or confusing behaviors. Screenshots or screen recordings are especially helpful.
+- **Issues or bugs**: Include any problems, inconsistencies, or confusing behaviors. Screenshots or screen recordings are especially helpful.
 
-- **Suggestions for improvement** – Share ideas for improving usability, expanding coverage, or enhancing the GitHub Copilot's responses.
+- **Suggestions for improvement**: Share ideas for improving usability, expanding coverage, or enhancing GitHub Copilot's responses.

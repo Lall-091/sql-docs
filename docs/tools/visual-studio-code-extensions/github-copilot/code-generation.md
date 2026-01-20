@@ -5,7 +5,7 @@ description: Learn how GitHub Copilot can accelerate database-related code gener
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: randolphwest
-ms.date: 11/18/2025
+ms.date: 01/19/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: quickstart
@@ -19,7 +19,7 @@ ai-usage: ai-assisted
 
 # Quickstart: Generate code
 
-In this quickstart, you learn how GitHub Copilot accelerates SQL and object-relational mapping (ORM) development by generating context-aware code directly within Visual Studio Code. GitHub Copilot helps you scaffold tables, evolve schemas, and reduce repetitive scripting. Whether you're using T-SQL, or working with ORMs like Entity Framework, Sequelize, Prisma, or SQLAlchemy, GitHub Copilot helps you focus on building application logic.
+In this quickstart, you learn how GitHub Copilot accelerates SQL and object-relational mapping (ORM) development by generating context-aware code directly within Visual Studio Code. GitHub Copilot helps you scaffold tables, evolve schemas, and reduce repetitive scripting. Whether you're using Transact-SQL, or working with object-relational mapping (ORM) frameworks like Entity Framework, Sequelize, Prisma, or SQLAlchemy, GitHub Copilot helps you focus on building application logic.
 
 ## Get started
 
@@ -29,11 +29,11 @@ In this quickstart, you learn how GitHub Copilot accelerates SQL and object-rela
 
 Use GitHub Copilot to generate SQL and ORM-compatible code that reflects your connected database's structure and follows best practices. From defining tables and relationships to scripting views, building migration files, or scaffolding data access layers and APIs, GitHub Copilot helps you move faster and with greater confidence.
 
-Here are common use cases and examples of what you can ask via the chat participant:
+Here are common use cases and examples of what you can ask through the chat participant:
 
 ### Generate SQL code
 
-GitHub Copilot can help you generate SQL code for several development scenarios, from scripting, creating and modifying tables to writing stored procedures and views. These examples illustrate how you can use GitHub Copilot to automate repetitive SQL scripting and follow best practices for T-SQL development.
+GitHub Copilot can help you generate SQL code for several development scenarios, from scripting, creating, and modifying tables to writing stored procedures and views. These examples illustrate how you can use GitHub Copilot to automate repetitive SQL scripting and follow best practices for T-SQL development.
 
 #### Script out all tables in a schema
 
@@ -126,11 +126,11 @@ Generate a full-stack app using Azure SQL bindings for Functions and Blazor WebA
 
    - Configure SQL Bindings to automatically read and write data from the `SalesLT.Customer` table.
    - Implement HTTP-triggered functions with the following endpoints:
-     - `GET /api/customers` – Fetch all customers.
-     - `GET /api/customers/{id}` – Get a specific customer by ID.
-     - `POST /api/customers` – Create a new customer.
-     - `PUT /api/customers/{id}` – Update an existing customer.
-     - `DELETE /api/customers/{id}` – Delete a customer.
+     - `GET /api/customers` - Fetch all customers.
+     - `GET /api/customers/{id}` - Get a specific customer by ID.
+     - `POST /api/customers` - Create a new customer.
+     - `PUT /api/customers/{id}` - Update an existing customer.
+     - `DELETE /api/customers/{id}` - Delete a customer.
    - Use `Dependency Injection` for database connections and logging.
    - Include an `appsettings.json` file to store database connection strings and environment variables.
    - Use `Azure Functions Core Tools` to run and test the functions locally.
@@ -157,11 +157,11 @@ Generate a REST API using Node.js with Express that connects to my local SQL Dat
 
    - Establish a database connection using Prisma with Tedious as the SQL Server driver.
    - Implement API routes for `SalesLT.Customer` with the following endpoints:
-     - `GET /customers` – Fetch all customers.
-     - `GET /customers/:id` – Get a specific customer by ID.
-     - `POST /customers` – Create a new customer.
-     - `PUT /customers/:id` – Update an existing customer.
-     - `DELETE /customers/:id` – Delete a customer.
+     - `GET /customers` - Fetch all customers.
+     - `GET /customers/:id` - Get a specific customer by ID.
+     - `POST /customers` - Create a new customer.
+     - `PUT /customers/:id` - Update an existing customer.
+     - `DELETE /customers/:id` - Delete a customer.
    - Configure `Prisma` to map the `SalesLT.Customer` table and generate database migrations using `prisma migrate dev`.
    - Use `dotenv` for environment variables (database credentials, ports, etc.).
    - Add `Jest` for testing the API endpoints.
@@ -185,11 +185,11 @@ The following example is a detailed prompt you can provide in GitHub Copilot Cha
 Scaffold a Django backend with Django REST Framework for the `SalesLT.Customer` table. Follow these steps:
 
 - Implement API routes using Django's `ModelViewSet` with the following endpoints:
-  - `GET /customers` – Fetch all customers.
-  - `GET /customers/{id}` – Get a specific customer by ID.
-  - `POST /customers` – Create a new customer.
-  - `PUT /customers/{id}` – Update an existing customer.
-  - `DELETE /customers/{id}` – Delete a customer.
+  - `GET /customers` - Fetch all customers.
+  - `GET /customers/{id}` - Get a specific customer by ID.
+  - `POST /customers` - Create a new customer.
+  - `PUT /customers/{id}` - Update an existing customer.
+  - `DELETE /customers/{id}` - Delete a customer.
 
 - Add instructions for generating database migrations with `python manage.py makemigrations` and `migrate`.
 ```

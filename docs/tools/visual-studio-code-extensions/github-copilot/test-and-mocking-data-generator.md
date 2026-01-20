@@ -5,7 +5,7 @@ description: Learn how GitHub Copilot helps developers quickly create realistic 
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: randolphwest
-ms.date: 11/18/2025
+ms.date: 01/19/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: quickstart
@@ -27,7 +27,7 @@ In this quickstart, you learn how to use GitHub Copilot to create realistic and 
 
 ## Generate realistic and testable data with GitHub Copilot
 
-GitHub Copilot can assist with generating test and mock data directly from your SQL schema or JSON samples. GitHub Copilot offers contextual suggestions to help reduce time and improve coverage, whether you're preparing datasets for demos, testing edge cases, or seeding your development environment with themed or randomized data. These suggestions are especially useful in scenarios where manual data entry would be slow or inconsistent.
+GitHub Copilot can help you generate test and mock data directly from your SQL schema or JSON samples. It offers contextual suggestions to help reduce time and improve coverage, whether you're preparing datasets for demos, testing edge cases, or seeding your development environment with themed or randomized data. These suggestions are especially useful in scenarios where manual data entry would be slow or inconsistent.
 
 Here are common use cases and examples of what you can ask via the chat participant.
 

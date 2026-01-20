@@ -5,7 +5,7 @@ description: Learn how GitHub Copilot helps developers identify and address comm
 author: croblesm
 ms.author: roblescarlos
 ms.reviewer: randolphwest
-ms.date: 11/18/2025
+ms.date: 01/19/2026
 ms.service: sql
 ms.subservice: vs-code-sql-extensions
 ms.topic: quickstart
@@ -19,7 +19,7 @@ ai-usage: ai-assisted
 
 # Quickstart: Security analyzer
 
-GitHub Copilot assists developers in identifying and addressing common security risks in SQL code and application-layer queries. It can help detect vulnerabilities like SQL injection, overexposed data, and unsafe patterns, especially for developers without a strong security background, by providing practical, context-aware recommendations during development.
+GitHub Copilot helps developers identify and address common security risks in SQL code and application-layer queries. It detects vulnerabilities like SQL injection, overexposed data, and unsafe patterns. Developers without a strong security background can use GitHub Copilot to get practical, context-aware recommendations during development.
 
 ## Get started
 
@@ -27,13 +27,13 @@ GitHub Copilot assists developers in identifying and addressing common security 
 
 ## Detect and fix security risks with GitHub Copilot
 
-GitHub Copilot helps developers detect and fix common security vulnerabilities early in the development process, before they reach production. Whether you're using raw SQL, ORMs, or stored procedures, GitHub Copilot can identify unsafe patterns, explain potential risks, and suggest safer alternatives based on your database context. This is especially useful for developers who don't specialize in security but need to follow secure coding practices.
+GitHub Copilot helps developers detect and fix common security vulnerabilities early in the development process, before they reach production. Whether you're using raw SQL, object-relational mapping (ORM) frameworks, or stored procedures, GitHub Copilot can identify unsafe patterns, explain potential risks, and suggest safer alternatives based on your database context. This ability is especially useful for developers who don't specialize in security but need to follow secure coding practices.
 
-Here are common use cases and examples of what you can ask via the chat participant.
+The following sections describe common use cases and examples of what you can ask via the chat participant.
 
 ### SQL injection detection
 
-SQL injection is one of the most common and dangerous security vulnerabilities in database applications. GitHub Copilot can help identify unparameterized queries, string interpolation issues, and misuse of dynamic SQL, while recommending safer, parameterized alternatives tailored to your context.
+SQL injection is one of the most common and dangerous security vulnerabilities in database applications. GitHub Copilot can help you identify unparameterized queries, string interpolation issues, and misuse of dynamic SQL. It also recommends safer, parameterized alternatives that fit your context.
 
 #### SQLAlchemy in Python example
 
@@ -85,7 +85,9 @@ GO
 
 ### General security suggestions
 
-Beyond SQL injection, many database applications expose sensitive data or use insecure configurations by default. GitHub Copilot provides guidance for encrypting connections, masking or protecting personal data, and aligning with secure authentication and authorization best practices across multiple development stacks.
+Beyond SQL injection, many database applications expose sensitive data or rely on insecure default configurations.
+
+GitHub Copilot can assist by providing guidance on encrypting connections, protecting or masking personal data, and following secure authentication and authorization practices across various development stacks.
 
 #### Sensitive data storage example
 
@@ -114,7 +116,7 @@ In a Prisma or Node.js environment, how can I securely use Microsoft Entra ID au
 #### Recommend SQL Server options for securing data example
 
 ```copilot-prompt
-What SQL Server options should I enable or verify (for example, Always Encrypted, Transparent Data Encryption) to protect customer data when using ORMs like Sequelize or EF Core?
+What SQL Server options should I enable or verify (for example, Always Encrypted, Transparent Data Encryption) to protect customer data when using object-relational mapping (ORM) frameworks like Sequelize or EF Core?
 ```
 
 ## Share your experience
