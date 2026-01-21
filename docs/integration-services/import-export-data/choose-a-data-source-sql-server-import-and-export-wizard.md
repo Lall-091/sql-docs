@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "01/28/2019"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
   - "sql13.dts.impexpwizard.chooseadatasource.f1"
 ms.custom: sfi-ropc-nochange
