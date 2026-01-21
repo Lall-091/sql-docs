@@ -8711,6 +8711,8 @@ items:
         href: tools/sql-database-projects/concepts/database-references.md
       - name: Package references
         href: tools/sql-database-projects/concepts/package-references.md
+      - name: Project references
+        href: tools/sql-database-projects/concepts/project-references.md
       - name: Pre/post deployment scripts
         href: tools/sql-database-projects/concepts/pre-post-deployment-scripts.md
       - name: Schema comparison
