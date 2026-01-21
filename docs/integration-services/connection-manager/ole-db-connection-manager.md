@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "10/13/2023"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: article
+ms.topic: concept-article
 f1_keywords:
   - "sql13.dts.designer.oledbconnection.f1"
 helpviewer_keywords:
