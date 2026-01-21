@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: concept-article
+ms.topic: how-to
 helpviewer_keywords:
   - "full-text queries [SQL Server], performance"
   - "transform noise words option"

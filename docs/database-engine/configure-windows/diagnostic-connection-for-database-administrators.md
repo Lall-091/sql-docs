@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, derekw
 ms.date: 01/15/2026
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "server management [SQL Server], connections"
   - "administrator connections [SQL Server]"

@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 09/09/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "FILESTREAM [SQL Server], access level"
   - "filestream access level"

@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 05/27/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "ft notify bandwidth option"
   - "small memory buffers"

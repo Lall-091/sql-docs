@@ -7,7 +7,7 @@ ms.reviewer: hudequei, randolphwest
 ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: polybase
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Server configuration: allow polybase export

@@ -7,7 +7,7 @@ ms.reviewer: derekw, randolphwest
 ms.date: 08/26/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "parallel queries [SQL Server]"
   - "processors [SQL Server], parallel queries"
