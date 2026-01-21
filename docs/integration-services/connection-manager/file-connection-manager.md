@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "03/29/2024"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.dts.designer.fileconnectionmanager.f1"
   - "sql13.dts.designer.suggestdatatypes.f1"
