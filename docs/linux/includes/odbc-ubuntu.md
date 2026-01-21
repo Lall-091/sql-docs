@@ -16,6 +16,8 @@ Use the following steps to install the **mssql-tools18** on Ubuntu.
 - Ubuntu 20.04 is supported starting with [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] CU 10.
 - Ubuntu 18.04 is supported starting with [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] CU 3.
 
+[!INCLUDE [sql-server-2025-cu-1-removed](sql-server-2025-cu-1-removed.md)]
+
 ### [Ubuntu 18.04](#tab/odbc-ubuntu-1804)
 
 1. Enter superuser mode.

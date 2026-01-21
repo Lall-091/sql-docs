@@ -51,6 +51,8 @@ In this quickstart, you install [!INCLUDE [sssql25-md](../includes/sssql25-md.md
 > [!NOTE]  
 > Red Hat 9 includes support for [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] and TLS 1.3, which is enabled by default. Starting with [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] CU 1, Red Hat 10 is supported.
 
+[!INCLUDE [sql-server-2025-cu-1-removed](includes/sql-server-2025-cu-1-removed.md)]
+
 If you want to automate your installation using Ansible, see [Quickstart: Deploy SQL Server on Linux using an Ansible playbook](sql-server-linux-deploy-ansible.md).
 
 For more information on supported platforms, see [Release notes for SQL Server 2025 on Linux](sql-server-linux-release-notes-2025.md).

@@ -19,6 +19,8 @@ ms.custom:
 
 This article describes the major features and services available for [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] running on Linux. For package downloads and known issues, see the [Release notes](sql-server-linux-release-notes-2025.md).
 
+[!INCLUDE [sql-server-2025-cu-1-removed](includes/sql-server-2025-cu-1-removed.md)]
+
 ## Updates
 
 The following updates are available in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] on Linux:
@@ -33,6 +35,8 @@ The following updates are available in [!INCLUDE [sssql25-md](../includes/sssql2
 | Generic ODBC data source support for PolyBase | [Connect to ODBC data sources with PolyBase on SQL Server on Linux](sql-server-linux-polybase.md) |
 
 <sup>1</sup> Starting in [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] CU 1.
+
+[!INCLUDE [sql-server-2025-cu-1-removed](includes/sql-server-2025-cu-1-removed.md)]
 
 ## Related content
 

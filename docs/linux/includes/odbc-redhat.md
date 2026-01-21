@@ -11,6 +11,8 @@ ms.custom:
 
 Use the following steps to install the **mssql-tools18** on Red Hat Enterprise Linux.
 
+[!INCLUDE [sql-server-2025-cu-1-removed](sql-server-2025-cu-1-removed.md)]
+
 1. Download the Microsoft Red Hat repository configuration file.
 
    - For Red Hat 10, use the following command to download the Microsoft Red Hat repository configuration file from the RHEL 9 repo. The same versions of tools also work for RHEL 10.

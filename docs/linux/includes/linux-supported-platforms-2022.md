@@ -12,6 +12,8 @@ ms.custom:
 ---
 You should run production workloads on supported platforms like [Red Hat Enterprise Linux](https://www.redhat.com/technologies/linux-platforms/enterprise-linux/sql-server), [SUSE Linux Enterprise Server](https://www.suse.com/c/microsoft-sql-server-on-suse-linux-enterprise-server-new-suse-best-practices), and [Ubuntu Pro](https://ubuntu.com/blog/microsoft-sql-server-on-ubuntu), as they receive regular OS security updates, and have support coverage options that you need for enterprise database deployments.
 
+[!INCLUDE [sql-server-2022-cu-23-removed](sql-server-2022-cu-23-removed.md)]
+
 | Platform | File system | Installation guide | Get |
 | --- | --- | --- | --- |
 | Red Hat Enterprise Linux 8.x Server, or 9.x Server | **XFS** or **ext4** | [Installation guide](../quickstart-install-connect-red-hat.md) | [Get RHEL 9](https://access.redhat.com/products/red-hat-enterprise-linux/evaluation) |

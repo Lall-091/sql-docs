@@ -253,6 +253,18 @@ For Ubuntu 22.04, you should reach out to Canonical directly for the exact steps
 
 The following issues affect [!INCLUDE [sssql25-md](../includes/sssql25-md.md)].
 
+### Database Mail stops working after updating to Cumulative Update 1
+
+Database Mail stops working after you install this cumulative update. You might see the following error message:
+
+```output
+Could not load file or assembly 'Microsoft.SqlServer.DatabaseMail.XEvents, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91' or one of its dependencies. The system cannot find the file specified.
+```
+
+If you use Database Mail and already downloaded this update, don't install it until a fix is available.
+
+If you already installed this update, [uninstall it](../sql-server/install/uninstall-a-cumulative-update-from-sql-server.md#remove-a-cumulative-update-on-linux) to restore Database Mail functionality.
+
 ### SQL Server on Linux fails to start on machines with hybrid CPU architecture
 
 **Issue**: SQL Server instances on Linux might fail to start if the machine uses an Intel 12th Gen or later hybrid architecture CPU, and the host operating system is Linux.

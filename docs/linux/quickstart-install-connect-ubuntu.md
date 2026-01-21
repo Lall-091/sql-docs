@@ -49,6 +49,8 @@ In this quickstart, you install [!INCLUDE [sssql25-md](../includes/sssql25-md.md
 > [!NOTE]  
 > Starting with [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] CU 1, Ubuntu 24.04 is supported.
 
+[!INCLUDE [sql-server-2025-cu-1-removed](includes/sql-server-2025-cu-1-removed.md)]
+
 For more information on supported platforms, see [Release notes for SQL Server 2025 on Linux](sql-server-linux-release-notes-2025.md).
 
 ::: moniker-end

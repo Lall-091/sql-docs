@@ -23,6 +23,8 @@ For instructions on how to configure repositories for [!INCLUDE [sssql22-md](../
 > [!TIP]  
 > RHEL 10 and Ubuntu 24.04 are supported starting with [!INCLUDE [sssql25-md](../includes/sssql25-md.md)] CU 1. For more information, see the [installation guide](sql-server-linux-setup.md).
 
+[!INCLUDE [sql-server-2025-cu-1-removed](includes/sql-server-2025-cu-1-removed.md)]
+
 ## Repositories
 
 When you install SQL Server on Linux, you must configure a Microsoft repository. Use this repository to get the database engine package, `mssql-server`, and related SQL Server packages. The following repositories are currently available:
