@@ -5,7 +5,7 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.date: 11/21/2025
 ms.service: sql
-ms.topic: conceptual
+ms.topic: concept-article
 ai-usage: ai-assisted
 helpviewer_keywords:
   - "architecture [SQL Server], Database Mail"
