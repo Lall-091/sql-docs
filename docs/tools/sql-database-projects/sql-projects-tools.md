@@ -46,7 +46,7 @@ These tools provide a graphical interface for SQL projects, a T-SQL editor, and 
 | Publish options/properties | Yes | Yes | Yes |
 | [Target platform](concepts/target-platform.md) can be updated | Yes | Yes | Yes |
 | [SQLCMD variables](concepts/sqlcmd-variables.md) | Yes | Yes | Yes |
-| [Project references](concepts/database-references.md) | Yes | Yes | Yes |
+| [Project references](concepts/project-references.md) | Yes | Yes | Yes |
 | [Dacpac references](concepts/database-references.md) | Yes | Yes | Yes |
 | [Package references](concepts/package-references.md) | Yes | No | No |
 | Publish profile creation | Yes | Yes | Yes |
