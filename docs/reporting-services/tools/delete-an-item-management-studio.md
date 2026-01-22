@@ -4,7 +4,7 @@ description: Learn how to delete role definitions and shared schedules in SQL Ma
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:

@@ -4,7 +4,7 @@ description: Find out about the tools for development, configuration, administra
 ms.date: 09/30/2024
 ms.service: reporting-services
 ms.subservice: tools
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:

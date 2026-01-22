@@ -4,7 +4,7 @@ description: Learn about the options on the Delete Catalog Items page of Managem
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 f1_keywords:

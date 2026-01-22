@@ -4,7 +4,7 @@ description: Learn about the supported versions for authoring and publishing rep
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - intro-deployment
   - updatefrequency5
