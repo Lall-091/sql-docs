@@ -3,7 +3,8 @@ title: "Batches of SQL Statements"
 description: "Batches of SQL Statements"
 author: David-Engel
 ms.author: davidengel
-ms.date: "01/19/2017"
+ms.date: "01/22/2026"
+ai-usage: ai-assisted
 ms.service: sql
 ms.subservice: connectivity
 ms.topic: conceptual
@@ -41,18 +42,18 @@ A batch of SQL statements is a group of two or more SQL statements or a single S
   
      The **CREATE PROCEDURE** statement itself is not a batch of SQL statements. However, the procedure it creates is a batch of SQL statements. No semicolons separate the two **SELECT** statements because the **CREATE PROCEDURE** statement is specific to SQL Server, and SQL Server does not require semicolons to separate multiple statements in a **CREATE PROCEDURE** statement.  
   
--   **Arrays of Parameters** Arrays of parameters can be used with a parameterized SQL statement as an effective way to perform bulk operations. For example, arrays of parameters can be used with the following **INSERT** statement to insert multiple rows into the Lines table while executing only a single SQL statement:  
+-   **Arrays of Parameters** - Arrays of parameters can be used with a parameterized SQL statement as an effective way to perform bulk operations. For example, arrays of parameters can be used with the following **INSERT** statement to insert multiple rows into the Lines table while executing only a single SQL statement:  
   
     ```  
     INSERT INTO Lines (OrderID, Line, PartID, Quantity)  
        VALUES (?, ?, ?, ?)  
     ```  
   
-     If a data source does not support arrays of parameters, the driver can emulate them by executing the SQL statement once for each set of parameters. For more information, see [Statement Parameters](../../../odbc/reference/develop-app/statement-parameters.md) and [Arrays of Parameter Values](../../../odbc/reference/develop-app/arrays-of-parameter-values.md), later in this section.  
+     If a data source doesn't support arrays of parameters, the driver can emulate them by executing the SQL statement once for each set of parameters. For more information, see [Statement Parameters](../../../odbc/reference/develop-app/statement-parameters.md) and [Arrays of Parameter Values](../../../odbc/reference/develop-app/arrays-of-parameter-values.md), later in this article.  
   
- The different types of batches cannot be mixed in an interoperable manner. That is, how an application determines the result of executing an explicit batch that includes procedure calls, an explicit batch that uses arrays of parameters, and a procedure call that uses arrays of parameters is driver-specific.  
+ The different types of batches can't be mixed in an interoperable manner. That is, how an application determines the result of executing an explicit batch that includes procedure calls, an explicit batch that uses arrays of parameters, and a procedure call that uses arrays of parameters is driver-specific.  
   
- This section contains the following topics.  
+## Related content
   
 -   [Result-Generating and Result-Free Statements](../../../odbc/reference/develop-app/result-generating-and-result-free-statements.md)  
   
