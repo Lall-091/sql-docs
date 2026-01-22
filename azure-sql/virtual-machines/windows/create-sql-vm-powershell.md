@@ -119,7 +119,7 @@ Run this cmdlet to connect to Azure, establish subscription context and create y
 
 ## Create a storage account
 
-The virtual machine requires storage resources for the operating system disk and for the SQL Server data and log files. For simplicity, you'll create a single disk for both. You can attach additional disks later using the [Add-Azure Disk](/powershell/module/servicemanagement/azure/add-azuredisk) cmdlet to place your SQL Server data and log files on dedicated disks. Use the [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) cmdlet to create a standard storage account in your new resource group. Specify the variables that you previously initialized for the storage account name, storage SKU name, and location.
+The virtual machine requires storage resources for the operating system disk and for the SQL Server data and log files. For simplicity, you'll create a single disk for both. You can attach additional disks later using the [New-AzDisk](/powershell/module/az.compute/new-azdisk) cmdlet to place your SQL Server data and log files on dedicated disks. Use the [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) cmdlet to create a standard storage account in your new resource group. Specify the variables that you previously initialized for the storage account name, storage SKU name, and location.
 
 Run this cmdlet to create your new storage account: 
 
