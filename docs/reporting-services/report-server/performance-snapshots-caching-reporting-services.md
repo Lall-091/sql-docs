@@ -4,7 +4,7 @@ description: Learn how to get baseline data and run tests to understand performa
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server
-ms.topic: conceptual
+ms.topic: best-practice
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:
