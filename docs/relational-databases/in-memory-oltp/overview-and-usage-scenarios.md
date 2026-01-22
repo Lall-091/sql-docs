@@ -7,7 +7,7 @@ ms.reviewer: wiassaf, randolphwest, ryanston
 ms.date: 10/05/2023
 ms.service: sql
 ms.subservice: in-memory-oltp
-ms.topic: conceptual
+ms.topic: concept-article
 dev_langs:
   - "TSQL"
 monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-2017 || =azuresqldb-mi-current"

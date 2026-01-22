@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 10/23/2025
 ms.service: sql
 ms.subservice: in-memory-oltp
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Durability for memory-optimized tables
 

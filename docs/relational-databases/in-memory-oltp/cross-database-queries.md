@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "08/04/2016"
 ms.service: sql
 ms.subservice: in-memory-oltp
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Cross-Database Queries
  [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]

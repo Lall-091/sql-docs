@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: 04/23/2025
 ms.service: sql
 ms.subservice: in-memory-oltp
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"
 ---
 # Introduction to Memory-Optimized Tables
