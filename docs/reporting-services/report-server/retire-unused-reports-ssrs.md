@@ -4,7 +4,7 @@ description: You don't want to migrate unused reports to the Power BI service. A
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server
-ms.topic: conceptual
+ms.topic: best-practice
 ms.custom:
   - updatefrequency5
 ---
