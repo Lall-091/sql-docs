@@ -7,7 +7,7 @@ ms.reviewer: david.pless, wiassaf
 ms.date: 08/18/2022
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Integrated acceleration and offloading

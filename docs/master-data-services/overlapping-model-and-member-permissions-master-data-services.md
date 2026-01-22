@@ -6,7 +6,7 @@ ms.author: jiwang6
 ms.date: "03/01/2017"
 ms.service: sql
 ms.subservice: master-data-services
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "models [Master Data Services], effective permissions"
   - "permissions [Master Data Services], model and member overlaps"

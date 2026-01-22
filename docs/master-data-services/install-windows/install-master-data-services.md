@@ -6,7 +6,7 @@ ms.author: jiwang6
 ms.date: "03/24/2017"
 ms.service: sql
 ms.subservice: master-data-services
-ms.topic: article
+ms.topic: install-set-up-deploy
 ms.custom:
   - intro-installation
   - build-2025

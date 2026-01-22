@@ -7,7 +7,7 @@ ms.reviewer: mikeray, randolphwest
 ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
-ms.topic: article
+ms.topic: how-to
 ms.custom:
   - build-2025
   - linux-related-content

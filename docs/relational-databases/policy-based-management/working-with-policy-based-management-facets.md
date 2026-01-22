@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "viewing Policy-Based Management facets"
   - "facets [Policy-Based Management], copying"

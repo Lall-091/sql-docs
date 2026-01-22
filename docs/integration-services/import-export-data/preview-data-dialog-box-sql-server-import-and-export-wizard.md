@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "02/16/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.dts.impexpwizard.previewdata.f1"
 ---

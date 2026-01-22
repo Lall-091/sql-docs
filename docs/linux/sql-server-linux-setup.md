@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
-ms.topic: article
+ms.topic: install-set-up-deploy
 ms.custom:
   - intro-installation
   - linux-related-content

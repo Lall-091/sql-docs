@@ -7,7 +7,7 @@ ms.reviewer: mikeray
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: search
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "full-text search [SQL Server], filters"
   - "filters [full-text search]"

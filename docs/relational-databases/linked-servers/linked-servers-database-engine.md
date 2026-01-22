@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.reviewer: vanto, randolphwest
 ms.date: 12/05/2025
 ms.service: sql
-ms.topic: article
+ms.topic: concept-article
 helpviewer_keywords:
   - "OLE DB, linked servers"
   - "OLE DB provider, linked servers"

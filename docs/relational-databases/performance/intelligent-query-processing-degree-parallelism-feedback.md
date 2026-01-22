@@ -7,7 +7,7 @@ ms.reviewer: derekw, wiassaf
 ms.date: 08/18/2025
 ms.service: sql
 ms.subservice: configuration
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 f1_keywords:

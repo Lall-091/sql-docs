@@ -7,7 +7,7 @@ ms.reviewer: hudequei
 ms.date: 10/04/2022
 ms.service: sql
 ms.subservice: polybase
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: "=sql-server-2016||=sql-server-2017||=sql-server-ver15||=azuresqldb-mi-current"
 ---
 

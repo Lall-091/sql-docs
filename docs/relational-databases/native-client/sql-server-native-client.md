@@ -7,7 +7,7 @@ ms.reviewer: randolphwest, vanto
 ms.date: 09/11/2024
 ms.service: sql
 ms.subservice: native-client
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # SQL Server Native Client
 

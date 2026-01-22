@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: "03/01/2017"
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: tutorial
 ---
 # Lesson 2: Create and Apply a Naming Standards Policy
  [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]

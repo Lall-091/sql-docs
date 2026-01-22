@@ -7,7 +7,7 @@ ms.author: randolphwest
 ms.date: 06/05/2025
 ms.service: sql
 ms.subservice: profiler
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection:
   - data-tools
 ---

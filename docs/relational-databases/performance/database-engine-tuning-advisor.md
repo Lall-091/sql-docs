@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: "05/11/2021"
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.dta.general.f1"
 ---

@@ -7,7 +7,7 @@ ms.reviewer: wiassaf
 ms.date: 09/07/2025
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "performance dashboard [SQL Server]"
   - "performance dashboard reports"

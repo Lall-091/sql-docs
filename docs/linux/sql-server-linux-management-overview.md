@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 07/11/2025
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - linux-related-content
 monikerRange: ">=sql-server-linux-2017 || >=sql-server-2017"

@@ -7,7 +7,7 @@ ms.reviewer: derekw, maghan, randolphwest
 ms.date: 10/23/2025
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 helpviewer_keywords:

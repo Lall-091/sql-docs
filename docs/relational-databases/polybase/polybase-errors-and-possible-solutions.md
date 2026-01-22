@@ -7,7 +7,7 @@ ms.reviewer: hudequei
 ms.date: 04/23/2024
 ms.service: sql
 ms.subservice: polybase
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 f1_keywords:
   - "PolyBase, monitoring"
   - "PolyBase, performance monitoring"

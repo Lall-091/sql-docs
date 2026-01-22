@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 08/11/2025
 ms.service: sql
 ms.subservice: replication
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:

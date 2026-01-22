@@ -7,7 +7,7 @@ ms.reviewer: hudequei
 ms.date: 12/13/2019
 ms.service: sql
 ms.subservice: polybase
-ms.topic: conceptual
+ms.topic: how-to
 monikerRange: ">= sql-server-ver15"
 ms.custom: sfi-image-nochange
 ---

@@ -7,7 +7,7 @@ ms.reviewer: mikeray
 ms.date: 09/07/2025
 ms.service: sql
 ms.subservice: search
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "languages [full-text search]"
   - "full-text indexes [SQL Server], languages"

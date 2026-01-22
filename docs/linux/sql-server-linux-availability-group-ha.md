@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: 10/20/2025
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - linux-related-content
 ---

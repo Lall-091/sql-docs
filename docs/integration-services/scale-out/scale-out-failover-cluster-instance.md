@@ -6,7 +6,7 @@ ms.author: "haoqian"
 ms.date: "04/10/2018"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ms.custom: performance
 ---
 # Scale Out support for high availability via SQL Server failover cluster instance

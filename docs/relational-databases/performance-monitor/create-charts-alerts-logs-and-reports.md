@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: 12/04/2023
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "System Monitor [SQL Server], charts and reports"
   - "charts [SQL Server]"

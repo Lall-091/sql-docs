@@ -7,7 +7,7 @@ ms.reviewer:
 ms.date: 06/29/2020
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - performance
   - sfi-ropc-nochange

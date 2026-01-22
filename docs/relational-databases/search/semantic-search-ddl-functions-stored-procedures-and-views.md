@@ -7,7 +7,7 @@ ms.reviewer: mikeray
 ms.date: "03/20/2017"
 ms.service: sql
 ms.subservice: search
-ms.topic: conceptual
+ms.topic: reference
 helpviewer_keywords:
   - "semantic search [SQL Server], database objects"
 ---

@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 08/17/2022
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.dts.designer.packageconfigurationorganizer.f1"
   - "sql13.dts.configwizard.finishdtsconfiguration.f1"

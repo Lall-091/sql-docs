@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: 09/02/2025
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "tools [SQL Server], monitoring performance"
   - "monitoring server performance [SQL Server], tools"

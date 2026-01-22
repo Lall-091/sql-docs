@@ -7,7 +7,7 @@ ms.reviewer: maghan, randolphwest
 ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: linux
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - linux-related-content
   - ignite-2025

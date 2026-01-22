@@ -7,7 +7,7 @@ ms.reviewer: nibruno, xiaoyul, randolphwest, dfurman
 ms.date: 01/12/2026
 ms.service: sql
 ms.subservice: performance
-ms.topic: article
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 monikerRange: "=azuresqldb-current || >=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current || =fabric-sqldb"

@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 4/29/2024
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: reference
 ms.collection:
   - data-tools
 ms.custom: sfi-ropc-blocked

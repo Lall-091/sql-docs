@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "03/02/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # catalog.set_worker_agent_property (SSISDB Database)
 

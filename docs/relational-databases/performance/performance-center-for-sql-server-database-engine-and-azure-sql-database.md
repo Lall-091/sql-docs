@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 06/29/2023
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "Performance (SQL Server)"
   - "Performance (SQL Database)"

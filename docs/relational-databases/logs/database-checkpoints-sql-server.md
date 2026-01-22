@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 07/21/2022
 ms.service: sql
 ms.subservice: supportability
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "automatic checkpoints"
   - "transaction logs [SQL Server], checkpoints"

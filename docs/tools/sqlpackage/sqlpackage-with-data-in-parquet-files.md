@@ -7,7 +7,7 @@ ms.reviewer: llali, randolphwest
 ms.date: 07/30/2025
 ms.service: sql
 ms.subservice: tools-other
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection:
   - data-tools
 ms.custom:

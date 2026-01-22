@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: supportability
 f1_keywords:
   - "sql13.dts.designer.configuredtslogs.containers.f1"

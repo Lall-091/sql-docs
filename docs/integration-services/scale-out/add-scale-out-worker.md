@@ -6,7 +6,7 @@ ms.author: "haoqian"
 ms.date: "12/19/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: performance
 ---
 # Add a Scale Out Worker with Scale Out Manager

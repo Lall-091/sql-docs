@@ -6,7 +6,7 @@ ms.author: jiwang6
 ms.date: "01/10/2017"
 ms.service: sql
 ms.subservice: master-data-services
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "transactions [Master Data Services], about transactions"
   - "transactions [Master Data Services]"

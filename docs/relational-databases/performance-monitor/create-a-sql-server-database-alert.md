@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: 12/04/2023
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "database performance [SQL Server], alerts"
   - "alerts [SQL Server], creating"

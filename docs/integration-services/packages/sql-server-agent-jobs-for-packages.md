@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 08/17/2022
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "jobs [Integration Services]"
   - "automatic package execution"

@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 11/03/2025
 ms.service: sql
 ms.subservice: supportability
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.swb.maint.maintplanproperties.optimizations.f1"
   - "sql13.swb.maint.planeditor.f1"

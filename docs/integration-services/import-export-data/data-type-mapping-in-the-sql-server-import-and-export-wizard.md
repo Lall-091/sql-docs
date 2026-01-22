@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "01/11/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Data Type Mapping in the SQL Server Import and Export Wizard
 

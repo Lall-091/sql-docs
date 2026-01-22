@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "03/03/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # catalog.cleanup_server_log 
 

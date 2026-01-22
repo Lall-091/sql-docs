@@ -8,7 +8,7 @@ ms.date: 10/04/2024
 ms.service: sql
 ms.subservice: polybase
 ms.custom: linux-related-content
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: ">=sql-server-2016||>=sql-server-linux-ver15"
 ---
 

@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 06/01/2023
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - ignite-2025
 helpviewer_keywords:

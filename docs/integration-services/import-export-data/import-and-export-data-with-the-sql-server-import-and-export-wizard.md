@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "10/17/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "exporting data"
   - "mapping files [Integration Services]"

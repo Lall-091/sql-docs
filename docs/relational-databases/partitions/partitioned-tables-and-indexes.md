@@ -7,7 +7,7 @@ ms.author: vanto
 ms.reviewer: dfurman
 ms.date: 12/29/2025
 ms.service: sql
-ms.topic: article
+ms.topic: concept-article
 helpviewer_keywords:
   - "partitioned tables [SQL Server], about partitioned tables"
   - "partitioned indexes [SQL Server], architecture"

@@ -6,7 +6,7 @@ ms.author: jiwang6
 ms.date: "07/28/2017"
 ms.service: sql
 ms.subservice: master-data-services
-ms.topic: conceptual
+ms.topic: sample
 keywords:
   - "master data services"
   - "sample"

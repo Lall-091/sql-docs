@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: "03/01/2017"
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "Policy-Based Management, configure alerts"
 ---

@@ -7,7 +7,7 @@ ms.reviewer: mikeray
 ms.date: "08/19/2016"
 ms.service: sql
 ms.subservice: search
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "deprecated features [full-text search]"
   - "full-text search [SQL Server], deprecated features"

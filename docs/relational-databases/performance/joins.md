@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: 08/21/2025
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 1825-days
 ms.custom:
   - ignite-2025

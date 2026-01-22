@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "05/22/2019"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "SQL13.DTS.DESIGNER.AFPEXTFILETASK.F1"
   - "SQL14.DTS.DESIGNER.AFPEXTFILETASK.F1"

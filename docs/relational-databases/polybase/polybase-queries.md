@@ -7,7 +7,7 @@ ms.reviewer: hudequei
 ms.date: 12/13/2022
 ms.service: sql
 ms.subservice: polybase
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "PolyBase, import and export"
   - "Hadoop, import with PolyBase"

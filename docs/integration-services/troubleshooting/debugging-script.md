@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "03/17/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 helpviewer_keywords:
   - "Script task [Integration Services], debugging"
   - "debugging [Integration Services], scripts"

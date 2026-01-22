@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.reviewer: jovanpop, umajay, randolphwest
 ms.date: 07/23/2025
 ms.service: sql
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 helpviewer_keywords:

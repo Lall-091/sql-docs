@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "02/17/2017"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: conceptual
+ms.topic: integration
 ---
 # Connect to a Flat File Data Source (SQL Server Import and Export Wizard)
 

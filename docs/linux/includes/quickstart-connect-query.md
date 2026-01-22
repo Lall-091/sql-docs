@@ -4,6 +4,7 @@ ms.author: randolphwest
 ms.date: 07/11/2025
 ms.service: sql
 ms.subservice: linux
+ms.topic: include
 ms.custom:
   - linux-related-content
 ---

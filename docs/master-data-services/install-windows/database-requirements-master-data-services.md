@@ -7,7 +7,7 @@ ms.reviewer: mikeray
 ms.date: 09/08/2025
 ms.service: sql
 ms.subservice: master-data-services
-ms.topic: conceptual
+ms.topic: checklist
 ms.custom:
   - build-2025
 ---

@@ -7,7 +7,7 @@ ms.reviewer: randolphwest, peskount, praspu, dfurman
 ms.date: 11/24/2025
 ms.service: sql
 ms.subservice: performance
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sfi-image-nochange
   - ignite-2025

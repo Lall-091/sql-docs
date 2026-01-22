@@ -7,7 +7,7 @@ ms.reviewer: amitkh-msft
 ms.date: 01/02/2026
 ms.service: sql
 ms.subservice: linux
-ms.topic: article
+ms.topic: concept-article
 ms.custom:
   - linux-related-content
 ---

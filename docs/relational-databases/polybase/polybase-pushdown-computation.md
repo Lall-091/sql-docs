@@ -8,7 +8,7 @@ ms.reviewer: nathansc, hudequei
 ms.date: 5/13/2024
 ms.service: sql
 ms.subservice: polybase
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: ">= sql-server-2016||>=sql-server-linux-ver15"
 ---
 

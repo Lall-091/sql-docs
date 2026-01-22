@@ -6,7 +6,7 @@ ms.author: jiwang6
 ms.date: 03/20/2023
 ms.service: sql
 ms.subservice: master-data-services
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - microsoft-excel-add-in
   - build-2025

@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 11/19/2025
 ms.service: sql
 ms.subservice: master-data-services
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - build-2025
 ai-usage: ai-assisted

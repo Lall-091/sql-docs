@@ -6,7 +6,7 @@ ms.author: jiwang6
 ms.date: "03/01/2017"
 ms.service: sql
 ms.subservice: master-data-services
-ms.topic: conceptual
+ms.topic: error-reference
 helpviewer_keywords:
   - "staging process [Master Data Services], error messages"
 ms.custom:

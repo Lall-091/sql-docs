@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: tutorial
 ---
 # Lesson 1: Create and Apply an Off By Default Policy
  [!INCLUDE [SQL Server](../../includes/applies-to-version/sqlserver.md)]

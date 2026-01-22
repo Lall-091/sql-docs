@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: 07/14/2020
 ms.service: sql
 ms.subservice: machine-learning-services
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: ">=sql-server-2017||>=sql-server-linux-ver15"
 ---
 # Python language extension in SQL Server Machine Learning Services

@@ -6,7 +6,7 @@ ms.author: chugu
 ms.date: "11/16/2016"
 ms.service: sql
 ms.subservice: integration-services
-ms.topic: article
+ms.topic: concept-article
 f1_keywords:
   - "sql13.dts.dtsserver.importpackage.f1"
   - "sql13.dts.dtsserver.exportpackage.f1"

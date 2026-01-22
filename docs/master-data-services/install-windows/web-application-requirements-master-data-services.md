@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 10/23/2025
 ms.service: sql
 ms.subservice: master-data-services
-ms.topic: conceptual
+ms.topic: checklist
 ms.custom:
   - build-2025
 keywords: master data services

@@ -7,7 +7,7 @@ ms.reviewer: hudequei
 ms.date: 06/03/2024
 ms.service: sql
 ms.subservice: polybase
-ms.topic: conceptual
+ms.topic: how-to
 monikerRange: ">= sql-server-ver16 || >= sql-server-linux-ver16"
 ---
 

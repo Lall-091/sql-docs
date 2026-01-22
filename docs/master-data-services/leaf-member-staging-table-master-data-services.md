@@ -6,7 +6,7 @@ ms.author: jiwang6
 ms.date: "04/01/2016"
 ms.service: sql
 ms.subservice: master-data-services
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "members staging table [Master Data Services]"
   - "database [Master Data Services], members staging table"
