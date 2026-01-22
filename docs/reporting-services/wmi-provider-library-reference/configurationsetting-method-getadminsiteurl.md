@@ -4,7 +4,7 @@ description: "ConfigurationSetting method - GetAdminSiteUrl"
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: wmi-provider-library-reference
-ms.topic: conceptual
+ms.topic: reference
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:

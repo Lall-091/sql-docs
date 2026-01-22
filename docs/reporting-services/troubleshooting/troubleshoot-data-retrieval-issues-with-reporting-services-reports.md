@@ -4,7 +4,7 @@ description: In this article, diagnose and fix problems that occur when you retr
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: troubleshooting
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 ms.custom:
   - updatefrequency5
   - sfi-ropc-nochange
