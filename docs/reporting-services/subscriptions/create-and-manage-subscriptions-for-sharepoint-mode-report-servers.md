@@ -4,7 +4,7 @@ description: Learn to create a Reporting Services subscription to deliver report
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: subscriptions
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:

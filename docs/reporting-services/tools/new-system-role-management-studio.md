@@ -4,7 +4,7 @@ description: Learn about the New System Role page in Management Studio where you
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 f1_keywords:

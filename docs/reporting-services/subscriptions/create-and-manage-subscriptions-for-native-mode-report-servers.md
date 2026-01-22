@@ -4,7 +4,7 @@ description: Learn to create and manage a standard subscription as an individual
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: subscriptions
-ms.topic: conceptual
+ms.topic: how-to
 helpviewer_keywords:
   - "standard subscriptions [Reporting Services]"
   - "subscriptions [Reporting Services], standard"

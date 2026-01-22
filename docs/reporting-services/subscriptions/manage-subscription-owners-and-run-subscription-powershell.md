@@ -4,7 +4,7 @@ description: Learn how to programmatically transfer the ownership of a Reporting
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: subscriptions
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 ---

@@ -4,7 +4,7 @@ description: A Reporting Services report server with SharePoint Mode can run in 
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server-sharepoint
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 monikerRange: ">=sql-server-2016 <=sql-server-2016"

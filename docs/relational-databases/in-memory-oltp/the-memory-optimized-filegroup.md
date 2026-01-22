@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.date: 04/16/2025
 ms.service: sql
 ms.subservice: in-memory-oltp
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - build-2025
 ---

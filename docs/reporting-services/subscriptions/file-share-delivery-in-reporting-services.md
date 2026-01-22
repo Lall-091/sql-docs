@@ -4,7 +4,7 @@ description: Learn how to set up the file share delivery extension in Reporting 
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: subscriptions
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "subscriptions [Reporting Services], file share delivery"
   - "file share delivery [Reporting Services]"

@@ -4,7 +4,7 @@ description: Learn how to preview reports in SQL Server Reporting Services befor
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reports
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 ---

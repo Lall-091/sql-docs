@@ -4,7 +4,7 @@ description: Learn how to use the options in the Cancel Report Server Jobs dialo
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: tools
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 f1_keywords:

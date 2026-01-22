@@ -4,7 +4,7 @@ description: Learn to use the UI, PowerShell, or log files to track Reporting Se
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: subscriptions
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:
