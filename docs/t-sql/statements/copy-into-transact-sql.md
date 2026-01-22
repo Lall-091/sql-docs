@@ -353,6 +353,8 @@ To ensure reliable execution, the source files and folders must remain unchanged
 - Modifying, deleting, or replacing any referenced files or folders while the command is running can cause the operation to fail or result in inconsistent data ingestion.
 - Before executing `COPY INTO`, verify that all source data is stable and will not be altered during the process.
 
+If the source data has greater precision than the destination column definition, the value is truncated, not rounded, for numeric, date, and time types.
+
 ## Examples
 
 ### A. Load from a public storage account
@@ -859,6 +861,8 @@ The `COPY INTO` statement has restrictions on the size of individual **varchar(m
 To ensure reliable execution, the source files and folders must remain unchanged throughout the duration of the `COPY INTO` operation.
 - Modifying, deleting, or replacing any referenced files or folders while the command is running can cause the operation to fail or result in inconsistent data ingestion.
 - Before executing `COPY INTO`, verify that all source data is stable and will not be altered during the process.
+
+If the source data has greater precision than the destination column definition, the value is truncated, not rounded, for numeric, date, and time types.
 
 <a id="limitations-for-onelake-as-source-public-preview"></a>
 
