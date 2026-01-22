@@ -4,7 +4,8 @@ description: Generates a symmetric key and specifies its properties in SQL Serve
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: randolphwest
-ms.date: 11/18/2025
+ms.date: 01/22/2026
+ai-usage: ai-assisted
 ms.service: sql
 ms.subservice: t-sql
 ms.topic: reference
@@ -212,7 +213,7 @@ GO
 
 ### C. Create a symmetric key using an Extensible Key Management (EKM) device
 
-The following example creates a symmetric key called `MySymKey` by using a provider called `MyEKMProvider` and a key name of `KeyForSensitiveData`. It assigns authorization to `User1` and assumes that the system administrator has already registered the provider called `MyEKMProvider` in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
+The following example creates a symmetric key called `MySymKey` by using a provider called `EKMProvider` and a key name of `KeyForSensitiveData`. It assigns authorization to `User1` and assumes that the system administrator has already registered the provider called `EKMProvider` in [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 
 ```sql
 CREATE SYMMETRIC KEY MySymKey
