@@ -4,7 +4,7 @@ description: "SharePoint site and list permission reference for report server it
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: reference
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:

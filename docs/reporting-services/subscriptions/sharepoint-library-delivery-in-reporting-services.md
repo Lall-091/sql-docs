@@ -4,7 +4,7 @@ description: Learn how to use the SharePoint library delivery extension in Repor
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: subscriptions
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:
