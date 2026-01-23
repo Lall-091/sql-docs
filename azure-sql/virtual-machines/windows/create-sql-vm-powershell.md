@@ -4,7 +4,7 @@ description: Provides detailed steps and PowerShell commands to create a Windows
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: dpless
-ms.date: 05/29/2024
+ms.date: 01/23/2026
 ms.service: azure-vm-sql-server
 ms.subservice: deployment
 ms.topic: how-to
@@ -51,7 +51,7 @@ Modify as you want, and then run the following cmdlet to initialize these variab
 :::code language="powershell" source="~/../azure_powershell_scripts/azure-sql/virtual-machine/create-sql-server-vm.ps1" id="StorageVariables":::
 
 > [!NOTE]
-> The storage account name must be between 3 and 24 characters in length and use numbers and lower-case letters only, so make sure your resource group name doesn't have any special characters, or modify the name of the storage account to use a different name than $ResourceGroupName. 
+> The storage account name must be between 3 and 24 characters in length and use numbers and lower-case letters only.
 
 ### Network properties
 

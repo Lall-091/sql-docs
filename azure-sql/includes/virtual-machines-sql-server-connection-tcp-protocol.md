@@ -5,17 +5,15 @@ ms.date: 10/26/2018
 ms.service: azure-vm-sql-server
 ms.topic: include
 ---
-1. While connected to the virtual machine with remote desktop, search for **Configuration Manager**:
-
-    ![Open SSCM](./media/virtual-machines-sql-server-connection-tcp-protocol/sql-server-configuration-manager.png)
+1. While connected to the virtual machine, open [SQL Server Configuration Manager](/sql/tools/configuration-manager/sql-server-configuration-manager).
 
 1. In SQL Server Configuration Manager, in the console pane, expand **SQL Server Network Configuration**.
 
-1. In the console pane, click **Protocols for MSSQLSERVER** (the default instance name.) In the details pane, right-click **TCP** and click **Enable** if it is not already enabled.
+1. In the console pane, select **Protocols for MSSQLSERVER** (the default instance name.) In the details pane, right-click **TCP** and select **Enable** if it is not already enabled.
 
     ![Enable TCP](./media/virtual-machines-sql-server-connection-tcp-protocol/enable-tcp.png)
 
-1. In the console pane, click **SQL Server Services**. In the details pane, right-click **SQL Server (*instance name*)** (the default instance is **SQL Server (MSSQLSERVER)**), and then click **Restart**, to stop and restart the instance of SQL Server.
+1. In the console pane, select **SQL Server Services**. In the details pane, right-click **SQL Server (*instance name*)** (the default instance is **SQL Server (MSSQLSERVER)**), and then select  **Restart**, to stop and restart the instance of SQL Server.
 
     ![Restart Database Engine](./media/virtual-machines-sql-server-connection-tcp-protocol/restart-sql-server.png)
 
