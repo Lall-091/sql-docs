@@ -4,7 +4,7 @@ description: Learn how to use Java and JDBC with an Azure SQL Database.
 author: jdubois
 ms.author: judubois
 ms.reviewer: mathoma
-ms.date: 06/13/2025
+ms.date: 01/23/2026
 ms.service: azure-sql-database
 ms.subservice: development
 ms.topic: quickstart
@@ -81,7 +81,9 @@ az sql server create \
     | jq
 ```
 
-This command creates the logical server for your database. 
+This command creates the logical server for your database.
+
+[!INCLUDE [server-admin-login-security-note](../includes/server-admin-login-security-note.md)] 
 
 ### Configure a firewall rule for your server
 
