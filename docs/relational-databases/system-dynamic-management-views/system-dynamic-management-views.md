@@ -39,6 +39,8 @@ There are two types of dynamic management views and functions:
 
 - Database-scoped dynamic management views and functions. These require VIEW DATABASE STATE permission on the database. For SQL Server 2022 and later, VIEW DATABASE PERFORMANCE STATE is required, or VIEW DATABASE SECURITY STATE is required for a few DMVs that are security related.
 
+[!INCLUDE [sql-server-2025-cu-1-removed](../../linux/includes/sql-server-2025-cu-1-removed.md)]
+
 ## Query dynamic management views
 
 Dynamic management views can be referenced in [!INCLUDE [tsql](../../includes/tsql-md.md)] statements by using two-part, three-part, or four-part names. Dynamic management functions on the other hand can be referenced in [!INCLUDE [tsql](../../includes/tsql-md.md)] statements by using either two-part or three-part names. Dynamic management views and functions can't be referenced in [!INCLUDE [tsql](../../includes/tsql-md.md)] statements by using one-part names.

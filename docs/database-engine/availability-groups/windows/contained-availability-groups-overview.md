@@ -151,6 +151,8 @@ If you use a network resource for the backup location, all servers that host rep
 
 **Applies to**: [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)] CU 1 and later versions.
 
+[!INCLUDE [sql-server-2025-cu-1-removed](../../../linux/includes/sql-server-2025-cu-1-removed.md)]
+
 In [!INCLUDE [sssql25-md](../../../includes/sssql25-md.md)] Cumulative Update (CU) 1, you can enable database creation and restoration directly within a contained availability group session, through the contained AG listener. This enhancement streamlines workflows for users assigned the appropriate roles, allowing seamless operations within contained AG environments.
 
 Only users with the **dbcreator** role can create databases in a contained AG session. Only users with the **db_owner** or **sysadmin** role can restore databases.

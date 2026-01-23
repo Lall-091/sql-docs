@@ -11,7 +11,7 @@ ms.custom:
 
 Use the following steps to install the **mssql-tools18** on Ubuntu.
 
-- Ubuntu 24.04 is supported starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] CU 1.
+- Ubuntu 24.04 is supported in preview starting with [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)].
 - Ubuntu 22.04 is supported starting with [!INCLUDE [sssql22-md](../../includes/sssql22-md.md)] CU 10.
 - Ubuntu 20.04 is supported starting with [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] CU 10.
 - Ubuntu 18.04 is supported starting with [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] CU 3.
@@ -96,9 +96,9 @@ Use the following steps to install the **mssql-tools18** on Ubuntu.
    exit
    ```
 
-### [Ubuntu 24.04](#tab/odbc-ubuntu-2404)
+### [Ubuntu 24.04 (in preview)](#tab/odbc-ubuntu-2404)
 
-Use the following steps to install the **mssql-tools18** for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] on Ubuntu 24.04.
+Use the following steps to install the **mssql-tools18** for [!INCLUDE [sssql25-md](../../includes/sssql25-md.md)] on Ubuntu 24.04 in preview.
 
 1. Enter superuser mode.
 

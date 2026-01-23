@@ -1,7 +1,7 @@
 ---
 author: MashaMSFT
 ms.author: mathoma
-ms.date: 09/23/2025
+ms.date: 01/23/2026
 ms.service: azure-vm-sql-server
 ms.topic: include
 ---
@@ -29,7 +29,7 @@ Get-ClusterResource $IPResourceName | Get-ClusterParameter
 
 ## Exclude ports from the dynamic port range
 
-When using a health probe port between 49,152 and 65,536 (the [default dynamic port range for TCP/IP](/windows/client-management/troubleshoot-tcpip-port-exhaust#default-dynamic-port-range-for-tcpip)), add an exclusion for each health probe port on every VM.
+When using a health probe port between 49,152 and 65,535 (the [default dynamic port range for TCP/IP](/windows/client-management/troubleshoot-tcpip-port-exhaust#default-dynamic-port-range-for-tcpip)), add an exclusion for each health probe port on every VM.
 
 Configuring port exclusion prevents other system processes from being dynamically assigned the same port on the VM
 

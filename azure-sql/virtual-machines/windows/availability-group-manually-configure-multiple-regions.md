@@ -4,7 +4,7 @@ description: "This tutorial explains how to configure an Always On availability 
 author: AbdullahMSFT
 ms.author: amamun
 ms.reviewer: mathoma, randolphwest
-ms.date: 09/22/2025
+ms.date: 01/23/2026
 ms.service: azure-vm-sql-server
 ms.subservice: hadr
 ms.topic: tutorial
@@ -98,7 +98,7 @@ After you create the new virtual network and subnet, you're ready to connect the
 
 - [Connect virtual networks with virtual network peering by using the Azure portal](/azure/virtual-network/tutorial-connect-virtual-networks-portal) (recommended)
 
-  In some cases, you might have to use PowerShell to create the connection between virtual networks. For example, if you use different Azure accounts, you can't configure the connection in the portal. In this case, review [Configure a network-to-network connection by using the Azure portal](/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps).
+  In some cases, you might have to use PowerShell to create the connection between virtual networks. For example, if you use different Azure accounts, you can't configure the connection in the portal. In this case, review [Configure a network-to-network connection by using PowerShell](/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps).
 
 - [Configure a site-to-site VPN gateway connection by using the Azure portal](/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal)
 
@@ -145,7 +145,7 @@ The following table shows the settings for the two machines:
 | **Name** |Remote domain controller: **ad-remote-dc**|
 | **VM disk type** |**SSD** |
 | **User name** |**DomainAdmin** |
-| **Password** |secure password |
+| **Password** |Secure password |
 | **Subscription** |Your subscription |
 | **Resource group** |**SQL-HA-RG** |
 | **Location** |Your location |
@@ -211,7 +211,7 @@ Once your server is joined to the domain, you can configure it as the second dom
 1. In the **Action** column of the **All Server Task Details** dialog, select **Promote this server to a domain controller**.
 1. Under **Deployment Configuration**, select **Add a domain controller to an existing domain**.
 1. Select **Select**.
-1. Connect by using the administrator account (**CORP.CONTOSO.COM\domainadmin**).
+1. Connect by using the administrator account (**CORP\domainadmin**).
 1. In **Select a domain from the forest**, choose your domain and then select **OK**.
 1. In **Domain Controller Options**, use the default values and set a DSRM password.
 
@@ -249,9 +249,9 @@ To create the SQL Server VM, go back to the **SQL-HA-RG** resource group, and th
 | Page | Setting |
 | --- | --- |
 | **Select the appropriate gallery item** |**SQL Server 2016 SP1 Enterprise on Windows Server 2016** |
-| **Virtual machine configuration**: **Basics** |**Name** = **sqlserver-2**<br /><br />**User Name** = **DomainAdmin**<br /><br />**Password** = secure password<br /><br />**Subscription** = Your subscription<br /><br />**Resource group** = **SQL-HA-RG**<br /><br />**Location** = Your remote region |
+| **Virtual machine configuration**: **Basics** |**Name** = **sqlserver-2**<br /><br />**User Name** = **DomainAdmin**<br /><br />**Password** = Secure password<br /><br />**Subscription** = Your subscription<br /><br />**Resource group** = **SQL-HA-RG**<br /><br />**Location** = Your remote region |
 | **Virtual machine configuration**: **Size** |**Size** = **DS2\_V2** (2 vCPUs, 7 GB)<br /><br />The size must support SSD storage (premium disk support). |
-| **Virtual machine configuration**: **Settings** |**Storage**: **Use managed disks**<br /><br />**Virtual network** = **remote-HAVNET**<br /><br />**Subnet** = **admin (10.36.1.0/24)**<br /><br />**Public IP address** = Automatically generated<br /><br />**Network security group** = **None**<br /><br />**Monitoring Diagnostics** = Enabled<br /><br />**Diagnostics storage account** = **Use an automatically generated storage account**<br /><br /> |
+| **Virtual machine configuration**: **Settings** |**Storage**: **Use managed disks**<br /><br />**Virtual network** = **remote_HAVNET**<br /><br />**Subnet** = **admin (10.36.1.0/24)**<br /><br />**Public IP address** = Automatically generated<br /><br />**Network security group** = **None**<br /><br />**Monitoring Diagnostics** = Enabled<br /><br />**Diagnostics storage account** = **Use an automatically generated storage account**<br /><br /> |
 | **Virtual machine configuration**: **SQL Server settings** |**SQL connectivity** = **Private (within Virtual Network)**<br /><br />**Port** = **1433**<br /><br />**SQL Authentication** = Disabled<br /><br />**Storage configuration** = **General**<br /><br />**Automated patching** = **Sunday at 2:00**<br /><br />**Automated backup** = Disabled<br /><br />**Azure Key Vault integration** = Disabled |
 
 > [!NOTE]  
@@ -369,7 +369,7 @@ The load balancer must:
 - Include a backend pool that consists of only the virtual machines in the same region as the load balancer.
 - Use a TCP port probe that's specific to the IP address.
 - Have a load-balancing rule that's specific to the SQL Server instance in the same region.
-- Be a standard load balancer if the virtual machines in the backend pool aren't part of either a single availability set or a virtual machine scale set. For more information, review [What is Azure Load Balancer?](/azure/load-balancer/load-balancer-overview).
+- Be a standard load balancer if the virtual machines in the backend pool aren't part of either a single availability set or a virtual machine scale set. For more information, review [What is Azure Load Balancer?](/azure/load-balancer/load-balancer-overview)
 - Be a standard load balancer if the two virtual networks in two different regions are peered over global virtual network peering. For more information, see [Azure Virtual Network frequently asked questions (FAQ)](/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
 
 The steps to [create the load balancer](availability-group-manually-configure-tutorial-single-subnet.md#configure-internal-load-balancer) are:
@@ -647,7 +647,7 @@ After SQL Server is restarted on the newly created virtual machine, you can add 
    :::image type="content" source="./media/availability-group-manually-configure-multiple-regions/ag-validation.png" alt-text="Screenshot of the page that displays results of availability group validation in SSMS.":::
 
    > [!NOTE]  
-   > If you see a warning for the listener configuration that says the availability group listener isn't configured. You can ignore this warning because the listener is already set up. It was created after you created the Azure load balancer in the local region.
+   > If you see a warning for the listener configuration that says the availability group listener isn't configured. You can ignore this warning because the listener is already set up. It was created after you created the Azure load balancer in the local region in the [Tutorial to manually deploy an availability group in a single subnet in a single region](availability-group-manually-configure-prerequisites-tutorial-single-subnet.md).
 
 1. On the **Summary** page, select **Finish**, and then wait while the wizard configures the new availability group. On the **Progress** page, you can select **More details** to view the detailed progress.
 
