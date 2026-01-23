@@ -386,6 +386,8 @@ docker run --name sqlenterprise ^
 > [!IMPORTANT]  
 > By passing the value `Y` to the environment variable `ACCEPT_EULA` and an edition value to `MSSQL_PID`, you express that you have a valid and existing license for the edition and version of SQL Server that you intend to use. You also agree that your use of SQL Server software running in a container image will be governed by the terms of your SQL Server license.
 
+[!INCLUDE [editions-sql-server-developer](includes/editions-sql-server-developer.md)]
+
 For a full list of possible values for `MSSQL_PID`, see [Configure SQL Server settings with environment variables on Linux](sql-server-linux-configure-environment-variables.md).
 
 <a id="multiple"></a>
