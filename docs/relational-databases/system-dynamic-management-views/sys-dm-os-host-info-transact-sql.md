@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 03/31/2025
 ms.service: sql
 ms.subservice: system-objects
-ms.topic: conceptual
+ms.topic: reference
 f1_keywords:
   - "sys.dm_os_host_info"
   - "sys.dm_os_host_info_TSQL"

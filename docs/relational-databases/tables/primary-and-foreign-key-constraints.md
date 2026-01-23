@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 07/19/2024
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 helpviewer_keywords:

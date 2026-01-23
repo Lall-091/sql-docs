@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 08/28/2025
 ms.service: sql
 ms.subservice: table-view-index
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sfi-image-nochange
   - ignite-2025

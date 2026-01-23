@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: system-objects
-ms.topic: conceptual
+ms.topic: reference
 f1_keywords:
   - "sp_polybase_join_group"
 helpviewer_keywords:

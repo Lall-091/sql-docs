@@ -6,7 +6,7 @@ ms.author: maghan
 ms.reviewer: randolphwest
 ms.date: 06/23/2025
 ms.service: azure-sql-database
-ms.topic: conceptual
+ms.topic: reference
 f1_keywords:
   - "sp_execute_remote"
   - "sp_execute_remote_TSQL"

@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 06/23/2025
 ms.service: sql
 ms.subservice: polybase
-ms.topic: conceptual
+ms.topic: reference
 f1_keywords:
   - "sp_polybase_leave_group"
   - "sp_polybase_leave_group_TSQL"

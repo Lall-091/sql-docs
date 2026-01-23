@@ -7,7 +7,7 @@ ms.author: randolphwest
 ms.reviewer: wiassaf
 ms.date: 06/13/2025
 ms.service: azure-sql-database
-ms.topic: conceptual
+ms.topic: reference
 f1_keywords:
   - "dm_geo_replication_link_status"
   - "dm_geo_replication_link_status_TSQL"
