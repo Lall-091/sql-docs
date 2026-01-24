@@ -4,7 +4,7 @@ description: Learn how to design the parent report using the Report Wizard in Re
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services
-ms.topic: conceptual
+ms.topic: tutorial
 ms.custom:
   - updatefrequency5
 ---
