@@ -4,7 +4,7 @@ description: Learn how device information settings are used to pass rendering pa
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---
