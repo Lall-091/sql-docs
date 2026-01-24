@@ -117,7 +117,7 @@ To give permissions to the [!INCLUDE [ssnoversion-md](../../includes/ssnoversion
 
    1. Select the account and select **Edit**.
 
-   1. Under Permissions select **Validated Write servicePrincipalName**.
+   1. Under Permissions select **Validated write to service principal name**.
 
    1. Scroll down and under **Properties**, select:
 
