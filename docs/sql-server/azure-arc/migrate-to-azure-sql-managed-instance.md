@@ -140,6 +140,9 @@ After your target is ready, start the migration process.
 
 Once you've prepared your environment for [Managed Instance link migration](migration-sql-mi-prepare-link.md), you can migrate your SQL Server databases to Azure SQL Managed Instance. 
 
+> [!NOTE]
+> Creating each link can take up to 10 minutes. Use the [Activity log](migrate-to-azure-sql-managed-instance-troubleshoot.md#view-azure-activity-log-for-migration-issues) to track background changes during the link creation process.
+
 Follow these steps to migrate your SQL Server databases to SQL Managed Instance by using the Managed Instance link:
 
 1. On the **Database migration** pane, select **Migrate data**.

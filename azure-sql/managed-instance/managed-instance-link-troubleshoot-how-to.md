@@ -57,7 +57,7 @@ To check the link state in SSMS, follow these steps:
 
 ### [Transact-SQL (T-SQL)](#tab/tsql)
 
-Use T-SQL to determine the state of the link during the seeding phase, or after data synchronization begins. 
+Use T-SQL to determine the state of the link during the seeding phase, or after data synchronization begins. The [sys.dm_hadr_physical_seeding_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-hadr-physical-seeding-stats) DMV can be used to track the initial seeding status. The `estimate_time_complete_utc` column is based on the current `transfer_rate_bytes_per_second` and uncompressed remaining data size (when `is_compression_enabled` = 0). For Managed Instance link, data compression is used, so `estimate_time_complete_utc` is expected to be an overestimate.
 
 Use the following T-SQL query to determine the status of the link during the seeding phase on the SQL Server or SQL Managed Instance that hosts the database seeded through the link: 
 
@@ -179,9 +179,6 @@ The following errors can occur when creating a link (Link state: `LinkCreationEr
    To resolve this issue, you must [drop](managed-instance-link-configure-how-to-ssms.md#drop-a-link) and recreate the link.   
    To avoid this issue, pause transaction log backups on SQL Server for database being replicated during the initial seeding phase.
 
-
-
-
 ## Inconsistent state after forced failover
 
 Following a forced [failover](managed-instance-link-failover-how-to.md), you might encounter a split-brain scenario where both replicas are in the primary role, leaving the link in an inconsistent state. This can happen if you fail over to the secondary replica during a disaster, and then the primary replica comes back online.
@@ -238,7 +235,6 @@ It's possible for the certificate used for the link to expire. If the certificat
 ## Test network connectivity
 
 [!INCLUDE [azure-sql-managed-instance-link-check-network](../includes/sql-managed-instance/azure-sql-managed-instance-link-check-network.md)]
-
 
 ## Related content
 
