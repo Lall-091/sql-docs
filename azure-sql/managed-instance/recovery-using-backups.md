@@ -2,10 +2,10 @@
 title: Restore a Database from a Backup
 titleSuffix: Azure SQL Managed Instance
 description: Learn about point-in-time restore, which enables you to roll back a database in Azure SQL Managed Instance up to 35 days.
-author: dinethi
-ms.author: dinethi
-ms.reviewer: wiassaf, mathoma, strrodic, mlandzic
-ms.date: 12/05/2025
+author: MashaMSFT
+ms.author: mathoma
+ms.reviewer: dinethi, mathoma, wiassaf, strrodic, mlandzic
+ms.date: 01/15/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: backup-restore
 ms.topic: how-to
@@ -232,6 +232,7 @@ Consider the following limitations when working with backups and Azure SQL Manag
    - Database backups taken from instances configured with the [SQL Server 2022 update policy](update-policy.md#sql-server-2022-update-policy) can be restored to instances configured with either the **SQL Server 2022**, **SQL Server 2025**, or **Always-up-to-date** update policy.  
    - Database backups taken from instances configured with the [SQL Server 2025 update policy](update-policy.md#sql-server-2025-update-policy) can be restored to instances configured with either the **SQL Server 2025**, or **Always-up-to-date** update policy. 
    - Database backups taken from instances configured with the [Always-up-to-date update policy](update-policy.md#always-up-to-date-update-policy) can only be restored to instances also configured with the **Always-up-to-date** update policy.
+- Restoring a backup from an HNS-enabled (ADLS Gen2) account is not supported.
 
 ## Related content
 

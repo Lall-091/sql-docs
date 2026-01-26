@@ -2,10 +2,10 @@
 title: Automatic, Geo-Redundant Backups
 titleSuffix: Azure SQL Managed Instance
 description: Learn how Azure SQL Managed Instance automatically backs up all databases and provides point-in-time restore capability.
-author: dinethi
-ms.author: dinethi
-ms.reviewer: mathoma, wiassaf, mlandzic, strrodic, danil, randolphwest
-ms.date: 06/26/2025
+author: MashaMSFT
+ms.author: mathoma
+ms.reviewer: dinethi, wiassaf, mlandzic, strrodic, danil, randolphwest
+ms.date: 01/15/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: backup-restore
 ms.topic: concept-article
@@ -106,6 +106,19 @@ You can use these backups to:
    > [!IMPORTANT]  
    > Geo-restore is available only for databases that are configured with geo-redundant backup storage. If you're not currently using geo-replicated backups for a database, you can change this by [configuring backup storage redundancy](automated-backups-change-settings.md#configure-backup-storage-redundancy).
 - [Restore a database from a long-term backup](../database/long-term-retention-overview.md) of a database, if the database has a configured LTR policy. LTR allows you to [restore an older version of the database](long-term-backup-retention-configure.md) by using the Azure portal, the Azure CLI, or Azure PowerShell to satisfy a compliance request or to run an old version of the application. For more information, see [Long-term retention backups - Azure SQL Database and Azure SQL Managed Instance](../database/long-term-retention-overview.md).
+
+## Automatic backups on secondary replicas
+
+Automatic backups are now taken from a secondary replica in the [Business Critical service tier](service-tiers-managed-instance-vcore.md#business-critical). Since data is replicated between SQL Database Engine processes on each node, the backup service takes the backup from the non-readable secondary replicas. This design ensures the primary replica remains dedicated to your main workload, and the readable secondary replica is dedicated to read-only workloads. Automatic backups in the Business Critical service tier are taken from a secondary replica most of the time. If an automatic backup fails on a secondary replica, then the backup service takes the backup from the primary replica. 
+
+Automatic backups on secondary replicas:
+
+- Are enabled by default.
+- Are included at no additional cost beyond the price of the service tier.
+- Bring improved performance and predictability to the Business Critical service tier.
+
+> [!NOTE]
+> Create an Azure support request to disable this feature for your instance.
 
 ## Restore capabilities and features
 
