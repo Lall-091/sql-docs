@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: 09/07/2025
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 helpviewer_keywords:
   - "troubleshooting, tde akv"
   - "tde akv configuration, troubleshooting"

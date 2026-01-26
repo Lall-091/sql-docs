@@ -6,7 +6,7 @@ ms.author: jiwang6
 ms.date: "03/18/2017"
 ms.service: sql
 ms.subservice: master-data-services
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "business rules [Master Data Services], about business rules"
   - "business rules [Master Data Services]"

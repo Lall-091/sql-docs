@@ -6,7 +6,7 @@ ms.author: jiwang6
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: master-data-services
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: ">=sql-server-ver16"
 ms.custom:
   - build-2025

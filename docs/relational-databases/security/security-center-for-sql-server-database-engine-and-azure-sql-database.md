@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: 06/30/2025
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "SQL Server, security"
   - "security [SQL Server]"

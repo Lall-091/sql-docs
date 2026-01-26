@@ -4,7 +4,7 @@ description: When you place a gallery element on the design surface, Mobile Repo
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: mobile-reports
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

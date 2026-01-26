@@ -7,7 +7,7 @@ ms.reviewer: randolphwest, jaferebe, jopilov
 ms.date: 11/21/2025
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 ai-usage: ai-assisted

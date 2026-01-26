@@ -4,7 +4,7 @@ description: To improve the print quality of reports viewed in a browser and to 
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-builder
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

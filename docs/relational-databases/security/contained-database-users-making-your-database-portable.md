@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: 09/17/2025
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sfi-ropc-blocked
   - ignite-2025

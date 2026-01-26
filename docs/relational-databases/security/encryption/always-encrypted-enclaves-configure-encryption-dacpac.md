@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: 04/05/2023
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "Always Encrypted, configure with DACPAC"
 monikerRange: "=azuresqldb-current||>=sql-server-2016||>=sql-server-linux-2017||=azuresqldb-mi-current"

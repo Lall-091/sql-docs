@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: "05/14/2018"
 ms.service: sql
 ms.subservice: system-objects
-ms.topic: conceptual
+ms.topic: reference
 ms.custom:
   - ignite-2025
 f1_keywords:

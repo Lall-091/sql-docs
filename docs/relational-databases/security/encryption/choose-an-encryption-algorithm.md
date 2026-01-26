@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: 09/22/2023
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "cryptography [SQL Server], algorithms"
   - "encryption [SQL Server], algorithms"

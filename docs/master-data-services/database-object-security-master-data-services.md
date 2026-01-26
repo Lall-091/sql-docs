@@ -6,7 +6,7 @@ ms.author: jiwang6
 ms.date: "03/04/2017"
 ms.service: sql
 ms.subservice: master-data-services
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "database [Master Data Services], object security"
   - "security [Master Data Services], database objects"

@@ -4,7 +4,7 @@ description: Find out about the Excel rendering extension, which you can use to 
 ms.date: 09/30/2024
 ms.service: reporting-services
 ms.subservice: report-builder
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
   - sfi-image-nochange

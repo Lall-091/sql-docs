@@ -7,7 +7,7 @@ ms.reviewer: vanto, randolphwest
 ms.date: 04/23/2025
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.swb.alwaysencryptedwizard.encryption.f1"
 helpviewer_keywords:

@@ -8,7 +8,7 @@ ms.reviewer: vanto, mathoma
 ms.date: 10/30/2025
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - sfi-image-nochange
   - ignite-2025

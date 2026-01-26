@@ -4,7 +4,7 @@ description: SQL Server Mobile Report Publisher provides three types of map visu
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: mobile-reports
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 ---
