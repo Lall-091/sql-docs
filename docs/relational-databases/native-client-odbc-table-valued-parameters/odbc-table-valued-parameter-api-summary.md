@@ -19,9 +19,7 @@ helpviewer_keywords:
 ODBC supports table-valued parameters (TVPs) through enhancements to several existing API functions. These functions work together to describe TVP schemas, bind and transmit row sets, fetch metadata, and manage descriptor records.  
 The following sections organize the relevant ODBC functions into logical groups to help you understand how each part of the TVP pipeline operates.
 
----
-
-# TVP schema discovery and metadata functions
+## TVP schema discovery and metadata functions
 
 These functions help an application discover the structure of table-valued parameters, including column metadata, parameter definitions, and available SQL data types.
 
@@ -34,9 +32,7 @@ These functions help an application discover the structure of table-valued param
 | [SQLProcedureColumns](../../relational-databases/native-client-odbc-api/sqlprocedurecolumns.md) | Retrieves metadata for TVP-related stored procedure parameters. |
 | [SQLTables](../../relational-databases/native-client-odbc-api/sqltables.md) | Lists tables and table types available as sources for TVP declarations. |
 
----
-
-# TVP parameter binding and data transmission
+## TVP parameter binding and data transmission
 
 These functions handle binding structured data to parameters, passing the data to the server, or streaming rows during execution.
 
@@ -46,9 +42,7 @@ These functions handle binding structured data to parameters, passing the data t
 | [SQLParamData](../../relational-databases/native-client-odbc-api/sqlparamdata.md) | Retrieves the next part of a streamed TVP parameter when using data-at-execution. |
 | [SQLPutData](../../relational-databases/native-client-odbc-api/sqlputdata.md) | Sends TVP data in chunks during data-at-execution operations. |
 
----
-
-# Statement execution for TVPs
+## Statement execution for TVPs
 
 These functions execute SQL statements that reference TVPs and manage the execution lifecycle.
 
@@ -57,9 +51,7 @@ These functions execute SQL statements that reference TVPs and manage the execut
 | [SQLExecDirect](../../relational-databases/native-client-odbc-api/sqlexecdirect.md) | Executes a SQL statement that uses TVPs without preparing it first. |
 | [SQLExecute](../../relational-databases/native-client-odbc-api/sqlexecute.md) | Executes a previously prepared SQL statement that includes TVP parameters. |
 
----
-
-# Descriptor and attribute management for TVPs
+## Descriptor and attribute management for TVPs
 
 Use these functions to manage descriptor fields and statement attributes required to describe rowsets and structured parameters correctly.
 
@@ -72,17 +64,13 @@ Use these functions to manage descriptor fields and statement attributes require
 | [SQLGetStmtAttr](../../relational-databases/native-client-odbc-api/sqlgetstmtattr.md) | Retrieves statement attributes affecting TVP execution behavior. |
 | [SQLSetStmtAttr](../../relational-databases/native-client-odbc-api/sqlsetstmtattr.md) | Sets statement attributes such as rowset sizes or streaming flags for TVP operations. |
 
----
-
-# Diagnostics and error handling for TVPs
+## Diagnostics and error handling for TVPs
 
 Use these functions to help your applications detect errors, warnings, or status messages during TVP binding and execution.
 
 | Function | Purpose |
 |----------|---------|
 | [SQLGetDiagField](../../relational-databases/native-client-odbc-api/sqlgetdiagfield.md) | Retrieves diagnostic information generated during TVP processing. |
-
----
 
 ## Related content
 

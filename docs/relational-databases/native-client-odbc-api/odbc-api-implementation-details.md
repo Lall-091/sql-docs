@@ -24,8 +24,6 @@ The [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Native Client ODB
 
 The [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] Native Client ODBC driver complies with the ODBC 3.51 specification. For full reference material, download the Microsoft Data Access Components SDK from the [Data Access and Storage Developer Center](https://go.microsoft.com/fwlink?linkid=4173) or view the [ODBC Programmer's Reference](../../odbc/reference/odbc-programmer-s-reference.md).
 
----
-
 ## How the ODBC API works
 
 ODBC provides a standardized interface between applications and database drivers. When your application calls an ODBC function, the call passes through several layers before reaching the data source. Understanding this architecture helps you write more efficient code and troubleshoot connectivity problems.
@@ -79,11 +77,9 @@ Use Unicode APIs for modern applications.
 ### Threading and pooling
 
 - Thread safety depends on how the application configures the driver and Driver Manager.
-- You can enable connection pooling at either level to reduce connection overhead.
+- To reduce connection overhead, enable connection pooling at either level.
 
----
-
-# ODBC API reference (table layout)
+## ODBC API reference (table layout)
 
 The following table lists the available ODBC API functions documented for the SQL Server Native Client driver. Each entry links to its corresponding detailed reference page.
 
@@ -139,8 +135,6 @@ The following table lists the available ODBC API functions documented for the SQ
 | [SQLStatistics](../../relational-databases/native-client-odbc-api/sqlstatistics.md) | Retrieve index and statistic information. |
 | [SQLTablePrivileges](../../relational-databases/native-client-odbc-api/sqltableprivileges.md) | Retrieve table privilege information. |
 | [SQLTables](../../relational-databases/native-client-odbc-api/sqltables.md) | Retrieve table metadata. |
-
----
 
 ## Related content
 
