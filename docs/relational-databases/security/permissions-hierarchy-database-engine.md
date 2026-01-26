@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: "03/23/2016"
 ms.service: sql
 ms.subservice: security
-ms.topic: article
+ms.topic: concept-article
 ms.custom:
   - sfi-image-nochange
   - ignite-2025

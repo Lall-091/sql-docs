@@ -4,7 +4,7 @@ description: Learn to create a data filter for the data table that you defined f
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services
-ms.topic: conceptual
+ms.topic: tutorial
 ms.custom:
   - updatefrequency5
 ---

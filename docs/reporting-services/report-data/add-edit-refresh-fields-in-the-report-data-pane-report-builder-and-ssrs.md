@@ -4,7 +4,7 @@ description: Learn details about datasets as well as how to add, edit, and refre
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 ---

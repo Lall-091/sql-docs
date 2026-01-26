@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: "03/16/2017"
 ms.service: sql
 ms.subservice: stored-procedures
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 f1_keywords:

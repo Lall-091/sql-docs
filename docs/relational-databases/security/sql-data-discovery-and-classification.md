@@ -6,7 +6,7 @@ ms.author: matripathy
 ms.reviewer: vanto
 ms.date: 03/09/2022
 ms.service: sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - security
   - sfi-image-nochange

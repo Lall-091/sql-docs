@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: "03/10/2022"
 ms.service: sql
 ms.subservice: stored-procedures
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "data types [SQL Server], OLE Automation"
   - "two-dimensional arrays"

@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: "07/25/2019"
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "Key Management"
   - "Extensible Key Management"

@@ -4,7 +4,7 @@ description: Learn introductory information about report data in SQL Server Repo
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-data
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

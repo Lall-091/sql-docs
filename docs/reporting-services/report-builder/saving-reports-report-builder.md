@@ -4,7 +4,7 @@ description: In Report Builder, you can save the definition of a report, which i
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-builder
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

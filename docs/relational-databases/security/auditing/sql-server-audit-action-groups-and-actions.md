@@ -7,7 +7,7 @@ ms.reviewer: vanto, randolphwest
 ms.date: 11/25/2024
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "audit actions [SQL Server]"
   - "audits [SQL Server], groups"

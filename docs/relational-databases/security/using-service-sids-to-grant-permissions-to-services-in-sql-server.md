@@ -5,7 +5,7 @@ author: randomnote1
 ms.author: dareist
 ms.date: "05/02/2019"
 ms.service: sql
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Using Service SIDs to grant permissions to services in SQL Server

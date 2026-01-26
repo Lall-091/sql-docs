@@ -7,7 +7,7 @@ ms.reviewer: mathoma
 ms.date: 08/07/2025
 ms.service: azure-sql-database
 ms.subservice: security
-ms.topic: article
+ms.topic: overview
 ms.custom:
   - ignite-2023
 monikerRange: "=azuresqldb-current || >=sql-server-ver16 || >=sql-server-linux-ver16 || =azuresqldb-mi-current"

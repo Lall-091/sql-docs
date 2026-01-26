@@ -6,7 +6,7 @@ ms.author: mikeray
 ms.reviewer: randolphwest
 ms.date: 04/08/2024
 ms.service: sql
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "logon triggers"
   - "login triggers"

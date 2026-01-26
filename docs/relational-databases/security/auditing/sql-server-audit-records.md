@@ -7,7 +7,7 @@ ms.reviewer: vanto
 ms.date: 10/20/2025
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "audit records [SQL Server]"
 ai-usage: ai-assisted

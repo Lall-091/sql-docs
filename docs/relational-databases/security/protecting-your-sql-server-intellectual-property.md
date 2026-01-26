@@ -6,7 +6,7 @@ ms.author: vanto
 ms.date: "01/31/2017"
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "protecting intellectual property"
   - "intellectual property"

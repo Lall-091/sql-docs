@@ -6,7 +6,7 @@ ms.author: jiwang6
 ms.date: "04/06/2016"
 ms.service: sql
 ms.subservice: master-data-services
-ms.topic: conceptual
+ms.topic: concept-article
 keywords: master data services
 ms.custom:
   - build-2025

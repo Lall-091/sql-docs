@@ -7,7 +7,7 @@ ms.reviewer: wiassaf
 ms.date: 09/11/2025
 ms.service: sql
 ms.subservice: "security"
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 helpviewer_keywords:

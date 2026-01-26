@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: mobile-reports
-ms.topic: article
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

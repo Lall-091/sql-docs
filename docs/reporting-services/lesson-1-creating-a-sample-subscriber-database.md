@@ -4,7 +4,7 @@ description: Learn how to create a small subscriber database to store subscripti
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services
-ms.topic: conceptual
+ms.topic: tutorial
 ms.custom:
   - updatefrequency5
 ---

@@ -7,7 +7,7 @@ ms.reviewer: vanto, mathoma
 ms.date: 04/25/2025
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - ignite-2023
 f1_keywords:

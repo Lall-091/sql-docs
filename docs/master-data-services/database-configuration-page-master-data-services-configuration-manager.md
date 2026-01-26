@@ -6,7 +6,7 @@ ms.author: jiwang6
 ms.date: "03/20/2017"
 ms.service: sql
 ms.subservice: master-data-services
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "sql13.mds.configmanager.dbpg.f1"
 ms.custom:

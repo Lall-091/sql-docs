@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.date: "03/10/2022"
 ms.service: sql
 ms.subservice: stored-procedures
-ms.topic: conceptual
+ms.topic: sample
 helpviewer_keywords:
   - "OLE Automation [SQL Server], examples"
 monikerRange: ">=sql-server-2016"

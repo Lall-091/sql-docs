@@ -4,7 +4,7 @@ description: Mobile Report Publisher supports data-first and design-first approa
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: mobile-reports
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

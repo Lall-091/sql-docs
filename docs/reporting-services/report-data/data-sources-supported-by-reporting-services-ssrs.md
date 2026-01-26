@@ -4,7 +4,7 @@ description: Learn about the various data sources that are supported by Reportin
 ms.date: 09/11/2025
 ms.service: reporting-services
 ms.subservice: report-data
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 helpviewer_keywords:
