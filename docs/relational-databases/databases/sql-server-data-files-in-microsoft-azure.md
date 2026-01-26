@@ -3,10 +3,11 @@ title: "SQL Server data files in Microsoft Azure"
 description: Discover concepts and considerations that are central to storing SQL Server data files in Microsoft Azure Storage and some advantages of using Azure Storage.
 author: MikeRayMSFT
 ms.author: mikeray
-ms.date: 03/01/2023
+ms.date: 01/26/2026
 ms.service: sql
 ms.subservice: supportability
 ms.topic: concept-article
+ai-usage: ai-assisted
 ---
 # SQL Server data files in Microsoft Azure
 
@@ -20,7 +21,38 @@ SQL Server Data Files in Microsoft Azure enables native support for SQL Server d
 
 This article introduces concepts and considerations that are central to storing SQL Server data files in Microsoft Azure Storage Service.
 
-For a practical hands-on experience on how to use this feature, see [Tutorial: Using the Microsoft Azure Blob Storage with SQL Server databases](../tutorial-use-azure-blob-storage-service-with-sql-server.md).  
+## How to use SQL Server data files in Azure - Quick start
+
+Ready to get started? Follow this step-by-step workflow to use SQL Server data files with Azure Blob storage:
+
+### Prerequisites checklist
+
+- [ ] SQL Server 2016 or later (on-premises or Azure VM)
+- [ ] Azure subscription and storage account
+- [ ] SQL Server Management Studio (SSMS)
+- [ ] Understanding of T-SQL backup/restore concepts
+
+### Implementation workflow
+
+1. **Set up Azure storage** - Create storage account, container, and access policies
+2. **Configure SQL Server credentials** - Create credentials with shared access signatures
+3. **Create or migrate databases** - Use Azure blob URLs for database file locations
+4. **Test and validate** - Verify database operations work correctly
+
+### Get hands-on experience
+
+**New to this feature?** Start with our comprehensive tutorial:
+
+> [!TIP]
+> **[Tutorial: Use Azure Blob Storage with SQL Server databases](../tutorial-use-azure-blob-storage-service-with-sql-server.md)**
+>
+> This tutorial walks you through the complete process with real examples, including:
+> - Setting up Azure storage with PowerShell
+> - Creating SQL Server credentials
+> - Backing up and restoring databases
+> - Working with file-snapshot backups
+
+For quick reference, see the [SQL Server concepts](#sql-server-concepts) section below for code examples.  
 
 ## Why use SQL Server data files in Microsoft Azure?
 
@@ -161,7 +193,10 @@ Starting with SQL Server 2014, a new SQL Server object has been added to be used
 
 ## <a id="bkmk_Troubleshooting"></a> Troubleshoot for SQL Server Data Files in Microsoft Azure
 
- To avoid errors due to unsupported features or limitations, first review [Limitations](../../relational-databases/databases/sql-server-data-files-in-microsoft-azure.md#bkmk_Limitations).  
+To avoid errors due to unsupported features or limitations, first review [Limitations](#bkmk_Limitations).
+
+> [!NOTE]
+> **Need step-by-step guidance?** Many common issues can be avoided by following the correct setup procedures. See our [Tutorial: Use Azure Blob Storage with SQL Server databases](../tutorial-use-azure-blob-storage-service-with-sql-server.md) for detailed implementation steps.  
 
  The list of errors that you might get when using the SQL Server Data Files in Azure Storage feature are as follows.  
 
@@ -208,4 +243,6 @@ To resolve this issue, first determine if you need ServerA to access the databas
 
 ## Next steps
 
+- **Get hands-on experience**: [Tutorial: Use Azure Blob Storage with SQL Server databases](../tutorial-use-azure-blob-storage-service-with-sql-server.md)
 - [Create a database](create-a-database.md)
+- [File-Snapshot Backups for Database Files in Azure](../../relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure.md)
