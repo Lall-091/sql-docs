@@ -11,7 +11,7 @@ apilocation: "sqljdbc.jar"
 apiname: "SQLServerConnection.prepareStatement (java.lang.String, int[])"
 apitype: "Assembly"
 ---
-# prepareStatement Method (java.lang.String, int[])
+# prepareStatement method (java.lang.String, int[])
 
 [!INCLUDE[Driver_JDBC_Download](../../../includes/driver_jdbc_download.md)]
 
@@ -34,7 +34,7 @@ public java.sql.PreparedStatement prepareStatement(java.lang.String sql,
   
  An array of ints.  
   
-## Return Value
+## Return value
 
  A PreparedStatement object.  
   
