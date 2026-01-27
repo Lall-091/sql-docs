@@ -49,18 +49,6 @@ Execute permissions on `sp_configure` with no parameters or with only the first 
 
 1. Restart [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 
-<a id="SSMSProcedure"></a>
-
-## Use Azure Data Studio
-
-1. In the Connections pane under servers, right-click a server and Select **Properties**.
-
-1. Select the **Connections** node.
-
-1. Under **Connections**, in the **Max number of concurrent connections** box, type or select a value from `0` through `32767` to set the maximum number of users that are allowed to connect simultaneously to the instance of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
-
-1. Restart [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
-
 <a id="TsqlProcedure"></a>
 
 ## Use Transact-SQL
