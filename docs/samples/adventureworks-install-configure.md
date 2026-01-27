@@ -184,4 +184,4 @@ You can find additional information about using the scripts on [GitHub](https://
 
 - [Database Engine tutorials](../relational-databases/database-engine-tutorials.md)
 - [Quickstart: Connect and query a SQL Server instance using SSMS](/ssms/quickstarts/ssms-connect-query-sql-server)
-- [Quickstart: Use Azure Data Studio to connect and query SQL Server](/azure-data-studio/quickstart-sql-server)
+- [What is the MSSQL extension for Visual Studio Code?](../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md)

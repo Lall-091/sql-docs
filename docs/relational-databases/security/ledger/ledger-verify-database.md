@@ -49,7 +49,7 @@ In this article, you'll verify the integrity of the data in your ledger tables. 
 
 1. Execute the query. You'll see that **digest_locations** returns the current location of where your database digests are stored and any previous locations. **Result** returns the success or failure of ledger verification.
 
-   :::image type="content" source="media/ledger/verification_script_exectution.png" alt-text="Screenshot of running ledger verification by using Azure Data Studio.":::
+   :::image type="content" source="media/ledger/verification_script_exectution.png" alt-text="Screenshot of running ledger verification by using Visual Studio Code.":::
 
 1. Open the **digest_locations** result set to view the locations of your digests. The following example shows two digest storage locations for this database:
 
@@ -100,7 +100,7 @@ In this article, you'll verify the integrity of the data in your ledger tables. 
 
 1. Execute the query. The results contain the latest database digest and represent the hash of the database at the current point in time. Copy the contents of the results to be used in the next step.
 
-   :::image type="content" source="media/ledger/ledger-retrieve-digest.png" alt-text="Screenshot that shows retrieving digest results by using Azure Data Studio.":::
+   :::image type="content" source="media/ledger/ledger-retrieve-digest.png" alt-text="Screenshot that shows retrieving digest results by using Visual Studio Code.":::
 
 1. Create a new query with the following T-SQL statement. Replace `<YOUR DATABASE DIGEST>` with the digest you copied in the previous step.
 
@@ -112,7 +112,7 @@ In this article, you'll verify the integrity of the data in your ledger tables. 
 
 1. Execute the query. The **Messages** window contains the following success message.
 
-   :::image type="content" source="media/ledger/ledger-verify-message.png" alt-text="Screenshot that shows the message after running T-SQL query for ledger verification by using Azure Data Studio.":::
+   :::image type="content" source="media/ledger/ledger-verify-message.png" alt-text="Screenshot that shows the message after running T-SQL query for ledger verification by using Visual Studio Code.":::
 
    > [!TIP]
    > Running ledger verification with the latest digest will only verify the database from the time the digest was generated until the time the verification was run. To verify that the historical data in your database wasn't tampered with, run verification by using multiple database digest files. Start with the point in time for which you want to verify the database. An example of a verification passing multiple digests would look similar to the following query.

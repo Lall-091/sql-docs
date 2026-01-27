@@ -5,7 +5,7 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest, maghan
 ms.date: 07/08/2025
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Move SQL Server license agreement to pay-as-you-go subscription

@@ -4,7 +4,7 @@ description: Learn how to use the Subscriptions page to list all of the subscrip
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: reporting-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
   - sfi-image-nochange

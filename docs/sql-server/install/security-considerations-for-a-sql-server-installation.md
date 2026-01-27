@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 08/14/2025
 ms.service: sql
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: best-practice
 helpviewer_keywords:
   - "firewall systems [SQL Server]"
   - "server message blocks [SQL Server]"

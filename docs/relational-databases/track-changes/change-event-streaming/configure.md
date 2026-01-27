@@ -536,7 +536,7 @@ The following limitations apply when using CES with Azure SQL Database:
 - CES doesn't handle schema changes (DDL operations), which means it doesn't emit events for DDL operations. However, DDL operations aren't blocked, so if you execute them, the schema of subsequent DML events reflects the updated table structure. You're expected to gracefully handle events with the updated schema.
 - Currently, CES doesn't stream data that exists in a table before CES is enabled. Existing data isn't seeded, or sent as a snapshot, when CES is enabled.
 - If a message exceeds the Azure Event Hubs message size limit, the failure is currently only observable through Extended Events. CES xEvents are currently only available in SQL Server 2025, and not Azure SQL Database.
-- Renaming tables and columns configuired for CES isn't supported. Renaming a table or column fails. Database renames **are allowed**.
+- Renaming tables and columns configured for CES isn't supported. Renaming a table or column fails. Database renames **are allowed**.
 - Microsoft Entra authentication for CES isn't currently available in SQL Server 2025.
 
 ### Database-level limitations

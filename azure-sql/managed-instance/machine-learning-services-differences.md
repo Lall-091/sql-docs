@@ -1,10 +1,10 @@
 ---
-title: Key differences for Machine Learning Services
+title: Key Differences for Machine Learning Services
 description: This article describes key differences between Machine Learning Services in Azure SQL Managed Instance and SQL Server Machine Learning Services.
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: mathoma, wiassaf
-ms.date: 11/30/2023
+ms.reviewer: wiassaf, randolphwest
+ms.date: 01/26/2026
 ms.service: azure-sql-managed-instance
 ms.subservice: machine-learning
 ms.topic: concept-article
@@ -16,23 +16,23 @@ This article describes the few, key differences in functionality between [Machin
 
 ## Language support
 
-Machine Learning Services in both SQL Managed Instance and SQL Server support the Python and R [extensibility framework](/sql/machine-learning/concepts/extensibility-framework). A key difference in SQL Managed Instance is that only Python and R are supported, and external languages such as Java cannot be added.
+Machine Learning Services in both SQL Managed Instance and SQL Server support the Python and R [extensibility framework](/sql/machine-learning/concepts/extensibility-framework). A key difference in SQL Managed Instance is that only Python and R are supported, and external languages such as Java can't be added.
 
 The initial versions of Python and R are different in SQL Managed Instance and SQL Server:
 
-  | Platform                   | Python runtime version           | R runtime versions                   |
-  |----------------------------|----------------------------------|--------------------------------------|
-  | Azure SQL Managed Instance | 3.7.2                            | 3.5.2                                |
-  | SQL Server 2022 \*| - | - |
-  | SQL Server 2019            | 3.7.1                            | 3.5.2                                |
-  | SQL Server 2017            | 3.5.2 and 3.7.2 (CU22 and later) | 3.3.3 and 3.5.2 (CU22 and later)     |
-  | SQL Server 2016            | Not available                    | 3.2.2 and 3.5.2 (SP2 CU14 and later) |
+| Platform | Python runtime version | R runtime versions |
+| --- | --- | --- |
+| Azure SQL Managed Instance | 3.7.2 | 3.5.2 |
+| SQL Server 2022 <sup>1</sup> | - | - |
+| SQL Server 2019 | 3.7.1 | 3.5.2 |
+| SQL Server 2017 | 3.5.2 and 3.7.2 (CU22 and later) | 3.3.3 and 3.5.2 (CU22 and later) |
+| SQL Server 2016 | Not available | 3.2.2 and 3.5.2 (SP2 CU14 and later) |
 
-\* Beginning with SQL Server 2022, runtimes for R, Python, and Java, are no longer shipped or installed within SQL Setup. Instead, install your desired R and/or Python custom runtime(s) and packages. For more information, see [Install SQL Server 2022 Machine Learning Services (Python and R) on Windows](/sql/machine-learning/install/sql-machine-learning-services-windows-install-sql-2022).
+<sup>1</sup> Beginning with SQL Server 2022, runtimes for R, Python, and Java, are no longer shipped or installed within SQL Setup. Instead, install your desired R and/or Python custom runtime(s) and packages. For more information, see [Install SQL Server 2022 Machine Learning Services (Python and R) on Windows](/sql/machine-learning/install/sql-machine-learning-services-windows-install-sql-2022).
 
 ## Python and R Packages
 
-There is no support in SQL Managed Instance for packages that depend on external runtimes (like Java) or need access to OS APIs for installation or usage.
+There's no support in SQL Managed Instance for packages that depend on external runtimes (like Java) or need access to OS APIs for installation or usage.
 
 For more information about managing Python and R packages, see:
 
@@ -41,12 +41,11 @@ For more information about managing Python and R packages, see:
 
 ### Manage packages via sqlmlutils
 
-You can install binary packages with `sqlmlutils`, if you can build locally to produce a binary package as output. For examples, see [Install R packages with sqlmlutils](/sql/machine-learning/package-management/install-additional-r-packages-on-sql-server) or [Install Python packages with sqlmlutils](/sql/machine-learning/package-management/install-additional-python-packages-on-sql-server).
-
+You can install binary packages with `sqlmlutils`, if you can build locally to produce a binary package as output. For examples, see [Install R packages with sqlmlutils](/sql/machine-learning/package-management/install-additional-r-packages-on-sql-server).
 
 ## Resource governance
 
-In SQL Managed Instance, it's not possible to limit R resources through [Resource Governor](/sql/relational-databases/resource-governor/resource-governor?view=azuresqldb-mi-current&preserve-view=true), and external resource pools are not supported.
+In SQL Managed Instance, it's not possible to limit R resources through [Resource Governor](/sql/relational-databases/resource-governor/resource-governor?view=azuresqldb-mi-current&preserve-view=true), and external resource pools aren't supported.
 
 By default, R resources are set to a maximum of 20% of the available SQL Managed Instance resources when extensibility is enabled. To change this default percentage, create an [Azure support ticket](https://azure.microsoft.com/support/create-ticket/).
 
@@ -64,11 +63,11 @@ sp_configure 'external scripts enabled', 0;
 RECONFIGURE WITH OVERRIDE;
 ```
 
-The total resources available to SQL Managed Instance depend on which service tier you choose. For more information, see [Azure SQL Database purchasing models](../database/purchasing-models.md).
+The total resources available to SQL Managed Instance depend on which service tier you choose. For more information, see [Compare vCore and DTU-based purchasing models of Azure SQL Database](../database/purchasing-models.md).
 
 ### Insufficient memory error
 
-Memory usage depends on how much is used in your R scripts and the number of parallel queries being executed. If there is insufficient memory available for R, you'll get an error message. Common error messages are:
+Memory usage depends on how much is used in your R scripts and the number of parallel queries being executed. If there's insufficient memory available for R, you'll get an error message. Common error messages are:
 
 - `Unable to communicate with the runtime for 'R' script for request id: *******. Please check the requirements of 'R' runtime`
 - `'R' script error occurred during execution of 'sp_execute_external_script' with HRESULT 0x80004004. ...an external script error occurred: "..could not allocate memory (0 Mb) in C function 'R_AllocStringBuffer'"`
@@ -80,14 +79,14 @@ If you encounter out of memory errors in Azure SQL Managed Instance, review [sys
 
 ## SQL Managed Instance pools
 
-Machine Learning Services is currently not supported on [Azure SQL Managed Instance pools (preview)](instance-pools-overview.md).
+Machine Learning Services is currently not supported on [Azure SQL Managed Instance pools](instance-pools-overview.md).
 
 ## Outbound network access
 
-Network access is disallowed or blocked and cannot be enabled. The outbound network connection for Azure SQL Managed Instance is not available for Machine Learning Services.
+Network access is disallowed or blocked and can't be enabled. The outbound network connection for Azure SQL Managed Instance isn't available for Machine Learning Services.
 
-## Next steps
+## Related content
 
-- See the overview, [Machine Learning Services in Azure SQL Managed Instance](machine-learning-services-overview.md).
-- To learn how to use Python in Machine Learning Services, see [Run Python scripts](/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true).
-- To learn how to use R in Machine Learning Services, see [Run R scripts](/sql/machine-learning/tutorials/quickstart-r-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true).
+- [Machine Learning Services in Azure SQL Managed Instance](machine-learning-services-overview.md)
+- [Run Python scripts](/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true)
+- [Run R scripts](/sql/machine-learning/tutorials/quickstart-r-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true)

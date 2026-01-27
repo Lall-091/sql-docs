@@ -32,7 +32,6 @@ The data classification in this article only applies to versions of the SQL Serv
 
 It doesn't apply to the items listed below:
 
-- [Azure Data Studio](/azure-data-studio/usage-data-collection)
 - [SQL Server Management Studio (SSMS)](/ssms/sql-server-management-studio-telemetry-ssms)
 - [SQL Server Data Tools (SSDT)](../ssdt/anonymous-usage-data.md)
 - [SQL Server migration component in SQL Server Management Studio](/ssms/migrate-sql-server-component#migrate-your-database)

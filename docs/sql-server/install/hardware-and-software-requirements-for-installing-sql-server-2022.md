@@ -7,7 +7,7 @@ ms.reviewer: randolphwest, jopilov, rdorr
 ms.date: 03/28/2025
 ms.service: sql
 ms.subservice: release-landing
-ms.topic: conceptual
+ms.topic: checklist
 helpviewer_keywords:
   - "Setup [SQL Server], software"
   - "software [SQL Server]"

@@ -4,7 +4,7 @@ description: Learn how to add, remove, or change map options manually or by usin
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 f1_keywords:

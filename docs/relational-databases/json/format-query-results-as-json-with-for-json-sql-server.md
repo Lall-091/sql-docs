@@ -22,7 +22,7 @@ monikerRange: "=azuresqldb-current || >=sql-server-2016 || >=sql-server-linux-20
 Format query results as JSON, or export data from SQL Server as JSON, by adding the `FOR JSON` clause to a `SELECT` statement. Use the `FOR JSON` clause to simplify client applications by delegating the formatting of JSON output from the app to [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)].
 
 > [!NOTE]  
-> [Azure Data Studio](/azure-data-studio/download-azure-data-studio) is the recommended query editor for JSON queries because it auto-formats the JSON results, as shown in this article. [!INCLUDE [ssmanstudiofull-md](../../includes/ssmanstudiofull-md.md)] displays an unformatted string.
+> [SQL Server Management Studio](/ssms/sql-server-management-studio-ssms) and the [MSSQL extension for Visual Studio Code](../../tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code.md) can auto-format the JSON results (as seen in this article) instead of displaying an unformatted string.
 
 In Fabric Data Warehouse, `FOR JSON` must be the last operator in the query, and so is not allowed inside subqueries.
 

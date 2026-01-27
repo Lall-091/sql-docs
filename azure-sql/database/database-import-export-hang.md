@@ -4,19 +4,19 @@ titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Azure SQL Database and Azure SQL Managed Instance Import/Export service takes a long time to import or export a database
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: mathoma, hudequei, sureshka
-ms.date: 06/13/2025
+ms.reviewer: mathoma, hudequei, sureshka, randolphwest
+ms.date: 01/26/2026
 ms.service: azure-sql
 ms.subservice: data-movement
 ms.topic: troubleshooting
 ms.custom:
   - sqldbrb=1
-monikerRange: "=azuresql || =azuresql-db || =azuresql-mi "
+monikerRange: "=azuresql || =azuresql-db || =azuresql-mi"
 ---
 
 # Azure SQL Database and SQL Managed Instance Import/Export service takes a long time to import or export a database
 
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE [appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 When you use the Import/Export service, the process might take longer than expected. This article describes the potential causes for this delay and alternative workaround methods.
 
@@ -32,26 +32,26 @@ The Azure SQL Database Import/Export service provides a limited number of comput
 
 Additionally, as the Import/Export service performs a logical backup of the database the time to complete is more dependent on the number of objects in the database than a traditional physical database backup.
 
-> [!NOTE]
+> [!NOTE]  
 > After resources are assigned and a request starts to process, the service automatically cancels the request after two days.
 
 ## Recommended solutions
 
 If your database exports are used only for recovery from accidental data deletion, all the Azure SQL Database editions provide self-service restoration capability from system-generated backups. But if you need these exports for other reasons, and if you require consistently faster or more predictable import/export performance, consider the following options:
 
-- [Export to a BACPAC file by using the SQLPackage utility](./database-export.md#sqlpackage-utility).
-- [Export to a BACPAC file by using Azure Data Studio](./database-export.md#azure-data-studio).
-- [Export to a BACPAC file by using SQL Server Management Studio (SSMS)](./database-export.md#sql-server-management-studio-ssms).
+- [Export to a BACPAC file by using the SQLPackage utility](database-export.md#sqlpackage-utility).
+- [Export to a BACPAC file by using Visual Studio Code](/sql/tools/visual-studio-code-extensions/mssql/mssql-data-tier-application).
+- [Export to a BACPAC file by using SQL Server Management Studio (SSMS)](database-export.md#sql-server-management-studio-ssms).
 - Run the BACPAC import or export directly in your code by using the Microsoft SQL Server Data-Tier Application Framework (DacFx) API. For additional information, see:
-  * [Export a data-tier application](/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
-  * [Microsoft.SqlServer.Dac Namespace](/dotnet/api/microsoft.sqlserver.dac)
+  - [Export a data-tier application](/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
+  - [Microsoft.SqlServer.Dac Namespace](/dotnet/api/microsoft.sqlserver.dac)
 
 ## Things to consider when you export or import a database
 
-- All the methods discussed in this article consume Database Transaction Units (DTUs) or CPU quota, which causes throttling by the Azure SQL Database service. You can [view the DTU stats for the database on the Azure portal](./monitor-tune-overview.md#azure-sql-database-and-azure-sql-managed-instance-resource-monitoring). If the database has reached its resource limits, [upgrade the service tier](scale-resources.md) to add more resources.
+- All the methods discussed in this article consume Database Transaction Units (DTUs) or CPU quota, which causes throttling by the Azure SQL Database service. You can [view the DTU stats for the database on the Azure portal](monitor-tune-overview.md#azure-sql-database-and-azure-sql-managed-instance-resource-monitoring). If the database has reached its resource limits, [upgrade the service tier](scale-resources.md) to add more resources.
 - Ideally, you should run client applications (like the sqlpackage utility or your custom DAC application) from a VM in the same region as your database. Otherwise, you might experience performance issues related to network latency.
 - Exporting large tables without clustered indexes can be very slow or even cause failure. This behavior occurs because the table can't be split up and exported in parallel. Instead, it must be exported in a single transaction, and that causes slow performance and potential failure during export, especially for large tables.
 
 ## Related documents
 
-[Considerations when exporting a database](./database-export.md#considerations)
+[Considerations when exporting a database](database-export.md#considerations)

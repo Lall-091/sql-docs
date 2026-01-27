@@ -6,7 +6,7 @@ ms.author: niball
 ms.date: 07/06/2020
 ms.service: sql
 ms.subservice: ssma
-ms.topic: conceptual
+ms.topic: how-to
 ms.collection:
   - sql-migration-content
 helpviewer_keywords:

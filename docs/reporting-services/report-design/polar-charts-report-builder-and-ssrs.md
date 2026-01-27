@@ -4,7 +4,7 @@ description: Discover the use of a paginated report polar chart with points grou
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

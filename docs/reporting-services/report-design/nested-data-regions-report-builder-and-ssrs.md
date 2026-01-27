@@ -4,7 +4,7 @@ description: Discover ways to nest a data region inside another data region in R
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---
