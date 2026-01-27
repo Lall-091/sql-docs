@@ -4,7 +4,7 @@ description: Extend a SQL project with references to additional database compone
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: maghan, randolphwest
-ms.date: 10/10/2025
+ms.date: 02/06/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: concept-article
@@ -144,7 +144,7 @@ FROM [$(WWIServer)].[$(WorldWideImporters)].[Purchasing].[Suppliers]
 
 To add a database reference to a SQL project in the SQL Database Projects extension, right-click the **Database References** node under the project in the **Database Projects** view and select **Add Database Reference**.
 
-:::image type="content" source="media/database-references/ads-add-reference.png" alt-text="Screenshot of Azure Data Studio add reference dialog.":::
+:::image type="content" source="media/database-references/ads-add-reference.png" alt-text="Screenshot of Visual Studio Code add reference dialog.":::
 
 The available reference types are:
 

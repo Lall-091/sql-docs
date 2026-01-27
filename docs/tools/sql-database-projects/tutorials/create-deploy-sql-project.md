@@ -4,17 +4,17 @@ description: "Deploy a SQL project tutorial for SQL DevOps."
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: maghan, randolphwest
-ms.date: 03/11/2025
+ms.date: 02/06/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: tutorial
 ms.collection:
   - data-tools
-zone_pivot_groups: sq1-sql-projects-tools
 ms.custom:
   - ignite-2024
   - sfi-image-nochange
   - sfi-ropc-nochange
+zone_pivot_groups: sq1-sql-projects-tools
 ---
 
 # Tutorial: Create and deploy a SQL project
@@ -57,8 +57,8 @@ If you've already completed the steps to [get started with SQL database projects
 ::: zone pivot="sq1-visual-studio-code"
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
-- [VS Code](https://code.visualstudio.com/Download)
-- [SQL Database Projects extension](/azure-data-studio/extensions/sql-database-project-extension) or [SQL Database Projects extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.sql-database-projects-vscode)
+- [Visual Studio Code](https://code.visualstudio.com/Download)
+- [SQL Database Projects extension](../../visual-studio-code-extensions/sql-database-projects/sql-database-projects-extension.md)
 
 ::: zone-end
 
@@ -121,7 +121,7 @@ Select **Create** to create the project. The empty project is opened and visible
 
 ::: zone pivot="sq1-visual-studio-code"
 
-In the **Database Projects** view of VS Code or Azure Data Studio, select the **New Project** button.
+In the **Database Projects** view of Visual Studio Code, select the **New Project** button.
 
 :::image type="content" source="media/create-deploy-sql-project/projects-viewlet.png" alt-text="Screenshot of New viewlet.":::
 
@@ -174,11 +174,11 @@ More database objects can be added through the **Add New Item** dialog, such as 
 
 ::: zone pivot="sq1-visual-studio-code"
 
-In the **Database Projects** view of VS Code or Azure Data Studio, right-click the project node and select **Add Table**. In the dialog that appears, specify the table name.
+In the **Database Projects** view of Visual Studio Code, right-click the project node and select **Add Table**. In the dialog that appears, specify the table name.
 
 The table is opened in the text editor with the template table definition, where you can add columns, indexes, and other table properties. Save the file when you're done making the initial edits.
 
-More database objects can be added through the context menu on the project node, such as views, stored procedures, and functions. Access the dialog by right-clicking the project node in **Database Projects** view of VS Code or Azure Data Studio, then the desired object type. Files in the project can be organized into folders through the **New Folder** option under **Add**.
+More database objects can be added through the context menu on the project node, such as views, stored procedures, and functions. Access the dialog by right-clicking the project node in **Database Projects** view of Visual Studio Code, then the desired object type. Files in the project can be organized into folders through the **New Folder** option under **Add**.
 
 ::: zone-end
 
@@ -219,7 +219,7 @@ The output window automatically opens to display the build process. If there are
 
 ::: zone pivot="sq1-visual-studio-code"
 
-In the **Database Projects** view of VS Code or Azure Data Studio, right-click the project node and select **Build**.
+In the **Database Projects** view of Visual Studio Code, right-click the project node and select **Build**.
 
 The output window automatically opens to display the build process. If there are errors or warnings, they're displayed in the output window. On a successful build, the build artifact (`.dacpac` file) is created its location is included in the build output (default is `bin/Debug/projectname.dacpac`).
 
@@ -274,9 +274,9 @@ Specify a database name and select **Publish** to deploy the project to the targ
 
 ::: zone pivot="sq1-visual-studio-code"
 
-You can initialize and local repository and publish it directly to GitHub from VS Code or Azure Data Studio. This action creates a new repository on your GitHub account and pushes your local code changes to the remote repository in a single step.
+You can initialize and local repository and publish it directly to GitHub from Visual Studio Code. This action creates a new repository on your GitHub account and pushes your local code changes to the remote repository in a single step.
 
-Use the **Publish to GitHub** button in the Source Control view in VS Code or Azure Data Studio. You're then prompted to specify a name and description for the repository, and as well as whether to make it public or private.
+Use the **Publish to GitHub** button in the Source Control view in Visual Studio Code. You're then prompted to specify a name and description for the repository, and as well as whether to make it public or private.
 
 :::image type="content" source="media/create-deploy-sql-project/vsc-publish-to-github.png" alt-text="Screenshot of the Create Git Repository dialog in Visual Studio with the GitHub selection highlighted." lightbox="media/create-deploy-sql-project/vsc-publish-to-github.png":::
 

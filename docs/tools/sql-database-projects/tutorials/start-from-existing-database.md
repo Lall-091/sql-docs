@@ -4,7 +4,7 @@ description: "Create a SQL project with objects from an existing database."
 author: dzsquared
 ms.author: drskwier
 ms.reviewer: maghan, randolphwest
-ms.date: 03/11/2025
+ms.date: 02/06/2026
 ms.service: sql
 ms.subservice: sql-database-projects
 ms.topic: tutorial
@@ -64,8 +64,8 @@ dotnet tool install -g Microsoft.SqlPackage
 ::: zone pivot="sq1-visual-studio-code"
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
-- [VS Code](https://code.visualstudio.com/Download)
-- [SQL Database Projects extension for Azure Data Studio](/azure-data-studio/extensions/sql-database-project-extension) or [SQL Database Projects extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.sql-database-projects-vscode)
+- [Visual Studio Code](https://code.visualstudio.com/Download)
+- [SQL Database Projects extension](../../visual-studio-code-extensions/sql-database-projects/sql-database-projects-extension.md)
 
 ::: zone-end
 
@@ -112,11 +112,11 @@ Option 1 isn't available for the command line. Use [option 2](#option-2-create-a
 
 ::: zone pivot="sq1-visual-studio-code"
 
-In the database object explorer view in VS Code or Azure Data Studio, select a database you want to create a project from. Right-click the database and select **Create Project from Database**.
+In the database object explorer view in Visual Studio Code, select a database you want to create a project from. Right-click the database and select **Create Project from Database**.
 
-:::image type="content" source="media/start-from-existing-database/ads-new-project-from-database.png" alt-text="Screenshot of Create project from database dialog in Azure Data Studio.":::
+:::image type="content" source="media/start-from-existing-database/ads-new-project-from-database.png" alt-text="Screenshot of Create project from database dialog in Visual Studio Code.":::
 
-In Azure Data Studio, the **Create project from database** dialog requires the project name and location to be selected. The default import settings import the objects into folders by schema, then object type. You can select a different folder structure or to include permissions in the objects being imported before selecting **Create**.
+In Visual Studio Code, the **Create project from database** dialog requires the project name and location to be selected. The default import settings import the objects into folders by schema, then object type. You can select a different folder structure or to include permissions in the objects being imported before selecting **Create**.
 
 In VS Code, the command prompts ask for a project name and location. The default import settings import the objects into folders by schema, then object type. You can select a different folder structure or to include permissions in the objects being imported before the import begins.
 
@@ -150,7 +150,7 @@ Option 1 isn't available for the command line. Use [option 2](#option-2-create-a
 
 ::: zone pivot="sq1-visual-studio-code"
 
-In the **Database Projects** view of VS Code or Azure Data Studio, right-click the project node and select **Build**.
+In the **Database Projects** view of Visual Studio Code, right-click the project node and select **Build**.
 
 The output window automatically opens to display the build process. If there are errors or warnings, they're displayed in the output window. On a successful build, the build artifact (`.dacpac` file) is created its location is included in the build output (default is `bin/Debug/projectname.dacpac`).
 
@@ -200,7 +200,7 @@ Select **Create** to create the project. The empty project is opened and visible
 
 ::: zone pivot="sq1-visual-studio-code"
 
-In the **Database Projects** view of VS Code or Azure Data Studio, select the **New Project** button.
+In the **Database Projects** view of Visual Studio Code, select the **New Project** button.
 
 :::image type="content" source="media/start-from-existing-database/projects-viewlet.png" alt-text="Screenshot of New viewlet.":::
 
@@ -260,11 +260,11 @@ When these folders are placed in an SDK-style SQL database project folder, they'
 ::: zone pivot="sq1-visual-studio-code"
 
 > [!NOTE]  
-> The SQL Database Projects extension in VS Code doesn't support importing objects from a database into a project. Use the SQL Database Projects extension in Azure Data Studio to import objects from a database or follow [option 1](#option-1-create-a-new-sql-project-from-an-existing-database) to create a new project from an existing database in VS Code.
+> The SQL Database Projects extension in VS Code doesn't support importing objects from a database into a project. Use the SQL Database Projects extension in Visual Studio Code to import objects from a database or follow [option 1](#option-1-create-a-new-sql-project-from-an-existing-database) to create a new project from an existing database in VS Code.
 
-In the SQL Database Projects extension in Azure Data Studio, open the **Database Projects** view. Right-click the project node and select **Update project from database**.
+In the SQL Database Projects extension in Visual Studio Code, open the **Database Projects** view. Right-click the project node and select **Update project from database**.
 
-:::image type="content" source="media/start-from-existing-database/ads-update-project.png" alt-text="Screenshot of Update Database dialog in Azure Data Studio.":::
+:::image type="content" source="media/start-from-existing-database/ads-update-project.png" alt-text="Screenshot of Update Database dialog in Visual Studio Code.":::
 
 In the **Update Database** dialog, select the connection to the database you want to import objects from. If you've connected to the database in the **Connections** view, it's present in the **history** list.
 
@@ -306,7 +306,7 @@ The output window automatically opens to display the build process. If there are
 
 ::: zone pivot="sq1-visual-studio-code"
 
-In the **Database Projects** view of VS Code or Azure Data Studio, right-click the project node and select **Build**.
+In the **Database Projects** view of Visual Studio Code, right-click the project node and select **Build**.
 
 The output window automatically opens to display the build process. If there are errors or warnings, they're displayed in the output window. On a successful build, the build artifact (`.dacpac` file) is created its location is included in the build output (default is `bin/Debug/projectname.dacpac`).
 
