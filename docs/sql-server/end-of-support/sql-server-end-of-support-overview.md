@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 06/16/2025
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: concept-article
 monikerRange: ">=sql-server-2016"
 ---
 # SQL Server end of support options

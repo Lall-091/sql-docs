@@ -1455,7 +1455,7 @@
         href: managed-instance/managed-instance-link-configure-how-to-ssms.md
       - name: Configure link with scripts
         href: managed-instance/managed-instance-link-configure-how-to-scripts.md
-      - name: Fail over a Link
+      - name: Fail over a link
         href: managed-instance/managed-instance-link-failover-how-to.md
       - name: Migrate with the link
         href: managed-instance/managed-instance-link-migrate.md
@@ -1653,6 +1653,8 @@
           href: virtual-machines/windows/sql-assessment-for-sql-vm.md
         - name: Analyze I/O performance
           href: virtual-machines/windows/storage-performance-analysis.md
+        - name: VM vCore customization
+          href: virtual-machines/windows/vm-vcore-customization-for-sql.md
       - name: Security
         items:
         - name: Microsoft Entra authentication

@@ -4,7 +4,7 @@ description: Provides VM size guidelines and best practices to optimize the perf
 author: dplessMSFT
 ms.author: dpless
 ms.reviewer: randolphwest, mathoma
-ms.date: 04/02/2025
+ms.date: 01/26/2026
 ms.service: azure-vm-sql-server
 ms.subservice: performance
 ms.topic: best-practice
@@ -224,6 +224,10 @@ For example, the [M64-32ms](/azure/virtual-machines/constrained-vcpu) requires l
 > [!NOTE] 
 > - Medium to large data warehouse workloads may still benefit from [constrained vCore VMs](/azure/virtual-machines/constrained-vcpu), but data warehouse workloads are commonly characterized by fewer users and processes addressing larger amounts of data through query plans that run in parallel.
 > - The compute cost, which includes operating system licensing, will remain the same as the parent virtual machine.
+
+## VM vCore customization
+
+With [VM vCore customization](vm-vcore-customization-for-sql.md), you can customize the number of vCPUs presented to the guest OS for SQL Server workloads, and disable Simultaneous Multithreading (SMT). This capability allows you to appropriately size the vCPU count to match your SQL Server licensing needs while preserving the VM's memory and I/O capabilities.
 
 ## Related content
 

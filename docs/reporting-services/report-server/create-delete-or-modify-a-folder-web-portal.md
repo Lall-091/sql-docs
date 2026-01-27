@@ -4,7 +4,7 @@ description: Learn how to create, modify, and delete folders so that you can org
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 ---

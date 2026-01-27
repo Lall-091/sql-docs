@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: 09/07/2025
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - references_regions
 monikerRange: ">=sql-server-2016"

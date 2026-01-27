@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: "10/03/2016"
 ms.service: sql
 ms.subservice: failover-cluster-instance
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "Availability Groups [SQL Server], WSFC clusters"
   - "quorum [SQL Server], AlwaysOn and WSFC quorum"

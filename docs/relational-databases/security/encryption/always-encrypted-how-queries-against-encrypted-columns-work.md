@@ -42,7 +42,7 @@ A client driver interacts with a key store, containing a column master key, usin
 
 See [Develop applications using Always Encrypted](always-encrypted-client-development.md) for the list of client drivers supporting Always Encrypted and for information on how to develop applications that query encrypted columns.
 
-You can also query encrypted columns using SQL tools, for example [Query columns using Always Encrypted with Azure Data Studio](always-encrypted-query-columns-ads.md) or [Query columns using Always Encrypted with SQL Server Management Studio](always-encrypted-query-columns-ssms.md).
+You can also query encrypted columns using SQL tools, for example [Query columns using Always Encrypted with SQL Server Management Studio](always-encrypted-query-columns-ssms.md).
 
 ## Related content
 

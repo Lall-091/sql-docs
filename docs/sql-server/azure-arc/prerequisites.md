@@ -5,7 +5,7 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest
 ms.date: 10/21/2025
-ms.topic: conceptual
+ms.topic: checklist
 ms.custom: references_regions
 ---
 

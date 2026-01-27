@@ -40,6 +40,6 @@ groups:
   - id: sq1-visual-studio-sdk
     title: Visual Studio, SDK-style (preview)
   - id: sq1-visual-studio-code
-    title: Visual Studio Code/Azure Data Studio
+    title: Visual Studio Code
   - id: sq1-command-line
     title: Command-line interface

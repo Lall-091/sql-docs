@@ -4,7 +4,7 @@ description: Display data horizontally with a bar chart to represent data in a p
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

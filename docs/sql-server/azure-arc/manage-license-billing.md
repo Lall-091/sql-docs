@@ -5,7 +5,7 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mikeray, randolphwest, maghan, mathoma
 ms.date: 11/18/2025
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - ignite-2025
 ---

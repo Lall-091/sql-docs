@@ -4,7 +4,7 @@ description: Learn about using a text box to insert HTML-formatted text that you
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

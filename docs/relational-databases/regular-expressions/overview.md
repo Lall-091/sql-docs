@@ -4,7 +4,7 @@ description: Use regular expressions to filter and manipulate text strings in SQ
 author: MikeRayMSFT
 ms.author: mikeray
 ms.reviewer: abhtiwar, randolphwest, wiassaf
-ms.date: 11/18/2025
+ms.date: 01/26/2026
 ms.service: sql
 ms.topic: quickstart
 ms.custom:
@@ -173,7 +173,7 @@ This implementation supports the POSIX standard of regular expressions following
 
 ## Requirements
 
-- A SQL client tool, such as Azure Data Studio, SQL Server Management Studio, or Visual Studio Code.
+- A SQL client tool, such as SQL Server Management Studio or Visual Studio Code.
 - A basic knowledge of SQL syntax and queries.
 - A basic understanding of regular expression syntax and concepts.
 

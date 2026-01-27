@@ -4,7 +4,7 @@ description: Use built-in aggregate functions in expressions in Report Builder t
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

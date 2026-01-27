@@ -6,7 +6,7 @@ ms.author: randolphwest
 ms.date: "03/14/2017"
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 ---
 # Remove Data Quality Server Objects
 [!INCLUDE [SQL Server -Windows Only](../../includes/applies-to-version/sql-windows-only.md)]

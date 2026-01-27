@@ -6,7 +6,7 @@ ms.author: wiassaf
 ms.reviewer: antho, sukkaur
 ms.date: 10/17/2024
 ms.service: fabric
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2025
 monikerRange: "=azuresqldb-current || =fabric-sqldb"

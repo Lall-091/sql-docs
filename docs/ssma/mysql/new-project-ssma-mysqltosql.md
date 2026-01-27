@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 11/12/2025
 ms.service: sql
 ms.subservice: ssma
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection:
   - sql-migration-content
 f1_keywords:

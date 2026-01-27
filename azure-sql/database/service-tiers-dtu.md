@@ -4,7 +4,7 @@ description: Learn about the DTU-based purchasing model for Azure SQL Database a
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: wiassaf, mathoma, randolphwest
-ms.date: 06/16/2025
+ms.date: 01/26/2026
 ms.service: azure-sql-database
 ms.subservice: service-overview
 ms.topic: concept-article
@@ -22,7 +22,7 @@ The DTU-based purchasing model is different to the [vCore-based purchasing model
 
 ## Database transaction units (DTUs)
 
-A database transaction unit (DTU) represents a blended measure of CPU, memory, reads, and writes. Service tiers in the DTU-based purchasing model are differentiated by a range of compute sizes with a fixed amount of included storage, fixed retention period for backups, and fixed price. All service tiers in the DTU-based purchasing model provide flexibility of changing compute sizes with minimal [downtime](https://azure.microsoft.com/support/legal/sla/azure-sql-database); however, there is a switch over period where connectivity is lost to the database for a short amount of time, which can be mitigated using retry logic. Single databases and elastic pools are billed hourly based on service tier and compute size.
+A database transaction unit (DTU) represents a blended measure of CPU, memory, reads, and writes. Service tiers in the DTU-based purchasing model are differentiated by a range of compute sizes with a fixed amount of included storage, fixed retention period for backups, and fixed price. All service tiers in the DTU-based purchasing model provide flexibility of changing compute sizes with minimal [downtime](https://azure.microsoft.com/support/legal/sla/azure-sql-database); however, there's a switch over period where connectivity is lost to the database for a short amount of time, which can be mitigated using retry logic. Single databases and elastic pools are billed hourly based on service tier and compute size.
 
 For a single database at a specific compute size within a [service tier](single-database-scale.md), Azure SQL Database guarantees a certain level of resources for that database (independent of any other database). This guarantee provides a predictable level of performance. The amount of resources allocated for a database is calculated as a number of DTUs and is a bundled measure of compute, storage, and I/O resources.
 
@@ -59,7 +59,7 @@ Pools are well suited for databases with a low resource-utilization average and 
 
 ## Determine the number of DTUs needed by a workload
 
-If you want to migrate an existing on-premises or SQL Server virtual machine workload to SQL Database, use the [Azure SQL migration extension for Azure Data Studio](/azure/dms/migration-using-azure-data-studio) to get an approximate number of DTUs needed. For an existing SQL Database workload, use [query-performance insights](query-performance-insight-use.md) to understand your database-resource consumption (DTUs) and gain deeper insights for optimizing your workload. The [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dynamic management view (DMV) lets you view resource consumption for the last hour. The [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) catalog view displays resource consumption for the last 14 days, but at a lower fidelity of five-minute averages.
+For an existing SQL Database workload, use [query-performance insights](query-performance-insight-use.md) to understand your database-resource consumption (DTUs) and gain deeper insights for optimizing your workload. The [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dynamic management view (DMV) lets you view resource consumption for the last hour. The [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) catalog view displays resource consumption for the last 14 days, but at a lower fidelity of five-minute averages.
 
 ## Determine DTU utilization
 
@@ -70,11 +70,11 @@ To determine the average percentage of DTU/eDTU utilization relative to the DTU/
 The input values for this formula can be obtained from [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database), and [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) DMVs. In other words, to determine the percentage of DTU/eDTU utilization toward the DTU/eDTU limit of a database or an elastic pool, pick the largest percentage value from the following: `avg_cpu_percent`, `avg_data_io_percent`, and `avg_log_write_percent` at a given point in time.
 
 > [!NOTE]  
-> The DTU limit of a database is determined by CPU, reads, writes, and memory available to the database. However, because the SQL Database engine typically uses all available memory for its data cache to improve performance, the `avg_memory_usage_percent` value will usually be close to 100 percent, regardless of current database load. Therefore, even though memory does indirectly influence the DTU limit, it is not used in the DTU utilization formula.
+> The DTU limit of a database is determined by CPU, reads, writes, and memory available to the database. However, because the SQL Database engine typically uses all available memory for its data cache to improve performance, the `avg_memory_usage_percent` value will usually be close to 100 percent, regardless of current database load. Therefore, even though memory does indirectly influence the DTU limit, it's not used in the DTU utilization formula.
 
 ## Hardware configuration
 
-In the DTU-based purchasing model, customers cannot choose the hardware configuration used for their databases. While a given database usually stays on a specific type of hardware for a long time (commonly for multiple months), there are certain events that can cause a database to be moved to different hardware.
+In the DTU-based purchasing model, customers can't choose the hardware configuration used for their databases. While a given database usually stays on a specific type of hardware for a long time (commonly for multiple months), there are certain events that can cause a database to be moved to different hardware.
 
 For example, a database can be moved to different hardware if it's scaled up or down to a different service objective, or if the current infrastructure in a datacenter is approaching its capacity limits, or if the currently used hardware is being decommissioned due to its end of life.
 
@@ -82,7 +82,7 @@ If a database is moved to different hardware, workload performance can change. T
 
 However, across the wide spectrum of customer workloads running in Azure SQL Database, the impact of using different hardware for the same service objective can be more pronounced. Different workloads might benefit from different hardware configurations and features. Therefore, for workloads other than the [DTU benchmark](dtu-benchmark.md), it's possible to see performance differences if the database moves from one type of hardware to another.
 
-Customers can use the [vCore](service-tiers-vcore.md) model to choose their preferred hardware configuration during database creation and scaling. In the vCore model, detailed resource limits of each service objective in each hardware configuration are documented for [single databases](resource-limits-vcore-single-databases.md) and [elastic pools](resource-limits-vcore-elastic-pools.md). For more information, see [Hardware configuration](./service-tiers-sql-database-vcore.md#hardware-configuration).
+Customers can use the [vCore](service-tiers-vcore.md) model to choose their preferred hardware configuration during database creation and scaling. In the vCore model, detailed resource limits of each service objective in each hardware configuration are documented for [single databases](resource-limits-vcore-single-databases.md) and [elastic pools](resource-limits-vcore-elastic-pools.md). For more information, see [Hardware configuration](service-tiers-sql-database-vcore.md#hardware-configuration).
 
 ## Compare service tiers
 
@@ -92,7 +92,7 @@ Customers can use the [vCore](service-tiers-vcore.md) model to choose their pref
 Choosing a service tier depends primarily on business continuity, storage, and performance requirements.
 
 | | Basic | Standard | Premium |
-| :-- | --: | --: | --: |
+| --- | ---: | ---: | ---: |
 | **Target workload** | Development and production | Development and production | Development and production |
 | **Uptime SLA** | 99.99% | 99.99% | 99.99% |
 | **Backup** | A choice of geo-redundant, zone-redundant, or locally redundant backup storage, 1-7 day retention (default 7 days)<br />Long term retention available up to 10 years | A choice of geo-redundant, zone-redundant, or locally redundant backup storage, 1-35 day retention (default 7 days)<br />Long term retention available up to 10 years | A choice of locally-redundant (LRS), zone-redundant (ZRS), or geo-redundant (GRS) storage<br />1-35 days (7 days by default) retention, with up to 10 years of long-term retention available |
@@ -108,7 +108,7 @@ Choosing a service tier depends primarily on business continuity, storage, and p
 
 > [!IMPORTANT]  
 > The Basic, S0, S1 and S2 service objectives provide less than one vCore (CPU). For CPU-intensive workloads, a service objective of S3 or greater is recommended.
->  
+>
 > In the Basic, S0, and S1 service objectives, database files are stored in Azure Standard Storage, which uses hard disk drive (HDD)-based storage media. These service objectives are best suited for development, testing, and other infrequently accessed workloads that are less sensitive to performance variability.
 
 > [!TIP]  
@@ -123,7 +123,7 @@ Resource limits differ for single and pooled databases.
 In Azure SQL Database, compute sizes are expressed in terms of Database Transaction Units (DTUs) for single databases and elastic Database Transaction Units (eDTUs) for elastic pools. To learn more, review [Resource limits for single databases](resource-limits-dtu-single-databases.md).
 
 | | Basic | Standard | Premium |
-| :-- | --: | --: | --: |
+| --- | ---: | ---: | ---: |
 | **Maximum storage size** | 2 GB | 1 TB | 4 TB |
 | **Maximum DTUs** | 5 | 3000 | 4000 |
 
@@ -135,7 +135,7 @@ In Azure SQL Database, compute sizes are expressed in terms of Database Transact
 To learn more, review [Resource limits for elastic pools using the DTU purchasing model](resource-limits-dtu-elastic-pools.md).
 
 | | **Basic** | **Standard** | **Premium** |
-| :-- | --: | --: | --: |
+| --- | ---: | ---: | ---: |
 | **Maximum storage size per database** | 2 GB | 1 TB | 1 TB |
 | **Maximum storage size per pool** | 156 GB | 4 TB | 4 TB |
 | **Maximum eDTUs per database** | 5 | 3000 | 4000 |
@@ -158,7 +158,7 @@ Learn about the schema, transaction types used, workload mix, users and pacing, 
 
 While the DTU-based purchasing model is based on a bundled measure of compute, storage, and I/O resources, by comparison the [vCore purchasing model for Azure SQL Database](service-tiers-sql-database-vcore.md) allows you to independently choose and scale compute and storage resources.
 
-The vCore-based purchasing model also allows you to use [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) for SQL Server to save costs, and offers [Serverless compute tier for Azure SQL Database](serverless-tier-overview.md) and [Hyperscale service tier](service-tier-hyperscale.md) options for Azure SQL Database that are not available in the DTU-based purchasing model.
+The vCore-based purchasing model also allows you to use [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) for SQL Server to save costs, and offers [Serverless compute tier for Azure SQL Database](serverless-tier-overview.md) and [Hyperscale service tier](service-tier-hyperscale.md) options for Azure SQL Database that aren't available in the DTU-based purchasing model.
 
 Learn more in [Compare vCore and DTU-based purchasing models of Azure SQL Database](purchasing-models.md).
 

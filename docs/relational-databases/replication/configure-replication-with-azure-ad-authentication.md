@@ -42,7 +42,7 @@ To configure replication with Microsoft Entra authentication, you must meet the 
 
 Configuring your replication with Microsoft Entra authentication currently has the following limitations: 
 
-- It's currently only possible to configure replication using Transact-SQL (T-SQL) and the replication stored procedures, the Replication Wizard in SSMS v19.1 or higher, or Azure Data Studio. It's not currently possible to configure replication using RMO replication objects or other command line languages. 
+- It's currently only possible to configure replication using Transact-SQL (T-SQL) and the replication stored procedures, and the Replication Wizard in SSMS v19.1 or higher. It's not currently possible to configure replication using RMO replication objects or other command line languages. 
 - Every server in the replication topology must be on at least SQL Server 2022 CU 6. Previous versions of SQL Server aren't supported.
 
 <a name='create-sql-login-from-azure-ad'></a>
