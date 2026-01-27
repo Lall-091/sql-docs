@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Regex String Search in C#"
-description: This tutorial shows you how to use SQL Server Language Extensions and run C# code that search a string with regular expressions (regex).
+description: This tutorial shows you how to use SQL Server Language Extensions and run C# code that searches a string with regular expressions (regex).
 author: rwestMSFT
 ms.author: randolphwest
 ms.date: 08/28/2025
@@ -23,7 +23,7 @@ This sample code uses a regular expression that checks if a text contains the wo
 
 - Database Engine instance on [!INCLUDE [sssql19-md](../../includes/sssql19-md.md)] and later versions, with the extensibility framework and .NET programming extension [on Windows](../install/windows-c-sharp.md). For more information, see [What is SQL Server Language Extensions?](../language-extensions-overview.md). For more information about coding requirements, see [How to call the .NET runtime in SQL Server Language Extensions](../how-to/call-c-sharp-from-sql.md).
 
-- SQL Server Management Studio or Azure Data Studio for executing T-SQL.
+- A database client. [!INCLUDE [connect-instance-client](../../includes/connect-instance-client.md)]
 
 - .NET 6 or later SDK on Windows.
 
@@ -205,9 +205,9 @@ GO
 
 ## Call the C# class
 
-Call the stored procedure `sp_execute_external_script` to invoke the C# code from SQL Server. In the script parameter, define which `libraryname;namespace.classname` you want to call. You can also define which `namespace.classname` you want to call without specifying the library name. The extension will find the first library that has the matched `namespace.classname`. In the following code, the class belongs to a namespace called `UserExecutor` and a class called `CSharpRegexExecutor`.
+Call the stored procedure `sp_execute_external_script` to invoke the C# code from SQL Server. In the script parameter, define which `libraryname;namespace.classname` you want to call. You can also define which `namespace.classname` you want to call without specifying the library name. The extension finds the first library that has the matched `namespace.classname`. In the following code, the class belongs to a namespace called `UserExecutor` and a class called `CSharpRegexExecutor`.
 
-The code doesn't define which method to call. By default, the `Execute` method will be called. This means that you need to follow the SDK interface and implement an `Execute` method in your C# class, if you want to be able to call the class from SQL Server.
+The code doesn't define which method to call. By default, the `Execute` method is called. This means that you need to follow the SDK interface and implement an `Execute` method in your C# class, if you want to be able to call the class from SQL Server.
 
 The stored procedure takes an input query (input dataset) and a regular expression and returns the rows that fulfilled the given regular expression. It uses a regular expression `[Cc]#` that checks if a text contains the word `C#` or `c#`.
 
