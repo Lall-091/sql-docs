@@ -3,7 +3,7 @@ title: "What Are Extended Security Updates?"
 description: Learn about Extended Security Updates enabled by Azure Arc, for your end-of-support and end-of-life SQL Server products such as SQL Server 2012.
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 09/07/2025
+ms.date: 12/20/2025
 ms.service: sql
 ms.subservice: install
 ms.topic: concept-article
@@ -16,15 +16,13 @@ monikerRange: ">=sql-server-2016"
 
 [!INCLUDE [SQL Server end of support](../../includes/applies-to-version/sql-migration-end-of-support.md)]
 
-This article provides information how to receive Extended Security Updates (ESUs) for versions of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] that are out of extended support.
+This article provides information on how to receive Extended Security Updates (ESUs) for versions of [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] that are out of extended support.
 
-Extended Security Updates (ESUs) are available for [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] and [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)].
+Extended Security Updates (ESUs) are available for [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)].
 
-ESUs released for **[!INCLUDE [sssql14-md](../../includes/sssql14-md.md)]** include the most recent cumulative update (CU). If you only applied [general distribution release](/troubleshoot/sql/releases/servicing-models-sql-server#general-distribution-release-gdr) (GDR) updates during the normal support period, we recommend that you install and validate the latest CU at the time you subscribe to receive ESUs, instead of waiting until the first ESU is released. This preemptive validation avoids potential issues when installing the ESU later.
+ESUs released for **[!INCLUDE [sssql14-md](../../includes/sssql14-md.md)]** include the most recent cumulative update (CU). If you only applied [general distribution release](/troubleshoot/sql/releases/servicing-models-sql-server#general-distribution-release-gdr) (GDR) updates during the normal support period, install and validate the latest CU at the time you subscribe to receive ESUs, instead of waiting until the first ESU is released. This preemptive validation avoids potential problems when installing the ESU later.
 
-[!INCLUDE [esu-table](includes/esu-table.md)]
-
-ESUs are made available **if needed**, once a security vulnerability is discovered and is rated as **Critical** by the [Microsoft Security Response Center (MSRC)](https://msrc.microsoft.com/update-guide). Therefore, there's no regular release cadence for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] ESUs.
+Microsoft makes ESUs available **if needed** once a security vulnerability is discovered and rated as **Critical** by the [Microsoft Security Response Center (MSRC)](https://msrc.microsoft.com/update-guide). Therefore, there's no regular release cadence for [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] ESUs.
 
 ESUs don't include:
 
@@ -46,7 +44,7 @@ The method of receiving Extended Security Updates depends on where your [!INCLUD
 
 ### Azure
 
-On Azure, services have access to ESUs for [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] and [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] for up to three years after the end of support, at **no additional charge** above the cost of running the Azure service. If you can't connect your [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instance to Azure Arc, you don't qualify for this offer.
+On Azure, services have access to ESUs for [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] for up to three years after the end of support, at **no extra charge** beyond the cost of running the Azure service. If you can't connect your [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instance to Azure Arc, you don't qualify for this offer.
 
 To configure Azure services to receive ESUs, review the documentation for the specific service:
 
@@ -64,13 +62,13 @@ In all other cases, you can purchase Extended Security Updates if you qualify. T
 - Server and Cloud Enrollment (SCE)
 - Enrollment for Education Solutions (EES)
 
-You can also qualify by connecting your [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] and [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] instances to Azure Arc, and enable a pay-as-you-go billing option. For more information, see [Automatically connect your SQL Server to Azure Arc](../azure-arc/automatically-connect.md).
+You can also qualify by connecting your [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] instances to Azure Arc, and enabling a pay-as-you-go billing option. For more information, see [Automatically connect your SQL Server to Azure Arc](../azure-arc/automatically-connect.md).
 
 There are two ways to purchase ESUs:
 
 - You can purchase an Extended Security Update plan for up to three years after the end of support date directly from [!INCLUDE [msCoName](../../includes/msconame-md.md)] or a [!INCLUDE [msCoName](../../includes/msconame-md.md)] licensing partner. For more information, see [Register Extended Security Updates purchased through volume licensing](#register-instances-for-esus).
 
-- If your [!INCLUDE [ssSQL11](../../includes/sssql11-md.md)] and [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] instances are connected to Azure Arc, you can enable ESUs as a subscription. For more information, see [Subscribe to Extended Security Updates enabled by Azure Arc](#subscribe-instances-for-esus).
+- If your [!INCLUDE [ssSQL14](../../includes/sssql14-md.md)] instances are connected to Azure Arc, you can enable ESUs as a subscription. For more information, see [Subscribe to Extended Security Updates enabled by Azure Arc](#subscribe-instances-for-esus).
 
 The following table shows the differences between the two options:
 
@@ -110,7 +108,7 @@ The following example shows how to manually register your [!INCLUDE [ssnoversion
 
 ### Prerequisites
 
-1. If you don't already have an Azure subscription, you can create an account using one of the following methods:
+1. If you don't already have an Azure subscription, create an account by using one of the following methods:
 
    - [Create a Microsoft Customer Agreement subscription](/azure/cost-management-billing/manage/create-subscription)
    - [Create an Enterprise Agreement subscription](/azure/cost-management-billing/manage/create-enterprise-subscription)
@@ -122,7 +120,7 @@ The following example shows how to manually register your [!INCLUDE [ssnoversion
    - `Microsoft.AzureArcData/sqlServerInstances/read`
    - `Microsoft.AzureArcData/sqlServerInstances/write`
 
-   Users can be assigned to the `Azure Connected SQL Server Onboarding` role to get those specific permissions, or they can be assigned to built-in roles such as Contributor or Owner that have these permissions. For more information, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
+   Assign users to the `Azure Connected SQL Server Onboarding` role to grant these specific permissions, or assign them to built-in roles such as Contributor or Owner that have these permissions. For more information, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
 
 1. Register the `Microsoft.AzureArcData` resource provider in your Azure subscription:
 
@@ -132,15 +130,15 @@ The following example shows how to manually register your [!INCLUDE [ssnoversion
 
    - If the `Microsoft.AzureArcData` resource provider isn't listed, you can add it to your subscription using the **Register** option.
 
-1. If you use Azure policies that only allow the creation of specific resource types, you need to allow the `Microsoft.AzureArcData/sqlServerInstances` resource type. If it isn't allowed, the `SQLServerInstances_Update` operation fails with a **'deny' Policy action** log entry in the activity log of the subscription.
+1. If you use Azure policies that only allow the creation of specific resource types, you need to allow the `Microsoft.AzureArcData/sqlServerInstances` resource type. If you don't allow this resource type, the `SQLServerInstances_Update` operation fails with a **'deny' Policy action** log entry in the activity log of the subscription.
 
 You can either register a [single SQL Server instance](#single-sql-server-instance), or upload a CSV file to register [multiple SQL Server instances in bulk](#multiple-sql-server-instances-in-bulk).
 
 ### Single SQL Server instance
 
-1. Sign into the [Azure portal](https://portal.azure.com).
+1. Sign in to the [Azure portal](https://portal.azure.com).
 
-1. Navigate to **Azure Arc** and select **Data services** > **SQL Server instances**.
+1. Go to **Azure Arc** and select **Data services** > **SQL Server instances**.
 
 1. To register a disconnected machine, select **Add** from the menu at the top of the screen.
 
@@ -148,29 +146,29 @@ You can either register a [single SQL Server instance](#single-sql-server-instan
 
    :::image type="content" source="media/sql-server-extended-security-updates/extended-security-updates-add-connected-or-registered.png" alt-text="Screenshot of the two options for adding connected or registered servers." lightbox="media/sql-server-extended-security-updates/extended-security-updates-add-connected-or-registered.png":::
 
-1. Specify **Single SQL Instance**. This is the default value.
+1. Specify **Single SQL Instance**. This value is the default.
 
 1. Choose the **Subscription** and **Resource group** for your registered [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instance.
 
-1. Provide the required information as is detailed in this table, and then select **Next**:
+1. Enter the required information as detailed in the following table, and then select **Next**:
 
    | Value | Description | Additional information |
    | --- | --- | --- |
-   | **Instance Name** | Enter the output of command `SELECT @@SERVERNAME`, such as `MyServer\Instance01`. | If you have a named instance, you must replace the backslash (`\`) with a hyphen (`-`). For example, `MyServer\Instance01` becomes `MyServer-Instance01`. |
+   | **Instance Name** | Enter the output of command `SELECT @@SERVERNAME`, such as `MyServer\Instance01`. | If you have a named instance, replace the backslash (`\`) with a hyphen (`-`). For example, `MyServer\Instance01` becomes `MyServer-Instance01`. |
    | **SQL Server Version** | Select your version from the dropdown list. | |
    | **Edition** | Select the applicable edition from the dropdown list: Datacenter, Developer (free to deploy if purchased ESUs), Enterprise, Standard, Web, Workgroup. | |
    | **Cores** | Enter the number of cores for this instance | |
    | **Host Type** | Select the applicable host type from the dropdown list: Virtual machine (on-premises), Physical Server (on-premises), Azure Virtual Machine, Amazon EC2, Google Compute Engine, Other. | |
 
-1. You must confirm that you have the rights to receive Extended Security Updates, using the checkbox provided. The ESU checkbox is only visible when you select [!INCLUDE [sssql11-md](../../includes/sssql11-md.md)].
+1. Confirm that you have the rights to receive Extended Security Updates by using the checkbox. The ESU checkbox is only visible when you select [!INCLUDE [sssql14-md](../../includes/sssql14-md.md)].
 
 ### Multiple SQL Server instances in bulk
 
-Multiple [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instances can be registered in bulk by uploading a .CSV file. Once your [.CSV file is formatted correctly](#formatting-requirements-for-csv-file), you can follow these steps to bulk register your [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instances with Azure Arc:
+You can register multiple [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instances at once by uploading a .CSV file. After you [format your .CSV file correctly](#formatting-requirements-for-csv-file), follow these steps to bulk register your [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instances with Azure Arc:
 
-1. Sign into the [Azure portal](https://portal.azure.com).
+1. Sign in to the [Azure portal](https://portal.azure.com).
 
-1. Navigate to **Azure Arc** and select **Data services** > **SQL Server instances**.
+1. Go to **Azure Arc** and select **Data services** > **SQL Server instances**.
 
 1. To register a disconnected machine, select **Add** from the menu at the top of the screen.
 
@@ -182,17 +180,17 @@ Multiple [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instances ca
 
 1. Select the Browse icon to upload the CSV file containing multiple disconnected [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instances.
 
-1. You must confirm that you have the rights to receive Extended Security Updates, using the checkbox provided.
+1. Confirm that you have the rights to receive Extended Security Updates by using the checkbox provided.
 
-Once you add your [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instances, you'll see them in the portal after a few minutes. Because they were added manually, they always show in a disconnected state, with the description **Registered**.
+After you add your [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instances, you see them in the portal after a few minutes. Because you added them manually, they always show in a disconnected state, with the description **Registered**.
 
 :::image type="content" source="media/sql-server-extended-security-updates/extended-security-updates-connected-servers.png" alt-text="Screenshot of two registered SQL Server instances on the Azure Arc portal." lightbox="media/sql-server-extended-security-updates/extended-security-updates-connected-servers.png":::
 
 ### Formatting requirements for CSV file
 
-- Values are comma-separated
-- Values aren't single or double-quoted
-- Values can include letters, numbers, hyphens (`-`), and underscores (`_`). No other special characters can be used. If you have a named instance, you must replace the backslash (`\`) with a hyphen (`-`). For example, `MyServer\Instance01` becomes `MyServer-Instance01`.
+- Use commas to separate values.
+- Don't use single or double quotes around values.
+- Values can include letters, numbers, hyphens (`-`), and underscores (`_`). Don't use other special characters. If you have a named instance, replace the backslash (`\`) with a hyphen (`-`). For example, `MyServer\Instance01` becomes `MyServer-Instance01`.
 - Column names are case-sensitive and must be named as follows:
 
   - name
@@ -221,11 +219,11 @@ You can use the **Purchase Order Number** under Invoice Summary in their Microso
 
 Follow these steps to link an ESU invoice to your Azure Arc [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instances to get access to extended updates. This example includes both **Connected** and **Registered** servers.
 
-1. Sign into the [Azure portal](https://portal.azure.com).
+1. Sign in to the [Azure portal](https://portal.azure.com).
 
-1. Navigate to **Azure Arc** and select **SQL Server instances**.
+1. Go to **Azure Arc** and select **SQL Server instances**.
 
-1. Use the checkboxes next to each [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instance you would like to link, and then select **Link ESU invoice**.
+1. Use the checkboxes next to each [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] instance you want to link, and then select **Link ESU invoice**.
 
    :::image type="content" source="media/sql-server-extended-security-updates/extended-security-updates-invoice-select.png" alt-text="Screenshot of all SQL Server instances on the Azure Arc section." lightbox="media/sql-server-extended-security-updates/extended-security-updates-invoice-select.png":::
 
@@ -238,23 +236,23 @@ Follow these steps to link an ESU invoice to your Azure Arc [!INCLUDE [ssnoversi
    :::image type="content" source="media/sql-server-extended-security-updates/extended-security-updates-invoice-linked.png" alt-text="Screenshot of SQL Server instances with a valid ESU expiration value." lightbox="media/sql-server-extended-security-updates/extended-security-updates-invoice-linked.png":::
 
 > [!IMPORTANT]  
-> When registering an ESU VL product for disconnected [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] servers, you should only select the instances with the **Status** of `Registered`.
+> When registering an ESU VL product for disconnected [!INCLUDE [ssnoversion-md](../../includes/ssnoversion-md.md)] servers, select only the instances with the **Status** of `Registered`.
 
 ## Download ESUs
 
-Once your [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instances are registered with Azure Arc, you can download the Extended Security Update packages using the link found in the Azure portal, if and when they're made available.
+After you register your [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] instances with Azure Arc, you can download the Extended Security Update packages by using the link in the Azure portal, if they're available.
 
 To download ESUs, follow these steps:
 
-1. Sign into the [Azure portal](https://portal.azure.com).
+1. Sign in to the [Azure portal](https://portal.azure.com).
 
-1. Navigate to **Azure Arc** and select **SQL Server instances**.
+1. Go to **Azure Arc** and select **SQL Server instances**.
 
 1. Select a server from the list.
 
    :::image type="content" source="media/sql-server-extended-security-updates/extended-security-updates-list-of-servers.png" alt-text="Screenshot of a list of servers, with one server highlighted." lightbox="media/sql-server-extended-security-updates/extended-security-updates-list-of-servers.png":::
 
-1. Download security updates from here, if and when they're made available.
+1. Download security updates from here, if they're available.
 
    :::image type="content" source="media/sql-server-extended-security-updates/extended-security-updates-available-updates.png" alt-text="Screenshot of available security updates." lightbox="media/sql-server-extended-security-updates/extended-security-updates-available-updates.png":::
 
@@ -267,11 +265,10 @@ To download ESUs, follow these steps:
 
 ## Frequently asked questions
 
-For the full list of frequently asked questions, review the [Extended Security Updates: Frequently asked questions](extended-security-updates-frequently-asked-questions.md).
+For a full list of frequently asked questions, see the [Extended Security Updates: Frequently asked questions](extended-security-updates-frequently-asked-questions.md).
 
 ## Related content
 
-- [SQL Server 2012 lifecycle page](/lifecycle/products/microsoft-sql-server-2012)
 - [SQL Server 2014 lifecycle page](/lifecycle/products/sql-server-2014)
 - [SQL Server end of support page](sql-server-end-of-support-overview.md?WT.mc_id=akamseos)
 - [Extended Security Updates frequently asked questions (FAQ)](/lifecycle/faq/extended-security-updates)

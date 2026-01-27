@@ -27,12 +27,11 @@ Migrate your data using your chosen [migration method](overview.md#compare-migra
 
 *This section provides general migration steps for the following recommended migration options*:
 
-- SQL Server migration experience in Azure Arc
-
-- Azure Database Migration Service (DMS), which offers migration with near-zero downtime
-- Managed Instance link
-- Log Replay Service (LRS)
-- Native `RESTORE DATABASE FROM URL`, which uses native backups from SQL Server and requires some downtime
+- [SQL Server migration in Azure Arc](#sql-server-migration-in-azure-arc)
+- [Azure Database Migration Service (Azure DMS)](#azure-database-migration-service-azure-dms), which offers migration with near-zero downtime
+- [Managed Instance link](#managed-instance-link)
+- [Log Replay Service (LRS)](#log-replay-service-lrs)
+- [Native `RESTORE DATABASE FROM URL`](#backup-and-restore), which uses native backups from SQL Server and requires some downtime
 
 SQL Managed Instance targets user scenarios that require mass database migration from on-premises or SQL Server on Azure Virtual Machines implementations. It's the optimal choice when you need to lift and shift the back end of applications that regularly use instance level and cross-database functionalities. If this is your scenario, you can move an entire instance to a corresponding environment in Azure without the need to rearchitect your applications.
 
@@ -43,13 +42,8 @@ To move SQL Server instances, you need to plan carefully:
 
 SQL Managed Instance is a managed service that allows you to delegate some of the regular database administration activities to the platform as they're built in. Therefore, you don't need to migrate some instance-level data, such as maintenance jobs for regular backups or Always On configuration, as [high availability](/azure/azure-sql/database/high-availability-sla-local-zone-redundancy) is built in.
 
-### Database migration
 
-Migrate your SQL Server enabled by Azure Arc instance to Azure SQL Managed Instance directly through the Azure portal. For detailed instructions, see [Migrate SQL Server instance to Azure SQL Managed Instance](/sql/sql-server/azure-arc/migrate-to-azure-sql-managed-instance).
-
-Database migration provides a built-in migration experience, using the Managed Instance link or Log Replay Service (LRS) methods behind the scenes, while simplifying configuration, management, and monitoring of the migration process.
-
-## SQL Server migration in Azure Arc
+### SQL Server migration in Azure Arc
 
 Migrate SQL Server instances enabled by Azure Arc to SQL Managed Instance through the Azure portal. SQL Managed Instance provides a fully managed PaaS solution for lift-and-shift migrations. The process includes assessing readiness, selecting a target, migrating data, and monitoring progress.
 

@@ -4,7 +4,7 @@ description: Learn how to manage licensing and billing of Extended Security Upda
 author: MikeRayMSFT
 ms.author: sashan
 ms.reviewer: randolphwest, maghan
-ms.date: 11/18/2025
+ms.date: 12/20/2025
 ms.topic: how-to
 ms.custom:
   - references_regions
@@ -17,7 +17,7 @@ ms.custom:
 
 After [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] reaches the end of its support lifecycle, you can sign up for an Extended Security Update (ESU) subscription for your servers and remain protected for up to three years. When you upgrade to a newer version of [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)], you can terminate your ESU subscription and stop paying for it. When you [migrate to Azure SQL](/azure/azure-sql/migration-guides/), the ESU charges automatically stop but you continue to have access to the security updates.
 
-This article explains how to manage a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] subscription to Extended Security Updates enabled by Azure Arc. For more information about the program, see [What are Extended Security Updates for SQL Server?](../end-of-support/sql-server-extended-security-updates.md).
+This article explains how to manage a [!INCLUDE [ssNoVersion](../../includes/ssnoversion-md.md)] subscription to Extended Security Updates enabled by Azure Arc. For more information about the program, see [What are Extended Security Updates for SQL Server?](../end-of-support/sql-server-extended-security-updates.md)
 
 ## Subscribe to Extended Security Updates in a production environment
 
