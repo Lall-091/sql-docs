@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.reviewer: damauri, randolphwest
 ms.date: 11/18/2025
 ms.service: sql
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days

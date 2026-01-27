@@ -4,7 +4,7 @@ description: Choose from categories of operators in a paginated report that are 
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

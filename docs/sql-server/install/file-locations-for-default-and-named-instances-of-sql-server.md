@@ -7,7 +7,7 @@ ms.reviewer: mathoma
 ms.date: 04/07/2025
 ms.service: sql
 ms.subservice: install
-ms.topic: conceptual
+ms.topic: install-set-up-deploy
 ---
 
 # File locations for default and named instances of SQL Server

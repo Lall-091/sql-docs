@@ -4,7 +4,7 @@ description: "Use the Subscription Settings page of the Report Server Configurat
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server
-ms.topic: conceptual
+ms.topic: concept-article
 f1_keywords:
   - "SQL13.rsconfigtool.subscriptionsettings.F1"
 ms.custom:

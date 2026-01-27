@@ -4,7 +4,7 @@ description: Get acquainted with how to add a map to your paginated report showi
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: article
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 f1_keywords:

@@ -4,7 +4,7 @@ description: Add interactive sort buttons to enable a user to toggle between asc
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

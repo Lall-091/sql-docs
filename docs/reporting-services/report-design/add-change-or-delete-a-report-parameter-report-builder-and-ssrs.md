@@ -4,7 +4,7 @@ description: Choose report data, connect related reports, and vary the report pr
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - updatefrequency5
 ---

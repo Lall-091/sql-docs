@@ -6,7 +6,7 @@ ms.author: mathoma
 ms.date: 09/27/2024
 ms.service: sql
 ms.subservice: failover-cluster-instance
-ms.topic: conceptual
+ms.topic: concept-article
 helpviewer_keywords:
   - "availability groups [SQL Server], WSFC clusters"
   - "Windows Server Failover Clustering, with SQL Server"

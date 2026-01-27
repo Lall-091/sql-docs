@@ -4,7 +4,7 @@ description: Discover how to use parameters in an expression to customize pagina
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-design
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

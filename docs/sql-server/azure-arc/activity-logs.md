@@ -5,7 +5,7 @@ author: lcwright
 ms.author: lancewright
 ms.reviewer: mikeray, randolphwest
 ms.date: 05/19/2025
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Use activity logs with SQL Server enabled by Azure Arc

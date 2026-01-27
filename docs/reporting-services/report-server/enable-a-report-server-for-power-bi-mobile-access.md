@@ -4,7 +4,7 @@ description: Learn how to connect the Power BI Mobile app to Reporting Services 
 ms.date: 09/25/2024
 ms.service: reporting-services
 ms.subservice: report-server
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - updatefrequency5
 ---

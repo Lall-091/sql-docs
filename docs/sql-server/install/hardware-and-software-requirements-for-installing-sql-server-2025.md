@@ -7,7 +7,7 @@ ms.reviewer: randolphwest, jopilov, rdorr
 ms.date: 11/18/2025
 ms.service: sql
 ms.subservice: release-landing
-ms.topic: article
+ms.topic: checklist
 ms.custom:
   - ignite-2025
 helpviewer_keywords:
